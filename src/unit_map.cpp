@@ -24,30 +24,51 @@
 
 #include <boost/foreach.hpp>
 
-static lg::log_domain log_engine("engine");
-#define ERR_NG LOG_STREAM(err, log_engine)
-#define WRN_NG LOG_STREAM(warn, log_engine)
-#define LOG_NG LOG_STREAM(info, log_engine)
-#define DBG_NG LOG_STREAM(debug, log_engine)
+static lg::log_domain log_engine_unit_map("engine");
+#define ERR_NG LOG_STREAM(err, log_engine_unit_map)
+#define WRN_NG LOG_STREAM(warn, log_engine_unit_map)
+#define LOG_NG LOG_STREAM(info, log_engine_unit_map)
+#define DBG_NG LOG_STREAM(debug, log_engine_unit_map)
+
+static lg::log_domain log_engine_refac_unit_map("enginerefac");
+#define DBG_UR LOG_STREAM(debug, log_engine_refac_unit_map)
 
 unit_map::unit_map()
 	: umap_()
 	, lmap_()
+	, total_num_iters_(0)
 {
+	DBG_UR << "unit_map constructed" << std::endl;
 }
 
 unit_map::unit_map(const unit_map& that)
 	: umap_()
 	, lmap_()
+	, total_num_iters_(0)
 {
+	DBG_UR << "unit_map copy constructed" << std::endl;
+	DBG_UR << "unit_map size" << size() << std::endl;
+	DBG_UR << "num_iters" << num_iters() << std::endl;
+
 	for (const_unit_iterator i = that.begin(); i != that.end(); ++i) {
 		add(i->get_location(), *i);
 	}
+	DBG_UR << "finished copying" << std::endl;
+	DBG_UR << "unit_map size" << size() << std::endl;
+	DBG_UR << "num_iters" << num_iters() << std::endl;
 }
 
-unit_map &unit_map::operator=(const unit_map &that) {
-	unit_map temp(that);
-	swap(temp);
+unit_map &unit_map::operator=(unit_map that) {
+	DBG_UR << "copy assignment operator"<< std::endl;
+	DBG_UR << "unit_map size" << size() << std::endl;
+	DBG_UR << "num_iters" << num_iters() << std::endl;
+
+	swap(that);
+
+	DBG_UR << "finished swapping"<< std::endl;
+	DBG_UR << "unit_map size" << size() << std::endl;
+	DBG_UR << "num_iters" << num_iters() << std::endl;
+
 	return *this;
 }
 
@@ -60,12 +81,13 @@ void unit_map::swap(unit_map &o) {
 
 unit_map::~unit_map() {
 	clear(true);
+	DBG_UR << "destroying unit_map" << std::endl;
 }
 
 unit_map::t_umap::iterator unit_map::begin_core() const {
 	self_check();
 	t_umap::iterator i = umap_.begin();
-	while (i != umap_.end() && (!i->second.unit)) { ++i; }
+	while (i != umap_.end() && (!i->second)) { ++i; }
 	return i;
 }
 
@@ -91,7 +113,7 @@ std::pair<unit_map::unit_iterator, bool> unit_map::move(const map_location &src,
 	if(src == dst){ return std::make_pair(make_unit_iterator(uit), true);}
 
 	//Fail if there is no unit to move
-	UnitPtr p = uit->second.unit;
+	UnitPtr p = uit->second;
 	if(!p){ return std::make_pair(make_unit_iterator(uit), false);}
 
 	p->set_location(dst);
@@ -129,7 +151,6 @@ std::pair<unit_map::unit_iterator, bool> unit_map::insert(UnitPtr p) {
 	self_check();
 	assert(p);
 
-	size_t unit_id = p->underlying_id();
 	const map_location &loc = p->get_location();
 
 	if (!loc.valid()) {
@@ -138,47 +159,39 @@ std::pair<unit_map::unit_iterator, bool> unit_map::insert(UnitPtr p) {
 		return std::make_pair(make_unit_iterator(umap_.end()), false);
 	}
 
-	unit_pod upod;
-	upod.unit = p ;
-
 	DBG_NG << "Adding unit " << p->underlying_id() << " - " << p->id()
 		<< " to location: (" << loc << ")\n";
 
-	std::pair<t_umap::iterator, bool> uinsert = umap_.insert(std::make_pair(unit_id, upod ));
+	std::pair<t_umap::iterator, bool> uinsert = umap_.insert(std::make_pair(p->underlying_id(), p ));
 
 	if (! uinsert.second) {
-		//If the pod is empty reinsert the unit in the same list element
-		if (!uinsert.first->second.unit) {
-			unit_pod &opod = uinsert.first->second;
-			opod.unit = p ;
-			assert(opod.ref_count != 0);
-		} else {
-			UnitPtr q = uinsert.first->second.unit;
-			ERR_NG << "Trying to add " << p->name()
-				   << " - " << p->id() << " - " << p->underlying_id()
-				   << " ("  << loc << ") over " << q->name()
-				   << " - " << q->id() << " - " << q->underlying_id()
-				   << " ("  << q->get_location()
-				   << "). The new unit will be assigned underlying_id="
-				   << (1 + n_unit::id_manager::instance().get_save_id())
-				   << " to prevent duplicate id conflicts.\n";
+		UnitPtr q = uinsert.first->second;
+		ERR_NG << "Trying to add " << p->name()
+			   << " - " << p->id() << " - " << p->underlying_id()
+			   << " ("  << loc << ") over " << q->name()
+			   << " - " << q->id() << " - " << q->underlying_id()
+			   << " ("  << q->get_location()
+			   << "). The new unit will be assigned underlying_id="
+			   << (1 + n_unit::id_manager::instance().get_save_id())
+			   << " to prevent duplicate id conflicts.\n";
 
+		p->clone(false);
+		uinsert = umap_.insert(std::make_pair(p->underlying_id(), p ));
+		int guard(0);
+		while (!uinsert.second && (++guard < 1e6) ) {
+			if(guard % 10 == 9){
+				ERR_NG << "\n\nPlease Report this error to https://gna.org/bugs/index.php?18591 "
+					"\nIn addition to the standard details of operating system and wesnoth version "
+					"and how it happened, please answer the following questions "
+					"\n 1. Were you playing multi-player?"
+					"\n 2. Did you start/restart/reload the game/scenario?"
+					"\nThank you for your help in fixing this bug.\n";
+			}
 			p->clone(false);
-			uinsert = umap_.insert(std::make_pair(p->underlying_id(), upod ));
-			int guard(0);
-			while (!uinsert.second && (++guard < 1e6) ) {
-				if(guard % 10 == 9){
-					ERR_NG << "\n\nPlease Report this error to https://gna.org/bugs/index.php?18591 "
-						"\nIn addition to the standard details of operating system and wesnoth version "
-						"and how it happened, please answer the following questions "
-						"\n 1. Were you playing multi-player?"
-						"\n 2. Did you start/restart/reload the game/scenario?"
-						"\nThank you for your help in fixing this bug.\n";
-				}
-				p->clone(false);
-				uinsert = umap_.insert(std::make_pair(p->underlying_id(), upod )); }
-			if (!uinsert.second) {
-				throw game::error("One million collisions in unit_map"); }
+			uinsert = umap_.insert(std::make_pair(p->underlying_id(), p )); 
+		}
+		if (!uinsert.second) {
+			throw game::error("One million collisions in unit_map");
 		}
 	}
 
@@ -186,16 +199,11 @@ std::pair<unit_map::unit_iterator, bool> unit_map::insert(UnitPtr p) {
 
 	//Fail if the location is occupied
 	if(! linsert.second) {
-		if(upod.ref_count == 0) {
-			//Undo a virgin insertion
-			umap_.erase(uinsert.first);
-		} else {
-			//undo a reinsertion
-			uinsert.first->second.unit.reset();
-		}
+		umap_.erase(uinsert.first);
+
 		DBG_NG << "Trying to add " << p->name()
 			   << " - " << p->id() << " at location ("<<loc <<"); Occupied  by "
-			   <<(linsert.first->second->second).unit->name()<< " - " << linsert.first->second->second.unit->id() <<"\n";
+			   <<(linsert.first->second->second)->name()<< " - " << linsert.first->second->second->id() <<"\n";
 
 		return std::make_pair(make_unit_iterator(umap_.end()), false);
 	}
@@ -215,30 +223,13 @@ std::pair<unit_map::unit_iterator, bool> unit_map::replace(const map_location &l
 	return add(loc, u);
 }
 
-size_t unit_map::num_iters() const  {
-	///Add up number of extant iterators
-	size_t num_iters(0);
-	t_umap::const_iterator ui = umap_.begin();
-	t_umap::const_iterator uend = umap_.end();
-	for( ; ui != uend ; ++ui){
-		if(ui->second.ref_count < 0) {
-			//Somewhere, someone generated 2^31 iterators to this unit
-			bool a_reference_counter_overflowed(false);
-			assert(a_reference_counter_overflowed);
-		}
-		num_iters += ui->second.ref_count;
-	}
-
-	return num_iters;
-}
-
 void unit_map::clear(bool force) {
 	assert(force  || (num_iters() == 0));
 
 	for (t_umap::iterator i = umap_.begin(); i != umap_.end(); ++i) {
 		if (is_valid(i)) {
-			DBG_NG << "Delete unit " << i->second.unit->underlying_id() << "\n";
-			i->second.unit.reset();
+			DBG_NG << "Delete unit " << i->second->underlying_id() << "\n";
+			i->second.reset();
 		}
 	}
 
@@ -253,19 +244,14 @@ UnitPtr unit_map::extract(const map_location &loc) {
 
 	t_umap::iterator uit(i->second);
 
-	UnitPtr u = uit->second.unit;
+	UnitPtr u = uit->second;
 	size_t uid( u->underlying_id() );
 
 	DBG_NG << "Extract unit " << uid << " - " << u->id()
 			<< " from location: (" << loc << ")\n";
 
-	assert(uit->first == uit->second.unit->underlying_id());
-	if(uit->second.ref_count == 0){
-		umap_.erase(uit);
-	} else {
-		//Soft extraction keeps the old lit item if any iterators reference it
-		uit->second.unit.reset();
-	}
+	assert(uit->first == uit->second->underlying_id());
+	umap_.erase(uit);
 
 	lmap_.erase(i);
 	self_check();
@@ -285,7 +271,7 @@ size_t unit_map::erase(const map_location &loc) {
 unit_map::unit_iterator unit_map::find(size_t id) {
 	self_check();
 	t_umap::iterator i(umap_.find(id));
-	if((i != umap_.end()) && !i->second.unit){ i = umap_.end() ;}
+	if((i != umap_.end()) && !i->second){ i = umap_.end() ;}
 	return make_unit_iterator<t_umap::iterator>( i );
 }
 
@@ -339,24 +325,24 @@ bool unit_map::self_check() const {
 
 	t_umap::const_iterator uit(umap_.begin());
 	for(; uit != umap_.end(); ++uit){
-		if(uit->second.ref_count < 0){
+		if(uit->second->ref_count() < 0){
 			good=false;
-			ERR_NG << "unit_map pod ref_count <0 is " << uit->second.ref_count<< std::endl;
+			ERR_NG << "unit_map pod ref_count <0 is " << uit->second->ref_count()<< std::endl;
 		}
-		if(uit->second.unit){
-			uit->second.unit->id(); //crash if bad pointer
+		if(uit->second){
+			uit->second->id(); //crash if bad pointer
 		}
 		if(uit->first <= 0){
 			good=false;
 			ERR_NG << "unit_map umap uid <=0 is " << uit->first << std::endl;
 		}
-		if(!uit->second.unit && uit->second.ref_count == 0 ){
+		if(!uit->second && uit->second->ref_count() == 0 ){
 			good=false;
 			ERR_NG << "unit_map umap unit==NULL when refcount == 0" << std::endl;
 		}
-		if(uit->second.unit && uit->second.unit->underlying_id() != uit->first){
+		if(uit->second && uit->second->underlying_id() != uit->first){
 			good=false;
-			ERR_NG << "unit_map umap uid("<<uit->first<<") != underlying_id()["<< uit->second.unit->underlying_id()<< "]" << std::endl;
+			ERR_NG << "unit_map umap uid("<<uit->first<<") != underlying_id()["<< uit->second->underlying_id()<< "]" << std::endl;
 		}
 	}
 	t_lmap::const_iterator locit(lmap_.begin());
@@ -365,7 +351,7 @@ bool unit_map::self_check() const {
 			good=false;
 			ERR_NG << "unit_map lmap element == umap_.end() "<< std::endl;
 		}
-		if(locit->first != locit->second->second.unit->get_location()){
+		if(locit->first != locit->second->second->get_location()){
 			good=false;
 			ERR_NG << "unit_map lmap location != unit->get_location() " << std::endl;
 		}
@@ -381,7 +367,7 @@ bool unit_map::has_unit(const unit * const u) const
 	assert(u);
 
 	BOOST_FOREACH(const t_umap::value_type& item, umap_) {
-		if(item.second.unit.get() == u) {
+		if(item.second.get() == u) {
 			return true;
 		}
 	}

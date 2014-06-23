@@ -62,7 +62,10 @@ void mapbuilder::pre_build()
 	}
 
 	int current_side = resources::controller->current_side();
-	BOOST_FOREACH(unit& u, *resources::units) {
+	for(unit_map::iterator it = resources::units->begin(); it != resources::units->end(); ) {
+		unit & u = *it;
+		it++;
+
 		bool on_current_side = (u.side() == current_side);
 
 		//Remove any unit the current side cannot see to avoid their detection by planning

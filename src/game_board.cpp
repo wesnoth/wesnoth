@@ -30,19 +30,26 @@ static lg::log_domain log_engine("enginerefac");
 #define WRN_RG LOG_STREAM(warn, log_engine)
 #define ERR_RG LOG_STREAM(err, log_engine)
 
-game_board::game_board(const config & game_config, const config & level) : teams_(), map_(new gamemap(game_config, level)), units_() {}
+game_board::game_board(const config & game_config, const config & level) : teams_(), map_(new gamemap(game_config, level)), units_() {
+	DBG_RG << "game_board constructed" << std::endl;
+}
 
-game_board::game_board(const game_board & other) : teams_(other.teams_), map_(new gamemap(*(other.map_))), units_(other.units_) {}
+game_board::game_board(const game_board & other) : teams_(other.teams_), map_(new gamemap(*(other.map_))), units_(other.units_) {
+	DBG_RG << "game_board constructed" << std::endl;
+}
 
-game_board::~game_board() {}
+game_board::~game_board() {
+	DBG_RG << "game_board destructed" << std::endl;
+}
 
 
 //TODO: Fix this so that we swap pointers to maps, and also fix replace_map to use scoped_ptr::reset.
 // However, then anytime gameboard is overwritten, resources::gamemap must be updated. So might want to
 // just get rid of resources::gamemap and replace with resources::gameboard->map() at that point.
 void swap(game_board & one, game_board & other) {
+	DBG_RG << "game_board swap" << std::endl;
 	std::swap(one.teams_, other.teams_);
-	std::swap(one.units_, other.units_);
+	one.units_.swap(other.units_);
 	one.map_.swap(other.map_);
 }
 
