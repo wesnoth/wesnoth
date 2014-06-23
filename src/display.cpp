@@ -3082,22 +3082,50 @@ void display::invalidate_animations()
 		}
 	}
 
+#ifndef _OPENMP
 	BOOST_FOREACH(const unit & u, dc_->units()) {
 		u.anim_comp().refresh();
 	}
 	BOOST_FOREACH(const unit* u, *fake_unit_man_) {
 		u->anim_comp().refresh();
 	}
+#else
+	std::vector<const unit *> open_mp_list;
+	BOOST_FOREACH(const unit & u, dc_->units()) {
+		open_mp_list.push_back(&u);
+	}
+	BOOST_FOREACH(const unit* u, *fake_unit_man_) {
+		open_mp_list.push_back(u);
+	}
+
+	#pragma omp parallel shared(chunks)
+	{
+		#pragma omp for
+		for(size_t i = 0; i < open_mp_list.size(); ++i)
+			open_mp_list[i]->anim_comp().refresh();
+	}
+}
+#endif
+
 
 	bool new_inval;
 	do {
 		new_inval = false;
+#ifndef _OPENMP
 		BOOST_FOREACH(const unit & u, dc_->units()) {
 			new_inval |=  u.anim_comp().invalidate(*this);
 		}
 		BOOST_FOREACH(const unit* u, *fake_unit_man_) {
 			new_inval |=  u->anim_comp().invalidate(*this);
 		}
+#else
+		#pragma omp parallel shared(chunks)
+		{
+			#pragma omp for
+			for(size_t i = 0; i < open_mp_list.size(); ++i)
+				new_inval |= open_mp_list[i]->anim_comp().invalidate(*this);
+		}
+#endif
 	}while(new_inval);
 }
 
