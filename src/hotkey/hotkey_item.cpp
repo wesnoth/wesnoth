@@ -234,14 +234,9 @@ bool has_hotkey_item(const std::string& command)
 }
 
 void add_hotkey(const hotkey_item& item) {
-
-	scope new_scope = hotkey::get_hotkey_command(item.get_command()).scope;
-	if(new_scope == hotkey::SCOPE_COUNT)
-		new_scope = hotkey::SCOPE_GAME;
+	
 	scope_changer scope_ch;
-	deactivate_all_scopes();
-	hotkey::set_scope_active(new_scope);
-	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
+	set_active_scopes(hotkey::get_hotkey_command(item.get_command()).scope);
 
 	hotkey_item& old_hk = (item.get_mouse() != -1 || item.get_joystick() != -1) ?
 			::get_hotkey(item.get_mouse(), item.get_joystick(), item.get_button(), item.get_hat()

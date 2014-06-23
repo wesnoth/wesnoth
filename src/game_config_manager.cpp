@@ -81,7 +81,6 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 	game_config::load_config(game_config_.child("game_config"));
 
 	hotkey::deactivate_all_scopes();
-	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 	hotkey::set_scope_active(hotkey::SCOPE_MAIN_MENU);
 
 	hotkey::load_hotkeys(game_config(), true);
