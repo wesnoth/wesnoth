@@ -1474,31 +1474,21 @@ void game::save_replay() {
 
 	std::stringstream replay_data;
 	try {
-#if 0
-		replay_data << "campaign_type=\"multiplayer\"\n"
-			//why did we save difficulcy here ? esp in scmapogn difficulacy = normal is not bguaranteed
-		<< "difficulty=\"NORMAL\"\n"
-		<< "label=\"" << name.str() << "\"\n"
-		<< "mp_game_title=\"" << name_ << "\"\n"
-		<< "random_seed=\"" << level_["random_seed"] << "\"\n"
-		<< "version=\"" << level_["version"] << "\"\n"
-		<< "[replay]\n"
-		<< "\t[command]\n\t\t[start]\n\t\t[/start]\n\t[/command]\n" //this is required by gfgtdf's sync mechanism, in PR 121
-		<< replay_commands
-		<< "[/replay]\n"
-		<< "[replay_start]\n" << level_.output() << "[/replay_start]\n";
-#else
+		//level_.set_attr_dup("label", name.str().c_str());
+		//TODO: comment where mp_game_title= is used.
+		level_.set_attr_dup("mp_game_title", name_.c_str());
 		const bool has_old_replay = level_.child("replay") != NULL; 
 		//If there is already a replay in the level_, which means this is a reloaded game,
 		//then we dont need to add the [start] in the replay.
 		replay_data << level_.output() 
 		//This can result in having 2 [replay] at toplevel since level_ can contain one already. But the client can handle this (simply merges them).
 		<< "[replay]\n"
-		<< (has_old_replay ? "" : "\t[command]\n\t\t[start]\n\t\t[/start]\n\t[/command]\n") //this is required by gfgtdf's sync mechanism, in PR 121
+		//The [start] is generated at the clients and not sended over the network so we add it here.
+		//It usualy contains some checkup data that is used to check whether the calculated results
+		//match the ones calculated in the replay. But thats not necessary
+		<< (has_old_replay ? "" : "\t[command]\n\t\t[start]\n\t\t[/start]\n\t[/command]\n")
 		<< replay_commands
 		<< "[/replay]\n";
-
-#endif
 		name << " (" << id_ << ").bz2";
 
 		std::string replay_data_str = replay_data.str();
