@@ -513,7 +513,7 @@ namespace { // Private helpers for move_unit()
 
 			// Show this move.
 			const size_t current_tracking = game_events::wml_tracking();
-			animator.proceed_to(*move_it_, step_to - begin_,
+			animator.proceed_to(move_it_.get_shared_ptr(), step_to - begin_,
 			                    current_tracking != do_move_track_, false);
 			do_move_track_ = current_tracking;
 			disp.redraw_minimap();
@@ -942,7 +942,7 @@ namespace { // Private helpers for move_unit()
 
 			// Prepare to animate.
 			unit_display::unit_mover animator(route_, show);
-			animator.start(*move_it_);
+			animator.start(move_it_.get_shared_ptr());
 
 			// Traverse the route to the hex where we need to stop.
 			// Each iteration performs the move from real_end_-1 to real_end_.
@@ -1003,7 +1003,7 @@ namespace { // Private helpers for move_unit()
 
 			if ( move_it_.valid() ) {
 				// Finish animating.
-				animator.finish(*move_it_);
+				animator.finish(move_it_.get_shared_ptr());
 				// Check for the moving unit being seen.
 				event_mutated_ = actor_sighted(*move_it_, &not_seeing);
 			}

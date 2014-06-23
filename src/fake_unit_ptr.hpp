@@ -15,7 +15,8 @@
 #ifndef INCL_FAKE_UNIT_HPP_
 #define INCL_FAKE_UNIT_HPP_
 
-#include "unit.hpp"
+#include "unit_ptr.hpp"
+#include "unit_types.hpp"
 
 class fake_unit_manager;
 
@@ -27,31 +28,62 @@ class fake_unit_manager;
 	The intent is to provide exception safety when the code
 	creating the temp unit is unexpectedly forced out of scope.
  */
-class fake_unit : public unit {
+class fake_unit_ptr {
 public:
-	explicit fake_unit(unit const & u) : unit(u), my_manager_(NULL) {ref_count_ = ref_count_ + 1; } //prevent UnitPtr from deleting this
-	fake_unit(fake_unit const & u) : unit(u), my_manager_(NULL) {ref_count_ = ref_count_ + 1; }
-	fake_unit(const unit_type& t, int side, unit_race::GENDER gender = unit_race::NUM_GENDERS)
-		: unit(t, side, false, gender)
-		, my_manager_(NULL)
-	{ref_count_ = ref_count_ + 1; }
-	/// Assignment operator, taking a fake_unit.
-	/// If already in the queue, @a this will be moved to the end of the
-	/// queue (drawn last). The queue (if any) of the parameter is ignored.
-	fake_unit & operator=(fake_unit const & u)
-	{ return operator=(static_cast<unit const &>(u)); }
-	/// Assignment operator, taking a unit.
-	virtual fake_unit & operator=(unit const & u);
+	typedef UnitPtr internal_ptr;
+	typedef UnitConstPtr internal_const_ptr;
+
+	fake_unit_ptr();
+	explicit fake_unit_ptr(const internal_ptr & u);
+	fake_unit_ptr(const internal_ptr & u, fake_unit_manager * mgr);
+	fake_unit_ptr(const fake_unit_ptr & ptr);
+
+	void swap (fake_unit_ptr & o);
+
+	fake_unit_ptr & operator=(fake_unit_ptr other);
+
+	void reset();
+	void reset(const internal_ptr & ptr);
+
+	internal_ptr operator->() { return unit_; }
+	internal_const_ptr operator->() const { return unit_; }
+
+	internal_ptr get_unit_ptr() { return unit_; }
+	internal_const_ptr get_unit_ptr() const { return unit_; }
+
+	unit & operator*() { return *unit_; }
+	unit * get() { return unit_.get(); }
+
 	/// Removes @a this from the fake_units_ list if necessary.
-	~fake_unit();
+	~fake_unit_ptr();
 
 	/// Place @a this on @a manager's fake_units_ dequeue.
 	void place_on_fake_unit_manager(fake_unit_manager * d);
 	/// Removes @a this from whatever fake_units_ list it is on (if any).
 	int remove_from_fake_unit_manager();
 
-	private :
+private :
+	internal_ptr unit_;
 	fake_unit_manager * my_manager_;
+
+#ifndef HAVE_CXX11
+	struct safe_bool_impl { void nonnull() {} };
+	/**
+	 * Used as t he return type of the conversion operator for boolean contexts.
+	 * Needed, since the compiler would otherwise consider the following
+	 * conversion (C legacy): cfg["abc"] -> "abc"[bool(cfg)] -> 'b'
+	 */
+	typedef void (safe_bool_impl::*safe_bool)();
+#endif
+
+public:
+#ifdef HAVE_CXX11
+	explicit operator bool() const
+	{ return unit_; }
+#else
+	operator safe_bool() const
+	{ return unit_ ? &safe_bool_impl::nonnull : NULL; }
+#endif
 };
 
 #endif

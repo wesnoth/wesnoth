@@ -12,9 +12,33 @@
    See the COPYING file for more details.
 */
 
-#include "fake_unit.hpp"
+#include "fake_unit_ptr.hpp"
 
 #include "fake_unit_manager.hpp"
+#include "unit.hpp"
+#include "unit_ptr.hpp"
+#include "unit_types.hpp"
+
+#include <boost/swap.hpp>
+
+fake_unit_ptr::fake_unit_ptr() : unit_(), my_manager_(NULL) {}
+fake_unit_ptr::fake_unit_ptr(const internal_ptr & u) : unit_(u), my_manager_(NULL) {}
+fake_unit_ptr::fake_unit_ptr(const internal_ptr & u, fake_unit_manager * mgr) : unit_(u), my_manager_(NULL)
+{
+	place_on_fake_unit_manager(mgr);
+}
+fake_unit_ptr::fake_unit_ptr(const fake_unit_ptr & ptr) : unit_(ptr.unit_), my_manager_(NULL) {}
+
+void fake_unit_ptr::swap (fake_unit_ptr & o) {
+	boost::swap(unit_, o.unit_);
+	std::swap(my_manager_, o.my_manager_);
+}
+
+fake_unit_ptr & fake_unit_ptr::operator=(fake_unit_ptr other) {
+	swap(other);
+	return *this;
+}
+
 
 /**
  * Assignment operator, taking a unit.
@@ -27,7 +51,7 @@
  * The overriding function can be almost the same, except "new (this)" should
  * be followed by the derived class instead of "fake_unit(a)".
  */
-fake_unit & fake_unit::operator=(unit const & a)
+/*fake_unit & fake_unit::operator=(unit const & a)
 {
 	if ( this != &a ) {
 		fake_unit_manager * mgr = my_manager_;
@@ -41,12 +65,30 @@ fake_unit & fake_unit::operator=(unit const & a)
 			place_on_fake_unit_manager(mgr);
 	}
 	return *this;
+}*/
+
+void fake_unit_ptr::reset()
+{
+	remove_from_fake_unit_manager();
+	unit_.reset();
+}
+
+void fake_unit_ptr::reset(const internal_ptr & ptr)
+{
+	if (unit_.get() != ptr.get()) {
+		fake_unit_manager * mgr = my_manager_;
+
+		remove_from_fake_unit_manager();
+		unit_ = ptr;
+		if (mgr)
+			place_on_fake_unit_manager(mgr);
+	}
 }
 
 /**
  * Removes @a this from the fake_units_ list if necessary.
  */
-fake_unit::~fake_unit()
+fake_unit_ptr::~fake_unit_ptr()
 {
 	try {
 	// The fake_unit class exists for this one line, which removes the
@@ -62,10 +104,10 @@ fake_unit::~fake_unit()
  * This will be added at the end (drawn last, over all other units).
  * Duplicate additions are not allowed.
  */
-void fake_unit::place_on_fake_unit_manager(fake_unit_manager * manager){
+void fake_unit_ptr::place_on_fake_unit_manager(fake_unit_manager * manager){
 	assert(my_manager_ == NULL); //Can only be placed on 1 fake_unit_manager
 	my_manager_=manager;
-	my_manager_->place_temporary_unit(this);
+	my_manager_->place_temporary_unit(unit_.get());
 }
 
 /**
@@ -73,10 +115,10 @@ void fake_unit::place_on_fake_unit_manager(fake_unit_manager * manager){
  * @returns the number of fake_units deleted, which should be 0 or 1
  *          (any other number indicates an error).
  */
-int fake_unit::remove_from_fake_unit_manager(){
+int fake_unit_ptr::remove_from_fake_unit_manager(){
 	int ret(0);
 	if(my_manager_ != NULL){
-		ret = my_manager_->remove_temporary_unit(this);
+		ret = my_manager_->remove_temporary_unit(unit_.get());
 		my_manager_=NULL;
 	}
 	return ret;

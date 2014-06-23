@@ -17,8 +17,8 @@
 #include "global.hpp"
 #include "unit_display.hpp"
 
-#include "fake_unit.hpp"
 #include "fake_unit_manager.hpp"
+#include "fake_unit_ptr.hpp"
 #include "game_board.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
@@ -116,7 +116,7 @@ static void teleport_unit_between(const map_location& a, const map_location& b,
  *           INT_MIN indicates that no animation is pending.
  */
 static int move_unit_between(const map_location& a, const map_location& b,
-                             unit& temp_unit, unsigned int step_num,
+                             UnitPtr temp_unit, unsigned int step_num,
                              unsigned int step_left, unit_animator & animator,
                              display& disp)
 {
@@ -124,10 +124,10 @@ static int move_unit_between(const map_location& a, const map_location& b,
 		return INT_MIN;
 	}
 
-	temp_unit.set_location(a);
+	temp_unit->set_location(a);
 	disp.invalidate(a);
-	temp_unit.set_facing(a.get_relative_dir(b));
-	animator.replace_anim_if_invalid(&temp_unit,"movement",a,b,step_num,
+	temp_unit->set_facing(a.get_relative_dir(b));
+	animator.replace_anim_if_invalid(temp_unit.get(),"movement",a,b,step_num,
 			false,"",0,unit_animation::INVALID,NULL,NULL,step_left);
 	animator.start_animations();
 	animator.pause_animation();
@@ -165,10 +165,10 @@ unit_mover::unit_mover(const std::vector<map_location>& path, bool animate, bool
 	force_scroll_(force_scroll),
 	animator_(),
 	wait_until_(INT_MIN),
-	shown_unit_(NULL),
+	shown_unit_(),
 	path_(path),
 	current_(0),
-	temp_unit_ptr_(NULL),
+	temp_unit_ptr_(),
 	// Somewhat arbitrary default values.
 	was_hidden_(false),
 	is_enemy_(true)
@@ -187,8 +187,6 @@ unit_mover::~unit_mover()
 	update_shown_unit();
 	// For safety, clear the animator before deleting the temp unit.
 	animator_.clear();
-	// The temp unit's destructor will remove it from the display.
-	delete temp_unit_ptr_;
 }
 
 
@@ -202,28 +200,24 @@ unit_mover::~unit_mover()
 /* Note: Hide the unit in its current location; do not actually remove it.
  * Otherwise the status displays will be wrong during the movement.
  */
-void unit_mover::replace_temporary(unit & u)
+void unit_mover::replace_temporary(UnitPtr u)
 {
 	if ( disp_ == NULL )
 		// No point in creating a temp unit with no way to display it.
 		return;
 
 	// Save the hidden state of the unit.
-	was_hidden_ = u.get_hidden();
+	was_hidden_ = u->get_hidden();
 
 	// Make our temporary unit mostly match u...
-	if ( temp_unit_ptr_ == NULL ) {
-		temp_unit_ptr_ = new fake_unit(u);
-		temp_unit_ptr_->place_on_fake_unit_manager(resources::fake_units);
-	}
-	else
-		*temp_unit_ptr_ = u;
+	temp_unit_ptr_ = fake_unit_ptr(UnitPtr(new unit(*u)), resources::fake_units);
+
 	// ... but keep the temporary unhidden and hide the original.
 	temp_unit_ptr_->set_hidden(false);
-	u.set_hidden(true);
+	u->set_hidden(true);
 
 	// Update cached data.
-	is_enemy_ =	(*resources::teams)[u.side()-1].is_enemy(disp_->viewing_side());
+	is_enemy_ =	(*resources::teams)[u->side()-1].is_enemy(disp_->viewing_side());
 }
 
 
@@ -234,11 +228,11 @@ void unit_mover::replace_temporary(unit & u)
  */
 void unit_mover::update_shown_unit()
 {
-	if ( shown_unit_ != NULL ) {
+	if ( shown_unit_ ) {
 		// Switch the display back to the real unit.
 		shown_unit_->set_hidden(was_hidden_);
 		temp_unit_ptr_->set_hidden(true);
-		shown_unit_ = NULL;
+		shown_unit_.reset();
 	}
 }
 
@@ -247,15 +241,15 @@ void unit_mover::update_shown_unit()
  * Initiates the display of movement for the supplied unit.
  * This should be called before attempting to display moving to a new hex.
  */
-void unit_mover::start(unit& u)
+void unit_mover::start(UnitPtr u)
 {
 	// Nothing to do here if there is nothing to animate.
 	if ( !can_draw_ )
 		return;
 	// If no animation then hide unit until end of movement
 	if ( !animate_ ) {
-		was_hidden_ = u.get_hidden();
-		u.set_hidden(true);
+		was_hidden_ = u->get_hidden();
+		u->set_hidden(true);
 		return;
 	}
 
@@ -294,15 +288,15 @@ void unit_mover::start(unit& u)
 	disp_->draw(true);
 
 	// extra immobile movement animation for take-off
-	animator_.add_animation(temp_unit_ptr_, "pre_movement", path_[0], path_[1]);
+	animator_.add_animation(temp_unit_ptr_.get(), "pre_movement", path_[0], path_[1]);
 	animator_.start_animations();
 	animator_.wait_for_end();
 	animator_.clear();
 
 	// Switch the display back to the real unit.
-	u.set_facing(temp_unit_ptr_->facing());
-	u.anim_comp().set_standing(false);	// Need to reset u's animation so the new facing takes effect.
-	u.set_hidden(was_hidden_);
+	u->set_facing(temp_unit_ptr_->facing());
+	u->anim_comp().set_standing(false);	// Need to reset u's animation so the new facing takes effect.
+	u->set_hidden(was_hidden_);
 	temp_unit_ptr_->set_hidden(true);
 }
 
@@ -318,7 +312,7 @@ void unit_mover::start(unit& u)
  * wait (another call to proceed_to() or finish() will implicitly wait). The
  * unit must remain valid until the wait is finished.
  */
-void unit_mover::proceed_to(unit& u, size_t path_index, bool update, bool wait)
+void unit_mover::proceed_to(UnitPtr u, size_t path_index, bool update, bool wait)
 {
 	// Nothing to do here if animations cannot be shown.
 	if ( !can_draw_ || !animate_ )
@@ -327,14 +321,14 @@ void unit_mover::proceed_to(unit& u, size_t path_index, bool update, bool wait)
 	// Handle pending visibility issues before introducing new ones.
 	wait_for_anims();
 
-	if ( update  ||  temp_unit_ptr_ == NULL )
+	if ( update  ||  !temp_unit_ptr_ )
 		// Replace the temp unit (which also hides u and shows our temporary).
 		replace_temporary(u);
 	else
 	{
 		// Just switch the display from the real unit to our fake one.
 		temp_unit_ptr_->set_hidden(false);
-		u.set_hidden(true);
+		u->set_hidden(true);
 	}
 
 	// Safety check.
@@ -367,7 +361,7 @@ void unit_mover::proceed_to(unit& u, size_t path_index, bool update, bool wait)
 			if ( tiles_adjacent(path_[current_], path_[current_+1]) )
 				wait_until_ =
 					move_unit_between(path_[current_], path_[current_+1],
-					                  *temp_unit_ptr_, current_,
+					                  temp_unit_ptr_.get_unit_ptr(), current_,
 					                  path_.size() - (current_+2), animator_,
 					                  *disp_);
 			else if ( path_[current_] != path_[current_+1] )
@@ -376,10 +370,10 @@ void unit_mover::proceed_to(unit& u, size_t path_index, bool update, bool wait)
 		}
 
 	// Update the unit's facing.
-	u.set_facing(temp_unit_ptr_->facing());
-	u.anim_comp().set_standing(false);	// Need to reset u's animation so the new facing takes effect.
+	u->set_facing(temp_unit_ptr_->facing());
+	u->anim_comp().set_standing(false);	// Need to reset u's animation so the new facing takes effect.
 	// Remember the unit to unhide when the animation finishes.
-	shown_unit_ = &u;
+	shown_unit_ = u;
 	if ( wait )
 		wait_for_anims();
 }
@@ -417,7 +411,7 @@ void unit_mover::wait_for_anims()
  * If @a dir is not supplied, the final direction will be determined by (the
  * last two traversed hexes of) the path.
  */
-void unit_mover::finish(unit &u, map_location::DIRECTION dir)
+void unit_mover::finish(UnitPtr u, map_location::DIRECTION dir)
 {
 	// Nothing to do here if the display is not valid.
 	if ( !can_draw_ )
@@ -438,13 +432,13 @@ void unit_mover::finish(unit &u, map_location::DIRECTION dir)
 		temp_unit_ptr_->set_facing(final_dir);
 
 		// Animation
-		animator_.add_animation(temp_unit_ptr_, "post_movement", end_loc);
+		animator_.add_animation(temp_unit_ptr_.get(), "post_movement", end_loc);
 		animator_.start_animations();
 		animator_.wait_for_end();
 		animator_.clear();
 
 		// Switch the display back to the real unit.
-		u.set_hidden(was_hidden_);
+		u->set_hidden(was_hidden_);
 		temp_unit_ptr_->set_hidden(true);
 
 		events::mouse_handler* mousehandler = events::mouse_handler::get_singleton();
@@ -455,12 +449,12 @@ void unit_mover::finish(unit &u, map_location::DIRECTION dir)
 	else
 	{
 		// Show the unit at end of skipped animation
-		u.set_hidden(was_hidden_);
+		u->set_hidden(was_hidden_);
 	}
 
 	// Facing gets set even when not animating.
-	u.set_facing(dir == map_location::NDIRECTIONS ? final_dir : dir);
-	u.anim_comp().set_standing(true);	// Need to reset u's animation so the new facing takes effect.
+	u->set_facing(dir == map_location::NDIRECTIONS ? final_dir : dir);
+	u->anim_comp().set_standing(true);	// Need to reset u's animation so the new facing takes effect.
 
 	// Redraw path ends (even if not animating).
 	disp_->invalidate(path_.front());
@@ -484,7 +478,7 @@ void unit_mover::finish(unit &u, map_location::DIRECTION dir)
  * so that while the unit is moving status etc.
  * will still display the correct number of units.
  */
-void move_unit(const std::vector<map_location>& path, unit& u,
+void move_unit(const std::vector<map_location>& path, UnitPtr u,
                bool animate, map_location::DIRECTION dir,
                bool force_scroll)
 {

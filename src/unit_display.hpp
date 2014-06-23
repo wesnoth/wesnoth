@@ -20,11 +20,11 @@
 #ifndef UNIT_DISPLAY_HPP_INCLUDED
 #define UNIT_DISPLAY_HPP_INCLUDED
 
+#include "fake_unit_ptr.hpp"
 #include "map_location.hpp"
 #include "unit_animation.hpp"
 
 class attack_type;
-class fake_unit;
 class fake_unit_manager;
 class game_board;
 class game_display;
@@ -49,13 +49,13 @@ public:
 	explicit unit_mover(const std::vector<map_location>& path, bool animate=true, bool force_scroll=false);
 	~unit_mover();
 
-	void start(unit& u);
-	void proceed_to(unit& u, size_t path_index, bool update=false, bool wait=true);
+	void start(UnitPtr u);
+	void proceed_to(UnitPtr u, size_t path_index, bool update=false, bool wait=true);
 	void wait_for_anims();
-	void finish(unit &u, map_location::DIRECTION dir = map_location::NDIRECTIONS);
+	void finish(UnitPtr u, map_location::DIRECTION dir = map_location::NDIRECTIONS);
 
 private: // functions
-	void replace_temporary(unit & u);
+	void replace_temporary(UnitPtr u);
 	void update_shown_unit();
 
 private: // data
@@ -65,10 +65,10 @@ private: // data
 	const bool force_scroll_;
 	unit_animator animator_;
 	int wait_until_;	/// The animation potential to wait until. INT_MIN for no wait; INT_MAX to wait for end.
-	unit * shown_unit_;	/// The unit to be (re-)shown after an animation finishes.
+	UnitPtr shown_unit_;	/// The unit to be (re-)shown after an animation finishes.
 	const std::vector<map_location>& path_;
 	size_t current_;
-	fake_unit * temp_unit_ptr_;
+	fake_unit_ptr temp_unit_ptr_;
 	bool was_hidden_;
 	bool is_enemy_;
 };
@@ -77,7 +77,7 @@ private: // data
 /**
  * Display a unit moving along a given path.
  */
-void move_unit(const std::vector<map_location>& path, unit& u,
+void move_unit(const std::vector<map_location>& path, UnitPtr u,
 	bool animate=true,
 	map_location::DIRECTION dir=map_location::NDIRECTIONS,
 	bool force_scroll=false);

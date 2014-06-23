@@ -215,7 +215,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 		gui().clear_attack_indicator();
 	}
 
-	unit* un; //will later point to unit at mouseover_hex_
+	UnitPtr un; //will later point to unit at mouseover_hex_
 
 	// the destination is the pointed hex or the adjacent hex
 	// used to attack it
@@ -271,9 +271,9 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 
 		unit_map::iterator iter = mouseover_unit;
 		if (iter != board_.units_.end())
-			un = &*iter;
+			un = iter.get_shared_ptr();
 		else
-			un = NULL;
+			un.reset();
 	} //end planned unit map scope
 
 	if ( (!selected_hex_.valid()) && un && current_paths_.destinations.empty() &&
@@ -286,7 +286,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 				pathfind::marked_route route;
 				{ // start planned unit map scope
 					wb::future_map_if_active raii;
-					route = get_route(un, go_to, current_team());
+					route = get_route(un.get(), go_to, current_team());
 				} // end planned unit map scope
 				gui().set_route(&route);
 			}
