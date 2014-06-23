@@ -17,8 +17,8 @@
 #include "global.hpp"
 #include "unit_display.hpp"
 
-#include "fake_unit.hpp"
 #include "fake_unit_manager.hpp"
+#include "fake_unit_ptr.hpp"
 #include "game_board.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
@@ -187,8 +187,6 @@ unit_mover::~unit_mover()
 	update_shown_unit();
 	// For safety, clear the animator before deleting the temp unit.
 	animator_.clear();
-	// The temp unit's destructor will remove it from the display.
-	delete temp_unit_ptr_;
 }
 
 
@@ -212,9 +210,8 @@ void unit_mover::replace_temporary(unit & u)
 	was_hidden_ = u.get_hidden();
 
 	// Make our temporary unit mostly match u...
-	if ( temp_unit_ptr_ == NULL ) {
-		temp_unit_ptr_ = new fake_unit(u);
-		temp_unit_ptr_->place_on_fake_unit_manager(resources::fake_units);
+	if ( !temp_unit_ptr_ ) {
+		temp_unit_ptr_ = fake_unit_ptr(UnitPtr(new unit(u)), resources::fake_units);
 	}
 	else
 		*temp_unit_ptr_ = u;
@@ -294,7 +291,7 @@ void unit_mover::start(unit& u)
 	disp_->draw(true);
 
 	// extra immobile movement animation for take-off
-	animator_.add_animation(temp_unit_ptr_, "pre_movement", path_[0], path_[1]);
+	animator_.add_animation(temp_unit_ptr_.get(), "pre_movement", path_[0], path_[1]);
 	animator_.start_animations();
 	animator_.wait_for_end();
 	animator_.clear();
@@ -327,7 +324,7 @@ void unit_mover::proceed_to(unit& u, size_t path_index, bool update, bool wait)
 	// Handle pending visibility issues before introducing new ones.
 	wait_for_anims();
 
-	if ( update  ||  temp_unit_ptr_ == NULL )
+	if ( update  ||  !temp_unit_ptr_ )
 		// Replace the temp unit (which also hides u and shows our temporary).
 		replace_temporary(u);
 	else
@@ -438,7 +435,7 @@ void unit_mover::finish(unit &u, map_location::DIRECTION dir)
 		temp_unit_ptr_->set_facing(final_dir);
 
 		// Animation
-		animator_.add_animation(temp_unit_ptr_, "post_movement", end_loc);
+		animator_.add_animation(temp_unit_ptr_.get(), "post_movement", end_loc);
 		animator_.start_animations();
 		animator_.wait_for_end();
 		animator_.clear();

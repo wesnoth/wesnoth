@@ -30,8 +30,8 @@
 #include "../actions/vision.hpp"
 #include "../ai/manager.hpp"
 #include "../dialogs.hpp"
-#include "../fake_unit.hpp"
 #include "../fake_unit_manager.hpp"
+#include "../fake_unit_ptr.hpp"
 #include "../game_classification.hpp"
 #include "../game_display.hpp"
 #include "../game_preferences.hpp"
@@ -226,7 +226,7 @@ namespace { // Support functions
 		return map_location(x, y);
 	}
 
-	fake_unit *create_fake_unit(const vconfig& cfg)
+	fake_unit_ptr create_fake_unit(const vconfig& cfg)
 	{
 		std::string type = cfg["type"];
 		std::string variation = cfg["variation"];
@@ -238,8 +238,8 @@ namespace { // Support functions
 
 		unit_race::GENDER gender = string_gender(cfg["gender"]);
 		const unit_type *ut = unit_types.find(type);
-		if (!ut) return NULL;
-		fake_unit * fake = new fake_unit(*ut, side_num, gender);
+		if (!ut) return fake_unit_ptr(NULL);
+		fake_unit_ptr fake = fake_unit_ptr(*ut, side_num, gender);
 
 		if(!variation.empty()) {
 			config mod;
@@ -1326,7 +1326,7 @@ WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 /// that is just moving for the visual effect
 WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 {
-	util::unique_ptr<unit> dummy_unit(create_fake_unit(cfg));
+	fake_unit_ptr dummy_unit(create_fake_unit(cfg));
 	if(!dummy_unit.get())
 		return;
 
@@ -1351,8 +1351,8 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 
 	const vconfig::child_list unit_cfgs = cfg.get_children("fake_unit");
 	size_t num_units = unit_cfgs.size();
-	boost::scoped_array<util::unique_ptr<fake_unit> > units(
-		new util::unique_ptr<fake_unit>[num_units]);
+	std::vector<fake_unit_ptr > units;
+	units.reserve(num_units);
 	std::vector<std::vector<map_location> > paths;
 	paths.reserve(num_units);
 
@@ -1364,8 +1364,8 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 		const std::vector<std::string> xvals = utils::split(config["x"]);
 		const std::vector<std::string> yvals = utils::split(config["y"]);
 		int skip_steps = config["skip_steps"];
-		fake_unit *u = create_fake_unit(config);
-		units[paths.size()].reset(u);
+		fake_unit_ptr u = create_fake_unit(config);
+		units[paths.size()] = u;
 		paths.push_back(fake_unit_path(*u, xvals, yvals));
 		if(skip_steps > 0)
 			paths.back().insert(paths.back().begin(), skip_steps, paths.back().front());
@@ -1373,7 +1373,7 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 		DBG_NG << "Path " << paths.size() - 1 << " has length " << paths.back().size() << '\n';
 
 		u->set_location(paths.back().front());
-		u->place_on_fake_unit_manager(resources::fake_units);
+		u.place_on_fake_unit_manager(resources::fake_units);
 	}
 
 	LOG_NG << "Units placed, longest path is " << longest_path << " long\n";
@@ -1396,8 +1396,9 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 
 	LOG_NG << "Units moved\n";
 
+	//TODO: This is not necessary???
 	for(size_t un = 0; un < num_units; ++un) {
-		units[un]->remove_from_fake_unit_manager();
+		units[un].remove_from_fake_unit_manager();
 	}
 
 	LOG_NG << "Units removed\n";

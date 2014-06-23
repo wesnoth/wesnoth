@@ -32,8 +32,8 @@
 #include "actions/undo.hpp"
 #include "arrow.hpp"
 #include "chat_events.hpp"
-#include "fake_unit.hpp"
 #include "fake_unit_manager.hpp"
+#include "fake_unit_ptr.hpp"
 #include "formula_string_utils.hpp"
 #include "game_board.hpp"
 #include "game_preferences.hpp"
@@ -714,8 +714,7 @@ void manager::create_temp_move()
 				if(!fake_unit)
 				{
 					// Create temp ghost unit
-					fake_unit.reset(new class fake_unit(*temp_moved_unit));
-					fake_unit->place_on_fake_unit_manager( resources::fake_units);
+					fake_unit = fake_unit_ptr(UnitPtr (new unit(*temp_moved_unit)), resources::fake_units);
 					fake_unit->anim_comp().set_ghosted(true);
 				}
 
