@@ -1053,7 +1053,7 @@ bool preprocessor_data::get_chunk()
 				pop_token();
 				put(v.str());
 			}
-			else if ((macro = target_.defines_->find(symbol)) != target_.defines_->end())
+			else if (target_.depth_ < 100 && (macro = target_.defines_->find(symbol)) != target_.defines_->end())
 			{
 				preproc_define const &val = macro->second;
 				size_t nb_arg = strings_.size() - token.stack_pos - 1;
