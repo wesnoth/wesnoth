@@ -3081,12 +3081,11 @@ void display::invalidate_animations()
 			}
 		}
 	}
-	fake_unit_manager::range unit_list = fake_unit_man_->get_unit_range();
 
 	BOOST_FOREACH(const unit & u, dc_->units()) {
 		u.anim_comp().refresh();
 	}
-	BOOST_FOREACH(const unit* u, unit_list) {
+	BOOST_FOREACH(const unit* u, *fake_unit_man_) {
 		u->anim_comp().refresh();
 	}
 
@@ -3096,7 +3095,7 @@ void display::invalidate_animations()
 		BOOST_FOREACH(const unit & u, dc_->units()) {
 			new_inval |=  u.anim_comp().invalidate(*this);
 		}
-		BOOST_FOREACH(const unit* u, unit_list) {
+		BOOST_FOREACH(const unit* u, *fake_unit_man_) {
 			new_inval |=  u->anim_comp().invalidate(*this);
 		}
 	}while(new_inval);

@@ -257,7 +257,7 @@ void game_display::draw_invalidated()
 
 	unit_drawer drawer = unit_drawer(*this);
 
-	BOOST_FOREACH(const unit* temp_unit, fake_unit_man_->get_unit_range()) {
+	BOOST_FOREACH(const unit* temp_unit, *fake_unit_man_) {
 		const map_location& loc = temp_unit->get_location();
 		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
 		if (invalidated_.find(loc) != invalidated_.end()

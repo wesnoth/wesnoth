@@ -17,8 +17,6 @@
 
 #include <deque>
 
-#include <boost/range/iterator_range.hpp>
-
 class display;
 class unit;
 class fake_unit_ptr;
@@ -31,9 +29,14 @@ public:
 	friend class fake_unit_ptr;
 
 	typedef unit const * internal_ptr_type;
-	typedef boost::iterator_range<std::deque<internal_ptr_type>::const_iterator> range;
+	typedef std::deque<internal_ptr_type>::const_iterator iterator;
+	typedef std::deque<internal_ptr_type>::const_iterator const_iterator;
 
-	range get_unit_range() const { return boost::make_iterator_range(fake_units_.begin(), fake_units_.end()); }
+	iterator begin() { return fake_units_.begin(); }
+	iterator end() { return fake_units_.end(); }
+
+	const_iterator begin() const { return fake_units_.begin(); }
+	const_iterator end() const { return fake_units_.end(); }
 
 private:
 	/** Temporarily place a unit on map (moving: can overlap others).
