@@ -391,7 +391,6 @@ void hotkey_preferences_dialog::set_hotkey_menu(bool keep_viewport) {
 	if (!keep_viewport) {
 		active_hotkeys->sort_by(0);
 		active_hotkeys->reset_selection();
-		selected_command_ = active_hotkeys->selection();
 	} else {
 		active_hotkeys->move_selection_keeping_viewport(selected_command_);
 	    // !hide and thus redraw only the current tab_'s items
@@ -399,6 +398,7 @@ void hotkey_preferences_dialog::set_hotkey_menu(bool keep_viewport) {
 		add_button_.hide(false);
 		clear_button_.hide(false);
 	}
+	selected_command_ = active_hotkeys->selection();
 	utils::string_map symbols;
 	symbols["hotkey_description"] =
 			hotkey::get_description((*commands)[selected_command_]);
@@ -445,9 +445,6 @@ void hotkey_preferences_dialog::set_selection(int index) {
 		break;
 	case hotkey::SCOPE_EDITOR:
 		hotkey::set_scope_active(hotkey::SCOPE_EDITOR);
-		break;
-	case hotkey::SCOPE_COUNT:
-		assert(false); // should not be reached
 		break;
 	}
 	set_hotkey_menu(true);
