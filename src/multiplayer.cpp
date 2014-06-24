@@ -790,31 +790,34 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 	// None of the other parameters need to be set, as their creation values above are good enough for CL mode.
 	// In particular, we do not want to use the preferences values.
 
-	// Override era, faction (side) and scenario if set on the commandline
-	if (cmdline_opts.multiplayer_era) parameters.mp_era = *cmdline_opts.multiplayer_era;
-	const config& era_cfg_preload = game_config.find_child("era", "id", parameters.mp_era);
+	// scope for config objects that will become invalid after reload
+	{
+		// Override era, faction (side) and scenario if set on the commandline
+		if (cmdline_opts.multiplayer_era)
+			parameters.mp_era = *cmdline_opts.multiplayer_era;
+		const config& era_cfg_preload = game_config.find_child("era", "id", parameters.mp_era);
+		if (!era_cfg_preload) {
+			std::cerr << "Could not find era '" << parameters.mp_era << "'\n";
+			return;
+		}
 
-	if (!era_cfg_preload) {
-		std::cerr << "Could not find era '" << parameters.mp_era << "'\n";
-		return;
-	}
-	if (cmdline_opts.multiplayer_scenario) parameters.name = *cmdline_opts.multiplayer_scenario;
-	const config &level_preload = game_config.find_child("multiplayer", "id", parameters.name);
-	if (!level_preload) {
-		std::cerr << "Could not find scenario '" << parameters.name << "'\n";
-		return;
-	}
+		if (cmdline_opts.multiplayer_scenario)
+			parameters.name = *cmdline_opts.multiplayer_scenario;
+		const config &level_preload = game_config.find_child("multiplayer", "id", parameters.name);
+		if (!level_preload) {
+			std::cerr << "Could not find scenario '" << parameters.name << "'\n";
+			return;
+		}
 
-	game_classification classification;
-	classification.campaign_type = game_classification::MULTIPLAYER;
-	classification.scenario_define = level_preload["define"].str();
-	classification.era_define = era_cfg_preload["define"].str();
-	resources::config_manager->load_game_config_for_game(classification);
+		game_classification classification;
+		classification.campaign_type = game_classification::MULTIPLAYER;
+		classification.scenario_define = level_preload["define"].str();
+		classification.era_define = era_cfg_preload["define"].str();
+		resources::config_manager->load_game_config_for_game(classification);
+	}
 	
-	const config& era_cfg = classification.era_define.empty() ? era_cfg_preload :
-			resources::config_manager->game_config().find_child("era", "id", parameters.mp_era);	
-	const config& level = classification.scenario_define.empty() ? level_preload : 
-			resources::config_manager->game_config().find_child("multiplayer", "id", parameters.name);
+	const config& era_cfg = resources::config_manager->game_config().find_child("era", "id", parameters.mp_era);	
+	const config& level = resources::config_manager->game_config().find_child("multiplayer", "id", parameters.name);
 
 	if (cmdline_opts.multiplayer_side) {
 		for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator
