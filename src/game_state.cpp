@@ -14,11 +14,16 @@
 
 #include "game_state.hpp"
 
+#include "game_data.hpp"
+#include "loadscreen.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "pathfind/teleport.hpp"
+#include "game_preferences.hpp"
+#include "random_new_deterministic.hpp"
 
 #include <boost/foreach.hpp>
+#include <SDL_timer.h>
 
 #include <algorithm>
 #include <set>
@@ -32,7 +37,8 @@ game_state::game_state(const config & level, const config & game_config) :
 	gamedata_(level_),
 	board_(game_config,level_),
 	tod_manager_(level_),
-	pathfind_manager_()
+	pathfind_manager_(),
+	first_human_team_(-1)
 {}
 
 game_state::~game_state() {}
@@ -106,4 +112,80 @@ void game_state::place_sides_in_preferred_locations()
 			LOG_NG << "placing side " << i->side << " at " << i->pos << std::endl;
 		}
 	}
+}
+
+static std::string get_unique_saveid(const config& cfg, std::set<std::string>& seen_save_ids)
+{
+	std::string save_id = cfg["save_id"];
+
+	if(save_id.empty()) {
+		save_id = cfg["id"].str();
+	}
+
+	if(save_id.empty()) {
+		save_id="Unknown";
+	}
+
+	// Make sure the 'save_id' is unique
+	while(seen_save_ids.count(save_id)) {
+		save_id += "_";
+	}
+
+	return save_id;
+}
+
+void game_state::init(const int ticks, const config & replay_start)
+{
+	if (level_["modify_placing"].to_bool()) {
+		LOG_NG << "modifying placing..." << std::endl;
+		place_sides_in_preferred_locations();
+	}
+
+	LOG_NG << "initialized time of day regions... "    << (SDL_GetTicks() - ticks) << std::endl;
+	BOOST_FOREACH(const config &t, level_.child_range("time_area")) {
+		tod_manager_.add_time_area(board_.map(),t);
+	}
+
+	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - ticks) << std::endl;
+	loadscreen::start_stage("init teams");
+
+	board_.teams_.resize(level_.child_count("side"));
+
+	std::set<std::string> seen_save_ids;
+
+	std::vector<team_builder_ptr> team_builders;
+
+	int team_num = 0;
+	BOOST_FOREACH(const config &side, level_.child_range("side"))
+	{
+		std::string save_id = get_unique_saveid(side, seen_save_ids);
+		seen_save_ids.insert(save_id);
+		if (first_human_team_ == -1) {
+			const std::string &controller = side["controller"];
+			if (controller == "human" &&
+			    side["id"] == preferences::login()) {
+				first_human_team_ = team_num;
+			} else if (controller == "human") {
+				first_human_team_ = team_num;
+			}
+		}
+		team_builder_ptr tb_ptr = gamedata_.create_team_builder(side,
+			save_id, board_.teams_, level_, *board_.map_, board_.units_, replay_start);
+		++team_num;
+		gamedata_.build_team_stage_one(tb_ptr);
+		team_builders.push_back(tb_ptr);
+	}
+	{
+		//sync traits of start units and the random start time.
+		random_new::set_random_determinstic deterministic(gamedata_.rng());
+
+		tod_manager_.resolve_random(*random_new::generator);
+
+		BOOST_FOREACH(team_builder_ptr tb_ptr, team_builders)
+		{
+			gamedata_.build_team_stage_two(tb_ptr);
+		}
+	}
+
+	pathfind_manager_.reset(new pathfind::manager(level_));
 }

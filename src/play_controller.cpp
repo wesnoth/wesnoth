@@ -41,7 +41,6 @@
 #include "pathfind/teleport.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
-#include "random_new_deterministic.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
 #include "saved_game.hpp"
@@ -117,7 +116,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	undo_stack_(new actions::undo_list(level.child("undo_stack"))),
 	whiteboard_manager_(),
 	loading_game_(level["playing_team"].empty() == false),
-	first_human_team_(-1),
 	player_number_(1),
 	first_player_(level["playing_team"].to_int() + 1),
 	start_turn_(gamestate_.tod_manager_.turn()), // gamestate_.tod_manager_ constructed above
@@ -187,56 +185,9 @@ void play_controller::init(CVideo& video){
 	// Has to be done before registering any events!
 	events_manager_.reset(new game_events::manager(level_));
 
-	if (level_["modify_placing"].to_bool()) {
-		LOG_NG << "modifying placing..." << std::endl;
-		gamestate_.place_sides_in_preferred_locations();
-	}
-
-	BOOST_FOREACH(const config &t, level_.child_range("time_area")) {
-		gamestate_.tod_manager_.add_time_area(gamestate_.board_.map(),t);
-	}
-
-	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - ticks_) << std::endl;
-	loadscreen::start_stage("init teams");
-
-	resources::teams->resize(level_.child_count("side"));
-
-
-	std::set<std::string> seen_save_ids;
-
-	std::vector<team_builder_ptr> team_builders;
-
-	int team_num = 0;
-	BOOST_FOREACH(const config &side, level_.child_range("side"))
-	{
-		std::string save_id = get_unique_saveid(side, seen_save_ids);
-		seen_save_ids.insert(save_id);
-		if (first_human_team_ == -1) {
-			const std::string &controller = side["controller"];
-			if (controller == "human" &&
-			    side["id"] == preferences::login()) {
-				first_human_team_ = team_num;
-			} else if (controller == "human") {
-				first_human_team_ = team_num;
-			}
-		}
-		team_builder_ptr tb_ptr = gamestate_.gamedata_.create_team_builder(side,
-			save_id, gamestate_.board_.teams_, level_, *gamestate_.board_.map_, gamestate_.board_.units_, saved_game_.replay_start());
-		++team_num;
-		gamestate_.gamedata_.build_team_stage_one(tb_ptr);
-		team_builders.push_back(tb_ptr);
-	}
-	{
-		//sync traits of start units and the random start time.
-		random_new::set_random_determinstic deterministic(gamestate_.gamedata_.rng());
-
-		gamestate_.tod_manager_.resolve_random(*random_new::generator);
-
-		BOOST_FOREACH(team_builder_ptr tb_ptr, team_builders)
-		{
-			gamestate_.gamedata_.build_team_stage_two(tb_ptr);
-		}
-	}
+	LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks_) << std::endl;
+	gamestate_.init(ticks_, saved_game_.replay_start());
+	resources::tunnels = gamestate_.pathfind_manager_.get();
 
 	// mouse_handler expects at least one team for linger mode to work.
 	if (gamestate_.board_.teams().empty()) end_level_data_.transient.linger_mode = false;
@@ -249,10 +200,8 @@ void play_controller::init(CVideo& video){
 	loadscreen::start_stage("init theme");
 	const config &theme_cfg = get_theme(game_config_, level_["theme"]);
 
-	LOG_NG << "initializing pathfinding and whiteboard..." << (SDL_GetTicks() - ticks_) << std::endl;
-	gamestate_.pathfind_manager_.reset(new pathfind::manager(level_));
+	LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks_) << std::endl;
 	whiteboard_manager_.reset(new wb::manager());
-	resources::tunnels = gamestate_.pathfind_manager_.get();
 	resources::whiteboard = whiteboard_manager_;
 
 	LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks_) << std::endl;
@@ -272,8 +221,8 @@ void play_controller::init(CVideo& video){
 
 	LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks_) << std::endl;
 
-	if(first_human_team_ != -1) {
-		gui_->set_team(first_human_team_);
+	if(gamestate_.first_human_team_ != -1) {
+		gui_->set_team(gamestate_.first_human_team_);
 	}
 	else if (is_observer())
 	{
@@ -967,27 +916,6 @@ void play_controller::tab()
 	} //switch(mode)
 
 	menu_handler_.get_textbox().tab(dictionary);
-}
-
-
-std::string play_controller::get_unique_saveid(const config& cfg, std::set<std::string>& seen_save_ids)
-{
-	std::string save_id = cfg["save_id"];
-
-	if(save_id.empty()) {
-		save_id = cfg["id"].str();
-	}
-
-	if(save_id.empty()) {
-		save_id="Unknown";
-	}
-
-	// Make sure the 'save_id' is unique
-	while(seen_save_ids.count(save_id)) {
-		save_id += "_";
-	}
-
-	return save_id;
 }
 
 team& play_controller::current_team()

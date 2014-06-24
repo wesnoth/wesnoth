@@ -32,11 +32,15 @@ struct game_state {
 	tod_manager tod_manager_;
 	boost::scoped_ptr<pathfind::manager> pathfind_manager_;
 
+	int first_human_team_; //needed to initialize the viewpoint during setup
+
 	game_state(const config & level, const config & game_config);
 
 	~game_state();
 
 	void place_sides_in_preferred_locations();
+
+	void init(int ticks, const config & replay_start);
 };
 
 #endif

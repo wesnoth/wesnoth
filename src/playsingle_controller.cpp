@@ -101,8 +101,8 @@ void playsingle_controller::init_gui(){
 	LOG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks_) << "\n";
 	play_controller::init_gui();
 
-	if(first_human_team_ != -1) {
-		gui_->scroll_to_tile(gamestate_.board_.map().starting_position(first_human_team_ + 1), game_display::WARP);
+	if(gamestate_.first_human_team_ != -1) {
+		gui_->scroll_to_tile(gamestate_.board_.map().starting_position(gamestate_.first_human_team_ + 1), game_display::WARP);
 	}
 	gui_->scroll_to_tile(gamestate_.board_.map().starting_position(1), game_display::WARP);
 

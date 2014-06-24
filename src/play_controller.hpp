@@ -209,8 +209,6 @@ protected:
 	void enter_textbox();
 	void tab();
 
-	std::string get_unique_saveid(const config& cfg, std::set<std::string>& seen_save_ids);
-
 	team& current_team();
 	const team& current_team() const;
 
@@ -251,7 +249,6 @@ protected:
 	//instead of starting a fresh one. Gets reset to false after init_side
 	bool loading_game_;
 
-	int first_human_team_;
 	int player_number_;
 	int first_player_;
 	unsigned int start_turn_;
