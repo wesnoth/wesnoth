@@ -93,16 +93,6 @@ static void clear_resources()
 
 }
 
-game_state::game_state(const config & level, const config & game_config) :
-	level_(level),
-	gamedata_(level_),
-	board_(game_config,level_),
-	tod_manager_(level_),
-	pathfind_manager_()
-{}
-
-game_state::~game_state() {}
-
 play_controller::play_controller(const config& level, saved_game& state_of_game,
 		const int ticks, const config& game_config,
 		CVideo& video, bool skip_replay) :

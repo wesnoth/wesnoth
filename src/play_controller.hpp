@@ -18,8 +18,7 @@
 
 #include "controller_base.hpp"
 #include "game_end_exceptions.hpp"
-#include "game_board.hpp"
-#include "game_data.hpp"
+#include "game_state.hpp"
 #include "help.hpp"
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
@@ -71,17 +70,7 @@ namespace wb {
 } // namespace wb
 
 // Holds gamestate related objects
-struct game_state {
-	const config& level_;
-	game_data gamedata_;
-	game_board board_;
-	tod_manager tod_manager_;
-	boost::scoped_ptr<pathfind::manager> pathfind_manager_;
-
-	game_state(const config & level, const config & game_config);
-
-	~game_state();
-};
+struct game_state;
 
 class play_controller : public controller_base, public events::observer, public savegame::savegame_config
 {
