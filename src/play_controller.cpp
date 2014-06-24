@@ -182,9 +182,14 @@ void play_controller::init(CVideo& video){
 	loadscreen::start_stage("load level");
 	recorder.set_skip(false);
 
+	// This *needs* to be created before the show_intro and show_map_scene
+	// as that functions use the manager state_of_game
+	// Has to be done before registering any events!
+	events_manager_.reset(new game_events::manager(level_));
+
 	if (level_["modify_placing"].to_bool()) {
 		LOG_NG << "modifying placing..." << std::endl;
-		place_sides_in_preferred_locations();
+		gamestate_.place_sides_in_preferred_locations();
 	}
 
 	BOOST_FOREACH(const config &t, level_.child_range("time_area")) {
@@ -196,10 +201,6 @@ void play_controller::init(CVideo& video){
 
 	resources::teams->resize(level_.child_count("side"));
 
-	// This *needs* to be created before the show_intro and show_map_scene
-	// as that functions use the manager state_of_game
-	// Has to be done before registering any events!
-	events_manager_.reset(new game_events::manager(level_));
 
 	std::set<std::string> seen_save_ids;
 
@@ -320,76 +321,6 @@ void play_controller::init_managers(){
 
 	halo_manager_.reset(new halo::manager(*gui_));
 	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << std::endl;
-}
-
-static int placing_score(const config& side, const gamemap& map, const map_location& pos)
-{
-	int positions = 0, liked = 0;
-	const t_translation::t_list terrain = t_translation::read_list(side["terrain_liked"]);
-
-	for(int i = pos.x-8; i != pos.x+8; ++i) {
-		for(int j = pos.y-8; j != pos.y+8; ++j) {
-			const map_location pos(i,j);
-			if(map.on_board(pos)) {
-				++positions;
-				if(std::count(terrain.begin(),terrain.end(),map[pos])) {
-					++liked;
-				}
-			}
-		}
-	}
-
-	return (100*liked)/positions;
-}
-
-struct placing_info {
-
-	placing_info() :
-		side(0),
-		score(0),
-		pos()
-	{
-	}
-
-	int side, score;
-	map_location pos;
-};
-
-static bool operator<(const placing_info& a, const placing_info& b) { return a.score > b.score; }
-
-void play_controller::place_sides_in_preferred_locations()
-{
-	std::vector<placing_info> placings;
-
-	int num_pos = gamestate_.board_.map().num_valid_starting_positions();
-
-	int side_num = 1;
-	BOOST_FOREACH(const config &side, level_.child_range("side"))
-	{
-		for(int p = 1; p <= num_pos; ++p) {
-			const map_location& pos = gamestate_.board_.map().starting_position(p);
-			int score = placing_score(side, gamestate_.board_.map(), pos);
-			placing_info obj;
-			obj.side = side_num;
-			obj.score = score;
-			obj.pos = pos;
-			placings.push_back(obj);
-		}
-		++side_num;
-	}
-
-	std::sort(placings.begin(),placings.end());
-	std::set<int> placed;
-	std::set<map_location> positions_taken;
-
-	for (std::vector<placing_info>::const_iterator i = placings.begin(); i != placings.end() && int(placed.size()) != side_num - 1; ++i) {
-		if(placed.count(i->side) == 0 && positions_taken.count(i->pos) == 0) {
-			placed.insert(i->side);
-			positions_taken.insert(i->pos);
-			gamestate_.board_.map_->set_starting_position(i->side,i->pos);
-			LOG_NG << "placing side " << i->side << " at " << i->pos << std::endl;
-		}
-	}
 }
 
 void play_controller::objectives(){

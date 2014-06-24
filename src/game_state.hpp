@@ -35,6 +35,8 @@ struct game_state {
 	game_state(const config & level, const config & game_config);
 
 	~game_state();
+
+	void place_sides_in_preferred_locations();
 };
 
 #endif
