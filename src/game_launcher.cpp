@@ -43,6 +43,7 @@
 #include "log.hpp"                      // for LOG_STREAM, logger, general, etc
 #include "map_exception.hpp"
 #include "multiplayer.hpp"              // for start_client, etc
+#include "multiplayer_create_engine.hpp"
 #include "network.hpp"
 #include "playcampaign.hpp"             // for play_game, etc
 #include "preferences.hpp"              // for disable_preferences_save, etc
@@ -95,10 +96,6 @@ static lg::log_domain log_network("network");
 
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
-
-static bool less_campaigns_rank(const config &a, const config &b) {
-	return a["rank"].to_int(1000) < b["rank"].to_int(1000);
-}
 
 game_launcher::game_launcher(const commandline_options& cmdline_opts, const char *appname) :
 	cmdline_opts_(cmdline_opts),
@@ -694,19 +691,13 @@ bool game_launcher::new_campaign()
 	state_ = saved_game();
 	state_.classification().campaign_type = game_classification::SCENARIO;
 
-	std::vector<config> campaigns;
-	BOOST_FOREACH(const config& campaign,
-		resources::config_manager->game_config().child_range("campaign")) {
+	mp::create_engine create_eng(disp(), state_);
+	create_eng.set_current_level_type(mp::level::SP_CAMPAIGN);
 
-		if (campaign["type"] != "mp") {
-			campaigns.push_back(campaign);
-		}
-	}
-
-	mark_completed_campaigns(campaigns);
-	std::stable_sort(campaigns.begin(),campaigns.end(),less_campaigns_rank);
-
-	if(campaigns.begin() == campaigns.end()) {
+	std::vector<mp::create_engine::level_ptr> campaigns(
+		create_eng.get_levels_by_type_unfiltered(mp::level::SP_CAMPAIGN));
+	
+	if (campaigns.empty()) {
 	  gui2::show_error_message(disp().video(),
 				  _("No campaigns are available.\n"));
 		return false;
@@ -743,7 +734,7 @@ bool game_launcher::new_campaign()
 		// checking for valid campaign name
 		for(size_t i = 0; i < campaigns.size(); ++i)
 		{
-			if (campaigns[i]["id"] == jump_to_campaign_.campaign_id_)
+			if (campaigns[i]->data()["id"] == jump_to_campaign_.campaign_id_)
 			{
 				campaign_num = i;
 				break;
@@ -758,78 +749,41 @@ bool game_launcher::new_campaign()
 		}
 	}
 
-	const config &campaign = campaigns[campaign_num];
-	state_.classification().campaign = campaign["id"].str();
-	state_.classification().abbrev = campaign["abbrev"].str();
+	create_eng.set_current_level(campaign_num);
 
 	std::string random_mode = use_deterministic_mode ? "deterministic" : "";
 	state_.carryover_sides_start["random_mode"] = random_mode;
 	state_.classification().random_mode = random_mode;
 
-	// we didn't specify in the command line the scenario to be started
-	if (jump_to_campaign_.scenario_id_.empty())
-		state_.carryover_sides_start["next_scenario"] = campaign["first_scenario"].str();
-	else
-		state_.carryover_sides_start["next_scenario"] = jump_to_campaign_.scenario_id_;
+	std::string selected_difficulty = create_eng.select_campaign_difficulty(jump_to_campaign_.difficulty_);
 
-	state_.classification().end_text = campaign["end_text"].str();
-	state_.classification().end_text_duration = campaign["end_text_duration"];
-
-	const std::string difficulty_descriptions = campaign["difficulty_descriptions"];
-	std::vector<std::string> difficulty_options = utils::split(difficulty_descriptions, ';');
-
-	const std::vector<std::string> difficulties = utils::split(campaign["difficulties"]);
-
-	if(difficulties.empty() == false) {
-		int difficulty = 0;
-		if (jump_to_campaign_.difficulty_ == -1){
-			if(difficulty_options.size() != difficulties.size()) {
-				difficulty_options.resize(difficulties.size());
-				std::copy(difficulties.begin(),difficulties.end(),difficulty_options.begin());
-			}
-
-			gui2::tcampaign_difficulty dlg(difficulty_options);
-			dlg.show(disp().video());
-
-			if(dlg.selected_index() == -1) {
-				if (jump_to_campaign_.campaign_id_.empty() == false)
-				{
-					jump_to_campaign_.campaign_id_ = "";
-				}
-				// canceled difficulty dialog, relaunch the campaign selection dialog
-				return new_campaign();
-			}
-			difficulty = dlg.selected_index();
-		}
-		else
+	if (selected_difficulty == "FAIL") return false;
+	if (selected_difficulty == "CANCEL") {
+		if (jump_to_campaign_.campaign_id_.empty() == false)
 		{
-			if (jump_to_campaign_.difficulty_
-					> static_cast<int>(difficulties.size()))
-			{
-				std::cerr << "incorrect difficulty number: [" <<
-					jump_to_campaign_.difficulty_ << "]. maximum is [" <<
-					difficulties.size() << "].\n";
-				return false;
-			}
-			else if (jump_to_campaign_.difficulty_ < 1)
-			{
-				std::cerr << "incorrect difficulty number: [" <<
-					jump_to_campaign_.difficulty_ << "]. minimum is [1].\n";
-				return false;
-			}
-			else
-			{
-				difficulty = jump_to_campaign_.difficulty_ - 1;
-			}
+			jump_to_campaign_.campaign_id_ = "";
 		}
-
-		state_.classification().difficulty = difficulties[difficulty];
+		// canceled difficulty dialog, relaunch the campaign selection dialog
+		return new_campaign();
 	}
 
-	state_.classification().campaign_define = campaign["define"].str();
-	state_.classification().campaign_xtra_defines = utils::split(campaign["extra_defines"]);
+	create_eng.prepare_for_campaign(selected_difficulty);
 
-	return true;
+	create_eng.prepare_for_new_level();
+
+	if (jump_to_campaign_.scenario_id_.empty())
+		state_.carryover_sides_start["next_scenario"] = create_eng.current_level().data()["id"].str();
+	else {
+		state_.carryover_sides_start["next_scenario"] = jump_to_campaign_.scenario_id_;
+		create_eng.current_level().set_data(
+			resources::config_manager->game_config().find_child(
+			lexical_cast<std::string> (game_classification::MULTIPLAYER),
+			"id", jump_to_campaign_.scenario_id_));
+	}
+
+	state_.mp_settings().mp_era = "era_blank";
+
+	return enter_configure_mode(disp(), resources::config_manager->game_config(), state_, true);
 }
 
 std::string game_launcher::jump_to_campaign_id() const
@@ -842,7 +796,7 @@ bool game_launcher::goto_campaign()
 	if(jump_to_campaign_.jump_){
 		if(new_campaign()) {
 			jump_to_campaign_.jump_ = false;
-			launch_game(game_launcher::RELOAD_DATA);
+			launch_game(NO_RELOAD_DATA);
 		}else{
 			jump_to_campaign_.jump_ = false;
 			return false;

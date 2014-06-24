@@ -229,7 +229,7 @@ void create::process_event()
 			if (engine_.current_level_type() == level::CAMPAIGN ||
 				engine_.current_level_type() == level::SP_CAMPAIGN) {
 
-				std::string difficulty = select_campaign_difficulty();
+				std::string difficulty = engine_.select_campaign_difficulty();
 				if (difficulty == "CANCEL") {
 					return;
 				}
@@ -519,35 +519,6 @@ void create::update_mod_menu_images()
 		}
 		mods_menu_.change_item(i, 0, val.str());
 	}
-}
-
-std::string create::select_campaign_difficulty()
-{
-	const std::string difficulty_descriptions =
-		engine_.current_level().data()["difficulty_descriptions"];
-	std::vector<std::string> difficulty_options =
-		utils::split(difficulty_descriptions, ';');
-	const std::vector<std::string> difficulties =
-		utils::split(engine_.current_level().data()["difficulties"]);
-
-	if(!difficulties.empty()) {
-		int difficulty = 0;
-		if(difficulty_options.size() != difficulties.size()) {
-			difficulty_options = difficulties;
-		}
-
-		gui2::tcampaign_difficulty dlg(difficulty_options);
-		dlg.show(disp().video());
-
-		if(dlg.selected_index() == -1) {
-			return "CANCEL";
-		}
-		difficulty = dlg.selected_index();
-
-		return difficulties[difficulty];
-	}
-
-	return "";
 }
 
 void create::hide_children(bool hide)

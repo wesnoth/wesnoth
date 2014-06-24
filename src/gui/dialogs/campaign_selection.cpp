@@ -140,8 +140,9 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 				= find_widget<tmulti_page>(&window, "campaign_details", false);
 
 		unsigned id = 0;
-		FOREACH(const AUTO & campaign, campaigns_)
+		FOREACH(const AUTO & level, campaigns_)
 		{
+			const config& campaign = level->data();
 
 			/*** Add tree item ***/
 			tree_group_field["label"] = campaign["icon"];
@@ -207,8 +208,9 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 		tmulti_page& multi_page
 				= find_widget<tmulti_page>(&window, "campaign_details", false);
 
-		FOREACH(const AUTO & campaign, campaigns_)
+		FOREACH(const AUTO & level, campaigns_)
 		{
+			const config& campaign = level->data();
 
 			/*** Add list item ***/
 			string_map list_item;

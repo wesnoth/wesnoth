@@ -14,8 +14,10 @@
 #include "multiplayer_create_engine.hpp"
 
 #include "game_config_manager.hpp"
+#include "game_launcher.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
+#include "gui/dialogs/campaign_difficulty.hpp"
 #include "filesystem.hpp"
 #include "formula_string_utils.hpp"
 #include "log.hpp"
@@ -67,6 +69,11 @@ bool contains_ignore_case(const std::string& str1, const std::string& str2)
 
 namespace mp {
 
+static bool less_campaigns_rank(const create_engine::level_ptr& a, const create_engine::level_ptr& b) {
+	return a->data()["rank"].to_int(1000) < b->data()["rank"].to_int(1000);
+}
+
+
 level::level(const config& data) :
 	data_(data)
 {
@@ -98,6 +105,11 @@ void level::set_data(const config& data)
 }
 
 const config& level::data() const
+{
+	return data_;
+}
+
+config& level::data()
 {
 	return data_;
 }
@@ -306,6 +318,11 @@ void campaign::set_metadata()
 	}
 }
 
+void campaign::mark_if_completed()
+{
+	data_["completed"] = preferences::is_campaign_completed(data_["id"]);
+}
+
 std::string campaign::id() const
 {
 	return id_;
@@ -344,14 +361,16 @@ create_engine::create_engine(game_display& disp, saved_game& state) :
 	eras_(),
 	mods_(),
 	state_(state),
+	disp_(disp),
 	dependency_manager_(resources::config_manager->game_config(), disp.video()),
 	generator_(NULL)
 {
 	DBG_MP << "restoring game config\n";
 
 	// Restore game config for multiplayer.
+	game_classification::CAMPAIGN_TYPE type = state_.classification().campaign_type;
 	state_ = saved_game();
-	state_.classification().campaign_type = game_classification::MULTIPLAYER;
+	state_.classification().campaign_type = type;
 	resources::config_manager->
 		load_game_config_for_game(state_.classification());
 
@@ -467,6 +486,74 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 		resources::config_manager->game_config().find_child(
 		lexical_cast<std::string> (game_classification::MULTIPLAYER),
 		"id", current_level().data()["first_scenario"]));
+}
+
+/**
+ * select_campaign_difficulty
+ *
+ * Launches difficulty selection gui and returns selected difficulty name.
+ *
+ * The gui can be bypassed by supplying a number
+ * from 1 to the number of difficulties available,
+ * corresponding to a choice of difficulty.
+ * This is useful for specifying difficulty via command line.
+ *
+ * @param	set_value Preselected difficulty number. The default -1 launches the gui.
+ * @return	Selected difficulty. Returns "FAIL" if set_value is invalid,
+ *	and "CANCEL" if the gui is cancelled.
+ */
+std::string create_engine::select_campaign_difficulty(int set_value)
+{
+	const std::string difficulty_descriptions =
+		current_level().data()["difficulty_descriptions"];
+	std::vector<std::string> difficulty_options =
+		utils::split(difficulty_descriptions, ';');
+	const std::vector<std::string> difficulties =
+		utils::split(current_level().data()["difficulties"]);
+
+	if(difficulties.empty()) return "";
+
+	int difficulty = 0;
+	if (set_value != -1)
+	{
+		// user-specified campaign to jump to. con
+		if (set_value
+				> static_cast<int>(difficulties.size()))
+		{
+			std::cerr << "incorrect difficulty number: [" <<
+				set_value << "]. maximum is [" <<
+				difficulties.size() << "].\n";
+			return "FAIL";
+		}
+		else if (set_value < 1)
+		{
+			std::cerr << "incorrect difficulty number: [" <<
+				set_value << "]. minimum is [1].\n";
+			return "FAIL";
+		}
+		else
+		{
+			difficulty = set_value - 1;
+		}
+	}
+	else
+	{
+		if(difficulty_options.size() != difficulties.size())
+		{
+			difficulty_options = difficulties;
+		}
+
+		// show gui
+		gui2::tcampaign_difficulty dlg(difficulty_options);
+		dlg.show(disp_.video());
+
+		if(dlg.selected_index() == -1)
+		{
+			return "CANCEL";
+		}
+		difficulty = dlg.selected_index();
+	}
+	return difficulties[difficulty];
 }
 
 void create_engine::prepare_for_saved_game()
@@ -913,8 +1000,10 @@ void create_engine::init_all_levels()
 			campaign_ptr new_sp_campaign(new campaign(data));
 			sp_campaigns_.push_back(new_sp_campaign);
 			sp_campaigns_.back()->set_metadata();
+			sp_campaigns_.back()->mark_if_completed();
 		}
 	}
+	std::stable_sort(sp_campaigns_.begin(),sp_campaigns_.end(),less_campaigns_rank);
 }
 
 void create_engine::init_extras(const MP_EXTRA extra_type)

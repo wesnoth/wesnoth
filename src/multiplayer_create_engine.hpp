@@ -50,6 +50,7 @@ public:
 
 	void set_data(const config& data);
 	const config& data() const;
+	config& data();
 
 protected:
 	config data_;
@@ -136,6 +137,8 @@ public:
 
 	void set_metadata();
 
+	void mark_if_completed();
+
 	std::string id() const;
 
 	bool allow_era_choice() const;
@@ -184,6 +187,8 @@ public:
 	void prepare_for_scenario();
 	void prepare_for_campaign(const std::string& difficulty);
 	void prepare_for_saved_game();
+	
+	std::string select_campaign_difficulty(int set_value = -1);
 
 	void apply_level_filter(const std::string& name);
 	void apply_level_filter(int players);
@@ -226,6 +231,7 @@ public:
 	const mp_game_settings& get_parameters();
 
 	saved_game& get_state();
+
 private:
 	create_engine(const create_engine&);
 	void operator=(const create_engine&);
@@ -271,6 +277,8 @@ private:
 	std::vector<extras_metadata_ptr> mods_;
 
 	saved_game& state_;
+
+	game_display& disp_;
 
 	depcheck::manager dependency_manager_;
 
