@@ -248,7 +248,6 @@ protected:
 	//whiteboard manager
 	boost::shared_ptr<wb::manager> whiteboard_manager_;
 
-	const unit_type::experience_accelerator xp_mod_;
 	//if a team is specified whose turn it is, it means we're loading a game
 	//instead of starting a fresh one. Gets reset to false after init_side
 	bool loading_game_;
