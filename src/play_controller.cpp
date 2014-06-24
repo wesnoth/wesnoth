@@ -242,6 +242,9 @@ void play_controller::init(CVideo& video){
 	browse_ = true;
 
 	init_managers();
+#if 0
+	// [era] and [modification] childs don't exist anymore in level_
+	// the events are now added in saved_game::expand_mp_events
 	// add era & mod events for MP game
 	if (const config &era_cfg = level_.child("era")) {
 		game_events::add_events(era_cfg.child_range("event"), "era_events");
@@ -256,6 +259,7 @@ void play_controller::init(CVideo& video){
 			}
 		}
 	}
+#endif
 	loadscreen::global_loadscreen->start_stage("start game");
 	loadscreen_manager->reset();
 }
