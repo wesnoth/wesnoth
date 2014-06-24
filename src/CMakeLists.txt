@@ -700,7 +700,6 @@ set(wesnoth-main_SRC
 	controller_base.cpp
 	desktop_util.cpp
 	dialogs.cpp
-	drawable_unit.cpp
 	editor/action/action.cpp
 	editor/action/action_item.cpp
 	editor/action/action_label.cpp
@@ -894,6 +893,7 @@ set(wesnoth-main_SRC
 	unit_animation.cpp
 	unit_animation_component.cpp
 	unit_display.cpp
+	unit_drawer.cpp
 	unit_formula_manager.cpp
 	unit_frame.cpp
 	unit_helper.cpp

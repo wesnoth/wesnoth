@@ -34,7 +34,6 @@ Growl_Delegate growl_obj;
 #endif
 
 #include "cursor.hpp"
-#include "drawable_unit.hpp"
 #include "fake_unit_manager.hpp"
 #include "fake_unit_ptr.hpp"
 #include "game_board.hpp"
@@ -49,6 +48,7 @@ Growl_Delegate growl_obj;
 #include "tod_manager.hpp"
 #include "sound.hpp"
 #include "unit.hpp"
+#include "unit_drawer.hpp"
 #include "whiteboard/manager.hpp"
 #ifdef _WIN32
 #include "windows_tray_notification.hpp"

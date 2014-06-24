@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "drawable_unit.hpp"
+#include "unit_drawer.hpp"
 
 #include "display.hpp"
 #include "display_context.hpp"

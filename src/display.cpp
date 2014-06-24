@@ -19,7 +19,6 @@
 
 #include "arrow.hpp"
 #include "cursor.hpp"
-#include "drawable_unit.hpp"
 #include "display.hpp"
 #include "fake_unit_manager.hpp"
 #include "game_preferences.hpp"
@@ -44,6 +43,7 @@
 #include "tod_manager.hpp"
 #include "unit.hpp"
 #include "unit_animation_component.hpp"
+#include "unit_drawer.hpp"
 #include "whiteboard/manager.hpp"
 
 #include "SDL_image.h"
