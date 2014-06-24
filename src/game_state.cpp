@@ -189,3 +189,19 @@ void game_state::init(const int ticks, const config & replay_start)
 
 	pathfind_manager_.reset(new pathfind::manager(level_));
 }
+
+config game_state::to_config() const
+{
+	config cfg;
+
+	board_.write_config(cfg);
+
+	cfg.merge_with(tod_manager_.to_config());
+
+	//write out the current state of the map
+	cfg.merge_with(pathfind_manager_->to_config());
+
+	gamedata_.write_snapshot(cfg);
+
+	return cfg;
+}

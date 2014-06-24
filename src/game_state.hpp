@@ -41,6 +41,8 @@ struct game_state {
 	void place_sides_in_preferred_locations();
 
 	void init(int ticks, const config & replay_start);
+
+	config to_config() const;
 };
 
 #endif

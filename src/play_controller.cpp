@@ -618,9 +618,7 @@ config play_controller::to_config() const
 	cfg["init_side_done"] = init_side_done_;
 	cfg.merge_attributes(level_);
 
-	gamestate_.board_.write_config(cfg);
-
-	cfg.merge_with(gamestate_.tod_manager_.to_config());
+	cfg.merge_with(gamestate_.to_config());
 
 	if(linger_) {
 		config endlevel;
@@ -632,9 +630,6 @@ config play_controller::to_config() const
 	BOOST_FOREACH(const config &tg, level_.child_range("terrain_graphics")) {
 		cfg.add_child("terrain_graphics", tg);
 	}
-
-	//write out the current state of the map
-	cfg.merge_with(gamestate_.pathfind_manager_->to_config());
 
 	config display;
 	gui_->write(display);
@@ -655,9 +650,6 @@ config play_controller::to_config() const
 
 		//TODO: move id_manager handling to play_controller
 	cfg["next_underlying_unit_id"] = str_cast(n_unit::id_manager::instance().get_save_id());
-
-
-	gamestate_.gamedata_.write_snapshot(cfg);
 
 	cfg.merge_attributes(saved_game_.classification().to_config());
 	return cfg;
