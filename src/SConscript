@@ -276,6 +276,7 @@ wesnoth_sources = Split("""
     game_classification.cpp
     game_config_manager.cpp
     game_controller.cpp
+    game_data.cpp
     game_display.cpp
     game_errors.cpp
     game_events/action_wml.cpp
@@ -286,7 +287,6 @@ wesnoth_sources = Split("""
     game_events/pump.cpp
     game_events/wmi_container.cpp
     game_preferences.cpp
-    gamestatus.cpp
     gui/auxiliary/canvas.cpp
     gui/auxiliary/event/dispatcher.cpp
     gui/auxiliary/event/distributor.cpp

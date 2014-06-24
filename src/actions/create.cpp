@@ -29,7 +29,7 @@
 #include "../game_display.hpp"
 #include "../game_events/pump.hpp"
 #include "../game_preferences.hpp"
-#include "../gamestatus.hpp"
+#include "../game_data.hpp"
 #include "../gettext.hpp"
 #include "../log.hpp"
 #include "../map.hpp"

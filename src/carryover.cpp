@@ -19,7 +19,7 @@
 #include "config.hpp"
 #include "team.hpp"
 #include "unit.hpp"
-#include "gamestatus.hpp"
+#include "game_data.hpp"
 #include <boost/foreach.hpp>
 #include <cassert>
 

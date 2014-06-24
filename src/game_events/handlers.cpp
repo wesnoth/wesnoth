@@ -24,7 +24,7 @@
 #include "pump.hpp"
 
 #include "../formula_string_utils.hpp"
-#include "../gamestatus.hpp"
+#include "../game_data.hpp"
 #include "../hotkey/hotkey_command.hpp"
 #include "../log.hpp"
 #include "../reports.hpp"

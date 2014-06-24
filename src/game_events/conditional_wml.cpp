@@ -21,7 +21,7 @@
 #include "conditional_wml.hpp"
 
 #include "../config.hpp"
-#include "../gamestatus.hpp"
+#include "../game_data.hpp"
 #include "../log.hpp"
 #include "../recall_list_manager.hpp"
 #include "../resources.hpp"

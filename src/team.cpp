@@ -22,7 +22,7 @@
 #include "ai/manager.hpp"
 #include "formula_string_utils.hpp"
 #include "game_events/pump.hpp"
-#include "gamestatus.hpp"
+#include "game_data.hpp"
 #include "map.hpp"
 #include "resources.hpp"
 #include "game_preferences.hpp"

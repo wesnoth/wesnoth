@@ -14,7 +14,7 @@
 
 #include "global.hpp"
 
-#include "gamestatus.hpp"
+#include "game_data.hpp"
 #include "log.hpp"
 #include "network.hpp"
 #include "persist_context.hpp"

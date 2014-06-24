@@ -19,7 +19,7 @@
 
 #include "global.hpp"
 
-#include "gamestatus.hpp"
+#include "game_data.hpp"
 
 #include "carryover.hpp"
 #include "filesystem.hpp"

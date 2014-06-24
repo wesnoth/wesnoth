@@ -31,7 +31,7 @@
 #include "serialization/parser.hpp" // for write()
 #include "utils/foreach.tpp"
 
-#include "../../gamestatus.hpp"
+#include "../../game_data.hpp"
 #include "../../recall_list_manager.hpp"
 #include "../../resources.hpp"
 #include "../../team.hpp"

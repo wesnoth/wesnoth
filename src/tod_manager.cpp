@@ -16,7 +16,7 @@
 
 #include "display_context.hpp"
 #include "formula_string_utils.hpp"
-#include "gamestatus.hpp"
+#include "game_data.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"

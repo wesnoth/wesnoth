@@ -24,7 +24,7 @@
 #include "variable.hpp"
 
 #include "formula_string_utils.hpp"
-#include "gamestatus.hpp"
+#include "game_data.hpp"
 #include "log.hpp"
 #include "resources.hpp"
 #include "unit.hpp"

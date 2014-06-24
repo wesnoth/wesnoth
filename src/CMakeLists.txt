@@ -743,6 +743,7 @@ set(wesnoth-main_SRC
 	game_classification.cpp
 	game_config_manager.cpp
 	game_controller.cpp
+	game_data.cpp
 	game_display.cpp
 	game_errors.cpp
 	game_events/action_wml.cpp
@@ -754,7 +755,6 @@ set(wesnoth-main_SRC
 	game_events/wmi_container.cpp
 	game_preferences.cpp
 	game_preferences_display.cpp
-	gamestatus.cpp
 	generic_event.cpp
 	gui/auxiliary/canvas.cpp
 	gui/auxiliary/log.cpp

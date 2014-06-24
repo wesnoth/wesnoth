@@ -27,7 +27,7 @@
 #include "dialogs.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
-#include "gamestatus.hpp"
+#include "game_data.hpp"
 #include "log.hpp"
 #include "map_label.hpp"
 #include "map_location.hpp"

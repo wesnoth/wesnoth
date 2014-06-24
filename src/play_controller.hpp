@@ -19,7 +19,7 @@
 #include "controller_base.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_board.hpp"
-#include "gamestatus.hpp"
+#include "game_data.hpp"
 #include "help.hpp"
 #include "menu_events.hpp"
 #include "mouse_events.hpp"

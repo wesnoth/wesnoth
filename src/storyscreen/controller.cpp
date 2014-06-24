@@ -29,7 +29,7 @@
 #include "display.hpp"
 #include "game_events/action_wml.hpp"
 #include "game_events/conditional_wml.hpp"
-#include "gamestatus.hpp"
+#include "game_data.hpp"
 #include "gettext.hpp"
 #include "intro.hpp"
 #include "log.hpp"

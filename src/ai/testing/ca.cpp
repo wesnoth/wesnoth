@@ -25,7 +25,7 @@
 #include "../composite/stage.hpp"
 #include "../../game_board.hpp"
 #include "../../game_classification.hpp"
-#include "../../gamestatus.hpp"
+#include "../../game_data.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../resources.hpp"

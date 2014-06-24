@@ -13,7 +13,7 @@
 #include "random_new_deterministic.hpp"
 #include "resources.hpp"
 #include "synced_checkup.hpp"
-#include "gamestatus.hpp"
+#include "game_data.hpp"
 #include "network.hpp"
 #include "log.hpp"
 #include "lua_jailbreak_exception.hpp"

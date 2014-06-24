@@ -15,7 +15,7 @@
 #include "global.hpp"
 
 #include "display.hpp"
-#include "gamestatus.hpp"
+#include "game_data.hpp"
 #include "map_label.hpp"
 #include "resources.hpp"
 #include "formula_string_utils.hpp"

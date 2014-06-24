@@ -23,7 +23,7 @@
 #include "menu_item.hpp"
 
 #include "../config.hpp"
-#include "../gamestatus.hpp"
+#include "../game_data.hpp"
 #include "../log.hpp"
 #include "../map_location.hpp"
 #include "../resources.hpp"

@@ -16,7 +16,7 @@
 #include "log.hpp"
 #include "resources.hpp"
 #include "map_location.hpp"
-#include "gamestatus.hpp"
+#include "game_data.hpp"
 #include "unit.hpp"
 #include "team.hpp"
 #include "play_controller.hpp"

@@ -46,7 +46,7 @@
 #include "game_events/conditional_wml.hpp"
 #include "game_events/pump.hpp"
 #include "game_preferences.hpp"
-#include "gamestatus.hpp"
+#include "game_data.hpp"
 #include "game_config_manager.hpp"
 #include "log.hpp"
 #include "lua_jailbreak_exception.hpp"

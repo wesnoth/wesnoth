@@ -25,7 +25,7 @@
 
 #include "../actions/undo.hpp"
 #include "../game_config.hpp"
-#include "../gamestatus.hpp"
+#include "../game_data.hpp"
 #include "../log.hpp"
 #include "../mouse_handler_base.hpp"
 #include "../play_controller.hpp"
