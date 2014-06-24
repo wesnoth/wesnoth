@@ -3098,13 +3098,12 @@ void display::invalidate_animations()
 		open_mp_list.push_back(u);
 	}
 
-	#pragma omp parallel shared(chunks)
-	{
-		#pragma omp for
-		for(size_t i = 0; i < open_mp_list.size(); ++i)
-			open_mp_list[i]->anim_comp().refresh();
+	// openMP can't iterate over size_t
+	const int omp_iterations = open_mp_list.size();
+	#pragma omp parallel for shared(open_mp_list)
+	for (int i = 0; i < omp_iterations; i++) {
+		open_mp_list[i]->anim_comp().refresh();
 	}
-}
 #endif
 
 
@@ -3119,14 +3118,12 @@ void display::invalidate_animations()
 			new_inval |=  u->anim_comp().invalidate(*this);
 		}
 #else
-		#pragma omp parallel shared(chunks)
-		{
-			#pragma omp for
-			for(size_t i = 0; i < open_mp_list.size(); ++i)
+	#pragma omp parallel for reduction(|:new_inval) shared(open_mp_list)
+		for (int i = 0; i < omp_iterations; i++) {
 				new_inval |= open_mp_list[i]->anim_comp().invalidate(*this);
 		}
 #endif
-	}while(new_inval);
+	} while (new_inval);
 }
 
 void display::add_arrow(arrow& arrow)
