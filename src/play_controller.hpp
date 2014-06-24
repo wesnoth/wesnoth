@@ -70,6 +70,18 @@ namespace wb {
 	class manager; // whiteboard manager
 } // namespace wb
 
+// Holds gamestate related objects
+struct game_state {
+	const config& level_;
+	game_data gamedata_;
+	game_board board_;
+	tod_manager tod_manager_;
+	boost::scoped_ptr<pathfind::manager> pathfind_manager_;
+
+	game_state(const config & level, const config & game_config);
+
+	~game_state();
+};
 
 class play_controller : public controller_base, public events::observer, public savegame::savegame_config
 {
@@ -139,13 +151,13 @@ public:
 		return end_level_data_;
 	}
 	const std::vector<team>& get_teams_const() const {
-		return gameboard_.teams_;
+		return gamestate_.board_.teams_;
 	}
 	const gamemap& get_map_const() const{
-		return gameboard_.map();
+		return gamestate_.board_.map();
 	}
 	const tod_manager& get_tod_manager_const() const{
-			return tod_manager_;
+			return gamestate_.tod_manager_;
 		}
 
 	/**
@@ -154,7 +166,7 @@ public:
 	 */
 	void check_victory();
 
-	size_t turn() const {return tod_manager_.turn();}
+	size_t turn() const {return gamestate_.tod_manager_.turn();}
 
 	/** Returns the number of the side whose turn it is. Numbering starts at one. */
 	int current_side() const { return player_number_; }
@@ -217,6 +229,11 @@ protected:
 	/** Find a human team (ie one we own) starting backwards from current player. */
 	int find_human_team_before_current_player() const;
 
+	//gamestate
+	game_state gamestate_;
+	const config & level_;
+	saved_game & saved_game_;
+
 	//managers
 	boost::scoped_ptr<preferences::display_manager> prefs_disp_manager_;
 	boost::scoped_ptr<tooltips::manager> tooltips_manager_;
@@ -225,23 +242,15 @@ protected:
 	font::floating_label_context labels_manager_;
 	help::help_manager help_manager_;
 
-	//this must be before mouse_handler and menu_handler or we segfault
-	game_board gameboard_;
-
 	//more managers
 	events::mouse_handler mouse_handler_;
 	events::menu_handler menu_handler_;
 	boost::scoped_ptr<soundsource::manager> soundsources_manager_;
-	tod_manager tod_manager_;
-	boost::scoped_ptr<pathfind::manager> pathfind_manager_;
 	persist_manager persist_;
 
 	//other objects
 	boost::scoped_ptr<game_display> gui_;
 	const statistics::scenario_context statistics_context_;
-	const config& level_;
-	saved_game& saved_game_;
-	game_data gamedata_;
 	/// undo_stack_ is never NULL. It is implemented as a pointer so that
 	/// undo_list can be an incomplete type at this point (which reduces the
 	/// number of files that depend on actions/undo.hpp).

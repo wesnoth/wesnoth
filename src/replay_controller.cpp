@@ -111,7 +111,7 @@ replay_controller::replay_controller(const config& level,
 		const config& game_config, CVideo& video) :
 	play_controller(level, state_of_game, ticks, game_config, video, false),
 	saved_game_start_(saved_game_),
-	gameboard_start_(gameboard_),
+	gameboard_start_(gamestate_.board_),
 	tod_manager_start_(level),
 	current_turn_(1),
 	is_playing_(false),
@@ -155,7 +155,7 @@ void replay_controller::init_gui(){
 
 	gui_->scroll_to_leader(player_number_, display::WARP);
 	update_locker lock_display((*gui_).video(),false);
-	BOOST_FOREACH(const team & t, gameboard_.teams()) {
+	BOOST_FOREACH(const team & t, gamestate_.board_.teams()) {
 		t.reset_objectives_changed();
 	}
 	update_replay_ui();
@@ -299,12 +299,12 @@ void replay_controller::reset_replay()
 	current_turn_ = 1;
 	it_is_a_new_turn_ = true;
 	skip_replay_ = false;
-	tod_manager_= tod_manager_start_;
+	gamestate_.tod_manager_= tod_manager_start_;
 	recorder.start_replay();
 	recorder.set_skip(false);
 	saved_game_ = saved_game_start_;
-	gameboard_ = gameboard_start_;
-	gui_->change_display_context(&gameboard_); //this doesn't change the pointer value, but it triggers the gui to update the internal terrain builder object,
+	gamestate_.board_ = gameboard_start_;
+	gui_->change_display_context(&gamestate_.board_); //this doesn't change the pointer value, but it triggers the gui to update the internal terrain builder object,
 						   //idk what the consequences of not doing that are, but its probably a good idea to do it, esp. if layout
 						   //of game_board changes in the future
 	if (events_manager_ ){
@@ -490,7 +490,7 @@ possible_end_play_signal replay_controller::play_turn(){
 	bool last_team = false;
 
 	while ( (!last_team) && (!recorder.at_end()) && is_playing_ ){
-		last_team = static_cast<size_t>(player_number_) == gameboard_.teams().size();
+		last_team = static_cast<size_t>(player_number_) == gamestate_.board_.teams().size();
 		PROPOGATE_END_PLAY_SIGNAL( play_side() );
 		HANDLE_END_PLAY_SIGNAL( play_slice() );
 	}
@@ -544,11 +544,11 @@ possible_end_play_signal replay_controller::play_side() {
 
 	player_number_++;
 
-	if (static_cast<size_t>(player_number_) > gameboard_.teams().size()) {
-		//during the orginal game player_number_ would also be gameboard_.teams().size(),
-		player_number_ = gameboard_.teams().size();
+	if (static_cast<size_t>(player_number_) > gamestate_.board_.teams().size()) {
+		//during the orginal game player_number_ would also be gamestate_.board_.teams().size(),
+		player_number_ = gamestate_.board_.teams().size();
 		finish_turn();
-		tod_manager_.next_turn(*resources::gamedata);
+		gamestate_.tod_manager_.next_turn(*resources::gamedata);
 		it_is_a_new_turn_ = true;
 		player_number_ = 1;
 		current_turn_++;
@@ -556,7 +556,7 @@ possible_end_play_signal replay_controller::play_side() {
 	}
 
 	// This is necessary for replays in order to show possible movements.
-	gameboard_.new_turn(player_number_);
+	gamestate_.board_.new_turn(player_number_);
 
 	update_teams();
 	update_gui();
@@ -567,7 +567,7 @@ possible_end_play_signal replay_controller::play_side() {
 void replay_controller::update_teams(){
 
 	int next_team = player_number_;
-	if(static_cast<size_t>(next_team) > gameboard_.teams().size()) {
+	if(static_cast<size_t>(next_team) > gamestate_.board_.teams().size()) {
 		next_team = 1;
 	}
 

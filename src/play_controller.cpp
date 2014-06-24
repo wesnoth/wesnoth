@@ -93,7 +93,15 @@ static void clear_resources()
 
 }
 
+game_state::game_state(const config & level, const config & game_config) :
+	level_(level),
+	gamedata_(level_),
+	board_(game_config,level_),
+	tod_manager_(level_),
+	pathfind_manager_()
+{}
 
+game_state::~game_state() {}
 
 play_controller::play_controller(const config& level, saved_game& state_of_game,
 		const int ticks, const config& game_config,
@@ -101,32 +109,29 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	controller_base(ticks, game_config, video),
 	observer(),
 	savegame_config(),
+	gamestate_(level, game_config),
+	level_(level),
+	saved_game_(state_of_game),
 	prefs_disp_manager_(),
 	tooltips_manager_(),
 	events_manager_(),
 	halo_manager_(),
 	labels_manager_(),
 	help_manager_(&game_config),
-	gameboard_(game_config, level),
-	mouse_handler_(NULL, gameboard_),
-	menu_handler_(NULL, gameboard_, level, game_config),
+	mouse_handler_(NULL, gamestate_.board_),
+	menu_handler_(NULL, gamestate_.board_, level, game_config),
 	soundsources_manager_(),
-	tod_manager_(level),
-	pathfind_manager_(),
 	persist_(),
 	gui_(),
 	statistics_context_(level["name"]),
-	level_(level),
-	saved_game_(state_of_game),
-	gamedata_(level),
 	undo_stack_(new actions::undo_list(level.child("undo_stack"))),
 	whiteboard_manager_(),
 	xp_mod_(level["experience_modifier"].to_int(100)),
 	loading_game_(level["playing_team"].empty() == false),
 	first_human_team_(-1),
 	player_number_(1),
-	first_player_(level_["playing_team"].to_int() + 1),
-	start_turn_(tod_manager_.turn()), // tod_manager_ constructed above
+	first_player_(level["playing_team"].to_int() + 1),
+	start_turn_(gamestate_.tod_manager_.turn()), // gamestate_.tod_manager_ constructed above
 	skip_replay_(skip_replay),
 	linger_(false),
 	it_is_a_new_turn_(true),
@@ -141,13 +146,13 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	scope_()
 {
 	resources::controller = this;
-	resources::gameboard = &gameboard_;
-	resources::gamedata = &gamedata_;
+	resources::gameboard = &gamestate_.board_;
+	resources::gamedata = &gamestate_.gamedata_;
 	resources::persist = &persist_;
-	resources::teams = &gameboard_.teams_;
-	resources::tod_manager = &tod_manager_;
+	resources::teams = &gamestate_.board_.teams_;
+	resources::tod_manager = &gamestate_.tod_manager_;
 	resources::undo_stack = undo_stack_.get();
-	resources::units = &gameboard_.units_;
+	resources::units = &gamestate_.board_.units_;
 
 
 	resources::classification = &saved_game_.classification();
@@ -194,7 +199,7 @@ void play_controller::init(CVideo& video){
 	}
 
 	BOOST_FOREACH(const config &t, level_.child_range("time_area")) {
-		tod_manager_.add_time_area(gameboard_.map(),t);
+		gamestate_.tod_manager_.add_time_area(gamestate_.board_.map(),t);
 	}
 
 	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - ticks_) << std::endl;
@@ -225,44 +230,44 @@ void play_controller::init(CVideo& video){
 				first_human_team_ = team_num;
 			}
 		}
-		team_builder_ptr tb_ptr = gamedata_.create_team_builder(side,
-			save_id, gameboard_.teams_, level_, *gameboard_.map_, gameboard_.units_, saved_game_.replay_start());
+		team_builder_ptr tb_ptr = gamestate_.gamedata_.create_team_builder(side,
+			save_id, gamestate_.board_.teams_, level_, *gamestate_.board_.map_, gamestate_.board_.units_, saved_game_.replay_start());
 		++team_num;
-		gamedata_.build_team_stage_one(tb_ptr);
+		gamestate_.gamedata_.build_team_stage_one(tb_ptr);
 		team_builders.push_back(tb_ptr);
 	}
 	{
 		//sync traits of start units and the random start time.
-		random_new::set_random_determinstic deterministic(gamedata_.rng());
+		random_new::set_random_determinstic deterministic(gamestate_.gamedata_.rng());
 
-		tod_manager_.resolve_random(*random_new::generator);
+		gamestate_.tod_manager_.resolve_random(*random_new::generator);
 
 		BOOST_FOREACH(team_builder_ptr tb_ptr, team_builders)
 		{
-			gamedata_.build_team_stage_two(tb_ptr);
+			gamestate_.gamedata_.build_team_stage_two(tb_ptr);
 		}
 	}
 
 	// mouse_handler expects at least one team for linger mode to work.
-	if (gameboard_.teams().empty()) end_level_data_.transient.linger_mode = false;
+	if (gamestate_.board_.teams().empty()) end_level_data_.transient.linger_mode = false;
 
 	LOG_NG << "loading units..." << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("load units");
-	preferences::encounter_all_content(gameboard_);
+	preferences::encounter_all_content(gamestate_.board_);
 
 	LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("init theme");
 	const config &theme_cfg = get_theme(game_config_, level_["theme"]);
 
 	LOG_NG << "initializing pathfinding and whiteboard..." << (SDL_GetTicks() - ticks_) << std::endl;
-	pathfind_manager_.reset(new pathfind::manager(level_));
+	gamestate_.pathfind_manager_.reset(new pathfind::manager(level_));
 	whiteboard_manager_.reset(new wb::manager());
-	resources::tunnels = pathfind_manager_.get();
+	resources::tunnels = gamestate_.pathfind_manager_.get();
 	resources::whiteboard = whiteboard_manager_;
 
 	LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("build terrain");
-	gui_.reset(new game_display(gameboard_, video, whiteboard_manager_, tod_manager_, theme_cfg, level_));
+	gui_.reset(new game_display(gamestate_.board_, video, whiteboard_manager_, gamestate_.tod_manager_, theme_cfg, level_));
 	if (!gui_->video().faked()) {
 		if (saved_game_.mp_settings().mp_countdown)
 			gui_->get_theme().modify_label("time-icon", _ ("time left for current turn"));
@@ -286,9 +291,9 @@ void play_controller::init(CVideo& video){
 		// If not set here observer would be without fog until
 		// the first turn of observable side
 		size_t i;
-		for (i=0;i < gameboard_.teams().size();++i)
+		for (i=0;i < gamestate_.board_.teams().size();++i)
 		{
-			if (!gameboard_.teams()[i].get_disallow_observers())
+			if (!gamestate_.board_.teams()[i].get_disallow_observers())
 			{
 				gui_->set_team(i);
 			}
@@ -308,7 +313,7 @@ void play_controller::init(CVideo& video){
 			game_events::add_events(mod_cfg.child_range("event"),
 									"mod_" + mod_cfg["id"].str() + "_events");
 			BOOST_FOREACH (const config::any_child& var_cfg, mod_cfg.child("variables").all_children_range()) {
-				gamedata_.add_variable_cfg(var_cfg.key, var_cfg.cfg);
+				gamestate_.gamedata_.add_variable_cfg(var_cfg.key, var_cfg.cfg);
 			}
 		}
 	}
@@ -367,14 +372,14 @@ void play_controller::place_sides_in_preferred_locations()
 {
 	std::vector<placing_info> placings;
 
-	int num_pos = gameboard_.map().num_valid_starting_positions();
+	int num_pos = gamestate_.board_.map().num_valid_starting_positions();
 
 	int side_num = 1;
 	BOOST_FOREACH(const config &side, level_.child_range("side"))
 	{
 		for(int p = 1; p <= num_pos; ++p) {
-			const map_location& pos = gameboard_.map().starting_position(p);
-			int score = placing_score(side, gameboard_.map(), pos);
+			const map_location& pos = gamestate_.board_.map().starting_position(p);
+			int score = placing_score(side, gamestate_.board_.map(), pos);
 			placing_info obj;
 			obj.side = side_num;
 			obj.score = score;
@@ -392,7 +397,7 @@ void play_controller::place_sides_in_preferred_locations()
 		if(placed.count(i->side) == 0 && positions_taken.count(i->pos) == 0) {
 			placed.insert(i->side);
 			positions_taken.insert(i->pos);
-			gameboard_.map_->set_starting_position(i->side,i->pos);
+			gamestate_.board_.map_->set_starting_position(i->side,i->pos);
 			LOG_NG << "placing side " << i->side << " at " << i->pos << std::endl;
 		}
 	}
@@ -555,9 +560,9 @@ void play_controller::search(){
 void play_controller::fire_preload()
 {
 	// Run initialization scripts, even if loading from a snapshot.
-	gamedata_.set_phase(game_data::PRELOAD);
+	gamestate_.gamedata_.set_phase(game_data::PRELOAD);
 	resources::lua_kernel->initialize();
-	gamedata_.get_variable("turn_number") = int(turn());
+	gamestate_.gamedata_.get_variable("turn_number") = int(turn());
 	game_events::fire("preload");
 }
 void play_controller::fire_prestart()
@@ -565,22 +570,22 @@ void play_controller::fire_prestart()
 	// pre-start events must be executed before any GUI operation,
 	// as those may cause the display to be refreshed.
 	update_locker lock_display(gui_->video());
-	gamedata_.set_phase(game_data::PRESTART);
+	gamestate_.gamedata_.set_phase(game_data::PRESTART);
 	game_events::fire("prestart");
 	check_end_level();
 	// prestart event may modify start turn with WML, reflect any changes.
 	start_turn_ = turn();
-	gamedata_.get_variable("turn_number") = int(start_turn_);
+	gamestate_.gamedata_.get_variable("turn_number") = int(start_turn_);
 }
 
 void play_controller::fire_start(bool execute){
 	if(execute) {
-		gamedata_.set_phase(game_data::START);
+		gamestate_.gamedata_.set_phase(game_data::START);
 		game_events::fire("start");
 		check_end_level();
 		// start event may modify start turn with WML, reflect any changes.
 		start_turn_ = turn();
-		gamedata_.get_variable("turn_number") = int(start_turn_);
+		gamestate_.gamedata_.get_variable("turn_number") = int(start_turn_);
 	} else {
 		it_is_a_new_turn_ = false;
 	}
@@ -596,7 +601,7 @@ void play_controller::fire_start(bool execute){
 			preferences::message_bell());
 		replay::process_error(mes);
 	}
-	gamedata_.set_phase(game_data::PLAY);
+	gamestate_.gamedata_.set_phase(game_data::PLAY);
 }
 
 void play_controller::init_gui(){
@@ -604,7 +609,7 @@ void play_controller::init_gui(){
 	gui_->update_tod();
 
 	if ( !loading_game_ ) {
-		for ( int side = gameboard_.teams().size(); side != 0; --side )
+		for ( int side = gamestate_.board_.teams().size(); side != 0; --side )
 			actions::clear_shroud(side, false, false);
 	}
 }
@@ -621,8 +626,8 @@ possible_end_play_signal play_controller::init_side(bool is_replay){
 	}
 	gui_->set_playing_team(size_t(player_number_ - 1));
 
-	gamedata_.get_variable("side_number") = player_number_;
-	gamedata_.last_selected = map_location::null_location();
+	gamestate_.gamedata_.get_variable("side_number") = player_number_;
+	gamestate_.gamedata_.last_selected = map_location::null_location();
 
 	HANDLE_END_PLAY_SIGNAL( maybe_do_init_side(is_replay, only_visual) );
 
@@ -690,7 +695,7 @@ void play_controller::do_init_side(bool is_replay, bool only_visual) {
 	// Healing/income happen if it's not the first turn of processing,
 	// or if we are loading a game.
 	if (!only_visual && turn() > 1) {
-		gameboard_.new_turn(player_number_);
+		gamestate_.board_.new_turn(player_number_);
 		current_team().new_turn();
 
 		// If the expense is less than the number of villages owned
@@ -718,7 +723,7 @@ void play_controller::do_init_side(bool is_replay, bool only_visual) {
 		actions::clear_shroud(player_number_, true);
 	}
 
-	const time_of_day &tod = tod_manager_.get_time_of_day();
+	const time_of_day &tod = gamestate_.tod_manager_.get_time_of_day();
 
 	if (player_number_ == first_player_)
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
@@ -744,9 +749,9 @@ config play_controller::to_config() const
 	cfg["init_side_done"] = init_side_done_;
 	cfg.merge_attributes(level_);
 
-	gameboard_.write_config(cfg);
+	gamestate_.board_.write_config(cfg);
 
-	cfg.merge_with(tod_manager_.to_config());
+	cfg.merge_with(gamestate_.tod_manager_.to_config());
 
 	if(linger_) {
 		config endlevel;
@@ -760,7 +765,7 @@ config play_controller::to_config() const
 	}
 
 	//write out the current state of the map
-	cfg.merge_with(pathfind_manager_->to_config());
+	cfg.merge_with(gamestate_.pathfind_manager_->to_config());
 
 	config display;
 	gui_->write(display);
@@ -783,7 +788,7 @@ config play_controller::to_config() const
 	cfg["next_underlying_unit_id"] = str_cast(n_unit::id_manager::instance().get_save_id());
 
 
-	gamedata_.write_snapshot(cfg);
+	gamestate_.gamedata_.write_snapshot(cfg);
 
 	cfg.merge_attributes(saved_game_.classification().to_config());
 	return cfg;
@@ -793,7 +798,7 @@ void play_controller::finish_side_turn(){
 
 	whiteboard_manager_->on_finish_side_turn(player_number_);
 
-	gameboard_.end_turn(player_number_);
+	gamestate_.board_.end_turn(player_number_);
 
 	// Clear shroud, in case units had been slowed for the turn.
 	actions::clear_shroud(player_number_);
@@ -838,7 +843,7 @@ bool play_controller::enemies_visible() const
 		return true;
 
 	// See if any enemies are visible
-	BOOST_FOREACH(const unit & u, gameboard_.units()) {
+	BOOST_FOREACH(const unit & u, gamestate_.board_.units()) {
 		if (current_team().is_enemy(u.side()) && !gui_->fogged(u.get_location())) {
 			return true;
 		}
@@ -867,7 +872,7 @@ bool play_controller::execute_command(const hotkey::hotkey_command& cmd, int ind
 		std::string name = cmd.command.substr(prefixlen);
 		const map_location& hex = mouse_handler_.get_last_hex();
 
-		gamedata_.get_wml_menu_items().fire_item(name, hex);
+		gamestate_.gamedata_.get_wml_menu_items().fire_item(name, hex);
 		/// @todo Shouldn't the function return at this point?
 	}
 	return command_executor::execute_command(cmd, index);
@@ -956,7 +961,7 @@ bool play_controller::can_execute_command(const hotkey::hotkey_command& cmd, int
 			menu_handler_.current_unit().valid() &&
 			!(menu_handler_.current_unit()->unrenamable()) &&
 			menu_handler_.current_unit()->side() == gui_->viewing_side() &&
-			gameboard_.teams()[menu_handler_.current_unit()->side() - 1].is_human();
+			gamestate_.board_.teams()[menu_handler_.current_unit()->side() - 1].is_human();
 
 	default:
 		return false;
@@ -1005,10 +1010,10 @@ void play_controller::tab()
 	switch(mode) {
 	case gui::TEXTBOX_SEARCH:
 	{
-		BOOST_FOREACH(const unit &u, gameboard_.units()){
+		BOOST_FOREACH(const unit &u, gamestate_.board_.units()){
 			const map_location& loc = u.get_location();
 			if(!gui_->fogged(loc) &&
-					!(gameboard_.teams()[gui_->viewing_team()].is_enemy(u.side()) && u.invisible(loc)))
+					!(gamestate_.board_.teams()[gui_->viewing_team()].is_enemy(u.side()) && u.invisible(loc)))
 				dictionary.insert(u.name());
 		}
 		//TODO List map labels
@@ -1022,7 +1027,7 @@ void play_controller::tab()
 	}
 	case gui::TEXTBOX_MESSAGE:
 	{
-		BOOST_FOREACH(const team& t, gameboard_.teams()) {
+		BOOST_FOREACH(const team& t, gamestate_.board_.teams()) {
 			if(!t.is_empty())
 				dictionary.insert(t.current_player());
 		}
@@ -1067,29 +1072,29 @@ std::string play_controller::get_unique_saveid(const config& cfg, std::set<std::
 
 team& play_controller::current_team()
 {
-	assert(player_number_ > 0 && player_number_ <= int(gameboard_.teams().size()));
-	return gameboard_.teams_[player_number_-1];
+	assert(player_number_ > 0 && player_number_ <= int(gamestate_.board_.teams().size()));
+	return gamestate_.board_.teams_[player_number_-1];
 }
 
 const team& play_controller::current_team() const
 {
-	assert(player_number_ > 0 && player_number_ <= int(gameboard_.teams().size()));
-	return gameboard_.teams()[player_number_-1];
+	assert(player_number_ > 0 && player_number_ <= int(gamestate_.board_.teams().size()));
+	return gamestate_.board_.teams()[player_number_-1];
 }
 
 int play_controller::find_human_team_before_current_player() const
 {
-	if (player_number_ > int(gameboard_.teams().size()))
+	if (player_number_ > int(gamestate_.board_.teams().size()))
 		return -2;
 
 	for (int i = player_number_-2; i >= 0; --i) {
-		if (gameboard_.teams()[i].is_human()) {
+		if (gamestate_.board_.teams()[i].is_human()) {
 			return i+1;
 		}
 	}
 
-	for (int i = gameboard_.teams().size()-1; i > player_number_-1; --i) {
-		if (gameboard_.teams()[i].is_human()) {
+	for (int i = gamestate_.board_.teams().size()-1; i > player_number_-1; --i) {
+		if (gamestate_.board_.teams()[i].is_human()) {
 			return i+1;
 		}
 	}
@@ -1148,7 +1153,7 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 				unit_movement_resetter move_reset(*u, u->side() != player_number_);
 
 				mouse_handler_.set_current_paths(pathfind::paths(*u, false,
-				                       true, gameboard_.teams_[gui_->viewing_team()],
+				                       true, gamestate_.board_.teams_[gui_->viewing_team()],
 				                       mouse_handler_.get_path_turns()));
 
 				gui_->highlight_reach(mouse_handler_.current_paths());
@@ -1226,7 +1231,7 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 
 			// Replace this placeholder entry with available menu items.
 			items.erase(items.begin() + i);
-			gamedata_.get_wml_menu_items().get_items(mouse_handler_.get_last_hex(),
+			gamestate_.gamedata_.get_wml_menu_items().get_items(mouse_handler_.get_last_hex(),
 			                                         wml_commands_, newitems);
 			items.insert(items.begin()+i, newitems.begin(), newitems.end());
 			// End the "for" loop.
@@ -1253,7 +1258,7 @@ void play_controller::show_menu(const std::vector<std::string>& items_arg, int x
 		// Remove WML commands if they would not be allowed here
 		if(*i == "wml") {
 			if(!context_menu || gui_->viewing_team() != gui_->playing_team()
-			|| events::commands_disabled || !gameboard_.teams()[gui_->viewing_team()].is_human()
+			|| events::commands_disabled || !gamestate_.board_.teams()[gui_->viewing_team()].is_human()
 			|| (linger_ && !game_config::debug)){
 				i = items.erase(i);
 				continue;
@@ -1290,19 +1295,19 @@ bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 
 		// A quick check to save us having to create the future map and
 		// possibly loop through all units.
-		if ( !gameboard_.map().is_keep(last_hex)  &&
-		     !gameboard_.map().is_castle(last_hex) )
+		if ( !gamestate_.board_.map().is_keep(last_hex)  &&
+		     !gamestate_.board_.map().is_castle(last_hex) )
 			return false;
 
 		wb::future_map future; /* lasts until method returns. */
 
-		unit_map::const_iterator leader = gameboard_.units().find(last_hex);
-		if ( leader != gameboard_.units().end() )
+		unit_map::const_iterator leader = gamestate_.board_.units().find(last_hex);
+		if ( leader != gamestate_.board_.units().end() )
 			return leader->can_recruit()  &&  leader->side() == viewing_side  &&
 			       can_recruit_from(*leader);
 		else
 			// Look for a leader who can recruit on last_hex.
-			for ( leader = gameboard_.units().begin(); leader != gameboard_.units().end(); ++leader) {
+			for ( leader = gamestate_.board_.units().begin(); leader != gamestate_.board_.units().end(); ++leader) {
 				if ( leader->can_recruit()  &&  leader->side() == viewing_side  &&
 				     can_recruit_on(*leader, last_hex) )
 					return true;
@@ -1343,7 +1348,7 @@ hotkey::ACTION_STATE play_controller::get_action_state(hotkey::HOTKEY_COMMAND co
 	case hotkey::HOTKEY_ZOOM_DEFAULT:
 		return (gui_->get_zoom_factor() == 1.0) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_DELAY_SHROUD:
-		return gameboard_.teams()[gui_->viewing_team()].auto_shroud_updates() ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
+		return gamestate_.board_.teams()[gui_->viewing_team()].auto_shroud_updates() ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
 	default:
 		return hotkey::ACTION_STATELESS;
 	}
@@ -1390,9 +1395,9 @@ void play_controller::check_victory()
 	}
 	std::set<unsigned> not_defeated;
 
-	BOOST_FOREACH( const unit & i , gameboard_.units())
+	BOOST_FOREACH( const unit & i , gamestate_.board_.units())
 	{
-		const team& tm = gameboard_.teams()[i.side()-1];
+		const team& tm = gamestate_.board_.teams()[i.side()-1];
 		if (i.can_recruit() && tm.defeat_condition() == team::NO_LEADER) {
 			not_defeated.insert(i.side());
 		} else if (tm.defeat_condition() == team::NO_UNITS) {
@@ -1400,7 +1405,7 @@ void play_controller::check_victory()
 		}
 	}
 
-	BOOST_FOREACH(team& tm, gameboard_.teams_)
+	BOOST_FOREACH(team& tm, gamestate_.board_.teams_)
 	{
 		if(tm.defeat_condition() == team::NEVER)
 		{
@@ -1432,16 +1437,16 @@ void play_controller::check_victory()
 
 		std::set<unsigned>::iterator m(n);
 		for (++m; m != not_defeated.end(); ++m) {
-			if (gameboard_.teams()[side].is_enemy(*m)) {
+			if (gamestate_.board_.teams()[side].is_enemy(*m)) {
 				return;
 			}
 		}
 
-		if (gameboard_.teams()[side].is_human()) {
+		if (gamestate_.board_.teams()[side].is_human()) {
 			found_player = true;
 		}
 
-		if (gameboard_.teams()[side].is_network()) {
+		if (gamestate_.board_.teams()[side].is_network()) {
 			found_network_player = true;
 		}
 	}
