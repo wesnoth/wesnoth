@@ -13,40 +13,62 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
 
 #include "mouse_events.hpp"
+#include "global.hpp"
 
-#include "actions/move.hpp"
-#include "actions/undo.hpp"
+#include "actions/attack.hpp"           // for battle_context, etc
+#include "actions/move.hpp"           // for move_and_record
+#include "actions/undo.hpp"             // for undo_list
 #include "attack_prediction_display.hpp"
-#include "dialogs.hpp"
-#include "game_end_exceptions.hpp"
-#include "game_events/pump.hpp"
-#include "gettext.hpp"
-#include "gui/dialogs/unit_attack.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/window.hpp"
-#include "language.hpp"
-#include "log.hpp"
-#include "map.hpp"
-#include "marked-up_text.hpp"
-#include "menu_events.hpp"
-#include "pathfind/teleport.hpp"
-#include "play_controller.hpp"
-#include "sound.hpp"
-#include "replay.hpp"
+#include "config.hpp"                   // for config
+#include "cursor.hpp"                   // for set, CURSOR_TYPE::NORMAL, etc
+#include "dialogs.hpp"                  // for units_list_preview_pane, etc
+#include "game_board.hpp"               // for game_board, etc
+#include "game_config.hpp"              // for red_to_green
+#include "game_events/pump.hpp"		// for fire
+#include "gettext.hpp"                  // for _
+#include "gui/dialogs/transient_message.hpp"  // for show_transient_message
+#include "gui/dialogs/unit_attack.hpp"  // for tunit_attack
+#include "gui/widgets/settings.hpp"     // for new_widgets
+#include "gui/widgets/window.hpp"     // for enum
+#include "language.hpp"                 // for string_table, symbol_table
+#include "log.hpp"                      // for LOG_STREAM, logger, etc
+#include "map.hpp"                      // for gamemap
+#include "marked-up_text.hpp"           // for color2markup, BOLD_TEXT, etc
+#include "pathfind/teleport.hpp"        // for get_teleport_locations, etc
+#include "play_controller.hpp"		// for playing_side, set_button_state
+#include "resources.hpp"                // for whiteboard, gameboard, etc
 #include "replay_helper.hpp"
-#include "resources.hpp"
+#include "sdl/utils.hpp"                // for int_to_color
+#include "serialization/string_utils.hpp"  // for unicode_em_dash
+#include "show_dialog.hpp"              // for dialog_button_info, etc
+#include "sound.hpp"
 #include "synced_context.hpp"
-#include "unit.hpp"
+#include "team.hpp"                     // for team
+#include "tod_manager.hpp"
+#include "tstring.hpp"                  // for t_string
+#include "unit.hpp"                     // for unit, intrusive_ptr_add_ref
 #include "unit_animation_component.hpp"
-#include "wml_separators.hpp"
-#include "whiteboard/manager.hpp"
+#include "unit_ptr.hpp"                 // for UnitConstPtr
+#include "unit_types.hpp"    // for attack_type
+#include "whiteboard/manager.hpp"       // for manager, etc
+#include "whiteboard/typedefs.hpp"      // for whiteboard_lock
+#include "wml_separators.hpp"           // for COLUMN_SEPARATOR, etc
 
-#include <boost/bind.hpp>
-#include <boost/foreach.hpp>
+#include <boost/foreach.hpp>            // for auto_any_base, etc
+#include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
+#include <boost/shared_ptr.hpp>         // for shared_ptr
+#include <cassert>                     // for assert
+#include <cstddef>                     // for NULL
+#include <new>                          // for bad_alloc
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for string, operator<<, etc
+#include "SDL_mouse.h"                  // for SDL_GetMouseState
+#include "SDL_video.h"                  // for SDL_Color
+
+class end_turn_exception;
+namespace gui { class slider; }
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)

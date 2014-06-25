@@ -16,11 +16,20 @@
 #ifndef MOUSE_EVENTS_H_INCLUDED
 #define MOUSE_EVENTS_H_INCLUDED
 
-#include "game_display.hpp"
-#include "mouse_handler_base.hpp"
-#include "unit_map.hpp"
+#include "game_display.hpp"             // for game_display
+#include "map_location.hpp"             // for map_location
+#include "mouse_handler_base.hpp"       // for mouse_handler_base
+#include "pathfind/pathfind.hpp"        // for marked_route, paths
+#include "unit_map.hpp"                 // for unit_map, etc
 
-class battle_context;
+#include <set>                          // for set
+#include <vector>                       // for vector
+#include "SDL_events.h"                 // for SDL_MouseButtonEvent
+
+class battle_context;  // lines 23-23
+class game_board;
+class team;
+class unit;
 
 namespace events{
 
