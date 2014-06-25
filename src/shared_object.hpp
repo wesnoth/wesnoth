@@ -15,8 +15,12 @@
 #ifndef SHARED_OBJECT_HPP_INCLUDED
 #define SHARED_OBJECT_HPP_INCLUDED
 
-#include <climits>
+#include <algorithm>
 #include <cassert>
+#include <climits>
+#include <cstddef>
+#include <ostream>
+
 #include <boost/multi_index_container.hpp>
 #include <boost/multi_index/hashed_index.hpp>
 #include <boost/multi_index/member.hpp>
@@ -30,17 +34,13 @@ struct shared_node {
 	static const unsigned long max_count = ULONG_MAX;
 };
 
-template <typename T>
-struct hasher {
-	size_t operator()(const T& o) {
-		return hash_value(o.val);
-	}
-};
-
 template <typename T, typename node = shared_node<T> >
 class shared_object {
 public:
 	typedef T type;
+
+	static const node* insert_into_index(const node &);
+	static void erase_from_index(const node *);
 
 	shared_object() : val_(NULL) { set(T()); }
 
@@ -76,7 +76,7 @@ public:
 		if (valid() && o == get()) return;
 		clear();
 
-		val_ = &*index().insert(node(o)).first;
+		val_ = insert_into_index(node(o)); //&*index().insert(node(o)).first;
 		val_->count++;
 
 		assert((val_->count) < (node::max_count));
@@ -97,20 +97,6 @@ public:
 
 protected:
 
-	typedef boost::multi_index_container<
-		node,
-		boost::multi_index::indexed_by<
-			boost::multi_index::hashed_unique<
-				BOOST_MULTI_INDEX_MEMBER(node, T, val)
-			>
-		>
-	> hash_map;
-
-	typedef typename hash_map::template nth_index<0>::type hash_index;
-
-	static hash_map& map() { static hash_map* map = new hash_map; return *map; }
-	static hash_index& index() { return map().template get<0>(); }
-
 	const node* val_;
 
 	bool valid() const {
@@ -121,7 +107,7 @@ protected:
 		if (!valid()) return;
 		val_->count--;
 
-		if (val_->count == 0) index().erase(index().find(val_->val));
+		if (val_->count == 0) erase_from_index(val_); //index().erase(index().find(val_->val));
 		val_ = NULL;
 	}
 
