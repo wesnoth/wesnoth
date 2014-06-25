@@ -17,25 +17,38 @@
  * @file
  */
 
-#include "composite/ai.hpp"
-#include "composite/aspect.hpp"
-#include "composite/engine_default.hpp"
-#include "composite/engine_fai.hpp"
-#include "composite/engine_lua.hpp"
-#include "composite/goal.hpp"
-#include "default/ai.hpp"
-#include "formula/ai.hpp"
 #include "registry.hpp"
-#include "testing/aspect_attacks.hpp"
-#include "testing/ca.hpp"
+#include "global.hpp"
+
+#include "../config.hpp"             // for config, operator<<
+#include "../terrain_filter.hpp"  // for terrain_filter
+#include "ai/composite/engine.hpp"      // for register_engine_factory
+#include "ai/composite/stage.hpp"       // for ministage, idle_stage, etc
+#include "ai/composite/rca.hpp"
+#include "ai/game_info.hpp"             // for attacks_vector
+#include "ai/interface.hpp"  // for register_ai_factory
+#include "akihara/recruitment.hpp"      // for recruitment
+#include "composite/ai.hpp"             // for ai_composite
+#include "composite/aspect.hpp"         // for composite_aspect, etc
+#include "composite/engine_default.hpp"  // for engine_cpp
+#include "composite/engine_fai.hpp"     // for engine_fai
+#include "composite/engine_lua.hpp"     // for engine_lua
+#include "composite/goal.hpp"           // for register_goal_factory, etc
+#include "default/ai.hpp"
+#include "lua/unit_advancements_aspect.hpp"
+#include "recruitment/recruitment.hpp"  // for recruitment
+#include "testing/aspect_attacks.hpp"   // for aspect_attacks
+#include "testing/ca.hpp"               // for leader_shares_keep_phase, etc
+#include "testing/ca_global_fallback.hpp"  // for global_fallback_phase
 #include "testing/ca_testing_move_to_targets.hpp"
 #include "testing/ca_testing_recruitment.hpp"
-#include "testing/ca_global_fallback.hpp"
+#include "testing/stage_fallback.hpp"   // for fallback_to_other_ai
 #include "testing/stage_rca.hpp"
-#include "testing/stage_fallback.hpp"
-#include "akihara/recruitment.hpp"
-#include "lua/unit_advancements_aspect.hpp"
-#include "recruitment/recruitment.hpp"
+
+#include <boost/shared_ptr.hpp>         // for shared_ptr, etc
+#include <string>                       // for string
+#include <vector>                       // for vector
+
 
 namespace ai {
 // =======================================================================
