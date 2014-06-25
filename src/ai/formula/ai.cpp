@@ -17,33 +17,55 @@
  * Defines formula ai candidate actions - headers
  */
 
-#include <boost/lexical_cast.hpp>
-#include <stack>
-#include <vector>
-
 #include "ai.hpp"
-#include "candidates.hpp"
-#include "callable_objects.hpp"
-#include "function_table.hpp"
+#include "global.hpp"
 
-#include "../actions.hpp"
-#include "../manager.hpp"
-
-#include "../../callable_objects.hpp"
-#include "../../game_board.hpp"
-#include "../../game_display.hpp"
-#include "../../formula_debugger.hpp"
-#include "../../log.hpp"
+#include "../../callable_objects.hpp"   // for unit_callable, etc
+#include "../../chat_events.hpp"              // for chat_handler, etc
+#include "../../formula_function.hpp"         // for formula_expression
+#include "../../game_board.hpp"         // for game_board
+#include "../../game_display.hpp"       // for game_display
+#include "../../log.hpp"                // for LOG_STREAM, logger, etc
+#include "../../map.hpp"                      // for gamemap
 #include "../../menu_events.hpp"
-#include "../../pathfind/teleport.hpp"
-#include "../../resources.hpp"
-#include "../../terrain_filter.hpp"
-#include "../../tod_manager.hpp"
-#include "../../unit.hpp"
-#include "../../unit_formula_manager.hpp"
-#include "../../pathfind/pathfind.hpp"
+#include "../../pathfind/pathfind.hpp"  // for plain_route, etc
+#include "../../pathfind/teleport.hpp"  // for get_teleport_locations, etc
+#include "../../recall_list_manager.hpp"      // for recall_list_manager
+#include "../../resources.hpp"          // for gameboard, teams, units, etc
+#include "../../serialization/string_utils.hpp"  // for split
+#include "../../team.hpp"                     // for team
+#include "../../terrain_filter.hpp"     // for terrain_filter
+#include "../../time_of_day.hpp"              // for time_of_day
+#include "../../tod_manager.hpp"        // for tod_manager
+#include "../../tstring.hpp"                  // for t_string, operator+
+#include "../../unit.hpp"               // for unit
+#include "../../unit_formula_manager.hpp"  // for unit_formula_manager
+#include "../../unit_ptr.hpp"                 // for UnitPtr
+#include "../../unit_types.hpp"
+#include "../../formula.hpp"  // for formula_error, formula, etc
+#include "../../map_location.hpp"  // for map_location, etc
+#include "ai/actions.hpp"               // for recall_result, etc
+#include "ai/manager.hpp"               // for manager
+#include "ai/composite/contexts.hpp"
+#include "ai/composite/stage.hpp"  // for stage
+#include "ai/default/contexts.hpp"  // for attack_analysis
+#include "ai/formula/function_table.hpp"           // for ai_function_symbol_table
+#include "ai/game_info.hpp"  // for move_result_ptr, move_map, etc
+#include "ai/interface.hpp"  // for interface
+#include "callable_objects.hpp"         // for safe_call_result, etc
+#include "candidates.hpp"               // for base_candidate_action, etc
 
-#include <boost/foreach.hpp>
+
+#include <boost/foreach.hpp>            // for auto_any_base, etc
+#include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
+#include <boost/lexical_cast.hpp>       // for lexical_cast
+#include <boost/shared_ptr.hpp>         // for shared_ptr
+#include <cassert>                     // for assert
+#include <ctime>                       // for NULL, time
+#include <map>                          // for multimap<>::const_iterator, etc
+#include <sstream>                      // for operator<<, basic_ostream, etc
+#include <stack>                        // for stack
+#include <vector>                       // for vector, allocator, etc
 
 static lg::log_domain log_formula_ai("ai/engine/fai");
 #define DBG_AI LOG_STREAM(debug, log_formula_ai)

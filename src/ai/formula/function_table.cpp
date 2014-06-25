@@ -22,13 +22,14 @@
 #include "callable_objects.hpp"
 #include "function_table.hpp"
 
+#include "ai/default/contexts.hpp"
+
 #include "../../attack_prediction.hpp"
 #include "../../filesystem.hpp"
 #include "../../game_board.hpp"
-#include "../../game_display.hpp"
+#include "../../display.hpp"
 #include "../../log.hpp"
 #include "../../map_label.hpp"
-#include "../../menu_events.hpp"
 #include "../../pathfind/teleport.hpp"
 #include "../../replay.hpp"
 #include "../../resources.hpp"
