@@ -290,6 +290,9 @@ void server::run()
 					if(j != handlers_.end()) {
 						// Call the handler.
 						j->second(request(c.key, c.cfg, sock));
+					} else {
+						send_error("Unrecognized [" + c.key + "] request.",
+								   sock);
 					}
 				}
 			}
