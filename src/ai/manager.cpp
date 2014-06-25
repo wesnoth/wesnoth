@@ -17,26 +17,43 @@
  * @file
  */
 
-#include "composite/ai.hpp"
-#include "configuration.hpp"
-#include "contexts.hpp"
-#include "default/ai.hpp"
 #include "manager.hpp"
-#include "formula/ai.hpp"
-#include "registry.hpp"
+
+#include "../config.hpp"             // for config, etc
 #include "../game_events/pump.hpp"
+#include "../generic_event.hpp"      // for generic_event, etc
 #include "../log.hpp"
+#include "../map_location.hpp"       // for map_location
 #include "../serialization/string_utils.hpp"
-#include "composite/component.hpp"
 
-#include <boost/foreach.hpp>
+#include "composite/ai.hpp"             // for ai_composite
+#include "composite/component.hpp"      // for component_manager
+#include "composite/engine.hpp"         // for engine
+#include "configuration.hpp"            // for configuration
+#include "contexts.hpp"                 // for readonly_context, etc
+#include "default/contexts.hpp"  // for default_ai_context, etc
+#include "game_info.hpp"             // for side_number, engine_ptr, etc
+#include "game_config.hpp"              // for debug
+#include "game_errors.hpp"              // for game_error
+#include "interface.hpp"  // for ai_factory, etc
+#include "lua/unit_advancements_aspect.hpp"
+#include "registry.hpp"                 // for init
+#include "util.hpp"                     // for lexical_cast
 
-#include <map>
-#include <stack>
-#include <vector>
-#include "composite/engine.hpp"
 
-#include "SDL.h"
+#include <algorithm>                    // for min
+#include <boost/foreach.hpp>            // for auto_any_base, etc
+#include <cassert>                     // for assert
+#include <cstddef>                     // for NULL
+#include <iterator>                     // for reverse_iterator, etc
+#include <map>                          // for _Rb_tree_iterator, etc
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <set>                          // for set
+#include <stack>                        // for stack
+#include <utility>                      // for pair, make_pair
+#include <vector>                       // for vector, allocator, etc
+
+#include "SDL_timer.h"
 
 namespace ai {
 
