@@ -13,27 +13,42 @@
 */
 
 #include "playturn.hpp"
+#include "global.hpp"
 
-#include "actions/undo.hpp"
-#include "construct_dialog.hpp"
-#include "game_display.hpp"
-#include "game_end_exceptions.hpp"
-#include "game_preferences.hpp"
-#include "gettext.hpp"
+#include "actions/undo.hpp"             // for undo_list
+#include "chat_events.hpp"              // for chat_handler, etc
+#include "config.hpp"                   // for config, etc
+#include "formula_string_utils.hpp"     // for vgettext
+#include "game_board.hpp"               // for game_board
+#include "game_display.hpp"             // for game_display
+#include "game_end_exceptions.hpp"      // for end_level_exception, etc
+#include "gettext.hpp"                  // for _
 #include "gui/dialogs/simple_item_selector.hpp"
-#include "log.hpp"
+#include "log.hpp"                      // for LOG_STREAM, logger, etc
+#include "make_enum.hpp"                // for bad_enum_cast
 #include "map_label.hpp"
-#include "replay.hpp"
-#include "resources.hpp"
-#include "whiteboard/manager.hpp"
-#include "formula_string_utils.hpp"
-#include "play_controller.hpp"
-#include "savegame.hpp"
+#include "network.hpp"                  // for error
+#include "play_controller.hpp"          // for play_controller
+#include "playturn_network_adapter.hpp"  // for playturn_network_adapter
+#include "preferences.hpp"              // for message_bell
+#include "replay.hpp"                   // for replay, recorder, do_replay, etc
+#include "resources.hpp"                // for gameboard, screen, etc
+#include "serialization/string_utils.hpp"  // for string_map
+#include "team.hpp"                     // for team, team::CONTROLLER::AI, etc
+#include "tstring.hpp"                  // for operator==
+#include "util.hpp"                     // for lexical_cast
+#include "whiteboard/manager.hpp"       // for manager
+#include "widgets/button.hpp"           // for button
 
-#include <boost/foreach.hpp>
-
-#include <cassert>
-#include <ctime>
+#include <boost/foreach.hpp>            // for auto_any_base, etc
+#include <boost/shared_ptr.hpp>         // for shared_ptr
+#include <cassert>                      // for assert
+#include <cstdlib>                     // for atoi
+#include <ctime>                        // for time, NULL
+#include <map>                          // for map<>::mapped_type
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <set>                          // for set
+#include <vector>                       // for vector
 
 static lg::log_domain log_network("network");
 #define ERR_NW LOG_STREAM(err, log_network)

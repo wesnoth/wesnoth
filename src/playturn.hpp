@@ -15,13 +15,12 @@
 #ifndef PLAYTURN_HPP_INCLUDED
 #define PLAYTURN_HPP_INCLUDED
 
-class config;
-class replay_network_sender;
-
-#include "generic_event.hpp"
-#include "network.hpp"
-#include "playturn_network_adapter.hpp"
+#include <string>                       // for string
+#include "generic_event.hpp"            // for generic_event
 #include "replay.hpp"
+
+class config;  // lines 18-18
+class playturn_network_adapter;
 
 /**
 	TODO: rename this class since it isn't that much related to turns.
