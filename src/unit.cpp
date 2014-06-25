@@ -18,28 +18,43 @@
  */
 
 #include "unit.hpp"
+#include "global.hpp"
 
-#include "actions/move.hpp"
-#include "formula_string_utils.hpp"
-#include "game_board.hpp"
-#include "game_events/handlers.hpp"
-#include "game_preferences.hpp"
-#include "gettext.hpp"
-#include "log.hpp"
-#include "random_new.hpp"
-#include "resources.hpp"
-#include "scripting/lua.hpp"
-#include "sdl/utils.hpp"
-#include "side_filter.hpp"
-#include "team.hpp"
-#include "terrain_filter.hpp"
+#include "formula_string_utils.hpp"     // for vgettext
+#include "game_board.hpp"               // for game_board
+#include "game_config.hpp"              // for add_color_info, etc
+#include "game_errors.hpp"              // for game_error
+#include "game_events/handlers.hpp"     // for add_events
+#include "game_preferences.hpp"         // for encountered_units
+#include "gettext.hpp"                  // for N_
+#include "log.hpp"                      // for LOG_STREAM, logger, etc
+#include "make_enum.hpp"                // for operator<<, operator>>
+#include "map.hpp"       // for gamemap
+#include "random_new.hpp"               // for generator, rng
+#include "resources.hpp"                // for units, gameboard, teams, etc
+#include "scripting/lua.hpp"            // for LuaKernel
+#include "side_filter.hpp"              // for side_filter
+#include "team.hpp"                     // for team, get_teams, etc
+#include "terrain_filter.hpp"           // for terrain_filter
+#include "unit_abilities.hpp"           // for effect, filter_base_matches
+#include "unit_animation.hpp"           // for unit_animation
+#include "unit_animation_component.hpp"  // for unit_animation_component
+#include "unit_formula_manager.hpp"     // for unit_formula_manager
 #include "unit_id.hpp"
-#include "unit_abilities.hpp"
-#include "unit_animation_component.hpp"
-#include "unit_formula_manager.hpp"
+#include "unit_map.hpp"      // for unit_map, etc
+#include "variable.hpp"                 // for vconfig, etc
 
-#include <boost/bind.hpp>
-#include <boost/foreach.hpp>
+#include <boost/foreach.hpp>            // for auto_any_base, etc
+#include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
+#include <cassert>                     // for assert
+#include <cstdlib>                     // for NULL, rand
+#include <exception>                    // for exception
+#include <iterator>                     // for back_insert_iterator, etc
+#include <new>                          // for operator new
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include "SDL_video.h"                  // for SDL_Color
+
+namespace t_translation { struct t_terrain; }
 
 static lg::log_domain log_unit("unit");
 #define DBG_UT LOG_STREAM(debug, log_unit)
