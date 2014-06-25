@@ -37,14 +37,14 @@ public:
 	typedef std::deque<internal_ptr_type>::const_iterator iterator;
 	typedef std::deque<internal_ptr_type>::const_iterator const_iterator;
 
-	iterator begin() { return fake_units_.begin(); } 
+	iterator begin() { return fake_units_.begin(); }
 	iterator end() { return fake_units_.end(); }
 
 	const_iterator begin() const { return fake_units_.begin(); }
 	const_iterator end() const { return fake_units_.end(); }
 
 private:
-	/** Register a unit with this manager. private, should only be called by fake_unit_ptr.
+	/** Register a unit with this manager. private, should only be called by fake_unit_ptr. */
 	void place_temporary_unit(internal_ptr_type);
 
 	/** Deregister a unit from this manager. private, should only be called by fake_unit_ptr.
