@@ -239,7 +239,7 @@ namespace { // Support functions
 		unit_race::GENDER gender = string_gender(cfg["gender"]);
 		const unit_type *ut = unit_types.find(type);
 		if (!ut) return fake_unit_ptr();
-		fake_unit_ptr fake = fake_unit_ptr(UnitPtr(new unit(*ut, side_num, gender)));
+		fake_unit_ptr fake = fake_unit_ptr(UnitPtr(new unit(*ut, side_num, false, gender)));
 
 		if(!variation.empty()) {
 			config mod;
