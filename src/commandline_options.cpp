@@ -13,13 +13,23 @@
 */
 
 #include "commandline_options.hpp"
-#include "serialization/string_utils.hpp"
-#include "util.hpp"
-#include "lua/llimits.h"
-#include "log.hpp"
+#include "global.hpp"
 
-#include <boost/version.hpp>
-#include <boost/foreach.hpp>
+#include <boost/any.hpp>                // for any
+#include <boost/foreach.hpp>            // for auto_any_base, etc
+#include <boost/program_options/cmdline.hpp>
+#include <boost/program_options/errors.hpp>  // for validation_error, etc
+#include <boost/program_options/parsers.hpp>
+#include <boost/program_options/positional_options.hpp>
+#include <boost/program_options/value_semantic.hpp>  // for value, etc
+#include <boost/program_options/variables_map.hpp>  // for variables_map, etc
+#include <boost/version.hpp>            // for BOOST_VERSION
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <sstream>                      // for basic_stringbuf<>::int_type, etc
+#include "log.hpp"                      // for logger, set_strict_severity, etc
+#include "serialization/string_utils.hpp"  // for split
+#include "util.hpp"                     // for lexical_cast
+
 
 namespace po = boost::program_options;
 

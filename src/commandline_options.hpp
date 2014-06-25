@@ -15,12 +15,12 @@
 #ifndef COMMANDLINE_OPTIONS_HPP_INCLUDED
 #define COMMANDLINE_OPTIONS_HPP_INCLUDED
 
-#include <boost/optional.hpp>
-#include <boost/program_options.hpp>
-#include <boost/tuple/tuple.hpp>
-
-#include <string>
-#include <vector>
+#include <boost/optional.hpp>           // for optional
+#include <boost/program_options/options_description.hpp>
+#include <boost/tuple/tuple.hpp>        // for tuple
+#include <iosfwd>                       // for ostream
+#include <string>                       // for string
+#include <vector>                       // for vector
 
 class commandline_options
 {
