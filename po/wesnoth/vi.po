@@ -1,13 +1,13 @@
 # Vietnamese translation for Wesnoth
-# Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2009, 2013.
+# Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2009, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-05-24 20:08+0200\n"
-"PO-Revision-Date: 2013-09-18 13:42+0800\n"
-"Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
-"Language-Team: Vietnamese <>\n"
+"PO-Revision-Date: 2014-06-05 22:13+0700\n"
+"Last-Translator: \n"
+"Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,55 +20,53 @@ msgstr ""
 #. possible to avoid stretching the advanced preferences list too
 #. much.
 #: data/advanced_preferences.cfg:7
-#, fuzzy
-#| msgid "Compressed saves"
 msgid "Compress saved games"
-msgstr "Nén bản lưu"
+msgstr "Nén bản lưu trò chơi"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:12
 msgid "save_compression^Gzip"
-msgstr ""
+msgstr "Gzip"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:13
 msgid "save_compression_short^gzip"
-msgstr ""
+msgstr "gzip"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:14
 msgid "save_compression_desc^Default compression, faster"
-msgstr ""
+msgstr "Nén mặc định, nhanh hơn"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:18
 msgid "save_compression^Bzip2"
-msgstr ""
+msgstr "Bzip2"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:19
 msgid "save_compression_short^bzip2"
-msgstr ""
+msgstr "bzip2"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:20
 msgid "save_compression_desc^Best compression, slower"
-msgstr ""
+msgstr "Nén tốt nhất, chậm hơn"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:24
 msgid "save_compression^No"
-msgstr ""
+msgstr "Không"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:25
 msgid "save_compression_short^no"
-msgstr ""
+msgstr "không"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:26
 msgid "save_compression_desc^Large plain text files"
-msgstr ""
+msgstr "Tập tin văn bản bình thường"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
@@ -93,7 +91,7 @@ msgstr "Tiếp tục cuộn khi chuột rời khỏi cửa sổ"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:60
 msgid "Local time of day area lighting"
-msgstr "Chiếu sáng vùng thời điểm trong ngày cục bộ"
+msgstr "Chiếu sáng khu vực thời điểm trong ngày cục bộ"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:67
@@ -188,8 +186,6 @@ msgstr "Sử dụng định dạng đồng hồ 12 giờ"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:170
-#, fuzzy
-#| msgid "Confirm loading of saves from a different version"
 msgid "Confirm loading saves from a different version"
 msgstr "Xác nhận tải bản lưu từ một phiên bản khác"
 
@@ -223,7 +219,7 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:194
 msgid "Show color cursors"
-msgstr ""
+msgstr "Hiện con trỏ màu"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:195
@@ -231,6 +227,8 @@ msgid ""
 "Use colored mouse cursors, which may be slower or break the game (use at "
 "your own risk)"
 msgstr ""
+"Sử dụng con trỏ chuột có màu, có thể chậm hơn hoặc phá hỏng trò chơi (bạn tự "
+"chịu rủi ro khi sử dụng)"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:204
@@ -692,7 +690,7 @@ msgstr "Bệ thờ"
 #. [item]: id=ankh-necklace
 #: data/core/editor/items.cfg:21
 msgid "Ankh Necklace"
-msgstr ""
+msgstr "Vòng cổ sinh mệnh"
 
 #. [item]: id=anvil
 #: data/core/editor/items.cfg:27
@@ -707,7 +705,7 @@ msgstr "Bia bắn cung"
 #. [item]: id=armor-golden
 #: data/core/editor/items.cfg:39
 msgid "Golden Armor"
-msgstr ""
+msgstr "Áo giáp vàng"
 
 #. [item]: id=armor
 #: data/core/editor/items.cfg:45
@@ -721,27 +719,23 @@ msgstr "Rìu"
 
 #. [item]: id=ball-blue
 #: data/core/editor/items.cfg:57
-#, fuzzy
-#| msgid "Blue"
 msgid "Blue Ball"
-msgstr "Xanh lam"
+msgstr "Quả cầu xanh lam"
 
 #. [item]: id=ball-green
 #: data/core/editor/items.cfg:63
-#, fuzzy
-#| msgid "Green"
 msgid "Green Ball"
-msgstr "Xanh lục"
+msgstr "Quả cầu xanh lục"
 
 #. [item]: id=ball-magenta
 #: data/core/editor/items.cfg:69
 msgid "Magenta Ball"
-msgstr ""
+msgstr "Quả cầu đỏ tía"
 
 #. [item]: id=barrel
 #: data/core/editor/items.cfg:75
 msgid "Barrel"
-msgstr ""
+msgstr "Thùng"
 
 #. [item]: id=bomb
 #: data/core/editor/items.cfg:81
@@ -755,10 +749,8 @@ msgstr "Xương"
 
 #. [item]: id=bonestack
 #: data/core/editor/items.cfg:93
-#, fuzzy
-#| msgid "Bones"
 msgid "Bonestack"
-msgstr "Xương"
+msgstr "Đống xương"
 
 #. [item]: id=book1
 #. [item]: id=book2
@@ -769,7 +761,7 @@ msgstr "Xương"
 #: data/core/editor/items.cfg:111 data/core/editor/items.cfg:117
 #: data/core/editor/items.cfg:123
 msgid "Book"
-msgstr ""
+msgstr "Sách"
 
 #. [item]: id=bow-crystal
 #: data/core/editor/items.cfg:129
@@ -794,7 +786,7 @@ msgstr "Hộp"
 #. [item]: id=brazier
 #: data/core/editor/items.cfg:153
 msgid "Brazier"
-msgstr ""
+msgstr "Lò"
 
 #. [item]: id=buckler
 #: data/core/editor/items.cfg:159
@@ -803,10 +795,8 @@ msgstr "Khiên"
 
 #. [item]: id=burial
 #: data/core/editor/items.cfg:165
-#, fuzzy
-#| msgid "Tutorial"
 msgid "Burial"
-msgstr "Hướng dẫn"
+msgstr "Chôn cất"
 
 #. [item]: id=cage
 #: data/core/editor/items.cfg:171
@@ -816,12 +806,12 @@ msgstr "Lồng"
 #. [item]: id=chest-plain-closed
 #: data/core/editor/items.cfg:177
 msgid "Closed Plain Chest"
-msgstr ""
+msgstr "Hòm đóng"
 
 #. [item]: id=chest-plain-open
 #: data/core/editor/items.cfg:183
 msgid "Open Plain Chest"
-msgstr ""
+msgstr "Hòm mở"
 
 #. [item]: id=chest
 #: data/core/editor/items.cfg:189
@@ -830,27 +820,23 @@ msgstr "Hòm"
 
 #. [item]: id=cloak-green
 #: data/core/editor/items.cfg:195
-#, fuzzy
-#| msgid "Green"
 msgid "Green Cloak"
-msgstr "Xanh lục"
+msgstr "Áo choàng xanh lục"
 
 #. [item]: id=coffin-closed
 #: data/core/editor/items.cfg:201
 msgid "Closed Coffin"
-msgstr ""
+msgstr "Quan tài đóng"
 
 #. [item]: id=dragonstatue
 #: data/core/editor/items.cfg:207
-#, fuzzy
-#| msgid "Dragon"
 msgid "Dragon Statue"
-msgstr "Rồng"
+msgstr "Tượng rồng"
 
 #. [item]: id=flame-sword
 #: data/core/editor/items.cfg:213
 msgid "Flaming Sword"
-msgstr ""
+msgstr "Kiếm lửa"
 
 #. [item]: id=flower1
 #. [item]: id=flower2
@@ -858,40 +844,38 @@ msgstr ""
 #. [item]: id=flower4
 #: data/core/editor/items.cfg:219 data/core/editor/items.cfg:225
 #: data/core/editor/items.cfg:231 data/core/editor/items.cfg:237
-#, fuzzy
-#| msgid "slowed"
 msgid "Flower"
-msgstr "bị chậm"
+msgstr "Hoa"
 
 #. [item]: id=gohere
 #: data/core/editor/items.cfg:243
 msgid "Go Here Overlay"
-msgstr ""
+msgstr "Lớp phủ Đến đây"
 
 #. [item]: id=gold-coins-large
 #: data/core/editor/items.cfg:249
 msgid "Large Pile of Gold Coins"
-msgstr ""
+msgstr "Chồng đồng tiền vàng lớn"
 
 #. [item]: id=gold-coins-medium
 #: data/core/editor/items.cfg:255
 msgid "Pile of Gold Coins"
-msgstr ""
+msgstr "Chồng đồng tiền vàng"
 
 #. [item]: id=gold-coins-small
 #: data/core/editor/items.cfg:261
 msgid "Small Pile of Gold Coins"
-msgstr ""
+msgstr "Chồng đồng tiền vàng nhỏ"
 
 #. [item]: id=grain-sheaf
 #: data/core/editor/items.cfg:267
 msgid "Grain Sheaf"
-msgstr ""
+msgstr "Bó lúa"
 
 #. [item]: id=hammer-runic
 #: data/core/editor/items.cfg:273
 msgid "Runic Hammer"
-msgstr ""
+msgstr "Búa khắc dấu thần"
 
 #. [item]: id=holly-water
 #. [object]
@@ -907,35 +891,33 @@ msgstr "Chìa khóa"
 #. [item]: id=leather-pack
 #: data/core/editor/items.cfg:291
 msgid "Leather Pack"
-msgstr ""
+msgstr "Gói bằng da"
 
 #. [item]: id=orcish-flag
 #: data/core/editor/items.cfg:297
 msgid "Orcish Flag"
-msgstr ""
+msgstr "Cờ của người thú"
 
 #. [item]: id=ornate1
 #. [item]: id=ornate2
 #: data/core/editor/items.cfg:303 data/core/editor/items.cfg:309
 msgid "Ornate"
-msgstr ""
+msgstr "Trang trí"
 
 #. [item]: id=potion-blue
 #: data/core/editor/items.cfg:315
 msgid "Blue Potion"
-msgstr ""
+msgstr "Liều thuốc màu xanh lam"
 
 #. [item]: id=potion-green
 #: data/core/editor/items.cfg:321
-#, fuzzy
-#| msgid "Guarded Location"
 msgid "Green Potion"
-msgstr "Vị trí được bảo vệ"
+msgstr "Liều thuốc màu xanh lục"
 
 #. [item]: id=potion-gray
 #: data/core/editor/items.cfg:327
 msgid "Gray Potion"
-msgstr ""
+msgstr "Liều thuốc màu xám"
 
 #. [item]: id=potion-poison
 #. [object]: id={ID}
@@ -945,76 +927,68 @@ msgstr "Chất độc"
 
 #. [item]: id=potion-red
 #: data/core/editor/items.cfg:339
-#, fuzzy
-#| msgid "Guarded Location"
 msgid "Red Potion"
-msgstr "Vị trí được bảo vệ"
+msgstr "Liều thuốc màu đỏ"
 
 #. [item]: id=potion-yellow
 #: data/core/editor/items.cfg:345
 msgid "Yellow Potion"
-msgstr ""
+msgstr "Liều thuốc màu vàng"
 
 #. [item]: id=ring-brown
 #: data/core/editor/items.cfg:351
-#, fuzzy
-#| msgid "Brown"
 msgid "Brown Ring"
-msgstr "Nâu"
+msgstr "Nhẫn nâu"
 
 #. [item]: id=ring-gold
 #: data/core/editor/items.cfg:357
 msgid "Golden Ring"
-msgstr ""
+msgstr "Nhẫn vàng"
 
 #. [item]: id=ring-red
 #: data/core/editor/items.cfg:363
 msgid "Red Ring"
-msgstr ""
+msgstr "Nhẫn đỏ"
 
 #. [item]: id=ring-silver
 #: data/core/editor/items.cfg:369
 msgid "Silver Ring"
-msgstr ""
+msgstr "Nhẫn bạc"
 
 #. [item]: id=ring-white
 #: data/core/editor/items.cfg:375
-#, fuzzy
-#| msgid "White"
 msgid "White Ring"
-msgstr "Trắng"
+msgstr "Nhẫn trắng"
 
 #. [item]: id=scarecrow
 #: data/core/editor/items.cfg:381
 msgid "Scarecrow"
-msgstr ""
+msgstr "Bù nhìn"
 
 #. [item]: id=sceptre-of-fire
 #: data/core/editor/items.cfg:387
-#, fuzzy
-#| msgid "sceptre of fire"
 msgid "Sceptre of Fire"
-msgstr "vương trượng lửa"
+msgstr "Vương trượng lửa"
 
 #. [item]: id=spear-fancy
 #: data/core/editor/items.cfg:393
 msgid "Fancy Spear"
-msgstr ""
+msgstr "Giáo sặc sỡ"
 
 #. [item]: id=staff-magic
 #: data/core/editor/items.cfg:399
 msgid "Magic Staff"
-msgstr ""
+msgstr "Gậy phép thuật"
 
 #. [item]: id=staff
 #: data/core/editor/items.cfg:405
 msgid "Staff"
-msgstr ""
+msgstr "Gậy"
 
 #. [item]: id=stone-tablet
 #: data/core/editor/items.cfg:411
 msgid "Stone Tablet"
-msgstr ""
+msgstr "Phiến đá"
 
 #. [item]: id=storm-trident
 #. [object]
@@ -1026,7 +1000,7 @@ msgstr "Đinh ba giông bão"
 #. [item]: id=straw-bale2
 #: data/core/editor/items.cfg:423 data/core/editor/items.cfg:429
 msgid "Bale of Straw"
-msgstr ""
+msgstr "Kiện rơm"
 
 #. [item]: id=sword
 #: data/core/editor/items.cfg:435
@@ -1040,57 +1014,53 @@ msgstr "Cảnh vật"
 
 #. [item]: id=castle-ruins
 #: data/core/editor/items.cfg:447
-#, fuzzy
-#| msgid "Castle"
 msgid "Castle Ruins"
-msgstr "Lâu đài"
+msgstr "Tàn tích lâu đài"
 
 #. [item]: id=circle-magic-glow
 #: data/core/editor/items.cfg:453
 msgid "Glowing Magic Circle"
-msgstr ""
+msgstr "Vòng tròn phép thuật phát sáng"
 
 #. [item]: id=circle-magic
 #: data/core/editor/items.cfg:459
 msgid "Magic Circle"
-msgstr ""
+msgstr "Vòng tròn phép thuật"
 
 #. [item]: id=dwarven-doors-closed
 #: data/core/editor/items.cfg:465
 msgid "Closed Dwarven Doors"
-msgstr ""
+msgstr "Cửa Động Người Lùn đóng"
 
 #. [item]: id=fire
 #: data/core/editor/items.cfg:472
-#, fuzzy
-#| msgid "fire"
 msgid "Campfire"
-msgstr "lửa"
+msgstr "Lửa trại"
 
 #. [item]: id=flames
 #: data/core/editor/items.cfg:479
 msgid "Flames"
-msgstr ""
+msgstr "Lửa"
 
 #. [item]: id=gate-rusty-se
 #: data/core/editor/items.cfg:485
 msgid "Rusty Gate South East"
-msgstr ""
+msgstr "Cổng sắt gỉ phía đông nam"
 
 #. [item]: id=gate-rusty-sw
 #: data/core/editor/items.cfg:491
 msgid "Rusty Gate South West"
-msgstr ""
+msgstr "Cổng sắt gỉ phía tây nam"
 
 #. [item]: id=icepack1
 #: data/core/editor/items.cfg:497
 msgid "Ice Pack"
-msgstr ""
+msgstr "Đống băng"
 
 #. [item]: id=leanto
 #: data/core/editor/items.cfg:503
 msgid "Lean-to"
-msgstr ""
+msgstr "Mái che"
 
 #. [item]: id=lighthouse
 #: data/core/editor/items.cfg:508
@@ -1100,12 +1070,12 @@ msgstr "Hải đăng"
 #. [item]: id=mausoleum
 #: data/core/editor/items.cfg:516
 msgid "Mausoleum"
-msgstr ""
+msgstr "Lăng"
 
 #. [item]: id=mine-abandoned
 #: data/core/editor/items.cfg:522
 msgid "Abandoned Mine"
-msgstr ""
+msgstr "Hầm mỏ bị bỏ hoang"
 
 #. [item]: id=monolith1
 #. [item]: id=monolith2
@@ -1114,37 +1084,33 @@ msgstr ""
 #: data/core/editor/items.cfg:528 data/core/editor/items.cfg:534
 #: data/core/editor/items.cfg:540 data/core/editor/items.cfg:546
 msgid "Monolith"
-msgstr ""
+msgstr "Trụ đá"
 
 #. [item]: id=nest-empty
 #: data/core/editor/items.cfg:552
-#, fuzzy
-#| msgid "(Empty slot)"
 msgid "Empty Nest"
-msgstr "(Bỏ trống)"
+msgstr "Tổ rỗng"
 
 #. [item]: id=nest-full
 #: data/core/editor/items.cfg:558
 msgid "Full Nest"
-msgstr ""
+msgstr "Tổ đầy"
 
 #. [item]: id=oak-leaning
 #: data/core/editor/items.cfg:564
-#, fuzzy
-#| msgid "Warning: "
 msgid "Leaning Oak"
-msgstr "Cảnh báo: "
+msgstr "Cây sồi nghiêng"
 
 #. [item]: id=pine1
 #. [item]: id=pine2
 #: data/core/editor/items.cfg:570 data/core/editor/items.cfg:576
 msgid "Pine Tree"
-msgstr ""
+msgstr "Cây thông"
 
 #. [item]: id=rock-cairn
 #: data/core/editor/items.cfg:582
 msgid "Rock Cairn"
-msgstr ""
+msgstr "Ụ đá"
 
 #. [item]: id=rock1
 #. [item]: id=rock2
@@ -1153,12 +1119,12 @@ msgstr ""
 #: data/core/editor/items.cfg:588 data/core/editor/items.cfg:594
 #: data/core/editor/items.cfg:600 data/core/editor/items.cfg:606
 msgid "Rock"
-msgstr ""
+msgstr "Đá"
 
 #. [item]: id=rubble
 #: data/core/editor/items.cfg:612
 msgid "Rubble"
-msgstr ""
+msgstr "Gạch vụn"
 
 #. [item]: id=rune1
 #. [item]: id=rune2
@@ -1170,7 +1136,7 @@ msgstr ""
 #: data/core/editor/items.cfg:630 data/core/editor/items.cfg:636
 #: data/core/editor/items.cfg:642 data/core/editor/items.cfg:648
 msgid "Rune"
-msgstr ""
+msgstr "Dấu thần"
 
 #. [item]: id=rune1-glow
 #. [item]: id=rune2-glow
@@ -1182,13 +1148,13 @@ msgstr ""
 #: data/core/editor/items.cfg:666 data/core/editor/items.cfg:672
 #: data/core/editor/items.cfg:678 data/core/editor/items.cfg:684
 msgid "Glowing Rune"
-msgstr ""
+msgstr "Dấu thần phát sáng"
 
 #. [item]: id=shipwreck
 #. [item]: id=wreck
 #: data/core/editor/items.cfg:690 data/core/editor/items.cfg:841
 msgid "Shipwreck"
-msgstr ""
+msgstr "Xác tàu đắm"
 
 #. [item]: id=signpost
 #: data/core/editor/items.cfg:695
@@ -1198,17 +1164,17 @@ msgstr "Biển chỉ đường"
 #. [item]: id=slab1
 #: data/core/editor/items.cfg:701
 msgid "Slab"
-msgstr ""
+msgstr "Phiến đá"
 
 #. [item]: id=snowbits
 #: data/core/editor/items.cfg:707
 msgid "Piles of Snow"
-msgstr ""
+msgstr "Đống tuyết"
 
 #. [item]: id=summoning-center
 #: data/core/editor/items.cfg:714
 msgid "Summoning Center"
-msgstr ""
+msgstr "Trung tâm triệu gọi"
 
 #. [item]: id=summoning-circle1
 #. [item]: id=summoning-circle2
@@ -1220,42 +1186,42 @@ msgstr ""
 #: data/core/editor/items.cfg:732 data/core/editor/items.cfg:738
 #: data/core/editor/items.cfg:744 data/core/editor/items.cfg:750
 msgid "Summoning Circle"
-msgstr ""
+msgstr "Vòng tròn triệu gọi"
 
 #. [item]: id=temple1
 #: data/core/editor/items.cfg:756
 msgid "Temple"
-msgstr ""
+msgstr "Đền"
 
 #. [item]: id=tent-fancy-red
 #: data/core/editor/items.cfg:762
 msgid "Fancy Red Tent"
-msgstr ""
+msgstr "Lều đỏ sặc sỡ"
 
 #. [item]: id=tent-ruin-1
 #: data/core/editor/items.cfg:768
 msgid "Ruined Tent"
-msgstr ""
+msgstr "Lều hỏng"
 
 #. [item]: id=tent-shop-weapons
 #: data/core/editor/items.cfg:773
 msgid "Weapons Shop Tent"
-msgstr ""
+msgstr "Lều bán vũ khí"
 
 #. [item]: id=trapdoor-closed
 #: data/core/editor/items.cfg:780
 msgid "Closed Trapdoor"
-msgstr ""
+msgstr "Cửa chui đóng"
 
 #. [item]: id=trapdoor-open
 #: data/core/editor/items.cfg:786
 msgid "Open Trapdoor"
-msgstr ""
+msgstr "Cửa chui mở"
 
 #. [item]: id=trash
 #: data/core/editor/items.cfg:792
 msgid "Trash Pile"
-msgstr ""
+msgstr "Đống rác"
 
 #. [item]: id=village-human-burned1
 #. [item]: id=village-human-burned2
@@ -1263,10 +1229,8 @@ msgstr ""
 #. [item]: id=village-human-burned4
 #: data/core/editor/items.cfg:798 data/core/editor/items.cfg:804
 #: data/core/editor/items.cfg:810 data/core/editor/items.cfg:816
-#, fuzzy
-#| msgid "Owned village"
 msgid "Burned Human Village"
-msgstr "Làng đã sở hữu"
+msgstr "Làng của con người bị đốt"
 
 #. [item]: id=well
 #: data/core/editor/items.cfg:821
@@ -1281,12 +1245,12 @@ msgstr "Xoáy nước"
 #. [item]: id=windmill
 #: data/core/editor/items.cfg:835
 msgid "Windmill"
-msgstr ""
+msgstr "Cối xay gió"
 
 #. [set_menu_item]: id=ai_controller_unit_control_{UNIT_ID}
 #: data/core/macros/ai_controller.cfg:22
 msgid "Ask $ai_controller_unit.name to move here"
-msgstr ""
+msgstr "Yêu cầu $ai_controller_unit.name di chuyển đến đây"
 
 #. [set_menu_item]: id=ai_controller_leader_control_{CONTROLLED_SIDE}
 #: data/core/macros/ai_controller.cfg:76
@@ -1369,10 +1333,8 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:248
 #: data/core/macros/ai_controller.cfg:379
 #: data/core/macros/ai_controller.cfg:383
-#, fuzzy
-#| msgid "side $temp_i"
 msgid "Side $temp_i"
-msgstr "phe $temp_i"
+msgstr "Phe $temp_i"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:249
@@ -1383,10 +1345,8 @@ msgstr "phe $temp_i"
 #. [command]
 #: data/core/macros/ai_controller.cfg:262
 #: data/core/macros/ai_controller.cfg:397
-#, fuzzy
-#| msgid "$side_i_leader.name (side $temp_i|)"
 msgid "side $temp_i ($side_i_leader.name|)"
-msgstr "$side_i_leader.name (phe $temp_i|)"
+msgstr "phe $temp_i ($side_i_leader.name|)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [value]
@@ -1429,7 +1389,7 @@ msgstr "Bảo vệ vị trí này"
 #. [command]
 #: data/core/macros/ai_controller.cfg:499
 msgid "focusing on defending the area around $x1|,$y1|."
-msgstr "tập trung bảo vệ vùng xung quanh $x1|,$y1|."
+msgstr "tập trung bảo vệ khu vực xung quanh $x1|,$y1|."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:541
@@ -2350,6 +2310,80 @@ msgid ""
 "Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,"
 "Ziyad,Zubayr,Zuhayr"
 msgstr ""
+"Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
+"Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
+"Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-Ghani,Abdul-"
+"Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-Hamid,Abdul-Haqq,"
+"Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-Karim,Abdul-Khabir,"
+"Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-Matin,Abdul-Mubdiʾ,"
+"Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-Muʿid,Abdul-Muʿizz,"
+"Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-Muqtadir,Abdul-Musawwir,Abdul-"
+"Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-Nasir,Abdul-Nur,Abdul-Qadir,Abdul-"
+"Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-Quddus,Abdul-Rafi,Abdul-Rahim,Abdul-"
+"Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-Razzaq,Abdul-Shakur,Abdul-Tawwab,Abdul-"
+"Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-Wajid,Abdul-Wakil,Abdul-Wali,Abdul-"
+"Waliy,Abdul-Warith,Abdul-Zahir,Abdullah,ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,"
+"Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-"
+"Din,Alʿ Abbas,Aladdin,al-Bara,al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,"
+"Almahdi,al-Safi,Altaf,Altair,al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,"
+"Amir,ʿAmir,Amjad,ʿAmmar,ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,"
+"ʿArif,Asad,Asʿad,Asadel,Ashraf,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ Allah,Ataʿ al-"
+"Rahman,Athil,Athir,ʿAtif,ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,Aza,"
+"ʿAzab,Azhar,Azim,ʿAziz,ʿAzzam,Badi,Badi al-Zaman,Badr,Badr al-Din,Badri,"
+"Bahaʿ,Bahiyy al-Din,Bahij,Bahir,Bakr,Bakri,Baligh,Bandar,Barakah,Barir,"
+"Bashshar,Basil,Basim,Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,"
+"Bushr,Butrus,Dabir,Dani,Darwish,Daʿud,Dhakir,Dhakiy,Dhakwan,Dhul Fiqar,Dirar,"
+"Diya,Diya al-Din,Duqaq,Fadi,Fadil,Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,"
+"Faʿiz,Fakhir,Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,"
+"Fariq,Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,"
+"Fida,Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,"
+"Ghawth,Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,"
+"Hamal,Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,"
+"Hannad,Haris,Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,"
+"Hilal,Hilmi,Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam al-"
+"Din,Ibrahim,ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-Din,Imran,"
+"Imtiyaz,Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,Ishaq,Ismaʿil,Iyad,Iyas,Izz al-Din,"
+"Jabbar,Jabr,Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-Din,Jalil,Jamal,Jamal "
+"al-Din,Jamil,Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,Jibril,Jubair,"
+"Jul,Jumah,Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,Kamil,Karam,"
+"Kardal,Karif,Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,Khalid,Khalil,"
+"Khalil al-Allah,Khalis,Khatib,Khair al-Din,Khairi,Khoury,Khulus,Khuzaymah,"
+"Kutaiba,Labib,Lablab,Latif,Layth,LuʿayLubayd,Luqman,Lut,Lutfi,Maʿd,Madani,"
+"Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,Majd,Majdy,Majd al-Din,"
+"Majid,Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,Mansur,Marghub,Marid,Maʿruf,"
+"Marwan,Marzuq,Mashʿal,Mashhur,Masrur,Masʿud,Masun,Maysarah,Mazhar,Mazin,"
+"Mehmed,Mihran,Mihyar,Mikaʾil,Miqdad,Misbah,Mishʿal,Miyaz,Muʾadh,Muʾawiyah,"
+"Muʾayyad,Mubarak,Mubin,Mudar,Muddaththir,Mufid,Muflih,Muhab,Muhayr,Muhammad,"
+"Muhanna,Muhannad,Muhib,Muhibb,Muhsin,Muhtadi,Muhyi al-Din,Muʿin,Muʿizz,Mujab,"
+"Mujahid,Mukarram,Mukhlis,Mukhtar,Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,"
+"Mundhir,Munib,Munif,Munir,Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,"
+"Murtada,Musa,Musʿab,Musaʿid,Mushtaq,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,"
+"Mutawalli,Muʿtazz,Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,"
+"Nabighah,Nabih,Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,"
+"Najid,Najjar,Najm al-Din,Naʿaman,Namir,Nashʿah,Nashʿat,Nashwan,Nasib,Nasih,"
+"Nasim,Nasir,Nasir al-Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,"
+"Nazmi,Nibras,Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur al-"
+"Din,Nuri,Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,"
+"Qutaybah,Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Raʿid,"
+"Raʿif,Rais,Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,"
+"Rashid,Rasil,Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,Ridwan,"
+"Rihab,Riyad,Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Saʿadah,Sab,Sabih,Sabir,Sabri,"
+"Saʿd,Saʿd al-Din,Sadad,Sadid,Sadiq,Saʿdun,Saʿid,Safi,Safiy,Safiy al-Din,"
+"Safuh,Safwah,Safwat,Safwan,Sahib,Sahir,Sahl,Saʾib,Saif,Saif al-Din,Sajid,"
+"Sajjad,Sakhr,Salah,Salah al-Din,Salamah,Salih,Salim,Salman,Sami,Samih,Samir,"
+"Samman,Saqr,Sariyah,Sati,Saud,Sayyid,Shaʿban,Shadi,Shadin,Shafi,Shafiq,"
+"Shahid,Shahin,Shahir,Shakib,Shakir,Shams al-Din,Shamal,Shamil,Shamim,Sharaf,"
+"Sharif,Shawqi,Shihab,Shihab al-Din,Shihad,Shuʿayb,Shukri,Shumayl,Siddiq,"
+"Sinan,Siraj,Siraj al-Din,Sofian,Subhi,Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,"
+"Sumrah,Suraqah,Suʿud,Tahir,Tahsin,Taym Allah,Taj,Taj al-Din,Talal,Talib,"
+"Tamim,Tamir,Tamam,Tammam,Taqiy,Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,"
+"Taysir,Tayyib,Thabit,Thamir,Thaqib,Thawab,Thawban,ʿUbaidah,Ubaid,Ubayy,"
+"ʿUdayl,ʿUday,ʿUmar,Umarah,Umair,ʾaUrwah,Usaym,Usama,ʿUtbah,Uthal,Uthman,"
+"Waddah,Wadi,Wadid,Wafiq,Wahab,Wahhab,Wahid,Waʾil,Wajdi,Wajid,Wajih,Wakil,"
+"Walid,Walif,Waliy Allah,Waliy al-Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,"
+"Wazir,Yahya,Yaman,Yaʿqub,Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,"
+"Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,"
+"Ziyad,Zubayr,Zuhayr"
 
 #: data/core/macros/names.cfg:47
 msgid ""
@@ -3165,14 +3199,12 @@ msgstr "điện tử"
 #. [theme]: id=Default
 #: data/themes/default.cfg:34
 msgid "theme^Default"
-msgstr ""
+msgstr "Mặc định"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:35
-#, fuzzy
-#| msgid "Defaults"
 msgid "Default theme."
-msgstr "Mặc định"
+msgstr "Sắc thái mặc định."
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:82 data/themes/pandora.cfg:114
@@ -3182,10 +3214,8 @@ msgstr "Trình đơn"
 
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:92
-#, fuzzy
-#| msgid "Back to Turn "
 msgid "Back to..."
-msgstr "Trở lại lượt "
+msgstr "Trở lại..."
 
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:100 data/themes/unit_box.cfg:120
@@ -3233,7 +3263,7 @@ msgstr "NNC"
 #. [label]: id=label-def
 #: data/themes/default.cfg:159
 msgid "def"
-msgstr ""
+msgstr "pt"
 
 #. [label]: id=gold-icon
 #: data/themes/default.cfg:168 data/themes/pandora.cfg:181
@@ -3267,8 +3297,6 @@ msgstr "thu nhập"
 
 #. [unit_level]: id=unit-level
 #: data/themes/default.cfg:394
-#, fuzzy
-#| msgid "statuspanel^level"
 msgid "statuspanel^lvl"
 msgstr "cấp"
 
@@ -3341,31 +3369,31 @@ msgstr "Bỏ qua hoạt ảnh"
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:22
 msgid "theme^Pandora"
-msgstr ""
+msgstr "Pandora"
 
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:23
 msgid "800x480 theme optimized for Pandora devices."
-msgstr ""
+msgstr "Sắc thái 800x480 được tối ưu cho các thiết bị Pandora"
 
 #. [action]: id=end-turn
 #: data/themes/pandora.cfg:153
-#, fuzzy
-#| msgid "End Turn"
 msgid ""
 "End\n"
 "Turn"
-msgstr "Kết thúc lượt"
+msgstr ""
+"Kết thúc\n"
+"lượt"
 
 #. [theme]: id=UnitBox
 #: data/themes/unit_box.cfg:11
 msgid "theme^UnitBox"
-msgstr ""
+msgstr "Hộp đơn vị"
 
 #. [theme]: id=UnitBox
 #: data/themes/unit_box.cfg:12
 msgid "Experimental work-in-progress replacement for the default theme."
-msgstr ""
+msgstr "Bản thay thế thử nghiệm đang thực hiện cho sắc thái mặc định."
 
 #. [action]: id=flip_map_button_editor, type=checkbox
 #: data/themes/unit_box.cfg:205
@@ -3375,12 +3403,12 @@ msgstr "Chưa được cài đặt."
 #. [theme]: id=Widescreen
 #: data/themes/widescreen.cfg:11
 msgid "theme^Widescreen"
-msgstr ""
+msgstr "Màn hình rộng"
 
 #. [theme]: id=Widescreen
 #: data/themes/widescreen.cfg:12
 msgid "Experimental theme optimized for widescreen resolutions."
-msgstr ""
+msgstr "Sắc thái thử nghiệm được tối ưu cho các độ phân giải màn hình rộng."
 
 #. [selected_unit_level]: id=selected-unit-level
 #. [unit_level]: id=unit-level
@@ -3406,13 +3434,13 @@ msgid ""
 "Use the map editor's <i>Areas</i> menu to define regions later addressed by "
 "event or ai coding."
 msgstr ""
+"Sử dụng trình đơn <i>Khu vực</i> của trình hiệu chỉnh để định nghĩa các vùng "
+"được xử lý về sau bởi mã sự kiện hoặc trí tuệ nhân tạo."
 
 #. [tip]
 #: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
-#, fuzzy
-#| msgid "<i>― The Wesnoth Tactical Guide</i>"
 msgid "<i>― The Wesnoth Design Guide</i>"
-msgstr "<i>― Chỉ dẫn chiến thuật Wesnoth</i>"
+msgstr "<i>― Chỉ dẫn thiết kế Wesnoth</i>"
 
 #. [tip]
 #: data/tips.cfg:8
@@ -3420,6 +3448,8 @@ msgid ""
 "Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use of "
 "advanced features."
 msgstr ""
+"Tạo một <i>Màn chơi mới</i> trong trình đơn <i>Tập tin</i> của trình hiệu "
+"chỉnh để sử dụng các tính năng nâng cao."
 
 #. [tip]
 #: data/tips.cfg:12
@@ -3427,6 +3457,9 @@ msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the mp create screen's <i>User Scenarios</i> section."
 msgstr ""
+"Các màn chơi được lưu từ trình hiệu chỉnh trong thư mục mặc định của chúng "
+"có thể được chọn trong phần <i>Màn chơi của người dùng</i> của màn hình tạo "
+"trò chơi NNC."
 
 #. [tip]
 #: data/tips.cfg:16
@@ -4328,10 +4361,8 @@ msgid "addon_type^Scenario"
 msgstr "Màn chơi"
 
 #: src/addon/info.cpp:160
-#, fuzzy
-#| msgid "addon_type^MP campaign"
 msgid "addon_type^SP/MP Campaign"
-msgstr "Chiến dịch NNC"
+msgstr "Chiến dịch 1NC/NNC"
 
 #: src/addon/info.cpp:162
 msgid "addon_type^MP era"
@@ -4650,6 +4681,10 @@ msgid ""
 "File: $path\n"
 "Error message: $msg"
 msgstr ""
+"Không thể đọc tập tin cục bộ với thông tin phát hình phần bổ sung.\n"
+"\n"
+"Tập tin: $path\n"
+"Thông báo lỗi: $msg"
 
 #: src/addon/manager_ui.cpp:1000
 msgid "The add-ons server address specified is not valid."
@@ -4953,7 +4988,7 @@ msgstr "Không thể tìm thấy kiểu người chỉ huy cho liên minh $facti
 
 #: src/flg_manager.cpp:301
 msgid "Cannot obtain genders for invalid leader $leader"
-msgstr ""
+msgstr "Không thể lấy giới tính cho người lãnh đạo không hợp lệ $leader"
 
 #: src/format_time_summary.cpp:46 src/reports.cpp:1540
 msgid "%H:%M"
@@ -4976,20 +5011,16 @@ msgid "%b %d"
 msgstr "%b %d"
 
 #: src/format_time_summary.cpp:65
-#, fuzzy
-#| msgid "%b %d %y"
 msgid "%b %d %Y"
-msgstr "%b %d %y"
+msgstr "%b %d %Y"
 
 #: src/game_config.cpp:354
 msgid "Invalid color range: "
 msgstr "Phạm vi màu không hợp lệ: "
 
 #: src/game_config_manager.cpp:180
-#, fuzzy
-#| msgid "Error loading game configuration files: '"
 msgid "Error loading game configuration files. The game will now exit."
-msgstr "Lỗi khi tải các tập tin cấu hình trò chơi: '"
+msgstr "Lỗi khi tải các tập tin cấu hình trò chơi. Trò chơi bây giờ sẽ thoát."
 
 #: src/game_config_manager.cpp:279
 msgid "The following add-on had errors and could not be loaded:"
@@ -5001,6 +5032,8 @@ msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
 msgstr[0] ""
+"Xin báo cáo lỗi này với tác giả hoặc người bảo trì tương ứng của các phần bổ "
+"sung này."
 
 #: src/game_controller.cpp:332 src/game_controller.cpp:927
 #: src/windows_tray_notification.cpp:107
@@ -5030,6 +5063,9 @@ msgid ""
 "single-player. It is recommended to load this scenario through the "
 "Multiplayer -> Load Game dialog instead."
 msgstr ""
+"Đây là một màn chơi nhiều người chơi. Một số phần của nó có thể không hoạt "
+"động đúng trong chế độ một người chơi. Thay vào đó nên tải màn chơi này qua "
+"hộp thoại Nhiều người chơi -> Tải trò chơi."
 
 #: src/game_controller.cpp:534 src/multiplayer.cpp:262
 msgid "Warning"
@@ -5059,10 +5095,8 @@ msgid "The game map could not be loaded: "
 msgstr "Không thể tải bản đồ trò chơi: "
 
 #: src/game_display.cpp:951 src/game_display.cpp:977
-#, fuzzy
-#| msgid "Chat message aging"
 msgid "Chat message"
-msgstr "Thời hạn tin nhắn tán gẫu"
+msgstr "Tin nhắn tán gẫu"
 
 #: src/game_display.cpp:951 src/game_display.cpp:973
 #: src/playmp_controller.cpp:100
@@ -5181,22 +5215,20 @@ msgid "Quit"
 msgstr "Thoát"
 
 #: src/hotkey/command_executor.cpp:509 src/hotkey/command_executor.cpp:671
-#, fuzzy
-#| msgid "Do you really want to dismiss him?"
 msgid "Do you really want to quit?"
-msgstr "Bạn có thực sự muốn giải tán đơn vị này không?"
+msgstr "Bạn có thực sự muốn thoát không?"
 
 #: src/hotkey/command_executor.cpp:626
 msgid "Map-Screenshot"
-msgstr ""
+msgstr "Chụp màn hình bản đồ"
 
 #: src/hotkey/command_executor.cpp:626
 msgid "Screenshot"
-msgstr ""
+msgstr "Chụp màn hình"
 
 #: src/hotkey/command_executor.cpp:633
 msgid "Screenshot Done"
-msgstr ""
+msgstr "Đã chụp màn hình"
 
 #: src/intro.cpp:36
 msgid "The End"
@@ -5451,12 +5483,9 @@ msgstr ""
 "không?"
 
 #: src/menu_events.cpp:857
-#, fuzzy
-#| msgid "Some units have movement left. Do you really want to end your turn?"
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr ""
-"Một số đơn vị vẫn còn có thể di chuyển. Bạn có thực sự muốn kết thúc lượt "
-"không?"
+"Một số đơn vị không di chuyển. Bạn có thực sự muốn kết thúc lượt không?"
 
 #: src/menu_events.cpp:909
 msgid "Rename Unit"
@@ -5748,10 +5777,8 @@ msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<phe> [on/off]]"
 
 #: src/menu_events.cpp:2060
-#, fuzzy
-#| msgid "Switch a side to/from AI control."
 msgid "Switch a side to/from idle state."
-msgstr "Chuyển một phe thành/từ máy điều khiển."
+msgstr "Chuyển một phe thành/từ trạng thái rảnh rỗi."
 
 #: src/menu_events.cpp:2063
 msgid "<side> <nickname>"
@@ -5764,11 +5791,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2065
 msgid "<side>"
-msgstr ""
+msgstr "<phe>"
 
 #: src/menu_events.cpp:2065
 msgid "Query the controller status of a side."
-msgstr ""
+msgstr "Truy vấn trạng thái điều khiển của một phe."
 
 #: src/menu_events.cpp:2067
 msgid "Clear chat history."
@@ -6045,8 +6072,6 @@ msgid "requesting information for user $nick"
 msgstr "lấy thông tin về người dùng $nick"
 
 #: src/menu_events.cpp:2635
-#, fuzzy
-#| msgid "Couldn't find label or unit containing the string '$search'."
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "Không thể tìm thấy nhãn hoặc đơn vị chứa chuỗi '$search'."
 
@@ -6059,10 +6084,8 @@ msgid "Can't droid networked side: '$side'."
 msgstr "Không thể tự động hóa phe mạng: '$side'."
 
 #: src/menu_events.cpp:2708
-#, fuzzy
-#| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle invalid side: '$side'."
-msgstr "Không thể tự động hóa phe không hợp lệ: '$side'."
+msgstr "Không thể rảnh rỗi hóa phe không hợp lệ: '$side'."
 
 #: src/menu_events.cpp:2760
 msgid "Can't change control of invalid side: '$side'."
@@ -6073,16 +6096,12 @@ msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Không thể thay đổi quyền điều khiển của phe ngoài phạm vi: '$side'."
 
 #: src/menu_events.cpp:2781
-#, fuzzy
-#| msgid "Can't change control of invalid side: '$side'."
 msgid "Can't query control of invalid side: '$side'."
-msgstr "Không thể thay đổi quyền điều khiển của phe không hợp lệ: '$side'."
+msgstr "Không thể truy vấn quyền điều khiển của phe không hợp lệ: '$side'."
 
 #: src/menu_events.cpp:2787
-#, fuzzy
-#| msgid "Can't change control of out-of-bounds side: '$side'."
 msgid "Can't query control of out-of-bounds side: '$side'."
-msgstr "Không thể thay đổi quyền điều khiển của phe ngoài phạm vi: '$side'."
+msgstr "Không thể truy vấn quyền điều khiển của phe ngoài phạm vi: '$side'."
 
 #: src/menu_events.cpp:2901
 msgid "Layers"
@@ -6317,10 +6336,8 @@ msgid "You have made too many login attempts."
 msgstr "Bạn đã thử đăng nhập quá nhiều lần."
 
 #: src/multiplayer_configure.cpp:47
-#, fuzzy
-#| msgid "Confirm"
 msgid "Configure Game"
-msgstr "Xác nhận"
+msgstr "Cấu hình trò chơi"
 
 #: src/multiplayer_configure.cpp:56
 msgid "Time limit"
@@ -6328,7 +6345,7 @@ msgstr "Giới hạn thời gian"
 
 #: src/multiplayer_configure.cpp:71
 msgid "Generic"
-msgstr ""
+msgstr "Chung"
 
 #: src/multiplayer_configure.cpp:72
 msgid "Name of game:"
@@ -6359,10 +6376,8 @@ msgid "Set Password..."
 msgstr "Đặt mật khẩu..."
 
 #: src/multiplayer_configure.cpp:86
-#, fuzzy
-#| msgid "Select another ai"
 msgid "Select an entry point:"
-msgstr "Chọn trí tuệ nhân tạo khác"
+msgstr "Chọn một điểm vào:"
 
 #: src/multiplayer_configure.cpp:104
 msgid "The maximum number of turns the game can last"
@@ -6511,22 +6526,16 @@ msgid "Player/Type"
 msgstr "Người chơi/Kiểu"
 
 #: src/multiplayer_connect.cpp:372
-#, fuzzy
-#| msgid "Faction"
 msgid "Faction/Name"
-msgstr "Liên minh"
+msgstr "Liên minh/Tên"
 
 #: src/multiplayer_connect.cpp:374
-#, fuzzy
-#| msgid "Team/Gender"
 msgid "Leader/Gender"
-msgstr "Đội/Giới tính"
+msgstr "Lãnh đạo/Giới tính"
 
 #: src/multiplayer_connect.cpp:376
-#, fuzzy
-#| msgid "Color"
 msgid "Team/Color"
-msgstr "Màu"
+msgstr "Đội/Màu"
 
 #: src/multiplayer_connect.cpp:383
 msgid "I’m Ready"
@@ -6598,20 +6607,16 @@ msgid "Create Game"
 msgstr "Tạo trò chơi"
 
 #: src/multiplayer_create.cpp:68
-#, fuzzy
-#| msgid "Filter: "
 msgid "Filter:"
-msgstr "Bộ lọc: "
+msgstr "Bộ lọc:"
 
 #: src/multiplayer_create.cpp:69 src/multiplayer_create.cpp:381
 msgid "Number of players: any"
-msgstr ""
+msgstr "Số lượng người chơi: bất kỳ"
 
 #: src/multiplayer_create.cpp:70
-#, fuzzy
-#| msgid "Random start time"
 msgid "Random map options:"
-msgstr "Thời gian bắt đầu ngẫu nhiên"
+msgstr "Tùy chọn bản đồ ngẫu nhiên:"
 
 #: src/multiplayer_create.cpp:71 src/multiplayer_lobby.cpp:602
 msgid "Era:"
@@ -6622,18 +6627,16 @@ msgid ""
 "No eras available\n"
 "for this game."
 msgstr ""
+"Không có thời đại nào\n"
+"cho trò chơi này."
 
 #: src/multiplayer_create.cpp:74 src/multiplayer_lobby.cpp:622
-#, fuzzy
-#| msgid "Modifications..."
 msgid "Modifications:"
-msgstr "Sửa đổi..."
+msgstr "Bản sửa đổi:"
 
 #: src/multiplayer_create.cpp:78
-#, fuzzy
-#| msgid "Next Turn"
 msgid "Next"
-msgstr "Lượt kế tiếp"
+msgstr "Kế tiếp"
 
 #: src/multiplayer_create.cpp:80
 msgid "Regenerate"
@@ -6649,43 +6652,31 @@ msgstr "Tải trò chơi..."
 
 #: src/multiplayer_create.cpp:83 src/multiplayer_create.cpp:278
 msgid "Activate"
-msgstr ""
+msgstr "Kích hoạt"
 
 #: src/multiplayer_create.cpp:103
-#, fuzzy
-#| msgid "Scenario"
 msgid "Scenarios"
 msgstr "Màn chơi"
 
 #: src/multiplayer_create.cpp:104
-#, fuzzy
-#| msgid "Campaign"
 msgid "Campaigns"
 msgstr "Chiến dịch"
 
 #: src/multiplayer_create.cpp:105
-#, fuzzy
-#| msgid "Close"
 msgid "User Maps"
-msgstr "Đóng"
+msgstr "Bản đồ của người dùng"
 
 #: src/multiplayer_create.cpp:106
-#, fuzzy
-#| msgid "Scenario"
 msgid "User Scenarios"
-msgstr "Màn chơi"
+msgstr "Màn chơi của người dùng"
 
 #: src/multiplayer_create.cpp:107
-#, fuzzy
-#| msgid "Random"
 msgid "Random Maps"
-msgstr "Ngẫu nhiên"
+msgstr "Bản đồ ngẫu nhiên"
 
 #: src/multiplayer_create.cpp:124 src/multiplayer_create.cpp:125
-#, fuzzy
-#| msgid "No eras found."
 msgid "No games found."
-msgstr "Không tìm thấy thời đại nào."
+msgstr "Không tìm thấy trò chơi nào."
 
 #: src/multiplayer_create.cpp:162
 msgid "No eras found."
@@ -6696,24 +6687,20 @@ msgid "No eras found"
 msgstr "Không tìm thấy thời đại nào"
 
 #: src/multiplayer_create.cpp:185
-#, fuzzy
-#| msgid "Modifications..."
 msgid ""
 "Modifications:\n"
 "None found."
-msgstr "Sửa đổi..."
+msgstr ""
+"Bản sửa đổi:\n"
+"Không tìm thấy gì."
 
 #: src/multiplayer_create.cpp:187 src/multiplayer_create.cpp:276
-#, fuzzy
-#| msgid "Debug mode activated!"
 msgid "Deactivate"
-msgstr "Đã kích hoạt chế độ gỡ lỗi!"
+msgstr "Ngừng kích hoạt"
 
 #: src/multiplayer_create.cpp:245
-#, fuzzy
-#| msgid "The map is invalid."
 msgid "The level is invalid."
-msgstr "Bản đồ không hợp lệ."
+msgstr "Cấp độ không hợp lệ."
 
 #: src/multiplayer_create.cpp:330
 msgid "Players: "
@@ -6724,36 +6711,28 @@ msgid "Size: "
 msgstr "Kích thước: "
 
 #: src/multiplayer_create.cpp:383
-#, fuzzy
-#| msgid "Name of game:"
 msgid "Number of players: "
-msgstr "Tên trò chơi:"
+msgstr "Số lượng người chơi: "
 
 #: src/multiplayer_create.cpp:490 src/unit_types.cpp:782
 msgid "No description available."
 msgstr "Không có mô tả."
 
 #: src/multiplayer_create_engine.cpp:139 src/multiplayer_create_engine.cpp:797
-#, fuzzy
-#| msgid "The game could not be loaded: "
 msgid "Map could not be loaded: "
-msgstr "Không thể tải trò chơi: "
+msgstr "Không thể tải bản đồ: "
 
 #: src/multiplayer_create_engine.cpp:143
-#, fuzzy
-#| msgid "The game could not be loaded: "
 msgid "Map could not be loaded."
-msgstr "Không thể tải trò chơi: "
+msgstr "Không thể tải bản đồ."
 
 #: src/multiplayer_create_engine.cpp:165
-#, fuzzy
-#| msgid " No help available."
 msgid "not available."
-msgstr " Không có trợ giúp."
+msgstr "không khả dụng."
 
 #: src/multiplayer_create_engine.cpp:217
 msgid "User made map"
-msgstr ""
+msgstr "Bản đồ do người dùng tạo"
 
 #: src/multiplayer_lobby.cpp:128
 msgid "--no games open--"
@@ -6764,22 +6743,16 @@ msgid " (Unknown Era)"
 msgstr " (Thời đại không xác định)"
 
 #: src/multiplayer_lobby.cpp:486
-#, fuzzy
-#| msgid "Scenario"
 msgid "Scenario:"
-msgstr "Màn chơi"
+msgstr "Màn chơi:"
 
 #: src/multiplayer_lobby.cpp:526
-#, fuzzy
-#| msgid "Campaign"
 msgid "Campaign:"
-msgstr "Chiến dịch"
+msgstr "Chiến dịch:"
 
 #: src/multiplayer_lobby.cpp:557
-#, fuzzy
-#| msgid "Campaign: $campaign_name"
 msgid "Unknown campaign: $campaign_id"
-msgstr "Chiến dịch: $campaign_name"
+msgstr "Chiến dịch không xác đinh: $campaign_id"
 
 #: src/multiplayer_lobby.cpp:634
 msgid " (missing)"
@@ -6831,7 +6804,7 @@ msgstr "Phát lại nhanh"
 
 #: src/multiplayer_lobby.cpp:878
 msgid "Enter blindfolded"
-msgstr ""
+msgstr "Vào không cần xem"
 
 #: src/multiplayer_lobby.cpp:882
 msgid "Skip quickly to the active turn when observing"
@@ -6839,7 +6812,7 @@ msgstr "Nhảy nhanh đến lượt hiện tại khi quan sát"
 
 #: src/multiplayer_lobby.cpp:883
 msgid "Do not show replay turns"
-msgstr ""
+msgstr "Không hiện lượt phát lại"
 
 #: src/multiplayer_lobby.cpp:896
 msgid ""
@@ -7160,13 +7133,11 @@ msgstr "Thay thế bằng NC cục bộ"
 
 #: src/playturn.cpp:269
 msgid "Set side to idle"
-msgstr ""
+msgstr "Đặt phe thành rảnh rỗi"
 
 #: src/playturn.cpp:270
-#, fuzzy
-#| msgid "Abort game"
 msgid "Save and abort game"
-msgstr "Hủy bỏ trò chơi"
+msgstr "Lưu và hủy bỏ trò chơi"
 
 #: src/playturn.cpp:278 src/playturn.cpp:292
 msgid "Replace with $player"
@@ -7418,16 +7389,12 @@ msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Cảnh báo: Tập tin bạn thử tải bị hỏng. Vẫn đang tải.\n"
 
 #: src/savegame.cpp:607
-#, fuzzy
-#| msgid ""
-#| "This save is from an old, unsupported version ($version_number|) and "
-#| "cannot be loaded."
 msgid ""
 "The save has corrupt version information ($version_number|) and cannot be "
 "loaded."
 msgstr ""
-"Bản lưu này là từ một phiên bản cũ, không được hỗ trợ ($version_number|) và "
-"không thể tải được."
+"Bản lưu này có thông tin phiên bản hỏng ($version_number|) và không thể tải "
+"được."
 
 #: src/savegame.cpp:630
 msgid ""
@@ -7446,10 +7413,8 @@ msgstr ""
 "muốn tải nó không?"
 
 #: src/savegame.cpp:696
-#, fuzzy
-#| msgid "This is not a multiplayer save"
 msgid "This is not a multiplayer save."
-msgstr "Đây không phải bản lưu nhiều người chơi"
+msgstr "Đây không phải bản lưu nhiều người chơi."
 
 #: src/savegame.cpp:763
 msgid "The game could not be saved: "
@@ -7474,10 +7439,8 @@ msgid "Saved"
 msgstr "Đã lưu"
 
 #: src/savegame.cpp:922
-#, fuzzy
-#| msgid "The game has been saved"
 msgid "The game has been saved."
-msgstr "Đã lưu trò chơi"
+msgstr "Đã lưu trò chơi."
 
 #: src/savegame.cpp:953 src/savegame.cpp:974
 msgid "Could not write to file"
@@ -7504,18 +7467,16 @@ msgid "Unexpected characters at line start"
 msgstr "Ký tự không mong muốn ở đầu dòng"
 
 #: src/serialization/parser.cpp:153
-#, fuzzy
-#| msgid "Missing closing tag for tag [$tag] at $pos"
 msgid "Missing closing tag for tag [$tag]"
-msgstr "Thiếu thẻ đóng cho thẻ [$tag] ở $pos"
+msgstr "Thiếu thẻ đóng cho thẻ [$tag]"
 
 #: src/serialization/parser.cpp:154
 msgid "expected at $pos"
-msgstr ""
+msgstr "mong chờ ở $pos"
 
 #: src/serialization/parser.cpp:154 src/serialization/parser.cpp:218
 msgid "opened at $pos"
-msgstr ""
+msgstr "mở ở $pos"
 
 #: src/serialization/parser.cpp:167
 msgid "Unterminated [element] tag"
@@ -7542,16 +7503,12 @@ msgid "Unexpected closing tag"
 msgstr "Thẻ đóng không mong muốn"
 
 #: src/serialization/parser.cpp:217
-#, fuzzy
-#| msgid "Found invalid closing tag [/$tag2] for tag [$tag1] (opened at $pos)"
 msgid "Found invalid closing tag [/$tag2] for tag [$tag1]"
-msgstr "Tìm thấy thẻ đóng không hợp lệ [/$tag2] cho thẻ [$tag1] (mở ở $pos)"
+msgstr "Tìm thấy thẻ đóng không hợp lệ [/$tag2] cho thẻ [$tag1]"
 
 #: src/serialization/parser.cpp:218
-#, fuzzy
-#| msgid "Close"
 msgid "closed at $pos"
-msgstr "Đóng"
+msgstr "đóng ở $pos"
 
 #: src/serialization/parser.cpp:247 src/serialization/parser.cpp:259
 msgid "Empty variable name"
@@ -7567,13 +7524,11 @@ msgstr "Chuỗi trích dẫn không kết thúc"
 
 #: src/serialization/parser.cpp:378
 msgid "at $pos"
-msgstr ""
+msgstr "ở $pos"
 
 #: src/serialization/parser.cpp:392
-#, fuzzy
-#| msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgid "Value: '$value' Previous: '$previous_value'"
-msgstr "$error, giá trị '$value', giá trị trước '$previous_value' ở $pos"
+msgstr "Giá trị '$value' Giá trị trước '$previous_value'"
 
 #: src/serialization/string_utils.cpp:570
 msgid "prefix_milli^m"
@@ -7709,191 +7664,179 @@ msgstr "Nhảy qua"
 
 #: src/strftime.cpp:23
 msgid "Mon"
-msgstr ""
+msgstr "T2"
 
 #: src/strftime.cpp:23
 msgid "Sun"
-msgstr ""
+msgstr "CN"
 
 #: src/strftime.cpp:23
 msgid "Tue"
-msgstr ""
+msgstr "T3"
 
 #: src/strftime.cpp:23
-#, fuzzy
-#| msgid "Red"
 msgid "Wed"
-msgstr "Đỏ"
+msgstr "T4"
 
 #: src/strftime.cpp:24
 msgid "Fri"
-msgstr ""
+msgstr "T6"
 
 #: src/strftime.cpp:24
-#, fuzzy
-#| msgid "Status"
 msgid "Sat"
-msgstr "Trạng thái"
+msgstr "T7"
 
 #: src/strftime.cpp:24
 msgid "Thu"
-msgstr ""
+msgstr "T5"
 
 #: src/strftime.cpp:25
 msgid "Monday"
-msgstr ""
+msgstr "Thứ hai"
 
 #: src/strftime.cpp:25
 msgid "Sunday"
-msgstr ""
+msgstr "Chủ nhật"
 
 #: src/strftime.cpp:25
 msgid "Tuesday"
-msgstr ""
+msgstr "Thứ ba"
 
 #: src/strftime.cpp:26
 msgid "Friday"
-msgstr ""
+msgstr "Thứ sáu"
 
 #: src/strftime.cpp:26
 msgid "Saturday"
-msgstr ""
+msgstr "Thứ bảy"
 
 #: src/strftime.cpp:26
 msgid "Thursday"
-msgstr ""
+msgstr "Thứ năm"
 
 #: src/strftime.cpp:26
 msgid "Wednesday"
-msgstr ""
+msgstr "Thứ tư"
 
 #: src/strftime.cpp:27
 msgid "Apr"
-msgstr ""
+msgstr "Th4"
 
 #: src/strftime.cpp:27
 msgid "Feb"
-msgstr ""
+msgstr "Th2"
 
 #: src/strftime.cpp:27
 msgid "Jan"
-msgstr ""
+msgstr "Th1"
 
 #: src/strftime.cpp:27
 msgid "Mar"
-msgstr ""
+msgstr "Th3"
 
 #: src/strftime.cpp:28
 msgid "Aug"
-msgstr ""
+msgstr "Th8"
 
 #: src/strftime.cpp:28
 msgid "Jul"
-msgstr ""
+msgstr "Th7"
 
 #: src/strftime.cpp:28
 msgid "Jun"
-msgstr ""
+msgstr "Th6"
 
 #: src/strftime.cpp:28
 msgid "Oct"
-msgstr ""
+msgstr "Th10"
 
 #: src/strftime.cpp:28
 msgid "Sep"
-msgstr ""
+msgstr "Th9"
 
 #: src/strftime.cpp:28
 msgid "abbrev^May"
-msgstr ""
+msgstr "Th5"
 
 #: src/strftime.cpp:29
 msgid "Dec"
-msgstr ""
+msgstr "Th12"
 
 #: src/strftime.cpp:29
 msgid "Nov"
-msgstr ""
+msgstr "Th11"
 
 #: src/strftime.cpp:30
 msgid "February"
-msgstr ""
+msgstr "Tháng hai"
 
 #: src/strftime.cpp:30
 msgid "January"
-msgstr ""
+msgstr "Tháng giêng"
 
 #: src/strftime.cpp:30
-#, fuzzy
-#| msgid "Search"
 msgid "March"
-msgstr "Tìm kiếm"
+msgstr "Tháng ba"
 
 #: src/strftime.cpp:31
 msgid "April"
-msgstr ""
+msgstr "Tháng tư"
 
 #: src/strftime.cpp:31
 msgid "August"
-msgstr ""
+msgstr "Tháng tám"
 
 #: src/strftime.cpp:31
 msgid "July"
-msgstr ""
+msgstr "Tháng bảy"
 
 #: src/strftime.cpp:31
 msgid "June"
-msgstr ""
+msgstr "Tháng sáu"
 
 #: src/strftime.cpp:31
 msgid "May"
-msgstr ""
+msgstr "Tháng năm"
 
 #: src/strftime.cpp:32
 msgid "December"
-msgstr ""
+msgstr "Tháng mười hai"
 
 #: src/strftime.cpp:32
 msgid "November"
-msgstr ""
+msgstr "Tháng mười một"
 
 #: src/strftime.cpp:32
 msgid "October"
-msgstr ""
+msgstr "Tháng mười"
 
 #: src/strftime.cpp:32
 msgid "September"
-msgstr ""
+msgstr "Tháng chín"
 
 #: src/strftime.cpp:73
-#, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %e %H:%M:%S %Y"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%a %b %e %H:%M:%S %Y"
 
 #: src/strftime.cpp:77
-#, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %d %b %Y %H:%M:%S %z"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%a %d %b %Y %H:%M:%S %z"
 
 #: src/strftime.cpp:88
 msgid "AM"
-msgstr ""
+msgstr "SA"
 
 #: src/strftime.cpp:88
 msgid "PM"
-msgstr ""
+msgstr "CH"
 
 #: src/strftime.cpp:91
-#, fuzzy
-#| msgid "Name"
 msgid "am"
-msgstr "Tên"
+msgstr "sa"
 
 #: src/strftime.cpp:91
 msgid "pm"
-msgstr ""
+msgstr "ch"
 
 #: src/terrain.cpp:180
 msgid "Allied village"

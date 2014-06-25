@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Automatically generated, 2009, 2013.
-# Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2013.
+# Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.7+dev\n"
 "POT-Creation-Date: 2014-03-23 18:06+0100\n"
-"PO-Revision-Date: 2013-03-23 13:10+0800\n"
-"Last-Translator: Phạm Thành Nam <phamthanhnam.ptn@gmail.com>\n"
-"Language-Team: Vietnamese\n"
+"PO-Revision-Date: 2014-06-04 23:24+0700\n"
+"Last-Translator: \n"
+"Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -197,18 +197,15 @@ msgstr "ghi đè thư mục dữ liệu bằng thư mục được chỉ định
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:63
-#, fuzzy, no-wrap
-#| msgid "B<--path>"
+#, no-wrap
 msgid "B<--data-path>"
-msgstr "B<--path>"
+msgstr "B<--data-path>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:66
-#, fuzzy
-#| msgid "prints the name of the game data directory and exits."
 msgid "path the path of the data directory and exits."
-msgstr "in tên của thư mục dữ liệu trò chơi và thoát."
+msgstr "in đường dẫn của thư mục dữ liệu và thoát."
 
 # type: TP
 #. type: TP
@@ -649,20 +646,13 @@ msgstr "chạy trò chơi trong một màn chơi thử nghiệm nhỏ."
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:198
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--userconfig-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ tên>"
+msgstr "B<--userconfig-dir>I<\\ tên>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:207
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#| "path for the configuration directory outside the $HOME or \"My Documents"
-#| "\\eMy Games\""
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -670,18 +660,18 @@ msgid ""
 "Games\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/"
 "wesnoth, on other systems to the userdata path."
 msgstr ""
-"đặt đường dẫn thư mục chứa thiết lập người dùng thành I<tên> dưới $HOME hoặc "
+"đặt đường dẫn thư mục cấu hình của người dùng thành I<tên> dưới $HOME hoặc "
 "\"My Documents\\eMy Games\" với windows. Bạn cũng có thể chỉ định một đường "
-"dẫn tuyệt đối cho thư mục chứa thiết lập nằm ngoài $HOME hoặc \"My Documents"
-"\\eMy Games\""
+"dẫn tuyệt đối cho thư mục cấu hình nằm ngoài $HOME hoặc \"My Documents\\eMy "
+"Games\". Dưới X11 mặc định là $XDG_CONFIG_HOME hoặc $HOME/.config/wesnoth, "
+"trên các hệ thống khác là đường dẫn dữ liệu của người dùng."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:207
-#, fuzzy, no-wrap
-#| msgid "B<--config-path>"
+#, no-wrap
 msgid "B<--userconfig-path>"
-msgstr "B<--config-path>"
+msgstr "B<--userconfig-path>"
 
 # type: Plain text
 #. type: Plain text
@@ -692,45 +682,35 @@ msgstr "in đường dẫn của thư mục chứa thiết lập người dùng 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:210
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--userdata-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ tên>"
+msgstr "B<--userdata-dir>I<\\ tên>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:217
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#| "path for the configuration directory outside the $HOME or \"My Documents"
-#| "\\eMy Games\""
 msgid ""
 "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
 "Games\" for windows.  You can also specify an absolute path for the userdata "
 "directory outside the $HOME or \"My Documents\\eMy Games\"."
 msgstr ""
-"đặt đường dẫn thư mục chứa thiết lập người dùng thành I<tên> dưới $HOME hoặc "
+"đặt đường dẫn thư mục dữ liệu của người dùng thành I<tên> dưới $HOME hoặc "
 "\"My Documents\\eMy Games\" với windows. Bạn cũng có thể chỉ định một đường "
-"dẫn tuyệt đối cho thư mục chứa thiết lập nằm ngoài $HOME hoặc \"My Documents"
-"\\eMy Games\""
+"dẫn tuyệt đối cho thư mục dữ liệu của người dùng nằm ngoài $HOME hoặc \"My "
+"Documents\\eMy Games\"."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:217
-#, fuzzy, no-wrap
-#| msgid "B<--path>"
+#, no-wrap
 msgid "B<--userdata-path>"
-msgstr "B<--path>"
+msgstr "B<--userdata-path>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:220
-#, fuzzy
-#| msgid "prints the path of the user configuration directory and exits."
 msgid "prints the path of the userdata directory and exits."
-msgstr "in đường dẫn của thư mục chứa thiết lập người dùng và thoát."
+msgstr "in đường dẫn của thư mục dữ liệu của người dùng và thoát."
 
 # type: TP
 #. type: TP
@@ -900,10 +880,9 @@ msgstr "không sử dụng thiết lập bản đồ, mà sử dụng các giá 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:272
-#, fuzzy, no-wrap
-#| msgid "B<--era=>I<value>"
+#, no-wrap
 msgid "B<--multiplayer-repeat=>I<value>"
-msgstr "B<--era=>I<giá_trị>"
+msgstr "B<--multiplayer-repeat=>I<giá_trị>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:279
@@ -911,6 +890,8 @@ msgid ""
 "repeats a multiplayer game I<value> times. Best to use with B<--nogui> for "
 "scriptable benchmarking."
 msgstr ""
+"lặp lại một trò chơi nhiều người chơi |<giá_trị> lần. Sử dụng tốt nhất với "
+"B<--nogui> để kiểm nghiệm theo kịch bản."
 
 # type: TP
 #. type: TP
