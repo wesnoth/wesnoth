@@ -15,6 +15,7 @@
 #include "game_controller.hpp"
 #include "global.hpp"                   // for false_, bool_
 
+#include "about.hpp" //for show_about
 #include "commandline_options.hpp"      // for commandline_options
 #include "config.hpp"                   // for config, etc
 #include "construct_dialog.hpp"         // for dialog
@@ -29,13 +30,18 @@
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/campaign_selection.hpp"  // for tcampaign_selection
 #include "gui/dialogs/language_selection.hpp"  // for tlanguage_selection
+#include "gui/dialogs/message.hpp" //for show error message
+#include "gui/dialogs/mp_host_game_prompt.hpp" //for host game prompt
 #include "gui/dialogs/mp_method_selection.hpp"
+#include "gui/dialogs/transient_message.hpp"  // for show_transient_message
 #include "gui/dialogs/title_screen.hpp"  // for show_debug_clock_button
 #include "gui/widgets/settings.hpp"     // for new_widgets
 #include "gui/widgets/window.hpp"       // for twindow, etc
+#include "intro.hpp"
 #include "language.hpp"                 // for language_def, etc
 #include "loadscreen.hpp"               // for loadscreen, etc
 #include "log.hpp"                      // for LOG_STREAM, logger, general, etc
+#include "map_exception.hpp"
 #include "multiplayer.hpp"              // for start_client, etc
 #include "network.hpp"
 #include "playcampaign.hpp"             // for play_game, etc
@@ -47,6 +53,7 @@
 #include "sdl/utils.hpp"                // for surface
 #include "serialization/compression.hpp"  // for format::NONE
 #include "serialization/string_utils.hpp"  // for split
+#include "statistics.hpp"
 #include "tstring.hpp"                  // for operator==, operator!=
 #include "util.hpp"                     // for lexical_cast_default
 #include "wml_exception.hpp"            // for twml_exception
