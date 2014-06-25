@@ -45,8 +45,8 @@
 #include <cassert>                      // for assert
 #include <cstdlib>                     // for atoi
 #include <ctime>                        // for time, NULL
-#include <map>                          // for map<>::mapped_type
 #include <ostream>                      // for operator<<, basic_ostream, etc
+#include <vector>                       // for vector
 
 static lg::log_domain log_network("network");
 #define ERR_NW LOG_STREAM(err, log_network)
