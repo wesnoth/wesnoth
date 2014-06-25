@@ -84,6 +84,7 @@ private:
 	};
 
 	typedef boost::function<void (const request& req)> request_handler;
+	typedef std::map<std::string, request_handler> request_handlers_table;
 
 	config cfg_;
 	const std::string cfg_file_;
@@ -94,7 +95,7 @@ private:
 	boost::scoped_ptr<input_stream> input_; /**< Server control socket. */
 
 	std::map<std::string, std::string> hooks_;
-	std::map<std::string, request_handler> handlers_;
+	request_handlers_table handlers_;
 
 	std::string feedback_url_format_;
 
