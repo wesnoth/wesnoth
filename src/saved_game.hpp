@@ -97,12 +97,13 @@ private:
 	/** some general information of the game that doesn't change during the game */
 	game_classification classification_;
 	mp_game_settings mp_settings_;
+	
+	STARTING_POS_TYPE starting_pos_type_;
 	/**
 		The starting pos where the (non replay) game will be started from.
 		This can eigher be a [scenario] for a fresh game or a [snapshot] if this is a reloaded game
 	*/
 	config starting_pos_;
-	STARTING_POS_TYPE starting_pos_type_;
 };
 
 
