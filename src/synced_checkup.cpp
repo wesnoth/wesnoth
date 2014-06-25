@@ -35,7 +35,7 @@ checkup::~checkup()
 {
 
 }
-
+#if 0
 void checkup::unit_checksum(const map_location& loc, bool local)
 {
 	unit_map::iterator u =  resources::units->find(loc);
@@ -71,7 +71,7 @@ void checkup::unit_checksum(const map_location& loc, bool local)
 			events::chat_handler::MESSAGE_PRIVATE, false);
 	}
 }
-
+#endif
 
 ignored_checkup::ignored_checkup()
 {

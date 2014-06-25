@@ -416,14 +416,6 @@ const config& saved_game::get_replay_starting_pos()
 	return this->replay_start_.child("some_non_existet_invalid");
 }
 
-void saved_game::remove_old_scenario()
-{
-	remove_snapshot();
-	carryover_sides = config();
-	replay_data = config();
-	replay_start_ = config();
-}
-
 void saved_game::convert_to_start_save()
 {
 	assert(starting_pos_type_ == STARTINGPOS_SNAPSHOT);

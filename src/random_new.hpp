@@ -15,7 +15,9 @@
 
 namespace random_new
 {
-	//this class does NOT give synced random results.
+	/**
+		this class does not give synced random results derived classes might do.
+	*/
 	class rng
 	{
 	public:
@@ -28,9 +30,11 @@ namespace random_new
 		unsigned int random_calls_;
 	};
 
-	// this generator is autmatilcy synced during synced context.
-	// calling this should automaticly clear the undo stack.
-	//
+	/**
+		This generator is automatically synced during synced context.
+		Calling this rng during a synced context automatically makes undoing impossible.
+		Outside a synced context this has the same effect as rand()
+	*/
 	extern rng* generator;
 
 }

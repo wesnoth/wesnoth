@@ -61,13 +61,13 @@ public:
 
 	 */
 	static bool run_in_synced_context(const std::string& commandname,const config& data, bool use_undo = true, bool show = true ,  bool store_in_replay = true , synced_command::error_handler_function error_handler = default_error_function);
-	/*
-		checks whether we are currently running in a synced context, and if not we enter it.
-		this is nevery called from so_replay_handle.
+	/**
+		checks whether we are currently running in a synced context, and if not we enters it.
+		this is never called from so_replay_handle.
 	*/
 	static bool run_in_synced_context_if_not_already(const std::string& commandname,const config& data, bool use_undo = true, bool show = true , synced_command::error_handler_function error_handler = default_error_function);
-	/*
-		Returns whether we are currently executing a synced action like recruit, start, recall, disband, movement, attack, init_side, end_turn, fire_event, lua_ai, auto_shroud or similar.
+	/**
+		@return whether we are currently executing a synced action like recruit, start, recall, disband, movement, attack, init_side, end_turn, fire_event, lua_ai, auto_shroud or similar.
 	*/
 	static synced_state get_synced_state();
 	/*
@@ -78,31 +78,33 @@ public:
 		Generates a new seed for a synced event, by asking the 'server'
 	*/
 	static int generate_random_seed();
-	/*
-		called from get_user_choice;
+	/**
+		called from get_user_choice while waiting for a remove user choice.
 	*/
 	static void pull_remote_user_input();
-	/*
-		called from get_user_choice;
+	/**
+		called from get_user_choice to send a recently made choice to the other clients.
+		Does not receive any data from the network any sends data.
 	*/
 	static void send_user_choice();
-	/*
+	/**
 		a function to be passed to run_in_synced_context to assert false on error (the default).
 	*/
 	static void default_error_function(const std::string& message, bool heavy);
-	/*
+	/**
 		a function to be passed to run_in_synced_context to log the error.
 	*/
 	static void just_log_error_function(const std::string& message, bool heavy);
-	/*
+	/**
 		a function to be passed to run_in_synced_context to ignore the error.
 	*/
 	static void ignore_error_function(const std::string& message, bool heavy);
-	/*
-		returns a rng_deterministic if in determinsic mode otherwise a rng_synced.
+	/**
+		@return a rng_deterministic if in determinsic mode otherwise a rng_synced.
 	*/
 	static boost::shared_ptr<random_new::rng> get_rng_for_action();
-	/*
+	/**
+		@return whether we already sended data about the current action to other clients. which means we cannot undo it.
 		returns is_simultaneously_
 	*/
 	static bool is_simultaneously();
@@ -110,8 +112,8 @@ public:
 		sets is_simultaneously_ = false, called when entering the synced context.
 	*/
 	static void reset_is_simultaneously();
-	/*
-		whether there were recently no methods called that prevent undoing.
+	/**
+		@return whether there were recently no methods called that prevent undoing.
 	*/
 	static bool can_undo();
 private:
@@ -140,7 +142,7 @@ class set_scontext_synced
 public:
 	set_scontext_synced();
 	/*
-		use this if you have multiple synced_context but only one replay entry.
+		use this contructor if you have multiple synced_context but only one replay entry.
 	*/
 	set_scontext_synced(int num);
 	~set_scontext_synced();
@@ -168,7 +170,7 @@ private:
 	random_new::rng* old_rng_;
 };
 
-/*
+/**
 	an object to leave the synced context during draw when we dont know whether we are in a synced context or not.
 	if we are in a sanced context we leave the synced context otherwise it has no effect.
 	we need this because we might call lua's wesnoth.theme_items during draw and we dont want to have that an effect on the gamestate in this case.

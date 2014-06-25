@@ -17,11 +17,11 @@
 
 namespace random_new
 {
-	/*
-		this is the determinstic random class, it behaves similar to the old random class.
-		it's only application is at the very start of the scneario.
+	/**
+		This rng is used when the normal synced rng is not available
+		this is currently only he case at the very start of the scenario (random generation of starting units traits).
 
-		or durign the "Deterministic SP mode"
+		or during the "Deterministic SP mode"
 	*/
 	class rng_deterministic : public random_new::rng
 	{
@@ -34,7 +34,9 @@ namespace random_new
 		rand_rng::simple_rng& generator_;
 	};
 
-	//RAII class
+	/**
+		RAII class to use rng_deterministic in the current scope.
+	*/
 	class set_random_determinstic
 	{
 	public:
