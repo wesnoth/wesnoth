@@ -22,6 +22,7 @@
 #include "unit_types.hpp"
 
 #include "game_config.hpp"
+#include "game_errors.hpp" //thrown sometimes
 //#include "gettext.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"

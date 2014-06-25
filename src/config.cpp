@@ -18,20 +18,24 @@
  * Routines related to configuration-files / WML.
  */
 
+#include "config.hpp"
+
 #include "global.hpp"
 
-#include "config.hpp"
 #include "log.hpp"
-#include "serialization/string_utils.hpp"
 #include "util.hpp"
 #include "utils/const_clone.tpp"
 
 #include <cstdlib>
 #include <cstring>
 #include <deque>
+#include <istream>
 
 #include <boost/foreach.hpp>
-#include <boost/variant.hpp>
+#include <boost/variant/apply_visitor.hpp>
+#include <boost/variant/get.hpp>
+#include <boost/variant/static_visitor.hpp>
+#include <boost/variant/variant.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)

@@ -23,6 +23,7 @@
 
 #include "../composite/rca.hpp"
 #include "../../unit.hpp"
+#include "../../unit_map.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/optional.hpp>

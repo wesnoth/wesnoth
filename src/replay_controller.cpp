@@ -20,6 +20,7 @@
 #include "carryover.hpp"
 #include "actions/vision.hpp"
 #include "game_end_exceptions.hpp"
+#include "game_errors.hpp" //needed to be thrown
 #include "game_events/handlers.hpp"
 #include "gettext.hpp"
 #include "log.hpp"

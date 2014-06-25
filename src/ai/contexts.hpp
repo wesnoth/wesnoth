@@ -21,13 +21,35 @@
 #ifndef AI_CONTEXTS_HPP_INCLUDED
 #define AI_CONTEXTS_HPP_INCLUDED
 
-#include "game_info.hpp"
-#include "../generic_event.hpp"
-#include "../config.hpp"
-#include "lua/unit_advancements_aspect.hpp"
-#include "../unit_ptr.hpp"
+#include "ai/game_info.hpp"                // for move_map, aspect_type, etc
 
-//#include "../unit.hpp"
+#include "global.hpp"
+
+#include "../config.hpp"                // for config
+#include "../game_errors.hpp"
+#include "../generic_event.hpp"         // for observer
+#include "../unit_ptr.hpp"              // for UnitPtr
+#include "../map_location.hpp"       // for map_location
+
+#include <map>                          // for map, map<>::value_compare
+#include <set>                          // for set
+#include <string>                       // for string
+#include <utility>                      // for pair
+#include <vector>                       // for vector
+
+class gamemap;  // lines 41-41
+class team;
+class terrain_filter;  // lines 43-43
+class unit_map;
+class unit_type;  // lines 46-46
+class variant;  // lines 42-42
+namespace ai { class ai_context; }  // lines 51-51
+namespace ai { class ministage; }
+namespace ai { class unit_advancements_aspect; }
+namespace ai { template <typename T> class typesafe_aspect; }
+namespace boost { template <class T> class shared_ptr; }
+namespace pathfind { struct paths; }
+struct battle_context_unit_stats;  // lines 39-39
 
 #ifdef _MSC_VER
 #pragma warning(push)
@@ -35,20 +57,7 @@
 #pragma warning(disable:4250)
 #endif
 
-class battle_context;
-struct battle_context_unit_stats;
-class game_display;
-class gamemap;
-class variant;
-class terrain_filter;
-class terrain_translation;
-class unit;
-class unit_type;
-
 namespace ai {
-
-class interface;
-class ai_context;
 
 typedef ai_context* ai_context_ptr;
 

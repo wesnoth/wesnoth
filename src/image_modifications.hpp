@@ -17,6 +17,7 @@
 #ifndef IMAGE_MODIFICATIONS_HPP_INCLUDED
 #define IMAGE_MODIFICATIONS_HPP_INCLUDED
 
+#include "lua_jailbreak_exception.hpp"
 #include "sdl/utils.hpp"
 #include <queue>
 

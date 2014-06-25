@@ -168,7 +168,7 @@ bool set_resolution(CVideo& video
 {
 	SDL_Rect rect;
 	SDL_GetClipRect(video.getSurface(), &rect);
-	if(rect.w == width && rect.h == height) {
+	if(static_cast<unsigned int> (rect.w) == width && static_cast<unsigned int>(rect.h) == height) {
 		return true;
 	}
 

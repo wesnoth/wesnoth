@@ -18,31 +18,53 @@
  * @file
  */
 
-#include "actions.hpp"
-#include "contexts.hpp"
-#include "manager.hpp"
+#include "ai/contexts.hpp"
 
-#include "composite/aspect.hpp"
-#include "composite/engine.hpp"
-#include "composite/goal.hpp"
+#include "global.hpp"
 
-#include "default/ai.hpp"
+#include "actions/attack.hpp"
 
-#include "../actions/attack.hpp"
-#include "../formula.hpp"
-#include "../formula_function.hpp"
-#include "../formula_fwd.hpp"
-#include "../game_board.hpp"
-#include "../game_display.hpp"
-#include "../log.hpp"
-#include "../map.hpp"
-#include "../mouse_handler_base.hpp"
-#include "../recall_list_manager.hpp"
-#include "../resources.hpp"
-#include "../tod_manager.hpp"
-#include "../unit.hpp"
+#include "ai/actions.hpp"                  // for actions
+#include "ai/composite/aspect.hpp"         // for typesafe_aspect, aspect, etc
+#include "ai/composite/engine.hpp"         // for engine, engine_factory, etc
+#include "ai/composite/goal.hpp"           // for goal
+#include "ai/composite/stage.hpp"       // for ministage
+#include "ai/game_info.hpp"             // for aspect_type<>::typesafe_ptr, etc
+#include "ai/lua/unit_advancements_aspect.hpp"
+#include "ai/manager.hpp"                  // for manager
 
-#include <boost/foreach.hpp>
+#include "chat_events.hpp"              // for chat_handler, etc
+#include "config.hpp"             // for config, etc
+#include "game_board.hpp"            // for game_board
+#include "game_config.hpp"              // for debug
+#include "game_display.hpp"          // for game_display
+#include "game_errors.hpp"		// for throw
+#include "log.hpp"                   // for LOG_STREAM, logger, etc
+#include "map.hpp"                   // for gamemap
+#include "pathfind/pathfind.hpp"        // for paths::dest_vect, paths, etc
+#include "recall_list_manager.hpp"   // for recall_list_manager
+#include "resources.hpp"             // for units, gameboard, etc
+#include "serialization/string_utils.hpp"  // for split, etc
+#include "team.hpp"                     // for team
+#include "terrain_filter.hpp"  // for terrain_filter
+#include "terrain_translation.hpp"      // for t_terrain
+#include "time_of_day.hpp"              // for time_of_day
+#include "tod_manager.hpp"           // for tod_manager
+#include "unit.hpp"                  // for unit, intrusive_ptr_release, etc
+#include "unit_map.hpp"  // for unit_map::iterator_base, etc
+#include "unit_ptr.hpp"                 // for UnitPtr
+#include "unit_types.hpp"  // for attack_type, unit_type, etc
+#include "variant.hpp"                  // for variant
+
+#include <algorithm>                    // for find, count, max
+#include <boost/foreach.hpp>            // for auto_any_base, etc
+#include <boost/smart_ptr/intrusive_ptr.hpp>  // for intrusive_ptr
+#include <boost/smart_ptr/shared_ptr.hpp>  // for dynamic_pointer_cast, etc
+#include <cmath>                       // for sqrt
+#include <cstdlib>                     // for NULL, abs
+#include <ctime>                       // for time
+#include <iterator>                     // for back_inserter
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
 static lg::log_domain log_ai("ai/general");
 #define DBG_AI LOG_STREAM(debug, log_ai)

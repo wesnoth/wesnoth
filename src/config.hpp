@@ -30,23 +30,22 @@
 
 #include "global.hpp"
 
-#include <map>
+#include <ctime>
 #include <iosfwd>
+#include <iterator>
+#include <map>
+#include <string>
+#include <utility>
 #include <vector>
 
+#include <boost/blank.hpp>
 #include <boost/exception/exception.hpp>
-#include <boost/variant/apply_visitor.hpp>
-#include <boost/variant/get.hpp>
-#include <boost/variant/static_visitor.hpp>
 #include <boost/variant/variant.hpp>
 
-#include "game_errors.hpp"
+#include "exceptions.hpp"
 #include "tstring.hpp"
 
 class config;
-struct tconfig_implementation;
-class vconfig;
-struct lua_State;
 
 bool operator==(const config &, const config &);
 inline bool operator!=(const config &a, const config &b) { return !operator==(a, b); }

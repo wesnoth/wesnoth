@@ -34,6 +34,7 @@
 #include "../fake_unit_ptr.hpp"
 #include "../game_classification.hpp"
 #include "../game_display.hpp"
+#include "../game_errors.hpp"
 #include "../game_preferences.hpp"
 #include "../gettext.hpp"
 #include "../gui/dialogs/gamestate_inspector.hpp"
