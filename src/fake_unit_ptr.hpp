@@ -20,11 +20,13 @@
 
 class fake_unit_manager;
 
-/** A temporary unit that can be placed on the map.
+/** Holds a temporary unit that can be drawn on the map without
+	being placed in the unit_map.
 	Temporary units can overlap units.
+	They are drawn after the normal units, and so draw over them.
 	Adding the same unit twice isn't allowed.
-	The fake_unit owns its underlying unit and when
-	it goes out of scope it removes itself from the fake_units list.
+	The fake_unit privately holds a referenced counted point to its underlying unit,
+	when it goes out of scope it removes the entry from the fake_units list.
 	The intent is to provide exception safety when the code
 	creating the temp unit is unexpectedly forced out of scope.
  */
@@ -33,26 +35,26 @@ public:
 	typedef UnitPtr internal_ptr;
 	typedef UnitConstPtr internal_const_ptr;
 
-	fake_unit_ptr();
-	explicit fake_unit_ptr(const internal_ptr & u);
-	fake_unit_ptr(const internal_ptr & u, fake_unit_manager * mgr);
-	fake_unit_ptr(const fake_unit_ptr & ptr);
+	fake_unit_ptr(); 
+	explicit fake_unit_ptr(const internal_ptr & u); //!< Construct a fake unit pointer wrapping a normal unit pointer, marking it as a fake unit.
+	fake_unit_ptr(const internal_ptr & u, fake_unit_manager * mgr); //!< Construct a fake unit pointer, and simultaenously register with a manager.
+	fake_unit_ptr(const fake_unit_ptr & ptr); //!< Copy construct a fake unit pointer. Does not reallocate the underlying unit.
 
-	void swap (fake_unit_ptr & o);
+	void swap (fake_unit_ptr & o); //!< Pointer swap.
 
-	fake_unit_ptr & operator=(fake_unit_ptr other);
+	fake_unit_ptr & operator=(fake_unit_ptr other); //!< Copy assignment operator using copy-and-swap idiom
 
-	void reset();
-	void reset(const internal_ptr & ptr);
+	void reset(); //!< Reset the internal unit pointer, and deregister from the manager. This fake_unit_ptr is now dissassociated from the manager.
+	void reset(const internal_ptr & ptr); //!< Reset the internal unit pointer and point to a new unit. The old unit is deregistered, and the new unit is registered with the old manager, if there was one.
 
-	internal_ptr operator->() { return unit_; }
-	internal_const_ptr operator->() const { return unit_; }
+	internal_ptr operator->() { return unit_; } //!< Dereference the internal unit pointer.
+	internal_const_ptr operator->() const { return unit_; } //!< Dereference the internal unit pointer.
 
-	internal_ptr get_unit_ptr() { return unit_; }
-	internal_const_ptr get_unit_ptr() const { return unit_; }
+	internal_ptr get_unit_ptr() { return unit_; } //!< Get a copy of the internal unit pointer.
+	internal_const_ptr get_unit_ptr() const { return unit_; } //!< Get a copy of the internal unit pointer.
 
-	unit & operator*() { return *unit_; }
-	unit * get() { return unit_.get(); }
+	unit & operator*() { return *unit_; } //!< Derference the internal unit pointer.
+	unit * get() { return unit_.get(); } //!< Get a raw pointer to the underlying unit.
 
 	/// Removes @a this from the fake_units_ list if necessary.
 	~fake_unit_ptr();
@@ -63,8 +65,8 @@ public:
 	int remove_from_fake_unit_manager();
 
 private :
-	internal_ptr unit_;
-	fake_unit_manager * my_manager_;
+	internal_ptr unit_; //!< Internal unit pointer.
+	fake_unit_manager * my_manager_; //!< Raw pointer to the manager.
 
 #ifndef HAVE_CXX11
 	struct safe_bool_impl { void nonnull() {} };

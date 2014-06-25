@@ -67,12 +67,21 @@ fake_unit_ptr & fake_unit_ptr::operator=(fake_unit_ptr other) {
 	return *this;
 }*/
 
+/**
+ * Removes the unit from the fake manager, and resets the internal unit pointer.
+ * After this, both pointers are null.
+ */
 void fake_unit_ptr::reset()
 {
 	remove_from_fake_unit_manager();
 	unit_.reset();
 }
 
+/**
+ * Resets the internal unit pointer to match the given pointer.
+ * The value of my_manager_ is preserved -- the old unit is deregistered,
+ * and the new unit is registered with the same manager.
+ */
 void fake_unit_ptr::reset(const internal_ptr & ptr)
 {
 	if (unit_.get() != ptr.get()) {
