@@ -870,6 +870,7 @@
 		EC5C247E18EF07F4001FA499 /* libpng16.16.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC5C246518EF07F0001FA499 /* libpng16.16.dylib */; };
 		EC5C248718EF07F4001FA499 /* libz.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC5C246E18EF07F3001FA499 /* libz.1.dylib */; };
 		EC6069E318EF662300CD8408 /* pangorc in Resources */ = {isa = PBXBuildFile; fileRef = EC6069E218EF662300CD8408 /* pangorc */; };
+		EC79D70D19548D5000EC7C1F /* game_cache_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC79D70C19548D5000EC7C1F /* game_cache_options.cpp */; };
 		EC84246618F30D9100FC1EEF /* config_assign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84245518F30D9000FC1EEF /* config_assign.cpp */; };
 		EC84246718F30D9100FC1EEF /* random_new_deterministic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84245718F30D9000FC1EEF /* random_new_deterministic.cpp */; };
 		EC84246818F30D9100FC1EEF /* random_new_synced.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84245918F30D9000FC1EEF /* random_new_synced.cpp */; };
@@ -2085,6 +2086,7 @@
 		EC5C246518EF07F0001FA499 /* libpng16.16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.16.dylib; path = lib/libpng16.16.dylib; sourceTree = "<group>"; };
 		EC5C246E18EF07F3001FA499 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = lib/libz.1.dylib; sourceTree = "<group>"; };
 		EC6069E218EF662300CD8408 /* pangorc */ = {isa = PBXFileReference; lastKnownFileType = text; name = pangorc; path = Resources/pangorc; sourceTree = "<group>"; };
+		EC79D70C19548D5000EC7C1F /* game_cache_options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = game_cache_options.cpp; path = gui/dialogs/game_cache_options.cpp; sourceTree = "<group>"; };
 		EC84245518F30D9000FC1EEF /* config_assign.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = config_assign.cpp; sourceTree = "<group>"; };
 		EC84245618F30D9000FC1EEF /* config_assign.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = config_assign.hpp; sourceTree = "<group>"; };
 		EC84245718F30D9000FC1EEF /* random_new_deterministic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = random_new_deterministic.cpp; sourceTree = "<group>"; };
@@ -2448,6 +2450,7 @@
 		29B97315FDCFA39411CA2CEA /* src */ = {
 			isa = PBXGroup;
 			children = (
+				EC79D70C19548D5000EC7C1F /* game_cache_options.cpp */,
 				EC1CB20619524AD600B0FA78 /* recall_list_manager.cpp */,
 				EC1CB20719524AD600B0FA78 /* recall_list_manager.hpp */,
 				EC386CEF195119A9006004ED /* unit_animation_component.cpp */,
@@ -4646,6 +4649,7 @@
 				F468E6AD16DF872200A31A5A /* movetype.cpp in Sources */,
 				49478714172FF6F8002B7ABA /* tristate_button.cpp in Sources */,
 				49E84DC217384EF800A4F376 /* leader_scroll_dialog.cpp in Sources */,
+				EC79D70D19548D5000EC7C1F /* game_cache_options.cpp in Sources */,
 				497455CE174066A800E89E30 /* edit_text.cpp in Sources */,
 				62114CC21750B97F00CA42C7 /* action_item.cpp in Sources */,
 				62114CC61750B99800CA42C7 /* mouse_action_item.cpp in Sources */,
