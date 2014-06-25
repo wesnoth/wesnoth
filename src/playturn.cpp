@@ -231,16 +231,14 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 	else if (const config &side_drop_c = cfg.child("side_drop"))
 	{
-		const std::string& side_drop = side_drop_c["side_num"].str();
+		const int  side_drop = side_drop_c["side_num"].to_int(0);
 		const std::string controller = side_drop_c["controller"];
-		//if a side has dropped out of the game.
-		int side = atoi(side_drop.c_str());
-		size_t index = side -1;
+		size_t index = side_drop -1;
 
-		bool restart = side == resources::screen->playing_side();
+		bool restart = side_drop == resources::screen->playing_side();
 
 		if (index >= resources::teams->size()) {
-			ERR_NW << "unknown side " << side << " is dropping game" << std::endl;
+			ERR_NW << "unknown side " << side_drop << " is dropping game" << std::endl;
 			throw network::error("");
 		}
 
@@ -253,7 +251,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		}
 
 		if (ctrl == team::AI){
-			resources::gameboard->side_drop_to(side, ctrl);
+			resources::gameboard->side_drop_to(side_drop, ctrl);
 			return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 		}
 
@@ -287,7 +285,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			//get all allies in as options to transfer control
 			BOOST_FOREACH(const team &t, resources::gameboard->teams())
 			{
-				if (!t.is_enemy(side) && !t.is_human() && !t.is_ai() && !t.is_network_ai() && !t.is_empty()
+				if (!t.is_enemy(side_drop) && !t.is_human() && !t.is_ai() && !t.is_network_ai() && !t.is_empty()
 					&& t.current_player() != tm.current_player())
 				{
 					//if this is an ally of the dropping side and it is not us (choose local player
@@ -313,7 +311,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		switch(action) {
 			case 0:
 				resources::controller->on_not_observer();
-				resources::gameboard->side_drop_to(side, team::AI);
+				resources::gameboard->side_drop_to(side_drop, team::AI);
 				change_controller(side_drop, team::CONTROLLER_to_string(team::AI));
 
 				resources::controller->maybe_do_init_side();
@@ -322,14 +320,14 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 			case 1:
 				resources::controller->on_not_observer();
-				resources::gameboard->side_drop_to(side, team::HUMAN);
+				resources::gameboard->side_drop_to(side_drop, team::HUMAN);
 				change_controller(side_drop, team::CONTROLLER_to_string(team::HUMAN));
 
 				resources::controller->maybe_do_init_side();
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 			case 2:
-				resources::gameboard->side_drop_to(side, team::IDLE);
+				resources::gameboard->side_drop_to(side_drop, team::IDLE);
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 
@@ -343,7 +341,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 					{
 						// Server thinks this side is ours now so in case of error transferring side we have to make local state to same as what server thinks it is.
-						resources::gameboard->side_drop_to(side, team::IDLE);
+						resources::gameboard->side_drop_to(side_drop, team::IDLE);
 					}
 
 					const size_t index = static_cast<size_t>(action - first_observer_option_idx);
@@ -353,7 +351,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 						size_t i = index - observers.size();
 						change_side_controller(side_drop, allies[i]->current_player());
 					} else {
-						resources::gameboard->side_drop_to(side, team::AI);
+						resources::gameboard->side_drop_to(side_drop, team::AI);
 						change_controller(side_drop, team::CONTROLLER_to_string(team::AI));
 					}
 					return restart ? PROCESS_RESTART_TURN_TEMPORARY_LOCAL : PROCESS_SIDE_TEMPORARY_LOCAL;
@@ -391,7 +389,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	return PROCESS_CONTINUE;
 }
 
-void turn_info::change_controller(const std::string& side, const std::string& controller)
+void turn_info::change_controller(int side, const std::string& controller)
 {
 	config cfg;
 	config& change = cfg.add_child("change_controller");
@@ -402,7 +400,7 @@ void turn_info::change_controller(const std::string& side, const std::string& co
 }
 
 
-void turn_info::change_side_controller(const std::string& side, const std::string& player)
+void turn_info::change_side_controller(int side, const std::string& player)
 {
 	config cfg;
 	config& change = cfg.add_child("change_controller");

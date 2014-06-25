@@ -65,8 +65,8 @@ public:
 	bool is_host() const { return is_host_; }
 	void set_host(bool val) { is_host_ = val; }
 private:
-	static void change_controller(const std::string& side, const std::string& controller);
-	static void change_side_controller(const std::string& side, const std::string& player);
+	static void change_controller(int side, const std::string& controller);
+	static void change_side_controller(int side, const std::string& player);
 	static PROCESS_DATA_RESULT replay_to_process_data_result(REPLAY_RETURN replayreturn);
 	PROCESS_DATA_RESULT handle_turn(
 		const config& t,
