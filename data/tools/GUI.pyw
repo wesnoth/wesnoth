@@ -71,22 +71,16 @@ def run_tool(tool,queue,command):
             output=subprocess.check_output(' '.join(wrapped_line),stderr=subprocess.STDOUT,startupinfo=si)
             queue.put_nowait(output)
         except subprocess.CalledProcessError as error:
-            # post the precise message
-            showerror("Error","""There was an error while executing {0}.
-
-Error code: {1}""".format(tool,error.returncode))
-            queue.put_nowait(error.output)
+            # post the precise message and the remaining output as a tuple
+            queue.put_nowait((tool,error.returncode,error.output))
     else: # STARTUPINFO is not available, nor needed, outside of Windows
         queue.put_nowait(' '.join(command)+"\n")
         try:
             output=subprocess.check_output(command,stderr=subprocess.STDOUT)
             queue.put_nowait(output)
         except subprocess.CalledProcessError as error:
-            # post the precise message
-            showerror("Error","""There was an error while executing {0}.
-
-Error code: {1}""".format(tool,error.returncode))
-            queue.put_nowait(error.output)
+            # post the precise message and the remaining output as a tuple
+            queue.put_nowait((tool,error.returncode,error.output))
 
 def is_wesnoth_tools_path(path):
     """Checks if the supplied path may be a wesnoth/data/tools directory"""
@@ -807,7 +801,8 @@ class MainFrame(Frame):
                                sticky=N+E+S+W)
         self.text=Text(self.output_frame,
                        wrap=WORD,
-                       state=DISABLED)
+                       state=DISABLED,
+                       takefocus=True)
         self.text.grid(row=0,
                        column=0,
                        sticky=N+E+S+W)
@@ -832,6 +827,9 @@ class MainFrame(Frame):
         self.columnconfigure(0,weight=1)
         self.rowconfigure(3,weight=1)
         self.notebook.bind("<<NotebookTabChanged>>",self.tab_callback)
+        # this allows using the mouse wheel even on the disabled Text widget
+        # without the need to clic on said widget
+        self.tk_focusFollowsMouse()
 
     def tab_callback(self,event):
         # we check the ID of the active tab and ask its position
@@ -982,13 +980,25 @@ wmlindent will be run on the Wesnoth core directory""")
         dialog=Popup(self.parent,"wmlindent",wmlindent_thread)
 
     def update_text(self):
-        """Checks periodically if the queue is empty, and pushes its content in the Text widget if it isn't"""
+        """Checks periodically if the queue is empty.
+If it contains a string, pushes it into the Text widget.
+If it contains an error in form of a tuple, displays a message and pushes the remaining output in the Text widget"""
         if not self.queue.empty():
-            text_to_push=self.queue.get_nowait()
-            self.text.configure(state=NORMAL)
-            self.text.insert(END,text_to_push)
-            self.text.configure(state=DISABLED)
-        self.text.after(100,self.update_text)
+            queue_item=self.queue.get_nowait()
+            # I tried posting directly the error in the queue, but for some reason
+            # isinstance(queue_item,subprocess.CalledProcessError) is ignored
+            if isinstance(queue_item,tuple):
+                showerror("Error","""There was an error while executing {0}.
+
+Error code: {1}""".format(queue_item[0],queue_item[1]))
+                self.text.configure(state=NORMAL)
+                self.text.insert(END,queue_item[2])
+                self.text.configure(state=DISABLED)
+            elif isinstance(queue_item,str):
+                self.text.configure(state=NORMAL)
+                self.text.insert(END,queue_item)
+                self.text.configure(state=DISABLED)
+        self.after(100,self.update_text)
         
     def on_save(self):
         fn=asksaveasfilename(defaultextension=".txt",filetypes=[("Text file","*.txt")],initialdir=".")
