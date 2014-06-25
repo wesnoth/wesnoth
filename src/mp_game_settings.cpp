@@ -48,8 +48,6 @@ mp_game_settings::mp_game_settings() :
 	shroud_game(false),
 	allow_observers(false),
 	shuffle_sides(false),
-	share_view(false),
-	share_maps(false),
 	saved_game(false),
 	options()
 
@@ -82,8 +80,6 @@ mp_game_settings::mp_game_settings(const config& cfg) :
 	shroud_game(false),
 	allow_observers(false),
 	shuffle_sides(false),
-	share_view(false),
-	share_maps(false),
 	saved_game(false),
 	options()
 {
@@ -117,8 +113,6 @@ mp_game_settings::mp_game_settings(const mp_game_settings& settings)
 	, shroud_game(settings.shroud_game)
 	, allow_observers(settings.allow_observers)
 	, shuffle_sides(settings.shuffle_sides)
-	, share_view(settings.share_view)
-	, share_maps(settings.share_maps)
 	, saved_game(settings.saved_game)
 	, options(settings.options)
 {
@@ -179,7 +173,7 @@ void mp_game_settings::reset()
 	mp_countdown_turn_bonus=0;
 	mp_countdown_action_bonus=0;
 	mp_countdown=false;
-	use_map_settings = random_start_time = fog_game = shroud_game = allow_observers = shuffle_sides = share_view = share_maps = false;
+	use_map_settings = random_start_time = fog_game = shroud_game = allow_observers = shuffle_sides = false;
 	options.clear();
 }
 

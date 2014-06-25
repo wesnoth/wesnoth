@@ -1047,9 +1047,8 @@ config side_engine::new_config() const
 			(res["shroud"] != "yes" && res["shroud"] != "no")) {
 			res["shroud"] = parent_.params_.shroud_game;
 		}
-
-		res["share_maps"] = parent_.params_.share_maps;
-		res["share_view"] =  parent_.params_.share_view;
+		//share view default to true here to restore the previous behaviour.
+		res["share_view"] =  res["share_view"].to_bool(true);
 
 		if (!parent_.params_.use_map_settings || res["village_gold"].empty()) {
 			res["village_gold"] = parent_.params_.village_gold;

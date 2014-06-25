@@ -82,7 +82,6 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	cancel_game_(disp.video(), _("Back")),
 	launch_game_(disp.video(), _("OK")),
 	password_button_(disp.video(), _("Set Password...")),
-	vision_combo_(disp, std::vector<std::string>()),
 	name_entry_(disp.video(), 32),
 	entry_points_label_(disp.video(), _("Select an entry point:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	entry_points_combo_(disp, std::vector<std::string>()),
@@ -171,14 +170,13 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	shuffle_sides_.set_check(preferences::shuffle_sides());
 	shuffle_sides_.set_help_string(_("Assign sides to players at random"));
 
+#if 0
 	// The possible vision settings
 	std::vector<std::string> vision_types;
 	vision_types.push_back(_("Share View"));
 	vision_types.push_back(_("Share Maps"));
 	vision_types.push_back(_("Share None"));
-	vision_combo_.set_items(vision_types);
-	vision_combo_.set_selected(0);
-
+#endif
 	// The starting points for campaign.
 	std::vector<std::string> entry_point_titles;
 
@@ -288,8 +286,6 @@ const mp_game_settings& configure::get_parameters()
 	parameters_.shroud_game = shroud_game_.checked();
 	parameters_.allow_observers = observers_game_.checked();
 	parameters_.shuffle_sides = shuffle_sides_.checked();
-	parameters_.share_view = vision_combo_.selected() == 0;
-	parameters_.share_maps = vision_combo_.selected() == 1;
 
 	parameters_.options = options_manager_.get_values();
 
@@ -506,7 +502,6 @@ void configure::hide_children(bool hide)
 	launch_game_.hide(hide);
 
 	password_button_.hide(hide);
-	vision_combo_.hide(hide);
 	name_entry_.hide(hide);
 
 	entry_points_label_.hide(hide);
@@ -553,11 +548,6 @@ void configure::layout_children(const SDL_Rect& rect)
 	options_pane_left_.set_height(right_pane_height - entry_points_label_.height());
 
 	int slider_width = options_pane_left_.width() - 40;
-
-#ifdef MP_VISION_OPTIONAL
-	vision_combo_.set_location(xpos, ypos);
-	ypos += vision_combo_.height() + border_size;
-#endif
 
 	int xpos_left = 0;
 	int ypos_left = 0;

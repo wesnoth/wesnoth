@@ -82,7 +82,6 @@ private:
 	gui::button launch_game_;
 	gui::button password_button_;
 
-	gui::combo vision_combo_;
 	gui::textbox name_entry_;
 
 	gui::label entry_points_label_;
