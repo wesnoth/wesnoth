@@ -374,6 +374,10 @@ void game_config_manager::load_game_config_for_game(
 		!classification.difficulty.empty());
 	game_config::scoped_preproc_define campaign(classification.campaign_define,
 		!classification.campaign_define.empty());
+	game_config::scoped_preproc_define scenario(classification.scenario_define,
+		!classification.scenario_define.empty());
+	game_config::scoped_preproc_define era(classification.era_define,
+		!classification.era_define.empty());
 	game_config::scoped_preproc_define multiplayer("MULTIPLAYER",
 		classification.campaign_type == game_classification::MULTIPLAYER);
 
@@ -384,6 +388,13 @@ void game_config_manager::load_game_config_for_game(
 		define new_define
 			(new game_config::scoped_preproc_define(extra_define));
 		extra_defines.push_back(new_define);
+	}
+	std::deque<define> modification_defines;
+	BOOST_FOREACH(const std::string& mod_define,
+		classification.mod_defines) {
+		define new_define
+			(new game_config::scoped_preproc_define(mod_define, !mod_define.empty()));
+		modification_defines.push_back(new_define);
 	}
 
 	try{

@@ -1,19 +1,19 @@
 # Vietnamese translation for Wesnoth
-# Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2009, 2013.
+# Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2009, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
-"PO-Revision-Date: 2013-08-22 22:29+0800\n"
-"Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
-"Language-Team: Vietnamese <>\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
+"PO-Revision-Date: 2014-06-24 22:21+0700\n"
+"Last-Translator: \n"
+"Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 1.4\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:531
@@ -1504,15 +1504,11 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:192
-#, fuzzy
-#| msgid ""
-#| " red if it can no longer move or attack, or the user ended the unit’s "
-#| "turn."
 msgid ""
 " black if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
-" đỏ nếu đơn vị không thể di chuyển hay tấn công được nữa, hoặc đã kết thúc "
-"lượt."
+" đen nếu nó không thể di chuyển hay tấn công được nữa, hoặc người dùng đã "
+"kết thúc lượt của đơn vị."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:193
@@ -1521,10 +1517,8 @@ msgstr " xanh lam nếu đơn vị là một đồng minh bạn không điều k
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:194
-#, fuzzy
-#| msgid " Enemy units have no orb on top of their energy bar."
 msgid " Enemy units have a red orb on top of their energy bar."
-msgstr " Các đơn vị của kẻ thù không có quả cầu phía trên thanh năng lượng."
+msgstr " Các đơn vị của kẻ thù có quả cầu màu đỏ phía trên thanh năng lượng."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:201
@@ -2829,18 +2823,12 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:493
-#, fuzzy
-#| msgid ""
-#| "Game maps feature a variety of terrains that affect both unit movement "
-#| "and a unit’s defensive capability in combat.\n"
-#| "\n"
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
 msgstr ""
-"Bản đồ trò chơi bao gồm nhiều địa hình tác động đến cả di chuyển lẫn khả "
-"năng phòng thủ khi chiến đấu của một đơn vị.\n"
-"\n"
+"Bản đồ trò chơi bao gồm nhiều địa hình, chúng tác động đến cả di chuyển lẫn "
+"khả năng phòng thủ khi chiến đấu của một đơn vị."
 
 #. [topic]: id=..addons
 #: data/core/help.cfg:501
@@ -2850,6 +2838,11 @@ msgid ""
 "more beyond what is offered in the official content bundled with the game.\n"
 "\n"
 msgstr ""
+"Mức độ tùy chỉnh động cơ Wesnoth cung cấp cho phép người chơi tạo nội dung "
+"của riêng họ, bao gồm các màn chơi, chiến dịch mới, và nhiều hơn nữa, xa hơn "
+"những gì được cung cấp trong nội dung chính thức được đóng gói cùng với trò "
+"chơi.\n"
+"\n"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:511
@@ -2873,17 +2866,11 @@ msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
 msgstr ""
+"Trò chơi hỗ trợ các kiểu nội dung phần bổ sung khác nhau, không phải luôn "
+"khả dụng trong mọi chế độ của trò chơi."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:514
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Single-player campaigns are collections of scenarios that fit together to "
-#| "tell a story. Both stand-alone scenarios—if intended to be played as such—"
-#| "and regular campaigns are available from the <italic>text='Campaigns'</"
-#| "italic> menu in the title screen."
 msgid ""
 "\n"
 "\n"
@@ -2912,14 +2899,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:518
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<italic>text='Multiplayer'</italic> games can be played on fully "
-#| "customized, scripted scenarios or even specially designed campaigns. "
-#| "There are also packs providing sets of individual multiplayer scenarios "
-#| "not connected in the form of a campaign."
 msgid ""
 "\n"
 "\n"
@@ -2932,7 +2911,7 @@ msgstr ""
 "Các trò chơi <italic>text='nhiều người chơi'</italic> có thể được chơi trên "
 "các màn chơi có kịch bản hoàn toàn tùy chỉnh, hoặc thậm chí các chiến dịch "
 "được thiết kế đặc biệt. Cũng có các gói cung cấp tập hợp các màn chơi nhiều "
-"người chơi riêng lẻ, không kết nối dưới dạng một chiến dịch."
+"người chơi riêng lẻ."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:520
@@ -2972,11 +2951,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:526
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Multiplayer Eras and Factions'</header>"
 msgid ""
 "\n"
 "\n"
@@ -2984,7 +2958,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Thời đại và liên minh nhiều người chơi'</header>"
+"<header>text='Bản sửa đổi nhiều người chơi'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:528
@@ -2996,6 +2970,12 @@ msgid ""
 "in various ways. You can choose and configure modifications when creating a "
 "new game."
 msgstr ""
+"\n"
+"\n"
+"Bản sửa đổi là các kịch bản độc lập với màn chơi và thời đại cho các trò "
+"chơi <italic>text='nhiều người chơi'</italic> mà có thể thay đổi tập quy tắc "
+"mặc định theo các cách khác nhau. Bạn có thể chọn và cấu hình các bản sửa "
+"đổi khi tạo một trò chơi mới."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:530
@@ -3010,15 +2990,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:532
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Content authors can use resource packs available on the add-ons server to "
-#| "enrich their own content with existing assets such as images, music, and "
-#| "code. These are not generally intended for the players’ use and cannot be "
-#| "directly used in-game on their own; however, other playable add-ons may "
-#| "depend on them and suggest or require their installation during download."
 msgid ""
 "\n"
 "\n"
@@ -3032,10 +3003,10 @@ msgstr ""
 "\n"
 "Các tác giả nội dung có thể sử dụng các gói tài nguyên có trên máy chủ phần "
 "bổ sung để làm phong phú thêm nội dung của mình bằng những tài sản hiện có "
-"như ảnh, âm nhạc và mã nguồn. Những tài nguyên này nói chung không dành cho "
-"người chơi và không thể được sử dụng trực tiếp để chơi; tuy nhiên, các phần "
-"bổ sung chơi được khác có thể phụ thuộc vào chúng và yêu cầu hoặc cần cài "
-"đặt những tài nguyên này trong khi tải về."
+"như ảnh, âm nhạc và mã nguồn. Những tài nguyên này nói chung không được "
+"thiết kế để sử dụng trực tiếp trong trò chơi; tuy nhiên, các phần bổ sung "
+"chơi được khác có thể phụ thuộc vào chúng và yêu cầu hoặc cần cài đặt những "
+"tài nguyên này trong khi tải về."
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:541
@@ -3044,31 +3015,6 @@ msgstr "Cài đặt phần bổ sung"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:542
-#, fuzzy
-#| msgid ""
-#| "User-made add-ons can be obtained and updated through the "
-#| "<italic>text='Add-ons'</italic> option in the main menu. After connecting "
-#| "to the add-ons server (by default <italic>text='add-ons.wesnoth.org'</"
-#| "italic>), you will be presented with a list of add-ons available in the "
-#| "server for downloading.\n"
-#| "\n"
-#| "The installation status for each add-on is shown below each entry. For "
-#| "add-ons that are <italic>text='upgradable'</italic> or "
-#| "<italic>text='outdated'</italic> on the server, their installed and "
-#| "remote versions will be shown on the <italic>text='Version'</italic> "
-#| "column.\n"
-#| "\n"
-#| "To search for add-ons by using keywords, type them in any order in the "
-#| "<bold>text='Filter'</bold> box, separated by spaces. You can also sort "
-#| "the add-on list by clicking the column headers. It is also possible to "
-#| "choose to display only add-ons of specific categories by clicking on the "
-#| "<bold>text='Options'</bold> button on the top-right corner.\n"
-#| "\n"
-#| "To install an add-on, select it from the list and click <bold>text='OK'</"
-#| "bold>, or simply double click the add-on’s title. The "
-#| "<bold>text='Description'</bold> button provides you with additional "
-#| "details about the add-on, such as its full description, installation "
-#| "status, and available languages."
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3100,15 +3046,15 @@ msgstr ""
 "\n"
 "Trạng thái cài đặt của mỗi phần bổ sung được hiển thị dưới mỗi mục. Với các "
 "phần bổ sung <italic>text='có thể nâng cấp'</italic> hoặc <italic>text='đã "
-"hết hạn'</italic> trên máy chủ, các phiên bản đã cài đặt và trên máy chủ sẽ "
-"được hiển thị trên cột <italic>text='Phiên bản'</italic>.\n"
+"hết hạn'</italic> trên máy chủ, các phiên bản đã cài đặt và đã phát hành sẽ "
+"được hiển thị trong cột <italic>text='Phiên bản'</italic>.\n"
 "\n"
-"Để tìm kiếm phần bổ sung sử dụng từ khóa, đánh từ khóa theo bất kỳ thứ tự "
-"nào trong hộp <bold>text='Bộ lọc'</bold>, phân cách bằng khoảng trống. Bạn "
-"cũng có thể sắp xếp danh sách phần bổ sung bằng cách nhấn vào các đầu đề "
-"cột. Cũng có thể chọn chỉ hiển thị những phần bổ sung của các danh mục cụ "
-"thể bằng cách nhấn vào nút <bold>text='Tùy chọn'</bold> ở góc phải phía "
-"trên.\n"
+"Để tìm kiếm phần bổ sung theo từ khóa, đánh các từ ngữ có liên quan theo bất "
+"kỳ thứ tự nào trong hộp <bold>text='Bộ lọc'</bold>, phân cách bằng khoảng "
+"trống. Bạn cũng có thể sắp xếp danh sách phần bổ sung bằng cách nhấn vào các "
+"đầu đề cột. Cũng có thể chọn chỉ hiển thị những phần bổ sung của các danh "
+"mục cụ thể bằng cách nhấn vào nút <bold>text='Tùy chọn'</bold> ở góc phải "
+"phía trên.\n"
 "\n"
 "Để cài đặt một phần bổ sung, chọn nó từ danh sách và nhấn <bold>text='Đồng "
 "ý'</bold>, hoặc đơn giản nhấn kép vào tiêu đề phần bổ sung. Nút "
@@ -3122,17 +3068,6 @@ msgstr "Xóa phần bổ sung"
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:556
-#, fuzzy
-#| msgid ""
-#| "To remove add-ons, click <bold>text='Remove Add-ons'</bold> in the add-"
-#| "ons server connection dialog. You will be presented with options to "
-#| "remove any number of add-ons you currently have installed.\n"
-#| "\n"
-#| "This feature cannot remove add-ons for which there is publishing "
-#| "information (<italic>text='.pbl'</italic> files) attached, in order to "
-#| "prevent accidental loss. Instead, you have to manually delete the "
-#| "information files or the add-ons themselves using your platform’s "
-#| "facilities."
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -3144,14 +3079,14 @@ msgid ""
 "information files or the add-ons themselves using a file manager provided by "
 "your platform."
 msgstr ""
-"Để xóa phần bổ sung, nhấn <bold>text='Xóa phần bổ sung'</bold> trong hộp "
+"Để xóa phần bổ sung, chọn <bold>text='Xóa phần bổ sung'</bold> trong hộp "
 "thoại kết nối máy chủ phần bổ sung. Bạn sẽ được lựa chọn để xóa bất kỳ phần "
-"bổ sung nào bạn hiện đã cài đặt.\n"
+"bổ sung nào hiện đã cài đặt.\n"
 "\n"
-"Tính năng này không thể xóa những phần bổ sung có thông tin phát hành (các "
-"tập tin <italic>text='.pbl'</italic> đi kèm) để tránh mất mát do sơ ý. Thay "
-"vào đó, bạn phải xóa thủ công các tập tin thông tin hoặc phần bổ sung sử "
-"dụng công cụ của hệ điều hành."
+"Không thể xóa các phần bổ sung có thông tin phát hành (các tập tin "
+"<italic>text='.pbl'</italic> đi kèm) để tránh mất mát do sơ ý. Nếu cần "
+"thiết, bạn phải xóa thủ công các tập tin thông tin hoặc phần bổ sung sử dụng "
+"một trình quản lý tập tin trên hệ điều hành."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:571
@@ -3225,6 +3160,9 @@ msgid ""
 "Display the controller status of a side.\n"
 "\n"
 msgstr ""
+"\n"
+"Hiển thị trạng thái điều khiển của một phe.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:588
@@ -3350,6 +3288,10 @@ msgid ""
 "sides.\n"
 "\n"
 msgstr ""
+"\n"
+"Khởi chạy một hộp thoại để giúp người chủ trò chơi thay đổi người điều khiển "
+"các phe.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:627
@@ -3359,6 +3301,10 @@ msgid ""
 "network disconnection.\n"
 "\n"
 msgstr ""
+"\n"
+"Bật tắt trạng thái rảnh rỗi cho một phe. Người chủ trò chơi có thể làm cho "
+"một phe trở thành rảnh rỗi sau một lần ngắt kết nối mạng.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:630
@@ -3823,14 +3769,12 @@ msgstr "bồi dưỡng"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:505
-#, fuzzy
-#| msgid ""
-#| "This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
-msgstr "Đơn vị này tăng thêm 1 máu tối đa khi nó giết một đơn vị có sự sống."
+msgstr ""
+"Đơn vị này tăng thêm 1 máu tối đa khi nó giết một đơn vị, trừ các đơn vị "
+"miễn nhiễm với bệnh dịch."
 
 #. [unstore_unit]
 #: data/core/macros/abilities.cfg:531
@@ -4118,98 +4062,78 @@ msgstr "Canh một - Giờ thứ tư"
 
 #. [time]: id=dawn1
 #: data/core/macros/schedules.cfg:478
-#, fuzzy
-#| msgid "First Watch"
 msgid "First Dawn"
-msgstr "Canh một"
+msgstr "Bình minh đầu tiên"
 
 #. [time]: id=dawn2
 #: data/core/macros/schedules.cfg:488
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Dawn"
-msgstr "Canh hai"
+msgstr "Bình minh thứ hai"
 
 #. [time]: id=morning1
 #: data/core/macros/schedules.cfg:498
-#, fuzzy
-#| msgid "Morning"
 msgid "First Morning"
-msgstr "Buổi sáng"
+msgstr "Buổi sáng đầu tiên"
 
 #. [time]: id=morning2
 #: data/core/macros/schedules.cfg:507
-#, fuzzy
-#| msgid "Morning"
 msgid "Second Morning"
-msgstr "Buổi sáng"
+msgstr "Buổi sáng thứ hai"
 
 #. [time]: id=midday1
 #: data/core/macros/schedules.cfg:516
-#, fuzzy
-#| msgid "Midday"
 msgid "First Midday"
-msgstr "Buổi trưa"
+msgstr "Buổi trưa đầu tiên"
 
 #. [time]: id=midday2
 #: data/core/macros/schedules.cfg:525
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Midday"
-msgstr "Canh hai"
+msgstr "Buổi trưa thứ hai"
 
 #. [time]: id=afternoon1
 #: data/core/macros/schedules.cfg:534
-#, fuzzy
-#| msgid "Afternoon"
 msgid "First Afternoon"
-msgstr "Buổi chiều"
+msgstr "Buổi chiều đầu tiên"
 
 #. [time]: id=afternoon2
 #: data/core/macros/schedules.cfg:543
-#, fuzzy
-#| msgid "Afternoon"
 msgid "Second Afternoon"
-msgstr "Buổi chiều"
+msgstr "Buổi chiều thứ hai"
 
 #. [time]: id=dusk1
 #: data/core/macros/schedules.cfg:552
-#, fuzzy
-#| msgid "first strike"
 msgid "First Dusk"
-msgstr "đánh trước"
+msgstr "Chạng vạng đầu tiên"
 
 #. [time]: id=dusk2
 #: data/core/macros/schedules.cfg:562
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Dusk"
-msgstr "Canh hai"
+msgstr "Chạng vạng thứ hai"
 
 #. [time]: id=short_dark
 #: data/core/macros/schedules.cfg:572
 msgid "The Short Dark"
-msgstr ""
+msgstr "Đêm ngắn"
 
 #. [time]: id=long_dark1
 #: data/core/macros/schedules.cfg:584
 msgid "The Long Dark (1)"
-msgstr ""
+msgstr "Đêm dài (1)"
 
 #. [time]: id=long_dark2
 #: data/core/macros/schedules.cfg:596
 msgid "The Long Dark (2)"
-msgstr ""
+msgstr "Đêm dài (2)"
 
 #. [time]: id=long_dark3
 #: data/core/macros/schedules.cfg:610
 msgid "The Long Dark (3)"
-msgstr ""
+msgstr "Đêm dài (3)"
 
 #. [time]: id=long_dark4
 #: data/core/macros/schedules.cfg:622
 msgid "The Long Dark (4)"
-msgstr ""
+msgstr "Đêm dài (4)"
 
 #: data/core/macros/special-notes.cfg:3
 msgid ""
@@ -4674,75 +4598,6 @@ msgstr "Người rồng"
 
 #. [race]: id=drake
 #: data/core/units.cfg:58
-#, fuzzy
-#| msgid ""
-#| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
-#| "true dragons. On average, an adult drake stands around three meters tall "
-#| "and easily weighs more than a man and a horse combined. Their skin is "
-#| "made up of hard scales, resistant to most physical strikes except "
-#| "piercing and cold damage. Most drakes are capable of true flight and can "
-#| "travel long distances quickly. However, their sheer weight and bulk "
-#| "limits their flight ability somewhat, making them ungainly in the air. "
-#| "Where possible, they make use of terrain features such as hills, "
-#| "mountains and trees as launch points in order to gain greater height and "
-#| "speed. Fortunately for their enemies, they are still quite clumsy "
-#| "creatures and surprisingly slow in combat. This, combined with their "
-#| "large size, renders them easy targets for those who dare attack them.\n"
-#| "\n"
-#| "Drakes are inherently magical creatures, with a mysterious internal fire "
-#| "fueling their very lives. This can easily be witnessed when one of their "
-#| "kind perishes in combat; its internal fire is released, burning their "
-#| "remains in to ashes. Their internal fire is also their greatest weakness; "
-#| "it makes them extremely vulnerable to cold attacks. Despite their magical "
-#| "nature, drakes are incapable of channeling magic in a controlled manner. "
-#| "While the magic imbued within a drake’s body enables it to spit fire and "
-#| "gives it life, they have no willful control over its functions of this "
-#| "magic.\n"
-#| "\n"
-#| "<header>text='Society'</header>\n"
-#| "Drakes are a relatively warlike race and their societies can be best "
-#| "described as cultured martial societies. The core of a drake tribe is a "
-#| "small group of veteran warriors headed by a mutually respected — or "
-#| "simply feared — <ref>dst='dominant' text='dominant'</ref> who rules the "
-#| "society with an iron fist. Every drake is expected to earn their place in "
-#| "the strict hierarchy, to obey their superiors and command their "
-#| "inferiors. Entry to the ruling elite is only possible through challenging "
-#| "and defeating a superior in single combat, which is the way the hierarchy "
-#| "within the elite itself is established. The use of deception of any kind "
-#| "towards any fellow drake is, without exception, seen as cowardly and "
-#| "unacceptable.\n"
-#| "\n"
-#| "While their warlike nature and sense of territory drives them to defend "
-#| "their territories savagely, drakes rarely invade or trespass on areas "
-#| "already occupied by the other major races. Instead, they settle in "
-#| "unpopulated areas to establish their own territory there. They primarily "
-#| "feed on large game they hunt in the lowlands around their homes, but "
-#| "hatchlings and lower caste drakes are known to feed also on certain of "
-#| "moss and fungi they cultivate deep in their caverns. The only technology "
-#| "drakes value is armor- and weapon-smithing, and neither know or need "
-#| "other science and culture besides this. However the few implements they "
-#| "do fashion are almost unrivaled in quality, only matched by those "
-#| "produced in the finest Dwarvish foundries.\n"
-#| "\n"
-#| "Drakes are hatched from eggs and usually live naturally between 20 to 30 "
-#| "years. Death in battle is the most preferred way for a drake to leave "
-#| "this world. Unlike the elder members of other races, drakes naturally "
-#| "grow more aggressive and reckless towards the ends of their natural "
-#| "lives, perhaps to help ensure their place in the heroic legends of their "
-#| "kind.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "Drakes originated from an archipelago of volcanic islands called "
-#| "<ref>dst='morogor' text='Morogor'</ref> in the <ref>dst='great_ocean' "
-#| "text='Great Ocean'</ref>. A combination of population pressure and the "
-#| "subsidence of many of their home islands has caused colonies of drakes to "
-#| "spread to the <ref>dst='great_continent' text='Great Continent'</ref>. "
-#| "Drakes tend to make their homes in mountain caverns near volcanoes to "
-#| "protect their eggs, hatchings and forges. While drakes naturally prefer "
-#| "warmth, their internal fire is more than capable of sustaining them even "
-#| "in a relatively cold climate, a feature which has allowed them to "
-#| "populate even some of the mountains of the far north of the Great "
-#| "Continent."
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -4849,12 +4704,12 @@ msgstr ""
 "vùng các chủng tộc lớn khác đã chiếm hữu. Trái lại, chúng chỉ cư ngụ trong "
 "những khu vực không dân cư để thiết lập lãnh thổ riêng ở đó. Chúng kiếm mồi "
 "chủ yếu bằng cách đi săn trong những vùng đất thấp xung quanh nơi ở, nhưng "
-"những cá thể non và đẳng cấp thấp cũng ăn rêu và nấm chúng trồng sâu trong "
-"hang động. Kỹ thuật duy nhất người rồng tự hào là nghề rèn áo giáp và vũ "
-"khí, chúng không biết cũng như không cần khoa học hay văn hóa khác ngoài "
-"nghề này. Tuy nhiên, một vài công cụ chúng chế tạo gần như là vô địch về mặt "
-"chất lượng, chỉ những sản phẩm từ các lò xưởng tốt nhất của người lùn mới có "
-"thể sánh được.\n"
+"những cá thể non và đẳng cấp thấp cũng ăn một số loại rêu và nấm chúng trồng "
+"sâu trong hang động. Kỹ thuật duy nhất người rồng tự hào là nghề rèn áo giáp "
+"và vũ khí, chúng không biết cũng như không cần khoa học hay văn hóa khác "
+"ngoài nghề này. Tuy nhiên, một vài công cụ chúng chế tạo gần như là vô địch "
+"về mặt chất lượng, chỉ những sản phẩm từ các lò xưởng tốt nhất của người lùn "
+"mới có thể sánh được.\n"
 "\n"
 "Người rồng nở ra từ trứng và thường sống tự nhiên giữa 20 đến 30 năm. Hy "
 "sinh khi chiến đấu là cách vinh dự nhất để một người rồng rời khỏi thế giới "
@@ -5077,24 +4932,18 @@ msgstr ""
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:132
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Falcon"
-msgstr "Con người"
+msgstr "Chim ưng"
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:133
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Falcon"
-msgstr "Con người"
+msgstr "Chim ưng"
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:134
-#, fuzzy
-#| msgid "race^Humans"
 msgid "race^Falcons"
-msgstr "Con người"
+msgstr "Chim ưng"
 
 #. [race]: id=goblin
 #: data/core/units.cfg:145
@@ -5261,29 +5110,23 @@ msgstr ""
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:199
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Khalifate Human"
-msgstr "Con người"
+msgstr "Con người Khalifate"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:200
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Khalifate Human"
-msgstr "Con người"
+msgstr "Con người Khalifate"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:201
-#, fuzzy
-#| msgid "race+plural^Mechanical"
 msgid "race+plural^Khalifate"
-msgstr "Máy móc"
+msgstr "Khalifate"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:202
 msgid "This race does not have a description yet."
-msgstr ""
+msgstr "Chủng tộc này chưa có mô tả."
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:213
@@ -5452,22 +5295,6 @@ msgstr "Quỷ khổng lồ"
 
 #. [race]: id=ogre
 #: data/core/units.cfg:272
-#, fuzzy
-#| msgid ""
-#| "Ogres are a wild and uncivilized race who dwell mainly in the wilderness "
-#| "of the Great Continent. Physically, they resemble humans and orcs but are "
-#| "larger and stronger. Even their adolescents are more than a match for "
-#| "most men. Ogres are distrusted in many populated areas and usually either "
-#| "avoid them or are driven out by force. Instead, they lurk the mountainous "
-#| "areas on the edges of civilization, where hungry ogre bandits provide a "
-#| "constant threat to travelers and caravans. While ogres are not "
-#| "particularly intelligent or quick, their toughness and physical strength "
-#| "make them a valuable asset in the armies of other races. They are "
-#| "especially valued by more ruthless commanders who don't mind the ogres' "
-#| "brutality. Little is known about their biology or society, if they can "
-#| "truly be said to have one, but they are said to attack alongside wolves "
-#| "and other beasts. Whether this is a sign of cooperation, domestication, "
-#| "or simply mutual opportunism is not known."
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -5924,10 +5751,8 @@ msgid "Factions are only used in multiplayer"
 msgstr "Liên minh chỉ được sử dụng trong chế độ nhiều người chơi."
 
 #: src/help.cpp:1327
-#, fuzzy
-#| msgid "Terrain"
 msgid "Base Terrain: "
-msgstr "Địa hình"
+msgstr "Địa hình cơ bản: "
 
 #: src/help.cpp:1405
 msgid "level"
@@ -5946,8 +5771,6 @@ msgid "Base unit: "
 msgstr "Đơn vị cơ bản: "
 
 #: src/help.cpp:1470
-#, fuzzy
-#| msgid "Base unit: "
 msgid "Base units: "
 msgstr "Đơn vị cơ bản: "
 

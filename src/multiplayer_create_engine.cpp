@@ -412,6 +412,34 @@ void create_engine::prepare_for_new_level()
 	state_.mp_settings().hash = current_level().data().hash();
 }
 
+void create_engine::prepare_for_era_and_mods()
+{
+	state_.classification().era_define =
+		resources::config_manager->game_config().find_child(
+			"era", "id", get_parameters().mp_era)["define"].str();
+	BOOST_FOREACH(const std::string& mod_id, get_parameters().active_mods) {
+		state_.classification().mod_defines.push_back(
+				resources::config_manager->game_config().find_child(
+					"modification", "id", mod_id)["define"].str());
+	}
+}
+
+void create_engine::prepare_for_scenario()
+{
+	DBG_MP << "preparing data for scenario by reloading game config\n";
+
+	state_.classification().scenario_define =
+		current_level().data()["define"].str();
+	
+	resources::config_manager->
+		load_game_config_for_game(state_.classification());
+
+	current_level().set_data(
+		resources::config_manager->game_config().find_child(
+		lexical_cast<std::string> (game_classification::MULTIPLAYER),
+		"id", current_level().data()["id"]));
+}
+
 void create_engine::prepare_for_campaign(const std::string& difficulty)
 {
 	DBG_MP << "preparing data for campaign by reloading game config\n";

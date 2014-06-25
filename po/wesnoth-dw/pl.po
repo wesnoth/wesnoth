@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: wescamp-i18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-01-04 20:07+0100\n"
-"PO-Revision-Date: 2013-04-27 22:05+0100\n"
-"Last-Translator: Paweł Jackowski <http://paweljackowski.com/>\n"
+"PO-Revision-Date: 2014-04-13 16:11+0100\n"
+"Last-Translator: \n"
 "Language-Team: none\n"
-"Language: \n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.6.4\n"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:11
@@ -106,7 +106,7 @@ msgstr "Grafika"
 #. [lua]
 #: data/campaigns/Dead_Water/_main.cfg:85
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
+msgstr "ogłuszenie: Jednostka jest ogłuszona. Nie ma Strefy Kontroli."
 
 #. [scenario]: id=01_Invasion
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:36
@@ -535,6 +535,7 @@ msgid ""
 "You will just have to trust me on this. She will listen to you. I will say "
 "no more on the matter."
 msgstr ""
+"Musisz mi w tym zaufać. Posłucha cię. Nie powiem w tej kwestii nic więcej."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:325
@@ -1059,7 +1060,6 @@ msgstr "Odważny wybór z dobrego serca! Nie mogę ścierpieć niewolnictwa."
 #. 'words of a human' here; it signifies rather 'words of a
 #. moral adult' as opposed to a child or dependant.
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:382
-#, fuzzy
 #| msgid ""
 #| "Those were the words of a merman, Kai Krellis, and well spoken. The folk "
 #| "are truly yours now."
@@ -1067,8 +1067,8 @@ msgid ""
 "Those were the words of a man and a leader, Kai Krellis, and well spoken. "
 "The folk are truly yours now."
 msgstr ""
-"Oto słowa mermena Kai Krellisie i to słowa dobrze wypowiedziane. Teraz lud "
-"jest prawdziwie twój."
+"Oto słowa mężczyzny i przywódcy Kai Krellisie i to słowa dobrze "
+"wypowiedziane. Teraz lud jest prawdziwie twój."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:389
@@ -2983,7 +2983,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:62
-#, fuzzy
 #| msgid ""
 #| "Cylanna never traveled far again, but stayed in Jotha as a respected "
 #| "elder. She remained a royal advisor, but her main work was healing the "
@@ -2997,9 +2996,9 @@ msgid ""
 msgstr ""
 "Cylanna nie odbyła już nigdy tak dalekich podróży, lecz pozostała w Jotha "
 "jako szanowana starsza. Nadal była królewskim doradcą, ale jej głównym "
-"zadaniem było uzdrawianie chorych oraz prowadzenie chrzcin i ślubów. "
-"Wszystko to pasowało bardziej do jej predyspozycji niż toczenie bitew z "
-"nieumarłymi."
+"zadaniem było uzdrawianie chorych oraz prowadzenie ceremonii nadawania imion "
+"i wesel. Wszystko to pasowało bardziej do jej predyspozycji niż toczenie "
+"bitew z nieumarłymi."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:69
@@ -3366,7 +3365,6 @@ msgstr "ogłuszenie"
 
 #. [damage]: id=tail_stun
 #: data/campaigns/Dead_Water/utils/specials.cfg:10
-#, fuzzy
 #| msgid ""
 #| "This attack hits so hard that the defender is dazed and can no longer "
 #| "enforce a zone of control. The effect wears off on the defender’s next "
@@ -3375,5 +3373,5 @@ msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
-"Silny atak, który powoduje, że ofiara jest oszołomiona i nie może egzekwować "
-"strefy kontroli. Efekt znika w jej następnej turze."
+"Siła tego ataku sprawia, że przeciwnik ulega oszołomieniu i traci strefę "
+"kontroli. Efekt trwa jedną turę."

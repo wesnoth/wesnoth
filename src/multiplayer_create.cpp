@@ -223,6 +223,9 @@ void create::process_event()
 
 	if (launch_game_.pressed() || levels_menu_.double_clicked()) {
 		if (engine_.current_level().can_launch_game()) {
+
+			engine_.prepare_for_era_and_mods();
+
 			if (engine_.current_level_type() == level::CAMPAIGN ||
 				engine_.current_level_type() == level::SP_CAMPAIGN) {
 
@@ -232,6 +235,8 @@ void create::process_event()
 				}
 
 				engine_.prepare_for_campaign(difficulty);
+			} else {
+				engine_.prepare_for_scenario();
 			}
 
 			engine_.prepare_for_new_level();

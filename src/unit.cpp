@@ -44,8 +44,11 @@
 #include "unit_map.hpp"      // for unit_map, etc
 #include "variable.hpp"                 // for vconfig, etc
 
+#include <boost/bind.hpp>
 #include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
+#include <boost/function_output_iterator.hpp>
+#include <boost/range/algorithm.hpp>
 #include <cassert>                     // for assert
 #include <cstdlib>                     // for NULL, rand
 #include <exception>                    // for exception
@@ -424,6 +427,14 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 		do {
 			attacks_.push_back(attack_type(*cfg_range.first));
 		} while(++cfg_range.first != cfg_range.second);
+	}
+
+	//If cfg specifies [advancement]s, replace this [advancement]s with them.
+	if(cfg.has_child("advancement"))
+	{
+		cfg_.clear_children("advancement");
+		boost::copy( cfg.child_range("advancement")
+			, boost::make_function_output_iterator(boost::bind( &config::add_child, boost::ref(cfg_) /*thisptr*/, "advancement", _1 )) );
 	}
 
 	//don't use the unit_type's abilities if this config has its own defined
