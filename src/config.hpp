@@ -36,6 +36,8 @@
 
 #include <boost/exception/exception.hpp>
 #include <boost/variant/apply_visitor.hpp>
+#include <boost/variant/get.hpp>
+#include <boost/variant/static_visitor.hpp>
 #include <boost/variant/variant.hpp>
 
 #include "game_errors.hpp"
