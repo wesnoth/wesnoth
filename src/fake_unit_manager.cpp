@@ -23,6 +23,11 @@
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 
+/** Temporarily register a unit to be drawn on the map (moving: can overlap others).
+ *  The temp unit is added at the end of the temporary unit dequeue,
+ *  and therefore gets drawn last, over other units and temp units.
+ *  Adding the same unit twice isn't allowed.
+ */
 void fake_unit_manager::place_temporary_unit(internal_ptr_type u)
 {
 	if(std::find(fake_units_.begin(),fake_units_.end(), u) != fake_units_.end()) {
@@ -33,6 +38,7 @@ void fake_unit_manager::place_temporary_unit(internal_ptr_type u)
 	}
 }
 
+/** Removes any instances of this unit from the temporary unit database. */
 int fake_unit_manager::remove_temporary_unit(internal_ptr_type u)
 {
 	int removed = 0;
