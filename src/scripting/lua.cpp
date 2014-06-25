@@ -23,76 +23,113 @@
  *   - luaW_ functions are helpers in Lua style.
  */
 
-#include "lua/lualib.h"
-#include "lua/lauxlib.h"
-
-#include <cassert>
-#include <cstring>
-
 #include "scripting/lua.hpp"
-#include "scripting/lua_api.hpp"
-#include "scripting/lua_types.hpp"
 
+#include "global.hpp"
 
-#include "actions/attack.hpp"
-#include "ai/manager.hpp"
-#include "ai/composite/component.hpp"
-#include "ai/composite/engine_lua.hpp"
-#include "ai/testing/stage_rca.hpp"
-#include "attack_prediction.hpp"
-#include "filesystem.hpp"
-#include "game_classification.hpp"
-#include "game_display.hpp"
-#include "game_events/conditional_wml.hpp"
-#include "game_events/pump.hpp"
-#include "game_preferences.hpp"
-#include "game_data.hpp"
-#include "game_config_manager.hpp"
-#include "log.hpp"
-#include "lua_jailbreak_exception.hpp"
-#include "map.hpp"
+#include "actions/attack.hpp"           // for battle_context_unit_stats, etc
+#include "ai/composite/ai.hpp"          // for ai_composite
+#include "ai/composite/component.hpp"   // for component, etc
+#include "ai/composite/contexts.hpp"    // for ai_context
+#include "ai/composite/engine_lua.hpp"  // for engine_lua
+#include "ai/composite/rca.hpp"  // for candidate_action
+#include "ai/composite/stage.hpp"  // for stage
+#include "ai/configuration.hpp"         // for configuration
+#include "ai/lua/core.hpp"              // for lua_ai_context, etc
+#include "ai/manager.hpp"               // for manager, holder
+#include "attack_prediction.hpp"        // for combatant
+#include "config.hpp"                   // for config, etc
+#include "filesystem.hpp"               // for get_wml_location
+#include "font.hpp"                     // for LABEL_COLOR
+#include "game_board.hpp"               // for game_board
+#include "game_classification.hpp"      // for game_classification, etc
+#include "game_config.hpp"              // for debug, base_income, etc
+#include "game_config_manager.hpp"      // for game_config_manager
+#include "game_data.hpp"               // for game_data, etc
+#include "game_display.hpp"             // for game_display
+#include "game_errors.hpp"              // for game_error
+#include "game_events/conditional_wml.hpp"  // for conditional_passed
+#include "game_events/pump.hpp"         // for queued_event
+#include "game_preferences.hpp"         // for encountered_units
+#include "gui/auxiliary/canvas.hpp"     // for tcanvas
+#include "gui/auxiliary/window_builder.hpp"  // for twindow_builder, etc
+#include "gui/widgets/clickable.hpp"    // for tclickable_
+#include "gui/widgets/control.hpp"      // for tcontrol
+#include "gui/widgets/multi_page.hpp"   // for tmulti_page
+#include "gui/widgets/progress_bar.hpp"  // for tprogress_bar
+#include "gui/widgets/selectable.hpp"   // for tselectable_
+#include "gui/widgets/slider.hpp"       // for tslider
+#include "gui/widgets/text_box.hpp"     // for ttext_box
+#include "gui/widgets/widget.hpp"       // for twidget
+#include "gui/widgets/window.hpp"       // for twindow
+#include "image.hpp"                    // for get_image, locator
+#include "log.hpp"                      // for LOG_STREAM, logger, etc
+#include "lua/lauxlib.h"                // for luaL_checkinteger, etc
+#include "lua/lua.h"                    // for lua_setfield, etc
+#include "lua/lualib.h"                 // for luaopen_base, luaopen_debug, etc
+#include "make_enum.hpp"                // for operator<<
+#include "map.hpp"                      // for gamemap
 #include "map_label.hpp"
-#include "mp_game_settings.hpp"
-#include "pathfind/pathfind.hpp"
-#include "pathfind/teleport.hpp"
-#include "play_controller.hpp"
-#include "recall_list_manager.hpp"
-#include "replay.hpp"
-#include "reports.hpp"
-#include "resources.hpp"
-#include "terrain_filter.hpp"
-#include "terrain_translation.hpp"
-#include "side_filter.hpp"
-#include "sound.hpp"
-#include "synced_context.hpp"
-#include "unit.hpp"
-#include "unit_animation_component.hpp"
-#include "ai/lua/core.hpp"
-#include "version.hpp"
-#include "gui/widgets/clickable.hpp"
-#include "ai/contexts.hpp"
-#include "ai/configuration.hpp"
-#include "ai/composite/ai.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
-#include "gui/widgets/listbox.hpp"
-#endif
-#include "gui/widgets/multi_page.hpp"
-#include "gui/widgets/selectable.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/text_box.hpp"
-#include "gui/widgets/slider.hpp"
-#include "gui/widgets/progress_bar.hpp"
-#include "gui/widgets/window.hpp"
+#include "map_location.hpp"             // for map_location
+#include "mouse_events.hpp"             // for mouse_handler
+#include "mp_game_settings.hpp"         // for mp_game_settings
+#include "pathfind/pathfind.hpp"        // for full_cost_map, plain_route, etc
+#include "pathfind/teleport.hpp"        // for get_teleport_locations, etc
+#include "play_controller.hpp"          // for play_controller
+#include "race.hpp"                     // for unit_race, race_map
+#include "recall_list_manager.hpp"      // for recall_list_manager
+#include "replay.hpp"                   // for get_user_choice, etc
+#include "reports.hpp"                  // for register_generator, etc
+#include "resources.hpp"                // for teams, gameboard, units, etc
+#include "scripting/lua_api.hpp"        // for luaW_toboolean, etc
+#include "scripting/lua_types.hpp"      // for getunitKey, dlgclbkKey, etc
+#include "sdl/utils.hpp"                // for surface
+#include "serialization/string_utils.hpp"  // for string_map
+#include "side_filter.hpp"              // for side_filter
+#include "sound.hpp"                    // for commit_music_changes, etc
+#include "synced_context.hpp"           // for synced_context, etc
+#include "team.hpp"                     // for team, village_owner
+#include "terrain.hpp"                  // for terrain_type
+#include "terrain_filter.hpp"           // for terrain_filter
+#include "terrain_translation.hpp"      // for read_terrain_code, etc
+#include "time_of_day.hpp"              // for time_of_day, tod_color
+#include "tod_manager.hpp"              // for tod_manager
+#include "tstring.hpp"                  // for t_string, operator+
+#include "unit.hpp"                     // for unit, intrusive_ptr_add_ref, etc
+#include "unit_animation_component.hpp"  // for unit_animation_component
+#include "unit_map.hpp"  // for unit_map, etc
+#include "unit_ptr.hpp"                 // for UnitConstPtr, UnitPtr
+#include "unit_types.hpp"    // for unit_type_data, unit_types, etc
+#include "util.hpp"                     // for lexical_cast
+#include "variable.hpp"                 // for vconfig, etc
+#include "version.hpp"                  // for do_version_check, etc
+
+#include <boost/bind.hpp>               // for bind_t, bind
+#include <boost/foreach.hpp>            // for auto_any_base, etc
+#include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
+#include <boost/tuple/tuple.hpp>        // for tuple
+#include <cassert>                      // for assert
+#include <cstring>                      // for strcmp, NULL
+#include <iterator>                     // for distance, advance
+#include <map>                          // for map, map<>::value_type, etc
+#include <new>                          // for operator new
+#include <set>                          // for set
+#include <sstream>                      // for operator<<, basic_ostream, etc
+#include <utility>                      // for pair
+#include <vector>                       // for vector, etc
+#include "SDL_timer.h"                  // for SDL_GetTicks
+#include "SDL_video.h"                  // for SDL_Color, SDL_Surface
+
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"
 #endif
 
-#include <boost/bind.hpp>
-#include <boost/foreach.hpp>
-#include <boost/variant/static_visitor.hpp>
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+#include "gui/widgets/list.hpp"
+#else
+#include "gui/widgets/listbox.hpp"
+#endif
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
