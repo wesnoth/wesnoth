@@ -13,41 +13,63 @@
 */
 
 #include "game_controller.hpp"
+#include "global.hpp"                   // for false_, bool_
 
-#include "about.hpp"
-#include "construct_dialog.hpp"
-#include "gettext.hpp"
-#include "gui/dialogs/addon_connect.hpp"
+#include "commandline_options.hpp"      // for commandline_options
+#include "config.hpp"                   // for config, etc
+#include "construct_dialog.hpp"         // for dialog
+#include "cursor.hpp"                   // for set, CURSOR_TYPE::NORMAL
+#include "exceptions.hpp"               // for error
+#include "filesystem.hpp"               // for get_user_config_dir, etc
+#include "game_classification.hpp"      // for game_classification, etc
+#include "game_config.hpp"              // for path, no_delay, revision, etc
+#include "game_config_manager.hpp"      // for game_config_manager
+#include "game_end_exceptions.hpp"      // for LEVEL_RESULT, etc
+#include "gettext.hpp"                  // for _
 #include "gui/dialogs/campaign_difficulty.hpp"
-#include "gui/dialogs/campaign_selection.hpp"
-#include "gui/dialogs/language_selection.hpp"
-#include "gui/dialogs/message.hpp"
+#include "gui/dialogs/campaign_selection.hpp"  // for tcampaign_selection
+#include "gui/dialogs/language_selection.hpp"  // for tlanguage_selection
 #include "gui/dialogs/mp_method_selection.hpp"
-#include "gui/dialogs/title_screen.hpp"
-#include "gui/dialogs/transient_message.hpp"
+#include "gui/dialogs/title_screen.hpp"  // for show_debug_clock_button
+#include "gui/widgets/settings.hpp"     // for new_widgets
+#include "gui/widgets/window.hpp"       // for twindow, etc
+#include "language.hpp"                 // for language_def, etc
+#include "loadscreen.hpp"               // for loadscreen, etc
+#include "log.hpp"                      // for LOG_STREAM, logger, general, etc
+#include "multiplayer.hpp"              // for start_client, etc
+#include "network.hpp"
+#include "playcampaign.hpp"             // for play_game, etc
+#include "preferences.hpp"              // for disable_preferences_save, etc
+#include "preferences_display.hpp"      // for detect_video_settings, etc
+#include "replay.hpp"                   // for replay, recorder
+#include "resources.hpp"                // for config_manager
+#include "savegame.hpp"                 // for clean_saves, etc
+#include "sdl/utils.hpp"                // for surface
+#include "serialization/compression.hpp"  // for format::NONE
+#include "serialization/string_utils.hpp"  // for split
+#include "tstring.hpp"                  // for operator==, operator!=
+#include "util.hpp"                     // for lexical_cast_default
+#include "wml_exception.hpp"            // for twml_exception
+
+#include <algorithm>                    // for copy, max, min, stable_sort
+#include <boost/foreach.hpp>            // for auto_any_base, etc
+#include <boost/optional.hpp>           // for optional
+#include <boost/tuple/tuple.hpp>        // for tuple
+#include <cstdlib>                     // for NULL, system
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <utility>                      // for pair
+#include "SDL.h"                        // for SDL_INIT_JOYSTICK, etc
+#include "SDL_events.h"                 // for SDL_ENABLE
+#include "SDL_joystick.h"               // for SDL_JoystickEventState, etc
+#include "SDL_timer.h"                  // for SDL_Delay
+#include "SDL_version.h"                // for SDL_VERSION_ATLEAST
+#include "SDL_video.h"                  // for SDL_WM_SetCaption, etc
+
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
-#include "gui/auxiliary/event/handler.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/window.hpp"
-#include "intro.hpp"
-#include "language.hpp"
-#include "loadscreen.hpp"
-#include "log.hpp"
-#include "map_exception.hpp"
-#include "multiplayer.hpp"
-#include "network.hpp"
-#include "playcampaign.hpp"
-#include "preferences_display.hpp"
-#include "replay.hpp"
-#include "savegame.hpp"
-#include "scripting/lua.hpp"
-#include "statistics.hpp"
-#include "wml_exception.hpp"
-#include "gui/dialogs/mp_host_game_prompt.hpp"
 
-#include <boost/foreach.hpp>
+struct incorrect_map_format_error;
 
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
