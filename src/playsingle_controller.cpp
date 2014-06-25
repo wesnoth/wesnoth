@@ -712,6 +712,8 @@ possible_end_play_signal playsingle_controller::play_side()
 	//flag used when we fallback from ai and give temporarily control to human
 	bool temporary_human = false;
 	do {
+		maybe_do_init_side(side_number, save);
+
 		// This flag can be set by derived classes (in overridden functions).
 		player_type_changed_ = false;
 		if (!skip_next_turn_)
