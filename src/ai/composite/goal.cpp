@@ -18,21 +18,26 @@
  */
 
 #include "goal.hpp"
+#include "global.hpp"
+
+#include "ai/default/contexts.hpp"
+#include "ai/lua/core.hpp"
+#include "ai/lua/lua_object.hpp"
+#include "ai/manager.hpp"
+#include "log.hpp"
+#include "map_location.hpp"
+#include "resources.hpp"
+#include "scripting/lua.hpp"
+#include "team.hpp"
+#include "terrain_filter.hpp"
+#include "unit.hpp"
+#include "unit_map.hpp"
 #include "wml_exception.hpp"
-#include "../lua/core.hpp"
-#include "../manager.hpp"
-#include "../../log.hpp"
-#include "../lua/lua_object.hpp"
-#include "../../resources.hpp"
-#include "../../scripting/lua.hpp"
-#include "../../terrain_filter.hpp"
-#include "../../unit.hpp"
-#include "../../unit_map.hpp"
-#include "../../team.hpp"
-#include "../../variable.hpp"
 
 #include <boost/lexical_cast.hpp>
 #include <boost/foreach.hpp>
+#include <set>
+#include <sstream>
 
 namespace ai {
 
