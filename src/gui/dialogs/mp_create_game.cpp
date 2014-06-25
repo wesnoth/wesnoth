@@ -16,11 +16,8 @@
 
 #include "gui/dialogs/mp_create_game.hpp"
 
-#include <tstring.hpp>
 #include <boost/multi_index_container.hpp>
-#include <boost/multi_index/hashed_index.hpp>
-#include <boost/multi_index/member.hpp>
-// These 4 probably unnecessary, but I put them here for now otherwise it doesn't compile...
+// ^ This is apparently unnecessary, but if removed it doesn't compile...
 
 #include "game_preferences.hpp"
 #include "gettext.hpp"
