@@ -242,6 +242,9 @@ void play_controller::init(CVideo& video){
 	browse_ = true;
 
 	init_managers();
+#if 0
+	// [era] and [modification] childs don't exist anymore in level_
+	// the events are now added in saved_game::expand_mp_events
 	// add era & mod events for MP game
 	if (const config &era_cfg = level_.child("era")) {
 		game_events::add_events(era_cfg.child_range("event"), "era_events");
@@ -256,6 +259,7 @@ void play_controller::init(CVideo& video){
 			}
 		}
 	}
+#endif
 	loadscreen::global_loadscreen->start_stage("start game");
 	loadscreen_manager->reset();
 }
@@ -648,9 +652,8 @@ config play_controller::to_config() const
 		sound::write_music_play_list(cfg);
 	}
 
-		//TODO: move id_manager handling to play_controller
 	cfg["next_underlying_unit_id"] = str_cast(n_unit::id_manager::instance().get_save_id());
-
+	//TODO: i am not sure whether the next line is needed.
 	cfg.merge_attributes(saved_game_.classification().to_config());
 	return cfg;
 }
