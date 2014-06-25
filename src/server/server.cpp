@@ -333,6 +333,7 @@ server::server(int port, const std::string& config_file, size_t min_threads,
 	not_logged_in_(),
 	rooms_(players_),
 	input_(),
+	input_path_(),
 	config_file_(config_file),
 	cfg_(read_config()),
 	accepted_versions_(),
@@ -499,8 +500,11 @@ void server::load_config() {
 # endif
 #endif
 	const std::string fifo_path = (cfg_["fifo_path"].empty() ? std::string(FIFODIR) + "/socket" : std::string(cfg_["fifo_path"]));
-	input_.reset();
-	input_.reset(new input_stream(fifo_path));
+	// Reset (replace) the input stream only if the FIFO path changed.
+	if(fifo_path != input_path_) {
+		input_.reset(new input_stream(fifo_path));
+	}
+	input_path_ = fifo_path;
 
 	save_replays_ = cfg_["save_replays"].to_bool();
 	replay_save_path_ = cfg_["replay_save_path"].str();

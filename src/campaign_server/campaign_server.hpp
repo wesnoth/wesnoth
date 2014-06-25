@@ -84,6 +84,7 @@ private:
 	};
 
 	typedef boost::function<void (const request& req)> request_handler;
+	typedef std::map<std::string, request_handler> request_handlers_table;
 
 	config cfg_;
 	const std::string cfg_file_;
@@ -94,7 +95,7 @@ private:
 	boost::scoped_ptr<input_stream> input_; /**< Server control socket. */
 
 	std::map<std::string, std::string> hooks_;
-	std::map<std::string, request_handler> handlers_;
+	request_handlers_table handlers_;
 
 	std::string feedback_url_format_;
 
@@ -176,10 +177,22 @@ private:
 	// Generic responses.
 	//
 
-	/** Send a client an informational message. */
+	/**
+	 * Send a client an informational message.
+	 *
+	 * The WML sent consists of a document containing a single @p [message]
+	 * child with a @a message attribute holding the value of @a msg.
+	 */
 	void send_message(const std::string& msg, network::connection sock);
 
-	/** Send a client an error message. */
+	/**
+	 * Send a client an error message.
+	 *
+	 * The WML sent consists of a document containing a single @p [error] child
+	 * with a @a message attribute holding the value of @a msg. In addition to
+	 * sending the error to the client, a line with the client IP and message
+	 * is recorded to the server log.
+	 */
 	void send_error(const std::string& msg, network::connection sock);
 };
 
