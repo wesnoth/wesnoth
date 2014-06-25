@@ -172,10 +172,22 @@ private:
 	// Generic responses.
 	//
 
-	/** Send a client an informational message. */
+	/**
+	 * Send a client an informational message.
+	 *
+	 * The WML sent consists of a document containing a single @p [message]
+	 * child with a @a message attribute holding the value of @a msg.
+	 */
 	void send_message(const std::string& msg, network::connection sock);
 
-	/** Send a client an error message. */
+	/**
+	 * Send a client an error message.
+	 *
+	 * The WML sent consists of a document containing a single @p [error] child
+	 * with a @a message attribute holding the value of @a msg. In addition to
+	 * sending the error to the client, a line with the client IP and message
+	 * is recorded to the server log.
+	 */
 	void send_error(const std::string& msg, network::connection sock);
 };
 
