@@ -331,6 +331,11 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		if (is_unit_test) {
 			return res;
 		}
+		//in this case we  might have skipped state.set_snapshot which means wew cannot do gamestate.convert_to_start_save();
+		if(res == QUIT)
+		{
+			return res;
+		}
 
 		// Save-management options fire on game end.
 		// This means: (a) we have a victory, or
@@ -354,7 +359,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		// On DEFEAT, QUIT, or OBSERVER_END, we're done now
 
 		//If there is no next scenario we're done now.
-		if(res == QUIT || !end_level.proceed_to_next_level || gamestate.carryover_sides_start["next_scenario"].empty())
+		if(!end_level.proceed_to_next_level || gamestate.carryover_sides_start["next_scenario"].empty())
 		{
 			return res;
 		}
