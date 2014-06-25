@@ -418,7 +418,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 	{
 		cfg_.clear_children("advancement");
 		boost::copy( cfg.child_range("advancement")
-			, boost::make_function_output_iterator(boost::bind( &config::add_child, cfg_ /*thisptr*/, "advancement", _1 )) );
+			, boost::make_function_output_iterator(boost::bind( &config::add_child, boost::ref(cfg_) /*thisptr*/, "advancement", _1 )) );
 	}
 
 	//don't use the unit_type's abilities if this config has its own defined
