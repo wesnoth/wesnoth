@@ -277,13 +277,18 @@ void server::run()
 
 			while((sock = network::receive_data(data, 0)) != network::null_connection)
 			{
-				typedef std::pair<std::string, request_handler> rh_table_entry;
-				BOOST_FOREACH(const rh_table_entry& rh, handlers_)
-				{
-					const config& req_body = data.child(rh.first);
+				config::all_children_iterator i = data.ordered_begin();
 
-					if(req_body) {
-						rh.second(request(rh.first, req_body, sock));
+				if(i != data.ordered_end()) {
+					// We only handle the first child.
+					const config::any_child& c = *i;
+
+					request_handlers_table::const_iterator j
+							= handlers_.find(c.key);
+
+					if(j != handlers_.end()) {
+						// Call the handler.
+						j->second(request(c.key, c.cfg, sock));
 					}
 				}
 			}
