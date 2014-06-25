@@ -238,7 +238,7 @@ void server::send_error(const std::string& msg, network::connection sock)
 {
 	config cfg;
 	cfg.add_child("error")["message"] = msg;
-	LOG_CS << "ERROR: " << msg << '\n';
+	LOG_CS << "ERROR [" << network::ip_address(sock) << "]: " << msg << '\n';
 	network::send_data(cfg, sock);
 }
 
