@@ -37,25 +37,18 @@
 
 #include "../actions/attack.hpp"
 #include "../actions/create.hpp"
-#include "../actions/move.hpp"
-#include "../dialogs.hpp"
-#include "../game_end_exceptions.hpp"
 #include "../game_preferences.hpp"
 #include "../log.hpp"
-#include "../scripting/lua.hpp"
-#include "../synced_context.hpp"
 #include "../mouse_handler_base.hpp"
 #include "../pathfind/teleport.hpp"
 #include "../play_controller.hpp"
 #include "../recall_list_manager.hpp"
-#include "../replay.hpp"
 #include "../replay_helper.hpp"
 #include "../resources.hpp"
-#include "../statistics.hpp"
+#include "../synced_context.hpp"
 #include "../team.hpp"
 #include "../unit.hpp"
 #include "../unit_ptr.hpp"
-#include "../synced_context.hpp"
 
 namespace ai {
 
