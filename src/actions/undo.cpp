@@ -18,27 +18,46 @@
  */
 
 #include "undo.hpp"
+#include "global.hpp"
 
-#include "create.hpp"
-#include "move.hpp"
-
-#include "../game_display.hpp"
-#include "../log.hpp"
-#include "../play_controller.hpp"
-#include "../recall_list_manager.hpp"
-#include "../replay.hpp"
-#include "../replay_helper.hpp"
-#include "../resources.hpp"
-#include "../team.hpp"
-#include "../unit.hpp"
+#include "../construct_dialog.hpp"
+#include "../game_board.hpp"               // for game_board
+#include "../game_display.hpp"          // for game_display
+#include "../log.hpp"                   // for LOG_STREAM, logger, etc
+#include "../map.hpp"                      // for gamemap
+#include "../map_location.hpp"  // for map_location, operator<<, etc
+#include "../mouse_handler_base.hpp"       // for command_disabler
+#include "../recall_list_manager.hpp"   // for recall_list_manager
+#include "../replay.hpp"                // for recorder, replay
+#include "../replay_helper.hpp"         // for replay_helper
+#include "../resources.hpp"             // for screen, teams, units, etc
+#include "../statistics.hpp"               // for un_recall_unit, etc
+#include "../synced_context.hpp"        // for set_scontext_synced
+#include "../team.hpp"                  // for team
+#include "../unit.hpp"                  // for unit
 #include "../unit_animation_component.hpp"
-#include "../unit_display.hpp"
-#include "../unit_map.hpp"
-#include "../whiteboard/manager.hpp"
-#include "../synced_context.hpp"
+#include "../unit_display.hpp"          // for move_unit
+#include "../unit_map.hpp"              // for unit_map, etc
+#include "../unit_ptr.hpp"      // for UnitConstPtr, UnitPtr
+#include "../unit_types.hpp"               // for unit_type, unit_type_data, etc
+#include "../util.hpp"                     // for bad_lexical_cast (ptr only), etc
+#include "../whiteboard/manager.hpp"    // for manager
 
-#include <boost/foreach.hpp>
-#include <cassert>
+#include "create.hpp"                   // for find_recall_location, etc
+#include "move.hpp"                   // for get_village
+#include "vision.hpp"           // for clearer_info, etc
+
+#include <algorithm>                    // for reverse
+#include <boost/foreach.hpp>            // for auto_any_base, etc
+#include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
+#include <boost/ptr_container/detail/static_move_ptr.hpp>
+#include <boost/ptr_container/detail/void_ptr_iterator.hpp>
+#include <boost/ptr_container/ptr_sequence_adapter.hpp>
+#include <boost/shared_ptr.hpp>         // for shared_ptr
+#include <cassert>                      // for assert
+#include <cstddef>                     // for NULL
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <set>                          // for set
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
