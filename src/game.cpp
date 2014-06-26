@@ -66,7 +66,6 @@
 #include <boost/program_options/errors.hpp>  // for error
 #include <boost/scoped_ptr.hpp>         // for scoped_ptr
 #include <boost/tuple/tuple.hpp>        // for tuple
-#include <boost/variant/apply_visitor.hpp>
 #include <cerrno>                       // for ENOMEM
 #include <clocale>                      // for setlocale, NULL, LC_ALL, etc
 #include <cstdio>                      // for remove, fprintf, stderr
