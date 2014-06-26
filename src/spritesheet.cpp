@@ -10,8 +10,10 @@ static lg::log_domain log_config("config");
 
 // Spritesheet data structure for each sprite's location
 
+
+// TODO Create Spritesheet class?
 sprite_data::sprite_data(const config& cfg) :
-	image(cfg["spritesheet"]),
+	image(cfg["spritesheet_image"]),
 	id(cfg["id"].to_int()),
 	x_coor(cfg["x_coor"].to_int()),
 	y_coor(cfg["y_coor"].to_int()),

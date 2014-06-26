@@ -22,6 +22,7 @@
 #include <boost/noncopyable.hpp>
 
 struct tportrait;
+struct sprite_data;
 class unit_ability_list;
 class unit_animation;
 
@@ -270,6 +271,7 @@ public:
 	bool do_not_list() const { return do_not_list_; }
 
 	const std::vector<tportrait>& portraits() const { return portraits_; }
+	const std::vector<sprite_data>& spritesheet_sprites() const { return spritesheet_sprites_; }
 
 	const config &get_cfg() const { return cfg_; }
 	/// Returns a trimmed config suitable for use with units.
@@ -355,6 +357,9 @@ private:
 
 	/** List with the portraits available for the unit. */
 	std::vector<tportrait> portraits_;
+
+	/** List with the sprites in any spritesheets found. */
+	std::vector<sprite_data> spritesheet_sprites_;
 };
 
 class unit_type_data

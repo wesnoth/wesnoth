@@ -29,6 +29,7 @@
 #include "unit.hpp"
 #include "unit_abilities.hpp"
 #include "unit_animation.hpp"
+#include "spritesheet.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -391,8 +392,9 @@ unit_type::unit_type(const unit_type& o) :
 	possibleTraits_(o.possibleTraits_),
 	genders_(o.genders_),
 	animations_(o.animations_),
-    build_status_(o.build_status_),
-	portraits_(o.portraits_)
+	build_status_(o.build_status_),
+	portraits_(o.portraits_),
+	spritesheet_sprites_(o.spritesheet_sprites_)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
 	gender_types_[1] = o.gender_types_[1] != NULL ? new unit_type(*o.gender_types_[1]) : NULL;
@@ -452,7 +454,8 @@ unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 	genders_(),
 	animations_(),
 	build_status_(NOT_BUILT),
-	portraits_()
+	portraits_(),
+	spritesheet_sprites_()
 {
 	gender_types_[0] = NULL;
 	gender_types_[1] = NULL;
@@ -537,6 +540,12 @@ void unit_type::build_full(const movement_type_map &mv_types,
 
 	BOOST_FOREACH(const config &portrait, cfg_.child_range("portrait")) {
 		portraits_.push_back(tportrait(portrait));
+	}
+
+	// parse the spritesheet tags if found.
+	BOOST_FOREACH(const config &spritesheet, cfg_.child_range("spritesheet"))
+	{
+		spritesheet_sprites_.push_back(sprite_data(spritesheet));
 	}
 
 	hp_bar_scaling_ = cfg_["hp_bar_scaling"].to_double(game_config::hp_bar_scaling);
