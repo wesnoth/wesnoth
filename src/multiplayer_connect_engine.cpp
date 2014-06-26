@@ -837,7 +837,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	waiting_to_choose_faction_(allow_changes_),
 	chose_random_(cfg["chose_random"].to_bool(false)),
 	flg_(parent_.era_factions_, cfg_, parent_.force_lock_settings_,
-		parent_.params_.saved_game, color_)
+		parent_.params_.use_map_settings, parent_.params_.saved_game, color_)
 {
 	// Check if this side should give its control to some other side.
 	const int side_cntr = cfg_["controller"].to_int(-1);
