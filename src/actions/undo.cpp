@@ -244,7 +244,7 @@ undo_list::undo_action::create(const config & cfg, const std::string & tag)
 		                       map_location::parse_direction(cfg["starting_direction"]));
 	}
 
-	if ( str == "recruit" ) {
+	else if ( str == "recruit" ) {
 		// Validate the unit type.
 		const config & child = cfg.child("unit", tag);
 		const unit_type * u_type = unit_types.find(child["type"]);
