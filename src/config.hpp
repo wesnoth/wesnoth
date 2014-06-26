@@ -40,6 +40,7 @@
 
 #include <boost/blank.hpp>
 #include <boost/exception/exception.hpp>
+#include <boost/variant/apply_visitor.hpp>
 #include <boost/variant/variant.hpp>
 
 #include "exceptions.hpp"
