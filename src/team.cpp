@@ -607,20 +607,6 @@ int team::nteams()
 	}
 }
 
-bool is_observer()
-{
-	if(teams == NULL) {
-		return true;
-	}
-
-	BOOST_FOREACH(const team &t, *teams) {
-		if (t.is_local())
-			return false;
-	}
-
-	return true;
-}
-
 void validate_side(int side)
 {
 	if(teams == NULL) {

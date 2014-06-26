@@ -517,7 +517,7 @@ void menu_handler::show_help()
 void menu_handler::speak()
 {
 	textbox_info_.show(gui::TEXTBOX_MESSAGE,_("Message:"),
-		has_friends() ? is_observer() ? _("Send to observers only") : _("Send to allies only")
+		has_friends() ? resources::gameboard->is_observer() ? _("Send to observers only") : _("Send to allies only")
 					  : "", preferences::message_private(), *gui_);
 }
 
@@ -535,7 +535,7 @@ void menu_handler::shout()
 
 bool menu_handler::has_friends() const
 {
-	if(is_observer()) {
+	if(resources::gameboard->is_observer()) {
 		return !gui_->observers().empty();
 	}
 
@@ -1199,7 +1199,7 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 void menu_handler::clear_labels()
 {
 	if (gui_->team_valid()
-	   && !is_observer())
+	   && !resources::gameboard->is_observer())
 	{
 		gui_->labels().clear(gui_->current_team_name(), false);
 		recorder.clear_labels(gui_->current_team_name(), false);
@@ -2549,15 +2549,15 @@ void menu_handler::send_chat_message(const std::string& message, bool allies_onl
 	ss << time;
 	cfg["time"] = ss.str();
 
-	const int side = is_observer() ? 0 : gui_->viewing_side();
-	if(!is_observer()) {
+	const int side = resources::gameboard->is_observer() ? 0 : gui_->viewing_side();
+	if(!resources::gameboard->is_observer()) {
 		cfg["side"] = side;
 	}
 
 	bool private_message = has_friends() && allies_only;
 
 	if(private_message) {
-		if (is_observer()) {
+		if (resources::gameboard->is_observer()) {
 			cfg["team_name"] = game_config::observer_team_name;
 		} else {
 			cfg["team_name"] = teams_[gui_->viewing_team()].team_name();

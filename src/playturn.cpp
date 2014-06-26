@@ -207,7 +207,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				resources::controller->on_not_observer();
 			}
 
-			if (is_observer() || (resources::gameboard->teams())[resources::screen->playing_team()].is_human()) {
+			if (resources::gameboard->is_observer() || (resources::gameboard->teams())[resources::screen->playing_team()].is_human()) {
 				resources::screen->set_team(resources::screen->playing_team());
 				resources::screen->redraw_everything();
 				resources::screen->recalculate_minimap();

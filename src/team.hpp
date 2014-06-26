@@ -381,10 +381,6 @@ namespace teams_manager {
 	const std::vector<team> &get_teams();
 }
 
-//FIXME: this global method really needs to be moved into play_controller,
-//or somewhere else that makes sense.
-bool is_observer();
-
 //function which will validate a side. Throws game::game_error
 //if the side is invalid
 void validate_side(int side); //throw game::game_error

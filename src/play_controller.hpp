@@ -149,6 +149,10 @@ public:
 			return gamestate_.tod_manager_;
 		}
 
+	bool is_observer() const {
+		return gamestate_.board_.is_observer();
+	}
+
 	/**
 	 * Checks to see if a side has won, and throws an end_level_exception.
 	 * Will also remove control of villages from sides with dead leaders.

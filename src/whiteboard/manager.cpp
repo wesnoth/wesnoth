@@ -146,7 +146,7 @@ bool manager::can_modify_game_state() const
 	if(wait_for_side_init_
 					|| resources::teams == NULL
 					|| executing_actions_
-					|| is_observer()
+					|| resources::gameboard->is_observer()
 					|| resources::controller->is_linger_mode())
 	{
 		return false;

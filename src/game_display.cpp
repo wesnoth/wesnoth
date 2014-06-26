@@ -930,7 +930,7 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 	preferences::parse_admin_authentication(sender, message);
 
 	if (bell) {
-		if ((type == events::chat_handler::MESSAGE_PRIVATE && (!is_observer() || whisper))
+		if ((type == events::chat_handler::MESSAGE_PRIVATE && (!resources::gameboard->is_observer() || whisper))
 			|| utils::word_match(message, preferences::login())) {
 			sound::play_UI_sound(game_config::sounds::receive_message_highlight);
 		} else if (preferences::is_friend(sender)) {

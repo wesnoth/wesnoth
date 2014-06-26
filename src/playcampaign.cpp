@@ -68,7 +68,7 @@ static void show_carryover_message(saved_game& gamestate, playsingle_controller&
 	std::ostringstream report;
 	std::string title;
 
-	bool obs = is_observer();
+	bool obs = playcontroller.is_observer();
 
 	if (obs) {
 		title = _("Scenario Report");

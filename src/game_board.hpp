@@ -136,6 +136,10 @@ class game_board : public display_context {
 	// Wrapped functions from unit_map. These should ultimately provide notification to observers, pathfinding.
 
 	unit_map::iterator find_unit(const map_location & loc) { return units_.find(loc); }
+
+	// Accessor from team.cpp
+
+	bool is_observer() const;
 };
 
 void swap(game_board & one, game_board & other);

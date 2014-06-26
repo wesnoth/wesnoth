@@ -15,6 +15,7 @@
 #include "global.hpp"
 
 #include "display.hpp"
+#include "game_board.hpp"
 #include "game_data.hpp"
 #include "map_label.hpp"
 #include "resources.hpp"
@@ -523,7 +524,7 @@ bool terrain_label::viewable() const
 		return true;
 
 	// Observers are not privvy to team labels.
-	const bool can_see_team_labels = !is_observer();
+	const bool can_see_team_labels = !resources::gameboard->is_observer();
 
 	// Global labels are shown unless covered by a team label.
 	if ( team_name_.empty() )
