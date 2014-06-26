@@ -268,12 +268,9 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 
 	gamestate.expand_scenario();
 
-	while(gamestate.valid()) {
-		config& starting_pos = gamestate.get_starting_pos();
-
-
+	while(gamestate.valid()) 
+	{
 		bool save_game_after_scenario = true;
-
 		LEVEL_RESULT res = VICTORY;
 		end_level_data end_level;
 
@@ -384,6 +381,8 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			gamestate.expand_scenario();
 
 			if (io_type == IO_SERVER && gamestate.valid()) {
+				//note that although starting_pos is const it might be changed by gamestate.some_non_const_operation()  .
+				const config& starting_pos = gamestate.get_starting_pos();
 				// A hash have to be generated using an unmodified
 				// scenario data.
 				gamestate.mp_settings().hash = starting_pos.hash();
