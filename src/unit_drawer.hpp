@@ -30,6 +30,7 @@
 class display;
 class display_context;
 class gamemap;
+namespace halo { class manager; }
 class team;
 class unit;
 
@@ -41,6 +42,7 @@ class unit_drawer
 	const display_context & dc;
 	const gamemap & map;
 	const std::vector<team> & teams;
+	halo::manager & halo_man;
 	size_t viewing_team;
 	size_t playing_team;
 	const team & viewing_team_ref;

@@ -18,6 +18,7 @@
 
 #include "game_display.hpp"
 #include "halo.hpp"
+#include "resources.hpp" // only for halo manager
 #include "sound.hpp"
 #include "unit_frame.hpp"
 
@@ -697,8 +698,9 @@ void unit_frame::redraw(const int frame_time,bool on_start_time,bool in_scope_of
 				ftofxp(current_data.highlight_ratio), current_data.blend_with,
 			       	current_data.blend_ratio,current_data.submerge,!facing_north);
 	}
-
-	halo::remove(*halo_id);
+	if (resources::halo) {
+		resources::halo->remove(*halo_id);
+	}
 	*halo_id = halo::NO_HALO;
 
 	if (!in_scope_of_frame) { //check after frame as first/last frame image used in defense/attack anims
@@ -737,14 +739,18 @@ void unit_frame::redraw(const int frame_time,bool on_start_time,bool in_scope_of
 				break;
 		}
 
+		if (!resources::halo) {
+			return;
+		}
+
 		if(direction != map_location::SOUTH_WEST && direction != map_location::NORTH_WEST) {
-			*halo_id = halo::add(static_cast<int>(x+current_data.halo_x* game_display::get_singleton()->get_zoom_factor()),
+			*halo_id = resources::halo->add(static_cast<int>(x+current_data.halo_x* game_display::get_singleton()->get_zoom_factor()),
 					static_cast<int>(y+current_data.halo_y* game_display::get_singleton()->get_zoom_factor()),
 					current_data.halo + current_data.halo_mod,
 					map_location(-1, -1),
 					orientation);
 		} else {
-			*halo_id = halo::add(static_cast<int>(x-current_data.halo_x* game_display::get_singleton()->get_zoom_factor()),
+			*halo_id = resources::halo->add(static_cast<int>(x-current_data.halo_x* game_display::get_singleton()->get_zoom_factor()),
 					static_cast<int>(y+current_data.halo_y* game_display::get_singleton()->get_zoom_factor()),
 					current_data.halo + current_data.halo_mod,
 					map_location(-1, -1),

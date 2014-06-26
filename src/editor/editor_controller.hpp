@@ -44,7 +44,7 @@ namespace preferences {
 } // namespace preferences
 
 namespace halo {
-	struct manager;
+	class manager;
 } // namespace halo
 
 namespace editor {

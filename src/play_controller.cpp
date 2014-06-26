@@ -273,6 +273,7 @@ void play_controller::init_managers(){
 	resources::soundsources = soundsources_manager_.get();
 
 	halo_manager_.reset(new halo::manager(*gui_));
+	resources::halo = halo_manager_.get();
 	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << std::endl;
 }
 

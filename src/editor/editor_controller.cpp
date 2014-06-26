@@ -100,6 +100,7 @@ void editor_controller::init_gui()
 	gui().set_draw_coordinates(preferences::editor::draw_hex_coordinates());
 	gui().set_draw_terrain_codes(preferences::editor::draw_terrain_codes());
 	halo_manager_.reset(new halo::manager(*gui_));
+	resources::halo = halo_manager_.get();
 }
 
 void editor_controller::init_tods(const config& game_config)

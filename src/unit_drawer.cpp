@@ -20,6 +20,7 @@
 #include "halo.hpp"
 #include "map.hpp"
 #include "map_location.hpp"
+#include "resources.hpp" //only for halo::manager
 #include "sdl/utils.hpp"
 #include "team.hpp"
 #include "unit.hpp"
@@ -34,6 +35,7 @@ unit_drawer::unit_drawer(display & thedisp) :
 	dc(disp.get_disp_context()),
 	map(dc.map()),
 	teams(dc.teams()),
+	halo_man(*resources::halo),
 	viewing_team(disp.viewing_team()),
 	playing_team(disp.playing_team()),
 	viewing_team_ref(teams[viewing_team]),
@@ -160,13 +162,13 @@ void unit_drawer::redraw_unit (const unit & u) const
 	const int y = static_cast<int>(adjusted_params.offset * ydst + (1.0-adjusted_params.offset) * ysrc) + hex_size_by_2;
 
 	if(ac.unit_halo_ == halo::NO_HALO && !u.image_halo().empty()) {
-		ac.unit_halo_ = halo::add(0, 0, u.image_halo()+u.TC_image_mods(), map_location(-1, -1));
+		ac.unit_halo_ = halo_man.add(0, 0, u.image_halo()+u.TC_image_mods(), map_location(-1, -1));
 	}
 	if(ac.unit_halo_ != halo::NO_HALO && u.image_halo().empty()) {
-		halo::remove(ac.unit_halo_);
+		halo_man.remove(ac.unit_halo_);
 		ac.unit_halo_ = halo::NO_HALO;
 	} else if(ac.unit_halo_ != halo::NO_HALO) {
-		halo::set_location(ac.unit_halo_, x, y - height_adjust);
+		halo_man.set_location(ac.unit_halo_, x, y - height_adjust);
 	}
 
 

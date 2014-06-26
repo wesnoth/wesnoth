@@ -100,41 +100,49 @@ void display::parse_team_overlays()
 
 void display::add_overlay(const map_location& loc, const std::string& img, const std::string& halo,const std::string& team_name, bool visible_under_fog)
 {
-	const int halo_handle = halo::add(get_location_x(loc) + hex_size() / 2,
+	if (resources::halo) {
+		const int halo_handle = resources::halo->add(get_location_x(loc) + hex_size() / 2,
 			get_location_y(loc) + hex_size() / 2, halo, loc);
 
-	const overlay item(img, halo, halo_handle, team_name, visible_under_fog);
-	overlays_->insert(overlay_map::value_type(loc,item));
+		const overlay item(img, halo, halo_handle, team_name, visible_under_fog);
+		overlays_->insert(overlay_map::value_type(loc,item));
+	}
 }
 
 void display::remove_overlay(const map_location& loc)
 {
-	typedef overlay_map::const_iterator Itor;
-	std::pair<Itor,Itor> itors = overlays_->equal_range(loc);
-	while(itors.first != itors.second) {
-		halo::remove(itors.first->second.halo_handle);
-		++itors.first;
-	}
+	if (resources::halo) {
 
-	overlays_->erase(loc);
+		typedef overlay_map::const_iterator Itor;
+		std::pair<Itor,Itor> itors = overlays_->equal_range(loc);
+		while(itors.first != itors.second) {
+			resources::halo->remove(itors.first->second.halo_handle);
+			++itors.first;
+		}
+
+		overlays_->erase(loc);
+	}
 }
 
 void display::remove_single_overlay(const map_location& loc, const std::string& toDelete)
 {
-	//Iterate through the values with key of loc
-	typedef overlay_map::iterator Itor;
-	overlay_map::iterator iteratorCopy;
-	std::pair<Itor,Itor> itors = overlays_->equal_range(loc);
-	while(itors.first != itors.second) {
-		//If image or halo of overlay struct matches toDelete, remove the overlay
-		if(itors.first->second.image == toDelete || itors.first->second.halo == toDelete) {
-			iteratorCopy = itors.first;
-			++itors.first;
-			halo::remove(iteratorCopy->second.halo_handle);
-			overlays_->erase(iteratorCopy);
-		}
-		else {
-			++itors.first;
+	if (resources::halo) {
+
+		//Iterate through the values with key of loc
+		typedef overlay_map::iterator Itor;
+		overlay_map::iterator iteratorCopy;
+		std::pair<Itor,Itor> itors = overlays_->equal_range(loc);
+		while(itors.first != itors.second) {
+			//If image or halo of overlay struct matches toDelete, remove the overlay
+			if(itors.first->second.image == toDelete || itors.first->second.halo == toDelete) {
+				iteratorCopy = itors.first;
+				++itors.first;
+				resources::halo->remove(iteratorCopy->second.halo_handle);
+				overlays_->erase(iteratorCopy);
+			}
+			else {
+				++itors.first;
+			}
 		}
 	}
 }

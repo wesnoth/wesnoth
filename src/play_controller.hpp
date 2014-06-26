@@ -46,7 +46,7 @@ namespace game_events {
 } // namespace game_events
 
 namespace halo {
-	struct manager;
+	class manager;
 } // namespace halo
 
 namespace preferences {
