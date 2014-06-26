@@ -45,6 +45,14 @@ public:
 
 	bool unit_can_move(const unit & u) const;
 
+	// From class team
+
+	/**
+	 * Given the location of a village, will return the 0-based index
+	 * of the team that currently owns it, and -1 if it is unowned.
+	 */
+	int village_owner(const map_location & loc) const;
+
 	// Dtor
 
 	virtual ~display_context() {}

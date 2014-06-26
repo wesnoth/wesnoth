@@ -17,6 +17,7 @@
 #include "global.hpp"
 #include "minimap.hpp"
 
+#include "game_board.hpp"
 #include "gettext.hpp"
 #include "image.hpp"
 #include "log.hpp"
@@ -233,7 +234,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 			if (terrain_info.is_village() && preferences_minimap_draw_villages) {
 
-				int side = village_owner(loc);
+				int side = resources::gameboard->village_owner(loc);
 
 				SDL_Color col = int_to_color(game_config::team_rgb_range.find("white")->second.min());
 

@@ -842,20 +842,3 @@ config team::to_config() const
 	write(result);
 	return result;
 }
-
-/**
- * Given the location of a village, will return the 0-based index
- * of the team that currently owns it, and -1 if it is unowned.
- */
-int village_owner(const map_location& loc)
-{
-	if(! teams) {
-		return -1;
-	}
-	for(size_t i = 0; i != teams->size(); ++i) {
-		if((*teams)[i].owns_village(loc))
-			return i;
-	}
-	return -1;
-}
-

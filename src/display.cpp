@@ -3058,7 +3058,7 @@ bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
 
 void display::invalidate_animations_location(const map_location& loc) {
 	if (get_map().is_village(loc)) {
-		const int owner = village_owner(loc);
+		const int owner = dc_->village_owner(loc);
 		if (owner >= 0 && flags_[owner].need_update()
 		&& (!fogged(loc) || !dc_->teams()[currentTeam_].is_enemy(owner+1))) {
 			invalidate(loc);

@@ -67,3 +67,18 @@ bool display_context::unit_can_move(const unit &u) const
 	return false;
 }
 
+
+/**
+ * Given the location of a village, will return the 0-based index
+ * of the team that currently owns it, and -1 if it is unowned.
+ */
+int display_context::village_owner(const map_location& loc) const
+{
+	const std::vector<team> & t = teams();
+	for(size_t i = 0; i != t.size(); ++i) {
+		if(t[i].owns_village(loc))
+			return i;
+	}
+	return -1;
+}
+

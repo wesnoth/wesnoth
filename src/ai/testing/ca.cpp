@@ -246,7 +246,7 @@ void recruitment_phase::execute()
 		// that are closer to us than to other keeps.
 		const std::vector<map_location>& villages = map_.villages();
 		for(std::vector<map_location>::const_iterator v = villages.begin(); v != villages.end(); ++v) {
-			const int owner = village_owner(*v);
+			const int owner = resources::gameboard->village_owner(*v);
 			if(owner == -1) {
 				const size_t distance = distance_between(start_pos,*v);
 

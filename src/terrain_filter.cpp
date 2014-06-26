@@ -289,7 +289,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 		side_filter ssf(filter_owner);
 		const std::vector<int>& sides = ssf.get_teams();
 		bool found = false;
-		if(sides.empty() && village_owner(loc) == -1)
+		if(sides.empty() && resources::gameboard->village_owner(loc) == -1)
 			found = true;
 		BOOST_FOREACH(const int side, sides) {
 			if(resources::teams->at(side - 1).owns_village(loc)) {
@@ -302,7 +302,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	}
 	else if(!owner_side.empty()) {
 		const int side_index = owner_side.to_int(0) - 1;
-		if(village_owner(loc) != side_index) {
+		if(resources::gameboard->village_owner(loc) != side_index) {
 			return false;
 		}
 	}

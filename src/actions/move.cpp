@@ -1051,7 +1051,7 @@ namespace { // Private helpers for move_unit()
 			// Village capturing.
 			if ( resources::gameboard->map().is_village(final_loc) ) {
 				// Is this a capture?
-				orig_village_owner = village_owner(final_loc);
+				orig_village_owner = resources::gameboard->village_owner(final_loc);
 				if ( orig_village_owner != current_side_-1 ) {
 					// Captured. Zap movement and take over the village.
 					move_it_->set_movement(0, true);

@@ -1440,7 +1440,7 @@ static int intf_get_village_owner(lua_State *L)
 	if (!resources::gameboard->map().is_village(loc))
 		return 0;
 
-	int side = village_owner(loc) + 1;
+	int side = resources::gameboard->village_owner(loc) + 1;
 	if (!side) return 0;
 	lua_pushinteger(L, side);
 	return 1;
@@ -1462,7 +1462,7 @@ static int intf_set_village_owner(lua_State *L)
 	if (!resources::gameboard->map().is_village(loc))
 		return 0;
 
-	int old_side = village_owner(loc) + 1;
+	int old_side = resources::gameboard->village_owner(loc) + 1;
 	if (new_side == old_side
 			|| new_side < 0
 			|| new_side > static_cast<int>(teams.size())
