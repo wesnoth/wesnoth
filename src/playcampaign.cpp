@@ -270,7 +270,6 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 
 	while(gamestate.valid()) 
 	{
-		bool save_game_after_scenario = true;
 		LEVEL_RESULT res = VICTORY;
 		end_level_data end_level;
 
@@ -362,11 +361,6 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			}
 		}
 
-		// Continue without saving is like a victory,
-		// but the save game dialog isn't displayed
-		if (!end_level.prescenario_save)
-			save_game_after_scenario = false;
-
 		if (io_type == IO_CLIENT) {
 			// Opens mp::connect dialog to get a new gamestate.
 			mp::ui::result wait_res = mp::goto_mp_wait(gamestate, disp,
@@ -432,7 +426,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			gamestate.update_label();
 
 			// If this isn't the last scenario, then save the game
-			if(save_game_after_scenario) {
+			if(end_level.prescenario_save) {
 
 				// For multiplayer, we want the save
 				// to contain the starting position.
