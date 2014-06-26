@@ -278,16 +278,6 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		end_level_data end_level;
 
 		try {
-			// Preserve old label eg. replay
-			if (gamestate.classification().label.empty()) {
-				if (gamestate.classification().abbrev.empty())
-					gamestate.classification().label = starting_pos["name"].str();
-				else {
-					gamestate.classification().label = gamestate.classification().abbrev;
-					gamestate.classification().label.append("-");
-					gamestate.classification().label.append(starting_pos["name"]);
-				}
-			}
 
 			gamestate.expand_random_scenario();
 			//In case this an mp scenario reloaded by sp this was not already done yet.
@@ -440,13 +430,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 
 		if(gamestate.valid()) {
 			// Update the label
-			if (gamestate.classification().abbrev.empty())
-				gamestate.classification().label = starting_pos["name"].str();
-			else {
-				gamestate.classification().label = gamestate.classification().abbrev;
-				gamestate.classification().label.append("-");
-				gamestate.classification().label.append(starting_pos["name"]);
-			}
+			gamestate.update_label();
 
 			// If this isn't the last scenario, then save the game
 			if(save_game_after_scenario) {
