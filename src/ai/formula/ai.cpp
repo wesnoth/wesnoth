@@ -22,6 +22,7 @@
 
 #include "../../callable_objects.hpp"   // for unit_callable, etc
 #include "../../chat_events.hpp"              // for chat_handler, etc
+#include "../../display_chat_manager.hpp"
 #include "../../formula_function.hpp"         // for formula_expression
 #include "../../game_board.hpp"         // for game_board
 #include "../../game_display.hpp"       // for game_display
@@ -127,7 +128,7 @@ void formula_ai::handle_exception(game_logic::formula_error& e, const std::strin
 
 void formula_ai::display_message(const std::string& msg) const
 {
-	resources::screen->add_chat_message(time(NULL), "fai", get_side(), msg,
+	resources::screen->get_chat_manager().add_chat_message(time(NULL), "fai", get_side(), msg,
 				events::chat_handler::MESSAGE_PUBLIC, false);
 
 }

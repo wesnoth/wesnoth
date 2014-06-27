@@ -18,9 +18,11 @@
 #include "dialogs.hpp"
 
 #include "actions/undo.hpp"
+#include "display_chat_manager.hpp"
 #include "game_end_exceptions.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "notifications.hpp"
 #include "playturn.hpp"
 #include "preferences.hpp"
 #include "resources.hpp"
@@ -102,7 +104,7 @@ possible_end_play_signal playmp_controller::play_side()
 	player["name"] = current_team().current_player();
 	std::string turn_notification_msg = _("$name has taken control");
 	turn_notification_msg = utils::interpolate_variables_into_string(turn_notification_msg, &player);
-	gui_->send_notification(_("Turn changed"), turn_notification_msg);
+	notifications::send_notification(_("Turn changed"), turn_notification_msg);
 
 	// Proceed with the parent function.
 	return playsingle_controller::play_side();
@@ -586,7 +588,7 @@ bool playmp_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 
 void playmp_controller::do_idle_notification()
 {
-	resources::screen->add_chat_message(time(NULL), "", 0,
+	resources::screen->get_chat_manager().add_chat_message(time(NULL), "", 0,
 		_("This side is in an idle state. To proceed with the game, it must be assigned to another controller. You may use :droid, :control or :give_control for example."),
 		events::chat_handler::MESSAGE_PUBLIC, false);
 }

@@ -35,6 +35,7 @@
 
 #include "chat_events.hpp"              // for chat_handler, etc
 #include "config.hpp"             // for config, etc
+#include "display_chat_manager.hpp"
 #include "game_board.hpp"            // for game_board
 #include "game_config.hpp"              // for debug
 #include "game_display.hpp"          // for game_display
@@ -353,7 +354,7 @@ const team& readonly_context_impl::current_team() const
 void readonly_context_impl::log_message(const std::string& msg)
 {
 	if(game_config::debug) {
-		resources::screen->add_chat_message(time(NULL), "ai", get_side(), msg,
+		resources::screen->get_chat_manager().add_chat_message(time(NULL), "ai", get_side(), msg,
 				events::chat_handler::MESSAGE_PUBLIC, false);
 	}
 }

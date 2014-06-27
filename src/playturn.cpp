@@ -18,6 +18,7 @@
 #include "actions/undo.hpp"             // for undo_list
 #include "chat_events.hpp"              // for chat_handler, etc
 #include "config.hpp"                   // for config, etc
+#include "display_chat_manager.hpp"	// for add_chat_message, add_observer, etc
 #include "formula_string_utils.hpp"     // for vgettext
 #include "game_board.hpp"               // for game_board
 #include "game_display.hpp"             // for game_display
@@ -143,23 +144,23 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 	if (const config &msg = cfg.child("message"))
 	{
-		resources::screen->add_chat_message(time(NULL), msg["sender"], msg["side"],
+		resources::screen->get_chat_manager().add_chat_message(time(NULL), msg["sender"], msg["side"],
 				msg["message"], events::chat_handler::MESSAGE_PUBLIC,
 				preferences::message_bell());
 	}
 	else if (const config &msg = cfg.child("whisper") /*&& is_observer()*/)
 	{
-		resources::screen->add_chat_message(time(NULL), "whisper: " + msg["sender"].str(), 0,
+		resources::screen->get_chat_manager().add_chat_message(time(NULL), "whisper: " + msg["sender"].str(), 0,
 				msg["message"], events::chat_handler::MESSAGE_PRIVATE,
 				preferences::message_bell());
 	}
 	else if (const config &ob = cfg.child("observer") )
 	{
-		resources::screen->add_observer(ob["name"]);
+		resources::screen->get_chat_manager().add_observer(ob["name"]);
 	}
 	else if (const config &ob = cfg.child("observer_quit"))
 	{
-		resources::screen->remove_observer(ob["name"]);
+		resources::screen->get_chat_manager().remove_observer(ob["name"]);
 	}
 	else if (cfg.child("leave_game")) {
 		throw network::error("");

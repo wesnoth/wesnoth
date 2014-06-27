@@ -19,6 +19,7 @@
 #include "lua/lauxlib.h"
 
 #include "config.hpp"
+#include "display_chat_manager.hpp"
 #include "game_display.hpp"
 #include "log.hpp"
 #include "recall_list_manager.hpp"
@@ -40,7 +41,7 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 
 void chat_message(std::string const &caption, std::string const &msg)
 {
-	resources::screen->add_chat_message(time(NULL), caption, 0, msg,
+	resources::screen->get_chat_manager().add_chat_message(time(NULL), caption, 0, msg,
 		events::chat_handler::MESSAGE_PUBLIC, false);
 }
 

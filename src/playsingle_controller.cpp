@@ -25,6 +25,7 @@
 #include "ai/game_info.hpp"
 #include "ai/testing.hpp"
 #include "dialogs.hpp"
+#include "display_chat_manager.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events/pump.hpp"
 #include "game_preferences.hpp"
@@ -990,7 +991,7 @@ void playsingle_controller::play_ai_turn(){
  */
 void playsingle_controller::do_idle_notification()
 {
-	resources::screen->add_chat_message(time(NULL), "Wesnoth", 0,
+	resources::screen->get_chat_manager().add_chat_message(time(NULL), "Wesnoth", 0,
 		"This side is in an idle state. To proceed with the game, the host must assign it to another controller.",
 		events::chat_handler::MESSAGE_PUBLIC, false);
 }

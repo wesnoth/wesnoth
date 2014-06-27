@@ -27,6 +27,7 @@
 #include "ai/manager.hpp"
 #include "ai/testing.hpp"
 #include "dialogs.hpp"
+#include "display_chat_manager.hpp"
 #include "formula_string_utils.hpp"
 #include "game_events/handlers.hpp"
 #include "game_events/menu_item.hpp"
@@ -462,7 +463,7 @@ void play_controller::fire_start(bool execute){
 	if( saved_game_.classification().random_mode != "" && (network::nconnections() != 0))
 	{
 		std::string mes = _("MP game uses an alternative random mode, if you don't know what this message means, then most likeley someone is cheating or someone reloaded a corrupt game.");
-		gui_->add_chat_message(
+		gui_->get_chat_manager().add_chat_message(
 			time(NULL),
 			"game_engine",
 			0,

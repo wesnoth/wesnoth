@@ -39,6 +39,7 @@
 #include "ai/manager.hpp"               // for manager, holder
 #include "attack_prediction.hpp"        // for combatant
 #include "config.hpp"                   // for config, etc
+#include "display_chat_manager.hpp"	// for clear_chat_messages
 #include "filesystem.hpp"               // for get_wml_location
 #include "font.hpp"                     // for LABEL_COLOR
 #include "game_board.hpp"               // for game_board
@@ -1722,7 +1723,7 @@ static int intf_debug(lua_State* L)
  */
 static int intf_clear_messages(lua_State*)
 {
-	resources::screen->clear_chat_messages();
+	resources::screen->get_chat_manager().clear_chat_messages();
 	return 0;
 }
 

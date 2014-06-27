@@ -700,6 +700,7 @@ set(wesnoth-main_SRC
 	controller_base.cpp
 	desktop_util.cpp
 	dialogs.cpp
+	display_chat_manager.cpp
 	editor/action/action.cpp
 	editor/action/action_item.cpp
 	editor/action/action_label.cpp
@@ -843,6 +844,7 @@ set(wesnoth-main_SRC
 	multiplayer_ui.cpp
 	multiplayer_wait.cpp
 	network_asio.cpp
+	notifications.cpp
 	pathfind/pathfind.cpp
 	pathfind/teleport.cpp
 	persist_context.cpp

@@ -28,6 +28,7 @@
 #include "actions/vision.hpp"
 #include "ai/manager.hpp"
 #include "dialogs.hpp"
+#include "display_chat_manager.hpp"
 #include "filechooser.hpp"
 #include "formatter.hpp"
 #include "formula_string_utils.hpp"
@@ -1398,7 +1399,7 @@ void menu_handler::add_chat_message(const time_t& time,
 		const std::string& speaker, int side, const std::string& message,
 		events::chat_handler::MESSAGE_TYPE type)
 {
-	gui_->add_chat_message(time, speaker, side, message, type, false);
+	gui_->get_chat_manager().add_chat_message(time, speaker, side, message, type, false);
 }
 
 //simple command args parser, separated from command_handler for clarity.
@@ -2801,7 +2802,7 @@ void console_handler::do_controller()
 }
 
 void console_handler::do_clear() {
-	menu_handler_.gui_->clear_chat_messages();
+	menu_handler_.gui_->get_chat_manager().clear_chat_messages();
 }
 void console_handler::do_sunset() {
 	int delay = lexical_cast_default<int>(get_data());
@@ -3341,7 +3342,7 @@ void menu_handler::ai_formula()
 
 void menu_handler::clear_messages()
 {
-	gui_->clear_chat_messages();	// also clear debug-messages and WML-error-messages
+	gui_->get_chat_manager().clear_chat_messages();	// also clear debug-messages and WML-error-messages
 }
 
 void menu_handler::change_controller(const std::string& side, const std::string& controller)

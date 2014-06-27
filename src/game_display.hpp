@@ -18,6 +18,7 @@
 #define GAME_DISPLAY_H_INCLUDED
 
 class config;
+class display_chat_manager;
 class tod_manager;
 class team;
 class unit_map;
@@ -166,8 +167,6 @@ public:
 	//void draw_terrain_palette(int x, int y, terrain_type::TERRAIN selected);
 	t_translation::t_terrain get_terrain_on(int palx, int paly, int x, int y);
 
-	void send_notification(const std::string& owner, const std::string& message);
-
 	/**
 	 * Sets the team controlled by the player using the computer.
 	 *
@@ -193,13 +192,7 @@ public:
 
 	std::string current_team_name() const;
 
-	void add_observer(const std::string& name) { observers_.insert(name); }
-	void remove_observer(const std::string& name) { observers_.erase(name); }
-	const std::set<std::string>& observers() const { return observers_; }
-
-	void add_chat_message(const time_t& time, const std::string& speaker,
-		int side, const std::string& msg, events::chat_handler::MESSAGE_TYPE type, bool bell);
-	void clear_chat_messages() { prune_chat_messages(true); }
+	display_chat_manager & get_chat_manager() { return *chat_man_; }
 
 	void begin_game();
 
@@ -248,23 +241,7 @@ private:
 
 	bool first_turn_, in_game_;
 
-	std::set<std::string> observers_;
-
-	struct chat_message
-	{
-		chat_message(int speaker, int h) : speaker_handle(speaker), handle(h), created_at(SDL_GetTicks())
-		{}
-
-		int speaker_handle;
-		int handle;
-		Uint32 created_at;
-	};
-
-	void prune_chat_messages(bool remove_all=false);
-
-	std::vector<chat_message> chat_messages_;
-
-
+	boost::scoped_ptr<display_chat_manager> chat_man_;
 
 	tgame_mode game_mode_;
 

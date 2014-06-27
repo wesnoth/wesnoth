@@ -19,6 +19,7 @@
 
 #include "carryover.hpp"
 #include "actions/vision.hpp"
+#include "display_chat_manager.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_errors.hpp" //needed to be thrown
 #include "game_events/handlers.hpp"
@@ -294,7 +295,7 @@ void replay_controller::reset_replay()
 {
 	DBG_REPLAY << "replay_controller::reset_replay\n";
 
-	gui_->clear_chat_messages();
+	gui_->get_chat_manager().clear_chat_messages();
 	is_playing_ = false;
 	player_number_ = 1;
 	current_turn_ = 1;

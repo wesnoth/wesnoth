@@ -25,6 +25,7 @@
 #include "actions/undo.hpp"
 #include "config_assign.hpp"
 #include "dialogs.hpp"
+#include "display_chat_manager.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "game_data.hpp"
@@ -681,14 +682,14 @@ static void check_checksums(const config &cfg)
 		if (!u.valid()) {
 			std::stringstream message;
 			message << "non existent unit to checksum at " << loc.x+1 << "," << loc.y+1 << "!";
-			resources::screen->add_chat_message(time(NULL), "verification", 1, message.str(),
+			resources::screen->get_chat_manager().add_chat_message(time(NULL), "verification", 1, message.str(),
 					events::chat_handler::MESSAGE_PRIVATE, false);
 			continue;
 		}
 		if (get_checksum(*u) != ch["value"]) {
 			std::stringstream message;
 			message << "checksum mismatch at " << loc.x+1 << "," << loc.y+1 << "!";
-			resources::screen->add_chat_message(time(NULL), "verification", 1, message.str(),
+			resources::screen->get_chat_manager().add_chat_message(time(NULL), "verification", 1, message.str(),
 					events::chat_handler::MESSAGE_PRIVATE, false);
 		}
 	}
@@ -768,7 +769,7 @@ REPLAY_RETURN do_replay_handle()
 			get_replay_source().add_chat_message_location();
 			if (!get_replay_source().is_skipping() || is_whisper) {
 				int side = child["side"];
-				resources::screen->add_chat_message(get_time(child), speaker_name, side, message,
+				resources::screen->get_chat_manager().add_chat_message(get_time(child), speaker_name, side, message,
 						(team_name.empty() ? events::chat_handler::MESSAGE_PUBLIC
 						: events::chat_handler::MESSAGE_PRIVATE),
 						preferences::message_bell());
