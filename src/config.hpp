@@ -42,6 +42,10 @@
 #include <boost/variant/apply_visitor.hpp>
 #include <boost/variant/variant.hpp>
 
+#include <boost/utility/enable_if.hpp>
+#include <boost/type_traits/is_same.hpp>
+#include <boost/type_traits/add_const.hpp>
+
 #include "exceptions.hpp"
 #include "tstring.hpp"
 
@@ -280,15 +284,29 @@ public:
 		bool operator==(const attribute_value &other) const;
 		bool operator!=(const attribute_value &other) const
 		{ return !operator==(other); }
-		// We don't want strange conversions to t_string when doing like (c["a"] == "b")
+		
+		// returns always false if the underlying type is no string.
 		bool equals(const std::string& str) const;
-		friend bool operator==(const attribute_value &val, const std::string &str)
+		//these function prevent t_string creation in case of c["a"] == "b"
+		//The templates are needed to prevent using these function in case of c["a"] == 0.
+		template<typename T>
+		typename boost::enable_if<boost::is_same<const std::string, typename boost::add_const<T>::type>, bool>::type
+		friend operator==(const attribute_value &val, const T &str)
 		{ return val.equals(str); }
-		friend bool operator==(const std::string &str, const attribute_value &val)
+		
+		template<typename T>
+		typename boost::enable_if<boost::is_same<const std::string, typename boost::add_const<T>::type>, bool>::type
+		friend operator==(const T &str, const attribute_value &val)
 		{ return val.equals(str); }
-		friend bool operator==(const attribute_value &val, const char* str)
+		
+		template<typename T>
+		typename boost::enable_if<boost::is_same<const char*, T>, bool>::type
+		friend operator==(const attribute_value &val, T str)
 		{ return val.equals(std::string(str)); }
-		friend bool operator==(const char* str, const attribute_value &val)
+		
+		template<typename T>
+		typename boost::enable_if<boost::is_same<const char*, T>, bool>::type
+		friend  operator==(T str, const attribute_value &val)
 		{ return val.equals(std::string(str)); }
 
 		// Streaming:
