@@ -284,30 +284,32 @@ public:
 		bool operator==(const attribute_value &other) const;
 		bool operator!=(const attribute_value &other) const
 		{ return !operator==(other); }
-		
+
 		// returns always false if the underlying type is no string.
 		bool equals(const std::string& str) const;
-		//these function prevent t_string creation in case of c["a"] == "b"
-		//The templates are needed to prevent using these function in case of c["a"] == 0.
+		// These function prevent t_string creation in case of c["a"] == "b" comparisons.
+		// The templates are needed to prevent using these function in case of c["a"] == 0 comparisons.
 		template<typename T>
 		typename boost::enable_if<boost::is_same<const std::string, typename boost::add_const<T>::type>, bool>::type
 		friend operator==(const attribute_value &val, const T &str)
 		{ return val.equals(str); }
-		
-		template<typename T>
-		typename boost::enable_if<boost::is_same<const std::string, typename boost::add_const<T>::type>, bool>::type
-		friend operator==(const T &str, const attribute_value &val)
-		{ return val.equals(str); }
-		
+
 		template<typename T>
 		typename boost::enable_if<boost::is_same<const char*, T>, bool>::type
 		friend operator==(const attribute_value &val, T str)
 		{ return val.equals(std::string(str)); }
-		
+
 		template<typename T>
-		typename boost::enable_if<boost::is_same<const char*, T>, bool>::type
-		friend  operator==(T str, const attribute_value &val)
-		{ return val.equals(std::string(str)); }
+		bool friend operator==(const T &str, const attribute_value &val)
+		{ return val == str; }
+
+		template<typename T>
+		bool friend operator!=(const attribute_value &val, const T &str)
+		{ return !(val == str); }
+
+		template<typename T>
+		bool friend operator!=(const T &str, const attribute_value &val)
+		{ return !(val == str); }
 
 		// Streaming:
 		friend std::ostream& operator<<(std::ostream &os, const attribute_value &v);
