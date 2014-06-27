@@ -52,6 +52,9 @@ if(USE_ANA_NETWORK)
 	add_subdirectory(ana/src)
 endif(USE_ANA_NETWORK)
 
+message(STATUS "Configuring SDL_gpu...")
+add_subdirectory(SDL_gpu)
+
 # needed to get include paths in the subfolders correct
 include_directories( ${CMAKE_SOURCE_DIR}/src/ )
 # needed to have the generated config.h used, too
@@ -72,6 +75,7 @@ if(MSVC)
 		${SDLMAIN_LIBRARY}
 		${LIBINTL_LIBRARY}
 		ws2_32.lib
+		SDL_gpu.lib
 	)
 else(MSVC)
 	set(common-external-libs
@@ -80,6 +84,7 @@ else(MSVC)
 		${Boost_REGEX_LIBRARY}
 		${Boost_PROGRAM_OPTIONS_LIBRARY}
 		${LIBINTL_LIBRARIES}
+		SDL_gpu
 	)
 endif(MSVC)
 
