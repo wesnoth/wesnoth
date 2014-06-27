@@ -70,7 +70,6 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	, prefs_disp_manager_(NULL)
 	, tooltip_manager_(video)
 	, floating_label_manager_(NULL)
-	, halo_manager_(NULL)
 	, help_manager_(NULL)
 	, do_quit_(false)
 	, quit_mode_(EXIT_ERROR)
@@ -99,8 +98,12 @@ void editor_controller::init_gui()
 	floating_label_manager_.reset(new font::floating_label_context());
 	gui().set_draw_coordinates(preferences::editor::draw_hex_coordinates());
 	gui().set_draw_terrain_codes(preferences::editor::draw_terrain_codes());
-	halo_manager_.reset(new halo::manager(*gui_));
-	resources::halo = halo_manager_.get();
+//	halo_manager_.reset(new halo::manager(*gui_));
+//	resources::halo = halo_manager_.get();
+//	^ These lines no longer necessary, the gui owns its halo manager.
+//	TODO: Should the editor map contexts actually own the halo manager and swap them in and out from the gui?
+//	Note that if that is what happens it might not actually be a good idea for the gui to own the halo manager, so that it can be swapped out
+//	without deleting it.
 }
 
 void editor_controller::init_tods(const config& game_config)

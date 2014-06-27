@@ -54,7 +54,6 @@ namespace resources
 	extern game_display           *screen;
 	extern const mp_game_settings *mp_settings;
 	extern soundsource::manager   *soundsources;
-	extern halo::manager	      *halo;
 	extern std::vector<team>      *teams;
 	extern fake_unit_manager      *fake_units;
 	extern ::tod_manager          *tod_manager;

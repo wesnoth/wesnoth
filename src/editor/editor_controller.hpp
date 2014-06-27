@@ -43,10 +43,6 @@ namespace preferences {
 	struct display_manager;
 } // namespace preferences
 
-namespace halo {
-	class manager;
-} // namespace halo
-
 namespace editor {
 
 class editor_map;
@@ -235,7 +231,6 @@ class editor_controller : public controller_base,
 		tooltips::manager tooltip_manager_;
 		boost::scoped_ptr<font::floating_label_context> floating_label_manager_;
 
-		boost::scoped_ptr<halo::manager> halo_manager_;
 		boost::scoped_ptr<help::help_manager> help_manager_;
 
 		/** Quit main loop flag */

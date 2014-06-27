@@ -39,6 +39,10 @@ class terrain_builder;
 class map_labels;
 class arrow;
 
+namespace halo {
+	class manager;
+}
+
 namespace wb {
 	class manager;
 }
@@ -168,8 +172,11 @@ public:
 	void reload_map();
 
 	void change_display_context(const display_context * dc);
-
 	const display_context & get_disp_context() const { return *dc_; }
+
+	void reset_halo_manager();
+	void reset_halo_manager(halo::manager & hm);
+	halo::manager & get_halo_manager() { return *halo_man_; }
 
 	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue)
 		{ return 0xFF000000 | (red << 16) | (green << 8) | blue; }
@@ -641,6 +648,7 @@ private:
 protected:
 	//TODO sort
 	const display_context * dc_;
+	boost::scoped_ptr<halo::manager> halo_man_;
 	boost::weak_ptr<wb::manager> wb_;
 
 	typedef std::map<map_location, std::string> exclusive_unit_draw_requests_t;

@@ -252,9 +252,7 @@ void game_display::post_draw() {
 
 void game_display::draw_invalidated()
 {
-	if (resources::halo) {
-		resources::halo->unrender(invalidated_);
-	}
+	halo_man_->unrender(invalidated_);
 	display::draw_invalidated();
 
 	unit_drawer drawer = unit_drawer(*this);
@@ -270,9 +268,7 @@ void game_display::draw_invalidated()
 
 void game_display::post_commit()
 {
-	if (resources::halo) {
-		resources::halo->render();
-	}
+	halo_man_->render();
 }
 
 void game_display::draw_hex(const map_location& loc)

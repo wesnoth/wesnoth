@@ -45,10 +45,6 @@ namespace game_events {
 	class  wml_menu_item;
 } // namespace game_events
 
-namespace halo {
-	class manager;
-} // namespace halo
-
 namespace preferences {
 	struct display_manager;
 }
@@ -228,7 +224,6 @@ protected:
 	boost::scoped_ptr<preferences::display_manager> prefs_disp_manager_;
 	boost::scoped_ptr<tooltips::manager> tooltips_manager_;
 	boost::scoped_ptr<game_events::manager> events_manager_;
-	boost::scoped_ptr<halo::manager> halo_manager_;
 	font::floating_label_context labels_manager_;
 	help::help_manager help_manager_;
 

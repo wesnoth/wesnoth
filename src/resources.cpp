@@ -25,7 +25,6 @@ namespace resources
 	persist_manager      *persist = NULL;
 	game_display         *screen = NULL;
 	soundsource::manager *soundsources = NULL;
-	halo::manager	     *halo = NULL;
 	std::vector<team>    *teams = NULL;
 	::tod_manager        *tod_manager = NULL;
 	fake_unit_manager    *fake_units = NULL;

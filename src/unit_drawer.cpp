@@ -20,7 +20,6 @@
 #include "halo.hpp"
 #include "map.hpp"
 #include "map_location.hpp"
-#include "resources.hpp" //only for halo::manager
 #include "sdl/utils.hpp"
 #include "team.hpp"
 #include "unit.hpp"
@@ -35,7 +34,7 @@ unit_drawer::unit_drawer(display & thedisp) :
 	dc(disp.get_disp_context()),
 	map(dc.map()),
 	teams(dc.teams()),
-	halo_man(*resources::halo),
+	halo_man(thedisp.get_halo_manager()),
 	viewing_team(disp.viewing_team()),
 	playing_team(disp.playing_team()),
 	viewing_team_ref(teams[viewing_team]),

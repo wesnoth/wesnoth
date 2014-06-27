@@ -104,7 +104,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	prefs_disp_manager_(),
 	tooltips_manager_(),
 	events_manager_(),
-	halo_manager_(),
 	labels_manager_(),
 	help_manager_(&game_config),
 	mouse_handler_(NULL, gamestate_.board_),
@@ -271,9 +270,6 @@ void play_controller::init_managers(){
 	soundsources_manager_.reset(new soundsource::manager(*gui_));
 
 	resources::soundsources = soundsources_manager_.get();
-
-	halo_manager_.reset(new halo::manager(*gui_));
-	resources::halo = halo_manager_.get();
 	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << std::endl;
 }
 
