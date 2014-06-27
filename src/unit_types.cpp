@@ -545,6 +545,8 @@ void unit_type::build_full(const movement_type_map &mv_types,
 	// parse the spritesheet tags if found.
 	BOOST_FOREACH(const config &spritesheet, cfg_.child_range("spritesheet"))
 	{
+		// mordante I'm getting an undefined reference at this point and
+		// I can't see the reason.
 		spritesheet_sprites_.push_back(sprite_data(spritesheet));
 	}
 
