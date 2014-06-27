@@ -22,6 +22,7 @@
 #include "scoped_resource.hpp"
 #include "serialization/string_utils.hpp"
 
+#include <cassert>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -46,6 +47,7 @@ std::string random_generate_map(const std::string& parms, const config &cfg)
 	//the first token is the name of the generator, tokens after
 	//that are arguments to the generator
 	std::vector<std::string> parameters = utils::split(parms, ' ');
+	assert(!parameters.empty()); //we use parameters.front() in the next line.
 	util::scoped_ptr<map_generator> generator(create_map_generator(parameters.front(),cfg));
 	if(generator == NULL) {
 		ERR_CF << "could not find map generator '" << parameters.front() << "'" << std::endl;

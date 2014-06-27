@@ -31,6 +31,7 @@
 #include <deque>
 #include <istream>
 
+#include <boost/bind.hpp>
 #include <boost/foreach.hpp>
 #include <boost/variant/apply_visitor.hpp>
 #include <boost/variant/get.hpp>
@@ -388,6 +389,16 @@ public:
 bool config::attribute_value::operator==(const config::attribute_value &other) const
 {
 	return boost::apply_visitor(equality_visitor(), value_, other.value_);
+}
+
+/**
+ * Checks for equality of the attribute values when viewed as strings.
+ * Exception: Boolean synonyms can be equal ("yes" == "true").
+ * Note: Blanks have no string representation, so do not equal "" (an empty string).
+ */
+bool config::attribute_value::equals(const std::string &str) const
+{
+	return boost::apply_visitor(boost::bind( equality_visitor(), _1, boost::cref(str) ), value_);
 }
 
 std::ostream &operator<<(std::ostream &os, const config::attribute_value &v)

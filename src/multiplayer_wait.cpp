@@ -464,7 +464,7 @@ void wait::process_network_data(const config& data, const network::connection so
 {
 	ui::process_network_data(data, sock);
 
-	if(data["message"] != "") {
+	if(!data["message"].empty()) {
 		gui2::show_transient_message(disp().video()
 				, _("Response")
 				, data["message"]);
