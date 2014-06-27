@@ -22,7 +22,7 @@
 #include "game_end_exceptions.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "notifications.hpp"
+#include "notifications/notifications.hpp"
 #include "playturn.hpp"
 #include "preferences.hpp"
 #include "resources.hpp"

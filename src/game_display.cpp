@@ -34,7 +34,7 @@
 #include "map.hpp"
 #include "map_label.hpp"
 #include "marked-up_text.hpp"
-#include "notifications.hpp"
+#include "notifications/notifications.hpp"
 #include "reports.hpp"
 #include "resources.hpp"
 #include "tod_manager.hpp"

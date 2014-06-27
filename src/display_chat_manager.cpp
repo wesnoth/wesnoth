@@ -21,7 +21,7 @@
 #include "game_preferences.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
-#include "notifications.hpp"
+#include "notifications/notifications.hpp"
 #include "sound.hpp"
 #include "serialization/string_utils.hpp"
 

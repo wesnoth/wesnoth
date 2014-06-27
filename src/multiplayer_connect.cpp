@@ -26,7 +26,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
-#include "notifications.hpp"
+#include "notifications/notifications.hpp"
 #include "wml_separators.hpp"
 #include "sound.hpp"
 
