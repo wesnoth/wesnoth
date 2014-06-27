@@ -10,10 +10,10 @@
 #include <cstdlib>
 #include <list>
 
-#include "SDL_version.h"
+#include "sdl/compat.hpp"
 
 #if SDL_VERSION_ATLEAST(2,0,0)
-#define NO_NOTIFICATIONS // It seems that SDL_active does not exist and I don't know what the analogue was
+#include "video.hpp"
 #else
 #include "SDL_active.h"
 #endif
