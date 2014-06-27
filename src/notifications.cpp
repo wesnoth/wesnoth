@@ -10,7 +10,13 @@
 #include <cstdlib>
 #include <list>
 
+#include "SDL_version.h"
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+#define NO_NOTIFICATIONS // It seems that SDL_active does not exist and I don't know what the analogue was
+#else
 #include "SDL_active.h"
+#endif
 
 #ifdef HAVE_LIBDBUS
 #include <dbus/dbus.h>
@@ -35,6 +41,14 @@ using boost::uint32_t;
 
 namespace notifications
 {
+#if !(defined(HAVE_LIBDBUS) || defined(HAVE_GROWL) || defined(_WIN32))
+#define NO_NOTIFICATIONS
+#endif
+
+#if defined(NO_NOTIFICATIONS)
+void send_notification(const std::string& /*owner*/, const std::string& /*message*/)
+{}
+#else
 
 #ifdef HAVE_LIBDBUS
 /** Use KDE 4 notifications. */
@@ -170,17 +184,13 @@ static uint32_t send_dbus_notification(DBusConnection *connection, uint32_t repl
 	if (kde_style) return 0;
 	return id;
 }
-#endif
+#endif // end #if LIB_DBUS
 
-#if defined(HAVE_LIBDBUS) || defined(HAVE_GROWL) || defined(_WIN32)
+// Still in #if !defined NO_NOTIFICATIONS
 void send_notification(const std::string& owner, const std::string& message)
 {
 	if (preferences::get("disable_notifications", false)) { return; }
-#else
-void send_notification(const std::string& /*owner*/, const std::string& /*message*/)
-{
-#endif
-#if defined(HAVE_LIBDBUS) || defined(HAVE_GROWL) || defined(_WIN32)
+
 	Uint8 app_state = SDL_GetAppState();
 
 	// Do not show notifications when the window is visible...
@@ -191,7 +201,6 @@ void send_notification(const std::string& /*owner*/, const std::string& /*messag
 			return;
 		}
 	}
-#endif
 
 #ifdef HAVE_LIBDBUS
 	DBusConnection *connection = get_dbus_connection();
@@ -260,5 +269,6 @@ void send_notification(const std::string& /*owner*/, const std::string& /*messag
 	windows_tray_notification::show(notification_title, notification_message);
 #endif
 }
+#endif //end #else !defined(NO_NOTIFICATIONS)
 
 } //end namespace notifications
