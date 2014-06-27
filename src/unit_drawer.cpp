@@ -332,7 +332,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 	params.y -= height_adjust_unit - height_adjust;
 	params.halo_y -= height_adjust_unit - height_adjust;
 
-	ac.anim_->redraw(params);
+	ac.anim_->redraw(params, halo_man);
 	ac.refreshing_ = false;
 }
 

@@ -18,7 +18,6 @@
 
 #include "game_display.hpp"
 #include "halo.hpp"
-#include "resources.hpp" // only for halo manager
 #include "sound.hpp"
 #include "unit_frame.hpp"
 
@@ -628,7 +627,7 @@ std::vector<std::string> frame_parsed_parameters::debug_strings() const {
 }
 
 
-void unit_frame::redraw(const int frame_time,bool on_start_time,bool in_scope_of_frame,const map_location & src,const map_location & dst,halo::handle & halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val)const
+void unit_frame::redraw(const int frame_time,bool on_start_time,bool in_scope_of_frame,const map_location & src,const map_location & dst,halo::handle & halo_id,halo::manager & halo_man, const frame_parameters & animation_val,const frame_parameters & engine_val)const
 {
 	const int xsrc = game_display::get_singleton()->get_location_x(src);
 	const int ysrc = game_display::get_singleton()->get_location_y(src);
@@ -736,18 +735,14 @@ void unit_frame::redraw(const int frame_time,bool on_start_time,bool in_scope_of
 				break;
 		}
 
-		if (!resources::halo) {
-			return;
-		}
-
 		if(direction != map_location::SOUTH_WEST && direction != map_location::NORTH_WEST) {
-			halo_id = resources::halo->add(static_cast<int>(x+current_data.halo_x* game_display::get_singleton()->get_zoom_factor()),
+			halo_id = halo_man.add(static_cast<int>(x+current_data.halo_x* game_display::get_singleton()->get_zoom_factor()),
 					static_cast<int>(y+current_data.halo_y* game_display::get_singleton()->get_zoom_factor()),
 					current_data.halo + current_data.halo_mod,
 					map_location(-1, -1),
 					orientation);
 		} else {
-			halo_id = resources::halo->add(static_cast<int>(x-current_data.halo_x* game_display::get_singleton()->get_zoom_factor()),
+			halo_id = halo_man.add(static_cast<int>(x-current_data.halo_x* game_display::get_singleton()->get_zoom_factor()),
 					static_cast<int>(y+current_data.halo_y* game_display::get_singleton()->get_zoom_factor()),
 					current_data.halo + current_data.halo_mod,
 					map_location(-1, -1),

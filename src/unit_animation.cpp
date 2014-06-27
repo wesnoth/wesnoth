@@ -1020,17 +1020,17 @@ void unit_animation::restart_animation()
 		anim_itor->second.restart_animation();
 	}
 }
-void unit_animation::redraw(frame_parameters& value)
+void unit_animation::redraw(frame_parameters& value, halo::manager & halo_man)
 {
 
 	invalidated_=false;
 	overlaped_hex_.clear();
 	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
 	value.primary_frame = t_true;
-	unit_anim_.redraw(value,src_,dst_);
+	unit_anim_.redraw(value,src_,dst_, halo_man);
 	value.primary_frame = t_false;
 	for( /*null*/; anim_itor != sub_anims_.end() ; ++anim_itor) {
-		anim_itor->second.redraw( value,src_,dst_);
+		anim_itor->second.redraw( value,src_,dst_, halo_man);
 	}
 }
 void unit_animation::clear_haloes()
@@ -1208,7 +1208,7 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 }
 
 
-void unit_animation::particule::redraw(const frame_parameters& value,const map_location &src, const map_location &dst)
+void unit_animation::particule::redraw(const frame_parameters& value,const map_location &src, const map_location &dst, halo::manager & halo_man)
 {
 	const unit_frame& current_frame= get_current_frame();
 	const int animation_time = get_animation_time();
@@ -1226,9 +1226,9 @@ void unit_animation::particule::redraw(const frame_parameters& value,const map_l
 	// for sound frames we want the first time variable set only after the frame has started.
 	if(get_current_frame_begin_time() != last_frame_begin_time_ && animation_time >= get_current_frame_begin_time()) {
 		last_frame_begin_time_ = get_current_frame_begin_time();
-		current_frame.redraw(get_current_frame_time(),true,in_scope_of_frame,src,dst,halo_id_,default_val,value);
+		current_frame.redraw(get_current_frame_time(),true,in_scope_of_frame,src,dst,halo_id_,halo_man,default_val,value);
 	} else {
-		current_frame.redraw(get_current_frame_time(),false,in_scope_of_frame,src,dst,halo_id_,default_val,value);
+		current_frame.redraw(get_current_frame_time(),false,in_scope_of_frame,src,dst,halo_id_,halo_man,default_val,value);
 	}
 }
 void unit_animation::particule::clear_halo()

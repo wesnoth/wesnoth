@@ -62,7 +62,7 @@ class unit_animation
                 void pause_animation();
                 void restart_animation();
 		int get_current_frame_begin_time() const{ return unit_anim_.get_current_frame_begin_time() ; }
-		void redraw(frame_parameters& value);
+		void redraw(frame_parameters& value, halo::manager & halo_man);
 		void clear_haloes();
 		bool invalidate(frame_parameters& value );
 		std::string debug() const;
@@ -110,7 +110,7 @@ class unit_animation
 					, const std::string& offset = ""
 					, const std::string& layer = ""
 					, const std::string& modifiers = "");
-			void redraw( const frame_parameters& value,const map_location &src, const map_location &dst);
+			void redraw( const frame_parameters& value,const map_location &src, const map_location &dst, halo::manager & halo_man);
 			std::set<map_location> get_overlaped_hex(const frame_parameters& value,const map_location &src, const map_location &dst);
 			void start_animation(int start_time);
 			const frame_parameters parameters(const frame_parameters & default_val) const { return get_current_frame().merge_parameters(get_current_frame_time(),parameters_.parameters(get_animation_time()-get_begin_time()),default_val); }
