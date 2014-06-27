@@ -20,6 +20,7 @@
 class CVideo;
 
 #include "sdl/utils.hpp"
+#include "sdl/gpu.hpp"
 
 #if SDL_VERSION_ATLEAST(2,0,0)
 #include "sdl/texture.hpp"
@@ -81,7 +82,7 @@ private:
 #if SDL_VERSION_ATLEAST(2,0,0)
 	sdl::ttexture logo_texture_;
 #else
-	surface logo_surface_;
+	GPU_Image *logo_image_;
 #endif
 	bool logo_drawn_;
 	int pby_offset_;
