@@ -28,7 +28,7 @@
 #include "sdl/rect.hpp"
 #include "sdl/window.hpp"
 #include "video.hpp"
-#include "SDL_gpu/SDL_gpu/SDL_gpu.h"
+#include "sdl/gpu.hpp"
 
 #include <boost/foreach.hpp>
 
