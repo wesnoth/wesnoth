@@ -852,6 +852,7 @@ set(wesnoth-main_SRC
 	scripting/lua_types.cpp
 	settings.cpp
 	sha1.cpp
+	spritesheet.cpp
 	side_filter.cpp
 	statistics.cpp
 	statistics_dialog.cpp

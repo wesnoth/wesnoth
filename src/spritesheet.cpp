@@ -15,8 +15,8 @@ static lg::log_domain log_config("config");
 sprite_data::sprite_data(const config& cfg) :
 	image(cfg["spritesheet_image"]),
 	id(cfg["id"].to_int()),
-	x_coor(cfg["x_coor"].to_int()),
-	y_coor(cfg["y_coor"].to_int()),
+	x_coordinate(cfg["x_coor"].to_int()),
+	y_coordinate(cfg["y_coor"].to_int()),
 	height(cfg["height"].to_int()),
 	width(cfg["width"].to_int())
 {

@@ -17,7 +17,7 @@ struct sprite_data {
 
 	//enum location { X_COOR, Y_COOR, WIDTH, HEIGHT };  replace with array?
 
-	std::string spritesheet;
+	std::string image;
 	
 	// if moved to array place these 5 values into it?
 	int id;
