@@ -315,7 +315,7 @@ void saved_game::expand_random_scenario()
 	if(this->starting_pos_type_ == STARTINGPOS_SCENARIO)
 	{
 		// If the entire scenario should be randomly generated
-		if(starting_pos_["scenario_generation"] != "") 
+		if(!starting_pos_["scenario_generation"].empty()) 
 		{
 			LOG_NG << "randomly generating scenario...\n";
 			const cursor::setter cursor_setter(cursor::WAIT);
@@ -331,12 +331,12 @@ void saved_game::expand_random_scenario()
 			update_label();
 		}
 		//it looks like we support a map= where map=filename equals more or less map_data={filename}
-		if(starting_pos_["map_data"].empty() && starting_pos_["map"] != "") {
+		if(starting_pos_["map_data"].empty() && !starting_pos_["map"].empty()) {
 			starting_pos_["map_data"] = read_map(starting_pos_["map"]);
 		}
 		// If the map should be randomly generated
 		// We dont want that we accidently to this twice so we check for starting_pos_["map_data"].empty()
-		if(starting_pos_["map_data"].empty() && starting_pos_["map_generation"] != "") {
+		if(starting_pos_["map_data"].empty() && !starting_pos_["map_generation"].empty()) {
 			LOG_NG << "randomly generating map...\n";
 			const cursor::setter cursor_setter(cursor::WAIT);
 

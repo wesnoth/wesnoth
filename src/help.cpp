@@ -958,7 +958,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 		} else if ((*section_cfg)["sort_topics"] == "generated") {
 		  sort_topics = false;
 		  sort_generated = true;
-		} else if ((*section_cfg)["sort_topics"] != "") {
+		} else if (!(*section_cfg)["sort_topics"].empty()) {
 		  std::stringstream ss;
 		  ss << "Invalid sort option: '" << (*section_cfg)["sort_topics"] << "'";
 		  throw parse_error(ss.str());
