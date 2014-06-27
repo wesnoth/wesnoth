@@ -28,6 +28,8 @@
 namespace halo
 {
 
+const int NO_HALO = 0;
+
 class halo_impl
 {
 
@@ -465,27 +467,24 @@ void halo_impl::render()
 manager::manager(display& screen) : impl_(new halo_impl(screen))
 {}
 
-manager::~manager()
-{
-	delete impl_;
-}
-
-int manager::add(int x, int y, const std::string& image, const map_location& loc,
+handle manager::add(int x, int y, const std::string& image, const map_location& loc,
 		ORIENTATION orientation, bool infinite) 
 {
-	return impl_->add(x,y,image, loc, orientation, infinite);
+	int new_halo = impl_->add(x,y,image, loc, orientation, infinite);
+	return handle(new halo_record(new_halo, impl_));
 }
 
 /** Set the position of an existing haloing effect, according to its handle. */
-void manager::set_location(int handle, int x, int y)
+void manager::set_location(const handle & h, int x, int y)
 {
-	impl_->set_location(handle,x,y);
+	impl_->set_location(h->id_,x,y);
 }
 
 /** Remove the halo with the given handle. */
-void manager::remove(int handle)
+void manager::remove(const handle & h)
 {
-	impl_->remove(handle);
+	impl_->remove(h->id_);
+	h->id_ = NO_HALO;
 }
 
 /**
@@ -505,5 +504,35 @@ void manager::render()
 }
 
 // end halo::manager implementation
+
+
+/**
+ * halo::halo_record implementation
+ */
+
+halo_record::halo_record() :
+	id_(NO_HALO), //halo::NO_HALO
+	my_manager_()
+{}
+
+halo_record::halo_record(int id, const boost::shared_ptr<halo_impl> & my_manager) :
+	id_(id),
+	my_manager_(my_manager)
+{}
+
+halo_record::~halo_record()
+{
+	if (id_ == NO_HALO) return;
+	if (my_manager_.expired()) return;
+	boost::shared_ptr<halo_impl> man = my_manager_.lock();
+
+	if (man) {
+		try {
+			man->remove(id_);
+		} catch (std::exception & e) {
+			std::cerr << "Caught an exception in halo::halo_record destructor: \n" << e.what() << std::endl;
+		} catch (...) {}
+	}
+}
 
 } //end namespace halo

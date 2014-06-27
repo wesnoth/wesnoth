@@ -46,7 +46,7 @@ public:
 		frame_begin_time_(0),
 		draw_bars_(false), 
 		refreshing_(false),
-		unit_halo_(halo::NO_HALO) {}
+		unit_halo_() {}
 
 	/** Copy construct a unit animation component, for use when copy constructing a unit. */
 	unit_animation_component(unit & my_unit, const unit_animation_component & o) : 
@@ -58,7 +58,7 @@ public:
 		frame_begin_time_(o.frame_begin_time_),
 		draw_bars_(o.draw_bars_),
 		refreshing_(o.refreshing_),
-		unit_halo_(halo::NO_HALO) {}
+		unit_halo_() {}
 
 	/** Chooses an appropriate animation from the list of known animations. */
 	const unit_animation* choose_animation(const display& disp,
@@ -123,7 +123,7 @@ private:
 	bool draw_bars_;  //!< bool indicating whether to draw bars with the unit 
 	bool refreshing_; //!< avoid infinite recursion. flag used for drawing / animation
 
-	int unit_halo_; //!< flag used for drawing / animation
+	halo::handle unit_halo_; //!< handle to the halo of this unit
 };
 
 #endif

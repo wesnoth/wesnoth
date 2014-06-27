@@ -21,19 +21,25 @@ class display;
 
 #include "map_location.hpp"
 
+#include <boost/noncopyable.hpp>
+#include <boost/shared_ptr.hpp>
+#include <boost/weak_ptr.hpp>
+
 namespace halo
 {
 
 class halo_impl;
 
+class halo_record;
+
+typedef boost::shared_ptr<halo_record> handle;
+
 enum ORIENTATION { NORMAL, HREVERSE, VREVERSE, HVREVERSE };
-const int NO_HALO = 0;
 
 class manager
 {
 public:
 	manager(display& disp);
-	~manager();
 
 	/**
 	 * Add a haloing effect using 'image centered on (x,y).
@@ -44,14 +50,14 @@ public:
 	 * shroud is active.  (Note it will be shown with the fog active.)
 	 * If it is not attached to an item, the location should be set to -1, -1
 	 */
-	int add(int x, int y, const std::string& image, const map_location& loc,
+	handle add(int x, int y, const std::string& image, const map_location& loc,
 			halo::ORIENTATION orientation=NORMAL, bool infinite=true);
 
 	/** Set the position of an existing haloing effect, according to its handle. */
-	void set_location(int handle, int x, int y);
+	void set_location(const handle & h, int x, int y);
 
 	/** Remove the halo with the given handle. */
-	void remove(int handle);
+	void remove(const handle & h);
 
 	/**
 	 * Render and unrender haloes.
@@ -63,7 +69,46 @@ public:
 	void render();
 
 private:
-	halo_impl * impl_;
+	boost::shared_ptr<halo_impl> impl_;
+};
+
+/**
+ * RAII object which manages a halo. When it goes out of scope it removes the corresponding halo entry.
+ */
+class halo_record : public boost::noncopyable
+{
+public:
+	halo_record();
+	halo_record(int id, const boost::shared_ptr<halo_impl> & my_manager);
+	~halo_record();
+
+
+	friend class manager;
+private:
+	int id_;
+	boost::weak_ptr<halo_impl> my_manager_;
+
+//Begin safe_bool impl
+
+#ifndef HAVE_CXX11
+	struct safe_bool_impl { void nonnull() {} };
+	/**
+	 * Used as t he return type of the conversion operator for boolean contexts.
+	 * Needed, since the compiler would otherwise consider the following
+	 * conversion (C legacy): cfg["abc"] -> "abc"[bool(cfg)] -> 'b'
+	 */
+	typedef void (safe_bool_impl::*safe_bool)();
+#endif
+
+public:
+#ifdef HAVE_CXX11
+	explicit operator bool() const
+	{ return id_ != 0 && !my_manager_.expired(); }
+#else
+	operator safe_bool() const
+	{ return (id_ != 0 && !my_manager_.expired()) ? &safe_bool_impl::nonnull : NULL; }
+#endif
+
 };
 
 } // end namespace halo

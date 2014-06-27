@@ -874,7 +874,7 @@ unit_animation::particule::particule(
 		animated<unit_frame>(),
 		accelerate(true),
 		parameters_(),
-		halo_id_(0),
+		halo_id_(),
 		last_frame_begin_time_(0),
 		cycles_(false)
 {
@@ -1226,19 +1226,14 @@ void unit_animation::particule::redraw(const frame_parameters& value,const map_l
 	// for sound frames we want the first time variable set only after the frame has started.
 	if(get_current_frame_begin_time() != last_frame_begin_time_ && animation_time >= get_current_frame_begin_time()) {
 		last_frame_begin_time_ = get_current_frame_begin_time();
-		current_frame.redraw(get_current_frame_time(),true,in_scope_of_frame,src,dst,&halo_id_,default_val,value);
+		current_frame.redraw(get_current_frame_time(),true,in_scope_of_frame,src,dst,halo_id_,default_val,value);
 	} else {
-		current_frame.redraw(get_current_frame_time(),false,in_scope_of_frame,src,dst,&halo_id_,default_val,value);
+		current_frame.redraw(get_current_frame_time(),false,in_scope_of_frame,src,dst,halo_id_,default_val,value);
 	}
 }
 void unit_animation::particule::clear_halo()
 {
-	if(halo_id_ != halo::NO_HALO) {
-		if (resources::halo) {
-			resources::halo->remove(halo_id_);
-		}
-		halo_id_ = halo::NO_HALO;
-	}
+	halo_id_ = halo::handle(); // halo::NO_HALO
 }
 std::set<map_location> unit_animation::particule::get_overlaped_hex(const frame_parameters& value,const map_location &src, const map_location &dst)
 {
@@ -1250,18 +1245,12 @@ std::set<map_location> unit_animation::particule::get_overlaped_hex(const frame_
 
 unit_animation::particule::~particule()
 {
-	if (resources::halo) {
-		resources::halo->remove(halo_id_);
-	}
-	halo_id_ = halo::NO_HALO;
+	halo_id_ = halo::handle(); // halo::NO_HALO
 }
 
 void unit_animation::particule::start_animation(int start_time)
 {
-	if (resources::halo) {
-		resources::halo->remove(halo_id_);
-	}
-	halo_id_ = halo::NO_HALO;
+	halo_id_ = halo::handle(); // halo::NO_HALO
 	parameters_.override(get_animation_duration());
 	animated<unit_frame>::start_animation(start_time,cycles_);
 	last_frame_begin_time_ = get_begin_time() -1;

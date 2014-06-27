@@ -18,7 +18,6 @@
 #include "display.hpp"
 #include "map.hpp"
 #include "preferences.hpp"
-#include "resources.hpp" //only for halo::manager
 #include "unit_animation.hpp"
 #include "unit.hpp"
 #include "unit_types.hpp"
@@ -149,12 +148,7 @@ void unit_animation_component::refresh()
 
 void unit_animation_component::clear_haloes ()
 {
-	if(unit_halo_ != halo::NO_HALO) {
-		if (resources::halo) {
-			resources::halo->remove(unit_halo_);
-		}
-		unit_halo_ = halo::NO_HALO;
-	}
+	unit_halo_ = halo::handle(); //halo::NO_HALO; <-- Removes it from the halo manager automatically.
 	if(anim_ ) anim_->clear_haloes();
 }
 

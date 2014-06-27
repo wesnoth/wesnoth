@@ -16,6 +16,7 @@
 
 #include "animated.hpp"
 #include "config.hpp"
+#include "halo.hpp"
 #include "unit_frame.hpp"
 #include "unit_ptr.hpp"
 
@@ -89,7 +90,7 @@ class unit_animation
 				animated<unit_frame>(start_time),
 				accelerate(true),
 				parameters_(builder),
-				halo_id_(0),
+				halo_id_(),
 				last_frame_begin_time_(0),
 				cycles_(false)
 				{}
@@ -119,7 +120,7 @@ class unit_animation
 
 			//animation params that can be locally overridden by frames
 			frame_parsed_parameters parameters_;
-			int halo_id_;
+			halo::handle halo_id_;
 			int last_frame_begin_time_;
 			bool cycles_;
 
