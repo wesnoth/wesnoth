@@ -15,7 +15,7 @@
 #ifndef TSTRING_H_INCLUDED
 #define TSTRING_H_INCLUDED
 
-#include "shared_object.hpp"
+#include "utils/shared_object.hpp"
 
 #include <string>
 
