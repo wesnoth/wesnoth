@@ -343,7 +343,7 @@ CVideo::CVideo(FAKE_TYPES type) : mode_changed_(false), bpp_(0), fake_screen_(fa
 
 void CVideo::initSDL()
 {
-	render_target = GPU_Init(1200, 700, SDL_INIT_VIDEO | SDL_INIT_NOPARACHUTE);
+	render_target = GPU_Init(1200, 700, GPU_DEFAULT_INIT_FLAGS);
 
 	if(render_target == NULL) {
 		ERR_DP << "Could not initialize window: " << SDL_GetError() << std::endl;
