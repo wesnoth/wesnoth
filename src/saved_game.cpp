@@ -204,6 +204,7 @@ void saved_game::expand_scenario()
 		{
 			this->starting_pos_type_ = STARTINGPOS_SCENARIO;
 			this->starting_pos_ = scenario;
+			update_label();
 			
 			//Set this default value immideately after reading the scenario is importent because otherwise 
 			//we might endup settings this value to the multiplayer players name, which would break carryover.
@@ -327,6 +328,7 @@ void saved_game::expand_random_scenario()
 				scenario_new.add_child("story", story);
 			}
 			starting_pos_ = scenario_new;
+			update_label();
 		}
 		//it looks like we support a map= where map=filename equals more or less map_data={filename}
 		if(starting_pos_["map_data"].empty() && starting_pos_["map"] != "") {
@@ -383,6 +385,7 @@ void saved_game::set_scenario(const config& scenario)
 	{
 		this->carryover_sides_start.child_or_add("variables");
 	}
+	update_label();
 }
 
 void saved_game::remove_snapshot()
@@ -496,4 +499,13 @@ bool saved_game::not_corrupt() const
 		WRN_NG << "corrupt safegame:" << c.debug() << std::endl;
 	}
 	return r;
+}
+
+void saved_game::update_label()
+{
+	if (classification().abbrev.empty())
+		classification().label = starting_pos_["name"].str();
+	else {
+		classification().label = classification().abbrev + "-" + starting_pos_["name"];
+	}
 }

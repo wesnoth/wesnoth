@@ -79,6 +79,9 @@ public:
 	const config& replay_start() const { return replay_start_; }
 
 	bool not_corrupt() const;
+	/** sets classification().label to the correct value. */
+	void update_label();
+
 	/**
 	 * If the game is saved mid-level, we have a series of replay steps
 	 * to take the game up to the position it was saved at.

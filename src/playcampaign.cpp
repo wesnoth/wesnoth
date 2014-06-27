@@ -128,8 +128,6 @@ static void show_carryover_message(saved_game& gamestate, playsingle_controller&
 LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& game_config,
 		CVideo& video, bool is_unit_test)
 {
-	const std::string campaign_type_str = lexical_cast<std::string> (gamestate.classification().campaign_type);
-
 	// 'starting_pos' will contain the position we start the game from.
 	// this call also might expand [scenario] in case thatt there is no replay_start
 	const config& starting_pos = gamestate.get_replay_starting_pos();
@@ -264,30 +262,14 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 	const config& game_config, io_type_t io_type, bool skip_replay,
 	bool network_game, bool blindfold_replay, bool is_unit_test)
 {
-	const std::string campaign_type_str = lexical_cast_default<std::string> (gamestate.classification().campaign_type);
-
 	gamestate.expand_scenario();
 
-	while(gamestate.valid()) {
-		config& starting_pos = gamestate.get_starting_pos();
-
-
-		bool save_game_after_scenario = true;
-
+	while(gamestate.valid()) 
+	{
 		LEVEL_RESULT res = VICTORY;
 		end_level_data end_level;
 
 		try {
-			// Preserve old label eg. replay
-			if (gamestate.classification().label.empty()) {
-				if (gamestate.classification().abbrev.empty())
-					gamestate.classification().label = starting_pos["name"].str();
-				else {
-					gamestate.classification().label = gamestate.classification().abbrev;
-					gamestate.classification().label.append("-");
-					gamestate.classification().label.append(starting_pos["name"]);
-				}
-			}
 
 			gamestate.expand_random_scenario();
 			//In case this an mp scenario reloaded by sp this was not already done yet.
@@ -375,11 +357,6 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			}
 		}
 
-		// Continue without saving is like a victory,
-		// but the save game dialog isn't displayed
-		if (!end_level.prescenario_save)
-			save_game_after_scenario = false;
-
 		if (io_type == IO_CLIENT) {
 			// Opens mp::connect dialog to get a new gamestate.
 			mp::ui::result wait_res = mp::goto_mp_wait(gamestate, disp,
@@ -394,6 +371,8 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			gamestate.expand_scenario();
 
 			if (io_type == IO_SERVER && gamestate.valid()) {
+				//note that although starting_pos is const it might be changed by gamestate.some_non_const_operation()  .
+				const config& starting_pos = gamestate.get_starting_pos();
 				// A hash have to be generated using an unmodified
 				// scenario data.
 				gamestate.mp_settings().hash = starting_pos.hash();
@@ -440,16 +419,10 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 
 		if(gamestate.valid()) {
 			// Update the label
-			if (gamestate.classification().abbrev.empty())
-				gamestate.classification().label = starting_pos["name"].str();
-			else {
-				gamestate.classification().label = gamestate.classification().abbrev;
-				gamestate.classification().label.append("-");
-				gamestate.classification().label.append(starting_pos["name"]);
-			}
+			gamestate.update_label();
 
 			// If this isn't the last scenario, then save the game
-			if(save_game_after_scenario) {
+			if(end_level.prescenario_save) {
 
 				// For multiplayer, we want the save
 				// to contain the starting position.
