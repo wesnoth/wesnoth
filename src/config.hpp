@@ -280,6 +280,16 @@ public:
 		bool operator==(const attribute_value &other) const;
 		bool operator!=(const attribute_value &other) const
 		{ return !operator==(other); }
+		// We don't want strange conversions to t_string when doing like (c["a"] == "b")
+		bool equals(const std::string& str) const;
+		friend bool operator==(const attribute_value &val, const std::string &str)
+		{ return val.equals(str); }
+		friend bool operator==(const std::string &str, const attribute_value &val)
+		{ return val.equals(str); }
+		friend bool operator==(const attribute_value &val, const char* str)
+		{ return val.equals(std::string(str)); }
+		friend bool operator==(const char* str, const attribute_value &val)
+		{ return val.equals(std::string(str)); }
 
 		// Streaming:
 		friend std::ostream& operator<<(std::ostream &os, const attribute_value &v);
