@@ -1811,7 +1811,7 @@ int unit::defense_modifier(const t_translation::t_terrain & terrain) const
 
 bool unit::resistance_filter_matches(const config& cfg, bool attacker, const std::string& damage_name, int res) const
 {
-	if(!(cfg["active_on"]=="" || (attacker && cfg["active_on"]=="offense") || (!attacker && cfg["active_on"]=="defense"))) {
+	if(!(cfg["active_on"].empty() || (attacker && cfg["active_on"]=="offense") || (!attacker && cfg["active_on"]=="defense"))) {
 		return false;
 	}
 	const std::string& apply_to = cfg["apply_to"];
