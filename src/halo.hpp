@@ -28,6 +28,7 @@ class display;
 namespace halo
 {
 
+
 class halo_impl;
 
 class halo_record;
@@ -35,6 +36,8 @@ class halo_record;
 typedef boost::shared_ptr<halo_record> handle;
 
 enum ORIENTATION { NORMAL, HREVERSE, VREVERSE, HVREVERSE };
+
+const int NO_HALO = 0;
 
 class manager
 {
@@ -82,32 +85,14 @@ public:
 	halo_record(int id, const boost::shared_ptr<halo_impl> & my_manager);
 	~halo_record();
 
+	bool valid() const {
+		return id_ != NO_HALO && !my_manager_.expired();
+	}
 
 	friend class manager;
 private:
 	int id_;
 	boost::weak_ptr<halo_impl> my_manager_;
-
-//Begin safe_bool impl
-
-#ifndef HAVE_CXX11
-	struct safe_bool_impl { void nonnull() {} };
-	/**
-	 * Used as t he return type of the conversion operator for boolean contexts.
-	 * Needed, since the compiler would otherwise consider the following
-	 * conversion (C legacy): cfg["abc"] -> "abc"[bool(cfg)] -> 'b'
-	 */
-	typedef void (safe_bool_impl::*safe_bool)();
-#endif
-
-public:
-#ifdef HAVE_CXX11
-	explicit operator bool() const
-	{ return id_ != 0 && !my_manager_.expired(); }
-#else
-	operator safe_bool() const
-	{ return (id_ != 0 && !my_manager_.expired()) ? &safe_bool_impl::nonnull : NULL; }
-#endif
 
 };
 

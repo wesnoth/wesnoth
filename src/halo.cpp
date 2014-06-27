@@ -28,8 +28,6 @@
 namespace halo
 {
 
-const int NO_HALO = 0;
-
 class halo_impl
 {
 
@@ -522,8 +520,8 @@ halo_record::halo_record(int id, const boost::shared_ptr<halo_impl> & my_manager
 
 halo_record::~halo_record()
 {
-	if (id_ == NO_HALO) return;
-	if (my_manager_.expired()) return;
+	if (!valid()) return;
+
 	boost::shared_ptr<halo_impl> man = my_manager_.lock();
 
 	if (man) {
