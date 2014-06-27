@@ -108,6 +108,10 @@ After install the scenario will show up in the list you get when choosing "Campa
             w("""\
 <td>Campaign<div class="type"><b>single player campaign</b><br/>
 After install the campaign will show up in the list you get when choosing "Campaign" in the main menu.</div></td>""")
+        elif type == "campaign_sp_mp":
+            w("""\
+<td>SP/SP Campaign<div class="type"><b>single/multi player campaign</b><br />
+After install the campaign will show up both in the list you get when choosing "Campaign" in the main menu, and in the map list in the multiplayer "Create Game" dialog.</div></td>""")
         elif type == "campaign_mp":
             w("""\
 <td>MP Campaign<div class="type"><b>multiplayer campaign</b><br/>
@@ -128,6 +132,10 @@ After install the included era(s) will be available in the multiplayer "Create G
             w("""\
 <td>MP faction<div class="type"><b>multiplayer faction</b><br/>
 Usually comes with an era or is dependency of another add-on.</div></td>""")
+        elif type == "mod_mp":
+            w("""\
+<td>MP modification<div class="type"><b>multiplayer modification</b><br />
+After install the included MP gameplay modification(s) will be available in the multiplayer "Create Game" dialog.</div></td>""")
         elif type == "media":
             w("""\
 <td>Resources<div class="type"><b>miscellaneous content/media</b><br/>
