@@ -337,13 +337,6 @@ void display::init_flags_for_side_internal(size_t n, const std::string& side_col
 	f.start_animation(rand() % f.get_end_time(), true);
 }
 
-struct is_energy_color {
-	bool operator()(Uint32 color) const { return (color&0xFF000000) > 0x10000000 &&
-	                                              (color&0x00FF0000) < 0x00100000 &&
-												  (color&0x0000FF00) < 0x00001000 &&
-												  (color&0x000000FF) < 0x00000010; }
-};
-
 surface display::get_flag(const map_location& loc)
 {
 	t_translation::t_terrain terrain = get_map().get_terrain(loc);
@@ -391,115 +384,6 @@ void display::set_playing_team(size_t teamindex)
 	activeTeam_ = teamindex;
 	invalidate_game_status();
 }
-
-const SDL_Rect& display::calculate_energy_bar(surface surf)
-{
-	const std::map<surface,SDL_Rect>::const_iterator i = energy_bar_rects_.find(surf);
-	if(i != energy_bar_rects_.end()) {
-		return i->second;
-	}
-
-	int first_row = -1, last_row = -1, first_col = -1, last_col = -1;
-
-	surface image(make_neutral_surface(surf));
-
-	const_surface_lock image_lock(image);
-	const Uint32* const begin = image_lock.pixels();
-
-	for(int y = 0; y != image->h; ++y) {
-		const Uint32* const i1 = begin + image->w*y;
-		const Uint32* const i2 = i1 + image->w;
-		const Uint32* const itor = std::find_if(i1,i2,is_energy_color());
-		const int count = std::count_if(itor,i2,is_energy_color());
-
-		if(itor != i2) {
-			if(first_row == -1) {
-				first_row = y;
-			}
-
-			first_col = itor - i1;
-			last_col = first_col + count;
-			last_row = y;
-		}
-	}
-
-	const SDL_Rect res = sdl::create_rect(first_col
-			, first_row
-			, last_col-first_col
-			, last_row+1-first_row);
-	energy_bar_rects_.insert(std::pair<surface,SDL_Rect>(surf,res));
-	return calculate_energy_bar(surf);
-}
-
-
-
-void display::draw_bar(const std::string& image, int xpos, int ypos,
-		const map_location& loc, size_t height, double filled,
-		const SDL_Color& col, fixed_t alpha)
-{
-
-	filled = std::min<double>(std::max<double>(filled,0.0),1.0);
-	height = static_cast<size_t>(height*get_zoom_factor());
-
-	surface surf(image::get_image(image,image::SCALED_TO_HEX));
-
-	// We use UNSCALED because scaling (and bilinear interpolation)
-	// is bad for calculate_energy_bar.
-	// But we will do a geometric scaling later.
-	surface bar_surf(image::get_image(image));
-	if(surf == NULL || bar_surf == NULL) {
-		return;
-	}
-
-	// calculate_energy_bar returns incorrect results if the surface colors
-	// have changed (for example, due to bilinear interpolation)
-	const SDL_Rect& unscaled_bar_loc = calculate_energy_bar(bar_surf);
-
-	SDL_Rect bar_loc;
-	if (surf->w == bar_surf->w && surf->h == bar_surf->h)
-	  bar_loc = unscaled_bar_loc;
-	else {
-	  const fixed_t xratio = fxpdiv(surf->w,bar_surf->w);
-	  const fixed_t yratio = fxpdiv(surf->h,bar_surf->h);
-	  const SDL_Rect scaled_bar_loc = sdl::create_rect(
-			    fxptoi(unscaled_bar_loc. x * xratio)
-			  , fxptoi(unscaled_bar_loc. y * yratio + 127)
-			  , fxptoi(unscaled_bar_loc. w * xratio + 255)
-			  , fxptoi(unscaled_bar_loc. h * yratio + 255));
-	  bar_loc = scaled_bar_loc;
-	}
-
-	if(height > bar_loc.h) {
-		height = bar_loc.h;
-	}
-
-	//if(alpha != ftofxp(1.0)) {
-	//	surf.assign(adjust_surface_alpha(surf,alpha));
-	//	if(surf == NULL) {
-	//		return;
-	//	}
-	//}
-
-	const size_t skip_rows = bar_loc.h - height;
-
-	SDL_Rect top = sdl::create_rect(0, 0, surf->w, bar_loc.y);
-	SDL_Rect bot = sdl::create_rect(0, bar_loc.y + skip_rows, surf->w, 0);
-	bot.h = surf->w - bot.y;
-
-	drawing_buffer_add(LAYER_UNIT_BAR, loc, xpos, ypos, surf, top);
-	drawing_buffer_add(LAYER_UNIT_BAR, loc, xpos, ypos + top.h, surf, bot);
-
-	size_t unfilled = static_cast<size_t>(height * (1.0 - filled));
-
-	if(unfilled < height && alpha >= ftofxp(0.3)) {
-		const Uint8 r_alpha = std::min<unsigned>(unsigned(fxpmult(alpha,255)),255);
-		surface filled_surf = create_compatible_surface(bar_surf, bar_loc.w, height - unfilled);
-		SDL_Rect filled_area = sdl::create_rect(0, 0, bar_loc.w, height-unfilled);
-		sdl::fill_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
-		drawing_buffer_add(LAYER_UNIT_BAR, loc, xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf);
-	}
-}
-
 
 bool display::add_exclusive_draw(const map_location& loc, unit& unit)
 {
@@ -2569,7 +2453,7 @@ void display::draw_invalidated() {
 	}
 	invalidated_hexes_ += invalidated_.size();
 
-	unit_drawer drawer = unit_drawer(*this);
+	unit_drawer drawer = unit_drawer(*this, energy_bar_rects_);
 
 	BOOST_FOREACH(const map_location& loc, invalidated_) {
 		unit_map::const_iterator u_it = dc_->units().find(loc);

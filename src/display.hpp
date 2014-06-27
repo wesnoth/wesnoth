@@ -132,10 +132,6 @@ public:
 	 */
 	std::string remove_exclusive_draw(const map_location& loc);
 
-	void draw_bar(const std::string& image, int xpos, int ypos,
-			const map_location& loc, size_t height, double filled,
-			const SDL_Color& col, fixed_t alpha);
-
 	/**
 	 * Check the overlay_map for proper team-specific overlays to be
 	 * displayed/hidden
@@ -635,13 +631,6 @@ public:
 
 private:
 	void init_flags_for_side_internal(size_t side, const std::string& side_color);
-
-	/**
-	 * Finds the start and end rows on the energy bar image.
-	 *
-	 * White pixels are substituted for the color of the energy.
-	 */
-	const SDL_Rect& calculate_energy_bar(surface surf);
 
 	int blindfold_ctr_;
 

@@ -25,6 +25,7 @@
 #define DRAWABLE_UNIT_H_INCLUDED
 
 #include "map_location.hpp"
+#include "map"
 #include <vector>
 
 class display;
@@ -34,15 +35,25 @@ namespace halo { class manager; }
 class team;
 class unit;
 
+struct SDL_Color;
+struct SDL_Rect;
+struct surface;
+
+# include <SDL_types.h>
+typedef Sint32 fixed_t;
+
 class unit_drawer 
 {
-	unit_drawer(display & thedisp);
+public:
+	unit_drawer(display & thedisp, std::map<surface,SDL_Rect> & bar_rects);
 
+private:
 	display & disp;
 	const display_context & dc;
 	const gamemap & map;
 	const std::vector<team> & teams;
 	halo::manager & halo_man;
+	std::map<surface,SDL_Rect> & energy_bar_rects_;
 	size_t viewing_team;
 	size_t playing_team;
 	const team & viewing_team_ref;
@@ -56,10 +67,21 @@ class unit_drawer
 	int hex_size;
 	int hex_size_by_2;
 
+public:
 	/** draw a unit.  */
 	void redraw_unit(const unit & u) const;
 
-	friend class display;
-	friend class game_display;
+private:
+	/** draw a health/xp bar of a unit */
+	void draw_bar(const std::string& image, int xpos, int ypos,
+		const map_location& loc, size_t height, double filled,
+		const SDL_Color& col, fixed_t alpha) const;
+
+	/**
+	 * Finds the start and end rows on the energy bar image.
+	 *
+	 * White pixels are substituted for the color of the energy.
+	 */
+	const SDL_Rect& calculate_energy_bar(surface surf) const;
 };
 #endif
