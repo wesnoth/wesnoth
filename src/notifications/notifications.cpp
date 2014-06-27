@@ -2,9 +2,9 @@
 #include "global.hpp"
 
 #include "log.hpp"
+#include "game_config.hpp"
 #include "game_preferences.hpp"
 
-#include "game_config.hpp"
 
 #include <boost/cstdint.hpp>
 #include <cstdlib>
@@ -28,7 +28,6 @@
 Growl_Delegate growl_obj;
 #endif
 
-
 #ifdef _WIN32
 #include "windows_tray_notification.hpp"
 #endif
@@ -42,10 +41,6 @@ using boost::uint32_t;
 namespace notifications
 {
 #if !(defined(HAVE_LIBDBUS) || defined(HAVE_GROWL) || defined(_WIN32))
-#define NO_NOTIFICATIONS
-#endif
-
-#if defined(NO_NOTIFICATIONS)
 void send_notification(const std::string& /*owner*/, const std::string& /*message*/)
 {}
 #else
@@ -186,7 +181,6 @@ static uint32_t send_dbus_notification(DBusConnection *connection, uint32_t repl
 }
 #endif // end #if LIB_DBUS
 
-// Still in #if !defined NO_NOTIFICATIONS
 void send_notification(const std::string& owner, const std::string& message)
 {
 	if (preferences::get("disable_notifications", false)) { return; }
