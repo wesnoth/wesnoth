@@ -1209,7 +1209,7 @@ set(schema_validator_SRC
 	tools/schema/tag.cpp
 	filesystem.cpp
 	config_cache.cpp
-	sha1.cpp
+	utils/sha1.cpp
 	loadscreen_empty.cpp
 )
 
