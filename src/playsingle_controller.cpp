@@ -71,6 +71,7 @@ playsingle_controller::playsingle_controller(const config& level,
 	replaying_(false),
 	turn_over_(false),
 	skip_next_turn_(false),
+	do_autosaves_(false),
 	level_result_(NONE)
 {
 	// game may need to start in linger mode
