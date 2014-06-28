@@ -730,6 +730,9 @@ int main(int argc, char**argv)
 	} catch(network::error& e) {
 		std::cerr << "Aborted with network error: " << e.message << '\n';
 		return 3;
+	} catch(boost::bad_function_call& /*e*/) {
+		std::cerr << "Bad request handler function call\n";
+		return 4;
 	}
 
 	return 0;
