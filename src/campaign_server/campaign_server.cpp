@@ -653,7 +653,11 @@ void server::handle_delete(const server::request& req)
 
 	// Erase the campaign.
 	write_file(campaign["filename"], std::string());
-	remove(campaign["filename"].str().c_str());
+	if(remove(campaign["filename"].str().c_str()) != 0) {
+		LOG_CS << "failed to delete archive for campaign '" << erase["name"]
+			   << "' (" << campaign["filename"] << "): " << strerror(errno)
+			   << '\n';
+	}
 
 	config::child_itors itors = campaigns().child_range("campaign");
 	for(size_t index = 0; itors.first != itors.second; ++index, ++itors.first)
