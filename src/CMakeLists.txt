@@ -874,7 +874,6 @@ set(wesnoth-main_SRC
 	scripting/lua_api.cpp
 	scripting/lua_types.cpp
 	settings.cpp
-	utils/sha1.cpp
 	side_filter.cpp
 	statistics.cpp
 	statistics_dialog.cpp
@@ -903,6 +902,7 @@ set(wesnoth-main_SRC
 	unit_id.cpp
 	unit_map.cpp
 	unit_types.cpp
+	utils/sha1.cpp
 	variable.cpp
 	variant.cpp
 	whiteboard/action.cpp
