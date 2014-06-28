@@ -5,6 +5,7 @@
 !COPYING.txt
 !imagemagick_command.txt
 !utils/umc_dev/org.wesnoth/templates/**/*.txt
+!CMakeLists.txt
 
 # project files
 .*project
@@ -21,9 +22,6 @@ cmake_install.cmake
 CPack*Config.cmake
 uninstall.cmake
 CMakeCache.txt
-CMakeLists.txt
-!doc/**/CMakeLists.txt
-!src/ana/**/CMakeLists.txt
 
 # scons
 .scons-option-cache
