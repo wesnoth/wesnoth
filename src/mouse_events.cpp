@@ -519,6 +519,9 @@ void mouse_handler::select_or_action(bool browse)
 	if (!resources::gameboard->map().on_board(last_hex_))
 		return;
 
+	// Load whiteboard partial moves
+	wb::future_map_if_active planned_unit_map;
+
 	unit_map::iterator clicked_u = find_unit(last_hex_);
 	unit_map::iterator selected_u = find_unit(selected_hex_);
 	if ( clicked_u != resources::units->end() &&
