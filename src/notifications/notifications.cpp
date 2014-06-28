@@ -18,7 +18,7 @@
 #include "log.hpp"
 #include "game_config.hpp"
 #include "game_preferences.hpp"
-
+#include "gettext.hpp"
 
 #include <boost/cstdint.hpp>
 #include <cstdlib>
