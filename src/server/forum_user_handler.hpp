@@ -97,6 +97,9 @@ class fuh : public user_handler {
 
 		std::string db_name_, db_host_, db_user_, db_password_, db_users_table_, db_extra_table_;
 
+		// std::unique_ptr would be better, as the object isn't actually shared
+		// boost::scoped_ptr cannot be returned, so we can't use that
+		// TODO C++11: switch to std::unique_ptr
 		typedef boost::shared_ptr<MYSQL_RES> mysql_result;
 
 		// Throws user_handler::error
