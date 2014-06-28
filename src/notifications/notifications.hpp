@@ -12,9 +12,14 @@
    See the COPYING file for more details.
 */
 
+#ifndef NOTIFICATIONS_NOTIFICATIONS_HPP_INCLUDED
+#define NOTIFICATIONS_NOTIFICATIONS_HPP_INCLUDED
+
 #include <string>
 
 namespace notifications
 {
 	void send_notification(const std::string& owner, const std::string& message);
 }
+
+#endif
