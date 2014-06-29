@@ -51,7 +51,7 @@ public:
 	{
 	}
 
-	std::string text;
+	t_string text;
 	std::string id;
 	config cfg;
 };
