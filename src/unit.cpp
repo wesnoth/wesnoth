@@ -1649,17 +1649,23 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	config::attribute_value cfg_find_in = cfg["find_in"];
 	if (!cfg_find_in.blank()) {
 		// Allow filtering by searching a stored variable of units
-		variable_info vi = resources::gamedata->get_variable_access(cfg_find_in, false, variable_info::TYPE_CONTAINER);
-		if(!vi.is_valid) return false;
-		if(vi.explicit_index) {
-			config::const_child_iterator i = vi.vars->child_range(vi.key).first;
-			std::advance(i, vi.index);
-			if ((*i)["id"] != id_) {
+		try
+		{
+			variable_info vi = resources::gamedata->get_variable_access(cfg_find_in, false, variable_info::TYPE_CONTAINER);
+			bool found_id = false;
+			BOOST_FOREACH(const config& c, vi.as_array_throw())
+			{
+				if(c["id"] == id_)
+					found_id = true;
+			}
+			if(!found_id)
+			{
 				return false;
 			}
-		} else {
-			if (!vi.vars->find_child(vi.key, "id", id_))
-				return false;
+		}
+		catch(const invalid_variable_info_exception&)
+		{
+			return false;
 		}
 	}
 	config::attribute_value cfg_formula = cfg["formula"];

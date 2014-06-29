@@ -19,6 +19,15 @@
 #include "config.hpp"
 #include <string>
 
+struct invalid_variable_info_exception : public std::exception
+{
+public:
+	const char* what() const throw()
+	{
+		return "invalid_variable_info_exception";
+	}
+};
+
 struct variable_info
 {
 	typedef config::child_itors array_range;
@@ -52,6 +61,8 @@ struct variable_info
 
 	static config& get_temporaries();
 
+	
+	array_range as_array_throw(); //range may be empty
 
 	config::attribute_value as_scalar_const();
 

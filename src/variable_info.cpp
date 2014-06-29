@@ -304,3 +304,21 @@ config& variable_info::add_child(const config& value)
 {
 	return this->vars->add_child(this->key, value);
 }
+
+variable_info::array_range variable_info::as_array_throw()
+{
+	if(!is_valid)
+	{
+		throw invalid_variable_info_exception();
+	}
+	array_range r = vars->child_range(key);
+
+	if(explicit_index)
+	{
+		//return a range that only contains the one element 
+		std::advance(r.first, this->index);
+		r.second = r.first;
+		++r.second;;
+	}
+	return r;
+}
