@@ -1357,6 +1357,13 @@ if(ENABLE_TESTS)
 		)
 	endif(ENABLE_GAME)
 
+	set_source_files_properties(
+		tests/test_util.cpp
+		PROPERTIES
+			COMPILE_FLAGS
+				"${CXX_FLAG_NO_USELESS_CAST}"
+	)
+
 	add_executable(test
 		${test_SRC}
 	)
