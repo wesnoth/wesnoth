@@ -75,7 +75,6 @@ game_data::game_data()
 		, wml_menu_items_()
 		, rng_()
 		, variables_()
-		, temporaries_()
 		, phase_(INITIAL)
 		, can_end_turn_(true)
 		, scenario_()
@@ -88,7 +87,6 @@ game_data::game_data(const config& level)
 		, wml_menu_items_()
 		, rng_(level)
 		, variables_(level.child_or_empty("variables"))
-		, temporaries_()
 		, phase_(INITIAL)
 		, can_end_turn_(level["can_end_turn"].to_bool(true))
 		, scenario_(level["id"])
@@ -104,7 +102,6 @@ game_data::game_data(const game_data& data)
 		, wml_menu_items_(data.wml_menu_items_)
 		, rng_(data.rng_)
 		, variables_(data.variables_)
-		, temporaries_()
 		, phase_(data.phase_)
 		, can_end_turn_(data.can_end_turn_)
 		, scenario_(data.scenario_)
@@ -121,7 +118,7 @@ config::attribute_value game_data::get_variable_const(const std::string &key) co
 	variable_info to_get = get_variable_access(key, false, variable_info::TYPE_SCALAR);
 	if (!to_get.is_valid)
 	{
-		config::attribute_value &to_return = temporaries_[key];
+		config::attribute_value &to_return = variable_info::get_temporaries()[key];
 		if (key.size() > 7 && key.substr(key.size() - 7) == ".length") {
 			// length is a special attribute, so guarantee its correctness
 			to_return = 0;

@@ -905,6 +905,7 @@ set(wesnoth-main_SRC
 	unit_types.cpp
 	utils/sha1.cpp
 	variable.cpp
+	variable_info.cpp
 	variant.cpp
 	whiteboard/action.cpp
 	whiteboard/attack.cpp
