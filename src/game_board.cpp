@@ -76,7 +76,7 @@ void game_board::set_all_units_user_end_turn() {
 
 void game_board::all_survivors_to_recall() {
 	for (unit_map::iterator it = units_.begin(); it != units_.end(); it++) {
-		UnitPtr un =  it.get_shared_ptr();
+		unit_ptr un =  it.get_shared_ptr();
 		if (teams_[un->side() - 1].persistent()) {
 			un->new_turn();
 			un->new_scenario();
@@ -142,7 +142,7 @@ void game_board::side_change_controller(int side_num, team::CONTROLLER ctrl, con
 	}
 }
 
-bool game_board::try_add_unit_to_recall_list(const map_location& loc, const UnitPtr u)
+bool game_board::try_add_unit_to_recall_list(const map_location& loc, const unit_ptr u)
 {
 	if(teams_[u->side()-1].persistent()) {
 		teams_[u->side()-1].recall_list().add(u);
@@ -269,7 +269,7 @@ void game_board::write_config(config & cfg) const {
 		}
 		//recall list
 		{
-			BOOST_FOREACH(const UnitConstPtr & j, t->recall_list()) {
+			BOOST_FOREACH(const unit_const_ptr & j, t->recall_list()) {
 				config& u = side.add_child("unit");
 				j->write(u);
 			}
@@ -335,7 +335,7 @@ temporary_unit_remover::~temporary_unit_remover()
 temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
                                            const map_location& dst, int new_moves)
 	: m_(m), src_(src), dst_(dst), old_moves_(-1),
-	  temp_(src == dst ? UnitPtr() : m_.extract(dst))
+	  temp_(src == dst ? unit_ptr() : m_.extract(dst))
 {
 	std::pair<unit_map::iterator, bool> move_result = m_.move(src_, dst_);
 
@@ -350,7 +350,7 @@ temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
 temporary_unit_mover::temporary_unit_mover(game_board& b, const map_location& src,
                                            const map_location& dst, int new_moves)
 	: m_(b.units_), src_(src), dst_(dst), old_moves_(-1),
-	  temp_(src == dst ? UnitPtr() : m_.extract(dst))
+	  temp_(src == dst ? unit_ptr() : m_.extract(dst))
 {
 	std::pair<unit_map::iterator, bool> move_result = m_.move(src_, dst_);
 
@@ -369,7 +369,7 @@ temporary_unit_mover::temporary_unit_mover(game_board& b, const map_location& sr
 temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
                                            const map_location& dst)
 	: m_(m), src_(src), dst_(dst), old_moves_(-1),
-	  temp_(src == dst ? UnitPtr() : m_.extract(dst))
+	  temp_(src == dst ? unit_ptr() : m_.extract(dst))
 {
 	m_.move(src_, dst_);
 }
@@ -377,7 +377,7 @@ temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
 temporary_unit_mover::temporary_unit_mover(game_board& b, const map_location& src,
                                            const map_location& dst)
 	: m_(b.units_), src_(src), dst_(dst), old_moves_(-1),
-	  temp_(src == dst ? UnitPtr() : m_.extract(dst))
+	  temp_(src == dst ? unit_ptr() : m_.extract(dst))
 {
 	m_.move(src_, dst_);
 }

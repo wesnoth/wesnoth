@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-// The purpose of this header is to forward declare the UnitPtr, if it
+// The purpose of this header is to forward declare the unit_ptr, if it
 // is an intrusive pointer then this requires some boilerplate taken
 // care of here.
 
@@ -26,7 +26,7 @@ class unit;
 void intrusive_ptr_add_ref(const unit *);
 void intrusive_ptr_release(const unit *);
 
-typedef boost::intrusive_ptr<unit> UnitPtr;
-typedef boost::intrusive_ptr<const unit> UnitConstPtr;
+typedef boost::intrusive_ptr<unit> unit_ptr;
+typedef boost::intrusive_ptr<const unit> unit_const_ptr;
 
 #endif

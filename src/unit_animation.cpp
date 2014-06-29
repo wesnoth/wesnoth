@@ -1274,7 +1274,7 @@ void unit_animator::add_animation(const unit* animated_unit
 	if(!animated_unit) return;
 	anim_elem tmp;
 	display*disp = display::get_singleton();
-	tmp.my_unit = UnitConstPtr(animated_unit);
+	tmp.my_unit = unit_const_ptr(animated_unit);
 	tmp.text = text;
 	tmp.text_color = text_color;
 	tmp.src = src;
@@ -1295,7 +1295,7 @@ void unit_animator::add_animation(const unit* animated_unit
 {
 	if(!animated_unit) return;
 	anim_elem tmp;
-	tmp.my_unit = UnitConstPtr(animated_unit);
+	tmp.my_unit = unit_const_ptr(animated_unit);
 	tmp.text = text;
 	tmp.text_color = text_color;
 	tmp.src = src;
@@ -1326,7 +1326,7 @@ void unit_animator::replace_anim_if_invalid(const unit* animated_unit
 			!animated_unit->anim_comp().get_animation()->animation_finished_potential() &&
 			animated_unit->anim_comp().get_animation()->matches(*disp,src,dst,animated_unit,event,value,hit_type,attack,second_attack,value2) >unit_animation::MATCH_FAIL) {
 		anim_elem tmp;
-		tmp.my_unit = UnitConstPtr(animated_unit);
+		tmp.my_unit = unit_const_ptr(animated_unit);
 		tmp.text = text;
 		tmp.text_color = text_color;
 		tmp.src = src;

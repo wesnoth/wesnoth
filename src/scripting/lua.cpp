@@ -99,7 +99,7 @@
 #include "unit.hpp"                     // for unit, intrusive_ptr_add_ref, etc
 #include "unit_animation_component.hpp"  // for unit_animation_component
 #include "unit_map.hpp"  // for unit_map, etc
-#include "unit_ptr.hpp"                 // for UnitConstPtr, UnitPtr
+#include "unit_ptr.hpp"                 // for unit_const_ptr, unit_ptr
 #include "unit_types.hpp"    // for unit_type_data, unit_types, etc
 #include "util.hpp"                     // for lexical_cast
 #include "variable.hpp"                 // for vconfig, etc
@@ -555,8 +555,8 @@ static int impl_unit_collect(lua_State *L)
  */
 static int impl_unit_equality(lua_State* L)
 {
-	UnitPtr left = luaW_checkunit(L, 1);
-	UnitPtr right = luaW_checkunit(L, 2);
+	unit_ptr left = luaW_checkunit(L, 1);
+	unit_ptr right = luaW_checkunit(L, 2);
 	const bool equal = left->underlying_id() == right->underlying_id();
 	lua_pushboolean(L, equal);
 	return 1;
@@ -572,7 +572,7 @@ static int impl_unit_get(lua_State *L)
 {
 	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
 	char const *m = luaL_checkstring(L, 2);
-	const UnitConstPtr pu = lu->get();
+	const unit_const_ptr pu = lu->get();
 
 	if (strcmp(m, "valid") == 0)
 	{
@@ -655,7 +655,7 @@ static int impl_unit_set(lua_State *L)
 {
 	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
 	char const *m = luaL_checkstring(L, 2);
-	UnitPtr pu = lu->get();
+	unit_ptr pu = lu->get();
 	if (!pu) return luaL_argerror(L, 1, "unknown unit");
 	unit &u = *pu;
 
@@ -695,7 +695,7 @@ static int impl_unit_status_get(lua_State *L)
 	if (!lua_istable(L, 1))
 		return luaL_typerror(L, 1, "unit status");
 	lua_rawgeti(L, 1, 1);
-	const UnitConstPtr u = luaW_tounit(L, -1);
+	const unit_const_ptr u = luaW_tounit(L, -1);
 	if (!u) return luaL_argerror(L, 1, "unknown unit");
 	char const *m = luaL_checkstring(L, 2);
 	lua_pushboolean(L, u->get_state(m));
@@ -713,7 +713,7 @@ static int impl_unit_status_set(lua_State *L)
 	if (!lua_istable(L, 1))
 		return luaL_typerror(L, 1, "unit status");
 	lua_rawgeti(L, 1, 1);
-	UnitPtr u = luaW_tounit(L, -1);
+	unit_ptr u = luaW_tounit(L, -1);
 	if (!u) return luaL_argerror(L, 1, "unknown unit");
 	char const *m = luaL_checkstring(L, 2);
 	u->set_state(m, luaW_toboolean(L, 3));
@@ -731,7 +731,7 @@ static int impl_unit_variables_get(lua_State *L)
 	if (!lua_istable(L, 1))
 		return luaL_typerror(L, 1, "unit variables");
 	lua_rawgeti(L, 1, 1);
-	const UnitConstPtr u = luaW_tounit(L, -1);
+	const unit_const_ptr u = luaW_tounit(L, -1);
 	if (!u) return luaL_argerror(L, 1, "unknown unit");
 	char const *m = luaL_checkstring(L, 2);
 	return_cfgref_attrib("__cfg", u->variables());
@@ -750,7 +750,7 @@ static int impl_unit_variables_set(lua_State *L)
 	if (!lua_istable(L, 1))
 		return luaL_typerror(L, 1, "unit variables");
 	lua_rawgeti(L, 1, 1);
-	UnitPtr u = luaW_tounit(L, -1);
+	unit_ptr u = luaW_tounit(L, -1);
 	if (!u) return luaL_argerror(L, 1, "unknown unit");
 	char const *m = luaL_checkstring(L, 2);
 	if (strcmp(m, "__cfg") == 0) {
@@ -880,7 +880,7 @@ static int intf_match_unit(lua_State *L)
 		return luaL_typerror(L, 1, "unit");
 
 	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
-	UnitPtr u = lu->get();
+	unit_ptr u = lu->get();
 	if (!u) return luaL_argerror(L, 1, "unit not found");
 
 	vconfig filter = luaW_checkvconfig(L, 2, true);
@@ -922,7 +922,7 @@ static int intf_get_recall_units(lua_State *L)
 	int i = 1, s = 1;
 	BOOST_FOREACH(team &t, *resources::teams)
 	{
-		BOOST_FOREACH(UnitPtr & u, t.recall_list())
+		BOOST_FOREACH(unit_ptr & u, t.recall_list())
 		{
 			if (!filter.null()) {
 				scoped_recall_unit auto_store("this_unit",
@@ -1787,7 +1787,7 @@ static int intf_find_path(lua_State *L)
 	int arg = 1;
 	map_location src, dst;
 	unit_map &units = *resources::units;
-	UnitConstPtr u = UnitConstPtr();
+	unit_const_ptr u = unit_const_ptr();
 
 	if (lua_isuserdata(L, arg))
 	{
@@ -1897,7 +1897,7 @@ static int intf_find_path(lua_State *L)
 static int intf_find_reach(lua_State *L)
 {
 	int arg = 1;
-	UnitConstPtr u = UnitConstPtr();
+	unit_const_ptr u = unit_const_ptr();
 
 	if (lua_isuserdata(L, arg))
 	{
@@ -1982,7 +1982,7 @@ static int intf_find_reach(lua_State *L)
 static int intf_find_cost_map(lua_State *L)
 {
 	int arg = 1;
-	UnitConstPtr u = luaW_tounit(L, arg, true);
+	unit_const_ptr u = luaW_tounit(L, arg, true);
 	vconfig filter = vconfig::unconstructed_vconfig();
 	luaW_tovconfig(L, arg, filter);
 
@@ -2185,7 +2185,7 @@ static int intf_put_unit(lua_State *L)
 	int unit_arg = 1;
 
 	lua_unit *lu = NULL;
-	UnitPtr u = UnitPtr();
+	unit_ptr u = unit_ptr();
 	map_location loc;
 	if (lua_isnumber(L, 1)) {
 		unit_arg = 3;
@@ -2218,7 +2218,7 @@ static int intf_put_unit(lua_State *L)
 			if (!resources::gameboard->map().on_board(loc))
 				return luaL_argerror(L, 1, "invalid location");
 		}
-		u = UnitPtr (new unit(cfg, true));
+		u = unit_ptr (new unit(cfg, true));
 	}
 
 	resources::screen->invalidate(loc);
@@ -2244,7 +2244,7 @@ static int intf_put_unit(lua_State *L)
 static int intf_put_recall_unit(lua_State *L)
 {
 	lua_unit *lu = NULL;
-	UnitPtr u = UnitPtr();
+	unit_ptr u = unit_ptr();
 	int side = lua_tointeger(L, 2);
 	if (unsigned(side) > resources::teams->size()) side = 0;
 
@@ -2258,7 +2258,7 @@ static int intf_put_recall_unit(lua_State *L)
 	else
 	{
 		config cfg = luaW_checkconfig(L, 1);
-		u = UnitPtr(new unit(cfg, true));
+		u = unit_ptr(new unit(cfg, true));
 	}
 
 	if (!side) side = u->side();
@@ -2289,7 +2289,7 @@ static int intf_extract_unit(lua_State *L)
 	if (!luaW_hasmetatable(L, 1, getunitKey))
 		return luaL_typerror(L, 1, "unit");
 	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
-	UnitPtr u = lu->get();
+	unit_ptr u = lu->get();
 	if (!u) return luaL_argerror(L, 1, "unit not found");
 
 	if (lu->on_map()) {
@@ -2298,7 +2298,7 @@ static int intf_extract_unit(lua_State *L)
 		u->anim_comp().clear_haloes();
 	} else if (int side = lu->on_recall_list()) {
 		team &t = (*resources::teams)[side - 1];
-		UnitPtr v = UnitPtr(new unit(*u));
+		unit_ptr v = unit_ptr(new unit(*u));
 		t.recall_list().erase_if_matches_id(u->id());
 		u = v;
 	} else {
@@ -2320,7 +2320,7 @@ static int intf_find_vacant_tile(lua_State *L)
 {
 	int x = luaL_checkint(L, 1) - 1, y = luaL_checkint(L, 2) - 1;
 
-	UnitPtr u = UnitPtr();
+	unit_ptr u = unit_ptr();
 	if (!lua_isnoneornil(L, 3)) {
 		if (luaW_hasmetatable(L, 3, getunitKey)) {
 			u = static_cast<lua_unit *>(lua_touserdata(L, 3))->get();
@@ -2364,7 +2364,7 @@ static int intf_float_label(lua_State *L)
 static int intf_create_unit(lua_State *L)
 {
 	config cfg = luaW_checkconfig(L, 1);
-	UnitPtr u = UnitPtr(new unit(cfg, true));
+	unit_ptr u = unit_ptr(new unit(cfg, true));
 	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u);
 	lua_pushlightuserdata(L
 			, getunitKey);
@@ -2380,8 +2380,8 @@ static int intf_create_unit(lua_State *L)
  */
 static int intf_copy_unit(lua_State *L)
 {
-	UnitPtr u = luaW_checkunit(L, 1);
-	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(UnitPtr(new unit(*u)));
+	unit_ptr u = luaW_checkunit(L, 1);
+	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(unit_ptr(new unit(*u)));
 	lua_pushlightuserdata(L
 			, getunitKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
@@ -2399,7 +2399,7 @@ static int intf_copy_unit(lua_State *L)
  */
 static int intf_unit_resistance(lua_State *L)
 {
-	const UnitConstPtr u = luaW_checkunit(L, 1);
+	const unit_const_ptr u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 	bool a = luaW_toboolean(L, 3);
 
@@ -2421,7 +2421,7 @@ static int intf_unit_resistance(lua_State *L)
  */
 static int intf_unit_movement_cost(lua_State *L)
 {
-	const UnitConstPtr u = luaW_checkunit(L, 1);
+	const unit_const_ptr u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 	t_translation::t_terrain t = t_translation::read_terrain_code(m);
 	lua_pushinteger(L, u->movement_cost(t));
@@ -2436,7 +2436,7 @@ static int intf_unit_movement_cost(lua_State *L)
  */
 static int intf_unit_defense(lua_State *L)
 {
-	const UnitConstPtr u = luaW_checkunit(L, 1);
+	const unit_const_ptr u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 	t_translation::t_terrain t = t_translation::read_terrain_code(m);
 	lua_pushinteger(L, u->defense_modifier(t));
@@ -2451,7 +2451,7 @@ static int intf_unit_defense(lua_State *L)
  */
 static int intf_unit_ability(lua_State *L)
 {
-	const UnitConstPtr u = luaW_checkunit(L, 1);
+	const unit_const_ptr u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 	lua_pushboolean(L, u->get_ability_bool(m));
 	return 1;
@@ -2464,7 +2464,7 @@ static int intf_unit_ability(lua_State *L)
  */
 static int intf_transform_unit(lua_State *L)
 {
-	UnitPtr u = luaW_checkunit(L, 1);
+	unit_ptr u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 	const unit_type *utp = unit_types.find(m);
 	if (!utp) return luaL_argerror(L, 2, "unknown unit type");
@@ -2559,7 +2559,7 @@ static int intf_simulate_combat(lua_State *L)
 {
 	int arg_num = 1, att_w = -1, def_w = -1;
 
-	UnitConstPtr att = luaW_checkunit(L, arg_num);
+	unit_const_ptr att = luaW_checkunit(L, arg_num);
 	++arg_num;
 	if (lua_isnumber(L, arg_num)) {
 		att_w = lua_tointeger(L, arg_num) - 1;
@@ -2568,7 +2568,7 @@ static int intf_simulate_combat(lua_State *L)
 		++arg_num;
 	}
 
-	UnitConstPtr def = luaW_checkunit(L, arg_num, true);
+	unit_const_ptr def = luaW_checkunit(L, arg_num, true);
 	++arg_num;
 	if (lua_isnumber(L, arg_num)) {
 		def_w = lua_tointeger(L, arg_num) - 1;
@@ -3324,7 +3324,7 @@ static int intf_get_traits(lua_State* L)
  */
 static int intf_add_modification(lua_State *L)
 {
-	UnitPtr u = luaW_checkunit(L, 1);
+	unit_ptr u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 	std::string sm = m;
 	if (sm != "advance" && sm != "object" && sm != "trait")

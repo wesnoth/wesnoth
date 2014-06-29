@@ -140,7 +140,7 @@ bool side_filter::match_internal(const team &t) const
 			}
 		}
 		if(!found && unit_filter["search_recall_list"].to_bool(false)) {
-			BOOST_FOREACH(const UnitConstPtr & u, t.recall_list()) {
+			BOOST_FOREACH(const unit_const_ptr & u, t.recall_list()) {
 				scoped_recall_unit this_unit("this_unit", t.save_id(),t.recall_list().find_index(u->id()));
 				if(u->matches_filter(unit_filter, u->get_location(), flat_)) {
 					found = true;

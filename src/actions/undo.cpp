@@ -38,7 +38,7 @@
 #include "../unit_animation_component.hpp"
 #include "../unit_display.hpp"          // for move_unit
 #include "../unit_map.hpp"              // for unit_map, etc
-#include "../unit_ptr.hpp"      // for UnitConstPtr, UnitPtr
+#include "../unit_ptr.hpp"      // for unit_const_ptr, unit_ptr
 #include "../unit_types.hpp"               // for unit_type, unit_type_data, etc
 #include "../util.hpp"                     // for bad_lexical_cast (ptr only), etc
 #include "../whiteboard/manager.hpp"    // for manager
@@ -77,10 +77,10 @@ undo_list::undo_action::~undo_action()
 
 
 struct undo_list::dismiss_action : undo_list::undo_action {
-	UnitPtr dismissed_unit;
+	unit_ptr dismissed_unit;
 
 
-	explicit dismiss_action(const UnitConstPtr dismissed) : undo_action(),
+	explicit dismiss_action(const unit_const_ptr dismissed) : undo_action(),
 		dismissed_unit(new unit(*dismissed))
 	{}
 	explicit dismiss_action(const config & unit_cfg) : undo_action(),
@@ -107,7 +107,7 @@ struct undo_list::move_action : undo_list::undo_action {
 	map_location goto_hex;
 
 
-	move_action(const UnitConstPtr moved,
+	move_action(const unit_const_ptr moved,
 	            const std::vector<map_location>::const_iterator & begin,
 	            const std::vector<map_location>::const_iterator & end,
 	            int sm, int timebonus, int orig, const map_location::DIRECTION dir) :
@@ -148,7 +148,7 @@ struct undo_list::recall_action : undo_list::undo_action {
 	map_location recall_from;
 
 
-	recall_action(const UnitConstPtr recalled, const map_location& loc,
+	recall_action(const unit_const_ptr recalled, const map_location& loc,
 	              const map_location& from) :
 		undo_action(recalled, loc),
 		id(recalled->id()),
@@ -178,7 +178,7 @@ struct undo_list::recruit_action : undo_list::undo_action {
 	map_location recruit_from;
 
 
-	recruit_action(const UnitConstPtr recruited, const map_location& loc,
+	recruit_action(const unit_const_ptr recruited, const map_location& loc,
 	               const map_location& from) :
 		undo_action(recruited, loc),
 		u_type(recruited->type()),
@@ -420,7 +420,7 @@ void undo_list::add_auto_shroud(bool turned_on)
 /**
  * Adds a dismissal to the undo stack.
  */
-void undo_list::add_dismissal(const UnitConstPtr u)
+void undo_list::add_dismissal(const unit_const_ptr u)
 {
 	add(new dismiss_action(u));
 }
@@ -428,7 +428,7 @@ void undo_list::add_dismissal(const UnitConstPtr u)
 /**
  * Adds a move to the undo stack.
  */
-void undo_list::add_move(const UnitConstPtr u,
+void undo_list::add_move(const unit_const_ptr u,
                          const std::vector<map_location>::const_iterator & begin,
                          const std::vector<map_location>::const_iterator & end,
                          int start_moves, int timebonus, int village_owner,
@@ -440,7 +440,7 @@ void undo_list::add_move(const UnitConstPtr u,
 /**
  * Adds a recall to the undo stack.
  */
-void undo_list::add_recall(const UnitConstPtr u, const map_location& loc,
+void undo_list::add_recall(const unit_const_ptr u, const map_location& loc,
                            const map_location& from)
 {
 	add(new recall_action(u, loc, from));
@@ -449,7 +449,7 @@ void undo_list::add_recall(const UnitConstPtr u, const map_location& loc,
 /**
  * Adds a recruit to the undo stack.
  */
-void undo_list::add_recruit(const UnitConstPtr u, const map_location& loc,
+void undo_list::add_recruit(const unit_const_ptr u, const map_location& loc,
                             const map_location& from)
 {
 	add(new recruit_action(u, loc, from));
@@ -669,7 +669,7 @@ bool undo_list::recall_action::undo(int side, undo_list & /*undos*/)
 		return false;
 	}
 
-	UnitPtr un = un_it.get_shared_ptr();
+	unit_ptr un = un_it.get_shared_ptr();
 	if (!un) {
 		return false;
 	}
@@ -876,7 +876,7 @@ bool undo_list::recall_action::redo(int side)
 	map_location loc = route.front();
 	map_location from = recall_from;
 
-	UnitPtr un = current_team.recall_list().find_if_matches_id(id);
+	unit_ptr un = current_team.recall_list().find_if_matches_id(id);
 	if ( !un ) {
 		ERR_NG << "Trying to redo a recall of '" << id
 		       << "', but that unit is not in the recall list.";

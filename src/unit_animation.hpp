@@ -215,7 +215,7 @@ class unit_animator
 				with_bars(false)
 			{}
 
-			UnitConstPtr my_unit;
+			unit_const_ptr my_unit;
 			const unit_animation * animation;
 			std::string text;
 			Uint32 text_color;

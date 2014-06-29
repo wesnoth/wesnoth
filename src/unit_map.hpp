@@ -98,7 +98,7 @@ class unit_map {
 		{
 		}
 
-		UnitPtr unit;
+		unit_ptr unit;
 		mutable n_ref_counter::t_ref_counter<signed int> ref_count;
 	};
 
@@ -334,7 +334,7 @@ public:
 	 *       will be generated.
 	 * @note The map takes ownership of the pointed object, only if it succeeds.
 	 */
-	std::pair<unit_iterator, bool> insert(UnitPtr p);
+	std::pair<unit_iterator, bool> insert(unit_ptr p);
 
 	/**
 	 * Moves a unit from location @a src to location @a dst.
@@ -371,7 +371,7 @@ public:
 	 * The unit is no longer owned by the map.
 	 * It can be reinserted later, if needed.
 	 */
-	UnitPtr extract(const map_location &loc);
+	unit_ptr extract(const map_location &loc);
 
 	///Checks invariants.  For debugging purposes only.  Doesn't do anything in non-debug mode.
 	bool self_check() const

@@ -132,7 +132,7 @@ move::move(config const& cfg, bool hidden)
 	arrow_->set_path(route_->steps);
 
 	// Construct fake_unit_
-	fake_unit_ = fake_unit_ptr( UnitPtr(new unit(*get_unit())) , resources::fake_units );
+	fake_unit_ = fake_unit_ptr( unit_ptr(new unit(*get_unit())) , resources::fake_units );
 	if(hidden)
 		fake_unit_->set_hidden(true);
 	fake_unit_->anim_comp().set_ghosted(true);
@@ -277,13 +277,13 @@ void move::execute(bool& success, bool& complete)
 	}
 }
 
-UnitPtr move::get_unit() const
+unit_ptr move::get_unit() const
 {
 	unit_map::iterator itor = resources::units->find(unit_underlying_id_);
 	if (itor.valid())
 		return itor.get_shared_ptr();
 	else
-		return UnitPtr();
+		return unit_ptr();
 }
 
 map_location move::get_source_hex() const

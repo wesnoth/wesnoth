@@ -50,7 +50,7 @@
 #include "tstring.hpp"                  // for t_string
 #include "unit.hpp"                     // for unit, intrusive_ptr_add_ref
 #include "unit_animation_component.hpp"
-#include "unit_ptr.hpp"                 // for UnitConstPtr
+#include "unit_ptr.hpp"                 // for unit_const_ptr
 #include "unit_types.hpp"    // for attack_type
 #include "whiteboard/manager.hpp"       // for manager, etc
 #include "whiteboard/typedefs.hpp"      // for whiteboard_lock
@@ -237,7 +237,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 		gui().clear_attack_indicator();
 	}
 
-	UnitPtr un; //will later point to unit at mouseover_hex_
+	unit_ptr un; //will later point to unit at mouseover_hex_
 
 	// the destination is the pointed hex or the adjacent hex
 	// used to attack it

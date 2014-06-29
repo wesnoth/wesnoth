@@ -220,7 +220,7 @@ protected:
 	virtual void do_execute();
 	virtual void do_init_for_execution();
 private:
-	UnitConstPtr get_recall_unit(
+	unit_const_ptr get_recall_unit(
 		const team& my_team);
 	bool test_enough_gold(
 		const team& my_team);

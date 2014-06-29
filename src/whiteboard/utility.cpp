@@ -62,7 +62,7 @@ side_actions_ptr current_side_actions()
 	return side_actions;
 }
 
-UnitConstPtr find_backup_leader(const unit & leader)
+unit_const_ptr find_backup_leader(const unit & leader)
 {
 	assert(leader.can_recruit());
 	assert(resources::gameboard->map().is_keep(leader.get_location()));
@@ -74,7 +74,7 @@ UnitConstPtr find_backup_leader(const unit & leader)
 				return unit.get_shared_ptr();
 		}
 	}
-	return UnitConstPtr();
+	return unit_const_ptr();
 }
 
 unit* find_recruiter(size_t team_index, map_location const& hex)

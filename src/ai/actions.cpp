@@ -495,9 +495,9 @@ recall_result::recall_result(side_number side,
 {
 }
 
-UnitConstPtr recall_result::get_recall_unit(const team &my_team)
+unit_const_ptr recall_result::get_recall_unit(const team &my_team)
 {
-	UnitConstPtr rec = my_team.recall_list().find_if_matches_id(unit_id_);
+	unit_const_ptr rec = my_team.recall_list().find_if_matches_id(unit_id_);
 	if (!rec) {
 		set_error(E_NOT_AVAILABLE_FOR_RECALLING);
 	}
@@ -525,7 +525,7 @@ void recall_result::do_check_before()
 	}
 
 	//Unit available for recalling?
-	const UnitConstPtr & to_recall = get_recall_unit(my_team);
+	const unit_const_ptr & to_recall = get_recall_unit(my_team);
 	if ( !to_recall ) {
 		return;
 	}

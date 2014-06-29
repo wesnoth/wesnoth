@@ -657,7 +657,7 @@ public:
 		: stage_(s)
 	{
 	}
-	std::pair<std::string, double> operator()(const UnitPtr u_ptr) {
+	std::pair<std::string, double> operator()(const unit_ptr u_ptr) {
 		const unit & u = *u_ptr;
 		std::pair<std::string,int> p;
 		p.first = u.id();

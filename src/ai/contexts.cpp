@@ -53,7 +53,7 @@
 #include "tod_manager.hpp"           // for tod_manager
 #include "unit.hpp"                  // for unit, intrusive_ptr_release, etc
 #include "unit_map.hpp"  // for unit_map::iterator_base, etc
-#include "unit_ptr.hpp"                 // for UnitPtr
+#include "unit_ptr.hpp"                 // for unit_ptr
 #include "unit_types.hpp"  // for attack_type, unit_type, etc
 #include "variant.hpp"                  // for variant
 
@@ -800,9 +800,9 @@ const moves_map& readonly_context_impl::get_possible_moves() const
 }
 
 
-const std::vector<UnitPtr>& readonly_context_impl::get_recall_list() const
+const std::vector<unit_ptr>& readonly_context_impl::get_recall_list() const
 {
-	static std::vector<UnitPtr> dummy_units;
+	static std::vector<unit_ptr> dummy_units;
 	///@todo 1.9: check for (level_["disallow_recall"]))
 	if(!current_team().persistent()) {
 		return dummy_units;

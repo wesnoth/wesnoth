@@ -191,11 +191,11 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 	bool animate = temp_cfg["animate"].to_bool();
 	temp_cfg.remove_attribute("animate");
 
-	UnitPtr recall_list_element = team_.recall_list().find_if_matches_id(id);
+	unit_ptr recall_list_element = team_.recall_list().find_if_matches_id(id);
 
 	if ( !recall_list_element ) {
 		//make the new unit
-		UnitPtr new_unit(new unit(temp_cfg, true, vcfg));
+		unit_ptr new_unit(new unit(temp_cfg, true, vcfg));
 		map_location loc = find_location(temp_cfg, new_unit.get());
 		if ( loc.valid() ) {
 			//add the new unit to map
@@ -412,14 +412,14 @@ namespace { // Helpers for get_recalls()
 	 * that can be skipped (because they are already in @a result), and the
 	 * underlying ID of units added to @a result will be added to @a already_added.
 	 */
-	void add_leader_filtered_recalls(const UnitConstPtr leader,
-	                                 std::vector< UnitConstPtr > & result,
+	void add_leader_filtered_recalls(const unit_const_ptr leader,
+	                                 std::vector< unit_const_ptr > & result,
 	                                 std::set<size_t> * already_added = NULL)
 	{
 		const team& leader_team = (*resources::teams)[leader->side()-1];
 		const std::string& save_id = leader_team.save_id();
 
-		BOOST_FOREACH(const UnitConstPtr & recall_unit_ptr, leader_team.recall_list())
+		BOOST_FOREACH(const unit_const_ptr & recall_unit_ptr, leader_team.recall_list())
 		{
 			const unit & recall_unit = *recall_unit_ptr;
 			// Do not add a unit twice.
@@ -440,11 +440,11 @@ namespace { // Helpers for get_recalls()
 	}
 }// anonymous namespace
 
-std::vector<UnitConstPtr > get_recalls(int side, const map_location &recall_loc)
+std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_loc)
 {
 	LOG_NG << "getting recall list for side " << side << " at location " << recall_loc << "\n";
 
-	std::vector<UnitConstPtr > result;
+	std::vector<unit_const_ptr > result;
 
 	/*
 	 * We have three use cases:
@@ -499,7 +499,7 @@ std::vector<UnitConstPtr > get_recalls(int side, const map_location &recall_loc)
 	if ( !leader_in_place )
 	{
 		// Return the full recall list.
-		BOOST_FOREACH(const UnitConstPtr & recall, (*resources::teams)[side-1].recall_list())
+		BOOST_FOREACH(const unit_const_ptr & recall, (*resources::teams)[side-1].recall_list())
 		{
 			result.push_back(recall);
 		}
@@ -975,7 +975,7 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 void recruit_unit(const unit_type & u_type, int side_num, const map_location & loc,
                   const map_location & from, bool show, bool use_undo)
 {
-	const UnitPtr new_unit = UnitPtr( new unit(u_type, side_num, true));
+	const unit_ptr new_unit = unit_ptr( new unit(u_type, side_num, true));
 
 
 	// Place the recruit.
@@ -1008,7 +1008,7 @@ bool recall_unit(const std::string & id, team & current_team,
                  const map_location & loc, const map_location & from,
                  bool show, bool use_undo)
 {
-	UnitPtr recall = current_team.recall_list().extract_if_matches_id(id);
+	unit_ptr recall = current_team.recall_list().extract_if_matches_id(id);
 
 	if ( !recall )
 		return false;

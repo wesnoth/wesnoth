@@ -261,7 +261,7 @@ action_ptr highlighter::get_bump_target()
 	return selected_action_.lock();
 }
 
-UnitPtr highlighter::get_selection_target()
+unit_ptr highlighter::get_selection_target()
 {
 	if(owner_unit_) {
 		return owner_unit_;

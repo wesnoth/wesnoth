@@ -330,7 +330,7 @@ void manager::post_delete_action(action_ptr action)
 
 	side_actions_ptr side_actions = resources::teams->at(action->team_index()).get_side_actions();
 
-	UnitPtr actor = action->get_unit();
+	unit_ptr actor = action->get_unit();
 	if(actor) { // The unit might have died following the execution of an attack
 		side_actions::iterator action_it = side_actions->find_last_action_of(*actor);
 		if(action_it != side_actions->end()) {
@@ -714,7 +714,7 @@ void manager::create_temp_move()
 				if(!fake_unit)
 				{
 					// Create temp ghost unit
-					fake_unit = fake_unit_ptr(UnitPtr (new unit(*temp_moved_unit)), resources::fake_units);
+					fake_unit = fake_unit_ptr(unit_ptr (new unit(*temp_moved_unit)), resources::fake_units);
 					fake_unit->anim_comp().set_ghosted(true);
 				}
 

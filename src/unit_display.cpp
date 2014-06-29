@@ -116,7 +116,7 @@ static void teleport_unit_between(const map_location& a, const map_location& b,
  *           INT_MIN indicates that no animation is pending.
  */
 static int move_unit_between(const map_location& a, const map_location& b,
-                             UnitPtr temp_unit, unsigned int step_num,
+                             unit_ptr temp_unit, unsigned int step_num,
                              unsigned int step_left, unit_animator & animator,
                              display& disp)
 {
@@ -200,7 +200,7 @@ unit_mover::~unit_mover()
 /* Note: Hide the unit in its current location; do not actually remove it.
  * Otherwise the status displays will be wrong during the movement.
  */
-void unit_mover::replace_temporary(UnitPtr u)
+void unit_mover::replace_temporary(unit_ptr u)
 {
 	if ( disp_ == NULL )
 		// No point in creating a temp unit with no way to display it.
@@ -210,7 +210,7 @@ void unit_mover::replace_temporary(UnitPtr u)
 	was_hidden_ = u->get_hidden();
 
 	// Make our temporary unit mostly match u...
-	temp_unit_ptr_ = fake_unit_ptr(UnitPtr(new unit(*u)), resources::fake_units);
+	temp_unit_ptr_ = fake_unit_ptr(unit_ptr(new unit(*u)), resources::fake_units);
 
 	// ... but keep the temporary unhidden and hide the original.
 	temp_unit_ptr_->set_hidden(false);
@@ -241,7 +241,7 @@ void unit_mover::update_shown_unit()
  * Initiates the display of movement for the supplied unit.
  * This should be called before attempting to display moving to a new hex.
  */
-void unit_mover::start(UnitPtr u)
+void unit_mover::start(unit_ptr u)
 {
 	// Nothing to do here if there is nothing to animate.
 	if ( !can_draw_ )
@@ -312,7 +312,7 @@ void unit_mover::start(UnitPtr u)
  * wait (another call to proceed_to() or finish() will implicitly wait). The
  * unit must remain valid until the wait is finished.
  */
-void unit_mover::proceed_to(UnitPtr u, size_t path_index, bool update, bool wait)
+void unit_mover::proceed_to(unit_ptr u, size_t path_index, bool update, bool wait)
 {
 	// Nothing to do here if animations cannot be shown.
 	if ( !can_draw_ || !animate_ )
@@ -411,7 +411,7 @@ void unit_mover::wait_for_anims()
  * If @a dir is not supplied, the final direction will be determined by (the
  * last two traversed hexes of) the path.
  */
-void unit_mover::finish(UnitPtr u, map_location::DIRECTION dir)
+void unit_mover::finish(unit_ptr u, map_location::DIRECTION dir)
 {
 	// Nothing to do here if the display is not valid.
 	if ( !can_draw_ )
@@ -478,7 +478,7 @@ void unit_mover::finish(UnitPtr u, map_location::DIRECTION dir)
  * so that while the unit is moving status etc.
  * will still display the correct number of units.
  */
-void move_unit(const std::vector<map_location>& path, UnitPtr u,
+void move_unit(const std::vector<map_location>& path, unit_ptr u,
                bool animate, map_location::DIRECTION dir,
                bool force_scroll)
 {

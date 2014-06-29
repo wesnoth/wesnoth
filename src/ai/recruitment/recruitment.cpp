@@ -248,7 +248,7 @@ void recruitment::execute() {
 		// Add recalls.
 		// Recalls are treated as recruits. While recruiting
 		// we'll check if we can do a recall instead of a recruitment.
-		BOOST_FOREACH(const UnitConstPtr & recall, current_team().recall_list()) {
+		BOOST_FOREACH(const unit_const_ptr & recall, current_team().recall_list()) {
 			// Check if this leader is allowed to recall this unit.
 			vconfig filter = vconfig(leader->recall_filter());
 			if (!recall->matches_filter(filter, map_location::null_location())) {
@@ -470,7 +470,7 @@ const std::string* recruitment::get_appropriate_recall(const std::string& type,
 		const data& leader_data) const {
 	const std::string* best_recall_id = NULL;
 	double best_recall_value = -1;
-	BOOST_FOREACH(const UnitConstPtr & recall_unit, current_team().recall_list()) {
+	BOOST_FOREACH(const unit_const_ptr & recall_unit, current_team().recall_list()) {
 		if (type != recall_unit->type_id()) {
 			continue;
 		}

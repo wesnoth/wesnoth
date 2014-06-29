@@ -117,7 +117,7 @@ action::~action()
 
 size_t action::get_unit_id() const
 {
-	UnitPtr ret = get_unit();
+	unit_ptr ret = get_unit();
 	return ret ? ret->underlying_id() : 0;
 }
 

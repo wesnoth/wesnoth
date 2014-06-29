@@ -71,7 +71,7 @@ unit_map::t_umap::iterator unit_map::begin_core() const {
 
 std::pair<unit_map::unit_iterator, bool> unit_map::add(const map_location &l, const unit &u) {
 	self_check();
-	UnitPtr p = UnitPtr (new unit(u)); //TODO: should this instead take a shared pointer to a unit, rather than make a copy?
+	unit_ptr p = unit_ptr (new unit(u)); //TODO: should this instead take a shared pointer to a unit, rather than make a copy?
 	p->set_location(l);
 	std::pair<unit_map::unit_iterator, bool> res( insert(p) );
 	if(res.second == false) { p.reset(); }
@@ -91,7 +91,7 @@ std::pair<unit_map::unit_iterator, bool> unit_map::move(const map_location &src,
 	if(src == dst){ return std::make_pair(make_unit_iterator(uit), true);}
 
 	//Fail if there is no unit to move
-	UnitPtr p = uit->second.unit;
+	unit_ptr p = uit->second.unit;
 	if(!p){ return std::make_pair(make_unit_iterator(uit), false);}
 
 	p->set_location(dst);
@@ -125,7 +125,7 @@ The one oddity is that to facilitate non-invalidating iterators the list
 sometimes has NULL pointers which should be used when they correspond
 to uids previously used.
  */
-std::pair<unit_map::unit_iterator, bool> unit_map::insert(UnitPtr p) {
+std::pair<unit_map::unit_iterator, bool> unit_map::insert(unit_ptr p) {
 	self_check();
 	assert(p);
 
@@ -153,7 +153,7 @@ std::pair<unit_map::unit_iterator, bool> unit_map::insert(UnitPtr p) {
 			opod.unit = p ;
 			assert(opod.ref_count != 0);
 		} else {
-			UnitPtr q = uinsert.first->second.unit;
+			unit_ptr q = uinsert.first->second.unit;
 			ERR_NG << "Trying to add " << p->name()
 				   << " - " << p->id() << " - " << p->underlying_id()
 				   << " ("  << loc << ") over " << q->name()
@@ -246,14 +246,14 @@ void unit_map::clear(bool force) {
 	umap_.clear();
 }
 
-UnitPtr unit_map::extract(const map_location &loc) {
+unit_ptr unit_map::extract(const map_location &loc) {
 	self_check();
 	t_lmap::iterator i = lmap_.find(loc);
-	if (i == lmap_.end()) { return UnitPtr(); }
+	if (i == lmap_.end()) { return unit_ptr(); }
 
 	t_umap::iterator uit(i->second);
 
-	UnitPtr u = uit->second.unit;
+	unit_ptr u = uit->second.unit;
 	size_t uid( u->underlying_id() );
 
 	DBG_NG << "Extract unit " << uid << " - " << u->id()
@@ -276,7 +276,7 @@ UnitPtr unit_map::extract(const map_location &loc) {
 
 size_t unit_map::erase(const map_location &loc) {
 	self_check();
-	UnitPtr u = extract(loc);
+	unit_ptr u = extract(loc);
 	if (!u) return 0;
 	u.reset();
 	return 1;

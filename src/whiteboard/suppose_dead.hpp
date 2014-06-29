@@ -35,7 +35,7 @@ public:
 	virtual ~suppose_dead();
 
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
-	virtual UnitPtr get_unit() const;
+	virtual unit_ptr get_unit() const;
 	/** @return null pointer */
 	virtual fake_unit_ptr get_fake_unit() { return fake_unit_ptr(); }
 	/** Return the location at which this action was planned. */

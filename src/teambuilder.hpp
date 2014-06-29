@@ -215,7 +215,7 @@ protected:
 				//seen before
 				config u_tmp = u;
 				u_tmp["side"] = str_cast(side_);
-				t_->recall_list().add(UnitPtr(new unit(u_tmp,true)));
+				t_->recall_list().add(unit_ptr(new unit(u_tmp,true)));
 			} else {
 				//not seen before
 				unit_configs_.push_back(&u);

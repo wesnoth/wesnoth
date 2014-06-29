@@ -1060,7 +1060,7 @@ void encounter_start_units(const unit_map& units){
 
 static void encounter_recallable_units(const std::vector<team>& teams){
 	BOOST_FOREACH(const team& t, teams) {
-		BOOST_FOREACH(const UnitConstPtr & u, t.recall_list()) {
+		BOOST_FOREACH(const unit_const_ptr & u, t.recall_list()) {
 			encountered_units_set.insert(u->type_id());
 		}
 	}

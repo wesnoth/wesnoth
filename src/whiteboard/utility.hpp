@@ -47,7 +47,7 @@ side_actions_ptr current_side_actions();
  * For a given leader on a keep, find another leader on another keep in the same castle.
  * @retval NULL if no such leader has been found
  */
-UnitConstPtr find_backup_leader(unit const& leader);
+unit_const_ptr find_backup_leader(unit const& leader);
 
 /**
  * @return a leader from the specified team who can recruit on the specified hex

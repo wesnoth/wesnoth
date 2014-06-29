@@ -62,7 +62,7 @@ recall::recall(size_t team_index, bool hidden, const unit& unit, const map_locat
 		action(team_index,hidden),
 		temp_unit_(new class unit(unit)),
 		recall_hex_(recall_hex),
-		fake_unit_(UnitPtr( new class unit(unit) ) )
+		fake_unit_(unit_ptr( new class unit(unit) ) )
 {
 	this->init();
 }
@@ -75,7 +75,7 @@ recall::recall(config const& cfg, bool hidden)
 {
 	// Construct and validate temp_unit_
 	size_t underlying_id = cfg["temp_unit_"];
-	BOOST_FOREACH(const UnitConstPtr & recall_unit, resources::teams->at(team_index()).recall_list())
+	BOOST_FOREACH(const unit_const_ptr & recall_unit, resources::teams->at(team_index()).recall_list())
 	{
 		if(recall_unit->underlying_id()==underlying_id)
 		{
@@ -87,7 +87,7 @@ recall::recall(config const& cfg, bool hidden)
 		throw action::ctor_err("recall: Invalid underlying_id");
 	}
 
-	fake_unit_.reset(UnitPtr(new class unit(*temp_unit_))); //makes copy of temp_unit_
+	fake_unit_.reset(unit_ptr(new class unit(*temp_unit_))); //makes copy of temp_unit_
 
 	this->init();
 }
@@ -148,7 +148,7 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 			<< "] at position " << temp_unit_->get_location() << ".\n";
 
 	//temporarily remove unit from recall list
-	UnitPtr it = resources::teams->at(team_index()).recall_list().extract_if_matches_id(temp_unit_->id());
+	unit_ptr it = resources::teams->at(team_index()).recall_list().extract_if_matches_id(temp_unit_->id());
 	assert(it);
 
 	//Add cost to money spent on recruits.

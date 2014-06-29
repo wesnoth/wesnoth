@@ -41,7 +41,7 @@
 #include "../../tstring.hpp"                  // for t_string, operator+
 #include "../../unit.hpp"               // for unit
 #include "../../unit_formula_manager.hpp"  // for unit_formula_manager
-#include "../../unit_ptr.hpp"                 // for UnitPtr
+#include "../../unit_ptr.hpp"                 // for unit_ptr
 #include "../../unit_types.hpp"
 #include "../../formula.hpp"  // for formula_error, formula, etc
 #include "../../map_location.hpp"  // for map_location, etc
@@ -833,7 +833,7 @@ variant formula_ai::get_value(const std::string& key) const
 	{
 		std::vector<variant> tmp;
 
-		for(std::vector<UnitPtr >::const_iterator i = current_team().recall_list().begin(); i != current_team().recall_list().end(); ++i) {
+		for(std::vector<unit_ptr >::const_iterator i = current_team().recall_list().begin(); i != current_team().recall_list().end(); ++i) {
 			tmp.push_back( variant( new unit_callable(**i) ) );
 		}
 

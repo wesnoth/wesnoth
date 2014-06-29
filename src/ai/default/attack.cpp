@@ -97,7 +97,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 	for (m = movements.begin(); m != movements.end(); ++m) {
 		// We fix up units map to reflect what this would look like.
-		UnitPtr up = units.extract(m->first);
+		unit_ptr up = units.extract(m->first);
 		up->set_location(m->second);
 		units.insert(up);
 		double m_aggression = aggression;

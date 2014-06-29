@@ -669,7 +669,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		return;
 	}
 
-	std::vector<UnitConstPtr > recall_list_team;
+	std::vector<unit_const_ptr > recall_list_team;
 	{ wb::future_map future; // ensures recall list has planned recalls removed
 		recall_list_team = actions::get_recalls(side_num, last_hex);
 	}
@@ -678,7 +678,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 
 
 	DBG_WB <<"menu_handler::recall: Contents of wb-modified recall list:\n";
-	BOOST_FOREACH(const UnitConstPtr & unit, recall_list_team)
+	BOOST_FOREACH(const unit_const_ptr & unit, recall_list_team)
 	{
 		DBG_WB << unit->name() << " [" << unit->id() <<"]\n";
 	}

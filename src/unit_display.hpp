@@ -49,13 +49,13 @@ public:
 	explicit unit_mover(const std::vector<map_location>& path, bool animate=true, bool force_scroll=false);
 	~unit_mover();
 
-	void start(UnitPtr u);
-	void proceed_to(UnitPtr u, size_t path_index, bool update=false, bool wait=true);
+	void start(unit_ptr u);
+	void proceed_to(unit_ptr u, size_t path_index, bool update=false, bool wait=true);
 	void wait_for_anims();
-	void finish(UnitPtr u, map_location::DIRECTION dir = map_location::NDIRECTIONS);
+	void finish(unit_ptr u, map_location::DIRECTION dir = map_location::NDIRECTIONS);
 
 private: // functions
-	void replace_temporary(UnitPtr u);
+	void replace_temporary(unit_ptr u);
 	void update_shown_unit();
 
 private: // data
@@ -65,7 +65,7 @@ private: // data
 	const bool force_scroll_;
 	unit_animator animator_;
 	int wait_until_;	/// The animation potential to wait until. INT_MIN for no wait; INT_MAX to wait for end.
-	UnitPtr shown_unit_;	/// The unit to be (re-)shown after an animation finishes.
+	unit_ptr shown_unit_;	/// The unit to be (re-)shown after an animation finishes.
 	const std::vector<map_location>& path_;
 	size_t current_;
 	fake_unit_ptr temp_unit_ptr_;
@@ -77,7 +77,7 @@ private: // data
 /**
  * Display a unit moving along a given path.
  */
-void move_unit(const std::vector<map_location>& path, UnitPtr u,
+void move_unit(const std::vector<map_location>& path, unit_ptr u,
 	bool animate=true,
 	map_location::DIRECTION dir=map_location::NDIRECTIONS,
 	bool force_scroll=false);

@@ -55,7 +55,7 @@ carryover::carryover(const team& t, const int gold, const bool add)
 		, recall_list_()
 		, save_id_(t.save_id())
 {
-	BOOST_FOREACH(const UnitConstPtr & u, t.recall_list()) {
+	BOOST_FOREACH(const unit_const_ptr & u, t.recall_list()) {
 		recall_list_.push_back(config());
 		u->write(recall_list_.back());
 	}
@@ -112,7 +112,7 @@ void carryover::update_carryover(const team& t, const int gold, const bool add){
 	current_player_ = t.current_player();
 	name_ = t.name();
 	previous_recruits_.insert(t.recruits().begin(), t.recruits().end());
-	BOOST_FOREACH(const UnitConstPtr & u, t.recall_list()) {
+	BOOST_FOREACH(const unit_const_ptr & u, t.recall_list()) {
 		recall_list_.push_back(config());
 		u->write(recall_list_.back());
 	}

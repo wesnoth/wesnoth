@@ -32,8 +32,8 @@ class fake_unit_manager;
  */
 class fake_unit_ptr {
 public:
-	typedef UnitPtr internal_ptr;
-	typedef UnitConstPtr internal_const_ptr;
+	typedef unit_ptr internal_ptr;
+	typedef unit_const_ptr internal_const_ptr;
 
 	fake_unit_ptr(); 
 	explicit fake_unit_ptr(const internal_ptr & u); //!< Construct a fake unit pointer wrapping a normal unit pointer, marking it as a fake unit.

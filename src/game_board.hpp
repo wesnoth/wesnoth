@@ -117,7 +117,7 @@ class game_board : public display_context {
 
 	// Manipulator from actionwml
 
-	bool try_add_unit_to_recall_list(const map_location& loc, const UnitPtr u);
+	bool try_add_unit_to_recall_list(const map_location& loc, const unit_ptr u);
 	boost::optional<std::string> replace_map (const gamemap & r);
 	void overlay_map (const gamemap & o, const config & cfg, map_location loc, bool border);
 
@@ -159,7 +159,7 @@ struct temporary_unit_placer
 private:
 	unit_map& m_;
 	const map_location loc_;
-	UnitPtr temp_;
+	unit_ptr temp_;
 };
 
 // Begin Temporary Unit Move Structs
@@ -180,7 +180,7 @@ struct temporary_unit_remover
 private:
 	unit_map& m_;
 	const map_location loc_;
-	UnitPtr temp_;
+	unit_ptr temp_;
 };
 
 
@@ -206,7 +206,7 @@ private:
 	const map_location src_;
 	const map_location dst_;
 	int old_moves_;
-	UnitPtr temp_;
+	unit_ptr temp_;
 };
 
 

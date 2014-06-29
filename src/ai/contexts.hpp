@@ -28,7 +28,7 @@
 #include "../config.hpp"                // for config
 #include "../game_errors.hpp"
 #include "../generic_event.hpp"         // for observer
-#include "../unit_ptr.hpp"              // for UnitPtr
+#include "../unit_ptr.hpp"              // for unit_ptr
 #include "../map_location.hpp"       // for map_location
 
 #include <map>                          // for map, map<>::value_compare
@@ -307,7 +307,7 @@ public:
 	virtual const moves_map& get_possible_moves() const = 0;
 
 
-	virtual const std::vector<UnitPtr>& get_recall_list() const = 0;
+	virtual const std::vector<unit_ptr>& get_recall_list() const = 0;
 
 
 	virtual stage_ptr get_recruitment(ai_context &context) const = 0;
@@ -828,7 +828,7 @@ public:
 	}
 
 
-	virtual const std::vector<UnitPtr>& get_recall_list() const
+	virtual const std::vector<unit_ptr>& get_recall_list() const
 	{
 		return target_->get_recall_list();
 	}
@@ -1436,7 +1436,7 @@ public:
 	virtual const moves_map& get_possible_moves() const;
 
 
-	virtual const std::vector<UnitPtr>& get_recall_list() const;
+	virtual const std::vector<unit_ptr>& get_recall_list() const;
 
 
 	virtual stage_ptr get_recruitment(ai_context &context) const;

@@ -117,7 +117,7 @@ void mapbuilder::process(side_actions &sa, side_actions::iterator action_it)
 {
 	action_ptr action = *action_it;
 	bool acted=false;
-	UnitPtr unit = action->get_unit();
+	unit_ptr unit = action->get_unit();
 	if(!unit) {
 		return;
 	}

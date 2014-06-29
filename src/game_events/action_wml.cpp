@@ -240,7 +240,7 @@ namespace { // Support functions
 		unit_race::GENDER gender = string_gender(cfg["gender"]);
 		const unit_type *ut = unit_types.find(type);
 		if (!ut) return fake_unit_ptr();
-		fake_unit_ptr fake = fake_unit_ptr(UnitPtr(new unit(*ut, side_num, false, gender)));
+		fake_unit_ptr fake = fake_unit_ptr(unit_ptr(new unit(*ut, side_num, false, gender)));
 
 		if(!variation.empty()) {
 			config mod;
@@ -945,7 +945,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 		for(std::vector<team>::iterator pi = resources::teams->begin();
 				pi!=resources::teams->end(); ++pi)
 		{
-			for(std::vector<UnitPtr>::iterator j = pi->recall_list().begin(); j != pi->recall_list().end();) { //TODO: This block is really messy, cleanup somehow...
+			for(std::vector<unit_ptr>::iterator j = pi->recall_list().begin(); j != pi->recall_list().end();) { //TODO: This block is really messy, cleanup somehow...
 				scoped_recall_unit auto_store("this_unit", pi->save_id(), j - pi->recall_list().begin());
 				if ((*j)->matches_filter(cfg, map_location())) {
 					j = pi->recall_list().erase(j);
@@ -1542,12 +1542,12 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 		recall_list_manager & avail = (*resources::teams)[index].recall_list();
 		std::vector<unit_map::unit_iterator> leaders = resources::units->find_leaders(index + 1);
 
-		for(std::vector<UnitPtr>::iterator u = avail.begin(); u != avail.end(); ++u) {
+		for(std::vector<unit_ptr>::iterator u = avail.begin(); u != avail.end(); ++u) {
 			DBG_NG << "checking unit against filter...\n";
 			scoped_recall_unit auto_store("this_unit", player_id, u - avail.begin());
 			if ((*u)->matches_filter(unit_filter, map_location())) {
 				DBG_NG << (*u)->id() << " matched the filter...\n";
-				const UnitPtr to_recruit = *u;
+				const unit_ptr to_recruit = *u;
 				const unit* pass_check = to_recruit.get();
 				if(!cfg["check_passability"].to_bool(true)) pass_check = NULL;
 				const map_location cfg_loc = cfg_to_loc(cfg);
@@ -1760,7 +1760,7 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 				}
 				// Iterate over the player's recall list to find a match
 				for(size_t i=0; i < pi->recall_list().size(); ++i) {
-					UnitPtr u = pi->recall_list()[i];
+					unit_ptr u = pi->recall_list()[i];
 					scoped_recall_unit auto_store("this_unit", player_id, i); //TODO: Should this not be inside the if? Explain me.
 					if (u->matches_filter(filter, map_location())) {
 						u->set_role(cfg["role"]);
@@ -2478,7 +2478,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 
 	try {
 		config tmp_cfg(var);
-		const UnitPtr u = UnitPtr( new unit(tmp_cfg, false));
+		const unit_ptr u = unit_ptr( new unit(tmp_cfg, false));
 
 		preferences::encountered_units().insert(u->type_id());
 		map_location loc = cfg_to_loc(
@@ -2525,7 +2525,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 				// replaced by the wrong unit.
 				if(t.recall_list().size() > 1) {
 					std::vector<size_t> desciptions;
-					BOOST_FOREACH ( const UnitConstPtr & pt, t.recall_list() ) {
+					BOOST_FOREACH ( const unit_const_ptr & pt, t.recall_list() ) {
 
 						const size_t desciption =
 							pt->underlying_id();

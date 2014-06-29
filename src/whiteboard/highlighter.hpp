@@ -51,7 +51,7 @@ public:
 	action_ptr get_execute_target();
 	action_ptr get_delete_target();
 	action_ptr get_bump_target();
-	UnitPtr get_selection_target();
+	unit_ptr get_selection_target();
 
 	/// @return the action that currently receives the highlight focus
 	weak_action_ptr get_main_highlight() { return main_highlight_; }
@@ -80,8 +80,8 @@ private:
 
 	map_location mouseover_hex_;
 	std::set<map_location> exclusive_display_hexes_;
-	UnitPtr owner_unit_;
-	UnitPtr selection_candidate_;
+	unit_ptr owner_unit_;
+	unit_ptr selection_candidate_;
 
 	weak_action_ptr selected_action_;
 	weak_action_ptr main_highlight_;
