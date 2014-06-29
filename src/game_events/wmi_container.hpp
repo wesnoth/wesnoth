@@ -76,8 +76,15 @@ public:
 	bool fire_item(const std::string & id, const map_location & hex) const;
 	/// Returns the menu items that can be shown for the given location.
 	void get_items(const map_location& hex,
-	               std::vector<boost::shared_ptr<const wml_menu_item> > & items,
-	               std::vector<std::string> & descriptions) const;
+			std::vector<boost::shared_ptr<const wml_menu_item> > & items,
+			std::vector<std::string> & descriptions,
+			const_iterator start, const_iterator finish) const;
+	/// Range over all items by default
+	void get_items(const map_location& hex,
+			std::vector<boost::shared_ptr<const wml_menu_item> > & items,
+			std::vector<std::string> & descriptions) const {
+		get_items(hex, items, descriptions, begin(), end());
+	}
 	/// Initializes the implicit event handlers for inlined [command]s.
 	void init_handlers() const;
 	void to_config(config& cfg) const;
@@ -99,6 +106,7 @@ public:
 	const_iterator begin() const { return const_iterator(wml_menu_items_.begin()); }
 	const_iterator end()   const { return const_iterator(wml_menu_items_.end()); }
 
+	size_t size() const { return wml_menu_items_.size(); }
 private: // data
 	map_t wml_menu_items_;
 };
