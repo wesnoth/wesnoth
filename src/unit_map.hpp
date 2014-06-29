@@ -18,7 +18,6 @@
 #ifndef UNIT_MAP_H_INCLUDED
 #define UNIT_MAP_H_INCLUDED
 
-#include "utils/reference_counter.hpp"
 #include "map_location.hpp"
 #include "unit_ptr.hpp"
 
@@ -88,24 +87,8 @@ if(try_add.second){i = try_add.first;}
  * Any access might cause a full lookup. Keeping iterators around holds onto memory.
  */
 class unit_map {
-	/// The pointer to the unit and a reference counter to record the number of extant iterators
-	/// pointing to this unit.
-	struct unit_pod {
-
-		unit_pod()
-			: unit()
-			, ref_count()
-		{
-		}
-
-		UnitPtr unit;
-		mutable n_ref_counter::t_ref_counter<signed int> ref_count;
-	};
-
-	///Map of underlying_id to unit and a reference counter. Dead units have a unit pointer equal to NULL.
-	///The map entry is removed iff the reference counter equals zero and there are no more
-	///iterators pointing to this unit.
-	typedef std::map<size_t, unit_pod> t_umap;
+	///Map of underlying_id to unit.
+	typedef std::map<size_t, UnitPtr> t_umap;
 	///Map of location to umap iterator.
 	typedef boost::unordered_map<map_location, t_umap::iterator> t_lmap;
 
@@ -136,28 +119,47 @@ public:
 		typedef typename iter_types::container_type container_type;
 		typedef typename iter_types::iterator_type iterator_type;
 
-		~iterator_base()	{ dec(); }
-
-		iterator_base(): i_(), tank_(NULL) { }
-
-		iterator_base(iterator_type i, container_type *m) : i_(i), tank_(m) {
-			inc();
-			valid_exit();
-		}
-
-		iterator_base(const iterator_base &that) : i_(that.i_), tank_(that.tank_) {
-			inc();
-			valid_exit();
-		}
-
-		iterator_base &operator=(const iterator_base &that) {
-			if(*this != that){
-				dec();
-				tank_ = that.tank_;
-				i_ = that.i_;
-				inc();
-				valid_exit();
+		~iterator_base()
+		{
+			if (tank_) {
+				tank_->total_num_iters_--;
+				//std::cerr << "Deleted an iterator for " << tank_ << ", now has " << tank_->total_num_iters_ << std::endl;
 			}
+		}
+
+		iterator_base(): i_(), tank_(NULL), u_() { }
+
+		iterator_base(iterator_type i, container_type *m) : i_(i), tank_(m), u_() {
+			if (tank_) {
+				tank_->total_num_iters_++;
+				//std::cerr << "Added an iterator for " << tank_ << ", now has " << tank_->total_num_iters_ << std::endl;
+				if (i_ != the_map().end()) {
+					u_ = i_->second;
+				}
+			}
+			valid_exit();
+		}
+
+		iterator_base(const iterator_base &that) : i_(that.i_), tank_(that.tank_), u_() {
+			if (tank_) {
+				tank_->total_num_iters_++;
+				//std::cerr << "Copied an iterator for " << tank_ << ", now has " << tank_->total_num_iters_ << std::endl;
+				if (i_ != the_map().end()) {
+					u_ = i_->second;
+				}
+			}
+			valid_exit();
+		}
+
+		void swap (iterator_base & o) {
+			std::swap(i_, o.i_);
+			std::swap(tank_, o.tank_);
+			u_.swap(o.u_);
+		}
+
+		iterator_base &operator=(iterator_base that) {
+			swap(that);
+			valid_exit();
 			return *this;
 		}
 
@@ -167,8 +169,14 @@ public:
 
 	private:
 		///Construct an iterator from the location map
-		iterator_base(t_lmap::iterator ui, container_type *m) : i_(ui->second), tank_(m) {
-			inc();
+		iterator_base(t_lmap::iterator ui, container_type *m) : i_(ui->second), tank_(m), u_() {
+			if (tank_) {
+				tank_->total_num_iters_++;
+				//std::cerr << "Constructed an iterator for " << tank_ << ", now has " << tank_->total_num_iters_ << std::endl;
+				if (i_ != the_map().end()) {
+					u_ = i_->second;
+				}
+			}
 			valid_exit();
 		}
 
@@ -176,26 +184,28 @@ public:
 		pointer operator->() const   {
 			assert(valid());
 			tank_->self_check();
-			return  i_->second.unit; }
+			return u_; }
 		pointer get_shared_ptr() const { // This is exactly the same as operator-> but it's slightly more readable, and can replace &*iter syntax easily.
 			assert(valid());
 			tank_->self_check();
-			return i_->second.unit; }
+			return u_; }
 		reference operator*() const {
 			tank_->self_check();
 			assert(valid());
-			return *i_->second.unit; }
+			return *u_; }
 
 		iterator_base& operator++() {
 			assert( valid_entry() );
 			tank_->self_check();
-			iterator_type new_i(i_);
+
 			do{
-				++new_i;
-			}while ((new_i != the_map().end()) && (!new_i->second.unit)) ;
-			dec();
-			i_ = new_i;
-			inc();
+				++i_;
+			}while (i_ != the_map().end() && (!i_->second)) ;
+
+			u_.reset();
+			if (i_ != the_map().end() && i_->second) {
+				u_ = i_->second;
+			}
 			valid_exit();
 			return *this;
 		}
@@ -210,11 +220,15 @@ public:
 			assert(  tank_ && i_ != the_map().begin() );
 			tank_->self_check();
 			iterator_type begin(the_map().begin());
-			dec();
+
 			do {
 				--i_ ;
-			}while(i_ != begin && (!i_->second.unit));
-			inc();
+			}while(i_ != begin && (!i_->second));
+
+			u_.reset();
+			if (i_->second) {
+				u_=i_->second;
+			}
 
 			valid_exit();
 			return *this;
@@ -227,10 +241,10 @@ public:
 		}
 
 		bool valid() const {
-			return (valid_for_dereference() && i_->second.unit);
+			return (valid_for_dereference() && u_);
 		}
 
-		bool operator==(const iterator_base &rhs) const { return (tank_ == rhs.tank_) && ( i_ == rhs.i_ ); }
+		bool operator==(const iterator_base &rhs) const { return (tank_ == rhs.tank_) && ( i_ == rhs.i_ ) && (u_ == rhs.u_); }
 		bool operator!=(const iterator_base &rhs) const { return !operator==(rhs); }
 
 		template<typename Y> friend struct iterator_base;
@@ -240,24 +254,7 @@ public:
 		bool valid_entry() const { return  ((tank_ != NULL) && (i_ != the_map().end())) ; }
 		void valid_exit() const {
 			if((tank_ != NULL) && i_ != the_map().end()){
-				assert(i_->second.ref_count > 0);
-			}
-		}
-		bool valid_ref_count() const { return (tank_ != NULL) && (i_ != the_map().end()) ; }
-
-		///Increment the reference counter
-		void inc() { if(valid_ref_count()) { ++(i_->second.ref_count); } }
-
-		///Decrement the reference counter
-		///Delete the umap entry if the unit is gone and the reference counter is zero
-		///@note this deletion will advance i_ to the next umap entry.
-		void dec() {
-			if( valid_ref_count() ){
-				assert(i_->second.ref_count != 0);
-				if( (--(i_->second.ref_count) == 0)  && (!i_->second.unit) ){
-					iterator_type old = i_++;
-					tank_->umap_.erase(old);
-				}
+				assert(u_);
 			}
 		}
 
@@ -267,6 +264,8 @@ public:
 
 		iterator_type i_; ///local iterator
 		container_type* tank_; ///the unit_map for i_
+		UnitPtr u_; ///private pointer to the unit, this prevents invalidation of the iterator when the unit is removed from the map,
+			    ///and ensures that the unit won't be deleted until after the iterator is destroyed
 	};
 
 
@@ -275,7 +274,7 @@ public:
 
 	unit_map();
 	unit_map(const unit_map &that);
-	unit_map& operator=(const unit_map &that);
+	unit_map& operator=(unit_map that);
 
 	~unit_map();
 	void swap(unit_map& o);
@@ -309,7 +308,7 @@ public:
 	const_unit_iterator end() const { return make_const_unit_iterator(umap_.end()); }
 
 	size_t size() const { return lmap_.size(); }
-	size_t num_iters() const ;
+	size_t num_iters() const { return total_num_iters_; }
 
 	void clear(bool force = false);
 
@@ -396,10 +395,10 @@ private:
 	t_umap::iterator begin_core() const ;
 
 	bool is_valid(const t_umap::const_iterator &i) const {
-		return is_found(i) && (i->second.unit != NULL);
+		return is_found(i) && (i->second);
 	}
 	bool is_valid(const t_lmap::const_iterator &i) const {
-		return is_found(i) && (i->second->second.unit != NULL);
+		return is_found(i) && (i->second->second);
 	}
 
 	bool is_found(const t_umap::const_iterator &i) const { return i != umap_.end(); }
@@ -417,7 +416,7 @@ private:
 	}
 
 	/**
-	 * underlying_id -> unit_pod. This requires that underlying_id be
+	 * underlying_id -> unit_ptr. This requires that underlying_id be
 	 * unique (which is enforced in unit_map::insert).
 	 */
 	mutable t_umap umap_;
@@ -426,6 +425,8 @@ private:
 	 * location -> umap::iterator.
 	 */
 	t_lmap lmap_;
+
+	mutable size_t total_num_iters_;
 
 };
 
