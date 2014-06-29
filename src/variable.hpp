@@ -131,6 +131,17 @@ public:
 
 	private:
 		Itor i_;
+		/*
+			if wa have game variables 
+				[a] b = 1 [/a] 
+				[a] b = 4 [/a] 
+				[a] b = 6 [/a]
+			we want to expand [insert_tag] variable = a name  = "u" [/insert_tag] to
+			   [u] b = 1 [/u]
+			   [u] b = 4 [/u]
+			   [u] b = 6 [/u]
+			in this case inner_index_ points to the index in 'a' we are currently processing.
+		*/
 		int inner_index_;
 		boost::shared_ptr<config> cache_;
 	};
