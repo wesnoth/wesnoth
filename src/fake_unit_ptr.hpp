@@ -81,7 +81,7 @@ private :
 public:
 #ifdef HAVE_CXX11
 	explicit operator bool() const
-	{ return unit_; }
+	{ return unit_.get(); }
 #else
 	operator safe_bool() const
 	{ return unit_ ? &safe_bool_impl::nonnull : NULL; }
