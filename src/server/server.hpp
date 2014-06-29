@@ -25,7 +25,7 @@
 #include "room_manager.hpp"
 #include "simple_wml.hpp"
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 #include <boost/scoped_ptr.hpp>
 
 class server

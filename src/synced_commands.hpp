@@ -18,7 +18,7 @@
 #include <exception>
 #include "config.hpp"
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 class synced_command {
 	public:
 		/*

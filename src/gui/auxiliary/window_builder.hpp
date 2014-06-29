@@ -19,7 +19,7 @@
 #include "gui/widgets/grid.hpp"
 #include "reference_counted_object.hpp"
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 
 class config;
 class CVideo;

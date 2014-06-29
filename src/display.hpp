@@ -62,7 +62,7 @@ namespace wb {
 
 #include "overlay.hpp"
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 #include <boost/weak_ptr.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <deque>

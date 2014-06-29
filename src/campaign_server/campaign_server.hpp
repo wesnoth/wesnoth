@@ -19,7 +19,7 @@
 #include "network.hpp"
 #include "server/input_stream.hpp"
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 #include <boost/scoped_ptr.hpp>
 #include <boost/unordered_map.hpp>
 

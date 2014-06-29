@@ -29,7 +29,7 @@
 #include "../../log.hpp"
 
 #include <boost/bind.hpp>
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 #include <boost/foreach.hpp>
 
 namespace ai {

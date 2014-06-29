@@ -36,7 +36,7 @@
 
 #include <boost/asio.hpp>
 #include <boost/interprocess/smart_ptr/unique_ptr.hpp>
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 
 #include "../api/ana.hpp"
 #include "asio_listener.hpp"

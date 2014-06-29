@@ -21,7 +21,7 @@
 
 #include <string>
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 
 namespace gui2
 {

@@ -20,7 +20,7 @@
 #include "random_new.hpp"
 #include "simple_rng.hpp"
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 
 
 /*

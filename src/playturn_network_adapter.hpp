@@ -5,7 +5,7 @@
 
 #include "config.hpp"
 #include <list>
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 
 /*
 	The purpose if this class is to preprocess incoming network data, and provide a steam that always returns just one command/action at a time.

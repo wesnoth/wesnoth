@@ -22,7 +22,7 @@
 #include <vector>
 #include <deque>
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 
 #include "typedefs.hpp"
 

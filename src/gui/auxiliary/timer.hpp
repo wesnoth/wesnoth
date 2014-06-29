@@ -30,7 +30,7 @@
 #ifndef GUI_WIDGETS_AUXILIARY_TIMER_HPP_INCLUDED
 #define GUI_WIDGETS_AUXILIARY_TIMER_HPP_INCLUDED
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 
 #include <SDL_types.h>
 

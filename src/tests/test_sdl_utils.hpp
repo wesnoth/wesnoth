@@ -17,7 +17,7 @@
 
 #include "sdl/utils.hpp"
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 
 typedef boost::function<
 		void(const surface&, const double, const Uint32)>

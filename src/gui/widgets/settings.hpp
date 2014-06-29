@@ -24,7 +24,7 @@
 
 #include "utils/foreach.tpp"
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 
 #include <string>
 #include <vector>

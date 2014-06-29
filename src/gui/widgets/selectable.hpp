@@ -15,7 +15,7 @@
 #ifndef GUI_WIDGETS_SELECTABLE_HPP_INCLUDED
 #define GUI_WIDGETS_SELECTABLE_HPP_INCLUDED
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 
 namespace gui2
 {

@@ -21,7 +21,7 @@
 #ifndef AI_COMPOSITE_PROPERTY_HANDLER_HPP_INCLUDED
 #define AI_COMPOSITE_PROPERTY_HANDLER_HPP_INCLUDED
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 #include <boost/foreach.hpp>
 
 #include "config.hpp"

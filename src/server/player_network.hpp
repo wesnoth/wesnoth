@@ -20,7 +20,7 @@
 #include "player.hpp"
 #include "simple_wml.hpp"
 
-#include <boost/function.hpp>
+#include "utils/boost_function_guarded.hpp"
 
 namespace wesnothd {
 
