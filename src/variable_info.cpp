@@ -44,11 +44,11 @@ variable_info::variable_info(config& source, const std::string& varname,
 	vartype(validation_type),
 	is_valid(false),
 	key(),
+	original_key(varname),
 	explicit_index(false),
 	index(0),
 	vars(NULL)
 {
-
 	vars = &source;//&resources::gamedata->variables_;
 	key = varname;
 	std::string::const_iterator itor = std::find(key.begin(),key.end(),'.');
@@ -192,6 +192,25 @@ config::attribute_value &variable_info::as_scalar()
 	return (*vars)[key];
 }
 
+config::attribute_value variable_info::as_scalar_const()
+{
+
+	config::attribute_value* r;
+	if(is_valid)
+	{
+		r = &as_scalar();
+	}
+	else
+	{
+		r = &temporaries[this->original_key];
+		if (original_key.size() > 7 && original_key.substr(original_key.size() - 7) == ".length") {
+			// length is a special attribute, so guarantee its correctness
+			*r = 0;
+		}
+	}
+	return *r;
+	
+}
 config& variable_info::as_container() {
 	assert(is_valid);
 	if(explicit_index) {

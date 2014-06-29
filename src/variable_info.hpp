@@ -38,6 +38,7 @@ struct variable_info
 	TYPE vartype; //default is TYPE_UNSPECIFIED
 	bool is_valid;
 	std::string key; //the name of the internal attribute or child
+	const std::string original_key;
 	bool explicit_index; //true if query ended in [...] specifier
 	size_t index; //the index of the child
 	config *vars; //the containing node in game_data s variables
@@ -49,6 +50,9 @@ struct variable_info
 	config& as_container();
 	array_range as_array(); //range may be empty
 	static config& get_temporaries();
+
+	
+	config::attribute_value as_scalar_const();
 
 	void set_range(config& data, std::string mode);
 
