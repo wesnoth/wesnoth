@@ -847,6 +847,7 @@ set(wesnoth-main_SRC
 	mp_options.cpp
 	multiplayer.cpp
 	multiplayer_configure.cpp
+	multiplayer_configure_engine.cpp
 	multiplayer_connect.cpp
 	multiplayer_connect_engine.cpp
 	multiplayer_create.cpp

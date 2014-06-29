@@ -30,6 +30,7 @@
 #include "generators/map_create.hpp"
 #include "mp_game_utils.hpp"
 #include "multiplayer_configure.hpp"
+#include "multiplayer_configure_engine.hpp"
 #include "multiplayer_connect.hpp"
 #include "multiplayer_create.hpp"
 #include "multiplayer_error_codes.hpp"
@@ -576,13 +577,13 @@ bool enter_configure_mode(game_display& disp, const config& game_config,
 {
 	DBG_MP << "entering configure mode" << std::endl;
 
-	bool connect_canceled;
+	bool connect_canceled = false;
 
 	do {
-		connect_canceled = false;
 
 		mp::ui::result res;
 
+		if (state.classification().campaign_type == game_classification::MULTIPLAYER)
 		{
 			mp::configure ui(disp, game_config, gamechat, gamelist, state,
 				local_players_only);
@@ -590,7 +591,13 @@ bool enter_configure_mode(game_display& disp, const config& game_config,
 			res = ui.get_result();
 			ui.get_parameters();
 		}
+		else {
+			mp::configure_engine engine(state);
+			engine.set_default_values();
+			res = connect_canceled? mp::ui::QUIT : mp::ui::CREATE;
+		}
 
+		connect_canceled = false;
 		switch (res) {
 		case mp::ui::CREATE:
 			connect_canceled = !enter_connect_mode(disp, game_config,

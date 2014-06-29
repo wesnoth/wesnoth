@@ -89,85 +89,90 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	options_pane_right_(disp.video()),
 	entry_points_(),
 	show_entry_points_(false),
-	force_use_map_settings_check_(true),
+	force_use_map_settings_check_(false),
 	state_(game),
 	parameters_(state_.mp_settings()),
-	options_manager_(cfg, disp, &options_pane_right_, preferences::options())
+	engine_(state_),
+	options_manager_(cfg, disp, &options_pane_right_, engine_.options_default())
 {
 	// Build the list of scenarios to play
 
 	DBG_MP << "constructing multiplayer configure dialog" << std::endl;
+	
+	use_map_settings_.enable(!engine_.force_lock_settings());
+	use_map_settings_.set_check(engine_.use_map_settings());
+
+	use_map_settings_.set_help_string(_("Use scenario specific settings"));
 
 	turns_slider_.set_min(settings::turns_min);
 	turns_slider_.set_max(settings::turns_max);
 	turns_slider_.set_increment(settings::turns_step);
-	turns_slider_.set_value(preferences::turns());
+	turns_slider_.set_value(engine_.num_turns_default());
 	turns_slider_.set_help_string(_("The maximum number of turns the game can last"));
+	turns_slider_.enable(!engine_.use_map_settings());
 
-	countdown_game_.set_check(preferences::countdown());
+	countdown_game_.set_check(engine_.mp_countdown_default());
 	countdown_game_.set_help_string(_("Enables user time limit"));
 
 	countdown_init_time_slider_.set_min(30);
 	countdown_init_time_slider_.set_max(1500);
 	countdown_init_time_slider_.set_increment(30);
-	countdown_init_time_slider_.set_value(preferences::countdown_init_time());
+	countdown_init_time_slider_.set_value(engine_.mp_countdown_init_time_default());
 	countdown_init_time_slider_.set_help_string(_("Longest time allowed for first turn (seconds)"));
 
 	countdown_reservoir_time_slider_.set_min(30);
 	countdown_reservoir_time_slider_.set_max(1500);
 	countdown_reservoir_time_slider_.set_increment(30);
-	countdown_reservoir_time_slider_.set_value(preferences::countdown_reservoir_time());
+	countdown_reservoir_time_slider_.set_value(engine_.mp_countdown_reservoir_time_default());
 	countdown_reservoir_time_slider_.set_help_string(_("Longest time possible for any turn (seconds)"));
 
 	countdown_turn_bonus_slider_.set_min(10);
 	countdown_turn_bonus_slider_.set_max(300);
 	countdown_turn_bonus_slider_.set_increment(5);
-	countdown_turn_bonus_slider_.set_value(preferences::countdown_turn_bonus());
+	countdown_turn_bonus_slider_.set_value(engine_.mp_countdown_turn_bonus_default());
 	countdown_turn_bonus_slider_.set_help_string(_("Time for general tasks each turn (seconds)"));
 
 	countdown_action_bonus_slider_.set_min(0);
 	countdown_action_bonus_slider_.set_max(30);
 	countdown_action_bonus_slider_.set_increment(1);
-	countdown_action_bonus_slider_.set_value(preferences::countdown_action_bonus());
+	countdown_action_bonus_slider_.set_value(engine_.mp_countdown_action_bonus_default());
 	countdown_action_bonus_slider_.set_help_string(_("Time for each attack, recruit, and capture"));
 
 	village_gold_slider_.set_min(1);
 	village_gold_slider_.set_max(5);
-	village_gold_slider_.set_value(preferences::village_gold());
+	village_gold_slider_.set_value(engine_.village_gold_default());
 	village_gold_slider_.set_help_string(_("The amount of income each village yields per turn"));
+	village_gold_slider_.enable(!engine_.use_map_settings());
 
 	village_support_slider_.set_min(0);
 	village_support_slider_.set_max(4);
-	village_support_slider_.set_value(preferences::village_support());
+	village_support_slider_.set_value(engine_.village_support_default());
 	village_support_slider_.set_help_string(_("The number of unit levels each village can support"));
+	village_support_slider_.enable(!engine_.use_map_settings());
 
 	xp_modifier_slider_.set_min(30);
 	xp_modifier_slider_.set_max(200);
-	xp_modifier_slider_.set_value(preferences::xp_modifier());
+	xp_modifier_slider_.set_value(engine_.xp_modifier_default());
 	xp_modifier_slider_.set_increment(10);
 	xp_modifier_slider_.set_help_string(_("The amount of experience a unit needs to advance"));
+	xp_modifier_slider_.enable(!engine_.use_map_settings());
 
-	if (state_.get_starting_pos()["force_lock_settings"].to_bool()) {
-		use_map_settings_.enable(false);
-		use_map_settings_.set_check(true);
-	} else {
-		use_map_settings_.set_check(preferences::use_map_settings());
-	}
-	use_map_settings_.set_help_string(_("Use scenario specific settings"));
-
-	random_start_time_.set_check(preferences::random_start_time());
+	random_start_time_.set_check(engine_.random_start_time_default());
 	random_start_time_.set_help_string(_("Randomize time of day in begin"));
+	random_start_time_.enable(!engine_.use_map_settings());
 
-	fog_game_.set_check(preferences::fog());
+	fog_game_.set_check(engine_.fog_game_default());
 	fog_game_.set_help_string(_("Enemy units cannot be seen unless they are in range of your units"));
+	fog_game_.enable(!engine_.use_map_settings());
 
-	shroud_game_.set_check(preferences::shroud());
+	shroud_game_.set_check(engine_.shroud_game_default());
 	shroud_game_.set_help_string(_("The map is unknown until your units explore it"));
+	shroud_game_.enable(!engine_.use_map_settings());
 
-	observers_game_.set_check(preferences::allow_observers());
+	observers_game_.set_check(engine_.allow_observers_default());
 	observers_game_.set_help_string(_("Allow users who are not playing to watch the game"));
 
-	shuffle_sides_.set_check(preferences::shuffle_sides());
+	shuffle_sides_.set_check(engine_.shuffle_sides_default());
 	shuffle_sides_.set_help_string(_("Assign sides to players at random"));
 
 #if 0
@@ -206,9 +211,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	options_manager_.set_modifications(parameters_.active_mods);
 	options_manager_.init_widgets();
 
-	utils::string_map i18n_symbols;
-	i18n_symbols["login"] = preferences::login();
-	name_entry_.set_text(vgettext("$login|’s game", i18n_symbols));
+	name_entry_.set_text(engine_.game_name_default());
 
 	gamelist_updated();
 }
@@ -225,26 +228,26 @@ configure::~configure()
 
 	// Save values for next game
 	DBG_MP << "storing parameter values in preferences" << std::endl;
-	preferences::set_allow_observers(parameters_.allow_observers);
-	preferences::set_shuffle_sides(parameters_.shuffle_sides);
-	preferences::set_use_map_settings(parameters_.use_map_settings);
-	preferences::set_countdown(parameters_.mp_countdown);
-	preferences::set_countdown_init_time(parameters_.mp_countdown_init_time);
-	preferences::set_countdown_turn_bonus(parameters_.mp_countdown_turn_bonus);
-	preferences::set_countdown_reservoir_time(parameters_.mp_countdown_reservoir_time);
-	preferences::set_countdown_action_bonus(parameters_.mp_countdown_action_bonus);
-	preferences::set_options(parameters_.options);
+	preferences::set_allow_observers(engine_.allow_observers());
+	preferences::set_shuffle_sides(engine_.shuffle_sides());
+	preferences::set_use_map_settings(engine_.use_map_settings());
+	preferences::set_countdown(engine_.mp_countdown());
+	preferences::set_countdown_init_time(engine_.mp_countdown_init_time());
+	preferences::set_countdown_turn_bonus(engine_.mp_countdown_turn_bonus());
+	preferences::set_countdown_reservoir_time(engine_.mp_countdown_reservoir_time());
+	preferences::set_countdown_action_bonus(engine_.mp_countdown_action_bonus());
+	preferences::set_options(engine_.options());
 
 	// When using map settings, the following variables are determined by the map,
 	// so don't store them as the new preferences.
-	if(!parameters_.use_map_settings) {
-		preferences::set_fog(parameters_.fog_game);
-		preferences::set_shroud(parameters_.shroud_game);
-		preferences::set_turns(parameters_.num_turns);
-		preferences::set_random_start_time(parameters_.random_start_time);
-		preferences::set_village_gold(parameters_.village_gold);
-		preferences::set_village_support(parameters_.village_support);
-		preferences::set_xp_modifier(parameters_.xp_modifier);
+	if(!engine_.use_map_settings()) {
+		preferences::set_fog(engine_.fog_game());
+		preferences::set_shroud(engine_.shroud_game());
+		preferences::set_turns(engine_.num_turns());
+		preferences::set_random_start_time(engine_.random_start_time());
+		preferences::set_village_gold(engine_.village_gold());
+		preferences::set_village_support(engine_.village_support());
+		preferences::set_xp_modifier(engine_.xp_modifier());
 	}
 	} catch (...) {}
 }
@@ -266,30 +269,30 @@ const mp_game_settings& configure::get_parameters()
 	const int num_turns_val = turns_slider_.value() <
 		turns_slider_.max_value() ? turns_slider_.value() : -1;
 
-	// Updates the values in the "parameters_" member to match
+	// Updates the values in the configure_engine to match
 	// the values selected by the user with the widgets:
-	parameters_.name = name_entry_.text();
+	engine_.set_game_name(name_entry_.text());
 
 	// CHECK
-	parameters_.mp_countdown_init_time = mp_countdown_init_time_val;
-	parameters_.mp_countdown_turn_bonus = mp_countdown_turn_bonus_val;
-	parameters_.mp_countdown_reservoir_time = mp_countdown_reservoir_time_val;
-	parameters_.mp_countdown_action_bonus = mp_countdown_action_bonus_val;
-	parameters_.mp_countdown = countdown_game_.checked();
-	parameters_.num_turns = num_turns_val;
-	parameters_.village_gold = village_gold_slider_.value();
-	parameters_.village_support = village_support_slider_.value();
-	parameters_.xp_modifier = xp_modifier_slider_.value();
-	parameters_.use_map_settings = use_map_settings_.checked();
-	parameters_.random_start_time = random_start_time_.checked();
-	parameters_.fog_game = fog_game_.checked();
-	parameters_.shroud_game = shroud_game_.checked();
-	parameters_.allow_observers = observers_game_.checked();
-	parameters_.shuffle_sides = shuffle_sides_.checked();
+	engine_.set_mp_countdown_init_time(mp_countdown_init_time_val);
+	engine_.set_mp_countdown_turn_bonus(mp_countdown_turn_bonus_val);
+	engine_.set_mp_countdown_reservoir_time(mp_countdown_reservoir_time_val);
+	engine_.set_mp_countdown_action_bonus(mp_countdown_action_bonus_val);
+	engine_.set_mp_countdown(countdown_game_.checked());
+	engine_.set_num_turns(num_turns_val);
+	engine_.set_village_gold(village_gold_slider_.value());
+	engine_.set_village_support(village_support_slider_.value());
+	engine_.set_xp_modifier(xp_modifier_slider_.value());
+	engine_.set_use_map_settings(use_map_settings_.checked());
+	engine_.set_random_start_time(random_start_time_.checked());
+	engine_.set_fog_game(fog_game_.checked());
+	engine_.set_shroud_game(shroud_game_.checked());
+	engine_.set_allow_observers(observers_game_.checked());
+	engine_.set_shuffle_sides(shuffle_sides_.checked());
 
-	parameters_.options = options_manager_.get_values();
+	engine_.set_options(options_manager_.get_values());
 
-	return parameters_;
+	return engine_.get_parameters();
 }
 
 void configure::process_event()
@@ -403,59 +406,26 @@ void configure::process_event()
 	if(use_map_settings_.pressed() || force_use_map_settings_check_) {
 		force_use_map_settings_check_ = false;
 
-		const bool map_settings = use_map_settings_.checked();
+		engine_.set_use_map_settings(use_map_settings_.checked());
 
 		// If the map settings are wanted use them,
 		// if not properly defined fall back to the default settings
-		turns_slider_.set_value(map_settings ?
-			settings::get_turns(state_.get_starting_pos()["turns"]) :
-			preferences::turns());
-
-		xp_modifier_slider_.set_value(map_settings ?
-			settings::get_xp_modifier(state_.get_starting_pos()["experience_modifier"]) :
-			preferences::xp_modifier());
-
-		random_start_time_.set_check(map_settings ?
-			state_.get_starting_pos()["random_start_time"].to_bool(true) :
-			preferences::random_start_time());
-
-		// These are per player, always show values of player 1.
-		/**
-		 * @todo This might not be 100% correct, but at the moment
-		 * it is not possible to show the fog and shroud per player.
-		 * This might change in the future.
-		 * NOTE when 'load game' is selected there are no sides.
-		 */
-		config::const_child_itors sides = state_.get_starting_pos().child_range("side");
-		if (sides.first != sides.second)
-		{
-			const config &cfg = *sides.first;
-
-			village_gold_slider_.set_value(map_settings ?
-				settings::get_village_gold(cfg["village_gold"]) :
-				preferences::village_gold());
-
-			village_support_slider_.set_value(map_settings ?
-				settings::get_village_support(cfg["village_support"]) :
-				preferences::village_support());
-
-			fog_game_.set_check(map_settings ?
-				cfg["fog"].to_bool(true) :
-				preferences::fog());
-
-			shroud_game_.set_check(map_settings ?
-				cfg["shroud"].to_bool(false) :
-				preferences::shroud());
-		}
+		turns_slider_.set_value(engine_.num_turns_default());
+		xp_modifier_slider_.set_value(engine_.xp_modifier_default());
+		random_start_time_.set_check(engine_.xp_modifier_default());
+		village_gold_slider_.set_value(engine_.village_gold_default());
+		village_support_slider_.set_value(engine_.village_support_default());
+		fog_game_.set_check(engine_.fog_game_default());
+		shroud_game_.set_check(engine_.shroud_game_default());
 
 		// Set the widget states
-		turns_slider_.enable(!map_settings);
-		village_gold_slider_.enable(!map_settings);
-		village_support_slider_.enable(!map_settings);
-		xp_modifier_slider_.enable(!map_settings);
-		random_start_time_.enable(!map_settings);
-		fog_game_.enable(!map_settings);
-		shroud_game_.enable(!map_settings);
+		turns_slider_.enable(!engine_.use_map_settings());
+		village_gold_slider_.enable(!engine_.use_map_settings());
+		village_support_slider_.enable(!engine_.use_map_settings());
+		xp_modifier_slider_.enable(!engine_.use_map_settings());
+		random_start_time_.enable(!engine_.use_map_settings());
+		fog_game_.enable(!engine_.use_map_settings());
+		shroud_game_.enable(!engine_.use_map_settings());
 	}
 
 	options_manager_.process_event();

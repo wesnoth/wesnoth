@@ -24,6 +24,7 @@
 #include "generators/mapgen.hpp"
 #include "tooltips.hpp"
 #include "mp_options.hpp"
+#include "multiplayer_configure_engine.hpp"
 
 class saved_game;
 namespace mp {
@@ -96,6 +97,7 @@ private:
 	bool force_use_map_settings_check_;
 	saved_game& state_;
 	mp_game_settings& parameters_;
+	configure_engine engine_;
 	options::manager options_manager_;
 };
 
