@@ -28,8 +28,9 @@ public:
 	}
 };
 
-struct variable_info
+class variable_info
 {
+public:
 	typedef config::child_itors array_range;
 
 	/**
@@ -43,14 +44,9 @@ struct variable_info
 
 	variable_info(config& source, const std::string& varname, bool force_valid=true,
 		TYPE validation_type=TYPE_UNSPECIFIED);
-
-	TYPE vartype; //default is TYPE_UNSPECIFIED
-	bool is_valid;
-	std::string key; //the name of the internal attribute or child
-	const std::string original_key;
-	bool explicit_index; //true if query ended in [...] specifier
-	size_t index; //the index of the child
-	config *vars; //the containing node in game_data s variables
+	bool is_explicit_index() { return explicit_index; }
+	const std::string& get_final_key() { return key; }
+	bool get_is_valid() { return is_valid; }
 	/**
 	 * Results: after deciding the desired type, these methods can retrieve the result
 	 * Note: first you should force_valid or check is_valid, otherwise these may fail
@@ -71,4 +67,13 @@ struct variable_info
 	void clear(bool only_tables);
 
 	config& add_child(const config& value);
+
+private:
+	TYPE vartype; //default is TYPE_UNSPECIFIED
+	bool is_valid;
+	std::string key; //the name of the internal attribute or child
+	const std::string original_key;
+	bool explicit_index; //true if query ended in [...] specifier
+	size_t index; //the index of the child
+	config *vars; //the containing node in game_data s variables
 };

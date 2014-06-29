@@ -139,9 +139,9 @@ config vconfig::get_parsed_config() const
 			}
 			try {
 				variable_info vinfo = resources::gamedata->get_variable_access(vname, false, variable_info::TYPE_CONTAINER);
-				if(!vinfo.is_valid) {
+				if(!vinfo.get_is_valid()) {
 					res.add_child(name); //add empty tag
-				} else if(vinfo.explicit_index) {
+				} else if(vinfo.is_explicit_index()) {
 					res.add_child(name, vconfig(vinfo.as_container()).get_parsed_config());
 				} else {
 					variable_info::array_range range = vinfo.as_array();
@@ -182,10 +182,10 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 			vconfig insert_cfg(child.cfg);
 			if(insert_cfg["name"] == key) {
 				variable_info vinfo = resources::gamedata->get_variable_access(insert_cfg["variable"], false, variable_info::TYPE_CONTAINER);
-				if(!vinfo.is_valid) {
+				if(!vinfo.get_is_valid()) {
 					//push back an empty tag
 					res.push_back(empty_vconfig());
-				} else if(vinfo.explicit_index) {
+				} else if(vinfo.is_explicit_index()) {
 					res.push_back(vconfig(vinfo.as_container(), true));
 				} else {
 					variable_info::array_range range = vinfo.as_array();
@@ -218,7 +218,7 @@ vconfig vconfig::child(const std::string& key) const
 		vconfig insert_cfg(ins);
 		if(insert_cfg["name"] == key) {
 			variable_info vinfo = resources::gamedata->get_variable_access(insert_cfg["variable"], false, variable_info::TYPE_CONTAINER);
-			if(!vinfo.is_valid) {
+			if(!vinfo.get_is_valid()) {
 				return empty_vconfig();
 			}
 			return vconfig(vinfo.as_container(), true);
@@ -286,7 +286,7 @@ vconfig::all_children_iterator& vconfig::all_children_iterator::operator++()
 	if (inner_index_ >= 0 && i_->key == "insert_tag")
 	{
 		variable_info vinfo = resources::gamedata->get_variable_access(vconfig(i_->cfg)["variable"], false, variable_info::TYPE_CONTAINER);
-		if(vinfo.is_valid && !vinfo.explicit_index) {
+		if(vinfo.get_is_valid() && !vinfo.is_explicit_index()) {
 			variable_info::array_range range = vinfo.as_array();
 			if (++inner_index_ < std::distance(range.first, range.second)) {
 				return *this;
@@ -331,7 +331,7 @@ vconfig vconfig::all_children_iterator::get_child() const
 	if (inner_index_ >= 0 && i_->key == "insert_tag")
 	{
 		variable_info vinfo = resources::gamedata->get_variable_access(vconfig(i_->cfg)["variable"], false, variable_info::TYPE_CONTAINER);
-		if(!vinfo.is_valid) {
+		if(!vinfo.get_is_valid()) {
 			return empty_vconfig();
 		} else if(inner_index_ == 0) {
 			return vconfig(vinfo.as_container(), true);

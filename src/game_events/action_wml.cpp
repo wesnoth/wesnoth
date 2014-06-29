@@ -2081,26 +2081,26 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 	if(cfg.has_attribute("to_variable"))
 	{
 		variable_info tovar = resources::gamedata->get_variable_access(cfg["to_variable"], false, variable_info::TYPE_CONTAINER);
-		if(tovar.is_valid) {
-			if(tovar.explicit_index) {
-				data.add_child(dest.key, tovar.as_container());
+		if(tovar.get_is_valid()) {
+			if(tovar.is_explicit_index()) {
+				data.add_child(dest.get_final_key(), tovar.as_container());
 			} else {
 				variable_info::array_range range = tovar.as_array();
 				while(range.first != range.second)
 				{
-					data.add_child(dest.key, *range.first++);
+					data.add_child(dest.get_final_key(), *range.first++);
 				}
 			}
 		}
 	} else if(!values.empty()) {
 		for(vconfig::child_list::const_iterator i=values.begin(); i!=values.end(); ++i)
 		{
-			data.add_child(dest.key, (*i).get_parsed_config());
+			data.add_child(dest.get_final_key(), (*i).get_parsed_config());
 		}
 	} else if(!literals.empty()) {
 		for(vconfig::child_list::const_iterator i=literals.begin(); i!=literals.end(); ++i)
 		{
-			data.add_child(dest.key, i->get_config());
+			data.add_child(dest.get_final_key(), i->get_config());
 		}
 	} else if(!split_elements.empty()) {
 		const vconfig & split_element = split_elements.front();
@@ -2133,7 +2133,7 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 
 		for(std::vector<std::string>::iterator i=split_vector.begin(); i!=split_vector.end(); ++i)
 		{
-			data.add_child(dest.key)[key_name]=*i;
+			data.add_child(dest.get_final_key())[key_name]=*i;
 		}
 	}
 

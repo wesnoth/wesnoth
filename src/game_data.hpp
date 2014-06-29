@@ -117,7 +117,6 @@ private:
 	game_events::wmi_container wml_menu_items_;
 	rand_rng::simple_rng rng_;
 	config variables_;
-	friend struct variable_info;
 	PHASE phase_;
 	bool can_end_turn_;
 	std::string scenario_;                            /**< the scenario being played */
