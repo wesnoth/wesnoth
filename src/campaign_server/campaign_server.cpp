@@ -180,7 +180,7 @@ void server::load_blacklist()
 		blacklist_.read(blcfg);
 		LOG_CS << "using blacklist from " << blacklist_file_ << '\n';
 	} catch(const config::error&) {
-		LOG_CS << "ERROR: failed to read blacklist from " << blacklist_file_ << ", blacklist disabled\n";
+		ERR_CS << "failed to read blacklist from " << blacklist_file_ << ", blacklist disabled\n";
 	}
 }
 
@@ -203,13 +203,13 @@ void server::fire(const std::string& hook, const std::string& addon)
 	}
 
 #if defined(_WIN32)
-	LOG_CS << "ERROR: Tried to execute a script on an unsupported platform" << std::endl;
+	ERR_CS << "Tried to execute a script on an unsupported platform\n";
 	return;
 #else
 	pid_t childpid;
 
 	if((childpid = fork()) == -1) {
-		LOG_CS << "ERROR: fork failed while updating campaign " << addon << std::endl;
+		ERR_CS << "fork failed while updating campaign " << addon << '\n';
 		return;
 	}
 
@@ -241,7 +241,7 @@ void server::send_error(const std::string& msg, network::connection sock)
 {
 	config cfg;
 	cfg.add_child("error")["message"] = msg;
-	LOG_CS << "ERROR [" << network::ip_address(sock) << "]: " << msg << '\n';
+	ERR_CS << "[" << network::ip_address(sock) << "]: " << msg << '\n';
 	network::send_data(cfg, sock);
 }
 
@@ -301,7 +301,7 @@ void server::run()
 			}
 		} catch(network::error& e) {
 			if(!e.socket) {
-				LOG_CS << "fatal network error: " << e.message << "\n";
+				ERR_CS << "fatal network error: " << e.message << "\n";
 				throw;
 			} else {
 				LOG_CS << "client disconnect: " << e.message << " " << network::ip_address(e.socket) << "\n";
@@ -320,7 +320,7 @@ void server::run()
 			}
 
 			if(err_sock) {
-				LOG_CS << "client disconnect due to exception: " << e.what() << " " << network::ip_address(err_sock) << "\n";
+				ERR_CS << "client disconnect due to exception: " << e.what() << " " << network::ip_address(err_sock) << "\n";
 				network::disconnect(err_sock);
 			} else {
 				throw;
@@ -448,7 +448,7 @@ void server::handle_request_campaign(const server::request& req)
 
 		if(size < 0) {
 			std::cerr << " size: <unknown> KiB\n";
-			LOG_CS << "File size unknown, aborting send.\n";
+			ERR_CS << "File size unknown, aborting send.\n";
 			send_error("Add-on '" + req.cfg["name"].str() + "' could not be read by the server.", req.sock);
 			return;
 		}
@@ -658,7 +658,7 @@ void server::handle_delete(const server::request& req)
 	// Erase the campaign.
 	write_file(campaign["filename"], std::string());
 	if(remove(campaign["filename"].str().c_str()) != 0) {
-		LOG_CS << "failed to delete archive for campaign '" << erase["name"]
+		ERR_CS << "failed to delete archive for campaign '" << erase["name"]
 			   << "' (" << campaign["filename"] << "): " << strerror(errno)
 			   << '\n';
 	}
