@@ -1020,7 +1020,7 @@ endif(ENABLE_GAME AND ENABLE_TESTS)
 if(ENABLE_GAME)
 	if(ENABLE_TESTS)
 		set(wesnoth_SRC
-			game.cpp
+			wesnoth.cpp
 		)
 		set(wesnoth_LIB
 			wesnoth-game
@@ -1037,7 +1037,7 @@ if(ENABLE_GAME)
 		)
 	else(ENABLE_TESTS)
 		set(wesnoth_SRC
-			game.cpp
+			wesnoth.cpp
 			${wesnoth-gui_types_SRC}
 			${wesnoth-gui_event_SRC}
 			${wesnoth-gui_iterator_SRC}
