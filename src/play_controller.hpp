@@ -281,6 +281,8 @@ private:
 	void expand_wml_commands(std::vector<std::string>& items);
 	std::vector<const_item_ptr> wml_commands_;
 	boost::scoped_ptr<wmi_pager> wml_command_pager_;
+	int last_context_menu_x_;
+	int last_context_menu_y_;
 
 	bool victory_when_enemies_defeated_;
 	bool remove_from_carryover_on_defeat_;
