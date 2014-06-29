@@ -743,7 +743,6 @@ set(wesnoth-main_SRC
 	game_board.cpp
 	game_classification.cpp
 	game_config_manager.cpp
-	game_controller.cpp
 	game_data.cpp
 	game_display.cpp
 	game_errors.cpp
@@ -754,6 +753,7 @@ set(wesnoth-main_SRC
 	game_events/menu_item.cpp
 	game_events/pump.cpp
 	game_events/wmi_container.cpp
+	game_launcher.cpp
 	game_preferences.cpp
 	game_preferences_display.cpp
 	game_state.cpp

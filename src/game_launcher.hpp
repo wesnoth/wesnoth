@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef GAME_CONTROLLER_H_INCLUDED
-#define GAME_CONTROLLER_H_INCLUDED
+#ifndef GAME_LAUNCHER_H_INCLUDED
+#define GAME_LAUNCHER_H_INCLUDED
 
 #include "global.hpp"
 
@@ -51,11 +51,11 @@ public:
 	std::string campaign_id_,scenario_id_;
 };
 
-class game_controller
+class game_launcher
 {
 public:
-	game_controller(const commandline_options& cmdline_opts, const char* appname);
-	~game_controller();
+	game_launcher(const commandline_options& cmdline_opts, const char* appname);
+	~game_launcher();
 
 	game_display& disp();
 
@@ -94,8 +94,8 @@ public:
 
 	void start_wesnothd();
 private:
-	game_controller(const game_controller&);
-	void operator=(const game_controller&);
+	game_launcher(const game_launcher&);
+	void operator=(const game_launcher&);
 
 	void mark_completed_campaigns(std::vector<config>& campaigns);
 

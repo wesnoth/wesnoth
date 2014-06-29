@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "game_controller.hpp"
+#include "game_launcher.hpp"
 #include "global.hpp"                   // for false_, bool_
 
 #include "about.hpp" //for show_about
@@ -100,7 +100,7 @@ static bool less_campaigns_rank(const config &a, const config &b) {
 	return a["rank"].to_int(1000) < b["rank"].to_int(1000);
 }
 
-game_controller::game_controller(const commandline_options& cmdline_opts, const char *appname) :
+game_launcher::game_launcher(const commandline_options& cmdline_opts, const char *appname) :
 	cmdline_opts_(cmdline_opts),
 	disp_(NULL),
 	video_(),
@@ -307,7 +307,7 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 	}
 }
 
-game_display& game_controller::disp()
+game_display& game_launcher::disp()
 {
 	if(disp_.get() == NULL) {
 		if(get_video_surface() == NULL) {
@@ -318,7 +318,7 @@ game_display& game_controller::disp()
 	return *disp_.get();
 }
 
-bool game_controller::init_joystick()
+bool game_launcher::init_joystick()
 {
 	if (!preferences::joystick_support_enabled())
 		return false;
@@ -341,7 +341,7 @@ bool game_controller::init_joystick()
 	return joystick_found;
 }
 
-bool game_controller::init_language()
+bool game_launcher::init_language()
 {
 	if(!::load_language_list())
 		return false;
@@ -367,7 +367,7 @@ bool game_controller::init_language()
 	return true;
 }
 
-bool game_controller::init_video()
+bool game_launcher::init_video()
 {
 	if(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test) {
 		if( !(cmdline_opts_.multiplayer || cmdline_opts_.screenshot || cmdline_opts_.headless_unit_test) ) {
@@ -442,7 +442,7 @@ bool game_controller::init_video()
 	return true;
 }
 
-bool game_controller::play_test()
+bool game_launcher::play_test()
 {
 	static bool first_time = true;
 
@@ -471,7 +471,7 @@ bool game_controller::play_test()
 }
 
 // Same as play_test except that we return the results of play_game.
-int game_controller::unit_test()
+int game_launcher::unit_test()
 {
 	static bool first_time_unit = true;
 
@@ -546,7 +546,7 @@ int game_controller::unit_test()
 	return 0; //we passed, huzzah!
 }
 
-bool game_controller::play_screenshot_mode()
+bool game_launcher::play_screenshot_mode()
 {
 	if(!cmdline_opts_.screenshot) {
 		return true;
@@ -561,12 +561,12 @@ bool game_controller::play_screenshot_mode()
 	return false;
 }
 
-bool game_controller::is_loading() const
+bool game_launcher::is_loading() const
 {
 	return !game::load_game_exception::game.empty();
 }
 
-bool game_controller::load_game()
+bool game_launcher::load_game()
 {
 	savegame::loadgame load(disp(), resources::config_manager->game_config(),
 	    state_);
@@ -670,7 +670,7 @@ bool game_controller::load_game()
 	return true;
 }
 
-void game_controller::set_tutorial()
+void game_launcher::set_tutorial()
 {
 	state_ = saved_game();
 	state_.classification().campaign_type = game_classification::TUTORIAL;
@@ -678,14 +678,14 @@ void game_controller::set_tutorial()
 	state_.classification().campaign_define = "TUTORIAL";
 }
 
-void game_controller::mark_completed_campaigns(std::vector<config> &campaigns)
+void game_launcher::mark_completed_campaigns(std::vector<config> &campaigns)
 {
 	BOOST_FOREACH(config &campaign, campaigns) {
 		campaign["completed"] = preferences::is_campaign_completed(campaign["id"]);
 	}
 }
 
-bool game_controller::new_campaign()
+bool game_launcher::new_campaign()
 {
 	state_ = saved_game();
 	state_.classification().campaign_type = game_classification::SCENARIO;
@@ -828,17 +828,17 @@ bool game_controller::new_campaign()
 	return true;
 }
 
-std::string game_controller::jump_to_campaign_id() const
+std::string game_launcher::jump_to_campaign_id() const
 {
 	return jump_to_campaign_.campaign_id_;
 }
 
-bool game_controller::goto_campaign()
+bool game_launcher::goto_campaign()
 {
 	if(jump_to_campaign_.jump_){
 		if(new_campaign()) {
 			jump_to_campaign_.jump_ = false;
-			launch_game(game_controller::RELOAD_DATA);
+			launch_game(game_launcher::RELOAD_DATA);
 		}else{
 			jump_to_campaign_.jump_ = false;
 			return false;
@@ -847,7 +847,7 @@ bool game_controller::goto_campaign()
 	return true;
 }
 
-bool game_controller::goto_multiplayer()
+bool game_launcher::goto_multiplayer()
 {
 	if(jump_to_multiplayer_){
 		jump_to_multiplayer_ = false;
@@ -860,7 +860,7 @@ bool game_controller::goto_multiplayer()
 	return true;
 }
 
-bool game_controller::goto_editor()
+bool game_launcher::goto_editor()
 {
 	if(jump_to_editor_){
 		jump_to_editor_ = false;
@@ -874,7 +874,7 @@ bool game_controller::goto_editor()
 	return true;
 }
 
-void game_controller::start_wesnothd()
+void game_launcher::start_wesnothd()
 {
 	const std::string wesnothd_program =
 		preferences::get_mp_server_program_name().empty() ?
@@ -905,7 +905,7 @@ void game_controller::start_wesnothd()
 	throw game::mp_server_error("Starting MP server failed!");
 }
 
-bool game_controller::play_multiplayer()
+bool game_launcher::play_multiplayer()
 {
 	int res;
 
@@ -1021,7 +1021,7 @@ bool game_controller::play_multiplayer()
 	return false;
 }
 
-bool game_controller::play_multiplayer_commandline()
+bool game_launcher::play_multiplayer_commandline()
 {
 	if(!cmdline_opts_.multiplayer) {
 		return true;
@@ -1045,7 +1045,7 @@ bool game_controller::play_multiplayer_commandline()
 	return false;
 }
 
-bool game_controller::change_language()
+bool game_launcher::change_language()
 {
 	gui2::tlanguage_selection dlg;
 	dlg.show(disp().video());
@@ -1064,7 +1064,7 @@ bool game_controller::change_language()
 	return true;
 }
 
-void game_controller::show_preferences()
+void game_launcher::show_preferences()
 {
 	const preferences::display_manager disp_manager(&disp());
 	preferences::show_preferences_dialog(disp(),
@@ -1073,7 +1073,7 @@ void game_controller::show_preferences()
 	disp().redraw_everything();
 }
 
-void game_controller::launch_game(RELOAD_GAME_DATA reload)
+void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 {
 	loadscreen::global_loadscreen_manager loadscreen_manager(disp().video());
 	loadscreen::start_stage("load data");
@@ -1107,7 +1107,7 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 	}
 }
 
-void game_controller::play_replay()
+void game_launcher::play_replay()
 {
 	try {
 		::play_replay(disp(),state_,resources::config_manager->game_config(),
@@ -1121,7 +1121,7 @@ void game_controller::play_replay()
 	}
 }
 
-editor::EXIT_STATUS game_controller::start_editor(const std::string& filename)
+editor::EXIT_STATUS game_launcher::start_editor(const std::string& filename)
 {
 	while(true){
 		resources::config_manager->load_game_config_for_editor();
@@ -1140,7 +1140,7 @@ editor::EXIT_STATUS game_controller::start_editor(const std::string& filename)
 	return editor::EXIT_ERROR; // not supposed to happen
 }
 
-game_controller::~game_controller()
+game_launcher::~game_launcher()
 {
 	try {
 		gui::dialog::delete_empty_menu();

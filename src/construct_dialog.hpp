@@ -282,7 +282,7 @@ public:
 	/// Explicit freeing of class static resources.
 	/// Must not be called if any instances of this class exist.
 	/// Should be called if the display goes out of scope.
-	/// (Currently called by ~game_controller.)
+	/// (Currently called by ~game_launcher.)
 	static void delete_empty_menu()  { delete empty_menu; empty_menu = NULL; }
 
 protected:

@@ -26,7 +26,7 @@
 #include "formula.hpp"                  // for formula_error
 #include "game_config.hpp"              // for path, debug, debug_lua, etc
 #include "game_config_manager.hpp"      // for game_config_manager, etc
-#include "game_controller.hpp"          // for game_controller, etc
+#include "game_launcher.hpp"          // for game_launcher, etc
 #include "gui/auxiliary/event/handler.hpp"  // for tmanager
 #include "gui/dialogs/core_selection.hpp"  // for tcore_selection
 #include "gui/dialogs/title_screen.hpp"  // for ttitle_screen, etc
@@ -439,7 +439,7 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 
 /**
  * I would prefer to setup locale first so that early error
- * messages can get localized, but we need the game_controller
+ * messages can get localized, but we need the game_launcher
  * initialized to have get_intl_dir() to work.  Note: setlocale()
  * does not take GUI language setting into account.
  */
@@ -491,8 +491,8 @@ static int do_gameloop(int argc, char** argv)
 		return finished;
 	}
 
-	boost::scoped_ptr<game_controller> game(
-		new game_controller(cmdline_opts,argv[0]));
+	boost::scoped_ptr<game_launcher> game(
+		new game_launcher(cmdline_opts,argv[0]));
 	const int start_ticks = SDL_GetTicks();
 
 	init_locale();
@@ -658,8 +658,8 @@ static int do_gameloop(int argc, char** argv)
 			res = static_cast<gui2::ttitle_screen::tresult>(dlg.get_retval());
 		}
 
-		game_controller::RELOAD_GAME_DATA should_reload =
-			game_controller::RELOAD_DATA;
+		game_launcher::RELOAD_GAME_DATA should_reload =
+			game_launcher::RELOAD_DATA;
 
 		if(res == gui2::ttitle_screen::QUIT_GAME) {
 			LOG_GENERAL << "quitting game...\n";
@@ -670,7 +670,7 @@ static int do_gameloop(int argc, char** argv)
 				res = gui2::ttitle_screen::NOTHING;
 				continue;
 			}
-			should_reload = game_controller::NO_RELOAD_DATA;
+			should_reload = game_launcher::NO_RELOAD_DATA;
 		} else if(res == gui2::ttitle_screen::TUTORIAL) {
 			game->set_tutorial();
 		} else if(res == gui2::ttitle_screen::NEW_CAMPAIGN) {
