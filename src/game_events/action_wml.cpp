@@ -2071,24 +2071,6 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 		return;
 	}
 
-	std::string mode = cfg["mode"]; // replace, append, merge, or insert
-	if(mode == "extend") {
-		mode = "append";
-	} else if(mode != "append" && mode != "merge") {
-		if(mode == "insert") {
-			size_t child_count = dest.vars->child_count(dest.key);
-			if(dest.index >= child_count) {
-				while(dest.index >= ++child_count) {
-					//inserting past the end requires empty data
-					dest.vars->append(config(dest.key));
-				}
-				//inserting at the end is handled by an append
-				mode = "append";
-			}
-		} else {
-			mode = "replace";
-		}
-	}
 
 	const vconfig::child_list values = cfg.get_children("value");
 	const vconfig::child_list literals = cfg.get_children("literal");
@@ -2154,35 +2136,8 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 			data.add_child(dest.key)[key_name]=*i;
 		}
 	}
-	if(mode == "replace")
-	{
-		if(dest.explicit_index) {
-			dest.vars->remove_child(dest.key, dest.index);
-		} else {
-			dest.vars->clear_children(dest.key);
-		}
-	}
-	if(!data.empty())
-	{
-		if(mode == "merge")
-		{
-			if(dest.explicit_index) {
-				// merging multiple children into a single explicit index
-				// requires that they first be merged with each other
-				data.merge_children(dest.key);
-				dest.as_container().merge_with(data.child(dest.key));
-			} else {
-				dest.vars->merge_with(data);
-			}
-		} else if(mode == "insert" || dest.explicit_index) {
-			BOOST_FOREACH(const config &child, data.child_range(dest.key))
-			{
-				dest.vars->add_child_at(dest.key, child, dest.index++);
-			}
-		} else {
-			dest.vars->append(data);
-		}
-	}
+
+	dest.set_range(data, cfg["mode"]);// replace, append, merge, or insert
 }
 
 WML_HANDLER_FUNCTION(sound_source, /*event_info*/, cfg)

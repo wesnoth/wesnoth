@@ -25,6 +25,8 @@
 #include "game_config.hpp"
 #include "util.hpp"
 
+#include <boost/foreach.hpp>
+
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define WRN_NG LOG_STREAM(warn, log_engine)
@@ -207,4 +209,57 @@ config& variable_info::as_container() {
 variable_info::array_range variable_info::as_array() {
 	assert(is_valid);
 	return vars->child_range(key);
+}
+
+void variable_info::set_range(config& data, std::string mode)
+{
+	
+	if(mode == "extend") {
+		mode = "append";
+	} else if(mode != "append" && mode != "merge") {
+		if(mode == "insert") {
+			size_t child_count = this->vars->child_count(this->key);
+			if(this->index >= child_count) {
+				while(this->index >= ++child_count) {
+					//inserting past the end requires empty data
+					this->vars->append(config(this->key));
+				}
+				//inserting at the end is handled by an append
+				mode = "append";
+			}
+		} else {
+			mode = "replace";
+		}
+	}
+
+
+	if(mode == "replace")
+	{
+		if(this->explicit_index) {
+			this->vars->remove_child(this->key, this->index);
+		} else {
+			this->vars->clear_children(this->key);
+		}
+	}
+	if(!data.empty())
+	{
+		if(mode == "merge")
+		{
+			if(this->explicit_index) {
+				// merging multiple children into a single explicit index
+				// requires that they first be merged with each other
+				data.merge_children(this->key);
+				this->as_container().merge_with(data.child(this->key));
+			} else {
+				this->vars->merge_with(data);
+			}
+		} else if(mode == "insert" || this->explicit_index) {
+			BOOST_FOREACH(const config &child, data.child_range(this->key))
+			{
+				this->vars->add_child_at(this->key, child, this->index++);
+			}
+		} else {
+			this->vars->append(data);
+		}
+	}
 }

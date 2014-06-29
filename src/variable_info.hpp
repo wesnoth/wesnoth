@@ -49,4 +49,6 @@ struct variable_info
 	config& as_container();
 	array_range as_array(); //range may be empty
 	static config& get_temporaries();
+
+	void set_range(config& data, std::string mode);
 };
