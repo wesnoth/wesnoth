@@ -20,6 +20,7 @@ before_install:
     - if [ "$CXX" = "g++" ]; then sudo apt-get update -qq; fi
     - if [ "$CXX" = "g++" ]; then sudo apt-get install g++-4.8; fi
     - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8"; fi
+    - sudo apt-get install moreutils
     - ./check_utf8.sh
 install:
     - sudo apt-get update -qq
