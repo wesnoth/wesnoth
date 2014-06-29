@@ -1822,6 +1822,7 @@ void unit::set_ghosted(bool with_bars)
 	display *disp = display::get_singleton();
 	start_animation(INT_MAX, choose_animation(*disp, loc_, "ghosted"),
 			with_bars);
+	anim_->pause_animation();
 }
 
 void unit::set_disabled_ghosted(bool with_bars)
