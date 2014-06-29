@@ -18,7 +18,7 @@ option(SDL_gpu_DISABLE_GLES_3 "Disable OpenGLES 3.X renderer" OFF)
 
 set(SDL_gpu_VERSION 0.8.1)
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "./CMake_scripts")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/CMake_scripts)
 
 if ( SDL_gpu_BUILD_DEBUG )
 	SET(CMAKE_BUILD_TYPE Debug)
