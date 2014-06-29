@@ -110,17 +110,17 @@ game_data::game_data(const game_data& data)
 
 config::attribute_value &game_data::get_variable(const std::string& key)
 {
-	return get_variable_access(key, true, variable_info::TYPE_SCALAR).as_scalar();
+	return get_variable_access(key, variable_info::TYPE_SCALAR).as_scalar();
 }
 
 config::attribute_value game_data::get_variable_const(const std::string &key) const
 {
-	return get_variable_access(key, false, variable_info::TYPE_SCALAR).as_scalar_const();
+	return get_variable_access_readonly(key, variable_info::TYPE_SCALAR).as_scalar_const();
 }
 
 config& game_data::get_variable_cfg(const std::string& key)
 {
-	return get_variable_access(key, true, variable_info::TYPE_CONTAINER).as_container();
+	return get_variable_access(key, variable_info::TYPE_CONTAINER).as_container();
 }
 
 void game_data::set_variable(const std::string& key, const t_string& value)
@@ -130,17 +130,17 @@ void game_data::set_variable(const std::string& key, const t_string& value)
 
 config& game_data::add_variable_cfg(const std::string& key, const config& value)
 {
-	return get_variable_access(key, true, variable_info::TYPE_ARRAY).add_child(value);
+	return get_variable_access(key, variable_info::TYPE_ARRAY).add_child(value);
 }
 
 void game_data::clear_variable_cfg(const std::string& varname)
 {
-	get_variable_access(varname, false, variable_info::TYPE_CONTAINER).clear(true);
+	get_variable_access_noadd(varname, variable_info::TYPE_CONTAINER).clear(true);
 }
 
 void game_data::clear_variable(const std::string& varname)
 {
-	get_variable_access(varname, false).clear(false);
+	get_variable_access_noadd(varname).clear(false);
 }
 
 void game_data::write_snapshot(config& cfg) const {

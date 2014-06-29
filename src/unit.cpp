@@ -1651,7 +1651,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		// Allow filtering by searching a stored variable of units
 		try
 		{
-			variable_info vi = resources::gamedata->get_variable_access(cfg_find_in, false, variable_info::TYPE_CONTAINER);
+			variable_info vi = resources::gamedata->get_variable_access_readonly(cfg_find_in, variable_info::TYPE_CONTAINER);
 			bool found_id = false;
 			BOOST_FOREACH(const config& c, vi.as_array_throw())
 			{

@@ -133,7 +133,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 		if(cfg_.has_attribute("find_in")) {
 			try
 			{
-				variable_info vi = resources::gamedata->get_variable_access(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
+				variable_info vi = resources::gamedata->get_variable_access_readonly(cfg_["find_in"], variable_info::TYPE_CONTAINER);
 
 				bool found = false;
 				BOOST_FOREACH(const config &cfg, vi.as_array()) {
@@ -420,7 +420,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 
 		try
 		{
-			variable_info vi = resources::gamedata->get_variable_access(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
+			variable_info vi = resources::gamedata->get_variable_access_readonly(cfg_["find_in"], variable_info::TYPE_CONTAINER);
 			BOOST_FOREACH(const config& cfg, vi.as_array_throw())
 			{
 				map_location test_loc(cfg, NULL);
@@ -455,7 +455,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		try
 		{
 			std::set<map_location> findin_locs;
-			variable_info vi = resources::gamedata->get_variable_access(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
+			variable_info vi = resources::gamedata->get_variable_access_readonly(cfg_["find_in"], variable_info::TYPE_CONTAINER);
 			BOOST_FOREACH(const config& cfg, vi.as_array_throw())
 			{
 				map_location test_loc(cfg, NULL);
@@ -497,7 +497,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		
 		try
 		{
-			variable_info vi = resources::gamedata->get_variable_access(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
+			variable_info vi = resources::gamedata->get_variable_access_readonly(cfg_["find_in"], variable_info::TYPE_CONTAINER);
 			BOOST_FOREACH(const config& cfg, vi.as_array_throw())
 			{
 				map_location test_loc(cfg, NULL);
@@ -525,7 +525,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		//use content of find_in as starting set
 		try
 		{
-			variable_info vi = resources::gamedata->get_variable_access(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
+			variable_info vi = resources::gamedata->get_variable_access_readonly(cfg_["find_in"], variable_info::TYPE_CONTAINER);
 
 			BOOST_FOREACH(const config &cfg, vi.as_array()) {
 				map_location test_loc(cfg, NULL);

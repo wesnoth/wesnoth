@@ -61,12 +61,32 @@ public:
 
 	void activate_scope_variable(std::string var_name) const;
 
-	variable_info get_variable_access(const std::string& varname, bool force_valid=true,
+	variable_info get_variable_access(const std::string& varname,
+		variable_info::TYPE validation_type = variable_info::TYPE_UNSPECIFIED)
+	{
+		assert(this != NULL);
+		activate_scope_variable(varname);
+		return variable_info(variables_, varname, true, validation_type);
+	}
+	// Does not add empty childs if a child does not exist.
+	// Can still be used to change the final value.
+	variable_info get_variable_access_noadd(const std::string& varname,
+		variable_info::TYPE validation_type = variable_info::TYPE_UNSPECIFIED)
+	{
+		assert(this != NULL);
+		activate_scope_variable(varname);
+		return variable_info(variables_, varname, false, validation_type);
+	}
+	// Does not change the gaem variables
+	// NOTE: this has the game effect as get_variable_access_noadd
+	// the const here is a lie
+	// its up to the caller to not call variable changing functions on the returned object.
+	variable_info get_variable_access_readonly(const std::string& varname,
 		variable_info::TYPE validation_type = variable_info::TYPE_UNSPECIFIED) const
 	{
 		assert(this != NULL);
 		activate_scope_variable(varname);
-		return variable_info(const_cast<config&>(variables_), varname, force_valid, validation_type);
+		return variable_info(const_cast<config&>(variables_), varname, false, validation_type);
 	}
 
 	void clear_variable(const std::string& varname);
