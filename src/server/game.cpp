@@ -1542,9 +1542,13 @@ void game::set_termination_reason(const std::string& reason) {
 
 void game::allow_global(const simple_wml::document &data) {
 	const simple_wml::node *cfg = data.root().child("wait_global");
-	int side = (*cfg)["side"].to_int();
-	if ((side < 0) || (side > nsides_)) side = 0;
-	global_wait_side_ = side;
+	if (!cfg) {
+		int side = (*cfg)["side"].to_int();
+		if ((side < 0) || (side > nsides_)) side = 0;
+		global_wait_side_ = side;
+	} else {
+		WRN_GAME << "game::allow_global: received a malformed message from client, no child \"wait_global\" in config argument" << std::endl;
+	}
 }
 
 const user_vector game::all_game_users() const {
