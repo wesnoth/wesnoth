@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2014 by Jörg Hinrichs
+   Copyright (C) 2003 - 2014 by JÃ¶rg Hinrichs
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
