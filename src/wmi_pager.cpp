@@ -120,15 +120,19 @@ void wmi_pager::get_items(const map_location& hex,
 	}
 	// ^ This loop terminates with first_displayed_index > 0, because foo_->size() > page_size or else we exited earlier, and we only decrease by (page_size-2) each time.
 
-	wmi_it start_range = foo_->begin();
-	std::advance(start_range, first_displayed_index); // <-- get an iterator to the start of our range. begin() + n doesn't work because map is not random access
-	//^  = foo_->begin() + first_displayed_index
-
 	if (first_displayed_index + page_size-1 >= foo_->size()) //if this can be the last page, then we won't put next page at the bottom.
 	{
-		foo_->get_items(hex, items, descriptions, start_range, foo_->end()); // display all of the remaining items
+		//The last page we treat differently -- we always want to display (page_size) entries, to prevent resizing the context menu, so count back from end.
+		wmi_it end_range = foo_->end(); // It doesn't really matter if we display some entries that appeared on the previous page by doing this.
+		wmi_it start_range = end_range;
+		std::advance(start_range, -(page_size-1));
+
+		foo_->get_items(hex, items, descriptions, start_range, end_range); // display all of the remaining items
 		return;
 	} else { //we are in a middle page
+		wmi_it start_range = foo_->begin();
+		std::advance(start_range, first_displayed_index); // <-- get an iterator to the start of our range. begin() + n doesn't work because map is not random access
+
 		wmi_it end_range = start_range;
 		std::advance(end_range, page_size-2);
 
