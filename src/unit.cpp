@@ -22,6 +22,7 @@
 
 #include "formula_string_utils.hpp"     // for vgettext
 #include "game_board.hpp"               // for game_board
+#include "game_data.hpp"
 #include "game_config.hpp"              // for add_color_info, etc
 #include "game_errors.hpp"              // for game_error
 #include "game_events/handlers.hpp"     // for add_events
@@ -1648,7 +1649,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	config::attribute_value cfg_find_in = cfg["find_in"];
 	if (!cfg_find_in.blank()) {
 		// Allow filtering by searching a stored variable of units
-		variable_info vi(cfg_find_in, false, variable_info::TYPE_CONTAINER);
+		variable_info vi = resources::gamedata->get_variable_access(cfg_find_in, false, variable_info::TYPE_CONTAINER);
 		if(!vi.is_valid) return false;
 		if(vi.explicit_index) {
 			config::const_child_iterator i = vi.vars->child_range(vi.key).first;

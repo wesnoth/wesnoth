@@ -2047,7 +2047,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 		std::string joined_string;
 
-		variable_info vi(array_name, true, variable_info::TYPE_ARRAY);
+		variable_info vi = resources::gamedata->get_variable_access(array_name, true, variable_info::TYPE_ARRAY);
 		bool first = true;
 		BOOST_FOREACH(const config &cfg, vi.as_array())
 		{
@@ -2065,7 +2065,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 {
 	const t_string& name = cfg["name"];
-	variable_info dest(name, true, variable_info::TYPE_CONTAINER);
+	variable_info dest = resources::gamedata->get_variable_access(name, true, variable_info::TYPE_CONTAINER);
 	if(name.empty()) {
 		ERR_NG << "trying to set a variable with an empty name:\n" << cfg.get_config().debug();
 		return;
@@ -2098,7 +2098,7 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 
 	if(cfg.has_attribute("to_variable"))
 	{
-		variable_info tovar(cfg["to_variable"], false, variable_info::TYPE_CONTAINER);
+		variable_info tovar = resources::gamedata->get_variable_access(cfg["to_variable"], false, variable_info::TYPE_CONTAINER);
 		if(tovar.is_valid) {
 			if(tovar.explicit_index) {
 				data.add_child(dest.key, tovar.as_container());
@@ -2222,7 +2222,7 @@ WML_HANDLER_FUNCTION(store_relative_dir, /*event_info*/, cfg)
 	std::string variable = cfg["variable"];
 	map_location::RELATIVE_DIR_MODE mode = static_cast<map_location::RELATIVE_DIR_MODE> (cfg["mode"].to_int(0));
 
-	variable_info store(variable, true, variable_info::TYPE_SCALAR );
+	variable_info store = resources::gamedata->get_variable_access(variable, true, variable_info::TYPE_SCALAR );
 
 	store.as_scalar() = map_location::write_direction(src.get_relative_dir(dst,mode));
 }
@@ -2252,7 +2252,7 @@ WML_HANDLER_FUNCTION(store_rotate_map_location, /*event_info*/, cfg)
 	std::string variable = cfg["variable"];
 	int angle = cfg["angle"].to_int(1);
 
-	variable_info store(variable, true, variable_info::TYPE_CONTAINER );
+	variable_info store = resources::gamedata->get_variable_access(variable, true, variable_info::TYPE_CONTAINER );
 
 	dst.rotate_right_around_center(src,angle).write(store.as_container());
 }
@@ -2273,7 +2273,7 @@ WML_HANDLER_FUNCTION(store_time_of_day, /*event_info*/, cfg)
 		variable = "time_of_day";
 	}
 
-	variable_info store(variable, true, variable_info::TYPE_CONTAINER);
+	variable_info store = resources::gamedata->get_variable_access(variable, true, variable_info::TYPE_CONTAINER);
 
 	tod.write(store.as_container());
 }

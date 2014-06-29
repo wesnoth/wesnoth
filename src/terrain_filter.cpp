@@ -18,6 +18,7 @@
 
 #include "config.hpp"
 #include "game_board.hpp"
+#include "game_data.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "resources.hpp"
@@ -130,7 +131,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 		}
 		//allow filtering by searching a stored variable of locations
 		if(cfg_.has_attribute("find_in")) {
-			variable_info vi(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
+			variable_info vi = resources::gamedata->get_variable_access(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
 			if(!vi.is_valid) return false;
 			if(vi.explicit_index) {
 				if(map_location(vi.as_container(),NULL) != loc) {
@@ -415,7 +416,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			&& !cfg_.has_attribute("area") ) {
 
 		//use content of find_in as starting set
-		variable_info vi(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
+		variable_info vi = resources::gamedata->get_variable_access(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
 		if(vi.is_valid) {
 			if(vi.explicit_index) {
 				map_location test_loc(vi.as_container(),NULL);
@@ -448,7 +449,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		match_set.insert(xy_vector.begin(), xy_vector.end());
 
 		// remove any locations not found in the specified variable
-		variable_info vi(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
+		variable_info vi = resources::gamedata->get_variable_access(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
 		if(!vi.is_valid) {
 			match_set.clear();
 		} else if(vi.explicit_index) {
@@ -494,7 +495,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		const std::set<map_location>& area = resources::tod_manager->get_area_by_id(cfg_["area"]);
 
 		//use content of find_in as starting set
-		variable_info vi(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
+		variable_info vi = resources::gamedata->get_variable_access(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
 		if(!vi.is_valid) {
 			match_set.clear(); //TODO not needed
 		} else if(vi.explicit_index) {
@@ -522,7 +523,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		const std::set<map_location>& area = resources::tod_manager->get_area_by_id(cfg_["area"]);
 
 		//use content of find_in as starting set
-		variable_info vi(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
+		variable_info vi = resources::gamedata->get_variable_access(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
 		if(vi.is_valid) {
 			if(vi.explicit_index) {
 				map_location test_loc(vi.as_container(),NULL);

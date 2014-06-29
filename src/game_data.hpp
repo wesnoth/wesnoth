@@ -22,6 +22,7 @@
 #include "game_events/wmi_container.hpp"
 #include "map_location.hpp"
 #include "simple_rng.hpp"
+#include "variable.hpp"
 
 #include <boost/shared_ptr.hpp>
 
@@ -57,6 +58,16 @@ public:
 
 	void set_variable(const std::string& varname, const t_string& value);
 	config& add_variable_cfg(const std::string& varname, const config& value=config());
+
+	void activate_scope_variable(std::string var_name) const;
+
+	variable_info get_variable_access(const std::string& varname, bool force_valid=true,
+		variable_info::TYPE validation_type = variable_info::TYPE_UNSPECIFIED) const
+	{
+		assert(this != NULL);
+		activate_scope_variable(varname);
+		return variable_info(const_cast<config&>(variables_), varname, force_valid, validation_type);
+	}
 
 	void clear_variable(const std::string& varname);
 	void clear_variable_cfg(const std::string& varname); // Clears only the config children

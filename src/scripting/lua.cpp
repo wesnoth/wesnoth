@@ -990,12 +990,12 @@ static int intf_fire_event(lua_State *L)
 static int intf_get_variable(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
-	variable_info v(m, false, variable_info::TYPE_SCALAR);
+	variable_info v = resources::gamedata->get_variable_access(m, false, variable_info::TYPE_SCALAR);
 	if (v.is_valid) {
 		luaW_pushscalar(L, v.as_scalar());
 		return 1;
 	} else {
-		variable_info w(m, false, variable_info::TYPE_CONTAINER);
+		variable_info w = resources::gamedata->get_variable_access(m, false, variable_info::TYPE_CONTAINER);
 		if (w.is_valid) {
 			lua_newtable(L);
 			if (lua_toboolean(L, 2))
@@ -1020,7 +1020,7 @@ static int intf_set_variable(lua_State *L)
 		return 0;
 	}
 
-	variable_info v(m);
+	variable_info v = resources::gamedata->get_variable_access(m);
 	switch (lua_type(L, 2)) {
 		case LUA_TBOOLEAN:
 			v.as_scalar() = luaW_toboolean(L, 2);

@@ -138,7 +138,7 @@ config vconfig::get_parsed_config() const
 				throw recursion_error("vconfig::get_parsed_config() infinite recursion detected, aborting");
 			}
 			try {
-				variable_info vinfo(vname, false, variable_info::TYPE_CONTAINER);
+				variable_info vinfo = resources::gamedata->get_variable_access(vname, false, variable_info::TYPE_CONTAINER);
 				if(!vinfo.is_valid) {
 					res.add_child(name); //add empty tag
 				} else if(vinfo.explicit_index) {
@@ -181,7 +181,7 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 		} else if (child.key == "insert_tag") {
 			vconfig insert_cfg(child.cfg);
 			if(insert_cfg["name"] == key) {
-				variable_info vinfo(insert_cfg["variable"], false, variable_info::TYPE_CONTAINER);
+				variable_info vinfo = resources::gamedata->get_variable_access(insert_cfg["variable"], false, variable_info::TYPE_CONTAINER);
 				if(!vinfo.is_valid) {
 					//push back an empty tag
 					res.push_back(empty_vconfig());
@@ -217,7 +217,7 @@ vconfig vconfig::child(const std::string& key) const
 	{
 		vconfig insert_cfg(ins);
 		if(insert_cfg["name"] == key) {
-			variable_info vinfo(insert_cfg["variable"], false, variable_info::TYPE_CONTAINER);
+			variable_info vinfo = resources::gamedata->get_variable_access(insert_cfg["variable"], false, variable_info::TYPE_CONTAINER);
 			if(!vinfo.is_valid) {
 				return empty_vconfig();
 			}
@@ -285,7 +285,7 @@ vconfig::all_children_iterator& vconfig::all_children_iterator::operator++()
 {
 	if (inner_index_ >= 0 && i_->key == "insert_tag")
 	{
-		variable_info vinfo(vconfig(i_->cfg)["variable"], false, variable_info::TYPE_CONTAINER);
+		variable_info vinfo = resources::gamedata->get_variable_access(vconfig(i_->cfg)["variable"], false, variable_info::TYPE_CONTAINER);
 		if(vinfo.is_valid && !vinfo.explicit_index) {
 			variable_info::array_range range = vinfo.as_array();
 			if (++inner_index_ < std::distance(range.first, range.second)) {
@@ -330,7 +330,7 @@ vconfig vconfig::all_children_iterator::get_child() const
 {
 	if (inner_index_ >= 0 && i_->key == "insert_tag")
 	{
-		variable_info vinfo(vconfig(i_->cfg)["variable"], false, variable_info::TYPE_CONTAINER);
+		variable_info vinfo = resources::gamedata->get_variable_access(vconfig(i_->cfg)["variable"], false, variable_info::TYPE_CONTAINER);
 		if(!vinfo.is_valid) {
 			return empty_vconfig();
 		} else if(inner_index_ == 0) {
@@ -442,33 +442,8 @@ void scoped_recall_unit::activate()
 	}
 }
 
-namespace {
-bool recursive_activation = false;
 
-/** Turns on any auto-stored variables */
-void activate_scope_variable(std::string var_name)
-{
-	if(recursive_activation)
-		return;
-	const std::string::iterator itor = std::find(var_name.begin(),var_name.end(),'.');
-	if(itor != var_name.end()) {
-		var_name.erase(itor, var_name.end());
-	}
-	std::vector<scoped_wml_variable*>::reverse_iterator rit;
-	for(rit = resources::gamedata->scoped_variables.rbegin(); rit != resources::gamedata->scoped_variables.rend(); ++rit) {
-		if((**rit).name() == var_name) {
-			recursive_activation = true;
-			if(!(**rit).activated()) {
-				(**rit).activate();
-			}
-			recursive_activation = false;
-			break;
-		}
-	}
-}
-} // end anonymous namespace
-
-variable_info::variable_info(const std::string& varname,
+variable_info::variable_info(config& source, const std::string& varname,
 		bool force_valid, TYPE validation_type) :
 	vartype(validation_type),
 	is_valid(false),
@@ -477,10 +452,8 @@ variable_info::variable_info(const std::string& varname,
 	index(0),
 	vars(NULL)
 {
-	assert(repos != NULL);
-	activate_scope_variable(varname);
 
-	vars = &resources::gamedata->variables_;
+	vars = &source;//&resources::gamedata->variables_;
 	key = varname;
 	std::string::const_iterator itor = std::find(key.begin(),key.end(),'.');
 	int dot_index = key.find('.');

@@ -223,7 +223,7 @@ struct variable_info
 	            TYPE_CONTAINER, //a Container is a specific index of an Array (contains Scalars)
 	            TYPE_UNSPECIFIED };
 
-	variable_info(const std::string& varname, bool force_valid=true,
+	variable_info(config& source, const std::string& varname, bool force_valid=true,
 		TYPE validation_type=TYPE_UNSPECIFIED);
 
 	TYPE vartype; //default is TYPE_UNSPECIFIED
@@ -232,7 +232,6 @@ struct variable_info
 	bool explicit_index; //true if query ended in [...] specifier
 	size_t index; //the index of the child
 	config *vars; //the containing node in game_data s variables
-
 	/**
 	 * Results: after deciding the desired type, these methods can retrieve the result
 	 * Note: first you should force_valid or check is_valid, otherwise these may fail

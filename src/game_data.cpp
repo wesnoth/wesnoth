@@ -113,12 +113,12 @@ game_data::game_data(const game_data& data)
 
 config::attribute_value &game_data::get_variable(const std::string& key)
 {
-	return variable_info(key, true, variable_info::TYPE_SCALAR).as_scalar();
+	return get_variable_access(key, true, variable_info::TYPE_SCALAR).as_scalar();
 }
 
 config::attribute_value game_data::get_variable_const(const std::string &key) const
 {
-	variable_info to_get(key, false, variable_info::TYPE_SCALAR);
+	variable_info to_get = get_variable_access(key, false, variable_info::TYPE_SCALAR);
 	if (!to_get.is_valid)
 	{
 		config::attribute_value &to_return = temporaries_[key];
@@ -133,7 +133,7 @@ config::attribute_value game_data::get_variable_const(const std::string &key) co
 
 config& game_data::get_variable_cfg(const std::string& key)
 {
-	return variable_info(key, true, variable_info::TYPE_CONTAINER).as_container();
+	return get_variable_access(key, true, variable_info::TYPE_CONTAINER).as_container();
 }
 
 void game_data::set_variable(const std::string& key, const t_string& value)
@@ -143,13 +143,13 @@ void game_data::set_variable(const std::string& key, const t_string& value)
 
 config& game_data::add_variable_cfg(const std::string& key, const config& value)
 {
-	variable_info to_add(key, true, variable_info::TYPE_ARRAY);
+	variable_info to_add = get_variable_access(key, true, variable_info::TYPE_ARRAY);
 	return to_add.vars->add_child(to_add.key, value);
 }
 
 void game_data::clear_variable_cfg(const std::string& varname)
 {
-	variable_info to_clear(varname, false, variable_info::TYPE_CONTAINER);
+	variable_info to_clear = get_variable_access(varname, false, variable_info::TYPE_CONTAINER);
 	if(!to_clear.is_valid) return;
 	if(to_clear.explicit_index) {
 		to_clear.vars->remove_child(to_clear.key, to_clear.index);
@@ -160,7 +160,7 @@ void game_data::clear_variable_cfg(const std::string& varname)
 
 void game_data::clear_variable(const std::string& varname)
 {
-	variable_info to_clear(varname, false);
+	variable_info to_clear = get_variable_access(varname, false);
 	if(!to_clear.is_valid) return;
 	if(to_clear.explicit_index) {
 		to_clear.vars->remove_child(to_clear.key, to_clear.index);
@@ -233,4 +233,34 @@ game_data* game_data::operator=(const game_data* info)
 		new (this) game_data(*info) ;
 	}
 	return this ;
+}
+
+namespace {
+	bool recursive_activation = false;
+
+} // end anonymous namespace
+
+void game_data::activate_scope_variable(std::string var_name) const
+{
+	
+	if(recursive_activation)
+		return;
+	const std::string::iterator itor = std::find(var_name.begin(),var_name.end(),'.');
+	if(itor != var_name.end()) {
+		var_name.erase(itor, var_name.end());
+	}
+	std::vector<scoped_wml_variable*>::const_reverse_iterator rit;
+	for(
+		rit = scoped_variables.rbegin(); 
+		rit != scoped_variables.rend(); 
+	++rit) {
+		if((**rit).name() == var_name) {
+			recursive_activation = true;
+			if(!(**rit).activated()) {
+				(**rit).activate();
+			}
+			recursive_activation = false;
+			break;
+		}
+	}
 }
