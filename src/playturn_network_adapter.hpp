@@ -5,12 +5,7 @@
 
 #include "config.hpp"
 #include <list>
-
-#ifndef INCL_BOOST_FUNCTION_HPP_
-#define INCL_BOOST_FUNCTION_HPP_
 #include <boost/function.hpp>
-#endif
-
 
 /*
 	The purpose if this class is to preprocess incoming network data, and provide a steam that always returns just one command/action at a time.

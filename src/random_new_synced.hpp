@@ -20,12 +20,7 @@
 #include "random_new.hpp"
 #include "simple_rng.hpp"
 
-
-#ifndef INCL_BOOST_FUNCTION_HPP_
-#define INCL_BOOST_FUNCTION_HPP_
 #include <boost/function.hpp>
-#endif
-
 
 
 /*

@@ -29,12 +29,7 @@
 #include "../../log.hpp"
 
 #include <boost/bind.hpp>
-
-#ifndef INCL_BOOST_FUNCTION_HPP_
-#define INCL_BOOST_FUNCTION_HPP_
 #include <boost/function.hpp>
-#endif
-
 #include <boost/foreach.hpp>
 
 namespace ai {
