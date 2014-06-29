@@ -335,6 +335,7 @@ set_source_files_properties(
 	clipboard.cpp
 	network.cpp
 	network_worker.cpp
+	notifications/notifications.cpp
 	PROPERTIES
 		COMPILE_FLAGS "${CXX_FLAG_NO_OLD_STYLE_CAST}"
 )
