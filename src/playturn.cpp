@@ -25,7 +25,7 @@
 #include "map_label.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
-#include "whiteboard/manager.hpp"
+
 #include "formula_string_utils.hpp"
 #include "play_controller.hpp"
 #include "savegame.hpp"
@@ -166,7 +166,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	}
 	else if (cfg.has_child("whiteboard"))
 	{
-		resources::whiteboard->process_network_data(cfg);
 	}
 	else if (const config &change = cfg.child("change_controller"))
 	{
@@ -219,8 +218,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			}
 
 			resources::controller->maybe_do_init_side();
-
-			resources::whiteboard->on_change_controller(side,tm);
 
 			resources::screen->labels().recalculate_labels();
 

@@ -25,7 +25,8 @@
 #include "map.hpp"
 #include "resources.hpp"
 #include "game_preferences.hpp"
-#include "whiteboard/side_actions.hpp"
+#include "log.hpp"
+
 
 #include <boost/foreach.hpp>
 
@@ -332,8 +333,7 @@ team::team() :
 	last_recruit_(),
 	enemies_(),
 	ally_shroud_(),
-	ally_fog_(),
-	planned_actions_()
+	ally_fog_()
 {
 }
 
@@ -385,9 +385,6 @@ void team::build(const config &cfg, const gamemap& map, int gold)
 
 	countdown_time_ = cfg["countdown_time"];
 	action_bonus_count_ = cfg["action_bonus_count"];
-
-	planned_actions_.reset(new wb::side_actions());
-	planned_actions_->set_team_index(info_.side - 1);
 }
 
 void team::write(config& cfg) const

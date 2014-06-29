@@ -25,6 +25,7 @@
 #include "filesystem.hpp"
 #include "formula_string_utils.hpp"
 #include "game_config.hpp"
+#include "game_display.hpp"
 #include "game_events/handlers.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -41,7 +42,7 @@
 #include "wml_exception.hpp"
 #include "variable.hpp"
 #include "pathfind/pathfind.hpp"
-#include "whiteboard/side_actions.hpp"
+
 #include "sound.hpp"
 #include "soundsource.hpp"
 #include "map_label.hpp"

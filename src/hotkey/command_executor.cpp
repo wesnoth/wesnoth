@@ -221,27 +221,6 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 		case HOTKEY_REPLAY_SKIP_ANIMATION:
 			replay_skip_animation();
 			break;
-		case HOTKEY_WB_TOGGLE:
-			whiteboard_toggle();
-			break;
-		case HOTKEY_WB_EXECUTE_ACTION:
-			whiteboard_execute_action();
-			break;
-		case HOTKEY_WB_EXECUTE_ALL_ACTIONS:
-			whiteboard_execute_all_actions();
-			break;
-		case HOTKEY_WB_DELETE_ACTION:
-			whiteboard_delete_action();
-			break;
-		case HOTKEY_WB_BUMP_UP_ACTION:
-			whiteboard_bump_up_action();
-			break;
-		case HOTKEY_WB_BUMP_DOWN_ACTION:
-			whiteboard_bump_down_action();
-			break;
-		case HOTKEY_WB_SUPPOSE_DEAD:
-			whiteboard_suppose_dead();
-			break;
 		case HOTKEY_SELECT_HEX:
 			select_hex();
 			break;

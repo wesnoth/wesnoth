@@ -31,5 +31,4 @@ namespace resources
 	pathfind::manager    *tunnels = NULL;
 	actions::undo_list   *undo_stack = NULL;
 	unit_map             *units = NULL;
-	wb::manager          *whiteboard = NULL;
 }

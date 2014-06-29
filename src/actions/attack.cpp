@@ -48,7 +48,7 @@
 #include "../unit_display.hpp"
 #include "../unit_helper.hpp"
 #include "../unit_map.hpp"
-#include "../whiteboard/manager.hpp"
+
 #include "../wml_exception.hpp"
 
 #include <boost/foreach.hpp>
@@ -1594,8 +1594,6 @@ void advance_unit(map_location loc, const std::string &advance_to,
 	clearer.fire_events();
 	if ( u.valid() )
 		actions::actor_sighted(*u, &not_seeing);
-
-	resources::whiteboard->on_gamestate_change();
 }
 
 map_location under_leadership(const unit_map& units, const map_location& loc,

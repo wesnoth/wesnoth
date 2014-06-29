@@ -867,17 +867,6 @@ set(wesnoth-main_SRC
 	unit_types.cpp
 	variable.cpp
 	variant.cpp
-	whiteboard/action.cpp
-	whiteboard/attack.cpp
-	whiteboard/highlighter.cpp
-	whiteboard/manager.cpp
-	whiteboard/mapbuilder.cpp
-	whiteboard/move.cpp
-	whiteboard/recall.cpp
-	whiteboard/recruit.cpp
-	whiteboard/side_actions.cpp
-	whiteboard/suppose_dead.cpp
-	whiteboard/utility.cpp
 	${network_implementation_files} # network.cpp and network_worker.cpp are included by default (without USE_ANA_NETWORK)
 )
 

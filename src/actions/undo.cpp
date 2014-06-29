@@ -32,7 +32,7 @@
 #include "../unit.hpp"
 #include "../unit_display.hpp"
 #include "../unit_map.hpp"
-#include "../whiteboard/manager.hpp"
+
 #include "../synced_context.hpp"
 
 #include <boost/foreach.hpp>
@@ -599,7 +599,6 @@ void undo_list::undo()
 	// Bookkeeping.
 	recorder.undo_cut(action->get_replay_data());
 	redos_.push_back(action.release());
-	resources::whiteboard->on_gamestate_change();
 
 	// Screen updates.
 	gui.invalidate_unit();
@@ -799,7 +798,6 @@ void undo_list::redo()
 
 	// Bookkeeping.
 	undos_.push_back(action.release());
-	resources::whiteboard->on_gamestate_change();
 
 	// Screen updates.
 	gui.invalidate_unit();

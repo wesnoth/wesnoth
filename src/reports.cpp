@@ -34,7 +34,7 @@
 #include "tod_manager.hpp"
 #include "unit.hpp"
 #include "unit_helper.hpp"
-#include "whiteboard/manager.hpp"
+
 
 #include <boost/foreach.hpp>
 
@@ -1249,8 +1249,7 @@ REPORT_GENERATOR(gold)
 	std::ostringstream str;
 	int viewing_side = resources::screen->viewing_side();
 	// Suppose the full unit map is applied.
-	int fake_gold = (*resources::teams)[viewing_side - 1].gold() -
-		resources::whiteboard->get_spent_gold_for(viewing_side);
+	int fake_gold = (*resources::teams)[viewing_side - 1].gold();
 	char const *end = naps;
 	if (viewing_side != resources::screen->playing_side()) {
 		str << span_color(font::GRAY_COLOR);

@@ -511,17 +511,6 @@ wesnoth_sources = Split("""
     unit_types.cpp
     variable.cpp
     variant.cpp
-    whiteboard/action.cpp
-    whiteboard/attack.cpp
-    whiteboard/highlighter.cpp
-    whiteboard/manager.cpp
-    whiteboard/mapbuilder.cpp
-    whiteboard/move.cpp
-    whiteboard/recall.cpp
-    whiteboard/recruit.cpp
-    whiteboard/side_actions.cpp
-    whiteboard/suppose_dead.cpp
-    whiteboard/utility.cpp
     widgets/combo.cpp
     widgets/combo_drag.cpp
     widgets/drop_target.cpp
@@ -653,7 +642,6 @@ test_sources = Split("""
     tests/test_sdl_utils.cpp
     tests/test_serialization.cpp
     tests/test_version.cpp
-    tests/test_whiteboard_side_actions.cpp
     tests/gui/fire_event.cpp
     tests/gui/iterator.cpp
     tests/gui/test_drop_target.cpp

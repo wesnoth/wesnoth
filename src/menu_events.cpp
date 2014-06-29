@@ -68,7 +68,7 @@
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 #include "scripting/lua.hpp"
-#include "whiteboard/manager.hpp"
+
 #include "widgets/combo.hpp"
 
 #include <boost/foreach.hpp>
@@ -567,13 +567,8 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 
 		item_keys.push_back(*it);
 
-		char prefix;
-		{ wb::future_map future; // so gold takes into account planned spending
-			int wb_gold = resources::whiteboard->get_spent_gold_for(side_num);
-			//display units that we can't afford to recruit in red
-			prefix = (type->cost() > current_team.gold() - wb_gold
+		char prefix = (type->cost() > current_team.gold()
 					? font::BAD_TEXT : font::NULL_MARKUP);
-		} // end planned unit map scope
 
 		std::stringstream description;
 		description << font::IMAGE << type->image();
@@ -620,7 +615,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 	const unit_type *u_type = unit_types.find(name);
 	assert(u_type);
 
-	if (u_type->cost() > current_team.gold() - resources::whiteboard->get_spent_gold_for(side_num)) {
+	if (u_type->cost() > current_team.gold() ) {
 		gui2::show_transient_message(gui_->video(), "",
 			_("You don’t have enough gold to recruit that unit"));
 		return false;
@@ -631,25 +626,19 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 
 	map_location loc = last_hex;
 	map_location recruited_from = map_location::null_location;
-	std::string msg;
-	{ wb::future_map_if_active future; /* start planned unit map scope if in planning mode */
-		msg = actions::find_recruit_location(side_num, loc, recruited_from, name);
-	} // end planned unit map scope
+	std::string msg = actions::find_recruit_location(side_num, loc, recruited_from, name);
 	if (!msg.empty()) {
 		gui2::show_transient_message(gui_->video(), "", msg);
 		return false;
 	}
 
-	if (!resources::whiteboard->save_recruit(name, side_num, loc)) {
-		//MP_COUNTDOWN grant time bonus for recruiting
-		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
+	//MP_COUNTDOWN grant time bonus for recruiting
+	current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
-		// Do the recruiting.
+	// Do the recruiting.
 		
-		synced_context::run_in_synced_context("recruit", replay_helper::get_recruit(u_type->id(), loc, recruited_from));
-		return true;
-	}
-	return false;
+	synced_context::run_in_synced_context("recruit", replay_helper::get_recruit(u_type->id(), loc, recruited_from));
+	return true;
 }
 
 void menu_handler::recall(int side_num, const map_location &last_hex)
@@ -667,18 +656,9 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	}
 
 	std::vector<const unit*> recall_list_team;
-	{ wb::future_map future; // ensures recall list has planned recalls removed
-		recall_list_team = actions::get_recalls(side_num, last_hex);
-	}
+	recall_list_team = actions::get_recalls(side_num, last_hex);
 
 	gui_->draw(); //clear the old menu
-
-
-	DBG_WB <<"menu_handler::recall: Contents of wb-modified recall list:\n";
-	BOOST_FOREACH(const unit* unit, recall_list_team)
-	{
-		DBG_WB << unit->name() << " [" << unit->id() <<"]\n";
-	}
 
 	if(current_team.recall_list().empty()) {
 		gui2::show_transient_message(gui_->video(), "",
@@ -695,8 +675,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	int res = dialogs::recall_dialog(*gui_, recall_list_team, side_num, get_title_suffix(side_num));
 	if (res < 0) return;
 
-	int wb_gold = resources::whiteboard->get_spent_gold_for(side_num);
-	if (current_team.gold() - wb_gold < current_team.recall_cost()) {
+	if (current_team.gold() < current_team.recall_cost()) {
 		utils::string_map i18n_symbols;
 		i18n_symbols["cost"] = lexical_cast<std::string>(current_team.recall_cost());
 		std::string msg = vngettext(
@@ -713,26 +692,22 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	map_location recall_location = last_hex;
 	map_location recall_from = map_location::null_location;
 	std::string err;
-	{ wb::future_map_if_active future; // future unit map removes invisible units from map, don't do this outside of planning mode
-		err = actions::find_recall_location(side_num, recall_location, recall_from, *(recall_list_team[res]));
-	} // end planned unit map scope
+	err = actions::find_recall_location(side_num, recall_location, recall_from, *(recall_list_team[res]));
 	if(!err.empty()) {
 		gui2::show_transient_message(gui_->video(), "", err);
 		return;
 	}
 
-	if (!resources::whiteboard->save_recall(*recall_list_team[res], side_num, recall_location)) {
-		bool success = synced_context::run_in_synced_context("recall", 
-			replay_helper::get_recall(recall_list_team[res]->id(), recall_location, recall_from),
-			true,
-			true,
-			true,
-			synced_context::ignore_error_function);
+	bool success = synced_context::run_in_synced_context("recall", 
+		replay_helper::get_recall(recall_list_team[res]->id(), recall_location, recall_from),
+		true,
+		true,
+		true,
+		synced_context::ignore_error_function);
 
-		if(!success)
-		{
-			ERR_NG << "menu_handler::recall(): Unit does not exist in the recall list.\n";
-		}
+	if(!success)
+	{
+		ERR_NG << "menu_handler::recall(): Unit does not exist in the recall list.\n";
 	}
 }
 
@@ -740,8 +715,6 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 // Highlights squares that an enemy could move to on their turn, showing how many can reach each square.
 void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 {
-	wb::future_map future; // use unit positions as if all planned actions were executed
-
 	gui_->unhighlight_reach();
 
 	// Compute enemy movement positions
@@ -797,10 +770,7 @@ namespace { // Helpers for menu_handler::end_turn()
 	{
 		for ( unit_map::const_iterator un = units.begin(); un != units.end(); ++un ) {
 			if ( un->side() == side_num ) {
-				// @todo whiteboard should take into consideration units that have
-				// a planned move but can still plan more movement in the same turn
-				if ( actions::unit_can_move(*un) && !un->user_end_turn()
-						&& !resources::whiteboard->unit_has_actions(&*un) )
+				if ( actions::unit_can_move(*un) && !un->user_end_turn() )
 					return true;
 			}
 		}
@@ -814,8 +784,7 @@ namespace { // Helpers for menu_handler::end_turn()
 	{
 		for ( unit_map::const_iterator un = units.begin(); un != units.end(); ++un ) {
 			if ( un->side() == side_num ) {
-				if ( actions::unit_can_move(*un)  &&  !un->has_moved()  && !un->user_end_turn()
-						&& !resources::whiteboard->unit_has_actions(&*un) )
+				if ( actions::unit_can_move(*un)  &&  !un->has_moved()  && !un->user_end_turn() )
 					return true;
 			}
 		}
@@ -837,7 +806,6 @@ bool menu_handler::end_turn(int side_num)
 	// Ask for confirmation if the player hasn't made any moves.
 	else if ( preferences::confirm_no_moves()  &&
 	          !resources::undo_stack->player_acted()  &&
-	          !resources::whiteboard->current_side_has_actions()  &&
 	          units_alive(side_num, units_) )
 	{
 		const int res = gui2::show_message((*gui_).video(), "", _("You have not started your turn yet. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
@@ -858,12 +826,6 @@ bool menu_handler::end_turn(int side_num)
 		if(res == gui2::twindow::CANCEL) {
 			return false;
 		}
-	}
-
-	// Auto-execute remaining whiteboard planned actions
-	// Only finish turn if they all execute successfully, i.e. no ambush, etc.
-	if (!resources::whiteboard->allow_end_turn()) {
-		return false;
 	}
 
 	return true;
@@ -2017,8 +1979,6 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		void do_event();
 		void do_toggle_draw_coordinates();
 		void do_toggle_draw_terrain_codes();
-		void do_toggle_whiteboard();
-		void do_whiteboard_options();
 
 		std::string get_flags_description() const {
 			return _("(D) — debug only, (N) — network only, (A) — admin only");
@@ -2148,12 +2108,6 @@ class console_handler : public map_command_handler<console_handler>, private cha
 			register_command("show_terrain_codes", &console_handler::do_toggle_draw_terrain_codes,
 				_("Toggle overlaying of terrain codes on hexes."));
 			register_alias("show_terrain_codes", "tc");
-			register_command("whiteboard", &console_handler::do_toggle_whiteboard,
-				_("Toggle planning mode."));
-			register_alias("whiteboard", "wb");
-			register_command("whiteboard_options", &console_handler::do_whiteboard_options,
-				_("Access whiteboard options dialog."));
-			register_alias("whiteboard_options", "wbo");
 
 			if (const config &alias_list = preferences::get_alias())
 			{
@@ -3249,21 +3203,6 @@ void console_handler::do_toggle_draw_coordinates() {
 void console_handler::do_toggle_draw_terrain_codes() {
 	menu_handler_.gui_->set_draw_terrain_codes(!menu_handler_.gui_->get_draw_terrain_codes());
 	menu_handler_.gui_->invalidate_all();
-}
-
-void console_handler::do_toggle_whiteboard() {
-	resources::whiteboard->set_active(!resources::whiteboard->is_active());
-	if (resources::whiteboard->is_active()) {
-		print(get_cmd(), _("Planning mode activated!"));
-		resources::whiteboard->print_help_once();
-	} else {
-		print(get_cmd(), _("Planning mode deactivated!"));
-	}
-}
-
-void console_handler::do_whiteboard_options()
-{
-	resources::whiteboard->options_dlg();
 }
 
 void menu_handler::do_ai_formula(const std::string& str,

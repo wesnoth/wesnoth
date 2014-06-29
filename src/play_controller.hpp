@@ -63,10 +63,6 @@ namespace tooltips {
 	struct manager;
 } // namespace tooltips
 
-namespace wb {
-	class manager; // whiteboard manager
-} // namespace wb
-
 class play_controller : public controller_base, public events::observer, public savegame::savegame_config
 {
 public:
@@ -238,9 +234,6 @@ protected:
 	/// undo_list can be an incomplete type at this point (which reduces the
 	/// number of files that depend on actions/undo.hpp).
 	boost::scoped_ptr<actions::undo_list> undo_stack_;
-
-	//whiteboard manager
-	boost::scoped_ptr<wb::manager> whiteboard_manager_;
 
 	const unit_type::experience_accelerator xp_mod_;
 	//if a team is specified whose turn it is, it means we're loading a game

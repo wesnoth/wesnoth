@@ -110,12 +110,6 @@ class acquaintance;
 	bool turn_dialog();
 	void set_turn_dialog(bool ison);
 
-	bool enable_whiteboard_mode_on_start();
-	void set_enable_whiteboard_mode_on_start(bool value);
-
-	bool hide_whiteboard();
-	void set_hide_whiteboard(bool value);
-
 	bool show_combat();
 
 	bool allow_observers();

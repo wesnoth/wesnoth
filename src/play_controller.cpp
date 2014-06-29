@@ -49,7 +49,7 @@
 #include "wml_exception.hpp"
 #include "ai/manager.hpp"
 #include "ai/testing.hpp"
-#include "whiteboard/manager.hpp"
+
 #include "scripting/lua.hpp"
 #include "hotkey/hotkey_item.hpp"
 
@@ -79,7 +79,6 @@ static void clear_resources()
 	resources::tunnels = NULL;
 	resources::undo_stack = NULL;
 	resources::units = NULL;
-	resources::whiteboard = NULL;
 }
 
 
@@ -112,7 +111,6 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	map_(game_config, level),
 	units_(),
 	undo_stack_(new actions::undo_list(level.child("undo_stack"))),
-	whiteboard_manager_(),
 	xp_mod_(level["experience_modifier"].to_int(100)),
 	loading_game_(level["playing_team"].empty() == false),
 	first_human_team_(-1),
@@ -311,11 +309,9 @@ void play_controller::init_managers(){
 	tooltips_manager_.reset(new tooltips::manager(gui_->video()));
 	soundsources_manager_.reset(new soundsource::manager(*gui_));
 	pathfind_manager_.reset(new pathfind::manager(level_));
-	whiteboard_manager_.reset(new wb::manager());
 
 	resources::soundsources = soundsources_manager_.get();
 	resources::tunnels = pathfind_manager_.get();
-	resources::whiteboard = whiteboard_manager_.get();
 
 	halo_manager_.reset(new halo::manager(*gui_));
 	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << "\n";
@@ -717,8 +713,6 @@ void play_controller::do_init_side(bool is_replay, bool only_visual) {
 		gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
 	}
 	loading_game_ = false;
-
-	resources::whiteboard->on_init_side();
 }
 
 //builds the snapshot config from its members and their configs respectively
@@ -785,8 +779,6 @@ config play_controller::to_config() const
 }
 
 void play_controller::finish_side_turn(){
-
-	resources::whiteboard->on_finish_side_turn(player_number_);
 
 	for(unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
 		if (uit->side() == player_number_)
@@ -1125,11 +1117,7 @@ void play_controller::process_focus_keydown_event(const SDL_Event& event)
 	}
 }
 
-void play_controller::process_keydown_event(const SDL_Event& event) {
-	if (event.key.keysym.sym == SDLK_TAB) {
-		whiteboard_manager_->set_invert_behavior(true);
-	}
-}
+void play_controller::process_keydown_event(const SDL_Event& /*event*/) {}
 
 void play_controller::process_keyup_event(const SDL_Event& event) {
 	// If the user has pressed 1 through 9, we want to show
@@ -1156,11 +1144,6 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 				mouse_handler_.select_hex(mouse_handler_.get_selected_hex(), false, false, false);
 			}
 
-		}
-	} else if (event.key.keysym.sym == SDLK_TAB) {
-		static CKey keys;
-		if (!keys[SDLK_TAB]) {
-			whiteboard_manager_->set_invert_behavior(false);
 		}
 	}
 }
@@ -1293,8 +1276,6 @@ bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 		if ( !resources::game_map->is_keep(last_hex)  &&
 		     !resources::game_map->is_castle(last_hex) )
 			return false;
-
-		wb::future_map future; /* lasts until method returns. */
 
 		unit_map::const_iterator leader = units_.find(last_hex);
 		if ( leader != units_.end() )

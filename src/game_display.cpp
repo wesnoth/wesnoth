@@ -44,7 +44,7 @@ Growl_Delegate growl_obj;
 #include "resources.hpp"
 #include "tod_manager.hpp"
 #include "sound.hpp"
-#include "whiteboard/manager.hpp"
+
 #ifdef _WIN32
 #include "windows_tray_notification.hpp"
 #endif
@@ -161,8 +161,6 @@ void game_display::select_hex(map_location hex)
 
 void game_display::highlight_hex(map_location hex)
 {
-	wb::future_map future; /**< Lasts for whole method. */
-
 	const unit *u = get_visible_unit(hex, (*teams_)[viewing_team()], !viewpoint_);
 	if (u) {
 		displayedUnitHex_ = hex;
@@ -187,8 +185,6 @@ void game_display::display_unit_hex(map_location hex)
 {
 	if (!hex.valid())
 		return;
-
-	wb::future_map future; /**< Lasts for whole method. */
 
 	const unit *u = get_visible_unit(hex, (*teams_)[viewing_team()], !viewpoint_);
 	if (u) {
@@ -220,9 +216,6 @@ void game_display::scroll_to_leader(unit_map& units, int side, SCROLL_TYPE scrol
 }
 
 void game_display::pre_draw() {
-	if (resources::whiteboard) {
-		resources::whiteboard->pre_draw();
-	}
 	process_reachmap_changes();
 	/**
 	 * @todo FIXME: must modify changed, but best to do it at the
@@ -233,9 +226,6 @@ void game_display::pre_draw() {
 
 
 void game_display::post_draw() {
-	if (resources::whiteboard) {
-		resources::whiteboard->post_draw();
-	}
 }
 
 void game_display::draw_invalidated()
@@ -316,15 +306,10 @@ void game_display::draw_hex(const map_location& loc)
 				image::get_image(unreachable,image::SCALED_TO_HEX));
 	}
 
-	resources::whiteboard->draw_hex(loc);
-
-	if (!(resources::whiteboard->is_active() && resources::whiteboard->has_temp_move()))
-	{
-		// Footsteps indicating a movement path
-		const std::vector<surface>& footstepImages = footsteps_images(loc);
-		if (!footstepImages.empty()) {
-			drawing_buffer_add(LAYER_FOOTSTEPS, loc, xpos, ypos, footstepImages);
-		}
+	// Footsteps indicating a movement path
+	const std::vector<surface>& footstepImages = footsteps_images(loc);
+	if (!footstepImages.empty()) {
+		drawing_buffer_add(LAYER_FOOTSTEPS, loc, xpos, ypos, footstepImages);
 	}
 	// Draw the attack direction indicator
 	if(on_map && loc == attack_indicator_src_) {
@@ -384,8 +369,6 @@ void game_display::draw_sidebar()
 
 	if (invalidateGameStatus_)
 	{
-		wb::future_map future; // start planned unit map scope
-
 		// We display the unit the mouse is over if it is over a unit,
 		// otherwise we display the unit that is selected.
 		BOOST_FOREACH(const std::string &name, reports::report_list()) {
@@ -413,8 +396,7 @@ void game_display::draw_movement_info(const map_location& loc)
 	if(w != route_.marks.end()
 				&& !route_.steps.empty() && route_.steps.front() != loc) {
 		const unit_map::const_iterator un =
-				resources::whiteboard->get_temp_move_unit().valid() ?
-						resources::whiteboard->get_temp_move_unit() : units_->find(route_.steps.front());
+				units_->find(route_.steps.front());
 		if(un != units_->end()) {
 			// Display the def% of this terrain
 			int def =  100 - un->defense_modifier(get_map().get_terrain(loc));
@@ -997,8 +979,6 @@ void game_display::set_team(size_t teamindex, bool show_everything)
 		viewpoint_ = NULL;
 	}
 	labels().recalculate_labels();
-	if(resources::whiteboard)
-		resources::whiteboard->on_viewer_change(teamindex);
 }
 
 void game_display::set_playing_team(size_t teamindex)

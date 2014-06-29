@@ -42,7 +42,7 @@
 #include "../formula_string_utils.hpp"
 #include "../team.hpp"
 #include "../unit.hpp"
-#include "../whiteboard/manager.hpp"
+
 
 #include <boost/foreach.hpp>
 #include <deque>
@@ -1041,9 +1041,7 @@ namespace { // Private helpers for move_unit()
 		if ( move_it_.valid() ) {
 			// Update the moving unit.
 			move_it_->set_interrupted_move(
-				sighted_stop_ && !resources::whiteboard->is_executing_actions() ?
-					*(full_end_-1) :
-					map_location::null_location);
+				sighted_stop_ ?	*(full_end_-1) : map_location::null_location);
 			if ( ambushed_ || final_loc == zoc_stop_ )
 				move_it_->set_movement(0, true);
 
@@ -1077,8 +1075,7 @@ namespace { // Private helpers for move_unit()
 					action_time_bonus, orig_village_owner, orig_dir_);
 			}
 
-			if ( !mover_valid  ||  undo_blocked()  ||
-				(resources::whiteboard->is_active() && resources::whiteboard->should_clear_undo()) || !synced_context::can_undo())
+			if ( !mover_valid  ||  undo_blocked() || !synced_context::can_undo())
 			{
 				undo_stack->clear();
 			}
@@ -1150,7 +1147,7 @@ namespace { // Private helpers for move_unit()
 		}
 
 		// Suggest "continue move"?
-		if ( playing_team_is_viewing_ && sighted_stop_ && !resources::whiteboard->is_executing_actions() ) {
+		if ( playing_team_is_viewing_ && sighted_stop_ ) {
 			// See if the "Continue Move" action has an associated hotkey
 			std::string name = hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_CONTINUE_MOVE).command);
 			if ( !name.empty() ) {
