@@ -987,6 +987,16 @@ int chat_message_aging()
 	return lexical_cast_default<int>(preferences::get("chat_message_aging"), 20);
 }
 
+void set_max_wml_menu_items(int max)
+{
+	preferences::set("max_wml_menu_items", max);
+}
+
+int max_wml_menu_items()
+{
+	return lexical_cast_default<int>(preferences::get("max_wml_menu_items"), 7);
+}
+
 bool show_all_units_in_help() {
 	return preferences::get("show_all_units_in_help", false);
 }

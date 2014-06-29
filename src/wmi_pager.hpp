@@ -32,11 +32,10 @@ namespace game_events { class wmi_container; }
 class wmi_pager {
 private:
 	int page_num_; //!< Current page number
-	size_t page_size_; //!< Current size of a page
 	const game_events::wmi_container * foo_; //!< Internal pointer to the collection of wml menu items
 
 public:
-	wmi_pager() : page_num_(0), page_size_(7), foo_(NULL) {}
+	wmi_pager() : page_num_(0), foo_(NULL) {}
 
 	void update_ref(game_events::wmi_container * ptr) { foo_ = ptr; } //!< Updates the internal wmi_container pointer
 
