@@ -728,6 +728,8 @@ bool play_controller::execute_command(const hotkey::hotkey_command& cmd, int ind
 		} else if ( i < wml_commands_.size()  &&  wml_commands_[i] ) {
 			if (!wml_command_pager_->capture(*wml_commands_[i])) {
 				wml_commands_[i]->fire_event(mouse_handler_.get_last_hex());
+			} else { //relaunch the menu
+				show_menu(get_display().get_theme().context_menu()->items(),last_context_menu_x_,last_context_menu_y_,true, get_display());
 			}
 			return true;
 		}
@@ -1091,6 +1093,12 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 
 void play_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
 {
+	if (context_menu)
+	{
+		last_context_menu_x_ = xloc;
+		last_context_menu_y_ = yloc;
+	}
+
 	std::vector<std::string> items = items_arg;
 	const hotkey::hotkey_command* cmd;
 	std::vector<std::string>::iterator i = items.begin();
