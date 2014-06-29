@@ -52,8 +52,11 @@ if(USE_ANA_NETWORK)
 	add_subdirectory(ana/src)
 endif(USE_ANA_NETWORK)
 
-message(STATUS "Configuring SDL_gpu...")
-add_subdirectory(SDL_gpu)
+if(ENABLE_SDL_GPU)
+	message(STATUS "Configuring SDL_gpu...")
+	add_definitions("-DSDL_GPU")
+	add_subdirectory(SDL_gpu)
+endif(ENABLE_SDL_GPU)
 
 # needed to get include paths in the subfolders correct
 include_directories( ${CMAKE_SOURCE_DIR}/src/ )

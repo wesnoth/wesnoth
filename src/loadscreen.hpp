@@ -82,7 +82,11 @@ private:
 #if SDL_VERSION_ATLEAST(2,0,0)
 	sdl::ttexture logo_texture_;
 #else
+#ifdef SDL_GPU
 	GPU_Image *logo_image_;
+#else
+	surface logo_surface_;
+#endif
 #endif
 	bool logo_drawn_;
 	int pby_offset_;
