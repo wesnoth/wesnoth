@@ -32,7 +32,8 @@ script:
     - if [[ "$CPP_TESTS" = true ]]; then time ./utils/travis/test_wrapper.sh; fi
     - if [[ "$WML_TESTS" = true ]]; then time ./run_wml_tests -v -t 20; fi
 after_failure:
-    - ./utils/travis/travis_after_failure.sh
+    - if [ -f "errors.log" ]; then echo -e "\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n"; fi
+    - if [ -f "errors.log" ]; then cat errors.log; fi
 notifications:
     email: false
     irc:
