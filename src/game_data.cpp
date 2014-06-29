@@ -130,8 +130,7 @@ void game_data::set_variable(const std::string& key, const t_string& value)
 
 config& game_data::add_variable_cfg(const std::string& key, const config& value)
 {
-	variable_info to_add = get_variable_access(key, true, variable_info::TYPE_ARRAY);
-	return to_add.vars->add_child(to_add.key, value);
+	return get_variable_access(key, true, variable_info::TYPE_ARRAY).add_child(value);
 }
 
 void game_data::clear_variable_cfg(const std::string& varname)

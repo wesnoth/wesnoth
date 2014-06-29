@@ -49,12 +49,15 @@ struct variable_info
 	config::attribute_value &as_scalar();
 	config& as_container();
 	array_range as_array(); //range may be empty
+
 	static config& get_temporaries();
 
-	
+
 	config::attribute_value as_scalar_const();
 
 	void set_range(config& data, std::string mode);
 
 	void clear(bool only_tables);
+
+	config& add_child(const config& value);
 };

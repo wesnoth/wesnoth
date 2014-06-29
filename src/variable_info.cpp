@@ -211,6 +211,7 @@ config::attribute_value variable_info::as_scalar_const()
 	return *r;
 	
 }
+
 config& variable_info::as_container() {
 	assert(is_valid);
 	if(explicit_index) {
@@ -297,4 +298,9 @@ void variable_info::clear(bool only_tables)
 			}
 		}
 	}
+}
+
+config& variable_info::add_child(const config& value)
+{
+	return this->vars->add_child(this->key, value);
 }
