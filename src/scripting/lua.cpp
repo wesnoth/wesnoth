@@ -3656,6 +3656,14 @@ static int impl_theme_items_set(lua_State *L)
 	return 0;
 }
 
+/**
+ * Gets all the WML variables currently set.
+ * - Ret 1: WML table
+ */
+static int intf_get_all_vars(lua_State *L) {
+	luaW_pushconfig(L, resources::gamedata->get_variables());
+	return 1;
+}
 
 LuaKernel::LuaKernel(const config &cfg)
 	: mState(luaL_newstate()), level_(cfg)
@@ -3700,6 +3708,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "find_vacant_tile",         &intf_find_vacant_tile         },
 		{ "fire_event",               &intf_fire_event               },
 		{ "float_label",              &intf_float_label              },
+		{ "get_all_vars",             &intf_get_all_vars             },
 		{ "get_dialog_value",         &intf_get_dialog_value         },
 		{ "get_displayed_unit",       &intf_get_displayed_unit       },
 		{ "get_era",                  &intf_get_era                  },
