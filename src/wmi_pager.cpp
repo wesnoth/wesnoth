@@ -76,11 +76,11 @@ void wmi_pager::get_items(const map_location& hex,
 		return;
 	}
 
-	int page_size_int = preferences::max_wml_menu_items();
+	const int page_size_int = preferences::max_wml_menu_items();
 
 	assert(page_size_int >= 0 && "max wml menu items cannot be negative, this indicates preferences corruption");
 
-	size_t page_size = page_size_int;
+	const size_t page_size = page_size_int;
 
 	assert(page_size > 2u && "if we dont have at least 3 items, we can't display anything on a middle page...");
 
