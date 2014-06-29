@@ -54,6 +54,7 @@
 #include "unit.hpp"
 #include "unit_id.hpp"
 #include "whiteboard/manager.hpp"
+#include "wmi_pager.hpp"
 #include "wml_exception.hpp"
 
 #include <boost/foreach.hpp>
@@ -125,6 +126,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	init_side_done_(level["init_side_done"].to_bool(true)),
 	savenames_(),
 	wml_commands_(),
+	wml_command_pager_(new wmi_pager()),
 	victory_when_enemies_defeated_(true),
 	remove_from_carryover_on_defeat_(true),
 	end_level_data_(),
@@ -724,7 +726,9 @@ bool play_controller::execute_command(const hotkey::hotkey_command& cmd, int ind
 			throw game::load_game_exception(savenames_[i],false,false,false,"");
 
 		} else if ( i < wml_commands_.size()  &&  wml_commands_[i] ) {
-			wml_commands_[i]->fire_event(mouse_handler_.get_last_hex());
+			if (!wml_command_pager_->capture(*wml_commands_[i])) {
+				wml_commands_[i]->fire_event(mouse_handler_.get_last_hex());
+			}
 			return true;
 		}
 	}
@@ -1072,7 +1076,8 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 
 			// Replace this placeholder entry with available menu items.
 			items.erase(items.begin() + i);
-			gamestate_.gamedata_.get_wml_menu_items().get_items(mouse_handler_.get_last_hex(),
+			wml_command_pager_->update_ref(&gamestate_.gamedata_.get_wml_menu_items());
+			wml_command_pager_->get_items(mouse_handler_.get_last_hex(),
 			                                         wml_commands_, newitems);
 			items.insert(items.begin()+i, newitems.begin(), newitems.end());
 			// End the "for" loop.
