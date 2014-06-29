@@ -25,14 +25,14 @@ install:
     - time sudo apt-get update -qq
     - time sudo apt-get install -qq libboost-iostreams-dev libboost-program-options-dev libboost-regex-dev libboost-system-dev libboost-test-dev libcairo2-dev libfribidi-dev libpango1.0-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 script: 
-    - if [ "$CXX" = "clang++" ]; then time ./check_utf8.sh; fi
+    - if [ "$CXX" = "clang++" ]; then time ./utils/travis/check_utf8.sh; fi
     - scons cxxtool=$CXX --debug=time strict=$STRICT_COMPILATION $TARGETS
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
-    - if [[ "$CPP_TESTS" = true ]]; then time ./test_wrapper.sh; fi
+    - if [[ "$CPP_TESTS" = true ]]; then time ./utils/travis/test_wrapper.sh; fi
     - if [[ "$WML_TESTS" = true ]]; then time ./run_wml_tests -v -t 20; fi
 after_failure:
-    - ./travis_after_failure.sh
+    - ./utils/travis/travis_after_failure.sh
 notifications:
     email: false
     irc:
