@@ -40,6 +40,9 @@ Version 1.11.15+dev:
    * Added a button to copy the in-game Chat Log dialog contents to clipboard.
    * Fixed dependency check on MP mod locked to scenario on create game load
      checking against the first scenario instead of the last played scenario.
+   * Fixed AI engine names in the MP game setup screen being translated to the
+     language selected when Wesnoth was started rather than the current
+     language (bug #22092).
  * WML engine:
    * Fixed a regression in 1.11.14 causing WML parser/preprocessor errors to
      not interrupt the game load sequence or display an error message in-game,
