@@ -47,8 +47,11 @@
 #include <errno.h>
 #endif
 
-static lg::log_domain log_network("network");
-#define LOG_CS if(lg::err.dont_log(log_network)) ; else lg::err(log_network, false)
+static lg::log_domain log_campaignd("campaignd");
+#define DBG_CS LOG_STREAM(debug, log_campaignd)
+#define LOG_CS LOG_STREAM(info,  log_campaignd)
+#define WRN_CS LOG_STREAM(warn,  log_campaignd)
+#define ERR_CS LOG_STREAM(err,   log_campaignd)
 
 //compatibility code for MS compilers
 #ifndef SIGHUP
@@ -709,6 +712,7 @@ int main(int argc, char**argv)
 {
 	game_config::path = get_cwd();
 
+	lg::set_log_domain_severity("campaignd", 2 /*lg::info*/);
 	lg::timestamps(true);
 
 	try {
