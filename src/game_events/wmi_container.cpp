@@ -119,7 +119,7 @@ void wmi_container::get_items(const map_location& hex,
 	scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, *resources::units);
 
 	// Check each menu item.
-	BOOST_FOREACH( const item_ptr & item, std::make_pair<const_iterator> (start, finish) )
+	BOOST_FOREACH( const item_ptr & item, std::make_pair (start, finish) )
 	{
 		// Can this item be shown?
 		if ( item->use_wml_menu() && item->can_show(hex) )
