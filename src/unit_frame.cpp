@@ -333,7 +333,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 		int image_duration = (progressive_image(image_,1)).duration();
 		int image_diagonal_duration = (progressive_image(image_diagonal_,1)).duration();
 		duration(std::max(std::max(image_duration,image_diagonal_duration),halo_duration));
-		
+
 	} else {
 		duration(cfg[frame_string + "end"].to_int() - cfg[frame_string + "begin"].to_int());
 	}
@@ -627,7 +627,7 @@ std::vector<std::string> frame_parsed_parameters::debug_strings() const {
 }
 
 
-void unit_frame::redraw(const int frame_time,bool on_start_time,bool in_scope_of_frame,const map_location & src,const map_location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val)const
+void unit_frame::redraw(const int frame_time,bool on_start_time,bool in_scope_of_frame,const map_location & src,const map_location & dst,halo::handle & halo_id,halo::manager & halo_man, const frame_parameters & animation_val,const frame_parameters & engine_val)const
 {
 	const int xsrc = game_display::get_singleton()->get_location_x(src);
 	const int ysrc = game_display::get_singleton()->get_location_y(src);
@@ -697,14 +697,12 @@ void unit_frame::redraw(const int frame_time,bool on_start_time,bool in_scope_of
 				ftofxp(current_data.highlight_ratio), current_data.blend_with,
 			       	current_data.blend_ratio,current_data.submerge,!facing_north);
 	}
-	
-	halo::remove(*halo_id);
-	*halo_id = halo::NO_HALO;
-	
+	halo_id = halo::handle(); //halo::NO_HALO;
+
 	if (!in_scope_of_frame) { //check after frame as first/last frame image used in defense/attack anims
 		return;
 	}
-	
+
 	if(!current_data.halo.empty()) {
 		halo::ORIENTATION orientation;
 		switch(direction)
@@ -736,15 +734,15 @@ void unit_frame::redraw(const int frame_time,bool on_start_time,bool in_scope_of
 				orientation = halo::NORMAL;
 				break;
 		}
-		
+
 		if(direction != map_location::SOUTH_WEST && direction != map_location::NORTH_WEST) {
-			*halo_id = halo::add(static_cast<int>(x+current_data.halo_x* game_display::get_singleton()->get_zoom_factor()),
+			halo_id = halo_man.add(static_cast<int>(x+current_data.halo_x* game_display::get_singleton()->get_zoom_factor()),
 					static_cast<int>(y+current_data.halo_y* game_display::get_singleton()->get_zoom_factor()),
 					current_data.halo + current_data.halo_mod,
 					map_location(-1, -1),
 					orientation);
 		} else {
-			*halo_id = halo::add(static_cast<int>(x-current_data.halo_x* game_display::get_singleton()->get_zoom_factor()),
+			halo_id = halo_man.add(static_cast<int>(x-current_data.halo_x* game_display::get_singleton()->get_zoom_factor()),
 					static_cast<int>(y+current_data.halo_y* game_display::get_singleton()->get_zoom_factor()),
 					current_data.halo + current_data.halo_mod,
 					map_location(-1, -1),

@@ -1,4 +1,6 @@
 Version 1.13.0-dev:
+ * Add-ons server:
+   * Add-on metadata pattern blacklisting implemented.
  * AI:
    * New Micro AI: Fast AI
    * Messenger Escort Micro AI: new optional parameters [filter],
@@ -17,17 +19,23 @@ Version 1.13.0-dev:
      them for UMC and adding functionality from other versions of Wesnoth. Some
      code cleanup for consistency, readability and speed, as well as fixing of
      some minor and subtle bugs.
+   * Fix bug in Random Recruit Micro AI: the AI can now handle custom castle
+     terrain independent of its terrain code
+   * Fix bug in Return Guardian Micro AI when there is no path to the return hex
  * Campaigns:
    * Changed all occurrences of {FLAG_VARIANT ragged} to {FLAG_VARIANT6 ragged}
    * Eastern Invasion:
      * In 'Captured', stolen gold won't be mentioned if the player had no
        carryover gold.
+   * Northern Rebirth:
+     * Fixed Sister Thera and Father Morvin respawning into the recall list if
+       the other is on the north or west map edges.
    * Son of the Black Eye: some minor changes
      * S2: adjusted starting villages; scenario now ends if Kapou'e is already
        on the signpost when the messenger comes back
      * S3: make objectives consistent between before and after trolls appear
      * S6: remove AI controller.  It doesn't work with sides without a leader
-     * Minor balance tweaks to scenarios 7, 8, 12, 14 and 17.
+     * Minor balance tweaks to scenarios 7, 8, 12, 14, 15, 17 and 18.
    * The Hammer of Thursagan:
      * Fixed missing objective in 'The Court of Karrag'.
      * Rebalanced scenarios 'Invaders', Mages and Drakes' and 'Fear'.
@@ -35,7 +43,7 @@ Version 1.13.0-dev:
    * Purge "human_ai" controller type. This is a fixup of bugfix #18829 below.
  * Language and i18n:
    * Updated translations: Czech, French, German, Greek, Hungarian, Italian,
-     Lithuanian, Scottish Gaelic, Slovak
+     Lithuanian, Scottish Gaelic, Slovak, Vietnamese
  * Lua API:
    * Fix bug #21761: wesnoth.synchronize_choice will now give a warning when
      the table returned by the user-specified function is not completely valid,
@@ -43,6 +51,8 @@ Version 1.13.0-dev:
  * Graphics:
    * Smooth unit movement over terrain with elevation (e.g. keeps/bridges)
    * Fixed bug #22045: Only blit neutral surfaces.
+   * [item] images are now subject to local ToD lighting effects instead of
+     just the current map-wide ToD lighting (bug #22215).
  * Units:
    * Increased the experience requirement for the Rami from 32 to 39
    * Increased the experience requirement for the Saree from 56 to 64
@@ -51,16 +61,36 @@ Version 1.13.0-dev:
    * Add 'elemental' trait to mudcrawler line
    * Fix sound timings for drake fire animation macros
  * User interface:
-   * Classic Theme which restores the 1.10 UI. 
+   * Classic Theme which restores the 1.10 UI.
    * Made orb and minmap colors configurable by the game preferences.
    * Remove 'allow_new_game=no' entries from random map new game list
+   * Fixed bug #22095: An assertion failure in the gamestate inspector.
+   * Changed: A listbox can now update its size when rows are added.
+   * Changed: Avoid listboxes to handle mouse clicks twice.
+   * Fixed bug #22144 + #22046: An assertion failure with empty labels in
+     a listbox.
+   * The :inspect dialog now uses the same function as saved games to generate
+     WML in text form instead of a simplified version.
+   * Added a button to copy the currently displayed content from the :inspect
+     dialog to clipboard.
+   * Added a button to copy the in-game Chat Log dialog contents to clipboard.
+   * Fixed the WML load error dialog not displaying an add-on name instead of
+     falling back to its directory name if the add-on contains an outdated
+     _info.cfg file lacking an [info]title= value.
+   * Fixed most of the minimap buttons and the End Turn button appearing
+     without contents or in the wrong state during WML start events until they
+     are interacted with or control is given to the player for the first time.
+   * Added a new subdialog in Preferences to clean or purge the WML cache.
  * WML engine:
    * Added customizable recall costs for unit types and individual units,
      using the new recall_cost attribute in [unit_type] and [unit].
    * Added support for [elseif] tags inside [if]
+   * Schema validator messages now conform better to the new WML
+     parser/preprocessor diagnostics format introduced in version 1.11.10.
+   * Added define= functionality to scenarios, eras, and modifications.
  * Miscellaneous and bug fixes:
    * replace 'fight_on_without_leader'=yes/no with defeat_condition=no_leader/
-     no_units/always/never which allows the wml developer to decide when a side 
+     no_units/always/never which allows the wml developer to decide when a side
      is considered defeated
    * Fix Fisher-Yates implemenation of Lua helper.shuffle (bug #21706)
    * Fixed issues with the ~BG() image path function not always working with
@@ -139,24 +169,24 @@ Version 1.13.0-dev:
      commands can be used to script a scenario and use the same code path
      as if a human / ai ordered the command. These are intended to facilitate
      making some kinds of noninteractive unit tests.
-   * Support for total conversions, so called "cores".  
+   * Support for total conversions, so called "cores".
    * Fix bug #22030: correct index of weapon special disable in attack GUI
    * Fix bug #21964: assertion failure when using "controller" attribute with
      a number.
-   * Add [do_command], remove [issue_attack_command] and [issue_move_command], 
-     which are superceded by [do_command]. [do_command] takes the body of a 
-     [command] tag from ReplayWML, (some possibilities not allowed), and 
-     executes the corresponding action. It is replay safe and triggers WML 
+   * Add [do_command], remove [issue_attack_command] and [issue_move_command],
+     which are superceded by [do_command]. [do_command] takes the body of a
+     [command] tag from ReplayWML, (some possibilities not allowed), and
+     executes the corresponding action. It is replay safe and triggers WML
      events as appropriate.
    * Reallow selection of another unit on same side without deselect first
    * Add "strict mode". Using --log-strict=[severity] causes wesnoth to throw
-     a game_error exception when anything is written to a log as severe as 
+     a game_error exception when anything is written to a log as severe as
      that. For example --log-strict=warning causes both warnings and errors
      to generate runtime exceptions. This is intended for unit tests.
    * Fix bug #22042: filesystem content disclosure issue affecting Lua APIs
    * Fix bug #21867: team flag colors not refreshed after making use of
      [modify_side] color= unless a new flag set is also provided.
-   * Fix a bug where in movement records, "skip_sighted" was sometimes 
+   * Fix a bug where in movement records, "skip_sighted" was sometimes
      spelled as "skip_sighed".
    * Fix bug #22020: make base units with variations help entry clickable
      from the 'Unit Description' menu entry or from side pane.
@@ -170,12 +200,21 @@ Version 1.13.0-dev:
    * [modify_side] may now alter the value of [side] defeat_condition.
    * Fix bug #22116: unlock movement when attacking enemy+discovering in fog
    * In mp the other players now also proceed to the next scenario if one human player wins.
-   * Fix bug #21397: "Saving and loading may cause a side's turn is not 
+   * Fix bug #21397: "Saving and loading may cause a side's turn is not
      initialized".
-   * Fix bug which caused no units to be displayed when reloading an end of 
-     scenario save, by stripping them from the save file. However, this does 
-     not fix bug #15545, which was the reason that this behavior was introduced. 
+   * Fix bug which caused no units to be displayed when reloading an end of
+     scenario save, by stripping them from the save file. However, this does
+     not fix bug #15545, which was the reason that this behavior was introduced.
    * Fix bug #22123 "Replays don't reset map when reset button is pressed, causing OOS"
+   * Wesnoth reports an error if it evalutes [if] and finds no [then], [else], [elseif]
+     children, as a chat message from lua.
+   * Fix bug #22134: Campaign prefix not used in mp campaign saves
+   * Made the error messages sent to stderr when the core data dir is
+     incorrectly set more helpful.
+   * Fix bug #20126: Recursive preprocessor includes cause infinite loop
+   * Added 'faction_lock' and 'leader_lock' to SideWML to be used in MP Connect
+     screen. Fixes bug #21978.
+   * Fix bug #22231: partial moves now able to be continued in whiteboard
 
 Version 1.11.11:
  * Add-ons server:

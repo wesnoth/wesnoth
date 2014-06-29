@@ -24,7 +24,7 @@
 #include "log.hpp"
 #include "preferences.hpp"
 #include "preferences_display.hpp"
-#include "sdl_utils.hpp"
+#include "sdl/utils.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/window.hpp"
 #include "video.hpp"
@@ -551,6 +551,22 @@ void CVideo::set_window_icon(surface& icon)
 	assert(window);
 	window->set_icon(icon);
 }
+
+sdl::twindow *CVideo::get_window()
+{
+	return window;
+}
+
+#endif
+
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+static int sdl_display_index()
+{
+	if(window) {
+		return SDL_GetWindowDisplayIndex(*window);
+	}
+	return 0;
+}
 #endif
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
@@ -558,18 +574,23 @@ std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
 {
 	std::vector<std::pair<int, int> > result;
 
-	const int modes = SDL_GetNumDisplayModes(0);
+	const int modes = SDL_GetNumDisplayModes(sdl_display_index());
 	if(modes <= 0) {
 		std::cerr << "No modes supported\n";
 		return result;
 	}
 
+	const std::pair<int,int> min_res = std::make_pair(preferences::min_allowed_width(),preferences::min_allowed_height());
+
 	SDL_DisplayMode mode;
 	for(int i = 0; i < modes; ++i) {
 		if(SDL_GetDisplayMode(0, i, &mode) == 0) {
-			result.push_back(std::make_pair(mode.w, mode.h));
+			if (mode.w >= min_res.first && mode.h >= min_res.second)
+				result.push_back(std::make_pair(mode.w, mode.h));
 		}
 	}
+	if(std::find(result.begin(), result.end(), min_res) == result.end())
+		result.push_back(min_res);
 
 	std::sort(result.begin(), result.end());
 	result.erase(std::unique(result.begin(), result.end()), result.end());
@@ -580,11 +601,13 @@ std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
 std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
 {
 	std::vector<std::pair<int, int> > result;
-
-	SDL_PixelFormat format = *getSurface()->format;
-	format.BitsPerPixel = getBpp();
-
-	const SDL_Rect* const * modes = SDL_ListModes(&format,FULL_SCREEN);
+	const SDL_Rect* const * modes;
+	if (const surface& surf = getSurface()) {
+		SDL_PixelFormat format = *surf->format;
+		format.BitsPerPixel = getBpp();
+		modes = SDL_ListModes(&format, FULL_SCREEN);
+	} else
+		modes = SDL_ListModes(NULL, FULL_SCREEN);
 
 	// The SDL documentation says that a return value of -1
 	// means that all dimensions are supported/possible.
@@ -612,12 +635,12 @@ std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
 		std::cerr << "No modes supported\n";
 		return result;
 	}
-	
+
 	const std::pair<int,int> min_res = std::make_pair(preferences::min_allowed_width(),preferences::min_allowed_height());
-	
-	if (getSurface()->w >= min_res.first && getSurface()->h >= min_res.second)
+
+	if (getSurface() && getSurface()->w >= min_res.first && getSurface()->h >= min_res.second)
 		result.push_back(std::make_pair(getSurface()->w, getSurface()->h));
-	
+
 	for(int i = 0; modes[i] != NULL; ++i) {
 		if (modes[i]->w >= min_res.first && modes[i]->h >= min_res.second)
 			result.push_back(std::make_pair(modes[i]->w,modes[i]->h));

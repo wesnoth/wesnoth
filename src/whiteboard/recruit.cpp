@@ -23,11 +23,13 @@
 #include "utility.hpp"
 #include "visitor.hpp"
 
-#include "game_display.hpp"
+#include "fake_unit_manager.hpp"
+#include "fake_unit_ptr.hpp"
 #include "menu_events.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "unit.hpp"
+#include "unit_animation_component.hpp"
 #include "unit_map.hpp"
 #include "unit_types.hpp"
 
@@ -56,7 +58,7 @@ recruit::recruit(size_t team_index, bool hidden, const std::string& unit_name, c
 		unit_name_(unit_name),
 		recruit_hex_(recruit_hex),
 		temp_unit_(create_corresponding_unit()), //auto-ptr ownership transfer
-		fake_unit_(new game_display::fake_unit(*temp_unit_)), //temp_unit_ *copied* into new fake unit
+		fake_unit_(UnitPtr(new unit(*temp_unit_))), //temp_unit_ *copied* into new fake unit
 		cost_(0)
 {
 	this->init();
@@ -76,7 +78,7 @@ recruit::recruit(config const& cfg, bool hidden)
 
 	// Construct temp_unit_ and fake_unit_
 	temp_unit_ = create_corresponding_unit(); //auto-ptr ownership transfer
-	fake_unit_.reset(new game_display::fake_unit(*temp_unit_)), //temp_unit_ copied into new fake_unit
+	fake_unit_.reset(UnitPtr (new unit(*temp_unit_))), //temp_unit_ copied into new fake_unit
 
 	this->init();
 }
@@ -86,8 +88,8 @@ void recruit::init()
 	fake_unit_->set_location(recruit_hex_);
 	fake_unit_->set_movement(0, true);
 	fake_unit_->set_attacks(0);
-	fake_unit_->set_ghosted(false);
-	fake_unit_->place_on_game_display(resources::screen);
+	fake_unit_->anim_comp().set_ghosted(false);
+	fake_unit_.place_on_fake_unit_manager(resources::fake_units);
 
 	cost_ = fake_unit_->type().cost();
 }
@@ -129,7 +131,7 @@ void recruit::apply_temp_modifier(unit_map& unit_map)
 
 	// Temporarily insert unit into unit_map
 	// unit map takes ownership of temp_unit
-	unit_map.insert(temp_unit_.release());
+	unit_map.insert(temp_unit_);
 
 	// Update gold in the top bar
 	resources::screen->invalidate_game_status();
@@ -138,7 +140,7 @@ void recruit::apply_temp_modifier(unit_map& unit_map)
 void recruit::remove_temp_modifier(unit_map& unit_map)
 {
 	//Unit map gives back ownership of temp_unit_
-	temp_unit_.reset(unit_map.extract(recruit_hex_));
+	temp_unit_ = unit_map.extract(recruit_hex_);
 	assert(temp_unit_.get());
 }
 
@@ -164,14 +166,14 @@ void recruit::redraw()
 }
 
 
-std::auto_ptr<unit> recruit::create_corresponding_unit()
+UnitPtr recruit::create_corresponding_unit()
 {
 	unit_type const* type = unit_types.find(unit_name_);
 	assert(type);
 	int side_num = team_index() + 1;
 	//real_unit = false needed to avoid generating random traits and causing OOS
 	bool real_unit = false;
-	std::auto_ptr<unit> result(new unit(*type, side_num, real_unit));
+	UnitPtr result(new unit(*type, side_num, real_unit));
 	result->set_movement(0, true);
 	result->set_attacks(0);
 	return result; //ownership gets transferred to returned auto_ptr copy

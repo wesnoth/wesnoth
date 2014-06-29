@@ -15,7 +15,7 @@
 #ifndef TEXT_HPP_INCLUDED
 #define TEXT_HPP_INCLUDED
 
-#include "sdl_utils.hpp"
+#include "sdl/utils.hpp"
 #include "serialization/unicode.hpp"
 
 #include <boost/noncopyable.hpp>
@@ -24,6 +24,10 @@
 #include <pango/pangocairo.h>
 
 #include <string>
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+#include "sdl/texture.hpp"
+#endif
 
 struct language_def;
 
@@ -71,6 +75,16 @@ public:
 	 * redraws the surface before returning it.
 	 */
 	surface render() const;
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+	/**
+	 * Returns the rendered text as a texture.
+	 *
+	 * Before rendering it tests whether a redraw is needed and if so it first
+	 * redraws the texture before returning it.
+	 */
+	sdl::ttexture render_as_texture() const;
+#endif
 
 	/** Returns the width needed for the text. */
 	int get_width() const;
@@ -207,6 +221,11 @@ private:
 
 	/** The surface to render upon used as a cache. */
 	mutable surface surface_;
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+	/** The texture to render upon used as a cache. */
+	mutable sdl::ttexture texture_;
+#endif
 
 	/** The text to draw (stored as UTF-8). */
 	std::string text_;

@@ -102,7 +102,7 @@ bool get_village(const map_location& loc, int side, int *time_bonus = NULL);
 /// And enters the synced context.
 size_t move_unit_and_record(const std::vector<map_location> &steps,
                  undo_list* undo_stack,
-                 bool continued_move = false, 
+                 bool continued_move = false,
 				 bool show_move = true,
                  bool* interrupted = NULL,
                  move_unit_spectator* move_spectator = NULL);
@@ -111,15 +111,8 @@ size_t move_unit_and_record(const std::vector<map_location> &steps,
 /// to be called from replay when we are already in the synced context.
 size_t move_unit_from_replay(const std::vector<map_location> &steps,
                  undo_list* undo_stack,
-                 bool continued_move, bool skip_ally_sighted, 
+                 bool continued_move, bool skip_ally_sighted,
 				 bool show_move = true);
-
-/**
- * Will return true iff the unit @a u has any possible moves
- * it can do (including attacking etc).
- */
-bool unit_can_move(const unit &u);
-
 
 }//namespace actions
 

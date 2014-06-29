@@ -17,7 +17,8 @@
 #define MOUSE_HANDLER_BASE_H_INCLUDED
 
 #include "map_location.hpp"
-#include "SDL.h"
+#include "SDL_events.h"
+#include "SDL_version.h"
 
 class display;
 
@@ -107,7 +108,7 @@ public:
 	 * Overridden in derived class. Called on drag+drop movements.
 	 */
 	virtual void move_action(bool browse);
-	
+
 	/**
 	 * Called whenever the left mouse drag has "ended".
 	 */
@@ -200,7 +201,7 @@ protected:
 
 	/** Show context menu flag */
 	bool show_menu_;
-	
+
 	/** Relative to middle click scrolling */
 	int scroll_start_x_;
 	int scroll_start_y_;

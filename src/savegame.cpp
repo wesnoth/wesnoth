@@ -18,6 +18,7 @@
 
 #include "savegame.hpp"
 
+#include "save_index.hpp"
 #include "carryover.hpp"
 #include "dialogs.hpp" //FIXME: get rid of this as soon as the two remaining dialogs are moved to gui2
 #include "format_time_summary.hpp"
@@ -55,341 +56,8 @@ static lg::log_domain log_engine("engine");
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
-#ifdef _WIN32
-	#ifdef INADDR_ANY
-		#undef INADDR_ANY
-	#endif
-	#ifdef INADDR_BROADCAST
-		#undef INADDR_BROADCAST
-	#endif
-	#ifdef INADDR_NONE
-		#undef INADDR_NONE
-	#endif
-
-	#include <windows.h>
-
-	/**
-	 * conv_ansi_utf8()
-	 *   - Convert a string between ANSI encoding (for Windows filename) and UTF-8
-	 *  string &name
-	 *     - filename to be converted
-	 *  bool a2u
-	 *     - if true, convert the string from ANSI to UTF-8.
-	 *     - if false, reverse. (convert it from UTF-8 to ANSI)
-	 */
-	void conv_ansi_utf8(std::string &name, bool a2u) {
-		int wlen = MultiByteToWideChar(a2u ? CP_ACP : CP_UTF8, 0,
-									   name.c_str(), -1, NULL, 0);
-		if (wlen == 0) return;
-		WCHAR *wc = new WCHAR[wlen];
-		if (wc == NULL) return;
-		if (MultiByteToWideChar(a2u ? CP_ACP : CP_UTF8, 0, name.c_str(), -1,
-								wc, wlen) == 0) {
-			delete [] wc;
-			return;
-		}
-		int alen = WideCharToMultiByte(!a2u ? CP_ACP : CP_UTF8, 0, wc, wlen,
-									   NULL, 0, NULL, NULL);
-		if (alen == 0) {
-			delete [] wc;
-			return;
-		}
-		CHAR *ac = new CHAR[alen];
-		if (ac == NULL) {
-			delete [] wc;
-			return;
-		}
-		WideCharToMultiByte(!a2u ? CP_ACP : CP_UTF8, 0, wc, wlen,
-							ac, alen, NULL, NULL);
-		delete [] wc;
-		if (ac == NULL) {
-			return;
-		}
-		name = ac;
-		delete [] ac;
-
-		return;
-	}
-
-	void replace_underbar2space(std::string &name) {
-		LOG_SAVE << "conv(A2U)-from:[" << name << "]" << std::endl;
-		conv_ansi_utf8(name, true);
-		LOG_SAVE << "conv(A2U)-to:[" << name << "]" << std::endl;
-		LOG_SAVE << "replace_underbar2space-from:[" << name << "]" << std::endl;
-		std::replace(name.begin(), name.end(), '_', ' ');
-		LOG_SAVE << "replace_underbar2space-to:[" << name << "]" << std::endl;
-	}
-
-	void replace_space2underbar(std::string &name) {
-		LOG_SAVE << "conv(U2A)-from:[" << name << "]" << std::endl;
-		conv_ansi_utf8(name, false);
-		LOG_SAVE << "conv(U2A)-to:[" << name << "]" << std::endl;
-		LOG_SAVE << "replace_space2underbar-from:[" << name << "]" << std::endl;
-		std::replace(name.begin(), name.end(), ' ', '_');
-		LOG_SAVE << "replace_space2underbar-to:[" << name << "]" << std::endl;
-	}
-#else /* ! _WIN32 */
-	void replace_underbar2space(std::string &name) {
-		std::replace(name.begin(),name.end(),'_',' ');
-	}
-	void replace_space2underbar(std::string &name) {
-		std::replace(name.begin(),name.end(),' ','_');
-	}
-#endif /* _WIN32 */
 
 namespace savegame {
-
-class save_index_class
-{
-public:
-	void rebuild(const std::string& name) {
-		std::string filename = name;
-		replace_space2underbar(filename);
-		time_t modified = file_create_time(get_saves_dir() + "/" + filename);
-		rebuild(name, modified);
-	}
-	void rebuild(const std::string& name, const time_t& modified) {
-		log_scope("load_summary_from_file");
-		config& summary = data(name);
-		try {
-			config full;
-			std::string dummy;
-			read_save_file(name, full, &dummy);
-			::extract_summary_from_config(full, summary);
-		} catch(game::load_game_failed&) {
-			summary["corrupt"] = true;
-		}
-		summary["mod_time"] = str_cast(static_cast<int>(modified));
-		write_save_index();
-	}
-	void remove(const std::string& name) {
-		config& root = data();
-		root.remove_attribute(name);
-		write_save_index();
-	}
-	void set_modified(const std::string& name, const time_t& modified) {
-		modified_[name] = modified;
-	}
-	config& get(const std::string& name) {
-		config& result = data(name);
-		time_t m = modified_[name];
-		config::attribute_value& mod_time = result["mod_time"];
-		if (mod_time.empty() || static_cast<time_t>(mod_time.to_int()) != m) {
-			rebuild(name, m);
-		}
-		return result;
-	}
-public:
-	void write_save_index() {
-		log_scope("write_save_index()");
-		try {
-			scoped_ostream stream = ostream_file(get_save_index_file());
-			if (preferences::save_compression_format() != compression::NONE) {
-				// TODO: maybe allow writing this using bz2 too?
-				write_gz(*stream, data());
-			} else {
-				write(*stream, data());
-			}
-		} catch(io_exception& e) {
-			ERR_SAVE << "error writing to save index file: '" << e.what() << "'" << std::endl;
-		}
-	}
-
-public:
-	save_index_class()
-		: loaded_(false)
-		, data_()
-		, modified_()
-   {
-   }
-private:
-	config& data(const std::string& name) {
-		config& cfg = data();
-		if (config& sv = cfg.find_child("save", "save", name)) {
-			return sv;
-		}
-
-		config& res = cfg.add_child("save");
-		res["save"] = name;
-		return res;
-	}
-	config& data() {
-		if(loaded_ == false) {
-			try {
-				scoped_istream stream = istream_file(get_save_index_file());
-				try {
-					read_gz(data_, *stream);
-				} catch (boost::iostreams::gzip_error&) {
-					stream->seekg(0);
-					read(data_, *stream);
-				}
-			} catch(io_exception& e) {
-				ERR_SAVE << "error reading save index: '" << e.what() << "'" << std::endl;
-			} catch(config::error& e) {
-				ERR_SAVE << "error parsing save index config file:\n" << e.message << std::endl;
-				data_.clear();
-			}
-			loaded_ = true;
-		}
-		return data_;
-	}
-private:
-	bool loaded_;
-	config data_;
-	std::map< std::string, time_t > modified_;
-} save_index_manager;
-
-class filename_filter {
-public:
-	filename_filter(const std::string& filter) : filter_(filter) {
-	}
-	bool operator()(const std::string& filename) const {
-		return filename.end() == std::search(filename.begin(), filename.end(),
-						     filter_.begin(), filter_.end());
-	}
-private:
-	std::string filter_;
-};
-
-class create_save_info {
-public:
-	create_save_info(const std::string* d = NULL) : dir(d ? *d : get_saves_dir()) {
-	}
-	save_info operator()(const std::string& filename) const {
-		std::string name = filename;
-		replace_underbar2space(name);
-		time_t modified = file_create_time(dir + "/" + filename);
-		save_index_manager.set_modified(name, modified);
-		return save_info(name, modified);
-	}
-	const std::string dir;
-};
-
-/** Get a list of available saves. */
-std::vector<save_info> get_saves_list(const std::string* dir, const std::string* filter)
-{
-	create_save_info creator(dir);
-
-	std::vector<std::string> filenames;
-	get_files_in_dir(creator.dir,&filenames);
-
-	if (filter) {
-		filenames.erase(std::remove_if(filenames.begin(), filenames.end(),
-                                               filename_filter(*filter)),
-                                filenames.end());
-	}
-
-	std::vector<save_info> result;
-	std::transform(filenames.begin(), filenames.end(),
-		       std::back_inserter(result), creator);
-	std::sort(result.begin(),result.end(),save_info_less_time());
-	return result;
-}
-
-
-const config& save_info::summary() const {
-	return save_index_manager.get(name());
-}
-
-std::string save_info::format_time_local() const
-{
-	char time_buf[256] = {0};
-	tm* tm_l = localtime(&modified());
-	if (tm_l) {
-		const size_t res = strftime(time_buf,sizeof(time_buf),
-			(preferences::use_twelve_hour_clock_format() ? _("%a %b %d %I:%M %p %Y") : _("%a %b %d %H:%M %Y")),
-			tm_l);
-		if(res == 0) {
-			time_buf[0] = 0;
-		}
-	} else {
-		LOG_SAVE << "localtime() returned null for time " << this->modified() << ", save " << name();
-	}
-
-	return time_buf;
-}
-
-std::string save_info::format_time_summary() const
-{
-	time_t t = modified();
-	return util::format_time_summary(t);
-}
-
-bool save_info_less_time::operator() (const save_info& a, const save_info& b) const {
-	if (a.modified() > b.modified()) {
-		return true;
-	} else if (a.modified() < b.modified()) {
-		return false;
-		// Special funky case; for files created in the same second,
-		// a replay file sorts less than a non-replay file.  Prevents
-		// a timing-dependent bug where it may look like, at the end
-		// of a scenario, the replay and the autosave for the next
-		// scenario are displayed in the wrong order.
-	} else if (a.name().find(_(" replay"))==std::string::npos && b.name().find(_(" replay"))!=std::string::npos) {
-		return true;
-	} else if (a.name().find(_(" replay"))!=std::string::npos && b.name().find(_(" replay"))==std::string::npos) {
-		return false;
-	} else {
-		return  a.name() > b.name();
-	}
-}
-
-static std::istream* find_save_file(const std::string &name, const std::string &alt_name, const std::vector<std::string> &suffixes) {
-	BOOST_FOREACH(const std::string &suf, suffixes) {
-		std::istream *file_stream = istream_file(get_saves_dir() + "/" + name + suf);
-		if (file_stream->fail()) {
-			delete file_stream;
-			file_stream = istream_file(get_saves_dir() + "/" + alt_name + suf);
-		}
-		if (!file_stream->fail())
-			return file_stream;
-		else
-			delete file_stream;
-	}
-	LOG_SAVE << "Could not open supplied filename '" << name << "'\n";
-	throw game::load_game_failed();
-}
-
-void read_save_file(const std::string& name, config& cfg, std::string* error_log)
-{
-	std::string modified_name = name;
-	replace_space2underbar(modified_name);
-
-	static const std::vector<std::string> suffixes = boost::assign::list_of("")(".gz")(".bz2");
-	scoped_istream file_stream = find_save_file(modified_name, name, suffixes);
-
-	cfg.clear();
-	try{
-		/*
-		 * Test the modified name, since it might use a .gz
-		 * file even when not requested.
-		 */
-		if(is_gzip_file(modified_name)) {
-			read_gz(cfg, *file_stream);
-		} else if(is_bzip2_file(modified_name)) {
-			read_bz2(cfg, *file_stream);
-		} else {
-			read(cfg, *file_stream);
-		}
-	} catch(const std::ios_base::failure& e) {
-		LOG_SAVE << e.what();
-		if(error_log) {
-			*error_log += e.what();
-		}
-		throw game::load_game_failed();
-	} catch(const config::error &err) {
-		LOG_SAVE << err.message;
-		if(error_log) {
-			*error_log += err.message;
-		}
-		throw game::load_game_failed();
-	}
-
-	if(cfg.empty()) {
-		LOG_SAVE << "Could not parse file data into config\n";
-		throw game::load_game_failed();
-	}
-}
 
 bool save_game_exists(const std::string& name, compression::format compressed)
 {
@@ -414,34 +82,7 @@ void clean_saves(const std::string& label)
 	}
 }
 
-void remove_old_auto_saves(const int autosavemax, const int infinite_auto_saves)
-{
-	const std::string auto_save = _("Auto-Save");
-	int countdown = autosavemax;
-	if (countdown == infinite_auto_saves)
-		return;
-
-	std::vector<save_info> games = get_saves_list(NULL, &auto_save);
-	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); ++i) {
-		if (countdown-- <= 0) {
-			LOG_SAVE << "Deleting savegame '" << i->name() << "'\n";
-			delete_game(i->name());
-		}
-	}
-}
-
-void delete_game(const std::string& name)
-{
-	std::string modified_name = name;
-	replace_space2underbar(modified_name);
-
-	remove((get_saves_dir() + "/" + name).c_str());
-	remove((get_saves_dir() + "/" + modified_name).c_str());
-
-	save_index_manager.remove(name);
-}
-
-loadgame::loadgame(display& gui, const config& game_config, game_state& gamestate)
+loadgame::loadgame(display& gui, const config& game_config, saved_game& gamestate)
 	: game_config_(game_config)
 	, gui_(gui)
 	, gamestate_(gamestate)
@@ -652,7 +293,11 @@ void loadgame::check_version_compatibility()
 
 void loadgame::set_gamestate()
 {
-	gamestate_ = game_state(load_config_, show_replay_);
+	gamestate_ = saved_game(load_config_);
+#if 0
+	//we dont need this code since we always restore our random from [snapshot] or [replay_start] (execpt for start of scenario saves where we dont have those)
+	//also the random_seed isn't stored at toplevel anymore.
+
 
 	// Get the status of the random in the snapshot.
 	// For a replay we need to restore the start only, the replaying gets at
@@ -667,6 +312,7 @@ void loadgame::set_gamestate()
 	carryover_info sides(gamestate_.carryover_sides_start);
 	sides.rng().seed_random(seed, calls);
 	gamestate_.carryover_sides_start = sides.to_config();
+#endif
 }
 
 void loadgame::load_multiplayer_game()
@@ -684,7 +330,7 @@ void loadgame::load_multiplayer_game()
 		read_save_file(filename_, load_config_, &error_log);
 		copy_era(load_config_);
 
-		gamestate_ = game_state(load_config_);
+		gamestate_ = saved_game(load_config_);
 	}
 
 	if(!error_log.empty()) {
@@ -707,8 +353,11 @@ void loadgame::fill_mplevel_config(config& level){
 
 	// If we have a start of scenario MP campaign scenario the snapshot
 	// is empty the starting position contains the wanted info.
+#if 0 
 	const config& start_data = !gamestate_.snapshot.empty() ? gamestate_.snapshot : gamestate_.replay_start();
-
+#else
+	const config& start_data = gamestate_.get_starting_pos();
+#endif
 	level.add_child("map", start_data.child_or_empty("map"));
 	level["id"] = start_data["id"];
 	level["name"] = start_data["name"];
@@ -721,7 +370,7 @@ void loadgame::fill_mplevel_config(config& level){
 	level.add_child("multiplayer", gamestate_.mp_settings().to_config());
 
 	//Start-of-scenario save
-	if(gamestate_.snapshot.empty()){
+	if(!gamestate_.is_mid_game_save()){
 		//For a start-of-scenario-save, write the data to the starting_pos and not the snapshot, since
 		//there should only be snapshots for midgame reloads
 		if (config &c = level.child("replay_start")) {
@@ -757,7 +406,7 @@ void loadgame::copy_era(config &cfg)
 	snapshot.add_child("era", era);
 }
 
-savegame::savegame(game_state& gamestate, const compression::format compress_saves, const std::string& title)
+savegame::savegame(saved_game& gamestate, const compression::format compress_saves, const std::string& title)
 	: gamestate_(gamestate)
 	, snapshot_()
 	, filename_()
@@ -946,7 +595,7 @@ void savegame::write_game(config_writer &out)
 	out.write_key_val("version", game_config::version);
 	out.write_key_val("next_underlying_unit_id", lexical_cast<std::string>(n_unit::id_manager::instance().get_save_id()));
 
-	gamestate_.write_config(out);
+	gamestate_.write_general_info(out);
 	out.open_child("statistics");
 	statistics::write_stats(out);
 	out.close_child("statistics");
@@ -977,7 +626,7 @@ scoped_ostream savegame::open_save_game(const std::string &label)
 	}
 }
 
-scenariostart_savegame::scenariostart_savegame(game_state &gamestate, const compression::format compress_saves)
+scenariostart_savegame::scenariostart_savegame(saved_game &gamestate, const compression::format compress_saves)
 	: savegame(gamestate, compress_saves)
 {
 	set_filename(gamestate.classification().label);
@@ -985,11 +634,10 @@ scenariostart_savegame::scenariostart_savegame(game_state &gamestate, const comp
 
 void scenariostart_savegame::write_game(config_writer &out){
 	savegame::write_game(out);
-
-	out.write_child("carryover_sides_start", gamestate().carryover_sides_start);
+	gamestate().write_carryover(out);
 }
 
-replay_savegame::replay_savegame(game_state &gamestate, const compression::format compress_saves)
+replay_savegame::replay_savegame(saved_game &gamestate, const compression::format compress_saves)
 	: savegame(gamestate, compress_saves, _("Save Replay"))
 {}
 
@@ -1006,14 +654,14 @@ void replay_savegame::create_filename()
 
 void replay_savegame::write_game(config_writer &out) {
 	savegame::write_game(out);
-
-	out.write_child("carryover_sides_start", gamestate().carryover_sides_start);
-	out.write_child("carryover_sides", gamestate().carryover_sides);
+	
+	gamestate().write_carryover(out);
 	out.write_child("replay_start", gamestate().replay_start());
 	out.write_child("replay", gamestate().replay_data);
+
 }
 
-autosave_savegame::autosave_savegame(game_state &gamestate,
+autosave_savegame::autosave_savegame(saved_game &gamestate,
 					game_display& gui, const config& snapshot_cfg, const compression::format compress_saves)
 	: ingame_savegame(gamestate, gui, snapshot_cfg, compress_saves)
 {
@@ -1041,7 +689,7 @@ void autosave_savegame::create_filename()
 	set_filename(filename);
 }
 
-oos_savegame::oos_savegame(game_state& gamestate, game_display& gui, const config& snapshot_cfg)
+oos_savegame::oos_savegame(saved_game& gamestate, game_display& gui, const config& snapshot_cfg)
 	: ingame_savegame(gamestate, gui, snapshot_cfg, preferences::save_compression_format())
 {}
 
@@ -1064,11 +712,12 @@ int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, co
 	return res;
 }
 
-ingame_savegame::ingame_savegame(game_state &gamestate,
+ingame_savegame::ingame_savegame(saved_game &gamestate,
 					game_display& gui, const config& snapshot_cfg, const compression::format compress_saves)
 	: savegame(gamestate, compress_saves, _("Save Game")),
 	gui_(gui)
 {
+	gamestate.set_snapshot(snapshot_cfg);
 	snapshot().merge_with(snapshot_cfg);
 }
 
@@ -1082,21 +731,137 @@ void ingame_savegame::create_filename()
 	set_filename(stream.str());
 }
 
-void ingame_savegame::before_save()
-{
-	savegame::before_save();
-	gamestate().write_snapshot(snapshot());
-}
 
 void ingame_savegame::write_game(config_writer &out) {
 	log_scope("write_game");
 
 	savegame::write_game(out);
+	
+	gamestate().write_carryover(out);
 	out.write_child("snapshot",snapshot());
 	out.write_child("replay_start", gamestate().replay_start());
-	out.write_child("carryover_sides", gamestate().carryover_sides);
-	out.write_child("carryover_sides_start", gamestate().carryover_sides_start);
 	out.write_child("replay", gamestate().replay_data);
+}
+
+void convert_old_saves(config& cfg){
+	if(!cfg.has_child("snapshot")){
+		return;
+	}
+
+	const config& snapshot = cfg.child("snapshot");
+	const config& replay_start = cfg.child("replay_start");
+	const config& replay = cfg.child("replay");
+
+	if(!cfg.has_child("carryover_sides") && !cfg.has_child("carryover_sides_start")){
+		config carryover;
+		//copy rng and menu items from toplevel to new carryover_sides
+		carryover["random_seed"] = cfg["random_seed"];
+		carryover["random_calls"] = cfg["random_calls"];
+		BOOST_FOREACH(const config& menu_item, cfg.child_range("menu_item")){
+			carryover.add_child("menu_item", menu_item);
+		}
+		carryover["difficulty"] = cfg["difficulty"];
+		carryover["random_mode"] = cfg["random_mode"];
+		//the scenario to be played is always stored as next_scenario in carryover_sides_start
+		carryover["next_scenario"] = cfg["scenario"];
+
+		config carryover_start = carryover;
+
+		//copy sides from either snapshot or replay_start to new carryover_sides
+		if(!snapshot.empty()){
+			BOOST_FOREACH(const config& side, snapshot.child_range("side")){
+				carryover.add_child("side", side);
+			}
+			//for compatibility with old savegames that use player instead of side
+			BOOST_FOREACH(const config& side, snapshot.child_range("player")){
+				carryover.add_child("side", side);
+			}
+			//save the sides from replay_start in carryover_sides_start
+			BOOST_FOREACH(const config& side, replay_start.child_range("side")){
+				carryover_start.add_child("side", side);
+			}
+			//for compatibility with old savegames that use player instead of side
+			BOOST_FOREACH(const config& side, replay_start.child_range("player")){
+				carryover_start.add_child("side", side);
+			}
+		} else if (!replay_start.empty()){
+			BOOST_FOREACH(const config& side, replay_start.child_range("side")){
+				carryover.add_child("side", side);
+				carryover_start.add_child("side", side);
+			}
+			//for compatibility with old savegames that use player instead of side
+			BOOST_FOREACH(const config& side, replay_start.child_range("player")){
+				carryover.add_child("side", side);
+				carryover_start.add_child("side", side);
+			}
+		}
+
+		//get variables according to old hierarchy and copy them to new carryover_sides
+		if(!snapshot.empty()){
+			if(const config& variables = snapshot.child("variables")){
+				carryover.add_child("variables", variables);
+				carryover_start.add_child("variables", replay_start.child_or_empty("variables"));
+			} else if (const config& variables = cfg.child("variables")){
+				carryover.add_child("variables", variables);
+				carryover_start.add_child("variables", variables);
+			}
+		} else if (!replay_start.empty()){
+			if(const config& variables = replay_start.child("variables")){
+				carryover.add_child("variables", variables);
+				carryover_start.add_child("variables", variables);
+			}
+		} else {
+			carryover.add_child("variables", cfg.child("variables"));
+			carryover_start.add_child("variables", cfg.child("variables"));
+		}
+
+		cfg.add_child("carryover_sides", carryover);
+		cfg.add_child("carryover_sides_start", carryover_start);
+	}
+
+	//if replay and snapshot are empty we've got a start of scenario save and don't want replay_start either
+	if(replay.empty() && snapshot.empty()){
+		LOG_RG<<"removing replay_start \n";
+		cfg.remove_child("replay_start", 0);
+	}
+
+	//remove empty replay or snapshot so type of save can be detected more easily
+	if(replay.empty()){
+		LOG_RG<<"removing replay \n";
+		cfg.remove_child("replay", 0);
+	}
+
+	if(snapshot.empty()){
+		LOG_RG<<"removing snapshot \n";
+		cfg.remove_child("snapshot", 0);
+	}
+	//?-1.11.? end
+	//1.12-1.13 begin
+
+	if(config& carryover_sides_start = cfg.child("carryover_sides_start"))
+	{
+		if(!carryover_sides_start.has_attribute("next_underlying_unit_id"))
+		{
+			carryover_sides_start["next_underlying_unit_id"] = cfg["next_underlying_unit_id"];
+		}
+	}
+
+	if(config& snapshot = cfg.child("snapshot"))
+	{
+		//make [end_level] -> [end_level_data] since its alo called [end_level_data] in the carryover.
+		if(config& end_level = cfg.child("end_level") )
+		{
+			snapshot.add_child("end_level_data", end_level);
+			snapshot.remove_child("end_level",0);
+		}
+		if(cfg.has_child("carryover_sides_start"))
+		{
+			cfg.remove_child("carryover_sides_start", 0);
+		}
+	}
+
+	//1.12-1.13 end
+	LOG_RG<<"cfg after conversion "<<cfg<<"\n";
 }
 
 }

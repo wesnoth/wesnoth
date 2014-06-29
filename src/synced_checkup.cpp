@@ -1,4 +1,5 @@
 /*
+   Copyright (C) 2014
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -35,14 +36,14 @@ checkup::~checkup()
 {
 
 }
-
+#if 0
 void checkup::unit_checksum(const map_location& loc, bool local)
 {
 	unit_map::iterator u =  resources::units->find(loc);
 	bool equals;
 	config real;
 	config expected;
-	
+
 	if (!u.valid()) {
 		std::stringstream message;
 		message << "non existent unit to checksum at " << loc.x+1 << "," << loc.y+1 << "!";
@@ -67,11 +68,11 @@ void checkup::unit_checksum(const map_location& loc, bool local)
 	{
 		std::stringstream message;
 		message << "checksum mismatch at " << loc.x+1 << "," << loc.y+1 << "!";
-		resources::screen->add_chat_message(time(NULL), "verification", 1, message.str(), 
+		resources::screen->add_chat_message(time(NULL), "verification", 1, message.str(),
 			events::chat_handler::MESSAGE_PRIVATE, false);
 	}
 }
-
+#endif
 
 ignored_checkup::ignored_checkup()
 {

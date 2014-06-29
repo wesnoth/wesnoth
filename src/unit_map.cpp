@@ -65,16 +65,16 @@ unit_map::~unit_map() {
 unit_map::t_umap::iterator unit_map::begin_core() const {
 	self_check();
 	t_umap::iterator i = umap_.begin();
-	while (i != umap_.end() && (i->second.unit == NULL)) { ++i; }
+	while (i != umap_.end() && (!i->second.unit)) { ++i; }
 	return i;
 }
 
 std::pair<unit_map::unit_iterator, bool> unit_map::add(const map_location &l, const unit &u) {
 	self_check();
-	unit *p = new unit(u);
+	UnitPtr p = UnitPtr (new unit(u)); //TODO: should this instead take a shared pointer to a unit, rather than make a copy?
 	p->set_location(l);
 	std::pair<unit_map::unit_iterator, bool> res( insert(p) );
-	if(res.second == false) { delete p; }
+	if(res.second == false) { p.reset(); }
 	return res;
 }
 
@@ -91,8 +91,8 @@ std::pair<unit_map::unit_iterator, bool> unit_map::move(const map_location &src,
 	if(src == dst){ return std::make_pair(make_unit_iterator(uit), true);}
 
 	//Fail if there is no unit to move
-	unit *p = uit->second.unit;
-	if(p == NULL){ return std::make_pair(make_unit_iterator(uit), false);}
+	UnitPtr p = uit->second.unit;
+	if(!p){ return std::make_pair(make_unit_iterator(uit), false);}
 
 	p->set_location(dst);
 
@@ -125,7 +125,7 @@ The one oddity is that to facilitate non-invalidating iterators the list
 sometimes has NULL pointers which should be used when they correspond
 to uids previously used.
  */
-std::pair<unit_map::unit_iterator, bool> unit_map::insert(unit *p) {
+std::pair<unit_map::unit_iterator, bool> unit_map::insert(UnitPtr p) {
 	self_check();
 	assert(p);
 
@@ -139,7 +139,7 @@ std::pair<unit_map::unit_iterator, bool> unit_map::insert(unit *p) {
 	}
 
 	unit_pod upod;
-	upod.unit = p;
+	upod.unit = p ;
 
 	DBG_NG << "Adding unit " << p->underlying_id() << " - " << p->id()
 		<< " to location: (" << loc << ")\n";
@@ -148,12 +148,12 @@ std::pair<unit_map::unit_iterator, bool> unit_map::insert(unit *p) {
 
 	if (! uinsert.second) {
 		//If the pod is empty reinsert the unit in the same list element
-		if ( uinsert.first->second.unit == NULL) {
+		if (!uinsert.first->second.unit) {
 			unit_pod &opod = uinsert.first->second;
-			opod.unit = p;
+			opod.unit = p ;
 			assert(opod.ref_count != 0);
 		} else {
-			unit *q = uinsert.first->second.unit;
+			UnitPtr q = uinsert.first->second.unit;
 			ERR_NG << "Trying to add " << p->name()
 				   << " - " << p->id() << " - " << p->underlying_id()
 				   << " ("  << loc << ") over " << q->name()
@@ -191,7 +191,7 @@ std::pair<unit_map::unit_iterator, bool> unit_map::insert(unit *p) {
 			umap_.erase(uinsert.first);
 		} else {
 			//undo a reinsertion
-			uinsert.first->second.unit = NULL;
+			uinsert.first->second.unit.reset();
 		}
 		DBG_NG << "Trying to add " << p->name()
 			   << " - " << p->id() << " at location ("<<loc <<"); Occupied  by "
@@ -238,7 +238,7 @@ void unit_map::clear(bool force) {
 	for (t_umap::iterator i = umap_.begin(); i != umap_.end(); ++i) {
 		if (is_valid(i)) {
 			DBG_NG << "Delete unit " << i->second.unit->underlying_id() << "\n";
-			delete i->second.unit;
+			i->second.unit.reset();
 		}
 	}
 
@@ -246,14 +246,14 @@ void unit_map::clear(bool force) {
 	umap_.clear();
 }
 
-unit *unit_map::extract(const map_location &loc) {
+UnitPtr unit_map::extract(const map_location &loc) {
 	self_check();
 	t_lmap::iterator i = lmap_.find(loc);
-	if (i == lmap_.end()) { return NULL; }
+	if (i == lmap_.end()) { return UnitPtr(); }
 
 	t_umap::iterator uit(i->second);
 
-	unit *u = uit->second.unit;
+	UnitPtr u = uit->second.unit;
 	size_t uid( u->underlying_id() );
 
 	DBG_NG << "Extract unit " << uid << " - " << u->id()
@@ -264,7 +264,7 @@ unit *unit_map::extract(const map_location &loc) {
 		umap_.erase(uit);
 	} else {
 		//Soft extraction keeps the old lit item if any iterators reference it
-		uit->second.unit = NULL;
+		uit->second.unit.reset();
 	}
 
 	lmap_.erase(i);
@@ -276,16 +276,16 @@ unit *unit_map::extract(const map_location &loc) {
 
 size_t unit_map::erase(const map_location &loc) {
 	self_check();
-	unit *u = extract(loc);
+	UnitPtr u = extract(loc);
 	if (!u) return 0;
-	delete u;
+	u.reset();
 	return 1;
 }
 
 unit_map::unit_iterator unit_map::find(size_t id) {
 	self_check();
 	t_umap::iterator i(umap_.find(id));
-	if((i != umap_.end()) && i->second.unit==NULL){ i = umap_.end() ;}
+	if((i != umap_.end()) && !i->second.unit){ i = umap_.end() ;}
 	return make_unit_iterator<t_umap::iterator>( i );
 }
 
@@ -332,7 +332,7 @@ std::vector<unit_map::const_unit_iterator> unit_map::find_leaders(int side)const
 	return const_leaders;
 }
 
-#ifdef DEBUG
+#ifdef DEBUG_UNIT_MAP
 
 bool unit_map::self_check() const {
 	bool good(true);
@@ -343,14 +343,14 @@ bool unit_map::self_check() const {
 			good=false;
 			ERR_NG << "unit_map pod ref_count <0 is " << uit->second.ref_count<< std::endl;
 		}
-		if(uit->second.unit != NULL){
+		if(uit->second.unit){
 			uit->second.unit->id(); //crash if bad pointer
 		}
 		if(uit->first <= 0){
 			good=false;
 			ERR_NG << "unit_map umap uid <=0 is " << uit->first << std::endl;
 		}
-		if(uit->second.unit == NULL && uit->second.ref_count == 0 ){
+		if(!uit->second.unit && uit->second.ref_count == 0 ){
 			good=false;
 			ERR_NG << "unit_map umap unit==NULL when refcount == 0" << std::endl;
 		}
@@ -381,7 +381,7 @@ bool unit_map::has_unit(const unit * const u) const
 	assert(u);
 
 	BOOST_FOREACH(const t_umap::value_type& item, umap_) {
-		if(item.second.unit == u) {
+		if(item.second.unit.get() == u) {
 			return true;
 		}
 	}

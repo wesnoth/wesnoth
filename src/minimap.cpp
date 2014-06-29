@@ -17,11 +17,13 @@
 #include "global.hpp"
 #include "minimap.hpp"
 
+#include "game_board.hpp"
 #include "gettext.hpp"
 #include "image.hpp"
 #include "log.hpp"
 #include "map.hpp"
-#include "sdl_utils.hpp"
+#include "resources.hpp"
+#include "sdl/utils.hpp"
 
 #include "team.hpp"
 #include "wml_exception.hpp"
@@ -63,7 +65,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 		double ratio = std::min<double>( w*1.0 / map_width, h*1.0 / map_height);
 		return create_neutral_surface(map_width * ratio, map_height * ratio);
 	}
-	
+
 	surface minimap(create_neutral_surface(map_width, map_height));
 	if(minimap == NULL)
 		return surface(NULL);
@@ -226,13 +228,13 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 					}
 					SDL_Rect fillrect = sdl::create_rect(maprect.x, maprect.y, scale * 3/4, scale);
 					const Uint32 mapped_col = SDL_MapRGB(minimap->format,col.r,col.g,col.b);
-					sdl_fill_rect(minimap, &fillrect, mapped_col);
+					sdl::fill_rect(minimap, &fillrect, mapped_col);
 				}
 			}
 
 			if (terrain_info.is_village() && preferences_minimap_draw_villages) {
 
-				int side = village_owner(loc);
+				int side = (resources::gameboard ? resources::gameboard->village_owner(loc) : -1); //check needed for mp create dialog
 
 				SDL_Color col = int_to_color(game_config::team_rgb_range.find("white")->second.min());
 
@@ -261,7 +263,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 				);
 
 				const Uint32 mapped_col = SDL_MapRGB(minimap->format,col.r,col.g,col.b);
-				sdl_fill_rect(minimap, &fillrect, mapped_col);
+				sdl::fill_rect(minimap, &fillrect, mapped_col);
 
 			}
 

@@ -23,7 +23,7 @@
 #include "menu_item.hpp"
 
 #include "../config.hpp"
-#include "../gamestatus.hpp"
+#include "../game_data.hpp"
 #include "../log.hpp"
 #include "../map_location.hpp"
 #include "../resources.hpp"
@@ -33,9 +33,6 @@
 static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
-
-static const size_t MAX_WML_COMMANDS = 7;
-
 
 // This file is in the game_events namespace.
 namespace game_events
@@ -104,16 +101,14 @@ bool wmi_container::fire_item(const std::string & id, const map_location & hex) 
 
 /**
  * Returns the menu items that can be shown for the given location.
- * The number of items returned is limited by MAX_WML_COMMANDS.
+ * Should be used with a wmi_pager to limit the number of items displayed at once.
  * @param[out] items        Pointers to applicable menu items will be pushed onto @a items.
  * @param[out] descriptions Menu item text will be pushed onto @descriptions (in the same order as @a items).
  */
 void wmi_container::get_items(const map_location& hex,
                               std::vector<boost::shared_ptr<const wml_menu_item> > & items,
-                              std::vector<std::string> & descriptions) const
+                              std::vector<std::string> & descriptions, const_iterator start, const_iterator finish) const
 {
-	size_t item_count = 0;
-
 	if ( empty() )
 		// Nothing to do (skip setting game variables).
 		return;
@@ -124,7 +119,7 @@ void wmi_container::get_items(const map_location& hex,
 	scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, *resources::units);
 
 	// Check each menu item.
-	BOOST_FOREACH( const item_ptr & item, *this )
+	BOOST_FOREACH( const item_ptr & item, std::make_pair<const_iterator> (start, finish) )
 	{
 		// Can this item be shown?
 		if ( item->use_wml_menu() && item->can_show(hex) )
@@ -132,10 +127,6 @@ void wmi_container::get_items(const map_location& hex,
 			// Include this item.
 			items.push_back(item);
 			descriptions.push_back(item->menu_text());
-
-			// Limit how many items can be returned.
-			if ( ++item_count >= MAX_WML_COMMANDS )
-				return;
 		}
 	}
 }

@@ -17,7 +17,7 @@
  * Template instantiations for wesnoth-game.
  */
 
-#include "animated.i"
+#include "animated.tpp"
 // Force compilation of the following template instantiations
 
 #include "unit_frame.hpp"

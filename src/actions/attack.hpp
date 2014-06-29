@@ -27,6 +27,7 @@ struct map_location;
 class  team;
 class  unit;
 class  unit_map;
+class  gamemap;
 
 #include "../unit_types.hpp"
 #include "../ai/lua/unit_advancements_aspect.hpp"
@@ -198,10 +199,10 @@ void attack_unit(const map_location &attacker, const map_location &defender,
 
 /** Performs an attack, and advanced the units afterwards */
 void attack_unit_and_advance(const map_location &attacker, const map_location &defender,
-                 int attack_with, int defend_with, bool update_display = true, 
+                 int attack_with, int defend_with, bool update_display = true,
 				 const ai::unit_advancements_aspect& ai_advancement = ai::unit_advancements_aspect());
 
-/** 
+/**
 	advances the unit at loc if it has enough experience, maximum 20 times.
 	if the unit is on the currently active side, and that side is controlled by a human, a dialog pops up.
 	if we are in a non mp game, and the side is controlled by a human then a dialog is shown too.
@@ -210,9 +211,22 @@ void attack_unit_and_advance(const map_location &attacker, const map_location &d
 
 	this method is currently not used by unstore_unit, if we want to do that we'd need to allow more arguments (animate, fire_events).
 */
-void advance_unit_at(const map_location& loc, const ai::unit_advancements_aspect ai_advancement = ai::unit_advancements_aspect(), bool force_dialog = false);
-inline void advance_unit_at(const map_location& loc, bool force_dialog = false)
-{ advance_unit_at(loc, ai::unit_advancements_aspect(), force_dialog); }
+struct advance_unit_params 
+{
+	advance_unit_params(const map_location& loc) : loc_(loc), ai_advancements_(NULL), force_dialog_(false), fire_events_(true), animate_(true) {}
+	advance_unit_params& ai_advancements(const ai::unit_advancements_aspect& value) {ai_advancements_ = &value; return *this;}
+	advance_unit_params& force_dialog(bool value) {force_dialog_ = value; return *this;}
+	advance_unit_params& fire_events(bool value) {fire_events_ = value; return *this;}
+	advance_unit_params& animate(bool value) {animate_ = value; return *this;}
+	friend void advance_unit_at(const advance_unit_params&); 
+private:
+	const map_location& loc_;
+	const ai::unit_advancements_aspect* ai_advancements_;
+	bool force_dialog_;
+	bool fire_events_;
+	bool animate_;
+};
+void advance_unit_at(const advance_unit_params& params);
 /**
  * Returns the advanced version of a unit (with traits and items retained).
  */
@@ -247,7 +261,7 @@ map_location under_leadership(const unit_map& units, const map_location& loc,
  * Returns the amount that a unit's damage should be multiplied by
  * due to the current time of day.
  */
-int combat_modifier(const map_location &loc, unit_type::ALIGNMENT alignment,
+int combat_modifier(const unit_map & units, const gamemap & map, const map_location &loc, unit_type::ALIGNMENT alignment,
                     bool is_fearless);
 
 /**

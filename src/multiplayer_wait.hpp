@@ -16,7 +16,6 @@
 #define MULTIPLAYER_WAIT_HPP_INCLUDED
 
 #include "flg_manager.hpp"
-#include "gamestatus.hpp"
 #include "multiplayer_ui.hpp"
 #include "show_dialog.hpp"
 #include "widgets/combo.hpp"
@@ -26,7 +25,7 @@ namespace mp {
 class wait : public ui
 {
 public:
-	wait(game_display& disp, const config& cfg, game_state& state, chat& c,
+	wait(game_display& disp, const config& cfg, saved_game& state, chat& c,
 		config& gamelist, const bool first_scenario = true);
 	~wait();
 	virtual void process_event();
@@ -68,13 +67,15 @@ private:
 	void generate_menu();
 	bool has_level_data() const;
 	bool download_level_data();
+	config& get_scenario();
+	const config& get_scenario() const;
 
 	gui::button cancel_button_;
 	gui::label start_label_;
 	gui::menu game_menu_;
 
 	config level_;
-	game_state& state_;
+	saved_game& state_;
 
 	const bool first_scenario_;
 	bool stop_updates_;

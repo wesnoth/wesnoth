@@ -27,10 +27,14 @@
 #include "gui/widgets/panel.hpp"
 
 #include "events.hpp"
-#include "SDL.h"
 
 #include <string>
+
+#ifndef INCL_BOOST_FUNCTION_HPP_
+#define INCL_BOOST_FUNCTION_HPP_
 #include <boost/function.hpp>
+#endif
+
 
 class CVideo;
 

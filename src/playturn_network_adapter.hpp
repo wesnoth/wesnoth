@@ -5,7 +5,12 @@
 
 #include "config.hpp"
 #include <list>
+
+#ifndef INCL_BOOST_FUNCTION_HPP_
+#define INCL_BOOST_FUNCTION_HPP_
 #include <boost/function.hpp>
+#endif
+
 
 /*
 	The purpose if this class is to preprocess incoming network data, and provide a steam that always returns just one command/action at a time.
@@ -14,8 +19,8 @@
 class playturn_network_adapter
 {
 public:
-	typedef boost::function1<bool, config&> source_type; 
-	
+	typedef boost::function1<bool, config&> source_type;
+
 	playturn_network_adapter(source_type source = read_network);
 	~playturn_network_adapter();
 
@@ -37,7 +42,7 @@ private:
 	std::list<config> data_;
 	//the position of the next to be received element in data_->front().
 	config::all_children_iterator next_;
-	//if we are processing a [turn] with mutiple [command] we want to split them. 
+	//if we are processing a [turn] with mutiple [command] we want to split them.
 	//In this case next_command_num_ is the next to be processed turn into a command otherwise it's 0;
 	unsigned int next_command_num_;
 	//a function to receive data from the network.

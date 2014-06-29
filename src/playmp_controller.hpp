@@ -17,13 +17,14 @@
 #define PLAYMP_CONTROLLER_H_INCLUDED
 
 #include "playsingle_controller.hpp"
+#include "syncmp_handler.hpp"
 
 class turn_info;
 
-class playmp_controller : public playsingle_controller, public events::pump_monitor
+class playmp_controller : public playsingle_controller, public events::pump_monitor, public syncmp_handler
 {
 public:
-	playmp_controller(const config& level, game_state& state_of_game,
+	playmp_controller(const config& level, saved_game& state_of_game,
 		const int ticks, const config& game_config, CVideo& video,
 		bool skip_replay, bool blindfold_replay, bool is_host);
 	virtual ~playmp_controller();
@@ -38,6 +39,8 @@ public:
 	void maybe_linger();
 	void process_oos(const std::string& err_msg) const;
 
+	void pull_remote_choice();
+	void send_user_choice();
 protected:
 	virtual void handle_generic_event(const std::string& name);
 
@@ -48,15 +51,15 @@ protected:
 	virtual void stop_network();
 	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const;
 
-	virtual void play_side();
-	virtual void before_human_turn();
-	virtual void play_human_turn();
+	virtual possible_end_play_signal play_side();
+	virtual possible_end_play_signal before_human_turn();
+	virtual possible_end_play_signal play_human_turn();
 	virtual void after_human_turn();
 	virtual void finish_side_turn();
-	virtual void play_network_turn();
+	virtual possible_end_play_signal play_network_turn();
 	virtual void do_idle_notification();
-	virtual void play_idle_loop();
-	
+	virtual possible_end_play_signal play_idle_loop();
+
 	void linger();
 	/** Wait for the host to upload the next scenario. */
 	void wait_for_upload();

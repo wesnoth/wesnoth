@@ -17,30 +17,56 @@
  * Defines formula ai candidate actions - headers
  */
 
-#include <boost/lexical_cast.hpp>
-#include <stack>
-#include <vector>
-
 #include "ai.hpp"
-#include "candidates.hpp"
-#include "callable_objects.hpp"
-#include "function_table.hpp"
+#include "global.hpp"
 
-#include "../actions.hpp"
-#include "../manager.hpp"
-
-#include "../../callable_objects.hpp"
-#include "../../game_display.hpp"
-#include "../../formula_debugger.hpp"
-#include "../../log.hpp"
+#include "../../callable_objects.hpp"   // for unit_callable, etc
+#include "../../chat_events.hpp"              // for chat_handler, etc
+#include "../../display_chat_manager.hpp"
+#include "../../formula_function.hpp"         // for formula_expression
+#include "../../game_board.hpp"         // for game_board
+#include "../../game_display.hpp"       // for game_display
+#include "../../log.hpp"                // for LOG_STREAM, logger, etc
+#include "../../map.hpp"                      // for gamemap
 #include "../../menu_events.hpp"
-#include "../../pathfind/teleport.hpp"
-#include "../../resources.hpp"
-#include "../../terrain_filter.hpp"
-#include "../../tod_manager.hpp"
-#include "../../pathfind/pathfind.hpp"
+#include "../../pathfind/pathfind.hpp"  // for plain_route, etc
+#include "../../pathfind/teleport.hpp"  // for get_teleport_locations, etc
+#include "../../recall_list_manager.hpp"      // for recall_list_manager
+#include "../../resources.hpp"          // for gameboard, teams, units, etc
+#include "../../serialization/string_utils.hpp"  // for split
+#include "../../team.hpp"                     // for team
+#include "../../terrain_filter.hpp"     // for terrain_filter
+#include "../../time_of_day.hpp"              // for time_of_day
+#include "../../tod_manager.hpp"        // for tod_manager
+#include "../../tstring.hpp"                  // for t_string, operator+
+#include "../../unit.hpp"               // for unit
+#include "../../unit_formula_manager.hpp"  // for unit_formula_manager
+#include "../../unit_ptr.hpp"                 // for UnitPtr
+#include "../../unit_types.hpp"
+#include "../../formula.hpp"  // for formula_error, formula, etc
+#include "../../map_location.hpp"  // for map_location, etc
+#include "ai/actions.hpp"               // for recall_result, etc
+#include "ai/manager.hpp"               // for manager
+#include "ai/composite/contexts.hpp"
+#include "ai/composite/stage.hpp"  // for stage
+#include "ai/default/contexts.hpp"  // for attack_analysis
+#include "ai/formula/function_table.hpp"           // for ai_function_symbol_table
+#include "ai/game_info.hpp"  // for move_result_ptr, move_map, etc
+#include "ai/interface.hpp"  // for interface
+#include "callable_objects.hpp"         // for safe_call_result, etc
+#include "candidates.hpp"               // for base_candidate_action, etc
 
-#include <boost/foreach.hpp>
+
+#include <boost/foreach.hpp>            // for auto_any_base, etc
+#include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
+#include <boost/lexical_cast.hpp>       // for lexical_cast
+#include <boost/shared_ptr.hpp>         // for shared_ptr
+#include <cassert>                     // for assert
+#include <ctime>                       // for NULL, time
+#include <map>                          // for multimap<>::const_iterator, etc
+#include <sstream>                      // for operator<<, basic_ostream, etc
+#include <stack>                        // for stack
+#include <vector>                       // for vector, allocator, etc
 
 static lg::log_domain log_formula_ai("ai/engine/fai");
 #define DBG_AI LOG_STREAM(debug, log_formula_ai)
@@ -102,7 +128,7 @@ void formula_ai::handle_exception(game_logic::formula_error& e, const std::strin
 
 void formula_ai::display_message(const std::string& msg) const
 {
-	resources::screen->add_chat_message(time(NULL), "fai", get_side(), msg,
+	resources::screen->get_chat_manager().add_chat_message(time(NULL), "fai", get_side(), msg,
 				events::chat_handler::MESSAGE_PUBLIC, false);
 
 }
@@ -178,7 +204,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
     map_location destination = dst;
 
     unit_map &units_ = *resources::units;
-    pathfind::shortest_path_calculator calc(*unit_it, current_team(), *resources::teams, *resources::game_map);
+    pathfind::shortest_path_calculator calc(*unit_it, current_team(), *resources::teams, resources::gameboard->map());
 
     unit_map::const_iterator dst_un = units_.find(destination);
 
@@ -193,7 +219,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
         get_adjacent_tiles(destination,adj);
 
         for(size_t n = 0; n != 6; ++n) {
-                if(resources::game_map->on_board(adj[n]) == false) {
+                if(resources::gameboard->map().on_board(adj[n]) == false) {
                         continue;
                 }
 
@@ -220,7 +246,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
     }
 
     pathfind::plain_route route = pathfind::a_star_search(src, destination, 1000.0, &calc,
-            resources::game_map->w(), resources::game_map->h(), &allowed_teleports);
+            resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
 
     return route;
 }
@@ -454,7 +480,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 
 			if( status == 0 ){
 				LOG_AI << "Setting unit variable: " << set_unit_var_command->key() << " -> " << set_unit_var_command->value().to_debug_string() << "\n";
-				unit->add_formula_var(set_unit_var_command->key(), set_unit_var_command->value());
+				unit->formula_manager().add_formula_var(set_unit_var_command->key(), set_unit_var_command->value());
 				made_moves.push_back(action);
 			} else {
 				ERR_AI << "ERROR #" << status << " while executing 'set_unit_var' formula function" << std::endl;
@@ -807,8 +833,8 @@ variant formula_ai::get_value(const std::string& key) const
 	{
 		std::vector<variant> tmp;
 
-		for(std::vector<unit>::const_iterator i = current_team().recall_list().begin(); i != current_team().recall_list().end(); ++i) {
-			tmp.push_back( variant( new unit_callable(*i) ) );
+		for(std::vector<UnitPtr >::const_iterator i = current_team().recall_list().begin(); i != current_team().recall_list().end(); ++i) {
+			tmp.push_back( variant( new unit_callable(**i) ) );
 		}
 
 		return variant( &tmp );
@@ -821,10 +847,10 @@ variant formula_ai::get_value(const std::string& key) const
 		return get_keeps();
 	} else if(key == "map")
 	{
-		return variant(new gamemap_callable(*resources::game_map));
+		return variant(new gamemap_callable(resources::gameboard->map()));
 	} else if(key == "villages")
 	{
-		return villages_from_set(resources::game_map->villages());
+		return villages_from_set(resources::gameboard->map().villages());
 	} else if(key == "villages_of_side")
 	{
 		std::vector<variant> vars;
@@ -844,7 +870,7 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "enemy_and_unowned_villages")
 	{
-		return villages_from_set(resources::game_map->villages(), &current_team().villages());
+		return villages_from_set(resources::gameboard->map().villages(), &current_team().villages());
 	}
 
 	return variant();
@@ -886,14 +912,14 @@ variant formula_ai::get_keeps() const
 {
 	if(keeps_cache_.is_null()) {
 		std::vector<variant> vars;
-		for(size_t x = 0; x != size_t(resources::game_map->w()); ++x) {
-			for(size_t y = 0; y != size_t(resources::game_map->h()); ++y) {
+		for(size_t x = 0; x != size_t(resources::gameboard->map().w()); ++x) {
+			for(size_t y = 0; y != size_t(resources::gameboard->map().h()); ++y) {
 				const map_location loc(x,y);
-				if(resources::game_map->is_keep(loc)) {
+				if(resources::gameboard->map().is_keep(loc)) {
 					map_location adj[6];
 					get_adjacent_tiles(loc,adj);
 					for(size_t n = 0; n != 6; ++n) {
-						if(resources::game_map->is_castle(adj[n])) {
+						if(resources::gameboard->map().is_castle(adj[n])) {
 							vars.push_back(variant(new location_callable(loc)));
 							break;
 						}

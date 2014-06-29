@@ -18,12 +18,15 @@
 
 #include "config.hpp"
 #include "log.hpp"
+#include "recall_list_manager.hpp"
 #include "resources.hpp"
 #include "side_filter.hpp"
 #include "variable.hpp"
 #include "team.hpp"
 #include "serialization/string_utils.hpp"
 #include "network.hpp"
+#include "unit.hpp"
+#include "unit_map.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -137,10 +140,9 @@ bool side_filter::match_internal(const team &t) const
 			}
 		}
 		if(!found && unit_filter["search_recall_list"].to_bool(false)) {
-			const std::vector<unit>& recall_list = t.recall_list();
-			BOOST_FOREACH(const unit& u, recall_list) {
-				scoped_recall_unit this_unit("this_unit", t.save_id(), &u - &recall_list[0]);
-				if(u.matches_filter(unit_filter, u.get_location(), flat_)) {
+			BOOST_FOREACH(const UnitConstPtr & u, t.recall_list()) {
+				scoped_recall_unit this_unit("this_unit", t.save_id(),t.recall_list().find_index(u->id()));
+				if(u->matches_filter(unit_filter, u->get_location(), flat_)) {
 					found = true;
 					break;
 				}

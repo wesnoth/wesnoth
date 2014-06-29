@@ -27,10 +27,11 @@
 #include "../../map_label.hpp"
 #include "../../replay.hpp"
 #include "../../resources.hpp"
-#include "../../sdl_utils.hpp"
+#include "../../sdl/utils.hpp"
 #include "../../team.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../tod_manager.hpp"
+#include "../../unit.hpp"
 
 #include <boost/foreach.hpp>
 

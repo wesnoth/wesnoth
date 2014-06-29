@@ -982,7 +982,7 @@ surface floating_label::create_surface()
 			}
 
 			Uint32 color = SDL_MapRGBA(foreground->format, bgcolor_.r,bgcolor_.g, bgcolor_.b, bgalpha_);
-			sdl_fill_rect(background,NULL, color);
+			sdl::fill_rect(background,NULL, color);
 
 			// we make the text less transparent, because the blitting on the
 			// dark background will darken the anti-aliased part.
@@ -1003,7 +1003,7 @@ surface floating_label::create_surface()
 			// background is blurred shadow of the text
 			surface background = create_neutral_surface
 				(foreground->w + 4, foreground->h + 4);
-			sdl_fill_rect(background, NULL, 0);
+			sdl::fill_rect(background, NULL, 0);
 			SDL_Rect r = { 2, 2, 0, 0 };
 			blit_surface(foreground, NULL, background, &r);
 			background = shadow_image(background, false);
@@ -1135,7 +1135,7 @@ SDL_Rect get_floating_label_rect(int handle)
 		}
 	}
 
-	return empty_rect;
+	return sdl::empty_rect;
 }
 
 floating_label_context::floating_label_context()
@@ -1217,10 +1217,10 @@ void undraw_floating_labels(surface screen)
 
 }
 
-static bool add_font_to_fontlist(config &fonts_config,
+static bool add_font_to_fontlist(const config &fonts_config,
 	std::vector<font::subset_descriptor>& fontlist, const std::string& name)
 {
-	config &font = fonts_config.find_child("font", "name", name);
+	const config &font = fonts_config.find_child("font", "name", name);
 	if (!font)
 		return false;
 
@@ -1258,7 +1258,13 @@ bool load_font_config()
 	//config when changing languages
 	config cfg;
 	try {
-		scoped_istream stream = preprocess_file(get_wml_location("hardwired/fonts.cfg"));
+		const std::string& cfg_path = get_wml_location("hardwired/fonts.cfg");
+		if(cfg_path.empty()) {
+			ERR_FT << "could not resolve path to fonts.cfg, file not found\n";
+			return false;
+		}
+
+		scoped_istream stream = preprocess_file(cfg_path);
 		read(cfg, *stream);
 	} catch(config::error &e) {
 		ERR_FT << "could not read fonts.cfg:\n"
@@ -1266,7 +1272,7 @@ bool load_font_config()
 		return false;
 	}
 
-	config &fonts_config = cfg.child("fonts");
+	const config &fonts_config = cfg.child("fonts");
 	if (!fonts_config)
 		return false;
 

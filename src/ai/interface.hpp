@@ -20,8 +20,15 @@
 #ifndef AI_INTERFACE_HPP_INCLUDED
 #define AI_INTERFACE_HPP_INCLUDED
 
-#include "../savegame_config.hpp"
-#include "default/contexts.hpp"
+#include <boost/shared_ptr.hpp>         // for shared_ptr
+#include <global.hpp>
+#include <map>                          // for map, map<>::value_compare
+#include <string>                       // for string, basic_string, etc
+#include <utility>                      // for make_pair, pair
+#include "../savegame_config.hpp"       // for savegame_config
+#include "../config.hpp"             // for config
+#include "ai/game_info.hpp"             // for ai_ptr, side_number
+namespace ai { class ai_context; }
 
 namespace ai {
 

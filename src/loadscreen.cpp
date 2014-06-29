@@ -28,6 +28,10 @@
 #include "video.hpp"
 #include "image.hpp"
 
+#if SDL_VERSION_ATLEAST(2,0,0)
+#include "text.hpp"
+#endif
+
 #include <SDL_events.h>
 #include <SDL_image.h>
 
@@ -70,14 +74,24 @@ void loadscreen::global_loadscreen_manager::reset()
 loadscreen::loadscreen(CVideo &screen, const int percent):
 	screen_(screen),
 	textarea_(),
+#if SDL_VERSION_ATLEAST(2,0,0)
+	logo_texture_(image::get_texture("misc/logo.png")),
+#else
 	logo_surface_(image::get_image("misc/logo.png")),
+#endif
 	logo_drawn_(false),
 	pby_offset_(0),
 	prcnt_(percent)
 {
+#if SDL_VERSION_ATLEAST(2,0,0)
+	if (logo_texture_.null()) {
+		ERR_DP << "loadscreen: Failed to load the logo" << std::endl;
+	}
+#else
 	if (logo_surface_.null()) {
 		ERR_DP << "loadscreen: Failed to load the logo" << std::endl;
 	}
+#endif
 	textarea_.x = textarea_.y = textarea_.w = textarea_.h = 0;
 }
 void loadscreen::draw_screen(const std::string &text)
@@ -106,19 +120,100 @@ void loadscreen::draw_screen(const std::string &text)
 	// Height of the lighting line.
 	int	lightning_thickness = 2;
 
+#if SDL_VERSION_ATLEAST(2,0,0)
+	sdl::twindow *wnd = CVideo::get_window();
+	SDL_Renderer *rnd = SDL_GetRenderer(*wnd);
+
+	SDL_Rect area;
+
+	// Pump events and make sure to redraw the logo if there's a chance that it's been obscured
+	SDL_Event ev;
+	while(SDL_PollEvent(&ev)) {
+		if(ev.type == SDL_WINDOWEVENT
+				&& (ev.window.event == SDL_WINDOWEVENT_RESIZED
+					|| ev.window.event == SDL_WINDOWEVENT_EXPOSED))
+		{
+			logo_drawn_ = false;
+		}
+	}
+
+	// Draw logo if it was successfully loaded.
+	if (!logo_texture_.null() && !logo_drawn_) {
+		int x = (screen_.getx () - logo_texture_.width()) / 2;
+		int y = ((scry - logo_texture_.height()) / 2) - pbh;
+
+		// Check if we have enough pixels to display it.
+		if (x > 0 && y > 0) {
+			pby_offset_ = (pbh + logo_texture_.height())/2;
+			wnd->draw(logo_texture_, x, y);
+		} else {
+			if (!screen_.faked()) {  // Avoid error if --nogui is used.
+				ERR_DP << "loadscreen: Logo image is too big." << std::endl;
+			}
+		}
+		logo_drawn_ = true;
+	}
+	int pbx = (scrx - pbw)/2;					// Horizontal location.
+	int pby = (scry - pbh)/2 + pby_offset_;		// Vertical location.
+
+	// Draw top border.
+	area.x = pbx; area.y = pby;
+	area.w = pbw + 2*(bw+bispw); area.h = bw;
+	sdl::fill_rect(rnd,&area,bcr,bcg,bcb,255);
+	// Draw bottom border.
+	area.x = pbx; area.y = pby + pbh + bw + 2*bispw;
+	area.w = pbw + 2*(bw+bispw); area.h = bw;
+	sdl::fill_rect(rnd,&area,bcr,bcg,bcb,255);
+	// Draw left border.
+	area.x = pbx; area.y = pby + bw;
+	area.w = bw; area.h = pbh + 2*bispw;
+	sdl::fill_rect(rnd,&area,bcr,bcg,bcb,255);
+	// Draw right border.
+	area.x = pbx + pbw + bw + 2*bispw; area.y = pby + bw;
+	area.w = bw; area.h = pbh + 2*bispw;
+	sdl::fill_rect(rnd,&area,bcr,bcg,bcb,255);
+	// Draw the finished bar area.
+	area.x = pbx + bw + bispw; area.y = pby + bw + bispw;
+	area.w = (prcnt_ * pbw) / 100; area.h = pbh;
+	sdl::fill_rect(rnd,&area,fcr,fcg,fcb,255);
+
+	SDL_Rect lightning = area;
+	lightning.h = lightning_thickness;
+	//we add 25% of white to the color of the bar to simulate a light effect
+	sdl::fill_rect(rnd,&lightning,(fcr*3+255)/4,(fcg*3+255)/4,(fcb*3+255)/4,255);
+	lightning.y = area.y+area.h-lightning.h;
+	//remove 50% of color to simulate a shadow effect
+	sdl::fill_rect(rnd,&lightning,fcr/2,fcg/2,fcb/2,255);
+
+	// Draw the leftover bar area.
+	area.x = pbx + bw + bispw + (prcnt_ * pbw) / 100; area.y = pby + bw + bispw;
+	area.w = ((100 - prcnt_) * pbw) / 100; area.h = pbh;
+	sdl::fill_rect(rnd, &area, lcr, lcg, lcb, 255);
+
+	// Clear the last text and draw new if text is provided.
+	if (!text.empty())
+	{
+		sdl::fill_rect(rnd, &textarea_, 0, 0, 0, 255);
+
+		font::ttext txt;
+		txt.set_text(text, false);
+		// A text-ure... haha, get it?
+		sdl::ttexture texture = txt.render_as_texture();
+		textarea_.h = texture.height();
+		textarea_.w = texture.width();
+		textarea_.x = scrx/2 + bw + bispw - textarea_.w / 2;
+		textarea_.y = pby + pbh + 4*(bw + bispw);
+		wnd->draw(texture, textarea_.x, textarea_.y);
+	}
+	CVideo::get_window()->render();
+#else
 	surface gdis = screen_.getSurface();
 	SDL_Rect area;
 
 	// Pump events and make sure to redraw the logo if there's a chance that it's been obscured
 	SDL_Event ev;
 	while(SDL_PollEvent(&ev)) {
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-		if(ev.type == SDL_WINDOWEVENT
-				&& (ev.window.event == SDL_WINDOWEVENT_RESIZED
-					|| ev.window.event == SDL_WINDOWEVENT_EXPOSED))
-#else
 		if(ev.type == SDL_VIDEORESIZE || ev.type == SDL_VIDEOEXPOSE)
-#endif
 		{
 			logo_drawn_ = false;
 		}
@@ -148,64 +243,69 @@ void loadscreen::draw_screen(const std::string &text)
 	// Draw top border.
 	area.x = pbx; area.y = pby;
 	area.w = pbw + 2*(bw+bispw); area.h = bw;
-	sdl_fill_rect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
+	sdl::fill_rect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
 	// Draw bottom border.
 	area.x = pbx; area.y = pby + pbh + bw + 2*bispw;
 	area.w = pbw + 2*(bw+bispw); area.h = bw;
-	sdl_fill_rect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
+	sdl::fill_rect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
 	// Draw left border.
 	area.x = pbx; area.y = pby + bw;
 	area.w = bw; area.h = pbh + 2*bispw;
-	sdl_fill_rect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
+	sdl::fill_rect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
 	// Draw right border.
 	area.x = pbx + pbw + bw + 2*bispw; area.y = pby + bw;
 	area.w = bw; area.h = pbh + 2*bispw;
-	sdl_fill_rect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
+	sdl::fill_rect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
 	// Draw the finished bar area.
 	area.x = pbx + bw + bispw; area.y = pby + bw + bispw;
 	area.w = (prcnt_ * pbw) / 100; area.h = pbh;
-	sdl_fill_rect(gdis,&area,SDL_MapRGB(gdis->format,fcr,fcg,fcb));
+	sdl::fill_rect(gdis,&area,SDL_MapRGB(gdis->format,fcr,fcg,fcb));
 
 	SDL_Rect lightning = area;
 	lightning.h = lightning_thickness;
 	//we add 25% of white to the color of the bar to simulate a light effect
-	sdl_fill_rect(gdis,&lightning,SDL_MapRGB(gdis->format,(fcr*3+255)/4,(fcg*3+255)/4,(fcb*3+255)/4));
+	sdl::fill_rect(gdis,&lightning,SDL_MapRGB(gdis->format,(fcr*3+255)/4,(fcg*3+255)/4,(fcb*3+255)/4));
 	lightning.y = area.y+area.h-lightning.h;
 	//remove 50% of color to simulate a shadow effect
-	sdl_fill_rect(gdis,&lightning,SDL_MapRGB(gdis->format,fcr/2,fcg/2,fcb/2));
+	sdl::fill_rect(gdis,&lightning,SDL_MapRGB(gdis->format,fcr/2,fcg/2,fcb/2));
 
 	// Draw the leftover bar area.
 	area.x = pbx + bw + bispw + (prcnt_ * pbw) / 100; area.y = pby + bw + bispw;
 	area.w = ((100 - prcnt_) * pbw) / 100; area.h = pbh;
-	sdl_fill_rect(gdis,&area,SDL_MapRGB(gdis->format,lcr,lcg,lcb));
+	sdl::fill_rect(gdis,&area,SDL_MapRGB(gdis->format,lcr,lcg,lcb));
 
 	// Clear the last text and draw new if text is provided.
 	if (!text.empty())
 	{
 		SDL_Rect oldarea = textarea_;
-		sdl_fill_rect(gdis,&textarea_,SDL_MapRGB(gdis->format,0,0,0));
+		sdl::fill_rect(gdis,&textarea_,SDL_MapRGB(gdis->format,0,0,0));
 		textarea_ = font::line_size(text, font::SIZE_NORMAL);
 		textarea_.x = scrx/2 + bw + bispw - textarea_.w / 2;
 		textarea_.y = pby + pbh + 4*(bw + bispw);
 		textarea_ = font::draw_text(&screen_,textarea_,font::SIZE_NORMAL,font::NORMAL_COLOR,text,textarea_.x,textarea_.y);
-		SDL_Rect refresh = union_rects(oldarea, textarea_);
+		SDL_Rect refresh = sdl::union_rects(oldarea, textarea_);
 		update_rect(refresh.x, refresh.y, refresh.w, refresh.h);
 	}
 	// Update the rectangle.
 	update_rect(pbx, pby, pbw + 2*(bw + bispw), pbh + 2*(bw + bispw));
 	screen_.flip();
+#endif
 }
 
 void loadscreen::clear_screen()
 {
+#if SDL_VERSION_ATLEAST(2,0,0)
+	CVideo::get_window()->fill(0,0,0);
+#else
 	int scrx = screen_.getx();                     // Screen width.
 	int scry = screen_.gety();                     // Screen height.
 	SDL_Rect area = sdl::create_rect(0, 0, scrx, scry); // Screen area.
 	surface disp(screen_.getSurface());      // Screen surface.
 	// Make everything black.
-	sdl_fill_rect(disp,&area,SDL_MapRGB(disp->format,0,0,0));
+	sdl::fill_rect(disp,&area,SDL_MapRGB(disp->format,0,0,0));
 	update_whole_screen();
 	screen_.flip();
+#endif
 }
 
 loadscreen *loadscreen::global_loadscreen = 0;

@@ -29,6 +29,7 @@
 #include "multiplayer_configure.hpp"
 #include "filesystem.hpp"
 #include "log.hpp"
+#include "saved_game.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
@@ -43,7 +44,7 @@ static lg::log_domain log_mp_configure("mp/configure");
 
 namespace mp {
 
-configure::configure(game_display& disp, const config &cfg, chat& c, config& gamelist, const mp_game_settings& params, bool local_players_only) :
+configure::configure(game_display& disp, const config &cfg, chat& c, config& gamelist, saved_game& game, bool local_players_only) :
 	ui(disp, _("Configure Game"), cfg, c, gamelist),
 
 	local_players_only_(local_players_only),
@@ -81,7 +82,6 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	cancel_game_(disp.video(), _("Back")),
 	launch_game_(disp.video(), _("OK")),
 	password_button_(disp.video(), _("Set Password...")),
-	vision_combo_(disp, std::vector<std::string>()),
 	name_entry_(disp.video(), 32),
 	entry_points_label_(disp.video(), _("Select an entry point:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	entry_points_combo_(disp, std::vector<std::string>()),
@@ -90,7 +90,8 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	entry_points_(),
 	show_entry_points_(false),
 	force_use_map_settings_check_(true),
-	parameters_(params),
+	state_(game),
+	parameters_(state_.mp_settings()),
 	options_manager_(cfg, disp, &options_pane_right_, preferences::options())
 {
 	// Build the list of scenarios to play
@@ -146,7 +147,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	xp_modifier_slider_.set_increment(10);
 	xp_modifier_slider_.set_help_string(_("The amount of experience a unit needs to advance"));
 
-	if (parameters_.scenario_data["force_lock_settings"].to_bool()) {
+	if (state_.get_starting_pos()["force_lock_settings"].to_bool()) {
 		use_map_settings_.enable(false);
 		use_map_settings_.set_check(true);
 	} else {
@@ -169,14 +170,13 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	shuffle_sides_.set_check(preferences::shuffle_sides());
 	shuffle_sides_.set_help_string(_("Assign sides to players at random"));
 
+#if 0
 	// The possible vision settings
 	std::vector<std::string> vision_types;
 	vision_types.push_back(_("Share View"));
 	vision_types.push_back(_("Share Maps"));
 	vision_types.push_back(_("Share None"));
-	vision_combo_.set_items(vision_types);
-	vision_combo_.set_selected(0);
-
+#endif
 	// The starting points for campaign.
 	std::vector<std::string> entry_point_titles;
 
@@ -202,7 +202,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	}
 
 	options_manager_.set_era(parameters_.mp_era);
-	options_manager_.set_scenario(parameters_.mp_scenario);
+	options_manager_.set_scenario(state_.get_scenario_id()/*parameters_.mp_scenario*/);
 	options_manager_.set_modifications(parameters_.active_mods);
 	options_manager_.init_widgets();
 
@@ -215,6 +215,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 
 configure::~configure()
 {
+	try {
 	// Only save the settings if the dialog was 'accepted'
 	if(get_result() != CREATE) {
 		DBG_MP << "destructing multiplayer configure dialog - aborted game creation" << std::endl;
@@ -245,6 +246,7 @@ configure::~configure()
 		preferences::set_village_support(parameters_.village_support);
 		preferences::set_xp_modifier(parameters_.xp_modifier);
 	}
+	} catch (...) {}
 }
 
 const mp_game_settings& configure::get_parameters()
@@ -284,8 +286,6 @@ const mp_game_settings& configure::get_parameters()
 	parameters_.shroud_game = shroud_game_.checked();
 	parameters_.allow_observers = observers_game_.checked();
 	parameters_.shuffle_sides = shuffle_sides_.checked();
-	parameters_.share_view = vision_combo_.selected() == 0;
-	parameters_.share_maps = vision_combo_.selected() == 1;
 
 	parameters_.options = options_manager_.get_values();
 
@@ -323,9 +323,7 @@ void configure::process_event()
 		const config& scenario = *entry_points_[entry_points_combo_.selected()];
 
 		parameters_.hash = scenario.hash();
-		parameters_.scenario_data = scenario;
-		parameters_.mp_scenario = scenario["id"].str();
-		parameters_.mp_scenario_name = scenario["name"].str();
+		state_.set_scenario(scenario);
 
 		force_use_map_settings_check_ = true;
 	}
@@ -410,15 +408,15 @@ void configure::process_event()
 		// If the map settings are wanted use them,
 		// if not properly defined fall back to the default settings
 		turns_slider_.set_value(map_settings ?
-			settings::get_turns(parameters_.scenario_data["turns"]) :
+			settings::get_turns(state_.get_starting_pos()["turns"]) :
 			preferences::turns());
 
 		xp_modifier_slider_.set_value(map_settings ?
-			settings::get_xp_modifier(parameters_.scenario_data["experience_modifier"]) :
+			settings::get_xp_modifier(state_.get_starting_pos()["experience_modifier"]) :
 			preferences::xp_modifier());
 
 		random_start_time_.set_check(map_settings ?
-			parameters_.scenario_data["random_start_time"].to_bool(true) :
+			state_.get_starting_pos()["random_start_time"].to_bool(true) :
 			preferences::random_start_time());
 
 		// These are per player, always show values of player 1.
@@ -428,7 +426,7 @@ void configure::process_event()
 		 * This might change in the future.
 		 * NOTE when 'load game' is selected there are no sides.
 		 */
-		config::const_child_itors sides = parameters_.scenario_data.child_range("side");
+		config::const_child_itors sides = state_.get_starting_pos().child_range("side");
 		if (sides.first != sides.second)
 		{
 			const config &cfg = *sides.first;
@@ -504,7 +502,6 @@ void configure::hide_children(bool hide)
 	launch_game_.hide(hide);
 
 	password_button_.hide(hide);
-	vision_combo_.hide(hide);
 	name_entry_.hide(hide);
 
 	entry_points_label_.hide(hide);
@@ -551,11 +548,6 @@ void configure::layout_children(const SDL_Rect& rect)
 	options_pane_left_.set_height(right_pane_height - entry_points_label_.height());
 
 	int slider_width = options_pane_left_.width() - 40;
-
-#ifdef MP_VISION_OPTIONAL
-	vision_combo_.set_location(xpos, ypos);
-	ypos += vision_combo_.height() + border_size;
-#endif
 
 	int xpos_left = 0;
 	int ypos_left = 0;

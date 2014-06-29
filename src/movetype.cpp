@@ -19,6 +19,7 @@
 
 #include "movetype.hpp"
 
+#include "game_board.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "resources.hpp"
@@ -280,8 +281,8 @@ int movetype::terrain_info::data::calc_value(
 			   << " depth " << recurse_count << '\n';
 		return params_.default_value;
 	}
-	assert(resources::game_map);
-	const gamemap & map = *resources::game_map;
+	assert(resources::gameboard);
+	const gamemap & map = resources::gameboard->map();
 
 	// Get a list of underlying terrains.
 	const t_translation::t_list & underlying = params_.use_move ?

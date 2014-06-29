@@ -24,17 +24,21 @@
 #include "../composite/rca.hpp"
 #include "../composite/stage.hpp"
 #include "../../game_board.hpp"
-#include "../../gamestatus.hpp"
+#include "../../game_classification.hpp"
+#include "../../game_data.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../resources.hpp"
 #include "../../team.hpp"
+#include "../../unit.hpp"
 #include "../../pathfind/pathfind.hpp"
 #include "../../pathfind/teleport.hpp"
 
 #include <boost/foreach.hpp>
 
 #include <numeric>
+
+#include "SDL.h"
 
 static lg::log_domain log_ai_testing_ai_default("ai/ca/testing_ai_default");
 #define DBG_AI_TESTING_AI_DEFAULT LOG_STREAM(debug, log_ai_testing_ai_default)
@@ -64,7 +68,7 @@ double goto_phase::evaluate()
 	// Execute goto-movements - first collect gotos in a list
 	std::vector<map_location> gotos;
 	unit_map &units_ = *resources::units;
-	const gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 
 	for(unit_map::iterator ui = units_.begin(); ui != units_.end(); ++ui) {
 		if (ui->get_goto() == ui->get_location()) {
@@ -82,7 +86,7 @@ double goto_phase::evaluate()
 		}
 		// end of passive_leader
 
-		const pathfind::shortest_path_calculator calc(*ui, current_team(), *resources::teams, *resources::game_map);
+		const pathfind::shortest_path_calculator calc(*ui, current_team(), *resources::teams, resources::gameboard->map());
 
 		const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*ui, current_team());
 
@@ -153,12 +157,12 @@ double aspect_recruitment_phase::evaluate()
 	if(leader == resources::units->end()) {
 		return BAD_SCORE;
 	}
-	if (!resources::game_map->is_keep(leader->get_location())) {
+	if (!resources::gameboard->map().is_keep(leader->get_location())) {
 		return BAD_SCORE;
 	}
 
 	map_location recruit_loc = pathfind::find_vacant_castle(*leader);
-	if (!resources::game_map->on_board(recruit_loc)) {
+	if (!resources::gameboard->map().on_board(recruit_loc)) {
 		return BAD_SCORE;
 	}
 
@@ -200,7 +204,7 @@ double recruitment_phase::evaluate()
 	if(leader == resources::units->end()) {
 		return BAD_SCORE;
 	}
-	if (!resources::game_map->is_keep(leader->get_location())) {
+	if (!resources::gameboard->map().is_keep(leader->get_location())) {
 		return BAD_SCORE;
 	}
 
@@ -223,7 +227,7 @@ void recruitment_phase::execute()
 	unit_movement_scores_.clear();
 
 	const unit_map &units_ = *resources::units;
-	const gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 	const std::vector<team> &teams_ = *resources::teams;
 
 	map_location start_pos = units_.find_leader(get_side())->get_location();
@@ -242,7 +246,7 @@ void recruitment_phase::execute()
 		// that are closer to us than to other keeps.
 		const std::vector<map_location>& villages = map_.villages();
 		for(std::vector<map_location>::const_iterator v = villages.begin(); v != villages.end(); ++v) {
-			const int owner = village_owner(*v);
+			const int owner = resources::gameboard->village_owner(*v);
 			if(owner == -1) {
 				const size_t distance = distance_between(start_pos,*v);
 
@@ -385,7 +389,7 @@ int recruitment_phase::average_resistance_against(const unit_type& a, const unit
 {
 	int weighting_sum = 0, defense = 0;
 	const std::map<t_translation::t_terrain, size_t>& terrain =
-		resources::game_map->get_weighted_terrain_frequencies();
+		resources::gameboard->map().get_weighted_terrain_frequencies();
 
 	for (std::map<t_translation::t_terrain, size_t>::const_iterator j = terrain.begin(),
 	     j_end = terrain.end(); j != j_end; ++j)
@@ -688,9 +692,9 @@ double move_leader_to_goals_phase::evaluate()
 		}
 	}
 
-	pathfind::shortest_path_calculator calc(*leader, current_team(), *resources::teams, *resources::game_map);
+	pathfind::shortest_path_calculator calc(*leader, current_team(), *resources::teams, resources::gameboard->map());
 	pathfind::plain_route route = a_star_search(leader->get_location(), dst_, 1000.0, &calc,
-			resources::game_map->w(), resources::game_map->h());
+			resources::gameboard->map().w(), resources::gameboard->map().h());
 	if(route.steps.empty()) {
 		LOG_AI_TESTING_AI_DEFAULT << "route empty";
 		return BAD_SCORE;
@@ -803,12 +807,12 @@ double move_leader_to_keep_phase::evaluate()
 			continue;
 		}
 
-		const pathfind::shortest_path_calculator calc(*leader, current_team(), *resources::teams, *resources::game_map);
+		const pathfind::shortest_path_calculator calc(*leader, current_team(), *resources::teams, resources::gameboard->map());
 
 		const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*leader, current_team());
 
 		pathfind::plain_route route;
-		route = pathfind::a_star_search(leader->get_location(), keep, 10000.0, &calc, resources::game_map->w(), resources::game_map->h(), &allowed_teleports);
+		route = pathfind::a_star_search(leader->get_location(), keep, 10000.0, &calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
 
 		if (!route.steps.empty() || route.move_cost < shortest_distance) {
 			best_leader = &(*leader);
@@ -825,7 +829,7 @@ double move_leader_to_keep_phase::evaluate()
 	const unit* leader = best_leader;
 	const map_location keep = best_keep;
 	const pathfind::paths leader_paths(*leader, false, true, current_team());
-	const pathfind::shortest_path_calculator calc(*leader, current_team(), *resources::teams, *resources::game_map);
+	const pathfind::shortest_path_calculator calc(*leader, current_team(), *resources::teams, resources::gameboard->map());
 	const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*leader, current_team());
 
 	if (leader_paths.destinations.contains(keep) && units_.count(keep) == 0) {
@@ -844,7 +848,7 @@ double move_leader_to_keep_phase::evaluate()
 	ordered_locations moves_toward_keep;
 
 	pathfind::plain_route route;
-	route = pathfind::a_star_search(leader->get_location(), keep, 10000.0, &calc, resources::game_map->w(), resources::game_map->h(), &allowed_teleports);
+	route = pathfind::a_star_search(leader->get_location(), keep, 10000.0, &calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
 
 	// find next hop
 	map_location next_hop = map_location::null_location();
@@ -852,7 +856,7 @@ double move_leader_to_keep_phase::evaluate()
 	BOOST_FOREACH(const map_location& step, route.steps) {
 		if (leader_paths.destinations.contains(step)) {
 			next_hop = step;
-			next_hop_cost += leader->movement_cost(resources::game_map->get_terrain(step));
+			next_hop_cost += leader->movement_cost(resources::gameboard->map().get_terrain(step));
 		} else {
 			break;
 		}
@@ -866,7 +870,7 @@ double move_leader_to_keep_phase::evaluate()
 	BOOST_FOREACH(const pathfind::paths::step &dest, leader_paths.destinations) {
 		if (!units_.find(dest.curr).valid()) {
 			route = pathfind::a_star_search(dest.curr, next_hop, 10000.0, &calc,
-					resources::game_map->w(), resources::game_map->h(), &allowed_teleports);
+					resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
 			if (route.move_cost < next_hop_cost) {
 				moves_toward_keep.insert(std::make_pair(route.move_cost, dest.curr));
 			}
@@ -963,7 +967,7 @@ void get_villages_phase::execute()
 
 	if(leader_move.second.valid()) {
 		if((resources::gameboard->find_visible_unit(leader_move.first , current_team()) == units_.end())
-		   && resources::game_map->is_village(leader_move.first)) {
+		   && resources::gameboard->map().is_village(leader_move.first)) {
 			move_result_ptr move_res = execute_move_action(leader_move.second,leader_move.first,true);
 			if (!move_res->is_ok()) {
 				return;
@@ -1046,7 +1050,7 @@ void get_villages_phase::find_villages(
 	const bool passive_leader = get_passive_leader();
 
 	size_t min_distance = 100000;
-	const gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 	std::vector<team> &teams_ = *resources::teams;
 
 	// When a unit is dispatched we need to make sure we don't
@@ -1741,7 +1745,7 @@ double get_healing_phase::evaluate()
 			Itor best_loc = it.second;
 			while(it.first != it.second) {
 				const map_location& dst = it.first->second;
-				if (resources::game_map->gives_healing(dst) && (units_.find(dst) == units_.end() || dst == u_it->get_location())) {
+				if (resources::gameboard->map().gives_healing(dst) && (units_.find(dst) == units_.end() || dst == u_it->get_location())) {
 					const double vuln = power_projection(dst, get_enemy_dstsrc());
 					DBG_AI_TESTING_AI_DEFAULT << "found village with vulnerability: " << vuln << "\n";
 					if(vuln < best_vulnerability) {
@@ -1852,8 +1856,8 @@ double retreat_phase::evaluate()
 				map_location best_pos, best_defensive(i->get_location());
 
 				double best_rating = -1000.0;
-				int best_defensive_rating = i->defense_modifier(resources::game_map->get_terrain(i->get_location()))
-					- (resources::game_map->is_village(i->get_location()) ? 10 : 0);
+				int best_defensive_rating = i->defense_modifier(resources::gameboard->map().get_terrain(i->get_location()))
+					- (resources::gameboard->map().is_village(i->get_location()) ? 10 : 0);
 				while(itors.first != itors.second) {
 
 					//if(leader != units_.end() && std::count(leader_adj,
@@ -1868,7 +1872,7 @@ double retreat_phase::evaluate()
 					// compared to theirs, multiplying their power projection by their
 					// chance to hit us on the hex we're planning to flee to.
 					const map_location& hex = itors.first->second;
-					const int defense = i->defense_modifier(resources::game_map->get_terrain(hex));
+					const int defense = i->defense_modifier(resources::gameboard->map().get_terrain(hex));
 					const double our_power = power_projection(hex,get_dstsrc());
 					const double their_power = power_projection(hex,get_enemy_dstsrc()) * double(defense)/100.0;
 					const double rating = our_power - their_power;
@@ -1878,7 +1882,7 @@ double retreat_phase::evaluate()
 					}
 
 					// Give a bonus for getting to a village.
-					const int modified_defense = defense - (resources::game_map->is_village(hex) ? 10 : 0);
+					const int modified_defense = defense - (resources::gameboard->map().is_village(hex) ? 10 : 0);
 
 					if(modified_defense < best_defensive_rating) {
 						best_defensive_rating = modified_defense;
@@ -1932,7 +1936,7 @@ bool retreat_phase::should_retreat(const map_location& loc, const unit_map::cons
 	double optimal_terrain = best_defensive_position(un->get_location(), dstsrc,
 			srcdst, enemy_dstsrc).chance_to_hit/100.0;
 	const double proposed_terrain =
-		un->defense_modifier(resources::game_map->get_terrain(loc)) / 100.0;
+		un->defense_modifier(resources::gameboard->map().get_terrain(loc)) / 100.0;
 
 	// The 'exposure' is the additional % chance to hit
 	// this unit receives from being on a sub-optimal defensive terrain.
@@ -1959,7 +1963,7 @@ simple_move_and_targeting_phase::~simple_move_and_targeting_phase()
 
 double simple_move_and_targeting_phase::evaluate()
 {
-    // Pick first enemy leader, move all units as close to 
+    // Pick first enemy leader, move all units as close to
     // enemy leader as possible.
     // Own leader should not be moved.
     // Code does not support multiple leaders per side.
@@ -2087,11 +2091,11 @@ void leader_shares_keep_phase::execute()
 	BOOST_FOREACH(unit_map::unit_iterator &ai_leader, ai_leaders){
 		//only if leader is on a keep
 		const map_location &keep = ai_leader->get_location();
-		if ( !resources::game_map->is_keep(keep) ) {
+		if ( !resources::gameboard->map().is_keep(keep) ) {
 			continue;
 		}
 		map_location recruit_loc = pathfind::find_vacant_castle(*ai_leader);
-		if(!resources::game_map->on_board(recruit_loc)){
+		if(!resources::gameboard->map().on_board(recruit_loc)){
 			continue;
 		}
 		bool friend_can_reach_keep = false;
@@ -2121,7 +2125,7 @@ void leader_shares_keep_phase::execute()
 				if(distance_between(i->curr, keep) <= 3
 						&& static_cast<int>(distance_between(i->curr, keep)) <= ai_leader->movement_left()){
 
-					int tmp_def_mod = ai_leader->defense_modifier(resources::game_map->get_terrain(i->curr));
+					int tmp_def_mod = ai_leader->defense_modifier(resources::gameboard->map().get_terrain(i->curr));
 					if(tmp_def_mod < defense_modifier){
 						defense_modifier = tmp_def_mod;
 						best_move = i->curr;

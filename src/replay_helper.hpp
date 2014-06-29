@@ -1,4 +1,5 @@
 /*
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -41,7 +42,7 @@ public:
 
 	static config get_init_side();
 	/*
-		
+
 	*/
 	static config get_event(const std::string& name, const map_location& loc, const map_location*  last_select_loc);
 

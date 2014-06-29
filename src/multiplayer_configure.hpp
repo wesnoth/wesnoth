@@ -25,12 +25,15 @@
 #include "tooltips.hpp"
 #include "mp_options.hpp"
 
+class saved_game;
 namespace mp {
 
 class configure : public mp::ui
 {
 public:
-	configure(game_display& dist, const config& game_config, chat& c, config& gamelist, const mp_game_settings& params, bool local_players_only);
+	///gives the user the option to adjust the passed saved_game
+	///Call get_parameters to finalize;
+	configure(game_display& dist, const config& game_config, chat& c, config& gamelist, saved_game& game, bool local_players_only);
 	~configure();
 
 	const mp_game_settings& get_parameters();
@@ -79,7 +82,6 @@ private:
 	gui::button launch_game_;
 	gui::button password_button_;
 
-	gui::combo vision_combo_;
 	gui::textbox name_entry_;
 
 	gui::label entry_points_label_;
@@ -92,8 +94,8 @@ private:
 	bool show_entry_points_;
 
 	bool force_use_map_settings_check_;
-	mp_game_settings parameters_;
-
+	saved_game& state_;
+	mp_game_settings& parameters_;
 	options::manager options_manager_;
 };
 

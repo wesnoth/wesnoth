@@ -26,16 +26,34 @@
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+
+#include "clipboard.hpp"
+#include "serialization/parser.hpp" // for write()
 #include "utils/foreach.tpp"
 
-#include "../../gamestatus.hpp"
+#include "../../game_data.hpp"
+#include "../../recall_list_manager.hpp"
 #include "../../resources.hpp"
 #include "../../team.hpp"
+#include "../../unit.hpp"
+#include "../../unit_map.hpp"
 #include "../../ai/manager.hpp"
 
 #include <vector>
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
+
+namespace
+{
+
+inline std::string config_to_string(const config& cfg)
+{
+	std::ostringstream s;
+	write(s, cfg);
+	return s.str();
+}
+
+}
 
 namespace gui2
 {
@@ -59,6 +77,9 @@ namespace gui2
  * inspect & & control & m &
  *         The state of the variable or event. $
  *
+ * copy & & button & m &
+ *         A button to copy the state to clipboard. $
+ *
  * @end{table}
  */
 
@@ -70,7 +91,7 @@ static void inspect_ai(twindow& window, int side)
 	NEW_find_widget<tcontrol>(
 			&window,
 			"inspect",
-			false).set_label(ai_cfg.debug());
+			false).set_label(config_to_string(ai_cfg.debug));
 }
 */
 
@@ -84,14 +105,12 @@ static void inspect_ai(twindow& window, int side)
  * my_dialog_class::inner_view_class
  * &my_dialog_class::inner_view_class::member_function>);
  */
-template <class D, class V, void (V::*fptr)(twindow&)>
+template <class D, class V, void (V::*fptr)()>
 void dialog_view_callback(twidget& caller)
 {
 	D* dialog = dynamic_cast<D*>(caller.dialog());
 	assert(dialog);
-	twindow* window = dynamic_cast<twindow*>(caller.get_window());
-	assert(window);
-	(*(dialog->get_view()).*fptr)(*window);
+	(*(dialog->get_view()).*fptr)();
 }
 
 
@@ -107,6 +126,7 @@ public:
 		, stuff_types_list()
 		, inspect()
 		, inspector_name()
+		, copy_button()
 	{
 		name = cfg["name"].str();
 	}
@@ -118,6 +138,7 @@ public:
 	tlistbox* stuff_types_list;
 	tcontrol* inspect;
 	tcontrol* inspector_name;
+	tbutton* copy_button;
 
 
 	void clear_stuff_list()
@@ -245,7 +266,7 @@ public:
 		FOREACH(const AUTO & c, vars.all_children_range())
 		{
 			if(selected == i) {
-				model_.set_inspect_window_text(c.cfg.debug());
+				model_.set_inspect_window_text(config_to_string(c.cfg));
 				return;
 			}
 			i++;
@@ -319,7 +340,9 @@ public:
 				if(selected == i) {
 					config c_unit;
 					u->write(c_unit);
-					model_.set_inspect_window_text(c_unit.debug());
+					std::ostringstream cfg_str;
+					write(cfg_str, c_unit);
+					model_.set_inspect_window_text(cfg_str.str());
 					return;
 				}
 				i++;
@@ -377,7 +400,7 @@ public:
 							   : config();
 			c.clear_children("ai");
 			c.clear_children("village");
-			model_.set_inspect_window_text(c.debug());
+			model_.set_inspect_window_text(config_to_string(c));
 			return;
 		}
 
@@ -389,47 +412,41 @@ public:
 
 		if(selected == 2) {
 			model_.set_inspect_window_text(
-					ai::manager::to_config(side_).debug());
+					config_to_string(ai::manager::to_config(side_)));
 			return;
 		}
 
 		if(selected == 3) {
-			const std::vector<unit> recall_list
-					= resources::teams
-							  ? resources::teams->at(side_ - 1).recall_list()
-							  : std::vector<unit>();
-
 			std::stringstream s;
-			FOREACH(const AUTO & u, recall_list)
-			{
-				s << "id=\"" << u.id() << "\" (" << u.type_id() << ")\nL"
-				  << u.level() << "; " << u.experience() << "/"
-				  << u.max_experience() << " xp; " << u.hitpoints() << "/"
-				  << u.max_hitpoints() << " hp\n";
-				FOREACH(const AUTO & str, u.get_traits_list())
+			if (resources::teams) {
+				FOREACH(const AUTO & u, resources::teams->at(side_ - 1).recall_list())
 				{
-					s << "\t" << str << std::endl;
+					s << "id=\"" << u->id() << "\" (" << u->type_id() << ")\nL"
+					  << u->level() << "; " << u->experience() << "/"
+					  << u->max_experience() << " xp; " << u->hitpoints() << "/"
+					  << u->max_hitpoints() << " hp\n";
+					FOREACH(const AUTO & str, u->get_traits_list())
+					{
+						s << "\t" << str << std::endl;
+					}
+					s << std::endl;
 				}
-				s << std::endl;
 			}
 			model_.set_inspect_window_text(s.str());
 			return;
 		}
 
 		if(selected == 4) {
-			const std::vector<unit> recall_list
-					= resources::teams
-							  ? resources::teams->at(side_ - 1).recall_list()
-							  : std::vector<unit>();
-
 			config c;
-			FOREACH(const AUTO & u, recall_list)
-			{
-				config c_unit;
-				u.write(c_unit);
-				c.add_child("unit", c_unit);
+			if (resources::teams) {
+				FOREACH(const AUTO & u, resources::teams->at(side_ - 1).recall_list())
+				{
+					config c_unit;
+					u->write(c_unit);
+					c.add_child("unit", c_unit);
+				}
 			}
-			model_.set_inspect_window_text(c.debug());
+			model_.set_inspect_window_text(config_to_string(c));
 			return;
 		}
 
@@ -559,6 +576,11 @@ public:
 		c->update_view_from_model(); // TODO: 'activate'
 	}
 
+	void handle_copy_button_clicked()
+	{
+		copy_to_clipboard(model_.inspect->label(), false);
+	}
+
 
 private:
 	model& model_;
@@ -575,24 +597,26 @@ public:
 	{
 	}
 
-	void pre_show(CVideo& /*video*/, twindow& window)
+	void pre_show(CVideo& /*video*/, twindow& /*window*/)
 	{
 		controller_.show_stuff_types_list();
 		controller_.update_view_from_model();
-		window.invalidate_layout(); // workaround for assertion failure
 	}
 
 
-	void handle_stuff_list_item_clicked(twindow& window)
+	void handle_stuff_list_item_clicked()
 	{
 		controller_.handle_stuff_list_item_clicked();
-		window.invalidate_layout(); // workaround for assertion failure
 	}
 
-	void handle_stuff_types_list_item_clicked(twindow& window)
+	void handle_stuff_types_list_item_clicked()
 	{
 		controller_.handle_stuff_types_list_item_clicked();
-		window.invalidate_layout(); // workaround for assertion failure
+	}
+
+	void handle_copy_button_clicked(twindow& /*window*/)
+	{
+		controller_.handle_copy_button_clicked();
 	}
 
 
@@ -605,21 +629,21 @@ public:
 		model_.inspect = find_widget<tcontrol>(&window, "inspect", false, true);
 		model_.inspector_name
 				= &find_widget<tcontrol>(&window, "inspector_name", false);
+		model_.copy_button
+				= &find_widget<tbutton>(&window, "copy", false);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 		connect_signal_notify_modified(
 				*model_.stuff_list,
 				boost::bind(&tgamestate_inspector::view::
 									 handle_stuff_list_item_clicked,
-							this,
-							boost::ref(window)));
+							this));
 
 		connect_signal_notify_modified(
 				*model_.stuff_types_list,
 				boost::bind(&tgamestate_inspector::view::
 									 handle_stuff_list_item_clicked,
-							this,
-							boost::ref(window)));
+							this));
 
 #else
 		model_.stuff_list->set_callback_value_change(
@@ -634,6 +658,12 @@ public:
 									 &tgamestate_inspector::view::
 											  handle_stuff_types_list_item_clicked>);
 #endif
+
+		connect_signal_mouse_left_click(
+				*model_.copy_button,
+				boost::bind(&tgamestate_inspector::view::handle_copy_button_clicked,
+							this,
+							boost::ref(window)));
 	}
 
 private:

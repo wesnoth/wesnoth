@@ -99,6 +99,8 @@ public:
 	 */
 	ttexture(SDL_Renderer& renderer, const int access, const surface& surface);
 
+	ttexture();
+
 	~ttexture();
 
 	ttexture(const ttexture& texture);
@@ -216,12 +218,12 @@ public:
 	/**
 	 * Returns the width of the texture.
 	 */
-	unsigned width() const;
+	int width() const;
 
 	/**
 	 * Returns the height of the texture.
 	 */
-	unsigned height() const;
+	int height() const;
 
 	/**
 	 * Returns the frame of the texture.
@@ -257,17 +259,29 @@ public:
 	 */
 	Uint8 alpha() const;
 
-	/**
-	 * Sets the blend mode of the texture.
-	 *
-	 * @param mode                One of the values enumerated in SDL_BlendMode.
-	 */
-	 void set_blend_mode(SDL_BlendMode mode);
+	 /**
+	  * Sets the color modulation of the texture.
+	  *
+	  * @param r                  Red modulation.
+	  * @param g                  Green modulation.
+	  * @param b                  Blue modulation.
+	  */
+	 void set_color_mod(Uint8 r, Uint8 g, Uint8 b);
 
 	 /**
-	  * Returns the blend mode of the texture.
+	  * Returns the red modulation of the texture.
 	  */
-	 SDL_BlendMode blend_mode() const;
+	 Uint8 red_mod() const;
+
+	 /**
+	  * Returns the green modulation of the texture.
+	  */
+	 Uint8 green_mod() const;
+
+	 /**
+	  * Returns the blue modulation of the texture.
+	  */
+	 Uint8 blue_mod() const;
 
 	/***** ***** ***** Other. ***** ***** *****/
 
@@ -278,6 +292,13 @@ public:
 	 *                            replaced with.
 	 */
 	 void update_pixels(SDL_Surface* surf);
+
+	 /**
+	  * Tells whether the instance really handles an SDL_Texture object.
+	  *
+	  * @return                   True if the handled pointer is NULL.
+	  */
+	 bool null() const;
 
 private:
 	/**
@@ -308,6 +329,12 @@ private:
 
 	/** What should actually be displayed of the texture. */
 	SDL_Rect clip_;
+
+	/** Color modulation. */
+	Uint8 mod_r_, mod_g_, mod_b_;
+
+	/** Alpha. */
+	Uint8 alpha_;
 
 	/**
 	 * The SDL_Surface source of the @ref texture_.

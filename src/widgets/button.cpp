@@ -26,6 +26,7 @@
 #include "sound.hpp"
 #include "video.hpp"
 #include "wml_separators.hpp"
+#include "sdl/rect.hpp"
 
 #include "filesystem.hpp"
 
@@ -375,7 +376,7 @@ void button::draw_contents()
 
 bool button::hit(int x, int y) const
 {
-	return point_in_rect(x,y,location());
+	return sdl::point_in_rect(x,y,location());
 }
 
 static bool not_image(const std::string& str) { return !str.empty() && str[0] != IMAGE_PREFIX; }

@@ -37,22 +37,18 @@
 
 #include "../actions/attack.hpp"
 #include "../actions/create.hpp"
-#include "../actions/move.hpp"
-#include "../dialogs.hpp"
-#include "../game_end_exceptions.hpp"
 #include "../game_preferences.hpp"
 #include "../log.hpp"
-#include "../scripting/lua.hpp"
-#include "../synced_context.hpp"
 #include "../mouse_handler_base.hpp"
 #include "../pathfind/teleport.hpp"
 #include "../play_controller.hpp"
-#include "../replay.hpp"
+#include "../recall_list_manager.hpp"
 #include "../replay_helper.hpp"
 #include "../resources.hpp"
-#include "../statistics.hpp"
-#include "../team.hpp"
 #include "../synced_context.hpp"
+#include "../team.hpp"
+#include "../unit.hpp"
+#include "../unit_ptr.hpp"
 
 namespace ai {
 
@@ -290,7 +286,7 @@ void attack_result::do_execute()
 	{
 		attack_unit_and_advance(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, true, advancements_);
 	}
-	
+
 
 	set_gamestate_changed();
 	//start of ugly hack. @todo 1.9 rework that via extended event system
@@ -364,13 +360,13 @@ bool move_result::test_route(const unit &un)
 	}
 
 	team &my_team = get_my_team();
-	const pathfind::shortest_path_calculator calc(un, my_team, *resources::teams, *resources::game_map);
+	const pathfind::shortest_path_calculator calc(un, my_team, *resources::teams, resources::gameboard->map());
 
 	//allowed teleports
 	pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(un, my_team, true);///@todo 1.9: see_all -> false
 
 	//do an A*-search
-	route_ = boost::shared_ptr<pathfind::plain_route>( new pathfind::plain_route(pathfind::a_star_search(un.get_location(), to_, 10000.0, &calc, resources::game_map->w(), resources::game_map->h(), &allowed_teleports)));
+	route_ = boost::shared_ptr<pathfind::plain_route>( new pathfind::plain_route(pathfind::a_star_search(un.get_location(), to_, 10000.0, &calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports)));
 	if (route_->steps.empty()) {
 		set_error(E_NO_ROUTE);
 		return false;
@@ -499,14 +495,13 @@ recall_result::recall_result(side_number side,
 {
 }
 
-const unit * recall_result::get_recall_unit(const team &my_team)
+UnitConstPtr recall_result::get_recall_unit(const team &my_team)
 {
-	const std::vector<unit>::const_iterator rec = find_if_matches_id(my_team.recall_list(), unit_id_);
-	if (rec == my_team.recall_list().end()) {
+	UnitConstPtr rec = my_team.recall_list().find_if_matches_id(unit_id_);
+	if (!rec) {
 		set_error(E_NOT_AVAILABLE_FOR_RECALLING);
-		return NULL;
 	}
-	return &*rec;
+	return rec;
 }
 
 bool recall_result::test_enough_gold(const team &my_team)
@@ -530,7 +525,7 @@ void recall_result::do_check_before()
 	}
 
 	//Unit available for recalling?
-	const unit * to_recall = get_recall_unit(my_team);
+	const UnitConstPtr & to_recall = get_recall_unit(my_team);
 	if ( !to_recall ) {
 		return;
 	}
@@ -565,7 +560,7 @@ void recall_result::do_check_before()
 
 void recall_result::do_check_after()
 {
-	if (!resources::game_map->on_board(recall_location_)){
+	if (!resources::gameboard->map().on_board(recall_location_)){
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
@@ -611,9 +606,9 @@ void recall_result::do_execute()
 	// Do the actual recalling.
 	//we ignore possible erros (=unit doesnt exist on the recall list)
 	//becasue that was the previous behaviour.
-	synced_context::run_in_synced_context_if_not_already("recall", 
+	synced_context::run_in_synced_context_if_not_already("recall",
 		replay_helper::get_recall(unit_id_, recall_location_, recall_from_),
-		false, 
+		false,
 		preferences::show_ai_moves(),
 		synced_context::ignore_error_function);
 
@@ -709,7 +704,7 @@ void recruit_result::do_check_before()
 
 void recruit_result::do_check_after()
 {
-	if (!resources::game_map->on_board(recruit_location_)) {
+	if (!resources::gameboard->map().on_board(recruit_location_)) {
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
@@ -752,7 +747,7 @@ void recruit_result::do_execute()
 	// This should be implied by is_success() once check_before() has been
 	// called, so this is a guard against future breakage.
 	assert(location_checked_  &&  u != NULL);
-	
+
 	synced_context::run_in_synced_context_if_not_already("recruit", replay_helper::get_recruit(u->id(), recruit_location_, recruit_from_), false, preferences::show_ai_moves());
 	//TODO: should we do something to pass use_undo = false in replays and ai moves ?
 	//::actions::recruit_unit(*u, get_side(), recruit_location_, recruit_from_,
@@ -903,9 +898,9 @@ void synced_command_result::do_execute()
 		s << "local x1 = " << location_.x << " local y1 = " << location_.y << " ";
 	}
 	s << lua_code_;
-	
+
 	synced_context::run_in_synced_context_if_not_already("lua_ai", replay_helper::get_lua_ai(s.str()));
-	
+
 	try {
 		set_gamestate_changed();
 		manager::raise_gamestate_changed();

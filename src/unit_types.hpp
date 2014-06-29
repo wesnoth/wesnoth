@@ -281,7 +281,7 @@ public:
 	/// to the HELP_INDEXED status.
 	const std::vector<unit_race::GENDER>& genders() const { return genders_; }
 	std::vector<std::string> variations() const;
-	
+
 	/**
 	 * @param variation_id		The id of the variation we search for.
 	 * @return					Iff one of the type's variations' (or the sibling's if the unit_type is a variation itself) id matches @variation_id.

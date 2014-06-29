@@ -20,6 +20,8 @@
 #include "serialization/unicode.hpp"
 #include <boost/test/auto_unit_test.hpp>
 
+BOOST_AUTO_TEST_SUITE ( test_serialization_utils_and_unicode )
+
 BOOST_AUTO_TEST_CASE( utils_join_test )
 {
 	std::vector<std::string> fruit;
@@ -73,3 +75,46 @@ BOOST_AUTO_TEST_CASE( utils_unicode_test )
 	BOOST_CHECK_EQUAL(nonbmp_u8, unicode_cast<utf8::string>(nonbmp_u4));
 }
 
+BOOST_AUTO_TEST_CASE( test_lowercase )
+{
+	BOOST_CHECK_EQUAL ( utf8::lowercase("FOO") , "foo" );
+	BOOST_CHECK_EQUAL ( utf8::lowercase("foo") , "foo" );
+	BOOST_CHECK_EQUAL ( utf8::lowercase("FoO") , "foo" );
+	BOOST_CHECK_EQUAL ( utf8::lowercase("fO0") , "fo0" );
+}
+
+BOOST_AUTO_TEST_CASE( test_wildcard_string_match )
+{
+	const std::string str = "foo bar baz";
+
+	BOOST_CHECK(utils::wildcard_string_match(str, "*bar*"));
+
+	BOOST_CHECK(!utils::wildcard_string_match(str, "*BAR*"));
+	BOOST_CHECK(!utils::wildcard_string_match(str, "bar"));
+
+	BOOST_CHECK(utils::wildcard_string_match(str, "*ba? b*"));
+	BOOST_CHECK(utils::wildcard_string_match(str, "*?a?*"));
+
+	BOOST_CHECK(!utils::wildcard_string_match(str, "foo? "));
+	BOOST_CHECK(!utils::wildcard_string_match(str, "?foo"));
+
+	std::string superfluous_mask;
+
+	superfluous_mask = std::string(str.length(), '?');
+	BOOST_CHECK(utils::wildcard_string_match(str, superfluous_mask));
+	BOOST_CHECK(utils::wildcard_string_match(str, superfluous_mask + '?'));
+
+	superfluous_mask = std::string(str.length(), '*');
+	BOOST_CHECK(utils::wildcard_string_match(str, superfluous_mask));
+	BOOST_CHECK(utils::wildcard_string_match(str, superfluous_mask + '*'));
+
+	BOOST_CHECK(utils::wildcard_string_match("", ""));
+	BOOST_CHECK(!utils::wildcard_string_match(str, ""));
+
+	BOOST_CHECK(utils::wildcard_string_match("", "*"));
+	BOOST_CHECK(utils::wildcard_string_match("", "***?**"));
+	BOOST_CHECK(!utils::wildcard_string_match("", "?"));
+	BOOST_CHECK(!utils::wildcard_string_match("", "???"));
+}
+
+BOOST_AUTO_TEST_SUITE_END()

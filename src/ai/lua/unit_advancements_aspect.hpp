@@ -18,9 +18,9 @@
 #include <string>
 #include <vector>
 
-#include "lua/lualib.h"
 #include "../../unit_map.hpp"
-#include "../../config.hpp"
+
+struct lua_State;
 
 namespace ai {
 

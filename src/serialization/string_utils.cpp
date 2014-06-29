@@ -564,7 +564,11 @@ std::string si_string(double input, bool base2, std::string unit) {
 
 	strings9 prefixes;
 	strings9::const_iterator prefix;
-	if (input < 1.0) {
+	if (input == 0.0) {
+		strings9 tmp = { { "","","","","","","","","" } };
+		prefixes = tmp;
+		prefix = prefixes.begin();
+	} else if (input < 1.0) {
 		strings9 tmp = { {
 			"",
 			_("prefix_milli^m"),

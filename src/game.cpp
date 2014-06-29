@@ -17,46 +17,84 @@
 #include "about.hpp"
 #include "addon/manager.hpp"
 #include "addon/manager_ui.hpp"
-#include "commandline_options.hpp"
-#include "game_config_manager.hpp"
-#include "game_controller.hpp"
-#include "gui/dialogs/core_selection.hpp"
-#include "gui/dialogs/title_screen.hpp"
+#include "commandline_options.hpp"      // for commandline_options, etc
+#include "config.hpp"                   // for config, config::error, etc
+#include "cursor.hpp"                   // for set, CURSOR_TYPE::NORMAL, etc
+#include "editor/editor_main.hpp"
+#include "filesystem.hpp"               // for file_exists, io_exception, etc
+#include "font.hpp"                     // for load_font_config, etc
+#include "formula.hpp"                  // for formula_error
+#include "game_config.hpp"              // for path, debug, debug_lua, etc
+#include "game_config_manager.hpp"      // for game_config_manager, etc
+#include "game_controller.hpp"          // for game_controller, etc
+#include "gui/auxiliary/event/handler.hpp"  // for tmanager
+#include "gui/dialogs/core_selection.hpp"  // for tcore_selection
+#include "gui/dialogs/title_screen.hpp"  // for ttitle_screen, etc
+#include "gui/widgets/helper.hpp"       // for init
+#include "help.hpp"                     // for help_manager
+#include "hotkey/command_executor.hpp"  // for basic_handler
+#include "image.hpp"                    // for flush_cache, etc
+#include "loadscreen.hpp"               // for loadscreen, etc
+#include "log.hpp"                      // for LOG_STREAM, general, logger, etc
+#include "preferences.hpp"              // for core_id, etc
+#include "preferences_display.hpp"      // for display_manager
+#include "replay.hpp"                   // for recorder, replay
+#include "resources.hpp"                // for config_manager
+#include "sdl/exception.hpp"            // for texception
+#include "serialization/binary_or_text.hpp"  // for config_writer
+#include "serialization/parser.hpp"     // for read
+#include "serialization/preprocessor.hpp"  // for preproc_define, etc
+#include "serialization/validator.hpp"  // for strict_validation_enabled
+#include "sound.hpp"                    // for commit_music_changes, etc
+#include "statistics.hpp"               // for fresh_stats
+#include "tstring.hpp"                  // for operator==, t_string
+#include "version.hpp"                  // for version_info
+#include "video.hpp"                    // for CVideo
+#include "wesconfig.h"                  // for PACKAGE
+#include "widgets/button.hpp"           // for button
+#include "wml_exception.hpp"            // for twml_exception
+
+#include <SDL.h>                        // for SDL_Init, SDL_INIT_TIMER
+#include <libintl.h>                    // for bind_textdomain_codeset, etc
+#include <boost/foreach.hpp>            // for auto_any_base, etc
+#include <boost/iostreams/categories.hpp>  // for input, output
+#include <boost/iostreams/copy.hpp>     // for copy
+#include <boost/iostreams/filter/bzip2.hpp>  // for bzip2_compressor, etc
+#include <boost/iostreams/filter/gzip.hpp>  // for gzip_compressor, etc
+#include <boost/iostreams/filtering_stream.hpp>  // for filtering_stream
+#include <boost/optional.hpp>           // for optional
+#include <boost/program_options/errors.hpp>  // for error
+#include <boost/scoped_ptr.hpp>         // for scoped_ptr
+#include <boost/tuple/tuple.hpp>        // for tuple
+#include <cerrno>                       // for ENOMEM
+#include <clocale>                      // for setlocale, NULL, LC_ALL, etc
+#include <cstdio>                      // for remove, fprintf, stderr
+#include <cstdlib>                     // for srand, exit
+#include <ctime>                       // for time, ctime, time_t
+#include <exception>                    // for exception
+#include <fstream>                      // for operator<<, basic_ostream, etc
+#include <iostream>                     // for cerr, cout
+#include <map>                          // for _Rb_tree_iterator, etc
+#include <new>                          // for bad_alloc
+#include <string>                       // for string, basic_string, etc
+#include <utility>                      // for make_pair, pair
+#include <vector>                       // for vector, etc
+#include "SDL_error.h"                  // for SDL_GetError
+#include "SDL_events.h"                 // for SDL_EventState, etc
+#include "SDL_stdinc.h"                 // for SDL_putenv, Uint32
+#include "SDL_timer.h"                  // for SDL_GetTicks
+#include "SDL_version.h"                // for SDL_VERSION_ATLEAST
+
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
-#include "gui/widgets/window.hpp"
-#include "help.hpp"
-#include "loadscreen.hpp"
-#include "log.hpp"
-#include "playcampaign.hpp"
-#include "preferences_display.hpp"
-#include "replay.hpp"
-#include "sdl/exception.hpp"
-#include "serialization/binary_or_text.hpp"
-#include "serialization/parser.hpp"
-#include "serialization/validator.hpp"
-#include "statistics.hpp"
-#include "version.hpp"
-#include "wml_exception.hpp"
-
-#include <cerrno>
-#include <clocale>
-#include <fstream>
-#include <libintl.h>
-
-#include <boost/foreach.hpp>
-#include <boost/iostreams/copy.hpp>
-#include <boost/iostreams/filter/bzip2.hpp>
-#include <boost/iostreams/filter/gzip.hpp>
-
-#include <SDL.h>
-#include <SDL_thread.h>
-
 
 #ifdef HAVE_VISUAL_LEAK_DETECTOR
 #include "vld.h"
 #endif
+
+class end_level_exception;
+namespace game { struct error; }
 
 static lg::log_domain log_config("config");
 #define LOG_CONFIG LOG_STREAM(info, log_config)
@@ -421,6 +459,24 @@ static void init_locale() {
 }
 
 /**
+ * Print an alert and instructions to stderr about early initialization errors.
+ *
+ * This is provided as an aid for users dealing with potential data dir
+ * configuration issues. The first code to read core WML *has* the
+ * responsibility to call this function in the event of a problem, to inform
+ * the user of the most likely possible cause and suggest a course of action
+ * to solve the issue.
+ */
+static void warn_early_init_failure()
+{
+	// NOTE: wrap output to 80 columns.
+	std::cerr << '\n'
+			  << "An error at this point during initialization usually indicates that the data\n"
+			  << "directory above was not correctly set or detected. Try passing the correct path\n"
+			  << "in the command line with the --config-dir switch or as the only argument.\n";
+}
+
+/**
  * Setups the game environment and enters
  * the titlescreen or game loops.
  */
@@ -435,7 +491,7 @@ static int do_gameloop(int argc, char** argv)
 		return finished;
 	}
 
-	boost::shared_ptr<game_controller> game(
+	boost::scoped_ptr<game_controller> game(
 		new game_controller(cmdline_opts,argv[0]));
 	const int start_ticks = SDL_GetTicks();
 
@@ -449,6 +505,8 @@ static int do_gameloop(int argc, char** argv)
 	res = font::load_font_config();
 	if(res == false) {
 		std::cerr << "could not initialize fonts\n";
+		// The most common symptom of a bogus data dir path -- warn the user.
+		warn_early_init_failure();
 		return 1;
 	}
 
@@ -775,13 +833,23 @@ int main(int argc, char** argv)
 	} catch(game::error &) {
 		// A message has already been displayed.
 		return 1;
-	} catch(std::ios::failure &) {
-		// This is required mainly for when compiling with Microsoft Visual C++ Compiler
-		// so that the game will not crash with a Runtime Error
-		return 1;
 	} catch(std::bad_alloc&) {
 		std::cerr << "Ran out of memory. Aborted.\n";
 		return ENOMEM;
+	} catch(std::exception & e) { //Added this in case the others fall through.
+		std::cerr << "Caught general exception: " << e.what() << std::endl;
+		return 1;
+	} catch(std::string & e) {
+		std::cerr << "Caught a string thrown as an exception: " << e << std::endl;
+		return 1;
+	} catch(const char * e) {
+		std::cerr << "Caught a string thrown as an exception: " << e << std::endl;
+		return 1;
+#if !defined(NO_CATCH_AT_GAME_END)
+	} catch(...) { //Added this to ensure that even when we terminate with `throw 42`, the exception is caught and all destructors are actually called.
+		std::cerr << "Caught unspecified general exception. Terminating." << std::endl; //Apparently, some compilers will simply terminate without
+		return 1;									//calling destructors if there is no one to catch it at all.
+#endif
 	}
 
 	return 0;

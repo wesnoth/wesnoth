@@ -34,12 +34,23 @@
 #define DISPLAY_H_INCLUDED
 
 class config;
+class fake_unit_manager;
 class terrain_builder;
-struct time_of_day;
 class map_labels;
 class arrow;
 
+namespace halo {
+	class manager;
+}
+
+namespace wb {
+	class manager;
+}
+
+#include "animated.hpp"
+#include "display_context.hpp"
 #include "font.hpp"
+#include "image.hpp" //only needed for enums (!)
 #include "key.hpp"
 #include "team.hpp"
 #include "time_of_day.hpp"
@@ -51,10 +62,16 @@ class arrow;
 
 #include "overlay.hpp"
 
-#include <list>
 
+#ifndef INCL_BOOST_FUNCTION_HPP_
+#define INCL_BOOST_FUNCTION_HPP_
 #include <boost/function.hpp>
+#endif
+
+#include <boost/weak_ptr.hpp>
 #include <boost/scoped_ptr.hpp>
+#include <deque>
+#include <list>
 #include <map>
 
 class gamemap;
@@ -62,19 +79,21 @@ class gamemap;
 class display
 {
 public:
-	display(unit_map* units, CVideo& video, const gamemap* map, const std::vector<team>* t,
+	display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::manager> wb,
 			const config& theme_cfg, const config& level);
 	virtual ~display();
 	static display* get_singleton() { return singleton_ ;}
 
-	bool show_everything() const { return !viewpoint_ && !is_blindfolded(); }
+	bool show_everything() const { return !dont_show_all_ && !is_blindfolded(); }
 
-	const std::vector<team>& get_teams() const {return *teams_;}
+	const gamemap& get_map() const { return dc_->map(); }
+
+	const std::vector<team>& get_teams() const {return dc_->teams();}
 
 	/** The playing team is the team whose turn it is. */
 	size_t playing_team() const { return activeTeam_; }
 
-	bool team_valid() const { return currentTeam_ < teams_->size(); }
+	bool team_valid() const { return currentTeam_ < dc_->teams().size(); }
 
 	/** The viewing team is the team currently viewing the game. */
 	size_t viewing_team() const { return currentTeam_; }
@@ -96,8 +115,7 @@ public:
 	 * Cancels all the exclusive draw requests.
 	 */
 	void clear_exclusive_draws() { exclusive_unit_draw_requests_.clear(); }
-	unit_map& get_units() {return *units_;}
-	const unit_map& get_const_units() const {return *units_;}
+	const unit_map& get_units() const {return dc_->units();}
 
 	/**
 	 * Allows a unit to request to be the only one drawn in its hex. Useful for situations where
@@ -113,10 +131,6 @@ public:
 	 *         the empty string if there was no exclusive draw request for this location.
 	 */
 	std::string remove_exclusive_draw(const map_location& loc);
-
-	void draw_bar(const std::string& image, int xpos, int ypos,
-			const map_location& loc, size_t height, double filled,
-			const SDL_Color& col, fixed_t alpha);
 
 	/**
 	 * Check the overlay_map for proper team-specific overlays to be
@@ -153,9 +167,12 @@ public:
 	 */
 	void reload_map();
 
-	void change_map(const gamemap* m);
-	void change_teams(const std::vector<team>* teams);
-	void change_units(unit_map* units);
+	void change_display_context(const display_context * dc);
+	const display_context & get_disp_context() const { return *dc_; }
+
+	void reset_halo_manager();
+	void reset_halo_manager(halo::manager & hm);
+	halo::manager & get_halo_manager() { return *halo_man_; }
 
 	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue)
 		{ return 0xFF000000 | (red << 16) | (green << 8) | blue; }
@@ -190,6 +207,11 @@ public:
 
 	virtual bool in_game() const { return false; }
 	virtual bool in_editor() const { return false; }
+
+	/** Virtual functions shadowed in game_display. These are needed to generate reports easily, without dynamic casting. Hope to factor out eventually. */
+	virtual const map_location & displayed_unit_hex() const { return map_location::null_location(); }
+	virtual int playing_side() const { return -100; } //In this case give an obviously wrong answer to fail fast, since this could actually cause a big bug. */
+	virtual const std::set<std::string>& observers() const { static const std::set<std::string> fake_obs = std::set<std::string> (); return fake_obs; }
 
 	/**
 	 * the dimensions of the display. x and y are width/height.
@@ -326,11 +348,11 @@ public:
 
 	/** Returns true if location (x,y) is covered in shroud. */
 	bool shrouded(const map_location& loc) const {
-		return is_blindfolded() || (viewpoint_ && viewpoint_->shrouded(loc));
+		return is_blindfolded() || (dont_show_all_ && dc_->teams()[currentTeam_].shrouded(loc));
 	}
 	/** Returns true if location (x,y) is covered in fog. */
 	bool fogged(const map_location& loc) const {
-		return is_blindfolded() || (viewpoint_ && viewpoint_->fogged(loc));
+		return is_blindfolded() || (dont_show_all_ && dc_->teams()[currentTeam_].fogged(loc));
 	}
 
 	/**
@@ -407,19 +429,12 @@ public:
 	 * Function to invalidate animated terrains and units which may have changed.
 	 */
 	void invalidate_animations();
-	/**
-	  * helper function for invalidate_animations
-	  * returns a list of units to check for invalidation
-	  */
-	virtual std::vector<unit*> get_unit_list_for_invalidation();
 
 	/**
 	 * Per-location invalidation called by invalidate_animations()
 	 * Extra game per-location invalidation (village ownership)
 	 */
 	void invalidate_animations_location(const map_location& loc);
-
-	const gamemap& get_map() const { return *map_; }
 
 	/**
 	 * mouseover_hex_overlay_ require a prerendered surface
@@ -617,18 +632,13 @@ public:
 private:
 	void init_flags_for_side_internal(size_t side, const std::string& side_color);
 
-	/**
-	 * Finds the start and end rows on the energy bar image.
-	 *
-	 * White pixels are substituted for the color of the energy.
-	 */
-	const SDL_Rect& calculate_energy_bar(surface surf);
-
 	int blindfold_ctr_;
 
 protected:
 	//TODO sort
-	unit_map* units_;
+	const display_context * dc_;
+	boost::scoped_ptr<halo::manager> halo_man_;
+	boost::weak_ptr<wb::manager> wb_;
 
 	typedef std::map<map_location, std::string> exclusive_unit_draw_requests_t;
 	/// map of hexes where only one unit should be drawn, the one identified by the associated id string
@@ -721,16 +731,15 @@ protected:
 	const std::string& get_variant(const std::vector<std::string>& variants, const map_location &loc) const;
 
 	CVideo& screen_;
-	const gamemap* map_;
 	size_t currentTeam_;
-	const std::vector<team>* teams_;
-	const team *viewpoint_;
+	bool dont_show_all_; //const team *viewpoint_;
 	std::map<surface,SDL_Rect> energy_bar_rects_;
 	int xpos_, ypos_;
 	bool view_locked_;
 	theme theme_;
 	int zoom_;
 	static int last_zoom_;
+	boost::scoped_ptr<fake_unit_manager> fake_unit_man_;
 	boost::scoped_ptr<terrain_builder> builder_;
 	surface minimap_;
 	SDL_Rect minimap_location_;

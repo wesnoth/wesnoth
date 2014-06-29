@@ -155,7 +155,7 @@ void palette_manager::handle_event(const SDL_Event& event) {
 
 	if (event.type == SDL_MOUSEMOTION) {
 		// If the mouse is inside the palette, give it focus.
-		if (point_in_rect(event.button.x, event.button.y, location())) {
+		if (sdl::point_in_rect(event.button.x, event.button.y, location())) {
 			if (!focus(&event)) set_focus(true);
 		}
 		// If the mouse is outside, remove focus.

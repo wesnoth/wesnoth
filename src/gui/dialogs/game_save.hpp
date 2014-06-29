@@ -16,7 +16,6 @@
 #define GUI_DIALOGS_SAVE_GAME_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-#include "tstring.hpp"
 
 namespace gui2
 {

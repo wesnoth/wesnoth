@@ -23,11 +23,13 @@
 #include "../composite/engine.hpp"
 #include "../composite/rca.hpp"
 #include "../composite/stage.hpp"
-#include "../../gamestatus.hpp"
+#include "../../game_board.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../resources.hpp"
 #include "../../team.hpp"
+#include "../../unit.hpp"
+#include "../../unit_types.hpp"
 #include "../../wml_exception.hpp"
 #include "../../pathfind/pathfind.hpp"
 
@@ -73,7 +75,7 @@ double testing_recruitment_phase::evaluate()
    if(leader == resources::units->end()) {
       return BAD_SCORE;
    }
-   if (!resources::game_map->is_keep(leader->get_location())) {
+   if (!resources::gameboard->map().is_keep(leader->get_location())) {
       return BAD_SCORE;
    }
 
@@ -255,7 +257,7 @@ static int average_resistance_against(const unit_type& a, const unit_type& b)
 {
    int weighting_sum = 0, defense = 0;
    const std::map<t_translation::t_terrain, size_t>& terrain =
-      resources::game_map->get_weighted_terrain_frequencies();
+      resources::gameboard->map().get_weighted_terrain_frequencies();
 
    for (std::map<t_translation::t_terrain, size_t>::const_iterator j = terrain.begin(),
          j_end = terrain.end(); j != j_end; ++j)

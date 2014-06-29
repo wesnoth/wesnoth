@@ -15,9 +15,10 @@
 #ifndef CALLABLE_OBJECTS_HPP_INCLUDED
 #define CALLABLE_OBJECTS_HPP_INCLUDED
 
-
+#include "formula_callable.hpp"
 #include "map.hpp"
 #include "team.hpp"
+#include "unit.hpp"
 
 #define CALLABLE_WRAPPER_START(klass) \
 class klass##_callable : public game_logic::formula_callable { \

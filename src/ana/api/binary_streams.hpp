@@ -325,7 +325,7 @@ namespace ana
                 ~container_writer()
                 {
                     if ( _elements_left != 0 )
-                        throw/* std::runtime_error*/("More elements were expected to be written.");
+                        assert(false && "More elements were expected to be written.");
                 }
             private:
 

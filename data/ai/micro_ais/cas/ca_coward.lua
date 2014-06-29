@@ -83,6 +83,26 @@ function ca_coward:execution(ai, cfg)
     AH.movefull_stopunit(ai, coward, best_hex[1], best_hex[2])
     if (not coward) or (not coward.valid) then return end
 
+    -- If 'attack_if_trapped' is set, the coward attacks the weakest unit it ends up next to
+    if cfg.attack_if_trapped then
+        local max_rating, best_target = -9e99
+        for xa,ya in H.adjacent_tiles(coward.x, coward.y) do
+            local target = wesnoth.get_unit(xa, ya)
+            if target and wesnoth.is_enemy(coward.side, target.side) then
+                local rating = - target.hitpoints
+
+                if (rating > max_rating) then
+                    max_rating, best_target = rating, target
+                end
+            end
+        end
+
+        if best_target then
+            AH.checked_attack(ai, coward, best_target)
+            if (not coward) or (not coward.valid) then return end
+        end
+    end
+
     AH.checked_stopunit_all(ai, coward)
 end
 

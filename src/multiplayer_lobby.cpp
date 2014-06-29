@@ -268,7 +268,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 
 		xpos += xp_text->w + 2 * h_padding_;
 	}
-	
+
 	if(!game.map_data.empty()) {
 		// Draw map size icon
 		const surface map_size_icon(image::get_image(map_size_icon_locator_));
@@ -277,7 +277,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 
 			xpos += map_size_icon->w + h_padding_image_to_text_;
 		}
-	
+
 		// Draw map size text
 		const surface map_size_text(font::get_rendered_text(game.map_info_size,
 			font::SIZE_NORMAL, font::NORMAL_COLOR));
@@ -396,11 +396,11 @@ void gamebrowser::handle_event(const SDL_Event& event)
 		}
 		const SDL_Rect& loc = inner_location();
 
-		if(!games_.empty() && point_in_rect(x, y, loc)) {
+		if(!games_.empty() && sdl::point_in_rect(x, y, loc)) {
 			for(size_t i = visible_range_.first; i != visible_range_.second; ++i) {
 				const SDL_Rect& item_rect = get_item_rect(i);
 
-				if(point_in_rect(x, y, item_rect)) {
+				if(sdl::point_in_rect(x, y, item_rect)) {
 					set_focus(true);
 					selected_ = i;
 					break;
@@ -887,7 +887,7 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 	if (preferences::skip_mp_replay()) {
 		replay_options_.set_selected(1);
 	}
-	
+
 	if (preferences::blindfold_replay()) {
 		replay_options_.set_selected(2);
 	}

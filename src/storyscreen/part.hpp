@@ -24,12 +24,12 @@
 #include <utility>
 #include <vector>
 
-#include "sdl_utils.hpp"
+#include "sdl/utils.hpp"
+#include "sdl/texture.hpp"
 
 class config;
 class vconfig;
 class display;
-class game_state;
 
 namespace storyscreen {
 
@@ -43,7 +43,11 @@ public:
 	struct render_input
 	{
 		SDL_Rect rect;	/**< Corrected rectangle for rendering surf. */
+#if SDL_VERSION_ATLEAST(2,0,0)
+		sdl::ttexture image;
+#else
 		surface image;	/**< Surface, scaled if required. */
+#endif
 	};
 
 	/**
@@ -329,7 +333,7 @@ public:
 	const std::vector<background_layer>& get_background_layers() const {
 		return background_layers_;
 	}
-	
+
 private:
 	/** Takes care of initializing and branching properties. */
 	void resolve_wml(const vconfig &cfg);

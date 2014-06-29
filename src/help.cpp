@@ -26,6 +26,7 @@
 #include "about.hpp"
 #include "display.hpp"
 #include "exceptions.hpp"
+#include "game_board.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -33,6 +34,7 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "marked-up_text.hpp"
+#include "resources.hpp"
 #include "sound.hpp"
 #include "unit.hpp"
 #include "unit_helper.hpp"
@@ -956,7 +958,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 		} else if ((*section_cfg)["sort_topics"] == "generated") {
 		  sort_topics = false;
 		  sort_generated = true;
-		} else if ((*section_cfg)["sort_topics"] != "") {
+		} else if (!(*section_cfg)["sort_topics"].empty()) {
 		  std::stringstream ss;
 		  ss << "Invalid sort option: '" << (*section_cfg)["sort_topics"] << "'";
 		  throw parse_error(ss.str());
@@ -1321,13 +1323,13 @@ public:
 
 		if (!(type_.union_type().size() == 1 && type_.union_type()[0] == type_.number() && type_.is_nonnull())) {
 
-			const t_translation::t_list& underlying_terrains = resources::game_map->underlying_mvt_terrain(type_.number());
+			const t_translation::t_list& underlying_terrains = resources::gameboard->map().underlying_mvt_terrain(type_.number());
 
 			ss << "\n" << N_("Base Terrain: ");
 
 			bool first = true;
 			BOOST_FOREACH(const t_translation::t_terrain& underlying_terrain, underlying_terrains) {
-				const terrain_type& mvt_base = resources::game_map->get_terrain_info(underlying_terrain);
+				const terrain_type& mvt_base = resources::gameboard->map().get_terrain_info(underlying_terrain);
 
 				if (mvt_base.editor_name().empty()) continue;
 				if (!first) ss << ",";
@@ -1661,7 +1663,7 @@ public:
 		}
 		ss << generate_table(resistance_table);
 
-		if (resources::game_map != NULL) {
+		if (resources::gameboard != NULL) {
 			// Print the terrain modifier table of the unit.
 			ss << "\n\n<header>text='" << escape(_("Terrain Modifiers"))
 			   << "'</header>\n\n";
@@ -1688,7 +1690,7 @@ public:
 				const t_translation::t_terrain terrain = *terrain_it;
 				if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER)
 					continue;
-				const terrain_type& info = resources::game_map->get_terrain_info(terrain);
+				const terrain_type& info = resources::gameboard->map().get_terrain_info(terrain);
 
 				if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
 					std::vector<item> row;
@@ -1899,15 +1901,15 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 
 void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*level*/)
 {
-	if (resources::game_map == NULL) return;
+	if (resources::gameboard == NULL) return;
 
 	std::map<std::string, section> base_map;
 
-	const t_translation::t_list& t_listi = resources::game_map->get_terrain_list();
+	const t_translation::t_list& t_listi = resources::gameboard->map().get_terrain_list();
 
 	BOOST_FOREACH(const t_translation::t_terrain& t, t_listi) {
 
-		const terrain_type& info = resources::game_map->get_terrain_info(t);
+		const terrain_type& info = resources::gameboard->map().get_terrain_info(t);
 
 		bool hidden = info.is_combined() || info.hide_help();
 
@@ -1920,10 +1922,10 @@ void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*l
 		terrain_topic.id    = hidden_symbol(hidden) + terrain_prefix + info.id();
 		terrain_topic.text  = new terrain_topic_generator(info);
 
-		t_translation::t_list base_terrains = resources::game_map->underlying_union_terrain(t);
+		t_translation::t_list base_terrains = resources::gameboard->map().underlying_union_terrain(t);
 		BOOST_FOREACH(const t_translation::t_terrain& base, base_terrains) {
 
-			const terrain_type& base_info = resources::game_map->get_terrain_info(base);
+			const terrain_type& base_info = resources::gameboard->map().get_terrain_info(base);
 
 			if (!base_info.is_nonnull() || base_info.hide_help())
 				continue;
@@ -2895,7 +2897,7 @@ void help_text_area::draw_contents()
 			dst.y += loc.y;
 			if (it->box) {
 				for (int i = 0; i < box_width; ++i) {
-					draw_rectangle(dst.x, dst.y, it->rect.w - i * 2, it->rect.h - i * 2,
+					sdl::draw_rectangle(dst.x, dst.y, it->rect.w - i * 2, it->rect.h - i * 2,
 					                    0, screen);
 					++dst.x;
 					++dst.y;
@@ -2916,7 +2918,7 @@ void help_text_area::scroll(unsigned int)
 }
 
 bool help_text_area::item_at::operator()(const item& item) const {
-	return point_in_rect(x_, y_, item.rect);
+	return sdl::point_in_rect(x_, y_, item.rect);
 }
 
 std::string help_text_area::ref_at(const int x, const int y)
@@ -3008,7 +3010,7 @@ void help_browser::process_event()
 	SDL_GetMouseState(&mousex,&mousey);
 
 	/// Fake focus functionality for the menu, only process it if it has focus.
-	if (point_in_rect(mousex, mousey, menu_.location())) {
+	if (sdl::point_in_rect(mousex, mousey, menu_.location())) {
 		menu_.process();
 		const topic *chosen_topic = menu_.chosen_topic();
 		if (chosen_topic != NULL && chosen_topic != shown_topic_) {

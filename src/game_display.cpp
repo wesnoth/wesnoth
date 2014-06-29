@@ -18,37 +18,30 @@
  */
 
 #include "global.hpp"
-
-#include "game_board.hpp"
 #include "game_display.hpp"
+
 #include "gettext.hpp"
 #include "wesconfig.h"
 
-#ifdef HAVE_LIBDBUS
-#include <dbus/dbus.h>
-#endif
-
-#ifdef HAVE_GROWL
-#include <Growl/GrowlApplicationBridge-Carbon.h>
-#include <Carbon/Carbon.h>
-Growl_Delegate growl_obj;
-#endif
-
 #include "cursor.hpp"
+#include "display_chat_manager.hpp"
+#include "fake_unit_manager.hpp"
+#include "fake_unit_ptr.hpp"
+#include "game_board.hpp"
 #include "game_preferences.hpp"
 #include "halo.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "map_label.hpp"
 #include "marked-up_text.hpp"
+#include "notifications/notifications.hpp"
 #include "reports.hpp"
 #include "resources.hpp"
 #include "tod_manager.hpp"
 #include "sound.hpp"
+#include "unit.hpp"
+#include "unit_drawer.hpp"
 #include "whiteboard/manager.hpp"
-#ifdef _WIN32
-#include "windows_tray_notification.hpp"
-#endif
 
 #include <boost/foreach.hpp>
 
@@ -61,23 +54,28 @@ static lg::log_domain log_engine("engine");
 
 std::map<map_location,fixed_t> game_display::debugHighlights_;
 
-game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
-		const tod_manager& tod, const std::vector<team>& t,
+/**
+ * Function to return 2 half-hex footsteps images for the given location.
+ * Only loc is on the current route set by set_route.
+ *
+ * This function is only used internally by game_display so I have moved it out of the header into the compilaton unit.
+ */
+std::vector<surface> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_);
+
+game_display::game_display(game_board& board, CVideo& video, boost::weak_ptr<wb::manager> wb,
+		const tod_manager& tod,
 		const config& theme_cfg, const config& level) :
-		display(&units, video, &map, &t, theme_cfg, level),
+		display(&board, video, wb, theme_cfg, level),
 		overlay_map_(),
-		fake_units_(),
 		attack_indicator_src_(),
 		attack_indicator_dst_(),
 		route_(),
 		tod_manager_(tod),
-		level_(level),
 		displayedUnitHex_(),
 		sidebarScaling_(1.0),
 		first_turn_(true),
 		in_game_(false),
-		observers_(),
-		chat_messages_(),
+		chat_man_(new display_chat_manager(*this)),
 		game_mode_(RUNNING)
 {
 	replace_overlay_map(&overlay_map_);
@@ -86,19 +84,20 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 
 game_display* game_display::create_dummy_display(CVideo& video)
 {
-	static unit_map dummy_umap;
 	static config dummy_cfg;
-	static gamemap dummy_map(dummy_cfg, "");
+	static config dummy_cfg2;
+	static game_board dummy_board(dummy_cfg, dummy_cfg2);
 	static tod_manager dummy_tod(dummy_cfg);
-	static std::vector<team> dummy_teams;
-	return new game_display(dummy_umap, video, dummy_map, dummy_tod,
-			dummy_teams, dummy_cfg, dummy_cfg);
+	return new game_display(dummy_board, video, boost::shared_ptr<wb::manager>(), dummy_tod,
+			dummy_cfg, dummy_cfg);
 }
 
 game_display::~game_display()
 {
+	try {
 	// SDL_FreeSurface(minimap_);
-	prune_chat_messages(true);
+	chat_man_->prune_chat_messages(true);
+	} catch (...) {}
 }
 
 void game_display::new_turn()
@@ -164,15 +163,15 @@ void game_display::highlight_hex(map_location hex)
 {
 	wb::future_map future; /**< Lasts for whole method. */
 
-	const unit *u = resources::gameboard->get_visible_unit(hex, (*teams_)[viewing_team()], !viewpoint_);
+	const unit *u = resources::gameboard->get_visible_unit(hex, dc_->teams()[viewing_team()], !dont_show_all_);
 	if (u) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
 	} else {
-		u = resources::gameboard->get_visible_unit(mouseoverHex_, (*teams_)[viewing_team()], !viewpoint_);
+		u = resources::gameboard->get_visible_unit(mouseoverHex_, dc_->teams()[viewing_team()], !dont_show_all_);
 		if (u) {
 			// mouse moved from unit hex to non-unit hex
-			if (units_->count(selectedHex_)) {
+			if (dc_->units().count(selectedHex_)) {
 				displayedUnitHex_ = selectedHex_;
 				invalidate_unit();
 			}
@@ -191,7 +190,7 @@ void game_display::display_unit_hex(map_location hex)
 
 	wb::future_map future; /**< Lasts for whole method. */
 
-	const unit *u = resources::gameboard->get_visible_unit(hex, (*teams_)[viewing_team()], !viewpoint_);
+	const unit *u = resources::gameboard->get_visible_unit(hex, dc_->teams()[viewing_team()], !dont_show_all_);
 	if (u) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
@@ -206,11 +205,11 @@ void game_display::invalidate_unit_after_move(const map_location& src, const map
 	}
 }
 
-void game_display::scroll_to_leader(unit_map& units, int side, SCROLL_TYPE scroll_type,bool force)
+void game_display::scroll_to_leader(int side, SCROLL_TYPE scroll_type,bool force)
 {
-	unit_map::const_iterator leader = units.find_leader(side);
+	unit_map::const_iterator leader = dc_->units().find_leader(side);
 
-	if(leader != units_->end()) {
+	if(leader.valid()) {
 		// YogiHH: I can't see why we need another key_handler here,
 		// therefore I will comment it out :
 		/*
@@ -221,42 +220,43 @@ void game_display::scroll_to_leader(unit_map& units, int side, SCROLL_TYPE scrol
 }
 
 void game_display::pre_draw() {
-	if (resources::whiteboard) {
-		resources::whiteboard->pre_draw();
+	if (boost::shared_ptr<wb::manager> w = wb_.lock()) {
+		w->pre_draw();
 	}
 	process_reachmap_changes();
 	/**
 	 * @todo FIXME: must modify changed, but best to do it at the
 	 * floating_label level
 	 */
-	prune_chat_messages();
+	chat_man_->prune_chat_messages();
 }
 
 
 void game_display::post_draw() {
-	if (resources::whiteboard) {
-		resources::whiteboard->post_draw();
+	if (boost::shared_ptr<wb::manager> w = wb_.lock()) {
+		w->post_draw();
 	}
 }
 
 void game_display::draw_invalidated()
 {
-	halo::unrender(invalidated_);
+	halo_man_->unrender(invalidated_);
 	display::draw_invalidated();
 
-	BOOST_FOREACH(unit* temp_unit, fake_units_) {
+	unit_drawer drawer = unit_drawer(*this, energy_bar_rects_);
+
+	BOOST_FOREACH(const unit* temp_unit, *fake_unit_man_) {
 		const map_location& loc = temp_unit->get_location();
 		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
 		if (invalidated_.find(loc) != invalidated_.end()
 				&& (request == exclusive_unit_draw_requests_.end() || request->second == temp_unit->id()))
-			temp_unit->redraw_unit();
+			drawer.redraw_unit(*temp_unit);
 	}
-
 }
 
 void game_display::post_commit()
 {
-	halo::render();
+	halo_man_->render();
 }
 
 void game_display::draw_hex(const map_location& loc)
@@ -278,7 +278,7 @@ void game_display::draw_hex(const map_location& loc)
 
 	if(on_map && loc == mouseoverHex_) {
 		tdrawing_layer hex_top_layer = LAYER_MOUSEOVER_BOTTOM;
-		const unit *u = resources::gameboard->get_visible_unit(loc, (*teams_)[viewing_team()] );
+		const unit *u = resources::gameboard->get_visible_unit(loc, dc_->teams()[viewing_team()] );
 		if( u != NULL ) {
 			hex_top_layer = LAYER_MOUSEOVER_TOP;
 		}
@@ -287,12 +287,12 @@ void game_display::draw_hex(const map_location& loc)
 					image::get_image("misc/hover-hex-top.png~RC(magenta>gold)", image::SCALED_TO_HEX));
 			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
 					image::get_image("misc/hover-hex-bottom.png~RC(magenta>gold)", image::SCALED_TO_HEX));
-		} else if((*teams_)[currentTeam_].is_enemy(u->side())) {
+		} else if(dc_->teams()[currentTeam_].is_enemy(u->side())) {
 			drawing_buffer_add( hex_top_layer, loc, xpos, ypos,
 					image::get_image("misc/hover-hex-enemy-top.png~RC(magenta>red)", image::SCALED_TO_HEX));
 			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
 					image::get_image("misc/hover-hex-enemy-bottom.png~RC(magenta>red)", image::SCALED_TO_HEX));
-		} else if((*teams_)[currentTeam_].side() == u->side()) {
+		} else if(dc_->teams()[currentTeam_].side() == u->side()) {
 			drawing_buffer_add( hex_top_layer, loc, xpos, ypos,
 					image::get_image("misc/hover-hex-top.png~RC(magenta>green)", image::SCALED_TO_HEX));
 			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
@@ -317,14 +317,16 @@ void game_display::draw_hex(const map_location& loc)
 				image::get_image(unreachable,image::SCALED_TO_HEX));
 	}
 
-	resources::whiteboard->draw_hex(loc);
+	if (boost::shared_ptr<wb::manager> w = wb_.lock()) {
+		w->draw_hex(loc);
 
-	if (!(resources::whiteboard->is_active() && resources::whiteboard->has_temp_move()))
-	{
-		// Footsteps indicating a movement path
-		const std::vector<surface>& footstepImages = footsteps_images(loc);
-		if (!footstepImages.empty()) {
-			drawing_buffer_add(LAYER_FOOTSTEPS, loc, xpos, ypos, footstepImages);
+		if (!(w->is_active() && w->has_temp_move()))
+		{
+			// Footsteps indicating a movement path
+			const std::vector<surface>& footstepImages = footsteps_images(loc, route_, dc_);
+			if (!footstepImages.empty()) {
+				drawing_buffer_add(LAYER_FOOTSTEPS, loc, xpos, ypos, footstepImages);
+			}
 		}
 	}
 	// Draw the attack direction indicator
@@ -410,13 +412,15 @@ void game_display::draw_movement_info(const map_location& loc)
 	// Search if there is a mark here
 	pathfind::marked_route::mark_map::iterator w = route_.marks.find(loc);
 
+	boost::shared_ptr<wb::manager> wb = wb_.lock();
+
 	// Don't use empty route or the first step (the unit will be there)
 	if(w != route_.marks.end()
 				&& !route_.steps.empty() && route_.steps.front() != loc) {
 		const unit_map::const_iterator un =
-				resources::whiteboard->get_temp_move_unit().valid() ?
-						resources::whiteboard->get_temp_move_unit() : units_->find(route_.steps.front());
-		if(un != units_->end()) {
+				(wb && wb->get_temp_move_unit().valid()) ?
+						wb->get_temp_move_unit() : dc_->units().find(route_.steps.front());
+		if(un != dc_->units().end()) {
 			// Display the def% of this terrain
 			int def =  100 - un->defense_modifier(get_map().get_terrain(loc));
 			std::stringstream def_text;
@@ -431,7 +435,7 @@ void game_display::draw_movement_info(const map_location& loc)
 			int xpos = get_location_x(loc);
 			int ypos = get_location_y(loc);
 
-            if (w->second.invisible) {
+			if (w->second.invisible) {
 				drawing_buffer_add(LAYER_MOVE_INFO, loc, xpos, ypos,
 					image::get_image("misc/hidden.png", image::SCALED_TO_HEX));
 			}
@@ -462,7 +466,7 @@ void game_display::draw_movement_info(const map_location& loc)
 	{
 		const unit_map::const_iterator selectedUnit = resources::gameboard->find_visible_unit(selectedHex_,resources::teams->at(currentTeam_));
 		const unit_map::const_iterator mouseoveredUnit = resources::gameboard->find_visible_unit(mouseoverHex_,resources::teams->at(currentTeam_));
-		if(selectedUnit != units_->end() && mouseoveredUnit == units_->end()) {
+		if(selectedUnit != dc_->units().end() && mouseoveredUnit == dc_->units().end()) {
 			// Display the def% of this terrain
 			int def =  100 - selectedUnit->defense_modifier(get_map().get_terrain(loc));
 			std::stringstream def_text;
@@ -485,7 +489,7 @@ void game_display::draw_movement_info(const map_location& loc)
 	}
 }
 
-std::vector<surface> game_display::footsteps_images(const map_location& loc)
+std::vector<surface> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_)
 {
 	std::vector<surface> res;
 
@@ -502,9 +506,9 @@ std::vector<surface> game_display::footsteps_images(const map_location& loc)
 
 	// Check which footsteps images of game_config we will use
 	int move_cost = 1;
-	const unit_map::const_iterator u = units_->find(route_.steps.front());
-	if(u != units_->end()) {
-		move_cost = u->movement_cost(get_map().get_terrain(loc));
+	const unit_map::const_iterator u = dc_->units().find(route_.steps.front());
+	if(u != dc_->units().end()) {
+		move_cost = u->movement_cost(dc_->map().get_terrain(loc));
 	}
 	int image_number = std::min<int>(move_cost, game_config::foot_speed_prefix.size());
 	if (image_number < 1) {
@@ -619,112 +623,10 @@ void game_display::float_label(const map_location& loc, const std::string& text,
 	font::add_floating_label(flabel);
 }
 
-std::vector<unit*> game_display::get_unit_list_for_invalidation() {
-	std::vector<unit*> unit_list = display::get_unit_list_for_invalidation();;
-	BOOST_FOREACH(unit *u, fake_units_) {
-		unit_list.push_back(u);
-	}
-	return unit_list;;
-}
-
-
 int& game_display::debug_highlight(const map_location& loc)
 {
 	assert(game_config::debug);
 	return debugHighlights_[loc];
-}
-
-
-/**
- * Assignment operator, taking a unit.
- * If already in the queue, @a this will be moved to the end of the
- * queue (drawn last).
- *
- * This function is unsuitable for derived classes and MUST be overridden.
- * Furthermore, derived classes must not explicitly call this version.
- *
- * The overriding function can be almost the same, except "new (this)" should
- * be followed by the derived class instead of "fake_unit(a)".
- */
-game_display::fake_unit & game_display::fake_unit::operator=(unit const & a)
-{
-	if ( this != &a ) {
-		game_display * display = my_display_;
-
-		// Use the copy constructor to make sure we are coherent.
-		// (Methodology copied from unit::operator=)
-		this->~fake_unit();
-		new (this) fake_unit(a);
-		// Restore our old display.
-		if ( display != NULL )
-			place_on_game_display(display);
-	}
-	return *this;
-}
-
-/**
- * Removes @a this from the fake_units_ list if necessary.
- */
-game_display::fake_unit::~fake_unit()
-{
-	// The fake_unit class exists for this one line, which removes the
-	// fake_unit from the display's fake_units_ dequeue in the event of an
-	// exception.
-	if(my_display_){remove_from_game_display();}
-}
-
-/**
- * Place @a this on @a display's fake_units_ dequeue.
- * This will be added at the end (drawn last, over all other units).
- * Duplicate additions are not allowed.
- */
-void game_display::fake_unit::place_on_game_display(game_display * display){
-	assert(my_display_ == NULL); //Can only be placed on 1 game_display
-	my_display_=display;
-	my_display_->place_temporary_unit(this);
-}
-
-/**
- * Removes @a this from whatever fake_units_ list it is on (if any).
- * @returns the number of fake_units deleted, which should be 0 or 1
- *          (any other number indicates an error).
- */
-int game_display::fake_unit::remove_from_game_display(){
-	int ret(0);
-	if(my_display_ != NULL){
-		ret = my_display_->remove_temporary_unit(this);
-		my_display_=NULL;
-	}
-	return ret;
-}
-
-void game_display::place_temporary_unit(unit *u)
-{
-	if(std::find(fake_units_.begin(),fake_units_.end(), u) != fake_units_.end()) {
-		ERR_NG << "In game_display::place_temporary_unit: attempt to add duplicate fake unit." << std::endl;
-	} else {
-		fake_units_.push_back(u);
-		invalidate(u->get_location());
-	}
-}
-
-int game_display::remove_temporary_unit(unit *u)
-{
-	int removed = 0;
-	std::deque<unit*>::iterator it =
-			std::remove(fake_units_.begin(), fake_units_.end(), u);
-	if (it != fake_units_.end()) {
-		removed = std::distance(it, fake_units_.end());
-		//std::remove doesn't remove anything without using erase afterwards.
-		fake_units_.erase(it, fake_units_.end());
-		invalidate(u->get_location());
-		// Redraw with no location to get rid of haloes
-		u->clear_haloes();
-	}
-	if (removed > 1) {
-		ERR_NG << "Error: duplicate temp unit found in game_display::remove_temporary_unit" << std::endl;
-	}
-	return removed;
 }
 
 void game_display::set_attack_indicator(const map_location& src, const map_location& dst)
@@ -746,265 +648,19 @@ void game_display::clear_attack_indicator()
 	set_attack_indicator(map_location::null_location(), map_location::null_location());
 }
 
-
-
-
 std::string game_display::current_team_name() const
 {
 	if (team_valid())
 	{
-		return (*teams_)[currentTeam_].team_name();
+		return dc_->teams()[currentTeam_].team_name();
 	}
 	return std::string();
 }
 
-#ifdef HAVE_LIBDBUS
-/** Use KDE 4 notifications. */
-static bool kde_style = false;
-
-struct wnotify
-{
-	wnotify()
-		: id()
-		, owner()
-		, message()
-	{
-	}
-
-	uint32_t id;
-	std::string owner;
-	std::string message;
-};
-
-static std::list<wnotify> notifications;
-
-static DBusHandlerResult filter_dbus_signal(DBusConnection *, DBusMessage *buf, void *)
-{
-	if (!dbus_message_is_signal(buf, "org.freedesktop.Notifications", "NotificationClosed")) {
-		return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
-	}
-
-	uint32_t id;
-	dbus_message_get_args(buf, NULL,
-		DBUS_TYPE_UINT32, &id,
-		DBUS_TYPE_INVALID);
-
-	std::list<wnotify>::iterator i = notifications.begin(),
-		i_end = notifications.end();
-	while (i != i_end && i->id != id) ++i;
-	if (i != i_end)
-		notifications.erase(i);
-
-	return DBUS_HANDLER_RESULT_HANDLED;
-}
-
-static DBusConnection *get_dbus_connection()
-{
-	if (preferences::get("disable_notifications", false)) {
-		return NULL;
-	}
-
-	static bool initted = false;
-	static DBusConnection *connection = NULL;
-
-	if (!initted)
-	{
-		initted = true;
-		if (getenv("KDE_SESSION_VERSION")) {
-			// This variable is defined for KDE 4 only.
-			kde_style = true;
-		}
-		DBusError err;
-		dbus_error_init(&err);
-		connection = dbus_bus_get(DBUS_BUS_SESSION, &err);
-		if (!connection) {
-			ERR_DP << "Failed to open DBus session: " << err.message << '\n';
-			dbus_error_free(&err);
-			return NULL;
-		}
-		dbus_connection_add_filter(connection, filter_dbus_signal, NULL, NULL);
-	}
-	if (connection) {
-		dbus_connection_read_write(connection, 0);
-		while (dbus_connection_dispatch(connection) == DBUS_DISPATCH_DATA_REMAINS) {}
-	}
-	return connection;
-}
-
-static uint32_t send_dbus_notification(DBusConnection *connection, uint32_t replaces_id,
-	const std::string &owner, const std::string &message)
-{
-	DBusMessage *buf = dbus_message_new_method_call(
-		kde_style ? "org.kde.VisualNotifications" : "org.freedesktop.Notifications",
-		kde_style ? "/VisualNotifications" : "/org/freedesktop/Notifications",
-		kde_style ? "org.kde.VisualNotifications" : "org.freedesktop.Notifications",
-		"Notify");
-	const char *app_name = "Battle for Wesnoth";
-	dbus_message_append_args(buf,
-		DBUS_TYPE_STRING, &app_name,
-		DBUS_TYPE_UINT32, &replaces_id,
-		DBUS_TYPE_INVALID);
-	if (kde_style) {
-		const char *event_id = "";
-		dbus_message_append_args(buf,
-			DBUS_TYPE_STRING, &event_id,
-			DBUS_TYPE_INVALID);
-	}
-	std::string app_icon_ = game_config::path + "/images/wesnoth-icon-small.png";
-	const char *app_icon = app_icon_.c_str();
-	const char *summary = owner.c_str();
-	const char *body = message.c_str();
-	const char **actions = NULL;
-	dbus_message_append_args(buf,
-		DBUS_TYPE_STRING, &app_icon,
-		DBUS_TYPE_STRING, &summary,
-		DBUS_TYPE_STRING, &body,
-		DBUS_TYPE_ARRAY, DBUS_TYPE_STRING, &actions, 0,
-		DBUS_TYPE_INVALID);
-	DBusMessageIter iter, hints;
-	dbus_message_iter_init_append(buf, &iter);
-	dbus_message_iter_open_container(&iter, DBUS_TYPE_ARRAY, "{sv}", &hints);
-	dbus_message_iter_close_container(&iter, &hints);
-	int expire_timeout = kde_style ? 5000 : -1;
-	dbus_message_append_args(buf,
-		DBUS_TYPE_INT32, &expire_timeout,
-		DBUS_TYPE_INVALID);
-	DBusError err;
-	dbus_error_init(&err);
-	DBusMessage *ret = dbus_connection_send_with_reply_and_block(connection, buf, 1000, &err);
-	dbus_message_unref(buf);
-	if (!ret) {
-		ERR_DP << "Failed to send visual notification: " << err.message << '\n';
-		dbus_error_free(&err);
-		if (kde_style) {
-			ERR_DP << " Retrying with the freedesktop protocol." << std::endl;
-			kde_style = false;
-			return send_dbus_notification(connection, replaces_id, owner, message);
-		}
-		return 0;
-	}
-	uint32_t id;
-	dbus_message_get_args(ret, NULL,
-		DBUS_TYPE_UINT32, &id,
-		DBUS_TYPE_INVALID);
-	dbus_message_unref(ret);
-	// TODO: remove once closing signals for KDE are handled in filter_dbus_signal.
-	if (kde_style) return 0;
-	return id;
-}
-#endif
-
-#if defined(HAVE_LIBDBUS) || defined(HAVE_GROWL) || defined(_WIN32)
-void game_display::send_notification(const std::string& owner, const std::string& message)
-{
-	if (preferences::get("disable_notifications", false)) { return; }
-#else
-void game_display::send_notification(const std::string& /*owner*/, const std::string& /*message*/)
-{
-#endif
-#if defined(HAVE_LIBDBUS) || defined(HAVE_GROWL) || defined(_WIN32)
-	Uint8 app_state = SDL_GetAppState();
-
-	// Do not show notifications when the window is visible...
-	if ((app_state & SDL_APPACTIVE) != 0)
-	{
-		// ... and it has a focus.
-		if ((app_state & (SDL_APPMOUSEFOCUS | SDL_APPINPUTFOCUS)) != 0) {
-			return;
-		}
-	}
-#endif
-
-#ifdef HAVE_LIBDBUS
-	DBusConnection *connection = get_dbus_connection();
-	if (!connection) return;
-
-	std::list<wnotify>::iterator i = notifications.begin(),
-		i_end = notifications.end();
-	while (i != i_end && i->owner != owner) ++i;
-
-	if (i != i_end) {
-		i->message = message + "\n" + i->message;
-		int endl_pos = -1;
-		for (int ctr = 0; ctr < 5; ctr++)
-			endl_pos = i->message.find('\n', endl_pos+1);
-
-		i->message = i->message.substr(0,endl_pos);
-
-		send_dbus_notification(connection, i->id, owner, i->message);
-		return;
-	} else {
-		uint32_t id = send_dbus_notification(connection, 0, owner, message);
-		if (!id) return;
-		wnotify visual;
-		visual.id = id;
-		visual.owner = owner;
-		visual.message = message;
-		notifications.push_back(visual);
-	}
-#endif
-
-#ifdef HAVE_GROWL
-	CFStringRef app_name = CFStringCreateWithCString(NULL, "Wesnoth", kCFStringEncodingUTF8);
-	CFStringRef cf_owner = CFStringCreateWithCString(NULL, owner.c_str(), kCFStringEncodingUTF8);
-	CFStringRef cf_message = CFStringCreateWithCString(NULL, message.c_str(), kCFStringEncodingUTF8);
-	//Should be changed as soon as there are more than 2 types of notifications
-	CFStringRef cf_note_name = CFStringCreateWithCString(NULL, owner == _("Turn changed") ? _("Turn changed") : _("Chat message"), kCFStringEncodingUTF8);
-
-	growl_obj.applicationName = app_name;
-	growl_obj.registrationDictionary = NULL;
-	growl_obj.applicationIconData = NULL;
-	growl_obj.growlIsReady = NULL;
-	growl_obj.growlNotificationWasClicked = NULL;
-	growl_obj.growlNotificationTimedOut = NULL;
-
-	Growl_SetDelegate(&growl_obj);
-	Growl_NotifyWithTitleDescriptionNameIconPriorityStickyClickContext(cf_owner, cf_message, cf_note_name, NULL, NULL, NULL, NULL);
-
-	CFRelease(app_name);
-	CFRelease(cf_owner);
-	CFRelease(cf_message);
-	CFRelease(cf_note_name);
-#endif
-
-#ifdef _WIN32
-	std::string notification_title;
-	std::string notification_message;
-
-	if (owner == _("Turn changed")) {
-		notification_title = owner;
-		notification_message = message;
-	} else {
-		notification_title = _("Chat message");
-		notification_message = owner + ": " + message;
-	}
-
-	windows_tray_notification::show(notification_title, notification_message);
-#endif
-}
-
-void game_display::set_team(size_t teamindex, bool show_everything)
-{
-	assert(teamindex < teams_->size());
-	currentTeam_ = teamindex;
-	if (!show_everything)
-	{
-		labels().set_team(&(*teams_)[teamindex]);
-		viewpoint_ = &(*teams_)[teamindex];
-	}
-	else
-	{
-		labels().set_team(NULL);
-		viewpoint_ = NULL;
-	}
-	labels().recalculate_labels();
-	if(resources::whiteboard)
-		resources::whiteboard->on_viewer_change(teamindex);
-}
 
 void game_display::set_playing_team(size_t teamindex)
 {
-	assert(teamindex < teams_->size());
+	assert(teamindex < dc_->teams().size());
 	activeTeam_ = teamindex;
 	invalidate_game_status();
 }
@@ -1015,161 +671,5 @@ void game_display::begin_game()
 	create_buttons();
 	invalidate_all();
 }
-
-namespace {
-	const int chat_message_border = 5;
-	const int chat_message_x = 10;
-	const SDL_Color chat_message_color = {255,255,255,255};
-	const SDL_Color chat_message_bg     = {0,0,0,140};
-}
-
-void game_display::add_chat_message(const time_t& time, const std::string& speaker,
-		int side, const std::string& message, events::chat_handler::MESSAGE_TYPE type,
-		bool bell)
-{
-	const bool whisper = speaker.find("whisper: ") == 0;
-	std::string sender = speaker;
-	if (whisper) {
-		sender.assign(speaker, 9, speaker.size());
-	}
-	if (!preferences::parse_should_show_lobby_join(sender, message)) return;
-	if (preferences::is_ignored(sender)) return;
-
-	preferences::parse_admin_authentication(sender, message);
-
-	if (bell) {
-		if ((type == events::chat_handler::MESSAGE_PRIVATE && (!is_observer() || whisper))
-			|| utils::word_match(message, preferences::login())) {
-			sound::play_UI_sound(game_config::sounds::receive_message_highlight);
-		} else if (preferences::is_friend(sender)) {
-			sound::play_UI_sound(game_config::sounds::receive_message_friend);
-		} else if (sender == "server") {
-			sound::play_UI_sound(game_config::sounds::receive_message_server);
-		} else {
-			sound::play_UI_sound(game_config::sounds::receive_message);
-		}
-	}
-
-	bool action = false;
-
-	std::string msg;
-
-	if (message.find("/me ") == 0) {
-		msg.assign(message, 4, message.size());
-		action = true;
-	} else {
-		msg += message;
-	}
-
-	try {
-		// We've had a joker who send an invalid utf-8 message to crash clients
-		// so now catch the exception and ignore the message.
-		msg = font::word_wrap_text(msg,font::SIZE_SMALL,map_outside_area().w*3/4);
-	} catch (utf8::invalid_utf8_exception&) {
-		ERR_NG << "Invalid utf-8 found, chat message is ignored." << std::endl;
-		return;
-	}
-
-	int ypos = chat_message_x;
-	for(std::vector<chat_message>::const_iterator m = chat_messages_.begin(); m != chat_messages_.end(); ++m) {
-		ypos += std::max(font::get_floating_label_rect(m->handle).h,
-			font::get_floating_label_rect(m->speaker_handle).h);
-	}
-	SDL_Color speaker_color = {255,255,255,255};
-	if(side >= 1) {
-		speaker_color = int_to_color(team::get_side_color_range(side).mid());
-	}
-
-	SDL_Color message_color = chat_message_color;
-	std::stringstream str;
-	std::stringstream message_str;
-
-	if(type ==  events::chat_handler::MESSAGE_PUBLIC) {
-		if(action) {
-			str << "<" << speaker << " " << msg << ">";
-			message_color = speaker_color;
-			message_str << " ";
-		} else {
-			if (!speaker.empty())
-				str << "<" << speaker << ">";
-			message_str << msg;
-		}
-	} else {
-		if(action) {
-			str << "*" << speaker << " " << msg << "*";
-			message_color = speaker_color;
-			message_str << " ";
-		} else {
-			if (!speaker.empty())
-				str << "*" << speaker << "*";
-			message_str << msg;
-		}
-	}
-
-	// Prepend message with timestamp.
-	std::stringstream message_complete;
-	message_complete << preferences::get_chat_timestamp(time) << str.str();
-
-	const SDL_Rect rect = map_outside_area();
-
-	font::floating_label spk_flabel(message_complete.str());
-	spk_flabel.set_font_size(font::SIZE_SMALL);
-	spk_flabel.set_color(speaker_color);
-	spk_flabel.set_position(rect.x + chat_message_x, rect.y + ypos);
-	spk_flabel.set_clip_rect(rect);
-	spk_flabel.set_alignment(font::LEFT_ALIGN);
-	spk_flabel.set_bg_color(chat_message_bg);
-	spk_flabel.set_border_size(chat_message_border);
-	spk_flabel.use_markup(false);
-
-	int speaker_handle = font::add_floating_label(spk_flabel);
-
-	font::floating_label msg_flabel(message_str.str());
-	msg_flabel.set_font_size(font::SIZE_SMALL);
-	msg_flabel.set_color(message_color);
-	msg_flabel.set_position(rect.x + chat_message_x + font::get_floating_label_rect(speaker_handle).w,
-	rect.y + ypos);
-	msg_flabel.set_clip_rect(rect);
-	msg_flabel.set_alignment(font::LEFT_ALIGN);
-	msg_flabel.set_bg_color(chat_message_bg);
-	msg_flabel.set_border_size(chat_message_border);
-	msg_flabel.use_markup(false);
-
-	int message_handle = font::add_floating_label(msg_flabel);
-
-	// Send system notification if appropriate.
-	send_notification(speaker, message);
-
-	chat_messages_.push_back(chat_message(speaker_handle,message_handle));
-
-	prune_chat_messages();
-}
-
-void game_display::prune_chat_messages(bool remove_all)
-{
-	const unsigned message_aging = preferences::chat_message_aging();
-	const unsigned message_ttl = remove_all ? 0 : message_aging * 60 * 1000;
-	const unsigned max_chat_messages = preferences::chat_lines();
-	int movement = 0;
-
-	if(message_aging != 0 || remove_all || chat_messages_.size() > max_chat_messages) {
-		while (!chat_messages_.empty() &&
-		       (chat_messages_.front().created_at + message_ttl < SDL_GetTicks() ||
-		        chat_messages_.size() > max_chat_messages))
-		{
-			const chat_message &old = chat_messages_.front();
-			movement += font::get_floating_label_rect(old.handle).h;
-			font::remove_floating_label(old.speaker_handle);
-			font::remove_floating_label(old.handle);
-			chat_messages_.erase(chat_messages_.begin());
-		}
-	}
-
-	BOOST_FOREACH(const chat_message &cm, chat_messages_) {
-		font::move_floating_label(cm.speaker_handle, 0, - movement);
-		font::move_floating_label(cm.handle, 0, - movement);
-	}
-}
-
 
 

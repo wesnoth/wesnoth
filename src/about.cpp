@@ -18,14 +18,40 @@
  */
 
 #include "about.hpp"
+#include "global.hpp"                   // for false_, bool_
 
-#include "construct_dialog.hpp"
-#include "display.hpp"
-#include "gettext.hpp"
-#include "marked-up_text.hpp"
+#include "config.hpp"                   // for config, etc
+#include "cursor.hpp"                   // for setter, CURSOR_TYPE::WAIT
+#include "display.hpp"                  // for display
+#include "events.hpp"        // for pump, raise_draw_event, etc
+#include "font.hpp"                     // for NORMAL_COLOR, SIZE_XLARGE
+#include "game_config.hpp"              // for game_title_background
+#include "gettext.hpp"                  // for _
+#include "image.hpp"                    // for get_image
+#include "key.hpp"                      // for CKey
+#include "marked-up_text.hpp"           // for draw_text, LARGE_TEXT, etc
+#include "sdl/rect.hpp"                 // for create_rect
+#include "sdl/utils.hpp"                // for surface, sdl_blit, etc
+#include "serialization/string_utils.hpp"  // for split, etc
+#include "show_dialog.hpp"              // for dialog_frame, etc
+#include "tstring.hpp"                  // for operator==
+#include "video.hpp"                    // for update_rect, CVideo
+#include "widgets/button.hpp"           // for button
+
+#include <libintl.h>                    // for gettext
+#include <algorithm>                    // for max
+#include <boost/foreach.hpp>            // for auto_any_base, etc
+#include <boost/scoped_ptr.hpp>         // for scoped_ptr
+#include <cstddef>                     // for NULL
+#include <map>                          // for map, map<>::mapped_type
+#include <ostream>                      // for operator<<, basic_ostream, etc
+
+#if !SDL_VERSION_ATLEAST(2,0,0)
+#include "SDL_keysym.h"                 // for ::SDLK_ESCAPE, ::SDLK_DOWN, etc
+#include "SDL_video.h"                  // for SDL_Rect, SDL_Surface, etc
+#else
 #include "sdl/alpha.hpp"
-
-#include <boost/foreach.hpp>
+#endif
 
 /**
  * @namespace about

@@ -59,18 +59,10 @@ struct mp_game_settings : public savegame::savegame_config
 	bool shroud_game;
 	bool allow_observers;
 	bool shuffle_sides;
-	bool share_view;
-	bool share_maps;
 
 	bool saved_game;
 
 	config options;
-
-	/**
-	 * If the game is to be randomly generated, the map generator
-	 * will create the scenario data in this variable
-	 */
-	config scenario_data;
 };
 
 #endif

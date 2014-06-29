@@ -75,6 +75,7 @@ libwesnoth_sources = Split("""
     construct_dialog.cpp
     cursor.cpp
     display.cpp
+    display_context.cpp
     events.cpp
     format_time_summary.cpp
     generic_event.cpp
@@ -105,7 +106,6 @@ libwesnoth_sources = Split("""
     preferences.cpp
     preferences_display.cpp
     race.cpp
-    random.cpp
     reports.cpp
     show_dialog.cpp
     simple_rng.cpp
@@ -151,7 +151,7 @@ libcampaignd_sources = Split("""
 libcampaignd = env.Library("campaignd", libcampaignd_sources, OBJPREFIX = "campaignd_")
 
 libwesnoth_sdl_sources = Split("""
-    sdl_utils.cpp
+    sdl/utils.cpp
     sdl/alpha.cpp
     sdl/exception.cpp
     sdl/rect.cpp
@@ -233,6 +233,7 @@ wesnoth_sources = Split("""
     controller_base.cpp
     desktop_util.cpp
     dialogs.cpp
+    display_chat_manager.cpp
     editor/action/action.cpp
     editor/action/action_unit.cpp
     editor/action/action_label.cpp
@@ -261,6 +262,8 @@ wesnoth_sources = Split("""
     editor/editor_preferences.cpp
     editor/toolkit/brush.cpp
     editor/toolkit/editor_toolkit.cpp
+    fake_unit_manager.cpp
+    fake_unit_ptr.cpp
     filechooser.cpp
     flg_manager.cpp
     floating_textbox.cpp
@@ -271,8 +274,10 @@ wesnoth_sources = Split("""
     formula_string_utils.cpp
     formula_tokenizer.cpp
     game_board.cpp
+    game_classification.cpp
     game_config_manager.cpp
     game_controller.cpp
+    game_data.cpp
     game_display.cpp
     game_errors.cpp
     game_events/action_wml.cpp
@@ -283,7 +288,7 @@ wesnoth_sources = Split("""
     game_events/pump.cpp
     game_events/wmi_container.cpp
     game_preferences.cpp
-    gamestatus.cpp
+    game_state.cpp
     gui/auxiliary/canvas.cpp
     gui/auxiliary/event/dispatcher.cpp
     gui/auxiliary/event/distributor.cpp
@@ -375,6 +380,7 @@ wesnoth_sources = Split("""
     gui/dialogs/editor_set_starting_position.cpp
     gui/dialogs/folder_create.cpp
     gui/dialogs/formula_debugger.cpp
+    gui/dialogs/game_cache_options.cpp
     gui/dialogs/game_delete.cpp
     gui/dialogs/game_load.cpp
     gui/dialogs/game_paths.cpp
@@ -472,6 +478,7 @@ wesnoth_sources = Split("""
     multiplayer_ui.cpp
     multiplayer_wait.cpp
     network_asio.cpp
+    notifications/notifications.cpp
     pathfind/pathfind.cpp
     pathfind/teleport.cpp
     persist_context.cpp
@@ -487,18 +494,20 @@ wesnoth_sources = Split("""
     random_new.cpp
     random_new_deterministic.cpp
     random_new_synced.cpp
+    recall_list_manager.cpp
     replay.cpp
     replay_helper.cpp
     replay_controller.cpp
     resources.cpp
     save_blocker.cpp
+    save_index.cpp
+    saved_game.cpp
     savegame.cpp
     scripting/debug_lua.cpp
     scripting/lua.cpp
     scripting/lua_api.cpp
     scripting/lua_types.cpp
     settings.cpp
-    sha1.cpp
     side_filter.cpp
     statistics.cpp
     statistics_dialog.cpp
@@ -510,18 +519,23 @@ wesnoth_sources = Split("""
     synced_checkup.cpp
     synced_context.cpp
     synced_commands.cpp
+    syncmp_handler.cpp
     team.cpp
     terrain_filter.cpp
     tod_manager.cpp
     unit.cpp
     unit_abilities.cpp
     unit_animation.cpp
+    unit_animation_component.cpp
     unit_display.cpp
+    unit_drawer.cpp
+    unit_formula_manager.cpp
     unit_frame.cpp
     unit_helper.cpp
     unit_id.cpp
     unit_map.cpp
     unit_types.cpp
+    utils/sha1.cpp
     variable.cpp
     variant.cpp
     whiteboard/action.cpp
@@ -539,10 +553,11 @@ wesnoth_sources = Split("""
     widgets/combo_drag.cpp
     widgets/drop_target.cpp
     widgets/scrollpane.cpp
+    wmi_pager.cpp
     """)
 
 if env["PLATFORM"] == "win32":
-    wesnoth_sources.append("windows_tray_notification.cpp")
+    wesnoth_sources.append("notifications/windows_tray_notification.cpp")
 
 wesnoth_sources.extend(client_env.Object("game_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
 
@@ -581,6 +596,8 @@ if env["host"] in ["x86_64-nacl", "i686-nacl"]:
 client_env.WesnothProgram("wesnoth", wesnoth_objects, have_client_prereqs)
 
 campaignd_sources = Split("""
+    campaign_server/addon_utils.cpp
+    campaign_server/blacklist.cpp
     server/input_stream.cpp
     """)
 
@@ -639,7 +656,7 @@ wesmage_sources = Split("""
     wesmage/options.cpp
     tools/dummy_video.cpp
     tools/exploder_utils.cpp
-    sdl_utils.cpp
+    sdl/utils.cpp
     sdl/alpha.cpp
     sdl/window.cpp
     tracer.cpp
@@ -680,13 +697,13 @@ test_sources = Split("""
     """)
 test_sources.extend(test_env.Object("tests/test_config_cache.cpp"))
 
-test = test_env.WesnothProgram("test", test_sources +  [libtest_utils, libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth], have_test_prereqs)
+test = test_env.WesnothProgram("test", test_sources +  [libtest_utils, libwesnoth_extras, libwesnoth_core, libwesnoth, libwesnoth_sdl, libwesnoth_extras], have_test_prereqs)
 
 create_images_sources = Split("""
     tests/create_images.cpp
     tools/dummy_video.cpp
     tools/exploder_utils.cpp
-    sdl_utils.cpp
+    sdl/utils.cpp
     sdl/alpha.cpp
     sdl/window.cpp
     tracer.cpp

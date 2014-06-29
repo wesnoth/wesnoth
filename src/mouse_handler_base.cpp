@@ -20,6 +20,7 @@
 #include "log.hpp"
 #include "preferences.hpp"
 #include "tooltips.hpp"
+#include "sdl/rect.hpp"
 
 static lg::log_domain log_display("display");
 #define WRN_DP LOG_STREAM(warn, log_display)
@@ -164,7 +165,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 		if (event.state == SDL_PRESSED) {
 			set_scroll_start(event.x, event.y);
 			scroll_started_ = true;
-			
+
 			map_location loc = gui().minimap_location_on(event.x,event.y);
 			minimap_scrolling_ = false;
 			if(loc.valid()) {
@@ -204,7 +205,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 
 		// Don't scroll map and map zoom slider at same time
 		gui::slider* s = gui().find_slider("map-zoom-slider");
-		if (s && point_in_rect(event.x, event.y, s->location())) {
+		if (s && sdl::point_in_rect(event.x, event.y, s->location())) {
 			scrollx = 0; scrolly = 0;
 		}
 	}
@@ -296,7 +297,7 @@ void mouse_handler_base::mouse_wheel(int scrollx, int scrolly, bool browse)
 
 	// Don't scroll map and map zoom slider at same time
 	gui::slider* s = gui().find_slider("map-zoom-slider");
-	if (s && point_in_rect(x, y, s->location())) {
+	if (s && sdl::point_in_rect(x, y, s->location())) {
 		movex = 0; movey = 0;
 	}
 

@@ -17,10 +17,25 @@
 #include "color_range.hpp"
 #include "game_config.hpp"
 #include "make_enum.hpp"
+#include "map_location.hpp"
+#include "recall_list_manager.hpp"
 #include "savegame_config.hpp"
-#include "unit.hpp"
+#include "unit_ptr.hpp"
+#include "util.hpp"
+
+#include <boost/shared_ptr.hpp>
 
 class gamemap;
+#if defined(_MSC_VER) && _MSC_VER <= 1600 
+/*
+	This is needed because msvc up to 2010 fails to correcty forward declare this struct as a return value this case.
+	And will create corrupt binaries without giving a warning / error.
+*/
+#include <SDL_video.h>
+#else
+struct SDL_Color;
+#endif
+
 
 namespace wb {
 	class side_actions;
@@ -111,7 +126,7 @@ private:
 		/** Set to true when the objectives for this time changes.
 		 * Reset to false when the objectives for this team have been
 		 * displayed to the user. */
-		bool objectives_changed;
+		mutable bool objectives_changed;
 
 		CONTROLLER controller;
 		DEFEAT_CONDITION defeat_condition;
@@ -176,12 +191,12 @@ public:
 	void set_gold_add(bool b) {info_.gold_add = b; }
 	void set_base_income(int amount) { info_.income = amount - game_config::base_income; }
 	int countdown_time() const {  return countdown_time_; }
-	void set_countdown_time(const int amount)
+	void set_countdown_time (const int amount) const
 		{ countdown_time_ = amount; }
 	int action_bonus_count() const { return action_bonus_count_; }
 	void set_action_bonus_count(const int count) { action_bonus_count_ = count; }
-	std::vector<unit>& recall_list() {return recall_list_;}
-	const std::vector<unit>& recall_list() const {return recall_list_;}
+	recall_list_manager& recall_list() {return recall_list_;}
+	const recall_list_manager & recall_list() const {return recall_list_;}
 	void set_current_player(const std::string& player)
 		{ info_.current_player = player; }
 
@@ -204,8 +219,8 @@ public:
 	const std::string& current_player() const { return info_.current_player; }
 
 	void set_objectives(const t_string& new_objectives, bool silently=false);
-	void set_objectives_changed(bool c = true) { info_.objectives_changed = c; }
-	void reset_objectives_changed() { info_.objectives_changed = false; }
+	void set_objectives_changed(bool c = true) const { info_.objectives_changed = c; }
+	void reset_objectives_changed() const { info_.objectives_changed = false; }
 
 	const t_string& objectives() const { return info_.objectives; }
 	bool objectives_changed() const { return info_.objectives_changed; }
@@ -238,7 +253,7 @@ public:
 	void make_ai() { info_.controller = AI; }
 	void make_idle() { info_.controller = IDLE; }
 	void change_controller(const std::string& new_controller) {
-		info_.controller = lexical_cast_default<CONTROLLER> (new_controller, AI);	
+		info_.controller = lexical_cast_default<CONTROLLER> (new_controller, AI);
 	}
 	void change_controller(CONTROLLER controller) { info_.controller = controller; }
 
@@ -341,10 +356,10 @@ private:
 
 	team_info info_;
 
-	int countdown_time_;
+	mutable int countdown_time_;
 	int action_bonus_count_;
 
-	std::vector<unit> recall_list_;
+	recall_list_manager recall_list_;
 	std::string last_recruit_;
 
 	bool calculate_enemies(size_t index) const;
@@ -365,16 +380,6 @@ MAKE_ENUM_STREAM_OPS2(team, DEFEAT_CONDITION)
 namespace teams_manager {
 	const std::vector<team> &get_teams();
 }
-
-/**
- * Given the location of a village, will return the 0-based index
- * of the team that currently owns it, and -1 if it is unowned.
- */
-int village_owner(const map_location& loc);
-
-//FIXME: this global method really needs to be moved into play_controller,
-//or somewhere else that makes sense.
-bool is_observer();
 
 //function which will validate a side. Throws game::game_error
 //if the side is invalid

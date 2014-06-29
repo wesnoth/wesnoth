@@ -81,12 +81,14 @@ base_manager::base_manager()
 
 base_manager::~base_manager()
 {
-	if (no_preferences_save) return;
+	try {
+		if (no_preferences_save) return;
 
-	// Set the 'hidden' preferences.
-	prefs["scroll_threshold"] = mouse_scroll_threshold();
+		// Set the 'hidden' preferences.
+		prefs["scroll_threshold"] = mouse_scroll_threshold();
 
-	write_preferences();
+		write_preferences();
+	} catch (...) {}
 }
 
 void write_preferences()

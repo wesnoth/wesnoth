@@ -20,11 +20,14 @@
 #include "team.hpp"
 
 #include "ai/manager.hpp"
+#include "formula_string_utils.hpp"
 #include "game_events/pump.hpp"
-#include "gamestatus.hpp"
+#include "game_data.hpp"
 #include "map.hpp"
 #include "resources.hpp"
 #include "game_preferences.hpp"
+#include "sdl/utils.hpp" // Only needed for int_to_color (!)
+#include "unit_types.hpp"
 #include "whiteboard/side_actions.hpp"
 
 #include <boost/foreach.hpp>
@@ -302,7 +305,7 @@ void team::build(const config &cfg, const gamemap& map, int gold)
 	const config &fog_override = cfg.child("fog_override");
 	if ( fog_override ) {
 		const std::vector<map_location> fog_vector =
-			parse_location_range(fog_override["x"], fog_override["y"], true);
+			map.parse_location_range(fog_override["x"], fog_override["y"], true);
 		fog_clearer_.insert(fog_vector.begin(), fog_vector.end());
 	}
 
@@ -604,20 +607,6 @@ int team::nteams()
 	}
 }
 
-bool is_observer()
-{
-	if(teams == NULL) {
-		return true;
-	}
-
-	BOOST_FOREACH(const team &t, *teams) {
-		if (t.is_local())
-			return false;
-	}
-
-	return true;
-}
-
 void validate_side(int side)
 {
 	if(teams == NULL) {
@@ -839,20 +828,3 @@ config team::to_config() const
 	write(result);
 	return result;
 }
-
-/**
- * Given the location of a village, will return the 0-based index
- * of the team that currently owns it, and -1 if it is unowned.
- */
-int village_owner(const map_location& loc)
-{
-	if(! teams) {
-		return -1;
-	}
-	for(size_t i = 0; i != teams->size(); ++i) {
-		if((*teams)[i].owns_village(loc))
-			return i;
-	}
-	return -1;
-}
-

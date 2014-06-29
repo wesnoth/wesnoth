@@ -115,7 +115,7 @@ function battle_calcs.strike_damage(attacker, defender, att_weapon, def_weapon, 
     local att_damage = attacker_info.attacks[att_weapon].damage
 
     -- Opponent resistance modifier
-    local att_multiplier = defender_info.resist_mod[attacker_info.attacks[att_weapon].type]
+    local att_multiplier = defender_info.resist_mod[attacker_info.attacks[att_weapon].type] or 1
 
     -- TOD modifier
     att_multiplier = att_multiplier * AH.get_unit_time_of_day_bonus(attacker_info.alignment, att_lawful_bonus)
@@ -127,7 +127,7 @@ function battle_calcs.strike_damage(attacker, defender, att_weapon, def_weapon, 
         def_damage = defender_info.attacks[def_weapon].damage
 
         -- Opponent resistance modifier
-        def_multiplier = attacker_info.resist_mod[defender_info.attacks[def_weapon].type]
+        def_multiplier = attacker_info.resist_mod[defender_info.attacks[def_weapon].type] or 1
 
         -- TOD modifier
         def_multiplier = def_multiplier * AH.get_unit_time_of_day_bonus(defender_info.alignment, def_lawful_bonus)

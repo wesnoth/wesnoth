@@ -28,8 +28,11 @@
 #include "actions/vision.hpp"
 #include "ai/manager.hpp"
 #include "dialogs.hpp"
-#include "formatter.hpp"
+#include "display_chat_manager.hpp"
 #include "filechooser.hpp"
+#include "formatter.hpp"
+#include "formula_string_utils.hpp"
+#include "game_board.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events/pump.hpp"
 #include "game_preferences.hpp"
@@ -60,14 +63,15 @@
 #include "replay_helper.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
+#include "save_index.hpp"
+#include "scripting/lua.hpp"
 #include "sound.hpp"
 #include "statistics_dialog.hpp"
 #include "synced_context.hpp"
 #include "terrain_builder.hpp"
+#include "unit.hpp"
 #include "unit_display.hpp"
 #include "wml_separators.hpp"
-#include "formula_string_utils.hpp"
-#include "scripting/lua.hpp"
 #include "whiteboard/manager.hpp"
 #include "widgets/combo.hpp"
 
@@ -79,16 +83,15 @@ static lg::log_domain log_engine("engine");
 
 namespace events{
 
-menu_handler::menu_handler(game_display* gui, unit_map& units, std::vector<team>& teams,
-		const config& level, const gamemap& map,
-		const config& game_config, game_state& gamestate) :
+menu_handler::menu_handler(game_display* gui, game_board & board,
+		const config& level,
+		const config& game_config) :
 	gui_(gui),
-	units_(units),
-	teams_(teams),
+	units_(board.units_),
+	teams_(board.teams_),
 	level_(level),
-	map_(map),
+	map_(board.map()),
 	game_config_(game_config),
-	gamestate_(gamestate),
 	textbox_info_(),
 	last_search_(),
 	last_search_hit_()
@@ -255,7 +258,7 @@ void menu_handler::status_table(int selected)
 				leader_name = "Unknown";
 			}
 
-			if (gamestate_.classification().campaign_type == game_classification::MULTIPLAYER)
+			if (resources::classification->campaign_type == game_classification::MULTIPLAYER)
 				leader_name = teams_[n].current_player();
 
 		} else {
@@ -317,7 +320,7 @@ void menu_handler::status_table(int selected)
 	} // this will kill the dialog before scrolling
 
 	if (result >= 0)
-		gui_->scroll_to_leader(units_, selected+1);
+		gui_->scroll_to_leader(selected+1);
 	else if (result == gui::DIALOG_FORWARD)
 		scenario_settings_table(selected);
 }
@@ -411,7 +414,7 @@ void menu_handler::scenario_settings_table(int selected)
 		} // this will kill the dialog before scrolling
 
 		if (result >= 0)
-			gui_->scroll_to_leader(units_, selected+1);
+			gui_->scroll_to_leader(selected+1);
 		else if (result == gui::DIALOG_BACK)
 			status_table(selected);
 }
@@ -515,7 +518,7 @@ void menu_handler::show_help()
 void menu_handler::speak()
 {
 	textbox_info_.show(gui::TEXTBOX_MESSAGE,_("Message:"),
-		has_friends() ? is_observer() ? _("Send to observers only") : _("Send to allies only")
+		has_friends() ? resources::gameboard->is_observer() ? _("Send to observers only") : _("Send to allies only")
 					  : "", preferences::message_private(), *gui_);
 }
 
@@ -533,7 +536,7 @@ void menu_handler::shout()
 
 bool menu_handler::has_friends() const
 {
-	if(is_observer()) {
+	if(resources::gameboard->is_observer()) {
 		return !gui_->observers().empty();
 	}
 
@@ -645,7 +648,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
 		// Do the recruiting.
-		
+
 		synced_context::run_in_synced_context("recruit", replay_helper::get_recruit(u_type->id(), loc, recruited_from));
 		return true;
 	}
@@ -666,7 +669,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		return;
 	}
 
-	std::vector<const unit*> recall_list_team;
+	std::vector<UnitConstPtr > recall_list_team;
 	{ wb::future_map future; // ensures recall list has planned recalls removed
 		recall_list_team = actions::get_recalls(side_num, last_hex);
 	}
@@ -675,7 +678,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 
 
 	DBG_WB <<"menu_handler::recall: Contents of wb-modified recall list:\n";
-	BOOST_FOREACH(const unit* unit, recall_list_team)
+	BOOST_FOREACH(const UnitConstPtr & unit, recall_list_team)
 	{
 		DBG_WB << unit->name() << " [" << unit->id() <<"]\n";
 	}
@@ -694,7 +697,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 
 	int res = dialogs::recall_dialog(*gui_, recall_list_team, side_num, get_title_suffix(side_num), current_team.recall_cost());
 	int unit_cost = current_team.recall_cost();
-	if (res < 0) { 
+	if (res < 0) {
 		return;
 	}
 	// we need to check if unit has a specific recall cost
@@ -732,7 +735,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	}
 
 	if (!resources::whiteboard->save_recall(*recall_list_team[res], side_num, recall_location)) {
-		bool success = synced_context::run_in_synced_context("recall", 
+		bool success = synced_context::run_in_synced_context("recall",
 			replay_helper::get_recall(recall_list_team[res]->id(), recall_location, recall_from),
 			true,
 			true,
@@ -809,7 +812,7 @@ namespace { // Helpers for menu_handler::end_turn()
 			if ( un->side() == side_num ) {
 				// @todo whiteboard should take into consideration units that have
 				// a planned move but can still plan more movement in the same turn
-				if ( actions::unit_can_move(*un) && !un->user_end_turn()
+				if ( resources::gameboard->unit_can_move(*un) && !un->user_end_turn()
 						&& !resources::whiteboard->unit_has_actions(&*un) )
 					return true;
 			}
@@ -824,7 +827,7 @@ namespace { // Helpers for menu_handler::end_turn()
 	{
 		for ( unit_map::const_iterator un = units.begin(); un != units.end(); ++un ) {
 			if ( un->side() == side_num ) {
-				if ( actions::unit_can_move(*un)  &&  !un->has_moved()  && !un->user_end_turn()
+				if ( resources::gameboard->unit_can_move(*un)  &&  !un->has_moved()  && !un->user_end_turn()
 						&& !resources::whiteboard->unit_has_actions(&*un) )
 					return true;
 			}
@@ -903,7 +906,7 @@ void menu_handler::terrain_description(mouse_handler& mousehandler)
 	}
 
 	const terrain_type& type = map_.get_terrain_info(loc);
-	//const terrain_type& info = resources::game_map->get_terrain_info(terrain);
+	//const terrain_type& info = resources::gameboard->map().get_terrain_info(terrain);
 	dialogs::show_terrain_description(type);
 }
 
@@ -1128,7 +1131,7 @@ void menu_handler::change_side(mouse_handler& mousehandler)
 			return;
 
 		// village_owner returns -1 for free village, so team 0 will get it
-		int team = village_owner(loc) + 1;
+		int team = resources::gameboard->village_owner(loc) + 1;
 		// team is 0-based so team=team::nteams() is not a team
 		// but this will make get_village free it
 		if(team > team::nteams()) {
@@ -1197,7 +1200,7 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 void menu_handler::clear_labels()
 {
 	if (gui_->team_valid()
-	   && !is_observer())
+	   && !resources::gameboard->is_observer())
 	{
 		gui_->labels().clear(gui_->current_team_name(), false);
 		recorder.clear_labels(gui_->current_team_name(), false);
@@ -1396,7 +1399,7 @@ void menu_handler::add_chat_message(const time_t& time,
 		const std::string& speaker, int side, const std::string& message,
 		events::chat_handler::MESSAGE_TYPE type)
 {
-	gui_->add_chat_message(time, speaker, side, message, type, false);
+	gui_->get_chat_manager().add_chat_message(time, speaker, side, message, type, false);
 }
 
 //simple command args parser, separated from command_handler for clarity.
@@ -2547,15 +2550,15 @@ void menu_handler::send_chat_message(const std::string& message, bool allies_onl
 	ss << time;
 	cfg["time"] = ss.str();
 
-	const int side = is_observer() ? 0 : gui_->viewing_side();
-	if(!is_observer()) {
+	const int side = resources::gameboard->is_observer() ? 0 : gui_->viewing_side();
+	if(!resources::gameboard->is_observer()) {
 		cfg["side"] = side;
 	}
 
 	bool private_message = has_friends() && allies_only;
 
 	if(private_message) {
-		if (is_observer()) {
+		if (resources::gameboard->is_observer()) {
 			cfg["team_name"] = game_config::observer_team_name;
 		} else {
 			cfg["team_name"] = teams_[gui_->viewing_team()].team_name();
@@ -2799,7 +2802,7 @@ void console_handler::do_controller()
 }
 
 void console_handler::do_clear() {
-	menu_handler_.gui_->clear_chat_messages();
+	menu_handler_.gui_->get_chat_manager().clear_chat_messages();
 }
 void console_handler::do_sunset() {
 	int delay = lexical_cast_default<int>(get_data());
@@ -2876,7 +2879,7 @@ void console_handler::do_layers() {
 
 		// cut and mask the image
 		// ~CROP and ~BLIT have limitations, we do some math to avoid them
-		SDL_Rect r2 = intersect_rects(r, sdl::create_rect(0,0,surf->w,surf->h));
+		SDL_Rect r2 = sdl::intersect_rects(r, sdl::create_rect(0,0,surf->w,surf->h));
 		if(r2.w > 0 && r2.h > 0) {
 			str << "~BLIT("
 					<< name << "~CROP("
@@ -2918,10 +2921,7 @@ void console_handler::do_benchmark() {
 	menu_handler_.gui_->toggle_benchmark();
 }
 void console_handler::do_save() {
-	savegame::ingame_savegame save(menu_handler_.gamestate_, *menu_handler_.gui_,
-	                               resources::controller->to_config(),
-	                               preferences::save_compression_format());
-	save.save_game_automatic(menu_handler_.gui_->video(), true, get_data());
+	resources::controller->do_consolesave(get_data());
 }
 void console_handler::do_save_quit() {
 	do_save();
@@ -2964,7 +2964,7 @@ void console_handler::do_choose_level() {
 	}
 	// find scenarios of multiplayer campaigns
 	// (assumes that scenarios are ordered properly in the game_config)
-	std::string& scenario = menu_handler_.gamestate_.mp_settings().mp_scenario;
+	std::string scenario = resources::mp_settings->mp_scenario;
 	BOOST_FOREACH(const config &mp, menu_handler_.game_config_.child_range("multiplayer"))
 	{
 		if (mp["id"] == scenario)
@@ -2998,6 +2998,7 @@ void console_handler::do_choose_level() {
 		e.transient.carryover_report = false;
 		e.prescenario_save = true;
 		e.transient.linger_mode = false;
+		e.proceed_to_next_level = true;
 		throw end_level_exception(VICTORY);
 	}
 }
@@ -3009,7 +3010,7 @@ void console_handler::do_turn()
 	if (!data.empty()) {
 		turn = lexical_cast_default<int>(data, 1);
 	}
-	resources::tod_manager->set_turn(turn);
+	resources::tod_manager->set_turn(turn, *resources::gamedata);
 
 	menu_handler_.gui_->new_turn();
 	menu_handler_.gui_->redraw_everything();
@@ -3096,7 +3097,7 @@ void console_handler::do_set_var() {
 	}
 }
 void console_handler::do_show_var() {
-	gui2::show_transient_message((*menu_handler_.gui_).video(),"",resources::gamedata->get_variable(get_data()));
+	gui2::show_transient_message((*menu_handler_.gui_).video(),"",resources::gamedata->get_variable_const(get_data()));
 }
 
 
@@ -3161,8 +3162,8 @@ void console_handler::do_unit() {
 		int int_value = lexical_cast<int>(value);
 		for (int levels=0; levels<int_value; levels++) {
 			i->set_experience(i->max_experience());
-			
-			advance_unit_at(loc,true);
+
+			advance_unit_at(advance_unit_params(loc).force_dialog(true));
 			i = menu_handler_.units_.find(loc);
 			if (!i.valid()) {
 				break;
@@ -3313,7 +3314,7 @@ void menu_handler::request_control_change ( int side_num, const std::string& pla
 			LOG_NG << " *** It's us, throwing end turn exception " << std::endl;
 		} else {
 			LOG_NG << " *** It's not us, changing sides now as usual, then throwing end_turn " << std::endl;
-			change_side_controller(side,player);		 
+			change_side_controller(side,player);
 		}
 		throw end_turn_exception(side_num);
 	} else {
@@ -3341,7 +3342,7 @@ void menu_handler::ai_formula()
 
 void menu_handler::clear_messages()
 {
-	gui_->clear_chat_messages();	// also clear debug-messages and WML-error-messages
+	gui_->get_chat_manager().clear_chat_messages();	// also clear debug-messages and WML-error-messages
 }
 
 void menu_handler::change_controller(const std::string& side, const std::string& controller)

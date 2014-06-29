@@ -17,13 +17,13 @@
  *  Manage unit-abilities, like heal, cure, and weapon_specials.
  */
 
-#include "gamestatus.hpp"
 #include "log.hpp"
 #include "resources.hpp"
+#include "team.hpp"
 #include "terrain_filter.hpp"
 #include "unit.hpp"
-#include "team.hpp"
 #include "unit_abilities.hpp"
+#include "unit_map.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -292,7 +292,7 @@ std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(st
 bool unit::ability_active(const std::string& ability,const config& cfg,const map_location& loc) const
 {
 	bool illuminates = ability == "illuminates";
-	assert(resources::units && resources::game_map && resources::teams && resources::tod_manager);
+	assert(resources::units && resources::gameboard && resources::teams && resources::tod_manager);
 
 	if (const config &afilter = cfg.child("filter"))
 		if ( !matches_filter(vconfig(afilter), loc, illuminates) )
@@ -785,7 +785,7 @@ namespace { // Helpers for attack_type::special_active()
 			// is active, in that it can be used, even though the player might
 			// need to select an appropriate opponent.)
 			return true;
- 
+
 		const config & filter_child = filter.child(child_tag);
 		if ( !filter_child )
 			// The special does not filter on this unit, so we pass.

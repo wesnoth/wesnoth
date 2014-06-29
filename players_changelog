@@ -4,12 +4,15 @@ changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog
 
 Version 1.13.0-dev:
  * Campaigns:
+   * Northern Rebirth:
+     * Fixed Sister Thera and Father Morvin respawning into the recall list if
+       the other is on the north or west map edges.
    * The Hammer of Thursagan:
      * Rebalanced scenarios 'Invaders', 'Mages and Drakes' and 'Fear'.
 
  * Language and i18n:
    * Updated translations: Czech, French, German, Greek, Hungarian, Italian,
-     Lithuanian, Scottish Gaelic, Slovak.
+     Lithuanian, Scottish Gaelic, Slovak, Vietnamese.
 
  * Units:
    * Increased the experience requirement for the Rami from 32 to 39.
@@ -18,6 +21,11 @@ Version 1.13.0-dev:
  * User interface:
    * Classic Theme which restores the 1.10 UI.
    * Made orb and minmap colors configurable by the game preferences.
+   * Added a button to copy the in-game Chat Log dialog contents to clipboard.
+   * Fixed most of the minimap buttons and the End Turn button appearing
+     without contents or in the wrong state during WML start events until they
+     are interacted with or control is given to the player for the first time.
+   * Added a new subdialog in Preferences to clean or purge the WML cache.
 
  * Miscellaneous and bug fixes:
    * Fixed halos glitching through locations that become shrouded after the
@@ -40,6 +48,7 @@ Version 1.13.0-dev:
    * Revert premoved units selection to Wesnoth 1.10 behavior (#21448)
    * Fix unit move continuation if enemy discovered (#21372)
    * Support for total conversions, so called "cores". 
+   * Partial moves now able to be continued properly in whiteboard (#22231)
 
 Version 1.11.11:
  * Campaigns:

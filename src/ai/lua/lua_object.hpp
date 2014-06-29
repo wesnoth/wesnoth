@@ -21,17 +21,21 @@
 #ifndef LUA_OBJECT_HPP_INCLUDED
 #define LUA_OBJECT_HPP_INCLUDED
 
+#include "../../config.hpp"
+#include "../../lua/lua.h"
+#include "../../map_location.hpp"
+#include "../../resources.hpp"
+#include "../../scripting/lua_api.hpp"
+#include "../../terrain_filter.hpp"
+#include "../../variable.hpp"
+#include "../default/contexts.hpp"
+#include "unit_advancements_aspect.hpp"
+
+#include <boost/shared_ptr.hpp>
+#include <iterator>
 #include <string>
 #include <vector>
-#include <boost/shared_ptr.hpp>
 
-#include "lua/lualib.h"
-#include "../../scripting/lua_api.hpp"
-#include "config.hpp"
-#include "../default/contexts.hpp"
-#include "terrain_filter.hpp"
-#include "resources.hpp"
-#include "unit_advancements_aspect.hpp"
 
 namespace ai {
 

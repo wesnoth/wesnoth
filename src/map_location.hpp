@@ -20,11 +20,11 @@
 class config;
 class variable_set;
 
+#include <cmath>
+#include <set>
 #include <string>
 #include <vector>
-#include <set>
-#include <boost/unordered_map.hpp>
-#include <boost/assign/list_of.hpp>
+#include <algorithm>
 
 /**
  * Encapsulates the map of the game.
@@ -54,6 +54,7 @@ struct map_location {
 	 */
 	static std::vector<DIRECTION> parse_directions(const std::string& str);
 	static std::string write_direction(DIRECTION dir);
+	static std::string write_translated_direction(DIRECTION dir);
 
 	map_location() : x(-1000), y(-1000) {}
 	map_location(int x, int y) : x(x), y(y) {}
@@ -122,18 +123,14 @@ void get_adjacent_tiles(const map_location& a, map_location* res);
  */
 size_t distance_between(const map_location& a, const map_location& b);
 
-/** Parses ranges of locations into a vector of locations. */
-std::vector<map_location> parse_location_range(const std::string& xvals,
-	const std::string &yvals, bool with_border = false);
-
 /**
  * Write a set of locations into a config using ranges,
  * adding keys x=x1,..,xn and y=y1a-y1b,..,yna-ynb
  */
 void write_location_range(const std::set<map_location>& locs, config& cfg);
 
-/** 
- * Parse x,y keys of a config into a vector of locations 
+/**
+ * Parse x,y keys of a config into a vector of locations
  *
  * Throws bad_lexical_cast if it fails to parse.
  */
@@ -149,18 +146,6 @@ std::ostream &operator<<(std::ostream &s, map_location const &l);
 std::ostream &operator<<(std::ostream &s, std::vector<map_location> const &v);
 
 /** Inlined bodies **/
-inline std::size_t hash_value(map_location  const & a){
-	boost::hash<size_t> h;
-	return h( (a.x << 16) ^ a.y );
-}
-
-/** Inline list of directions **/
-inline const std::vector<map_location::DIRECTION> & map_location::default_dirs() {
-	static const std::vector<map_location::DIRECTION> dirs = boost::assign::list_of(map_location::NORTH)
-				(map_location::NORTH_EAST)(map_location::SOUTH_EAST)(map_location::SOUTH)
-				(map_location::SOUTH_WEST)(map_location::NORTH_WEST);
-	return dirs;
-}
 
 /** Inline direction manipulators **/
 inline map_location::DIRECTION map_location::rotate_right(map_location::DIRECTION d, unsigned int k) {
@@ -255,10 +240,10 @@ inline map_location map_location::get_direction(
 		return map_location(x,y+n);
 	}
 
-	int x_factor = (dir <= 2u) ? 1 : -1; //whether we go east + or west -
+	int x_factor = (static_cast<unsigned int> (dir) <= 2u) ? 1 : -1; //whether we go east + or west -
 
 	unsigned int tmp_y = dir - 2; //South East => 0, South => 1, South West => 2, North West => 3, North => INT_MAX, North East => INT_MAX - 1
-	int y_factor = (tmp_y <= 2u) ? 1 : -1; //whether we go south + or north -	
+	int y_factor = (tmp_y <= 2u) ? 1 : -1; //whether we go south + or north -
 
 	if (tmp_y <= 2u) {
 		return map_location(x + x_factor * n, y + y_factor * ((n + ((x & 1) == 1)) / 2));
@@ -331,7 +316,7 @@ inline bool tiles_adjacent(const map_location& a, const map_location& b)
 	// and the x value of the hex with the greater y value is even.
 
 	switch (a.y - b.y) {
-		case 1 : 
+		case 1 :
 			switch (a.x - b.x) {
 				case 1:
 				case -1:
@@ -341,7 +326,7 @@ inline bool tiles_adjacent(const map_location& a, const map_location& b)
 				default:
 					return false;
 			}
-		case -1 : 
+		case -1 :
 			switch (a.x - b.x) {
 				case 1:
 				case -1:
@@ -367,7 +352,7 @@ inline bool tiles_adjacent(const map_location& a, const map_location& b)
 
 inline size_t distance_between(const map_location& a, const map_location& b)
 {
-	const size_t hdistance = abs(a.x - b.x);
+	const size_t hdistance = std::abs(a.x - b.x);
 
 	const size_t vpenalty = ( (((a.x & 1)==0) && ((b.x & 1)==1) && (a.y < b.y))
 		|| (((b.x & 1)==0) && ((a.x & 1)==1) && (b.y < a.y)) ) ? 1 : 0;
@@ -382,7 +367,7 @@ inline size_t distance_between(const map_location& a, const map_location& b)
 	// = maximum(hdistance, vdistance+hdistance-hdistance/2-hdistance%2)
 	// = maximum(hdistance,abs(a.y-b.y)+vpenalty+hdistance/2)
 
-	return std::max<int>(hdistance, abs(a.y - b.y) + vpenalty + hdistance/2);
+	return std::max<int>(hdistance, std::abs(a.y - b.y) + vpenalty + hdistance/2);
 }
 
 

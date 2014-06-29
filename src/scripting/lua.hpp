@@ -15,20 +15,18 @@
 #ifndef SCRIPTING_LUA_HPP
 #define SCRIPTING_LUA_HPP
 
-#include "game_events/action_wml.hpp"
+#include "game_events/action_wml.hpp"   // for wml_action, etc
 
-class  unit;
+#include <string>                       // for string
+
+class config;
+class unit;
+class vconfig;
+namespace ai { class engine_lua; }
+namespace ai { class lua_ai_action_handler; }
+namespace ai { class lua_ai_context; }
+namespace game_events { struct queued_event; }
 struct lua_State;
-
-namespace ai {
-class lua_ai_action_handler;
-class lua_ai_context;
-class engine_lua;
-} // of namespace ai
-
-namespace game_events {
-	struct queued_event;
-}
 
 void extract_preload_scripts(config const &);
 

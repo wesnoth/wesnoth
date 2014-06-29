@@ -15,9 +15,14 @@
 #ifndef TESTS_TEST_SDL_UTILS_HPP_INCLUDED
 #define TESTS_TEST_SDL_UTILS_HPP_INCLUDED
 
-#include "sdl_utils.hpp"
+#include "sdl/utils.hpp"
 
+
+#ifndef INCL_BOOST_FUNCTION_HPP_
+#define INCL_BOOST_FUNCTION_HPP_
 #include <boost/function.hpp>
+#endif
+
 
 typedef boost::function<
 		void(const surface&, const double, const Uint32)>

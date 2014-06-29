@@ -22,12 +22,14 @@
 #include "callable_objects.hpp"
 #include "function_table.hpp"
 
+#include "ai/default/contexts.hpp"
+
 #include "../../attack_prediction.hpp"
 #include "../../filesystem.hpp"
-#include "../../game_display.hpp"
+#include "../../game_board.hpp"
+#include "../../display.hpp"
 #include "../../log.hpp"
 #include "../../map_label.hpp"
-#include "../../menu_events.hpp"
 #include "../../pathfind/teleport.hpp"
 #include "../../replay.hpp"
 #include "../../resources.hpp"
@@ -120,7 +122,7 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"distance_to_nearest_unowned_village:location")))->loc();
 		int best = 1000000;
-		const std::vector<map_location>& villages = resources::game_map->villages();
+		const std::vector<map_location>& villages = resources::gameboard->map().villages();
 		const std::set<map_location>& my_villages = ai_.current_team().villages();
 		for(std::vector<map_location>::const_iterator i = villages.begin(); i != villages.end(); ++i) {
 			int distance = distance_between(loc, *i);
@@ -199,7 +201,7 @@ private:
 	{
 		const std::set<map_location>& teleports = allow_teleport ? ai_.current_team().villages() : std::set<map_location>();
 
-		const gamemap& map = *resources::game_map;
+		const gamemap& map = resources::gameboard->map();
 
 		std::vector<map_location> locs(6 + teleports.size());
 		std::copy(teleports.begin(), teleports.end(), locs.begin() + 6);
@@ -264,8 +266,8 @@ private:
 	}
 
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		int w = resources::game_map->w();
-		int h = resources::game_map->h();
+		int w = resources::gameboard->map().w();
+		int h = resources::gameboard->map().h();
 
 		const variant units_input = args()[0]->evaluate(variables,fdb);
 		const variant leaders_input = args()[1]->evaluate(variables,fdb);
@@ -295,7 +297,7 @@ private:
 //		for(unit_map::const_iterator i = resources::units->begin(); i != resources::units->end(); ++i) {
 //			unit_counter[i->second.side()-1]++;
 //			unit_adapter unit(i->second);
-//			find_movemap( *resources::game_map, *resources::units, unit, i->first, scores[i->second.side()-1], ai_.*resources::teams , true );
+//			find_movemap( resources::gameboard->map(), *resources::units, unit, i->first, scores[i->second.side()-1], ai_.*resources::teams , true );
 //		}
 
 		for(size_t side = 0 ; side < units_input.num_elements() ; ++side) {
@@ -437,7 +439,7 @@ private:
 
 		std::vector<variant> v;
 		for(int n = 0; n != 6; ++n) {
-                        if (resources::game_map->on_board(adj[n]) )
+                        if (resources::gameboard->map().on_board(adj[n]) )
                             v.push_back(variant(new location_callable(adj[n])));
 		}
 
@@ -474,7 +476,7 @@ private:
 		v.push_back(variant(new location_callable(loc)));
 
 		for(size_t n = 0; n != res.size(); ++n) {
-                        if (resources::game_map->on_board(res[n]) )
+                        if (resources::gameboard->map().on_board(res[n]) )
                             v.push_back(variant(new location_callable(res[n])));
 		}
 
@@ -548,17 +550,17 @@ private:
                    get_adjacent_tiles(loc, adj);
 
                    for(int n = 0; n != 6; ++n) {
-                        if (resources::game_map->on_board(adj[n]) && visited_locs.find( adj[n] ) == visited_locs.end() ) {
-                            if (resources::game_map->get_terrain_info(adj[n]).is_keep() ||
-                                    resources::game_map->get_terrain_info(adj[n]).is_castle() ) {
+                        if (resources::gameboard->map().on_board(adj[n]) && visited_locs.find( adj[n] ) == visited_locs.end() ) {
+                            if (resources::gameboard->map().get_terrain_info(adj[n]).is_keep() ||
+                                    resources::gameboard->map().get_terrain_info(adj[n]).is_castle() ) {
                                 queued_locs.push(adj[n]);
                             }
                         }
                    }
                 }
 
-                if ( !resources::game_map->get_terrain_info(starting_loc).is_keep() &&
-                     !resources::game_map->get_terrain_info(starting_loc).is_castle() )
+                if ( !resources::gameboard->map().get_terrain_info(starting_loc).is_keep() &&
+                     !resources::gameboard->map().get_terrain_info(starting_loc).is_castle() )
                     visited_locs.erase(starting_loc);
 
                 std::vector<variant> res;
@@ -610,7 +612,7 @@ private:
 			loc = &u_call->get_location();
 		}
 
-		return variant(combat_modifier(*loc, un.alignment(), un.is_fearless()));
+		return variant(combat_modifier(resources::gameboard->units(), resources::gameboard->map(),*loc, un.alignment(), un.is_fearless()));
 	}
 };
 
@@ -691,8 +693,8 @@ private:
 			w = m.w();
 			h = m.h();
 		} else {
-			w = resources::game_map->w();
-			h = resources::game_map->h();
+			w = resources::gameboard->map().w();
+			h = resources::gameboard->map().h();
 		}
 
 		for(int i = 0; i < w; ++i)
@@ -757,8 +759,8 @@ private:
 		map_location att_loc = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"aki_eval:attacker_current_location")))->loc();
 		map_location def_loc = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"aki_eval:defender_current_location")))->loc();
 
-		terrain.push_back(variant(resources::game_map->get_terrain_string(att_loc)));
-		terrain.push_back(variant(resources::game_map->get_terrain_string(def_loc)));
+		terrain.push_back(variant(resources::gameboard->map().get_terrain_string(att_loc)));
+		terrain.push_back(variant(resources::gameboard->map().get_terrain_string(def_loc)));
 
 		std::string att = args()[2]->evaluate(variables,add_debug_info(fdb,2,"aki_eval:atta_type")).as_string();
 		std::string def = args()[3]->evaluate(variables,add_debug_info(fdb,3,"aki_eval:def_type")).as_string();
@@ -1144,16 +1146,16 @@ private:
 
 		pathfind::teleport_map allowed_teleports = ai_.get_allowed_teleports(unit_it);
 
-		pathfind::emergency_path_calculator em_calc(*unit_it, *resources::game_map);
+		pathfind::emergency_path_calculator em_calc(*unit_it, resources::gameboard->map());
 
-                pathfind::plain_route route = pathfind::a_star_search(src, dst, 1000.0, &em_calc, resources::game_map->w(), resources::game_map->h(), &allowed_teleports);
+                pathfind::plain_route route = pathfind::a_star_search(src, dst, 1000.0, &em_calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
 
                 if( route.steps.size() < 2 ) {
                     return variant(&locations);
                 }
 
                 for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
-                    if (unit_it->movement_cost((*resources::game_map)[*loc_iter]) < movetype::UNREACHABLE )
+                    if (unit_it->movement_cost((resources::gameboard->map())[*loc_iter]) < movetype::UNREACHABLE )
                         locations.push_back( variant( new location_callable(*loc_iter) ));
                     else
                         break;
@@ -1522,28 +1524,28 @@ private:
 		{
 			const unit& un = u_call->get_unit();
 
-                        if( un.total_movement() < un.movement_cost( (*resources::game_map)[loc]) )
+                        if( un.total_movement() < un.movement_cost( (resources::gameboard->map())[loc]) )
                             return variant();
 
-			if(!resources::game_map->on_board(loc)) {
+			if(!resources::gameboard->map().on_board(loc)) {
 				return variant();
 			}
 
-			return variant(100 - un.defense_modifier((*resources::game_map)[loc]));
+			return variant(100 - un.defense_modifier((resources::gameboard->map())[loc]));
 		}
 
 		if (u_type)
 		{
 			const unit_type& un = u_type->get_unit_type();
 
-			if( un.movement() < un.movement_type().movement_cost((*resources::game_map)[loc]) )
+			if( un.movement() < un.movement_type().movement_cost((resources::gameboard->map())[loc]) )
 				return variant();
 
-			if(!resources::game_map->on_board(loc)) {
+			if(!resources::gameboard->map().on_board(loc)) {
 				return variant();
 			}
 
-			return variant(100 - un.movement_type().defense_modifier((*resources::game_map)[loc]));
+			return variant(100 - un.movement_type().defense_modifier((resources::gameboard->map())[loc]));
 		}
 
 		return variant();
@@ -1572,22 +1574,22 @@ private:
 		{
 			const unit& un = u_call->get_unit();
 
-			if(!resources::game_map->on_board(loc)) {
+			if(!resources::gameboard->map().on_board(loc)) {
 				return variant();
 			}
 
-			return variant(un.defense_modifier((*resources::game_map)[loc]));
+			return variant(un.defense_modifier((resources::gameboard->map())[loc]));
 		}
 
 		if (u_type)
 		{
 			const unit_type& un = u_type->get_unit_type();
 
-			if(!resources::game_map->on_board(loc)) {
+			if(!resources::gameboard->map().on_board(loc)) {
 				return variant();
 			}
 
-			return variant(un.movement_type().defense_modifier((*resources::game_map)[loc]));
+			return variant(un.movement_type().defense_modifier((resources::gameboard->map())[loc]));
 		}
 
 		return variant();
@@ -1616,22 +1618,22 @@ private:
 		{
 			const unit& un = u_call->get_unit();
 
-			if(!resources::game_map->on_board(loc)) {
+			if(!resources::gameboard->map().on_board(loc)) {
 				return variant();
 			}
 
-			return variant(un.movement_cost((*resources::game_map)[loc]));
+			return variant(un.movement_cost((resources::gameboard->map())[loc]));
 		}
 
 		if (u_type)
 		{
 			const unit_type& un = u_type->get_unit_type();
 
-			if(!resources::game_map->on_board(loc)) {
+			if(!resources::gameboard->map().on_board(loc)) {
 				return variant();
 			}
 
-			return variant(un.movement_type().movement_cost((*resources::game_map)[loc]));
+			return variant(un.movement_type().movement_cost((resources::gameboard->map())[loc]));
 		}
 
 		return variant();

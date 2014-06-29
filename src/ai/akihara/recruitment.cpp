@@ -23,10 +23,12 @@
 
 #include "../../actions/attack.hpp"
 #include "../../attack_prediction.hpp"
+#include "../../game_board.hpp"
 #include "../../resources.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../team.hpp"
+#include "../../unit.hpp"
 #include "../../unit_display.hpp"
 #include "../../unit_map.hpp"
 #include "../../unit_types.hpp"
@@ -60,11 +62,11 @@ field_couple::field_couple(const map_location& first, const map_location& second
 	number(1) {
 first_location.first = first.x;
 first_location.second = first.y;
-first_field_type = resources::game_map->get_terrain_string(first);
+first_field_type = resources::gameboard->map().get_terrain_string(first);
 
 second_location.first = second.x;
 second_location.second = second.y;
-second_field_type = resources::game_map->get_terrain_string(second);
+second_field_type = resources::gameboard->map().get_terrain_string(second);
 
 }
 
@@ -82,11 +84,11 @@ void terrain_analyze::analyze() {
 }
 
 void terrain_analyze::search() {
-	for (int x = 0; x < resources::game_map->w(); x++) {
-		for(int y = 0; y < resources::game_map->h(); y++) {
+	for (int x = 0; x < resources::gameboard->map().w(); x++) {
+		for(int y = 0; y < resources::gameboard->map().h(); y++) {
 			const map_location loc(x,y);
-			if (resources::game_map->is_keep(loc)) {
-			} else if (resources::game_map->is_village(loc)) {
+			if (resources::gameboard->map().is_keep(loc)) {
+			} else if (resources::gameboard->map().is_village(loc)) {
 				village_location_.push_back(loc);
 			}
 		}
@@ -123,8 +125,8 @@ void terrain_analyze::add_terrain(const std::string& terrain) {
 
 void terrain_analyze::add_village_battle(const map_location& village, const map_location& adj) {
 	// If the battle is already stored, increment the number
-	std::string village_field = resources::game_map->get_terrain_string(village);
-	std::string adj_field = resources::game_map->get_terrain_string(adj);
+	std::string village_field = resources::gameboard->map().get_terrain_string(village);
+	std::string adj_field = resources::gameboard->map().get_terrain_string(adj);
 
 	BOOST_FOREACH(field_couple &couple, couple_field_list_) {
 		if (compareFieldCouple(couple, village_field, adj_field)) {
@@ -380,7 +382,7 @@ double recruitment::evaluate()
 		const map_location &keep = leader->get_location();
 		checked_hexes.insert(keep);
 
-		if (resources::game_map->is_keep(leader->get_location()) && count_free_hexes_in_castle(leader->get_location(), checked_hexes) != 0) {
+		if (resources::gameboard->map().is_keep(leader->get_location()) && count_free_hexes_in_castle(leader->get_location(), checked_hexes) != 0) {
 			return get_score();
 		}
 	}

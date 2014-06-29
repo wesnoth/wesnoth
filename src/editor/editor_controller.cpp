@@ -37,13 +37,16 @@
 #include "wml_exception.hpp"
 
 #include "dialogs.hpp"
+#include "resources.hpp"
 
 #include "../clipboard.hpp"
 #include "../game_preferences.hpp"
 #include "../gettext.hpp"
+#include "../leader_scroll_dialog.hpp"
 #include "../preferences_display.hpp"
 #include "../sound.hpp"
-#include "../leader_scroll_dialog.hpp"
+#include "../unit.hpp"
+#include "../unit_animation_component.hpp"
 
 #include "halo.hpp"
 
@@ -56,19 +59,17 @@ static std::vector<std::string> saved_windows_;
 
 namespace editor {
 
-
 editor_controller::editor_controller(const config &game_config, CVideo& video)
 	: controller_base(SDL_GetTicks(), game_config, video)
 	, mouse_handler_base()
 	, active_menu_(editor::MAP)
-	, gui_(new editor_display(NULL, video, NULL, NULL, get_theme(game_config, "editor"), config()))
+	, gui_(new editor_display(editor::get_dummy_display_context(), video, get_theme(game_config, "editor"), config()))
 	, tods_()
 	, context_manager_(new context_manager(*gui_.get(), game_config_))
 	, toolkit_(NULL)
 	, prefs_disp_manager_(NULL)
 	, tooltip_manager_(video)
 	, floating_label_manager_(NULL)
-	, halo_manager_(NULL)
 	, help_manager_(NULL)
 	, do_quit_(false)
 	, quit_mode_(EXIT_ERROR)
@@ -90,16 +91,19 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 
 void editor_controller::init_gui()
 {
-	gui_->change_map(&context_manager_->get_map());
-	gui_->change_units(&context_manager_->get_map_context().get_units());
-	gui_->change_teams(&context_manager_->get_map_context().get_teams());
+	gui_->change_display_context(&context_manager_->get_map_context());
 	gui_->set_grid(preferences::grid());
 	prefs_disp_manager_.reset(new preferences::display_manager(&gui()));
 	gui_->add_redraw_observer(boost::bind(&editor_controller::display_redraw_callback, this, _1));
 	floating_label_manager_.reset(new font::floating_label_context());
 	gui().set_draw_coordinates(preferences::editor::draw_hex_coordinates());
 	gui().set_draw_terrain_codes(preferences::editor::draw_terrain_codes());
-	halo_manager_.reset(new halo::manager(*gui_));
+//	halo_manager_.reset(new halo::manager(*gui_));
+//	resources::halo = halo_manager_.get();
+//	^ These lines no longer necessary, the gui owns its halo manager.
+//	TODO: Should the editor map contexts actually own the halo manager and swap them in and out from the gui?
+//	Note that if that is what happens it might not actually be a good idea for the gui to own the halo manager, so that it can be swapped out
+//	without deleting it.
 }
 
 void editor_controller::init_tods(const config& game_config)
@@ -155,11 +159,10 @@ void editor_controller::init_music(const config& game_config)
 
 editor_controller::~editor_controller()
 {
-	resources::game_map = NULL;
 	resources::units = NULL;
 	resources::tod_manager = NULL;
 	resources::teams = NULL;
-	
+
 	resources::classification = NULL;
 	resources::mp_settings = NULL;
 }
@@ -256,6 +259,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 					case editor::LOCAL_SCHEDULE:
 					case editor::MUSIC:
 					case editor::LOCAL_TIME:
+					case editor::UNIT_FACING:
 						return true;
 				}
 			}
@@ -299,6 +303,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
 		case HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL:
 		case HOTKEY_EDITOR_UNIT_RECRUIT_ASSIGN:
+		case HOTKEY_EDITOR_UNIT_FACING:
 		{
 			map_location loc = gui_->mouseover_hex();
 			const unit_map& units = context_manager_->get_map_context().get_units();
@@ -558,6 +563,13 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 				const std::vector<time_of_day>& times2 = context_manager_->get_map_context().get_time_manager()->times(active_area);
 				return (times1 == times2) ? ACTION_SELECTED : ACTION_DESELECTED;
 			}
+		case editor::UNIT_FACING:
+			{
+				unit_map::const_unit_iterator un =
+					resources::units->find(gui_->mouseover_hex());
+				assert(un != resources::units->end());
+				return un->facing() == index ? ACTION_SELECTED : ACTION_DESELECTED;
+			}
 		}
 		return ACTION_ON;
 		default:
@@ -641,6 +653,15 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 					tods_map::iterator iter = tods_.begin();
 					std::advance(iter, index);
 					context_manager_->get_map_context().replace_local_schedule(iter->second.second);
+					return true;
+				}
+			case UNIT_FACING:
+				{
+					unit_map::unit_iterator un =
+							resources::units->find(gui_->mouseover_hex());
+					assert(un != resources::units->end());
+					un->set_facing(map_location::DIRECTION(index));
+					un->anim_comp().set_standing();
 					return true;
 				}
 			}
@@ -751,7 +772,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			const unit_map::unit_iterator un = context_manager_->get_map_context().get_units().find(loc);
 			bool canrecruit = un->can_recruit();
 			un->set_can_recurit(!canrecruit);
-			un->set_standing();
+			un->anim_comp().set_standing();
 		}
 		return true;
 		case HOTKEY_DELETE_UNIT:
@@ -960,7 +981,7 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 
 		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(*i);
 
-		if ( ( can_execute_command(command) 
+		if ( ( can_execute_command(command)
 			&& (!context_menu || in_context_menu(command.id)) )
 			|| command.id == hotkey::HOTKEY_NULL) {
 			items.push_back(*i);
@@ -991,7 +1012,12 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 		active_menu_ = editor::LOCAL_TIME;
 		context_manager_->expand_local_time_menu(items);
 	}
-
+	if (!items.empty() && items.front() == "menu-unit-facings") {
+		active_menu_ = editor::UNIT_FACING;
+		items.erase(items.begin());
+		for (int dir = 0; dir != map_location::NDIRECTIONS; dir++)
+			items.push_back(map_location::write_translated_direction(map_location::DIRECTION(dir)));
+	}
 	if (!items.empty() && items.front() == "editor-playlist") {
 		active_menu_ = editor::MUSIC;
 		items.erase(items.begin());

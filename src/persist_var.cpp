@@ -14,7 +14,7 @@
 
 #include "global.hpp"
 
-#include "gamestatus.hpp"
+#include "game_data.hpp"
 #include "log.hpp"
 #include "network.hpp"
 #include "persist_context.hpp"
@@ -129,8 +129,8 @@ void verify_and_get_global_variable(const vconfig &pcfg)
 			if (unsigned (side - 1) >= resources::teams->size()) {
 				LOG_PERSIST << "Error: [get_global_variable] attribute \"side\" specifies invalid side number." << "\n";
 				valid = false;
-			} 
-			else 
+			}
+			else
 			{
 			}
 			DBG_PERSIST <<  "end verify_and_get_global_variable with from_global=" << pcfg["from_global"] << " from side " << pcfg["side"] << "\n";

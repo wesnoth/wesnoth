@@ -4,15 +4,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Automatically generated, 2013.
-# Pham Thanh Nam <phamthanhnam.ptn@gmail.com>, 2013.
+# Pham Thanh Nam <phamthanhnam.ptn@gmail.com>, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-22 14:15+0100\n"
-"PO-Revision-Date: 2013-08-23 02:25+0800\n"
-"Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
-"Language-Team: Vietnamese <>\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
+"PO-Revision-Date: 2014-06-24 22:29+0700\n"
+"Last-Translator: \n"
+"Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,64 +20,52 @@ msgstr ""
 "#-#-#-#-#  wesnoth-ai.cpp.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  wesnoth-ai.wml.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 1.4\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:5
 msgid "Multiplayer_AI^Default AI (RCA)"
-msgstr "Trí tuệ nhân tạo mặc định (RCA)"
+msgstr "TTNT mặc định (RCA)"
 
 #. [ai]: id=ai_default_rca_strong
 #: data/ai/ais/ai_default_rca_strong.cfg:5
-#, fuzzy
-#| msgid "Multiplayer_AI^Default AI (RCA)"
 msgid "Multiplayer_AI^Strong AI (RCA)"
-msgstr "Trí tuệ nhân tạo mặc định (RCA)"
+msgstr "TTNT mạnh (RCA)"
 
 #. [ai]: id=experimental_ai
 #: data/ai/ais/ai_generic_rush.cfg:5
 msgid "Multiplayer_AI^Experimental AI"
-msgstr "Trí tuệ nhân tạo thử nghiệm"
+msgstr "TTNT thử nghiệm"
 
 #. [ai]: id=ai_old_recruitment
 #: data/ai/dev/ai_old_recruitment.cfg:5
-#, fuzzy
-#| msgid "Multiplayer_AI^Default AI (RCA)"
 msgid "Multiplayer_AI^Dev AI: Default + Old Recruitment"
-msgstr "Trí tuệ nhân tạo mặc định (RCA)"
+msgstr "TTNT phát triển: Mặc định + Tuyển quân kiểu cũ"
 
 #. [ai]: id=ai_akihara
 #: data/ai/dev/akihara_recruitment.cfg:6
 msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (C++ Akihara)"
-msgstr ""
+msgstr "TTNT phát triển: Mặc định + Tuyển quân thử nghiệm (C++ Akihara)"
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/dev/formula_ai.cfg:4
-#, fuzzy
-#| msgid "Multiplayer_AI^Experimental AI"
 msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (Formula AI)"
-msgstr "Trí tuệ nhân tạo thử nghiệm"
+msgstr "TTNT phát triển: Mặc định + Tuyển quân thử nghiệm (TTNT công thức)"
 
 #. [ai]: id=default_ai_poisoning
 #: data/ai/dev/formula_ai_poisoning.cfg:5
-#, fuzzy
-#| msgid "Multiplayer_AI^Default AI (RCA)"
 msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
-msgstr "Trí tuệ nhân tạo mặc định (RCA)"
+msgstr "TTNT phát triển: Mặc định + Đầu độc (TTNT công thức)"
 
 #. [ai]: id=ai_idle
 #: data/ai/dev/idle_ai.cfg:4
-#, fuzzy
-#| msgid "Multiplayer_AI^Default AI (RCA)"
 msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "Trí tuệ nhân tạo mặc định (RCA)"
+msgstr "TTNT phát triển: TTNT rảnh rỗi"
 
 #. [ai]: id=testing_ai_recruitment
 #: data/ai/dev/testing_recruiting.cfg:5
-#, fuzzy
-#| msgid "Multiplayer_AI^Experimental AI"
 msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (C++)"
-msgstr "Trí tuệ nhân tạo thử nghiệm"
+msgstr "TTNT phát triển: Mặc định + tuyển quân thử nghiệm (C++)"
 
 #. [test]: id=The_Elves_Besieged
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:5
@@ -432,15 +420,6 @@ msgstr "Hừ, thế là xong."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/animals.cfg:331
-#, fuzzy
-#| msgid ""
-#| "<span color='#A00000'>Important:</span> The animal Micro AIs in this "
-#| "scenario are written for a number of animal unit types that do not exist "
-#| "in Wesnoth mainline, such as bears, sheep and sheep dogs, or deer. In "
-#| "this test scenario, theses units have been replaced by mainline units. If "
-#| "you want to get the \"full experience\" with the original animal unit "
-#| "types, check out the 'Animals' scenario in the 'AI Modification Demos' "
-#| "add-on."
 msgid ""
 "<span color='#A00000'>Important:</span> The animal Micro AIs in this "
 "scenario are written for a number of animal unit types that do not exist in "
@@ -451,9 +430,7 @@ msgstr ""
 "chơi này được viết cho một số kiểu đơn vị động vật không tồn tại trong bản "
 "phát hành Wesnoth chính thức, chẳng hạn gấu, cừu và chó chăn cừu, hay hươu "
 "nai. Trong màn chơi thử này, các đơn vị đó đã được thay thế bằng các đơn vị "
-"chính thức. Nếu bạn muốn có \"trải nghiệm đầy đủ\" với các kiểu đơn vị động "
-"vật gốc, kiểm tra màn chơi 'Động vật' trong phần bổ sung 'Minh họa bản sửa "
-"đổi trí tuệ nhân tạo'."
+"chính thức."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/animals.cfg:334
@@ -995,10 +972,11 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:603
 msgid ""
-"$unit.language_name $unit.name from Lieutenant Gadoc's squadron reporting for duty, "
-"sir."
+"$unit.language_name $unit.name from Lieutenant Gadoc's squadron reporting "
+"for duty, sir."
 msgstr ""
-"$unit.language_name $unit.name từ đội của trung úy Gadoc báo cáo nhiệm vụ, thưa ngài."
+"$unit.language_name $unit.name từ đội của trung úy Gadoc báo cáo nhiệm vụ, "
+"thưa ngài."
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:619
@@ -1013,11 +991,11 @@ msgstr "Rồi, thưa ngài."
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:631
 msgid ""
-"Very good, $unit.language_name. Now go help your comrade get rid of that saurian "
-"infestation in the swamps."
+"Very good, $unit.language_name. Now go help your comrade get rid of that "
+"saurian infestation in the swamps."
 msgstr ""
-"Tốt lắm, $unit.language_name. Giờ mau đi giúp đồng đội của anh trừ khử bọn thằn lằn "
-"trong đầm lầy."
+"Tốt lắm, $unit.language_name. Giờ mau đi giúp đồng đội của anh trừ khử bọn "
+"thằn lằn trong đầm lầy."
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:639
@@ -1629,17 +1607,11 @@ msgstr "Kẻ phạm pháp xấu tính đến được biển chỉ đường"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/hang_out.cfg:143
-#, fuzzy
-#| msgid "We got him!  Now whatever it is we are fighting for is safe."
 msgid "We got him! Now whatever it is we are fighting for is safe."
 msgstr "Chúng ta đã tóm được hắn! Giờ chúng ta chiến đấu kiểu gì cũng được."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/hang_out.cfg:167
-#, fuzzy
-#| msgid ""
-#| "I made it!  Now we can keep fighting for whatever it is that we are "
-#| "fighting for."
 msgid ""
 "I made it! Now we can keep fighting for whatever it is that we are fighting "
 "for."
@@ -2405,20 +2377,6 @@ msgstr ""
 
 #. [event]: id=Koorzhar profile profile}
 #: data/ai/micro_ais/scenarios/recruiting.cfg:86
-#, fuzzy
-#| msgid ""
-#| "If you have not changed anything, Side 1 uses the Random Recruiting AI, "
-#| "with swordsmen and peasants having been given higher probability than the "
-#| "other units. This is not meant as a good recruitment pattern, it simply "
-#| "serves as a demonstration how to use the AI.\n"
-#| "\n"
-#| "Side 2 uses Wesnoth' default recruiting.\n"
-#| "\n"
-#| "Also note that several Recruiting AIs are available as Micro AIs. A Micro "
-#| "AI can be added and adapted to the need of a scenario easily using only "
-#| "WML and the [micro_ai] tag. Check out the <span color='#00A000'>Micro AI "
-#| "wiki page</span> at http://wiki.wesnoth.org/Micro_AIs for more "
-#| "information."
 msgid ""
 "If you have not changed anything in the scenario code, Side 1 uses the "
 "Random Recruitment Micro AI, with swordsmen and peasants having been given "
@@ -2433,18 +2391,18 @@ msgid ""
 "AI wiki page</span> at http://wiki.wesnoth.org/Micro_AIs for more "
 "information."
 msgstr ""
-"Nếu bạn không thay đổi bất kỳ thứ gì, phe 1 sử dụng trí tuệ nhân tạo Tuyển "
-"quân ngẫu nhiên, với lính kiếm và nông dân được cho xác suất cao hơn các đơn "
-"vị khác. Đây không phải một mẫu tuyển quân tốt, nó chỉ đơn giản dùng làm "
-"minh họa cho cách sử dụng trí tuệ nhân tạo.\n"
+"Nếu bạn không thay đổi bất kỳ thứ gì trong mã nguồn màn chơi, phe 1 sử dụng "
+"trí tuệ nhân tạo Tuyển quân ngẫu nhiên, với lính kiếm và nông dân được cho "
+"xác suất cao hơn các đơn vị khác. Đây không phải một mẫu tuyển quân tốt, nó "
+"chỉ đơn giản dùng làm minh họa cho cách sử dụng trí tuệ nhân tạo.\n"
 "\n"
-"Phe 2 sử dụng mẫu tuyển quân mặc định của Wesnoth.\n"
+"Phe 2 sử dụng trí tuệ nhân tạo tuyển quân gấp rút (cũng được sử dụng trong "
+"trí tuệ nhân tạo thử nghiệm).\n"
 "\n"
-"Cũng lưu ý rằng một vài trí tuệ nhân tạo Tuyển quân có dưới dạng tiểu trí "
-"tuệ nhân tạo. Một tiểu trí tuệ nhân tạo có thể được thêm và thích ứng dễ "
-"dàng theo nhu cầu của một màn chơi, chỉ sử dụng WML và thẻ [micro_ai]. Kiểm "
-"tra <span color='#00A000'>trang wiki tiểu trí tuệ nhân tạo</span> ở http://"
-"wiki.wesnoth.org/Micro_AIs để biết thêm thông tin."
+"Một tiểu trí tuệ nhân tạo có thể được thêm và thích ứng dễ dàng theo nhu cầu "
+"của một màn chơi, chỉ sử dụng WML và thẻ [micro_ai]. Kiểm tra <span "
+"color='#00A000'>trang wiki tiểu trí tuệ nhân tạo</span> ở http://wiki."
+"wesnoth.org/Micro_AIs để biết thêm thông tin."
 
 #. [test]: id=micro_ai_test
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:5
@@ -2498,7 +2456,7 @@ msgstr "Quanh quẩn và Sứ giả"
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:89
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:5
 msgid "Simple Attack"
-msgstr ""
+msgstr "Tấn công đơn giản"
 
 #. [set_menu_item]: id=m01_menu_bottleneck_defense
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:96
@@ -2790,10 +2748,8 @@ msgstr ""
 #. [set_menu_item]: id=m14_simple_attack
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:322
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:331
-#, fuzzy
-#| msgid "Swamp Lurker Micro AI demo"
 msgid "Simple Attack Micro AI demo"
-msgstr "Minh họa trí tuệ nhân tạo Kẻ ẩn nấp trong đầm lầy"
+msgstr "Minh họa trí tuệ nhân tạo Tấn công đơn giản"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:331
@@ -2802,6 +2758,9 @@ msgid ""
 "priority than the standard Wesnoth attacks and how the AI can be forced to "
 "do attacks that it would otherwise avoid."
 msgstr ""
+"Màn chơi này minh họa cách một số đòn tấn công có thể được thực hiện với độ "
+"ưu tiên cao hơn các đòn tấn công chuẩn của Wesnoth và cách trí tuệ nhân tạo "
+"có thể bị bắt buộc phải tấn công mà lẽ ra nó tránh."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:341
@@ -2830,17 +2789,19 @@ msgstr "Nhấn chuột phải lên một biển chỉ đường để có thông
 #. [side]: id=Grospur, type=General
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:17
 msgid "Grospur"
-msgstr ""
+msgstr "Grospur"
 
 #. [side]: type=Ancient Lich, id=Uralt
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:32
 msgid "Uralt"
-msgstr ""
+msgstr "Uralt"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:122
 msgid "General Grospur, what do we do?  These undead will surely wipe us out."
 msgstr ""
+"Tướng quân Grospur, chúng ta nên làm gì? Lũ ma quái này chắc chắn sẽ quét "
+"sạch chúng ta."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:123
@@ -2856,26 +2817,37 @@ msgid ""
 "Attack Micro AI in this scenario. General Grospur might be in for a surprise."
 "</i>"
 msgstr ""
+"Đừng như con gà thế, trung sĩ! Ta đã bố trí các đơn vị có nhiều kinh nghiệm "
+"quanh vòng ngoài. Lũ ma quái sẽ không dám tấn công họ. Còn một số ít lẻn "
+"qua... chúng ta có thể dễ dàng trừ khử chúng một khi chúng vào bên trong.\n"
+"\n"
+"<i>Nói cách khác, trí tuệ nhân tạo Wesnoth nói chung không tấn công các đơn "
+"vị chỉ còn một điểm kinh nghiệm để nâng cấp nếu không có cơ hội giết đơn vị "
+"bằng một đòn tấn công đơn. Tuy nhiên, một số đòn tấn công của ma quái được "
+"điều khiển bởi trí tuệ nhân tạo Tấn công đơn giản trong màn chơi này. Tướng "
+"Grospur có thể sẽ ngạc nhiên.</i>"
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:128
 msgid "Watch the undead take care of business"
-msgstr ""
+msgstr "Theo dõi lũ ma quái hành động"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:130
 msgid "Don't even try. You can't reach the Lich."
-msgstr ""
+msgstr "Đừng thử. Bạn không thể tiếp cận được tên thây ma."
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:134
 msgid "Death of the last of Grospur's units"
-msgstr ""
+msgstr "Đơn vị cuối cùng của Grospur chết"
 
 #. [note]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:138
 msgid "When your leader dies, side leadership passes on to another unit"
 msgstr ""
+"Khi người chỉ huy của bạn chết, quyền lãnh đạo phe chuyển sang một đơn vị "
+"khác"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:163
@@ -2883,6 +2855,8 @@ msgid ""
 "What the ... ?!?  They are not supposed to attack me. That just doesn't "
 "happen in Wesnoth!"
 msgstr ""
+"Cái gì...?!? Chúng không thể nào tấn công ta. Điều này đơn giản không xảy ra "
+"trong Wesnoth!"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:164
@@ -2900,16 +2874,30 @@ msgid ""
 "for their own safety.  Only after that does the default Wesnoth attack "
 "mechanism kick in to attack with the remaining units (skeletons).</i>"
 msgstr ""
+"Ha ha ha ha ha!! Ta đã ra chỉ thị đặc biệt cho Vô hồn của ta tấn công tất cả "
+"các đơn vị sắp sửa nâng cấp của ngươi trước. Cũng theo dõi cách Vô hồn đó "
+"lao thẳng một cách tàn nhẫn vào đám binh lính tầm thường của ngươi, để những "
+"bộ xương có giá trị hơn sẽ tấn công sau. Ta đã đưa khái niệm 'các đơn vị có "
+"thể vứt bỏ' lên một cấp độ hoàn toàn mới. Cứ nhìn trong khiếp sợ!!\n"
+"\n"
+"<i>Bản dịch: Phe ma quái bao gồm hai thực thể của trí tuệ nhân tạo Tấn công "
+"đơn giản. Thực thể đầu tiên làm cho Vô hồn tấn công tất cả các đơn vị chỉ "
+"còn 1 điểm kinh nghiệm để nâng cấp, để sau đó có thể trừ khử. Thực thể thứ "
+"hai thi hành tất cả các đòn tấn công còn có thể bởi Vô hồn (và các Xác chết "
+"biết đi), không cần quan tâm đến sự an toàn của chúng. Chỉ sau đó, cơ chế "
+"tấn công mặc định của Wesnoth mới hoạt động để tấn công bằng các đơn vị còn "
+"lại (các bộ xương).</i>"
 
 #. [then]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:180
 msgid "Rise, minions!"
-msgstr ""
+msgstr "Đứng lên, các nô lệ!"
 
 #. [else]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:223
 msgid "And that's how the undead AI executes total annihilation ..."
 msgstr ""
+"Và đó là cách trí tuệ nhân tạo ma quái thực hiện sự hủy diệt hoàn toàn..."
 
 #. [side]
 #: data/ai/micro_ais/scenarios/swarm.cfg:40

@@ -85,7 +85,7 @@ namespace game_events
 		typedef boost::weak_ptr<event_handler> internal_ptr;
 		/// The underlying list.
 		typedef utils::smart_list<internal_ptr> list_t;
-		
+
 	public: // types
 		/// Handler list iterators are rather limited. They can be constructed
 		/// from a reference iterator (not default constructed), incremented,

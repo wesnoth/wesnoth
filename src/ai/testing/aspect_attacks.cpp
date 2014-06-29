@@ -21,6 +21,7 @@
 
 #include "../manager.hpp"
 #include "../../actions/attack.hpp"
+#include "../../game_board.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../team.hpp"
@@ -136,7 +137,7 @@ void aspect_attacks::do_attack_analysis(
 		//std::cerr << "ANALYSIS " << cur_analysis.movements.size() << " >= " << get_attack_depth() << "\n";
 		return;
 	}
-	const gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 	unit_map &units_ = *resources::units;
 	std::vector<team> &teams_ = *resources::teams;
 
@@ -359,7 +360,7 @@ void aspect_attacks::do_attack_analysis(
 
 int aspect_attacks::rate_terrain(const unit& u, const map_location& loc)
 {
-	const gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 	const t_translation::t_terrain terrain = map_.get_terrain(loc);
 	const int defense = u.defense_modifier(terrain);
 	int rating = 100 - defense;
@@ -374,7 +375,7 @@ int aspect_attacks::rate_terrain(const unit& u, const map_location& loc)
 	}
 
 	if(map_.is_village(terrain)) {
-		int owner = village_owner(loc) + 1;
+		int owner = resources::gameboard->village_owner(loc) + 1;
 
 		if(owner == u.side()) {
 			rating += friendly_village_value;

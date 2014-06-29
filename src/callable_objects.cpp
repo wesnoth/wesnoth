@@ -12,6 +12,8 @@
 */
 
 #include "callable_objects.hpp"
+#include "unit.hpp"
+#include "unit_formula_manager.hpp"
 
 template <typename T, typename K>
 variant convert_map( const std::map<T, K>& input_map ) {
@@ -224,8 +226,8 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "cost") {
 		return variant(u_.cost());
 	} else if(key == "vars") {
-		if(u_.formula_vars()) {
-			return variant(u_.formula_vars().get());
+		if(u_.formula_manager().formula_vars()) {
+			return variant(u_.formula_manager().formula_vars().get());
 		} else {
 			return variant();
 		}

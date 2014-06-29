@@ -19,7 +19,7 @@
 #include "gui/lib/types/point.hpp"
 #include "gui/widgets/event_executor.hpp"
 
-#include "sdl_utils.hpp"
+#include "sdl/utils.hpp"
 
 #include <boost/noncopyable.hpp>
 

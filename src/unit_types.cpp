@@ -22,6 +22,7 @@
 #include "unit_types.hpp"
 
 #include "game_config.hpp"
+#include "game_errors.hpp" //thrown sometimes
 //#include "gettext.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
@@ -1109,7 +1110,7 @@ int unit_type::resistance_against(const std::string& damage_name, bool attacker)
 
 bool unit_type::resistance_filter_matches(const config& cfg, bool attacker, const std::string& damage_name, int res) const
 {
-	if(!(cfg["active_on"]=="" || (attacker && cfg["active_on"]=="offense") || (!attacker && cfg["active_on"]=="defense"))) {
+	if(!(cfg["active_on"].empty() || (attacker && cfg["active_on"]=="offense") || (!attacker && cfg["active_on"]=="defense"))) {
 		return false;
 	}
 	const std::string& apply_to = cfg["apply_to"];

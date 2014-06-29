@@ -23,6 +23,7 @@
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/window.hpp"
 #include "utils/foreach.tpp"
+#include "sdl/rect.hpp"
 
 #include <boost/bind.hpp>
 
@@ -263,7 +264,17 @@ void tscrollbar_container::request_reduce_width(const unsigned maximum_width)
 	horizontal_scrollbar_grid_->set_visible(twidget::tvisible::visible);
 	size = get_best_size();
 
-	const tpoint scrollbar_size = horizontal_scrollbar_grid_->get_best_size();
+	tpoint scrollbar_size = horizontal_scrollbar_grid_->get_best_size();
+
+	/*
+	 * If the vertical bar is not invisible it's size needs to be added to the
+	 * minimum size.
+	 */
+	if(vertical_scrollbar_grid_->get_visible()
+	   != twidget::tvisible::invisible) {
+
+		scrollbar_size.x += vertical_scrollbar_grid_->get_best_size().x;
+	}
 
 	// If showing the scrollbar increased the width, hide and abort.
 	if(horizontal_scrollbar_mode_ == auto_visible_first_run && scrollbar_size.x
@@ -416,7 +427,7 @@ void tscrollbar_container::set_visible_rectangle(const SDL_Rect& rectangle)
 
 	// Now get the visible part of the content.
 	content_visible_area_
-			= intersect_rects(rectangle, content_->get_rectangle());
+			= sdl::intersect_rects(rectangle, content_->get_rectangle());
 
 	content_grid_->set_visible_rectangle(content_visible_area_);
 }

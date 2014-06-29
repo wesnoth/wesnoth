@@ -13,17 +13,18 @@
  */
 
 #include "tod_manager.hpp"
-#include "wml_exception.hpp"
-#include "gettext.hpp"
+
+#include "display_context.hpp"
 #include "formula_string_utils.hpp"
-#include "gamestatus.hpp"
+#include "game_data.hpp"
+#include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "play_controller.hpp"
 #include "random_new.hpp"
-#include "resources.hpp"
 #include "unit.hpp"
 #include "unit_abilities.hpp"
+#include "wml_exception.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/range/adaptors.hpp>
@@ -44,7 +45,7 @@ tod_manager::tod_manager(const config& scenario_cfg):
 	num_turns_(scenario_cfg["turns"].to_int(-1))
 {
 	// ? : operator doesn't work in this case.
-	if (scenario_cfg["current_time"].to_int(-17403) == -17403) 
+	if (scenario_cfg["current_time"].to_int(-17403) == -17403)
 		random_tod_ = scenario_cfg["random_start_time"];
 	else
 		random_tod_ = false;
@@ -52,7 +53,7 @@ tod_manager::tod_manager(const config& scenario_cfg):
 	time_of_day::parse_times(scenario_cfg,times_);
 	//We need to call parse_times before calculate_current_time because otherwise the first parameter will always be 0.
 	currentTime_ = calculate_current_time(times_.size(), turn_, scenario_cfg["current_time"].to_int(0), true);
-	
+
 }
 
 tod_manager& tod_manager::operator=(const tod_manager& manager)
@@ -88,14 +89,14 @@ void tod_manager::resolve_random(random_new::rng& r)
 	//process the random_start_time string, which can be boolean yes/no true/false or a
 	//comma-separated string of integers >= 1 referring to the times_ array indices
 	std::vector<int> output;
-	boost::copy( utils::split(random_tod_.str()) 
+	boost::copy( utils::split(random_tod_.str())
 		| boost::adaptors::transformed(boost::bind(lexical_cast_default<int, std::string>, _1 , 0))
 		| boost::adaptors::filtered(greater<int>(0))
 		, std::back_inserter(output) );
 
 	if(!output.empty())
 	{
-		int chosen = output[r.next_random() % output.size()]; 
+		int chosen = output[r.next_random() % output.size()];
 		currentTime_ = calculate_current_time(times_.size(), turn_, chosen, true);
 		r.next_random();
 	}
@@ -192,11 +193,8 @@ const time_of_day& tod_manager::get_time_of_day(const map_location& loc, int n_t
 	return get_time_of_day_turn(times_, n_turn, currentTime_);
 }
 
-const time_of_day tod_manager::get_illuminated_time_of_day(const map_location& loc, int for_turn) const
+const time_of_day tod_manager::get_illuminated_time_of_day(const unit_map & units, const gamemap & map, const map_location& loc, int for_turn) const
 {
-	const gamemap& map = *resources::game_map;
-	const unit_map& units = *resources::units;
-
 	// get ToD ignoring illumination
 	time_of_day tod = get_time_of_day(loc, for_turn);
 
@@ -318,7 +316,7 @@ const std::set<map_location>& tod_manager::get_area_by_index(int index) const
 	return areas_[index].hexes;
 }
 
-void tod_manager::add_time_area(const config& cfg)
+void tod_manager::add_time_area(const gamemap & map, const config& cfg)
 {
 	areas_.push_back(area_time_of_day());
 	area_time_of_day &area = areas_.back();
@@ -326,7 +324,7 @@ void tod_manager::add_time_area(const config& cfg)
 	area.xsrc = cfg["x"].str();
 	area.ysrc = cfg["y"].str();
 	area.currentTime = cfg["current_time"].to_int(0);
-	std::vector<map_location> const& locs (parse_location_range(area.xsrc, area.ysrc, true));
+	std::vector<map_location> const& locs (map.parse_location_range(area.xsrc, area.ysrc, true));
 	area.hexes.insert(locs.begin(), locs.end());
 	time_of_day::parse_times(cfg, area.times);
 }
@@ -380,7 +378,7 @@ void tod_manager::set_number_of_turns(int num)
 	num_turns_ = std::max<int>(num, -1);
 }
 
-void tod_manager::set_turn(const int num, const bool increase_limit_if_needed)
+void tod_manager::set_turn(const int num, boost::optional<game_data &> vars, const bool increase_limit_if_needed)
 {
 	const int new_turn = std::max<int>(num, 1);
 	LOG_NG << "changing current turn number from " << turn_ << " to " << new_turn << '\n';
@@ -391,8 +389,8 @@ void tod_manager::set_turn(const int num, const bool increase_limit_if_needed)
 		set_number_of_turns(new_turn);
 	}
 	turn_ = new_turn;
-	if (resources::gamedata)
-		resources::gamedata->get_variable("turn_number") = new_turn;
+	if (vars)
+		vars->get_variable("turn_number") = new_turn;
 }
 
 void tod_manager::set_new_current_times(const int new_current_turn_number)
@@ -420,9 +418,9 @@ int tod_manager::calculate_current_time(
 	return new_current_time;
 }
 
-bool tod_manager::next_turn()
+bool tod_manager::next_turn(boost::optional<game_data&> vars)
 {
-	set_turn(turn_ + 1, false);
+	set_turn(turn_ + 1, vars, false);
 	return is_time_left();
 }
 

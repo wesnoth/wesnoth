@@ -25,8 +25,11 @@
 
 #include "config.hpp"
 #include "formula_string_utils.hpp"
-#include "map.hpp"
-#include "resources.hpp"
+#include "gettext.hpp"
+#include "util.hpp"
+
+#include <boost/assign/list_of.hpp>
+#include <boost/functional/hash.hpp>
 
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_G LOG_STREAM(info, general)
@@ -43,6 +46,26 @@ std::ostream &operator<<(std::ostream &s, std::vector<map_location> const &v) {
 	}
 	return s;
 }
+
+/**
+ * Default list of directions
+ *
+ * Moved out of inline, because boost assign list_of is somewhat expensive...
+ *
+ **/
+const std::vector<map_location::DIRECTION> & map_location::default_dirs() {
+	static const std::vector<map_location::DIRECTION> dirs = boost::assign::list_of(map_location::NORTH)
+				(map_location::NORTH_EAST)(map_location::SOUTH_EAST)(map_location::SOUTH)
+				(map_location::SOUTH_WEST)(map_location::NORTH_WEST);
+	return dirs;
+}
+
+/** Moved out of inline because of the boost dependency **/
+std::size_t hash_value(map_location  const & a){
+	boost::hash<size_t> h;
+	return h( (a.x << 16) ^ a.y );
+}
+
 
 map_location::DIRECTION map_location::parse_direction(const std::string& str)
 {
@@ -104,6 +127,27 @@ std::string map_location::write_direction(map_location::DIRECTION dir)
 	}
 }
 
+std::string map_location::write_translated_direction(map_location::DIRECTION dir)
+{
+	switch(dir) {
+		case NORTH:
+			return _("North");
+		case NORTH_EAST:
+			return _("North East");
+		case NORTH_WEST:
+			return _("North West");
+		case SOUTH:
+			return _("South");
+		case SOUTH_EAST:
+			return _("South East");
+		case SOUTH_WEST:
+			return _("South West");
+		default:
+			return std::string();
+
+	}
+}
+
 map_location::map_location(const config& cfg, const variable_set *variables) :
 		x(-1000),
 		y(-1000)
@@ -142,17 +186,17 @@ map_location::DIRECTION map_location::get_relative_dir(const map_location & loc,
 {
 	if (opt == map_location::DEFAULT) {
 		map_location::DIRECTION dir = NDIRECTIONS;
-	
+
 		int dx = loc.x - x;
 		int dy = loc.y - y;
-		if (loc.x%2==1 && x%2==0) dy--;
+		if (loc.x%2==0 && x%2==1) dy--;
 
 		if (dx==0 && dy==0) return NDIRECTIONS;
 
 		int dist = abs(dx);                                   // Distance from north-south line
 		int dist_diag_SW_NE = abs(dy + (dx + (dy>0?0:1) )/2); // Distance from diagonal line SW-NE
 		int dist_diag_SE_NW = abs(dy - (dx - (dy>0?0:1) )/2); // Distance from diagonal line SE-NW
-	
+
 		if (dy > 0) dir = SOUTH;
 		else        dir = NORTH;
 
@@ -206,7 +250,7 @@ std::pair<int,int> map_location::get_in_basis_N_NE() const {
 	ret.second = temp.x;
 	temp = temp.get_direction(SOUTH_WEST,temp.x);
 	assert(temp.x == 0);
-	
+
 	ret.first = -temp.y;
 	temp = temp.get_direction(NORTH,temp.y);
 	assert(temp.y == 0);
@@ -287,54 +331,6 @@ bool map_location::matches_range(const std::string& xloc, const std::string &ylo
 		}
 	}
 	return true;
-}
-
-std::vector<map_location> parse_location_range(const std::string &x, const std::string &y,
-	bool with_border)
-{
-	std::vector<map_location> res;
-	const std::vector<std::string> xvals = utils::split(x);
-	const std::vector<std::string> yvals = utils::split(y);
-	const gamemap *map = resources::game_map;
-	assert(map);
-	int xmin = 1, xmax = map->w(), ymin = 1, ymax = map->h();
-	if (with_border) {
-		int bs = map->border_size();
-		xmin -= bs;
-		xmax += bs;
-		ymin -= bs;
-		ymax += bs;
-	}
-
-	for (unsigned i = 0; i < xvals.size() || i < yvals.size(); ++i)
-	{
-		std::pair<int,int> xrange, yrange;
-
-		if (i < xvals.size()) {
-			xrange = utils::parse_range(xvals[i]);
-			if (xrange.first < xmin) xrange.first = xmin;
-			if (xrange.second > xmax) xrange.second = xmax;
-		} else {
-			xrange.first = xmin;
-			xrange.second = xmax;
-		}
-
-		if (i < yvals.size()) {
-			yrange = utils::parse_range(yvals[i]);
-			if (yrange.first < ymin) yrange.first = ymin;
-			if (yrange.second > ymax) yrange.second = ymax;
-		} else {
-			yrange.first = ymin;
-			yrange.second = ymax;
-		}
-
-		for(int x = xrange.first; x <= xrange.second; ++x) {
-			for(int y = yrange.first; y <= yrange.second; ++y) {
-				res.push_back(map_location(x-1,y-1));
-			}
-		}
-	}
-	return res;
 }
 
 void write_location_range(const std::set<map_location>& locs, config& cfg)

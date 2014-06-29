@@ -22,6 +22,8 @@
 #include "editor/palette/terrain_palettes.hpp"
 #include "editor/palette/empty_palette.hpp"
 
+#include <SDL_video.h>
+
 class CKey;
 
 namespace editor {

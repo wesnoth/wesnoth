@@ -18,22 +18,24 @@
 
 #include "controller_base.hpp"
 #include "game_end_exceptions.hpp"
-#include "game_board.hpp"
+#include "game_state.hpp"
 #include "help.hpp"
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
 #include "persist_manager.hpp"
 #include "statistics.hpp"
 #include "tod_manager.hpp"
-#include "gamestatus.hpp"
+#include "unit_types.hpp"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 
 class game_display;
-class game_state;
+class saved_game;
 class game_data;
 class team;
+class unit;
+class wmi_pager;
 
 namespace actions {
 	class undo_list;
@@ -43,10 +45,6 @@ namespace game_events {
 	class  manager;
 	class  wml_menu_item;
 } // namespace game_events
-
-namespace halo {
-	struct manager;
-} // namespace halo
 
 namespace preferences {
 	struct display_manager;
@@ -68,11 +66,13 @@ namespace wb {
 	class manager; // whiteboard manager
 } // namespace wb
 
+// Holds gamestate related objects
+struct game_state;
 
 class play_controller : public controller_base, public events::observer, public savegame::savegame_config
 {
 public:
-	play_controller(const config& level, game_state& state_of_game,
+	play_controller(const config& level, saved_game& state_of_game,
 		const int ticks, const config& game_config,
 		CVideo& video, bool skip_replay);
 	virtual ~play_controller();
@@ -114,7 +114,6 @@ public:
 
 	void maybe_do_init_side(bool is_replay = false, bool only_visual = false);
 	void do_init_side(bool is_replay = false, bool only_visual = false);
-	virtual void play_side() = 0;
 
 	virtual void force_end_turn() = 0;
 	virtual void force_end_level(LEVEL_RESULT res) = 0;
@@ -138,14 +137,18 @@ public:
 		return end_level_data_;
 	}
 	const std::vector<team>& get_teams_const() const {
-		return gameboard_.teams_;
+		return gamestate_.board_.teams_;
 	}
 	const gamemap& get_map_const() const{
-		return gameboard_.map_;
+		return gamestate_.board_.map();
 	}
 	const tod_manager& get_tod_manager_const() const{
-			return tod_manager_;
+			return gamestate_.tod_manager_;
 		}
+
+	bool is_observer() const {
+		return gamestate_.board_.is_observer();
+	}
 
 	/**
 	 * Checks to see if a side has won, and throws an end_level_exception.
@@ -153,7 +156,7 @@ public:
 	 */
 	void check_victory();
 
-	size_t turn() const {return tod_manager_.turn();}
+	size_t turn() const {return gamestate_.tod_manager_.turn();}
 
 	/** Returns the number of the side whose turn it is. Numbering starts at one. */
 	int current_side() const { return player_number_; }
@@ -165,10 +168,11 @@ public:
 
 	void do_autosave();
 
+	void do_consolesave(const std::string& filename);
+
 	events::mouse_handler& get_mouse_handler_base();
 	events::menu_handler& get_menu_handler() { return menu_handler_; }
 
-	std::map< std::string, std::vector<unit_animation> > animation_cache;
 	static const std::string wml_menu_hotkey_prefix;
 protected:
 	void slice_before_scroll();
@@ -195,19 +199,16 @@ protected:
 	void init_managers();
 	///preload events cannot be synced
 	void fire_preload();
-	void fire_prestart(bool execute);
+	void fire_prestart();
 	void fire_start(bool execute);
 	virtual void init_gui();
-	void init_side(bool is_replay = false);
-	void place_sides_in_preferred_locations();
+	possible_end_play_signal init_side(bool is_replay = false);
 	virtual void finish_side_turn();
-	void finish_turn();
+	void finish_turn(); //this should not throw an end turn or end level exception
 	bool enemies_visible() const;
 
 	void enter_textbox();
 	void tab();
-
-	std::string get_unique_saveid(const config& cfg, std::set<std::string>& seen_save_ids);
 
 	team& current_team();
 	const team& current_team() const;
@@ -215,41 +216,39 @@ protected:
 	/** Find a human team (ie one we own) starting backwards from current player. */
 	int find_human_team_before_current_player() const;
 
+	//gamestate
+	game_state gamestate_;
+	const config & level_;
+	saved_game & saved_game_;
+
 	//managers
 	boost::scoped_ptr<preferences::display_manager> prefs_disp_manager_;
 	boost::scoped_ptr<tooltips::manager> tooltips_manager_;
 	boost::scoped_ptr<game_events::manager> events_manager_;
-	boost::scoped_ptr<halo::manager> halo_manager_;
 	font::floating_label_context labels_manager_;
 	help::help_manager help_manager_;
+
+	//more managers
 	events::mouse_handler mouse_handler_;
 	events::menu_handler menu_handler_;
 	boost::scoped_ptr<soundsource::manager> soundsources_manager_;
-	tod_manager tod_manager_;
-	boost::scoped_ptr<pathfind::manager> pathfind_manager_;
 	persist_manager persist_;
 
 	//other objects
 	boost::scoped_ptr<game_display> gui_;
 	const statistics::scenario_context statistics_context_;
-	const config& level_;
-	game_state& gamestate_;
-	game_data gamedata_;
-	game_board gameboard_;
 	/// undo_stack_ is never NULL. It is implemented as a pointer so that
 	/// undo_list can be an incomplete type at this point (which reduces the
 	/// number of files that depend on actions/undo.hpp).
 	boost::scoped_ptr<actions::undo_list> undo_stack_;
 
 	//whiteboard manager
-	boost::scoped_ptr<wb::manager> whiteboard_manager_;
+	boost::shared_ptr<wb::manager> whiteboard_manager_;
 
-	const unit_type::experience_accelerator xp_mod_;
 	//if a team is specified whose turn it is, it means we're loading a game
 	//instead of starting a fresh one. Gets reset to false after init_side
 	bool loading_game_;
 
-	int first_human_team_;
 	int player_number_;
 	int first_player_;
 	unsigned int start_turn_;
@@ -281,6 +280,7 @@ private:
 
 	void expand_wml_commands(std::vector<std::string>& items);
 	std::vector<const_item_ptr> wml_commands_;
+	boost::scoped_ptr<wmi_pager> wml_command_pager_;
 
 	bool victory_when_enemies_defeated_;
 	bool remove_from_carryover_on_defeat_;

@@ -20,7 +20,7 @@
 #include "util.hpp"
 
 namespace foo {
- 
+
 	MAKE_ENUM(enumname,
 	        (con1, "name1")
 	        (con2, "name2")
@@ -37,14 +37,14 @@ namespace foo {
 enum enumname {con1, con2 ,con3}
 }
 
-foo::enumname lexical_cast<std::string> ( std::string str ) throws bad_lexical_cast 
-{ 
+foo::enumname lexical_cast<std::string> ( std::string str ) throws bad_lexical_cast
+{
     ...
 }
 */
 
 class bar {
-	public: 
+	public:
 
 	MAKE_ENUM(another,
 	        (val1, "name1")
@@ -76,7 +76,7 @@ BOOST_AUTO_TEST_CASE ( test_make_enum_namespace )
 
 	bool threw_exception_when_it_wasnt_supposed_to = false;
 
-	try { 
+	try {
 		e = lexical_cast<foo::enumname> ("name3"); //returns con3
 	} catch (bad_lexical_cast & e) {
 		//std::cerr << "enum lexical cast didn't work!" << std::endl;
@@ -87,7 +87,7 @@ BOOST_AUTO_TEST_CASE ( test_make_enum_namespace )
 
 	bool threw_exception_when_it_was_supposed_to = false;
 
-	try { 
+	try {
 		e = lexical_cast<foo::enumname> ("name4"); //throw bad_lexical_cast
 	} catch (bad_lexical_cast & e) {
 		//std::cerr << "enum lexical cast worked!" << std::endl;
@@ -117,7 +117,7 @@ BOOST_AUTO_TEST_CASE ( test_make_enum_class )
 
 	bool threw_exception_when_it_wasnt_supposed_to = false;
 
-	try { 
+	try {
 		e = lexical_cast<bar::another> ("name3"); //returns val3
 	} catch (bad_lexical_cast & e) {
 		//std::cerr << "enum lexical cast didn't work!" << std::endl;
@@ -128,7 +128,7 @@ BOOST_AUTO_TEST_CASE ( test_make_enum_class )
 
 	bool threw_exception_when_it_was_supposed_to = false;
 
-	try { 
+	try {
 		e = lexical_cast<bar::another> ("name4"); //throw bad_lexical_cast
 	} catch (bad_lexical_cast & e) {
 		//std::cerr << "enum lexical cast worked!" << std::endl;

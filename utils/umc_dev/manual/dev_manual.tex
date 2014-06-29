@@ -1,5 +1,5 @@
 \documentclass[10pt]{article}
-\usepackage[top=1cm, bottom=1cm, left=1cm, right=1cm]{geometry}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
 \usepackage{graphicx}
 \usepackage{multicol}
 \usepackage[colorlinks=true]{hyperref}
@@ -23,39 +23,38 @@
 
 \section{Foreword}
 \begin{multicols}{2}
-  \begin{center}
-    \includegraphics[scale=0.6]{definitions.png}
-  \end{center}
+ \begin{center}
+    \includegraphics[scale=0.7]{definitions.png}
+ \end{center}
 
-The plugin has its homepage at: \url{http://eclipse.wesnoth.org/} \\
+The plugin's homepage is: \url{http://eclipse.wesnoth.org/} \\
 
-
-Through this readme the following terms with the specified meaning will be used:
+Throughout this readme the following terms with the specified meaning will be used:
 \begin{enumerate}
 \item Navigator / Project Explorer / Package Explorer - an Eclipse view that shows the projects in the workspace
 \item Project - a directory on the harddrive that is represented as a top directory in the navigator.
 \item Container - this is a directory or a project. Basically it can contain any file or directory children.
 \end{enumerate}
 
-The following image will highlight the terms used: 1 - Navigator, 2 - Project, 3 - Containers, 4 - Map files, 5 - Config files that contain WML code
+The image in the left highlights the terms used: 1 - Navigator, 2 - Project, 3 - Containers, 4 - Map files, 5 - Config files that contain WML code
 \end{multicols}
 
 \section{Prerequisites}
 A quick list before getting into details:
 \begin{enumerate}
-\item Java 6
+\item Java 6 or 7 (8 won't work yet)
 \item Python 2.x
-\item Eclipse 3.7 ( Indigo ) or newer
+\item Eclipse 3.7 (Indigo) or newer
 \item Wesnoth 1.9.x, trunk or newer
 \end{enumerate}
 
 Now for getting all those items:
 \begin{enumerate}
 \item The plugin runs on the following platforms: Windows 32/64 bit, Linux 32/64 bit and Mac OS X 64bit. Note that \textbf{Mac OS X 32 bit} is \textbf{not supported}. If you want to know why, please consult the Frequently Asked Questions section.
-\item Download and install Oracle/Sun's Java Version 6 (Java SE6): \href{http://java.sun.com/javase/downloads/widget/jdk6.jsp}{Download JDK}
+\item Download and install Oracle's Java Version 7 (Java SE7): \href{http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html}{Download JDK}
 
-\textit{Note:} The plugin uses Java SE6, thus older versions (like 1.4 or 1.5) don't work with it.\\
-\textit{Note:} Please double check the java installed on your system. On some machines there is the OpenJDK or other Java versions. Just use Oracle/Sun's so there will be no problems.
+\textit{Note:} The plugin uses Java SE6/SE7, thus older versions (like 1.4 or 1.5) won't work with it.\\
+\textit{Note:} Please double check the java installed on your system. On some machines there is the OpenJDK or other Java versions. Just use Oracle's so there will be no problems.
 
 \item Download and install Python 2.x:
  \begin{enumerate}
@@ -76,8 +75,30 @@ Now for getting all those items:
 \section{Setup the environment}
 After you got all the prerequisites, you need to setup the eclipse installation.
 
+\subsection{Target Platform setup}
 \begin{enumerate}
-\item Open up the ``Install new software" menu, and select from the list: ``Indigo - http://download.eclipse.org/releases/indigo"
+\item Download the ``eclipse\_3.7.zip" archive, that contains an already existing Eclipse SDK installation and deltapack (used for building against other OSes than the native one). The link for the download is: \href{http://sourceforge.net/projects/wesnoth/files/wesnoth-umcplugin/build\_utils/eclipse\_3.7.zip/download}{Download}
+
+\textit{Note:} You can generate the archive contents yourself by downloading the Eclipse SDK and its corresponding deltapack from \url{http://download.eclipse.org/eclipse/downloads/}.
+
+\item Extract the archive somewhere.
+
+\item Go to menu: Window -$>$ Preferences-$>$ Plug-in Development-$>$ Target Platform
+
+\item Select the \textbf{Running Platform (Active)} item and press ``Edit..." in the left buttons lane.
+
+\item A new window with tabs will be opened. Select the ``Locations" tab, and in the right buttons lane, select ``Add..."
+
+\item Select ``Directory" in the new windows, then press Next.
+
+\item Browse to the previous location where you have extracted the ``eclipse\_3.7.zip" archive.
+
+\item Press Finish and OK until you exist all windows.
+\end{enumerate}
+
+\subsection{Installing Xtext}
+\begin{enumerate}
+\item Open up the ``Install new software" menu, and select from the list: ``Indigo - http://download.eclipse.org/releases/indigo" (if using a newer version, just select the url that starts with \emph{http://download.eclipse.org/releases})
 
 \item In the list populated with items, select from the ``Modelling" category: ``Xtext SDK", and install it. Restart eclipse after that.
 
@@ -98,9 +119,7 @@ After you've setup the environment you can run the plugin.
 	\item Select the ``plugin.xml" file, and double-click to open it.
 	\item Click the ``Launch an Eclipse application" or ``Launch an Eclipse application in Debug mode" from the right part of the file, to launch the plugin.
 \end{enumerate}
-\begin{center}
-	\includegraphics[scale=0.6]{launch_plugin.png}
-\end{center}
+	\centerline{\includegraphics[scale=0.6]{launch_plugin.png}}
 
 If you want to know how you can use the plugin, please consult the User's Manual.
 
@@ -148,40 +167,28 @@ This tests involve starting the plugin, and launching the tests after it started
 \textit{Note:} You can always launch last run configuration with F11 - Debug / CTRL+F11 - Run. Alternatively, you can launch them by clicking near the green bug/run icon, on the little down arrow, and selecting the run configuration.
 
 \section{Building the plugin}
-The plugin can be built as a zip archive (usually) for different operating systems. The built application can be launched without any Eclipse prerequisites. This plugin's version is called \textbf{Standalone}. To build the plugin, you need to follow the specified steps:
+The plugin can be built as a zip archive (usually) for different operating systems. The built application can be launched without any Eclipse prerequisites. This plugin's version is called \textbf{Standalone}. 
 
+You now have 2 choices: Build the plugin from within Eclipse - this way you can build, say, just for your current OS/architecture - or you can use the already existing build script - that builds the plugin for all currently supported architectures.
+
+\subsection{Building via Eclipse}
 \begin{enumerate}
-  \item Download the ``eclipse\_3.7.zip" archive, that contains an already existing eclipse installation and deltapack (used for building against other OSes than the native one). The link for the download is: \href{http://sourceforge.net/projects/wesnoth/files/wesnoth-umcplugin/build\_utils/eclipse\_3.7.zip/download}{Download}
-
-  \item Extract the archive in the favorite location
-
-  \item You now have 2 choices: Build the plugin from within Eclipse - this way you can build, say, just for your current OS/architecture - or you can use the already existing build script - that builds the plugin for all currently supported architectures.
-
-  \item If you want to build the plugin from within Eclipse, you need to do the following steps:
-  \begin{enumerate}
     \item Open Eclipse.
-    \item Go to menu: Window -$>$ Preferences-$>$ Plug-in Development-$>$ Target Platform
-    \item Select the \textbf{Running Platform (Active)} item and press ``Edit..." in the left buttons lane.
-    \item A new window with tabs will be opened. Select the ``Locations" tab, and in the right buttons lane, select ``Add..."
-    \item Select ``Directory" in the new windows, then press Next.
-    \item Browse to the previous location where you have extracted the ``eclipse\_3.7.zip" archive.
-    \item Press Finish and OK until you exist all windows.
-    \item Now, go into the ``org.wesnoth" project, and open the file ``org.wesnoth.product".
+    \item Go into the ``org.wesnoth" project, and open the file ``org.wesnoth.product".
     \item In the bottom right part of the opened file, in section ``Exporting" there is a link: ``Eclipse Product export wizard". Click that.
     \item In the ``destination" group, select where you want the export/build to be done.
     \item Check the ``Generate metadata repository". You can also check ``Export for multiple platforms" if you want to build the plugin for other OSes/Architectures as well.
     \item Press Next if you have selected ``Export for multiple platforms" and select the desired OSes/Architectures.
     \item Finally press ``Finish" to do the building.
-  \end{enumerate}
+\end{enumerate}
 
-  \item If you want to build the plugin using the scripts, do the following:
-  \begin{enumerate}
+\subsection{Building via the SCons build script}
+\begin{enumerate}
     \item Go to the ``build" directory in the repository checkout.
     \item The build is done via Scons.
-    \item When launching the build first time you need to specify the ``eclipsedir" argument that specifies the path to a valid Eclipse + deltapack installation. The file you have previously downloaded contains this.
-    \item You can invoke the build like: \textit{scons  eclipsedir=/path/to/eclipsedir}. After the first run, the path is cached and you won't need to specify it anymore.
+    \item When launching the build first time you need to specify the ``eclipsedir" argument that specifies the path to a valid Eclipse SDK + deltapack installation. The file you have previously downloaded (``eclipse\_3.7.zip") already contains this.
+    \item You can invoke the build like: \textit{scons  eclipsedir=/path/to/eclipse-sdk-dir}. After the first run, the path is cached and you won't need to specify it anymore.
     \item The directory ``wesnoth\_umc\_dev" will contain now the built plugin as zip archives, while the ``update\_site" directory will contain the update site for the plugin.
-  \end{enumerate}
 \end{enumerate}
 
 \section{Generating the WML Grammar}

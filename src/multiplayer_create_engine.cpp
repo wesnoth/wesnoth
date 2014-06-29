@@ -22,6 +22,8 @@
 #include "generators/map_create.hpp"
 #include "map_exception.hpp"
 #include "minimap.hpp"
+#include "resources.hpp"
+#include "saved_game.hpp"
 #include "wml_separators.hpp"
 #include "wml_exception.hpp"
 
@@ -324,7 +326,7 @@ int campaign::max_players() const
 	return max_players_;
 }
 
-create_engine::create_engine(game_display& disp, game_state& state) :
+create_engine::create_engine(game_display& disp, saved_game& state) :
 	current_level_type_(),
 	current_level_index_(0),
 	current_era_index_(0),
@@ -342,14 +344,13 @@ create_engine::create_engine(game_display& disp, game_state& state) :
 	eras_(),
 	mods_(),
 	state_(state),
-	parameters_(),
 	dependency_manager_(resources::config_manager->game_config(), disp.video()),
 	generator_(NULL)
 {
 	DBG_MP << "restoring game config\n";
 
 	// Restore game config for multiplayer.
-	state_ = game_state();
+	state_ = saved_game();
 	state_.classification().campaign_type = game_classification::MULTIPLAYER;
 	resources::config_manager->
 		load_game_config_for_game(state_.classification());
@@ -367,17 +368,17 @@ create_engine::create_engine(game_display& disp, game_state& state) :
 	init_extras(ERA);
 	init_extras(MOD);
 
-	parameters_.saved_game = false;
+	state_.mp_settings().saved_game = false;
 
 	BOOST_FOREACH (const std::string& str, preferences::modifications()) {
 		if (resources::config_manager->
 				game_config().find_child("modification", "id", str))
-			parameters_.active_mods.push_back(str);
+			state_.mp_settings().active_mods.push_back(str);
 	}
 
 	if (current_level_type_ != level::CAMPAIGN &&
 		current_level_type_ != level::SP_CAMPAIGN) {
-		dependency_manager_.try_modifications(parameters_.active_mods, true);
+		dependency_manager_.try_modifications(state_.mp_settings().active_mods, true);
 	}
 
 	reset_level_filters();
@@ -407,10 +408,36 @@ void create_engine::prepare_for_new_level()
 {
 	DBG_MP << "preparing mp_game_settings for new level\n";
 
-	parameters_.scenario_data = current_level().data();
-	parameters_.hash = parameters_.scenario_data.hash();
-	parameters_.mp_scenario = parameters_.scenario_data["id"].str();
-	parameters_.mp_scenario_name = parameters_.scenario_data["name"].str();
+	state_.set_scenario(current_level().data());
+	state_.mp_settings().hash = current_level().data().hash();
+}
+
+void create_engine::prepare_for_era_and_mods()
+{
+	state_.classification().era_define =
+		resources::config_manager->game_config().find_child(
+			"era", "id", get_parameters().mp_era)["define"].str();
+	BOOST_FOREACH(const std::string& mod_id, get_parameters().active_mods) {
+		state_.classification().mod_defines.push_back(
+				resources::config_manager->game_config().find_child(
+					"modification", "id", mod_id)["define"].str());
+	}
+}
+
+void create_engine::prepare_for_scenario()
+{
+	DBG_MP << "preparing data for scenario by reloading game config\n";
+
+	state_.classification().scenario_define =
+		current_level().data()["define"].str();
+	
+	resources::config_manager->
+		load_game_config_for_game(state_.classification());
+
+	current_level().set_data(
+		resources::config_manager->game_config().find_child(
+		lexical_cast<std::string> (game_classification::MULTIPLAYER),
+		"id", current_level().data()["id"]));
 }
 
 void create_engine::prepare_for_campaign(const std::string& difficulty)
@@ -418,10 +445,15 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 	DBG_MP << "preparing data for campaign by reloading game config\n";
 
 	if (difficulty != "") {
-		state_.carryover_sides_start["difficulty"] = difficulty;
 		state_.classification().difficulty = difficulty;
-		parameters_.difficulty_define = difficulty;
 	}
+
+	state_.classification().campaign = current_level().data()["id"].str();
+	state_.classification().abbrev = current_level().data()["abbrev"].str();
+
+	state_.classification().end_text = current_level().data()["end_text"].str();
+	state_.classification().end_text_duration =
+		current_level().data()["end_text_duration"];
 
 	state_.classification().campaign_define =
 		current_level().data()["define"].str();
@@ -435,20 +467,20 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 		resources::config_manager->game_config().find_child(
 		lexical_cast<std::string> (game_classification::MULTIPLAYER),
 		"id", current_level().data()["first_scenario"]));
-
-	parameters_.mp_campaign = current_level().id();
 }
 
 void create_engine::prepare_for_saved_game()
 {
 	DBG_MP << "preparing mp_game_settings for saved game\n";
 
-	parameters_.saved_game = true;
-	parameters_.scenario_data.clear();
+	resources::config_manager->load_game_config_for_game(state_.classification());
+	//The save migh be a start-of-scenario save so make sure we have the scenario data loaded.
+	state_.expand_scenario();
+	state_.mp_settings().saved_game = true;
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
-	parameters_.name = vgettext("$login|’s game", i18n_symbols);
+	state_.mp_settings().name = vgettext("$login|’s game", i18n_symbols);
 }
 
 void create_engine::apply_level_filter(const std::string &name)
@@ -634,7 +666,7 @@ bool create_engine::toggle_current_mod()
 	bool is_active = dependency_manager_.is_modification_active(current_mod_index_);
 	dependency_manager_.try_modification_by_index(current_mod_index_, !is_active);
 
-	parameters_.active_mods = dependency_manager_.get_modifications();
+	state_.mp_settings().active_mods = dependency_manager_.get_modifications();
 
 	return !is_active;
 }
@@ -754,12 +786,12 @@ const depcheck::manager& create_engine::dependency_manager() const
 
 void create_engine::init_active_mods()
 {
-	parameters_.active_mods = dependency_manager_.get_modifications();
+	state_.mp_settings().active_mods = dependency_manager_.get_modifications();
 }
 
 std::vector<std::string>& create_engine::active_mods()
 {
-	return parameters_.active_mods;
+	return state_.mp_settings().active_mods;
 }
 
 const mp_game_settings& create_engine::get_parameters()
@@ -767,9 +799,9 @@ const mp_game_settings& create_engine::get_parameters()
 	DBG_MP << "getting parameter values" << std::endl;
 
 	int era_index = current_level().allow_era_choice() ? current_era_index_ : 0;
-	parameters_.mp_era = eras_[era_index]->id;
+	state_.mp_settings().mp_era = eras_[era_index]->id;
 
-	return parameters_;
+	return state_.mp_settings();
 }
 
 void create_engine::init_all_levels()
@@ -855,7 +887,7 @@ void create_engine::init_all_levels()
 	{
 		if (!data["allow_new_game"].to_bool(true))
 			continue;
-			
+
 		if (!data["map_generation"].empty()) {
 			random_map_ptr new_random_map(new random_map(data));
 			random_maps_.push_back(new_random_map);
@@ -1051,6 +1083,11 @@ std::vector<create_engine::extras_metadata_ptr>&
 	create_engine::get_extras_by_type(const MP_EXTRA extra_type)
 {
 	return (extra_type == ERA) ? eras_ : mods_;
+}
+
+saved_game& create_engine::get_state()
+{
+	return state_;
 }
 
 } // end namespace mp

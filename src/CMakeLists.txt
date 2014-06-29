@@ -70,14 +70,12 @@ if(MSVC)
 	set(common-external-libs
 		${SDL_LIBRARY}
 		${SDLMAIN_LIBRARY}
-		wesnoth-sdl
 		${LIBINTL_LIBRARY}
 		ws2_32.lib
 	)
 else(MSVC)
 	set(common-external-libs
 		${SDL_LIBRARY}
-		wesnoth-sdl
 		${Boost_IOSTREAMS_LIBRARY}
 		${Boost_REGEX_LIBRARY}
 		${Boost_PROGRAM_OPTIONS_LIBRARY}
@@ -363,6 +361,7 @@ set(wesnoth-sdl_SRC
 	sdl/rect.cpp
 	sdl/texture.cpp
 	sdl/window.cpp
+	sdl/utils.cpp
 )
 
 add_library(wesnoth-sdl
@@ -701,6 +700,7 @@ set(wesnoth-main_SRC
 	controller_base.cpp
 	desktop_util.cpp
 	dialogs.cpp
+	display_chat_manager.cpp
 	editor/action/action.cpp
 	editor/action/action_item.cpp
 	editor/action/action_label.cpp
@@ -729,6 +729,8 @@ set(wesnoth-main_SRC
 	editor/editor_preferences.cpp
 	editor/toolkit/editor_toolkit.cpp
 	editor/map/context_manager.cpp
+	fake_unit_manager.cpp
+	fake_unit_ptr.cpp
 	filechooser.cpp
 	flg_manager.cpp
 	floating_textbox.cpp
@@ -739,8 +741,10 @@ set(wesnoth-main_SRC
 	formula_string_utils.cpp
 	formula_tokenizer.cpp
 	game_board.cpp
+	game_classification.cpp
 	game_config_manager.cpp
 	game_controller.cpp
+	game_data.cpp
 	game_display.cpp
 	game_errors.cpp
 	game_events/action_wml.cpp
@@ -752,7 +756,7 @@ set(wesnoth-main_SRC
 	game_events/wmi_container.cpp
 	game_preferences.cpp
 	game_preferences_display.cpp
-	gamestatus.cpp
+	game_state.cpp
 	generic_event.cpp
 	gui/auxiliary/canvas.cpp
 	gui/auxiliary/log.cpp
@@ -781,6 +785,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/editor_set_starting_position.cpp
 	gui/dialogs/folder_create.cpp
 	gui/dialogs/formula_debugger.cpp
+	gui/dialogs/game_cache_options.cpp
 	gui/dialogs/game_delete.cpp
 	gui/dialogs/game_load.cpp
 	gui/dialogs/game_paths.cpp
@@ -839,6 +844,7 @@ set(wesnoth-main_SRC
 	multiplayer_ui.cpp
 	multiplayer_wait.cpp
 	network_asio.cpp
+	notifications/notifications.cpp
 	pathfind/pathfind.cpp
 	pathfind/teleport.cpp
 	persist_context.cpp
@@ -854,18 +860,20 @@ set(wesnoth-main_SRC
 	random_new.cpp
 	random_new_deterministic.cpp
 	random_new_synced.cpp
+	recall_list_manager.cpp
 	replay.cpp
 	replay_helper.cpp
 	replay_controller.cpp
 	resources.cpp
 	save_blocker.cpp
+	save_index.cpp
+	saved_game.cpp
 	savegame.cpp
 	scripting/debug_lua.cpp
 	scripting/lua.cpp
 	scripting/lua_api.cpp
 	scripting/lua_types.cpp
 	settings.cpp
-	sha1.cpp
 	side_filter.cpp
 	statistics.cpp
 	statistics_dialog.cpp
@@ -877,6 +885,7 @@ set(wesnoth-main_SRC
 	synced_checkup.cpp
 	synced_context.cpp
 	synced_commands.cpp
+	syncmp_handler.cpp
 	team.cpp
 	terrain_filter.cpp
 	tod_manager.cpp
@@ -884,12 +893,16 @@ set(wesnoth-main_SRC
 	unit.cpp
 	unit_abilities.cpp
 	unit_animation.cpp
+	unit_animation_component.cpp
 	unit_display.cpp
+	unit_drawer.cpp
+	unit_formula_manager.cpp
 	unit_frame.cpp
 	unit_helper.cpp
 	unit_id.cpp
 	unit_map.cpp
 	unit_types.cpp
+	utils/sha1.cpp
 	variable.cpp
 	variant.cpp
 	whiteboard/action.cpp
@@ -903,6 +916,7 @@ set(wesnoth-main_SRC
 	whiteboard/side_actions.cpp
 	whiteboard/suppose_dead.cpp
 	whiteboard/utility.cpp
+	wmi_pager.cpp
 	${network_implementation_files} # network.cpp and network_worker.cpp are included by default (without USE_ANA_NETWORK)
 )
 
@@ -915,6 +929,7 @@ set(libwesnoth-game_STAT_SRC
 	construct_dialog.cpp
 	cursor.cpp
 	display.cpp
+	display_context.cpp
 	events.cpp
 	font.cpp
 	format_time_summary.cpp
@@ -946,9 +961,7 @@ set(libwesnoth-game_STAT_SRC
 	preferences.cpp
 	preferences_display.cpp
 	race.cpp
-	random.cpp
 	reports.cpp
-	sdl_utils.cpp
 	show_dialog.cpp
 	simple_rng.cpp
 	sound.cpp
@@ -980,7 +993,7 @@ set(libwesnoth-game_STAT_SRC
 if(MSVC)
 	set(libwesnoth-game_STAT_SRC
 		${libwesnoth-game_STAT_SRC}
-		windows_tray_notification.cpp
+		notifications/windows_tray_notification.cpp
 	)
 endif(MSVC)
 
@@ -1020,6 +1033,7 @@ if(ENABLE_GAME)
 			wesnoth-gui_widget_definition
 			wesnoth-gui1_widgets
 			wesnoth-schema_validator
+			wesnoth-sdl
 		)
 	else(ENABLE_TESTS)
 		set(wesnoth_SRC
@@ -1039,6 +1053,7 @@ if(ENABLE_GAME)
 			wesnoth-core
 			wesnoth-lua
 			wesnoth-game
+			wesnoth-sdl
 		)
 	endif(ENABLE_TESTS)
 
@@ -1098,6 +1113,8 @@ if(ENABLE_CAMPAIGN_SERVER)
 set(campaignd_SRC
 	network_worker.cpp # NEEDED when compiling with ANA support
 	addon/validation.cpp
+	campaign_server/addon_utils.cpp
+	campaign_server/blacklist.cpp
 	campaign_server/campaign_server.cpp
 	server/input_stream.cpp
 	${network_implementation_files}
@@ -1127,13 +1144,18 @@ set(exploder_SRC
 	tools/exploder_cutter.cpp
 	tools/exploder_composer.cpp
 	tools/dummy_video.cpp
-	sdl_utils.cpp
+	sdl/utils.cpp
 	tracer.cpp
 	loadscreen_empty.cpp
 )
 
 add_executable(exploder ${exploder_SRC})
-target_link_libraries(exploder wesnoth-core png ${tools-external-libs})
+target_link_libraries(exploder
+	wesnoth-core
+	wesnoth-sdl
+	png
+	${tools-external-libs}
+)
 set_target_properties(exploder PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}exploder${BINARY_SUFFIX})
 
 install(TARGETS exploder DESTINATION ${BINDIR})
@@ -1143,18 +1165,24 @@ set(cutter_SRC
 	tools/exploder_utils.cpp
 	tools/exploder_cutter.cpp
 	tools/dummy_video.cpp
-	sdl_utils.cpp
+	sdl/utils.cpp
 	tracer.cpp
 	loadscreen_empty.cpp
 )
 
 add_executable(cutter ${cutter_SRC})
-target_link_libraries(cutter wesnoth-core png ${tools-external-libs})
+target_link_libraries(cutter
+	wesnoth-core
+	wesnoth-sdl
+	png
+	${tools-external-libs}
+)
 set_target_properties(cutter PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}cutter${BINARY_SUFFIX})
 
 install(TARGETS cutter DESTINATION ${BINDIR})
 
 set(schema_generator_SRC
+	tools/dummy_video.cpp
 	tools/schema/schema_generator.cpp
 	tools/schema/sourceparser.cpp
 	tools/schema/error_container.cpp
@@ -1164,7 +1192,12 @@ set(schema_generator_SRC
 )
 
 add_executable(schema_generator ${schema_generator_SRC})
-target_link_libraries(schema_generator wesnoth-core ${tools-external-libs} ${Boost_REGEX_LIBRARY})
+target_link_libraries(schema_generator
+	wesnoth-core
+	wesnoth-sdl
+	${tools-external-libs}
+	${Boost_REGEX_LIBRARY}
+)
 set_target_properties(schema_generator PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}schema_generator${BINARY_SUFFIX})
 
 install(TARGETS schema_generator DESTINATION ${BINDIR})
@@ -1173,15 +1206,20 @@ set(schema_validator_SRC
 	tools/validator/validator_tool.cpp
 	serialization/schema_validator.cpp
 	serialization/validator.cpp
+	tools/dummy_video.cpp
 	tools/schema/tag.cpp
 	filesystem.cpp
 	config_cache.cpp
-	sha1.cpp
+	utils/sha1.cpp
 	loadscreen_empty.cpp
 )
 
 add_executable(schema_validator ${schema_validator_SRC})
-target_link_libraries(schema_validator wesnoth-core ${common-external-libs})
+target_link_libraries(schema_validator
+	wesnoth-core
+	wesnoth-sdl
+	${common-external-libs}
+)
 set_target_properties(schema_validator PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}schema_validator${BINARY_SUFFIX}
 							COMPILE_DEFINITIONS VALIDATION_ERRORS_LOG)
 
@@ -1194,13 +1232,18 @@ set(wesmage_SRC
 	wesmage/options.cpp
 	tools/dummy_video.cpp
 	tools/exploder_utils.cpp
-	sdl_utils.cpp
+	sdl/utils.cpp
 	tracer.cpp
 	loadscreen_empty.cpp
 )
 
 add_executable(wesmage ${wesmage_SRC})
-target_link_libraries(wesmage wesnoth-core png ${tools-external-libs})
+target_link_libraries(wesmage
+	wesnoth-core
+	wesnoth-sdl
+	png
+	${tools-external-libs}
+)
 set_target_properties(wesmage PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesmage${BINARY_SUFFIX})
 
 install(TARGETS wesmage DESTINATION ${BINDIR})
@@ -1288,6 +1331,7 @@ if(ENABLE_TESTS)
 			wesnoth-gui_widget_definition
 			wesnoth-gui1_widgets
 			wesnoth-schema_validator
+			wesnoth-sdl
 			wesnoth-lua
 		)
 	else(ENABLE_GAME)
@@ -1308,6 +1352,7 @@ if(ENABLE_TESTS)
 			wesnoth-core
 			wesnoth-game
 			wesnoth-lua
+			wesnoth-sdl
 		)
 	endif(ENABLE_GAME)
 
@@ -1330,13 +1375,18 @@ if(ENABLE_TESTS)
 			tests/create_images.cpp
 			tools/dummy_video.cpp
 			tools/exploder_utils.cpp
-			sdl_utils.cpp
+			sdl/utils.cpp
 			tracer.cpp
 			loadscreen_empty.cpp
 		)
 
 		add_executable(create_images ${create_images_SRC})
-		target_link_libraries(create_images wesnoth-core png ${tools-external-libs})
+		target_link_libraries(create_images
+			wesnoth-core
+			wesnoth-sdl
+			png
+			${tools-external-libs}
+		)
 		set_target_properties(create_images PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}create_images${BINARY_SUFFIX})
 	endif(ENABLE_TOOLS)
 

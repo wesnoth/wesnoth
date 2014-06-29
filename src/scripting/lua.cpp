@@ -23,72 +23,114 @@
  *   - luaW_ functions are helpers in Lua style.
  */
 
-#include "lua/lualib.h"
-#include "lua/lauxlib.h"
-
-#include <cassert>
-#include <cstring>
-
 #include "scripting/lua.hpp"
-#include "scripting/lua_api.hpp"
-#include "scripting/lua_types.hpp"
 
+#include "global.hpp"
 
-#include "actions/attack.hpp"
-#include "ai/manager.hpp"
-#include "ai/composite/component.hpp"
-#include "ai/composite/engine_lua.hpp"
-#include "ai/testing/stage_rca.hpp"
-#include "attack_prediction.hpp"
-#include "filesystem.hpp"
-#include "game_display.hpp"
-#include "game_events/conditional_wml.hpp"
-#include "game_events/pump.hpp"
-#include "game_preferences.hpp"
-#include "gamestatus.hpp"
-#include "game_config_manager.hpp"
-#include "log.hpp"
-#include "lua_jailbreak_exception.hpp"
-#include "map.hpp"
+#include "actions/attack.hpp"           // for battle_context_unit_stats, etc
+#include "ai/composite/ai.hpp"          // for ai_composite
+#include "ai/composite/component.hpp"   // for component, etc
+#include "ai/composite/contexts.hpp"    // for ai_context
+#include "ai/composite/engine_lua.hpp"  // for engine_lua
+#include "ai/composite/rca.hpp"  // for candidate_action
+#include "ai/composite/stage.hpp"  // for stage
+#include "ai/configuration.hpp"         // for configuration
+#include "ai/lua/core.hpp"              // for lua_ai_context, etc
+#include "ai/manager.hpp"               // for manager, holder
+#include "attack_prediction.hpp"        // for combatant
+#include "config.hpp"                   // for config, etc
+#include "display_chat_manager.hpp"	// for clear_chat_messages
+#include "filesystem.hpp"               // for get_wml_location
+#include "font.hpp"                     // for LABEL_COLOR
+#include "game_board.hpp"               // for game_board
+#include "game_classification.hpp"      // for game_classification, etc
+#include "game_config.hpp"              // for debug, base_income, etc
+#include "game_config_manager.hpp"      // for game_config_manager
+#include "game_data.hpp"               // for game_data, etc
+#include "game_display.hpp"             // for game_display
+#include "game_errors.hpp"              // for game_error
+#include "game_events/conditional_wml.hpp"  // for conditional_passed
+#include "game_events/pump.hpp"         // for queued_event
+#include "game_preferences.hpp"         // for encountered_units
+#include "gui/auxiliary/canvas.hpp"     // for tcanvas
+#include "gui/auxiliary/window_builder.hpp"  // for twindow_builder, etc
+#include "gui/widgets/clickable.hpp"    // for tclickable_
+#include "gui/widgets/control.hpp"      // for tcontrol
+#include "gui/widgets/multi_page.hpp"   // for tmulti_page
+#include "gui/widgets/progress_bar.hpp"  // for tprogress_bar
+#include "gui/widgets/selectable.hpp"   // for tselectable_
+#include "gui/widgets/slider.hpp"       // for tslider
+#include "gui/widgets/text_box.hpp"     // for ttext_box
+#include "gui/widgets/widget.hpp"       // for twidget
+#include "gui/widgets/window.hpp"       // for twindow
+#include "image.hpp"                    // for get_image, locator
+#include "log.hpp"                      // for LOG_STREAM, logger, etc
+#include "lua/lauxlib.h"                // for luaL_checkinteger, etc
+#include "lua/lua.h"                    // for lua_setfield, etc
+#include "lua/lualib.h"                 // for luaopen_base, luaopen_debug, etc
+#include "make_enum.hpp"                // for operator<<
+#include "map.hpp"                      // for gamemap
 #include "map_label.hpp"
-#include "pathfind/pathfind.hpp"
-#include "pathfind/teleport.hpp"
-#include "play_controller.hpp"
-#include "replay.hpp"
-#include "reports.hpp"
-#include "resources.hpp"
-#include "terrain_filter.hpp"
-#include "terrain_translation.hpp"
-#include "side_filter.hpp"
-#include "sound.hpp"
-#include "synced_context.hpp"
-#include "unit.hpp"
-#include "ai/lua/core.hpp"
-#include "version.hpp"
-#include "gui/widgets/clickable.hpp"
-#include "ai/contexts.hpp"
-#include "ai/configuration.hpp"
-#include "ai/composite/ai.hpp"
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-#include "gui/widgets/list.hpp"
-#else
-#include "gui/widgets/listbox.hpp"
-#endif
-#include "gui/widgets/multi_page.hpp"
-#include "gui/widgets/selectable.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/text_box.hpp"
-#include "gui/widgets/slider.hpp"
-#include "gui/widgets/progress_bar.hpp"
-#include "gui/widgets/window.hpp"
+#include "map_location.hpp"             // for map_location
+#include "mouse_events.hpp"             // for mouse_handler
+#include "mp_game_settings.hpp"         // for mp_game_settings
+#include "pathfind/pathfind.hpp"        // for full_cost_map, plain_route, etc
+#include "pathfind/teleport.hpp"        // for get_teleport_locations, etc
+#include "play_controller.hpp"          // for play_controller
+#include "race.hpp"                     // for unit_race, race_map
+#include "recall_list_manager.hpp"      // for recall_list_manager
+#include "replay.hpp"                   // for get_user_choice, etc
+#include "reports.hpp"                  // for register_generator, etc
+#include "resources.hpp"                // for teams, gameboard, units, etc
+#include "scripting/lua_api.hpp"        // for luaW_toboolean, etc
+#include "scripting/lua_types.hpp"      // for getunitKey, dlgclbkKey, etc
+#include "sdl/utils.hpp"                // for surface
+#include "serialization/string_utils.hpp"  // for string_map
+#include "side_filter.hpp"              // for side_filter
+#include "sound.hpp"                    // for commit_music_changes, etc
+#include "synced_context.hpp"           // for synced_context, etc
+#include "team.hpp"                     // for team, village_owner
+#include "terrain.hpp"                  // for terrain_type
+#include "terrain_filter.hpp"           // for terrain_filter
+#include "terrain_translation.hpp"      // for read_terrain_code, etc
+#include "time_of_day.hpp"              // for time_of_day, tod_color
+#include "tod_manager.hpp"              // for tod_manager
+#include "tstring.hpp"                  // for t_string, operator+
+#include "unit.hpp"                     // for unit, intrusive_ptr_add_ref, etc
+#include "unit_animation_component.hpp"  // for unit_animation_component
+#include "unit_map.hpp"  // for unit_map, etc
+#include "unit_ptr.hpp"                 // for UnitConstPtr, UnitPtr
+#include "unit_types.hpp"    // for unit_type_data, unit_types, etc
+#include "util.hpp"                     // for lexical_cast
+#include "variable.hpp"                 // for vconfig, etc
+#include "version.hpp"                  // for do_version_check, etc
+
+#include <boost/bind.hpp>               // for bind_t, bind
+#include <boost/foreach.hpp>            // for auto_any_base, etc
+#include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
+#include <boost/tuple/tuple.hpp>        // for tuple
+#include <cassert>                      // for assert
+#include <cstring>                      // for strcmp, NULL
+#include <iterator>                     // for distance, advance
+#include <map>                          // for map, map<>::value_type, etc
+#include <new>                          // for operator new
+#include <set>                          // for set
+#include <sstream>                      // for operator<<, basic_ostream, etc
+#include <utility>                      // for pair
+#include <vector>                       // for vector, etc
+#include "SDL_timer.h"                  // for SDL_GetTicks
+#include "SDL_video.h"                  // for SDL_Color, SDL_Surface
+
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"
 #endif
 
-#include <boost/bind.hpp>
-#include <boost/foreach.hpp>
-#include <boost/variant/static_visitor.hpp>
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+#include "gui/widgets/list.hpp"
+#else
+#include "gui/widgets/listbox.hpp"
+#endif
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
@@ -513,8 +555,8 @@ static int impl_unit_collect(lua_State *L)
  */
 static int impl_unit_equality(lua_State* L)
 {
-	unit* left = luaW_checkunit(L, 1);
-	unit* right = luaW_checkunit(L, 2);
+	UnitPtr left = luaW_checkunit(L, 1);
+	UnitPtr right = luaW_checkunit(L, 2);
 	const bool equal = left->underlying_id() == right->underlying_id();
 	lua_pushboolean(L, equal);
 	return 1;
@@ -530,7 +572,7 @@ static int impl_unit_get(lua_State *L)
 {
 	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
 	char const *m = luaL_checkstring(L, 2);
-	unit const *pu = lu->get();
+	const UnitConstPtr pu = lu->get();
 
 	if (strcmp(m, "valid") == 0)
 	{
@@ -613,7 +655,7 @@ static int impl_unit_set(lua_State *L)
 {
 	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
 	char const *m = luaL_checkstring(L, 2);
-	unit *pu = lu->get();
+	UnitPtr pu = lu->get();
 	if (!pu) return luaL_argerror(L, 1, "unknown unit");
 	unit &u = *pu;
 
@@ -653,7 +695,7 @@ static int impl_unit_status_get(lua_State *L)
 	if (!lua_istable(L, 1))
 		return luaL_typerror(L, 1, "unit status");
 	lua_rawgeti(L, 1, 1);
-	unit const *u = luaW_tounit(L, -1);
+	const UnitConstPtr u = luaW_tounit(L, -1);
 	if (!u) return luaL_argerror(L, 1, "unknown unit");
 	char const *m = luaL_checkstring(L, 2);
 	lua_pushboolean(L, u->get_state(m));
@@ -671,7 +713,7 @@ static int impl_unit_status_set(lua_State *L)
 	if (!lua_istable(L, 1))
 		return luaL_typerror(L, 1, "unit status");
 	lua_rawgeti(L, 1, 1);
-	unit *u = luaW_tounit(L, -1);
+	UnitPtr u = luaW_tounit(L, -1);
 	if (!u) return luaL_argerror(L, 1, "unknown unit");
 	char const *m = luaL_checkstring(L, 2);
 	u->set_state(m, luaW_toboolean(L, 3));
@@ -689,7 +731,7 @@ static int impl_unit_variables_get(lua_State *L)
 	if (!lua_istable(L, 1))
 		return luaL_typerror(L, 1, "unit variables");
 	lua_rawgeti(L, 1, 1);
-	unit const *u = luaW_tounit(L, -1);
+	const UnitConstPtr u = luaW_tounit(L, -1);
 	if (!u) return luaL_argerror(L, 1, "unknown unit");
 	char const *m = luaL_checkstring(L, 2);
 	return_cfgref_attrib("__cfg", u->variables());
@@ -708,7 +750,7 @@ static int impl_unit_variables_set(lua_State *L)
 	if (!lua_istable(L, 1))
 		return luaL_typerror(L, 1, "unit variables");
 	lua_rawgeti(L, 1, 1);
-	unit *u = luaW_tounit(L, -1);
+	UnitPtr u = luaW_tounit(L, -1);
 	if (!u) return luaL_argerror(L, 1, "unknown unit");
 	char const *m = luaL_checkstring(L, 2);
 	if (strcmp(m, "__cfg") == 0) {
@@ -838,7 +880,7 @@ static int intf_match_unit(lua_State *L)
 		return luaL_typerror(L, 1, "unit");
 
 	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
-	unit *u = lu->get();
+	UnitPtr u = lu->get();
 	if (!u) return luaL_argerror(L, 1, "unit not found");
 
 	vconfig filter = luaW_checkvconfig(L, 2, true);
@@ -851,7 +893,7 @@ static int intf_match_unit(lua_State *L)
 	if (int side = lu->on_recall_list()) {
 		team &t = (*resources::teams)[side - 1];
 		scoped_recall_unit auto_store("this_unit",
-			t.save_id(), u - &t.recall_list()[0]);
+			t.save_id(), t.recall_list().find_index(u->id()));
 		lua_pushboolean(L, u->matches_filter(filter, map_location()));
 		return 1;
 	}
@@ -880,15 +922,15 @@ static int intf_get_recall_units(lua_State *L)
 	int i = 1, s = 1;
 	BOOST_FOREACH(team &t, *resources::teams)
 	{
-		BOOST_FOREACH(unit &u, t.recall_list())
+		BOOST_FOREACH(UnitPtr & u, t.recall_list())
 		{
 			if (!filter.null()) {
 				scoped_recall_unit auto_store("this_unit",
-					t.save_id(), &u - &t.recall_list()[0]);
-				if (!u.matches_filter(filter, map_location()))
+					t.save_id(), t.recall_list().find_index(u->id()));
+				if (!u->matches_filter(filter, map_location()))
 					continue;
 			}
-			new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(s, u.underlying_id());
+			new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(s, u->underlying_id());
 			lua_pushvalue(L, 1);
 			lua_setmetatable(L, 3);
 			lua_rawseti(L, 2, i);
@@ -1184,7 +1226,7 @@ static int impl_side_get(lua_State *L)
 	return_cstring_attrib("controller", team::CONTROLLER_to_string(t.controller()).c_str());
 	return_string_attrib("defeat_condition", team::DEFEAT_CONDITION_to_string(t.defeat_condition()));
 	return_bool_attrib("lost", t.lost());
-	
+
 	if (strcmp(m, "recruit") == 0) {
 		std::set<std::string> const &recruits = t.recruits();
 		lua_createtable(L, recruits.size(), 0);
@@ -1254,7 +1296,7 @@ static int intf_get_terrain(lua_State *L)
 	int x = luaL_checkint(L, 1);
 	int y = luaL_checkint(L, 2);
 
-	t_translation::t_terrain const &t = resources::game_map->
+	t_translation::t_terrain const &t = resources::gameboard->map().
 		get_terrain(map_location(x - 1, y - 1));
 	lua_pushstring(L, t_translation::write_terrain_code(t).c_str());
 	return 1;
@@ -1271,16 +1313,13 @@ static int intf_set_terrain(lua_State *L)
 {
 	int x = luaL_checkint(L, 1);
 	int y = luaL_checkint(L, 2);
-	t_translation::t_terrain terrain = t_translation::read_terrain_code(luaL_checkstring(L, 3));
-	if (terrain == t_translation::NONE_TERRAIN) return 0;
+	std::string t_str(luaL_checkstring(L, 3));
 
-	gamemap::tmerge_mode mode = gamemap::BOTH;
+	std::string mode_str = "both";
 	bool replace_if_failed = false;
 	if (!lua_isnone(L, 4)) {
 		if (!lua_isnil(L, 4)) {
-			const char* const layer = luaL_checkstring(L, 4);
-			if (strcmp(layer, "base") == 0) mode = gamemap::BASE;
-			else if (strcmp(layer, "overlay") == 0) mode = gamemap::OVERLAY;
+			mode_str = luaL_checkstring(L, 4);
 		}
 
 		if(!lua_isnoneornil(L, 5)) {
@@ -1288,12 +1327,8 @@ static int intf_set_terrain(lua_State *L)
 		}
 	}
 
-	bool result = resources::gameboard->change_terrain(map_location(x - 1, y - 1), terrain, mode, replace_if_failed);
-	if (result) {
-		resources::screen->recalculate_minimap();
-		resources::screen->invalidate_all();
-		resources::screen->rebuild_all();
-	}
+	bool result = resources::gameboard->change_terrain(map_location(x - 1, y - 1), t_str, mode_str, replace_if_failed);
+	game_events::context::screen_needs_rebuild(result);
 	return 0;
 }
 
@@ -1307,7 +1342,7 @@ static int intf_get_terrain_info(lua_State *L)
 	char const *m = luaL_checkstring(L, 1);
 	t_translation::t_terrain t = t_translation::read_terrain_code(m);
 	if (t == t_translation::NONE_TERRAIN) return 0;
-	terrain_type const &info = resources::game_map->get_terrain_info(t);
+	terrain_type const &info = resources::gameboard->map().get_terrain_info(t);
 
 	lua_newtable(L);
 	lua_pushstring(L, info.id().c_str());
@@ -1358,7 +1393,7 @@ static int intf_get_time_of_day(lua_State *L)
 		lua_rawgeti(L, arg, 1);
 		lua_rawgeti(L, arg, 2);
 		loc = map_location(luaL_checkinteger(L, -2) - 1, luaL_checkinteger(L, -1) - 1);
-		if(!resources::game_map->on_board(loc)) return luaL_argerror(L, arg, "coordinates are not on board");
+		if(!resources::gameboard->map().on_board(loc)) return luaL_argerror(L, arg, "coordinates are not on board");
 		lua_pop(L, 2);
 
 		lua_rawgeti(L, arg, 3);
@@ -1367,7 +1402,7 @@ static int intf_get_time_of_day(lua_State *L)
 	}
 
 	const time_of_day& tod = consider_illuminates ?
-		resources::tod_manager->get_illuminated_time_of_day(loc, for_turn) :
+		resources::tod_manager->get_illuminated_time_of_day(resources::gameboard->units(), resources::gameboard->map(), loc, for_turn) :
 		resources::tod_manager->get_time_of_day(loc, for_turn);
 
 	lua_newtable(L);
@@ -1403,10 +1438,10 @@ static int intf_get_village_owner(lua_State *L)
 	int y = luaL_checkint(L, 2);
 
 	map_location loc(x - 1, y - 1);
-	if (!resources::game_map->is_village(loc))
+	if (!resources::gameboard->map().is_village(loc))
 		return 0;
 
-	int side = village_owner(loc) + 1;
+	int side = resources::gameboard->village_owner(loc) + 1;
 	if (!side) return 0;
 	lua_pushinteger(L, side);
 	return 1;
@@ -1425,10 +1460,10 @@ static int intf_set_village_owner(lua_State *L)
 
 	std::vector<team> &teams = *resources::teams;
 	map_location loc(x - 1, y - 1);
-	if (!resources::game_map->is_village(loc))
+	if (!resources::gameboard->map().is_village(loc))
 		return 0;
 
-	int old_side = village_owner(loc) + 1;
+	int old_side = resources::gameboard->village_owner(loc) + 1;
 	if (new_side == old_side
 			|| new_side < 0
 			|| new_side > static_cast<int>(teams.size())
@@ -1449,7 +1484,7 @@ static int intf_set_village_owner(lua_State *L)
  */
 static int intf_get_map_size(lua_State *L)
 {
-	const gamemap &map = *resources::game_map;
+	const gamemap &map = resources::gameboard->map();
 	lua_pushinteger(L, map.w());
 	lua_pushinteger(L, map.h());
 	lua_pushinteger(L, map.border_size());
@@ -1464,7 +1499,7 @@ static int intf_get_map_size(lua_State *L)
 static int intf_get_mouseover_tile(lua_State *L)
 {
 	const map_location &loc = resources::screen->mouseover_hex();
-	if (!resources::game_map->on_board(loc)) return 0;
+	if (!resources::gameboard->map().on_board(loc)) return 0;
 	lua_pushinteger(L, loc.x + 1);
 	lua_pushinteger(L, loc.y + 1);
 	return 2;
@@ -1478,7 +1513,7 @@ static int intf_get_mouseover_tile(lua_State *L)
 static int intf_get_selected_tile(lua_State *L)
 {
 	const map_location &loc = resources::screen->selected_hex();
-	if (!resources::game_map->on_board(loc)) return 0;
+	if (!resources::gameboard->map().on_board(loc)) return 0;
 	lua_pushinteger(L, loc.x + 1);
 	lua_pushinteger(L, loc.y + 1);
 	return 2;
@@ -1494,8 +1529,8 @@ static int intf_get_starting_location(lua_State* L)
 	const int side = luaL_checkint(L, 1);
 	if(side < 1 || static_cast<int>(resources::teams->size()) < side)
 		return luaL_argerror(L, 1, "out of bounds");
-	const map_location& starting_pos = resources::game_map->starting_position(side);
-	if(!resources::game_map->on_board(starting_pos)) return 0;
+	const map_location& starting_pos = resources::gameboard->map().starting_position(side);
+	if(!resources::gameboard->map().on_board(starting_pos)) return 0;
 
 	lua_createtable(L, 2, 0);
 	lua_pushinteger(L, starting_pos.x + 1);
@@ -1542,9 +1577,9 @@ static int impl_game_config_get(lua_State *L)
 	return_bool_attrib("debug", game_config::debug);
 	return_bool_attrib("debug_lua", game_config::debug_lua);
 	return_bool_attrib("mp_debug", game_config::mp_debug);
-	
-	const mp_game_settings& mp_settings = *resources::mp_settings; 
-	const game_classification & classification = *resources::classification; 
+
+	const mp_game_settings& mp_settings = *resources::mp_settings;
+	const game_classification & classification = *resources::classification;
 
 	return_string_attrib("campaign_type", lexical_cast<std::string>(classification.campaign_type));
 	if(classification.campaign_type==game_classification::MULTIPLAYER) {
@@ -1560,7 +1595,7 @@ static int impl_game_config_get(lua_State *L)
 			eras_list = eras_list + "," + (*(its.first))["id"];
 		}
 		return_string_attrib("eras", eras_list);
-	}	 
+	}
 	return 0;
 }
 
@@ -1591,7 +1626,7 @@ static int impl_game_config_set(lua_State *L)
 */
 static std::string synced_state()
 {
-	//maybe return "initial" for game_data::INITIAL? 
+	//maybe return "initial" for game_data::INITIAL?
 	if(resources::gamedata->phase() == game_data::PRELOAD || resources::gamedata->phase() == game_data::INITIAL)
 	{
 		return "preload";
@@ -1688,7 +1723,7 @@ static int intf_debug(lua_State* L)
  */
 static int intf_clear_messages(lua_State*)
 {
-	resources::screen->clear_chat_messages();
+	resources::screen->get_chat_manager().clear_chat_messages();
 	return 0;
 }
 
@@ -1752,7 +1787,7 @@ static int intf_find_path(lua_State *L)
 	int arg = 1;
 	map_location src, dst;
 	unit_map &units = *resources::units;
-	const unit *u = NULL;
+	UnitConstPtr u = UnitConstPtr();
 
 	if (lua_isuserdata(L, arg))
 	{
@@ -1766,7 +1801,7 @@ static int intf_find_path(lua_State *L)
 		++arg;
 		src.y = luaL_checkinteger(L, arg) - 1;
 		unit_map::const_unit_iterator ui = units.find(src);
-		if (ui.valid()) u = &*ui;
+		if (ui.valid()) u = ui.get_shared_ptr();
 		++arg;
 	}
 
@@ -1775,13 +1810,13 @@ static int intf_find_path(lua_State *L)
 	dst.y = luaL_checkinteger(L, arg) - 1;
 	++arg;
 
-	if (!resources::game_map->on_board(src))
+	if (!resources::gameboard->map().on_board(src))
 		return luaL_argerror(L, 1, "invalid location");
-	if (!resources::game_map->on_board(dst))
+	if (!resources::gameboard->map().on_board(dst))
 		return luaL_argerror(L, arg - 2, "invalid location");
 
 	std::vector<team> &teams = *resources::teams;
-	const gamemap &map = *resources::game_map;
+	const gamemap &map = resources::gameboard->map();
 	int viewing_side = 0;
 	bool ignore_units = false, see_all = false, ignore_teleport = false;
 	double stop_at = 10000;
@@ -1862,7 +1897,7 @@ static int intf_find_path(lua_State *L)
 static int intf_find_reach(lua_State *L)
 {
 	int arg = 1;
-	const unit *u = NULL;
+	UnitConstPtr u = UnitConstPtr();
 
 	if (lua_isuserdata(L, arg))
 	{
@@ -1878,7 +1913,7 @@ static int intf_find_reach(lua_State *L)
 		unit_map::const_unit_iterator ui = resources::units->find(src);
 		if (!ui.valid())
 			return luaL_argerror(L, 1, "unit not found");
-		u = &*ui;
+		u = ui.get_shared_ptr();
 		++arg;
 	}
 
@@ -1947,7 +1982,7 @@ static int intf_find_reach(lua_State *L)
 static int intf_find_cost_map(lua_State *L)
 {
 	int arg = 1;
-	const unit *u = luaW_tounit(L, arg, true);
+	UnitConstPtr u = luaW_tounit(L, arg, true);
 	vconfig filter = vconfig::unconstructed_vconfig();
 	luaW_tovconfig(L, arg, filter);
 
@@ -1958,7 +1993,7 @@ static int intf_find_cost_map(lua_State *L)
 
 	if (u)  // 1. arg - unit
 	{
-		real_units.push_back(u);
+		real_units.push_back(u.get());
 	}
 	else if (!filter.null())  // 1. arg - filter
 	{
@@ -2150,13 +2185,13 @@ static int intf_put_unit(lua_State *L)
 	int unit_arg = 1;
 
 	lua_unit *lu = NULL;
-	unit *u = NULL;
+	UnitPtr u = UnitPtr();
 	map_location loc;
 	if (lua_isnumber(L, 1)) {
 		unit_arg = 3;
 		loc.x = lua_tointeger(L, 1) - 1;
 		loc.y = luaL_checkinteger(L, 2) - 1;
-		if (!resources::game_map->on_board(loc))
+		if (!resources::gameboard->map().on_board(loc))
 			return luaL_argerror(L, 1, "invalid location");
 	}
 
@@ -2170,7 +2205,7 @@ static int intf_put_unit(lua_State *L)
 		}
 		if (unit_arg == 1) {
 			loc = u->get_location();
-			if (!resources::game_map->on_board(loc))
+			if (!resources::gameboard->map().on_board(loc))
 				return luaL_argerror(L, 1, "invalid location");
 		}
 	}
@@ -2180,10 +2215,10 @@ static int intf_put_unit(lua_State *L)
 		if (unit_arg == 1) {
 			loc.x = cfg["x"] - 1;
 			loc.y = cfg["y"] - 1;
-			if (!resources::game_map->on_board(loc))
+			if (!resources::gameboard->map().on_board(loc))
 				return luaL_argerror(L, 1, "invalid location");
 		}
-		u = new unit(cfg, true);
+		u = UnitPtr (new unit(cfg, true));
 	}
 
 	resources::screen->invalidate(loc);
@@ -2192,7 +2227,7 @@ static int intf_put_unit(lua_State *L)
 
 	if (lu) {
 		lu->put_map(loc);
-		lu->get()->set_standing();
+		lu->get()->anim_comp().set_standing();
 	} else {
 		u->set_location(loc);
 		resources::units->insert(u);
@@ -2209,7 +2244,7 @@ static int intf_put_unit(lua_State *L)
 static int intf_put_recall_unit(lua_State *L)
 {
 	lua_unit *lu = NULL;
-	unit *u = NULL;
+	UnitPtr u = UnitPtr();
 	int side = lua_tointeger(L, 2);
 	if (unsigned(side) > resources::teams->size()) side = 0;
 
@@ -2223,25 +2258,18 @@ static int intf_put_recall_unit(lua_State *L)
 	else
 	{
 		config cfg = luaW_checkconfig(L, 1);
-		u = new unit(cfg, true);
+		u = UnitPtr(new unit(cfg, true));
 	}
 
 	if (!side) side = u->side();
 	team &t = (*resources::teams)[side - 1];
 	if (!t.persistent())
 		return luaL_argerror(L, 2, "nonpersistent side");
-	std::vector<unit> &rl = t.recall_list();
 
 	// Avoid duplicates in the recall list.
 	size_t uid = u->underlying_id();
-	std::vector<unit>::iterator i = rl.begin();
-	while (i != rl.end()) {
-		if (i->underlying_id() == u->underlying_id()) {
-			i = rl.erase(i);
-		} else ++i;
-	}
-
-	rl.push_back(*u);
+	t.recall_list().erase_by_underlying_id(uid);
+	t.recall_list().add(u);
 	if (lu) {
 		if (lu->on_map())
 			resources::units->erase(u->get_location());
@@ -2261,18 +2289,17 @@ static int intf_extract_unit(lua_State *L)
 	if (!luaW_hasmetatable(L, 1, getunitKey))
 		return luaL_typerror(L, 1, "unit");
 	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
-	unit *u = lu->get();
+	UnitPtr u = lu->get();
 	if (!u) return luaL_argerror(L, 1, "unit not found");
 
 	if (lu->on_map()) {
 		u = resources::units->extract(u->get_location());
 		assert(u);
-		u->clear_haloes();
+		u->anim_comp().clear_haloes();
 	} else if (int side = lu->on_recall_list()) {
 		team &t = (*resources::teams)[side - 1];
-		unit *v = new unit(*u);
-		std::vector<unit> &rl = t.recall_list();
-		rl.erase(rl.begin() + (u - &rl[0]));
+		UnitPtr v = UnitPtr(new unit(*u));
+		t.recall_list().erase_if_matches_id(u->id());
 		u = v;
 	} else {
 		return 0;
@@ -2293,22 +2320,18 @@ static int intf_find_vacant_tile(lua_State *L)
 {
 	int x = luaL_checkint(L, 1) - 1, y = luaL_checkint(L, 2) - 1;
 
-	const unit *u = NULL;
-	bool fake_unit = false;
+	UnitPtr u = UnitPtr();
 	if (!lua_isnoneornil(L, 3)) {
 		if (luaW_hasmetatable(L, 3, getunitKey)) {
 			u = static_cast<lua_unit *>(lua_touserdata(L, 3))->get();
 		} else {
 			config cfg = luaW_checkconfig(L, 3);
-			u = new unit(cfg, false);
-			fake_unit = true;
+			u.reset(new unit(cfg, false));
 		}
 	}
 
 	map_location res = find_vacant_tile(map_location(x, y),
-	                                    pathfind::VACANT_ANY, u);
-
-	if (fake_unit) delete u;
+	                                    pathfind::VACANT_ANY, u.get());
 
 	if (!res.valid()) return 0;
 	lua_pushinteger(L, res.x + 1);
@@ -2341,7 +2364,7 @@ static int intf_float_label(lua_State *L)
 static int intf_create_unit(lua_State *L)
 {
 	config cfg = luaW_checkconfig(L, 1);
-	unit *u = new unit(cfg, true);
+	UnitPtr u = UnitPtr(new unit(cfg, true));
 	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u);
 	lua_pushlightuserdata(L
 			, getunitKey);
@@ -2357,8 +2380,8 @@ static int intf_create_unit(lua_State *L)
  */
 static int intf_copy_unit(lua_State *L)
 {
-	unit const *u = luaW_checkunit(L, 1);
-	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(new unit(*u));
+	UnitPtr u = luaW_checkunit(L, 1);
+	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(UnitPtr(new unit(*u)));
 	lua_pushlightuserdata(L
 			, getunitKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
@@ -2376,7 +2399,7 @@ static int intf_copy_unit(lua_State *L)
  */
 static int intf_unit_resistance(lua_State *L)
 {
-	unit const *u = luaW_checkunit(L, 1);
+	const UnitConstPtr u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 	bool a = luaW_toboolean(L, 3);
 
@@ -2398,7 +2421,7 @@ static int intf_unit_resistance(lua_State *L)
  */
 static int intf_unit_movement_cost(lua_State *L)
 {
-	unit const *u = luaW_checkunit(L, 1);
+	const UnitConstPtr u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 	t_translation::t_terrain t = t_translation::read_terrain_code(m);
 	lua_pushinteger(L, u->movement_cost(t));
@@ -2413,7 +2436,7 @@ static int intf_unit_movement_cost(lua_State *L)
  */
 static int intf_unit_defense(lua_State *L)
 {
-	unit const *u = luaW_checkunit(L, 1);
+	const UnitConstPtr u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 	t_translation::t_terrain t = t_translation::read_terrain_code(m);
 	lua_pushinteger(L, u->defense_modifier(t));
@@ -2428,7 +2451,7 @@ static int intf_unit_defense(lua_State *L)
  */
 static int intf_unit_ability(lua_State *L)
 {
-	unit const *u = luaW_checkunit(L, 1);
+	const UnitConstPtr u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 	lua_pushboolean(L, u->get_ability_bool(m));
 	return 1;
@@ -2441,7 +2464,7 @@ static int intf_unit_ability(lua_State *L)
  */
 static int intf_transform_unit(lua_State *L)
 {
-	unit *u = luaW_checkunit(L, 1);
+	UnitPtr u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 	const unit_type *utp = unit_types.find(m);
 	if (!utp) return luaL_argerror(L, 2, "unknown unit type");
@@ -2508,8 +2531,8 @@ static void luaW_pushsimweapon(lua_State *L, const battle_context_unit_stats &bc
 	lua_pushnumber(L, bcustats.drain_percent);
 	lua_setfield(L, -2, "drain_percent");
 
-	
-	//if we called simulate_combat without giving an explicit weapon this can be useful. 
+
+	//if we called simulate_combat without giving an explicit weapon this can be useful.
 	lua_pushnumber(L, bcustats.attack_num);
 	lua_setfield(L, -2, "attack_num");
 	//this is NULL when there is no counter weapon
@@ -2536,7 +2559,7 @@ static int intf_simulate_combat(lua_State *L)
 {
 	int arg_num = 1, att_w = -1, def_w = -1;
 
-	unit const *att = luaW_checkunit(L, arg_num);
+	UnitConstPtr att = luaW_checkunit(L, arg_num);
 	++arg_num;
 	if (lua_isnumber(L, arg_num)) {
 		att_w = lua_tointeger(L, arg_num) - 1;
@@ -2545,7 +2568,7 @@ static int intf_simulate_combat(lua_State *L)
 		++arg_num;
 	}
 
-	unit const *def = luaW_checkunit(L, arg_num, true);
+	UnitConstPtr def = luaW_checkunit(L, arg_num, true);
 	++arg_num;
 	if (lua_isnumber(L, arg_num)) {
 		def_w = lua_tointeger(L, arg_num) - 1;
@@ -2555,7 +2578,7 @@ static int intf_simulate_combat(lua_State *L)
 	}
 
 	battle_context context(*resources::units, att->get_location(),
-		def->get_location(), att_w, def_w, 0.0, NULL, att);
+		def->get_location(), att_w, def_w, 0.0, NULL, att.get());
 
 	luaW_pushsimdata(L, context.get_attacker_combatant());
 	luaW_pushsimdata(L, context.get_defender_combatant());
@@ -2655,7 +2678,7 @@ static int intf_select_hex(lua_State *L)
 	const int y = luaL_checkinteger(L, 2) - 1;
 
 	const map_location loc(x, y);
-	if(!resources::game_map->on_board(loc)) return luaL_argerror(L, 1, "not on board");
+	if(!resources::gameboard->map().on_board(loc)) return luaL_argerror(L, 1, "not on board");
 	bool highlight = true;
 	if(!lua_isnoneornil(L, 3))
 		highlight = luaW_toboolean(L, 3);
@@ -2719,7 +2742,7 @@ static int intf_synchronize_choice(lua_State *L)
 	{
 		std::set<int> vals;
 		//read the third parameter
-		lua_pushnil(L); 
+		lua_pushnil(L);
 		while (lua_next(L, 3) != 0) {
 			/* uses 'key' (at index -2) and 'value' (at index -1) */
 			int val = luaL_checkint(L, -1);
@@ -3164,7 +3187,7 @@ static int intf_get_locations(lua_State *L)
  */
 static int intf_get_villages(lua_State *L)
 {
-	std::vector<map_location> locs = resources::game_map->villages();
+	std::vector<map_location> locs = resources::gameboard->map().villages();
 	lua_newtable(L);
 	int i = 1;
 
@@ -3301,7 +3324,7 @@ static int intf_get_traits(lua_State* L)
  */
 static int intf_add_modification(lua_State *L)
 {
-	unit *u = luaW_checkunit(L, 1);
+	UnitPtr u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 	std::string sm = m;
 	if (sm != "advance" && sm != "object" && sm != "trait")
@@ -3578,10 +3601,10 @@ namespace {
 		std::string name;
 		lua_report_generator(lua_State *L, const std::string &n)
 			: mState(L), name(n) {}
-		virtual config generate();
+		virtual config generate(reports::context & rc);
 	};
 
-	config lua_report_generator::generate()
+	config lua_report_generator::generate(reports::context & /*rc*/)
 	{
 		lua_State *L = mState;
 		config cfg;
@@ -3600,7 +3623,8 @@ namespace {
 static int cfun_theme_item(lua_State *L)
 {
 	const char *m = lua_tostring(L, lua_upvalueindex(1));
-	luaW_pushconfig(L, reports::generate_report(m, true));
+	reports::context temp_context = reports::context(*resources::gameboard, *resources::screen, *resources::tod_manager, resources::whiteboard, resources::controller->get_mouse_handler_base());
+	luaW_pushconfig(L, reports::generate_report(m, temp_context , true));
 	return 1;
 }
 
@@ -4028,7 +4052,7 @@ void LuaKernel::initialize()
 /// elsewhere (in the C++ code).
 /// Any child tags not in this list will be passed to Lua's on_load event.
 static char const *handled_file_tags[] = {
-	"color_palette", "color_range", "display", "endlevel", "era",
+	"color_palette", "color_range", "display", "end_level_data", "era",
 	"event", "generator", "label", "lua", "map", "menu_item",
 	"modification", "music", "options", "side", "sound_source",
 	"story", "terrain_graphics", "time", "time_area", "tunnel",

@@ -25,12 +25,15 @@
 
 #include "../../array.hpp"
 #include "../../dialogs.hpp"
+#include "../../game_board.hpp"
 #include "../../game_events/pump.hpp"
-#include "../../gamestatus.hpp"
+#include "../../game_classification.hpp"
 #include "../../log.hpp"
 #include "../../mouse_handler_base.hpp"
+#include "../../recall_list_manager.hpp"
 #include "../../resources.hpp"
 #include "../../terrain_filter.hpp"
+#include "../../unit.hpp"
 #include "../../unit_display.hpp"
 #include "../../wml_exception.hpp"
 
@@ -287,7 +290,7 @@ struct protected_item {
 class remove_wrong_targets {
 public:
 	remove_wrong_targets(const readonly_context &context)
-		:avoid_(context.get_avoid()), map_(*resources::game_map)
+		:avoid_(context.get_avoid()), map_(resources::gameboard->map())
 	{
 	}
 
@@ -320,7 +323,7 @@ int ai_default_recruitment_stage::average_resistance_against(const unit_type& a,
 {
 	int weighting_sum = 0, defense = 0;
 	const std::map<t_translation::t_terrain, size_t>& terrain =
-		resources::game_map->get_weighted_terrain_frequencies();
+		resources::gameboard->map().get_weighted_terrain_frequencies();
 
 	for (std::map<t_translation::t_terrain, size_t>::const_iterator j = terrain.begin(),
 	     j_end = terrain.end(); j != j_end; ++j)
@@ -531,7 +534,7 @@ ai_default_recruitment_stage::~ai_default_recruitment_stage()
 void ai_default_recruitment_stage::analyze_potential_recruit_movements()
 {
 	const unit_map &units_ = *resources::units;
-	const gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 
 	if(unit_movement_scores_.empty() == false ||
 			get_recruitment_ignore_bad_movement()) {
@@ -584,7 +587,7 @@ void ai_default_recruitment_stage::analyze_potential_recruit_movements()
 		for(std::vector<target>::const_iterator t = targets.begin(); t != targets.end(); ++t) {
 			LOG_AI << "analyzing '" << *i << "' getting to target...\n";
 			pathfind::plain_route route = a_star_search(start, t->loc, 100.0, &calc,
-					resources::game_map->w(), resources::game_map->h());
+					resources::gameboard->map().w(), resources::gameboard->map().h());
 
 			if (!route.steps.empty()) {
 				LOG_AI << "made it: " << route.move_cost << "\n";
@@ -654,7 +657,8 @@ public:
 		: stage_(s)
 	{
 	}
-	std::pair<std::string, double> operator()(const unit &u) {
+	std::pair<std::string, double> operator()(const UnitPtr u_ptr) {
+		const unit & u = *u_ptr;
 		std::pair<std::string,int> p;
 		p.first = u.id();
 		const unit_type& u_type = u.type();
@@ -760,13 +764,12 @@ bool ai_default_recruitment_stage::analyze_recall_list()
 		return false;
 	}
 
-	const std::vector<unit> &recalls = current_team().recall_list();
-
-	if (recalls.empty()) {
+	if (current_team().recall_list().empty()) {
 		return false;
 	}
 
-	std::transform(recalls.begin(), recalls.end(), std::back_inserter< std::vector <std::pair<std::string,double> > > (recall_list_scores_), unit_combat_score_getter(*this) );
+	std::transform(current_team().recall_list().begin(), current_team().recall_list().end(),
+			std::back_inserter< std::vector <std::pair<std::string,double> > > (recall_list_scores_), unit_combat_score_getter(*this) );
 
 	debug_print_recall_list_scores(recall_list_scores_,"Recall list, after scoring:");
 
@@ -826,16 +829,16 @@ bool ai_default_recruitment_stage::do_play_stage()
 		// We recruit the initial allocation of scouts
 		// based on how many neutral villages there are
 		// that are closer to us than to other keeps.
-		const std::vector<map_location>& villages = resources::game_map->villages();
+		const std::vector<map_location>& villages = resources::gameboard->map().villages();
 		for(std::vector<map_location>::const_iterator v = villages.begin(); v != villages.end(); ++v) {
-			const int owner = village_owner(*v);
+			const int owner = resources::gameboard->village_owner(*v);
 			if(owner == -1) {
 				const size_t distance = distance_between(start_pos,*v);
 
 				bool closest = true;
 				for(std::vector<team>::const_iterator i = resources::teams->begin(); i != resources::teams->end(); ++i) {
 					const int index = i - resources::teams->begin() + 1;
-					const map_location& loc = resources::game_map->starting_position(index);
+					const map_location& loc = resources::gameboard->map().starting_position(index);
 					if(loc != start_pos && distance_between(loc,*v) < distance) {
 						closest = false;
 						break;

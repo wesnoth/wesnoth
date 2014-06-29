@@ -22,7 +22,7 @@
 
 class display;
 class game_display;
-class game_state;
+class saved_game;
 class config;
 class CVideo;
 
@@ -32,7 +32,7 @@ enum io_type_t {
 	IO_CLIENT
 };
 
-LEVEL_RESULT play_game(game_display& disp, game_state& state,
+LEVEL_RESULT play_game(game_display& disp, saved_game& state,
 		const config& game_config,
 		io_type_t io_type=IO_NONE,
 		bool skip_replay = false,
@@ -40,7 +40,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& state,
 		bool blindfold_replay = false,
 		bool is_unit_test = false);
 
-LEVEL_RESULT play_replay(display& disp, game_state& state,
+LEVEL_RESULT play_replay(display& disp, saved_game& state,
 		const config& game_config, CVideo& video,
 		bool is_unit_test = false);
 

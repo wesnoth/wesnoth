@@ -26,6 +26,8 @@
 
 #include <string>
 
+#include <boost/optional.hpp>
+
 #include "config.hpp"
 
 enum LEVEL_RESULT {
@@ -35,6 +37,13 @@ enum LEVEL_RESULT {
 	QUIT,
 	OBSERVER_END,
 	SKIP_TO_LINGER
+};
+
+/**
+ * Struct used to transmit info caught from an end_turn_exception.
+ */
+struct end_turn_struct {
+	unsigned redo;
 };
 
 /**
@@ -53,9 +62,21 @@ public:
 
 	unsigned redo;
 
+	end_turn_struct to_struct() {
+		end_turn_struct ets = {redo};
+		return ets;
+	}
+
 private:
 
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(end_turn_exception)
+};
+
+/**
+ * Struct used to transmit info caught from an end_turn_exception.
+ */
+struct end_level_struct {
+	LEVEL_RESULT result;
 };
 
 /**
@@ -74,10 +95,102 @@ public:
 
 	LEVEL_RESULT result;
 
+	end_level_struct to_struct() {
+		end_level_struct els = {result};
+		return els;
+	}
+
 private:
 
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(end_level_exception)
 };
+
+/**
+ * The two end_*_exceptions are caught and transformed to this signaling object
+ */
+typedef boost::optional<boost::variant<end_turn_struct, end_level_struct> > possible_end_play_signal;
+
+#define HANDLE_END_PLAY_SIGNAL( X )\
+do\
+{\
+	try {\
+		X;\
+	} catch (end_level_exception & e) {\
+		return possible_end_play_signal(e.to_struct());\
+	} catch (end_turn_exception & e) {\
+		return possible_end_play_signal(e.to_struct());\
+	}\
+}\
+while(0)
+
+
+
+#define PROPOGATE_END_PLAY_SIGNAL( X )\
+do\
+{\
+	possible_end_play_signal temp;\
+	temp = X;\
+	if (temp) {\
+		return temp;\
+	}\
+}\
+while(0)
+
+
+
+#define HANDLE_AND_PROPOGATE_END_PLAY_SIGNAL( X )\
+do\
+{\
+	possible_end_play_signal temp;\
+	HANDLE_END_PLAY_SIGNAL( temp = X );\
+	if (temp) {\
+		return temp;\
+	}\
+}\
+while(0)
+
+
+enum END_PLAY_SIGNAL_TYPE {END_TURN, END_LEVEL};
+
+class get_signal_type : public boost::static_visitor<END_PLAY_SIGNAL_TYPE> {
+public:
+	END_PLAY_SIGNAL_TYPE operator()(end_turn_struct &) const
+	{
+		return END_TURN;
+	}
+
+	END_PLAY_SIGNAL_TYPE operator()(end_level_struct& ) const
+	{
+		return END_LEVEL;
+	}
+};
+
+class get_redo : public boost::static_visitor<unsigned> {
+public:
+	unsigned operator()(end_turn_struct & s) const
+	{
+		return s.redo;
+	}
+
+	unsigned operator()(end_level_struct &) const
+	{
+		return 0;
+	}
+};
+
+class get_result : public boost::static_visitor<LEVEL_RESULT> {
+public:
+	LEVEL_RESULT operator()(end_turn_struct & ) const
+	{
+		return NONE;
+	}
+
+	LEVEL_RESULT operator()(end_level_struct & s) const
+	{
+		return s.result;
+	}
+};
+
 
 /**
  * The non-persistent part of end_level_data
@@ -115,6 +228,13 @@ struct end_level_data
 	void write(config& cfg) const;
 
 	void read(const config& cfg);
+
+	config to_config() const
+	{
+		config r;
+		write(r);
+		return r;
+	}
 };
 
 #endif /* ! GAME_END_EXCEPTIONS_HPP_INCLUDED */

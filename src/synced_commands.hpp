@@ -1,4 +1,5 @@
 /*
+   Copyright (C) 2014
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,20 +18,25 @@
 #include <exception>
 #include "config.hpp"
 
+
+#ifndef INCL_BOOST_FUNCTION_HPP_
+#define INCL_BOOST_FUNCTION_HPP_
 #include <boost/function.hpp>
+#endif
+
 class synced_command {
 	public:
 		/*
-			the parameters or error handlers are 
+			the parameters or error handlers are
 			1) the message of the error
 			2) a boolean that indicates whether the error is heavy enough to make proceeding impossible.
 			TODO: remove the second argument because it isn't used.
-		
+
 		*/
 		typedef boost::function2<void, const std::string&, bool> error_handler_function;
 		/*
-			returns: true if the action succeeded correclty, 
-			
+			returns: true if the action succeeded correclty,
+
 		*/
 		typedef bool (*handler)(const config &, bool use_undo, bool show, error_handler_function error_handler);
 		typedef std::map<std::string, handler> map;

@@ -17,7 +17,8 @@
 #ifndef IMAGE_MODIFICATIONS_HPP_INCLUDED
 #define IMAGE_MODIFICATIONS_HPP_INCLUDED
 
-#include "sdl_utils.hpp"
+#include "lua_jailbreak_exception.hpp"
+#include "sdl/utils.hpp"
 #include <queue>
 
 namespace image {
@@ -186,7 +187,7 @@ public:
 	 * Constructor.
 	 * @pre @zoom >= @offset   Otherwise the result will have empty pixels.
      * @pre @offset > 0        Otherwise the procedure will not return.
-	 * 
+	 *
 	 * @param degrees Amount of rotation (in degrees).
 	 *                Positive values are clockwise; negative are counter-clockwise.
 	 * @param zoom    The zoom level to calculate the rotation from.

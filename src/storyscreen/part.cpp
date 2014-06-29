@@ -24,7 +24,7 @@
 #include "storyscreen/part.hpp"
 
 #include "config.hpp"
-#include "gamestatus.hpp"
+#include "game_data.hpp"
 #include "game_events/action_wml.hpp"
 #include "game_events/conditional_wml.hpp"
 #include "image.hpp"
@@ -67,6 +67,29 @@ void floating_image::assign(const floating_image& fi)
 
 floating_image::render_input floating_image::get_render_input(double xscale, double yscale, SDL_Rect& dst_rect) const
 {
+#if SDL_VERSION_ATLEAST(2,0,0)
+	render_input ri = {
+		{0,0,0,0},
+		file_.empty() ? sdl::ttexture() : image::get_texture(file_)
+	};
+
+	if(!ri.image.null()) {
+		if(autoscaled_) {
+			ri.image.set_scale(xscale, yscale);
+		}
+
+		ri.rect.x = static_cast<int>(x_*xscale) + dst_rect.x;
+		ri.rect.y = static_cast<int>(y_*yscale) + dst_rect.y;
+		ri.rect.w = ri.image.width();
+		ri.rect.h = ri.image.height();
+
+		if(centered_) {
+			ri.rect.x -= ri.rect.w / 2;
+			ri.rect.y -= ri.rect.h / 2;
+		}
+	}
+	return ri;
+#else
 	render_input ri = {
 		{0,0,0,0},
 		file_.empty() ? NULL : image::get_image(file_)
@@ -92,6 +115,7 @@ floating_image::render_input floating_image::get_render_input(double xscale, dou
 		}
 	}
 	return ri;
+#endif
 }
 
 background_layer::background_layer()
@@ -226,7 +250,7 @@ void part::resolve_wml(const vconfig &cfg)
 	}
 	background_layers_.push_back(bl);
 
-	
+
 	if(cfg.has_attribute("show_title")) {
 		show_title_ = cfg["show_title"].to_bool();
 	}

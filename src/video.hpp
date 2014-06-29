@@ -20,6 +20,10 @@
 
 #include <boost/utility.hpp>
 
+#if SDL_VERSION_ATLEAST(2,0,0)
+#include "sdl/window.hpp"
+#endif
+
 struct surface;
 
 //possible flags when setting video modes
@@ -143,6 +147,8 @@ class CVideo : private boost::noncopyable {
 	 * @param icon                The new icon for the window.
 	 */
 	static void set_window_icon(surface& icon);
+
+	static sdl::twindow *get_window();
 #endif
 
 	/**

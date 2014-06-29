@@ -23,6 +23,9 @@
 #include "gettext.hpp"
 
 #include "map_location.hpp"
+#include "sdl/rect.hpp"
+#include "unit.hpp"
+#include "unit_map.hpp"
 
 namespace editor {
 

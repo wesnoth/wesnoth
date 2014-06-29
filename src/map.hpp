@@ -243,6 +243,11 @@ public:
 	 */
     t_translation::t_terrain merge_terrains(const t_translation::t_terrain & old_t, const t_translation::t_terrain & new_t, const tmerge_mode mode, bool replace_if_failed = false);
 
+	/** Parses ranges of locations into a vector of locations, using this map's dimensions as bounds. */
+	std::vector<map_location> parse_location_range(const std::string& xvals,
+	const std::string &yvals, bool with_border = false) const;
+
+
 protected:
 	t_translation::t_map tiles_;
 

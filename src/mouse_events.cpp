@@ -13,38 +13,62 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
 
 #include "mouse_events.hpp"
+#include "global.hpp"
 
-#include "actions/move.hpp"
-#include "actions/undo.hpp"
+#include "actions/attack.hpp"           // for battle_context, etc
+#include "actions/move.hpp"           // for move_and_record
+#include "actions/undo.hpp"             // for undo_list
 #include "attack_prediction_display.hpp"
-#include "dialogs.hpp"
-#include "game_end_exceptions.hpp"
-#include "game_events/pump.hpp"
-#include "gettext.hpp"
-#include "gui/dialogs/unit_attack.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/window.hpp"
-#include "language.hpp"
-#include "log.hpp"
-#include "map.hpp"
-#include "marked-up_text.hpp"
-#include "menu_events.hpp"
-#include "pathfind/teleport.hpp"
-#include "play_controller.hpp"
-#include "sound.hpp"
-#include "replay.hpp"
+#include "config.hpp"                   // for config
+#include "cursor.hpp"                   // for set, CURSOR_TYPE::NORMAL, etc
+#include "dialogs.hpp"                  // for units_list_preview_pane, etc
+#include "game_board.hpp"               // for game_board, etc
+#include "game_config.hpp"              // for red_to_green
+#include "game_events/pump.hpp"		// for fire
+#include "gettext.hpp"                  // for _
+#include "gui/dialogs/transient_message.hpp"  // for show_transient_message
+#include "gui/dialogs/unit_attack.hpp"  // for tunit_attack
+#include "gui/widgets/settings.hpp"     // for new_widgets
+#include "gui/widgets/window.hpp"     // for enum
+#include "language.hpp"                 // for string_table, symbol_table
+#include "log.hpp"                      // for LOG_STREAM, logger, etc
+#include "map.hpp"                      // for gamemap
+#include "marked-up_text.hpp"           // for color2markup, BOLD_TEXT, etc
+#include "pathfind/teleport.hpp"        // for get_teleport_locations, etc
+#include "play_controller.hpp"		// for playing_side, set_button_state
+#include "resources.hpp"                // for whiteboard, gameboard, etc
 #include "replay_helper.hpp"
-#include "resources.hpp"
+#include "sdl/utils.hpp"                // for int_to_color
+#include "serialization/string_utils.hpp"  // for unicode_em_dash
+#include "show_dialog.hpp"              // for dialog_button_info, etc
+#include "sound.hpp"
 #include "synced_context.hpp"
-#include "wml_separators.hpp"
-#include "whiteboard/manager.hpp"
+#include "team.hpp"                     // for team
+#include "tod_manager.hpp"
+#include "tstring.hpp"                  // for t_string
+#include "unit.hpp"                     // for unit, intrusive_ptr_add_ref
+#include "unit_animation_component.hpp"
+#include "unit_ptr.hpp"                 // for UnitConstPtr
+#include "unit_types.hpp"    // for attack_type
+#include "whiteboard/manager.hpp"       // for manager, etc
+#include "whiteboard/typedefs.hpp"      // for whiteboard_lock
+#include "wml_separators.hpp"           // for COLUMN_SEPARATOR, etc
 
-#include <boost/bind.hpp>
-#include <boost/foreach.hpp>
+#include <boost/foreach.hpp>            // for auto_any_base, etc
+#include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
+#include <boost/shared_ptr.hpp>         // for shared_ptr
+#include <cassert>                     // for assert
+#include <cstddef>                     // for NULL
+#include <new>                          // for bad_alloc
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for string, operator<<, etc
+#include "SDL_mouse.h"                  // for SDL_GetMouseState
+#include "SDL_video.h"                  // for SDL_Color
+
+class end_turn_exception;
+namespace gui { class slider; }
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -104,7 +128,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 
 	if(new_hex != last_hex_) {
 		update = true;
-		if ( resources::game_map->on_board(last_hex_) ) {
+		if ( resources::gameboard->map().on_board(last_hex_) ) {
 			// we store the previous hexes used to propose attack direction
 			previous_hex_ = last_hex_;
 			// the hex of the selected unit is also "free"
@@ -140,7 +164,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 
 	// reset current_route_ and current_paths if not valid anymore
 	// we do it before cursor selection, because it uses current_paths_
-	if( !resources::game_map->on_board(new_hex) ) {
+	if( !resources::gameboard->map().on_board(new_hex) ) {
 		current_route_.steps.clear();
 		gui().set_route(NULL);
 		resources::whiteboard->erase_temp_move();
@@ -213,7 +237,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 		gui().clear_attack_indicator();
 	}
 
-	unit* un; //will later point to unit at mouseover_hex_
+	UnitPtr un; //will later point to unit at mouseover_hex_
 
 	// the destination is the pointed hex or the adjacent hex
 	// used to attack it
@@ -269,9 +293,9 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 
 		unit_map::iterator iter = mouseover_unit;
 		if (iter != board_.units_.end())
-			un = &*iter;
+			un = iter.get_shared_ptr();
 		else
-			un = NULL;
+			un.reset();
 	} //end planned unit map scope
 
 	if ( (!selected_hex_.valid()) && un && current_paths_.destinations.empty() &&
@@ -284,7 +308,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 				pathfind::marked_route route;
 				{ // start planned unit map scope
 					wb::future_map_if_active raii;
-					route = get_route(un, go_to, current_team());
+					route = get_route(un.get(), go_to, current_team());
 				} // end planned unit map scope
 				gui().set_route(&route);
 			}
@@ -447,7 +471,7 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 bool mouse_handler::right_click_show_menu(int x, int y, const bool /*browse*/)
 {
 	return ( selected_hex_.valid() ? false :
-			point_in_rect(x, y, gui().map_area()) );
+			sdl::point_in_rect(x, y, gui().map_area()) );
 }
 
 void mouse_handler::left_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)
@@ -492,8 +516,11 @@ void mouse_handler::mouse_wheel_right(int /*x*/, int /*y*/, const bool /*browse*
 
 void mouse_handler::select_or_action(bool browse)
 {
-	if (!resources::game_map->on_board(last_hex_))
+	if (!resources::gameboard->map().on_board(last_hex_))
 		return;
+
+	// Load whiteboard partial moves
+	wb::future_map_if_active planned_unit_map;
 
 	unit_map::iterator clicked_u = find_unit(last_hex_);
 	unit_map::iterator selected_u = find_unit(selected_hex_);
@@ -523,7 +550,7 @@ void mouse_handler::move_action(bool browse)
 	// TODO
 	//	// Clicks on border hexes mean to deselect.
 	//	// (Check this before doing processing that might not be needed.)
-	//	if ( !resources::game_map->on_board(hex) ) {
+	//	if ( !resources::gameboard->map().on_board(hex) ) {
 	//		deselect_hex();
 	//		return false;
 	//	}
@@ -570,7 +597,7 @@ void mouse_handler::move_action(bool browse)
 						// clear current unit selection so that any other unit selected
 						// triggers a new selection
 						selected_hex_ = map_location();
-						
+
 						attack_enemy(u->get_location(), clicked_u->get_location(), choice);
 					}
 				}
@@ -613,19 +640,19 @@ void mouse_handler::move_action(bool browse)
 					// clear current unit selection so that any other unit selected
 					// triggers a new selection
 					selected_hex_ = map_location();
-					
+
 					if (not_interrupted)
 						attack_enemy(attack_from, hex, choice); // Fight !!
-						
+
 					//TODO: Maybe store the attack choice so "press t to continue"
 					//      can also continue the attack?
-					
+
 					if (alt_unit_selected && !selected_hex_.valid()) {
 						//reselect other unit if selected during movement animation
 						select_hex(src, browse);
 					}
 				}
-				
+
 				return;
 			}
 		}
@@ -725,7 +752,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 			if (!(browse || resources::whiteboard->unit_has_actions(&*u)))
 			{
 				sound::play_UI_sound("select-unit.wav");
-				u->set_selecting();
+				u->anim_comp().set_selecting();
 				if(fire_event) {
 					// ensure unit map is back to normal while event is fired
 					wb::real_map srum;
@@ -843,7 +870,7 @@ size_t mouse_handler::move_unit_along_route(const std::vector<map_location> & st
 
 	//If this is a leader on a keep, ask permission to the whiteboard to move it
 	//since otherwise it may cause planned recruits to be erased.
-	if ( resources::game_map->is_keep(steps.front()) )
+	if ( resources::gameboard->map().is_keep(steps.front()) )
 	{
 		unit_map::const_iterator const u = board_.units().find(steps.front());
 
@@ -859,7 +886,7 @@ size_t mouse_handler::move_unit_along_route(const std::vector<map_location> & st
 
 	size_t moves = 0;
 	try {
-		
+
 		LOG_NG << "move unit along route  from " << steps.front() << " to " << steps.back() << "\n";
 		moves = actions::move_unit_and_record(steps, resources::undo_stack,
 		                           false, true, &interrupted);
@@ -1033,8 +1060,8 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 		}
 	}
 	if (items.empty()) {
-		dialogs::units_list_preview_pane attacker_preview(&*attacker, dialogs::unit_preview_pane::SHOW_BASIC, true);
-		dialogs::units_list_preview_pane defender_preview(&*defender, dialogs::unit_preview_pane::SHOW_BASIC, false);
+		dialogs::units_list_preview_pane attacker_preview(attacker.get_shared_ptr(), dialogs::unit_preview_pane::SHOW_BASIC, true);
+		dialogs::units_list_preview_pane defender_preview(defender.get_shared_ptr(), dialogs::unit_preview_pane::SHOW_BASIC, false);
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&attacker_preview);
 		preview_panes.push_back(&defender_preview);
@@ -1051,8 +1078,8 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 		std::vector<gui::dialog_button_info> buttons;
 		buttons.push_back(gui::dialog_button_info(&ap_displayer, _("Damage Calculations")));
 
-		dialogs::units_list_preview_pane attacker_preview(&*attacker, dialogs::unit_preview_pane::SHOW_BASIC, true);
-		dialogs::units_list_preview_pane defender_preview(&*defender, dialogs::unit_preview_pane::SHOW_BASIC, false);
+		dialogs::units_list_preview_pane attacker_preview(attacker.get_shared_ptr(), dialogs::unit_preview_pane::SHOW_BASIC, true);
+		dialogs::units_list_preview_pane defender_preview(defender.get_shared_ptr(), dialogs::unit_preview_pane::SHOW_BASIC, false);
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&attacker_preview);
 		preview_panes.push_back(&defender_preview);
@@ -1067,7 +1094,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 	BOOST_FOREACH(int i, disable_items_skip) {
 		if (i<=res) res++;
 	}
-	
+
 	return res;
 }
 
@@ -1177,7 +1204,7 @@ void mouse_handler::show_attack_options(const unit_map::const_iterator &u)
 		// (Visible to current team, not necessarily the unit's team.)
 		if (!board_.map().on_board(loc)) continue;
 		unit_map::const_iterator i = board_.units().find(loc);
-		if ( i == board_.units().end()  ||  !i->is_visible_to_team(cur_team) )
+		if ( i == board_.units().end()  ||  !i->is_visible_to_team(cur_team, board_.map(), false) )
 			continue;
 		const unit &target = *i;
 		// Can only attack non-petrified enemies.
@@ -1192,7 +1219,7 @@ bool mouse_handler::unit_in_cycle(unit_map::const_iterator it)
 		return false;
 
 	if (it->side() != side_num_ || it->user_end_turn()
-	    || gui().fogged(it->get_location()) || !actions::unit_can_move(*it))
+	    || gui().fogged(it->get_location()) || !board_.unit_can_move(*it))
 		return false;
 
 	if (current_team().is_enemy(int(gui().viewing_team()+1)) &&
@@ -1246,15 +1273,15 @@ void mouse_handler::set_current_paths(const pathfind::paths & new_paths) {
 }
 
 team & mouse_handler::viewing_team() {
-	return board_.teams_[gui().viewing_team()]; 
+	return board_.teams_[gui().viewing_team()];
 }
 
-const team& mouse_handler::viewing_team() const { 
-	return board_.teams()[gui().viewing_team()]; 
+const team& mouse_handler::viewing_team() const {
+	return board_.teams()[gui().viewing_team()];
 }
 
-team & mouse_handler::current_team() { 
-	return board_.teams_[side_num_ - 1]; 
+team & mouse_handler::current_team() {
+	return board_.teams_[side_num_ - 1];
 }
 
 mouse_handler *mouse_handler::singleton_ = NULL;

@@ -18,7 +18,8 @@
 #define CLIPBOARD_HPP_INCLUDED
 
 #include <string>
-#include "SDL.h"
+
+union SDL_Event;
 
 /**
  * Copies text to the clipboard.

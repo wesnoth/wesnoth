@@ -19,19 +19,23 @@
 
 class CVideo;
 
-#include "sdl_utils.hpp"
+#include "sdl/utils.hpp"
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+#include "sdl/texture.hpp"
+#endif
 
 class loadscreen {
-	public:
-		// Preferred constructor
-		explicit loadscreen(CVideo &screen, const int percent = 0);
-		// Keep default copy constructor
-		// Keep default copy assignment
-		// Destructor, dumps the counter values to stderr
-		~loadscreen()
-		{
-			dump_counters();
-		}
+public:
+	// Preferred constructor
+	explicit loadscreen(CVideo &screen, const int percent = 0);
+	// Keep default copy constructor
+	// Keep default copy assignment
+	// Destructor, dumps the counter values to stderr
+	~loadscreen()
+	{
+		dump_counters();
+	}
 
 	/**
 	 * Starts the stage with identifier @a id.
@@ -43,43 +47,47 @@ class loadscreen {
 	 */
 	static void increment_progress();
 
-		/** Function to draw a blank screen. */
-		void clear_screen();
+	/** Function to draw a blank screen. */
+	void clear_screen();
 
-		/**
-		 * A global loadscreen instance that can be used to avoid
-		 * passing it on to functions that are many levels deep.
-		 */
-		static loadscreen *global_loadscreen;
+	/**
+	 * A global loadscreen instance that can be used to avoid
+	 * passing it on to functions that are many levels deep.
+	 */
+	static loadscreen *global_loadscreen;
 
-		struct global_loadscreen_manager {
-			explicit global_loadscreen_manager(CVideo& screen);
-			~global_loadscreen_manager();
-			static global_loadscreen_manager* get()
-			{ return manager; }
-			void reset();
-private:
-			static global_loadscreen_manager* manager;
-			bool owns;
-		};
+	struct global_loadscreen_manager {
+		explicit global_loadscreen_manager(CVideo& screen);
+		~global_loadscreen_manager();
+		static global_loadscreen_manager* get()
+		{ return manager; }
+		void reset();
+	private:
+		static global_loadscreen_manager* manager;
+		bool owns;
+	};
 private:
 	/**
 	 * Displays a load progress bar.
 	 */
 	void draw_screen(const std::string &text);
 
-		// Prohibit default constructor
-		loadscreen();
+	// Prohibit default constructor
+	loadscreen();
 
-		// Data members
-		CVideo &screen_;
-		SDL_Rect textarea_;
-		surface logo_surface_;
-		bool logo_drawn_;
-		int pby_offset_;
-		int prcnt_;
+	// Data members
+	CVideo &screen_;
+	SDL_Rect textarea_;
+#if SDL_VERSION_ATLEAST(2,0,0)
+	sdl::ttexture logo_texture_;
+#else
+	surface logo_surface_;
+#endif
+	bool logo_drawn_;
+	int pby_offset_;
+	int prcnt_;
 
-		void dump_counters() const;
+	void dump_counters() const;
 };
 
 #endif

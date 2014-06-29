@@ -16,6 +16,9 @@
 
 #include "gui/dialogs/mp_create_game.hpp"
 
+#include <boost/multi_index_container.hpp>
+// ^ This is apparently unnecessary, but if removed it doesn't compile...
+
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/field.hpp"
@@ -179,16 +182,16 @@ void tmp_create_game::update_map_settings(twindow& window)
 					window, (*scenario_)["random_start_time"].to_bool(true));
 
 			turns_->set_widget_value(
-					window, ::settings::get_turns((*scenario_)["turns"]));
+					window, ::settings::get_turns((*scenario_)["turns"].str()));
 			gold_->set_widget_value(
-					window, ::settings::get_village_gold(side["village_gold"]));
+					window, ::settings::get_village_gold(side["village_gold"].str()));
 			support_->set_widget_value(
 					window,
-					::settings::get_village_support(side["village_support"]));
+					::settings::get_village_support(side["village_support"].str()));
 			experience_->set_widget_value(
 					window,
 					::settings::get_xp_modifier(
-							(*scenario_)["experience_modifier"]));
+							(*scenario_)["experience_modifier"].str()));
 		}
 		// No scenario selected just leave the state unchanged for now.
 

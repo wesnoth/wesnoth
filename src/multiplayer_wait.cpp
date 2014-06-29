@@ -24,8 +24,12 @@
 #include "marked-up_text.hpp"
 #include "mp_game_utils.hpp"
 #include "multiplayer_wait.hpp"
+#include "notifications/notifications.hpp"
+#include "resources.hpp"
 #include "statistics.hpp"
+#include "saved_game.hpp"
 #include "sound.hpp"
+#include "unit_types.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
@@ -182,7 +186,7 @@ handler_vector wait::leader_preview_pane::handler_members() {
 }
 
 
-wait::wait(game_display& disp, const config& cfg, game_state& state,
+wait::wait(game_display& disp, const config& cfg, saved_game& state,
 	mp::chat& c, config& gamelist, const bool first_scenario) :
 	ui(disp, _("Game Lobby"), cfg, c, gamelist),
 	cancel_button_(disp.video(), first_scenario ? _("Cancel") : _("Quit")),
@@ -199,13 +203,15 @@ wait::wait(game_display& disp, const config& cfg, game_state& state,
 
 wait::~wait()
 {
+	try {
 	if (get_result() == QUIT) {
-		state_ = game_state();
+		state_ = saved_game();
 		state_.classification().campaign_type = game_classification::MULTIPLAYER;
 
 		resources::config_manager->
 			load_game_config_for_game(state_.classification());
 	}
+	} catch (...) {}
 }
 
 void wait::process_event()
@@ -220,26 +226,52 @@ void wait::join_game(bool observe)
 	if (!download_res) {
 		set_result(QUIT);
 		return;
-	} else if (!level_["allow_new_game"].to_bool(true)) {
+	} else if (!get_scenario()["allow_new_game"].to_bool(true) && !level_.child_or_empty("multiplayer")["savegame"].to_bool(false)) {
 		set_result(PLAY);
 		return;
 	}
 
 	if (first_scenario_) {
-		state_ = game_state();
+		state_ = saved_game();
 		state_.classification().campaign_type = game_classification::MULTIPLAYER;
 
 		const config* campaign = &resources::config_manager->
 			game_config().find_child("campaign", "id",
-				level_.child(lexical_cast<std::string>(game_classification::MULTIPLAYER))["mp_campaign"]);
+				level_.child("multiplayer")["mp_campaign"]);
+
+		const config* scenario = &resources::config_manager->
+			game_config().find_child("multiplayer", "id",
+				level_.child(lexical_cast<std::string>(game_classification::MULTIPLAYER))["id"]);
+
+		const config* era = &resources::config_manager->
+			game_config().find_child("era", "id", level_.child("era")["id"]);
+
 		if (*campaign) {
 			state_.classification().difficulty =
-				level_.child(lexical_cast<std::string>(game_classification::MULTIPLAYER))["difficulty_define"].str();
+				level_.child("multiplayer")["difficulty_define"].str();
 			state_.classification().campaign_define =
 				(*campaign)["define"].str();
 			state_.classification().campaign_xtra_defines =
 				utils::split((*campaign)["extra_defines"]);
 		}
+
+		if (*scenario)
+			state_.classification().scenario_define =
+				(*scenario)["define"].str();
+
+		if (*era)
+			state_.classification().era_define =
+				(*era)["define"].str();
+
+		BOOST_FOREACH(const config& mod, level_.child_range("modification")) {
+			const config* modification = &resources::config_manager->
+				game_config().find_child("modification", "id", mod["id"]);
+			if (*modification) {
+				state_.classification().mod_defines.push_back(
+					(*modification)["define"].str());
+			}
+		}
+
 
 		// Make sure that we have the same config as host, if possible.
 		resources::config_manager->
@@ -247,7 +279,7 @@ void wait::join_game(bool observe)
 	}
 
 	// Add the map name to the title.
-	append_to_title(": " + level_["name"].t_str());
+	append_to_title(": " + get_scenario()["name"].t_str());
 
 	if (!observe) {
 		//search for an appropriate vacant slot. If a description is set
@@ -256,7 +288,7 @@ void wait::join_game(bool observe)
 		//available side.
 		const config *side_choice = NULL;
 		int side_num = -1, nb_sides = 0;
-		BOOST_FOREACH(const config &sd, level_.child_range("side"))
+		BOOST_FOREACH(const config &sd, get_scenario().child_range("side"))
 		{
 			if (sd["controller"] == "reserved" && sd["current_player"] == preferences::login())
 			{
@@ -311,11 +343,13 @@ void wait::join_game(bool observe)
 			}
 
 			const bool lock_settings =
-				level_["force_lock_settings"].to_bool();
+				get_scenario()["force_lock_settings"].to_bool();
+			const bool use_map_settings =
+				level_.child("multiplayer")["mp_use_map_settings"].to_bool();
 			const bool saved_game =
 				level_.child("multiplayer")["savegame"].to_bool();
 
-			flg_manager flg(era_factions, *side_choice, lock_settings,
+			flg_manager flg(era_factions, *side_choice, lock_settings, use_map_settings,
 				saved_game, color);
 
 			std::vector<std::string> choices;
@@ -385,7 +419,7 @@ void wait::start_game()
 		level_to_gamestate(level_, state_);
 	} else {
 
-		state_ = game_state(level_);
+		state_ = saved_game(level_);
 
 		// When we observe and don't have the addon installed we still need
 		// the old way, no clue why however. Code is a copy paste of
@@ -399,7 +433,7 @@ void wait::start_game()
 
 	LOG_NW << "starting game\n";
 	sound::play_UI_sound(game_config::sounds::mp_game_begins);
-	game_display::get_singleton()->send_notification(_("Wesnoth"), _ ("Game has begun!"));
+	notifications::send_notification(_("Wesnoth"), _ ("Game has begun!"));
 }
 
 void wait::layout_children(const SDL_Rect& rect)
@@ -430,7 +464,7 @@ void wait::process_network_data(const config& data, const network::connection so
 {
 	ui::process_network_data(data, sock);
 
-	if(data["message"] != "") {
+	if(!data["message"].empty()) {
 		gui2::show_transient_message(disp().video()
 				, _("Response")
 				, data["message"]);
@@ -458,17 +492,17 @@ void wait::process_network_data(const config& data, const network::connection so
 		LOG_RG << data.debug() << std::endl;
 		//const int side = lexical_cast<int>(change["side"]);
 
-		if (config & sidetochange = level_.find_child("side", "side", change["side"])) {
+		if (config & sidetochange = get_scenario().find_child("side", "side", change["side"])) {
 			LOG_RG << "found side : " << sidetochange.debug() << std::endl;
 			sidetochange.merge_with(change);
 			LOG_RG << "changed to : " << sidetochange.debug() << std::endl;
 		} else {
 			LOG_RG << "change_controller didn't find any side!" << std::endl;
 		}
-	} else if(data.child("side") || data.child("next_scenario")) {
+	} else if(data.has_child("scenario") || data.has_child("snapshot") || data.child("next_scenario")) {
 		level_ = first_scenario_ ? data : data.child("next_scenario");
 		LOG_NW << "got some sides. Current number of sides = "
-			<< level_.child_count("side") << ','
+			<< get_scenario().child_count("side") << ','
 			<< data.child_count("side") << '\n';
 		generate_menu();
 	}
@@ -482,7 +516,7 @@ void wait::generate_menu()
 	std::vector<std::string> details;
 	std::vector<std::string> playerlist;
 
-	BOOST_FOREACH(const config &sd, level_.child_range("side"))
+	BOOST_FOREACH(const config &sd, get_scenario().child_range("side"))
 	{
 		if (!sd["allow_player"].to_bool(true)) {
 			continue;
@@ -596,7 +630,7 @@ void wait::generate_menu()
 bool wait::has_level_data() const
 {
 	if (first_scenario_) {
-		return level_.has_attribute("version") && level_.has_child("side");
+		return level_.has_attribute("version") && get_scenario().has_child("side");
 	} else {
 		return level_.has_child("next_scenario");
 	}
@@ -628,6 +662,27 @@ bool wait::download_level_data()
 	}
 
 	return true;
+}
+
+config& wait::get_scenario()
+{
+
+	if(config& scenario = level_.child("scenario"))
+		return scenario;
+	else if(config& snapshot = level_.child("snapshot"))
+		return snapshot;
+	else 
+		return level_;
+}
+
+const config& wait::get_scenario() const 
+{
+	if(const config& scenario = level_.child("scenario"))
+		return scenario;
+	else if(const config& snapshot = level_.child("snapshot"))
+		return snapshot;
+	else 
+		return level_;
 }
 
 } // namespace mp

@@ -38,13 +38,17 @@
 #include "menu_events.hpp"
 #include "mouse_handler_base.hpp"
 #include "minimap.hpp"
+#include "recall_list_manager.hpp"
 #include "replay.hpp"
 #include "replay_helper.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
+#include "save_index.hpp"
 #include "strftime.hpp"
 #include "synced_context.hpp"
 #include "thread.hpp"
+#include "unit.hpp"
+#include "unit_animation.hpp"
 #include "unit_helper.hpp"
 #include "unit_types.hpp"
 #include "wml_separators.hpp"
@@ -84,20 +88,21 @@ namespace
 class delete_recall_unit : public gui::dialog_button_action
 {
 public:
-	delete_recall_unit(display& disp, gui::filter_textbox& filter, const std::vector<const unit*>& units) : disp_(disp), filter_(filter), units_(units) {}
+	delete_recall_unit(display& disp, gui::filter_textbox& filter, const std::vector<UnitConstPtr >& units) : disp_(disp), filter_(filter), units_(units) {}
 private:
 	gui::dialog_button_action::RESULT button_pressed(int menu_selection);
 
 	display& disp_;
 	gui::filter_textbox& filter_;
-	const std::vector<const unit*>& units_;
+	const std::vector<UnitConstPtr >& units_;
 };
 
 gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_selection)
 {
 	const size_t index = size_t(filter_.get_index(menu_selection));
 	if(index < units_.size()) {
-		const unit &u = *(units_[index]);
+		const UnitConstPtr & u_ptr = units_[index];
+		const unit & u = *u_ptr;
 
 		//If the unit is of level > 1, or is close to advancing,
 		//we warn the player about it
@@ -126,14 +131,11 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		// Remove the item from filter_textbox memory
 		filter_.delete_item(menu_selection);
 		//add dismissal to the undo stack
-		resources::undo_stack->add_dismissal(u);
+		resources::undo_stack->add_dismissal(u_ptr);
 
 		// Find the unit in the recall list.
-		std::vector<unit>& recall_list = (*resources::teams)[u.side() -1].recall_list();
-		assert(!recall_list.empty());
-		std::vector<unit>::iterator dismissed_unit =
-				find_if_matches_id(recall_list, u.id());
-		assert(dismissed_unit != recall_list.end());
+		UnitPtr dismissed_unit = (*resources::teams)[u.side() -1].recall_list().find_if_matches_id(u.id());
+		assert(dismissed_unit);
 
 		// Record the dismissal, then delete the unit.
 		synced_context::run_in_synced_context("disband", replay_helper::get_disband(dismissed_unit->id()));
@@ -440,9 +442,9 @@ int recruit_dialog(display& disp, std::vector< const unit_type* >& units, const 
 
 
 #ifdef LOW_MEM
-int recall_dialog(display& disp, std::vector< const unit* >& units, int /*side*/, const std::string& title_suffix, const int team_recall_cost)
+int recall_dialog(display& disp, std::vector< UnitConstPtr >& units, int /*side*/, const std::string& title_suffix, const int team_recall_cost)
 #else
-int recall_dialog(display& disp, std::vector< const unit* >& units, int side, const std::string& title_suffix, const int team_recall_cost)
+int recall_dialog(display& disp, std::vector< UnitConstPtr >& units, int side, const std::string& title_suffix, const int team_recall_cost)
 #endif
 {
 	std::vector<std::string> options, options_to_filter;
@@ -461,7 +463,7 @@ int recall_dialog(display& disp, std::vector< const unit* >& units, int side, co
 	options.push_back(heading.str());
 	options_to_filter.push_back(options.back());
 
-	BOOST_FOREACH(const unit* u, units)
+	BOOST_FOREACH(const UnitConstPtr & u, units)
 	{
 		std::stringstream option, option_to_filter;
 		std::string name = u->name();
@@ -531,7 +533,7 @@ int recall_dialog(display& disp, std::vector< const unit* >& units, int side, co
 		options.push_back(option.str());
 		options_to_filter.push_back(option_to_filter.str());
 	}
-	
+
 	gui::dialog rmenu(disp, _("Recall") + title_suffix,
 		_("Select unit:") + std::string("\n"),
 		gui::OK_CANCEL, gui::dialog::default_style);
@@ -842,7 +844,7 @@ void save_preview_pane::draw_contents()
 				case game_classification::TEST:
 					str << _("Test scenario");
 					break;
-			}			
+			}
 		} catch (bad_lexical_cast &) {
 			str << campaign_type;
 		}
@@ -1206,13 +1208,13 @@ void unit_preview_pane::draw_contents()
 	}
 }
 
-units_list_preview_pane::units_list_preview_pane(const unit *u, TYPE type, bool on_left_side) :
+units_list_preview_pane::units_list_preview_pane(UnitConstPtr u, TYPE type, bool on_left_side) :
 	unit_preview_pane(NULL, type, on_left_side),
 	units_(1, u)
 {
 }
 
-units_list_preview_pane::units_list_preview_pane(const std::vector<const unit *> &units,
+units_list_preview_pane::units_list_preview_pane(const std::vector<UnitConstPtr > &units,
 		const gui::filter_textbox* filter, TYPE type, bool on_left_side) :
 	unit_preview_pane(filter, type, on_left_side),
 	units_(units)
@@ -1225,7 +1227,7 @@ units_list_preview_pane::units_list_preview_pane(const std::vector<unit> &units,
 	units_(units.size())
 {
 	for (unsigned i = 0; i < units.size(); ++i)
-		units_[i] = &units[i];
+		units_[i] = UnitConstPtr (new unit(units[i]));
 }
 
 size_t units_list_preview_pane::size() const
@@ -1238,7 +1240,21 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 	const unit &u = *units_[index_];
 	details det;
 
-	det.image = u.still_image();
+	/** Get an SDL surface, ready for display for place where we need a still-image of the unit. */
+	image::locator image_loc;
+
+#ifdef LOW_MEM
+	image_loc = image::locator(u.absolute_image());
+#else
+	std::string mods=u.image_mods();
+	if(!mods.empty()){
+		image_loc = image::locator(u.absolute_image(),mods);
+	} else {
+		image_loc = image::locator(u.absolute_image());
+	}
+#endif
+	det.image = image::get_image(image_loc, image::UNSCALED);
+	/***/
 
 	det.name = u.name();
 	det.type_name = u.type_name();

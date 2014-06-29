@@ -21,9 +21,11 @@
 #include "gettext.hpp"
 #include "map_exception.hpp"
 #include "map_label.hpp"
+#include "resources.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "team.hpp"
+#include "unit.hpp"
 #include "wml_exception.hpp"
 
 
@@ -63,7 +65,8 @@ map_context::map_context(const editor_map& map, const display& disp, bool pure_m
 	, units_()
 	, teams_()
 	, tod_manager_(new tod_manager(schedule))
-	, state_()
+	, mp_settings_()
+	, game_classification_()
 	, music_tracks_()
 {
 }
@@ -94,7 +97,8 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	, units_()
 	, teams_()
 	, tod_manager_(new tod_manager(game_config.find_child("editor_times", "id", "default")))
-	, state_()
+	, mp_settings_()
+	, game_classification_()
 	, music_tracks_()
 {
 	/*
@@ -279,7 +283,7 @@ void map_context::load_scenario(const config& game_config)
 
 	tod_manager_.reset(new tod_manager(scenario));
 	BOOST_FOREACH(const config &time_area, scenario.child_range("time_area")) {
-		tod_manager_->add_time_area(time_area);
+		tod_manager_->add_time_area(map_,time_area);
 	}
 
 	BOOST_FOREACH(const config& item, scenario.child_range("item")) {
@@ -487,6 +491,7 @@ config map_context::to_config()
 				u["id"] = i->id();
 				u["name"] = i->name();
 				u["extra_recruit"] = utils::join(i->recruits());
+				u["facing"] = map_location::write_direction(i->facing());
 			}
 		}
 	}

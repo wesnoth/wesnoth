@@ -42,6 +42,7 @@
 #include "../formula_string_utils.hpp"
 #include "../team.hpp"
 #include "../unit.hpp"
+#include "../unit_animation_component.hpp"
 #include "../whiteboard/manager.hpp"
 
 #include <boost/foreach.hpp>
@@ -494,7 +495,7 @@ namespace { // Private helpers for move_unit()
 		moves_left_.pop_front();
 
 		// Invalidate before moving so we invalidate neighbor hexes if needed.
-		move_it_->invalidate(*move_loc_);
+		move_it_->anim_comp().invalidate(disp);
 
 		// Attempt actually moving.
 		// (Fails if *step_to is occupied).
@@ -505,14 +506,14 @@ namespace { // Private helpers for move_unit()
 			// Update the moving unit.
 			move_it_ = move_result.first;
 			move_it_->set_facing(step_from->get_relative_dir(*step_to));
-			move_it_->set_standing(false);
+			move_it_->anim_comp().set_standing(false);
 			disp.invalidate_unit_after_move(*move_loc_, *step_to);
 			disp.invalidate(*step_to);
 			move_loc_ = step_to;
 
 			// Show this move.
 			const size_t current_tracking = game_events::wml_tracking();
-			animator.proceed_to(*move_it_, step_to - begin_,
+			animator.proceed_to(move_it_.get_shared_ptr(), step_to - begin_,
 			                    current_tracking != do_move_track_, false);
 			do_move_track_ = current_tracking;
 			disp.redraw_minimap();
@@ -564,7 +565,7 @@ namespace { // Private helpers for move_unit()
 			return false;
 
 		// We can reasonably stop if the hex is not an unowned village.
-		return !resources::game_map->is_village(hex) ||
+		return !resources::gameboard->map().is_village(hex) ||
 		       current_team_->owns_village(hex);
 	}
 
@@ -722,7 +723,7 @@ namespace { // Private helpers for move_unit()
 	unit_mover::route_iterator unit_mover::plot_turn(const route_iterator & start,
 	                                                 const route_iterator & stop)
 	{
-		const gamemap &map = *resources::game_map;
+		const gamemap &map = resources::gameboard->map();
 
 		// Handle null routes.
 		if ( start == stop )
@@ -768,7 +769,7 @@ namespace { // Private helpers for move_unit()
 		if ( !is_replay_ ) {
 			// Avoiding stopping on a (known) unit.
 			route_iterator min_end =  start == begin_ ? start : start + 1;
-			while ( end != min_end  &&  resources::gameboard->get_visible_unit(*(end-1), *current_team_) )
+			while ( end != min_end  &&  resources::gameboard->has_visible_unit(*(end-1), *current_team_) )
 				// Backtrack.
 				--end;
 		}
@@ -927,7 +928,7 @@ namespace { // Private helpers for move_unit()
 		static const std::string enter_hex_str("enter_hex");
 		static const std::string exit_hex_str("exit_hex");
 
-		
+
 		bool obstructed_stop = false;
 
 
@@ -941,7 +942,7 @@ namespace { // Private helpers for move_unit()
 
 			// Prepare to animate.
 			unit_display::unit_mover animator(route_, show);
-			animator.start(*move_it_);
+			animator.start(move_it_.get_shared_ptr());
 
 			// Traverse the route to the hex where we need to stop.
 			// Each iteration performs the move from real_end_-1 to real_end_.
@@ -1002,7 +1003,7 @@ namespace { // Private helpers for move_unit()
 
 			if ( move_it_.valid() ) {
 				// Finish animating.
-				animator.finish(*move_it_);
+				animator.finish(move_it_.get_shared_ptr());
 				// Check for the moving unit being seen.
 				event_mutated_ = actor_sighted(*move_it_, &not_seeing);
 			}
@@ -1048,9 +1049,9 @@ namespace { // Private helpers for move_unit()
 				move_it_->set_movement(0, true);
 
 			// Village capturing.
-			if ( resources::game_map->is_village(final_loc) ) {
+			if ( resources::gameboard->map().is_village(final_loc) ) {
 				// Is this a capture?
-				orig_village_owner = village_owner(final_loc);
+				orig_village_owner = resources::gameboard->village_owner(final_loc);
 				if ( orig_village_owner != current_side_-1 ) {
 					// Captured. Zap movement and take over the village.
 					move_it_->set_movement(0, true);
@@ -1073,7 +1074,7 @@ namespace { // Private helpers for move_unit()
 			if ( mover_valid ) {
 				// MP_COUNTDOWN: added param
 				undo_stack->add_move(
-					*move_it_, begin_, real_end_, orig_moves_,
+					move_it_.get_shared_ptr(), begin_, real_end_, orig_moves_,
 					action_time_bonus, orig_village_owner, orig_dir_);
 			}
 
@@ -1183,18 +1184,18 @@ static size_t move_unit_internal(undo_list* undo_stack,
 
 	// Attempt moving.
 	mover.try_actual_movement(show_move);
-	
+
 	config co;
 	config cn = config_of("stopped_early", mover.stopped_early())("final_hex_x", mover.final_hex().x + 1)("final_hex_y", mover.final_hex().y + 1);
 	bool matches_replay = checkup_instance->local_checkup(cn,co);
 	if(!matches_replay)
 	{
-		replay::process_error("calculated movement destination (x="+ cn["final_hex_x"].str() +  " y=" + cn["final_hex_y"].str() +   
+		replay::process_error("calculated movement destination (x="+ cn["final_hex_x"].str() +  " y=" + cn["final_hex_y"].str() +
 			")didn't match the original destination(x="+ co["final_hex_x"].str() +  " y=" + co["final_hex_y"].str());
 
 		//TODO: move the unit by force to the desired destination with something like mover.reset_final_hex(co["x"], co["y"]);
 	}
-	
+
 	// Bookkeeping, etc.
 	// also fires the moveto event
 	mover.post_move(undo_stack);
@@ -1235,7 +1236,7 @@ size_t move_unit_and_record(const std::vector<map_location> &steps,
                  bool* interrupted,
                  move_unit_spectator* move_spectator)
 {
-	
+
 	// Avoid some silliness.
 	if ( steps.size() < 2  ||  (steps.size() == 2 && steps.front() == steps.back()) ) {
 		DBG_NG << "Ignoring a unit trying to jump on its hex at " <<
@@ -1279,45 +1280,13 @@ size_t move_unit_from_replay(const std::vector<map_location> &steps,
 {
 	// Evaluate this move.
 	unit_mover mover(steps, NULL, continued_move,skip_ally_sighted, NULL);
-	if ( !mover.check_expected_movement() ) 
+	if ( !mover.check_expected_movement() )
 	{
 		replay::process_error("found corrupt movement in replay.");
 		return 0;
 	}
 
 	return move_unit_internal(undo_stack, show_move, NULL, mover);
-}
-
-bool unit_can_move(const unit &u)
-{
-	const team &current_team = (*resources::teams)[u.side() - 1];
-
-	if(!u.attacks_left() && u.movement_left()==0)
-		return false;
-
-	// Units with goto commands that have already done their gotos this turn
-	// (i.e. don't have full movement left) should have red globes.
-	if(u.has_moved() && u.has_goto()) {
-		return false;
-	}
-
-	map_location locs[6];
-	get_adjacent_tiles(u.get_location(), locs);
-	for(int n = 0; n != 6; ++n) {
-		if (resources::game_map->on_board(locs[n])) {
-			const unit_map::const_iterator i = resources::units->find(locs[n]);
-			if (i.valid() && !i->incapacitated() &&
-			    current_team.is_enemy(i->side())) {
-				return true;
-			}
-
-			if (u.movement_cost((*resources::game_map)[locs[n]]) <= u.movement_left()) {
-				return true;
-			}
-		}
-	}
-
-	return false;
 }
 
 

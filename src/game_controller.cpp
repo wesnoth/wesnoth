@@ -13,41 +13,70 @@
 */
 
 #include "game_controller.hpp"
+#include "global.hpp"                   // for false_, bool_
 
-#include "about.hpp"
-#include "construct_dialog.hpp"
-#include "gettext.hpp"
-#include "gui/dialogs/addon_connect.hpp"
+#include "about.hpp" //for show_about
+#include "commandline_options.hpp"      // for commandline_options
+#include "config.hpp"                   // for config, etc
+#include "construct_dialog.hpp"         // for dialog
+#include "cursor.hpp"                   // for set, CURSOR_TYPE::NORMAL
+#include "exceptions.hpp"               // for error
+#include "filesystem.hpp"               // for get_user_config_dir, etc
+#include "game_classification.hpp"      // for game_classification, etc
+#include "game_config.hpp"              // for path, no_delay, revision, etc
+#include "game_config_manager.hpp"      // for game_config_manager
+#include "game_end_exceptions.hpp"      // for LEVEL_RESULT, etc
+#include "gettext.hpp"                  // for _
 #include "gui/dialogs/campaign_difficulty.hpp"
-#include "gui/dialogs/campaign_selection.hpp"
-#include "gui/dialogs/language_selection.hpp"
-#include "gui/dialogs/message.hpp"
+#include "gui/dialogs/campaign_selection.hpp"  // for tcampaign_selection
+#include "gui/dialogs/language_selection.hpp"  // for tlanguage_selection
+#include "gui/dialogs/message.hpp" //for show error message
+#include "gui/dialogs/mp_host_game_prompt.hpp" //for host game prompt
 #include "gui/dialogs/mp_method_selection.hpp"
-#include "gui/dialogs/title_screen.hpp"
-#include "gui/dialogs/transient_message.hpp"
+#include "gui/dialogs/transient_message.hpp"  // for show_transient_message
+#include "gui/dialogs/title_screen.hpp"  // for show_debug_clock_button
+#include "gui/widgets/settings.hpp"     // for new_widgets
+#include "gui/widgets/window.hpp"       // for twindow, etc
+#include "intro.hpp"
+#include "language.hpp"                 // for language_def, etc
+#include "loadscreen.hpp"               // for loadscreen, etc
+#include "log.hpp"                      // for LOG_STREAM, logger, general, etc
+#include "map_exception.hpp"
+#include "multiplayer.hpp"              // for start_client, etc
+#include "network.hpp"
+#include "playcampaign.hpp"             // for play_game, etc
+#include "preferences.hpp"              // for disable_preferences_save, etc
+#include "preferences_display.hpp"      // for detect_video_settings, etc
+#include "replay.hpp"                   // for replay, recorder
+#include "resources.hpp"                // for config_manager
+#include "savegame.hpp"                 // for clean_saves, etc
+#include "sdl/utils.hpp"                // for surface
+#include "serialization/compression.hpp"  // for format::NONE
+#include "serialization/string_utils.hpp"  // for split
+#include "statistics.hpp"
+#include "tstring.hpp"                  // for operator==, operator!=
+#include "util.hpp"                     // for lexical_cast_default
+#include "wml_exception.hpp"            // for twml_exception
+
+#include <algorithm>                    // for copy, max, min, stable_sort
+#include <boost/foreach.hpp>            // for auto_any_base, etc
+#include <boost/optional.hpp>           // for optional
+#include <boost/tuple/tuple.hpp>        // for tuple
+#include <cstdlib>                     // for NULL, system
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <utility>                      // for pair
+#include "SDL.h"                        // for SDL_INIT_JOYSTICK, etc
+#include "SDL_events.h"                 // for SDL_ENABLE
+#include "SDL_joystick.h"               // for SDL_JoystickEventState, etc
+#include "SDL_timer.h"                  // for SDL_Delay
+#include "SDL_version.h"                // for SDL_VERSION_ATLEAST
+#include "SDL_video.h"                  // for SDL_WM_SetCaption, etc
+
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
-#include "gui/auxiliary/event/handler.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/window.hpp"
-#include "intro.hpp"
-#include "language.hpp"
-#include "loadscreen.hpp"
-#include "log.hpp"
-#include "map_exception.hpp"
-#include "multiplayer.hpp"
-#include "network.hpp"
-#include "playcampaign.hpp"
-#include "preferences_display.hpp"
-#include "replay.hpp"
-#include "savegame.hpp"
-#include "scripting/lua.hpp"
-#include "statistics.hpp"
-#include "wml_exception.hpp"
-#include "gui/dialogs/mp_host_game_prompt.hpp"
 
-#include <boost/foreach.hpp>
+struct incorrect_map_format_error;
 
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
@@ -250,7 +279,7 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 		if (!cmdline_opts_.unit_test->empty()) {
 			test_scenario_ = *cmdline_opts_.unit_test;
 		}
-			
+
 	}
 	if (cmdline_opts_.windowed)
 		preferences::set_fullscreen(false);
@@ -475,7 +504,7 @@ int game_controller::unit_test()
 	}
 
 	savegame::clean_saves(state_.classification().label);
-	
+
 	if (cmdline_opts_.noreplaycheck)
 		return 0; //we passed, huzzah!
 
@@ -498,10 +527,10 @@ int game_controller::unit_test()
 
 	try {
 		//LEVEL_RESULT res = play_game(disp(), state_, resources::config_manager->game_config(), IO_NONE, false,false,false,true);
-		LEVEL_RESULT res = ::play_replay(disp(), state_, resources::config_manager->game_config(), video_, true);		
+		LEVEL_RESULT res = ::play_replay(disp(), state_, resources::config_manager->game_config(), video_, true);
 		if (!(res == VICTORY || res == NONE)) {
 			std::cerr << "Observed failure on replay" << std::endl;
-			return 4; 
+			return 4;
 		}
 		/*::play_replay(disp(),state_,resources::config_manager->game_config(),
 		    video_);*/
@@ -589,10 +618,10 @@ bool game_controller::load_game()
 	recorder.start_replay();
 	recorder.set_skip(false);
 
-	LOG_CONFIG << "has snapshot: " << (state_.snapshot.child("side") ? "yes" : "no") << "\n";
+	LOG_CONFIG << "has is middle game savefile: " << (state_.is_mid_game_save() ? "yes" : "no") << "\n";
 
-	if (!state_.snapshot.child("side")) {
-		// No snapshot; this is a start-of-scenario
+	if (!state_.is_mid_game_save()) {
+		//this is a start-of-scenario
 		if (load.show_replay()) {
 			// There won't be any turns to replay, but the
 			// user gets to watch the intro sequence again ...
@@ -616,18 +645,18 @@ bool game_controller::load_game()
 	}
 
 	if(state_.classification().campaign_type == game_classification::MULTIPLAYER) {
-		BOOST_FOREACH(config &side, state_.snapshot.child_range("side"))
+		BOOST_FOREACH(config &side, state_.get_starting_pos().child_range("side"))
 		{
 			if (side["controller"] == "network")
 				side["controller"] = "human";
 			if (side["controller"] == "network_ai")
 				side["controller"] = "ai";
 		}
-		gui2::show_message(disp().video(), _("Warning") , _("This is a multiplayer scenario. Some parts of it may not work properly in single-player. It is recommended to load this scenario through the Multiplayer -> Load Game dialog instead."));
+		gui2::show_message(disp().video(), _("Warning") , _("This is a multiplayer scenario. Some parts of it may not work properly in single-player. It is recommended to load this scenario through the <b>Multiplayer</b> → <b>Load Game</b> dialog instead."), "", true, true);
 	}
 
 	if (load.cancel_orders()) {
-		BOOST_FOREACH(config &side, state_.snapshot.child_range("side"))
+		BOOST_FOREACH(config &side, state_.get_starting_pos().child_range("side"))
 		{
 			if (side["controller"] != "human") continue;
 			BOOST_FOREACH(config &unit, side.child_range("unit"))
@@ -643,7 +672,7 @@ bool game_controller::load_game()
 
 void game_controller::set_tutorial()
 {
-	state_ = game_state();
+	state_ = saved_game();
 	state_.classification().campaign_type = game_classification::TUTORIAL;
 	state_.carryover_sides_start["next_scenario"] = "tutorial";
 	state_.classification().campaign_define = "TUTORIAL";
@@ -658,7 +687,7 @@ void game_controller::mark_completed_campaigns(std::vector<config> &campaigns)
 
 bool game_controller::new_campaign()
 {
-	state_ = game_state();
+	state_ = saved_game();
 	state_.classification().campaign_type = game_classification::SCENARIO;
 
 	std::vector<config> campaigns;
@@ -728,7 +757,7 @@ bool game_controller::new_campaign()
 	const config &campaign = campaigns[campaign_num];
 	state_.classification().campaign = campaign["id"].str();
 	state_.classification().abbrev = campaign["abbrev"].str();
-	
+
 	std::string random_mode = use_deterministic_mode ? "deterministic" : "";
 	state_.carryover_sides_start["random_mode"] = random_mode;
 	state_.classification().random_mode = random_mode;
@@ -790,7 +819,6 @@ bool game_controller::new_campaign()
 			}
 		}
 
-		state_.carryover_sides_start["difficulty"] = difficulties[difficulty];
 		state_.classification().difficulty = difficulties[difficulty];
 	}
 
@@ -881,7 +909,7 @@ bool game_controller::play_multiplayer()
 {
 	int res;
 
-	state_ = game_state();
+	state_ = saved_game();
 	state_.classification().campaign_type = game_classification::MULTIPLAYER;
 
 	//Print Gui only if the user hasn't specified any server
@@ -1002,7 +1030,7 @@ bool game_controller::play_multiplayer_commandline()
 	DBG_MP << "starting multiplayer game from the commandline" << std::endl;
 
 	// These are all the relevant lines taken literally from play_multiplayer() above
-	state_ = game_state();
+	state_ = saved_game();
 	state_.classification().campaign_type = game_classification::MULTIPLAYER;
 
 	resources::config_manager->
@@ -1114,6 +1142,8 @@ editor::EXIT_STATUS game_controller::start_editor(const std::string& filename)
 
 game_controller::~game_controller()
 {
-	gui::dialog::delete_empty_menu();
-	sound::close_sound();
+	try {
+		gui::dialog::delete_empty_menu();
+		sound::close_sound();
+	} catch (...) {}
 }

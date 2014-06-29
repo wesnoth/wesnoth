@@ -26,20 +26,29 @@
 #pragma warning(disable:4250)
 #endif
 
-//included for 'target' markers
-#include "../default/contexts.hpp"
-
 #include "component.hpp"
 
-#include <stack>
-#include <deque>
+#include "global.hpp"
+
+#include "ai/default/contexts.hpp"
+#include "ai/game_info.hpp"
+#include "config.hpp"
+
+#include <boost/shared_ptr.hpp>
+#include <iterator>
+#include <map>
+#include <set>
+#include <string>
+#include <utility>
+#include <vector>
 
 class terrain_filter;
+namespace ai { class lua_ai_action_handler; }
+namespace ai { class lua_ai_context; }
+namespace ai { struct target; }
+
 
 namespace ai {
-
-class lua_ai_context;
-class lua_ai_action_handler;
 
 class goal : public readonly_context_proxy, public component {
 public:

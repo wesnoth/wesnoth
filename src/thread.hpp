@@ -15,14 +15,25 @@
 #ifndef THREAD_HPP_INCLUDED
 #define THREAD_HPP_INCLUDED
 
-#include "SDL.h"
-#include "SDL_thread.h"
-
 #include <list>
 
+#include <boost/cstdint.hpp>
 #include <boost/noncopyable.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/smart_ptr.hpp>
+
+struct SDL_Thread;
+
+#if defined(_MSC_VER) && _MSC_VER <= 1600
+/*
+	This is needed because msvc up to 2010 fails to correcty forward declare this struct as a return value this case.
+	And will create corrupt binaries without giving a warning / error.
+*/
+#include <SDL_mutex.h>
+#else
+struct SDL_mutex;
+struct SDL_cond;
+#endif
 
 // Threading primitives wrapper for SDL_Thread.
 //
@@ -68,13 +79,13 @@ public:
 
 	void detach();
 
-	Uint32 get_id() { return SDL_GetThreadID(thread_); }
+	boost::uint32_t get_id();
 private:
 
 	SDL_Thread* thread_;
 };
 
-inline Uint32 get_current_thread_id() { return SDL_ThreadID(); }
+boost::uint32_t get_current_thread_id();
 // Binary mutexes.
 //
 // Implements an interface to binary mutexes. This class only defines the

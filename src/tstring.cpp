@@ -26,7 +26,12 @@
 #include "tstring.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "utils/shared_object.hpp"
 #include <boost/functional/hash.hpp>
+
+#include <boost/multi_index_container.hpp>
+#include <boost/multi_index/hashed_index.hpp>
+#include <boost/multi_index/member.hpp>
 
 static lg::log_domain log_config("config");
 #define LOG_CF LOG_STREAM(info, log_config)
@@ -508,3 +513,37 @@ std::ostream& operator<<(std::ostream& stream, const t_string_base& string)
 	return stream;
 }
 
+/**
+ * shared_object<tstring_base> implementation of hash database
+ */
+
+template <typename T, typename node = shared_node<T> >
+struct types {
+typedef boost::multi_index_container<
+	node,
+	boost::multi_index::indexed_by<
+		boost::multi_index::hashed_unique<
+			BOOST_MULTI_INDEX_MEMBER(node, T, val)
+		>
+	>
+> hash_map;
+
+typedef typename hash_map::template nth_index<0>::type hash_index;
+};
+
+static types<t_string_base>::hash_map& map() { static types<t_string_base>::hash_map* map = new types<t_string_base>::hash_map; return *map; }
+static types<t_string_base>::hash_index& index() { return map().get<0>(); }
+
+typedef shared_node<t_string_base> node;
+
+template<>
+const node* shared_object<t_string_base>::insert_into_index(const node & n)
+{
+	return &*index().insert(n).first;
+}
+
+template<>
+void shared_object<t_string_base>::erase_from_index(const node * ptr)
+{
+	index().erase(index().find(ptr->val));
+}

@@ -8,11 +8,11 @@ setlocal enabledelayedexpansion
 set LoadFile=%~p0..\..\wml_test_schedule
 set binary=wesnoth.exe
 set opt=--log-strict=warning
-:: OutDir is necessary for VC debug configuration, defaults to wesnoth\
-if "%1"=="" ( set "OutDir=..\..\") else ( set "OutDir=%~p1")
+:: executable path can be set for VC debug configuration, defaults to wesnoth\
+if "%1"=="" ( cd ..\..\ ) else ( cd %~p1 )
 
-cd %OutDir%
 echo running WML tests:
+set tSTART=%time%
 
 :: ignore lines beginning with #
 :: %%G contains whether the test should pass (0), timeout (2) or fail (1,4)
@@ -28,12 +28,17 @@ for /f "eol=# tokens=1,2 delims= " %%G in (%LoadFile%) do (
             echo(
             echo WML_tests.cmd: Error WML1: Test '%%H' returned !ERRORLEVEL!, expected %%G
         )
+        set /a "fail_num+=1"
     )
     :: minimalistic progress bar
     <nul (set/p progress=.)
+    set /a "test_num+=1"
 )
 echo(
-echo WML tests completed
+if not DEFINED fail_num ( set "fail_num=none" )
+set /a "minutes = (1%time:~3,2%-100) - (1%tSTART:~3,2%-100)"
+set /a "seconds = (1%time:~6,2%-100) - (1%tSTART:~6,2%-100)"
+echo %test_num% WML tests completed in %minutes%m %seconds%s, %fail_num% of them failed
 
 :: restore the state before execution
 cd %~p0

@@ -33,7 +33,6 @@
 #include "../../attack_prediction.hpp"
 #include "../../filesystem.hpp"
 #include "../../game_display.hpp"
-#include "../../gamestatus.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../pathfind/pathfind.hpp"
@@ -119,7 +118,7 @@ static bool to_map_location(lua_State *L, int &index, map_location &res)
 {
 	if (lua_isuserdata(L, index))
 	{
-		unit const *u = luaW_tounit(L, index);
+		const UnitConstPtr u = luaW_tounit(L, index);
 		if (!u) return false;
 		res = u->get_location();
 		++index;
@@ -142,7 +141,7 @@ static int cfun_ai_get_suitable_keep(lua_State *L)
 	int index = 1;
 
 	ai::readonly_context &context = get_readonly_context(L);
-	unit const *leader;
+	UnitConstPtr leader;
 	if (lua_isuserdata(L, index))
 	{
 		leader = luaW_tounit(L, index);

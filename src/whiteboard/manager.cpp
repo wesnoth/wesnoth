@@ -32,7 +32,10 @@
 #include "actions/undo.hpp"
 #include "arrow.hpp"
 #include "chat_events.hpp"
+#include "fake_unit_manager.hpp"
+#include "fake_unit_ptr.hpp"
 #include "formula_string_utils.hpp"
+#include "game_board.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
@@ -42,6 +45,8 @@
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
+#include "unit.hpp"
+#include "unit_animation_component.hpp"
 #include "unit_display.hpp"
 
 #include <boost/lexical_cast.hpp>
@@ -141,7 +146,7 @@ bool manager::can_modify_game_state() const
 	if(wait_for_side_init_
 					|| resources::teams == NULL
 					|| executing_actions_
-					|| is_observer()
+					|| resources::gameboard->is_observer()
 					|| resources::controller->is_linger_mode())
 	{
 		return false;
@@ -325,13 +330,13 @@ void manager::post_delete_action(action_ptr action)
 
 	side_actions_ptr side_actions = resources::teams->at(action->team_index()).get_side_actions();
 
-	unit *actor = action->get_unit();
-	if(actor != NULL) { // The unit might have died following the execution of an attack
+	UnitPtr actor = action->get_unit();
+	if(actor) { // The unit might have died following the execution of an attack
 		side_actions::iterator action_it = side_actions->find_last_action_of(*actor);
 		if(action_it != side_actions->end()) {
 			move_ptr move = boost::dynamic_pointer_cast<class move>(*action_it);
 			if(move && move->get_fake_unit()) {
-				move->get_fake_unit()->set_standing(true);
+				move->get_fake_unit()->anim_comp().set_standing(true);
 			}
 		}
 	}
@@ -709,15 +714,14 @@ void manager::create_temp_move()
 				if(!fake_unit)
 				{
 					// Create temp ghost unit
-					fake_unit.reset(new game_display::fake_unit(*temp_moved_unit));
-					fake_unit->place_on_game_display( resources::screen);
-					fake_unit->set_ghosted(true);
+					fake_unit = fake_unit_ptr(UnitPtr (new unit(*temp_moved_unit)), resources::fake_units);
+					fake_unit->anim_comp().set_ghosted(true);
 				}
 
-				unit_display::move_unit(path, *fake_unit, false); //get facing right
-				fake_unit->invalidate(fake_unit->get_location());
+				unit_display::move_unit(path, fake_unit.get_unit_ptr(), false); //get facing right
+				fake_unit->anim_comp().invalidate(*game_display::get_singleton());
 				fake_unit->set_location(*curr_itor);
-				fake_unit->set_ghosted(true);
+				fake_unit->anim_comp().set_ghosted(true);
 			}
 			else //zero-hex path -- don't bother drawing a fake unit
 				fake_unit.reset();
@@ -727,7 +731,7 @@ void manager::create_temp_move()
 	}
 	//in case path shortens on next step and one ghosted unit has to be removed
 	int ind = fake_units_.size() - 1;
-	fake_units_[ind]->invalidate(fake_units_[ind]->get_location());
+	fake_units_[ind]->anim_comp().invalidate(*game_display::get_singleton());
 	//toss out old arrows and fake units
 	move_arrows_.resize(turn+1);
 	fake_units_.resize(turn+1);
@@ -738,7 +742,7 @@ void manager::erase_temp_move()
 	move_arrows_.clear();
 	BOOST_FOREACH(fake_unit_ptr const& tmp, fake_units_) {
 		if(tmp) {
-			tmp->invalidate(tmp->get_location());
+			tmp->anim_comp().invalidate(*game_display::get_singleton());
 		}
 	}
 	fake_units_.clear();
@@ -809,7 +813,7 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 			assert(route_->steps.back() == attacker_loc);
 			source_hex = route_->steps.front();
 
-			fake_unit->set_disabled_ghosted(true);
+			fake_unit->anim_comp().set_disabled_ghosted(true);
 		}
 		else
 		{
@@ -1185,10 +1189,12 @@ future_map::future_map():
 
 future_map::~future_map()
 {
+	try {
 	if (!resources::whiteboard)
 		return;
 	if (!initial_planned_unit_map_ && resources::whiteboard->has_planned_unit_map())
 		resources::whiteboard->set_real_unit_map();
+	} catch (...) {}
 }
 
 future_map_if_active::future_map_if_active():
@@ -1209,10 +1215,12 @@ future_map_if_active::future_map_if_active():
 
 future_map_if_active::~future_map_if_active()
 {
+	try {
 	if (!resources::whiteboard)
 		return;
 	if (!initial_planned_unit_map_ && resources::whiteboard->has_planned_unit_map())
 		resources::whiteboard->set_real_unit_map();
+	} catch (...) {}
 }
 
 

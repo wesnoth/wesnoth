@@ -23,9 +23,10 @@
 #include "conditional_wml.hpp"
 #include "handlers.hpp"
 
+#include "../display_chat_manager.hpp"
 #include "../game_config.hpp"
 #include "../game_display.hpp"
-#include "../gamestatus.hpp"
+#include "../game_data.hpp"
 #include "../gettext.hpp"
 #include "../log.hpp"
 #include "../play_controller.hpp"
@@ -336,7 +337,7 @@ namespace { // Support functions
 				msg << " (" << itor->second << ")";
 			}
 
-			resources::screen->add_chat_message(time(NULL), caption, 0, msg.str(),
+			resources::screen->get_chat_manager().add_chat_message(time(NULL), caption, 0, msg.str(),
 					events::chat_handler::MESSAGE_PUBLIC, false);
 			if ( to_cerr )
 				std::cerr << caption << ": " << msg.str() << '\n';

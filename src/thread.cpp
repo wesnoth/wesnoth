@@ -19,9 +19,15 @@
 #include "log.hpp"
 #include "thread.hpp"
 
+#include "SDL_mutex.h"
+#include "SDL_thread.h"
+#include "SDL_version.h"
 
 #define ERR_G LOG_STREAM(err, lg::general)
 
+boost::uint32_t threading::thread::get_id() { return SDL_GetThreadID(thread_); }
+
+boost::uint32_t threading::get_current_thread_id() { return SDL_ThreadID(); }
 
 static int run_async_operation(void* data)
 {

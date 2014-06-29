@@ -19,7 +19,7 @@
 #include "tests/utils/fake_display.hpp"
 
 #include "game_display.hpp"
-#include "gamestatus.hpp"
+#include "saved_game.hpp"
 #include "playcampaign.hpp"
 #include "unit.hpp"
 #include "unit_map.hpp"
@@ -68,7 +68,7 @@ namespace test_utils {
 	}
 
 	class end_position_collector : public event_node {
-		game_state state_;
+		saved_game state_;
 		unit_map units_;
 
 		public:
@@ -85,7 +85,7 @@ namespace test_utils {
 				units_ = game_display::get_singleton()->get_units();
 			}
 
-			game_state& get_state()
+			saved_game& get_state()
 			{
 				return state_;
 			}
@@ -108,7 +108,7 @@ namespace test_utils {
 		source_.type_key(current_time_++, SDLK_EXCLAIM);
 		source_.type_key(current_time_++, SDLK_RETURN);
 
-		game_state& state = end->get_state();
+		saved_game& state = end->get_state();
 		state.classification().campaign_type = game_classification::TEST;
 		state.carryover_sides_start["next_scenario"] = id_;
 		play_game(get_fake_display(1024, 768), state, game_config_);

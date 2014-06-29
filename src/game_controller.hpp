@@ -14,16 +14,27 @@
 #ifndef GAME_CONTROLLER_H_INCLUDED
 #define GAME_CONTROLLER_H_INCLUDED
 
-#include "commandline_options.hpp"
-#include "editor/editor_main.hpp"
-#include "gamestatus.hpp"
-#include "game_config_manager.hpp"
-#include "game_display.hpp"
-#include "game_preferences.hpp"
-#include "hotkey/hotkey_manager.hpp"
-#include "resources.hpp"
-#include "sound.hpp"
-#include "thread.hpp"
+#include "global.hpp"
+
+#include "editor/editor_main.hpp"       // for EXIT_STATUS
+#include "events.hpp"                   // for event_context
+#include "font.hpp"                     // for manager
+#include "game_display.hpp"             // for game_display
+#include "game_errors.hpp"              // for load_game_exception, etc
+#include "game_preferences.hpp"         // for manager
+#include "hotkey/hotkey_manager.hpp"    // for manager
+#include "image.hpp"                    // for manager
+#include "saved_game.hpp"               // for saved_game
+#include "scoped_resource.hpp"          // for scoped_ptr
+#include "sound.hpp"                    // for music_thinker
+#include "thread.hpp"                   // for manager
+#include "video.hpp"                    // for CVideo, resize_monitor
+
+#include <string>                       // for string
+#include <vector>                       // for vector
+
+class commandline_options;
+class config;
 
 struct jump_to_campaign_info
 {
@@ -110,7 +121,7 @@ private:
 
 	std::string screenshot_map_, screenshot_filename_;
 
-	game_state state_;
+	saved_game state_;
 
 	std::string multiplayer_server_;
 	bool jump_to_multiplayer_;

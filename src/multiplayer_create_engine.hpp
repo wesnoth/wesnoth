@@ -19,10 +19,13 @@
 #include "generators/mapgen.hpp"
 #include "mp_depcheck.hpp"
 #include "mp_game_settings.hpp"
+#include "game_display.hpp"
 
 #include <boost/scoped_ptr.hpp>
 #include <string>
 #include <utility>
+
+class saved_game;
 
 namespace mp {
 
@@ -154,7 +157,7 @@ private:
 class create_engine
 {
 public:
-	create_engine(game_display& disp, game_state& state);
+	create_engine(game_display& disp, saved_game& state);
 	~create_engine();
 
 	enum MP_EXTRA { ERA, MOD };
@@ -177,6 +180,8 @@ public:
 	void init_generated_level_data();
 
 	void prepare_for_new_level();
+	void prepare_for_era_and_mods();
+	void prepare_for_scenario();
 	void prepare_for_campaign(const std::string& difficulty);
 	void prepare_for_saved_game();
 
@@ -220,6 +225,7 @@ public:
 
 	const mp_game_settings& get_parameters();
 
+	saved_game& get_state();
 private:
 	create_engine(const create_engine&);
 	void operator=(const create_engine&);
@@ -264,8 +270,7 @@ private:
 	std::vector<extras_metadata_ptr> eras_;
 	std::vector<extras_metadata_ptr> mods_;
 
-	game_state& state_;
-	mp_game_settings parameters_;
+	saved_game& state_;
 
 	depcheck::manager dependency_manager_;
 

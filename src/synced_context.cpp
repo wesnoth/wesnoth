@@ -1,3 +1,16 @@
+/*
+   Copyright (C) 2014
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
 #include "synced_context.hpp"
 #include "synced_commands.hpp"
 
@@ -6,19 +19,22 @@
 #include "global.hpp"
 #include "config.hpp"
 #include "config_assign.hpp"
+#include "game_classification.hpp"
 #include "replay.hpp"
 #include "random_new.hpp"
 #include "random_new_synced.hpp"
 #include "random_new_deterministic.hpp"
 #include "resources.hpp"
 #include "synced_checkup.hpp"
-#include "gamestatus.hpp"
+#include "game_data.hpp"
 #include "network.hpp"
 #include "log.hpp"
 #include "lua_jailbreak_exception.hpp"
 #include "play_controller.hpp"
 #include "actions/undo.hpp"
 #include "game_end_exceptions.hpp"
+#include "syncmp_handler.hpp"
+
 #include <boost/lexical_cast.hpp>
 
 #include <cassert>
@@ -36,6 +52,15 @@ bool synced_context::is_simultaneously_ = false;
 bool synced_context::run_in_synced_context(const std::string& commandname, const config& data, bool use_undo, bool show,  bool store_in_replay, synced_command::error_handler_function error_handler)
 {
 	DBG_REPLAY << "run_in_synced_context:" << commandname << "\n";
+	
+	if(!recorder.at_end() && store_in_replay)
+	{
+		//Most likeley we are in a replay now.
+		//We don't want to execute [do_command] & similar now
+		WRN_REPLAY << "invalid run_in_synced_context call ignored" << std::endl;
+		return false;
+	}
+	
 	assert(use_undo || (!resources::undo_stack->can_redo() && !resources::undo_stack->can_undo()));
 	if(store_in_replay)
 	{
@@ -61,7 +86,7 @@ bool synced_context::run_in_synced_context(const std::string& commandname, const
 			return false;
 		}
 	}
-	
+
 	// this might also be a good point to call resources::controller->check_victory();
 	// because before for example if someone kills all units during a moveto event they don't loose.
 	resources::controller->check_victory();
@@ -107,12 +132,12 @@ void synced_context::default_error_function(const std::string& message, bool /*h
 
 void synced_context::just_log_error_function(const std::string& message, bool /*heavy*/)
 {
-	ERR_REPLAY << "Error during synced execution: "  << message; 
+	ERR_REPLAY << "Error during synced execution: "  << message;
 }
 
 void synced_context::ignore_error_function(const std::string& message, bool /*heavy*/)
 {
-	DBG_REPLAY << "Ignored during synced execution: "  << message; 
+	DBG_REPLAY << "Ignored during synced execution: "  << message;
 }
 
 synced_context::synced_state synced_context::get_synced_state()
@@ -161,6 +186,7 @@ namespace
 		IMPLEMENT_LUA_JAILBREAK_EXCEPTION(lua_network_error)
 	};
 }
+
 void synced_context::pull_remote_user_input()
 {
 	//we sended data over the network.
@@ -181,24 +207,7 @@ void synced_context::pull_remote_user_input()
 				//ignore, since it will be thwown throw again.
 			}
 		}
-		try
-		{
-			ai::manager::raise_sync_network();
-		}
-		catch(end_turn_exception&)
-		{
-			//ignore, since it will be thwown again.
-		}
-
-		try
-		{
-			// in some cases network::receive_data only returns the wanted result on the second try.
-			ai::manager::raise_sync_network();
-		}
-		catch(end_turn_exception&)
-		{
-			//ignore, since it will throw again.
-		}
+		syncmp_registry::pull_remote_choice();
 	}
 	catch(network::error& err)
 	{
@@ -207,6 +216,11 @@ void synced_context::pull_remote_user_input()
 
 }
 
+void synced_context::send_user_choice()
+{
+	is_simultaneously_ = true;
+	syncmp_registry::send_user_choice();
+}
 
 boost::shared_ptr<random_new::rng> synced_context::get_rng_for_action()
 {
@@ -224,18 +238,18 @@ boost::shared_ptr<random_new::rng> synced_context::get_rng_for_action()
 config synced_context::ask_server(const std::string &name, const mp_sync::user_choice &uch)
 {
 	assert(get_synced_state() == synced_context::SYNCED);
-	
+
 	int current_side = resources::controller->current_side();
 	int side = current_side;
 	bool is_mp_game = network::nconnections() != 0;
 	const int max_side  = static_cast<int>(resources::teams->size());
 	bool did_require = false;
 
-	
+
 	if ((*resources::teams)[side-1].is_empty())
 	{
 		/*
-			
+
 		*/
 		DBG_REPLAY << "MP synchronization: side 1 being null-controlled in get_user_choice.\n";
 		side = 1;
@@ -245,7 +259,7 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 	}
 
 
-	
+
 	assert(1 <= side  && side  <= max_side);
 	assert(1 <= current_side  && current_side  <= max_side);
 
@@ -260,7 +274,7 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 	while(true){
 
 		do_replay_handle();
-		// the current_side on the server is a lie because it can happen on one client we are already executing side 2 
+		// the current_side on the server is a lie because it can happen on one client we are already executing side 2
 		bool is_local_side = (*resources::teams)[side-1].is_local();
 		bool is_replay_end = get_replay_source().at_end();
 
@@ -274,7 +288,7 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 			recorder.user_input(name, cfg, -1);
 			return cfg;
 
-		} 
+		}
 		else if(is_replay_end && is_mp_game)
 		{
 			DBG_REPLAY << "MP synchronization: remote server choice\n";
@@ -296,7 +310,7 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 			{
 				if(resources::gamedata->phase() != game_data::PLAY && resources::gamedata->phase() != game_data::START)
 				{
-					//this is needed becasue sometimes a package gets stuck on the server 
+					//this is needed becasue sometimes a package gets stuck on the server
 					//and in this case sending any package can free that package
 					//especialy when this function is called from prestart events where the screen is locked, we don't want to make the user wait.
 					//I currently can only reproduce this bug on local wesnothd (windows 7x64, msvc 32 bit release build), not on the offical server
@@ -309,14 +323,14 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 			continue;
 
 		}
-		else if (!is_replay_end) 
+		else if (!is_replay_end)
 		{
 			/* The decision has already been made, and must
 			be extracted from the replay. */
 			DBG_REPLAY << "MP synchronization: replay server choice\n";
 			do_replay_handle();
 			const config *action = get_replay_source().get_next_action();
-			if (!action) 
+			if (!action)
 			{
 				replay::process_error("[" + name + "] expected but none found\n");
 				get_replay_source().revert_action();
@@ -325,7 +339,7 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 			if (!action->has_child(name))
 			{
 				replay::process_error("[" + name + "] expected but none found, found instead:\n " + action->debug() + "\n");
-				
+
 				get_replay_source().revert_action();
 				return uch.query_user(-1);
 			}
@@ -356,10 +370,10 @@ set_scontext_synced::set_scontext_synced(int number)
 */
 void set_scontext_synced::init()
 {
-	
+
 	LOG_REPLAY << "set_scontext_synced::set_scontext_synced\n";
 	assert(synced_context::get_synced_state() == synced_context::UNSYNCED);
-	
+
 	synced_context::set_synced_state(synced_context::SYNCED);
 	synced_context::reset_is_simultaneously();
 
@@ -383,7 +397,7 @@ set_scontext_synced::~set_scontext_synced()
 
 	random_new::generator = old_rng_;
 	synced_context::set_synced_state(synced_context::UNSYNCED);
-	
+
 	checkup_instance = old_checkup_;
 }
 
@@ -395,11 +409,11 @@ int set_scontext_synced::get_random_calls()
 
 set_scontext_local_choice::set_scontext_local_choice()
 {
-	
+
 	assert(synced_context::get_synced_state() == synced_context::SYNCED);
 	synced_context::set_synced_state(synced_context::LOCAL_CHOICE);
 
-	
+
 	old_rng_ = random_new::generator;
 	//calling the synced rng form inside a local_choice would cause oos.
 	//TODO use a member variable instead if new/delete
@@ -422,7 +436,7 @@ set_scontext_leave_for_draw::set_scontext_leave_for_draw()
 	}
 	synced_context::set_synced_state(synced_context::LOCAL_CHOICE);
 
-	
+
 	old_rng_ = random_new::generator;
 	//calling the synced rng form inside a local_choice would cause oos.
 	//TODO use a member variable instead if new/delete
@@ -456,7 +470,7 @@ config random_seed_choice::query_user(int /*side*/) const
 {
 	//getting here means we are in a sp game
 
-	
+
 	config retv;
 	retv["new_seed"] = rand();
 	return retv;

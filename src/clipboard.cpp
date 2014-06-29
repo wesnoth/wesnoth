@@ -19,9 +19,12 @@
 #include "clipboard.hpp"
 #include <algorithm>
 
+#include <SDL_events.h>
 #include <SDL_version.h>
 
 #if SDL_VERSION_ATLEAST(2,0,0)
+
+#include <SDL_clipboard.h>
 
 #define CLIPBOARD_FUNCS_DEFINED
 

@@ -18,25 +18,46 @@
  */
 
 #include "undo.hpp"
+#include "global.hpp"
 
-#include "create.hpp"
-#include "move.hpp"
+#include "../construct_dialog.hpp"
+#include "../game_board.hpp"               // for game_board
+#include "../game_display.hpp"          // for game_display
+#include "../log.hpp"                   // for LOG_STREAM, logger, etc
+#include "../map.hpp"                      // for gamemap
+#include "../map_location.hpp"  // for map_location, operator<<, etc
+#include "../mouse_handler_base.hpp"       // for command_disabler
+#include "../recall_list_manager.hpp"   // for recall_list_manager
+#include "../replay.hpp"                // for recorder, replay
+#include "../replay_helper.hpp"         // for replay_helper
+#include "../resources.hpp"             // for screen, teams, units, etc
+#include "../statistics.hpp"               // for un_recall_unit, etc
+#include "../synced_context.hpp"        // for set_scontext_synced
+#include "../team.hpp"                  // for team
+#include "../unit.hpp"                  // for unit
+#include "../unit_animation_component.hpp"
+#include "../unit_display.hpp"          // for move_unit
+#include "../unit_map.hpp"              // for unit_map, etc
+#include "../unit_ptr.hpp"      // for UnitConstPtr, UnitPtr
+#include "../unit_types.hpp"               // for unit_type, unit_type_data, etc
+#include "../util.hpp"                     // for bad_lexical_cast (ptr only), etc
+#include "../whiteboard/manager.hpp"    // for manager
 
-#include "../game_display.hpp"
-#include "../log.hpp"
-#include "../play_controller.hpp"
-#include "../replay.hpp"
-#include "../replay_helper.hpp"
-#include "../resources.hpp"
-#include "../team.hpp"
-#include "../unit.hpp"
-#include "../unit_display.hpp"
-#include "../unit_map.hpp"
-#include "../whiteboard/manager.hpp"
-#include "../synced_context.hpp"
+#include "create.hpp"                   // for find_recall_location, etc
+#include "move.hpp"                   // for get_village
+#include "vision.hpp"           // for clearer_info, etc
 
-#include <boost/foreach.hpp>
-#include <cassert>
+#include <algorithm>                    // for reverse
+#include <boost/foreach.hpp>            // for auto_any_base, etc
+#include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
+#include <boost/ptr_container/detail/static_move_ptr.hpp>
+#include <boost/ptr_container/detail/void_ptr_iterator.hpp>
+#include <boost/ptr_container/ptr_sequence_adapter.hpp>
+#include <boost/shared_ptr.hpp>         // for shared_ptr
+#include <cassert>                      // for assert
+#include <cstddef>                     // for NULL
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <set>                          // for set
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -56,14 +77,14 @@ undo_list::undo_action::~undo_action()
 
 
 struct undo_list::dismiss_action : undo_list::undo_action {
-	unit dismissed_unit;
+	UnitPtr dismissed_unit;
 
 
-	explicit dismiss_action(const unit& dismissed) : undo_action(),
-		dismissed_unit(dismissed)
+	explicit dismiss_action(const UnitConstPtr dismissed) : undo_action(),
+		dismissed_unit(new unit(*dismissed))
 	{}
 	explicit dismiss_action(const config & unit_cfg) : undo_action(),
-		dismissed_unit(unit_cfg)
+		dismissed_unit(new unit(unit_cfg))
 	{}
 	virtual ~dismiss_action();
 
@@ -86,7 +107,7 @@ struct undo_list::move_action : undo_list::undo_action {
 	map_location goto_hex;
 
 
-	move_action(const unit& moved,
+	move_action(const UnitConstPtr moved,
 	            const std::vector<map_location>::const_iterator & begin,
 	            const std::vector<map_location>::const_iterator & end,
 	            int sm, int timebonus, int orig, const map_location::DIRECTION dir) :
@@ -94,8 +115,8 @@ struct undo_list::move_action : undo_list::undo_action {
 		starting_moves(sm),
 		original_village_owner(orig),
 		countdown_time_bonus(timebonus),
-		starting_dir(dir == map_location::NDIRECTIONS ? moved.facing() : dir),
-		goto_hex(moved.get_goto())
+		starting_dir(dir == map_location::NDIRECTIONS ? moved->facing() : dir),
+		goto_hex(moved->get_goto())
 	{}
 	move_action(const config & unit_cfg, const config & route_cfg,
 	            int sm, int timebonus, int orig, const map_location::DIRECTION dir) :
@@ -127,10 +148,10 @@ struct undo_list::recall_action : undo_list::undo_action {
 	map_location recall_from;
 
 
-	recall_action(const unit& recalled, const map_location& loc,
+	recall_action(const UnitConstPtr recalled, const map_location& loc,
 	              const map_location& from) :
 		undo_action(recalled, loc),
-		id(recalled.id()),
+		id(recalled->id()),
 		recall_from(from)
 	{}
 	recall_action(const config & unit_cfg, const map_location & loc,
@@ -157,10 +178,10 @@ struct undo_list::recruit_action : undo_list::undo_action {
 	map_location recruit_from;
 
 
-	recruit_action(const unit& recruited, const map_location& loc,
+	recruit_action(const UnitConstPtr recruited, const map_location& loc,
 	               const map_location& from) :
 		undo_action(recruited, loc),
-		u_type(recruited.type()),
+		u_type(recruited->type()),
 		recruit_from(from)
 	{}
 	recruit_action(const config & unit_cfg, const unit_type & type,
@@ -291,7 +312,7 @@ void undo_list::dismiss_action::write(config & cfg) const
 {
 	cfg.add_child("replay_data", replay_data);
 	cfg["type"] = "dismiss";
-	dismissed_unit.write(cfg.add_child("unit"));
+	dismissed_unit->write(cfg.add_child("unit"));
 }
 
 /**
@@ -399,7 +420,7 @@ void undo_list::add_auto_shroud(bool turned_on)
 /**
  * Adds a dismissal to the undo stack.
  */
-void undo_list::add_dismissal(const unit & u)
+void undo_list::add_dismissal(const UnitConstPtr u)
 {
 	add(new dismiss_action(u));
 }
@@ -407,7 +428,7 @@ void undo_list::add_dismissal(const unit & u)
 /**
  * Adds a move to the undo stack.
  */
-void undo_list::add_move(const unit& u,
+void undo_list::add_move(const UnitConstPtr u,
                          const std::vector<map_location>::const_iterator & begin,
                          const std::vector<map_location>::const_iterator & end,
                          int start_moves, int timebonus, int village_owner,
@@ -419,7 +440,7 @@ void undo_list::add_move(const unit& u,
 /**
  * Adds a recall to the undo stack.
  */
-void undo_list::add_recall(const unit& u, const map_location& loc,
+void undo_list::add_recall(const UnitConstPtr u, const map_location& loc,
                            const map_location& from)
 {
 	add(new recall_action(u, loc, from));
@@ -428,7 +449,7 @@ void undo_list::add_recall(const unit& u, const map_location& loc,
 /**
  * Adds a recruit to the undo stack.
  */
-void undo_list::add_recruit(const unit& u, const map_location& loc,
+void undo_list::add_recruit(const UnitConstPtr u, const map_location& loc,
                             const map_location& from)
 {
 	add(new recruit_action(u, loc, from));
@@ -622,7 +643,7 @@ bool undo_list::dismiss_action::undo(int side, undo_list & /*undos*/)
 		return false;
 	}
 
-	current_team.recall_list().push_back(dismissed_unit);
+	current_team.recall_list().add(dismissed_unit);
 	return true;
 }
 
@@ -648,9 +669,13 @@ bool undo_list::recall_action::undo(int side, undo_list & /*undos*/)
 		return false;
 	}
 
-	const unit &un = *un_it;
-	statistics::un_recall_unit(un);
-	int cost = statistics::un_recall_unit_cost(un);
+	UnitPtr un = un_it.get_shared_ptr();
+	if (!un) {
+		return false;
+	}
+
+	statistics::un_recall_unit(*un);
+	int cost = statistics::un_recall_unit_cost(*un);
 	if (cost < 0) {
 		current_team.spend_gold(-current_team.recall_cost());
 	}
@@ -658,7 +683,7 @@ bool undo_list::recall_action::undo(int side, undo_list & /*undos*/)
 		current_team.spend_gold(-cost);
 	}
 
-	current_team.recall_list().push_back(un);
+	current_team.recall_list().add(un);
 	// invalidate before erasing allow us
 	// to also do the overlapped hexes
 	gui.invalidate(recall_loc);
@@ -720,7 +745,7 @@ bool undo_list::move_action::undo(int side, undo_list & /*undos*/)
 		return false;
 	}
 
-	if ( resources::game_map->is_village(rev_route.front()) ) {
+	if ( resources::gameboard->map().is_village(rev_route.front()) ) {
 		get_village(rev_route.front(), original_village_owner + 1);
 		//MP_COUNTDOWN take away capture bonus
 		if ( countdown_time_bonus )
@@ -734,7 +759,7 @@ bool undo_list::move_action::undo(int side, undo_list & /*undos*/)
 	goto_hex = u->get_goto();
 
 	// Move the unit.
-	unit_display::move_unit(rev_route, *u, true, starting_dir);
+	unit_display::move_unit(rev_route, u.get_shared_ptr(), true, starting_dir);
 	units.move(u->get_location(), rev_route.back());
 	unit::clear_status_caches();
 
@@ -742,7 +767,7 @@ bool undo_list::move_action::undo(int side, undo_list & /*undos*/)
 	u = units.find(rev_route.back());
 	u->set_goto(map_location());
 	u->set_movement(saved_moves, true);
-	u->set_standing();
+	u->anim_comp().set_standing();
 
 	gui.invalidate_unit_after_move(rev_route.front(), rev_route.back());
 	return true;
@@ -777,7 +802,7 @@ bool undo_list::update_shroud_action::undo(int /*side*/, undo_list & undos)
 	undos.undo();
 	// Now keep the shroud update at the top of the undo stack.
 	recorder.add_synced_command("update_shroud", replay_helper::get_update_shroud());
-	
+
 	undos.add_update_shroud();
 	// Shroud actions never get moved to the redo stack, so claim an error.
 	return false;
@@ -829,9 +854,7 @@ bool undo_list::dismiss_action::redo(int side)
 	}
 	recorder.redo(replay_data);
 	replay_data.clear();
-	std::vector<unit>::iterator unit_it =
-		find_if_matches_id(current_team.recall_list(), dismissed_unit.id());
-	current_team.recall_list().erase(unit_it);
+	current_team.recall_list().erase_if_matches_id(dismissed_unit->id());
 	return true;
 }
 
@@ -853,15 +876,14 @@ bool undo_list::recall_action::redo(int side)
 	map_location loc = route.front();
 	map_location from = recall_from;
 
-	const std::vector<unit> & recalls = current_team.recall_list();
-	std::vector<unit>::const_iterator unit_it = find_if_matches_id(recalls, id);
-	if ( unit_it == recalls.end() ) {
+	UnitPtr un = current_team.recall_list().find_if_matches_id(id);
+	if ( !un ) {
 		ERR_NG << "Trying to redo a recall of '" << id
 		       << "', but that unit is not in the recall list.";
 		return false;
 	}
 
-	const std::string &msg = find_recall_location(side, loc, from, *unit_it);
+	const std::string &msg = find_recall_location(side, loc, from, *un);
 	if ( msg.empty() ) {
 		recorder.redo(replay_data);
 		replay_data.clear();
@@ -954,7 +976,7 @@ bool undo_list::move_action::redo(int side)
 	starting_moves = u->movement_left();
 
 	// Move the unit.
-	unit_display::move_unit(route, *u);
+	unit_display::move_unit(route, u.get_shared_ptr());
 	units.move(u->get_location(), route.back());
 	u = units.find(route.back());
 	unit::clear_status_caches();
@@ -962,9 +984,9 @@ bool undo_list::move_action::redo(int side)
 	// Set the unit's state.
 	u->set_goto(goto_hex);
 	u->set_movement(saved_moves, true);
-	u->set_standing();
+	u->anim_comp().set_standing();
 
-	if ( resources::game_map->is_village(route.back()) ) {
+	if ( resources::gameboard->map().is_village(route.back()) ) {
 		get_village(route.back(), u->side());
 		//MP_COUNTDOWN restore capture bonus
 		if ( countdown_time_bonus )

@@ -25,6 +25,9 @@
 //#include "display.hpp"
 //#include "gettext.hpp"
 #include "marked-up_text.hpp"
+#include "resources.hpp"
+#include "unit.hpp"
+
 //
 //#include <boost/foreach.hpp>
 
@@ -59,7 +62,7 @@ void status_table(display& gui, int selected)
 	items.push_back(heading.str());
 
 	const gamemap& map = gui.get_map();
-	const unit_map& units = gui.get_const_units();
+	const unit_map& units = gui.get_units();
 	assert(&gui.get_teams() == resources::teams);
 	const std::vector<team>& teams = gui.get_teams();
 
@@ -201,7 +204,7 @@ void scenario_settings_table(display& gui, int selected)
 	items.push_back(heading.str());
 
 	//const gamemap& map = gui.get_map();
-	const unit_map& units = gui.get_const_units();
+	const unit_map& units = gui.get_units();
 	const std::vector<team>& teams = gui.get_teams();
 
 	const team& viewing_team = teams[gui.viewing_team()];

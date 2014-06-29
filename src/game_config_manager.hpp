@@ -16,11 +16,11 @@
 
 #include "commandline_options.hpp"
 #include "config_cache.hpp"
-#include "gamestatus.hpp"
 #include "game_display.hpp"
 #include "filesystem.hpp"
 
 class config;
+class game_classification;
 
 class game_config_manager
 {

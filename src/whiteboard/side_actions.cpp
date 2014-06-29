@@ -39,6 +39,7 @@
 #include "game_end_exceptions.hpp"
 #include "map.hpp"
 #include "resources.hpp"
+#include "unit.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -453,9 +454,9 @@ namespace
 		move_ptr second_;
 
 		void check_recruit_recall(const map_location &loc) {
-			unit const* leader = second_->get_unit();
+			const UnitConstPtr leader = second_->get_unit();
 			if(leader->can_recruit() && can_recruit_on(*leader, loc)) {
-				if(unit const* backup_leader = find_backup_leader(*leader)) {
+				if(const UnitConstPtr backup_leader = find_backup_leader(*leader)) {
 					side_actions::iterator it = sa_.find_first_action_of(*backup_leader);
 					if(!(it == sa_.end() || position_ < it)) {
 						return; //backup leader but he moves before us, refuse bump
@@ -487,9 +488,9 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 	side_actions::iterator previous = position - 1;
 
 	//Verify we're not moving an action out-of-order compared to other action of the same unit
-	unit const* previous_ptr = (*previous)->get_unit();
-	unit const* current_ptr = (*position)->get_unit();
-	if(previous_ptr && current_ptr && previous_ptr == current_ptr) {
+	const UnitConstPtr previous_ptr = (*previous)->get_unit();
+	const UnitConstPtr current_ptr = (*position)->get_unit();
+	if(previous_ptr && current_ptr && previous_ptr.get() == current_ptr.get()) {
 		return end();
 	}
 
@@ -859,16 +860,16 @@ side_actions::net_cmd side_actions::make_net_cmd_refresh() const
 void side_actions::raw_turn_shift()
 {
 	//find units who still have plans for turn 0 (i.e. were too lazy to finish their jobs)
-	std::set<unit const*> lazy_units;
+	std::set<UnitConstPtr> lazy_units;
 	BOOST_FOREACH(action_ptr const& act, iter_turn(0)) {
-		unit const* u = act->get_unit();
+		UnitConstPtr u = act->get_unit();
 		if(u) {
 			lazy_units.insert(u);
 		}
 	}
 
 	//push their plans back one turn
-	std::set<unit const*>::iterator lazy_end = lazy_units.end();
+	std::set<UnitConstPtr>::iterator lazy_end = lazy_units.end();
 	iterator itor = end();
 	while(itor != begin()) {
 		--itor;

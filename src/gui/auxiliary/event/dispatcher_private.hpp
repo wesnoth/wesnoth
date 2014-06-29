@@ -19,6 +19,8 @@
 
 #include "gui/widgets/widget.hpp"
 
+#include "SDL_events.h"
+
 #include <boost/mpl/for_each.hpp>
 
 namespace gui2

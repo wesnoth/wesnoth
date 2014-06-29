@@ -1,4 +1,5 @@
 /*
+   Copyright (C) 2014
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,8 +17,8 @@
 
 #include "config.hpp"
 struct map_location;
-/*
-	a class to check whether  calculated ingame results match the results calculated during the original game.
+/**
+	A class to check whether the results that were calculated in the replay match the results calculated during the original game.
 	note, that you shouldn't add new checkups to existent user actions or you might break replay compability by bringing the [checkups] tag of older saves in unorder.
 
 	so if you really want to add new checkups, you should wrap your checkup_instance->... call in a if(resources::state_of_game->classification.version ....) or similar.
@@ -27,24 +28,25 @@ class checkup
 public:
 	checkup();
 	virtual ~checkup();
-	/*
-		does only compares data in replays.
-		returns wether the two config objects are equal.
+	/**
+		Compares data to the results calculated during the original game.
+		It's undefined whether this function also compares calculated results from different clients in a mp game.
+		returns whether the two config objects are equal.
 	*/
 	virtual bool local_checkup(const config& expected_data, config& real_data) = 0;
-	/*
-		compares data on all clients in a networked game, the disadvantage is, 
+	/**
+		compares data on all clients in a networked game, the disadvantage is,
 		that the clients have to communicate more which  might be not wanted if some persons have laggy inet.
 		returns whether the two config objects are equal.
 
-		this is currently not used.
+		This is currently not used.
+		This is currently not implemented.
+
+		TODO: we might want to change the design to have a 'local_checkup' subclass (the normal case)
+		and a 'networked_checkup' subclass (for network OOS debugging) of the checkup class that then replace
+		the synced_checkup class. Instead of having 2 different methods local_checkup,networked_checkup.
 	*/
 	virtual bool networked_checkup(const config& expected_data, config& real_data) = 0;
-	/*
-		we cannot use the replay.add_checksum anymore without risks because we might send the unit_checksum after it has been recorded at the other client.
-		this is a helper function for that.
-	*/
-	void unit_checksum(const  map_location& loc, bool local = true);
 };
 
 class synced_checkup : public checkup
@@ -68,7 +70,13 @@ class ignored_checkup : public checkup
 public:
 	ignored_checkup();
 	virtual ~ignored_checkup();
+	/**
+		always returns true
+	*/
 	virtual bool local_checkup(const config& expected_data, config& real_data);
+	/**
+		always returns true
+	*/
 	virtual bool networked_checkup(const config& expected_data, config& real_data);
 };
 

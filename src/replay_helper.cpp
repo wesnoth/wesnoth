@@ -1,4 +1,5 @@
 /*
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,7 +20,6 @@
 #include "resources.hpp"
 #include "play_controller.hpp"
 
-//void replay::add_recruit(const std::string& type_id, const map_location& loc, const map_location& from)
 config replay_helper::get_recruit(const std::string& type_id, const map_location& loc, const map_location& from)
 {
 	config val;
@@ -48,7 +48,7 @@ config replay_helper::get_disband(const std::string& unit_id)
 	config val;
 
 	val["value"] = unit_id;
-	
+
 	return val;
 }
 
@@ -61,7 +61,7 @@ config replay_helper::get_disband(const std::string& unit_id)
 config replay_helper::get_movement(const std::vector<map_location>& steps, bool skip_sighted, bool skip_ally_sighted)
 {
 	assert(!steps.empty());
-	
+
 	config move;
 	if(skip_sighted)
 	{
@@ -72,7 +72,7 @@ config replay_helper::get_movement(const std::vector<map_location>& steps, bool 
 	{
 		move["skip_sighted"] = "only_ally";
 	}
-	else 
+	else
 	{
 		//leave it empty
 	}
@@ -137,12 +137,6 @@ config replay_helper::get_init_side()
 		init_side["side_number"] = resources::controller->current_side();
 	return init_side;
 }
-/*
-void replay::end_turn()
-{
-	config* const cmd = add_command();
-	cmd->add_child("end_turn");
-}*/
 
 config replay_helper::get_event(const std::string& name, const map_location& loc, const map_location*  last_select_loc)
 {
@@ -157,7 +151,6 @@ config replay_helper::get_event(const std::string& name, const map_location& loc
 		config& source = ev.add_child("last_select");
 		last_select_loc->write(source);
 	}
-	//(*cmd)["undo"] = false;
 	return ev;
 }
 

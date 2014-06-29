@@ -87,7 +87,7 @@ if __name__ == "__main__":
         help="unpack the file UNPACK as a binary WML packet " +
         "(specify the add-on path with -c)")
     argumentparser.add_argument("--change-passphrase", nargs=3,
-        metavar="ADD-ON OLD NEW",
+        metavar=("ADD-ON","OLD","NEW"),
         help="Change the passphrase for ADD-ON from OLD to NEW")
     args = argumentparser.parse_args()
 

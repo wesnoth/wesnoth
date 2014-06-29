@@ -83,6 +83,8 @@ namespace game_config {
 		bool force_valid_cache_, use_cache_, fake_invalid_cache_;
 		preproc_map defines_map_;
 
+		std::string cache_file_prefix_;
+
 		void read_file(const std::string& file, config& cfg);
 		void write_file(std::string file, const config& cfg);
 		void write_file(std::string file, const preproc_map&);
@@ -96,6 +98,9 @@ namespace game_config {
 
 		preproc_map& make_copy_map();
 		void add_defines_map_diff(preproc_map&);
+
+		bool delete_cache_files(const std::vector<std::string>& paths,
+								const std::string& exclude_pattern = "");
 
 		// Protected to let test code access
 		protected:
@@ -143,6 +148,16 @@ namespace game_config {
 		 * Force cache checksum validation.
 		 **/
 		void recheck_filetree_checksum();
+
+		/**
+		 * Deletes stale cache files not in use by the game.
+		 */
+		bool clean_cache();
+
+		/**
+		 * Deletes all cache files.
+		 */
+		bool purge_cache();
 
 	};
 

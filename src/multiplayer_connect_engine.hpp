@@ -17,9 +17,9 @@
 #include "commandline_options.hpp"
 #include "config.hpp"
 #include "flg_manager.hpp"
-#include "gamestatus.hpp"
+#include "saved_game.hpp"
 #include "multiplayer_ui.hpp"
-
+#include "saved_game.hpp"
 #include <boost/scoped_ptr.hpp>
 
 namespace mp {
@@ -43,8 +43,8 @@ typedef std::pair<mp::controller, std::string> controller_option;
 class connect_engine
 {
 public:
-	connect_engine(game_display& disp, game_state& state,
-		const mp_game_settings& params, const bool local_players_only,
+	connect_engine(saved_game& state,
+		const bool local_players_only,
 		const bool first_scenario);
 	~connect_engine();
 
@@ -84,6 +84,15 @@ public:
 	/* Setters & Getters */
 
 	const config& level() const { return level_; }
+	config& scenario()
+	{
+		if(config& scenario = level_.child("scenario"))
+			return scenario;
+		else if(config& snapshot = level_.child("snapshot"))
+			return snapshot;
+		else 
+			throw "No scenariodata found";
+	}
 	const std::set<std::string>& connected_users() const
 		{ return connected_users_; }
 	const std::vector<std::string>& user_team_names()
@@ -107,7 +116,7 @@ private:
 	friend class side_engine;
 
 	config level_;
-	game_state& state_;
+	saved_game& state_;
 
 	const mp_game_settings& params_;
 
@@ -178,7 +187,7 @@ public:
 	void set_team(int team) { team_ = team; }
 	std::vector<std::string> get_children_to_swap();
 	std::multimap<std::string, config> get_side_children();
-	void set_side_children(std::multimap<std::string, config> children); 
+	void set_side_children(std::multimap<std::string, config> children);
 	int color() const { return color_; }
 	void set_color(int color) { color_ = color; }
 	int gold() const { return gold_; }

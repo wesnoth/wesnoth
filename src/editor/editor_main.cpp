@@ -33,7 +33,6 @@ EXIT_STATUS start(const config& game_conf, CVideo& video, const std::string& fil
 	try {
 		hotkey::scope_changer h_;
 		hotkey::deactivate_all_scopes();
-		hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 		hotkey::set_scope_active(hotkey::SCOPE_EDITOR);
 		editor_controller editor(game_conf, video);
 		if (!filename.empty()) {

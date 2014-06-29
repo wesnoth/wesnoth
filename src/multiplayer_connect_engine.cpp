@@ -21,6 +21,7 @@
 #include "map.hpp"
 #include "multiplayer_ui.hpp"
 #include "mp_game_utils.hpp"
+#include "resources.hpp"
 #include "tod_manager.hpp"
 
 #include <boost/foreach.hpp>
@@ -68,12 +69,11 @@ const std::string attributes_to_trim[] = {
 
 namespace mp {
 
-connect_engine::connect_engine(game_display& disp, game_state& state,
-	const mp_game_settings& params, const bool local_players_only,
-	const bool first_scenario) :
+connect_engine::connect_engine(saved_game& state,
+	const bool local_players_only, const bool first_scenario) :
 	level_(),
 	state_(state),
-	params_(params),
+	params_(state.mp_settings()),
 	default_controller_(local_players_only ? CNTR_LOCAL: CNTR_NETWORK),
 	local_players_only_(local_players_only),
 	first_scenario_(first_scenario),
@@ -86,12 +86,12 @@ connect_engine::connect_engine(game_display& disp, game_state& state,
 	connected_users_()
 {
 	// Initial level config from the mp_game_settings.
-	level_ = initial_level_config(disp, params_, state_);
+	level_ = initial_level_config(state_);
 	if (level_.empty()) {
 		return;
 	}
 
-	force_lock_settings_ = level_["force_lock_settings"].to_bool();
+	force_lock_settings_ = (!state.mp_settings().saved_game) && scenario()["force_lock_settings"].to_bool();
 
 	// Original level sides.
 	config::child_itors sides = current_config()->child_range("side");
@@ -207,25 +207,10 @@ connect_engine::~connect_engine()
 }
 
 config* connect_engine::current_config() {
-	config* cfg_level = NULL;
-
-	// It might make sense to invent a mechanism of some sort to check
-	// whether a config node contains information
-	// that you can load from(side information, specifically).
-	config &snapshot = level_.child("snapshot");
-	if (snapshot && snapshot.child("side")) {
-		// Savegame.
-		cfg_level = &snapshot;
-	} else if (!level_.child("side")) {
-		// Start-of-scenario save,
-		// the info has to be taken from the starting_pos.
-		cfg_level = &state_.replay_start();
-	} else {
-		// Fresh game, no snapshot available.
-		cfg_level = &level_;
-	}
-
-	return cfg_level;
+	if(config& s = scenario())
+		return &s;
+	else
+		return NULL;
 }
 
 void connect_engine::import_user(const std::string& name, const bool observer,
@@ -311,24 +296,17 @@ void connect_engine::update_level()
 {
 	DBG_MP << "updating level" << std::endl;
 
-	level_.clear_children("side");
+	scenario().clear_children("side");
 
 	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
-		level_.add_child("side", side->new_config());
+		scenario().add_child("side", side->new_config());
 	}
 }
 
-void connect_engine::update_and_send_diff(bool update_time_of_day)
+void connect_engine::update_and_send_diff(bool /*update_time_of_day*/)
 {
 	config old_level = level_;
 	update_level();
-
-	if (update_time_of_day) {
-		// Set random start ToD.
-		// This doesn't do anything since the "const" parameter is now really a const.
-		// We currently resolve the random tod on all clients seperately with the synced rng.
-		tod_manager tod_mng(level_);
-	}
 
 	config diff = level_.get_diff(old_level);
 	if (!diff.empty()) {
@@ -434,7 +412,7 @@ void connect_engine::start_game(LOAD_USERS load_users)
 		{
 			int j_side = playable_sides[rand() % i];
 			int i_side = playable_sides[i - 1];
-			
+
 			if (i_side == j_side) continue; //nothing to swap
 
 			// First we swap everything about a side with another
@@ -542,7 +520,7 @@ void connect_engine::start_game_commandline(
 	if (cmdline_opts.multiplayer_turns) {
 		DBG_MP << "\tsetting turns: " << cmdline_opts.multiplayer_turns <<
 			std::endl;
-		level_["turns"] = *cmdline_opts.multiplayer_turns;
+		scenario()["turns"] = *cmdline_opts.multiplayer_turns;
 	}
 
 	BOOST_FOREACH(config &side, level_.child_range("side"))
@@ -847,7 +825,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	allow_player_(cfg["allow_player"].to_bool(true)),
 	allow_changes_(!parent_.params_.saved_game && cfg["allow_changes"].to_bool(true)),
 	controller_lock_(cfg["controller_lock"].to_bool(
-		parent_.force_lock_settings_)),
+		parent_.force_lock_settings_) && parent_.params_.use_map_settings),
 	index_(index),
 	team_(0),
 	color_(index),
@@ -859,7 +837,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	waiting_to_choose_faction_(allow_changes_),
 	chose_random_(cfg["chose_random"].to_bool(false)),
 	flg_(parent_.era_factions_, cfg_, parent_.force_lock_settings_,
-		parent_.params_.saved_game, color_)
+		parent_.params_.use_map_settings, parent_.params_.saved_game, color_)
 {
 	// Check if this side should give its control to some other side.
 	const int side_cntr = cfg_["controller"].to_int(-1);
@@ -875,7 +853,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 
 	// Tweak the controllers.
 	if (cfg_["controller"] == "human_ai" ||
-		cfg_["controller"] == "network_ai" || 
+		cfg_["controller"] == "network_ai" ||
 		(cfg_["controller"] == "network" &&  !allow_player_ && parent_.params_.saved_game)) { //this is a workaround for bug #21797
 
 		cfg_["controller"] = "ai";
@@ -1069,9 +1047,8 @@ config side_engine::new_config() const
 			(res["shroud"] != "yes" && res["shroud"] != "no")) {
 			res["shroud"] = parent_.params_.shroud_game;
 		}
-
-		res["share_maps"] = parent_.params_.share_maps;
-		res["share_view"] =  parent_.params_.share_view;
+		//share view default to true here to restore the previous behaviour.
+		res["share_view"] =  res["share_view"].to_bool(true);
 
 		if (!parent_.params_.use_map_settings || res["village_gold"].empty()) {
 			res["village_gold"] = parent_.params_.village_gold;

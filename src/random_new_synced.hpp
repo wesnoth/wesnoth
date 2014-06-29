@@ -1,4 +1,5 @@
 /*
+   Copyright (C) 2014
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,7 +20,12 @@
 #include "random_new.hpp"
 #include "simple_rng.hpp"
 
+
+#ifndef INCL_BOOST_FUNCTION_HPP_
+#define INCL_BOOST_FUNCTION_HPP_
 #include <boost/function.hpp>
+#endif
+
 
 
 /*
@@ -37,7 +43,7 @@ namespace random_new
 	private:
 		void initialize();
 		bool has_valid_seed_;
-		boost::function0<int> seed_generator_; 
+		boost::function0<int> seed_generator_;
 		//TODO: replayce this by boost::random::mt19937 or similar
 		rand_rng::simple_rng gen_;
 	};

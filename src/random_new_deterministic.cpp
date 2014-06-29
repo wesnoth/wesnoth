@@ -1,4 +1,5 @@
 /*
+   Copyright (C) 2014
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,13 +16,13 @@
 
 namespace random_new
 {
-	
+
 	rng_deterministic::rng_deterministic(rand_rng::simple_rng& gen)
 		: generator_(gen)
 	{
 
 	}
-	
+
 	rng_deterministic::~rng_deterministic()
 	{
 

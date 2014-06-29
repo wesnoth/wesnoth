@@ -25,6 +25,9 @@
 
 #include "arrow.hpp"
 #include "config.hpp"
+#include "fake_unit_manager.hpp"
+#include "fake_unit_ptr.hpp"
+#include "game_board.hpp"
 #include "game_end_exceptions.hpp"
 #include "mouse_events.hpp"
 #include "play_controller.hpp"
@@ -32,6 +35,7 @@
 #include "resources.hpp"
 #include "team.hpp"
 #include "unit.hpp"
+#include "unit_animation_component.hpp"
 #include "unit_display.hpp"
 #include "unit_map.hpp"
 
@@ -128,12 +132,11 @@ move::move(config const& cfg, bool hidden)
 	arrow_->set_path(route_->steps);
 
 	// Construct fake_unit_
-	fake_unit_.reset(new game_display::fake_unit(*get_unit()) );
+	fake_unit_ = fake_unit_ptr( UnitPtr(new unit(*get_unit())) , resources::fake_units );
 	if(hidden)
 		fake_unit_->set_hidden(true);
-	fake_unit_->place_on_game_display(resources::screen);
-	fake_unit_->set_ghosted(true);
-	unit_display::move_unit(route_->steps, *fake_unit_, false); //get facing right
+	fake_unit_->anim_comp().set_ghosted(true);
+	unit_display::move_unit(route_->steps, fake_unit_.get_unit_ptr(), false); //get facing right
 	fake_unit_->set_location(route_->steps.back());
 
 	this->init();
@@ -148,7 +151,7 @@ void move::init()
 	//than previous actions' fake units
 	if (fake_unit_)
 	{
-		fake_unit_->set_ghosted(true);
+		fake_unit_->anim_comp().set_ghosted(true);
 	}
 	side_actions_ptr side_actions = resources::teams->at(team_index()).get_side_actions();
 	side_actions::iterator action = side_actions->find_last_action_of(*(get_unit()));
@@ -157,7 +160,7 @@ void move::init()
 		if (move_ptr move = boost::dynamic_pointer_cast<class move>(*action))
 		{
 			if (move->fake_unit_)
-				move->fake_unit_->set_disabled_ghosted(true);
+				move->fake_unit_->anim_comp().set_disabled_ghosted(true);
 		}
 	}
 
@@ -186,6 +189,8 @@ void move::init()
 		arrow_texture_ = ARROW_TEXTURE_INVALID;
 	}
 }
+
+move::~move(){}
 
 void move::accept(visitor& v)
 {
@@ -272,13 +277,13 @@ void move::execute(bool& success, bool& complete)
 	}
 }
 
-unit* move::get_unit() const
+UnitPtr move::get_unit() const
 {
 	unit_map::iterator itor = resources::units->find(unit_underlying_id_);
 	if (itor.valid())
-		return &*itor;
+		return itor.get_shared_ptr();
 	else
-		return NULL;
+		return UnitPtr();
 }
 
 map_location move::get_source_hex() const
@@ -305,9 +310,9 @@ bool move::calculate_new_route(const map_location& source_hex, const map_locatio
 	pathfind::plain_route new_plain_route;
 	pathfind::shortest_path_calculator path_calc(*get_unit(),
 						resources::teams->at(team_index()),
-						*resources::teams, *resources::game_map);
+						*resources::teams, resources::gameboard->map());
 	new_plain_route = pathfind::a_star_search(source_hex,
-						dest_hex, 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
+						dest_hex, 10000, &path_calc, resources::gameboard->map().w(), resources::gameboard->map().h());
 	if (new_plain_route.move_cost >= path_calc.getNoPathValue()) return false;
 	route_.reset(new pathfind::marked_route(pathfind::mark_route(new_plain_route)));
 	calculate_move_cost();

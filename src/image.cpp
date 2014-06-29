@@ -31,6 +31,7 @@
 #include "gettext.hpp"
 #include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"
+#include "video.hpp"
 
 #include "SDL_image.h"
 
@@ -59,6 +60,8 @@ struct cache_item
 	T item;
 	bool loaded;
 };
+
+
 
 namespace image {
 
@@ -121,6 +124,13 @@ image::image_cache images_,
 		scaled_to_hex_images_,
 		tod_colored_images_,
 		brightened_images_;
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+/** Rexture caches */
+image::texture_cache txt_images_,
+		txt_hexed_images_,
+		txt_brightened_images_;
+#endif
 
 // cache storing if each image fit in a hex
 image::bool_cache in_hex_info_;
@@ -450,11 +460,11 @@ static void add_localized_overlay (const std::string& ovr_file, surface &orig_su
 	sdl_blit(ovr_surf, 0, orig_surf, &area);
 }
 
-surface locator::load_image_file() const
+static surface load_image_file(const image::locator &loc)
 {
 	surface res;
 
-	std::string location = get_binary_file_location("images", val_.filename_);
+	std::string location = get_binary_file_location("images", loc.get_filename());
 
 
 	{
@@ -475,13 +485,65 @@ surface locator::load_image_file() const
 		}
 	}
 
-	if (res.null() && !val_.filename_.empty()) {
-		ERR_DP << "could not open image '" << val_.filename_ << "'" << std::endl;
-		if (game_config::debug && val_.filename_ != game_config::images::missing)
+	if (res.null() && !loc.get_filename().empty()) {
+		ERR_DP << "could not open image '" << loc.get_filename() << "'" << std::endl;
+		if (game_config::debug && loc.get_filename() != game_config::images::missing)
 			return get_image(game_config::images::missing, UNSCALED);
 	}
 
 	return res;
+}
+
+static surface load_image_sub_file(const image::locator &loc)
+{
+	surface surf = get_image(loc.get_filename(), UNSCALED);
+	if(surf == NULL)
+		return NULL;
+
+	modification_queue mods = modification::decode(loc.get_modifications());
+
+	while(!mods.empty()) {
+		modification* mod = mods.top();
+		mods.pop();
+
+		try {
+			surf = (*mod)(surf);
+		} catch(const image::modification::texception& e) {
+			ERR_CFG << "Failed to apply a modification to an image:\n"
+				<< "Image: " << loc.get_filename() << ".\n"
+				<< "Modifications: " << loc.get_modifications() << ".\n"
+				<< "Error: " << e.message;
+		}
+		delete mod;
+	}
+
+	if(loc.get_loc().valid()) {
+		SDL_Rect srcrect = sdl::create_rect(
+									   ((tile_size*3) / 4) * loc.get_loc().x
+									   , tile_size * loc.get_loc().y + (tile_size / 2) * (loc.get_loc().x % 2)
+									   , tile_size
+									   , tile_size);
+
+		if(loc.get_center_x() >= 0 && loc.get_center_y() >= 0){
+			srcrect.x += surf->w/2 - loc.get_center_x();
+			srcrect.y += surf->h/2 - loc.get_center_y();
+		}
+
+		// cut and hex mask, but also check and cache if empty result
+		surface cut(cut_surface(surf, srcrect));
+		bool is_empty = false;
+		surf = mask_surface(cut, get_hexmask(), &is_empty);
+		// discard empty images to free memory
+		if(is_empty) {
+			// Safe because those images are only used by terrain rendering
+			// and it filters them out.
+			// A safer and more general way would be to keep only one copy of it
+			surf = NULL;
+		}
+		loc.add_to_cache(is_empty_hex_, is_empty);
+	}
+
+	return surf;
 }
 
 //small utility function to store an int from (-256,254) to an signed char
@@ -544,75 +606,34 @@ static surface apply_light(surface surf, const light_string& ls){
 	return light_surface(surf, lightmap);
 }
 
-surface locator::load_image_sub_file() const
-{
-	surface surf = get_image(val_.filename_, UNSCALED);
-	if(surf == NULL)
-		return NULL;
-
-	modification_queue mods = modification::decode(val_.modifications_);
-
-	while(!mods.empty()) {
-		modification* mod = mods.top();
-		mods.pop();
-
-		try {
-			surf = (*mod)(surf);
-		} catch(const image::modification::texception& e) {
-			ERR_CFG << "Failed to apply a modification to an image:\n"
-				<< "Image: " << val_.filename_ << ".\n"
-				<< "Modifications: " << val_.modifications_ << ".\n"
-				<< "Error: " << e.message;
-		}
-		delete mod;
-	}
-
-	if(val_.loc_.valid()) {
-		SDL_Rect srcrect = sdl::create_rect(
-									   ((tile_size*3) / 4) * val_.loc_.x
-									   , tile_size * val_.loc_.y + (tile_size / 2) * (val_.loc_.x % 2)
-									   , tile_size
-									   , tile_size);
-
-		if(val_.center_x_ >= 0 && val_.center_y_>= 0){
-			srcrect.x += surf->w/2 - val_.center_x_;
-			srcrect.y += surf->h/2 - val_.center_y_;
-		}
-
-		// cut and hex mask, but also check and cache if empty result
-		surface cut(cut_surface(surf, srcrect));
-		bool is_empty = false;
-		surf = mask_surface(cut, get_hexmask(), &is_empty);
-		// discard empty images to free memory
-		if(is_empty) {
-			// Safe because those images are only used by terrain rendering
-			// and it filters them out.
-			// A safer and more general way would be to keep only one copy of it
-			surf = NULL;
-		}
-		add_to_cache(is_empty_hex_, is_empty);
-	}
-
-	return surf;
-}
-
 bool locator::file_exists() const
 {
 	return !get_binary_file_location("images", val_.filename_).empty();
 }
 
-surface locator::load_from_disk() const
+surface load_from_disk(const locator &loc)
 {
-	switch(val_.type_) {
-		case FILE:
-			return load_image_file();
-		case SUB_FILE:
-			return load_image_sub_file();
+	switch(loc.get_type()) {
+		case locator::FILE:
+			return load_image_file(loc);
+		case locator::SUB_FILE:
+			return load_image_sub_file(loc);
 		default:
 			return surface(NULL);
 	}
 }
 
+#if SDL_VERSION_ATLEAST(2,0,0)
+sdl::ttexture load_texture(const locator &loc, const int access)
+{
+	surface img = load_from_disk(loc);
+	if (!img.null()) {
+		return CVideo::get_window()->create_texture(access, img);
+	} else {
+		return sdl::ttexture();
+	}
+}
+#endif
 
 manager::manager() {}
 
@@ -848,7 +869,7 @@ surface get_image(const image::locator& i_locator, TYPE type)
 	switch(type) {
 	case UNSCALED:
 		// If type is unscaled, directly load the image from the disk.
-		res = i_locator.load_from_disk();
+		res = load_from_disk(i_locator);
 		break;
 	case TOD_COLORED:
 		res = get_tod_colored(i_locator);
@@ -880,6 +901,68 @@ surface get_image(const image::locator& i_locator, TYPE type)
 
 	return res;
 }
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+sdl::ttexture get_texture(const locator& loc, TYPE type)
+{
+	if (loc.is_void()) {
+		return sdl::ttexture();
+	}
+
+	texture_cache *cache;
+
+	switch (type) {
+	case UNSCALED:
+	case SCALED_TO_ZOOM:
+		cache = &txt_images_;
+		break;
+	case BRIGHTENED:
+		cache = &txt_brightened_images_;
+		break;
+	case HEXED:
+	case SCALED_TO_HEX:
+	case TOD_COLORED:
+		cache = &txt_hexed_images_;
+		break;
+	default:
+		return sdl::ttexture();
+	}
+
+	if (!loc.in_cache(*cache)) {
+		if (type == UNSCALED || type == SCALED_TO_ZOOM) {
+			sdl::ttexture txt = load_texture(loc);
+			loc.add_to_cache(*cache, txt);
+		} else if (type == BRIGHTENED) {
+			surface surf = get_brightened(loc);
+			sdl::ttexture txt = CVideo::get_window()->create_texture(SDL_TEXTUREACCESS_STATIC, surf);
+			loc.add_to_cache(*cache, txt);
+		} else {
+			surface surf = get_hexed(loc);
+			sdl::ttexture txt = CVideo::get_window()->create_texture(SDL_TEXTUREACCESS_STATIC, surf);
+			loc.add_to_cache(*cache, txt);
+		}
+	}
+
+	sdl::ttexture result = loc.locate_in_cache(*cache);
+
+	switch (type) {
+	case UNSCALED:
+	case HEXED:
+	case BRIGHTENED:
+		break;
+	case TOD_COLORED:
+		result.set_color_mod(red_adjust, green_adjust, blue_adjust);
+	case SCALED_TO_ZOOM:
+	case SCALED_TO_HEX:
+		result.set_scale(zoom, zoom);
+		break;
+	default:
+		return sdl::ttexture();
+	}
+
+	return result;
+}
+#endif
 
 surface get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type)
 {

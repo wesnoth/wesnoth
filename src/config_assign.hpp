@@ -1,4 +1,5 @@
 /*
+   Copyright (C) 2014
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -29,7 +30,7 @@ public:
 	{
 		this->operator()(tagname, child);
 	}
-	
+
 	template <typename AT>
 	config_of& operator()(const std::string& attrname, AT value)
 	{

@@ -13,27 +13,41 @@
 */
 
 #include "playturn.hpp"
+#include "global.hpp"
 
-#include "actions/undo.hpp"
-#include "construct_dialog.hpp"
-#include "game_display.hpp"
-#include "game_end_exceptions.hpp"
-#include "game_preferences.hpp"
-#include "gettext.hpp"
+#include "actions/undo.hpp"             // for undo_list
+#include "chat_events.hpp"              // for chat_handler, etc
+#include "config.hpp"                   // for config, etc
+#include "display_chat_manager.hpp"	// for add_chat_message, add_observer, etc
+#include "formula_string_utils.hpp"     // for vgettext
+#include "game_board.hpp"               // for game_board
+#include "game_display.hpp"             // for game_display
+#include "game_end_exceptions.hpp"      // for end_level_exception, etc
+#include "gettext.hpp"                  // for _
 #include "gui/dialogs/simple_item_selector.hpp"
-#include "log.hpp"
+#include "log.hpp"                      // for LOG_STREAM, logger, etc
+#include "make_enum.hpp"                // for bad_enum_cast
 #include "map_label.hpp"
-#include "replay.hpp"
-#include "resources.hpp"
-#include "whiteboard/manager.hpp"
-#include "formula_string_utils.hpp"
-#include "play_controller.hpp"
-#include "savegame.hpp"
+#include "network.hpp"                  // for error
+#include "play_controller.hpp"          // for play_controller
+#include "playturn_network_adapter.hpp"  // for playturn_network_adapter
+#include "preferences.hpp"              // for message_bell
+#include "replay.hpp"                   // for replay, recorder, do_replay, etc
+#include "resources.hpp"                // for gameboard, screen, etc
+#include "serialization/string_utils.hpp"  // for string_map
+#include "team.hpp"                     // for team, team::CONTROLLER::AI, etc
+#include "tstring.hpp"                  // for operator==
+#include "util.hpp"                     // for lexical_cast
+#include "whiteboard/manager.hpp"       // for manager
+#include "widgets/button.hpp"           // for button
 
-#include <boost/foreach.hpp>
-
-#include <cassert>
-#include <ctime>
+#include <boost/foreach.hpp>            // for auto_any_base, etc
+#include <boost/shared_ptr.hpp>         // for shared_ptr
+#include <cassert>                      // for assert
+#include <cstdlib>                     // for atoi
+#include <ctime>                        // for time, NULL
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <vector>                       // for vector
 
 static lg::log_domain log_network("network");
 #define ERR_NW LOG_STREAM(err, log_network)
@@ -118,8 +132,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data_from_reader(bool 
 
 turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg, bool skip_replay)
 {
-	// we cannot be connected to multiple peers anymore because 
-	// the simple wesnothserver implementation in wesnoth was removed years ago. 
+	// we cannot be connected to multiple peers anymore because
+	// the simple wesnothserver implementation in wesnoth was removed years ago.
 	assert(network::nconnections() <= 1);
 	assert(cfg.all_children_count() == 1);
 	assert(cfg.attribute_range().first == cfg.attribute_range().second);
@@ -130,23 +144,23 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 	if (const config &msg = cfg.child("message"))
 	{
-		resources::screen->add_chat_message(time(NULL), msg["sender"], msg["side"],
+		resources::screen->get_chat_manager().add_chat_message(time(NULL), msg["sender"], msg["side"],
 				msg["message"], events::chat_handler::MESSAGE_PUBLIC,
 				preferences::message_bell());
 	}
 	else if (const config &msg = cfg.child("whisper") /*&& is_observer()*/)
 	{
-		resources::screen->add_chat_message(time(NULL), "whisper: " + msg["sender"].str(), 0,
+		resources::screen->get_chat_manager().add_chat_message(time(NULL), "whisper: " + msg["sender"].str(), 0,
 				msg["message"], events::chat_handler::MESSAGE_PRIVATE,
 				preferences::message_bell());
 	}
 	else if (const config &ob = cfg.child("observer") )
 	{
-		resources::screen->add_observer(ob["name"]);
+		resources::screen->get_chat_manager().add_observer(ob["name"]);
 	}
 	else if (const config &ob = cfg.child("observer_quit"))
 	{
-		resources::screen->remove_observer(ob["name"]);
+		resources::screen->get_chat_manager().remove_observer(ob["name"]);
 	}
 	else if (cfg.child("leave_game")) {
 		throw network::error("");
@@ -183,7 +197,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			} catch (bad_enum_cast & e) {
 				ERR_NW << "Bad [change_controller] message from server:\n" << e.what() << std::endl << change.debug() << std::endl;
 				return PROCESS_CONTINUE;
-			}		
+			}
 
 			bool was_local = tm.is_local();
 			const team::CONTROLLER old_controller = tm.controller();
@@ -194,7 +208,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				resources::controller->on_not_observer();
 			}
 
-			if (is_observer() || (resources::gameboard->teams())[resources::screen->playing_team()].is_human()) {
+			if (resources::gameboard->is_observer() || (resources::gameboard->teams())[resources::screen->playing_team()].is_human()) {
 				resources::screen->set_team(resources::screen->playing_team());
 				resources::screen->redraw_everything();
 				resources::screen->recalculate_minimap();
@@ -215,19 +229,17 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			ERR_NW << "Bad [change_controller] signal from server, side out of bounds: " << change.debug() << std::endl;
 		}
 	}
-	
+
 	else if (const config &side_drop_c = cfg.child("side_drop"))
 	{
-		const std::string& side_drop = side_drop_c["side_num"].str();
+		const int  side_drop = side_drop_c["side_num"].to_int(0);
 		const std::string controller = side_drop_c["controller"];
-		//if a side has dropped out of the game.
-		int side = atoi(side_drop.c_str());
-		size_t index = side -1;
+		size_t index = side_drop -1;
 
-		bool restart = side == resources::screen->playing_side();
+		bool restart = side_drop == resources::screen->playing_side();
 
 		if (index >= resources::teams->size()) {
-			ERR_NW << "unknown side " << side << " is dropping game" << std::endl;
+			ERR_NW << "unknown side " << side_drop << " is dropping game" << std::endl;
 			throw network::error("");
 		}
 
@@ -240,7 +252,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		}
 
 		if (ctrl == team::AI){
-			resources::gameboard->side_drop_to(side, ctrl);
+			resources::gameboard->side_drop_to(side_drop, ctrl);
 			return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 		}
 
@@ -274,7 +286,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			//get all allies in as options to transfer control
 			BOOST_FOREACH(const team &t, resources::gameboard->teams())
 			{
-				if (!t.is_enemy(side) && !t.is_human() && !t.is_ai() && !t.is_network_ai() && !t.is_empty()
+				if (!t.is_enemy(side_drop) && !t.is_human() && !t.is_ai() && !t.is_network_ai() && !t.is_empty()
 					&& t.current_player() != tm.current_player())
 				{
 					//if this is an ally of the dropping side and it is not us (choose local player
@@ -300,7 +312,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		switch(action) {
 			case 0:
 				resources::controller->on_not_observer();
-				resources::gameboard->side_drop_to(side, team::AI);
+				resources::gameboard->side_drop_to(side_drop, team::AI);
 				change_controller(side_drop, team::CONTROLLER_to_string(team::AI));
 
 				resources::controller->maybe_do_init_side();
@@ -309,14 +321,14 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 			case 1:
 				resources::controller->on_not_observer();
-				resources::gameboard->side_drop_to(side, team::HUMAN);
+				resources::gameboard->side_drop_to(side_drop, team::HUMAN);
 				change_controller(side_drop, team::CONTROLLER_to_string(team::HUMAN));
 
 				resources::controller->maybe_do_init_side();
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 			case 2:
-				resources::gameboard->side_drop_to(side, team::IDLE);
+				resources::gameboard->side_drop_to(side_drop, team::IDLE);
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 
@@ -330,7 +342,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 					{
 						// Server thinks this side is ours now so in case of error transferring side we have to make local state to same as what server thinks it is.
-						resources::gameboard->side_drop_to(side, team::IDLE);
+						resources::gameboard->side_drop_to(side_drop, team::IDLE);
 					}
 
 					const size_t index = static_cast<size_t>(action - first_observer_option_idx);
@@ -340,7 +352,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 						size_t i = index - observers.size();
 						change_side_controller(side_drop, allies[i]->current_player());
 					} else {
-						resources::gameboard->side_drop_to(side, team::AI);
+						resources::gameboard->side_drop_to(side_drop, team::AI);
 						change_controller(side_drop, team::CONTROLLER_to_string(team::AI));
 					}
 					return restart ? PROCESS_RESTART_TURN_TEMPORARY_LOCAL : PROCESS_SIDE_TEMPORARY_LOCAL;
@@ -378,7 +390,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	return PROCESS_CONTINUE;
 }
 
-void turn_info::change_controller(const std::string& side, const std::string& controller)
+void turn_info::change_controller(int side, const std::string& controller)
 {
 	config cfg;
 	config& change = cfg.add_child("change_controller");
@@ -389,7 +401,7 @@ void turn_info::change_controller(const std::string& side, const std::string& co
 }
 
 
-void turn_info::change_side_controller(const std::string& side, const std::string& player)
+void turn_info::change_side_controller(int side, const std::string& player)
 {
 	config cfg;
 	config& change = cfg.add_child("change_controller");

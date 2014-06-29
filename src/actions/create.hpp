@@ -21,12 +21,13 @@
 #ifndef ACTIONS_CREATE_H_INCLUDED
 #define ACTIONS_CREATE_H_INCLUDED
 
-class  config;
-class  team;
-class  vconfig;
+class config;
+class team;
+class unit_type;
+class vconfig;
 
 #include "../map_location.hpp"
-#include "../unit.hpp"
+#include "../unit_ptr.hpp"
 
 
 class unit_creator {
@@ -71,16 +72,14 @@ private:
 bool can_recruit_from(const map_location& leader_loc, int side);
 /// Checks to see if @a leader (assumed a leader) can recruit somewhere.
 /// This takes into account terrain, shroud, and the presence of visible units.
-inline bool can_recruit_from(const unit& leader)
-{ return can_recruit_from(leader.get_location(), leader.side()); }
+bool can_recruit_from(const unit& leader);
 
 /// Checks to see if a leader at @a leader_loc could recruit on @a recruit_loc.
 bool can_recruit_on(const map_location& leader_loc, const map_location& recruit_loc, int side);
 /// Checks to see if @a leader (assumed a leader) can recruit on @a recruit_loc.
 /// This takes into account terrain, shroud, and whether or not there is already
 /// a visible unit at recruit_loc.
-inline bool can_recruit_on(const unit& leader, const map_location& recruit_loc)
-{ return can_recruit_on(leader.get_location(), recruit_loc, leader.side()); }
+bool can_recruit_on(const unit& leader, const map_location& recruit_loc);
 
 
 namespace actions {
@@ -190,7 +189,7 @@ const std::set<std::string> get_recruits(int side, const map_location &recruit_l
  * @param recall_loc the hex field being part of the castle the player wants to recruit on or from.
  * @return a set of units that can be recalled by @a side on (or from) @a recall_loc or the full recall list of @a side.
  */
-const std::vector<const unit*> get_recalls(int side, const map_location &recall_loc);
+std::vector<UnitConstPtr > get_recalls(int side, const map_location &recall_loc);
 
 /**
  * Place a unit into the game.

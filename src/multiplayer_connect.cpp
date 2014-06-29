@@ -20,11 +20,13 @@
 
 #include "ai/configuration.hpp"
 #include "dialogs.hpp"
+#include "display_chat_manager.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "notifications/notifications.hpp"
 #include "wml_separators.hpp"
 #include "sound.hpp"
 
@@ -395,7 +397,7 @@ connect::connect(game_display& disp, const std::string& game_name,
 	if (get_result() == QUIT || get_result() == CREATE) {
 		return;
 	}
-	if (engine_.level()["id"].empty()) {
+	if (engine_.scenario()["id"].empty()) {
 		throw config::error(_("The scenario is invalid because it has no id."));
 	}
 
@@ -426,7 +428,7 @@ connect::connect(game_display& disp, const std::string& game_name,
 		side_pos_y_offset += 60;
 	}
 
-	append_to_title(" — " + engine_.level()["name"].t_str());
+	append_to_title(" — " + engine_.scenario()["name"].t_str());
 	gold_title_label_.hide(params().saved_game);
 	income_title_label_.hide(params().saved_game);
 
@@ -559,7 +561,7 @@ void connect::process_network_data(const config& data,
 	if (!was_able_to_start && engine_.can_start_game()) {
 		DBG_MP << "play party full sound" << std::endl;
 		sound::play_UI_sound(game_config::sounds::party_full_bell);
-		game_display::get_singleton()->send_notification(_("Wesnoth"), _ ("Ready to start!"));
+		notifications::send_notification(_("Wesnoth"), _ ("Ready to start!"));
 	}
 }
 

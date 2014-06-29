@@ -22,27 +22,30 @@
 #ifndef AI_MANAGER_HPP_INCLUDED
 #define AI_MANAGER_HPP_INCLUDED
 
-#include "../config.hpp"
-#include "../generic_event.hpp"
+#include "../config.hpp"                // for config, etc
+#include "../global.hpp"
+#include "game_info.hpp"                // for side_number, ai_ptr
 
-#include "game_info.hpp"
+#include <boost/shared_ptr.hpp>         // for shared_ptr
+#include <deque>                        // for deque
+#include <map>                          // for map, map<>::value_compare
+#include <stack>                        // for stack
+#include <string>                       // for string
 
-#include <stack>
-#include <deque>
+namespace ai { class ai_composite; }  // lines 45-45
+namespace ai { class ai_context; }  // lines 42-42
+namespace ai { class component; }  // lines 43-43
+namespace ai { class default_ai_context; }  // lines 41-41
+namespace ai { class interface; }  // lines 36-36
+namespace ai { class readonly_context; }  // lines 39-39
+namespace ai { class readwrite_context; }  // lines 40-40
+namespace ai { class side_context; }  // lines 38-38
+namespace events { class generic_event; }
+namespace events { class observer; }
 
 
 namespace ai {
 
-class interface;
-
-class side_context;
-class readonly_context;
-class readwrite_context;
-class default_ai_context;
-class ai_context;
-class component;
-
-class ai_composite;
 typedef boost::shared_ptr<ai_composite> composite_ai_ptr;
 
 /**

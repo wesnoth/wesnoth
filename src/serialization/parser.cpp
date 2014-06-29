@@ -70,7 +70,7 @@ private:
 	void error(const std::string& message, const std::string& pos_format = "");
 
 	config& cfg_;
-	tokenizer *tok_;
+	tokenizer tok_;
 	abstract_validator *validator_;
 
 	struct element {
@@ -90,7 +90,7 @@ private:
 
 parser::parser(config &cfg, std::istream &in, abstract_validator * validator)
 			   :cfg_(cfg),
-			   tok_(new tokenizer(in)),
+			   tok_(in),
 			   validator_(validator),
 			   elements()
 {
@@ -98,9 +98,7 @@ parser::parser(config &cfg, std::istream &in, abstract_validator * validator)
 
 
 parser::~parser()
-{
-	delete tok_;
-}
+{}
 
 void parser::operator()()
 {
@@ -108,9 +106,9 @@ void parser::operator()()
 	elements.push(element(&cfg_, ""));
 
 	do {
-		tok_->next_token();
+		tok_.next_token();
 
-		switch(tok_->current_token().type) {
+		switch(tok_.current_token().type) {
 		case token::LF:
 			continue;
 		case '[':
@@ -120,13 +118,13 @@ void parser::operator()()
 			parse_variable();
 			break;
 		default:
-			if (static_cast<unsigned char>(tok_->current_token().value[0]) == 0xEF &&
-			    static_cast<unsigned char>(tok_->next_token().value[0])    == 0xBB &&
-			    static_cast<unsigned char>(tok_->next_token().value[0])    == 0xBF)
+			if (static_cast<unsigned char>(tok_.current_token().value[0]) == 0xEF &&
+			    static_cast<unsigned char>(tok_.next_token().value[0])    == 0xBB &&
+			    static_cast<unsigned char>(tok_.next_token().value[0])    == 0xBF)
 			{
 				utils::string_map i18n_symbols;
 				std::stringstream ss;
-				ss << tok_->get_start_line() << " " << tok_->get_file();
+				ss << tok_.get_start_line() << " " << tok_.get_file();
 				ERR_CF << lineno_string(i18n_symbols,
 										ss.str(),
 										"Skipping over a utf8 BOM at $pos")
@@ -139,7 +137,7 @@ void parser::operator()()
 			break;
 		}
 		loadscreen::increment_progress();
-	} while (tok_->current_token().type != token::END);
+	} while (tok_.current_token().type != token::END);
 
 	// The main element should be there. If it is not, this is a parser error.
 	assert(!elements.empty());
@@ -157,28 +155,28 @@ void parser::operator()()
 
 void parser::parse_element()
 {
-	tok_->next_token();
+	tok_.next_token();
 	std::string elname;
 	config* current_element = NULL;
-	switch(tok_->current_token().type) {
+	switch(tok_.current_token().type) {
 	case token::STRING: // [element]
-		elname = tok_->current_token().value;
-		if (tok_->next_token().type != ']')
+		elname = tok_.current_token().value;
+		if (tok_.next_token().type != ']')
 			error(_("Unterminated [element] tag"));
 		// Add the element
 		current_element = &(elements.top().cfg->add_child(elname));
-		elements.push(element(current_element, elname, tok_->get_start_line(), tok_->get_file()));
+		elements.push(element(current_element, elname, tok_.get_start_line(), tok_.get_file()));
 		if (validator_){
-			validator_->open_tag(elname,tok_->get_start_line(),
-								  tok_->get_file());
+			validator_->open_tag(elname,tok_.get_start_line(),
+								  tok_.get_file());
 		}
 		break;
 
 	case '+': // [+element]
-		if (tok_->next_token().type != token::STRING)
+		if (tok_.next_token().type != token::STRING)
 			error(_("Invalid tag name"));
-		elname = tok_->current_token().value;
-		if (tok_->next_token().type != ']')
+		elname = tok_.current_token().value;
+		if (tok_.next_token().type != ']')
 			error(_("Unterminated [+element] tag"));
 
 		// Find the last child of the current element whose name is
@@ -186,24 +184,24 @@ void parser::parse_element()
 		if (config &c = elements.top().cfg->child(elname, -1)) {
 			current_element = &c;
 			if (validator_){
-				validator_->open_tag(elname,tok_->get_start_line(),
-									 tok_->get_file(),true);
+				validator_->open_tag(elname,tok_.get_start_line(),
+									 tok_.get_file(),true);
 			}
 		} else {
 			current_element = &elements.top().cfg->add_child(elname);
 			if (validator_){
-				validator_->open_tag(elname,tok_->get_start_line(),
-									 tok_->get_file());
+				validator_->open_tag(elname,tok_.get_start_line(),
+									 tok_.get_file());
 			}
 		}
-		elements.push(element(current_element, elname, tok_->get_start_line(), tok_->get_file()));
+		elements.push(element(current_element, elname, tok_.get_start_line(), tok_.get_file()));
 		break;
 
 	case '/': // [/element]
-		if(tok_->next_token().type != token::STRING)
+		if(tok_.next_token().type != token::STRING)
 			error(_("Invalid closing tag name"));
-		elname = tok_->current_token().value;
-		if(tok_->next_token().type != ']')
+		elname = tok_.current_token().value;
+		if(tok_.next_token().type != ']')
 			error(_("Unterminated closing tag"));
 		if(elements.size() <= 1)
 			error(_("Unexpected closing tag"));
@@ -235,12 +233,12 @@ void parser::parse_variable()
 	std::vector<std::string> variables;
 	variables.push_back("");
 
-	while (tok_->current_token().type != '=') {
-		switch(tok_->current_token().type) {
+	while (tok_.current_token().type != '=') {
+		switch(tok_.current_token().type) {
 		case token::STRING:
 			if(!variables.back().empty())
 				variables.back() += ' ';
-			variables.back() += tok_->current_token().value;
+			variables.back() += tok_.current_token().value;
 			break;
 		case ',':
 			if(variables.back().empty()) {
@@ -253,7 +251,7 @@ void parser::parse_variable()
 			error(_("Unexpected characters after variable name (expected , or =)"));
 			break;
 		}
-		tok_->next_token();
+		tok_.next_token();
 	}
 	if(variables.back().empty())
 		error(_("Empty variable name"));
@@ -264,10 +262,10 @@ void parser::parse_variable()
 
 	bool ignore_next_newlines = false, previous_string = false;
 	while(1) {
-		tok_->next_token();
+		tok_.next_token();
 		assert(curvar != variables.end());
 
-		switch (tok_->current_token().type) {
+		switch (tok_.current_token().type) {
 		case ',':
 			if ((curvar+1) != variables.end()) {
 				if (buffer.translatable())
@@ -276,8 +274,8 @@ void parser::parse_variable()
 					cfg[*curvar] = buffer.value();
 				if(validator_){
 					validator_->validate_key (cfg,*curvar,buffer.value(),
-											  tok_->get_start_line (),
-											  tok_->get_file ());
+											  tok_.get_start_line (),
+											  tok_.get_file ());
 				}
 				buffer = t_string_base();
 				++curvar;
@@ -286,17 +284,17 @@ void parser::parse_variable()
 			}
 			break;
 		case '_':
-			tok_->next_token();
-			switch (tok_->current_token().type) {
+			tok_.next_token();
+			switch (tok_.current_token().type) {
 			case token::UNTERMINATED_QSTRING:
 				error(_("Unterminated quoted string"));
 				break;
 			case token::QSTRING:
-				buffer += t_string_base(tok_->current_token().value, tok_->textdomain());
+				buffer += t_string_base(tok_.current_token().value, tok_.textdomain());
 				break;
 			default:
 				buffer += "_";
-				buffer += tok_->current_token().value;
+				buffer += tok_.current_token().value;
 				break;
 			case token::END:
 			case token::LF:
@@ -311,10 +309,10 @@ void parser::parse_variable()
 			if (previous_string) buffer += " ";
 			//nobreak
 		default:
-			buffer += tok_->current_token().value;
+			buffer += tok_.current_token().value;
 			break;
 		case token::QSTRING:
-			buffer += tok_->current_token().value;
+			buffer += tok_.current_token().value;
 			break;
 		case token::UNTERMINATED_QSTRING:
 			error(_("Unterminated quoted string"));
@@ -326,7 +324,7 @@ void parser::parse_variable()
 			goto finish;
 		}
 
-		previous_string = tok_->current_token().type == token::STRING;
+		previous_string = tok_.current_token().type == token::STRING;
 		ignore_next_newlines = false;
 	}
 
@@ -337,8 +335,8 @@ void parser::parse_variable()
 		cfg[*curvar] = buffer.value();
 	if(validator_){
 		validator_->validate_key (cfg,*curvar,buffer.value(),
-								  tok_->get_start_line (),
-								  tok_->get_file ());
+								  tok_.get_start_line (),
+								  tok_.get_file ());
 	}
 	while (++curvar != variables.end()) {
 		cfg[*curvar] = "";
@@ -382,11 +380,11 @@ void parser::error(const std::string& error_type, const std::string& pos_format)
 	i18n_symbols["error"] = error_type;
 
 	std::stringstream ss;
-	ss << tok_->get_start_line() << " " << tok_->get_file();
+	ss << tok_.get_start_line() << " " << tok_.get_file();
 
-#ifdef DEBUG
-	i18n_symbols["value"] = tok_->current_token().value;
-	i18n_symbols["previous_value"] = tok_->previous_token().value;
+#ifdef DEBUG_TOKENIZER
+	i18n_symbols["value"] = tok_.current_token().value;
+	i18n_symbols["previous_value"] = tok_.previous_token().value;
 
 	const std::string& tok_state =
 		_("Value: '$value' Previous: '$previous_value'");
@@ -443,10 +441,10 @@ void read_compressed(config &cfg, std::istream &file, abstract_validator * valid
 	// we never create empty compressed gzip files because boosts gzip fails at doing that.
 	// but empty compressed bz2 files are possible.
 	if(filter.peek() == EOF) {
-		LOG_CF << "Empty compressed file or error at reading a compressed file."; 
+		LOG_CF << "Empty compressed file or error at reading a compressed file.";
 		return;
 	}
-	
+
 
 	if(!filter.good()) {
 		LOG_CF << " filter.peek() != EOF but !filter.good(), this indicates a malformed gz stream, and can make wesnoth crash.";
@@ -461,7 +459,7 @@ void read_gz(config &cfg, std::istream &file, abstract_validator * validator)
 	read_compressed<boost::iostreams::gzip_decompressor>(cfg, file, validator);
 }
 
-/// might throw a std::ios_base::failure especially bzip2_error 
+/// might throw a std::ios_base::failure especially bzip2_error
 void read_bz2(config &cfg, std::istream &file, abstract_validator * validator)
 {
 	read_compressed<boost::iostreams::bzip2_decompressor>(cfg, file, validator);

@@ -35,6 +35,8 @@ function ca_return_guardian:execution(ai, cfg)
     end
 
     local nh = AH.next_hop(guardian, x, y)
+    if (not nh) then nh = { guardian.x, guardian.y } end
+
     AH.movefull_stopunit(ai, guardian, nh)
 end
 

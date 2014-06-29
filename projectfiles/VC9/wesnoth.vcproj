@@ -550,7 +550,7 @@
 			Name="Others"
 			>
 			<File
-				RelativePath="..\..\src\animated.i"
+				RelativePath="..\..\src\animated.tpp"
 				>
 			</File>
 			<File
@@ -8038,6 +8038,62 @@
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\formula_debugger.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\game_cache_options.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_with_VLD|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\game_cache_options.hpp"
 					>
 				</File>
 				<File
@@ -19672,6 +19728,62 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\sdl\rect.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\SDL\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\SDL\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\SDL\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Test_Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\SDL\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Test_Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\SDL\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\SDL\"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\src\sdl\rect.hpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\sdl\texture.cpp"
 				>
 				<FileConfiguration
@@ -19725,6 +19837,62 @@
 			</File>
 			<File
 				RelativePath="..\..\src\sdl\texture.hpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\sdl\utils.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\SDL\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\SDL\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\SDL\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Test_Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\SDL\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Test_Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\SDL\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\SDL\"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\src\sdl\utils.hpp"
 				>
 			</File>
 			<File
@@ -19853,6 +20021,14 @@
 			>
 		</File>
 		<File
+			RelativePath="..\..\src\carryover.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\carryover.hpp"
+			>
+		</File>
+		<File
 			RelativePath="..\..\src\chat_events.hpp"
 			>
 		</File>
@@ -19933,6 +20109,22 @@
 			>
 		</File>
 		<File
+			RelativePath="..\..\src\display_chat_manager.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\display_chat_manager.hpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\display_context.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\display_context.hpp"
+			>
+		</File>
+		<File
 			RelativePath="..\..\src\events.cpp"
 			>
 		</File>
@@ -19942,6 +20134,22 @@
 		</File>
 		<File
 			RelativePath="..\..\src\exceptions.hpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\fake_unit_manager.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\fake_unit_manager.hpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\fake_unit_ptr.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\fake_unit_ptr.hpp"
 			>
 		</File>
 		<File
@@ -20069,6 +20277,14 @@
 			>
 		</File>
 		<File
+			RelativePath="..\..\src\game_classification.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\game_classification.hpp"
+			>
+		</File>
+		<File
 			RelativePath="..\..\src\game_config.hpp"
 			>
 		</File>
@@ -20086,6 +20302,14 @@
 		</File>
 		<File
 			RelativePath="..\..\src\game_controller.hpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\game_data.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\game_data.hpp"
 			>
 		</File>
 		<File
@@ -20125,11 +20349,11 @@
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\gamestatus.cpp"
+			RelativePath="..\..\src\game_state.cpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\gamestatus.hpp"
+			RelativePath="..\..\src\game_state.hpp"
 			>
 		</File>
 		<File
@@ -20481,6 +20705,14 @@
 			>
 		</File>
 		<File
+			RelativePath="..\..\src\notifications\notifications.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\notifications\notifications.hpp"
+			>
+		</File>
+		<File
 			RelativePath="..\..\src\overlay.hpp"
 			>
 		</File>
@@ -20597,14 +20829,6 @@
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\random.cpp"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\random.hpp"
-			>
-		</File>
-		<File
 			RelativePath="..\..\src\random_new.cpp"
 			>
 		</File>
@@ -20626,6 +20850,14 @@
 		</File>
 		<File
 			RelativePath="..\..\src\random_new_synced.hpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\recall_list_manager.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\recall_list_manager.hpp"
 			>
 		</File>
 		<File
@@ -20681,6 +20913,22 @@
 			>
 		</File>
 		<File
+			RelativePath="..\..\src\save_index.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\save_index.hpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\saved_game.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\saved_game.hpp"
+			>
+		</File>
+		<File
 			RelativePath="..\..\src\savegame.cpp"
 			>
 		</File>
@@ -20697,14 +20945,6 @@
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\sdl_utils.cpp"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\sdl_utils.hpp"
-			>
-		</File>
-		<File
 			RelativePath="..\..\src\settings.cpp"
 			>
 		</File>
@@ -20713,15 +20953,15 @@
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\sha1.cpp"
+			RelativePath="..\..\src\utils\sha1.cpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\sha1.hpp"
+			RelativePath="..\..\src\utils\sha1.hpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\shared_object.hpp"
+			RelativePath="..\..\src\utils\shared_object.hpp"
 			>
 		</File>
 		<File
@@ -20813,11 +21053,23 @@
 			>
 		</File>
 		<File
+			RelativePath="..\..\src\syncmp_handler.hpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\syncmp_handler.cpp"
+			>
+		</File>
+		<File
 			RelativePath="..\..\src\team.cpp"
 			>
 		</File>
 		<File
 			RelativePath="..\..\src\team.hpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\teambuilder.hpp"
 			>
 		</File>
 		<File
@@ -20917,11 +21169,35 @@
 			>
 		</File>
 		<File
+			RelativePath="..\..\src\unit_animation_component.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\unit_animation_component.hpp"
+			>
+		</File>
+		<File
 			RelativePath="..\..\src\unit_display.cpp"
 			>
 		</File>
 		<File
 			RelativePath="..\..\src\unit_display.hpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\unit_drawer.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\unit_drawer.hpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\unit_formula_manager.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\unit_formula_manager.hpp"
 			>
 		</File>
 		<File
@@ -20965,6 +21241,10 @@
 			>
 		</File>
 		<File
+			RelativePath="..\..\src\unit_ptr.hpp"
+			>
+		</File>
+		<File
 			RelativePath="..\..\src\util.cpp"
 			>
 		</File>
@@ -21001,11 +21281,19 @@
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\windows_tray_notification.cpp"
+			RelativePath="..\..\src\notifications\windows_tray_notification.cpp"
 			>
 		</File>
 		<File
-			RelativePath="..\..\src\windows_tray_notification.hpp"
+			RelativePath="..\..\src\notifications\windows_tray_notification.hpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\wmi_pager.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\wmi_pager.hpp"
 			>
 		</File>
 		<File

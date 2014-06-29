@@ -20,7 +20,7 @@
 #include "SDL_image.h"
 #include "sdl/exception.hpp"
 #include "sdl/rect.hpp"
-#include "sdl_utils.hpp"
+#include "sdl/utils.hpp"
 
 #include <cassert>
 
@@ -40,8 +40,13 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, smooth_scaling_(false)
 	, flip_(SDL_FLIP_NONE)
 	, clip_(create_rect(0, 0, w, h))
+	, mod_r_(255)
+	, mod_g_(255)
+	, mod_b_(255)
+	, alpha_(255)
 	, source_surface_(NULL)
 {
+	SDL_SetTextureBlendMode(texture_, SDL_BLENDMODE_BLEND);
 	if(!texture_) {
 		throw texception("Failed to create a SDL_Texture object.", true);
 	}
@@ -58,6 +63,10 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, smooth_scaling_(false)
 	, flip_(SDL_FLIP_NONE)
 	, clip_()
+	, mod_r_(255)
+	, mod_g_(255)
+	, mod_b_(255)
+	, alpha_(255)
 	, source_surface_(IMG_Load(file.c_str()))
 {
 	if(source_surface_ == NULL) {
@@ -68,6 +77,21 @@ ttexture::ttexture(SDL_Renderer& renderer,
 }
 
 
+ttexture::ttexture()
+	: reference_count_(new unsigned(1))
+	, texture_(NULL)
+	, rotation_(0)
+	, hscale_(1)
+	, vscale_(1)
+	, smooth_scaling_(false)
+	, flip_(SDL_FLIP_NONE)
+	, clip_()
+	, mod_r_(255)
+	, mod_g_(255)
+	, mod_b_(255)
+	, alpha_(255)
+	, source_surface_(NULL)
+{}
 
 ttexture::~ttexture()
 {
@@ -94,6 +118,10 @@ ttexture::ttexture(const ttexture& texture)
 	, smooth_scaling_(texture.smooth_scaling_)
 	, flip_(texture.flip_)
 	, clip_(texture.clip_)
+	, mod_r_(texture.mod_r_)
+	, mod_g_(texture.mod_g_)
+	, mod_b_(texture.mod_b_)
+	, alpha_(texture.alpha_)
 	, source_surface_(texture.source_surface_)
 {
 	assert(reference_count_);
@@ -114,6 +142,10 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, smooth_scaling_(false)
 	, flip_(SDL_FLIP_NONE)
 	, clip_()
+	, mod_r_(255)
+	, mod_g_(255)
+	, mod_b_(255)
+	, alpha_(255)
 	, source_surface_(source_surface__)
 {
 	if(source_surface_ == NULL) {
@@ -136,6 +168,10 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, smooth_scaling_(false)
 	, flip_(SDL_FLIP_NONE)
 	, clip_()
+	, mod_r_(255)
+	, mod_g_(255)
+	, mod_b_(255)
+	, alpha_(255)
 	, source_surface_(
 			SDL_ConvertSurface(surface, surface->format, surface->flags))
 {
@@ -162,6 +198,8 @@ void ttexture::draw(SDL_Renderer& renderer, const int x, const int y)
 {
 	SDL_Rect dstrect = create_rect(x, y, clip_.w * hscale_, clip_.h * vscale_);
 
+	SDL_SetTextureAlphaMod(texture_, alpha_);
+	SDL_SetTextureColorMod(texture_, mod_r_, mod_g_, mod_b_);
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, smooth_scaling_ ? "linear" : "nearest");
 	SDL_RenderCopyEx(&renderer, texture_, &clip_, &dstrect,
 					 rotation_, NULL, flip_);
@@ -246,20 +284,20 @@ bool ttexture::flopped() const
 	return flip_ & SDL_FLIP_VERTICAL;
 }
 
-unsigned ttexture::width() const
+int ttexture::width() const
 {
 	int w;
 	SDL_QueryTexture(texture_,NULL, NULL, &w, NULL);
 
-	return w;
+	return w*hscale_;
 }
 
-unsigned ttexture::height() const
+int ttexture::height() const
 {
 	int h;
 	SDL_QueryTexture(texture_,NULL, NULL, NULL, &h);
 
-	return h;
+	return h*vscale_;
 }
 
 SDL_Rect ttexture::dimensions() const
@@ -269,6 +307,8 @@ SDL_Rect ttexture::dimensions() const
 	dim.y = 0;
 	SDL_QueryTexture(texture_, NULL, NULL, &dim.w, &dim.h);
 
+	dim.w *= hscale_;
+	dim.h *= vscale_;
 	return dim;
 }
 
@@ -292,26 +332,34 @@ Uint32 ttexture::format() const
 
 void ttexture::set_alpha(Uint8 alpha)
 {
-	SDL_SetTextureAlphaMod(texture_, alpha);
+	alpha_ = alpha;
 }
 
 Uint8 ttexture::alpha() const
 {
-	Uint8 res;
-	SDL_GetTextureAlphaMod(texture_, &res);
-	return res;
+	return alpha_;
 }
 
-void ttexture::set_blend_mode(SDL_BlendMode mode)
+void ttexture::set_color_mod(Uint8 r, Uint8 g, Uint8 b)
 {
-	SDL_SetTextureBlendMode(texture_, mode);
+	mod_r_ = r;
+	mod_g_ = g;
+	mod_b_ = b;
 }
 
-SDL_BlendMode ttexture::blend_mode() const
+Uint8 ttexture::red_mod() const
 {
-	SDL_BlendMode res;
-	SDL_GetTextureBlendMode(texture_, &res);
-	return res;
+	return mod_r_;
+}
+
+Uint8 ttexture::green_mod() const
+{
+	return mod_g_;
+}
+
+Uint8 ttexture::blue_mod() const
+{
+	return mod_b_;
 }
 
 void ttexture::update_pixels(SDL_Surface *surf)
@@ -330,6 +378,11 @@ void ttexture::update_pixels(SDL_Surface *surf)
 		source_surface_ = surf;
 
 	}
+}
+
+bool ttexture::null() const
+{
+	return texture_ == NULL;
 }
 
 void ttexture::initialise_from_surface(SDL_Renderer& renderer, const int access)
@@ -368,6 +421,7 @@ void ttexture::initialise_from_surface(SDL_Renderer& renderer, const int access)
 	} else {
 		throw texception("Unknown texture access mode.", false);
 	}
+	SDL_SetTextureBlendMode(texture_, SDL_BLENDMODE_BLEND);
 }
 
 } // namespace sdl

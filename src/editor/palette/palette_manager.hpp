@@ -17,7 +17,7 @@
  */
 
 #ifndef PALETTE_MANAGER_H_INCLUDED
-#define PALETTE_MANAGER H_INCLUDED
+#define PALETTE_MANAGER_H_INCLUDED
 
 #include "common_palette.hpp"
 

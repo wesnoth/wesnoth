@@ -16,7 +16,9 @@
 
 #include "animated.hpp"
 #include "config.hpp"
+#include "halo.hpp"
 #include "unit_frame.hpp"
+#include "unit_ptr.hpp"
 
 class attack_type;
 class display;
@@ -60,13 +62,14 @@ class unit_animation
                 void pause_animation();
                 void restart_animation();
 		int get_current_frame_begin_time() const{ return unit_anim_.get_current_frame_begin_time() ; }
-		void redraw(frame_parameters& value);
+		void redraw(frame_parameters& value, halo::manager & halo_man);
 		void clear_haloes();
 		bool invalidate(frame_parameters& value );
 		std::string debug() const;
 		friend std::ostream& operator << (std::ostream& outstream, const unit_animation& u_animation);
 
 	friend class unit;
+	friend class unit_drawer;
 
 	explicit unit_animation(const config &cfg, const std::string &frame_string = "");
 
@@ -87,7 +90,7 @@ class unit_animation
 				animated<unit_frame>(start_time),
 				accelerate(true),
 				parameters_(builder),
-				halo_id_(0),
+				halo_id_(),
 				last_frame_begin_time_(0),
 				cycles_(false)
 				{}
@@ -107,7 +110,7 @@ class unit_animation
 					, const std::string& offset = ""
 					, const std::string& layer = ""
 					, const std::string& modifiers = "");
-			void redraw( const frame_parameters& value,const map_location &src, const map_location &dst);
+			void redraw( const frame_parameters& value,const map_location &src, const map_location &dst, halo::manager & halo_man);
 			std::set<map_location> get_overlaped_hex(const frame_parameters& value,const map_location &src, const map_location &dst);
 			void start_animation(int start_time);
 			const frame_parameters parameters(const frame_parameters & default_val) const { return get_current_frame().merge_parameters(get_current_frame_time(),parameters_.parameters(get_animation_time()-get_begin_time()),default_val); }
@@ -117,7 +120,7 @@ class unit_animation
 
 			//animation params that can be locally overridden by frames
 			frame_parsed_parameters parameters_;
-			int halo_id_;
+			halo::handle halo_id_;
 			int last_frame_begin_time_;
 			bool cycles_;
 
@@ -155,13 +158,13 @@ class unit_animator
 		}
 
 
-		void add_animation(unit* animated_unit
+		void add_animation(const unit* animated_unit
 				, const unit_animation * animation
 				, const map_location &src = map_location::null_location()
 				, bool with_bars = false
 				, const std::string& text = ""
 				, const Uint32 text_color = 0);
-		void add_animation(unit* animated_unit
+		void add_animation(const unit* animated_unit
 				, const std::string& event
 				, const map_location &src = map_location::null_location()
 				, const map_location &dst = map_location::null_location()
@@ -174,7 +177,7 @@ class unit_animator
 				, const attack_type* attack = NULL
 				, const attack_type* second_attack = NULL
 				, int value2 = 0);
-		void replace_anim_if_invalid(unit* animated_unit
+		void replace_anim_if_invalid(const unit* animated_unit
 				, const std::string& event
 				, const map_location &src = map_location::null_location()
 				, const map_location &dst = map_location::null_location()
@@ -212,7 +215,7 @@ class unit_animator
 				with_bars(false)
 			{}
 
-			unit *my_unit;
+			UnitConstPtr my_unit;
 			const unit_animation * animation;
 			std::string text;
 			Uint32 text_color;

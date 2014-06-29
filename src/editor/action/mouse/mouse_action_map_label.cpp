@@ -19,6 +19,8 @@
 #include "../../editor_display.hpp"
 #include "../../map/context_manager.hpp"
 
+#include <SDL_video.h>
+
 #include "gui/dialogs/editor/editor_edit_label.hpp"
 
 namespace editor {

@@ -1,4 +1,5 @@
 /*
+   Copyright (C) 2014
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,7 +17,7 @@
 #include "log.hpp"
 #include "resources.hpp"
 #include "map_location.hpp"
-#include "gamestatus.hpp"
+#include "game_data.hpp"
 #include "unit.hpp"
 #include "team.hpp"
 #include "play_controller.hpp"
@@ -29,6 +30,7 @@
 #include "game_events/pump.hpp"
 #include "dialogs.hpp"
 #include "unit_helper.hpp"
+#include "recall_list_manager.hpp"
 #include "replay.hpp" //user choice
 #include "resources.hpp"
 #include <boost/foreach.hpp>
@@ -177,7 +179,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 	if (child.has_attribute("attacker_type")) {
 		const std::string &att_type_id = child["attacker_type"];
 		if (u->type_id() != att_type_id) {
-			WRN_REPLAY << "unexpected attacker type: " << att_type_id << "(game_state gives: " << u->type_id() << ")" << std::endl;
+			WRN_REPLAY << "unexpected attacker type: " << att_type_id << "(game state gives: " << u->type_id() << ")" << std::endl;
 		}
 	}
 
@@ -198,7 +200,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 	if (child.has_attribute("defender_type")) {
 		const std::string &def_type_id = child["defender_type"];
 		if (tgt->type_id() != def_type_id) {
-			WRN_REPLAY << "unexpected defender type: " << def_type_id << "(game_state gives: " << tgt->type_id() << ")" << std::endl;
+			WRN_REPLAY << "unexpected defender type: " << def_type_id << "(game state gives: " << tgt->type_id() << ")" << std::endl;
 		}
 	}
 
@@ -209,7 +211,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 	}
 
 	DBG_REPLAY << "Attacker XP (before attack): " << u->experience() << "\n";
-	
+
 	resources::undo_stack->clear();
 	attack_unit_and_advance(src, dst, weapon_num, def_weapon_num, show);
 	return true;
@@ -217,17 +219,15 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 
 SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, /*use_undo*/, /*show*/, error_handler)
 {
-	
+
 	int current_team_num = resources::controller->current_side();
 	team &current_team = (*resources::teams)[current_team_num - 1];
 
 	const std::string& unit_id = child["value"];
-	std::vector<unit>::iterator disband_unit =
-		find_if_matches_id(current_team.recall_list(), unit_id);
+	size_t old_size = current_team.recall_list().size();
+	current_team.recall_list().erase_if_matches_id(unit_id);
 
-	if(disband_unit != current_team.recall_list().end()) {
-		current_team.recall_list().erase(disband_unit);
-	} else {
+	if (old_size == current_team.recall_list().size()) {
 		error_handler("illegal disband\n", true);
 		return false;
 	}
@@ -248,7 +248,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 		return false;
 	}
 
-	if(steps.empty()) 
+	if(steps.empty())
 	{
 		WRN_REPLAY << "Warning: Missing path data found in [move]" << std::endl;
 		return false;
@@ -261,7 +261,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 		WRN_REPLAY << "Warning: Move with identical source and destination. Skipping..." << std::endl;
 		return false;
 	}
-	
+
 	// The nominal destination should appear to be unoccupied.
 	unit_map::iterator u = resources::gameboard->find_visible_unit(dst, current_team);
 	if ( u.valid() ) {
@@ -296,7 +296,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 		show_move = show_move && preferences::show_ai_moves();
 	}
 	actions::move_unit_from_replay(steps, use_undo ? resources::undo_stack : NULL, skip_sighted, skip_ally_sighted, show_move);
-	
+
 	return true;
 }
 

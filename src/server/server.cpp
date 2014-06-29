@@ -333,6 +333,7 @@ server::server(int port, const std::string& config_file, size_t min_threads,
 	not_logged_in_(),
 	rooms_(players_),
 	input_(),
+	input_path_(),
 	config_file_(config_file),
 	cfg_(read_config()),
 	accepted_versions_(),
@@ -499,8 +500,11 @@ void server::load_config() {
 # endif
 #endif
 	const std::string fifo_path = (cfg_["fifo_path"].empty() ? std::string(FIFODIR) + "/socket" : std::string(cfg_["fifo_path"]));
-	input_.reset();
-	input_.reset(new input_stream(fifo_path));
+	// Reset (replace) the input stream only if the FIFO path changed.
+	if(fifo_path != input_path_) {
+		input_.reset(new input_stream(fifo_path));
+	}
+	input_path_ = fifo_path;
 
 	save_replays_ = cfg_["save_replays"].to_bool();
 	replay_save_path_ = cfg_["replay_save_path"].str();
@@ -2357,12 +2361,13 @@ void server::process_data_game(const network::connection sock,
 	wesnothd::game* g = *itor;
 
 	// If this is data describing the level for a game.
-	if (data.child("side")) {
+	if (data.child("snapshot") || data.child("scenario")) {
 		if (!g->is_owner(sock)) {
 			return;
 		}
 		size_t nsides = 0;
-		const simple_wml::node::child_list& sides = data.root().children("side");
+		const simple_wml::node* starting_pos = wesnothd::game::starting_pos(data.root());
+		const simple_wml::node::child_list& sides = starting_pos->children("side");
 		for (simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
 			++nsides;
 		}
@@ -2420,7 +2425,7 @@ void server::process_data_game(const network::connection sock,
 		// If there is no shroud, then tell players in the lobby
 		// what the map looks like
 		if (!data["mp_shroud"].to_bool()) {
-			desc.set_attr_dup("map_data", data["map_data"]);
+			desc.set_attr_dup("map_data", (*wesnothd::game::starting_pos(data.root()))["map_data"]);
 		}
 		if (const simple_wml::node* e = data.child("era")) {
 			if (!e->attr("require_era").to_bool(true)) {
@@ -2475,7 +2480,7 @@ void server::process_data_game(const network::connection sock,
 		}
 		g->save_replay();
 		size_t nsides = 0;
-		const simple_wml::node::child_list& sides = scenario->children("side");
+		const simple_wml::node::child_list& sides = wesnothd::game::starting_pos(*scenario)->children("side");
 		for (simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
 	        	++nsides;
 		}
@@ -2512,7 +2517,7 @@ void server::process_data_game(const network::connection sock,
 
 		// If there is no shroud, then tell players in the lobby
 		// what the map looks like.
-		const simple_wml::node& s = g->level().root();
+		const simple_wml::node& s = *wesnothd::game::starting_pos(g->level().root());
 		desc.set_attr_dup("map_data", s["mp_shroud"].to_bool() ? "" :
 			s["map_data"]);
 		if (const simple_wml::node* e = data.child("era")) {
@@ -2587,7 +2592,7 @@ void server::process_data_game(const network::connection sock,
 		if (!g->is_owner(sock)) return;
 		g->level().root().apply_diff(*diff);
 		const simple_wml::node* cfg_change = diff->child("change_child");
-		if (cfg_change && cfg_change->child("side")) {
+		if (cfg_change /*&& cfg_change->child("side") itÄ's very likeley that the diff cahnges a side so we dont loost with this check*/) {
 			g->update_side_data();
 		}
 		if (g->describe_slots()) {

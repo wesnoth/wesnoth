@@ -36,6 +36,8 @@
 #include "minimap.hpp"
 #include "multiplayer_create.hpp"
 #include "filesystem.hpp"
+#include "resources.hpp"
+#include "savegame.hpp"
 #include "log.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
@@ -55,7 +57,7 @@ const SDL_Rect null_rect = {0, 0, 0, 0};
 
 namespace mp {
 
-create::create(game_display& disp, const config& cfg, game_state& state,
+create::create(game_display& disp, const config& cfg, saved_game& state,
 	chat& c, config& gamelist) :
 	ui(disp, _("Create Game"), cfg, c, gamelist),
 	tooltip_manager_(disp.video()),
@@ -130,12 +132,6 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	size_t combo_new_selection = 0;
 	size_t level_new_selection = 0;
 
-	// TODO: this is needed to get the levels menu stretched to its max
-	// width, otherwise there might be problems with gui widgets alignment.
-	// Ideally, there could be a gui::menu::set_min_width() method,
-	// so this would no longer be necessary.
-	init_level_type_changed(0);
-
 	// Set level selection according to the preferences, if possible.
 	size_t type_index = 0;
 	BOOST_FOREACH(level::TYPE type, available_level_types_) {
@@ -192,19 +188,21 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 
 create::~create()
 {
-	// Only save the settings if the dialog was 'accepted'
-	if(get_result() != CREATE) {
-		DBG_MP << "destructing multiplayer create dialog - aborted game creation" << std::endl;
-		return;
-	}
-	DBG_MP << "destructing multiplayer create dialog - a game will be created" << std::endl;
+	try {
+		// Only save the settings if the dialog was 'accepted'
+		if(get_result() != CREATE) {
+			DBG_MP << "destructing multiplayer create dialog - aborted game creation" << std::endl;
+			return;
+		}
+		DBG_MP << "destructing multiplayer create dialog - a game will be created" << std::endl;
 
-	// Save values for next game
-	DBG_MP << "storing parameter values in preferences" << std::endl;
-	preferences::set_era(engine_.current_extra(create_engine::ERA).id);
-	preferences::set_level(engine_.current_level().id());
-	preferences::set_level_type(engine_.current_level_type());
-	preferences::set_modifications(engine_.active_mods());
+		// Save values for next game
+		DBG_MP << "storing parameter values in preferences" << std::endl;
+		preferences::set_era(engine_.current_extra(create_engine::ERA).id);
+		preferences::set_level(engine_.current_level().id());
+		preferences::set_level_type(engine_.current_level_type());
+		preferences::set_modifications(engine_.active_mods());
+	} catch (...) {}
 }
 
 const mp_game_settings& create::get_parameters()
@@ -225,6 +223,9 @@ void create::process_event()
 
 	if (launch_game_.pressed() || levels_menu_.double_clicked()) {
 		if (engine_.current_level().can_launch_game()) {
+
+			engine_.prepare_for_era_and_mods();
+
 			if (engine_.current_level_type() == level::CAMPAIGN ||
 				engine_.current_level_type() == level::SP_CAMPAIGN) {
 
@@ -234,6 +235,8 @@ void create::process_event()
 				}
 
 				engine_.prepare_for_campaign(difficulty);
+			} else {
+				engine_.prepare_for_scenario();
 			}
 
 			engine_.prepare_for_new_level();
@@ -251,11 +254,25 @@ void create::process_event()
 	}
 
 	if (load_game_.pressed()) {
-		engine_.prepare_for_saved_game();
+		try 
+		{
+			savegame::loadgame load(disp_,
+				resources::config_manager->game_config(), engine_.get_state());
+			load.load_multiplayer_game();
 
-		set_result(LOAD_GAME);
+			engine_.prepare_for_saved_game();
 
-		return;
+			set_result(LOAD_GAME);
+
+			return;
+		}
+		catch (load_game_cancelled_exception)
+		{
+		} 
+		catch(config::error&) 
+		{
+		}
+
 	}
 
 	bool update_mod_button_label = mod_selection_ != mods_menu_.selection();
@@ -478,7 +495,7 @@ void create::draw_level_image()
 			video().getSurface());
 	} else {
 		surface display(disp_.get_screen_surface());
-		sdl_fill_rect(display, &image_rect_,
+		sdl::fill_rect(display, &image_rect_,
 			SDL_MapRGB(display->format, 0, 0, 0));
 		update_rect(image_rect_);
 

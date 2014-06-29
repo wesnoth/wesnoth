@@ -15,11 +15,13 @@
 #ifndef OVERLAY_INCLUDED
 #define OVERLAY_INCLUDED
 
+#include "halo.hpp"
+
 struct overlay
 {
 
 	overlay(const std::string& img, const std::string& halo_img,
-			int handle, const std::string& overlay_team_name, const bool fogged) : image(img), halo(halo_img),
+			halo::handle handle, const std::string& overlay_team_name, const bool fogged) : image(img), halo(halo_img),
 					team_name(overlay_team_name), halo_handle(handle) , visible_in_fog(fogged)
 	{}
 
@@ -27,7 +29,7 @@ struct overlay
 	overlay(const config& cfg) :
 		image(cfg["image"]), halo(cfg["halo"]), team_name(cfg["team_name"]),
 		name(cfg["name"].t_str()), id(cfg["id"]),
-		halo_handle(-1), visible_in_fog(cfg["visible_in_fog"].to_bool())
+		halo_handle(), visible_in_fog(cfg["visible_in_fog"].to_bool())
 	{
 	}
 
@@ -37,7 +39,7 @@ struct overlay
 	t_string name;
 	std::string id;
 
-	int halo_handle;
+	halo::handle halo_handle;
 	bool visible_in_fog;
 
 };

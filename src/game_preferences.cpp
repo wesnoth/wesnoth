@@ -19,7 +19,6 @@
 #include "game_board.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
-#include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
@@ -1059,10 +1058,10 @@ void encounter_start_units(const unit_map& units){
 	}
 }
 
-void encounter_recallable_units(const std::vector<team>& teams){
+static void encounter_recallable_units(const std::vector<team>& teams){
 	BOOST_FOREACH(const team& t, teams) {
-		BOOST_FOREACH(const unit& u, t.recall_list()) {
-			encountered_units_set.insert(u.type_id());
+		BOOST_FOREACH(const UnitConstPtr & u, t.recall_list()) {
+			encountered_units_set.insert(u->type_id());
 		}
 	}
 }

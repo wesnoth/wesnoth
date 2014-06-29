@@ -28,7 +28,6 @@
 #include "../../log.hpp"
 
 #include <boost/bind.hpp>
-#include <boost/lexical_cast.hpp>
 #include <boost/pointer_cast.hpp>
 
 #ifdef _MSC_VER

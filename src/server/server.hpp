@@ -25,7 +25,12 @@
 #include "room_manager.hpp"
 #include "simple_wml.hpp"
 
+
+#ifndef INCL_BOOST_FUNCTION_HPP_
+#define INCL_BOOST_FUNCTION_HPP_
 #include <boost/function.hpp>
+#endif
+
 #include <boost/scoped_ptr.hpp>
 
 class server
@@ -101,6 +106,7 @@ private:
 
 	/** server socket/fifo. */
 	boost::scoped_ptr<input_stream> input_;
+	std::string input_path_;
 
 	const std::string config_file_;
 	config cfg_;

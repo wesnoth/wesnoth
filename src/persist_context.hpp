@@ -128,7 +128,7 @@ protected:
 			else
 				return NULL;
 		}
-		else 
+		else
 			return &cfg;
 	}
 
@@ -140,7 +140,7 @@ protected:
 			else
 				return NULL;
 		}
-		else 
+		else
 			return &cfg;
 	}
 

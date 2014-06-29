@@ -18,10 +18,11 @@
 #define GAME_DISPLAY_H_INCLUDED
 
 class config;
+class display_chat_manager;
 class tod_manager;
 class team;
-class unit;
 class unit_map;
+class game_board;
 
 #include "animated.hpp"
 #include "chat_events.hpp"
@@ -37,9 +38,10 @@ class unit_map;
 class game_display : public display
 {
 public:
-	game_display(unit_map& units, CVideo& video,
-			const gamemap& map, const tod_manager& tod_manager,
-			const std::vector<team>& t, const config& theme_cfg,
+	game_display(game_board& board, CVideo& video,
+			boost::weak_ptr<wb::manager> wb,
+			const tod_manager& tod_manager,
+			const config& theme_cfg,
 			const config& level);
 
 	static game_display* create_dummy_display(CVideo& video);
@@ -62,7 +64,7 @@ public:
 	 *
 	 * This will normally be the playing team.
 	 */
-	void scroll_to_leader(unit_map& units, int side, SCROLL_TYPE scroll_type = ONSCREEN,bool force = true);
+	void scroll_to_leader(int side, SCROLL_TYPE scroll_type = ONSCREEN,bool force = true);
 
 	/**
 	 * Function to display a location as selected.
@@ -115,12 +117,6 @@ public:
 	void float_label(const map_location& loc, const std::string& text,
 	                 int red, int green, int blue);
 
-	/**
-	 * Function to return 2 half-hex footsteps images for the given location.
-	 * Only loc is on the current route set by set_route.
-	 */
-	std::vector<surface> footsteps_images(const map_location& loc);
-
 	/** Draws the movement info (turns available) for a given location. */
 	void draw_movement_info(const map_location& loc);
 
@@ -151,63 +147,7 @@ protected:
 
 	void draw_hex(const map_location& loc);
 
-	/**
-	 * the list of units we need to look at, game_display adds fake units
-	 */
-	virtual std::vector<unit*> get_unit_list_for_invalidation();
 
-
-public:
-	/** A temporary unit that can be placed on the map.
-		Temporary units can overlap units.
-		Adding the same unit twice isn't allowed.
-		The fake_unit owns its underlying unit and when
-		it goes out of scope it removes itself from the fake_units list.
-		The intent is to provide exception safety when the code
-		creating the temp unit is unexpectedly forced out of scope.
-	 */
-	class fake_unit : public unit {
-	public:
-		explicit fake_unit(unit const & u) : unit(u), my_display_(NULL) {}
-		fake_unit(fake_unit const & u) : unit(u), my_display_(NULL) {}
-		fake_unit(const unit_type& t, int side, unit_race::GENDER gender = unit_race::NUM_GENDERS)
-			: unit(t, side, false, gender)
-			, my_display_(NULL)
-		{}
-		/// Assignment operator, taking a fake_unit.
-		/// If already in the queue, @a this will be moved to the end of the
-		/// queue (drawn last). The queue (if any) of the parameter is ignored.
-		fake_unit & operator=(fake_unit const & u)
-		{ return operator=(static_cast<unit const &>(u)); }
-		/// Assignment operator, taking a unit.
-		virtual fake_unit & operator=(unit const & u);
-		/// Removes @a this from the fake_units_ list if necessary.
-		~fake_unit();
-
-		/// Place @a this on @a display's fake_units_ dequeue.
-		void place_on_game_display(game_display * d);
-		/// Removes @a this from whatever fake_units_ list it is on (if any).
-		int remove_from_game_display();
-
-	private :
-		game_display * my_display_;
-	};
-
-	//Anticipate making place_temporary_unit and remove_temporary_unit private to force exception safety
-	friend class game_display::fake_unit;
-
-private:
-	/** Temporarily place a unit on map (moving: can overlap others).
-	 *  The temp unit is added at the end of the temporary unit dequeue,
-	 *  and therefore gets drawn last, over other units and temp units.
-	 *  Adding the same unit twice isn't allowed.
-	 */
-	void place_temporary_unit(unit *u);
-
-	/** Removes any instances of this temporary unit from the temporary unit vector.
-	 *  Returns the number of temp units deleted (0 or 1, any other number indicates an error).
-	 */
-	int remove_temporary_unit(unit *u);
 public:
 
 
@@ -227,15 +167,12 @@ public:
 	//void draw_terrain_palette(int x, int y, terrain_type::TERRAIN selected);
 	t_translation::t_terrain get_terrain_on(int palx, int paly, int x, int y);
 
-	void send_notification(const std::string& owner, const std::string& message);
-
 	/**
 	 * Sets the team controlled by the player using the computer.
 	 *
 	 * Data from this team will be displayed in the game status.
 	 * set_playing_team sets the team whose turn it currently is
 	 */
-	void set_team(size_t team, bool observe=false);
 	void set_playing_team(size_t team);
 
 
@@ -255,13 +192,7 @@ public:
 
 	std::string current_team_name() const;
 
-	void add_observer(const std::string& name) { observers_.insert(name); }
-	void remove_observer(const std::string& name) { observers_.erase(name); }
-	const std::set<std::string>& observers() const { return observers_; }
-
-	void add_chat_message(const time_t& time, const std::string& speaker,
-		int side, const std::string& msg, events::chat_handler::MESSAGE_TYPE type, bool bell);
-	void clear_chat_messages() { prune_chat_messages(true); }
+	display_chat_manager & get_chat_manager() { return *chat_man_; }
 
 	void begin_game();
 
@@ -292,9 +223,6 @@ private:
 
 	overlay_map overlay_map_;
 
-	/// collection of units destined to be drawn but not put into the unit map
-	std::deque<unit*> fake_units_;
-
 	// Locations of the attack direction indicator's parts
 	map_location attack_indicator_src_;
 	map_location attack_indicator_dst_;
@@ -305,8 +233,6 @@ private:
 
 	const tod_manager& tod_manager_;
 
-	const config& level_;
-
 	void invalidate_route();
 
 	map_location displayedUnitHex_;
@@ -315,23 +241,7 @@ private:
 
 	bool first_turn_, in_game_;
 
-	std::set<std::string> observers_;
-
-	struct chat_message
-	{
-		chat_message(int speaker, int h) : speaker_handle(speaker), handle(h), created_at(SDL_GetTicks())
-		{}
-
-		int speaker_handle;
-		int handle;
-		Uint32 created_at;
-	};
-
-	void prune_chat_messages(bool remove_all=false);
-
-	std::vector<chat_message> chat_messages_;
-
-
+	boost::scoped_ptr<display_chat_manager> chat_man_;
 
 	tgame_mode game_mode_;
 

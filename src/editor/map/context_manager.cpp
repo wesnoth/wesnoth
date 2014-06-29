@@ -13,6 +13,7 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
+#include "resources.hpp"
 #include "team.hpp"
 
 #include "context_manager.hpp"
@@ -73,22 +74,19 @@ public:
 		if (!refreshed_) refresh();
 	}
 	void refresh() {
-		context_manager_.gui().change_map(&context_manager_.get_map());
-		resources::game_map = &context_manager_.get_map();
+		context_manager_.gui().change_display_context(&context_manager_.get_map_context());
 
-		context_manager_.gui().change_units(&context_manager_.get_map_context().get_units());
 		resources::units = &context_manager_.get_map_context().get_units();
+		resources::teams = &context_manager_.get_map_context().get_teams();
 
 		// TODO register the tod_manager with the gui?
 		resources::tod_manager = context_manager_.get_map_context().get_time_manager();
-		context_manager_.gui().change_teams(&context_manager_.get_map_context().get_teams());
 
 		context_manager_.gui().replace_overlay_map(&context_manager_.get_map_context().get_overlays());
 
-		resources::teams = &context_manager_.get_map_context().get_teams();
-		
-		resources::classification = &context_manager_.get_map_context().get_game_state().classification();
-		resources::mp_settings = &context_manager_.get_map_context().get_game_state().mp_settings();
+
+		resources::classification = &context_manager_.get_map_context().get_classification();
+		resources::mp_settings = &context_manager_.get_map_context().get_mp_settings();
 
 		context_manager_.gui().init_flags();
 
@@ -567,7 +565,7 @@ void context_manager::save_map_as_dialog()
 		input_name = get_dir(default_dir_ + "/maps");
 	}
 	const std::string old_input_name = input_name;
-	
+
 	int overwrite_res = 1;
 	do {
 		input_name = old_input_name;

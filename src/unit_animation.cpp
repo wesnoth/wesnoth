@@ -19,10 +19,11 @@
 #include "game_display.hpp"
 #include "halo.hpp"
 #include "map.hpp"
-#include "unit.hpp"
-#include "variable.hpp"
-#include "resources.hpp"
 #include "play_controller.hpp"
+#include "resources.hpp"
+#include "unit.hpp"
+#include "unit_animation_component.hpp"
+#include "variable.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -407,7 +408,7 @@ int unit_animation::matches(const display &disp,const map_location& loc,const ma
 		}
 		if(!secondary_unit_filter_.empty()) {
 			unit_map::const_iterator unit;
-			for(unit=disp.get_const_units().begin() ; unit != disp.get_const_units().end() ; ++unit) {
+			for(unit=disp.get_units().begin() ; unit != disp.get_units().end() ; ++unit) {
 				if (unit->get_location() == second_loc) {
 					std::vector<config>::const_iterator second_itor;
 					for(second_itor = secondary_unit_filter_.begin(); second_itor != secondary_unit_filter_.end(); ++second_itor) {
@@ -418,7 +419,7 @@ int unit_animation::matches(const display &disp,const map_location& loc,const ma
 					break;
 				}
 			}
-			if(unit == disp.get_const_units().end()) return MATCH_FAIL;
+			if(unit == disp.get_units().end()) return MATCH_FAIL;
 		}
 
 	} else if (!unit_filter_.empty()) return MATCH_FAIL;
@@ -873,7 +874,7 @@ unit_animation::particule::particule(
 		animated<unit_frame>(),
 		accelerate(true),
 		parameters_(),
-		halo_id_(0),
+		halo_id_(),
 		last_frame_begin_time_(0),
 		cycles_(false)
 {
@@ -1019,17 +1020,17 @@ void unit_animation::restart_animation()
 		anim_itor->second.restart_animation();
 	}
 }
-void unit_animation::redraw(frame_parameters& value)
+void unit_animation::redraw(frame_parameters& value, halo::manager & halo_man)
 {
 
 	invalidated_=false;
 	overlaped_hex_.clear();
 	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
 	value.primary_frame = t_true;
-	unit_anim_.redraw(value,src_,dst_);
+	unit_anim_.redraw(value,src_,dst_, halo_man);
 	value.primary_frame = t_false;
 	for( /*null*/; anim_itor != sub_anims_.end() ; ++anim_itor) {
-		anim_itor->second.redraw( value,src_,dst_);
+		anim_itor->second.redraw( value,src_,dst_, halo_man);
 	}
 }
 void unit_animation::clear_haloes()
@@ -1207,7 +1208,7 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 }
 
 
-void unit_animation::particule::redraw(const frame_parameters& value,const map_location &src, const map_location &dst)
+void unit_animation::particule::redraw(const frame_parameters& value,const map_location &src, const map_location &dst, halo::manager & halo_man)
 {
 	const unit_frame& current_frame= get_current_frame();
 	const int animation_time = get_animation_time();
@@ -1225,17 +1226,14 @@ void unit_animation::particule::redraw(const frame_parameters& value,const map_l
 	// for sound frames we want the first time variable set only after the frame has started.
 	if(get_current_frame_begin_time() != last_frame_begin_time_ && animation_time >= get_current_frame_begin_time()) {
 		last_frame_begin_time_ = get_current_frame_begin_time();
-		current_frame.redraw(get_current_frame_time(),true,in_scope_of_frame,src,dst,&halo_id_,default_val,value);
+		current_frame.redraw(get_current_frame_time(),true,in_scope_of_frame,src,dst,halo_id_,halo_man,default_val,value);
 	} else {
-		current_frame.redraw(get_current_frame_time(),false,in_scope_of_frame,src,dst,&halo_id_,default_val,value);
+		current_frame.redraw(get_current_frame_time(),false,in_scope_of_frame,src,dst,halo_id_,halo_man,default_val,value);
 	}
 }
 void unit_animation::particule::clear_halo()
 {
-	if(halo_id_ != halo::NO_HALO) {
-		halo::remove(halo_id_);
-		halo_id_ = halo::NO_HALO;
-	}
+	halo_id_ = halo::handle(); // halo::NO_HALO
 }
 std::set<map_location> unit_animation::particule::get_overlaped_hex(const frame_parameters& value,const map_location &src, const map_location &dst)
 {
@@ -1247,14 +1245,12 @@ std::set<map_location> unit_animation::particule::get_overlaped_hex(const frame_
 
 unit_animation::particule::~particule()
 {
-	halo::remove(halo_id_);
-	halo_id_ = halo::NO_HALO;
+	halo_id_ = halo::handle(); // halo::NO_HALO
 }
 
 void unit_animation::particule::start_animation(int start_time)
 {
-	halo::remove(halo_id_);
-	halo_id_ = halo::NO_HALO;
+	halo_id_ = halo::handle(); // halo::NO_HALO
 	parameters_.override(get_animation_duration());
 	animated<unit_frame>::start_animation(start_time,cycles_);
 	last_frame_begin_time_ = get_begin_time() -1;
@@ -1262,7 +1258,7 @@ void unit_animation::particule::start_animation(int start_time)
 
 
 
-void unit_animator::add_animation(unit* animated_unit
+void unit_animator::add_animation(const unit* animated_unit
 		, const std::string& event
 		, const map_location &src
 		, const map_location &dst
@@ -1278,19 +1274,19 @@ void unit_animator::add_animation(unit* animated_unit
 	if(!animated_unit) return;
 	anim_elem tmp;
 	display*disp = display::get_singleton();
-	tmp.my_unit = animated_unit;
+	tmp.my_unit = UnitConstPtr(animated_unit);
 	tmp.text = text;
 	tmp.text_color = text_color;
 	tmp.src = src;
 	tmp.with_bars= with_bars;
-	tmp.animation = animated_unit->choose_animation(*disp,src,event,dst,value,hit_type,attack,second_attack,value2);
+	tmp.animation = animated_unit->anim_comp().choose_animation(*disp,src,event,dst,value,hit_type,attack,second_attack,value2);
 	if(!tmp.animation) return;
 
 	start_time_ = std::max<int>(start_time_,tmp.animation->get_begin_time());
 	animated_units_.push_back(tmp);
 }
 
-void unit_animator::add_animation(unit* animated_unit
+void unit_animator::add_animation(const unit* animated_unit
 		, const unit_animation* anim
 		, const map_location &src
 		, bool with_bars
@@ -1299,7 +1295,7 @@ void unit_animator::add_animation(unit* animated_unit
 {
 	if(!animated_unit) return;
 	anim_elem tmp;
-	tmp.my_unit = animated_unit;
+	tmp.my_unit = UnitConstPtr(animated_unit);
 	tmp.text = text;
 	tmp.text_color = text_color;
 	tmp.src = src;
@@ -1311,7 +1307,7 @@ void unit_animator::add_animation(unit* animated_unit
 	animated_units_.push_back(tmp);
 }
 
-void unit_animator::replace_anim_if_invalid(unit* animated_unit
+void unit_animator::replace_anim_if_invalid(const unit* animated_unit
 		, const std::string& event
 		, const map_location &src
 		, const map_location & dst
@@ -1326,11 +1322,11 @@ void unit_animator::replace_anim_if_invalid(unit* animated_unit
 {
 	if(!animated_unit) return;
 	display*disp = display::get_singleton();
-	if(animated_unit->get_animation() &&
-			!animated_unit->get_animation()->animation_finished_potential() &&
-			animated_unit->get_animation()->matches(*disp,src,dst,animated_unit,event,value,hit_type,attack,second_attack,value2) >unit_animation::MATCH_FAIL) {
+	if(animated_unit->anim_comp().get_animation() &&
+			!animated_unit->anim_comp().get_animation()->animation_finished_potential() &&
+			animated_unit->anim_comp().get_animation()->matches(*disp,src,dst,animated_unit,event,value,hit_type,attack,second_attack,value2) >unit_animation::MATCH_FAIL) {
 		anim_elem tmp;
-		tmp.my_unit = animated_unit;
+		tmp.my_unit = UnitConstPtr(animated_unit);
 		tmp.text = text;
 		tmp.text_color = text_color;
 		tmp.src = src;
@@ -1347,21 +1343,21 @@ void unit_animator::start_animations()
 	int begin_time = INT_MAX;
 	std::vector<anim_elem>::iterator anim;
 	for(anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
-		if(anim->my_unit->get_animation()) {
+		if(anim->my_unit->anim_comp().get_animation()) {
 			if(anim->animation) {
 				begin_time = std::min<int>(begin_time,anim->animation->get_begin_time());
 			} else  {
-				begin_time = std::min<int>(begin_time,anim->my_unit->get_animation()->get_begin_time());
+				begin_time = std::min<int>(begin_time,anim->my_unit->anim_comp().get_animation()->get_begin_time());
 			}
 		}
 	}
 	for(anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
 		if(anim->animation) {
-			anim->my_unit->start_animation(begin_time, anim->animation,
+			anim->my_unit->anim_comp().start_animation(begin_time, anim->animation,
 				anim->with_bars,  anim->text, anim->text_color);
 			anim->animation = NULL;
 		} else {
-			anim->my_unit->get_animation()->update_parameters(anim->src,anim->src.get_direction(anim->my_unit->facing()));
+			anim->my_unit->anim_comp().get_animation()->update_parameters(anim->src,anim->src.get_direction(anim->my_unit->facing()));
 		}
 
 	}
@@ -1371,7 +1367,7 @@ bool unit_animator::would_end() const
 {
 	bool finished = true;
 	for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
-		finished &= anim->my_unit->get_animation()->animation_finished_potential();
+		finished &= anim->my_unit->anim_comp().get_animation()->animation_finished_potential();
 	}
 	return finished;
 }
@@ -1381,7 +1377,7 @@ void unit_animator::wait_until(int animation_time) const
 	display*disp = display::get_singleton();
 	double speed = disp->turbo_speed();
 	resources::controller->play_slice(false);
-	int end_tick = animated_units_[0].my_unit->get_animation()->time_to_tick(animation_time);
+	int end_tick = animated_units_[0].my_unit->anim_comp().get_animation()->time_to_tick(animation_time);
 	while (SDL_GetTicks() < static_cast<unsigned int>(end_tick)
 				- std::min<int>(static_cast<unsigned int>(20/speed),20)) {
 
@@ -1389,7 +1385,7 @@ void unit_animator::wait_until(int animation_time) const
 			std::min<int>(10,
 			static_cast<int>((animation_time - get_animation_time()) * speed))));
 		resources::controller->play_slice(false);
-                end_tick = animated_units_[0].my_unit->get_animation()->time_to_tick(animation_time);
+                end_tick = animated_units_[0].my_unit->anim_comp().get_animation()->time_to_tick(animation_time);
 	}
 	disp->delay(std::max<int>(0,end_tick - SDL_GetTicks() +5));
 	new_animation_frame();
@@ -1428,9 +1424,9 @@ private:
 void unit_animator::wait_for_end() const
 {
 	if (game_config::no_delay) return;
-	static reentry_preventer rp;
-	reentry_preventer::entry rpe = rp.enter();
-	assert(rpe || (false && "Reentered a unit animation. See bug #18921")); //Catches reentry
+	//static reentry_preventer rp;
+	//reentry_preventer::entry rpe = rp.enter();
+	//assert(rpe || (false && "Reentered a unit animation. See bug #18921")); //Catches reentry
 	bool finished = false;
 	display*disp = display::get_singleton();
 	while(!finished) {
@@ -1438,29 +1434,29 @@ void unit_animator::wait_for_end() const
 		// Replacing the below assert with a conditional break will fix the local segfault,
 		// but this just exposes a different one.
 		// It's also unnecessary given the one a few lines up.
-		assert(rpe || (false && "Reentered a unit animation. See bug #18921")); //Catches a past reentry
+		//assert(rpe || (false && "Reentered a unit animation. See bug #18921")); //Catches a past reentry
 		disp->delay(10);
 		finished = true;
 		for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
-			finished &= anim->my_unit->get_animation()->animation_finished_potential();
+			finished &= anim->my_unit->anim_comp().get_animation()->animation_finished_potential();
 		}
 	}
 }
 
 int unit_animator::get_animation_time() const{
-	return animated_units_[0].my_unit->get_animation()->get_animation_time() ;
+	return animated_units_[0].my_unit->anim_comp().get_animation()->get_animation_time() ;
 }
 
 int unit_animator::get_animation_time_potential() const{
-	return animated_units_[0].my_unit->get_animation()->get_animation_time_potential() ;
+	return animated_units_[0].my_unit->anim_comp().get_animation()->get_animation_time_potential() ;
 }
 
 int unit_animator::get_end_time() const
 {
 	int end_time = INT_MIN;
 	for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
-		if(anim->my_unit->get_animation()) {
-			end_time = std::max<int>(end_time,anim->my_unit->get_animation()->get_end_time());
+		if(anim->my_unit->anim_comp().get_animation()) {
+			end_time = std::max<int>(end_time,anim->my_unit->anim_comp().get_animation()->get_end_time());
 		}
 	}
 	return end_time;
@@ -1469,8 +1465,8 @@ int unit_animator::get_end_time() const
 void unit_animator::pause_animation()
 {
 	for(std::vector<anim_elem>::iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
-		if(anim->my_unit->get_animation()) {
-			anim->my_unit->get_animation()->pause_animation();
+		if(anim->my_unit->anim_comp().get_animation()) {
+			anim->my_unit->anim_comp().get_animation()->pause_animation();
 		}
 	}
 }
@@ -1478,8 +1474,8 @@ void unit_animator::pause_animation()
 void unit_animator::restart_animation()
 {
 	for(std::vector<anim_elem>::iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
-		if(anim->my_unit->get_animation()) {
-			anim->my_unit->get_animation()->restart_animation();
+		if(anim->my_unit->anim_comp().get_animation()) {
+			anim->my_unit->anim_comp().get_animation()->restart_animation();
 		}
 	}
 }
@@ -1487,6 +1483,6 @@ void unit_animator::restart_animation()
 void unit_animator::set_all_standing()
 {
 	for(std::vector<anim_elem>::iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
-		anim->my_unit->set_standing();
+		anim->my_unit->anim_comp().set_standing();
 	}
 }

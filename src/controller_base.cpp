@@ -155,7 +155,7 @@ bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse
 	int scroll_threshold = (preferences::mouse_scroll_enabled())
 		? preferences::mouse_scroll_threshold() : 0;
 	BOOST_FOREACH(const theme::menu& m, get_display().get_theme().menus()) {
-		if (point_in_rect(mousex, mousey, m.get_location())) {
+		if (sdl::point_in_rect(mousex, mousey, m.get_location())) {
 			scroll_threshold = 0;
 		}
 	}
@@ -181,10 +181,10 @@ bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse
 	}
 	if ((mouse_flags & SDL_BUTTON_MMASK) != 0 && preferences::middle_click_scrolls()) {
 		const map_location original_loc = get_mouse_handler_base().get_scroll_start();
-		
+
 		if (get_mouse_handler_base().scroll_started()) {
 			const SDL_Rect& rect = get_display().map_outside_area();
-			if (point_in_rect(mousex, mousey,rect) && 
+			if (sdl::point_in_rect(mousex, mousey,rect) &&
 				get_mouse_handler_base().scroll_started()) {
 				// Scroll speed is proportional from the distance from the first
 				// middle click and scrolling speed preference.
@@ -192,7 +192,7 @@ bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse
 				const double snap_dist = 16; // Snap to horizontal/vertical scrolling
 				const double x_diff = (mousex - original_loc.x);
 				const double y_diff = (mousey - original_loc.y);
-				
+
 				if (fabs(x_diff) > snap_dist || fabs(y_diff) <= snap_dist) dx += speed * x_diff;
 				if (fabs(y_diff) > snap_dist || fabs(x_diff) <= snap_dist) dy += speed * y_diff;
 			}

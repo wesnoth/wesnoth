@@ -19,6 +19,7 @@
 #include "cursor.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
+#include "game_classification.hpp"
 #include "gui/dialogs/wml_error.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "hotkey/hotkey_command.hpp"
@@ -29,6 +30,7 @@
 #include "resources.hpp"
 #include "scripting/lua.hpp"
 #include "terrain_builder.hpp"
+#include "unit_types.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -79,7 +81,6 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 	game_config::load_config(game_config_.child("game_config"));
 
 	hotkey::deactivate_all_scopes();
-	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 	hotkey::set_scope_active(hotkey::SCOPE_MAIN_MENU);
 
 	hotkey::load_hotkeys(game_config(), true);
@@ -127,7 +128,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		cache_.get_config(get_wml_location(preferences::wml_tree_root()), game_config_);
 		// Load the mainline core definitions to make sure switching back is always possible.
 		config default_core_cfg;
-		cache_.get_config(game_config::path, default_core_cfg);
+		cache_.get_config(game_config::path + "/data/cores.cfg", default_core_cfg);
 		game_config_.append(default_core_cfg);
 
 		main_transaction.lock();
@@ -264,7 +265,7 @@ void game_config_manager::load_addons_cfg()
 
 		const std::string info_cfg = uc + "/_info.cfg";
 		if (file_exists(info_cfg)) {
-		
+
 			config info;
 			cache_.get_config(info_cfg, info);
 			const config info_tag = info.child_or_empty("info");
@@ -373,6 +374,10 @@ void game_config_manager::load_game_config_for_game(
 		!classification.difficulty.empty());
 	game_config::scoped_preproc_define campaign(classification.campaign_define,
 		!classification.campaign_define.empty());
+	game_config::scoped_preproc_define scenario(classification.scenario_define,
+		!classification.scenario_define.empty());
+	game_config::scoped_preproc_define era(classification.era_define,
+		!classification.era_define.empty());
 	game_config::scoped_preproc_define multiplayer("MULTIPLAYER",
 		classification.campaign_type == game_classification::MULTIPLAYER);
 
@@ -383,6 +388,13 @@ void game_config_manager::load_game_config_for_game(
 		define new_define
 			(new game_config::scoped_preproc_define(extra_define));
 		extra_defines.push_back(new_define);
+	}
+	std::deque<define> modification_defines;
+	BOOST_FOREACH(const std::string& mod_define,
+		classification.mod_defines) {
+		define new_define
+			(new game_config::scoped_preproc_define(mod_define, !mod_define.empty()));
+		modification_defines.push_back(new_define);
 	}
 
 	try{

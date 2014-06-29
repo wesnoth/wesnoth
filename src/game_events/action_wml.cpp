@@ -30,7 +30,11 @@
 #include "../actions/vision.hpp"
 #include "../ai/manager.hpp"
 #include "../dialogs.hpp"
+#include "../fake_unit_manager.hpp"
+#include "../fake_unit_ptr.hpp"
+#include "../game_classification.hpp"
 #include "../game_display.hpp"
+#include "../game_errors.hpp"
 #include "../game_preferences.hpp"
 #include "../gettext.hpp"
 #include "../gui/dialogs/gamestate_inspector.hpp"
@@ -46,6 +50,7 @@
 #include "../pathfind/pathfind.hpp"
 #include "../persist_var.hpp"
 #include "../play_controller.hpp"
+#include "../recall_list_manager.hpp"
 #include "../replay.hpp"
 #include "../replay_helper.hpp"
 #include "../random_new.hpp"
@@ -54,7 +59,10 @@
 #include "../sound.hpp"
 #include "../soundsource.hpp"
 #include "../synced_context.hpp"
+#include "../team.hpp"
 #include "../terrain_filter.hpp"
+#include "../unit.hpp"
+#include "../unit_animation_component.hpp"
 #include "../unit_display.hpp"
 #include "../unit_helper.hpp"
 #include "../wml_exception.hpp"
@@ -198,39 +206,6 @@ namespace { // Types
 			return config();
 		}
 	};
-
-	struct unstore_unit_advance_choice: mp_sync::user_choice
-	{
-		int nb_options;
-		map_location loc;
-		bool use_dialog;
-
-		unstore_unit_advance_choice(int o, const map_location &l, bool d)
-			: nb_options(o), loc(l), use_dialog(d)
-		{}
-
-		virtual config query_user(int /*side*/) const
-		{
-			int selected;
-			if (use_dialog) {
-				DBG_NG << "dialog requested\n";
-				selected = dialogs::advance_unit_dialog(loc);
-			} else {
-				// VITAL this is NOT done using the synced RNG
-				selected = rand() % nb_options;
-			}
-			config cfg;
-			cfg["value"] = selected;
-			return cfg;
-		}
-
-		virtual config random_choice(int /*side*/) const
-		{
-			config cfg;
-			cfg["value"] = random_new::generator->next_random() % nb_options;
-			return cfg;
-		}
-	};
 } // end anonymous namespace (types)
 
 namespace { // Variables
@@ -252,7 +227,7 @@ namespace { // Support functions
 		return map_location(x, y);
 	}
 
-	game_display::fake_unit *create_fake_unit(const vconfig& cfg)
+	fake_unit_ptr create_fake_unit(const vconfig& cfg)
 	{
 		std::string type = cfg["type"];
 		std::string variation = cfg["variation"];
@@ -264,15 +239,15 @@ namespace { // Support functions
 
 		unit_race::GENDER gender = string_gender(cfg["gender"]);
 		const unit_type *ut = unit_types.find(type);
-		if (!ut) return NULL;
-		game_display::fake_unit * fake_unit = new game_display::fake_unit(*ut, side_num, gender);
+		if (!ut) return fake_unit_ptr();
+		fake_unit_ptr fake = fake_unit_ptr(UnitPtr(new unit(*ut, side_num, false, gender)));
 
 		if(!variation.empty()) {
 			config mod;
 			config &effect = mod.add_child("effect");
 			effect["apply_to"] = "variation";
 			effect["name"] = variation;
-			fake_unit->add_modification("variation",mod);
+			fake->add_modification("variation",mod);
 		}
 
 		if(!img_mods.empty()) {
@@ -280,15 +255,15 @@ namespace { // Support functions
 			config &effect = mod.add_child("effect");
 			effect["apply_to"] = "image_mod";
 			effect["add"] = img_mods;
-			fake_unit->add_modification("image_mod",mod);
+			fake->add_modification("image_mod",mod);
 		}
 
-		return fake_unit;
+		return fake;
 	}
 
 	std::vector<map_location> fake_unit_path(const unit& fake_unit, const std::vector<std::string>& xvals, const std::vector<std::string>& yvals)
 	{
-		const gamemap *game_map = resources::game_map;
+		const gamemap *game_map = & resources::gameboard->map();
 		std::vector<map_location> path;
 		map_location src;
 		map_location dst;
@@ -854,7 +829,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 			u->set_state(unit::STATE_SLOWED, false);
 			u->set_state(unit::STATE_PETRIFIED, false);
 			u->set_state(unit::STATE_UNHEALABLE, false);
-			u->set_standing();
+			u->anim_comp().set_standing();
 		}
 
 		if (heal_amount_to_set)
@@ -945,7 +920,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 			resources::screen->invalidate(loc);
 			unit_map::iterator iun = resources::units->find(loc);
 			if ( iun != resources::units->end()  &&  iun.valid() )
-				iun->invalidate(loc);
+				iun->anim_comp().invalidate(*resources::screen);
 		}
 		resources::screen->redraw_minimap();
 
@@ -970,11 +945,10 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 		for(std::vector<team>::iterator pi = resources::teams->begin();
 				pi!=resources::teams->end(); ++pi)
 		{
-			std::vector<unit>& avail_units = pi->recall_list();
-			for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-				scoped_recall_unit auto_store("this_unit", pi->save_id(), j - avail_units.begin());
-				if (j->matches_filter(cfg, map_location())) {
-					j = avail_units.erase(j);
+			for(std::vector<UnitPtr>::iterator j = pi->recall_list().begin(); j != pi->recall_list().end();) { //TODO: This block is really messy, cleanup somehow...
+				scoped_recall_unit auto_store("this_unit", pi->save_id(), j - pi->recall_list().begin());
+				if ((*j)->matches_filter(cfg, map_location())) {
+					j = pi->recall_list().erase(j);
 				} else {
 					++j;
 				}
@@ -1027,8 +1001,6 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 		   boxes, but display the error message only if side_for is
 		   used for an inactive side. */
 		bool side_for_show = has_input;
-		if (has_input && side_for_raw != str_cast(resources::controller->current_side()))
-			lg::wml_error << "[message]side_for= cannot query any user input out of turn.\n";
 
 		std::vector<std::string> side_for =
 			utils::split(side_for_raw, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
@@ -1109,7 +1081,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 	}
 	else
 	{
-		config choice = mp_sync::get_user_choice("input", msg);
+		config choice = mp_sync::get_user_choice("input", msg, cfg["side_for"].to_int(0));
 		option_chosen = choice["value"];
 		text_input_result = choice["text"].str();
 	}
@@ -1345,7 +1317,7 @@ WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 		if(new_turn_number_u < 1 || (new_turn_number > tod_man.number_of_turns() && tod_man.number_of_turns() != -1)) {
 			ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ")" << std::endl;
 		} else if(new_turn_number_u != current_turn_number) {
-			tod_man.set_turn(new_turn_number_u);
+			tod_man.set_turn(new_turn_number_u, *resources::gamedata);
 			resources::screen->new_turn();
 		}
 	}
@@ -1355,7 +1327,7 @@ WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 /// that is just moving for the visual effect
 WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 {
-	util::unique_ptr<unit> dummy_unit(create_fake_unit(cfg));
+	fake_unit_ptr dummy_unit(create_fake_unit(cfg));
 	if(!dummy_unit.get())
 		return;
 
@@ -1370,7 +1342,7 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 	const std::vector<map_location>& path = fake_unit_path(*dummy_unit, xvals, yvals);
 	if (!path.empty()) {
 		// Always scroll.
-		unit_display::move_unit(path, *dummy_unit, true, map_location::NDIRECTIONS, force_scroll);
+		unit_display::move_unit(path, dummy_unit.get_unit_ptr(), true, map_location::NDIRECTIONS, force_scroll);
 	}
 }
 
@@ -1380,11 +1352,10 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 
 	const vconfig::child_list unit_cfgs = cfg.get_children("fake_unit");
 	size_t num_units = unit_cfgs.size();
-	boost::scoped_array<util::unique_ptr<game_display::fake_unit> > units(
-		new util::unique_ptr<game_display::fake_unit>[num_units]);
+	std::vector<fake_unit_ptr > units;
+	units.reserve(num_units);
 	std::vector<std::vector<map_location> > paths;
 	paths.reserve(num_units);
-	game_display* disp = game_display::get_singleton();
 
 	LOG_NG << "Moving " << num_units << " units\n";
 
@@ -1394,8 +1365,8 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 		const std::vector<std::string> xvals = utils::split(config["x"]);
 		const std::vector<std::string> yvals = utils::split(config["y"]);
 		int skip_steps = config["skip_steps"];
-		game_display::fake_unit *u = create_fake_unit(config);
-		units[paths.size()].reset(u);
+		fake_unit_ptr u = create_fake_unit(config);
+		units[paths.size()] = u;
 		paths.push_back(fake_unit_path(*u, xvals, yvals));
 		if(skip_steps > 0)
 			paths.back().insert(paths.back().begin(), skip_steps, paths.back().front());
@@ -1403,7 +1374,7 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 		DBG_NG << "Path " << paths.size() - 1 << " has length " << paths.back().size() << '\n';
 
 		u->set_location(paths.back().front());
-		u->place_on_game_display(disp);
+		u.place_on_fake_unit_manager(resources::fake_units);
 	}
 
 	LOG_NG << "Units placed, longest path is " << longest_path << " long\n";
@@ -1418,19 +1389,13 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 			DBG_NG << "Moving unit " << un << ", doing step " << step << '\n';
 			path_step[0] = paths[un][step - 1];
 			path_step[1] = paths[un][step];
-			unit_display::move_unit(path_step, *units[un]);
+			unit_display::move_unit(path_step, units[un].get_unit_ptr());
 			units[un]->set_location(path_step[1]);
-			units[un]->set_standing();
+			units[un]->anim_comp().set_standing();
 		}
 	}
 
 	LOG_NG << "Units moved\n";
-
-	for(size_t un = 0; un < num_units; ++un) {
-		units[un]->remove_from_game_display();
-	}
-
-	LOG_NG << "Units removed\n";
 }
 
 WML_HANDLER_FUNCTION(object, event_info, cfg)
@@ -1574,16 +1539,16 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 			continue;
 		}
 
-		std::vector<unit>& avail = (*resources::teams)[index].recall_list();
+		recall_list_manager & avail = (*resources::teams)[index].recall_list();
 		std::vector<unit_map::unit_iterator> leaders = resources::units->find_leaders(index + 1);
 
-		for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
+		for(std::vector<UnitPtr>::iterator u = avail.begin(); u != avail.end(); ++u) {
 			DBG_NG << "checking unit against filter...\n";
 			scoped_recall_unit auto_store("this_unit", player_id, u - avail.begin());
-			if (u->matches_filter(unit_filter, map_location())) {
-				DBG_NG << u->id() << " matched the filter...\n";
-				const unit to_recruit(*u);
-				const unit* pass_check = &to_recruit;
+			if ((*u)->matches_filter(unit_filter, map_location())) {
+				DBG_NG << (*u)->id() << " matched the filter...\n";
+				const UnitPtr to_recruit = *u;
+				const unit* pass_check = to_recruit.get();
 				if(!cfg["check_passability"].to_bool(true)) pass_check = NULL;
 				const map_location cfg_loc = cfg_to_loc(cfg);
 
@@ -1592,32 +1557,32 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 					DBG_NG << "...considering " + leader->id() + " as the recalling leader...\n";
 					map_location loc = cfg_loc;
 					if ( (leader_filter.null() || leader->matches_filter(leader_filter))  &&
-					     u->matches_filter(vconfig(leader->recall_filter()), map_location()) ) {
+					     (*u)->matches_filter(vconfig(leader->recall_filter()), map_location()) ) {
 						DBG_NG << "...matched the leader filter and is able to recall the unit.\n";
-						if(!resources::game_map->on_board(loc))
+						if(!resources::gameboard->map().on_board(loc))
 							loc = leader->get_location();
 						if(pass_check || (resources::units->count(loc) > 0))
 							loc = pathfind::find_vacant_tile(loc, pathfind::VACANT_ANY, pass_check);
-						if(resources::game_map->on_board(loc)) {
+						if(resources::gameboard->map().on_board(loc)) {
 							DBG_NG << "...valid location for the recall found. Recalling.\n";
 							avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
-							actions::place_recruit(to_recruit, loc, leader->get_location(), 0, true,
+							actions::place_recruit(*to_recruit, loc, leader->get_location(), 0, true,
 							                       cfg["show"].to_bool(true), cfg["fire_event"].to_bool(false),
 							                       true, true);
 							return;
 						}
 					}
 				}
-				if (resources::game_map->on_board(cfg_loc)) {
+				if (resources::gameboard->map().on_board(cfg_loc)) {
 					map_location loc = cfg_loc;
 					if(pass_check || (resources::units->count(loc) > 0))
 						loc = pathfind::find_vacant_tile(loc, pathfind::VACANT_ANY, pass_check);
 					// Check if we still have a valid location
-					if (resources::game_map->on_board(loc)) {
+					if (resources::gameboard->map().on_board(loc)) {
 						DBG_NG << "No usable leader found, but found usable location. Recalling.\n";
 						avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
 						map_location null_location = map_location::null_location();
-						actions::place_recruit(to_recruit, loc, null_location, 0, true, cfg["show"].to_bool(true),
+						actions::place_recruit(*to_recruit, loc, null_location, 0, true, cfg["show"].to_bool(true),
 						                       cfg["fire_event"].to_bool(false), true, true);
 						return;
 					}
@@ -1680,7 +1645,7 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 	 * easier to do this as wanted by the author in WML.
 	 */
 
-	const gamemap * game_map = resources::game_map;
+	const gamemap * game_map = & resources::gameboard->map();
 	gamemap map(*game_map);
 
 	try {
@@ -1795,10 +1760,10 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 				}
 				// Iterate over the player's recall list to find a match
 				for(size_t i=0; i < pi->recall_list().size(); ++i) {
-					unit& u = pi->recall_list()[i];
-					scoped_recall_unit auto_store("this_unit", player_id, i);
-					if (u.matches_filter(filter, map_location())) {
-						u.set_role(cfg["role"]);
+					UnitPtr u = pi->recall_list()[i];
+					scoped_recall_unit auto_store("this_unit", player_id, i); //TODO: Should this not be inside the if? Explain me.
+					if (u->matches_filter(filter, map_location())) {
+						u->set_role(cfg["role"]);
 						found=true;
 						break;
 					}
@@ -2234,7 +2199,7 @@ WML_HANDLER_FUNCTION(sound_source, /*event_info*/, cfg)
 }
 
 /// Store the relative direction from one hex to antoher in a WML variable.
-/// This is mainly useful as a diagnostic tool, but could be useful 
+/// This is mainly useful as a diagnostic tool, but could be useful
 /// for some kind of scenario.
 WML_HANDLER_FUNCTION(store_relative_dir, /*event_info*/, cfg)
 {
@@ -2264,7 +2229,7 @@ WML_HANDLER_FUNCTION(store_relative_dir, /*event_info*/, cfg)
 
 /// Store the rotation of one hex around another in a WML variable.
 /// In increments of 60 degrees, clockwise.
-/// This is mainly useful as a diagnostic tool, but could be useful 
+/// This is mainly useful as a diagnostic tool, but could be useful
 /// for some kind of scenario.
 WML_HANDLER_FUNCTION(store_rotate_map_location, /*event_info*/, cfg)
 {
@@ -2330,13 +2295,13 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 
 	// We have found a unit that matches the filter
 	const map_location dst = cfg_to_loc(cfg);
-	if (dst == u->get_location() || !resources::game_map->on_board(dst)) return;
+	if (dst == u->get_location() || !resources::gameboard->map().on_board(dst)) return;
 
 	const unit* pass_check = NULL;
 	if (cfg["check_passability"].to_bool(true))
 		pass_check = &*u;
 	const map_location vacant_dst = find_vacant_tile(dst, pathfind::VACANT_ANY, pass_check);
-	if (!resources::game_map->on_board(vacant_dst)) return;
+	if (!resources::gameboard->map().on_board(vacant_dst)) return;
 
 	// Clear the destination hex before the move (so the animation can be seen).
 	bool clear_shroud = cfg["clear_shroud"].to_bool(true);
@@ -2351,20 +2316,20 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	teleport_path.push_back(src_loc);
 	teleport_path.push_back(vacant_dst);
 	bool animate = cfg["animate"].to_bool();
-	unit_display::move_unit(teleport_path, *u, animate);
+	unit_display::move_unit(teleport_path, u.get_shared_ptr(), animate);
 
 	resources::units->move(src_loc, vacant_dst);
 	unit::clear_status_caches();
 
 	u = resources::units->find(vacant_dst);
-	u->set_standing();
+	u->anim_comp().set_standing();
 
 	if ( clear_shroud ) {
 		// Now that the unit is visibly in position, clear the shroud.
 		clearer.clear_unit(vacant_dst, *u);
 	}
 
-	if (resources::game_map->is_village(vacant_dst)) {
+	if (resources::gameboard->map().is_village(vacant_dst)) {
 		actions::get_village(vacant_dst, u->side());
 	}
 
@@ -2380,7 +2345,7 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 {
 	map_location loc = cfg_to_loc(cfg, 1, 1);
 
-	gamemap mask_map(*resources::game_map);
+	gamemap mask_map(resources::gameboard->map());
 
 	//config level;
 	std::string mask = cfg["mask"];
@@ -2492,7 +2457,7 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 	}
 	team &tm = resources::teams->at(side-1);
 
-	unit_creator uc(tm,resources::game_map->starting_position(side));
+	unit_creator uc(tm,resources::gameboard->map().starting_position(side));
 
 	uc
 		.allow_add_to_recall(true)
@@ -2513,16 +2478,16 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 
 	try {
 		config tmp_cfg(var);
-		const unit u(tmp_cfg, false);
+		const UnitPtr u = UnitPtr( new unit(tmp_cfg, false));
 
-		preferences::encountered_units().insert(u.type_id());
+		preferences::encountered_units().insert(u->type_id());
 		map_location loc = cfg_to_loc(
 			(cfg.has_attribute("x") && cfg.has_attribute("y")) ? cfg : vconfig(var));
 		const bool advance = cfg["advance"].to_bool(true);
-		if(resources::game_map->on_board(loc)) {
+		if(resources::gameboard->map().on_board(loc)) {
 			if (cfg["find_vacant"].to_bool()) {
 				const unit* pass_check = NULL;
-				if (cfg["check_passability"].to_bool(true)) pass_check = &u;
+				if (cfg["check_passability"].to_bool(true)) pass_check = u.get();
 				loc = pathfind::find_vacant_tile(
 						loc,
 						pathfind::VACANT_ANY,
@@ -2530,7 +2495,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			}
 
 			resources::units->erase(loc);
-			resources::units->add(loc, u);
+			resources::units->add(loc, *u);
 
 			std::string text = cfg["text"];
 			play_controller *controller = resources::controller;
@@ -2539,27 +2504,17 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 				// Print floating label
 				resources::screen->float_label(loc, text, cfg["red"], cfg["green"], cfg["blue"]);
 			}
-
-			const int side = controller->current_side();
-			unsigned loop_limit = 5;
-			while ( advance
-					&& unit_helper::will_certainly_advance(resources::units->find(loc))
-			        && (loop_limit > 0) )
-			{
-				loop_limit--;
-				int total_opt = unit_helper::number_of_possible_advances(u);
-				bool use_dialog = side == u.side() &&
-					(*resources::teams)[side - 1].is_human();
-				config selected = mp_sync::get_user_choice("choose",
-					unstore_unit_advance_choice(total_opt, loc, use_dialog));
-				dialogs::animate_unit_advancement(loc, selected["value"], cfg["fire_event"].to_bool(false), cfg["animate"].to_bool(true));
+			if(advance) {
+				advance_unit_at(advance_unit_params(loc)
+					.fire_events(cfg["fire_event"].to_bool(false))
+					.animate(cfg["animate"].to_bool(true)));
 			}
 		} else {
-			if(advance && u.advances()) {
+			if(advance && u->advances()) {
 				WRN_NG << "Cannot advance units when unstoring to the recall list." << std::endl;
 			}
 
-			team& t = (*resources::teams)[u.side()-1];
+			team& t = (*resources::teams)[u->side()-1];
 
 			if(t.persistent()) {
 
@@ -2570,12 +2525,10 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 				// replaced by the wrong unit.
 				if(t.recall_list().size() > 1) {
 					std::vector<size_t> desciptions;
-					for(std::vector<unit>::const_iterator citor =
-							t.recall_list().begin();
-							citor != t.recall_list().end(); ++citor) {
+					BOOST_FOREACH ( const UnitConstPtr & pt, t.recall_list() ) {
 
 						const size_t desciption =
-							citor->underlying_id();
+							pt->underlying_id();
 						if(std::find(desciptions.begin(), desciptions.end(),
 									desciption) != desciptions.end()) {
 
@@ -2593,29 +2546,23 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 				 * @todo it would be better to change recall_list() from
 				 * a vector to a map and use the underlying_id as key.
 				 */
-				const size_t key = u.underlying_id();
-				for(std::vector<unit>::iterator itor =
-						t.recall_list().begin();
-						itor != t.recall_list().end(); ++itor) {
-
+				size_t old_size = t.recall_list().size();
+				t.recall_list().erase_by_underlying_id(u->underlying_id());
+				if (t.recall_list().size() != old_size) {
 					LOG_NG << "Replaced unit '"
-						<< key << "' on the recall list\n";
-					if(itor->underlying_id() == key) {
-						t.recall_list().erase(itor);
-						break;
-					}
+						<< u->underlying_id() << "' on the recall list\n";
 				}
-				t.recall_list().push_back(u);
+				t.recall_list().add(u);
 			} else {
-				ERR_NG << "Cannot unstore unit: recall list is empty for player " << u.side()
+				ERR_NG << "Cannot unstore unit: recall list is empty for player " << u->side()
 					<< " and the map location is invalid.\n";
 			}
 		}
 
 		// If we unstore a leader make sure the team gets a leader if not the loading
 		// in MP might abort since a side without a leader has a recall list.
-		if(u.can_recruit()) {
-			(*resources::teams)[u.side() - 1].have_leader();
+		if(u->can_recruit()) {
+			(*resources::teams)[u->side() - 1].have_leader();
 		}
 
 	} catch (game::game_error &e) {

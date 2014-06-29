@@ -16,12 +16,14 @@
 #define EDITOR_MAP_CONTEXT_HPP_INCLUDED
 
 #include "editor_map.hpp"
-#include "gamestatus.hpp"
+#include "game_classification.hpp"
 #include "map_label.hpp"
+#include "mp_game_settings.hpp"
 #include "sound_music_track.hpp"
 #include "tod_manager.hpp"
 #include "unit_map.hpp"
 #include "overlay.hpp"
+#include "../../display_context.hpp"
 
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
@@ -35,7 +37,7 @@ namespace editor {
  * as e.g. the undo stack is part of the map, not the editor as a whole. This might allow many
  * maps to be open at the same time.
  */
-class map_context : private boost::noncopyable
+class map_context : public display_context, private boost::noncopyable
 {
 public:
 	/**
@@ -58,7 +60,7 @@ public:
 	/**
 	 * Map context destructor
 	 */
-	~map_context();
+	virtual ~map_context();
 
 	/**
 	 * Select the nth tod area.
@@ -121,7 +123,20 @@ public:
 	}
 
 	void replace_schedule(const std::vector<time_of_day>& schedule);
-	
+
+	/**
+	 * Const accessor names needed to implement "display_context" interface
+	 */
+	virtual const unit_map & units() const { 
+		return units_; 
+	}
+	virtual const std::vector<team>& teams() const { 
+		return teams_; 
+	}
+	virtual const gamemap & map() const { 
+		return map_; 
+	}
+
 	/**
 	 * Replace the [time]s of the currently active area.
 	 */
@@ -143,13 +158,16 @@ public:
 	tod_manager* get_time_manager() {
 		return tod_manager_.get();
 	}
-
-	game_state& get_game_state() {
-		return state_;
+	
+	mp_game_settings & get_mp_settings() {
+		return mp_settings_;
+	}
+	game_classification& get_classification() {
+		return game_classification_;
 	}
 
 	/**
-	 * 
+	 *
  	 * @return the index of the currently active area.
  	 */
 	int get_active_area() const {
@@ -461,7 +479,8 @@ private:
 	unit_map units_;
 	std::vector<team> teams_;
 	boost::scoped_ptr<tod_manager> tod_manager_;
-	game_state state_;
+	mp_game_settings mp_settings_;
+	game_classification game_classification_;
 
 	typedef std::map<std::string, sound::music_track> music_map;
 	music_map music_tracks_;

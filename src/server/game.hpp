@@ -51,7 +51,29 @@ public:
 
 	/** Checks whether the connection's ip address is banned. */
 	bool player_is_banned(const network::connection player) const;
-	bool level_init() const { return level_.child("side") != NULL; }
+	bool level_init() const { return level_.child("snapshot") || level_.child("scenario"); }
+	static simple_wml::node* starting_pos(simple_wml::node& data)
+	{
+		if(simple_wml::node* scenario = data.child("scenario"))
+			return scenario;
+		else if(simple_wml::node* snapshot = data.child("snapshot"))
+			return snapshot;
+		else
+			return &data;
+	}
+	static const simple_wml::node* starting_pos(const simple_wml::node& data)
+	{
+		if(const simple_wml::node* scenario = data.child("scenario"))
+			return scenario;
+		else if(const simple_wml::node* snapshot = data.child("snapshot"))
+			return snapshot;
+		else
+			return &data;
+	}
+	const simple_wml::node::child_list & get_sides_list() const
+	{
+		return starting_pos( level_.root())->children("side");
+	}
 	bool started() const { return started_; }
 
 	size_t nplayers() const { return players_.size(); }
@@ -109,7 +131,7 @@ public:
 
 	void start_game(const player_map::const_iterator starter);
 	void perform_controller_tweaks(); 			//this is performed just before starting and before [start_game] signal
-								//send scenario_diff's specific to each client so that they locally 
+								//send scenario_diff's specific to each client so that they locally
 								//control their human sides
 
 	void update_game();

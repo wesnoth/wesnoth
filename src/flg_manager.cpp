@@ -38,11 +38,11 @@ std::string get_RC_suffix(const std::string& unit_color, const int color)
 
 
 flg_manager::flg_manager(const std::vector<const config*>& era_factions,
-	const config& side, const bool lock_settings, const bool saved_game,
-	const int color) :
+	const config& side, const bool lock_settings, const bool use_map_settings,
+	const bool saved_game, const int color) :
 	era_factions_(era_factions),
 	side_(side),
-	lock_settings_(lock_settings),
+	use_map_settings_(use_map_settings),
 	saved_game_(saved_game),
 	has_no_recruits_(
 		((side_.has_attribute("default_recruit") ?
@@ -50,6 +50,8 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 			side_["recruit"].empty()) ||
 		side_["no_recruit"].to_bool()) &&
 		side_["previous_recruits"].empty() && side_["extra_recruit"].empty()),
+	faction_lock_(side_["faction_lock"].to_bool(lock_settings) && use_map_settings),
+	leader_lock_(side_["leader_lock"].to_bool(lock_settings) && use_map_settings),
 	color_(color),
 	available_factions_(),
 	available_leaders_(),
@@ -200,8 +202,8 @@ void flg_manager::reset_gender_combo(gui::combo& combo_gender) const
 }
 
 bool flg_manager::is_random_faction()
-{ 
-	return (*current_faction_)["random_faction"].to_bool(); 
+{
+	return (*current_faction_)["random_faction"].to_bool();
 }
 
 void flg_manager::resolve_random() {
@@ -333,7 +335,7 @@ void flg_manager::update_available_leaders()
 {
 	available_leaders_.clear();
 
-	if (!side_["no_leader"].to_bool() || !lock_settings_) {
+	if (!side_["no_leader"].to_bool() || !leader_lock_) {
 		// Add a default leader if there is one.
 		if (!default_leader_type_.empty()) {
 			available_leaders_.push_back(default_leader_type_);
@@ -436,7 +438,7 @@ void flg_manager::update_choosable_factions()
 {
 	choosable_factions_ = available_factions_;
 
-	if ((!side_["faction"].empty() || !has_no_recruits_) && lock_settings_) {
+	if ((!side_["faction"].empty() || !has_no_recruits_) && faction_lock_) {
 		std::string faction_id;
 		if (!has_no_recruits_) {
 			faction_id = "Custom";
@@ -454,7 +456,7 @@ void flg_manager::update_choosable_leaders()
 {
 	choosable_leaders_ = available_leaders_;
 
-	if (!default_leader_type_.empty() && lock_settings_) {
+	if (!default_leader_type_.empty() && leader_lock_) {
 		if (std::find(available_leaders_.begin(), available_leaders_.end(),
 			default_leader_type_) != available_leaders_.end()) {
 
@@ -468,7 +470,7 @@ void flg_manager::update_choosable_genders()
 {
 	choosable_genders_ = available_genders_;
 
-	if (lock_settings_) {
+	if (leader_lock_) {
 		std::string default_gender = default_leader_gender_;
 		if (default_gender.empty()) {
 			default_gender = choosable_genders_.front();

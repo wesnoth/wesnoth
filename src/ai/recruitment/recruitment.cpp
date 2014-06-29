@@ -25,6 +25,7 @@
 #include "../manager.hpp"
 #include "../../actions/attack.hpp"
 #include "../../attack_prediction.hpp"
+#include "../../game_board.hpp"
 #include "../../game_display.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
@@ -177,7 +178,7 @@ double recruitment::evaluate() {
 		}
 
 		const map_location& loc = leader->get_location();
-		if (resources::game_map->is_keep(loc) &&
+		if (resources::gameboard->map().is_keep(loc) &&
 				pathfind::find_vacant_castle(*leader) != map_location::null_location()) {
 			return get_score();
 		}
@@ -196,7 +197,7 @@ void recruitment::execute() {
 	 */
 
 	const unit_map& units = *resources::units;
-	const gamemap& map = *resources::game_map;
+	const gamemap& map = resources::gameboard->map();
 	const std::vector<unit_map::const_iterator> leaders = units.find_leaders(get_side());
 
 	// This is the central datastructure with all score_tables in it.
@@ -206,7 +207,7 @@ void recruitment::execute() {
 
 	BOOST_FOREACH(const unit_map::const_iterator& leader, leaders) {
 		const map_location& keep = leader->get_location();
-		if (!resources::game_map->is_keep(keep)) {
+		if (!resources::gameboard->map().is_keep(keep)) {
 			LOG_AI_RECRUITMENT << "Leader " << leader->name() << " is not on keep. \n";
 			continue;
 		}
@@ -247,15 +248,15 @@ void recruitment::execute() {
 		// Add recalls.
 		// Recalls are treated as recruits. While recruiting
 		// we'll check if we can do a recall instead of a recruitment.
-		BOOST_FOREACH(const unit& recall, current_team().recall_list()) {
+		BOOST_FOREACH(const UnitConstPtr & recall, current_team().recall_list()) {
 			// Check if this leader is allowed to recall this unit.
 			vconfig filter = vconfig(leader->recall_filter());
-			if (!recall.matches_filter(filter, map_location::null_location())) {
+			if (!recall->matches_filter(filter, map_location::null_location())) {
 				continue;
 			}
-			data.recruits.insert(recall.type_id());
-			data.scores[recall.type_id()] = 0.0;
-			global_recruits.insert(recall.type_id());
+			data.recruits.insert(recall->type_id());
+			data.scores[recall->type_id()] = 0.0;
+			global_recruits.insert(recall->type_id());
 		}
 
 		// Check if leader is in danger. (If a enemies unit can attack the leader)
@@ -469,19 +470,19 @@ const std::string* recruitment::get_appropriate_recall(const std::string& type,
 		const data& leader_data) const {
 	const std::string* best_recall_id = NULL;
 	double best_recall_value = -1;
-	BOOST_FOREACH(const unit& recall_unit, current_team().recall_list()) {
-		if (type != recall_unit.type_id()) {
+	BOOST_FOREACH(const UnitConstPtr & recall_unit, current_team().recall_list()) {
+		if (type != recall_unit->type_id()) {
 			continue;
 		}
 		// Check if this leader is allowed to recall this unit.
 		vconfig filter = vconfig(leader_data.leader->recall_filter());
-		if (!recall_unit.matches_filter(filter, map_location::null_location())) {
-			LOG_AI_RECRUITMENT << "Refused recall because of filter: " << recall_unit.id() << "\n";
+		if (!recall_unit->matches_filter(filter, map_location::null_location())) {
+			LOG_AI_RECRUITMENT << "Refused recall because of filter: " << recall_unit->id() << "\n";
 			continue;
 		}
 		double average_cost_of_advanced_unit = 0;
 		int counter = 0;
-		BOOST_FOREACH(const std::string& advancement, recall_unit.advances_to()) {
+		BOOST_FOREACH(const std::string& advancement, recall_unit->advances_to()) {
 			const unit_type* advancement_type = unit_types.find(advancement);
 			if (!advancement_type) {
 				continue;
@@ -493,16 +494,16 @@ const std::string* recruitment::get_appropriate_recall(const std::string& type,
 			average_cost_of_advanced_unit /= counter;
 		} else {
 			// Unit don't have advancements. Use cost of unit itself.
-			average_cost_of_advanced_unit = recall_unit.cost();
+			average_cost_of_advanced_unit = recall_unit->cost();
 		}
-		double xp_quantity = static_cast<double>(recall_unit.experience()) /
-				recall_unit.max_experience();
-		double recall_value = recall_unit.cost() + xp_quantity * average_cost_of_advanced_unit;
+		double xp_quantity = static_cast<double>(recall_unit->experience()) /
+				recall_unit->max_experience();
+		double recall_value = recall_unit->cost() + xp_quantity * average_cost_of_advanced_unit;
 		if (recall_value < current_team().recall_cost()) {
 			continue;  // Unit is not worth to get recalled.
 		}
 		if (recall_value > best_recall_value) {
-			best_recall_id = &recall_unit.id();
+			best_recall_id = &recall_unit->id();
 			best_recall_value = recall_value;
 		}
 	}
@@ -599,7 +600,7 @@ void recruitment::compare_cost_maps_and_update_important_hexes(
 		const pathfind::full_cost_map& my_cost_map,
 		const pathfind::full_cost_map& enemy_cost_map) {
 
-	const gamemap& map = *resources::game_map;
+	const gamemap& map = resources::gameboard->map();
 
 	// First collect all hexes where the average costs are similar in important_hexes_candidates
 	// Then chose only those hexes where the average costs are relatively low.
@@ -745,7 +746,7 @@ void recruitment::update_average_lawful_bonus() {
  */
 void recruitment::update_average_local_cost() {
 	average_local_cost_.clear();
-	const gamemap& map = *resources::game_map;
+	const gamemap& map = resources::gameboard->map();
 	const team& team = (*resources::teams)[get_side() - 1];
 
 	for(int x = 0; x < map.w(); ++x) {
@@ -779,7 +780,7 @@ void recruitment::update_important_hexes() {
 	own_units_in_combat_counter_ = 0;
 
 	update_average_local_cost();
-	const gamemap& map = *resources::game_map;
+	const gamemap& map = resources::gameboard->map();
 	const unit_map& units = *resources::units;
 
 	// Mark battle areas as important
@@ -1441,10 +1442,10 @@ double recruitment::get_estimated_unit_gain() const {
  * Guess how many villages we will gain over the next turns per turn.
  */
 double recruitment::get_estimated_village_gain() const {
-	const gamemap& map = *resources::game_map;
+	const gamemap& map = resources::gameboard->map();
 	int neutral_villages = 0;
 	BOOST_FOREACH(const map_location& village, map.villages()) {
-		if (village_owner(village) == -1) {
+		if (resources::gameboard->village_owner(village) == -1) {
 			++neutral_villages;
 		}
 	}
@@ -1708,8 +1709,8 @@ void recruitment::update_scouts_wanted() {
 	int neutral_villages = 0;
 	// We recruit the initial allocation of scouts
 	// based on how many neutral villages there are.
-	BOOST_FOREACH(const map_location& village, resources::game_map->villages()) {
-		if (village_owner(village) == -1) {
+	BOOST_FOREACH(const map_location& village, resources::gameboard->map().villages()) {
+		if (resources::gameboard->village_owner(village) == -1) {
 			++neutral_villages;
 		}
 	}

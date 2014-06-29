@@ -14,6 +14,9 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include <boost/multi_index_container.hpp>
+// ^ This is apparently unnecessary but we don't compile without it...
+
 #include "gui/dialogs/game_save.hpp"
 
 #include "gettext.hpp"

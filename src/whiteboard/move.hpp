@@ -20,6 +20,7 @@
 #define WB_MOVE_HPP_
 
 #include "action.hpp"
+#include "../game_errors.hpp"
 
 struct temporary_unit_mover;
 
@@ -35,7 +36,7 @@ public:
 	move(size_t team_index, bool hidden, unit& mover, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 	move(config const&, bool hidden); // For deserialization
-	virtual ~move(){}
+	virtual ~move();
 
 	virtual std::ostream& print(std::ostream& s) const;
 
@@ -52,7 +53,7 @@ public:
 	virtual error check_validity() const;
 
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
-	virtual unit* get_unit() const;
+	virtual UnitPtr get_unit() const;
 	/** @return pointer to the fake unit used only for visuals */
 	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
 

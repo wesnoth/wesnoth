@@ -15,13 +15,12 @@
 #ifndef PLAYTURN_HPP_INCLUDED
 #define PLAYTURN_HPP_INCLUDED
 
-class config;
-class replay_network_sender;
-
-#include "generic_event.hpp"
-#include "network.hpp"
-#include "playturn_network_adapter.hpp"
+#include <string>                       // for string
+#include "generic_event.hpp"            // for generic_event
 #include "replay.hpp"
+
+class config;  // lines 18-18
+class playturn_network_adapter;
 
 /**
 	TODO: rename this class since it isn't that much related to turns.
@@ -35,7 +34,7 @@ public:
 
 
 
-	enum PROCESS_DATA_RESULT 
+	enum PROCESS_DATA_RESULT
 	{
 		PROCESS_CONTINUE,
 		PROCESS_RESTART_TURN,
@@ -56,7 +55,7 @@ public:
 
 	//function which will process incoming network data received with playturn_network_adapter, and act on it.
 	PROCESS_DATA_RESULT process_network_data(const config& cfg, bool skip_replay);
-	
+
 	//reads as much data from network_reader_ as possible and processed it.
 	PROCESS_DATA_RESULT process_network_data_from_reader(bool skip_replay);
 
@@ -66,8 +65,8 @@ public:
 	bool is_host() const { return is_host_; }
 	void set_host(bool val) { is_host_ = val; }
 private:
-	static void change_controller(const std::string& side, const std::string& controller);
-	static void change_side_controller(const std::string& side, const std::string& player);
+	static void change_controller(int side, const std::string& controller);
+	static void change_side_controller(int side, const std::string& player);
 	static PROCESS_DATA_RESULT replay_to_process_data_result(REPLAY_RETURN replayreturn);
 	PROCESS_DATA_RESULT handle_turn(
 		const config& t,
@@ -85,8 +84,8 @@ private:
 };
 
 /**
-	class that sends data on destruction 
-	to make sure data is sended in any case. 
+	class that sends data on destruction
+	to make sure data is sended in any case.
 */
 class turn_info_send
 {
@@ -105,8 +104,8 @@ private:
 };
 
 /**
-	class that syncs data on destruction 
-	to make sure data is synced in any case. 
+	class that syncs data on destruction
+	to make sure data is synced in any case.
 */
 class turn_info_sync
 {

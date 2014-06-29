@@ -20,9 +20,10 @@
 #ifndef THEME_HPP_INCLUDED
 #define THEME_HPP_INCLUDED
 
-#include "SDL.h"
 #include "config.hpp"
 #include "generic_event.hpp"
+
+#include <SDL_video.h>
 
 typedef struct { size_t x1,y1,x2,y2; } _rect;
 

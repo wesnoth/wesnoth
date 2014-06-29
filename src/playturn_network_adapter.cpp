@@ -16,10 +16,20 @@ static lg::log_domain log_network("network");
 void playturn_network_adapter::read_from_network()
 {
 	assert(!data_.empty());
-	
+
 	this->data_.push_back(config());
 	config& back = data_.back();
-	bool has_data = this->network_reader_(back);
+	bool has_data = false;
+	try
+	{
+		has_data = this->network_reader_(back);
+	}
+	catch(...)
+	{
+		//Readin from network can throw, we want to ignore the possibly corrupt packet in this case.
+		this->data_.pop_back();
+		throw;
+	}
 	//ping is handeled by network.cpp and we can ignore it.
 	back.remove_attribute("ping");
 	if((!has_data) || back.empty())
@@ -28,7 +38,7 @@ void playturn_network_adapter::read_from_network()
 		return;
 	}
 	assert(!data_.back().empty());
-	
+
 	if(back.has_attribute("side_drop"))
 	{
 		config child;
@@ -38,13 +48,14 @@ void playturn_network_adapter::read_from_network()
 		back.remove_attribute("side_drop");
 		back.remove_attribute("controller");
 	}
-	assert(!data_.back().empty());
-	//there should be no attributes left.
-
-	if(back.attribute_range().first != back.attribute_range().second )
+	else if(back.attribute_range().first != back.attribute_range().second )
 	{
 		ERR_NW << "found unexpected attribute:" <<back.debug() << std::endl;
+		this->data_.pop_back();
+		//ignore those here
 	}
+	assert(!data_.back().empty());
+	//there should be no attributes left.
 }
 
 bool playturn_network_adapter::is_at_end()
@@ -86,7 +97,7 @@ bool playturn_network_adapter::read(config& dst)
 		config& childchild_old = const_cast<config&>(itor->cfg);
 		config& childchild = child.add_child(itor->key);
 		childchild.swap(childchild_old);
-		
+
 		++next_command_num_;
 		if(next_->cfg.all_children_count() == next_command_num_)
 		{
@@ -114,10 +125,12 @@ playturn_network_adapter::playturn_network_adapter(source_type source)
 
 playturn_network_adapter::~playturn_network_adapter()
 {
-	if(!is_at_end())
-	{
-		ERR_NW << "Destroing playturn_network_adapter with an non empty buffer, this means loss of network data" << std::endl;
-	}
+	try {
+		if(!is_at_end())
+		{
+			ERR_NW << "Destroing playturn_network_adapter with an non empty buffer, this means loss of network data" << std::endl;
+		}
+	} catch (...) {}
 }
 
 void playturn_network_adapter::set_source(source_type source)

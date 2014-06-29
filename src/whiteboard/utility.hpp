@@ -22,7 +22,12 @@
 #include <vector>
 #include <deque>
 
+
+#ifndef INCL_BOOST_FUNCTION_HPP_
+#define INCL_BOOST_FUNCTION_HPP_
 #include <boost/function.hpp>
+#endif
+
 
 #include "typedefs.hpp"
 
@@ -47,7 +52,7 @@ side_actions_ptr current_side_actions();
  * For a given leader on a keep, find another leader on another keep in the same castle.
  * @retval NULL if no such leader has been found
  */
-unit const* find_backup_leader(unit const& leader);
+UnitConstPtr find_backup_leader(unit const& leader);
 
 /**
  * @return a leader from the specified team who can recruit on the specified hex

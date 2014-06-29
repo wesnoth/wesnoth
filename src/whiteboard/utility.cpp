@@ -32,6 +32,7 @@
 #include "resources.hpp"
 #include "team.hpp"
 #include "unit.hpp"
+#include "unit_animation_component.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -61,24 +62,24 @@ side_actions_ptr current_side_actions()
 	return side_actions;
 }
 
-unit const* find_backup_leader(unit const& leader)
+UnitConstPtr find_backup_leader(const unit & leader)
 {
 	assert(leader.can_recruit());
-	assert(resources::game_map->is_keep(leader.get_location()));
-	BOOST_FOREACH(unit const& unit, *resources::units)
+	assert(resources::gameboard->map().is_keep(leader.get_location()));
+	for (unit_map::const_iterator unit = resources::units->begin(); unit != resources::units->end(); unit++)
 	{
-		if (unit.can_recruit() && unit.id() != leader.id())
+		if (unit->can_recruit() && unit->id() != leader.id())
 		{
-			if ( can_recruit_on(unit, leader.get_location()) )
-				return &unit;
+			if ( can_recruit_on(*unit, leader.get_location()) )
+				return unit.get_shared_ptr();
 		}
 	}
-	return NULL;
+	return UnitConstPtr();
 }
 
 unit* find_recruiter(size_t team_index, map_location const& hex)
 {
-	if ( !resources::game_map->is_castle(hex) )
+	if ( !resources::gameboard->map().is_castle(hex) )
 		return NULL;
 
 	BOOST_FOREACH(unit& u, *resources::units)
@@ -117,12 +118,12 @@ int path_cost(std::vector<map_location> const& path, unit const& u)
 
 	team const& u_team = resources::teams->at(u.side()-1);
 	map_location const& dest = path.back();
-	if ( (resources::game_map->is_village(dest) && !u_team.owns_village(dest))
+	if ( (resources::gameboard->map().is_village(dest) && !u_team.owns_village(dest))
 	     || pathfind::enemy_zoc(u_team, dest, u_team) )
 		return u.total_movement();
 
 	int result = 0;
-	gamemap const& map = *resources::game_map;
+	gamemap const& map = resources::gameboard->map();
 	BOOST_FOREACH(map_location const& loc, std::make_pair(path.begin()+1,path.end()))
 		result += u.movement_cost(map[loc]);
 	return result;
@@ -132,17 +133,21 @@ temporary_unit_hider::temporary_unit_hider(unit& u)
 		: unit_(&u)
 	{unit_->set_hidden(true);}
 temporary_unit_hider::~temporary_unit_hider()
-	{unit_->set_hidden(false);}
+{
+	try {
+		unit_->set_hidden(false);
+	} catch (...) {}
+}
 
 void ghost_owner_unit(unit* unit)
 {
-	unit->set_disabled_ghosted(false);
+	unit->anim_comp().set_disabled_ghosted(false);
 	resources::screen->invalidate(unit->get_location());
 }
 
 void unghost_owner_unit(unit* unit)
 {
-	unit->set_standing(true);
+	unit->anim_comp().set_standing(true);
 	resources::screen->invalidate(unit->get_location());
 }
 

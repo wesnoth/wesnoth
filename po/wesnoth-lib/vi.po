@@ -1,18 +1,18 @@
 # Vietnamese translation for Wesnoth
-# Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2009, 2013.
+# Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2009, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
-"PO-Revision-Date: 2013-08-22 14:24+0800\n"
-"Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
-"Language-Team: Vietnamese <>\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
+"PO-Revision-Date: 2014-06-24 22:10+0700\n"
+"Last-Translator: \n"
+"Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 1.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. [terrain_type]: id=deep_water
@@ -78,6 +78,12 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
+"Khi một dòng sông trở nên cực kỳ nông, việc băng qua nó là một chuyện bình "
+"thường với các đơn vị trên cạn. Ngoài ra, bất kỳ sinh vật nào thích nghi "
+"nhất với việc bơi lội cũng có đầy đủ tính linh động kể cả ở những nơi như "
+"thế trên sông. Đối với trò chơi, chỗ cạn ở sông được đối xử giống như hoặc "
+"là đồng cỏ hoặc là nước nông, chọn cái nào mang lại lợi thế phòng thủ và di "
+"chuyển tốt nhất cho đơn vị đứng trên nó."
 
 #. [terrain_type]: id=gray_reef
 #. [terrain_type]: id=medium_reef
@@ -96,10 +102,8 @@ msgstr "Đá ngầm ven biển xám"
 
 #. [terrain_type]: id=medium_reef
 #: data/core/terrain.cfg:108
-#, fuzzy
-#| msgid "Coastal Reef"
 msgid "Medium Coastal Reef"
-msgstr "Đá ngầm ven biển"
+msgstr "Đá ngầm ven biển trung bình"
 
 #. [terrain_type]: id=tropical_reef
 #: data/core/terrain.cfg:119
@@ -116,10 +120,8 @@ msgstr "Đầm lầy"
 
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:132
-#, fuzzy
-#| msgid "Swamp Human Castle Keep"
 msgid "Swamp Water Reed"
-msgstr "Pháo đài đầm lầy của con người"
+msgstr "Lau sậy đầm lầy"
 
 #. [terrain_type]: id=quagmire
 #: data/core/terrain.cfg:143
@@ -201,6 +203,9 @@ msgid ""
 "travelers passing over them. As far as gameplay is concerned, roads behave "
 "as flat terrain."
 msgstr ""
+"<italic>text='Đường'</italic> là những con đường mòn bằng đất đá, được tạo "
+"nên dưới dấu chân của nhiều lữ khách. Đối với trò chơi, đường hoạt động như "
+"địa hình đất phẳng."
 
 #. [terrain_type]: id=road_clean
 #: data/core/terrain.cfg:246
@@ -239,6 +244,9 @@ msgid ""
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgstr ""
+"<italic>text='Sa mạc'</italic> có cấu tạo hơi khác so với những hố cát nhỏ "
+"hoặc bãi biển, tuy nhiên, đối với trò chơi, chúng giống nhau. Xem "
+"<ref>dst='terrain_sand' text='cát'</ref>."
 
 #. [terrain_type]: id=sand
 #. [terrain_type]: id=sand_beach
@@ -262,6 +270,12 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in sand."
 msgstr ""
+"Tính không ổn định của <italic>text='cát'</italic> khiến hầu hết các đơn vị "
+"gặp khó khăn khi băng qua, và khiến chúng sơ hở, dễ bị tấn công. Trái lại, "
+"những bàn chân rộng và cơ thể giống như rắn của các chủng tộc bò sát giúp "
+"chúng di chuyển trên cát dễ dàng hơn nhiều.\n"
+"\n"
+"Hầu hết các đơn vị nhận tỷ lệ phòng thủ 20% đến 40% trên cát."
 
 #. [terrain_type]: id=oasis
 #: data/core/terrain.cfg:315
@@ -346,12 +360,12 @@ msgstr "Hoa súng đang nở"
 #. [terrain_type]: id=detritus_trash
 #: data/core/terrain.cfg:471
 msgid "Trash"
-msgstr ""
+msgstr "Rác"
 
 #. [terrain_type]: id=detritus_bones
 #: data/core/terrain.cfg:480
 msgid "Remains"
-msgstr ""
+msgstr "Di tích"
 
 #. [terrain_type]: id=great_tree
 #. [terrain_type]: id=great_tree_dead
@@ -514,10 +528,8 @@ msgstr "Núi"
 
 #. [terrain_type]: id=regular_mountains
 #: data/core/terrain.cfg:747
-#, fuzzy
-#| msgid "Regular Impassable Mountains"
 msgid "Regular Mountains"
-msgstr "Núi không thể qua"
+msgstr "Núi thường"
 
 #. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:757
@@ -609,6 +621,17 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
 msgstr ""
+"Địa hình <italic>text='hang đá'</italic> được tạo nên bởi hoạt động của nước "
+"và gió, mang theo nhiều hạt xói mòn tạc thành đá. Địa hình này giống với "
+"hang động dưới lòng đất là làm giảm tính hiệu quả của hầu hết các đơn vị, "
+"nhưng tăng khả năng phòng thủ. Người lùn và quỷ núi, những cư dân chủ yếu "
+"của hang động, di chuyển tương đối dễ dàng trên địa hình này. Người lùn, nhờ "
+"kích thước nhỏ nên có đầy đủ lợi thế khi di chuyển trong địa hình như thế. "
+"Một số ít hang động được <ref>dst='terrain_illuminated_cave' text='chiếu "
+"sáng'</ref>.\n"
+"\n"
+"Hầu hết các đơn vị có tỷ lệ phòng thủ khoảng 50% trong hang đá, trong khi kỵ "
+"binh chỉ có 40%. Người lùn hưởng tỷ lệ phòng thủ 60% trong hang đá."
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -663,6 +686,13 @@ msgid ""
 "immediately above it. This provides an attack bonus for lawful units and "
 "removes the attack bonus from chaotic units."
 msgstr ""
+"Những nguy hiểm khi thử đi trên <italic>text='dung nham'</italic> là khá rõ "
+"ràng. Xét về mặt di chuyển, dung nham tương đương với địa hình "
+"<ref>dst='terrain_unwalkable' text='không thể đi bộ qua'</ref>, và chỉ những "
+"đơn vị có khả năng bay ở một khoảng cách lớn trên bề mặt mới có thể vượt "
+"qua. Nham thạch nóng chảy cũng tạo ra luồng sáng lớn, chiếu sáng vùng ngay "
+"xung quanh nó. Ánh sáng này tạo lợi thế tấn công cho các đơn vị chính thống "
+"và làm mất lợi thế tấn công của các đơn vị hỗn độn."
 
 #. [terrain_type]: id=volcano
 #: data/core/terrain.cfg:986
@@ -944,6 +974,15 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
+"<italic>text='Làng ngập nước'</italic> là nơi ở của người cá và người rắn. "
+"Đây là nơi cư ngụ của các sinh vật sống dưới nước, các cư dân trên cạn gặp "
+"khó khăn khi di chuyển và phòng thủ trong những ngôi làng này. Tuy nhiên, "
+"cũng giống như bất kỳ ngôi làng nào khác, tất cả mọi sinh vật đều nhận được "
+"lợi ích từ việc chăm sóc các đơn vị bị thương. Bất kỳ đơn vị nào đứng trong "
+"làng đều có thể phục hồi tám máu mỗi lượt, hoặc được giải độc.\n"
+"\n"
+"Người cá và người rắn có tỷ lệ phòng thủ 60% trong làng ngập nước, trong khi "
+"các đơn vị trên cạn thường có tỷ lệ phòng thủ thấp."
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1520
@@ -1001,10 +1040,8 @@ msgstr "Lâu đài phủ tuyết của con người"
 
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:1608
-#, fuzzy
-#| msgid "Elven Castle Keep"
 msgid "Elven Castle"
-msgstr "Pháo đài của thần tiên"
+msgstr "Lâu đài của thần tiên"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:1620
@@ -1196,6 +1233,18 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
+"Với những người xây dựng, khả năng bắc một cây <italic>text='cầu'</italic> "
+"giải phóng họ khỏi bản chất không ổn định của đường thủy, với những chỗ cạn "
+"đến rồi đi theo sự lên xuống của mực nước. Không cần nói gì về niềm hân hoan "
+"của những bàn chân khô ráo, những tổn thất không phải chuyện đùa trong những "
+"tháng ngày lạnh lẽo của năm.\n"
+"\n"
+"Với những người đi đường bộ hoặc đường thủy, một cây cầu là phương tiện tốt "
+"nhất của cả hai thế giới - đối với trò chơi, nó được đối xử như hoặc là đồng "
+"cỏ hoặc là nước dưới cầu, tùy theo địa hình nào mang lại lợi thế di chuyển "
+"và phòng thủ tốt nhất cho đơn vị chiếm giữ ô lục giác cầu. Chú ý rằng một "
+"đơn vị bơi và một đơn vị trên cạn không thể đồng thời chiếm giữ một ô lục "
+"giác cầu."
 
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
@@ -1270,7 +1319,7 @@ msgstr "Sương mù"
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2227 data/core/terrain.cfg:2228
 msgid "Fungus"
-msgstr ""
+msgstr "Nấm"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2231
@@ -1286,6 +1335,16 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
+"<italic>text='Lùm nấm'</italic> là những khu rừng nấm khổng lồ dưới lòng "
+"đất, phát triển trong bóng tối ẩm thấp.\n"
+"Hầu hết các đơn vị đều gặp khó khăn khi di chuyển trên bề mặt mềm xốp của "
+"những cây nấm nhỏ, nhưng lại có nhiều chỗ ẩn nấp đằng sau những cuống nấm "
+"lớn. Tuy nhiên, các đơn vị cưỡi ngựa trở nên hoàn toàn sa lầy và mất khả "
+"năng tự do di chuyển khi chiến đấu. Các đơn vị ma quái ham thích sự mục rữa "
+"và hoạt động khá tốt trong những khu rừng nấm.\n"
+"\n"
+"Hầu hết các đơn vị nhận tỷ lệ phòng thủ 50% đến 60% trong các lùm nấm, trong "
+"khi kỵ binh chỉ nhận 20%."
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2243
@@ -1307,13 +1366,28 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
+"Địa hình <italic>text='hang động'</italic> tương ứng với bất kỳ hang động "
+"nào dưới lòng đất có đủ chỗ cho một đơn vị đi qua.\n"
+"Hầu hết các đơn vị hoàn toàn xa lạ với địa hình, do đó vừa bị giảm tốc độ "
+"vừa bị hạn chế khả năng phòng thủ. Người lùn và quỷ núi, những chủng tộc "
+"sống trong hang động, cả hai đều di chuyển tương đối dễ dàng trên địa hình "
+"này, đặc biệt là người lùn, nhờ kích thước nhỏ nên có thể vượt qua nhiều "
+"chướng ngại vật mà những chủng tộc khác không thể. Một số ít hang động được "
+"<ref>dst='terrain_illuminated_cave' text='chiếu sáng'</ref>.\n"
+"\n"
+"Một vài nơi hiếm hoi của thế giới dưới lòng đất được chiếu sáng nhờ ánh sáng "
+"từ bề mặt rọi xuống bóng tối u ám. Ánh sáng này tạo lợi thế tấn công cho các "
+"đơn vị chính thống và làm mất lợi thế tấn công của các đơn vị hỗn độn. Về "
+"tất cả các yếu tố khác, địa hình này giống về mặt chức năng với địa hình "
+"<ref>dst='terrain_cave' text='hang động'</ref> thông thường.\n"
+"\n"
+"Hầu hết các đơn vị nhận tỷ lệ phòng thủ 20% đến 40% trong hang động, trong "
+"khi người lùn có 50%."
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:2256
-#, fuzzy
-#| msgid "Sand"
 msgid "Sands"
-msgstr "Cát"
+msgstr "Bãi cát"
 
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:2273
@@ -1326,6 +1400,14 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"<italic>text='Đá ngầm ven biển'</italic> là những vùng nước nông được tạo "
+"nên bởi đá, san hô và cát.\n"
+"Địa hình này cho hầu hết các đơn vị trên cạn một chỗ đứng và vị trí phòng "
+"thủ vững chắc hơn việc lội qua nước nông bình thường, và cũng cho hầu hết "
+"các chủng tộc sống dưới nước một tỷ lệ phòng thủ đặc biệt cao.\n"
+"\n"
+"Người cá và người rắn cả hai đều nhận được tỷ lệ phòng thủ 70% trên đá ngầm "
+"ven biển."
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:2287
@@ -1340,6 +1422,15 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
+"<italic>text='Đồi'</italic> tương ứng với bất kỳ địa hình nào tương đối gồ "
+"ghề, có đủ chỗ trũng và gò cao trên bề mặt để ẩn nấp.\n"
+"Hầu hết quân lính khó di chuyển trên đồi. Người lùn, quỷ núi và người thú có "
+"đủ quen thuộc với địa hình nên chúng có thể băng qua đồi mà không bị giảm "
+"tốc độ. Kỵ binh gặp nhiều khó khăn khi di chuyển trên địa hình đến nỗi mất "
+"hết mọi lợi thế phòng thủ có được từ việc ẩn nấp.\n"
+"\n"
+"Hầu hết các đơn vị có tỷ lệ phòng thủ khoảng 50% trên đồi, trong khi kỵ binh "
+"chỉ có 40%. Người lùn hưởng tỷ lệ phòng thủ 60% trên đồi."
 
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:2302
@@ -1354,6 +1445,15 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
 "all generally enjoy 60%."
 msgstr ""
+"<italic>text='Đầm lầy'</italic> tương ứng với bất kỳ vùng đất ẩm ướt nào.\n"
+"Đầm lầy làm chậm bước gần như mọi người và hạn chế khả năng phòng thủ. Quy "
+"tắc này có một ngoại lệ là những chủng tộc có cơ thể khéo léo khi di chuyển "
+"trong nước; chúng nhận được cả khả năng tự do di chuyển lẫn lợi thế phòng "
+"thủ. Những người sinh sống ở vùng ẩm ướt cũng thông thạo trong việc sử dụng "
+"địa hình này để ẩn nấp.\n"
+"\n"
+"Hầu hết các đơn vị có tỷ lệ phòng thủ 30% trong đầm lầy. Người cá, người rắn "
+"và thằn lằn tất cả nói chung hưởng 60%."
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:2315
@@ -1369,6 +1469,15 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "naga and mermen enjoy 60%."
 msgstr ""
+"<italic>text='Nước nông'</italic> tương ứng với bất kỳ vùng nước nào sâu "
+"khoảng chừng thắt lưng người, đủ để làm chậm bước gần như bất kỳ ai và khiến "
+"họ sơ hở, dễ bị tấn công. Người lùn, do nước gần như chạm đến đầu, nên cực "
+"kỳ bất lợi trong nước. Ngoại lệ là những chủng tộc có cơ thể thích nghi với "
+"việc bơi lội, nhờ đó, chúng nhận lợi thế phòng thủ lớn và khả năng tự do di "
+"chuyển.\n"
+"\n"
+"Hầu hết các đơn vị có tỷ lệ phòng thủ 20% đến 30% trong nước nông, trong khi "
+"cả người rắn lẫn người cá đều hưởng 60%."
 
 #. [terrain_type]: id=castle
 #: data/core/terrain.cfg:2330
@@ -1382,6 +1491,15 @@ msgid ""
 "\n"
 "Most units have about 60% defense in a castle."
 msgstr ""
+"<italic>text='Lâu đài'</italic> là bất kỳ kiểu công sự bền vững nào.\n"
+"Gần như tất cả các đơn vị đều nhận được lợi thế phòng thủ lớn khi chiếm đóng "
+"lâu đài, và hầu hết các đơn vị đều nhận được khả năng tự do di chuyển qua "
+"lâu đài. Các đơn vị đứng trong một lâu đài biểu thị khả năng phòng thủ của "
+"nó. Nếu bỏ trống đơn vị trên một ô lục giác tường thành, kẻ thù có thể đột "
+"nhập vào lâu đài mà không bị ngăn cản, giành được cùng lợi thế phòng thủ như "
+"mọi người bên trong.\n"
+"\n"
+"Hầu hết các đơn vị có tỷ lệ phòng thủ khoảng 60% trong lâu đài."
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:2344
@@ -1396,6 +1514,16 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
+"<italic>text='Núi'</italic> đủ đốc để các đơn vị phải trèo qua các chướng "
+"ngại vật khi di chuyển.\n"
+"Với bản chất này, địa hình núi cung cấp lợi thế phòng thủ đáng kể cho hầu "
+"hết quân lính, nhưng cũng cực kỳ cản trở người đi. Hầu hết kỵ binh đơn giản "
+"không thể vào địa hình núi; tuy nhiên, kỵ binh thần tiên là một ngoại lệ, "
+"cũng như kỵ binh chó sói yêu tinh. Cả người lùn lẫn quỷ núi đều gắn bó với "
+"địa hình núi, và đi qua rất dễ dàng.\n"
+"\n"
+"Hầu hết các đơn vị nhận tỷ lệ phòng thủ khoảng 60% trên núi, trong khi người "
+"lùn hưởng 70%."
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:2356
@@ -1407,6 +1535,13 @@ msgid ""
 "\n"
 "Mermen and naga both receive 50% defense in deep water, with full movement."
 msgstr ""
+"<italic>text='Nước sâu'</italic> tương ứng với bất kỳ vùng nước nào sâu ngập "
+"đầu người.\n"
+"Hầu hết các đơn vị không thể vào nước sâu: đó là lãnh địa của những đơn vị "
+"biết bay, hoặc bơi cực kỳ giỏi.\n"
+"\n"
+"Người cá và người rắn cả hai đều nhận tỷ lệ phòng thủ 50% trong nước sâu, "
+"cùng với khả năng tự do di chuyển."
 
 #. [terrain_type]: id=flat
 #: data/core/terrain.cfg:2367 data/core/terrain.cfg:2368
@@ -1425,6 +1560,13 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
+"<italic>text='Đồng cỏ'</italic> tương ứng với những vùng đồng bằng trống "
+"trải, có hoặc không canh tác, chăn thả súc vật, hoặc hoang dã.\n"
+"Là vùng đất trống trải, đồng cỏ vừa rất dễ băng qua, nhưng cũng khó để phòng "
+"thủ. Những đơn vị hoạt động tốt nhất trên đồng cỏ thường hoặc là kỵ binh, "
+"hoặc những đơn vị rất nhanh nhẹn có thể tận dụng lợi thế của không gian.\n"
+"\n"
+"Hầu hết các đơn vị có tỷ lệ phòng thủ 30% đến 40% trên đồng cỏ."
 
 #. [terrain_type]: id=forest
 #: data/core/terrain.cfg:2382
@@ -1444,6 +1586,20 @@ msgid ""
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
+"<italic>text='Rừng'</italic> tương ứng với bất kỳ vùng nào có nhiều cây cối, "
+"đủ để cản trở người đi. Dù rừng làm chậm bước gần như mọi người, nhưng chúng "
+"cho hầu hết các đơn vị khả năng phòng thủ tốt hơn vùng đất trống trải. Tuy "
+"nhiên, kỵ binh lại gặp nhiều khó khăn khi di chuyển trong rừng đến mức mất "
+"hết mọi lợi ích từ việc ẩn nấp. Thần tiên với rừng là một ngoại lệ của quy "
+"tắc chung này. Họ không chỉ di chuyển dễ dàng trong rừng, mà còn có lợi thế "
+"phòng thủ lớn. Người lùn là một ngoại lệ khác của quy tắc này; dù họ có thể "
+"cày xuyên qua rừng mà không bị mất nhiều tốc độ, nhưng việc hoàn toàn xa lạ "
+"với địa hình khiến họ không nhận được lợi thế phòng thủ.\n"
+"\n"
+"Hầu hết các đơn vị có tỷ lệ phòng thủ 50% trong rừng, nhưng kỵ binh chỉ có "
+"30%. Thần tiên, ngược lại, hưởng tỷ lệ phòng thủ 60% đến 70%, kể cả những "
+"đơn vị cưỡi ngựa. Người lùn nói chung chỉ nhận tỷ lệ phòng thủ 30% trong "
+"rừng."
 
 #. [terrain_type]: id=frozen
 #: data/core/terrain.cfg:2392 data/core/terrain.cfg:2393
@@ -1461,6 +1617,13 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
+"Địa hình <italic>text='đóng băng'</italic> tương ứng với bất kỳ vùng đất "
+"phẳng nào bị tuyết hoặc băng bao phủ.\n"
+"Hầu hết các đơn vị bị giảm tốc độ trên địa hình đóng băng, và cũng gặp khó "
+"khăn hơn khi phòng thủ. Chú ý rằng các đơn vị bơi, kể cả những đơn vị có thể "
+"thở dưới mặt nước, cũng không thể bơi dưới băng.\n"
+"\n"
+"Hầu hết các đơn vị có tỷ lệ phòng thủ 20% đến 40% trên địa hình đóng băng."
 
 #. [terrain_type]: id=village
 #: data/core/terrain.cfg:2408
@@ -1476,6 +1639,15 @@ msgid ""
 "Most units have 50 to 60% defense in villages, whereas cavalry receive only "
 "40%."
 msgstr ""
+"<italic>text='Làng'</italic> tương ứng với bất kỳ nhóm công trình xây dựng "
+"nào của con người hoặc những chủng tộc khác.\n"
+"Gần như mọi đơn vị, kể cả kỵ binh, đều dễ dàng di chuyển qua làng, và hầu "
+"hết các đơn vị đều giành được lợi thế phòng thủ khi chiếm đóng một ngôi "
+"làng. Làng cung cấp tài nguyên và chăm sóc các đơn vị bị thương, cho phép "
+"đơn vị đứng bên trong phục hồi tám máu mỗi lượt, hoặc được giải độc.\n"
+"\n"
+"Hầu hết các đơn vị có tỷ lệ phòng thủ 50% đến 60% trong làng, trong khi kỵ "
+"binh chỉ nhận được 40%."
 
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:2418 data/core/terrain.cfg:2419
@@ -1491,6 +1663,11 @@ msgid ""
 "jagged peaks at such rarefied heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"Các chướng ngại vật mà ngay cả người lữ hành kiên quyết nhất cũng không thể "
+"vượt qua bao gồm những bức tường đá rắn chắc, những ngọn núi cao và dốc đến "
+"nỗi chúng luôn có mây bao phủ. Kể cả các sinh vật bay cũng không thể di "
+"chuyển qua những đỉnh núi lởm chởm ở độ cao hiếm có như thế, và kể cả con "
+"quỷ núi dữ tợn nhất cũng không thể đập thủng những bức tường đá dày."
 
 #. [terrain_type]: id=unwalkable
 #: data/core/terrain.cfg:2428 data/core/terrain.cfg:2429
@@ -1505,6 +1682,11 @@ msgid ""
 "for sheer walls which would take days to traverse. As far as gameplay is "
 "concerned, only units capable of flying can cross this terrain."
 msgstr ""
+"Địa hình <italic>text='không thể đi bộ qua'</italic> bao gồm bất kỳ vực thẳm "
+"hoặc hẻm núi nào mà như tên gọi đã mô tả, không thể băng qua bằng cách đi "
+"bộ. Vực thẳm được coi là những bức tường dốc đứng cần mất vài ngày để băng "
+"qua. Đối với trò chơi, chỉ những đơn vị có khả năng bay mới có thể vượt qua "
+"địa hình này."
 
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:2438 data/core/terrain.cfg:2439
@@ -1516,6 +1698,8 @@ msgstr "Đường ray"
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore. By Dwarfs. Mostly."
 msgstr ""
+"<italic>text='Đường ray'</italic> được sử dụng để vận chuyển. Bởi người lùn. "
+"Hầu hết."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -1654,12 +1838,12 @@ msgstr "Lượt tải về:"
 #. [label]
 #: data/gui/default/window/addon_description.cfg:258
 msgid "date^Last updated:"
-msgstr ""
+msgstr "Cập nhật lần cuối cùng:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:284
 msgid "date^First uploaded:"
-msgstr ""
+msgstr "Tải lên lần đầu tiên:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:329
@@ -1675,36 +1859,32 @@ msgstr "Không có mô tả."
 #. [label]
 #: data/gui/default/window/addon_description.cfg:376
 msgid "Website:"
-msgstr ""
+msgstr "Website:"
 
 #. [label]: id=url_none
 #: data/gui/default/window/addon_description.cfg:400
 msgid "url^None"
-msgstr ""
+msgstr "Không có"
 
 #. [button]: id=url_copy
 #: data/gui/default/window/addon_description.cfg:435
-#, fuzzy
-#| msgid "Copy"
 msgid "url^Copy"
 msgstr "Chép"
 
 #. [button]: id=url_copy
 #: data/gui/default/window/addon_description.cfg:436
-#, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this URL to clipboard"
-msgstr "Chọn trò chơi cần tải"
+msgstr "Chép URL này vào bảng chọn"
 
 #. [button]: id=url_go
 #: data/gui/default/window/addon_description.cfg:449
 msgid "url^Go"
-msgstr ""
+msgstr "Đi"
 
 #. [button]: id=url_go
 #: data/gui/default/window/addon_description.cfg:450
 msgid "Visit this URL with a web browser"
-msgstr ""
+msgstr "Thăm URL này bằng trình duyệt web"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:478
@@ -1748,10 +1928,8 @@ msgstr "Liên minh NNC"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:57
-#, fuzzy
-#| msgid "addons_of_type^MP campaigns"
-msgid "addons_of_type^SP/MP Campaigns"
-msgstr "Chiến dịch NNC "
+msgid "addons_of_type^SP/MP campaigns"
+msgstr "Chiến dịch 1NC/NNC "
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:58
@@ -1790,10 +1968,8 @@ msgstr "Bản sửa đổi NNC"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:170
-#, fuzzy
-#| msgid "Actions"
 msgid "Options"
-msgstr "Hành động"
+msgstr "Tùy chọn"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:184
@@ -1819,31 +1995,32 @@ msgstr "Bật tắt tất cả"
 #: data/gui/default/window/addon_filter_options.cfg:321
 msgid "Add-ons will be sorted as follows when no column is selected:"
 msgstr ""
+"Các phần bổ sung sẽ được sắp xếp như sau khi không có cột nào được chọn:"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:351
 msgid "sort^By name"
-msgstr ""
+msgstr "Theo tên"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:356
 msgid "sort^By last updated"
-msgstr ""
+msgstr "Theo lần cập nhật cuối cùng"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:361
 msgid "sort^By first upload"
-msgstr ""
+msgstr "Theo lần tải lên đầu tiên"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:377
 msgid "sort^Ascending"
-msgstr ""
+msgstr "Tăng dần"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:382
 msgid "sort^Descending"
-msgstr ""
+msgstr "Giảm dần"
 
 #. [scroll_label]
 #: data/gui/default/window/addon_uninstall_list.cfg:70
@@ -1941,10 +2118,8 @@ msgstr "Trước"
 
 #. [button]: id=previous_page
 #: data/gui/default/window/chat_log.cfg:87
-#, fuzzy
-#| msgid "Previous"
 msgid "Previous page"
-msgstr "Trước"
+msgstr "Trang trước"
 
 #. [button]: id=next_page
 #. [button]: id=next_tip
@@ -1957,10 +2132,8 @@ msgstr "Kế tiếp"
 
 #. [button]: id=next_page
 #: data/gui/default/window/chat_log.cfg:95
-#, fuzzy
-#| msgid "Next Side"
 msgid "Next page"
-msgstr "Phe kế tiếp"
+msgstr "Trang kế tiếp"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:113
@@ -2132,81 +2305,63 @@ msgstr "Nhìn thấy trong màn che"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_edit_scenario.cfg:42
-#, fuzzy
-#| msgid "Editor Settings"
 msgid "Edit Scenario Settings"
-msgstr "Thiết lập trình chỉnh sửa bản đồ"
+msgstr "Sửa thiết lập trình hiệu chỉnh"
 
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:72
 msgid "Identifier:"
-msgstr ""
+msgstr "Định danh:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:173
-#, fuzzy
-#| msgid "Experience modifier"
 msgid "Experience modifier:"
-msgstr "Hệ số kinh nghiệm"
+msgstr "Hệ số kinh nghiệm:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:204
-#, fuzzy
-#| msgid "Turn"
 msgid "Turns:"
-msgstr "Lượt"
+msgstr "Số lượt:"
 
 #. [toggle_button]: id=victory_when_enemies_defeated
 #: data/gui/default/window/editor_edit_scenario.cfg:244
 msgid "Declare victory once all enemies are defeated"
-msgstr ""
+msgstr "Tuyên bố chiến thắng khi đánh bại tất cả kẻ thù"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/editor_edit_scenario.cfg:262
-#, fuzzy
-#| msgid "Random start time"
 msgid "Random starting time"
 msgstr "Thời điểm ban đầu ngẫu nhiên"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_edit_side.cfg:54
-#, fuzzy
-#| msgid "Side $side"
 msgid "Side Setup"
-msgstr "Phe $side"
+msgstr "Thiết lập phe"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:77
-#, fuzzy
-#| msgid "Number of hills:"
 msgid "Number:"
-msgstr "Số đồi:"
+msgstr "Số:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:105
 msgid "Team identifier:"
-msgstr ""
+msgstr "Định danh đội:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:133
-#, fuzzy
-#| msgid "Team only"
 msgid "Team name:"
-msgstr "Chỉ cho đội"
+msgstr "Tên đội:"
 
 #. [toggle_button]: id=share_maps
 #: data/gui/default/window/editor_edit_side.cfg:188
-#, fuzzy
-#| msgid "Animate map"
 msgid "Share map"
-msgstr "Hoạt hóa bản đồ"
+msgstr "Chia sẻ bản đồ"
 
 #. [toggle_button]: id=no_leader
 #: data/gui/default/window/editor_edit_side.cfg:200
-#, fuzzy
-#| msgid "Leader"
 msgid "No leader"
-msgstr "Người chỉ huy"
+msgstr "Không có người lãnh đạo"
 
 #. [toggle_button]: id=fog
 #: data/gui/default/window/editor_edit_side.cfg:216
@@ -2217,68 +2372,62 @@ msgstr "Sương mù chiến tranh"
 #. [toggle_button]: id=share_view
 #: data/gui/default/window/editor_edit_side.cfg:228
 msgid "Share view"
-msgstr ""
+msgstr "Chia sẻ khung nhìn"
 
 #. [toggle_button]: id=hidden
 #: data/gui/default/window/editor_edit_side.cfg:240
-#, fuzzy
-#| msgid "Status Table"
 msgid "Hide in status table"
-msgstr "Bảng trạng thái"
+msgstr "Ẩn trong bảng trạng thái"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:269
 msgid "Gold:"
-msgstr ""
+msgstr "Vàng:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:297
-#, fuzzy
-#| msgid "Gold per village"
 msgid "Gold per village:"
-msgstr "Vàng mỗi làng"
+msgstr "Vàng mỗi làng:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:325
 msgid "Income:"
-msgstr ""
+msgstr "Thu nhập:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:353
-#, fuzzy
-#| msgid "Gold per village"
 msgid "Support per village:"
-msgstr "Vàng mỗi làng"
+msgstr "Hỗ trợ mỗi làng:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:383
 msgid "Controller:"
-msgstr ""
+msgstr "Điều khiển:"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:400
 msgid "controller^Human"
-msgstr ""
+msgstr "Con người"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:402
 msgid "controller^Human/AI"
-msgstr ""
+msgstr "Con người / Trí tuệ nhân tạo"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:404
 msgid "controller^AI only"
-msgstr ""
+msgstr "Chỉ trí tuệ nhân tạo"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:406
 msgid "controller^None"
-msgstr ""
+msgstr "Không có"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:423
 msgid "controller^Player number:"
-msgstr ""
+msgstr "Số của người chơi:"
 
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:35
@@ -2538,73 +2687,59 @@ msgstr "Hủy bỏ mọi di chuyển còn lại của đơn vị trong bản lư
 #: data/gui/default/window/game_paths.cfg:47
 #: data/gui/default/window/screenshot_notification.cfg:34
 msgid "filesystem^Copy"
-msgstr ""
+msgstr "Chép"
 
 #. [button]: id=copy
 #. [button]: id=copy_
 #: data/gui/default/window/game_paths.cfg:48
 #: data/gui/default/window/screenshot_notification.cfg:35
-#, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this path to clipboard"
-msgstr "Chọn trò chơi cần tải"
+msgstr "Chép đường dẫn này vào bảng chọn"
 
 #. [button]: id=browse_
 #: data/gui/default/window/game_paths.cfg:63
 msgid "filesystem^Browse"
-msgstr ""
+msgstr "Duyệt"
 
 #. [button]: id=browse_
 #: data/gui/default/window/game_paths.cfg:64
 msgid "Browse this location using a file manager"
-msgstr ""
+msgstr "Duyệt địa điểm này sử dụng trình quản lý tập tin"
 
 #. [label]: id=title
 #: data/gui/default/window/game_paths.cfg:105
-#, fuzzy
-#| msgid "Cave Path"
 msgid "Game Paths"
-msgstr "Đường trong hang động"
+msgstr "Đường dẫn trò chơi"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:127
-#, fuzzy
-#| msgid "Metadata:"
 msgid "Game data:"
-msgstr "Siêu dữ liệu:"
+msgstr "Dữ liệu trò chơi:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:129
-#, fuzzy
-#| msgid "Confirmation requested"
 msgid "Configuration:"
-msgstr "Đã yêu cầu xác nhận"
+msgstr "Cấu hình:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:131
-#, fuzzy
-#| msgid "Metadata:"
 msgid "User data:"
-msgstr "Siêu dữ liệu:"
+msgstr "Dữ liệu của người dùng:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:133
-#, fuzzy
-#| msgid "Save Game"
 msgid "Saved games:"
-msgstr "Lưu trò chơi"
+msgstr "Trò chơi đã lưu:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:135
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-ons:"
-msgstr "Phần bổ sung"
+msgstr "Phần bổ sung:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:137
 msgid "Cache:"
-msgstr ""
+msgstr "Bộ nhớ đệm:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -3060,7 +3195,7 @@ msgstr "Mật khẩu:"
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:40
 msgid "Confirm"
-msgstr ""
+msgstr "Xác nhận"
 
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:98
@@ -3069,8 +3204,6 @@ msgstr "Bạn có muốn áp dụng các thay đổi không?"
 
 #. [label]
 #: data/gui/default/window/mp_depcheck_select_new.cfg:40
-#, fuzzy
-#| msgid "User interaction required"
 msgid "User Interaction Required"
 msgstr "Cần tương tác của người dùng"
 
@@ -3193,31 +3326,27 @@ msgstr "Chọn"
 #. [button]: id=open
 #: data/gui/default/window/screenshot_notification.cfg:50
 msgid "filesystem^Open"
-msgstr ""
+msgstr "Mở"
 
 #. [button]: id=open
 #: data/gui/default/window/screenshot_notification.cfg:51
 msgid "Open this file with an external application"
-msgstr ""
+msgstr "Mở tập tin này bằng một ứng dụng bên ngoài"
 
 #. [label]: id=title
 #: data/gui/default/window/screenshot_notification.cfg:95
-#, fuzzy
-#| msgid "Screenshot done"
 msgid "Screenshot Saved"
-msgstr "Đã chụp màn hình"
+msgstr "Đã lưu hình chụp màn hình"
 
 #. [button]: id=browse_dir
 #: data/gui/default/window/screenshot_notification.cfg:185
-#, fuzzy
-#| msgid "Screenshot"
 msgid "Screenshots..."
-msgstr "Chụp màn hình"
+msgstr "Hình chụp màn hình..."
 
 #. [button]: id=browse_dir
 #: data/gui/default/window/screenshot_notification.cfg:187
 msgid "Browse the screenshots folder using a file manager"
-msgstr ""
+msgstr "Duyệt thư mục hình chụp màn hình sử dụng trình quản lý tập tin"
 
 #. [label]
 #: data/gui/default/window/theme_list.cfg:51
@@ -3226,10 +3355,8 @@ msgstr "Chọn sắc thái"
 
 #. [label]
 #: data/gui/default/window/theme_list.cfg:67
-#, fuzzy
-#| msgid "New theme will take effect on next new or loaded game."
 msgid "The new theme will take effect after loading or starting a new game."
-msgstr "Sắc thái mới sẽ có hiệu lực ở trò chơi mới hoặc tải lại kế tiếp."
+msgstr "Sắc thái mới sẽ có hiệu lực sau khi tải hoặc bắt đầu một trò chơi mới."
 
 #. [button]: id=help
 #: data/gui/default/window/title_screen.cfg:180
@@ -3378,22 +3505,18 @@ msgstr "Lỗi"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
 #: data/gui/default/window/wml_error.cfg:112 src/gui/dialogs/wml_error.cpp:192
-#, fuzzy
-#| msgid "Rails"
 msgid "Details:"
-msgstr "Đường ray"
+msgstr "Chi tiết:"
 
 #. [button]: id=copy
 #: data/gui/default/window/wml_error.cfg:124
 msgid "clipboard^Copy"
-msgstr ""
+msgstr "Chép"
 
 #. [button]: id=copy
 #: data/gui/default/window/wml_error.cfg:125
-#, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this report to clipboard"
-msgstr "Chọn trò chơi cần tải"
+msgstr "Chép báo cáo này vào bảng chọn"
 
 #: src/filechooser.cpp:80
 msgid "File: "
@@ -3541,7 +3664,7 @@ msgstr "Phím tắt"
 
 #: src/game_preferences_display.cpp:206
 msgid "Paths"
-msgstr ""
+msgstr "Đường dẫn"
 
 #: src/game_preferences_display.cpp:208
 msgid "Sound effects"
@@ -3826,7 +3949,7 @@ msgstr "Xem và cấu hình phím tắt"
 
 #: src/game_preferences_display.cpp:434
 msgid "View game file paths"
-msgstr ""
+msgstr "Xem đường dẫn tập tin trò chơi"
 
 #: src/game_preferences_display.cpp:764
 msgid "Speed: "
@@ -4294,32 +4417,24 @@ msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Thất bại khi hiện hộp thoại, nó không vừa với màn hình."
 
 #: src/hotkey/hotkey_command.cpp:38
-#, fuzzy
-#| msgid "Cancel"
 msgid "cancel"
-msgstr "Hủy bỏ"
+msgstr "hủy bỏ"
 
 #: src/hotkey/hotkey_command.cpp:39
-#, fuzzy
-#| msgid "Select None"
 msgid "Select Hex"
-msgstr "Không chọn gì"
+msgstr "Chọn ô lục giác"
 
 #: src/hotkey/hotkey_command.cpp:40
-#, fuzzy
-#| msgid "Select None"
 msgid "Deselect Hex"
-msgstr "Không chọn gì"
+msgstr "Bỏ chọn ô lục giác"
 
 #: src/hotkey/hotkey_command.cpp:41
-#, fuzzy
-#| msgid "Attack"
 msgid "Move/Attack"
-msgstr "Tấn công"
+msgstr "Di chuyển/Tấn công"
 
 #: src/hotkey/hotkey_command.cpp:42
 msgid "Select/Move/Attack"
-msgstr ""
+msgstr "Chọn/Di chuyển/Tấn công"
 
 #: src/hotkey/hotkey_command.cpp:43
 msgid "Animate Map"
@@ -4342,10 +4457,8 @@ msgid "End Unit Turn"
 msgstr "Kết thúc lượt đơn vị"
 
 #: src/hotkey/hotkey_command.cpp:48
-#, fuzzy
-#| msgid "Leader"
 msgid "Leader"
-msgstr "Người chỉ huy"
+msgstr "Người lãnh đạo"
 
 #: src/hotkey/hotkey_command.cpp:49
 msgid "Undo"
@@ -4384,10 +4497,8 @@ msgid "Accelerated"
 msgstr "Tăng tốc"
 
 #: src/hotkey/hotkey_command.cpp:58
-#, fuzzy
-#| msgid "Unit Description"
 msgid "Terrain Description"
-msgstr "Mô tả đơn vị"
+msgstr "Mô tả địa hình"
 
 #: src/hotkey/hotkey_command.cpp:59
 msgid "Unit Description"
@@ -4438,10 +4549,8 @@ msgid "Mouse Scrolling"
 msgstr "Cuộn chuột"
 
 #: src/hotkey/hotkey_command.cpp:74
-#, fuzzy
-#| msgid "Status"
 msgid "Status Table"
-msgstr "Trạng thái"
+msgstr "Bảng trạng thái"
 
 #: src/hotkey/hotkey_command.cpp:75
 msgid "Mute"
@@ -4592,7 +4701,7 @@ msgstr "Chuyển đổi bản đồ"
 
 #: src/hotkey/hotkey_command.cpp:126
 msgid "Assign Local Time"
-msgstr ""
+msgstr "Gán thời gian cục bộ"
 
 #: src/hotkey/hotkey_command.cpp:128
 msgid "Custom Time of Day Creator"
@@ -4603,10 +4712,8 @@ msgid "Partial Undo"
 msgstr "Đảo lại một phần"
 
 #: src/hotkey/hotkey_command.cpp:131
-#, fuzzy
-#| msgid "Test scenario"
 msgid "New Scenario"
-msgstr "Màn chơi kiểm tra"
+msgstr "Màn chơi mới"
 
 #: src/hotkey/hotkey_command.cpp:132
 msgid "Load Map"
@@ -4617,10 +4724,8 @@ msgid "Save Map As"
 msgstr "Lưu bản đồ thành"
 
 #: src/hotkey/hotkey_command.cpp:135
-#, fuzzy
-#| msgid "Scenario start"
 msgid "Save Scenario As"
-msgstr "Mở đầu màn"
+msgstr "Lưu màn chơi thành"
 
 #: src/hotkey/hotkey_command.cpp:136
 msgid "Save All Maps"
@@ -4635,10 +4740,8 @@ msgid "Map Information"
 msgstr "Thông tin bản đồ"
 
 #: src/hotkey/hotkey_command.cpp:140
-#, fuzzy
-#| msgid "Selected game"
 msgid "Clear Selected Item Set"
-msgstr "Trò chơi được chọn"
+msgstr "Xóa tập hợp mục được chọn"
 
 #: src/hotkey/hotkey_command.cpp:141
 msgid "Swap Foreground/Background Palette Item"
@@ -4681,16 +4784,12 @@ msgid "Fill Tool"
 msgstr "Công cụ Tô"
 
 #: src/hotkey/hotkey_command.cpp:152
-#, fuzzy
-#| msgid ""
-#| "Left mouse button selects or deselects, right brings up a context menu. "
-#| "Hold Shift for magic-wand selection of tiles with same terrain."
 msgid ""
 "Left mouse button selects or deselects with Ctrl, right brings up a context "
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
-"Nút chuột trái chọn hoặc bỏ chọn, nút chuột phải mở trình đơn ngữ cảnh. Giữ "
-"Shift để lựa chọn dạng đũa thần các ô có cùng kiểu địa hình."
+"Nút chuột trái chọn hoặc bỏ chọn với Ctrl, nút chuột phải mở trình đơn ngữ "
+"cảnh. Giữ Shift để lựa chọn dạng đũa thần các ô có cùng kiểu địa hình."
 
 #: src/hotkey/hotkey_command.cpp:152
 msgid "Selection Tool"
@@ -4751,8 +4850,6 @@ msgstr ""
 "nguồn âm thanh. Chưa được cài đặt."
 
 #: src/hotkey/hotkey_command.cpp:157
-#, fuzzy
-#| msgid "Soundsource Tool"
 msgid "Sound Source Tool"
 msgstr "Công cụ Nguồn âm thanh"
 
@@ -4769,8 +4866,6 @@ msgid "Village Tool"
 msgstr "Công cụ Làng"
 
 #: src/hotkey/hotkey_command.cpp:160
-#, fuzzy
-#| msgid "Canrecruit"
 msgid "Can Recruit"
 msgstr "Có thể tuyển quân"
 
@@ -4779,8 +4874,6 @@ msgid "Toggle the recruit attribute of a unit."
 msgstr "Bật tắt khả năng tuyển một đơn vị."
 
 #: src/hotkey/hotkey_command.cpp:161
-#, fuzzy
-#| msgid "Can be renamed"
 msgid "Can be Renamed"
 msgstr "Có thể đổi tên"
 
@@ -4790,11 +4883,11 @@ msgstr "Bật tắt khả năng đổi tên đơn vị."
 
 #: src/hotkey/hotkey_command.cpp:162
 msgid "Assign Recruit List"
-msgstr ""
+msgstr "Gán danh sách tuyển quân"
 
 #: src/hotkey/hotkey_command.cpp:162
 msgid "Assign the selected unit set as recruit list to the unit."
-msgstr ""
+msgstr "Gán tập hợp đơn vị được chọn thành danh sách tuyển quân cho đơn vị."
 
 #: src/hotkey/hotkey_command.cpp:164
 msgid "Change Unit ID"
@@ -4805,34 +4898,24 @@ msgid "Loyal"
 msgstr "Trung thành"
 
 #: src/hotkey/hotkey_command.cpp:167
-#, fuzzy
-#| msgid "Toggle Minimap color coding"
 msgid "Toggle Minimap Unit Coding"
-msgstr "Bật tắt mã màu bản đồ thu nhỏ"
+msgstr "Bật tắt mã đơn vị bản đồ thu nhỏ"
 
 #: src/hotkey/hotkey_command.cpp:168
-#, fuzzy
-#| msgid "Toggle Minimap color coding"
 msgid "Toggle Minimap Terrain Coding"
-msgstr "Bật tắt mã màu bản đồ thu nhỏ"
+msgstr "Bật tắt mã địa hình bản đồ thu nhỏ"
 
 #: src/hotkey/hotkey_command.cpp:170
-#, fuzzy
-#| msgid "Toggle Minimap color coding"
 msgid "Toggle Minimap Unit Drawing"
-msgstr "Bật tắt mã màu bản đồ thu nhỏ"
+msgstr "Bật tắt vẽ đơn vị bản đồ thu nhỏ"
 
 #: src/hotkey/hotkey_command.cpp:171
-#, fuzzy
-#| msgid "Toggle Minimap color coding"
 msgid "Toggle Minimap Village Drawing"
-msgstr "Bật tắt mã màu bản đồ thu nhỏ"
+msgstr "Bật tắt vẽ làng bản đồ thu nhỏ"
 
 #: src/hotkey/hotkey_command.cpp:172
-#, fuzzy
-#| msgid "Toggle Minimap color coding"
 msgid "Toggle Minimap Terrain Drawing"
-msgstr "Bật tắt mã màu bản đồ thu nhỏ"
+msgstr "Bật tắt vẽ địa hình bản đồ thu nhỏ"
 
 #: src/hotkey/hotkey_command.cpp:174
 msgid "Next Brush"
@@ -4867,8 +4950,6 @@ msgid "Cut"
 msgstr "Cắt"
 
 #: src/hotkey/hotkey_command.cpp:183
-#, fuzzy
-#| msgid "Copy"
 msgid "Copy"
 msgstr "Chép"
 
@@ -4926,14 +5007,10 @@ msgid "Fill Selection"
 msgstr "Tô vùng chọn"
 
 #: src/hotkey/hotkey_command.cpp:196
-#, fuzzy
-#| msgid "Generate Tiles In Selection"
 msgid "Generate Tiles in Selection"
 msgstr "Tạo ô trong vùng chọn"
 
 #: src/hotkey/hotkey_command.cpp:197
-#, fuzzy
-#| msgid "Randomize Tiles In Selection"
 msgid "Randomize Tiles in Selection"
 msgstr "Ngẫu nhiên hóa ô trong vùng chọn"
 
@@ -4990,46 +5067,32 @@ msgid "Draw Terrain Codes"
 msgstr "Vẽ mã địa hình"
 
 #: src/hotkey/hotkey_command.cpp:218
-#, fuzzy
-#| msgid "Rotate Selection"
 msgid "Save Selection to Area"
-msgstr "Quay vùng chọn"
+msgstr "Quay vùng chọn thành khu vực"
 
 #: src/hotkey/hotkey_command.cpp:219
-#, fuzzy
-#| msgid "Selected game"
 msgid "Rename Selected Area"
-msgstr "Trò chơi được chọn"
+msgstr "Đổi tên khu vực được chọn"
 
 #: src/hotkey/hotkey_command.cpp:220
-#, fuzzy
-#| msgid "Selected game"
 msgid "Remove Selected Area"
-msgstr "Trò chơi được chọn"
+msgstr "Xóa khu vực được chọn"
 
 #: src/hotkey/hotkey_command.cpp:221
-#, fuzzy
-#| msgid "Add New Side"
 msgid "Add New Area"
-msgstr "Thêm phe mới"
+msgstr "Thêm khu vực mới"
 
 #: src/hotkey/hotkey_command.cpp:223
-#, fuzzy
-#| msgid "Editor Settings"
 msgid "Edit Scenario"
-msgstr "Thiết lập trình chỉnh sửa bản đồ"
+msgstr "Sửa màn chơi"
 
 #: src/hotkey/hotkey_command.cpp:224
-#, fuzzy
-#| msgid "Switch Side"
 msgid "Edit Side"
-msgstr "Chuyển đổi phe"
+msgstr "Sửa phe"
 
 #: src/hotkey/hotkey_command.cpp:225
-#, fuzzy
-#| msgid "Remove"
 msgid "Remove Side"
-msgstr "Xóa"
+msgstr "Xóa phe"
 
 #: src/hotkey/hotkey_command.cpp:227
 msgid "Delay Shroud Updates"
@@ -5200,14 +5263,12 @@ msgid "Reset all bindings to the default values"
 msgstr "Đặt lại tất cả các phím tắt về giá trị mặc định"
 
 #: src/hotkey/hotkey_preferences_display.cpp:218
-#, fuzzy
-#| msgid "Prefs section^Editor"
 msgid "Prefs section^Title Screen"
-msgstr "Chỉnh sửa bản đồ"
+msgstr "Màn hình tiêu đề"
 
 #: src/hotkey/hotkey_preferences_display.cpp:220
 msgid "Prefs section^Game"
-msgstr "Trò ch"
+msgstr "Trò chơi"
 
 #: src/hotkey/hotkey_preferences_display.cpp:222
 msgid "Prefs section^Editor"

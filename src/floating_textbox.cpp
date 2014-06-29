@@ -14,8 +14,9 @@
 */
 
 #include "global.hpp"
-
 #include "floating_textbox.hpp"
+
+#include "display_chat_manager.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "log.hpp"
@@ -136,7 +137,7 @@ namespace gui{
 			text.append(line_start ? ": " : " ");
 		} else if (matches.size() > 1) {
 			std::string completion_list = utils::join(matches, " ");
-			resources::screen->add_chat_message(time(NULL), "", 0, completion_list,
+			resources::screen->get_chat_manager().add_chat_message(time(NULL), "", 0, completion_list,
 					events::chat_handler::MESSAGE_PRIVATE, false);
 		}
 		box_->set_text(text);

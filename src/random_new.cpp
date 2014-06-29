@@ -1,4 +1,5 @@
 /*
+   Copyright (C) 2014
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -37,7 +38,7 @@ namespace random_new
 	{
 
 	}
-	
+
 	unsigned int rng::get_random_calls()
 	{
 		return random_calls_;
@@ -53,7 +54,7 @@ namespace random_new
 	{
 		//getting here means random was called form outsiude a synced context.
 		int retv = rand();
-		
+
 		LOG_RND << "random_new::rng::next_random returned " << retv;
 		return retv;
 	}

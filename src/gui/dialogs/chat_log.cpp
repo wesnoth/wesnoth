@@ -30,8 +30,8 @@
 #include "gui/widgets/slider.hpp"
 #include "utils/foreach.tpp"
 
+#include "../../clipboard.hpp"
 #include "../../game_preferences.hpp"
-#include "../../gamestatus.hpp"
 #include "../../log.hpp"
 #include "../../resources.hpp"
 #include "../../team.hpp"
@@ -74,9 +74,11 @@ public:
 		, chat_log_history(r->build_chat_log())
 		, page(0)
 		, page_number()
+		, page_label()
 		, previous_page()
 		, next_page()
 		, filter()
+		, copy_button()
 	{
 		LOG_CHAT_LOG << "entering tchat_log::model...\n";
 		LOG_CHAT_LOG << "finished tchat_log::model...\n";
@@ -88,9 +90,11 @@ public:
 	int page;
 	static const int COUNT_PER_PAGE = 100;
 	tslider* page_number;
+	tcontrol* page_label;
 	tbutton* previous_page;
 	tbutton* next_page;
 	ttext_box* filter;
+	tbutton* copy_button;
 
 	void clear_chat_msg_list()
 	{
@@ -104,54 +108,100 @@ public:
 											: (size / COUNT_PER_PAGE) + 1;
 	}
 
-	void populate_chat_message_list(int first, int last)
+	void stream_log(std::ostringstream& s,
+					int first,
+					int last,
+					bool raw = false)
 	{
+		if(first >= last) {
+			return;
+		}
+
 		const std::string& lcfilter = utf8::lowercase(filter->get_value());
-		std::stringstream str;
-		LOG_CHAT_LOG
-		<< "entering tchat_log::model::add_row_to_chat_message_list\n";
-		if(first < last) {
-			FOREACH(const AUTO & t,
-					make_pair(chat_log_history.begin() + first,
-							  chat_log_history.begin() + last))
-			{
+		LOG_CHAT_LOG << "entering tchat_log::model::stream_log\n";
 
-				const std::string& timestamp
-						= preferences::get_chat_timestamp(t.time());
+		FOREACH(const AUTO & t, make_pair(chat_log_history.begin() + first,
+										  chat_log_history.begin() + last))
+		{
+			const std::string& timestamp
+					= preferences::get_chat_timestamp(t.time());
 
-				if(lcfilter.empty() == false) {
-					const std::string& lcsample = utf8::lowercase(timestamp)
-												  + utf8::lowercase(t.nick())
-												  + utf8::lowercase(t.text());
+			if(!lcfilter.empty()) {
+				const std::string& lcsample = utf8::lowercase(timestamp)
+											  + utf8::lowercase(t.nick())
+											  + utf8::lowercase(t.text());
 
-					if(lcsample.find(lcfilter) == std::string::npos) {
-						continue;
-					}
-				}
-
-				std::string prefix("/me");
-				bool me = false;
-				if(!t.text().compare(0, prefix.size(), prefix)) {
-					me = true;
-				}
-				const std::string& color = t.color();
-				std::string nick_prefix = "<span color=\"" + color + "\">";
-				std::string nick_suffix = "</span> ";
-				if(me) {
-					str << nick_prefix << "&lt;" << font::escape_text(timestamp)
-						<< font::escape_text(t.nick())
-						<< font::escape_text(t.text().substr(3)) << "&gt;"
-						<< nick_suffix << std::endl;
-				} else {
-					str << nick_prefix << "&lt;" << font::escape_text(timestamp)
-						<< font::escape_text(t.nick()) << "&gt;" << nick_suffix
-						<< font::escape_text(t.text()) << std::endl;
+				if(lcsample.find(lcfilter) == std::string::npos) {
+					continue;
 				}
 			}
+
+			const std::string me_prefix = "/me";
+			const bool is_me = t.text().compare(0, me_prefix.size(),
+												me_prefix) == 0;
+
+			std::string nick_prefix, nick_suffix;
+
+			if(!raw) {
+				nick_prefix = "<span color=\"" + t.color() + "\">";
+				nick_suffix = "</span> ";
+			} else {
+				nick_suffix = " ";
+			}
+
+			const std::string lbracket = raw ? "<" : "&lt;";
+			const std::string rbracket = raw ? ">" : "&gt;";
+
+			//
+			// Chat line format:
+			//
+			// is_me == true:  "<[TS] nick message text here>\n"
+			// is_me == false: "<[TS] nick> message text here\n"
+			//
+
+			s << nick_prefix << lbracket;
+
+			if(raw) {
+				s << timestamp
+				  << t.nick();
+			} else {
+				s << font::escape_text(timestamp)
+				  << font::escape_text(t.nick());
+			}
+
+			if(is_me) {
+				if(!raw) {
+					s << font::escape_text(t.text().substr(3));
+				} else {
+					s << t.text().substr(3);
+				}
+				s << rbracket << nick_suffix;
+			} else {
+				// <[TS] nick> message text here
+				s << rbracket << nick_suffix;
+				if(!raw) {
+					s << font::escape_text(t.text());
+				} else {
+					s << t.text();
+				}
+			}
+
+			s << '\n';
 		}
-		msg_label->set_label(str.str());
-		LOG_CHAT_LOG
-		<< "exited tchat_log::model::add_row_to_chat_message_list\n";
+	}
+
+	void populate_chat_message_list(int first, int last)
+	{
+		std::ostringstream s;
+		stream_log(s, first, last);
+		msg_label->set_label(s.str());
+	}
+
+	void chat_message_list_to_clipboard(int first, int last)
+	{
+		std::ostringstream s;
+		stream_log(s, first, last, true);
+		copy_to_clipboard(s.str(), false);
 	}
 };
 
@@ -214,6 +264,27 @@ public:
 		<< std::endl;
 	}
 
+	std::pair<int, int> calculate_log_line_range()
+	{
+		const int log_size = model_.chat_log_history.size();
+		const int page_size = model_.COUNT_PER_PAGE;
+
+		const int page = model_.page;
+		const int count_of_pages = std::max(1, model_.count_of_pages());
+
+		LOG_CHAT_LOG << "Page: " << page + 1 << " of " << count_of_pages
+		             << '\n';
+
+		const int first = page * page_size;
+		const int last = page < (count_of_pages - 1)
+						 ? first + page_size
+						 : log_size;
+
+		LOG_CHAT_LOG << "First " << first << ", last " << last << '\n';
+
+		return std::make_pair(first, last);
+	}
+
 	void update_view_from_model()
 	{
 		LOG_CHAT_LOG << "Entering tchat_log::controller::update_view_from_model"
@@ -222,20 +293,13 @@ public:
 		int size = model_.chat_log_history.size();
 		LOG_CHAT_LOG << "Number of chat messages: " << size << std::endl;
 		// get page
-		int page = model_.page;
+		const int page = model_.page;
 		// determine count of pages
-		int count_of_pages = model_.count_of_pages();
-		if(count_of_pages == 0) {
-			count_of_pages = 1;
-		}
-		LOG_CHAT_LOG << "Page: " << page + 1 << " of " << count_of_pages
-					 << std::endl;
-		// determine first
-		int first = model_.page * model_.COUNT_PER_PAGE;
-		// determine last
-		int last = (page < count_of_pages - 1) ? first + model_.COUNT_PER_PAGE
-											   : size;
-		LOG_CHAT_LOG << "First " << first << ", last " << last << std::endl;
+		const int count_of_pages = std::max(1, model_.count_of_pages());
+		// determine first and last
+		const std::pair<int, int>& range = calculate_log_line_range();
+		const int first = range.first;
+		const int last = range.second;
 		// determine has previous, determine has next
 		bool has_next = page + 1 < count_of_pages;
 		bool has_previous = page > 0;
@@ -248,10 +312,20 @@ public:
 		LOG_CHAT_LOG << "Maximum value of page number slider: "
 					 << count_of_pages << std::endl;
 		model_.page_number->set_value(page + 1);
+
+		std::ostringstream cur_page_text;
+		cur_page_text << (page + 1) << '/' << std::max(1, count_of_pages);
+		model_.page_label->set_label(cur_page_text.str());
+
 		LOG_CHAT_LOG << "Exiting tchat_log::controller::update_view_from_model"
 					 << std::endl;
 	}
 
+	void handle_copy_button_clicked()
+	{
+		const std::pair<int, int>& range = calculate_log_line_range();
+		model_.chat_message_list_to_clipboard(range.first, range.second);
+	}
 
 private:
 	model& model_;
@@ -299,6 +373,11 @@ public:
 		window.invalidate_layout(); // workaround for assertion failure
 	}
 
+	void handle_copy_button_clicked(twindow& /*window*/)
+	{
+		controller_.handle_copy_button_clicked();
+	}
+
 	void bind(twindow& window)
 	{
 		LOG_CHAT_LOG << "Entering tchat_log::view::bind" << std::endl;
@@ -324,6 +403,15 @@ public:
 		model_.filter->set_text_changed_callback(
 				boost::bind(&view::filter, this, boost::ref(window)));
 		window.keyboard_capture(model_.filter);
+
+		model_.copy_button = &find_widget<tbutton>(&window, "copy", false);
+		connect_signal_mouse_left_click(
+				*model_.copy_button,
+				boost::bind(&view::handle_copy_button_clicked,
+							this,
+							boost::ref(window)));
+
+		model_.page_label = &find_widget<tcontrol>(&window, "page_label", false);
 
 		LOG_CHAT_LOG << "Exiting tchat_log::view::bind" << std::endl;
 	}

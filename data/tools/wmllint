@@ -2053,8 +2053,8 @@ def hack_syntax(filename, lines):
             if '~' in lines[i]:
                 tilde = re.search('(^\s*path) *= *([^#]{0,5})(~/?(data/)?add-ons/)', lines[i])
                 if tilde:
-                    lines[i] = tilde.group(1) + '=' + tilde.group(2) + 'data/add-ons' + lines[i][tilde.end():]
-                    print '"%s", line %d: %s -> data/add-ons -- [textdomain] and [binary_path] paths do not accept "~" for userdata'\
+                    lines[i] = tilde.group(1) + '=' + tilde.group(2) + 'data/add-ons/' + lines[i][tilde.end():]
+                    print '"%s", line %d: %s -> data/add-ons/ -- [textdomain] and [binary_path] paths do not accept "~" for userdata'\
                           % (filename, i+1, tilde.group(3))
     # some tags do no longer support default side=1 attribute but may use [filter_side]
     # with a SSF instead
@@ -2645,18 +2645,23 @@ def help():
 Usage: wmllint [options] [dir]
     Convert Battle of Wesnoth WML from older versions to newer ones.
     Also validates WML to check for errors.
+
     Takes any number of directories as arguments.  Each directory is converted.
     If no directories are specified, acts on the current directory.
-    Options may be any of these:
+
+Mode options:
+    Changes wmllint from default conversion mode.  Only one mode can be chosen.
     -h, --help                 Emit this help message and quit.
-    -d, --dryrun               List changes but don't perform them.
-    -v, --verbose              -v        lists changes.
-                               -v -v     names each file before it's processed.
-                               -v -v -v  shows verbose parse details.
+    -d, --dryrun               List changes (-v) but don't perform them.
     -c, --clean                Clean up -bak files.
     -D, --diff                 Display diffs between converted and unconverted
                                files.
     -r, --revert               Revert the conversion from the -bak files.
+
+Other options:
+    -v, --verbose              -v        lists changes.
+                               -v -v     names each file before it's processed.
+                               -v -v -v  shows verbose parse details.
     -m, --missing              Don't warn about tags without side= keys now
                                applying to all sides.
     -s, --stripcr              Convert DOS-style CR/LF to Unix-style LF.
@@ -2666,6 +2671,7 @@ Usage: wmllint [options] [dir]
                                races, scenarios, etc.
     -S, --nospellcheck         Suppress spellchecking
     -Z, --stringfreeze         Suppress repair attempts of newlines in messages
+
 For more about wmllint, including how to prevent unwanted conversions and false
 positive warnings with magic comments, read the introduction in the wmllint
 file itself.  See also: http://wiki.wesnoth.org/Maintenance_tools.
