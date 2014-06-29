@@ -146,25 +146,12 @@ config& game_data::add_variable_cfg(const std::string& key, const config& value)
 
 void game_data::clear_variable_cfg(const std::string& varname)
 {
-	variable_info to_clear = get_variable_access(varname, false, variable_info::TYPE_CONTAINER);
-	if(!to_clear.is_valid) return;
-	if(to_clear.explicit_index) {
-		to_clear.vars->remove_child(to_clear.key, to_clear.index);
-	} else {
-		to_clear.vars->clear_children(to_clear.key);
-	}
+	get_variable_access(varname, false, variable_info::TYPE_CONTAINER).clear(true);
 }
 
 void game_data::clear_variable(const std::string& varname)
 {
-	variable_info to_clear = get_variable_access(varname, false);
-	if(!to_clear.is_valid) return;
-	if(to_clear.explicit_index) {
-		to_clear.vars->remove_child(to_clear.key, to_clear.index);
-	} else {
-		to_clear.vars->clear_children(to_clear.key);
-		to_clear.vars->remove_attribute(to_clear.key);
-	}
+	get_variable_access(varname, false).clear(false);
 }
 
 void game_data::write_snapshot(config& cfg) const {

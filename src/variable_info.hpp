@@ -51,4 +51,6 @@ struct variable_info
 	static config& get_temporaries();
 
 	void set_range(config& data, std::string mode);
+
+	void clear(bool only_tables);
 };

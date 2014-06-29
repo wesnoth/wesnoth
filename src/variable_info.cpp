@@ -213,7 +213,7 @@ variable_info::array_range variable_info::as_array() {
 
 void variable_info::set_range(config& data, std::string mode)
 {
-	
+
 	if(mode == "extend") {
 		mode = "append";
 	} else if(mode != "append" && mode != "merge") {
@@ -260,6 +260,22 @@ void variable_info::set_range(config& data, std::string mode)
 			}
 		} else {
 			this->vars->append(data);
+		}
+	}
+}
+
+void variable_info::clear(bool only_tables)
+{
+	if(is_valid)
+	{
+		if(this->explicit_index) {
+			this->vars->remove_child(this->key, this->index);
+		} else {
+			this->vars->clear_children(this->key);
+			if(!only_tables)
+			{
+				this->vars->remove_attribute(this->key);
+			}
 		}
 	}
 }
