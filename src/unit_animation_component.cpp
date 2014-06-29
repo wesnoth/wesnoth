@@ -63,6 +63,7 @@ void unit_animation_component::set_ghosted(bool with_bars)
 	display *disp = display::get_singleton();
 	start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "ghosted"),
 			with_bars);
+	anim_->pause_animation();
 }
 
 void unit_animation_component::set_disabled_ghosted(bool with_bars)
