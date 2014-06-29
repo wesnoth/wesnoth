@@ -14,12 +14,7 @@
 #ifndef SYNCED_CONTEXT_H_INCLUDED
 #define SYNCED_CONTEXT_H_INCLUDED
 
-
-#ifndef INCL_BOOST_FUNCTION_HPP_
-#define INCL_BOOST_FUNCTION_HPP_
-#include <boost/function.hpp>
-#endif
-
+#include "utils/boost_function_guarded.hpp"
 #include "synced_commands.hpp"
 #include "synced_checkup.hpp"
 #include "replay.hpp"

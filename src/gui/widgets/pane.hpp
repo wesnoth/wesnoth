@@ -19,12 +19,7 @@
 #include "gui/auxiliary/window_builder.hpp"
 #include "gui/auxiliary/placer.hpp"
 
-
-#ifndef INCL_BOOST_FUNCTION_HPP_
-#define INCL_BOOST_FUNCTION_HPP_
-#include <boost/function.hpp>
-#endif
-
+#include "utils/boost_function_guarded.hpp"
 
 #include <list>
 
