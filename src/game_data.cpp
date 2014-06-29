@@ -107,7 +107,7 @@ game_data::game_data(const game_data& data)
 		, scenario_(data.scenario_)
 		, next_scenario_(data.next_scenario_)
 {}
-
+//throws
 config::attribute_value &game_data::get_variable(const std::string& key)
 {
 	return get_variable_access(key, variable_info::TYPE_SCALAR).as_scalar();
@@ -115,9 +115,16 @@ config::attribute_value &game_data::get_variable(const std::string& key)
 
 config::attribute_value game_data::get_variable_const(const std::string &key) const
 {
-	return get_variable_access_readonly(key, variable_info::TYPE_SCALAR).as_scalar_const();
+	try
+	{
+		return get_variable_access_readonly(key, variable_info::TYPE_SCALAR).as_scalar_const();
+	}
+	catch(const invalid_variable_info_exception&)
+	{
+		return config::attribute_value();
+	}
 }
-
+//throws
 config& game_data::get_variable_cfg(const std::string& key)
 {
 	return get_variable_access(key, variable_info::TYPE_CONTAINER).as_container();
@@ -125,9 +132,16 @@ config& game_data::get_variable_cfg(const std::string& key)
 
 void game_data::set_variable(const std::string& key, const t_string& value)
 {
-	get_variable(key) = value;
+	try
+	{
+		get_variable(key) = value;
+	}
+	catch(const invalid_variable_info_exception&)
+	{
+		ERR_NG << "variable " << key << "cannot be set to " << value << std::endl;
+	}
 }
-
+//throws
 config& game_data::add_variable_cfg(const std::string& key, const config& value)
 {
 	return get_variable_access(key, variable_info::TYPE_ARRAY).add_child(value);
@@ -135,7 +149,14 @@ config& game_data::add_variable_cfg(const std::string& key, const config& value)
 
 void game_data::clear_variable_cfg(const std::string& varname)
 {
-	get_variable_access_noadd(varname, variable_info::TYPE_CONTAINER).clear(true);
+	try
+	{
+		get_variable_access_noadd(varname, variable_info::TYPE_CONTAINER).clear(true);
+	}
+	catch(const invalid_variable_info_exception&)
+	{
+		//variable doesn't exist, nothing to delete
+	}
 }
 
 void game_data::clear_variable(const std::string& varname)

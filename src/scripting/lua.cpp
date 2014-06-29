@@ -990,18 +990,25 @@ static int intf_fire_event(lua_State *L)
 static int intf_get_variable(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
-	variable_info v = resources::gamedata->get_variable_access_readonly(m, variable_info::TYPE_SCALAR);
-	if (v.get_is_valid()) {
-		luaW_pushscalar(L, v.as_scalar());
-		return 1;
-	} else {
-		variable_info w = resources::gamedata->get_variable_access_readonly(m, variable_info::TYPE_CONTAINER);
-		if (w.get_is_valid()) {
-			lua_newtable(L);
-			if (lua_toboolean(L, 2))
-				luaW_filltable(L, w.as_container());
+	try
+	{
+		variable_info v = resources::gamedata->get_variable_access_readonly(m, variable_info::TYPE_SCALAR);
+		if (v.get_is_valid()) {
+			luaW_pushscalar(L, v.as_scalar());
 			return 1;
+		} else {
+			variable_info w = resources::gamedata->get_variable_access_readonly(m, variable_info::TYPE_CONTAINER);
+			if (w.get_is_valid()) {
+				lua_newtable(L);
+				if (lua_toboolean(L, 2))
+					luaW_filltable(L, w.as_container());
+				return 1;
+			}
 		}
+	}
+	catch (const invalid_variable_info_exception&)
+	{
+		ERR_LUA << "invlid variable name in wesnoth.get_veriable" << std::endl;
 	}
 	return 0;
 }
@@ -1019,9 +1026,10 @@ static int intf_set_variable(lua_State *L)
 		resources::gamedata->clear_variable(m);
 		return 0;
 	}
-
-	variable_info v = resources::gamedata->get_variable_access(m);
-	switch (lua_type(L, 2)) {
+	try
+	{
+		variable_info v = resources::gamedata->get_variable_access(m);
+		switch (lua_type(L, 2)) {
 		case LUA_TBOOLEAN:
 			v.as_scalar() = luaW_toboolean(L, 2);
 			break;
@@ -1038,15 +1046,20 @@ static int intf_set_variable(lua_State *L)
 			}
 			// no break
 		case LUA_TTABLE:
-		{
-			config &cfg = v.as_container();
-			cfg.clear();
-			if (luaW_toconfig(L, 2, cfg))
-				break;
-			// no break
-		}
+			{
+				config &cfg = v.as_container();
+				cfg.clear();
+				if (luaW_toconfig(L, 2, cfg))
+					break;
+				// no break
+			}
 		default:
 			return luaL_typerror(L, 2, "WML table or scalar");
+		}
+	}
+	catch (const invalid_variable_info_exception&)
+	{
+		ERR_LUA << "invlid variable name in wesnoth.set_veriable" << std::endl;
 	}
 	return 0;
 }
