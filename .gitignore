@@ -1,12 +1,3 @@
-# extension txt
-*.txt
-!README.txt
-!readme.txt
-!COPYING.txt
-!imagemagick_command.txt
-!utils/umc_dev/org.wesnoth/templates/**/*.txt
-!CMakeLists.txt
-
 # project files
 .*project
 Project.*
@@ -27,6 +18,7 @@ CMakeCache.txt
 .scons-option-cache
 *sconsign.dblite
 .sconf_temp
+buildlog.txt
 
 # win32/MSVC:
 ALL_BUILD.vcproj
