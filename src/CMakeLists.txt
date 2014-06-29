@@ -916,6 +916,7 @@ set(wesnoth-main_SRC
 	whiteboard/side_actions.cpp
 	whiteboard/suppose_dead.cpp
 	whiteboard/utility.cpp
+	wmi_pager.cpp
 	${network_implementation_files} # network.cpp and network_worker.cpp are included by default (without USE_ANA_NETWORK)
 )
 

@@ -35,6 +35,7 @@ class saved_game;
 class game_data;
 class team;
 class unit;
+class wmi_pager;
 
 namespace actions {
 	class undo_list;
@@ -279,6 +280,7 @@ private:
 
 	void expand_wml_commands(std::vector<std::string>& items);
 	std::vector<const_item_ptr> wml_commands_;
+	boost::scoped_ptr<wmi_pager> wml_command_pager_;
 
 	bool victory_when_enemies_defeated_;
 	bool remove_from_carryover_on_defeat_;
