@@ -13,9 +13,9 @@ before_install:
     - export TARGETS="wesnoth wesnothd campaignd test"
     - export WML_TESTS=true
     - export CPP_TESTS=true
-    - if [ "$CXX" = "g++" ]; then export TARGETS="wesnoth"; fi
+#    - if [ "$CXX" = "g++" ]; then export TARGETS="wesnoth"; fi
     - if [ "$CXX" = "g++" ]; then export WML_TESTS=false; fi
-    - if [ "$CXX" = "g++" ]; then export CPP_TESTS=false; fi
+#    - if [ "$CXX" = "g++" ]; then export CPP_TESTS=false; fi
     - if [ "$CXX" = "g++" ]; then time sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y; fi
     - if [ "$CXX" = "g++" ]; then time sudo apt-get update -qq; fi
     - if [ "$CXX" = "g++" ]; then time sudo apt-get install g++-4.8; fi
