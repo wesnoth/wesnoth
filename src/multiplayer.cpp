@@ -489,6 +489,7 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 	gamelist.clear();
 	statistics::fresh_stats();
 
+	if (state.classification().campaign_type == game_classification::MULTIPLAYER)
 	{
 		mp::connect_engine_ptr connect_engine(new mp::connect_engine(state, local_players_only, true));
 		mp::connect ui(disp, state.mp_settings().name, game_config, gamechat, gamelist,
@@ -502,6 +503,11 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 		if (res == mp::ui::PLAY) {
 			ui.start_game();
 		}
+	} // end connect_engine_ptr scope
+	else {
+		mp::connect_engine engine(state, local_players_only, true);
+		engine.start_game();
+		res = mp::ui::PLAY;
 	}
 
 	switch (res) {
