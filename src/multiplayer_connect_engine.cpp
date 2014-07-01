@@ -138,19 +138,20 @@ connect_engine::connect_engine(saved_game& state,
 			if (name_itor == original_team_names.end()) {
 				original_team_names.push_back(team_name);
 
-				team_name =
+				team_name = "Team " + 
 					lexical_cast<std::string>(original_team_names.size());
 			} else {
 				team_name = lexical_cast<std::string>(
 					name_itor - original_team_names.begin() + 1);
-			}
+			} // Note that the prefix "Team " is untranslatable, as team_name is not meant to be translated. This is needed so that the attribute
+			  // is not interpretted as an int when reading from config, which causes bugs later.
 
 			user_team_name = team_prefix + side_str;
 		}
 
 		if (add_team) {
 			team_names_.push_back(params_.use_map_settings ? team_name :
-				side_str);
+				"Team " + side_str);
 			user_team_names_.push_back(user_team_name.t_str().to_serialized());
 
 			if (side["allow_player"].to_bool(true) || game_config::debug) {
