@@ -998,7 +998,8 @@ void create_engine::init_all_levels()
 			campaign_ptr new_campaign(new campaign(data));
 			campaigns_.push_back(new_campaign);
 			campaigns_.back()->set_metadata();
-		} else {
+		}
+		if (type == "sp" || type == "hybrid" || type.empty()) {
 			campaign_ptr new_sp_campaign(new campaign(data));
 			sp_campaigns_.push_back(new_sp_campaign);
 			sp_campaigns_.back()->set_metadata();
