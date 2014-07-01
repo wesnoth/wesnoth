@@ -28,8 +28,8 @@ install:
     - if [ "$CHECK_UTF8" = true ]; then time sudo apt-get install -qq moreutils; fi
 script: 
     - if [ "$CHECK_UTF8" = true ]; then time ./utils/travis/check_utf8.sh; fi
-    - time if grep -qorHbm1 "^`echo -ne '\xef\xbb\xbf'`" po/ src/ data/ ; then exit 1; fi
-# UTF8 checks are the previous two lines. the second one checks po src data for UTF8 bom, this takes less than a second.
+    - time if grep -qorHbm1 "^`echo -ne '\xef\xbb\xbf'`" po/ src/ data/ ; then echo "Error: Found a UTF8 BOM:\n"; grep -orHbm1 "^`echo -ne '\xef\xbb\xbf'`" po/ src/ data/ ; exit 1; fi
+# UTF8 checks are the previous two lines. the second one checks po src data for UTF8 bom, this takes a few seconds.
     - scons cxxtool=$CXX --debug=time strict=$STRICT_COMPILATION $TARGETS
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
@@ -37,7 +37,6 @@ script:
     - if [[ "$WML_TESTS" = true ]]; then time ./run_wml_tests -v -t 20; fi
 after_failure:
     - if [ -f "errors.log" ]; then echo -e "\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n"; cat errors.log; fi
-    - if [ grep -qorHbm1 "^`echo -ne '\xef\xbb\xbf'`" po/ src/ data/ ]; then echo "Found a UTF8 BOM, see above."; fi
 notifications:
     email: false
     irc:
