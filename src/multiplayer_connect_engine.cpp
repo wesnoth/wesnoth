@@ -34,6 +34,7 @@ static lg::log_domain log_config("config");
 static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 #define DBG_MP LOG_STREAM(debug, log_mp_connect_engine)
 #define LOG_MP LOG_STREAM(info, log_mp_connect_engine)
+#define WRN_MP LOG_STREAM(warn, log_mp_connect_engine)
 
 static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
@@ -886,6 +887,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	if (team_name_index >= parent_.team_names_.size()) {
 		assert(!parent_.team_names_.empty());
 		team_ = 0;
+		WRN_MP << "In side_engine constructor: Could not find my team_name " << cfg["team_name"] << " among the mp connect engine's list of team names. I am being assigned to the first team. This may indicate a bug!" << std::endl;
 	} else {
 		team_ = team_name_index;
 	}
