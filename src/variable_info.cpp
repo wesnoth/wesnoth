@@ -179,13 +179,13 @@ namespace
 	public:
 		get_variable_key_visitor(const std::string& key) : key_(key) {}
 
-		void from_config(typename maybe_const<vit, config>::type & cfg, param_type state) const
+		void from_config(typename maybe_const<vit, config>::type & cfg, typename get_variable_key_visitor::param_type state) const
 		{
 			state.type_ = state_named;
 			state.key_ = key_;
 			state.child_ = &cfg;
 		}
-		void from_named(param_type state) const 
+		void from_named(typename get_variable_key_visitor::param_type state) const 
 		{			
 			if(key_ == "length")
 			{
@@ -198,11 +198,11 @@ namespace
 				return from_config(get_child_at<vit>(*state.child_, state.key_, 0), state);
 			}
 		}
-		void from_start(param_type state) const 
+		void from_start(typename get_variable_key_visitor::param_type state) const 
 		{
 			return from_config(*state.child_, state);
 		}
-		void from_indexed(param_type state) const 
+		void from_indexed(typename get_variable_key_visitor::param_type state) const 
 		{
 			return from_config(get_child_at<vit>(*state.child_, state.key_, state.index_), state);
 		}
@@ -216,7 +216,7 @@ namespace
 	{
 	public:
 		get_variable_index_visitor(int n) : n_(n) {}
-		result_type from_named(param_type state) const 
+		void from_named(typename get_variable_index_visitor::param_type state) const 
 		{
 			state.index_ = n_;
 			resolve_negative_value(state.child_->child_count(state.key_), state.index_);
@@ -235,27 +235,27 @@ namespace
 		: public variable_info_visitor_const<vit, typename maybe_const<vit, config::attribute_value>::type&>
 	{
 	public:
-		result_type from_named(param_type state) const 
+		typename as_skalar_visitor::result_type from_named(typename as_skalar_visitor::param_type state) const 
 		{
 			check_valid_name(state.key_);
 			return (*state.child_)[state.key_];
 		}
-		result_type from_temporary(param_type state) const;
+		typename as_skalar_visitor::result_type from_temporary(typename as_skalar_visitor::param_type state) const;
 	};
 	/// this type of value like '.length' are readonly values so we only support them for reading.
 	/// espacily we don't want to return non const references.
 	template<>
-	const config::attribute_value & as_skalar_visitor<vit_const>::from_temporary(param_type state) const
+	const config::attribute_value & as_skalar_visitor<vit_const>::from_temporary(typename as_skalar_visitor::param_type state) const
 	{
 		return state.temp_val_;
 	}
 	template<>
-	config::attribute_value & as_skalar_visitor<vit_create_if_not_existent>::from_temporary(param_type) const
+	config::attribute_value & as_skalar_visitor<vit_create_if_not_existent>::from_temporary(typename as_skalar_visitor::param_type) const
 	{
 		throw invalid_variablename_exception();
 	}
 	template<>
-	config::attribute_value & as_skalar_visitor<vit_throw_if_not_existent>::from_temporary(param_type) const
+	config::attribute_value & as_skalar_visitor<vit_throw_if_not_existent>::from_temporary(typename as_skalar_visitor::param_type) const
 	{
 		throw invalid_variablename_exception();
 	}
@@ -266,15 +266,15 @@ namespace
 		: public variable_info_visitor_const<vit, typename maybe_const<vit, config>::type&>
 	{
 	public:
-		result_type from_named(param_type state) const 
-		{ 
+		typename as_container_visitor::result_type from_named(typename as_container_visitor::param_type state) const 
+		{
 			return get_child_at<vit>(*state.child_, state.key_, 0);
 		}
-		result_type from_start(param_type state) const 
+		typename as_container_visitor::result_type from_start(typename as_container_visitor::param_type state) const 
 		{ 
 			return *state.child_;
 		}
-		result_type from_indexed(param_type state) const 
+		typename as_container_visitor::result_type from_indexed(typename as_container_visitor::param_type state) const 
 		{ 
 			return get_child_at<vit>(*state.child_, state.key_, state.index_);
 		}
@@ -289,11 +289,11 @@ namespace {
 	{
 	public:
 		as_range_visitor_base(const THandler& handler) : handler_(handler) {}
-		result_type from_named(param_type state) const
+		typename as_range_visitor_base::result_type from_named(typename as_range_visitor_base::param_type state) const
 		{
 			return handler_(*state.child_, state.key_, 0, state.child_->child_count(state.key_));
 		}
-		result_type from_indexed(param_type state) const 
+		typename as_range_visitor_base::result_type from_indexed(typename as_range_visitor_base::param_type state) const 
 		{
 			//Ensure we have a config at the given explicit position.
 			get_child_at<vit>(*state.child_, state.key_, state.index_);
@@ -414,7 +414,7 @@ namespace
 	{
 	public:
 		clear_value_visitor(bool only_tables) : only_tables_(only_tables) {}
-		void from_named(param_type state) const 
+		void from_named(typename clear_value_visitor::param_type state) const 
 		{
 			if(!only_tables_)
 			{
@@ -422,7 +422,7 @@ namespace
 			}
 			state.child_->clear_children(state.key_);
 		}
-		void from_indexed(param_type state) const 
+		void from_indexed(typename clear_value_visitor::param_type state) const 
 		{ 
 			state.child_->remove_child(state.key_, state.index_);
 		}
@@ -435,19 +435,19 @@ namespace
 		: public variable_info_visitor_const<vit, bool>
 	{
 	public:
-		result_type from_named(param_type state) const 
+		typename exists_as_container_visitor::result_type from_named(typename exists_as_container_visitor::param_type state) const 
 		{
 			return state.child_->has_child(state.key_);
 		}
-		result_type from_indexed(param_type state) const 
+		typename exists_as_container_visitor::result_type from_indexed(typename exists_as_container_visitor::param_type state) const 
 		{
 			return state.child_->child_count(state.key_) > static_cast<size_t>(state.index_);
 		}
-		result_type from_start(param_type) const 
+		typename exists_as_container_visitor::result_type from_start(typename exists_as_container_visitor::param_type) const 
 		{
 			return true;
 		}
-		result_type from_temporary(param_type) const 
+		typename exists_as_container_visitor::result_type from_temporary(typename exists_as_container_visitor::param_type) const 
 		{
 			return false;
 		}
@@ -545,7 +545,7 @@ template<const variable_info_3_type vit>
 typename maybe_const<vit, config::child_itors>::type variable_info_3<vit>::as_array() const
 {
 	throw_on_invalid();
-	return apply_visitor(as_range_visitor_base<vit,variable_as_array_h<vit>>(variable_as_array_h<vit>()), state_);
+	return apply_visitor(as_range_visitor_base<vit,variable_as_array_h<vit> >(variable_as_array_h<vit>()), state_);
 }
 
 template<const variable_info_3_type vit>
