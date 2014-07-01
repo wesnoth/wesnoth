@@ -86,15 +86,15 @@ void tdebug_clock::pre_show(CVideo& /*video*/, twindow& window)
 			&window, "second_percentage", false, false);
 
 	hour_ = find_widget<tinteger_selector_>(&window, "hour", false, false);
-	if(hour_) {
+	if(dynamic_cast<tcontrol*>(hour_)) { //Note that the standard specifies that a dynamic cast of a null pointer is null
 		dynamic_cast<tcontrol*>(hour_)->set_active(false);
 	}
 	minute_ = find_widget<tinteger_selector_>(&window, "minute", false, false);
-	if(minute_) {
+	if(dynamic_cast<tcontrol*>(minute_)) {
 		dynamic_cast<tcontrol*>(minute_)->set_active(false);
 	}
 	second_ = find_widget<tinteger_selector_>(&window, "second", false, false);
-	if(second_) {
+	if(dynamic_cast<tcontrol*>(second_)) {
 		dynamic_cast<tcontrol*>(second_)->set_active(false);
 	}
 
