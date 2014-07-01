@@ -39,6 +39,7 @@
 #include "../resources.hpp"
 #include "../tod_manager.hpp"
 
+#include <algorithm>
 #include <boost/foreach.hpp>
 
 static lg::log_domain log_ai("ai/general");
@@ -1089,7 +1090,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 {
 	map_location used_locs[6];
 	int ratings[6];
-	memset(ratings, 0, 6*sizeof(int));
+	std::fill_n(ratings, 0, 6);
 	int num_used_locs = 0;
 
 	map_location locs[6];
