@@ -29,15 +29,14 @@ install:
 script: 
     - if [ "$CHECK_UTF8" = true ]; then time ./utils/travis/check_utf8.sh; fi
     - ! time grep -qorHbm1 "^`echo -ne '\xef\xbb\xbf'`" po/ src/ data/ 
-# UTF8 checks are the previous two lines. the second one checks po src data for UTF8, this takes less than a second.
+# UTF8 checks are the previous two lines. the second one checks po src data for UTF8 bom, this takes less than a second.
     - scons cxxtool=$CXX --debug=time strict=$STRICT_COMPILATION $TARGETS
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
     - if [[ "$CPP_TESTS" = true ]]; then time ./utils/travis/test_wrapper.sh; fi
     - if [[ "$WML_TESTS" = true ]]; then time ./run_wml_tests -v -t 20; fi
 after_failure:
-    - if [ -f "errors.log" ]; then echo -e "\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n"; fi
-    - if [ -f "errors.log" ]; then cat errors.log; fi
+    - if [ -f "errors.log" ]; then echo -e "\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n"; cat errors.log; fi
     - if [ grep -qorHbm1 "^`echo -ne '\xef\xbb\xbf'`" po/ src/ data/ ]; then echo "Found a UTF8 BOM, see above."; fi
 notifications:
     email: false
