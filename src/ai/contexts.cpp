@@ -1115,6 +1115,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 {
 	map_location used_locs[6];
 	int ratings[6];
+	memset(ratings, 0, 6*sizeof(int));
 	int num_used_locs = 0;
 
 	map_location locs[6];
