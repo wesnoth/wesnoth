@@ -140,22 +140,6 @@ void fill_rect(GPU_Target &target, const SDL_Rect &rect, SDL_Color color)
 }
 #endif
 
-#if SDL_VERSION_ATLEAST(2,0,0)
-void fill_rect(SDL_Renderer *rnd, const SDL_Rect *rect, Uint8 r, Uint8 g,
-			   Uint8 b, Uint8 a)
-{
-	SDL_SetRenderDrawColor(rnd, r, g, b, a);
-	SDL_RenderFillRect(rnd, rect);
-}
-
-void draw_rect(SDL_Renderer *rnd, const SDL_Rect *rect, Uint8 r, Uint8 g,
-			   Uint8 b, Uint8 a)
-{
-	SDL_SetRenderDrawColor(rnd, r, g, b, a);
-	SDL_RenderDrawRect(rnd, rect);
-}
-#endif
-
 } // namespace sdl
 
 bool operator==(const SDL_Rect& a, const SDL_Rect& b)

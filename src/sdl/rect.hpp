@@ -143,13 +143,6 @@ inline void fill_rect(surface& dst, SDL_Rect* dst_rect, const Uint32 color)
 	SDL_FillRect(dst, dst_rect, color);
 }
 
-#if SDL_VERSION_ATLEAST(2,0,0)
-void fill_rect(SDL_Renderer *rnd, const SDL_Rect *rect, Uint8 r, Uint8 g,
-			   Uint8 b, Uint8 a);
-
-void draw_rect(SDL_Renderer *rnd, const SDL_Rect *rect, Uint8 r, Uint8 g,
-			   Uint8 b, Uint8 a);
-#endif
 #ifdef SDL_GPU
 void fill_rect(GPU_Target &target, const SDL_Rect &rect, SDL_Color color);
 
