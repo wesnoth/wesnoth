@@ -3,7 +3,7 @@
 ** See Copyright Notice in lua.h
 */
 
-
+#include <cassert>
 #include <setjmp.h>
 #include <stdlib.h>
 #include <string.h>
@@ -65,7 +65,10 @@
                         lua_pushstring(L, e.what()); \
                         luaG_errormsg(L); \
                         throw; \
-                } \
+                } catch(...) { \
+	                assert(false && "Lua is swallowing an un-named exception... this indicates a programmer error, please derive all exceptions from std::exception!"); \
+			throw; \
+		} \
         } catch(...) { \
                 if((c)->status == 0) \
                         (c)->status = -1;\
