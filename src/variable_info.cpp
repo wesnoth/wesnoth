@@ -110,7 +110,7 @@ namespace
 
 	template <typename TVisitor>
 	//typename TVisitor::result_type apply_visitor(TVisitor& visitor, variable_info_3_state<vit>& state)
-	typename TVisitor::result_type apply_visitor(TVisitor& visitor, typename TVisitor::param_type state)
+	typename TVisitor::result_type apply_visitor(const TVisitor& visitor, typename TVisitor::param_type state)
 	{
 		switch(state.type_)
 		{
@@ -133,7 +133,7 @@ namespace
 	public:
 		typedef TResult result_type;
 		typedef variable_info_3_state<vit>& param_type;
-#define DEFAULTHANDLER(name) result_type name(param_type) { throw invalid_variablename_exception(); }
+#define DEFAULTHANDLER(name) result_type name(param_type) const { throw invalid_variablename_exception(); }
 		DEFAULTHANDLER(from_start)
 		DEFAULTHANDLER(from_named)
 		DEFAULTHANDLER(from_indexed)
@@ -147,7 +147,7 @@ namespace
 	public:
 		typedef TResult result_type;
 		typedef const variable_info_3_state<vit>& param_type;
-#define DEFAULTHANDLER(name) result_type name(param_type) { throw invalid_variablename_exception(); }
+#define DEFAULTHANDLER(name) result_type name(param_type) const { throw invalid_variablename_exception(); }
 		DEFAULTHANDLER(from_start)
 		DEFAULTHANDLER(from_named)
 		DEFAULTHANDLER(from_indexed)
@@ -462,11 +462,11 @@ variable_info_3<vit>::variable_info_3(const std::string& varname, t_config& vars
 {
 	try
 	{
-		calculate_value();
+		this->calculate_value();
 	}
 	catch(const invalid_variablename_exception&)
 	{
-		valid_ = false;
+		this->valid_ = false;
 	}
 }
 
@@ -493,17 +493,17 @@ void variable_info_3<vit>::calculate_value()
 				// treated equally so 'aaa.9].bbbb[zzz.uu.7]' 
 				// is interpreted as  'aaa[9].bbbb.zzz.uu[7]'
 				// use is_valid_variable function for stricter variablename checking.
-				apply_visitor(get_variable_key_visitor<vit>(this->name_.substr(index1, index2-index1)), state_);
+				apply_visitor(get_variable_key_visitor<vit>(this->name_.substr(index1, index2-index1)), this->state_);
 				break;
 			case ']':
 				// ']' marks the end of an integer key.
-				int index = parse_index(&name_[index1]);
+				int index = parse_index(&this->name_[index1]);
 				//val = val.apply_visitor(get_variable_index_visitor<vit>(index));
-				apply_visitor(get_variable_index_visitor<vit>(index), state_);
+				apply_visitor(get_variable_index_visitor<vit>(index), this->state_);
 				//after ']' we always expect a '.' or the end of the string
 				//ignore the next char which is a '.'
 				index2++;
-				if(index2 < name_.length() && name_[index2] != '.')
+				if(index2 < this->name_.length() && this->name_[index2] != '.')
 				{
 					throw invalid_variablename_exception();
 				}
@@ -516,7 +516,7 @@ void variable_info_3<vit>::calculate_value()
 	{
 		//std::cerr << "index1=" << index1 << " length=" << this->name_.length() << "\n";
 		// the string ended not with ']'
-		apply_visitor(get_variable_key_visitor<vit>(this->name_.substr(index1)), state_);
+		apply_visitor(get_variable_key_visitor<vit>(this->name_.substr(index1)), this->state_);
 	}
 }
 
@@ -524,34 +524,34 @@ template<const variable_info_3_type vit>
 bool variable_info_3<vit>::explicit_index() const
 {
 	throw_on_invalid();
-	return state_.type_ == state_start || state_.type_ == state_indexed;
+	return this->state_.type_ == state_start || this->state_.type_ == state_indexed;
 }
 
 template<const variable_info_3_type vit>
 typename maybe_const<vit, config::attribute_value>::type& variable_info_3<vit>::as_scalar() const
 {
 	throw_on_invalid();
-	return apply_visitor(as_skalar_visitor<vit>(), state_);
+	return apply_visitor(as_skalar_visitor<vit>(), this->state_);
 }
 
 template<const variable_info_3_type vit>
 typename maybe_const<vit, config>::type& variable_info_3<vit>::as_container() const
 {
 	throw_on_invalid();
-	return apply_visitor(as_container_visitor<vit>(), state_);
+	return apply_visitor(as_container_visitor<vit>(), this->state_);
 }
 
 template<const variable_info_3_type vit>
 typename maybe_const<vit, config::child_itors>::type variable_info_3<vit>::as_array() const
 {
 	throw_on_invalid();
-	return apply_visitor(as_range_visitor_base<vit,variable_as_array_h<vit> >(variable_as_array_h<vit>()), state_);
+	return apply_visitor(as_range_visitor_base<vit,variable_as_array_h<vit> >(variable_as_array_h<vit>()), this->state_);
 }
 
 template<const variable_info_3_type vit>
 void variable_info_3<vit>::throw_on_invalid() const
 {
-	if(!valid_)
+	if(!this->valid_)
 	{
 		throw invalid_variablename_exception();
 	}
@@ -578,47 +578,47 @@ std::string variable_info_3<vit_throw_if_not_existent>::get_error_message() cons
 template<const variable_info_3_type vit>
 void non_const_variable_info_3<vit>::clear(bool only_tables) const
 {
-	throw_on_invalid();
-	return apply_visitor(clear_value_visitor<vit>(only_tables), state_);
+	this->throw_on_invalid();
+	return apply_visitor(clear_value_visitor<vit>(only_tables), this->state_);
 }
 
 template<const variable_info_3_type vit>
 config::child_itors non_const_variable_info_3<vit>::append_array(std::vector<config> childs) const
 {
-	throw_on_invalid();
-	return apply_visitor(as_range_visitor_base<vit,append_range_h>(append_range_h(childs)), state_);
+	this->throw_on_invalid();
+	return apply_visitor(as_range_visitor_base<vit,append_range_h>(append_range_h(childs)), this->state_);
 }
 
 template<const variable_info_3_type vit>
 config::child_itors non_const_variable_info_3<vit>::insert_array(std::vector<config> childs) const
 {
-	throw_on_invalid();
-	return apply_visitor(as_range_visitor_base<vit,insert_range_h>(insert_range_h(childs)), state_);
+	this->throw_on_invalid();
+	return apply_visitor(as_range_visitor_base<vit,insert_range_h>(insert_range_h(childs)), this->state_);
 }
 
 template<const variable_info_3_type vit>
 config::child_itors non_const_variable_info_3<vit>::replace_array(std::vector<config> childs) const
 {
-	throw_on_invalid();
-	return apply_visitor(as_range_visitor_base<vit,replace_range_h>(replace_range_h(childs)), state_);
+	this->throw_on_invalid();
+	return apply_visitor(as_range_visitor_base<vit,replace_range_h>(replace_range_h(childs)), this->state_);
 }
 
 template<const variable_info_3_type vit>
 void non_const_variable_info_3<vit>::merge_array(std::vector<config> childs) const
 {
-	throw_on_invalid();
-	apply_visitor(as_range_visitor_base<vit,merge_range_h>(merge_range_h(childs)), state_);
+	this->throw_on_invalid();
+	apply_visitor(as_range_visitor_base<vit,merge_range_h>(merge_range_h(childs)), this->state_);
 }
 
 template<const variable_info_3_type vit>
 bool variable_info_3<vit>::exists_as_attribute() const
 {
-	throw_on_invalid();
-	return (state_.type_ == state_temporary) || ((state_.type_ == state_named) && state_.child_->has_attribute(state_.key_));
+	this->throw_on_invalid();
+	return (this->state_.type_ == state_temporary) || ((this->state_.type_ == state_named) && this->state_.child_->has_attribute(this->state_.key_));
 }
 template<const variable_info_3_type vit>
 bool variable_info_3<vit>::exists_as_container() const
 {
-	throw_on_invalid();
-	return apply_visitor(exists_as_container_visitor<vit>(), state_);
+	this->throw_on_invalid();
+	return apply_visitor(exists_as_container_visitor<vit>(), this->state_);
 }
