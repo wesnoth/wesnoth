@@ -28,7 +28,7 @@ install:
     - if [ "$CHECK_UTF8" = true ]; then time sudo apt-get install -qq moreutils; fi
 script: 
     - if [ "$CHECK_UTF8" = true ]; then time ./utils/travis/check_utf8.sh; fi
-    - time grep -qorHbm1 "^`echo -ne '\xef\xbb\xbf'`" po/ src/ data/ && exit 1
+    - time if grep -qorHbm1 "^`echo -ne '\xef\xbb\xbf'`" po/ src/ data/ ; then exit 1; fi
 # UTF8 checks are the previous two lines. the second one checks po src data for UTF8 bom, this takes less than a second.
     - scons cxxtool=$CXX --debug=time strict=$STRICT_COMPILATION $TARGETS
     - "export DISPLAY=:99.0"
