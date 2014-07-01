@@ -17,6 +17,9 @@
  * container. It is an adapter, managing the production of items lists
  * from the container, and screening the "fire" signals coming back
  * in to intercept the paging signals.
+ *
+ * TODO: Implement this as a helper class for menu perhaps, so that it
+ * can interact with the gui layout algorithm.
  */
 
 struct map_location;
