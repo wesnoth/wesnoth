@@ -508,6 +508,7 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 		mp::connect_engine engine(state, local_players_only, true);
 		engine.start_game();
 		res = mp::ui::PLAY;
+		return true;
 	}
 
 	switch (res) {
