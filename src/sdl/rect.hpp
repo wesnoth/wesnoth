@@ -29,7 +29,9 @@
 #include <SDL_video.h>
 #endif
 
-
+#ifdef SDL_GPU
+#include "gpu.hpp"
+#endif
 
 namespace sdl
 {
@@ -146,6 +148,17 @@ void fill_rect(SDL_Renderer *rnd, const SDL_Rect *rect, Uint8 r, Uint8 g,
 			   Uint8 b, Uint8 a);
 
 void draw_rect(SDL_Renderer *rnd, const SDL_Rect *rect, Uint8 r, Uint8 g,
+			   Uint8 b, Uint8 a);
+#endif
+#ifdef SDL_GPU
+void fill_rect(GPU_Target &target, const SDL_Rect &rect, SDL_Color color);
+
+void fill_rect(GPU_Target &target, const SDL_Rect &rect, Uint8 r, Uint8 g,
+			   Uint8 b, Uint8 a);
+
+void draw_rect(GPU_Target &target, const SDL_Rect &rect, SDL_Color color);
+
+void draw_rect(GPU_Target &target, const SDL_Rect &rect, Uint8 r, Uint8 g,
 			   Uint8 b, Uint8 a);
 #endif
 } // namespace sdl
