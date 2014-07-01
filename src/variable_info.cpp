@@ -21,13 +21,6 @@
 #include "variable_info.hpp"
 using namespace variable_info_3_detail;
 
-///explicit instantiations
-template class variable_info_3<vit_const>;
-template class variable_info_3<vit_create_if_not_existent>;
-template class variable_info_3<vit_throw_if_not_existent>;
-template class non_const_variable_info_3<vit_create_if_not_existent>;
-template class non_const_variable_info_3<vit_throw_if_not_existent>;
-
 /// general helpers
 namespace
 {
@@ -622,3 +615,10 @@ bool variable_info_3<vit>::exists_as_container() const
 	this->throw_on_invalid();
 	return apply_visitor(exists_as_container_visitor<vit>(), this->state_);
 }
+
+///explicit instantiations
+template class variable_info_3<vit_const>;
+template class variable_info_3<vit_create_if_not_existent>;
+template class variable_info_3<vit_throw_if_not_existent>;
+template class non_const_variable_info_3<vit_create_if_not_existent>;
+template class non_const_variable_info_3<vit_throw_if_not_existent>;
