@@ -73,6 +73,9 @@ static lg::log_domain log_display("display");
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
+static lg::log_domain log_engine_enemies("engine/enemies");
+#define DBG_EE LOG_STREAM(debug, log_engine_enemies)
+
 static void clear_resources()
 {
 	resources::controller = NULL;
@@ -1251,7 +1254,9 @@ void play_controller::check_victory()
 
 	BOOST_FOREACH( const unit & i , gamestate_.board_.units())
 	{
+		DBG_EE << "Found a unit: " << i.id() << " on side " << i.side() << std::endl;
 		const team& tm = gamestate_.board_.teams()[i.side()-1];
+		DBG_EE << "That team's defeat condition is: " << lexical_cast<std::string> (tm.defeat_condition()) << std::endl;
 		if (i.can_recruit() && tm.defeat_condition() == team::NO_LEADER) {
 			not_defeated.insert(i.side());
 		} else if (tm.defeat_condition() == team::NO_UNITS) {
@@ -1289,11 +1294,14 @@ void play_controller::check_victory()
 	for (std::set<unsigned>::iterator n = not_defeated.begin(); n != not_defeated.end(); ++n) {
 		size_t side = *n - 1;
 
+		DBG_EE << "Side " << (side+1) << " is a not-defeated team" << std::endl;
+
 		std::set<unsigned>::iterator m(n);
 		for (++m; m != not_defeated.end(); ++m) {
 			if (gamestate_.board_.teams()[side].is_enemy(*m)) {
 				return;
 			}
+			DBG_EE << "Side " << (side+1) << " and " << *m << " are not enemies." << std::endl;
 		}
 
 		if (gamestate_.board_.teams()[side].is_human()) {
@@ -1310,9 +1318,9 @@ void play_controller::check_victory()
 		check_end_level();
 	}
 
-	DBG_NG << "victory_when_enemies_defeated: " << victory_when_enemies_defeated_ << std::endl;
-	DBG_NG << "found_player: " << found_player << std::endl;
-	DBG_NG << "found_network_player: " << found_network_player << std::endl;
+	DBG_EE << "victory_when_enemies_defeated: " << victory_when_enemies_defeated_ << std::endl;
+	DBG_EE << "found_player: " << found_player << std::endl;
+	DBG_EE << "found_network_player: " << found_network_player << std::endl;
 
 	if (!victory_when_enemies_defeated_ && (found_player || found_network_player)) {
 		// This level has asked not to be ended by this condition.
@@ -1330,7 +1338,7 @@ void play_controller::check_victory()
 		ai_testing::log_victory(not_defeated);
 	}
 
-	DBG_NG << "throwing end level exception..." << std::endl;
+	DBG_EE << "throwing end level exception..." << std::endl;
 	//Also proceed to the next scenario when another player survived.
 	end_level_data_.proceed_to_next_level = found_player || found_network_player;
 	throw end_level_exception(found_player ? VICTORY : DEFEAT);
