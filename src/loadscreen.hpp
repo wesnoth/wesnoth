@@ -22,10 +22,6 @@ class CVideo;
 #include "sdl/utils.hpp"
 #include "sdl/gpu.hpp"
 
-#if SDL_VERSION_ATLEAST(2,0,0)
-#include "sdl/texture.hpp"
-#endif
-
 class loadscreen {
 public:
 	// Preferred constructor
@@ -79,14 +75,10 @@ private:
 	// Data members
 	CVideo &screen_;
 	SDL_Rect textarea_;
-#if SDL_VERSION_ATLEAST(2,0,0)
-	sdl::ttexture logo_texture_;
-#else
 #ifdef SDL_GPU
 	GPU_Image *logo_image_;
 #else
 	surface logo_surface_;
-#endif
 #endif
 	bool logo_drawn_;
 	int pby_offset_;
