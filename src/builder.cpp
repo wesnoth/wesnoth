@@ -1039,7 +1039,7 @@ void terrain_builder::build_terrains()
 		// We will keep a track of the matching terrains of this constraint
 		// and later try to apply the rule only on them
 		size_t min_size = INT_MAX;
-		t_translation::t_list min_types;
+		t_translation::t_list min_types = t_translation::t_list(); // <-- This must be explicitly initialized, just as min_constraint is, at start of loop, or we get a null pointer dereference when we go through on later times.
 		const terrain_constraint *min_constraint = NULL;
 
 		BOOST_FOREACH(const terrain_constraint &constraint, rule.constraints)
