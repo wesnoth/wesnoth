@@ -23,7 +23,6 @@
 #include "map_location.hpp"
 #include "simple_rng.hpp"
 #include "variable_info.hpp"
-
 #include <boost/shared_ptr.hpp>
 
 class config_writer;
@@ -61,33 +60,23 @@ public:
 
 	void activate_scope_variable(std::string var_name) const;
 
-	variable_info get_variable_access(const std::string& varname,
-		variable_info::TYPE validation_type = variable_info::TYPE_UNSPECIFIED)
+	// returns a variable_access that cannot be used to change the game variables
+	variable_access_const get_variable_access_read(const std::string& varname) const
 	{
 		assert(this != NULL);
 		activate_scope_variable(varname);
-		return variable_info(variables_, varname, true, validation_type);
+		return variable_access_const(varname, variables_);
 	}
-	// Does not add empty childs if a child does not exist.
-	// Can still be used to change the final value.
-	variable_info get_variable_access_noadd(const std::string& varname,
-		variable_info::TYPE validation_type = variable_info::TYPE_UNSPECIFIED)
+
+	// returns a variable_access that cannot be used to change the game variables
+	variable_access_create get_variable_access_write(const std::string& varname)
 	{
 		assert(this != NULL);
 		activate_scope_variable(varname);
-		return variable_info(variables_, varname, false, validation_type);
+		return variable_access_create(varname, variables_);
 	}
-	// Does not change the gaem variables
-	// NOTE: this has the game effect as get_variable_access_noadd
-	// the const here is a lie
-	// its up to the caller to not call variable changing functions on the returned object.
-	variable_info get_variable_access_readonly(const std::string& varname,
-		variable_info::TYPE validation_type = variable_info::TYPE_UNSPECIFIED) const
-	{
-		assert(this != NULL);
-		activate_scope_variable(varname);
-		return variable_info(const_cast<config&>(variables_), varname, false, validation_type);
-	}
+
+
 
 	void clear_variable(const std::string& varname);
 	void clear_variable_cfg(const std::string& varname); // Clears only the config children
@@ -134,6 +123,16 @@ public:
 	game_data* operator=(const game_data* info);
 
 private:
+
+	
+	///Used to delete variables.
+	variable_access_throw get_variable_access_throw(const std::string& varname)
+	{
+		assert(this != NULL);
+		activate_scope_variable(varname);
+		return variable_access_throw(varname, variables_);
+	}
+
 	game_events::wmi_container wml_menu_items_;
 	rand_rng::simple_rng rng_;
 	config variables_;

@@ -133,7 +133,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 		if(cfg_.has_attribute("find_in")) {
 			try
 			{
-				variable_info vi = resources::gamedata->get_variable_access_readonly(cfg_["find_in"], variable_info::TYPE_CONTAINER);
+				variable_access_const vi = resources::gamedata->get_variable_access_read(cfg_["find_in"]);
 
 				bool found = false;
 				BOOST_FOREACH(const config &cfg, vi.as_array()) {
@@ -144,7 +144,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 				}
 				if (!found) return false;
 			}
-			catch(const invalid_variable_info_exception&)
+			catch(const invalid_variablename_exception&)
 			{
 				return false;
 			}
@@ -420,14 +420,14 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 
 		try
 		{
-			variable_info vi = resources::gamedata->get_variable_access_readonly(cfg_["find_in"], variable_info::TYPE_CONTAINER);
-			BOOST_FOREACH(const config& cfg, vi.as_array_throw())
+			variable_access_const vi = resources::gamedata->get_variable_access_read(cfg_["find_in"]);
+			BOOST_FOREACH(const config& cfg, vi.as_array())
 			{
 				map_location test_loc(cfg, NULL);
 				match_set.insert(test_loc);
 			}
 		}
-		catch(const invalid_variable_info_exception&)
+		catch(const invalid_variablename_exception&)
 		{
 			//Do nothing
 		}
@@ -455,8 +455,8 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		try
 		{
 			std::set<map_location> findin_locs;
-			variable_info vi = resources::gamedata->get_variable_access_readonly(cfg_["find_in"], variable_info::TYPE_CONTAINER);
-			BOOST_FOREACH(const config& cfg, vi.as_array_throw())
+			variable_access_const vi = resources::gamedata->get_variable_access_read(cfg_["find_in"]);
+			BOOST_FOREACH(const config& cfg, vi.as_array())
 			{
 				map_location test_loc(cfg, NULL);
 				if (match_set.count(test_loc)) {
@@ -465,7 +465,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			}
 			match_set.swap(findin_locs);
 		}
-		catch(const invalid_variable_info_exception&)
+		catch(const invalid_variablename_exception&)
 		{
 			match_set.clear();
 		}
@@ -497,15 +497,15 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		
 		try
 		{
-			variable_info vi = resources::gamedata->get_variable_access_readonly(cfg_["find_in"], variable_info::TYPE_CONTAINER);
-			BOOST_FOREACH(const config& cfg, vi.as_array_throw())
+			variable_access_const vi = resources::gamedata->get_variable_access_read(cfg_["find_in"]);
+			BOOST_FOREACH(const config& cfg, vi.as_array())
 			{
 				map_location test_loc(cfg, NULL);
 				if (area.count(test_loc) != 0)
 					match_set.insert(test_loc);
 			}
 		}
-		catch(const invalid_variable_info_exception&)
+		catch(const invalid_variablename_exception&)
 		{
 			match_set.clear();
 		}
@@ -525,7 +525,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		//use content of find_in as starting set
 		try
 		{
-			variable_info vi = resources::gamedata->get_variable_access_readonly(cfg_["find_in"], variable_info::TYPE_CONTAINER);
+			variable_access_const vi = resources::gamedata->get_variable_access_read(cfg_["find_in"]);
 
 			BOOST_FOREACH(const config &cfg, vi.as_array()) {
 				map_location test_loc(cfg, NULL);
@@ -533,7 +533,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 					match_set.insert(test_loc);
 			}
 		}
-		catch(const invalid_variable_info_exception&)
+		catch(const invalid_variablename_exception&)
 		{
 			//Do nothing
 		}

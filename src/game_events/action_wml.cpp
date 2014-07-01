@@ -29,6 +29,7 @@
 #include "../actions/move.hpp"
 #include "../actions/vision.hpp"
 #include "../ai/manager.hpp"
+#include "../config_assign.hpp"
 #include "../dialogs.hpp"
 #include "../fake_unit_manager.hpp"
 #include "../fake_unit_ptr.hpp"
@@ -2050,8 +2051,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 
 
-
-			variable_info vi = resources::gamedata->get_variable_access(array_name, variable_info::TYPE_ARRAY);
+			variable_access_const vi = resources::gamedata->get_variable_access_read(array_name);
 			bool first = true;
 			BOOST_FOREACH(const config &cfg, vi.as_array())
 			{
@@ -2065,7 +2065,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 			var = joined_string;
 		}
 	}
-	catch(const invalid_variable_info_exception&)
+	catch(const invalid_variablename_exception&)
 	{
 		ERR_NG << "Found invalid variablename in [set_variable] with " << cfg.get_config().debug() << "\n";
 	}
@@ -2074,7 +2074,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 {
 	const t_string& name = cfg["name"];
-	variable_info dest = resources::gamedata->get_variable_access(name, variable_info::TYPE_CONTAINER);
+	variable_access_create dest = resources::gamedata->get_variable_access_write(name);
 	if(name.empty()) {
 		ERR_NG << "trying to set a variable with an empty name:\n" << cfg.get_config().debug();
 		return;
@@ -2085,43 +2085,30 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 	const vconfig::child_list literals = cfg.get_children("literal");
 	const vconfig::child_list split_elements = cfg.get_children("split");
 
-	config data;
-
+	std::vector<config> data;
 	if(cfg.has_attribute("to_variable"))
 	{
 		try
 		{
-			variable_info tovar = resources::gamedata->get_variable_access_readonly(cfg["to_variable"], variable_info::TYPE_CONTAINER);
-			BOOST_FOREACH(const config& c, tovar.as_array_throw())
+			variable_access_const tovar = resources::gamedata->get_variable_access_read(cfg["to_variable"]);
+			BOOST_FOREACH(const config& c, tovar.as_array())
 			{
-				data.add_child(dest.get_final_key(), c);
+				data.push_back(c);
 			}
-			/*
-			if(tovar.get_is_valid()) {
-				if(tovar.is_explicit_index()) {
-					data.add_child(dest.get_final_key(), tovar.as_container());
-				} else {
-					variable_info::array_range range = tovar.as_array();
-					while(range.first != range.second)
-					{
-						data.add_child(dest.get_final_key(), *range.first++);
-					}
-				}
-			}*/
 		}
-		catch(const invalid_variable_info_exception&)
+		catch(const invalid_variablename_exception&)
 		{
 			ERR_NG << "Cannot do [set_variables] with invalid to_variable variable: " << cfg["to_variable"] << " with " << cfg.get_config().debug() << std::endl;
 		}
 	} else if(!values.empty()) {
 		for(vconfig::child_list::const_iterator i=values.begin(); i!=values.end(); ++i)
 		{
-			data.add_child(dest.get_final_key(), (*i).get_parsed_config());
+			data.push_back((*i).get_parsed_config());
 		}
 	} else if(!literals.empty()) {
 		for(vconfig::child_list::const_iterator i=literals.begin(); i!=literals.end(); ++i)
 		{
-			data.add_child(dest.get_final_key(), i->get_config());
+			data.push_back(i->get_config());
 		}
 	} else if(!split_elements.empty()) {
 		const vconfig & split_element = split_elements.front();
@@ -2154,14 +2141,39 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 
 		for(std::vector<std::string>::iterator i=split_vector.begin(); i!=split_vector.end(); ++i)
 		{
-			data.add_child(dest.get_final_key())[key_name]=*i;
+			data.push_back(config_of(key_name, *i));
 		}
 	}
 	try
 	{
-		dest.set_range(data, cfg["mode"]);// replace, append, merge, or insert
+		const std::string& mode = cfg["mode"];
+		if(mode == "replace")
+		{
+			dest.replace_array(data);
+		}
+		else if(mode == "merge")
+		{
+			if(dest.explicit_index() && data.size() > 1)
+			{
+				//merge children into one
+				config merged_children;
+				BOOST_FOREACH(const config &cfg, data) {
+					merged_children.append(cfg);
+				}
+				data = boost::assign::list_of(merged_children);
+			}
+			dest.merge_array(data);
+		}
+		else if(mode == "insert")
+		{
+			dest.insert_array(data);
+		}
+		else /*default if(mode == "append")*/
+		{
+			dest.append_array(data);
+		}
 	}
-	catch(const invalid_variable_info_exception&)
+	catch(const invalid_variablename_exception&)
 	{
 		ERR_NG << "Cannot do [set_variables] with invalid destination variable: " << name << " with " << cfg.get_config().debug() << std::endl;
 	}
@@ -2205,11 +2217,11 @@ WML_HANDLER_FUNCTION(store_relative_dir, /*event_info*/, cfg)
 	map_location::RELATIVE_DIR_MODE mode = static_cast<map_location::RELATIVE_DIR_MODE> (cfg["mode"].to_int(0));
 	try
 	{
-		variable_info store = resources::gamedata->get_variable_access(variable, variable_info::TYPE_SCALAR );
+		variable_access_create store = resources::gamedata->get_variable_access_write(variable);
 
 		store.as_scalar() = map_location::write_direction(src.get_relative_dir(dst,mode));
 	}
-	catch(const invalid_variable_info_exception&)
+	catch(const invalid_variablename_exception&)
 	{
 		ERR_NG << "Cannot do [store_relative_dir] with invalid destination variable: " << variable << " with " << cfg.get_config().debug() << std::endl;
 	}
@@ -2242,11 +2254,11 @@ WML_HANDLER_FUNCTION(store_rotate_map_location, /*event_info*/, cfg)
 	
 	try
 	{
-		variable_info store = resources::gamedata->get_variable_access(variable, variable_info::TYPE_CONTAINER );
+		variable_access_create store = resources::gamedata->get_variable_access_write(variable);
 
 		dst.rotate_right_around_center(src,angle).write(store.as_container());
 	}
-	catch(const invalid_variable_info_exception&)
+	catch(const invalid_variablename_exception&)
 	{
 		ERR_NG << "Cannot do [store_rotate_map_location] with invalid destination variable: " << variable << " with " << cfg.get_config().debug() << std::endl;
 	}
@@ -2269,10 +2281,10 @@ WML_HANDLER_FUNCTION(store_time_of_day, /*event_info*/, cfg)
 	}
 	try
 	{
-		variable_info store = resources::gamedata->get_variable_access(variable, variable_info::TYPE_CONTAINER);
+		variable_access_create store = resources::gamedata->get_variable_access_write(variable);
 		tod.write(store.as_container());
 	}
-	catch(const invalid_variable_info_exception&)
+	catch(const invalid_variablename_exception&)
 	{
 		ERR_NG << "Found invalid variablename " << variable << " in [store_time_of_day] with " << cfg.get_config().debug() << "\n";
 	}
@@ -2447,7 +2459,7 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 			if (const config::attribute_value *v = parsed_cfg.get("x")) var["x"] = *v;
 			if (const config::attribute_value *v = parsed_cfg.get("y")) var["y"] = *v;
 		}
-		catch(const invalid_variable_info_exception&)
+		catch(const invalid_variablename_exception&)
 		{
 			ERR_NG << "Cannot do [unit] with invalid to_variable:  " << to_variable << " with " << cfg.get_config().debug() << std::endl;
 		}
@@ -2574,7 +2586,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 		}
 
 	} 
-	catch (const invalid_variable_info_exception&)
+	catch (const invalid_variablename_exception&)
 	{
 		ERR_NG << "invlid variable name in unstore_unit" << std::endl;
 	}

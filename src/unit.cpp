@@ -1651,9 +1651,9 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		// Allow filtering by searching a stored variable of units
 		try
 		{
-			variable_info vi = resources::gamedata->get_variable_access_readonly(cfg_find_in, variable_info::TYPE_CONTAINER);
+			variable_access_const vi = resources::gamedata->get_variable_access_read(cfg_find_in);
 			bool found_id = false;
-			BOOST_FOREACH(const config& c, vi.as_array_throw())
+			BOOST_FOREACH(const config& c, vi.as_array())
 			{
 				if(c["id"] == id_)
 					found_id = true;
@@ -1663,7 +1663,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 				return false;
 			}
 		}
-		catch(const invalid_variable_info_exception&)
+		catch(const invalid_variablename_exception&)
 		{
 			return false;
 		}

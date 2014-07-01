@@ -128,13 +128,11 @@ config vconfig::get_parsed_config() const
 				throw recursion_error("vconfig::get_parsed_config() infinite recursion detected, aborting");
 			}
 			try {
-				variable_info vinfo = resources::gamedata->get_variable_access_readonly(vname, variable_info::TYPE_CONTAINER);
-				if(!vinfo.get_is_valid()) {
-					res.add_child(name); //add empty tag
-				} else if(vinfo.is_explicit_index()) {
+				variable_access_const vinfo = resources::gamedata->get_variable_access_read(vname);
+				if(vinfo.explicit_index()) {
 					res.add_child(name, vconfig(vinfo.as_container()).get_parsed_config());
 				} else {
-					variable_info::array_range range = vinfo.as_array();
+					config::const_child_itors range = vinfo.as_array();
 					if(range.first == range.second) {
 						res.add_child(name); //add empty tag
 					}
@@ -142,9 +140,8 @@ config vconfig::get_parsed_config() const
 						res.add_child(name, vconfig(*range.first++).get_parsed_config());
 					}
 				}
-				vconfig_recursion.erase(vname);
 			} 
-			catch(const invalid_variable_info_exception&)
+			catch(const invalid_variablename_exception&)
 			{
 				res.add_child(name);
 			}
@@ -158,6 +155,7 @@ config vconfig::get_parsed_config() const
 					throw;
 				}
 			}
+			vconfig_recursion.erase(vname);
 		} else {
 			res.add_child(child.key, vconfig(child.cfg).get_parsed_config());
 		}
@@ -179,14 +177,11 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 			{
 				try
 				{
-					variable_info vinfo = resources::gamedata->get_variable_access_readonly(insert_cfg["variable"], variable_info::TYPE_CONTAINER);
-					if(!vinfo.get_is_valid()) {
-						//push back an empty tag
-						res.push_back(empty_vconfig());
-					} else if(vinfo.is_explicit_index()) {
+					variable_access_const vinfo = resources::gamedata->get_variable_access_read(insert_cfg["variable"]);
+					if(vinfo.explicit_index()) {
 						res.push_back(vconfig(vinfo.as_container(), true));
 					} else {
-						variable_info::array_range range = vinfo.as_array();
+						config::const_child_itors range = vinfo.as_array();
 						if(range.first == range.second) {
 							//push back an empty tag
 							res.push_back(empty_vconfig());
@@ -197,7 +192,7 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 						}
 					}
 				}
-				catch(const invalid_variable_info_exception&)
+				catch(const invalid_variablename_exception&)
 				{
 					res.push_back(empty_vconfig());
 				}
@@ -224,14 +219,10 @@ vconfig vconfig::child(const std::string& key) const
 		{
 			try
 			{
-				variable_info vinfo = resources::gamedata->get_variable_access_readonly(insert_cfg["variable"], variable_info::TYPE_CONTAINER);
-				if(!vinfo.get_is_valid()) 
-				{
-					return empty_vconfig();
-				}
+				variable_access_const vinfo = resources::gamedata->get_variable_access_read(insert_cfg["variable"]);
 				return vconfig(vinfo.as_container(), true);
 			}
-			catch(const invalid_variable_info_exception&)
+			catch(const invalid_variablename_exception&)
 			{
 				return empty_vconfig();
 			}
@@ -300,16 +291,16 @@ vconfig::all_children_iterator& vconfig::all_children_iterator::operator++()
 	{
 		try
 		{
-			variable_info vinfo = resources::gamedata->get_variable_access_readonly(vconfig(i_->cfg)["variable"], variable_info::TYPE_CONTAINER);
-			if(vinfo.get_is_valid() && !vinfo.is_explicit_index()) {
-				variable_info::array_range range = vinfo.as_array();
+			variable_access_const vinfo = resources::gamedata->get_variable_access_read(vconfig(i_->cfg)["variable"]);
+			if(!vinfo.explicit_index()) {
+				config::const_child_itors range = vinfo.as_array();
 				if (++inner_index_ < std::distance(range.first, range.second)) {
 					return *this;
 				}
 				inner_index_ = 0;
 			}
 		}
-		catch(const invalid_variable_info_exception&)
+		catch(const invalid_variablename_exception&)
 		{
 		}
 	}
@@ -351,18 +342,16 @@ vconfig vconfig::all_children_iterator::get_child() const
 	{
 		try
 		{
-			variable_info vinfo = resources::gamedata->get_variable_access_readonly(vconfig(i_->cfg)["variable"], variable_info::TYPE_CONTAINER);
-			if(!vinfo.get_is_valid()) {
-				return empty_vconfig();
-			} else if(inner_index_ == 0) {
+			variable_access_const vinfo = resources::gamedata->get_variable_access_read(vconfig(i_->cfg)["variable"]);
+			if(inner_index_ == 0) {
 				return vconfig(vinfo.as_container(), true);
 			} else {
-				variable_info::array_range r = vinfo.as_array();
+				config::const_child_itors r = vinfo.as_array();
 				std::advance(r.first, inner_index_);
 				return vconfig(*r.first, true);
 			}
 		}
-		catch(const invalid_variable_info_exception&)
+		catch(const invalid_variablename_exception&)
 		{
 			return empty_vconfig();
 		}
@@ -407,7 +396,7 @@ config &scoped_wml_variable::store(const config &var_value)
 		activated_ = true;
 		return res;
 	}
-	catch(const invalid_variable_info_exception&)
+	catch(const invalid_variablename_exception&)
 	{
 		assert(false && "invalid variable name of autostored varaible");
 		throw "assertion ignored";
@@ -425,7 +414,7 @@ scoped_wml_variable::~scoped_wml_variable()
 			{
 				resources::gamedata->add_variable_cfg(var_name_, i);
 			}
-			catch(const invalid_variable_info_exception&)
+			catch(const invalid_variablename_exception&)
 			{
 			}
 		}

@@ -309,7 +309,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child,  /*use_undo*/, /*show*/, erro
 		{
 			resources::gamedata->set_variable(v["name"], v["value"]);
 		}
-		catch(const invalid_variable_info_exception&)
+		catch(const invalid_variablename_exception&)
 		{
 			error_handler("invalid variable name", false);
 		}

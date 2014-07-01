@@ -49,6 +49,7 @@
 #include "unit.hpp"
 #include "unit_map.hpp"
 
+#include <boost/assign.hpp>
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
 
@@ -110,16 +111,16 @@ game_data::game_data(const game_data& data)
 //throws
 config::attribute_value &game_data::get_variable(const std::string& key)
 {
-	return get_variable_access(key, variable_info::TYPE_SCALAR).as_scalar();
+	return get_variable_access_write(key).as_scalar();
 }
 
 config::attribute_value game_data::get_variable_const(const std::string &key) const
 {
 	try
 	{
-		return get_variable_access_readonly(key, variable_info::TYPE_SCALAR).as_scalar_const();
+		return get_variable_access_read(key).as_scalar();
 	}
-	catch(const invalid_variable_info_exception&)
+	catch(const invalid_variablename_exception&)
 	{
 		return config::attribute_value();
 	}
@@ -127,7 +128,7 @@ config::attribute_value game_data::get_variable_const(const std::string &key) co
 //throws
 config& game_data::get_variable_cfg(const std::string& key)
 {
-	return get_variable_access(key, variable_info::TYPE_CONTAINER).as_container();
+	return get_variable_access_write(key).as_container();
 }
 
 void game_data::set_variable(const std::string& key, const t_string& value)
@@ -136,7 +137,7 @@ void game_data::set_variable(const std::string& key, const t_string& value)
 	{
 		get_variable(key) = value;
 	}
-	catch(const invalid_variable_info_exception&)
+	catch(const invalid_variablename_exception&)
 	{
 		ERR_NG << "variable " << key << "cannot be set to " << value << std::endl;
 	}
@@ -144,16 +145,17 @@ void game_data::set_variable(const std::string& key, const t_string& value)
 //throws
 config& game_data::add_variable_cfg(const std::string& key, const config& value)
 {
-	return get_variable_access(key, variable_info::TYPE_ARRAY).add_child(value);
+	std::vector<config> temp = boost::assign::list_of(value);
+	return *get_variable_access_write(key).append_array(temp).first;
 }
 
 void game_data::clear_variable_cfg(const std::string& varname)
 {
 	try
 	{
-		get_variable_access_noadd(varname, variable_info::TYPE_CONTAINER).clear(true);
+		get_variable_access_throw(varname).clear(true);
 	}
-	catch(const invalid_variable_info_exception&)
+	catch(const invalid_variablename_exception&)
 	{
 		//variable doesn't exist, nothing to delete
 	}
@@ -161,7 +163,14 @@ void game_data::clear_variable_cfg(const std::string& varname)
 
 void game_data::clear_variable(const std::string& varname)
 {
-	get_variable_access_noadd(varname).clear(false);
+	try
+	{
+		get_variable_access_throw(varname).clear(false);
+	}
+	catch(const invalid_variablename_exception&)
+	{
+		//variable doesn't exist, nothing to delete
+	}
 }
 
 void game_data::write_snapshot(config& cfg) const {

@@ -78,7 +78,7 @@ static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 			resources::gamedata->set_variable(local,"");
 		}
 	}
-	catch(const invalid_variable_info_exception&)
+	catch(const invalid_variablename_exception&)
 	{
 		ERR_PERSIST << "cannot store global variable into invalid variablename " << local << std::endl;
 	}
@@ -105,7 +105,7 @@ static void set_global_variable(persist_context &ctx, const vconfig &pcfg)
 			{
 				val = pack_scalar(global,resources::gamedata->get_variable(local));
 			}
-			catch(const invalid_variable_info_exception&)
+			catch(const invalid_variablename_exception&)
 			{
 				val = config();
 			}

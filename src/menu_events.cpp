@@ -3095,7 +3095,7 @@ void console_handler::do_set_var() {
 		{
 			resources::gamedata->set_variable(name,value);
 		}
-		catch(const invalid_variable_info_exception&)
+		catch(const invalid_variablename_exception&)
 		{
 			command_failed(_("Variable not found"));
 		}

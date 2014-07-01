@@ -18,307 +18,607 @@
  *  @file
  *  Manage WML-variables.
  */
-#include "global.hpp"
 #include "variable_info.hpp"
+using namespace variable_info_3_detail;
 
-#include "log.hpp"
-#include "game_config.hpp"
-#include "util.hpp"
+///explicit instantiations
+template class variable_info_3<vit_const>;
+template class variable_info_3<vit_create_if_not_existent>;
+template class variable_info_3<vit_throw_if_not_existent>;
+template class non_const_variable_info_3<vit_create_if_not_existent>;
+template class non_const_variable_info_3<vit_throw_if_not_existent>;
 
-#include <boost/foreach.hpp>
-
-static lg::log_domain log_engine("engine");
-#define LOG_NG LOG_STREAM(info, log_engine)
-#define WRN_NG LOG_STREAM(warn, log_engine)
-#define ERR_NG LOG_STREAM(err, log_engine)
-
-namespace {
-	config temporaries;// lengths of arrays, etc.
-}
-
-
-config& variable_info::get_temporaries() { return temporaries; }
-
-variable_info::variable_info(config& source, const std::string& varname,
-		bool force_valid, TYPE validation_type) :
-	vartype(validation_type),
-	is_valid(false),
-	key(),
-	original_key(varname),
-	explicit_index(false),
-	index(0),
-	vars(NULL)
+/// general helpers
+namespace
 {
-	vars = &source;//&resources::gamedata->variables_;
-	key = varname;
-	std::string::const_iterator itor = std::find(key.begin(),key.end(),'.');
-	int dot_index = key.find('.');
-
-	bool force_length = false;
-	// example varname = "unit_store.modifications.trait[0]"
-	while(itor != key.end()) { // subvar access
-		std::string element=key.substr(0,dot_index);
-		key = key.substr(dot_index+1);
-
-		size_t inner_index = 0;
-		const std::string::iterator index_start = std::find(element.begin(),element.end(),'[');
-		const bool inner_explicit_index = index_start != element.end();
-		if(inner_explicit_index) {
-			const std::string::iterator index_end = std::find(index_start,element.end(),']');
-			const std::string index_str(index_start+1,index_end);
-			inner_index = static_cast<size_t>(lexical_cast_default<int>(index_str));
-			if(inner_index > game_config::max_loop) {
-				ERR_NG << "variable_info: index greater than " << game_config::max_loop
-					   << ", truncated\n";
-				inner_index = game_config::max_loop;
-			}
-			element = std::string(element.begin(),index_start);
-		}
-
-		size_t size = vars->child_count(element);
-		if(size <= inner_index) {
-			if(force_valid) {
-				// Add elements to the array until the requested size is attained
-				if(inner_explicit_index || key != "length") {
-					for(; size <= inner_index; ++size) {
-						vars->add_child(element);
-					}
-				}
-			} else if(inner_explicit_index) {
-				WRN_NG << "variable_info: invalid WML array index, "
-					<< varname << std::endl;
-				return;
-			} else if(varname.length() >= 7 && varname.substr(varname.length()-7) == ".length") {
-				// require '.' to avoid matching suffixes -> requires varname over key to always find length
-				// return length 0 for non-existent WML array (handled below)
-				force_length = true;
-			} else {
-				WRN_NG << "variable_info: retrieving member of non-existent WML container, "
-				<< varname << std::endl;
-				return;
-			}
-		}
-		if((!inner_explicit_index && key == "length") || force_length) {
-			switch(vartype) {
-			case variable_info::TYPE_ARRAY:
-			case variable_info::TYPE_CONTAINER:
-				WRN_NG << "variable_info: using reserved WML variable as wrong type, "
-					<< varname << std::endl;
-				is_valid = force_valid || temporaries.child(varname);
-				break;
-			case variable_info::TYPE_SCALAR:
-			default:
-				// Store the length of the array as a temporary variable
-				temporaries[varname] = int(size);
-				is_valid = true;
-				break;
-			}
-			key = varname;
-			vars = &temporaries;
-			return;
-		}
-
-		vars = &vars->child(element, inner_index);
-		itor = std::find(key.begin(),key.end(),'.');
-		dot_index = key.find('.');
-	} // end subvar access
-
-	const std::string::iterator index_start = std::find(key.begin(),key.end(),'[');
-	explicit_index = index_start != key.end();
-	if(explicit_index) {
-		const std::string::iterator index_end = std::find(index_start,key.end(),']');
-		const std::string index_str(index_start+1,index_end);
-		index = static_cast<size_t>(lexical_cast_default<int>(index_str));
-		if(index > game_config::max_loop) {
-			ERR_NG << "variable_info: index greater than " << game_config::max_loop
-				   << ", truncated\n";
-			index = game_config::max_loop;
-		}
-		key = std::string(key.begin(),index_start);
-		size_t size = vars->child_count(key);
-		if(size <= index) {
-			if(!force_valid) {
-				WRN_NG << "variable_info: invalid WML array index, " << varname << std::endl;
-				return;
-			}
-			for(; size <= index; ++size) {
-				vars->add_child(key);
-			}
-		}
-		switch(vartype) {
-		case variable_info::TYPE_ARRAY:
-			vars = &vars->child(key, index);
-			key = "__array";
-			is_valid = force_valid || vars->child(key);
-			break;
-		case variable_info::TYPE_SCALAR:
-			vars = &vars->child(key, index);
-			key = "__value";
-			is_valid = force_valid || vars->has_attribute(key);
-			break;
-		case variable_info::TYPE_CONTAINER:
-		case variable_info::TYPE_UNSPECIFIED:
-		default:
-			is_valid = true;
-			return;
-		}
-		if (force_valid) {
-			WRN_NG << "variable_info: using explicitly indexed "
-				"container as wrong WML type, " << varname << '\n';
-		}
-		explicit_index = false;
-		index = 0;
-	} else {
-		// Final variable is not an explicit index [...]
-		switch(vartype) {
-		case variable_info::TYPE_ARRAY:
-		case variable_info::TYPE_CONTAINER:
-			is_valid = force_valid || vars->child(key);
-			break;
-		case variable_info::TYPE_SCALAR:
-			is_valid = force_valid || vars->has_attribute(key);
-			break;
-		case variable_info::TYPE_UNSPECIFIED:
-		default:
-			is_valid = true;
-			break;
-		}
-	}
-}
-
-config::attribute_value &variable_info::as_scalar()
-{
-	assert(is_valid);
-	return (*vars)[key];
-}
-
-config::attribute_value variable_info::as_scalar_const()
-{
-
-	config::attribute_value* r;
-	if(is_valid)
+	void resolve_negative_value(int size, int& val)
 	{
-		r = &as_scalar();
-	}
-	else
-	{
-		r = &temporaries[this->original_key];
-		if (original_key.size() > 7 && original_key.substr(original_key.size() - 7) == ".length") {
-			// length is a special attribute, so guarantee its correctness
-			*r = 0;
-		}
-	}
-	return *r;
-	
-}
-
-config& variable_info::as_container() {
-	assert(is_valid);
-	if(explicit_index) {
-		// Empty data for explicit index was already created if it was needed
-		return vars->child(key, index);
-	}
-	if (config &temp = vars->child(key)) {
-		// The container exists, index not specified, return index 0
-		return temp;
-	}
-	// Add empty data for the new variable, since it does not exist yet
-	return vars->add_child(key);
-}
-
-variable_info::array_range variable_info::as_array() {
-	assert(is_valid);
-	return vars->child_range(key);
-}
-
-void variable_info::set_range(config& data, std::string mode)
-{
-
-	if(mode == "extend") {
-		mode = "append";
-	} else if(mode != "append" && mode != "merge") {
-		if(mode == "insert") {
-			size_t child_count = this->vars->child_count(this->key);
-			if(this->index >= child_count) {
-				while(this->index >= ++child_count) {
-					//inserting past the end requires empty data
-					this->vars->append(config(this->key));
-				}
-				//inserting at the end is handled by an append
-				mode = "append";
-			}
-		} else {
-			mode = "replace";
-		}
-	}
-
-
-	if(mode == "replace")
-	{
-		if(this->explicit_index) {
-			this->vars->remove_child(this->key, this->index);
-		} else {
-			this->vars->clear_children(this->key);
-		}
-	}
-	if(!data.empty())
-	{
-		if(mode == "merge")
+		if(val < 0)
 		{
-			if(this->explicit_index) {
-				// merging multiple children into a single explicit index
-				// requires that they first be merged with each other
-				data.merge_children(this->key);
-				this->as_container().merge_with(data.child(this->key));
-			} else {
-				this->vars->merge_with(data);
-			}
-		} else if(mode == "insert" || this->explicit_index) {
-			BOOST_FOREACH(const config &child, data.child_range(this->key))
-			{
-				this->vars->add_child_at(this->key, child, this->index++);
-			}
-		} else {
-			this->vars->append(data);
+			val = size + val;
+		}
+		//val is still < 0? We don't accept!
+		if(val < 0)
+		{
+			throw invalid_variablename_exception();
 		}
 	}
-}
-
-void variable_info::clear(bool only_tables)
-{
-	if(is_valid)
+	/// Checks if name is a valid key for an attribute_value/child
+	void check_valid_name(const std::string& name)
 	{
-		if(this->explicit_index) {
-			this->vars->remove_child(this->key, this->index);
-		} else {
-			this->vars->clear_children(this->key);
-			if(!only_tables)
-			{
-				this->vars->remove_attribute(this->key);
-			}
+		if(name.empty())
+		{
+			throw invalid_variablename_exception();
 		}
 	}
+
+	template<const variable_info_3_type vit>
+	typename maybe_const<vit, config>::type& get_child_at(typename maybe_const<vit, config>::type& cfg, const std::string& key, int index = 0);
+
+	template<>
+	config& get_child_at<vit_create_if_not_existent>(config& cfg, const std::string& key, int index)
+	{
+		assert(index >= 0);
+		check_valid_name(key);
+		// the 'create_if_not_existent' logic.
+		while(static_cast<int>(cfg.child_count(key)) <= index)
+		{
+			cfg.add_child(key);
+		}
+		return cfg.child(key, index);
+	}
+	
+	const config empty_const_cfg;
+	template<>
+	const config& get_child_at<vit_const>(const config& cfg, const std::string& key, int index)
+	{
+		assert(index >= 0);
+		check_valid_name(key);
+		//cfg.child_or_empty does not support index parameter
+		if(const config& child = cfg.child(key, index))
+		{
+			return child;
+		}
+		else
+		{
+			return empty_const_cfg;
+		}
+	}
+
+	template<>
+	config& get_child_at<vit_throw_if_not_existent>(config& cfg, const std::string& key, int index)
+	{
+		assert(index >= 0);
+		check_valid_name(key);
+		if(config& child = cfg.child(key, index))
+		{
+			return child;
+		}
+		else
+		{
+			throw invalid_variablename_exception();
+		}
+	}
+
+	template <typename TVal>
+	config::attribute_value attribute_value_of(const TVal& val)
+	{
+		config::attribute_value v;
+		v = val;
+		return v;
+	}
+
+	template <typename TVisitor>
+	//typename TVisitor::result_type apply_visitor(TVisitor& visitor, variable_info_3_state<vit>& state)
+	typename TVisitor::result_type apply_visitor(TVisitor& visitor, typename TVisitor::param_type state)
+	{
+		switch(state.type_)
+		{
+		case state_start:
+			return visitor.from_start(state);
+		case state_named:
+			return visitor.from_named(state);
+		case state_indexed:
+			return visitor.from_indexed(state);
+		case state_temporary:
+			return visitor.from_temporary(state);
+		default:
+			throw std::exception();
+		}
+	};
+
+	template <const variable_info_3_type vit, typename TResult>
+	class variable_info_visitor
+	{
+	public:
+		typedef TResult result_type;
+		typedef variable_info_3_state<vit>& param_type;
+#define DEFAULTHANDLER(name) result_type name(param_type) { throw invalid_variablename_exception(); }
+		DEFAULTHANDLER(from_start)
+		DEFAULTHANDLER(from_named)
+		DEFAULTHANDLER(from_indexed)
+		DEFAULTHANDLER(from_temporary)
+#undef DEFAULTHANDLER
+	};
+
+	template <const variable_info_3_type vit, typename TResult>
+	class variable_info_visitor_const
+	{
+	public:
+		typedef TResult result_type;
+		typedef const variable_info_3_state<vit>& param_type;
+#define DEFAULTHANDLER(name) result_type name(param_type) { throw invalid_variablename_exception(); }
+		DEFAULTHANDLER(from_start)
+		DEFAULTHANDLER(from_named)
+		DEFAULTHANDLER(from_indexed)
+		DEFAULTHANDLER(from_temporary)
+#undef DEFAULTHANDLER
+	};
+}
+/// calculate_value() helpers
+namespace
+{
+	/// Parses a ']' terminated string.
+	/// This is a important optimisation of lexical_cast_default
+	int parse_index(const char* index_str)
+	{
+		char* endptr;
+		int res = strtol(index_str, &endptr, 10);
+
+		if (*endptr != ']') {
+			return 0;//default
+		} else {
+			return res;
+		}
+	}
+
+	template<const variable_info_3_type vit>
+	class get_variable_key_visitor
+		: public variable_info_visitor<vit, void>
+	{
+	public:
+		get_variable_key_visitor(const std::string& key) : key_(key) {}
+
+		void from_config(typename maybe_const<vit, config>::type & cfg, param_type state) const
+		{
+			state.type_ = state_named;
+			state.key_ = key_;
+			state.child_ = &cfg;
+		}
+		void from_named(param_type state) const 
+		{			
+			if(key_ == "length")
+			{
+				state.temp_val_ = state.child_->child_count(state.key_);
+				state.type_ = state_temporary;
+				return;
+			}
+			else
+			{
+				return from_config(get_child_at<vit>(*state.child_, state.key_, 0), state);
+			}
+		}
+		void from_start(param_type state) const 
+		{
+			return from_config(*state.child_, state);
+		}
+		void from_indexed(param_type state) const 
+		{
+			return from_config(get_child_at<vit>(*state.child_, state.key_, state.index_), state);
+		}
+	private:
+		const std::string& key_;
+	};
+
+	template<const variable_info_3_type vit>
+	class get_variable_index_visitor
+		: public variable_info_visitor<vit, void>
+	{
+	public:
+		get_variable_index_visitor(int n) : n_(n) {}
+		result_type from_named(param_type state) const 
+		{
+			state.index_ = n_;
+			resolve_negative_value(state.child_->child_count(state.key_), state.index_);
+			state.type_ = state_indexed;
+		}
+	private:
+		const int n_;
+	};
+}
+/// as...  visitors
+namespace
+{
+	///tries to convert it to an (maybe const) attribute value
+	template<const variable_info_3_type vit>
+	class as_skalar_visitor
+		: public variable_info_visitor_const<vit, typename maybe_const<vit, config::attribute_value>::type&>
+	{
+	public:
+		result_type from_named(param_type state) const 
+		{
+			check_valid_name(state.key_);
+			return (*state.child_)[state.key_];
+		}
+		result_type from_temporary(param_type state) const;
+	};
+	/// this type of value like '.length' are readonly values so we only support them for reading.
+	/// espacily we don't want to return non const references.
+	template<>
+	const config::attribute_value & as_skalar_visitor<vit_const>::from_temporary(param_type state) const
+	{
+		return state.temp_val_;
+	}
+	template<>
+	config::attribute_value & as_skalar_visitor<vit_create_if_not_existent>::from_temporary(param_type) const
+	{
+		throw invalid_variablename_exception();
+	}
+	template<>
+	config::attribute_value & as_skalar_visitor<vit_throw_if_not_existent>::from_temporary(param_type) const
+	{
+		throw invalid_variablename_exception();
+	}
+
+	///tries to convert to a (const) config&, unlike range based operation this also supports 'variable_child'
+	template<const variable_info_3_type vit>
+	class as_container_visitor
+		: public variable_info_visitor_const<vit, typename maybe_const<vit, config>::type&>
+	{
+	public:
+		result_type from_named(param_type state) const 
+		{ 
+			return get_child_at<vit>(*state.child_, state.key_, 0);
+		}
+		result_type from_start(param_type state) const 
+		{ 
+			return *state.child_;
+		}
+		result_type from_indexed(param_type state) const 
+		{ 
+			return get_child_at<vit>(*state.child_, state.key_, state.index_);
+		}
+	};
+}
+/// range_based operations
+namespace {
+	
+	template<const variable_info_3_type vit, typename THandler>
+	class as_range_visitor_base
+		: public variable_info_visitor_const<vit, typename THandler::result_type>
+	{
+	public:
+		as_range_visitor_base(const THandler& handler) : handler_(handler) {}
+		result_type from_named(param_type state) const
+		{
+			return handler_(*state.child_, state.key_, 0, state.child_->child_count(state.key_));
+		}
+		result_type from_indexed(param_type state) const 
+		{
+			//Ensure we have a config at the given explicit position.
+			get_child_at<vit>(*state.child_, state.key_, state.index_);
+			return handler_(*state.child_, state.key_, state.index_, state.index_ + 1);
+		}
+	private:
+		const THandler& handler_;
+	};
+
+	template<const variable_info_3_type vit>
+	class variable_as_array_h
+	{
+	public:
+		typedef typename maybe_const<vit, config::child_itors>::type result_type;
+
+		result_type operator()(typename maybe_const<vit, config>::type& child, const std::string& key, int startindex, int endindex) const
+		{
+			result_type r = child.child_range(key);
+			std::advance(r.first, startindex);
+			r.second = r.first;
+			std::advance(r.second, endindex - startindex);
+			return r;
+		}
+	};
+
+	/**
+		replaces the child in [startindex, endindex) with 'source'
+		'insert' and 'append' are subcases of this.
+	*/
+	class replace_range_h
+	{
+	public:
+		typedef config::child_itors result_type;
+		replace_range_h(std::vector<config>& source) : datasource_(source) { }
+		result_type operator()(config& child, const std::string& key, int startindex, int endindex) const
+		{ 
+			int size_diff = datasource_.size() - (endindex - startindex);
+			//remove configs first
+			while(size_diff < 0)
+			{
+				child.remove_child(key, startindex);
+				++size_diff;
+			}
+			size_t index = 0;
+			for(index = 0; index < static_cast<size_t>(size_diff); ++index)
+			{
+				child.add_child_at(key, config(), startindex + index).swap(datasource_[index]);
+			}
+			for(; index < datasource_.size(); ++index)
+			{
+				child.child(key, startindex + index).swap(datasource_[index]);
+			}
+			/// variable_as_array_h only uses the  template argument to determine constnedd which is always false here
+			return variable_as_array_h<vit_throw_if_not_existent>()(child, key, startindex, datasource_.size());
+		}
+	private:
+		std::vector<config>& datasource_;
+	};
+
+	class insert_range_h : replace_range_h
+	{
+	public:
+		typedef config::child_itors result_type;
+		insert_range_h(std::vector<config>& source) : replace_range_h(source) { }
+
+		result_type operator()(config& child, const std::string& key, int startindex, int /*endindex*/) const
+		{
+			//insert == replace empty range with data.
+			return replace_range_h::operator()(child, key, startindex, startindex);
+		}
+	};
+
+	class append_range_h : insert_range_h
+	{
+	public:
+		typedef config::child_itors result_type;
+		append_range_h(std::vector<config>& source) : insert_range_h(source) { }
+		result_type operator()(config& child, const std::string& key, int /*startindex*/, int /*endindex*/) const
+		{
+			//append == insert at end.
+			int inser_pos = child.child_count(key);
+			return insert_range_h::operator()(child, key, inser_pos, inser_pos /*ignored by insert_range_h*/);
+		}
+	};
+
+	class merge_range_h
+	{
+	public:
+		typedef void result_type;
+		merge_range_h(std::vector<config>& source) : datasource_(source) { }
+		void operator()(config& child, const std::string& key, int startindex, int /*endindex*/) const
+		{
+			//the merge_with function accepts only configs so we convert vector -> config.
+			config datatemp;
+			//Add emtpy config to 'shift' the merge to startindex
+			for(int index = 0; index < startindex; ++index)
+			{
+				datatemp.add_child(key);
+			}
+			//move datasource_ -> datatemp
+			for(size_t index = 0; index < datasource_.size(); ++index)
+			{
+				datatemp.add_child(key).swap(datasource_[index]);
+			}
+			child.merge_with(datatemp);
+		}
+	private:
+		std::vector<config>& datasource_;
+	};
+}//annonymous namespace end based operations
+/// misc
+namespace
+{
+
+	template<const variable_info_3_type vit>
+	class clear_value_visitor
+		: public variable_info_visitor_const<vit, void>
+	{
+	public:
+		clear_value_visitor(bool only_tables) : only_tables_(only_tables) {}
+		void from_named(param_type state) const 
+		{
+			if(!only_tables_)
+			{
+				state.child_->remove_attribute(state.key_);
+			}
+			state.child_->clear_children(state.key_);
+		}
+		void from_indexed(param_type state) const 
+		{ 
+			state.child_->remove_child(state.key_, state.index_);
+		}
+	private:
+		bool only_tables_;
+	};
+
+	template<const variable_info_3_type vit>
+	class exists_as_container_visitor
+		: public variable_info_visitor_const<vit, bool>
+	{
+	public:
+		result_type from_named(param_type state) const 
+		{
+			return state.child_->has_child(state.key_);
+		}
+		result_type from_indexed(param_type state) const 
+		{
+			return state.child_->child_count(state.key_) > static_cast<size_t>(state.index_);
+		}
+		result_type from_start(param_type) const 
+		{
+			return true;
+		}
+		result_type from_temporary(param_type) const 
+		{
+			return false;
+		}
+	};
 }
 
-config& variable_info::add_child(const config& value)
+template<const variable_info_3_type vit>
+variable_info_3<vit>::variable_info_3(const std::string& varname, t_config& vars)
+	: name_(varname)
+	, state_(vars)
+	, valid_(true)
 {
-	return this->vars->add_child(this->key, value);
+	try
+	{
+		calculate_value();
+	}
+	catch(const invalid_variablename_exception&)
+	{
+		valid_ = false;
+	}
 }
 
-variable_info::array_range variable_info::as_array_throw()
+template<const variable_info_3_type vit>
+variable_info_3<vit>::~variable_info_3()
 {
-	if(!is_valid)
-	{
-		throw invalid_variable_info_exception();
-	}
-	array_range r = vars->child_range(key);
+}
 
-	if(explicit_index)
+template<const variable_info_3_type vit>
+void variable_info_3<vit>::calculate_value()
+{
+	size_t index1 = 0, index2 = 0; 
+	char last_char = '.';
+	while((index2 = this->name_.find_first_of(".[]", index1)) != std::string::npos)
 	{
-		//return a range that only contains the one element 
-		std::advance(r.first, this->index);
-		r.second = r.first;
-		++r.second;;
+		last_char = this->name_[index2];
+		{
+			switch(last_char)
+			{
+			case '.':
+			case '[':
+				// '.', '[' mark the end of a string key.
+				// the result is oviously that '.' and '[' are  
+				// treated equally so 'aaa.9].bbbb[zzz.uu.7]' 
+				// is interpreted as  'aaa[9].bbbb.zzz.uu[7]'
+				// use is_valid_variable function for stricter variablename checking.
+				apply_visitor(get_variable_key_visitor<vit>(this->name_.substr(index1, index2-index1)), state_);
+				break;
+			case ']':
+				// ']' marks the end of an integer key.
+				int index = parse_index(&name_[index1]);
+				//val = val.apply_visitor(get_variable_index_visitor<vit>(index));
+				apply_visitor(get_variable_index_visitor<vit>(index), state_);
+				//after ']' we always expect a '.' or the end of the string
+				//ignore the next char which is a '.'
+				index2++;
+				if(index2 < name_.length() && name_[index2] != '.')
+				{
+					throw invalid_variablename_exception();
+				}
+				break;
+			}
+		}
+		index1 = index2 + 1;
 	}
-	return r;
+	if(index1 != this->name_.length() + 1)
+	{
+		//std::cerr << "index1=" << index1 << " length=" << this->name_.length() << "\n";
+		// the string ended not with ']'
+		apply_visitor(get_variable_key_visitor<vit>(this->name_.substr(index1)), state_);
+	}
+}
+
+template<const variable_info_3_type vit>
+bool variable_info_3<vit>::explicit_index() const
+{
+	throw_on_invalid();
+	return state_.type_ == state_start || state_.type_ == state_indexed;
+}
+
+template<const variable_info_3_type vit>
+typename maybe_const<vit, config::attribute_value>::type& variable_info_3<vit>::as_scalar() const
+{
+	throw_on_invalid();
+	return apply_visitor(as_skalar_visitor<vit>(), state_);
+}
+
+template<const variable_info_3_type vit>
+typename maybe_const<vit, config>::type& variable_info_3<vit>::as_container() const
+{
+	throw_on_invalid();
+	return apply_visitor(as_container_visitor<vit>(), state_);
+}
+
+template<const variable_info_3_type vit>
+typename maybe_const<vit, config::child_itors>::type variable_info_3<vit>::as_array() const
+{
+	throw_on_invalid();
+	return apply_visitor(as_range_visitor_base<vit,variable_as_array_h<vit>>(variable_as_array_h<vit>()), state_);
+}
+
+template<const variable_info_3_type vit>
+void variable_info_3<vit>::throw_on_invalid() const
+{
+	if(!valid_)
+	{
+		throw invalid_variablename_exception();
+	}
+}
+
+template<>
+std::string variable_info_3<vit_const>::get_error_message() const
+{
+	return "Cannot resolve variablename '" + this->name_ + "' for reading.";
+}
+
+template<>
+std::string variable_info_3<vit_create_if_not_existent>::get_error_message() const
+{
+	return "Cannot resolve variablename '" + this->name_ + "' for writing.";
+}
+
+template<>
+std::string variable_info_3<vit_throw_if_not_existent>::get_error_message() const
+{
+	return "Cannot resolve variablename '" + this->name_ + "' for writing without creating new childs.";
+}
+
+template<const variable_info_3_type vit>
+void non_const_variable_info_3<vit>::clear(bool only_tables) const
+{
+	throw_on_invalid();
+	return apply_visitor(clear_value_visitor<vit>(only_tables), state_);
+}
+
+template<const variable_info_3_type vit>
+config::child_itors non_const_variable_info_3<vit>::append_array(std::vector<config> childs) const
+{
+	throw_on_invalid();
+	return apply_visitor(as_range_visitor_base<vit,append_range_h>(append_range_h(childs)), state_);
+}
+
+template<const variable_info_3_type vit>
+config::child_itors non_const_variable_info_3<vit>::insert_array(std::vector<config> childs) const
+{
+	throw_on_invalid();
+	return apply_visitor(as_range_visitor_base<vit,insert_range_h>(insert_range_h(childs)), state_);
+}
+
+template<const variable_info_3_type vit>
+config::child_itors non_const_variable_info_3<vit>::replace_array(std::vector<config> childs) const
+{
+	throw_on_invalid();
+	return apply_visitor(as_range_visitor_base<vit,replace_range_h>(replace_range_h(childs)), state_);
+}
+
+template<const variable_info_3_type vit>
+void non_const_variable_info_3<vit>::merge_array(std::vector<config> childs) const
+{
+	throw_on_invalid();
+	apply_visitor(as_range_visitor_base<vit,merge_range_h>(merge_range_h(childs)), state_);
+}
+
+template<const variable_info_3_type vit>
+bool variable_info_3<vit>::exists_as_attribute() const
+{
+	throw_on_invalid();
+	return (state_.type_ == state_temporary) || ((state_.type_ == state_named) && state_.child_->has_attribute(state_.key_));
+}
+template<const variable_info_3_type vit>
+bool variable_info_3<vit>::exists_as_container() const
+{
+	throw_on_invalid();
+	return apply_visitor(exists_as_container_visitor<vit>(), state_);
 }

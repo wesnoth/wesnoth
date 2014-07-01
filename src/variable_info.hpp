@@ -15,65 +15,88 @@
 */
 
 /** Information on a WML variable. */
-
-#include "config.hpp"
 #include <string>
+#include "config.hpp"
+#include "variable_info_detail.hpp"
 
-struct invalid_variable_info_exception : public std::exception
+class invalid_variablename_exception : public std::exception
 {
 public:
+	invalid_variablename_exception() : std::exception() {}
 	const char* what() const throw()
 	{
-		return "invalid_variable_info_exception";
+		return "invalid_variablename_exception"; 
 	}
 };
 
-class variable_info
+template<const variable_info_3_detail::variable_info_3_type vit>
+class variable_info_3
 {
 public:
-	typedef config::child_itors array_range;
-
-	/**
-	 * TYPE: the correct variable type should be decided by the user of the info structure
-	 * Note: an Array can also be considered a Container, since index 0 will be used by default
-	 */
-	enum TYPE { TYPE_SCALAR,    //a Scalar variable resolves to a t_string attribute of *vars
-	            TYPE_ARRAY,     //an Array variable is a series of Containers
-	            TYPE_CONTAINER, //a Container is a specific index of an Array (contains Scalars)
-	            TYPE_UNSPECIFIED };
-
-	variable_info(config& source, const std::string& varname, bool force_valid=true,
-		TYPE validation_type=TYPE_UNSPECIFIED);
-	bool is_explicit_index() { return explicit_index; }
-	const std::string& get_final_key() { return key; }
-	bool get_is_valid() { return is_valid; }
-	/**
-	 * Results: after deciding the desired type, these methods can retrieve the result
-	 * Note: first you should force_valid or check is_valid, otherwise these may fail
-	 */
-	config::attribute_value &as_scalar();
-	config& as_container();
-	array_range as_array(); //range may be empty
-
-	static config& get_temporaries();
-
 	
-	array_range as_array_throw(); //range may be empty
+	typedef typename variable_info_3_detail::maybe_const<vit,config>::type t_config;
+	variable_info_3(const std::string& varname, t_config& vars);
+	~variable_info_3();
+	std::string get_error_message() const;
+	/// Doesn't throw
+	bool explicit_index() const;
+	/// might throw invalid_variablename_exception
+	bool exists_as_attribute() const;
+	/// might throw invalid_variablename_exception
+	bool exists_as_container() const;
 
-	config::attribute_value as_scalar_const();
-
-	void set_range(config& data, std::string mode);
-
-	void clear(bool only_tables);
-
-	config& add_child(const config& value);
-
-private:
-	TYPE vartype; //default is TYPE_UNSPECIFIED
-	bool is_valid;
-	std::string key; //the name of the internal attribute or child
-	const std::string original_key;
-	bool explicit_index; //true if query ended in [...] specifier
-	size_t index; //the index of the child
-	config *vars; //the containing node in game_data s variables
+	/**
+		might throw invalid_variablename_exception
+		NOTE: 
+			If vit == vit_const, then the lifime of the returned const attribute_value& might end with the lifetime of this object.
+	*/
+	typename variable_info_3_detail::maybe_const<vit, config::attribute_value>::type &as_scalar() const;
+	/// might throw invalid_variablename_exception
+	typename variable_info_3_detail::maybe_const<vit, config>::type & as_container() const;
+	/// might throw invalid_variablename_exception
+	typename variable_info_3_detail::maybe_const<vit, config::child_itors>::type as_array() const; //range may be empty
+	
+protected:
+	std::string name_;
+	variable_info_3_detail::variable_info_3_state<vit> state_;
+	void throw_on_invalid() const;
+	bool valid_;
+	void calculate_value();
 };
+
+/// Gives special variable changign meethods that cannot be done with vit == vit_const
+template<const variable_info_3_detail::variable_info_3_type vit>
+class non_const_variable_info_3 : public variable_info_3<vit>, variable_info_3_detail::enable_if_non_const<vit>::type
+{
+public:
+	non_const_variable_info_3(const std::string& name, config& game_vars) : variable_info_3<vit>(name, game_vars) {};
+	~non_const_variable_info_3() {}
+	/// clears the vale this object points to
+	/// if only_tables = true it will not clear attribute values.
+	void clear(bool only_tables = false) const;
+	/// the following 4 functions are used by [set_variables]
+	///     they destroy the passed vector. (make it empty).
+	/// return: the new appended range
+	config::child_itors append_array(std::vector<config> childs) const;
+	/// return: the new inserted range
+	config::child_itors insert_array(std::vector<config> childs) const;
+	/// return: the new range
+	config::child_itors replace_array(std::vector<config> childs) const;
+	/// merges
+	void merge_array(std::vector<config> childs) const;
+};
+
+
+/**
+	this variable accessor will create a childtable when resolving name if it doesnt exist yet.
+*/
+typedef non_const_variable_info_3<variable_info_3_detail::vit_create_if_not_existent> variable_access_create;
+/**
+	this variable accessor will throw an exception when trying to access a non existent table.
+	Note that the other types can throw too if name is invlid.
+*/
+typedef non_const_variable_info_3<variable_info_3_detail::vit_throw_if_not_existent>  variable_access_throw;
+/**
+	this variable accessor is takes a const reference and is guaranteed to not change the config.
+*/
+typedef variable_info_3<variable_info_3_detail::vit_const>                            variable_access_const;
