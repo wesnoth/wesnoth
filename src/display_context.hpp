@@ -55,6 +55,15 @@ public:
 	virtual const gamemap & map() const = 0;
 	virtual const unit_map & units() const = 0;
 
+	// Helper for is_visible_to_team
+
+	/**
+	 * Given a location and a side number, indicates whether an invisible unit of that side at that
+	 * location would be revealed (perhaps ambushed), based on what team side_num can see.
+	 * If see_all is true then the calculation ignores fog, and enemy ambushers.
+	 */
+	bool would_be_discovered(const map_location & loc, int side_num, bool see_all = true);
+
 	// Needed for reports
 
 	const unit * get_visible_unit(const map_location &loc, const team &current_team, bool see_all = false) const;

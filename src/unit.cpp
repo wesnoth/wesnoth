@@ -20,6 +20,7 @@
 #include "unit.hpp"
 #include "global.hpp"
 
+#include "display_context.hpp"
 #include "formula_string_utils.hpp"     // for vgettext
 #include "game_board.hpp"               // for game_board
 #include "game_data.hpp"
@@ -2012,31 +2013,7 @@ bool unit::invisible(const map_location& loc, bool see_all) const
 	static const std::string hides("hides");
 	bool is_inv = get_ability_bool(hides,loc);
 	if(is_inv){
-		const std::vector<team>& teams = *resources::teams;
-
-		map_location adjs[6];
-		get_adjacent_tiles(loc,adjs);
-
-		BOOST_FOREACH(const map_location &u_loc, adjs)
-		{
-			unit_map::iterator u_it = resources::units->find(u_loc);
-			if (!u_it.valid()) {
-				continue;
-			}
-			unit & u = *u_it;
-			if (teams[side_-1].is_enemy(u.side()) && !u.incapacitated()) {
-				// Enemy spotted in adjacent tiles, check if we can see him.
-				// Watch out to call invisible with see_all=true to avoid infinite recursive calls!
-				if(see_all) {
-					is_inv = false;
-					break;
-				} else if (!teams[side_-1].fogged(u_loc)
-				&& !u.invisible(u_loc, true)) {
-					is_inv = false;
-					break;
-				}
-			}
-		}
+		is_inv = (resources::gameboard ? !resources::gameboard->would_be_discovered(loc, side_,see_all) : true);
 	}
 
 	if(see_all) {

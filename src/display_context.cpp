@@ -22,6 +22,32 @@
 
 #include <boost/foreach.hpp>
 
+bool display_context::would_be_discovered(const map_location & loc, int side_num, bool see_all)
+{
+	map_location adjs[6];
+	get_adjacent_tiles(loc,adjs);
+
+	BOOST_FOREACH(const map_location &u_loc, adjs)
+	{
+		unit_map::const_iterator u_it = units().find(u_loc);
+		if (!u_it.valid()) {
+			continue;
+		}
+		const unit & u = *u_it;
+		if (teams()[side_num-1].is_enemy(u.side()) && !u.incapacitated()) {
+			// Enemy spotted in adjacent tiles, check if we can see him.
+			// Watch out to call invisible with see_all=true to avoid infinite recursive calls!
+			if(see_all) {
+				return true;
+			} else if (!teams()[side_num-1].fogged(u_loc)
+			&& !u.invisible(u_loc, true)) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
 const unit * display_context::get_visible_unit(const map_location & loc, const team &current_team, bool see_all) const
 {
 	if (!map().on_board(loc)) return NULL;
