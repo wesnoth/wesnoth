@@ -31,6 +31,15 @@ SDL_Rect create_rect(const int x, const int y, const int w, const int h)
 	return rect;
 }
 
+#ifdef SDL_GPU
+GPU_Rect create_gpu_rect(const float x, const float y, const float w, const float h)
+{
+	GPU_Rect result = {x, y, w, h};
+
+	return result;
+}
+#endif
+
 bool point_in_rect(int x, int y, const SDL_Rect& rect)
 {
 	return x >= rect.x && y >= rect.y && x < rect.x + rect.w && y < rect.y + rect.h;

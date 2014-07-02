@@ -46,6 +46,10 @@ extern const SDL_Rect empty_rect;
  */
 SDL_Rect create_rect(const int x, const int y, const int w, const int h);
 
+#ifdef SDL_GPU
+GPU_Rect create_gpu_rect(const float x, const float y, const float w,
+						 const float h);
+#endif
 /**
  * Tests whether a point is inside a rectangle.
  *
