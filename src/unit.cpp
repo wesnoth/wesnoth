@@ -1987,6 +1987,7 @@ void unit::apply_modifications()
 
 bool unit::invisible(const map_location& loc, bool see_all) const
 {
+	assert(loc == get_location());
 	// This is a quick condition to check, and it does not depend on the
 	// location (so might as well bypass the location-based cache).
 	if ( get_state(STATE_UNCOVERED) )
