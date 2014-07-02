@@ -35,6 +35,7 @@ class variable_info_3
 public:
 	
 	typedef typename variable_info_3_detail::maybe_const<vit,config>::type t_config;
+	/// Doesn't throw
 	variable_info_3(const std::string& varname, t_config& vars);
 	~variable_info_3();
 	std::string get_error_message() const;
@@ -64,25 +65,33 @@ protected:
 	void calculate_value();
 };
 
-/// Gives special variable changign meethods that cannot be done with vit == vit_const
+/// Extends variable_info_3 with methods that can only be applied if vit != vit_const
 template<const variable_info_3_detail::variable_info_3_type vit>
 class non_const_variable_info_3 : public variable_info_3<vit>, variable_info_3_detail::enable_if_non_const<vit>::type
 {
 public:
 	non_const_variable_info_3(const std::string& name, config& game_vars) : variable_info_3<vit>(name, game_vars) {};
 	~non_const_variable_info_3() {}
+
 	/// clears the vale this object points to
 	/// if only_tables = true it will not clear attribute values.
+	/// might throw invalid_variablename_exception
 	void clear(bool only_tables = false) const;
-	/// the following 4 functions are used by [set_variables]
-	///     they destroy the passed vector. (make it empty).
-	/// return: the new appended range
+	
+	// the following 4 functions are used by [set_variables]
+	// they destroy the passed vector. (make it empty).
+	
+	/// @return: the new appended range
+	/// might throw invalid_variablename_exception
 	config::child_itors append_array(std::vector<config> childs) const;
-	/// return: the new inserted range
+	/// @return: the new inserted range
+	/// might throw invalid_variablename_exception
 	config::child_itors insert_array(std::vector<config> childs) const;
-	/// return: the new range
+	/// @return: the new range
+	/// might throw invalid_variablename_exception
 	config::child_itors replace_array(std::vector<config> childs) const;
 	/// merges
+	/// might throw invalid_variablename_exception
 	void merge_array(std::vector<config> childs) const;
 };
 
@@ -93,7 +102,7 @@ public:
 typedef non_const_variable_info_3<variable_info_3_detail::vit_create_if_not_existent> variable_access_create;
 /**
 	this variable accessor will throw an exception when trying to access a non existent table.
-	Note that the other types can throw too if name is invlid.
+	Note that the other types can throw too if name is invlid like '..[[[a'.
 */
 typedef non_const_variable_info_3<variable_info_3_detail::vit_throw_if_not_existent>  variable_access_throw;
 /**

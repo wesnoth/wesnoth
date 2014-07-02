@@ -24,11 +24,12 @@ namespace variable_info_3_detail
 	enum variable_info_3_type {vit_const, vit_create_if_not_existent, vit_throw_if_not_existent,  };
 	enum variable_info_3_state_type { 
 		state_start = 0, // for internal use
+		                 // only used at the 'starting_pos' of the variable_info_3::calculate_value algorithm 
 		state_named,     // the result of .someval this can eigher man an attribute value or an 
 		                 // child range
 		state_indexed,   // the result of .someval[index] this is never an attribute value, 
 		                 // this is always a single config.
-		state_temporary, // the result of .length this value can never be written, it can onyl be read.
+		state_temporary, // the result of .length this value can never be written, it can only be read.
 		
 	};
 
@@ -78,13 +79,17 @@ namespace variable_info_3_detail
 			child_ = &vars;
 		}
 
-
+		// The meaning of the following 3 depends on 'type_', but usualy the case is:
+		// the current config is  child_->child_at(key_, index_).
 		t_child* child_;
 		std::string key_;
 		int index_;
 
+		// If we have a temporary value like .length
+		// Then we store the result here.
 		config::attribute_value temp_val_;
 
+		// See the definition of 'variable_info_3_state_type'
 		variable_info_3_state_type type_;
 	};
 }

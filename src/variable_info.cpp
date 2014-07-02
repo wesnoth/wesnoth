@@ -165,19 +165,13 @@ namespace
 		}
 	}
 
+	/// Adds a .<key> to teh current cariable
 	template<const variable_info_3_type vit>
 	class get_variable_key_visitor
 		: public variable_info_visitor<vit, void>
 	{
 	public:
 		get_variable_key_visitor(const std::string& key) : key_(key) {}
-
-		void from_config(typename maybe_const<vit, config>::type & cfg, typename get_variable_key_visitor::param_type state) const
-		{
-			state.type_ = state_named;
-			state.key_ = key_;
-			state.child_ = &cfg;
-		}
 		void from_named(typename get_variable_key_visitor::param_type state) const 
 		{			
 			if(key_ == "length")
@@ -188,21 +182,29 @@ namespace
 			}
 			else
 			{
-				return from_config(get_child_at<vit>(*state.child_, state.key_, 0), state);
+				return do_from_config(get_child_at<vit>(*state.child_, state.key_, 0), state);
 			}
 		}
 		void from_start(typename get_variable_key_visitor::param_type state) const 
 		{
-			return from_config(*state.child_, state);
+			return do_from_config(*state.child_, state);
 		}
 		void from_indexed(typename get_variable_key_visitor::param_type state) const 
 		{
-			return from_config(get_child_at<vit>(*state.child_, state.key_, state.index_), state);
+			return do_from_config(get_child_at<vit>(*state.child_, state.key_, state.index_), state);
 		}
 	private:
+		void do_from_config(typename maybe_const<vit, config>::type & cfg, typename get_variable_key_visitor::param_type state) const
+		{
+			state.type_ = state_named;
+			state.key_ = key_;
+			state.child_ = &cfg;
+		}
 		const std::string& key_;
 	};
 
+	/// appens a [index] to the state.
+	/// we only support from_named since [index][index2] or a.length[index] both doesn't make sense.
 	template<const variable_info_3_type vit>
 	class get_variable_index_visitor
 		: public variable_info_visitor<vit, void>
@@ -233,6 +235,7 @@ namespace
 			check_valid_name(state.key_);
 			return (*state.child_)[state.key_];
 		}
+		///Defined below for different cases.
 		typename as_skalar_visitor::result_type from_temporary(typename as_skalar_visitor::param_type state) const;
 	};
 	/// this type of value like '.length' are readonly values so we only support them for reading.
@@ -253,7 +256,8 @@ namespace
 		throw invalid_variablename_exception();
 	}
 
-	///tries to convert to a (const) config&, unlike range based operation this also supports 'variable_child'
+	/// tries to convert to a (const) config&, unlike range based operation this also supports 'from_start'
+	/// Note: Currently getting the 'from_start' case here is impossible, becasue we always apply at least one string key.
 	template<const variable_info_3_type vit>
 	class as_container_visitor
 		: public variable_info_visitor_const<vit, typename maybe_const<vit, config>::type&>
