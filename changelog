@@ -222,6 +222,9 @@ Version 1.13.0-dev:
    * Added 'faction_lock' and 'leader_lock' to SideWML to be used in MP Connect
      screen. Fixes bug #21978.
    * Fix bug #22231: partial moves now able to be continued in whiteboard
+   * Fix an inefficient implementation of unit::invisible, in an effort to address slow performance problems:
+     http://forums.wesnoth.org/viewtopic.php?f=4&t=12139&start=180#p569931
+     (Also see gfgtdf's commits trying to optimize the minimap loop)
 
 Version 1.11.11:
  * Add-ons server:
