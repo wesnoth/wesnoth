@@ -2836,10 +2836,18 @@ bool unit::invisible(const map_location& loc, bool see_all) const
 	bool is_inv = get_ability_bool(hides,loc);
 	if(is_inv){
 		const std::vector<team>& teams = *resources::teams;
-		BOOST_FOREACH(const unit &u, *resources::units)
+
+		map_location adjs[6];
+		get_adjacent_tiles(loc,adjs);
+
+		BOOST_FOREACH(const map_location &u_loc, adjs)
 		{
-			const map_location &u_loc = u.get_location();
-			if (teams[side_-1].is_enemy(u.side()) && !u.incapacitated() && tiles_adjacent(loc, u_loc)) {
+			unit_map::iterator u_it = resources::units->find(u_loc);
+			if (!u_it.valid()) {
+				continue;
+			}
+			unit & u = *u_it;
+			if (teams[side_-1].is_enemy(u.side()) && !u.incapacitated()) {
 				// Enemy spotted in adjacent tiles, check if we can see him.
 				// Watch out to call invisible with see_all=true to avoid infinite recursive calls!
 				if(see_all) {
