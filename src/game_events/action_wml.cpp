@@ -2147,11 +2147,7 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 	try
 	{
 		const std::string& mode = cfg["mode"];
-		if(mode == "replace")
-		{
-			dest.replace_array(data);
-		}
-		else if(mode == "merge")
+		if(mode == "merge")
 		{
 			if(dest.explicit_index() && data.size() > 1)
 			{
@@ -2168,9 +2164,13 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 		{
 			dest.insert_array(data);
 		}
-		else /*default if(mode == "append")*/
+		else if(mode == "append")
 		{
 			dest.append_array(data);
+		}
+		else /*default if(mode == "replace")*/
+		{
+			dest.replace_array(data);
 		}
 	}
 	catch(const invalid_variablename_exception&)
