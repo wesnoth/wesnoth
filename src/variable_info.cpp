@@ -475,45 +475,44 @@ variable_info_3<vit>::~variable_info_3()
 template<const variable_info_3_type vit>
 void variable_info_3<vit>::calculate_value()
 {
-	size_t index1 = 0, index2 = 0; 
-	char last_char = '.';
-	while((index2 = this->name_.find_first_of(".[]", index1)) != std::string::npos)
+	// this->state_ is initialized in the constructor.
+	size_t previous_index = 0; 
+	size_t name_size = this->name_.size();
+	for(size_t loop_index = 0; loop_index < name_size; loop_index++)
 	{
-		last_char = this->name_[index2];
+		switch(this->name_[loop_index])
 		{
-			switch(last_char)
+		case '.':
+		case '[':
+			// '.', '[' mark the end of a string key.
+			// the result is oviously that '.' and '[' are  
+			// treated equally so 'aaa.9].bbbb[zzz.uu.7]' 
+			// is interpreted as  'aaa[9].bbbb.zzz.uu[7]'
+			// use is_valid_variable function for stricter variablename checking.
+			apply_visitor(get_variable_key_visitor<vit>(this->name_.substr(previous_index, loop_index-previous_index)), this->state_);
+			previous_index = loop_index + 1;
+			break;
+		case ']':
+			// ']' marks the end of an integer key.
+			apply_visitor(get_variable_index_visitor<vit>(parse_index(&this->name_[previous_index])), this->state_);
+			//after ']' we always expect a '.' or the end of the string
+			//ignore the next char which is a '.'
+			loop_index++;
+			if(loop_index < this->name_.length() && this->name_[loop_index] != '.')
 			{
-			case '.':
-			case '[':
-				// '.', '[' mark the end of a string key.
-				// the result is oviously that '.' and '[' are  
-				// treated equally so 'aaa.9].bbbb[zzz.uu.7]' 
-				// is interpreted as  'aaa[9].bbbb.zzz.uu[7]'
-				// use is_valid_variable function for stricter variablename checking.
-				apply_visitor(get_variable_key_visitor<vit>(this->name_.substr(index1, index2-index1)), this->state_);
-				break;
-			case ']':
-				// ']' marks the end of an integer key.
-				int index = parse_index(&this->name_[index1]);
-				//val = val.apply_visitor(get_variable_index_visitor<vit>(index));
-				apply_visitor(get_variable_index_visitor<vit>(index), this->state_);
-				//after ']' we always expect a '.' or the end of the string
-				//ignore the next char which is a '.'
-				index2++;
-				if(index2 < this->name_.length() && this->name_[index2] != '.')
-				{
-					throw invalid_variablename_exception();
-				}
-				break;
+				throw invalid_variablename_exception();
 			}
+			previous_index = loop_index + 1;
+			break;
+		default:
+			break;
 		}
-		index1 = index2 + 1;
 	}
-	if(index1 != this->name_.length() + 1)
+	if(previous_index != this->name_.length() + 1)
 	{
-		//std::cerr << "index1=" << index1 << " length=" << this->name_.length() << "\n";
 		// the string ended not with ']'
-		apply_visitor(get_variable_key_visitor<vit>(this->name_.substr(index1)), this->state_);
+		// in this case we still didn't add the key behind the last '.' 
+		apply_visitor(get_variable_key_visitor<vit>(this->name_.substr(previous_index)), this->state_);
 	}
 }
 
