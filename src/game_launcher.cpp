@@ -769,8 +769,6 @@ bool game_launcher::new_campaign()
 
 	create_eng.prepare_for_campaign(selected_difficulty);
 
-	create_eng.prepare_for_new_level();
-
 	if (jump_to_campaign_.scenario_id_.empty())
 		state_.carryover_sides_start["next_scenario"] = create_eng.current_level().data()["id"].str();
 	else {
@@ -780,6 +778,8 @@ bool game_launcher::new_campaign()
 			lexical_cast<std::string> (game_classification::MULTIPLAYER),
 			"id", jump_to_campaign_.scenario_id_));
 	}
+
+	create_eng.prepare_for_new_level();
 
 	state_.mp_settings().mp_era = "era_blank";
 

@@ -308,6 +308,7 @@ void flg_manager::resolve_random() {
 
 void flg_manager::update_available_factions()
 {
+	const config* custom_faction = 0;
 	BOOST_FOREACH(const config* faction, era_factions_) {
 		if ((*faction)["id"] == "Custom" && side_["faction"] != "Custom" &&
 			has_no_recruits_) {
@@ -315,6 +316,7 @@ void flg_manager::update_available_factions()
 			// "Custom" faction should not be available if both
 			// "default_recruit" and "previous_recruits" lists are empty.
 			// However, it should be available if it was explicitly stated so.
+			custom_faction = faction;
 			continue;
 		}
 
@@ -324,6 +326,9 @@ void flg_manager::update_available_factions()
 		} else {
 			available_factions_.push_back(faction);
 		}
+	}
+	if (available_factions_.empty() && custom_faction) {
+		available_factions_.push_back(custom_faction);
 	}
 
 	assert(!available_factions_.empty());
