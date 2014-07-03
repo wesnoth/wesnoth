@@ -1580,7 +1580,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 	{
 		// Apply SUF.
 		if (const config &afilter = effect.child("filter"))
-			if (!unit_filter::matches_filter(vconfig(afilter), *this, loc_, resources::gameboard)) continue;
+			if (!unit_filter::matches_filter(vconfig(afilter), *this, loc_, resources::filter_con)) continue;
 
 		const std::string &apply_to = effect["apply_to"];
 		const std::string &apply_times = effect["times"];

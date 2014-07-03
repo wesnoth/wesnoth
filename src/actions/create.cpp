@@ -25,6 +25,7 @@
 
 #include "../config.hpp"
 #include "../config_assign.hpp"
+#include "../filter_context.hpp"
 #include "../game_board.hpp"
 #include "../game_display.hpp"
 #include "../game_events/pump.hpp"
@@ -434,7 +435,7 @@ namespace { // Helpers for get_recalls()
 				if ( unit_filter::matches_filter( rfilter,
 								recall_unit,
 								map_location::null_location(),
-								resources::gameboard) )
+								resources::filter_con) )
 				{
 					result.push_back(recall_unit_ptr);
 					if ( already_added != NULL )
@@ -537,7 +538,7 @@ namespace { // Helpers for check_recall_location()
 		if ( !unit_filter::matches_filter(rfilter,
 						 recall_unit,
 		                                 map_location::null_location(),
-						 resources::gameboard) )
+						 resources::filter_con) )
 			return RECRUIT_NO_ABLE_LEADER;
 
 		// Make sure the unit is on a keep.

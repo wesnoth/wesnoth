@@ -101,7 +101,7 @@ bool entity_location::matches_unit_filter(const unit_map::const_iterator & un_it
 
 	// Filter the unit at the filter location (should be the unit's
 	// location if no special filter location was specified).
-	return unit_filter::matches_filter(filter, *un_it, filter_loc_, resources::gameboard)  &&
+	return unit_filter::matches_filter(filter, *un_it, filter_loc_, resources::filter_con)  &&
 	       matches_unit(un_it);
 }
 

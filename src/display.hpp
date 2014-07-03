@@ -49,6 +49,7 @@ namespace wb {
 
 #include "animated.hpp"
 #include "display_context.hpp"
+#include "filter_context.hpp"
 #include "font.hpp"
 #include "image.hpp" //only needed for enums (!)
 #include "key.hpp"
@@ -71,7 +72,7 @@ namespace wb {
 
 class gamemap;
 
-class display
+class display : public filter_context
 {
 public:
 	display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::manager> wb,
@@ -164,6 +165,7 @@ public:
 
 	void change_display_context(const display_context * dc);
 	const display_context & get_disp_context() const { return *dc_; }
+	virtual const tod_manager & get_tod_man() const; //!< This is implemented properly in game_display. The display:: impl could be pure virtual here but we decide not to.
 
 	void reset_halo_manager();
 	void reset_halo_manager(halo::manager & hm);

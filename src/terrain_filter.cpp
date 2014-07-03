@@ -154,7 +154,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	if(cfg_.has_child("filter")) {
 		const vconfig& unit_filter = cfg_.child("filter");
 		const unit_map::const_iterator u = units_.find(loc);
-		if (u == units_.end() || !unit_filter::matches_filter(unit_filter, *u, loc, resources::gameboard, flat_))
+		if (u == units_.end() || !unit_filter::matches_filter(unit_filter, *u, loc, resources::filter_con, flat_))
 			return false;
 	}
 

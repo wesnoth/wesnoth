@@ -60,7 +60,7 @@ class game_board : public display_context {
 	friend class play_controller;
 	friend class events::mouse_handler;
 	friend class events::menu_handler;
-	friend struct game_state;
+	friend class game_state;
 
 	/**
 	 * Temporary unit move structs:

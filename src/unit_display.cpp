@@ -774,7 +774,7 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 	vconfig filter = cfg.child("filter");
 	if(!filter.null()) {
 		for (u = resources::units->begin(); u != resources::units->end(); ++u) {
-			if ( unit_filter::matches_filter(filter, *u, resources::gameboard) )
+			if ( unit_filter::matches_filter(filter, *u, resources::filter_con) )
 				break;
 		}
 	}

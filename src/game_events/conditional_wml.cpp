@@ -76,7 +76,7 @@ namespace { // Support functions
 			int match_count = 0;
 			BOOST_FOREACH(const unit &i, *resources::units)
 			{
-				if ( i.hitpoints() > 0  &&  unit_filter::matches_filter(*u,i, resources::gameboard) ) {
+				if ( i.hitpoints() > 0  &&  unit_filter::matches_filter(*u,i, resources::filter_con) ) {
 					++match_count;
 					if(counts == default_counts) {
 						// by default a single match is enough, so avoid extra work
@@ -97,7 +97,7 @@ namespace { // Support functions
 							break;
 						}
 						scoped_recall_unit auto_store("this_unit", team->save_id(), t);
-						if ( unit_filter::matches_filter(*u,*team->recall_list()[t], resources::gameboard) ) {
+						if ( unit_filter::matches_filter(*u,*team->recall_list()[t], resources::filter_con) ) {
 							++match_count;
 						}
 					}

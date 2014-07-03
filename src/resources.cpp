@@ -21,6 +21,7 @@ namespace resources
 	game_config_manager  *config_manager = NULL;
 	play_controller      *controller = NULL;
 	game_data            *gamedata = NULL;
+	filter_context	     *filter_con = NULL;
 	LuaKernel            *lua_kernel = NULL;
 	persist_manager      *persist = NULL;
 	game_display         *screen = NULL;

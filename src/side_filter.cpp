@@ -136,7 +136,7 @@ bool side_filter::match_internal(const team &t) const
 			if (u.side() != t.side()) {
 				continue;
 			}
-			if (unit_filter::matches_filter(unit_filter, u, u.get_location(), resources::gameboard, flat_)) {
+			if (unit_filter::matches_filter(unit_filter, u, u.get_location(), resources::filter_con, flat_)) {
 				found = true;
 				break;
 			}
@@ -144,7 +144,7 @@ bool side_filter::match_internal(const team &t) const
 		if(!found && unit_filter["search_recall_list"].to_bool(false)) {
 			BOOST_FOREACH(const unit_const_ptr & u, t.recall_list()) {
 				scoped_recall_unit this_unit("this_unit", t.save_id(),t.recall_list().find_index(u->id()));
-				if(unit_filter::matches_filter(unit_filter, *u, u->get_location(), resources::gameboard, flat_)) {
+				if(unit_filter::matches_filter(unit_filter, *u, u->get_location(), resources::filter_con, flat_)) {
 					found = true;
 					break;
 				}

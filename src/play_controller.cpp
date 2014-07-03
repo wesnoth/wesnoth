@@ -79,6 +79,7 @@ static lg::log_domain log_engine_enemies("engine/enemies");
 static void clear_resources()
 {
 	resources::controller = NULL;
+	resources::filter_con = NULL;
 	resources::gameboard = NULL;
 	resources::gamedata = NULL;
 	resources::persist = NULL;
@@ -145,7 +146,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	resources::tod_manager = &gamestate_.tod_manager_;
 	resources::undo_stack = undo_stack_.get();
 	resources::units = &gamestate_.board_.units_;
-
+	resources::filter_con = &gamestate_;
 
 	resources::classification = &saved_game_.classification();
 	resources::mp_settings = &saved_game_.mp_settings();

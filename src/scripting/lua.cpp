@@ -858,7 +858,7 @@ static int intf_get_units(lua_State *L)
 	for (unit_map::const_unit_iterator ui = units.begin(), ui_end = units.end();
 	     ui != ui_end; ++ui)
 	{
-		if (!filter.null() && !unit_filter::matches_filter(filter, *ui, ui->get_location(), resources::gameboard))
+		if (!filter.null() && !unit_filter::matches_filter(filter, *ui, ui->get_location(), resources::filter_con))
 			continue;
 		new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->underlying_id());
 		lua_pushvalue(L, 1);
@@ -895,11 +895,11 @@ static int intf_match_unit(lua_State *L)
 		team &t = (*resources::teams)[side - 1];
 		scoped_recall_unit auto_store("this_unit",
 			t.save_id(), t.recall_list().find_index(u->id()));
-		lua_pushboolean(L, unit_filter::matches_filter(filter, *u, map_location(), resources::gameboard));
+		lua_pushboolean(L, unit_filter::matches_filter(filter, *u, map_location(), resources::filter_con));
 		return 1;
 	}
 
-	lua_pushboolean(L, unit_filter::matches_filter(filter, *u, u->get_location(), resources::gameboard));
+	lua_pushboolean(L, unit_filter::matches_filter(filter, *u, u->get_location(), resources::filter_con));
 	return 1;
 }
 
@@ -928,7 +928,7 @@ static int intf_get_recall_units(lua_State *L)
 			if (!filter.null()) {
 				scoped_recall_unit auto_store("this_unit",
 					t.save_id(), t.recall_list().find_index(u->id()));
-				if (!unit_filter::matches_filter(filter, *u, map_location(), resources::gameboard))
+				if (!unit_filter::matches_filter(filter, *u, map_location(), resources::filter_con))
 					continue;
 			}
 			new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(s, u->underlying_id());
@@ -2003,7 +2003,7 @@ static int intf_find_cost_map(lua_State *L)
 		     ui != ui_end; ++ui)
 		{
 			bool on_map = ui->get_location().valid();
-			if (on_map && unit_filter::matches_filter(filter, *ui,ui->get_location(), resources::gameboard))
+			if (on_map && unit_filter::matches_filter(filter, *ui,ui->get_location(), resources::filter_con))
 			{
 				real_units. push_back(&(*ui));
 			}

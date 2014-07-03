@@ -17,6 +17,7 @@
 
 #include "config.hpp"
 #include "display_context.hpp"
+#include "filter_context.hpp"
 #include "map_location.hpp"
 #include "resources.hpp" //Needed for lua kernel pointer
 #include "scripting/lua.hpp" //Needed for lua kernel
@@ -31,24 +32,24 @@
 
 #include <boost/foreach.hpp>
 
-namespace { bool internal_matches_filter(const vconfig& filter, const unit & u, const map_location& loc, const display_context * board, bool use_flat_tod); }
+namespace { bool internal_matches_filter(const vconfig& filter, const unit & u, const map_location& loc, const filter_context * fc, bool use_flat_tod); }
 
 namespace unit_filter {
 
-bool matches_filter(const vconfig& filter, const unit & u, const display_context * board, bool use_flat_tod)
-{ return matches_filter(filter, u, u.get_location(), board, use_flat_tod); }
+bool matches_filter(const vconfig& filter, const unit & u, const filter_context * fc, bool use_flat_tod)
+{ return matches_filter(filter, u, u.get_location(), fc, use_flat_tod); }
 
-bool matches_filter(const vconfig& cfg, const unit & u, const map_location& loc, const display_context * board, bool use_flat_tod)
+bool matches_filter(const vconfig& cfg, const unit & u, const map_location& loc, const filter_context * fc, bool use_flat_tod)
 {
 	bool matches = true;
 
 	if(loc.valid()) {
-		assert(board != NULL);
-		scoped_xy_unit auto_store("this_unit", loc.x, loc.y, board->units());
-		matches = internal_matches_filter(cfg, u, loc, board, use_flat_tod);
+		assert(fc != NULL);
+		scoped_xy_unit auto_store("this_unit", loc.x, loc.y, fc->get_disp_context().units());
+		matches = internal_matches_filter(cfg, u, loc, fc, use_flat_tod);
 	} else {
 		// If loc is invalid, then this is a recall list unit (already been scoped)
-		matches = internal_matches_filter(cfg, u, loc, board, use_flat_tod);
+		matches = internal_matches_filter(cfg, u, loc, fc, use_flat_tod);
 	}
 
 	// Handle [and], [or], and [not] with in-order precedence
@@ -62,15 +63,15 @@ bool matches_filter(const vconfig& cfg, const unit & u, const map_location& loc,
 
 		// Handle [and]
 		if(cond_name == "and") {
-			matches = matches && matches_filter(cond_filter,u, loc, board, use_flat_tod);
+			matches = matches && matches_filter(cond_filter,u, loc, fc, use_flat_tod);
 		}
 		// Handle [or]
 		else if(cond_name == "or") {
-			matches = matches || matches_filter(cond_filter,u, loc, board,use_flat_tod);
+			matches = matches || matches_filter(cond_filter,u, loc, fc,use_flat_tod);
 		}
 		// Handle [not]
 		else if(cond_name == "not") {
-			matches = matches && !matches_filter(cond_filter,u, loc, board,use_flat_tod);
+			matches = matches && !matches_filter(cond_filter,u, loc, fc,use_flat_tod);
 		}
 
 		++cond;
@@ -82,7 +83,7 @@ bool matches_filter(const vconfig& cfg, const unit & u, const map_location& loc,
 
 namespace { //begin anonymous namespace
 
-bool internal_matches_filter(const vconfig& cfg, const unit & u, const map_location& loc, const display_context * board, bool use_flat_tod)
+bool internal_matches_filter(const vconfig& cfg, const unit & u, const map_location& loc, const filter_context * fc, bool use_flat_tod)
 {
 	config::attribute_value cfg_name = cfg["name"];
 	if (!cfg_name.blank() && cfg_name.str() != u.name()) {
@@ -114,9 +115,9 @@ bool internal_matches_filter(const vconfig& cfg, const unit & u, const map_locat
 	}
 
 	if(cfg.has_child("filter_location")) {
-		assert(board != NULL);
+		assert(fc != NULL);
 		const vconfig& t_cfg = cfg.child("filter_location");
-		terrain_filter t_filter(t_cfg, board->units(), use_flat_tod);
+		terrain_filter t_filter(t_cfg, fc->get_disp_context().units(), use_flat_tod);
 		if(!t_filter.match(loc)) {
 			return false;
 		}
@@ -135,8 +136,8 @@ bool internal_matches_filter(const vconfig& cfg, const unit & u, const map_locat
 	if (!cfg_x.blank() || !cfg_y.blank()){
 		if(cfg_x == "recall" && cfg_y == "recall") {
 			//locations on the map are considered to not be on a recall list
-			if ((!board && loc.valid()) ||
-			    (board && board->map().on_board(loc)))
+			if ((!fc && loc.valid()) ||
+			    (fc && fc->get_disp_context().map().on_board(loc)))
 			{
 				return false;
 			}
@@ -317,12 +318,12 @@ bool internal_matches_filter(const vconfig& cfg, const unit & u, const map_locat
 	}
 
 	config::attribute_value cfg_defense = cfg["defense"];
-	if (!cfg_defense.blank() && cfg_defense.to_int(-1) != u.defense_modifier(board->map().get_terrain(loc))) {
+	if (!cfg_defense.blank() && cfg_defense.to_int(-1) != u.defense_modifier(fc->get_disp_context().map().get_terrain(loc))) {
 		return false;
 	}
 
 	config::attribute_value cfg_movement = cfg["movement_cost"];
-	if (!cfg_movement.blank() && cfg_movement.to_int(-1) != u.movement_cost(board->map().get_terrain(loc))) {
+	if (!cfg_movement.blank() && cfg_movement.to_int(-1) != u.movement_cost(fc->get_disp_context().map().get_terrain(loc))) {
 		return false;
 	}
 
@@ -369,7 +370,7 @@ bool internal_matches_filter(const vconfig& cfg, const unit & u, const map_locat
 			}
 			std::set<int>::const_iterator viewer, viewer_end = viewers.end();
 			for (viewer = viewers.begin(); viewer != viewer_end; ++viewer) {
-				bool fogged = board->teams()[*viewer - 1].fogged(loc);
+				bool fogged = fc->get_disp_context().teams()[*viewer - 1].fogged(loc);
 				bool hiding = u.invisible(loc/*, false(?) */);
 				bool unit_hidden = fogged || hiding;
 				if (visible == unit_hidden) return false;
@@ -378,8 +379,8 @@ bool internal_matches_filter(const vconfig& cfg, const unit & u, const map_locat
 	}
 
 	if (cfg.has_child("filter_adjacent")) {
-		assert(board);
-		const unit_map& units = board->units();
+		assert(fc);
+		const unit_map& units = fc->get_disp_context().units();
 		map_location adjacent[6];
 		get_adjacent_tiles(loc, adjacent);
 		vconfig::child_list::const_iterator i, i_end;
@@ -393,12 +394,12 @@ bool internal_matches_filter(const vconfig& cfg, const unit & u, const map_locat
 			for (j = dirs.begin(); j != j_end; ++j) {
 				unit_map::const_iterator unit_itor = units.find(adjacent[*j]);
 				if (unit_itor == units.end()
-				|| !unit_filter::matches_filter(*i, *unit_itor, unit_itor->get_location(), board, use_flat_tod)) {
+				|| !unit_filter::matches_filter(*i, *unit_itor, unit_itor->get_location(), fc, use_flat_tod)) {
 					continue;
 				}
 				config::attribute_value i_is_enemy = (*i)["is_enemy"];
 				if (i_is_enemy.blank() || i_is_enemy.to_bool() ==
-				    board->teams()[u.side() - 1].is_enemy(unit_itor->side())) {
+				    fc->get_disp_context().teams()[u.side() - 1].is_enemy(unit_itor->side())) {
 					++match_count;
 				}
 			}

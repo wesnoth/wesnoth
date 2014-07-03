@@ -76,7 +76,7 @@ void teleport_group::get_teleport_pair(
 	vconfig filter(cfg_.child_or_empty("filter"), true);
 	vconfig source(cfg_.child_or_empty("source"), true);
 	vconfig target(cfg_.child_or_empty("target"), true);
-	if (unit_filter::matches_filter(filter, u, loc, resources::gameboard)) {
+	if (unit_filter::matches_filter(filter, u, loc, resources::filter_con)) {
 
 		scoped_xy_unit teleport_unit("teleport_unit", loc.x, loc.y, *resources::units);
 

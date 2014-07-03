@@ -23,17 +23,17 @@
  * these to speed up repeated application of the filter.
  */
 
-class display_context;
+class filter_context;
 class unit;
 class vconfig;
 struct map_location;
 
 namespace unit_filter {
 
-	bool matches_filter(const vconfig& cfg,const unit & u, const map_location& loc, const display_context * board, bool use_flat_tod=false);
+	bool matches_filter(const vconfig& cfg,const unit & u, const map_location& loc, const filter_context * board, bool use_flat_tod=false);
 	/// Determine if *this matches @a filter at its current location.
 	/// (Only use for units currently on the map; otherwise use the overload
 	/// that takes a location, possibly with a null location.)
-	bool matches_filter(const vconfig& filter, const unit & u, const display_context* board, bool use_flat_tod=false);
+	bool matches_filter(const vconfig& filter, const unit & u, const filter_context* board, bool use_flat_tod=false);
 
 }
