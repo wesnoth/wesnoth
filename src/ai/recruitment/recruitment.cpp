@@ -35,6 +35,7 @@
 #include "../../resources.hpp"
 #include "../../team.hpp"
 #include "../../tod_manager.hpp"
+#include "../../unit_filter.hpp"
 #include "../../unit_map.hpp"
 #include "../../unit_types.hpp"
 #include "../../util.hpp"
@@ -251,7 +252,7 @@ void recruitment::execute() {
 		BOOST_FOREACH(const unit_const_ptr & recall, current_team().recall_list()) {
 			// Check if this leader is allowed to recall this unit.
 			vconfig filter = vconfig(leader->recall_filter());
-			if (!recall->matches_filter(filter, map_location::null_location())) {
+			if (!unit_filter::matches_filter(filter, *recall, map_location::null_location(), resources::gameboard)) {
 				continue;
 			}
 			data.recruits.insert(recall->type_id());
@@ -476,7 +477,7 @@ const std::string* recruitment::get_appropriate_recall(const std::string& type,
 		}
 		// Check if this leader is allowed to recall this unit.
 		vconfig filter = vconfig(leader_data.leader->recall_filter());
-		if (!recall_unit->matches_filter(filter, map_location::null_location())) {
+		if (!unit_filter::matches_filter(filter, *recall_unit, map_location::null_location(), resources::gameboard)) {
 			LOG_AI_RECRUITMENT << "Refused recall because of filter: " << recall_unit->id() << "\n";
 			continue;
 		}

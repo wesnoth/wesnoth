@@ -29,6 +29,7 @@
 #include "../../resources.hpp"
 #include "../../unit.hpp"
 #include "../../pathfind/pathfind.hpp"
+#include "../../unit_filter.hpp"
 
 namespace ai {
 
@@ -75,7 +76,7 @@ boost::shared_ptr<attacks_vector> aspect_attacks::analyze_targets() const
 		std::vector<map_location> unit_locs;
 		for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 			if (i->side() == get_side() && i->attacks_left() && !(i->can_recruit() && get_passive_leader())) {
-				if (!i->matches_filter(vconfig(filter_own_), i->get_location())) {
+				if (!unit_filter::matches_filter(vconfig(filter_own_), *i, i->get_location(), resources::gameboard)) {
 					continue;
 				}
 				unit_locs.push_back(i->get_location());
@@ -98,7 +99,7 @@ boost::shared_ptr<attacks_vector> aspect_attacks::analyze_targets() const
 		if (current_team().is_enemy(j->side()) && !j->incapacitated() &&
 		    !j->invisible(j->get_location()))
 		{
-			if (!j->matches_filter(vconfig(filter_enemy_), j->get_location())) {
+			if (!unit_filter::matches_filter(vconfig(filter_enemy_), *j, j->get_location(), resources::gameboard)) {
 				continue;
 			}
 			map_location adjacent[6];

@@ -21,6 +21,7 @@
 #include "conditional_wml.hpp"
 
 #include "../config.hpp"
+#include "../game_board.hpp"
 #include "../game_data.hpp"
 #include "../log.hpp"
 #include "../recall_list_manager.hpp"
@@ -29,6 +30,7 @@
 #include "../team.hpp"
 #include "../terrain_filter.hpp"
 #include "../unit.hpp"
+#include "../unit_filter.hpp"
 #include "../unit_map.hpp"
 #include "../unit_types.hpp"
 #include "../util.hpp"
@@ -74,7 +76,7 @@ namespace { // Support functions
 			int match_count = 0;
 			BOOST_FOREACH(const unit &i, *resources::units)
 			{
-				if ( i.hitpoints() > 0  &&  i.matches_filter(*u) ) {
+				if ( i.hitpoints() > 0  &&  unit_filter::matches_filter(*u,i, resources::gameboard) ) {
 					++match_count;
 					if(counts == default_counts) {
 						// by default a single match is enough, so avoid extra work
@@ -95,7 +97,7 @@ namespace { // Support functions
 							break;
 						}
 						scoped_recall_unit auto_store("this_unit", team->save_id(), t);
-						if ( team->recall_list()[t]->matches_filter(*u) ) {
+						if ( unit_filter::matches_filter(*u,*team->recall_list()[t], resources::gameboard) ) {
 							++match_count;
 						}
 					}

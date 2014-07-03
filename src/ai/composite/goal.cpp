@@ -24,6 +24,7 @@
 #include "ai/lua/core.hpp"
 #include "ai/lua/lua_object.hpp"
 #include "ai/manager.hpp"
+#include "game_board.hpp"
 #include "log.hpp"
 #include "map_location.hpp"
 #include "resources.hpp"
@@ -32,6 +33,7 @@
 #include "terrain_filter.hpp"
 #include "unit.hpp"
 #include "unit_map.hpp"
+#include "unit_filter.hpp"
 #include "wml_exception.hpp"
 
 #include <boost/lexical_cast.hpp>
@@ -133,7 +135,7 @@ void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< targe
 
 	//find the enemy leaders and explicit targets
 	BOOST_FOREACH(const unit &u, *resources::units) {
-		if (u.matches_filter(vconfig(criteria), u.get_location())) {
+		if (unit_filter::matches_filter(vconfig(criteria), u, u.get_location(), resources::gameboard)) {
 			LOG_AI_GOAL << "found explicit target unit at ... " << u.get_location() << " with value: " << value() << "\n";
 			*target_list = target(u.get_location(), value(), target::EXPLICIT);
 		}
@@ -262,7 +264,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 				continue;
 			}
 			//TODO: we will protect hidden units, by not testing for invisibility to current side
-			if (u.matches_filter(vconfig(criteria), u.get_location())) {
+			if (unit_filter::matches_filter(vconfig(criteria), u, u.get_location(), resources::gameboard)) {
 				DBG_AI_GOAL << "side " << get_side() << ": in " << goal_type << ": " << u.get_location() << " should be protected\n";
 				items.insert(u.get_location());
 			}

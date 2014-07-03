@@ -65,6 +65,7 @@
 #include "../unit_animation_component.hpp"
 #include "../unit_display.hpp"
 #include "../unit_helper.hpp"
+#include "../unit_filter.hpp"
 #include "../wml_exception.hpp"
 
 #include "../utils/foreach.tpp"
@@ -405,7 +406,7 @@ namespace { // Support functions
 			speaker = units->find(event_info.loc2);
 		} else if(speaker_str != "narrator") {
 			for(speaker = units->begin(); speaker != units->end(); ++speaker){
-				if ( speaker->matches_filter(cfg) )
+				if ( unit_filter::matches_filter(cfg,*speaker, resources::gameboard) )
 					break;
 			}
 		}
@@ -778,7 +779,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 	std::vector<unit*> healers;
 	if (!healers_filter.null()) {
 		BOOST_FOREACH(unit& u, *units) {
-			if ( u.matches_filter(healers_filter) && u.has_ability_type("heals") ) {
+			if ( unit_filter::matches_filter(healers_filter,u, resources::gameboard) && u.has_ability_type("heals") ) {
 				healers.push_back(&u);
 			}
 		}
@@ -799,7 +800,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 			u = units->find(event_info.loc1);
 			if(!u.valid()) return;
 		}
-		else if ( !u->matches_filter(healed_filter) ) continue;
+		else if ( !unit_filter::matches_filter(healed_filter,*u, resources::gameboard) ) continue;
 
 		int heal_amount = u->max_hitpoints() - u->hitpoints();
 		if(amount.blank() || amount == "full") u->set_hitpoints(u->max_hitpoints());
@@ -858,7 +859,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 		secondary_unit = false;
 		for(unit_map::const_unit_iterator unit = resources::units->begin();
 			unit != resources::units->end(); ++unit) {
-				if ( unit->matches_filter(cfg.child("secondary_unit")) )
+				if ( unit_filter::matches_filter(cfg.child("secondary_unit"), *unit, resources::gameboard) )
 				{
 					killer_loc = entity_location(*unit);
 					secondary_unit = true;
@@ -873,7 +874,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 	//Find all the dead units first, because firing events ruins unit_map iteration
 	std::vector<unit *> dead_men_walking;
 	BOOST_FOREACH(unit & u, *resources::units){
-		if ( u.matches_filter(cfg) ) {
+		if ( unit_filter::matches_filter(cfg,u, resources::gameboard) ) {
 			dead_men_walking.push_back(&u);
 		}
 	}
@@ -947,7 +948,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 		{
 			for(std::vector<unit_ptr>::iterator j = pi->recall_list().begin(); j != pi->recall_list().end();) { //TODO: This block is really messy, cleanup somehow...
 				scoped_recall_unit auto_store("this_unit", pi->save_id(), j - pi->recall_list().begin());
-				if ((*j)->matches_filter(cfg, map_location())) {
+				if (unit_filter::matches_filter(cfg, *(*j), map_location(), resources::gameboard)) {
 					j = pi->recall_list().erase(j);
 				} else {
 					++j;
@@ -1415,7 +1416,7 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 	map_location loc;
 	if(!filter.null()) {
 		BOOST_FOREACH(const unit &u, *resources::units) {
-			if ( u.matches_filter(filter) ) {
+			if ( unit_filter::matches_filter(filter,u, resources::gameboard) ) {
 				loc = u.get_location();
 				break;
 			}
@@ -1430,7 +1431,7 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 
 	std::string command_type = "then";
 
-	if ( u != resources::units->end()  &&  (filter.null() || u->matches_filter(filter)) )
+	if ( u != resources::units->end()  &&  (filter.null() || unit_filter::matches_filter(filter,*u, resources::gameboard)) )
 	{
 		///@deprecated This can be removed (and a proper duration=level implemented) after 1.11.2
 		/// Don't forget to remove it from wmllint too!
@@ -1545,7 +1546,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 		for(std::vector<unit_ptr>::iterator u = avail.begin(); u != avail.end(); ++u) {
 			DBG_NG << "checking unit against filter...\n";
 			scoped_recall_unit auto_store("this_unit", player_id, u - avail.begin());
-			if ((*u)->matches_filter(unit_filter, map_location())) {
+			if (unit_filter::matches_filter(unit_filter, *(*u), map_location(), resources::gameboard)) {
 				DBG_NG << (*u)->id() << " matched the filter...\n";
 				const unit_ptr to_recruit = *u;
 				const unit* pass_check = to_recruit.get();
@@ -1556,8 +1557,8 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 				BOOST_FOREACH(unit_map::const_unit_iterator leader, leaders) {
 					DBG_NG << "...considering " + leader->id() + " as the recalling leader...\n";
 					map_location loc = cfg_loc;
-					if ( (leader_filter.null() || leader->matches_filter(leader_filter))  &&
-					     (*u)->matches_filter(vconfig(leader->recall_filter()), map_location()) ) {
+					if ( (leader_filter.null() || unit_filter::matches_filter(leader_filter, *leader, resources::gameboard))  &&
+					     unit_filter::matches_filter(vconfig(leader->recall_filter()), *(*u),map_location(), resources::gameboard) ) {
 						DBG_NG << "...matched the leader filter and is able to recall the unit.\n";
 						if(!resources::gameboard->map().on_board(loc))
 							loc = leader->get_location();
@@ -1725,7 +1726,7 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 		}
 		unit_map::iterator itor;
 		BOOST_FOREACH(unit &u, *resources::units) {
-			if ( u.matches_filter(filter) ) {
+			if ( unit_filter::matches_filter(filter,u, resources::gameboard) ) {
 				u.set_role(cfg["role"]);
 				found = true;
 				break;
@@ -1762,7 +1763,7 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 				for(size_t i=0; i < pi->recall_list().size(); ++i) {
 					unit_ptr u = pi->recall_list()[i];
 					scoped_recall_unit auto_store("this_unit", player_id, i); //TODO: Should this not be inside the if? Explain me.
-					if (u->matches_filter(filter, map_location())) {
+					if (unit_filter::matches_filter(filter, *u, map_location(), resources::gameboard)) {
 						u->set_role(cfg["role"]);
 						found=true;
 						break;
@@ -2286,7 +2287,7 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	const vconfig & filter = cfg.child("filter");
 	if(!filter.null()) {
 		for (u = resources::units->begin(); u != resources::units->end(); ++u){
-			if ( u->matches_filter(filter) )
+			if ( unit_filter::matches_filter(filter,*u, resources::gameboard) )
 				break;
 		}
 	}

@@ -17,12 +17,14 @@
  *  Manage unit-abilities, like heal, cure, and weapon_specials.
  */
 
+#include "game_board.hpp"
 #include "log.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "terrain_filter.hpp"
 #include "unit.hpp"
 #include "unit_abilities.hpp"
+#include "unit_filter.hpp"
 #include "unit_map.hpp"
 
 #include <boost/foreach.hpp>
@@ -295,7 +297,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 	assert(resources::units && resources::gameboard && resources::teams && resources::tod_manager);
 
 	if (const config &afilter = cfg.child("filter"))
-		if ( !matches_filter(vconfig(afilter), loc, illuminates) )
+		if ( !unit_filter::matches_filter(vconfig(afilter), *this, loc, resources::gameboard, illuminates) )
 			return false;
 
 	map_location adjacent[6];
@@ -313,7 +315,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 			unit_map::const_iterator unit = units.find(adjacent[index]);
 			if (unit == units.end())
 				return false;
-			if (!unit->matches_filter(vconfig(i), unit->get_location(), illuminates))
+			if (!unit_filter::matches_filter(vconfig(i), *unit, unit->get_location(), resources::gameboard, illuminates))
 				return false;
 		}
 	}
@@ -351,7 +353,7 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 		std::vector<std::string> dirs = utils::split(i["adjacent"]);
 		if(std::find(dirs.begin(),dirs.end(),adjacent_names[dir]) != dirs.end()) {
 			if (const config &filter = i.child("filter")) {
-				if ( matches_filter(vconfig(filter), loc, illuminates) )
+				if ( unit_filter::matches_filter(vconfig(filter), *this, loc, resources::gameboard, illuminates) )
 					return true;
 			} else
 				return true;
@@ -369,7 +371,7 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 	const config &filter = cfg.child("filter_self");
 	bool affect_self = cfg["affect_self"].to_bool(true);
 	if (!filter || !affect_self) return affect_self;
-	return matches_filter(vconfig(filter), loc, ability == "illuminates");
+	return unit_filter::matches_filter(vconfig(filter), *this, loc, resources::gameboard, ability == "illuminates");
 }
 
 bool unit::has_ability_type(const std::string& ability) const
@@ -792,7 +794,7 @@ namespace { // Helpers for attack_type::special_active()
 			return true;
 
 		// Check for a unit match.
-		if ( !un_it.valid() || !un_it->matches_filter(vconfig(filter_child), loc) )
+		if ( !un_it.valid() || !unit_filter::matches_filter(vconfig(filter_child), *un_it, loc, resources::gameboard) )
 			return false;
 
 		// Check for a weapon match.
@@ -882,7 +884,7 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 				continue;
 			unit_map::const_iterator unit = units.find(adjacent[index]);
 			if ( unit == units.end() ||
-			     !unit->matches_filter(vconfig(i), adjacent[index]) )
+			     !unit_filter::matches_filter(vconfig(i), *unit, adjacent[index], resources::gameboard) )
 				return false;
 		}
 	}

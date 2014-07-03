@@ -23,6 +23,7 @@
 #include "resources.hpp"
 #include "unit.hpp"
 #include "unit_animation_component.hpp"
+#include "unit_filter.hpp"
 #include "variable.hpp"
 
 #include <boost/foreach.hpp>
@@ -368,7 +369,7 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 
 }
 
-int unit_animation::matches(const display &disp,const map_location& loc,const map_location& second_loc, const unit* my_unit,const std::string & event,const int value,hit_type hit,const attack_type* attack,const attack_type* second_attack, int value2) const
+int unit_animation::matches(const display &disp, const map_location& loc,const map_location& second_loc, const unit* my_unit,const std::string & event,const int value,hit_type hit,const attack_type* attack,const attack_type* second_attack, int value2) const
 {
 	int result = base_score_;
 	if(!event.empty()&&!event_.empty()) {
@@ -403,7 +404,7 @@ int unit_animation::matches(const display &disp,const map_location& loc,const ma
 		}
 		std::vector<config>::const_iterator myitor;
 		for(myitor = unit_filter_.begin(); myitor != unit_filter_.end(); ++myitor) {
-			if (!my_unit->matches_filter(vconfig(*myitor), loc)) return MATCH_FAIL;
+			if (!unit_filter::matches_filter(vconfig(*myitor), *my_unit, loc, &disp.get_disp_context())) return MATCH_FAIL;
 			++result;
 		}
 		if(!secondary_unit_filter_.empty()) {
@@ -412,7 +413,7 @@ int unit_animation::matches(const display &disp,const map_location& loc,const ma
 				if (unit->get_location() == second_loc) {
 					std::vector<config>::const_iterator second_itor;
 					for(second_itor = secondary_unit_filter_.begin(); second_itor != secondary_unit_filter_.end(); ++second_itor) {
-						if (!unit->matches_filter(vconfig(*second_itor), second_loc)) return MATCH_FAIL;
+						if (!unit_filter::matches_filter(vconfig(*second_itor), *unit, second_loc, &disp.get_disp_context())) return MATCH_FAIL;
 						result++;
 					}
 

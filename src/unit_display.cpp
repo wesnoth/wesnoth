@@ -28,6 +28,7 @@
 #include "terrain_filter.hpp"
 #include "unit.hpp"
 #include "unit_animation_component.hpp"
+#include "unit_filter.hpp"
 #include "unit_map.hpp"
 
 #include <boost/foreach.hpp>
@@ -773,7 +774,7 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 	vconfig filter = cfg.child("filter");
 	if(!filter.null()) {
 		for (u = resources::units->begin(); u != resources::units->end(); ++u) {
-			if ( u->matches_filter(filter) )
+			if ( unit_filter::matches_filter(filter, *u, resources::gameboard) )
 				break;
 		}
 	}

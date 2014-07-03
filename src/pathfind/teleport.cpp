@@ -13,12 +13,14 @@
 
 #include "pathfind/teleport.hpp"
 
+#include "game_board.hpp"
 #include "log.hpp"
 #include "resources.hpp"
 #include "serialization/string_utils.hpp"
 #include "team.hpp"
 #include "terrain_filter.hpp"
 #include "unit.hpp"
+#include "unit_filter.hpp"
 #include "unit_map.hpp"
 
 #include <boost/foreach.hpp>
@@ -74,7 +76,7 @@ void teleport_group::get_teleport_pair(
 	vconfig filter(cfg_.child_or_empty("filter"), true);
 	vconfig source(cfg_.child_or_empty("source"), true);
 	vconfig target(cfg_.child_or_empty("target"), true);
-	if (u.matches_filter(filter, loc)) {
+	if (unit_filter::matches_filter(filter, u, loc, resources::gameboard)) {
 
 		scoped_xy_unit teleport_unit("teleport_unit", loc.x, loc.y, *resources::units);
 

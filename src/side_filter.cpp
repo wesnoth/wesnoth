@@ -17,6 +17,7 @@
 #include "global.hpp"
 
 #include "config.hpp"
+#include "game_board.hpp"
 #include "log.hpp"
 #include "recall_list_manager.hpp"
 #include "resources.hpp"
@@ -26,6 +27,7 @@
 #include "serialization/string_utils.hpp"
 #include "network.hpp"
 #include "unit.hpp"
+#include "unit_filter.hpp"
 #include "unit_map.hpp"
 
 #include <boost/foreach.hpp>
@@ -134,7 +136,7 @@ bool side_filter::match_internal(const team &t) const
 			if (u.side() != t.side()) {
 				continue;
 			}
-			if (u.matches_filter(unit_filter, u.get_location(), flat_)) {
+			if (unit_filter::matches_filter(unit_filter, u, u.get_location(), resources::gameboard, flat_)) {
 				found = true;
 				break;
 			}
@@ -142,7 +144,7 @@ bool side_filter::match_internal(const team &t) const
 		if(!found && unit_filter["search_recall_list"].to_bool(false)) {
 			BOOST_FOREACH(const unit_const_ptr & u, t.recall_list()) {
 				scoped_recall_unit this_unit("this_unit", t.save_id(),t.recall_list().find_index(u->id()));
-				if(u->matches_filter(unit_filter, u->get_location(), flat_)) {
+				if(unit_filter::matches_filter(unit_filter, *u, u->get_location(), resources::gameboard, flat_)) {
 					found = true;
 					break;
 				}
