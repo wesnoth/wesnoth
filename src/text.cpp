@@ -94,6 +94,9 @@ ttext::ttext() :
 	layout_(pango_layout_new(context_)),
 	rect_(),
 	surface_(),
+#ifdef SDL_GPU
+	texture_(),
+#endif
 	text_(),
 	markedup_text_(false),
 	font_size_(14),
@@ -165,6 +168,14 @@ sdl::ttexture ttext::render_as_texture() const
 	rerender();
 	return texture_;
 }
+#else
+#ifdef SDL_GPU
+sdl::ttexture ttext::render_as_texture() const
+{
+	rerender();
+	return texture_;
+}
+#endif
 #endif
 
 int ttext::get_width() const
@@ -699,6 +710,10 @@ void ttext::rerender(const bool force) const
 #if SDL_VERSION_ATLEAST(2,0,0)
 		texture_ = CVideo::get_window()->create_texture
 				(SDL_TEXTUREACCESS_STATIC, surface_);
+#else
+#ifdef SDL_GPU
+		texture_ = sdl::ttexture(surface_);
+#endif
 #endif
 		cairo_destroy(cr);
 		cairo_surface_destroy(cairo_surface);
