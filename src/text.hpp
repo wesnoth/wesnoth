@@ -81,15 +81,6 @@ public:
 	 */
 	surface render() const;
 
-#if SDL_VERSION_ATLEAST(2,0,0)
-	/**
-	 * Returns the rendered text as a texture.
-	 *
-	 * Before rendering it tests whether a redraw is needed and if so it first
-	 * redraws the texture before returning it.
-	 */
-	sdl::ttexture render_as_texture() const;
-#else
 #ifdef SDL_GPU
 	/**
 	 * Returns the rendered text as a texture.
@@ -98,7 +89,6 @@ public:
 	 * redraws the texture before returning it.
 	 */
 	sdl::ttexture render_as_texture() const;
-#endif
 #endif
 
 	/** Returns the width needed for the text. */
