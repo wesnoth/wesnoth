@@ -887,6 +887,7 @@ set(wesnoth-main_SRC
 	scripting/lua_types.cpp
 	settings.cpp
 	side_filter.cpp
+	singleplayer.cpp
 	statistics.cpp
 	statistics_dialog.cpp
 	storyscreen/controller.cpp

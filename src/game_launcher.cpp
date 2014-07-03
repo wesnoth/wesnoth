@@ -27,8 +27,6 @@
 #include "game_config_manager.hpp"      // for game_config_manager
 #include "game_end_exceptions.hpp"      // for LEVEL_RESULT, etc
 #include "gettext.hpp"                  // for _
-#include "gui/dialogs/campaign_difficulty.hpp"
-#include "gui/dialogs/campaign_selection.hpp"  // for tcampaign_selection
 #include "gui/dialogs/language_selection.hpp"  // for tlanguage_selection
 #include "gui/dialogs/message.hpp" //for show error message
 #include "gui/dialogs/mp_host_game_prompt.hpp" //for host game prompt
@@ -54,6 +52,7 @@
 #include "sdl/utils.hpp"                // for surface
 #include "serialization/compression.hpp"  // for format::NONE
 #include "serialization/string_utils.hpp"  // for split
+#include "singleplayer.hpp"             // for sp_create_mode
 #include "statistics.hpp"
 #include "tstring.hpp"                  // for operator==, operator!=
 #include "util.hpp"                     // for lexical_cast_default
@@ -691,99 +690,8 @@ bool game_launcher::new_campaign()
 	state_ = saved_game();
 	state_.classification().campaign_type = game_classification::SCENARIO;
 
-	mp::create_engine create_eng(disp(), state_);
-	create_eng.set_current_level_type(mp::level::SP_CAMPAIGN);
-
-	std::vector<mp::create_engine::level_ptr> campaigns(
-		create_eng.get_levels_by_type_unfiltered(mp::level::SP_CAMPAIGN));
-	
-	if (campaigns.empty()) {
-	  gui2::show_error_message(disp().video(),
-				  _("No campaigns are available.\n"));
-		return false;
-	}
-
-	int campaign_num = -1;
-	bool use_deterministic_mode = false;
-	// No campaign selected from command line
-	if (jump_to_campaign_.campaign_id_.empty() == true)
-	{
-		gui2::tcampaign_selection dlg(campaigns);
-
-		try {
-			dlg.show(disp().video());
-		} catch(twml_exception& e) {
-			e.show(disp());
-			return false;
-		}
-
-		if(dlg.get_retval() != gui2::twindow::OK) {
-			return false;
-		}
-
-		campaign_num = dlg.get_choice();
-
-		use_deterministic_mode = dlg.get_deterministic();
-
-	}
-	else
-	{
-		// don't reset the campaign_id_ so we can know
-		// if we should quit the game or return to the main menu
-
-		// checking for valid campaign name
-		for(size_t i = 0; i < campaigns.size(); ++i)
-		{
-			if (campaigns[i]->data()["id"] == jump_to_campaign_.campaign_id_)
-			{
-				campaign_num = i;
-				break;
-			}
-		}
-
-		// didn't found any campaign with that id
-		if (campaign_num == -1)
-		{
-			std::cerr<<"No such campaign id to jump to: ["<<jump_to_campaign_.campaign_id_<<"]\n";
-			return false;
-		}
-	}
-
-	create_eng.set_current_level(campaign_num);
-
-	std::string random_mode = use_deterministic_mode ? "deterministic" : "";
-	state_.carryover_sides_start["random_mode"] = random_mode;
-	state_.classification().random_mode = random_mode;
-
-	std::string selected_difficulty = create_eng.select_campaign_difficulty(jump_to_campaign_.difficulty_);
-
-	if (selected_difficulty == "FAIL") return false;
-	if (selected_difficulty == "CANCEL") {
-		if (jump_to_campaign_.campaign_id_.empty() == false)
-		{
-			jump_to_campaign_.campaign_id_ = "";
-		}
-		// canceled difficulty dialog, relaunch the campaign selection dialog
-		return new_campaign();
-	}
-
-	create_eng.prepare_for_campaign(selected_difficulty);
-
-	if (jump_to_campaign_.scenario_id_.empty())
-		state_.carryover_sides_start["next_scenario"] = create_eng.current_level().data()["id"].str();
-	else {
-		state_.carryover_sides_start["next_scenario"] = jump_to_campaign_.scenario_id_;
-		create_eng.current_level().set_data(
-			resources::config_manager->game_config().find_child(
-			lexical_cast<std::string> (game_classification::MULTIPLAYER),
-			"id", jump_to_campaign_.scenario_id_));
-	}
-
-	create_eng.prepare_for_new_level();
-
-	state_.mp_settings().mp_era = "era_blank";
-
-	return enter_configure_mode(disp(), resources::config_manager->game_config(), state_, true);
+	return sp_create_mode(disp(), resources::config_manager->game_config(),
+		state_, jump_to_campaign_, true);
 }
 
 std::string game_launcher::jump_to_campaign_id() const

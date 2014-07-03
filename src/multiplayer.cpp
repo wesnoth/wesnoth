@@ -489,7 +489,6 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 	gamelist.clear();
 	statistics::fresh_stats();
 
-	if (state.classification().campaign_type == game_classification::MULTIPLAYER)
 	{
 		mp::connect_engine_ptr connect_engine(new mp::connect_engine(state, local_players_only, true));
 		mp::connect ui(disp, state.mp_settings().name, game_config, gamechat, gamelist,
@@ -504,12 +503,6 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 			ui.start_game();
 		}
 	} // end connect_engine_ptr scope
-	else {
-		mp::connect_engine engine(state, local_players_only, true);
-		engine.start_game();
-		res = mp::ui::PLAY;
-		return true;
-	}
 
 	switch (res) {
 	case mp::ui::PLAY:
@@ -584,13 +577,13 @@ bool enter_configure_mode(game_display& disp, const config& game_config,
 {
 	DBG_MP << "entering configure mode" << std::endl;
 
-	bool connect_canceled = false;
+	bool connect_canceled;
 
 	do {
+		connect_canceled = false;
 
 		mp::ui::result res;
 
-		if (state.classification().campaign_type == game_classification::MULTIPLAYER)
 		{
 			mp::configure ui(disp, game_config, gamechat, gamelist, state,
 				local_players_only);
@@ -598,13 +591,7 @@ bool enter_configure_mode(game_display& disp, const config& game_config,
 			res = ui.get_result();
 			ui.get_parameters();
 		}
-		else {
-			mp::configure_engine engine(state);
-			engine.set_default_values();
-			res = connect_canceled? mp::ui::QUIT : mp::ui::CREATE;
-		}
 
-		connect_canceled = false;
 		switch (res) {
 		case mp::ui::CREATE:
 			connect_canceled = !enter_connect_mode(disp, game_config,
