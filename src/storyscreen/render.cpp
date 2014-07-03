@@ -34,11 +34,6 @@
 
 #include <boost/foreach.hpp>
 
-#if SDL_VERSION_ATLEAST(2,0,0)
-#include "sdl/texture.hpp"
-#include "sdl/window.hpp"
-#endif
-
 static lg::log_domain log_engine("engine");
 #define ERR_NG  LOG_STREAM(err,  log_engine)
 #define WARN_NG LOG_STREAM(warn, log_engine)
@@ -95,16 +90,11 @@ part_ui::part_ui(part &p, display &disp, gui::button &next_button,
 	, x_scale_factor_(1.0)
 	, y_scale_factor_(1.0)
 	, base_rect_()
-#if SDL_VERSION_ATLEAST(2,0,0)
-	, background_images_()
-	, background_positions_()
-#else
 #ifdef SDL_GPU
 	, background_images_()
 	, background_positions_()
 #else
 	, background_(NULL)
-#endif
 #endif
 	, imgs_()
 	, has_background_(false)
@@ -120,62 +110,6 @@ part_ui::part_ui(part &p, display &disp, gui::button &next_button,
 
 void part_ui::prepare_background()
 {
-#if SDL_VERSION_ATLEAST(2,0,0)
-	base_rect_.w = video_.getx();
-	base_rect_.h = video_.gety();
-	has_background_ = false;
-	bool no_base_yet = true;
-
-	BOOST_FOREACH(const background_layer& bl, p_.get_background_layers()) {
-		sdl::ttexture layer;
-
-		if (!bl.file().empty()) {
-			layer = image::get_texture(bl.file());
-		}
-		has_background_ = has_background_ || !layer.null();
-		if(layer.null() || layer.width() * layer.height() == 0) {
-			continue;
-		}
-
-		const double xscale = 1.0 * video_.getx() / layer.width();
-		const double yscale = 1.0 * video_.gety() / layer.height();
-		const bool scalev = bl.scale_vertically();
-		const bool scaleh = bl.scale_horizontally();
-		const bool keep_ratio = bl.keep_aspect_ratio();
-
-		double x_scale_factor = scaleh ? xscale : 1.0;
-		double y_scale_factor = scalev ? yscale : 1.0;
-
-		if (scalev && scaleh && keep_ratio) {
-			x_scale_factor = y_scale_factor = std::min<double>(xscale, yscale);
-		} else if (keep_ratio && scaleh) {
-			x_scale_factor = y_scale_factor = xscale;
-		} else if (keep_ratio && scalev) {
-			x_scale_factor = y_scale_factor = yscale;
-		}
-
-		layer.set_smooth_scaling(true);
-		layer.set_scale(x_scale_factor, y_scale_factor);
-		//TODO: tiling
-
-		SDL_Rect base_rect = sdl::create_rect(
-				  (video_.getx() - layer.width()) / 2
-				, (video_.gety() - layer.height()) / 2
-				, layer.width()
-				, layer.height());
-
-		background_images_.push_back(layer);
-		background_positions_.push_back(std::pair<int, int>(base_rect.x, base_rect.y));
-
-		if (bl.is_base_layer() || no_base_yet) {
-			x_scale_factor_ = x_scale_factor;
-			y_scale_factor_ = y_scale_factor;
-			base_rect_ = base_rect;
-			no_base_yet = false;
-		}
-	}
-
-#else
 #ifdef SDL_GPU
 	base_rect_.w = video_.getx();
 	base_rect_.h = video_.gety();
@@ -310,7 +244,6 @@ void part_ui::prepare_background()
 		}
 	}
 #endif
-#endif
 }
 
 void part_ui::prepare_geometry()
@@ -391,37 +324,6 @@ void part_ui::render_background()
 
 bool part_ui::render_floating_images()
 {
-#if SDL_VERSION_ATLEAST(2,0,0)
-	sdl::twindow *wnd = CVideo::get_window();
-
-	skip_ = false;
-	last_key_ = true;
-
-	size_t fi_n = 0;
-	BOOST_FOREACH(floating_image::render_input& ri, imgs_) {
-		const floating_image& fi = p_.get_floating_images()[fi_n];
-
-		if(!ri.image.null()) {
-			wnd->draw(ri.image, ri.rect.x, ri.rect.y);
-			wnd->render();
-		}
-
-		if (!skip_)
-		{
-			int delay = fi.display_delay(), delay_step = 20;
-			for (int i = 0; i != (delay + delay_step - 1) / delay_step; ++i)
-			{
-				if (handle_interface()) return false;
-				if (skip_) break;
-				disp_.delay(std::min<int>(delay_step, delay - i * delay_step));
-			}
-		}
-
-		++fi_n;
-	}
-
-	return true;
-#else
 #ifdef SDL_GPU
 	GPU_Target *target = get_render_target();
 
@@ -483,7 +385,6 @@ bool part_ui::render_floating_images()
 	}
 
 	return true;
-#endif
 #endif
 }
 
