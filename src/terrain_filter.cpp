@@ -153,9 +153,9 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 
 	//Allow filtering on unit
 	if(cfg_.has_child("filter")) {
-		const vconfig& unit_filter = cfg_.child("filter");
+		const unit_filter ufilt(vconfig(cfg_.child("filter")), fc_, flat_);
 		const unit_map::const_iterator u = fc_->get_disp_context().units().find(loc);
-		if (u == fc_->get_disp_context().units().end() || !unit_filter::matches_filter(unit_filter, *u, loc, fc_, flat_))
+		if (u == fc_->get_disp_context().units().end() || !ufilt( *u, loc))
 			return false;
 	}
 

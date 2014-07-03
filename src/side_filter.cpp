@@ -135,21 +135,22 @@ bool side_filter::match_internal(const team &t) const
 
 	//Allow filtering on units
 	if(cfg_.has_child("has_unit")) {
-		const vconfig& unit_filter = cfg_.child("has_unit");
+		const vconfig & ufilt_cfg = cfg_.child("has_unit");
+		const unit_filter ufilt(ufilt_cfg, fc_, flat_);
 		bool found = false;
 		BOOST_FOREACH(const unit &u, fc_->get_disp_context().units()) {
 			if (u.side() != t.side()) {
 				continue;
 			}
-			if (unit_filter::matches_filter(unit_filter, u, u.get_location(), fc_, flat_)) {
+			if (ufilt(u)) {
 				found = true;
 				break;
 			}
 		}
-		if(!found && unit_filter["search_recall_list"].to_bool(false)) {
+		if(!found && ufilt_cfg["search_recall_list"].to_bool(false)) {
 			BOOST_FOREACH(const unit_const_ptr & u, t.recall_list()) {
 				scoped_recall_unit this_unit("this_unit", t.save_id(),t.recall_list().find_index(u->id()));
-				if(unit_filter::matches_filter(unit_filter, *u, u->get_location(), fc_, flat_)) {
+				if(ufilt(*u)) {
 					found = true;
 					break;
 				}

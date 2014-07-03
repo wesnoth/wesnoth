@@ -135,8 +135,9 @@ void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< targe
 	if (!criteria) return;
 
 	//find the enemy leaders and explicit targets
+	const unit_filter ufilt(vconfig(criteria), resources::filter_con);
 	BOOST_FOREACH(const unit &u, *resources::units) {
-		if (unit_filter::matches_filter(vconfig(criteria), u, u.get_location(), resources::filter_con)) {
+		if (ufilt( u )) {
 			LOG_AI_GOAL << "found explicit target unit at ... " << u.get_location() << " with value: " << value() << "\n";
 			*target_list = target(u.get_location(), value(), target::EXPLICIT);
 		}
@@ -259,13 +260,14 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 
 	std::set<map_location> items;
 	if (protect_unit_) {
+		const unit_filter ufilt(vconfig(criteria), resources::filter_con);
 		BOOST_FOREACH(const unit &u, units)
 		{
 			if (protect_only_own_unit_ && u.side() != get_side()) {
 				continue;
 			}
 			//TODO: we will protect hidden units, by not testing for invisibility to current side
-			if (unit_filter::matches_filter(vconfig(criteria), u, u.get_location(), resources::filter_con)) {
+			if (ufilt(u)) {
 				DBG_AI_GOAL << "side " << get_side() << ": in " << goal_type << ": " << u.get_location() << " should be protected\n";
 				items.insert(u.get_location());
 			}

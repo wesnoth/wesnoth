@@ -74,9 +74,10 @@ namespace { // Support functions
 			std::vector<std::pair<int,int> > counts = (*u).has_attribute("count")
 				? utils::parse_ranges((*u)["count"]) : default_counts;
 			int match_count = 0;
+			const unit_filter ufilt(*u, resources::filter_con);
 			BOOST_FOREACH(const unit &i, *resources::units)
 			{
-				if ( i.hitpoints() > 0  &&  unit_filter::matches_filter(*u,i, resources::filter_con) ) {
+				if ( i.hitpoints() > 0  &&  ufilt(i) ) {
 					++match_count;
 					if(counts == default_counts) {
 						// by default a single match is enough, so avoid extra work
@@ -86,6 +87,7 @@ namespace { // Support functions
 			}
 			if ((*u)["search_recall_list"].to_bool())
 			{
+				const unit_filter ufilt(*u, resources::filter_con);
 				for(std::vector<team>::iterator team = resources::teams->begin();
 						team!=resources::teams->end(); ++team)
 				{
@@ -97,7 +99,7 @@ namespace { // Support functions
 							break;
 						}
 						scoped_recall_unit auto_store("this_unit", team->save_id(), t);
-						if ( unit_filter::matches_filter(*u,*team->recall_list()[t], resources::filter_con) ) {
+						if ( ufilt( *team->recall_list()[t] ) ) {
 							++match_count;
 						}
 					}

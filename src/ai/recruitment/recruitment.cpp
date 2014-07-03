@@ -252,8 +252,8 @@ void recruitment::execute() {
 		// we'll check if we can do a recall instead of a recruitment.
 		BOOST_FOREACH(const unit_const_ptr & recall, current_team().recall_list()) {
 			// Check if this leader is allowed to recall this unit.
-			vconfig filter = vconfig(leader->recall_filter());
-			if (!unit_filter::matches_filter(filter, *recall, map_location::null_location(), resources::filter_con)) {
+			const unit_filter ufilt( vconfig(leader->recall_filter()), resources::filter_con);
+			if (!ufilt(*recall, map_location::null_location())) {
 				continue;
 			}
 			data.recruits.insert(recall->type_id());
@@ -477,8 +477,8 @@ const std::string* recruitment::get_appropriate_recall(const std::string& type,
 			continue;
 		}
 		// Check if this leader is allowed to recall this unit.
-		vconfig filter = vconfig(leader_data.leader->recall_filter());
-		if (!unit_filter::matches_filter(filter, *recall_unit, map_location::null_location(), resources::filter_con)) {
+		const unit_filter ufilt(vconfig(leader_data.leader->recall_filter()), resources::filter_con);
+		if (!ufilt(*recall_unit, map_location::null_location())) {
 			LOG_AI_RECRUITMENT << "Refused recall because of filter: " << recall_unit->id() << "\n";
 			continue;
 		}

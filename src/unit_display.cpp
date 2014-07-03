@@ -773,8 +773,9 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 	// and if we have one, look for the matching unit
 	vconfig filter = cfg.child("filter");
 	if(!filter.null()) {
+		const unit_filter ufilt(filter, resources::filter_con);
 		for (u = resources::units->begin(); u != resources::units->end(); ++u) {
-			if ( unit_filter::matches_filter(filter, *u, resources::filter_con) )
+			if ( ufilt(*u) )
 				break;
 		}
 	}

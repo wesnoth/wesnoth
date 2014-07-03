@@ -74,9 +74,10 @@ boost::shared_ptr<attacks_vector> aspect_attacks::analyze_targets() const
 		unit_map& units_ = *resources::units;
 
 		std::vector<map_location> unit_locs;
+		const unit_filter filt_own(vconfig(filter_own_), resources::filter_con);
 		for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 			if (i->side() == get_side() && i->attacks_left() && !(i->can_recruit() && get_passive_leader())) {
-				if (!unit_filter::matches_filter(vconfig(filter_own_), *i, i->get_location(), resources::filter_con)) {
+				if (!filt_own(*i)) {
 					continue;
 				}
 				unit_locs.push_back(i->get_location());
@@ -92,25 +93,26 @@ boost::shared_ptr<attacks_vector> aspect_attacks::analyze_targets() const
 
 		unit_stats_cache().clear();
 
+		const unit_filter filt_en(vconfig(filter_enemy_), resources::filter_con);
 		for(unit_map::const_iterator j = units_.begin(); j != units_.end(); ++j) {
 
-		// Attack anyone who is on the enemy side,
-		// and who is not invisible or petrified.
-		if (current_team().is_enemy(j->side()) && !j->incapacitated() &&
-		    !j->invisible(j->get_location()))
-		{
-			if (!unit_filter::matches_filter(vconfig(filter_enemy_), *j, j->get_location(), resources::filter_con)) {
-				continue;
-			}
-			map_location adjacent[6];
-			get_adjacent_tiles(j->get_location(), adjacent);
-			attack_analysis analysis;
-			analysis.target = j->get_location();
-			analysis.vulnerability = 0.0;
-			analysis.support = 0.0;
-			do_attack_analysis(j->get_location(), srcdst, dstsrc,
-				fullmove_srcdst, fullmove_dstsrc, enemy_srcdst, enemy_dstsrc,
-				adjacent,used_locations,unit_locs,*res,analysis, current_team());
+			// Attack anyone who is on the enemy side,
+			// and who is not invisible or petrified.
+			if (current_team().is_enemy(j->side()) && !j->incapacitated() &&
+			    !j->invisible(j->get_location()))
+			{
+				if (!filt_en( *j)) {
+					continue;
+				}
+				map_location adjacent[6];
+				get_adjacent_tiles(j->get_location(), adjacent);
+				attack_analysis analysis;
+				analysis.target = j->get_location();
+				analysis.vulnerability = 0.0;
+				analysis.support = 0.0;
+				do_attack_analysis(j->get_location(), srcdst, dstsrc,
+					fullmove_srcdst, fullmove_dstsrc, enemy_srcdst, enemy_dstsrc,
+					adjacent,used_locations,unit_locs,*res,analysis, current_team());
 		}
 	}
 	return res;

@@ -856,10 +856,11 @@ static int intf_get_units(lua_State *L)
 	lua_newtable(L);
 	int i = 1;
 	unit_map &units = *resources::units;
+	const unit_filter ufilt(filter, resources::filter_con); // note that if filter is null, this yields a null filter matching everything
 	for (unit_map::const_unit_iterator ui = units.begin(), ui_end = units.end();
 	     ui != ui_end; ++ui)
 	{
-		if (!filter.null() && !unit_filter::matches_filter(filter, *ui, ui->get_location(), resources::filter_con))
+		if (!ufilt(*ui))
 			continue;
 		new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->underlying_id());
 		lua_pushvalue(L, 1);
@@ -896,11 +897,11 @@ static int intf_match_unit(lua_State *L)
 		team &t = (*resources::teams)[side - 1];
 		scoped_recall_unit auto_store("this_unit",
 			t.save_id(), t.recall_list().find_index(u->id()));
-		lua_pushboolean(L, unit_filter::matches_filter(filter, *u, map_location(), resources::filter_con));
+		lua_pushboolean(L, unit_filter(filter, resources::filter_con).matches(*u, map_location()));
 		return 1;
 	}
 
-	lua_pushboolean(L, unit_filter::matches_filter(filter, *u, u->get_location(), resources::filter_con));
+	lua_pushboolean(L, unit_filter(filter, resources::filter_con).matches(*u));
 	return 1;
 }
 
@@ -922,6 +923,7 @@ static int intf_get_recall_units(lua_State *L)
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_newtable(L);
 	int i = 1, s = 1;
+	const unit_filter ufilt(filter, resources::filter_con);
 	BOOST_FOREACH(team &t, *resources::teams)
 	{
 		BOOST_FOREACH(unit_ptr & u, t.recall_list())
@@ -929,7 +931,7 @@ static int intf_get_recall_units(lua_State *L)
 			if (!filter.null()) {
 				scoped_recall_unit auto_store("this_unit",
 					t.save_id(), t.recall_list().find_index(u->id()));
-				if (!unit_filter::matches_filter(filter, *u, map_location(), resources::filter_con))
+				if (!ufilt( *u, map_location() ))
 					continue;
 			}
 			new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(s, u->underlying_id());
@@ -2000,11 +2002,12 @@ static int intf_find_cost_map(lua_State *L)
 	else if (!filter.null())  // 1. arg - filter
 	{
 		unit_map &units = *resources::units;
+		const unit_filter ufilt(filter, resources::filter_con);
 		for (unit_map::const_unit_iterator ui = units.begin(), ui_end = units.end();
 		     ui != ui_end; ++ui)
 		{
 			bool on_map = ui->get_location().valid();
-			if (on_map && unit_filter::matches_filter(filter, *ui,ui->get_location(), resources::filter_con))
+			if (on_map && ufilt(*ui))
 			{
 				real_units. push_back(&(*ui));
 			}
