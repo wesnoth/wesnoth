@@ -17,10 +17,11 @@
 #include "global.hpp"
 
 #include "config.hpp"
+#include "display_context.hpp"
+#include "filter_context.hpp"
 #include "game_board.hpp"
 #include "log.hpp"
 #include "map.hpp"
-#include "resources.hpp"
 #include "side_filter.hpp"
 #include "team.hpp"
 #include "terrain_filter.hpp"
@@ -46,7 +47,7 @@ terrain_filter::~terrain_filter()
 #pragma warning(disable:4413)
 terrain_filter::terrain_filter():
 	cfg_(vconfig::unconstructed_vconfig()),
-	units_(unit_map()),
+	fc_(NULL),
 	cache_(),
 	max_loop_(),
 	flat_()
@@ -57,10 +58,10 @@ terrain_filter::terrain_filter():
 #endif
 
 
-terrain_filter::terrain_filter(const vconfig& cfg, const unit_map& units,
+terrain_filter::terrain_filter(const vconfig& cfg, const filter_context * fc,
 		const bool flat_tod, const size_t max_loop) :
 	cfg_(cfg),
-	units_(units),
+	fc_(fc),
 	cache_(),
 	max_loop_(max_loop),
 	flat_(flat_tod)
@@ -69,7 +70,7 @@ terrain_filter::terrain_filter(const vconfig& cfg, const unit_map& units,
 
 terrain_filter::terrain_filter(const vconfig& cfg, const terrain_filter& original) :
 	cfg_(cfg),
-	units_(original.units_),
+	fc_(original.fc_),
 	cache_(),
 	max_loop_(original.max_loop_),
 	flat_(original.flat_)
@@ -80,7 +81,7 @@ terrain_filter::terrain_filter(const terrain_filter& other) :
 	xy_pred(), // We should construct this too, since it has no datamembers
 	           // use the default constructor.
 	cfg_(other.cfg_),
-	units_(other.units_),
+	fc_(other.fc_),
 	cache_(),
 	max_loop_(other.max_loop_),
 	flat_(other.flat_)
@@ -109,7 +110,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 {
 	//Filter Areas
 	if (cfg_.has_attribute("area") &&
-		resources::tod_manager->get_area_by_id(cfg_["area"]).count(loc) == 0)
+		fc_->get_tod_man().get_area_by_id(cfg_["area"]).count(loc) == 0)
 		return false;
 
 	if(cfg_.has_attribute("terrain")) {
@@ -117,7 +118,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 			cache_.parsed_terrain = new t_translation::t_match(cfg_["terrain"]);
 		}
 		if(!cache_.parsed_terrain->is_empty) {
-			const t_translation::t_terrain letter = resources::gameboard->map().get_terrain_info(loc).number();
+			const t_translation::t_terrain letter = fc_->get_disp_context().map().get_terrain_info(loc).number();
 			if(!t_translation::terrain_matches(letter, *cache_.parsed_terrain)) {
 				return false;
 			}
@@ -153,8 +154,8 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	//Allow filtering on unit
 	if(cfg_.has_child("filter")) {
 		const vconfig& unit_filter = cfg_.child("filter");
-		const unit_map::const_iterator u = units_.find(loc);
-		if (u == units_.end() || !unit_filter::matches_filter(unit_filter, *u, loc, resources::filter_con, flat_))
+		const unit_map::const_iterator u = fc_->get_disp_context().units().find(loc);
+		if (u == fc_->get_disp_context().units().end() || !unit_filter::matches_filter(unit_filter, *u, loc, fc_, flat_))
 			return false;
 	}
 
@@ -166,11 +167,11 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 			bool visible = (*i)["visible"].to_bool(true);
 			bool respect_fog = (*i)["respect_fog"].to_bool(true);
 
-			side_filter ssf(*i, resources::filter_con);
+			side_filter ssf(*i, fc_);
 			std::vector<int> sides = ssf.get_teams();
 
 			BOOST_FOREACH(const int side, sides) {
-				const team &viewing_team = resources::teams->at(side - 1);
+				const team &viewing_team = fc_->get_disp_context().teams().at(side - 1);
 				bool viewer_sees = respect_fog ? !viewing_team.fogged(loc) : !viewing_team.shrouded(loc);
 				if (visible != viewer_sees) {
 					return false;
@@ -193,7 +194,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 			std::vector<map_location::DIRECTION>::const_iterator j, j_end = dirs.end();
 			for (j = dirs.begin(); j != j_end; ++j) {
 				map_location &adj = adjacent[*j];
-				if (resources::gameboard->map().on_board(adj)) {
+				if (fc_->get_disp_context().map().on_board(adj)) {
 					if(cache_.adjacent_matches == NULL) {
 						while(index >= std::distance(cache_.adjacent_match_cache.begin(), cache_.adjacent_match_cache.end())) {
 							const vconfig& adj_cfg = adj_cfgs[cache_.adjacent_match_cache.size()];
@@ -242,9 +243,9 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 		time_of_day tod;
 
 		if(flat_) {
-			tod = resources::tod_manager->get_time_of_day(loc);
+			tod = fc_->get_tod_man().get_time_of_day(loc);
 		} else {
-			tod = resources::tod_manager->get_illuminated_time_of_day(resources::gameboard->units(), resources::gameboard->map(),loc);
+			tod = fc_->get_tod_man().get_illuminated_time_of_day(fc_->get_disp_context().units(), fc_->get_disp_context().map(),loc);
 		}
 
 		if(!tod_type.empty()) {
@@ -285,15 +286,15 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 		if(!owner_side.empty()) {
 			WRN_NG << "duplicate side information in a SLF, ignoring inline owner_side=" << std::endl;
 		}
-		if(!resources::gameboard->map().is_village(loc))
+		if(!fc_->get_disp_context().map().is_village(loc))
 			return false;
-		side_filter ssf(filter_owner, resources::filter_con);
+		side_filter ssf(filter_owner, fc_);
 		const std::vector<int>& sides = ssf.get_teams();
 		bool found = false;
-		if(sides.empty() && resources::gameboard->village_owner(loc) == -1)
+		if(sides.empty() && fc_->get_disp_context().village_owner(loc) == -1)
 			found = true;
 		BOOST_FOREACH(const int side, sides) {
-			if(resources::teams->at(side - 1).owns_village(loc)) {
+			if(fc_->get_disp_context().teams().at(side - 1).owns_village(loc)) {
 				found = true;
 				break;
 			}
@@ -303,7 +304,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	}
 	else if(!owner_side.empty()) {
 		const int side_index = owner_side.to_int(0) - 1;
-		if(resources::gameboard->village_owner(loc) != side_index) {
+		if(fc_->get_disp_context().village_owner(loc) != side_index) {
 			return false;
 		}
 	}
@@ -314,7 +315,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 bool terrain_filter::match(const map_location& loc) const
 {
 	if(cfg_["x"] == "recall" && cfg_["y"] == "recall") {
-		return !resources::gameboard->map().on_board(loc);
+		return !fc_->get_disp_context().map().on_board(loc);
 	}
 	std::set<map_location> hexes;
 	std::vector<map_location> loc_vec(1, loc);
@@ -330,9 +331,9 @@ bool terrain_filter::match(const map_location& loc) const
 		hexes.insert(loc_vec.begin(), loc_vec.end());
 	else if ( cfg_.has_child("filter_radius") ) {
 		terrain_filter r_filter(cfg_.child("filter_radius"), *this);
-		get_tiles_radius(resources::gameboard->map(), loc_vec, radius, hexes, false, r_filter);
+		get_tiles_radius(fc_->get_disp_context().map(), loc_vec, radius, hexes, false, r_filter);
 	} else {
-		get_tiles_radius(resources::gameboard->map(), loc_vec, radius, hexes);
+		get_tiles_radius(fc_->get_disp_context().map(), loc_vec, radius, hexes);
 	}
 
 	size_t loop_count = 0;
@@ -390,9 +391,9 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			&& !cfg_.has_attribute("area") ) {
 
 		//consider all locations on the map
-		int bs = resources::gameboard->map().border_size();
-		int w = with_border ? resources::gameboard->map().w() + bs : resources::gameboard->map().w();
-		int h = with_border ? resources::gameboard->map().h() + bs : resources::gameboard->map().h();
+		int bs = fc_->get_disp_context().map().border_size();
+		int w = with_border ? fc_->get_disp_context().map().w() + bs : fc_->get_disp_context().map().w();
+		int h = with_border ? fc_->get_disp_context().map().h() + bs : fc_->get_disp_context().map().h();
 		for (int x = with_border ? 0 - bs : 0; x < w; ++x) {
 			for (int y = with_border ? 0 - bs : 0; y < h; ++y) {
 				match_set.insert(map_location(x,y));
@@ -406,7 +407,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			&& !cfg_.has_attribute("area") ) {
 
 		std::vector<map_location> xy_vector;
-		xy_vector = resources::gameboard->map().parse_location_range(cfg_["x"], cfg_["y"], with_border);
+		xy_vector = fc_->get_disp_context().map().parse_location_range(cfg_["x"], cfg_["y"], with_border);
 		match_set.insert(xy_vector.begin(), xy_vector.end());
 	} else
 
@@ -435,7 +436,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			&& !cfg_.has_attribute("find_in")
 			&& cfg_.has_attribute("area") ) {
 
-		const std::set<map_location>& area = resources::tod_manager->get_area_by_id(cfg_["area"]);
+		const std::set<map_location>& area = fc_->get_tod_man().get_area_by_id(cfg_["area"]);
 		match_set.insert(area.begin(), area.end());
 	} else
 
@@ -445,7 +446,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			&& !cfg_.has_attribute("area") ) {
 
 		std::vector<map_location> xy_vector;
-		xy_vector = resources::gameboard->map().parse_location_range(cfg_["x"], cfg_["y"], with_border);
+		xy_vector = fc_->get_disp_context().map().parse_location_range(cfg_["x"], cfg_["y"], with_border);
 		match_set.insert(xy_vector.begin(), xy_vector.end());
 
 		// remove any locations not found in the specified variable
@@ -478,8 +479,8 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			&& cfg_.has_attribute("area") ) {
 
 		std::vector<map_location> xy_vector;
-		xy_vector = resources::gameboard->map().parse_location_range(cfg_["x"], cfg_["y"], with_border);
-		const std::set<map_location>& area = resources::tod_manager->get_area_by_id(cfg_["area"]);
+		xy_vector = fc_->get_disp_context().map().parse_location_range(cfg_["x"], cfg_["y"], with_border);
+		const std::set<map_location>& area = fc_->get_tod_man().get_area_by_id(cfg_["area"]);
 
 		BOOST_FOREACH(const map_location& loc, xy_vector) {
 			if (area.count(loc) != 0)
@@ -492,7 +493,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			&& cfg_.has_attribute("find_in")
 			&& cfg_.has_attribute("area") ) {
 
-		const std::set<map_location>& area = resources::tod_manager->get_area_by_id(cfg_["area"]);
+		const std::set<map_location>& area = fc_->get_tod_man().get_area_by_id(cfg_["area"]);
 
 		//use content of find_in as starting set
 		variable_info vi(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
@@ -517,10 +518,10 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			&& cfg_.has_attribute("area") ) {
 
 		const std::vector<map_location>& xy_vector =
-				resources::gameboard->map().parse_location_range(cfg_["x"], cfg_["y"], with_border);
+				fc_->get_disp_context().map().parse_location_range(cfg_["x"], cfg_["y"], with_border);
 		std::set<map_location> xy_set(xy_vector.begin(), xy_vector.end());
 
-		const std::set<map_location>& area = resources::tod_manager->get_area_by_id(cfg_["area"]);
+		const std::set<map_location>& area = fc_->get_tod_man().get_area_by_id(cfg_["area"]);
 
 		//use content of find_in as starting set
 		variable_info vi(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
@@ -630,9 +631,9 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		std::vector<map_location> xy_vector (match_set.begin(), match_set.end());
 		if(cfg_.has_child("filter_radius")) {
 			terrain_filter r_filter(cfg_.child("filter_radius"), *this);
-			get_tiles_radius(resources::gameboard->map(), xy_vector, radius, locs, with_border, r_filter);
+			get_tiles_radius(fc_->get_disp_context().map(), xy_vector, radius, locs, with_border, r_filter);
 		} else {
-			get_tiles_radius(resources::gameboard->map(), xy_vector, radius, locs, with_border);
+			get_tiles_radius(fc_->get_disp_context().map(), xy_vector, radius, locs, with_border);
 		}
 	} else {
 		locs.insert(match_set.begin(), match_set.end());

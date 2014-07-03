@@ -114,7 +114,7 @@ namespace { // Support functions
 		backwards_compat = backwards_compat && have_location.empty();
 		for(vconfig::child_list::const_iterator v = have_location.begin(); v != have_location.end(); ++v) {
 			std::set<map_location> res;
-			terrain_filter(*v, *resources::units).get_locations(res);
+			terrain_filter(*v, resources::filter_con).get_locations(res);
 
 			std::vector<std::pair<int,int> > counts = (*v).has_attribute("count")
 				? utils::parse_ranges((*v)["count"]) : default_counts;

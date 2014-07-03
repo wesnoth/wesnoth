@@ -24,6 +24,7 @@
 #include "ai/lua/core.hpp"
 #include "ai/lua/lua_object.hpp"
 #include "ai/manager.hpp"
+#include "filter_context.hpp"
 #include "game_board.hpp"
 #include "log.hpp"
 #include "map_location.hpp"
@@ -165,7 +166,7 @@ void target_location_goal::on_create()
 	}
 	const config &criteria = cfg_.child("criteria");
 	if (criteria) {
-		filter_ptr_ = boost::shared_ptr<terrain_filter>(new terrain_filter(vconfig(criteria),*resources::units));
+		filter_ptr_ = boost::shared_ptr<terrain_filter>(new terrain_filter(vconfig(criteria),resources::filter_con));
 	}
 }
 
@@ -221,7 +222,7 @@ void protect_goal::on_create()
 	}
 	const config &criteria = cfg_.child("criteria");
 	if (criteria) {
-		filter_ptr_ = boost::shared_ptr<terrain_filter>(new terrain_filter(vconfig(criteria),*resources::units));
+		filter_ptr_ = boost::shared_ptr<terrain_filter>(new terrain_filter(vconfig(criteria),resources::filter_con));
 	}
 
 

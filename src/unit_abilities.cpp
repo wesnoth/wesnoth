@@ -328,7 +328,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 			if (index == map_location::NDIRECTIONS) {
 				continue;
 			}
-			terrain_filter adj_filter(vconfig(i), units);
+			terrain_filter adj_filter(vconfig(i), resources::filter_con);
 			adj_filter.flatten(illuminates);
 			if(!adj_filter.match(adjacent[index])) {
 				return false;
@@ -898,7 +898,7 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 				map_location::parse_direction(j);
 			if (index == map_location::NDIRECTIONS)
 				continue;
-			terrain_filter adj_filter(vconfig(i), units);
+			terrain_filter adj_filter(vconfig(i), resources::filter_con);
 			if(!adj_filter.match(adjacent[index])) {
 				return false;
 			}

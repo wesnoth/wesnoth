@@ -117,7 +117,7 @@ bool internal_matches_filter(const vconfig& cfg, const unit & u, const map_locat
 	if(cfg.has_child("filter_location")) {
 		assert(fc != NULL);
 		const vconfig& t_cfg = cfg.child("filter_location");
-		terrain_filter t_filter(t_cfg, fc->get_disp_context().units(), use_flat_tod);
+		terrain_filter t_filter(t_cfg, fc, use_flat_tod);
 		if(!t_filter.match(loc)) {
 			return false;
 		}

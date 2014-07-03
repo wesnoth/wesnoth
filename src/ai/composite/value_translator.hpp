@@ -179,10 +179,10 @@ public:
 	static terrain_filter cfg_to_value(const config &cfg)
 	{
 		if (const config &v = cfg.child("value")) {
-			return terrain_filter(vconfig(v), *resources::units);
+			return terrain_filter(vconfig(v), resources::filter_con);
 		}
 		static config c("not");
-		return terrain_filter(vconfig(c),*resources::units);
+		return terrain_filter(vconfig(c),resources::filter_con);
 	}
 
 	static void cfg_to_value(const config &cfg, terrain_filter &value)
@@ -442,7 +442,7 @@ public:
 	static terrain_filter variant_to_value(const variant &var)
 	{
 		static config c("not");
-		terrain_filter value(vconfig(c),*resources::units);
+		terrain_filter value(vconfig(c),resources::filter_con);
 		variant_to_value(var,value);
 		return value;
 	}

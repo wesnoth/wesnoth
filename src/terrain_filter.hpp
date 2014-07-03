@@ -21,6 +21,7 @@
 #include "variable.hpp"
 
 class config;
+class filter_context;
 class unit;
 class unit_map;
 class team;
@@ -37,7 +38,7 @@ public:
 #endif
 
 	terrain_filter(const vconfig& cfg,
-		const unit_map& units, const bool flat_tod=false, const size_t max_loop=game_config::max_loop);
+		const filter_context * fc, const bool flat_tod=false, const size_t max_loop=game_config::max_loop);
 	terrain_filter(const vconfig& cfg, const terrain_filter& original);
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	~terrain_filter();
@@ -66,7 +67,7 @@ private:
 	bool match_internal(const map_location& loc, const bool ignore_xy) const;
 
 	const vconfig cfg_; //config contains WML for a Standard Location Filter
-	const unit_map& units_;
+	const filter_context * fc_;
 
 	struct terrain_filter_cache {
 		terrain_filter_cache() :

@@ -449,7 +449,7 @@ namespace { // Support functions
 
 		// Filter the locations.
 		std::set<map_location> locs;
-		const terrain_filter t_filter(cfg, *resources::units);
+		const terrain_filter t_filter(cfg, resources::filter_con);
 		t_filter.get_locations(locs, true);
 
 		// Loop through sides.
@@ -485,7 +485,7 @@ namespace { // Support functions
 
 		// Filter the locations.
 		std::set<map_location> locs;
-		const terrain_filter filter(cfg, *resources::units);
+		const terrain_filter filter(cfg, resources::filter_con);
 		filter.get_locations(locs, true);
 
 		BOOST_FOREACH(const int &side_num, sides)
@@ -2398,7 +2398,7 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 			id = ids;
 		}
 		std::set<map_location> locs;
-		const terrain_filter filter(cfg, *resources::units);
+		const terrain_filter filter(cfg, resources::filter_con);
 		filter.get_locations(locs, true);
 		config parsed_cfg = cfg.get_parsed_config();
 		resources::tod_manager->add_time_area(id, locs, parsed_cfg);

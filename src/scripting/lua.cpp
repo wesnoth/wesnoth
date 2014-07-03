@@ -41,6 +41,7 @@
 #include "config.hpp"                   // for config, etc
 #include "display_chat_manager.hpp"	// for clear_chat_messages
 #include "filesystem.hpp"               // for get_wml_location
+#include "filter_context.hpp"
 #include "font.hpp"                     // for LABEL_COLOR
 #include "game_board.hpp"               // for game_board
 #include "game_classification.hpp"      // for game_classification, etc
@@ -2119,7 +2120,7 @@ static int intf_find_cost_map(lua_State *L)
 	{
 		filter = vconfig(config(), true);
 	}
-	const terrain_filter t_filter(filter, *resources::units);
+	const terrain_filter t_filter(filter, resources::filter_con);
 	t_filter.get_locations(location_set, true);
 	++arg;
 
@@ -3163,7 +3164,7 @@ static int intf_get_locations(lua_State *L)
 	vconfig filter = luaW_checkvconfig(L, 1);
 
 	std::set<map_location> res;
-	const terrain_filter t_filter(filter, *resources::units);
+	const terrain_filter t_filter(filter, resources::filter_con);
 	t_filter.get_locations(res, true);
 
 	lua_createtable(L, res.size(), 0);
@@ -3195,7 +3196,7 @@ static int intf_get_villages(lua_State *L)
 	vconfig filter = luaW_checkvconfig(L, 1);
 
 	for(std::vector<map_location>::const_iterator it = locs.begin(); it != locs.end(); ++it) {
-		bool matches = terrain_filter(filter, *resources::units).match(*it);
+		bool matches = terrain_filter(filter, resources::filter_con).match(*it);
 		if (matches) {
 			lua_createtable(L, 2, 0);
 			lua_pushinteger(L, it->x + 1);
@@ -3226,7 +3227,7 @@ static int intf_match_location(lua_State *L)
 		return 1;
 	}
 
-	const terrain_filter t_filter(filter, *resources::units);
+	const terrain_filter t_filter(filter, resources::filter_con);
 	lua_pushboolean(L, t_filter.match(map_location(x, y)));
 	return 1;
 }

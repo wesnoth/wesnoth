@@ -80,10 +80,10 @@ void teleport_group::get_teleport_pair(
 
 		scoped_xy_unit teleport_unit("teleport_unit", loc.x, loc.y, *resources::units);
 
-		terrain_filter source_filter(source, *units);
+		terrain_filter source_filter(source, resources::filter_con);
 		source_filter.get_locations(reversed_ ? loc_pair.second : loc_pair.first);
 
-		terrain_filter target_filter(target, *units);
+		terrain_filter target_filter(target, resources::filter_con);
 		target_filter.get_locations(reversed_ ? loc_pair.first : loc_pair.second);
 	}
 }
