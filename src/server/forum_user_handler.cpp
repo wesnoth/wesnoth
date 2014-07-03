@@ -206,7 +206,7 @@ std::string fuh::get_hash(const std::string& user) {
 		return get_detail_for_user(user, "user_password");
 	} catch (error& e) {
 		ERR_UH << "Could not retrieve password for user '" << user << "' :" << e.message << std::endl;
-		return time_t(0);
+		return "";
 	}
 }
 
@@ -215,7 +215,7 @@ std::string fuh::get_mail(const std::string& user) {
 		return get_detail_for_user(user, "user_email");
 	} catch (error& e) {
 		ERR_UH << "Could not retrieve email for user '" << user << "' :" << e.message << std::endl;
-		return time_t(0);
+		return "";
 	}
 }
 
