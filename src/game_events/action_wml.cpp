@@ -1828,9 +1828,10 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 {
 	game_data *gameinfo = resources::gamedata;
+	const std::string name = cfg["name"];
+	const std::string to_variable = cfg["to_variable"];
 	try
 	{
-		const std::string name = cfg["name"];
 		if(name.empty()) {
 			ERR_NG << "trying to set a variable with an empty name:\n" << cfg.get_config().debug();
 			return;
@@ -1847,9 +1848,8 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 			var = value;
 		}
 
-		const std::string to_variable = cfg["to_variable"];
 		if(to_variable.empty() == false) {
-			var = gameinfo->get_variable(to_variable);
+			var = gameinfo->get_variable_access_read(to_variable).as_scalar();
 		}
 
 		config::attribute_value add = cfg["add"];
@@ -2067,7 +2067,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	}
 	catch(const invalid_variablename_exception&)
 	{
-		ERR_NG << "Found invalid variablename in [set_variable] with " << cfg.get_config().debug() << "\n";
+		ERR_NG << "Found invalid variablename in \n[set_variable]\n"  << cfg.get_config().debug() << "[/set_variable]\n where name = " << name << " to_variable = " << to_variable << "\n";
 	}
 }
 
