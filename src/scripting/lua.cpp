@@ -3250,7 +3250,7 @@ static int intf_match_side(lua_State *L)
 		return 1;
 	}
 
-	side_filter s_filter(filter);
+	side_filter s_filter(filter, resources::filter_con);
 	lua_pushboolean(L, s_filter.match(side + 1));
 	return 1;
 }
@@ -3268,7 +3268,7 @@ static int intf_get_sides(lua_State* L)
 		for(unsigned side_number = 1; side_number <= resources::teams->size(); ++side_number)
 			sides.push_back(side_number);
 	} else {
-		side_filter filter(ssf);
+		side_filter filter(ssf, resources::filter_con);
 		sides = filter.get_teams();
 	}
 

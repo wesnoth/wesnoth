@@ -166,7 +166,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 			bool visible = (*i)["visible"].to_bool(true);
 			bool respect_fog = (*i)["respect_fog"].to_bool(true);
 
-			side_filter ssf(*i);
+			side_filter ssf(*i, resources::filter_con);
 			std::vector<int> sides = ssf.get_teams();
 
 			BOOST_FOREACH(const int side, sides) {
@@ -287,7 +287,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 		}
 		if(!resources::gameboard->map().is_village(loc))
 			return false;
-		side_filter ssf(filter_owner);
+		side_filter ssf(filter_owner, resources::filter_con);
 		const std::vector<int>& sides = ssf.get_teams();
 		bool found = false;
 		if(sides.empty() && resources::gameboard->village_owner(loc) == -1)

@@ -375,11 +375,11 @@ namespace { // Support functions
 
 		if (!ssf.null()) {
 			if(!sides.empty()) { WRN_NG << "ignoring duplicate side filter information (inline side=)" << std::endl; }
-			side_filter filter(ssf);
+			side_filter filter(ssf, resources::filter_con);
 			return filter.get_teams();
 		}
 
-		side_filter filter(sides.str());
+		side_filter filter(sides.str(), resources::filter_con);
 		return filter.get_teams();
 	}
 
@@ -444,7 +444,7 @@ namespace { // Support functions
 	{
 		// Filter the sides.
 		const vconfig &ssf = cfg.child("filter_side");
-		const side_filter s_filter(ssf.null() ? vconfig::empty_vconfig() : ssf);
+		const side_filter s_filter(ssf.null() ? vconfig::empty_vconfig() : ssf, resources::filter_con);
 		const std::vector<int> sides = s_filter.get_teams();
 
 		// Filter the locations.
@@ -1121,10 +1121,10 @@ WML_HANDLER_FUNCTION(modify_ai, /*event_info*/, cfg)
 			ERR_NG << "duplicate side information in [modify_ai]" << std::endl;
 			return;
 		}
-		side_filter ssf(filter_side);
+		side_filter ssf(filter_side, resources::filter_con);
 		sides = ssf.get_teams();
 	} else {
-		side_filter ssf(cfg);
+		side_filter ssf(cfg, resources::filter_con);
 		sides = ssf.get_teams();
 	}
 	BOOST_FOREACH(const int &side_num, sides)
@@ -1607,7 +1607,7 @@ WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 	}
 
 	if (clear_shroud_bool) {
-		side_filter filter(cfg);
+		side_filter filter(cfg, resources::filter_con);
 		BOOST_FOREACH(const int side, filter.get_teams()){
 			actions::clear_shroud(side);
 		}

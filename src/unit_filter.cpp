@@ -125,7 +125,7 @@ bool internal_matches_filter(const vconfig& cfg, const unit & u, const map_locat
 
 	const vconfig& filter_side = cfg.child("filter_side");
 	if(!filter_side.null()) {
-		side_filter s_filter(filter_side);
+		side_filter s_filter(filter_side, fc);
 		if(!s_filter.match(u.side()))
 			return false;
 	}
@@ -362,7 +362,7 @@ bool internal_matches_filter(const vconfig& cfg, const unit & u, const map_locat
 			bool visible = (*i)["visible"].to_bool(true);
 			std::set<int> viewers;
 			// Use standard side filter
-			side_filter ssf(*i);
+			side_filter ssf(*i, fc);
 			std::vector<int> sides = ssf.get_teams();
 			viewers.insert(sides.begin(), sides.end());
 			if (viewers.empty()) {
