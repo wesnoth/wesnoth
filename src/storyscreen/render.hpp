@@ -91,7 +91,12 @@ private:
 	std::vector< sdl::ttexture > background_images_;
 	std::vector< std::pair<int, int> > background_positions_;
 #else
+#ifdef SDL_GPU
+	std::vector< sdl::ttexture > background_images_;
+	std::vector< std::pair<int, int> > background_positions_;
+#else
 	surface background_;
+#endif
 #endif
 	std::vector< floating_image::render_input > imgs_;
 	bool has_background_;
