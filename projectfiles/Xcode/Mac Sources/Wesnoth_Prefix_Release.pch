@@ -1,0 +1,7 @@
+//
+// This is now needed for release builds of the 'Wesnoth' target in the 'Wesnoth' project
+// because somehow sys/types.h does not seem to be added automatically in the latest Xcode
+// any more for the combination of SDKs and build targets used for release builds.
+//
+
+#include <sys/types.h>
