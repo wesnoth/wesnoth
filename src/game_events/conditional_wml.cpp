@@ -21,6 +21,7 @@
 #include "conditional_wml.hpp"
 
 #include "../config.hpp"
+#include "../game_board.hpp"
 #include "../game_data.hpp"
 #include "../log.hpp"
 #include "../recall_list_manager.hpp"
@@ -29,6 +30,7 @@
 #include "../team.hpp"
 #include "../terrain_filter.hpp"
 #include "../unit.hpp"
+#include "../unit_filter.hpp"
 #include "../unit_map.hpp"
 #include "../unit_types.hpp"
 #include "../util.hpp"
@@ -72,9 +74,10 @@ namespace { // Support functions
 			std::vector<std::pair<int,int> > counts = (*u).has_attribute("count")
 				? utils::parse_ranges((*u)["count"]) : default_counts;
 			int match_count = 0;
+			const unit_filter ufilt(*u, resources::filter_con);
 			BOOST_FOREACH(const unit &i, *resources::units)
 			{
-				if ( i.hitpoints() > 0  &&  i.matches_filter(*u) ) {
+				if ( i.hitpoints() > 0  &&  ufilt(i) ) {
 					++match_count;
 					if(counts == default_counts) {
 						// by default a single match is enough, so avoid extra work
@@ -84,6 +87,7 @@ namespace { // Support functions
 			}
 			if ((*u)["search_recall_list"].to_bool())
 			{
+				const unit_filter ufilt(*u, resources::filter_con);
 				for(std::vector<team>::iterator team = resources::teams->begin();
 						team!=resources::teams->end(); ++team)
 				{
@@ -95,7 +99,7 @@ namespace { // Support functions
 							break;
 						}
 						scoped_recall_unit auto_store("this_unit", team->save_id(), t);
-						if ( team->recall_list()[t]->matches_filter(*u) ) {
+						if ( ufilt( *team->recall_list()[t] ) ) {
 							++match_count;
 						}
 					}
@@ -112,7 +116,7 @@ namespace { // Support functions
 		backwards_compat = backwards_compat && have_location.empty();
 		for(vconfig::child_list::const_iterator v = have_location.begin(); v != have_location.end(); ++v) {
 			std::set<map_location> res;
-			terrain_filter(*v, *resources::units).get_locations(res);
+			terrain_filter(*v, resources::filter_con).get_locations(res);
 
 			std::vector<std::pair<int,int> > counts = (*v).has_attribute("count")
 				? utils::parse_ranges((*v)["count"]) : default_counts;

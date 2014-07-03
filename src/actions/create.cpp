@@ -25,6 +25,7 @@
 
 #include "../config.hpp"
 #include "../config_assign.hpp"
+#include "../filter_context.hpp"
 #include "../game_board.hpp"
 #include "../game_display.hpp"
 #include "../game_events/pump.hpp"
@@ -44,6 +45,7 @@
 #include "../team.hpp"
 #include "../unit.hpp"
 #include "../unit_display.hpp"
+#include "../unit_filter.hpp"
 #include "../variable.hpp"
 #include "../whiteboard/manager.hpp"
 
@@ -429,7 +431,8 @@ namespace { // Helpers for get_recalls()
 				// Only units that match the leader's recall filter are valid.
 				scoped_recall_unit this_unit("this_unit", save_id, leader_team.recall_list().find_index(recall_unit.id()));
 
-				if ( recall_unit.matches_filter(vconfig(leader->recall_filter()), map_location::null_location()) )
+				const unit_filter ufilt(vconfig(leader->recall_filter()), resources::filter_con);
+				if ( ufilt(recall_unit, map_location::null_location()) )
 				{
 					result.push_back(recall_unit_ptr);
 					if ( already_added != NULL )
@@ -527,8 +530,9 @@ namespace { // Helpers for check_recall_location()
 		team& recall_team = (*resources::teams)[recaller.side()-1];
 		scoped_recall_unit this_unit("this_unit", recall_team.save_id(),
 						recall_team.recall_list().find_index(recall_unit.id()));
-		if ( !recall_unit.matches_filter(vconfig(recaller.recall_filter()),
-		                                 map_location::null_location()) )
+
+		const unit_filter ufilt(vconfig(recaller.recall_filter()), resources::filter_con);
+		if ( !ufilt(recall_unit, map_location::null_location()) )
 			return RECRUIT_NO_ABLE_LEADER;
 
 		// Make sure the unit is on a keep.

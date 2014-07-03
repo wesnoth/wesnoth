@@ -41,6 +41,7 @@
 #include "config.hpp"                   // for config, etc
 #include "display_chat_manager.hpp"	// for clear_chat_messages
 #include "filesystem.hpp"               // for get_wml_location
+#include "filter_context.hpp"
 #include "font.hpp"                     // for LABEL_COLOR
 #include "game_board.hpp"               // for game_board
 #include "game_classification.hpp"      // for game_classification, etc
@@ -98,6 +99,7 @@
 #include "tstring.hpp"                  // for t_string, operator+
 #include "unit.hpp"                     // for unit, intrusive_ptr_add_ref, etc
 #include "unit_animation_component.hpp"  // for unit_animation_component
+#include "unit_filter.hpp"
 #include "unit_map.hpp"  // for unit_map, etc
 #include "unit_ptr.hpp"                 // for unit_const_ptr, unit_ptr
 #include "unit_types.hpp"    // for unit_type_data, unit_types, etc
@@ -854,10 +856,11 @@ static int intf_get_units(lua_State *L)
 	lua_newtable(L);
 	int i = 1;
 	unit_map &units = *resources::units;
+	const unit_filter ufilt(filter, resources::filter_con); // note that if filter is null, this yields a null filter matching everything
 	for (unit_map::const_unit_iterator ui = units.begin(), ui_end = units.end();
 	     ui != ui_end; ++ui)
 	{
-		if (!filter.null() && !ui->matches_filter(filter, ui->get_location()))
+		if (!ufilt(*ui))
 			continue;
 		new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->underlying_id());
 		lua_pushvalue(L, 1);
@@ -894,11 +897,11 @@ static int intf_match_unit(lua_State *L)
 		team &t = (*resources::teams)[side - 1];
 		scoped_recall_unit auto_store("this_unit",
 			t.save_id(), t.recall_list().find_index(u->id()));
-		lua_pushboolean(L, u->matches_filter(filter, map_location()));
+		lua_pushboolean(L, unit_filter(filter, resources::filter_con).matches(*u, map_location()));
 		return 1;
 	}
 
-	lua_pushboolean(L, u->matches_filter(filter, u->get_location()));
+	lua_pushboolean(L, unit_filter(filter, resources::filter_con).matches(*u));
 	return 1;
 }
 
@@ -920,6 +923,7 @@ static int intf_get_recall_units(lua_State *L)
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_newtable(L);
 	int i = 1, s = 1;
+	const unit_filter ufilt(filter, resources::filter_con);
 	BOOST_FOREACH(team &t, *resources::teams)
 	{
 		BOOST_FOREACH(unit_ptr & u, t.recall_list())
@@ -927,7 +931,7 @@ static int intf_get_recall_units(lua_State *L)
 			if (!filter.null()) {
 				scoped_recall_unit auto_store("this_unit",
 					t.save_id(), t.recall_list().find_index(u->id()));
-				if (!u->matches_filter(filter, map_location()))
+				if (!ufilt( *u, map_location() ))
 					continue;
 			}
 			new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(s, u->underlying_id());
@@ -1998,11 +2002,12 @@ static int intf_find_cost_map(lua_State *L)
 	else if (!filter.null())  // 1. arg - filter
 	{
 		unit_map &units = *resources::units;
+		const unit_filter ufilt(filter, resources::filter_con);
 		for (unit_map::const_unit_iterator ui = units.begin(), ui_end = units.end();
 		     ui != ui_end; ++ui)
 		{
 			bool on_map = ui->get_location().valid();
-			if (on_map && ui->matches_filter(filter, ui->get_location()))
+			if (on_map && ufilt(*ui))
 			{
 				real_units. push_back(&(*ui));
 			}
@@ -2118,7 +2123,7 @@ static int intf_find_cost_map(lua_State *L)
 	{
 		filter = vconfig(config(), true);
 	}
-	const terrain_filter t_filter(filter, *resources::units);
+	const terrain_filter t_filter(filter, resources::filter_con);
 	t_filter.get_locations(location_set, true);
 	++arg;
 
@@ -3162,7 +3167,7 @@ static int intf_get_locations(lua_State *L)
 	vconfig filter = luaW_checkvconfig(L, 1);
 
 	std::set<map_location> res;
-	const terrain_filter t_filter(filter, *resources::units);
+	const terrain_filter t_filter(filter, resources::filter_con);
 	t_filter.get_locations(res, true);
 
 	lua_createtable(L, res.size(), 0);
@@ -3194,7 +3199,7 @@ static int intf_get_villages(lua_State *L)
 	vconfig filter = luaW_checkvconfig(L, 1);
 
 	for(std::vector<map_location>::const_iterator it = locs.begin(); it != locs.end(); ++it) {
-		bool matches = terrain_filter(filter, *resources::units).match(*it);
+		bool matches = terrain_filter(filter, resources::filter_con).match(*it);
 		if (matches) {
 			lua_createtable(L, 2, 0);
 			lua_pushinteger(L, it->x + 1);
@@ -3225,7 +3230,7 @@ static int intf_match_location(lua_State *L)
 		return 1;
 	}
 
-	const terrain_filter t_filter(filter, *resources::units);
+	const terrain_filter t_filter(filter, resources::filter_con);
 	lua_pushboolean(L, t_filter.match(map_location(x, y)));
 	return 1;
 }
@@ -3249,7 +3254,7 @@ static int intf_match_side(lua_State *L)
 		return 1;
 	}
 
-	side_filter s_filter(filter);
+	side_filter s_filter(filter, resources::filter_con);
 	lua_pushboolean(L, s_filter.match(side + 1));
 	return 1;
 }
@@ -3267,7 +3272,7 @@ static int intf_get_sides(lua_State* L)
 		for(unsigned side_number = 1; side_number <= resources::teams->size(); ++side_number)
 			sides.push_back(side_number);
 	} else {
-		side_filter filter(ssf);
+		side_filter filter(ssf, resources::filter_con);
 		sides = filter.get_teams();
 	}
 

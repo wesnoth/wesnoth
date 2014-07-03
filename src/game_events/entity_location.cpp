@@ -20,7 +20,9 @@
 #include "global.hpp"
 #include "entity_location.hpp"
 
+#include "../resources.hpp"
 #include "../unit.hpp"
+#include "../unit_filter.hpp"
 #include "../variable.hpp"
 
 
@@ -98,7 +100,7 @@ bool entity_location::matches_unit_filter(const unit_map::const_iterator & un_it
 
 	// Filter the unit at the filter location (should be the unit's
 	// location if no special filter location was specified).
-	return un_it->matches_filter(filter, filter_loc_)  &&
+	return unit_filter(filter, resources::filter_con).matches(*un_it, filter_loc_)  &&
 	       matches_unit(un_it);
 }
 

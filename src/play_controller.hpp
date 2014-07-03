@@ -67,7 +67,7 @@ namespace wb {
 } // namespace wb
 
 // Holds gamestate related objects
-struct game_state;
+class game_state;
 
 class play_controller : public controller_base, public events::observer, public savegame::savegame_config
 {

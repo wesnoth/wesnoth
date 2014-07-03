@@ -65,6 +65,7 @@
 #include "../unit_animation_component.hpp"
 #include "../unit_display.hpp"
 #include "../unit_helper.hpp"
+#include "../unit_filter.hpp"
 #include "../wml_exception.hpp"
 
 #include "../utils/foreach.tpp"
@@ -374,11 +375,11 @@ namespace { // Support functions
 
 		if (!ssf.null()) {
 			if(!sides.empty()) { WRN_NG << "ignoring duplicate side filter information (inline side=)" << std::endl; }
-			side_filter filter(ssf);
+			side_filter filter(ssf, resources::filter_con);
 			return filter.get_teams();
 		}
 
-		side_filter filter(sides.str());
+		side_filter filter(sides.str(), resources::filter_con);
 		return filter.get_teams();
 	}
 
@@ -404,8 +405,9 @@ namespace { // Support functions
 		} else if(speaker_str == "second_unit") {
 			speaker = units->find(event_info.loc2);
 		} else if(speaker_str != "narrator") {
+			const unit_filter ufilt(cfg, resources::filter_con);
 			for(speaker = units->begin(); speaker != units->end(); ++speaker){
-				if ( speaker->matches_filter(cfg) )
+				if ( ufilt(*speaker) )
 					break;
 			}
 		}
@@ -443,12 +445,12 @@ namespace { // Support functions
 	{
 		// Filter the sides.
 		const vconfig &ssf = cfg.child("filter_side");
-		const side_filter s_filter(ssf.null() ? vconfig::empty_vconfig() : ssf);
+		const side_filter s_filter(ssf.null() ? vconfig::empty_vconfig() : ssf, resources::filter_con);
 		const std::vector<int> sides = s_filter.get_teams();
 
 		// Filter the locations.
 		std::set<map_location> locs;
-		const terrain_filter t_filter(cfg, *resources::units);
+		const terrain_filter t_filter(cfg, resources::filter_con);
 		t_filter.get_locations(locs, true);
 
 		// Loop through sides.
@@ -484,7 +486,7 @@ namespace { // Support functions
 
 		// Filter the locations.
 		std::set<map_location> locs;
-		const terrain_filter filter(cfg, *resources::units);
+		const terrain_filter filter(cfg, resources::filter_con);
 		filter.get_locations(locs, true);
 
 		BOOST_FOREACH(const int &side_num, sides)
@@ -777,8 +779,9 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 	const vconfig & healers_filter = cfg.child("filter_second");
 	std::vector<unit*> healers;
 	if (!healers_filter.null()) {
+		const unit_filter ufilt(healers_filter, resources::filter_con);
 		BOOST_FOREACH(unit& u, *units) {
-			if ( u.matches_filter(healers_filter) && u.has_ability_type("heals") ) {
+			if ( ufilt(u) && u.has_ability_type("heals") ) {
 				healers.push_back(&u);
 			}
 		}
@@ -793,13 +796,15 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 	const vconfig & healed_filter = cfg.child("filter");
 	bool only_unit_at_loc1 = healed_filter.null();
 	bool heal_amount_to_set = true;
+
+	const unit_filter ufilt(healed_filter, resources::filter_con);
 	for(unit_map::unit_iterator u  = units->begin(); u != units->end(); ++u) {
 		if (only_unit_at_loc1)
 		{
 			u = units->find(event_info.loc1);
 			if(!u.valid()) return;
 		}
-		else if ( !u->matches_filter(healed_filter) ) continue;
+		else if ( !ufilt(*u) ) continue;
 
 		int heal_amount = u->max_hitpoints() - u->hitpoints();
 		if(amount.blank() || amount == "full") u->set_hitpoints(u->max_hitpoints());
@@ -856,9 +861,10 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 	if(cfg["fire_event"].to_bool() && secondary_unit)
 	{
 		secondary_unit = false;
+		const unit_filter ufilt(cfg.child("secondary_unit"), resources::filter_con);
 		for(unit_map::const_unit_iterator unit = resources::units->begin();
 			unit != resources::units->end(); ++unit) {
-				if ( unit->matches_filter(cfg.child("secondary_unit")) )
+				if ( ufilt( *unit) )
 				{
 					killer_loc = entity_location(*unit);
 					secondary_unit = true;
@@ -872,8 +878,9 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 
 	//Find all the dead units first, because firing events ruins unit_map iteration
 	std::vector<unit *> dead_men_walking;
+	const unit_filter ufilt(cfg, resources::filter_con);
 	BOOST_FOREACH(unit & u, *resources::units){
-		if ( u.matches_filter(cfg) ) {
+		if ( ufilt(u) ) {
 			dead_men_walking.push_back(&u);
 		}
 	}
@@ -941,13 +948,14 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 	if((cfg_x.empty() || cfg_x == "recall")
 	&& (cfg_y.empty() || cfg_y == "recall"))
 	{
+		const unit_filter ufilt(cfg, resources::filter_con);
 		//remove the unit from the corresponding team's recall list
 		for(std::vector<team>::iterator pi = resources::teams->begin();
 				pi!=resources::teams->end(); ++pi)
 		{
 			for(std::vector<unit_ptr>::iterator j = pi->recall_list().begin(); j != pi->recall_list().end();) { //TODO: This block is really messy, cleanup somehow...
 				scoped_recall_unit auto_store("this_unit", pi->save_id(), j - pi->recall_list().begin());
-				if ((*j)->matches_filter(cfg, map_location())) {
+				if (ufilt( *(*j), map_location() )) {
 					j = pi->recall_list().erase(j);
 				} else {
 					++j;
@@ -1120,10 +1128,10 @@ WML_HANDLER_FUNCTION(modify_ai, /*event_info*/, cfg)
 			ERR_NG << "duplicate side information in [modify_ai]" << std::endl;
 			return;
 		}
-		side_filter ssf(filter_side);
+		side_filter ssf(filter_side, resources::filter_con);
 		sides = ssf.get_teams();
 	} else {
-		side_filter ssf(cfg);
+		side_filter ssf(cfg, resources::filter_con);
 		sides = ssf.get_teams();
 	}
 	BOOST_FOREACH(const int &side_num, sides)
@@ -1414,8 +1422,9 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 
 	map_location loc;
 	if(!filter.null()) {
+		const unit_filter ufilt(filter, resources::filter_con);
 		BOOST_FOREACH(const unit &u, *resources::units) {
-			if ( u.matches_filter(filter) ) {
+			if ( ufilt(u) ) {
 				loc = u.get_location();
 				break;
 			}
@@ -1430,7 +1439,7 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 
 	std::string command_type = "then";
 
-	if ( u != resources::units->end()  &&  (filter.null() || u->matches_filter(filter)) )
+	if ( u != resources::units->end()  &&  (filter.null() || unit_filter(filter, resources::filter_con).matches(*u)) )
 	{
 		///@deprecated This can be removed (and a proper duration=level implemented) after 1.11.2
 		/// Don't forget to remove it from wmllint too!
@@ -1526,7 +1535,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 	 */
 	temp_config["x"] = "recall";
 	temp_config["y"] = "recall";
-	vconfig unit_filter(temp_config);
+	vconfig unit_filter_cfg(temp_config);
 	const vconfig & leader_filter = cfg.child("secondary_unit");
 
 	for(int index = 0; index < int(resources::teams->size()); ++index) {
@@ -1542,10 +1551,12 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 		recall_list_manager & avail = (*resources::teams)[index].recall_list();
 		std::vector<unit_map::unit_iterator> leaders = resources::units->find_leaders(index + 1);
 
+		const unit_filter ufilt(unit_filter_cfg, resources::filter_con);
+		const unit_filter lfilt(leader_filter, resources::filter_con); // Note that if leader_filter is null, this correctly gives a null filter that matches all units.
 		for(std::vector<unit_ptr>::iterator u = avail.begin(); u != avail.end(); ++u) {
 			DBG_NG << "checking unit against filter...\n";
 			scoped_recall_unit auto_store("this_unit", player_id, u - avail.begin());
-			if ((*u)->matches_filter(unit_filter, map_location())) {
+			if (ufilt(*(*u), map_location())) {
 				DBG_NG << (*u)->id() << " matched the filter...\n";
 				const unit_ptr to_recruit = *u;
 				const unit* pass_check = to_recruit.get();
@@ -1556,8 +1567,8 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 				BOOST_FOREACH(unit_map::const_unit_iterator leader, leaders) {
 					DBG_NG << "...considering " + leader->id() + " as the recalling leader...\n";
 					map_location loc = cfg_loc;
-					if ( (leader_filter.null() || leader->matches_filter(leader_filter))  &&
-					     (*u)->matches_filter(vconfig(leader->recall_filter()), map_location()) ) {
+					if ( lfilt(*leader)  &&
+					     unit_filter(vconfig(leader->recall_filter()), resources::filter_con).matches( *(*u),map_location() ) ) {
 						DBG_NG << "...matched the leader filter and is able to recall the unit.\n";
 						if(!resources::gameboard->map().on_board(loc))
 							loc = leader->get_location();
@@ -1606,7 +1617,7 @@ WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 	}
 
 	if (clear_shroud_bool) {
-		side_filter filter(cfg);
+		side_filter filter(cfg, resources::filter_con);
 		BOOST_FOREACH(const int side, filter.get_teams()){
 			actions::clear_shroud(side);
 		}
@@ -1719,13 +1730,13 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 	std::vector<std::string>::iterator ti = types.begin(),
 		ti_end = types.end();
 	// loop to give precedence based on type order
+	const unit_filter ufilt(filter, resources::filter_con);
 	do {
 		if (has_any_types) {
 			item["type"] = *ti;
 		}
-		unit_map::iterator itor;
 		BOOST_FOREACH(unit &u, *resources::units) {
-			if ( u.matches_filter(filter) ) {
+			if ( ufilt(u) ) {
 				u.set_role(cfg["role"]);
 				found = true;
 				break;
@@ -1745,6 +1756,7 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 		}
 		// loop to give precedence based on type order
 		std::vector<std::string>::iterator ti = types.begin();
+		const unit_filter ufilt(filter, resources::filter_con);
 		do {
 			if (has_any_types) {
 				item["type"] = *ti;
@@ -1762,7 +1774,7 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 				for(size_t i=0; i < pi->recall_list().size(); ++i) {
 					unit_ptr u = pi->recall_list()[i];
 					scoped_recall_unit auto_store("this_unit", player_id, i); //TODO: Should this not be inside the if? Explain me.
-					if (u->matches_filter(filter, map_location())) {
+					if (ufilt( *u, map_location() )) {
 						u->set_role(cfg["role"]);
 						found=true;
 						break;
@@ -2285,8 +2297,9 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	// Search for a valid unit filter, and if we have one, look for the matching unit
 	const vconfig & filter = cfg.child("filter");
 	if(!filter.null()) {
+		const unit_filter ufilt(filter, resources::filter_con);
 		for (u = resources::units->begin(); u != resources::units->end(); ++u){
-			if ( u->matches_filter(filter) )
+			if ( ufilt(*u) )
 				break;
 		}
 	}
@@ -2397,7 +2410,7 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 			id = ids;
 		}
 		std::set<map_location> locs;
-		const terrain_filter filter(cfg, *resources::units);
+		const terrain_filter filter(cfg, resources::filter_con);
 		filter.get_locations(locs, true);
 		config parsed_cfg = cfg.get_parsed_config();
 		resources::tod_manager->add_time_area(id, locs, parsed_cfg);

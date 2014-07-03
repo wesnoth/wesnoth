@@ -18,6 +18,7 @@
 #include "variable.hpp"
 
 class config;
+class filter_context;
 class unit;
 class unit_map;
 class team;
@@ -35,8 +36,8 @@ public:
 	side_filter();
 #endif
 
-	side_filter(const std::string &side_string, bool flat_tod = false);
-	side_filter(const vconfig &cfg, bool flat_tod = false);
+	side_filter(const std::string &side_string, const filter_context * fc, bool flat_tod = false);
+	side_filter(const vconfig &cfg, const filter_context * fc, bool flat_tod = false);
 
 	//match: returns true if and only if the given team matches this filter
 	bool match(const team& t) const;
@@ -54,6 +55,7 @@ private:
 	bool flat_;
 	std::string side_string_;
 
+	const filter_context * fc_; //!< The filter context for this filter. It should be a pointer because otherwise the default ctor doesn't work
 };
 
 #endif

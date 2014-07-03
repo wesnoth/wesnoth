@@ -28,6 +28,7 @@
 #include "terrain_filter.hpp"
 #include "unit.hpp"
 #include "unit_animation_component.hpp"
+#include "unit_filter.hpp"
 #include "unit_map.hpp"
 
 #include <boost/foreach.hpp>
@@ -772,8 +773,9 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 	// and if we have one, look for the matching unit
 	vconfig filter = cfg.child("filter");
 	if(!filter.null()) {
+		const unit_filter ufilt(filter, resources::filter_con);
 		for (u = resources::units->begin(); u != resources::units->end(); ++u) {
-			if ( u->matches_filter(filter) )
+			if ( ufilt(*u) )
 				break;
 		}
 	}
@@ -826,7 +828,7 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 		vconfig t_filter = cfg.child("facing");
 		map_location secondary_loc = map_location::null_location();
 		if(!t_filter.empty()) {
-			terrain_filter filter(t_filter, *resources::units);
+			terrain_filter filter(t_filter, resources::filter_con);
 			std::set<map_location> locs;
 			filter.get_locations(locs);
 			if (!locs.empty() && u->get_location() != *locs.begin()) {
