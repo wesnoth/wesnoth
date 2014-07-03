@@ -46,7 +46,11 @@ public:
 #if SDL_VERSION_ATLEAST(2,0,0)
 		sdl::ttexture image;
 #else
+#ifdef SDL_GPU
+		sdl::ttexture image;
+#else
 		surface image;	/**< Surface, scaled if required. */
+#endif
 #endif
 	};
 

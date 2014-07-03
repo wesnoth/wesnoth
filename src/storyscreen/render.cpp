@@ -422,6 +422,37 @@ bool part_ui::render_floating_images()
 
 	return true;
 #else
+#ifdef SDL_GPU
+	GPU_Target *target = get_render_target();
+
+	skip_ = false;
+	last_key_ = true;
+
+	size_t fi_n = 0;
+	BOOST_FOREACH(floating_image::render_input& ri, imgs_) {
+		const floating_image& fi = p_.get_floating_images()[fi_n];
+
+		if(!ri.image.null()) {
+			ri.image.draw(*target, ri.rect.x, ri.rect.y);
+			GPU_Flip(target);
+		}
+
+		if (!skip_)
+		{
+			int delay = fi.display_delay(), delay_step = 20;
+			for (int i = 0; i != (delay + delay_step - 1) / delay_step; ++i)
+			{
+				if (handle_interface()) return false;
+				if (skip_) break;
+				disp_.delay(std::min<int>(delay_step, delay - i * delay_step));
+			}
+		}
+
+		++fi_n;
+	}
+
+	return true;
+#else
 	events::raise_draw_event();
 	update_whole_screen();
 
@@ -452,6 +483,7 @@ bool part_ui::render_floating_images()
 	}
 
 	return true;
+#endif
 #endif
 }
 

@@ -90,6 +90,29 @@ floating_image::render_input floating_image::get_render_input(double xscale, dou
 	}
 	return ri;
 #else
+#ifdef SDL_GPU
+	render_input ri = {
+		{0,0,0,0},
+		file_.empty() ? sdl::ttexture() : image::get_texture(file_)
+	};
+
+	if(!ri.image.null()) {
+		if(autoscaled_) {
+			ri.image.set_scale(xscale, yscale);
+		}
+
+		ri.rect.x = static_cast<int>(x_*xscale) + dst_rect.x;
+		ri.rect.y = static_cast<int>(y_*yscale) + dst_rect.y;
+		ri.rect.w = ri.image.width();
+		ri.rect.h = ri.image.height();
+
+		if(centered_) {
+			ri.rect.x -= ri.rect.w / 2;
+			ri.rect.y -= ri.rect.h / 2;
+		}
+	}
+	return ri;
+#else
 	render_input ri = {
 		{0,0,0,0},
 		file_.empty() ? NULL : image::get_image(file_)
@@ -115,6 +138,7 @@ floating_image::render_input floating_image::get_render_input(double xscale, dou
 		}
 	}
 	return ri;
+#endif
 #endif
 }
 
