@@ -130,6 +130,12 @@ image::image_cache images_,
 image::texture_cache txt_images_,
 		txt_hexed_images_,
 		txt_brightened_images_;
+#else
+#ifdef SDL_GPU
+image::texture_cache txt_images_,
+		txt_hexed_images_,
+		txt_brightened_images_;
+#endif
 #endif
 
 // cache storing if each image fit in a hex
@@ -633,6 +639,18 @@ sdl::ttexture load_texture(const locator &loc, const int access)
 		return sdl::ttexture();
 	}
 }
+#else
+#ifdef SDL_GPU
+sdl::ttexture load_texture(const locator &loc)
+{
+	surface img = load_from_disk(loc);
+	if (!img.null()) {
+		return sdl::ttexture(img);
+	} else {
+		return sdl::ttexture();
+	}
+}
+#endif
 #endif
 
 manager::manager() {}
@@ -962,6 +980,68 @@ sdl::ttexture get_texture(const locator& loc, TYPE type)
 
 	return result;
 }
+#else
+#ifdef SDL_GPU
+sdl::ttexture get_texture(const locator& loc, TYPE type)
+{
+	if (loc.is_void()) {
+		return sdl::ttexture();
+	}
+
+	texture_cache *cache;
+
+	switch (type) {
+	case UNSCALED:
+	case SCALED_TO_ZOOM:
+		cache = &txt_images_;
+		break;
+	case BRIGHTENED:
+		cache = &txt_brightened_images_;
+		break;
+	case HEXED:
+	case SCALED_TO_HEX:
+	case TOD_COLORED:
+		cache = &txt_hexed_images_;
+		break;
+	default:
+		return sdl::ttexture();
+	}
+
+	if (!loc.in_cache(*cache)) {
+		if (type == UNSCALED || type == SCALED_TO_ZOOM) {
+			sdl::ttexture txt = load_texture(loc);
+			loc.add_to_cache(*cache, txt);
+		} else if (type == BRIGHTENED) {
+			surface surf = get_brightened(loc);
+			sdl::ttexture txt(surf);
+			loc.add_to_cache(*cache, txt);
+		} else {
+			surface surf = get_hexed(loc);
+			sdl::ttexture txt(surf);
+			loc.add_to_cache(*cache, txt);
+		}
+	}
+
+	sdl::ttexture result = loc.locate_in_cache(*cache);
+
+	switch (type) {
+	case UNSCALED:
+	case HEXED:
+	case BRIGHTENED:
+		break;
+	case TOD_COLORED:
+		result.set_color_mod(red_adjust, green_adjust, blue_adjust);
+	case SCALED_TO_ZOOM:
+	case SCALED_TO_HEX:
+		result.set_scale(zoom, zoom);
+		break;
+	default:
+		return sdl::ttexture();
+	}
+
+	return result;
+}
+#endif
 #endif
 
 surface get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type)
