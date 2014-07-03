@@ -18,6 +18,7 @@
 #include "config.hpp"
 #include "display_context.hpp"
 #include "filter_context.hpp"
+#include "make_enum.hpp"
 #include "map_location.hpp"
 #include "resources.hpp" //Needed for lua kernel pointer
 #include "scripting/lua.hpp" //Needed for lua kernel
@@ -31,7 +32,10 @@
 #include "variable.hpp" // needed for vconfig, scoped unit
 
 #include <boost/foreach.hpp>
+#include <boost/ptr_container/ptr_vector.hpp>
+#include <vector>
 
+///Defined out of line to prevent including unit at unit_filter.hpp
 bool unit_filter::matches(const unit & u) const {
 	return matches (u, u.get_location());
 }
@@ -41,6 +45,7 @@ bool unit_filter::matches(const unit & u) const {
 //	return false;
 //}
 
+/// Null unit filter is built when the input config is null
 class null_unit_filter_impl : public unit_filter_abstract_impl {
 public:
 	null_unit_filter_impl() {}
@@ -51,24 +56,62 @@ public:
 	~null_unit_filter_impl() {}
 };
 
+/// This enum helps to evaluate conditional filters
+namespace conditional {
+	MAKE_ENUM (TYPE,
+		(AND, "and")
+		(OR, "or")
+		(NOT, "not")
+	)
+	MAKE_ENUM_STREAM_OPS1(TYPE)
+
+	static TYPE warning_suppressor = string_to_TYPE_default("foo", NOT);
+}
+
+/// The basic unit filter gives a generic implementation of the match fcn
 class basic_unit_filter_impl : public unit_filter_abstract_impl {
 public:
 	basic_unit_filter_impl(const vconfig & vcfg, const filter_context & fc, bool flat_tod)
 		: vcfg_(vcfg)
 		, fc_(fc)
 		, use_flat_tod_(flat_tod)
-	{}
+	{
+		// Handle [and], [or], and [not] with in-order precedence
+		vconfig::all_children_iterator cond = vcfg_.ordered_begin();
+		vconfig::all_children_iterator cond_end = vcfg_.ordered_end();
+		while(cond != cond_end)
+		{
+			try {
+				const std::string& cond_name = cond.get_key();
+				conditional::TYPE type = conditional::string_to_TYPE(cond_name); // throws bad_enum_cast if we don't get a string match with any enum
+
+				const vconfig& cond_filter = cond.get_child();
+
+				cond_children_.push_back(new basic_unit_filter_impl(cond_filter, fc_, use_flat_tod_));
+				cond_child_types_.push_back(type);
+			} catch (bad_enum_cast &) {} //ignore tags that aren't conditionals
+
+			++cond;
+		}
+	}
+
 	virtual bool matches(const unit & u, const map_location & loc) const;
 
 	~basic_unit_filter_impl() {}
 private:
-	const vconfig & vcfg_;
+	const vconfig vcfg_;
 	const filter_context & fc_;
 	bool use_flat_tod_;
+
+	boost::ptr_vector<unit_filter_abstract_impl> cond_children_;
+	std::vector<conditional::TYPE> cond_child_types_;
 
 	bool internal_matches_filter(const unit & u, const map_location & loc) const;
 };
 
+/** Ctor of unit filter
+ *  unit_filter::unit_filter acts as a factory, selecting the appropriate implementation class
+ */
 unit_filter::unit_filter(const vconfig & vcfg, const filter_context * fc, bool flat_tod)
 {
 	if (!fc) {
@@ -80,6 +123,9 @@ unit_filter::unit_filter(const vconfig & vcfg, const filter_context * fc, bool f
 	impl_.reset(new basic_unit_filter_impl(vcfg, *fc, flat_tod));
 	//TODO: Add more efficient implementations for special cases
 }
+
+/** Begin implementations of filter impl's
+ */
 
 bool basic_unit_filter_impl::matches(const unit & u, const map_location& loc) const
 {
@@ -94,28 +140,17 @@ bool basic_unit_filter_impl::matches(const unit & u, const map_location& loc) co
 	}
 
 	// Handle [and], [or], and [not] with in-order precedence
-	vconfig::all_children_iterator cond = vcfg_.ordered_begin();
-	vconfig::all_children_iterator cond_end = vcfg_.ordered_end();
-	while(cond != cond_end)
-	{
-
-		const std::string& cond_name = cond.get_key();
-		const vconfig& cond_filter = cond.get_child();
-
-		// Handle [and]
-		if(cond_name == "and") {
-			matches = matches && unit_filter(cond_filter, &fc_, use_flat_tod_).matches(u, loc);
+	for (size_t i = 0; i < cond_children_.size(); i++) {
+		switch (cond_child_types_[i]) {
+			case conditional::AND:
+				matches = matches && cond_children_[i].matches(u,loc);
+				break;
+			case conditional::OR:
+				matches = matches || cond_children_[i].matches(u,loc);
+				break;
+			case conditional::NOT:
+				matches = matches && !cond_children_[i].matches(u,loc);
 		}
-		// Handle [or]
-		else if(cond_name == "or") {
-			matches = matches || unit_filter(cond_filter, &fc_, use_flat_tod_).matches(u, loc);
-		}
-		// Handle [not]
-		else if(cond_name == "not") {
-			matches = matches && !unit_filter(cond_filter, &fc_, use_flat_tod_).matches(u, loc);
-		}
-
-		++cond;
 	}
 	return matches;
 }
