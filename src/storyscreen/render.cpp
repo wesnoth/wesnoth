@@ -390,6 +390,69 @@ bool part_ui::render_floating_images()
 
 void part_ui::render_title_box()
 {
+#ifdef SDL_GPU
+	const std::string& titletxt = p_.title();
+	if(titletxt.empty()) {
+		return;
+	}
+
+	GPU_Target *target = get_render_target();
+	int titlebox_x, titlebox_y, titlebox_max_w, titlebox_max_h;
+	// We later correct these according to the storytext box location.
+	// The text box is always aligned according to the base_rect_
+	// (effective background area) at the end.
+	titlebox_x = titlebox_padding;
+	titlebox_max_w = base_rect_.w - 2*titlebox_padding;
+	titlebox_y = titlebox_padding;
+	titlebox_max_h = base_rect_.h - 2*titlebox_padding;
+
+	font::ttext t;
+	if(!t.set_text(titletxt, true)) {
+		ERR_NG << "Text: Invalid markup in '"
+				<< titletxt << "' rendered as is.\n";
+		t.set_text(titletxt, false);
+	}
+
+	t.set_font_style(font::ttext::STYLE_NORMAL)
+		 .set_font_size(titlebox_font_size)
+		 .set_foreground_color(titlebox_font_color)
+		 .set_maximum_width(titlebox_max_w)
+		 .set_maximum_height(titlebox_max_h, true);
+	sdl::ttexture txttxt = t.render_as_texture();
+
+	if(txttxt.null()) {
+		ERR_NG << "storyscreen titlebox rendering resulted in a null surface" << std::endl;
+		return;
+	}
+
+	const int titlebox_w = txttxt.width();
+	const int titlebox_h = txttxt.height();
+
+	switch(p_.title_text_alignment()) {
+	case part::TEXT_CENTERED:
+		titlebox_x = base_rect_.w / 2 - titlebox_w / 2 - titlebox_padding;
+		break;
+	case part::TEXT_RIGHT:
+		titlebox_x = base_rect_.w - titlebox_padding - titlebox_w;
+		break;
+	default:
+		break; // already set before
+	}
+
+	const SDL_Rect box = sdl::create_rect(
+				base_rect_.x + titlebox_x - titleshadow_padding,
+				base_rect_.y + titlebox_y - titleshadow_padding,
+				titlebox_w + 2*titleshadow_padding,
+				titlebox_h + 2*titleshadow_padding
+	);
+
+	sdl::fill_rect(*target, box, titleshadow_r, titleshadow_g, titleshadow_b,
+				   titleshadow_opacity);
+
+	txttxt.draw(*target, base_rect_.x, base_rect_.y);
+
+	GPU_Flip(target);
+#else
 	const std::string& titletxt = p_.title();
 	if(titletxt.empty()) {
 		return;
@@ -455,6 +518,7 @@ void part_ui::render_title_box()
 		static_cast<size_t>(std::max(0, titlebox_w)),
 		static_cast<size_t>(std::max(0, titlebox_h))
 	);
+#endif
 }
 
 #ifdef LOW_MEM
