@@ -320,7 +320,6 @@ void part_ui::render_background()
 
 		background_images_[i].draw(*target, x, y);
 	}
-	GPU_Flip(target);
 #else
 	sdl::draw_solid_tinted_rectangle(
 		0, 0, video_.getx(), video_.gety(), 0, 0, 0, 1.0,
@@ -463,8 +462,6 @@ void part_ui::render_title_box()
 				   titleshadow_a);
 
 	txttxt.draw(*target, titlebox_x, titlebox_y);
-
-	GPU_Flip(target);
 #else
 	const std::string& titletxt = p_.title();
 	if(titletxt.empty()) {
@@ -576,7 +573,6 @@ void part_ui::render_story_box_borders(SDL_Rect& update_area)
 			border_bottom.draw(*target, 0, update_area.y + update_area.h);
 		}
 
-		GPU_Flip(target);
 	}
 #else
 	const part::BLOCK_LOCATION tbl = p_.story_text_location();
@@ -713,8 +709,6 @@ void part_ui::render_story_box()
 		back_button_.hide(false);
 		play_button_.hide(false);
 	}
-
-	GPU_Flip(target);
 
 	// Time to do some fucking visual effect.
 	const int scan_height = 1, scan_width = txttxt.width();
