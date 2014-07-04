@@ -61,7 +61,8 @@ namespace
 		}
 		return cfg.child(key, index);
 	}
-	
+
+	//helper variable for get_child_at<vit_const>
 	const config empty_const_cfg;
 	template<>
 	const config& get_child_at<vit_const>(const config& cfg, const std::string& key, int index)
@@ -102,8 +103,15 @@ namespace
 		return v;
 	}
 
+	/// @param TVisitor
+	/// TVisitor shoudl have 4 methods:
+	///    from_named if the variable ended with a .somename
+	///    from_indexed if the variable enden with .somename[someindex]
+	///    from_temporary if the variable is a readonly value (.somename.length)
+	///    from_start if the variablename was previously empty, this can only happen 
+	///      during calculate_value()
+	/// TVisitor should derive from variable_info_visitor(_const) which makes default implementation for these (as not supported)
 	template <typename TVisitor>
-	//typename TVisitor::result_type apply_visitor(TVisitor& visitor, variable_info_3_state<vit>& state)
 	typename TVisitor::result_type apply_visitor(const TVisitor& visitor, typename TVisitor::param_type state)
 	{
 		switch(state.type_)
@@ -169,7 +177,7 @@ namespace
 		return res;
 	}
 
-	/// Adds a .<key> to teh current cariable
+	/// Adds a '.<key>' to the current variable
 	template<const variable_info_3_type vit>
 	class get_variable_key_visitor
 		: public variable_info_visitor<vit, void>
@@ -195,6 +203,7 @@ namespace
 		}
 		void from_indexed(typename get_variable_key_visitor::param_type state) const 
 		{
+			//we dont support aaa[0].length
 			return do_from_config(get_child_at<vit>(*state.child_, state.key_, state.index_), state);
 		}
 	private:
@@ -207,7 +216,7 @@ namespace
 		const std::string& key_;
 	};
 
-	/// appens a [index] to the state.
+	/// appens a [index] to the variable.
 	/// we only support from_named since [index][index2] or a.length[index] both doesn't make sense.
 	template<const variable_info_3_type vit>
 	class get_variable_index_visitor
@@ -347,7 +356,8 @@ namespace {
 			{
 				child.child(key, startindex + index).swap(datasource_[index]);
 			}
-			/// variable_as_array_h only uses the  template argument to determine constnedd which is always false here
+			/// variable_as_array_h only uses the template argument (vit_throw_if_not_existent here) 
+			/// to determine constness which is always false here
 			return variable_as_array_h<vit_throw_if_not_existent>()(child, key, startindex, datasource_.size());
 		}
 	private:
@@ -408,7 +418,6 @@ namespace {
 /// misc
 namespace
 {
-
 	template<const variable_info_3_type vit>
 	class clear_value_visitor
 		: public variable_info_visitor_const<vit, void>
