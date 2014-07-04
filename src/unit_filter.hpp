@@ -33,6 +33,7 @@ struct map_location;
 class unit_filter_abstract_impl {
 public:
 	virtual bool matches(const unit & u, const map_location & loc) const = 0;
+	virtual ~unit_filter_abstract_impl() {}
 };
 
 class unit_filter {
