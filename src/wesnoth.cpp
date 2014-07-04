@@ -853,7 +853,8 @@ int main(int argc, char** argv)
 	} catch(std::bad_alloc&) {
 		std::cerr << "Ran out of memory. Aborted.\n";
 		return ENOMEM;
-	} catch(std::exception & e) { //Added this in case the others fall through.
+	} catch(std::exception & e) {
+		// Try to catch unexpected exceptions.
 		std::cerr << "Caught general exception: " << e.what() << std::endl;
 		return 1;
 	} catch(std::string & e) {
@@ -863,9 +864,12 @@ int main(int argc, char** argv)
 		std::cerr << "Caught a string thrown as an exception: " << e << std::endl;
 		return 1;
 #if !defined(NO_CATCH_AT_GAME_END)
-	} catch(...) { //Added this to ensure that even when we terminate with `throw 42`, the exception is caught and all destructors are actually called.
-		std::cerr << "Caught unspecified general exception. Terminating." << std::endl; //Apparently, some compilers will simply terminate without
-		return 1;									//calling destructors if there is no one to catch it at all.
+	} catch(...) {
+		// Ensure that even when we terminate with `throw 42`, the exception
+		// is caught and all destructors are actually called. (Apparently,
+		// some compilers will simply terminate without calling destructors if
+		// the exception isn't caught.)
+		std::cerr << "Caught unspecified general exception. Terminating." << std::endl;
 #endif
 	}
 
