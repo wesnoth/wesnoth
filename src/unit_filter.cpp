@@ -87,7 +87,7 @@ public:
 		, cfg_id_(vcfg["id"])
 		, cfg_speaker_(vcfg["speaker"])
 		, cfg_filter_loc_(vcfg.has_child("filter_location") ? new terrain_filter(vconfig(vcfg.child("filter_location")), &fc_, use_flat_tod_) : NULL)
-		, cfg_filter_side_(vcfg.has_child("filter_side") ? new side_filter(vconfig(vcfg.child("filter_side")), &fc_) : NULL) //Note that it would be better to use boost optional here but it is apparently not possible to do in an initialiation list using boost::none, because when using ? the types must match, and side_filter is non-copyable
+		, cfg_filter_side_(vcfg.has_child("filter_side") ? new side_filter(vconfig(vcfg.child("filter_side")), &fc_) : NULL) //Note that it would be better to use boost optional here but it is apparently not possible to do in an initialization list using boost::none, because when using ? the types must match, and side_filter is non-copyable
 		, cfg_x_(vcfg["x"])
 		, cfg_y_(vcfg["y"])
 		, cfg_type_(vcfg["type"])
