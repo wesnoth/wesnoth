@@ -725,12 +725,7 @@ void part_ui::render_story_box()
 		scan_finished = scan.y >= txttxt.height();
 		if (!scan_finished)
 		{
-			//dstrect.x = text_x_;
 			dstrect.y = fix_text_y + scan.y + storybox_padding;
-			// NOTE: ::blit_surface() screws up with antialiasing and hinting when
-			//       on backgroundless (e.g. black) screens; ttext::draw()
-			//       uses it nonetheless, no idea why...
-			//       Here we'll use CVideo::blit_surface() instead.
 			txttxt.set_clip(scan);
 			txttxt.draw(*target, dstrect.x, dstrect.y);
 			GPU_Flip(target);
