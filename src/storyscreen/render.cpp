@@ -42,14 +42,22 @@ static lg::log_domain log_engine("engine");
 
 namespace {
 	int const storybox_padding = 10; // px
+#ifdef SDL_GPU
+	int const storyshadow_a = 125;
+#else
 	double const storyshadow_opacity = 0.5;
+#endif
 	int const storyshadow_r = 0;
 	int const storyshadow_g = 0;
 	int const storyshadow_b = 0;
 
 	int const titlebox_padding = 20; // px
 	int const titleshadow_padding = 5; // px
+#ifdef SDL_GPU
+	int const titleshadow_a = 125;
+#else
 	double const titleshadow_opacity = 0.5;
+#endif
 	int const titleshadow_r = 0;
 	int const titleshadow_g = 0;
 	int const titleshadow_b = 0;
@@ -448,7 +456,7 @@ void part_ui::render_title_box()
 	);
 
 	sdl::fill_rect(*target, box, titleshadow_r, titleshadow_g, titleshadow_b,
-				   titleshadow_opacity);
+				   titleshadow_a);
 
 	txttxt.draw(*target, base_rect_.x, base_rect_.y);
 
@@ -693,7 +701,7 @@ void part_ui::render_story_box()
 											  fix_text_h);
 
 		sdl::fill_rect(*target, box, storyshadow_r, storyshadow_g,
-					   storyshadow_b, storyshadow_opacity);
+					   storyshadow_b, storyshadow_a);
 
 		render_story_box_borders(update_area); // no-op if LOW_MEM is defined
 
