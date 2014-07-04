@@ -63,16 +63,11 @@ teleport_group::teleport_group(const vconfig& cfg, bool reversed) : cfg_(cfg.get
 void teleport_group::get_teleport_pair(
 		  teleport_pair& loc_pair
 		, const unit& u
-		, const bool ignore_units) const
+		, const bool /*ignore_units*/) const
 {
 	const map_location &loc = u.get_location();
 	static unit_map empty_unit_map;
-	unit_map *units;
-	if (ignore_units) {
-		units = &empty_unit_map;
-	} else {
-		units = resources::units;
-	}
+
 	vconfig filter(cfg_.child_or_empty("filter"), true);
 	vconfig source(cfg_.child_or_empty("source"), true);
 	vconfig target(cfg_.child_or_empty("target"), true);
