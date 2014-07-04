@@ -16,8 +16,10 @@ before_install:
     - export CHECK_UTF8=true
     - export STRICT_COMPILATION=true
     - export EXTRA_FLAGS_RELEASE="-O0"
+    - export WML_TEST_TIME=30
     - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export STRICT_COMPILATION=false; fi
     - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export EXTRA_FLAGS_RELEASE=""; fi
+    - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export WML_TEST_TIME=20; fi
     - if [ "$CXX" = "g++" ]; then export TARGETS="wesnoth test"; fi
     - if [ "$CXX" = "g++" ]; then export WML_TESTS=false; fi
 #    - if [ "$CXX" = "g++" ]; then export CPP_TESTS=false; fi
@@ -37,7 +39,7 @@ script:
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
     - if [[ "$CPP_TESTS" = true ]]; then time ./utils/travis/test_wrapper.sh; fi
-    - if [[ "$WML_TESTS" = true ]]; then time ./run_wml_tests -v -t 20; fi
+    - if [[ "$WML_TESTS" = true ]]; then time ./run_wml_tests -v -t "$WML_TEST_TIME"; fi
 after_failure:
     - if [ -f "errors.log" ]; then echo -e "\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n"; cat errors.log; fi
 notifications:
