@@ -20,9 +20,7 @@ before_install:
     - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export STRICT_COMPILATION=false; fi
     - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export EXTRA_FLAGS_RELEASE=""; fi
     - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export WML_TEST_TIME=20; fi
-    - if [ "$CXX" = "g++" ]; then export TARGETS="wesnoth test"; fi
     - if [ "$CXX" = "g++" ]; then export WML_TESTS=false; fi
-#    - if [ "$CXX" = "g++" ]; then export CPP_TESTS=false; fi
     - if [ "$CXX" = "g++" ]; then export CHECK_UTF8=false; fi
     - if [ "$CXX" = "g++" ]; then time sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y; fi
 install:
