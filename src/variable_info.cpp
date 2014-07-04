@@ -19,6 +19,7 @@
  *  Manage WML-variables.
  */
 #include "variable_info.hpp"
+#include "game_config.hpp"
 using namespace variable_info_3_detail;
 
 /// general helpers
@@ -159,10 +160,13 @@ namespace
 		int res = strtol(index_str, &endptr, 10);
 
 		if (*endptr != ']') {
-			return 0;//default
-		} else {
-			return res;
+			res = 0;//default
 		}
+		if(res > int(game_config::max_loop))
+		{
+			res = game_config::max_loop;
+		}
+		return res;
 	}
 
 	/// Adds a .<key> to teh current cariable
