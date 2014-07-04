@@ -448,9 +448,13 @@ void part_ui::render_title_box()
 		break; // already set before
 	}
 
+	// Translate to absolute position.
+	titlebox_x += base_rect_.x;
+	titlebox_y += base_rect_.y;
+
 	const SDL_Rect box = sdl::create_rect(
-				base_rect_.x + titlebox_x - titleshadow_padding,
-				base_rect_.y + titlebox_y - titleshadow_padding,
+				titlebox_x - titleshadow_padding,
+				titlebox_y - titleshadow_padding,
 				titlebox_w + 2*titleshadow_padding,
 				titlebox_h + 2*titleshadow_padding
 	);
@@ -458,7 +462,7 @@ void part_ui::render_title_box()
 	sdl::fill_rect(*target, box, titleshadow_r, titleshadow_g, titleshadow_b,
 				   titleshadow_a);
 
-	txttxt.draw(*target, base_rect_.x, base_rect_.y);
+	txttxt.draw(*target, titlebox_x, titlebox_y);
 
 	GPU_Flip(target);
 #else
