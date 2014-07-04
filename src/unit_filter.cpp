@@ -53,7 +53,7 @@ public:
 		return true;
 	}
 
-	~null_unit_filter_impl() {}
+	virtual ~null_unit_filter_impl() {}
 };
 
 /// This enum helps to evaluate conditional filters
@@ -97,7 +97,7 @@ public:
 
 	virtual bool matches(const unit & u, const map_location & loc) const;
 
-	~basic_unit_filter_impl() {}
+	virtual ~basic_unit_filter_impl() {}
 private:
 	const vconfig vcfg_;
 	const filter_context & fc_;
