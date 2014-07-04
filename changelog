@@ -89,6 +89,9 @@ Version 1.11.15+dev:
    * Fix an inefficient implementation of unit::invisible, in an effort to address slow performance problems:
      http://forums.wesnoth.org/viewtopic.php?f=4&t=12139&start=180#p569931
      (Also see gfgtdf's commits trying to optimize the minimap loop)
+   * Made it so <exe location>/../ (non-Windows) or <current working dir>/../
+     (Windows) are also considered possible data directories if they contain a
+     data/_main.cfg file, intended to help with cmake builds.
 
 Version 1.11.15:
  * Graphics:

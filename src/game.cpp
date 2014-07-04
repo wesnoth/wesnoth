@@ -711,11 +711,28 @@ int main(int argc, char** argv)
 		const time_t t = time(NULL);
 		std::cerr << "Started on " << ctime(&t) << "\n";
 
-		const std::string exe_dir = get_exe_dir();
-		if(!exe_dir.empty() && file_exists(exe_dir + "/data/_main.cfg")) {
-			std::cerr << "Automatically found a possible data directory at "
-			          << exe_dir << '\n';
-			game_config::path = exe_dir;
+		const std::string& exe_dir = get_exe_dir();
+		if(!exe_dir.empty()) {
+			// Try to autodetect the location of the game data dir. Note that
+			// the root of the source tree currently doubles as the data dir.
+			std::string auto_dir;
+
+			// scons leaves the resulting binaries at the root of the source
+			// tree by default.
+			if(file_exists(exe_dir + "/data/_main.cfg")) {
+				auto_dir = exe_dir;
+			}
+			// cmake encourages creating a subdir at the root of the source
+			// tree for the build, and the resulting binaries are found in it.
+			else if(file_exists(exe_dir + "/../data/_main.cfg")) {
+				auto_dir = normalize_path(exe_dir + "/..");
+			}
+
+			if(!auto_dir.empty()) {
+				std::cerr << "Automatically found a possible data directory at "
+						  << auto_dir << '\n';
+				game_config::path = auto_dir;
+			}
 		}
 
 		const int res = do_gameloop(argc,argv);
