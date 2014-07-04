@@ -870,6 +870,7 @@ int main(int argc, char** argv)
 		// some compilers will simply terminate without calling destructors if
 		// the exception isn't caught.)
 		std::cerr << "Caught unspecified general exception. Terminating." << std::endl;
+		return 1;
 #endif
 	}
 
