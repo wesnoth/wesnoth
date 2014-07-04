@@ -146,8 +146,8 @@ void ttexture::draw(GPU_Target &target, const int x, const int y)
 					   ? GPU_FILTER_LINEAR
 					   : GPU_FILTER_NEAREST);
 	//GPU_SetColor(image_, &color_mod_);
-	GPU_BlitTransform(image_, &clip_, &target, x + image_->w/2,
-					  y + image_->h/2, rotation_, hscale_, vscale_);
+	GPU_BlitTransform(image_, &clip_, &target, x + width()/2,
+					  y + height()/2, rotation_, hscale_, vscale_);
 }
 
 void ttexture::set_rotation(float rotation)
@@ -198,12 +198,12 @@ bool ttexture::smooth_scaling() const
 
 Uint16 ttexture::width() const
 {
-	return image_->w;
+	return image_->w * hscale_;
 }
 
 Uint16 ttexture::height() const
 {
-	return image_->h;
+	return image_->h * vscale_;
 }
 
 void ttexture::set_clip(const SDL_Rect &rect)
