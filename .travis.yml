@@ -16,7 +16,7 @@ before_install:
     - export CHECK_UTF8=true
     - export STRICT_COMPILATION=true
     - export EXTRA_FLAGS_RELEASE="-O0"
-    - export WML_TEST_TIME=30
+    - export WML_TEST_TIME=40
     - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export STRICT_COMPILATION=false; fi
     - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export EXTRA_FLAGS_RELEASE=""; fi
     - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export WML_TEST_TIME=20; fi
