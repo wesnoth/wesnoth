@@ -164,7 +164,7 @@ namespace
 		}
 		if(res > int(game_config::max_loop))
 		{
-			res = game_config::max_loop;
+			throw invalid_variablename_exception();
 		}
 		return res;
 	}
