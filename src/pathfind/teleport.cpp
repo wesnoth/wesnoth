@@ -13,12 +13,14 @@
 
 #include "pathfind/teleport.hpp"
 
+#include "game_board.hpp"
 #include "log.hpp"
 #include "resources.hpp"
 #include "serialization/string_utils.hpp"
 #include "team.hpp"
 #include "terrain_filter.hpp"
 #include "unit.hpp"
+#include "unit_filter.hpp"
 #include "unit_map.hpp"
 
 #include <boost/foreach.hpp>
@@ -61,27 +63,23 @@ teleport_group::teleport_group(const vconfig& cfg, bool reversed) : cfg_(cfg.get
 void teleport_group::get_teleport_pair(
 		  teleport_pair& loc_pair
 		, const unit& u
-		, const bool ignore_units) const
+		, const bool /*ignore_units*/) const
 {
 	const map_location &loc = u.get_location();
 	static unit_map empty_unit_map;
-	unit_map *units;
-	if (ignore_units) {
-		units = &empty_unit_map;
-	} else {
-		units = resources::units;
-	}
+
 	vconfig filter(cfg_.child_or_empty("filter"), true);
 	vconfig source(cfg_.child_or_empty("source"), true);
 	vconfig target(cfg_.child_or_empty("target"), true);
-	if (u.matches_filter(filter, loc)) {
+	const unit_filter ufilt(filter, resources::filter_con);
+	if (ufilt.matches(u, loc)) {
 
 		scoped_xy_unit teleport_unit("teleport_unit", loc.x, loc.y, *resources::units);
 
-		terrain_filter source_filter(source, *units);
+		terrain_filter source_filter(source, resources::filter_con);
 		source_filter.get_locations(reversed_ ? loc_pair.second : loc_pair.first);
 
-		terrain_filter target_filter(target, *units);
+		terrain_filter target_filter(target, resources::filter_con);
 		target_filter.get_locations(reversed_ ? loc_pair.first : loc_pair.second);
 	}
 }

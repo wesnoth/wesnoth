@@ -63,6 +63,7 @@ config random_generate_scenario(const std::string& parms, const config &cfg)
 	//the first token is the name of the generator, tokens after
 	//that are arguments to the generator
 	std::vector<std::string> parameters = utils::split(parms, ' ');
+	assert(!parameters.empty()); //we use parameters.front() in the next line.
 	util::scoped_ptr<map_generator> generator(create_map_generator(parameters.front(),cfg));
 	if(generator == NULL) {
 		ERR_CF << "could not find map generator '" << parameters.front() << "'" << std::endl;

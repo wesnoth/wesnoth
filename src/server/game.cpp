@@ -1624,6 +1624,7 @@ void game::send_and_record_server_message(const char* message, const network::co
 	send_server_message(message, 0, doc);
 	send_data(*doc, exclude, "message");
 	if (started_) record_data(doc);
+	else delete doc;
 }
 
 void game::send_server_message_to_all(const char* message, network::connection exclude) const

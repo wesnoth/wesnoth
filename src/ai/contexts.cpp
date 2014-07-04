@@ -57,7 +57,7 @@
 #include "unit_types.hpp"  // for attack_type, unit_type, etc
 #include "variant.hpp"                  // for variant
 
-#include <algorithm>                    // for find, count, max
+#include <algorithm>                    // for find, count, max, fill_n
 #include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/smart_ptr/intrusive_ptr.hpp>  // for intrusive_ptr
 #include <boost/smart_ptr/shared_ptr.hpp>  // for dynamic_pointer_cast, etc
@@ -608,7 +608,7 @@ const terrain_filter& readonly_context_impl::get_avoid() const
 	}
 	config cfg;
 	cfg.add_child("not");
-	static terrain_filter tf(vconfig(cfg),*resources::units);
+	static terrain_filter tf(vconfig(cfg),resources::filter_con);
 	return tf;
 }
 
@@ -1115,6 +1115,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 {
 	map_location used_locs[6];
 	int ratings[6];
+	std::fill_n(ratings, 0, 6);
 	int num_used_locs = 0;
 
 	map_location locs[6];

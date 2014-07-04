@@ -17,12 +17,14 @@
  *  Manage unit-abilities, like heal, cure, and weapon_specials.
  */
 
+#include "game_board.hpp"
 #include "log.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "terrain_filter.hpp"
 #include "unit.hpp"
 #include "unit_abilities.hpp"
+#include "unit_filter.hpp"
 #include "unit_map.hpp"
 
 #include <boost/foreach.hpp>
@@ -295,7 +297,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 	assert(resources::units && resources::gameboard && resources::teams && resources::tod_manager);
 
 	if (const config &afilter = cfg.child("filter"))
-		if ( !matches_filter(vconfig(afilter), loc, illuminates) )
+		if ( !unit_filter(vconfig(afilter), resources::filter_con, illuminates).matches(*this, loc) )
 			return false;
 
 	map_location adjacent[6];
@@ -304,6 +306,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 
 	BOOST_FOREACH(const config &i, cfg.child_range("filter_adjacent"))
 	{
+		const unit_filter ufilt(vconfig(i), resources::filter_con, illuminates);
 		BOOST_FOREACH(const std::string &j, utils::split(i["adjacent"]))
 		{
 			map_location::DIRECTION index =
@@ -313,21 +316,22 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 			unit_map::const_iterator unit = units.find(adjacent[index]);
 			if (unit == units.end())
 				return false;
-			if (!unit->matches_filter(vconfig(i), unit->get_location(), illuminates))
+			if (!ufilt( *unit ))
 				return false;
 		}
 	}
 
 	BOOST_FOREACH(const config &i, cfg.child_range("filter_adjacent_location"))
 	{
+		terrain_filter adj_filter(vconfig(i), resources::filter_con);
+		adj_filter.flatten(illuminates);
+
 		BOOST_FOREACH(const std::string &j, utils::split(i["adjacent"]))
 		{
 			map_location::DIRECTION index = map_location::parse_direction(j);
 			if (index == map_location::NDIRECTIONS) {
 				continue;
 			}
-			terrain_filter adj_filter(vconfig(i), units);
-			adj_filter.flatten(illuminates);
 			if(!adj_filter.match(adjacent[index])) {
 				return false;
 			}
@@ -346,12 +350,13 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 
 	assert(dir >=0 && dir <= 5);
 	static const std::string adjacent_names[6] = {"n","ne","se","s","sw","nw"};
+
 	BOOST_FOREACH(const config &i, cfg.child_range("affect_adjacent"))
 	{
 		std::vector<std::string> dirs = utils::split(i["adjacent"]);
 		if(std::find(dirs.begin(),dirs.end(),adjacent_names[dir]) != dirs.end()) {
 			if (const config &filter = i.child("filter")) {
-				if ( matches_filter(vconfig(filter), loc, illuminates) )
+				if ( unit_filter(vconfig(filter), resources::filter_con, illuminates).matches(*this, loc) )
 					return true;
 			} else
 				return true;
@@ -369,7 +374,7 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 	const config &filter = cfg.child("filter_self");
 	bool affect_self = cfg["affect_self"].to_bool(true);
 	if (!filter || !affect_self) return affect_self;
-	return matches_filter(vconfig(filter), loc, ability == "illuminates");
+	return unit_filter(vconfig(filter), resources::filter_con, ability == "illuminates").matches(*this, loc);
 }
 
 bool unit::has_ability_type(const std::string& ability) const
@@ -792,7 +797,7 @@ namespace { // Helpers for attack_type::special_active()
 			return true;
 
 		// Check for a unit match.
-		if ( !un_it.valid() || !un_it->matches_filter(vconfig(filter_child), loc) )
+		if ( !un_it.valid() || !unit_filter(vconfig(filter_child), resources::filter_con).matches(*un_it, loc) )
 			return false;
 
 		// Check for a weapon match.
@@ -882,7 +887,7 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 				continue;
 			unit_map::const_iterator unit = units.find(adjacent[index]);
 			if ( unit == units.end() ||
-			     !unit->matches_filter(vconfig(i), adjacent[index]) )
+			     !unit_filter(vconfig(i), resources::filter_con).matches(*unit, adjacent[index]) ) //TODO: Should this filter get precomputed?
 				return false;
 		}
 	}
@@ -896,7 +901,7 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 				map_location::parse_direction(j);
 			if (index == map_location::NDIRECTIONS)
 				continue;
-			terrain_filter adj_filter(vconfig(i), units);
+			terrain_filter adj_filter(vconfig(i), resources::filter_con);
 			if(!adj_filter.match(adjacent[index])) {
 				return false;
 			}

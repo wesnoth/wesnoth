@@ -23,6 +23,7 @@ class game_config_manager;
 class game_display;
 class gamemap;
 class game_data;
+class filter_context;
 class LuaKernel;
 class play_controller;
 class team;
@@ -52,6 +53,7 @@ namespace resources
 	extern persist_manager        *persist;
 	extern game_classification    *classification;
 	extern game_display           *screen;
+	extern filter_context	      *filter_con;
 	extern const mp_game_settings *mp_settings;
 	extern soundsource::manager   *soundsources;
 	extern std::vector<team>      *teams;

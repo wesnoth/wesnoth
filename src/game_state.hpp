@@ -17,6 +17,7 @@
 
 class config;
 
+#include "filter_context.hpp"
 #include "game_board.hpp"
 #include "game_data.hpp"
 #include "tod_manager.hpp"
@@ -25,7 +26,9 @@ class config;
 
 namespace pathfind { class manager; }
 
-struct game_state {
+class game_state : public filter_context
+{
+public:
 	const config& level_;
 	game_data gamedata_;
 	game_board board_;
@@ -43,6 +46,9 @@ struct game_state {
 	void init(int ticks, const config & replay_start);
 
 	config to_config() const;
+
+	virtual const display_context & get_disp_context() const { return board_; }
+	virtual const tod_manager & get_tod_man() const { return tod_manager_; }
 };
 
 #endif

@@ -25,6 +25,7 @@
 #include "../manager.hpp"
 #include "../../actions/attack.hpp"
 #include "../../attack_prediction.hpp"
+#include "../../filter_context.hpp"
 #include "../../game_board.hpp"
 #include "../../game_display.hpp"
 #include "../../log.hpp"
@@ -35,6 +36,7 @@
 #include "../../resources.hpp"
 #include "../../team.hpp"
 #include "../../tod_manager.hpp"
+#include "../../unit_filter.hpp"
 #include "../../unit_map.hpp"
 #include "../../unit_types.hpp"
 #include "../../util.hpp"
@@ -250,8 +252,8 @@ void recruitment::execute() {
 		// we'll check if we can do a recall instead of a recruitment.
 		BOOST_FOREACH(const unit_const_ptr & recall, current_team().recall_list()) {
 			// Check if this leader is allowed to recall this unit.
-			vconfig filter = vconfig(leader->recall_filter());
-			if (!recall->matches_filter(filter, map_location::null_location())) {
+			const unit_filter ufilt( vconfig(leader->recall_filter()), resources::filter_con);
+			if (!ufilt(*recall, map_location::null_location())) {
 				continue;
 			}
 			data.recruits.insert(recall->type_id());
@@ -475,8 +477,8 @@ const std::string* recruitment::get_appropriate_recall(const std::string& type,
 			continue;
 		}
 		// Check if this leader is allowed to recall this unit.
-		vconfig filter = vconfig(leader_data.leader->recall_filter());
-		if (!recall_unit->matches_filter(filter, map_location::null_location())) {
+		const unit_filter ufilt(vconfig(leader_data.leader->recall_filter()), resources::filter_con);
+		if (!ufilt(*recall_unit, map_location::null_location())) {
 			LOG_AI_RECRUITMENT << "Refused recall because of filter: " << recall_unit->id() << "\n";
 			continue;
 		}

@@ -137,6 +137,7 @@ public:
 	/** The unit type name */
 	const t_string& type_name() const {return type_name_;}
 	const std::string& undead_variation() const {return undead_variation_;}
+	const std::string variation() const {return variation_; }
 
 	/** The unit name for display */
 	const t_string &name() const { return name_; }
@@ -241,12 +242,6 @@ public:
 	bool emits_zoc() const { return emit_zoc_ && !incapacitated();}
 	bool matches_id(const std::string& unit_id) const;
 	/* cfg: standard unit filter */
-	bool matches_filter(const vconfig& cfg,const map_location& loc,bool use_flat_tod=false) const;
-	/// Determine if *this matches @a filter at its current location.
-	/// (Only use for units currently on the map; otherwise use the overload
-	/// that takes a location, possibly with a null location.)
-	bool matches_filter(const vconfig& filter, bool use_flat_tod=false) const
-	{ return matches_filter(filter, get_location(), use_flat_tod); }
 	const std::vector<std::string>& overlays() const { return overlays_; }
 
 	void write(config& cfg) const;
@@ -382,9 +377,6 @@ protected:
 private:
 	void advance_to(const config &old_cfg, const unit_type &t,
 		bool use_traits);
-
-	bool internal_matches_filter(const vconfig& cfg,const map_location& loc,
-		bool use_flat_tod) const;
 	/*
 	 * cfg: an ability WML structure
 	 */
@@ -393,7 +385,10 @@ private:
 	bool ability_affects_self(const std::string& ability,const config& cfg,const map_location& loc) const;
 	bool resistance_filter_matches(const config& cfg,bool attacker,const std::string& damage_name, int res) const;
 
+public:
 	bool has_ability_by_id(const std::string& ability) const;
+	// ^ Needed for unit_filter
+private:
 	void remove_ability_by_id(const std::string& ability);
 
 	/** register a trait's name and its description for UI's use*/

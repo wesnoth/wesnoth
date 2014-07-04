@@ -791,11 +791,28 @@ int main(int argc, char** argv)
 		const time_t t = time(NULL);
 		std::cerr << "Started on " << ctime(&t) << "\n";
 
-		const std::string exe_dir = get_exe_dir();
-		if(!exe_dir.empty() && file_exists(exe_dir + "/data/_main.cfg")) {
-			std::cerr << "Automatically found a possible data directory at "
-			          << exe_dir << '\n';
-			game_config::path = exe_dir;
+		const std::string& exe_dir = get_exe_dir();
+		if(!exe_dir.empty()) {
+			// Try to autodetect the location of the game data dir. Note that
+			// the root of the source tree currently doubles as the data dir.
+			std::string auto_dir;
+
+			// scons leaves the resulting binaries at the root of the source
+			// tree by default.
+			if(file_exists(exe_dir + "/data/_main.cfg")) {
+				auto_dir = exe_dir;
+			}
+			// cmake encourages creating a subdir at the root of the source
+			// tree for the build, and the resulting binaries are found in it.
+			else if(file_exists(exe_dir + "/../data/_main.cfg")) {
+				auto_dir = normalize_path(exe_dir + "/..");
+			}
+
+			if(!auto_dir.empty()) {
+				std::cerr << "Automatically found a possible data directory at "
+						  << auto_dir << '\n';
+				game_config::path = auto_dir;
+			}
 		}
 
 		const int res = do_gameloop(argc,argv);
@@ -836,7 +853,8 @@ int main(int argc, char** argv)
 	} catch(std::bad_alloc&) {
 		std::cerr << "Ran out of memory. Aborted.\n";
 		return ENOMEM;
-	} catch(std::exception & e) { //Added this in case the others fall through.
+	} catch(std::exception & e) {
+		// Try to catch unexpected exceptions.
 		std::cerr << "Caught general exception: " << e.what() << std::endl;
 		return 1;
 	} catch(std::string & e) {
@@ -846,9 +864,13 @@ int main(int argc, char** argv)
 		std::cerr << "Caught a string thrown as an exception: " << e << std::endl;
 		return 1;
 #if !defined(NO_CATCH_AT_GAME_END)
-	} catch(...) { //Added this to ensure that even when we terminate with `throw 42`, the exception is caught and all destructors are actually called.
-		std::cerr << "Caught unspecified general exception. Terminating." << std::endl; //Apparently, some compilers will simply terminate without
-		return 1;									//calling destructors if there is no one to catch it at all.
+	} catch(...) {
+		// Ensure that even when we terminate with `throw 42`, the exception
+		// is caught and all destructors are actually called. (Apparently,
+		// some compilers will simply terminate without calling destructors if
+		// the exception isn't caught.)
+		std::cerr << "Caught unspecified general exception. Terminating." << std::endl;
+		return 1;
 #endif
 	}
 

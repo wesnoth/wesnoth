@@ -34,6 +34,7 @@ static lg::log_domain log_config("config");
 static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 #define DBG_MP LOG_STREAM(debug, log_mp_connect_engine)
 #define LOG_MP LOG_STREAM(info, log_mp_connect_engine)
+#define WRN_MP LOG_STREAM(warn, log_mp_connect_engine)
 
 static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
@@ -138,19 +139,20 @@ connect_engine::connect_engine(saved_game& state,
 			if (name_itor == original_team_names.end()) {
 				original_team_names.push_back(team_name);
 
-				team_name =
+				team_name = "Team " + 
 					lexical_cast<std::string>(original_team_names.size());
 			} else {
 				team_name = lexical_cast<std::string>(
 					name_itor - original_team_names.begin() + 1);
-			}
+			} // Note that the prefix "Team " is untranslatable, as team_name is not meant to be translated. This is needed so that the attribute
+			  // is not interpretted as an int when reading from config, which causes bugs later.
 
 			user_team_name = team_prefix + side_str;
 		}
 
 		if (add_team) {
 			team_names_.push_back(params_.use_map_settings ? team_name :
-				side_str);
+				"Team " + side_str);
 			user_team_names_.push_back(user_team_name.t_str().to_serialized());
 
 			if (side["allow_player"].to_bool(true) || game_config::debug) {
@@ -885,6 +887,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	if (team_name_index >= parent_.team_names_.size()) {
 		assert(!parent_.team_names_.empty());
 		team_ = 0;
+		WRN_MP << "In side_engine constructor: Could not find my team_name " << cfg["team_name"] << " among the mp connect engine's list of team names. I am being assigned to the first team. This may indicate a bug!" << std::endl;
 	} else {
 		team_ = team_name_index;
 	}

@@ -725,6 +725,10 @@ void create::layout_children(const SDL_Rect& rect)
 		select_mod_.set_location(xpos, ypos);
 	}
 
+	// Make eras and mods menus the same width for alignment
+	eras_menu_.set_width(std::max(mods_menu_.width(),eras_menu_.width()));
+	mods_menu_.set_width(std::max(mods_menu_.width(),eras_menu_.width()));
+
 	// OK / Cancel buttons
 	gui::button* left_button = &launch_game_;
 	gui::button* right_button = &cancel_game_;

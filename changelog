@@ -24,6 +24,9 @@ Version 1.13.0-dev:
    * Fix bug in Return Guardian Micro AI when there is no path to the return hex
  * Campaigns:
    * Changed all occurrences of {FLAG_VARIANT ragged} to {FLAG_VARIANT6 ragged}
+   * Descent into Darkness:
+     * Fixed various issues with player and enemy gold and income in
+       'Descent into Darkness'.
    * Eastern Invasion:
      * In 'Captured', stolen gold won't be mentioned if the player had no
        carryover gold.
@@ -82,6 +85,9 @@ Version 1.13.0-dev:
      without contents or in the wrong state during WML start events until they
      are interacted with or control is given to the player for the first time.
    * Added a new subdialog in Preferences to clean or purge the WML cache.
+   * Fixed AI engine names in the MP game setup screen being translated to the
+     language selected when Wesnoth was started rather than the current
+     language (bug #22092).
  * WML engine:
    * Added customizable recall costs for unit types and individual units,
      using the new recall_cost attribute in [unit_type] and [unit].
@@ -216,6 +222,14 @@ Version 1.13.0-dev:
    * Added 'faction_lock' and 'leader_lock' to SideWML to be used in MP Connect
      screen. Fixes bug #21978.
    * Fix bug #22231: partial moves now able to be continued in whiteboard
+   * Added wmi_pager object to control how wml menu items are displayed in context menus, and allow
+     to display more than seven.
+   * Fix an inefficient implementation of unit::invisible, in an effort to address slow performance problems:
+     http://forums.wesnoth.org/viewtopic.php?f=4&t=12139&start=180#p569931
+     (Also see gfgtdf's commits trying to optimize the minimap loop)
+   * Made it so <exe location>/../ (non-Windows) or <current working dir>/../
+     (Windows) are also considered possible data directories if they contain a
+     data/_main.cfg file, intended to help with cmake builds.
 
 Version 1.11.11:
  * Add-ons server:

@@ -170,7 +170,7 @@ namespace { // Support functions
 
 		BOOST_FOREACH(const vconfig &f, filters.get_children("filter_side"))
 		{
-			side_filter ssf(f);
+			side_filter ssf(f, resources::filter_con);
 			if ( !ssf.match(resources::controller->current_side()) )
 				return false;
 		}

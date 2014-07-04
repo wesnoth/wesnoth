@@ -171,7 +171,7 @@ bool wml_menu_item::can_show(const map_location & hex) const
 
 	// Failing the [fiter_location] tag means no show.
 	if ( !filter_location_.empty() &&
-	     !terrain_filter(filter_location_, *resources::units)(hex) )
+	     !terrain_filter(filter_location_, resources::filter_con)(hex) )
 		return false;
 
 	// Failing to have a required selection means no show.

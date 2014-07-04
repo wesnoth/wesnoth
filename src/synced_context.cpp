@@ -432,11 +432,12 @@ set_scontext_leave_for_draw::set_scontext_leave_for_draw()
 {
 	if(previous_state_ != synced_context::SYNCED)
 	{
+		old_rng_= NULL;
 		return;
 	}
 	synced_context::set_synced_state(synced_context::LOCAL_CHOICE);
 
-
+	assert(random_new::generator);
 	old_rng_ = random_new::generator;
 	//calling the synced rng form inside a local_choice would cause oos.
 	//TODO use a member variable instead if new/delete
@@ -448,6 +449,8 @@ set_scontext_leave_for_draw::~set_scontext_leave_for_draw()
 	{
 		return;
 	}
+	assert(old_rng_);
+	assert(random_new::generator);
 	assert(synced_context::get_synced_state() == synced_context::LOCAL_CHOICE);
 	synced_context::set_synced_state(synced_context::SYNCED);
 	delete random_new::generator;
