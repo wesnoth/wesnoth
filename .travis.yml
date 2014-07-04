@@ -8,7 +8,7 @@ env:
 matrix:
   exclude:
     - compiler: gcc
-      env: ALTERNATE_CONFIGURATION=false
+      env: ALTERNATE_CONFIGURATION=true
 before_install:
     - export TARGETS="wesnoth wesnothd campaignd test"
     - export WML_TESTS=true
