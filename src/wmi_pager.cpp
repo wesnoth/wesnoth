@@ -48,7 +48,7 @@ static void add_next_page_item( std::vector<boost::shared_ptr<const game_events:
 static void add_prev_page_item( std::vector<boost::shared_ptr<const game_events::wml_menu_item> > & items,
                std::vector<std::string> & descriptions)
 {
-	std::string desc = _("Earlier Items");
+	std::string desc = _("Previous Items");
 	config temp;
 	temp["description"] = desc;
 	items.push_back(boost::make_shared<const game_events::wml_menu_item>(prev_id, temp));
