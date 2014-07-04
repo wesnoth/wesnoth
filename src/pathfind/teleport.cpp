@@ -13,6 +13,8 @@
 
 #include "pathfind/teleport.hpp"
 
+#include "display_context.hpp"
+#include "filter_context.hpp"
 #include "game_board.hpp"
 #include "log.hpp"
 #include "resources.hpp"
@@ -60,27 +62,72 @@ teleport_group::teleport_group(const vconfig& cfg, bool reversed) : cfg_(cfg.get
 	}
 }
 
+class ignore_units_display_context : public display_context {
+public:
+	ignore_units_display_context(const display_context & dc)
+		: um_()
+		, gm_(&dc.map())
+		, tm_(&dc.teams())
+	{
+		static unit_map empty_unit_map;
+		um_ = &empty_unit_map;
+	}
+	const unit_map & units() const { return *um_; }
+	const gamemap & map() const { return *gm_; }
+	const std::vector<team> & teams() const { return *tm_; }
+
+private:
+	const unit_map * um_;
+	const gamemap * gm_;
+	const std::vector<team> * tm_;
+};
+
+class ignore_units_filter_context : public filter_context {
+public:
+	ignore_units_filter_context(const filter_context & fc)
+		: dc_(fc.get_disp_context())
+		, tod_(&fc.get_tod_man())
+	{}
+
+	const display_context & get_disp_context() const { return dc_; }
+	const tod_manager & get_tod_man() const { return *tod_; }
+
+private:
+	const ignore_units_display_context dc_;
+	const tod_manager * tod_;
+};
+
 void teleport_group::get_teleport_pair(
 		  teleport_pair& loc_pair
 		, const unit& u
-		, const bool /*ignore_units*/) const
+		, const bool ignore_units) const
 {
 	const map_location &loc = u.get_location();
-	static unit_map empty_unit_map;
+
+	const filter_context * fc = resources::filter_con;
+	assert(fc);
+
+	if (ignore_units) {
+		fc = new ignore_units_filter_context(*resources::filter_con);
+	}
 
 	vconfig filter(cfg_.child_or_empty("filter"), true);
 	vconfig source(cfg_.child_or_empty("source"), true);
 	vconfig target(cfg_.child_or_empty("target"), true);
-	const unit_filter ufilt(filter, resources::filter_con);
+	const unit_filter ufilt(filter, resources::filter_con); //Note: Don't use the ignore units filter context here, only for the terrain filters. (That's how it worked before the filter contexts were introduced)
 	if (ufilt.matches(u, loc)) {
 
 		scoped_xy_unit teleport_unit("teleport_unit", loc.x, loc.y, *resources::units);
 
-		terrain_filter source_filter(source, resources::filter_con);
+		terrain_filter source_filter(source, fc);
 		source_filter.get_locations(reversed_ ? loc_pair.second : loc_pair.first);
 
-		terrain_filter target_filter(target, resources::filter_con);
+		terrain_filter target_filter(target, fc);
 		target_filter.get_locations(reversed_ ? loc_pair.first : loc_pair.second);
+	}
+
+	if (ignore_units) {
+		delete fc;
 	}
 }
 
