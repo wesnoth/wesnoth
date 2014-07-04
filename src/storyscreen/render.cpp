@@ -64,7 +64,7 @@ namespace {
 	// Hard-coded path to a suitable (tileable) pic for the storytxt box border.
 	std::string const storybox_top_border_path = "dialogs/translucent54-border-top.png";
 	std::string const storybox_bottom_border_path = "dialogs/translucent54-border-bottom.png";
-
+#ifndef SDL_GPU
 	void blur_area(CVideo& video, int y, int h)
 	{
 		SDL_Rect blur_rect = sdl::create_rect(0, y, screen_area().w, h);
@@ -72,6 +72,7 @@ namespace {
 		blur = blur_surface(blur, 1, false);
 		video.blit_surface(0, y, blur);
 	}
+#endif
 #endif
 }
 
@@ -527,6 +528,45 @@ void part_ui::render_story_box_borders(SDL_Rect& /*update_area*/)
 #else
 void part_ui::render_story_box_borders(SDL_Rect& update_area)
 {
+#ifdef SDL_GPU
+	const part::BLOCK_LOCATION tbl = p_.story_text_location();
+
+	if(has_background_) {
+		sdl::ttexture border_top;
+		sdl::ttexture border_bottom;
+		GPU_Target *target = get_render_target();
+
+		if(tbl == part::BLOCK_BOTTOM || tbl == part::BLOCK_MIDDLE) {
+			border_top = image::get_texture(storybox_top_border_path);
+		}
+
+		if(tbl == part::BLOCK_TOP || tbl == part::BLOCK_MIDDLE) {
+			border_bottom = image::get_texture(storybox_bottom_border_path);
+		}
+
+		//
+		// If one of those are null at this point, it means that either we
+		// don't need that border pic, or it is missing (in such case get_image()
+		// would report).
+		//
+
+		if(border_top.null() != true) {
+			const float xscale = screen_area().w / border_top.width();
+			border_top.set_hscale(xscale);
+			//TODO: blurring
+			border_top.draw(*target, 0, update_area.y - border_top.height());
+		}
+
+		if(border_bottom.null() != true) {
+			const float xscale = screen_area().w / border_bottom.width();
+			border_bottom.set_hscale(xscale);
+			//TODO: blurring
+			border_bottom.draw(*target, 0, update_area.y + update_area.h);
+		}
+
+		GPU_Flip(target);
+	}
+#else
 	const part::BLOCK_LOCATION tbl = p_.story_text_location();
 
 	if(has_background_) {
@@ -570,11 +610,132 @@ void part_ui::render_story_box_borders(SDL_Rect& update_area)
 			}
 		}
 	}
+#endif
 }
 #endif
 
 void part_ui::render_story_box()
 {
+#ifdef SDL_GPU
+	LOG_NG << "ENTER part_ui()::render_story_box()\n";
+
+	GPU_Target *target = get_render_target();
+
+	const std::string& storytxt = p_.text();
+	if(storytxt.empty()) {
+		GPU_Flip(target);
+		wait_for_input();
+		return;
+	}
+
+	const part::BLOCK_LOCATION tbl = p_.story_text_location();
+	const int max_width = buttons_x_ - storybox_padding - text_x_;
+	const int max_height = screen_area().h - storybox_padding;
+
+	skip_ = false;
+	last_key_ = true;
+
+	font::ttext t;
+	if(!t.set_text(p_.text(), true)) {
+		ERR_NG << "Text: Invalid markup in '"
+				<< p_.text() << "' rendered as is.\n";
+		t.set_text(p_.text(), false);
+	}
+	t.set_font_style(font::ttext::STYLE_NORMAL)
+		 .set_font_size(storybox_font_size)
+		 .set_foreground_color(storybox_font_color)
+		 .set_maximum_width(max_width)
+		 .set_maximum_height(max_height, true);
+	sdl::ttexture txttxt = t.render_as_texture();
+
+	if(txttxt.null()) {
+		ERR_NG << "storyscreen text area rendering resulted in a null texture" << std::endl;
+		return;
+	}
+
+	int fix_text_y = text_y_;
+	if(fix_text_y + 2*(storybox_padding+1) + txttxt.height() > screen_area().h && tbl != part::BLOCK_TOP) {
+		fix_text_y =
+			(screen_area().h > txttxt.height() + 1) ?
+			(std::max(0, screen_area().h - txttxt.height() - 2*(storybox_padding+1))) :
+			(0);
+	}
+	int fix_text_h;
+	switch(tbl) {
+	case part::BLOCK_TOP:
+		fix_text_h = std::max(txttxt.height() + 2*storybox_padding, screen_area().h/4);
+		break;
+	case part::BLOCK_MIDDLE:
+		fix_text_h = std::max(txttxt.height() + 2*storybox_padding, screen_area().h/3);
+		break;
+	default:
+		fix_text_h = screen_area().h - fix_text_y;
+		break;
+	}
+
+	SDL_Rect update_area = sdl::create_rect(0
+			, fix_text_y
+			, screen_area().w
+			, fix_text_h);
+
+	/* do */ {
+		// this should kill the tiniest flickering caused
+		// by the buttons being hidden and unhidden in this scope.
+		update_locker locker(video_);
+
+		next_button_.hide();
+		back_button_.hide();
+		play_button_.hide();
+
+		//TODO: blurring
+
+		const SDL_Rect box = sdl::create_rect(0, fix_text_y, screen_area().w,
+											  fix_text_h);
+
+		sdl::fill_rect(*target, box, storyshadow_r, storyshadow_g,
+					   storyshadow_b, storyshadow_opacity);
+
+		render_story_box_borders(update_area); // no-op if LOW_MEM is defined
+
+		next_button_.hide(false);
+		back_button_.hide(false);
+		play_button_.hide(false);
+	}
+
+	GPU_Flip(target);
+
+	// Time to do some fucking visual effect.
+	const int scan_height = 1, scan_width = txttxt.width();
+	SDL_Rect scan = sdl::create_rect(0, 0, scan_width, scan_height);
+	SDL_Rect dstrect = sdl::create_rect(text_x_, 0, scan_width, scan_height);
+	bool scan_finished = false;
+	while(true) {
+		scan_finished = scan.y >= txttxt.height();
+		if (!scan_finished)
+		{
+			//dstrect.x = text_x_;
+			dstrect.y = fix_text_y + scan.y + storybox_padding;
+			// NOTE: ::blit_surface() screws up with antialiasing and hinting when
+			//       on backgroundless (e.g. black) screens; ttext::draw()
+			//       uses it nonetheless, no idea why...
+			//       Here we'll use CVideo::blit_surface() instead.
+			txttxt.set_clip(scan);
+			txttxt.draw(*target, dstrect.x, dstrect.y);
+			GPU_Flip(target);
+			++scan.y;
+		}
+		else skip_ = true;
+
+		if (handle_interface()) break;
+
+		if (!skip_ || scan_finished) {
+			disp_.delay(20);
+		}
+	}
+
+	const SDL_Rect rect = sdl::create_rect(0, 0, video_.getx(), video_.gety());
+	sdl::fill_rect(*target, rect, 0, 0, 0, 255);
+#else
 	LOG_NG << "ENTER part_ui()::render_story_box()\n";
 
 	const std::string& storytxt = p_.text();
@@ -700,6 +861,7 @@ void part_ui::render_story_box()
 		0, 0, video_.getx(), video_.gety(), 0, 0, 0,
 		1.0, video_.getSurface()
 	);
+#endif
 }
 
 void part_ui::wait_for_input()
