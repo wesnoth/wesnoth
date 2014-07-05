@@ -1117,7 +1117,7 @@ bool preprocessor_data::get_chunk()
 					target_.error(error.str(), linenum_);
 				}
 			} else {
-				target_.error("Too much nested preprocessing inclusions", linenum_);
+				target_.error("Too many nested preprocessing inclusions", linenum_);
 			}
 		}
 		else if (!skipping_)

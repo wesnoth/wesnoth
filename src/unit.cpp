@@ -100,9 +100,9 @@ namespace {
 void intrusive_ptr_add_ref(const unit * u)
 {
 	assert(u->ref_count_ >= 0);
-	// the next code line is to notice possible wrongly intilized units.
+	// the next code line is to notice possible wrongly initialized units.
 	// The 100000 is picked rather randomly. If you are in the situation
-	// that you can actualy have more then 100000 intrusive_ptr to one unit
+	// that you can actually have more then 100000 intrusive_ptr to one unit
 	// or if you are sure that the refcounting system works 
 	// then feel free to remove the next line
 	assert(u->ref_count_ < 100000);
