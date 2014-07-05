@@ -328,11 +328,11 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 		directions_.push_back(d);
 	}
 	BOOST_FOREACH(const config &filter, cfg.child_range("filter")) {
-		unit_filter_.push_back(filter);
+		unit_filter_.push_back(unit_filter(vconfig(filter), game_display::get_singleton()));
 	}
 
 	BOOST_FOREACH(const config &filter, cfg.child_range("filter_second")) {
-		secondary_unit_filter_.push_back(filter);
+		secondary_unit_filter_.push_back(unit_filter(vconfig(filter), game_display::get_singleton()));
 	}
 
 	std::vector<std::string> value_str = utils::split(cfg["value"]);
@@ -402,18 +402,18 @@ int unit_animation::matches(const display &disp, const map_location& loc,const m
 				result ++;
 			}
 		}
-		std::vector<config>::const_iterator myitor;
+		std::vector<unit_filter>::const_iterator myitor;
 		for(myitor = unit_filter_.begin(); myitor != unit_filter_.end(); ++myitor) {
-			if (!unit_filter(vconfig(*myitor), &disp).matches(*my_unit, loc)) return MATCH_FAIL; //TODO: Precalculate these
+			if (!myitor->matches(*my_unit, loc)) return MATCH_FAIL;
 			++result;
 		}
 		if(!secondary_unit_filter_.empty()) {
 			unit_map::const_iterator unit;
 			for(unit=disp.get_units().begin() ; unit != disp.get_units().end() ; ++unit) {
 				if (unit->get_location() == second_loc) {
-					std::vector<config>::const_iterator second_itor;
+					std::vector<unit_filter>::const_iterator second_itor;
 					for(second_itor = secondary_unit_filter_.begin(); second_itor != secondary_unit_filter_.end(); ++second_itor) {
-						if (!unit_filter(vconfig(*second_itor), &disp).matches(*unit, second_loc)) return MATCH_FAIL; //TODO: Precalculate these
+						if (!second_itor->matches(*unit, second_loc)) return MATCH_FAIL;
 						result++;
 					}
 
@@ -1148,16 +1148,18 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 
 	if (u_animation.unit_filter_.size() > 0) {
 		std::cout << "[filter]\n";
-		BOOST_FOREACH(const config cfg, u_animation.unit_filter_) {
-			std::cout << cfg.debug();
-		}
+		//BOOST_FOREACH(const config cfg, u_animation.unit_filter_) {
+		//	std::cout << cfg.debug();
+		//}
+		std::cout << "TODO: create debugging output for unit filters";
 		std::cout << "[/filter]\n";
 	}
 	if (u_animation.secondary_unit_filter_.size() > 0) {
 		std::cout << "[filter_second]\n";
-		BOOST_FOREACH(const config cfg, u_animation.secondary_unit_filter_) {
-			std::cout << cfg.debug();
-		}
+		//BOOST_FOREACH(const config cfg, u_animation.secondary_unit_filter_) {
+		//	std::cout << cfg.debug();
+		//}
+		std::cout << "TODO: create debugging output for unit filters";
 		std::cout << "[/filter_second]\n";
 	}
 	if (u_animation.primary_attack_filter_.size() > 0) {

@@ -34,7 +34,9 @@
 
 #include <boost/foreach.hpp>
 #include <boost/optional.hpp>
+#include <boost/make_shared.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
+#include <boost/shared_ptr.hpp>
 #include <boost/utility/in_place_factory.hpp> //needed for boost::in_place to initialize optionals
 
 #include <vector>
@@ -51,7 +53,7 @@ bool unit_filter::matches(const unit & u) const {
 
 
 /// Forward declare the "construct" method which constructs an appropriate filter impl
-static unit_filter_abstract_impl * construct(const vconfig & vcfg, const filter_context & fc, bool flat_tod);
+static boost::shared_ptr<unit_filter_abstract_impl> construct(const vconfig & vcfg, const filter_context & fc, bool flat_tod);
 
 /// Null unit filter is built when the input config is null
 class null_unit_filter_impl : public unit_filter_abstract_impl {
@@ -271,12 +273,12 @@ private:
  *
  */
 
-static unit_filter_abstract_impl * construct(const vconfig & vcfg, const filter_context & fc, bool flat_tod)
+static boost::shared_ptr<unit_filter_abstract_impl> construct(const vconfig & vcfg, const filter_context & fc, bool flat_tod)
 {
 	if (vcfg.null()) {
-		return new null_unit_filter_impl();
+		return boost::make_shared<null_unit_filter_impl> ();
 	}
-	return new basic_unit_filter_impl(vcfg, fc, flat_tod);
+	return boost::make_shared<basic_unit_filter_impl>(vcfg, fc, flat_tod);
 	//TODO: Add more efficient implementations for special cases
 }
 
@@ -288,7 +290,7 @@ unit_filter::unit_filter(const vconfig & vcfg, const filter_context * fc, bool f
 	if (!fc) {
 		assert(false && "attempt to instantiate a unit filter with a null filter context!");
 	}
-	impl_.reset(construct(vcfg, *fc, flat_tod));
+	impl_ = construct(vcfg, *fc, flat_tod);
 }
 
 /** Begin implementations of filter impl's
