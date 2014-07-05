@@ -16,6 +16,7 @@ usage()
   echo -e "\t-s\tDisable strict mode. By default, we run wesnoth with option"
   echo -e "\t  \t'--log-strict=warning' to ensure errors result in a failed test."
   echo -e "\t-d\tRun wesnoth-debug binary instead of wesnoth."
+  echo -e "\t-g\tIf we encounter a crash, generate a backtrace using gdb. Must have gdb installed for this option."
   echo -e "\t-p arg\tPath to wesnoth binary. By default assume it is with this script."
   echo -e "\t-l arg\tLoads list of tests from the given file."
   echo -e "\t  \tBy default, the file is wml_test_schedule."
@@ -164,11 +165,18 @@ run_test()
     echo "$command" "2> error.log"
   fi
   $command 2> error.log
-  if check_errs $2 $? $1; then 
+  error_code="$?"
+  if check_errs $2 $error_code $1; then
     FirstTest=0 #Only start using validcache flag when at least one test has passed without error
     handle_error_log 0
     return 0
   else
+    # If we got a code of value at least 128, and it wasn't KILL timeout, it means we segfaulted / failed assertion etc. most likely, so run gdb to get a backtrace
+    if [ "$GdbBacktraceMode" -eq 1 -a "$error_code" -ge 128 -a "$error_code" -ne 137 ]; then
+        echo -e "\n* Launching gdb for a backtrace...\n" >>error.log
+        gdb -q -batch -ex start -ex continue -ex bt -ex quit --args $binary $opts $extra_opts >>error.log
+    fi
+
     handle_error_log 1
     return 1
   fi
@@ -183,10 +191,11 @@ LoadFile="wml_test_schedule"
 BinPath="./"
 StrictMode=1
 DebugMode=0
+GdbBacktraceMode=0
 extra_opts=""
 basetimer=10
 
-while getopts ":hvwusdp:l:a:t:" Option
+while getopts ":hvwusdgp:l:a:t:" Option
 do
   case $Option in
     h )
@@ -211,6 +220,9 @@ do
       ;;
     d )
       DebugMode=1
+      ;;
+    g )
+      GdbBacktraceMode=1
       ;;
     p )
       BinPath="$OPTARG"
