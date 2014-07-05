@@ -26,7 +26,10 @@
 #ifndef INCLUDED_UNIT_FILTER_HPP_
 #define INCLUDED_UNIT_FILTER_HPP_
 
+#include "unit_ptr.hpp"
+
 #include <boost/shared_ptr.hpp>
+#include <vector>
 
 class filter_context;
 class unit;
@@ -36,6 +39,8 @@ struct map_location;
 class unit_filter_abstract_impl {
 public:
 	virtual bool matches(const unit & u, const map_location & loc) const = 0;
+	virtual std::vector<const unit*> all_matches_on_map() const = 0;
+	virtual unit_const_ptr first_match_on_map() const = 0;
 	virtual ~unit_filter_abstract_impl() {}
 };
 
@@ -70,6 +75,14 @@ public:
 
 	bool operator()(const unit & u) const {
 		return matches(u);
+	}
+
+	std::vector<const unit *> all_matches_on_map() const {
+		return impl_->all_matches_on_map();
+	}
+
+	unit_const_ptr first_match_on_map() const {
+		return impl_->first_match_on_map();
 	}
 private:
 	boost::shared_ptr<unit_filter_abstract_impl> impl_;

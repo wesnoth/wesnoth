@@ -59,12 +59,27 @@ static boost::shared_ptr<unit_filter_abstract_impl> construct(const vconfig & vc
 /// Null unit filter is built when the input config is null
 class null_unit_filter_impl : public unit_filter_abstract_impl {
 public:
-	null_unit_filter_impl() {}
+	null_unit_filter_impl(const filter_context & fc) : fc_(fc) {}
 	virtual bool matches(const unit & /*u*/, const map_location & /*loc*/) const {
 		return true;
 	}
+	virtual std::vector<const unit *> all_matches_on_map() const {
+		std::vector<const unit *> ret;
+		BOOST_FOREACH(const unit & u, fc_.get_disp_context().units()) {
+			ret.push_back(&u);
+		}
+		return ret;
+	}
+
+	virtual unit_const_ptr first_match_on_map() const {
+		return fc_.get_disp_context().units().begin().get_shared_ptr();
+	}
+
 
 	virtual ~null_unit_filter_impl() {}
+
+private:
+	const filter_context & fc_;
 };
 
 /// This enum helps to evaluate conditional filters
@@ -220,6 +235,8 @@ public:
 	}
 
 	virtual bool matches(const unit & u, const map_location & loc) const;
+	virtual std::vector<const unit *> all_matches_on_map() const;
+	virtual unit_const_ptr first_match_on_map() const;
 
 	virtual ~basic_unit_filter_impl() {}
 private:
@@ -277,7 +294,7 @@ private:
 static boost::shared_ptr<unit_filter_abstract_impl> construct(const vconfig & vcfg, const filter_context & fc, bool flat_tod)
 {
 	if (vcfg.null()) {
-		return boost::make_shared<null_unit_filter_impl> ();
+		return boost::make_shared<null_unit_filter_impl> (fc);
 	}
 	return boost::make_shared<basic_unit_filter_impl>(vcfg, fc, flat_tod);
 	//TODO: Add more efficient implementations for special cases
@@ -579,4 +596,24 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 	}
 
 	return true;
+}
+
+std::vector<const unit *> basic_unit_filter_impl::all_matches_on_map() const {
+	std::vector<const unit *> ret;
+	BOOST_FOREACH(const unit & u, fc_.get_disp_context().units()) {
+		if (matches(u, u.get_location())) {
+			ret.push_back(&u);
+		}
+	}
+	return ret;
+}
+
+unit_const_ptr basic_unit_filter_impl::first_match_on_map() const {
+	const unit_map & units = fc_.get_disp_context().units();
+	for(unit_map::const_iterator u = units.begin(); u != units.end(); u++) {
+		if (matches(*u,u->get_location())) {
+			return u.get_shared_ptr();
+		}
+	}
+	return unit_const_ptr();
 }

@@ -1410,6 +1410,9 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(object, event_info, cfg)
 {
 	const vconfig & filter = cfg.child("filter");
+	boost::optional<unit_filter> ufilt;
+	if (!filter.null())
+		ufilt = unit_filter(filter, resources::filter_con);
 
 	std::string id = cfg["id"];
 
@@ -1422,13 +1425,10 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 	std::string text;
 
 	map_location loc;
-	if(!filter.null()) {
-		const unit_filter ufilt(filter, resources::filter_con);
-		BOOST_FOREACH(const unit &u, *resources::units) {
-			if ( ufilt(u) ) {
-				loc = u.get_location();
-				break;
-			}
+	if(ufilt) {
+		unit_const_ptr u_ptr = ufilt->first_match_on_map();
+		if (u_ptr) {
+			loc = u_ptr->get_location();
 		}
 	}
 
@@ -1440,7 +1440,7 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 
 	std::string command_type = "then";
 
-	if ( u != resources::units->end()  &&  (filter.null() || unit_filter(filter, resources::filter_con).matches(*u)) )
+	if ( u != resources::units->end()  &&  (!ufilt || ufilt->matches(*u)) )
 	{
 		///@deprecated This can be removed (and a proper duration=level implemented) after 1.11.2
 		/// Don't forget to remove it from wmllint too!
