@@ -49,6 +49,7 @@
 #include "unit.hpp"
 #include "unit_map.hpp"
 
+#include <boost/assign.hpp>
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
 
@@ -75,7 +76,6 @@ game_data::game_data()
 		, wml_menu_items_()
 		, rng_()
 		, variables_()
-		, temporaries_()
 		, phase_(INITIAL)
 		, can_end_turn_(true)
 		, scenario_()
@@ -88,7 +88,6 @@ game_data::game_data(const config& level)
 		, wml_menu_items_()
 		, rng_(level)
 		, variables_(level.child_or_empty("variables"))
-		, temporaries_()
 		, phase_(INITIAL)
 		, can_end_turn_(level["can_end_turn"].to_bool(true))
 		, scenario_(level["id"])
@@ -104,69 +103,73 @@ game_data::game_data(const game_data& data)
 		, wml_menu_items_(data.wml_menu_items_)
 		, rng_(data.rng_)
 		, variables_(data.variables_)
-		, temporaries_()
 		, phase_(data.phase_)
 		, can_end_turn_(data.can_end_turn_)
 		, scenario_(data.scenario_)
 		, next_scenario_(data.next_scenario_)
 {}
-
+//throws
 config::attribute_value &game_data::get_variable(const std::string& key)
 {
-	return variable_info(key, true, variable_info::TYPE_SCALAR).as_scalar();
+	return get_variable_access_write(key).as_scalar();
 }
 
 config::attribute_value game_data::get_variable_const(const std::string &key) const
 {
-	variable_info to_get(key, false, variable_info::TYPE_SCALAR);
-	if (!to_get.is_valid)
+	try
 	{
-		config::attribute_value &to_return = temporaries_[key];
-		if (key.size() > 7 && key.substr(key.size() - 7) == ".length") {
-			// length is a special attribute, so guarantee its correctness
-			to_return = 0;
-		}
-		return to_return;
+		return get_variable_access_read(key).as_scalar();
 	}
-	return to_get.as_scalar();
+	catch(const invalid_variablename_exception&)
+	{
+		return config::attribute_value();
+	}
 }
-
+//throws
 config& game_data::get_variable_cfg(const std::string& key)
 {
-	return variable_info(key, true, variable_info::TYPE_CONTAINER).as_container();
+	return get_variable_access_write(key).as_container();
 }
 
 void game_data::set_variable(const std::string& key, const t_string& value)
 {
-	get_variable(key) = value;
+	try
+	{
+		get_variable(key) = value;
+	}
+	catch(const invalid_variablename_exception&)
+	{
+		ERR_NG << "variable " << key << "cannot be set to " << value << std::endl;
+	}
 }
-
+//throws
 config& game_data::add_variable_cfg(const std::string& key, const config& value)
 {
-	variable_info to_add(key, true, variable_info::TYPE_ARRAY);
-	return to_add.vars->add_child(to_add.key, value);
+	std::vector<config> temp = boost::assign::list_of(value);
+	return *get_variable_access_write(key).append_array(temp).first;
 }
 
 void game_data::clear_variable_cfg(const std::string& varname)
 {
-	variable_info to_clear(varname, false, variable_info::TYPE_CONTAINER);
-	if(!to_clear.is_valid) return;
-	if(to_clear.explicit_index) {
-		to_clear.vars->remove_child(to_clear.key, to_clear.index);
-	} else {
-		to_clear.vars->clear_children(to_clear.key);
+	try
+	{
+		get_variable_access_throw(varname).clear(true);
+	}
+	catch(const invalid_variablename_exception&)
+	{
+		//variable doesn't exist, nothing to delete
 	}
 }
 
 void game_data::clear_variable(const std::string& varname)
 {
-	variable_info to_clear(varname, false);
-	if(!to_clear.is_valid) return;
-	if(to_clear.explicit_index) {
-		to_clear.vars->remove_child(to_clear.key, to_clear.index);
-	} else {
-		to_clear.vars->clear_children(to_clear.key);
-		to_clear.vars->remove_attribute(to_clear.key);
+	try
+	{
+		get_variable_access_throw(varname).clear(false);
+	}
+	catch(const invalid_variablename_exception&)
+	{
+		//variable doesn't exist, nothing to delete
 	}
 }
 
@@ -233,4 +236,34 @@ game_data* game_data::operator=(const game_data* info)
 		new (this) game_data(*info) ;
 	}
 	return this ;
+}
+
+namespace {
+	bool recursive_activation = false;
+
+} // end anonymous namespace
+
+void game_data::activate_scope_variable(std::string var_name) const
+{
+	
+	if(recursive_activation)
+		return;
+	const std::string::iterator itor = std::find(var_name.begin(),var_name.end(),'.');
+	if(itor != var_name.end()) {
+		var_name.erase(itor, var_name.end());
+	}
+	std::vector<scoped_wml_variable*>::const_reverse_iterator rit;
+	for(
+		rit = scoped_variables.rbegin(); 
+		rit != scoped_variables.rend(); 
+	++rit) {
+		if((**rit).name() == var_name) {
+			recursive_activation = true;
+			if(!(**rit).activated()) {
+				(**rit).activate();
+			}
+			recursive_activation = false;
+			break;
+		}
+	}
 }

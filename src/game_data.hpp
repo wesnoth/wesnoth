@@ -22,7 +22,7 @@
 #include "game_events/wmi_container.hpp"
 #include "map_location.hpp"
 #include "simple_rng.hpp"
-
+#include "variable_info.hpp"
 #include <boost/shared_ptr.hpp>
 
 class config_writer;
@@ -57,6 +57,26 @@ public:
 
 	void set_variable(const std::string& varname, const t_string& value);
 	config& add_variable_cfg(const std::string& varname, const config& value=config());
+
+	void activate_scope_variable(std::string var_name) const;
+
+	// returns a variable_access that cannot be used to change the game variables
+	variable_access_const get_variable_access_read(const std::string& varname) const
+	{
+		assert(this != NULL);
+		activate_scope_variable(varname);
+		return variable_access_const(varname, variables_);
+	}
+
+	// returns a variable_access that cannot be used to change the game variables
+	variable_access_create get_variable_access_write(const std::string& varname)
+	{
+		assert(this != NULL);
+		activate_scope_variable(varname);
+		return variable_access_create(varname, variables_);
+	}
+
+
 
 	void clear_variable(const std::string& varname);
 	void clear_variable_cfg(const std::string& varname); // Clears only the config children
@@ -103,11 +123,19 @@ public:
 	game_data* operator=(const game_data* info);
 
 private:
+
+	
+	///Used to delete variables.
+	variable_access_throw get_variable_access_throw(const std::string& varname)
+	{
+		assert(this != NULL);
+		activate_scope_variable(varname);
+		return variable_access_throw(varname, variables_);
+	}
+
 	game_events::wmi_container wml_menu_items_;
 	rand_rng::simple_rng rng_;
 	config variables_;
-	mutable config temporaries_; // lengths of arrays, etc.
-	friend struct variable_info;
 	PHASE phase_;
 	bool can_end_turn_;
 	std::string scenario_;                            /**< the scenario being played */

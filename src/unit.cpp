@@ -22,6 +22,7 @@
 
 #include "formula_string_utils.hpp"     // for vgettext
 #include "game_board.hpp"               // for game_board
+#include "game_data.hpp"
 #include "game_config.hpp"              // for add_color_info, etc
 #include "game_errors.hpp"              // for game_error
 #include "game_events/handlers.hpp"     // for add_events
