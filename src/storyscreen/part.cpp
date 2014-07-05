@@ -67,7 +67,7 @@ void floating_image::assign(const floating_image& fi)
 
 floating_image::render_input floating_image::get_render_input(double xscale, double yscale, SDL_Rect& dst_rect) const
 {
-#if SDL_VERSION_ATLEAST(2,0,0)
+#ifdef SDL_GPU
 	render_input ri = {
 		{0,0,0,0},
 		file_.empty() ? sdl::ttexture() : image::get_texture(file_)

@@ -28,6 +28,7 @@
 #include "sdl/rect.hpp"
 #include "sdl/window.hpp"
 #include "video.hpp"
+#include "sdl/gpu.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -42,6 +43,7 @@ static lg::log_domain log_display("display");
 namespace {
 	bool fullScreen = false;
 	int disallow_resize = 0;
+	GPU_Target *render_target;
 }
 void resize_monitor::process(events::pump_info &info) {
 	if(info.resize_dimensions.first >= preferences::min_allowed_width()
@@ -67,6 +69,7 @@ static unsigned int get_flags(unsigned int flags)
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 	// SDL under Windows doesn't seem to like hardware surfaces
 	// for some reason.
+	flags |= SDL_OPENGLBLIT;
 #if !(defined(_WIN32) || defined(__APPLE__))
 		flags |= SDL_HWSURFACE;
 #endif
@@ -235,6 +238,13 @@ bool non_interactive()
 #endif
 }
 
+
+
+GPU_Target *get_render_target()
+{
+	return render_target;
+}
+
 surface display_format_alpha(surface surf)
 {
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
@@ -333,10 +343,10 @@ CVideo::CVideo(FAKE_TYPES type) : mode_changed_(false), bpp_(0), fake_screen_(fa
 
 void CVideo::initSDL()
 {
-	const int res = SDL_InitSubSystem(SDL_INIT_VIDEO | SDL_INIT_NOPARACHUTE);
+	render_target = GPU_Init(1200, 700, GPU_DEFAULT_INIT_FLAGS);
 
-	if(res < 0) {
-		ERR_DP << "Could not initialize SDL_video: " << SDL_GetError() << std::endl;
+	if(render_target == NULL) {
+		ERR_DP << "Could not initialize window: " << SDL_GetError() << std::endl;
 		throw CVideo::error();
 	}
 }
@@ -713,3 +723,4 @@ void CVideo::clear_all_help_strings()
 {
 	clear_help_string(help_string_);
 }
+
