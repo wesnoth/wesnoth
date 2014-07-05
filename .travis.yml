@@ -36,7 +36,7 @@ script:
     - scons cxxtool=$CXX --debug=time build=release extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=$STRICT_COMPILATION $TARGETS
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
-    - if [[ "$CPP_TESTS" = true ]]; then time ./test; export TEST_ERROR_CODE=$?; ./utils/travis/exit_wrapper.sh $TEST_ERROR_CODE; fi
+    - time if [[ "$CPP_TESTS" = true ]]; then ./test; export TEST_ERROR_CODE=$?; ./utils/travis/exit_wrapper.sh $TEST_ERROR_CODE; fi
     - if [[ "$WML_TESTS" = true ]]; then time ./run_wml_tests -v -t "$WML_TEST_TIME"; fi
 after_failure:
     - if [ -f "errors.log" ]; then echo -e "\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n"; cat errors.log; fi
