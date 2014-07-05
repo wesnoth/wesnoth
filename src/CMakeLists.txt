@@ -56,6 +56,8 @@ if(ENABLE_SDL_GPU)
 	message(STATUS "Configuring SDL_gpu...")
 	add_definitions("-DSDL_GPU")
 	add_subdirectory(SDL_gpu)
+	set(sdl_gpu-lib-vc SDL_gpu.lib)
+	set(sdl_gpu-lib SDL_gpu)
 endif(ENABLE_SDL_GPU)
 
 # needed to get include paths in the subfolders correct
@@ -78,7 +80,7 @@ if(MSVC)
 		${SDLMAIN_LIBRARY}
 		${LIBINTL_LIBRARY}
 		ws2_32.lib
-		SDL_gpu.lib
+		${sdl_gpu-lib-vc}
 	)
 else(MSVC)
 	set(common-external-libs
@@ -87,7 +89,7 @@ else(MSVC)
 		${Boost_REGEX_LIBRARY}
 		${Boost_PROGRAM_OPTIONS_LIBRARY}
 		${LIBINTL_LIBRARIES}
-		SDL_gpu
+		${sdl_gpu-lib}
 	)
 endif(MSVC)
 
