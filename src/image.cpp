@@ -125,8 +125,7 @@ image::image_cache images_,
 		tod_colored_images_,
 		brightened_images_;
 
-#if SDL_VERSION_ATLEAST(2,0,0)
-/** Rexture caches */
+#ifdef SDL_GPU
 image::texture_cache txt_images_,
 		txt_hexed_images_,
 		txt_brightened_images_;
@@ -623,12 +622,12 @@ surface load_from_disk(const locator &loc)
 	}
 }
 
-#if SDL_VERSION_ATLEAST(2,0,0)
-sdl::ttexture load_texture(const locator &loc, const int access)
+#ifdef SDL_GPU
+sdl::ttexture load_texture(const locator &loc)
 {
 	surface img = load_from_disk(loc);
 	if (!img.null()) {
-		return CVideo::get_window()->create_texture(access, img);
+		return sdl::ttexture(img);
 	} else {
 		return sdl::ttexture();
 	}
@@ -902,7 +901,7 @@ surface get_image(const image::locator& i_locator, TYPE type)
 	return res;
 }
 
-#if SDL_VERSION_ATLEAST(2,0,0)
+#ifdef SDL_GPU
 sdl::ttexture get_texture(const locator& loc, TYPE type)
 {
 	if (loc.is_void()) {
@@ -934,11 +933,11 @@ sdl::ttexture get_texture(const locator& loc, TYPE type)
 			loc.add_to_cache(*cache, txt);
 		} else if (type == BRIGHTENED) {
 			surface surf = get_brightened(loc);
-			sdl::ttexture txt = CVideo::get_window()->create_texture(SDL_TEXTUREACCESS_STATIC, surf);
+			sdl::ttexture txt(surf);
 			loc.add_to_cache(*cache, txt);
 		} else {
 			surface surf = get_hexed(loc);
-			sdl::ttexture txt = CVideo::get_window()->create_texture(SDL_TEXTUREACCESS_STATIC, surf);
+			sdl::ttexture txt(surf);
 			loc.add_to_cache(*cache, txt);
 		}
 	}

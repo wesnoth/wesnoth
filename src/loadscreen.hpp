@@ -20,10 +20,7 @@
 class CVideo;
 
 #include "sdl/utils.hpp"
-
-#if SDL_VERSION_ATLEAST(2,0,0)
-#include "sdl/texture.hpp"
-#endif
+#include "sdl/gpu.hpp"
 
 class loadscreen {
 public:
@@ -78,8 +75,8 @@ private:
 	// Data members
 	CVideo &screen_;
 	SDL_Rect textarea_;
-#if SDL_VERSION_ATLEAST(2,0,0)
-	sdl::ttexture logo_texture_;
+#ifdef SDL_GPU
+	GPU_Image *logo_image_;
 #else
 	surface logo_surface_;
 #endif

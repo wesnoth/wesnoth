@@ -94,6 +94,9 @@ ttext::ttext() :
 	layout_(pango_layout_new(context_)),
 	rect_(),
 	surface_(),
+#ifdef SDL_GPU
+	texture_(),
+#endif
 	text_(),
 	markedup_text_(false),
 	font_size_(14),
@@ -159,7 +162,7 @@ surface ttext::render() const
 	return surface_;
 }
 
-#if SDL_VERSION_ATLEAST(2,0,0)
+#ifdef SDL_GPU
 sdl::ttexture ttext::render_as_texture() const
 {
 	rerender();
@@ -696,9 +699,8 @@ void ttext::rerender(const bool force) const
 		surface_.assign(SDL_CreateRGBSurfaceFrom(
 			surface_buffer_, width, height, 32, stride,
 			0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000));
-#if SDL_VERSION_ATLEAST(2,0,0)
-		texture_ = CVideo::get_window()->create_texture
-				(SDL_TEXTUREACCESS_STATIC, surface_);
+#ifdef SDL_GPU
+		texture_ = sdl::ttexture(surface_);
 #endif
 		cairo_destroy(cr);
 		cairo_surface_destroy(cairo_surface);

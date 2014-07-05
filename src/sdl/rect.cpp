@@ -31,6 +31,15 @@ SDL_Rect create_rect(const int x, const int y, const int w, const int h)
 	return rect;
 }
 
+#ifdef SDL_GPU
+GPU_Rect create_gpu_rect(const float x, const float y, const float w, const float h)
+{
+	GPU_Rect result = {x, y, w, h};
+
+	return result;
+}
+#endif
+
 bool point_in_rect(int x, int y, const SDL_Rect& rect)
 {
 	return x >= rect.x && y >= rect.y && x < rect.x + rect.w && y < rect.y + rect.h;
@@ -110,20 +119,33 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
 	fill_rect_alpha(rect,SDL_MapRGB(target->format,r,g,b),Uint8(alpha*255),target);
 }
 
-
-#if SDL_VERSION_ATLEAST(2,0,0)
-void fill_rect(SDL_Renderer *rnd, const SDL_Rect *rect, Uint8 r, Uint8 g,
+#ifdef SDL_GPU
+void draw_rect(GPU_Target &target, const SDL_Rect &rect, Uint8 r, Uint8 g,
 			   Uint8 b, Uint8 a)
 {
-	SDL_SetRenderDrawColor(rnd, r, g, b, a);
-	SDL_RenderFillRect(rnd, rect);
+	SDL_Color color = {r, g, b, a};
+	GPU_Rectangle(&target, rect.x, rect.y, rect.x + rect.w, rect.y + rect.h,
+				  color);
 }
 
-void draw_rect(SDL_Renderer *rnd, const SDL_Rect *rect, Uint8 r, Uint8 g,
+void draw_rect(GPU_Target &target, const SDL_Rect &rect, SDL_Color color)
+{
+	GPU_Rectangle(&target, rect.x, rect.y, rect.x + rect.w, rect.y + rect.h,
+				  color);
+}
+
+void fill_rect(GPU_Target &target, const SDL_Rect &rect, Uint8 r, Uint8 g,
 			   Uint8 b, Uint8 a)
 {
-	SDL_SetRenderDrawColor(rnd, r, g, b, a);
-	SDL_RenderDrawRect(rnd, rect);
+	SDL_Color color = {r, g, b, a};
+	GPU_RectangleFilled(&target, rect.x, rect.y, rect.x + rect.w,
+						rect.y + rect.h, color);
+}
+
+void fill_rect(GPU_Target &target, const SDL_Rect &rect, SDL_Color color)
+{
+	GPU_RectangleFilled(&target, rect.x, rect.y, rect.x + rect.w,
+						rect.y + rect.h, color);
 }
 #endif
 

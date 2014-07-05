@@ -34,11 +34,6 @@
 
 #include <boost/foreach.hpp>
 
-#if SDL_VERSION_ATLEAST(2,0,0)
-#include "sdl/texture.hpp"
-#include "sdl/window.hpp"
-#endif
-
 static lg::log_domain log_engine("engine");
 #define ERR_NG  LOG_STREAM(err,  log_engine)
 #define WARN_NG LOG_STREAM(warn, log_engine)
@@ -47,14 +42,22 @@ static lg::log_domain log_engine("engine");
 
 namespace {
 	int const storybox_padding = 10; // px
+#ifdef SDL_GPU
+	int const storyshadow_a = 125;
+#else
 	double const storyshadow_opacity = 0.5;
+#endif
 	int const storyshadow_r = 0;
 	int const storyshadow_g = 0;
 	int const storyshadow_b = 0;
 
 	int const titlebox_padding = 20; // px
 	int const titleshadow_padding = 5; // px
+#ifdef SDL_GPU
+	int const titleshadow_a = 125;
+#else
 	double const titleshadow_opacity = 0.5;
+#endif
 	int const titleshadow_r = 0;
 	int const titleshadow_g = 0;
 	int const titleshadow_b = 0;
@@ -69,7 +72,7 @@ namespace {
 	// Hard-coded path to a suitable (tileable) pic for the storytxt box border.
 	std::string const storybox_top_border_path = "dialogs/translucent54-border-top.png";
 	std::string const storybox_bottom_border_path = "dialogs/translucent54-border-bottom.png";
-
+#ifndef SDL_GPU
 	void blur_area(CVideo& video, int y, int h)
 	{
 		SDL_Rect blur_rect = sdl::create_rect(0, y, screen_area().w, h);
@@ -77,6 +80,7 @@ namespace {
 		blur = blur_surface(blur, 1, false);
 		video.blit_surface(0, y, blur);
 	}
+#endif
 #endif
 }
 
@@ -95,7 +99,7 @@ part_ui::part_ui(part &p, display &disp, gui::button &next_button,
 	, x_scale_factor_(1.0)
 	, y_scale_factor_(1.0)
 	, base_rect_()
-#if SDL_VERSION_ATLEAST(2,0,0)
+#ifdef SDL_GPU
 	, background_images_()
 	, background_positions_()
 #else
@@ -115,7 +119,7 @@ part_ui::part_ui(part &p, display &disp, gui::button &next_button,
 
 void part_ui::prepare_background()
 {
-#if SDL_VERSION_ATLEAST(2,0,0)
+#ifdef SDL_GPU
 	base_rect_.w = video_.getx();
 	base_rect_.h = video_.gety();
 	has_background_ = false;
@@ -169,7 +173,6 @@ void part_ui::prepare_background()
 			no_base_yet = false;
 		}
 	}
-
 #else
 	background_.assign( create_neutral_surface(video_.getx(), video_.gety()) );
 	base_rect_.w = video_.getx();
@@ -308,18 +311,29 @@ void part_ui::render_background()
 		wnd->draw(background_images_[i], x, y);
 	}
 #else
+#ifdef SDL_GPU
+	GPU_Target *target = get_render_target();
+	GPU_Clear(target);
+	for (size_t i = 0; i<background_images_.size(); i++) {
+		const int x = background_positions_[i].first;
+		const int y = background_positions_[i].second;
+
+		background_images_[i].draw(*target, x, y);
+	}
+#else
 	sdl::draw_solid_tinted_rectangle(
 		0, 0, video_.getx(), video_.gety(), 0, 0, 0, 1.0,
 		video_.getSurface()
 	);
 	sdl_blit(background_, NULL, video_.getSurface(), NULL);
 #endif
+#endif
 }
 
 bool part_ui::render_floating_images()
 {
-#if SDL_VERSION_ATLEAST(2,0,0)
-	sdl::twindow *wnd = CVideo::get_window();
+#ifdef SDL_GPU
+	GPU_Target *target = get_render_target();
 
 	skip_ = false;
 	last_key_ = true;
@@ -329,8 +343,8 @@ bool part_ui::render_floating_images()
 		const floating_image& fi = p_.get_floating_images()[fi_n];
 
 		if(!ri.image.null()) {
-			wnd->draw(ri.image, ri.rect.x, ri.rect.y);
-			wnd->render();
+			ri.image.draw(*target, ri.rect.x, ri.rect.y);
+			GPU_Flip(target);
 		}
 
 		if (!skip_)
@@ -384,6 +398,71 @@ bool part_ui::render_floating_images()
 
 void part_ui::render_title_box()
 {
+#ifdef SDL_GPU
+	const std::string& titletxt = p_.title();
+	if(titletxt.empty()) {
+		return;
+	}
+
+	GPU_Target *target = get_render_target();
+	int titlebox_x, titlebox_y, titlebox_max_w, titlebox_max_h;
+	// We later correct these according to the storytext box location.
+	// The text box is always aligned according to the base_rect_
+	// (effective background area) at the end.
+	titlebox_x = titlebox_padding;
+	titlebox_max_w = base_rect_.w - 2*titlebox_padding;
+	titlebox_y = titlebox_padding;
+	titlebox_max_h = base_rect_.h - 2*titlebox_padding;
+
+	font::ttext t;
+	if(!t.set_text(titletxt, true)) {
+		ERR_NG << "Text: Invalid markup in '"
+				<< titletxt << "' rendered as is.\n";
+		t.set_text(titletxt, false);
+	}
+
+	t.set_font_style(font::ttext::STYLE_NORMAL)
+		 .set_font_size(titlebox_font_size)
+		 .set_foreground_color(titlebox_font_color)
+		 .set_maximum_width(titlebox_max_w)
+		 .set_maximum_height(titlebox_max_h, true);
+	sdl::ttexture txttxt = t.render_as_texture();
+
+	if(txttxt.null()) {
+		ERR_NG << "storyscreen titlebox rendering resulted in a null surface" << std::endl;
+		return;
+	}
+
+	const int titlebox_w = txttxt.width();
+	const int titlebox_h = txttxt.height();
+
+	switch(p_.title_text_alignment()) {
+	case part::TEXT_CENTERED:
+		titlebox_x = base_rect_.w / 2 - titlebox_w / 2 - titlebox_padding;
+		break;
+	case part::TEXT_RIGHT:
+		titlebox_x = base_rect_.w - titlebox_padding - titlebox_w;
+		break;
+	default:
+		break; // already set before
+	}
+
+	// Translate to absolute position.
+	titlebox_x += base_rect_.x;
+	titlebox_y += base_rect_.y;
+
+	const SDL_Rect box = sdl::create_rect(
+				titlebox_x - titleshadow_padding,
+				titlebox_y - titleshadow_padding,
+				titlebox_w + 2*titleshadow_padding,
+				titlebox_h + 2*titleshadow_padding
+	);
+
+	sdl::fill_rect(*target, box, titleshadow_r, titleshadow_g, titleshadow_b,
+				   titleshadow_a);
+
+	txttxt.draw(*target, titlebox_x, titlebox_y);
+#else
 	const std::string& titletxt = p_.title();
 	if(titletxt.empty()) {
 		return;
@@ -449,6 +528,7 @@ void part_ui::render_title_box()
 		static_cast<size_t>(std::max(0, titlebox_w)),
 		static_cast<size_t>(std::max(0, titlebox_h))
 	);
+#endif
 }
 
 #ifdef LOW_MEM
@@ -457,6 +537,44 @@ void part_ui::render_story_box_borders(SDL_Rect& /*update_area*/)
 #else
 void part_ui::render_story_box_borders(SDL_Rect& update_area)
 {
+#ifdef SDL_GPU
+	const part::BLOCK_LOCATION tbl = p_.story_text_location();
+
+	if(has_background_) {
+		sdl::ttexture border_top;
+		sdl::ttexture border_bottom;
+		GPU_Target *target = get_render_target();
+
+		if(tbl == part::BLOCK_BOTTOM || tbl == part::BLOCK_MIDDLE) {
+			border_top = image::get_texture(storybox_top_border_path);
+		}
+
+		if(tbl == part::BLOCK_TOP || tbl == part::BLOCK_MIDDLE) {
+			border_bottom = image::get_texture(storybox_bottom_border_path);
+		}
+
+		//
+		// If one of those are null at this point, it means that either we
+		// don't need that border pic, or it is missing (in such case get_image()
+		// would report).
+		//
+
+		if(border_top.null() != true) {
+			const float xscale = screen_area().w / border_top.width();
+			border_top.set_hscale(xscale);
+			//TODO: blurring
+			border_top.draw(*target, 0, update_area.y - border_top.height());
+		}
+
+		if(border_bottom.null() != true) {
+			const float xscale = screen_area().w / border_bottom.width();
+			border_bottom.set_hscale(xscale);
+			//TODO: blurring
+			border_bottom.draw(*target, 0, update_area.y + update_area.h);
+		}
+
+	}
+#else
 	const part::BLOCK_LOCATION tbl = p_.story_text_location();
 
 	if(has_background_) {
@@ -500,11 +618,125 @@ void part_ui::render_story_box_borders(SDL_Rect& update_area)
 			}
 		}
 	}
+#endif
 }
 #endif
 
 void part_ui::render_story_box()
 {
+#ifdef SDL_GPU
+	LOG_NG << "ENTER part_ui()::render_story_box()\n";
+
+	GPU_Target *target = get_render_target();
+
+	const std::string& storytxt = p_.text();
+	if(storytxt.empty()) {
+		GPU_Flip(target);
+		wait_for_input();
+		return;
+	}
+
+	const part::BLOCK_LOCATION tbl = p_.story_text_location();
+	const int max_width = buttons_x_ - storybox_padding - text_x_;
+	const int max_height = screen_area().h - storybox_padding;
+
+	skip_ = false;
+	last_key_ = true;
+
+	font::ttext t;
+	if(!t.set_text(p_.text(), true)) {
+		ERR_NG << "Text: Invalid markup in '"
+				<< p_.text() << "' rendered as is.\n";
+		t.set_text(p_.text(), false);
+	}
+	t.set_font_style(font::ttext::STYLE_NORMAL)
+		 .set_font_size(storybox_font_size)
+		 .set_foreground_color(storybox_font_color)
+		 .set_maximum_width(max_width)
+		 .set_maximum_height(max_height, true);
+	sdl::ttexture txttxt = t.render_as_texture();
+
+	if(txttxt.null()) {
+		ERR_NG << "storyscreen text area rendering resulted in a null texture" << std::endl;
+		return;
+	}
+
+	int fix_text_y = text_y_;
+	if(fix_text_y + 2*(storybox_padding+1) + txttxt.height() > screen_area().h && tbl != part::BLOCK_TOP) {
+		fix_text_y =
+			(screen_area().h > txttxt.height() + 1) ?
+			(std::max(0, screen_area().h - txttxt.height() - 2*(storybox_padding+1))) :
+			(0);
+	}
+	int fix_text_h;
+	switch(tbl) {
+	case part::BLOCK_TOP:
+		fix_text_h = std::max(txttxt.height() + 2*storybox_padding, screen_area().h/4);
+		break;
+	case part::BLOCK_MIDDLE:
+		fix_text_h = std::max(txttxt.height() + 2*storybox_padding, screen_area().h/3);
+		break;
+	default:
+		fix_text_h = screen_area().h - fix_text_y;
+		break;
+	}
+
+	SDL_Rect update_area = sdl::create_rect(0
+			, fix_text_y
+			, screen_area().w
+			, fix_text_h);
+
+	/* do */ {
+		// this should kill the tiniest flickering caused
+		// by the buttons being hidden and unhidden in this scope.
+		update_locker locker(video_);
+
+		next_button_.hide();
+		back_button_.hide();
+		play_button_.hide();
+
+		//TODO: blurring
+
+		const SDL_Rect box = sdl::create_rect(0, fix_text_y, screen_area().w,
+											  fix_text_h);
+
+		sdl::fill_rect(*target, box, storyshadow_r, storyshadow_g,
+					   storyshadow_b, storyshadow_a);
+
+		render_story_box_borders(update_area); // no-op if LOW_MEM is defined
+
+		next_button_.hide(false);
+		back_button_.hide(false);
+		play_button_.hide(false);
+	}
+
+	// Time to do some fucking visual effect.
+	const int scan_height = 1, scan_width = txttxt.width();
+	SDL_Rect scan = sdl::create_rect(0, 0, scan_width, scan_height);
+	SDL_Rect dstrect = sdl::create_rect(text_x_, 0, scan_width, scan_height);
+	bool scan_finished = false;
+	while(true) {
+		scan_finished = scan.y >= txttxt.height();
+		if (!scan_finished)
+		{
+			dstrect.y = fix_text_y + scan.y + storybox_padding;
+			txttxt.set_clip(scan);
+			txttxt.draw(*target, dstrect.x, dstrect.y);
+			GPU_Flip(target);
+			++scan.y;
+		}
+		else skip_ = true;
+
+		if (handle_interface()) break;
+
+		if (!skip_ || scan_finished) {
+			disp_.delay(20);
+		}
+	}
+
+	const SDL_Rect rect = sdl::create_rect(0, 0, video_.getx(), video_.gety());
+	sdl::fill_rect(*target, rect, 0, 0, 0, 255);
+#else
 	LOG_NG << "ENTER part_ui()::render_story_box()\n";
 
 	const std::string& storytxt = p_.text();
@@ -630,6 +862,7 @@ void part_ui::render_story_box()
 		0, 0, video_.getx(), video_.gety(), 0, 0, 0,
 		1.0, video_.getSurface()
 	);
+#endif
 }
 
 void part_ui::wait_for_input()
