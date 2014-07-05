@@ -408,19 +408,15 @@ int unit_animation::matches(const display &disp, const map_location& loc,const m
 			++result;
 		}
 		if(!secondary_unit_filter_.empty()) {
-			unit_map::const_iterator unit;
-			for(unit=disp.get_units().begin() ; unit != disp.get_units().end() ; ++unit) {
-				if (unit->get_location() == second_loc) {
-					std::vector<unit_filter>::const_iterator second_itor;
-					for(second_itor = secondary_unit_filter_.begin(); second_itor != secondary_unit_filter_.end(); ++second_itor) {
-						if (!second_itor->matches(*unit, second_loc)) return MATCH_FAIL;
-						result++;
-					}
-
-					break;
+			unit_map::const_iterator unit = disp.get_units().find(second_loc);
+			if (unit.valid()) {
+				BOOST_FOREACH(const unit_filter &f , secondary_unit_filter_) {
+					if (!f(*unit, second_loc)) return MATCH_FAIL;
+					result++;
 				}
+			} else {
+				return MATCH_FAIL;
 			}
-			if(unit == disp.get_units().end()) return MATCH_FAIL;
 		}
 
 	} else if (!unit_filter_.empty()) return MATCH_FAIL;
