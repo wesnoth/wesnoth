@@ -100,6 +100,13 @@ terrain_filter& terrain_filter::operator=(const terrain_filter& other)
 	return *this ;
 }
 
+terrain_filter::terrain_filter_cache::terrain_filter_cache() :
+	parsed_terrain(NULL),
+	adjacent_matches(NULL),
+	adjacent_match_cache(),
+	ufilter_()
+{}
+
 namespace {
 	struct cfg_isor {
 		bool operator() (std::pair<const std::string,const vconfig> val) {
@@ -156,9 +163,12 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 
 	//Allow filtering on unit
 	if(cfg_.has_child("filter")) {
-		const unit_filter ufilt(vconfig(cfg_.child("filter")), fc_, flat_);
 		const unit_map::const_iterator u = fc_->get_disp_context().units().find(loc);
-		if (u == fc_->get_disp_context().units().end() || !ufilt( *u, loc))
+		if (!u.valid())
+			return false;
+		if (!cache_.ufilter_)
+			cache_.ufilter_.reset(new unit_filter(vconfig(cfg_.child("filter")), fc_, flat_));
+		if (!cache_.ufilter_->matches(*u, loc))
 			return false;
 	}
 
