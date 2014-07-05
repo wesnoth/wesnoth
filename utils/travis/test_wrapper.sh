@@ -4,7 +4,7 @@ COUNTER=10
 ERRORCODE=$?
 while [ $COUNTER -gt 0 -a $ERRORCODE -eq 200 ]; do
     echo "test apparently timed out with error code 200... trying again."
-    let COUNTER = COUNTER - 1
+    COUNTER=$((COUNTER-1))
     ./test
     ERRORCODE=$?
 done
