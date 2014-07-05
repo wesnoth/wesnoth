@@ -66,10 +66,12 @@ resize_lock::~resize_lock()
 static unsigned int get_flags(unsigned int flags)
 {
 	/* The wanted flags for the render need to be evaluated for SDL2. */
+#ifdef SDL_GPU
+	flags |= SDL_OPENGLBLIT;
+#endif
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 	// SDL under Windows doesn't seem to like hardware surfaces
 	// for some reason.
-	flags |= SDL_OPENGLBLIT;
 #if !(defined(_WIN32) || defined(__APPLE__))
 		flags |= SDL_HWSURFACE;
 #endif
