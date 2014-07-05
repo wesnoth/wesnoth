@@ -822,6 +822,8 @@
 		EC219452196064A900420969 /* wmi_pager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC219450196064A900420969 /* wmi_pager.cpp */; };
 		EC219454196064C500420969 /* wesnoth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC219453196064C500420969 /* wesnoth.cpp */; };
 		EC225C9718EF0ABC00025EC4 /* libintl.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242D18EF07B4001FA499 /* libintl.8.dylib */; };
+		EC2864301967989000168DFF /* unit_filter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC28642E1967988F00168DFF /* unit_filter.cpp */; };
+		EC2864331967990500168DFF /* variable_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2864311967990500168DFF /* variable_info.cpp */; };
 		EC28C58F19423426003B0F5E /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC28C58D19423426003B0F5E /* utils.cpp */; };
 		EC28C59119423529003B0F5E /* save_index.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC28C59019423528003B0F5E /* save_index.cpp */; };
 		EC3381C718B520120020DD6F /* theme_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3381C518B520120020DD6F /* theme_list.cpp */; };
@@ -2022,6 +2024,10 @@
 		EC219450196064A900420969 /* wmi_pager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wmi_pager.cpp; sourceTree = "<group>"; };
 		EC219451196064A900420969 /* wmi_pager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = wmi_pager.hpp; sourceTree = "<group>"; };
 		EC219453196064C500420969 /* wesnoth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wesnoth.cpp; sourceTree = "<group>"; };
+		EC28642E1967988F00168DFF /* unit_filter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit_filter.cpp; sourceTree = "<group>"; };
+		EC28642F1967988F00168DFF /* unit_filter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unit_filter.hpp; sourceTree = "<group>"; };
+		EC2864311967990500168DFF /* variable_info.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = variable_info.cpp; sourceTree = "<group>"; };
+		EC2864321967990500168DFF /* variable_info.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = variable_info.hpp; sourceTree = "<group>"; };
 		EC28C58D19423426003B0F5E /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = utils.cpp; path = sdl/utils.cpp; sourceTree = "<group>"; };
 		EC28C58E19423426003B0F5E /* utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = utils.hpp; path = sdl/utils.hpp; sourceTree = "<group>"; };
 		EC28C59019423528003B0F5E /* save_index.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = save_index.cpp; sourceTree = "<group>"; };
@@ -2460,6 +2466,10 @@
 		29B97315FDCFA39411CA2CEA /* src */ = {
 			isa = PBXGroup;
 			children = (
+				EC2864311967990500168DFF /* variable_info.cpp */,
+				EC2864321967990500168DFF /* variable_info.hpp */,
+				EC28642E1967988F00168DFF /* unit_filter.cpp */,
+				EC28642F1967988F00168DFF /* unit_filter.hpp */,
 				EC219453196064C500420969 /* wesnoth.cpp */,
 				EC219450196064A900420969 /* wmi_pager.cpp */,
 				EC219451196064A900420969 /* wmi_pager.hpp */,
@@ -4219,6 +4229,7 @@
 				B5599AED0EC62181008DD061 /* unit_display.cpp in Sources */,
 				B5599AEE0EC62181008DD061 /* unit_animation.cpp in Sources */,
 				B5599AEF0EC62181008DD061 /* unit_abilities.cpp in Sources */,
+				EC2864301967989000168DFF /* unit_filter.cpp in Sources */,
 				B5599AF00EC62181008DD061 /* unit.cpp in Sources */,
 				EC84246B18F30D9100FC1EEF /* simple_rng.cpp in Sources */,
 				B5599AF10EC62181008DD061 /* tstring.cpp in Sources */,
@@ -4544,6 +4555,7 @@
 				B52EE91512135AC300CFBDAB /* action.cpp in Sources */,
 				B52EE91612135AC300CFBDAB /* attack.cpp in Sources */,
 				EC89A13F1879D17D00A3B0B1 /* lparser.cpp in Sources */,
+				EC2864331967990500168DFF /* variable_info.cpp in Sources */,
 				ECFB9FAC193BFB6E00146ED0 /* rect.cpp in Sources */,
 				B52EE91812135AC300CFBDAB /* manager.cpp in Sources */,
 				B52EE91A12135AC300CFBDAB /* move.cpp in Sources */,
