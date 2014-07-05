@@ -42,6 +42,7 @@ after_failure:
     - if [ -f "errors.log" ]; then echo -e "\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n"; cat errors.log; fi
     - if [ "$TEST_ERROR_CODE" = 200]; then echo -e "\n***\n*\n* Encountered a segfault in the c++ unit test executable, attempting to get a backtrace in the remaining time...\n*\n***\n"; fi
     - if [ "$TEST_ERROR_CODE" = 200]; then time sudo apt-get install -qq gdb; fi
+    - if [ "$TEST_ERROR_CODE" = 200]; then time gdb --eval-command=start --eval-command=continue --eval-command=bt --eval-command=quit --args ./test; fi
     - if [ "$TEST_ERROR_CODE" = 200]; then time scons build=debug extra_flags_debug="$EXTRA_FLAGS_RELEASE" test; fi
     - if [ "$TEST_ERROR_CODE" = 200]; then time gdb --eval-command=start --eval-command=continue --eval-command=bt --eval-command=quit --args ./test-debug; fi
 notifications:
