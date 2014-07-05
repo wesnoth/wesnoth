@@ -96,7 +96,9 @@ loadscreen::loadscreen(CVideo &screen, const int percent):
 void loadscreen::draw_screen(const std::string &text)
 {
 	//if (screen_.faked()) return; // We seem to encounter segfault in the test executable if this is not done
+#ifdef SDL_GPU
 	GPU_Target *screen = get_render_target();
+#else
 
 	// Set progress bar parameters:
 	//
@@ -110,11 +112,11 @@ void loadscreen::draw_screen(const std::string &text)
 	int bw = 1;
 	// Border inner spacing width.
 	int bispw = 1;
-	bw = 2*(bw+bispw) > screen->w ? 0: 2*(bw+bispw) > screen->h ? 0: bw;
+	bw = 2*(bw+bispw) > screen_.getx() ? 0: 2*(bw+bispw) > screen_.gety() ? 0: bw;
 	// Available width.
-	int scrx = screen->w - 2*(bw+bispw);
+	int scrx = screen_.getx() - 2*(bw+bispw);
 	// Available height.
-	int scry = screen->h - 2*(bw+bispw);
+	int scry = screen_.gety() - 2*(bw+bispw);
 	// Used width.
 	int pbw = scrx/2;
 	// Used height.
