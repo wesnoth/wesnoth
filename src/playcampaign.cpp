@@ -314,7 +314,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		if (is_unit_test) {
 			return res;
 		}
-		//in this case we  might have skipped state.set_snapshot which means wew cannot do gamestate.convert_to_start_save();
+		//in this case we  might have skipped state.set_snapshot which means we cannot do gamestate.convert_to_start_save();
 		if(res == QUIT)
 		{
 			return res;
@@ -322,8 +322,8 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 
 		// Save-management options fire on game end.
 		// This means: (a) we have a victory, or
-		// or (b) we're multiplayer live, in which
-		// case defeat is also game end.  Someday,
+		// (b) we're multiplayer live, in which
+		// case defeat is also game end. Someday,
 		// if MP campaigns ever work again, we might
 		// need to change this test.
 		if (res == VICTORY || (io_type != IO_NONE && res == DEFEAT)) {
