@@ -95,7 +95,7 @@ loadscreen::loadscreen(CVideo &screen, const int percent):
 }
 void loadscreen::draw_screen(const std::string &text)
 {
-	if (screen_.faked()) return; // We seem to encounter segfault in the test executable if this is not done
+	//if (screen_.faked()) return; // We seem to encounter segfault in the test executable if this is not done
 	GPU_Target *screen = get_render_target();
 
 	// Set progress bar parameters:
