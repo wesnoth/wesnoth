@@ -31,6 +31,7 @@
 
 //TODO: remove LOG_PERSIST, ERR_PERSIST from persist_context.hpp to .cpp files.
 #define DBG_PERSIST LOG_STREAM(debug, log_persist)
+#define ERR_PERSIST LOG_STREAM(err, log_persist)
 
 struct persist_choice: mp_sync::user_choice {
 	const persist_context &ctx;
@@ -62,17 +63,24 @@ static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 	int side = pcfg_side.str() == "global" ? resources::controller->current_side() : pcfg_side.to_int();
 	persist_choice choice(ctx,global,side);
 	config cfg = mp_sync::get_user_choice("global_variable",choice,side).child("variables");
-	if (cfg) {
-		size_t arrsize = cfg.child_count(global);
-		if (arrsize == 0) {
-			resources::gamedata->set_variable(local,cfg[global]);
+	try
+	{
+		if (cfg) {
+			size_t arrsize = cfg.child_count(global);
+			if (arrsize == 0) {
+				resources::gamedata->set_variable(local,cfg[global]);
+			} else {
+				resources::gamedata->clear_variable(local);
+				for (size_t i = 0; i < arrsize; i++)
+					resources::gamedata->add_variable_cfg(local,cfg.child(global,i));
+			}
 		} else {
-			resources::gamedata->clear_variable(local);
-			for (size_t i = 0; i < arrsize; i++)
-				resources::gamedata->add_variable_cfg(local,cfg.child(global,i));
+			resources::gamedata->set_variable(local,"");
 		}
-	} else {
-		resources::gamedata->set_variable(local,"");
+	}
+	catch(const invalid_variablename_exception&)
+	{
+		ERR_PERSIST << "cannot store global variable into invalid variablename " << local << std::endl;
 	}
 }
 
@@ -93,7 +101,14 @@ static void set_global_variable(persist_context &ctx, const vconfig &pcfg)
 		const config &vars = resources::gamedata->get_variables();
 		size_t arraylen = vars.child_count(local);
 		if (arraylen == 0) {
-			val = pack_scalar(global,resources::gamedata->get_variable(local));
+			try
+			{
+				val = pack_scalar(global,resources::gamedata->get_variable(local));
+			}
+			catch(const invalid_variablename_exception&)
+			{
+				val = config();
+			}
 		} else {
 			for (size_t i = 0; i < arraylen; i++)
 				val.add_child(global,vars.child(local,i));

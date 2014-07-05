@@ -3091,8 +3091,16 @@ void console_handler::do_set_var() {
 	if(j != data.end()) {
 		const std::string name(data.begin(),j);
 		const std::string value(j+1,data.end());
-		resources::gamedata->set_variable(name,value);
-	} else {
+		try
+		{
+			resources::gamedata->set_variable(name,value);
+		}
+		catch(const invalid_variablename_exception&)
+		{
+			command_failed(_("Variable not found"));
+		}
+	}
+	else {
 		command_failed(_("Variable not found"));
 	}
 }

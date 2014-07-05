@@ -18,6 +18,7 @@
 #include "config.hpp"
 #include "display_context.hpp"
 #include "filter_context.hpp"
+#include "game_data.hpp"
 #include "make_enum.hpp"
 #include "map_location.hpp"
 #include "resources.hpp" //Needed for lua kernel pointer
@@ -545,17 +546,23 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 
 	if (!cfg_find_in_.blank()) {
 		// Allow filtering by searching a stored variable of units
-		variable_info vi(cfg_find_in_, false, variable_info::TYPE_CONTAINER);
-		if(!vi.is_valid) return false;
-		if(vi.explicit_index) {
-			config::const_child_iterator i = vi.vars->child_range(vi.key).first;
-			std::advance(i, vi.index);
-			if ((*i)["id"] != u.id()) {
+		try
+		{
+			variable_access_const vi = resources::gamedata->get_variable_access_read(cfg_find_in_);
+			bool found_id = false;
+			BOOST_FOREACH(const config& c, vi.as_array())
+			{
+				if(c["id"] == u.id())
+					found_id = true;
+			}
+			if(!found_id)
+			{
 				return false;
 			}
-		} else {
-			if (!vi.vars->find_child(vi.key, "id", u.id()))
-				return false;
+		}
+		catch(const invalid_variablename_exception&)
+		{
+			return false;
 		}
 	}
 	if (!cfg_formula_.blank()) {

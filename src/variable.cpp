@@ -39,16 +39,6 @@ static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)
 
-namespace
-{
-	/**
-	 * @todo FIXME: the variable repository should be
-	 * a class of variable.hpp, and not the game_state.
-	 */
-	#define repos (resources::gamedata)
-}
-
-
 vconfig::vconfig() :
 	cache_(), cfg_(NULL)
 {
@@ -138,13 +128,11 @@ config vconfig::get_parsed_config() const
 				throw recursion_error("vconfig::get_parsed_config() infinite recursion detected, aborting");
 			}
 			try {
-				variable_info vinfo(vname, false, variable_info::TYPE_CONTAINER);
-				if(!vinfo.is_valid) {
-					res.add_child(name); //add empty tag
-				} else if(vinfo.explicit_index) {
+				variable_access_const vinfo = resources::gamedata->get_variable_access_read(vname);
+				if(vinfo.explicit_index()) {
 					res.add_child(name, vconfig(vinfo.as_container()).get_parsed_config());
 				} else {
-					variable_info::array_range range = vinfo.as_array();
+					config::const_child_itors range = vinfo.as_array();
 					if(range.first == range.second) {
 						res.add_child(name); //add empty tag
 					}
@@ -152,8 +140,12 @@ config vconfig::get_parsed_config() const
 						res.add_child(name, vconfig(*range.first++).get_parsed_config());
 					}
 				}
-				vconfig_recursion.erase(vname);
-			} catch(recursion_error &err) {
+			} 
+			catch(const invalid_variablename_exception&)
+			{
+				res.add_child(name);
+			}
+			catch(recursion_error &err) {
 				vconfig_recursion.erase(vname);
 				WRN_NG << err.message << std::endl;
 				if(vconfig_recursion.empty()) {
@@ -163,6 +155,7 @@ config vconfig::get_parsed_config() const
 					throw;
 				}
 			}
+			vconfig_recursion.erase(vname);
 		} else {
 			res.add_child(child.key, vconfig(child.cfg).get_parsed_config());
 		}
@@ -180,22 +173,28 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 			res.push_back(vconfig(child.cfg, cache_));
 		} else if (child.key == "insert_tag") {
 			vconfig insert_cfg(child.cfg);
-			if(insert_cfg["name"] == key) {
-				variable_info vinfo(insert_cfg["variable"], false, variable_info::TYPE_CONTAINER);
-				if(!vinfo.is_valid) {
-					//push back an empty tag
+			if(insert_cfg["name"] == key)
+			{
+				try
+				{
+					variable_access_const vinfo = resources::gamedata->get_variable_access_read(insert_cfg["variable"]);
+					if(vinfo.explicit_index()) {
+						res.push_back(vconfig(vinfo.as_container(), true));
+					} else {
+						config::const_child_itors range = vinfo.as_array();
+						if(range.first == range.second) {
+							//push back an empty tag
+							res.push_back(empty_vconfig());
+						}
+						while(range.first != range.second)
+						{
+							res.push_back(vconfig(*range.first++, true));
+						}
+					}
+				}
+				catch(const invalid_variablename_exception&)
+				{
 					res.push_back(empty_vconfig());
-				} else if(vinfo.explicit_index) {
-					res.push_back(vconfig(vinfo.as_container(), true));
-				} else {
-					variable_info::array_range range = vinfo.as_array();
-					if(range.first == range.second) {
-						//push back an empty tag
-						res.push_back(empty_vconfig());
-					}
-					while(range.first != range.second) {
-						res.push_back(vconfig(*range.first++, true));
-					}
 				}
 			}
 		}
@@ -216,12 +215,17 @@ vconfig vconfig::child(const std::string& key) const
 	BOOST_FOREACH(const config &ins, cfg_->child_range("insert_tag"))
 	{
 		vconfig insert_cfg(ins);
-		if(insert_cfg["name"] == key) {
-			variable_info vinfo(insert_cfg["variable"], false, variable_info::TYPE_CONTAINER);
-			if(!vinfo.is_valid) {
+		if(insert_cfg["name"] == key) 
+		{
+			try
+			{
+				variable_access_const vinfo = resources::gamedata->get_variable_access_read(insert_cfg["variable"]);
+				return vconfig(vinfo.as_container(), true);
+			}
+			catch(const invalid_variablename_exception&)
+			{
 				return empty_vconfig();
 			}
-			return vconfig(vinfo.as_container(), true);
 		}
 	}
 	return unconstructed_vconfig();
@@ -266,7 +270,7 @@ namespace {
 config::attribute_value vconfig::expand(const std::string &key) const
 {
 	config::attribute_value val = (*cfg_)[key];
-	if (repos)
+	if (resources::gamedata)
 		val.apply_visitor(vconfig_expand_visitor(val));
 	return val;
 }
@@ -285,13 +289,19 @@ vconfig::all_children_iterator& vconfig::all_children_iterator::operator++()
 {
 	if (inner_index_ >= 0 && i_->key == "insert_tag")
 	{
-		variable_info vinfo(vconfig(i_->cfg)["variable"], false, variable_info::TYPE_CONTAINER);
-		if(vinfo.is_valid && !vinfo.explicit_index) {
-			variable_info::array_range range = vinfo.as_array();
-			if (++inner_index_ < std::distance(range.first, range.second)) {
-				return *this;
+		try
+		{
+			variable_access_const vinfo = resources::gamedata->get_variable_access_read(vconfig(i_->cfg)["variable"]);
+			if(!vinfo.explicit_index()) {
+				config::const_child_itors range = vinfo.as_array();
+				if (++inner_index_ < std::distance(range.first, range.second)) {
+					return *this;
+				}
+				inner_index_ = 0;
 			}
-			inner_index_ = 0;
+		}
+		catch(const invalid_variablename_exception&)
+		{
 		}
 	}
 	++i_;
@@ -330,15 +340,21 @@ vconfig vconfig::all_children_iterator::get_child() const
 {
 	if (inner_index_ >= 0 && i_->key == "insert_tag")
 	{
-		variable_info vinfo(vconfig(i_->cfg)["variable"], false, variable_info::TYPE_CONTAINER);
-		if(!vinfo.is_valid) {
-			return empty_vconfig();
-		} else if(inner_index_ == 0) {
-			return vconfig(vinfo.as_container(), true);
+		try
+		{
+			variable_access_const vinfo = resources::gamedata->get_variable_access_read(vconfig(i_->cfg)["variable"]);
+			if(inner_index_ == 0) {
+				return vconfig(vinfo.as_container(), true);
+			} else {
+				config::const_child_itors r = vinfo.as_array();
+				std::advance(r.first, inner_index_);
+				return vconfig(*r.first, true);
+			}
 		}
-		variable_info::array_range r = vinfo.as_array();
-		std::advance(r.first, inner_index_);
-		return vconfig(*r.first, true);
+		catch(const invalid_variablename_exception&)
+		{
+			return empty_vconfig();
+		}
 	}
 	return vconfig(i_->cfg, cache_);
 }
@@ -369,22 +385,38 @@ scoped_wml_variable::scoped_wml_variable(const std::string& var_name) :
 
 config &scoped_wml_variable::store(const config &var_value)
 {
-	BOOST_FOREACH(const config &i, resources::gamedata->get_variables().child_range(var_name_)) {
-		previous_val_.add_child(var_name_, i);
+	try
+	{
+		BOOST_FOREACH(const config &i, resources::gamedata->get_variables().child_range(var_name_)) {
+			previous_val_.add_child(var_name_, i);
+		}
+		resources::gamedata->clear_variable_cfg(var_name_);
+		config &res = resources::gamedata->add_variable_cfg(var_name_, var_value);
+		LOG_NG << "scoped_wml_variable: var_name \"" << var_name_ << "\" has been auto-stored.\n";
+		activated_ = true;
+		return res;
 	}
-	resources::gamedata->clear_variable_cfg(var_name_);
-	config &res = resources::gamedata->add_variable_cfg(var_name_, var_value);
-	LOG_NG << "scoped_wml_variable: var_name \"" << var_name_ << "\" has been auto-stored.\n";
-	activated_ = true;
-	return res;
+	catch(const invalid_variablename_exception&)
+	{
+		assert(false && "invalid variable name of autostored varaible");
+		throw "assertion ignored";
+	}
+
 }
 
 scoped_wml_variable::~scoped_wml_variable()
 {
 	if(activated_) {
 		resources::gamedata->clear_variable_cfg(var_name_);
-		BOOST_FOREACH(const config &i, previous_val_.child_range(var_name_)) {
-			resources::gamedata->add_variable_cfg(var_name_, i);
+		BOOST_FOREACH(const config &i, previous_val_.child_range(var_name_)) 
+		{
+			try
+			{
+				resources::gamedata->add_variable_cfg(var_name_, i);
+			}
+			catch(const invalid_variablename_exception&)
+			{
+			}
 		}
 		LOG_NG << "scoped_wml_variable: var_name \"" << var_name_ << "\" has been reverted.\n";
 	}
@@ -442,202 +474,4 @@ void scoped_recall_unit::activate()
 	}
 }
 
-namespace {
-bool recursive_activation = false;
 
-/** Turns on any auto-stored variables */
-void activate_scope_variable(std::string var_name)
-{
-	if(recursive_activation)
-		return;
-	const std::string::iterator itor = std::find(var_name.begin(),var_name.end(),'.');
-	if(itor != var_name.end()) {
-		var_name.erase(itor, var_name.end());
-	}
-	std::vector<scoped_wml_variable*>::reverse_iterator rit;
-	for(rit = resources::gamedata->scoped_variables.rbegin(); rit != resources::gamedata->scoped_variables.rend(); ++rit) {
-		if((**rit).name() == var_name) {
-			recursive_activation = true;
-			if(!(**rit).activated()) {
-				(**rit).activate();
-			}
-			recursive_activation = false;
-			break;
-		}
-	}
-}
-} // end anonymous namespace
-
-variable_info::variable_info(const std::string& varname,
-		bool force_valid, TYPE validation_type) :
-	vartype(validation_type),
-	is_valid(false),
-	key(),
-	explicit_index(false),
-	index(0),
-	vars(NULL)
-{
-	assert(repos != NULL);
-	activate_scope_variable(varname);
-
-	vars = &resources::gamedata->variables_;
-	key = varname;
-	std::string::const_iterator itor = std::find(key.begin(),key.end(),'.');
-	int dot_index = key.find('.');
-
-	bool force_length = false;
-	// example varname = "unit_store.modifications.trait[0]"
-	while(itor != key.end()) { // subvar access
-		std::string element=key.substr(0,dot_index);
-		key = key.substr(dot_index+1);
-
-		size_t inner_index = 0;
-		const std::string::iterator index_start = std::find(element.begin(),element.end(),'[');
-		const bool inner_explicit_index = index_start != element.end();
-		if(inner_explicit_index) {
-			const std::string::iterator index_end = std::find(index_start,element.end(),']');
-			const std::string index_str(index_start+1,index_end);
-			inner_index = static_cast<size_t>(lexical_cast_default<int>(index_str));
-			if(inner_index > game_config::max_loop) {
-				ERR_NG << "variable_info: index greater than " << game_config::max_loop
-					   << ", truncated\n";
-				inner_index = game_config::max_loop;
-			}
-			element = std::string(element.begin(),index_start);
-		}
-
-		size_t size = vars->child_count(element);
-		if(size <= inner_index) {
-			if(force_valid) {
-				// Add elements to the array until the requested size is attained
-				if(inner_explicit_index || key != "length") {
-					for(; size <= inner_index; ++size) {
-						vars->add_child(element);
-					}
-				}
-			} else if(inner_explicit_index) {
-				WRN_NG << "variable_info: invalid WML array index, "
-					<< varname << std::endl;
-				return;
-			} else if(varname.length() >= 7 && varname.substr(varname.length()-7) == ".length") {
-				// require '.' to avoid matching suffixes -> requires varname over key to always find length
-				// return length 0 for non-existent WML array (handled below)
-				force_length = true;
-			} else {
-				WRN_NG << "variable_info: retrieving member of non-existent WML container, "
-				<< varname << std::endl;
-				return;
-			}
-		}
-		if((!inner_explicit_index && key == "length") || force_length) {
-			switch(vartype) {
-			case variable_info::TYPE_ARRAY:
-			case variable_info::TYPE_CONTAINER:
-				WRN_NG << "variable_info: using reserved WML variable as wrong type, "
-					<< varname << std::endl;
-				is_valid = force_valid || resources::gamedata->temporaries_.child(varname);
-				break;
-			case variable_info::TYPE_SCALAR:
-			default:
-				// Store the length of the array as a temporary variable
-				resources::gamedata->temporaries_[varname] = int(size);
-				is_valid = true;
-				break;
-			}
-			key = varname;
-			vars = &resources::gamedata->temporaries_;
-			return;
-		}
-
-		vars = &vars->child(element, inner_index);
-		itor = std::find(key.begin(),key.end(),'.');
-		dot_index = key.find('.');
-	} // end subvar access
-
-	const std::string::iterator index_start = std::find(key.begin(),key.end(),'[');
-	explicit_index = index_start != key.end();
-	if(explicit_index) {
-		const std::string::iterator index_end = std::find(index_start,key.end(),']');
-		const std::string index_str(index_start+1,index_end);
-		index = static_cast<size_t>(lexical_cast_default<int>(index_str));
-		if(index > game_config::max_loop) {
-			ERR_NG << "variable_info: index greater than " << game_config::max_loop
-				   << ", truncated\n";
-			index = game_config::max_loop;
-		}
-		key = std::string(key.begin(),index_start);
-		size_t size = vars->child_count(key);
-		if(size <= index) {
-			if(!force_valid) {
-				WRN_NG << "variable_info: invalid WML array index, " << varname << std::endl;
-				return;
-			}
-			for(; size <= index; ++size) {
-				vars->add_child(key);
-			}
-		}
-		switch(vartype) {
-		case variable_info::TYPE_ARRAY:
-			vars = &vars->child(key, index);
-			key = "__array";
-			is_valid = force_valid || vars->child(key);
-			break;
-		case variable_info::TYPE_SCALAR:
-			vars = &vars->child(key, index);
-			key = "__value";
-			is_valid = force_valid || vars->has_attribute(key);
-			break;
-		case variable_info::TYPE_CONTAINER:
-		case variable_info::TYPE_UNSPECIFIED:
-		default:
-			is_valid = true;
-			return;
-		}
-		if (force_valid) {
-			WRN_NG << "variable_info: using explicitly indexed "
-				"container as wrong WML type, " << varname << '\n';
-		}
-		explicit_index = false;
-		index = 0;
-	} else {
-		// Final variable is not an explicit index [...]
-		switch(vartype) {
-		case variable_info::TYPE_ARRAY:
-		case variable_info::TYPE_CONTAINER:
-			is_valid = force_valid || vars->child(key);
-			break;
-		case variable_info::TYPE_SCALAR:
-			is_valid = force_valid || vars->has_attribute(key);
-			break;
-		case variable_info::TYPE_UNSPECIFIED:
-		default:
-			is_valid = true;
-			break;
-		}
-	}
-}
-
-config::attribute_value &variable_info::as_scalar()
-{
-	assert(is_valid);
-	return (*vars)[key];
-}
-
-config& variable_info::as_container() {
-	assert(is_valid);
-	if(explicit_index) {
-		// Empty data for explicit index was already created if it was needed
-		return vars->child(key, index);
-	}
-	if (config &temp = vars->child(key)) {
-		// The container exists, index not specified, return index 0
-		return temp;
-	}
-	// Add empty data for the new variable, since it does not exist yet
-	return vars->add_child(key);
-}
-
-variable_info::array_range variable_info::as_array() {
-	assert(is_valid);
-	return vars->child_range(key);
-}

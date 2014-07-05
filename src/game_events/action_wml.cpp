@@ -29,6 +29,7 @@
 #include "../actions/move.hpp"
 #include "../actions/vision.hpp"
 #include "../ai/manager.hpp"
+#include "../config_assign.hpp"
 #include "../dialogs.hpp"
 #include "../fake_unit_manager.hpp"
 #include "../fake_unit_ptr.hpp"
@@ -1839,298 +1840,287 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 {
 	game_data *gameinfo = resources::gamedata;
-
 	const std::string name = cfg["name"];
-	if(name.empty()) {
-		ERR_NG << "trying to set a variable with an empty name:\n" << cfg.get_config().debug();
-		return;
-	}
-	config::attribute_value &var = gameinfo->get_variable(name);
-
-	config::attribute_value literal = cfg.get_config()["literal"]; // no $var substitution
-	if (!literal.blank()) {
-		var = literal;
-	}
-
-	config::attribute_value value = cfg["value"];
-	if (!value.blank()) {
-		var = value;
-	}
-
 	const std::string to_variable = cfg["to_variable"];
-	if(to_variable.empty() == false) {
-		var = gameinfo->get_variable(to_variable);
-	}
-
-	config::attribute_value add = cfg["add"];
-	if (!add.empty()) {
-		var = var.to_double() + add.to_double();
-	}
-
-	config::attribute_value sub = cfg["sub"];
-	if (!sub.empty()) {
-		var = var.to_double() - sub.to_double();
-	}
-
-	config::attribute_value multiply = cfg["multiply"];
-	if (!multiply.empty()) {
-		var = var.to_double() * multiply.to_double();
-	}
-
-	config::attribute_value divide = cfg["divide"];
-	if (!divide.empty()) {
-		if (divide.to_double() == 0) {
-			ERR_NG << "division by zero on variable " << name << std::endl;
+	try
+	{
+		if(name.empty()) {
+			ERR_NG << "trying to set a variable with an empty name:\n" << cfg.get_config().debug();
 			return;
 		}
-		var = var.to_double() / divide.to_double();
-	}
+		config::attribute_value &var = gameinfo->get_variable(name);
 
-	config::attribute_value modulo = cfg["modulo"];
-	if (!modulo.empty()) {
-		if (modulo.to_double() == 0) {
-			ERR_NG << "division by zero on variable " << name << std::endl;
-			return;
+		config::attribute_value literal = cfg.get_config()["literal"]; // no $var substitution
+		if (!literal.blank()) {
+			var = literal;
 		}
-		var = std::fmod(var.to_double(), modulo.to_double());
-	}
 
-	config::attribute_value round_val = cfg["round"];
-	if (!round_val.empty()) {
-		double value = var.to_double();
-		if (round_val == "ceil") {
-			var = int(std::ceil(value));
-		} else if (round_val == "floor") {
-			var = int(std::floor(value));
-		} else {
-			// We assume the value is an integer.
-			// Any non-numerical values will be interpreted as 0
-			// Which is probably what was intended anyway
-			int decimals = round_val.to_int();
-			value *= std::pow(10.0, decimals); //add $decimals zeroes
-			value = round_portable(value); // round() isn't implemented everywhere
-			value *= std::pow(10.0, -decimals); //and remove them
+		config::attribute_value value = cfg["value"];
+		if (!value.blank()) {
 			var = value;
 		}
-	}
 
-	config::attribute_value ipart = cfg["ipart"];
-	if (!ipart.empty()) {
-		double result;
-		std::modf(ipart.to_double(), &result);
-		var = int(result);
-	}
+		if(to_variable.empty() == false) {
+			var = gameinfo->get_variable_access_read(to_variable).as_scalar();
+		}
 
-	config::attribute_value fpart = cfg["fpart"];
-	if (!fpart.empty()) {
-		double ignore;
-		var = std::modf(fpart.to_double(), &ignore);
-	}
+		config::attribute_value add = cfg["add"];
+		if (!add.empty()) {
+			var = var.to_double() + add.to_double();
+		}
 
-	config::attribute_value string_length_target = cfg["string_length"];
-	if (!string_length_target.blank()) {
-		var = int(string_length_target.str().size());
-	}
+		config::attribute_value sub = cfg["sub"];
+		if (!sub.empty()) {
+			var = var.to_double() - sub.to_double();
+		}
 
-	// Note: maybe we add more options later, eg. strftime formatting.
-	// For now make the stamp mandatory.
-	const std::string time = cfg["time"];
-	if(time == "stamp") {
-		var = int(SDL_GetTicks());
-	}
+		config::attribute_value multiply = cfg["multiply"];
+		if (!multiply.empty()) {
+			var = var.to_double() * multiply.to_double();
+		}
 
-	// Random generation works as follows:
-	// rand=[comma delimited list]
-	// Each element in the list will be considered a separate choice,
-	// unless it contains "..". In this case, it must be a numerical
-	// range (i.e. -1..-10, 0..100, -10..10, etc).
-	const std::string rand = cfg["rand"];
-
-	// The new random generator, the logic is a copy paste of the old random.
-	if(rand.empty() == false) {
-		assert(gameinfo);
-
-		// A default value in case something goes really wrong.
-		var = "";
-
-		std::string word;
-		std::vector<std::string> words;
-		std::vector<std::pair<long,long> > ranges;
-		long num_choices = 0;
-		std::string::size_type pos = 0, pos2 = std::string::npos;
-		std::stringstream ss(std::stringstream::in|std::stringstream::out);
-		while (pos2 != rand.length()) {
-			pos = pos2+1;
-			pos2 = rand.find(",", pos);
-
-			if (pos2 == std::string::npos)
-				pos2 = rand.length();
-
-			word = rand.substr(pos, pos2-pos);
-			words.push_back(word);
-			std::string::size_type tmp = word.find("..");
-
-
-			if (tmp == std::string::npos) {
-				// Treat this element as a string
-				ranges.push_back(std::pair<long, long>(0,0));
-				num_choices += 1;
+		config::attribute_value divide = cfg["divide"];
+		if (!divide.empty()) {
+			if (divide.to_double() == 0) {
+				ERR_NG << "division by zero on variable " << name << std::endl;
+				return;
 			}
-			else {
-				// Treat as a numerical range
-				const std::string first = word.substr(0, tmp);
-				const std::string second = word.substr(tmp+2,
-						rand.length());
+			var = var.to_double() / divide.to_double();
+		}
 
-				long low, high;
-				ss << first + " " + second;
-				if ( !(ss >> low)  ||  !(ss >> high) ) {
-					ERR_NG << "Malformed range: rand = \"" << rand << "\"" << std::endl;
-					// Treat this element as a string?
+		config::attribute_value modulo = cfg["modulo"];
+		if (!modulo.empty()) {
+			if (modulo.to_double() == 0) {
+				ERR_NG << "division by zero on variable " << name << std::endl;
+				return;
+			}
+			var = std::fmod(var.to_double(), modulo.to_double());
+		}
+
+		config::attribute_value round_val = cfg["round"];
+		if (!round_val.empty()) {
+			double value = var.to_double();
+			if (round_val == "ceil") {
+				var = int(std::ceil(value));
+			} else if (round_val == "floor") {
+				var = int(std::floor(value));
+			} else {
+				// We assume the value is an integer.
+				// Any non-numerical values will be interpreted as 0
+				// Which is probably what was intended anyway
+				int decimals = round_val.to_int();
+				value *= std::pow(10.0, decimals); //add $decimals zeroes
+				value = round_portable(value); // round() isn't implemented everywhere
+				value *= std::pow(10.0, -decimals); //and remove them
+				var = value;
+			}
+		}
+
+		config::attribute_value ipart = cfg["ipart"];
+		if (!ipart.empty()) {
+			double result;
+			std::modf(ipart.to_double(), &result);
+			var = int(result);
+		}
+
+		config::attribute_value fpart = cfg["fpart"];
+		if (!fpart.empty()) {
+			double ignore;
+			var = std::modf(fpart.to_double(), &ignore);
+		}
+
+		config::attribute_value string_length_target = cfg["string_length"];
+		if (!string_length_target.blank()) {
+			var = int(string_length_target.str().size());
+		}
+
+		// Note: maybe we add more options later, eg. strftime formatting.
+		// For now make the stamp mandatory.
+		const std::string time = cfg["time"];
+		if(time == "stamp") {
+			var = int(SDL_GetTicks());
+		}
+
+		// Random generation works as follows:
+		// rand=[comma delimited list]
+		// Each element in the list will be considered a separate choice,
+		// unless it contains "..". In this case, it must be a numerical
+		// range (i.e. -1..-10, 0..100, -10..10, etc).
+		const std::string rand = cfg["rand"];
+
+		// The new random generator, the logic is a copy paste of the old random.
+		if(rand.empty() == false) {
+			assert(gameinfo);
+
+			// A default value in case something goes really wrong.
+			var = "";
+
+			std::string word;
+			std::vector<std::string> words;
+			std::vector<std::pair<long,long> > ranges;
+			long num_choices = 0;
+			std::string::size_type pos = 0, pos2 = std::string::npos;
+			std::stringstream ss(std::stringstream::in|std::stringstream::out);
+			while (pos2 != rand.length()) {
+				pos = pos2+1;
+				pos2 = rand.find(",", pos);
+
+				if (pos2 == std::string::npos)
+					pos2 = rand.length();
+
+				word = rand.substr(pos, pos2-pos);
+				words.push_back(word);
+				std::string::size_type tmp = word.find("..");
+
+
+				if (tmp == std::string::npos) {
+					// Treat this element as a string
 					ranges.push_back(std::pair<long, long>(0,0));
 					num_choices += 1;
 				}
 				else {
-					if (low > high) {
-						std::swap(low, high);
-					}
-					ranges.push_back(std::pair<long, long>(low,high));
-					num_choices += (high - low) + 1;
+					// Treat as a numerical range
+					const std::string first = word.substr(0, tmp);
+					const std::string second = word.substr(tmp+2,
+						rand.length());
 
-					// Make 0..0 ranges work
-					if (high == 0 && low == 0) {
-						words.pop_back();
-						words.push_back("0");
+					long low, high;
+					ss << first + " " + second;
+					if ( !(ss >> low)  ||  !(ss >> high) ) {
+						ERR_NG << "Malformed range: rand = \"" << rand << "\"" << std::endl;
+						// Treat this element as a string?
+						ranges.push_back(std::pair<long, long>(0,0));
+						num_choices += 1;
 					}
+					else {
+						if (low > high) {
+							std::swap(low, high);
+						}
+						ranges.push_back(std::pair<long, long>(low,high));
+						num_choices += (high - low) + 1;
+
+						// Make 0..0 ranges work
+						if (high == 0 && low == 0) {
+							words.pop_back();
+							words.push_back("0");
+						}
+					}
+					ss.clear();
 				}
-				ss.clear();
 			}
-		}
 
-		/*
-		 * Choice gets a value in the range [0..32768).
-		 * So need to add a second set of random values when a value
-		 * outside the range is requested.
-		 */
-		if(num_choices > 0x3fffffff) {
-			WRN_NG << "Requested random number with an upper bound of "
+			/*
+			* Choice gets a value in the range [0..32768).
+			* So need to add a second set of random values when a value
+			* outside the range is requested.
+			*/
+			if(num_choices > 0x3fffffff) {
+				WRN_NG << "Requested random number with an upper bound of "
 					<< num_choices
 					<< " however the maximum number generated will be "
 					<< 0x3fffffff
 					<< ".\n";
-		}
-		long choice = random_new::generator->next_random();// gameinfo->rng().get_next_random();
-		if(num_choices >= 32768) {
-			choice <<= 15;
-			choice += random_new::generator->next_random();//gameinfo->rng().get_next_random();
-		}
-		choice %= num_choices;
-		long tmp = 0;
-		for(size_t i = 0; i < ranges.size(); ++i) {
-			tmp += (ranges[i].second - ranges[i].first) + 1;
-			if (tmp > choice) {
-				if (ranges[i].first == 0 && ranges[i].second == 0) {
-					var = words[i];
+			}
+			long choice = random_new::generator->next_random();// gameinfo->rng().get_next_random();
+			if(num_choices >= 32768) {
+				choice <<= 15;
+				choice += random_new::generator->next_random();//gameinfo->rng().get_next_random();
+			}
+			choice %= num_choices;
+			long tmp = 0;
+			for(size_t i = 0; i < ranges.size(); ++i) {
+				tmp += (ranges[i].second - ranges[i].first) + 1;
+				if (tmp > choice) {
+					if (ranges[i].first == 0 && ranges[i].second == 0) {
+						var = words[i];
+					}
+					else {
+						var = (ranges[i].second - (tmp - choice)) + 1;
+					}
+					break;
 				}
-				else {
-					var = (ranges[i].second - (tmp - choice)) + 1;
-				}
-				break;
 			}
 		}
+
+
+		const vconfig::child_list join_elements = cfg.get_children("join");
+		if(!join_elements.empty())
+		{
+			const vconfig & join_element = join_elements.front();
+
+			std::string array_name=join_element["variable"];
+			std::string separator=join_element["separator"];
+			std::string key_name=join_element["key"];
+
+			if(key_name.empty())
+			{
+				key_name="value";
+			}
+
+			bool remove_empty = join_element["remove_empty"].to_bool();
+
+			std::string joined_string;
+
+
+
+			variable_access_const vi = resources::gamedata->get_variable_access_read(array_name);
+			bool first = true;
+			BOOST_FOREACH(const config &cfg, vi.as_array())
+			{
+				std::string current_string = cfg[key_name];
+				if (remove_empty && current_string.empty()) continue;
+				if (first) first = false;
+				else joined_string += separator;
+				joined_string += current_string;
+			}
+
+			var = joined_string;
+		}
 	}
-
-
-	const vconfig::child_list join_elements = cfg.get_children("join");
-	if(!join_elements.empty())
+	catch(const invalid_variablename_exception&)
 	{
-		const vconfig & join_element = join_elements.front();
-
-		std::string array_name=join_element["variable"];
-		std::string separator=join_element["separator"];
-		std::string key_name=join_element["key"];
-
-		if(key_name.empty())
-		{
-			key_name="value";
-		}
-
-		bool remove_empty = join_element["remove_empty"].to_bool();
-
-		std::string joined_string;
-
-		variable_info vi(array_name, true, variable_info::TYPE_ARRAY);
-		bool first = true;
-		BOOST_FOREACH(const config &cfg, vi.as_array())
-		{
-			std::string current_string = cfg[key_name];
-			if (remove_empty && current_string.empty()) continue;
-			if (first) first = false;
-			else joined_string += separator;
-			joined_string += current_string;
-		}
-
-		var=joined_string;
+		ERR_NG << "Found invalid variablename in \n[set_variable]\n"  << cfg.get_config().debug() << "[/set_variable]\n where name = " << name << " to_variable = " << to_variable << "\n";
 	}
 }
 
 WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 {
 	const t_string& name = cfg["name"];
-	variable_info dest(name, true, variable_info::TYPE_CONTAINER);
+	variable_access_create dest = resources::gamedata->get_variable_access_write(name);
 	if(name.empty()) {
 		ERR_NG << "trying to set a variable with an empty name:\n" << cfg.get_config().debug();
 		return;
 	}
 
-	std::string mode = cfg["mode"]; // replace, append, merge, or insert
-	if(mode == "extend") {
-		mode = "append";
-	} else if(mode != "append" && mode != "merge") {
-		if(mode == "insert") {
-			size_t child_count = dest.vars->child_count(dest.key);
-			if(dest.index >= child_count) {
-				while(dest.index >= ++child_count) {
-					//inserting past the end requires empty data
-					dest.vars->append(config(dest.key));
-				}
-				//inserting at the end is handled by an append
-				mode = "append";
-			}
-		} else {
-			mode = "replace";
-		}
-	}
 
 	const vconfig::child_list values = cfg.get_children("value");
 	const vconfig::child_list literals = cfg.get_children("literal");
 	const vconfig::child_list split_elements = cfg.get_children("split");
 
-	config data;
-
+	std::vector<config> data;
 	if(cfg.has_attribute("to_variable"))
 	{
-		variable_info tovar(cfg["to_variable"], false, variable_info::TYPE_CONTAINER);
-		if(tovar.is_valid) {
-			if(tovar.explicit_index) {
-				data.add_child(dest.key, tovar.as_container());
-			} else {
-				variable_info::array_range range = tovar.as_array();
-				while(range.first != range.second)
-				{
-					data.add_child(dest.key, *range.first++);
-				}
+		try
+		{
+			variable_access_const tovar = resources::gamedata->get_variable_access_read(cfg["to_variable"]);
+			BOOST_FOREACH(const config& c, tovar.as_array())
+			{
+				data.push_back(c);
 			}
+		}
+		catch(const invalid_variablename_exception&)
+		{
+			ERR_NG << "Cannot do [set_variables] with invalid to_variable variable: " << cfg["to_variable"] << " with " << cfg.get_config().debug() << std::endl;
 		}
 	} else if(!values.empty()) {
 		for(vconfig::child_list::const_iterator i=values.begin(); i!=values.end(); ++i)
 		{
-			data.add_child(dest.key, (*i).get_parsed_config());
+			data.push_back((*i).get_parsed_config());
 		}
 	} else if(!literals.empty()) {
 		for(vconfig::child_list::const_iterator i=literals.begin(); i!=literals.end(); ++i)
 		{
-			data.add_child(dest.key, i->get_config());
+			data.push_back(i->get_config());
 		}
 	} else if(!split_elements.empty()) {
 		const vconfig & split_element = split_elements.front();
@@ -2163,37 +2153,41 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 
 		for(std::vector<std::string>::iterator i=split_vector.begin(); i!=split_vector.end(); ++i)
 		{
-			data.add_child(dest.key)[key_name]=*i;
+			data.push_back(config_of(key_name, *i));
 		}
 	}
-	if(mode == "replace")
+	try
 	{
-		if(dest.explicit_index) {
-			dest.vars->remove_child(dest.key, dest.index);
-		} else {
-			dest.vars->clear_children(dest.key);
-		}
-	}
-	if(!data.empty())
-	{
+		const std::string& mode = cfg["mode"];
 		if(mode == "merge")
 		{
-			if(dest.explicit_index) {
-				// merging multiple children into a single explicit index
-				// requires that they first be merged with each other
-				data.merge_children(dest.key);
-				dest.as_container().merge_with(data.child(dest.key));
-			} else {
-				dest.vars->merge_with(data);
-			}
-		} else if(mode == "insert" || dest.explicit_index) {
-			BOOST_FOREACH(const config &child, data.child_range(dest.key))
+			if(dest.explicit_index() && data.size() > 1)
 			{
-				dest.vars->add_child_at(dest.key, child, dest.index++);
+				//merge children into one
+				config merged_children;
+				BOOST_FOREACH(const config &cfg, data) {
+					merged_children.append(cfg);
+				}
+				data = boost::assign::list_of(merged_children);
 			}
-		} else {
-			dest.vars->append(data);
+			dest.merge_array(data);
 		}
+		else if(mode == "insert")
+		{
+			dest.insert_array(data);
+		}
+		else if(mode == "append")
+		{
+			dest.append_array(data);
+		}
+		else /*default if(mode == "replace")*/
+		{
+			dest.replace_array(data);
+		}
+	}
+	catch(const invalid_variablename_exception&)
+	{
+		ERR_NG << "Cannot do [set_variables] with invalid destination variable: " << name << " with " << cfg.get_config().debug() << std::endl;
 	}
 }
 
@@ -2233,10 +2227,16 @@ WML_HANDLER_FUNCTION(store_relative_dir, /*event_info*/, cfg)
 
 	std::string variable = cfg["variable"];
 	map_location::RELATIVE_DIR_MODE mode = static_cast<map_location::RELATIVE_DIR_MODE> (cfg["mode"].to_int(0));
+	try
+	{
+		variable_access_create store = resources::gamedata->get_variable_access_write(variable);
 
-	variable_info store(variable, true, variable_info::TYPE_SCALAR );
-
-	store.as_scalar() = map_location::write_direction(src.get_relative_dir(dst,mode));
+		store.as_scalar() = map_location::write_direction(src.get_relative_dir(dst,mode));
+	}
+	catch(const invalid_variablename_exception&)
+	{
+		ERR_NG << "Cannot do [store_relative_dir] with invalid destination variable: " << variable << " with " << cfg.get_config().debug() << std::endl;
+	}
 }
 
 /// Store the rotation of one hex around another in a WML variable.
@@ -2263,10 +2263,17 @@ WML_HANDLER_FUNCTION(store_rotate_map_location, /*event_info*/, cfg)
 
 	std::string variable = cfg["variable"];
 	int angle = cfg["angle"].to_int(1);
+	
+	try
+	{
+		variable_access_create store = resources::gamedata->get_variable_access_write(variable);
 
-	variable_info store(variable, true, variable_info::TYPE_CONTAINER );
-
-	dst.rotate_right_around_center(src,angle).write(store.as_container());
+		dst.rotate_right_around_center(src,angle).write(store.as_container());
+	}
+	catch(const invalid_variablename_exception&)
+	{
+		ERR_NG << "Cannot do [store_rotate_map_location] with invalid destination variable: " << variable << " with " << cfg.get_config().debug() << std::endl;
+	}
 }
 
 
@@ -2284,10 +2291,15 @@ WML_HANDLER_FUNCTION(store_time_of_day, /*event_info*/, cfg)
 	if(variable.empty()) {
 		variable = "time_of_day";
 	}
-
-	variable_info store(variable, true, variable_info::TYPE_CONTAINER);
-
-	tod.write(store.as_container());
+	try
+	{
+		variable_access_create store = resources::gamedata->get_variable_access_write(variable);
+		tod.write(store.as_container());
+	}
+	catch(const invalid_variablename_exception&)
+	{
+		ERR_NG << "Found invalid variablename " << variable << " in [store_time_of_day] with " << cfg.get_config().debug() << "\n";
+	}
 }
 
 WML_HANDLER_FUNCTION(teleport, event_info, cfg)
@@ -2452,12 +2464,20 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 	{
 		parsed_cfg.remove_attribute("to_variable");
 		unit new_unit(parsed_cfg, true);
-		config &var = resources::gamedata->get_variable_cfg(to_variable);
-		var.clear();
-		new_unit.write(var);
-		if (const config::attribute_value *v = parsed_cfg.get("x")) var["x"] = *v;
-		if (const config::attribute_value *v = parsed_cfg.get("y")) var["y"] = *v;
+		try
+		{
+			config &var = resources::gamedata->get_variable_cfg(to_variable);
+			var.clear();
+			new_unit.write(var);
+			if (const config::attribute_value *v = parsed_cfg.get("x")) var["x"] = *v;
+			if (const config::attribute_value *v = parsed_cfg.get("y")) var["y"] = *v;
+		}
+		catch(const invalid_variablename_exception&)
+		{
+			ERR_NG << "Cannot do [unit] with invalid to_variable:  " << to_variable << " with " << cfg.get_config().debug() << std::endl;
+		}
 		return;
+
 	}
 
 	int side = parsed_cfg["side"].to_int(1);
@@ -2487,9 +2507,9 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 /// Unit serialization from variables
 WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 {
-	const config &var = resources::gamedata->get_variable_cfg(cfg["variable"]);
-
 	try {
+		const config &var = resources::gamedata->get_variable_cfg(cfg["variable"]);
+
 		config tmp_cfg(var);
 		const unit_ptr u = unit_ptr( new unit(tmp_cfg, false));
 
@@ -2578,7 +2598,12 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			(*resources::teams)[u->side() - 1].have_leader();
 		}
 
-	} catch (game::game_error &e) {
+	} 
+	catch (const invalid_variablename_exception&)
+	{
+		ERR_NG << "invlid variable name in unstore_unit" << std::endl;
+	}
+	catch (game::game_error &e) {
 		ERR_NG << "could not de-serialize unit: '" << e.message << "'" << std::endl;
 	}
 }

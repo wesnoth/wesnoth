@@ -994,20 +994,31 @@ static int intf_fire_event(lua_State *L)
 static int intf_get_variable(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
-	variable_info v(m, false, variable_info::TYPE_SCALAR);
-	if (v.is_valid) {
-		luaW_pushscalar(L, v.as_scalar());
-		return 1;
-	} else {
-		variable_info w(m, false, variable_info::TYPE_CONTAINER);
-		if (w.is_valid) {
-			lua_newtable(L);
-			if (lua_toboolean(L, 2))
-				luaW_filltable(L, w.as_container());
+	variable_access_const v = resources::gamedata->get_variable_access_read(m);
+	try
+	{
+		if(v.exists_as_attribute())
+		{
+			luaW_pushscalar(L, v.as_scalar());
 			return 1;
 		}
+		else if(v.exists_as_container())
+		{
+			lua_newtable(L);
+			if (lua_toboolean(L, 2))
+				luaW_filltable(L, v.as_container());
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
 	}
-	return 0;
+	catch (const invalid_variablename_exception&)
+	{
+		//TODO: pop table
+		return 0;
+	}
 }
 
 /**
@@ -1023,9 +1034,10 @@ static int intf_set_variable(lua_State *L)
 		resources::gamedata->clear_variable(m);
 		return 0;
 	}
-
-	variable_info v(m);
-	switch (lua_type(L, 2)) {
+	try
+	{
+		variable_access_create v = resources::gamedata->get_variable_access_write(m);
+		switch (lua_type(L, 2)) {
 		case LUA_TBOOLEAN:
 			v.as_scalar() = luaW_toboolean(L, 2);
 			break;
@@ -1042,15 +1054,20 @@ static int intf_set_variable(lua_State *L)
 			}
 			// no break
 		case LUA_TTABLE:
-		{
-			config &cfg = v.as_container();
-			cfg.clear();
-			if (luaW_toconfig(L, 2, cfg))
-				break;
-			// no break
-		}
+			{
+				config &cfg = v.as_container();
+				cfg.clear();
+				if (luaW_toconfig(L, 2, cfg))
+					break;
+				// no break
+			}
 		default:
 			return luaL_typerror(L, 2, "WML table or scalar");
+		}
+	}
+	catch (const invalid_variablename_exception&)
+	{
+		ERR_LUA << "invlid variable name in wesnoth.set_veriable" << std::endl;
 	}
 	return 0;
 }
