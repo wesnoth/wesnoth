@@ -30,6 +30,7 @@
 #include "unit_map.hpp"
 #include "unit_types.hpp"
 #include "variable.hpp" // needed for vconfig, scoped unit
+#include "wml_exception.hpp" // needed for FAIL
 
 #include <boost/foreach.hpp>
 #include <boost/optional.hpp>
@@ -118,8 +119,8 @@ public:
 		, cfg_name_(vcfg["name"])
 		, cfg_id_(vcfg["id"])
 		, cfg_speaker_(vcfg["speaker"])
-		, cfg_filter_loc_(vcfg.has_child("filter_location") ? new terrain_filter(vconfig(vcfg.child("filter_location")), &fc_, use_flat_tod_) : NULL)
-		, cfg_filter_side_(vcfg.has_child("filter_side") ? new side_filter(vconfig(vcfg.child("filter_side")), &fc_) : NULL) //Note that it would be better to use boost optional here but it is apparently not possible to do in an initialization list using boost::none, because when using ? the types must match, and side_filter is non-copyable
+		, cfg_filter_loc_()
+		, cfg_filter_side_()
 		, cfg_x_(vcfg["x"])
 		, cfg_y_(vcfg["y"])
 		, cfg_type_(vcfg["type"])
@@ -167,8 +168,7 @@ public:
 			} catch (bad_enum_cast &) { // this means it isn't a conditional filter tag
 
 				//while we are here, process filter_vision tags and filter_adjacent
-				if (cond_name == "filter_vision")
-				{
+				if (cond_name == "filter_vision") {
 					const vconfig& f = cond.get_child();
 					vision_filters_visible_attr_.push_back(f["visible"].to_bool(true));
 
@@ -196,6 +196,20 @@ public:
 					static std::vector<std::pair<int,int> > default_counts = utils::parse_ranges("1-6");
 					config::attribute_value i_count = f["count"];
 					filter_adj_counts_.push_back(!i_count.blank() ? utils::parse_ranges(i_count) : default_counts);
+				} else if ( cond_name == "filter_location") {
+					if (!cfg_filter_loc_) {
+						cfg_filter_loc_.reset(new terrain_filter(cond.get_child(), &fc_, use_flat_tod_));
+					} else {
+						FAIL( "encountered multiple [filter_location] children of a standard unit filter. this is not currently supported and in all versions of wesnoth would have resulted in the later children being ignored. you must use [and] or similar to achieve the desired result" );
+					}
+				} else if ( cond_name == "filter_side") {
+					if (!cfg_filter_side_) {
+						cfg_filter_side_.reset(new side_filter(cond.get_child(), &fc_));
+					} else {
+						FAIL( "encountered multiple [filter_side] children of a standard unit filter. this is not currently supported and in all versions of wesnoth would have resulted in the later children being ignored. you must use [and] or similar to achieve the desired result" );
+					}
+				} else if ( cond_name != "filter_wml" ){
+					FAIL( "encountered unrecognized child [" + cond_name+ "] of a standard unit filter");
 				}
 			}
 			++cond;
