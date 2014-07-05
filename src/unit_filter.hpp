@@ -53,6 +53,9 @@ public:
 		return *this;
 	}
 
+	/// Determine if *this matches @a filter at a specified location.
+	/// Use this for units on a recall list, or to test for a match if 
+	/// a unit is hypothetically moved.
 	bool matches(const unit & u, const map_location & loc) const {
 		return impl_->matches(u,loc);
 	}
