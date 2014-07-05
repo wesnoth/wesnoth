@@ -75,6 +75,38 @@ namespace conditional {
 	static TYPE warning_suppressor = string_to_TYPE_default("foo", NOT);
 }
 
+/// This class lazily parses an attribute value to a vector of strings
+class lazy_string_list {
+public:
+	lazy_string_list( const config::attribute_value & attr) : my_str_(), my_list_() {
+		if (attr.blank()) {
+			my_list_ = std::vector<std::string>();
+		} else {
+			my_str_ = attr.str();
+		}
+	}
+
+	const std::vector<std::string> & get() const {
+		if (!my_list_) {
+			my_list_ = utils::split(my_str_);
+		}
+		return *my_list_;
+	}
+
+	bool empty() const {
+		return get().empty();
+	}
+
+	bool find(const std::string & str) const {
+		const std::vector<std::string> & vals = get();
+		return std::find(vals.begin(), vals.end(), str) != vals.end();
+	}
+private:
+	std::string my_str_;
+	mutable boost::optional<std::vector<std::string> > my_list_;
+};
+
+
 /// The basic unit filter gives a generic implementation of the match fcn
 class basic_unit_filter_impl : public unit_filter_abstract_impl {
 public:
@@ -97,6 +129,7 @@ public:
 		, cfg_race_(vcfg["race"])
 		, cfg_gender_(vcfg["gender"])
 		, cfg_side_(vcfg["side"])
+		, cfg_side_to_int_(vcfg["side"].to_int(-999))
 		, cfg_has_weapon_(vcfg["has_weapon"])
 		, cfg_role_(vcfg["role"])
 		, cfg_ai_special_(vcfg["ai_special"])
@@ -180,19 +213,20 @@ private:
 	std::vector<conditional::TYPE> cond_child_types_;
 
 	const config::attribute_value cfg_name_;
-	const config::attribute_value cfg_id_;
+	lazy_string_list cfg_id_;
 	const config::attribute_value cfg_speaker_;
 	boost::scoped_ptr<terrain_filter> cfg_filter_loc_;
 	boost::scoped_ptr<side_filter> cfg_filter_side_;
 	const config::attribute_value cfg_x_;
 	const config::attribute_value cfg_y_;
-	const config::attribute_value cfg_type_;
-	const config::attribute_value cfg_variation_type_;
-	const config::attribute_value cfg_has_variation_type_;
-	const config::attribute_value cfg_ability_;
-	const config::attribute_value cfg_race_;
+	lazy_string_list cfg_type_;
+	lazy_string_list cfg_variation_type_;
+	lazy_string_list cfg_has_variation_type_;
+	lazy_string_list cfg_ability_;
+	lazy_string_list cfg_race_;
 	const config::attribute_value cfg_gender_;
-	const config::attribute_value cfg_side_;
+	lazy_string_list cfg_side_;
+	const int cfg_side_to_int_;
 	const config::attribute_value cfg_has_weapon_;
 	const config::attribute_value cfg_role_;
 	const config::attribute_value cfg_ai_special_;
@@ -280,20 +314,9 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 		return false;
 	}
 
-	if (!cfg_id_.blank()) {
-		const std::string& id = cfg_id_;
-		const std::string& this_id = u.id();
-
-		if (id == this_id) {
-		}
-		else if ( id.find(',') == std::string::npos ){
+	if (!cfg_id_.empty()) {
+		if (!cfg_id_.find(u.id())) {
 			return false;
-		}
-		else {
-			const std::vector<std::string>& ids = utils::split(id);
-			if (std::find(ids.begin(), ids.end(), this_id) == ids.end()) {
-				return false;
-			}
 		}
 	}
 
@@ -329,107 +352,54 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 	}
 
 	// The type could be a comma separated list of types
-	if (!cfg_type_.blank())
+	if (!cfg_type_.empty())
 	{
-		const std::string type_ids = cfg_type_.str();
-		const std::string& this_type = u.type_id();
-
-		// We only do the full CSV search if we find a comma in there,
-		// and if the subsequence is found within the main sequence.
-		// This is because doing the full CSV split is expensive.
-		if ( type_ids == this_type ) {
-			// pass
-		} else if ( type_ids.find(',') != std::string::npos  &&
-		            type_ids.find(this_type) != std::string::npos ) {
-			const std::vector<std::string>& vals = utils::split(type_ids);
-
-			if(std::find(vals.begin(),vals.end(),this_type) == vals.end()) {
-				return false;
-			}
-		} else {
+		if (!cfg_type_.find(u.type_id())) {
 			return false;
 		}
 	}
 
 	// The variation_type could be a comma separated list of types
-	if (!cfg_variation_type_.blank())
+	if (!cfg_variation_type_.empty())
 	{
-		const std::string type_ids = cfg_variation_type_.str();
-		const std::string& this_type = u.variation();
-
-		// We only do the full CSV search if we find a comma in there,
-		// and if the subsequence is found within the main sequence.
-		// This is because doing the full CSV split is expensive.
-		if ( type_ids == this_type ) {
-			// pass
-		} else if ( type_ids.find(',') != std::string::npos  &&
-				type_ids.find(this_type) != std::string::npos ) {
-			const std::vector<std::string>& vals = utils::split(type_ids);
-
-			if(std::find(vals.begin(),vals.end(),this_type) == vals.end()) {
-				return false;
-			}
-		} else {
+		if (!cfg_variation_type_.find(u.variation())) {
 			return false;
 		}
 	}
 
 	// The has_variation_type could be a comma separated list of types
-	if (!cfg_has_variation_type_.blank())
+	if (!cfg_has_variation_type_.empty())
 	{
-		const std::string& var_ids  = cfg_has_variation_type_.str();
-		const std::string& this_var = u.variation();
+		bool match = false;
+		// If this unit is a variation itself then search in the base unit's variations.
+		const unit_type* const type = u.variation().empty() ? &u.type() : unit_types.find(u.type().base_id());
+		assert(type);
 
-		if ( var_ids == this_var ) {
-			// pass
-		} else {
-
-			bool match = false;
-			const std::vector<std::string>& variation_types = utils::split(var_ids);
-			// If this unit is a variation itself then search in the base unit's variations.
-			const unit_type* const type = this_var.empty() ? &u.type() : unit_types.find(u.type().base_id());
-			assert(type);
-
-			BOOST_FOREACH(const std::string& variation_id, variation_types) {
-				if (type->has_variation(variation_id)) {
-					match = true;
-					break;
-				}
+		BOOST_FOREACH(const std::string& variation_id, cfg_has_variation_type_.get()) {
+			if (type->has_variation(variation_id)) {
+				match = true;
+				break;
 			}
-			if (!match) return false;
 		}
+		if (!match) return false;
 	}
 
-	if (!cfg_ability_.blank())
+	if (!cfg_ability_.empty())
 	{
-		std::string ability = cfg_ability_;
-		if(u.has_ability_by_id(ability)) {
-			// pass
-		} else if ( ability.find(',') != std::string::npos ) {
-			const std::vector<std::string>& vals = utils::split(ability);
-			bool has_ability = false;
-			for(std::vector<std::string>::const_iterator this_ability = vals.begin(); this_ability != vals.end(); ++this_ability) {
-				if(u.has_ability_by_id(*this_ability)) {
-					has_ability = true;
-					break;
-				}
+		bool match = false;
+
+		BOOST_FOREACH(const std::string& ability_id, cfg_ability_.get()) {
+			if (u.has_ability_by_id(ability_id)) {
+				match = true;
+				break;
 			}
-			if(!has_ability) {
-				return false;
-			}
-		} else {
+		}
+		if (!match) return false;
+	}
+
+	if (!cfg_race_.empty()) {
+		if (!cfg_race_.find( u.race()->id()) ) {
 			return false;
-		}
-	}
-
-	if (!cfg_race_.blank()) {
-		std::string race = cfg_race_;
-
-		if(race != u.race()->id()) {
-			const std::vector<std::string>& vals = utils::split(race);
-			if(std::find(vals.begin(), vals.end(), u.race()->id()) == vals.end()) {
-				return false;
-			}
 		}
 	}
 
@@ -437,13 +407,8 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 		return false;
 	}
 
-	if (!cfg_side_.blank() && cfg_side_.to_int() != u.side()) {
-		std::string side = cfg_side_;
-		if ( side.find(',') == std::string::npos ) {
-			return false;
-		}
-		std::vector<std::string> vals = utils::split(side);
-		if (std::find(vals.begin(), vals.end(), str_cast(u.side())) == vals.end()) {
+	if (!cfg_side_.empty() && cfg_side_to_int_ != u.side()) {
+		if (!cfg_side_.find( str_cast(u.side())) ) {
 			return false;
 		}
 	}
