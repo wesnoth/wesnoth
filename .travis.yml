@@ -28,7 +28,7 @@ install:
     - time sudo apt-get install -qq libboost-iostreams-dev libboost-program-options-dev libboost-regex-dev libboost-system-dev libboost-test-dev libcairo2-dev libfribidi-dev libpango1.0-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
     - if [ "$CXX" = "g++" ]; then time sudo apt-get install g++-4.8; fi
     - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8"; fi
-    - if [ "$WML_TESTS" = true]; then time sudo apt-get install gdb; fi
+    - if [ "$WML_TESTS" = true ]; then time sudo apt-get install gdb; fi
 # gdb is used to generate a backtrace if a wml test crashes, this is -g option to run_wml_tests. it is also needed when the test executable crashes
     - if [ "$CHECK_UTF8" = true ]; then time sudo apt-get install -qq moreutils; fi
 # more utils is needed for check_utf8 script
