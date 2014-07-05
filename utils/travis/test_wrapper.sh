@@ -8,5 +8,5 @@ while [ $COUNTER -gt 0 -a $ERRORCODE -eq 200 ]; do
     ./test
     ERRORCODE=$?
 done
-export TEST_ERROR_CODE=$ERRORCODE
+export TEST_ERROR_CODE="$ERRORCODE"
 exit $ERRORCODE
