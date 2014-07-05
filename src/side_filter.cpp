@@ -29,6 +29,7 @@
 #include "unit.hpp"
 #include "unit_filter.hpp"
 #include "unit_map.hpp"
+#include "variable.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -51,6 +52,7 @@ side_filter::side_filter()
 #pragma warning(pop)
 #endif
 
+side_filter::~side_filter() {}
 
 side_filter::side_filter(const vconfig& cfg, const filter_context * fc,  bool flat_tod)
 	: cfg_(cfg)
@@ -136,13 +138,14 @@ bool side_filter::match_internal(const team &t) const
 	//Allow filtering on units
 	if(cfg_.has_child("has_unit")) {
 		const vconfig & ufilt_cfg = cfg_.child("has_unit");
-		const unit_filter ufilt(ufilt_cfg, fc_, flat_);
+		if (!ufilter_)
+			ufilter_.reset(new unit_filter(ufilt_cfg, fc_, flat_));
 		bool found = false;
 		BOOST_FOREACH(const unit &u, fc_->get_disp_context().units()) {
 			if (u.side() != t.side()) {
 				continue;
 			}
-			if (ufilt(u)) {
+			if (ufilter_->matches(u)) {
 				found = true;
 				break;
 			}
@@ -150,7 +153,7 @@ bool side_filter::match_internal(const team &t) const
 		if(!found && ufilt_cfg["search_recall_list"].to_bool(false)) {
 			BOOST_FOREACH(const unit_const_ptr & u, t.recall_list()) {
 				scoped_recall_unit this_unit("this_unit", t.save_id(),t.recall_list().find_index(u->id()));
-				if(ufilt(*u)) {
+				if(ufilter_->matches(*u)) {
 					found = true;
 					break;
 				}
@@ -163,8 +166,9 @@ bool side_filter::match_internal(const team &t) const
 
 	const vconfig& enemy_of = cfg_.child("enemy_of");
 	if(!enemy_of.null()) {
-		side_filter s_filter(enemy_of, fc_);
-		const std::vector<int>& teams = s_filter.get_teams();
+		if (!enemy_filter_)
+			enemy_filter_.reset(new side_filter(enemy_of, fc_));
+		const std::vector<int>& teams = enemy_filter_->get_teams();
 		if(teams.empty()) return false;
 		BOOST_FOREACH(const int side, teams) {
 			if(!(fc_->get_disp_context().teams())[side - 1].is_enemy(t.side()))
@@ -174,8 +178,9 @@ bool side_filter::match_internal(const team &t) const
 
 	const vconfig& allied_with = cfg_.child("allied_with");
 	if(!allied_with.null()) {
-		side_filter s_filter(allied_with, fc_);
-		const std::vector<int>& teams = s_filter.get_teams();
+		if (!allied_filter_)
+			allied_filter_.reset(new side_filter(allied_with, fc_));
+		const std::vector<int>& teams = allied_filter_->get_teams();
 		if(teams.empty()) return false;
 		BOOST_FOREACH(const int side, teams) {
 			if((fc_->get_disp_context().teams())[side - 1].is_enemy(t.side()))
