@@ -893,22 +893,26 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 	const char* msg_title = NULL;
 	const char* msg_text = NULL;
 
+	// Use the Update terminology when using Update All or working with the
+	// Upgradable add-ons view.
+	const bool updating = update_everything || updates_only;
+
 	if(ids_to_install.size() == 1 && failed_titles.empty()) {
 		utils::string_map syms;
 		syms["addon_title"] = addons[ids_to_install[0]].title;
 
-		msg_title = !updates_only ? _("Add-on Installed") : _("Add-on Updated");
-		msg_text = !updates_only ? _("The add-on '$addon_title|' has been successfully installed.") : _("The add-on '$addon_title|' has been successfully updated.");
+		msg_title = !updating ? _("Add-on Installed") : _("Add-on Updated");
+		msg_text = !updating ? _("The add-on '$addon_title|' has been successfully installed.") : _("The add-on '$addon_title|' has been successfully updated.");
 
 		gui2::show_transient_message(disp.video(),
 			msg_title, utils::interpolate_variables_into_string(msg_text, &syms));
 	} else if(failed_titles.empty()) {
-		msg_title = !updates_only ? _("Add-ons Installed") : _("Add-ons Updated");
-		msg_text = !updates_only ? _("All add-ons installed successfully.") : _("All add-ons updated successfully.");
+		msg_title = !updating ? _("Add-ons Installed") : _("Add-ons Updated");
+		msg_text = !updating ? _("All add-ons installed successfully.") : _("All add-ons updated successfully.");
 
 		gui2::show_transient_message(disp.video(), msg_title, msg_text);
 	} else {
-		msg_title = !updates_only ? _("Installation Failed") : _("Update Failed");
+		msg_title = !updating ? _("Installation Failed") : _("Update Failed");
 		msg_text = _n(
 			"The following add-on could not be downloaded or installed successfully:",
 			"The following add-ons could not be downloaded or installed successfully:",
