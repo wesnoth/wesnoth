@@ -16,6 +16,7 @@
 
 #include "unit_animation.hpp"
 
+#include "filter_context.hpp"
 #include "game_display.hpp"
 #include "halo.hpp"
 #include "map.hpp"
@@ -327,12 +328,18 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 		const map_location::DIRECTION d = map_location::parse_direction(*i);
 		directions_.push_back(d);
 	}
+
+	const filter_context * fc = game_display::get_singleton();
+	if (!fc) {
+		fc = resources::filter_con; //!< This is a pointer to the gamestate. Would prefer to tie unit animations only to the display, but for now this is an acceptable fallback. It seems to be relevant because when a second game is created, it seems that the game_display is null at the time that units are being constructed, and hence at the time that this code is running. A different solution might be to delay the team_builder stage 2 call until after the gui is initialized. Note that the current set up could concievably cause problems with the editor, iirc it doesn't initailize a filter context.
+		assert(fc);
+	}
 	BOOST_FOREACH(const config &filter, cfg.child_range("filter")) {
-		unit_filter_.push_back(unit_filter(vconfig(filter), game_display::get_singleton()));
+		unit_filter_.push_back(unit_filter(vconfig(filter), fc));
 	}
 
 	BOOST_FOREACH(const config &filter, cfg.child_range("filter_second")) {
-		secondary_unit_filter_.push_back(unit_filter(vconfig(filter), game_display::get_singleton()));
+		secondary_unit_filter_.push_back(unit_filter(vconfig(filter), fc));
 	}
 
 	std::vector<std::string> value_str = utils::split(cfg["value"]);
