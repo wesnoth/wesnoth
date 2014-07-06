@@ -855,13 +855,9 @@ static int intf_get_units(lua_State *L)
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_newtable(L);
 	int i = 1;
-	unit_map &units = *resources::units;
-	const unit_filter ufilt(filter, resources::filter_con); // note that if filter is null, this yields a null filter matching everything
-	for (unit_map::const_unit_iterator ui = units.begin(), ui_end = units.end();
-	     ui != ui_end; ++ui)
-	{
-		if (!ufilt(*ui))
-			continue;
+
+	// note that if filter is null, this yields a null filter matching everything (and doing no work)
+	BOOST_FOREACH ( const unit * ui, unit_filter(filter, resources::filter_con).all_matches_on_map()) {
 		new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->underlying_id());
 		lua_pushvalue(L, 1);
 		lua_setmetatable(L, 3);
