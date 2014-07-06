@@ -578,7 +578,7 @@ void play_controller::do_init_side(bool is_replay, bool only_visual) {
 		// If the expense is less than the number of villages owned
 		// times the village support capacity,
 		// then we don't have to pay anything at all
-		int expense = side_upkeep(player_number_) -
+		int expense = gamestate_.board_.side_upkeep(player_number_) -
 			current_team().support();
 		if(expense > 0) {
 			current_team().spend_gold(expense);

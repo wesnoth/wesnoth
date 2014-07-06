@@ -88,7 +88,7 @@ void status_table(display& gui, int selected)
 
 		std::stringstream str;
 
-		const team_data data = calculate_team_data(teams[n],n+1);
+		const team_data data = gui.get_disp_context().calculate_team_data(teams[n],n+1);
 
 		unit_map::const_iterator leader = units.find_leader(n + 1);
 		std::string leader_name;

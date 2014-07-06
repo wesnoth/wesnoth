@@ -232,7 +232,7 @@ void menu_handler::status_table(int selected)
 
 		std::stringstream str;
 
-		const team_data data = calculate_team_data(teams_[n],n+1);
+		const team_data data = resources::gameboard->calculate_team_data(teams_[n],n+1);
 
 		unit_map::const_iterator leader = units_.find_leader(n + 1);
 		std::string leader_name;

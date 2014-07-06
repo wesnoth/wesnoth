@@ -19,6 +19,7 @@
 #include "manager.hpp"
 #include "testing.hpp"
 #include "../log.hpp"
+#include "../game_board.hpp"
 #include "../replay.hpp"
 #include "../util.hpp"
 #include "../resources.hpp"
@@ -47,8 +48,8 @@ void ai_testing::log_turn(const char* msg, unsigned int side)
 	team& current_team = (*resources::teams)[side-1];
 
 	int _turn_number = resources::tod_manager->turn();
-	int _units = side_units(side);
-	int _units_cost = side_units_cost(side);
+	int _units = resources::gameboard->side_units(side);
+	int _units_cost = resources::gameboard->side_units_cost(side);
 	int _gold = current_team.gold();
 	int _villages = current_team.villages().size();
 	int _income = current_team.total_income();
@@ -108,6 +109,6 @@ void ai_testing::log_game_end()
 	for (std::vector<team>::const_iterator tm = resources::teams->begin(); tm != resources::teams->end(); ++tm) {
 		int side = tm-resources::teams->begin()+1;
 		recorder.add_log_data("ai_log","end_gold"+str_cast(side),str_cast(tm->gold()));
-		recorder.add_log_data("ai_log","end_units"+str_cast(side),str_cast(side_units(side)));
+		recorder.add_log_data("ai_log","end_units"+str_cast(side),str_cast(resources::gameboard->side_units(side)));
 	}
 }

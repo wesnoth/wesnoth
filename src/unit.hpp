@@ -516,33 +516,6 @@ private:
 	int moves_;
 };
 
-/** Returns the number of units of the side @a side_num. */
-int side_units(int side_num);
-
-/** Returns the total cost of units of side @a side_num. */
-int side_units_cost(int side_num);
-
-int side_upkeep(int side_num);
-
-struct team_data
-{
-	team_data() :
-		units(0),
-		upkeep(0),
-		villages(0),
-		expenses(0),
-		net_income(0),
-		gold(0),
-		teamname()
-	{
-	}
-
-	int units, upkeep, villages, expenses, net_income, gold;
-	std::string teamname;
-};
-
-team_data calculate_team_data(const class team& tm, int side);
-
 /**
  * Gets a checksum for a unit.
  *

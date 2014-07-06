@@ -2121,45 +2121,6 @@ bool unit::matches_id(const std::string& unit_id) const
         return id_ == unit_id;
 }
 
-int side_units(int side)
-{
-	int res = 0;
-	BOOST_FOREACH(const unit &u, *resources::units) {
-		if (u.side() == side) ++res;
-	}
-	return res;
-}
-
-int side_units_cost(int side)
-{
-	int res = 0;
-	BOOST_FOREACH(const unit &u, *resources::units) {
-		if (u.side() == side) res += u.cost();
-	}
-	return res;
-}
-
-int side_upkeep(int side)
-{
-	int res = 0;
-	BOOST_FOREACH(const unit &u, *resources::units) {
-		if (u.side() == side) res += u.upkeep();
-	}
-	return res;
-}
-
-team_data calculate_team_data(const team& tm, int side)
-{
-	team_data res;
-	res.units = side_units(side);
-	res.upkeep = side_upkeep(side);
-	res.villages = tm.villages().size();
-	res.expenses = std::max<int>(0,res.upkeep - tm.support());
-	res.net_income = tm.total_income() - res.expenses;
-	res.gold = tm.gold();
-	res.teamname = tm.user_team_name();
-	return res;
-}
 
 std::string unit::TC_image_mods() const{
 	std::stringstream modifier;
@@ -2188,7 +2149,6 @@ void unit::remove_attacks_ai()
 	}
 	set_attacks(0);
 }
-
 
 void unit::remove_movement_ai()
 {

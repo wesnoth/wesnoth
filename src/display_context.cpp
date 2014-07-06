@@ -97,3 +97,45 @@ bool display_context::is_observer() const
 	return true;
 }
 
+/// Static info getters previously declared at global scope in unit.?pp
+
+int display_context::side_units(int side) const
+{
+	int res = 0;
+	BOOST_FOREACH(const unit &u, units()) {
+		if (u.side() == side) ++res;
+	}
+	return res;
+}
+
+int display_context::side_units_cost(int side) const
+{
+	int res = 0;
+	BOOST_FOREACH(const unit &u, units()) {
+		if (u.side() == side) res += u.cost();
+	}
+	return res;
+}
+
+int display_context::side_upkeep(int side) const
+{
+	int res = 0;
+	BOOST_FOREACH(const unit &u, units()) {
+		if (u.side() == side) res += u.upkeep();
+	}
+	return res;
+}
+
+team_data display_context::calculate_team_data(const team& tm, int side) const
+{
+	team_data res;
+	res.units = side_units(side);
+	res.upkeep = side_upkeep(side);
+	res.villages = tm.villages().size();
+	res.expenses = std::max<int>(0,res.upkeep - tm.support());
+	res.net_income = tm.total_income() - res.expenses;
+	res.gold = tm.gold();
+	res.teamname = tm.user_team_name();
+	return res;
+}
+

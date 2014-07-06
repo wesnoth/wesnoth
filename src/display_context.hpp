@@ -22,7 +22,8 @@
 #ifndef DISPLAY_CONTEXT_HPP_INCLUDED
 #define DISPLAY_CONTEXT_HPP_INCLUDED
 
-#include<vector>
+#include <string>
+#include <vector>
 
 class team;
 class gamemap;
@@ -30,6 +31,23 @@ class unit_map;
 
 class unit;
 struct map_location;
+
+struct team_data
+{
+	team_data() :
+		units(0),
+		upkeep(0),
+		villages(0),
+		expenses(0),
+		net_income(0),
+		gold(0),
+		teamname()
+	{
+	}
+
+	int units, upkeep, villages, expenses, net_income, gold;
+	std::string teamname;
+};
 
 class display_context {
 public:
@@ -53,6 +71,18 @@ public:
 	 */
 	int village_owner(const map_location & loc) const;
 
+	// Accessors from unit.cpp
+
+	/** Returns the number of units of the side @a side_num. */
+	int side_units(int side_num) const;
+
+	/** Returns the total cost of units of side @a side_num. */
+	int side_units_cost(int side_num) const ;
+
+	int side_upkeep(int side_num) const ;
+
+	team_data calculate_team_data(const class team& tm, int side) const;
+
 	// Accessor from team.cpp
 
 	/// Check if we are an observer in this game
@@ -62,5 +92,6 @@ public:
 
 	virtual ~display_context() {}
 };
+
 
 #endif

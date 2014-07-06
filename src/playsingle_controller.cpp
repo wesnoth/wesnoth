@@ -726,7 +726,7 @@ possible_end_play_signal playsingle_controller::play_side()
 			temporary_human = false;
 			// If a side is dead end the turn, but play at least side=1's
 			// turn in case all sides are dead
-			if (side_units(player_number_) != 0
+			if (gamestate_.board_.side_units(player_number_) != 0
 				|| (resources::units->size() == 0 && player_number_ == 1))
 			{
 				possible_end_play_signal signal = before_human_turn();

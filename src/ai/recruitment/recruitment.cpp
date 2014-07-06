@@ -1423,7 +1423,7 @@ double recruitment::get_estimated_income(int turns) const {
 	double total_income = 0;
 	for (int i = 1; i <= turns; ++i) {
 		double income = (own_villages + village_gain * i) * game_config::village_income;
-		double upkeep = side_upkeep(get_side()) + unit_gain * i -
+		double upkeep = resources::gameboard->side_upkeep(get_side()) + unit_gain * i -
 				(own_villages + village_gain * i) * game_config::village_support;
 		double resulting_income = team.base_income() + income - std::max(0., upkeep);
 		total_income += resulting_income;
