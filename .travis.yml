@@ -50,7 +50,7 @@ script:
     - time if [ "$PLAY_TEST" = true ]; then ./wesnoth -m --controller 1:ai --controller 2:ai; export PLAY_TEST_GUI_ERROR_CODE=$?; ./utils/travis/exit_wrapper.sh $PLAY_TEST_GUI_ERROR_CODE; fi
 
 after_failure:
-    - if [ "$TEST_ERROR_CODE" -ge 128 -a "$WML_TESTS" = false ]; then time sudo apt-get install -qq gdb; fi
+    - if [[ "$TEST_ERROR_CODE" -ge 128 -o "$PLAY_TEST_ERROR_CODE" -ge 128 -o "$PLAY_TEST_GUI_ERROR_CODE" -ge 128 ]] && [[ "$WML_TESTS" = false ]]; then time sudo apt-get install -qq gdb; fi
 # Need to install that if we don't already have it
     - if [ -f "errors.log" ]; then echo -e "\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n"; cat errors.log; fi
     - if [ "$TEST_ERROR_CODE" -ge 128 ]; then echo -e "\n***\n*\n* Encountered a segfault in the c++ unit test executable, attempting to get a backtrace in the remaining time...\n*\n***\n"; fi
