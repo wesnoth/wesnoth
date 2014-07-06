@@ -1992,6 +1992,12 @@ static int intf_find_reach(lua_State *L)
 	return 1;
 }
 
+#ifdef HAVE_CXX11
+static bool intf_find_cost_map_helper(const unit * ptr) {
+	return ptr->get_location().valid();
+}
+#endif
+
 /**
  * Is called with one or more units and builds a cost map.
  * - Args 1,2: source location. (Or Arg 1: unit. Or Arg 1: table containing a filter)
@@ -2018,17 +2024,18 @@ static int intf_find_cost_map(lua_State *L)
 	}
 	else if (!filter.null())  // 1. arg - filter
 	{
-		unit_map &units = *resources::units;
 		const unit_filter ufilt(filter, resources::filter_con);
-		for (unit_map::const_unit_iterator ui = units.begin(), ui_end = units.end();
-		     ui != ui_end; ++ui)
-		{
-			bool on_map = ui->get_location().valid();
-			if (on_map && ufilt(*ui))
-			{
-				real_units. push_back(&(*ui));
+
+		#ifdef HAVE_CXX11
+		std::vector<const unit *> matches = ufilt.all_matches_on_map();
+		std::copy_if(matches.begin(), matches.end(), std::back_inserter(real_units), &intf_find_cost_map_helper);
+		#else
+		BOOST_FOREACH(const unit * u, ufilt.all_matches_on_map()) {
+			if (u->get_location().valid()) {
+				real_units.push_back(u);
 			}
 		}
+		#endif
 	}
 	else  // 1. + 2. arg - coordinates
 	{
