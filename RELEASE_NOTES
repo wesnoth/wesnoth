@@ -14,6 +14,10 @@ The release team should empty this file after each release.
 CHANGES
 =======
 
+[section="Minor Add-ons Manager improvement"]
+Since the Update Add-ons shortcut in the add-ons server connection dialog was removed in version 1.11.0, the Update All (add-ons) functionality became considerably less visible. To address this, the Update All button is now available on all Add-on Manager views, and enabled whenever there is at least one add-on on the list that may be upgraded.
+[/section]
+
 [section="Fixed WML load error reporting"]
 A change introduced in version 1.11.15 caused WML parser/preprocessor errors found at game/add-on load time to not be reported to the player in the GUI, and the game to carry on with a incomplete and malformed WML tree in most cases. This issue was [url=http://r.wesnoth.org/p571380]reported[/url] on the forums by SkyOne and is fixed in this release.
 [/section]
