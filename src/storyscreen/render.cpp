@@ -141,6 +141,8 @@ void part_ui::prepare_background()
 		const bool scalev = bl.scale_vertically();
 		const bool scaleh = bl.scale_horizontally();
 		const bool keep_ratio = bl.keep_aspect_ratio();
+		const bool tileh = bl.tile_horizontally();
+		const bool tilev = bl.tile_vertically();
 
 		double x_scale_factor = scaleh ? xscale : 1.0;
 		double y_scale_factor = scalev ? yscale : 1.0;
@@ -154,8 +156,19 @@ void part_ui::prepare_background()
 		}
 
 		layer.set_smooth_scaling(true);
+		SDL_Rect clip = sdl::create_rect(0, 0, layer.width(), layer.height());
+		if (tileh) {
+			clip.x = (layer.width() - video_.getx())/2;
+			clip.w = video_.getx();
+			layer.set_hwrap(GPU_WRAP_REPEAT);
+		}
+		if (tilev) {
+			clip.y = (layer.width() - video_.gety())/2;
+			clip.h = video_.gety();
+			layer.set_vwrap(GPU_WRAP_REPEAT);
+		}
+		layer.set_clip(clip);
 		layer.set_scale(x_scale_factor, y_scale_factor);
-		//TODO: tiling
 
 		SDL_Rect base_rect = sdl::create_rect(
 				  (video_.getx() - layer.width()) / 2
