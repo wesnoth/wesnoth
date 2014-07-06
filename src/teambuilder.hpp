@@ -40,6 +40,7 @@ public:
 	team_builder(const config& side_cfg,
 		     const std::string &save_id, std::vector<team>& teams,
 		     const config& level, gamemap& map, unit_map& units,
+		     game_data & gamedata,
 		     const config &starting_pos)
 		: gold_info_ngold_(0)
 		, leader_configs_()
@@ -55,6 +56,7 @@ public:
 		, teams_(teams)
 		, unit_configs_()
 		, units_(units)
+		, gamedata_(gamedata)
 	{
 	}
 
@@ -110,6 +112,7 @@ protected:
 	std::vector<team> &teams_;
 	std::vector<const config*> unit_configs_;
 	unit_map &units_;
+	game_data & gamedata_;
 
 
 	void log_step(const char *s) const
@@ -167,7 +170,7 @@ protected:
 	void new_team()
 	{
 		log_step("new team");
-		t_->build(side_cfg_, map_, gold_info_ngold_);
+		t_->build(side_cfg_, map_, &gamedata_, gold_info_ngold_);
 		//t_->set_gold_add(gold_info_add_);
 	}
 

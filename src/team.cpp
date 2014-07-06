@@ -280,7 +280,7 @@ team::~team()
 {
 }
 
-void team::build(const config &cfg, const gamemap& map, int gold)
+void team::build(const config &cfg, const gamemap& map, const game_data * gamedata, int gold)
 {
 	gold_ = gold;
 	info_.read(cfg);
@@ -314,7 +314,7 @@ void team::build(const config &cfg, const gamemap& map, int gold)
 	// Load in the villages the side controls at the start
 	BOOST_FOREACH(const config &v, cfg.child_range("village"))
 	{
-		map_location loc(v, resources::gamedata);
+		map_location loc(v, gamedata);
 		if (map.is_village(loc)) {
 			villages_.insert(loc);
 		} else {
