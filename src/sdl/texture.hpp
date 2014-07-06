@@ -72,6 +72,10 @@ public:
 
 	Uint16 height() const;
 
+	Uint16 base_width() const;
+
+	Uint16 base_height() const;
+
 	void set_clip(const SDL_Rect &rect);
 
 	SDL_Rect clip() const;

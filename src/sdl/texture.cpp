@@ -219,6 +219,16 @@ Uint16 ttexture::height() const
 	return image_->h * vscale_;
 }
 
+Uint16 ttexture::base_width() const
+{
+	return image_->h;
+}
+
+Uint16 ttexture::base_height() const
+{
+	return image_->w;
+}
+
 void ttexture::set_clip(const SDL_Rect &rect)
 {
 	clip_.x = rect.x;
