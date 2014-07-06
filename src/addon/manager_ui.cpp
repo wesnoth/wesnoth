@@ -850,7 +850,11 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 	std::vector<std::string> failed_titles;
 
 	if(update_everything) {
-		ids_to_install = option_ids;
+		BOOST_FOREACH(const std::string& id, option_ids) {
+			if(tracking[id].state == ADDON_INSTALLED_UPGRADABLE) {
+				ids_to_install.push_back(id);
+			}
+		}
 	} else {
 		assert(result >= 0 && size_t(result) < option_ids.size());
 		last_addon_id = option_ids[result];
