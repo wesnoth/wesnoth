@@ -66,13 +66,6 @@ const std::set<std::string> team::attributes = boost::assign::list_of("ai_config
 	("leader")("random_leader")("team_lock")("terrain_liked")
 	("user_description")("default_recruit")("controller_lock")("chose_random");
 
-
-const std::vector<team>& teams_manager::get_teams()
-{
-	assert(teams);
-	return *teams;
-}
-
 team::team_info::team_info() :
 	name(),
 	gold(0),

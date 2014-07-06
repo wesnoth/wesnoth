@@ -108,6 +108,8 @@ bool affects_side(const config& cfg, const std::vector<team>& teams, size_t side
 
 bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc) const
 {
+	assert(resources::teams);
+
 	if (const config &abilities = cfg_.child("abilities"))
 	{
 		BOOST_FOREACH(const config &i, abilities.child_range(tag_name)) {
@@ -135,7 +137,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 		if (!adj_abilities)
 			continue;
 		BOOST_FOREACH(const config &j, adj_abilities.child_range(tag_name)) {
-			if (affects_side(j, teams_manager::get_teams(), side(), it->side()) &&
+			if (affects_side(j, *resources::teams, side(), it->side()) &&
 			    it->ability_active(tag_name, j, adjacent[i]) &&
 			    ability_affects_adjacent(tag_name,  j, i, loc))
 				return true;
@@ -147,6 +149,8 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 }
 unit_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc) const
 {
+	assert(resources::teams);
+
 	unit_ability_list res;
 
 	if (const config &abilities = cfg_.child("abilities"))
@@ -176,7 +180,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		if (!adj_abilities)
 			continue;
 		BOOST_FOREACH(const config &j, adj_abilities.child_range(tag_name)) {
-			if (affects_side(j, teams_manager::get_teams(), side(), it->side()) &&
+			if (affects_side(j, *resources::teams, side(), it->side()) &&
 			    it->ability_active(tag_name, j, adjacent[i]) &&
 			    ability_affects_adjacent(tag_name, j, i, loc))
 				res.push_back(unit_ability(&j, adjacent[i]));

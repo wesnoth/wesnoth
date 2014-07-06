@@ -450,7 +450,10 @@ void scoped_weapon_info::activate()
 
 void scoped_recall_unit::activate()
 {
-	const std::vector<team>& teams = teams_manager::get_teams();
+	assert(resources::teams);
+
+	const std::vector<team>& teams = *resources::teams;
+
 	std::vector<team>::const_iterator team_it;
 	for (team_it = teams.begin(); team_it != teams.end(); ++team_it) {
 		if (team_it->save_id() == player_ )

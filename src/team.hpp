@@ -377,10 +377,6 @@ private:
 MAKE_ENUM_STREAM_OPS2(team, CONTROLLER)
 MAKE_ENUM_STREAM_OPS2(team, DEFEAT_CONDITION)
 
-namespace teams_manager {
-	const std::vector<team> &get_teams();
-}
-
 //function which will validate a side. Throws game::game_error
 //if the side is invalid
 void validate_side(int side); //throw game::game_error
