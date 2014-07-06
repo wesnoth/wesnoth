@@ -41,8 +41,8 @@ script:
     - scons cxxtool=$CXX --debug=time build=release extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=$STRICT_COMPILATION $TARGETS
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
-    - time if [[ "$CPP_TESTS" = true ]]; then ./test; export TEST_ERROR_CODE=$?; ./utils/travis/exit_wrapper.sh $TEST_ERROR_CODE; fi
-    - if [[ "$WML_TESTS" = true ]]; then time ./run_wml_tests -g -v -t "$WML_TEST_TIME"; fi
+    - time if [ "$CPP_TESTS" = true ]; then ./test; export TEST_ERROR_CODE=$?; ./utils/travis/exit_wrapper.sh $TEST_ERROR_CODE; fi
+    - if [ "$WML_TESTS" = true ]; then time ./run_wml_tests -g -v -t "$WML_TEST_TIME"; fi
     - if [ "$PLAY_TEST" = true ]; then time ./wesnoth -m --controller 1:ai --controller 2:ai --nogui; export PLAY_TEST_ERROR_CODE=$?; ./utils/travis/exit_wrapper.sh $PLAY_TEST_ERROR_CODE; fi
     - if [ "$PLAY_TEST" = true ]; then time ./wesnoth -m --controller 1:ai --controller 2:ai; export PLAY_TEST_GUI_ERROR_CODE=$?; ./utils/travis/exit_wrapper.sh $PLAY_TEST_GUI_ERROR_CODE; fi
 after_failure:
