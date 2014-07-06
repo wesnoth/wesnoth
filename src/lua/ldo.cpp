@@ -55,24 +55,27 @@
 /* C++ exceptions */
 #define LUAI_THROW(L,c) throw(c)
 #define LUAI_TRY(L,c,a) \
-        try { \
-                try { \
-                        a \
-                } catch(const tlua_jailbreak_exception &e) { \
-                        e.store(); \
-                        throw; \
-                } catch(const std::exception &e) { \
-                        lua_pushstring(L, e.what()); \
-                        luaG_errormsg(L); \
-                        throw; \
-                } catch(...) { \
-	                assert(false && "Lua is swallowing an un-named exception... this indicates a programmer error, please derive all exceptions from std::exception!"); \
+	try { \
+		try { \
+			a \
+		} catch(const tlua_jailbreak_exception &e) { \
+			e.store(); \
+			throw; \
+		} catch(const std::exception &e) { \
+			lua_pushstring(L, e.what()); \
+			luaG_errormsg(L); \
+			throw; \
+		} catch (const lua_longjmp *) { \
+			/*this exception is used internaly by lua exceptions*/ \
+			throw; \
+		} catch(...) { \
+			assert(false && "Lua is swallowing an un-named exception... this indicates a programmer error, please derive all exceptions from std::exception!"); \
 			throw; \
 		} \
-        } catch(...) { \
-                if((c)->status == 0) \
-                        (c)->status = -1;\
-        }
+	} catch(...) { \
+	if((c)->status == 0) \
+		(c)->status = -1;\
+	}
 #define luai_jmpbuf     int  /* dummy variable */
 
 
