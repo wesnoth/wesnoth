@@ -232,6 +232,9 @@ public:
 			}
 			++cond;
 		}
+		BOOST_FOREACH(const vconfig& vc, wmlcfgs_) {
+			vc.make_safe(); //Needed to prevent segfaults, as vcfg's don't hold onto their memory by default.
+		}
 	}
 
 	virtual bool matches(const unit & u, const map_location & loc) const;

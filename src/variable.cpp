@@ -95,7 +95,7 @@ vconfig vconfig::unconstructed_vconfig()
  * It is perfectly safe to call this for a vconfig that already manages its memory.
  * This does not work on a null() vconfig.
  */
-void vconfig::make_safe()
+void vconfig::make_safe() const
 {
 	// Nothing to do if we already manage our own memory.
 	if ( memory_managed() )

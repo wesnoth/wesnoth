@@ -75,7 +75,7 @@ public:
 #endif
 
 	bool null() const { return cfg_ == NULL; }
-	void make_safe();
+	void make_safe() const; //!< instruct the vconfig to make a private copy of its underlying data.
 	const config& get_config() const { return *cfg_; }
 	config get_parsed_config() const;
 
@@ -160,9 +160,9 @@ private:
 
 	/// Keeps a copy of our config alive when we manage our own memory.
 	/// If this is not null, then cfg_ points to *cache_ or a child of *cache_.
-	boost::shared_ptr<config> cache_;
+	mutable boost::shared_ptr<config> cache_;
 	/// Used to access our config (original or copy, as appropriate).
-	const config* cfg_;
+	mutable const config* cfg_;
 };
 
 struct vconfig::all_children_iterator::pointer_proxy
