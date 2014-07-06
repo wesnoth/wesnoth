@@ -488,7 +488,9 @@ std::vector<boost::tuple<unsigned int,std::string> > commandline_options::parse_
 		const std::vector<std::string> tokens = utils::split(s, separator);
 		if (tokens.size()!=2)
 		{
-			 //TODO throw a meaningful exception
+			std::stringstream ss;
+			ss << "when trying to parse string " << s << " as an (int,string) with separator " << separator << ", didn't get exactly two tokens.";
+			throw ss.str();
 		}
 		elem.get<0>() = lexical_cast<unsigned int>(tokens[0]);
 			//TODO catch exception and pack in meaningful something
