@@ -22,6 +22,7 @@
 
 class config;
 class display;
+class display_context;
 //class team;
 class terrain_label;
 
@@ -139,7 +140,7 @@ private:
 	void clear();
 	void draw();
 	bool hidden() const;
-	bool viewable() const;
+	bool viewable(const display_context & dc) const;
 	std::string cfg_color() const;
 
 	int handle_;
