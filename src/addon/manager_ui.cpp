@@ -602,6 +602,8 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 
 	const sorted_addon_pointer_list& sorted_addons = sort_addons_list(addons, filter.sort, filter.direction);
 
+	bool have_upgradable_addons = false;
+
 	BOOST_FOREACH(const sorted_addon_pointer_list::value_type& sorted_entry, sorted_addons) {
 		const addons_list::value_type& entry = *sorted_entry;
 		const addon_info& addon = entry.second;
@@ -615,6 +617,10 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		   (!filter.types[addon.type])
 		)
 			continue;
+
+		if(state == ADDON_INSTALLED_UPGRADABLE) {
+			have_upgradable_addons = true;
+		}
 
 		option_ids.push_back(addon.id);
 
@@ -774,12 +780,10 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			_("Description"), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &description_helper);
 		dlg.add_button(description_button, gui::dialog::BUTTON_EXTRA);
 
-		gui::dialog_button* update_all_button = NULL;
-		if(updates_only) {
-			update_all_button = new gui::dialog_button(disp.video(), _("Update All"),
-				gui::button::TYPE_PRESS, update_all_value);
-			dlg.add_button(update_all_button, gui::dialog::BUTTON_EXTRA);
-		}
+		gui::dialog_button* update_all_button = new gui::dialog_button(disp.video(), _("Update All"),
+			gui::button::TYPE_PRESS, update_all_value);
+		update_all_button->enable(have_upgradable_addons);
+		dlg.add_button(update_all_button, gui::dialog::BUTTON_EXTRA);
 
 		filter_options_action filter_opts_helper(disp.video(), filter);
 		gui::dialog_button* filter_opts_button = new gui::dialog_button(disp.video(),
@@ -818,7 +822,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		filter.keywords = filter_box->text();
 	}
 
-	const bool update_everything = updates_only && result == update_all_value;
+	const bool update_everything = result == update_all_value;
 
 	if(result < 0 && !(update_everything || filter.changed)) {
 		// User canceled the dialog.
