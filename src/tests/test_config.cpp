@@ -15,9 +15,11 @@
 #define GETTEXT_DOMAIN "wesnoth-test"
 
 #include <boost/test/unit_test.hpp>
+#include <boost/foreach.hpp>
 #include <cmath>
 
 #include "config.hpp"
+#include "config_assign.hpp"
 #include "variable_info.hpp"
 
 BOOST_AUTO_TEST_SUITE ( test_config )
@@ -224,6 +226,49 @@ BOOST_AUTO_TEST_CASE ( test_variable_info )
 		config c2;
 		variable_access_throw access("a.b[9].c", c2);
 		BOOST_CHECK_THROW(access.as_scalar(), invalid_variablename_exception);
+	}
+	{
+		const config nonempty = config_of
+			("tag1", config())
+			("tag1", config(config_of
+				("tag2",config())
+				("tag2",config())
+				("tag2",config(config_of
+					("atribute1", 88)
+					("atribute2", "value")
+				))
+			))
+			("tag1", config());
+
+		BOOST_CHECK_EQUAL (variable_access_const("tag1.length", nonempty).as_scalar(), 3);
+		BOOST_CHECK_EQUAL (variable_access_const("tag1.tag2.length", nonempty).as_scalar(), 0);
+		BOOST_CHECK_EQUAL (variable_access_const("tag1[1].tag2.length", nonempty).as_scalar(), 3);
+		BOOST_CHECK_EQUAL (variable_access_const("tag1[1].tag2[2].atribute1", nonempty).as_scalar().to_int(), 88);
+		int count = 0;
+		BOOST_FOREACH(const config& child, variable_access_const("tag1", nonempty).as_array())
+		{
+			//silences unused variable warning.
+			(void)(child);
+			++count;
+		}
+		BOOST_CHECK_EQUAL (count, 3);
+		count = 0;
+		BOOST_FOREACH(const config& child, variable_access_const("tag1.tag2", nonempty).as_array())
+		{
+			//silences unused variable warning.
+			(void)(child);
+			++count;
+		}
+		BOOST_CHECK_EQUAL (count, 0);
+		count = 0;
+		// explicit indexes as range always return a one element range, whether they exist or not.
+		BOOST_FOREACH(const config& child, variable_access_const("tag1.tag2[5]", nonempty).as_array())
+		{
+			//silences unused variable warning.
+			(void)(child);
+			++count;
+		}
+		BOOST_CHECK_EQUAL (count, 1);
 	}
 }
 

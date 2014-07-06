@@ -395,10 +395,17 @@ bool config::attribute_value::operator==(const config::attribute_value &other) c
  * Checks for equality of the attribute values when viewed as strings.
  * Exception: Boolean synonyms can be equal ("yes" == "true").
  * Note: Blanks have no string representation, so do not equal "" (an empty string).
+ * Also note that translatable string are never equal to non translatable strings.
  */
 bool config::attribute_value::equals(const std::string &str) const
 {
-	return boost::apply_visitor(boost::bind( equality_visitor(), _1, boost::cref(str) ), value_);
+	attribute_value v;
+	v = str;
+	return *this == v;
+	// if c["a"] = "1" then this solution would have resulted in c["a"] == "1" beeing false
+	// because a["a"] is '1' and not '"1"'.
+	// return boost::apply_visitor(boost::bind( equality_visitor(), _1, boost::cref(str) ), value_);
+	// that's why we don't use it.
 }
 
 std::ostream &operator<<(std::ostream &os, const config::attribute_value &v)

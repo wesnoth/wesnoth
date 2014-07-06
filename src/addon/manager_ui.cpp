@@ -602,6 +602,8 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 
 	const sorted_addon_pointer_list& sorted_addons = sort_addons_list(addons, filter.sort, filter.direction);
 
+	bool have_upgradable_addons = false;
+
 	BOOST_FOREACH(const sorted_addon_pointer_list::value_type& sorted_entry, sorted_addons) {
 		const addons_list::value_type& entry = *sorted_entry;
 		const addon_info& addon = entry.second;
@@ -615,6 +617,10 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		   (!filter.types[addon.type])
 		)
 			continue;
+
+		if(state == ADDON_INSTALLED_UPGRADABLE) {
+			have_upgradable_addons = true;
+		}
 
 		option_ids.push_back(addon.id);
 
@@ -774,12 +780,10 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			_("Description"), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &description_helper);
 		dlg.add_button(description_button, gui::dialog::BUTTON_EXTRA);
 
-		gui::dialog_button* update_all_button = NULL;
-		if(updates_only) {
-			update_all_button = new gui::dialog_button(disp.video(), _("Update All"),
-				gui::button::TYPE_PRESS, update_all_value);
-			dlg.add_button(update_all_button, gui::dialog::BUTTON_EXTRA);
-		}
+		gui::dialog_button* update_all_button = new gui::dialog_button(disp.video(), _("Update All"),
+			gui::button::TYPE_PRESS, update_all_value);
+		update_all_button->enable(have_upgradable_addons);
+		dlg.add_button(update_all_button, gui::dialog::BUTTON_EXTRA);
 
 		filter_options_action filter_opts_helper(disp.video(), filter);
 		gui::dialog_button* filter_opts_button = new gui::dialog_button(disp.video(),
@@ -818,7 +822,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		filter.keywords = filter_box->text();
 	}
 
-	const bool update_everything = updates_only && result == update_all_value;
+	const bool update_everything = result == update_all_value;
 
 	if(result < 0 && !(update_everything || filter.changed)) {
 		// User canceled the dialog.
@@ -850,7 +854,11 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 	std::vector<std::string> failed_titles;
 
 	if(update_everything) {
-		ids_to_install = option_ids;
+		BOOST_FOREACH(const std::string& id, option_ids) {
+			if(tracking[id].state == ADDON_INSTALLED_UPGRADABLE) {
+				ids_to_install.push_back(id);
+			}
+		}
 	} else {
 		assert(result >= 0 && size_t(result) < option_ids.size());
 		last_addon_id = option_ids[result];
@@ -885,22 +893,26 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 	const char* msg_title = NULL;
 	const char* msg_text = NULL;
 
+	// Use the Update terminology when using Update All or working with the
+	// Upgradable add-ons view.
+	const bool updating = update_everything || updates_only;
+
 	if(ids_to_install.size() == 1 && failed_titles.empty()) {
 		utils::string_map syms;
 		syms["addon_title"] = addons[ids_to_install[0]].title;
 
-		msg_title = !updates_only ? _("Add-on Installed") : _("Add-on Updated");
-		msg_text = !updates_only ? _("The add-on '$addon_title|' has been successfully installed.") : _("The add-on '$addon_title|' has been successfully updated.");
+		msg_title = !updating ? _("Add-on Installed") : _("Add-on Updated");
+		msg_text = !updating ? _("The add-on '$addon_title|' has been successfully installed.") : _("The add-on '$addon_title|' has been successfully updated.");
 
 		gui2::show_transient_message(disp.video(),
 			msg_title, utils::interpolate_variables_into_string(msg_text, &syms));
 	} else if(failed_titles.empty()) {
-		msg_title = !updates_only ? _("Add-ons Installed") : _("Add-ons Updated");
-		msg_text = !updates_only ? _("All add-ons installed successfully.") : _("All add-ons updated successfully.");
+		msg_title = !updating ? _("Add-ons Installed") : _("Add-ons Updated");
+		msg_text = !updating ? _("All add-ons installed successfully.") : _("All add-ons updated successfully.");
 
 		gui2::show_transient_message(disp.video(), msg_title, msg_text);
 	} else {
-		msg_title = !updates_only ? _("Installation Failed") : _("Update Failed");
+		msg_title = !updating ? _("Installation Failed") : _("Update Failed");
 		msg_text = _n(
 			"The following add-on could not be downloaded or installed successfully:",
 			"The following add-ons could not be downloaded or installed successfully:",
