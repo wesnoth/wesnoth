@@ -285,7 +285,6 @@ public:
 		bool operator!=(const attribute_value &other) const
 		{ return !operator==(other); }
 
-		// returns always false if the underlying type is no string.
 		bool equals(const std::string& str) const;
 		// These function prevent t_string creation in case of c["a"] == "b" comparisons.
 		// The templates are needed to prevent using these function in case of c["a"] == 0 comparisons.
