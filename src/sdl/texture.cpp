@@ -34,6 +34,8 @@ ttexture::ttexture(Uint16 w, Uint16 h)
 	, smooth_scaling_(false)
 	, clip_(create_gpu_rect(0, 0, w, h))
 	, color_mod_(create_color(0, 0, 0, 255))
+	, hwrap_(GPU_WRAP_NONE)
+	, vwrap_(GPU_WRAP_NONE)
 {
 	image_ = GPU_CreateImage(w, h, GPU_FORMAT_RGBA);
 	if (image_ == NULL) {
@@ -51,6 +53,8 @@ ttexture::ttexture(const std::string &file)
 	, smooth_scaling_(false)
 	, clip_()
 	, color_mod_(create_color(0, 0, 0, 255))
+	, hwrap_(GPU_WRAP_NONE)
+	, vwrap_(GPU_WRAP_NONE)
 {
 	if (image_ == NULL) {
 		//TODO: report error
@@ -68,6 +72,8 @@ ttexture::ttexture(const surface &source)
 	, smooth_scaling_(false)
 	, clip_()
 	, color_mod_(create_color(0, 0, 0, 255))
+	, hwrap_(GPU_WRAP_NONE)
+	, vwrap_(GPU_WRAP_NONE)
 {
 	if (image_ == NULL) {
 		//TODO: report error
@@ -85,6 +91,8 @@ ttexture::ttexture(SDL_Surface *source)
 	, smooth_scaling_(false)
 	, clip_()
 	, color_mod_(create_color(0, 0, 0, 255))
+	, hwrap_(GPU_WRAP_NONE)
+	, vwrap_(GPU_WRAP_NONE)
 {
 	if (image_ == NULL) {
 		//TODO: report error
@@ -102,6 +110,8 @@ ttexture::ttexture()
 	, smooth_scaling_(false)
 	, clip_(create_gpu_rect(0, 0, 0, 0))
 	, color_mod_(create_color(0, 0, 0, 255))
+	, hwrap_(GPU_WRAP_NONE)
+	, vwrap_(GPU_WRAP_NONE)
 {
 }
 
@@ -123,6 +133,8 @@ ttexture::ttexture(const ttexture &texture)
 	, smooth_scaling_(texture.smooth_scaling_)
 	, clip_(texture.clip_)
 	, color_mod_(texture.color_mod_)
+	, hwrap_(texture.hwrap_)
+	, vwrap_(texture.vwrap_)
 {
 	if (image_ != NULL) {
 		image_->refcount += 1;
@@ -146,6 +158,7 @@ void ttexture::draw(GPU_Target &target, const int x, const int y)
 					   ? GPU_FILTER_LINEAR
 					   : GPU_FILTER_NEAREST);
 	//GPU_SetColor(image_, &color_mod_);
+	GPU_SetWrapMode(image_, hwrap_, vwrap_);
 	GPU_BlitTransform(image_, &clip_, &target, x + width()/2,
 					  y + height()/2, rotation_, hscale_, vscale_);
 }
@@ -255,6 +268,32 @@ Uint8 ttexture::green_mod() const
 Uint8 ttexture::blue_mod() const
 {
 	return color_mod_.b;
+}
+
+void ttexture::set_hwrap(GPU_WrapEnum mode)
+{
+	hwrap_ = mode;
+}
+
+void ttexture::set_vwrap(GPU_WrapEnum mode)
+{
+	vwrap_ = mode;
+}
+
+void ttexture::set_wrap(GPU_WrapEnum hmode, GPU_WrapEnum vmode)
+{
+	hwrap_ = hmode;
+	vwrap_ = vmode;
+}
+
+GPU_WrapEnum ttexture::hwrap() const
+{
+	return hwrap_;
+}
+
+GPU_WrapEnum ttexture::vwrap() const
+{
+	return vwrap_;
 }
 
 bool ttexture::null() const

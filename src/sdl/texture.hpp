@@ -88,6 +88,15 @@ public:
 
 	Uint8 blue_mod() const;
 
+	void set_hwrap(GPU_WrapEnum mode);
+
+	void set_vwrap(GPU_WrapEnum mode);
+
+	void set_wrap(GPU_WrapEnum hmode, GPU_WrapEnum vmode);
+
+	GPU_WrapEnum hwrap() const;
+
+	GPU_WrapEnum vwrap( )const;
 
 	bool null() const;
 
@@ -105,6 +114,10 @@ private:
 	GPU_Rect clip_;
 
 	SDL_Color color_mod_;
+
+	GPU_WrapEnum hwrap_;
+
+	GPU_WrapEnum vwrap_;
 };
 }
 #endif
