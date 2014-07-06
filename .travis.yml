@@ -52,10 +52,10 @@ after_failure:
     - if [[ "$TEST_ERROR_CODE" -ge 128 || "$PLAY_TEST_ERROR_CODE" -ge 128 ]] && [[ "$WML_TESTS" = false ]]; then time sudo apt-get install -qq gdb; fi
 # Need to install that if we don't already have it
     - if [ -f "errors.log" ]; then echo -e "\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n"; cat errors.log; fi
-    - if [ "$TEST_ERROR_CODE" -ge 128 ]; then echo -e "\n***\n*\n* Encountered a segfault in the c++ unit test executable, attempting to get a backtrace in the remaining time...\n*\n***\n"; fi
-    - if [ "$TEST_ERROR_CODE" -ge 128 ]; then time gdb -q -batch -ex start -ex continue -ex bt -ex quit --args ./test; fi
-    - if [ "$PLAY_TEST_ERROR_CODE" -ge 128 ]; then echo -e "\n***\n*\n* Encountered a segfault when running an ai test, attempting to get a backtrace in the remaining time...\n*\n***\n"; fi
-    - if [ "$PLAY_TEST_ERROR_CODE" -ge 128 ]; then time gdb -q -batch -ex start -ex continue -ex bt -ex quit --args ./wesnoth -m --controller 1:ai --controller 2:ai --nogui; fi
+    - if [[ "$TEST_ERROR_CODE" -ge 128 ]]; then echo -e "\n***\n*\n* Encountered a segfault in the c++ unit test executable, attempting to get a backtrace in the remaining time...\n*\n***\n"; fi
+    - if [[ "$TEST_ERROR_CODE" -ge 128 ]]; then time gdb -q -batch -ex start -ex continue -ex bt -ex quit --args ./test; fi
+    - if [[ "$PLAY_TEST_ERROR_CODE" -ge 128 ]]; then echo -e "\n***\n*\n* Encountered a segfault when running an ai test, attempting to get a backtrace in the remaining time...\n*\n***\n"; fi
+    - if [[ "$PLAY_TEST_ERROR_CODE" -ge 128 ]]; then time gdb -q -batch -ex start -ex continue -ex bt -ex quit --args ./wesnoth -m --controller 1:ai --controller 2:ai --nogui; fi
 
 notifications:
     email: false
