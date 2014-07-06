@@ -310,8 +310,6 @@ public:
 	bool no_turn_confirmation() const { return info_.no_turn_confirmation; }
 	void set_no_turn_confirmation(bool value) { info_.no_turn_confirmation = value; }
 
-	static int nteams();
-
 	//function which, when given a 1-based side will return the color used by that side.
 	static const color_range get_side_color_range(int side);
 	static Uint32 get_side_rgb(int side) { return(get_side_color_range(side).mid()); }

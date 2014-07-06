@@ -590,16 +590,6 @@ void team::remove_fog_override(const std::set<map_location> &hexes)
 	fog_clearer_.insert(result.begin(), result_end);
 }
 
-
-int team::nteams()
-{
-	if(teams == NULL) {
-		return 0;
-	} else {
-		return teams->size();
-	}
-}
-
 void validate_side(int side)
 {
 	if(teams == NULL) {

@@ -1134,14 +1134,14 @@ void menu_handler::change_side(mouse_handler& mousehandler)
 		int team = resources::gameboard->village_owner(loc) + 1;
 		// team is 0-based so team=team::nteams() is not a team
 		// but this will make get_village free it
-		if(team > team::nteams()) {
+		if(team > static_cast<int> (teams_.size())) {
 			team = 0;
 		}
 		actions::get_village(loc, team + 1);
 	} else {
 		int side = i->side();
 		++side;
-		if(side > team::nteams()) {
+		if(side > static_cast<int> (teams_.size())) {
 			side = 1;
 		}
 		i->set_side(side);
