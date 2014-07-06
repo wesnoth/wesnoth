@@ -767,21 +767,18 @@ void wml_animation(const vconfig &cfg, const map_location &default_location)
 
 void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const map_location &default_location)
 {
-	unit_map::iterator u = resources::units->find(default_location);
+	unit_const_ptr u = resources::units->find(default_location).get_shared_ptr();
 
 	// Search for a valid unit filter,
 	// and if we have one, look for the matching unit
 	vconfig filter = cfg.child("filter");
 	if(!filter.null()) {
 		const unit_filter ufilt(filter, resources::filter_con);
-		for (u = resources::units->begin(); u != resources::units->end(); ++u) {
-			if ( ufilt(*u) )
-				break;
-		}
+		u = ufilt.first_match_on_map();
 	}
 
 	// We have found a unit that matches the filter
-	if (u.valid() && !resources::screen->fogged(u->get_location()))
+	if (u && !resources::screen->fogged(u->get_location()))
 	{
 		attack_type *primary = NULL;
 		attack_type *secondary = NULL;
