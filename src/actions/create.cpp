@@ -421,6 +421,8 @@ namespace { // Helpers for get_recalls()
 		const team& leader_team = (*resources::teams)[leader->side()-1];
 		const std::string& save_id = leader_team.save_id();
 
+		const unit_filter ufilt(vconfig(leader->recall_filter()), resources::filter_con);
+
 		BOOST_FOREACH(const unit_const_ptr & recall_unit_ptr, leader_team.recall_list())
 		{
 			const unit & recall_unit = *recall_unit_ptr;
@@ -431,7 +433,6 @@ namespace { // Helpers for get_recalls()
 				// Only units that match the leader's recall filter are valid.
 				scoped_recall_unit this_unit("this_unit", save_id, leader_team.recall_list().find_index(recall_unit.id()));
 
-				const unit_filter ufilt(vconfig(leader->recall_filter()), resources::filter_con);
 				if ( ufilt(recall_unit, map_location::null_location()) )
 				{
 					result.push_back(recall_unit_ptr);
