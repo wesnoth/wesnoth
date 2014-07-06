@@ -461,7 +461,7 @@ void terrain_label::draw()
 		return;
 	clear();
 
-	if ( !viewable() )
+	if ( !viewable(parent_->disp().get_disp_context()) )
 		return;
 
 	const map_location loc_nextx(loc_.x+1,loc_.y);
@@ -514,17 +514,17 @@ bool terrain_label::hidden() const
  * creating a label. Conditions that can change during unit movement (disregarding
  * potential WML events) should not be listed here; they belong in hidden().
  */
-bool terrain_label::viewable() const
+bool terrain_label::viewable(const display_context & dc) const
 {
 	if ( !parent_->enabled() )
 		return false;
 
 	// In the editor, all labels are viewable.
-	if ( team::nteams() == 0 )
+	if ( dc.teams().empty() )
 		return true;
 
 	// Observers are not privvy to team labels.
-	const bool can_see_team_labels = !resources::gameboard->is_observer();
+	const bool can_see_team_labels = !dc.is_observer();
 
 	// Global labels are shown unless covered by a team label.
 	if ( team_name_.empty() )
