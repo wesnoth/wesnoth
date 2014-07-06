@@ -36,7 +36,6 @@
 #include <boost/foreach.hpp>
 #include <boost/optional.hpp>
 #include <boost/make_shared.hpp>
-#include <boost/ptr_container/ptr_vector.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/utility/in_place_factory.hpp> //needed for boost::in_place to initialize optionals
 
@@ -181,7 +180,7 @@ public:
 
 				const vconfig& cond_filter = cond.get_child();
 
-				cond_children_.push_back(new unit_filter(cond_filter, &fc_, use_flat_tod_));
+				cond_children_.push_back(unit_filter(cond_filter, &fc_, use_flat_tod_));
 				cond_child_types_.push_back(type);
 			} catch (bad_enum_cast &) { // this means it isn't a conditional filter tag
 
@@ -200,7 +199,7 @@ public:
 					vision_filters_viewers_lists_.push_back(viewers);
 				} else if (cond_name == "filter_adjacent") {
 					const vconfig& f = cond.get_child();
-					filter_adj_filters_.push_back(new unit_filter(f, &fc_, use_flat_tod_));
+					filter_adj_filters_.push_back(unit_filter(f, &fc_, use_flat_tod_));
 
 					config::attribute_value i_adjacent = f["adjacent"];
 					filter_adj_dirs_.push_back(!i_adjacent.blank() ? map_location::parse_directions(i_adjacent) : map_location::default_dirs());
@@ -246,7 +245,7 @@ private:
 	const filter_context & fc_;
 	bool use_flat_tod_;
 
-	boost::ptr_vector<unit_filter> cond_children_;
+	std::vector<unit_filter> cond_children_;
 	std::vector<conditional::TYPE> cond_child_types_;
 
 	const config::attribute_value cfg_name_;
@@ -278,7 +277,7 @@ private:
 	std::vector<std::set<int> > vision_filters_viewers_lists_;
 	std::vector<bool> vision_filters_visible_attr_;
 
-	boost::ptr_vector<unit_filter> filter_adj_filters_;
+	std::vector<unit_filter> filter_adj_filters_;
 	std::vector<boost::optional<bool> > filter_adj_is_enemy_;
 	std::vector<std::vector<map_location::DIRECTION> > filter_adj_dirs_;
 	std::vector<std::vector<std::pair<int,int> > > filter_adj_counts_;
