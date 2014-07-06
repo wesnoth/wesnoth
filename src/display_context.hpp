@@ -53,6 +53,11 @@ public:
 	 */
 	int village_owner(const map_location & loc) const;
 
+	// Accessor from team.cpp
+
+	/// Check if we are an observer in this game
+	bool is_observer() const;
+
 	// Dtor
 
 	virtual ~display_context() {}

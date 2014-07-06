@@ -237,17 +237,6 @@ bool game_board::change_terrain(const map_location &loc, const std::string &t_st
 	return true;
 }
 
-bool game_board::is_observer() const
-{
-	BOOST_FOREACH(const team &t, teams_) {
-		if (t.is_local())
-			return false;
-	}
-
-	return true;
-}
-
-
 void game_board::write_config(config & cfg) const {
 	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
 		int side_num = t - teams_.begin() + 1;

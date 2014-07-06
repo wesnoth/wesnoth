@@ -20,6 +20,8 @@
 #include "unit.hpp"
 #include "unit_map.hpp"
 
+#include <boost/foreach.hpp>
+
 const unit * display_context::get_visible_unit(const map_location & loc, const team &current_team, bool see_all) const
 {
 	if (!map().on_board(loc)) return NULL;
@@ -80,5 +82,18 @@ int display_context::village_owner(const map_location& loc) const
 			return i;
 	}
 	return -1;
+}
+
+/**
+ * Determine if we are an observer, by checking if every team is not locally controlled
+ */
+bool display_context::is_observer() const
+{
+	BOOST_FOREACH(const team &t, teams()) {
+		if (t.is_local())
+			return false;
+	}
+
+	return true;
 }
 
