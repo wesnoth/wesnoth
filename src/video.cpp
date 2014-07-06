@@ -346,7 +346,8 @@ CVideo::CVideo(FAKE_TYPES type) : mode_changed_(false), bpp_(0), fake_screen_(fa
 void CVideo::initSDL()
 {
 #ifdef SDL_GPU
-	render_target = GPU_Init(1200, 700, GPU_DEFAULT_INIT_FLAGS);
+	//800x600 is a dummy value, the actual resolution is set in setMode
+	render_target = GPU_Init(800, 600, GPU_DEFAULT_INIT_FLAGS);
 
 	if(render_target == NULL) {
 		ERR_DP << "Could not initialize window: " << SDL_GetError() << std::endl;
@@ -477,6 +478,9 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 
 	fullScreen = (flags & FULL_SCREEN) != 0;
 	frameBuffer = SDL_SetVideoMode( x, y, bits_per_pixel, flags );
+#ifdef SDL_GPU
+	GPU_SetWindowResolution(x, y);
+#endif
 
 	if( frameBuffer != NULL ) {
 		image::set_pixel_format(frameBuffer->format);
