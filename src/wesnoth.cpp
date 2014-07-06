@@ -855,13 +855,13 @@ int main(int argc, char** argv)
 		return ENOMEM;
 	} catch(std::exception & e) {
 		// Try to catch unexpected exceptions.
-		std::cerr << "Caught general exception: " << e.what() << std::endl;
+		std::cerr << "Caught general exception:\n" << e.what() << std::endl;
 		return 1;
 	} catch(std::string & e) {
-		std::cerr << "Caught a string thrown as an exception: " << e << std::endl;
+		std::cerr << "Caught a string thrown as an exception:\n" << e << std::endl;
 		return 1;
 	} catch(const char * e) {
-		std::cerr << "Caught a string thrown as an exception: " << e << std::endl;
+		std::cerr << "Caught a string thrown as an exception:\n" << e << std::endl;
 		return 1;
 #if !defined(NO_CATCH_AT_GAME_END)
 	} catch(...) {

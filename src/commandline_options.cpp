@@ -473,9 +473,30 @@ void commandline_options::parse_resolution_ ( const std::string& resolution_stri
 {
 	const std::vector<std::string> tokens = utils::split(resolution_string, 'x');
 	if (tokens.size() != 2)
-		{} // TODO throw a meaningful exception
-	int xres = lexical_cast<int>(tokens[0]);
-	int yres = lexical_cast<int>(tokens[1]);
+	{
+		std::stringstream ss;
+		ss << "when trying to parse the game resolution \"" << resolution_string << "\" as a (int,int) with separator 'x',\ndidn't get exactly two tokens.";
+		throw ss.str();
+	}
+
+	int xres;
+	try {
+		xres = lexical_cast<int>(tokens[0]);
+	} catch (bad_lexical_cast &) {
+		std::stringstream ss;
+		ss << "when trying to parse the game resolution \"" << resolution_string << "\" as a (int,int) with separator 'x',\ncould not parse string \"" << tokens[0] << "\" as an int, for screen resolution x.";
+		throw ss.str();
+	}
+
+	int yres;
+	try {
+		yres = lexical_cast<int>(tokens[1]);
+	} catch (bad_lexical_cast &) {
+		std::stringstream ss;
+		ss << "when trying to parse the game resolution \"" << resolution_string << "\" as a (int,int) with separator 'x',\ncould not parse string \"" << tokens[1] << "\" as an int, for screen resolution y.";
+		throw ss.str();
+	}
+
 	resolution = boost::tuple<int,int>(xres,yres);
 }
 
@@ -489,11 +510,20 @@ std::vector<boost::tuple<unsigned int,std::string> > commandline_options::parse_
 		if (tokens.size()!=2)
 		{
 			std::stringstream ss;
-			ss << "when trying to parse string " << s << " as an (int,string) with separator " << separator << ", didn't get exactly two tokens.";
+			ss << "when trying to parse string \"" << s << "\" as an (int,string) with separator \'" << separator << "\',\ndidn't get exactly two tokens.";
 			throw ss.str();
 		}
-		elem.get<0>() = lexical_cast<unsigned int>(tokens[0]);
-			//TODO catch exception and pack in meaningful something
+
+		unsigned int temp;
+		try {
+			temp = lexical_cast<unsigned int>(tokens[0]);
+		} catch (bad_lexical_cast &) {
+			std::stringstream ss;
+			ss << "when trying to parse string \"" << s << "\" as an (int,string) with separator \'" << separator << "\',\ncould not parse string \"" << tokens[0] << "\" as an int.";
+			throw ss.str();
+		}
+
+		elem.get<0>() = temp;
 		elem.get<1>() = tokens[1];
 		vec.push_back(elem);
 	}
@@ -509,10 +539,20 @@ std::vector<boost::tuple<unsigned int,std::string,std::string> > commandline_opt
 		const std::vector<std::string> tokens = utils::split(s, separator);
 		if (tokens.size()!=3)
 		{
-			 //TODO throw a meaningful exception
+			std::stringstream ss;
+			ss << "when trying to parse string \"" << s << "\" as an (int,string,string) with separator \'" << separator << "\',\ndidn't get exactly three tokens.";
+			throw ss.str();
 		}
-		elem.get<0>() = lexical_cast<unsigned int>(tokens[0]);
-			//TODO catch exception and pack in meaningful something
+
+		unsigned int temp;
+		try {
+			temp = lexical_cast<unsigned int>(tokens[0]);
+		} catch (bad_lexical_cast &) {
+			std::stringstream ss;
+			ss << "when trying to parse string \"" << s << "\" as an (int,string,string) with separator \'" << separator << "\',\ncould not parse string \"" << tokens[0] << "\" as an int.";
+			throw ss.str();
+		}
+		elem.get<0>() = temp;
 		elem.get<1>() = tokens[1];
 		elem.get<2>() = tokens[2];
 		vec.push_back(elem);
