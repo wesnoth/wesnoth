@@ -20,7 +20,9 @@
 #include "global.hpp"
 #include "statistics.hpp"
 #include "log.hpp"
+#include "resources.hpp" // Needed for teams, to get team save_id for a unit
 #include "serialization/binary_or_text.hpp"
+#include "team.hpp" // Needed to get team save_id
 #include "unit.hpp"
 #include "util.hpp"
 
@@ -38,6 +40,12 @@ bool mid_scenario = false;
 
 typedef statistics::stats stats;
 typedef std::map<std::string,stats> team_stats_t;
+
+std::string get_team_save_id(const unit & u)
+{
+	assert(resources::teams);
+	return resources::teams->at(u.side()-1).save_id();
+}
 
 struct scenario_stats
 {
@@ -379,8 +387,8 @@ attack_context::attack_context(const unit& a,
 		const unit& d, int a_cth, int d_cth) :
 	attacker_type(a.type_id()),
 	defender_type(d.type_id()),
-	attacker_side(a.side_id()),
-	defender_side(d.side_id()),
+	attacker_side(get_team_save_id(a)),
+	defender_side(get_team_save_id(d)),
 	chance_to_hit_defender(a_cth),
 	chance_to_hit_attacker(d_cth),
 	attacker_res(),
@@ -473,35 +481,35 @@ void attack_context::defend_result(hit_result res, int damage, int drain)
 
 void recruit_unit(const unit& u)
 {
-	stats& s = get_stats(u.side_id());
+	stats& s = get_stats(get_team_save_id(u));
 	s.recruits[u.type().base_id()]++;
 	s.recruit_cost += u.cost();
 }
 
 void recall_unit(const unit& u)
 {
-	stats& s = get_stats(u.side_id());
+	stats& s = get_stats(get_team_save_id(u));
 	s.recalls[u.type_id()]++;
 	s.recall_cost += u.cost();
 }
 
 void un_recall_unit(const unit& u)
 {
-	stats& s = get_stats(u.side_id());
+	stats& s = get_stats(get_team_save_id(u));
 	s.recalls[u.type_id()]--;
 	s.recall_cost -= u.cost();
 }
 
 void un_recruit_unit(const unit& u)
 {
-	stats& s = get_stats(u.side_id());
+	stats& s = get_stats(get_team_save_id(u));
 	s.recruits[u.type().base_id()]--;
 	s.recruit_cost -= u.cost();
 }
 
 int un_recall_unit_cost(const unit& u)  // this really belongs elsewhere, perhaps in undo.cpp
 {					// but I'm too lazy to do it at the moment
-	stats& s = get_stats(u.side_id());
+	stats& s = get_stats(get_team_save_id(u));
 	s.recalls[u.type_id()]--;
 	return u.recall_cost();
 }
@@ -509,7 +517,7 @@ int un_recall_unit_cost(const unit& u)  // this really belongs elsewhere, perhap
 
 void advance_unit(const unit& u)
 {
-	stats& s = get_stats(u.side_id());
+	stats& s = get_stats(get_team_save_id(u));
 	s.advanced_to[u.type_id()]++;
 }
 

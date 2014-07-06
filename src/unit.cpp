@@ -1032,8 +1032,6 @@ void unit::set_advances_to(const std::vector<std::string>& advances_to)
 	advances_to_ = advances_to;
 }
 
-std::string unit::side_id() const {return teams_manager::get_teams()[side()-1].save_id(); }
-
 /**
  * Set the unit's remaining movement to @a moves.
  * If @a unit_action is set to true, then additionally the "end turn" and

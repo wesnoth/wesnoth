@@ -183,7 +183,6 @@ public:
 	bool unrenamable() const { return unrenamable_; }
 	void set_unrenamable(bool unrenamable) { unrenamable_ = unrenamable; }
 	int side() const { return side_; }
-	std::string side_id() const;
 	const std::string& team_color() const { return flag_rgb_; }
 	unit_race::GENDER gender() const { return gender_; }
 	void set_side(unsigned int new_side) { side_ = new_side; }
