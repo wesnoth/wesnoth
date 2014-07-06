@@ -9,6 +9,7 @@ matrix:
   exclude:
     - compiler: gcc
       env: ALTERNATE_CONFIGURATION=true
+
 before_install:
     - export TARGETS="wesnoth wesnothd campaignd test"
     - export WML_TESTS=true
@@ -25,6 +26,7 @@ before_install:
     - if [ "$CXX" = "g++" ]; then export PLAY_TEST=false; fi
     - if [ "$CXX" = "g++" ]; then export CHECK_UTF8=false; fi
     - if [ "$CXX" = "g++" ]; then time sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y; fi
+
 install:
     - time sudo apt-get update -qq
     - time sudo apt-get install -qq libboost-iostreams-dev libboost-program-options-dev libboost-regex-dev libboost-system-dev libboost-test-dev libcairo2-dev libfribidi-dev libpango1.0-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -34,6 +36,7 @@ install:
 # gdb is used to generate a backtrace if a wml test crashes, this is -g option to run_wml_tests. it is also needed when the test executable crashes
     - if [ "$CHECK_UTF8" = true ]; then time sudo apt-get install -qq moreutils; fi
 # more utils is needed for check_utf8 script
+
 script: 
     - if [ "$CHECK_UTF8" = true ]; then time ./utils/travis/check_utf8.sh; fi
     - time if grep -qorHbm1 "^`echo -ne '\xef\xbb\xbf'`" po/ src/ data/ ; then echo "Error, Found a UTF8 BOM:\n"; grep -orHbm1 "^`echo -ne '\xef\xbb\xbf'`" po/ src/ data/ ; ./utils/travis/exit_wrapper.sh 1; fi
@@ -45,6 +48,7 @@ script:
     - if [ "$WML_TESTS" = true ]; then time ./run_wml_tests -g -v -t "$WML_TEST_TIME"; fi
     - time if [ "$PLAY_TEST" = true ]; then ./wesnoth -m --controller 1:ai --controller 2:ai --nogui; export PLAY_TEST_ERROR_CODE=$?; ./utils/travis/exit_wrapper.sh $PLAY_TEST_ERROR_CODE; fi
     - time if [ "$PLAY_TEST" = true ]; then ./wesnoth -m --controller 1:ai --controller 2:ai; export PLAY_TEST_GUI_ERROR_CODE=$?; ./utils/travis/exit_wrapper.sh $PLAY_TEST_GUI_ERROR_CODE; fi
+
 after_failure:
     - if [ "$TEST_ERROR_CODE" -ge 128 -a "$WML_TESTS" = false ]; then time sudo apt-get install -qq gdb; fi
 # Need to install that if we don't already have it
