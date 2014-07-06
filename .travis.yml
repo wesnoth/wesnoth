@@ -14,6 +14,7 @@ before_install:
     - export WML_TESTS=true
     - export CPP_TESTS=true
     - export CHECK_UTF8=true
+    - export PLAY_TEST=true
     - export STRICT_COMPILATION=true
     - export EXTRA_FLAGS_RELEASE="-O0"
     - export WML_TEST_TIME=40
@@ -21,6 +22,7 @@ before_install:
     - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export EXTRA_FLAGS_RELEASE=""; fi
     - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export WML_TEST_TIME=20; fi
     - if [ "$CXX" = "g++" ]; then export WML_TESTS=false; fi
+    - if [ "$CXX" = "g++" ]; then export PLAY_TEST=false; fi
     - if [ "$CXX" = "g++" ]; then export CHECK_UTF8=false; fi
     - if [ "$CXX" = "g++" ]; then time sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y; fi
 install:
@@ -41,12 +43,16 @@ script:
     - "sh -e /etc/init.d/xvfb start"
     - time if [[ "$CPP_TESTS" = true ]]; then ./test; export TEST_ERROR_CODE=$?; ./utils/travis/exit_wrapper.sh $TEST_ERROR_CODE; fi
     - if [[ "$WML_TESTS" = true ]]; then time ./run_wml_tests -g -v -t "$WML_TEST_TIME"; fi
+    - if [ "$PLAY_TEST" = true ]; then time ./wesnoth -m --controller 1:ai --controller 2:ai --nogui; export PLAY_TEST_ERROR_CODE=$?; ./utils/travis/exit_wrapper.sh $PLAY_TEST_ERROR_CODE; fi
 after_failure:
     - if [ "$TEST_ERROR_CODE" -ge 128 -a "$WML_TESTS" = false ]; then time sudo apt-get install -qq gdb; fi
 # Need to install that if we don't already have it
     - if [ -f "errors.log" ]; then echo -e "\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n"; cat errors.log; fi
     - if [ "$TEST_ERROR_CODE" -ge 128 ]; then echo -e "\n***\n*\n* Encountered a segfault in the c++ unit test executable, attempting to get a backtrace in the remaining time...\n*\n***\n"; fi
     - if [ "$TEST_ERROR_CODE" -ge 128 ]; then time gdb -q -batch -ex start -ex continue -ex bt -ex quit --args ./test; fi
+    - if [ "$PLAY_TEST_ERROR_CODE" -ge 128 ]; then echo -e "\n***\n*\n* Encountered a segfault when running an ai test, attempting to get a backtrace in the remaining time...\n*\n***\n"; fi
+    - if [ "$PLAY_TEST_ERROR_CODE" -ge 128 ]; then time gdb -q -batch -ex start -ex continue -ex bt -ex quit --args ./wesnoth -m --controller 1:ai --controller 2:ai --nogui; fi
+
 notifications:
     email: false
     irc:
