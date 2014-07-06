@@ -25,6 +25,7 @@
 
 #include <boost/shared_ptr.hpp>
 
+class game_data;
 class gamemap;
 #if defined(_MSC_VER) && _MSC_VER <= 1600 
 /*
@@ -160,7 +161,7 @@ public:
 
 	void write(config& cfg) const;
 
-	bool get_village(const map_location&, const int owner_side, const bool fire_event = true);
+	bool get_village(const map_location&, const int owner_side, game_data * fire_event); //!< Acquires a village from owner_side. Pointer fire_event should be the game_data for the game if it is desired to fire an event -- a "capture" event with owner_side variable scoped in will be fired. For no event, pass it NULL. Default is the resources::gamedata pointer
 	void lose_village(const map_location&);
 	void clear_villages() { villages_.clear(); }
 	const std::set<map_location>& villages() const { return villages_; }

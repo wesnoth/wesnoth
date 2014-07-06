@@ -175,7 +175,7 @@ bool get_village(const map_location& loc, int side, int *action_timebonus)
 		if (resources::screen != NULL) {
 			resources::screen->invalidate(loc);
 		}
-		return t->get_village(loc, old_owner_side);
+		return t->get_village(loc, old_owner_side, resources::gamedata);
 	}
 
 	return false;

@@ -351,17 +351,17 @@ void team::write(config& cfg) const
 	cfg["action_bonus_count"] = action_bonus_count_;
 }
 
-bool team::get_village(const map_location& loc, const int owner_side, const bool fire_event)
+bool team::get_village(const map_location& loc, const int owner_side, game_data * gamedata)
 {
 	villages_.insert(loc);
 	bool gamestate_changed = false;
-	if(fire_event) {
-		config::attribute_value& var = resources::gamedata->get_variable("owner_side");
+	if(gamedata) {
+		config::attribute_value& var = gamedata->get_variable("owner_side");
 		const config::attribute_value old_value = var;
 		var = owner_side;
 		gamestate_changed = game_events::fire("capture",loc);
 		if(old_value.blank())
-			resources::gamedata->clear_variable("owner_side");
+			gamedata->clear_variable("owner_side");
 		else
 			var = old_value;
 	}

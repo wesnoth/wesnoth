@@ -58,7 +58,7 @@ void editor_action_village::perform_without_undo(map_context& mc) const
 	}
 
 	//TODO 0 is a bad argument
-	teams[side_number_].get_village(loc_, 0, false);
+	teams[side_number_].get_village(loc_, 0, NULL);
 }
 
 
