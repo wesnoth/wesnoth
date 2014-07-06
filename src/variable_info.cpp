@@ -20,6 +20,8 @@
  */
 #include "variable_info.hpp"
 #include "game_config.hpp"
+#include "config_assign.hpp"
+
 using namespace variable_info_3_detail;
 
 /// general helpers
@@ -293,24 +295,55 @@ namespace
 /// range_based operations
 namespace {
 	
+
 	template<const variable_info_3_type vit, typename THandler>
-	class as_range_visitor_base
+	class as_range_visitor_base2
 		: public variable_info_visitor_const<vit, typename THandler::result_type>
 	{
 	public:
-		as_range_visitor_base(const THandler& handler) : handler_(handler) {}
-		typename as_range_visitor_base::result_type from_named(typename as_range_visitor_base::param_type state) const
+		as_range_visitor_base2(const THandler& handler) : handler_(handler) {}
+		typename as_range_visitor_base2::result_type from_named(typename as_range_visitor_base2::param_type state) const
 		{
 			return handler_(*state.child_, state.key_, 0, state.child_->child_count(state.key_));
 		}
-		typename as_range_visitor_base::result_type from_indexed(typename as_range_visitor_base::param_type state) const 
+		typename as_range_visitor_base2::result_type from_indexed(typename as_range_visitor_base2::param_type state) const 
 		{
 			//Ensure we have a config at the given explicit position.
 			get_child_at<vit>(*state.child_, state.key_, state.index_);
-			return handler_(*state.child_, state.key_, state.index_, state.index_ + 1);
+			return this->handler_(*state.child_, state.key_, state.index_, state.index_ + 1);
 		}
-	private:
+	protected:
 		const THandler& handler_;
+	};
+
+	template<const variable_info_3_type vit, typename THandler>
+	class as_range_visitor_base
+		: public as_range_visitor_base2<vit, THandler>
+	{
+	public:
+		as_range_visitor_base(const THandler& handler) : as_range_visitor_base2<vit, THandler>(handler) {}
+		//inherit all from as_range_visitor_base2
+	};
+	
+	const config non_empty_const_cfg = config_of("_", config());
+
+	//we cannot partly specialise methods so we are using inheritance.
+	template<typename THandler>
+	class as_range_visitor_base<vit_const, THandler>
+		: public as_range_visitor_base2<vit_const, THandler>
+	{
+	public:
+		as_range_visitor_base(const THandler& handler) : as_range_visitor_base2<vit_const, THandler>(handler) {}
+		
+		typename as_range_visitor_base::result_type from_indexed(typename as_range_visitor_base::param_type state) const 
+		{
+			//calling get_child_at<vit>(*state.child_, state.key_, state.index_) like above would have no effect
+			if(int(state.child_->child_count(state.key_)) < state.index_)
+			{
+				return this->handler_(non_empty_const_cfg, "_", 0, 1);
+			}
+			return this->handler_(*state.child_, state.key_, state.index_, state.index_ + 1);
+		}
 	};
 
 	template<const variable_info_3_type vit>
