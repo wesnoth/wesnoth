@@ -33,12 +33,10 @@ install:
     - if [ "$CXX" = "g++" ]; then time sudo apt-get install g++-4.8; fi
     - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8"; fi
     - if [ "$CHECK_UTF8" = true ]; then time sudo apt-get install -qq moreutils; fi
-# more utils is needed for check_utf8 script
 
 script: 
     - if [ "$CHECK_UTF8" = true ]; then time ./utils/travis/check_utf8.sh; fi
     - time ./utils/travis/utf8_bom_dog.sh
-# UTF8 checks are the previous two lines. the second one checks po src data for UTF8 bom, this takes a few seconds.
     - scons cxxtool=$CXX --debug=time build=release extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=$STRICT_COMPILATION $TARGETS
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
