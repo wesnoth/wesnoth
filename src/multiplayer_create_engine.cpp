@@ -371,8 +371,10 @@ create_engine::create_engine(game_display& disp, saved_game& state) :
 	game_classification::CAMPAIGN_TYPE type = state_.classification().campaign_type;
 	state_ = saved_game();
 	state_.classification().campaign_type = type;
-	resources::config_manager->
-		load_game_config_for_game(state_.classification());
+
+	if(type == game_classification::MULTIPLAYER)
+		resources::config_manager->
+			load_game_config_for_game(state_.classification());
 
 	//TODO the editor dir is already configurable, is the preferences value
 	get_files_in_dir(get_user_data_dir() + "/editor/maps", &user_map_names_,
