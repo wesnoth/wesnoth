@@ -234,6 +234,7 @@ Version 1.13.0-dev:
    * Made it so <exe location>/../ (non-Windows) or <current working dir>/../
      (Windows) are also considered possible data directories if they contain a
      data/_main.cfg file, intended to help with cmake builds.
+   * Fix bug #21723: team-specific items displayed to wrong players / at wrong times
 
 Version 1.11.11:
  * Add-ons server:
