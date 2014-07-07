@@ -37,7 +37,7 @@ install:
 
 script: 
     - if [ "$CHECK_UTF8" = true ]; then time ./utils/travis/check_utf8.sh; fi
-    - time if grep -qorHbm1 "^`echo -ne '\xef\xbb\xbf'`" po/ src/ data/ ; then echo "Error, Found a UTF8 BOM:\n"; grep -orHbm1 "^`echo -ne '\xef\xbb\xbf'`" po/ src/ data/ ; ./utils/travis/exit_wrapper.sh 1; fi
+    - time ./utils/travis/utf8_bom_dog.sh
 # UTF8 checks are the previous two lines. the second one checks po src data for UTF8 bom, this takes a few seconds.
     - scons cxxtool=$CXX --debug=time build=release extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=$STRICT_COMPILATION $TARGETS
     - "export DISPLAY=:99.0"
