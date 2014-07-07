@@ -2528,7 +2528,7 @@ void display::draw_hex(const map_location& loc) {
 
 		for( ; overlays.first != overlays.second; ++overlays.first) {
 			if ((overlays.first->second.team_name == "" ||
-					overlays.first->second.team_name.find(dc_->teams()[playing_team()].team_name()) != std::string::npos)
+					overlays.first->second.team_name.find(dc_->teams()[viewing_team()].team_name()) != std::string::npos)
 					&& !(fogged(loc) && !overlays.first->second.visible_in_fog))
 			{
 				const surface surf = use_local_light
