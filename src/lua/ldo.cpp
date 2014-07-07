@@ -69,7 +69,7 @@
 			/*this exception is used internaly by lua exceptions*/ \
 			throw; \
 		} catch(...) { \
-			assert(false && "Lua is swallowing an un-named exception... this indicates a programmer error, please derive all exceptions from std::exception!"); \
+			assert(false && "Lua is swallowing an un-named exception... this indicates a programmer error, please derive all exceptions from either std::exception, or tlua_jailbreak_exception (and not with multiple inheritance pathways to either or this exception handler will not work!)"); \
 			throw; \
 		} \
 	} catch(...) { \
