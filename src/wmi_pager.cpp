@@ -19,10 +19,13 @@
 #include "config.hpp"
 #include "game_events/menu_item.hpp"
 #include "game_events/wmi_container.hpp"
+#include "game_preferences.hpp"
 #include "gettext.hpp"
 
+#include <algorithm> //std::transform
 #include <boost/make_shared.hpp>
 #include <boost/shared_ptr.hpp>
+#include <cassert>
 #include <iterator> //std::advance
 #include <string>
 #include <vector>
@@ -45,7 +48,7 @@ static void add_next_page_item( std::vector<boost::shared_ptr<const game_events:
 static void add_prev_page_item( std::vector<boost::shared_ptr<const game_events::wml_menu_item> > & items,
                std::vector<std::string> & descriptions)
 {
-	std::string desc = _("Earlier Items");
+	std::string desc = _("Previous Items");
 	config temp;
 	temp["description"] = desc;
 	items.push_back(boost::make_shared<const game_events::wml_menu_item>(prev_id, temp));
@@ -64,20 +67,42 @@ bool wmi_pager::capture ( const game_events::wml_menu_item & item )
 	return false;
 }
 
-typedef game_events::wmi_container::const_iterator wmi_it;
+typedef boost::shared_ptr<const game_events::wml_menu_item> wmi_ptr;
+typedef std::pair<wmi_ptr, std::string> wmi_pair;
+typedef std::vector<wmi_pair>::iterator wmi_it;
+
+static wmi_ptr select_first(const wmi_pair & p)
+{
+	return p.first;
+}
+
+static std::string select_second(const wmi_pair & p)
+{
+	return p.second;
+}
 
 void wmi_pager::get_items(const map_location& hex,
-               std::vector<boost::shared_ptr<const game_events::wml_menu_item> > & items,
+               std::vector<wmi_ptr > & items,
                std::vector<std::string> & descriptions)
 {
 	if (!foo_) {
 		return;
 	}
 
-	assert(page_size_ > 2u); //if we dont have at least 3 items, we can't display anything...
+	const int page_size_int = preferences::max_wml_menu_items();
 
-	if (foo_->size() <= page_size_) { //In this case the first page is sufficient and we don't have to do anything.
-		foo_->get_items(hex, items, descriptions);
+	assert(page_size_int >= 0 && "max wml menu items cannot be negative, this indicates preferences corruption");
+
+	const size_t page_size = page_size_int;
+
+	assert(page_size > 2u && "if we dont have at least 3 items, we can't display anything on a middle page...");
+
+	std::vector<wmi_pair > bar = foo_->get_items(hex);
+
+	if (bar.size() <= page_size) { //In this case the first page is sufficient and we don't have to do anything.
+		std::transform(bar.begin(), bar.end(), back_inserter(items), select_first);
+		std::transform(bar.begin(), bar.end(), back_inserter(descriptions), select_second);
+
 		page_num_ = 0; //reset page num in case there are more items later.
 		return;
 	}
@@ -87,44 +112,53 @@ void wmi_pager::get_items(const map_location& hex,
 		page_num_ = 0;
 	}
 
-	if (page_num_ == 0) { //we are on the first page, so show page_size_-1 items and a next button
-		wmi_it end_first_page = foo_->begin();
-		std::advance(end_first_page, page_size_ - 1);
+	if (page_num_ == 0) { //we are on the first page, so show page_size-1 items and a next button
+		wmi_it end_first_page = bar.begin();
+		std::advance(end_first_page, page_size - 1);
 	
-		foo_->get_items(hex, items, descriptions, foo_->begin(), end_first_page);
+		std::transform(bar.begin(), end_first_page, back_inserter(items), select_first);
+		std::transform(bar.begin(), end_first_page, back_inserter(descriptions), select_second);
+
 		add_next_page_item(items, descriptions);
 		return;
 	}
 
 	add_prev_page_item(items, descriptions); //this will be necessary since we aren't on the first page
 
-	// first page has page_size_ - 1.
-	// last page has page_size_ - 1.
-	// all other pages have page_size_ - 2;
+	// first page has page_size - 1.
+	// last page has page_size - 1.
+	// all other pages have page_size - 2;
 
-	size_t first_displayed_index = (page_size_ - 2) * page_num_ + 1; //this is the 0-based index of the first item displayed on this page.
+	size_t first_displayed_index = (page_size - 2) * page_num_ + 1; //this is the 0-based index of the first item displayed on this page.
 									//alternatively, the number of items displayed on earlier pages
 
-	while (first_displayed_index >= foo_->size())
+	while (first_displayed_index >= bar.size())
 	{
 		page_num_--; //The list must have gotten shorter and our page counter is now off the end, so decrement
-		first_displayed_index = (page_size_ - 2) * page_num_ + 1; //recalculate
+		first_displayed_index = (page_size - 2) * page_num_ + 1; //recalculate
 	}
-	// ^ This loop terminates with first_displayed_index > 0, because foo_->size() > page_size_ or else we exited earlier, and we only decrease by (page_size_-2) each time.
+	// ^ This loop terminates with first_displayed_index > 0, because bar.size() > page_size or else we exited earlier, and we only decrease by (page_size-2) each time.
 
-	wmi_it start_range = foo_->begin();
-	std::advance(start_range, first_displayed_index); // <-- get an iterator to the start of our range. begin() + n doesn't work because map is not random access
-	//^  = foo_->begin() + first_displayed_index
-
-	if (first_displayed_index + page_size_-1 >= foo_->size()) //if this can be the last page, then we won't put next page at the bottom.
+	if (first_displayed_index + page_size-1 >= bar.size()) //if this can be the last page, then we won't put next page at the bottom.
 	{
-		foo_->get_items(hex, items, descriptions, start_range, foo_->end()); // display all of the remaining items
+		//The last page we treat differently -- we always want to display (page_size) entries, to prevent resizing the context menu, so count back from end.
+		wmi_it end_range = bar.end(); // It doesn't really matter if we display some entries that appeared on the previous page by doing this.
+		wmi_it start_range = end_range;
+		std::advance(start_range, -(page_size-1));
+
+		std::transform(start_range, end_range, back_inserter(items), select_first);
+		std::transform(start_range, end_range, back_inserter(descriptions), select_second);
 		return;
 	} else { //we are in a middle page
-		wmi_it end_range = start_range;
-		std::advance(end_range, page_size_-2);
+		wmi_it start_range = bar.begin();
+		std::advance(start_range, first_displayed_index); // <-- get an iterator to the start of our range. begin() + n doesn't work because map is not random access
 
-		foo_->get_items(hex, items, descriptions, start_range, end_range);
+		wmi_it end_range = start_range;
+		std::advance(end_range, page_size-2);
+
+		std::transform(start_range, end_range, back_inserter(items), select_first);
+		std::transform(start_range, end_range, back_inserter(descriptions), select_second);
+
 		add_next_page_item(items, descriptions);
 		return;
 	}

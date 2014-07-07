@@ -233,6 +233,9 @@ class acquaintance;
 	int chat_message_aging();
 	void set_chat_message_aging(const int aging);
 
+	int max_wml_menu_items();
+	void set_max_wml_menu_items(int max);
+
 	bool show_all_units_in_help();
 	void set_show_all_units_in_help(bool value);
 

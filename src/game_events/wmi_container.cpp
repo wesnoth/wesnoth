@@ -105,13 +105,13 @@ bool wmi_container::fire_item(const std::string & id, const map_location & hex) 
  * @param[out] items        Pointers to applicable menu items will be pushed onto @a items.
  * @param[out] descriptions Menu item text will be pushed onto @descriptions (in the same order as @a items).
  */
-void wmi_container::get_items(const map_location& hex,
-                              std::vector<boost::shared_ptr<const wml_menu_item> > & items,
-                              std::vector<std::string> & descriptions, const_iterator start, const_iterator finish) const
+std::vector<std::pair<boost::shared_ptr<const wml_menu_item>, std::string> > wmi_container::get_items(const map_location& hex,
+                              const_iterator start, const_iterator finish) const
 {
+	std::vector<std::pair<boost::shared_ptr<const wml_menu_item>, std::string> > ret;
 	if ( empty() )
 		// Nothing to do (skip setting game variables).
-		return;
+		return ret;
 
 	// Prepare for can show().
 	resources::gamedata->get_variable("x1") = hex.x + 1;
@@ -125,10 +125,10 @@ void wmi_container::get_items(const map_location& hex,
 		if ( item->use_wml_menu() && item->can_show(hex) )
 		{
 			// Include this item.
-			items.push_back(item);
-			descriptions.push_back(item->menu_text());
+			ret.push_back(std::make_pair(item, item->menu_text()));
 		}
 	}
+	return ret;
 }
 
 /**
