@@ -59,13 +59,14 @@ Version 1.11.15+dev:
      parser/preprocessor diagnostics format introduced in version 1.11.10.
  * Miscellaneous and bug fixes:
    * Backported Elvish_Hunter's wmltools GUI from master
-   * Changed the fungus overlay terrain to repect the game values of the mixed partner.
-     Fixes the bug #21971
-   * Default to classic minimap unit/village color coding. (colored by side)
-   * Default to classic minimap terrain representation. (satellite view)
-   * Default hotkey binding for the terrain description help action. (ctrl+t)
+   * Changed the fungus overlay terrain to prefer the movement costs of the
+     base terrain (bug #21971).
+   * Default to classic minimap unit/village color coding (colored by side).
+   * Default to classic minimap terrain representation (satellite view).
+   * Added a default hotkey binding for the terrain description help action
+     (Ctrl+t).
    * Deleted obsolete UI themes.
-   * Disabled the orbs for enemy units.
+   * Disabled orbs for enemy units.
    * Display the tooltip for actions browsed in the hotkey preferences dialog.
    * Enabled action icons in the hotkey preferences dialog.
    * Fix bug #21717: "F5->reload wml tree" doesn't work in editor.

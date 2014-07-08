@@ -9,9 +9,17 @@ Version 1.11.15+dev:
      least one add-on that may be upgraded.
 
  * Campaigns:
+   * Descent into Darkness:
+     * Fixed various issues with player and enemy gold and income in
+       'Descent into Darkness'.
+   * Legend of Wesmere
+     * Disabled the non finished chapters 4 and 5 in the mp port.
+     * Fix scenario 3 which was broken after a map change.
    * Northern Rebirth:
      * Fixed Sister Thera and Father Morvin respawning into the recall list if
        the other is on the north or west map edges.
+   * Son of the Black Eye:
+     * Minor balance tweaks to scenarios 15, 17 and 18.
 
  * Language and i18n:
    * Updated translations: German, Vietnamese.
@@ -29,7 +37,17 @@ Version 1.11.15+dev:
      <http://r.wesnoth.org/p571380>.
 
  * Miscellaneous and bug fixes:
-   * Partial moves now able to be continued properly in whiteboard (#22231)
+   * Partial moves now able to be continued properly in whiteboard (bug
+     #22231).
+   * Changed the fungus overlay terrain to prefer the movement costs of the
+     base terrain (bug #21971).
+   * Default to classic minimap unit/village color coding (colored by side).
+   * Default to classic minimap terrain representation (satellite view).
+   * Added a default hotkey binding for the terrain description help action
+     (Ctrl+t).
+   * Deleted obsolete UI themes.
+   * Disabled orbs for enemy units.
+
 
 Version 1.11.15:
  * Language and i18n:
