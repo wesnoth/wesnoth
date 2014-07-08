@@ -1,10 +1,13 @@
 language: cpp
+
 compiler:
     - gcc
     - clang
+
 env:
-    - ALTERNATE_CONFIGURATION=true
     - ALTERNATE_CONFIGURATION=false
+    - ALTERNATE_CONFIGURATION=true
+
 matrix:
   exclude:
     - compiler: gcc
