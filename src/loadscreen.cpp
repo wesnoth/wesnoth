@@ -124,7 +124,6 @@ void loadscreen::draw_screen(const std::string &text)
 	int	lightning_thickness = 2;
 
 #ifdef SDL_GPU
-	surface gdis = screen_.getSurface();
 	SDL_Rect area;
 
 	// Pump events and make sure to redraw the logo if there's a chance that it's been obscured
