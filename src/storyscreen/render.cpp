@@ -357,7 +357,7 @@ bool part_ui::render_floating_images()
 
 		if(!ri.image.null()) {
 			ri.image.draw(*target, ri.rect.x, ri.rect.y);
-			GPU_Flip(target);
+			video_.flip();
 		}
 
 		if (!skip_)
@@ -644,7 +644,7 @@ void part_ui::render_story_box()
 
 	const std::string& storytxt = p_.text();
 	if(storytxt.empty()) {
-		GPU_Flip(target);
+		video_.flip();
 		wait_for_input();
 		return;
 	}
@@ -735,7 +735,7 @@ void part_ui::render_story_box()
 			dstrect.y = fix_text_y + scan.y + storybox_padding;
 			txttxt.set_clip(scan);
 			txttxt.draw(*target, dstrect.x, dstrect.y);
-			GPU_Flip(target);
+			video_.flip();
 			++scan.y;
 		}
 		else skip_ = true;

@@ -510,7 +510,10 @@ void CVideo::flip()
 {
 	if(fake_screen_)
 		return;
-
+#ifdef SDL_GPU
+	assert(render_target);
+	GPU_Flip(render_target);
+#else
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 	if(update_all) {
 		::SDL_Flip(frameBuffer);
@@ -525,6 +528,7 @@ void CVideo::flip()
 #else
 	assert(window);
 	window->render();
+#endif
 #endif
 }
 

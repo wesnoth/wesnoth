@@ -234,7 +234,7 @@ void loadscreen::draw_screen(const std::string &text)
 		GPU_FreeImage(img);
 	}
 
-	GPU_Flip(get_render_target());
+	screen_.flip();
 #else
 	surface gdis = screen_.getSurface();
 	SDL_Rect area;
