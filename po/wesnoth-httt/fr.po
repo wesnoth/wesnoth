@@ -8,15 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
-"PO-Revision-Date: 2013-03-26 16:22+0100\n"
-"Last-Translator: Pyrophorus <l.sebilleauATfree.fr>\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
+"PO-Revision-Date: 2014-07-06 14:49+0100\n"
+"Last-Translator: Émile Enguehard <zerbugug@gmail.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:11
@@ -4976,6 +4977,8 @@ msgstr "Récupérer le Sceptre de Feu avec Konrad ou Li'sar"
 msgid ""
 "If Delfador rests, he can concentrate on the location of the Sceptre of Fire."
 msgstr ""
+"Si Delfador se repose, il peut se concentrer sur la localisation du Sceptre "
+"de Feu."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:164
@@ -5056,11 +5059,13 @@ msgid ""
 "I think... I think if I were to concentrate a bit I could tell you where it "
 "is."
 msgstr ""
+"Je pense... Je pense que je pourrais vous dire où il se trouve si je me "
+"concentre un peu."
 
 #. [floating_text]
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:275
 msgid "Concentrating"
-msgstr ""
+msgstr "Se concentre"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:299
@@ -5068,46 +5073,48 @@ msgid ""
 "I sense we are quite near the Sceptre; in fact, we should be able to see it "
 "right about now..."
 msgstr ""
+"Je sens que le Sceptre est tout proche ; nous devrions même pouvoir le voir "
+"en regardant bien..."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:362
 msgid "I sense the path to the sceptre is to the east of me."
-msgstr ""
+msgstr "Je sens que le sceptre se trouve à l'est de notre position."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:363
 msgid "I sense the path to the sceptre is to the south-east of me."
-msgstr ""
+msgstr "Je sens que le sceptre se trouve au sud-est de notre position."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:364
 msgid "I sense the path to the sceptre is to the south of me."
-msgstr ""
+msgstr "Je sens que le sceptre se trouve au sud de notre position."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:365
 msgid "I sense the path to the sceptre is to the south-west of me."
-msgstr ""
+msgstr "Je sens que le sceptre se trouve au sud-ouest de notre position."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:366
 msgid "I sense the path to the sceptre is to the west of me."
-msgstr ""
+msgstr "Je sens que le sceptre se trouve à l'ouest de notre position."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:367
 msgid "I sense the path to the sceptre is to the north-west of me."
-msgstr ""
+msgstr "Je sens que le sceptre se trouve au nord-ouest de notre position."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:368
 msgid "I sense the path to the sceptre is to the north of me."
-msgstr ""
+msgstr "Je sens que le sceptre se trouve au nord de notre position."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:369
 msgid "I sense the path to the sceptre is to the north-east of me."
-msgstr ""
+msgstr "Je sens que le sceptre se trouve au nord-est de notre position."
 
 #. [scenario]: id=18_A_Choice_Must_Be_Made
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:4
@@ -8524,13 +8531,6 @@ msgstr "Princesse"
 #. [variation]: id=Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:33
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:93
-#, fuzzy
-#| msgid ""
-#| "A noble by birth, the Princess has learnt swordplay with the greatest "
-#| "generals and battle tactics with the greatest sages, making her both a "
-#| "great combatant and leader. The units of lower level around the Princess "
-#| "will fight better due to her presence. The Princess is also nimble and "
-#| "dextrous, having skills like that of a thief."
 msgid ""
 "A noble by birth, the Princess has learnt swordplay with the greatest "
 "generals and battle tactics with the greatest sages, making her both a great "
@@ -8540,9 +8540,7 @@ msgstr ""
 "De noble lignée, la princesse a appris le maniement de l'épée avec les plus "
 "grands généraux et la stratégie militaire avec les plus grands sages, "
 "faisant d'elle un grand combattant et un chef naturel. En sa présence, "
-"toutes les unités de niveau inférieur l'entourant combattront mieux. La "
-"princesse est également agile puisqu'elle a la dextérité et le talent des "
-"voleurs."
+"toutes les unités de niveau inférieur l'entourant combattront mieux."
 
 #. [unit_type]: id=Sea Orc, race=orc
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:4
@@ -8582,7 +8580,7 @@ msgstr "griffes"
 #. [dummy]: id=initiative
 #: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:9
 msgid "initiative"
-msgstr ""
+msgstr "initiative"
 
 #. [dummy]: id=initiative
 #: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:10
@@ -8590,12 +8588,16 @@ msgid ""
 "All adjacent friendly units will strike first in melee combat, even when "
 "defending."
 msgstr ""
+"Les unités alliées adjacentes frapperont en premier au corps à corps, même "
+"en défense."
 
 #: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:15
 msgid ""
 "This unit's grasp of melee tactics allows adjacent allies to strike the "
 "first blow even when defending."
 msgstr ""
+"Cette unité maîtrise les tactiques du corps à corps, ce qui permet aux "
+"alliés adjacents de donner le premier coup même en défense."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/utils/deaths.cfg:9

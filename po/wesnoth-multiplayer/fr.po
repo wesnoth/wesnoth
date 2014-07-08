@@ -11,16 +11,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Multiplayer-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-01-04 20:07+0100\n"
-"PO-Revision-Date: 2013-01-12 08:41+0100\n"
-"Last-Translator: Guigou Guillaume <guillaume.guigou@orange.fr>\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
+"PO-Revision-Date: 2014-04-14 12:29+0100\n"
+"Last-Translator: Émile Enguehard <zerbugug@gmail.com>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.5.5\n"
 "X-Poedit-Bookmarks: -1,901,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. [generic_multiplayer]: id=user_map
@@ -31,7 +31,7 @@ msgstr "Carte utilisateur"
 #. [multiplayer_side]: id=Custom
 #: data/multiplayer/eras.cfg:5
 msgid "Custom"
-msgstr ""
+msgstr "Personnaliser"
 
 #. [multiplayer_side]: id=Random
 #: data/multiplayer/eras.cfg:13
@@ -73,6 +73,8 @@ msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
 msgstr ""
+"L'ère standard pour les jeux multijoueurs. Contient six factions plutôt bien "
+"équilibrées."
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:197
@@ -86,11 +88,14 @@ msgid ""
 "units available for recruit. Consists of six factions. Not considered "
 "balanced."
 msgstr ""
+"Une ère avec des unités plus avancées : les chefs sont au niveau trois et on "
+"peut recruter des niveaux deux. Contient six factions, pas nécessairement "
+"équilibrées."
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:205
 msgid "Default + Khalifate"
-msgstr ""
+msgstr "Par défaut + khâlifat"
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:206
@@ -102,13 +107,18 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"Une ère avec une faction supplémentaire en plus des six de l'ère par défaut. "
+"Les unités du Khâlifat n'utilisent pas la magie, et fondent leurs stratégies "
+"sur la maîtrise du terrain et des attaques très organisées à l'aube ou au "
+"crépuscule.\n"
+"\n"
+"Cette ère est encore en développement, n'hésitez pas à signaler les "
+"problèmes que vous rencontrez."
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:216
-#, fuzzy
-#| msgid "Age of Heroes"
 msgid "Age of Heroes + Khalifate"
-msgstr "Âge des héros"
+msgstr "Âge des héros + khâlifat"
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:217
@@ -120,6 +130,13 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"Une ère avec une faction supplémentaire en plus des six de l'âge des héros. "
+"Les unités du Khâlifat n'utilisent pas la magie, et fondent leurs stratégies "
+"sur la maîtrise du terrain et des attaques très organisées à l'aube ou au "
+"crépuscule.\n"
+"\n"
+"Cette ère est encore en développement, n'hésitez pas à signaler les "
+"problèmes que vous rencontrez."
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -131,7 +148,7 @@ msgstr "Dracans"
 #: data/multiplayer/factions/khalifate-aoh.cfg:4
 #: data/multiplayer/factions/khalifate-default.cfg:4
 msgid "Khalifate"
-msgstr ""
+msgstr "Khâlifat"
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
@@ -2221,10 +2238,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Random_YAMG_Map
 #: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:6
-#, fuzzy
-#| msgid "Random map"
 msgid "Random map by YAMG"
-msgstr "Carte aléatoire"
+msgstr "Carte aléatoire (YAMG)"
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:9
