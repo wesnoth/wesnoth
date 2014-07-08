@@ -151,12 +151,12 @@ inline void fill_rect(surface& dst, SDL_Rect* dst_rect, const Uint32 color)
 void fill_rect(GPU_Target &target, const SDL_Rect &rect, SDL_Color color);
 
 void fill_rect(GPU_Target &target, const SDL_Rect &rect, Uint8 r, Uint8 g,
-			   Uint8 b, Uint8 a);
+			   Uint8 b, Uint8 a = 255);
 
 void draw_rect(GPU_Target &target, const SDL_Rect &rect, SDL_Color color);
 
 void draw_rect(GPU_Target &target, const SDL_Rect &rect, Uint8 r, Uint8 g,
-			   Uint8 b, Uint8 a);
+			   Uint8 b, Uint8 a = 255);
 #endif
 } // namespace sdl
 
