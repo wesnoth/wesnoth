@@ -13,6 +13,7 @@
 */
 
 #include "commandline_options.hpp"
+#include "formatter.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
 #include "lua/llimits.h"
@@ -38,6 +39,12 @@ static void validate(boost::any& v, const std::vector<std::string>& values,
     ret_val.get<0>() = values.at(0);
     ret_val.get<1>() = values.at(1);
     v = ret_val;
+}
+
+bad_commandline_resolution::bad_commandline_resolution(const std::string& resolution)
+	: error((formatter() << "Invalid resolution \"" << resolution
+						 << "\" (WIDTHxHEIGHT expected)").str())
+{
 }
 
 commandline_options::commandline_options ( int argc, char** argv ) :
@@ -418,29 +425,17 @@ void commandline_options::parse_log_domains_(const std::string &domains_string, 
 void commandline_options::parse_resolution_ ( const std::string& resolution_string )
 {
 	const std::vector<std::string> tokens = utils::split(resolution_string, 'x');
-	if (tokens.size() != 2)
-	{
-		std::stringstream ss;
-		ss << "when trying to parse the game resolution \"" << resolution_string << "\" as a (int,int) with separator 'x',\ndidn't get exactly two tokens.";
-		throw ss.str();
+	if (tokens.size() != 2) {
+		throw bad_commandline_resolution(resolution_string);
 	}
 
-	int xres;
+	int xres, yres;
+
 	try {
 		xres = lexical_cast<int>(tokens[0]);
-	} catch (bad_lexical_cast &) {
-		std::stringstream ss;
-		ss << "when trying to parse the game resolution \"" << resolution_string << "\" as a (int,int) with separator 'x',\ncould not parse string \"" << tokens[0] << "\" as an int, for screen resolution x.";
-		throw ss.str();
-	}
-
-	int yres;
-	try {
 		yres = lexical_cast<int>(tokens[1]);
-	} catch (bad_lexical_cast &) {
-		std::stringstream ss;
-		ss << "when trying to parse the game resolution \"" << resolution_string << "\" as a (int,int) with separator 'x',\ncould not parse string \"" << tokens[1] << "\" as an int, for screen resolution y.";
-		throw ss.str();
+	} catch(bad_lexical_cast &) {
+		throw bad_commandline_resolution(resolution_string);
 	}
 
 	resolution = boost::tuple<int,int>(xres,yres);

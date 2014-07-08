@@ -22,6 +22,12 @@
 #include <string>
 #include <vector>
 
+class bad_commandline_resolution : public boost::program_options::error
+{
+public:
+    bad_commandline_resolution(const std::string& resolution);
+};
+
 class commandline_options
 {
 /// To be used for printing help to the commandline.
