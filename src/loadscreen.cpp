@@ -72,7 +72,7 @@ loadscreen::loadscreen(CVideo &screen, const int percent):
 	screen_(screen),
 	textarea_(),
 #ifdef SDL_GPU
-	logo_image_(NULL),
+	logo_image_(image::get_texture("misc/logo.png")),
 #else
 	logo_surface_(image::get_image("misc/logo.png")),
 #endif
@@ -81,9 +81,7 @@ loadscreen::loadscreen(CVideo &screen, const int percent):
 	prcnt_(percent)
 {
 #ifdef SDL_GPU
-	surface surf = image::get_image("misc/logo.png");
-	logo_image_ = GPU_CopyImageFromSurface(surf);
-	if (logo_image_ == NULL) {
+	if (logo_image_.null()) {
 		ERR_DP << "loadscreen: Failed to load the logo" << std::endl;
 	}
 #else
@@ -98,7 +96,7 @@ void loadscreen::draw_screen(const std::string &text)
 	if (screen_.faked()) return; // We seem to encounter segfault in the test executable if this is not done
 
 #ifdef SDL_GPU
-	GPU_Target *screen = get_render_target();
+	GPU_Target *target = get_render_target();
 #endif
 
 	// Set progress bar parameters:
@@ -126,7 +124,8 @@ void loadscreen::draw_screen(const std::string &text)
 	int	lightning_thickness = 2;
 
 #ifdef SDL_GPU
-	int x1, y1, x2, y2;
+	surface gdis = screen_.getSurface();
+	SDL_Rect area;
 
 	// Pump events and make sure to redraw the logo if there's a chance that it's been obscured
 	SDL_Event ev;
@@ -138,13 +137,15 @@ void loadscreen::draw_screen(const std::string &text)
 	}
 
 	// Draw logo if it was successfully loaded.
-	if (logo_image_ && !logo_drawn_) {
-		x1 = screen->w / 2;
-		y1 = ((scry - logo_image_->h) / 2) - pbh;
+	if (!logo_image_.null() && !logo_drawn_) {
+		area.x = (screen_.getx () - logo_image_.width()) / 2;
+		area.y = ((scry - logo_image_.height()) / 2) - pbh;
+		area.w = logo_image_.width();
+		area.h = logo_image_.height();
 		// Check if we have enough pixels to display it.
-		if (x1 > 0 && y1 > 0) {
-			pby_offset_ = (pbh + logo_image_->h)/2;
-			GPU_Blit(logo_image_, NULL, get_render_target(), x1, y1 + logo_image_->h/2);
+		if (area.x > 0 && area.y > 0) {
+			pby_offset_ = (pbh + area.h)/2;
+			screen_.draw_texture(logo_image_, area.x, area.y);
 		} else {
 			if (!screen_.faked()) {  // Avoid error if --nogui is used.
 				ERR_DP << "loadscreen: Logo image is too big." << std::endl;
@@ -155,85 +156,53 @@ void loadscreen::draw_screen(const std::string &text)
 	int pbx = (scrx - pbw)/2;					// Horizontal location.
 	int pby = (scry - pbh)/2 + pby_offset_;		// Vertical location.
 
-	SDL_Color border_color;
-	border_color.r = bcr;
-	border_color.g = bcg;
-	border_color.b = bcb;
-	border_color.unused = 255;
-
-	SDL_Color bar_color;
-	bar_color.r = fcr;
-	bar_color.g = fcg;
-	bar_color.b = fcb;
-	bar_color.unused = 255;
-
-	SDL_Color light_color;
-	light_color.r = lcr;
-	light_color.g = lcg;
-	light_color.b = lcb;
-	light_color.unused = 255;
-
 	// Draw top border.
-	x1 = pbx; y1 = pby;
-	x2 = pbw + 2*(bw+bispw) + x1; y2 = bw + y1;
-	GPU_RectangleFilled(screen, x1, y1, x2, y2, border_color);
+	area.x = pbx; area.y = pby;
+	area.w = pbw + 2*(bw+bispw); area.h = bw;
+	sdl::fill_rect(*target, area, bcr, bcg, bcb);
 	// Draw bottom border.
-	x1 = pbx; y1 = pby + pbh + bw + 2*bispw;
-	x2 = pbw + 2*(bw+bispw) + x1; y2 = bw + y1;
-	GPU_RectangleFilled(screen, x1, y1, x2, y2, border_color);
+	area.x = pbx; area.y = pby + pbh + bw + 2*bispw;
+	area.w = pbw + 2*(bw+bispw); area.h = bw;
+	sdl::fill_rect(*target, area, bcr, bcg, bcb);
 	// Draw left border.
-	x1 = pbx; y1 = pby + bw;
-	x2 = bw + x1; y2 = pbh + 2*bispw + y1;
-	GPU_RectangleFilled(screen, x1, y1, x2, y2, border_color);
+	area.x = pbx; area.y = pby + bw;
+	area.w = bw; area.h = pbh + 2*bispw;
+	sdl::fill_rect(*target, area, bcr, bcg, bcb);
 	// Draw right border.
-	x1 = pbx + pbw + bw + 2*bispw; y1 = pby + bw;
-	x2 = bw + x1; y2 = pbh + 2*bispw + y1;
-	GPU_RectangleFilled(screen, x1, y1, x2, y2, border_color);
+	area.x = pbx + pbw + bw + 2*bispw; area.y = pby + bw;
+	area.w = bw; area.h = pbh + 2*bispw;
+	sdl::fill_rect(*target, area, bcr, bcg, bcb);
 	// Draw the finished bar area.
-	x1 = pbx + bw + bispw; y1 = pby + bw + bispw;
-	x2 = (prcnt_ * pbw) / 100 + x1; y2 = pbh + y1;
-	GPU_RectangleFilled(screen, x1, y1, x2, y2, bar_color);
+	area.x = pbx + bw + bispw; area.y = pby + bw + bispw;
+	area.w = (prcnt_ * pbw) / 100; area.h = pbh;
+	sdl::fill_rect(*target, area, fcr, fcg, fcb);
 
-	int yl = y1 + lightning_thickness;
-	bar_color.r = (fcr*3 + 255)/4;
-	bar_color.g = (fcg*3 + 255)/4;
-	bar_color.b = (fcb*3 + 255)/4;
+	SDL_Rect lightning = area;
+	lightning.h = lightning_thickness;
 	//we add 25% of white to the color of the bar to simulate a light effect
-	GPU_RectangleFilled(screen, x1, y1, x2, yl, bar_color);
-	y1 = y1+y2-yl;
+	sdl::fill_rect(*target, lightning, (fcr*3+255)/4, (fcg*3+255)/4, (fcb*3+255)/4);
+	lightning.y = area.y+area.h-lightning.h;
 	//remove 50% of color to simulate a shadow effect
-	bar_color.r = fcr/2;
-	bar_color.g = fcg/2;
-	bar_color.b = fcb/2;
-	GPU_RectangleFilled(screen, x1, y1, x2, y2, bar_color);
+	sdl::fill_rect(*target, lightning, fcr/2, fcg/2, fcb/2);
 
 	// Draw the leftover bar area.
-	x1 = pbx + bw + bispw + (prcnt_ * pbw) / 100; y1 = pby + bw + bispw;
-	x2 = ((100 - prcnt_) * pbw) / 100 + x1; y2 = pbh + y1;
-	GPU_RectangleFilled(screen, x1, y1, x2, y2, light_color);
+	area.x = pbx + bw + bispw + (prcnt_ * pbw) / 100; area.y = pby + bw + bispw;
+	area.w = ((100 - prcnt_) * pbw) / 100; area.h = pbh;
+	sdl::fill_rect(*target, area, lcr, lcg, lcb);
+
+	// Clear the last text and draw new if text is provided.
 	if (!text.empty())
 	{
-		static const SDL_Color black = { 0, 0, 0, 255 };
-		const int tx1 = textarea_.x,
-				  ty1 = textarea_.y,
-				  tx2 = tx1 + textarea_.w,
-				  ty2 = ty1 + textarea_.h;
-
-		GPU_RectangleFilled(screen, tx1, ty1, tx2, ty2, black);
-
-		font::ttext txt;
-		txt.set_text(text, false);
-		surface surf  = txt.render();
-		textarea_.h = surf->h;
-		textarea_.w = surf->w;
-		textarea_.x = scrx/2 - textarea_.w / 2;
+		sdl::fill_rect(*target, textarea_, 0, 0, 0);
+		font::ttext label;
+		label.set_text(text, false);
+		sdl::ttexture txt = label.render_as_texture();
+		textarea_.w = txt.width();
+		textarea_.h = txt.height();
+		textarea_.x = scrx/2 + bw + bispw - textarea_.w / 2;
 		textarea_.y = pby + pbh + 4*(bw + bispw);
-
-		GPU_Image *img = GPU_CopyImageFromSurface(surf);
-		GPU_Blit(img, NULL, screen, scrx/2, textarea_.y + textarea_.h/2);
-		GPU_FreeImage(img);
+		screen_.draw_texture(txt, textarea_.x, textarea_.y);
 	}
-
 	screen_.flip();
 #else
 	surface gdis = screen_.getSurface();
