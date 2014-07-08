@@ -25,6 +25,10 @@
 #endif
 
 struct surface;
+namespace sdl
+{
+struct ttexture;
+}
 
 //possible flags when setting video modes
 #define FULL_SCREEN SDL_FULLSCREEN
@@ -75,6 +79,7 @@ class CVideo : private boost::noncopyable {
 
 	//blits a surface with black as alpha
 	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect=NULL, SDL_Rect* clip_rect=NULL);
+	void draw_texture(sdl::ttexture &texture, int x, int y);
 	void flip();
 
 	surface& getSurface();

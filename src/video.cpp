@@ -94,6 +94,7 @@ struct event {
 	bool in;
 	event(const SDL_Rect& rect, bool i) : x(i ? rect.x : rect.x + rect.w), y(rect.y), w(rect.w), h(rect.h), in(i) { }
 };
+#ifndef SDL_GPU
 bool operator<(const event& a, const event& b) {
 	if (a.x != b.x) return a.x < b.x;
 	if (a.in != b.in) return a.in;
@@ -105,6 +106,7 @@ bool operator<(const event& a, const event& b) {
 bool operator==(const event& a, const event& b) {
 	return a.x == b.x && a.y == b.y && a.w == b.w && a.h == b.h && a.in == b.in;
 }
+#endif
 
 struct segment {
 	int x, count;
@@ -117,6 +119,7 @@ std::vector<SDL_Rect> update_rects;
 std::vector<event> events;
 std::map<int, segment> segments;
 
+#ifndef SDL_GPU
 static void calc_rects()
 {
 	events.clear();
@@ -209,16 +212,19 @@ static void calc_rects()
 		}
 	}
 }
+#endif
 
 
 bool update_all = false;
 }
 
+#ifndef SDL_GPU
 static void clear_updates()
 {
 	update_all = false;
 	update_rects.clear();
 }
+#endif
 
 namespace {
 
@@ -380,6 +386,11 @@ void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rec
 
 	const clip_rect_setter clip_setter(target, clip_rect, clip_rect != NULL);
 	sdl_blit(surf,srcrect,target,&dst);
+}
+
+void CVideo::draw_texture(sdl::ttexture &texture, int x, int y)
+{
+	texture.draw(*render_target, x, y);
 }
 
 void CVideo::make_fake()

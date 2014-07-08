@@ -474,7 +474,7 @@ void part_ui::render_title_box()
 	sdl::fill_rect(*target, box, titleshadow_r, titleshadow_g, titleshadow_b,
 				   titleshadow_a);
 
-	txttxt.draw(*target, titlebox_x, titlebox_y);
+	video_.draw_texture(txttxt, titlebox_x, titlebox_y);
 #else
 	const std::string& titletxt = p_.title();
 	if(titletxt.empty()) {
@@ -556,7 +556,6 @@ void part_ui::render_story_box_borders(SDL_Rect& update_area)
 	if(has_background_) {
 		sdl::ttexture border_top;
 		sdl::ttexture border_bottom;
-		GPU_Target *target = get_render_target();
 
 		if(tbl == part::BLOCK_BOTTOM || tbl == part::BLOCK_MIDDLE) {
 			border_top = image::get_texture(storybox_top_border_path);
@@ -576,14 +575,16 @@ void part_ui::render_story_box_borders(SDL_Rect& update_area)
 			const float xscale = float(screen_area().w) / border_top.width();
 			border_top.set_hscale(xscale);
 			//TODO: blurring
-			border_top.draw(*target, 0, update_area.y - border_top.height());
+			video_.draw_texture(border_top, 0,
+								update_area.y - border_top.height());
 		}
 
 		if(border_bottom.null() != true) {
 			const float xscale = float(screen_area().w) / border_bottom.width();
 			border_bottom.set_hscale(xscale);
 			//TODO: blurring
-			border_bottom.draw(*target, 0, update_area.y + update_area.h);
+			video_.draw_texture(border_bottom, 0,
+								update_area.y - border_top.height());
 		}
 
 	}
@@ -734,7 +735,7 @@ void part_ui::render_story_box()
 		{
 			dstrect.y = fix_text_y + scan.y + storybox_padding;
 			txttxt.set_clip(scan);
-			txttxt.draw(*target, dstrect.x, dstrect.y);
+			video_.draw_texture(txttxt, dstrect.x, dstrect.y);
 			video_.flip();
 			++scan.y;
 		}
