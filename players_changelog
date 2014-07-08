@@ -9,11 +9,24 @@ Version 1.13.0-dev:
      least one add-on that may be upgraded.
 
  * Campaigns:
+   * Descent into Darkness:
+     * Fixed various issues with player and enemy gold and income in
+       'Descent into Darkness'.
    * Northern Rebirth:
      * Fixed Sister Thera and Father Morvin respawning into the recall list if
        the other is on the north or west map edges.
+   * Son of the Black Eye:
+     * S2: adjusted starting villages; scenario now ends if Kapou'e is already
+       on the signpost when the messenger comes back
+     * S3: make objectives consistent between before and after trolls appear
+     * S6: remove AI controller.  It doesn't work with sides without a leader
+     * Minor balance tweaks to scenarios 7, 8, 12, 14, 15, 17 and 18.
    * The Hammer of Thursagan:
+     * Fixed missing objective in 'The Court of Karrag'.
      * Rebalanced scenarios 'Invaders', 'Mages and Drakes' and 'Fear'.
+
+ * Graphics:
+   * Smooth unit movement over terrain with elevation (e.g. keeps/bridges)
 
  * Language and i18n:
    * Updated translations: Czech, French, German, Greek, Hungarian, Italian,
@@ -22,10 +35,11 @@ Version 1.13.0-dev:
  * Units:
    * Increased the experience requirement for the Rami from 32 to 39.
    * Increased the experience requirement for the Saree from 56 to 64.
+   * Add 'elemental' trait to Mudcrawler line.
 
  * User interface:
-   * Classic Theme which restores the 1.10 UI.
-   * Made orb and minmap colors configurable by the game preferences.
+   * Added a Classic theme which restores the 1.10 UI.
+   * Made orb and minimap colors configurable in Preferences.
    * Added a button to copy the in-game Chat Log dialog contents to clipboard.
    * Fixed most of the minimap buttons and the End Turn button appearing
      without contents or in the wrong state during WML start events until they
@@ -33,6 +47,7 @@ Version 1.13.0-dev:
    * Added a new subdialog in Preferences to clean or purge the WML cache.
 
  * Miscellaneous and bug fixes:
+   * Dropped support for AmigaOS, BeOS, and OS/2.
    * Fixed halos glitching through locations that become shrouded after the
      halo is rendered for the first time.
    * OS X user data directory is now ~/Library/Application Support/Wesnoth_1.13

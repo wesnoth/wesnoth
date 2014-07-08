@@ -37,7 +37,7 @@ Version 1.13.0-dev:
    * Northern Rebirth:
      * Fixed Sister Thera and Father Morvin respawning into the recall list if
        the other is on the north or west map edges.
-   * Son of the Black Eye: some minor changes
+   * Son of the Black Eye:
      * S2: adjusted starting villages; scenario now ends if Kapou'e is already
        on the signpost when the messenger comes back
      * S3: make objectives consistent between before and after trolls appear
@@ -66,11 +66,11 @@ Version 1.13.0-dev:
    * Increased the experience requirement for the Saree from 56 to 64
    * Changed sound timings for Khalifate melee attacks
    * New chill tempest animation for Lich/Ancient Lich
-   * Add 'elemental' trait to mudcrawler line
+   * Add 'elemental' trait to Mudcrawler line
    * Fix sound timings for drake fire animation macros
  * User interface:
-   * Classic Theme which restores the 1.10 UI.
-   * Made orb and minmap colors configurable by the game preferences.
+   * Added a Classic theme which restores the 1.10 UI.
+   * Made orb and minimap colors configurable in Preferences.
    * Remove 'allow_new_game=no' entries from random map new game list
    * Fixed bug #22095: An assertion failure in the gamestate inspector.
    * Changed: A listbox can now update its size when rows are added.
@@ -108,7 +108,7 @@ Version 1.13.0-dev:
      cached images.
    * Idle controlled sides now serialize as human controlled.
    * Fixed bug #20876: A segfault in cut_surface.
-   * Changed: Dropped support for AmigaOS, BeOS, and OS/2.
+   * Dropped support for AmigaOS, BeOS, and OS/2.
    * Increased the sound mixer channel allocation from 16 to 32, thereby
      raising the limit for simultaneous sound effects from 5 to 21.
    * Fix bug #21758: "Ready not blocked while player pick faction."
