@@ -16,7 +16,6 @@
 #include "formatter.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
-#include "lua/llimits.h"
 
 #include <boost/version.hpp>
 #include <boost/foreach.hpp>
