@@ -28,6 +28,13 @@ public:
     bad_commandline_resolution(const std::string& resolution);
 };
 
+class bad_commandline_tuple : public boost::program_options::error
+{
+public:
+	bad_commandline_tuple(const std::string& str,
+						  const std::string& expected_format);
+};
+
 class commandline_options
 {
 /// To be used for printing help to the commandline.

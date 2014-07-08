@@ -47,6 +47,13 @@ bad_commandline_resolution::bad_commandline_resolution(const std::string& resolu
 {
 }
 
+bad_commandline_tuple::bad_commandline_tuple(const std::string& str,
+											 const std::string& expected_format)
+	: error((formatter() << "Invalid value set \"" << str
+						 << "\" (" << expected_format << " expected)").str())
+{
+}
+
 commandline_options::commandline_options ( int argc, char** argv ) :
 	bpp(),
 	bunzip2(),
@@ -445,23 +452,21 @@ std::vector<boost::tuple<unsigned int,std::string> > commandline_options::parse_
 {
 	std::vector<boost::tuple<unsigned int,std::string> > vec;
 	boost::tuple<unsigned int,std::string> elem;
+	const std::string& expected_format
+			= std::string() + "UINT" + separator + "STRING";
+
 	BOOST_FOREACH(const std::string &s, strings)
 	{
 		const std::vector<std::string> tokens = utils::split(s, separator);
-		if (tokens.size()!=2)
-		{
-			std::stringstream ss;
-			ss << "when trying to parse string \"" << s << "\" as an (int,string) with separator \'" << separator << "\',\ndidn't get exactly two tokens.";
-			throw ss.str();
+		if(tokens.size() != 2) {
+			throw bad_commandline_tuple(s, expected_format);
 		}
 
 		unsigned int temp;
 		try {
 			temp = lexical_cast<unsigned int>(tokens[0]);
 		} catch (bad_lexical_cast &) {
-			std::stringstream ss;
-			ss << "when trying to parse string \"" << s << "\" as an (int,string) with separator \'" << separator << "\',\ncould not parse string \"" << tokens[0] << "\" as an int.";
-			throw ss.str();
+			throw bad_commandline_tuple(s, expected_format);
 		}
 
 		elem.get<0>() = temp;
@@ -475,23 +480,21 @@ std::vector<boost::tuple<unsigned int,std::string,std::string> > commandline_opt
 {
 	std::vector<boost::tuple<unsigned int,std::string,std::string> > vec;
 	boost::tuple<unsigned int,std::string,std::string> elem;
+	const std::string& expected_format
+			= std::string() + "UINT" + separator + "STRING" + separator + "STRING";
+
 	BOOST_FOREACH(const std::string &s, strings)
 	{
 		const std::vector<std::string> tokens = utils::split(s, separator);
-		if (tokens.size()!=3)
-		{
-			std::stringstream ss;
-			ss << "when trying to parse string \"" << s << "\" as an (int,string,string) with separator \'" << separator << "\',\ndidn't get exactly three tokens.";
-			throw ss.str();
+		if(tokens.size() != 3) {
+			throw bad_commandline_tuple(s, expected_format);
 		}
 
 		unsigned int temp;
 		try {
 			temp = lexical_cast<unsigned int>(tokens[0]);
 		} catch (bad_lexical_cast &) {
-			std::stringstream ss;
-			ss << "when trying to parse string \"" << s << "\" as an (int,string,string) with separator \'" << separator << "\',\ncould not parse string \"" << tokens[0] << "\" as an int.";
-			throw ss.str();
+			throw bad_commandline_tuple(s, expected_format);
 		}
 		elem.get<0>() = temp;
 		elem.get<1>() = tokens[1];
