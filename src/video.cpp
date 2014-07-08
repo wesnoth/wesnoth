@@ -387,11 +387,12 @@ void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rec
 	const clip_rect_setter clip_setter(target, clip_rect, clip_rect != NULL);
 	sdl_blit(surf,srcrect,target,&dst);
 }
-
+#ifdef SDL_GPU
 void CVideo::draw_texture(sdl::ttexture &texture, int x, int y)
 {
 	texture.draw(*render_target, x, y);
 }
+#endif
 
 void CVideo::make_fake()
 {
