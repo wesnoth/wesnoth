@@ -192,7 +192,7 @@ void play_controller::init(CVideo& video){
 	events_manager_.reset(new game_events::manager(level_));
 
 	LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks_) << std::endl;
-	gamestate_.init(ticks_, saved_game_.replay_start());
+	gamestate_.init(ticks_);
 	resources::tunnels = gamestate_.pathfind_manager_.get();
 
 	// mouse_handler expects at least one team for linger mode to work.

@@ -43,7 +43,7 @@ public:
 
 	void place_sides_in_preferred_locations();
 
-	void init(int ticks, const config & replay_start);
+	void init(int ticks);
 
 	config to_config() const;
 
