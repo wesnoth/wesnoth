@@ -40,8 +40,7 @@ public:
 	team_builder(const config& side_cfg,
 		     const std::string &save_id, std::vector<team>& teams,
 		     const config& level, gamemap& map, unit_map& units,
-		     game_data & gamedata,
-		     const config &starting_pos)
+		     game_data & gamedata)
 		: gold_info_ngold_(0)
 		, leader_configs_()
 		, level_(level)
@@ -51,7 +50,6 @@ public:
 		, seen_ids_()
 		, side_(0)
 		, side_cfg_(side_cfg)
-		, starting_pos_(starting_pos)
 		, t_(NULL)
 		, teams_(teams)
 		, unit_configs_()
@@ -107,7 +105,6 @@ protected:
 	std::set<std::string> seen_ids_;
 	int side_;
 	const config &side_cfg_;
-	const config &starting_pos_;
 	team *t_;
 	std::vector<team> &teams_;
 	std::vector<const config*> unit_configs_;
