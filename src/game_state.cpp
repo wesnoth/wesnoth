@@ -114,26 +114,6 @@ void game_state::place_sides_in_preferred_locations()
 	}
 }
 
-static std::string get_unique_saveid(const config& cfg, std::set<std::string>& seen_save_ids)
-{
-	std::string save_id = cfg["save_id"];
-
-	if(save_id.empty()) {
-		save_id = cfg["id"].str();
-	}
-
-	if(save_id.empty()) {
-		save_id="Unknown";
-	}
-
-	// Make sure the 'save_id' is unique
-	while(seen_save_ids.count(save_id)) {
-		save_id += "_";
-	}
-
-	return save_id;
-}
-
 void game_state::init(const int ticks)
 {
 	if (level_["modify_placing"].to_bool()) {
@@ -151,15 +131,11 @@ void game_state::init(const int ticks)
 
 	board_.teams_.resize(level_.child_count("side"));
 
-	std::set<std::string> seen_save_ids;
-
 	std::vector<team_builder_ptr> team_builders;
 
 	int team_num = 0;
 	BOOST_FOREACH(const config &side, level_.child_range("side"))
 	{
-		std::string save_id = get_unique_saveid(side, seen_save_ids);
-		seen_save_ids.insert(save_id);
 		if (first_human_team_ == -1) {
 			const std::string &controller = side["controller"];
 			if (controller == "human" &&
@@ -170,7 +146,7 @@ void game_state::init(const int ticks)
 			}
 		}
 		team_builder_ptr tb_ptr = gamedata_.create_team_builder(side,
-			save_id, board_.teams_, level_, *board_.map_, board_.units_);
+			board_.teams_, level_, *board_.map_);
 		++team_num;
 		gamedata_.build_team_stage_one(tb_ptr);
 		team_builders.push_back(tb_ptr);

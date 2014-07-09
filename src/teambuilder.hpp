@@ -37,23 +37,20 @@ static lg::log_domain log_engine_tc("engine/team_construction");
 
 class team_builder {
 public:
-	team_builder(const config& side_cfg,
-		     const std::string &save_id, std::vector<team>& teams,
-		     const config& level, gamemap& map, unit_map& units,
+	team_builder(const config& side_cfg, std::vector<team>& teams,
+		     const config& level, gamemap& map,
 		     game_data & gamedata)
 		: gold_info_ngold_(0)
 		, leader_configs_()
 		, level_(level)
 		, map_(map)
 		, player_exists_(false)
-		, save_id_(save_id)
 		, seen_ids_()
 		, side_(0)
 		, side_cfg_(side_cfg)
 		, t_(NULL)
 		, teams_(teams)
 		, unit_configs_()
-		, units_(units)
 		, gamedata_(gamedata)
 	{
 	}
@@ -98,17 +95,17 @@ protected:
 
 	int gold_info_ngold_;
 	std::deque<config> leader_configs_;
+	//only used for objectives
 	const config &level_;
 	gamemap &map_;
+	//only used for debug message
 	bool player_exists_;
-	const std::string save_id_;
 	std::set<std::string> seen_ids_;
 	int side_;
 	const config &side_cfg_;
 	team *t_;
 	std::vector<team> &teams_;
 	std::vector<const config*> unit_configs_;
-	unit_map &units_;
 	game_data & gamedata_;
 
 
@@ -144,7 +141,6 @@ protected:
 			throw game::load_game_failed("Map not found");
 		}
 
-		DBG_NG_TC << "save id: "<< save_id_ <<std::endl;
 		DBG_NG_TC << "snapshot: "<< (player_exists_ ? "true" : "false") <<std::endl;
 
 		unit_configs_.clear();

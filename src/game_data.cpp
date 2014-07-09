@@ -201,10 +201,10 @@ void game_data::write_config(config_writer& out){
 }
 
 team_builder_ptr game_data::create_team_builder(const config& side_cfg,
-					 std::string save_id, std::vector<team>& teams,
-					 const config& level, gamemap& map, unit_map& units)
+					 std::vector<team>& teams,
+					 const config& level, gamemap& map)
 {
-	return team_builder_ptr(new team_builder(side_cfg, save_id, teams, level, map, units, *this));
+	return team_builder_ptr(new team_builder(side_cfg, teams, level, map, *this));
 }
 
 void game_data::build_team_stage_one(team_builder_ptr tb_ptr)
