@@ -144,7 +144,7 @@ void wmi_pager::get_items(const map_location& hex,
 		//The last page we treat differently -- we always want to display (page_size) entries, to prevent resizing the context menu, so count back from end.
 		wmi_it end_range = bar.end(); // It doesn't really matter if we display some entries that appeared on the previous page by doing this.
 		wmi_it start_range = end_range;
-		std::advance(start_range, -(page_size-1));
+		std::advance(start_range, -static_cast<signed int>(page_size-1));
 
 		std::transform(start_range, end_range, back_inserter(items), select_first);
 		std::transform(start_range, end_range, back_inserter(descriptions), select_second);
