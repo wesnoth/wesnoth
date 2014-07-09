@@ -340,7 +340,7 @@ void flg_manager::update_available_leaders()
 {
 	available_leaders_.clear();
 
-	if (!side_["no_leader"].to_bool() || !leader_lock_) {
+	if (!side_["no_leader"].to_bool() && !leader_lock_) {
 		// Add a default leader if there is one.
 		if (!default_leader_type_.empty()) {
 			available_leaders_.push_back(default_leader_type_);
