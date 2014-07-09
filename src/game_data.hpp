@@ -98,7 +98,7 @@ public:
 
 	//create an object responsible for creating and populating a team from a config
 	team_builder_ptr create_team_builder(const config& side_cfg, std::vector<team>& teams, 
-		const config& level, gamemap& map, unit_map& units);
+		const config& level, gamemap& map);
 
 	//do first stage of team initialization (everything except unit placement)
 	void build_team_stage_one(team_builder_ptr tb_ptr);

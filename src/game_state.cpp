@@ -146,7 +146,7 @@ void game_state::init(const int ticks)
 			}
 		}
 		team_builder_ptr tb_ptr = gamedata_.create_team_builder(side,
-			board_.teams_, level_, *board_.map_, board_.units_);
+			board_.teams_, level_, *board_.map_);
 		++team_num;
 		gamedata_.build_team_stage_one(tb_ptr);
 		team_builders.push_back(tb_ptr);
