@@ -13,7 +13,9 @@
 */
 
 #include "unit_filter.hpp"
+
 #include "global.hpp"
+#include "log.hpp"
 
 #include "config.hpp"
 #include "display_context.hpp"
@@ -40,6 +42,10 @@
 #include <boost/utility/in_place_factory.hpp> //needed for boost::in_place to initialize optionals
 
 #include <vector>
+
+static lg::log_domain log_config("config");
+#define ERR_CF LOG_STREAM(err, log_config)
+#define DBG_CF LOG_STREAM(debug, log_config)
 
 ///Defined out of line to prevent including unit at unit_filter.hpp
 bool unit_filter::matches(const unit & u) const {
@@ -226,7 +232,9 @@ public:
 						FAIL( "encountered multiple [filter_side] children of a standard unit filter. this is not currently supported and in all versions of wesnoth would have resulted in the later children being ignored. you must use [and] or similar to achieve the desired result" );
 					}
 				} else if ( cond_name != "filter_wml" ){
-					FAIL( "encountered unrecognized child [" + cond_name+ "] of a standard unit filter");
+					std::stringstream errmsg;
+					errmsg << "encountered a child [" << cond_name << "] of a standard unit filter, it is being ignored";
+					DBG_CF << errmsg.str() << std::endl; //FAIL( errmsg.str() );
 				}
 			}
 			++cond;
