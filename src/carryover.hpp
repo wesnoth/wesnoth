@@ -9,6 +9,7 @@ class game_data;
 #include <string>
 #include <set>
 
+#include "config.hpp"
 #include "game_end_exceptions.hpp"
 #include "simple_rng.hpp"
 #include "game_events/wmi_container.hpp"
@@ -112,4 +113,3 @@ private:
 
 
 #endif
-

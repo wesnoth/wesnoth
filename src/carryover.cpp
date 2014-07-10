@@ -270,15 +270,6 @@ void carryover_info::transfer_to(config& level){
 		level["next_underlying_unit_id"] = next_underlying_unit_id_;
 	}
 
-	if(!end_level_.next_scenario_settings.empty()) {
-		level.merge_with(end_level_.next_scenario_settings);
-	}
-	if(!end_level_.next_scenario_append.empty())
-	{
-		level.append_children(end_level_.next_scenario_append);
-	}
-	end_level_.next_scenario_append = config();
-	end_level_.next_scenario_settings = config();
 	//if the game has been loaded from a snapshot, the existing variables will be the current ones
 	if(!level.has_child("variables")) {
 		level.add_child("variables", variables_);
