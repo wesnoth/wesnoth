@@ -100,6 +100,9 @@ Version 1.11.15+dev:
    * Fix bug #21723: team-specific items visible to wrong players / at wrong times
    * When parsing command line args, if we fail to parse, give an error message rather
      than crashing with no explanation.
+   * Fix bug #22086: save_index generated using wrong savegame format assumptions,
+     causing missing / wrong minimap data to be displayed. (This is still broken for
+     start-of-scenario saves, but it seems to be a different issue.)
 
 Version 1.11.15:
  * Graphics:
