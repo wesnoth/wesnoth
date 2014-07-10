@@ -163,7 +163,7 @@ surface ttext::render() const
 }
 
 #ifdef SDL_GPU
-sdl::ttexture ttext::render_as_texture() const
+sdl::timage ttext::render_as_texture() const
 {
 	rerender();
 	return texture_;
@@ -700,7 +700,7 @@ void ttext::rerender(const bool force) const
 			surface_buffer_, width, height, 32, stride,
 			0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000));
 #ifdef SDL_GPU
-		texture_ = sdl::ttexture(surface_);
+		texture_ = sdl::timage(surface_);
 #endif
 		cairo_destroy(cr);
 		cairo_surface_destroy(cairo_surface);

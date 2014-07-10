@@ -88,7 +88,7 @@ public:
 	 * Before rendering it tests whether a redraw is needed and if so it first
 	 * redraws the texture before returning it.
 	 */
-	sdl::ttexture render_as_texture() const;
+	sdl::timage render_as_texture() const;
 #endif
 
 	/** Returns the width needed for the text. */
@@ -232,7 +232,7 @@ private:
 	mutable sdl::ttexture texture_;
 #else
 #ifdef SDL_GPU
-	mutable sdl::ttexture texture_;
+	mutable sdl::timage texture_;
 #endif
 #endif
 

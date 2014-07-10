@@ -195,7 +195,7 @@ void loadscreen::draw_screen(const std::string &text)
 		sdl::fill_rect(*target, textarea_, 0, 0, 0);
 		font::ttext label;
 		label.set_text(text, false);
-		sdl::ttexture txt = label.render_as_texture();
+		sdl::timage txt = label.render_as_texture();
 		textarea_.w = txt.width();
 		textarea_.h = txt.height();
 		textarea_.x = scrx/2 + bw + bispw - textarea_.w / 2;

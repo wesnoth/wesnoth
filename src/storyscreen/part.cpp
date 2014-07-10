@@ -70,7 +70,7 @@ floating_image::render_input floating_image::get_render_input(double xscale, dou
 #ifdef SDL_GPU
 	render_input ri = {
 		{0,0,0,0},
-		file_.empty() ? sdl::ttexture() : image::get_texture(file_)
+		file_.empty() ? sdl::timage() : image::get_texture(file_)
 	};
 
 	if(!ri.image.null()) {

@@ -28,7 +28,7 @@ struct surface;
 #ifdef SDL_GPU
 namespace sdl
 {
-struct ttexture;
+struct timage;
 }
 #endif
 
@@ -82,7 +82,7 @@ class CVideo : private boost::noncopyable {
 	//blits a surface with black as alpha
 	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect=NULL, SDL_Rect* clip_rect=NULL);
 #ifdef SDL_GPU
-	void draw_texture(sdl::ttexture &texture, int x, int y);
+	void draw_texture(sdl::timage &texture, int x, int y);
 #endif
 	void flip();
 

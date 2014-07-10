@@ -439,11 +439,11 @@ public:
 	 * mouseover_hex_overlay_ require a prerendered surface
 	 * and is drawn underneath the mouse's location
 	 */
-	void set_mouseover_hex_overlay(const sdl::ttexture& image)
+	void set_mouseover_hex_overlay(const sdl::timage& image)
 		{ mouseover_hex_overlay_ = image; }
 
 	void clear_mouseover_hex_overlay()
-		{ mouseover_hex_overlay_ = sdl::ttexture(); }
+		{ mouseover_hex_overlay_ = sdl::timage(); }
 #else
 	/**
 	 * mouseover_hex_overlay_ require a prerendered surface
@@ -726,12 +726,12 @@ protected:
 	enum TERRAIN_TYPE { BACKGROUND, FOREGROUND};
 
 #ifdef SDL_GPU
-	std::vector<sdl::ttexture> get_terrain_images(const map_location &loc,
+	std::vector<sdl::timage> get_terrain_images(const map_location &loc,
 					const std::string& timeid,
 					image::TYPE type,
 					TERRAIN_TYPE terrain_type);
 
-	std::vector<sdl::ttexture> get_fog_shroud_images(const map_location& loc, image::TYPE image_type);
+	std::vector<sdl::timage> get_fog_shroud_images(const map_location& loc, image::TYPE image_type);
 #else
 	std::vector<surface> get_terrain_images(const map_location &loc,
 					const std::string& timeid,
@@ -798,10 +798,10 @@ protected:
 	std::set<map_location> invalidated_;
 	std::set<map_location> previous_invalidated_;
 #ifdef SDL_GPU
-	sdl::ttexture mouseover_hex_overlay_;
+	sdl::timage mouseover_hex_overlay_;
 	// If we're transitioning from one time of day to the next,
 	// then we will use these two masks on top of all hexes when we blit.
-	sdl::ttexture tod_hex_mask1, tod_hex_mask2;
+	sdl::timage tod_hex_mask1, tod_hex_mask2;
 #else
 	surface mouseover_hex_overlay_;
 	// If we're transitioning from one time of day to the next,
@@ -825,7 +825,7 @@ private:
 
 #ifdef SDL_GPU
 	// This surface must be freed by the caller
-	sdl::ttexture get_flag(const map_location& loc);
+	sdl::timage get_flag(const map_location& loc);
 #else
 	// This surface must be freed by the caller
 	surface get_flag(const map_location& loc);
@@ -966,13 +966,13 @@ protected:
 	public:
 #ifdef SDL_GPU
 		tblit(const tdrawing_layer layer, const map_location& loc,
-				const int x, const int y, const sdl::ttexture& image)
+				const int x, const int y, const sdl::timage& image)
 			: x_(x), y_(y), images_(1, image), key_(loc, layer)
 		{}
 
 		tblit(const tdrawing_layer layer, const map_location& loc,
 			  const int x, const int y,
-			  const std::vector<sdl::ttexture>& images)
+			  const std::vector<sdl::timage>& images)
 			: x_(x), y_(y), images_(images), key_(loc, layer)
 		{}
 #else
@@ -994,7 +994,7 @@ protected:
 		int x() const { return x_; }
 		int y() const { return y_; }
 #ifdef SDL_GPU
-		std::vector<sdl::ttexture> &images() { return images_; }
+		std::vector<sdl::timage> &images() { return images_; }
 #else
 		const std::vector<surface> &surf() const { return surf_; }
 		const SDL_Rect &clip() const { return clip_; }
@@ -1006,7 +1006,7 @@ protected:
 		int x_;                      /**< x screen coordinate to render at. */
 		int y_;                      /**< y screen coordinate to render at. */
 #ifdef SDL_GPU
-		std::vector<sdl::ttexture> images_;
+		std::vector<sdl::timage> images_;
 #else
 		std::vector<surface> surf_;  /**< surface(s) to render. */
 		SDL_Rect clip_;              /**<
@@ -1024,11 +1024,11 @@ public:
 #ifdef SDL_GPU
 	void drawing_buffer_add(const tdrawing_layer layer,
 							const map_location& loc, int x, int y,
-							const sdl::ttexture& img);
+							const sdl::timage& img);
 
 	void drawing_buffer_add(const tdrawing_layer layer,
 							const map_location& loc, int x, int y,
-							const std::vector<sdl::ttexture> &imgs);
+							const std::vector<sdl::timage> &imgs);
 #else
 	/**
 	 * Add an item to the drawing buffer. You need to update screen on affected area

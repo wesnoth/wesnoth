@@ -623,13 +623,13 @@ surface load_from_disk(const locator &loc)
 }
 
 #ifdef SDL_GPU
-sdl::ttexture load_texture(const locator &loc)
+sdl::timage load_texture(const locator &loc)
 {
 	surface img = load_from_disk(loc);
 	if (!img.null()) {
-		return sdl::ttexture(img);
+		return sdl::timage(img);
 	} else {
-		return sdl::ttexture();
+		return sdl::timage();
 	}
 }
 #endif
@@ -902,10 +902,10 @@ surface get_image(const image::locator& i_locator, TYPE type)
 }
 
 #ifdef SDL_GPU
-sdl::ttexture get_texture(const locator& loc, TYPE type)
+sdl::timage get_texture(const locator& loc, TYPE type)
 {
 	if (loc.is_void()) {
-		return sdl::ttexture();
+		return sdl::timage();
 	}
 
 	texture_cache *cache;
@@ -924,25 +924,25 @@ sdl::ttexture get_texture(const locator& loc, TYPE type)
 		cache = &txt_hexed_images_;
 		break;
 	default:
-		return sdl::ttexture();
+		return sdl::timage();
 	}
 
 	if (!loc.in_cache(*cache)) {
 		if (type == UNSCALED || type == SCALED_TO_ZOOM) {
-			sdl::ttexture txt = load_texture(loc);
+			sdl::timage txt = load_texture(loc);
 			loc.add_to_cache(*cache, txt);
 		} else if (type == BRIGHTENED) {
 			surface surf = get_brightened(loc);
-			sdl::ttexture txt(surf);
+			sdl::timage txt(surf);
 			loc.add_to_cache(*cache, txt);
 		} else {
 			surface surf = get_hexed(loc);
-			sdl::ttexture txt(surf);
+			sdl::timage txt(surf);
 			loc.add_to_cache(*cache, txt);
 		}
 	}
 
-	sdl::ttexture result = loc.locate_in_cache(*cache);
+	sdl::timage result = loc.locate_in_cache(*cache);
 
 	switch (type) {
 	case UNSCALED:
@@ -956,7 +956,7 @@ sdl::ttexture get_texture(const locator& loc, TYPE type)
 		result.set_scale(zoom, zoom);
 		break;
 	default:
-		return sdl::ttexture();
+		return sdl::timage();
 	}
 
 	return result;

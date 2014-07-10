@@ -29,7 +29,7 @@ struct surface;
 namespace sdl
 {
 
-class ttexture
+class timage
 {
 public:
 	/**
@@ -38,36 +38,36 @@ public:
 	 * @param w                   Width.
 	 * @param h                   Height.
 	 */
-	ttexture(Uint16 w, Uint16 h);
+	timage(Uint16 w, Uint16 h);
 
 	/**
 	 * Loads a texture from an image file.
 	 *
 	 * @param file                Full path of the file.
 	 */
-	ttexture(const std::string &file);
+	timage(const std::string &file);
 
 	/**
 	 * Creates a texture from an SDL surface.
 	 *
 	 * @param source              Pointer to the surface.
 	 */
-	ttexture( SDL_Surface *source);
+	timage( SDL_Surface *source);
 
 	/**
 	 * Creates a texture from an SDL surface.
 	 *
 	 * @param source              The surface.
 	 */
-	ttexture(const surface &source);
+	timage(const surface &source);
 
-	ttexture();
+	timage();
 
-	~ttexture();
+	~timage();
 
-	ttexture(const ttexture &texture);
+	timage(const timage &texture);
 
-	ttexture &operator=(const ttexture &texture);
+	timage &operator=(const timage &texture);
 
 	/**
 	 * Render the texture on a specified target, with respect to the previously

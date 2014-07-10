@@ -181,8 +181,8 @@ void unit_drawer::redraw_unit (const unit & u) const
 		draw_bars = sdl::rects_overlap(unit_rect, disp.map_outside_area());
 	}
 #ifdef SDL_GPU
-	sdl::ttexture ellipse_front;
-	sdl::ttexture ellipse_back;
+	sdl::timage ellipse_front;
+	sdl::timage ellipse_back;
 #else
 	surface ellipse_front(NULL);
 	surface ellipse_back(NULL);
@@ -333,7 +333,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 		for(std::vector<std::string>::const_iterator ov = u.overlays().begin(); ov != u.overlays().end(); ++ov) {
 #ifdef SDL_GPU
-			const sdl::ttexture ov_img(image::get_texture(*ov, image::SCALED_TO_ZOOM));
+			const sdl::timage ov_img(image::get_texture(*ov, image::SCALED_TO_ZOOM));
 			if(!ov_img.null()) {
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
 					loc, xsrc, ysrc +adjusted_params.y, ov_img);
@@ -422,7 +422,7 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 	bot.h = surf->w - bot.y;
 
 #ifdef SDL_GPU
-	sdl::ttexture img(surf);
+	sdl::timage img(surf);
 	img.set_clip(top);
 	disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xpos, ypos, surf);
 	img.set_clip(bot);
@@ -440,7 +440,7 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 		SDL_Rect filled_area = sdl::create_rect(0, 0, bar_loc.w, height-unfilled);
 		sdl::fill_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
 #ifdef SDL_GPU
-		disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xpos + bar_loc.x, ypos + bar_loc.y + unfilled, sdl::ttexture(filled_surf));
+		disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xpos + bar_loc.x, ypos + bar_loc.y + unfilled, sdl::timage(filled_surf));
 #else
 		disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf);
 #endif

@@ -26,7 +26,7 @@
 #include "rect.hpp"
 namespace sdl
 {
-ttexture::ttexture(Uint16 w, Uint16 h)
+timage::timage(Uint16 w, Uint16 h)
 	: image_(NULL)
 	, rotation_(0)
 	, hscale_(1)
@@ -45,7 +45,7 @@ ttexture::ttexture(Uint16 w, Uint16 h)
 	}
 }
 
-ttexture::ttexture(const std::string &file)
+timage::timage(const std::string &file)
 	: image_(GPU_LoadImage(file.c_str()))
 	, rotation_(0)
 	, hscale_(1)
@@ -64,7 +64,7 @@ ttexture::ttexture(const std::string &file)
 	}
 }
 
-ttexture::ttexture(const surface &source)
+timage::timage(const surface &source)
 	: image_(GPU_CopyImageFromSurface(source))
 	, rotation_(0)
 	, hscale_(1)
@@ -83,7 +83,7 @@ ttexture::ttexture(const surface &source)
 	}
 }
 
-ttexture::ttexture(SDL_Surface *source)
+timage::timage(SDL_Surface *source)
 	: image_(GPU_CopyImageFromSurface(source))
 	, rotation_(0)
 	, hscale_(1)
@@ -102,7 +102,7 @@ ttexture::ttexture(SDL_Surface *source)
 	}
 }
 
-ttexture::ttexture()
+timage::timage()
 	: image_(NULL)
 	, rotation_(0)
 	, hscale_(1)
@@ -115,7 +115,7 @@ ttexture::ttexture()
 {
 }
 
-sdl::ttexture::~ttexture()
+sdl::timage::~timage()
 {
 	if (image_ != NULL) {
 		image_->refcount -= 1;
@@ -125,7 +125,7 @@ sdl::ttexture::~ttexture()
 	}
 }
 
-ttexture::ttexture(const ttexture &texture)
+timage::timage(const timage &texture)
 	: image_(texture.image_)
 	, rotation_(texture.rotation_)
 	, hscale_(texture.hscale_)
@@ -141,17 +141,17 @@ ttexture::ttexture(const ttexture &texture)
 	}
 }
 
-ttexture &ttexture::operator =(const ttexture &texture)
+timage &timage::operator =(const timage &texture)
 {
 	if (&texture != this) {
-		this->~ttexture();
-		new (this) ttexture(texture);
+		this->~timage();
+		new (this) timage(texture);
 	}
 
 	return *this;
 }
 
-void ttexture::draw(GPU_Target &target, const int x, const int y)
+void timage::draw(GPU_Target &target, const int x, const int y)
 {
 	GPU_SetImageFilter(image_,
 					   smooth_scaling_
@@ -163,73 +163,73 @@ void ttexture::draw(GPU_Target &target, const int x, const int y)
 					  y + height()/2, rotation_, hscale_, vscale_);
 }
 
-void ttexture::set_rotation(float rotation)
+void timage::set_rotation(float rotation)
 {
 	rotation_ = rotation;
 }
 
-float ttexture::rotation() const
+float timage::rotation() const
 {
 	return rotation_;
 }
 
-void ttexture::set_hscale(float factor)
+void timage::set_hscale(float factor)
 {
 	hscale_ = factor;
 }
 
-void ttexture::set_vscale(float factor)
+void timage::set_vscale(float factor)
 {
 	vscale_ = factor;
 }
 
-void ttexture::set_scale(float hfactor, float vfactor)
+void timage::set_scale(float hfactor, float vfactor)
 {
 	hscale_ = hfactor;
 	vscale_ = vfactor;
 }
 
-float ttexture::hscale() const
+float timage::hscale() const
 {
 	return hscale_;
 }
 
-float ttexture::vscale() const
+float timage::vscale() const
 {
 	return vscale_;
 }
 
-void ttexture::set_smooth_scaling(bool use_smooth)
+void timage::set_smooth_scaling(bool use_smooth)
 {
 	smooth_scaling_ = use_smooth;
 }
 
-bool ttexture::smooth_scaling() const
+bool timage::smooth_scaling() const
 {
 	return smooth_scaling_;
 }
 
-Uint16 ttexture::width() const
+Uint16 timage::width() const
 {
 	return image_->w * hscale_;
 }
 
-Uint16 ttexture::height() const
+Uint16 timage::height() const
 {
 	return image_->h * vscale_;
 }
 
-Uint16 ttexture::base_width() const
+Uint16 timage::base_width() const
 {
 	return image_->h;
 }
 
-Uint16 ttexture::base_height() const
+Uint16 timage::base_height() const
 {
 	return image_->w;
 }
 
-void ttexture::set_clip(const SDL_Rect &rect)
+void timage::set_clip(const SDL_Rect &rect)
 {
 	clip_.x = rect.x;
 	clip_.y = rect.y;
@@ -237,7 +237,7 @@ void ttexture::set_clip(const SDL_Rect &rect)
 	clip_.h = rect.h;
 }
 
-SDL_Rect ttexture::clip() const
+SDL_Rect timage::clip() const
 {
 	SDL_Rect result;
 	result.x = clip_.x;
@@ -248,65 +248,65 @@ SDL_Rect ttexture::clip() const
 	return result;
 }
 
-void ttexture::set_alpha(Uint8 alpha)
+void timage::set_alpha(Uint8 alpha)
 {
 	color_mod_.unused = alpha;
 }
 
-Uint8 ttexture::alpha() const
+Uint8 timage::alpha() const
 {
 	return color_mod_.unused;
 }
 
-void ttexture::set_color_mod(Uint8 r, Uint8 g, Uint8 b)
+void timage::set_color_mod(Uint8 r, Uint8 g, Uint8 b)
 {
 	color_mod_.r = r;
 	color_mod_.g = g;
 	color_mod_.b = b;
 }
 
-Uint8 ttexture::red_mod() const
+Uint8 timage::red_mod() const
 {
 	return color_mod_.r;
 }
 
-Uint8 ttexture::green_mod() const
+Uint8 timage::green_mod() const
 {
 	return color_mod_.g;
 }
 
-Uint8 ttexture::blue_mod() const
+Uint8 timage::blue_mod() const
 {
 	return color_mod_.b;
 }
 
-void ttexture::set_hwrap(GPU_WrapEnum mode)
+void timage::set_hwrap(GPU_WrapEnum mode)
 {
 	hwrap_ = mode;
 }
 
-void ttexture::set_vwrap(GPU_WrapEnum mode)
+void timage::set_vwrap(GPU_WrapEnum mode)
 {
 	vwrap_ = mode;
 }
 
-void ttexture::set_wrap(GPU_WrapEnum hmode, GPU_WrapEnum vmode)
+void timage::set_wrap(GPU_WrapEnum hmode, GPU_WrapEnum vmode)
 {
 	hwrap_ = hmode;
 	vwrap_ = vmode;
 }
 
-GPU_WrapEnum ttexture::hwrap() const
+GPU_WrapEnum timage::hwrap() const
 {
 	return hwrap_;
 }
 
-GPU_WrapEnum ttexture::vwrap() const
+GPU_WrapEnum timage::vwrap() const
 {
 	return vwrap_;
 }
 
-bool ttexture::null() const
+bool timage::null() const
 {
 	return image_ == NULL;
 }

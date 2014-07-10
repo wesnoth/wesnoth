@@ -126,7 +126,7 @@ void part_ui::prepare_background()
 	bool no_base_yet = true;
 
 	BOOST_FOREACH(const background_layer& bl, p_.get_background_layers()) {
-		sdl::ttexture layer;
+		sdl::timage layer;
 
 		if (!bl.file().empty()) {
 			layer = image::get_texture(bl.file());
@@ -439,7 +439,7 @@ void part_ui::render_title_box()
 		 .set_foreground_color(titlebox_font_color)
 		 .set_maximum_width(titlebox_max_w)
 		 .set_maximum_height(titlebox_max_h, true);
-	sdl::ttexture txttxt = t.render_as_texture();
+	sdl::timage txttxt = t.render_as_texture();
 
 	if(txttxt.null()) {
 		ERR_NG << "storyscreen titlebox rendering resulted in a null surface" << std::endl;
@@ -554,8 +554,8 @@ void part_ui::render_story_box_borders(SDL_Rect& update_area)
 	const part::BLOCK_LOCATION tbl = p_.story_text_location();
 
 	if(has_background_) {
-		sdl::ttexture border_top;
-		sdl::ttexture border_bottom;
+		sdl::timage border_top;
+		sdl::timage border_bottom;
 
 		if(tbl == part::BLOCK_BOTTOM || tbl == part::BLOCK_MIDDLE) {
 			border_top = image::get_texture(storybox_top_border_path);
@@ -668,7 +668,7 @@ void part_ui::render_story_box()
 		 .set_foreground_color(storybox_font_color)
 		 .set_maximum_width(max_width)
 		 .set_maximum_height(max_height, true);
-	sdl::ttexture txttxt = t.render_as_texture();
+	sdl::timage txttxt = t.render_as_texture();
 
 	if(txttxt.null()) {
 		ERR_NG << "storyscreen text area rendering resulted in a null texture" << std::endl;

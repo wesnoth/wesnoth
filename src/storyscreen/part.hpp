@@ -44,7 +44,7 @@ public:
 	{
 		SDL_Rect rect;	/**< Corrected rectangle for rendering surf. */
 #ifdef SDL_GPU
-		sdl::ttexture image;
+		sdl::timage image;
 #else
 		surface image;	/**< Surface, scaled if required. */
 #endif

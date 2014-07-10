@@ -77,7 +77,7 @@ private:
 	CVideo &screen_;
 	SDL_Rect textarea_;
 #ifdef SDL_GPU
-	sdl::ttexture logo_image_;
+	sdl::timage logo_image_;
 #else
 	surface logo_surface_;
 #endif

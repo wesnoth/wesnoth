@@ -84,7 +84,7 @@ private:
 	SDL_Rect base_rect_;
 
 #ifdef SDL_GPU
-	std::vector< sdl::ttexture > background_images_;
+	std::vector< sdl::timage > background_images_;
 	std::vector< std::pair<int, int> > background_positions_;
 #else
 	surface background_;

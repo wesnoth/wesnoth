@@ -338,7 +338,7 @@ void display::init_flags_for_side_internal(size_t n, const std::string& side_col
 }
 
 #ifdef SDL_GPU
-sdl::ttexture display::get_flag(const map_location& loc)
+sdl::timage display::get_flag(const map_location& loc)
 {
 	t_translation::t_terrain terrain = get_map().get_terrain(loc);
 
@@ -357,7 +357,7 @@ sdl::ttexture display::get_flag(const map_location& loc)
 		}
 	}
 
-	return sdl::ttexture();
+	return sdl::timage();
 }
 #else
 surface display::get_flag(const map_location& loc)
@@ -949,7 +949,7 @@ static const std::string& get_direction(size_t n)
 }
 
 #ifdef SDL_GPU
-std::vector<sdl::ttexture> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
+std::vector<sdl::timage> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
 #else
 std::vector<surface> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
 #endif
@@ -1031,14 +1031,14 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 
 	// now get the surfaces
 #ifdef SDL_GPU
-	std::vector<sdl::ttexture> res;
+	std::vector<sdl::timage> res;
 #else
 	std::vector<surface> res;
 #endif
 
 	BOOST_FOREACH(std::string& name, names) {
 #ifdef SDL_GPU
-		const sdl::ttexture img(image::get_texture(name, image_type));
+		const sdl::timage img(image::get_texture(name, image_type));
 		if (!img.null())
 			res.push_back(img);
 #else
@@ -1053,7 +1053,7 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 
 // TODO: proper SDL_gpu implementation
 #ifdef SDL_GPU
-std::vector<sdl::ttexture> display::get_terrain_images(
+std::vector<sdl::timage> display::get_terrain_images(
 								const map_location &loc,
 								const std::string& timeid,
 								image::TYPE image_type,
@@ -1066,7 +1066,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 #endif
 {
 #ifdef SDL_GPU
-	std::vector<sdl::ttexture> res;
+	std::vector<sdl::timage> res;
 #else
 	std::vector<surface> res;
 #endif
@@ -1143,7 +1143,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 
 			if (!surf.null()) {
 #ifdef SDL_GPU
-				res.push_back(sdl::ttexture(surf));
+				res.push_back(sdl::timage(surf));
 #else
 				res.push_back(surf);
 #endif
@@ -1157,14 +1157,14 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 #ifdef SDL_GPU
 void display::drawing_buffer_add(const tdrawing_layer layer,
 								 const map_location& loc, int x, int y,
-								 const sdl::ttexture &img)
+								 const sdl::timage &img)
 {
 	drawing_buffer_.push_back(tblit(layer, loc, x, y, img));
 }
 
 void display::drawing_buffer_add(const tdrawing_layer layer,
 								 const map_location& loc, int x, int y,
-								 const std::vector<sdl::ttexture> &imgs)
+								 const std::vector<sdl::timage> &imgs)
 {
 	drawing_buffer_.push_back(tblit(layer, loc, x, y, imgs));
 }
@@ -1276,7 +1276,7 @@ void display::drawing_buffer_commit()
 	 */
 
 	BOOST_FOREACH(tblit &blit, drawing_buffer_) {
-		BOOST_FOREACH(sdl::ttexture& img, blit.images()) {
+		BOOST_FOREACH(sdl::timage& img, blit.images()) {
 			if (!img.null()) {
 				screen_.draw_texture(img, blit.x(), blit.y());
 			}
@@ -1545,8 +1545,8 @@ void display::draw_text_in_hex(const map_location& loc,
 	const int y = get_location_y(loc) - text_surf->h/2
 	              + static_cast<int>(y_in_hex* hex_size());
 #ifdef SDL_GPU
-	sdl::ttexture text_img(text_surf);
-	sdl::ttexture back_img(back_surf);
+	sdl::timage text_img(text_surf);
+	sdl::timage back_img(back_surf);
 
 	for (int dy=-1; dy <= 1; ++dy) {
 		for (int dx=-1; dx <= 1; ++dx) {
@@ -1612,7 +1612,7 @@ void display::render_image(int x, int y, const display::tdrawing_layer drawing_l
 		return;
 	}
 #ifdef SDL_GPU
-	sdl::ttexture img(surf);
+	sdl::timage img(surf);
 
 	if(submerged > 0.0) {
 		// divide the surface into 2 parts
@@ -2760,7 +2760,7 @@ void display::draw_hex(const map_location& loc) {
 					   ? image::get_lighted_image(overlays.first->second.image, lt, image::SCALED_TO_HEX)
 					   : image::get_image(overlays.first->second.image, image_type);
 #ifdef SDL_GPU
-				drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, sdl::ttexture(surf));
+				drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, sdl::timage(surf));
 #else
 				drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, surf);
 #endif
@@ -2854,8 +2854,8 @@ void display::draw_hex(const map_location& loc) {
 				off_y -= text->h / 2;
 			}
 #ifdef SDL_GPU
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, sdl::ttexture(bg));
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, sdl::ttexture(text));
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, sdl::timage(bg));
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, sdl::timage(text));
 #else
 			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
 			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, text);
@@ -2873,8 +2873,8 @@ void display::draw_hex(const map_location& loc) {
 				off_y -= text->h / 2;
 			}
 #ifdef SDL_GPU
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, sdl::ttexture(bg));
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, sdl::ttexture(text));
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, sdl::timage(bg));
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, sdl::timage(text));
 #else
 			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
 			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, text);

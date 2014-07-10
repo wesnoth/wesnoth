@@ -60,7 +60,7 @@ std::map<map_location,fixed_t> game_display::debugHighlights_;
  * This function is only used internally by game_display so I have moved it out of the header into the compilaton unit.
  */
 #ifdef SDL_GPU
-std::vector<sdl::ttexture> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_);
+std::vector<sdl::timage> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_);
 #else
 std::vector<surface> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_);
 #endif
@@ -123,12 +123,12 @@ void game_display::new_turn()
 #ifdef SDL_GPU
 				if(old_mask != NULL) {
 					const fixed_t proportion = ftofxp(1.0) - fxpdiv(i,niterations);
-					tod_hex_mask1 = sdl::ttexture(adjust_surface_alpha(old_mask,proportion));
+					tod_hex_mask1 = sdl::timage(adjust_surface_alpha(old_mask,proportion));
 				}
 
 				if(new_mask != NULL) {
 					const fixed_t proportion = fxpdiv(i,niterations);
-					tod_hex_mask2 = sdl::ttexture(adjust_surface_alpha(new_mask,proportion));
+					tod_hex_mask2 = sdl::timage(adjust_surface_alpha(new_mask,proportion));
 				}
 #else
 				if(old_mask != NULL) {
@@ -154,8 +154,8 @@ void game_display::new_turn()
 		}
 
 #ifdef SDL_GPU
-		tod_hex_mask1 = sdl::ttexture();
-		tod_hex_mask2 = sdl::ttexture();
+		tod_hex_mask1 = sdl::timage();
+		tod_hex_mask2 = sdl::timage();
 #else
 		tod_hex_mask1.assign(NULL);
 		tod_hex_mask2.assign(NULL);
@@ -373,7 +373,7 @@ void game_display::draw_hex(const map_location& loc)
 		if (!(w->is_active() && w->has_temp_move()))
 		{
 #ifdef SDL_GPU
-			std::vector<sdl::ttexture> footstepImages = footsteps_images(loc, route_, dc_);
+			std::vector<sdl::timage> footstepImages = footsteps_images(loc, route_, dc_);
 #else
 			std::vector<surface> footstepImages = footsteps_images(loc, route_, dc_);
 #endif
@@ -583,13 +583,13 @@ void game_display::draw_movement_info(const map_location& loc)
 }
 
 #ifdef SDL_GPU
-std::vector<sdl::ttexture> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_)
+std::vector<sdl::timage> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_)
 #else
 std::vector<surface> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_)
 #endif
 {
 #ifdef SDL_GPU
-	std::vector<sdl::ttexture> res;
+	std::vector<sdl::timage> res;
 #else
 	std::vector<surface> res;
 #endif
@@ -618,7 +618,7 @@ std::vector<surface> footsteps_images(const map_location& loc, const pathfind::m
 	const std::string foot_speed_prefix = game_config::foot_speed_prefix[image_number-1];
 
 #ifdef SDL_GPU
-	sdl::ttexture teleport;
+	sdl::timage teleport;
 #else
 	surface teleport = NULL;
 #endif

@@ -127,7 +127,7 @@ namespace image {
 	surface load_from_disk(const locator &loc);
 
 #ifdef SDL_GPU
-	sdl::ttexture load_texture(const locator &loc);
+	sdl::timage load_texture(const locator &loc);
 #endif
 
 	size_t hash_value(const locator::value&);
@@ -135,7 +135,7 @@ namespace image {
 
 	typedef cache_type<surface> image_cache;
 #ifdef SDL_GPU
-	typedef cache_type<sdl::ttexture> texture_cache;
+	typedef cache_type<sdl::timage> texture_cache;
 #endif
 	typedef cache_type<bool> bool_cache;
 
@@ -210,7 +210,7 @@ namespace image {
 	///SDL_FreeSurface()
 	surface get_image(const locator& i_locator, TYPE type=UNSCALED);
 #ifdef SDL_GPU
-	sdl::ttexture get_texture(const locator &loc, TYPE type=UNSCALED);
+	sdl::timage get_texture(const locator &loc, TYPE type=UNSCALED);
 #endif
 
 	///function to get the surface corresponding to an image.

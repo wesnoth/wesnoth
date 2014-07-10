@@ -388,7 +388,7 @@ void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rec
 	sdl_blit(surf,srcrect,target,&dst);
 }
 #ifdef SDL_GPU
-void CVideo::draw_texture(sdl::ttexture &texture, int x, int y)
+void CVideo::draw_texture(sdl::timage &texture, int x, int y)
 {
 	texture.draw(*render_target, x, y);
 }
