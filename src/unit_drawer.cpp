@@ -180,9 +180,13 @@ void unit_drawer::redraw_unit (const unit & u) const
 		SDL_Rect unit_rect = sdl::create_rect(xsrc, ysrc +adjusted_params.y, hex_size, hex_size);
 		draw_bars = sdl::rects_overlap(unit_rect, disp.map_outside_area());
 	}
-
+#ifdef SDL_GPU
+	sdl::ttexture ellipse_front;
+	sdl::ttexture ellipse_back;
+#else
 	surface ellipse_front(NULL);
 	surface ellipse_back(NULL);
+#endif
 	int ellipse_floating = 0;
 	// Always show the ellipse for selected units
 	if(draw_bars && (preferences::show_side_colors() || sel_hex == loc)) {
@@ -206,14 +210,32 @@ void unit_drawer::redraw_unit (const unit & u) const
 			// Load the ellipse parts recolored to match team color
 			char buf[100];
 			std::string tc=team::get_side_color_index(side);
-
+#ifdef SDL_GPU
+			snprintf(buf,sizeof(buf),"%s-%s%s%stop.png~RC(ellipse_red>%s)",ellipse.c_str(),leader,nozoc,selected,tc.c_str());
+			ellipse_back = image::get_texture(image::locator(buf), image::SCALED_TO_ZOOM);
+			snprintf(buf,sizeof(buf),"%s-%s%s%sbottom.png~RC(ellipse_red>%s)",ellipse.c_str(),leader,nozoc,selected,tc.c_str());
+			ellipse_front = image::get_texture(image::locator(buf), image::SCALED_TO_ZOOM);
+#else
 			snprintf(buf,sizeof(buf),"%s-%s%s%stop.png~RC(ellipse_red>%s)",ellipse.c_str(),leader,nozoc,selected,tc.c_str());
 			ellipse_back.assign(image::get_image(image::locator(buf), image::SCALED_TO_ZOOM));
 			snprintf(buf,sizeof(buf),"%s-%s%s%sbottom.png~RC(ellipse_red>%s)",ellipse.c_str(),leader,nozoc,selected,tc.c_str());
 			ellipse_front.assign(image::get_image(image::locator(buf), image::SCALED_TO_ZOOM));
+#endif
 		}
 	}
+#ifdef SDL_GPU
+	if (!ellipse_back.null()) {
+		//disp.drawing_buffer_add(display::LAYER_UNIT_BG, loc,
+		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc,
+			xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_back);
+	}
 
+	if (!ellipse_front.null()) {
+		//disp.drawing_buffer_add(display::LAYER_UNIT_FG, loc,
+		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc,
+			xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_front);
+	}
+#else
 	if (ellipse_back != NULL) {
 		//disp.drawing_buffer_add(display::LAYER_UNIT_BG, loc,
 		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc,
@@ -225,6 +247,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc,
 			xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_front);
 	}
+#endif
 	if(draw_bars) {
 		const image::locator* orb_img = NULL;
 		/*static*/ const image::locator partmoved_orb(game_config::images::orb + "~RC(magenta>" +
@@ -309,11 +332,19 @@ void unit_drawer::redraw_unit (const unit & u) const
 		}
 
 		for(std::vector<std::string>::const_iterator ov = u.overlays().begin(); ov != u.overlays().end(); ++ov) {
+#ifdef SDL_GPU
+			const sdl::ttexture ov_img(image::get_texture(*ov, image::SCALED_TO_ZOOM));
+			if(!ov_img.null()) {
+				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
+					loc, xsrc, ysrc +adjusted_params.y, ov_img);
+			}
+#else
 			const surface ov_img(image::get_image(*ov, image::SCALED_TO_ZOOM));
 			if(ov_img != NULL) {
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
 					loc, xsrc, ysrc +adjusted_params.y, ov_img);
 			}
+#endif
 		}
 	}
 
@@ -336,6 +367,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 	ac.refreshing_ = false;
 }
 
+//TODO: proper SDL_gpu implementation
 void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 		const map_location& loc, size_t height, double filled,
 		const SDL_Color& col, fixed_t alpha) const
@@ -389,8 +421,16 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 	SDL_Rect bot = sdl::create_rect(0, bar_loc.y + skip_rows, surf->w, 0);
 	bot.h = surf->w - bot.y;
 
+#ifdef SDL_GPU
+	sdl::ttexture img(surf);
+	img.set_clip(top);
+	disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xpos, ypos, surf);
+	img.set_clip(bot);
+	disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xpos, ypos + top.h, surf);
+#else
 	disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xpos, ypos, surf, top);
 	disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xpos, ypos + top.h, surf, bot);
+#endif
 
 	size_t unfilled = static_cast<size_t>(height * (1.0 - filled));
 
@@ -399,7 +439,11 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 		surface filled_surf = create_compatible_surface(bar_surf, bar_loc.w, height - unfilled);
 		SDL_Rect filled_area = sdl::create_rect(0, 0, bar_loc.w, height-unfilled);
 		sdl::fill_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
+#ifdef SDL_GPU
+		disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xpos + bar_loc.x, ypos + bar_loc.y + unfilled, sdl::ttexture(filled_surf));
+#else
 		disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf);
+#endif
 	}
 }
 

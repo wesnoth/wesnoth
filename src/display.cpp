@@ -337,6 +337,29 @@ void display::init_flags_for_side_internal(size_t n, const std::string& side_col
 	f.start_animation(rand() % f.get_end_time(), true);
 }
 
+#ifdef SDL_GPU
+sdl::ttexture display::get_flag(const map_location& loc)
+{
+	t_translation::t_terrain terrain = get_map().get_terrain(loc);
+
+	if(!get_map().is_village(terrain)) {
+		return surface(NULL);
+	}
+
+	for(size_t i = 0; i != dc_->teams().size(); ++i) {
+		if(dc_->teams()[i].owns_village(loc) &&
+		  (!fogged(loc) || !dc_->teams()[currentTeam_].is_enemy(i+1)))
+		{
+			flags_[i].update_last_draw_time();
+			const image::locator &image_flag = animate_map_ ?
+				flags_[i].get_current_frame() : flags_[i].get_first_frame();
+			return image::get_texture(image_flag, image::TOD_COLORED);
+		}
+	}
+
+	return sdl::ttexture();
+}
+#else
 surface display::get_flag(const map_location& loc)
 {
 	t_translation::t_terrain terrain = get_map().get_terrain(loc);
@@ -358,6 +381,7 @@ surface display::get_flag(const map_location& loc)
 
 	return surface(NULL);
 }
+#endif
 
 void display::set_team(size_t teamindex, bool show_everything)
 {
@@ -924,7 +948,11 @@ static const std::string& get_direction(size_t n)
 	return dirs[n >= sizeof(dirs)/sizeof(*dirs) ? 0 : n];
 }
 
+#ifdef SDL_GPU
+std::vector<sdl::ttexture> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
+#else
 std::vector<surface> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
+#endif
 {
 	std::vector<std::string> names;
 
@@ -1002,23 +1030,46 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 	}
 
 	// now get the surfaces
+#ifdef SDL_GPU
+	std::vector<sdl::ttexture> res;
+#else
 	std::vector<surface> res;
+#endif
 
 	BOOST_FOREACH(std::string& name, names) {
+#ifdef SDL_GPU
+		const sdl::ttexture img(image::get_texture(name, image_type));
+		if (!img.null())
+			res.push_back(img);
+#else
 		const surface surf(image::get_image(name, image_type));
 		if (surf)
 			res.push_back(surf);
+#endif
 	}
 
 	return res;
 }
 
+// TODO: proper SDL_gpu implementation
+#ifdef SDL_GPU
+std::vector<sdl::ttexture> display::get_terrain_images(
+								const map_location &loc,
+								const std::string& timeid,
+								image::TYPE image_type,
+								TERRAIN_TYPE terrain_type)
+#else
 std::vector<surface> display::get_terrain_images(const map_location &loc,
 						     const std::string& timeid,
 		image::TYPE image_type,
 		TERRAIN_TYPE terrain_type)
+#endif
 {
+#ifdef SDL_GPU
+	std::vector<sdl::ttexture> res;
+#else
 	std::vector<surface> res;
+#endif
 
 	terrain_builder::TERRAIN_TYPE builder_terrain_type =
 	      (terrain_type == FOREGROUND ?
@@ -1091,7 +1142,11 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 			}
 
 			if (!surf.null()) {
+#ifdef SDL_GPU
+				res.push_back(sdl::ttexture(surf));
+#else
 				res.push_back(surf);
+#endif
 			}
 		}
 	}
@@ -1099,6 +1154,21 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 	return res;
 }
 
+#ifdef SDL_GPU
+void display::drawing_buffer_add(const tdrawing_layer layer,
+								 const map_location& loc, int x, int y,
+								 const sdl::ttexture &img)
+{
+	drawing_buffer_.push_back(tblit(layer, loc, x, y, img));
+}
+
+void display::drawing_buffer_add(const tdrawing_layer layer,
+								 const map_location& loc, int x, int y,
+								 const std::vector<sdl::ttexture> &imgs)
+{
+	drawing_buffer_.push_back(tblit(layer, loc, x, y, imgs));
+}
+#else
 void display::drawing_buffer_add(const tdrawing_layer layer,
 		const map_location& loc, int x, int y, const surface& surf,
 		const SDL_Rect &clip)
@@ -1113,6 +1183,7 @@ void display::drawing_buffer_add(const tdrawing_layer layer,
 {
 	drawing_buffer_.push_back(tblit(layer, loc, x, y, surf, clip));
 }
+#endif
 
 // FIXME: temporary method. Group splitting should be made
 // public into the definition of tdrawing_layer
@@ -1186,6 +1257,34 @@ void display::drawing_buffer_commit()
 	// std::list::sort() is a stable sort
 	drawing_buffer_.sort();
 
+#ifdef SDL_GPU
+	SDL_Rect clip_rect = map_area();
+	surface screen = get_screen_surface();
+	clip_rect_setter set_clip_rect(screen, &clip_rect);
+
+	/*
+	 * Info regarding the rendering algorithm.
+	 *
+	 * In order to render a hex properly it needs to be rendered per row. On
+	 * this row several layers need to be drawn at the same time. Mainly the
+	 * unit and the background terrain. This is needed since both can spill
+	 * in the next hex. The foreground terrain needs to be drawn before to
+	 * avoid decapitation a unit.
+	 *
+	 * This ended in the following priority order:
+	 * layergroup > location > layer > 'tblit' > surface
+	 */
+
+	BOOST_FOREACH(tblit &blit, drawing_buffer_) {
+		BOOST_FOREACH(sdl::ttexture& img, blit.images()) {
+			if (!img.null()) {
+				screen_.draw_texture(img, blit.x(), blit.y());
+			}
+		}
+	}
+	flip();
+	drawing_buffer_clear();
+#else
 	SDL_Rect clip_rect = map_area();
 	surface screen = get_screen_surface();
 	clip_rect_setter set_clip_rect(screen, &clip_rect);
@@ -1217,6 +1316,7 @@ void display::drawing_buffer_commit()
 		}
 	}
 	drawing_buffer_clear();
+#endif
 }
 
 void display::drawing_buffer_clear()
@@ -1429,6 +1529,7 @@ static void draw_background(surface screen, const SDL_Rect& area, const std::str
 	}
 }
 
+//TODO: convert this to use sdl::ttexture
 void display::draw_text_in_hex(const map_location& loc,
 		const tdrawing_layer layer, const std::string& text,
 		size_t font_size, SDL_Color color, double x_in_hex, double y_in_hex)
@@ -1443,7 +1544,19 @@ void display::draw_text_in_hex(const map_location& loc,
 	              + static_cast<int>(x_in_hex* hex_size());
 	const int y = get_location_y(loc) - text_surf->h/2
 	              + static_cast<int>(y_in_hex* hex_size());
+#ifdef SDL_GPU
+	sdl::ttexture text_img(text_surf);
+	sdl::ttexture back_img(back_surf);
 
+	for (int dy=-1; dy <= 1; ++dy) {
+		for (int dx=-1; dx <= 1; ++dx) {
+			if (dx!=0 || dy!=0) {
+				drawing_buffer_add(layer, loc, x + dx, y + dy, back_img);
+			}
+		}
+	}
+	drawing_buffer_add(layer, loc, x, y, text_img);
+#else
 	for (int dy=-1; dy <= 1; ++dy) {
 		for (int dx=-1; dx <= 1; ++dx) {
 			if (dx!=0 || dy!=0) {
@@ -1452,8 +1565,10 @@ void display::draw_text_in_hex(const map_location& loc,
 		}
 	}
 	drawing_buffer_add(layer, loc, x, y, text_surf);
+#endif
 }
 
+//TODO: convert this to use sdl::ttexture
 void display::render_image(int x, int y, const display::tdrawing_layer drawing_layer,
 		const map_location& loc, surface image,
 		bool hreverse, bool greyscale, fixed_t alpha,
@@ -1496,7 +1611,37 @@ void display::render_image(int x, int y, const display::tdrawing_layer drawing_l
 		ERR_DP << "surface lost..." << std::endl;
 		return;
 	}
+#ifdef SDL_GPU
+	sdl::ttexture img(surf);
 
+	if(submerged > 0.0) {
+		// divide the surface into 2 parts
+		const int submerge_height = std::max<int>(0, surf->h*(1.0-submerged));
+		//const int depth = surf->h - submerge_height;
+		SDL_Rect srcrect = sdl::create_rect(0, 0, surf->w, submerge_height);
+		img.set_clip(srcrect);
+		drawing_buffer_add(drawing_layer, loc, x, y, img);
+
+		if(submerge_height != surf->h) {
+			//the lower part will be transparent
+			//float alpha_base = 0.3f; // 30% alpha at surface of water
+			float alpha_delta = 0.015f; // lose 1.5% per pixel depth
+			alpha_delta *= zoom_ / DefaultZoom; // adjust with zoom
+			//TODO: submerging
+			//surf = submerge_alpha(surf, depth, alpha_base, alpha_delta, false);
+
+			srcrect.y = submerge_height;
+			srcrect.h = surf->h-submerge_height;
+			y += submerge_height;
+
+			img.set_clip(srcrect);
+			drawing_buffer_add(drawing_layer, loc, x, y, img);
+		}
+	} else {
+		// simple blit
+		drawing_buffer_add(drawing_layer, loc, x, y, img);
+	}
+#else
 	if(submerged > 0.0) {
 		// divide the surface into 2 parts
 		const int submerge_height = std::max<int>(0, surf->h*(1.0-submerged));
@@ -1521,6 +1666,7 @@ void display::render_image(int x, int y, const display::tdrawing_layer drawing_l
 		// simple blit
 		drawing_buffer_add(drawing_layer, loc, x, y, surf);
 	}
+#endif
 
 }
 
@@ -1696,8 +1842,70 @@ void display::announce(const std::string& message, const SDL_Color& color)
 	font::add_floating_label(flabel);
 }
 
+
 void display::draw_border(const map_location& loc, const int xpos, const int ypos)
 {
+#ifdef SDL_GPU
+	/**
+	 * at the moment the border must be between 0.0 and 0.5
+	 * and the image should always be prepared for a 0.5 border.
+	 * This way this code doesn't need modifications for other border sizes.
+	 */
+
+	// First handle the corners :
+	if(loc.x == -1 && loc.y == -1) { // top left corner
+		drawing_buffer_add(LAYER_BORDER, loc, xpos + zoom_/4, ypos,
+			image::get_texture(theme_.border().corner_image_top_left, image::SCALED_TO_ZOOM));
+	} else if(loc.x == get_map().w() && loc.y == -1) { // top right corner
+		// We use the map idea of odd and even, and map coords are internal coords + 1
+		if(loc.x%2 == 0) {
+			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos + zoom_/2,
+				image::get_texture(theme_.border().corner_image_top_right_odd, image::SCALED_TO_ZOOM));
+		} else {
+			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos,
+				image::get_texture(theme_.border().corner_image_top_right_even, image::SCALED_TO_ZOOM));
+		}
+	} else if(loc.x == -1 && loc.y == get_map().h()) { // bottom left corner
+		drawing_buffer_add(LAYER_BORDER, loc, xpos + zoom_/4, ypos,
+			image::get_texture(theme_.border().corner_image_bottom_left, image::SCALED_TO_ZOOM));
+
+	} else if(loc.x == get_map().w() && loc.y == get_map().h()) { // bottom right corner
+		// We use the map idea of odd and even, and map coords are internal coords + 1
+		if(loc.x%2 == 1) {
+			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos,
+				image::get_texture(theme_.border().corner_image_bottom_right_even, image::SCALED_TO_ZOOM));
+		} else {
+			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos,
+				image::get_texture(theme_.border().corner_image_bottom_right_odd, image::SCALED_TO_ZOOM));
+		}
+
+	// Now handle the sides:
+	} else if(loc.x == -1) { // left side
+		drawing_buffer_add(LAYER_BORDER, loc, xpos + zoom_/4, ypos,
+			image::get_texture(theme_.border().border_image_left, image::SCALED_TO_ZOOM));
+	} else if(loc.x == get_map().w()) { // right side
+		drawing_buffer_add(LAYER_BORDER, loc, xpos + zoom_/4, ypos,
+			image::get_texture(theme_.border().border_image_right, image::SCALED_TO_ZOOM));
+	} else if(loc.y == -1) { // top side
+		// We use the map idea of odd and even, and map coords are internal coords + 1
+		if(loc.x%2 == 1) {
+			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos,
+				image::get_texture(theme_.border().border_image_top_even, image::SCALED_TO_ZOOM));
+		} else {
+			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos + zoom_/2,
+				image::get_texture(theme_.border().border_image_top_odd, image::SCALED_TO_ZOOM));
+		}
+	} else if(loc.y == get_map().h()) { // bottom side
+		// We use the map idea of odd and even, and map coords are internal coords + 1
+		if(loc.x%2 == 1) {
+			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos,
+				image::get_texture(theme_.border().border_image_bottom_even, image::SCALED_TO_ZOOM));
+		} else {
+			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos + zoom_/2,
+				image::get_texture(theme_.border().border_image_bottom_odd, image::SCALED_TO_ZOOM));
+		}
+	}
+#else
 	/**
 	 * at the moment the border must be between 0.0 and 0.5
 	 * and the image should always be prepared for a 0.5 border.
@@ -1757,6 +1965,7 @@ void display::draw_border(const map_location& loc, const int xpos, const int ypo
 				image::get_image(theme_.border().border_image_bottom_odd, image::SCALED_TO_ZOOM));
 		}
 	}
+#endif
 }
 
 void display::draw_minimap()
@@ -2475,6 +2684,7 @@ void display::draw_invalidated() {
 
 }
 
+//TODO: proper SDL_gpu implementation
 void display::draw_hex(const map_location& loc) {
 	int xpos = get_location_x(loc);
 	int ypos = get_location_y(loc);
@@ -2490,6 +2700,19 @@ void display::draw_hex(const map_location& loc) {
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos,
 			get_terrain_images(loc,tod.id,image_type, FOREGROUND));
 
+#ifdef SDL_GPU
+		// Draw the grid, if that's been enabled
+		if(grid_ && on_map && !off_map_tile) {
+			static const image::locator grid_top(game_config::images::grid_top);
+			drawing_buffer_add(LAYER_GRID_TOP, loc, xpos, ypos,
+				image::get_texture(grid_top, image::TOD_COLORED));
+			static const image::locator grid_bottom(game_config::images::grid_bottom);
+			drawing_buffer_add(LAYER_GRID_BOTTOM, loc, xpos, ypos,
+				image::get_texture(grid_bottom, image::TOD_COLORED));
+		}
+		// village-control flags.
+		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, get_flag(loc));
+#else
 		// Draw the grid, if that's been enabled
 		if(grid_ && on_map && !off_map_tile) {
 			static const image::locator grid_top(game_config::images::grid_top);
@@ -2501,6 +2724,7 @@ void display::draw_hex(const map_location& loc) {
 		}
 		// village-control flags.
 		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, get_flag(loc));
+#endif
 	}
 
 	if(!shrouded(loc)) {
@@ -2531,11 +2755,15 @@ void display::draw_hex(const map_location& loc) {
 					overlays.first->second.team_name.find(dc_->teams()[viewing_team()].team_name()) != std::string::npos)
 					&& !(fogged(loc) && !overlays.first->second.visible_in_fog))
 			{
+
 				const surface surf = use_local_light
 					   ? image::get_lighted_image(overlays.first->second.image, lt, image::SCALED_TO_HEX)
 					   : image::get_image(overlays.first->second.image, image_type);
-
+#ifdef SDL_GPU
+				drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, sdl::ttexture(surf));
+#else
 				drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, surf);
+#endif
 			}
 		}
 	}
@@ -2543,6 +2771,15 @@ void display::draw_hex(const map_location& loc) {
 	// Draw the time-of-day mask on top of the terrain in the hex.
 	// tod may differ from tod if hex is illuminated.
 	const std::string& tod_hex_mask = tod.image_mask;
+#ifdef SDL_GPU
+	if(!tod_hex_mask1.null() || !tod_hex_mask2.null()) {
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask1);
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask2);
+	} else if(!tod_hex_mask.empty()) {
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos,
+			image::get_texture(tod_hex_mask,image::SCALED_TO_HEX));
+	}
+#else
 	if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL) {
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask1);
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask2);
@@ -2550,10 +2787,15 @@ void display::draw_hex(const map_location& loc) {
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos,
 			image::get_image(tod_hex_mask,image::SCALED_TO_HEX));
 	}
+#endif
 
 	// Paint mouseover overlays
 	if(loc == mouseoverHex_ && (on_map || (in_editor() && get_map().on_board_with_border(loc)))
+#ifdef SDL_GPU
+			&& !mouseover_hex_overlay_.null()) {
+#else
 			&& mouseover_hex_overlay_ != NULL) {
+#endif
 		drawing_buffer_add(LAYER_MOUSEOVER_OVERLAY, loc, xpos, ypos, mouseover_hex_overlay_);
 	}
 
@@ -2567,6 +2809,19 @@ void display::draw_hex(const map_location& loc) {
 
 	// Apply shroud, fog and linger overlay
 
+#ifdef SDL_GPU
+	if(shrouded(loc)) {
+		// We apply void also on off-map tiles
+		// to shroud the half-hexes too
+		const std::string& shroud_image = get_variant(shroud_images_, loc);
+		drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos,
+			image::get_texture(shroud_image, image_type));
+	} else if(fogged(loc)) {
+		const std::string& fog_image = get_variant(fog_images_, loc);
+		drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos,
+			image::get_texture(fog_image, image_type));
+	}
+#else
 	if(shrouded(loc)) {
 		// We apply void also on off-map tiles
 		// to shroud the half-hexes too
@@ -2578,6 +2833,7 @@ void display::draw_hex(const map_location& loc) {
 		drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos,
 			image::get_image(fog_image, image_type));
 	}
+#endif
 
 	if(!shrouded(loc)) {
 		drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos, get_fog_shroud_images(loc, image_type));
@@ -2597,8 +2853,13 @@ void display::draw_hex(const map_location& loc) {
 			} else {
 				off_y -= text->h / 2;
 			}
+#ifdef SDL_GPU
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, sdl::ttexture(bg));
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, sdl::ttexture(text));
+#else
 			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
 			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, text);
+#endif
 		}
 		if (draw_terrain_codes_ && (game_config::debug || !shrouded(loc))) {
 			int off_x = xpos + hex_size()/2;
@@ -2611,14 +2872,24 @@ void display::draw_hex(const map_location& loc) {
 			if (!draw_coordinates_) {
 				off_y -= text->h / 2;
 			}
+#ifdef SDL_GPU
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, sdl::ttexture(bg));
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, sdl::ttexture(text));
+#else
 			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
 			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, text);
+#endif
 		}
 	}
 
 	if(debug_foreground) {
+#ifdef SDL_GPU
+		drawing_buffer_add(LAYER_UNIT_DEFAULT, loc, xpos, ypos,
+			image::get_texture("terrain/foreground.png", image_type));
+#else
 		drawing_buffer_add(LAYER_UNIT_DEFAULT, loc, xpos, ypos,
 			image::get_image("terrain/foreground.png", image_type));
+#endif
 	}
 
 }

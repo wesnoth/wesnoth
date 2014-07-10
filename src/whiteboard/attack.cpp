@@ -198,6 +198,24 @@ void attack::draw_hex(const map_location& hex)
 		std::string direction_text = map_location::write_direction(
 				get_dest_hex().get_relative_dir(target_hex_));
 
+#ifdef SDL_GPU
+		if (hex == get_dest_hex()) //add symbol to attacker hex
+		{
+			int xpos = resources::screen->get_location_x(get_dest_hex());
+			int ypos = resources::screen->get_location_y(get_dest_hex());
+
+			resources::screen->drawing_buffer_add(layer, get_dest_hex(), xpos, ypos,
+					image::get_texture("whiteboard/attack-indicator-src-" + direction_text + ".png", image::SCALED_TO_HEX));
+		}
+		else if (hex == target_hex_) //add symbol to defender hex
+		{
+			int xpos = resources::screen->get_location_x(target_hex_);
+			int ypos = resources::screen->get_location_y(target_hex_);
+
+			resources::screen->drawing_buffer_add(layer, target_hex_, xpos, ypos,
+					image::get_texture("whiteboard/attack-indicator-dst-" + direction_text + ".png", image::SCALED_TO_HEX));
+		}
+#else
 		if (hex == get_dest_hex()) //add symbol to attacker hex
 		{
 			int xpos = resources::screen->get_location_x(get_dest_hex());
@@ -214,6 +232,7 @@ void attack::draw_hex(const map_location& hex)
 			resources::screen->drawing_buffer_add(layer, target_hex_, xpos, ypos,
 					image::get_image("whiteboard/attack-indicator-dst-" + direction_text + ".png", image::SCALED_TO_HEX));
 		}
+#endif
 	}
 }
 
