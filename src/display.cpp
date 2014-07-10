@@ -1422,6 +1422,26 @@ void display::update_display()
 
 static void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui::button>& /*buttons*/)
 {
+#ifdef SDL_GPU
+	//log_scope("draw panel");
+	DBG_DP << "drawing panel " << panel.get_id() << "\n";
+
+	sdl::timage img(image::get_texture(panel.image()));
+
+	const SDL_Rect screen = screen_area();
+	SDL_Rect& loc = panel.location(screen);
+
+	DBG_DP << "panel location: x=" << loc.x << ", y=" << loc.y
+			<< ", w=" << loc.w << ", h=" << loc.h << "\n";
+
+	if(!img.null()) {
+		img.set_clip(sdl::create_rect(0, 0, loc.w, loc.h));
+		img.set_wrap(GPU_WRAP_REPEAT, GPU_WRAP_REPEAT);
+
+		video.draw_texture(img, loc.x, loc.y);
+		video.flip();
+	}
+#else
 	//log_scope("draw panel");
 	DBG_DP << "drawing panel " << panel.get_id() << "\n";
 
@@ -1441,6 +1461,7 @@ static void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui
 		video.blit_surface(loc.x,loc.y,surf);
 		update_rect(loc);
 	}
+#endif
 }
 
 static void draw_label(CVideo& video, surface target, const theme::label& label)
