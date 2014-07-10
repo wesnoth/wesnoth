@@ -523,6 +523,10 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 	return true;
 }
 
+static bool enter_configure_mode(game_display& disp, const config& game_config,
+	saved_game& state, 
+	bool local_players_only = false);
+
 static void enter_create_mode(game_display& disp, const config& game_config,
 	saved_game& state, bool local_players_only)
 {
@@ -572,7 +576,7 @@ static void enter_create_mode(game_display& disp, const config& game_config,
 	} while(configure_canceled || connect_canceled);
 }
 
-bool enter_configure_mode(game_display& disp, const config& game_config,
+static bool enter_configure_mode(game_display& disp, const config& game_config,
 	saved_game& state, bool local_players_only)
 {
 	DBG_MP << "entering configure mode" << std::endl;

@@ -71,8 +71,4 @@ mp::ui::result goto_mp_wait(saved_game& state, game_display& disp,
 	const config& game_config, bool observe);
 
 }
-
-bool enter_configure_mode(game_display& disp, const config& game_config,
-	saved_game& state, bool local_players_only = false);
-
 #endif
