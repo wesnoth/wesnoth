@@ -719,7 +719,15 @@ void save_preview_pane::draw_contents()
 
 	std::string map_data = summary["map_data"];
 	if(map_data.empty()) {
+		LOG_DP << "When parsing save summary " << ((*info_)[index_]).name() << std::endl
+			<< "Did not find a map_data field. Looking in game config for a child [" << summary["campaign_type"] << "] with id " << summary["scenario"] << std::endl;
+		assert(game_config_ && "ran into a null game config pointer inside a game preview pane");
 		const config &scenario = game_config_->find_child(summary["campaign_type"], "id", summary["scenario"]);
+
+		if (!scenario) {
+			LOG_DP << "Did not find a matching scenario." << std::endl;
+		}
+
 		if (scenario && !scenario.find_child("side", "shroud", "yes")) {
 			map_data = scenario["map_data"].str();
 			if (map_data.empty() && scenario.has_attribute("map")) {
@@ -765,6 +773,8 @@ void save_preview_pane::draw_contents()
 
 		ypos = std::max<int>(ypos,map_rect.y + map_rect.h + save_preview_border);
 		sdl_blit(map_surf,NULL,screen,&map_rect);
+	} else {
+		LOG_DP << "Never found a map for savefile " << (*info_)[index_].name() << std::endl; 
 	}
 
 	char time_buf[256] = {0};

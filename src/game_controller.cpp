@@ -447,6 +447,15 @@ bool game_controller::is_loading() const
 
 bool game_controller::load_game()
 {
+	assert(resources::config_manager);
+
+	if (state_.classification().campaign_type.size() == 0) {
+		state_ = game_state();
+		state_.classification().campaign_type = "scenario";
+	}
+
+	DBG_GENERAL << "Current campaign type: " << state_.classification().campaign_type << std::endl;
+
 	savegame::loadgame load(disp(), resources::config_manager->game_config(),
 	    state_);
 
