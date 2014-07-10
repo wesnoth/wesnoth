@@ -21,7 +21,7 @@ class CVideo;
 
 #include "sdl/utils.hpp"
 #include "sdl/gpu.hpp"
-#include "sdl/texture.hpp"
+#include "sdl/image.hpp"
 
 class loadscreen {
 public:

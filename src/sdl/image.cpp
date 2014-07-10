@@ -13,7 +13,7 @@
    See the COPYING file for more details.
 */
 
-#include "sdl/texture.hpp"
+#include "sdl/image.hpp"
 
 #include "SDL_image.h"
 #include "sdl/exception.hpp"

@@ -56,7 +56,7 @@ namespace wb {
 #include "team.hpp"
 #include "time_of_day.hpp"
 #include "sdl/rect.hpp"
-#include "sdl/texture.hpp"
+#include "sdl/image.hpp"
 #include "theme.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"

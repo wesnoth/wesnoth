@@ -370,7 +370,7 @@ set(wesnoth-sdl_SRC
 	sdl/alpha.cpp
 	sdl/exception.cpp
 	sdl/rect.cpp
-	sdl/texture.cpp
+	sdl/image.cpp
 	sdl/window.cpp
 	sdl/utils.cpp
 )

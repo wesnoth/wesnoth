@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef SDL_TEXTURE_HPP_INCLUDED
-#define SDL_TEXTURE_HPP_INCLUDED
+#ifndef SDL_IMAGE_HPP_INCLUDED
+#define SDL_IMAGE_HPP_INCLUDED
 
 /**
  * @file

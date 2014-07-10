@@ -26,12 +26,12 @@
 #include <string>
 
 #if SDL_VERSION_ATLEAST(2,0,0)
-#include "sdl/texture.hpp"
+#include "sdl/image.hpp"
 #endif
 
 #ifdef SDL_GPU
 #include "sdl/gpu.hpp"
-#include "sdl/texture.hpp"
+#include "sdl/image.hpp"
 #endif
 
 struct language_def;
