@@ -727,15 +727,6 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 	std::string next_scenario = cfg["next_scenario"];
 	if (!next_scenario.empty()) {
 		resources::gamedata->set_next_scenario(next_scenario);
-
-		const config next_scenario_settings_cfg = cfg.get_parsed_config().child_or_empty("next_scenario_settings");
-		if (!next_scenario_settings_cfg.empty()) {
-			data.next_scenario_settings = next_scenario_settings_cfg;
-		}
-		const config next_scenario_append_cfg = cfg.get_parsed_config().child_or_empty("next_scenario_append");
-		if (!next_scenario_append_cfg.empty()) {
-			data.next_scenario_append = next_scenario_append_cfg;
-		}
 	}
 
 	std::string end_of_campaign_text = cfg["end_text"];
