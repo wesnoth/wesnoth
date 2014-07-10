@@ -340,6 +340,7 @@ private:
 
 	/** server socket/fifo. */
 	boost::scoped_ptr<input_stream> input_;
+	std::string input_path_;
 
 	const std::string config_file_;
 	config cfg_;
