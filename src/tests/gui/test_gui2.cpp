@@ -72,6 +72,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
+#include "multiplayer_create_engine.hpp"
 #include "tests/utils/fake_display.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
@@ -500,9 +501,11 @@ struct twrapper<gui2::tcampaign_selection>
 	{
 		static const config::const_child_itors &ci =
 				main_config.child_range("campaign");
-		static std::vector<config> campaigns(ci.first, ci.second);
-
-		return new gui2::tcampaign_selection(campaigns);
+		static std::vector<mp::create_engine::level_ptr> levels;
+		BOOST_FOREACH(const config& campaign_cfg, ci) {
+			levels.push_back(mp::create_engine::level_ptr(new mp::campaign(campaign_cfg)));
+		}
+		return new gui2::tcampaign_selection(levels);
 	}
 };
 
