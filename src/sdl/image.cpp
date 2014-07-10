@@ -287,6 +287,21 @@ bool timage::null() const
 	return image_ == NULL;
 }
 
+timage timage::clone() const
+{
+	timage res;
+	res.image_ = GPU_CopyImage(image_);
+	res.set_alpha(alpha());
+	res.set_clip(clip());
+	res.set_color_mod(red_mod(), green_mod(), blue_mod());
+	res.set_wrap(hwrap(), vwrap());
+	res.set_rotation(rotation());
+	res.set_scale(hscale(), vscale());
+	res.set_smooth_scaling(smooth_scaling());
+
+	return res;
+}
+
 }
 
 #endif

@@ -243,6 +243,8 @@ public:
 	 */
 	bool null() const;
 
+	timage clone() const;
+
 private:
 	/** The texture itself. */
 	GPU_Image *image_;
