@@ -865,8 +865,12 @@ bool preprocessor_data::get_chunk()
 					if (++found_enddef == 7) {
 						if (std::equal(buffer.end() - 6, buffer.end(), "enddef"))
 							break;
-						else
+						else {
 							found_enddef = 0;
+							if (std::equal(buffer.end()-6, buffer.end(), "define")) { //TODO: Maybe add support for this? This would fill feature request #21343
+								target_.error("Preprocessor error: #define is not allowed inside a #define/#enddef pair", linenum);
+							}
+						}
 					}
 			}
 			if (found_enddef != 7) {
