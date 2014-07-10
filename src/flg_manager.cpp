@@ -308,7 +308,7 @@ void flg_manager::resolve_random() {
 
 void flg_manager::update_available_factions()
 {
-	const config* custom_faction = 0;
+	const config* custom_faction = NULL;
 	BOOST_FOREACH(const config* faction, era_factions_) {
 		if ((*faction)["id"] == "Custom" && side_["faction"] != "Custom" &&
 			has_no_recruits_) {
@@ -340,7 +340,7 @@ void flg_manager::update_available_leaders()
 {
 	available_leaders_.clear();
 
-	if (!side_["no_leader"].to_bool() && !leader_lock_) {
+	if (!side_["no_leader"].to_bool() || !leader_lock_) {
 		// Add a default leader if there is one.
 		if (!default_leader_type_.empty()) {
 			available_leaders_.push_back(default_leader_type_);
@@ -348,8 +348,6 @@ void flg_manager::update_available_leaders()
 
 		if (!saved_game_) {
 			if ((*current_faction_)["id"] != "Random") {
-				available_leaders_.push_back("random");
-
 				if ((*current_faction_)["id"] == "Custom") {
 					// Allow user to choose a leader from any faction.
 					BOOST_FOREACH(const config* f, available_factions_) {
@@ -374,6 +372,9 @@ void flg_manager::update_available_leaders()
 				}
 
 				available_leaders_.erase(modifier, available_leaders_.end());
+
+				if (!available_leaders_.empty())
+					available_leaders_.insert(available_leaders_.begin(), "random");
 			}
 		}
 	}
