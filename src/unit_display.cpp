@@ -767,7 +767,12 @@ void wml_animation(const vconfig &cfg, const map_location &default_location)
 
 void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const map_location &default_location)
 {
-	unit_const_ptr u = resources::units->find(default_location).get_shared_ptr();
+	unit_const_ptr u;
+
+	unit_map::const_iterator u_it = resources::units->find(default_location);
+	if (u_it.valid()) {
+		u = u_it.get_shared_ptr();
+	}
 
 	// Search for a valid unit filter,
 	// and if we have one, look for the matching unit
