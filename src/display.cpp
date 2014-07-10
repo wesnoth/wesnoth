@@ -1864,7 +1864,7 @@ void display::announce(const std::string& message, const SDL_Color& color)
 }
 
 
-void display::draw_border(const map_location& loc, const int xpos, const int ypos)
+void display::draw_border(const map_location& /*loc*/, const int /*xpos*/, const int /*ypos*/)
 {
 #ifdef SDL_GPU
 	/**
@@ -1874,7 +1874,7 @@ void display::draw_border(const map_location& loc, const int xpos, const int ypo
 	 */
 
 	// First handle the corners :
-	if(loc.x == -1 && loc.y == -1) { // top left corner
+	/*if(loc.x == -1 && loc.y == -1) { // top left corner
 		drawing_buffer_add(LAYER_BORDER, loc, xpos + zoom_/4, ypos,
 			image::get_texture(theme_.border().corner_image_top_left, image::SCALED_TO_ZOOM));
 	} else if(loc.x == get_map().w() && loc.y == -1) { // top right corner
@@ -1925,7 +1925,7 @@ void display::draw_border(const map_location& loc, const int xpos, const int ypo
 			drawing_buffer_add(LAYER_BORDER, loc, xpos, ypos + zoom_/2,
 				image::get_texture(theme_.border().border_image_bottom_odd, image::SCALED_TO_ZOOM));
 		}
-	}
+	}*/
 #else
 	/**
 	 * at the moment the border must be between 0.0 and 0.5
