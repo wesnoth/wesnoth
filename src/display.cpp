@@ -2170,7 +2170,11 @@ bool display::scroll(int xmove, int ymove, bool force)
 		invalidate_locations_in_rect(r);
 	}
 	scroll_event_.notify_observers();
+#ifdef SDL_GPU
+	invalidate_all();
+#else
 	update_rect(map_area());
+#endif
 
 	redrawMinimap_ = true;
 	return true;
