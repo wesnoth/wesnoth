@@ -41,7 +41,7 @@
 #include "log.hpp"                      // for LOG_STREAM, logger, general, etc
 #include "map_exception.hpp"
 #include "multiplayer.hpp"              // for start_client, etc
-#include "multiplayer_create_engine.hpp"
+#include "create_engine.hpp"
 #include "network.hpp"
 #include "playcampaign.hpp"             // for play_game, etc
 #include "preferences.hpp"              // for disable_preferences_save, etc
@@ -690,7 +690,7 @@ bool game_launcher::new_campaign()
 	state_ = saved_game();
 	state_.classification().campaign_type = game_classification::SCENARIO;
 
-	return sp_create_mode(disp(), resources::config_manager->game_config(),
+	return sp::enter_create_mode(disp(), resources::config_manager->game_config(),
 		state_, jump_to_campaign_, true);
 }
 

@@ -1,8 +1,8 @@
-#include "multiplayer_configure_engine.hpp"
+#include "configure_engine.hpp"
 #include "formula_string_utils.hpp"
 #include "settings.hpp"
 
-namespace mp {
+namespace ng {
 
 configure_engine::configure_engine(saved_game& state) :
 	state_(state),
@@ -143,4 +143,4 @@ const mp_game_settings& configure_engine::get_parameters() const {
 	return parameters_;
 }
 
-} //end namespace mp
+} //end namespace ng

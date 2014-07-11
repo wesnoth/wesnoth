@@ -16,17 +16,21 @@
 #define SINGLEPLAYER_HPP_INCLUDED
 
 #include "game_launcher.hpp"
-#include "multiplayer_create_engine.hpp"
-#include "multiplayer_configure_engine.hpp"
-#include "multiplayer_connect_engine.hpp"
+#include "create_engine.hpp"
+#include "configure_engine.hpp"
+#include "connect_engine.hpp"
 
-bool sp_create_mode(game_display& disp, const config& game_config,
+namespace sp {
+
+bool enter_create_mode(game_display& disp, const config& game_config,
 	saved_game& state, jump_to_campaign_info jump_to, bool local_players_only = true);
 
-bool sp_configure_mode(game_display& disp, const config& game_config,
+bool enter_configure_mode(game_display& disp, const config& game_config,
 	saved_game& state, bool local_players_only = true);
 
-bool sp_connect_mode(game_display& disp, const config& game_config,
+bool enter_connect_mode(game_display& disp, const config& game_config,
 	saved_game& state, bool local_players_only = true);
+
+} // end namespace sp
 
 #endif

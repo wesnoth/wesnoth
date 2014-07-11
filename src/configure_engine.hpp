@@ -19,7 +19,7 @@
 #include "game_preferences.hpp"
 #include "saved_game.hpp"
 
-namespace mp {
+namespace ng {
 
 /**
  * configure_engine
@@ -112,6 +112,6 @@ private:
 	const config &cfg_;
 };
 
-} // end namespace mp
+} // end namespace ng
 #endif
 

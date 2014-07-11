@@ -11,7 +11,7 @@
 
    See the COPYING file for more details.
 */
-#include "multiplayer_create_engine.hpp"
+#include "create_engine.hpp"
 
 #include "game_config_manager.hpp"
 #include "game_launcher.hpp"
@@ -67,7 +67,7 @@ bool contains_ignore_case(const std::string& str1, const std::string& str2)
 }
 }
 
-namespace mp {
+namespace ng {
 
 static bool less_campaigns_rank(const create_engine::level_ptr& a, const create_engine::level_ptr& b) {
 	return a->data()["rank"].to_int(1000) < b->data()["rank"].to_int(1000);
@@ -1182,4 +1182,4 @@ saved_game& create_engine::get_state()
 	return state_;
 }
 
-} // end namespace mp
+} // end namespace ng

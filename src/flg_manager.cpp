@@ -21,7 +21,7 @@
 
 #include <boost/foreach.hpp>
 
-namespace mp  {
+namespace ng  {
 
 #ifdef LOW_MEM
 std::string get_RC_suffix(const std::string&, const int)
@@ -584,4 +584,4 @@ int flg_manager::gender_index(const std::string& gender) const
 	return std::distance(choosable_genders_.begin(), it);
 }
 
-} // end namespace mp
+} // end namespace ng

@@ -5,18 +5,20 @@
 #include "gui/widgets/window.hpp"
 #include "resources.hpp"
 
-bool sp_create_mode(game_display& disp, const config& game_config,
+namespace sp {
+
+bool enter_create_mode(game_display& disp, const config& game_config,
 	saved_game& state, jump_to_campaign_info jump_to_campaign, bool local_players_only) {
 
 	bool configure_canceled = false;
 
 	do {
 
-		mp::create_engine create_eng(disp, state);
-		create_eng.set_current_level_type(mp::level::SP_CAMPAIGN);
+		ng::create_engine create_eng(disp, state);
+		create_eng.set_current_level_type(ng::level::SP_CAMPAIGN);
 
-		std::vector<mp::create_engine::level_ptr> campaigns(
-			create_eng.get_levels_by_type_unfiltered(mp::level::SP_CAMPAIGN));
+		std::vector<ng::create_engine::level_ptr> campaigns(
+			create_eng.get_levels_by_type_unfiltered(ng::level::SP_CAMPAIGN));
 		
 		if (campaigns.empty()) {
 		  gui2::show_error_message(disp.video(),
@@ -85,7 +87,7 @@ bool sp_create_mode(game_display& disp, const config& game_config,
 				jump_to_campaign.campaign_id_ = "";
 			}
 			// canceled difficulty dialog, relaunch the campaign selection dialog
-			return sp_create_mode(disp, game_config, state, jump_to_campaign, local_players_only);
+			return enter_create_mode(disp, game_config, state, jump_to_campaign, local_players_only);
 		}
 
 		create_eng.prepare_for_campaign(selected_difficulty);
@@ -104,26 +106,28 @@ bool sp_create_mode(game_display& disp, const config& game_config,
 
 		state.mp_settings().mp_era = "era_blank";
 
-		configure_canceled = !sp_configure_mode(disp, resources::config_manager->game_config(), state, local_players_only);
+		configure_canceled = !enter_configure_mode(disp, resources::config_manager->game_config(), state, local_players_only);
 
 	} while (configure_canceled);
 
 	return true;
 }
 
-bool sp_configure_mode(game_display& disp, const config& game_config,
+bool enter_configure_mode(game_display& disp, const config& game_config,
 	saved_game& state, bool local_players_only) {
 
-	mp::configure_engine engine(state);
+	ng::configure_engine engine(state);
 	engine.set_default_values();
 
-	return sp_connect_mode(disp, game_config, state, local_players_only);
+	return enter_connect_mode(disp, game_config, state, local_players_only);
 }
 
-bool sp_connect_mode(game_display&, const config&,
+bool enter_connect_mode(game_display&, const config&,
 	saved_game& state, bool local_players_only) {
 
-	mp::connect_engine engine(state, local_players_only, true);
+	ng::connect_engine engine(state, local_players_only, true);
 	engine.start_game();
 	return true;
 }
+
+} // end namespace sp

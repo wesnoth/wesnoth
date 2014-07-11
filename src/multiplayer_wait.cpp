@@ -53,7 +53,7 @@ const int leader_pane_border = 10;
 namespace mp {
 
 wait::leader_preview_pane::leader_preview_pane(game_display& disp,
-	flg_manager& flg, const int color) :
+	ng::flg_manager& flg, const int color) :
 	gui::preview_pane(disp.video()),
 	flg_(flg),
 	color_(color),
@@ -114,7 +114,7 @@ void wait::leader_preview_pane::draw_contents()
 	if (ut) {
 		const unit_type &utg = ut->get_gender_unit_type(flg_.current_gender());
 
-		image = utg.image() + get_RC_suffix(utg.flag_rgb(), color_);
+		image = utg.image() + ng::get_RC_suffix(utg.flag_rgb(), color_);
 	}
 
 	for(std::vector<std::string>::const_iterator itor = recruit_list.begin();
@@ -349,7 +349,7 @@ void wait::join_game(bool observe)
 			const bool saved_game =
 				level_.child("multiplayer")["savegame"].to_bool();
 
-			flg_manager flg(era_factions, *side_choice, lock_settings, use_map_settings,
+			ng::flg_manager flg(era_factions, *side_choice, lock_settings, use_map_settings,
 				saved_game, color);
 
 			std::vector<std::string> choices;
@@ -561,7 +561,7 @@ void wait::generate_menu()
 			leader_image = utg.image() + std::string("~RC(") + utg.flag_rgb() + ">" + RCcolor + ")";
 #endif
 		} else {
-			leader_image = random_enemy_picture;
+			leader_image = ng::random_enemy_picture;
 		}
 		if (!leader_image.empty()) {
 			// Dumps the "image" part of the faction name, if any,

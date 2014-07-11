@@ -17,8 +17,8 @@
 #ifndef MULTIPLAYER_CREATE_HPP_INCLUDED
 #define MULTIPLAYER_CREATE_HPP_INCLUDED
 
-#include "mp_depcheck.hpp"
-#include "multiplayer_create_engine.hpp"
+#include "depcheck.hpp"
+#include "create_engine.hpp"
 #include "multiplayer_ui.hpp"
 #include "widgets/slider.hpp"
 #include "widgets/combo.hpp"
@@ -91,9 +91,9 @@ private:
 	util::scoped_ptr<surface_restorer> image_restorer_;
 	SDL_Rect image_rect_;
 
-	std::vector<level::TYPE> available_level_types_;
+	std::vector<ng::level::TYPE> available_level_types_;
 
-	create_engine engine_;
+	ng::create_engine engine_;
 };
 
 } // end namespace mp

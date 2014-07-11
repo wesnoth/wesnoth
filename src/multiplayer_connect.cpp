@@ -39,17 +39,17 @@ static lg::log_domain log_mp_connect("mp/connect");
 namespace mp {
 
 std::vector<std::string> controller_options_names(
-	const std::vector<controller_option>& controller_options)
+	const std::vector<ng::controller_option>& controller_options)
 {
 	std::vector<std::string> names;
-	BOOST_FOREACH(const controller_option& option, controller_options) {
+	BOOST_FOREACH(const ng::controller_option& option, controller_options) {
 		names.push_back(option.second);
 	}
 
 	return names;
 }
 
-connect::side::side(connect& parent, side_engine_ptr engine) :
+connect::side::side(connect& parent, ng::side_engine_ptr engine) :
 	parent_(&parent),
 	engine_(engine),
 	gold_lock_(engine_->cfg()["gold_lock"].to_bool(
@@ -343,7 +343,7 @@ void connect::side::update_controller_ui()
 	// Adjust the visibility of AI algorithm combo
 	// and original controller label.
 	if (!parent_->hidden()) {
-		if (engine_->controller() == CNTR_COMPUTER) {
+		if (engine_->controller() == ng::CNTR_COMPUTER) {
 			// Computer selected, show AI combo.
 			combo_ai_algorithm_.hide(false);
 
@@ -362,7 +362,7 @@ void connect::side::update_controller_ui()
 
 connect::connect(game_display& disp, const std::string& game_name,
 	const config& game_config, chat& c, config& gamelist,
-	connect_engine& engine) :
+	ng::connect_engine& engine) :
 	mp::ui(disp, _("Game Lobby: ") + game_name, game_config, c, gamelist),
 	player_colors_(),
 	ai_algorithms_(),
@@ -409,7 +409,7 @@ connect::connect(game_display& disp, const std::string& game_name,
 	}
 
 	// Sides.
-	BOOST_FOREACH(side_engine_ptr s, engine_.side_engines()) {
+	BOOST_FOREACH(ng::side_engine_ptr s, engine_.side_engines()) {
 		sides_.push_back(side(*this, s));
 	}
 	if (sides_.empty() && !game_config::debug) {

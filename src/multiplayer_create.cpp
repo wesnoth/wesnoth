@@ -100,16 +100,16 @@ create::create(game_display& disp, const config& cfg, saved_game& state,
 
 	levels_menu_.set_numeric_keypress_selection(false);
 
-	typedef std::pair<level::TYPE, std::string> level_type_info;
+	typedef std::pair<ng::level::TYPE, std::string> level_type_info;
 	std::vector<level_type_info> all_level_types;
-	all_level_types.push_back(std::make_pair(level::SCENARIO, _("Scenarios")));
-	all_level_types.push_back(std::make_pair(level::CAMPAIGN, _("Campaigns")));
-	all_level_types.push_back(std::make_pair(level::USER_MAP, _("User Maps")));
-	all_level_types.push_back(std::make_pair(level::USER_SCENARIO, _("User Scenarios")));
-	all_level_types.push_back(std::make_pair(level::RANDOM_MAP, _("Random Maps")));
+	all_level_types.push_back(std::make_pair(ng::level::SCENARIO, _("Scenarios")));
+	all_level_types.push_back(std::make_pair(ng::level::CAMPAIGN, _("Campaigns")));
+	all_level_types.push_back(std::make_pair(ng::level::USER_MAP, _("User Maps")));
+	all_level_types.push_back(std::make_pair(ng::level::USER_SCENARIO, _("User Scenarios")));
+	all_level_types.push_back(std::make_pair(ng::level::RANDOM_MAP, _("Random Maps")));
 
 	if (game_config::debug) {
-		all_level_types.push_back(std::make_pair(level::SP_CAMPAIGN,
+		all_level_types.push_back(std::make_pair(ng::level::SP_CAMPAIGN,
 			"SP Campaigns"));
 	}
 
@@ -134,7 +134,7 @@ create::create(game_display& disp, const config& cfg, saved_game& state,
 
 	// Set level selection according to the preferences, if possible.
 	size_t type_index = 0;
-	BOOST_FOREACH(level::TYPE type, available_level_types_) {
+	BOOST_FOREACH(ng::level::TYPE type, available_level_types_) {
 		if (preferences::level_type() == type) {
 			break;
 		}
@@ -153,7 +153,7 @@ create::create(game_display& disp, const config& cfg, saved_game& state,
 	init_level_type_changed(level_new_selection);
 
 	const std::vector<std::string>& era_names =
-		engine_.extras_menu_item_names(create_engine::ERA);
+		engine_.extras_menu_item_names(ng::create_engine::ERA);
 	if(era_names.empty()) {
 		gui2::show_transient_message(disp.video(), "", _("No eras found."));
 		throw config::error(_("No eras found"));
@@ -161,11 +161,11 @@ create::create(game_display& disp, const config& cfg, saved_game& state,
 	eras_menu_.set_items(era_names);
 
 	// Set era selection according to the preferences, if possible.
-	int era_new_selection = engine_.find_extra_by_id(create_engine::ERA,
+	int era_new_selection = engine_.find_extra_by_id(ng::create_engine::ERA,
 		preferences::era());
 	eras_menu_.move_selection((era_new_selection != -1) ? era_new_selection : 0);
 
-	std::vector<std::string> mods = engine_.extras_menu_item_names(create_engine::MOD);
+	std::vector<std::string> mods = engine_.extras_menu_item_names(ng::create_engine::MOD);
 	BOOST_FOREACH(std::string& mod, mods) {
 		std::stringstream newval;
 		newval << IMAGE_PREFIX << "buttons/checkbox.png" << COLUMN_SEPARATOR << mod;
@@ -198,7 +198,7 @@ create::~create()
 
 		// Save values for next game
 		DBG_MP << "storing parameter values in preferences" << std::endl;
-		preferences::set_era(engine_.current_extra(create_engine::ERA).id);
+		preferences::set_era(engine_.current_extra(ng::create_engine::ERA).id);
 		preferences::set_level(engine_.current_level().id());
 		preferences::set_level_type(engine_.current_level_type());
 		preferences::set_modifications(engine_.active_mods());
@@ -226,8 +226,8 @@ void create::process_event()
 
 			engine_.prepare_for_era_and_mods();
 
-			if (engine_.current_level_type() == level::CAMPAIGN ||
-				engine_.current_level_type() == level::SP_CAMPAIGN) {
+			if (engine_.current_level_type() == ng::level::CAMPAIGN ||
+				engine_.current_level_type() == ng::level::SP_CAMPAIGN) {
 
 				std::string difficulty = engine_.select_campaign_difficulty();
 				if (difficulty == "CANCEL") {
@@ -288,7 +288,7 @@ void create::process_event()
 	if (update_mod_button_label) {
 		mod_selection_ = mods_menu_.selection();
 		engine_.set_current_mod_index(mod_selection_);
-		set_description(engine_.current_extra(create_engine::MOD).description);
+		set_description(engine_.current_extra(ng::create_engine::MOD).description);
 		if (engine_.dependency_manager().is_modification_active(mod_selection_)) {
 			select_mod_.set_label(_("Deactivate"));
 		} else {
@@ -302,7 +302,7 @@ void create::process_event()
 	if (era_changed) {
 		engine_.set_current_era_index(era_selection_);
 
-		set_description(engine_.current_extra(create_engine::ERA).description);
+		set_description(engine_.current_extra(ng::create_engine::ERA).description);
 		synchronize_selections();
 	}
 
@@ -353,23 +353,23 @@ void create::process_event()
 		set_description(engine_.current_level().description());
 
 		switch (engine_.current_level_type()) {
-		case level::SCENARIO:
-		case level::USER_MAP:
-		case level::USER_SCENARIO:
-		case level::RANDOM_MAP: {
+		case ng::level::SCENARIO:
+		case ng::level::USER_MAP:
+		case ng::level::USER_SCENARIO:
+		case ng::level::RANDOM_MAP: {
 
-			scenario* current_scenario =
-				dynamic_cast<scenario*>(&engine_.current_level());
+			ng::scenario* current_scenario =
+				dynamic_cast<ng::scenario*>(&engine_.current_level());
 
 			players << current_scenario->num_players();
 			map_size << _("Size: ") << current_scenario->map_size();
 
 			break;
 		}
-		case level::CAMPAIGN:
-		case level::SP_CAMPAIGN: {
-			campaign* current_campaign =
-				dynamic_cast<campaign*>(&engine_.current_level());
+		case ng::level::CAMPAIGN:
+		case ng::level::SP_CAMPAIGN: {
+			 ng::campaign* current_campaign =
+				dynamic_cast<ng::campaign*>(&engine_.current_level());
 
 			players << current_campaign->min_players();
 			if (current_campaign->max_players() !=
@@ -446,13 +446,13 @@ void create::synchronize_selections()
 		process_event();
 	}
 
-	if (engine_.current_level_type() != level::CAMPAIGN &&
-		engine_.current_level_type() != level::SP_CAMPAIGN) {
+	if (engine_.current_level_type() != ng::level::CAMPAIGN &&
+		engine_.current_level_type() != ng::level::SP_CAMPAIGN) {
 		if (engine_.current_level().id() !=
 			engine_.dependency_manager().get_scenario()) {
 
 			// Match scenario and scenario type
-			level::TYPE level_type_at_index;
+			ng::level::TYPE level_type_at_index;
 			int index = engine_.find_level_by_id(
 				engine_.dependency_manager().get_scenario());
 			size_t type_index;
@@ -468,7 +468,7 @@ void create::synchronize_selections()
 			levels_menu_.set_items(engine_.levels_menu_item_names());
 			levels_menu_.move_selection(index);
 			type_index = 0;
-			BOOST_FOREACH(level::TYPE type, available_level_types_) {
+			BOOST_FOREACH(ng::level::TYPE type, available_level_types_) {
 				if (level_type_at_index == type) {
 					level_type_combo_.set_selected(type_index);
 					break;
@@ -681,7 +681,7 @@ void create::layout_children(const SDL_Rect& rect)
 	eras_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
 	int erasel_save = eras_menu_.selection();
-	eras_menu_.set_items(engine_.extras_menu_item_names(create_engine::ERA));
+	eras_menu_.set_items(engine_.extras_menu_item_names(ng::create_engine::ERA));
 	eras_menu_.move_selection(erasel_save);
 	ypos += eras_menu_height;
 

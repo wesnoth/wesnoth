@@ -36,7 +36,7 @@
 #include "map_exception.hpp"
 #include "mp_game_utils.hpp"
 #include "multiplayer.hpp"
-#include "multiplayer_connect_engine.hpp"
+#include "connect_engine.hpp"
 #include "dialogs.hpp"
 #include "gettext.hpp"
 #include "resources.hpp"
@@ -389,8 +389,8 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 				gamestate.mp_settings().saved_game = false;
 				gamestate.mp_settings().use_map_settings = starting_pos["force_lock_settings"].to_bool();
 
-				mp::connect_engine_ptr
-					connect_engine(new mp::connect_engine(gamestate,
+				ng::connect_engine_ptr
+					connect_engine(new ng::connect_engine(gamestate,
 						!network_game, false));
 
 				if (allow_new_game_flag || (game_config::debug && network::nconnections() == 0)) {
@@ -405,7 +405,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 				} else {
 					// Start the next scenario immediately.
 					connect_engine->
-						start_game(mp::connect_engine::FORCE_IMPORT_USERS);
+						start_game(ng::connect_engine::FORCE_IMPORT_USERS);
 				}
 			}
 			else if (io_type == IO_NONE && gamestate.valid())

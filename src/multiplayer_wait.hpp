@@ -43,7 +43,7 @@ private:
 	class leader_preview_pane : public gui::preview_pane
 	{
 	public:
-		leader_preview_pane(game_display& disp, flg_manager& flg,
+		leader_preview_pane(game_display& disp, ng::flg_manager& flg,
 			const int color);
 
 		bool show_above() const;
@@ -56,7 +56,7 @@ private:
 		virtual void process_event();
 		virtual void draw_contents();
 
-		flg_manager& flg_;
+		ng::flg_manager& flg_;
 
 		const int color_;
 
