@@ -955,7 +955,7 @@ sdl::timage get_texture(const locator& loc, TYPE type)
 		result.set_color_mod(red_adjust, green_adjust, blue_adjust);
 	case SCALED_TO_ZOOM:
 	case SCALED_TO_HEX:
-		result.set_scale(zoom, zoom);
+		result.set_scale(zoom / 72.0f, zoom / 72.0f);
 		break;
 	default:
 		return sdl::timage();
