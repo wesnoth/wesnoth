@@ -1281,7 +1281,6 @@ void display::drawing_buffer_commit()
 			}
 		}
 	}
-	flip();
 	drawing_buffer_clear();
 #else
 	SDL_Rect clip_rect = map_area();
