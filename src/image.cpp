@@ -560,6 +560,7 @@ light_string get_light_string(int op, int r, int g, int b){
 	return ls;
 }
 
+#ifndef SDL_GPU
 static surface apply_light(surface surf, const light_string& ls){
 	// atomic lightmap operation are handled directly (important to end recursion)
 	if(ls.size() == 4){
@@ -604,6 +605,7 @@ static surface apply_light(surface surf, const light_string& ls){
 	// apply the final lightmap
 	return light_surface(surf, lightmap);
 }
+#endif
 
 bool locator::file_exists() const
 {
@@ -963,6 +965,12 @@ sdl::timage get_texture(const locator& loc, TYPE type)
 }
 #endif
 
+#ifdef SDL_GPU
+sdl::timage get_lighted_image(const locator &i_locator, const light_string &/*ls*/, TYPE type)
+{
+	return get_texture(i_locator, type);
+}
+#else
 surface get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type)
 {
 	surface res;
@@ -1014,7 +1022,7 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 
 	return res;
 }
-
+#endif
 
 surface get_hexmask()
 {

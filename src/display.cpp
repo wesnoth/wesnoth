@@ -1130,7 +1130,21 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 			// We need to test for the tile to be rendered and
 			// not the location, since the transitions are rendered
 			// over the offmap-terrain and these need a ToD coloring.
+#ifdef SDL_GPU
+			sdl::timage img;
+			const bool off_map = image.get_filename() == off_map_name;
+			if(!use_local_light || off_map) {
+				img = image::get_texture(image, off_map ? image::SCALED_TO_HEX : image_type);
+			} else if(lt.empty()) {
+				img = image::get_texture(image, image::SCALED_TO_HEX);
+			} else {
+				img = image::get_lighted_image(image, lt, image::SCALED_TO_HEX);
+			}
 
+			if (!img.null()) {
+				res.push_back(img);
+			}
+#else
 			surface surf;
 			const bool off_map = image.get_filename() == off_map_name;
 			if(!use_local_light || off_map) {
@@ -1142,12 +1156,9 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 			}
 
 			if (!surf.null()) {
-#ifdef SDL_GPU
 				res.push_back(sdl::timage(surf));
-#else
-				res.push_back(surf);
-#endif
 			}
+#endif
 		}
 	}
 
@@ -2779,12 +2790,15 @@ void display::draw_hex(const map_location& loc) {
 					&& !(fogged(loc) && !overlays.first->second.visible_in_fog))
 			{
 
+#ifdef SDL_GPU
+				const sdl::timage img = use_local_light
+					   ? image::get_lighted_image(overlays.first->second.image, lt, image::SCALED_TO_HEX)
+					   : image::get_texture(overlays.first->second.image, image_type);
+				drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, img);
+#else
 				const surface surf = use_local_light
 					   ? image::get_lighted_image(overlays.first->second.image, lt, image::SCALED_TO_HEX)
 					   : image::get_image(overlays.first->second.image, image_type);
-#ifdef SDL_GPU
-				drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, sdl::timage(surf));
-#else
 				drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, surf);
 #endif
 			}

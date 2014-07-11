@@ -216,7 +216,11 @@ namespace image {
 	///function to get the surface corresponding to an image.
 	///after applying the lightmap encoded in ls
 	///type should be HEXED or SCALED_TO_HEX
-	surface get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type);
+#ifdef SDL_GPU
+	sdl::timage get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type);
+#else
+	sdl::timage get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type);
+#endif
 
 	///function to get the standard hex mask
 	surface get_hexmask();
