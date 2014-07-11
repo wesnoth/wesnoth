@@ -1051,7 +1051,6 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 	return res;
 }
 
-// TODO: proper SDL_gpu implementation
 #ifdef SDL_GPU
 std::vector<sdl::timage> display::get_terrain_images(
 								const map_location &loc,
