@@ -796,12 +796,6 @@ function wml_actions.terrain(cfg)
 	end
 end
 
-function wml_actions.delay(cfg)
-	local delay = tonumber(cfg.time) or
-		helper.wml_error "[delay] missing required time= attribute."
-	wesnoth.delay(delay)
-end
-
 function wml_actions.floating_text(cfg)
 	local locs = wesnoth.get_locations(cfg)
 	local text = cfg.text or helper.wml_error("[floating_text] missing required text= attribute")
