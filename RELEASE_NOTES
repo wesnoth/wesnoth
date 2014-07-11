@@ -34,6 +34,8 @@ Movement is taken from the worst of both, defense is taken from the best value.
 
 [section="Savegame map preview bugs fixed"]
 Fixed bug that caused incorrect / missing minimap data to be displayed in the preview pane when loading a saved game. If more problems are observed, please report.
+
+Note that you must refresh your save_index to get proper behavior, by deleting it from the userdata folder.
 [/section]
 
 [section="Example section 2"]
@@ -44,6 +46,6 @@ Example contents 2.
 KNOWN BUGS
 ==========
 
-[list][*] Start of scenario saves have some known bugs, they can't be loaded correctly and they don't get minimaps correctly in the preview pane.
+[list][*] Start of scenario saves have some known bugs, they can't be loaded correctly and they don't get minimaps in the preview pane. (The preview part of this is by design however, the map is not known for a start of scenario save at the time of the load dialog and it cannot be previewed.)
 [*]Example issue 2 (bug [bug]98765[/bug]).
 [/list]
