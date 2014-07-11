@@ -1259,8 +1259,7 @@ void display::drawing_buffer_commit()
 
 #ifdef SDL_GPU
 	SDL_Rect clip_rect = map_area();
-	surface screen = get_screen_surface();
-	clip_rect_setter set_clip_rect(screen, &clip_rect);
+	GPU_SetClip(get_render_target(), clip_rect.x, clip_rect.y, clip_rect.w, clip_rect.h);
 
 	/*
 	 * Info regarding the rendering algorithm.
