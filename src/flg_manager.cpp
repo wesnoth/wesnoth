@@ -341,9 +341,12 @@ void flg_manager::update_available_leaders()
 	available_leaders_.clear();
 
 	if (!side_["no_leader"].to_bool() || !leader_lock_) {
+
+		int random_pos = 0;
 		// Add a default leader if there is one.
 		if (!default_leader_type_.empty()) {
 			available_leaders_.push_back(default_leader_type_);
+			random_pos = 1;
 		}
 
 		if (!saved_game_) {
@@ -374,7 +377,7 @@ void flg_manager::update_available_leaders()
 				available_leaders_.erase(modifier, available_leaders_.end());
 
 				if (!available_leaders_.empty())
-					available_leaders_.insert(available_leaders_.begin(), "random");
+					available_leaders_.insert(available_leaders_.begin() + random_pos, "random");
 			}
 		}
 	}
