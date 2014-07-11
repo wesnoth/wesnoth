@@ -3418,11 +3418,16 @@ static int intf_remove_tile_overlay(lua_State *L)
  */
 static int intf_delay(lua_State *L)
 {
-	unsigned final = SDL_GetTicks() + luaL_checkinteger(L, 1);
+	display*disp = display::get_singleton();
+	double speed = disp->turbo_speed();
+
+	unsigned final = SDL_GetTicks() + (luaL_checkinteger(L, 1) / speed);
+
 	do {
 		resources::controller->play_slice(false);
-		resources::screen->delay(10);
-	} while (int(final - SDL_GetTicks()) > 0);
+		resources::screen->delay((speed >= 1) ? 10 : 10 * speed);
+	} while (static_cast<int>(final - SDL_GetTicks()) > 0);
+
 	return 0;
 }
 
