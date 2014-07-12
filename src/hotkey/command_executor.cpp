@@ -180,6 +180,7 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 			show_chat_log();
 			break;
 		case HOTKEY_USER_CMD:
+		case HOTKEY_COMMAND_MODE:
 			user_command();
 			break;
 		case HOTKEY_CUSTOM_CMD:
