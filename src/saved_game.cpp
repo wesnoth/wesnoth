@@ -267,6 +267,10 @@ void saved_game::expand_mp_events()
 				{
 					this->starting_pos_.add_child("event", modevent);
 				}
+				BOOST_FOREACH(const config& modlua, cfg.child_range("lua"))
+				{
+					this->starting_pos_.add_child("lua", modlua);
+				}
 			}
 			else
 			{
