@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-editor_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-05-24 20:08+0200\n"
+"POT-Creation-Date: 2014-07-12 20:06+0200\n"
 "PO-Revision-Date: 2011-12-17 13:45+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -298,19 +298,19 @@ msgstr "Kilépés"
 msgid "No editor time-of-day found."
 msgstr "Nem található a szerkesztői napszak."
 
-#: src/editor/editor_controller.cpp:1065
+#: src/editor/editor_controller.cpp:1069
 msgid "Change Unit ID"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:1066
+#: src/editor/editor_controller.cpp:1070
 msgid "ID:"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:1082
+#: src/editor/editor_controller.cpp:1086
 msgid "Rename Unit"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:1083
+#: src/editor/editor_controller.cpp:1087
 msgid "Name:"
 msgstr ""
 
@@ -331,109 +331,109 @@ msgstr "Válaszd ki a betöltendő pályát"
 msgid "(New Scenario)"
 msgstr "(Új pálya)"
 
-#: src/editor/map/context_manager.cpp:322
+#: src/editor/map/context_manager.cpp:324
 #, fuzzy
 #| msgid "(New Map)"
 msgid "(Unnamed Area)"
 msgstr "(Új pálya)"
 
-#: src/editor/map/context_manager.cpp:345
+#: src/editor/map/context_manager.cpp:352
 #, fuzzy
 #| msgid "(New Map)"
 msgid "(New Side)"
 msgstr "(Új pálya)"
 
-#: src/editor/map/context_manager.cpp:411
+#: src/editor/map/context_manager.cpp:418
 msgid "Choose a Mask to Apply"
 msgstr "Válassz ki egy alkalmazandó maszkot"
 
-#: src/editor/map/context_manager.cpp:418
+#: src/editor/map/context_manager.cpp:425
 msgid "Error loading mask"
 msgstr "Hiba a maszk betöltésekor"
 
-#: src/editor/map/context_manager.cpp:437
+#: src/editor/map/context_manager.cpp:444
 msgid "Identifier:"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:437
+#: src/editor/map/context_manager.cpp:444
 msgid "Rename Area"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:448
+#: src/editor/map/context_manager.cpp:455
 msgid "Choose Target Map"
 msgstr "Válaszd ki a célpályát"
 
-#: src/editor/map/context_manager.cpp:455
-#: src/editor/map/context_manager.cpp:887
+#: src/editor/map/context_manager.cpp:462
+#: src/editor/map/context_manager.cpp:894
 msgid "Error loading map"
 msgstr "Hiba a pálya betöltése közben"
 
-#: src/editor/map/context_manager.cpp:572
+#: src/editor/map/context_manager.cpp:579
 msgid "Save the Map As"
 msgstr "Pálya mentése másként"
 
-#: src/editor/map/context_manager.cpp:576
-#: src/editor/map/context_manager.cpp:604
+#: src/editor/map/context_manager.cpp:583
+#: src/editor/map/context_manager.cpp:611
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "A fájl már létezik. Felül akarod írni?"
 
-#: src/editor/map/context_manager.cpp:600
+#: src/editor/map/context_manager.cpp:607
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save the Scenario As"
 msgstr "Pálya mentése másként"
 
-#: src/editor/map/context_manager.cpp:639
+#: src/editor/map/context_manager.cpp:646
 msgid "No random map generators found."
 msgstr "Nem található véletlenszerű pályakészítő."
 
-#: src/editor/map/context_manager.cpp:652
-#: src/editor/map/context_manager.cpp:656
+#: src/editor/map/context_manager.cpp:659
+#: src/editor/map/context_manager.cpp:663
 msgid "Map creation failed."
 msgstr "A pálya elkészítése meghiúsult."
 
-#: src/editor/map/context_manager.cpp:668
+#: src/editor/map/context_manager.cpp:675
 msgid "Unsaved Changes"
 msgstr "Mentetlen változtatások"
 
-#: src/editor/map/context_manager.cpp:669
+#: src/editor/map/context_manager.cpp:676
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "El akarod vetni az összes változtatást, amit a pálya utolsó mentése óta "
 "végeztél?"
 
-#: src/editor/map/context_manager.cpp:766
+#: src/editor/map/context_manager.cpp:773
 #, fuzzy
 #| msgid "This map is already open."
 msgid "This scenario is already open."
 msgstr "A pálya már meg van nyitva."
 
-#: src/editor/map/context_manager.cpp:788
-#: src/editor/map/context_manager.cpp:843
+#: src/editor/map/context_manager.cpp:795
+#: src/editor/map/context_manager.cpp:850
 msgid "This map is already open."
 msgstr "A pálya már meg van nyitva."
 
-#: src/editor/map/context_manager.cpp:809
+#: src/editor/map/context_manager.cpp:816
 #, fuzzy
 #| msgid "Map saved."
 msgid "Scenario saved."
 msgstr "Pálya sikeresen elmentve."
 
-#: src/editor/map/context_manager.cpp:823
+#: src/editor/map/context_manager.cpp:830
 msgid "Map saved."
 msgstr "Pálya sikeresen elmentve."
 
-#: src/editor/map/context_manager.cpp:866
+#: src/editor/map/context_manager.cpp:873
 msgid "Loaded embedded map data"
 msgstr "A beágyazott térkép adatai betöltődtek"
 
-#: src/editor/map/context_manager.cpp:867
-#: src/editor/map/context_manager.cpp:881
+#: src/editor/map/context_manager.cpp:874
+#: src/editor/map/context_manager.cpp:888
 msgid "Map loaded from scenario"
 msgstr "A küldetés térképe betöltődött"
 
-#: src/editor/map/context_manager.cpp:877
+#: src/editor/map/context_manager.cpp:884
 msgid ""
 "Loaded referenced map file:\n"
 "$new"

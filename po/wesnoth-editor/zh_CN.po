@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-05-24 20:08+0200\n"
+"POT-Creation-Date: 2014-07-12 20:06+0200\n"
 "PO-Revision-Date: 2011-12-14 21:17+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
@@ -297,19 +297,19 @@ msgstr "退出"
 msgid "No editor time-of-day found."
 msgstr "没有找到编辑器的时段设置。"
 
-#: src/editor/editor_controller.cpp:1065
+#: src/editor/editor_controller.cpp:1069
 msgid "Change Unit ID"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:1066
+#: src/editor/editor_controller.cpp:1070
 msgid "ID:"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:1082
+#: src/editor/editor_controller.cpp:1086
 msgid "Rename Unit"
 msgstr ""
 
-#: src/editor/editor_controller.cpp:1083
+#: src/editor/editor_controller.cpp:1087
 msgid "Name:"
 msgstr ""
 
@@ -330,107 +330,107 @@ msgstr "选择要打开的地图"
 msgid "(New Scenario)"
 msgstr "（新建地图）"
 
-#: src/editor/map/context_manager.cpp:322
+#: src/editor/map/context_manager.cpp:324
 #, fuzzy
 #| msgid "(New Map)"
 msgid "(Unnamed Area)"
 msgstr "（新建地图）"
 
-#: src/editor/map/context_manager.cpp:345
+#: src/editor/map/context_manager.cpp:352
 #, fuzzy
 #| msgid "(New Map)"
 msgid "(New Side)"
 msgstr "（新建地图）"
 
-#: src/editor/map/context_manager.cpp:411
+#: src/editor/map/context_manager.cpp:418
 msgid "Choose a Mask to Apply"
 msgstr "选择要使用的遮罩"
 
-#: src/editor/map/context_manager.cpp:418
+#: src/editor/map/context_manager.cpp:425
 msgid "Error loading mask"
 msgstr "读取遮罩时发生错误"
 
-#: src/editor/map/context_manager.cpp:437
+#: src/editor/map/context_manager.cpp:444
 msgid "Identifier:"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:437
+#: src/editor/map/context_manager.cpp:444
 msgid "Rename Area"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:448
+#: src/editor/map/context_manager.cpp:455
 msgid "Choose Target Map"
 msgstr "选择目标地图"
 
-#: src/editor/map/context_manager.cpp:455
-#: src/editor/map/context_manager.cpp:887
+#: src/editor/map/context_manager.cpp:462
+#: src/editor/map/context_manager.cpp:894
 msgid "Error loading map"
 msgstr "读取地图时发生错误"
 
-#: src/editor/map/context_manager.cpp:572
+#: src/editor/map/context_manager.cpp:579
 msgid "Save the Map As"
 msgstr "地图另存为"
 
-#: src/editor/map/context_manager.cpp:576
-#: src/editor/map/context_manager.cpp:604
+#: src/editor/map/context_manager.cpp:583
+#: src/editor/map/context_manager.cpp:611
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "文件已存在，要覆盖吗？"
 
-#: src/editor/map/context_manager.cpp:600
+#: src/editor/map/context_manager.cpp:607
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save the Scenario As"
 msgstr "地图另存为"
 
-#: src/editor/map/context_manager.cpp:639
+#: src/editor/map/context_manager.cpp:646
 msgid "No random map generators found."
 msgstr "没有找到随机地图生成器。"
 
-#: src/editor/map/context_manager.cpp:652
-#: src/editor/map/context_manager.cpp:656
+#: src/editor/map/context_manager.cpp:659
+#: src/editor/map/context_manager.cpp:663
 msgid "Map creation failed."
 msgstr "创建地图失败。"
 
-#: src/editor/map/context_manager.cpp:668
+#: src/editor/map/context_manager.cpp:675
 msgid "Unsaved Changes"
 msgstr "未保存的更改"
 
-#: src/editor/map/context_manager.cpp:669
+#: src/editor/map/context_manager.cpp:676
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr "您想要放弃上次保存之后所作的修改吗？"
 
-#: src/editor/map/context_manager.cpp:766
+#: src/editor/map/context_manager.cpp:773
 #, fuzzy
 #| msgid "This map is already open."
 msgid "This scenario is already open."
 msgstr "这张地图已经被打开。"
 
-#: src/editor/map/context_manager.cpp:788
-#: src/editor/map/context_manager.cpp:843
+#: src/editor/map/context_manager.cpp:795
+#: src/editor/map/context_manager.cpp:850
 msgid "This map is already open."
 msgstr "这张地图已经被打开。"
 
-#: src/editor/map/context_manager.cpp:809
+#: src/editor/map/context_manager.cpp:816
 #, fuzzy
 #| msgid "Map saved."
 msgid "Scenario saved."
 msgstr "地图已保存。"
 
-#: src/editor/map/context_manager.cpp:823
+#: src/editor/map/context_manager.cpp:830
 msgid "Map saved."
 msgstr "地图已保存。"
 
-#: src/editor/map/context_manager.cpp:866
+#: src/editor/map/context_manager.cpp:873
 msgid "Loaded embedded map data"
 msgstr "已读取嵌入的地图数据"
 
-#: src/editor/map/context_manager.cpp:867
-#: src/editor/map/context_manager.cpp:881
+#: src/editor/map/context_manager.cpp:874
+#: src/editor/map/context_manager.cpp:888
 msgid "Map loaded from scenario"
 msgstr "已从场景中读取地图"
 
-#: src/editor/map/context_manager.cpp:877
+#: src/editor/map/context_manager.cpp:884
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
