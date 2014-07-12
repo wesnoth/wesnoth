@@ -693,6 +693,7 @@ set(wesnoth-main_SRC
 	ai/manager.cpp
 	ai/recruitment/recruitment.cpp
 	ai/registry.cpp
+	ai/simulated_actions.cpp
 	ai/testing.cpp
 	ai/testing/aspect_attacks.cpp
 	ai/testing/ca.cpp
