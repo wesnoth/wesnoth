@@ -38,6 +38,13 @@ Fixed bug that caused incorrect / missing minimap data to be displayed in the pr
 Note that you must refresh your save_index to get proper behavior, by deleting it from the userdata folder.
 [/section]
 
+[section="Bugfixes for [filter_vision]"]
+The [filter_vision] tag introduced in 1.11 series was discovered to have some bugs, it would behave with different logic depending on whether it was in a unit filter or a location filter. Neither of these implementations was actually quite right, and the simplest way to fix it was to make it work as originally intended. In 1.11.16 and future versions of wesnoth, [filter_vision] works like most other tags such as [has_unit], that is, 
+[list][*]When used in a unit filter, a [filter_vision] check succeeds if there is [b]any[/b] side with vision of the unit (no fog there and unit is not hiding from that side) which passes the side filter in [filter_vision], and fails otherwise.
+[*] When used in a terrain_filter, a [filter_vision] check succeeds if there is [b]any[/b] side with vision of the location (no fog there, or if respect_fog=false, then no shroud there) which passes the side filter in [filter_vision], and fails otherwise.
+[/section]
+
+
 [section="Example section 2"]
 Example contents 2.
 [/section]

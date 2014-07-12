@@ -110,6 +110,12 @@ Version 1.11.15+dev:
      start-of-scenario saves, but it seems to be a different issue.)
    * Fixed the SCATTER_UNITS macro so that it may no longer attempt to place
      units at the map borders.
+   * Fixed [filter_vision] bugs here: http://forums.wesnoth.org/viewtopic.php?f=21&t=40702
+     [filter_vision] was found to be inconsistent depending on whether it appears in location
+     or unit filter. The simplest way to fix the logic was to give an implementation matching
+     the original intention. Now, a [filter_vision] check succeeds, for a unit or a location,
+     if there is *any* side matching the side filter has vision of that location / unit, and
+     fails otherwise.
 
 Version 1.11.15:
  * Graphics:
