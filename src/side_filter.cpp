@@ -173,6 +173,37 @@ bool side_filter::match_internal(const team &t) const
 		}
 	}
 
+	const vconfig& has_enemy = cfg_.child("has_enemy");
+	if(!has_enemy.null()) {
+		side_filter s_filter(has_enemy);
+		const std::vector<int>& teams = s_filter.get_teams();
+		bool found = false;
+		BOOST_FOREACH(const int side, teams) {
+			if((*resources::teams)[side - 1].is_enemy(t.side()))
+			{
+				found = true;
+				break;
+			}
+		}
+		if (!found) return false;
+	}
+
+	const vconfig& has_ally = cfg_.child("has_ally");
+	if(!has_ally.null()) {
+		side_filter s_filter(has_ally);
+		const std::vector<int>& teams = s_filter.get_teams();
+		bool found = false;
+		BOOST_FOREACH(const int side, teams) {
+			if(!(*resources::teams)[side - 1].is_enemy(t.side()))
+			{
+				found = true;
+				break;
+			}
+		}
+		if (!found) return false;
+	}
+
+
 	const config::attribute_value cfg_controller = cfg_["controller"];
 	if (!cfg_controller.blank())
 	{
