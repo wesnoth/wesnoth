@@ -311,12 +311,13 @@ move_result::move_result(side_number side, const map_location& from,
 			 const map_location& to, bool remove_movement, bool unreach_is_ok)
 	: action_result(side)
 	, from_(from)
-	, move_spectator_(*resources::units)
 	, to_(to)
 	, remove_movement_(remove_movement)
 	, route_()
 	, unit_location_(from)
 	, unreach_is_ok_(unreach_is_ok)
+	, has_ambusher_(false)
+	, has_interrupted_teleport_(false)
 {
 }
 
@@ -393,11 +394,11 @@ const map_location& move_result::get_unit_location() const
 
 void move_result::do_check_after()
 {
-	if (move_spectator_.get_ambusher().valid()) {
+	if (has_ambusher_) {
 		set_error(E_AMBUSHED,false);
 		return;
 	}
-	if (move_spectator_.get_failed_teleport().valid()) {
+	if (has_interrupted_teleport_) {
 		set_error(E_FAILED_TELEPORT);
 		return;
 	}
@@ -429,7 +430,8 @@ void move_result::do_execute()
 	LOG_AI_ACTIONS << "start of execution of: "<< *this << std::endl;
 	assert(is_success());
 
-	move_spectator_.set_unit(resources::units->find(from_));
+	::actions::move_unit_spectator move_spectator(*resources::units);
+	move_spectator.set_unit(resources::units->find(from_));
 
 	if (from_ != to_) {
 		size_t num_steps = ::actions::move_unit_and_record(
@@ -438,11 +440,11 @@ void move_result::do_execute()
 			/*bool continue_move*/ true, ///@todo 1.9 set to false after implemeting interrupt awareness
 			/*bool show_move*/ preferences::show_ai_moves(),
 			/*bool* interrupted*/ NULL,
-			/*::actions::move_unit_spectator* move_spectator*/ &move_spectator_);
+			/*::actions::move_unit_spectator* move_spectator*/ &move_spectator);
 
 		if ( num_steps > 0 ) {
 			set_gamestate_changed();
-		} else if ( move_spectator_.get_ambusher().valid() ) {
+		} else if ( move_spectator.get_ambusher().valid() ) {
 			// Unlikely, but some types of strange WML (or bad pathfinding)
 			// could cause an ambusher to be found without moving.
 			set_gamestate_changed();
@@ -451,9 +453,9 @@ void move_result::do_execute()
 		assert(remove_movement_);
 	}
 
-	if (move_spectator_.get_unit().valid()){
-		unit_location_ = move_spectator_.get_unit()->get_location();
-		if (remove_movement_ && move_spectator_.get_unit()->movement_left() > 0 && unit_location_ == to_)
+	if (move_spectator.get_unit().valid()){
+		unit_location_ = move_spectator.get_unit()->get_location();
+		if (remove_movement_ && move_spectator.get_unit()->movement_left() > 0 && unit_location_ == to_)
 		{
 			stopunit_result_ptr stopunit_res = actions::execute_stopunit_action(get_side(),true,unit_location_,true,false);
 			if (!stopunit_res->is_ok()) {
@@ -467,6 +469,9 @@ void move_result::do_execute()
 		unit_location_ = map_location();
 	}
 
+	has_ambusher_ = move_spectator.get_ambusher().valid();
+	has_interrupted_teleport_ = move_spectator.get_failed_teleport().valid();
+
 	if (is_gamestate_changed()) {
 		try {
 			manager::raise_gamestate_changed();
@@ -479,7 +484,6 @@ void move_result::do_execute()
 
 void move_result::do_init_for_execution()
 {
-	move_spectator_.reset(*resources::units);
 }
 
 

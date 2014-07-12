@@ -192,12 +192,13 @@ private:
 	const unit *get_unit();
 	bool test_route(const unit &un);
 	const map_location from_;
-	::actions::move_unit_spectator move_spectator_;
 	const map_location to_;
 	bool remove_movement_;
 	boost::shared_ptr<pathfind::plain_route> route_;
 	map_location unit_location_;
 	bool unreach_is_ok_;
+	bool has_ambusher_;
+	bool has_interrupted_teleport_;
 };
 
 
