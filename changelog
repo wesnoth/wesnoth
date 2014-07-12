@@ -239,6 +239,8 @@ Version 1.13.0-dev:
      than crashing with no explanation.
    * Fix bug #22305: assertion failure in unit_display.cpp
    * Fix bug #22086: wrong or missing minimap previews displayed b/c of problems with saveindex
+   * Fixed bugs in [filter_vision] reported here: http://forums.wesnoth.org/viewtopic.php?f=21&t=40702
+     [filter_vision] is now a check for *any* side matching the filter to have appropriate vision.
 
 Version 1.11.11:
  * Add-ons server:
