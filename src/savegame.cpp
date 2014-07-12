@@ -676,7 +676,9 @@ void ingame_savegame::write_game(config_writer &out) {
 	out.write_child("replay", gamestate().replay_data);
 }
 
-void convert_old_saves(config& cfg){
+//changes done during 1.11.0-dev
+static void convert_old_saves_1_11_0(config& cfg)
+{
 	if(!cfg.has_child("snapshot")){
 		return;
 	}
@@ -768,9 +770,10 @@ void convert_old_saves(config& cfg){
 		LOG_RG<<"removing snapshot \n";
 		cfg.remove_child("snapshot", 0);
 	}
-	//?-1.11.? end
-	//1.12-1.13 begin
-
+}
+//changes done during 1.13.0-dev
+static void convert_old_saves_1_13_0(config& cfg)
+{
 	if(config& carryover_sides_start = cfg.child("carryover_sides_start"))
 	{
 		if(!carryover_sides_start.has_attribute("next_underlying_unit_id"))
@@ -785,15 +788,27 @@ void convert_old_saves(config& cfg){
 		if(config& end_level = cfg.child("end_level") )
 		{
 			snapshot.add_child("end_level_data", end_level);
-			snapshot.remove_child("end_level",0);
+			snapshot.remove_child("end_level", 0);
 		}
+		//if we have a snapshot then we already applied carryover so there is no reason to keep this data.
 		if(cfg.has_child("carryover_sides_start"))
 		{
 			cfg.remove_child("carryover_sides_start", 0);
 		}
 	}
+}
 
-	//1.12-1.13 end
+void convert_old_saves(config& cfg)
+{
+	version_info loaded_version(cfg["version"]);
+	if(loaded_version < version_info("1.12.0"))
+	{
+		convert_old_saves_1_11_0(cfg);
+	}
+	if(loaded_version <= version_info("1.13.0"))
+	{
+		convert_old_saves_1_13_0(cfg);
+	}
 	LOG_RG<<"cfg after conversion "<<cfg<<"\n";
 }
 
