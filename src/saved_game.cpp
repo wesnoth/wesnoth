@@ -327,6 +327,7 @@ void saved_game::expand_random_scenario()
 			{
 				scenario_new.add_child("story", story);
 			}
+			scenario_new["id"] = starting_pos_["id"]; 
 			starting_pos_ = scenario_new;
 			update_label();
 		}
