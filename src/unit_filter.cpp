@@ -531,16 +531,18 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 	assert(vision_filters_viewers_lists_.size() == vision_filters_visible_attr_.size());
 	for (size_t i = 0; i < vision_filters_viewers_lists_.size(); i++) {
 		const std::set<int> & viewers = vision_filters_viewers_lists_[i];
-		if (viewers.empty()) {
-			return false;
-		}
-		std::set<int>::const_iterator viewer, viewer_end = viewers.end();
-		for (viewer = viewers.begin(); viewer != viewer_end; ++viewer) {
-			bool fogged = fc_.get_disp_context().teams()[*viewer - 1].fogged(loc);
+
+		bool found = false;
+		BOOST_FOREACH (const int viewer, viewers) {
+			bool fogged = fc_.get_disp_context().teams()[viewer - 1].fogged(loc);
 			bool hiding = u.invisible(loc/*, false(?) */);
 			bool unit_hidden = fogged || hiding;
-			if (vision_filters_visible_attr_[i] == unit_hidden) return false;
+			if (vision_filters_visible_attr_[i] != unit_hidden) {
+				found = true;
+				break;
+			}
 		}
+		if (!found) {return false;}
 	}
 
 	assert(filter_adj_filters_.size() == filter_adj_is_enemy_.size());

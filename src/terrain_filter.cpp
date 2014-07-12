@@ -183,13 +183,16 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 			side_filter ssf(*i, fc_);
 			std::vector<int> sides = ssf.get_teams();
 
+			bool found = false;
 			BOOST_FOREACH(const int side, sides) {
 				const team &viewing_team = fc_->get_disp_context().teams().at(side - 1);
 				bool viewer_sees = respect_fog ? !viewing_team.fogged(loc) : !viewing_team.shrouded(loc);
-				if (visible != viewer_sees) {
-					return false;
+				if (visible == viewer_sees) {
+					found = true;
+					break;
 				}
 			}
+			if (!found) {return false;}
 		}
 	}
 
