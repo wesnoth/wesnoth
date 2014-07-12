@@ -496,12 +496,16 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 	if(!shrouded) {
 		if(has_snapshot) {
-			if (!cfg_snapshot.find_child("side", "shroud", "yes")) {
-				cfg_summary.add_child("map", cfg_snapshot.child_or_empty("map"));
+			if (!cfg_snapshot.find_child("side", "shroud", "yes") && cfg_snapshot.has_attribute("map_data")) {
+				cfg_summary["map_data"] = cfg_snapshot["map_data"].str();
+			} else {
+				ERR_SAVE << "Not saving map because there is shroud" << std::endl;
 			}
 		} else if(has_replay) {
-			if (!cfg_replay_start.find_child("side","shroud","yes")) {
-				cfg_summary.add_child("map", cfg_replay_start.child_or_empty("map"));
+			if (!cfg_replay_start.find_child("side","shroud","yes") && cfg_replay_start.has_attribute("map_data")) {
+				cfg_summary["map_data"] = cfg_replay_start["map_data"];
+			} else {
+				ERR_SAVE << "Not saving map because there is shroud" << std::endl;
 			}
 		}
 	}
