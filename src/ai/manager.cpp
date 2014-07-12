@@ -24,6 +24,7 @@
 #include "../generic_event.hpp"      // for generic_event, etc
 #include "../log.hpp"
 #include "../map_location.hpp"       // for map_location
+#include "../resources.hpp"
 #include "../serialization/string_utils.hpp"
 
 #include "composite/ai.hpp"             // for ai_composite
@@ -420,6 +421,10 @@ void manager::remove_turn_started_observer( events::observer* event_observer )
 }
 
 void manager::raise_user_interact() {
+	if(resources::simulation_){
+		return;
+	}
+
 	const int interact_time = 30;
 	const int time_since_interact = SDL_GetTicks() - last_interact_;
 	if(time_since_interact < interact_time) {
