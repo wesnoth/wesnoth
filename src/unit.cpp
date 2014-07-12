@@ -1562,16 +1562,18 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 			side_filter ssf(*i);
 			std::vector<int> sides = ssf.get_teams();
 			viewers.insert(sides.begin(), sides.end());
-			if (viewers.empty()) {
-				return false;
-			}
-			std::set<int>::const_iterator viewer, viewer_end = viewers.end();
-			for (viewer = viewers.begin(); viewer != viewer_end; ++viewer) {
-				bool fogged = teams_manager::get_teams()[*viewer - 1].fogged(loc);
+
+			bool found = false;
+			BOOST_FOREACH(const int viewer, viewers) {
+				bool fogged = teams_manager::get_teams()[viewer - 1].fogged(loc);
 				bool hiding = this->invisible(loc/*, false(?) */);
 				bool unit_hidden = fogged || hiding;
-				if (visible == unit_hidden) return false;
+				if (visible != unit_hidden) {
+					found = true;
+					break;
+				}
 			}
+			if (!found) return false;
 		}
 	}
 
