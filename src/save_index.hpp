@@ -98,8 +98,6 @@ private:
 extern save_index_class save_index_manager;
 } //end of namespace savegame
 
-
-void extract_summary_from_config(config& cfg_save, config& cfg_summary);
 void replace_underbar2space(std::string &name);
 void replace_space2underbar(std::string &name);
 

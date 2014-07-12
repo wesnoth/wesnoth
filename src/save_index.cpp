@@ -123,6 +123,7 @@ static lg::log_domain log_enginerefac("enginerefac");
 
 namespace savegame {
 
+void extract_summary_from_config(config &, config &);
 
 void save_index_class::rebuild(const std::string& name) {
 	std::string filename = name;
@@ -138,7 +139,7 @@ void save_index_class::rebuild(const std::string& name, const time_t& modified) 
 		config full;
 		std::string dummy;
 		read_save_file(name, full, &dummy);
-		::extract_summary_from_config(full, summary);
+		extract_summary_from_config(full, summary);
 	} catch(game::load_game_failed&) {
 		summary["corrupt"] = true;
 		}
@@ -402,8 +403,6 @@ save_info create_save_info::operator()(const std::string& filename) const
 	return save_info(name, modified);
 }
 
-} // end namespace savegame
-
 void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 {
 	const config &cfg_snapshot = cfg_save.child("snapshot");
@@ -507,3 +506,5 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 		}
 	}
 }
+
+} // end namespace savegame
