@@ -9,13 +9,18 @@ Version 1.11.15+dev:
    * Descent into Darkness:
      * Fixed various issues with player and enemy gold and income in
        'Descent into Darkness'.
+     * Fixed Darken Volk's ellipse in scenarios 'A Small Favor part 3' and
+       'Alone at Last'.
+     * Fixed Darken Volk being completely passive in 'Alone at Last'.
    * Legend of Wesmere
      * Disabled the non finished chapters 4 and 5 in the mp port.
      * Fix scenario 3 which was broken after a map change.
    * Northern Rebirth:
      * Fixed Sister Thera and Father Morvin respawning into the recall list if
        the other is on the north or west map edges.
-   * Son of the Black Eye: minor balance tweaks to scenarios 15, 17 and 18
+   * Son of the Black Eye:
+     * Minor balance tweaks to scenarios 15, 17 and 18.
+     * Made allied leaders less likely to get themselves killed.
  * Editor:
    * Added an entry for the terrain description help to the context menu.
    * Default hotkey bindings for brushes (1-5)
@@ -103,6 +108,8 @@ Version 1.11.15+dev:
    * Fix bug #22086: save_index generated using wrong savegame format assumptions,
      causing missing / wrong minimap data to be displayed. (This is still broken for
      start-of-scenario saves, but it seems to be a different issue.)
+   * Fixed the SCATTER_UNITS macro so that it may no longer attempt to place
+     units at the map borders.
 
 Version 1.11.15:
  * Graphics:
