@@ -348,50 +348,6 @@ void loadgame::load_multiplayer_game()
 	check_version_compatibility();
 }
 
-void loadgame::fill_mplevel_config(config& level){
-	gamestate_.mp_settings().saved_game = true;
-
-	// If we have a start of scenario MP campaign scenario the snapshot
-	// is empty the starting position contains the wanted info.
-#if 0 
-	const config& start_data = !gamestate_.snapshot.empty() ? gamestate_.snapshot : gamestate_.replay_start();
-#else
-	const config& start_data = gamestate_.get_starting_pos();
-#endif
-	level.add_child("map", start_data.child_or_empty("map"));
-	level["id"] = start_data["id"];
-	level["name"] = start_data["name"];
-	level["completion"] = start_data["completion"];
-	level["next_underlying_unit_id"] = start_data["next_underlying_unit_id"];
-	// Probably not needed.
-	level["turn"] = start_data["turn_at"];
-	level["turn_at"] = start_data["turn_at"];
-
-	level.add_child("multiplayer", gamestate_.mp_settings().to_config());
-
-	//Start-of-scenario save
-	if(!gamestate_.is_mid_game_save()){
-		//For a start-of-scenario-save, write the data to the starting_pos and not the snapshot, since
-		//there should only be snapshots for midgame reloads
-		if (config &c = level.child("replay_start")) {
-			c.merge_with(start_data);
-		} else {
-			level.add_child("replay_start") = start_data;
-		}
-		level.add_child("snapshot") = config();
-	} else {
-		level.add_child("snapshot") = start_data;
-		level.add_child("replay_start") = gamestate_.replay_start();
-	}
-	level["random_seed"] = start_data["random_seed"];
-	level["random_calls"] = start_data["random_calls"];
-
-	// Adds the replay data, and the replay start, to the level,
-	// so clients can receive it.
-	level.add_child("replay") = gamestate_.replay_data;
-	level.add_child("statistics") = statistics::write_stats();
-}
-
 void loadgame::copy_era(config &cfg)
 {
 	const config &replay_start = cfg.child("replay_start");
