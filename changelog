@@ -31,6 +31,9 @@ Version 1.13.0-dev:
    * Descent into Darkness:
      * Fixed various issues with player and enemy gold and income in
        'Descent into Darkness'.
+     * Fixed Darken Volk's ellipse in scenarios 'A Small Favor part 3' and
+       'Alone at Last'.
+     * Fixed Darken Volk being completely passive in 'Alone at Last'.
    * Eastern Invasion:
      * In 'Captured', stolen gold won't be mentioned if the player had no
        carryover gold.
@@ -43,6 +46,7 @@ Version 1.13.0-dev:
      * S3: make objectives consistent between before and after trolls appear
      * S6: remove AI controller.  It doesn't work with sides without a leader
      * Minor balance tweaks to scenarios 7, 8, 12, 14, 15, 17 and 18.
+     * Made allied leaders less likely to get themselves killed.
    * The Hammer of Thursagan:
      * Fixed missing objective in 'The Court of Karrag'.
      * Rebalanced scenarios 'Invaders', Mages and Drakes' and 'Fear'.
@@ -239,6 +243,8 @@ Version 1.13.0-dev:
      than crashing with no explanation.
    * Fix bug #22305: assertion failure in unit_display.cpp
    * Fix bug #22086: wrong or missing minimap previews displayed b/c of problems with saveindex
+   * Fixed the SCATTER_UNITS macro so that it may no longer attempt to place
+     units at the map borders.
    * Fixed bugs in [filter_vision] reported here: http://forums.wesnoth.org/viewtopic.php?f=21&t=40702
      [filter_vision] is now a check for *any* side matching the filter to have appropriate vision.
    * Add [has_ally], [has_enemy] to work around issues reported here: http://forums.wesnoth.org/viewtopic.php?f=21&t=40702
