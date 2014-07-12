@@ -751,6 +751,11 @@ void save_preview_pane::draw_contents()
 	surface map_surf(NULL);
 
 	if(map_data.empty() == false) {
+		LOG_DP << "When parsing save summary " << ((*info_)[index_]).name() << std::endl
+			<< "Did not find a map_data field. Looking in game config for a child [" << summary["campaign_type"] << "] with id " << summary["scenario"] << std::endl;
+
+		assert(game_config_ && "ran into a null game config pointer inside a game preview pane");
+
 		const std::map<std::string,surface>::const_iterator itor = map_cache_.find(map_data);
 		if(itor != map_cache_.end()) {
 			map_surf = itor->second;
@@ -781,6 +786,8 @@ void save_preview_pane::draw_contents()
 
 		ypos = std::max<int>(ypos,map_rect.y + map_rect.h + save_preview_border);
 		sdl_blit(map_surf,NULL,screen,&map_rect);
+	} else {
+		LOG_DP << "Never found a map for savefile " << (*info_)[index_].name() << std::endl;
 	}
 
 	char time_buf[256] = {0};
