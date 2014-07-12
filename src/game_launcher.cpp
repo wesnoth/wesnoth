@@ -568,6 +568,10 @@ bool game_launcher::is_loading() const
 
 bool game_launcher::load_game()
 {
+	assert(resources::config_manager);
+
+	DBG_GENERAL << "Current campaign type: " << state_.classification().campaign_type << std::endl;
+
 	savegame::loadgame load(disp(), resources::config_manager->game_config(),
 	    state_);
 
