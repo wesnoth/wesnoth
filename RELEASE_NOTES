@@ -42,8 +42,15 @@ Note that you must refresh your save_index to get proper behavior, by deleting i
 The [filter_vision] tag introduced in 1.11 series was discovered to have some bugs, it would behave with different logic depending on whether it was in a unit filter or a location filter. Neither of these implementations was actually quite right, and the simplest way to fix it was to make it work as originally intended. In 1.11.16 and future versions of wesnoth, [filter_vision] works like most other tags such as [has_unit], that is, 
 [list][*]When used in a unit filter, a [filter_vision] check succeeds if there is [b]any[/b] side with vision of the unit (no fog there and unit is not hiding from that side) which passes the side filter in [filter_vision], and fails otherwise.
 [*] When used in a terrain_filter, a [filter_vision] check succeeds if there is [b]any[/b] side with vision of the location (no fog there, or if respect_fog=false, then no shroud there) which passes the side filter in [filter_vision], and fails otherwise.
-[/section]
+[/list]
 
+The [allied_with] / [enemy_of] tags in side filter had some related issues -- they were originally intended to match if *any* side matches the filter, but they
+ended up being implemented in a needlessly confusing manner, where they in most cases match if *all* sides matching the filter are allies / enemies, but if 
+there are none then they report false anyways. To work around this [has_ally] and [has_enemy] have been added, which correctly match when *any* side matching 
+the filter is an ally or enemy.
+
+Thus excepting for [allied_with] / [enemy_of], all filters in 1.11.16+ are simply a check for *any* object matching the filter data.
+[/section]
 
 [section="Example section 2"]
 Example contents 2.

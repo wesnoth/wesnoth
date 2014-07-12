@@ -116,6 +116,9 @@ Version 1.11.15+dev:
      the original intention. Now, a [filter_vision] check succeeds, for a unit or a location,
      if there is *any* side matching the side filter has vision of that location / unit, and
      fails otherwise.
+   * Add [has_ally], [has_enemy] to work around issues reported here: http://forums.wesnoth.org/viewtopic.php?f=21&t=40702
+     In a side_filter, [has_ally] and [has_enemy] are corrected / simplified versions of [allied_with] / [enemy_of], this
+     is an extension of the bugfixes for [filter_vision].
 
 Version 1.11.15:
  * Graphics:
