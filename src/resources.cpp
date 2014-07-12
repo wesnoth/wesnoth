@@ -35,4 +35,5 @@ namespace resources
 	boost::shared_ptr<wb::manager> whiteboard = boost::shared_ptr<wb::manager>();
 	game_classification  *classification = NULL;
 	const mp_game_settings *mp_settings = NULL;
+	bool                 simulation_ = false;
 }

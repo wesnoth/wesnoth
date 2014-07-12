@@ -34,9 +34,11 @@
 
 #include "actions.hpp"
 #include "manager.hpp"
+#include "simulated_actions.hpp"
 
 #include "../actions/attack.hpp"
 #include "../actions/create.hpp"
+#include "../attack_prediction.hpp"
 #include "../game_preferences.hpp"
 #include "../log.hpp"
 #include "../mouse_handler_base.hpp"
@@ -271,6 +273,15 @@ void attack_result::do_execute()
 
 	const unit_map::const_iterator a_ = resources::units->find(attacker_loc_);
 	const unit_map::const_iterator d_ = resources::units->find(defender_loc_);
+
+	if(resources::simulation_){
+		bool gamestate_changed = simulated_attack(attacker_loc_, defender_loc_, bc.get_attacker_combatant().average_hp(), bc.get_defender_combatant().average_hp());
+
+		sim_gamestate_changed(this, gamestate_changed);
+
+		return;
+	}
+
 	//to get rid of an unused member variable warning, FIXME: find a way to 'ask' the ai which advancement should be chosen from synced_commands.cpp .
 	if(synced_context::get_synced_state() != synced_context::SYNCED) //RAII block for set_scontext_synced
 	{
@@ -429,6 +440,25 @@ void move_result::do_execute()
 {
 	LOG_AI_ACTIONS << "start of execution of: "<< *this << std::endl;
 	assert(is_success());
+
+	if(resources::simulation_){
+		bool gamestate_changed = false;
+		if(from_ != to_){
+			int step = route_->steps.size();
+			gamestate_changed = simulated_move(get_side(), from_, to_, step, unit_location_);
+		} else {
+			assert(remove_movement_);
+		}
+
+		unit_map::const_iterator un = resources::units->find(unit_location_);
+		if(remove_movement_ && un->movement_left() > 0 && unit_location_ == to_){
+			gamestate_changed = simulated_stopunit(unit_location_, true, false);
+		}
+
+		sim_gamestate_changed(this, gamestate_changed);
+
+		return;
+	}
 
 	::actions::move_unit_spectator move_spectator(*resources::units);
 	move_spectator.set_unit(resources::units->find(from_));
@@ -607,6 +637,14 @@ void recall_result::do_execute()
 	// called, so this is a guard against future breakage.
 	assert(location_checked_);
 
+	if(resources::simulation_){
+		bool gamestate_changed = simulated_recall(get_side(), unit_id_, recall_location_);
+
+		sim_gamestate_changed(this, gamestate_changed);
+
+		return;
+	}
+
 	// Do the actual recalling.
 	//we ignore possible erros (=unit doesnt exist on the recall list)
 	//becasue that was the previous behaviour.
@@ -752,6 +790,14 @@ void recruit_result::do_execute()
 	// called, so this is a guard against future breakage.
 	assert(location_checked_  &&  u != NULL);
 
+	if(resources::simulation_){
+		bool gamestate_changed = simulated_recruit(get_side(), u, recruit_location_);
+
+		sim_gamestate_changed(this, gamestate_changed);
+
+		return;
+	}
+
 	synced_context::run_in_synced_context_if_not_already("recruit", replay_helper::get_recruit(u->id(), recruit_location_, recruit_from_), false, preferences::show_ai_moves());
 	//TODO: should we do something to pass use_undo = false in replays and ai moves ?
 	//::actions::recruit_unit(*u, get_side(), recruit_location_, recruit_from_,
@@ -846,6 +892,15 @@ void stopunit_result::do_execute()
 	LOG_AI_ACTIONS << "start of execution of: " << *this << std::endl;
 	assert(is_success());
 	unit_map::iterator un = resources::units->find(unit_location_);
+
+	if(resources::simulation_){
+		bool gamestate_changed = simulated_stopunit(unit_location_, remove_movement_, remove_attacks_);
+
+		sim_gamestate_changed(this, gamestate_changed);
+
+		return;
+	}
+
 	try {
 		if (remove_movement_){
 			un->remove_movement_ai();
@@ -894,6 +949,14 @@ std::string synced_command_result::do_describe() const
 
 void synced_command_result::do_execute()
 {
+	if(resources::simulation_){
+		bool gamestate_changed = simulated_synced_command();
+
+		sim_gamestate_changed(this, gamestate_changed);
+
+		return;
+	}
+
 	LOG_AI_ACTIONS << "start of execution of: " << *this << std::endl;
 	assert(is_success());
 
@@ -1045,6 +1108,13 @@ const std::string& actions::get_error_name(int error_code)
 }
 
 std::map<int,std::string> actions::error_names_;
+
+void sim_gamestate_changed(action_result *result, bool gamestate_changed){
+	if(gamestate_changed){
+		result->set_gamestate_changed();
+		manager::raise_gamestate_changed();
+	}
+}
 
 } //end of namespace ai
 

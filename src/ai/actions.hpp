@@ -38,6 +38,8 @@ class gamemap;
 namespace ai {
 
 class action_result {
+friend void sim_gamestate_changed(action_result *result, bool gamestate_changed);	// Manage gamestate changed in simulated actions.
+
 public:
 
 	enum tresult {
