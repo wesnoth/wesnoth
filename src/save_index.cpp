@@ -130,6 +130,7 @@ void save_index_class::rebuild(const std::string& name) {
 	time_t modified = file_create_time(get_saves_dir() + "/" + filename);
 	rebuild(name, modified);
 }
+
 void save_index_class::rebuild(const std::string& name, const time_t& modified) {
 	log_scope("load_summary_from_file");
 	config& summary = data(name);
@@ -144,14 +145,17 @@ void save_index_class::rebuild(const std::string& name, const time_t& modified) 
 	summary["mod_time"] = str_cast(static_cast<int>(modified));
 	write_save_index();
 }
+
 void save_index_class::remove(const std::string& name) {
 	config& root = data();
 	root.remove_attribute(name);
 	write_save_index();
 }
+
 void save_index_class::set_modified(const std::string& name, const time_t& modified) {
 	modified_[name] = modified;
 }
+
 config& save_index_class::get(const std::string& name) {
 	config& result = data(name);
 	time_t m = modified_[name];
@@ -161,6 +165,7 @@ config& save_index_class::get(const std::string& name) {
 	}
 	return result;
 }
+
 void save_index_class::write_save_index() {
 	log_scope("write_save_index()");
 	try {
@@ -174,22 +179,25 @@ void save_index_class::write_save_index() {
 	} catch(io_exception& e) {
 		ERR_SAVE << "error writing to save index file: '" << e.what() << "'" << std::endl;
 	}
-	}
+}
+
 save_index_class::save_index_class()
 	: loaded_(false)
 	, data_()
 	, modified_()
 {
 }
+
 config& save_index_class::data(const std::string& name) {
 	config& cfg = data();
 	if (config& sv = cfg.find_child("save", "save", name)) {
 		return sv;
-}
+	}
 		config& res = cfg.add_child("save");
 		res["save"] = name;
 	return res;
 }
+
 config& save_index_class::data() {
 	if(loaded_ == false) {
 		try {
@@ -210,7 +218,9 @@ config& save_index_class::data() {
 	}
 	return data_;
 }
+
 save_index_class save_index_manager;
+
 class filename_filter {
 public:
 	filename_filter(const std::string& filter) : filter_(filter) {
@@ -382,6 +392,7 @@ create_save_info::create_save_info(const std::string* d)
 	: dir(d ? *d : get_saves_dir())
 {
 }
+
 save_info create_save_info::operator()(const std::string& filename) const
 {
 	std::string name = filename;
@@ -391,7 +402,7 @@ save_info create_save_info::operator()(const std::string& filename) const
 	return save_info(name, modified);
 }
 
-}
+} // end namespace savegame
 
 void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 {
