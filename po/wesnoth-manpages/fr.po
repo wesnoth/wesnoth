@@ -3,19 +3,21 @@
 # Automatically generated, 2006.
 # Guillaume Pascal <guillaume.pascal43@laposte.net>, 2011, 2012, 2013.
 # Guigou Guillaume <guillaume.guigou@orange.fr>, 2013.
+# Rémi BERTHO <remi.bertho@gmail.com>, 2014.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Manpages-1.12\n"
 "POT-Creation-Date: 2014-03-23 18:06+0100\n"
-"PO-Revision-Date: 2013-03-02 14:18+0200\n"
-"Last-Translator: Guillaume Pascal <guillaume.pascal43@laposte.net>\n"
-"Language-Team: French <wesnoth@ml.free.fr>\n"
+"PO-Revision-Date: 2014-07-10 20:09+0100\n"
+"Last-Translator: Émile Enguehard <zerbugug@gmail.com>\n"
+"Language-Team: français <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 1.5.5\n"
 
 # type: TH
 #. type: TH
@@ -28,7 +30,7 @@ msgstr "WESNOTH"
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2013"
-msgstr ""
+msgstr "2013"
 
 # type: TH
 #. type: TH
@@ -194,16 +196,13 @@ msgstr "Remplace le répertoire data par celui spécifié"
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:63
-#, fuzzy, no-wrap
-#| msgid "B<--path>"
+#, no-wrap
 msgid "B<--data-path>"
-msgstr "B<--path>"
+msgstr "B<--data-path>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:66
-#, fuzzy
-#| msgid "prints the name of the game data directory and exits."
 msgid "path the path of the data directory and exits."
 msgstr "Affiche le nom du répertoire principal du jeu et quitte le programme."
 
@@ -650,20 +649,13 @@ msgstr "Lance le jeu avec un petit scénario de test."
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:198
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--userconfig-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ nom>"
+msgstr "B<--userconfig-dir>I<\\ nom>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:207
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#| "path for the configuration directory outside the $HOME or \"My Documents"
-#| "\\eMy Games\""
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -672,17 +664,18 @@ msgid ""
 "wesnoth, on other systems to the userdata path."
 msgstr ""
 "Définit le répertoire de configuration de l'utilisateur à I<nom> dans $HOME "
-"ou dans \"Mes Documents\\eMes Jeux\" pour windows.  Vous pouvez aussi "
-"renseigner un chemin absolu pour un dossier de configuration situé en dehors "
-"de $HOME ou de \"Mes Documents\\eMes Jeux\""
+"ou dans \"Mes Documents\\eMes Jeux\" pour Windows.  Vous pouvez aussi "
+"indiquer un chemin absolu pour un dossier de configuration situé en dehors "
+"de $HOME ou de \"Mes Documents\\eMes Jeux\". Sous X11 le répertoire par "
+"défaut est $XDG_CONFIG_HOME ou $HOME/.config/wesnoth. Sur les autres "
+"systèmes le répertoire par défaut est le répertoire de données."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:207
-#, fuzzy, no-wrap
-#| msgid "B<--config-path>"
+#, no-wrap
 msgid "B<--userconfig-path>"
-msgstr "B<--config-path>"
+msgstr "B<--userconfig-path>"
 
 # type: Plain text
 #. type: Plain text
@@ -695,47 +688,35 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:210
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--userdata-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ nom>"
+msgstr "B<--userdata-dir>I<\\ nom>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:217
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#| "path for the configuration directory outside the $HOME or \"My Documents"
-#| "\\eMy Games\""
 msgid ""
 "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
 "Games\" for windows.  You can also specify an absolute path for the userdata "
 "directory outside the $HOME or \"My Documents\\eMy Games\"."
 msgstr ""
-"Définit le répertoire de configuration de l'utilisateur à I<nom> dans $HOME "
-"ou dans \"Mes Documents\\eMes Jeux\" pour windows.  Vous pouvez aussi "
-"renseigner un chemin absolu pour un dossier de configuration situé en dehors "
-"de $HOME ou de \"Mes Documents\\eMes Jeux\""
+"Définit le répertoire de données à I<nom> dans $HOME ou dans \"Mes Documents"
+"\\eMes Jeux\" pour Windows. Vous pouvez aussi indiquer un chemin absolu pour "
+"un répertoire de données situé en dehors de $HOME ou de \"Mes Documents"
+"\\eMes Jeux\""
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:217
-#, fuzzy, no-wrap
-#| msgid "B<--path>"
+#, no-wrap
 msgid "B<--userdata-path>"
-msgstr "B<--path>"
+msgstr "B<--userdata-path>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:220
-#, fuzzy
-#| msgid "prints the path of the user configuration directory and exits."
 msgid "prints the path of the userdata directory and exits."
-msgstr ""
-"Affiche le nom du répertoire de configuration utilisateur et quitte le "
-"programme."
+msgstr "Affiche le nom du répertoire de données et quitte le programme."
 
 # type: TP
 #. type: TP
@@ -898,20 +879,20 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:269
 #, no-wrap
 msgid "B<--ignore-map-settings>"
-msgstr ""
+msgstr "B<--ignore-map-settings>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:272
 msgid "do not use map settings, use default values instead."
 msgstr ""
+"Ne pas utiliser les paramètres de la carte mais les valeurs par défaut."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:272
-#, fuzzy, no-wrap
-#| msgid "B<--era=>I<value>"
+#, no-wrap
 msgid "B<--multiplayer-repeat=>I<value>"
-msgstr "B<--era=>I<valeur>"
+msgstr "B<--multiplayer-repeat=>I<valeur>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:279
@@ -919,6 +900,8 @@ msgid ""
 "repeats a multiplayer game I<value> times. Best to use with B<--nogui> for "
 "scriptable benchmarking."
 msgstr ""
+"Répète une partie multijoueur I<valeur> fois. Il est préférable d'utiliser "
+"B<--nogui> pour une analyse comparative scriptée."
 
 # type: TP
 #. type: TP
@@ -1071,12 +1054,9 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:324 ../../doc/man/wesnothd.6:280
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
