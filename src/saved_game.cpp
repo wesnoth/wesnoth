@@ -352,8 +352,6 @@ void saved_game::expand_carryover()
 	expand_scenario();
 	if(this->starting_pos_type_ == STARTINGPOS_SCENARIO && !this->carryover_sides_start.empty())
 	{
-		//TODO: Add events from modifications and modifications in side [mulitplayer][options][/options][/mulitplayer]
-
 		carryover_info sides(carryover_sides_start);
 
 		sides.transfer_to(get_starting_pos());
