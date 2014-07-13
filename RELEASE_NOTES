@@ -52,6 +52,12 @@ the filter is an ally or enemy.
 Thus excepting for [allied_with] / [enemy_of], all filters in 1.11.16+ are simply a check for *any* object matching the filter data.
 [/section]
 
+[section="Fixed bug [bug]21397[/bug]: Saving and Loading may cause a Side's turn is not initialized"]
+A well-known and quite annoying bug in mp had the consequence that, if a player disconnected / was blocking networking transmissions and it became their turn, then if anyone else saved the game they would have corrupted save files where the "upkeep" and reset movement steps of the game do not happen for that side after reload.
+
+This bug should now be fixed, if it recurs then please report on bugs.wesnoth.org.
+[/section]
+
 [section="Example section 2"]
 Example contents 2.
 [/section]
