@@ -129,7 +129,7 @@ namespace
 		default:
 			throw std::exception();
 		}
-	};
+	}
 
 	template <const variable_info_3_type vit, typename TResult>
 	class variable_info_visitor
