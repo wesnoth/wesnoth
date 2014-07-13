@@ -108,7 +108,7 @@ namespace
 	}
 
 	/// @param visitor
-	/// TVisitor shoudl have 4 methods:
+	/// TVisitor should have 4 methods:
 	///    from_named if the variable ended with a .somename
 	///    from_indexed if the variable enden with .somename[someindex]
 	///    from_temporary if the variable is a readonly value (.somename.length)
