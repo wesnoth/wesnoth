@@ -121,7 +121,7 @@ class game_board : public display_context {
 	boost::optional<std::string> replace_map (const gamemap & r);
 	void overlay_map (const gamemap & o, const config & cfg, map_location loc, bool border);
 
-	bool change_terrain(const map_location &loc, const std::string &t, 
+	bool change_terrain(const map_location &loc, const std::string &t,
                     const std::string & mode, bool replace_if_failed); //used only by lua
 
 	// Global accessor from unit.hpp

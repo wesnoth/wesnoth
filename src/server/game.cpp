@@ -1477,10 +1477,10 @@ void game::save_replay() {
 		//level_.set_attr_dup("label", name.str().c_str());
 		//TODO: comment where mp_game_title= is used.
 		level_.set_attr_dup("mp_game_title", name_.c_str());
-		const bool has_old_replay = level_.child("replay") != NULL; 
+		const bool has_old_replay = level_.child("replay") != NULL;
 		//If there is already a replay in the level_, which means this is a reloaded game,
 		//then we dont need to add the [start] in the replay.
-		replay_data << level_.output() 
+		replay_data << level_.output()
 		//This can result in having 2 [replay] at toplevel since level_ can contain one already. But the client can handle this (simply merges them).
 		<< "[replay]\n"
 		//The [start] is generated at the clients and not sended over the network so we add it here.

@@ -115,7 +115,7 @@ void wmi_pager::get_items(const map_location& hex,
 	if (page_num_ == 0) { //we are on the first page, so show page_size-1 items and a next button
 		wmi_it end_first_page = bar.begin();
 		std::advance(end_first_page, page_size - 1);
-	
+
 		std::transform(bar.begin(), end_first_page, back_inserter(items), select_first);
 		std::transform(bar.begin(), end_first_page, back_inserter(descriptions), select_second);
 

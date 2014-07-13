@@ -127,14 +127,14 @@ public:
 	/**
 	 * Const accessor names needed to implement "display_context" interface
 	 */
-	virtual const unit_map & units() const { 
-		return units_; 
+	virtual const unit_map & units() const {
+		return units_;
 	}
-	virtual const std::vector<team>& teams() const { 
-		return teams_; 
+	virtual const std::vector<team>& teams() const {
+		return teams_;
 	}
-	virtual const gamemap & map() const { 
-		return map_; 
+	virtual const gamemap & map() const {
+		return map_;
 	}
 
 	/**
@@ -158,7 +158,7 @@ public:
 	tod_manager* get_time_manager() {
 		return tod_manager_.get();
 	}
-	
+
 	mp_game_settings & get_mp_settings() {
 		return mp_settings_;
 	}

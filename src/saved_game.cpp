@@ -1,6 +1,6 @@
 /**
 	Some information about savefiles:
-	A saveile can contain: 
+	A saveile can contain:
 	 * General information (toplevel atributes, [multiplayer])
 	    This is present in all savefiles
 	 * [statistics]
@@ -28,7 +28,7 @@
 		This type is only used internaly and usualy doesn't get written to the disk.
 	 * Ingame savefile
 	    These files contain genral information, statistics, [snapshot], [replay], [replay_start], [snapshot], [carryover_sides]
-		Thedse files don't contain a [carryover_sides_start] because both starting points ([replay_start] and [snapshot]) 
+		Thedse files don't contain a [carryover_sides_start] because both starting points ([replay_start] and [snapshot])
 		were made after [carryover_sides_start] was merged into the scenario.
 	 * Replay savefiles
 	    Like a Ingame save made durign linger mode, but without the [snapshot]
@@ -69,7 +69,7 @@ saved_game::saved_game()
 
 }
 
-saved_game::saved_game(const config& cfg) 
+saved_game::saved_game(const config& cfg)
 	: replay_data()
 	, carryover_sides()
 	, carryover_sides_start()
@@ -78,13 +78,13 @@ saved_game::saved_game(const config& cfg)
 	, mp_settings_(cfg)
 	, starting_pos_type_(STARTINGPOS_NONE)
 	, starting_pos_()
-	
+
 {
 	log_scope("read_game");
 
 	carryover_sides = cfg.child_or_empty("carryover_sides");
 	carryover_sides_start = cfg.child_or_empty("carryover_sides_start");
-	
+
 	//Serversided replays can contain multiple [replay]
 	replay_start_ = cfg.child_or_empty("replay_start");
 	replay_data = config(); //cfg.child_or_empty("replay");
@@ -92,7 +92,7 @@ saved_game::saved_game(const config& cfg)
 	{
 		replay_data.append_children(replay);
 	}
-	
+
 	if(const config& snapshot = cfg.child("snapshot"))
 	{
 		this->starting_pos_type_ = STARTINGPOS_SNAPSHOT;
@@ -122,7 +122,7 @@ saved_game::saved_game(const config& cfg)
 
 }
 
-saved_game::saved_game(const saved_game& state) 
+saved_game::saved_game(const saved_game& state)
 	: replay_data(state.replay_data)
 	, carryover_sides(state.carryover_sides)
 	, carryover_sides_start(state.carryover_sides_start)
@@ -150,11 +150,11 @@ void saved_game::write_config(config_writer& out) const
 	write_starting_pos(out);
 	if(!this->replay_start_.empty())
 	{
-		out.write_child("replay_start", replay_start_);	
+		out.write_child("replay_start", replay_start_);
 	}
 	if(!this->replay_data.empty())
 	{
-		out.write_child("replay", replay_data);	
+		out.write_child("replay", replay_data);
 	}
 	write_carryover(out);
 }
@@ -175,11 +175,11 @@ void saved_game::write_carryover(config_writer& out) const
 	assert(not_corrupt());
 	if(!this->carryover_sides.empty())
 	{
-		out.write_child("carryover_sides", carryover_sides);	
+		out.write_child("carryover_sides", carryover_sides);
 	}
 	if(!this->carryover_sides_start.empty())
 	{
-		out.write_child("carryover_sides_start", carryover_sides_start);	
+		out.write_child("carryover_sides_start", carryover_sides_start);
 	}
 }
 
@@ -205,8 +205,8 @@ void saved_game::expand_scenario()
 			this->starting_pos_type_ = STARTINGPOS_SCENARIO;
 			this->starting_pos_ = scenario;
 			update_label();
-			
-			//Set this default value immideately after reading the scenario is importent because otherwise 
+
+			//Set this default value immideately after reading the scenario is importent because otherwise
 			//we might endup settings this value to the multiplayer players name, which would break carryover.
 			//(doing this in at config loading in game_config would be ok too i think.)
 			BOOST_FOREACH(config& side, starting_pos_.child_range("side"))
@@ -226,12 +226,12 @@ void saved_game::expand_scenario()
 }
 
 //helper objects for saved_game::expand_mp_events()
-struct modevents_entry 
+struct modevents_entry
 {
 	modevents_entry(const std::string& _type, const std::string& _id) : type(_type), id(_id) {}
 	std::string type;
 	std::string id;
-}; 
+};
 struct modevents_entry_for
 {
 	//this typedef is used by boost.
@@ -315,7 +315,7 @@ void saved_game::expand_random_scenario()
 	if(this->starting_pos_type_ == STARTINGPOS_SCENARIO)
 	{
 		// If the entire scenario should be randomly generated
-		if(!starting_pos_["scenario_generation"].empty()) 
+		if(!starting_pos_["scenario_generation"].empty())
 		{
 			LOG_NG << "randomly generating scenario...\n";
 			const cursor::setter cursor_setter(cursor::WAIT);
@@ -352,7 +352,7 @@ void saved_game::expand_carryover()
 	if(this->starting_pos_type_ == STARTINGPOS_SCENARIO && !this->carryover_sides_start.empty())
 	{
 		//TODO: Add events from modifications and modifications in side [mulitplayer][options][/options][/mulitplayer]
-		
+
 		carryover_info sides(carryover_sides_start);
 
 		sides.transfer_to(get_starting_pos());
@@ -490,7 +490,7 @@ bool saved_game::not_corrupt() const
 	// A Scenario can never contain both of them
 	// normal saves have [carryover_sides] start-of-scenario saved have [carryover_sides_start]
 	// the function expand_carryover transforms a start of scenario save to a normal save
-	// the function convert_to_start_save converts a normal save form teh end of the scenaio 
+	// the function convert_to_start_save converts a normal save form teh end of the scenaio
 	// to a start-of-scenario save for a next level
 	bool r = carryover_sides.empty() || carryover_sides_start.empty();
 	if(!r)

@@ -28,7 +28,7 @@ public:
 
 	~saved_game(){}
 	saved_game& operator=(const saved_game& state);
-	
+
 	/// writes the config information into a stream (file)
 	void write_config(config_writer& out) const;
 	void write_general_info(config_writer& out) const;
@@ -51,7 +51,7 @@ public:
 	/// should be called after expand_scenario() but before expand_carryover()
 	void expand_mp_events();
 	/// adds values of [option]s into [carryover_sides_start][variables] so that they are applied in the next level.
-	/// Note that since [variabels] are persistent we only use this once at the beginning 
+	/// Note that since [variabels] are persistent we only use this once at the beginning
 	/// of a campaign but calling it multiple times is no harm eigher
 	void expand_mp_options();
 	/// takes care of generate_map=, generate_scenario=, map= attributes
@@ -66,7 +66,7 @@ public:
 	{
 		return starting_pos_type_ == STARTINGPOS_SNAPSHOT;
 	}
-	/// converts a normal savegame form the end of a scenaio to a start-of-scenario savefile for the next scenaio, 
+	/// converts a normal savegame form the end of a scenaio to a start-of-scenario savefile for the next scenaio,
 	/// The saved_game must contain a [snapshot] made during the linger mode of the last scenaio.
 	void convert_to_start_save();
 	/// @return the starting pos for replays. Usualy this is [replay_start] but it can also be a [scenario] if no [replay_start] is present
@@ -100,7 +100,7 @@ private:
 	/** some general information of the game that doesn't change during the game */
 	game_classification classification_;
 	mp_game_settings mp_settings_;
-	
+
 	STARTING_POS_TYPE starting_pos_type_;
 	/**
 		The starting pos where the (non replay) game will be started from.

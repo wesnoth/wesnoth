@@ -132,9 +132,9 @@ public:
 	private:
 		Itor i_;
 		/*
-			if wa have game variables 
-				[a] b = 1 [/a] 
-				[a] b = 4 [/a] 
+			if wa have game variables
+				[a] b = 1 [/a]
+				[a] b = 4 [/a]
 				[a] b = 6 [/a]
 			we want to expand [insert_tag] variable = a name  = "u" [/insert_tag] to
 			   [u] b = 1 [/u]

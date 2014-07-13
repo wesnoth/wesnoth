@@ -523,7 +523,7 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 }
 
 static bool enter_configure_mode(game_display& disp, const config& game_config,
-	saved_game& state, 
+	saved_game& state,
 	bool local_players_only = false);
 
 static void enter_create_mode(game_display& disp, const config& game_config,
@@ -765,7 +765,7 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 
 	// Set the default parameters
 	state = saved_game(); // This creates these parameters with default values defined in mp_game_settings.cpp
-	mp_game_settings& parameters = state.mp_settings();  
+	mp_game_settings& parameters = state.mp_settings();
 	// Hardcoded default values
 	parameters.mp_era = "era_default";
 	parameters.name = "multiplayer_The_Freelands";
@@ -812,8 +812,8 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 		classification.era_define = era_cfg_preload["define"].str();
 		resources::config_manager->load_game_config_for_game(classification);
 	}
-	
-	const config& era_cfg = resources::config_manager->game_config().find_child("era", "id", parameters.mp_era);	
+
+	const config& era_cfg = resources::config_manager->game_config().find_child("era", "id", parameters.mp_era);
 	const config& level = resources::config_manager->game_config().find_child("multiplayer", "id", parameters.name);
 
 	if (cmdline_opts.multiplayer_side) {

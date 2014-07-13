@@ -181,7 +181,7 @@ bool unit_animation_component::invalidate (const display & disp)
 
 }
 
-void unit_animation_component::reset_after_advance(const unit_type * newtype) 
+void unit_animation_component::reset_after_advance(const unit_type * newtype)
 {
 	if (newtype) {
 		animations_ = newtype->animations();

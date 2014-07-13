@@ -538,7 +538,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				std::vector<std::string> difficulty_options =
 					utils::split(difficulty_descriptions, ';');
 				int index = 0;
-				//TODO: use difficulties instead of difficulty_descriptions if 
+				//TODO: use difficulties instead of difficulty_descriptions if
 				//difficulty_descriptions is not available
 				assert(difficulties.size() == difficulty_options.size());
 				BOOST_FOREACH(const std::string& difficulty, difficulties) {

@@ -236,8 +236,8 @@ void carryover_info::transfer_all_to(config& side_cfg){
 		side_cfg["save_id"] = side_cfg["id"];
 	}
 	std::vector<carryover>::iterator iside = std::find_if(
-		carryover_sides_.begin(), 
-		carryover_sides_.end(), 
+		carryover_sides_.begin(),
+		carryover_sides_.end(),
 		save_id_equals(side_cfg["save_id"])
 	);
 	if(iside != carryover_sides_.end())
@@ -335,8 +335,8 @@ void carryover_info::merge_old_carryover(const carryover_info& old_carryover)
 	BOOST_FOREACH(const carryover & old_side, old_carryover.carryover_sides_)
 	{
 		std::vector<carryover>::iterator iside = std::find_if(
-			carryover_sides_.begin(), 
-			carryover_sides_.end(), 
+			carryover_sides_.begin(),
+			carryover_sides_.end(),
 			save_id_equals(old_side.get_save_id())
 			);
 		//add the side if don't already have it.

@@ -37,19 +37,19 @@ public:
 		STATE_ANIM};      /** normal anims */
 
 	/** Default construct a unit animation component corresponding to a unit. */
-	unit_animation_component(unit & my_unit) : 
+	unit_animation_component(unit & my_unit) :
 		u_(my_unit),
 		anim_(NULL),
 		animations_(),
-		state_(STATE_STANDING), 
+		state_(STATE_STANDING),
 		next_idling_(0),
 		frame_begin_time_(0),
-		draw_bars_(false), 
+		draw_bars_(false),
 		refreshing_(false),
 		unit_halo_() {}
 
 	/** Copy construct a unit animation component, for use when copy constructing a unit. */
-	unit_animation_component(unit & my_unit, const unit_animation_component & o) : 
+	unit_animation_component(unit & my_unit, const unit_animation_component & o) :
 		u_(my_unit),
 		anim_(NULL),
 		animations_(o.animations_),
@@ -120,7 +120,7 @@ private:
 	int next_idling_;      //!< time for next idle animation
 	int frame_begin_time_; //!< time for the frame to begin
 
-	bool draw_bars_;  //!< bool indicating whether to draw bars with the unit 
+	bool draw_bars_;  //!< bool indicating whether to draw bars with the unit
 	bool refreshing_; //!< avoid infinite recursion. flag used for drawing / animation
 
 	halo::handle unit_halo_; //!< handle to the halo of this unit

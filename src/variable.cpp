@@ -140,7 +140,7 @@ config vconfig::get_parsed_config() const
 						res.add_child(name, vconfig(*range.first++).get_parsed_config());
 					}
 				}
-			} 
+			}
 			catch(const invalid_variablename_exception&)
 			{
 				res.add_child(name);
@@ -215,7 +215,7 @@ vconfig vconfig::child(const std::string& key) const
 	BOOST_FOREACH(const config &ins, cfg_->child_range("insert_tag"))
 	{
 		vconfig insert_cfg(ins);
-		if(insert_cfg["name"] == key) 
+		if(insert_cfg["name"] == key)
 		{
 			try
 			{
@@ -408,7 +408,7 @@ scoped_wml_variable::~scoped_wml_variable()
 {
 	if(activated_) {
 		resources::gamedata->clear_variable_cfg(var_name_);
-		BOOST_FOREACH(const config &i, previous_val_.child_range(var_name_)) 
+		BOOST_FOREACH(const config &i, previous_val_.child_range(var_name_))
 		{
 			try
 			{

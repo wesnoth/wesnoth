@@ -430,7 +430,7 @@ void create_engine::prepare_for_scenario()
 
 	state_.classification().scenario_define =
 		current_level().data()["define"].str();
-	
+
 	resources::config_manager->
 		load_game_config_for_game(state_.classification());
 

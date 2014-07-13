@@ -466,7 +466,7 @@ manager::manager(display& screen) : impl_(new halo_impl(screen))
 {}
 
 handle manager::add(int x, int y, const std::string& image, const map_location& loc,
-		ORIENTATION orientation, bool infinite) 
+		ORIENTATION orientation, bool infinite)
 {
 	int new_halo = impl_->add(x,y,image, loc, orientation, infinite);
 	return handle(new halo_record(new_halo, impl_));

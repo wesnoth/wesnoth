@@ -42,7 +42,7 @@ namespace {
 	const SDL_Color chat_message_bg     = {0,0,0,140};
 }
 
-display_chat_manager::chat_message::chat_message(int speaker, int h) 
+display_chat_manager::chat_message::chat_message(int speaker, int h)
 	: speaker_handle(speaker), handle(h), created_at(SDL_GetTicks())
 {}
 

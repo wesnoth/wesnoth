@@ -244,7 +244,7 @@ namespace {
 
 void game_data::activate_scope_variable(std::string var_name) const
 {
-	
+
 	if(recursive_activation)
 		return;
 	const std::string::iterator itor = std::find(var_name.begin(),var_name.end(),'.');
@@ -253,8 +253,8 @@ void game_data::activate_scope_variable(std::string var_name) const
 	}
 	std::vector<scoped_wml_variable*>::const_reverse_iterator rit;
 	for(
-		rit = scoped_variables.rbegin(); 
-		rit != scoped_variables.rend(); 
+		rit = scoped_variables.rbegin();
+		rit != scoped_variables.rend();
 	++rit) {
 		if((**rit).name() == var_name) {
 			recursive_activation = true;

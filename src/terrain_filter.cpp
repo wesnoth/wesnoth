@@ -510,7 +510,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		const std::set<map_location>& area = fc_->get_tod_man().get_area_by_id(cfg_["area"]);
 
 		//use content of find_in as starting set
-		
+
 		try
 		{
 			variable_access_const vi = resources::gamedata->get_variable_access_read(cfg_["find_in"]);

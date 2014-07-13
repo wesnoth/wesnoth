@@ -150,7 +150,7 @@ BOOST_AUTO_TEST_CASE ( test_config_attribute_value )
 		BOOST_CHECK_EQUAL(x_sll, 123456789123ll);
 	x_str = c["x"].str();
 		BOOST_CHECK_EQUAL(x_str, "123456789123");
-	
+
 		// blank != "" test.
 	c = config();
 	BOOST_CHECK(cc["x"] != "");
@@ -162,7 +162,7 @@ BOOST_AUTO_TEST_CASE ( test_config_attribute_value )
 	BOOST_CHECK(c["x"].blank());
 
 	BOOST_CHECK_EQUAL(cc["x"], c["x"]);
-	
+
 	c["x"] = "";
 	BOOST_CHECK(cc["x"] == "");
 	BOOST_CHECK(cc["x"].empty());

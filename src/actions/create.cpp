@@ -337,7 +337,7 @@ bool can_recruit_on(const map_location& leader_loc, const map_location& recruit_
 
 bool can_recruit_on(const unit& leader, const map_location& recruit_loc)
 {
-	return can_recruit_on(leader.get_location(), recruit_loc, leader.side()); 
+	return can_recruit_on(leader.get_location(), recruit_loc, leader.side());
 }
 
 

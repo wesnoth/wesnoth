@@ -111,7 +111,7 @@ static void show_carryover_message(saved_game& gamestate, playsingle_controller&
 				continue;
 			}
 			int carryover_gold = div100rounded((t.gold() + finishing_bonus) * end_level.carryover_percentage);
-			
+
 			if (persistent_teams > 1) {
 				report << "\n<b>" << t.current_player() << "</b>\n";
 			}
@@ -184,7 +184,7 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 		bool skip_replay, end_level_data &end_level)
 {
 	const int ticks = SDL_GetTicks();
-	
+
 	LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
 	playsingle_controller playcontroller(state_of_game.get_starting_pos(), state_of_game, ticks, game_config, disp.video(), skip_replay);
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
@@ -264,7 +264,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 {
 	gamestate.expand_scenario();
 
-	while(gamestate.valid()) 
+	while(gamestate.valid())
 	{
 		LEVEL_RESULT res = VICTORY;
 		end_level_data end_level;
@@ -335,7 +335,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 				save.save_game_automatic(disp.video(), true);
 			}
 		}
-		
+
 		gamestate.convert_to_start_save();
 		recorder.clear();
 

@@ -2592,7 +2592,7 @@ void server::process_data_game(const network::connection sock,
 		if (!g->is_owner(sock)) return;
 		g->level().root().apply_diff(*diff);
 		const simple_wml::node* cfg_change = diff->child("change_child");
-		if (cfg_change 
+		if (cfg_change
 			/*&& cfg_change->child("side") it is very likeley that
 			the diff changes a side so this check isn't that important.
 			Note that [side] is not at toplevel but inside

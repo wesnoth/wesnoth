@@ -25,7 +25,7 @@
 
 class display;
 class gamemap;
-#if defined(_MSC_VER) && _MSC_VER <= 1600 
+#if defined(_MSC_VER) && _MSC_VER <= 1600
 /*
 	This is needed because msvc up to 2010 fails to correcty forward declare this struct as a return value this case.
 	And will create corrupt binaries without giving a warning / error.

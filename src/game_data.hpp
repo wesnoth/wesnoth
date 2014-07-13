@@ -97,7 +97,7 @@ public:
 	void set_phase(PHASE phase) { phase_ = phase; }
 
 	//create an object responsible for creating and populating a team from a config
-	team_builder_ptr create_team_builder(const config& side_cfg, std::vector<team>& teams, 
+	team_builder_ptr create_team_builder(const config& side_cfg, std::vector<team>& teams,
 		const config& level, gamemap& map);
 
 	//do first stage of team initialization (everything except unit placement)
@@ -123,7 +123,7 @@ public:
 
 private:
 
-	
+
 	///Used to delete variables.
 	variable_access_throw get_variable_access_throw(const std::string& varname)
 	{

@@ -22,15 +22,15 @@
 namespace variable_info_3_detail
 {
 	enum variable_info_3_type {vit_const, vit_create_if_not_existent, vit_throw_if_not_existent,  };
-	enum variable_info_3_state_type { 
+	enum variable_info_3_state_type {
 		state_start = 0, // for internal use
-		                 // only used at the 'starting_pos' of the variable_info_3::calculate_value algorithm 
-		state_named,     // the result of .someval this can eigher man an attribute value or an 
+		                 // only used at the 'starting_pos' of the variable_info_3::calculate_value algorithm
+		state_named,     // the result of .someval this can eigher man an attribute value or an
 		                 // child range
-		state_indexed,   // the result of .someval[index] this is never an attribute value, 
+		state_indexed,   // the result of .someval[index] this is never an attribute value,
 		                 // this is always a single config.
 		state_temporary, // the result of .length this value can never be written, it can only be read.
-		
+
 	};
 
 	//Special case of boost::enable_if
@@ -51,25 +51,25 @@ namespace variable_info_3_detail
 		typedef T type;
 	};
 
-	template <class T> 
+	template <class T>
 	struct maybe_const<vit_const, T>
 	{
 		typedef const T type;
 	};
 
-	template <> 
+	template <>
 	struct maybe_const<vit_const, config::child_itors>
 	{
 		typedef config::const_child_itors type;
 	};
 
-	
+
 	template<const variable_info_3_type vit>
 	struct variable_info_3_state
 	{
 		typedef typename maybe_const<vit,config>::type t_child;
 
-		variable_info_3_state(t_child& vars) 
+		variable_info_3_state(t_child& vars)
 			: child_(&vars)
 			, key_()
 			, index_(0)

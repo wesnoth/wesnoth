@@ -2263,7 +2263,7 @@ WML_HANDLER_FUNCTION(store_rotate_map_location, /*event_info*/, cfg)
 
 	std::string variable = cfg["variable"];
 	int angle = cfg["angle"].to_int(1);
-	
+
 	try
 	{
 		variable_access_create store = resources::gamedata->get_variable_access_write(variable);
@@ -2598,7 +2598,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			(*resources::teams)[u->side() - 1].have_leader();
 		}
 
-	} 
+	}
 	catch (const invalid_variablename_exception&)
 	{
 		ERR_NG << "invlid variable name in unstore_unit" << std::endl;

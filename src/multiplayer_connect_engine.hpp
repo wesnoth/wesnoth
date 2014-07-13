@@ -90,7 +90,7 @@ public:
 			return scenario;
 		else if(config& snapshot = level_.child("snapshot"))
 			return snapshot;
-		else 
+		else
 			throw "No scenariodata found";
 	}
 	const std::set<std::string>& connected_users() const

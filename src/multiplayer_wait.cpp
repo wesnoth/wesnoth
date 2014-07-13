@@ -671,17 +671,17 @@ config& wait::get_scenario()
 		return scenario;
 	else if(config& snapshot = level_.child("snapshot"))
 		return snapshot;
-	else 
+	else
 		return level_;
 }
 
-const config& wait::get_scenario() const 
+const config& wait::get_scenario() const
 {
 	if(const config& scenario = level_.child("scenario"))
 		return scenario;
 	else if(const config& snapshot = level_.child("snapshot"))
 		return snapshot;
-	else 
+	else
 		return level_;
 }
 

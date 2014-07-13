@@ -52,7 +52,7 @@ bool synced_context::is_simultaneously_ = false;
 bool synced_context::run_in_synced_context(const std::string& commandname, const config& data, bool use_undo, bool show,  bool store_in_replay, synced_command::error_handler_function error_handler)
 {
 	DBG_REPLAY << "run_in_synced_context:" << commandname << "\n";
-	
+
 	if(!recorder.at_end() && store_in_replay)
 	{
 		//Most likeley we are in a replay now.
@@ -60,7 +60,7 @@ bool synced_context::run_in_synced_context(const std::string& commandname, const
 		WRN_REPLAY << "invalid run_in_synced_context call ignored" << std::endl;
 		return false;
 	}
-	
+
 	assert(use_undo || (!resources::undo_stack->can_redo() && !resources::undo_stack->can_undo()));
 	if(store_in_replay)
 	{

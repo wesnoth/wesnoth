@@ -42,7 +42,7 @@ struct surface;
 # include <SDL_types.h>
 typedef Sint32 fixed_t;
 
-class unit_drawer 
+class unit_drawer
 {
 public:
 	unit_drawer(display & thedisp, std::map<surface,SDL_Rect> & bar_rects);

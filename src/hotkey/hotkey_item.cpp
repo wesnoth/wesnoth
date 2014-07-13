@@ -234,7 +234,7 @@ bool has_hotkey_item(const std::string& command)
 }
 
 void add_hotkey(const hotkey_item& item) {
-	
+
 	scope_changer scope_ch;
 	set_active_scopes(hotkey::get_hotkey_command(item.get_command()).scope);
 

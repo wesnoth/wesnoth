@@ -61,7 +61,7 @@ private:
 	const display_context & dc_;
 	display & disp_;
 	const tod_manager & tod_;
-	boost::shared_ptr<wb::manager> wb_;	
+	boost::shared_ptr<wb::manager> wb_;
 	boost::optional<events::mouse_handler&> mhb_;
 };
 

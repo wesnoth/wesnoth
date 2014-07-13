@@ -139,7 +139,7 @@ connect_engine::connect_engine(saved_game& state,
 			if (name_itor == original_team_names.end()) {
 				original_team_names.push_back(team_name);
 
-				team_name = "Team " + 
+				team_name = "Team " +
 					lexical_cast<std::string>(original_team_names.size());
 			} else {
 				team_name = lexical_cast<std::string>(

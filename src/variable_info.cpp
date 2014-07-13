@@ -112,7 +112,7 @@ namespace
 	///    from_named if the variable ended with a .somename
 	///    from_indexed if the variable enden with .somename[someindex]
 	///    from_temporary if the variable is a readonly value (.somename.length)
-	///    from_start if the variablename was previously empty, this can only happen 
+	///    from_start if the variablename was previously empty, this can only happen
 	///      during calculate_value()
 	/// TVisitor should derive from variable_info_visitor(_const) which makes default implementation for these (as not supported)
 	template <typename TVisitor>
@@ -187,8 +187,8 @@ namespace
 	{
 	public:
 		get_variable_key_visitor(const std::string& key) : key_(key) {}
-		void from_named(typename get_variable_key_visitor::param_type state) const 
-		{			
+		void from_named(typename get_variable_key_visitor::param_type state) const
+		{
 			if(key_ == "length")
 			{
 				state.temp_val_ = state.child_->child_count(state.key_);
@@ -200,11 +200,11 @@ namespace
 				return do_from_config(get_child_at<vit>(*state.child_, state.key_, 0), state);
 			}
 		}
-		void from_start(typename get_variable_key_visitor::param_type state) const 
+		void from_start(typename get_variable_key_visitor::param_type state) const
 		{
 			return do_from_config(*state.child_, state);
 		}
-		void from_indexed(typename get_variable_key_visitor::param_type state) const 
+		void from_indexed(typename get_variable_key_visitor::param_type state) const
 		{
 			//we dont support aaa[0].length
 			return do_from_config(get_child_at<vit>(*state.child_, state.key_, state.index_), state);
@@ -227,7 +227,7 @@ namespace
 	{
 	public:
 		get_variable_index_visitor(int n) : n_(n) {}
-		void from_named(typename get_variable_index_visitor::param_type state) const 
+		void from_named(typename get_variable_index_visitor::param_type state) const
 		{
 			state.index_ = n_;
 			resolve_negative_value(state.child_->child_count(state.key_), state.index_);
@@ -246,7 +246,7 @@ namespace
 		: public variable_info_visitor_const<vit, typename maybe_const<vit, config::attribute_value>::type&>
 	{
 	public:
-		typename as_skalar_visitor::result_type from_named(typename as_skalar_visitor::param_type state) const 
+		typename as_skalar_visitor::result_type from_named(typename as_skalar_visitor::param_type state) const
 		{
 			check_valid_name(state.key_);
 			return (*state.child_)[state.key_];
@@ -279,23 +279,23 @@ namespace
 		: public variable_info_visitor_const<vit, typename maybe_const<vit, config>::type&>
 	{
 	public:
-		typename as_container_visitor::result_type from_named(typename as_container_visitor::param_type state) const 
+		typename as_container_visitor::result_type from_named(typename as_container_visitor::param_type state) const
 		{
 			return get_child_at<vit>(*state.child_, state.key_, 0);
 		}
-		typename as_container_visitor::result_type from_start(typename as_container_visitor::param_type state) const 
-		{ 
+		typename as_container_visitor::result_type from_start(typename as_container_visitor::param_type state) const
+		{
 			return *state.child_;
 		}
-		typename as_container_visitor::result_type from_indexed(typename as_container_visitor::param_type state) const 
-		{ 
+		typename as_container_visitor::result_type from_indexed(typename as_container_visitor::param_type state) const
+		{
 			return get_child_at<vit>(*state.child_, state.key_, state.index_);
 		}
 	};
 }
 /// range_based operations
 namespace {
-	
+
 
 	template<const variable_info_3_type vit, typename THandler>
 	class as_range_visitor_base2
@@ -307,7 +307,7 @@ namespace {
 		{
 			return handler_(*state.child_, state.key_, 0, state.child_->child_count(state.key_));
 		}
-		typename as_range_visitor_base2::result_type from_indexed(typename as_range_visitor_base2::param_type state) const 
+		typename as_range_visitor_base2::result_type from_indexed(typename as_range_visitor_base2::param_type state) const
 		{
 			//Ensure we have a config at the given explicit position.
 			get_child_at<vit>(*state.child_, state.key_, state.index_);
@@ -325,7 +325,7 @@ namespace {
 		as_range_visitor_base(const THandler& handler) : as_range_visitor_base2<vit, THandler>(handler) {}
 		//inherit all from as_range_visitor_base2
 	};
-	
+
 	const config non_empty_const_cfg = config_of("_", config());
 
 	//we cannot partly specialise methods so we are using inheritance.
@@ -335,8 +335,8 @@ namespace {
 	{
 	public:
 		as_range_visitor_base(const THandler& handler) : as_range_visitor_base2<vit_const, THandler>(handler) {}
-		
-		typename as_range_visitor_base::result_type from_indexed(typename as_range_visitor_base::param_type state) const 
+
+		typename as_range_visitor_base::result_type from_indexed(typename as_range_visitor_base::param_type state) const
 		{
 			//calling get_child_at<vit>(*state.child_, state.key_, state.index_) like above would have no effect
 			if(int(state.child_->child_count(state.key_)) < state.index_)
@@ -373,7 +373,7 @@ namespace {
 		typedef config::child_itors result_type;
 		replace_range_h(std::vector<config>& source) : datasource_(source) { }
 		result_type operator()(config& child, const std::string& key, int startindex, int endindex) const
-		{ 
+		{
 			int size_diff = datasource_.size() - (endindex - startindex);
 			//remove configs first
 			while(size_diff < 0)
@@ -390,7 +390,7 @@ namespace {
 			{
 				child.child(key, startindex + index).swap(datasource_[index]);
 			}
-			/// variable_as_array_h only uses the template argument (vit_throw_if_not_existent here) 
+			/// variable_as_array_h only uses the template argument (vit_throw_if_not_existent here)
 			/// to determine constness which is always false here
 			return variable_as_array_h<vit_throw_if_not_existent>()(child, key, startindex, datasource_.size());
 		}
@@ -458,7 +458,7 @@ namespace
 	{
 	public:
 		clear_value_visitor(bool only_tables) : only_tables_(only_tables) {}
-		void from_named(typename clear_value_visitor::param_type state) const 
+		void from_named(typename clear_value_visitor::param_type state) const
 		{
 			if(!only_tables_)
 			{
@@ -466,8 +466,8 @@ namespace
 			}
 			state.child_->clear_children(state.key_);
 		}
-		void from_indexed(typename clear_value_visitor::param_type state) const 
-		{ 
+		void from_indexed(typename clear_value_visitor::param_type state) const
+		{
 			state.child_->remove_child(state.key_, state.index_);
 		}
 	private:
@@ -479,19 +479,19 @@ namespace
 		: public variable_info_visitor_const<vit, bool>
 	{
 	public:
-		typename exists_as_container_visitor::result_type from_named(typename exists_as_container_visitor::param_type state) const 
+		typename exists_as_container_visitor::result_type from_named(typename exists_as_container_visitor::param_type state) const
 		{
 			return state.child_->has_child(state.key_);
 		}
-		typename exists_as_container_visitor::result_type from_indexed(typename exists_as_container_visitor::param_type state) const 
+		typename exists_as_container_visitor::result_type from_indexed(typename exists_as_container_visitor::param_type state) const
 		{
 			return state.child_->child_count(state.key_) > static_cast<size_t>(state.index_);
 		}
-		typename exists_as_container_visitor::result_type from_start(typename exists_as_container_visitor::param_type) const 
+		typename exists_as_container_visitor::result_type from_start(typename exists_as_container_visitor::param_type) const
 		{
 			return true;
 		}
-		typename exists_as_container_visitor::result_type from_temporary(typename exists_as_container_visitor::param_type) const 
+		typename exists_as_container_visitor::result_type from_temporary(typename exists_as_container_visitor::param_type) const
 		{
 			return false;
 		}
@@ -523,7 +523,7 @@ template<const variable_info_3_type vit>
 void variable_info_3<vit>::calculate_value()
 {
 	// this->state_ is initialized in the constructor.
-	size_t previous_index = 0; 
+	size_t previous_index = 0;
 	size_t name_size = this->name_.size();
 	for(size_t loop_index = 0; loop_index < name_size; loop_index++)
 	{
@@ -532,8 +532,8 @@ void variable_info_3<vit>::calculate_value()
 		case '.':
 		case '[':
 			// '.', '[' mark the end of a string key.
-			// the result is oviously that '.' and '[' are  
-			// treated equally so 'aaa.9].bbbb[zzz.uu.7]' 
+			// the result is oviously that '.' and '[' are
+			// treated equally so 'aaa.9].bbbb[zzz.uu.7]'
 			// is interpreted as  'aaa[9].bbbb.zzz.uu[7]'
 			// use is_valid_variable function for stricter variablename checking.
 			apply_visitor(get_variable_key_visitor<vit>(this->name_.substr(previous_index, loop_index-previous_index)), this->state_);
@@ -558,7 +558,7 @@ void variable_info_3<vit>::calculate_value()
 	if(previous_index != this->name_.length() + 1)
 	{
 		// the string ended not with ']'
-		// in this case we still didn't add the key behind the last '.' 
+		// in this case we still didn't add the key behind the last '.'
 		apply_visitor(get_variable_key_visitor<vit>(this->name_.substr(previous_index)), this->state_);
 	}
 }

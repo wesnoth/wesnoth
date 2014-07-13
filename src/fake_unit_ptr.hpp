@@ -35,7 +35,7 @@ public:
 	typedef unit_ptr internal_ptr;
 	typedef unit_const_ptr internal_const_ptr;
 
-	fake_unit_ptr(); 
+	fake_unit_ptr();
 	explicit fake_unit_ptr(const internal_ptr & u); //!< Construct a fake unit pointer wrapping a normal unit pointer, marking it as a fake unit.
 	fake_unit_ptr(const internal_ptr & u, fake_unit_manager * mgr); //!< Construct a fake unit pointer, and simultaenously register with a manager.
 	fake_unit_ptr(const fake_unit_ptr & ptr); //!< Copy construct a fake unit pointer. Does not reallocate the underlying unit.

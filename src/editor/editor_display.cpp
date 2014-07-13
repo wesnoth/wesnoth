@@ -28,7 +28,7 @@ namespace editor {
 
 // Define dummy display context;
 
-class dummy_editor_display_context : public display_context 
+class dummy_editor_display_context : public display_context
 {
 	config dummy_cfg1;
 
@@ -42,7 +42,7 @@ public:
 
 	virtual const gamemap & map() const { return em; }
 	virtual const unit_map & units() const { return u; }
-	virtual const std::vector<team> & teams() const { return t; }	
+	virtual const std::vector<team> & teams() const { return t; }
 };
 
 const display_context * get_dummy_display_context() {

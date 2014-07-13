@@ -254,7 +254,7 @@ void create::process_event()
 	}
 
 	if (load_game_.pressed()) {
-		try 
+		try
 		{
 			savegame::loadgame load(disp_,
 				resources::config_manager->game_config(), engine_.get_state());
@@ -268,8 +268,8 @@ void create::process_event()
 		}
 		catch (load_game_cancelled_exception)
 		{
-		} 
-		catch(config::error&) 
+		}
+		catch(config::error&)
 		{
 		}
 

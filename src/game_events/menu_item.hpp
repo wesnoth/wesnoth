@@ -42,7 +42,7 @@ public:
 	              const wml_menu_item & original);
 
 	/// The id of this item.
-	const std::string & id() const { return item_id_; }	
+	const std::string & id() const { return item_id_; }
 	/// The image associated with this menu item.
 	const std::string & image() const;
 	/// If true, allow using the menu to trigger this item.

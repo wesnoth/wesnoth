@@ -288,7 +288,7 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 		}
 		// We move hotkeys in all categories thet they belog to, except for hotkeys that
 		// belong to all 3 scoped that we put in a seperate HOTKEY_GENERAL category.
-		if(command.scope.count() == 1) //Not all 
+		if(command.scope.count() == 1) //Not all
 		{
 			if(command.scope[hotkey::SCOPE_GAME])
 			{

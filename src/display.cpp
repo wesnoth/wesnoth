@@ -473,7 +473,7 @@ void display::reload_map()
 	builder_->reload_map();
 }
 
-void display::change_display_context(const display_context * dc) 
+void display::change_display_context(const display_context * dc)
 {
 	dc_ = dc;
  	builder_->change_map(&dc_->map()); //TODO: Should display_context own and initalize the builder object?

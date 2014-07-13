@@ -25,7 +25,7 @@ public:
 	invalid_variablename_exception() : std::exception() {}
 	const char* what() const throw()
 	{
-		return "invalid_variablename_exception"; 
+		return "invalid_variablename_exception";
 	}
 };
 
@@ -33,7 +33,7 @@ template<const variable_info_3_detail::variable_info_3_type vit>
 class variable_info_3
 {
 public:
-	
+
 	typedef typename variable_info_3_detail::maybe_const<vit,config>::type t_config;
 	/// Doesn't throw
 	variable_info_3(const std::string& varname, t_config& vars);
@@ -48,7 +48,7 @@ public:
 
 	/**
 		might throw invalid_variablename_exception
-		NOTE: 
+		NOTE:
 			If vit == vit_const, then the lifime of the returned const attribute_value& might end with the lifetime of this object.
 	*/
 	typename variable_info_3_detail::maybe_const<vit, config::attribute_value>::type &as_scalar() const;
@@ -56,7 +56,7 @@ public:
 	typename variable_info_3_detail::maybe_const<vit, config>::type & as_container() const;
 	/// might throw invalid_variablename_exception
 	typename variable_info_3_detail::maybe_const<vit, config::child_itors>::type as_array() const; //range may be empty
-	
+
 protected:
 	std::string name_;
 	variable_info_3_detail::variable_info_3_state<vit> state_;
@@ -77,10 +77,10 @@ public:
 	/// if only_tables = true it will not clear attribute values.
 	/// might throw invalid_variablename_exception
 	void clear(bool only_tables = false) const;
-	
+
 	// the following 4 functions are used by [set_variables]
 	// they destroy the passed vector. (make it empty).
-	
+
 	/// @return: the new appended range
 	/// might throw invalid_variablename_exception
 	config::child_itors append_array(std::vector<config> childs) const;
