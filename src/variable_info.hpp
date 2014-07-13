@@ -70,7 +70,7 @@ template<const variable_info_3_detail::variable_info_3_type vit>
 class non_const_variable_info_3 : public variable_info_3<vit>, variable_info_3_detail::enable_if_non_const<vit>::type
 {
 public:
-	non_const_variable_info_3(const std::string& name, config& game_vars) : variable_info_3<vit>(name, game_vars) {};
+	non_const_variable_info_3(const std::string& name, config& game_vars) : variable_info_3<vit>(name, game_vars) {}
 	~non_const_variable_info_3() {}
 
 	/// clears the vale this object points to
