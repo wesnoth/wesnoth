@@ -581,6 +581,21 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 			if (io_type == IO_SERVER && scenario != NULL) {
 				mp_game_settings& params = gamestate.mp_settings();
 
+				// If the entire scenario should be randomly generated
+				if((*scenario)["scenario_generation"] != "") {
+					generate_scenario(scenario);
+				}
+
+				std::string map_data = (*scenario)["map_data"];
+				if(map_data.empty() && (*scenario)["map"] != "") {
+					map_data = read_map((*scenario)["map"]);
+				}
+
+				// If the map should be randomly generated
+				if(map_data.empty() && (*scenario)["map_generation"] != "") {
+					generate_map(scenario);
+				}
+
 				// A hash have to be generated using an unmodified
 				// scenario data.
 				params.hash = scenario->hash();
@@ -628,24 +643,6 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				starting_pos = gamestate.replay_start();
 				scenario = &starting_pos;
 
-				// TODO: move this code to mp::connect_engine
-				// in order to send generated data to the network
-				// before starting the game.
-				//
-				// If the entire scenario should be randomly generated
-				/*if((*scenario)["scenario_generation"] != "") {
-					generate_scenario(scenario);
-				}
-
-				std::string map_data = (*scenario)["map_data"];
-				if(map_data.empty() && (*scenario)["map"] != "") {
-					map_data = read_map((*scenario)["map"]);
-				}
-
-				// If the map should be randomly generated
-				if(map_data.empty() && (*scenario)["map_generation"] != "") {
-					generate_map(scenario);
-				}*/
 			}
 		}
 
