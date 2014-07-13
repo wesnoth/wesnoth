@@ -22,6 +22,8 @@
 #include "game_config.hpp"
 #include "config_assign.hpp"
 
+#include <stdexcept>
+
 using namespace variable_info_3_detail;
 
 /// general helpers
@@ -126,9 +128,8 @@ namespace
 			return visitor.from_indexed(state);
 		case state_temporary:
 			return visitor.from_temporary(state);
-		default:
-			throw std::exception();
 		}
+		throw std::range_error("Failed to convert the TVisitor::param_type type");
 	}
 
 	template <const variable_info_3_type vit, typename TResult>
