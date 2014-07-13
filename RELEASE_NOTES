@@ -69,6 +69,12 @@ To fix this, attributes "lock_faction" and "lock_leader" were added to [wiki]Sid
 [/list]
 [/section]
 
+[section="Bug fixes for the new minimap"]
+[list][*] Fixed most of the minimap buttons appearing in the wrong state during WML start events
+[*] Minimap does not show invisible overlays (fixing bug [bug] 21298 [/bug])
+[/list]
+[/section]
+
 [section="Backported ElvishHunter's wmllint gui from master"]
 The wmllint gui should now come packaged with 1.12 series releases.
 [/section]
