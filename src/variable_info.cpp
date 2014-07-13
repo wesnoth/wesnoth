@@ -105,7 +105,7 @@ namespace
 		return v;
 	}
 
-	/// @param TVisitor
+	/// @param visitor
 	/// TVisitor shoudl have 4 methods:
 	///    from_named if the variable ended with a .somename
 	///    from_indexed if the variable enden with .somename[someindex]
