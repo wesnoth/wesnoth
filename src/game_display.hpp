@@ -130,7 +130,7 @@ public:
 
 	bool has_time_area() const;
 
-	const tod_manager & get_tod_man() const { return tod_manager_; } //<! Allows this class to properly implement filter context, used for animations
+	const tod_manager & get_tod_man() const { return tod_manager_; } /**< Allows this class to properly implement filter context, used for animations */
 
 protected:
 	/**
