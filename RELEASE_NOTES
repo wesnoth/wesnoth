@@ -58,6 +58,21 @@ A well-known and quite annoying bug in mp had the consequence that, if a player 
 This bug should now be fixed, if it recurs then please report on bugs.wesnoth.org.
 [/section]
 
+[section="Fixed bug [bug]21978[/bug]: Lock settings not working for faction, leader"]
+To fix this, attributes "lock_faction" and "lock_leader" were added to [wiki]SideWML[/wiki]
+[/section]
+
+[section="Bug fixes for [item] images"]
+[list][*] Fixed bug [bug] 22215 [/bug] [item] images are now subject to local ToD lighting effects instead of
+     just the current map-wide ToD lighting
+[*] Fixed bug [bug] 21723 [/bug] [item] team_name doesn't work, shown to inappropriate teams at inappropriate times
+[/list]
+[/section]
+
+[section="Backported ElvishHunter's wmllint gui from master"]
+The wmllint gui should now come packaged with 1.12 series releases.
+[/section]
+
 [section="Example section 2"]
 Example contents 2.
 [/section]
