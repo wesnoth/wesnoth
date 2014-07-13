@@ -53,14 +53,14 @@ the filter is an ally or enemy. ([allied_with] and [enemy_of] have not been chan
 Thus excepting for [allied_with] / [enemy_of], all filters in 1.11.16+ are simply a check for *any* object matching the filter data.
 [/section]
 
-[section="Fixed bug [bug]21397[/bug]: Saving and Loading may cause a Side's turn is not initialized"]
-A well-known and quite annoying bug in mp had the consequence that, if a player disconnected / was blocking networking transmissions and it became their turn, then if anyone else saved the game they would have corrupted save files where the "upkeep" and reset movement steps of the game do not happen for that side after reload.
+[section="Bugfix: Saving and loading may cause a side's turn is not initialized"]
+A well-known and quite annoying bug [bug]21397[/bug] in mp had the consequence that, if a player disconnected / was blocking networking transmissions and it became their turn, then if anyone else saved the game they would have corrupted save files where the "upkeep" and reset movement steps of the game do not happen for that side after reload.
 
 This bug should now be fixed, if it recurs then please report on bugs.wesnoth.org.
 [/section]
 
-[section="Fixed bug [bug]21978[/bug]: Lock settings not working for faction, leader"]
-To fix this, attributes "lock_faction" and "lock_leader" were added to [wiki]SideWML[/wiki]
+[section="Bugfix: Lock settings not working for faction, leader"]
+To fix bug [bug]21978[/bug], attributes "lock_faction" and "lock_leader" were added to [wiki]SideWML[/wiki]
 [/section]
 
 [section="Bug fixes for [item] images"]
