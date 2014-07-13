@@ -460,9 +460,9 @@ void wait::process_network_data(const config& data, const network::connection so
 		//const int side = lexical_cast<int>(change["side"]);
 
 		if (config & sidetochange = level_.find_child("side", "side", change["side"])) {
-			LOG_RG << "found side : " << sidetochange.debug() << std::endl;
+			config backup = sidetochange;
 			sidetochange.merge_with(change);
-			LOG_RG << "changed to : " << sidetochange.debug() << std::endl;
+			LOG_RG << "merged changes to side, with the following results:\n" << sidetochange.get_diff(backup).debug() << std::endl;
 		} else {
 			LOG_RG << "change_controller didn't find any side!" << std::endl;
 		}
