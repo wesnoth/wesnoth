@@ -25,6 +25,7 @@
 #include "menu_events.hpp"
 #include "multiplayer.hpp"
 #include "multiplayer_ui.hpp"
+#include "multiplayer_lobby.hpp" //needed for dynamic cast when implementing the lobby_sounds preference
 #include "sound.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
@@ -689,7 +690,7 @@ void ui::set_user_menu_items(const std::vector<std::string>& list)
 
 void ui::set_user_list(const std::vector<std::string>& list, bool silent)
 {
-	if(!silent) {
+	if(!silent && (!dynamic_cast<mp::lobby*>(this) || preferences::lobby_sounds())) {
 		if(list.size() < user_list_.size()) {
 			sound::play_UI_sound(game_config::sounds::user_leave);
 		} else if(list.size() > user_list_.size()) {
