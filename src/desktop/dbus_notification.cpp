@@ -30,9 +30,9 @@
 
 using boost::uint32_t;
 
-static lg::log_domain log_display("display");
-#define ERR_DP LOG_STREAM(err, log_display)
-#define LOG_DP LOG_STREAM(info, log_display)
+static lg::log_domain log_desktop("desktop");
+#define ERR_DU LOG_STREAM(err, log_desktop)
+#define LOG_DU LOG_STREAM(info, log_desktop)
 
 namespace { // anonymous namespace
 
@@ -91,7 +91,7 @@ DBusConnection *get_dbus_connection()
 		dbus_error_init(&err);
 		connection = dbus_bus_get(DBUS_BUS_SESSION, &err);
 		if (!connection) {
-			ERR_DP << "Failed to open DBus session: " << err.message << '\n';
+			ERR_DU << "Failed to open DBus session: " << err.message << '\n';
 			dbus_error_free(&err);
 			return NULL;
 		}
@@ -147,10 +147,10 @@ uint32_t send_dbus_notification(DBusConnection *connection, uint32_t replaces_id
 	DBusMessage *ret = dbus_connection_send_with_reply_and_block(connection, buf, 1000, &err);
 	dbus_message_unref(buf);
 	if (!ret) {
-		ERR_DP << "Failed to send visual notification: " << err.message << '\n';
+		ERR_DU << "Failed to send visual notification: " << err.message << '\n';
 		dbus_error_free(&err);
 		if (kde_style) {
-			ERR_DP << " Retrying with the freedesktop protocol." << std::endl;
+			ERR_DU << " Retrying with the freedesktop protocol." << std::endl;
 			kde_style = false;
 			return send_dbus_notification(connection, replaces_id, owner, message);
 		}
