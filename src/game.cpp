@@ -429,7 +429,7 @@ static void warn_early_init_failure()
 	std::cerr << '\n'
 			  << "An error at this point during initialization usually indicates that the data\n"
 			  << "directory above was not correctly set or detected. Try passing the correct path\n"
-			  << "in the command line with the --config-dir switch or as the only argument.\n";
+			  << "in the command line with the --data-dir switch or as the only argument.\n";
 }
 
 /**
