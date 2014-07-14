@@ -24,6 +24,7 @@
 
 #include "construct_dialog.hpp"
 #include "display.hpp"
+#include "filesystem.hpp"
 #include "formatter.hpp"
 #include "formula_string_utils.hpp"
 #include "game_preferences.hpp"
@@ -253,7 +254,7 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 		game_commands_(),
 		editor_commands_(),
 		title_screen_commands_(),
-		heading_( (formatter() << HEADING_PREFIX << _("Action")
+		heading_( (formatter() << HEADING_PREFIX << COLUMN_SEPARATOR << _("Action")
 						<< COLUMN_SEPARATOR << _("Binding")).str() ),
 		selected_command_(0),
 		general_sorter_(),
@@ -313,10 +314,10 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 	disp_.video().clear_all_help_strings();
 
 	// Initialize sorters.
-	general_sorter_.set_alpha_sort(0).set_alpha_sort(1);
-	game_sorter_.set_alpha_sort(0).set_alpha_sort(1);
-	editor_sorter_.set_alpha_sort(0).set_alpha_sort(1);
-	title_screen_sorter_.set_alpha_sort(0).set_alpha_sort(1);
+	general_sorter_.set_alpha_sort(1).set_alpha_sort(2);
+	game_sorter_.set_alpha_sort(1).set_alpha_sort(2);
+	editor_sorter_.set_alpha_sort(1).set_alpha_sort(2);
+	title_screen_sorter_.set_alpha_sort(1).set_alpha_sort(2);
 
 	// Populate every menu_
 	for (int scope = 0; scope != hotkey::SCOPE_COUNT; scope++) {
@@ -324,6 +325,10 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 		set_hotkey_menu(false);
 	}
 
+	general_hotkeys_.sort_by(1);
+	game_hotkeys_.sort_by(1);
+	editor_hotkeys_.sort_by(1);
+	title_screen_hotkeys_.sort_by(1);
 }
 
 void hotkey_preferences_dialog::set_hotkey_menu(bool keep_viewport) {
@@ -368,15 +373,22 @@ void hotkey_preferences_dialog::set_hotkey_menu(bool keep_viewport) {
 	BOOST_FOREACH(const std::string& command, *commands) {
 
 		const std::string& description = hotkey::get_description(command);
+		const std::string& tooltip     = hotkey::get_tooltip(command);
 		std::string truncated_description = description;
 		if (truncated_description.size() >= (truncate_at + 2) ) {
 			utils::ellipsis_truncate(truncated_description, truncate_at);
 		}
 		const std::string& name = hotkey::get_names(command);
 
+		std::string image_path = "misc/empty.png~CROP(0,0,15,15)";
+		if (file_exists(game_config::path + "/images/icons/action/" + command + "_25.png"))
+			image_path = "icons/action/" + command + "_25.png~CROP(3,3,18,18)";
+
 		menu_items.push_back(
-				(formatter() << truncated_description << HELP_STRING_SEPARATOR
-						<< description << COLUMN_SEPARATOR << font::NULL_MARKUP
+				(formatter() << IMAGE_PREFIX << image_path << COLUMN_SEPARATOR
+						<< truncated_description
+						<< HELP_STRING_SEPARATOR << description << (tooltip.empty() ? "" : " - ") << tooltip
+						<< COLUMN_SEPARATOR << font::NULL_MARKUP
 						<< name << HELP_STRING_SEPARATOR << name).str() );
 	}
 

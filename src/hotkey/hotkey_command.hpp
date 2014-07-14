@@ -109,6 +109,7 @@ enum HOTKEY_COMMAND {
 	HOTKEY_EDITOR_PALETTE_GROUPS, HOTKEY_EDITOR_PALETTE_UPSCROLL, HOTKEY_EDITOR_PALETTE_DOWNSCROLL,
 
 	HOTKEY_EDITOR_PLAYLIST,
+	HOTKEY_EDITOR_SCHEDULE,
 	HOTKEY_EDITOR_LOCAL_TIME,
 	HOTKEY_EDITOR_UNIT_FACING,
 
@@ -266,8 +267,8 @@ void delete_all_wml_hotkeys();
 ///removes a wml hotkey with the given id, returns true if the deletion was successful
 bool remove_wml_hotkey(const std::string& id);
 
-const std::string get_description(const std::string& command);
-const std::string get_tooltip(const std::string& command);
+const std::string& get_description(const std::string& command);
+const std::string& get_tooltip(const std::string& command);
 
 void init_hotkey_commands();
 

@@ -51,6 +51,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 	const bool preferences_minimap_draw_terrain = preferences::minimap_draw_terrain();
 	const bool preferences_minimap_terrain_coding = preferences::minimap_terrain_coding();
 	const bool preferences_minimap_draw_villages = preferences::minimap_draw_villages();
+	const bool preferences_minimap_unit_coding = preferences::minimap_movement_coding();
 
 	const size_t map_width = map.w()*scale*3/4;
 	const size_t map_height = map.h()*scale;
@@ -106,7 +107,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 			if (preferences_minimap_draw_terrain) {
 
-				if (!preferences_minimap_terrain_coding) {
+				if (preferences_minimap_terrain_coding) {
 
 					surface surf(NULL);
 
@@ -241,7 +242,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 				if (!fogged) {
 					if (side > -1) {
 
-						if (!preferences::minimap_movement_coding() || !vw ) {
+						if (preferences_minimap_unit_coding || !vw ) {
 							col = team::get_minimap_color(side + 1);
 						} else {
 

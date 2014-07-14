@@ -126,6 +126,7 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	// These are not really hotkey items but menu entries to get expanded.
 	// They need to have their own hotkey to control their active state.
 	{ hotkey::HOTKEY_EDITOR_PLAYLIST, "editor-playlist", N_("Switch Time of Day"), true, scope_editor, "" },
+	{ hotkey::HOTKEY_EDITOR_SCHEDULE, "menu-editor-schedule", "", true, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_MAP_SWITCH, "editor-switch-map", N_("Switch Map"), true, scope_editor, "" },
 	{ hotkey::HOTKEY_EDITOR_LOCAL_TIME, "menu-editor-local-time", N_("Assign Local Time"), true, scope_editor, "" },
 
@@ -467,12 +468,12 @@ void delete_all_wml_hotkeys()
 	}
 }
 
-const std::string get_description(const std::string& command)
+const std::string& get_description(const std::string& command)
 {
 	return get_hotkey_command(command).description;
 }
 
-const std::string get_tooltip(const std::string& command)
+const std::string& get_tooltip(const std::string& command)
 {
 	// the null hotkey_command has the "" tooltip
 	return get_hotkey_command(command).tooltip;
