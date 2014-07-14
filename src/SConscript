@@ -561,6 +561,9 @@ wesnoth_sources = Split("""
 if env["PLATFORM"] == "win32":
     wesnoth_sources.append("notifications/windows_tray_notification.cpp")
 
+if env["notifications"]:
+    wesnoth_sources.append("notifications/dbus_notification.cpp")
+
 wesnoth_sources.extend(client_env.Object("game_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
 
 libwesnoth_extras = client_env.Library("wesnoth_extras", wesnoth_sources)

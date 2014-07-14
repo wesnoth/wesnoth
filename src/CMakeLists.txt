@@ -1010,6 +1010,14 @@ if(MSVC)
 	)
 endif(MSVC)
 
+# For libdbus (essentially just for linux), this file needs to be linked, as its header is included #ifdef HAVE_LIBDBUS
+if(LIBDBUS_FOUND)
+	set(libwesnoth-game_STAT_SRC
+		${libwesnoth-game_STAT_SRC}
+		notifications/dbus_notification.cpp
+	)
+endif(LIBDBUS_FOUND)
+
 if(ENABLE_GAME AND ENABLE_TESTS)
 	set(libwesnoth-game_STAT_SRC
 		${libwesnoth-game_STAT_SRC}
