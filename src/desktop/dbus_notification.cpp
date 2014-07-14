@@ -170,6 +170,8 @@ uint32_t send_dbus_notification(DBusConnection *connection, uint32_t replaces_id
 
 namespace dbus {
 
+const int MAX_MSG_LINES = 5;
+
 void send_notification(const std::string & owner, const std::string & message)
 {
 	DBusConnection *connection = get_dbus_connection();
@@ -181,9 +183,14 @@ void send_notification(const std::string & owner, const std::string & message)
 
 	if (i != i_end) {
 		i->message = message + "\n" + i->message;
-		int endl_pos = -1;
-		for (int ctr = 0; ctr < 5; ctr++)
+
+		size_t endl_pos = i->message.find('\n');
+		size_t ctr = 1;
+
+		while (ctr < MAX_MSG_LINES && endl_pos != std::string::npos) {
 			endl_pos = i->message.find('\n', endl_pos+1);
+			ctr++;
+		}
 
 		i->message = i->message.substr(0,endl_pos);
 
