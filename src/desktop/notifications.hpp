@@ -23,8 +23,23 @@ namespace notifications
 {
 	enum type {CHAT, TURN_CHANGED, OTHER};
 
+/**
+ * Displays a desktop notification message @message, from @a owner, of type @t.
+ *
+ * If it is an appropriate time to send a desktop notification (i.e. the window
+ * does not have focus and the feature is not disabled by the preferences),
+ * and wesnoth was compiled with support for this feature, a notification will
+ * be issued. If there is no support for notifications, this fcn is a no-op.
+ *
+ * @note Currently we have support for dbus (linux), windows tray notifications,
+ * and growl (Apple). To enable one of these, the corresponding compilation unit
+ * dbus_notification.cpp, growl_notification.cpp, windows_tray_notification.cpp,
+ * must be compiled, and the corresponding C++ symbol HAVE_LIBDBUS, HAVE_GROWL,
+ * _WIN32 must be defined for that compilation unit _and for this one_.
+ */
 	void send(const std::string& owner, const std::string& message, type t);
 
+/** Returns whether we were compiled with support for desktop notifications. */
 	bool available();
 }
 
