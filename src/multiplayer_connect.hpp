@@ -18,7 +18,7 @@
 #define MULTIPLAYER_CONNECT_H_INCLUDED
 
 #include "commandline_options.hpp"
-#include "multiplayer_connect_engine.hpp"
+#include "connect_engine.hpp"
 #include "multiplayer_ui.hpp"
 #include "widgets/combo_drag.hpp"
 #include "widgets/scrollpane.hpp"
@@ -32,7 +32,7 @@ namespace mp {
 
 // Helper function to retrieve controller names.
 std::vector<std::string> controller_options_names(
-	const std::vector<controller_option>& controller_options);
+	const std::vector<ng::controller_option>& controller_options);
 
 class connect : public mp::ui
 {
@@ -40,7 +40,7 @@ public:
 
 	class side {
 	public:
-		side(connect& parent, side_engine_ptr engine);
+		side(connect& parent, ng::side_engine_ptr engine);
 		side(const side& a);
 		~side();
 
@@ -53,8 +53,8 @@ public:
 
 		void add_widgets_to_scrollpane(gui::scrollpane& pane, int pos);
 
-		side_engine_ptr engine() { return engine_; }
-		const side_engine_ptr engine() const { return engine_; }
+		ng::side_engine_ptr engine() { return engine_; }
+		const ng::side_engine_ptr engine() const { return engine_; }
 
 	private:
 		// Update UI methods and their helper(s).
@@ -63,7 +63,7 @@ public:
 
 		// The mp::connect widget owning this mp::connect::side.
 		connect* parent_;
-		side_engine_ptr engine_;
+		ng::side_engine_ptr engine_;
 
 		// Flags for controlling which configuration widgets should be locked.
 		bool gold_lock_;
@@ -93,7 +93,7 @@ public:
 
 	connect(game_display& disp, const std::string& game_name,
 		const config& game_config, chat& c, config& gamelist,
-		connect_engine& engine);
+		ng::connect_engine& engine);
 	~connect();
 
 	// Updates the current game state, resolves random factions, and sends a
@@ -130,7 +130,7 @@ private:
 	std::vector<ai::description*> ai_algorithms_;
 
 	side_list sides_;
-	connect_engine& engine_;
+	ng::connect_engine& engine_;
 
 	gui::label waiting_label_;
 	gui::label type_title_label_;

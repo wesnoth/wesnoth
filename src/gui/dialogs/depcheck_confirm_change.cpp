@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/mp_depcheck_confirm_change.hpp"
+#include "gui/dialogs/depcheck_confirm_change.hpp"
 
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
@@ -26,9 +26,9 @@ namespace gui2
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
- * @order = 2_mp_depcheck_confirm_change
+ * @order = 2_depcheck_confirm_change
  *
- * == MP Dependency Check: Confirm Change ==
+ * == SP/MP Dependency Check: Confirm Change ==
  *
  * Asks the user to confirm a change required to proceed. Currently used
  * for enabling/disabling modifications
@@ -50,9 +50,9 @@ namespace gui2
  * @end{table}
  */
 
-REGISTER_DIALOG(mp_depcheck_confirm_change)
+REGISTER_DIALOG(depcheck_confirm_change)
 
-tmp_depcheck_confirm_change::tmp_depcheck_confirm_change(
+tdepcheck_confirm_change::tdepcheck_confirm_change(
 		bool action,
 		const std::vector<std::string>& mods,
 		const std::string& requester)

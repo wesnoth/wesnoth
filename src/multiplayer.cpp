@@ -30,6 +30,7 @@
 #include "generators/map_create.hpp"
 #include "mp_game_utils.hpp"
 #include "multiplayer_configure.hpp"
+#include "configure_engine.hpp"
 #include "multiplayer_connect.hpp"
 #include "multiplayer_create.hpp"
 #include "multiplayer_error_codes.hpp"
@@ -489,7 +490,7 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 	statistics::fresh_stats();
 
 	{
-		mp::connect_engine_ptr connect_engine(new mp::connect_engine(state, local_players_only, true));
+		ng::connect_engine_ptr connect_engine(new ng::connect_engine(state, local_players_only, true));
 		mp::connect ui(disp, state.mp_settings().name, game_config, gamechat, gamelist,
 			*connect_engine);
 		run_lobby_loop(disp, ui);
@@ -501,7 +502,7 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 		if (res == mp::ui::PLAY) {
 			ui.start_game();
 		}
-	}
+	} // end connect_engine_ptr scope
 
 	switch (res) {
 	case mp::ui::PLAY:
@@ -523,7 +524,7 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 }
 
 static bool enter_configure_mode(game_display& disp, const config& game_config,
-	saved_game& state,
+	saved_game& state, 
 	bool local_players_only = false);
 
 static void enter_create_mode(game_display& disp, const config& game_config,
@@ -867,7 +868,7 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 	statistics::fresh_stats();
 
 	{
-		mp::connect_engine_ptr connect_engine(new mp::connect_engine(state, true, true));
+		ng::connect_engine_ptr connect_engine(new ng::connect_engine(state, true, true));
 		mp::connect ui(disp, parameters.name, game_config, gamechat, gamelist,
 			*connect_engine);
 
@@ -911,7 +912,7 @@ void start_client(game_display& disp, const config& game_config,
 	}
 }
 
-mp::ui::result goto_mp_connect(game_display& disp, connect_engine& engine,
+mp::ui::result goto_mp_connect(game_display& disp, ng::connect_engine& engine,
 	const config& game_config, const std::string& game_name)
 {
 	mp::ui::result res;

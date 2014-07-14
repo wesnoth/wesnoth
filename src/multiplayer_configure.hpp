@@ -15,7 +15,7 @@
 #ifndef MULTIPLAYER_CONFIGURE_HPP_INCLUDED
 #define MULTIPLAYER_CONFIGURE_HPP_INCLUDED
 
-#include "mp_depcheck.hpp"
+#include "depcheck.hpp"
 #include "mp_game_settings.hpp"
 #include "multiplayer_ui.hpp"
 #include "widgets/slider.hpp"
@@ -24,6 +24,7 @@
 #include "generators/mapgen.hpp"
 #include "tooltips.hpp"
 #include "mp_options.hpp"
+#include "configure_engine.hpp"
 
 class saved_game;
 namespace mp {
@@ -96,6 +97,7 @@ private:
 	bool force_use_map_settings_check_;
 	saved_game& state_;
 	mp_game_settings& parameters_;
+	ng::configure_engine engine_;
 	options::manager options_manager_;
 };
 

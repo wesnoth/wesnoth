@@ -157,8 +157,9 @@ config initial_level_config(saved_game& state)
 
 void level_to_gamestate(const config& level, saved_game& state)
 {
+	game_classification::CAMPAIGN_TYPE type = state.classification().campaign_type;
 	state = saved_game(level);
-	state.classification().campaign_type = game_classification::MULTIPLAYER;
+	state.classification().campaign_type = type;
 	// Any replay data is only temporary and should be removed from
 	// the level data in case we want to save the game later.
 	if (const config& replay_data = level.child("replay"))

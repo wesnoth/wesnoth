@@ -22,7 +22,7 @@
 namespace gui2
 {
 
-class tmp_depcheck_confirm_change : public tdialog
+class tdepcheck_confirm_change : public tdialog
 {
 public:
 	/**
@@ -34,7 +34,7 @@ public:
 	 * @param requester 	the name of the component which requests the change
 	 *
 	 */
-	tmp_depcheck_confirm_change(bool action,
+	tdepcheck_confirm_change(bool action,
 								const std::vector<std::string>& mods,
 								const std::string& requester);
 

@@ -22,7 +22,7 @@
 
 class CVideo;
 
-namespace mp
+namespace ng
 {
 
 namespace depcheck
@@ -364,6 +364,6 @@ private:
 
 } //namespace depcheck
 
-} //namespace mp
+} //namespace ng
 
 #endif

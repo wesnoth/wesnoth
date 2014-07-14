@@ -27,8 +27,6 @@
 #include "game_config_manager.hpp"      // for game_config_manager
 #include "game_end_exceptions.hpp"      // for LEVEL_RESULT, etc
 #include "gettext.hpp"                  // for _
-#include "gui/dialogs/campaign_difficulty.hpp"
-#include "gui/dialogs/campaign_selection.hpp"  // for tcampaign_selection
 #include "gui/dialogs/language_selection.hpp"  // for tlanguage_selection
 #include "gui/dialogs/message.hpp" //for show error message
 #include "gui/dialogs/mp_host_game_prompt.hpp" //for host game prompt
@@ -43,6 +41,7 @@
 #include "log.hpp"                      // for LOG_STREAM, logger, general, etc
 #include "map_exception.hpp"
 #include "multiplayer.hpp"              // for start_client, etc
+#include "create_engine.hpp"
 #include "network.hpp"
 #include "playcampaign.hpp"             // for play_game, etc
 #include "preferences.hpp"              // for disable_preferences_save, etc
@@ -53,6 +52,7 @@
 #include "sdl/utils.hpp"                // for surface
 #include "serialization/compression.hpp"  // for format::NONE
 #include "serialization/string_utils.hpp"  // for split
+#include "singleplayer.hpp"             // for sp_create_mode
 #include "statistics.hpp"
 #include "tstring.hpp"                  // for operator==, operator!=
 #include "util.hpp"                     // for lexical_cast_default
@@ -95,10 +95,6 @@ static lg::log_domain log_network("network");
 
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
-
-static bool less_campaigns_rank(const config &a, const config &b) {
-	return a["rank"].to_int(1000) < b["rank"].to_int(1000);
-}
 
 game_launcher::game_launcher(const commandline_options& cmdline_opts, const char *appname) :
 	cmdline_opts_(cmdline_opts),
@@ -694,142 +690,8 @@ bool game_launcher::new_campaign()
 	state_ = saved_game();
 	state_.classification().campaign_type = game_classification::SCENARIO;
 
-	std::vector<config> campaigns;
-	BOOST_FOREACH(const config& campaign,
-		resources::config_manager->game_config().child_range("campaign")) {
-
-		if (campaign["type"] != "mp") {
-			campaigns.push_back(campaign);
-		}
-	}
-
-	mark_completed_campaigns(campaigns);
-	std::stable_sort(campaigns.begin(),campaigns.end(),less_campaigns_rank);
-
-	if(campaigns.begin() == campaigns.end()) {
-	  gui2::show_error_message(disp().video(),
-				  _("No campaigns are available.\n"));
-		return false;
-	}
-
-	int campaign_num = -1;
-	bool use_deterministic_mode = false;
-	// No campaign selected from command line
-	if (jump_to_campaign_.campaign_id_.empty() == true)
-	{
-		gui2::tcampaign_selection dlg(campaigns);
-
-		try {
-			dlg.show(disp().video());
-		} catch(twml_exception& e) {
-			e.show(disp());
-			return false;
-		}
-
-		if(dlg.get_retval() != gui2::twindow::OK) {
-			return false;
-		}
-
-		campaign_num = dlg.get_choice();
-
-		use_deterministic_mode = dlg.get_deterministic();
-
-	}
-	else
-	{
-		// don't reset the campaign_id_ so we can know
-		// if we should quit the game or return to the main menu
-
-		// checking for valid campaign name
-		for(size_t i = 0; i < campaigns.size(); ++i)
-		{
-			if (campaigns[i]["id"] == jump_to_campaign_.campaign_id_)
-			{
-				campaign_num = i;
-				break;
-			}
-		}
-
-		// didn't found any campaign with that id
-		if (campaign_num == -1)
-		{
-			std::cerr<<"No such campaign id to jump to: ["<<jump_to_campaign_.campaign_id_<<"]\n";
-			return false;
-		}
-	}
-
-	const config &campaign = campaigns[campaign_num];
-	state_.classification().campaign = campaign["id"].str();
-	state_.classification().abbrev = campaign["abbrev"].str();
-
-	std::string random_mode = use_deterministic_mode ? "deterministic" : "";
-	state_.carryover_sides_start["random_mode"] = random_mode;
-	state_.classification().random_mode = random_mode;
-
-	// we didn't specify in the command line the scenario to be started
-	if (jump_to_campaign_.scenario_id_.empty())
-		state_.carryover_sides_start["next_scenario"] = campaign["first_scenario"].str();
-	else
-		state_.carryover_sides_start["next_scenario"] = jump_to_campaign_.scenario_id_;
-
-	state_.classification().end_text = campaign["end_text"].str();
-	state_.classification().end_text_duration = campaign["end_text_duration"];
-
-	const std::string difficulty_descriptions = campaign["difficulty_descriptions"];
-	std::vector<std::string> difficulty_options = utils::split(difficulty_descriptions, ';');
-
-	const std::vector<std::string> difficulties = utils::split(campaign["difficulties"]);
-
-	if(difficulties.empty() == false) {
-		int difficulty = 0;
-		if (jump_to_campaign_.difficulty_ == -1){
-			if(difficulty_options.size() != difficulties.size()) {
-				difficulty_options.resize(difficulties.size());
-				std::copy(difficulties.begin(),difficulties.end(),difficulty_options.begin());
-			}
-
-			gui2::tcampaign_difficulty dlg(difficulty_options);
-			dlg.show(disp().video());
-
-			if(dlg.selected_index() == -1) {
-				if (jump_to_campaign_.campaign_id_.empty() == false)
-				{
-					jump_to_campaign_.campaign_id_ = "";
-				}
-				// canceled difficulty dialog, relaunch the campaign selection dialog
-				return new_campaign();
-			}
-			difficulty = dlg.selected_index();
-		}
-		else
-		{
-			if (jump_to_campaign_.difficulty_
-					> static_cast<int>(difficulties.size()))
-			{
-				std::cerr << "incorrect difficulty number: [" <<
-					jump_to_campaign_.difficulty_ << "]. maximum is [" <<
-					difficulties.size() << "].\n";
-				return false;
-			}
-			else if (jump_to_campaign_.difficulty_ < 1)
-			{
-				std::cerr << "incorrect difficulty number: [" <<
-					jump_to_campaign_.difficulty_ << "]. minimum is [1].\n";
-				return false;
-			}
-			else
-			{
-				difficulty = jump_to_campaign_.difficulty_ - 1;
-			}
-		}
-
-		state_.classification().difficulty = difficulties[difficulty];
-	}
-
-	state_.classification().campaign_define = campaign["define"].str();
-	state_.classification().campaign_xtra_defines = utils::split(campaign["extra_defines"]);
-
-	return true;
+	return sp::enter_create_mode(disp(), resources::config_manager->game_config(),
+		state_, jump_to_campaign_, true);
 }
 
 std::string game_launcher::jump_to_campaign_id() const
@@ -842,7 +704,7 @@ bool game_launcher::goto_campaign()
 	if(jump_to_campaign_.jump_){
 		if(new_campaign()) {
 			jump_to_campaign_.jump_ = false;
-			launch_game(game_launcher::RELOAD_DATA);
+			launch_game(NO_RELOAD_DATA);
 		}else{
 			jump_to_campaign_.jump_ = false;
 			return false;

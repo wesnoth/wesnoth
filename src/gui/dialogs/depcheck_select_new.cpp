@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/mp_depcheck_select_new.hpp"
+#include "gui/dialogs/depcheck_select_new.hpp"
 
 #include "gui/auxiliary/find_widget.tpp"
 #include "gui/widgets/settings.hpp"
@@ -27,9 +27,9 @@ namespace gui2
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
- * @order = 2_mp_depcheck_select_new
+ * @order = 2_depcheck_select_new
  *
- * == MP Dependency Check: Select New ==
+ * == SP/MP Dependency Check: Select New ==
  *
  * Offers a list of compatible items if a currently selected one is
  * incompatible. Currently used for switching era or map.
@@ -52,10 +52,10 @@ namespace gui2
  *
  */
 
-REGISTER_DIALOG(mp_depcheck_select_new)
+REGISTER_DIALOG(depcheck_select_new)
 
-tmp_depcheck_select_new::tmp_depcheck_select_new(
-		mp::depcheck::component_type name,
+tdepcheck_select_new::tdepcheck_select_new(
+		ng::depcheck::component_type name,
 		const std::vector<std::string>& items)
 	: items_(items), result_(-1)
 {
@@ -63,17 +63,17 @@ tmp_depcheck_select_new::tmp_depcheck_select_new(
 	std::string message;
 
 	switch(name) {
-		case mp::depcheck::SCENARIO:
+		case ng::depcheck::SCENARIO:
 			message = _("The currently chosen scenario "
 						"is not compatible with your setup."
 						"\nPlease select a compatible one.");
 			break;
-		case mp::depcheck::ERA:
+		case ng::depcheck::ERA:
 			message = _("The currently chosen era "
 						"is not compatible with your setup."
 						"\nPlease select a compatible one.");
 			break;
-		case mp::depcheck::MODIFICATION:
+		case ng::depcheck::MODIFICATION:
 			// currently this can't happen, but be prepared for anything...
 			message = _("The currently chosen modification "
 						"is not compatible with your setup."
@@ -83,7 +83,7 @@ tmp_depcheck_select_new::tmp_depcheck_select_new(
 	register_label("message", false, message);
 }
 
-void tmp_depcheck_select_new::pre_show(CVideo& /*video*/, twindow& window)
+void tdepcheck_select_new::pre_show(CVideo& /*video*/, twindow& window)
 {
 	tlistbox& listbox = find_widget<tlistbox>(&window, "itemlist", false);
 
@@ -98,7 +98,7 @@ void tmp_depcheck_select_new::pre_show(CVideo& /*video*/, twindow& window)
 	listbox.select_row(0);
 }
 
-void tmp_depcheck_select_new::post_show(twindow& window)
+void tdepcheck_select_new::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
 		tlistbox& listbox = find_widget<tlistbox>(&window, "itemlist", false);

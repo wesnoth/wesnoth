@@ -11,7 +11,7 @@
 
    See the COPYING file for more details.
 */
-#include "multiplayer_connect_engine.hpp"
+#include "connect_engine.hpp"
 
 #include "ai/configuration.hpp"
 #include "formula_string_utils.hpp"
@@ -68,7 +68,7 @@ const std::string attributes_to_trim[] = {
 
 }
 
-namespace mp {
+namespace ng {
 
 connect_engine::connect_engine(saved_game& state,
 	const bool local_players_only, const bool first_scenario) :
@@ -87,7 +87,7 @@ connect_engine::connect_engine(saved_game& state,
 	connected_users_()
 {
 	// Initial level config from the mp_game_settings.
-	level_ = initial_level_config(state_);
+	level_ = mp::initial_level_config(state_);
 	if (level_.empty()) {
 		return;
 	}
@@ -451,7 +451,7 @@ void connect_engine::start_game(LOAD_USERS load_users)
 	save_reserved_sides_information();
 
 	// Build the gamestate object after updating the level.
-	level_to_gamestate(level_, state_);
+	mp::level_to_gamestate(level_, state_);
 
 	network::send_data(config("start_game"), 0);
 }
@@ -570,7 +570,7 @@ void connect_engine::start_game_commandline(
 	save_reserved_sides_information();
 
 	// Build the gamestate object after updating the level
-	level_to_gamestate(level_, state_);
+	mp::level_to_gamestate(level_, state_);
 	network::send_data(config("start_game"), 0);
 }
 
@@ -856,6 +856,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	// Tweak the controllers.
 	if (cfg_["controller"] == "human_ai" ||
 		cfg_["controller"] == "network_ai" ||
+		(parent_.state_.classification().campaign_type == game_classification::SCENARIO && cfg_["controller"].blank()) ||
 		(cfg_["controller"] == "network" &&  !allow_player_ && parent_.params_.saved_game)) { //this is a workaround for bug #21797
 
 		cfg_["controller"] = "ai";
@@ -1089,9 +1090,9 @@ bool side_engine::ready_for_start() const
 		return true;
 	}
 
-	if ((controller_ == mp::CNTR_COMPUTER) ||
-		(controller_ == mp::CNTR_EMPTY) ||
-		(controller_ == mp::CNTR_LOCAL)) {
+	if ((controller_ == CNTR_COMPUTER) ||
+		(controller_ == CNTR_EMPTY) ||
+		(controller_ == CNTR_LOCAL)) {
 
 		return true;
 	}
@@ -1135,7 +1136,7 @@ bool side_engine::swap_sides_on_drop_target(const unsigned drop_target) {
 	side_engine& target = *parent_.side_engines_[drop_target];
 
 	const std::string target_id = target.player_id_;
-	const mp::controller target_controller = target.controller_;
+	const ng::controller target_controller = target.controller_;
 	const std::string target_ai = target.ai_algorithm_;
 
 	if ((controller_lock_ || target.controller_lock_) &&
@@ -1260,7 +1261,7 @@ void side_engine::update_current_controller_index()
 
 bool side_engine::controller_changed(const int selection)
 {
-	const mp::controller selected_cntr = controller_options_[selection].first;
+	const ng::controller selected_cntr = controller_options_[selection].first;
 	if (selected_cntr == CNTR_LAST) {
 		return false;
 	}
@@ -1279,7 +1280,7 @@ bool side_engine::controller_changed(const int selection)
 	return true;
 }
 
-void side_engine::set_controller(mp::controller controller)
+void side_engine::set_controller(ng::controller controller)
 {
 	controller_ = controller;
 
@@ -1305,7 +1306,7 @@ void side_engine::set_controller_commandline(const std::string& controller_name)
 	player_id_.clear();
 }
 
-void side_engine::add_controller_option(mp::controller controller,
+void side_engine::add_controller_option(ng::controller controller,
 		const std::string& name, const std::string& controller_value)
 {
 	if (controller_lock_ && !cfg_["controller"].empty() &&
@@ -1317,4 +1318,4 @@ void side_engine::add_controller_option(mp::controller controller,
 	controller_options_.push_back(std::make_pair(controller, name));
 }
 
-} // end namespace mp
+} // end namespace ng

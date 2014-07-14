@@ -16,14 +16,14 @@
 #define GUI_DIALOGS_MP_DEPCHECK_SELECT_NEW_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-#include "mp_depcheck.hpp"
+#include "depcheck.hpp"
 #include <vector>
 
 
 namespace gui2
 {
 
-class tmp_depcheck_select_new : public tdialog
+class tdepcheck_select_new : public tdialog
 {
 public:
 	/**
@@ -32,7 +32,7 @@ public:
 	 * @param name 		the type of which we want to select a new item
 	 * @param options 	the names of the components which can be choosed
 	 */
-	tmp_depcheck_select_new(mp::depcheck::component_type name,
+	tdepcheck_select_new(ng::depcheck::component_type name,
 							const std::vector<std::string>& options);
 
 	/**

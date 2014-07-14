@@ -55,8 +55,8 @@
 #include "gui/dialogs/mp_connect.hpp"
 #include "gui/dialogs/mp_create_game.hpp"
 #include "gui/dialogs/mp_create_game_set_password.hpp"
-#include "gui/dialogs/mp_depcheck_confirm_change.hpp"
-#include "gui/dialogs/mp_depcheck_select_new.hpp"
+#include "gui/dialogs/depcheck_confirm_change.hpp"
+#include "gui/dialogs/depcheck_select_new.hpp"
 #include "gui/dialogs/mp_login.hpp"
 #include "gui/dialogs/mp_method_selection.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
@@ -72,6 +72,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
+#include "create_engine.hpp"
 #include "tests/utils/fake_display.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
@@ -397,8 +398,8 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tmp_connect>();
 	test<gui2::tmp_create_game>();
 	test<gui2::tmp_create_game_set_password>();
-	test<gui2::tmp_depcheck_confirm_change>();
-	test<gui2::tmp_depcheck_select_new>();
+	test<gui2::tdepcheck_confirm_change>();
+	test<gui2::tdepcheck_select_new>();
 	test<gui2::tmp_login>();
 	test<gui2::tmp_method_selection>();
 	test<gui2::tmp_server_list>();
@@ -500,9 +501,11 @@ struct twrapper<gui2::tcampaign_selection>
 	{
 		static const config::const_child_itors &ci =
 				main_config.child_range("campaign");
-		static std::vector<config> campaigns(ci.first, ci.second);
-
-		return new gui2::tcampaign_selection(campaigns);
+		static std::vector<ng::create_engine::level_ptr> levels;
+		BOOST_FOREACH(const config& campaign_cfg, ci) {
+			levels.push_back(ng::create_engine::level_ptr(new ng::campaign(campaign_cfg)));
+		}
+		return new gui2::tcampaign_selection(levels);
 	}
 };
 
@@ -714,22 +717,22 @@ struct twrapper<gui2::tmp_create_game_set_password>
 };
 
 template<>
-struct twrapper<gui2::tmp_depcheck_confirm_change>
+struct twrapper<gui2::tdepcheck_confirm_change>
 {
-	static gui2::tmp_depcheck_confirm_change* create()
+	static gui2::tdepcheck_confirm_change* create()
 	{
 		static std::vector<std::string> mods = boost::assign::list_of("mod_one")("some other")("more");
-		return new gui2::tmp_depcheck_confirm_change(true, mods, "requester");
+		return new gui2::tdepcheck_confirm_change(true, mods, "requester");
 	}
 };
 
 template<>
-struct twrapper<gui2::tmp_depcheck_select_new>
+struct twrapper<gui2::tdepcheck_select_new>
 {
-	static gui2::tmp_depcheck_select_new* create()
+	static gui2::tdepcheck_select_new* create()
 	{
 		static std::vector<std::string> mods = boost::assign::list_of("mod_one")("some other")("more");
-		return new gui2::tmp_depcheck_select_new(mp::depcheck::MODIFICATION, mods);
+		return new gui2::tdepcheck_select_new(ng::depcheck::MODIFICATION, mods);
 	}
 };
 

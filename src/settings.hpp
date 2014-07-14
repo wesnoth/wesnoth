@@ -21,6 +21,7 @@
 #define SETTINGS_HPP_INCLUDED
 
 #include <string>
+#include "game_classification.hpp"
 
 /**
  * Contains the general settings which have a default.
@@ -49,6 +50,7 @@ namespace settings {
 	/**
 	 *  Gets the village gold.
 	 *  If no valid value supplied, it will return a default.
+	 *  The default is 1 for singleplayer, and 2 for multiplayer.
 	 *  The value is also range checked.
 	 *  When out of bounds, it will be set to the nearest bound.
 	 *
@@ -56,7 +58,7 @@ namespace settings {
 	 *
 	 *  @returns            the village gold
 	 */
-	int get_village_gold(const std::string& value);
+	int get_village_gold(const std::string& value, game_classification::CAMPAIGN_TYPE gametype = game_classification::MULTIPLAYER);
 
 	/**
 	 *  Gets the village unit level support.

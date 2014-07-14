@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "mp_depcheck.hpp"
+#include "depcheck.hpp"
 
 #include <algorithm>
 
@@ -20,8 +20,8 @@
 #include "gettext.hpp"
 #include "log.hpp"
 
-#include "gui/dialogs/mp_depcheck_confirm_change.hpp"
-#include "gui/dialogs/mp_depcheck_select_new.hpp"
+#include "gui/dialogs/depcheck_confirm_change.hpp"
+#include "gui/dialogs/depcheck_select_new.hpp"
 #include "gui/dialogs/message.hpp"
 
 static lg::log_domain log_mp_create_depcheck("mp/create/depcheck");
@@ -52,7 +52,7 @@ void copy_keys(config& out,
 }
 } //anonymous namespace
 
-namespace mp
+namespace ng
 {
 
 namespace depcheck
@@ -429,7 +429,7 @@ bool manager::enable_mods_dialog(const std::vector<std::string>& mods,
 		items.push_back(depinfo_.find_child("modification", "id", mod)["name"]);
 	}
 
-	gui2::tmp_depcheck_confirm_change dialog(true, items, requester);
+	gui2::tdepcheck_confirm_change dialog(true, items, requester);
 	return dialog.show(video_);
 }
 
@@ -441,7 +441,7 @@ bool manager::disable_mods_dialog(const std::vector<std::string>& mods,
 		items.push_back(depinfo_.find_child("modification", "id", mod)["name"]);
 	}
 
-	gui2::tmp_depcheck_confirm_change dialog(false, items, requester);
+	gui2::tdepcheck_confirm_change dialog(false, items, requester);
 	return dialog.show(video_);
 }
 
@@ -452,7 +452,7 @@ std::string manager::change_era_dialog(const std::vector<std::string>& eras)
 		items.push_back(depinfo_.find_child("era", "id", era)["name"]);
 	}
 
-	gui2::tmp_depcheck_select_new dialog(ERA, items);
+	gui2::tdepcheck_select_new dialog(ERA, items);
 
 	if (dialog.show(video_)) {
 		return eras[dialog.result()];
@@ -469,7 +469,7 @@ std::string
 		items.push_back(depinfo_.find_child("scenario", "id", scenario)["name"]);
 	}
 
-	gui2::tmp_depcheck_select_new dialog(SCENARIO, items);
+	gui2::tdepcheck_select_new dialog(SCENARIO, items);
 	if (dialog.show(video_)) {
 		return scenarios[dialog.result()];
 	}
@@ -744,4 +744,4 @@ bool manager::change_modifications
 
 } //namespace depcheck
 
-} //namespace mp
+} //namespace ng

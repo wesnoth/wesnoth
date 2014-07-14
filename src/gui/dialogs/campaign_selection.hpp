@@ -18,6 +18,7 @@
 #include "gui/dialogs/dialog.hpp"
 
 #include "config.hpp"
+#include "create_engine.hpp"
 
 namespace gui2
 {
@@ -25,7 +26,7 @@ namespace gui2
 class tcampaign_selection : public tdialog
 {
 public:
-	explicit tcampaign_selection(const std::vector<config>& campaigns)
+	explicit tcampaign_selection(const std::vector<ng::create_engine::level_ptr>& campaigns)
 		: campaigns_(campaigns), choice_(-1), deterministic_(false)
 
 	{
@@ -57,7 +58,7 @@ private:
 	void post_show(twindow& window);
 
 	/** Contains the config objects for all campaigns. */
-	const std::vector<config>& campaigns_;
+	const std::vector<ng::create_engine::level_ptr>& campaigns_;
 
 	/** The chosen campaign. */
 	int choice_;

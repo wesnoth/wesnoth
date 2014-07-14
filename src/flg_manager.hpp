@@ -21,7 +21,7 @@
 
 class config;
 
-namespace mp {
+namespace ng {
 
 const std::string random_enemy_picture("units/random-dice.png");
 
@@ -133,6 +133,6 @@ private:
 	const config* default_leader_cfg_;
 };
 
-} // end namespace mp
+} // end namespace ng
 
 #endif

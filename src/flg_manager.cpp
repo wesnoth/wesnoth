@@ -21,7 +21,7 @@
 
 #include <boost/foreach.hpp>
 
-namespace mp  {
+namespace ng  {
 
 #ifdef LOW_MEM
 std::string get_RC_suffix(const std::string&, const int)
@@ -308,6 +308,7 @@ void flg_manager::resolve_random() {
 
 void flg_manager::update_available_factions()
 {
+	const config* custom_faction = NULL;
 	BOOST_FOREACH(const config* faction, era_factions_) {
 		if ((*faction)["id"] == "Custom" && side_["faction"] != "Custom" &&
 			has_no_recruits_) {
@@ -315,6 +316,7 @@ void flg_manager::update_available_factions()
 			// "Custom" faction should not be available if both
 			// "default_recruit" and "previous_recruits" lists are empty.
 			// However, it should be available if it was explicitly stated so.
+			custom_faction = faction;
 			continue;
 		}
 
@@ -324,6 +326,9 @@ void flg_manager::update_available_factions()
 		} else {
 			available_factions_.push_back(faction);
 		}
+	}
+	if (available_factions_.empty() && custom_faction) {
+		available_factions_.push_back(custom_faction);
 	}
 
 	assert(!available_factions_.empty());
@@ -336,15 +341,16 @@ void flg_manager::update_available_leaders()
 	available_leaders_.clear();
 
 	if (!side_["no_leader"].to_bool() || !leader_lock_) {
+
+		int random_pos = 0;
 		// Add a default leader if there is one.
 		if (!default_leader_type_.empty()) {
 			available_leaders_.push_back(default_leader_type_);
+			random_pos = 1;
 		}
 
 		if (!saved_game_) {
 			if ((*current_faction_)["id"] != "Random") {
-				available_leaders_.push_back("random");
-
 				if ((*current_faction_)["id"] == "Custom") {
 					// Allow user to choose a leader from any faction.
 					BOOST_FOREACH(const config* f, available_factions_) {
@@ -369,6 +375,9 @@ void flg_manager::update_available_leaders()
 				}
 
 				available_leaders_.erase(modifier, available_leaders_.end());
+
+				if (!available_leaders_.empty())
+					available_leaders_.insert(available_leaders_.begin() + random_pos, "random");
 			}
 		}
 	}
@@ -575,4 +584,4 @@ int flg_manager::gender_index(const std::string& gender) const
 	return std::distance(choosable_genders_.begin(), it);
 }
 
-} // end namespace mp
+} // end namespace ng

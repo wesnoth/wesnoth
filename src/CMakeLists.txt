@@ -814,8 +814,8 @@ set(wesnoth-main_SRC
 	gui/dialogs/mp_connect.cpp
 	gui/dialogs/mp_create_game.cpp
 	gui/dialogs/mp_create_game_set_password.cpp
-	gui/dialogs/mp_depcheck_confirm_change.cpp
-	gui/dialogs/mp_depcheck_select_new.cpp
+	gui/dialogs/depcheck_confirm_change.cpp
+	gui/dialogs/depcheck_select_new.cpp
 	gui/dialogs/mp_host_game_prompt.cpp
 	gui/dialogs/mp_login.cpp
 	gui/dialogs/mp_method_selection.cpp
@@ -842,16 +842,17 @@ set(wesnoth-main_SRC
 	mouse_events.cpp
 	mouse_handler_base.cpp
 	movetype.cpp
-	mp_depcheck.cpp
+	depcheck.cpp
 	mp_game_settings.cpp
 	mp_game_utils.cpp
 	mp_options.cpp
 	multiplayer.cpp
 	multiplayer_configure.cpp
+	configure_engine.cpp
 	multiplayer_connect.cpp
-	multiplayer_connect_engine.cpp
+	connect_engine.cpp
 	multiplayer_create.cpp
-	multiplayer_create_engine.cpp
+	create_engine.cpp
 	multiplayer_lobby.cpp
 	multiplayer_ui.cpp
 	multiplayer_wait.cpp
@@ -886,6 +887,7 @@ set(wesnoth-main_SRC
 	scripting/lua_types.cpp
 	settings.cpp
 	side_filter.cpp
+	singleplayer.cpp
 	statistics.cpp
 	statistics_dialog.cpp
 	storyscreen/controller.cpp

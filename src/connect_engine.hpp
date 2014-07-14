@@ -22,7 +22,7 @@
 #include "saved_game.hpp"
 #include <boost/scoped_ptr.hpp>
 
-namespace mp {
+namespace ng {
 
 enum controller {
 	CNTR_NETWORK = 0,
@@ -38,7 +38,7 @@ class side_engine;
 
 typedef boost::scoped_ptr<connect_engine> connect_engine_ptr;
 typedef boost::shared_ptr<side_engine> side_engine_ptr;
-typedef std::pair<mp::controller, std::string> controller_option;
+typedef std::pair<ng::controller, std::string> controller_option;
 
 class connect_engine
 {
@@ -120,7 +120,7 @@ private:
 
 	const mp_game_settings& params_;
 
-	const mp::controller default_controller_;
+	const ng::controller default_controller_;
 	const bool local_players_only_;
 	const bool first_scenario_;
 
@@ -165,7 +165,7 @@ public:
 	void update_controller_options();
 	void update_current_controller_index();
 	bool controller_changed(const int selection);
-	void set_controller(mp::controller controller);
+	void set_controller(ng::controller controller);
 
 	// Game set up from command line helpers.
 	void set_faction_commandline(const std::string& faction_name);
@@ -178,7 +178,7 @@ public:
 	const std::vector<controller_option>& controller_options()
 		{ return controller_options_; }
 	const config& cfg() const { return cfg_; }
-	mp::controller controller() const { return controller_; }
+	ng::controller controller() const { return controller_; }
 	unsigned current_controller_index() const
 		{ return current_controller_index_; }
 	int index() const { return index_; }
@@ -214,13 +214,13 @@ private:
 	side_engine(const side_engine& engine);
 	void operator=(const side_engine&);
 
-	void add_controller_option(mp::controller controller,
+	void add_controller_option(ng::controller controller,
 		const std::string& name, const std::string& controller_value);
 
 	config cfg_;
 	connect_engine& parent_;
 
-	mp::controller controller_;
+	ng::controller controller_;
 	unsigned current_controller_index_;
 	std::vector<controller_option> controller_options_;
 
@@ -242,6 +242,6 @@ private:
 	flg_manager flg_;
 };
 
-} // end namespace mp
+} // end namespace ng
 
 #endif

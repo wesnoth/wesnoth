@@ -199,7 +199,10 @@ void saved_game::expand_scenario()
 	{
 		resources::config_manager->load_game_config_for_game(this->classification());
 		const config& game_config = resources::config_manager->game_config();
-		const config& scenario = game_config.find_child(lexical_cast_default<std::string> (classification().campaign_type), "id", carryover_sides_start["next_scenario"]);
+		const config& scenario = game_config.find_child(lexical_cast_default<std::string>
+				(classification().campaign_type == game_classification::SCENARIO ?
+				 game_classification::MULTIPLAYER : classification().campaign_type),
+				"id", carryover_sides_start["next_scenario"]);
 		if(scenario)
 		{
 			this->starting_pos_type_ = STARTINGPOS_SCENARIO;

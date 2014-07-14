@@ -16,7 +16,7 @@
 
 #include "commandline_options.hpp"
 #include "mp_game_settings.hpp"
-#include "multiplayer_connect_engine.hpp"
+#include "connect_engine.hpp"
 #include "multiplayer_ui.hpp"
 
 class config;
@@ -60,7 +60,7 @@ void start_client(game_display& disp, const config& game_config,
  * Opens mp::connect screen and sets game state according to the
  * changes made.
  */
-mp::ui::result goto_mp_connect(game_display& disp, connect_engine& engine,
+mp::ui::result goto_mp_connect(game_display& disp, ng::connect_engine& engine,
 	const config& game_config, const std::string& game_name);
 
 /**

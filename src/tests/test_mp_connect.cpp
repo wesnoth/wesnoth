@@ -38,10 +38,10 @@ public:
 		{}
 };*/
 
-class test_mp_connect_engine : public mp::connect_engine {
+class test_connect_engine : public ng::connect_engine {
 public:
-	test_mp_connect_engine(game_display& /*disp*/, saved_game& gamestate) :
-		mp::connect_engine(gamestate, true, true)
+	test_connect_engine(game_display& /*disp*/, saved_game& gamestate) :
+		ng::connect_engine(gamestate, true, true)
 		{}
 };
 
@@ -100,21 +100,21 @@ struct mp_connect_fixture {
 
 /* Test classes creation utilities */
 
-static test_mp_connect_engine* create_test_mp_connect_engine()
+static test_connect_engine* create_test_connect_engine()
 {
-	test_mp_connect_engine* mp_connect_engine =
-		new test_mp_connect_engine(*disp, *state);
+	test_connect_engine* connect_engine =
+		new test_connect_engine(*disp, *state);
 
-	return mp_connect_engine;
+	return connect_engine;
 }
 
-static mp::side_engine* create_mp_side_engine(const config& defaults,
-	test_mp_connect_engine* connect_engine)
+static ng::side_engine* create_side_engine(const config& defaults,
+	test_connect_engine* connect_engine)
 {
 	config side_cfg = connect_engine->current_config()->child("side");
 	side_cfg.append(defaults);
 
-	return new mp::side_engine(side_cfg, *connect_engine, 0);
+	return new ng::side_engine(side_cfg, *connect_engine, 0);
 }
 
 
@@ -129,15 +129,15 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = false;
-	boost::scoped_ptr<test_mp_connect_engine>
-		connect_engine(create_test_mp_connect_engine());
-	mp::side_engine_ptr side_engine;
+	boost::scoped_ptr<test_connect_engine>
+		connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
 	config side;
 
 	// Recruit list with no faction.
 	side.clear();
 	side["recruit"] = "Elvish Archer";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	//BOOST_CHECK_EQUAL( side_engine->flg().choosable_factions().size(), 1 );
 	//BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Custom" );
 	BOOST_CHECK_EQUAL( side_engine->new_config()["recruit"], "Elvish Archer" );
@@ -145,7 +145,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	// Custom faction, no recruits.
 	side.clear();
 	side["faction"] = "Custom";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	//BOOST_CHECK_EQUAL( side_engine->flg().choosable_factions().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Custom" );
 	BOOST_CHECK_EQUAL( side_engine->new_config()["recruit"].empty(), true );
@@ -153,21 +153,21 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	// Random faction.
 	side.clear();
 	side["faction"] = "Random";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	//BOOST_CHECK_EQUAL( side_engine->flg().choosable_factions().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Random" );
 
 	// Valid faction.
 	side.clear();
 	side["faction"] = "Rebels";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	//BOOST_CHECK_EQUAL( side_engine->flg().choosable_factions().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Rebels" );
 
 	// Invalid faction.
 	side.clear();
 	side["faction"] = "ThisFactionDoesNotExist";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK( side_engine->flg().choosable_factions().size() > 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Random" );
 
@@ -175,7 +175,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side.clear();
 	side["recruit"] = "Elvish Archer";
 	side["faction"] = "Undead";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	//BOOST_CHECK_EQUAL( side_engine->flg().choosable_factions().size(), 1 );
 	//BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Custom" );
 	//BOOST_CHECK_EQUAL( side_engine->new_config()["recruit"], "Elvish Archer" );
@@ -183,7 +183,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	// Carried over recruits.
 	side.clear();
 	side["previous_recruits"] = "Elvish Archer";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	//BOOST_CHECK_EQUAL( side_engine->flg().choosable_factions().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Custom" );
 	BOOST_CHECK_EQUAL( side_engine->new_config()["previous_recruits"],
@@ -192,7 +192,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	// Valid leader unit.
 	side.clear();
 	side["type"] = "Shadow";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "Shadow" );
 	BOOST_CHECK_EQUAL( side_engine->new_config()["type"], "Shadow" );
@@ -200,28 +200,28 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	// Invalid leader unit.
 	side.clear();
 	side["type"] = "ThisUnitDoesNotExist";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "null" );
 
 	// No leader, Custom faction.
 	side.clear();
 	side["faction"] = "Custom";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK( side_engine->flg().choosable_leaders().size() > 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "random" );
 
 	// No leader, Random faction.
 	side.clear();
 	side["faction"] = "Random";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "null" );
 
 	// No leader, regular faction.
 	side.clear();
 	side["faction"] = "Undead";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK( side_engine->flg().choosable_leaders().size() > 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "random" );
 
@@ -232,34 +232,34 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	config& unit = side.add_child("unit");
 	unit["id"] = "LeaderID";
 	unit["type"] = "Elvish Ranger";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "Elvish Ranger" );
 
 	// Random leader.
 	side.clear();
 	side["type"] = "random";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
 
 	// Leader with both genders.
 	side.clear();
 	side["type"] = "Elvish Archer";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_genders().size(), 3 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "random" );
 
 	// Leader with only male gender.
 	side.clear();
 	side["type"] = "Swordsman";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_genders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "male" );
 
 	// Leader with only female gender.
 	side.clear();
 	side["type"] = "Elvish Druid";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_genders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "female" );
 
@@ -267,7 +267,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side.clear();
 	side["type"] = "White Mage";
 	side["gender"] = "female";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	//BOOST_CHECK_EQUAL( side_engine->flg().choosable_genders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "female" );
 
@@ -275,7 +275,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side.clear();
 	side["type"] = "Troll";
 	side["gender"] = "female";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_genders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "male" );
 
@@ -283,21 +283,21 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side.clear();
 	side["type"] = "White Mage";
 	side["gender"] = "random";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	//BOOST_CHECK_EQUAL( side_engine->flg().choosable_genders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "random" );
 
 	// No leader.
 	side.clear();
 	side["no_leader"] = true;
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "null" );
 
 	// Resolve random faction.
 	side.clear();
 	side["faction"] = "Random";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	side_engine->resolve_random();
 	BOOST_CHECK( side_engine->flg().current_faction()["id"] != "Random" );
 	BOOST_CHECK( side_engine->flg().current_leader() != "random" &&
@@ -309,7 +309,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side.clear();
 	side["faction"] = "Random";
 	side["type"] = "Troll";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	side_engine->resolve_random();
 	BOOST_CHECK( side_engine->flg().current_faction()["id"] != "Random" );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "Troll" );
@@ -321,7 +321,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side["faction"] = "Random";
 	side["type"] = "White Mage";
 	side["gender"] = "male";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	side_engine->resolve_random();
 	BOOST_CHECK( side_engine->flg().current_faction()["id"] != "Random" );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "White Mage" );
@@ -330,7 +330,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	// Resolve random leader.
 	side.clear();
 	side["type"] = "random";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	side_engine->resolve_random();
 	BOOST_CHECK( side_engine->flg().current_leader() != "random" );
 }
@@ -340,22 +340,22 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = false;
 	state->mp_settings().saved_game = false;
-	boost::scoped_ptr<test_mp_connect_engine>
-		connect_engine(create_test_mp_connect_engine());
-	mp::side_engine_ptr side_engine;
+	boost::scoped_ptr<test_connect_engine>
+		connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
 	config side;
 
 	// Recruit list with no faction.
 	side.clear();
 	side["recruit"] = "Elvish Archer";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK( side_engine->flg().choosable_factions().size() >  1 );
 	//BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Custom" );
 
 	// Custom faction, no recruits.
 	side.clear();
 	side["faction"] = "Custom";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK( side_engine->flg().choosable_factions().size() >  1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Custom" );
 	BOOST_CHECK_EQUAL( side_engine->new_config()["recruit"].empty(), true );
@@ -363,7 +363,7 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings )
 	// Carried over recruits.
 	side.clear();
 	side["previous_recruits"] = "Elvish Archer";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK( side_engine->flg().choosable_factions().size() >  1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Custom" );
 	BOOST_CHECK_EQUAL( side_engine->new_config()["previous_recruits"],
@@ -372,7 +372,7 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings )
 	// Explicit leader for faction with multiple leaders.
 	side.clear();
 	side["type"] = "Goblin Impaler";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	side_engine->flg().set_current_faction("Rebels");
 	BOOST_CHECK( side_engine->flg().choosable_leaders().size() > 1 );
 
@@ -380,7 +380,7 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings )
 	side.clear();
 	side["faction"] = "Custom";
 	side["type"] = "Swordsman";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK( side_engine->flg().choosable_leaders().size() > 1 );
 	const std::vector<std::string>& leaders =
 		side_engine->flg().choosable_leaders();
@@ -390,7 +390,7 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings )
 	// Explicit gender for unit with both genders available.
 	side.clear();
 	side["gender"] = "female";
-	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	side_engine->flg().set_current_faction("Rebels");
 	side_engine->flg().set_current_leader("Elvish Ranger");
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "random" );

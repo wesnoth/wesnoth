@@ -144,7 +144,8 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		// become [multiplayer] tags and campaign's id should be added to them
 		// to allow to recognize which scenarios belongs to a loaded campaign.
 		if (classification != NULL) {
-			if (classification->campaign_type == game_classification::MULTIPLAYER &&
+			if ((classification->campaign_type == game_classification::MULTIPLAYER ||
+				classification->campaign_type == game_classification::SCENARIO) &&
 				!classification->campaign_define.empty()) {
 
 				const config& campaign = game_config().find_child("campaign",
