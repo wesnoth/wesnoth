@@ -17,8 +17,8 @@
  * Desktop environment interaction functions.
  */
 
-#ifndef DESKTOP_UTIL_HPP_INCLUDED
-#define DESKTOP_UTIL_HPP_INCLUDED
+#ifndef DESKTOP_OPEN_HPP_INCLUDED
+#define DESKTOP_OPEN_HPP_INCLUDED
 
 #include <string>
 

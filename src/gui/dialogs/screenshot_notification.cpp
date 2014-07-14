@@ -17,7 +17,7 @@
 #include "gui/dialogs/screenshot_notification.hpp"
 
 #include "clipboard.hpp"
-#include "desktop_util.hpp"
+#include "desktop/open.hpp"
 #include "filesystem.hpp"
 #include "gui/auxiliary/find_widget.tpp"
 #include "gui/widgets/button.hpp"

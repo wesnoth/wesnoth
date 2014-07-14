@@ -231,7 +231,8 @@ wesnoth_sources = Split("""
     carryover.cpp
     config_cache.cpp
     controller_base.cpp
-    desktop_util.cpp
+    desktop/notifications.cpp
+    desktop/open.cpp
     dialogs.cpp
     display_chat_manager.cpp
     editor/action/action.cpp
@@ -478,7 +479,6 @@ wesnoth_sources = Split("""
     multiplayer_ui.cpp
     multiplayer_wait.cpp
     network_asio.cpp
-    notifications/notifications.cpp
     pathfind/pathfind.cpp
     pathfind/teleport.cpp
     persist_context.cpp
@@ -559,10 +559,10 @@ wesnoth_sources = Split("""
     """)
 
 if env["PLATFORM"] == "win32":
-    wesnoth_sources.append("notifications/windows_tray_notification.cpp")
+    wesnoth_sources.append("desktop/windows_tray_notification.cpp")
 
 if env["notifications"]:
-    wesnoth_sources.append("notifications/dbus_notification.cpp")
+    wesnoth_sources.append("desktop/dbus_notification.cpp")
 
 wesnoth_sources.extend(client_env.Object("game_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
 

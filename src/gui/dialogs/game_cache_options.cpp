@@ -18,7 +18,7 @@
 
 #include "clipboard.hpp"
 #include "config_cache.hpp"
-#include "desktop_util.hpp"
+#include "desktop/open.hpp"
 #include "filesystem.hpp"
 #include "gui/auxiliary/find_widget.tpp"
 #include "gui/dialogs/message.hpp"

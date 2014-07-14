@@ -15,13 +15,13 @@
 #include "display_chat_manager.hpp"
 #include "global.hpp"
 
+#include "desktop/notifications.hpp"
 #include "display.hpp"
 #include "font.hpp"
 #include "game_board.hpp" // <-- only needed for is_observer()
 #include "game_preferences.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
-#include "notifications/notifications.hpp"
 #include "sound.hpp"
 #include "serialization/string_utils.hpp"
 
@@ -172,7 +172,7 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 	int message_handle = font::add_floating_label(msg_flabel);
 
 	// Send system notification if appropriate.
-	notifications::send(speaker, message, notifications::CHAT);
+	desktop::notifications::send(speaker, message, desktop::notifications::CHAT);
 
 	chat_messages_.push_back(chat_message(speaker_handle,message_handle));
 

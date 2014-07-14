@@ -15,6 +15,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "desktop/notifications.hpp" //needed to check if notifications are not available
 #include "display.hpp"
 #include "filesystem.hpp"
 #include "filechooser.hpp"
@@ -27,7 +28,6 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "lobby_preferences.hpp"
 #include "marked-up_text.hpp"
-#include "notifications/notifications.hpp" //needed to check if notifications are not available
 #include "preferences_display.hpp"
 #include "wml_separators.hpp"
 #include "widgets/combo.hpp"
@@ -1377,7 +1377,7 @@ void preferences_dialog::process_event()
 					set_color_cursors(advanced_button_.checked());
 				}
 
-				if (pref["field"] == "disable_notifications" && !advanced_button_check && !notifications::available()) {
+				if (pref["field"] == "disable_notifications" && !advanced_button_check && !desktop::notifications::available()) {
 					gui::dialog(*display::get_singleton()
 							, _("Notifications Not Available")
 							, _("Support for notifications was not found. Please check with the packager for your platform, or if compiling yourself, check that you have the appropriate dependencies for your platform to support this feature.") 

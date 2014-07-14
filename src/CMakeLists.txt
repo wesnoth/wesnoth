@@ -343,9 +343,9 @@ set_target_properties(wesnoth-lua
 )
 set_source_files_properties(
 	clipboard.cpp
+	desktop/notifications.cpp
 	network.cpp
 	network_worker.cpp
-	notifications/notifications.cpp
 	PROPERTIES
 		COMPILE_FLAGS "${CXX_FLAG_NO_OLD_STYLE_CAST}"
 )
@@ -709,7 +709,8 @@ set(wesnoth-main_SRC
 	config_cache.cpp
 	config_assign.cpp
 	controller_base.cpp
-	desktop_util.cpp
+	desktop/notifications.cpp
+	desktop/open.cpp
 	dialogs.cpp
 	display_chat_manager.cpp
 	editor/action/action.cpp
@@ -855,7 +856,6 @@ set(wesnoth-main_SRC
 	multiplayer_ui.cpp
 	multiplayer_wait.cpp
 	network_asio.cpp
-	notifications/notifications.cpp
 	pathfind/pathfind.cpp
 	pathfind/teleport.cpp
 	persist_context.cpp
@@ -1006,7 +1006,7 @@ set(libwesnoth-game_STAT_SRC
 if(MSVC)
 	set(libwesnoth-game_STAT_SRC
 		${libwesnoth-game_STAT_SRC}
-		notifications/windows_tray_notification.cpp
+		desktop/windows_tray_notification.cpp
 	)
 endif(MSVC)
 
@@ -1014,7 +1014,7 @@ endif(MSVC)
 if(LIBDBUS_FOUND)
 	set(libwesnoth-game_STAT_SRC
 		${libwesnoth-game_STAT_SRC}
-		notifications/dbus_notification.cpp
+		desktop/dbus_notification.cpp
 	)
 endif(LIBDBUS_FOUND)
 

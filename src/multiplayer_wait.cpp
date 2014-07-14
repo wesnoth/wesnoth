@@ -14,6 +14,7 @@
 
 #include "global.hpp"
 
+#include "desktop/notifications.hpp"
 #include "dialogs.hpp"
 #include "gettext.hpp"
 #include "game_config_manager.hpp"
@@ -24,7 +25,6 @@
 #include "marked-up_text.hpp"
 #include "mp_game_utils.hpp"
 #include "multiplayer_wait.hpp"
-#include "notifications/notifications.hpp"
 #include "resources.hpp"
 #include "statistics.hpp"
 #include "saved_game.hpp"
@@ -433,7 +433,7 @@ void wait::start_game()
 
 	LOG_NW << "starting game\n";
 	sound::play_UI_sound(game_config::sounds::mp_game_begins);
-	notifications::send(_("Wesnoth"), _ ("Game has begun!"), notifications::OTHER);
+	desktop::notifications::send(_("Wesnoth"), _ ("Game has begun!"), desktop::notifications::OTHER);
 }
 
 void wait::layout_children(const SDL_Rect& rect)

@@ -17,7 +17,7 @@
 #include "gui/dialogs/addon/description.hpp"
 
 #include "clipboard.hpp"
-#include "desktop_util.hpp"
+#include "desktop/open.hpp"
 #include "formula_string_utils.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.tpp"

@@ -17,7 +17,7 @@
 #include "gui/dialogs/game_paths.hpp"
 
 #include "clipboard.hpp"
-#include "desktop_util.hpp"
+#include "desktop/open.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "gui/auxiliary/find_widget.tpp"

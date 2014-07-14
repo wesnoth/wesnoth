@@ -38,6 +38,8 @@
 #include "windows_tray_notification.hpp"
 #endif
 
+namespace desktop {
+
 namespace notifications
 {
 
@@ -111,3 +113,5 @@ void send(const std::string& owner, const std::string& message, type t)
 #endif //end #else !defined(NO_NOTIFICATIONS)
 
 } //end namespace notifications
+
+} //end namespace desktop

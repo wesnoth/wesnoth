@@ -19,6 +19,7 @@
 #include "multiplayer_connect.hpp"
 
 #include "ai/configuration.hpp"
+#include "desktop/notifications.hpp"
 #include "dialogs.hpp"
 #include "display_chat_manager.hpp"
 #include "game_display.hpp"
@@ -26,7 +27,6 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
-#include "notifications/notifications.hpp"
 #include "wml_separators.hpp"
 #include "sound.hpp"
 
@@ -561,7 +561,7 @@ void connect::process_network_data(const config& data,
 	if (!was_able_to_start && engine_.can_start_game()) {
 		DBG_MP << "play party full sound" << std::endl;
 		sound::play_UI_sound(game_config::sounds::party_full_bell);
-		notifications::send(_("Wesnoth"), _ ("Ready to start!"), notifications::OTHER);
+		desktop::notifications::send(_("Wesnoth"), _ ("Ready to start!"), desktop::notifications::OTHER);
 	}
 }
 

@@ -17,6 +17,8 @@
 
 #include <string>
 
+namespace desktop {
+
 namespace notifications
 {
 	enum type {CHAT, TURN_CHANGED, OTHER};
@@ -24,6 +26,8 @@ namespace notifications
 	void send(const std::string& owner, const std::string& message, type t);
 
 	bool available();
+}
+
 }
 
 #endif
