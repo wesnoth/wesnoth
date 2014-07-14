@@ -104,7 +104,7 @@ possible_end_play_signal playmp_controller::play_side()
 	player["name"] = current_team().current_player();
 	std::string turn_notification_msg = _("$name has taken control");
 	turn_notification_msg = utils::interpolate_variables_into_string(turn_notification_msg, &player);
-	notifications::send_notification(_("Turn changed"), turn_notification_msg);
+	notifications::send_notification(_("Turn changed"), turn_notification_msg, notifications::TURN_CHANGED);
 
 	// Proceed with the parent function.
 	return playsingle_controller::play_side();

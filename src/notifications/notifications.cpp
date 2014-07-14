@@ -43,11 +43,11 @@ Growl_Delegate growl_obj;
 namespace notifications
 {
 #if !(defined(HAVE_LIBDBUS) || defined(HAVE_GROWL) || defined(_WIN32))
-void send_notification(const std::string& /*owner*/, const std::string& /*message*/)
+void send_notification(const std::string& /*owner*/, const std::string& /*message*/, type /*t*/)
 {}
 #else
 
-void send_notification(const std::string& owner, const std::string& message)
+void send_notification(const std::string& owner, const std::string& message, type t)
 {
 	if (preferences::get("disable_notifications", false)) { return; }
 
@@ -63,15 +63,28 @@ void send_notification(const std::string& owner, const std::string& message)
 	}
 
 #ifdef HAVE_LIBDBUS
+	(void)t;
 	dbus::send_notification(owner, message);
 #endif
 
 #ifdef HAVE_GROWL
+	std::string note_name = "";
+	switch (t) {
+		case CHAT:
+			note_name = _("Chat Message");
+			break;
+		case TURN_CHANGED:
+			note_name = _("Turn Changed");
+			break;
+		case OTHER:
+			note_name = _("Wesnoth");
+			break;
+	}
+
 	CFStringRef app_name = CFStringCreateWithCString(NULL, "Wesnoth", kCFStringEncodingUTF8);
 	CFStringRef cf_owner = CFStringCreateWithCString(NULL, owner.c_str(), kCFStringEncodingUTF8);
 	CFStringRef cf_message = CFStringCreateWithCString(NULL, message.c_str(), kCFStringEncodingUTF8);
-	//Should be changed as soon as there are more than 2 types of notifications
-	CFStringRef cf_note_name = CFStringCreateWithCString(NULL, owner == _("Turn changed") ? _("Turn changed") : _("Chat message"), kCFStringEncodingUTF8);
+	CFStringRef cf_note_name = CFStringCreateWithCString(NULL, note_name.c_str(), kCFStringEncodingUTF8);
 
 	growl_obj.applicationName = app_name;
 	growl_obj.registrationDictionary = NULL;
@@ -93,12 +106,16 @@ void send_notification(const std::string& owner, const std::string& message)
 	std::string notification_title;
 	std::string notification_message;
 
-	if (owner == _("Turn changed")) {
-		notification_title = owner;
-		notification_message = message;
-	} else {
-		notification_title = _("Chat message");
-		notification_message = owner + ": " + message;
+	switch (t) {
+		case CHAT:
+			notification_title = _("Chat message");
+			notification_message = owner + ": " + message;
+			break;
+		case TURN_CHANGED:
+		case OTHER:
+			notification_title = owner;
+			notification_message = message;
+			break;
 	}
 
 	windows_tray_notification::show(notification_title, notification_message);
