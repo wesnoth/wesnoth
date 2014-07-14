@@ -25,8 +25,11 @@
 #include <dbus/dbus.h>
 
 #include <boost/cstdint.hpp>
-#include <list>
+#include <boost/multi_index_container.hpp>
+#include <boost/multi_index/hashed_index.hpp>
+#include <boost/multi_index/member.hpp>
 #include <stdlib.h>
+#include <string>
 
 using boost::uint32_t;
 
@@ -41,19 +44,40 @@ bool kde_style = false;
 
 struct wnotify
 {
-	wnotify()
-		: id()
-		, owner()
-		, message()
+	wnotify(uint32_t id_arg, std::string owner_arg, std::string message_arg)
+		: id(id_arg)
+		, owner(owner_arg)
+		, message(message_arg)
 	{
 	}
 
 	uint32_t id;
 	std::string owner;
-	std::string message;
+	mutable std::string message;
 };
 
-std::list<wnotify> notifications;
+struct by_id {};
+struct by_owner {};
+
+using boost::multi_index::hashed_unique;
+using boost::multi_index::indexed_by;
+using boost::multi_index::tag;
+using boost::multi_index::member;
+
+typedef boost::multi_index_container<
+	wnotify,
+	indexed_by<
+		//hashed by ids
+		hashed_unique<tag<by_id>, member<wnotify,const uint32_t,&wnotify::id> >,
+		//hashed by owners
+		hashed_unique<tag<by_owner>, member<wnotify,const std::string,&wnotify::owner> >
+	>
+> wnotify_set;
+
+typedef wnotify_set::index<by_owner>::type wnotify_by_owner;
+typedef wnotify_by_owner::iterator wnotify_owner_it;
+
+wnotify_set notifications; //!< Holds all the notifications transaction records
 
 DBusHandlerResult filter_dbus_signal(DBusConnection *, DBusMessage *buf, void *)
 {
@@ -66,11 +90,8 @@ DBusHandlerResult filter_dbus_signal(DBusConnection *, DBusMessage *buf, void *)
 		DBUS_TYPE_UINT32, &id,
 		DBUS_TYPE_INVALID);
 
-	std::list<wnotify>::iterator i = notifications.begin(),
-		i_end = notifications.end();
-	while (i != i_end && i->id != id) ++i;
-	if (i != i_end)
-		notifications.erase(i);
+	size_t num_erased = notifications.get<by_id>().erase(id);
+	LOG_DU << "Erased " << num_erased << " notifications records matching id=" << id;
 
 	return DBUS_HANDLER_RESULT_HANDLED;
 }
@@ -177,11 +198,11 @@ void send_notification(const std::string & owner, const std::string & message)
 	DBusConnection *connection = get_dbus_connection();
 	if (!connection) return;
 
-	std::list<wnotify>::iterator i = notifications.begin(),
-		i_end = notifications.end();
-	while (i != i_end && i->owner != owner) ++i;
+	wnotify_by_owner & noticias = notifications.get<by_owner>();
 
-	if (i != i_end) {
+	wnotify_owner_it i = noticias.find(owner);
+
+	if (i != noticias.end()) {
 		i->message = message + "\n" + i->message;
 
 		size_t endl_pos = i->message.find('\n');
@@ -199,11 +220,13 @@ void send_notification(const std::string & owner, const std::string & message)
 	} else {
 		uint32_t id = send_dbus_notification(connection, 0, owner, message);
 		if (!id) return;
-		wnotify visual;
-		visual.id = id;
-		visual.owner = owner;
-		visual.message = message;
-		notifications.push_back(visual);
+		wnotify visual(id,owner,message);
+		std::pair<wnotify_owner_it, bool> result = noticias.insert(visual);
+		if (!result.second) {
+			ERR_DU << "Failed to insert a dbus notification message:\n"
+				<< "New Item:\n" << "\tid=" << id << "\n\towner=" << owner << "\n\tmessage=" << message << "\n"
+				<< "Old Item:\n" << "\tid=" << result.first->id << "\n\towner=" << result.first->owner << "\n\tmessage=" << result.first->message << "\n";
+		}
 	}
 }
 
