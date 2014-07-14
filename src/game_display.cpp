@@ -849,7 +849,7 @@ static uint32_t send_dbus_notification(DBusConnection *connection, uint32_t repl
 			DBUS_TYPE_STRING, &event_id,
 			DBUS_TYPE_INVALID);
 	}
-	std::string app_icon_ = game_config::path + "/images/wesnoth-icon-small.png";
+	std::string app_icon_ = game_config::path + "images/game-icon.png";
 	const char *app_icon = app_icon_.c_str();
 	const char *summary = owner.c_str();
 	const char *body = message.c_str();
