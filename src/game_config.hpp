@@ -111,7 +111,9 @@ namespace game_config
 			wml_menu,
 			level,
 			ellipsis,
-			missing;
+			missing,
+			// notifications icon
+			app_icon;
 	} //images
 
 

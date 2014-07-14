@@ -145,7 +145,7 @@ uint32_t send_dbus_notification(DBusConnection *connection, uint32_t replaces_id
 			DBUS_TYPE_INVALID);
 	}
 
-	std::string app_icon_ = game_config::path + "images/game-icon.png";
+	std::string app_icon_ = game_config::path + game_config::images::app_icon;
 	LOG_DU << "app_icon_=\'" << app_icon_ << "\'\n";
 
 	const char *app_icon = app_icon_.c_str();

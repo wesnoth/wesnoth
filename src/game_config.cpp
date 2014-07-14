@@ -112,7 +112,9 @@ namespace game_config
 			wml_menu = "buttons/WML-custom.png",
 			level,
 			ellipsis,
-			missing;
+			missing,
+			// notifications icon
+			app_icon = "images/game-icon.png";
 	} //images
 
 	std::string shroud_prefix, fog_prefix;
