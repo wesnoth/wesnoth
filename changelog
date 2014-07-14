@@ -67,6 +67,8 @@ Version 1.11.16:
    * Fixed AI engine names in the MP game setup screen being translated to the
      language selected when Wesnoth was started rather than the current
      language (bug #22092).
+   * Fixed mouse tracking issue with workaround by changing the default window
+     resolution for OS X to 800 x 600 (bug #20332).
  * WML engine:
    * Fixed a regression in 1.11.14 causing WML parser/preprocessor errors to
      not interrupt the game load sequence or display an error message in-game,
