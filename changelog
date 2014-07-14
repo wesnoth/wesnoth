@@ -52,6 +52,13 @@ Version 1.13.0-dev:
      * Rebalanced scenarios 'Invaders', Mages and Drakes' and 'Fear'.
  * C++ Engine:
    * Purge "human_ai" controller type. This is a fixup of bugfix #18829 below.
+ * Editor:
+   * Added an entry for the terrain description help to the context menu.
+   * Default hotkey bindings for brushes (1-5)
+   * Disabled the swap palette button when the unit palette is active.
+   * Disabled the tod schedule and playlist menues in pure map mode.
+   * Support for displaying the saved status of the selected area.
+   * Fixed error messages about missing UI elements.
  * Language and i18n:
    * Updated translations: Czech, French, German, Greek, Hungarian, Italian,
      Lithuanian, Scottish Gaelic, Slovak, Vietnamese
@@ -264,6 +271,12 @@ Version 1.13.0-dev:
    * Fix bug wherein "lobby sounds" advanced preference didn't do anything for the normal (GUI 1) lobby.
    * Fix bug wherein dbus notifications did not have a wesnoth icon
    * Fix bug wherein chat history synopses weren't working right in the dbus notifications
+   * Default to classic minimap unit/village color coding (colored by side).
+   * Default to classic minimap terrain representation (satellite view).
+   * Display the tooltip for actions browsed in the hotkey preferences dialog.
+   * Enabled action icons in the hotkey preferences dialog.
+   * Fix bug #21717: "F5->reload wml tree" doesn't work in editor.
+   * Fix bug #21298: Minimap shows invisible overlays
 
 Version 1.11.11:
  * Add-ons server:
