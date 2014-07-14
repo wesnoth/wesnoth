@@ -21,7 +21,7 @@ namespace notifications
 {
 	enum type {CHAT, TURN_CHANGED, OTHER};
 
-	void send_notification(const std::string& owner, const std::string& message, type t);
+	void send(const std::string& owner, const std::string& message, type t);
 
 	bool available();
 }

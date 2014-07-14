@@ -45,14 +45,14 @@ namespace notifications
 
 bool available() { return false; }
 
-void send_notification(const std::string& /*owner*/, const std::string& /*message*/, type /*t*/)
+void send(const std::string& /*owner*/, const std::string& /*message*/, type /*t*/)
 {}
 
 #else
 
 bool available() { return true; }
 
-void send_notification(const std::string& owner, const std::string& message, type t)
+void send(const std::string& owner, const std::string& message, type t)
 {
 	if (preferences::get("disable_notifications", false)) { return; }
 
