@@ -51,13 +51,15 @@ private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
+	void show_settings();
+
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 
-	/** Contains the config objects for all campaigns. */
+	/** Contains the level objects for all campaigns. */
 	const std::vector<ng::create_engine::level_ptr>& campaigns_;
 
 	/** The chosen campaign. */

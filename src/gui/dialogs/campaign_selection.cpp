@@ -18,6 +18,7 @@
 
 #include "gui/auxiliary/find_widget.tpp"
 #include "gui/dialogs/helper.hpp"
+#include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
@@ -106,6 +107,10 @@ void tcampaign_selection::campaign_selected(twindow& window)
 
 		multi_page.select_page(selected_row);
 	}
+}
+
+void tcampaign_selection::show_settings() {
+	//TODO: launch advanced settings dialog
 }
 
 void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
@@ -247,6 +252,12 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 		}
 	}
 	campaign_selected(window);
+
+	/***** Setup advanced settings button *****/
+	tbutton& advanced_settings_button =
+			find_widget<tbutton>(&window, "advanced_settings", false);
+	advanced_settings_button.connect_click_handler(
+			boost::bind(&tcampaign_selection::show_settings, this));
 }
 
 void tcampaign_selection::post_show(twindow& window)
