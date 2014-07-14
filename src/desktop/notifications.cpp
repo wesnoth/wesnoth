@@ -70,8 +70,7 @@ void send(const std::string& owner, const std::string& message, type t)
 	}
 
 #ifdef HAVE_LIBDBUS
-	(void)t;
-	dbus::send_notification(owner, message);
+	dbus::send_notification(owner, message, t == CHAT);
 #endif
 
 #ifdef HAVE_GROWL

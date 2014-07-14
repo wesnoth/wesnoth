@@ -193,7 +193,7 @@ namespace dbus {
 
 const int MAX_MSG_LINES = 5;
 
-void send_notification(const std::string & owner, const std::string & message)
+void send_notification(const std::string & owner, const std::string & message, bool with_history)
 {
 	DBusConnection *connection = get_dbus_connection();
 	if (!connection) return;
@@ -203,17 +203,21 @@ void send_notification(const std::string & owner, const std::string & message)
 	wnotify_owner_it i = noticias.find(owner);
 
 	if (i != noticias.end()) {
-		i->message = message + "\n" + i->message;
+		if (with_history) {
+			i->message = message + "\n" + i->message;
 
-		size_t endl_pos = i->message.find('\n');
-		size_t ctr = 1;
+			size_t endl_pos = i->message.find('\n');
+			size_t ctr = 1;
 
-		while (ctr < MAX_MSG_LINES && endl_pos != std::string::npos) {
-			endl_pos = i->message.find('\n', endl_pos+1);
-			ctr++;
+			while (ctr < MAX_MSG_LINES && endl_pos != std::string::npos) {
+				endl_pos = i->message.find('\n', endl_pos+1);
+				ctr++;
+			}
+
+			i->message = i->message.substr(0,endl_pos);
+		} else {
+			i->message = message;
 		}
-
-		i->message = i->message.substr(0,endl_pos);
 
 		send_dbus_notification(connection, i->id, owner, i->message);
 		return;

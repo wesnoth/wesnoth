@@ -18,7 +18,7 @@
 #include <string>
 
 namespace dbus {
-	void send_notification(const std::string& owner, const std::string& message);
+	void send_notification(const std::string& owner, const std::string& message, bool with_history);
 }
 
 #endif
