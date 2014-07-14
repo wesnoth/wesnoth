@@ -19,7 +19,7 @@
 #include "log.hpp"
 
 #ifndef HAVE_LIBDBUS
-#error "You do not have lib dbus available, you should not be trying to compile dbus_notification.cpp"
+#error "The HAVE_LIBDBUS symbol is not defined, you do not have lib dbus available, you should not be trying to compile dbus_notification.cpp"
 #endif
 
 #include <dbus/dbus.h>
