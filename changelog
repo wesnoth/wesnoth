@@ -250,6 +250,8 @@ Version 1.13.0-dev:
    * Add [has_ally], [has_enemy] to work around issues reported here: http://forums.wesnoth.org/viewtopic.php?f=21&t=40702
      In a side_filter, [has_ally] and [has_enemy] are corrected / simplified versions of [allied_with] / [enemy_of], this
      is an extension of the bugfixes for [filter_vision].
+   * Mushroom Grove and Lit Mushroom Grove now favor the terrain with the worst
+     movement costs between the base and overlay (bug #21971).
 
 Version 1.11.11:
  * Add-ons server:
