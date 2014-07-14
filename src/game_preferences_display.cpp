@@ -27,6 +27,7 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "lobby_preferences.hpp"
 #include "marked-up_text.hpp"
+#include "notifications/notifications.hpp" //needed to check if notifications are not available
 #include "preferences_display.hpp"
 #include "wml_separators.hpp"
 #include "widgets/combo.hpp"
@@ -1375,6 +1376,13 @@ void preferences_dialog::process_event()
 				if(pref["field"] == "color_cursors") {
 					set_color_cursors(advanced_button_.checked());
 				}
+
+				if (pref["field"] == "disable_notifications" && !advanced_button_check && !notifications::available()) {
+					gui::dialog(*display::get_singleton()
+							, _("Notifications Not Available")
+							, _("Support for notifications was not found. Please check with the packager for your platform, or if compiling yourself, check that you have the appropriate dependencies for your platform to support this feature.") 
+							, gui::OK_ONLY).show();
+				}
 			}
 		}
 
@@ -1663,7 +1671,7 @@ void preferences_dialog::set_selection(int index)
 	advanced_option_label_.hide(hide_advanced_int && hide_advanced_combo);
 }
 
-}
+} //end anonymous namespace
 
 void show_preferences_dialog(display& disp, const config& game_cfg)
 {
@@ -1788,4 +1796,4 @@ std::string show_wesnothd_server_search(display& disp)
 }
 
 
-}
+} // end namespace preferences

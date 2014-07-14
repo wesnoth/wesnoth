@@ -40,10 +40,17 @@
 
 namespace notifications
 {
+
 #if !(defined(HAVE_LIBDBUS) || defined(HAVE_GROWL) || defined(_WIN32))
+
+bool available() { return false; }
+
 void send_notification(const std::string& /*owner*/, const std::string& /*message*/, type /*t*/)
 {}
+
 #else
+
+bool available() { return true; }
 
 void send_notification(const std::string& owner, const std::string& message, type t)
 {
