@@ -31,9 +31,7 @@
 #endif
 
 #ifdef HAVE_GROWL
-#include <Growl/GrowlApplicationBridge-Carbon.h>
-#include <Carbon/Carbon.h>
-Growl_Delegate growl_obj;
+#include "growl_notification.hpp"
 #endif
 
 #ifdef _WIN32
@@ -81,25 +79,7 @@ void send_notification(const std::string& owner, const std::string& message, typ
 			break;
 	}
 
-	CFStringRef app_name = CFStringCreateWithCString(NULL, "Wesnoth", kCFStringEncodingUTF8);
-	CFStringRef cf_owner = CFStringCreateWithCString(NULL, owner.c_str(), kCFStringEncodingUTF8);
-	CFStringRef cf_message = CFStringCreateWithCString(NULL, message.c_str(), kCFStringEncodingUTF8);
-	CFStringRef cf_note_name = CFStringCreateWithCString(NULL, note_name.c_str(), kCFStringEncodingUTF8);
-
-	growl_obj.applicationName = app_name;
-	growl_obj.registrationDictionary = NULL;
-	growl_obj.applicationIconData = NULL;
-	growl_obj.growlIsReady = NULL;
-	growl_obj.growlNotificationWasClicked = NULL;
-	growl_obj.growlNotificationTimedOut = NULL;
-
-	Growl_SetDelegate(&growl_obj);
-	Growl_NotifyWithTitleDescriptionNameIconPriorityStickyClickContext(cf_owner, cf_message, cf_note_name, NULL, NULL, NULL, NULL);
-
-	CFRelease(app_name);
-	CFRelease(cf_owner);
-	CFRelease(cf_message);
-	CFRelease(cf_note_name);
+	growl::send_notification(owner, message, note_name);
 #endif
 
 #ifdef _WIN32
