@@ -40,8 +40,7 @@
 
 namespace desktop {
 
-namespace notifications
-{
+namespace notifications {
 
 #if !(defined(HAVE_LIBDBUS) || defined(HAVE_GROWL) || defined(_WIN32))
 
@@ -109,7 +108,7 @@ void send(const std::string& owner, const std::string& message, type t)
 	windows_tray_notification::show(notification_title, notification_message);
 #endif
 }
-#endif //end #else !defined(NO_NOTIFICATIONS)
+#endif //end #else (defined(HAVE_LIBDBUS) || defined(HAVE_GROWL) || defined(_WIN32))
 
 } //end namespace notifications
 
