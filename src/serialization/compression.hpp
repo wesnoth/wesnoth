@@ -33,6 +33,7 @@ namespace compression {
 		case NONE:
 			return "";
 		}
+		return "";
 	}
 }
 
