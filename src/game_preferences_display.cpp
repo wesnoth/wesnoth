@@ -323,7 +323,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 		color_ids_.push_back(color_id);
 
 		std::string image_path = "misc/orb"; //game_config::images::orb;
-		std::string image_path_suffix = "~RC(magenta>" + color_id + ")~CROP(14,0,14,14)~SCALE(28,28)";
+		std::string image_path_suffix = "~RC(magenta>" + color_id + ")";
 
 		gui::button color_radio_button(disp.video(), "", gui::button::TYPE_IMAGE, image_path, gui::button::MINIMUM_SPACE);
 		color_radio_button.set_tooltip_string(color_name);
