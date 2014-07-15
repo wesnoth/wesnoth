@@ -1155,7 +1155,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 			}
 
 			if (!surf.null()) {
-				res.push_back(sdl::timage(surf));
+				res.push_back(surf);
 			}
 #endif
 		}

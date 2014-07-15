@@ -219,7 +219,7 @@ namespace image {
 #ifdef SDL_GPU
 	sdl::timage get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type);
 #else
-	sdl::timage get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type);
+	surface get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type);
 #endif
 
 	///function to get the standard hex mask
