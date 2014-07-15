@@ -37,11 +37,11 @@ static lg::log_domain log_audio("audio");
 
 namespace sound {
 // Channel-chunk mapping lets us know, if we can safely free a given chunk
-std::vector<Mix_Chunk*> channel_chunks;
+static std::vector<Mix_Chunk*> channel_chunks;
 
 // Channel-id mapping for use with sound sources (to check if given source
 // is playing on a channel for fading/panning)
-std::vector<int> channel_ids;
+static std::vector<int> channel_ids;
 
 static void play_sound_internal(const std::string& files, channel_group group, unsigned int repeats=0,
 				 unsigned int distance=0, int id=-1, int loop_ticks=0, int fadein_ticks=0);

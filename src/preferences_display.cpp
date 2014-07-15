@@ -41,7 +41,7 @@
 
 namespace preferences {
 
-display* disp = NULL;
+static display* disp = NULL;
 
 display_manager::display_manager(display* d)
 {

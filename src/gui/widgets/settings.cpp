@@ -63,7 +63,7 @@ std::string sound_slider_adjust = "";
 
 t_string has_helptip_message;
 
-std::vector<ttip> tips;
+static std::vector<ttip> tips;
 
 std::vector<ttip> get_tips()
 {
@@ -457,13 +457,13 @@ void tgui_definition::load_widget_definitions(
 }
 
 /** Map with all known windows, (the builder class builds a window). */
-std::map<std::string, twindow_builder> windows;
+static std::map<std::string, twindow_builder> windows;
 
 /** Map with all known guis. */
-std::map<std::string, tgui_definition> guis;
+static std::map<std::string, tgui_definition> guis;
 
 /** Points to the current gui. */
-std::map<std::string, tgui_definition>::const_iterator current_gui = guis.end();
+static std::map<std::string, tgui_definition>::const_iterator current_gui = guis.end();
 
 void register_window(const std::string& id)
 {

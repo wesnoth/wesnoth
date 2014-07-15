@@ -52,7 +52,7 @@ static std::vector<std::string> saved_windows_;
 
 namespace editor {
 
-map_labels* current_labels;
+static map_labels* current_labels;
 
 map_labels* get_current_labels() {
 	return current_labels;

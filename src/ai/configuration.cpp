@@ -53,7 +53,7 @@ public:
 	bool was_an_attribute_;
 };
 
-std::vector<well_known_aspect> well_known_aspects;
+static std::vector<well_known_aspect> well_known_aspects;
 
 void configuration::init(const config &game_config)
 {

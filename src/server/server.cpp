@@ -126,7 +126,7 @@ static lg::log_domain log_config("config");
 #endif
 /** @todo FIXME: should define SIGINT here too, but to what? */
 
-sig_atomic_t config_reload = 0;
+static sig_atomic_t config_reload = 0;
 
 #ifndef _MSC_VER
 static void reload_config(int signal) {

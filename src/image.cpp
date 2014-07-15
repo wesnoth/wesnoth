@@ -641,7 +641,7 @@ manager::~manager()
 	flush_cache();
 }
 
-SDL_PixelFormat last_pixel_format;
+static SDL_PixelFormat last_pixel_format;
 
 void set_pixel_format(SDL_PixelFormat* format)
 {

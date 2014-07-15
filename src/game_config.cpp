@@ -64,9 +64,6 @@ namespace game_config
 
 	int cache_compression_level = 6;
 
-	int title_logo_x = 0, title_logo_y = 0, title_buttons_x = 0, title_buttons_y = 0, title_buttons_padding = 0,
-	    title_tip_x = 0, title_tip_width = 0, title_tip_padding = 0;
-
 	std::string title_music,
 			lobby_music,
 			default_victory_music,
@@ -123,8 +120,8 @@ namespace game_config
 	std::vector<Uint32> red_green_scale;
 	std::vector<Uint32> red_green_scale_text;
 
-	std::vector<Uint32> blue_white_scale;
-	std::vector<Uint32> blue_white_scale_text;
+	static std::vector<Uint32> blue_white_scale;
+	static std::vector<Uint32> blue_white_scale_text;
 
 	double hp_bar_scaling = 0.666;
 	double xp_bar_scaling = 0.5;

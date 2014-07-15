@@ -24,7 +24,7 @@ static lg::log_domain log_replay("replay");
 #define WRN_REPLAY LOG_STREAM(warn, log_replay)
 #define ERR_REPLAY LOG_STREAM(err, log_replay)
 
-ignored_checkup default_instnce;
+static ignored_checkup default_instnce;
 
 checkup* checkup_instance = &default_instnce;
 

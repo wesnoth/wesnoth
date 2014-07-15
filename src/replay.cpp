@@ -386,7 +386,7 @@ void replay::remove_command(int index)
 }
 
 // cached message log
-std::vector< chat_msg > message_log;
+static std::vector< chat_msg > message_log;
 
 
 const std::vector<chat_msg>& replay::build_chat_log()

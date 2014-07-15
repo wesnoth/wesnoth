@@ -957,8 +957,8 @@ struct bandwidth_stats {
 };
 typedef std::map<const std::string, bandwidth_stats> bandwidth_map;
 typedef std::vector<bandwidth_map> hour_stats_vector;
-hour_stats_vector hour_stats(24);
 
+static hour_stats_vector hour_stats(24);
 
 
 static bandwidth_map::iterator add_bandwidth_entry(const std::string& packet_type)
