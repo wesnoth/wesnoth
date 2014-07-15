@@ -64,7 +64,9 @@ SDL_Color int_to_color(const Uint32 rgb)
 	result.r = (0x00FF0000 & rgb )>> 16;
 	result.g = (0x0000FF00 & rgb) >> 8;
 	result.b = (0x000000FF & rgb);
-#if SDL_VERSION_ATLEAST(2,0,0)
+#ifdef SDL_GPU
+	result.unused = 255;
+#elif SDL_VERSION_ATLEAST(2,0,0)
 	result.a = 0;
 #else
 	result.unused = 0;
