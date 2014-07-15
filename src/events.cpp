@@ -22,7 +22,7 @@
 #include "sound.hpp"
 #include "video.hpp"
 #if defined _WIN32
-#include "notifications/windows_tray_notification.hpp"
+#include "desktop/windows_tray_notification.hpp"
 #endif
 
 #include "SDL.h"
