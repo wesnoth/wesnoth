@@ -31,7 +31,6 @@ namespace compression {
 		case BZIP2:
 			return ".bz2";
 		case NONE:
-		default:
 			return "";
 		}
 	}
