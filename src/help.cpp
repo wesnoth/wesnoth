@@ -1514,7 +1514,25 @@ public:
 		}
 		ss << _("Race: ");
 		ss << make_link(race_name, "..race_" + race_id);
-		ss << "\n";
+		ss << "\n\n";
+
+		// Print the possible traits of the unit, cross-reference them
+		// to their respective topics.
+		config::const_child_itors traits = type_.possible_traits();
+		if (traits.first != traits.second) {
+			ss << _("Traits: ");
+			bool needs_comma = false;
+			BOOST_FOREACH(const config & trait, traits) {
+				if (needs_comma)
+					ss << ", ";
+				const std::string trait_name = trait["male_name"];
+				std::string lang_trait_name = gettext(trait_name.c_str());
+				const std::string ref_id = "traits_"+trait["id"].str();
+				ss << make_link(lang_trait_name, ref_id);
+				needs_comma = true;
+			}
+			ss << "\n\n";
+		}
 
 		// Print the abilities the units has, cross-reference them
 		// to their respective topics.
@@ -1529,7 +1547,7 @@ public:
 				if (ability_it + 1 != ability_end)
 					ss << ", ";
 			}
-			ss << "\n";
+			ss << "\n\n";
 		}
 
 		// Print the extra AMLA upgrade abilities, cross-reference them
@@ -1545,9 +1563,8 @@ public:
 				if (ability_it + 1 != ability_end)
 					ss << ", ";
 			}
-			ss << "\n";
+			ss << "\n\n";
 		}
-		ss << "\n";
 
 		// Print some basic information such as HP and movement points.
 		ss << _("HP: ") << type_.hitpoints() << jump(30)
