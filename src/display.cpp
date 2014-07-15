@@ -1292,6 +1292,7 @@ void display::drawing_buffer_commit()
 		}
 	}
 	drawing_buffer_clear();
+	GPU_UnsetClip(get_render_target());
 #else
 	SDL_Rect clip_rect = map_area();
 	surface screen = get_screen_surface();
@@ -2005,6 +2006,9 @@ void display::draw_minimap()
 		return;
 	}
 
+#ifdef SDL_GPU
+	image::draw_minimap(screen_, area, get_map(), &dc_->teams()[currentTeam_], NULL);
+#else
 	if(minimap_ == NULL || minimap_->w > area.w || minimap_->h > area.h) {
 		minimap_ = image::getMinimap(area.w, area.h, get_map(), &dc_->teams()[currentTeam_], (selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : NULL);
 		if(minimap_ == NULL) {
@@ -2049,7 +2053,8 @@ void display::draw_minimap()
 	sdl::draw_rectangle(minimap_location_.x + view_x - 1,
                    minimap_location_.y + view_y - 1,
                    view_w + 2, view_h + 2,
-                   box_color, screen);
+				   box_color, screen);
+#endif
 }
 
 void display::draw_minimap_units()

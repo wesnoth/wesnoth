@@ -281,4 +281,141 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 	return minimap;
 }
+
+#ifdef SDL_GPU
+void draw_minimap(CVideo &video, const SDL_Rect &area, const gamemap &map, const team *vw, const std::map<map_location, unsigned int> *reach_map)
+{
+	const float width = map.w() * 72;
+	const float height = map.h() * 72;
+	const float scale_factor = std::min(area.w / width, area.h / height);
+	const float tile_size = 72 * scale_factor;
+	const int xoff = area.x + (area.w - scale_factor * width - 2 * 3/4) / 2;
+	const int yoff = area.y + (area.h - scale_factor * height) / 2;
+
+	const bool draw_terrain = preferences::minimap_draw_terrain();
+	const bool terrain_coding = preferences::minimap_terrain_coding();
+	const bool draw_villages = preferences::minimap_draw_villages();
+
+	for(int y = 0; y != map.total_height(); ++y) {
+		for(int x = 0; x != map.total_width(); ++x) {
+			map_location loc(x, y);
+			if(!map.on_board(loc))
+				continue;
+
+			const bool highlighted = reach_map && reach_map->count(loc) != 0;
+			const bool shrouded = (resources::screen != NULL && resources::screen->is_blindfolded()) || (vw != NULL && vw->shrouded(loc));
+			// shrouded hex are not considered fogged (no need to fog a black image)
+			const bool fogged = (vw != NULL && !shrouded && vw->fogged(loc));
+
+			const t_translation::t_terrain terrain = shrouded ?
+					t_translation::VOID_TERRAIN : map[loc];
+			const terrain_type& terrain_info = map.get_terrain_info(terrain);
+
+			const int xpos = x * tile_size * 3/4 + xoff;
+			const int ypos = y * tile_size + tile_size / 4 * (is_odd(x) ? 1 : -1) + yoff;
+
+			if (draw_terrain) {
+				if (terrain_coding) {
+					sdl::timage img = image::get_texture("terrain/" + terrain_info.minimap_image() + ".png", image::HEXED);
+					//TODO: proper color mod values once blending is implemented
+					if (fogged) {
+						img.set_color_mod(100, 100, 100);
+					}
+					if (highlighted) {
+						img.set_color_mod(150, 150, 150);
+					}
+
+					img.set_scale(scale_factor, scale_factor);
+
+					video.draw_texture(img, xpos, ypos);
+					img.set_color_mod(255, 255, 255);
+				} else {
+					SDL_Color col;
+					std::map<std::string, color_range>::const_iterator it = game_config::team_rgb_range.find(terrain_info.id());
+					if (it == game_config::team_rgb_range.end()) {
+						col = create_color(0,0,0,255);
+					} else
+						col = int_to_color(it->second.rep());
+
+					bool first = true;
+					const t_translation::t_list& underlying_terrains = map.underlying_union_terrain(terrain);
+					BOOST_FOREACH(const t_translation::t_terrain& underlying_terrain, underlying_terrains) {
+
+						const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
+						std::map<std::string, color_range>::const_iterator it = game_config::team_rgb_range.find(terrain_id);
+						if (it == game_config::team_rgb_range.end())
+							continue;
+
+						SDL_Color tmp = int_to_color(it->second.rep());
+
+						if (fogged) {
+							if (tmp.b < 50) tmp.b = 0;
+							else tmp.b -= 50;
+							if (tmp.g < 50) tmp.g = 0;
+							else tmp.g -= 50;
+							if (tmp.r < 50) tmp.r = 0;
+							else tmp.r -= 50;
+						}
+
+						if (highlighted) {
+							if (tmp.b > 205) tmp.b = 255;
+							else tmp.b += 50;
+							if (tmp.g > 205) tmp.g = 255;
+							else tmp.g += 50;
+							if (tmp.r > 205) tmp.r = 255;
+							else tmp.r += 50;
+						}
+
+						if (first) {
+							first = false;
+							col = tmp;
+						} else {
+							col.r = col.r - (col.r - tmp.r)/2;
+							col.g = col.g - (col.g - tmp.g)/2;
+							col.b = col.b - (col.b - tmp.b)/2;
+						}
+					}
+					SDL_Rect fillrect = sdl::create_rect(xpos, ypos, tile_size * 3/4, tile_size);
+					sdl::fill_rect(*get_render_target(), fillrect, col);
+				}
+			}
+
+
+			if (terrain_info.is_village() && draw_villages) {
+
+				int side = (resources::gameboard ? resources::gameboard->village_owner(loc) : -1); //check needed for mp create dialog
+
+				SDL_Color col = int_to_color(game_config::team_rgb_range.find("white")->second.min());
+
+				if (!fogged) {
+					if (side > -1) {
+
+						if (!preferences::minimap_movement_coding() || !vw ) {
+							col = team::get_minimap_color(side + 1);
+						} else {
+
+							if (vw->owns_village(loc))
+								col = int_to_color(game_config::color_info(preferences::unmoved_color()).rep());
+							else if (vw->is_enemy(side + 1))
+								col = int_to_color(game_config::color_info(preferences::enemy_color()).rep());
+							else
+								col = int_to_color(game_config::color_info(preferences::allied_color()).rep());
+						}
+					}
+				}
+
+				SDL_Rect fillrect = sdl::create_rect(
+						xpos
+						, ypos
+						, tile_size * 3/4
+						, tile_size
+				);
+
+				sdl::fill_rect(*get_render_target(), fillrect, col);
+			}
+		}
+	}
+}
+#endif
+
 }
