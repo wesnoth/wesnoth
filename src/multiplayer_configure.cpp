@@ -412,7 +412,7 @@ void configure::process_event()
 		// if not properly defined fall back to the default settings
 		turns_slider_.set_value(engine_.num_turns_default());
 		xp_modifier_slider_.set_value(engine_.xp_modifier_default());
-		random_start_time_.set_check(engine_.xp_modifier_default());
+		random_start_time_.set_check(engine_.random_start_time_default());
 		village_gold_slider_.set_value(engine_.village_gold_default());
 		village_support_slider_.set_value(engine_.village_support_default());
 		fog_game_.set_check(engine_.fog_game_default());
