@@ -1377,11 +1377,10 @@ void preferences_dialog::process_event()
 					set_color_cursors(advanced_button_.checked());
 				}
 
-				if (pref["field"] == "disable_notifications" && !advanced_button_check && !desktop::notifications::available()) {
-					gui::dialog(*display::get_singleton()
-							, _("Notifications Not Available")
-							, _("Support for notifications was not found. Please check with the packager for your platform, or if compiling yourself, check that you have the appropriate dependencies for your platform to support this feature.") 
-							, gui::OK_ONLY).show();
+				if(pref["field"] == "disable_notifications" && !advanced_button_check && !desktop::notifications::available()) {
+					gui2::show_transient_message(disp_.video(),
+												 _("Desktop Notifications Unavailable"),
+												 _("This build of Wesnoth does not include support for desktop notifications. Check with the packager for your platform, or if compiling yourself, make sure that you have the appropriate dependencies installed."));
 				}
 			}
 		}
