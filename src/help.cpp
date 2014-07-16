@@ -1821,14 +1821,11 @@ public:
 					if ( has_terrain_defense_caps ) {
 						str.str(clear_stringstream);
 						const bool has_cap = movement_type.get_defense().capped(terrain);
-						str << "<format>color=" << (has_cap? "yellow" : "white")
-						    << " text='";
 						if (has_cap) {
-							str << "yes";
+							str << make_link("yes","..terrains_section");
 						} else {
-							str << utils::unicode_figure_dash;
+							str << "<format>color=white text='" << utils::unicode_figure_dash << "'</format>";
 						}
-						str <<  "'</format>";
 						markup = str.str();
 						str.str(clear_stringstream);
 						if (has_cap) {
