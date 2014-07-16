@@ -730,6 +730,15 @@ movetype::movetype(const movetype & that) :
 {
 }
 
+/**
+ * Checks if we have a defense cap (nontrivial min value) for any of the given terrain types.
+ */
+bool movetype::has_terrain_defense_caps(const std::set<t_translation::t_terrain> & ts) const {
+	BOOST_FOREACH(const t_translation::t_terrain & t, ts)
+		if (defense_.capped(t))
+			return true;
+	return false;
+}
 
 /**
  * Merges the given config over the existing data.

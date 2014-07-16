@@ -1731,6 +1731,10 @@ public:
 			push_header(first_row, _("Defense"));
 			push_header(first_row, _("Movement Cost"));
 
+			const bool has_terrain_defense_caps = movement_type.has_terrain_defense_caps(preferences::encountered_terrains());
+			if ( has_terrain_defense_caps )
+				push_header(first_row, _("Defense Capped"));
+
 			const bool has_vision = type_.movement_type().has_vision_data();
 			if ( has_vision )
 				push_header(first_row, _("Vision Cost"));
@@ -1812,6 +1816,29 @@ public:
 					str << moves;
 					row.push_back(std::make_pair(markup,
 							font::line_width(str.str(), normal_font_size)));
+
+					//defense cap
+					if ( has_terrain_defense_caps ) {
+						str.str(clear_stringstream);
+						const bool has_cap = movement_type.get_defense().capped(terrain);
+						str << "<format>color=" << (has_cap? "yellow" : "white")
+						    << " text='";
+						if (has_cap) {
+							str << "yes";
+						} else {
+							str << utils::unicode_figure_dash;
+						}
+						str <<  "'</format>";
+						markup = str.str();
+						str.str(clear_stringstream);
+						if (has_cap) {
+							str << "yes";
+						} else {
+							str << utils::unicode_figure_dash;
+						}
+						row.push_back(std::make_pair(markup,
+							font::line_width(str.str(), normal_font_size)));
+					}
 
 					//vision
 					if ( has_vision ) {
