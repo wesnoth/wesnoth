@@ -23,6 +23,7 @@
 
 #include "variable.hpp"
 
+#include "config_assign.hpp"
 #include "formula_string_utils.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
@@ -38,7 +39,25 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define WRN_NG LOG_STREAM(warn, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)
+namespace
+{
+	const config as_nonempty_range_default = config_of("_", config());
+	config::const_child_itors as_nonempty_range(const std::string& varname)
+	{
+		assert(resources::gamedata);
+		config::const_child_itors range = resources::gamedata->get_variable_access_read(varname).as_array();
 
+		if(range.first == range.second) 
+		{
+			return as_nonempty_range_default.child_range("_");
+		}
+		else 
+		{
+			return range;
+		}
+	}
+}
+	
 vconfig::vconfig() :
 	cache_(), cfg_(NULL)
 {
@@ -127,18 +146,12 @@ config vconfig::get_parsed_config() const
 			if(!vconfig_recursion.insert(vname).second) {
 				throw recursion_error("vconfig::get_parsed_config() infinite recursion detected, aborting");
 			}
-			try {
-				variable_access_const vinfo = resources::gamedata->get_variable_access_read(vname);
-				if(vinfo.explicit_index()) {
-					res.add_child(name, vconfig(vinfo.as_container()).get_parsed_config());
-				} else {
-					config::const_child_itors range = vinfo.as_array();
-					if(range.first == range.second) {
-						res.add_child(name); //add empty tag
-					}
-					while(range.first != range.second) {
-						res.add_child(name, vconfig(*range.first++).get_parsed_config());
-					}
+			try 
+			{
+				config::const_child_itors range = as_nonempty_range(vname);
+				BOOST_FOREACH(const config& child, range)
+				{
+					res.add_child(name, vconfig(child).get_parsed_config());
 				}
 			}
 			catch(const invalid_variablename_exception&)
@@ -177,19 +190,10 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 			{
 				try
 				{
-					variable_access_const vinfo = resources::gamedata->get_variable_access_read(insert_cfg["variable"]);
-					if(vinfo.explicit_index()) {
-						res.push_back(vconfig(vinfo.as_container(), true));
-					} else {
-						config::const_child_itors range = vinfo.as_array();
-						if(range.first == range.second) {
-							//push back an empty tag
-							res.push_back(empty_vconfig());
-						}
-						while(range.first != range.second)
-						{
-							res.push_back(vconfig(*range.first++, true));
-						}
+					config::const_child_itors range = as_nonempty_range(insert_cfg["variable"]);
+					BOOST_FOREACH(const config& child, range)
+					{
+						res.push_back(vconfig(*range.first++, true));
 					}
 				}
 				catch(const invalid_variablename_exception&)
@@ -219,8 +223,8 @@ vconfig vconfig::child(const std::string& key) const
 		{
 			try
 			{
-				variable_access_const vinfo = resources::gamedata->get_variable_access_read(insert_cfg["variable"]);
-				return vconfig(vinfo.as_container(), true);
+				config::const_child_itors range = as_nonempty_range(insert_cfg["variable"]);
+				return vconfig(*range.first, true);
 			}
 			catch(const invalid_variablename_exception&)
 			{
@@ -292,17 +296,19 @@ vconfig::all_children_iterator& vconfig::all_children_iterator::operator++()
 		try
 		{
 			variable_access_const vinfo = resources::gamedata->get_variable_access_read(vconfig(i_->cfg)["variable"]);
-			if(!vinfo.explicit_index()) {
-				config::const_child_itors range = vinfo.as_array();
-				if (++inner_index_ < std::distance(range.first, range.second)) {
-					return *this;
-				}
-				inner_index_ = 0;
+
+			config::const_child_itors range = vinfo.as_array();
+
+			if (++inner_index_ < std::distance(range.first, range.second)) 
+			{
+				return *this;
 			}
+		
 		}
 		catch(const invalid_variablename_exception&)
 		{
 		}
+		inner_index_ = 0;
 	}
 	++i_;
 	return *this;
@@ -342,14 +348,10 @@ vconfig vconfig::all_children_iterator::get_child() const
 	{
 		try
 		{
-			variable_access_const vinfo = resources::gamedata->get_variable_access_read(vconfig(i_->cfg)["variable"]);
-			if(inner_index_ == 0) {
-				return vconfig(vinfo.as_container(), true);
-			} else {
-				config::const_child_itors r = vinfo.as_array();
-				std::advance(r.first, inner_index_);
-				return vconfig(*r.first, true);
-			}
+			config::const_child_itors range = as_nonempty_range(vconfig(i_->cfg)["variable"]);
+			
+			std::advance(range.first, inner_index_);
+			return vconfig(*range.first, true);
 		}
 		catch(const invalid_variablename_exception&)
 		{
