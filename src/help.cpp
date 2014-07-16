@@ -1519,8 +1519,8 @@ public:
 		// Print the possible traits of the unit, cross-reference them
 		// to their respective topics.
 		config::const_child_itors traits = type_.possible_traits();
-		if (traits.first != traits.second) {
-			ss << _("Traits: ");
+		if (traits.first != traits.second && type_.num_traits() > 0) {
+			ss << _("Traits") << " (" << type_.num_traits() << ") : ";
 			bool needs_comma = false;
 			BOOST_FOREACH(const config & trait, traits) {
 				if (needs_comma)
