@@ -1816,14 +1816,14 @@ public:
 						str.str(clear_stringstream);
 						const bool has_cap = movement_type.get_defense().capped(terrain);
 						if (has_cap) {
-							str << "<format>color=yellow text='yes'</format>";
+							str << "<format>color=yellow text='" << defense << "%'</format>";
 						} else {
 							str << "<format>color=white text='" << utils::unicode_figure_dash << "'</format>";
 						}
 						markup = str.str();
 						str.str(clear_stringstream);
 						if (has_cap) {
-							str << "yes";
+							str << defense << '%';
 						} else {
 							str << utils::unicode_figure_dash;
 						}
