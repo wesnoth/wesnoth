@@ -1368,6 +1368,21 @@ public:
 	}
 
 };
+
+//Typedef to help with formatting list of traits
+typedef std::pair<std::string, std::string> trait_data;
+
+//Helper function for printing a list of trait data
+static void print_trait_list(std::stringstream & ss, const std::vector<trait_data> & l)
+{
+	size_t i = 0;
+	ss << make_link(l[i].first, l[i].second);
+
+	for(i++; i < l.size(); i++) {
+		ss << ", " << make_link(l[i].first,l[i].second);
+	}
+}
+
 class unit_topic_generator: public topic_generator
 {
 	const unit_type& type_;
@@ -1520,18 +1535,44 @@ public:
 		// to their respective topics.
 		config::const_child_itors traits = type_.possible_traits();
 		if (traits.first != traits.second && type_.num_traits() > 0) {
-			ss << _("Traits") << " (" << type_.num_traits() << ") : ";
-			bool needs_comma = false;
+			std::vector<trait_data> must_have_traits;
+			std::vector<trait_data> random_traits;
+
 			BOOST_FOREACH(const config & trait, traits) {
-				if (needs_comma)
-					ss << ", ";
 				const std::string trait_name = trait["male_name"];
 				std::string lang_trait_name = gettext(trait_name.c_str());
 				const std::string ref_id = "traits_"+trait["id"].str();
-				ss << make_link(lang_trait_name, ref_id);
-				needs_comma = true;
+				((trait["availability"].str() == "musthave") ? must_have_traits : random_traits).push_back(std::make_pair(lang_trait_name, ref_id));
 			}
-			ss << "\n\n";
+
+			size_t numlines = 0;
+			std::stringstream ss1; //Line 1
+			std::stringstream ss2; //Line 2
+
+			if (!must_have_traits.empty()) {
+				ss1 << " (" << must_have_traits.size() << ") : ";
+				print_trait_list(ss1, must_have_traits);
+				numlines++;
+			}
+
+			if (!random_traits.empty() && type_.num_traits() - must_have_traits.size() > 0) {
+				ss2 << " (" << type_.num_traits() - must_have_traits.size() << ") : ";
+				print_trait_list(ss2, random_traits);
+				numlines++;
+			}
+
+			if (numlines >= 1) {
+				ss << _("Traits");
+
+				if (numlines >= 2) {
+					ss << ":\n";
+					ss << jump(30) << ss1.str() << "\n";
+					ss << jump(30) << ss2.str() << "\n";
+				} else {
+					ss << ss1.str() << ss2.str() << "\n";
+				}
+				ss << "\n";
+			}
 		}
 
 		// Print the abilities the units has, cross-reference them
