@@ -1545,33 +1545,27 @@ public:
 				((trait["availability"].str() == "musthave") ? must_have_traits : random_traits).push_back(std::make_pair(lang_trait_name, ref_id));
 			}
 
-			size_t numlines = 0;
-			std::stringstream ss1; //Line 1
-			std::stringstream ss2; //Line 2
+			bool line1 = !must_have_traits.empty();
+			bool line2 = !random_traits.empty() && type_.num_traits() - must_have_traits.size() > 0;
 
-			if (!must_have_traits.empty()) {
-				ss1 << " (" << must_have_traits.size() << ") : ";
-				print_trait_list(ss1, must_have_traits);
-				numlines++;
-			}
-
-			if (!random_traits.empty() && type_.num_traits() - must_have_traits.size() > 0) {
-				ss2 << " (" << type_.num_traits() - must_have_traits.size() << ") : ";
-				print_trait_list(ss2, random_traits);
-				numlines++;
-			}
-
-			if (numlines >= 1) {
+			if (line1) {
 				ss << _("Traits");
-
-				if (numlines >= 2) {
-					ss << ":\n";
-					ss << jump(30) << ss1.str() << "\n";
-					ss << jump(30) << ss2.str() << "\n";
+				if (line2) {
+					ss << ":\n" << jump(30) << " (" << must_have_traits.size() << ") : ";
+					print_trait_list(ss, must_have_traits);
+					ss << "\n" << jump(30) << " (" << type_.num_traits() - must_have_traits.size() << ") : ";
+					print_trait_list(ss, random_traits);
 				} else {
-					ss << ss1.str() << ss2.str() << "\n";
+					ss << ": ";
+					print_trait_list(ss, must_have_traits);
 				}
-				ss << "\n";
+				ss << "\n\n";
+			} else {
+				if (line2) {
+					ss << _("Traits") << " (" << type_.num_traits() << ") : ";
+					print_trait_list(ss, random_traits);
+					ss << "\n\n";
+				}
 			}
 		}
 
