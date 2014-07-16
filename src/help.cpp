@@ -1816,7 +1816,7 @@ public:
 						str.str(clear_stringstream);
 						const bool has_cap = movement_type.get_defense().capped(terrain);
 						if (has_cap) {
-							str << "<format>color=yellow text='" << defense << "%'</format>";
+							str << "<format>color='"<< color <<"' text='" << defense << "%'</format>";
 						} else {
 							str << "<format>color=white text='" << utils::unicode_figure_dash << "'</format>";
 						}
