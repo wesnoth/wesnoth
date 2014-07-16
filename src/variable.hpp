@@ -54,7 +54,7 @@ private:
 #endif
 
 	vconfig();
-	vconfig(const config & cfg, const boost::shared_ptr<config> & cache);
+	vconfig(const config & cfg, const boost::shared_ptr<const config> & cache);
 public:
 	/// Constructor from a config.
 	/// Equivalent to vconfig(cfg, false).
@@ -113,7 +113,7 @@ public:
 		typedef const value_type reference;
 		typedef config::all_children_iterator Itor;
 		explicit all_children_iterator(const Itor &i);
-		all_children_iterator(const Itor &i, const boost::shared_ptr<config> & cache);
+		all_children_iterator(const Itor &i, const boost::shared_ptr<const config> & cache);
 
 		all_children_iterator& operator++();
 		all_children_iterator  operator++(int);
@@ -143,7 +143,7 @@ public:
 			in this case inner_index_ points to the index in 'a' we are currently processing.
 		*/
 		int inner_index_;
-		boost::shared_ptr<config> cache_;
+		boost::shared_ptr<const config> cache_;
 	};
 
 	struct recursion_error : public config::error {
@@ -160,7 +160,7 @@ private:
 
 	/// Keeps a copy of our config alive when we manage our own memory.
 	/// If this is not null, then cfg_ points to *cache_ or a child of *cache_.
-	mutable boost::shared_ptr<config> cache_;
+	mutable boost::shared_ptr<const config> cache_;
 	/// Used to access our config (original or copy, as appropriate).
 	mutable const config* cfg_;
 };

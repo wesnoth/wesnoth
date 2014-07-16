@@ -63,7 +63,7 @@ vconfig::vconfig() :
 {
 }
 
-vconfig::vconfig(const config & cfg, const boost::shared_ptr<config> & cache) :
+vconfig::vconfig(const config & cfg, const boost::shared_ptr<const config> & cache) :
 	cache_(cache), cfg_(&cfg)
 {
 }
@@ -284,7 +284,7 @@ vconfig::all_children_iterator::all_children_iterator(const Itor &i) :
 {
 }
 
-vconfig::all_children_iterator::all_children_iterator(const Itor &i, const boost::shared_ptr<config> & cache) :
+vconfig::all_children_iterator::all_children_iterator(const Itor &i, const boost::shared_ptr<const config> & cache) :
 	i_(i), inner_index_(0), cache_(cache)
 {
 }
