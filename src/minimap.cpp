@@ -285,12 +285,12 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 #ifdef SDL_GPU
 void draw_minimap(CVideo &video, const SDL_Rect &area, const gamemap &map, const team *vw, const std::map<map_location, unsigned int> *reach_map)
 {
-	const float width = map.w() * 72;
-	const float height = map.h() * 72;
+	const float width = map.w() * 72 * 3/4;
+	const float height = map.h() * 72 + 72 * 1/4;
 	const float scale_factor = std::min(area.w / width, area.h / height);
 	const float tile_size = 72 * scale_factor;
-	const int xoff = area.x + (area.w - scale_factor * width - 2 * 3/4) / 2;
-	const int yoff = area.y + (area.h - scale_factor * height) / 2;
+	const int xoff = area.x + (area.w - scale_factor * width) / 2;
+	const int yoff = area.y + (area.h - scale_factor * height) / 2 + 1;
 
 	const bool draw_terrain = preferences::minimap_draw_terrain();
 	const bool terrain_coding = preferences::minimap_terrain_coding();
@@ -312,7 +312,7 @@ void draw_minimap(CVideo &video, const SDL_Rect &area, const gamemap &map, const
 			const terrain_type& terrain_info = map.get_terrain_info(terrain);
 
 			const int xpos = x * tile_size * 3/4 + xoff;
-			const int ypos = y * tile_size + tile_size / 4 * (is_odd(x) ? 1 : -1) + yoff;
+			const int ypos = y * tile_size + tile_size / 4 * (is_odd(x) ? 0 : 2) + yoff;
 
 			if (draw_terrain) {
 				if (terrain_coding) {
