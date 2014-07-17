@@ -1549,11 +1549,13 @@ public:
 			bool line2 = !random_traits.empty() && type_.num_traits() - must_have_traits.size() > 0;
 
 			if (line1) {
-				ss << _("Traits");
+				std::string traits_label = _("Traits");
+				ss << traits_label;
 				if (line2) {
-					ss << ":\n" << jump(30) << " (" << must_have_traits.size() << ") : ";
+					ss << " (" << must_have_traits.size() << ") : ";
 					print_trait_list(ss, must_have_traits);
-					ss << "\n" << jump(30) << " (" << type_.num_traits() - must_have_traits.size() << ") : ";
+					ss << "\n" << jump(font::line_width(traits_label, normal_font_size)) //This should create whitespace of the same width as the translated traits string
+					   << " (" << type_.num_traits() - must_have_traits.size() << ") : ";
 					print_trait_list(ss, random_traits);
 				} else {
 					ss << ": ";
