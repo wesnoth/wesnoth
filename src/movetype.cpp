@@ -26,6 +26,7 @@
 #include "terrain_translation.hpp"
 #include "unit_types.hpp" // for attack_type
 
+#include <boost/assign.hpp>
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 
@@ -768,6 +769,11 @@ void movetype::merge(const config & new_cfg, bool overwrite)
 	flying_ = new_cfg["flying"].to_bool(flying_);
 }
 
+/**
+ * The set of strings defining effects which apply to movetypes.
+ */
+const std::set<std::string> movetype::effects = boost::assign::list_of("movement_costs")
+	("vision_costs")("jamming_costs")("defense")("resistance");
 
 /**
  * Writes the movement type data to the provided config.

@@ -229,6 +229,9 @@ public:
 	/// Merges the given config over the existing data.
 	void merge(const config & new_cfg, bool overwrite=true);
 
+	/// The set of applicable effects for movement types
+	static const std::set<std::string> effects;
+
 	/// Writes the movement type data to the provided config.
 	void write(config & cfg) const;
 

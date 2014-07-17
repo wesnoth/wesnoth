@@ -1570,7 +1570,7 @@ public:
 		}
 
 		// Print the abilities the units has, cross-reference them
-		// to their respective topics.
+		// to their respective topics. TODO: Update this according to musthave trait effects, similar to movetype below
 		if (!type_.abilities().empty()) {
 			ss << _("Abilities: ");
 			for(std::vector<t_string>::const_iterator ability_it = type_.abilities().begin(),
@@ -1602,6 +1602,7 @@ public:
 		}
 
 		// Print some basic information such as HP and movement points.
+		// TODO: Make this info update according to musthave traits, similar to movetype below.
 		ss << _("HP: ") << type_.hitpoints() << jump(30)
 		   << _("Moves: ") << type_.movement() << jump(30);
 		if (type_.vision() != type_.movement())
@@ -1681,6 +1682,22 @@ public:
 			ss << generate_table(table);
 		}
 
+		// Generate the movement type of the unit, with resistance, defense, movement, jamming and vision data updated according to any 'musthave' traits which always apply
+		movetype movement_type = type_.movement_type();
+		traits = type_.possible_traits();
+		if (traits.first != traits.second && type_.num_traits() > 0) {
+			BOOST_FOREACH(const config & t, traits) {
+				if (t["availability"].str() == "musthave") {
+					BOOST_FOREACH (const config & effect, t.child_range("effect")) {
+						if (!effect.child("filter") // If this is musthave but has a unit filter, it might not always apply, so don't apply it in the help.
+							&& movetype::effects.find(effect["apply_to"].str()) != movetype::effects.end()) {
+							movement_type.merge(effect, effect["replace"].to_bool());
+						}
+					}
+				}
+			}
+		}
+
 		// Print the resistance table of the unit.
 		ss << "\n\n<header>text='" << escape(_("Resistances"))
 		   << "'</header>\n\n";
@@ -1689,7 +1706,6 @@ public:
 		push_header(first_res_row, _("Attack Type"));
 		push_header(first_res_row, _("Resistance"));
 		resistance_table.push_back(first_res_row);
-		const movetype &movement_type = type_.movement_type();
 		utils::string_map dam_tab = movement_type.damage_table();
 		for(utils::string_map::const_iterator dam_it = dam_tab.begin(), dam_end = dam_tab.end();
 			 dam_it != dam_end; ++dam_it) {
