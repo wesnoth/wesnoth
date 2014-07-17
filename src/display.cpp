@@ -1746,14 +1746,10 @@ void display::draw_init()
 		invalidateAll_ = true;
 	}
 
-#ifdef SDL_GPU
-	draw_all_panels();
-#else
 	if(!panelsDrawn_) {
 		draw_all_panels();
 		panelsDrawn_ = true;
 	}
-#endif
 
 	if(redraw_background_) {
 		// Full redraw of the background
