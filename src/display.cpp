@@ -1452,7 +1452,6 @@ static void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui
 		img.set_wrap(GPU_WRAP_REPEAT, GPU_WRAP_REPEAT);
 
 		video.draw_texture(img, loc.x, loc.y);
-		video.flip();
 	}
 #else
 	//log_scope("draw panel");
