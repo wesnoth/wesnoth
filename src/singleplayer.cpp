@@ -74,6 +74,7 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 		}
 
 		create_eng.set_current_level(campaign_num);
+		create_eng.set_current_era_index(0);
 
 		std::string random_mode = use_deterministic_mode ? "deterministic" : "";
 		state.classification().random_mode = random_mode;
@@ -107,7 +108,7 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 
 		create_eng.prepare_for_new_level();
 
-		state.mp_settings().mp_era = "era_blank";
+		create_eng.get_parameters();
 
 		configure_canceled = !enter_configure_mode(disp, resources::config_manager->game_config(), state, local_players_only);
 

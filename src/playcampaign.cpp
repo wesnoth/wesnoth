@@ -370,7 +370,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			// Retrieve next scenario data.
 			gamestate.expand_scenario();
 
-			if (io_type == IO_SERVER && gamestate.valid()) {
+			if ((io_type == IO_SERVER || io_type == IO_NONE) && gamestate.valid()) {
 				//note that although starting_pos is const it might be changed by gamestate.some_non_const_operation()  .
 				const config& starting_pos = gamestate.get_starting_pos();
 
@@ -384,13 +384,14 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 
 				gamestate.mp_settings().num_turns = starting_pos["turns"].to_int(-1);
 				gamestate.mp_settings().saved_game = false;
-				gamestate.mp_settings().use_map_settings = starting_pos["force_lock_settings"].to_bool();
+				gamestate.mp_settings().use_map_settings
+					= starting_pos["force_lock_settings"].to_bool(io_type == IO_NONE);
 
 				ng::connect_engine_ptr
 					connect_engine(new ng::connect_engine(gamestate,
 						!network_game, false));
 
-				if (allow_new_game_flag || (game_config::debug && network::nconnections() == 0)) {
+				if (io_type != IO_NONE && (allow_new_game_flag || (game_config::debug && network::nconnections() == 0))) {
 					// Opens mp::connect dialog to allow users to
 					// make an adjustments for scenario.
 					// TODO: Fix this so that it works when network::nconnections() > 0 as well.
@@ -404,13 +405,6 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 					connect_engine->
 						start_game(ng::connect_engine::FORCE_IMPORT_USERS);
 				}
-			}
-			else if (io_type == IO_NONE && gamestate.valid())
-			{
-				//In case this an mp scenario reloaded by sp this was not already done yet.
-				//We don't need to expand [option]s because [variables] are persitent
-				gamestate.expand_mp_events();
-
 			}
 		}
 

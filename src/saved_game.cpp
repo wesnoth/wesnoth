@@ -465,7 +465,8 @@ config saved_game::to_config() const
 		r.add_child("scenario", starting_pos_);
 	}
 	r.add_child(has_carryover_expanded_ ? "carryover_sides" : "carryover_sides_start" , carryover_);
-	if (classification_.campaign_type == game_classification::MULTIPLAYER) {
+	if (classification_.campaign_type == game_classification::MULTIPLAYER
+		|| classification_.campaign_type == game_classification::SCENARIO) {
 		r.add_child("multiplayer", mp_settings_.to_config());
 	}
 	return r;
