@@ -732,6 +732,8 @@ protected:
 					TERRAIN_TYPE terrain_type);
 
 	std::vector<sdl::timage> get_fog_shroud_images(const map_location& loc, image::TYPE image_type);
+
+	void draw_image_for_report(sdl::timage& img, SDL_Rect& rect);
 #else
 	std::vector<surface> get_terrain_images(const map_location &loc,
 					const std::string& timeid,
@@ -739,9 +741,9 @@ protected:
 					TERRAIN_TYPE terrain_type);
 
 	std::vector<surface> get_fog_shroud_images(const map_location& loc, image::TYPE image_type);
-#endif
 
 	void draw_image_for_report(surface& img, SDL_Rect& rect);
+#endif
 
 	void scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type,bool force = true);
 
@@ -791,7 +793,11 @@ protected:
 
 	// Not set by the initializer:
 	std::map<std::string, SDL_Rect> reportRects_;
+#ifdef SDL_GPU
+	std::map<std::string, sdl::timage> reportImages_;
+#else
 	std::map<std::string, surface> reportSurfaces_;
+#endif
 	std::map<std::string, config> reports_;
 	std::vector<gui::button> menu_buttons_, action_buttons_;
 	std::vector<gui::slider> sliders_;

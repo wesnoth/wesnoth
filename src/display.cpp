@@ -180,7 +180,11 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 	complete_redraw_event_("completely_redrawn"),
 	nextDraw_(0),
 	reportRects_(),
+#ifdef SDL_GPU
+	reportImages_(),
+#else
 	reportSurfaces_(),
+#endif
 	reports_(),
 	menu_buttons_(),
 	action_buttons_(),
@@ -1743,10 +1747,14 @@ void display::draw_init()
 		invalidateAll_ = true;
 	}
 
+#ifdef SDL_GPU
+	draw_all_panels();
+#else
 	if(!panelsDrawn_) {
 		draw_all_panels();
 		panelsDrawn_ = true;
 	}
+#endif
 
 	if(redraw_background_) {
 		// Full redraw of the background
@@ -2575,7 +2583,11 @@ void display::redraw_everything()
 	invalidateGameStatus_ = true;
 
 	reportRects_.clear();
+#ifdef SDL_GPU
+	reportImages_.clear();
+#else
 	reportSurfaces_.clear();
+#endif
 	reports_.clear();
 
 	bounds_check_position();
@@ -2943,6 +2955,16 @@ image::TYPE display::get_image_type(const map_location& /*loc*/) {
 
 }*/
 
+#ifdef SDL_GPU
+void display::draw_image_for_report(sdl::timage& img, SDL_Rect& rect)
+{
+	const float scale_factor = std::min(rect.w / img.width(), rect.h / img.height());
+	const int xpos = rect.x + (rect.w - img.width() * scale_factor)/2;
+	const int ypos = rect.y + (rect.h - img.height() * scale_factor)/2;
+
+	screen_.draw_texture(img, xpos, ypos);
+}
+#else
 void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 {
 	SDL_Rect visible_area = get_non_transparent_portion(img);
@@ -2975,6 +2997,7 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 		sdl_blit(img,NULL,screen_.getSurface(),&target);
 	}
 }
+#endif
 
 /**
  * Redraws the specified report (if anything has changed).
@@ -2983,6 +3006,217 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
  */
 void display::refresh_report(std::string const &report_name, const config * new_cfg)
 {
+#ifdef SDL_GPU
+	const theme::status_item *item = theme_.get_status_item(report_name);
+	if (!item) {
+		reportImages_[report_name] = sdl::timage();
+		return;
+	}
+
+	// Now we will need the config. Generate one if needed.
+
+	boost::optional <events::mouse_handler &> mhb = boost::none;
+
+	if (resources::controller) {
+		mhb = resources::controller->get_mouse_handler_base();
+	}
+
+	reports::context temp_context = reports::context(*dc_, *this, *resources::tod_manager, wb_.lock(), mhb);
+
+	const config generated_cfg = new_cfg ? config() : reports::generate_report(report_name, temp_context);
+	if ( new_cfg == NULL )
+		new_cfg = &generated_cfg;
+
+	SDL_Rect &rect = reportRects_[report_name];
+	const SDL_Rect &new_rect = item->location(screen_area());
+	sdl::timage &img = reportImages_[report_name];
+	config &report = reports_[report_name];
+
+	// Report and its location is unchanged since last time. Do nothing.
+	if (!img.null() && rect == new_rect && report == *new_cfg) {
+		return;
+	}
+
+	// Update the config in reports_.
+	report = *new_cfg;
+
+	if (!img.null()) {
+		screen_.draw_texture(img, rect.x, rect.y);
+	}
+
+	// If the rectangle has just changed, assign the surface to it
+	if (img.null() || new_rect != rect)
+	{
+		img = sdl::timage();
+		rect = new_rect;
+
+		// If the rectangle is present, and we are blitting text,
+		// then we need to backup the surface.
+		// (Images generally won't need backing up,
+		// unless they are transparent, but that is done later).
+		// TODO: handle this somehow for SDL_gpu
+		/*if (rect.w > 0 && rect.h > 0) {
+			img.assign(get_surface_portion(screen_.getSurface(), rect));
+			if (reportSurfaces_[report_name] == NULL) {
+				ERR_DP << "Could not backup background for report!" << std::endl;
+			}
+		}
+		update_rect(rect);*/
+	}
+
+	tooltips::clear_tooltips(rect);
+
+	if (report.empty()) return;
+
+	int x = rect.x, y = rect.y;
+
+	// Add prefix, postfix elements.
+	// Make sure that they get the same tooltip
+	// as the guys around them.
+	std::string str = item->prefix();
+	if (!str.empty()) {
+		config &e = report.add_child_at("element", config(), 0);
+		e["text"] = str;
+		e["tooltip"] = report.child("element")["tooltip"];
+	}
+	str = item->postfix();
+	if (!str.empty()) {
+		config &e = report.add_child("element");
+		e["text"] = str;
+		e["tooltip"] = report.child("element", -1)["tooltip"];
+	}
+
+	// Loop through and display each report element.
+	int tallest = 0;
+	int image_count = 0;
+	bool used_ellipsis = false;
+	std::ostringstream ellipsis_tooltip;
+	SDL_Rect ellipsis_area = rect;
+
+	for (config::const_child_itors elements = report.child_range("element");
+	     elements.first != elements.second; ++elements.first)
+	{
+		SDL_Rect area = sdl::create_rect(x, y, rect.w + rect.x - x, rect.h + rect.y - y);
+		if (area.h <= 0) break;
+
+		std::string t = (*elements.first)["text"];
+		if (!t.empty())
+		{
+			if (used_ellipsis) goto skip_element;
+
+			// Draw a text element.
+			font::ttext text;
+			if (item->font_rgb_set()) {
+				// font_rgb() has no alpha channel and uses a 0x00RRGGBB
+				// layout instead of 0xRRGGBBAA which is what ttext expects,
+				// so shift the value to the left and add fully-opaque alpha.
+				text.set_foreground_color((item->font_rgb() << 8) + 0xFF);
+			}
+			bool eol = false;
+			if (t[t.size() - 1] == '\n') {
+				eol = true;
+				t = t.substr(0, t.size() - 1);
+			}
+			text.set_font_size(item->font_size());
+			text.set_text(t, true);
+			text.set_maximum_width(area.w);
+			text.set_maximum_height(area.h, false);
+			sdl::timage text_img = text.render_as_texture();
+
+			// check if next element is text with almost no space to show it
+			const int minimal_text = 12; // width in pixels
+			config::const_child_iterator ee = elements.first;
+			if (!eol && rect.w - (x - rect.x + text_img.width()) < minimal_text &&
+			    ++ee != elements.second && !(*ee)["text"].empty())
+			{
+				// make this element longer to trigger rendering of ellipsis
+				// (to indicate that next elements have not enough space)
+				//NOTE this space should be longer than minimal_text pixels
+				t = t + "    ";
+				text.set_text(t, true);
+				text_img = text.render_as_texture();
+				// use the area of this element for next tooltips
+				used_ellipsis = true;
+				ellipsis_area.x = x;
+				ellipsis_area.y = y;
+				ellipsis_area.w = text_img.width();
+				ellipsis_area.h = text_img.height();
+			}
+
+			screen_.draw_texture(text_img, x, y);
+			area.w = text_img.width();
+			area.h = text_img.height();
+			if (area.h > tallest) {
+				tallest = area.h;
+			}
+			if (eol) {
+				x = rect.x;
+				y += tallest;
+				tallest = 0;
+			} else {
+				x += area.w;
+			}
+		}
+		else if (!(t = (*elements.first)["image"].str()).empty())
+		{
+			if (used_ellipsis) goto skip_element;
+
+			// Draw an image element.
+			sdl::timage image(image::get_texture(t));
+
+			if (image.null()) {
+				ERR_DP << "could not find image for report: '" << t << "'" << std::endl;
+				continue;
+			}
+
+			if (area.w < image.width() && image_count) {
+				// We have more than one image, and this one doesn't fit.
+				image = image::get_texture(game_config::images::ellipsis);
+				used_ellipsis = true;
+			}
+
+			if (image.width() < area.w) area.w = image.width();
+			if (image.height() < area.h) area.h = image.height();
+			draw_image_for_report(image, area);
+
+			++image_count;
+			if (area.h > tallest) {
+				tallest = area.h;
+			}
+
+			if (!used_ellipsis) {
+				x += area.w;
+			} else {
+				ellipsis_area = area;
+			}
+		}
+		else
+		{
+			// No text nor image, skip this element
+			continue;
+		}
+
+		skip_element:
+		t = (*elements.first)["tooltip"].t_str().base_str();
+		if (!t.empty()) {
+			if (!used_ellipsis) {
+				tooltips::add_tooltip(area, t, (*elements.first)["help"].t_str().base_str());
+			} else {
+				// Collect all tooltips for the ellipsis.
+				// TODO: need a better separator
+				// TODO: assign an action
+				ellipsis_tooltip << t;
+				config::const_child_iterator ee = elements.first;
+				if (++ee != elements.second)
+					ellipsis_tooltip << "\n  _________\n\n";
+			}
+		}
+	}
+
+	if (used_ellipsis) {
+		tooltips::add_tooltip(ellipsis_area, ellipsis_tooltip.str());
+	}
+#else
 	const theme::status_item *item = theme_.get_status_item(report_name);
 	if (!item) {
 		reportSurfaces_[report_name].assign(NULL);
@@ -3070,7 +3304,7 @@ void display::refresh_report(std::string const &report_name, const config * new_
 	SDL_Rect ellipsis_area = rect;
 
 	for (config::const_child_itors elements = report.child_range("element");
-	     elements.first != elements.second; ++elements.first)
+		 elements.first != elements.second; ++elements.first)
 	{
 		SDL_Rect area = sdl::create_rect(x, y, rect.w + rect.x - x, rect.h + rect.y - y);
 		if (area.h <= 0) break;
@@ -3103,7 +3337,7 @@ void display::refresh_report(std::string const &report_name, const config * new_
 			const int minimal_text = 12; // width in pixels
 			config::const_child_iterator ee = elements.first;
 			if (!eol && rect.w - (x - rect.x + s->w) < minimal_text &&
-			    ++ee != elements.second && !(*ee)["text"].empty())
+				++ee != elements.second && !(*ee)["text"].empty())
 			{
 				// make this element longer to trigger rendering of ellipsis
 				// (to indicate that next elements have not enough space)
@@ -3192,6 +3426,7 @@ void display::refresh_report(std::string const &report_name, const config * new_
 	if (used_ellipsis) {
 		tooltips::add_tooltip(ellipsis_area, ellipsis_tooltip.str());
 	}
+#endif
 }
 
 void display::invalidate_all()
