@@ -1347,8 +1347,8 @@ static std::string print_behavior_description(t_it start, t_it end, const gamema
 	} else {
 		if (*last_change_pos == start) {
 			return print_behavior_description(start, end, map, first_level, best); //Note, we already flipped the best value in this case
-		} else if (*last_change_pos == end) {
-			return print_behavior_description(start, end-1, map, first_level, !best); //And in this case.
+		} else if (*last_change_pos == end - 1) {
+			return print_behavior_description(start, *last_change_pos, map, first_level, !best); //And in this case.
 		}
 
 		std::stringstream ss;
