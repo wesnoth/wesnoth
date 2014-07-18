@@ -17,7 +17,6 @@
 #include "animated.hpp"
 #include "config.hpp"
 #include "halo.hpp"
-#include "unit_filter.hpp"
 #include "unit_frame.hpp"
 #include "unit_ptr.hpp"
 
@@ -127,8 +126,8 @@ class unit_animation
 
 	};
 		t_translation::t_list terrain_types_;
-		std::vector<unit_filter> unit_filter_;
-		std::vector<unit_filter> secondary_unit_filter_;
+		std::vector<config> unit_filter_;
+		std::vector<config> secondary_unit_filter_;
 		std::vector<map_location::DIRECTION> directions_;
 		int frequency_;
 		int base_score_;

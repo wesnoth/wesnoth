@@ -329,17 +329,17 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 		directions_.push_back(d);
 	}
 
-	const filter_context * fc = game_display::get_singleton();
+	/*const filter_context * fc = game_display::get_singleton();
 	if (!fc) {
 		fc = resources::filter_con; //!< This is a pointer to the gamestate. Would prefer to tie unit animations only to the display, but for now this is an acceptable fallback. It seems to be relevant because when a second game is created, it seems that the game_display is null at the time that units are being constructed, and hence at the time that this code is running. A different solution might be to delay the team_builder stage 2 call until after the gui is initialized. Note that the current set up could concievably cause problems with the editor, iirc it doesn't initailize a filter context.
 		assert(fc);
-	}
+	}*/
 	BOOST_FOREACH(const config &filter, cfg.child_range("filter")) {
-		unit_filter_.push_back(unit_filter(vconfig(filter), fc));
+		unit_filter_.push_back(filter);
 	}
 
 	BOOST_FOREACH(const config &filter, cfg.child_range("filter_second")) {
-		secondary_unit_filter_.push_back(unit_filter(vconfig(filter), fc));
+		secondary_unit_filter_.push_back(filter);
 	}
 
 	std::vector<std::string> value_str = utils::split(cfg["value"]);
@@ -409,15 +409,17 @@ int unit_animation::matches(const display &disp, const map_location& loc,const m
 				result ++;
 			}
 		}
-		std::vector<unit_filter>::const_iterator myitor;
+		std::vector<config>::const_iterator myitor;
 		for(myitor = unit_filter_.begin(); myitor != unit_filter_.end(); ++myitor) {
-			if (!myitor->matches(*my_unit, loc)) return MATCH_FAIL;
+			unit_filter f(vconfig(*myitor), &disp);
+			if (!f(*my_unit, loc)) return MATCH_FAIL;
 			++result;
 		}
 		if(!secondary_unit_filter_.empty()) {
 			unit_map::const_iterator unit = disp.get_units().find(second_loc);
 			if (unit.valid()) {
-				BOOST_FOREACH(const unit_filter &f , secondary_unit_filter_) {
+				BOOST_FOREACH(const config &c , secondary_unit_filter_) {
+					unit_filter f(vconfig(c), &disp);
 					if (!f(*unit, second_loc)) return MATCH_FAIL;
 					result++;
 				}
@@ -1151,18 +1153,18 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 
 	if (u_animation.unit_filter_.size() > 0) {
 		std::cout << "[filter]\n";
-		//BOOST_FOREACH(const config cfg, u_animation.unit_filter_) {
-		//	std::cout << cfg.debug();
-		//}
-		std::cout << "TODO: create debugging output for unit filters";
+		BOOST_FOREACH(const config & cfg, u_animation.unit_filter_) {
+			std::cout << cfg.debug();
+		}
+		//std::cout << "TODO: create debugging output for unit filters";
 		std::cout << "[/filter]\n";
 	}
 	if (u_animation.secondary_unit_filter_.size() > 0) {
 		std::cout << "[filter_second]\n";
-		//BOOST_FOREACH(const config cfg, u_animation.secondary_unit_filter_) {
-		//	std::cout << cfg.debug();
-		//}
-		std::cout << "TODO: create debugging output for unit filters";
+		BOOST_FOREACH(const config & cfg, u_animation.secondary_unit_filter_) {
+			std::cout << cfg.debug();
+		}
+		//std::cout << "TODO: create debugging output for unit filters";
 		std::cout << "[/filter_second]\n";
 	}
 	if (u_animation.primary_attack_filter_.size() > 0) {
