@@ -704,11 +704,15 @@ set(wesnoth-main_SRC
 	attack_prediction.cpp
 	attack_prediction_display.cpp
 	callable_objects.cpp
-	commandline_options.cpp
 	carryover.cpp
+	commandline_options.cpp
 	config_cache.cpp
 	config_assign.cpp
+	configure_engine.cpp
+	connect_engine.cpp
 	controller_base.cpp
+	create_engine.cpp
+	depcheck.cpp
 	desktop/notifications.cpp
 	desktop/open.cpp
 	dialogs.cpp
@@ -785,6 +789,8 @@ set(wesnoth-main_SRC
 	gui/dialogs/chat_log.cpp
 	gui/dialogs/data_manage.cpp
 	gui/dialogs/debug_clock.cpp
+	gui/dialogs/depcheck_confirm_change.cpp
+	gui/dialogs/depcheck_select_new.cpp
 	gui/dialogs/dialog.cpp
 	gui/dialogs/edit_label.cpp
 	gui/dialogs/editor/custom_tod.cpp
@@ -814,8 +820,6 @@ set(wesnoth-main_SRC
 	gui/dialogs/mp_connect.cpp
 	gui/dialogs/mp_create_game.cpp
 	gui/dialogs/mp_create_game_set_password.cpp
-	gui/dialogs/depcheck_confirm_change.cpp
-	gui/dialogs/depcheck_select_new.cpp
 	gui/dialogs/mp_host_game_prompt.cpp
 	gui/dialogs/mp_login.cpp
 	gui/dialogs/mp_method_selection.cpp
@@ -842,17 +846,13 @@ set(wesnoth-main_SRC
 	mouse_events.cpp
 	mouse_handler_base.cpp
 	movetype.cpp
-	depcheck.cpp
 	mp_game_settings.cpp
 	mp_game_utils.cpp
 	mp_options.cpp
 	multiplayer.cpp
 	multiplayer_configure.cpp
-	configure_engine.cpp
 	multiplayer_connect.cpp
-	connect_engine.cpp
 	multiplayer_create.cpp
-	create_engine.cpp
 	multiplayer_lobby.cpp
 	multiplayer_ui.cpp
 	multiplayer_wait.cpp
