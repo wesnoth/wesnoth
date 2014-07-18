@@ -1347,16 +1347,27 @@ static std::string print_behavior_description(t_it start, t_it end, const gamema
 	} else {
 		if (*last_change_pos == start) {
 			return print_behavior_description(start, end, map, first_level, best); //Note, we already flipped the best value in this case
-		} else if (*last_change_pos == end - 1) {
-			return print_behavior_description(start, *last_change_pos, map, first_level, !best); //And in this case.
+		}
+
+		std::vector<std::string> names;
+		for (t_it i = *last_change_pos+1; i != end; i++) {
+			const terrain_type tt = map.get_terrain_info(*i);
+			if (!tt.editor_name().empty())
+				names.push_back(tt.editor_name());
+		}
+
+		if (names.empty()) { //This alias list is apparently padded with junk at the end, so truncate it
+			return print_behavior_description(start, *last_change_pos, map, first_level, !best); //Note, we already flipped the best value in this case, so flip it back
 		}
 
 		std::stringstream ss;
 		ss << policy_str << " ";
 		if (!first_level) ss << "( ";
 		ss << print_behavior_description(start, *last_change_pos-1, map, false, !best);
-		ss << ", ";
-		ss << print_behavior_description(*last_change_pos+1, end, map, false, best);
+		// Printed the (parenthesized) leading part from before the change, now print the remaining names in this group.
+		BOOST_FOREACH(const std::string & s, names) {
+			ss << ", " << s;
+		}
 		if (!first_level) ss << " )";
 		return ss.str();
 	}
