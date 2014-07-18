@@ -197,12 +197,12 @@ Uint16 timage::height() const
 
 Uint16 timage::base_width() const
 {
-	return image_->h;
+	return image_->w;
 }
 
 Uint16 timage::base_height() const
 {
-	return image_->w;
+	return image_->h;
 }
 
 void timage::set_clip(const SDL_Rect &rect)
