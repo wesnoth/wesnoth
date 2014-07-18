@@ -1549,11 +1549,19 @@ public:
 			bool line2 = !random_traits.empty() && type_.num_traits() - must_have_traits.size() > 0;
 
 			if (line1) {
-				ss << _("Traits");
+				std::string traits_label = _("Traits");
+				ss << traits_label;
 				if (line2) {
-					ss << ":\n" << jump(30) << " (" << must_have_traits.size() << ") : ";
+					std::stringstream must_have_count;
+					must_have_count << " (" << must_have_traits.size() << ") : ";
+					std::stringstream random_count;
+					random_count << " (" << (type_.num_traits() - must_have_traits.size()) << ") : ";
+
+					int second_line_whitespace = font::line_width(traits_label+must_have_count.str(), normal_font_size) - font::line_width(random_count.str(), normal_font_size); // This ensures that the second line is justified so that the ':' characters are aligned.
+
+					ss << must_have_count.str();
 					print_trait_list(ss, must_have_traits);
-					ss << "\n" << jump(30) << " (" << type_.num_traits() - must_have_traits.size() << ") : ";
+					ss << "\n" << jump(second_line_whitespace) << random_count.str();
 					print_trait_list(ss, random_traits);
 				} else {
 					ss << ": ";
