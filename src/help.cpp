@@ -1300,6 +1300,68 @@ std::vector<topic> generate_faction_topics(const bool sort_generated)
 	return topics;
 }
 
+typedef t_translation::t_list::const_iterator t_it;
+// Gets an english desription of a terrain t_list alias behavior: "Best of cave, hills", "Worst of Swamp, Forest" etc.
+static std::string print_behavior_description(t_it start, t_it end, const gamemap & map, bool first_level = true, bool best = true)
+{
+	if (start == end) return "";
+
+	std::string lang_policy = (best ? _("Best of") : _("Worst of"));
+	std::string color_policy = (best ? "green": "red");
+
+	std::string policy_str = "<format>color='" + color_policy + "' text='" + lang_policy + "'</format>";
+
+	boost::optional<t_it> last_change_pos;
+
+	for (t_it i = start; i != end; i++) {
+		if ((best && *i == t_translation::MINUS) || (!best && *i == t_translation::PLUS)) {
+			best = !best;
+			last_change_pos = i;
+		}
+	}
+
+	if (!last_change_pos) {
+		std::stringstream ss;
+
+		std::vector<std::string> names;
+		for (t_it i = start; i != end; i++) {
+			const terrain_type tt = map.get_terrain_info(*i);
+			if (!tt.editor_name().empty())
+				names.push_back(tt.editor_name());
+		}
+
+		if (names.size() == 0) return "";
+		if (names.size() == 1) return names.at(0);
+
+		ss << policy_str << " ";
+		if (!first_level) ss << "( ";
+		ss << names.at(0);
+
+		for (size_t i = 1; i < names.size(); i++) {
+			ss << ", " << names.at(i);
+		}
+
+		if (!first_level) ss << " )";
+
+		return ss.str();
+	} else {
+		if (*last_change_pos == start) {
+			return print_behavior_description(start, end, map, first_level, best); //Note, we already flipped the best value in this case
+		} else if (*last_change_pos == end) {
+			return print_behavior_description(start, end-1, map, first_level, !best); //And in this case.
+		}
+
+		std::stringstream ss;
+		ss << policy_str << " ";
+		if (!first_level) ss << "( ";
+		ss << print_behavior_description(start, *last_change_pos-1, map, false, !best);
+		ss << ", ";
+		ss << print_behavior_description(*last_change_pos+1, end, map, false, best);
+		if (!first_level) ss << " )";
+		return ss.str();
+	}
+}
+
 class terrain_topic_generator: public topic_generator
 {
 	const terrain_type& type_;
@@ -1309,6 +1371,8 @@ public:
 	terrain_topic_generator(const terrain_type& type) : type_(type) {}
 
 	virtual std::string operator()() const {
+
+		assert(resources::gameboard);
 
 		std::stringstream ss;
 
@@ -1323,12 +1387,12 @@ public:
 
 		if (!(type_.union_type().size() == 1 && type_.union_type()[0] == type_.number() && type_.is_nonnull())) {
 
-			const t_translation::t_list& underlying_terrains = resources::gameboard->map().underlying_mvt_terrain(type_.number());
+			const t_translation::t_list& underlying_mvt_terrains = resources::gameboard->map().underlying_mvt_terrain(type_.number());
 
 			ss << "\n" << N_("Base Terrain: ");
 
 			bool first = true;
-			BOOST_FOREACH(const t_translation::t_terrain& underlying_terrain, underlying_terrains) {
+			BOOST_FOREACH(const t_translation::t_terrain& underlying_terrain, underlying_mvt_terrains) {
 				const terrain_type& mvt_base = resources::gameboard->map().get_terrain_info(underlying_terrain);
 
 				if (mvt_base.editor_name().empty()) continue;
@@ -1336,6 +1400,15 @@ public:
 				else first = false;
 				ss << make_link(mvt_base.editor_name(), ".." + terrain_prefix + mvt_base.id());
 			}
+
+			ss << "\n";
+
+			ss << "\n" << N_("Movement properties: ");
+			ss << print_behavior_description(underlying_mvt_terrains.begin(), underlying_mvt_terrains.end(), resources::gameboard->map()) << "\n";
+
+			const t_translation::t_list& underlying_def_terrains = resources::gameboard->map().underlying_def_terrain(type_.number());
+			ss << "\n" << N_("Defense properties: ");
+			ss << print_behavior_description(underlying_def_terrains.begin(), underlying_def_terrains.end(), resources::gameboard->map()) << "\n";
 		}
 
 		if (game_config::debug) {
@@ -1368,6 +1441,19 @@ public:
 			} else {
 				ss << "\nEditor Image: " << type_.editor_image() << "\n";
 			}
+
+			const t_translation::t_list& underlying_mvt_terrains = resources::gameboard->map().underlying_mvt_terrain(type_.number());
+			ss << "\nDebug Mvt Description String:";
+			BOOST_FOREACH(const t_translation::t_terrain & t, underlying_mvt_terrains) {
+				ss << " " << t;
+			}
+
+			const t_translation::t_list& underlying_def_terrains = resources::gameboard->map().underlying_def_terrain(type_.number());
+			ss << "\nDebug Def Description String:";
+			BOOST_FOREACH(const t_translation::t_terrain & t, underlying_def_terrains) {
+				ss << " " << t;
+			}
+
 		}
 
 		return ss.str();
