@@ -484,6 +484,7 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 	resources::config_manager->
 		load_game_config_for_game(state_.classification());
 
+	// FIXME: Check whether find_child found something and give a meaningful error message if not.
 	current_level().set_data(
 		resources::config_manager->game_config().find_child(
 		lexical_cast<std::string> (game_classification::MULTIPLAYER),
