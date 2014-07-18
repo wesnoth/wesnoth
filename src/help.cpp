@@ -1300,19 +1300,24 @@ std::vector<topic> generate_faction_topics(const bool sort_generated)
 	return topics;
 }
 
-typedef t_translation::t_list::const_iterator t_it;
-// Gets an english desription of a terrain t_list alias behavior: "Best of cave, hills", "Worst of Swamp, Forest" etc.
-static std::string print_behavior_description(t_it start, t_it end, const gamemap & map, bool first_level = true, bool best = true)
-{
-	if (start == end) return "";
-
+static std::string best_str(bool best) {
 	std::string lang_policy = (best ? _("Best of") : _("Worst of"));
 	std::string color_policy = (best ? "green": "red");
 
-	std::string policy_str = "<format>color='" + color_policy + "' text='" + lang_policy + "'</format>";
+	return "<format>color='" + color_policy + "' text='" + lang_policy + "'</format>";
+}
+
+typedef t_translation::t_list::const_iterator t_it;
+// Gets an english desription of a terrain t_list alias behavior: "Best of cave, hills", "Worst of Swamp, Forest" etc.
+static std::string print_behavior_description(t_it start, t_it end, const gamemap & map, bool first_level = true, bool begin_best = true)
+{
+
+	if (start == end) return "";
+	if (*start == t_translation::MINUS || *start == t_translation::PLUS) return print_behavior_description(start+1, end, map, first_level, *start == t_translation::PLUS); //absorb any leading mode changes by calling again, with a new default value begin_best.
 
 	boost::optional<t_it> last_change_pos;
 
+	bool best = begin_best;
 	for (t_it i = start; i != end; i++) {
 		if ((best && *i == t_translation::MINUS) || (!best && *i == t_translation::PLUS)) {
 			best = !best;
@@ -1320,9 +1325,9 @@ static std::string print_behavior_description(t_it start, t_it end, const gamema
 		}
 	}
 
-	if (!last_change_pos) {
-		std::stringstream ss;
+	std::stringstream ss;
 
+	if (!last_change_pos) {
 		std::vector<std::string> names;
 		for (t_it i = start; i != end; i++) {
 			const terrain_type tt = map.get_terrain_info(*i);
@@ -1333,7 +1338,7 @@ static std::string print_behavior_description(t_it start, t_it end, const gamema
 		if (names.size() == 0) return "";
 		if (names.size() == 1) return names.at(0);
 
-		ss << policy_str << " ";
+		ss << best_str(best) << " ";
 		if (!first_level) ss << "( ";
 		ss << names.at(0);
 
@@ -1342,13 +1347,7 @@ static std::string print_behavior_description(t_it start, t_it end, const gamema
 		}
 
 		if (!first_level) ss << " )";
-
-		return ss.str();
 	} else {
-		if (*last_change_pos == start) {
-			return print_behavior_description(start, end, map, first_level, best); //Note, we already flipped the best value in this case
-		}
-
 		std::vector<std::string> names;
 		for (t_it i = *last_change_pos+1; i != end; i++) {
 			const terrain_type tt = map.get_terrain_info(*i);
@@ -1356,21 +1355,20 @@ static std::string print_behavior_description(t_it start, t_it end, const gamema
 				names.push_back(tt.editor_name());
 		}
 
-		if (names.empty()) { //This alias list is apparently padded with junk at the end, so truncate it
-			return print_behavior_description(start, *last_change_pos, map, first_level, !best); //Note, we already flipped the best value in this case, so flip it back
+		if (names.empty()) { //This alias list is apparently padded with junk at the end, so truncate it without adding more parens
+			return print_behavior_description(start, *last_change_pos, map, first_level, begin_best);
 		}
 
-		std::stringstream ss;
-		ss << policy_str << " ";
+		ss << best_str(best) << " ";
 		if (!first_level) ss << "( ";
-		ss << print_behavior_description(start, *last_change_pos-1, map, false, !best);
+		ss << print_behavior_description(start, *last_change_pos-1, map, false, begin_best);
 		// Printed the (parenthesized) leading part from before the change, now print the remaining names in this group.
 		BOOST_FOREACH(const std::string & s, names) {
 			ss << ", " << s;
 		}
 		if (!first_level) ss << " )";
-		return ss.str();
 	}
+	return ss.str();
 }
 
 class terrain_topic_generator: public topic_generator
