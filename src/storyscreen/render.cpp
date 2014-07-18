@@ -572,19 +572,19 @@ void part_ui::render_story_box_borders(SDL_Rect& update_area)
 		//
 
 		if(border_top.null() != true) {
-			const float xscale = float(screen_area().w) / border_top.width();
+			const float xscale = float(screen_area().w) / border_top.base_width();
 			border_top.set_hscale(xscale);
 			//TODO: blurring
 			video_.draw_texture(border_top, 0,
-								update_area.y - border_top.height());
+								update_area.y - border_top.base_height());
 		}
 
 		if(border_bottom.null() != true) {
-			const float xscale = float(screen_area().w) / border_bottom.width();
+			const float xscale = float(screen_area().w) / border_bottom.base_width();
 			border_bottom.set_hscale(xscale);
 			//TODO: blurring
 			video_.draw_texture(border_bottom, 0,
-								update_area.y - border_top.height());
+								update_area.y - border_top.base_height());
 		}
 
 	}
