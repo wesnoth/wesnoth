@@ -1362,6 +1362,12 @@ public:
 			ss << "Light Bonus: "   << type_.light_bonus(0) << "\n";
 
 			ss << type_.income_description();
+
+			if (type_.editor_image().empty()) { // Note: this is purely temporary to help make a different help entry
+				ss << "\nEditor Image: Empty\n";
+			} else {
+				ss << "\nEditor Image: " << type_.editor_image() << "\n";
+			}
 		}
 
 		return ss.str();
