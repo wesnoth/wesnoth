@@ -707,7 +707,6 @@ set(wesnoth-main_SRC
 	carryover.cpp
 	commandline_options.cpp
 	config_cache.cpp
-	config_assign.cpp
 	configure_engine.cpp
 	connect_engine.cpp
 	controller_base.cpp
