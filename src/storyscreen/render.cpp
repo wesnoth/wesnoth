@@ -136,8 +136,8 @@ void part_ui::prepare_background()
 			continue;
 		}
 
-		const double xscale = 1.0 * video_.getx() / layer.width();
-		const double yscale = 1.0 * video_.gety() / layer.height();
+		const double xscale = 1.0 * video_.getx() / layer.base_width();
+		const double yscale = 1.0 * video_.gety() / layer.base_height();
 		const bool scalev = bl.scale_vertically();
 		const bool scaleh = bl.scale_horizontally();
 		const bool keep_ratio = bl.keep_aspect_ratio();
@@ -156,14 +156,14 @@ void part_ui::prepare_background()
 		}
 
 		layer.set_smooth_scaling(true);
-		SDL_Rect clip = sdl::create_rect(0, 0, layer.width(), layer.height());
+		SDL_Rect clip = sdl::create_rect(0, 0, layer.base_width(), layer.base_height());
 		if (tileh) {
-			clip.x = (layer.width() - video_.getx())/2;
+			clip.x = (layer.base_width() - video_.getx())/2;
 			clip.w = video_.getx();
 			layer.set_hwrap(GPU_WRAP_REPEAT);
 		}
 		if (tilev) {
-			clip.y = (layer.width() - video_.gety())/2;
+			clip.y = (layer.base_height() - video_.gety())/2;
 			clip.h = video_.gety();
 			layer.set_vwrap(GPU_WRAP_REPEAT);
 		}
