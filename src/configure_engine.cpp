@@ -67,7 +67,7 @@ void configure_engine::set_use_map_settings(bool val) { parameters_.use_map_sett
 void configure_engine::set_random_start_time(bool val) { parameters_.random_start_time = val; }
 void configure_engine::set_fog_game(bool val) { parameters_.fog_game = val; }
 void configure_engine::set_shroud_game(bool val) { parameters_.shroud_game = val; }
-void configure_engine::set_allow_observers(bool val) { parameters_.shroud_game = val; }
+void configure_engine::set_allow_observers(bool val) { parameters_.allow_observers = val; }
 void configure_engine::set_shuffle_sides(bool val) { parameters_.shuffle_sides = val; }
 void configure_engine::set_options(const config& cfg) { parameters_.options = cfg; }
 
