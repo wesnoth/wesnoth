@@ -1556,17 +1556,7 @@ size_t unit::modification_count(const std::string& mod_type, const std::string& 
 
 void unit::add_modification(const std::string& mod_type, const config& mod, bool no_add)
 {
-	bool generate_description = true;
-
-	//some trait activate specific flags
-	if ( mod_type == "trait" ) {
-		const std::string& id = mod["id"];
-		is_fearless_ = is_fearless_ || id == "fearless";
-		is_healthy_ = is_healthy_ || id == "healthy";
-		if (!mod["generate_description"].empty()) {
-			generate_description = mod["generate_description"].to_bool();
-		}
-	}
+	bool generate_description = mod["generate_description"].to_bool(true);
 
 	config *new_child = NULL;
 	if(no_add == false) {
@@ -1596,7 +1586,16 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 				if ((apply_to == "variation" || apply_to == "type") && no_add == false) {
 					set_poisoned = false;
 					last_effect = effect;
-				} else if(apply_to == "profile") {
+				}
+				else if(apply_to == "fearless")
+				{
+					is_fearless_ = effect["set"].to_bool(true);
+				}
+				else if(apply_to == "healthy")
+				{
+					is_healthy_ = effect["set"].to_bool(true);
+				} 
+				else if(apply_to == "profile") {
 					if (const config::attribute_value *v = effect.get("portrait")) {
 						std::string big = *v, small = effect["small_portrait"];
 						adjust_profile(small, big, "");
