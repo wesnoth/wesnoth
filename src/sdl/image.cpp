@@ -134,8 +134,8 @@ timage &timage::operator =(const timage &texture)
 
 void timage::draw(GPU_Target &target, const int x, const int y)
 {
-	GPU_BlitTransform(image_, clip_, &target, x + width()/2,
-					  y + height()/2, *rotation_, *hscale_, *vscale_);
+	GPU_BlitTransform(image_, clip_, &target, x + width()/2, y + height()/2,
+					  *rotation_, *hscale_, *vscale_);
 }
 
 void timage::set_rotation(float rotation)
@@ -185,14 +185,14 @@ bool timage::smooth_scaling() const
 	return image_->filter_mode == GPU_FILTER_LINEAR;
 }
 
-Uint16 timage::width() const
+int timage::width() const
 {
-	return image_->w * *hscale_;
+	return clip_->w * *hscale_;
 }
 
-Uint16 timage::height() const
+int timage::height() const
 {
-	return image_->h * *vscale_;
+	return clip_->h * *vscale_;
 }
 
 Uint16 timage::base_width() const

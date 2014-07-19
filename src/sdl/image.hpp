@@ -136,14 +136,14 @@ public:
 	bool smooth_scaling() const;
 
 	/**
-	 * Returns the width of the texture after scaling applied.
+	 * Returns the width of the texture after scaling and clipping applied.
 	 */
-	Uint16 width() const;
+	int width() const;
 
 	/**
-	 * Returns the height of the texture after scaling applied.
+	 * Returns the height of the texture after scaling and clipping applied.
 	 */
-	Uint16 height() const;
+	int height() const;
 
 	/**
 	 * Returns the width of the texture before scaling.
