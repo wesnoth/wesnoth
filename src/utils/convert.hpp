@@ -17,6 +17,7 @@
 
 #include "config.hpp"
 #include "config_class.tpp"
+#include "utils/boost_function_guarded.hpp"
 
 #include <boost/optional.hpp>
 
@@ -67,6 +68,20 @@ public:
 
 	std::string operator()(const aval & a) { return a.str(); }
 	aval operator()(const std::string & s) { aval a; a = s; return a; }
+};
+
+/// Define an adhoc config attribute_value_converter from a pair of functions.
+template<typename T>
+class pair : public attribute_value_converter<T> {
+public:
+	pair(boost::function1<T, const aval &> from, boost::function1<aval,const T &> to) : from_(from), to_(to) {}
+	~pair() {}
+
+	T operator()(const aval & a) { return from_(a); }
+	aval operator()(const T & t) { return to_(t); }
+private:
+	boost::function1<T, const aval &> from_;
+	boost::function1<aval, const T &> to_;
 };
 
 } // end namespace convert
