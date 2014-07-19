@@ -884,7 +884,6 @@
 		EC74C11F197576F500B85A1A /* notifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C119197576F500B85A1A /* notifications.cpp */; };
 		EC74C120197576F500B85A1A /* open.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C11B197576F500B85A1A /* open.cpp */; };
 		EC79D70D19548D5000EC7C1F /* game_cache_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC79D70C19548D5000EC7C1F /* game_cache_options.cpp */; };
-		EC84246618F30D9100FC1EEF /* config_assign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84245518F30D9000FC1EEF /* config_assign.cpp */; };
 		EC84246718F30D9100FC1EEF /* random_new_deterministic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84245718F30D9000FC1EEF /* random_new_deterministic.cpp */; };
 		EC84246818F30D9100FC1EEF /* random_new_synced.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84245918F30D9000FC1EEF /* random_new_synced.cpp */; };
 		EC84246918F30D9100FC1EEF /* random_new.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84245B18F30D9100FC1EEF /* random_new.cpp */; };
@@ -2115,7 +2114,6 @@
 		EC74C11B197576F500B85A1A /* open.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = open.cpp; path = desktop/open.cpp; sourceTree = "<group>"; };
 		EC74C11C197576F500B85A1A /* open.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = open.hpp; path = desktop/open.hpp; sourceTree = "<group>"; };
 		EC79D70C19548D5000EC7C1F /* game_cache_options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = game_cache_options.cpp; path = gui/dialogs/game_cache_options.cpp; sourceTree = "<group>"; };
-		EC84245518F30D9000FC1EEF /* config_assign.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = config_assign.cpp; sourceTree = "<group>"; };
 		EC84245618F30D9000FC1EEF /* config_assign.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = config_assign.hpp; sourceTree = "<group>"; };
 		EC84245718F30D9000FC1EEF /* random_new_deterministic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = random_new_deterministic.cpp; sourceTree = "<group>"; };
 		EC84245818F30D9000FC1EEF /* random_new_deterministic.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = random_new_deterministic.hpp; sourceTree = "<group>"; };
@@ -2523,7 +2521,6 @@
 				EC51DB7718F8BFA4004621D9 /* playturn_network_adapter.hpp */,
 				EC84246F18F30DB700FC1EEF /* exception.cpp */,
 				EC84247018F30DB700FC1EEF /* exception.hpp */,
-				EC84245518F30D9000FC1EEF /* config_assign.cpp */,
 				EC84245618F30D9000FC1EEF /* config_assign.hpp */,
 				EC84245718F30D9000FC1EEF /* random_new_deterministic.cpp */,
 				EC84245818F30D9000FC1EEF /* random_new_deterministic.hpp */,
@@ -4474,7 +4471,6 @@
 				EC89A1291879D17D00A3B0B1 /* lapi.cpp in Sources */,
 				B5B46938107118C400327599 /* dispatcher.cpp in Sources */,
 				B5B46939107118C400327599 /* handler.cpp in Sources */,
-				EC84246618F30D9100FC1EEF /* config_assign.cpp in Sources */,
 				EC219452196064A900420969 /* wmi_pager.cpp in Sources */,
 				B552D92410869477002D8F86 /* distributor.cpp in Sources */,
 				B552D92D108694BB002D8F86 /* ca_testing_move_to_targets.cpp in Sources */,
