@@ -29,17 +29,23 @@
 #include "utils/convert_lexical.hpp"
 
 CONFIG_CLASS( test_info,
-	( int,		i,	convert::to_int(3))
-	( int,		i2,	convert::to_int())
-	( bool, 	b,	convert::to_bool(true))
-	( bool, 	b2,	convert::to_bool(false))
-	( std::string,	s,	convert::str())
+	CONFIG_VAL( int,		i,	convert::to_int(3))
+	CONFIG_VAL( int,		i2,	convert::to_int())
+	CONFIG_VAL( bool, 		b,	convert::to_bool(true))
+	CONFIG_VAL( bool, 		b2,	convert::to_bool(false))
+	CONFIG_VAL( std::string,	s,	convert::str())
 )
 
 CONFIG_CLASS( test_comma_list_struct,
-	( std::vector<std::string>, 	vec, convert::comma_list<std::vector<std::string> >() )
-	( std::set<std::string>, 	set, convert::comma_list<std::set<std::string> >() )
+	CONFIG_VAL( std::vector<std::string>, 	vec, convert::comma_list<std::vector<std::string> >() )
+	CONFIG_VAL( std::set<std::string>, 	set, convert::comma_list<std::set<std::string> >() )
 )
+
+CONFIG_CLASS( test_comma_list_struct_templ,
+	CONFIG_VAL_T( std::vector<std::string>, vec, convert::comma_list)
+	CONFIG_VAL_T( std::set<std::string>, 	set, convert::comma_list)
+)
+
 
 namespace foo {
 	MAKE_ENUM( ey,
@@ -54,11 +60,9 @@ namespace foo {
 }
 
 CONFIG_CLASS( test_lexical_struct,
-	( foo::ey,	widget,		convert::lexical<foo::ey>())
-	( foo::ey,	gadget,		convert::lexical<foo::ey>(foo::BAZ))
+	CONFIG_VAL( foo::ey,	widget,		convert::lexical<foo::ey>())
+	CONFIG_VAL( foo::ey,	gadget,		convert::lexical<foo::ey>(foo::BAZ))
 )
-
-convert::lexical<foo::ey> blah;
 
 BOOST_AUTO_TEST_SUITE ( test_config_convert )
 
@@ -87,6 +91,20 @@ BOOST_AUTO_TEST_CASE( test_comma_list )
 	test_comma_list_struct t = from_config<test_comma_list_struct>(cfg);
 
 	const config cfg2 = to_config<test_comma_list_struct> (t);
+
+	BOOST_CHECK_EQUAL(cfg2["vec"].str(), "1,1,2,3,5");
+	BOOST_CHECK_EQUAL(cfg2["set"].str(), "2,4,6,8");
+}
+
+BOOST_AUTO_TEST_CASE( test_comma_list_templ )
+{
+	const config cfg = config_of
+		("vec", "1,1,2,3,5")
+		("set", "2,4,6,8");
+
+	test_comma_list_struct_templ t = from_config<test_comma_list_struct_templ>(cfg);
+
+	const config cfg2 = to_config<test_comma_list_struct_templ> (t);
 
 	BOOST_CHECK_EQUAL(cfg2["vec"].str(), "1,1,2,3,5");
 	BOOST_CHECK_EQUAL(cfg2["set"].str(), "2,4,6,8");

@@ -26,20 +26,38 @@
 #include <string>
 
 /**
- * These template functions act as an interface to the functions defined by
- * the CONFIG_CLASS macro, if you don't want to read the macros below.
+ * This file defines the CONFIG_CLASS macro and interface.
  *
- * CONFIG_CLASS defines an all public class (not technically a struct though) from 
- * a list of member variables, identifiers, and attribute_value_converter objects.
- * Converter objects are function objects which might be constructed with default 
- * values or special policies, and convert between some type and config::attribute_value
- * and back. The variable name is enforced to be the corresponding config attribute 
- * value, plus an underscore. 
+ * A config class is essentially a struct which specifies read and write methods
+ * to convert it to and from a config. These conversions are specified in the definition,
+ * by listing a type, an identifier, and (optionally) a conversion policy. Example usage:
  *
- * TODO: A fallback attribute value to read from may be specified in case the intended
- * attribute is missing.
+ * CONFIG_CLASS( demo,
+ * 	(CONFIG_VAL(int,		i,	convert::to_int(3) ))
+ * 	(CONFIG_VAL(std::string,	s,	convert::str() ))
+ *	(CONFIG_VAL(bool,		b, 	convert::to_bool(true)))
+ * )
+ *
+ * This defines a class with public member variables int i_, std::string s_, and bool b_,
+ * which can be converted to and from a config using the template functions
+ * `to_config<demo>` and `from_config<demo>`. The convert functions defined above refer
+ * to member functions of config::attribute value. The third argument can be any
+ * attribute_value_converter object. If it is ommitted, then the assignment operator of
+ * config::attribute_value is invoked.
+ *
+ * The CONFIG_VAL_WITH_FALLBACK macro specifies the name of a secondary config attribute to
+ * read if the first one is missing.
+ *
+ * The CONFIG_VAL_T macro is for use with templated converters, it adds the type (first arg)
+ * as a template parameter to the converter implicitly.
  *
  * TODO: Extend this to include config converter objects to parse children.
+ */
+
+/**
+ * These template functions act as an interface to the functions defined by
+ * the CONFIG_CLASS macro, so that directly calling the read / write functions
+ * defined by the macro is unnecessary.
  */
 template <class T>
 config to_config(const T & t)
@@ -92,76 +110,64 @@ public:
 // Gets a variable name by appending _
 #define GET_VAR_NAME( b ) CAT2( b, _ )
 
-// Generate code from a ( type, identifier, convertor) triple
+// Gets a config atttribute value from name
+#define GET_CFG_NAME( b ) cfg [ QQ ( b ) ]
+
+// Compose a var def, read statement, write statement, and identifier name, from an input tuple. We hold onto the identifier name for use when making the list of attributes.
+#define CONFIG_VAL( a, b, c ) ((  a GET_VAR_NAME(b) ; \
+				, GET_VAR_NAME(b) = c ( GET_CFG_NAME(b) ) ; \
+				, GET_CFG_NAME(b) = c ( GET_VAR_NAME(b) ) ; \
+				, b))
+
+// Compose a var def, read statement, write statement, and identifier name using a fallback value when reading
+#define CONFIG_VAL_WITH_FALLBACK( a, b, c, d ) (( a GET_VAR_NAME(b) ; \
+				, if (cfg.has_attribute( QQ( b ) )) GET_VAR_NAME(b) = c ( GET_CFG_NAME(b) ) ; \
+				  else GET_VAR_NAME(b) = c ( cfg[ d ] ); \
+				, GET_CFG_NAME(b) = c ( GET_VAR_NAME(b) ) ; \
+				, b))
+
+// Pass the type a as a template argument to the converter c, and use default constructor
+#define CONFIG_VAL_T( a, b, c ) CONFIG_VAL(a, b, c< a >())
+
+// Generate code from a ( decl, read, write, identifier ) quad (the output of CONFIG_VAL-type macros)
 // Gets a variable defn corresponding to a triple
-#define GET_VAR_DEFN3( a, b, c ) a GET_VAR_NAME( b ) ;
-#define EXPAND_VAR_DEFS3( r, data, elem ) GET_VAR_DEFN3 elem
+#define GET_VAR_DEFN( a, b, c, d ) a
+#define GET_VAR_HELPER( r, data, elem ) GET_VAR_DEFN elem
+#define EXPAND_VAR_DEFS( CONTENTS ) BOOST_PP_SEQ_FOR_EACH( GET_VAR_HELPER, , CONTENTS )
 
 // Gets a read statement corresponding to a triple
-#define GET_READ3( a, b, c ) GET_VAR_NAME( b ) = c ( cfg[ QQ( b ) ] ) ;
-#define EXPAND_READS3( r, data, elem ) GET_READ3 elem
+#define GET_READ( a, b, c, d ) b
+#define GET_READ_HELPER( r, data, elem ) GET_READ elem
+#define EXPAND_READS( CONTENTS ) BOOST_PP_SEQ_FOR_EACH( GET_READ_HELPER, , CONTENTS )
 
 // Gets a write statement corresponding to a triple
-#define GET_WRITE3( a, b, c ) cfg[ QQ( b ) ] = c ( GET_VAR_NAME( b ) ) ;
-#define EXPAND_WRITES3( r, data, elem ) GET_WRITE3 elem
+#define GET_WRITE( a, b, c, d ) c
+#define GET_WRITE_HELPER( r, data, elem ) GET_WRITE elem
+#define EXPAND_WRITES( CONTENTS ) BOOST_PP_SEQ_FOR_EACH( GET_WRITE_HELPER, , CONTENTS )
 
-// Formats args as triples so that we can use BOOST_PP_SEQ_FOREACH
-#define ADD_PARENS_1( A, B, C ) ((A, B, C)) ADD_PARENS_2
-#define ADD_PARENS_2( A, B, C ) ((A, B, C)) ADD_PARENS_1
-#define ADD_PARENS_1_END
-#define ADD_PARENS_2_END
-#define MAKE_TRIPLES( INPUT ) BOOST_PP_CAT(ADD_PARENS_1 INPUT,_END)
-
-// Generate code from a ( type, identifier, convertor, fallback config attribute ) quad
-// Get a variable definition from a quad the same as from a triple
-#define GET_VAR_DEFN4( a, b, c, d ) GET_VAR_DEFN3( a, b, c )
-#define EXPAND_VAR_DEFS4( r, data, elem ) GET_VAR_DEFN4 elem
-
-// Get a write statement from a quad the same as from a triple
-#define GET_WRITE4( a, b, c, d ) GET_WRITE3( a, b, c )
-#define EXPAND_WRITES4( r, data, elem ) GET_WRITE4 elem
-
-// Get a read statement corresponding to a quad
-#define GET_READ4( a, b, c, d ) GET_VAR_NAME( b ) = c ( cfg.has_attribute( QQ( b ) ) ? cfg[ QQ( b ) ] : cfg[ d ] )
-
-// Format args as quads so that we can use BOOST_PP_SEQ_FOREACH
-#define ADD_PARENS_3( A, B, C, D ) ((A, B, C, D)) ADD_PARENS_4
-#define ADD_PARENS_4( A, B, C, D ) ((A, B, C, D)) ADD_PARENS_3
-#define ADD_PARENS_3_END
-#define ADD_PARENS_4_END
-#define MAKE_QUADS( INPUT ) BOOST_PP_CAT(ADD_PARENS_3 INPUT,_END)
+// Gets a pushback statement used when making a list of attributes
+#define GET_PUSHBACK_NAME( a, b, c, d ) attrs.push_back(QQ(d));
+#define GET_NAME_HELPER( r, data, elem ) GET_PUSHBACK_NAME elem
+#define EXPAND_ATTR_NAMES( CONTENTS ) BOOST_PP_SEQ_FOR_EACH( GET_NAME_HELPER, , CONTENTS )
 
 // Define the config struct, with variable defns, read and write functions, and a name.
 // This can now be used with the templates defined above.
-#define CONFIG_CLASS( NAME, CONTENTS3 ) \
+#define CONFIG_CLASS( NAME, CONTENTS ) \
 class NAME { \
 public: \
-	BOOST_PP_SEQ_FOR_EACH( EXPAND_VAR_DEFS3 , , MAKE_TRIPLES( CONTENTS3 ) ) \
+	EXPAND_VAR_DEFS(CONTENTS)\
 	void read(const config & cfg) { \
-		BOOST_PP_SEQ_FOR_EACH( EXPAND_READS3, , MAKE_TRIPLES( CONTENTS3 ) ) \
+		EXPAND_READS(CONTENTS) \
 	} \
 	void write(config & cfg) const { \
-		BOOST_PP_SEQ_FOR_EACH( EXPAND_WRITES3, , MAKE_TRIPLES( CONTENTS3 ) ) \
+		EXPAND_WRITES(CONTENTS) \
 	} \
 	static const std::string name() { return QQ(NAME) ; } \
-};
-
-/*
-#define CONFIG_CLASS( NAME, CONTENTS3, CONTENTS4 ) \
-class NAME { \
-public: \
-	BOOST_PP_SEQ_FOREACH( EXPAND_VAR_DEFS3 , , MAKE_TRIPLES( CONTENTS3 ) ) \
-	BOOST_PP_SEQ_FOREACH( EXPAND_VAR_DEFS4 , , MAKE_QUADS( CONTENTS4 ) ) \
-	void read(const config & cfg) { \
-		BOOST_PP_SEQ_FOREACH( EXPAND_READS3, , MAKE_TRIPLES( CONTENTS3 ) ) \
-		BOOST_PP_SEQ_FOREACH( EXPAND_READS4, , MAKE_QUADS( CONTENTS4 ) ) \
+	static const std::vector<std::string> attributes() { \
+		std::vector<std::string> attrs; \
+		EXPAND_ATTR_NAMES(CONTENTS) \
+		return attrs; \
 	} \
-	void write(config & cfg) { \
-		BOOST_PP_SEQ_FOREACH( EXPAND_WRITES3, , MAKE_TRIPLES( CONTENTS3 ) ) \
-		BOOST_PP_SEQ_FOREACH( EXPAND_WRITES4, , MAKE_QUADS( CONTENTS4 ) ) \
-	} \
-	static const std::string name( QQ(NAME) ); \
 };
-*/
 
 #endif
