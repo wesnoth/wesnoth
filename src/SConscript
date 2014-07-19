@@ -71,7 +71,6 @@ libwesnoth_core = [env.Library("wesnoth_core", libwesnoth_core_sources)]
 libwesnoth_sources = Split("""
     arrow.cpp
     clipboard.cpp
-    config_assign.cpp
     construct_dialog.cpp
     cursor.cpp
     display.cpp
@@ -230,9 +229,13 @@ wesnoth_sources = Split("""
     commandline_options.cpp
     carryover.cpp
     config_cache.cpp
+    configure_engine.cpp
+    connect_engine.cpp
     controller_base.cpp
+    create_engine.cpp
     desktop/notifications.cpp
     desktop/open.cpp
+    depcheck.cpp
     dialogs.cpp
     display_chat_manager.cpp
     editor/action/action.cpp
@@ -369,6 +372,8 @@ wesnoth_sources = Split("""
     gui/dialogs/chat_log.cpp
     gui/dialogs/data_manage.cpp
     gui/dialogs/debug_clock.cpp
+    gui/dialogs/depcheck_confirm_change.cpp
+    gui/dialogs/depcheck_select_new.cpp
     gui/dialogs/dialog.cpp
     gui/dialogs/edit_label.cpp
     gui/dialogs/editor/editor_edit_label.cpp
@@ -398,8 +403,6 @@ wesnoth_sources = Split("""
     gui/dialogs/mp_connect.cpp
     gui/dialogs/mp_create_game.cpp
     gui/dialogs/mp_create_game_set_password.cpp
-    gui/dialogs/depcheck_confirm_change.cpp
-    gui/dialogs/depcheck_select_new.cpp
     gui/dialogs/mp_host_game_prompt.cpp
     gui/dialogs/mp_login.cpp
     gui/dialogs/mp_method_selection.cpp
@@ -465,17 +468,13 @@ wesnoth_sources = Split("""
     mouse_events.cpp
     mouse_handler_base.cpp
     movetype.cpp
-    depcheck.cpp
     mp_game_settings.cpp
     mp_game_utils.cpp
     mp_options.cpp
     multiplayer.cpp
     multiplayer_configure.cpp
-    configure_engine.cpp
     multiplayer_connect.cpp
-    connect_engine.cpp
     multiplayer_create.cpp
-    create_engine.cpp
     multiplayer_lobby.cpp
     multiplayer_ui.cpp
     multiplayer_wait.cpp
