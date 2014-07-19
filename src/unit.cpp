@@ -1556,14 +1556,7 @@ size_t unit::modification_count(const std::string& mod_type, const std::string& 
 
 void unit::add_modification(const std::string& mod_type, const config& mod, bool no_add)
 {
-	bool generate_description = true;
-
-	//some trait activate specific flags
-	if ( mod_type == "trait" ) {
-		if (!mod["generate_description"].empty()) {
-			generate_description = mod["generate_description"].to_bool();
-		}
-	}
+	bool generate_description = mod["generate_description"].to_bool(true);
 
 	config *new_child = NULL;
 	if(no_add == false) {
