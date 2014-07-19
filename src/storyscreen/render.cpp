@@ -730,7 +730,7 @@ void part_ui::render_story_box()
 	SDL_Rect dstrect = sdl::create_rect(text_x_, 0, scan_width, scan_height);
 	bool scan_finished = false;
 	while(true) {
-		scan_finished = scan.y >= txttxt.height();
+		scan_finished = scan.y >= txttxt.base_height();
 		if (!scan_finished)
 		{
 			dstrect.y = fix_text_y + scan.y + storybox_padding;
