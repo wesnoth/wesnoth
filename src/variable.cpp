@@ -193,7 +193,7 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 					config::const_child_itors range = as_nonempty_range(insert_cfg["variable"]);
 					BOOST_FOREACH(const config& child, range)
 					{
-						res.push_back(vconfig(*range.first++, true));
+						res.push_back(vconfig(child, true));
 					}
 				}
 				catch(const invalid_variablename_exception&)
