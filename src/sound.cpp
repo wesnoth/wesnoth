@@ -160,6 +160,8 @@ std::vector<std::string> played_before;
 std::vector<sound::music_track> current_track_list;
 sound::music_track current_track;
 sound::music_track last_track;
+bool shuffle = true;
+unsigned int track = 0;
 
 }
 
@@ -223,13 +225,20 @@ static bool track_ok(const std::string& id)
 static const sound::music_track &choose_track()
 {
 	assert(!current_track_list.empty());
+	
+	if (current_track_list.size() <= 1 ||
+		(!shuffle && track == current_track_list.size()) ) {
+		track = 0;
+	} 
 
-	unsigned int track = 0;
-
-	if (current_track_list.size() > 1) {
+	if (current_track_list.size() > 1 && shuffle) {
 		do {
 			track = rand()%current_track_list.size();
 		} while (!track_ok( current_track_list[track].file_path() ));
+	} else if (!shuffle && current_track_list.size() > 1) {
+		track++;
+		played_before.push_back( current_track_list[track - 1].file_path() );
+		return current_track_list[track - 1];	
 	}
 
 	//LOG_AUDIO << "Next track will be " << current_track_list[track].file_path() << "\n";
@@ -533,6 +542,11 @@ void play_music_repeatedly(const std::string &id)
 void play_music_config(const config &music_node)
 {
 	music_track track( music_node );
+	if (music_node["shuffle"] == "no") {
+		shuffle = false;
+	} else if (music_node["shuffle"] == "yes") {
+		shuffle = true;
+	}
 
 	if (!track.valid() && !track.id().empty()) {
 		ERR_AUDIO << "cannot open track '" << track.id() << "'; disabled in this playlist." << std::endl;
