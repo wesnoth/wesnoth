@@ -2010,7 +2010,9 @@ void display::draw_minimap()
 	}
 
 #ifdef SDL_GPU
-	image::draw_minimap(screen_, area, get_map(), &dc_->teams()[currentTeam_], NULL);
+	minimap_location_ = image::draw_minimap(screen_, area, get_map(), &dc_->teams()[currentTeam_], NULL);
+
+	draw_minimap_units();
 #else
 	if(minimap_ == NULL || minimap_->w > area.w || minimap_->h > area.h) {
 		minimap_ = image::getMinimap(area.w, area.h, get_map(), &dc_->teams()[currentTeam_], (selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : NULL);
@@ -2098,8 +2100,6 @@ void display::draw_minimap_units()
 			}
 		}
 
-		const Uint32 mapped_col = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
-
 		double u_x = u->get_location().x * xscaling;
 		double u_y = (u->get_location().y + (is_odd(u->get_location().x) ? 1 : -1)/4.0) * yscaling;
  		// use 4/3 to compensate the horizontal hexes imbrication
@@ -2110,8 +2110,12 @@ void display::draw_minimap_units()
 				, minimap_location_.y + round_double(u_y)
 				, round_double(u_w)
 				, round_double(u_h));
-
+#ifdef SDL_GPU
+		sdl::fill_rect(*get_render_target(), r, col);
+#else
+		const Uint32 mapped_col = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
 		sdl::fill_rect(video().getSurface(), &r, mapped_col);
+#endif
 	}
 }
 

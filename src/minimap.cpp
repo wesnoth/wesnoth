@@ -283,7 +283,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 }
 
 #ifdef SDL_GPU
-void draw_minimap(CVideo &video, const SDL_Rect &area, const gamemap &map, const team *vw, const std::map<map_location, unsigned int> *reach_map)
+SDL_Rect draw_minimap(CVideo &video, const SDL_Rect &area, const gamemap &map, const team *vw, const std::map<map_location, unsigned int> *reach_map)
 {
 	const float width = map.w() * 72 * 3/4;
 	const float height = map.h() * 72 + 72 * 1/4;
@@ -415,6 +415,8 @@ void draw_minimap(CVideo &video, const SDL_Rect &area, const gamemap &map, const
 			}
 		}
 	}
+
+	return sdl::create_rect(xoff, yoff, width * scale_factor, height * scale_factor);
 }
 #endif
 
