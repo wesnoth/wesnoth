@@ -156,6 +156,10 @@ namespace image {
 	typedef std::map<light_string, surface> lit_variants;
 	// lighted variants for each locator
 	typedef cache_type<lit_variants> lit_cache;
+#ifdef SDL_GPU
+	typedef std::map<light_string, sdl::timage> lit_texture_variants;
+	typedef cache_type<lit_texture_variants> lit_texture_cache;
+#endif
 
 	void flush_cache();
 
@@ -217,10 +221,9 @@ namespace image {
 	///after applying the lightmap encoded in ls
 	///type should be HEXED or SCALED_TO_HEX
 #ifdef SDL_GPU
-	sdl::timage get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type);
-#else
-	surface get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type);
+	sdl::timage get_lighted_texture(const image::locator& i_locator, const light_string& ls, TYPE type);
 #endif
+	surface get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type);
 
 	///function to get the standard hex mask
 	surface get_hexmask();

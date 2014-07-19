@@ -140,6 +140,9 @@ image::bool_cache is_empty_hex_;
 // caches storing the different lighted cases for each image
 image::lit_cache lit_images_,
 		lit_scaled_images_;
+#ifdef SDL_GPU
+image::lit_texture_cache lit_textures_;
+#endif
 // caches storing each lightmap generated
 image::lit_variants lightmaps_;
 
@@ -560,7 +563,6 @@ light_string get_light_string(int op, int r, int g, int b){
 	return ls;
 }
 
-#ifndef SDL_GPU
 static surface apply_light(surface surf, const light_string& ls){
 	// atomic lightmap operation are handled directly (important to end recursion)
 	if(ls.size() == 4){
@@ -605,7 +607,6 @@ static surface apply_light(surface surf, const light_string& ls){
 	// apply the final lightmap
 	return light_surface(surf, lightmap);
 }
-#endif
 
 bool locator::file_exists() const
 {
@@ -966,11 +967,41 @@ sdl::timage get_texture(const locator& loc, TYPE type)
 #endif
 
 #ifdef SDL_GPU
-sdl::timage get_lighted_image(const locator &i_locator, const light_string &/*ls*/, TYPE type)
+sdl::timage get_lighted_texture(const locator &i_locator, const light_string &ls, TYPE type)
 {
-	return get_texture(i_locator, type);
+	sdl::timage res;
+	if(i_locator.is_void())
+		return res;
+
+	// if no light variants yet, need to add an empty map
+	if(!i_locator.in_cache(lit_textures_)){
+		i_locator.add_to_cache(lit_textures_, lit_texture_variants());
+	}
+
+	//need access to add it if not found
+	{ // enclose reference pointing to data stored in a changing vector
+		const lit_texture_variants& lvar = i_locator.locate_in_cache(lit_textures_);
+		lit_texture_variants::const_iterator lvi = lvar.find(ls);
+		if(lvi != lvar.end()) {
+			return lvi->second;
+		}
+	}
+
+	// not cached yet, generate it
+	surface surf = get_image(i_locator, HEXED);
+	surf = apply_light(surf, ls);
+
+	res = sdl::timage(surf);
+
+	if (type == SCALED_TO_HEX) {
+		res.set_scale(zoom / 72.0f, zoom / 72.0f);
+	}
+	// record the lighted surface in the corresponding variants cache
+	i_locator.access_in_cache(lit_textures_)[ls] = res;
+
+	return res;
 }
-#else
+#endif
 surface get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type)
 {
 	surface res;
@@ -1022,7 +1053,6 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 
 	return res;
 }
-#endif
 
 surface get_hexmask()
 {

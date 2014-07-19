@@ -1141,7 +1141,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 			} else if(lt.empty()) {
 				img = image::get_texture(image, image::SCALED_TO_HEX);
 			} else {
-				img = image::get_lighted_image(image, lt, image::SCALED_TO_HEX);
+				img = image::get_lighted_texture(image, lt, image::SCALED_TO_HEX);
 			}
 
 			if (!img.null()) {
@@ -2803,7 +2803,7 @@ void display::draw_hex(const map_location& loc) {
 
 #ifdef SDL_GPU
 				const sdl::timage img = use_local_light
-					   ? image::get_lighted_image(overlays.first->second.image, lt, image::SCALED_TO_HEX)
+					   ? image::get_lighted_texture(overlays.first->second.image, lt, image::SCALED_TO_HEX)
 					   : image::get_texture(overlays.first->second.image, image_type);
 				drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, img);
 #else
