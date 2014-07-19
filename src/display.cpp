@@ -2953,9 +2953,10 @@ image::TYPE display::get_image_type(const map_location& /*loc*/) {
 #ifdef SDL_GPU
 void display::draw_image_for_report(sdl::timage& img, SDL_Rect& rect)
 {
-	const float scale_factor = std::min(rect.w / img.width(), rect.h / img.height());
-	const int xpos = rect.x + (rect.w - img.width() * scale_factor)/2;
-	const int ypos = rect.y + (rect.h - img.height() * scale_factor)/2;
+	const float scale_factor = std::min(rect.w / img.base_width(), rect.h / img.base_height());
+	img.set_scale(scale_factor, scale_factor);
+	const int xpos = rect.x + (rect.w - img.width())/2;
+	const int ypos = rect.y + (rect.h - img.height())/2;
 
 	screen_.draw_texture(img, xpos, ypos);
 }
