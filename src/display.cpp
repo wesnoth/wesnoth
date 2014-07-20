@@ -936,6 +936,21 @@ void display::create_buttons()
 	DBG_DP << "buttons created\n";
 }
 
+void display::render_buttons()
+{
+	BOOST_FOREACH(gui::button &btn, menu_buttons_) {
+		btn.set_dirty(true);
+	}
+
+	BOOST_FOREACH(gui::button &btn, action_buttons_) {
+		btn.set_dirty(true);
+	}
+
+	BOOST_FOREACH(gui::slider &sld, sliders_) {
+		sld.set_dirty(true);
+	}
+}
+
 gui::button::TYPE display::string_to_button_type(std::string type)
 {
 	gui::button::TYPE res = gui::button::TYPE_PRESS;
@@ -1538,8 +1553,12 @@ void display::draw_all_panels()
 	for(std::vector<theme::label>::const_iterator i = labels.begin(); i != labels.end(); ++i) {
 		draw_label(video(),screen,*i);
 	}
-
+#ifdef SDL_GPU
+	render_buttons();
+#else
+	//FIXME: does it really make sense to recreate buttons all the time?
 	create_buttons();
+#endif
 }
 
 static void draw_background(surface screen, const SDL_Rect& area, const std::string& image)
