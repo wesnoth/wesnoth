@@ -201,7 +201,7 @@ uint32_t send_dbus_notification(DBusConnection *connection, uint32_t replaces_id
 
 namespace dbus {
 
-const int MAX_MSG_LINES = 5;
+const size_t MAX_MSG_LINES = 5;
 
 void send_notification(const std::string & owner, const std::string & message, bool with_history)
 {
