@@ -25,8 +25,8 @@
 
 #include "about.hpp"
 #include "display.hpp"
+#include "display_context.hpp"
 #include "exceptions.hpp"
-#include "game_board.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -1380,9 +1380,6 @@ public:
 	terrain_topic_generator(const terrain_type& type) : type_(type) {}
 
 	virtual std::string operator()() const {
-
-		assert(resources::gameboard);
-
 		std::stringstream ss;
 
 		if (!type_.icon_image().empty())
@@ -1394,15 +1391,21 @@ public:
 
 		ss << type_.help_topic_text().str() << "\n";
 
+		if (!display::get_singleton()) {
+			WRN_DP << "When building terrain help topics, the display object was null and we couldn't finish.\n";
+			return ss.str();
+		} // abort early if we can't get a gamemap object from the display
+		const gamemap & map = display::get_singleton()->get_disp_context().map();
+
 		if (!(type_.union_type().size() == 1 && type_.union_type()[0] == type_.number() && type_.is_nonnull())) {
 
-			const t_translation::t_list& underlying_mvt_terrains = resources::gameboard->map().underlying_mvt_terrain(type_.number());
+			const t_translation::t_list& underlying_mvt_terrains = map.underlying_mvt_terrain(type_.number());
 
 			ss << "\n" << N_("Base Terrain: ");
 
 			bool first = true;
 			BOOST_FOREACH(const t_translation::t_terrain& underlying_terrain, underlying_mvt_terrains) {
-				const terrain_type& mvt_base = resources::gameboard->map().get_terrain_info(underlying_terrain);
+				const terrain_type& mvt_base = map.get_terrain_info(underlying_terrain);
 
 				if (mvt_base.editor_name().empty()) continue;
 				if (!first) ss << ",";
@@ -1413,11 +1416,11 @@ public:
 			ss << "\n";
 
 			ss << "\n" << N_("Movement properties: ");
-			ss << print_behavior_description(underlying_mvt_terrains.begin(), underlying_mvt_terrains.end(), resources::gameboard->map()) << "\n";
+			ss << print_behavior_description(underlying_mvt_terrains.begin(), underlying_mvt_terrains.end(), map) << "\n";
 
-			const t_translation::t_list& underlying_def_terrains = resources::gameboard->map().underlying_def_terrain(type_.number());
+			const t_translation::t_list& underlying_def_terrains = map.underlying_def_terrain(type_.number());
 			ss << "\n" << N_("Defense properties: ");
-			ss << print_behavior_description(underlying_def_terrains.begin(), underlying_def_terrains.end(), resources::gameboard->map()) << "\n";
+			ss << print_behavior_description(underlying_def_terrains.begin(), underlying_def_terrains.end(), map) << "\n";
 		}
 
 		if (game_config::debug) {
@@ -1451,13 +1454,13 @@ public:
 				ss << "\nEditor Image: " << type_.editor_image() << "\n";
 			}
 
-			const t_translation::t_list& underlying_mvt_terrains = resources::gameboard->map().underlying_mvt_terrain(type_.number());
+			const t_translation::t_list& underlying_mvt_terrains = map.underlying_mvt_terrain(type_.number());
 			ss << "\nDebug Mvt Description String:";
 			BOOST_FOREACH(const t_translation::t_terrain & t, underlying_mvt_terrains) {
 				ss << " " << t;
 			}
 
-			const t_translation::t_list& underlying_def_terrains = resources::gameboard->map().underlying_def_terrain(type_.number());
+			const t_translation::t_list& underlying_def_terrains = map.underlying_def_terrain(type_.number());
 			ss << "\nDebug Def Description String:";
 			BOOST_FOREACH(const t_translation::t_terrain & t, underlying_def_terrains) {
 				ss << " " << t;
@@ -1840,7 +1843,10 @@ public:
 		}
 		ss << generate_table(resistance_table);
 
-		if (resources::gameboard != NULL) {
+		if (display::get_singleton() != NULL) {
+			// get the gamemap from the display object
+			const gamemap & map = display::get_singleton()->get_disp_context().map();
+
 			// Print the terrain modifier table of the unit.
 			ss << "\n\n<header>text='" << escape(_("Terrain Modifiers"))
 			   << "'</header>\n\n";
@@ -1871,7 +1877,7 @@ public:
 				const t_translation::t_terrain terrain = *terrain_it;
 				if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER)
 					continue;
-				const terrain_type& info = resources::gameboard->map().get_terrain_info(terrain);
+				const terrain_type& info = map.get_terrain_info(terrain);
 
 				if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
 					std::vector<item> row;
@@ -2014,6 +2020,8 @@ public:
 			}
 
 			ss << generate_table(table);
+		} else {
+			WRN_DP << "When building unit help topics, the display object was null and we couldn't get the terrain info we need.\n";
 		}
 		return ss.str();
 	}
@@ -2102,15 +2110,21 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 
 void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*level*/)
 {
-	if (resources::gameboard == NULL) return;
+	if (display::get_singleton() == NULL) {
+		WRN_DP << "When building terrain help sections, the display object was null, aborting.\n";
+		return;
+	}
+
+	// get the gamemap from the display object
+	const gamemap & map = display::get_singleton()->get_disp_context().map();
 
 	std::map<std::string, section> base_map;
 
-	const t_translation::t_list& t_listi = resources::gameboard->map().get_terrain_list();
+	const t_translation::t_list& t_listi = map.get_terrain_list();
 
 	BOOST_FOREACH(const t_translation::t_terrain& t, t_listi) {
 
-		const terrain_type& info = resources::gameboard->map().get_terrain_info(t);
+		const terrain_type& info = map.get_terrain_info(t);
 
 		bool hidden = info.is_combined() || info.hide_help();
 
@@ -2123,10 +2137,10 @@ void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*l
 		terrain_topic.id    = hidden_symbol(hidden) + terrain_prefix + info.id();
 		terrain_topic.text  = new terrain_topic_generator(info);
 
-		t_translation::t_list base_terrains = resources::gameboard->map().underlying_union_terrain(t);
+		t_translation::t_list base_terrains = map.underlying_union_terrain(t);
 		BOOST_FOREACH(const t_translation::t_terrain& base, base_terrains) {
 
-			const terrain_type& base_info = resources::gameboard->map().get_terrain_info(base);
+			const terrain_type& base_info = map.get_terrain_info(base);
 
 			if (!base_info.is_nonnull() || base_info.hide_help())
 				continue;
