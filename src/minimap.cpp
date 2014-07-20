@@ -312,7 +312,7 @@ SDL_Rect draw_minimap(CVideo &video, const SDL_Rect &area, const gamemap &map, c
 			const terrain_type& terrain_info = map.get_terrain_info(terrain);
 
 			const int xpos = x * tile_size * 3/4 + xoff;
-			const int ypos = y * tile_size + tile_size / 4 * (is_odd(x) ? 0 : 2) + yoff;
+			const int ypos = y * tile_size + tile_size / 4 * (is_odd(x) ? 2 : 0) + yoff;
 
 			if (draw_terrain) {
 				if (terrain_coding) {
