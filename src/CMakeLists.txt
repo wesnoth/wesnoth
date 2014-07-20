@@ -350,7 +350,7 @@ set_source_files_properties(
 		COMPILE_FLAGS "${CXX_FLAG_NO_OLD_STYLE_CAST}"
 )
 set_source_files_properties(
-	desktop_util.cpp
+	desktop/open.cpp
 	text.cpp
 	PROPERTIES
 		COMPILE_FLAGS
@@ -358,7 +358,7 @@ set_source_files_properties(
 )
 if(LIBDBUS_FOUND)
 	set_source_files_properties(
-		game_display.cpp
+		desktop/dbus_notification.cpp
 		PROPERTIES
 			COMPILE_FLAGS "${CXX_FLAG_NO_OLD_STYLE_CAST}"
 	)
