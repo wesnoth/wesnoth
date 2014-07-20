@@ -22,6 +22,11 @@ Example contents.
 The OS X user data directory is now ~/Library/Application Support/Wesnoth_1.13, in preparation for the upcoming development release, Wesnoth 1.13.0. This means that preferences and add-ons need to be either reset/reloaded or be copied/linked from ~/Library/Application Support/Wesnoth_1.11.
 [/section]
 
+[section="fearless/healthy [effect]s"]
+instead of checking whether the trait id equals fearless/healthy we now have fearless/heathy [effect]s
+this means especialy that umcaddons that use their own fearless/healthy traits have to add those [effect]s in them.
+[/section]
+
 ==========
 KNOWN BUGS
 ==========
