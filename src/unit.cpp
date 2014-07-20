@@ -273,7 +273,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 	recall_cost_(-1),
 	canrecruit_(cfg["canrecruit"].to_bool()),
 	recruit_list_(),
-	alignment_(lexical_cast_default<unit_type::ALIGNMENT> (cfg["alignment"].str(), unit_type::NEUTRAL)),
+	alignment_(),
 	flag_rgb_(),
 	image_mods_(),
 	unrenamable_(false),
@@ -503,6 +503,8 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 	if(!cfg["recall_cost"].blank()) {
 		recall_cost_ = cfg["recall_cost"].to_int(recall_cost_);
 	}
+
+	alignment_ = lexical_cast_default<unit_type::ALIGNMENT> (cfg["alignment"].str(), alignment_);
 
 	generate_name();
 
