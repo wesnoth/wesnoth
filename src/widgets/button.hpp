@@ -73,8 +73,9 @@ private:
 
 	void calculate_size();
 
-#ifdef SDL_GPU
 	std::string label_text_;
+
+#ifdef SDL_GPU
 	sdl::timage label_image_;
 	sdl::timage image_, pressedImage_, activeImage_, pressedActiveImage_,
 		touchedImage_, disabledImage_, pressedDisabledImage_,

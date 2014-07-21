@@ -51,7 +51,7 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 	  disabledImage_(), pressedDisabledImage_(),
 	  overlayImage_(), overlayPressedImage_(), overlayActiveImage_(),
 #else
-	  label_(),
+	  label_text_(label),
 	  image_(NULL), pressedImage_(NULL), activeImage_(NULL), pressedActiveImage_(NULL),
 	  disabledImage_(NULL), pressedDisabledImage_(NULL),
 	  overlayImage_(NULL), overlayPressedImage_(NULL), overlayActiveImage_(NULL),
@@ -245,7 +245,7 @@ void button::load_images() {
 	base_width_ = button_image->w;
 
 	if (type_ != TYPE_IMAGE) {
-		set_label(label_);
+		set_label(label_text_);
 	}
 
 	if(type_ == TYPE_PRESS || type_ == TYPE_TURBO) {
@@ -548,7 +548,7 @@ void button::draw_contents()
 		clipArea.y += offset;
 		clipArea.w -= 2*offset;
 		clipArea.h -= 2*offset;
-		font::draw_text(&video(), clipArea, font_size, button_color, label_, textx, texty);
+		font::draw_text(&video(), clipArea, font_size, button_color, label_text_, textx, texty);
 	}
 
 	update_rect(loc);
@@ -590,10 +590,11 @@ void button::set_label(const std::string& val)
 	}
 
 	calculate_size();
-
+#ifdef SDL_GPU
 	font::ttext text;
 	text.set_text(label_text_, false);
 	label_image_ = text.render_as_texture();
+#endif
 
 	set_dirty(true);
 }
