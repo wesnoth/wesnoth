@@ -936,6 +936,7 @@ void display::create_buttons()
 	DBG_DP << "buttons created\n";
 }
 
+#ifdef SDL_GPU
 void display::render_buttons()
 {
 	BOOST_FOREACH(gui::button &btn, menu_buttons_) {
@@ -950,6 +951,7 @@ void display::render_buttons()
 		sld.set_dirty(true);
 	}
 }
+#endif
 
 gui::button::TYPE display::string_to_button_type(std::string type)
 {
