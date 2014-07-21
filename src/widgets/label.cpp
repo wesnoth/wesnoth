@@ -18,12 +18,18 @@
 
 #include "widgets/label.hpp"
 #include "marked-up_text.hpp"
+#include "text.hpp"
+#include "video.hpp"
 
 namespace gui {
 
 label::label(CVideo& video, const std::string& text, int size, const SDL_Color& color, const bool auto_join) : widget(video, auto_join), text_(text), size_(size), color_(color)
 {
+#ifdef SDL_GPU
+	render_text();
+#else
 	update_label_size();
+#endif
 }
 
 const std::string& label::set_text(const std::string& text)
@@ -32,7 +38,11 @@ const std::string& label::set_text(const std::string& text)
 		return text_;
 
 	text_ = text;
+#ifdef SDL_GPU
+	render_text();
+#else
 	update_label_size();
+#endif
 	set_dirty();
 	return text_;
 }
@@ -45,6 +55,9 @@ const std::string& label::get_text() const
 const SDL_Color& label::set_color(const SDL_Color& color)
 {
 	color_ = color;
+#ifdef SDL_GPU
+	render_text();
+#endif
 	set_dirty();
 	return get_color();
 }
@@ -58,7 +71,11 @@ void label::draw_contents()
 {
 	const SDL_Rect& loc = location();
 	if (!text_.empty() && loc.w > 0 && loc.h > 0)
+#ifdef SDL_GPU
+		video().draw_texture(text_image_, loc.x, loc.y);
+#else
 		font::draw_text(&video(), loc, size_, get_color(), text_, loc.x, loc.y);
+#endif
 }
 
 void label::update_label_size()
@@ -66,6 +83,21 @@ void label::update_label_size()
 	SDL_Rect area = font::text_area(text_, size_);
 	set_measurements(area.w, area.h);
 }
+
+#ifdef SDL_GPU
+void label::render_text()
+{
+	font::ttext txt;
+
+	txt.set_text(text_, true);
+	const Uint32 color = (color_.r << 16) + (color_.g << 16) + (color_.b);
+	txt.set_foreground_color(color);
+	txt.set_font_size(size_);
+
+	text_image_ = txt.render_as_texture();
+	set_measurements(text_image_.width(), text_image_.height());
+}
+#endif
 
 
 }
