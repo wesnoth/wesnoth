@@ -1065,7 +1065,7 @@ void generate_sections(const config *help_cfg, const std::string &generator, sec
 		std::vector<std::string> parts = utils::split(generator, ':', utils::STRIP_SPACES);
 		if (parts[0] == "units" && parts.size()>1) {
 			generate_unit_sections(help_cfg, sec, level, true, parts[1]);
-		} else {
+		} else if (generator.size() > 0) {
 			WRN_HP << "Found a section generator that I didn't recognize: " << generator << "\n";
 		}
 	}
