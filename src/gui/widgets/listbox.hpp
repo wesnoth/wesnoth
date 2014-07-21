@@ -209,6 +209,11 @@ public:
 							  const std::vector<twidget*>& call_stack) OVERRIDE;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
+	void
+	set_callback_item_change(const boost::function<void(size_t)>& callback)
+	{
+		callback_item_changed_ = callback;
+	}
 
 	void
 	set_callback_value_change(const boost::function<void(twidget&)>& callback)
@@ -273,6 +278,13 @@ private:
 
 	/** Contains the builder for the new items. */
 	tbuilder_grid_const_ptr list_builder_;
+
+	/**
+	 * This callback is called when a list item is clicked (toggled).
+	 *
+	 * The function is passed the index of the toggled item.
+	 */
+	boost::function<void(size_t)> callback_item_changed_;
 
 	/**
 	 * This callback is called when the value in the listbox changes.

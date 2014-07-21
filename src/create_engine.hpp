@@ -213,10 +213,19 @@ public:
 
 	void set_current_level(const size_t index);
 
-	void set_current_era_index(const size_t index);
+	void set_current_era_index(const size_t index, bool force = false);
 	void set_current_mod_index(const size_t index);
-	bool toggle_current_mod();
 
+	size_t current_era_index() const;
+	size_t current_mod_index() const;
+
+	const std::vector<extras_metadata_ptr>&
+		get_const_extras_by_type(const MP_EXTRA extra_type) const;
+	std::vector<extras_metadata_ptr>&
+		get_extras_by_type(const MP_EXTRA extra_type);
+
+	bool toggle_current_mod(bool force = false);
+	
 	bool generator_assigned() const;
 	void generator_user_config(display& disp);
 
@@ -240,11 +249,6 @@ private:
 	void init_all_levels();
 	void init_extras(const MP_EXTRA extra_type);
 	void apply_level_filters();
-
-	const std::vector<extras_metadata_ptr>&
-		get_const_extras_by_type(const MP_EXTRA extra_type) const;
-	std::vector<extras_metadata_ptr>&
-		get_extras_by_type(const MP_EXTRA extra_type);
 
 	size_t map_level_index(size_t index) const;
 

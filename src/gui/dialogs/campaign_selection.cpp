@@ -18,6 +18,7 @@
 
 #include "gui/auxiliary/find_widget.tpp"
 #include "gui/dialogs/helper.hpp"
+#include "gui/dialogs/campaign_settings.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -109,11 +110,12 @@ void tcampaign_selection::campaign_selected(twindow& window)
 	}
 }
 
-void tcampaign_selection::show_settings() {
-	//TODO: launch advanced settings dialog
+void tcampaign_selection::show_settings(CVideo& video) {
+	tcampaign_settings settings_dlg(engine_);
+	settings_dlg.show(video);
 }
 
-void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
+void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 {
 	if(new_widgets && false) {
 		/***** Setup campaign tree. *****/
@@ -145,7 +147,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 				= find_widget<tmulti_page>(&window, "campaign_details", false);
 
 		unsigned id = 0;
-		FOREACH(const AUTO & level, campaigns_)
+		FOREACH(const AUTO & level, engine_.get_levels_by_type_unfiltered(ng::level::SP_CAMPAIGN))
 		{
 			const config& campaign = level->data();
 
@@ -213,7 +215,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 		tmulti_page& multi_page
 				= find_widget<tmulti_page>(&window, "campaign_details", false);
 
-		FOREACH(const AUTO & level, campaigns_)
+		FOREACH(const AUTO & level, engine_.get_levels_by_type_unfiltered(ng::level::SP_CAMPAIGN))
 		{
 			const config& campaign = level->data();
 
@@ -257,7 +259,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 	tbutton& advanced_settings_button =
 			find_widget<tbutton>(&window, "advanced_settings", false);
 	advanced_settings_button.connect_click_handler(
-			boost::bind(&tcampaign_selection::show_settings, this));
+			boost::bind(&tcampaign_selection::show_settings, this, boost::ref(video)));
 }
 
 void tcampaign_selection::post_show(twindow& window)

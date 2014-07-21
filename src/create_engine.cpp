@@ -370,8 +370,12 @@ create_engine::create_engine(game_display& disp, saved_game& state) :
 
 	// Restore game config for multiplayer.
 	game_classification::CAMPAIGN_TYPE type = state_.classification().campaign_type;
+	bool configure = state_.mp_settings().show_configure;
+	bool connect = state_.mp_settings().show_connect;
 	state_ = saved_game();
 	state_.classification().campaign_type = type;
+	state_.mp_settings().show_configure = configure;
+	state_.mp_settings().show_connect = connect;
 
 	if(type == game_classification::MULTIPLAYER)
 		resources::config_manager->
@@ -736,11 +740,11 @@ void create_engine::set_current_level(const size_t index)
 	}
 }
 
-void create_engine::set_current_era_index(const size_t index)
+void create_engine::set_current_era_index(const size_t index, bool force)
 {
 	current_era_index_ = index;
 
-	dependency_manager_.try_era_by_index(index);
+	dependency_manager_.try_era_by_index(index, force);
 }
 
 void create_engine::set_current_mod_index(const size_t index)
@@ -748,10 +752,20 @@ void create_engine::set_current_mod_index(const size_t index)
 	current_mod_index_ = index;
 }
 
-bool create_engine::toggle_current_mod()
+size_t create_engine::current_era_index() const
+{
+	return current_era_index_;
+}
+
+size_t create_engine::current_mod_index() const
+{
+	return current_mod_index_;
+}
+
+bool create_engine::toggle_current_mod(bool force)
 {
 	bool is_active = dependency_manager_.is_modification_active(current_mod_index_);
-	dependency_manager_.try_modification_by_index(current_mod_index_, !is_active);
+	dependency_manager_.try_modification_by_index(current_mod_index_, !is_active, force);
 
 	state_.mp_settings().active_mods = dependency_manager_.get_modifications();
 

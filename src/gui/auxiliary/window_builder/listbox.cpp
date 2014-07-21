@@ -48,6 +48,8 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg)
 	, footer(NULL)
 	, list_builder(NULL)
 	, list_data()
+	, has_minimum_(cfg["has_minimum"].to_bool(true))
+	, has_maximum_(cfg["has_maximum"].to_bool(true))
 {
 	if(const config& h = cfg.child("header")) {
 		header = new tbuilder_grid(h);
@@ -131,7 +133,7 @@ twidget* tbuilder_listbox::build() const
 	}
 
 	tlistbox* widget
-			= new tlistbox(true, true, tgenerator_::vertical_list, true);
+			= new tlistbox(has_minimum_, has_maximum_, tgenerator_::vertical_list, true);
 
 	init_control(widget);
 

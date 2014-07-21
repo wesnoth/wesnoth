@@ -702,6 +702,9 @@ bool game_launcher::new_campaign()
 	state_ = saved_game();
 	state_.classification().campaign_type = game_classification::SCENARIO;
 
+	state_.mp_settings().show_configure = false;
+	state_.mp_settings().show_connect = false;
+
 	return sp::enter_create_mode(disp(), resources::config_manager->game_config(),
 		state_, jump_to_campaign_, true);
 }
