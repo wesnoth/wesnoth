@@ -1299,6 +1299,42 @@ std::vector<topic> generate_faction_topics(const config & era, const bool sort_g
 			text << "\n";
 		}
 
+		const std::vector<std::string> recruit_ids = utils::split(f["recruit"]);
+		std::set<std::string> races;
+		std::set<std::string> alignments;
+
+		BOOST_FOREACH(const std::string & u_id, recruit_ids) {
+			if (const unit_type * t = unit_types.find(u_id, unit_type::HELP_INDEXED)) {
+				const unit_type & type = *t;
+
+				unit_types.build_unit_type(type, unit_type::WITHOUT_ANIMATIONS);
+
+				if (const unit_race *r = unit_types.find_race(type.race_id())) {
+					races.insert(make_link(r->plural_name(), std::string("..") + race_prefix + r->id()));
+				}
+				DBG_HP << type.alignment() << " -> " << type.alignment_description(type.alignment(), type.genders().front()) << "\n";
+				alignments.insert(make_link(type.alignment_description(type.alignment(), type.genders().front()), "time_of_day"));
+			}
+		}
+
+		if (races.size() > 0) {
+			std::set<std::string>::iterator it = races.begin();
+			text << _("Races: ") << *(it++);
+			while(it != races.end()) {
+				text << ", " << *(it++);
+			}
+			text << "\n\n";
+		}
+
+		if (alignments.size() > 0) {
+			std::set<std::string>::iterator it = alignments.begin();
+			text << _("Alignments: ") << *(it++);
+			while(it != alignments.end()) {
+				text << ", " << *(it++);
+			}
+			text << "\n\n";
+		}
+
 		text << "<header>text='" << _("Leaders:") << "'</header>" << "\n";
 		const std::vector<std::string> leaders =
 				make_unit_links_list( utils::split(f["leader"]), true );
@@ -1309,9 +1345,9 @@ std::vector<topic> generate_faction_topics(const config & era, const bool sort_g
 		text << "\n";
 
 		text << "<header>text='" << _("Recruits:") << "'</header>" << "\n";
-		const std::vector<std::string> recruits =
-				make_unit_links_list( utils::split(f["recruit"]), true );
-		BOOST_FOREACH(const std::string &link, recruits) {
+		const std::vector<std::string> recruit_links =
+				make_unit_links_list( recruit_ids, true );
+		BOOST_FOREACH(const std::string &link, recruit_links) {
 			text << link << "\n";
 		}
 
