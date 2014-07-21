@@ -48,6 +48,10 @@
 static lg::log_domain log_display("display");
 #define WRN_DP LOG_STREAM(warn, log_display)
 
+static lg::log_domain log_help("help");
+#define WRN_HP LOG_STREAM(warn, log_help)
+#define DBG_HP LOG_STREAM(debug, log_help)
+
 namespace help {
 
 help_button::help_button(display& disp, const std::string &help_topic)
@@ -542,7 +546,10 @@ enum UNIT_DESCRIPTION_TYPE {FULL_DESCRIPTION, NO_DESCRIPTION, NON_REVEALING_DESC
 static UNIT_DESCRIPTION_TYPE description_type(const unit_type &type);
 static std::vector<topic> generate_ability_topics(const bool);
 static std::vector<topic> generate_weapon_special_topics(const bool);
-static std::vector<topic> generate_faction_topics(const bool);
+
+static void generate_era_sections(const config *help_cfg, section &sec, int level);
+static std::vector<topic> generate_faction_topics(const config &, const bool);
+static std::vector<topic> generate_era_topics(const bool, const std::string & era_id);
 
 /// Parse a help config, return the top level section. Return an empty
 /// section if cfg is NULL.
@@ -628,6 +635,7 @@ namespace {
 	const std::string terrain_prefix = "terrain_";
 	const std::string race_prefix = "race_";
 	const std::string faction_prefix = "faction_";
+	const std::string era_prefix = "era_";
 	const std::string variation_prefix = "variation_";
 
 	// id starting with '.' are hidden
@@ -1030,12 +1038,14 @@ std::vector<topic> generate_topics(const bool sort_generated,const std::string &
 		res = generate_ability_topics(sort_generated);
 	} else if (generator == "weapon_specials") {
 		res = generate_weapon_special_topics(sort_generated);
-	} else if (generator == "factions") {
-		res = generate_faction_topics(sort_generated);
 	} else {
 		std::vector<std::string> parts = utils::split(generator, ':', utils::STRIP_SPACES);
 		if (parts[0] == "units" && parts.size()>1) {
 			res = generate_unit_topics(sort_generated, parts[1]);
+		} else if (parts[0] == "era" && parts.size()>1) {
+			res = generate_era_topics(sort_generated, parts[1]);
+		} else {
+			WRN_HP << "Found a topic generator that I didn't recognize: " << generator << "\n";
 		}
 	}
 
@@ -1048,10 +1058,15 @@ void generate_sections(const config *help_cfg, const std::string &generator, sec
 		generate_races_sections(help_cfg, sec, level);
 	} else if (generator == "terrains") {
 		generate_terrain_sections(help_cfg, sec, level);
+	} else if (generator == "eras") {
+		DBG_HP << "Generating eras...\n";
+		generate_era_sections(help_cfg, sec, level);
 	} else 	{
 		std::vector<std::string> parts = utils::split(generator, ':', utils::STRIP_SPACES);
 		if (parts[0] == "units" && parts.size()>1) {
 			generate_unit_sections(help_cfg, sec, level, true, parts[1]);
+		} else if (generator.size() > 0) {
+			WRN_HP << "Found a section generator that I didn't recognize: " << generator << "\n";
 		}
 	}
 }
@@ -1232,45 +1247,17 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 	return topics;
 }
 
-std::vector<topic> generate_faction_topics(const bool sort_generated)
+std::vector<topic> generate_era_topics(const bool sort_generated, const std::string & era_id)
 {
 	std::vector<topic> topics;
-	const config& era = game_cfg->child("era");
-	if (era) {
+
+	const config & era = game_cfg->find_child("era","id", era_id);
+	if(era) {
+		topics = generate_faction_topics(era, sort_generated);
+
 		std::vector<std::string> faction_links;
-		BOOST_FOREACH(const config &f, era.child_range("multiplayer_side")) {
-			const std::string& id = f["id"];
-			if (id == "Random")
-				continue;
-
-			std::stringstream text;
-
-			const config::attribute_value& description = f["description"];
-			if (!description.empty()) {
-				text << description.t_str() << "\n";
-				text << "\n";
-			}
-
-			text << "<header>text='" << _("Leaders:") << "'</header>" << "\n";
-			const std::vector<std::string> leaders =
-					make_unit_links_list( utils::split(f["leader"]), true );
-			BOOST_FOREACH(const std::string &link, leaders) {
-				text << link << "\n";
-			}
-
-			text << "\n";
-
-			text << "<header>text='" << _("Recruits:") << "'</header>" << "\n";
-			const std::vector<std::string> recruits =
-					make_unit_links_list( utils::split(f["recruit"]), true );
-			BOOST_FOREACH(const std::string &link, recruits) {
-				text << link << "\n";
-			}
-
-			const std::string name = f["name"];
-			const std::string ref_id = faction_prefix + id;
-			topics.push_back( topic(name, ref_id, text.str()) );
-			faction_links.push_back(make_link(name, ref_id));
+		BOOST_FOREACH(const topic & t, topics) {
+			faction_links.push_back(make_link(t.title, t.id));
 		}
 
 		std::stringstream text;
@@ -1289,12 +1276,85 @@ std::vector<topic> generate_faction_topics(const bool sort_generated)
 			text << link << "\n";
 		}
 
-		topics.push_back( topic(_("Factions"), "..factions_section", text.str()) );
-	} else {
-		topics.push_back( topic( _("Factions"), "..factions_section",
-			_("Factions are only used in multiplayer")) );
-	}
+		topic era_topic(era["name"], ".." + era_prefix + era["id"].str(), text.str());
 
+		topics.push_back( era_topic );
+	}
+	return topics;
+}
+
+std::vector<topic> generate_faction_topics(const config & era, const bool sort_generated)
+{
+	std::vector<topic> topics;
+	BOOST_FOREACH(const config &f, era.child_range("multiplayer_side")) {
+		const std::string& id = f["id"];
+		if (id == "Random")
+			continue;
+
+		std::stringstream text;
+
+		const config::attribute_value& description = f["description"];
+		if (!description.empty()) {
+			text << description.t_str() << "\n";
+			text << "\n";
+		}
+
+		const std::vector<std::string> recruit_ids = utils::split(f["recruit"]);
+		std::set<std::string> races;
+		std::set<std::string> alignments;
+
+		BOOST_FOREACH(const std::string & u_id, recruit_ids) {
+			if (const unit_type * t = unit_types.find(u_id, unit_type::HELP_INDEXED)) {
+				const unit_type & type = *t;
+
+				unit_types.build_unit_type(type, unit_type::WITHOUT_ANIMATIONS);
+
+				if (const unit_race *r = unit_types.find_race(type.race_id())) {
+					races.insert(make_link(r->plural_name(), std::string("..") + race_prefix + r->id()));
+				}
+				DBG_HP << type.alignment() << " -> " << type.alignment_description(type.alignment(), type.genders().front()) << "\n";
+				alignments.insert(make_link(type.alignment_description(type.alignment(), type.genders().front()), "time_of_day"));
+			}
+		}
+
+		if (races.size() > 0) {
+			std::set<std::string>::iterator it = races.begin();
+			text << _("Races: ") << *(it++);
+			while(it != races.end()) {
+				text << ", " << *(it++);
+			}
+			text << "\n\n";
+		}
+
+		if (alignments.size() > 0) {
+			std::set<std::string>::iterator it = alignments.begin();
+			text << _("Alignments: ") << *(it++);
+			while(it != alignments.end()) {
+				text << ", " << *(it++);
+			}
+			text << "\n\n";
+		}
+
+		text << "<header>text='" << _("Leaders:") << "'</header>" << "\n";
+		const std::vector<std::string> leaders =
+				make_unit_links_list( utils::split(f["leader"]), true );
+		BOOST_FOREACH(const std::string &link, leaders) {
+			text << link << "\n";
+		}
+
+		text << "\n";
+
+		text << "<header>text='" << _("Recruits:") << "'</header>" << "\n";
+		const std::vector<std::string> recruit_links =
+				make_unit_links_list( recruit_ids, true );
+		BOOST_FOREACH(const std::string &link, recruit_links) {
+			text << link << "\n";
+		}
+
+		const std::string name = f["name"];
+		const std::string ref_id = faction_prefix + id;
+		topics.push_back( topic(name, ref_id, text.str()) );
+	}
 	if (sort_generated)
 		std::sort(topics.begin(), topics.end(), title_less());
 	return topics;
@@ -1392,7 +1452,7 @@ public:
 		ss << type_.help_topic_text().str() << "\n";
 
 		if (!display::get_singleton()) {
-			WRN_DP << "When building terrain help topics, the display object was null and we couldn't finish.\n";
+			WRN_HP << "When building terrain help topics, the display object was null and we couldn't finish.\n";
 			return ss.str();
 		} // abort early if we can't get a gamemap object from the display
 		const gamemap & map = display::get_singleton()->get_disp_context().map();
@@ -2021,7 +2081,7 @@ public:
 
 			ss << generate_table(table);
 		} else {
-			WRN_DP << "When building unit help topics, the display object was null and we couldn't get the terrain info we need.\n";
+			WRN_HP << "When building unit help topics, the display object was null and we couldn't get the terrain info we need.\n";
 		}
 		return ss.str();
 	}
@@ -2108,10 +2168,29 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 	}
 }
 
+void generate_era_sections(const config* help_cfg, section & sec, int level)
+{
+	BOOST_FOREACH(const config & era, game_cfg->child_range("era")) {
+		DBG_HP << "Adding help section: " << era["id"].str() << "\n";
+
+		section era_section;
+		config section_cfg;
+		section_cfg["id"] = era_prefix + era["id"].str();
+		section_cfg["title"] = era["name"];
+
+		section_cfg["generator"] = "era:" + era["id"].str();
+
+		DBG_HP << section_cfg.debug() << "\n";
+
+		parse_config_internal(help_cfg, &section_cfg, era_section, level+1);
+		sec.add_section(era_section);
+	}
+}
+
 void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*level*/)
 {
 	if (display::get_singleton() == NULL) {
-		WRN_DP << "When building terrain help sections, the display object was null, aborting.\n";
+		WRN_HP << "When building terrain help sections, the display object was null, aborting.\n";
 		return;
 	}
 
