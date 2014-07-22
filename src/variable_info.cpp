@@ -257,17 +257,17 @@ namespace
 	/// this type of value like '.length' are readonly values so we only support them for reading.
 	/// espacily we don't want to return non const references.
 	template<>
-	const config::attribute_value & as_skalar_visitor<vit_const>::from_temporary(typename as_skalar_visitor::param_type state) const
+	const config::attribute_value & as_skalar_visitor<vit_const>::from_temporary(as_skalar_visitor::param_type state) const
 	{
 		return state.temp_val_;
 	}
 	template<>
-	config::attribute_value & as_skalar_visitor<vit_create_if_not_existent>::from_temporary(typename as_skalar_visitor::param_type) const
+	config::attribute_value & as_skalar_visitor<vit_create_if_not_existent>::from_temporary(as_skalar_visitor::param_type) const
 	{
 		throw invalid_variablename_exception();
 	}
 	template<>
-	config::attribute_value & as_skalar_visitor<vit_throw_if_not_existent>::from_temporary(typename as_skalar_visitor::param_type) const
+	config::attribute_value & as_skalar_visitor<vit_throw_if_not_existent>::from_temporary(as_skalar_visitor::param_type) const
 	{
 		throw invalid_variablename_exception();
 	}
