@@ -24,6 +24,10 @@ struct surface;
 #include <string>
 #include "serialization/unicode.hpp"
 
+#ifdef SDL_GPU
+#include "sdl/image.hpp"
+#endif
+
 namespace font {
 
 /** Standard markups for color, size, font, images. */
@@ -80,6 +84,13 @@ SDL_Rect draw_text(surface dst, const SDL_Rect& area, int size,
 SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
                    const SDL_Color& color, const std::string& text,
                    int x, int y, bool use_tooltips = false, int style = 0);
+
+#ifdef SDL_GPU
+sdl::timage draw_text_to_texture(const SDL_Rect& area, int size,
+								 const SDL_Color& color,
+								 const std::string& text,
+								 bool use_tooltips = false, int style = 0);
+#endif
 
 /** Calculate the size of a text (in pixels) if it were to be drawn. */
 SDL_Rect text_area(const std::string& text, int size, int style=0);
