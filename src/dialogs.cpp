@@ -1218,9 +1218,9 @@ void unit_preview_pane::draw_contents()
 
 	GPU_UnsetClip(get_render_target());
 #else
+	surface screen(video().getSurface());
 	const clip_rect_setter clipper(screen, &area);
 
-	surface screen = video().getSurface();
 	surface unit_image = det.image;
 	if (!left_)
 		unit_image = image::reverse_image(unit_image);

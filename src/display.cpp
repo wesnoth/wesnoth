@@ -1543,7 +1543,7 @@ void display::draw_all_panels()
 	}
 	render_buttons();
 #else
-	const surface& screen(screen_.getSurface());
+	surface& screen(screen_.getSurface());
 
 	/*
 	 * The minimap is also a panel, force it to update its contents.
