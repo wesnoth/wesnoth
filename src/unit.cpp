@@ -680,8 +680,10 @@ unit& unit::operator=(const unit& u)
 {
 	// Use copy constructor to make sure we are coherent
 	if (this != &u) {
+		int old_ref_count = ref_count_;
 		this->~unit();
 		new (this) unit(u) ;
+		ref_count_ = old_ref_count; // TODO: Replace this mess with copy and swap.
 	}
 	return *this ;
 }
