@@ -249,16 +249,16 @@ void dialog_frame::draw_border()
 	}
 
 #ifdef SDL_GPU
-	top_.set_hscale(dim_.interior.w / top_.base_width());
-	video_.draw_texture(top_, dim_.interior.x, dim_.interior.y);
+	top_.set_hscale(float(dim_.interior.w )/ top_.base_width());
+	video_.draw_texture(top_, dim_.interior.x, dim_.exterior.y);
 
-	bot_.set_hscale(dim_.interior.w / bot_.base_width());
+	bot_.set_hscale(float(dim_.interior.w) / bot_.base_width());
 	video_.draw_texture(bot_, dim_.interior.x, dim_.interior.y + dim_.interior.h);
 
-	left_.set_vscale(dim_.interior.h / left_.base_height());
+	left_.set_vscale(float(dim_.interior.h) / left_.base_height());
 	video_.draw_texture(left_, dim_.exterior.x, dim_.interior.y);
 
-	right_.set_vscale(dim_.interior.h / right_.base_height());
+	right_.set_vscale(float(dim_.interior.h) / right_.base_height());
 	video_.draw_texture(right_, dim_.interior.x + dim_.interior.w, dim_.interior.y);
 
 	if(top_left_.null() || bot_left_.null() || top_right_.null() || bot_right_.null()) {
