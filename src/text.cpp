@@ -373,6 +373,8 @@ ttext& ttext::set_foreground_color(const Uint32 color)
 ttext &ttext::set_foreground_color(const SDL_Color color)
 {
 	set_foreground_color((color.r << 16) + (color.g << 8) + color.b);
+
+	return *this;
 }
 
 ttext& ttext::set_maximum_width(int width)
