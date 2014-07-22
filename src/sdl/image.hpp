@@ -250,16 +250,25 @@ private:
 	GPU_Image *image_;
 
 	/** How much will it be rotated. */
-	float *rotation_;
+	float rotation_;
 
 	/** How much will it be scaled horizontally. */
-	float *hscale_;
+	float hscale_;
 
 	/** How much will it be scaled vertically. */
-	float *vscale_;
+	float vscale_;
 
 	/** Which part of the texture should be displayed. */
-	GPU_Rect *clip_;
+	GPU_Rect clip_;
+
+	/** Color mod. */
+	SDL_Color color_mod_;
+
+	/** Wrap policy. */
+	GPU_WrapEnum hwrap_, vwrap_;
+
+	/** Smooth scaling. */
+	bool smooth_;
 };
 }
 #endif
