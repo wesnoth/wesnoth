@@ -1066,16 +1066,161 @@ void unit_preview_pane::draw_contents()
 
 	const bool right_align = left_side();
 
-	surface screen = video().getSurface();
-
 	SDL_Rect const &loc = location();
 	const SDL_Rect area = sdl::create_rect(loc.x + unit_preview_border
 			, loc.y + unit_preview_border
 			, loc.w - unit_preview_border * 2
 			, loc.h - unit_preview_border * 2);
 
+#ifdef SDL_GPU
+	GPU_SetClip(get_render_target(), area.x, area.y, area.w, area.h);
+
+	sdl::timage unit_image = det.image;
+	// TODO: port this to SDL_gpu
+//	if (!left_)
+//		unit_image = image::reverse_image(unit_image);
+
+	SDL_Rect image_rect = sdl::create_rect(area.x, area.y, 0, 0);
+
+	if(!unit_image.null()) {
+		SDL_Rect rect = sdl::create_rect(
+				  right_align
+					? area.x
+					: area.x + area.w - unit_image.width()
+				, area.y
+				, unit_image.width()
+				, unit_image.height());
+
+		video().draw_texture(unit_image, rect.x, rect.y);
+		image_rect = rect;
+
+		if(!det.overlays.empty()) {
+			BOOST_FOREACH(const std::string& overlay, det.overlays) {
+				sdl::timage oi = image::get_texture(overlay);
+
+				if(!oi.null()) {
+					continue;
+				}
+
+				if(oi.width() > rect.w || oi.height() > rect.h) {
+					oi.set_scale(float(rect.w) / oi.width(), float(rect.h) / oi.height());
+				}
+
+				video().draw_texture(oi, rect.x, rect.y);
+			}
+		}
+	}
+
+	// Place the 'unit profile' button
+	const SDL_Rect button_loc = sdl::create_rect(
+			  right_align
+				? area.x
+				: area.x + area.w - details_button_.location().w
+			, image_rect.y + image_rect.h
+			, details_button_.location().w
+			, details_button_.location().h);
+	details_button_.set_location(button_loc);
+
+	SDL_Rect description_rect = sdl::create_rect(image_rect.x
+			, image_rect.y + image_rect.h + details_button_.location().h
+			, 0
+			, 0);
+
+	if(det.name.empty() == false) {
+		std::stringstream desc;
+		desc << font::BOLD_TEXT << det.name;
+		const std::string description = desc.str();
+		description_rect = font::text_area(description, font::SIZE_NORMAL);
+		sdl::timage img = font::draw_text_to_texture(area,
+							font::SIZE_NORMAL, font::NORMAL_COLOR,
+							desc.str());
+		video().draw_texture(img, right_align ?  image_rect.x :
+							 image_rect.x + image_rect.w - description_rect.w,
+							 image_rect.y + image_rect.h + details_button_.location().h);
+	}
+
+	std::stringstream text;
+	text << font::unit_type << det.type_name << "\n"
+		<< font::race
+		<< (right_align && !weapons_ ? det.race+"  " : "  "+det.race) << "\n"
+		<< _("level") << " " << det.level << "\n"
+		<< det.alignment << "\n"
+		<< det.traits << "\n";
+
+	for(std::vector<t_string>::const_iterator a = det.abilities.begin(); a != det.abilities.end(); ++a) {
+		if(a != det.abilities.begin()) {
+			text << ", ";
+		}
+		text << (*a);
+	}
+	text << "\n";
+
+	// Use same coloring as in generate_report.cpp:
+	text << det.hp_color << _("HP: ")
+		<< det.hitpoints << "/" << det.max_hitpoints << "\n";
+
+	text << det.xp_color << _("XP: ")
+		<< det.experience << "/" << det.max_experience << "\n";
+
+	if(weapons_) {
+		text << _("Moves: ")
+			<< det.movement_left << "/" << det.total_movement << "\n";
+
+		for(std::vector<attack_type>::const_iterator at_it = det.attacks.begin();
+		    at_it != det.attacks.end(); ++at_it) {
+			// see generate_report() in generate_report.cpp
+			text << font::weapon
+				<< at_it->damage()
+				<< font::weapon_numbers_sep
+				<< at_it->num_attacks()
+				<< " " << at_it->name() << "\n";
+			text << font::weapon_details
+				<< "  " << string_table["range_" + at_it->range()]
+				<< font::weapon_details_sep
+				<< string_table["type_" + at_it->type()] << "\n";
+
+			std::string accuracy_parry = at_it->accuracy_parry_description();
+			if(accuracy_parry.empty() == false) {
+				text << font::weapon_details << "  " << accuracy_parry << "\n";
+			}
+
+			std::string special = at_it->weapon_specials();
+			if (!special.empty()) {
+				text << font::weapon_details << "  " << special << "\n";
+			}
+		}
+	}
+
+	// we don't remove empty lines, so all fields stay at the same place
+	const std::vector<std::string> lines = utils::split(text.str(), '\n',
+		utils::STRIP_SPACES & !utils::REMOVE_EMPTY);
+
+
+	int ypos = area.y;
+
+	if(weapons_) {
+		ypos += image_rect.h + description_rect.h + details_button_.location().h;
+	}
+
+	for(std::vector<std::string>::const_iterator line = lines.begin(); line != lines.end(); ++line) {
+		int xpos = area.x;
+		if(right_align && !weapons_) {
+			const SDL_Rect& line_area = font::text_area(*line,font::SIZE_SMALL);
+			// right align, but if too long, don't hide line's beginning
+			if (line_area.w < area.w)
+				xpos = area.x + area.w - line_area.w;
+		}
+
+		sdl::timage img = font::draw_text_to_texture(location(),font::SIZE_SMALL,font::NORMAL_COLOR,*line);
+		video().draw_texture(img, xpos, ypos);
+		ypos += img.height();
+	}
+
+	GPU_UnsetClip(get_render_target());
+#else
 	const clip_rect_setter clipper(screen, &area);
 
+	surface screen = video().getSurface();
 	surface unit_image = det.image;
 	if (!left_)
 		unit_image = image::reverse_image(unit_image);
@@ -1166,7 +1311,7 @@ void unit_preview_pane::draw_contents()
 			<< det.movement_left << "/" << det.total_movement << "\n";
 
 		for(std::vector<attack_type>::const_iterator at_it = det.attacks.begin();
-		    at_it != det.attacks.end(); ++at_it) {
+			at_it != det.attacks.end(); ++at_it) {
 			// see generate_report() in generate_report.cpp
 			text << font::weapon
 				<< at_it->damage()
@@ -1213,6 +1358,7 @@ void unit_preview_pane::draw_contents()
 		SDL_Rect cur_area = font::draw_text(&video(),location(),font::SIZE_SMALL,font::NORMAL_COLOR,*line,xpos,ypos);
 		ypos += cur_area.h;
 	}
+#endif
 }
 
 units_list_preview_pane::units_list_preview_pane(unit_const_ptr u, TYPE type, bool on_left_side) :
