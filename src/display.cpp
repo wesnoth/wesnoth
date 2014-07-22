@@ -1443,6 +1443,10 @@ void display::update_display()
 			flabel.set_alignment(font::LEFT_ALIGN);
 
 			fps_handle_ = font::add_floating_label(flabel);
+
+#ifdef SDL_GPU
+			std::cerr << "fps: " << fps << std::endl;
+#endif
 		}
 	} else if(fps_handle_ != 0) {
 		font::remove_floating_label(fps_handle_);
