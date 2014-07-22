@@ -466,10 +466,6 @@ void game_display::draw_sidebar()
 	{
 		wb::future_map future; // start planned unit map scope
 
-#ifdef SDL_GPU
-		draw_all_panels();
-#endif
-
 		// We display the unit the mouse is over if it is over a unit,
 		// otherwise we display the unit that is selected.
 		BOOST_FOREACH(const std::string &name, reports::report_list()) {

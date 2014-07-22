@@ -220,6 +220,10 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 	draw_terrain_codes_(false),
 	arrows_map_(),
 	color_adjust_()
+#ifdef SDL_GPU
+	, update_panel_image_(true),
+	panel_image_()
+#endif
 #if defined(__GLIBC__)
 	, do_reverse_memcpy_workaround_(false)
 #endif
@@ -1450,27 +1454,8 @@ void display::update_display()
 	flip();
 }
 
-static void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui::button>& /*buttons*/)
+static void draw_panel(surface& target, const theme::panel& panel, std::vector<gui::button>& /*buttons*/)
 {
-#ifdef SDL_GPU
-	//log_scope("draw panel");
-	DBG_DP << "drawing panel " << panel.get_id() << "\n";
-
-	sdl::timage img(image::get_texture(panel.image()));
-
-	const SDL_Rect screen = screen_area();
-	SDL_Rect& loc = panel.location(screen);
-
-	DBG_DP << "panel location: x=" << loc.x << ", y=" << loc.y
-			<< ", w=" << loc.w << ", h=" << loc.h << "\n";
-
-	if(!img.null()) {
-		img.set_clip(sdl::create_rect(0, 0, loc.w, loc.h));
-		img.set_wrap(GPU_WRAP_REPEAT, GPU_WRAP_REPEAT);
-
-		video.draw_texture(img, loc.x, loc.y);
-	}
-#else
 	//log_scope("draw panel");
 	DBG_DP << "drawing panel " << panel.get_id() << "\n";
 
@@ -1487,10 +1472,9 @@ static void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui
 			surf.assign(tile_surface(surf,loc.w,loc.h));
 		}
 
-		video.blit_surface(loc.x,loc.y,surf);
+		blit_surface(surf, NULL, target, &loc);
 		update_rect(loc);
 	}
-#endif
 }
 
 static void draw_label(CVideo& video, surface target, const theme::label& label)
@@ -1538,6 +1522,23 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 
 void display::draw_all_panels()
 {
+#ifdef SDL_GPU
+	const surface& screen(screen_.getSurface());
+
+	/*
+	 * The minimap is also a panel, force it to update its contents.
+	 * This is required when the size of the minimap has been modified.
+	 */
+	recalculate_minimap();
+
+	draw_panel_image();
+
+	const std::vector<theme::label>& labels = theme_.labels();
+	for(std::vector<theme::label>::const_iterator i = labels.begin(); i != labels.end(); ++i) {
+		draw_label(video(),screen,*i);
+	}
+	render_buttons();
+#else
 	const surface& screen(screen_.getSurface());
 
 	/*
@@ -1548,20 +1549,44 @@ void display::draw_all_panels()
 
 	const std::vector<theme::panel>& panels = theme_.panels();
 	for(std::vector<theme::panel>::const_iterator p = panels.begin(); p != panels.end(); ++p) {
-		draw_panel(video(), *p, menu_buttons_);
+		draw_panel(screen, *p, menu_buttons_);
 	}
 
 	const std::vector<theme::label>& labels = theme_.labels();
 	for(std::vector<theme::label>::const_iterator i = labels.begin(); i != labels.end(); ++i) {
 		draw_label(video(),screen,*i);
 	}
-#ifdef SDL_GPU
-	render_buttons();
-#else
+
 	//FIXME: does it really make sense to recreate buttons all the time?
 	create_buttons();
 #endif
 }
+
+#ifdef SDL_GPU
+void display::draw_panel_image(SDL_Rect *clip)
+{
+	surface screen(video().getSurface());
+
+	if (update_panel_image_) {
+		surface surf = create_neutral_surface(screen->w, screen->h);
+		const std::vector<theme::panel>& panels = theme_.panels();
+		for(std::vector<theme::panel>::const_iterator p = panels.begin(); p != panels.end(); ++p) {
+			draw_panel(surf, *p, menu_buttons_);
+		}
+
+		panel_image_ = sdl::timage(surf);
+		update_panel_image_ = false;
+	}
+
+	if (clip != NULL)
+		GPU_SetClip(get_render_target(), clip->x, clip->y, clip->w, clip->h);
+
+	video().draw_texture(panel_image_, 0, 0);
+
+	if (clip != NULL)
+		GPU_UnsetClip(get_render_target());
+}
+#endif
 
 static void draw_background(surface screen, const SDL_Rect& area, const std::string& image)
 {
@@ -3086,6 +3111,7 @@ void display::refresh_report(std::string const &report_name, const config * new_
 	}
 
 	tooltips::clear_tooltips(rect);
+	draw_panel_image(&rect);
 
 	if (report.empty()) return;
 
