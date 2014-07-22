@@ -105,7 +105,11 @@ private:
 	surface_restorer* restorer_;
 	bool auto_restore_;
 	dimension_measurements dim_;
+#ifdef SDL_GPU
+	sdl::timage top_, bot_, left_, right_, top_left_, bot_left_, top_right_, bot_right_, bg_;
+#else
 	surface top_, bot_, left_, right_, top_left_, bot_left_, top_right_, bot_right_, bg_;
+#endif
 	bool have_border_;
 };
 

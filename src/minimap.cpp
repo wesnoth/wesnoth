@@ -328,7 +328,19 @@ SDL_Rect draw_minimap(CVideo &video, const SDL_Rect &area, const gamemap &map, c
 					img.set_scale(scale_factor, scale_factor);
 
 					video.draw_texture(img, xpos, ypos);
-					img.set_color_mod(255, 255, 255);
+
+					if (terrain_info.is_combined()) {
+						sdl::timage overlay = image::get_texture("terrain/" + terrain_info.minimap_image_overlay() + ".png", image::HEXED);
+						if (fogged) {
+							overlay.set_color_mod(100, 100, 100);
+						}
+						if (highlighted) {
+							overlay.set_color_mod(150, 150, 150);
+						}
+
+						overlay.set_scale(scale_factor, scale_factor);
+						video.draw_texture(overlay, xpos, ypos);
+					}
 				} else {
 					SDL_Color col;
 					std::map<std::string, color_range>::const_iterator it = game_config::team_rgb_range.find(terrain_info.id());

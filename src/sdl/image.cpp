@@ -28,12 +28,15 @@ namespace sdl
 {
 timage::timage(Uint16 w, Uint16 h)
 	: image_(NULL)
-	, rotation_(new float(0))
-	, hscale_(new float(1))
-	, vscale_(new float(1))
-	, clip_(new GPU_Rect)
+	, rotation_(0)
+	, hscale_(1)
+	, vscale_(1)
+	, clip_()
+	, color_mod_()
+	, hwrap_(GPU_WRAP_NONE)
+	, vwrap_(GPU_WRAP_NONE)
 {
-	*clip_ = create_gpu_rect(0, 0, w, h);
+	clip_ = create_gpu_rect(0, 0, w, h);
 	image_ = GPU_CreateImage(w, h, GPU_FORMAT_RGBA);
 	if (image_ == NULL) {
 		//TODO: report errorr
@@ -44,55 +47,70 @@ timage::timage(Uint16 w, Uint16 h)
 
 timage::timage(const std::string &file)
 	: image_(GPU_LoadImage(file.c_str()))
-	, rotation_(new float(0))
-	, hscale_(new float(1))
-	, vscale_(new float(1))
-	, clip_(new GPU_Rect)
+	, rotation_(0)
+	, hscale_(1)
+	, vscale_(1)
+	, clip_()
+	, color_mod_()
+	, hwrap_(GPU_WRAP_NONE)
+	, vwrap_(GPU_WRAP_NONE)
 {
 	if (image_ == NULL) {
 		//TODO: report error
 	} else {
-		*clip_ = create_gpu_rect(0, 0, image_->w, image_->h);
+		clip_ = create_gpu_rect(0, 0, image_->w, image_->h);
 		image_->refcount = 1;
 	}
 }
 
 timage::timage(const surface &source)
 	: image_(GPU_CopyImageFromSurface(source))
-	, rotation_(new float(0))
-	, hscale_(new float(1))
-	, vscale_(new float(1))
-	, clip_(new GPU_Rect)
+	, rotation_(0)
+	, hscale_(1)
+	, vscale_(1)
+	, clip_()
+	, color_mod_()
+	, hwrap_(GPU_WRAP_NONE)
+	, vwrap_(GPU_WRAP_NONE)
+	, smooth_(false)
 {
 	if (image_ == NULL) {
 		//TODO: report error
 	} else {
-		*clip_ = create_gpu_rect(0, 0, image_->w, image_->h);
+		clip_ = create_gpu_rect(0, 0, image_->w, image_->h);
 		image_->refcount = 1;
 	}
 }
 
 timage::timage(SDL_Surface *source)
 	: image_(GPU_CopyImageFromSurface(source))
-	, rotation_(new float(0))
-	, hscale_(new float(1))
-	, vscale_(new float(1))
-	, clip_(new GPU_Rect)
+	, rotation_(0)
+	, hscale_(1)
+	, vscale_(1)
+	, clip_()
+	, color_mod_()
+	, hwrap_(GPU_WRAP_NONE)
+	, vwrap_(GPU_WRAP_NONE)
+	, smooth_(false)
 {
 	if (image_ == NULL) {
 		//TODO: report error
 	} else {
-		*clip_ = create_gpu_rect(0, 0, image_->w, image_->h);
+		clip_ = create_gpu_rect(0, 0, image_->w, image_->h);
 		image_->refcount = 1;
 	}
 }
 
 timage::timage()
 	: image_(NULL)
-	, rotation_(new float(0))
-	, hscale_(new float(1))
-	, vscale_(new float(1))
-	, clip_(new GPU_Rect)
+	, rotation_(0)
+	, hscale_(1)
+	, vscale_(1)
+	, clip_()
+	, color_mod_()
+	, hwrap_(GPU_WRAP_NONE)
+	, vwrap_(GPU_WRAP_NONE)
+	, smooth_(false)
 {
 }
 
@@ -102,10 +120,6 @@ sdl::timage::~timage()
 		image_->refcount -= 1;
 		if (image_->refcount == 0) {
 			GPU_FreeImage(image_);
-			delete clip_;
-			delete hscale_;
-			delete vscale_;
-			delete rotation_;
 		}
 	}
 }
@@ -116,6 +130,10 @@ timage::timage(const timage &texture)
 	, hscale_(texture.hscale_)
 	, vscale_(texture.vscale_)
 	, clip_(texture.clip_)
+	, color_mod_(texture.color_mod_)
+	, hwrap_(texture.hwrap_)
+	, vwrap_(texture.vwrap_)
+	, smooth_(texture.smooth_)
 {
 	if (image_ != NULL) {
 		image_->refcount += 1;
@@ -134,65 +152,67 @@ timage &timage::operator =(const timage &texture)
 
 void timage::draw(GPU_Target &target, const int x, const int y)
 {
-	GPU_BlitTransform(image_, clip_, &target, x + width()/2, y + height()/2,
-					  *rotation_, *hscale_, *vscale_);
+	GPU_SetImageFilter(image_, smooth_ ? GPU_FILTER_LINEAR : GPU_FILTER_NEAREST);
+	GPU_SetWrapMode(image_, hwrap_, vwrap_);
+	//GPU_SetColor(image_, &color);
+	GPU_BlitTransform(image_, &clip_, &target, x + width()/2, y + height()/2,
+					  rotation_, hscale_, vscale_);
 }
 
 void timage::set_rotation(float rotation)
 {
-	*rotation_ = rotation;
+	rotation_ = rotation;
 }
 
 float timage::rotation() const
 {
-	return *rotation_;
+	return rotation_;
 }
 
 void timage::set_hscale(float factor)
 {
-	*hscale_ = factor;
+	hscale_ = factor;
 }
 
 void timage::set_vscale(float factor)
 {
-	*vscale_ = factor;
+	vscale_ = factor;
 }
 
 void timage::set_scale(float hfactor, float vfactor)
 {
-	*hscale_ = hfactor;
-	*vscale_ = vfactor;
+	hscale_ = hfactor;
+	vscale_ = vfactor;
 }
 
 float timage::hscale() const
 {
-	return *hscale_;
+	return hscale_;
 }
 
 float timage::vscale() const
 {
-	return *vscale_;
+	return vscale_;
 }
 
 void timage::set_smooth_scaling(bool use_smooth)
 {
-	GPU_SetImageFilter(image_,
-					   use_smooth ? GPU_FILTER_LINEAR : GPU_FILTER_NEAREST);
+	smooth_ = use_smooth;
 }
 
 bool timage::smooth_scaling() const
 {
-	return image_->filter_mode == GPU_FILTER_LINEAR;
+	return smooth_;
 }
 
 int timage::width() const
 {
-	return clip_->w * *hscale_;
+	return clip_.w * hscale_;
 }
 
 int timage::height() const
 {
-	return clip_->h * *vscale_;
+	return clip_.h * vscale_;
 }
 
 Uint16 timage::base_width() const
@@ -207,79 +227,79 @@ Uint16 timage::base_height() const
 
 void timage::set_clip(const SDL_Rect &rect)
 {
-	clip_->x = rect.x;
-	clip_->y = rect.y;
-	clip_->w = rect.w;
-	clip_->h = rect.h;
+	clip_.x = rect.x;
+	clip_.y = rect.y;
+	clip_.w = rect.w;
+	clip_.h = rect.h;
 }
 
 SDL_Rect timage::clip() const
 {
 	SDL_Rect result;
-	result.x = clip_->x;
-	result.y = clip_->y;
-	result.w = clip_->w;
-	result.h = clip_->h;
+	result.x = clip_.x;
+	result.y = clip_.y;
+	result.w = clip_.w;
+	result.h = clip_.h;
 
 	return result;
 }
 
 void timage::set_alpha(Uint8 alpha)
 {
-	const SDL_Color prev = image_->color;
-	SDL_Color next = create_color(prev.r, prev.g, prev.b, alpha);
-	GPU_SetColor(image_, &next);
+	color_mod_.unused = alpha;
 }
 
 Uint8 timage::alpha() const
 {
-	return image_->color.unused;
+	return color_mod_.unused;
 }
 
 void timage::set_color_mod(Uint8 r, Uint8 g, Uint8 b)
 {
-	SDL_Color c = create_color(r, g, b, image_->color.unused);
-	GPU_SetColor(image_, &c);
+	color_mod_.r = r;
+	color_mod_.g = g;
+	color_mod_.b = b;
 }
 
 Uint8 timage::red_mod() const
 {
-	return image_->color.r;
+	return color_mod_.r;
 }
 
 Uint8 timage::green_mod() const
 {
-	return image_->color.g;
+	return color_mod_.g;
 }
 
 Uint8 timage::blue_mod() const
 {
-	return image_->color.b;
+	return color_mod_.b;
 }
 
 void timage::set_hwrap(GPU_WrapEnum mode)
 {
-	GPU_SetWrapMode(image_, mode, image_->wrap_mode_y);
+	hwrap_ = mode;
 }
 
 void timage::set_vwrap(GPU_WrapEnum mode)
 {
-	GPU_SetWrapMode(image_, image_->wrap_mode_x, mode);
+	vwrap_ = mode;
 }
 
 void timage::set_wrap(GPU_WrapEnum hmode, GPU_WrapEnum vmode)
 {
-	GPU_SetWrapMode(image_, hmode, vmode);
+	hwrap_ = hmode;
+	vwrap_ = vmode;
 }
 
 GPU_WrapEnum timage::hwrap() const
 {
-	return image_->wrap_mode_x;
+	return hwrap_;
 }
 
 GPU_WrapEnum timage::vwrap() const
 {
-	return image_->wrap_mode_y;
+	return vwrap_;
 }
 
 bool timage::null() const

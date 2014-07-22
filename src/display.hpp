@@ -1067,6 +1067,10 @@ protected:
 	/** redraw all panels associated with the map display */
 	void draw_all_panels();
 
+#ifdef SDL_GPU
+	void draw_panel_image(SDL_Rect *clip = NULL);
+#endif
+
 	/**
 	 * Initiate a redraw.
 	 *
@@ -1128,6 +1132,11 @@ private:
 	arrows_map_t arrows_map_;
 
 	tod_color color_adjust_;
+
+#ifdef SDL_GPU
+	bool update_panel_image_;
+	sdl::timage panel_image_;
+#endif
 
 #if defined(__GLIBC__)
 	/** Flag for bug #17573 - this is set in the constructor **/

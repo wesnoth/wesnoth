@@ -557,5 +557,16 @@ SDL_Rect draw_wrapped_text(CVideo* gui, const SDL_Rect& area, int font_size,
 	return font::draw_text(gui, area, font_size, color, wrapped_text, x, y, false);
 }
 
+#ifdef SDL_GPU
+sdl::timage draw_text_to_texture(const SDL_Rect &area, int size, const SDL_Color &color, const std::string &text, bool use_tooltips, int style)
+{
+	SDL_Rect rect = text_area(text, size, style);
+	surface surf = create_neutral_surface(rect.w, rect.h);
+	draw_text(surf, area, size, color, text, 0, 0, use_tooltips, style);
+
+	return sdl::timage(surf);
+}
+#endif
+
 } // end namespace font
 
