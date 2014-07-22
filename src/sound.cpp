@@ -542,10 +542,12 @@ void play_music_repeatedly(const std::string &id)
 void play_music_config(const config &music_node)
 {
 	music_track track( music_node );
-	if (music_node["shuffle"] == "no") {
-		shuffle = false;
-	} else if (music_node["shuffle"] == "yes") {
-		shuffle = true;
+	if (music_node.has_attribute("shuffle")){
+		if (music_node["shuffle"].to_bool()) {
+			shuffle = true;
+		} else {
+			shuffle = false;
+		}
 	}
 
 	if (!track.valid() && !track.id().empty()) {
