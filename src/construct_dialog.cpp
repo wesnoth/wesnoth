@@ -23,6 +23,7 @@
 #include "sound.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
+#include "sdl/utils.hpp"
 
 
 static lg::log_domain log_display("display");

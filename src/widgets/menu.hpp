@@ -42,8 +42,11 @@ public:
 		virtual void draw_row_bg(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 		virtual void draw_row(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 		void scale_images(int max_width, int max_height);
-
+#ifdef SDL_GPU
+		sdl::timage get_item_image(const image::locator &i_locator) const;
+#else
 		surface get_item_image(const image::locator &i_locator) const;
+#endif
 		size_t get_font_size() const;
 		size_t get_cell_padding() const;
 		size_t get_thickness() const;
@@ -54,7 +57,11 @@ public:
 		size_t thickness_;  //additional cell padding for style use only
 
 		int normal_rgb_, selected_rgb_, heading_rgb_;
+#ifdef SDL_GPU
+		int normal_alpha_, selected_alpha_, heading_alpha_;
+#else
 		double normal_alpha_, selected_alpha_, heading_alpha_;
+#endif
 		int max_img_w_, max_img_h_;
 	};
 
@@ -76,7 +83,11 @@ public:
 
 	protected:
 		const std::string img_base_;
+#ifdef SDL_GPU
+		std::map<std::string, sdl::timage> img_map_;
+#else
 		std::map<std::string,surface> img_map_;
+#endif
 
 	private:
 		bool load_image(const std::string &img_sub);
@@ -85,6 +96,10 @@ public:
 		bool load_failed_;
 		int normal_rgb2_, selected_rgb2_, heading_rgb2_;
 		double normal_alpha2_, selected_alpha2_, heading_alpha2_;
+#ifdef SDL_GPU
+		sdl::timage background_image_;
+#endif
+		//FIXME: why is this better than a plain surface?
 		struct bg_cache
 		{
 			bg_cache() : surf(), width(-1), height(-1)
@@ -95,6 +110,7 @@ public:
 		};
 		bg_cache bg_cache_;
 	};
+
 	friend class style;
 	friend class imgsel_style;
 	static style &default_style;
