@@ -236,8 +236,7 @@ static const sound::music_track &choose_track()
 			track = rand()%current_track_list.size();
 		} while (!track_ok( current_track_list[track].file_path() ));
 	} else if (!shuffle && current_track_list.size() > 1) {
-		track++;
-		played_before.push_back( current_track_list[track - 1].file_path() );
+		played_before.push_back( current_track_list[++track].file_path() );
 		return current_track_list[track - 1];	
 	}
 
@@ -543,11 +542,7 @@ void play_music_config(const config &music_node)
 {
 	music_track track( music_node );
 	if (music_node.has_attribute("shuffle")){
-		if (music_node["shuffle"].to_bool()) {
-			shuffle = true;
-		} else {
-			shuffle = false;
-		}
+		shuffle = music_node["shuffle"].to_bool(true);
 	}
 
 	if (!track.valid() && !track.id().empty()) {
