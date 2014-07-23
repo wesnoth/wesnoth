@@ -499,8 +499,6 @@ void unit_type::build_full(const movement_type_map &mv_types,
 			gender_types_[i]->build_full(mv_types, races, traits);
 	}
 
-	alignment_ = lexical_cast_default<unit_type::ALIGNMENT>(cfg_["alignment"].str(), unit_type::NEUTRAL);
-
 	if ( race_ != &unit_race::null_race )
 	{
 		if (!race_->uses_global_traits()) {
@@ -581,6 +579,8 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	small_profile_ = cfg_["small_profile"].str();
 	big_profile_ = cfg_["profile"].str();
 	adjust_profile(small_profile_, big_profile_, image_);
+
+	alignment_ = lexical_cast_default<unit_type::ALIGNMENT>(cfg_["alignment"].str(), unit_type::NEUTRAL);
 
 	for (int i = 0; i < 2; ++i) {
 		if (gender_types_[i])

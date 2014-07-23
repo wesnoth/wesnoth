@@ -1305,9 +1305,8 @@ std::vector<topic> generate_faction_topics(const config & era, const bool sort_g
 
 		BOOST_FOREACH(const std::string & u_id, recruit_ids) {
 			if (const unit_type * t = unit_types.find(u_id, unit_type::HELP_INDEXED)) {
+				assert(t);
 				const unit_type & type = *t;
-
-				unit_types.build_unit_type(type, unit_type::WITHOUT_ANIMATIONS);
 
 				if (const unit_race *r = unit_types.find_race(type.race_id())) {
 					races.insert(make_link(r->plural_name(), std::string("..") + race_prefix + r->id()));
