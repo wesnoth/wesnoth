@@ -1902,7 +1902,7 @@ public:
 		}
 		ss << generate_table(resistance_table);
 
-		if (display::get_singleton() != NULL) {
+		if (display::get_singleton() != NULL && resources::gameboard != NULL) { //check to gameboard is necessary to prevent segfault when accessing help from the title screen, at current revision.
 			// get the gamemap from the display object
 			const gamemap & map = display::get_singleton()->get_disp_context().map();
 
