@@ -2278,6 +2278,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	std::vector<topic> topics;
 	std::set<std::string, string_less> race_units;
 	std::set<std::string, string_less> race_topics;
+	std::set<std::string> alignments;
 
 	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types())
 	{
@@ -2302,6 +2303,8 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 			// in the list used for the race topic
 			std::string link = make_link(type_name, ref_id);
 			race_units.insert(link);
+
+			alignments.insert(make_link(type.alignment_description(type.alignment(), type.genders().front()), "time_of_day"));
 		}
 	}
 
@@ -2329,8 +2332,18 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	}
 
 	std::stringstream text;
-	text << race_description;
-	text << "\n\n" << _("<header>text='Units of this race'</header>") << "\n";
+	text << race_description << "\n\n";
+
+	if (alignments.size() > 0) {
+		std::set<std::string>::iterator it = alignments.begin();
+		text << (alignments.size() > 1 ? _("Alignments: ") : _("Alignment: ")) << *(it++);
+		while(it != alignments.end()) {
+			text << ", " << *(it++);
+		}
+		text << "\n\n";
+	}
+
+	text << _("<header>text='Units of this race'</header>") << "\n";
 	for (std::set<std::string, string_less>::iterator u = race_units.begin(); u != race_units.end(); ++u) {
 		text << (*u) << "\n";
 	}
