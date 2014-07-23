@@ -377,9 +377,12 @@ create_engine::create_engine(game_display& disp, saved_game& state) :
 	state_.mp_settings().show_configure = configure;
 	state_.mp_settings().show_connect = connect;
 
-	if(type == game_classification::MULTIPLAYER)
+	if (!(type == game_classification::SCENARIO &&
+			resources::config_manager->old_defines_map().count("TITLE_SCREEN") != 0))
+	{
 		resources::config_manager->
 			load_game_config_for_game(state_.classification());
+	}
 
 	//TODO the editor dir is already configurable, is the preferences value
 	get_files_in_dir(get_user_data_dir() + "/editor/maps", &user_map_names_,
