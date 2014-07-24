@@ -514,6 +514,39 @@ private:
 	topic const *shown_topic_;
 };
 
+void show_unit_description(const unit &u)
+{
+	help::show_unit_description(u.type());
+}
+
+void show_terrain_description(const terrain_type &t)
+{
+	help::show_terrain_help(*display::get_singleton(), t.id(), t.hide_in_editor() || t.is_combined());
+}
+
+void show_unit_description(const unit_type &t)
+{
+	std::string var_id = t.get_cfg()["variation_id"].str();
+	if (var_id.empty())
+		var_id = t.get_cfg()["variation_name"].str();
+	bool hide_help = t.hide_help();
+	bool use_variation = false;
+	if (!var_id.empty()) {
+		const unit_type *parent = unit_types.find(t.id());
+		assert(parent);
+		if (hide_help) {
+			hide_help = parent->hide_help();
+		} else {
+			use_variation = true;
+		}
+	}
+
+	if (use_variation)
+		help::show_variation_help(*display::get_singleton(), t.id(), var_id, hide_help);
+	else
+		help::show_unit_help(*display::get_singleton(), t.id(), !t.variations().empty(), hide_help);
+}
+
 // Generator stuff below. Maybe move to a separate file? This one is
 // getting crowded. Dunno if much more is needed though so I'll wait and
 // see.

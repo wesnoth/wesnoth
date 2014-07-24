@@ -17,6 +17,8 @@
 class config;
 class display;
 class gamemap;
+class terrain_type;
+class unit_type;
 
 #include "hotkey/command_executor.hpp"
 #include "construct_dialog.hpp"
@@ -69,6 +71,9 @@ private:
 	hotkey::basic_handler *help_hand_;
 };
 
+void show_unit_description(const unit_type &t);
+void show_unit_description(const unit &u);
+void show_terrain_description(const terrain_type& t);
 
 } // End namespace help.
 

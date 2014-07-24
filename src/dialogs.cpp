@@ -1450,7 +1450,7 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 void units_list_preview_pane::process_event()
 {
 	if (details_button_.pressed() && index_ >= 0 && index_ < int(size())) {
-		show_unit_description(*units_[index_]);
+		help::show_unit_description(*units_[index_]);
 	}
 }
 
@@ -1538,42 +1538,8 @@ void unit_types_preview_pane::process_event()
 	if (details_button_.pressed() && index_ >= 0 && index_ < int(size())) {
 		const unit_type* type = (*unit_types_)[index_];
 		if (type != NULL)
-			show_unit_description(*type);
+			help::show_unit_description(*type);
 	}
-}
-
-
-void show_unit_description(const unit &u)
-{
-	show_unit_description(u.type());
-}
-
-void show_terrain_description(const terrain_type &t)
-{
-	help::show_terrain_help(*display::get_singleton(), t.id(), t.hide_in_editor() || t.is_combined());
-}
-
-void show_unit_description(const unit_type &t)
-{
-	std::string var_id = t.get_cfg()["variation_id"].str();
-	if (var_id.empty())
-		var_id = t.get_cfg()["variation_name"].str();
-	bool hide_help = t.hide_help();
-	bool use_variation = false;
-	if (!var_id.empty()) {
-		const unit_type *parent = unit_types.find(t.id());
-		assert(parent);
-		if (hide_help) {
-			hide_help = parent->hide_help();
-		} else {
-			use_variation = true;
-		}
-	}
-
-	if (use_variation)
-		help::show_variation_help(*display::get_singleton(), t.id(), var_id, hide_help);
-	else
-		help::show_unit_help(*display::get_singleton(), t.id(), !t.variations().empty(), hide_help);
 }
 
 static network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num, network::statistics (*get_stats)(network::connection handle))

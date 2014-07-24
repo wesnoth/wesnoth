@@ -148,11 +148,6 @@ private:
 	int side_;
 };
 
-
-void show_unit_description(const unit_type &t);
-void show_unit_description(const unit &u);
-void show_terrain_description(const terrain_type& t);
-
 network::connection network_send_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);
 network::connection network_receive_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);
 network::connection network_connect_dialog(display& disp, const std::string& msg, const std::string& hostname, int port);

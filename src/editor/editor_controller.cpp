@@ -1327,7 +1327,7 @@ void editor_controller::terrain_description()
 		return;
 
 	const terrain_type& type = context_manager_->get_map().get_terrain_info(loc);
-	dialogs::show_terrain_description(type);
+	help::show_terrain_description(type);
 }
 
 void editor_controller::process_keyup_event(const SDL_Event& event)
