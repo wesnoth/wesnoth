@@ -541,9 +541,7 @@ void play_music_repeatedly(const std::string &id)
 void play_music_config(const config &music_node)
 {
 	music_track track( music_node );
-	if (music_node.has_attribute("shuffle")){
-		shuffle = music_node["shuffle"].to_bool(true);
-	}
+	shuffle = music_node["shuffle"].to_bool(true);
 
 	if (!track.valid() && !track.id().empty()) {
 		ERR_AUDIO << "cannot open track '" << track.id() << "'; disabled in this playlist." << std::endl;
