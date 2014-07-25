@@ -107,6 +107,7 @@ void tcampaign_selection::campaign_selected(twindow& window)
 				= find_widget<tmulti_page>(&window, "campaign_details", false);
 
 		multi_page.select_page(selected_row);
+		engine_.set_current_level(selected_row);
 	}
 }
 

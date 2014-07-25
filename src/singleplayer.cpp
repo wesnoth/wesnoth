@@ -85,9 +85,6 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 			}
 		}
 
-		create_eng.set_current_level(campaign_num);
-		create_eng.set_current_era_index(0);
-
 		std::string random_mode = use_deterministic_mode ? "deterministic" : "";
 		state.classification().random_mode = random_mode;
 

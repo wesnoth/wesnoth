@@ -15,9 +15,11 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "saved_game.hpp"
+#include "gettext.hpp"
 #include "gui/auxiliary/find_widget.tpp"
 #include "gui/dialogs/campaign_settings.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
@@ -41,9 +43,8 @@ void tcampaign_settings::change_era(twindow& window)
 	engine_.set_current_era_index(list.get_selected_row());
 }
 
-void tcampaign_settings::change_mod(size_t index, twindow& window)
+void tcampaign_settings::change_mod(size_t index, twindow&)
 {
-	tlistbox& mod_list = find_widget<tlistbox>(&window, "modification_list", false);
 	engine_.set_current_mod_index(index);
 	// force toggle mod.
 	engine_.toggle_current_mod(true);
@@ -53,19 +54,26 @@ void tcampaign_settings::update_lists(twindow& window)
 {
 	tlistbox& era_list = find_widget<tlistbox>(&window, "era_list", false);
 	tlistbox& mod_list = find_widget<tlistbox>(&window, "modification_list", false);
+	tlabel& era_label = find_widget<tlabel>(&window, "era_label", false);
 
 	era_list.clear();
 
-	BOOST_FOREACH(std::string era, engine_.extras_menu_item_names(ng::create_engine::ERA)) {
-		std::map<std::string, string_map> row;
-		string_map column;
+	if (engine_.current_level().allow_era_choice()) {
+		BOOST_FOREACH(std::string era, engine_.extras_menu_item_names(ng::create_engine::ERA)) {
+			std::map<std::string, string_map> row;
+			string_map column;
 
-		column["label"] = era;
-		row.insert(std::make_pair("era", column));
+			column["label"] = era;
+			row.insert(std::make_pair("era", column));
 
-		era_list.add_row(row);
+			era_list.add_row(row);
+		}
+		era_list.select_row(engine_.current_era_index());
 	}
-	era_list.select_row(engine_.current_era_index());
+	else {
+		era_label.set_label(_("Era:\nNot allowed"));
+		era_list.set_active(false);
+	}
 
 	mod_list.clear();
 
