@@ -702,6 +702,7 @@ set(wesnoth-main_SRC
 	ai/testing/ca_testing_recruitment.cpp
 	ai/testing/stage_fallback.cpp
 	ai/testing/stage_rca.cpp
+	ai/testing/stage_sf_with_rca.cpp
 	animated_game.cpp
 	attack_prediction.cpp
 	attack_prediction_display.cpp

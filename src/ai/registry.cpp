@@ -42,6 +42,7 @@
 #include "testing/ca_global_fallback.hpp"  // for global_fallback_phase
 #include "testing/ca_testing_move_to_targets.hpp"
 #include "testing/ca_testing_recruitment.hpp"
+#include "testing/stage_sf_with_rca.hpp"
 #include "testing/stage_fallback.hpp"   // for fallback_to_other_ai
 #include "testing/stage_rca.hpp"
 
@@ -80,6 +81,9 @@ static register_engine_factory<engine_lua>
 
 static register_stage_factory<testing_ai_default::candidate_action_evaluation_loop>
 	candidate_action_evaluation_loop_factory("ai_default_rca::candidate_action_evaluation_loop");
+
+static register_stage_factory<testing_ai_default::strategy_formulation_with_rca>
+	strategy_formulation_with_rca_factory("testing_ai_default::strategy_formulation_with_rca");
 
 static register_stage_factory<testing_ai_default::fallback_to_other_ai>
 	fallback_to_other_ai_factory("testing_ai_default::fallback");
