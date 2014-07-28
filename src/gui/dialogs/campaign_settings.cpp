@@ -111,6 +111,24 @@ void tcampaign_settings::pre_show(CVideo&, twindow& window)
 	tlistbox& era_list = find_widget<tlistbox>(&window, "era_list", false);
 	tlistbox& mod_list = find_widget<tlistbox>(&window, "modification_list", false);
 
+	ttoggle_button& configure_toggle = find_widget<ttoggle_button>(&window, "mp_configure", false);
+	ttoggle_button& connect_toggle = find_widget<ttoggle_button>(&window, "mp_connect", false);
+
+	const config::attribute_value& show_configure = engine_.current_level().data()["show_configure"];
+	if (show_configure.blank() || show_configure.str() == "user") {
+		configure_toggle.set_active(true);
+	} else {
+		configure_toggle.set_value(show_configure.to_bool());
+		configure_toggle.set_active(false);
+	}
+	const config::attribute_value& show_connect = engine_.current_level().data()["show_connect"];
+	if (show_connect.blank() || show_connect.str() == "user") {
+		connect_toggle.set_active(true);
+	} else {
+		connect_toggle.set_value(show_connect.to_bool());
+		connect_toggle.set_active(false);
+	}
+
 	era_list.set_callback_item_change(
 			boost::bind(&tcampaign_settings::change_era, this, boost::ref(window)));
 	mod_list.set_callback_item_change(
