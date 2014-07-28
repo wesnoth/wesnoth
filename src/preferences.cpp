@@ -949,5 +949,15 @@ bool use_twelve_hour_clock_format()
 	return get("use_twelve_hour_clock_format", false);
 }
 
+bool disable_auto_moves()
+{
+	return get("disable_auto_moves", false);
+}
+
+void set_disable_auto_moves(bool value)
+{
+	preferences::set("disable_auto_moves", value);
+}
+
 } // end namespace preferences
 

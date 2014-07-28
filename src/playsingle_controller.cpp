@@ -860,7 +860,10 @@ void playsingle_controller::execute_gotos(){
 
 possible_end_play_signal playsingle_controller::play_human_turn() {
 	show_turn_dialog();
-	HANDLE_END_PLAY_SIGNAL( execute_gotos() );
+
+	if (!preferences::disable_auto_moves()) {
+		HANDLE_END_PLAY_SIGNAL(execute_gotos());
+	}
 
 	end_turn_enable(true);
 	while(!end_turn_) {
