@@ -66,6 +66,17 @@ public:
 	 * Unwrap
 	 */
 	virtual rca_context& get_rca_context() = 0;
+	bool is_offense(){ return is_offense_; }
+	void set_offense(){ is_offense_ = true; is_defense_ = false; strategy_set_ = true; }
+	bool is_defense(){ return is_defense_; }
+	void set_defense(){ is_defense_ = true; is_offense_ = false; strategy_set_ = true; }
+	void clear_strategy(){ strategy_set_ = false; }
+	bool has_strategy(){ return strategy_set_; }
+
+private:
+	static bool is_offense_;
+	static bool is_defense_;
+	static bool strategy_set_;
 };
 
 

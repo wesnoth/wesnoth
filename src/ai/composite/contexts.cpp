@@ -34,6 +34,9 @@ ai_context_proxy::~ai_context_proxy()
 }
 
 
+bool rca_context::is_offense_ = false;
+bool rca_context::is_defense_ = false;
+bool rca_context::strategy_set_ = false;
 rca_context::rca_context()
 {
 }
