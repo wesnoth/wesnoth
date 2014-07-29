@@ -26,6 +26,8 @@
 
 struct surface;
 #ifdef SDL_GPU
+#include "sdl/shader.hpp"
+
 namespace sdl
 {
 struct timage;
@@ -172,6 +174,9 @@ class CVideo : private boost::noncopyable {
 private:
 
 	void initSDL();
+#ifdef SDL_GPU
+	sdl::shader_program shader_;
+#endif
 
 	bool mode_changed_;
 

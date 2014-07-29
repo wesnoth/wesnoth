@@ -373,6 +373,7 @@ set(wesnoth-sdl_SRC
 	sdl/image.cpp
 	sdl/window.cpp
 	sdl/utils.cpp
+	sdl/shader.cpp
 )
 
 add_library(wesnoth-sdl

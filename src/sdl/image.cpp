@@ -32,7 +32,7 @@ timage::timage(Uint16 w, Uint16 h)
 	, hscale_(1)
 	, vscale_(1)
 	, clip_()
-	, color_mod_()
+	, color_mod_(create_color(0, 0, 0, 0))
 	, hwrap_(GPU_WRAP_NONE)
 	, vwrap_(GPU_WRAP_NONE)
 {
@@ -51,7 +51,7 @@ timage::timage(const std::string &file)
 	, hscale_(1)
 	, vscale_(1)
 	, clip_()
-	, color_mod_()
+	, color_mod_(create_color(0, 0, 0, 0))
 	, hwrap_(GPU_WRAP_NONE)
 	, vwrap_(GPU_WRAP_NONE)
 {
@@ -69,7 +69,7 @@ timage::timage(const surface &source)
 	, hscale_(1)
 	, vscale_(1)
 	, clip_()
-	, color_mod_()
+	, color_mod_(create_color(0, 0, 0, 0))
 	, hwrap_(GPU_WRAP_NONE)
 	, vwrap_(GPU_WRAP_NONE)
 	, smooth_(false)
@@ -88,7 +88,7 @@ timage::timage(SDL_Surface *source)
 	, hscale_(1)
 	, vscale_(1)
 	, clip_()
-	, color_mod_()
+	, color_mod_(create_color(0, 0, 0, 0))
 	, hwrap_(GPU_WRAP_NONE)
 	, vwrap_(GPU_WRAP_NONE)
 	, smooth_(false)
@@ -107,7 +107,7 @@ timage::timage()
 	, hscale_(1)
 	, vscale_(1)
 	, clip_()
-	, color_mod_()
+	, color_mod_(create_color(0, 0, 0, 0))
 	, hwrap_(GPU_WRAP_NONE)
 	, vwrap_(GPU_WRAP_NONE)
 	, smooth_(false)
@@ -154,7 +154,7 @@ void timage::draw(GPU_Target &target, const int x, const int y)
 {
 	GPU_SetImageFilter(image_, smooth_ ? GPU_FILTER_LINEAR : GPU_FILTER_NEAREST);
 	GPU_SetWrapMode(image_, hwrap_, vwrap_);
-	//GPU_SetColor(image_, &color);
+	GPU_SetColor(image_, &color_mod_);
 	GPU_BlitTransform(image_, &clip_, &target, x + width()/2, y + height()/2,
 					  rotation_, hscale_, vscale_);
 }
@@ -244,9 +244,9 @@ SDL_Rect timage::clip() const
 	return result;
 }
 
-void timage::set_alpha(Uint8 alpha)
+void timage::set_alpha(Sint8 alpha)
 {
-	color_mod_.unused = alpha;
+	color_mod_.unused = Uint8(alpha);
 }
 
 Uint8 timage::alpha() const
@@ -254,24 +254,24 @@ Uint8 timage::alpha() const
 	return color_mod_.unused;
 }
 
-void timage::set_color_mod(Uint8 r, Uint8 g, Uint8 b)
+void timage::set_color_mod(Sint8 r, Sint8 g, Sint8 b)
 {
-	color_mod_.r = r;
-	color_mod_.g = g;
-	color_mod_.b = b;
+	color_mod_.r = Uint8(r);
+	color_mod_.g = Uint8(g);
+	color_mod_.b = Uint8(b);
 }
 
-Uint8 timage::red_mod() const
+Sint8 timage::red_mod() const
 {
 	return color_mod_.r;
 }
 
-Uint8 timage::green_mod() const
+Sint8 timage::green_mod() const
 {
 	return color_mod_.g;
 }
 
-Uint8 timage::blue_mod() const
+Sint8 timage::blue_mod() const
 {
 	return color_mod_.b;
 }

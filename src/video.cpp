@@ -333,7 +333,15 @@ void update_whole_screen()
 {
 	update_all = true;
 }
-CVideo::CVideo(FAKE_TYPES type) : mode_changed_(false), bpp_(0), fake_screen_(false), help_string_(0), updatesLocked_(0)
+CVideo::CVideo(FAKE_TYPES type) :
+#ifdef SDL_GPU
+	shader_(),
+#endif
+	mode_changed_(false),
+	bpp_(0),
+	fake_screen_(false),
+	help_string_(0),
+	updatesLocked_(0)
 {
 	initSDL();
 	switch(type)
@@ -359,6 +367,11 @@ void CVideo::initSDL()
 		ERR_DP << "Could not initialize window: " << SDL_GetError() << std::endl;
 		throw CVideo::error();
 	}
+
+	const std::string vertex_src = game_config::path + "/data/shaders/default.vert";
+	const std::string frag_src = game_config::path + "/data/shaders/default.frag";
+	shader_ = sdl::shader_program(vertex_src, frag_src);
+	shader_.activate();
 #else
 	const int res = SDL_InitSubSystem(SDL_INIT_VIDEO | SDL_INIT_NOPARACHUTE);
 
