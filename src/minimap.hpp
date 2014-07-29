@@ -24,7 +24,7 @@ struct map_location;
 
 #ifdef SDL_GPU
 class CVideo;
-class SDL_Rect;
+struct SDL_Rect;
 #endif
 
 namespace image {

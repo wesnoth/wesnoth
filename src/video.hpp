@@ -30,7 +30,7 @@ struct surface;
 
 namespace sdl
 {
-struct timage;
+class timage;
 }
 #endif
 
