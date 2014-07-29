@@ -1388,6 +1388,9 @@ void play_controller::check_victory()
 	{
 		return;
 	}
+
+	check_end_level();
+
 	std::set<unsigned> not_defeated;
 
 	for (unit_map::const_iterator i = units_.begin(),
@@ -1429,8 +1432,6 @@ void play_controller::check_victory()
 			there_is_a_local_human = true;
 		}
 	}
-
-	check_end_level();
 
 	bool found_player = false;
 	bool found_network_player = false;
