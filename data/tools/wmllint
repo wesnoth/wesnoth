@@ -2666,7 +2666,6 @@ Other options:
                                applying to all sides.
     -s, --stripcr              Convert DOS-style CR/LF to Unix-style LF.
     -p, --progress             Names each file before processing (like -v -v).
-    -f, --future               Enable experimental WML conversions.
     -K, --known                Suppress check for unknown unit types, recruits,
                                races, scenarios, etc.
     -S, --nospellcheck         Suppress spellchecking
@@ -2679,11 +2678,10 @@ file itself.  See also: http://wiki.wesnoth.org/Maintenance_tools.
 
 if __name__ == '__main__':
     try:
-        (options, arguments) = getopt.getopt(sys.argv[1:], "cdDfhmnprsvKSZ", [
+        (options, arguments) = getopt.getopt(sys.argv[1:], "cdDhmnprsvKSZ", [
             "clean",
             "diffs",
             "dryrun",
-            "future",
             "help",
             "missing",
             "progress",
@@ -2694,6 +2692,7 @@ if __name__ == '__main__':
             "nospellcheck",
             "stringfreeze",
             ])
+        # -f --future has been removed; there have been no experimental conversions since 1.4
     except getopt.GetoptError:
         help()
         sys.stderr.write('\nAn option you have entered is invalid.  Review options and try again.')
@@ -2701,7 +2700,6 @@ if __name__ == '__main__':
     clean = False
     diffs = False
     dryrun = False
-    future = False
     missingside = True
     revert = False
     stringfreeze = False
@@ -2720,8 +2718,6 @@ if __name__ == '__main__':
             dryrun = True
         elif switch in ('-D', '--diffs'):
             diffs = True
-        elif switch in ('-f', '--future'):
-            future = True
         elif switch in ('-m', '--missing'):
             missingside = False
         elif switch in ('-p', '--progress'):
