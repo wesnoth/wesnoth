@@ -525,7 +525,7 @@ void connect_engine::start_game_commandline(
 		scenario()["turns"] = *cmdline_opts.multiplayer_turns;
 	}
 
-	BOOST_FOREACH(config &side, level_.child_range("side"))
+	BOOST_FOREACH(config &side, scenario().child_range("side"))
 	{
 		if (cmdline_opts.multiplayer_ai_config) {
 			BOOST_FOREACH(const mp_option& option,
