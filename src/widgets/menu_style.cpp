@@ -37,7 +37,11 @@ menu::style &menu::default_style = menu::bluebg_style;
 menu::style::style() : font_size_(font::SIZE_NORMAL),
 		cell_padding_(font::SIZE_NORMAL * 3/5), thickness_(0),
 		normal_rgb_(0x000000), selected_rgb_(0x000099), heading_rgb_(0x333333),
+#ifdef SDL_GPU
+		normal_alpha_(50),  selected_alpha_(150), heading_alpha_(75),
+#else
 		normal_alpha_(0.2),  selected_alpha_(0.6), heading_alpha_(0.3),
+#endif
 		max_img_w_(-1), max_img_h_(-1)
 {}
 
@@ -63,6 +67,28 @@ void menu::style::scale_images(int max_width, int max_height)
 	max_img_h_ = max_height;
 }
 
+#ifdef SDL_GPU
+sdl::timage menu::style::get_item_image(const image::locator& img_loc) const
+{
+	sdl::timage img = image::get_texture(img_loc);
+	if(!img.null())
+	{
+		int scale = 100;
+		if(max_img_w_ > 0 && img.width() > max_img_w_) {
+			scale = (max_img_w_ * 100) / img.width();
+		}
+		if(max_img_h_ > 0 && img.height() > max_img_h_) {
+			scale = std::min<int>(scale, ((max_img_h_ * 100) / img.height()));
+		}
+		if(scale != 100)
+		{
+			img.set_scale(scale, scale);
+			return img;
+		}
+	}
+	return img;
+}
+#else
 surface menu::style::get_item_image(const image::locator& img_loc) const
 {
 	surface surf = image::get_image(img_loc);
@@ -82,13 +108,21 @@ surface menu::style::get_item_image(const image::locator& img_loc) const
 	}
 	return surf;
 }
+#endif
 
 bool menu::imgsel_style::load_image(const std::string &img_sub)
 {
+#ifdef SDL_GPU
+	std::string path = img_base_ + "-" + img_sub + ".png";
+	sdl::timage image = image::get_image(path);
+	img_map_[img_sub] = image;
+	return(!image.null());
+#else
 	std::string path = img_base_ + "-" + img_sub + ".png";
 	const surface image = image::get_image(path);
 	img_map_[img_sub] = image;
 	return(!image.null());
+#endif
 }
 
 bool menu::imgsel_style::load_images()
@@ -105,9 +139,16 @@ bool menu::imgsel_style::load_images()
 			&& load_image("border-top")
 			&& load_image("border-bottom") )
 		{
+#ifdef SDL_GPU
+			thickness_ = std::min(
+					img_map_["border-top"].height(),
+					img_map_["border-left"].width());
+#else
 			thickness_ = std::min(
 					img_map_["border-top"]->h,
 					img_map_["border-left"]->w);
+#endif
+
 
 			if(has_background_ && !load_image("background"))
 			{
@@ -138,6 +179,13 @@ bool menu::imgsel_style::load_images()
 
 void menu::imgsel_style::draw_row_bg(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 {
+#ifdef SDL_GPU
+	if(type == SELECTED_ROW && has_background_ && !load_failed_) {
+		background_image_.set_scale(float(rect.w) / background_image_.width(),
+									float(rect.h) / background_image_.height());
+		menu_ref.video().draw_texture(background_image_, rect.x, rect.y);
+	}
+#else
 	if(type == SELECTED_ROW && has_background_ && !load_failed_) {
 		if(bg_cache_.width != rect.w || bg_cache_.height != rect.h)
 		{
@@ -150,6 +198,7 @@ void menu::imgsel_style::draw_row_bg(menu& menu_ref, const size_t row_index, con
 		SDL_Rect clip = rect;
 		menu_ref.video().blit_surface(rect.x,rect.y,bg_cache_.surf,NULL,&clip);
 	}
+#endif
 	else {
 		style::draw_row_bg(menu_ref, row_index, rect, type);
 	}
@@ -161,6 +210,72 @@ void menu::imgsel_style::draw_row(menu& menu_ref, const size_t row_index, const 
 		//draw item inside
 		style::draw_row(menu_ref, row_index, rect, type);
 
+#ifdef SDL_GPU
+		if(type == SELECTED_ROW) {
+			// draw border
+			sdl::timage image;
+			SDL_Rect area;
+			area.x = rect.x;
+			area.y = rect.y;
+
+			GPU_SetClip(get_render_target(), rect.x, rect.y, rect.w, rect.h);
+
+			image = img_map_["border-top"];
+			area.x = rect.x;
+			area.y = rect.y;
+			do {
+				menu_ref.video().draw_texture(image, area.x, area.y);
+				area.x += image.width();
+			} while( area.x < rect.x + rect.w );
+
+			image = img_map_["border-left"];
+			area.x = rect.x;
+			area.y = rect.y;
+			do {
+				menu_ref.video().draw_texture(image, area.x, area.y);
+				area.y += image.height();
+			} while( area.y < rect.y + rect.h );
+
+			image = img_map_["border-right"];
+			area.x = rect.x + rect.w - thickness_;
+			area.y = rect.y;
+			do {
+				menu_ref.video().draw_texture(image, area.x, area.y);
+				area.y += image.height();
+			} while( area.y < rect.y + rect.h );
+
+			image = img_map_["border-bottom"];
+			area.x = rect.x;
+			area.y = rect.y + rect.h - thickness_;
+			do {
+				menu_ref.video().draw_texture(image, area.x, area.y);
+				area.x += image.width();
+			} while( area.x < rect.x + rect.w );
+
+			image = img_map_["border-topleft"];
+			area.x = rect.x;
+			area.y = rect.y;
+			menu_ref.video().draw_texture(image, area.x, area.y);
+
+			image = img_map_["border-topright"];
+			area.x = rect.x + rect.w - image.width();
+			area.y = rect.y;
+			menu_ref.video().draw_texture(image, area.x, area.y);
+
+			image = img_map_["border-botleft"];
+			area.x = rect.x;
+			area.y = rect.y + rect.h - image.height();
+			menu_ref.video().draw_texture(image, area.x, area.y);
+
+			image = img_map_["border-botright"];
+			area.x = rect.x + rect.w - image.width();
+			area.y = rect.y + rect.h - image.height();
+			menu_ref.video().draw_texture(image, area.x, area.y);
+
+			GPU_UnsetClip(get_render_target());
+		}
+	}
+#else
 		if(type == SELECTED_ROW) {
 			// draw border
 			surface image;
@@ -221,7 +336,9 @@ void menu::imgsel_style::draw_row(menu& menu_ref, const size_t row_index, const 
 			area.y = rect.y + rect.h - image->h;
 			menu_ref.video().blit_surface(area.x,area.y,image);
 		}
-	} else {
+	}
+#endif
+		else {
 		//default drawing
 		style::draw_row(menu_ref, row_index, rect, type);
 	}

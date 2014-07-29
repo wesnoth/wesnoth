@@ -175,7 +175,7 @@ public:
 	 *
 	 * @param alpha               Alpha value.
 	 */
-	void set_alpha(Uint8 alpha);
+	void set_alpha(Sint8 alpha);
 
 	/**
 	 * Returns the alpha of the texture.
@@ -189,22 +189,22 @@ public:
 	 * @param g                   Green modulation.
 	 * @param b                   Blue modulation.
 	 */
-	void set_color_mod(Uint8 r, Uint8 g, Uint8 b);
+	void set_color_mod(Sint8 r, Sint8 g, Sint8 b);
 
 	/**
 	 * Returns red modulation.
 	 */
-	Uint8 red_mod() const;
+	Sint8 red_mod() const;
 
 	/**
 	 * Returns green modulation.
 	 */
-	Uint8 green_mod() const;
+	Sint8 green_mod() const;
 
 	/**
 	 * Returns blue modulation.
 	 */
-	Uint8 blue_mod() const;
+	Sint8 blue_mod() const;
 
 	/**
 	 * Set horizontal wrap mode.

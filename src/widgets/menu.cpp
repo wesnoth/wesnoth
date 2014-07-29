@@ -811,6 +811,16 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 			res.w += 5;
 		}
 		const std::string str = *it;
+#ifdef SDL_GPU
+		if (!str.empty() && str[0] == IMAGE_PREFIX) {
+			const std::string image_name(str.begin()+1,str.end());
+			sdl::timage img = get_item_image(image_name);
+			if(!img.null()) {
+				res.w += img.width();
+				res.h = std::max<int>(img.height(), res.h);
+			}
+		}
+#else
 		if (!str.empty() && str[0] == IMAGE_PREFIX) {
 			const std::string image_name(str.begin()+1,str.end());
 			surface const img = get_item_image(image_name);
@@ -818,7 +828,9 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 				res.w += img->w;
 				res.h = std::max<int>(img->h, res.h);
 			}
-		} else {
+		}
+#endif
+		else {
 			const SDL_Rect area = {0,0,10000,10000};
 			const SDL_Rect font_size =
 				font::draw_text(NULL,area,get_font_size(),font::NORMAL_COLOR,str,0,0);
@@ -851,9 +863,17 @@ void menu::style::draw_row_bg(menu& menu_ref, const size_t /*row_index*/, const 
 		break;
 	}
 
+#ifdef SDL_GPU
 	sdl::draw_solid_tinted_rectangle(rect.x, rect.y, rect.w, rect.h,
 				    (rgb&0xff0000) >> 16,(rgb&0xff00) >> 8,rgb&0xff,alpha,
 				    menu_ref.video().getSurface());
+	sdl::fill_rect(*get_render_target(), rect, (rgb&0xff0000) >> 16,
+				   (rgb&0xff00) >> 8, rgb&0xff, alpha);
+#else
+	sdl::draw_solid_tinted_rectangle(rect.x, rect.y, rect.w, rect.h,
+					(rgb&0xff0000) >> 16,(rgb&0xff00) >> 8,rgb&0xff,alpha,
+					menu_ref.video().getSurface());
+#endif
 }
 
 void menu::style::draw_row(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
@@ -935,6 +955,78 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 		if(lang_rtl)
 			xpos -= widths[i];
 		if(type == HEADING_ROW) {
+#ifdef SDL_GPU
+			const SDL_Rect pos = sdl::create_rect(xpos, rect.y, widths[i], rect.h);
+			if(highlight_heading_ == int(i)) {
+				sdl::fill_rect(*get_render_target(), pos, 255, 255, 255, 75);
+			} else if(sortby_ == int(i)) {
+				sdl::fill_rect(*get_render_target(), pos, 255, 255, 255, 25);
+			}
+		}
+
+		const int last_x = xpos;
+		column.w = widths[i];
+		std::string str = row[i];
+		std::vector<std::string> img_text_items = utils::split(str, IMG_TEXT_SEPARATOR, utils::REMOVE_EMPTY);
+		for (std::vector<std::string>::const_iterator it = img_text_items.begin();
+			 it != img_text_items.end(); ++it) {
+			str = *it;
+			if (!str.empty() && str[0] == IMAGE_PREFIX) {
+				const std::string image_name(str.begin()+1,str.end());
+				sdl::timage img = style_->get_item_image(image_name);
+				const int remaining_width = max_width_ < 0 ? area.w :
+				std::min<int>(max_width_, ((lang_rtl)? xpos - rect.x : rect.x + rect.w - xpos));
+				if(!img.null() && img.width() <= remaining_width
+				&& rect.y + img.height() < area.h) {
+					const size_t y = rect.y + (rect.h - img.height())/2;
+					const size_t w = img.width() + 5;
+					const size_t x = xpos + ((lang_rtl) ? widths[i] - w : 0);
+					video().draw_texture(img, x, y);
+					if(!lang_rtl)
+						xpos += w;
+					column.w -= w;
+				}
+			} else {
+				column.x = xpos;
+				const bool has_wrap = (str.find_first_of("\r\n") != std::string::npos);
+				//prevent ellipsis calculation if there is any line wrapping
+				std::string to_show = str;
+				if (use_ellipsis_ && !has_wrap)
+				{
+					int fs = style_->get_font_size();
+					int style = TTF_STYLE_NORMAL;
+					int w = loc.w - (xpos - rect.x) - 2 * style_->get_thickness();
+					std::string::const_iterator i_beg = to_show.begin(), i_end = to_show.end(),
+						i = font::parse_markup(i_beg, i_end, &fs, NULL, &style);
+					if (i != i_end) {
+						std::string tmp(i, i_end);
+						to_show.erase(i - i_beg, i_end - i_beg);
+						to_show += font::make_text_ellipsis(tmp, fs, w, style);
+					}
+				}
+				const SDL_Rect& text_size = font::text_area(str,style_->get_font_size());
+				const size_t y = rect.y + (rect.h - text_size.h)/2;
+				const size_t padding = 2;
+				sdl::timage text_img = font::draw_text_to_texture(column,style_->get_font_size(),font::NORMAL_COLOR,to_show);
+				video().draw_texture(text_img, (type == HEADING_ROW ? xpos+padding : xpos), y);
+					if(type == HEADING_ROW && sortby_ == int(i)) {
+					sdl::timage sort_img = image::get_texture("buttons/sliders/slider_arrow_blue.png");
+					sort_img.set_rotation(sortreversed_ ? 0 : 180);
+					if(!sort_img.null() && sort_img.width() <= widths[i] && sort_img.height() <= rect.h) {
+						const size_t sort_x = xpos + widths[i] - sort_img.width() - padding;
+						const size_t sort_y = rect.y + rect.h/2 - sort_img.height()/2;
+						video().draw_texture(sort_img, sort_x, sort_y);
+					}
+				}
+					xpos += dir * (text_size.w + 5);
+			}
+		}
+		if(lang_rtl)
+			xpos = last_x;
+		else
+			xpos = last_x + widths[i];
+	}
+#else
 			if(highlight_heading_ == int(i)) {
 				sdl::draw_solid_tinted_rectangle(xpos,rect.y,widths[i],rect.h,255,255,255,0.3,video().getSurface());
 			} else if(sortby_ == int(i)) {
@@ -1006,6 +1098,7 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 		else
 			xpos = last_x + widths[i];
 	}
+#endif
 }
 
 void menu::draw_contents()
