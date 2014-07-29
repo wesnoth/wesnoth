@@ -2665,7 +2665,6 @@ Other options:
     -m, --missing              Don't warn about tags without side= keys now
                                applying to all sides.
     -s, --stripcr              Convert DOS-style CR/LF to Unix-style LF.
-    -p, --progress             Names each file before processing (like -v -v).
     -K, --known                Suppress check for unknown unit types, recruits,
                                races, scenarios, etc.
     -S, --nospellcheck         Suppress spellchecking
@@ -2678,13 +2677,12 @@ file itself.  See also: http://wiki.wesnoth.org/Maintenance_tools.
 
 if __name__ == '__main__':
     try:
-        (options, arguments) = getopt.getopt(sys.argv[1:], "cdDhmnprsvKSZ", [
+        (options, arguments) = getopt.getopt(sys.argv[1:], "cdDhmnrsvKSZ", [
             "clean",
             "diffs",
             "dryrun",
             "help",
             "missing",
-            "progress",
             "revert",
             "stripcr",
             "verbose",
@@ -2693,6 +2691,7 @@ if __name__ == '__main__':
             "stringfreeze",
             ])
         # -f --future has been removed; there have been no experimental conversions since 1.4
+        # -p --progress has been removed; similar to existing -v -v
     except getopt.GetoptError:
         help()
         sys.stderr.write('\nAn option you have entered is invalid.  Review options and try again.')
@@ -2706,7 +2705,6 @@ if __name__ == '__main__':
     stripcr = False
     verbose = 0
     dospellcheck = True
-    progress = False
     inconsistency = False
     for (switch, val) in options:
         if switch in ('-h', '--help'):
@@ -2720,8 +2718,6 @@ if __name__ == '__main__':
             diffs = True
         elif switch in ('-m', '--missing'):
             missingside = False
-        elif switch in ('-p', '--progress'):
-            progress = True
         elif switch in ('-r', '--revert'):
             revert = True
         elif switch in ('-s', '--stripcr'):
@@ -2917,8 +2913,6 @@ In your case, your system interprets your arguments as:
             for fn in allcfgfiles(dir):
                 if verbose >= 2:
                     print fn + ":"
-                if progress:
-                    print fn
                 backup = fn + "-bak"
                 if clean or revert:
                     # Do housekeeping
