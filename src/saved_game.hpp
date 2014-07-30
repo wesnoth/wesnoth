@@ -43,7 +43,7 @@ public:
 	const mp_game_settings& mp_settings() const { return mp_settings_; }
 	
 	void set_carryover_sides_start(config carryover_sides_start);
-	const config& carryover() { return carryover_sides_start_; }
+	const config& carryover() { return carryover_; }
 
 	/// copies the content of a [scenario] with the correct id attribute from the game config into this object.
 	void expand_scenario();
@@ -96,11 +96,13 @@ public:
 
 private:
 	
-	/** The carryover information for all sides that arent used in this scenario to be carried over to the next scenario */
-	config carryover_sides_;
-
-	/** The carryover information for all sides as it was before the scenario started */
-	config carryover_sides_start_;
+	/** 
+		depends on has_carryover_expanded_:
+		if true: The carryover information for all sides that arent used in this scenario to be carried over to the next scenario 
+		if false: The whole carryover information for all sides from teh previous scenario.
+	*/
+	bool has_carryover_expanded_;
+	config carryover_;
 	/** snapshot made before the start event. To be used as a starting pos for replays */
 	config replay_start_;
 	/** some general information of the game that doesn't change during the game */

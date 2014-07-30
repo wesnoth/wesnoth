@@ -58,8 +58,8 @@ static lg::log_domain log_engine("engine");
 
 saved_game::saved_game()
 	: replay_data()
-	, carryover_sides_()
-	, carryover_sides_start_(carryover_info().to_config())
+	, has_carryover_expanded_(false)
+	, carryover_(carryover_info().to_config())
 	, replay_start_()
 	, classification_()
 	, mp_settings_()
@@ -71,8 +71,8 @@ saved_game::saved_game()
 
 saved_game::saved_game(const config& cfg)
 	: replay_data()
-	, carryover_sides_()
-	, carryover_sides_start_()
+	, has_carryover_expanded_(false)
+	, carryover_()
 	, replay_start_()
 	, classification_(cfg)
 	, mp_settings_(cfg)
@@ -82,9 +82,17 @@ saved_game::saved_game(const config& cfg)
 {
 	log_scope("read_game");
 
-	carryover_sides_ = cfg.child_or_empty("carryover_sides");
-	carryover_sides_start_ = cfg.child_or_empty("carryover_sides_start");
+	if(const config & caryover_sides = cfg.child("carryover_sides"))
+	{
+		carryover_ = caryover_sides;
+		has_carryover_expanded_ = true;
+	}
+	else
+	{
+		carryover_ = cfg.child_or_empty("carryover_sides_start");
+	}
 
+	
 	//Serversided replays can contain multiple [replay]
 	replay_start_ = cfg.child_or_empty("replay_start");
 	replay_data = config(); //cfg.child_or_empty("replay");
@@ -104,16 +112,7 @@ saved_game::saved_game(const config& cfg)
 		this->starting_pos_ = scenario;
 	}
 
-	if(starting_pos_.empty() && replay_start_.empty() && carryover_sides_start_.empty() && !carryover_sides_.empty())
-	{
-		//Explain me: when could this happen?
-		//if we are loading a start of scenario save and don't have carryover_sides_start, use carryover_sides
-		//TODO: move this code to convert_old_saves
-		carryover_sides_start_ = carryover_sides_;
-		carryover_sides_ = config();
-	}
-
-	LOG_NG << "scenario: '" << carryover_sides_start_["next_scenario"].str() << "'\n";
+	LOG_NG << "scenario: '" << carryover_["next_scenario"].str() << "'\n";
 
 	if (const config &stats = cfg.child("statistics")) {
 		statistics::fresh_stats();
@@ -124,8 +123,8 @@ saved_game::saved_game(const config& cfg)
 
 saved_game::saved_game(const saved_game& state)
 	: replay_data(state.replay_data)
-	, carryover_sides_(state.carryover_sides_)
-	, carryover_sides_start_(state.carryover_sides_start_)
+	, has_carryover_expanded_(state.has_carryover_expanded_)
+	, carryover_(state.carryover_)
 	, replay_start_(state.replay_start_)
 	, classification_(state.classification_)
 	, mp_settings_(state.mp_settings_)
@@ -146,18 +145,18 @@ saved_game& saved_game::operator=(const saved_game& state)
 
 void saved_game::set_carryover_sides_start(config carryover_sides_start)
 {
-	carryover_sides_start_.swap(carryover_sides_start);
-	carryover_sides_start_.child_or_add("variables");
+	carryover_.swap(carryover_sides_start);
+	has_carryover_expanded_ = false;
 }
 
 void saved_game::set_random_seed()
 {
-	if(carryover_sides_start_.empty() || carryover_sides_start_["random_seed"].empty())
+	if(has_carryover_expanded_ || carryover_["random_seed"].empty())
 	{
 		return;
 	}
-	carryover_sides_start_["random_seed"] = rand();
-	carryover_sides_start_["random_calls"] = 0;
+	carryover_["random_seed"] = rand();
+	carryover_["random_calls"] = 0;
 }
 
 void saved_game::write_config(config_writer& out) const
@@ -189,14 +188,7 @@ void saved_game::write_starting_pos(config_writer& out) const
 void saved_game::write_carryover(config_writer& out) const
 {
 	assert(not_corrupt());
-	if(!carryover_sides_.empty())
-	{
-		out.write_child("carryover_sides", carryover_sides_);
-	}
-	if(!carryover_sides_start_.empty())
-	{
-		out.write_child("carryover_sides_start", carryover_sides_start_);
-	}
+	out.write_child(has_carryover_expanded_ ? "carryover_sides" : "carryover_sides_start", carryover_);
 }
 
 
@@ -211,14 +203,14 @@ void saved_game::write_general_info(config_writer& out) const
 
 void saved_game::expand_scenario()
 {
-	if(this->starting_pos_type_ == STARTINGPOS_NONE && !carryover_sides_start_.empty())
+	if(this->starting_pos_type_ == STARTINGPOS_NONE && !has_carryover_expanded_)
 	{
 		resources::config_manager->load_game_config_for_game(this->classification());
 		const config& game_config = resources::config_manager->game_config();
 		const config& scenario = game_config.find_child(lexical_cast_default<std::string>
 				(classification().campaign_type == game_classification::SCENARIO ?
 				 game_classification::MULTIPLAYER : classification().campaign_type),
-				"id", carryover_sides_start_["next_scenario"]);
+				"id", carryover_["next_scenario"]);
 		if(scenario)
 		{
 			this->starting_pos_type_ = STARTINGPOS_SCENARIO;
@@ -304,7 +296,7 @@ void saved_game::expand_mp_events()
 
 void saved_game::expand_mp_options()
 {
-	if(starting_pos_type_ == STARTINGPOS_SCENARIO && !carryover_sides_start_.empty())
+	if(starting_pos_type_ == STARTINGPOS_SCENARIO && !has_carryover_expanded_)
 	{
 		std::vector<modevents_entry> mods;
 
@@ -314,7 +306,7 @@ void saved_game::expand_mp_options()
 		mods.push_back(modevents_entry("era", mp_settings_.mp_era));
 		mods.push_back(modevents_entry("multiplayer", get_scenario_id()));
 
-		config& variables = carryover_sides_start_.child_or_add("variables");
+		config& variables = carryover_.child_or_add("variables");
 		BOOST_FOREACH(modevents_entry& mod, mods)
 		{
 			if(const config& cfg = this->mp_settings().options.find_child(mod.type, "id", mod.id))
@@ -373,17 +365,16 @@ void saved_game::expand_random_scenario()
 void saved_game::expand_carryover()
 {
 	expand_scenario();
-	if(this->starting_pos_type_ == STARTINGPOS_SCENARIO && !carryover_sides_start_.empty())
+	if(this->starting_pos_type_ == STARTINGPOS_SCENARIO && !has_carryover_expanded_)
 	{
-		carryover_info sides(carryover_sides_start_);
+		carryover_info sides(carryover_);
 
 		sides.transfer_to(get_starting_pos());
 		BOOST_FOREACH(config& side_cfg, get_starting_pos().child_range("side")){
 			sides.transfer_all_to(side_cfg);
 		}
 
-		carryover_sides_ = sides.to_config();
-		carryover_sides_start_ = config();
+		carryover_ = sides.to_config();
 	}
 }
 
@@ -402,11 +393,7 @@ void saved_game::set_scenario(const config& scenario)
 {
 	this->starting_pos_type_ = STARTINGPOS_SCENARIO;
 	this->starting_pos_ = scenario;
-	//By default we treat the game as 'carryover not expanded yet'
-	if(carryover_sides_.empty())
-	{
-		carryover_sides_start_.child_or_add("variables");
-	}
+	has_carryover_expanded_ = false;
 	update_label();
 }
 
@@ -428,7 +415,7 @@ const config& saved_game::get_replay_starting_pos()
 	{
 		return replay_start_;
 	}
-	if(!carryover_sides_start_.empty())
+	if(!has_carryover_expanded_)
 	{
 		//Try to load the scenario form game config or from [scenario] if there is no [replay_start]
 		expand_scenario();
@@ -445,12 +432,11 @@ void saved_game::convert_to_start_save()
 {
 	assert(starting_pos_type_ == STARTINGPOS_SNAPSHOT);
 	carryover_info sides(starting_pos_, true);
-	sides.merge_old_carryover(carryover_info(carryover_sides_));
+	sides.merge_old_carryover(carryover_info(carryover_));
 	sides.rng().rotate_random();
-	carryover_sides_start_ = sides.to_config();
+	carryover_ = sides.to_config();
 	replay_data = config();
 	replay_start_ = config();
-	carryover_sides_ = config();
 	remove_snapshot();
 }
 
@@ -474,15 +460,7 @@ config saved_game::to_config() const
 	{
 		r.add_child("scenario", starting_pos_);
 	}
-	if(!carryover_sides_.empty())
-	{
-		r.add_child("carryover_sides", carryover_sides_);
-	}
-	if(!carryover_sides_start_.empty())
-	{
-		r.add_child("carryover_sides_start", carryover_sides_start_);
-	}
-
+	r.add_child(has_carryover_expanded_ ? "carryover_sides" : "carryover_sides_start" , carryover_);
 	if (classification_.campaign_type == game_classification::MULTIPLAYER) {
 		r.add_child("multiplayer", mp_settings_.to_config());
 	}
@@ -496,31 +474,20 @@ std::string saved_game::get_scenario_id()
 	{
 		return starting_pos_["id"];
 	}
+	else if(!has_carryover_expanded_)
+	{
+		return carryover_["next_scenario"];
+	}
 	else
 	{
-		return carryover_sides_start_["next_scenario"];
+		assert(!"cannot figure out scenario_id");
+		throw "assertion ingnored";
 	}
 }
 
 bool saved_game::not_corrupt() const
 {
-	if(carryover_sides_.empty() && carryover_sides_start_.empty())
-	{
-		//this case is dangerous but currently not impossible.
-		WRN_NG << "savefile contains neigher [carryover_sides] not [carryover_sides_start]" <<  std::endl;
-	}
-	// A Scenario can never contain both of them
-	// normal saves have [carryover_sides] start-of-scenario saved have [carryover_sides_start]
-	// the function expand_carryover transforms a start of scenario save to a normal save
-	// the function convert_to_start_save converts a normal save form teh end of the scenaio
-	// to a start-of-scenario save for a next level
-	bool r = carryover_sides_.empty() || carryover_sides_start_.empty();
-	if(!r)
-	{
-		config c = this->to_config();
-		WRN_NG << "corrupt safegame:" << c.debug() << std::endl;
-	}
-	return r;
+	return true;
 }
 
 void saved_game::update_label()
