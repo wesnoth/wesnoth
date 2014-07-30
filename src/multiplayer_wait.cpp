@@ -405,31 +405,7 @@ void wait::start_game()
 		statistics::fresh_stats();
 		statistics::read_stats(stats);
 	}
-
-	/**
-	 * @todo Instead of using level_to_gamestate reinit the state_,
-	 * this needs more testing -- Mordante
-	 * It seems level_to_gamestate is needed for the start of game
-	 * download, but downloads of later scenarios miss certain info
-	 * and add a players section. Use players to decide between old
-	 * and new way. (Of course it would be nice to unify the data
-	 * stored.)
-	 */
-	if (!level_.child("player")) {
-		level_to_gamestate(level_, state_);
-	} else {
-
-		state_ = saved_game(level_);
-
-		// When we observe and don't have the addon installed we still need
-		// the old way, no clue why however. Code is a copy paste of
-		// playcampaign.cpp:576 which shows an 'Unknown scenario: '$scenario|'
-		// error. This seems to work and have no side effects....
-		if(!state_.carryover_sides_start["next_scenario"].empty() && state_.carryover_sides_start["next_scenario"] != "null") {
-			DBG_NW << "Falling back to loading the old way.\n";
-			level_to_gamestate(level_, state_);
-		}
-	}
+	level_to_gamestate(level_, state_);
 
 	LOG_NW << "starting game\n";
 	sound::play_UI_sound(game_config::sounds::mp_game_begins);
