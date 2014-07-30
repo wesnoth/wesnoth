@@ -174,54 +174,6 @@ void level_to_gamestate(const config& level, saved_game& state)
 
 
 	//save id setting  was moved to play_controller.
-
-	// Adds the starting pos to the level.
-
-	// This is important, if it does not happen, the starting position is
-	// missing and will be drawn from the snapshot instead
-	// (which is not what we want since we have
-	// all needed information here already).
-	//state.replay_start() = level.child("replay_start");
-
-
-	// Check whether it is a save-game by looking for snapshot data.
-	//const config& snapshot = level.child("snapshot");
-	//const bool saved_game = state.mp_settings().saved_game;
-
-	// It might be a MP campaign start-of-scenario save.
-	// In this case, it's not entirely a new game, but not a save, either.
-	// Check whether it is no savegame and the starting_pos
-	// contains [player] information.
-	// Edit: idk what this code did before, but i most liley didn't work because [replay_start] never contains [player]
-	//bool start_of_scenario = !saved_game && state.replay_start().child("player");
-
-	// In any type of reload (normal save or start-of-scenario) the players
-	// could have changed and need to be replaced.
-	// EDIT: We directy use the starting_pos() sides now, so no need to so this anymore.
-#if 0
-	if (saved_game)
-	{
-		config::child_itors saved_sides = saved_game ?
-			state.get_starting_pos().child_range("side") :
-			state.replay_start().child_range("side");
-		config::const_child_itors level_sides = level.child_range("side");
-
-		BOOST_FOREACH(config& side, saved_sides) {
-			BOOST_FOREACH(const config& lside, level_sides) {
-				if (side["side"] == lside["side"] &&
-						(side["current_player"] != lside["current_player"] ||
-						 side["controller"] != lside["controller"])) {
-
-					side["current_player"] = lside["current_player"];
-					side["id"] = lside["id"];
-					side["save_id"] = lside["save_id"];
-					side["controller"] = lside["controller"];
-					break;
-				}
-			}
-		}
-	}
-#endif
 }
 
 void check_response(network::connection res, const config& data)
