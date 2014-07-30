@@ -41,6 +41,10 @@ public:
 	/** Multiplayer parameters for this game */
 	mp_game_settings& mp_settings() { return mp_settings_; }
 	const mp_game_settings& mp_settings() const { return mp_settings_; }
+	
+	void set_carryover_sides_start(config carryover_sides_start);
+	const config& carryover() { return carryover_sides_start_; }
+
 	/// copies the content of a [scenario] with the correct id attribute from the game config into this object.
 	void expand_scenario();
 	/// merges [carryover_sides_start] into [scenario] and saves the rest into [carryover_sides]
@@ -69,6 +73,7 @@ public:
 	/// converts a normal savegame form the end of a scenaio to a start-of-scenario savefile for the next scenaio,
 	/// The saved_game must contain a [snapshot] made during the linger mode of the last scenaio.
 	void convert_to_start_save();
+	void set_random_seed();
 	/// @return the starting pos for replays. Usualy this is [replay_start] but it can also be a [scenario] if no [replay_start] is present
 	const config& get_replay_starting_pos();
 	/// @return the id of the currently played scenario or the id of the next scenario if this is a between-scenaios-save (also called start-of-scenario-save).
@@ -88,13 +93,14 @@ public:
 	 */
 	config replay_data;
 
-	/** The carryover information for all sides that arent used in this scenario to be carried over to the next scenario */
-	config carryover_sides;
-
-	/** The carryover information for all sides as it was before the scenario started */
-	config carryover_sides_start;
 
 private:
+	
+	/** The carryover information for all sides that arent used in this scenario to be carried over to the next scenario */
+	config carryover_sides_;
+
+	/** The carryover information for all sides as it was before the scenario started */
+	config carryover_sides_start_;
 	/** snapshot made before the start event. To be used as a starting pos for replays */
 	config replay_start_;
 	/** some general information of the game that doesn't change during the game */

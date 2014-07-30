@@ -342,7 +342,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		// On DEFEAT, QUIT, or OBSERVER_END, we're done now
 
 		//If there is no next scenario we're done now.
-		if(!end_level.proceed_to_next_level || gamestate.carryover_sides_start["next_scenario"].empty())
+		if(!end_level.proceed_to_next_level || gamestate.get_scenario_id().empty())
 		{
 			return res;
 		}
@@ -381,8 +381,8 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 				//then we have to move "allow_new_game" attribute over now.
 				bool allow_new_game_flag = starting_pos["allow_new_game"].to_bool(true);
 
-				if (gamestate.carryover_sides_start.child_or_empty("end_level_data").child_or_empty("next_scenario_settings").has_attribute("allow_new_game")) {
-					allow_new_game_flag = gamestate.carryover_sides_start.child_or_empty("end_level_data").child("next_scenario_settings")["allow_new_game"].to_bool();
+				if (gamestate.carryover().child_or_empty("end_level_data").child_or_empty("next_scenario_settings").has_attribute("allow_new_game")) {
+					allow_new_game_flag = gamestate.carryover().child_or_empty("end_level_data").child("next_scenario_settings")["allow_new_game"].to_bool();
 				}
 
 				gamestate.mp_settings().num_turns = starting_pos["turns"].to_int(-1);
@@ -439,10 +439,10 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		}
 	}
 
-	if (!gamestate.carryover_sides_start["next_scenario"].empty() && gamestate.carryover_sides_start["next_scenario"] != "null") {
+	if (!gamestate.get_scenario_id().empty() && gamestate.get_scenario_id() != "null") {
 		std::string message = _("Unknown scenario: '$scenario|'");
 		utils::string_map symbols;
-		symbols["scenario"] = gamestate.carryover_sides_start["next_scenario"];
+		symbols["scenario"] = gamestate.get_scenario_id();
 		message = utils::interpolate_variables_into_string(message, &symbols);
 		gui2::show_error_message(disp.video(), message);
 		return QUIT;

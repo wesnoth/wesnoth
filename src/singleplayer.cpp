@@ -1,4 +1,5 @@
 #include "singleplayer.hpp"
+#include "config_assign.hpp"
 #include "game_config_manager.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/message.hpp"
@@ -75,7 +76,6 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 		create_eng.set_current_level(campaign_num);
 
 		std::string random_mode = use_deterministic_mode ? "deterministic" : "";
-		state.carryover_sides_start["random_mode"] = random_mode;
 		state.classification().random_mode = random_mode;
 
 		std::string selected_difficulty = create_eng.select_campaign_difficulty(jump_to_campaign.difficulty_);
@@ -93,9 +93,18 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 		create_eng.prepare_for_campaign(selected_difficulty);
 
 		if (jump_to_campaign.scenario_id_.empty())
-			state.carryover_sides_start["next_scenario"] = create_eng.current_level().data()["id"].str();
-		else {
-			state.carryover_sides_start["next_scenario"] = jump_to_campaign.scenario_id_;
+		{
+			state.set_carryover_sides_start(
+				config_of("random_mode", random_mode)
+				         ("next_scenario", create_eng.current_level().data()["id"].str())
+			);
+		}
+		else 
+		{
+			state.set_carryover_sides_start(
+				config_of("random_mode", random_mode)
+				         ("next_scenario", jump_to_campaign.scenario_id_)
+			);
 			create_eng.current_level().set_data(
 				resources::config_manager->game_config().find_child(
 				lexical_cast<std::string> (game_classification::MULTIPLAYER),

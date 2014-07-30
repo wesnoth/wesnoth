@@ -18,6 +18,7 @@
 #include "about.hpp" //for show_about
 #include "commandline_options.hpp"      // for commandline_options
 #include "config.hpp"                   // for config, etc
+#include "config_assign.hpp"
 #include "construct_dialog.hpp"         // for dialog
 #include "cursor.hpp"                   // for set, CURSOR_TYPE::NORMAL
 #include "exceptions.hpp"               // for error
@@ -451,9 +452,14 @@ bool game_launcher::play_test()
 	first_time = false;
 
 	state_.classification().campaign_type = game_classification::TEST;
-	state_.carryover_sides_start["next_scenario"] = test_scenario_;
 	state_.classification().campaign_define = "TEST";
 
+	state_.set_carryover_sides_start(
+		config_of("next_scenario", test_scenario_)
+	);
+
+
+	
 	resources::config_manager->
 		load_game_config_for_game(state_.classification());
 
@@ -480,8 +486,11 @@ int game_launcher::unit_test()
 	first_time_unit = false;
 
 	state_.classification().campaign_type = game_classification::TEST;
-	state_.carryover_sides_start["next_scenario"] = test_scenario_;
 	state_.classification().campaign_define = "TEST";
+	state_.set_carryover_sides_start(
+		config_of("next_scenario", test_scenario_)
+	);
+
 
 	resources::config_manager->
 		load_game_config_for_game(state_.classification());
@@ -674,8 +683,11 @@ void game_launcher::set_tutorial()
 {
 	state_ = saved_game();
 	state_.classification().campaign_type = game_classification::TUTORIAL;
-	state_.carryover_sides_start["next_scenario"] = "tutorial";
 	state_.classification().campaign_define = "TUTORIAL";
+	state_.set_carryover_sides_start(
+		config_of("next_scenario", "tutorial")
+	);
+
 }
 
 void game_launcher::mark_completed_campaigns(std::vector<config> &campaigns)

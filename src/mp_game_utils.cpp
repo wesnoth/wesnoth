@@ -67,13 +67,8 @@ config initial_level_config(saved_game& state)
 	config& scenario = state.get_starting_pos();
 	if(!state.mp_settings().saved_game)
 	{
-		if(state.carryover_sides_start["random_seed"].str() == "")
-		{
-			state.carryover_sides_start["random_seed"] = rand();
-			state.carryover_sides_start["random_calls"] = 0;
-		}
-		scenario["turns"] = params.num_turns;
-
+		state.set_random_seed();
+		
 		if (params.random_start_time)
 		{
 			if (!tod_manager::is_start_ToD(scenario["random_start_time"]))

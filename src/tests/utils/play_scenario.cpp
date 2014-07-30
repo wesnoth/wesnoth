@@ -18,6 +18,7 @@
 #include "tests/utils/game_config_manager.hpp"
 #include "tests/utils/fake_display.hpp"
 
+#include "config_assign.hpp"
 #include "game_display.hpp"
 #include "saved_game.hpp"
 #include "playcampaign.hpp"
@@ -110,7 +111,9 @@ namespace test_utils {
 
 		saved_game& state = end->get_state();
 		state.classification().campaign_type = game_classification::TEST;
-		state.carryover_sides_start["next_scenario"] = id_;
+		state.set_carryover_sides_start(
+			config_of("next_scenario", id_)
+		);
 		play_game(get_fake_display(1024, 768), state, game_config_);
 	}
 
