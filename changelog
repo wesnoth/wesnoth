@@ -125,6 +125,7 @@ Version 1.13.0-dev:
      resolution for OS X to 800 x 600 (bug #20332).
    * Removed the "Replay viewer" text label from the replay controller theme,
      because it caused problems for translators and was unnecessary
+   * Fixed bug #22337: Bug in inspect long arrays
  * WML engine:
    * Added customizable recall costs for unit types and individual units,
      using the new recall_cost attribute in [unit_type] and [unit].
