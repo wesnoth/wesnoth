@@ -215,6 +215,9 @@ void saved_game::expand_scenario()
 		{
 			this->starting_pos_type_ = STARTINGPOS_SCENARIO;
 			this->starting_pos_ = scenario;
+			// A hash has to be generated using an unmodified scenario data.
+			mp_settings_.hash = scenario.hash();
+
 			update_label();
 
 			//Set this default value immideately after reading the scenario is importent because otherwise

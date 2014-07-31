@@ -373,9 +373,6 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			if (io_type == IO_SERVER && gamestate.valid()) {
 				//note that although starting_pos is const it might be changed by gamestate.some_non_const_operation()  .
 				const config& starting_pos = gamestate.get_starting_pos();
-				// A hash have to be generated using an unmodified
-				// scenario data.
-				gamestate.mp_settings().hash = starting_pos.hash();
 
 				//We don't merge WML until start of next scenario, but if we want to allow user to disable MP ui in transition,
 				//then we have to move "allow_new_game" attribute over now.
