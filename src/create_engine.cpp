@@ -13,6 +13,7 @@
 */
 #include "create_engine.hpp"
 
+#include "config_assign.hpp"
 #include "game_config_manager.hpp"
 #include "game_launcher.hpp"
 #include "game_display.hpp"
@@ -428,9 +429,7 @@ void create_engine::init_generated_level_data()
 void create_engine::prepare_for_new_level()
 {
 	DBG_MP << "preparing mp_game_settings for new level\n";
-
-	state_.set_scenario(current_level().data());
-	state_.mp_settings().hash = current_level().data().hash();
+	state_.expand_scenario();
 }
 
 void create_engine::prepare_for_era_and_mods()
@@ -452,13 +451,9 @@ void create_engine::prepare_for_scenario()
 	state_.classification().scenario_define =
 		current_level().data()["define"].str();
 
-	resources::config_manager->
-		load_game_config_for_game(state_.classification());
-
-	current_level().set_data(
-		resources::config_manager->game_config().find_child(
-		lexical_cast<std::string> (game_classification::MULTIPLAYER),
-		"id", current_level().data()["id"]));
+	state_.set_carryover_sides_start(
+		config_of("next_scenario", current_level().data()["id"])
+	);
 }
 
 void create_engine::prepare_for_campaign(const std::string& difficulty)
@@ -481,14 +476,9 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 	state_.classification().campaign_xtra_defines =
 		utils::split(current_level().data()["extra_defines"]);
 
-	resources::config_manager->
-		load_game_config_for_game(state_.classification());
-
-	// FIXME: Check whether find_child found something and give a meaningful error message if not.
-	current_level().set_data(
-		resources::config_manager->game_config().find_child(
-		lexical_cast<std::string> (game_classification::MULTIPLAYER),
-		"id", current_level().data()["first_scenario"]));
+	state_.set_carryover_sides_start(
+		config_of("next_scenario", current_level().data()["first_scenario"])
+	);
 }
 
 /**

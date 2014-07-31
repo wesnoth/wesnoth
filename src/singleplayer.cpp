@@ -92,23 +92,17 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 
 		create_eng.prepare_for_campaign(selected_difficulty);
 
-		if (jump_to_campaign.scenario_id_.empty())
+		if (!jump_to_campaign.scenario_id_.empty())
 		{
-			state.set_carryover_sides_start(
-				config_of("random_mode", random_mode)
-				         ("next_scenario", create_eng.current_level().data()["id"].str())
-			);
-		}
-		else 
-		{
+			//FIXME: we don't set "random_mode" if this if is false
+			//currently "random_mode" inside [carryoer_sides_start] has no effect
+			//so it's no problem but a possibe plan is to move "random_mode" from 
+			//game_glassification to carryoves/snapshow in order to be able to change 
+			//it during the game 
 			state.set_carryover_sides_start(
 				config_of("random_mode", random_mode)
 				         ("next_scenario", jump_to_campaign.scenario_id_)
 			);
-			create_eng.current_level().set_data(
-				resources::config_manager->game_config().find_child(
-				lexical_cast<std::string> (game_classification::MULTIPLAYER),
-				"id", jump_to_campaign.scenario_id_));
 		}
 
 		create_eng.prepare_for_new_level();
