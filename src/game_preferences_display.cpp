@@ -242,6 +242,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  idle_anim_button_(disp.video(), _("Show unit idle animations"), gui::button::TYPE_CHECK),
 	  standing_anim_button_(disp.video(), _("Show unit standing animations"), gui::button::TYPE_CHECK),
 	  animate_map_button_(disp.video(), _("Animate map"), gui::button::TYPE_CHECK),
+	  disable_auto_move_button_(disp.video(), _("Disable automatic moves"), gui::button::TYPE_CHECK),
 
 	  // Colors tab buttons
 	  orb_colors_defaults_(disp.video(), _("Defaults")),
@@ -250,7 +251,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  orb_colors_unmoved_toggle_(disp.video(), _("Show unmoved orb"), gui::button::TYPE_CHECK),
 	  orb_colors_partial_toggle_(disp.video(), _("Show partial moved orb"), gui::button::TYPE_CHECK),
 	  orb_colors_moved_toggle_(disp.video(), _("Show moved orb"), gui::button::TYPE_CHECK),
-	  disable_auto_move_button_(disp.video(), _("Disable automatic moves"), gui::button::TYPE_CHECK),
 
 	  //colors tab buttons
 	  orb_colors_ally_buttons_(),
