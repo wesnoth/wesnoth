@@ -88,13 +88,13 @@ public:
 	void user_config(display& disp);
 	std::string name() const; // {return "yamg";};
 	std::string config_name() const; // {return "generator";};
-	std::string create_map(const std::vector<std::string>& args);
+	std::string create_map();
 #endif
 
 //----------------- Methods -------------
 
     unsigned int set_up(yamg_params *); ///< uses parameter list object to configure
-    int create_map();           ///< do the job, return OK if everything is OK
+    int do_create_map();           ///< do the job, return OK if everything is OK
     int get_map(char *buf);     ///< write the map to a buffer
     void reset_map();           ///< reset the generator to new use
 

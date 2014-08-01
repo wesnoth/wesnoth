@@ -66,9 +66,9 @@ public:
 	 * Creates a new map and returns it.
 	 * args may contain arguments to the map generator.
 	 */
-	virtual std::string create_map(const std::vector<std::string>& args) = 0;
+	virtual std::string create_map() = 0;
 
-	virtual config create_scenario(const std::vector<std::string>& args);
+	virtual config create_scenario();
 };
 
 /** Generate the map. */

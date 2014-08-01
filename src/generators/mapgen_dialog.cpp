@@ -345,12 +345,12 @@ std::string default_map_generator::config_name() const
 	return std::string();
 }
 
-std::string default_map_generator::create_map(const std::vector<std::string>& args)
+std::string default_map_generator::create_map()
 {
-	return generate_map(args);
+	return generate_map();
 }
 
-std::string default_map_generator::generate_map(const std::vector<std::string>& /*args*/, std::map<map_location,std::string>* labels)
+std::string default_map_generator::generate_map(std::map<map_location,std::string>* labels)
 {
 	// Suppress labels?
 	if ( !show_labels_ )
@@ -416,7 +416,7 @@ std::string default_map_generator::generate_map(const std::vector<std::string>& 
 	return map;
 }
 
-config default_map_generator::create_scenario(const std::vector<std::string>& args)
+config default_map_generator::create_scenario()
 {
 	DBG_NG << "creating scenario...\n";
 
@@ -428,7 +428,7 @@ config default_map_generator::create_scenario(const std::vector<std::string>& ar
 	DBG_NG << "generating map...\n";
 
 	try{
-		res["map_data"] = generate_map(args,&labels);
+		res["map_data"] = generate_map(&labels);
 	}
 	catch (mapgen_exception& exc){
 		res["map_data"] = "";

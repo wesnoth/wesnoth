@@ -414,7 +414,7 @@ void create_engine::init_generated_level_data()
 {
 	DBG_MP << "initializing generated level data\n";
 
-	config data = generator_->create_scenario(std::vector<std::string>());
+	config data = generator_->create_scenario();
 
 	// Set the scenario to have placing of sides
 	// based on the terrain they prefer

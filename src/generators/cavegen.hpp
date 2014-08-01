@@ -36,8 +36,8 @@ public:
 
 	std::string config_name() const;
 
-	std::string create_map(const std::vector<std::string>& args);
-	config create_scenario(const std::vector<std::string>& args);
+	std::string create_map();
+	config create_scenario();
 
 private:
 

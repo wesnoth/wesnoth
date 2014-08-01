@@ -334,7 +334,7 @@ std::string ya_mapgen::config_name() const {
  *** create_map
  Parameters and errors reporting are not defined yet, so this is a mere skeleton.
  */
-std::string ya_mapgen::create_map(const std::vector<std::string>& /*args*/) {
+std::string ya_mapgen::create_map() {
 
 	yamg_params *par = new yamg_params();
 
@@ -348,7 +348,7 @@ std::string ya_mapgen::create_map(const std::vector<std::string>& /*args*/) {
 //		printf(stderr,"Errors in parameters. Execution aborted.");
 //		return NULL;
 //	}
-	n = create_map(); // do the job
+	n = do_create_map(); // do the job
 	n = (par->height * par->width * (YAMG_HEXLONG + 2)) + 100; // allocate buffer for result
 	char* buf = new char[n];
 
@@ -416,7 +416,7 @@ unsigned int ya_mapgen::set_up(yamg_params *pars) {
 
  <- returns OK or error code.
  */
-int ya_mapgen::create_map() {
+int ya_mapgen::do_create_map() {
 	unsigned int err;
 
 	switch (status_) {

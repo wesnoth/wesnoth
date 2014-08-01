@@ -38,10 +38,10 @@ static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 
-config map_generator::create_scenario(const std::vector<std::string>& args)
+config map_generator::create_scenario()
 {
 	config res;
-	res["map_data"] = create_map(args);
+	res["map_data"] = create_map();
 	return res;
 }
 

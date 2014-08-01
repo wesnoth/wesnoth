@@ -838,7 +838,7 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 		DBG_MP << "generating random map" << std::endl;
 		util::scoped_ptr<map_generator> generator(NULL);
 		generator.assign(create_map_generator(level["map_generation"], level.child("generator")));
-		state.set_scenario(generator->create_scenario(std::vector<std::string>()));
+		state.set_scenario(generator->create_scenario());
 
 		// Set the scenario to have placing of sides
 		// based on the terrain they prefer

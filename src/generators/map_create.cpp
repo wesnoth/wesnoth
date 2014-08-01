@@ -55,7 +55,7 @@ std::string random_generate_map(const std::string& parms, const config &cfg)
 	}
 
 	parameters.erase(parameters.begin());
-	return generator.get()->create_map(parameters);
+	return generator.get()->create_map();
 }
 
 config random_generate_scenario(const std::string& parms, const config &cfg)
@@ -71,5 +71,5 @@ config random_generate_scenario(const std::string& parms, const config &cfg)
 	}
 
 	parameters.erase(parameters.begin());
-	return generator->create_scenario(parameters);
+	return generator->create_scenario();
 }

@@ -87,13 +87,13 @@ size_t cave_map_generator::translate_y(size_t y) const
 	return y;
 }
 
-std::string cave_map_generator::create_map(const std::vector<std::string>& args)
+std::string cave_map_generator::create_map()
 {
-	const config res = create_scenario(args);
+	const config res = create_scenario();
 	return res["data"];
 }
 
-config cave_map_generator::create_scenario(const std::vector<std::string>& /*args*/)
+config cave_map_generator::create_scenario()
 {
 	map_ = t_translation::t_map(width_ + 2 * gamemap::default_border,
 		t_translation::t_list(height_ + 2 * gamemap::default_border, wall_));
