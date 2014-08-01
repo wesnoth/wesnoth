@@ -632,7 +632,7 @@ class CrossRef:
                             if len(candidates) > 1:
                                 print "%s: more than one definition of %s is visible here (%s)." % (Reference(ns, fn, n), name, "; ".join(candidates))
                         if len(candidates) == 0:
-                            self.unresolved.append((name,Reference(ns,fn,n+1,args=args)))
+                            self.unresolved.append((name,Reference(ns,fn,n+1)))
                     # Don't be fooled by HTML image references in help strings.
                     if "<img>" in line:
                         continue
