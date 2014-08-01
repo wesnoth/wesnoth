@@ -35,9 +35,13 @@ public:
 	void activate();
 	void deactivate();
 
+	void set_color_mod(int r, int g, int b, int a);
+	void set_submerge(float val);
+
 private:
 	Uint32 program_object_, vertex_object_, fragment_object_;
 	GPU_ShaderBlock block_;
+	int attr_color_mod_, attr_submerge_;
 	unsigned *refcount_;
 };
 
