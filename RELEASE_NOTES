@@ -80,6 +80,11 @@ To fix bug [bug]21978[/bug], attributes "lock_faction" and "lock_leader" were ad
 The wmllint gui should now come packaged with 1.12 series releases.
 [/section]
 
+[section="partly revert 1.11.13 defeat_condition change"]
+version 1.11.13 introduced an additional check for defeat_condition when using [endlevel] result = victory which chould result in vicorious sides beeing removed from carryover during [endlevel].
+This one aditional check was removed.
+[/section]
+
 [section="Example section 2"]
 Example contents 2.
 [/section]
