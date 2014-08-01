@@ -5,20 +5,11 @@
 #
 # By Eric S. Raymond April 2007.
 #
-# All conversion logic for lifting WML and maps from older versions of the
-# markup to newer ones should live here.  This includes resource path changes
-# and renames, also map format conversions.
+#                              PURPOSE
 #
-# Note: Lift logic for pre-1.4 versions has been removed; if you need it,
-# use wmllint-1.4 to lift before running this one.  I did this for a policy
-# reason; I wanted to kill off the --oldversion switch.  It will *not*
-# be restored; in future, changes to WML syntax *must* be forward
-# compatible in such a way that tags from old versions can be
-# unambiguously recognized (this will save everybody heartburn).  As a
-# virtuous side effect, this featurectomy cuts wmllint's code
-# complexity by over 50%, improves performance by about 33%, and
-# banishes some annoying behaviors related to the 1.2 map-conversion
-# code.
+# wmllint is a tool for porting and debugging WML (Wesnoth Markup Language).
+# It can do much of the work of upgrading old content to a new version of
+# Battle for Wesnoth, automatically.
 #
 # While the script is at it, it checks for various incorrect and dodgy WML
 # constructs, including:
@@ -35,6 +26,8 @@
 #   * unknown base units
 #   * misspellings in message and description strings
 #
+#                              BASIC PROCEDURE
+#
 # Takes any number of directories as arguments.  Each directory is converted.
 # If no directories are specified, acts on the current directory.
 #
@@ -49,8 +42,14 @@
 # 6. Use either --clean to remove the -bak files or --revert to
 #    undo the conversion.
 #
+# Compatibility with pre-1.4 versions has been removed; to port very old
+# content, first run wmllint-1.4 to convert to "1.4", before running this
+# one.
+#
 # Standalone terrain mask files *must* have a .mask extension on their name
 # or they'll have an incorrect usage=map generated into them.
+#
+#                              MAGIC COMMENTS
 #
 # Note: You can shut wmllint up about custom terrains by having a comment
 # on the same line that includes the string "wmllint: ignore" or
@@ -165,6 +164,23 @@
 # -nozoc, -leader and -leader-nozoc variations of your ellipse need to be added).
 # You can disable this sanity check for the current line with the comment
 # "# wmllint: no ellipsecheck".
+#
+#                              DEVELOPER INFORMATION
+#
+# All conversion logic for lifting WML and maps from older versions of the
+# markup to newer ones should live here.  This includes resource path changes
+# and renames, also map format conversions.
+#
+# Note: Lift logic for pre-1.4 versions has been removed; if you need it,
+# use wmllint-1.4 to lift before running this one.  I did this for a policy
+# reason; I wanted to kill off the --oldversion switch.  It will *not*
+# be restored; in future, changes to WML syntax *must* be forward
+# compatible in such a way that tags from old versions can be
+# unambiguously recognized (this will save everybody heartburn).  As a
+# virtuous side effect, this featurectomy cuts wmllint's code
+# complexity by over 50%, improves performance by about 33%, and
+# banishes some annoying behaviors related to the 1.2 map-conversion
+# code.
 #
 
 import sys, os, re, getopt, string, copy, difflib, time, gzip
