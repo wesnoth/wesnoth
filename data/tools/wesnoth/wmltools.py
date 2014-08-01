@@ -606,7 +606,7 @@ class CrossRef:
                     # Find references to macros
                     for match in re.finditer(CrossRef.macro_reference, line):
                         name = match.group(1)
-                        candidates = 0
+                        candidates = []
                         if self.warnlevel >=2:
                             print '"%s", line %d: seeking definition of %s' \
                                   % (fn, n+1, name)
@@ -627,11 +627,11 @@ class CrossRef:
                             # Figure out which macros might resolve this
                             for defn in self.xref[name]:
                                 if self.visible_from(defn, fn, n+1):
-                                    candidates += 1
                                     defn.append(fn, n+1, args)
-                            if candidates > 1:
-                                print "%s: more than one definition of %s is visible here." % (Reference(ns, fn, n), name)
-                        if candidates == 0:
+                                    candidates.append(str(defn))
+                            if len(candidates) > 1:
+                                print "%s: more than one definition of %s is visible here (%s)." % (Reference(ns, fn, n), name, "; ".join(candidates))
+                        if len(candidates) == 0:
                             self.unresolved.append((name,Reference(ns,fn,n+1,args=args)))
                     # Don't be fooled by HTML image references in help strings.
                     if "<img>" in line:
