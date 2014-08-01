@@ -92,7 +92,7 @@
 #
 # sets the warning level.
 
-import sys, os, time, re, getopt, hashlib
+import sys, os, time, re, getopt, hashlib, glob
 from wesnoth.wmltools import *
 
 def interpret(lines, css):
@@ -433,7 +433,11 @@ Usage: wmlscope [options] dirpath
 
         forceused = "|".join(forceused)
         if len(arguments):
-            dirpath = arguments
+            dirpath = []
+            for arg in arguments:
+                globarg = glob.glob(arg)
+                for globbed in globarg:
+                    dirpath.append(globbed)
         else:
             dirpath = ['.']
         if not extracthelp:
