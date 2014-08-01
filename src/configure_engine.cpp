@@ -2,13 +2,15 @@
 #include "formula_string_utils.hpp"
 #include "settings.hpp"
 
+#include <cassert>
+
 namespace ng {
 
 configure_engine::configure_engine(saved_game& state) :
 	state_(state),
 	parameters_(state_.mp_settings()),
 	sides_(state_.get_starting_pos().child_range("side")),
-	cfg_(*sides_.first)
+	cfg_((assert(sides_.first != sides_.second), *sides_.first))
 {
 	set_use_map_settings(use_map_settings_default());
 }
