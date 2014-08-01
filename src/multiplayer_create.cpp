@@ -235,8 +235,15 @@ void create::process_event()
 				}
 
 				engine_.prepare_for_campaign(difficulty);
-			} else {
+			}
+			else if (engine_.current_level_type() == ng::level::SCENARIO)
+			{
 				engine_.prepare_for_scenario();
+			}
+			else
+			{
+				//This means define= doesn't work for random generated scenarios
+				engine_.prepare_for_other();
 			}
 
 			engine_.prepare_for_new_level();

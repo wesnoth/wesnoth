@@ -186,6 +186,8 @@ public:
 	void prepare_for_scenario();
 	void prepare_for_campaign(const std::string& difficulty);
 	void prepare_for_saved_game();
+	//random maps, user maps
+	void prepare_for_other();
 	
 	std::string select_campaign_difficulty(int set_value = -1);
 

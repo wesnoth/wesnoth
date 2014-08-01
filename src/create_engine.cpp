@@ -430,6 +430,7 @@ void create_engine::prepare_for_new_level()
 {
 	DBG_MP << "preparing mp_game_settings for new level\n";
 	state_.expand_scenario();
+	state_.expand_random_scenario();
 }
 
 void create_engine::prepare_for_era_and_mods()
@@ -561,6 +562,12 @@ void create_engine::prepare_for_saved_game()
 	utils::string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
 	state_.mp_settings().name = vgettext("$login|’s game", i18n_symbols);
+}
+
+void create_engine::prepare_for_other()
+{
+	state_.set_scenario(current_level().data());
+	state_.mp_settings().hash = current_level().data().hash();
 }
 
 void create_engine::apply_level_filter(const std::string &name)
