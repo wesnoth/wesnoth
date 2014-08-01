@@ -17,6 +17,7 @@ Version 1.11.16+dev:
    * Fix bug wherein "lobby sounds" advanced preference didn't do anything for the normal (GUI 1) lobby.
    * Fix bug wherein dbus notifications did not have a wesnoth icon
    * Fix bug wherein chat history synopses weren't working right in the dbus notifications
+   * Don't check defeat_conditon to remove sides from carryover after [endlevel] (restore pre 1.11.13 behaviour).
 
 Version 1.11.16:
  * Add-ons client:
