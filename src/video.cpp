@@ -43,7 +43,7 @@ static lg::log_domain log_display("display");
 namespace {
 	bool fullScreen = false;
 	int disallow_resize = 0;
-	GPU_Target *render_target;
+	GPU_Target *render_target_;
 }
 void resize_monitor::process(events::pump_info &info) {
 	if(info.resize_dimensions.first >= preferences::min_allowed_width()
@@ -250,7 +250,7 @@ bool non_interactive()
 
 GPU_Target *get_render_target()
 {
-	return render_target;
+	return render_target_;
 }
 
 surface display_format_alpha(surface surf)
@@ -361,9 +361,9 @@ void CVideo::initSDL()
 {
 #ifdef SDL_GPU
 	//800x600 is a dummy value, the actual resolution is set in setMode
-	render_target = GPU_Init(800, 600, GPU_DEFAULT_INIT_FLAGS);
+	render_target_ = GPU_Init(800, 600, GPU_DEFAULT_INIT_FLAGS);
 
-	if(render_target == NULL) {
+	if(render_target_ == NULL) {
 		ERR_DP << "Could not initialize window: " << SDL_GetError() << std::endl;
 		throw CVideo::error();
 	}
@@ -400,10 +400,26 @@ void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rec
 	const clip_rect_setter clip_setter(target, clip_rect, clip_rect != NULL);
 	sdl_blit(surf,srcrect,target,&dst);
 }
+
 #ifdef SDL_GPU
+GPU_Target *CVideo::render_target() const
+{
+	return render_target_;
+}
+
 void CVideo::draw_texture(sdl::timage &texture, int x, int y)
 {
-	texture.draw(*render_target, x, y);
+	texture.draw(*this, x, y);
+}
+
+void CVideo::set_texture_color_modulation(int r, int g, int b, int a)
+{
+	shader_.set_color_mod(r, g, b, a);
+}
+
+void CVideo::set_texture_submerge(float f)
+{
+	shader_.set_submerge(f);
 }
 #endif
 
@@ -536,8 +552,8 @@ void CVideo::flip()
 	if(fake_screen_)
 		return;
 #ifdef SDL_GPU
-	assert(render_target);
-	GPU_Flip(render_target);
+	assert(render_target_);
+	GPU_Flip(render_target_);
 #else
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 	if(update_all) {

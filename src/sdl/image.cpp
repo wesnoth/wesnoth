@@ -19,6 +19,7 @@
 #include "sdl/exception.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/utils.hpp"
+#include "video.hpp"
 
 #include <cassert>
 
@@ -32,7 +33,10 @@ timage::timage(Uint16 w, Uint16 h)
 	, hscale_(1)
 	, vscale_(1)
 	, clip_()
-	, color_mod_(create_color(0, 0, 0, 0))
+	, red_mod_(0)
+	, green_mod_(0)
+	, blue_mod_(0)
+	, alpha_mod_(0)
 	, hwrap_(GPU_WRAP_NONE)
 	, vwrap_(GPU_WRAP_NONE)
 {
@@ -42,6 +46,8 @@ timage::timage(Uint16 w, Uint16 h)
 		//TODO: report errorr
 	} else {
 		image_->refcount = 1;
+		static SDL_Color black = {0, 0, 0, 0};
+		GPU_SetColor(image_, &black);
 	}
 }
 
@@ -51,7 +57,10 @@ timage::timage(const std::string &file)
 	, hscale_(1)
 	, vscale_(1)
 	, clip_()
-	, color_mod_(create_color(0, 0, 0, 0))
+	, red_mod_(0)
+	, green_mod_(0)
+	, blue_mod_(0)
+	, alpha_mod_(0)
 	, hwrap_(GPU_WRAP_NONE)
 	, vwrap_(GPU_WRAP_NONE)
 {
@@ -60,6 +69,8 @@ timage::timage(const std::string &file)
 	} else {
 		clip_ = create_gpu_rect(0, 0, image_->w, image_->h);
 		image_->refcount = 1;
+		static SDL_Color black = {0, 0, 0, 0};
+		GPU_SetColor(image_, &black);
 	}
 }
 
@@ -69,7 +80,10 @@ timage::timage(const surface &source)
 	, hscale_(1)
 	, vscale_(1)
 	, clip_()
-	, color_mod_(create_color(0, 0, 0, 0))
+	, red_mod_(0)
+	, green_mod_(0)
+	, blue_mod_(0)
+	, alpha_mod_(0)
 	, hwrap_(GPU_WRAP_NONE)
 	, vwrap_(GPU_WRAP_NONE)
 	, smooth_(false)
@@ -79,6 +93,8 @@ timage::timage(const surface &source)
 	} else {
 		clip_ = create_gpu_rect(0, 0, image_->w, image_->h);
 		image_->refcount = 1;
+		static SDL_Color black = {0, 0, 0, 0};
+		GPU_SetColor(image_, &black);
 	}
 }
 
@@ -88,7 +104,10 @@ timage::timage(SDL_Surface *source)
 	, hscale_(1)
 	, vscale_(1)
 	, clip_()
-	, color_mod_(create_color(0, 0, 0, 0))
+	, red_mod_(0)
+	, green_mod_(0)
+	, blue_mod_(0)
+	, alpha_mod_(0)
 	, hwrap_(GPU_WRAP_NONE)
 	, vwrap_(GPU_WRAP_NONE)
 	, smooth_(false)
@@ -98,6 +117,8 @@ timage::timage(SDL_Surface *source)
 	} else {
 		clip_ = create_gpu_rect(0, 0, image_->w, image_->h);
 		image_->refcount = 1;
+		static SDL_Color black = {0, 0, 0, 0};
+		GPU_SetColor(image_, &black);
 	}
 }
 
@@ -107,7 +128,10 @@ timage::timage()
 	, hscale_(1)
 	, vscale_(1)
 	, clip_()
-	, color_mod_(create_color(0, 0, 0, 0))
+	, red_mod_(0)
+	, green_mod_(0)
+	, blue_mod_(0)
+	, alpha_mod_(0)
 	, hwrap_(GPU_WRAP_NONE)
 	, vwrap_(GPU_WRAP_NONE)
 	, smooth_(false)
@@ -130,7 +154,10 @@ timage::timage(const timage &texture)
 	, hscale_(texture.hscale_)
 	, vscale_(texture.vscale_)
 	, clip_(texture.clip_)
-	, color_mod_(texture.color_mod_)
+	, red_mod_(texture.red_mod_)
+	, green_mod_(texture.blue_mod_)
+	, blue_mod_(texture.green_mod_)
+	, alpha_mod_(texture.alpha_mod_)
 	, hwrap_(texture.hwrap_)
 	, vwrap_(texture.vwrap_)
 	, smooth_(texture.smooth_)
@@ -150,12 +177,12 @@ timage &timage::operator =(const timage &texture)
 	return *this;
 }
 
-void timage::draw(GPU_Target &target, const int x, const int y)
+void timage::draw(CVideo &video, const int x, const int y)
 {
 	GPU_SetImageFilter(image_, smooth_ ? GPU_FILTER_LINEAR : GPU_FILTER_NEAREST);
 	GPU_SetWrapMode(image_, hwrap_, vwrap_);
-	GPU_SetColor(image_, &color_mod_);
-	GPU_BlitTransform(image_, &clip_, &target, x + width()/2, y + height()/2,
+	video.set_texture_color_modulation(red_mod_, green_mod_, blue_mod_, alpha_mod_);
+	GPU_BlitTransform(image_, &clip_, video.render_target(), x + width()/2, y + height()/2,
 					  rotation_, hscale_, vscale_);
 }
 
@@ -244,36 +271,36 @@ SDL_Rect timage::clip() const
 	return result;
 }
 
-void timage::set_alpha(Sint8 alpha)
+void timage::set_alpha(int alpha)
 {
-	color_mod_.unused = Uint8(alpha);
+	alpha_mod_ = alpha;
 }
 
-Uint8 timage::alpha() const
+int timage::alpha() const
 {
-	return color_mod_.unused;
+	return alpha_mod_;
 }
 
-void timage::set_color_mod(Sint8 r, Sint8 g, Sint8 b)
+void timage::set_color_mod(int r, int g, int b)
 {
-	color_mod_.r = Uint8(r);
-	color_mod_.g = Uint8(g);
-	color_mod_.b = Uint8(b);
+	red_mod_ = r;
+	green_mod_ = g;
+	blue_mod_ = b;
 }
 
-Sint8 timage::red_mod() const
+int timage::red_mod() const
 {
-	return color_mod_.r;
+	return red_mod_;
 }
 
-Sint8 timage::green_mod() const
+int timage::green_mod() const
 {
-	return color_mod_.g;
+	return green_mod_;
 }
 
-Sint8 timage::blue_mod() const
+int timage::blue_mod() const
 {
-	return color_mod_.b;
+	return blue_mod_;
 }
 
 void timage::set_hwrap(GPU_WrapEnum mode)

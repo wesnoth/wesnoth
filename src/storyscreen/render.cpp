@@ -331,7 +331,7 @@ void part_ui::render_background()
 		const int x = background_positions_[i].first;
 		const int y = background_positions_[i].second;
 
-		background_images_[i].draw(*target, x, y);
+		background_images_[i].draw(video_, x, y);
 	}
 #else
 	sdl::draw_solid_tinted_rectangle(
@@ -346,8 +346,6 @@ void part_ui::render_background()
 bool part_ui::render_floating_images()
 {
 #ifdef SDL_GPU
-	GPU_Target *target = get_render_target();
-
 	skip_ = false;
 	last_key_ = true;
 
@@ -356,7 +354,7 @@ bool part_ui::render_floating_images()
 		const floating_image& fi = p_.get_floating_images()[fi_n];
 
 		if(!ri.image.null()) {
-			ri.image.draw(*target, ri.rect.x, ri.rect.y);
+			ri.image.draw(video_, ri.rect.x, ri.rect.y);
 			video_.flip();
 		}
 

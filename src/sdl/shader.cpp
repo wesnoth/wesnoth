@@ -44,6 +44,7 @@ shader_program::shader_program(const std::string &vsrc, const std::string &fsrc)
 
 	attr_color_mod_ = GPU_GetAttributeLocation(program_object_, "color");
 	set_color_mod(0, 0, 0, 0);
+	set_submerge(0);
 }
 
 shader_program::shader_program()

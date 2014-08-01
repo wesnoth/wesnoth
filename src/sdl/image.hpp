@@ -25,6 +25,7 @@
 #include <string>
 
 struct surface;
+class CVideo;
 
 namespace sdl
 {
@@ -77,7 +78,7 @@ public:
 	 * @param x                   Where to draw (x coordinate).
 	 * @param y                   Where to draw (y coordinate).
 	 */
-	void draw(GPU_Target &target, const int x, const int y);
+	void draw(CVideo &video, const int x, const int y);
 
 	/**
 	 * Rotates the texture by a given angle.
@@ -175,12 +176,12 @@ public:
 	 *
 	 * @param alpha               Alpha value.
 	 */
-	void set_alpha(Sint8 alpha);
+	void set_alpha(int alpha);
 
 	/**
 	 * Returns the alpha of the texture.
 	 */
-	Uint8 alpha() const;
+	int alpha() const;
 
 	/**
 	 * Set color modulation.
@@ -189,22 +190,22 @@ public:
 	 * @param g                   Green modulation.
 	 * @param b                   Blue modulation.
 	 */
-	void set_color_mod(Sint8 r, Sint8 g, Sint8 b);
+	void set_color_mod(int r, int g, int b);
 
 	/**
 	 * Returns red modulation.
 	 */
-	Sint8 red_mod() const;
+	int red_mod() const;
 
 	/**
 	 * Returns green modulation.
 	 */
-	Sint8 green_mod() const;
+	int green_mod() const;
 
 	/**
 	 * Returns blue modulation.
 	 */
-	Sint8 blue_mod() const;
+	int blue_mod() const;
 
 	/**
 	 * Set horizontal wrap mode.
@@ -262,7 +263,7 @@ private:
 	GPU_Rect clip_;
 
 	/** Color mod. */
-	SDL_Color color_mod_;
+	int red_mod_, green_mod_, blue_mod_, alpha_mod_;
 
 	/** Wrap policy. */
 	GPU_WrapEnum hwrap_, vwrap_;

@@ -84,7 +84,13 @@ class CVideo : private boost::noncopyable {
 	//blits a surface with black as alpha
 	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect=NULL, SDL_Rect* clip_rect=NULL);
 #ifdef SDL_GPU
+	GPU_Target *render_target() const;
+
 	void draw_texture(sdl::timage &texture, int x, int y);
+
+	void set_texture_color_modulation(int r, int g, int b, int a);
+
+	void set_texture_submerge(float f);
 #endif
 	void flip();
 
