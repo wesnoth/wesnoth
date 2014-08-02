@@ -151,7 +151,7 @@ void saved_game::set_carryover_sides_start(config carryover_sides_start)
 
 void saved_game::set_random_seed()
 {
-	if(has_carryover_expanded_ || carryover_["random_seed"].empty())
+	if(has_carryover_expanded_ || !carryover_["random_seed"].empty())
 	{
 		return;
 	}
