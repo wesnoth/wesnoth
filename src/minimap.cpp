@@ -388,7 +388,7 @@ SDL_Rect draw_minimap(CVideo &video, const SDL_Rect &area, const gamemap &map, c
 						}
 					}
 					SDL_Rect fillrect = sdl::create_rect(xpos, ypos, tile_size * 3/4, tile_size);
-					sdl::fill_rect(*get_render_target(), fillrect, col);
+					sdl::fill_rect(video, fillrect, col);
 				}
 			}
 
@@ -423,7 +423,7 @@ SDL_Rect draw_minimap(CVideo &video, const SDL_Rect &area, const gamemap &map, c
 						, tile_size
 				);
 
-				sdl::fill_rect(*get_render_target(), fillrect, col);
+				sdl::fill_rect(video, fillrect, col);
 			}
 		}
 	}

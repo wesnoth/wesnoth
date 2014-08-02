@@ -415,7 +415,6 @@ void part_ui::render_title_box()
 		return;
 	}
 
-	GPU_Target *target = get_render_target();
 	int titlebox_x, titlebox_y, titlebox_max_w, titlebox_max_h;
 	// We later correct these according to the storytext box location.
 	// The text box is always aligned according to the base_rect_
@@ -469,7 +468,7 @@ void part_ui::render_title_box()
 				titlebox_h + 2*titleshadow_padding
 	);
 
-	sdl::fill_rect(*target, box, titleshadow_r, titleshadow_g, titleshadow_b,
+	sdl::fill_rect(video_, box, titleshadow_r, titleshadow_g, titleshadow_b,
 				   titleshadow_a);
 
 	video_.draw_texture(txttxt, titlebox_x, titlebox_y);
@@ -639,8 +638,6 @@ void part_ui::render_story_box()
 #ifdef SDL_GPU
 	LOG_NG << "ENTER part_ui()::render_story_box()\n";
 
-	GPU_Target *target = get_render_target();
-
 	const std::string& storytxt = p_.text();
 	if(storytxt.empty()) {
 		video_.flip();
@@ -712,7 +709,7 @@ void part_ui::render_story_box()
 		const SDL_Rect box = sdl::create_rect(0, fix_text_y, screen_area().w,
 											  fix_text_h);
 
-		sdl::fill_rect(*target, box, storyshadow_r, storyshadow_g,
+		sdl::fill_rect(video_, box, storyshadow_r, storyshadow_g,
 					   storyshadow_b, storyshadow_a);
 
 		render_story_box_borders(update_area); // no-op if LOW_MEM is defined
@@ -747,7 +744,7 @@ void part_ui::render_story_box()
 	}
 
 	const SDL_Rect rect = sdl::create_rect(0, 0, video_.getx(), video_.gety());
-	sdl::fill_rect(*target, rect, 0, 0, 0, 255);
+	sdl::fill_rect(video_, rect, 0, 0, 0, 255);
 #else
 	LOG_NG << "ENTER part_ui()::render_story_box()\n";
 

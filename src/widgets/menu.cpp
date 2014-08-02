@@ -867,7 +867,7 @@ void menu::style::draw_row_bg(menu& menu_ref, const size_t /*row_index*/, const 
 	sdl::draw_solid_tinted_rectangle(rect.x, rect.y, rect.w, rect.h,
 				    (rgb&0xff0000) >> 16,(rgb&0xff00) >> 8,rgb&0xff,alpha,
 				    menu_ref.video().getSurface());
-	sdl::fill_rect(*get_render_target(), rect, (rgb&0xff0000) >> 16,
+	sdl::fill_rect(menu_ref.video(), rect, (rgb&0xff0000) >> 16,
 				   (rgb&0xff00) >> 8, rgb&0xff, alpha);
 #else
 	sdl::draw_solid_tinted_rectangle(rect.x, rect.y, rect.w, rect.h,
@@ -958,9 +958,9 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 #ifdef SDL_GPU
 			const SDL_Rect pos = sdl::create_rect(xpos, rect.y, widths[i], rect.h);
 			if(highlight_heading_ == int(i)) {
-				sdl::fill_rect(*get_render_target(), pos, 255, 255, 255, 75);
+				sdl::fill_rect(video(), pos, 255, 255, 255, 75);
 			} else if(sortby_ == int(i)) {
-				sdl::fill_rect(*get_render_target(), pos, 255, 255, 255, 25);
+				sdl::fill_rect(video(), pos, 255, 255, 255, 25);
 			}
 		}
 

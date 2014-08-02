@@ -95,10 +95,6 @@ void loadscreen::draw_screen(const std::string &text)
 {
 	if (screen_.faked()) return; // We seem to encounter segfault in the test executable if this is not done
 
-#ifdef SDL_GPU
-	GPU_Target *target = get_render_target();
-#endif
-
 	// Set progress bar parameters:
 	//
 	// RGB-values for finished piece.
@@ -158,41 +154,41 @@ void loadscreen::draw_screen(const std::string &text)
 	// Draw top border.
 	area.x = pbx; area.y = pby;
 	area.w = pbw + 2*(bw+bispw); area.h = bw;
-	sdl::fill_rect(*target, area, bcr, bcg, bcb);
+	sdl::fill_rect(screen_, area, bcr, bcg, bcb);
 	// Draw bottom border.
 	area.x = pbx; area.y = pby + pbh + bw + 2*bispw;
 	area.w = pbw + 2*(bw+bispw); area.h = bw;
-	sdl::fill_rect(*target, area, bcr, bcg, bcb);
+	sdl::fill_rect(screen_, area, bcr, bcg, bcb);
 	// Draw left border.
 	area.x = pbx; area.y = pby + bw;
 	area.w = bw; area.h = pbh + 2*bispw;
-	sdl::fill_rect(*target, area, bcr, bcg, bcb);
+	sdl::fill_rect(screen_, area, bcr, bcg, bcb);
 	// Draw right border.
 	area.x = pbx + pbw + bw + 2*bispw; area.y = pby + bw;
 	area.w = bw; area.h = pbh + 2*bispw;
-	sdl::fill_rect(*target, area, bcr, bcg, bcb);
+	sdl::fill_rect(screen_, area, bcr, bcg, bcb);
 	// Draw the finished bar area.
 	area.x = pbx + bw + bispw; area.y = pby + bw + bispw;
 	area.w = (prcnt_ * pbw) / 100; area.h = pbh;
-	sdl::fill_rect(*target, area, fcr, fcg, fcb);
+	sdl::fill_rect(screen_, area, fcr, fcg, fcb);
 
 	SDL_Rect lightning = area;
 	lightning.h = lightning_thickness;
 	//we add 25% of white to the color of the bar to simulate a light effect
-	sdl::fill_rect(*target, lightning, (fcr*3+255)/4, (fcg*3+255)/4, (fcb*3+255)/4);
+	sdl::fill_rect(screen_, lightning, (fcr*3+255)/4, (fcg*3+255)/4, (fcb*3+255)/4);
 	lightning.y = area.y+area.h-lightning.h;
 	//remove 50% of color to simulate a shadow effect
-	sdl::fill_rect(*target, lightning, fcr/2, fcg/2, fcb/2);
+	sdl::fill_rect(screen_, lightning, fcr/2, fcg/2, fcb/2);
 
 	// Draw the leftover bar area.
 	area.x = pbx + bw + bispw + (prcnt_ * pbw) / 100; area.y = pby + bw + bispw;
 	area.w = ((100 - prcnt_) * pbw) / 100; area.h = pbh;
-	sdl::fill_rect(*target, area, lcr, lcg, lcb);
+	sdl::fill_rect(screen_, area, lcr, lcg, lcb);
 
 	// Clear the last text and draw new if text is provided.
 	if (!text.empty())
 	{
-		sdl::fill_rect(*target, textarea_, 0, 0, 0);
+		sdl::fill_rect(screen_, textarea_, 0, 0, 0);
 		font::ttext label;
 		label.set_text(text, false);
 		sdl::timage txt = label.render_as_texture();

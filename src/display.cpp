@@ -2161,7 +2161,7 @@ void display::draw_minimap_units()
 				, round_double(u_w)
 				, round_double(u_h));
 #ifdef SDL_GPU
-		sdl::fill_rect(*get_render_target(), r, col);
+		sdl::fill_rect(screen_, r, col);
 #else
 		const Uint32 mapped_col = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
 		sdl::fill_rect(video().getSurface(), &r, mapped_col);
