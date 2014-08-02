@@ -243,8 +243,9 @@ public:
 		{
 			unsigned int numPages = model_.get_num_page(config_to_string(c.cfg));
 			for (unsigned int i = 0; i < numPages; i++) {
-				std::string curStr = "[" + c.key + "] " + std::to_string(i + 1) + "/" + std::to_string(numPages);
-				model_.add_row_to_stuff_list(curStr, curStr);
+				std::ostringstream curStr;
+                curStr << "[" << c.key << "] " << (i + 1) << "/" << numPages;
+				model_.add_row_to_stuff_list(curStr.str(), curStr.str());
 			}
 		}
 
@@ -281,7 +282,7 @@ public:
 					return;
 				}
 				i++;
-			}			
+			}
 		}
 	}
 
