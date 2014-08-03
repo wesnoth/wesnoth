@@ -100,6 +100,7 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 			return enter_create_mode(disp, game_config, state, jump_to_campaign, local_players_only);
 		}
 
+		create_eng.prepare_for_era_and_mods();
 		create_eng.prepare_for_campaign(selected_difficulty);
 
 		if (!jump_to_campaign.scenario_id_.empty())
