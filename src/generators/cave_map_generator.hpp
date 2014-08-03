@@ -40,52 +40,59 @@ public:
 	config create_scenario();
 
 private:
+	struct cave_map_generator_job
+	{
+		cave_map_generator_job(const cave_map_generator& params);
 
-	struct chamber {
-		chamber() :
-			center(),
-			locs(),
-			items(0)
-		{
-		}
+		struct chamber {
+			chamber()
+				: center()
+				, locs()
+				, items(0)
+			{
+			}
 
-		map_location center;
-		std::set<map_location> locs;
-		const config *items;
+			map_location center;
+			std::set<map_location> locs;
+			const config *items;
+		};
+
+		struct passage {
+			passage(map_location s, map_location d, const config& c)
+				: src(s), dst(d), cfg(c)
+			{}
+			map_location src, dst;
+			config cfg;
+		};
+
+		void generate_chambers();
+		void build_chamber(map_location loc, std::set<map_location>& locs, size_t size, size_t jagged);
+
+		void place_chamber(const chamber& c);
+
+		void place_passage(const passage& p);
+
+		void set_terrain(map_location loc, const t_translation::t_terrain & t);
+		void place_castle(int starting_position, const map_location &loc);
+
+		
+		const cave_map_generator& params;
+
+		t_translation::t_map map_;
+		std::map<int, t_translation::coordinate> starting_positions_;
+		std::map<std::string,size_t> chamber_ids_;
+		std::vector<chamber> chambers_;
+		std::vector<passage> passages_;
+		config res_;
 	};
-
-	struct passage {
-		passage(map_location s, map_location d, const config& c)
-			: src(s), dst(d), cfg(c)
-		{}
-		map_location src, dst;
-		config cfg;
-	};
-
-	void generate_chambers();
-	void build_chamber(map_location loc, std::set<map_location>& locs, size_t size, size_t jagged);
-
-	void place_chamber(const chamber& c);
-
-	void place_passage(const passage& p);
 
 	bool on_board(const map_location& loc) const
 	{
 		return loc.x >= 0 && loc.y >= 0 && loc.x < width_ && loc.y < height_;
 	}
 
-	void set_terrain(map_location loc, const t_translation::t_terrain & t);
-	void place_castle(int starting_position, const map_location &loc);
-
 	t_translation::t_terrain wall_, clear_, village_, castle_, keep_;
-	t_translation::t_map map_;
-	std::map<int, t_translation::coordinate> starting_positions_;
 
-	std::map<std::string,size_t> chamber_ids_;
-	std::vector<chamber> chambers_;
-	std::vector<passage> passages_;
-
-	config res_;
 	config cfg_;
 	int width_, height_, village_density_;
 
