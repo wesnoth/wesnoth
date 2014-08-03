@@ -43,7 +43,7 @@ timage::timage(Uint16 w, Uint16 h)
 	clip_ = create_gpu_rect(0, 0, w, h);
 	image_ = GPU_CreateImage(w, h, GPU_FORMAT_RGBA);
 	if (image_ == NULL) {
-		//TODO: report errorr
+		throw tgpu_exception("Failed to construct timage object.", true);
 	} else {
 		image_->refcount = 1;
 		static SDL_Color black = {0, 0, 0, 0};
@@ -65,7 +65,7 @@ timage::timage(const std::string &file)
 	, vwrap_(GPU_WRAP_NONE)
 {
 	if (image_ == NULL) {
-		//TODO: report error
+		throw tgpu_exception("Failed to construct timage object.", true);
 	} else {
 		clip_ = create_gpu_rect(0, 0, image_->w, image_->h);
 		image_->refcount = 1;
@@ -89,7 +89,7 @@ timage::timage(const surface &source)
 	, smooth_(false)
 {
 	if (image_ == NULL) {
-		//TODO: report error
+		throw tgpu_exception("Failed to construct timage object.", true);
 	} else {
 		clip_ = create_gpu_rect(0, 0, image_->w, image_->h);
 		image_->refcount = 1;
@@ -113,7 +113,7 @@ timage::timage(SDL_Surface *source)
 	, smooth_(false)
 {
 	if (image_ == NULL) {
-		//TODO: report error
+		throw tgpu_exception("Failed to construct timage object.", true);
 	} else {
 		clip_ = create_gpu_rect(0, 0, image_->w, image_->h);
 		image_->refcount = 1;
