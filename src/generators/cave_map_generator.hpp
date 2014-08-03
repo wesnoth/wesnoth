@@ -75,8 +75,12 @@ private:
 		void set_terrain(map_location loc, const t_translation::t_terrain & t);
 		void place_castle(int starting_position, const map_location &loc);
 
+	size_t translate_x(size_t x) const;
+	size_t translate_y(size_t y) const;
+
 		
 		const cave_map_generator& params;
+		bool flipx_, flipy_;
 
 		t_translation::t_map map_;
 		std::map<int, t_translation::coordinate> starting_positions_;
@@ -98,10 +102,7 @@ private:
 
 	// The scenario may have a chance to flip all x values or y values
 	// to make the scenario appear all random. This is kept track of here.
-	bool flipx_, flipy_;
-
-	size_t translate_x(size_t x) const;
-	size_t translate_y(size_t y) const;
+	int flipx_chance_, flipy_chance_;
 };
 
 #endif

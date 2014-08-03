@@ -41,21 +41,13 @@ cave_map_generator::cave_map_generator(const config &cfg) :
 	width_(50),
 	height_(50),
 	village_density_(0),
-	flipx_(false),
-	flipy_(false)
+	flipx_chance_(cfg_["flipx_chance"]),
+	flipy_chance_(cfg_["flipy_chance"])
 {
 	width_ = cfg_["map_width"];
 	height_ = cfg_["map_height"];
 
 	village_density_ = cfg_["village_density"];
-
-	int r = rand() % 100;
-	int chance = cfg_["flipx_chance"];
-
-	flipx_ = r < chance;
-
-	LOG_NG << "flipx: " << r << " < " << chance << " = " << (flipx_ ? "true" : "false") << "\n";
-	flipy_ = rand() % 100 < cfg_["flipy_chance"];
 }
 
 std::string cave_map_generator::config_name() const
@@ -63,19 +55,19 @@ std::string cave_map_generator::config_name() const
 	return "";
 }
 
-size_t cave_map_generator::translate_x(size_t x) const
+size_t cave_map_generator::cave_map_generator_job::translate_x(size_t x) const
 {
 	if(flipx_) {
-		x = width_ - x - 1;
+		x = params.width_ - x - 1;
 	}
 
 	return x;
 }
 
-size_t cave_map_generator::translate_y(size_t y) const
+size_t cave_map_generator::cave_map_generator_job::translate_y(size_t y) const
 {
 	if(flipy_) {
-		y = height_ - y - 1;
+		y = params.height_ - y - 1;
 	}
 
 	return y;
@@ -95,6 +87,8 @@ config cave_map_generator::create_scenario()
 
 cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_map_generator& pparams)
 	: params(pparams)
+	, flipx_(false)
+	, flipy_(false)
 	, map_(t_translation::t_map(params.width_ + 2 * gamemap::default_border,
 	       t_translation::t_list(params.height_ + 2 * gamemap::default_border, params.wall_)))
 	, starting_positions_()
@@ -103,6 +97,9 @@ cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_ma
 	, passages_()
 	, res_(params.cfg_.child_or_empty("settings"))
 {
+	flipx_ = rand() % 100 < params.flipx_chance_;
+	flipy_ = rand() % 100 < params.flipy_chance_;
+
 	LOG_NG << "creating scenario....\n";
 	generate_chambers();
 
@@ -169,9 +166,8 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 				max_ypos = atoi(items.back().c_str());
 			}
 		}
-		//TODO: move trandlate to job class.
-		const size_t x = params.translate_x(min_xpos + (rand()%(max_xpos-min_xpos)));
-		const size_t y = params.translate_y(min_ypos + (rand()%(max_ypos-min_ypos)));
+		const size_t x = translate_x(min_xpos + (rand()%(max_xpos-min_xpos)));
+		const size_t y = translate_y(min_ypos + (rand()%(max_ypos-min_ypos)));
 
 		int chamber_size = ch["size"].to_int(3);
 		int jagged_edges = ch["jagged"];
