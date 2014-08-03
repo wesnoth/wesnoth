@@ -1,12 +1,13 @@
 #version 120
 
-varying vec4 color_mod;
-varying vec4 color_draw;
-varying vec2 pos;
-varying float submerge_amount;
+varying vec4 frag_color_mod;
+varying vec4 frag_draw_color;
+varying vec2 frag_texture_pos;
+varying float frag_submerge;
 uniform sampler2D tex;
 
 void main()
 {
-	gl_FragColor = texture2D(tex, pos) + color_draw + color_mod;
+	gl_FragColor = texture2D(tex, frag_texture_pos)
+					+ frag_draw_color + frag_color_mod;
 }

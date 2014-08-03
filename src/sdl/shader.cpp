@@ -42,7 +42,8 @@ shader_program::shader_program(const std::string &vsrc, const std::string &fsrc)
 		//TODO: report error
 	}
 
-	attr_color_mod_ = GPU_GetAttributeLocation(program_object_, "color");
+	attr_color_mod_ = GPU_GetAttributeLocation(program_object_,
+											   "vert_color_mod");
 	set_color_mod(0, 0, 0, 0);
 	set_submerge(0);
 }
@@ -92,8 +93,9 @@ const shader_program &shader_program::operator =(const shader_program &prog)
 
 void shader_program::activate()
 {
-	block_ = GPU_LoadShaderBlock(program_object_, "vertex", "texture_pos",
-								 "draw_color", "model_view_proj");
+	block_ = GPU_LoadShaderBlock(program_object_, "vert_vertex",
+								 "vert_texture_pos", "vert_draw_color",
+								 "model_view_proj");
 	GPU_ActivateShaderProgram(program_object_, &block_);
 }
 
