@@ -37,6 +37,7 @@ public:
 
 	bool append() const { return append_; }
 	bool immediate() const { return immediate_; }
+	bool shuffle() const { return shuffle_; }
 	bool play_once() const { return once_; }
 	int ms_before() const { return ms_before_; }
 	int ms_after()  const { return ms_after_;  }
@@ -59,6 +60,7 @@ private:
 	bool once_;
 	bool append_;
 	bool immediate_;
+	bool shuffle_;
 };
 
 } /* end namespace sound */

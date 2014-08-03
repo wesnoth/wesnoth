@@ -37,7 +37,8 @@ music_track::music_track() :
 	ms_after_(0),
 	once_(false),
 	append_(false),
-	immediate_(false)
+	immediate_(false),
+	shuffle_(true)
 {
 }
 
@@ -49,7 +50,8 @@ music_track::music_track(const config& node) :
 	ms_after_(node["ms_after"]),
 	once_(node["play_once"].to_bool()),
 	append_(node["append"].to_bool()),
-	immediate_(node["immediate"].to_bool())
+	immediate_(node["immediate"].to_bool()),
+	shuffle_(node["shuffle"].to_bool(true))
 {
 	resolve();
 }
@@ -62,7 +64,8 @@ music_track::music_track(const std::string& v_name) :
 	ms_after_(0),
 	once_(false),
 	append_(false),
-	immediate_(false)
+	immediate_(false),
+	shuffle_(true)
 {
 	resolve();
 }
@@ -133,6 +136,8 @@ void music_track::write(config &parent_node, bool append) const
 	if(append) {
 		m["append"] = true;
 	}
+	//default behaviour is to shuffle
+	m["shuffle"] = shuffle_;
 }
 
 } /* end namespace sound */
