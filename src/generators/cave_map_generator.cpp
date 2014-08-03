@@ -19,7 +19,7 @@
 
 #include "global.hpp"
 
-#include "cavegen.hpp"
+#include "cave_map_generator.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "pathfind/pathfind.hpp"

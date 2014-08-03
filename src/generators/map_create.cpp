@@ -15,10 +15,10 @@
 #include "global.hpp"
 #include "map_create.hpp"
 
-#include "generators/cavegen.hpp"
+#include "generators/cave_map_generator.hpp"
 #include "generators/yamg/ya_mapgen.hpp"
+#include "generators/default_map_generator.hpp"
 #include "log.hpp"
-#include "mapgen_dialog.hpp"
 #include "scoped_resource.hpp"
 #include "serialization/string_utils.hpp"
 

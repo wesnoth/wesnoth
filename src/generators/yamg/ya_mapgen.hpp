@@ -38,7 +38,7 @@
 
 #ifndef YAMG_STANDALONE
 #include "config.hpp"
-#include "generators/mapgen.hpp"
+#include "generators/map_generator.hpp"
 #endif
 
 /**

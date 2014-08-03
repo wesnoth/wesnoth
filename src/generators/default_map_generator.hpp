@@ -12,11 +12,11 @@
    See the COPYING file for more details.
 */
 
-#ifndef MAPGEN_DIALOG_HPP_INCLUDED
-#define MAPGEN_DIALOG_HPP_INCLUDED
+#ifndef DEFAULT_MAP_GENERATOR_HPP_INCLUDED
+#define DEFAULT_MAP_GENERATOR_HPP_INCLUDED
 
 #include "config.hpp"
-#include "generators/mapgen.hpp"
+#include "generators/map_generator.hpp"
 
 class default_map_generator : public map_generator
 {

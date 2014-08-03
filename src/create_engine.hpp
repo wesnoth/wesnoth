@@ -16,7 +16,6 @@
 
 #include "config.hpp"
 #include "map.hpp"
-#include "generators/mapgen.hpp"
 #include "depcheck.hpp"
 #include "mp_game_settings.hpp"
 #include "game_display.hpp"
@@ -26,7 +25,7 @@
 #include <utility>
 
 class saved_game;
-
+class map_generator;
 namespace ng {
 class level
 {
@@ -287,7 +286,7 @@ private:
 
 	depcheck::manager dependency_manager_;
 
-	util::scoped_ptr<map_generator> generator_;
+	boost::scoped_ptr<map_generator> generator_;
 };
 
 } // end namespace ng

@@ -14,11 +14,11 @@
 
 /** @file */
 
-#ifndef CAVEGEN_HPP_INCLUDED
-#define CAVEGEN_HPP_INCLUDED
+#ifndef CAVE_MAP_GENERATOR_HPP_INCLUDED
+#define CAVE_MAP_GENERATOR_HPP_INCLUDED
 
 #include "config.hpp"
-#include "generators/mapgen.hpp"
+#include "generators/map_generator.hpp"
 #include "terrain_translation.hpp"
 
 #include <set>

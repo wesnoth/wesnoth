@@ -23,7 +23,7 @@
 #include "language.hpp"
 #include "log.hpp"
 #include "map.hpp"
-#include "mapgen.hpp"
+#include "map_generator.hpp"
 #include "pathfind/pathfind.hpp"
 #include "pathutils.hpp"
 #include "race.hpp"
