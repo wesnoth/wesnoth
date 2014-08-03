@@ -160,8 +160,7 @@ std::vector<std::string> played_before;
 std::vector<sound::music_track> current_track_list;
 sound::music_track current_track;
 sound::music_track last_track;
-bool shuffle = true;
-unsigned int track = 0;
+unsigned int current_track_index = 0;
 
 }
 
@@ -225,24 +224,27 @@ static bool track_ok(const std::string& id)
 static const sound::music_track &choose_track()
 {
 	assert(!current_track_list.empty());
-	
-	if (current_track_list.size() <= 1 ||
-		(!shuffle && track == current_track_list.size()) ) {
-		track = 0;
-	} 
 
-	if (current_track_list.size() > 1 && shuffle) {
-		do {
-			track = rand()%current_track_list.size();
-		} while (!track_ok( current_track_list[track].file_path() ));
-	} else if (!shuffle && current_track_list.size() > 1) {
-		played_before.push_back( current_track_list[++track].file_path() );
-		return current_track_list[track - 1];	
+	if (current_track_index == current_track_list.size()) {
+		current_track_index = 0;
 	}
 
-	//LOG_AUDIO << "Next track will be " << current_track_list[track].file_path() << "\n";
-	played_before.push_back( current_track_list[track].file_path() );
-	return current_track_list[track];
+	if (current_track_list[current_track_index].shuffle()) {
+		unsigned int track = 0;
+
+		if (current_track_list.size() > 1) {
+			do {
+				track = rand()%current_track_list.size();
+			} while (!track_ok( current_track_list[track].file_path() ));
+		}
+
+		//LOG_AUDIO << "Next track will be " << current_track_list[track].file_path() << "\n";
+		played_before.push_back( current_track_list[track].file_path() );
+		current_track_index = track;
+	} 
+	
+	played_before.push_back( current_track_list[current_track_index].file_path() );
+	return current_track_list[current_track_index++];
 }
 
 static std::string pick_one(const std::string &files)
@@ -541,7 +543,6 @@ void play_music_repeatedly(const std::string &id)
 void play_music_config(const config &music_node)
 {
 	music_track track( music_node );
-	shuffle = music_node["shuffle"].to_bool(true);
 
 	if (!track.valid() && !track.id().empty()) {
 		ERR_AUDIO << "cannot open track '" << track.id() << "'; disabled in this playlist." << std::endl;
