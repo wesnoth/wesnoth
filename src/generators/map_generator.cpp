@@ -44,6 +44,17 @@ config map_generator::create_scenario()
 	res["map_data"] = create_map();
 	return res;
 }
+/**
+	by default we don't allow user configs.
+*/
+bool map_generator::allow_user_config() const
+{
+	return false;
+}
+
+void map_generator::user_config(display& /*disp*/)
+{
+}
 
 typedef std::vector<std::vector<int> > height_map;
 typedef t_translation::t_map terrain_map;

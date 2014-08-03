@@ -41,14 +41,14 @@ public:
 	 * Returns true if the map generator has an interactive screen,
 	 * which allows the user to modify how the generator behaves.
 	 */
-	virtual bool allow_user_config() const = 0;
+	virtual bool allow_user_config() const;
 
 	/**
 	 * Display the interactive screen, which allows the user
 	 * to modify how the generator behaves.
 	 * (This function will not be called if allow_user_config() returns false).
 	 */
-	virtual void user_config(display& disp) = 0;
+	virtual void user_config(display& disp);
 
 	/**
 	 * Returns a string identifying the generator by name.
