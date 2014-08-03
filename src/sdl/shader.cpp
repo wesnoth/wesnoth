@@ -29,17 +29,17 @@ shader_program::shader_program(const std::string &vsrc, const std::string &fsrc)
 {
 	vertex_object_ = GPU_LoadShader(GPU_VERTEX_SHADER, vsrc.c_str());
 	if (!vertex_object_) {
-		//TODO: report error
+		throw shader_error("Failed to compile vertex shader");
 	}
 
 	fragment_object_ = GPU_LoadShader(GPU_FRAGMENT_SHADER, fsrc.c_str());
 	if (!fragment_object_) {
-		//TODO: report error
+		throw shader_error("Failed to compile fragment shader");
 	}
 
 	program_object_ = GPU_LinkShaders(vertex_object_, fragment_object_);
 	if (!program_object_) {
-		//TODO: report error
+		throw shader_error("Failed to link shader program");
 	}
 
 	attr_color_mod_ = GPU_GetAttributeLocation(program_object_,
@@ -120,6 +120,11 @@ void shader_program::set_color_mod(int r, int g, int b, int a)
 void shader_program::set_submerge(float val)
 {
 	GPU_SetAttributef(attr_submerge_, val);
+}
+
+shader_error::shader_error(const std::string &op)
+	: game::error(op + "\n" + GPU_GetShaderMessage())
+{
 }
 
 }

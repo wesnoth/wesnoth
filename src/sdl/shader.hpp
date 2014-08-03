@@ -19,6 +19,7 @@
 #include <string>
 #include <vector>
 #include <boost/noncopyable.hpp>
+#include "exceptions.hpp"
 
 namespace sdl {
 
@@ -43,6 +44,12 @@ private:
 	GPU_ShaderBlock block_;
 	int attr_color_mod_, attr_submerge_;
 	unsigned *refcount_;
+};
+
+class shader_error : public game::error
+{
+public:
+	shader_error(const std::string &op);
 };
 
 }
