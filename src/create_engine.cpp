@@ -1008,19 +1008,22 @@ void create_engine::init_all_levels()
 		resources::config_manager->game_config().child_range("campaign"))
 	{
 		const std::string& type = data["type"];
+		bool mp = state_.classification().campaign_type == game_classification::MULTIPLAYER;
 
-		if (type == "mp" || type == "hybrid") {
+		if (type == "mp" || (type == "hybrid" && mp)) {
 			campaign_ptr new_campaign(new campaign(data));
 			campaigns_.push_back(new_campaign);
 			campaigns_.back()->set_metadata();
 		}
-		if (type == "sp" || type == "hybrid" || type.empty()) {
+		if (type == "sp" || type.empty() || (type == "hybrid" && !mp)) {
 			campaign_ptr new_sp_campaign(new campaign(data));
 			sp_campaigns_.push_back(new_sp_campaign);
 			sp_campaigns_.back()->set_metadata();
 			sp_campaigns_.back()->mark_if_completed();
 		}
 	}
+
+	// Sort sp campaigns by rank.
 	std::stable_sort(sp_campaigns_.begin(),sp_campaigns_.end(),less_campaigns_rank);
 }
 
