@@ -496,7 +496,7 @@ int game_launcher::unit_test()
 		load_game_config_for_game(state_.classification());
 
 	try {
-		LEVEL_RESULT res = play_game(disp(),state_,resources::config_manager->game_config(), IO_NONE, false, false, false, true);
+		LEVEL_RESULT res = play_game(disp(),state_,resources::config_manager->game_config(), IO_SERVER, false, false, false, true);
 		if (!(res == VICTORY || res == NONE) || lg::broke_strict()) {
 			return 1;
 		}
@@ -531,7 +531,7 @@ int game_launcher::unit_test()
 	}
 
 	try {
-		//LEVEL_RESULT res = play_game(disp(), state_, resources::config_manager->game_config(), IO_NONE, false,false,false,true);
+		//LEVEL_RESULT res = play_game(disp(), state_, resources::config_manager->game_config(), IO_SERVER, false,false,false,true);
 		LEVEL_RESULT res = ::play_replay(disp(), state_, resources::config_manager->game_config(), video_, true);
 		if (!(res == VICTORY || res == NONE)) {
 			std::cerr << "Observed failure on replay" << std::endl;
