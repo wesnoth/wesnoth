@@ -21,6 +21,7 @@
 #include "filesystem.hpp"
 #include "formula_debugger.hpp"
 #include "gettext.hpp"
+#include "game_classification.hpp"
 #include "game_config.hpp"
 #include "game_display.hpp"
 #include "generators/map_create.hpp"
@@ -74,6 +75,7 @@
 #include "language.hpp"
 #include "create_engine.hpp"
 #include "tests/utils/fake_display.hpp"
+#include "saved_game.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
 
@@ -499,13 +501,10 @@ struct twrapper<gui2::tcampaign_selection>
 {
 	static gui2::tcampaign_selection* create()
 	{
-		static const config::const_child_itors &ci =
-				main_config.child_range("campaign");
-		static std::vector<ng::create_engine::level_ptr> levels;
-		BOOST_FOREACH(const config& campaign_cfg, ci) {
-			levels.push_back(ng::create_engine::level_ptr(new ng::campaign(campaign_cfg)));
-		}
-		return new gui2::tcampaign_selection(levels);
+		static saved_game state;
+		state.classification().campaign_type = game_classification::SCENARIO;
+		static ng::create_engine ng(test_utils::get_fake_display(-1, -1), state);
+		return new gui2::tcampaign_selection(ng);
 	}
 };
 
