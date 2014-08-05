@@ -1459,6 +1459,18 @@ void advance_unit_at(const advance_unit_params& params)
 			return;
 		}
 
+		if(params.fire_events_)
+		{
+			LOG_NG << "Firing pre_advance event at " << params.loc_ <<".\n";
+			game_events::fire("pre_advance", params.loc_);
+			//TODO: maybe use id instead of location here ?.
+			u = resources::units->find(params.loc_);
+			if(!unit_helper::will_certainly_advance(u))
+			{
+				LOG_NG << "pre_advance event aborted advancing.\n";
+				return;
+			}
+		}
 		//we don't want to let side 1 decide it during start/prestart.
 		int side_for = resources::gamedata->phase() == game_data::PLAY ? 0: u->side();
 		config selected = mp_sync::get_user_choice("choose",
