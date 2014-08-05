@@ -239,6 +239,10 @@ public:
 	 */
 	GPU_WrapEnum vwrap( )const;
 
+	void set_submerge(double val);
+
+	double submerge() const;
+
 	/**
 	 * Returns true if the managed texture is NULL.
 	 */
@@ -270,6 +274,9 @@ private:
 
 	/** Smooth scaling. */
 	bool smooth_;
+
+	/** Submerge. */
+	double submerge_;
 };
 }
 #endif

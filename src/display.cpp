@@ -1696,34 +1696,9 @@ void display::render_image(int x, int y, const display::tdrawing_layer drawing_l
 	}
 #ifdef SDL_GPU
 	sdl::timage img(surf);
+	img.set_submerge(submerged);
 
-	if(submerged > 0.0) {
-		// divide the surface into 2 parts
-		const int submerge_height = std::max<int>(0, surf->h*(1.0-submerged));
-		//const int depth = surf->h - submerge_height;
-		SDL_Rect srcrect = sdl::create_rect(0, 0, surf->w, submerge_height);
-		img.set_clip(srcrect);
-		drawing_buffer_add(drawing_layer, loc, x, y, img);
-
-		if(submerge_height != surf->h) {
-			//the lower part will be transparent
-			//float alpha_base = 0.3f; // 30% alpha at surface of water
-			float alpha_delta = 0.015f; // lose 1.5% per pixel depth
-			alpha_delta *= zoom_ / DefaultZoom; // adjust with zoom
-			//TODO: submerging
-			//surf = submerge_alpha(surf, depth, alpha_base, alpha_delta, false);
-
-			srcrect.y = submerge_height;
-			srcrect.h = surf->h-submerge_height;
-			y += submerge_height;
-
-			img.set_clip(srcrect);
-			drawing_buffer_add(drawing_layer, loc, x, y, img);
-		}
-	} else {
-		// simple blit
-		drawing_buffer_add(drawing_layer, loc, x, y, img);
-	}
+	drawing_buffer_add(drawing_layer, loc, x, y, img);
 #else
 	if(submerged > 0.0) {
 		// divide the surface into 2 parts

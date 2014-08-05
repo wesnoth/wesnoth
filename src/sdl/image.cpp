@@ -87,9 +87,12 @@ timage::timage(const surface &source)
 	, hwrap_(GPU_WRAP_NONE)
 	, vwrap_(GPU_WRAP_NONE)
 	, smooth_(false)
+	, submerge_(0)
 {
 	if (image_ == NULL) {
-		throw tgpu_exception("Failed to construct timage object.", true);
+		if (!source.null()) {
+			throw tgpu_exception("Failed to construct timage object.", true);
+		}
 	} else {
 		clip_ = create_gpu_rect(0, 0, image_->w, image_->h);
 		image_->refcount = 1;
@@ -111,9 +114,12 @@ timage::timage(SDL_Surface *source)
 	, hwrap_(GPU_WRAP_NONE)
 	, vwrap_(GPU_WRAP_NONE)
 	, smooth_(false)
+	, submerge_(0)
 {
 	if (image_ == NULL) {
-		throw tgpu_exception("Failed to construct timage object.", true);
+		if (source != NULL) {
+			throw tgpu_exception("Failed to construct timage object.", true);
+		}
 	} else {
 		clip_ = create_gpu_rect(0, 0, image_->w, image_->h);
 		image_->refcount = 1;
@@ -135,6 +141,7 @@ timage::timage()
 	, hwrap_(GPU_WRAP_NONE)
 	, vwrap_(GPU_WRAP_NONE)
 	, smooth_(false)
+	, submerge_(0)
 {
 }
 
@@ -161,6 +168,7 @@ timage::timage(const timage &texture)
 	, hwrap_(texture.hwrap_)
 	, vwrap_(texture.vwrap_)
 	, smooth_(texture.smooth_)
+	, submerge_(texture.submerge_)
 {
 	if (image_ != NULL) {
 		image_->refcount += 1;
@@ -182,6 +190,7 @@ void timage::draw(CVideo &video, const int x, const int y)
 	GPU_SetImageFilter(image_, smooth_ ? GPU_FILTER_LINEAR : GPU_FILTER_NEAREST);
 	GPU_SetWrapMode(image_, hwrap_, vwrap_);
 	video.set_texture_color_modulation(red_mod_, green_mod_, blue_mod_, alpha_mod_);
+	video.set_texture_submerge(float(submerge_));
 	GPU_BlitTransform(image_, &clip_, video.render_target(), x + width()/2, y + height()/2,
 					  rotation_, hscale_, vscale_);
 }
@@ -329,6 +338,16 @@ GPU_WrapEnum timage::vwrap() const
 	return vwrap_;
 }
 
+void timage::set_submerge(double val)
+{
+	submerge_ = val;
+}
+
+double timage::submerge() const
+{
+	return submerge_;
+}
+
 bool timage::null() const
 {
 	return image_ == NULL;
@@ -345,6 +364,7 @@ timage timage::clone() const
 	res.set_rotation(rotation());
 	res.set_scale(hscale(), vscale());
 	res.set_smooth_scaling(smooth_scaling());
+	res.set_submerge(submerge_);
 
 	return res;
 }
