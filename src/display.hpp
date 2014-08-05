@@ -898,6 +898,24 @@ public:
 		                            */
 		};
 
+#ifdef SDL_GPU
+	/**
+	 * Draw an image at a certain location.
+	 * x,y: pixel location on screen to draw the image
+	 * image: the image to draw
+	 * reverse: if the image should be flipped across the x axis
+	 * greyscale: used for instance to give the petrified appearance to a unit image
+	 * alpha: the merging to use with the background
+	 * blendto: blend to this color using blend_ratio
+	 * submerged: the amount of the unit out of 1.0 that is submerged
+	 *            (presumably under water) and thus shouldn't be drawn
+	 */
+	void render_image(int x, int y, const display::tdrawing_layer drawing_layer,
+			const map_location& loc, sdl::timage image,
+			bool hreverse=false, bool greyscale=false,
+			fixed_t alpha=ftofxp(1.0), Uint32 blendto=0,
+			double blend_ratio=0, double submerged=0.0,bool vreverse =false);
+#else
 	/**
 	 * Draw an image at a certain location.
 	 * x,y: pixel location on screen to draw the image
@@ -914,6 +932,7 @@ public:
 			bool hreverse=false, bool greyscale=false,
 			fixed_t alpha=ftofxp(1.0), Uint32 blendto=0,
 			double blend_ratio=0, double submerged=0.0,bool vreverse =false);
+#endif
 
 	/**
 	 * Draw text on a hex. (0.5, 0.5) is the center.

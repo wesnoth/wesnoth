@@ -1652,12 +1652,28 @@ void display::draw_text_in_hex(const map_location& loc,
 }
 
 //TODO: convert this to use sdl::ttexture
+#ifdef SDL_GPU
+void display::render_image(int x, int y, const display::tdrawing_layer drawing_layer,
+		const map_location& loc, sdl::timage image,
+		bool hreverse, bool greyscale, fixed_t /*alpha*/,
+		Uint32 /*blendto*/, double /*blend_ratio*/, double submerged, bool vreverse)
+{
+	int effect_flags = hreverse ? SHADER_EFFECT_FLIP : SHADER_EFFECT_NONE |
+					   vreverse ? SHADER_EFFECT_FLOP : SHADER_EFFECT_NONE |
+					   greyscale ? SHADER_EFFECT_GRAYSCALE : SHADER_EFFECT_NONE;
+
+	image.set_effects(effect_flags);
+	image.set_submerge(submerged);
+
+	drawing_buffer_add(drawing_layer, loc, x, y, image);
+}
+
+#else
 void display::render_image(int x, int y, const display::tdrawing_layer drawing_layer,
 		const map_location& loc, surface image,
 		bool hreverse, bool greyscale, fixed_t alpha,
 		Uint32 blendto, double blend_ratio, double submerged, bool vreverse)
 {
-
 	if (image==NULL)
 		return;
 
@@ -1694,12 +1710,7 @@ void display::render_image(int x, int y, const display::tdrawing_layer drawing_l
 		ERR_DP << "surface lost..." << std::endl;
 		return;
 	}
-#ifdef SDL_GPU
-	sdl::timage img(surf);
-	img.set_submerge(submerged);
 
-	drawing_buffer_add(drawing_layer, loc, x, y, img);
-#else
 	if(submerged > 0.0) {
 		// divide the surface into 2 parts
 		const int submerge_height = std::max<int>(0, surf->h*(1.0-submerged));
@@ -1724,10 +1735,8 @@ void display::render_image(int x, int y, const display::tdrawing_layer drawing_l
 		// simple blit
 		drawing_buffer_add(drawing_layer, loc, x, y, surf);
 	}
-#endif
-
 }
-
+#endif
 void display::select_hex(map_location hex)
 {
 	invalidate(selectedHex_);
