@@ -91,6 +91,8 @@ class CVideo : private boost::noncopyable {
 	void set_texture_color_modulation(int r, int g, int b, int a);
 
 	void set_texture_submerge(float f);
+
+	void set_texture_effects(int effects);
 #endif
 	void flip();
 

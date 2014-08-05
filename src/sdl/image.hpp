@@ -243,6 +243,10 @@ public:
 
 	double submerge() const;
 
+	void set_effects(int effects);
+
+	int effects() const;
+
 	/**
 	 * Returns true if the managed texture is NULL.
 	 */
@@ -277,6 +281,9 @@ private:
 
 	/** Submerge. */
 	double submerge_;
+
+	/** Shader effects (flip, flop, grayscale). */
+	int effects_;
 };
 }
 #endif

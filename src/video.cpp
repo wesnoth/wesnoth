@@ -421,6 +421,11 @@ void CVideo::set_texture_submerge(float f)
 {
 	shader_.set_submerge(f);
 }
+
+void CVideo::set_texture_effects(int effects)
+{
+	shader_.set_effects(effects);
+}
 #endif
 
 void CVideo::make_fake()

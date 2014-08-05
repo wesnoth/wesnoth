@@ -39,6 +39,7 @@ timage::timage(Uint16 w, Uint16 h)
 	, alpha_mod_(0)
 	, hwrap_(GPU_WRAP_NONE)
 	, vwrap_(GPU_WRAP_NONE)
+	, effects_(0)
 {
 	clip_ = create_gpu_rect(0, 0, w, h);
 	image_ = GPU_CreateImage(w, h, GPU_FORMAT_RGBA);
@@ -63,6 +64,7 @@ timage::timage(const std::string &file)
 	, alpha_mod_(0)
 	, hwrap_(GPU_WRAP_NONE)
 	, vwrap_(GPU_WRAP_NONE)
+	, effects_(0)
 {
 	if (image_ == NULL) {
 		throw tgpu_exception("Failed to construct timage object.", true);
@@ -88,6 +90,7 @@ timage::timage(const surface &source)
 	, vwrap_(GPU_WRAP_NONE)
 	, smooth_(false)
 	, submerge_(0)
+	, effects_(0)
 {
 	if (image_ == NULL) {
 		if (!source.null()) {
@@ -115,6 +118,7 @@ timage::timage(SDL_Surface *source)
 	, vwrap_(GPU_WRAP_NONE)
 	, smooth_(false)
 	, submerge_(0)
+	, effects_(0)
 {
 	if (image_ == NULL) {
 		if (source != NULL) {
@@ -142,6 +146,7 @@ timage::timage()
 	, vwrap_(GPU_WRAP_NONE)
 	, smooth_(false)
 	, submerge_(0)
+	, effects_(0)
 {
 }
 
@@ -169,6 +174,7 @@ timage::timage(const timage &texture)
 	, vwrap_(texture.vwrap_)
 	, smooth_(texture.smooth_)
 	, submerge_(texture.submerge_)
+	, effects_(texture.effects_)
 {
 	if (image_ != NULL) {
 		image_->refcount += 1;
@@ -191,6 +197,7 @@ void timage::draw(CVideo &video, const int x, const int y)
 	GPU_SetWrapMode(image_, hwrap_, vwrap_);
 	video.set_texture_color_modulation(red_mod_, green_mod_, blue_mod_, alpha_mod_);
 	video.set_texture_submerge(float(submerge_));
+	video.set_texture_effects(effects_);
 	GPU_BlitTransform(image_, &clip_, video.render_target(), x + width()/2, y + height()/2,
 					  rotation_, hscale_, vscale_);
 }
@@ -348,6 +355,16 @@ double timage::submerge() const
 	return submerge_;
 }
 
+void timage::set_effects(int effects)
+{
+	effects_ = effects;
+}
+
+int timage::effects() const
+{
+	return effects_;
+}
+
 bool timage::null() const
 {
 	return image_ == NULL;
@@ -364,7 +381,8 @@ timage timage::clone() const
 	res.set_rotation(rotation());
 	res.set_scale(hscale(), vscale());
 	res.set_smooth_scaling(smooth_scaling());
-	res.set_submerge(submerge_);
+	res.set_submerge(submerge());
+	res.set_effects(effects());
 
 	return res;
 }

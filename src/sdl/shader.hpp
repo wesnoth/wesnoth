@@ -21,6 +21,11 @@
 #include <boost/noncopyable.hpp>
 #include "exceptions.hpp"
 
+#define SHADER_EFFECT_NONE 0
+#define SHADER_EFFECT_FLIP 1
+#define SHADER_EFFECT_FLOP 2
+#define SHADER_EFFECT_GRAYSCALE 4
+
 namespace sdl {
 
 class shader_program
@@ -38,11 +43,12 @@ public:
 
 	void set_color_mod(int r, int g, int b, int a);
 	void set_submerge(float val);
+	void set_effects(int effects);
 
 private:
 	Uint32 program_object_, vertex_object_, fragment_object_;
 	GPU_ShaderBlock block_;
-	int attr_color_mod_, attr_submerge_;
+	int attr_color_mod_, attr_submerge_, attr_effects_;
 	unsigned *refcount_;
 };
 

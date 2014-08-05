@@ -13,6 +13,7 @@
 */
 
 #include "shader.hpp"
+#include <iostream>
 
 #ifdef SDL_GPU
 namespace sdl
@@ -46,8 +47,12 @@ shader_program::shader_program(const std::string &vsrc, const std::string &fsrc)
 											   "vert_color_mod");
 	attr_submerge_ = GPU_GetAttributeLocation(program_object_,
 											  "vert_submerge");
+	attr_effects_ = GPU_GetAttributeLocation(program_object_,
+											 "vert_effects");
+
 	set_color_mod(0, 0, 0, 0);
 	set_submerge(0);
+	set_effects(0);
 }
 
 shader_program::shader_program()
@@ -124,9 +129,15 @@ void shader_program::set_submerge(float val)
 	GPU_SetAttributef(attr_submerge_, val);
 }
 
+void shader_program::set_effects(int effects)
+{
+	GPU_SetAttributei(attr_effects_, effects);
+}
+
 shader_error::shader_error(const std::string &op)
 	: game::error(op + "\n" + GPU_GetShaderMessage())
 {
+	std::cerr << GPU_GetShaderMessage() << std::endl;
 }
 
 }
