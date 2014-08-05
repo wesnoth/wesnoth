@@ -794,9 +794,8 @@ msgstr ""
 
 #. [item]: id=burial
 #: data/core/editor/items.cfg:165
-#, fuzzy
 msgid "Burial"
-msgstr "Apmokymas"
+msgstr "Kapavietė"
 
 #. [item]: id=cage
 #: data/core/editor/items.cfg:171
@@ -826,7 +825,7 @@ msgstr "Žalias apsiaustas"
 #. [item]: id=coffin-closed
 #: data/core/editor/items.cfg:201
 msgid "Closed Coffin"
-msgstr ""
+msgstr "Užvertas karstas"
 
 #. [item]: id=dragonstatue
 #: data/core/editor/items.cfg:207
@@ -1025,12 +1024,12 @@ msgstr ""
 #. [item]: id=circle-magic
 #: data/core/editor/items.cfg:459
 msgid "Magic Circle"
-msgstr ""
+msgstr "Magiškas ratas"
 
 #. [item]: id=dwarven-doors-closed
 #: data/core/editor/items.cfg:465
 msgid "Closed Dwarven Doors"
-msgstr ""
+msgstr "Užvertos dvarfų durys"
 
 #. [item]: id=fire
 #: data/core/editor/items.cfg:472
@@ -1084,7 +1083,7 @@ msgstr "Apleista kasykla"
 #: data/core/editor/items.cfg:528 data/core/editor/items.cfg:534
 #: data/core/editor/items.cfg:540 data/core/editor/items.cfg:546
 msgid "Monolith"
-msgstr ""
+msgstr "Monolitas"
 
 #. [item]: id=nest-empty
 #: data/core/editor/items.cfg:552
@@ -1169,7 +1168,7 @@ msgstr ""
 #. [item]: id=snowbits
 #: data/core/editor/items.cfg:707
 msgid "Piles of Snow"
-msgstr ""
+msgstr "Sniego krūvos"
 
 #. [item]: id=summoning-center
 #: data/core/editor/items.cfg:714
@@ -2688,7 +2687,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/core/macros/utils.cfg:784
 msgid "You retrieve $amount_gold pieces of gold."
-msgstr ""
+msgstr "Gavote $amount_gold pieces aukso."
 
 #. [color_range]: id=1
 #. [color_range]: id=red
@@ -3267,7 +3266,7 @@ msgstr "DŽ"
 #. [label]: id=label-def
 #: data/themes/default.cfg:159
 msgid "def"
-msgstr "num"
+msgstr "gyn"
 
 #. [label]: id=gold-icon
 #: data/themes/default.cfg:168 data/themes/pandora.cfg:181
@@ -3302,7 +3301,7 @@ msgstr "pajamos"
 #. [unit_level]: id=unit-level
 #: data/themes/default.cfg:394
 msgid "statuspanel^lvl"
-msgstr "lygis"
+msgstr "lyg"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=replay-label
@@ -3378,7 +3377,7 @@ msgstr "Pandora"
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:23
 msgid "800x480 theme optimized for Pandora devices."
-msgstr ""
+msgstr "800x480 tema optimizuota Pandora įrenginiams."
 
 #. [action]: id=end-turn
 #: data/themes/pandora.cfg:153
@@ -4247,9 +4246,8 @@ msgid "(press $hotkey to keep moving)"
 msgstr "(paspauskite $hotkey ėjimo tęsimui)"
 
 #: src/addon/client.cpp:68
-#, fuzzy
 msgid "Connecting to $server_address|..."
-msgstr "Jungiamasi prie serverio..."
+msgstr "Jungiamasi prie $server_address|..."
 
 #: src/addon/client.cpp:80
 #, fuzzy
@@ -5268,7 +5266,6 @@ msgstr ""
 "kaimui"
 
 #: src/leader_scroll_dialog.cpp:190 src/menu_events.cpp:331
-#, fuzzy
 msgid ""
 "scenario settings^Support Per\n"
 "Village"
@@ -6453,7 +6450,6 @@ msgid "Village gold: "
 msgstr "Kaimų auksas: "
 
 #: src/multiplayer_configure.cpp:395
-#, fuzzy
 msgid "Village support: "
 msgstr "Kaimų auksas: "
 
@@ -6580,9 +6576,8 @@ msgid "Number of players: any"
 msgstr "Žaidėjų kiekis: bet koks"
 
 #: src/multiplayer_create.cpp:70
-#, fuzzy
 msgid "Random map options:"
-msgstr "Atsitiktinis pradžios laikas"
+msgstr "Atsitiktinio žemėlapio parametrai:"
 
 #: src/multiplayer_create.cpp:71 src/multiplayer_lobby.cpp:602
 msgid "Era:"
@@ -6717,9 +6712,8 @@ msgid "Campaign:"
 msgstr "Kampanija:"
 
 #: src/multiplayer_lobby.cpp:557
-#, fuzzy
 msgid "Unknown campaign: $campaign_id"
-msgstr "Kampanija: $campaign_name"
+msgstr "Nežinoma kampanija: $campaign_id"
 
 #: src/multiplayer_lobby.cpp:634
 msgid " (missing)"
@@ -7267,9 +7261,8 @@ msgid "Defense: "
 msgstr "Gynyba:"
 
 #: src/reports.cpp:580
-#, fuzzy
 msgid "vision: "
-msgstr "Versija: "
+msgstr "matymas: "
 
 #: src/reports.cpp:608
 msgid "Movement Costs:"
