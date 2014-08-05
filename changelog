@@ -5,19 +5,22 @@ Version 1.11.16+dev:
  * Language and i18n:
    * Updated translations: Lithuanian
  * User interface:
-   * Fixed bug #22046: An assertion failure with empty labels in a listbox.
+   * Fixed bug #22046: An assertion failure with empty labels in a listbox
  * Miscellaneous and bug fixes:
    * Fix bug #22307: random map generation produces oss in multiplayer
      campaigns.
    * Changed the Lit Mushroom Grove terrain to behave like Forest and Mushroom
-     Grove (bug #21971).
+     Grove (bug #21971)
    * Made the error messages sent to stderr when the core data dir is
      incorrectly set *even more* helpful by correctly advising the use of
-     --data-dir, not --config-dir.
-   * Fix bug wherein "lobby sounds" advanced preference didn't do anything for the normal (GUI 1) lobby.
+     --data-dir, not --config-dir
+   * Fix bug wherein "lobby sounds" advanced preference didn't do anything for
+     the normal (GUI 1) lobby.
    * Fix bug wherein dbus notifications did not have a wesnoth icon
-   * Fix bug wherein chat history synopses weren't working right in the dbus notifications
-   * Don't check defeat_conditon to remove sides from carryover after [endlevel] (restore pre 1.11.13 behaviour).
+   * Fix bug wherein chat history synopses weren't working right in the dbus
+     notifications
+   * Don't check defeat_conditon to remove sides from carryover after [endlevel
+     (restore pre 1.11.13 behaviour)
 
 Version 1.11.16:
  * Add-ons client:
