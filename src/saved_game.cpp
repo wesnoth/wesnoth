@@ -438,6 +438,7 @@ void saved_game::convert_to_start_save()
 	sides.merge_old_carryover(carryover_info(carryover_));
 	sides.rng().rotate_random();
 	carryover_ = sides.to_config();
+	has_carryover_expanded_ = false;
 	replay_data = config();
 	replay_start_ = config();
 	remove_snapshot();
