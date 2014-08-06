@@ -32,9 +32,8 @@ void configure_engine::set_default_values() {
 }
 
 bool configure_engine::force_lock_settings() const {
-	const config::attribute_value& fls = state_.get_starting_pos()["force_lock_settings"];
-	return (fls.empty() && state_.classification().campaign_type == game_classification::SCENARIO)
-		|| fls.to_bool();
+	return state_.get_starting_pos()["force_lock_settings"].to_bool(
+		state_.classification().campaign_type != game_classification::MULTIPLAYER);
 }
 
 std::string configure_engine::game_name() const { return parameters_.name; }
