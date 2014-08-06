@@ -271,6 +271,10 @@ if sys.platform == 'win32':
 #
 print "---[checking prerequisites]---"
 
+def Info(message):
+    print message
+    return True
+
 def Warning(message):
     print message
     return False
@@ -351,15 +355,16 @@ if env["prereqs"]:
                 conf.CheckSDL("SDL_mixer", require_version = '1.2.0') & \
                 conf.CheckSDL("SDL_image", require_version = '1.2.0')
 
-    have_server_prereqs = \
+    have_server_prereqs = (\
         conf.CheckCPlusPlus(gcc_version = "3.3") & \
         have_sdl_net() & \
         conf.CheckGettextLibintl() & \
         conf.CheckBoost("iostreams", require_version = "1.34.1") & \
         conf.CheckBoostIostreamsGZip() & \
         conf.CheckBoostIostreamsBZip2() & \
-        conf.CheckBoost("smart_ptr", header_only = True) or \
-            Warning("WARN: Base prerequisites are not met")
+        conf.CheckBoost("smart_ptr", header_only = True) \
+            and Info("GOOD: Base prerequisites are met")) \
+            or Warning("WARN: Base prerequisites are not met")
 
     env = conf.Finish()
     client_env = env.Clone()
