@@ -3,10 +3,10 @@
 #define EFFECT_FLOP 2
 #define EFFECT_GRAYSCALE 4
 
-varying vec4 frag_color_mod;
-varying vec4 frag_draw_color;
-varying vec2 frag_texture_pos;
-varying float frag_submerge;
+in vec4 frag_color_mod;
+in vec4 frag_draw_color;
+in vec2 frag_texture_pos;
+in float frag_submerge;
 flat in int frag_effects;
 uniform sampler2D tex;
 

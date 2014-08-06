@@ -14,10 +14,10 @@ attribute int vert_effects;
 
 uniform mat4 model_view_proj;
 
-varying vec4 frag_color_mod;
-varying vec2 frag_texture_pos;
-varying float frag_submerge;
-varying vec4 frag_draw_color;
+out vec4 frag_color_mod;
+out vec2 frag_texture_pos;
+out float frag_submerge;
+out vec4 frag_draw_color;
 flat out int frag_effects;
 
 void main()
