@@ -62,6 +62,7 @@ shader_program::shader_program()
 	, block_()
 	, attr_color_mod_(0)
 	, attr_submerge_(0)
+	, attr_effects_(0)
 	, refcount_(new unsigned(1))
 {}
 
@@ -83,6 +84,7 @@ shader_program::shader_program(const shader_program &prog)
 	, block_(prog.block_)
 	, attr_color_mod_(prog.attr_color_mod_)
 	, attr_submerge_(prog.attr_submerge_)
+	, attr_effects_(prog.attr_effects_)
 	, refcount_(prog.refcount_)
 {
 	(*refcount_)++;
