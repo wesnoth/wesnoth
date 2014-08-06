@@ -384,27 +384,19 @@ class WmllintTab(Frame):
                                 column=0,
                                 sticky=W,
                                 padx=10)
-        self.progress_variable=IntVar(0)
-        self.progress_check=Checkbutton(self.options_frame,
-                                        text="List files before processing",
-                                        variable=self.progress_variable)
-        self.progress_check.grid(row=1,
+        self.missing_variable=IntVar(0)
+        self.missing_check=Checkbutton(self.options_frame,
+                                        text="Don't warn about tags without side= keys",
+                                        variable=self.missing_variable)
+        self.missing_check.grid(row=1,
                                  column=0,
                                  sticky=W,
                                  padx=10)
-        self.future_variable=IntVar(0)
-        self.future_check=Checkbutton(self.options_frame,
-                                      text="Enable experimental conversions",
-                                      variable=self.future_variable)
-        self.future_check.grid(row=2,
-                               column=0,
-                               sticky=W,
-                               padx=10)
         self.known_variable=IntVar(0)
         self.known_check=Checkbutton(self.options_frame,
                                      text="Disable checks for unknown units",
                                      variable=self.known_variable)
-        self.known_check.grid(row=3,
+        self.known_check.grid(row=2,
                               column=0,
                               sticky=W,
                               padx=10)
@@ -412,7 +404,7 @@ class WmllintTab(Frame):
         self.spell_check=Checkbutton(self.options_frame,
                                      text="Disable spellchecking",
                                      variable=self.spell_variable)
-        self.spell_check.grid(row=4,
+        self.spell_check.grid(row=3,
                               column=0,
                               sticky=W,
                               padx=10)
@@ -420,7 +412,7 @@ class WmllintTab(Frame):
         self.freeze_check=Checkbutton(self.options_frame,
                                       text="Ignore newlines in messages",
                                       variable=self.freeze_variable)
-        self.freeze_check.grid(row=5,
+        self.freeze_check.grid(row=4,
                                column=0,
                                sticky=W,
                                padx=10)
@@ -865,10 +857,8 @@ class MainFrame(Frame):
             wmllint_command_string.append("-v")
         if self.wmllint_tab.stripcr_variable.get():
             wmllint_command_string.append("--stripcr")
-        if self.wmllint_tab.progress_variable.get():
-            wmllint_command_string.append("--progress")
-        if self.wmllint_tab.future_variable.get():
-            wmllint_command_string.append("--future")
+        if self.wmllint_tab.missing_variable.get():
+            wmllint_command_string.append("--missing")
         if self.wmllint_tab.known_variable.get():
             wmllint_command_string.append("--known")
         if self.wmllint_tab.spell_variable.get():
