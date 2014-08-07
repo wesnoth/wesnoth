@@ -1392,8 +1392,11 @@ void display::flip()
 		sdl::fill_rect_alpha(r, color, 1, frameBuffer);
 		update_rect(r);
 	}
-
+#ifdef SDL_GPU
+	font::draw_floating_labels(screen_);
+#else
 	font::draw_floating_labels(frameBuffer);
+#endif
 	events::raise_volatile_draw_event();
 	cursor::draw(frameBuffer);
 

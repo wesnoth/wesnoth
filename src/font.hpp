@@ -17,6 +17,7 @@
 #include "exceptions.hpp"
 
 #include "sdl/utils.hpp"
+#include "sdl/image.hpp"
 
 #include <SDL_ttf.h>
 
@@ -153,11 +154,18 @@ public:
 	void use_markup(bool b) {use_markup_ = b;}
 
 	void move(double xmove, double ymove);
-
+#ifdef SDL_GPU
+	void draw(CVideo &video);
+#else
 	void draw(surface screen);
+#endif
 	void undraw(surface screen);
 
+#ifdef SDL_GPU
+	sdl::timage create_image();
+#else
 	surface create_surface();
+#endif
 
 	bool expired() const { return lifetime_ == 0; }
 
@@ -168,8 +176,11 @@ public:
 private:
 
 	int xpos(size_t width) const;
-
+#ifdef SDL_GPU
+	sdl::timage img_;
+#else
 	surface surf_, buf_;
+#endif
 	std::string text_;
 	int font_size_;
 	SDL_Color color_, bgcolor_;
@@ -206,8 +217,12 @@ void remove_floating_label(int handle);
 void show_floating_label(int handle, bool show);
 
 SDL_Rect get_floating_label_rect(int handle);
-
+#ifdef SDL_GPU
+void draw_floating_labels(CVideo &video);
+#else
 void draw_floating_labels(surface screen);
+#endif
+
 void undraw_floating_labels(surface screen);
 
 bool load_font_config();
