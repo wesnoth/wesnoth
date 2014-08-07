@@ -157,7 +157,10 @@ def CheckBoostIostreamsBZip2(context):
         }
         \n"""
 
-    for libbz2 in ["", "bz2"]:
+    # bzip2 library name when it's statically compiled into Boost
+    boostname = "boost_bzip2" + env.get("boost_suffix", "")
+
+    for libbz2 in ["", "bz2", boostname]:
         env.Append(LIBS = [libbz2])
         comment = ""
         if libbz2:
