@@ -48,6 +48,10 @@ Version 1.13.0-dev:
    * Added a new subdialog in Preferences to clean or purge the WML cache.
    * OS X: Fixed mouse tracking issue for retina displays.
 
+ * WML engine:
+   * Added support for a shuffle key in the [music] music to allow selecting 
+     between random and non-random music play (bug #19653)
+
  * Miscellaneous and bug fixes:
    * Dropped support for AmigaOS, BeOS, and OS/2.
    * Fixed halos glitching through locations that become shrouded after the
