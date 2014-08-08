@@ -396,9 +396,9 @@ void connect_engine::start_game(LOAD_USERS load_users)
 		side->resolve_random();
 	}
 
-	// Shuffle sides (check preferences and if it is a re-loaded game).
+	// Shuffle sides (check settings and if it is a re-loaded game).
 	// Must be done after resolve_random() or shuffle sides, or they won't work.
-	if (preferences::shuffle_sides() && !(level_.child("snapshot") &&
+	if (state_.mp_settings().shuffle_sides && !(level_.child("snapshot") &&
 		level_.child("snapshot").child("side"))) {
 
 		// Only playable sides should be shuffled.
