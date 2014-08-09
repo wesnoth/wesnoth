@@ -1591,6 +1591,18 @@ void display::draw_panel_image(SDL_Rect *clip)
 }
 #endif
 
+#ifdef SDL_GPU
+static void draw_background(CVideo &video, const SDL_Rect& area, const std::string& image)
+{
+	sdl::timage img(image::get_texture(image));
+	if (img.null()) {
+		return;
+	}
+	img.set_wrap(GPU_WRAP_REPEAT, GPU_WRAP_REPEAT);
+	img.set_clip(sdl::create_rect(0, 0, area.w, area.h));
+	video.draw_texture(img, area.x, area.y);
+}
+#else
 static void draw_background(surface screen, const SDL_Rect& area, const std::string& image)
 {
 	const surface background(image::get_image(image));
@@ -1610,6 +1622,7 @@ static void draw_background(surface screen, const SDL_Rect& area, const std::str
 		}
 	}
 }
+#endif
 
 //TODO: convert this to use sdl::ttexture
 void display::draw_text_in_hex(const map_location& loc,
@@ -1787,9 +1800,13 @@ void display::draw_init()
 	if(redraw_background_) {
 		// Full redraw of the background
 		const SDL_Rect clip_rect = map_outside_area();
+#ifdef SDL_GPU
+		draw_background(screen_, clip_rect, theme_.border().background_image);
+#else
 		const surface screen = get_screen_surface();
 		clip_rect_setter set_clip_rect(screen, &clip_rect);
 		draw_background(screen, clip_rect, theme_.border().background_image);
+#endif
 		update_rect(clip_rect);
 
 		redraw_background_ = false;
