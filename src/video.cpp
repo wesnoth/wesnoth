@@ -518,14 +518,24 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 
 	flags = get_flags(flags);
 	const int res = SDL_VideoModeOK( x, y, bits_per_pixel, flags );
+	const bool toggle_fullscreen = ((flags & FULL_SCREEN) != 0) != fullScreen;
 
 	if( res == 0 )
 		return 0;
 
 	fullScreen = (flags & FULL_SCREEN) != 0;
-	frameBuffer = SDL_SetVideoMode( x, y, bits_per_pixel, flags );
 #ifdef SDL_GPU
+	frameBuffer = SDL_CreateRGBSurface(SDL_SWSURFACE, x, y, 32,
+									 0x00ff0000,
+									 0x0000ff00,
+									 0x000000ff,
+									 0xff000000);
 	GPU_SetWindowResolution(x, y);
+	if (toggle_fullscreen) {
+		GPU_ToggleFullscreen(1);
+	}
+#else
+	frameBuffer = SDL_SetVideoMode( x, y, bits_per_pixel, flags );
 #endif
 
 	if( frameBuffer != NULL ) {
@@ -544,12 +554,20 @@ bool CVideo::modeChanged()
 
 int CVideo::getx() const
 {
+#ifdef SDL_GPU
+	return GPU_GetContextTarget()->w;
+#else
 	return frameBuffer->w;
+#endif
 }
 
 int CVideo::gety() const
 {
+#ifdef SDL_GPU
+	return GPU_GetContextTarget()->h;
+#else
 	return frameBuffer->h;
+#endif
 }
 
 void CVideo::flip()

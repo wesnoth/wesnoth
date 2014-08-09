@@ -183,7 +183,7 @@ private:
 
 	void initSDL();
 #ifdef SDL_GPU
-	sdl::shader_program shader_;
+	sdl::shader_program shader_; 
 #endif
 
 	bool mode_changed_;
