@@ -160,6 +160,7 @@ std::vector<std::string> played_before;
 std::vector<sound::music_track> current_track_list;
 sound::music_track current_track;
 sound::music_track last_track;
+unsigned int current_track_index = 0;
 
 }
 
@@ -224,17 +225,25 @@ static const sound::music_track &choose_track()
 {
 	assert(!current_track_list.empty());
 
-	unsigned int track = 0;
+	if (current_track_index == current_track_list.size()) {
+		current_track_index = 0;
+	}
 
-	if (current_track_list.size() > 1) {
-		do {
-			track = rand()%current_track_list.size();
-		} while (!track_ok( current_track_list[track].file_path() ));
+	if (current_track_list[current_track_index].shuffle()) {
+		unsigned int track = 0;
+
+		if (current_track_list.size() > 1) {
+			do {
+				track = rand()%current_track_list.size();
+			} while (!track_ok( current_track_list[track].file_path() ));
+		}
+
+		current_track_index = track;
 	}
 
 	//LOG_AUDIO << "Next track will be " << current_track_list[track].file_path() << "\n";
-	played_before.push_back( current_track_list[track].file_path() );
-	return current_track_list[track];
+	played_before.push_back( current_track_list[current_track_index].file_path() );
+	return current_track_list[current_track_index++];
 }
 
 static std::string pick_one(const std::string &files)

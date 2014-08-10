@@ -121,6 +121,8 @@ Version 1.13.0-dev:
      resolution for OS X to 800 x 600 (bug #20332).
    * added [effect] apply_to=fearless/healthy which is now used by healty/fearless 
      traits instead of hardcoding the id of those traits in c++.
+   * added support for a shuffle key in the [music] music to allow selecting 
+     between random and non-random music play (bug #19653)
  * Miscellaneous and bug fixes:
    * replace 'fight_on_without_leader'=yes/no with defeat_condition=no_leader/
      no_units/always/never which allows the wml developer to decide when a side
