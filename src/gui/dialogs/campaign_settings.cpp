@@ -97,6 +97,7 @@ void tcampaign_settings::update_lists(twindow& window)
 	tlistbox& era_list = find_widget<tlistbox>(&window, "era_list", false);
 	tlistbox& mod_list = find_widget<tlistbox>(&window, "modification_list", false);
 	tlabel& era_label = find_widget<tlabel>(&window, "era_label", false);
+	tlabel& mod_label = find_widget<tlabel>(&window, "mod_label", false);
 
 	era_list.clear();
 
@@ -113,7 +114,7 @@ void tcampaign_settings::update_lists(twindow& window)
 		era_list.select_row(engine_.current_era_index());
 	}
 	else {
-		era_label.set_label(_("Era:\nNot allowed"));
+		era_label.set_label(_("Era:\n\nNot allowed."));
 		era_list.set_active(false);
 	}
 
@@ -136,6 +137,10 @@ void tcampaign_settings::update_lists(twindow& window)
 				!= enabled.end());
 
 			++i;
+		}
+		if (i == 0) {
+			mod_label.set_label(_("Modifications:\n\nNone found."));
+			mod_list.set_active(false);
 		}
 	}
 }
