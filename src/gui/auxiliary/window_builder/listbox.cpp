@@ -205,6 +205,10 @@ twidget* tbuilder_listbox::build() const
  *                                     must have the same number of columns as
  *                                     the 'list_definition'. $
  *
+ *     has_minimum & bool & true &     If false, less than one row can be selected. $
+ *
+ *     has_maximum & bool & true &     If false, more than one row can be selected. $
+ *
  * @end{table}
  * @begin{tag}{name="header"}{min=0}{max=1}{super="gui/window/resolution/grid"}
  * @end{tag}{name="header"}
