@@ -76,6 +76,28 @@ else (SDL_gpu_DISABLE_OPENGL)
 	if (SDL_gpu_DISABLE_OPENGL_4)
 		add_definitions("-DSDL_GPU_DISABLE_OPENGL_4")
 	endif (SDL_gpu_DISABLE_OPENGL_4)
+
+	# If glew is not found here, we’ll use the bundled version
+	find_package(GLEW)
+        if(NOT GLEW_FOUND)
+          message(" Using bundled version of GLEW")
+        endif(NOT GLEW_FOUND)
+        
+        
+	if (NOT SDL_gpu_DISABLE_OPENGL)
+		if(GLEW_FOUND)
+			# Look in the GL subdirectory, too.
+			foreach(GL_DIR ${GLEW_INCLUDE_DIRS})
+				set(GLEW_GL_DIRS ${GLEW_GL_DIRS} "${GL_DIR}/GL")
+			endforeach(GL_DIR ${GLEW_INCLUDE_DIRS})
+			
+			include_directories(${GLEW_INCLUDE_DIRS} ${GLEW_GL_DIRS})
+			link_libraries (${GLEW_LIBRARIES})
+		else(GLEW_FOUND)
+			SET(SDL_gpu_SRCS ${SDL_gpu_SRCS} externals/glew/glew.c)
+			SET(SDL_gpu_HDRS ${SDL_gpu_HDRS} externals/glew/glew.h externals/glew/glxew.h externals/glew/wglew.h)
+		endif(GLEW_FOUND)
+	endif(NOT SDL_gpu_DISABLE_OPENGL)
 	
 endif (SDL_gpu_DISABLE_OPENGL)
 
@@ -99,6 +121,17 @@ else (SDL_gpu_DISABLE_GLES)
 	endif (SDL_gpu_DISABLE_GLES_3)
 	
 endif (SDL_gpu_DISABLE_GLES)
+
+# If stb-image is not found here, we’ll use the bundled version
+find_package(STBI)
+if(NOT STBI_FOUND)
+  message(" Using bundled version of stb-image")
+endif(NOT STBI_FOUND)
+
+find_package(STBI_write)
+if(NOT STBI_WRITE_FOUND)
+  message(" Using bundled version of stb-image-write")
+endif(NOT STBI_WRITE_FOUND)
 
 if(NOT WIN32)
   find_library(M_LIB m)
