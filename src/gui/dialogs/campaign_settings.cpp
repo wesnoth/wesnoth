@@ -30,6 +30,48 @@
 namespace gui2
 {
 
+/*WIKI
+ * @page = GUIWindowDefinitionWML
+ * @order = 2_campaign_settings
+ *
+ * == Campaign settings ==
+ *
+ * This shows the dialog which allows the user to select an era
+ * and modifications for the selected campaign, and to show
+ * dialogs for additional level configuration.
+ *
+ * @begin{table}{dialog_widgets}
+ *
+ * title & & label & m &
+ *         Dialog title label. $
+ *
+ * mp_configure & & toggle_button & m &
+ *         Option to show the multiplayer configure dialog. $
+ *
+ * mp_connect & & toggle_button & m &
+ *         Option to show the multiplayer connect dialog. $
+ *
+ * era_label & & label & m &
+ *         The label for the era list. $
+ *
+ * era_list & & listbox & m &
+ *         List of available eras. $
+ *
+ * -era & & label & o &
+ *         The name of the era. One can be selected at a time. $
+ *
+ * mod_label & & label & m &
+ *         The label for the modification list. $
+ *
+ * modification_list & & listbox & m &
+ *         List of available modifications. $
+ *
+ * -mod & & toggle_button & o &
+ *         The name of the modification. Each can be enabled or disabled. $
+ *
+ * @end{table}
+ */
+
 REGISTER_DIALOG(campaign_settings)
 
 tcampaign_settings::tcampaign_settings(ng::create_engine& eng)
