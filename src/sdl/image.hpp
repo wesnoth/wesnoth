@@ -254,6 +254,8 @@ public:
 
 	timage clone() const;
 
+	GPU_Image *raw() const;
+
 private:
 	/** The texture itself. */
 	GPU_Image *image_;

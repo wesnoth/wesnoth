@@ -387,6 +387,11 @@ timage timage::clone() const
 	return res;
 }
 
+GPU_Image *timage::raw() const
+{
+	return image_;
+}
+
 }
 
 #endif
