@@ -16,6 +16,7 @@
 #ifdef SDL_GPU
 
 #include "gpu.hpp"
+#include "image.hpp"
 #include <string>
 #include <vector>
 #include <boost/noncopyable.hpp>
@@ -27,6 +28,8 @@
 #define SHADER_EFFECT_GRAYSCALE 4
 
 namespace sdl {
+
+class timage;
 
 class shader_program
 {
@@ -44,11 +47,16 @@ public:
 	void set_color_mod(int r, int g, int b, int a);
 	void set_submerge(float val);
 	void set_effects(int effects);
+	void set_overlay(const sdl::timage &img);
 
 private:
 	Uint32 program_object_, vertex_object_, fragment_object_;
 	GPU_ShaderBlock block_;
 	int attr_color_mod_, attr_submerge_, attr_effects_;
+	int uni_overlay_;
+	// we need to retain a copy of the overlay texture to prevent it from
+	// getting deleted
+	sdl::timage overlay_image_;
 	unsigned *refcount_;
 };
 

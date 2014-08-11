@@ -16,6 +16,7 @@ uniform mat4 model_view_proj;
 
 out vec4 frag_color_mod;
 out vec2 frag_texture_pos;
+out vec2 frag_overlay_pos;
 out float frag_submerge;
 out vec4 frag_draw_color;
 flat out int frag_effects;
@@ -35,4 +36,6 @@ void main()
 	frag_submerge = vert_submerge;
 	frag_effects = vert_effects;
 	gl_Position = model_view_proj * vec4(vert_vertex, 1.0);
+	frag_overlay_pos = vec4(model_view_proj * vec4(vert_vertex, 1.0)).xy/2 + 0.5;
+	frag_overlay_pos.y = 1 - frag_overlay_pos.y;
 }

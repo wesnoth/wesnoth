@@ -14,6 +14,8 @@
 
 #include "shader.hpp"
 #include <iostream>
+#include "image.hpp"
+#include "../image.hpp"
 
 #ifdef SDL_GPU
 namespace sdl
@@ -26,6 +28,9 @@ shader_program::shader_program(const std::string &vsrc, const std::string &fsrc)
 	, block_()
 	, attr_color_mod_(0)
 	, attr_submerge_(0)
+	, attr_effects_(0)
+	, uni_overlay_(0)
+	, overlay_image_()
 	, refcount_(new unsigned(1))
 {
 	vertex_object_ = GPU_LoadShader(GPU_VERTEX_SHADER, vsrc.c_str());
@@ -49,6 +54,7 @@ shader_program::shader_program(const std::string &vsrc, const std::string &fsrc)
 											  "vert_submerge");
 	attr_effects_ = GPU_GetAttributeLocation(program_object_,
 											 "vert_effects");
+	uni_overlay_ = GPU_GetUniformLocation(program_object_, "overlay");
 
 	set_color_mod(0, 0, 0, 0);
 	set_submerge(0);
@@ -63,6 +69,8 @@ shader_program::shader_program()
 	, attr_color_mod_(0)
 	, attr_submerge_(0)
 	, attr_effects_(0)
+	, uni_overlay_(0)
+	, overlay_image_()
 	, refcount_(new unsigned(1))
 {}
 
@@ -85,6 +93,8 @@ shader_program::shader_program(const shader_program &prog)
 	, attr_color_mod_(prog.attr_color_mod_)
 	, attr_submerge_(prog.attr_submerge_)
 	, attr_effects_(prog.attr_effects_)
+	, uni_overlay_(prog.uni_overlay_)
+	, overlay_image_(prog.overlay_image_)
 	, refcount_(prog.refcount_)
 {
 	(*refcount_)++;
@@ -106,6 +116,9 @@ void shader_program::activate()
 								 "vert_texture_pos", "vert_draw_color",
 								 "model_view_proj");
 	GPU_ActivateShaderProgram(program_object_, &block_);
+	//NOTE: this line can be removed once we made sure that a sane overlay
+	//      will be set before rendering anything.
+	set_overlay(image::get_texture("misc/blank.png"));
 }
 
 void shader_program::deactivate()
@@ -134,6 +147,12 @@ void shader_program::set_submerge(float val)
 void shader_program::set_effects(int effects)
 {
 	GPU_SetAttributei(attr_effects_, effects);
+}
+
+void shader_program::set_overlay(const timage &img)
+{
+	overlay_image_ = img;
+	GPU_SetShaderImage(img.raw(), uni_overlay_, 1);
 }
 
 shader_error::shader_error(const std::string &op)
