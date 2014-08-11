@@ -208,7 +208,8 @@ void GPU_AddWindowMapping(GPU_Target* target)
     {
         if(window_mappings[i].windowID == windowID)
         {
-            GPU_PushErrorCode(__func__, GPU_ERROR_DATA_ERROR, "WindowID %u already has a mapping.", windowID);
+            if(window_mappings[i].target != target)
+                GPU_PushErrorCode(__func__, GPU_ERROR_DATA_ERROR, "WindowID %u already has a mapping.", windowID);
             return;
         }
         // Don't check the target because it's okay for a single target to be used with multiple windows
@@ -374,6 +375,8 @@ GPU_Target* GPU_InitRendererByID(GPU_RendererID renderer_request, Uint16 w, Uint
 	if(screen == NULL)
     {
         // Init failed, destroy the renderer...
+        // Erase the window mappings
+        num_window_mappings = 0;
         GPU_CloseCurrentRenderer();
     }
     else

@@ -223,9 +223,9 @@ static void init_features(GPU_Renderer* renderer)
 	// Disable other texture formats for GLES.
 	// TODO: Add better (static) checking for format support.  Some GL versions do not report previously non-core features as extensions.
 	#ifdef SDL_GPU_USE_GLES
-		renderer->enabled_features &= !GPU_FEATURE_GL_BGR;
-		renderer->enabled_features &= !GPU_FEATURE_GL_BGRA;
-		renderer->enabled_features &= !GPU_FEATURE_GL_ABGR;
+		renderer->enabled_features &= ~GPU_FEATURE_GL_BGR;
+		renderer->enabled_features &= ~GPU_FEATURE_GL_BGRA;
+		renderer->enabled_features &= ~GPU_FEATURE_GL_ABGR;
 	#endif
 
     if(isExtensionSupported("GL_ARB_fragment_shader"))
@@ -300,7 +300,14 @@ static Uint8 bindFramebuffer(GPU_Renderer* renderer, GPU_Target* target)
     }
     else
     {
-        return (target != NULL && ((GPU_TARGET_DATA*)target->data)->handle == 0);
+        // There's only one possible render target, the default framebuffer.
+        // Note: Could check against the default framebuffer value (((GPU_TARGET_DATA*)target->data)->handle versus result of GL_FRAMEBUFFER_BINDING)...
+        if(target != NULL)
+        {
+            ((GPU_CONTEXT_DATA*)renderer->current_context_target->context->data)->last_target = target;
+            return 1;
+        }
+        return 0;
     }
 }
 
@@ -1037,9 +1044,7 @@ static GPU_Target* CreateTargetFromWindow(GPU_Renderer* renderer, Uint32 windowI
     if (GLEW_OK != err)
     {
         // Probably don't have the right GL version for this renderer
-        if(renderer->current_context_target == target)
-            renderer->current_context_target = NULL;
-        // FIXME: Free what we've just allocated.
+        target->context->failed = 1;
         return NULL;
     }
     #endif
@@ -1087,6 +1092,7 @@ static GPU_Target* CreateTargetFromWindow(GPU_Renderer* renderer, Uint32 windowI
 		#ifdef SDL_GPU_USE_GLES
             GPU_PushErrorCode("GPU_CreateTargetFromWindow", GPU_ERROR_BACKEND_ERROR, "Renderer version (%d) is incompatible with the available OpenGL runtime library version (%d).", renderer->requested_id.major_version, renderer->id.major_version);
 		#endif
+        target->context->failed = 1;
         return NULL;
     }
 
@@ -1096,6 +1102,7 @@ static GPU_Target* CreateTargetFromWindow(GPU_Renderer* renderer, Uint32 windowI
     if(!renderer->IsFeatureEnabled(renderer, required_features))
     {
         GPU_PushErrorCode("GPU_CreateTargetFromWindow", GPU_ERROR_BACKEND_ERROR, "Renderer does not support required features.");
+        target->context->failed = 1;
         return NULL;
     }
     
@@ -1157,6 +1164,7 @@ static GPU_Target* CreateTargetFromWindow(GPU_Renderer* renderer, Uint32 windowI
     if(!v)
     {
         GPU_PushErrorCode("GPU_CreateTargetFromWindow", GPU_ERROR_BACKEND_ERROR, "Failed to load default textured vertex shader.");
+        target->context->failed = 1;
         return NULL;
     }
     
@@ -1165,6 +1173,7 @@ static GPU_Target* CreateTargetFromWindow(GPU_Renderer* renderer, Uint32 windowI
     if(!f)
     {
         GPU_PushErrorCode("GPU_CreateTargetFromWindow", GPU_ERROR_BACKEND_ERROR, "Failed to load default textured fragment shader.");
+        target->context->failed = 1;
         return NULL;
     }
     
@@ -1173,6 +1182,7 @@ static GPU_Target* CreateTargetFromWindow(GPU_Renderer* renderer, Uint32 windowI
     if(!p)
     {
         GPU_PushErrorCode("GPU_CreateTargetFromWindow", GPU_ERROR_BACKEND_ERROR, "Failed to link default textured shader program.");
+        target->context->failed = 1;
         return NULL;
     }
     
@@ -1189,6 +1199,7 @@ static GPU_Target* CreateTargetFromWindow(GPU_Renderer* renderer, Uint32 windowI
     if(!v)
     {
         GPU_PushErrorCode("GPU_CreateTargetFromWindow", GPU_ERROR_BACKEND_ERROR, "Failed to load default untextured vertex shader.");
+        target->context->failed = 1;
         return NULL;
     }
     
@@ -1197,6 +1208,7 @@ static GPU_Target* CreateTargetFromWindow(GPU_Renderer* renderer, Uint32 windowI
     if(!f)
     {
         GPU_PushErrorCode("GPU_CreateTargetFromWindow", GPU_ERROR_BACKEND_ERROR, "Failed to load default untextured fragment shader.");
+        target->context->failed = 1;
         return NULL;
     }
     
@@ -1205,6 +1217,7 @@ static GPU_Target* CreateTargetFromWindow(GPU_Renderer* renderer, Uint32 windowI
     if(!p)
     {
         GPU_PushErrorCode("GPU_CreateTargetFromWindow", GPU_ERROR_BACKEND_ERROR, "Failed to link default untextured shader program.");
+        target->context->failed = 1;
         return NULL;
     }
     
@@ -2905,6 +2918,36 @@ static void FreeTarget(GPU_Renderer* renderer, GPU_Target* target)
     if(target->refcount > 1)
     {
         target->refcount--;
+        return;
+    }
+    
+    if(target->context != NULL && target->context->failed)
+    {
+        GPU_CONTEXT_DATA* cdata = (GPU_CONTEXT_DATA*)target->context->data;
+        
+        if(target == renderer->current_context_target)
+            renderer->current_context_target = NULL;
+        
+        free(cdata->blit_buffer);
+        free(cdata->index_buffer);
+        
+        #ifdef SDL_GPU_USE_SDL2
+        if(target->context->context != 0)
+            SDL_GL_DeleteContext(target->context->context);
+        #endif
+        
+        // Remove all of the window mappings that refer to this target
+        GPU_RemoveWindowMappingByTarget(target);
+        
+        free(target->context->data);
+        free(target->context);
+        
+        // Does the renderer data need to be freed too?
+        data = ((GPU_TARGET_DATA*)target->data);
+        
+        free(data);
+        free(target);
+        
         return;
     }
     
