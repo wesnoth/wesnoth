@@ -463,6 +463,13 @@ void play_controller::fire_start(bool execute){
 		// start event may modify start turn with WML, reflect any changes.
 		start_turn_ = turn();
 		gamestate_.gamedata_.get_variable("turn_number") = int(start_turn_);
+
+		// prestart event may modify the initial gold amount, reflect any changes.
+		BOOST_FOREACH(team& tm, gamestate_.board_.teams_)
+		{
+			tm.set_start_gold(tm.gold());
+		}
+
 	} else {
 		it_is_a_new_turn_ = false;
 	}

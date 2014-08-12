@@ -188,6 +188,7 @@ public:
 	void new_turn() { gold_ += total_income(); }
 	void get_shared_maps();
 	void set_gold(int amount) { gold_ = amount; }
+	void set_start_gold(const int amount) { info_.start_gold = amount; }
 	void spend_gold(const int amount) { gold_ -= amount; }
 	void set_gold_add(bool b) {info_.gold_add = b; }
 	void set_base_income(int amount) { info_.income = amount - game_config::base_income; }
