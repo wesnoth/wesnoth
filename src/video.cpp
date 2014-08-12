@@ -535,7 +535,9 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 
 	flags = get_flags(flags);
 	const int res = SDL_VideoModeOK( x, y, bits_per_pixel, flags );
+#ifdef SDL_GPU
 	const bool toggle_fullscreen = ((flags & FULL_SCREEN) != 0) != fullScreen;
+#endif
 
 	if( res == 0 )
 		return 0;
