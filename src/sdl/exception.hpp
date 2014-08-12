@@ -39,10 +39,12 @@ struct texception : public game::error
 	texception(const std::string& operation, const bool use_sdl_error);
 };
 
+#ifdef SDL_GPU
 struct tgpu_exception : public game::error
 {
 	tgpu_exception(const std::string &op, const bool fetch_error_msg);
 };
+#endif
 
 } // namespace sdl
 
