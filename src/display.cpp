@@ -2241,6 +2241,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 	}
 	scroll_event_.notify_observers();
 #ifdef SDL_GPU
+	screen_.clear_overlay();
 	invalidate_all();
 #else
 	update_rect(map_area());

@@ -426,6 +426,23 @@ void CVideo::set_texture_effects(int effects)
 {
 	shader_.set_effects(effects);
 }
+
+void CVideo::blit_to_overlay(surface surf, int x, int y)
+{
+	SDL_Rect r = sdl::create_rect(x, y, surf->w, surf->h);
+	SDL_BlitSurface(surf, NULL, overlay_, &r);
+}
+
+void CVideo::clear_overlay_area(SDL_Rect area)
+{
+	//TODO: proper implementation
+	sdl::fill_rect(overlay_, &area, 0xFF000000);
+}
+
+void CVideo::clear_overlay()
+{
+	overlay_ = create_compatible_surface(overlay_, getx(), gety());
+}
 #endif
 
 void CVideo::make_fake()
@@ -525,11 +542,17 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 
 	fullScreen = (flags & FULL_SCREEN) != 0;
 #ifdef SDL_GPU
+	//NOTE: this surface is in fact unused now. Can be removed when possible.
 	frameBuffer = SDL_CreateRGBSurface(SDL_SWSURFACE, x, y, 32,
 									 0x00ff0000,
 									 0x0000ff00,
 									 0x000000ff,
 									 0xff000000);
+	overlay_ = SDL_CreateRGBSurface(SDL_SWSURFACE, x, y, 32,
+									0x00ff0000,
+									0x0000ff00,
+									0x000000ff,
+									0xff000000);
 	GPU_SetWindowResolution(x, y);
 	if (toggle_fullscreen) {
 		GPU_ToggleFullscreen(1);
@@ -576,6 +599,8 @@ void CVideo::flip()
 		return;
 #ifdef SDL_GPU
 	assert(render_target_);
+	sdl::timage img(overlay_);
+	shader_.set_overlay(img);
 	GPU_Flip(render_target_);
 #else
 #if !SDL_VERSION_ATLEAST(2, 0, 0)

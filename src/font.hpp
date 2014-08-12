@@ -161,7 +161,7 @@ public:
 #endif
 	void undraw(surface screen);
 
-#ifdef SDL_GPU
+#if 0
 	sdl::timage create_image();
 #else
 	surface create_surface();
@@ -176,7 +176,7 @@ public:
 private:
 
 	int xpos(size_t width) const;
-#ifdef SDL_GPU
+#if 0
 	sdl::timage img_;
 #else
 	surface surf_, buf_;

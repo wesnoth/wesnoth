@@ -918,7 +918,7 @@ std::stack<std::set<int> > label_contexts;
 namespace font {
 
 floating_label::floating_label(const std::string& text)
-#ifdef SDL_GPU
+#if 0
 		: img_(),
 #else
 		: surf_(NULL), buf_(NULL),
@@ -952,7 +952,7 @@ int floating_label::xpos(size_t width) const
 	return xpos;
 }
 
-#ifdef SDL_GPU
+#if 0
 sdl::timage floating_label::create_image()
 {
 	if (img_.null()) {
@@ -1108,13 +1108,21 @@ void floating_label::draw(CVideo &video)
 	if (!visible_) {
 		return;
 	}
-
+#if 0
 	create_image();
 	if (img_.null()) {
 		return;
 	}
 
 	video.draw_texture(img_, xpos(img_.width()), int(ypos_));
+#else
+	create_surface();
+	if (surf_.null()) {
+		return;
+	}
+
+	video.blit_to_overlay(surf_, xpos(surf_->w), int(ypos_));
+#endif
 }
 #else
 void floating_label::draw(surface screen)
@@ -1149,7 +1157,7 @@ void floating_label::draw(surface screen)
 }
 #endif
 
-#ifdef SDL_GPU
+#if 0
 // No undrawing for SDL_gpu, it won't be necessary once z-order is implemented
 void floating_label::undraw(surface) {}
 #else
@@ -1228,7 +1236,7 @@ void show_floating_label(int handle, bool value)
 SDL_Rect get_floating_label_rect(int handle)
 {
 	const label_map::iterator i = labels.find(handle);
-#ifdef SDL_GPU
+#if 0
 	if(i != labels.end()) {
 		const sdl::timage img = i->second.create_image();
 		if(!img.null()) {
