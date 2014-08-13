@@ -20,6 +20,7 @@
 
 #include "save_index.hpp"
 #include "carryover.hpp"
+#include "configure_engine.hpp"
 #include "dialogs.hpp" //FIXME: get rid of this as soon as the two remaining dialogs are moved to gui2
 #include "format_time_summary.hpp"
 #include "formula_string_utils.hpp"
@@ -795,6 +796,14 @@ static void convert_old_saves_1_13_0(config& cfg)
 		{
 			cfg.remove_child("carryover_sides_start", 0);
 		}
+	}
+
+	if(!cfg.has_child("multiplayer")) {
+		saved_game tmp(cfg);
+		ng::configure_engine eng(tmp);
+		eng.set_default_values();
+		tmp.mp_settings().mp_era = "era_blank";
+		cfg.add_child("multiplayer", tmp.mp_settings().to_config());
 	}
 }
 

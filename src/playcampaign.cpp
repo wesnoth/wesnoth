@@ -264,6 +264,8 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 {
 	gamestate.expand_scenario();
 
+	game_classification::CAMPAIGN_TYPE game_type = gamestate.classification().campaign_type;
+
 	while(gamestate.valid())
 	{
 		LEVEL_RESULT res = VICTORY;
@@ -282,17 +284,14 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 
 			config::const_child_itors story = gamestate.get_starting_pos().child_range("story");
 
-			switch (io_type){
-			case IO_NONE:
+			if (game_type != game_classification::MULTIPLAYER) {
 #if !defined(ALWAYS_USE_MP_CONTROLLER)
 				res = playsingle_scenario(game_config, disp, gamestate, story, skip_replay, end_level);
-				break;
+			} else {
 #endif
-			case IO_SERVER:
-			case IO_CLIENT:
 				res = playmp_scenario(game_config, disp, gamestate, story, skip_replay, blindfold_replay, io_type, end_level);
-				break;
 			}
+				
 		} catch(game::load_game_failed& e) {
 			gui2::show_error_message(disp.video(), _("The game could not be loaded: ") + e.message);
 			return QUIT;
@@ -326,7 +325,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		// case defeat is also game end. Someday,
 		// if MP campaigns ever work again, we might
 		// need to change this test.
-		if (res == VICTORY || (io_type != IO_NONE && res == DEFEAT)) {
+		if (res == VICTORY || (game_type == game_classification::MULTIPLAYER && res == DEFEAT)) {
 			if (preferences::delete_saves())
 				savegame::clean_saves(gamestate.classification().label);
 
@@ -384,7 +383,8 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 
 				gamestate.mp_settings().num_turns = starting_pos["turns"].to_int(-1);
 				gamestate.mp_settings().saved_game = false;
-				gamestate.mp_settings().use_map_settings = starting_pos["force_lock_settings"].to_bool();
+				gamestate.mp_settings().use_map_settings
+					= starting_pos["force_lock_settings"].to_bool(game_type != game_classification::MULTIPLAYER);
 
 				ng::connect_engine_ptr
 					connect_engine(new ng::connect_engine(gamestate,
@@ -404,13 +404,6 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 					connect_engine->
 						start_game(ng::connect_engine::FORCE_IMPORT_USERS);
 				}
-			}
-			else if (io_type == IO_NONE && gamestate.valid())
-			{
-				//In case this an mp scenario reloaded by sp this was not already done yet.
-				//We don't need to expand [option]s because [variables] are persitent
-				gamestate.expand_mp_events();
-
 			}
 		}
 
@@ -445,7 +438,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		return QUIT;
 	}
 
-	if (gamestate.classification().campaign_type == game_classification::SCENARIO){
+	if (game_type == game_classification::SCENARIO){
 		if (preferences::delete_saves()) {
 			savegame::clean_saves(gamestate.classification().label);
 		}

@@ -79,7 +79,9 @@ public:
 
 }
 
-static void run_lobby_loop(display& disp, mp::ui& ui)
+namespace mp {
+
+void run_lobby_loop(display& disp, mp::ui& ui)
 {
 	DBG_MP << "running lobby loop" << std::endl;
 	disp.video().modeChanged();
@@ -107,6 +109,8 @@ static void run_lobby_loop(display& disp, mp::ui& ui)
 		disp.delay(20);
 	}
 	font::cache_mode(font::CACHE_GAME);
+}
+
 }
 
 namespace {

@@ -32,6 +32,7 @@ public:
 	enum FORCE_RELOAD_CONFIG { FORCE_RELOAD, NO_FORCE_RELOAD };
 
 	const config& game_config() const { return game_config_; }
+	const preproc_map& old_defines_map() const { return old_defines_map_; }
 
 	bool init_game_config(FORCE_RELOAD_CONFIG force_reload);
 	void reload_changed_game_config();

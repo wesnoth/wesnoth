@@ -26,9 +26,10 @@ namespace gui2
 class tcampaign_selection : public tdialog
 {
 public:
-	explicit tcampaign_selection(const std::vector<ng::create_engine::level_ptr>& campaigns)
-		: campaigns_(campaigns), choice_(-1), deterministic_(false)
-
+	explicit tcampaign_selection(ng::create_engine& eng) :
+		engine_(eng),
+		choice_(-1),
+		deterministic_(false)
 	{
 	}
 
@@ -51,14 +52,15 @@ private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
+	void show_settings(CVideo& video);
+
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 
-	/** Contains the config objects for all campaigns. */
-	const std::vector<ng::create_engine::level_ptr>& campaigns_;
+	ng::create_engine& engine_;
 
 	/** The chosen campaign. */
 	int choice_;

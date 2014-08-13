@@ -27,14 +27,13 @@ class config;
 class CVideo;
 
 enum io_type_t {
-	IO_NONE,
 	IO_SERVER,
 	IO_CLIENT
 };
 
 LEVEL_RESULT play_game(game_display& disp, saved_game& state,
 		const config& game_config,
-		io_type_t io_type=IO_NONE,
+		io_type_t io_type=IO_SERVER,
 		bool skip_replay = false,
 		bool network_game = false,
 		bool blindfold_replay = false,

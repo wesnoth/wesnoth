@@ -4,7 +4,19 @@
 #include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/window.hpp"
+#include "multiplayer.hpp"
+#include "multiplayer_configure.hpp"
+#include "multiplayer_connect.hpp"
+#include "multiplayer_ui.hpp"
+#include "playcampaign.hpp"
 #include "resources.hpp"
+
+namespace {
+
+mp::chat gamechat;
+config gamelist;
+
+}
 
 namespace sp {
 
@@ -32,7 +44,7 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 		// No campaign selected from command line
 		if (jump_to_campaign.campaign_id_.empty() == true)
 		{
-			gui2::tcampaign_selection dlg(campaigns);
+			gui2::tcampaign_selection dlg(create_eng);
 
 			try {
 				dlg.show(disp.video());
@@ -73,8 +85,6 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 			}
 		}
 
-		create_eng.set_current_level(campaign_num);
-
 		std::string random_mode = use_deterministic_mode ? "deterministic" : "";
 		state.classification().random_mode = random_mode;
 
@@ -90,6 +100,7 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 			return enter_create_mode(disp, game_config, state, jump_to_campaign, local_players_only);
 		}
 
+		create_eng.prepare_for_era_and_mods();
 		create_eng.prepare_for_campaign(selected_difficulty);
 
 		if (!jump_to_campaign.scenario_id_.empty())
@@ -107,7 +118,7 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 
 		create_eng.prepare_for_new_level();
 
-		state.mp_settings().mp_era = "era_blank";
+		create_eng.get_parameters();
 
 		configure_canceled = !enter_configure_mode(disp, resources::config_manager->game_config(), state, local_players_only);
 
@@ -119,18 +130,70 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 bool enter_configure_mode(game_display& disp, const config& game_config,
 	saved_game& state, bool local_players_only) {
 
-	ng::configure_engine engine(state);
-	engine.set_default_values();
+	if (state.mp_settings().show_configure) {
+		bool connect_canceled;
+		do{
+			connect_canceled = false;
 
-	return enter_connect_mode(disp, game_config, state, local_players_only);
+			mp::ui::result res;
+
+			{
+				mp::configure ui(disp, game_config, gamechat, gamelist, state, local_players_only);
+				mp::run_lobby_loop(disp, ui);
+				res = ui.get_result();
+				ui.get_parameters();
+			}
+
+			switch (res) {
+			case mp::ui::CREATE:
+				connect_canceled = !enter_connect_mode(disp, game_config, state, local_players_only);
+				break;
+			case mp::ui::QUIT:
+			default:
+				return false;
+			}
+		} while (connect_canceled);
+		return true;
+	} else {
+		ng::configure_engine engine(state);
+		engine.set_default_values();
+		return enter_connect_mode(disp, game_config, state, local_players_only);
+	}
+
 }
 
-bool enter_connect_mode(game_display&, const config&,
+bool enter_connect_mode(game_display& disp, const config& game_config,
 	saved_game& state, bool local_players_only) {
 
-	ng::connect_engine engine(state, local_players_only, true);
-	engine.start_game();
-	return true;
+	ng::connect_engine connect_eng(state, local_players_only, true);
+
+	if (state.mp_settings().show_connect) {
+		mp::ui::result res;
+		gamelist.clear();
+		{
+			mp::connect ui(disp, state.mp_settings().name, game_config, gamechat, gamelist, connect_eng);
+			mp::run_lobby_loop(disp, ui);
+			res = ui.get_result();
+
+			if (res == mp::ui::PLAY) {
+				ui.start_game();
+			}
+		}
+		switch (res) {
+		case mp::ui::PLAY:
+			return true;
+		case mp::ui::CREATE:
+			enter_create_mode(disp, game_config, state, jump_to_campaign_info(false, 0, "", ""), local_players_only);
+			break;
+		case mp::ui::QUIT:
+		default:
+			return false;
+		}
+		return true;
+	} else {
+		connect_eng.start_game();
+		return true;
+	}
 }
 
 } // end namespace sp

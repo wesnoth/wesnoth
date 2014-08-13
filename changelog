@@ -28,6 +28,9 @@ Version 1.13.0-dev:
    * Fix bug in Return Guardian Micro AI when there is no path to the return hex
  * Campaigns:
    * Changed all occurrences of {FLAG_VARIANT ragged} to {FLAG_VARIANT6 ragged}
+   * Singleplayer campaign creation now utilizes the create, configure,
+     and connect engines from the multiplayer codepath.
+   * Eras, mods, and options are now available for sp campaigns.
    * Descent into Darkness:
      * Fixed various issues with player and enemy gold and income in
        'Descent into Darkness'.
@@ -105,6 +108,8 @@ Version 1.13.0-dev:
    * Fixed AI engine names in the MP game setup screen being translated to the
      language selected when Wesnoth was started rather than the current
      language (bug #22092).
+   * Added a new "Advanced Settings" button and dialog to campaign select.
+   * Added new wml attributes to listbox: has_minimum and has_maximum.
  * WML engine:
    * Added customizable recall costs for unit types and individual units,
      using the new recall_cost attribute in [unit_type] and [unit].

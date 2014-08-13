@@ -785,6 +785,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/addon_list.cpp
 	gui/dialogs/campaign_difficulty.cpp
 	gui/dialogs/campaign_selection.cpp
+	gui/dialogs/campaign_settings.cpp
 	gui/dialogs/core_selection.cpp
 	gui/dialogs/chat_log.cpp
 	gui/dialogs/data_manage.cpp

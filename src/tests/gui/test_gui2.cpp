@@ -21,6 +21,7 @@
 #include "filesystem.hpp"
 #include "formula_debugger.hpp"
 #include "gettext.hpp"
+#include "game_classification.hpp"
 #include "game_config.hpp"
 #include "game_display.hpp"
 #include "generators/map_create.hpp"
@@ -29,6 +30,7 @@
 #include "gui/dialogs/addon_list.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
+#include "gui/dialogs/campaign_settings.hpp"
 #include "gui/dialogs/chat_log.hpp"
 #include "gui/dialogs/data_manage.hpp"
 #include "gui/dialogs/debug_clock.hpp"
@@ -74,6 +76,7 @@
 #include "language.hpp"
 #include "create_engine.hpp"
 #include "tests/utils/fake_display.hpp"
+#include "saved_game.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
 
@@ -371,6 +374,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::taddon_list>();
 	test<gui2::tcampaign_difficulty>();
 	test<gui2::tcampaign_selection>();
+	test<gui2::tcampaign_settings>();
 //	test<gui2::tchat_log>(); /** @todo ENABLE */
 	test<gui2::tdata_manage>();
 	test<gui2::tedit_label>();
@@ -499,13 +503,22 @@ struct twrapper<gui2::tcampaign_selection>
 {
 	static gui2::tcampaign_selection* create()
 	{
-		static const config::const_child_itors &ci =
-				main_config.child_range("campaign");
-		static std::vector<ng::create_engine::level_ptr> levels;
-		BOOST_FOREACH(const config& campaign_cfg, ci) {
-			levels.push_back(ng::create_engine::level_ptr(new ng::campaign(campaign_cfg)));
-		}
-		return new gui2::tcampaign_selection(levels);
+		static saved_game state;
+		state.classification().campaign_type = game_classification::SCENARIO;
+		static ng::create_engine ng(test_utils::get_fake_display(-1, -1), state);
+		return new gui2::tcampaign_selection(ng);
+	}
+};
+
+template<>
+struct twrapper<gui2::tcampaign_settings>
+{
+	static gui2::tcampaign_settings* create()
+	{
+		static saved_game state;
+		state.classification().campaign_type = game_classification::SCENARIO;
+		static ng::create_engine ng(test_utils::get_fake_display(-1, -1), state);
+		return new gui2::tcampaign_settings(ng);
 	}
 };
 

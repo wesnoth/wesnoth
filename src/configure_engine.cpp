@@ -131,7 +131,8 @@ bool configure_engine::shroud_game_default() const {
 		preferences::shroud();
 }
 bool configure_engine::allow_observers_default() const {
-	return preferences::allow_observers();
+	return preferences::allow_observers() &&
+			state_.classification().campaign_type != game_classification::SCENARIO;
 }
 bool configure_engine::shuffle_sides_default() const {
 	return preferences::shuffle_sides();

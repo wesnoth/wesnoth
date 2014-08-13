@@ -48,6 +48,8 @@ struct tbuilder_listbox : public tbuilder_control
 	 * serialize the data in the config, so the config is no longer required.
 	 */
 	std::vector<string_map> list_data;
+
+	bool has_minimum_, has_maximum_;
 };
 
 } // namespace implementation

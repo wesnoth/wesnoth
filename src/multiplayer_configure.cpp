@@ -171,6 +171,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 
 	observers_game_.set_check(engine_.allow_observers_default());
 	observers_game_.set_help_string(_("Allow users who are not playing to watch the game"));
+	observers_game_.enable(state_.classification().campaign_type != game_classification::SCENARIO);
 
 	shuffle_sides_.set_check(engine_.shuffle_sides_default());
 	shuffle_sides_.set_help_string(_("Assign sides to players at random"));
@@ -228,7 +229,6 @@ configure::~configure()
 
 	// Save values for next game
 	DBG_MP << "storing parameter values in preferences" << std::endl;
-	preferences::set_allow_observers(engine_.allow_observers());
 	preferences::set_shuffle_sides(engine_.shuffle_sides());
 	preferences::set_use_map_settings(engine_.use_map_settings());
 	preferences::set_countdown(engine_.mp_countdown());
@@ -237,6 +237,9 @@ configure::~configure()
 	preferences::set_countdown_reservoir_time(engine_.mp_countdown_reservoir_time());
 	preferences::set_countdown_action_bonus(engine_.mp_countdown_action_bonus());
 	preferences::set_options(engine_.options());
+	// don't set observers preference if disabled (for singleplayer)
+	if (observers_game_.enabled())
+		preferences::set_allow_observers(engine_.allow_observers());
 
 	// When using map settings, the following variables are determined by the map,
 	// so don't store them as the new preferences.
