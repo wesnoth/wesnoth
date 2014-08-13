@@ -195,7 +195,8 @@ void saved_game::write_carryover(config_writer& out) const
 void saved_game::write_general_info(config_writer& out) const
 {
 	out.write(classification_.to_config());
-	if (classification_.campaign_type == game_classification::MULTIPLAYER) {
+	if (classification_.campaign_type == game_classification::MULTIPLAYER
+			|| classification_.campaign_type == game_classification::SCENARIO) {
 		out.write_child("multiplayer", mp_settings_.to_config());
 	}
 }
