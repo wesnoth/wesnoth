@@ -140,6 +140,8 @@ public:
 	tcontrol* inspector_name;
 	tbutton* copy_button;
 
+	static const unsigned int max_inspect_win_len = 20000;
+
 
 	void clear_stuff_list()
 	{
@@ -175,13 +177,17 @@ public:
 	}
 
 
-	void set_inspect_window_text(const std::string& s)
+	void set_inspect_window_text(const std::string& s, const unsigned int page = 0)
 	{
-		std::string s_ = s;
-		if(s_.length() > 20000) { // workaround for known bug
-			s_.resize(20000);
-		}
+		unsigned int reminder = (s.length() - (max_inspect_win_len * page));
+		std::string s_ = s.substr(max_inspect_win_len * page, reminder > max_inspect_win_len ? max_inspect_win_len : reminder);
 		inspect->set_label(s_);
+	}
+
+
+	unsigned int get_num_page(const std::string& s)
+	{
+		return (s.length() / max_inspect_win_len) + (s.length() % max_inspect_win_len > 0 ? 1 : 0);
 	}
 };
 
@@ -235,7 +241,12 @@ public:
 
 		FOREACH(const AUTO & c, vars.all_children_range())
 		{
-			model_.add_row_to_stuff_list("[" + c.key + "]", "[" + c.key + "]");
+			unsigned int numPages = model_.get_num_page(config_to_string(c.cfg));
+			for (unsigned int i = 0; i < numPages; i++) {
+				std::ostringstream curStr;
+                curStr << "[" << c.key << "] " << (i + 1) << "/" << numPages;
+				model_.add_row_to_stuff_list(curStr.str(), curStr.str());
+			}
 		}
 
 		model_.set_inspect_window_text("");
@@ -265,11 +276,13 @@ public:
 
 		FOREACH(const AUTO & c, vars.all_children_range())
 		{
-			if(selected == i) {
-				model_.set_inspect_window_text(config_to_string(c.cfg));
-				return;
+			for (unsigned int j = 0; j < model_.get_num_page(config_to_string(c.cfg)); j++) {
+				if (selected == i) {
+					model_.set_inspect_window_text(config_to_string(c.cfg), j);
+					return;
+				}
+				i++;
 			}
-			i++;
 		}
 	}
 
