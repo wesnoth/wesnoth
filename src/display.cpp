@@ -1456,8 +1456,11 @@ void display::update_display()
 
 	flip();
 }
-
-static void draw_panel(surface& target, const theme::panel& panel, std::vector<gui::button>& /*buttons*/)
+#ifdef SDL_GPU
+static void draw_panel(surface &target, const theme::panel& panel, std::vector<gui::button>& /*buttons*/)
+#else
+static void draw_panel(CVideo &video, const theme::panel& panel, std::vector<gui::button>& /*buttons*/)
+#endif
 {
 	//log_scope("draw panel");
 	DBG_DP << "drawing panel " << panel.get_id() << "\n";
@@ -1474,9 +1477,12 @@ static void draw_panel(surface& target, const theme::panel& panel, std::vector<g
 		if(surf->w != loc.w || surf->h != loc.h) {
 			surf.assign(tile_surface(surf,loc.w,loc.h));
 		}
-
+#ifdef SDL_GPU
 		blit_surface(surf, NULL, target, &loc);
+#else
+		video.blit_surface(loc.x, loc.y, surf);
 		update_rect(loc);
+#endif
 	}
 }
 
@@ -1552,7 +1558,7 @@ void display::draw_all_panels()
 
 	const std::vector<theme::panel>& panels = theme_.panels();
 	for(std::vector<theme::panel>::const_iterator p = panels.begin(); p != panels.end(); ++p) {
-		draw_panel(screen, *p, menu_buttons_);
+		draw_panel(video(), *p, menu_buttons_);
 	}
 
 	const std::vector<theme::label>& labels = theme_.labels();
