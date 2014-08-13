@@ -284,11 +284,12 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 
 			config::const_child_itors story = gamestate.get_starting_pos().child_range("story");
 
-			if (game_type != game_classification::MULTIPLAYER) {
 #if !defined(ALWAYS_USE_MP_CONTROLLER)
+			if (game_type != game_classification::MULTIPLAYER) {
 				res = playsingle_scenario(game_config, disp, gamestate, story, skip_replay, end_level);
-			} else {
+			} else 
 #endif
+			{
 				res = playmp_scenario(game_config, disp, gamestate, story, skip_replay, blindfold_replay, io_type, end_level);
 			}
 				
