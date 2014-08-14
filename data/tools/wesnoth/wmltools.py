@@ -77,12 +77,51 @@ class Forest:
         "Get the names of all files under dirpath, ignoring version-control directories."
         self.forest = []
         self.dirpath = dirpath
+        roots = ["campaigns", "add-ons"]
         for dir in dirpath:
             subtree = []
+            rooted = False
             if os.path.isdir(dir):	# So we skip .cfgs in a UMC mirror
-                os.path.walk(dir,
-                         lambda arg, dir, names: subtree.extend([os.path.normpath(os.path.join(dir, x)) for x in names]),
-                         None)
+                oldmain = os.path.join(os.path.dirname(dir), os.path.basename(dir) + '.cfg')
+                if os.path.isfile(oldmain):
+                    subtree.append(oldmain)
+                base = os.path.basename(os.path.dirname(os.path.abspath(dir)))
+                if base in roots or base == "core":
+                    rooted = True
+                for root, dirs, files in os.walk(dir):
+                    dirs.sort()
+                    dirlist = [x for x in dirs]
+                    # Split out individual campaigns/add-ons into their own subtrees
+                    if not rooted:
+                        if os.path.basename(root) == "core":
+                            rooted = True
+                        elif os.path.basename(root) in roots:
+                            for subdir in dirlist:
+                                if subdir + '.cfg' in files:
+                                    files.remove(subdir + '.cfg')
+                                dirs.remove(subdir)
+                                dirpath.append(os.path.join(root, subdir))
+                            rooted = True
+                        elif "_info.cfg" in files or "info.cfg" in files:
+                            rooted = True
+                            roots.append(os.path.basename(os.path.dirname(os.path.abspath(root))))
+                        else:
+                            stop = min(len(dirs), 5)
+                            count = 0
+                            for subdir in dirlist[:stop]:
+                                if os.path.isfile(os.path.join(root, subdir, '_info.cfg')):
+                                    count += 1
+                                elif os.path.isfile(os.path.join(root, subdir, 'info.cfg')):
+                                    if os.path.isfile(os.path.join(root, subdir, 'COPYING.txt')):
+                                        count += 1
+                            if count >= (stop / 2):
+                                roots.append(os.path.basename(root))
+                                for subdir in dirlist:
+                                    if subdir + '.cfg' in files:
+                                        files.remove(subdir + '.cfg')
+                                    dirs.remove(subdir)
+                                    dirpath.append(os.path.join(root, subdir))
+                    subtree.extend([os.path.normpath(os.path.join(root, x)) for x in files])
             # Always look at _main.cfg first
             subtree.sort(lambda x, y: cmp(x, y) - 2*int(x.endswith("_main.cfg"))  + 2*int(y.endswith("_main.cfg")))
             self.forest.append(subtree)
