@@ -63,7 +63,10 @@ def run_tool(tool,queue,command):
     if sys.platform=="win32":
         # Windows wants a string, Linux wants a list and Polly wants a cracker
         # Windows wants also strings flavoured with double quotes
-        wrapped_line=map(wrap_elem,command)
+        # since maps return iterators, we must cast them as lists, otherwise join won't work
+        # not doing this causes an OSError: [WinError 87]
+        # this doesn't happen on Python 2.7, because here map() returns a list
+        wrapped_line=list(map(wrap_elem,command))
         queue.put_nowait(' '.join(wrapped_line)+"\n")
         si=subprocess.STARTUPINFO()
         si.dwFlags=subprocess.STARTF_USESHOWWINDOW|subprocess.SW_HIDE # to avoid showing a DOS prompt
