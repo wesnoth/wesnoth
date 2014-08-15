@@ -846,6 +846,7 @@ void playsingle_controller::show_turn_dialog(){
 	if(preferences::turn_dialog() && (level_result_ == NONE) ) {
 		blindfold b(*resources::screen, true); //apply a blindfold for the duration of this dialog
 		resources::screen->redraw_everything();
+		resources::screen->recalculate_minimap();
 		std::string message = _("It is now $name|’s turn");
 		utils::string_map symbols;
 		symbols["name"] = gamestate_.board_.teams()[player_number_ - 1].current_player();
