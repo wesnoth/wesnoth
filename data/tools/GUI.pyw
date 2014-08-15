@@ -1018,7 +1018,7 @@ Error code: {1}
 
 Part of The Battle for Wesnoth project and released under the GNU GPL v2 license
 
-Icons are taken from the Tango project, and are released in the Public Domain""")
+Icons are taken from the Tango Desktop Project (http://tango.freedesktop.org), and are released in the Public Domain""")
 
 root=Tk()
 
