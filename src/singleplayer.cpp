@@ -1,4 +1,5 @@
 #include "singleplayer.hpp"
+#include "config.hpp"
 #include "config_assign.hpp"
 #include "game_config_manager.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
@@ -39,7 +40,6 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 			return false;
 		}
 
-		int campaign_num = -1;
 		bool use_deterministic_mode = false;
 		// No campaign selected from command line
 		if (jump_to_campaign.campaign_id_.empty() == true)
@@ -57,8 +57,6 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 				return false;
 			}
 
-			campaign_num = dlg.get_choice();
-
 			use_deterministic_mode = dlg.get_deterministic();
 
 		}
@@ -68,21 +66,25 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 			// if we should quit the game or return to the main menu
 
 			// checking for valid campaign name
+			bool not_found = true;
 			for(size_t i = 0; i < campaigns.size(); ++i)
 			{
 				if (campaigns[i]->data()["id"] == jump_to_campaign.campaign_id_)
 				{
-					campaign_num = i;
+					create_eng.set_current_level(i);
+					not_found = false;
 					break;
 				}
+
 			}
 
-			// didn't found any campaign with that id
-			if (campaign_num == -1)
+			// didn't find any campaign with that id
+			if (not_found)
 			{
 				std::cerr<<"No such campaign id to jump to: ["<<jump_to_campaign.campaign_id_<<"]\n";
 				return false;
 			}
+
 		}
 
 		std::string random_mode = use_deterministic_mode ? "deterministic" : "";
@@ -102,25 +104,12 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 
 		create_eng.prepare_for_era_and_mods();
 		create_eng.prepare_for_campaign(selected_difficulty);
-
-		if (!jump_to_campaign.scenario_id_.empty())
-		{
-			//FIXME: we don't set "random_mode" if this if is false
-			//currently "random_mode" inside [carryoer_sides_start] has no effect
-			//so it's no problem but a possibe plan is to move "random_mode" from 
-			//game_glassification to carryoves/snapshow in order to be able to change 
-			//it during the game 
-			state.set_carryover_sides_start(
-				config_of("random_mode", random_mode)
-				         ("next_scenario", jump_to_campaign.scenario_id_)
-			);
-		}
-
 		create_eng.prepare_for_new_level();
 
 		create_eng.get_parameters();
 
-		configure_canceled = !enter_configure_mode(disp, resources::config_manager->game_config(), state, local_players_only);
+		configure_canceled = !enter_configure_mode(disp, resources::config_manager->game_config(),
+				state, jump_to_campaign, local_players_only);
 
 	} while (configure_canceled);
 
@@ -128,7 +117,7 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 }
 
 bool enter_configure_mode(game_display& disp, const config& game_config,
-	saved_game& state, bool local_players_only) {
+	saved_game& state, jump_to_campaign_info& jump_to_campaign, bool local_players_only) {
 
 	if (state.mp_settings().show_configure) {
 		bool connect_canceled;
@@ -157,6 +146,12 @@ bool enter_configure_mode(game_display& disp, const config& game_config,
 	} else {
 		ng::configure_engine engine(state);
 		engine.set_default_values();
+		// try to set campaign-scenario from commandline
+		if (!jump_to_campaign.scenario_id_.empty() && !engine.set_scenario(jump_to_campaign.scenario_id_)) {
+			std::cerr << "Invalid campaign-scenario specified." << std::endl;
+			jump_to_campaign = jump_to_campaign_info(false, -1, "", "");
+			return false;
+		}
 		return enter_connect_mode(disp, game_config, state, local_players_only);
 	}
 
@@ -183,7 +178,7 @@ bool enter_connect_mode(game_display& disp, const config& game_config,
 		case mp::ui::PLAY:
 			return true;
 		case mp::ui::CREATE:
-			enter_create_mode(disp, game_config, state, jump_to_campaign_info(false, 0, "", ""), local_players_only);
+			enter_create_mode(disp, game_config, state, jump_to_campaign_info(false, -1, "", ""), local_players_only);
 			break;
 		case mp::ui::QUIT:
 		default:

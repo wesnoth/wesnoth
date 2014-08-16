@@ -184,24 +184,9 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	vision_types.push_back(_("Share None"));
 #endif
 	// The starting points for campaign.
-	std::vector<std::string> entry_point_titles;
 
-	BOOST_FOREACH(const config& scenario,
-		game_config().child_range("multiplayer")) {
-
-		if (!scenario["campaign_id"].empty() &&
-			(scenario["allow_new_game"].to_bool(true) || game_config::debug)) {
-
-			const std::string& title = (!scenario["new_game_title"].empty()) ?
-				scenario["new_game_title"] : scenario["name"];
-
-			entry_points_.push_back(&scenario);
-			entry_point_titles.push_back(title);
-		}
-	}
-
-	if (entry_point_titles.size() > 1) {
-		entry_points_combo_.set_items(entry_point_titles);
+	if (engine_.entry_point_titles().size() > 1) {
+		entry_points_combo_.set_items(engine_.entry_point_titles());
 		entry_points_combo_.set_selected(0);
 
 		show_entry_points_ = true;
@@ -326,11 +311,7 @@ void configure::process_event()
 	}
 
 	if (entry_points_combo_.changed()) {
-		const config& scenario = *entry_points_[entry_points_combo_.selected()];
-
-		parameters_.hash = scenario.hash();
-		state_.set_scenario(scenario);
-
+		engine_.set_scenario(entry_points_combo_.selected());
 		force_use_map_settings_check_ = true;
 	}
 

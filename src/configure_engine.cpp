@@ -1,7 +1,10 @@
 #include "configure_engine.hpp"
 #include "formula_string_utils.hpp"
+#include "game_config_manager.hpp"
+#include "resources.hpp"
 #include "settings.hpp"
 
+#include <boost/foreach.hpp>
 #include <cassert>
 
 namespace ng {
@@ -13,6 +16,20 @@ configure_engine::configure_engine(saved_game& state) :
 	cfg_((assert(sides_.first != sides_.second), *sides_.first))
 {
 	set_use_map_settings(use_map_settings_default());
+
+	BOOST_FOREACH(const config& scenario,
+		resources::config_manager->game_config().child_range("multiplayer")) {
+
+		if (!scenario["campaign_id"].empty() &&
+			(scenario["allow_new_game"].to_bool(true) || game_config::debug)) {
+
+			const std::string& title = (!scenario["new_game_title"].empty()) ?
+				scenario["new_game_title"] : scenario["name"];
+
+			entry_points_.push_back(&scenario);
+			entry_point_titles_.push_back(title);
+		}
+	}
 }
 
 void configure_engine::set_default_values() {
@@ -71,6 +88,23 @@ void configure_engine::set_shroud_game(bool val) { parameters_.shroud_game = val
 void configure_engine::set_allow_observers(bool val) { parameters_.allow_observers = val; }
 void configure_engine::set_shuffle_sides(bool val) { parameters_.shuffle_sides = val; }
 void configure_engine::set_options(const config& cfg) { parameters_.options = cfg; }
+
+void configure_engine::set_scenario(size_t scenario_num) {
+	const config& scenario = *entry_points_[scenario_num];
+
+	parameters_.hash = scenario.hash();
+	state_.set_scenario(scenario);
+}
+
+bool configure_engine::set_scenario(std::string& scenario_id) {
+	for (size_t i = 0; i < entry_points_.size(); ++i) {
+		if ((**(entry_points_.begin() + i))["id"] == scenario_id) {
+			set_scenario(i);
+			return true;
+		}
+	}
+	return false;
+}
 
 std::string configure_engine::game_name_default() const {
 	utils::string_map i18n_symbols;
@@ -143,6 +177,10 @@ const config& configure_engine::options_default() const {
 
 const mp_game_settings& configure_engine::get_parameters() const {
 	return parameters_;
+}
+
+const std::vector<std::string>& configure_engine::entry_point_titles() const {
+	return entry_point_titles_;
 }
 
 } //end namespace ng

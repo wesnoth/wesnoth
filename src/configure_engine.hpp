@@ -76,6 +76,9 @@ public:
 	void set_shuffle_sides(bool val);
 	void set_options(const config& cfg);
 
+	void set_scenario(size_t scenario_num);
+	bool set_scenario(std::string& scenario_id);
+
 	// parameter defaults
 	std::string game_name_default() const;
 	int num_turns_default() const;
@@ -98,6 +101,8 @@ public:
 	// parameters_ accessor
 	const mp_game_settings& get_parameters() const;
 
+	const std::vector<std::string>& entry_point_titles() const;
+
 private:
 	saved_game& state_;
 	mp_game_settings& parameters_;
@@ -110,6 +115,10 @@ private:
 	 * NOTE when 'load game' is selected there are no sides.
 	 */
 	const config &cfg_;
+
+	std::vector<const config*> entry_points_;
+	
+	std::vector<std::string> entry_point_titles_;
 };
 
 } // end namespace ng
