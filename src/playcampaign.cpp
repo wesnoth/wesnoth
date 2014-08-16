@@ -376,7 +376,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 
 				//We don't merge WML until start of next scenario, but if we want to allow user to disable MP ui in transition,
 				//then we have to move "allow_new_game" attribute over now.
-				bool allow_new_game_flag = starting_pos["allow_new_game"].to_bool(true);
+				bool allow_new_game_flag = starting_pos["allow_new_game"].to_bool(gamestate.mp_settings().show_connect);
 
 				if (gamestate.carryover().child_or_empty("end_level_data").child_or_empty("next_scenario_settings").has_attribute("allow_new_game")) {
 					allow_new_game_flag = gamestate.carryover().child_or_empty("end_level_data").child("next_scenario_settings")["allow_new_game"].to_bool();
