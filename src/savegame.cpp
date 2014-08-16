@@ -813,8 +813,10 @@ void convert_old_saves(config& cfg)
 	if(loaded_version < version_info("1.12.0"))
 	{
 		convert_old_saves_1_11_0(cfg);
-	}
-	if(loaded_version <= version_info("1.13.0"))
+	}	
+	// '<= version_info("1.13.0")' doesn't work 
+	//because version_info cannot handle 1.13.0-dev versions correctly.
+	if(loaded_version < version_info("1.13.1"))
 	{
 		convert_old_saves_1_13_0(cfg);
 	}
