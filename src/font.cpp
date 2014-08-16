@@ -1124,6 +1124,7 @@ void floating_label::draw(CVideo &video)
 	video.blit_to_overlay(surf_, xpos(surf_->w), int(ypos_));
 #endif
 }
+
 #else
 void floating_label::draw(surface screen)
 {
@@ -1157,9 +1158,12 @@ void floating_label::draw(surface screen)
 }
 #endif
 
-#if 0
-// No undrawing for SDL_gpu, it won't be necessary once z-order is implemented
-void floating_label::undraw(surface) {}
+#ifdef SDL_GPU
+void floating_label::undraw(CVideo &video)
+{
+	SDL_Rect r = sdl::create_rect(xpos(surf_->w), ypos_, surf_->w, surf_->h);
+	video.clear_overlay_area(r);
+}
 #else
 void floating_label::undraw(surface screen)
 {
@@ -1281,6 +1285,9 @@ floating_label_context::~floating_label_context()
 
 	label_contexts.pop();
 
+#ifdef SDL_GPU
+	//TODO
+#else
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 	surface const screen = NULL;
 #else
@@ -1289,6 +1296,7 @@ floating_label_context::~floating_label_context()
 	if(screen != NULL) {
 		undraw_floating_labels(screen);
 	}
+#endif
 }
 
 #ifdef SDL_GPU
@@ -1308,6 +1316,27 @@ void draw_floating_labels(CVideo &video)
 		}
 	}
 }
+
+void undraw_floating_labels(CVideo &video)
+{
+	if(label_contexts.empty()) {
+		return;
+	}
+
+	std::set<int>& context = label_contexts.top();
+
+	//remove expired labels
+	for(label_map::iterator j = labels.begin(); j != labels.end(); ) {
+		if(context.count(j->first) > 0 && j->second.expired()) {
+			j->second.undraw(video);
+			context.erase(j->first);
+			labels.erase(j++);
+		} else {
+			++j;
+		}
+	}
+}
+
 #else
 void draw_floating_labels(surface screen)
 {
@@ -1325,7 +1354,6 @@ void draw_floating_labels(surface screen)
 		}
 	}
 }
-#endif
 
 void undraw_floating_labels(surface screen)
 {
@@ -1338,7 +1366,7 @@ void undraw_floating_labels(surface screen)
 	//undraw labels in reverse order, so that a LIFO process occurs, and the screen is restored
 	//into the exact state it started in.
 	for(label_map::reverse_iterator i = labels.rbegin(); i != labels.rend(); ++i) {
-		if(context.count(i->first) > 0) {
+		if(context.count(i->first) > 0) {			
 			i->second.undraw(screen);
 		}
 	}
@@ -1353,7 +1381,7 @@ void undraw_floating_labels(surface screen)
 		}
 	}
 }
-
+#endif
 }
 
 static bool add_font_to_fontlist(const config &fonts_config,

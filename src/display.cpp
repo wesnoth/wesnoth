@@ -1404,7 +1404,11 @@ void display::flip()
 
 	cursor::undraw(frameBuffer);
 	events::raise_volatile_undraw_event();
+#ifdef SDL_GPU
+	font::undraw_floating_labels(screen_);
+#else
 	font::undraw_floating_labels(frameBuffer);
+#endif
 }
 
 void display::update_display()
