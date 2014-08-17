@@ -156,10 +156,11 @@ public:
 	void move(double xmove, double ymove);
 #ifdef SDL_GPU
 	void draw(CVideo &video);
+	void undraw(CVideo &video);
 #else
 	void draw(surface screen);
-#endif
 	void undraw(surface screen);
+#endif
 
 #if 0
 	sdl::timage create_image();
@@ -219,11 +220,11 @@ void show_floating_label(int handle, bool show);
 SDL_Rect get_floating_label_rect(int handle);
 #ifdef SDL_GPU
 void draw_floating_labels(CVideo &video);
+void undraw_floating_labels(CVideo &video);
 #else
 void draw_floating_labels(surface screen);
-#endif
-
 void undraw_floating_labels(surface screen);
+#endif
 
 bool load_font_config();
 

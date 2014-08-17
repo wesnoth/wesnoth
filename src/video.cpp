@@ -435,8 +435,14 @@ void CVideo::blit_to_overlay(surface surf, int x, int y)
 
 void CVideo::clear_overlay_area(SDL_Rect area)
 {
-	//TODO: proper implementation
-	sdl::fill_rect(overlay_, &area, 0xFF000000);
+	const Uint32 color = SDL_MapRGBA(overlay_->format, 0, 0, 0, 0);
+	Uint32 *pixels = static_cast<Uint32*>(overlay_->pixels);
+	for (int x = area.x; x<area.x + area.w; ++x) {
+		for (int y = area.y; y<area.y +area.h; ++y) {
+			const int index = y * (area.w + overlay_->pitch) + x;
+			pixels[index] = color;
+		}
+	}
 }
 
 void CVideo::clear_overlay()
