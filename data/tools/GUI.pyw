@@ -341,7 +341,7 @@ class WmllintTab(Frame):
         self.verbosity_frame.grid(row=0,
                                   column=1,
                                   sticky=N+E+S+W)
-        self.verbosity_variable=IntVar(0)
+        self.verbosity_variable=IntVar()
         self.radio_v0=Radiobutton(self.verbosity_frame,
                                   text="Terse",
                                   variable=self.verbosity_variable,
@@ -554,7 +554,7 @@ class WmlscopeTab(Frame):
                                  column=0,
                                  sticky=W,
                                  padx=10)
-        self.refcount_number=IntVar(0)
+        self.refcount_number=IntVar()
         self.refcount_spin=SpinboxContext(self.options_with_regexp,
                                           from_=0,to=999,
                                           textvariable=self.refcount_number,
