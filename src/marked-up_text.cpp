@@ -561,7 +561,12 @@ SDL_Rect draw_wrapped_text(CVideo* gui, const SDL_Rect& area, int font_size,
 sdl::timage draw_text_to_texture(const SDL_Rect &area, int size, const SDL_Color &color, const std::string &text, bool use_tooltips, int style)
 {
 	SDL_Rect rect = text_area(text, size, style);
-	surface surf = create_neutral_surface(rect.w, rect.h);
+	surface surf = SDL_CreateRGBSurface(SDL_SWSURFACE, rect.w, rect.h, 32,
+										0xff000000,
+										0x00ff0000,
+										0x0000ff00,
+										0x000000ff);
+	SDL_FillRect(surf, NULL, 0x000000ff);
 	draw_text(surf, area, size, color, text, 0, 0, use_tooltips, style);
 
 	return sdl::timage(surf);
