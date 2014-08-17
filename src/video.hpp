@@ -185,6 +185,8 @@ private:
 
 	void initSDL();
 #ifdef SDL_GPU
+	void update_overlay();
+
 	sdl::shader_program shader_; 
 	surface overlay_;
 #endif

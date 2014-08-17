@@ -382,6 +382,14 @@ void CVideo::initSDL()
 #endif
 }
 
+#ifdef SDL_GPU
+void CVideo::update_overlay()
+{
+	sdl::timage img(overlay_);
+	shader_.set_overlay(img);
+}
+#endif
+
 CVideo::~CVideo()
 {
 	LOG_DP << "calling SDL_Quit()\n";
@@ -431,6 +439,7 @@ void CVideo::blit_to_overlay(surface surf, int x, int y)
 {
 	SDL_Rect r = sdl::create_rect(x, y, surf->w, surf->h);
 	SDL_BlitSurface(surf, NULL, overlay_, &r);
+	update_overlay();
 }
 
 void CVideo::clear_overlay_area(SDL_Rect area)
@@ -443,11 +452,13 @@ void CVideo::clear_overlay_area(SDL_Rect area)
 			pixels[index] = color;
 		}
 	}
+	update_overlay();
 }
 
 void CVideo::clear_overlay()
 {
 	overlay_ = create_compatible_surface(overlay_, getx(), gety());
+	update_overlay();
 }
 #endif
 
@@ -607,8 +618,6 @@ void CVideo::flip()
 		return;
 #ifdef SDL_GPU
 	assert(render_target_);
-	sdl::timage img(overlay_);
-	shader_.set_overlay(img);
 	GPU_Flip(render_target_);
 #else
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
