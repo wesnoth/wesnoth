@@ -379,7 +379,7 @@ class WmllintTab(Frame):
         self.options_frame.grid(row=0,
                                 column=2,
                                 sticky=N+E+S+W)
-        self.stripcr_variable=IntVar(0)
+        self.stripcr_variable=BooleanVar()
         self.stripcr_check=Checkbutton(self.options_frame,
                                        text="Convert EOL characters to Unix style",
                                        variable=self.stripcr_variable)
@@ -387,7 +387,7 @@ class WmllintTab(Frame):
                                 column=0,
                                 sticky=W,
                                 padx=10)
-        self.missing_variable=IntVar(0)
+        self.missing_variable=BooleanVar()
         self.missing_check=Checkbutton(self.options_frame,
                                         text="Don't warn about tags without side= keys",
                                         variable=self.missing_variable)
@@ -395,7 +395,7 @@ class WmllintTab(Frame):
                                  column=0,
                                  sticky=W,
                                  padx=10)
-        self.known_variable=IntVar(0)
+        self.known_variable=BooleanVar()
         self.known_check=Checkbutton(self.options_frame,
                                      text="Disable checks for unknown units",
                                      variable=self.known_variable)
@@ -403,7 +403,7 @@ class WmllintTab(Frame):
                               column=0,
                               sticky=W,
                               padx=10)
-        self.spell_variable=IntVar(0)
+        self.spell_variable=BooleanVar()
         self.spell_check=Checkbutton(self.options_frame,
                                      text="Disable spellchecking",
                                      variable=self.spell_variable)
@@ -411,7 +411,7 @@ class WmllintTab(Frame):
                               column=0,
                               sticky=W,
                               padx=10)
-        self.freeze_variable=IntVar(0)
+        self.freeze_variable=BooleanVar()
         self.freeze_check=Checkbutton(self.options_frame,
                                       text="Ignore newlines in messages",
                                       variable=self.freeze_variable)
@@ -438,7 +438,7 @@ class WmlscopeTab(Frame):
         self.normal_options.grid(row=0,
                                  column=0,
                                  sticky=N+E+S+W)
-        self.crossreference_variable=IntVar(0) # equivalent to warnlevel 1
+        self.crossreference_variable=BooleanVar() # equivalent to warnlevel 1
         self.crossreference_check=Checkbutton(self.normal_options,
                                               text="Check for duplicate macro definitions",
                                               variable=self.crossreference_variable)
@@ -446,7 +446,7 @@ class WmlscopeTab(Frame):
                                        column=0,
                                        sticky=W,
                                        padx=10)
-        self.collisions_variable=IntVar(0)
+        self.collisions_variable=BooleanVar()
         self.collisions_check=Checkbutton(self.normal_options,
                                           text="Check for duplicate resource files",
                                           variable=self.collisions_variable)
@@ -454,7 +454,7 @@ class WmlscopeTab(Frame):
                                    column=0,
                                    sticky=W,
                                    padx=10)
-        self.definitions_variable=IntVar(0)
+        self.definitions_variable=BooleanVar()
         self.definitions_check=Checkbutton(self.normal_options,
                                            text="Make definition list",
                                            variable=self.definitions_variable)
@@ -462,7 +462,7 @@ class WmlscopeTab(Frame):
                                     column=0,
                                     sticky=W,
                                     padx=10)
-        self.listfiles_variable=IntVar(0)
+        self.listfiles_variable=BooleanVar()
         self.listfiles_check=Checkbutton(self.normal_options,
                                          text="List files that will be processed",
                                          variable=self.listfiles_variable)
@@ -470,7 +470,7 @@ class WmlscopeTab(Frame):
                                   column=0,
                                   sticky=W,
                                   padx=10)
-        self.unresolved_variable=IntVar(0)
+        self.unresolved_variable=BooleanVar()
         self.unresolved_check=Checkbutton(self.normal_options,
                                           text="Report unresolved macro references",
                                           variable=self.unresolved_variable)
@@ -478,7 +478,7 @@ class WmlscopeTab(Frame):
                                    column=0,
                                    sticky=W,
                                    padx=10)
-        self.extracthelp_variable=IntVar(0)
+        self.extracthelp_variable=BooleanVar()
         self.extracthelp_check=Checkbutton(self.normal_options,
                                            text="Extract help from macro definition comments",
                                            variable=self.extracthelp_variable)
@@ -486,7 +486,7 @@ class WmlscopeTab(Frame):
                                     column=0,
                                     sticky=W,
                                     padx=10)
-        self.unchecked_variable=IntVar(0)
+        self.unchecked_variable=BooleanVar()
         self.unchecked_check=Checkbutton(self.normal_options,
                                          text="Report all macros with untyped formals",
                                          variable=self.unchecked_variable)
@@ -494,7 +494,7 @@ class WmlscopeTab(Frame):
                                   column=0,
                                   sticky=W,
                                   padx=10)
-        self.progress_variable=IntVar(0)
+        self.progress_variable=BooleanVar()
         self.progress_check=Checkbutton(self.normal_options,
                                         text="Show progress",
                                         variable=self.progress_variable)
@@ -511,7 +511,7 @@ class WmlscopeTab(Frame):
         self.options_with_regexp.grid(row=0,
                                       column=2,
                                       sticky=N+E+S+W)
-        self.exclude_variable=IntVar(0)
+        self.exclude_variable=BooleanVar()
         self.exclude_check=Checkbutton(self.options_with_regexp,
                                        text="Exclude files matching regexp:",
                                        variable=self.exclude_variable,
@@ -528,7 +528,7 @@ class WmlscopeTab(Frame):
                                 column=1,
                                 sticky=E+W,
                                 padx=10)
-        self.from_variable=IntVar(0)
+        self.from_variable=BooleanVar()
         self.from_check=Checkbutton(self.options_with_regexp,
                                     text="Exclude files not matching regexp:",
                                     variable=self.from_variable,
@@ -545,7 +545,7 @@ class WmlscopeTab(Frame):
                              column=1,
                              sticky=E+W,
                              padx=10)
-        self.refcount_variable=IntVar(0)
+        self.refcount_variable=BooleanVar()
         self.refcount_check=Checkbutton(self.options_with_regexp,
                                         text="Report only on macros referenced\nin at least n files:",
                                         variable=self.refcount_variable,
@@ -564,7 +564,7 @@ class WmlscopeTab(Frame):
                                 column=1,
                                 sticky=E+W,
                                 padx=10)
-        self.typelist_variable=IntVar(0)
+        self.typelist_variable=BooleanVar()
         self.typelist_check=Checkbutton(self.options_with_regexp,
                                         text="List actual & formal argtypes\nfor calls in fname",
                                         variable=self.typelist_variable,
@@ -581,7 +581,7 @@ class WmlscopeTab(Frame):
                                  column=1,
                                  sticky=E+W,
                                  padx=10)
-        self.force_variable=IntVar(0)
+        self.force_variable=BooleanVar()
         self.force_check=Checkbutton(self.options_with_regexp,
                                      text="Ignore refcount 0 on names\nmatching regexp:",
                                      variable=self.force_variable,
@@ -666,7 +666,7 @@ class WmlindentTab(Frame):
         self.options_frame.grid(row=0,
                                 column=1,
                                 sticky=N+E+S+W)
-        self.verbose_variable=IntVar(0)
+        self.verbose_variable=BooleanVar()
         self.verbose_check=Checkbutton(self.options_frame,
                                        text="Report also unchanged files",
                                        variable=self.verbose_variable)
@@ -674,7 +674,7 @@ class WmlindentTab(Frame):
                                 column=0,
                                 sticky=W,
                                 padx=10)
-        self.exclude_variable=IntVar(0)
+        self.exclude_variable=BooleanVar()
         self.exclude_check=Checkbutton(self.options_frame,
                                        text="Exclude files matching regexp:",
                                        variable=self.exclude_variable,
@@ -692,7 +692,7 @@ class WmlindentTab(Frame):
                                column=1,
                                sticky=E+W,
                                padx=10)
-        self.quiet_variable=IntVar(0)
+        self.quiet_variable=BooleanVar()
         self.quiet_check=Checkbutton(self.options_frame,
                                      text="Do not generate output",
                                      variable=self.quiet_variable)
