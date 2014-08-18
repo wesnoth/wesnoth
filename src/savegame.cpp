@@ -798,7 +798,7 @@ static void convert_old_saves_1_13_0(config& cfg)
 		}
 	}
 
-	if(!cfg.has_child("multiplayer")) {
+	if(!cfg.has_child("multiplayer") && cfg["campaign_type"] == "scenario") {
 		saved_game tmp(cfg);
 		ng::configure_engine eng(tmp);
 		eng.set_default_values();
