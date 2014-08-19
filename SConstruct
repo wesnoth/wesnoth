@@ -271,6 +271,10 @@ if sys.platform == 'win32':
 #
 print "---[checking prerequisites]---"
 
+def Info(message):
+    print message
+    return True
+
 def Warning(message):
     print message
     return False
@@ -300,8 +304,8 @@ if env["prereqs"]:
             have_libpthread = True
         else:
             have_libpthread = conf.CheckLib("pthread")
-        return have_libpthread and \
-            conf.CheckBoost("system") and \
+        return have_libpthread & \
+            conf.CheckBoost("system") & \
             conf.CheckBoost("asio", header_only = True)
 
     if env['host'] in ['x86_64-nacl', 'i686-nacl']:
@@ -326,44 +330,52 @@ if env["prereqs"]:
         conf.CheckLib("mikmod")
 
     if env['sdl2']:
-        have_sdl_net = \
-        conf.CheckSDL(require_version = '2.0.0') and \
-        conf.CheckSDL("SDL2_net", header_file = "SDL_net")
+        def have_sdl_net():
+            return \
+                conf.CheckSDL(require_version = '2.0.0') & \
+                conf.CheckSDL("SDL2_net", header_file = "SDL_net")
 
-        have_sdl_other = \
-        conf.CheckSDL("SDL2_ttf", header_file = "SDL_ttf") and \
-        conf.CheckSDL("SDL2_mixer", header_file = "SDL_mixer") and \
-        conf.CheckSDL("SDL2_image", header_file = "SDL_image")
+        def have_sdl_other():
+            return \
+                conf.CheckSDL(require_version = '2.0.0') & \
+                conf.CheckSDL("SDL2_ttf", header_file = "SDL_ttf") & \
+                conf.CheckSDL("SDL2_mixer", header_file = "SDL_mixer") & \
+                conf.CheckSDL("SDL2_image", header_file = "SDL_image")
 
     else:
-        have_sdl_net = \
-        conf.CheckSDL(require_version = '1.2.0') and \
-        conf.CheckSDL('SDL_net')
+        def have_sdl_net():
+            return \
+                conf.CheckSDL(require_version = '1.2.0') & \
+                conf.CheckSDL('SDL_net')
 
-        have_sdl_other = \
-        conf.CheckSDL("SDL_ttf", require_version = "2.0.8") and \
-        conf.CheckSDL("SDL_mixer", require_version = '1.2.0') and \
-        conf.CheckSDL("SDL_image", require_version = '1.2.0')
+        def have_sdl_other():
+            return \
+                conf.CheckSDL(require_version = '1.2.0') & \
+                conf.CheckSDL("SDL_ttf", require_version = "2.0.8") & \
+                conf.CheckSDL("SDL_mixer", require_version = '1.2.0') & \
+                conf.CheckSDL("SDL_image", require_version = '1.2.0')
 
-    have_server_prereqs = have_sdl_net and \
-        conf.CheckCPlusPlus(gcc_version = "3.3") and \
-        conf.CheckGettextLibintl() and \
-        conf.CheckBoost("iostreams", require_version = "1.34.1") and \
-        conf.CheckBoostIostreamsGZip() and \
-        conf.CheckBoostIostreamsBZip2() and \
-        conf.CheckBoost("smart_ptr", header_only = True) or \
-            Warning("WARN: Base prerequisites are not met")
+    have_server_prereqs = (\
+        conf.CheckCPlusPlus(gcc_version = "3.3") & \
+        have_sdl_net() & \
+        conf.CheckGettextLibintl() & \
+        conf.CheckBoost("iostreams", require_version = "1.34.1") & \
+        conf.CheckBoostIostreamsGZip() & \
+        conf.CheckBoostIostreamsBZip2() & \
+        conf.CheckBoost("smart_ptr", header_only = True) \
+            and Info("GOOD: Base prerequisites are met")) \
+            or Warning("WARN: Base prerequisites are not met")
 
     env = conf.Finish()
     client_env = env.Clone()
     conf = client_env.Configure(**configure_args)
-    have_client_prereqs = have_server_prereqs and have_sdl_other and \
-        CheckAsio(conf) and \
-        conf.CheckPango("cairo", require_version = "1.21.3") and \
-        conf.CheckPKG("fontconfig") and \
-        conf.CheckBoost("program_options", require_version="1.35.0") and \
-        conf.CheckBoost("regex", require_version = "1.35.0") and \
-        conf.CheckLib("vorbisfile") and \
+    have_client_prereqs = have_server_prereqs & have_sdl_other() & \
+        CheckAsio(conf) & \
+        conf.CheckPango("cairo", require_version = "1.21.3") & \
+        conf.CheckPKG("fontconfig") & \
+        conf.CheckBoost("program_options", require_version="1.35.0") & \
+        conf.CheckBoost("regex", require_version = "1.35.0") & \
+        conf.CheckLib("vorbisfile") & \
         conf.CheckOgg() or Warning("WARN: Client prerequisites are not met. wesnoth, cutter and exploder cannot be built")
 
     have_X = False
