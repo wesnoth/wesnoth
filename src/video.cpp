@@ -383,10 +383,17 @@ void CVideo::initSDL()
 }
 
 #ifdef SDL_GPU
-void CVideo::update_overlay()
+void CVideo::update_overlay(SDL_Rect *rect)
 {
 	sdl::timage img(overlay_);
 	shader_.set_overlay(img);
+
+	// Re-render the appropriate screen area so that overlay change is visible
+	static sdl::timage empty(image::get_texture("images/misc/blank.png"));
+	SDL_Rect whole = sdl::create_rect(0, 0, overlay_->w, overlay_->h);
+	SDL_Rect *r = rect == NULL ? &whole : rect;
+	empty.set_scale(float(r->w) / empty.base_width(), float(r->h) / empty.base_height());
+	draw_texture(empty, r->x, r->y);
 }
 #endif
 
@@ -442,7 +449,7 @@ void CVideo::blit_to_overlay(surface surf, int x, int y)
 	}
 	SDL_Rect r = sdl::create_rect(x, y, surf->w, surf->h);
 	SDL_BlitSurface(surf, NULL, overlay_, &r);
-	update_overlay();
+	update_overlay(&r);
 }
 
 void CVideo::clear_overlay_area(SDL_Rect area)
@@ -455,7 +462,7 @@ void CVideo::clear_overlay_area(SDL_Rect area)
 			pixels[index] = color;
 		}
 	}
-	update_overlay();
+	update_overlay(&area);
 }
 
 void CVideo::clear_overlay()
