@@ -437,6 +437,9 @@ void CVideo::set_texture_effects(int effects)
 
 void CVideo::blit_to_overlay(surface surf, int x, int y)
 {
+	if (x < 0 || y < 0 || x > overlay_->w || y > overlay_->h) {
+		return;
+	}
 	SDL_Rect r = sdl::create_rect(x, y, surf->w, surf->h);
 	SDL_BlitSurface(surf, NULL, overlay_, &r);
 	update_overlay();
