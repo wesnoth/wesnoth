@@ -472,20 +472,22 @@ config saved_game::to_config() const
 
 std::string saved_game::get_scenario_id()
 {
+	std::string scenario_id;
 	if(this->starting_pos_type_ == STARTINGPOS_SNAPSHOT
 		|| this->starting_pos_type_ == STARTINGPOS_SCENARIO)
 	{
-		return starting_pos_["id"];
+		scenario_id = starting_pos_["id"].str();
 	}
 	else if(!has_carryover_expanded_)
 	{
-		return carryover_["next_scenario"];
+		scenario_id = carryover_["next_scenario"].str();
 	}
 	else
 	{
 		assert(!"cannot figure out scenario_id");
 		throw "assertion ingnored";
 	}
+	return scenario_id == "null" ? "" : scenario_id;
 }
 
 bool saved_game::not_corrupt() const
