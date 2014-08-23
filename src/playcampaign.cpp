@@ -430,7 +430,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		}
 	}
 
-	if (!gamestate.get_scenario_id().empty() && gamestate.get_scenario_id() != "null") {
+	if (!gamestate.get_scenario_id().empty()) {
 		std::string message = _("Unknown scenario: '$scenario|'");
 		utils::string_map symbols;
 		symbols["scenario"] = gamestate.get_scenario_id();
