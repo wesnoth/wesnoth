@@ -23,7 +23,7 @@
 #include "terrain_translation.hpp"
 
 #include <set>
-#include <boost\optional.hpp>
+#include <boost/optional.hpp>
 
 class cave_map_generator : public map_generator
 {
