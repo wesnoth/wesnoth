@@ -85,7 +85,7 @@ config cave_map_generator::create_scenario()
 	return job.res_;
 }
 
-cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_map_generator& pparams)
+cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_map_generator& pparams, boost::optional<int> randomseed)
 	: params(pparams)
 	, flipx_(false)
 	, flipy_(false)
@@ -96,9 +96,15 @@ cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_ma
 	, chambers_()
 	, passages_()
 	, res_(params.cfg_.child_or_empty("settings"))
+	, rng_() //initialises with rand()
 {
-	flipx_ = rand() % 100 < params.flipx_chance_;
-	flipy_ = rand() % 100 < params.flipy_chance_;
+	if(int* seed = randomseed.get_ptr())
+	{
+		rng_.seed_random(*seed);
+	}
+	std::cerr << "creating random cave with seed:" << rng_.get_random_seed();
+	flipx_ = rng_.get_next_random() % 100 < params.flipx_chance_;
+	flipy_ = rng_.get_next_random() % 100 < params.flipy_chance_;
 
 	LOG_NG << "creating scenario....\n";
 	generate_chambers();
@@ -131,7 +137,7 @@ void cave_map_generator::cave_map_generator_job::build_chamber(map_location loc,
 	map_location adj[6];
 	get_adjacent_tiles(loc,adj);
 	for(size_t n = 0; n != 6; ++n) {
-		if((rand() % 100) < (100l - static_cast<long>(jagged))) {
+		if((rng_.get_next_random() % 100) < (100l - static_cast<long>(jagged))) {
 			build_chamber(adj[n],locs,size-1,jagged);
 		}
 	}
@@ -142,7 +148,7 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 	BOOST_FOREACH(const config &ch, params.cfg_.child_range("chamber"))
 	{
 		// If there is only a chance of the chamber appearing, deal with that here.
-		if (ch.has_attribute("chance") && (rand() % 100) < ch["chance"].to_int()) {
+		if (ch.has_attribute("chance") && (rng_.get_next_random() % 100) < ch["chance"].to_int()) {
 			continue;
 		}
 
@@ -166,8 +172,8 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 				max_ypos = atoi(items.back().c_str());
 			}
 		}
-		const size_t x = translate_x(min_xpos + (rand()%(max_xpos-min_xpos)));
-		const size_t y = translate_y(min_ypos + (rand()%(max_ypos-min_ypos)));
+		const size_t x = translate_x(min_xpos + (rng_.get_next_random()%(max_xpos-min_xpos)));
+		const size_t y = translate_y(min_ypos + (rng_.get_next_random()%(max_ypos-min_ypos)));
 
 		int chamber_size = ch["size"].to_int(3);
 		int jagged_edges = ch["jagged"];
@@ -222,7 +228,7 @@ void cave_map_generator::cave_map_generator_job::place_chamber(const chamber& c)
 		}
 
 		if (!it.cfg["same_location_as_previous"].to_bool()) {
-			index = rand()%c.locs.size();
+			index = rng_.get_next_random()%c.locs.size();
 		}
 		std::string loc_var = it.cfg["store_location_as"];
 
@@ -266,8 +272,9 @@ struct passage_path_calculator : pathfind::cost_calculator
 {
 	passage_path_calculator(const t_translation::t_map& mapdata,
 	                        const t_translation::t_terrain & wall,
-	                        double laziness, size_t windiness) :
-		map_(mapdata), wall_(wall), laziness_(laziness), windiness_(windiness)
+	                        double laziness, size_t windiness,
+							rand_rng::simple_rng& rng) :
+		map_(mapdata), wall_(wall), laziness_(laziness), windiness_(windiness), rng_(rng)
 	{}
 
 	virtual double cost(const map_location& loc, const double so_far) const;
@@ -276,6 +283,7 @@ private:
 	t_translation::t_terrain wall_;
 	double laziness_;
 	size_t windiness_;
+	rand_rng::simple_rng& rng_;
 };
 
 double passage_path_calculator::cost(const map_location& loc, const double) const
@@ -286,7 +294,7 @@ double passage_path_calculator::cost(const map_location& loc, const double) cons
 	}
 
 	if(windiness_ > 1) {
-		res *= double(rand()%windiness_);
+		res *= double(rng_.get_next_random()%windiness_);
 	}
 
 	return res;
@@ -295,7 +303,7 @@ double passage_path_calculator::cost(const map_location& loc, const double) cons
 void cave_map_generator::cave_map_generator_job::place_passage(const passage& p)
 {
 	const std::string& chance = p.cfg["chance"];
-	if(chance != "" && (rand()%100) < atoi(chance.c_str())) {
+	if(chance != "" && (rng_.get_next_random()%100) < atoi(chance.c_str())) {
 		return;
 	}
 
@@ -303,7 +311,7 @@ void cave_map_generator::cave_map_generator_job::place_passage(const passage& p)
 	int windiness = p.cfg["windiness"];
 	double laziness = std::max<double>(1.0, p.cfg["laziness"].to_double());
 
-	passage_path_calculator calc(map_, params.wall_, laziness, windiness);
+	passage_path_calculator calc(map_, params.wall_, laziness, windiness, rng_);
 
 	pathfind::plain_route rt = a_star_search(p.src, p.dst, 10000.0, &calc, params.width_, params.height_);
 
@@ -326,7 +334,7 @@ void cave_map_generator::cave_map_generator_job::set_terrain(map_location loc, c
 
 		if(c == params.clear_ || c == params.wall_ || c == params.village_) {
 			// Change this terrain.
-			if ( t == params.clear_  &&  rand() % 1000 < params.village_density_ )
+			if ( t == params.clear_  &&  rng_.get_next_random() % 1000 < params.village_density_ )
 				// Override with a village.
 				c = params.village_;
 			else

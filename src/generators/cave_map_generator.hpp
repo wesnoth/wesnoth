@@ -19,9 +19,11 @@
 
 #include "config.hpp"
 #include "generators/map_generator.hpp"
+#include "simple_rng.hpp"
 #include "terrain_translation.hpp"
 
 #include <set>
+#include <boost\optional.hpp>
 
 class cave_map_generator : public map_generator
 {
@@ -38,7 +40,7 @@ public:
 private:
 	struct cave_map_generator_job
 	{
-		cave_map_generator_job(const cave_map_generator& params);
+		cave_map_generator_job(const cave_map_generator& params, boost::optional<int> randomseed = boost::none);
 
 		struct chamber {
 			chamber()
@@ -84,6 +86,7 @@ private:
 		std::vector<chamber> chambers_;
 		std::vector<passage> passages_;
 		config res_;
+		rand_rng::simple_rng rng_;
 	};
 
 	bool on_board(const map_location& loc) const
