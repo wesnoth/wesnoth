@@ -17,6 +17,7 @@
 #include "formula_string_utils.hpp"
 #include "game_preferences.hpp"
 #include "generators/map_create.hpp"
+#include "generators/map_generator.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/lobby_main.hpp"
 #include "gui/dialogs/message.hpp"

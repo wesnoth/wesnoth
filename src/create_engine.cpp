@@ -18,6 +18,7 @@
 #include "game_launcher.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
+#include "generators/map_generator.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "filesystem.hpp"
 #include "formula_string_utils.hpp"
@@ -729,11 +730,11 @@ void create_engine::set_current_level(const size_t index)
 		random_map* current_random_map =
 			dynamic_cast<random_map*>(&current_level());
 
-		generator_.assign(create_map_generator(
+		generator_.reset(create_map_generator(
 			current_random_map->generator_data()["map_generation"],
 			current_random_map->generator_data().child("generator")));
 	} else {
-		generator_.assign(NULL);
+		generator_.reset(NULL);
 	}
 
 	if (current_level_type_ != level::CAMPAIGN &&

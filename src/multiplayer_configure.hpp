@@ -21,7 +21,6 @@
 #include "widgets/slider.hpp"
 #include "widgets/scrollpane.hpp"
 #include "widgets/combo.hpp"
-#include "generators/mapgen.hpp"
 #include "tooltips.hpp"
 #include "mp_options.hpp"
 #include "configure_engine.hpp"

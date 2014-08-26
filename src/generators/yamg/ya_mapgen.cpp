@@ -286,18 +286,6 @@ ya_mapgen::ya_mapgen(const config& /*cfg*/) :
 }
 
 /**
- *** allow_user_config
-
- No UI at this point.
- */
-bool ya_mapgen::allow_user_config() const {
-	return false;
-}
-void ya_mapgen::user_config(display& /*disp*/) {
-	return;
-}
-
-/**
  *** name
  Returns generator's name
  */

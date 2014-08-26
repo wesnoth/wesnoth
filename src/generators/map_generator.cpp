@@ -23,7 +23,7 @@
 #include "language.hpp"
 #include "log.hpp"
 #include "map.hpp"
-#include "mapgen.hpp"
+#include "map_generator.hpp"
 #include "pathfind/pathfind.hpp"
 #include "pathutils.hpp"
 #include "race.hpp"
@@ -43,6 +43,17 @@ config map_generator::create_scenario()
 	config res;
 	res["map_data"] = create_map();
 	return res;
+}
+/**
+	by default we don't allow user configs.
+*/
+bool map_generator::allow_user_config() const
+{
+	return false;
+}
+
+void map_generator::user_config(display& /*disp*/)
+{
 }
 
 typedef std::vector<std::vector<int> > height_map;

@@ -16,7 +16,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "mapgen_dialog.hpp"
+#include "default_map_generator.hpp"
 
 #include "display.hpp"
 #include "gettext.hpp"

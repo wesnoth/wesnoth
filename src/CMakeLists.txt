@@ -951,10 +951,10 @@ set(libwesnoth-game_STAT_SRC
 	events.cpp
 	font.cpp
 	format_time_summary.cpp
-  	generators/cavegen.cpp
+  	generators/cave_map_generator.cpp
 	generators/map_create.cpp
-	generators/mapgen.cpp
-	generators/mapgen_dialog.cpp
+	generators/map_generator.cpp
+	generators/default_map_generator.cpp
 	generators/yamg/ya_mapgen.cpp
 	generators/yamg/yamg_hex.cpp
 	generators/yamg/yamg_hexheap.cpp

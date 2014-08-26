@@ -38,7 +38,7 @@
 
 #ifndef YAMG_STANDALONE
 #include "config.hpp"
-#include "generators/mapgen.hpp"
+#include "generators/map_generator.hpp"
 #endif
 
 /**
@@ -84,8 +84,6 @@ public:
 	//----------- Inherited methods from map_generator -----------------
 
 #ifndef YAMG_STANDALONE
-	bool allow_user_config() const;
-	void user_config(display& disp);
 	std::string name() const; // {return "yamg";};
 	std::string config_name() const; // {return "generator";};
 	std::string create_map();

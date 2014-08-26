@@ -18,9 +18,7 @@
 #include "editor/map/map_context.hpp"
 #include "editor/editor_preferences.hpp"
 #include "editor/map/map_fragment.hpp"
-
-#include "generators/mapgen.hpp"
-
+class map_generator;
 
 namespace editor {
 
