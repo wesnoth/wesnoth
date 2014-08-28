@@ -70,33 +70,6 @@ static void team_init(config& level, game_state& gamestate){
 	}
 }
 
-static void do_carryover_WML(config & level, game_state& gamestate){
-
-	if(gamestate.snapshot.child_or_empty("variables")["turn_number"].to_int(-1)<1){
-
-		carryover_info sides(gamestate.carryover_sides_start);
-
-		end_level_data end_level_ = sides.get_end_level();
-
-		if(!end_level_.next_scenario_settings.empty()) {
-			level.merge_with(end_level_.next_scenario_settings);
-		}
-		if(!end_level_.next_scenario_append.empty())
-		{
-			level.append_children(end_level_.next_scenario_append);
-		}
-	}
-}
-
-static void clear_carryover_WML (game_state & gamestate) {
-
-	if (gamestate.carryover_sides.has_child("end_level_data")) {
-		config & eld = gamestate.carryover_sides.child("end_level_data");
-		eld.clear_children("next_scenario_settings");
-		eld.clear_children("next_scenario_append");
-	}	
-}
-
 static void store_carryover(game_state& gamestate, playsingle_controller& playcontroller, display& disp, const end_level_data& end_level){
 	bool has_next_scenario = !resources::gamedata->next_scenario().empty() &&
 			resources::gamedata->next_scenario() != "null";
@@ -262,9 +235,8 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 	int num_turns = (*level)["turns"].to_int(-1);
 
 	config init_level = *level;
-	do_carryover_WML(init_level, state_of_game);
+
 	team_init(init_level, state_of_game);
-	clear_carryover_WML(state_of_game);
 
 	LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
 	playsingle_controller playcontroller(init_level, state_of_game, ticks, num_turns, game_config, disp.video(), skip_replay);
@@ -312,9 +284,8 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 	int num_turns = (*level)["turns"].to_int(-1);
 
 	config init_level = *level;
-	do_carryover_WML(init_level, state_of_game);
+
 	team_init(init_level, state_of_game);
-	clear_carryover_WML(state_of_game);
 
 	playmp_controller playcontroller(init_level, state_of_game, ticks, num_turns,
 		game_config, disp.video(), skip_replay, blindfold_replay, io_type == IO_SERVER);
@@ -604,14 +575,6 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				// mp::connect_engine.
 				team_init(starting_pos, gamestate);
 
-				//We don't merge WML until start of next scenario, but if we want to allow user to disable MP ui in transition,
-				//then we have to move "allow_new_game" attribute over now.
-				bool allow_new_game_flag = (*scenario)["allow_new_game"].to_bool(true);
-
-				if (gamestate.carryover_sides_start.child_or_empty("end_level_data").child_or_empty("next_scenario_settings").has_attribute("allow_new_game")) {
-					allow_new_game_flag = gamestate.carryover_sides_start.child_or_empty("end_level_data").child("next_scenario_settings")["allow_new_game"].to_bool();
-				}
-
 				params.scenario_data = *scenario;
 				params.scenario_data["next_underlying_unit_id"] = n_unit::id_manager::instance().get_save_id();
 				params.mp_scenario = (*scenario)["id"].str();
@@ -625,7 +588,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 					connect_engine(new mp::connect_engine(disp, gamestate,
 						params, !network_game, false));
 
-				if (allow_new_game_flag || (game_config::debug && network::nconnections() == 0)) {
+				if ((*scenario)["allow_new_game"].to_bool(true) || (game_config::debug && network::nconnections() == 0)) {
 					// Opens mp::connect dialog to allow users to
 					// make an adjustments for scenario.
 					// TODO: Fix this so that it works when network::nconnections() > 0 as well.
