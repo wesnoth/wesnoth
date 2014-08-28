@@ -14,70 +14,10 @@ The release team should empty this file after each release.
 CHANGES
 =======
 
-[section="Minor Add-ons Manager improvement"]
-Since the Update Add-ons shortcut in the add-ons server connection dialog was removed in version 1.11.0, the Update All (add-ons) functionality became considerably less visible. To address this, the Update All button is now available on all Add-on Manager views, and enabled whenever there is at least one add-on on the list that may be upgraded.
-[/section]
-
-[section="Fixed WML load error reporting"]
-A change introduced in version 1.11.15 caused WML parser/preprocessor errors found at game/add-on load time to not be reported to the player in the GUI, and the game to carry on with a incomplete and malformed WML tree in most cases. This issue was [url=http://r.wesnoth.org/p571380]reported[/url] on the forums by SkyOne and is fixed in this release.
-[/section]
-
-[section="Fixed whiteboard unit continuation problem"]
-Blocker bug #22231 has now been fixed and unit continuations in planning mode should work as expected.
-[/section]
-
 [section="Changes to the Mushroom Grove overlay terrain"]
-A change to the way how the Mushroom Grove terrain works might cause the need for some map rebalancing.
-Previously the mixed fungus terrain worked always like plain Mushroom Grove, now it is handled like the forest overlays.
-Movement is taken from the worst of both, defense is taken from the best value.
-[/section]
+The Mushroom Grove changes in 1.11.16 were reverted, mushroom grove will now behave stats-wise just as it did in 1.10. 
 
-[section="Savegame map preview bugs fixed"]
-Fixed bug that caused incorrect / missing minimap data to be displayed in the preview pane when loading a saved game. If more problems are observed, please report.
-
-Note that you must refresh your save_index to get proper behavior, by deleting it from the userdata folder.
-[/section]
-
-[section="Bugfixes for certain wml [filter] tags"]
-The [filter_vision] tag introduced in 1.11 series was discovered to have some bugs, it would behave with different logic depending on whether it was in a unit filter or a location filter. Neither of these implementations was actually quite right, and the simplest way to fix it was to make it work as originally intended. In 1.11.16 and future versions of wesnoth, [filter_vision] works like most other tags such as [has_unit], that is, 
-[list][*]When used in a unit filter, a [filter_vision] check succeeds if there is [b]any[/b] side with vision of the unit (no fog there and unit is not hiding from that side) which passes the side filter in [filter_vision], and fails otherwise.
-[*] When used in a terrain_filter, a [filter_vision] check succeeds if there is [b]any[/b] side with vision of the location (no fog there, or if respect_fog=false, then no shroud there) which passes the side filter in [filter_vision], and fails otherwise.
-[/list]
-Note that the above is a compatibility breaking change! Please double-check the behavior of any scenario which is using this tag.
-
-The [allied_with] / [enemy_of] tags in side filter had some related issues -- they were originally intended to match if *any* side matches the filter, but they
-ended up being implemented in a needlessly confusing manner, where they in most cases match if *all* sides matching the filter are allies / enemies, but if 
-there are none then they report false anyways. To work around this [has_ally] and [has_enemy] have been added, which correctly match when *any* side matching 
-the filter is an ally or enemy. ([allied_with] and [enemy_of] have not been changed.)
-
-Thus excepting for [allied_with] / [enemy_of], all filters in 1.11.16+ are simply a check for *any* object matching the filter data.
-[/section]
-
-[section="Bugfix: Saving and loading may cause a side's turn is not initialized"]
-A well-known and quite annoying bug [bug]21397[/bug] in mp had the consequence that, if a player disconnected / was blocking networking transmissions and it became their turn, then if anyone else saved the game they would have corrupted save files where the "upkeep" and reset movement steps of the game do not happen for that side after reload.
-
-This bug should now be fixed, if it recurs then please report on bugs.wesnoth.org.
-[/section]
-
-[section="Bugfix: Lock settings not working for faction, leader"]
-To fix bug [bug]21978[/bug], attributes "lock_faction" and "lock_leader" were added to [wiki]SideWML[/wiki]
-[/section]
-
-[section="Bug fixes for [item] images"]
-[list][*] Fixed bug [bug] 22215 [/bug] [item] images are now subject to local ToD lighting effects instead of
-     just the current map-wide ToD lighting
-[*] Fixed bug [bug] 21723 [/bug] [item] team_name doesn't work, shown to inappropriate teams at inappropriate times
-[/list]
-[/section]
-
-[section="Bug fixes for the new minimap"]
-[list][*] Fixed most of the minimap buttons appearing in the wrong state during WML start events
-[*] Minimap does not show invisible overlays (fixing bug [bug] 21298 [/bug])
-[/list]
-[/section]
-
-[section="Backported ElvishHunter's wmllint gui from master"]
-The wmllint gui should now come packaged with 1.12 series releases.
+This topic will perhaps be revisited for 1.14.0
 [/section]
 
 [section="partly revert 1.11.13 defeat_condition change"]
@@ -93,15 +33,13 @@ Example contents 2.
 KNOWN BUGS
 ==========
 
-[list][*] Start of scenario saves have some known bugs, they can't be loaded correctly and they don't get minimaps in the preview pane. (The preview part of this is by design however, the map is not known for a start of scenario save at the time of the load dialog and it cannot be previewed.)
+[list][*] Start of scenario saves have some known bugs ... (Fixme: I'm not sure which bugs still affect 1.11.16+dev at the time of writing this.)
 [*]Map labels do not work at all in networked multiplayer (are not displaed for other clients), see bug [bug]22251[/bug].
-[*]Random map generation causes Out of Sync in mp campaigns. However, a potential fix was pushed to 1.12 today, see bug report for bug [bug]22307[/bug].
 [*]The Legend of Wesmere campaign has multiple lua errors on various scenarios. 
 [list][*]Bug [bug]22221[/bug] which causes you to lose your recall list and gold. There is a known workaround for this, see here: http://forums.wesnoth.org/viewtopic.php?f=51&t=31609&start=15#p572120
 [*] bug [bug]22073[/bug] which causes the map to be oddly shifted.
 [*] Olurf does not appear at the Elves last stand, see here: http://forums.wesnoth.org/viewtopic.php?f=4&t=40067#p567272
 [/list]
-[*] The "lobby sounds" advanced preference doesn't do anything.
 [*] There are some known bugs with hotkeys: [list]
 [*][bug] 21969 [/bug] where your hotkey file gets spammed with "null".
 [*][bug] 21983 [/bug] you cannot clear some default hotkeys with the "clear hotkeys" menu option. This will not be treated as a bug in 1.12.
