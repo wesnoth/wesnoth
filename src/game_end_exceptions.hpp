@@ -24,11 +24,12 @@
 
 #include "lua_jailbreak_exception.hpp"
 
+#include "config.hpp"
+
 #include <string>
 
 #include <boost/optional.hpp>
-
-#include "config.hpp"
+#include <boost/variant/variant.hpp>
 
 enum LEVEL_RESULT {
 	NONE,
@@ -221,9 +222,6 @@ struct end_level_data
 	bool carryover_add;                /**< Add or replace next scenario's minimum starting gold. */
 	bool proceed_to_next_level;        /**< whether to proceed to the next scenario, equals (res == VICTORY) in sp. We need to save this in saves during linger mode. > */
 	transient_end_level transient;
-
-	config next_scenario_settings;
-	config next_scenario_append;
 
 	void write(config& cfg) const;
 

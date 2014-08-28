@@ -374,14 +374,6 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 				//note that although starting_pos is const it might be changed by gamestate.some_non_const_operation()  .
 				const config& starting_pos = gamestate.get_starting_pos();
 
-				//We don't merge WML until start of next scenario, but if we want to allow user to disable MP ui in transition,
-				//then we have to move "allow_new_game" attribute over now.
-				bool allow_new_game_flag = starting_pos["allow_new_game"].to_bool(gamestate.mp_settings().show_connect);
-
-				if (gamestate.carryover().child_or_empty("end_level_data").child_or_empty("next_scenario_settings").has_attribute("allow_new_game")) {
-					allow_new_game_flag = gamestate.carryover().child_or_empty("end_level_data").child("next_scenario_settings")["allow_new_game"].to_bool();
-				}
-
 				gamestate.mp_settings().num_turns = starting_pos["turns"].to_int(-1);
 				gamestate.mp_settings().saved_game = false;
 				gamestate.mp_settings().use_map_settings
@@ -391,7 +383,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 					connect_engine(new ng::connect_engine(gamestate,
 						!network_game, false));
 
-				if (allow_new_game_flag || (game_config::debug && network::nconnections() == 0)) {
+				if (starting_pos["allow_new_game"].to_bool(true) || (game_config::debug && network::nconnections() == 0)) {
 					// Opens mp::connect dialog to allow users to
 					// make an adjustments for scenario.
 					// TODO: Fix this so that it works when network::nconnections() > 0 as well.
