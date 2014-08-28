@@ -27,6 +27,22 @@ instead of checking whether the trait id equals fearless/healthy we now have fea
 this means especialy that umcaddons that use their own fearless/healthy traits have to add those [effect]s in them.
 [/section]
 
+[section="Changes to the Mushroom Grove overlay terrain"]
+The Mushroom Grove changes in 1.11.16 were reverted, mushroom grove will now behave stats-wise just as it did in 1.10. 
+
+This topic will perhaps be revisited for 1.14.0
+[/section]
+
+[section="Buggy Carryover WML feature removed"]
+Version 1.11.7 (check this) from just before feature freeze introduced a "carryover WML" feature, wherein the [endlevel] tag might contain child tags which would get merged into the scenario config for the next scenario. This allows for a secnario to dynamically reconfigure the next scenario. Unfortunately, it was a bit buggy, didn't actually work properly in networked mp, and would have been very difficult to fix. There are also many other ways to achieve this, for one you can use modifications or have scenarios pass variables to eachother. The main use case for this feature was, what if you want to transition to a scenario maintained by someone else, but you would like to aggressively reconfigure it, adding new events or overwriting events in that scenario. There are other things you could do with carryover WML, like have a scenario that loops and dynamically reconfigures itself. But reconfiguring a scenario whose contents you don't actually control is probably the main use I had in mind for this. (Note that you can still just fork someone else's content and make a new version which reads variables to allow it to be reconfigured, so I don't think there is loss in power to remove this.)
+
+Another point raised in internal discussion is that it would probably be more useful if this feature applied before random map generation occurred, which when it was first implemented wasn't how it worked. Since there are many changes planned to this scenario generation code path, for instance the merging of mp and sp, and this feature adds a fair bit of complication, we decided to shelf it and perhaps rethink it later.
+[/section]
+
+[section="Example section 2"]
+Example contents 2.
+[/section]
+
 ==========
 KNOWN BUGS
 ==========
