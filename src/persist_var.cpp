@@ -42,7 +42,7 @@ struct persist_choice: mp_sync::user_choice {
 		, var_name(name)
 		, side(side_num) {
 	}
-	virtual config query_user(int side_for) const {
+	virtual config query_user(int /*side_for*/) const {
 		//side can be different from side_for: if side was null-controlled 
 		//then get_user_choice will use the next non-null-controlled side instead
 		config ret;
