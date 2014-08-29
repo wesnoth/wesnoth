@@ -3764,26 +3764,9 @@ static int intf_get_all_vars(lua_State *L) {
 }
 
 LuaKernel::LuaKernel(const config &cfg)
-	: mState(luaL_newstate()), level_(cfg)
+	: lua_kernel_base(), level_(cfg)
 {
 	lua_State *L = mState;
-
-	// Open safe libraries.
-	// Debug and OS are not, but most of their functions will be disabled below.
-	static const luaL_Reg safe_libs[] = {
-		{ "",       luaopen_base   },
-		{ "table",  luaopen_table  },
-		{ "string", luaopen_string },
-		{ "math",   luaopen_math   },
-		{ "debug",  luaopen_debug  },
-		{ "os",     luaopen_os     },
-		{ NULL, NULL }
-	};
-	for (luaL_Reg const *lib = safe_libs; lib->func; ++lib)
-	{
-		luaL_requiref(L, lib->name, lib->func, 1);
-		lua_pop(L, 1);  /* remove lib */
-	}
 
 	// Put some callback functions in the scripting environment.
 	static luaL_Reg const callbacks[] = {
@@ -4051,31 +4034,6 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_remove(L, -2);
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
-	// Disable functions from os which we don't want.
-	lua_getglobal(L, "os");
-	lua_pushnil(L);
-	while(lua_next(L, -2) != 0) {
-		lua_pop(L, 1);
-		char const* function = lua_tostring(L, -1);
-		if(strcmp(function, "clock") == 0 || strcmp(function, "date") == 0
-			|| strcmp(function, "time") == 0 || strcmp(function, "difftime") == 0) continue;
-		lua_pushnil(L);
-		lua_setfield(L, -3, function);
-	}
-	lua_pop(L, 1);
-
-	// Disable functions from debug which we don't want.
-	lua_getglobal(L, "debug");
-	lua_pushnil(L);
-	while(lua_next(L, -2) != 0) {
-		lua_pop(L, 1);
-		char const* function = lua_tostring(L, -1);
-		if(strcmp(function, "traceback") == 0) continue;
-		lua_pushnil(L);
-		lua_setfield(L, -3, function);
-	}
-	lua_pop(L, 1);
-
 	lua_settop(L, 0);
 }
 
@@ -4263,11 +4221,6 @@ bool LuaKernel::run_event(game_events::queued_event const &ev)
 	return true;
 }
 
-LuaKernel::~LuaKernel()
-{
-	lua_close(mState);
-}
-
 /**
  * Executes its upvalue as a wml action.
  */
@@ -4352,46 +4305,6 @@ bool LuaKernel::run_filter(char const *name, unit const &u)
 	bool b = luaW_toboolean(L, -1);
 	lua_pop(L, 1);
 	return b;
-}
-
-/**
- * Runs a script on a stack containing @a nArgs arguments.
- * @return true if the script was successful and @a nRets return values are available.
- */
-bool LuaKernel::execute(char const *prog, int nArgs, int nRets)
-{
-	lua_State *L = mState;
-
-	// Compile script into a variadic function.
-	int res = luaL_loadstring(L, prog);
-	if (res)
-	{
-		char const *m = lua_tostring(L, -1);
-		chat_message("Lua error", m);
-		ERR_LUA << m << '\n';
-		lua_pop(L, 1);
-		return false;
-	}
-
-	// Place the function before its arguments.
-	if (nArgs)
-		lua_insert(L, -1 - nArgs);
-
-	return luaW_pcall(L, nArgs, nRets);
-}
-
-/**
- * Loads the "package" package into the Lua environment.
- * This action is inherently unsafe, as Lua scripts will now be able to
- * load C libraries on their own, hence granting them the same privileges
- * as the Wesnoth binary itsef.
- */
-void LuaKernel::load_package()
-{
-	lua_State *L = mState;
-	lua_pushcfunction(L, luaopen_package);
-	lua_pushstring(L, "package");
-	lua_call(L, 1, 0);
 }
 
 ai::lua_ai_context* LuaKernel::create_lua_ai_context(char const *code, ai::engine_lua *engine)

@@ -15,6 +15,8 @@
 #ifndef SCRIPTING_LUA_HPP
 #define SCRIPTING_LUA_HPP
 
+#include "scripting/lua_kernel_base.hpp" // for lua_kernel_base
+
 #include "game_events/action_wml.hpp"   // for wml_action, etc
 
 #include <string>                       // for string
@@ -30,14 +32,12 @@ struct lua_State;
 
 void extract_preload_scripts(config const &);
 
-class LuaKernel
+class LuaKernel : public lua_kernel_base
 {
-	lua_State *mState;
 	const config &level_;
-	bool execute(char const *, int, int);
+
 public:
 	LuaKernel(const config &);
-	~LuaKernel();
 	void initialize();
 	void save_game(config &);
 	void load_game();
@@ -46,11 +46,9 @@ public:
 	bool run_wml_action(std::string const &, vconfig const &,
 		game_events::queued_event const &);
 	bool run_filter(char const *name, unit const &u);
-	/** Runs a plain script. */
-	void run(char const *prog) { execute(prog, 0, 0); }
+
 	ai::lua_ai_context* create_lua_ai_context(char const *code, ai::engine_lua *engine);
 	ai::lua_ai_action_handler* create_lua_ai_action_handler(char const *code, ai::lua_ai_context &context);
-	void load_package();
 };
 
 #endif
