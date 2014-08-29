@@ -715,7 +715,7 @@ static void show_oos_error_error_function(const std::string& message, bool /*hea
 	replay::process_error(message);
 }
 
-REPLAY_RETURN do_replay()
+REPLAY_RETURN do_replay(bool one_move)
 {
 	log_scope("do replay");
 
@@ -724,10 +724,10 @@ REPLAY_RETURN do_replay()
 	}
 
 	update_locker lock_update(resources::screen->video(),get_replay_source().is_skipping());
-	return do_replay_handle();
+	return do_replay_handle(one_move);
 }
 
-REPLAY_RETURN do_replay_handle()
+REPLAY_RETURN do_replay_handle(bool one_move)
 {
 
 	//team &current_team = (*resources::teams)[side_num - 1];
@@ -909,6 +909,9 @@ REPLAY_RETURN do_replay_handle()
 					we need to use the undo stack during replays in order to make delayed shroud updated work.
 				*/
 				synced_context::run_in_synced_context(commandname, data, true, !get_replay_source().is_skipping(), false,show_oos_error_error_function);
+				if (one_move) {
+					return REPLAY_FOUND_END_MOVE;
+				}
 			}
 		}
 

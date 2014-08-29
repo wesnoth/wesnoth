@@ -209,6 +209,9 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 		case HOTKEY_REPLAY_NEXT_SIDE:
 			replay_next_side();
 			break;
+		case HOTKEY_REPLAY_NEXT_MOVE:
+			replay_next_move();
+			break;
 		case HOTKEY_REPLAY_SHOW_EVERYTHING:
 			replay_show_everything();
 			break;

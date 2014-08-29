@@ -140,7 +140,8 @@ replay_controller::~replay_controller()
 
 void replay_controller::init(){
 	DBG_REPLAY << "in replay_controller::init()...\n";
-
+	
+	last_replay_action = REPLAY_FOUND_END_MOVE;
 	//guarantee the cursor goes back to 'normal' at the end of the level
 	const cursor::setter cursor_setter(cursor::NORMAL);
 	init_replay_display();
@@ -211,6 +212,11 @@ gui::button* replay_controller::play_side_button()
 	return gui_->find_action_button("button-nextside");
 }
 
+gui::button* replay_controller::play_move_button()
+{
+	return gui_->find_action_button("button-nextmove");
+}
+
 void replay_controller::update_replay_ui()
 {
 	//check if we have all buttons - if someone messed with theme then some buttons may be missing
@@ -218,7 +224,7 @@ void replay_controller::update_replay_ui()
 	if(!replay_ui_has_all_buttons()) {
 		gui::button *play_b = play_button(), *stop_b = stop_button(),
 		            *reset_b = reset_button(), *play_turn_b = play_turn_button(),
-		            *play_side_b = play_side_button();
+		            *play_side_b = play_side_button(), *play_move_b = play_move_button();
 
 		if(play_b) {
 			play_b->enable(false);
@@ -239,6 +245,10 @@ void replay_controller::update_replay_ui()
 		if(play_side_b) {
 			play_side_b->enable(false);
 		}
+
+		if (play_move_b) {
+			play_move_b->enable(false);
+		} 
 	}
 }
 
@@ -251,6 +261,7 @@ void replay_controller::replay_ui_playback_should_start()
 	reset_button()->enable(false);
 	play_turn_button()->enable(false);
 	play_side_button()->enable(false);
+	play_move_button()->enable(false);
 }
 
 void replay_controller::replay_ui_playback_should_stop()
@@ -263,10 +274,12 @@ void replay_controller::replay_ui_playback_should_stop()
 		reset_button()->enable(true);
 		play_turn_button()->enable(true);
 		play_side_button()->enable(true);
+		play_move_button()->enable(true);
 
 		play_button()->release();
 		play_turn_button()->release();
 		play_side_button()->release();
+		play_move_button()->release();
 	} else {
 		reset_button()->enable(true);
 		stop_button()->enable(false);
@@ -377,22 +390,31 @@ possible_end_play_signal replay_controller::replay_next_turn(){
 	return boost::none;
 }
 
-possible_end_play_signal replay_controller::replay_next_side(){
+possible_end_play_signal replay_controller::replay_next_move_or_side(bool one_move){
 	is_playing_ = true;
 	replay_ui_playback_should_start();
-
-	HANDLE_END_PLAY_SIGNAL( play_side() );
+	
+	HANDLE_END_PLAY_SIGNAL( play_move_or_side(one_move) );
 	while (current_team().is_empty()) {
-		HANDLE_END_PLAY_SIGNAL( play_side() );
+ 		HANDLE_END_PLAY_SIGNAL( play_move_or_side(one_move) );
 	}
 
-	if (!skip_replay_ || !is_playing_) {
+ 	if ( (!skip_replay_ || !is_playing_) && (last_replay_action == REPLAY_FOUND_END_TURN) ){
 		gui_->scroll_to_leader(player_number_,game_display::ONSCREEN,false);
 	}
 
 	replay_ui_playback_should_stop();
 	return boost::none;
 }
+
+possible_end_play_signal replay_controller::replay_next_side(){
+	return replay_next_move_or_side(false);
+}
+
+possible_end_play_signal replay_controller::replay_next_move(){
+	return replay_next_move_or_side(true);
+}
+
 
 void replay_controller::process_oos(const std::string& msg) const
 {
@@ -499,9 +521,18 @@ possible_end_play_signal replay_controller::play_turn(){
 	return boost::none;
 }
 
-//make only one side move
-possible_end_play_signal replay_controller::play_side() {
 
+possible_end_play_signal replay_controller::play_side() {
+	return play_move_or_side(false);
+}
+
+possible_end_play_signal replay_controller::play_move() {
+	return play_move_or_side(true);
+}
+
+//make only one side move
+possible_end_play_signal replay_controller::play_move_or_side(bool one_move) {
+	
 	DBG_REPLAY << "Status turn number: " << turn() << "\n";
 	DBG_REPLAY << "Replay_Controller turn number: " << current_turn_ << "\n";
 	DBG_REPLAY << "Player number: " << player_number_ << "\n";
@@ -510,7 +541,10 @@ possible_end_play_signal replay_controller::play_side() {
 	if (!current_team().is_empty()) {
 		statistics::reset_turn_stats(current_team().save_id());
 
-		possible_end_play_signal signal = play_controller::init_side(true);
+		possible_end_play_signal signal = NULL;
+		if (last_replay_action == REPLAY_FOUND_END_TURN) {
+			signal = play_controller::init_side(true);
+		}
 
 		if (signal) {
 			switch (boost::apply_visitor(get_signal_type(), *signal) ) {
@@ -526,10 +560,12 @@ possible_end_play_signal replay_controller::play_side() {
 		DBG_REPLAY << "doing replay " << player_number_ << "\n";
 		// if have reached the end we don't want to execute finish_side_turn and finish_turn
 		// becasue we might not have enough data to execute them (like advancements during turn_end for example)
-
+		
 		try {
-			if(do_replay() != REPLAY_FOUND_END_TURN) {
-				// We reached the end of teh replay without finding and end turn tag.
+			last_replay_action = do_replay(one_move);
+			if(last_replay_action != REPLAY_FOUND_END_TURN) {
+				//We reached the end of the replay without finding an end turn tag.
+				//REPLAY_FOUND_DEPENDENT here might indicate an OOS error
 				return boost::none;
 			}
 		} catch(end_level_exception& e){
@@ -640,6 +676,7 @@ bool replay_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 	case hotkey::HOTKEY_REPLAY_PLAY:
 	case hotkey::HOTKEY_REPLAY_NEXT_TURN:
 	case hotkey::HOTKEY_REPLAY_NEXT_SIDE:
+	case hotkey::HOTKEY_REPLAY_NEXT_MOVE:
 		//we have one events_disabler when starting the replay_controller and a second when entering the synced context.
 		return (events::commands_disabled <= 1 ) && !recorder.at_end();
 	default:

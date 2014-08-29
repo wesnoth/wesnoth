@@ -39,8 +39,10 @@ public:
 	possible_end_play_signal play_replay();
 	void reset_replay();
 	void stop_replay();
+	possible_end_play_signal replay_next_move_or_side(bool one_move);
 	possible_end_play_signal replay_next_turn();
 	possible_end_play_signal replay_next_side();
+	possible_end_play_signal replay_next_move();
 	void process_oos(const std::string& msg) const;
 	void replay_show_everything();
 	void replay_show_each();
@@ -60,7 +62,9 @@ protected:
 private:
 	void init();
 	possible_end_play_signal play_turn();
+	possible_end_play_signal play_move_or_side(bool one_move = false);
 	possible_end_play_signal play_side();
+	possible_end_play_signal play_move();
 	void update_teams();
 	void update_gui();
 	void init_replay_display();
@@ -80,6 +84,7 @@ private:
 	gui::button* reset_button();
 	gui::button* play_turn_button();
 	gui::button* play_side_button();
+	gui::button* play_move_button();
 
 	bool replay_ui_has_all_buttons() {
 		return play_button() && stop_button() && reset_button() &&
@@ -89,6 +94,7 @@ private:
 	saved_game saved_game_start_;
 	game_board gameboard_start_;
 	tod_manager tod_manager_start_;
+	unsigned int last_replay_action;
 
 	unsigned int current_turn_;
 	bool is_playing_;
