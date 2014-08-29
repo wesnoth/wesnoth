@@ -46,7 +46,7 @@
 #include "savegame.hpp"
 #include "saved_game.hpp"
 #include "save_blocker.hpp"
-#include "scripting/lua.hpp"
+#include "scripting/game_lua_kernel.hpp"
 #include "sound.hpp"
 #include "soundsource.hpp"
 #include "synced_context.hpp"

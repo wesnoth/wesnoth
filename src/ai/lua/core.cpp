@@ -26,7 +26,7 @@
 #include <cstring>
 
 #include "core.hpp"
-#include "../../scripting/lua.hpp"
+#include "../../scripting/game_lua_kernel.hpp"
 #include "../../scripting/lua_api.hpp"
 #include "lua_object.hpp" // (Nephro)
 

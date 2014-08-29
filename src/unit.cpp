@@ -34,7 +34,7 @@
 #include "map.hpp"       // for gamemap
 #include "random_new.hpp"               // for generator, rng
 #include "resources.hpp"                // for units, gameboard, teams, etc
-#include "scripting/lua.hpp"            // for LuaKernel
+#include "scripting/game_lua_kernel.hpp"            // for LuaKernel
 #include "side_filter.hpp"              // for side_filter
 #include "team.hpp"                     // for team, get_teams, etc
 #include "terrain_filter.hpp"           // for terrain_filter

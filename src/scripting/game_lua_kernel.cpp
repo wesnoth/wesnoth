@@ -23,7 +23,7 @@
  *   - luaW_ functions are helpers in Lua style.
  */
 
-#include "scripting/lua.hpp"
+#include "scripting/game_lua_kernel.hpp"
 
 #include "global.hpp"
 

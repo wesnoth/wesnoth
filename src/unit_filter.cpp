@@ -24,7 +24,7 @@
 #include "make_enum.hpp"
 #include "map_location.hpp"
 #include "resources.hpp" //Needed for lua kernel pointer
-#include "scripting/lua.hpp" //Needed for lua kernel
+#include "scripting/game_lua_kernel.hpp" //Needed for lua kernel
 #include "side_filter.hpp"
 #include "team.hpp"
 #include "terrain_filter.hpp"

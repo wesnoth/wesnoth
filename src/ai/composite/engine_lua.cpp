@@ -30,7 +30,7 @@
 #include "../../resources.hpp"
 #include "../lua/core.hpp"
 #include "../lua/lua_object.hpp"
-#include "../../scripting/lua.hpp"
+#include "../../scripting/game_lua_kernel.hpp"
 #include "../../util.hpp"
 #include "../../unit.hpp"
 #include "../../unit_map.hpp"
