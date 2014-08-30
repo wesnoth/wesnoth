@@ -35,6 +35,8 @@ public:
 						  const std::string& expected_format);
 };
 
+class config;
+
 class commandline_options
 {
 /// To be used for printing help to the commandline.
@@ -42,6 +44,8 @@ friend std::ostream& operator<<(std::ostream &os, const commandline_options& cmd
 
 public:
 	commandline_options(const std::vector<std::string>& args);
+
+	config to_config() const; /* Used by lua scrips. Not all of the options need to be exposed here, just those exposed to lua */
 
 	/// BitsPerPixel specified by --bpp option.
 	boost::optional<int> bpp;

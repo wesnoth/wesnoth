@@ -15,6 +15,12 @@
 #include "commandline_options.hpp"
 #include "global.hpp"
 
+#include "config.hpp"
+#include "formatter.hpp"
+#include "log.hpp"                      // for logger, set_strict_severity, etc
+#include "serialization/string_utils.hpp"  // for split
+#include "util.hpp"                     // for lexical_cast
+
 #include <boost/any.hpp>                // for any
 #include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/program_options/cmdline.hpp>
@@ -25,11 +31,6 @@
 #include <boost/program_options/variables_map.hpp>  // for variables_map, etc
 #include <boost/version.hpp>            // for BOOST_VERSION
 #include <iostream>                     // for operator<<, basic_ostream, etc
-#include "formatter.hpp"
-#include "log.hpp"                      // for logger, set_strict_severity, etc
-#include "serialization/string_utils.hpp"  // for split
-#include "util.hpp"                     // for lexical_cast
-
 
 namespace po = boost::program_options;
 
@@ -575,4 +576,18 @@ std::ostream& operator<<(std::ostream &os, const commandline_options& cmdline_op
 	os << "Usage: " << cmdline_opts.args0_ << " [<options>] [<data-directory>]\n";
 	os << cmdline_opts.visible_;
 	return os;
+}
+
+config commandline_options::to_config() const {
+	config ret;
+	if (server) {
+		ret["server"] = *server;
+	}
+	if (username) {
+		ret["username"] = *username;
+	}
+	if (password) {
+		ret["password"] = *password;
+	}
+	return ret;
 }
