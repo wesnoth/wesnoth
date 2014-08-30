@@ -938,6 +938,7 @@ set(wesnoth-main_SRC
 	scripting/debug_lua.cpp
 	scripting/game_lua_kernel.cpp
 	scripting/lua_api.cpp
+	scripting/lua_common.cpp
 	scripting/lua_kernel_base.cpp
 	scripting/lua_types.cpp
 	settings.cpp
