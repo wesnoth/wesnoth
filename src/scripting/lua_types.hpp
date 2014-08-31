@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+#ifndef SCRIPTING_LUA_TYPES_HPP
+#define SCRIPTING_LUA_TYPES_HPP
+
 typedef void* luatypekey;
 
 // i dont want to cast to void* each time ....
@@ -27,3 +30,6 @@ extern luatypekey const tstringKey;
 extern luatypekey const unitvarKey;
 extern luatypekey const ustatusKey;
 extern luatypekey const vconfigKey;
+extern luatypekey const currentscriptKey;
+
+#endif

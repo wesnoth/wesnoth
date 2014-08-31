@@ -19,18 +19,22 @@
 
 struct lua_State;
 
+typedef int (*pcall_fcn_ptr)(lua_State *, int, int);
+
 class lua_kernel_base {
 protected:
 	lua_State *mState;
 	bool execute(char const *, int, int);
 public:
 	lua_kernel_base();
-	~lua_kernel_base();
+	virtual ~lua_kernel_base();
 
 	/** Runs a plain script. */
-	void run(char const *prog) { execute(prog, 0, 0); }
+	void run(char const *prog);
 
 	void load_package();
+
+	virtual pcall_fcn_ptr pcall_fcn(); //when running scripts, in the "base" kernel type we should just use pcall. But for the in-game kernel, we want to call the luaW_pcall function instead which extends it using things specific to that api, and returns errors on a WML channel
 };
 
 #endif

@@ -90,6 +90,15 @@ lua_kernel_base::~lua_kernel_base()
 	lua_close(mState);
 }
 
+// This is needed because lua_pcall is actually a macro
+static int lua_pcall_fcn(lua_State * L, int a, int b)
+{
+	return lua_pcall(L,a,b,0);
+}
+
+// In the "base" configuration we just want to call lua_pcall when running scripts.
+pcall_fcn_ptr lua_kernel_base::pcall_fcn() { return &lua_pcall_fcn; }
+
 /**
  * Runs a script on a stack containing @a nArgs arguments.
  * @return true if the script was successful and @a nRets return values are available.
@@ -106,15 +115,29 @@ bool lua_kernel_base::execute(char const *prog, int nArgs, int nRets)
 		chat_message("Lua error", m);
 		ERR_LUA << m << '\n';
 		lua_pop(L, 1);
-		return false;
+		return true;
 	}
 
 	// Place the function before its arguments.
 	if (nArgs)
 		lua_insert(L, -1 - nArgs);
 
-	return luaW_pcall(L, nArgs, nRets);
+	pcall_fcn_ptr f = pcall_fcn();
+	return f(L, nArgs, nRets);
 }
+
+void lua_kernel_base::run(const char * prog) {
+	if (execute(prog, 0, 0)) {
+		lua_State *L = mState;
+
+		char const *m = lua_tostring(L, -1);
+		ERR_LUA << "lua_kernel::run(): " << m << '\n';
+		lua_pop(L,1);
+
+		//execute("print(debug.traceback())",0,0);
+	}
+}
+
 
 /**
  * Loads the "package" package into the Lua environment.

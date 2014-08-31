@@ -3998,6 +3998,13 @@ bool LuaKernel::run_filter(char const *name, unit const &u)
 	return b;
 }
 
+// This is needed because default args don't work through function pointers
+static int luaW_pcall_default_args(lua_State * L, int a, int b) {
+	return luaW_pcall(L,a,b,false);
+}
+
+pcall_fcn_ptr LuaKernel::pcall_fcn() { return &luaW_pcall_default_args; } //this causes the run() function to use luaW_pcall instead of lua_pcall
+
 ai::lua_ai_context* LuaKernel::create_lua_ai_context(char const *code, ai::engine_lua *engine)
 {
 	return ai::lua_ai_context::create(mState,code,engine);

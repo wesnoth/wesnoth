@@ -94,6 +94,8 @@ public:
 	editor::EXIT_STATUS start_editor() { return start_editor(""); }
 
 	void start_wesnothd();
+
+	const commandline_options & opts() const { return cmdline_opts_; }
 private:
 	game_launcher(const game_launcher&);
 	void operator=(const game_launcher&);

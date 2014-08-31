@@ -41,6 +41,7 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 
 void chat_message(std::string const &caption, std::string const &msg)
 {
+	if (!resources::screen) return;
 	resources::screen->get_chat_manager().add_chat_message(time(NULL), caption, 0, msg,
 		events::chat_handler::MESSAGE_PUBLIC, false);
 }

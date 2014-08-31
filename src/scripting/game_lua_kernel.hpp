@@ -47,6 +47,8 @@ public:
 		game_events::queued_event const &);
 	bool run_filter(char const *name, unit const &u);
 
+	virtual pcall_fcn_ptr pcall_fcn();
+
 	ai::lua_ai_context* create_lua_ai_context(char const *code, ai::engine_lua *engine);
 	ai::lua_ai_action_handler* create_lua_ai_action_handler(char const *code, ai::lua_ai_context &context);
 };
