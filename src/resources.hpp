@@ -25,6 +25,7 @@ class gamemap;
 class game_data;
 class filter_context;
 class LuaKernel;
+class application_lua_kernel;
 class play_controller;
 class team;
 class fake_unit_manager;
@@ -50,6 +51,7 @@ namespace resources
 	extern game_board             *gameboard;
 	extern game_data              *gamedata;
 	extern LuaKernel              *lua_kernel;     // Set by game_events::manager.
+	extern application_lua_kernel *app_lua_kernel;
 	extern persist_manager        *persist;
 	extern game_classification    *classification;
 	extern game_display           *screen;

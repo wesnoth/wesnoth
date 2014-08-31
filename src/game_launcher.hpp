@@ -62,6 +62,7 @@ public:
 	bool init_video();
 	bool init_language();
 	bool init_joystick();
+	bool init_lua_script();
 
 	bool play_test();
 	bool play_screenshot_mode();

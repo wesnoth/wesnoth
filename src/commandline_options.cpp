@@ -185,6 +185,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("render-image", po::value<two_strings>()->multitoken(), "takes two arguments: <image> <output>. Like screenshot, but instead of a map, takes a valid wesnoth 'image path string' with image path functions, and outputs to a windows .bmp file")
 		("rng-seed", po::value<unsigned int>(), "seeds the random number generator with number <arg>. Example: --rng-seed 0")
 		("screenshot", po::value<two_strings>()->multitoken(), "takes two arguments: <map> <output>. Saves a screenshot of <map> to <output> without initializing a screen. Editor must be compiled in for this to work.")
+		("script", po::value<std::string>(), "file containing a lua script to control the client")
 		("server,s", po::value<std::string>()->implicit_value(std::string()), "connects to the host <arg> if specified or to the first host in your preferences.")
 		("username", po::value<std::string>(), "uses <username> when connecting to a server, ignoring other preferences.")
 		("password", po::value<std::string>(), "uses <password> when connecting to a server, ignoring other preferences.")
@@ -430,6 +431,8 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		screenshot_map_file = vm["screenshot"].as<two_strings>().get<0>();
 		screenshot_output_file = vm["screenshot"].as<two_strings>().get<1>();
 	}
+	if (vm.count("script"))
+		script_file = vm["script"].as<std::string>();
 	if (vm.count("server"))
 		server = vm["server"].as<std::string>();
 	if (vm.count("username"))
