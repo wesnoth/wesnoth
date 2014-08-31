@@ -9,6 +9,8 @@ Version 1.13.0-dev:
    * New Micro AI: Fast AI
    * Messenger Escort Micro AI: new optional parameters [filter],
      [filter_second] and invert_order=
+   * Coward Micro AI: new optional key attack_if_trapped=
+   * Stationed Guardian Micro AI: make guard_x/y= optional keys
    * Messenger Escort Micro AI: bug fix for escort units blocking messenger's
      progress
    * Several Micro AIs: fix a variety of rarely occurring but serious bugs, such
@@ -25,7 +27,9 @@ Version 1.13.0-dev:
      some minor and subtle bugs.
    * Fix bug in Random Recruit Micro AI: the AI can now handle custom castle
      terrain independent of its terrain code
-   * Fix bug in Return Guardian Micro AI when there is no path to the return hex
+   * Fix bug in Return Guardian and Goto Micro AIs when there is no path to
+     the goal hex
+   * Several fixes of translatable strings in Micro AIs
  * Campaigns:
    * Changed all occurrences of {FLAG_VARIANT ragged} to {FLAG_VARIANT6 ragged}
    * Singleplayer campaign creation now utilizes the create, configure,
@@ -50,6 +54,7 @@ Version 1.13.0-dev:
      * S6: remove AI controller.  It doesn't work with sides without a leader
      * Minor balance tweaks to scenarios 7, 8, 12, 14, 15, 17 and 18.
      * Made allied leaders less likely to get themselves killed.
+     * Minor changes to objectives and messages in scenarios 7, 8 and 14
    * The Hammer of Thursagan:
      * Fixed missing objective in 'The Court of Karrag'.
      * Rebalanced scenarios 'Invaders', Mages and Drakes' and 'Fear'.
@@ -126,9 +131,9 @@ Version 1.13.0-dev:
    * enable side_for= in key [message] with [option]s.
    * Fixed mouse tracking issue with workaround by changing the default window
      resolution for OS X to 800 x 600 (bug #20332).
-   * added [effect] apply_to=fearless/healthy which is now used by healty/fearless 
+   * added [effect] apply_to=fearless/healthy which is now used by healty/fearless
      traits instead of hardcoding the id of those traits in c++.
-   * added support for a shuffle key in the [music] music to allow selecting 
+   * added support for a shuffle key in the [music] music to allow selecting
      between random and non-random music play (bug #19653)
  * Miscellaneous and bug fixes:
    * replace 'fight_on_without_leader'=yes/no with defeat_condition=no_leader/
@@ -304,7 +309,7 @@ Version 1.13.0-dev:
    * Fixed in-game help descriptions of default factions, using content from wiki
    * Added automatically generated lists of races and alignments to the descriptions of factions
    * Align unit overlays to the sprite rather than the occupied hex.
-   * Remove carryover WML (this may make a reappearance in 1.13.0 but it is 
+   * Remove carryover WML (this may make a reappearance in 1.13.0 but it is
      considered premature now, please see github PR discussion for more info)
 
 Version 1.11.11:
