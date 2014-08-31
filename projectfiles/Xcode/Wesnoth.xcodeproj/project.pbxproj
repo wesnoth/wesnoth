@@ -69,10 +69,7 @@
 		62CC8E7617B9063E00C16B75 /* entity_location.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E6E17B9063D00C16B75 /* entity_location.cpp */; };
 		62CC8E7717B9063E00C16B75 /* handlers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E7017B9063D00C16B75 /* handlers.cpp */; };
 		62CC8E7817B9063E00C16B75 /* pump.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E7217B9063D00C16B75 /* pump.cpp */; };
-		62CC8E8C17B9064D00C16B75 /* cavegen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E7A17B9064B00C16B75 /* cavegen.cpp */; };
 		62CC8E8D17B9064D00C16B75 /* map_create.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E7C17B9064B00C16B75 /* map_create.cpp */; };
-		62CC8E8E17B9064D00C16B75 /* mapgen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E7E17B9064B00C16B75 /* mapgen.cpp */; };
-		62CC8E8F17B9064D00C16B75 /* mapgen_dialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E8017B9064B00C16B75 /* mapgen_dialog.cpp */; };
 		62CC8E9017B9064D00C16B75 /* ya_mapgen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E8317B9064C00C16B75 /* ya_mapgen.cpp */; };
 		62CC8E9117B9064D00C16B75 /* yamg_hex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E8617B9064C00C16B75 /* yamg_hex.cpp */; };
 		62CC8E9217B9064D00C16B75 /* yamg_hexheap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E8817B9064C00C16B75 /* yamg_hexheap.cpp */; };
@@ -838,6 +835,11 @@
 		EC48D75917F318DA00DE80BF /* mp_game_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC48D75017F318DA00DE80BF /* mp_game_utils.cpp */; };
 		EC48D75A17F318DA00DE80BF /* multiplayer_configure.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC48D75217F318DA00DE80BF /* multiplayer_configure.cpp */; };
 		EC4D40AF17FCCF14002E7C81 /* strftime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4D40AD17FCCF14002E7C81 /* strftime.cpp */; };
+		EC4E3B1B19B2D7AD0049CBD7 /* cave_map_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4E3B1819B2D7AD0049CBD7 /* cave_map_generator.cpp */; };
+		EC4E3B1C19B2D7AD0049CBD7 /* default_map_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4E3B1919B2D7AD0049CBD7 /* default_map_generator.cpp */; };
+		EC4E3B1D19B2D7AD0049CBD7 /* map_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4E3B1A19B2D7AD0049CBD7 /* map_generator.cpp */; };
+		EC4E3B2019B2D8480049CBD7 /* stage_sf_with_rca.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4E3B1E19B2D8480049CBD7 /* stage_sf_with_rca.cpp */; };
+		EC4E3B2219B2D8880049CBD7 /* simulated_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4E3B2119B2D8880049CBD7 /* simulated_actions.cpp */; };
 		EC51DB7818F8BFA4004621D9 /* playturn_network_adapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC51DB7618F8BFA4004621D9 /* playturn_network_adapter.cpp */; };
 		EC5C243B18EF07B4001FA499 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242218EF07B4001FA499 /* libbz2.1.0.dylib */; };
 		EC5C243C18EF07B4001FA499 /* libexpat.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242318EF07B4001FA499 /* libexpat.1.dylib */; };
@@ -1186,14 +1188,8 @@
 		62CC8E7117B9063D00C16B75 /* handlers.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = handlers.hpp; sourceTree = "<group>"; };
 		62CC8E7217B9063D00C16B75 /* pump.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pump.cpp; sourceTree = "<group>"; };
 		62CC8E7317B9063D00C16B75 /* pump.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pump.hpp; sourceTree = "<group>"; };
-		62CC8E7A17B9064B00C16B75 /* cavegen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cavegen.cpp; sourceTree = "<group>"; };
-		62CC8E7B17B9064B00C16B75 /* cavegen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cavegen.hpp; sourceTree = "<group>"; };
 		62CC8E7C17B9064B00C16B75 /* map_create.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = map_create.cpp; sourceTree = "<group>"; };
 		62CC8E7D17B9064B00C16B75 /* map_create.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = map_create.hpp; sourceTree = "<group>"; };
-		62CC8E7E17B9064B00C16B75 /* mapgen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mapgen.cpp; sourceTree = "<group>"; };
-		62CC8E7F17B9064B00C16B75 /* mapgen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mapgen.hpp; sourceTree = "<group>"; };
-		62CC8E8017B9064B00C16B75 /* mapgen_dialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mapgen_dialog.cpp; sourceTree = "<group>"; };
-		62CC8E8117B9064B00C16B75 /* mapgen_dialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mapgen_dialog.hpp; sourceTree = "<group>"; };
 		62CC8E8317B9064C00C16B75 /* ya_mapgen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ya_mapgen.cpp; sourceTree = "<group>"; };
 		62CC8E8417B9064C00C16B75 /* ya_mapgen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ya_mapgen.hpp; sourceTree = "<group>"; };
 		62CC8E8517B9064C00C16B75 /* yamg_decls.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = yamg_decls.hpp; sourceTree = "<group>"; };
@@ -2056,6 +2052,12 @@
 		EC48D75317F318DA00DE80BF /* multiplayer_configure.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = multiplayer_configure.hpp; sourceTree = "<group>"; };
 		EC4D40AD17FCCF14002E7C81 /* strftime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = strftime.cpp; sourceTree = "<group>"; };
 		EC4D40AE17FCCF14002E7C81 /* strftime.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = strftime.hpp; sourceTree = "<group>"; };
+		EC4E3B1819B2D7AD0049CBD7 /* cave_map_generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cave_map_generator.cpp; sourceTree = "<group>"; };
+		EC4E3B1919B2D7AD0049CBD7 /* default_map_generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = default_map_generator.cpp; sourceTree = "<group>"; };
+		EC4E3B1A19B2D7AD0049CBD7 /* map_generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = map_generator.cpp; sourceTree = "<group>"; };
+		EC4E3B1E19B2D8480049CBD7 /* stage_sf_with_rca.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stage_sf_with_rca.cpp; sourceTree = "<group>"; };
+		EC4E3B1F19B2D8480049CBD7 /* stage_sf_with_rca.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = stage_sf_with_rca.hpp; sourceTree = "<group>"; };
+		EC4E3B2119B2D8880049CBD7 /* simulated_actions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simulated_actions.cpp; sourceTree = "<group>"; };
 		EC51DB7618F8BFA4004621D9 /* playturn_network_adapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = playturn_network_adapter.cpp; sourceTree = "<group>"; };
 		EC51DB7718F8BFA4004621D9 /* playturn_network_adapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = playturn_network_adapter.hpp; sourceTree = "<group>"; };
 		EC5C242218EF07B4001FA499 /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = lib/libbz2.1.0.dylib; sourceTree = "<group>"; };
@@ -3063,14 +3065,11 @@
 		62CC8E7917B9064B00C16B75 /* generators */ = {
 			isa = PBXGroup;
 			children = (
-				62CC8E7A17B9064B00C16B75 /* cavegen.cpp */,
-				62CC8E7B17B9064B00C16B75 /* cavegen.hpp */,
+				EC4E3B1819B2D7AD0049CBD7 /* cave_map_generator.cpp */,
+				EC4E3B1919B2D7AD0049CBD7 /* default_map_generator.cpp */,
+				EC4E3B1A19B2D7AD0049CBD7 /* map_generator.cpp */,
 				62CC8E7C17B9064B00C16B75 /* map_create.cpp */,
 				62CC8E7D17B9064B00C16B75 /* map_create.hpp */,
-				62CC8E7E17B9064B00C16B75 /* mapgen.cpp */,
-				62CC8E7F17B9064B00C16B75 /* mapgen.hpp */,
-				62CC8E8017B9064B00C16B75 /* mapgen_dialog.cpp */,
-				62CC8E8117B9064B00C16B75 /* mapgen_dialog.hpp */,
 				62CC8E8217B9064B00C16B75 /* yamg */,
 			);
 			path = generators;
@@ -3290,6 +3289,8 @@
 		B54AC6C00FEA9EB5006F6FBD /* testing */ = {
 			isa = PBXGroup;
 			children = (
+				EC4E3B1E19B2D8480049CBD7 /* stage_sf_with_rca.cpp */,
+				EC4E3B1F19B2D8480049CBD7 /* stage_sf_with_rca.hpp */,
 				F419E46113354F8D0031448A /* ca_global_fallback.cpp */,
 				F419E46213354F8D0031448A /* ca_global_fallback.hpp */,
 				B5CE46FB12A041CE00D665EE /* ca_testing_recruitment.cpp */,
@@ -3545,6 +3546,7 @@
 		B597EBCA0FC082AB00CE81F5 /* ai */ = {
 			isa = PBXGroup;
 			children = (
+				EC4E3B2119B2D8880049CBD7 /* simulated_actions.cpp */,
 				EC48D74B17F3148300DE80BF /* recruitment.cpp */,
 				EC48D74C17F3148300DE80BF /* recruitment.hpp */,
 				F49F12B815B1E4E400B64B0B /* akihara */,
@@ -4319,6 +4321,7 @@
 				B5599B7D0EC62181008DD061 /* config.cpp in Sources */,
 				B5599B7E0EC62181008DD061 /* color_range.cpp in Sources */,
 				B5599B7F0EC62181008DD061 /* clipboard.cpp in Sources */,
+				EC4E3B1B19B2D7AD0049CBD7 /* cave_map_generator.cpp in Sources */,
 				B5599B810EC62181008DD061 /* callable_objects.cpp in Sources */,
 				B5599B830EC62181008DD061 /* animated_game.cpp in Sources */,
 				B5599B8B0EC62181008DD061 /* about.cpp in Sources */,
@@ -4419,6 +4422,7 @@
 				B54AC6EE0FEA9F7A006F6FBD /* control.cpp in Sources */,
 				B54AC6F50FEA9F92006F6FBD /* lobby_main.cpp in Sources */,
 				B54AC6F60FEA9F92006F6FBD /* transient_message.cpp in Sources */,
+				EC4E3B2219B2D8880049CBD7 /* simulated_actions.cpp in Sources */,
 				EC84246718F30D9100FC1EEF /* random_new_deterministic.cpp in Sources */,
 				B54AC7000FEA9FA5006F6FBD /* multi_page.cpp in Sources */,
 				B54AC7010FEA9FA5006F6FBD /* scrollbar_panel.cpp in Sources */,
@@ -4529,12 +4533,14 @@
 				EC89A1341879D17D00A3B0B1 /* lfunc.cpp in Sources */,
 				EC48D75917F318DA00DE80BF /* mp_game_utils.cpp in Sources */,
 				B52EE897121358EF00CFBDAB /* progress_bar.cpp in Sources */,
+				EC4E3B1C19B2D7AD0049CBD7 /* default_map_generator.cpp in Sources */,
 				B52EE89D1213590500CFBDAB /* list.cpp in Sources */,
 				EC89A1431879D17D00A3B0B1 /* ltable.cpp in Sources */,
 				B52EE89E1213590500CFBDAB /* progress_bar.cpp in Sources */,
 				B52EE8CB121359A600CFBDAB /* arrow.cpp in Sources */,
 				B52EE8CD121359A600CFBDAB /* formula_debugger_fwd.cpp in Sources */,
 				B52EE8CE121359A600CFBDAB /* formula_debugger.cpp in Sources */,
+				EC4E3B2019B2D8480049CBD7 /* stage_sf_with_rca.cpp in Sources */,
 				B52EE8CF121359A600CFBDAB /* formula_string_utils.cpp in Sources */,
 				EC89A12F1879D17D00A3B0B1 /* lctype.cpp in Sources */,
 				B52EE8D0121359A600CFBDAB /* hash.cpp in Sources */,
@@ -4698,11 +4704,9 @@
 				EC89A1301879D17D00A3B0B1 /* ldblib.cpp in Sources */,
 				62CC8E7817B9063E00C16B75 /* pump.cpp in Sources */,
 				EC28C59119423529003B0F5E /* save_index.cpp in Sources */,
-				62CC8E8C17B9064D00C16B75 /* cavegen.cpp in Sources */,
 				62CC8E8D17B9064D00C16B75 /* map_create.cpp in Sources */,
-				62CC8E8E17B9064D00C16B75 /* mapgen.cpp in Sources */,
-				62CC8E8F17B9064D00C16B75 /* mapgen_dialog.cpp in Sources */,
 				62CC8E9017B9064D00C16B75 /* ya_mapgen.cpp in Sources */,
+				EC4E3B1D19B2D7AD0049CBD7 /* map_generator.cpp in Sources */,
 				62CC8E9117B9064D00C16B75 /* yamg_hex.cpp in Sources */,
 				62CC8E9217B9064D00C16B75 /* yamg_hexheap.cpp in Sources */,
 				62CC8E9317B9064D00C16B75 /* yamg_params.cpp in Sources */,
