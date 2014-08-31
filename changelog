@@ -21,8 +21,10 @@ Version 1.11.16+dev:
      notifications
    * Don't check defeat_conditon to remove sides from carryover after [endlevel
      (restore pre 1.11.13 behaviour)
-   * Remove carryover WML (this may make a reappearance in 1.13.0 but it is 
+   * Remove carryover WML (this may make a reappearance in 1.13.0 but it is
      considered premature now, please see github PR discussion for more info)
+   * Fix bug in Goto Micro AI when there is no path to the return hex
+   * Bug fixes for translatable strings in Micro AI scenarios
 
 Version 1.11.16:
  * Add-ons client:
