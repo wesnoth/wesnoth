@@ -133,6 +133,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	screenshot(false),
 	screenshot_map_file(),
 	screenshot_output_file(),
+	script_unsafe_mode(false),
 	strict_validation(false),
 	test(),
 	unit_test(),
@@ -186,6 +187,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("rng-seed", po::value<unsigned int>(), "seeds the random number generator with number <arg>. Example: --rng-seed 0")
 		("screenshot", po::value<two_strings>()->multitoken(), "takes two arguments: <map> <output>. Saves a screenshot of <map> to <output> without initializing a screen. Editor must be compiled in for this to work.")
 		("script", po::value<std::string>(), "file containing a lua script to control the client")
+		("unsafe-scripts", "makes the \'package\' package available to lua scripts, so that they can load arbitrary packages. Do not do this with untrusted scripts! This action gives lua the same permissions as the wesnoth executable.")
 		("server,s", po::value<std::string>()->implicit_value(std::string()), "connects to the host <arg> if specified or to the first host in your preferences.")
 		("username", po::value<std::string>(), "uses <username> when connecting to a server, ignoring other preferences.")
 		("password", po::value<std::string>(), "uses <password> when connecting to a server, ignoring other preferences.")
@@ -433,6 +435,8 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	}
 	if (vm.count("script"))
 		script_file = vm["script"].as<std::string>();
+	if (vm.count("unsafe-scripts"))
+		script_unsafe_mode = true;
 	if (vm.count("server"))
 		server = vm["server"].as<std::string>();
 	if (vm.count("username"))

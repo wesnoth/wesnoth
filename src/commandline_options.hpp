@@ -190,6 +190,8 @@ public:
 	boost::optional<std::string> screenshot_output_file;
 	/// File to load lua script (mp-bot) from.
 	boost::optional<std::string> script_file;
+	/// Whether to load the "package" package for the scripting environment. (This allows to load arbitrary lua packages, and gives untrusted lua the same permissions as wesnoth executable)
+	bool script_unsafe_mode;
 	/// True if --strict-validation was given on the command line. Makes Wesnoth trust validation errors as fatal WML errors and create WML exception, if so.
 	bool strict_validation;
 	/// Non-empty if --test was given on the command line. Goes directly into test mode, into a scenario, if specified.

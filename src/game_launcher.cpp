@@ -464,6 +464,10 @@ bool game_launcher::init_lua_script()
 			resources::app_lua_kernel = new application_lua_kernel();
 			resources::app_lua_kernel->initialize(this);
 
+			if (cmdline_opts_.script_unsafe_mode) {
+				resources::app_lua_kernel->load_package(); //load the "package" package, so that scripts can get what packages they want
+			}
+
 			resources::app_lua_kernel->run(full_script.c_str());
 
 			return true;
