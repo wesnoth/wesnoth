@@ -953,6 +953,7 @@ set(wesnoth-main_SRC
 	scripting/lua_common.cpp
 	scripting/lua_game_launcher.cpp
 	scripting/lua_kernel_base.cpp
+	scripting/lua_mp_interface.cpp
 	scripting/lua_types.cpp
 	settings.cpp
 	side_filter.cpp

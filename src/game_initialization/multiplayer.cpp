@@ -40,7 +40,9 @@
 #include "playcampaign.hpp"
 #include "playmp_controller.hpp"
 #include "resources.hpp"
+#include "scripting/lua_mp_interface.hpp"
 #include "settings.hpp"
+#include "scripting/lua_mp_interface.hpp"
 #include "sound.hpp"
 #include "unit_id.hpp"
 #include "resources.hpp"
@@ -101,6 +103,13 @@ void run_lobby_loop(display& disp, mp::ui& ui)
 		// or uptodate data can prevent invalid actions
 		// i.e. press cancel while you receive [start_game] or press start game while someone leaves
 		ui.process_network();
+
+		// process lua requests
+		if (resources::app_lua_kernel && resources::lua_mp) {
+			while (const boost::optional<config> req = resources::lua_mp->next_request()) {
+				ui.handle_lua_request(*req);
+			}
+		}
 
 		events::pump();
 		events::raise_process_event();
