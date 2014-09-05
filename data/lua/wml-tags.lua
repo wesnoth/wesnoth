@@ -731,15 +731,17 @@ function wml_actions.move_unit(cfg)
 			if check_passability then pass_check = current_unit end
 
 			local x, y = xs(), ys()
+			local prevX, prevY = tonumber(current_unit.x), tonumber(current_unit.y)
 			while true do
 				x = tonumber(x) or helper.wml_error(coordinate_error)
 				y = tonumber(y) or helper.wml_error(coordinate_error)
-				x, y = wesnoth.find_vacant_tile(x, y, pass_check)
+				if not x == prevX and not y == prevY then x, y = wesnoth.find_vacant_tile(x, y, pass_check) end
 				if not x or not y then helper.wml_error("Could not find a suitable hex near to one of the target hexes in [move_unit].") end
 				move_string_x = string.format("%s,%u", move_string_x, x)
 				move_string_y = string.format("%s,%u", move_string_y, y)
 				local next_x, next_y = xs(), ys()
 				if not next_x and not next_y then break end
+				prevX, prevY = x, y
 				x, y = next_x, next_y
 			end
 
