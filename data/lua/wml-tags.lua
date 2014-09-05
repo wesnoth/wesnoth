@@ -696,7 +696,7 @@ function wml_actions.move_unit(cfg)
 			local prevX, prevY = tonumber(current_unit.x), tonumber(current_unit.y)
 			while true do
 				x = tonumber(x) or helper.wml_error(coordinate_error)
-				y = tonumber(y) or helper.wml_error(coordinate_error)			
+				y = tonumber(y) or helper.wml_error(coordinate_error)
 				if not x == prevX and not y == prevY then x, y = wesnoth.find_vacant_tile(x, y, pass_check) end
 				if not x or not y then helper.wml_error("Could not find a suitable hex near to one of the target hexes in [move_unit].") end
 				move_string_x = string.format("%s,%u", move_string_x, x)
