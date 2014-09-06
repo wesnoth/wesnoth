@@ -9,24 +9,23 @@
 #
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2006, 2007, 2010.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
+# Jan Dědič <jan.dedic@gmail.com>, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-03-23 18:06+0100\n"
-"PO-Revision-Date: 2012-01-14 13:14+0100\n"
-"Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
+"PO-Revision-Date: 2014-09-02 13:30+0100\n"
+"Last-Translator: Jan Dědič <jan.dedic@gmail.com>\n"
 "Language-Team: Český <wesnoth-cs-l@buchtovi.cz>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Poedit-Language: Czech\n"
-"X-Poedit-Country: CZECH REPUBLIC\n"
 "X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Poedit 1.6.9\n"
 
 #. type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -38,7 +37,7 @@ msgstr "WESNOTH"
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2013"
-msgstr ""
+msgstr "2013"
 
 #. type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -156,10 +155,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy, no-wrap
-#| msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
+#, no-wrap
 msgid "B<--campaign-difficulty [E<lt>difficultyE<gt>]>"
-msgstr "B<--campaign-difficulty E<lt>obtížnostE<gt>>"
+msgstr "B<--campaign-difficulty [E<lt>obtížnost<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -198,16 +196,13 @@ msgstr "nastavuje adresář s daty hry"
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:63
-#, fuzzy, no-wrap
-#| msgid "B<--path>"
+#, no-wrap
 msgid "B<--data-path>"
-msgstr "B<--path>"
+msgstr "B<--data-path>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:66
-#, fuzzy
-#| msgid "prints the name of the game data directory and exits."
 msgid "path the path of the data directory and exits."
 msgstr "pouze zobrazí cestu k adresáři s daty a skončí."
 
@@ -488,25 +483,12 @@ msgstr "pouze zobrazí cestu k adresáři s daty a skončí."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:152
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
+#, no-wrap
 msgid "B<-p, --preprocess E<lt>source file/folderE<gt> E<lt>target directoryE<gt>>"
-msgstr "B<--preprocess, -p[=E<lt>definice1E<gt>,E<lt>definice2E<gt>,...] E<lt>soubor/adresářE<gt> E<lt>cílový adresářE<gt>>"
+msgstr "B<-p, --preprocess E<lt>source file/folderE<gt> E<lt>target directoryE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:162
-#, fuzzy
-#| msgid ""
-#| "preprocesses a specified file/folder. The file(s) will be written in "
-#| "specified target directory: a plain cfg file and a processed cfg file. If "
-#| "a folder is specified, it will be preprocessed recursively based on the "
-#| "known preprocessor rules. The common macroses from the data/core/macros "
-#| "will be preprocessed before the specified resources.  B<define1,"
-#| "define2,...> - the extra defines will be added before processing the "
-#| "files. If you want to add them you must add the '=' character before.  If "
-#| "'SKIP_CORE' is in the define list the data/core won't be preprocessed.  "
-#| "Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/result> or B<-"
-#| "p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result>"
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "
@@ -518,20 +500,18 @@ msgid ""
 "line_preprocessor"
 msgstr ""
 "předzpracuje určený soubor či adresář. Do určeného cílového adresáře budou "
-"zapsány soubor(y): původní soubor 'cfg' a předzpracovaný. Pokud je určen "
-"celý adresář, bude zpracován rekurzivně podle dostupných pravidel "
-"preprocesoru. Běžná makra z umístění data/core/macros budou předzpracována "
-"před udanými zdroji.  B<definice1,definice2,...> - tyto další definice budou "
-"přidány před zpracováním. Pokud je zamýšlíte použít, musíte použít znak '='. "
-"Pokud zde bude definováno 'SKIP_CORE', nebude použit obsah data/core.  "
-"Příklad: B<-p ~/wesnoth/data/campaigns/tutorial ~/result> nebo B<-"
-"p=MULTIPLAYER,MOJE_TAZENI ~/wesnoth/data/campaign/camp ~/result>"
+"zapsány soubor(y): původní soubor '.cfg' a předzpracovaný soubor '.cfg'. "
+"Pokud je vybrán celý adresář, bude předzpracován rekurzivně podle dostupných "
+"pravidel preprocesoru. Běžná makra z umístění \"data/core/macros\" budou "
+"předzpracována před udanými zdroji. Příklad:  B<-p ~/wesnoth/data/campaigns/"
+"tutorial ~/result.>. Pro podrobnosti týkající se preprocessoru navštivte: "
+"http://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:163
 #, no-wrap
 msgid "B<--preprocess-defines=DEFINE1,DEFINE2,etc>"
-msgstr ""
+msgstr "B<--preprocess-defines=DEFINE1,DEFINE2,etc>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:168
@@ -540,6 +520,8 @@ msgid ""
 "B<SKIP_CORE> is in the define list the \"data/core\" directory won't be "
 "preprocessed."
 msgstr ""
+"seznam oddělený čárkami deinovaný pro použití příkazem '--preprocess'. Pokud "
+"je v listu definic B<SKIP_CORE>, adresář \"data/core\" nebude přdzpracován."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:168
@@ -609,7 +591,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:186
 #, no-wrap
 msgid "B<--username>I<E<lt>usernameE<gt>>"
-msgstr ""
+msgstr "B<--username>I<E<lt>jméno<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:189
@@ -617,12 +599,14 @@ msgid ""
 "uses E<lt>usernameE<gt> when connecting to a server, ignoring other "
 "preferences."
 msgstr ""
+"používá E<lt>usernameE<gt> pro připojení k serveru. Ignoruje ostatní "
+"nastavení."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:189
 #, no-wrap
 msgid "B<--password>I<E<lt>passwordE<gt>>"
-msgstr ""
+msgstr "B<--password>I<E<lt>heslo<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:192
@@ -630,6 +614,8 @@ msgid ""
 "uses E<lt>passwordE<gt> when connecting to a server, ignoring other "
 "preferences. Unsafe."
 msgstr ""
+"používáE<lt>passwordE<gt> pro připojení k sereru. Ignoruje ostatní "
+"nastavení. Není bezpečné."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:192
@@ -658,19 +644,12 @@ msgstr "spouští hru v malém testovacím scénáři."
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:198
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--userconfig-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ jméno>"
+msgstr "B<--userconfig-dir>I<\\ jméno>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:207
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#| "path for the configuration directory outside the $HOME or \"My Documents"
-#| "\\eMy Games\""
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -679,15 +658,17 @@ msgid ""
 "wesnoth, on other systems to the userdata path."
 msgstr ""
 "nastaví adresář s uživatelskými daty na I<jméno> v $HOME nebo \"Dokumenty"
-"\\eMy Games\" pod Windows. Můžete však také použít absolutní cestu."
+"\\eMy Games\" pod windows. Můžete však také použít absolutní cestu pro "
+"adresář s nastavením mmio $HOME nebo \"Dokumenty\\eMyGames\". Pod X11 je "
+"výchozí $XDG_CONFIG_HOME nebo $HOME/.config/wesnoth, na ostatních systémech "
+"v uživatelských adresářích."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:207
-#, fuzzy, no-wrap
-#| msgid "B<--config-path>"
+#, no-wrap
 msgid "B<--userconfig-path>"
-msgstr "B<--config-path>"
+msgstr "B<--userconfig-path>"
 
 # type: Plain text
 #. type: Plain text
@@ -698,40 +679,31 @@ msgstr "pouze zobrazí cestu k adresáři s konfiguračními soubory a skončí.
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:210
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--userdata-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ jméno>"
+msgstr "B<--userdata-dir>I<\\ jméno>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:217
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#| "path for the configuration directory outside the $HOME or \"My Documents"
-#| "\\eMy Games\""
 msgid ""
 "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
 "Games\" for windows.  You can also specify an absolute path for the userdata "
 "directory outside the $HOME or \"My Documents\\eMy Games\"."
 msgstr ""
 "nastaví adresář s uživatelskými daty na I<jméno> v $HOME nebo \"Dokumenty"
-"\\eMy Games\" pod Windows. Můžete však také použít absolutní cestu."
+"\\eMy Games\" pod windows. Můžete však také použít absolutní cestu mimo "
+"$HOME nebo \"Dokumenty\\eMyGames\"."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:217
-#, fuzzy, no-wrap
-#| msgid "B<--path>"
+#, no-wrap
 msgid "B<--userdata-path>"
-msgstr "B<--path>"
+msgstr "B<--userdata-path>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:220
-#, fuzzy
-#| msgid "prints the path of the user configuration directory and exits."
 msgid "prints the path of the userdata directory and exits."
 msgstr "pouze zobrazí cestu k adresáři s konfiguračními soubory a skončí."
 
@@ -893,20 +865,19 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:269
 #, no-wrap
 msgid "B<--ignore-map-settings>"
-msgstr ""
+msgstr "B<--ignore-map-settings>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:272
 msgid "do not use map settings, use default values instead."
-msgstr ""
+msgstr "použít výchozí hodnoty nastavení namísto nastavení mapy"
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:272
-#, fuzzy, no-wrap
-#| msgid "B<--era=>I<value>"
+#, no-wrap
 msgid "B<--multiplayer-repeat=>I<value>"
-msgstr "B<--era=>I<hodnota>"
+msgstr "B<--multiplayer-repeat=>I<hodnota>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:279
@@ -914,6 +885,8 @@ msgid ""
 "repeats a multiplayer game I<value> times. Best to use with B<--nogui> for "
 "scriptable benchmarking."
 msgstr ""
+"opakuje hru pro více hráčů I<value>krát. Nejlépe použít ji s B<--nogui> pro "
+"skriptovatelné testování."
 
 # type: TP
 #. type: TP
@@ -1065,12 +1038,9 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:324 ../../doc/man/wesnothd.6:280
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
