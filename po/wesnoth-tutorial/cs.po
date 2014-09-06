@@ -9,24 +9,23 @@
 # Yeti <yeti@physics.muni.cz> et al, 2004.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2008.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
+# Jan Dědič <jan.dedic@gmail.com>, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-11-16 09:29+0100\n"
-"PO-Revision-Date: 2011-12-17 17:21+0100\n"
-"Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
+"POT-Creation-Date: 2014-03-02 18:57+0100\n"
+"PO-Revision-Date: 2014-09-02 14:51+0100\n"
+"Last-Translator: Jan Dědič <jan.dedic@gmail.com>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Poedit-Language: Czech\n"
-"X-Poedit-Country: CZECH REPUBLIC\n"
 "X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\\\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Poedit 1.6.9\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:39
 msgid ""
@@ -815,7 +814,7 @@ msgstr ""
 #. [set_menu_item]: id=skip_item
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1134
 msgid "End Scenario"
-msgstr ""
+msgstr "Konec scénáře"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1147
@@ -823,6 +822,8 @@ msgid ""
 "Do you want to keep practicing? You can end this scenario at any time by "
 "using the <b>End Scenario</b> item in the context menu."
 msgstr ""
+"Chceš pokračovat v tréninku? Můžeš tento scénář kdykoliv ukončit pomocí "
+"volby <b>Ukončit scénář</b> z kontextového menu."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1149
@@ -1419,26 +1420,18 @@ msgstr "Zaútoč na skřeta lučištníkem"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "To review the capabilities of any unit—including an enemy—hover the mouse "
-#| "over it, and you will see a unit summary on the right of the screen"
 msgid ""
 "To review the capabilities of any unit—including an enemy—hover the mouse "
 "over it, and you will see a unit summary on the right of the screen"
 msgstr ""
-"\n"
 "Pro zjištění schopností jakékoliv jednotky na bojišti na ni přesuň myš. "
 "Napravo se objeví příslušný souhrn."
 
 # ohldně toho na pravém panelu
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
-#, fuzzy
-#| msgid "<big>Unit Summaries</big>"
 msgid "Unit Summaries"
-msgstr "<big>Souhrny informací o jednotkách</big>"
+msgstr "Souhrn informací o jednotkách"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:987
@@ -1481,25 +1474,16 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1016
-#, fuzzy
-#| msgid "<big>Long-distance Movement</big>"
 msgid "Long-distance Movement"
-msgstr "<big>Pohyb do větší vzdálenosti</big>"
+msgstr "Pohyb do větší vzdálenosti"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1016
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can order a unit to move for multiple turns by selecting the unit and "
-#| "clicking on the destination. A number will indicate how many turns it "
-#| "will take to get there."
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
 "take to get there."
 msgstr ""
-"\n"
 "Můžeš jednotce dát rozkaz k přesunu trvajícímu několik kol. Stačí vybrat "
 "jednotku a kliknout na cíl. Číslo ti ukáže, kolik kol bude jednotce trvat, "
 "než se dostane na místo určení."
@@ -1612,17 +1596,12 @@ msgstr ""
 #. [else]
 #. The unit with unit type $unit.language_name is female.
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1147
-#, fuzzy
-#| msgid ""
-#| "No other units can reach that orc. I hope my $unit.language_name survives "
-#| "its counter-attack! I’d better grab more villages and move everyone "
-#| "closer for next turn."
 msgid ""
 "female^No other units can reach that orc. I hope my $unit.language_name "
 "survives its counter-attack! I’d better grab more villages and move everyone "
 "closer for next turn."
 msgstr ""
-"Žádné další jednotky se k tomu skřetovi nedostanou; doufám, že $unit."
+"female^Žádné další jednotky se k tomu skřetovi nedostanou; doufám, že $unit."
 "language_name přežije jeho protiútok! Raději bych měl obsadit více vesnic a "
 "přesunout v dalším tahu všechny jednotky blíže."
 
@@ -1692,27 +1671,18 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1238
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "After this dialog, hold the mouse over the landscape image below the "
-#| "minimap on the right. This brings up a description of the time of day, "
-#| "showing who has the advantage."
 msgid ""
 "After this dialog, hold the mouse over the landscape image below the minimap "
 "on the right. This brings up a description of the time of day, showing who "
 "has the advantage."
 msgstr ""
-"\n"
 "Po tomto dialogu přesuň myš nad obrázek pod mapou napravo, uvidíš tam popis "
 "denní doby, včetně informace, kdo má výhodu."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1238
-#, fuzzy
-#| msgid "<big>Time of Day</big>"
 msgid "Time of Day"
-msgstr "<big>Denní doba</big>"
+msgstr "Denní doba"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1245
@@ -1740,21 +1710,11 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1259
-#, fuzzy
-#| msgid "<big>Tracking Unused Units</big>"
 msgid "Tracking Unused Units"
-msgstr "<big>Hledání nevyužitých jednotek</big>"
+msgstr "Hledání nevyužitých jednotek"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1259
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can ensure you use all your troops by pressing <b>n</b> to step from "
-#| "one unit to the next. If you press <b>space</b>, you can mark the "
-#| "currently selected unit as having finished its turn, which stops you "
-#| "moving it by accident later on. When <b>n</b> no longer selects a new "
-#| "unit, it’s safe to end your turn."
 msgid ""
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
 "unit to the next. If you press <b>space</b>, you can mark the currently "
@@ -1762,55 +1722,37 @@ msgid ""
 "accident later on. When <b>n</b> no longer selects a new unit, it’s safe to "
 "end your turn."
 msgstr ""
-"\n"
 "Můžeš se ujistit, že jsi využil v tomto tahu všechny své jednotky: zmáčkni "
 "<b>n</b> pro přepnutí na další jednotku, <b>mezerník</b> pokud chceš ukončit "
-"tah této jednotky. Když už <b>n</b> nevybírá další jednotku, můžeš bez obav "
-"ukončit svůj tah."
+"tah této jednotky, což zabraňuje nežádoucímu pohybu do konce tahu. Když už "
+"<b>n</b> nevybírá další jednotku, můžeš bez obav ukončit svůj tah."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1264
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "In this scenario, you only need to defeat the orc leader to win. (Victory "
-#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
-#| "the <b>Main Menu</b>)."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. (Victory "
 "conditions for a scenario are given under <b>Scenario Objectives</b> in the "
 "<b>Main Menu</b>)."
 msgstr ""
-"\n"
 "V tomto scénáři k vítězství stačí porazit vůdce skřetů. (Podmínky vítězství "
 "pro scénář zobrazí položka <b>úkoly scénáře</b> v hlavním <b>menu</b>.)"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1264
-#, fuzzy
-#| msgid "<big>Victory Conditions</big>"
 msgid "Victory Conditions"
-msgstr "<big>Podmínky vítězství</big>"
+msgstr "Podmínky vítězství"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1269
-#, fuzzy
-#| msgid "<big>Recruit the Right Unit Types</big>"
 msgid "Recruit the Right Unit Types"
-msgstr "<big>Verbování správných typů jednotek</big>"
+msgstr "Verbování správných typů jednotek"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1269
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Remember to recruit troops useful for the situation. Archers are "
-#| "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgstr ""
-"\n"
 "Nezapomeň verbovat další vhodné jednotky, budeš je potřebovat. Lučištníci "
 "jsou velmi efektivní proti pěšákům, jezdcům na vlku a v neposlední řadě i "
 "jejich vůdci."
@@ -1908,25 +1850,16 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1464
-#, fuzzy
-#| msgid "<big>Tracking Enemy Movement</big>"
 msgid "Tracking Enemy Movement"
-msgstr "<big>Sledování pohybu nepřátel</big>"
+msgstr "Sledování pohybu nepřátel"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1464
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can see where an enemy can reach by moving the mouse over them. You "
-#| "can see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
-#| "command from the <b>Actions</b> menu."
 msgid ""
 "You can see where an enemy can reach by moving the mouse over them. You can "
 "see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
 "command from the <b>Actions</b> menu."
 msgstr ""
-"\n"
 "Když nad nepřítele přesuneš myš, uvidíš, kam může dojít. Všechny možné "
 "pohyby všech nepřátelských jednotek můžeš zobrazit najednou volbou „<b>Ukaž "
 "tahy nepřítele</b>“ z menu „<b>Akce</b>“."

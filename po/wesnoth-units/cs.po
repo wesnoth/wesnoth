@@ -9,23 +9,23 @@
 # Yeti <yeti@physics.muni.cz> et al, 2004.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
+# Jan D�di� <jan.dedic@gmail.com>, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-22 14:15+0100\n"
-"PO-Revision-Date: 2011-12-11 13:08+0100\n"
-"Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
+"POT-Creation-Date: 2014-03-02 18:57+0100\n"
+"PO-Revision-Date: 2014-09-02 16:37+0100\n"
+"Last-Translator: Jan Dědič <jan.dedic@gmail.com>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Poedit-Language: Czech\n"
-"X-Poedit-Country: CZECH REPUBLIC\n"
 "X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\n"
+"X-Generator: Poedit 1.6.9\n"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Dragonguard, race=dwarf
@@ -3439,7 +3439,7 @@ msgstr ""
 #. [unit_type]: id=Arif, race=khalifate
 #: data/core/units/khalifate/Arif.cfg:4
 msgid "Arif"
-msgstr ""
+msgstr "Arif"
 
 #. [unit_type]: id=Arif, race=khalifate
 #: data/core/units/khalifate/Arif.cfg:17
@@ -3451,6 +3451,12 @@ msgid ""
 "troops to exploit. The sight of Arif on the march, shields high, has caused "
 "many a defender to worry about the strength of their walls."
 msgstr ""
+"Arifové jsou páteří jakékoliv pěší jednotky Chalífátu. Mnoho z nich pochází "
+"ze vznešených nebo vojensky založených rodin a strávili většinu života "
+"učením se svému řemeslu. Kvůli jejich silnému zaměření na boj mečem jsou "
+"často posíláni proti opevněným nepřátelským pozicím aby prolomili jejich "
+"řady pro ostatní spolubojovníky. Pohled na Arify na pochodu, se štíty hrdě "
+"vztyčenými už donutil nejednoho obránce obávat se o odolnost jeho hradeb."
 
 #. [attack]: type=blade
 #: data/core/units/khalifate/Arif.cfg:22
@@ -3459,15 +3465,13 @@ msgstr ""
 #: data/core/units/khalifate/Mighwar.cfg:26
 #: data/core/units/khalifate/Monawish.cfg:25
 #: data/core/units/khalifate/Shuja.cfg:22
-#, fuzzy
-#| msgid "longsword"
 msgid "long sword"
 msgstr "dlouhý meč"
 
 #. [unit_type]: id=Batal, race=khalifate
 #: data/core/units/khalifate/Batal.cfg:4
 msgid "Batal"
-msgstr ""
+msgstr "Batal"
 
 #. [unit_type]: id=Batal, race=khalifate
 #: data/core/units/khalifate/Batal.cfg:18
@@ -3479,6 +3483,10 @@ msgid ""
 "taking on only the most daring missions, Batal are often heroes to the "
 "common troopers, an image they do not try to dissuade."
 msgstr ""
+"Batalové jsou elitou vybranou z Muharibů, podnikající neustálé útoky typu "
+"udeř a ujeď na nepřátelské armády. Svižní jako kozli a silní jako berani, "
+"upřednostňují koordinovaný útok na více místech zahánějíce nepřátele šípy na "
+"útěk jen proto, aby byli o chvíli později skoleni jejich sekerami."
 
 #. [attack]: type=pierce
 #: data/core/units/khalifate/Batal.cfg:31
@@ -3488,14 +3496,12 @@ msgstr ""
 #: data/core/units/khalifate/Rami.cfg:31
 #: data/core/units/khalifate/Saree.cfg:31
 msgid "composite bow"
-msgstr ""
+msgstr "složený luk"
 
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/khalifate/Elder_Falcon.cfg:4
-#, fuzzy
-#| msgid "Elder Mage"
 msgid "Elder Falcon"
-msgstr "Starý mág"
+msgstr "Starý Sokol"
 
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/khalifate/Elder_Falcon.cfg:19
@@ -3505,17 +3511,21 @@ msgid ""
 "Stronger and faster than their younger kin, they are rumored to hit with "
 "enough force to remove an enemy's head. "
 msgstr ""
+"Starší sokoli nesou jizvy svědčící o mnohých bojích a ochraně jejich pánů. "
+"Jejich těla svědčí o tom, jak se opakovaně vrhali do víru bitvy. Silnější a "
+"rycheljší než mladí sokoli, říká se dokonce, že dokáží zasáhnout dost silně "
+"na to, aby to soupeře stálo hlavu."
 
 #. [attack]: type=pierce
 #: data/core/units/khalifate/Elder_Falcon.cfg:36
 #: data/core/units/khalifate/Falcon.cfg:35
 msgid "beak"
-msgstr ""
+msgstr "zobák"
 
 #. [unit_type]: id=Falcon, race=falcon
 #: data/core/units/khalifate/Falcon.cfg:4
 msgid "Falcon"
-msgstr ""
+msgstr "Sokol"
 
 #. [unit_type]: id=Falcon, race=falcon
 #: data/core/units/khalifate/Falcon.cfg:18
@@ -3525,11 +3535,15 @@ msgid ""
 "the enemies of the Khalifate, and their great speed is a boon to scouting "
 "out the land."
 msgstr ""
+"Chápáni jako symbol šlechty, sokoli jsou velmi cenným vlastnictcvím a "
+"používají se především pro lov. Stejně tak se ale používají pro trhání "
+"nepřátel Chalífátu a jejich velká rychlost je velkou výhodou při zkoumání "
+"terénu."
 
 #. [unit_type]: id=Faris, race=khalifate
 #: data/core/units/khalifate/Faris.cfg:4
 msgid "Faris"
-msgstr ""
+msgstr "Faris"
 
 #. [unit_type]: id=Faris, race=khalifate
 #: data/core/units/khalifate/Faris.cfg:17
@@ -3540,11 +3554,16 @@ msgid ""
 "rest of the Khalifate cavalry. Consummate horsemen, the Faris have long "
 "claimed they need only a single lance strike to kill a man."
 msgstr ""
+"Ti z Khaiyal, kteří se vyznamenají v boji, dostanou příležitost prokázat "
+"svoje schopnosti a stát e Farisy. Ti, kteří projdou zkouškou dostávají "
+"tradiční postroj pro své koně, což je zřetelně odlišuje od zbytku kavalerie "
+"Chalífátu. Jakožto dokonalí jezdci, Farisové dlouho tvrdili, že jim stačí "
+"jediný úder, aby skolili muže."
 
 #. [unit_type]: id=Ghazi, race=khalifate
 #: data/core/units/khalifate/Ghazi.cfg:4
 msgid "Ghazi"
-msgstr ""
+msgstr "Ghazi"
 
 #. [unit_type]: id=Ghazi, race=khalifate
 #: data/core/units/khalifate/Ghazi.cfg:17
@@ -3555,18 +3574,23 @@ msgid ""
 "in number, their presence can be decisive in dislodging even the most "
 "hardened redoubt."
 msgstr ""
+"Ozbrojeni mečem, štítem a vírou, Ghaziové jsou proslulí bojovníci v řadách "
+"armády Chalífátu. Do svého arzenálu přidali nové techniky boje se štítem, "
+"kterým mohou odrazit nepozorného nepřítele. Ačkoliv jich není mnoho, jejich "
+"přítomnost může být rozhodující při obsazování i těch nelépe opevněných "
+"pevností."
 
 #. [attack]: type=impact
 #: data/core/units/khalifate/Ghazi.cfg:34
 #: data/core/units/khalifate/Khalid.cfg:35
 #: data/core/units/khalifate/Shuja.cfg:34
 msgid "shield bash"
-msgstr ""
+msgstr "úder štítem"
 
 #. [unit_type]: id=Hadaf, race=khalifate
 #: data/core/units/khalifate/Hadaf.cfg:4
 msgid "Hadaf"
-msgstr ""
+msgstr "Hadaf"
 
 #. [unit_type]: id=Hadaf, race=khalifate
 #: data/core/units/khalifate/Hadaf.cfg:18
@@ -3577,11 +3601,15 @@ msgid ""
 "a time, returning to camp only for supplies and to pass on news of their "
 "exploits."
 msgstr ""
+"Ti Qanasové, kteří se ukáží jako obzvlášť dovední mezi jednotkami Hadafů, "
+"jsou často používáni k plenění nepřátelských skladů a měst při hledání "
+"zásob. To jim dává do značné míry nezávislot. Často jsou pryč celé týdny a "
+"do tábora se vracejí jen pro zásoby a aby předali novinky."
 
 #. [unit_type]: id=Hakim, race=khalifate
 #: data/core/units/khalifate/Hakim.cfg:4
 msgid "Hakim"
-msgstr ""
+msgstr "Hakim"
 
 #. [unit_type]: id=Hakim, race=khalifate
 #: data/core/units/khalifate/Hakim.cfg:21
@@ -3594,11 +3622,17 @@ msgid ""
 "possess a potent clutch of medicines and herbs, which allows them to quickly "
 "heal even the most gravely wounded allies."
 msgstr ""
+"Hakimové jsou vzdělaní jedinci, kteří se vzdali svého městského života aby "
+"mohli sloužit v armádě Chalífátu. Důvodů pro to mají víc; někteří nahlíží na "
+"válku jako na dobrodružství nebo jako na stálý příjem, naproti tomu ostatní "
+"to považují za důkaz své víry. Tak či tak, Hakimové jsou všemi velmi "
+"respektovaní. Jsou dobře vyškolení v uzdravování a vyznají se také v lécích "
+"a bylinkách, což jim umožňuje rychle uzdravit i ty nejhorší případy."
 
 #. [unit_type]: id=Jawal, race=khalifate
 #: data/core/units/khalifate/Jawal.cfg:4
 msgid "Jawal"
-msgstr ""
+msgstr "Jawal"
 
 #. [unit_type]: id=Jawal, race=khalifate
 #: data/core/units/khalifate/Jawal.cfg:19
@@ -3610,11 +3644,15 @@ msgid ""
 "with great speed through the lines of battle to rain arrows down upon the "
 "enemy."
 msgstr ""
+"Elitou Sareeů jsou Jawalové, jízdní lukostřelci tak rychlí a obratní, že se "
+"rozšířili zvěsti o jejich elfském původu. Podráždění těmito mýty, Jawalové "
+"často demonstrují svoje umění v předních liniích - jednou velmi rychle mezi "
+"bojovými liniemi a zasypávají nepřátele deštěm šípů."
 
 #. [unit_type]: id=Jundi, race=khalifate
 #: data/core/units/khalifate/Jundi.cfg:4
 msgid "Jundi"
-msgstr ""
+msgstr "Jundi"
 
 #. [unit_type]: id=Jundi, race=khalifate
 #: data/core/units/khalifate/Jundi.cfg:17
@@ -3626,11 +3664,16 @@ msgid ""
 "fight best at dawn or dusk, corresponding to the time when desert "
 "temperatures are the most reasonable."
 msgstr ""
+"Judni je v mnoha směrech ideální jednotkou; přizpůsobivou, pohyblivou, "
+"účinnou stejnou měrou v útoku či obraně jak nablízko, tak na dálku. "
+"Nejraději se pohybují v krajině, která je jim blízká; pouště a hory jejich "
+"jižních zemí. Ještě raději mají boje na úsvitu či za soumraku, což odpovídá "
+"podmínkám, kdy je teplota v poušti nejpřijatelnější."
 
 #. [unit_type]: id=Khaiyal, race=khalifate
 #: data/core/units/khalifate/Khaiyal.cfg:4
 msgid "Khaiyal"
-msgstr ""
+msgstr "Khaiyal"
 
 #. [unit_type]: id=Khaiyal, race=khalifate
 #: data/core/units/khalifate/Khaiyal.cfg:26
@@ -3642,11 +3685,17 @@ msgid ""
 "Khaiyal ride into the resulting melee with their maces in hand, trusting "
 "their armor to keep them safe."
 msgstr ""
+"Khaiyalové dobře chápou strach, který jde z ženoucího se koně a ještě ho "
+"umocňují tím, že sami jsou oblečeni v těžkém brnění. Přinejmenším majestátně "
+"působící Khaiyalové na rozjetém koni s kopím v ruce jsou na  pohled dost "
+"hroziví, aby zlomili nepřítele. Při těch nemnoha příležitostech, kdy jejich "
+"první nájezd selže, Khaiyalové doráží nepřátele na blízko s palcáty v rukou, "
+"plně spoléhající na ochranu svého brnění."
 
 #. [unit_type]: id=Khalid, race=khalifate
 #: data/core/units/khalifate/Khalid.cfg:4
 msgid "Khalid"
-msgstr ""
+msgstr "Khalid"
 
 #. [unit_type]: id=Khalid, race=khalifate
 #: data/core/units/khalifate/Khalid.cfg:18
@@ -3658,11 +3707,16 @@ msgid ""
 "endlessly around the campfire with the reverent tones of those that speak of "
 "living legends."
 msgstr ""
+"V každé generaci se objevuje bojovník, který převyšuje své spolubojovníky i "
+"nepřátele. Věří se, že jsou schopni měnit budoucost celého světa. Obvykle "
+"dostávají jméno Khalid, podle legendárního vůdce ze starých časů. Tito "
+"jedinky jsou oslavování pro svou zbožnost a umění. Jejich cesty a činy jsou "
+"u ohňů donekonečna vyprávěny uctivým tónem těch, co znají žijící legendy."
 
 #. [unit_type]: id=Mighwar, race=khalifate
 #: data/core/units/khalifate/Mighwar.cfg:4
 msgid "Mighwar"
-msgstr ""
+msgstr "Mighwar"
 
 #. [unit_type]: id=Mighwar, race=khalifate
 #: data/core/units/khalifate/Mighwar.cfg:21
@@ -3673,11 +3727,15 @@ msgid ""
 "through the ranks of the enemy, swords ripping and tearing at those around "
 "them. "
 msgstr ""
+"Mighwarové se považují za výše postavené než Monawishové, ze kterých "
+"pocházejí. Nespokojí se jen s vyprovokováním nepřítele, ale spojují svoji "
+"rychlost a agresivitu, která je často žene až do středu nepřátelské vřavy, "
+"kde se řítí mezi protivníky a sekají a trhají všechno kolem sebe."
 
 #. [unit_type]: id=Monawish, race=khalifate
 #: data/core/units/khalifate/Monawish.cfg:4
 msgid "Monawish"
-msgstr ""
+msgstr "Monawish"
 
 #. [unit_type]: id=Monawish, race=khalifate
 #: data/core/units/khalifate/Monawish.cfg:20
@@ -3688,11 +3746,16 @@ msgid ""
 "used to harry the flanks of opposing forces, and it is said to be easier to "
 "catch the wind in your hand than to catch a Monawish."
 msgstr ""
+"Někteří Jundi, kteří jsou zdatní ve špehování jsou přiajti do řad Monawishů. "
+"Odkládají luk a soustředí se na rozvoj své mrštnosti, což jim umožňuje "
+"vetřít se do boje a zase z něj uniknout. Často útočí a decimují slabiny "
+"nepřítele. Říká se, že je jednodušší chytit vítr do ruky než chytit "
+"Monawishe."
 
 #. [unit_type]: id=Mudafi, race=khalifate
 #: data/core/units/khalifate/Mudafi.cfg:4
 msgid "Mudafi"
-msgstr ""
+msgstr "Mudafi"
 
 #. [unit_type]: id=Mudafi, race=khalifate
 #: data/core/units/khalifate/Mudafi.cfg:17
@@ -3703,11 +3766,15 @@ msgid ""
 "preferred strategy is to gradually wear down enemies, until they can be "
 "defeated in a vicious counter stroke."
 msgstr ""
+"Ačkoliv armády Chalífátu jsou známé svou neskutečnou pohyblivostí a zuřivými "
+"útoky, jsou mezi nimi i obránci. Mudafiové jsou skvělí v udržování území, "
+"udržujíce soupeře v šachu svým jako břitva ostrým kopím. Jejich strategií je "
+"obvykle unavit nepřítele tak, že ho můžou porazit jedním brutálním úderem."
 
 #. [unit_type]: id=Mufariq, race=khalifate
 #: data/core/units/khalifate/Mufariq.cfg:4
 msgid "Mufariq"
-msgstr ""
+msgstr "Mufariq"
 
 #. [unit_type]: id=Mufariq, race=khalifate
 #: data/core/units/khalifate/Mufariq.cfg:19
@@ -3719,11 +3786,17 @@ msgid ""
 "riders in the slightest, and the displaced air of a descending mace is the "
 "last sound they hear."
 msgstr ""
+"Mufariqové jsou vynikající jezdci, sbírající tituly a ocenění, které je činí "
+"snadno odlišitelnými podle dekorací na jejich brnění. Díky tomu, že během "
+"mnoha let bojů se zdokonalovali v boji s kopím, Mufariqové jsou "
+"nezastavitelnou silou. Utíkající nepřátelé rychle zjistí, že kopce tyto "
+"jezdce nijak neodrazují a švih dopadajícího palcátu je většinou poslední "
+"zvuk, který zaslechnout."
 
 #. [unit_type]: id=Muharib, race=khalifate
 #: data/core/units/khalifate/Muharib.cfg:4
 msgid "Muharib"
-msgstr ""
+msgstr "Muharib"
 
 #. [unit_type]: id=Muharib, race=khalifate
 #: data/core/units/khalifate/Muharib.cfg:17
@@ -3734,11 +3807,15 @@ msgid ""
 "issue pilfering these supplies, and so they tend to be more well-equipped "
 "than most."
 msgstr ""
+"Muharibové jsou obvykle nasazovaní jako těžcí průzkumníci, takže už nejen "
+"pozorují, ale také napadají a plení zásobování nepřítele. Často jsou dlouho "
+"oddělení od hlavní armády, ale nemají s tím problém. Kradou zásoby a mnohdy "
+"jsou lépe zásobené než většina jejich spolubojovníků."
 
 #. [unit_type]: id=Naffat, race=khalifate
 #: data/core/units/khalifate/Naffat.cfg:4
 msgid "Naffat"
-msgstr ""
+msgstr "Naffat"
 
 #. [unit_type]: id=Naffat, race=khalifate
 #: data/core/units/khalifate/Naffat.cfg:22
@@ -3748,27 +3825,29 @@ msgid ""
 "the use of fire in warfare is not a novel concept, the flames of the Naffat "
 "have proven disturbingly difficult for their enemies to extinguish."
 msgstr ""
+"Nafatové jsou nutné zlo v řadách armády Chalífátu, používající ohně ke "
+"spálení nepřátelského opevnění a šíření strachu v jejich řadách. Ačkoliv "
+"použití ohně v boji není nic nového, plameny, které Naffatové sesílají jsou "
+"velmi těžko uhasitelné."
 
 #. [attack]: type=fire
 #: data/core/units/khalifate/Naffat.cfg:27
 #: data/core/units/khalifate/Qatif-al-nar.cfg:27
 #: data/core/units/khalifate/Tineen.cfg:27
 msgid "naphtha attack"
-msgstr ""
+msgstr "útok naftou"
 
 #. [attack]: type=fire
 #: data/core/units/khalifate/Naffat.cfg:36
 #: data/core/units/khalifate/Qatif-al-nar.cfg:36
 #: data/core/units/khalifate/Tineen.cfg:36
-#, fuzzy
-#| msgid "fire claws"
 msgid "fire arrow"
-msgstr " ohnivé drápy"
+msgstr "ohnivý šíp"
 
 #. [unit_type]: id=Qanas, race=khalifate
 #: data/core/units/khalifate/Qanas.cfg:4
 msgid "Qanas"
-msgstr ""
+msgstr "Qanas"
 
 #. [unit_type]: id=Qanas, race=khalifate
 #: data/core/units/khalifate/Qanas.cfg:17
@@ -3780,11 +3859,17 @@ msgid ""
 "needed. Qanas are often used to draw enemies into a position where they will "
 "be surrounded and crushed by Faris."
 msgstr ""
+"Ti jezdci, kteří nejsou dost dobří, aby se mohli stát Farisy nebo dost "
+"rychlí lukostřelci, aby je mezi sebe přijali Sareeové se stávají Quanasy. "
+"Zdaleka ale nejsou neúspěchem. Qanasové byli vytvořeni jako protiváha "
+"Muharibů. Podporují pěší vojáky palcáty nebo střelbou z luku, podle toho, co "
+"je zapotřebí. Qanasové jsou často využíváni k vylákání nepřítele do pozice, "
+"kde je snadno rozdrtí Farisové."
 
 #. [unit_type]: id=Qatif_al_nar, race=khalifate
 #: data/core/units/khalifate/Qatif-al-nar.cfg:5
 msgid "Qatif-al-nar"
-msgstr ""
+msgstr "Qatif-al-nar"
 
 #. [unit_type]: id=Qatif_al_nar, race=khalifate
 #: data/core/units/khalifate/Qatif-al-nar.cfg:22
@@ -3794,11 +3879,15 @@ msgid ""
 "troops, Qatif-al-nar can be easily located in battle by the cleared charred "
 "area around them, a testament to the success of their experiments."
 msgstr ""
+"Qatif-al-nar strávili tolik času experimentováním se zbraněmi, že neustále "
+"cítí pach popela a ohně. Opatrně respektovaní mezi svými spolubojovníky, "
+"Qatif-al-nary lze jednoduše poslat do boje a najít jejich okolí spálené a "
+"vyčištěné, jasný důkaz úspěchu jejich experimentů."
 
 #. [unit_type]: id=Rami, race=khalifate
 #: data/core/units/khalifate/Rami.cfg:4
 msgid "Rami"
-msgstr ""
+msgstr "Rami"
 
 #. [unit_type]: id=Rami, race=khalifate
 #: data/core/units/khalifate/Rami.cfg:18
@@ -3808,11 +3897,15 @@ msgid ""
 "superior speed and agility to circle and harass their foes, whittling down "
 "their numbers with relentless arrows."
 msgstr ""
+"Rami jsou výborní jezdci, schopní střílet z koňského hřbetu lépe než věšina "
+"jiných ve stoje. Pohrdajíce těžkým brněním, Rami raději spoléhají na velkou "
+"rychlost a obratnost při obklíčení a šikanování svých nepřátel, oslabujíce "
+"řady nepřátel nespočtem šípů."
 
 #. [unit_type]: id=Rasikh, race=khalifate
 #: data/core/units/khalifate/Rasikh.cfg:4
 msgid "Rasikh"
-msgstr ""
+msgstr "Rasikh"
 
 #. [unit_type]: id=Rasikh, race=khalifate
 #: data/core/units/khalifate/Rasikh.cfg:18
@@ -3824,11 +3917,16 @@ msgid ""
 "they can be trusted to hold any position or line, long after lesser soldiers "
 "and men have fled in terror."
 msgstr ""
+"Rozsety po území Chalífátu, osamocené věže poskytují úkryt karavanám a "
+"místním před bandity a příšerami. Tyto pevnosti brání jedni z "
+"nejodhodlanějších vojáků, kteří už často čelili obrovským přesilám, posléze "
+"vítězně. V armádě jim může být svěřena ochrana jakékoliv pozice či linie i "
+"dlouho potom, co ostatní vojáci ve strachu utekli."
 
 #. [unit_type]: id=Saree, race=khalifate
 #: data/core/units/khalifate/Saree.cfg:4
 msgid "Saree"
-msgstr ""
+msgstr "Saree"
 
 #. [unit_type]: id=Saree, race=khalifate
 #: data/core/units/khalifate/Saree.cfg:18
@@ -3838,11 +3936,15 @@ msgid ""
 "This has made them the fastest riders in the Khalifate armies, and a wise "
 "Khalid uses to this advantage."
 msgstr ""
+"Ramiové, kteří ukázali vyjímečnou zkušenost v používání luku se stávají "
+"Sareeji, trávíce mnoho hodin denně tréninkem a prohlubováním vztahu se svým "
+"ořem. To z nich dělá jedny z nejrychlejších jezdců Chalífátu a moudří "
+"Khalidové toho využívají."
 
 #. [unit_type]: id=Shuja, race=khalifate
 #: data/core/units/khalifate/Shuja.cfg:4
 msgid "Shuja"
-msgstr ""
+msgstr "Shuja"
 
 #. [unit_type]: id=Shuja, race=khalifate
 #: data/core/units/khalifate/Shuja.cfg:17
@@ -3852,11 +3954,15 @@ msgid ""
 "soldiers to fight for their cause. Despite this, they are often found "
 "leading from the front, taking down their foes with sword and shield."
 msgstr ""
+"Vyjímeční pro svou statečnost a umění, Shujové jsou veliteli armád "
+"Chalífátu. Jejich zkušenosti vedou celé prapory a povzbuzují je k boji pro "
+"jejich věc. Většinou je můžeme najít v přední linii, kde kosí svoje "
+"nepřátele s použitím svých mečů a štítů."
 
 #. [unit_type]: id=Tabib, race=khalifate
 #: data/core/units/khalifate/Tabib.cfg:4
 msgid "Tabib"
-msgstr ""
+msgstr "Tabib"
 
 #. [unit_type]: id=Tabib, race=khalifate
 #: data/core/units/khalifate/Tabib.cfg:23
@@ -3867,11 +3973,16 @@ msgid ""
 "well, often to the disbelief of the injured. Hardened by years of travels, "
 "many are able to treat themselves."
 msgstr ""
+"Někteří muži vynikají v medicíně, podobně, jako jiní v síle paží. A Tabibové "
+"jsou ti, jejichž znalosti jsou známé i za hranicemi Chalífátu. Jejich léky "
+"nejen pomáhají hojit zranění, ale i zbavit se infekce a vyléčit otravu, "
+"někdy až neuvěřitelně účinně. Jsou zocelení roky na cestách a tak je mnoho z "
+"nich schopno vyléčit se sami."
 
 #. [unit_type]: id=Tineen, race=khalifate
 #: data/core/units/khalifate/Tineen.cfg:4
 msgid "Tineen"
-msgstr ""
+msgstr "Tineen"
 
 #. [unit_type]: id=Tineen, race=khalifate
 #: data/core/units/khalifate/Tineen.cfg:22
@@ -3881,6 +3992,9 @@ msgid ""
 "of the value of life, Tineen are caught up in the power of their caged fire "
 "and likely to test their latest naphtha jar at the first opportunity."
 msgstr ""
+"Qatif-al-narové, kteří už skončili s experimentováním se stávají Tineeny "
+"budícími jak respekt, tak strach. Nejsou si už ani vědomi ceny života a jsou "
+"celí žhaví otestovat si sílu svého ohně a nafty při první příležitosti."
 
 #. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:4
@@ -5285,18 +5399,6 @@ msgstr "Temný učedník"
 
 #. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:23
-#, fuzzy
-#| msgid ""
-#| "To attract any practitioners, the lure of black magic must be a great "
-#| "prize indeed, for anyone caught practicing the art in the civilized world "
-#| "is subject to a death sentence. And yet there are those who pursue this "
-#| "art, for the prize offered is nothing less than immortality. Hidden away "
-#| "in secret cults, or initiated into the dark orders of the underworld, the "
-#| "training which these fanatics must endure often drives them to exhaustion "
-#| "and enfeeblement.\n"
-#| "\n"
-#| "In such condition, their only weapon is the craft they have so committed "
-#| "themselves to learning."
 msgid ""
 "To attract any practitioners, the lure of black magic must be a great prize "
 "indeed, for anyone caught practicing the art in the civilized world is "
@@ -5315,8 +5417,9 @@ msgstr ""
 "uměním, protože nabízenou cenou není nic menšího než samotná nesmrtelnost. "
 "Skryti v tajných kultech, nebo zasvěceni do temných řádů podsvětí, výcvik "
 "který musí tito fanatici snést často vede k vysílení a úplnému vyčerpání.\n"
-"\n"
-"Za takových podmínek je jejich jedinou zbraní obratnost v umění černé magie."
+"     \n"
+"     Za takových podmínek je jejich jedinou zbraní obratnost v umění černé "
+"magie."
 
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:42
