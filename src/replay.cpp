@@ -1049,13 +1049,8 @@ static std::map<int, config> get_user_choice_internal(const std::string &name, c
 			DBG_REPLAY << "MP synchronization: extracting choice from replay with has_local_side=" << has_local_side << "\n";
 
 			const config *action = get_replay_source().get_next_action();
-			if (!action)
-			{
-				replay::process_error("[" + name + "] expected but none found\n");
-				//this is weird, because it means that there is data on the replay but get_next_action returned an invalid config which should be impossible.
-				assert(false);
-			}
-			else if( !action->has_child(name))
+			assert(action); //action cannot be null because get_replay_source().at_end() returned false.
+			if( !action->has_child(name))
 			{
 				replay::process_error("[" + name + "] expected but none found\n. found instead:\n" + action->debug());
 				//We save this action for later
