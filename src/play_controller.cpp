@@ -1424,8 +1424,12 @@ void play_controller::check_victory()
 			
 			if (remove_from_carryover_on_defeat_) 
 			{
-				tm.set_lost();
+				tm.set_lost(true);
 			}
+		}
+		else if(remove_from_carryover_on_defeat_)
+		{
+			tm.set_lost(false);
 		}
 
 		if (tm.is_human()) {
