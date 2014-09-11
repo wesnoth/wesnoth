@@ -935,7 +935,7 @@ bool play_controller::can_execute_command(const hotkey::hotkey_command& cmd, int
 		return network::nconnections() == 0; // Can only load games if not in a network game
 
 	case hotkey::HOTKEY_CHAT_LOG:
-		return network::nconnections() > 0;
+		return true;
 
 	case hotkey::HOTKEY_REDO:
 		return !linger_ && undo_stack_->can_redo() && !events::commands_disabled && !browse_;
