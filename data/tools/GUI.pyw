@@ -191,12 +191,26 @@ Use like any other Entry widget"""
         # some mice don't even have two buttons, so the user is forced
         # to use Control + the only button
         # bear in mind that I don't have a Mac, so this point may be bugged
-        if sys.platform=="darwin":
-            self.bind("<Button-2>",self.on_right_click)
-            self.bind("<Control-Button-1>",self.on_right_click)
-        else:
-            self.bind("<Button-3>",self.on_right_click)
-    def on_right_click(self,event):
+        # bind also the context menu key, for those keyboards that have it
+        # that is, most of the Windows and Linux ones (however, in Win it's
+        # called App, while on Linux is called Menu)
+        # Mac doesn't have a context menu key on its keyboards, so no binding
+        # finally, bind also the Shift+F10 shortcut (same as Menu/App key)
+        # the call to tk windowingsystem is justified by the fact
+        # that it is possible to install X11 over Darwin
+        windowingsystem = self.tk.call('tk', 'windowingsystem')
+        if windowingsystem == "win32": # Windows, both 32 and 64 bit
+            self.bind("<Button-3>",self.on_context_menu)
+            self.bind("<KeyPress-App>",self.on_context_menu)
+            self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+        elif windowingsystem == "aqua": # MacOS with Aqua
+            self.bind("<Button-2>",self.on_context_menu)
+            self.bind("<Control-Button-1>",self.on_context_menu)
+        elif windowingsystem == "x11": # Linux, FreeBSD, Darwin with X11
+            self.bind("<Button-3>",self.on_context_menu)
+            self.bind("<KeyPress-Menu>",self.on_context_menu)
+            self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+    def on_context_menu(self,event):
         if str(self.cget('state')) != DISABLED:
             ContextMenu(event.x_root,event.y_root,event.widget)
 
@@ -208,16 +222,20 @@ Use like any other Spinbox widget"""
             super().__init__(parent,**kwargs)
         else:
             Spinbox.__init__(self,parent,**kwargs)
-        # on Mac the right button fires a Button-2 event, or so I'm told
-        # some mice don't even have two buttons, so the user is forced
-        # to use Control + the only button
-        # bear in mind that I don't have a Mac, so this point may be bugged
-        if sys.platform=="darwin":
-            self.bind("<Button-2>",self.on_right_click)
-            self.bind("<Control-Button-1>",self.on_right_click)
-        else:
-            self.bind("<Button-3>",self.on_right_click)
-    def on_right_click(self,event):
+        # see the above widget for an explanation of this block
+        windowingsystem = self.tk.call('tk', 'windowingsystem')
+        if windowingsystem == "win32":
+            self.bind("<Button-3>",self.on_context_menu)
+            self.bind("<KeyPress-App>",self.on_context_menu)
+            self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+        elif windowingsystem == "aqua":
+            self.bind("<Button-2>",self.on_context_menu)
+            self.bind("<Control-Button-1>",self.on_context_menu)
+        elif windowingsystem == "x11":
+            self.bind("<Button-3>",self.on_context_menu)
+            self.bind("<KeyPress-Menu>",self.on_context_menu)
+            self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+    def on_context_menu(self,event):
         if str(self.cget('state')) != DISABLED:
             ContextMenu(event.x_root,event.y_root,event.widget)
 
