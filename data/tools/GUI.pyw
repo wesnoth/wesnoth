@@ -176,8 +176,18 @@ If the widget isn't active, some options do not appear"""
                          image=ICONS['select_all'],
                          compound=LEFT,
                          accelerator='Ctrl+A',
-                         command=lambda: self.widget.event_generate("<<SelectAll>>"))
+                         command=self.on_select_all)
         self.tk_popup(x,y) # self.post does not destroy the menu when clicking out of it
+    def on_select_all(self):
+        # disabled Text widgets have a different way to handle selection
+        if isinstance(self.widget,Text):
+            # adding a SEL tag to a chunk of text causes it to be selected
+            self.widget.tag_add(SEL,"1.0",END)
+        elif isinstance(self.widget,Entry) or \
+             isinstance(self.widget,Spinbox) or \
+             isinstance(self.widget,Combobox):
+            # if the widget is active or readonly, just fire the correct event
+            self.widget.event_generate("<<SelectAll>>")
 
 class EntryContext(Entry):
     def __init__(self,parent,**kwargs):
@@ -238,6 +248,32 @@ Use like any other Spinbox widget"""
     def on_context_menu(self,event):
         if str(self.cget('state')) != DISABLED:
             ContextMenu(event.x_root,event.y_root,event.widget)
+
+class EnhancedText(Text):
+    def __init__(self,*args,**kwargs):
+        """A subclass of Text with a context menu
+Use it like any other Text widget"""
+        if sys.version_info.major>=3:
+            super().__init__(*args,**kwargs)
+        else:
+            Text.__init__(self,*args,**kwargs)
+        # see descriptions of above widgets
+        windowingsystem = self.tk.call('tk', 'windowingsystem')
+        if windowingsystem == "win32": # Windows, both 32 and 64 bit
+            self.bind("<Button-3>",self.on_context_menu)
+            self.bind("<KeyPress-App>",self.on_context_menu)
+            self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+        elif windowingsystem == "aqua": # MacOS with Aqua
+            self.bind("<Button-2>",self.on_context_menu)
+            self.bind("<Control-Button-1>",self.on_context_menu)
+        elif windowingsystem == "x11": # Linux, FreeBSD, Darwin with X11
+            self.bind("<Button-3>",self.on_context_menu)
+            self.bind("<KeyPress-Menu>",self.on_context_menu)
+            self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+    def on_context_menu(self,event):
+        # the disabled state in a Text widget is pretty much
+        # like the readonly state in Entry, hence no state check
+        ContextMenu(event.x_root,event.y_root,event.widget)
 
 class SelectDirectory(LabelFrame):
     def __init__(self,parent,textvariable=None,**kwargs):
@@ -812,10 +848,10 @@ class MainFrame(Frame):
         self.output_frame.grid(row=3,
                                column=0,
                                sticky=N+E+S+W)
-        self.text=Text(self.output_frame,
-                       wrap=WORD,
-                       state=DISABLED,
-                       takefocus=True)
+        self.text=EnhancedText(self.output_frame,
+                               wrap=WORD,
+                               state=DISABLED,
+                               takefocus=True)
         self.text.grid(row=0,
                        column=0,
                        sticky=N+E+S+W)
