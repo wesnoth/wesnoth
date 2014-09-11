@@ -12,7 +12,7 @@ class saved_game
 {
 	enum STARTING_POS_TYPE
 	{
-		/// There is no scenario stating pos data.
+		/// There is no scenario stating pos data (start-of-scenario).
 		STARTINGPOS_NONE,
 		/// We have a [snapshot] (mid-game-savefile).
 		STARTINGPOS_SNAPSHOT,
@@ -46,6 +46,7 @@ public:
 	const config& carryover() { return carryover_; }
 
 	/// copies the content of a [scenario] with the correct id attribute from the game config into this object.
+	/// reloads the game config from disk if necessary.
 	void expand_scenario();
 	/// merges [carryover_sides_start] into [scenario] and saves the rest into [carryover_sides]
 	/// Removes [carryover_sides_start] afterwards
@@ -73,6 +74,7 @@ public:
 	/// converts a normal savegame form the end of a scenaio to a start-of-scenario savefile for the next scenaio,
 	/// The saved_game must contain a [snapshot] made during the linger mode of the last scenaio.
 	void convert_to_start_save();
+	/// sets the random seed if that didn't already happen.
 	void set_random_seed();
 	/// @return the starting pos for replays. Usualy this is [replay_start] but it can also be a [scenario] if no [replay_start] is present
 	const config& get_replay_starting_pos();
@@ -96,12 +98,12 @@ public:
 
 private:
 	
+	bool has_carryover_expanded_;
 	/** 
 		depends on has_carryover_expanded_:
 		if true: The carryover information for all sides that arent used in this scenario to be carried over to the next scenario 
 		if false: The whole carryover information for all sides from teh previous scenario.
 	*/
-	bool has_carryover_expanded_;
 	config carryover_;
 	/** snapshot made before the start event. To be used as a starting pos for replays */
 	config replay_start_;
