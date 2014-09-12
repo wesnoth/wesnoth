@@ -81,6 +81,7 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 			// didn't find any campaign with that id
 			if (not_found)
 			{
+				//TODO: use ERR_NG or similar
 				std::cerr<<"No such campaign id to jump to: ["<<jump_to_campaign.campaign_id_<<"]\n";
 				return false;
 			}
@@ -107,6 +108,12 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 		create_eng.prepare_for_new_level();
 
 		create_eng.get_parameters();
+		if(!state.valid())
+		{
+			//TODO: use ERR_NG or similar
+			std::cerr << "Cannot load scenario with id=" << state.get_scenario_id() << "\n";
+			return false;
+		}
 
 		configure_canceled = !enter_configure_mode(disp, resources::config_manager->game_config(),
 				state, jump_to_campaign, local_players_only);
