@@ -41,38 +41,6 @@ namespace testing_ai_default {
 class turn_state;
 class decision;
 
-class strategy_formulation_with_rca: public virtual stage, public virtual rca_context {
-public:
-	strategy_formulation_with_rca(ai_context &context, const config &cfg);
-
-	~strategy_formulation_with_rca();
-
-	bool do_play_stage();
-
-	void on_create();
-
-	config to_config() const;
-
-	rca_context& get_rca_context();
-
-	void simulate_states_ahead();
-
-	void set_optimal_strategy();
-
-	const turn_state simulate_state(const int decision_no_, const turn_state &state);
-
-	void switch_side();
-
-	void init_side();
-
-private:
-	std::queue<turn_state> states_;
-
-	std::vector<bool> enemy_this_turn_;	// Store if is enemy for this turn. Use in the set optimal strategy function.
-
-	boost::shared_ptr<candidate_action_evaluation_loop> rca_;
-};
-
 class decision
 {
 	friend std::ostream& operator<<(std::ostream&, const decision&);
@@ -131,6 +99,38 @@ private:
 	const std::vector<team> teams_;
 
 	decision decision_;
+};
+
+class strategy_formulation_with_rca: public virtual stage, public virtual rca_context {
+public:
+	strategy_formulation_with_rca(ai_context &context, const config &cfg);
+
+	~strategy_formulation_with_rca();
+
+	bool do_play_stage();
+
+	void on_create();
+
+	config to_config() const;
+
+	rca_context& get_rca_context();
+
+	void simulate_states_ahead();
+
+	void set_optimal_strategy();
+
+	const turn_state simulate_state(const int decision_no_, const turn_state &state);
+
+	void switch_side();
+
+	void init_side();
+
+private:
+	std::queue<turn_state> states_;
+
+	std::vector<bool> enemy_this_turn_;	// Store if is enemy for this turn. Use in the set optimal strategy function.
+
+	boost::shared_ptr<candidate_action_evaluation_loop> rca_;
 };
 
 } // of namespace testing_ai_default
