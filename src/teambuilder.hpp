@@ -206,6 +206,15 @@ protected:
 			<< "] x=["<<u["x"]
 			<< "] y=["<<u["y"]
 			<<"]"<< std::endl;
+
+		if (u["type"].empty()) {
+			WRN_NG_TC << "warning: when building level, skipping a unit (id=[" << u["id"] << "]) from " << origin 
+			<< " with no type information,\n"
+			<< "for side:\n" << side_cfg_.debug() << std::endl;
+
+			return ;
+		}
+
 		const std::string &id = u["id"];
 		if (!id.empty()) {
 			if ( seen_ids_.find(id)!=seen_ids_.end() ) {
