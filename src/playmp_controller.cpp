@@ -174,7 +174,10 @@ possible_end_play_signal playmp_controller::play_human_turn(){
 	remove_blindfold();
 	int cur_ticks = SDL_GetTicks();
 	show_turn_dialog();
-	HANDLE_END_PLAY_SIGNAL( execute_gotos() );
+
+	if (!preferences::disable_auto_moves()) {
+		HANDLE_END_PLAY_SIGNAL(execute_gotos());
+	}
 
 	if (!linger_ || is_host()) {
 		end_turn_enable(true);

@@ -247,6 +247,9 @@ namespace preferences {
 	bool use_twelve_hour_clock_format();
 	void set_use_twelve_hour_clock_format(bool value);
 
+	bool disable_auto_moves();
+	void set_disable_auto_moves(bool value);
+
 } // end namespace preferences
 
 #endif

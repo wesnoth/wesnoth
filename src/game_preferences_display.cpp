@@ -141,6 +141,7 @@ private:
 			confirm_sound_button_, idle_anim_button_,
 			standing_anim_button_,
 			animate_map_button_,
+			disable_auto_move_button_,
 
 			// color tab
 			orb_colors_defaults_,
@@ -241,6 +242,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  idle_anim_button_(disp.video(), _("Show unit idle animations"), gui::button::TYPE_CHECK),
 	  standing_anim_button_(disp.video(), _("Show unit standing animations"), gui::button::TYPE_CHECK),
 	  animate_map_button_(disp.video(), _("Animate map"), gui::button::TYPE_CHECK),
+	  disable_auto_move_button_(disp.video(), _("Disable automatic moves"), gui::button::TYPE_CHECK),
 
 	  // Colors tab buttons
 	  orb_colors_defaults_(disp.video(), _("Defaults")),
@@ -515,6 +517,9 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	colors_button_.set_help_string(_("Adjust orb colors"));
 	cache_button_.set_help_string(_("Manage the game WML cache"));
 
+	disable_auto_move_button_.set_check(disable_auto_moves());
+	disable_auto_move_button_.set_help_string(_("Do not allow automatic movements at the begining of a turn"));
+
 	set_advanced_menu();
 	set_friends_menu();
 }
@@ -596,6 +601,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&sample_rate_input_);
 	h.push_back(&advanced_);
 	h.push_back(&friends_);
+	h.push_back(&disable_auto_move_button_);
 
 	// Colors tab
 	for (unsigned i = 0; i < color_ids_.size(); i++) {
@@ -650,6 +656,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 
 	turbo_slider_.set_location(turbo_rect);
 	ypos += item_interline; show_ai_moves_button_.set_location(rect.x, ypos);
+	ypos += short_interline; disable_auto_move_button_.set_location(rect.x, ypos);
 	ypos += short_interline; turn_dialog_button_.set_location(rect.x, ypos);
 	ypos += short_interline; whiteboard_on_start_button_.set_location(rect.x, ypos);
 	ypos += short_interline; hide_whiteboard_button_.set_location(rect.x, ypos);
@@ -905,6 +912,8 @@ void preferences_dialog::process_event()
 		}
 		if (show_ai_moves_button_.pressed())
 			set_show_ai_moves(!show_ai_moves_button_.checked());
+		if (disable_auto_move_button_.pressed())
+			set_disable_auto_moves(disable_auto_move_button_.checked());
 		if (interrupt_when_ally_sighted_button_.pressed())
 			set_interrupt_when_ally_sighted(interrupt_when_ally_sighted_button_.checked());
 		if (save_replays_button_.pressed())
@@ -1554,6 +1563,7 @@ void preferences_dialog::set_selection(int index)
 	turbo_slider_label_.enable(turbo());
 	turbo_slider_.enable(turbo());
 	show_ai_moves_button_.hide(hide_general);
+	disable_auto_move_button_.hide(hide_general);
 	turn_dialog_button_.hide(hide_general);
 	whiteboard_on_start_button_.hide(hide_general);
 	hide_whiteboard_button_.hide(hide_general);
