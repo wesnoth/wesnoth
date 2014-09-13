@@ -17,11 +17,12 @@
 #include "global.hpp"
 
 #include "widgets/button.hpp"
-#include "game_config.hpp"
 #include "font.hpp"
-#include "marked-up_text.hpp"
+#include "game_config.hpp"
+#include "game_errors.hpp"
 #include "image.hpp"
 #include "log.hpp"
+#include "marked-up_text.hpp"
 #include "serialization/string_utils.hpp"
 #include "sound.hpp"
 #include "video.hpp"
@@ -147,8 +148,11 @@ void button::load_images() {
 	}
 
 	if (button_image.null()) {
-		ERR_DP << "error initializing button!\n";
-		throw error();
+		std::string err_msg = "error initializing button images! file name: ";
+		err_msg += button_image_name_;
+		err_msg += ".png";
+		ERR_DP << err_msg << std::endl;
+		throw game::game_error(err_msg);
 	}
 
 	base_height_ = button_image->h;
