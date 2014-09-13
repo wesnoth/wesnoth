@@ -420,8 +420,9 @@ const std::string& team::current_player(bool is_override_current_player) const
 		if (u != resources::units->end())
 			return u->name();
 		else {
-			outStr = std::string(_("scenario settings^Side")) + " " + std::to_string(info_.side);
-			return outStr;
+			std::stringstream currPlyStr;
+			currPlyStr  << _("scenario settings^Side") << " " << info_.side;
+			return outStr = currPlyStr.str();
 		}
 	}
 	else
