@@ -1211,9 +1211,9 @@ void preferences_dialog::set_advanced_menu()
 			field = _("no");
 		}
 
-		const std::string& label = adv["name"];
+		const std::string& label = adv["description"];
 
-		std::string display_label = label;
+		std::string display_label = adv["name"];
 		std::string display_field = field;
 
 		// NOTE:
