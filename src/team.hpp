@@ -217,7 +217,7 @@ public:
 	void set_name(const std::string& name) { info_.name = name; }
 	const std::string& save_id() const { return info_.save_id; }
 	void set_save_id(const std::string& save_id) { info_.save_id = save_id; }
-	const std::string& current_player() const { return info_.current_player; }
+	const std::string& current_player(bool is_override_current_player = false) const;
 
 	void set_objectives(const t_string& new_objectives, bool silently=false);
 	void set_objectives_changed(bool c = true) const { info_.objectives_changed = c; }
