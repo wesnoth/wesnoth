@@ -317,6 +317,8 @@ Version 1.13.0-dev:
    * Fix bug #22306: move_unit moves a unit even when it shouldn't
    * Fix minor bug where toggling accelerated speed caused two lines of print messages to display
      on top of one another. Reported here: http://forums.wesnoth.org/viewtopic.php?f=5&t=40745
+   * Fix bug #22611: loading a theme with nonexistant button images would cause the program to
+     close.
 
 Version 1.11.11:
  * Add-ons server:
