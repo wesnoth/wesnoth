@@ -29,6 +29,8 @@
 #include "sdl/utils.hpp" // Only needed for int_to_color (!)
 #include "unit_types.hpp"
 #include "whiteboard/side_actions.hpp"
+#include "unit.hpp"
+#include "unit_map.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/assign/list_of.hpp>
@@ -167,9 +169,6 @@ void team::team_info::read(const config &cfg)
 
 	if(save_id.empty()) {
 		save_id = description;
-	}
-	if (current_player.empty()) {
-		current_player = save_id;
 	}
 
 	income_per_village = cfg["village_gold"].to_int(game_config::village_income);
@@ -409,6 +408,25 @@ int team::minimum_recruit_price() const
 		info_.minimum_recruit_price = min;
 	}
 	return info_.minimum_recruit_price;
+}
+
+const std::string& team::current_player(bool is_override_current_player) const
+{
+
+	static std::string outStr;
+
+	if (info_.current_player.empty() || is_override_current_player) {
+		unit_map::iterator u = resources::units->find_first_leader(info_.side);
+		if (u != resources::units->end())
+			return u->name();
+		else {
+			std::stringstream currPlyStr;
+			currPlyStr  << _("scenario settings^Side") << " " << info_.side;
+			return outStr = currPlyStr.str();
+		}
+	}
+	else
+		return info_.current_player;
 }
 
 bool team::calculate_enemies(size_t index) const

@@ -849,7 +849,7 @@ void playsingle_controller::show_turn_dialog(){
 		resources::screen->recalculate_minimap();
 		std::string message = _("It is now $name|’s turn");
 		utils::string_map symbols;
-		symbols["name"] = gamestate_.board_.teams()[player_number_ - 1].current_player();
+		symbols["name"] = gamestate_.board_.teams()[player_number_ - 1].current_player(true);
 		message = utils::interpolate_variables_into_string(message, &symbols);
 		gui2::show_transient_message(gui_->video(), "", message);
 	}
