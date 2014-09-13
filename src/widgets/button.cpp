@@ -14,22 +14,23 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "widgets/button.hpp"
+
 #include "global.hpp"
 
-#include "widgets/button.hpp"
-#include "game_config.hpp"
+#include "filesystem.hpp"
 #include "font.hpp"
-#include "text.hpp"
-#include "marked-up_text.hpp"
+#include "game_config.hpp"
+#include "game_errors.hpp"
 #include "image.hpp"
 #include "log.hpp"
+#include "marked-up_text.hpp"
+#include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"
 #include "sound.hpp"
 #include "video.hpp"
+#include "text.hpp"
 #include "wml_separators.hpp"
-#include "sdl/rect.hpp"
-
-#include "filesystem.hpp"
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -237,8 +238,11 @@ void button::load_images() {
 	}
 
 	if (button_image.null()) {
-		ERR_DP << "error initializing button!" << std::endl;
-		throw error();
+		std::string err_msg = "error initializing button images! file name: ";
+		err_msg += button_image_name_;
+		err_msg += ".png";
+		ERR_DP << err_msg << std::endl;
+		throw game::game_error(err_msg);
 	}
 
 	base_height_ = button_image->h;
