@@ -1207,3 +1207,57 @@ bool manage_addons(display& disp)
 			return false;
 	}
 }
+
+bool ad_hoc_addon_fetch_session(display & disp, const std::string & addon_id)
+{
+	std::string remote_address = preferences::campaign_server();
+
+	// These exception handlers copied from addon_manager_ui fcn above.
+	try {
+
+		addons_client client(disp, remote_address);
+		client.connect();
+
+		addons_list addons;
+
+		if(!get_addons_list(client, addons)) {
+			gui2::show_error_message(disp.video(), _("An error occurred while downloading the add-ons list from the server."));
+			return false;
+		}
+
+		const addon_info& addon = addon_at(addon_id, addons);
+
+		ADDON_OP_RESULT res = try_fetch_addon_with_checks(disp, client, addons, addon);
+		return res.outcome_ == SUCCESS;
+
+	} catch(const config::error& e) {
+		ERR_CFG << "config::error thrown during transaction with add-on server; \""<< e.message << "\"" << std::endl;
+		gui2::show_error_message(disp.video(), _("Network communication error."));
+	} catch(const network::error& e) {
+		ERR_NET << "network::error thrown during transaction with add-on server; \""<< e.message << "\"" << std::endl;
+		gui2::show_error_message(disp.video(), _("Remote host disconnected."));
+	} catch(const network_asio::error& e) {
+		ERR_NET << "network_asio::error thrown during transaction with add-on server; \""<< e.what() << "\"" << std::endl;
+		gui2::show_error_message(disp.video(), _("Remote host disconnected."));
+	} catch(const filesystem::io_exception& e) {
+		ERR_FS << "io_exception thrown while installing an addon; \"" << e.what() << "\"" << std::endl;
+		gui2::show_error_message(disp.video(), _("A problem occurred when trying to create the files necessary to install this add-on."));
+	} catch(const invalid_pbl_exception& e) {
+		ERR_CFG << "could not read .pbl file " << e.path << ": " << e.message << std::endl;
+
+		utils::string_map symbols;
+		symbols["path"] = e.path;
+		symbols["msg"] = e.message;
+
+		gui2::show_error_message(disp.video(),
+			vgettext("A local file with add-on publishing information could not be read.\n\nFile: $path\nError message: $msg", symbols));
+	} catch(twml_exception& e) {
+		e.show(disp);
+	} catch(const addons_client::user_exit&) {
+		LOG_AC << "initial connection canceled by user\n";
+	} catch(const addons_client::invalid_server_address&) {
+		gui2::show_error_message(disp.video(), _("The add-ons server address specified is not valid."));
+	}
+
+	return false;
+}

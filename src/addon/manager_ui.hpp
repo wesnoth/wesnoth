@@ -30,4 +30,15 @@ class display;
  */
 bool manage_addons(display& disp);
 
+/**
+ * Conducts an ad-hoc add-ons server connection to download an add-on with a particular id and all
+ * it's dependencies. Launches gui dialogs when issues arise.
+ *
+ * @param disp Display object on which to render UI elements.
+ * @param id The id of the target add-on.
+ *
+ * @return @a true when we successfully installed the target (possibly the user chose to ignore failures)
+ */
+bool ad_hoc_addon_fetch_session(display & disp, const std::string & addon_id);
+
 #endif
