@@ -116,6 +116,26 @@ std::string describe_addon_status(const addon_tracking_info& info)
 	}
 }
 
+// Asks the client to download and install an addon, reporting errors in a gui dialog. Returns true if new content was installed, false otherwise.
+static bool try_fetch_addon(display & disp, addons_client & client, const addon_info & addon)
+{
+	config archive;
+
+	if(!(
+		client.download_addon(archive, addon.id, addon.title, !is_addon_installed(addon.id)) &&
+		client.install_addon(archive, addon)
+	)) {
+		const std::string& server_error = client.get_last_server_error();
+		if(!server_error.empty()) {
+			gui2::show_error_message(disp.video(),
+				std::string(_("The server responded with an error:")) + "\n" + server_error);
+		}
+		return false;
+	} else {
+		return true;
+	}
+}
+
 /** Warns the user about unresolved dependencies and installs them if they choose to do so. */
 bool do_resolve_addon_dependencies(display& disp, addons_client& client, const addons_list& addons, const addon_info& addon, bool& wml_changed)
 {
@@ -229,18 +249,7 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 	BOOST_FOREACH(const std::string& dep, missing_deps) {
 		const addon_info& addon = addon_at(dep, addons);
 
-		config archive;
-
-		if(!(
-			client.download_addon(archive, addon.id, addon.title, !is_addon_installed(addon.id)) &&
-			client.install_addon(archive, addon)
-		)) {
-			const std::string& server_error = client.get_last_server_error();
-			if(!server_error.empty()) {
-				gui2::show_error_message(disp.video(),
-					std::string(_("The server responded with an error:")) + "\n" + server_error);
-			}
-
+		if(!try_fetch_addon(disp, client, addon)) {
 			failed_titles.push_back(addon.title);
 		} else {
 			wml_changed = true;
@@ -871,18 +880,8 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			return;
 		}
 
-		config archive;
-
-		if(!(
-			client.download_addon(archive, addon.id, addon.title, !is_addon_installed(addon.id)) &&
-			client.install_addon(archive, addon)
-		)) {
+		if(!try_fetch_addon(disp, client, addon)) {
 			failed_titles.push_back(addon.title);
-			const std::string& server_error = client.get_last_server_error();
-			if(!server_error.empty()) {
-				gui2::show_error_message(disp.video(),
-					std::string(_("The server responded with an error:")) + "\n" + server_error);
-			}
 		} else {
 			wml_changed = true;
 		}
