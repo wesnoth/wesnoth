@@ -49,7 +49,7 @@ public:
 	void define_metatable(lua_State* L);
 	void add_table(lua_State* L);
 
-	/* These callbacks are all declared static, and find the "this" pointer from the lua table */
+	/* These callbacks are all declared static, and find the "this" pointer from the resources */
 	static int impl_get(lua_State* L); // _index metamethod
 	static int impl_set(lua_State* L); // _newindex metamethod
 
