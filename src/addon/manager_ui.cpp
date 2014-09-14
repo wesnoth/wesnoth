@@ -136,9 +136,19 @@ static bool try_fetch_addon(display & disp, addons_client & client, const addon_
 	}
 }
 
+// A structure which summarizes the outcome of one or more add-on install operations.
+struct ADDON_OP_RESULT {
+	bool continue_;
+	bool wml_changed_;
+};
+
 /** Warns the user about unresolved dependencies and installs them if they choose to do so. */
-bool do_resolve_addon_dependencies(display& disp, addons_client& client, const addons_list& addons, const addon_info& addon, bool& wml_changed)
+ADDON_OP_RESULT do_resolve_addon_dependencies(display& disp, addons_client& client, const addons_list& addons, const addon_info& addon)
 {
+	ADDON_OP_RESULT result;
+	result.continue_ = true;
+	result.wml_changed_ = false;
+
 	boost::scoped_ptr<cursor::setter> cursor_setter(new cursor::setter(cursor::WAIT));
 
 	// TODO: We don't currently check for the need to upgrade. I'll probably
@@ -175,13 +185,14 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 		}
 
 		if(gui2::show_message(disp.video(), _("Broken Dependencies"), broken_deps_report, gui2::tmessage::yes_no_buttons) != gui2::twindow::OK) {
-			return false; // canceled by user
+			result.continue_ = false;
+			return result; // canceled by user
 		}
 	}
 
 	if(missing_deps.empty()) {
 		// No dependencies to install, carry on.
-		return true;
+		return result;
 	}
 
 	//
@@ -236,7 +247,7 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 		cursor_setter.reset();
 
 		if(dlg.show() < 0) {
-			return true;
+			return result; // the user has chosen to continue without installing anything.
 		}
 	}
 
@@ -252,7 +263,7 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 		if(!try_fetch_addon(disp, client, addon)) {
 			failed_titles.push_back(addon.title);
 		} else {
-			wml_changed = true;
+			result.wml_changed_ = true;
 		}
 	}
 
@@ -262,10 +273,11 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 			"The following dependencies could not be installed. Do you still wish to continue?",
 			failed_titles.size()) + std::string("\n\n") + utils::bullet_list(failed_titles);
 
-		return gui2::show_message(disp.video(), _("Dependencies Installation Failed"), failed_deps_report, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK;
+		result.continue_ = gui2::show_message(disp.video(), _("Dependencies Installation Failed"), failed_deps_report, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK; // Only continue if the user chooses to ignore the failures
+		return result;
 	}
 
-	return true;
+	return result;
 }
 
 /** Checks whether the given add-on has local .pbl or VCS information and asks before overwriting it. */
@@ -875,9 +887,16 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 	BOOST_FOREACH(const std::string& id, ids_to_install) {
 		const addon_info& addon = addon_at(id, addons);
 
-		if(!(do_check_before_overwriting_addon(disp.video(), addon) && do_resolve_addon_dependencies(disp, client, addons, addon, wml_changed))) {
+		if(!(do_check_before_overwriting_addon(disp.video(), addon))) {
 			// Just do nothing and leave.
 			return;
+		}
+
+		// Resolve any dependencies
+		ADDON_OP_RESULT res = do_resolve_addon_dependencies(disp, client, addons, addon);
+		wml_changed |= res.wml_changed_; // Take note if this op changed the wml.
+		if (!res.continue_) {
+			return; // abort
 		}
 
 		if(!try_fetch_addon(disp, client, addon)) {
