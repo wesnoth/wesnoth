@@ -18,6 +18,7 @@
 
 #include "global.hpp"
 
+#include "addon/manager_ui.hpp"
 #include "construct_dialog.hpp"
 #include "filesystem.hpp"
 #include "game_preferences.hpp"
@@ -28,6 +29,8 @@
 #include "multiplayer_lobby.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/old_markup.hpp"
+#include "gui/dialogs/message.hpp" // for gui2::show_message
+#include "gui/widgets/window.hpp" // for gui2::twindow::OK
 #include "log.hpp"
 #include "playmp_controller.hpp"
 #include "sound.hpp"
@@ -475,6 +478,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		games_.push_back(game_item());
 		games_.back().password_required = game["password"].to_bool();
 		games_.back().reloaded = game["savegame"].to_bool();
+		games_.back().addon_ids = game["addon_ids"].str();
 		games_.back().have_era = true;
 		games_.back().have_scenario = true;
 		if (game["mp_campaign"].empty()) {
@@ -1026,8 +1030,20 @@ void lobby::process_event_impl(const process_event_data & data)
 	join_game_.enable(games_menu_.selection_is_joinable());
 	observe_game_.enable(games_menu_.selection_is_observable());
 
+	// check whehter to try to download addons
+	if (games_menu_.selected() && (data.observe || data.join) && games_menu_.selection_needs_addons())
+	{
+		if (gui2::show_message(video(), _("Missing user-made content."), _("This game requires one or more user-made addons to join. Do you want to try to install them?"), gui2::tmessage::yes_no_buttons) == gui2::twindow::OK) {
+			std::vector<std::string> addon_ids = games_menu_.selection_addon_ids();
+			BOOST_FOREACH(const std::string & id, addon_ids) {
+				ad_hoc_addon_fetch_session(disp(), id);
+			}
+		}
+	}
+
 	const bool observe = (data.observe || (games_menu_.selected() && !games_menu_.selection_is_joinable())) && games_menu_.selection_is_observable();
 	const bool join = (data.join || games_menu_.selected()) && games_menu_.selection_is_joinable();
+
 	games_menu_.reset_selection();
 	preferences::set_skip_mp_replay(replay_options_.selected() == 1);
 	preferences::set_blindfold_replay(replay_options_.selected() == 2);

@@ -20,6 +20,7 @@
 #include "multiplayer_ui.hpp"
 #include "game_preferences.hpp"
 #include "image.hpp"
+#include "serialization/string_utils.hpp"
 
 class config;
 class video;
@@ -62,7 +63,8 @@ public:
 			password_required(false),
 			have_scenario(false),
 			have_era(false),
-			have_all_mods(false)
+			have_all_mods(false),
+			addon_ids()
 		{
 		}
 
@@ -92,6 +94,7 @@ public:
 		bool have_scenario;
 		bool have_era;
 		bool have_all_mods;
+		std::string addon_ids;
 	};
 	gamebrowser(CVideo& video, const config &map_hashes);
 	void scroll(unsigned int pos);
@@ -117,6 +120,11 @@ public:
 		games_[selected_].have_era &&
 		games_[selected_].have_all_mods) ||
 		preferences::is_authenticated(); }
+	bool selection_needs_addons() const // TODO: Add support have downloading addons that require the scenario
+	{ return empty() ? false : !games_[selected_].have_era ||
+		!games_[selected_].have_all_mods; }
+	std::vector<std::string> selection_addon_ids() const
+	{ return empty() ? std::vector<std::string>() : utils::split(games_[selected_].addon_ids, ','); }
 	bool selected() const { return double_clicked_ && !empty(); }
 	void reset_selection() { double_clicked_ = false; }
 	int selection() const { return selected_; }
