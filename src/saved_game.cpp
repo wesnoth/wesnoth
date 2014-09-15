@@ -221,12 +221,15 @@ private:
 	std::string type_;
 };
 
+// Gets the ids of the mp_era and modifications which were set to be active, then fetches these configs from the game_config and copies their [event] and [lua] to the starting_pos_.
+// At this time, also collect the addon_id attributes which appeared in them and put this list in the addon_ids attribute of the mp_settings.
 void saved_game::expand_mp_events()
 {
 	expand_scenario();
 	if(this->starting_pos_type_ == STARTINGPOS_SCENARIO && !this->starting_pos_["has_mod_events"].to_bool(false))
 	{
 		std::vector<modevents_entry> mods;
+		std::vector<std::string> addon_ids;
 
 		boost::copy( mp_settings_.active_mods
 			| boost::adaptors::transformed(modevents_entry_for("modification"))
@@ -239,10 +242,17 @@ void saved_game::expand_mp_events()
 			if(const config& cfg = game_config_manager::get()->
 				game_config().find_child(mod.type, "id", mod.id))
 			{
+				// Note the addon_id
+				if (cfg.has_attribute("addon_id") && !cfg["addon_id"].empty()) {
+					addon_ids.push_back(cfg["addon_id"].str());
+				}
+
+				// Copy events
 				BOOST_FOREACH(const config& modevent, cfg.child_range("event"))
 				{
 					this->starting_pos_.add_child("event", modevent);
 				}
+				// Copy lua
 				BOOST_FOREACH(const config& modlua, cfg.child_range("lua"))
 				{
 					this->starting_pos_.add_child("lua", modlua);
@@ -255,6 +265,7 @@ void saved_game::expand_mp_events()
 			}
 		}
 
+		mp_settings_.addon_ids = addon_ids;
 		this->starting_pos_["has_mod_events"] = true;
 	}
 }

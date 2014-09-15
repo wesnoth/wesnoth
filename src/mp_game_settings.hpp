@@ -40,6 +40,7 @@ struct mp_game_settings : public savegame::savegame_config
 	std::string mp_campaign;
 	std::string difficulty_define;
 	std::vector<std::string> active_mods;
+	std::vector<std::string> addon_ids;
 	std::map<std::string, std::string> side_users;
 
 	bool show_configure;
