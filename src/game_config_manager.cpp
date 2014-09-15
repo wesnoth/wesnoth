@@ -398,9 +398,33 @@ void game_config_manager::load_addons_cfg()
 	// Load the addons.
 	BOOST_FOREACH(const std::string& uc, addons_to_load) {
 		const std::string toplevel = uc;
+
+		// Figure out the addon_id
+		std::string addon_id;
+
+		if (toplevel.size() >= 10 && toplevel.substr(toplevel.size() - 10) == "/_main.cfg") {
+			std::string path = toplevel.substr(0, toplevel.size() - 10); //chop off /_main.cfg from end
+			addon_id = path.substr(path.find_last_of('/')+1, path.size()); // Search backwards for a /, then take everything that came after that from the end. This is the addon directory name, also the addon_id.
+		} else {
+			std::string without_ext = toplevel.substr(0, toplevel.size() - 4); //chop off .cfg from end
+			addon_id = without_ext.substr(without_ext.find_last_of('/')+1, without_ext.size()); // Search backwards for a /, then take everything that came after that from the end. This is the addon file name (dropping .cfg), also the addon_id.
+		}
+
 		try {
+			// Load this addon from the cache, to a config
 			config umc_cfg;
 			cache_.get_config(toplevel, umc_cfg);
+
+			// Annotate "era" and "modification" tags with addon_id info
+			const char * tags_with_addon_id [] = { "era", "modification", NULL };
+
+			for (const char ** type = tags_with_addon_id; *type; type++)
+			{
+				BOOST_FOREACH(config & cfg, umc_cfg.child_range(*type)) {
+					cfg["addon_id"] = addon_id;
+				}
+			}
+
 			game_config_.append(umc_cfg);
 		} catch(config::error& err) {
 			ERR_CONFIG << "error reading usermade add-on '" << uc << "'" << std::endl;
