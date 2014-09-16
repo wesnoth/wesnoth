@@ -602,7 +602,7 @@ const std::string theme::action::tooltip(size_t index) const {
 		result << hotkey::get_description(items_[index]);
 		if (!hotkey::get_names(items_[index]).empty())
 			result << "\n" << N_("Hotkey(s): ") << hotkey::get_names(items_[index]);
-	    result << "\n" << tooltip_;
+		result << "\n" << tooltip_;
 	} else {
 		result << tooltip_;
 	}
