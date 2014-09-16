@@ -520,7 +520,7 @@ void connect_engine::start_game_commandline(
 
 	// Update sides with commandline parameters.
 	if (cmdline_opts.multiplayer_turns) {
-		DBG_MP << "\tsetting turns: " << cmdline_opts.multiplayer_turns <<
+		DBG_MP << "\tsetting turns: " << *cmdline_opts.multiplayer_turns <<
 			std::endl;
 		scenario()["turns"] = *cmdline_opts.multiplayer_turns;
 	}
