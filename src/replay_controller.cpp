@@ -118,12 +118,14 @@ replay_controller::replay_controller(const config& level,
 	current_turn_(1),
 	is_playing_(false),
 	show_everything_(false),
-	show_team_(state_of_game.classification().campaign_type == game_classification::MULTIPLAYER ? 0 : 1)
+	is_multiplayer_(state_of_game.classification().campaign_type == game_classification::MULTIPLAYER)
 {
 	// Our parent class correctly detects that we are loading a game. However,
 	// we are not loading mid-game, so from here on, treat this as not loading
 	// a game. (Allows turn_1 et al. events to fire at the correct time.)
 	loading_game_ = false;
+
+	viewing_team_ = gamestate_.first_human_team_;
 
 	init();
 	reset_replay();
@@ -151,10 +153,12 @@ void replay_controller::init_gui(){
 	DBG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks_) << "\n";
 	play_controller::init_gui();
 
-	if (show_team_)
-		gui_->set_team(show_team_ - 1, show_everything_);
-	else
+	if (is_multiplayer_) {
 		gui_->set_team(0, show_everything_);
+	}
+	else {
+		gui_->set_team(viewing_team_, show_everything_);
+	}
 
 	gui_->scroll_to_leader(player_number_, display::WARP);
 	update_locker lock_display((*gui_).video(),false);
@@ -436,21 +440,21 @@ void replay_controller::process_oos(const std::string& msg) const
 
 void replay_controller::replay_show_everything(){
 	show_everything_ = true;
-	show_team_ = 0;
+	is_multiplayer_ = true;
 	update_teams();
 	update_gui();
 }
 
 void replay_controller::replay_show_each(){
 	show_everything_ = false;
-	show_team_ = 0;
+	is_multiplayer_ = true;
 	update_teams();
 	update_gui();
 }
 
 void replay_controller::replay_show_team1(){
 	show_everything_ = false;
-	show_team_ = 1;
+	is_multiplayer_ = false;
 	update_teams();
 	update_gui();
 }
@@ -609,10 +613,10 @@ void replay_controller::update_teams(){
 		next_team = 1;
 	}
 
-	if ( show_team_ == 0 ) {
+	if (is_multiplayer_) {
 		gui_->set_team(next_team - 1, show_everything_);
 	} else {
-		gui_->set_team(show_team_ - 1, show_everything_);
+		gui_->set_team(viewing_team_, show_everything_);
 	}
 
 	gui_->set_playing_team(next_team - 1);
