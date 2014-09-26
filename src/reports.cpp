@@ -1338,10 +1338,11 @@ REPORT_GENERATOR(income)
 }
 
 namespace {
-void blit_tced_icon(config &cfg, const std::string &terrain_id, const std::string &icon_image, bool high_res) {
+void blit_tced_icon(config &cfg, const std::string &terrain_id, const std::string &icon_image, bool high_res,
+	const std::string &terrain_name) {
 	const std::string tc_base = high_res ? "images/buttons/icon-base-32.png" : "images/buttons/icon-base-16.png";
 	const std::string terrain_image = "terrain/" + icon_image + (high_res ? "_30.png" : ".png");
-	add_image(cfg, tc_base + "~RC(magenta>" + terrain_id + ")~BLIT(" + terrain_image + ")", terrain_id);
+	add_image(cfg, tc_base + "~RC(magenta>" + terrain_id + ")~BLIT(" + terrain_image + ")", terrain_name);
 }
 }
 
@@ -1383,10 +1384,11 @@ REPORT_GENERATOR(terrain_info)
 		if (underlying_terrain == t_translation::OFF_MAP_USER)
 			continue;
 		const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
+		const std::string& terrain_name = map.get_terrain_string(underlying_terrain);
 		const std::string& terrain_icon = map.get_terrain_info(underlying_terrain).icon_image();
 		if (terrain_icon.empty())
 			continue;
-		blit_tced_icon(cfg, terrain_id, terrain_icon, high_res);
+		blit_tced_icon(cfg, terrain_id, terrain_icon, high_res, terrain_name);
 	}
 	return cfg;
 }
