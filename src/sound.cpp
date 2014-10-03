@@ -225,7 +225,7 @@ static const sound::music_track &choose_track()
 {
 	assert(!current_track_list.empty());
 
-	if (current_track_index == current_track_list.size()) {
+	if (current_track_index >= current_track_list.size()) {
 		current_track_index = 0;
 	}
 
