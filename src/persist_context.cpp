@@ -141,9 +141,9 @@ bool persist_file_context::clear_var(const std::string &global, bool immediate)
 	while ((active->empty()) && (!namespace_.lineage_.empty())) {
 		name_space prev = namespace_.prev();
 		active = get_node(cfg_, prev);
-		/// @todo: This assertion replaces a seg fault. Still need to fix the
-		/// real bug (documented as bug #21093).
-		assert(active != NULL);
+		if (active == NULL) {
+			break;
+		}
 		active->clear_children(namespace_.node_);
 		if (active->has_child("variables") && active->child("variables").empty()) {
 			active->clear_children("variables");

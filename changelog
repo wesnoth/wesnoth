@@ -330,6 +330,8 @@ Version 1.13.0-dev:
    * Fix bug #22650: nontranslatable strings displayed in tooltips for terrain icons
    * Fixed Gameplay -> Time of Day help topic displaying the Dawn ToD picture
      where the Second Watch picture should be used instead.
+   * Fixed mishandling of nested subnamespaces by the [clear_global_variable]
+     WML action causing an assertion failure (bug #21093).
 
 Version 1.11.11:
  * Add-ons server:
