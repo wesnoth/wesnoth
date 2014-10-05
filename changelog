@@ -121,6 +121,8 @@ Version 1.13.0-dev:
    * Added a "Disable automatic moves" preference to disable automatic movements 
      at the begining of a turn.
    * In the dialog layout code, fixed the button padding.
+   * Fixed mouse tracking issue with workaround by changing the default window
+     resolution for OS X to 800 x 600 (bug #20332).
  * WML engine:
    * Added customizable recall costs for unit types and individual units,
      using the new recall_cost attribute in [unit_type] and [unit].
@@ -133,8 +135,6 @@ Version 1.13.0-dev:
    * allow [lua] tags inside [modification] and [era] (which have the same
      efffect as [lua] tags inside [scenario]).
    * enable side_for= in key [message] with [option]s.
-   * Fixed mouse tracking issue with workaround by changing the default window
-     resolution for OS X to 800 x 600 (bug #20332).
    * added [effect] apply_to=fearless/healthy which is now used by healty/fearless
      traits instead of hardcoding the id of those traits in c++.
    * added support for a shuffle key in the [music] music to allow selecting
