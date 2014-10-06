@@ -83,6 +83,8 @@ stringfixes = {
 "wesnoth-httt" : (
 # fix added in 1.10.0+dev
 ("Second, who you most", "Second, whom you most"),
+# fix added in 1.11.16+dev
+("Who then is your leader? Who do we serve?", "Who then is your leader? Whom do we serve?"),
 ),
 
 "wesnoth-tutorial" : (
