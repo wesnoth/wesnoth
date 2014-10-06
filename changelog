@@ -7,6 +7,8 @@ Version 1.11.16+dev:
  * User interface:
    * Fixed bug #22046: An assertion failure with empty labels in a listbox
    * In the dialog layout code, fixed the button padding (bug #22379)
+   * Removed the "Replay viewer" text label from the replay controller theme,
+     because it caused problems for translators and was unnecessary
  * Miscellaneous and bug fixes:
    * Fix bug #22307: random map generation produces oss in multiplayer
      campaigns.
