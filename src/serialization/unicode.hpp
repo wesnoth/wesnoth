@@ -108,6 +108,7 @@ namespace implementation {
 	ucs4::string string_to_ucs4string(const std::string &);
 	std::string ucs4char_to_string(const ucs4::char_t);
 	ucs4::string utf16string_to_ucs4string(const utf16::string &);
+	std::string utf16string_to_string(const utf16::string &);
 	utf16::string ucs4string_to_utf16string(const ucs4::string &);
 } // end namespace implementation
 
@@ -146,6 +147,11 @@ utf16::string unicode_cast<utf16::string, utf8::string>(const utf8::string &in) 
 template <> inline
 ucs4::string unicode_cast<ucs4::string, utf16::string>(const utf16::string &in) {
 	return implementation::utf16string_to_ucs4string(in);
+}
+
+template <> inline
+std::string unicode_cast<std::string, utf16::string>(const utf16::string &in) {
+	return implementation::utf16string_to_string(in);
 }
 
 #endif

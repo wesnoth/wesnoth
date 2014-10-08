@@ -54,31 +54,32 @@ size_t byte_size_from_ucs4_codepoint(ucs4::char_t ch)
 } // anonymous namespace
 
 namespace implementation {
+
+inline void push_ucs4char_to_string(std::string& out, ucs4::char_t ch)
+{
+	size_t count = byte_size_from_ucs4_codepoint(ch);
+
+	if(count == 1) {
+		out.push_back(static_cast<char>(ch));
+	} else {
+		for(int j = static_cast<int>(count) - 1; j >= 0; --j) {
+			unsigned char c = (ch >> (6 * j)) & 0x3f;
+			c |= 0x80;
+			if(j == static_cast<int>(count) - 1) {
+				c |= 0xff << (8 - count);
+			}
+			out.push_back(c);
+		}
+	}
+}
+
 std::string ucs4string_to_string(const ucs4::string &src)
 {
 	std::string ret;
 
 	try {
 		for(ucs4::string::const_iterator i = src.begin(); i != src.end(); ++i) {
-			unsigned int count;
-			ucs4::char_t ch = *i;
-
-			// Determine the bytes required
-			count = byte_size_from_ucs4_codepoint(ch);
-
-			if(count == 1) {
-				ret.push_back(static_cast<char>(ch));
-			} else {
-				for(int j = static_cast<int>(count) - 1; j >= 0; --j) {
-					unsigned char c = (ch >> (6 * j)) & 0x3f;
-					c |= 0x80;
-					if(j == static_cast<int>(count) - 1) {
-						c |= 0xff << (8 - count);
-					}
-					ret.push_back(c);
-				}
-			}
-
+			push_ucs4char_to_string(ret, *i);
 		}
 
 		return ret;
@@ -129,6 +130,27 @@ ucs4::string utf16string_to_ucs4string(const utf16::string & src)
 		// Equivalent to res.insert(res.end(),i1,i2) which doesn't work on VC++6.
 		while(i1 != i2) {
 			res.push_back(*i1);
+			++i1;
+		}
+	}
+	catch(utf8::invalid_utf8_exception&) {
+		ERR_GENERAL << "Invalid UTF-16 string" << std::endl;
+		return res;
+	}
+
+	return res;
+}
+
+std::string utf16string_to_string(const utf16::string & src)
+{
+	std::string res;
+
+	try {
+		utf16::iterator i1(src);
+		const utf16::iterator i2(utf16::iterator::end(src));
+
+		while(i1 != i2) {
+			push_ucs4char_to_string(res, *i1);
 			++i1;
 		}
 	}
