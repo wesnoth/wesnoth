@@ -118,6 +118,28 @@ ucs4::string string_to_ucs4string(const std::string &src)
 	return res;
 }
 
+ucs4::string utf16string_to_ucs4string(const utf16::string & src)
+{
+	ucs4::string res;
+
+	try {
+		utf16::iterator i1(src);
+		const utf16::iterator i2(utf16::iterator::end(src));
+
+		// Equivalent to res.insert(res.end(),i1,i2) which doesn't work on VC++6.
+		while(i1 != i2) {
+			res.push_back(*i1);
+			++i1;
+		}
+	}
+	catch(utf8::invalid_utf8_exception&) {
+		ERR_GENERAL << "Invalid UTF-16 string" << std::endl;
+		return res;
+	}
+
+	return res;
+}
+
 utf16::string ucs4string_to_utf16string(const ucs4::string &src)
 {
 	utf16::string res;
