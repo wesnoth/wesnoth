@@ -251,8 +251,10 @@ public:
 			unsigned int num_pages = model_.get_num_page(config_to_string(c.cfg));
 			for (unsigned int i = 0; i < num_pages; i++) {
 				std::ostringstream cur_str;
-				cur_str << "[" << c.key << "][" << wml_array_sizes[c.key] << "] "
-						<< (i + 1) << "/" << num_pages;
+				cur_str << "[" << c.key << "][" << wml_array_sizes[c.key] << "]";
+				if (num_pages > 1) {
+					cur_str << " " << (i + 1) << "/" << num_pages;
+				}
 				model_.add_row_to_stuff_list(cur_str.str(), cur_str.str());
 			}
 		}
