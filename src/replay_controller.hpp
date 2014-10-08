@@ -101,7 +101,6 @@ private:
 
 	bool show_everything_;
 	bool is_multiplayer_;
-	size_t viewing_team_;
 };
 
 

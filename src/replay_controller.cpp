@@ -125,8 +125,6 @@ replay_controller::replay_controller(const config& level,
 	// a game. (Allows turn_1 et al. events to fire at the correct time.)
 	loading_game_ = false;
 
-	viewing_team_ = gamestate_.first_human_team_;
-
 	init();
 	reset_replay();
 }
@@ -157,7 +155,7 @@ void replay_controller::init_gui(){
 		gui_->set_team(0, show_everything_);
 	}
 	else {
-		gui_->set_team(viewing_team_, show_everything_);
+		gui_->set_team(gamestate_.first_human_team_, show_everything_);
 	}
 
 	gui_->scroll_to_leader(player_number_, display::WARP);
@@ -616,7 +614,7 @@ void replay_controller::update_teams(){
 	if (is_multiplayer_) {
 		gui_->set_team(next_team - 1, show_everything_);
 	} else {
-		gui_->set_team(viewing_team_, show_everything_);
+		gui_->set_team(gamestate_.first_human_team_, show_everything_);
 	}
 
 	gui_->set_playing_team(next_team - 1);
