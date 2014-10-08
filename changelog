@@ -35,6 +35,7 @@ Version 1.13.0-dev:
    * Singleplayer campaign creation now utilizes the create, configure,
      and connect engines from the multiplayer codepath.
    * Eras, mods, and options are now available for sp campaigns.
+   * Fix sighted events firing too early in several scenarios. Fixes bug #22466
    * Descent into Darkness:
      * Fixed various issues with player and enemy gold and income in
        'Descent into Darkness'.
@@ -105,6 +106,8 @@ Version 1.13.0-dev:
      WML in text form instead of a simplified version.
    * Added a button to copy the currently displayed content from the :inspect
      dialog to clipboard.
+   * WML array elements are now displayed with subscripts in the :inspect
+     dialog.
    * Added a button to copy the in-game Chat Log dialog contents to clipboard.
    * Fixed the WML load error dialog not displaying an add-on name instead of
      falling back to its directory name if the add-on contains an outdated
@@ -118,7 +121,7 @@ Version 1.13.0-dev:
      language (bug #22092).
    * Added a new "Advanced Settings" button and dialog to campaign select.
    * Added new wml attributes to listbox: has_minimum and has_maximum.
-   * Added a "Disable automatic moves" preference to disable automatic movements 
+   * Added a "Disable automatic moves" preference to disable automatic movements
      at the begining of a turn.
    * In the dialog layout code, fixed the button padding  (bug #22379).
    * Fixed mouse tracking issue with workaround by changing the default window
@@ -335,6 +338,8 @@ Version 1.13.0-dev:
      where the Second Watch picture should be used instead (bug #22537).
    * Fixed mishandling of nested subnamespaces by the [clear_global_variable]
      WML action causing an assertion failure (bug #21093).
+   * Fix bug #22443: Scenario Settings table has inaccurate Start Gold info in certain cases
+   * Fix Grand Knight image being distorted in the sidebar
    * Fix bug #22251: Map labels not appearing in mp
 
 Version 1.11.11:
