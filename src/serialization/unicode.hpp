@@ -16,6 +16,7 @@
 #ifndef SERIALIZATION_UNICODE_HPP_INCLUDED
 #define SERIALIZATION_UNICODE_HPP_INCLUDED
 
+#include "ucs4_iterator_base.hpp"
 #include <boost/static_assert.hpp>
 #include <string>
 #include <vector>
@@ -35,6 +36,13 @@ namespace utf8 {
  */
 namespace utf16 {
 	typedef std::vector<wchar_t> string;
+	
+	struct iterator_implementation
+	{
+		static ucs4::char_t get_next_char(utf16::string::const_iterator& start, const utf16::string::const_iterator& end);
+	};
+
+	typedef ucs4::iterator_base<utf16::string, iterator_implementation> iterator;
 }
 
 namespace utf8 {
@@ -43,36 +51,14 @@ namespace utf8 {
 	* Functions for converting Unicode wide-char strings to UTF-8 encoded strings,
 	* back and forth.
 	*/
+	/** also used for invalid utf16 or ucs4 strings */
 	class invalid_utf8_exception : public std::exception {};
-
-	class iterator
+	struct iterator_implementation
 	{
-	public:
-		typedef std::input_iterator_tag iterator_category;
-		typedef ucs4::char_t value_type;
-		typedef ptrdiff_t difference_type;
-		typedef ucs4::char_t* pointer;
-		typedef ucs4::char_t& reference;
-
-		iterator(const std::string& str);
-		iterator(std::string::const_iterator const &begin, std::string::const_iterator const &end);
-
-		static iterator begin(const std::string& str);
-		static iterator end(const std::string& str);
-
-		bool operator==(const utf8::iterator& a) const;
-		bool operator!=(const utf8::iterator& a) const { return ! (*this == a); }
-		iterator& operator++();
-		ucs4::char_t operator*() const;
-		bool next_is_end();
-		const std::pair<std::string::const_iterator, std::string::const_iterator>& substr() const;
-	private:
-		void update();
-
-		ucs4::char_t current_char;
-		std::string::const_iterator string_end;
-		std::pair<std::string::const_iterator, std::string::const_iterator> current_substr;
+		static ucs4::char_t get_next_char(std::string::const_iterator& start, const std::string::const_iterator& end);
 	};
+
+	typedef ucs4::iterator_base<std::string, iterator_implementation> iterator;
 
 	/** Returns a lowercased version of the string. */
 	utf8::string lowercase(const utf8::string&);
