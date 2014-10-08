@@ -2,6 +2,7 @@ Version 1.11.16+dev:
  * Campaigns
    * The Hammer of Thursagan:
      * Set Masked Dwarvish Lord range attack same as for Dwarvish Lord
+   * Fix sighted events firing too early in several scenarios. Fixes bug #22466
  * Language and i18n:
    * Updated translations: Czech, German, Lithuanian, Slovak
  * User interface:
@@ -44,6 +45,7 @@ Version 1.11.16+dev:
    * Fixed mishandling of nested subnamespaces by the [clear_global_variable]
      WML action causing an assertion failure (bug #21093).
    * Fix bug #22443: Scenario Settings table has inaccurate Start Gold info in certain cases
+   * Fix Grand Knight image being distorted in the sidebar
 
 Version 1.11.16:
  * Add-ons client:
