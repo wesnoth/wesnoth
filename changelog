@@ -23,28 +23,31 @@ Version 1.11.16+dev:
    * Fix bug wherein dbus notifications did not have a wesnoth icon
    * Fix bug wherein chat history synopses weren't working right in the dbus
      notifications
-   * Don't check defeat_conditon to remove sides from carryover after [endlevel
+   * Don't check defeat_conditon to remove sides from carryover after [endlevel]
      (restore pre 1.11.13 behaviour)
    * Remove carryover WML (this may make a reappearance in 1.13.0 but it is
      considered premature now, please see github PR discussion for more info)
    * Fix bug in Goto Micro AI when there is no path to the return hex
    * Bug fixes for translatable strings in Micro AI scenarios
-   * Fix minor bug where toggling accelerated speed caused two lines of print messages to display
-     on top of one another. Reported here: http://forums.wesnoth.org/viewtopic.php?f=5&t=40745
-   * Fix bug #22611: loading a theme with nonexistant button images would cause the program to
-     close.
+   * Fix minor bug where toggling accelerated speed caused two lines of print
+     messages to display on top of one another. Reported here:
+     http://forums.wesnoth.org/viewtopic.php?f=5&t=40745
+   * Fix bug #22611: loading a theme with nonexistant button images would cause
+     the program to close.
    * Fix bug #22487: advanced preferences descriptions not showing up
    * Fix bug #22646: Tooltips broken in replay viewer
    * Fix bug #22643: Cannot compile with boost 1.56
-   * Fix issue where the chatlog for a replayed game could not be opened in single player.
-     The chatlog can now always be opened.
-   * Fix bug #22650: nontranslatable strings displayed in tooltips for terrain icons
+   * Fix issue where the chatlog for a replayed game could not be opened in
+     single player. The chatlog can now always be opened.
+   * Fix bug #22650: nontranslatable strings displayed in tooltips for terrain
+     icons
    * Fix bug #22306: move_unit moves a unit even when it shouldn't
    * Fixed Gameplay -> Time of Day help topic displaying the Dawn ToD picture
      where the Second Watch picture should be used instead (bug #22537).
    * Fixed mishandling of nested subnamespaces by the [clear_global_variable]
      WML action causing an assertion failure (bug #21093).
-   * Fix bug #22443: Scenario Settings table has inaccurate Start Gold info in certain cases
+   * Fix bug #22443: Scenario Settings table has inaccurate Start Gold info in
+     certain cases
    * Fix Grand Knight image being distorted in the sidebar
 
 Version 1.11.16:
