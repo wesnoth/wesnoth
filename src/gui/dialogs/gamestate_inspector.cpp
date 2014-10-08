@@ -238,12 +238,21 @@ public:
 			model_.add_row_to_stuff_list(a.first, a.first);
 		}
 
+		std::map<std::string, size_t> wml_array_sizes;
+
 		FOREACH(const AUTO & c, vars.all_children_range())
 		{
+			if (wml_array_sizes.find(c.key) == wml_array_sizes.end()) {
+				wml_array_sizes[c.key] = 0;
+			} else {
+				++wml_array_sizes[c.key];
+			}
+
 			unsigned int num_pages = model_.get_num_page(config_to_string(c.cfg));
 			for (unsigned int i = 0; i < num_pages; i++) {
 				std::ostringstream cur_str;
-				cur_str << "[" << c.key << "] " << (i + 1) << "/" << num_pages;
+				cur_str << "[" << c.key << "][" << wml_array_sizes[c.key] << "] "
+						<< (i + 1) << "/" << num_pages;
 				model_.add_row_to_stuff_list(cur_str.str(), cur_str.str());
 			}
 		}
