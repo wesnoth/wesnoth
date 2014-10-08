@@ -183,7 +183,7 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 		terrain_label* global_label = get_label_private(loc, "");
 
 		// Add the new label.
-		terrain_label* res = new terrain_label(text,
+		res = new terrain_label(text,
 				team_name,
 				loc,
 				*this,
