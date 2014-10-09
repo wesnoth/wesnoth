@@ -13,7 +13,7 @@
 */
 
 /**
- * @file animated.i
+ * @file animated.tpp
  * Templates related to animations.
  */
 
