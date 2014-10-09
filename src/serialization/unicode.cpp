@@ -190,15 +190,15 @@ namespace utf16 {
 ucs4::char_t iterator_implementation::get_next_char(utf16::string::const_iterator& start, const utf16::string::const_iterator& end)
 {
 
-	const int32_t last10 = 0x3FF;
-	const int32_t type_filter = 0xFC00;
-	const int32_t type_lead = 0xD800;
-	const int32_t type_trail = 0xDC00;
+	const ucs4::char_t last10 = 0x3FF;
+	const ucs4::char_t type_filter = 0xFC00;
+	const ucs4::char_t type_lead = 0xD800;
+	const ucs4::char_t type_trail = 0xDC00;
 
 	assert(start != end);
-	uint32_t current_char = static_cast<uint16_t>(*start);
+	ucs4::char_t current_char = static_cast<uint16_t>(*start);
 	++start;
-	uint32_t type = current_char & type_filter;
+	ucs4::char_t type = current_char & type_filter;
 	if(type == type_trail)
 	{
 		//found trail without head
