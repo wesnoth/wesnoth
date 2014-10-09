@@ -54,6 +54,9 @@ BOOST_AUTO_TEST_CASE( utils_unicode_test )
 
 	BOOST_CHECK( apple_u4.size() == 5 );
 	BOOST_CHECK_EQUAL( apple_u8, unicode_cast<utf8::string>(apple_u4) );
+	BOOST_CHECK_EQUAL( apple_u8, unicode_cast<utf8::string>(apple_u16) );
+	BOOST_CHECK( apple_u4 == unicode_cast<ucs4::string>(apple_u16) );
+	BOOST_CHECK( apple_u16 == unicode_cast<utf16::string>(apple_u4) );
 	BOOST_CHECK_EQUAL( apple_u8.size(), apple_u16.size() );
 
 	ucs4::string water_u4;
@@ -73,6 +76,9 @@ BOOST_AUTO_TEST_CASE( utils_unicode_test )
 	BOOST_CHECK_EQUAL(nonbmp_u16[0], 0xD800);
 	BOOST_CHECK_EQUAL(nonbmp_u16[1], 0xDC00);
 	BOOST_CHECK_EQUAL(nonbmp_u8, unicode_cast<utf8::string>(nonbmp_u4));
+	BOOST_CHECK_EQUAL(nonbmp_u8, unicode_cast<utf8::string>(nonbmp_u16));
+	BOOST_CHECK(nonbmp_u16 == unicode_cast<utf16::string>(nonbmp_u4));
+	BOOST_CHECK(nonbmp_u4 == unicode_cast<ucs4::string>(nonbmp_u16));
 }
 
 BOOST_AUTO_TEST_CASE( test_lowercase )
