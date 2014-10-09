@@ -418,7 +418,7 @@ void set_wrap_login(bool wrap)
 	preferences::set("login_is_wrapped", wrap);
 }
 
-std::string get_system_username()
+static std::string get_system_username()
 {
 	std::string res;
 #ifdef _WIN32
