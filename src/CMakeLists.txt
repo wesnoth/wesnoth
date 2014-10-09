@@ -731,6 +731,7 @@ set(wesnoth-main_SRC
 	editor/action/mouse/mouse_action_unit.cpp
 	editor/action/mouse/mouse_action_village.cpp
 	editor/action/mouse/mouse_action_select.cpp
+	editor/controller/editor_controller.cpp
 	editor/map/editor_map.cpp
 	editor/map/map_context.cpp
 	editor/map/map_fragment.cpp
@@ -741,7 +742,6 @@ set(wesnoth-main_SRC
 	editor/palette/item_palette.cpp
 	editor/palette/terrain_palettes.cpp
 	editor/palette/unit_palette.cpp
-	editor/editor_controller.cpp
 	editor/editor_display.cpp
 	editor/editor_main.cpp
 	editor/editor_preferences.cpp

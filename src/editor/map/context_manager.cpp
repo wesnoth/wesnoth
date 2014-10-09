@@ -27,7 +27,7 @@
 #include "map_context.hpp"
 
 #include "editor/action/action.hpp"
-#include "editor/editor_controller.hpp"
+#include "editor/controller/editor_controller.hpp"
 #include "editor/editor_preferences.hpp"
 
 #include "gui/dialogs/editor_generate_map.hpp"

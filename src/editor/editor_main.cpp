@@ -13,7 +13,7 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "editor_controller.hpp"
+#include "controller/editor_controller.hpp"
 
 #include "../construct_dialog.hpp"
 #include "../gettext.hpp"
