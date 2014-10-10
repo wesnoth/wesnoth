@@ -76,7 +76,7 @@ template <typename T>
 struct greater
 {
 	greater(T val) : value (val) {}
-	bool operator () (T v2)
+	bool operator () (T v2) const
 	{
 		return value < v2;
 	}

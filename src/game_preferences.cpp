@@ -30,6 +30,11 @@
 #include "wml_exception.hpp"
 
 #include <boost/foreach.hpp>
+#include <cassert>
+#ifdef _WIN32
+#include <windows.h> //GetUserName
+#endif
+
 
 static lg::log_domain log_config("config");
 #define ERR_CFG LOG_STREAM(err , log_config)
@@ -413,12 +418,31 @@ void set_wrap_login(bool wrap)
 	preferences::set("login_is_wrapped", wrap);
 }
 
+static std::string get_system_username()
+{
+	std::string res;
+#ifdef _WIN32
+	wchar_t buffer[300];
+	DWORD size = 300;
+	if(GetUserNameW(buffer,&size)) {
+		//size includes a terminating null character.
+		assert(size > 0);
+		res = unicode_cast<utf8::string>(utf16::string(buffer, buffer + size - 1));
+	}
+#else
+	if(char* const login = getenv("USER")) {
+		res = login;
+	}
+#endif
+	return res;
+}
+
 std::string login()
 {
 	const std::string res = preferences::get("login");
 	if(res.empty() || res == EMPTY_WRAPPED_STRING) {
-		char* const login = getenv("USER");
-		if(login != NULL) {
+		const std::string& login = get_system_username();
+		if(!login.empty()) {
 			return login;
 		}
 
