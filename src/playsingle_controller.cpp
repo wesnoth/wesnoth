@@ -568,6 +568,15 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		{
 			LOG_NG << "resuming from loaded linger state...\n";
 			//as carryover information is stored in the snapshot, we have to re-store it after loading a linger state
+			for (unit_map::iterator un = units_.begin(); un != units_.end(); ++un) {
+
+				if (teams_[un->side() - 1].persistent()) {
+					LOG_NG << "Added unit " << un->id() << ", " << un->name() << "\n";
+					un->new_turn();
+					un->new_scenario();
+					teams_[un->side() - 1].recall_list().push_back(*un);
+				}
+			}
 			gamestate_.snapshot = config();
 			if(!is_observer()) {
 				persist_.end_transaction();
