@@ -523,19 +523,6 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 				// Some of the input images are hex tiles,
 				// created using a hexagon shaped alpha channel
 				// that is either set to full-on or full-off.
-				//
-				// If intermediate alpha values are introduced
-				// along a hex edge, it produces a gametime artifact.
-				// Moving the mouse around will leave behind
-				// "hexagon halos" from the temporary highlighting.
-				// In other words, the Wesnoth rendering engine
-				// freaks out.
-				//
-				// The alpha thresholding step attempts
-				// to accommodates this limitation.
-				// There is a small loss of quality.
-				// For example, skeleton bowstrings
-				// are not as good as they could be.
 
 				rr = gg = bb = aa = 0;
 				for (loc=0; loc<4; loc++) {
@@ -557,7 +544,6 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 				g = gg >> 16;
 				b = bb >> 16;
 				a = aa >> 16;
-				a = (a < avg_a/2) ? 0 : avg_a;
 				*dst_word = (a << 24) + (r << 16) + (g << 8) + b;
 			}
 		}
