@@ -5,6 +5,10 @@ Version 1.11.16+dev:
    * The Hammer of Thursagan:
      * Set Masked Dwarvish Lord range attack same as for Dwarvish Lord
    * Fix sighted events firing too early in several scenarios. Fixes bug #22466
+ * Graphics
+   * Disabled "alpha thresholding" in the bilinear interpolation algorithm
+     used for all sprites and images. (This was introduced as a workaround
+     for an old bug.)
  * Language and i18n:
    * Updated translations: Czech, German, Lithuanian, Slovak
  * User interface:
