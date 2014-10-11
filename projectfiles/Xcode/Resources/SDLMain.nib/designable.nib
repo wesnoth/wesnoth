@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="1050" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application">
+        <customObject id="-3" userLabel="Application" customClass="NSObject">
             <connections>
                 <outlet property="delegate" destination="194" id="515"/>
             </connections>
@@ -587,6 +587,101 @@ changelog: https://github.com/wesnoth/wesnoth-old/blob/master/changelog
                                         <fragment>
                                             <string key="content" base64-UTF8="YES">
 Cgo
+</string>
+                                            <attributes>
+                                                <font key="NSFont" size="10" name="LucidaGrande"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural">
+                                                    <tabStops>
+                                                        <textTab alignment="left" location="0.0"/>
+                                                        <textTab alignment="left" location="56"/>
+                                                        <textTab alignment="left" location="112"/>
+                                                        <textTab alignment="left" location="168"/>
+                                                        <textTab alignment="left" location="224"/>
+                                                        <textTab alignment="left" location="280"/>
+                                                        <textTab alignment="left" location="336"/>
+                                                        <textTab alignment="left" location="392"/>
+                                                        <textTab alignment="left" location="448"/>
+                                                        <textTab alignment="left" location="504"/>
+                                                        <textTab alignment="left" location="560"/>
+                                                        <textTab alignment="left" location="616"/>
+                                                        <textTab alignment="left" location="672"/>
+                                                        <textTab alignment="left" location="728"/>
+                                                        <textTab alignment="left" location="784"/>
+                                                        <textTab alignment="left" location="840"/>
+                                                        <textTab alignment="left" location="896"/>
+                                                        <textTab alignment="left" location="952"/>
+                                                        <textTab alignment="left" location="1008"/>
+                                                        <textTab alignment="left" location="1064"/>
+                                                        <textTab alignment="left" location="1120"/>
+                                                        <textTab alignment="left" location="1176"/>
+                                                        <textTab alignment="left" location="1232"/>
+                                                        <textTab alignment="left" location="1288"/>
+                                                        <textTab alignment="left" location="1344"/>
+                                                        <textTab alignment="left" location="1400"/>
+                                                        <textTab alignment="left" location="1456"/>
+                                                        <textTab alignment="left" location="1512"/>
+                                                        <textTab alignment="left" location="1568"/>
+                                                        <textTab alignment="left" location="1624"/>
+                                                        <textTab alignment="left" location="1680"/>
+                                                        <textTab alignment="left" location="1736"/>
+                                                    </tabStops>
+                                                </paragraphStyle>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="Version 1.11.17:">
+                                            <attributes>
+                                                <font key="NSFont" size="12" name="LucidaGrande-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural">
+                                                    <tabStops>
+                                                        <textTab alignment="left" location="0.0"/>
+                                                        <textTab alignment="left" location="56"/>
+                                                        <textTab alignment="left" location="112"/>
+                                                        <textTab alignment="left" location="168"/>
+                                                        <textTab alignment="left" location="224"/>
+                                                        <textTab alignment="left" location="280"/>
+                                                        <textTab alignment="left" location="336"/>
+                                                        <textTab alignment="left" location="392"/>
+                                                        <textTab alignment="left" location="448"/>
+                                                        <textTab alignment="left" location="504"/>
+                                                        <textTab alignment="left" location="560"/>
+                                                        <textTab alignment="left" location="616"/>
+                                                        <textTab alignment="left" location="672"/>
+                                                        <textTab alignment="left" location="728"/>
+                                                        <textTab alignment="left" location="784"/>
+                                                        <textTab alignment="left" location="840"/>
+                                                        <textTab alignment="left" location="896"/>
+                                                        <textTab alignment="left" location="952"/>
+                                                        <textTab alignment="left" location="1008"/>
+                                                        <textTab alignment="left" location="1064"/>
+                                                        <textTab alignment="left" location="1120"/>
+                                                        <textTab alignment="left" location="1176"/>
+                                                        <textTab alignment="left" location="1232"/>
+                                                        <textTab alignment="left" location="1288"/>
+                                                        <textTab alignment="left" location="1344"/>
+                                                        <textTab alignment="left" location="1400"/>
+                                                        <textTab alignment="left" location="1456"/>
+                                                        <textTab alignment="left" location="1512"/>
+                                                        <textTab alignment="left" location="1568"/>
+                                                        <textTab alignment="left" location="1624"/>
+                                                        <textTab alignment="left" location="1680"/>
+                                                        <textTab alignment="left" location="1736"/>
+                                                    </tabStops>
+                                                </paragraphStyle>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment>
+                                            <string key="content">
+ * Language and i18n:
+   * Updated translations: Czech, German, Lithuanian, Slovak.
+
+ * Miscellaneous and bug fixes:
+   * Reverted changes to Mushroom Grove terrain stats from version 1.11.16 (see
+     bugs #21971, #22336).
+   * Fix bug wherein dbus notifications did not have a wesnoth icon
+   * Fix bug wherein chat history synopses weren't working right in the dbus
+     notifications
+
+
 </string>
                                             <attributes>
                                                 <font key="NSFont" size="10" name="LucidaGrande"/>
