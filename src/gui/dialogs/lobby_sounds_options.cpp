@@ -25,7 +25,11 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 
+#include "preferences.hpp"
+#include "formula_string_utils.hpp"
+
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 #include "gettext.hpp"
 
@@ -58,6 +62,46 @@ namespace gui2
  * @end{table}
  */
 
+// Note, this list of items must match those ids defined in lobby_sounds_options.cfg
+const char * items[] = { "player_joins", "player_leaves", "private_message", "public_message", "server_message", "ready_to_start", "game_has_begun" };
+
+static ttoggle_button * setup_pref_toggle_button(const std::string & id, bool def, twindow & window)
+{
+	ttoggle_button * b = &find_widget<ttoggle_button>(&window, id, false);
+	b->set_value(preferences::get(id, def));
+
+	//ensure we have yes / no for the toggle button, so that the preference matches the toggle button for sure.
+	if (preferences::get(id).size() == 0) {
+		preferences::set(id, def);
+	}
+
+	//Needed to disambiguate overloaded function
+	void (*set) (const std::string &, bool) = &preferences::set;
+
+	connect_signal_mouse_left_click(*b, boost::bind(set, id, boost::bind(&ttoggle_button::get_value, b)));
+
+	return b;
+}
+
+static void setup_item(const std::string & item, twindow & window)
+{
+	// Set up the sound checkbox
+	std::string sound_id = item+"_sound";
+	ttoggle_button * sound = setup_pref_toggle_button(sound_id, item != "public_message", window);
+
+	// Set up the sound checkbox tooltip
+	utils::string_map for_tooltip;
+	for_tooltip["id"] = sound_id;
+	std::string orig = _("This sound is selected by '$id' entry of data/game_config.cfg.");
+	sound->set_tooltip(vgettext(orig.c_str(),for_tooltip));
+
+	// Set up the notification checkbox
+	setup_pref_toggle_button(item+"_notification", item != "public_message", window);
+
+	// Set up the in_lobby checkbox
+	setup_pref_toggle_button(item+"_in_lobby", item == "private_message" || item == "server_message", window);
+}
+
 REGISTER_DIALOG(lobby_sounds_options)
 
 tlobby_sounds_options::tlobby_sounds_options()
@@ -66,6 +110,11 @@ tlobby_sounds_options::tlobby_sounds_options()
 
 void tlobby_sounds_options::pre_show(CVideo& /*video*/, twindow& window)
 {
+	BOOST_FOREACH(const char * i, items) {
+		std::string item(i);
+		setup_item(item, window);
+	}
+
 	ttoggle_button * in_lobby;
 	in_lobby = &find_widget<ttoggle_button>(&window,"ready_to_start_in_lobby", false);
 	in_lobby->set_visible(twidget::tvisible::invisible);
