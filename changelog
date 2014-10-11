@@ -58,6 +58,8 @@ Version 1.11.16+dev:
    * Fix bug #22251: Map labels not appearing in mp
    * Fix bug wherein game saved in linger mode results in recall list being
      lost.
+   * Increased UI sound channels allocation from 1 to 2, thereby reducing the
+     number of channels available for game sound effects from 21 to 20.
 
 Version 1.11.16:
  * Add-ons client:

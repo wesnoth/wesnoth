@@ -67,8 +67,10 @@ const size_t timer_channel = 1;
 const size_t source_channels = 8;
 const size_t source_channel_start = timer_channel + 1;
 const size_t source_channel_last = source_channel_start + source_channels - 1;
-const size_t UI_sound_channel = source_channel_last + 1;
-const size_t n_reserved_channels = UI_sound_channel + 1; // sources, bell, timer and UI
+const size_t UI_sound_channels = 2;
+const size_t UI_sound_channel_start = source_channel_last + 1;
+const size_t UI_sound_channel_last = UI_sound_channel_start + UI_sound_channels - 1;
+const size_t n_reserved_channels = UI_sound_channel_last + 1; // sources, bell, timer and UI
 
 // Max number of sound chunks that we want to cache
 // Keep this above number of available channels to avoid busy-looping
@@ -318,7 +320,7 @@ bool init_sound() {
 		Mix_GroupChannel(bell_channel, SOUND_BELL);
 		Mix_GroupChannel(timer_channel, SOUND_TIMER);
 		Mix_GroupChannels(source_channel_start, source_channel_last, SOUND_SOURCES);
-		Mix_GroupChannel(UI_sound_channel, SOUND_UI);
+		Mix_GroupChannels(UI_sound_channel_start, UI_sound_channel_last, SOUND_UI);
 		Mix_GroupChannels(n_reserved_channels, n_of_channels - 1, SOUND_FX);
 
 		set_sound_volume(preferences::sound_volume());
@@ -334,8 +336,8 @@ bool init_sound() {
 				  << "    " << bell_channel << " - bell\n"
 				  << "    " << timer_channel << " - timer\n"
 				  << "    " << source_channel_start << ".." << source_channel_last << " - sound sources\n"
-				  << "    " << UI_sound_channel << " - UI\n"
-				  << "    " << UI_sound_channel + 1 << ".." << n_of_channels - 1 << " - sound effects\n";
+				  << "    " << UI_sound_channel_start << ".." << UI_sound_channel_last << " - UI\n"
+				  << "    " << UI_sound_channel_last + 1 << ".." << n_of_channels - 1 << " - sound effects\n";
 
 		play_music();
 	}
@@ -841,7 +843,9 @@ void set_sound_volume(int vol)
 
 		// Bell, timer and UI have separate channels which we can't set up from this
 		for (unsigned i = 0; i < n_of_channels; ++i){
-			if(i != UI_sound_channel && i != bell_channel && i != timer_channel) {
+			if(!(i >= UI_sound_channel_start && i <= UI_sound_channel_last)
+			   && i != bell_channel && i != timer_channel)
+			{
 				Mix_Volume(i, vol);
 			}
 		}
@@ -868,7 +872,9 @@ void set_UI_volume(int vol)
 		if(vol > MIX_MAX_VOLUME)
 			vol = MIX_MAX_VOLUME;
 
-		Mix_Volume(UI_sound_channel, vol);
+		for (unsigned i = UI_sound_channel_start; i <= UI_sound_channel_last; ++i) {
+			Mix_Volume(i, vol);
+		}
 	}
 }
 
