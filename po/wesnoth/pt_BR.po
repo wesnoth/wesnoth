@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-07-12 20:06+0200\n"
+"POT-Creation-Date: 2014-10-11 10:43+0200\n"
 "PO-Revision-Date: 2012-10-29 18:41-0300\n"
 "Last-Translator: gilberto dos santos alves <gsavix@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -543,7 +543,7 @@ msgstr "Controle: Deadzone do Acelerador (Thruster)"
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:366
-#: data/lua/wml-tags.lua:11967 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:983
 msgid "poisoned"
 msgstr "envenenado"
 
@@ -554,7 +554,7 @@ msgstr "envenenado"
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:12449
+#: data/lua/wml/objectives.lua:1837
 msgid "Gold carryover:"
 msgstr "Transferência de ouro:"
 
@@ -565,7 +565,7 @@ msgstr "Transferência de ouro:"
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:12450
+#: data/lua/wml/objectives.lua:1838
 msgid "Notes:"
 msgstr "Notas:"
 
@@ -655,7 +655,7 @@ msgstr "Contribuidores Diversos"
 # File: data/core/about.cfg, line: 1285
 # File: data/core/about.cfg, line: 1285
 #. [about]
-#: data/core/about.cfg:1330
+#: data/core/about.cfg:1336
 msgid "Internationalization Managers"
 msgstr "Gerentes de Internacionalização"
 
@@ -664,7 +664,7 @@ msgstr "Gerentes de Internacionalização"
 # File: data/core/about.cfg, line: 1310
 # File: data/core/about.cfg, line: 1310
 #. [about]
-#: data/core/about.cfg:1355
+#: data/core/about.cfg:1361
 msgid "English strings edition"
 msgstr "Edição de textos em Inglês"
 
@@ -673,7 +673,7 @@ msgstr "Edição de textos em Inglês"
 # File: data/core/about.cfg, line: 1317
 # File: data/core/about.cfg, line: 1317
 #. [about]
-#: data/core/about.cfg:1362
+#: data/core/about.cfg:1368
 msgid "Afrikaans Translation"
 msgstr "Tradução para o Africâner"
 
@@ -682,7 +682,7 @@ msgstr "Tradução para o Africâner"
 # File: data/core/about.cfg, line: 1337
 # File: data/core/about.cfg, line: 1337
 #. [about]
-#: data/core/about.cfg:1382
+#: data/core/about.cfg:1388
 msgid "Arabic Translation"
 msgstr "Tradução para o Árabe"
 
@@ -691,7 +691,7 @@ msgstr "Tradução para o Árabe"
 # File: data/core/about.cfg, line: 1344
 # File: data/core/about.cfg, line: 1344
 #. [about]
-#: data/core/about.cfg:1389
+#: data/core/about.cfg:1395
 msgid "Basque Translation"
 msgstr "Tradução para o Basco"
 
@@ -700,7 +700,7 @@ msgstr "Tradução para o Basco"
 # File: data/core/about.cfg, line: 1357
 # File: data/core/about.cfg, line: 1357
 #. [about]
-#: data/core/about.cfg:1402
+#: data/core/about.cfg:1408
 msgid "Bulgarian Translation"
 msgstr "Tradução para o Búlgaro"
 
@@ -709,7 +709,7 @@ msgstr "Tradução para o Búlgaro"
 # File: data/core/about.cfg, line: 1376
 # File: data/core/about.cfg, line: 1376
 #. [about]
-#: data/core/about.cfg:1421
+#: data/core/about.cfg:1427
 msgid "Catalan Translation"
 msgstr "Tradução para o Catalão"
 
@@ -718,7 +718,7 @@ msgstr "Tradução para o Catalão"
 # File: data/core/about.cfg, line: 1417
 # File: data/core/about.cfg, line: 1417
 #. [about]
-#: data/core/about.cfg:1462
+#: data/core/about.cfg:1468
 msgid "Chinese Translation"
 msgstr "Tradução para o Chinês"
 
@@ -727,7 +727,7 @@ msgstr "Tradução para o Chinês"
 # File: data/core/about.cfg, line: 1488
 # File: data/core/about.cfg, line: 1488
 #. [about]
-#: data/core/about.cfg:1533
+#: data/core/about.cfg:1539
 msgid "Chinese (Taiwan) Translation"
 msgstr "Tradução para o Chinês"
 
@@ -736,7 +736,7 @@ msgstr "Tradução para o Chinês"
 # File: data/core/about.cfg, line: 1501
 # File: data/core/about.cfg, line: 1501
 #. [about]
-#: data/core/about.cfg:1546
+#: data/core/about.cfg:1552
 msgid "Croatian Translation"
 msgstr "Tradução para o Croata"
 
@@ -745,7 +745,7 @@ msgstr "Tradução para o Croata"
 # File: data/core/about.cfg, line: 1511
 # File: data/core/about.cfg, line: 1511
 #. [about]
-#: data/core/about.cfg:1556
+#: data/core/about.cfg:1562
 msgid "Czech Translation"
 msgstr "Tradução para o Checo"
 
@@ -754,7 +754,7 @@ msgstr "Tradução para o Checo"
 # File: data/core/about.cfg, line: 1571
 # File: data/core/about.cfg, line: 1571
 #. [about]
-#: data/core/about.cfg:1616
+#: data/core/about.cfg:1622
 msgid "Danish Translation"
 msgstr "Tradução para o Dinamarquês"
 
@@ -763,7 +763,7 @@ msgstr "Tradução para o Dinamarquês"
 # File: data/core/about.cfg, line: 1602
 # File: data/core/about.cfg, line: 1602
 #. [about]
-#: data/core/about.cfg:1647
+#: data/core/about.cfg:1653
 msgid "Dutch Translation"
 msgstr "Tradução para o Holandês"
 
@@ -772,7 +772,7 @@ msgstr "Tradução para o Holandês"
 # File: data/core/about.cfg, line: 1666
 # File: data/core/about.cfg, line: 1666
 #. [about]
-#: data/core/about.cfg:1711
+#: data/core/about.cfg:1717
 msgid "English (GB) Translation"
 msgstr "Tradução para o Inglês Britânico"
 
@@ -781,7 +781,7 @@ msgstr "Tradução para o Inglês Britânico"
 # File: data/core/about.cfg, line: 1689
 # File: data/core/about.cfg, line: 1689
 #. [about]
-#: data/core/about.cfg:1734
+#: data/core/about.cfg:1740
 msgid "English (Shaw) Translation"
 msgstr "Tradução para o Inglês Britânico"
 
@@ -790,7 +790,7 @@ msgstr "Tradução para o Inglês Britânico"
 # File: data/core/about.cfg, line: 1707
 # File: data/core/about.cfg, line: 1707
 #. [about]
-#: data/core/about.cfg:1752
+#: data/core/about.cfg:1758
 msgid "Esperanto Translation"
 msgstr "Tradução para o Esperanto"
 
@@ -799,7 +799,7 @@ msgstr "Tradução para o Esperanto"
 # File: data/core/about.cfg, line: 1726
 # File: data/core/about.cfg, line: 1726
 #. [about]
-#: data/core/about.cfg:1771
+#: data/core/about.cfg:1777
 msgid "Estonian Translation"
 msgstr "Tradução para o Estonês"
 
@@ -808,7 +808,7 @@ msgstr "Tradução para o Estonês"
 # File: data/core/about.cfg, line: 1736
 # File: data/core/about.cfg, line: 1736
 #. [about]
-#: data/core/about.cfg:1781
+#: data/core/about.cfg:1787
 msgid "Filipino Translation"
 msgstr "Tradução para o Filipino"
 
@@ -817,7 +817,7 @@ msgstr "Tradução para o Filipino"
 # File: data/core/about.cfg, line: 1746
 # File: data/core/about.cfg, line: 1746
 #. [about]
-#: data/core/about.cfg:1791
+#: data/core/about.cfg:1797
 msgid "Finnish Translation"
 msgstr "Tradução para o Finlandês"
 
@@ -826,7 +826,7 @@ msgstr "Tradução para o Finlandês"
 # File: data/core/about.cfg, line: 1792
 # File: data/core/about.cfg, line: 1792
 #. [about]
-#: data/core/about.cfg:1837
+#: data/core/about.cfg:1843
 msgid "French Translation"
 msgstr "Tradução para o Francês"
 
@@ -835,7 +835,7 @@ msgstr "Tradução para o Francês"
 # File: data/core/about.cfg, line: 1954
 # File: data/core/about.cfg, line: 1954
 #. [about]
-#: data/core/about.cfg:1999
+#: data/core/about.cfg:2005
 msgid "Friulian Translation"
 msgstr "Tradução para o Filipino"
 
@@ -844,7 +844,7 @@ msgstr "Tradução para o Filipino"
 # File: data/core/about.cfg, line: 1961
 # File: data/core/about.cfg, line: 1961
 #. [about]
-#: data/core/about.cfg:2006
+#: data/core/about.cfg:2012
 msgid "Galician Translation"
 msgstr "Tradução para o Galício"
 
@@ -853,7 +853,7 @@ msgstr "Tradução para o Galício"
 # File: data/core/about.cfg, line: 1997
 # File: data/core/about.cfg, line: 1997
 #. [about]
-#: data/core/about.cfg:2042
+#: data/core/about.cfg:2048
 msgid "German Translation"
 msgstr "Tradução para o Alemão"
 
@@ -862,7 +862,7 @@ msgstr "Tradução para o Alemão"
 # File: data/core/about.cfg, line: 2071
 # File: data/core/about.cfg, line: 2071
 #. [about]
-#: data/core/about.cfg:2116
+#: data/core/about.cfg:2122
 msgid "Greek Translation"
 msgstr "Tradução para o Grego"
 
@@ -871,7 +871,7 @@ msgstr "Tradução para o Grego"
 # File: data/core/about.cfg, line: 2111
 # File: data/core/about.cfg, line: 2111
 #. [about]
-#: data/core/about.cfg:2159
+#: data/core/about.cfg:2165
 msgid "Hebrew Translation"
 msgstr "Tradução para o Hebreu"
 
@@ -880,7 +880,7 @@ msgstr "Tradução para o Hebreu"
 # File: data/core/about.cfg, line: 2124
 # File: data/core/about.cfg, line: 2124
 #. [about]
-#: data/core/about.cfg:2172
+#: data/core/about.cfg:2178
 msgid "Hungarian Translation"
 msgstr "Tradução para o Húngaro"
 
@@ -889,7 +889,7 @@ msgstr "Tradução para o Húngaro"
 # File: data/core/about.cfg, line: 2185
 # File: data/core/about.cfg, line: 2185
 #. [about]
-#: data/core/about.cfg:2233
+#: data/core/about.cfg:2239
 msgid "Icelandic Translation"
 msgstr "Tradução para o Islandês"
 
@@ -898,7 +898,7 @@ msgstr "Tradução para o Islandês"
 # File: data/core/about.cfg, line: 2195
 # File: data/core/about.cfg, line: 2195
 #. [about]
-#: data/core/about.cfg:2243
+#: data/core/about.cfg:2249
 msgid "Indonesian Translation"
 msgstr "Tradução para o Indonésio"
 
@@ -907,7 +907,7 @@ msgstr "Tradução para o Indonésio"
 # File: data/core/about.cfg, line: 2218
 # File: data/core/about.cfg, line: 2218
 #. [about]
-#: data/core/about.cfg:2266
+#: data/core/about.cfg:2272
 msgid "Irish Translation"
 msgstr "Tradução para o Irlandês"
 
@@ -916,7 +916,7 @@ msgstr "Tradução para o Irlandês"
 # File: data/core/about.cfg, line: 2225
 # File: data/core/about.cfg, line: 2225
 #. [about]
-#: data/core/about.cfg:2273
+#: data/core/about.cfg:2279
 msgid "Italian Translation"
 msgstr "Tradução para o Italiano"
 
@@ -925,7 +925,7 @@ msgstr "Tradução para o Italiano"
 # File: data/core/about.cfg, line: 2272
 # File: data/core/about.cfg, line: 2272
 #. [about]
-#: data/core/about.cfg:2320
+#: data/core/about.cfg:2326
 msgid "Japanese Translation"
 msgstr "Tradução para o Japonês"
 
@@ -934,7 +934,7 @@ msgstr "Tradução para o Japonês"
 # File: data/core/about.cfg, line: 2340
 # File: data/core/about.cfg, line: 2340
 #. [about]
-#: data/core/about.cfg:2388
+#: data/core/about.cfg:2394
 msgid "Korean Translation"
 msgstr "Tradução para o Coreano"
 
@@ -943,7 +943,7 @@ msgstr "Tradução para o Coreano"
 # File: data/core/about.cfg, line: 2348
 # File: data/core/about.cfg, line: 2348
 #. [about]
-#: data/core/about.cfg:2396
+#: data/core/about.cfg:2402
 msgid "Latin Translation"
 msgstr "Tradução para o Latin"
 
@@ -952,7 +952,7 @@ msgstr "Tradução para o Latin"
 # File: data/core/about.cfg, line: 2374
 # File: data/core/about.cfg, line: 2374
 #. [about]
-#: data/core/about.cfg:2422
+#: data/core/about.cfg:2428
 msgid "Latvian Translation"
 msgstr "Tradução para o Latin"
 
@@ -961,7 +961,7 @@ msgstr "Tradução para o Latin"
 # File: data/core/about.cfg, line: 2385
 # File: data/core/about.cfg, line: 2385
 #. [about]
-#: data/core/about.cfg:2433
+#: data/core/about.cfg:2439
 msgid "Lithuanian Translation"
 msgstr "Tradução para o Lituanês"
 
@@ -970,7 +970,7 @@ msgstr "Tradução para o Lituanês"
 # File: data/core/about.cfg, line: 2407
 # File: data/core/about.cfg, line: 2407
 #. [about]
-#: data/core/about.cfg:2455
+#: data/core/about.cfg:2461
 msgid "Macedonian Translation"
 msgstr "Tradução para o Macedônio"
 
@@ -979,7 +979,7 @@ msgstr "Tradução para o Macedônio"
 # File: data/core/about.cfg, line: 2414
 # File: data/core/about.cfg, line: 2414
 #. [about]
-#: data/core/about.cfg:2462
+#: data/core/about.cfg:2468
 msgid "Marathi Translation"
 msgstr "Tradução para o Marathi"
 
@@ -988,7 +988,7 @@ msgstr "Tradução para o Marathi"
 # File: data/core/about.cfg, line: 2423
 # File: data/core/about.cfg, line: 2423
 #. [about]
-#: data/core/about.cfg:2471
+#: data/core/about.cfg:2477
 msgid "Norwegian Translation"
 msgstr "Tradução para o Norueguês"
 
@@ -997,7 +997,7 @@ msgstr "Tradução para o Norueguês"
 # File: data/core/about.cfg, line: 2448
 # File: data/core/about.cfg, line: 2448
 #. [about]
-#: data/core/about.cfg:2496
+#: data/core/about.cfg:2502
 msgid "Old English Translation"
 msgstr "Tradução para o Inglês Antigo"
 
@@ -1006,7 +1006,7 @@ msgstr "Tradução para o Inglês Antigo"
 # File: data/core/about.cfg, line: 2466
 # File: data/core/about.cfg, line: 2466
 #. [about]
-#: data/core/about.cfg:2514
+#: data/core/about.cfg:2520
 msgid "Polish Translation"
 msgstr "Tradução para o Polonês"
 
@@ -1015,7 +1015,7 @@ msgstr "Tradução para o Polonês"
 # File: data/core/about.cfg, line: 2510
 # File: data/core/about.cfg, line: 2510
 #. [about]
-#: data/core/about.cfg:2558
+#: data/core/about.cfg:2564
 msgid "Portuguese Translation"
 msgstr "Tradução para o Português"
 
@@ -1024,7 +1024,7 @@ msgstr "Tradução para o Português"
 # File: data/core/about.cfg, line: 2524
 # File: data/core/about.cfg, line: 2524
 #. [about]
-#: data/core/about.cfg:2576
+#: data/core/about.cfg:2582
 msgid "Portuguese (Brazil) Translation"
 msgstr "Tradução para o Português do Brasil"
 
@@ -1033,7 +1033,7 @@ msgstr "Tradução para o Português do Brasil"
 # File: data/core/about.cfg, line: 2578
 # File: data/core/about.cfg, line: 2578
 #. [about]
-#: data/core/about.cfg:2630
+#: data/core/about.cfg:2636
 msgid "Romanian Translation"
 msgstr "Tradução para o Romano"
 
@@ -1042,7 +1042,7 @@ msgstr "Tradução para o Romano"
 # File: data/core/about.cfg, line: 2586
 # File: data/core/about.cfg, line: 2586
 #. [about]
-#: data/core/about.cfg:2638
+#: data/core/about.cfg:2644
 msgid "Russian Translation"
 msgstr "Tradução para o Russo"
 
@@ -1051,7 +1051,7 @@ msgstr "Tradução para o Russo"
 # File: data/core/about.cfg, line: 2675
 # File: data/core/about.cfg, line: 2675
 #. [about]
-#: data/core/about.cfg:2727
+#: data/core/about.cfg:2733
 #, fuzzy
 msgid "Scottish Gaelic Translation"
 msgstr "Tradução para o Galício"
@@ -1061,7 +1061,7 @@ msgstr "Tradução para o Galício"
 # File: data/core/about.cfg, line: 2684
 # File: data/core/about.cfg, line: 2684
 #. [about]
-#: data/core/about.cfg:2736
+#: data/core/about.cfg:2742
 msgid "Serbian Translation"
 msgstr "Tradução para o Sérvio"
 
@@ -1070,7 +1070,7 @@ msgstr "Tradução para o Sérvio"
 # File: data/core/about.cfg, line: 2703
 # File: data/core/about.cfg, line: 2703
 #. [about]
-#: data/core/about.cfg:2755
+#: data/core/about.cfg:2761
 msgid "Slovak Translation"
 msgstr "Tradução para o Eslovaco"
 
@@ -1079,7 +1079,7 @@ msgstr "Tradução para o Eslovaco"
 # File: data/core/about.cfg, line: 2732
 # File: data/core/about.cfg, line: 2732
 #. [about]
-#: data/core/about.cfg:2784
+#: data/core/about.cfg:2790
 msgid "Slovenian Translation"
 msgstr "Tradução para o Eslovênio"
 
@@ -1088,7 +1088,7 @@ msgstr "Tradução para o Eslovênio"
 # File: data/core/about.cfg, line: 2748
 # File: data/core/about.cfg, line: 2748
 #. [about]
-#: data/core/about.cfg:2800
+#: data/core/about.cfg:2806
 msgid "Spanish Translation"
 msgstr "Tradução para o Espanhol"
 
@@ -1097,7 +1097,7 @@ msgstr "Tradução para o Espanhol"
 # File: data/core/about.cfg, line: 2832
 # File: data/core/about.cfg, line: 2832
 #. [about]
-#: data/core/about.cfg:2882
+#: data/core/about.cfg:2888
 msgid "Swedish Translation"
 msgstr "Tradução para o Sueco"
 
@@ -1106,7 +1106,7 @@ msgstr "Tradução para o Sueco"
 # File: data/core/about.cfg, line: 2873
 # File: data/core/about.cfg, line: 2873
 #. [about]
-#: data/core/about.cfg:2923
+#: data/core/about.cfg:2929
 msgid "Turkish Translation"
 msgstr "Tradução para o Turco"
 
@@ -1115,7 +1115,7 @@ msgstr "Tradução para o Turco"
 # File: data/core/about.cfg, line: 2895
 # File: data/core/about.cfg, line: 2895
 #. [about]
-#: data/core/about.cfg:2945
+#: data/core/about.cfg:2951
 #, fuzzy
 msgid "Ukrainian Translation"
 msgstr "Tradução para o Romano"
@@ -1125,7 +1125,7 @@ msgstr "Tradução para o Romano"
 # File: data/core/about.cfg, line: 2908
 # File: data/core/about.cfg, line: 2908
 #. [about]
-#: data/core/about.cfg:2958
+#: data/core/about.cfg:2964
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Tradução para o Valenciano (Catalão do sul)"
 
@@ -1134,7 +1134,7 @@ msgstr "Tradução para o Valenciano (Catalão do sul)"
 # File: data/core/about.cfg, line: 2921
 # File: data/core/about.cfg, line: 2921
 #. [about]
-#: data/core/about.cfg:2971
+#: data/core/about.cfg:2977
 msgid "Vietnamese Translation"
 msgstr "Tradução para o Vietnamita"
 
@@ -1143,7 +1143,7 @@ msgstr "Tradução para o Vietnamita"
 # File: data/core/about.cfg, line: 2940
 # File: data/core/about.cfg, line: 2940
 #. [about]
-#: data/core/about.cfg:2990
+#: data/core/about.cfg:2996
 msgid "RACV’s Translation"
 msgstr "Tradução para o RACV (Valenciano)"
 
@@ -1152,7 +1152,7 @@ msgstr "Tradução para o RACV (Valenciano)"
 # File: data/core/about.cfg, line: 2947
 # File: data/core/about.cfg, line: 2947
 #. [about]
-#: data/core/about.cfg:2997
+#: data/core/about.cfg:3003
 msgid "Bots"
 msgstr "Robôs"
 
@@ -3564,7 +3564,7 @@ msgstr "Turnos acabarem"
 # File: data/core/macros/objective-utils.cfg, line: 14
 # File: data/lua/wml/objectives.lua, line: 1537
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12511
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:1899
 msgid "Early finish bonus."
 msgstr "Bônus por fim prematuro."
 
@@ -3576,7 +3576,7 @@ msgstr "Bônus por fim prematuro."
 # File: data/core/macros/objective-utils.cfg, line: 17
 # File: data/lua/wml/objectives.lua, line: 1539
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12513
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:1901
 msgid "No early finish bonus."
 msgstr "Sem bônus por fim prematuro."
 
@@ -3604,7 +3604,7 @@ msgstr "(bônus por fim antecipado)"
 # File: data/core/macros/objective-utils.cfg, line: 29
 # File: data/lua/wml/objectives.lua, line: 1547
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12521
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:1909
 msgid "No gold carried over to the next scenario."
 msgstr "Nenhum ouro transferido ao próximo cenário."
 
@@ -4416,7 +4416,7 @@ msgstr "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
 # File: src/actions/attack.cpp, line: 800
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11967 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:983
 msgid "female^poisoned"
 msgstr "envenenada"
 
@@ -4429,7 +4429,7 @@ msgstr "envenenada"
 # File: src/actions/attack.cpp, line: 805
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11969 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:1357 src/actions/attack.cpp:988
 msgid "female^slowed"
 msgstr "lenta"
 
@@ -4442,7 +4442,7 @@ msgstr "lenta"
 # File: src/actions/attack.cpp, line: 805
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11969 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:1357 src/actions/attack.cpp:988
 msgid "slowed"
 msgstr "lento"
 
@@ -4455,7 +4455,7 @@ msgstr "lento"
 # File: src/actions/attack.cpp, line: 810
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11970 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:1358 src/actions/attack.cpp:993
 msgid "female^petrified"
 msgstr "petrificada"
 
@@ -4468,7 +4468,7 @@ msgstr "petrificada"
 # File: src/actions/attack.cpp, line: 810
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11970 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:1358 src/actions/attack.cpp:993
 msgid "petrified"
 msgstr "petrificado"
 
@@ -4477,7 +4477,7 @@ msgstr "petrificado"
 # File: data/lua/wml-tags.lua, line: 1120
 # File: data/lua/wml-tags.lua, line: 1120
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11971
+#: data/lua/wml-tags.lua:1359
 msgid "female^unhealable"
 msgstr "incurável"
 
@@ -4486,7 +4486,7 @@ msgstr "incurável"
 # File: data/lua/wml-tags.lua, line: 1120
 # File: data/lua/wml-tags.lua, line: 1120
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11971
+#: data/lua/wml-tags.lua:1359
 msgid "unhealable"
 msgstr "incurável"
 
@@ -4499,7 +4499,7 @@ msgstr "incurável"
 # File: src/multiplayer_connect.cpp, line: 1855
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12447 src/mp_game_utils.cpp:155
+#: data/lua/wml/objectives.lua:1835 src/mp_game_utils.cpp:155
 msgid "Victory:"
 msgstr "Vitória:"
 
@@ -4508,7 +4508,7 @@ msgstr "Vitória:"
 # File: data/lua/wml/objectives.lua, line: 1474
 # File: data/lua/wml/objectives.lua, line: 1474
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12448
+#: data/lua/wml/objectives.lua:1836
 msgid "Defeat:"
 msgstr "Derrota:"
 
@@ -4517,7 +4517,7 @@ msgstr "Derrota:"
 # File: data/lua/wml/objectives.lua, line: 1494
 # File: data/lua/wml/objectives.lua, line: 1494
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12468
+#: data/lua/wml/objectives.lua:1856
 msgid "(%d turns left)"
 msgstr "(%d turnos restando)"
 
@@ -4526,7 +4526,7 @@ msgstr "(%d turnos restando)"
 # File: data/lua/wml/objectives.lua, line: 1496
 # File: data/lua/wml/objectives.lua, line: 1496
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12470
+#: data/lua/wml/objectives.lua:1858
 msgid "(this turn left)"
 msgstr "(resta um turno)"
 
@@ -4535,7 +4535,7 @@ msgstr "(resta um turno)"
 # File: data/lua/wml/objectives.lua, line: 1549
 # File: data/lua/wml/objectives.lua, line: 1549
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12523
+#: data/lua/wml/objectives.lua:1911
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% de ouro transferido ao próximo cenário."
 
@@ -4599,7 +4599,7 @@ msgstr "Cancelar"
 # File: data/scenario-test.cfg, line: 3670
 # File: data/scenario-test.cfg, line: 3670
 # File: data/scenario-test.cfg, line: 3670
-#: data/scenario-test.cfg:3994
+#: data/scenario-test.cfg:4009
 msgid "very long"
 msgstr "muito longe"
 
@@ -4607,7 +4607,7 @@ msgstr "muito longe"
 # File: data/scenario-test.cfg, line: 3671
 # File: data/scenario-test.cfg, line: 3671
 # File: data/scenario-test.cfg, line: 3671
-#: data/scenario-test.cfg:3995
+#: data/scenario-test.cfg:4010
 msgid "electrical"
 msgstr "elétrico"
 
@@ -4887,19 +4887,6 @@ msgstr "receita"
 #| msgid "statuspanel^level"
 msgid "statuspanel^lvl"
 msgstr "nível"
-
-#
-# File: data/themes/macros.cfg, line: 51
-# File: src/dialogs.cpp, line: 862
-# File: data/themes/macros.cfg, line: 51
-# File: src/dialogs.cpp, line: 862
-# File: data/themes/macros.cfg, line: 51
-# File: src/dialogs.cpp, line: 862
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [label]: id=replay-label
-#: data/themes/macros.cfg:381 src/dialogs.cpp:838
-msgid "Replay"
-msgstr "Replay"
 
 #
 # File: data/themes/macros.cfg, line: 66
@@ -7799,6 +7786,17 @@ msgid "Test scenario"
 msgstr "Cenário remoto"
 
 #
+# File: data/themes/macros.cfg, line: 51
+# File: src/dialogs.cpp, line: 862
+# File: data/themes/macros.cfg, line: 51
+# File: src/dialogs.cpp, line: 862
+# File: data/themes/macros.cfg, line: 51
+# File: src/dialogs.cpp, line: 862
+#: src/dialogs.cpp:838
+msgid "Replay"
+msgstr "Replay"
+
+#
 # File: src/dialogs.cpp, line: 864
 # File: src/savegame.cpp, line: 1142
 # File: src/dialogs.cpp, line: 864
@@ -8046,7 +8044,7 @@ msgstr ""
 # File: src/dialogs.cpp, line: 902
 # File: src/reports.cpp, line: 1365
 # File: src/savegame.cpp, line: 343
-#: src/format_time_summary.cpp:46 src/reports.cpp:1540
+#: src/format_time_summary.cpp:46 src/reports.cpp:1542
 msgid "%H:%M"
 msgstr "%H:%M"
 
@@ -8060,7 +8058,7 @@ msgstr "%H:%M"
 # File: src/dialogs.cpp, line: 905
 # File: src/reports.cpp, line: 1365
 # File: src/savegame.cpp, line: 346
-#: src/format_time_summary.cpp:49 src/reports.cpp:1540
+#: src/format_time_summary.cpp:49 src/reports.cpp:1542
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
@@ -8246,8 +8244,8 @@ msgstr "Erro ao iniciar o server: "
 # File: src/game_controller.cpp, line: 819
 # File: src/playcampaign.cpp, line: 214
 # File: src/playcampaign.cpp, line: 503
-#: src/game_controller.cpp:875 src/playcampaign.cpp:246
-#: src/playcampaign.cpp:488
+#: src/game_controller.cpp:875 src/playcampaign.cpp:219
+#: src/playcampaign.cpp:459
 msgid "The game could not be loaded: "
 msgstr "O jogo não pôde ser carregado: "
 
@@ -8261,8 +8259,8 @@ msgstr "O jogo não pôde ser carregado: "
 # File: src/game_controller.cpp, line: 821
 # File: src/playcampaign.cpp, line: 216
 # File: src/playcampaign.cpp, line: 506
-#: src/game_controller.cpp:877 src/playcampaign.cpp:248
-#: src/playcampaign.cpp:491
+#: src/game_controller.cpp:877 src/playcampaign.cpp:221
+#: src/playcampaign.cpp:462
 msgid "Error while playing the game: "
 msgstr "Erro durante o jogo: "
 
@@ -8276,8 +8274,8 @@ msgstr "Erro durante o jogo: "
 # File: src/game_controller.cpp, line: 839
 # File: src/playcampaign.cpp, line: 218
 # File: src/playcampaign.cpp, line: 509
-#: src/game_controller.cpp:895 src/playcampaign.cpp:250
-#: src/playcampaign.cpp:494
+#: src/game_controller.cpp:895 src/playcampaign.cpp:223
+#: src/playcampaign.cpp:465
 msgid "The game map could not be loaded: "
 msgstr "O mapa do jogo não pôde ser carregado: "
 
@@ -8285,7 +8283,7 @@ msgstr "O mapa do jogo não pôde ser carregado: "
 # File: data/advanced_preferences.cfg, line: 131
 # File: data/advanced_preferences.cfg, line: 131
 # File: data/advanced_preferences.cfg, line: 131
-#: src/game_display.cpp:951 src/game_display.cpp:977
+#: src/game_display.cpp:956 src/game_display.cpp:982
 #, fuzzy
 msgid "Chat message"
 msgstr "Tempo máximo de mensagem no chat"
@@ -8294,7 +8292,7 @@ msgstr "Tempo máximo de mensagem no chat"
 # File: src/playmp_controller.cpp, line: 96
 # File: src/playmp_controller.cpp, line: 96
 # File: src/playmp_controller.cpp, line: 96
-#: src/game_display.cpp:951 src/game_display.cpp:973
+#: src/game_display.cpp:956 src/game_display.cpp:978
 #: src/playmp_controller.cpp:100
 msgid "Turn changed"
 msgstr "Turno trocado"
@@ -8303,7 +8301,7 @@ msgstr "Turno trocado"
 # File: src/game_events.cpp, line: 2544
 # File: src/game_events.cpp, line: 2544
 # File: src/game_events.cpp, line: 2544
-#: src/game_events/action_wml.cpp:760
+#: src/game_events/action_wml.cpp:751
 msgid "Invalid value in the result key for [end_level]"
 msgstr "Valor inválido na chave resultado para [end_level]"
 
@@ -10209,7 +10207,7 @@ msgstr "sussurar para $receiver"
 # File: src/multiplayer_ui.cpp, line: 550
 # File: src/menu_events.cpp, line: 2195
 # File: src/multiplayer_ui.cpp, line: 550
-#: src/menu_events.cpp:2294 src/multiplayer_ui.cpp:432
+#: src/menu_events.cpp:2294 src/multiplayer_ui.cpp:433
 msgid "whisper: $sender"
 msgstr "sussurro: $sender"
 
@@ -11381,7 +11379,7 @@ msgstr "O cenário é inválido porque não tem times."
 # File: src/multiplayer_connect.cpp, line: 1962
 # File: src/multiplayer_connect.cpp, line: 1962
 # File: src/multiplayer_connect.cpp, line: 1962
-#: src/multiplayer_connect.cpp:587
+#: src/multiplayer_connect.cpp:589
 msgid "Waiting for players to join..."
 msgstr "Esperando outros jogadores conectarem..."
 
@@ -11389,7 +11387,7 @@ msgstr "Esperando outros jogadores conectarem..."
 # File: src/multiplayer_connect.cpp, line: 1963
 # File: src/multiplayer_connect.cpp, line: 1963
 # File: src/multiplayer_connect.cpp, line: 1963
-#: src/multiplayer_connect.cpp:588
+#: src/multiplayer_connect.cpp:590
 msgid "Waiting for players to choose factions..."
 msgstr "Esperando jogadores escolherem facções..."
 
@@ -12035,7 +12033,7 @@ msgstr "Senha:"
 # File: src/multiplayer_ui.cpp, line: 204
 # File: src/multiplayer_ui.cpp, line: 204
 # File: src/multiplayer_ui.cpp, line: 204
-#: src/multiplayer_ui.cpp:81
+#: src/multiplayer_ui.cpp:82
 msgid "Invalid Color"
 msgstr "Cor inválida"
 
@@ -12043,7 +12041,7 @@ msgstr "Cor inválida"
 # File: src/multiplayer_ui.cpp, line: 433
 # File: src/multiplayer_ui.cpp, line: 433
 # File: src/multiplayer_ui.cpp, line: 433
-#: src/multiplayer_ui.cpp:315
+#: src/multiplayer_ui.cpp:316
 msgid "Selected user: "
 msgstr "Usuário selecionado:"
 
@@ -12229,7 +12227,7 @@ msgstr "hora local"
 # File: src/savegame.cpp, line: 477
 # File: src/savegame.cpp, line: 1098
 # File: src/savegame.cpp, line: 1100
-#: src/play_controller.cpp:1192 src/savegame.cpp:406 src/savegame.cpp:418
+#: src/play_controller.cpp:1199 src/savegame.cpp:406 src/savegame.cpp:418
 #: src/savegame.cpp:1052 src/savegame.cpp:1054
 msgid "Auto-Save"
 msgstr "Salvo-automaticamente"
@@ -12238,7 +12236,7 @@ msgstr "Salvo-automaticamente"
 # File: src/play_controller.cpp, line: 1141
 # File: src/play_controller.cpp, line: 1141
 # File: src/play_controller.cpp, line: 1141
-#: src/play_controller.cpp:1196
+#: src/play_controller.cpp:1203
 #, fuzzy
 msgid "Back to Turn "
 msgstr "Voltar ao turno "
@@ -12247,7 +12245,7 @@ msgstr "Voltar ao turno "
 # File: src/play_controller.cpp, line: 1152
 # File: src/play_controller.cpp, line: 1152
 # File: src/play_controller.cpp, line: 1152
-#: src/play_controller.cpp:1204
+#: src/play_controller.cpp:1211
 #, fuzzy
 msgid "Back to Start"
 msgstr "Voltar ao turno "
@@ -12256,7 +12254,7 @@ msgstr "Voltar ao turno "
 # File: src/play_controller.cpp, line: 1414
 # File: src/play_controller.cpp, line: 1414
 # File: src/play_controller.cpp, line: 1414
-#: src/play_controller.cpp:1492
+#: src/play_controller.cpp:1504
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -12271,24 +12269,24 @@ msgstr ""
 # File: src/replay_controller.cpp, line: 334
 # File: src/play_controller.cpp, line: 1415
 # File: src/replay_controller.cpp, line: 334
-#: src/play_controller.cpp:1493 src/replay_controller.cpp:366
+#: src/play_controller.cpp:1505 src/replay_controller.cpp:366
 msgid "Error details:"
 msgstr "Detalhes do erro:"
-
-#: src/play_controller.cpp:1519
-msgid "Accelerated speed enabled!"
-msgstr ""
 
 #
 # File: src/playsingle_controller.cpp, line: 222
 # File: src/playsingle_controller.cpp, line: 222
 # File: src/playsingle_controller.cpp, line: 222
-#: src/play_controller.cpp:1520
+#: src/play_controller.cpp:1531
 #, fuzzy
 msgid "(press $hk to disable)"
 msgstr "(aperte $hotkey para continuar o movimento)"
 
-#: src/play_controller.cpp:1524
+#: src/play_controller.cpp:1531
+msgid "Accelerated speed enabled!"
+msgstr ""
+
+#: src/play_controller.cpp:1535
 msgid "Accelerated speed disabled!"
 msgstr ""
 
@@ -12296,7 +12294,7 @@ msgstr ""
 # File: src/playcampaign.cpp, line: 122
 # File: src/playcampaign.cpp, line: 122
 # File: src/playcampaign.cpp, line: 122
-#: src/playcampaign.cpp:119
+#: src/playcampaign.cpp:92
 msgid "Scenario Report"
 msgstr "Relatar um cenário"
 
@@ -12304,7 +12302,7 @@ msgstr "Relatar um cenário"
 # File: src/playcampaign.cpp, line: 124
 # File: src/playcampaign.cpp, line: 124
 # File: src/playcampaign.cpp, line: 124
-#: src/playcampaign.cpp:121
+#: src/playcampaign.cpp:94
 msgid "Victory"
 msgstr "Vitória"
 
@@ -12312,7 +12310,7 @@ msgstr "Vitória"
 # File: src/playcampaign.cpp, line: 125
 # File: src/playcampaign.cpp, line: 125
 # File: src/playcampaign.cpp, line: 125
-#: src/playcampaign.cpp:122
+#: src/playcampaign.cpp:95
 msgid "You have emerged victorious!"
 msgstr "Você obteve a vitória!"
 
@@ -12323,7 +12321,7 @@ msgstr "Você obteve a vitória!"
 # File: src/playcampaign.cpp, line: 299
 # File: src/playcampaign.cpp, line: 248
 # File: src/playcampaign.cpp, line: 299
-#: src/playcampaign.cpp:283 src/playcampaign.cpp:335
+#: src/playcampaign.cpp:255 src/playcampaign.cpp:306
 msgid "Defeat"
 msgstr "Derrota"
 
@@ -12334,7 +12332,7 @@ msgstr "Derrota"
 # File: src/playcampaign.cpp, line: 300
 # File: src/playcampaign.cpp, line: 249
 # File: src/playcampaign.cpp, line: 300
-#: src/playcampaign.cpp:284 src/playcampaign.cpp:336
+#: src/playcampaign.cpp:256 src/playcampaign.cpp:307
 msgid "You have been defeated!"
 msgstr "Você foi derrotado!"
 
@@ -12342,7 +12340,7 @@ msgstr "Você foi derrotado!"
 # File: src/playcampaign.cpp, line: 513
 # File: src/playcampaign.cpp, line: 513
 # File: src/playcampaign.cpp, line: 513
-#: src/playcampaign.cpp:498
+#: src/playcampaign.cpp:469
 msgid "Error while reading the WML: "
 msgstr "Erro na leitura do WML: "
 
@@ -12353,7 +12351,7 @@ msgstr "Erro na leitura do WML: "
 # File: src/playsingle_controller.cpp, line: 462
 # File: src/playcampaign.cpp, line: 549
 # File: src/playsingle_controller.cpp, line: 462
-#: src/playcampaign.cpp:533 src/playsingle_controller.cpp:504
+#: src/playcampaign.cpp:504 src/playsingle_controller.cpp:504
 msgid "Game Over"
 msgstr "Fim do Jogo"
 
@@ -12361,7 +12359,7 @@ msgstr "Fim do Jogo"
 # File: src/playcampaign.cpp, line: 550
 # File: src/playcampaign.cpp, line: 550
 # File: src/playcampaign.cpp, line: 550
-#: src/playcampaign.cpp:534
+#: src/playcampaign.cpp:505
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Este cenário terminou. Você quer continuar a campanha?"
 
@@ -12369,7 +12367,7 @@ msgstr "Este cenário terminou. Você quer continuar a campanha?"
 # File: src/playcampaign.cpp, line: 734
 # File: src/playcampaign.cpp, line: 734
 # File: src/playcampaign.cpp, line: 734
-#: src/playcampaign.cpp:682
+#: src/playcampaign.cpp:642
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Cenário desconhecido: '$scenario|'"
 
@@ -12561,7 +12559,7 @@ msgstr "O jogo terminou."
 # File: src/playsingle_controller.cpp, line: 544
 # File: src/playsingle_controller.cpp, line: 544
 # File: src/playsingle_controller.cpp, line: 544
-#: src/playsingle_controller.cpp:586
+#: src/playsingle_controller.cpp:595
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -12573,7 +12571,7 @@ msgstr ""
 # File: src/playsingle_controller.cpp, line: 712
 # File: src/playsingle_controller.cpp, line: 712
 # File: src/playsingle_controller.cpp, line: 712
-#: src/playsingle_controller.cpp:785
+#: src/playsingle_controller.cpp:794
 msgid "It is now $name|’s turn"
 msgstr "Agora é o turno de $name|"
 
@@ -13107,7 +13105,7 @@ msgstr "Unidades Liminares: "
 # File: src/reports.cpp, line: 1324
 # File: src/reports.cpp, line: 1324
 # File: src/reports.cpp, line: 1324
-#: src/reports.cpp:1504
+#: src/reports.cpp:1506
 msgid "Observers:"
 msgstr "Observadores:"
 

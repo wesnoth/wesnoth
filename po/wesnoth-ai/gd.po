@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth AI\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-04-21 20:19+0200\n"
+"POT-Creation-Date: 2014-10-11 10:43+0200\n"
 "PO-Revision-Date: 2014-03-16 07:24-0000\n"
 "Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
@@ -145,12 +145,24 @@ msgstr ""
 
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:218
+#, fuzzy
+#| msgid ""
+#| "This is a reenactment of scenario \"The Elves Besieged\" of the mainline "
+#| "campaign \"Heir to the Throne\", just that the AI is playing Konrad's "
+#| "side here. The goal is to move Konrad to the signpost in the northwest, "
+#| "while keeping both Konrad and Delfador alive. The same AI as in scenario "
+#| "\"Protect Unit"
 msgid ""
-"This is a reenactment of scenario \"The Elves Besieged\" of the mainline "
-"campaign \"Heir to the Throne\", just that the AI is playing Konrad's side "
-"here. The goal is to move Konrad to the signpost in the northwest, while "
-"keeping both Konrad and Delfador alive. The same AI as in scenario \"Protect "
-"Unit"
+"This is a reenactment of scenario The Elves Besieged of the mainline "
+"campaign Heir to the Throne, just that the AI is playing Konrad's side here. "
+"The goal is to move Konrad to the signpost in the northwest, while keeping "
+"both Konrad and Delfador alive. The same AI as in scenario Protect Unit is "
+"used.\n"
+"\n"
+"Note: The Protect Unit AI is coded as a Micro AI. A Micro AI can be added "
+"and adapted to the need of a scenario easily using only WML and the "
+"[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+"span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
 "Seo ath-achdachadh dhen chnàmh-sgeul “Na sìthichean fo shèist” aig an "
 "iomairt “Oighre na cathrach” ach an cluich IF an taobh aig Conall an-seo. Is "
@@ -576,13 +588,13 @@ msgid "Rowck"
 msgstr "Rabhg"
 
 #. [event]: (id=Dreadful Bat) profile profile}
-#: data/ai/micro_ais/scenarios/dragon.cfg:82
+#: data/ai/micro_ais/scenarios/dragon.cfg:80
 msgid "Be careful to stay out of the way of that dragon. He's a mean one."
 msgstr ""
 "Thoir an aire nach tig thu faisg air an dràgon ud. ’S ann mosach a tha e."
 
 #. [event]: (id=Dreadful Bat) profile profile}
-#: data/ai/micro_ais/scenarios/dragon.cfg:85
+#: data/ai/micro_ais/scenarios/dragon.cfg:83
 msgid ""
 "Hi there. I am Rowck and here is what I do:\n"
 "When hungry, I move around part of the map in a random wander until I get "
@@ -605,27 +617,27 @@ msgid ""
 msgstr ""
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/dragon.cfg:97
+#: data/ai/micro_ais/scenarios/dragon.cfg:95
 msgid "Move the bats around to explore how Rowck reacts"
 msgstr "Gluais na h-ialtagan mu thimcheall ach am faigh thu a-mach na nì Rabhg"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/dragon.cfg:99
+#: data/ai/micro_ais/scenarios/dragon.cfg:97
 msgid "Defeat Rowck"
 msgstr "Cuir ruaig air Rabhg"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/dragon.cfg:103
+#: data/ai/micro_ais/scenarios/dragon.cfg:101
 msgid "Move the lead bat to the signpost"
 msgstr "Gluais a’ phriomh ialtag dhan t-sanas"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/dragon.cfg:107
+#: data/ai/micro_ais/scenarios/dragon.cfg:105
 msgid "Death of the bat leader"
 msgstr "Bàs ceannard nan ialtagan"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/dragon.cfg:140
+#: data/ai/micro_ais/scenarios/dragon.cfg:138
 msgid "I'm out of here."
 msgstr "A-mach à seo leam."
 
@@ -921,12 +933,6 @@ msgstr "Deamhan Dona Eile"
 msgid "Guardian 1"
 msgstr "Freiceadan 1"
 
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:99
-#: data/ai/micro_ais/scenarios/guardians.cfg:110
-msgid "ai_special=guardian"
-msgstr ""
-
 #. [unit]: type=Dwarvish Guardsman, id=guardian2
 #: data/ai/micro_ais/scenarios/guardians.cfg:106
 msgid "Guardian 2"
@@ -937,46 +943,20 @@ msgstr "Freiceadan 2"
 msgid "Coward 1"
 msgstr "Gealtair 1"
 
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:125
-msgid "coward r=5"
-msgstr ""
-
 #. [unit]: type=Giant Rat, id=coward2
 #: data/ai/micro_ais/scenarios/guardians.cfg:141
 msgid "Coward 2"
 msgstr "Gealtair 2"
-
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:147
-msgid ""
-"coward r=5\n"
-"    s=24 5"
-msgstr ""
 
 #. [unit]: type=Giant Rat, id=coward3
 #: data/ai/micro_ais/scenarios/guardians.cfg:165
 msgid "Coward 3"
 msgstr "Gealtair 3"
 
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:171
-msgid ""
-"   coward r=5\n"
-" s=24,5 a=24,15"
-msgstr ""
-
 #. [unit]: type=Giant Rat, id=coward4
 #: data/ai/micro_ais/scenarios/guardians.cfg:190
 msgid "Coward 4"
 msgstr "Gealtair 4"
-
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:196
-msgid ""
-"coward r=5\n"
-"    s=32,--"
-msgstr ""
 
 #. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:210
@@ -989,89 +969,40 @@ msgstr ""
 msgid "Return Guardian 1"
 msgstr "Freiceadan tillidh 1"
 
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:222
-msgid "return 20,2"
-msgstr ""
-
 #. [unit]: type=Troll Whelp, id=return2
 #: data/ai/micro_ais/scenarios/guardians.cfg:238
 msgid "Return Guardian 2"
 msgstr "Freiceadan tillidh 2"
-
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:241
-msgid "return 21,9"
-msgstr ""
 
 #. [unit]: type=Troll Whelp, id=home1
 #: data/ai/micro_ais/scenarios/guardians.cfg:258
 msgid "Home Guard 1"
 msgstr "Freiceadan baile 1"
 
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:261
-msgid "home 19,2"
-msgstr ""
-
 #. [unit]: type=Troll, id=home 2
 #: data/ai/micro_ais/scenarios/guardians.cfg:270
 msgid "Home Guard 2"
 msgstr "Freiceadan baile 2"
-
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:273
-msgid "home 21,10"
-msgstr ""
 
 #. [unit]: type=Skeleton Archer, id=stationed1
 #: data/ai/micro_ais/scenarios/guardians.cfg:283
 msgid "Stationed Guardian 1"
 msgstr "Freiceadan seasaimh 1"
 
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:286
-msgid ""
-" stationed r=4\n"
-"s=2,14 g=3,13"
-msgstr ""
-
 #. [unit]: type=Skeleton, id=stationed2
 #: data/ai/micro_ais/scenarios/guardians.cfg:305
 msgid "Stationed Guardian 2"
 msgstr "Freiceadan seasaimh 2"
-
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:308
-msgid ""
-" stationed r=4\n"
-"s=4,14 g=7,13"
-msgstr ""
 
 #. [unit]: type=Troll, id=zone1
 #: data/ai/micro_ais/scenarios/guardians.cfg:328
 msgid "Gate Keeper"
 msgstr "Coimheadaiche-geata"
 
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:334
-#: data/ai/micro_ais/scenarios/guardians.cfg:385
-msgid "Zone Guard"
-msgstr "Freiceadan roinne"
-
 #. [unit]: type=Dwarvish Guardsman, id=zone2
 #: data/ai/micro_ais/scenarios/guardians.cfg:353
 msgid "Home Keeper"
 msgstr "Coimheadaiche-baile"
-
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:359
-msgid ""
-"Zone Guard with\n"
-"separate attack Zone"
-msgstr ""
-"Freiceadan roinne le\n"
-"roinn ionnsaighe fa leth"
 
 #. [unit]: type=Naga Fighter, id=zone3
 #: data/ai/micro_ais/scenarios/guardians.cfg:382
@@ -2780,3 +2711,13 @@ msgstr ""
 #: data/ai/scenarios/scenario-test_move_to_targets.cfg:60
 msgid "Idle AI"
 msgstr ""
+
+#~ msgid "Zone Guard"
+#~ msgstr "Freiceadan roinne"
+
+#~ msgid ""
+#~ "Zone Guard with\n"
+#~ "separate attack Zone"
+#~ msgstr ""
+#~ "Freiceadan roinne le\n"
+#~ "roinn ionnsaighe fa leth"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-04-21 20:19+0200\n"
+"POT-Creation-Date: 2014-10-11 10:43+0200\n"
 "PO-Revision-Date: 2014-03-03 19:56+0100\n"
 "Last-Translator: Svistwarrior273 <romanbeno273@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -145,17 +145,41 @@ msgstr ""
 
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:218
+#, fuzzy
+#| msgid ""
+#| "In this scenario, the AI playing the humans in the east (Langzhar) is "
+#| "instructed to protect the wizard Rossauba, while moving him safely to the "
+#| "signpost. On the other side, Koorzhar's units (in the west) will "
+#| "primarily attack Rossauba, even if a better target is available. Do you "
+#| "want to play either of the sides or let the AIs battle it out among "
+#| "themselves?\n"
+#| "\n"
+#| "Note: The Protect Unit AI is coded as a Micro AI. A Micro AI can be added "
+#| "and adapted to the need of a scenario easily using only WML and the "
+#| "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+#| "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgid ""
-"This is a reenactment of scenario \"The Elves Besieged\" of the mainline "
-"campaign \"Heir to the Throne\", just that the AI is playing Konrad's side "
-"here. The goal is to move Konrad to the signpost in the northwest, while "
-"keeping both Konrad and Delfador alive. The same AI as in scenario \"Protect "
-"Unit"
+"This is a reenactment of scenario The Elves Besieged of the mainline "
+"campaign Heir to the Throne, just that the AI is playing Konrad's side here. "
+"The goal is to move Konrad to the signpost in the northwest, while keeping "
+"both Konrad and Delfador alive. The same AI as in scenario Protect Unit is "
+"used.\n"
+"\n"
+"Note: The Protect Unit AI is coded as a Micro AI. A Micro AI can be added "
+"and adapted to the need of a scenario easily using only WML and the "
+"[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
+"span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
-"Toto je rekonštrukcia scenára \"Elfovia v obkľúčení\" z výpravy \"Dedič Trónu"
-"\", s tým rozdielom, že tu za Konrádovu stranu hrá AI. Cieľom je dostať "
-"Konráda k smerovke na severozápade, udržiavajúc jeho aj Delfadora nažive. Je "
-"použité rovnaké AI ako v scenári \"Ochráň jednotku\"."
+"V tomto scenári, AI hrajúce za ľudí na východe (Langzar) dostalo pokyn "
+"ochrániť čarodejníka Rossaubu a bezpečne ho doviesť k smerovke. Na opačnej "
+"strane, Korzárove jednotky (na západe) sa budú koncentrovať hlavne naňho, "
+"dokonca aj keď bude poruke lepší cieľ. Chceš hrať za jednu zo strán, alebo "
+"celú bitku necháš na AI?\n"
+"\n"
+"Poznámka: Ochranárske AI je nakódované ako Mikro AI. Mikro AI môže byť "
+"pridané a adaptované k cieľu scenára ľahko iba použitím WML a tagu "
+"[micro_ai]. Pozrite si <span color='#00A000'>Mikro AI wiki stránku</span> na "
+"http://wiki.wesnoth.org/Micro_AIs pre viac informácii."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:224
@@ -654,12 +678,12 @@ msgid "Rowck"
 msgstr "Rowk"
 
 #. [event]: (id=Dreadful Bat) profile profile}
-#: data/ai/micro_ais/scenarios/dragon.cfg:82
+#: data/ai/micro_ais/scenarios/dragon.cfg:80
 msgid "Be careful to stay out of the way of that dragon. He's a mean one."
 msgstr "Buď opatrný a nechoď do cesty tomu drakovi. Je to drsňák."
 
 #. [event]: (id=Dreadful Bat) profile profile}
-#: data/ai/micro_ais/scenarios/dragon.cfg:85
+#: data/ai/micro_ais/scenarios/dragon.cfg:83
 msgid ""
 "Hi there. I am Rowck and here is what I do:\n"
 "When hungry, I move around part of the map in a random wander until I get "
@@ -702,28 +726,28 @@ msgstr ""
 "org/Micro_AIs pre viac informácii."
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/dragon.cfg:97
+#: data/ai/micro_ais/scenarios/dragon.cfg:95
 msgid "Move the bats around to explore how Rowck reacts"
 msgstr ""
 "Pošli netopierov na rôzne miesta, aby si zistil, ako bude Rowk reagovať"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/dragon.cfg:99
+#: data/ai/micro_ais/scenarios/dragon.cfg:97
 msgid "Defeat Rowck"
 msgstr "Poraz Rowka"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/dragon.cfg:103
+#: data/ai/micro_ais/scenarios/dragon.cfg:101
 msgid "Move the lead bat to the signpost"
 msgstr "Dostaň vodcu netopierov k smerovke"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/dragon.cfg:107
+#: data/ai/micro_ais/scenarios/dragon.cfg:105
 msgid "Death of the bat leader"
 msgstr "Smrť vodcu netopierov"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/dragon.cfg:140
+#: data/ai/micro_ais/scenarios/dragon.cfg:138
 msgid "I'm out of here."
 msgstr "Som odtiaľto preč."
 
@@ -1071,12 +1095,6 @@ msgstr "Ďalší Zlý Ork"
 msgid "Guardian 1"
 msgstr "Strážca 1"
 
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:99
-#: data/ai/micro_ais/scenarios/guardians.cfg:110
-msgid "ai_special=guardian"
-msgstr "ai_special=guardian"
-
 #. [unit]: type=Dwarvish Guardsman, id=guardian2
 #: data/ai/micro_ais/scenarios/guardians.cfg:106
 msgid "Guardian 2"
@@ -1087,52 +1105,20 @@ msgstr "Strážca 2"
 msgid "Coward 1"
 msgstr "Zbabelec 1"
 
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:125
-msgid "coward r=5"
-msgstr "zbabelec r=5"
-
 #. [unit]: type=Giant Rat, id=coward2
 #: data/ai/micro_ais/scenarios/guardians.cfg:141
 msgid "Coward 2"
 msgstr "Zbabelec 2"
-
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:147
-msgid ""
-"coward r=5\n"
-"    s=24 5"
-msgstr ""
-"zbabelec r=5\n"
-"    s=24 5"
 
 #. [unit]: type=Giant Rat, id=coward3
 #: data/ai/micro_ais/scenarios/guardians.cfg:165
 msgid "Coward 3"
 msgstr "Zbabelec 3"
 
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:171
-msgid ""
-"   coward r=5\n"
-" s=24,5 a=24,15"
-msgstr ""
-"  zbabelec r=5\n"
-" s=24,5 a=24,15"
-
 #. [unit]: type=Giant Rat, id=coward4
 #: data/ai/micro_ais/scenarios/guardians.cfg:190
 msgid "Coward 4"
 msgstr "Zbabelec 4"
-
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:196
-msgid ""
-"coward r=5\n"
-"    s=32,--"
-msgstr ""
-"zbabelec r=5\n"
-"    s=32,--"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:210
@@ -1144,93 +1130,40 @@ msgstr "Dostaň gryfonov sem, aby si uvidel rôzne reakcie zbabelcov"
 msgid "Return Guardian 1"
 msgstr "Vracajúci sa Strážca 1"
 
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:222
-msgid "return 20,2"
-msgstr "návrat 20,2"
-
 #. [unit]: type=Troll Whelp, id=return2
 #: data/ai/micro_ais/scenarios/guardians.cfg:238
 msgid "Return Guardian 2"
 msgstr "Vracajúci sa Strážca 1"
-
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:241
-msgid "return 21,9"
-msgstr "návrat 21,9"
 
 #. [unit]: type=Troll Whelp, id=home1
 #: data/ai/micro_ais/scenarios/guardians.cfg:258
 msgid "Home Guard 1"
 msgstr "Domový Strážca 1"
 
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:261
-msgid "home 19,2"
-msgstr "domov 19,2"
-
 #. [unit]: type=Troll, id=home 2
 #: data/ai/micro_ais/scenarios/guardians.cfg:270
 msgid "Home Guard 2"
 msgstr "Domový Strážca 2"
-
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:273
-msgid "home 21,10"
-msgstr "domov 21,10"
 
 #. [unit]: type=Skeleton Archer, id=stationed1
 #: data/ai/micro_ais/scenarios/guardians.cfg:283
 msgid "Stationed Guardian 1"
 msgstr "Umiestnený Strážca 1"
 
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:286
-msgid ""
-" stationed r=4\n"
-"s=2,14 g=3,13"
-msgstr ""
-" umiestnený r=4\n"
-"s=2,14 g=3,13"
-
 #. [unit]: type=Skeleton, id=stationed2
 #: data/ai/micro_ais/scenarios/guardians.cfg:305
 msgid "Stationed Guardian 2"
 msgstr "Umiestnený Strážca 2"
-
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:308
-msgid ""
-" stationed r=4\n"
-"s=4,14 g=7,13"
-msgstr ""
-" umiestnený r=4\n"
-"s=4,14 g=7,13"
 
 #. [unit]: type=Troll, id=zone1
 #: data/ai/micro_ais/scenarios/guardians.cfg:328
 msgid "Gate Keeper"
 msgstr "Dverník"
 
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:334
-#: data/ai/micro_ais/scenarios/guardians.cfg:385
-msgid "Zone Guard"
-msgstr "Strážca Zóny"
-
 #. [unit]: type=Dwarvish Guardsman, id=zone2
 #: data/ai/micro_ais/scenarios/guardians.cfg:353
 msgid "Home Keeper"
 msgstr "Domovník"
-
-#. [variables]
-#: data/ai/micro_ais/scenarios/guardians.cfg:359
-msgid ""
-"Zone Guard with\n"
-"separate attack Zone"
-msgstr ""
-"Strážca zóny s\n"
-"oddelenou útočnou Zónou"
 
 #. [unit]: type=Naga Fighter, id=zone3
 #: data/ai/micro_ais/scenarios/guardians.cfg:382
@@ -3326,6 +3259,81 @@ msgstr "AI v štádiu testovania"
 #: data/ai/scenarios/scenario-test_move_to_targets.cfg:60
 msgid "Idle AI"
 msgstr "Idle AI"
+
+#~ msgid ""
+#~ "This is a reenactment of scenario \"The Elves Besieged\" of the mainline "
+#~ "campaign \"Heir to the Throne\", just that the AI is playing Konrad's "
+#~ "side here. The goal is to move Konrad to the signpost in the northwest, "
+#~ "while keeping both Konrad and Delfador alive. The same AI as in scenario "
+#~ "\"Protect Unit"
+#~ msgstr ""
+#~ "Toto je rekonštrukcia scenára \"Elfovia v obkľúčení\" z výpravy \"Dedič "
+#~ "Trónu\", s tým rozdielom, že tu za Konrádovu stranu hrá AI. Cieľom je "
+#~ "dostať Konráda k smerovke na severozápade, udržiavajúc jeho aj Delfadora "
+#~ "nažive. Je použité rovnaké AI ako v scenári \"Ochráň jednotku\"."
+
+#~ msgid "ai_special=guardian"
+#~ msgstr "ai_special=guardian"
+
+#~ msgid "coward r=5"
+#~ msgstr "zbabelec r=5"
+
+#~ msgid ""
+#~ "coward r=5\n"
+#~ "    s=24 5"
+#~ msgstr ""
+#~ "zbabelec r=5\n"
+#~ "    s=24 5"
+
+#~ msgid ""
+#~ "   coward r=5\n"
+#~ " s=24,5 a=24,15"
+#~ msgstr ""
+#~ "  zbabelec r=5\n"
+#~ " s=24,5 a=24,15"
+
+#~ msgid ""
+#~ "coward r=5\n"
+#~ "    s=32,--"
+#~ msgstr ""
+#~ "zbabelec r=5\n"
+#~ "    s=32,--"
+
+#~ msgid "return 20,2"
+#~ msgstr "návrat 20,2"
+
+#~ msgid "return 21,9"
+#~ msgstr "návrat 21,9"
+
+#~ msgid "home 19,2"
+#~ msgstr "domov 19,2"
+
+#~ msgid "home 21,10"
+#~ msgstr "domov 21,10"
+
+#~ msgid ""
+#~ " stationed r=4\n"
+#~ "s=2,14 g=3,13"
+#~ msgstr ""
+#~ " umiestnený r=4\n"
+#~ "s=2,14 g=3,13"
+
+#~ msgid ""
+#~ " stationed r=4\n"
+#~ "s=4,14 g=7,13"
+#~ msgstr ""
+#~ " umiestnený r=4\n"
+#~ "s=4,14 g=7,13"
+
+#~ msgid "Zone Guard"
+#~ msgstr "Strážca Zóny"
+
+#~ msgid ""
+#~ "Zone Guard with\n"
+#~ "separate attack Zone"
+#~ msgstr ""
+#~ "Strážca zóny s\n"
+#~ "oddelenou útočnou Zónou"
 
 #~ msgid "End scenario"
 #~ msgstr "Ukončiť scénu"
