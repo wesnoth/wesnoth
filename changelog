@@ -60,6 +60,9 @@ Version 1.11.16+dev:
      lost.
    * Increased UI sound channels allocation from 1 to 2, thereby reducing the
      number of channels available for game sound effects from 21 to 20.
+   * Fix bug: lobby sounds not all playing. This was fixed by adding a second
+     dedicated channel for UI sounds, and moving the "Ready to start" sound to
+     the turn bell channel.
 
 Version 1.11.16:
  * Add-ons client:
