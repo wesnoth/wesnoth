@@ -78,7 +78,7 @@ private:
 		{}
 	};
 
-	typedef boost::function<void (const request& req)> request_handler;
+	typedef boost::function<void (server*, const request& req)> request_handler;
 	typedef std::map<std::string, request_handler> request_handlers_table;
 
 	config cfg_;

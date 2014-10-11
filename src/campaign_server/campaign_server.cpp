@@ -37,7 +37,6 @@
 
 #include <csignal>
 
-#include <boost/bind.hpp>
 #include <boost/foreach.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 #include <boost/exception/get_error_info.hpp>
@@ -292,7 +291,7 @@ void server::run()
 
 					if(j != handlers_.end()) {
 						// Call the handler.
-						j->second(request(c.key, c.cfg, sock));
+						j->second(this, request(c.key, c.cfg, sock));
 					} else {
 						send_error("Unrecognized [" + c.key + "] request.",
 								   sock);
@@ -337,7 +336,7 @@ void server::register_handler(const std::string& cmd, const request_handler& fun
 }
 
 #define REGISTER_CAMPAIGND_HANDLER(req_id) \
-	register_handler(#req_id, boost::bind(&server::handle_##req_id, this, _1))
+	register_handler(#req_id, &server::handle_##req_id)
 
 void server::register_handlers()
 {
