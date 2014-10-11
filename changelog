@@ -161,7 +161,8 @@ Version 1.13.0-dev:
    * Fixed bug #20876: A segfault in cut_surface.
    * Dropped support for AmigaOS, BeOS, and OS/2.
    * Increased the sound mixer channel allocation from 16 to 32, thereby
-     raising the limit for simultaneous sound effects from 5 to 21.
+     raising the limit for simultaneous sound effects from 5 to 20, and
+     simultaneous UI sounds from 1 to 2.
    * Fix bug #21758: "Ready not blocked while player pick faction."
    * Fix bug #18829: "ai sides show up as "controller=network" on remote
      clients". This issue is the source of some difficulties with mp campaigns
