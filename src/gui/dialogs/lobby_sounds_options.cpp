@@ -1,0 +1,81 @@
+/*
+   Copyright (C) 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
+#include "gui/dialogs/lobby_sounds_options.hpp"
+
+#include "desktop/open.hpp"
+#include "gui/auxiliary/find_widget.tpp"
+#include "gui/dialogs/message.hpp"
+#include "gui/widgets/button.hpp"
+#include "gui/widgets/label.hpp"
+#include "gui/widgets/settings.hpp"
+#include "gui/widgets/toggle_button.hpp"
+#include "gui/widgets/window.hpp"
+
+#include <boost/bind.hpp>
+
+#include "gettext.hpp"
+
+namespace gui2
+{
+
+/*WIKI
+ * @page = GUIWindowDefinitionWML
+ * @order = 2_lobby_sounds_options
+ *
+ * == Lobby sounds options ==
+ *
+ * A Preferences subdialog permitting to configure the sounds and notifications
+ * generated in response to various mp lobby / game events.
+ *
+ * @begin{table}{dialog_widgets}
+ *
+ * _label & & label & m &
+ *        Item name. $
+ *
+ * _sound & & toggle_button & m &
+ *        Toggles whether to play the item sound. $
+ *
+ * _notification & & toggle_button & m &
+ *        Toggles whether to give a notification. $
+ *
+ * _in_lobby & & toggle_button & m &
+ *        Toggles whether to take actions for this item when in the lobby. $
+ *
+ * @end{table}
+ */
+
+REGISTER_DIALOG(lobby_sounds_options)
+
+tlobby_sounds_options::tlobby_sounds_options()
+{
+}
+
+void tlobby_sounds_options::pre_show(CVideo& /*video*/, twindow& window)
+{
+	ttoggle_button * in_lobby;
+	in_lobby = &find_widget<ttoggle_button>(&window,"ready_to_start_in_lobby", false);
+	in_lobby->set_visible(twidget::tvisible::invisible);
+
+	in_lobby = &find_widget<ttoggle_button>(&window,"game_has_begun_in_lobby", false);
+	in_lobby->set_visible(twidget::tvisible::invisible);
+}
+
+void tlobby_sounds_options::post_show(twindow& /*window*/)
+{
+}
+
+} // end namespace gui2
