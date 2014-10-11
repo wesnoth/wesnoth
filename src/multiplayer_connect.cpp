@@ -558,7 +558,9 @@ void connect::process_network_data(const config& data,
 	update_playerlist_state(result.second); //result.second is the silent flag
 	if (!was_able_to_start && engine_.can_start_game()) {
 		DBG_MP << "play party full sound" << std::endl;
-		sound::play_UI_sound(game_config::sounds::party_full_bell);
+		if(preferences::UI_sound_on()) {
+			sound::play_bell(game_config::sounds::party_full_bell); //this is play_bell instead of play_UI_sound to economize on sound channels. UI only has two sounds, and turn bell has a dedicated channel.
+		}
 	}
 }
 
