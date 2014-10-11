@@ -335,9 +335,13 @@ void get_files_in_dir(const std::string &dir,
 			continue;
 		}
 		if (st.type() == bfs::regular_file) {
-			if (filter == SKIP_PBL_FILES && looks_like_pbl(di->path().string()))
-				continue;
-
+			{
+				std::string basename = di->path().filename().string();
+				if (filter == SKIP_PBL_FILES && looks_like_pbl(basename))
+					continue;
+				if(!basename.empty() && basename[0] == '.' )
+					continue;
+			}
 			push_if_exists(files, di->path(), mode == ENTIRE_FILE_PATH);
 
 			if (checksum != NULL) {
@@ -358,6 +362,9 @@ void get_files_in_dir(const std::string &dir,
 			}
 		} else if (st.type() == bfs::directory_file) {
 			std::string basename = di->path().filename().string();
+			
+			if(!basename.empty() && basename[0] == '.' )
+				continue;
 			if (filter == SKIP_MEDIA_DIR
 				&& (basename == "images" || basename == "sounds"))
 				continue;
