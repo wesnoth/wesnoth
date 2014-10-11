@@ -25,6 +25,7 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 
+#include "mp_ui_sounds.hpp"
 #include "preferences.hpp"
 #include "formula_string_utils.hpp"
 
@@ -62,9 +63,6 @@ namespace gui2
  * @end{table}
  */
 
-// Note, this list of items must match those ids defined in lobby_sounds_options.cfg
-const char * items[] = { "player_joins", "player_leaves", "private_message", "public_message", "server_message", "ready_to_start", "game_has_begun" };
-
 static ttoggle_button * setup_pref_toggle_button(const std::string & id, bool def, twindow & window)
 {
 	ttoggle_button * b = &find_widget<ttoggle_button>(&window, id, false);
@@ -87,7 +85,7 @@ static void setup_item(const std::string & item, twindow & window)
 {
 	// Set up the sound checkbox
 	std::string sound_id = item+"_sound";
-	ttoggle_button * sound = setup_pref_toggle_button(sound_id, item != "public_message", window);
+	ttoggle_button * sound = setup_pref_toggle_button(sound_id, mp_ui_sounds::get_def_pref_sound(item), window);
 
 	// Set up the sound checkbox tooltip
 	utils::string_map for_tooltip;
@@ -96,10 +94,10 @@ static void setup_item(const std::string & item, twindow & window)
 	sound->set_tooltip(vgettext(orig.c_str(),for_tooltip));
 
 	// Set up the notification checkbox
-	setup_pref_toggle_button(item+"_notification", item != "public_message", window);
+	setup_pref_toggle_button(item+"_notification", mp_ui_sounds::get_def_pref_notif(item), window);
 
 	// Set up the in_lobby checkbox
-	setup_pref_toggle_button(item+"_in_lobby", item == "private_message" || item == "server_message", window);
+	setup_pref_toggle_button(item+"_in_lobby", mp_ui_sounds::get_def_pref_lobby(item), window);
 }
 
 REGISTER_DIALOG(lobby_sounds_options)
@@ -110,9 +108,8 @@ tlobby_sounds_options::tlobby_sounds_options()
 
 void tlobby_sounds_options::pre_show(CVideo& /*video*/, twindow& window)
 {
-	BOOST_FOREACH(const char * i, items) {
-		std::string item(i);
-		setup_item(item, window);
+	BOOST_FOREACH(const std::string & i, mp_ui_sounds::items) {
+		setup_item(i, window);
 	}
 
 	ttoggle_button * in_lobby;
