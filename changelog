@@ -19,6 +19,8 @@ Version 1.11.16+dev:
    * Removed the "Replay viewer" text label from the replay controller theme,
      because it caused problems for translators and was unnecessary
  * Miscellaneous and bug fixes:
+   * Reverted changes to Mushroom Grove terrain stats from version 1.11.16 (see
+     bugs #21971, #22336).
    * Fix bug #22307: random map generation produces oss in multiplayer
      campaigns.
    * Made the error messages sent to stderr when the core data dir is
