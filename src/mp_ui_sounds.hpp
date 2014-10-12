@@ -29,6 +29,7 @@ namespace mp_ui_sounds {
 	void player_enters(bool is_lobby);
 	void player_leaves(bool is_lobby);
 	void public_message(bool is_lobby);
+	void friend_message(bool is_lobby);
 	void private_message(bool is_lobby);
 	void server_message(bool is_lobby);
 	void ready_for_start();

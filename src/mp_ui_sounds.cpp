@@ -53,7 +53,7 @@ bool notif_pref(std::string id)
 } // end anonymous namespace
 
 // Note: This list must agree with data/gui/.../lobby_sound_options.cfg
-const std::vector<std::string> items = boost::assign::list_of("player_joins")("player_leaves")("private_message")("public_message")("server_message")("ready_to_start")("game_has_begun");
+const std::vector<std::string> items = boost::assign::list_of("player_joins")("player_leaves")("private_message")("friend_message")("public_message")("server_message")("ready_to_start")("game_has_begun");
 
 void player_enters(bool is_lobby)
 {
@@ -94,6 +94,20 @@ void public_message(bool is_lobby)
 	}
 	if (notif_pref(id)) {
 		desktop::notifications::send(_("Wesnoth"), _("Received a message"), desktop::notifications::OTHER);
+	}
+}
+
+void friend_message(bool is_lobby)
+{
+	std::string id = "friend_message";
+	if (is_lobby && !lobby_pref(id)) {
+		return ;
+	}
+	if (sound_pref(id)) {
+		sound::play_UI_sound(game_config::sounds::receive_message_friend);
+	}
+	if (notif_pref(id)) {
+		desktop::notifications::send(_("Wesnoth"), _("Received a message from a friend"), desktop::notifications::OTHER);
 	}
 }
 
@@ -150,7 +164,7 @@ void game_has_begun()
 }
 
 bool get_def_pref_sound(const std::string & id) {
-	return (id != "public_message");
+	return (id != "public_message" && id != "friend_message");
 }
 
 bool get_def_pref_notif(const std::string & id) {
