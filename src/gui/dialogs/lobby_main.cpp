@@ -45,7 +45,7 @@
 #include "network.hpp"
 #include "playmp_controller.hpp"
 #include "preferences_display.hpp"
-#include "mp_ui_sounds.hpp"
+#include "mp_ui_alerts.hpp"
 
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
@@ -322,22 +322,22 @@ void tlobby_main::do_notify(t_notify_mode mode)
 			case NOTIFY_WHISPER:
 			case NOTIFY_WHISPER_OTHER_WINDOW:
 			case NOTIFY_OWN_NICK:
-				mp_ui_sounds::private_message(true);
+				mp_ui_alerts::private_message(true);
 				break;
 			case NOTIFY_FRIEND_MESSAGE:
-				mp_ui_sounds::friend_message(true);
+				mp_ui_alerts::friend_message(true);
 				break;
 			case NOTIFY_SERVER_MESSAGE:
-				mp_ui_sounds::server_message(true);
+				mp_ui_alerts::server_message(true);
 				break;
 			case NOTIFY_LOBBY_QUIT:
-				mp_ui_sounds::player_leaves(true);
+				mp_ui_alerts::player_leaves(true);
 				break;
 			case NOTIFY_LOBBY_JOIN:
-				mp_ui_sounds::player_joins(true);
+				mp_ui_alerts::player_joins(true);
 				break;
 			case NOTIFY_MESSAGE:
-				mp_ui_sounds::public_message(true);
+				mp_ui_alerts::public_message(true);
 				break;
 			default:
 				break;

@@ -17,7 +17,7 @@
  * for various mp server events, depending on the preference configuration.
  */
 
-#include "mp_ui_sounds.hpp"
+#include "mp_ui_alerts.hpp"
 
 #include "global.hpp"
 
@@ -31,7 +31,7 @@
 #include <string>
 #include <vector>
 
-namespace mp_ui_sounds {
+namespace mp_ui_alerts {
 
 namespace {
 
@@ -176,4 +176,4 @@ bool get_def_pref_lobby(const std::string & id) {
 }
 
 
-} // end namespace mp_ui_sounds
+} // end namespace mp_ui_alerts

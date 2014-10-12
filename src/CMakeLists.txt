@@ -853,7 +853,7 @@ set(wesnoth-main_SRC
 	mp_game_settings.cpp
 	mp_game_utils.cpp
 	mp_options.cpp
-	mp_ui_sounds.cpp
+	mp_ui_alerts.cpp
 	multiplayer.cpp
 	multiplayer_configure.cpp
 	multiplayer_connect.cpp

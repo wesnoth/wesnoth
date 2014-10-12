@@ -27,7 +27,7 @@
 #include "resources.hpp"
 #include "statistics.hpp"
 #include "saved_game.hpp"
-#include "mp_ui_sounds.hpp"
+#include "mp_ui_alerts.hpp"
 #include "unit_types.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
@@ -407,7 +407,7 @@ void wait::start_game()
 	level_to_gamestate(level_, state_);
 
 	LOG_NW << "starting game\n";
-	mp_ui_sounds::game_has_begun();
+	mp_ui_alerts::game_has_begun();
 }
 
 void wait::layout_children(const SDL_Rect& rect)

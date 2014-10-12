@@ -25,7 +25,7 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 
-#include "mp_ui_sounds.hpp"
+#include "mp_ui_alerts.hpp"
 #include "preferences.hpp"
 #include "formula_string_utils.hpp"
 
@@ -84,10 +84,10 @@ static ttoggle_button * setup_pref_toggle_button(const std::string & id, bool de
 static void setup_item(const std::string & item, twindow & window)
 {
 	// Set up the sound checkbox
-	setup_pref_toggle_button(item+"_sound", mp_ui_sounds::get_def_pref_sound(item), window);
+	setup_pref_toggle_button(item+"_sound", mp_ui_alerts::get_def_pref_sound(item), window);
 
 	// Set up the notification checkbox
-	ttoggle_button * notif = setup_pref_toggle_button(item+"_notif", mp_ui_sounds::get_def_pref_notif(item), window);
+	ttoggle_button * notif = setup_pref_toggle_button(item+"_notif", mp_ui_alerts::get_def_pref_notif(item), window);
 
 	// Check if desktop notifications are available
 	if (!desktop::notifications::available()) {
@@ -99,7 +99,7 @@ static void setup_item(const std::string & item, twindow & window)
 	}
 
 	// Set up the in_lobby checkbox
-	setup_pref_toggle_button(item+"_lobby", mp_ui_sounds::get_def_pref_lobby(item), window);
+	setup_pref_toggle_button(item+"_lobby", mp_ui_alerts::get_def_pref_lobby(item), window);
 }
 
 static void set_pref_and_button(const std::string & id, bool value, twindow & window)
@@ -111,10 +111,10 @@ static void set_pref_and_button(const std::string & id, bool value, twindow & wi
 
 static void revert_to_default_pref_values(twindow & window)
 {
-	BOOST_FOREACH(const std::string & i, mp_ui_sounds::items) {
-		set_pref_and_button(i+"_sound", mp_ui_sounds::get_def_pref_sound(i), window);
-		set_pref_and_button(i+"_notif", mp_ui_sounds::get_def_pref_notif(i), window);
-		set_pref_and_button(i+"_lobby", mp_ui_sounds::get_def_pref_lobby(i), window);
+	BOOST_FOREACH(const std::string & i, mp_ui_alerts::items) {
+		set_pref_and_button(i+"_sound", mp_ui_alerts::get_def_pref_sound(i), window);
+		set_pref_and_button(i+"_notif", mp_ui_alerts::get_def_pref_notif(i), window);
+		set_pref_and_button(i+"_lobby", mp_ui_alerts::get_def_pref_lobby(i), window);
 	}
 }
 
@@ -126,7 +126,7 @@ tlobby_sounds_options::tlobby_sounds_options()
 
 void tlobby_sounds_options::pre_show(CVideo& /*video*/, twindow& window)
 {
-	BOOST_FOREACH(const std::string & i, mp_ui_sounds::items) {
+	BOOST_FOREACH(const std::string & i, mp_ui_alerts::items) {
 		setup_item(i, window);
 	}
 

@@ -27,7 +27,7 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "wml_separators.hpp"
-#include "mp_ui_sounds.hpp"
+#include "mp_ui_alerts.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -559,7 +559,7 @@ void connect::process_network_data(const config& data,
 	update_playerlist_state(result.second); //result.second is the silent flag
 	if (!was_able_to_start && engine_.can_start_game()) {
 		DBG_MP << "play party full sound" << std::endl;
-		mp_ui_sounds::ready_for_start();
+		mp_ui_alerts::ready_for_start();
 	}
 }
 

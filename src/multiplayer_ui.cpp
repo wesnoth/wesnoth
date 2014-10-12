@@ -26,7 +26,7 @@
 #include "multiplayer.hpp"
 #include "multiplayer_ui.hpp"
 #include "multiplayer_lobby.hpp" //needed for dynamic cast when implementing the lobby_sounds preference
-#include "mp_ui_sounds.hpp"
+#include "mp_ui_alerts.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 
@@ -416,13 +416,13 @@ void ui::process_message(const config& msg, const bool whisper) {
 	bool is_lobby = dynamic_cast<mp::lobby*>(this) != NULL;
 
 	if (whisper || utils::word_match(message, preferences::login())) {
-		mp_ui_sounds::private_message(is_lobby);
+		mp_ui_alerts::private_message(is_lobby);
 	} else if (preferences::is_friend(sender)) {
-		mp_ui_sounds::friend_message(is_lobby);
+		mp_ui_alerts::friend_message(is_lobby);
 	} else if (sender == "server") {
-		mp_ui_sounds::server_message(is_lobby);
+		mp_ui_alerts::server_message(is_lobby);
 	} else {
-		mp_ui_sounds::public_message(is_lobby);
+		mp_ui_alerts::public_message(is_lobby);
 	}
 
 	std::string prefix;
@@ -695,9 +695,9 @@ void ui::set_user_list(const std::vector<std::string>& list, bool silent)
 		bool is_lobby = dynamic_cast<mp::lobby*>(this) != NULL;
 
 		if(list.size() < user_list_.size()) {
-			mp_ui_sounds::player_leaves(is_lobby);
+			mp_ui_alerts::player_leaves(is_lobby);
 		} else if(list.size() > user_list_.size()) {
-			mp_ui_sounds::player_joins(is_lobby);
+			mp_ui_alerts::player_joins(is_lobby);
 		}
 	}
 

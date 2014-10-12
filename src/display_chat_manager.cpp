@@ -22,7 +22,7 @@
 #include "game_preferences.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
-#include "mp_ui_sounds.hpp"
+#include "mp_ui_alerts.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <boost/cstdint.hpp>
@@ -74,13 +74,13 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 	if (bell) {
 		if ((type == events::chat_handler::MESSAGE_PRIVATE && (!is_observer || whisper))
 			|| utils::word_match(message, preferences::login())) {
-			mp_ui_sounds::private_message(false);
+			mp_ui_alerts::private_message(false);
 		} else if (preferences::is_friend(sender)) {
-			mp_ui_sounds::friend_message(false);
+			mp_ui_alerts::friend_message(false);
 		} else if (sender == "server") {
-			mp_ui_sounds::server_message(false);
+			mp_ui_alerts::server_message(false);
 		} else {
-			mp_ui_sounds::public_message(false);
+			mp_ui_alerts::public_message(false);
 		}
 	}
 
