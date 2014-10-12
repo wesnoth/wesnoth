@@ -78,7 +78,7 @@ namespace preferences {
 	bool show_video_mode_dialog(display& disp);
 	bool show_theme_dialog(display& disp);
 	void show_paths_dialog(display& disp);
-	void show_lobby_sounds_dialog(display& disp);
+	void show_mp_alerts_dialog(display& disp);
 
 	// If prefs is non-null, save the hotkeys in that config
 	// instead of the default.

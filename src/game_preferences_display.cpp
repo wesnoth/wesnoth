@@ -143,7 +143,7 @@ private:
 			standing_anim_button_,
 			animate_map_button_,
 			disable_auto_move_button_,
-			lobby_sounds_options_button_,
+			mp_alerts_options_button_,
 
 			// color tab
 			orb_colors_defaults_,
@@ -245,7 +245,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  standing_anim_button_(disp.video(), _("Show unit standing animations"), gui::button::TYPE_CHECK),
 	  animate_map_button_(disp.video(), _("Animate map"), gui::button::TYPE_CHECK),
 	  disable_auto_move_button_(disp.video(), _("Disable automatic moves"), gui::button::TYPE_CHECK),
-	  lobby_sounds_options_button_(disp.video(), _("Lobby Sounds")),
+	  mp_alerts_options_button_(disp.video(), _("Alerts")),
 
 	  // Colors tab buttons
 	  orb_colors_defaults_(disp.video(), _("Defaults")),
@@ -523,7 +523,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	disable_auto_move_button_.set_check(disable_auto_moves());
 	disable_auto_move_button_.set_help_string(_("Do not allow automatic movements at the begining of a turn"));
 
-	//lobby_sounds_options_button_.set_help_string(_("Configure the sounds played in the mp lobby and setup screens"));
+	//mp_alerts_options_button_.set_help_string(_("Configure the sounds played in the mp lobby and setup screens"));
 	//^ The gui 1 tooltips don't play nice with gui 2 tool tips so we have to comment this out.
 
 	set_advanced_menu();
@@ -608,7 +608,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&advanced_);
 	h.push_back(&friends_);
 	h.push_back(&disable_auto_move_button_);
-	h.push_back(&lobby_sounds_options_button_);
+	h.push_back(&mp_alerts_options_button_);
 
 	// Colors tab
 	for (unsigned i = 0; i < color_ids_.size(); i++) {
@@ -868,7 +868,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	friends_list_button_.set_location(rect.x, bottom_row_y - friends_list_button_.height());
 
 	mp_server_search_button_.set_location(rect.x + 10 + friends_list_button_.width(), bottom_row_y - mp_server_search_button_.height());
-	lobby_sounds_options_button_.set_location(mp_server_search_button_.location().x + mp_server_search_button_.width() + 10, bottom_row_y - lobby_sounds_options_button_.height());
+	mp_alerts_options_button_.set_location(mp_server_search_button_.location().x + mp_server_search_button_.width() + 10, bottom_row_y - mp_alerts_options_button_.height());
 
 	//Friends tab
 	ypos = rect.y + top_border;
@@ -1213,8 +1213,8 @@ void preferences_dialog::process_event()
 			parent->clear_buttons();
 		}
 
-		if (lobby_sounds_options_button_.pressed()) {
-			show_lobby_sounds_dialog(disp_);
+		if (mp_alerts_options_button_.pressed()) {
+			show_mp_alerts_dialog(disp_);
 		}
 
 		set_chat_lines(chat_lines_slider_.value());
@@ -1671,7 +1671,7 @@ void preferences_dialog::set_selection(int index)
 	show_lobby_joins_button3_.hide(hide_multiplayer);
 	friends_list_button_.hide(hide_multiplayer);
 	mp_server_search_button_.hide(hide_multiplayer);
-	lobby_sounds_options_button_.hide(hide_multiplayer);
+	mp_alerts_options_button_.hide(hide_multiplayer);
 
 	const bool hide_friends = tab_ != FRIENDS_TAB;
 	friends_.hide(hide_friends);
@@ -1769,7 +1769,7 @@ void show_paths_dialog(display& disp)
 	gui2::tgame_paths::display(disp.video());
 }
 
-void show_lobby_sounds_dialog(display & disp)
+void show_mp_alerts_dialog(display & disp)
 {
 	gui2::tlobby_sounds_options::display(disp.video());
 }
