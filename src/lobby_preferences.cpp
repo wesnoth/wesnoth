@@ -19,11 +19,6 @@
 
 namespace preferences {
 
-bool lobby_sounds()
-{
-	return preferences::get("lobby_sounds", true);
-}
-
 bool sort_list()
 {
 	return preferences::get("sort_list", true);

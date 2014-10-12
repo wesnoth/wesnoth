@@ -318,7 +318,6 @@ void tlobby_main::append_to_chatbox(const std::string& text, size_t id)
 
 void tlobby_main::do_notify(t_notify_mode mode)
 {
-	if(preferences::lobby_sounds()) {
 		switch(mode) {
 			case NOTIFY_WHISPER:
 			case NOTIFY_WHISPER_OTHER_WINDOW:
@@ -343,7 +342,6 @@ void tlobby_main::do_notify(t_notify_mode mode)
 			default:
 				break;
 		}
-	}
 }
 
 tlobby_main::tlobby_main(const config& game_config,
