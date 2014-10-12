@@ -37,7 +37,7 @@ namespace {
 
 bool lobby_pref(std::string id)
 {
-	return preferences::get(id + "_in_lobby", get_def_pref_lobby(id));
+	return preferences::get(id + "_lobby", get_def_pref_lobby(id));
 }
 
 bool sound_pref(std::string id)
@@ -47,7 +47,7 @@ bool sound_pref(std::string id)
 
 bool notif_pref(std::string id)
 {
-	return preferences::get(id + "_notification", get_def_pref_notif(id));
+	return preferences::get(id + "_notif", get_def_pref_notif(id));
 }
 
 } // end anonymous namespace

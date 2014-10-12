@@ -54,10 +54,10 @@ namespace gui2
  * _sound & & toggle_button & m &
  *        Toggles whether to play the item sound. $
  *
- * _notification & & toggle_button & m &
+ * _notif & & toggle_button & m &
  *        Toggles whether to give a notification. $
  *
- * _in_lobby & & toggle_button & m &
+ * _lobby & & toggle_button & m &
  *        Toggles whether to take actions for this item when in the lobby. $
  *
  * @end{table}
@@ -87,7 +87,7 @@ static void setup_item(const std::string & item, twindow & window)
 	setup_pref_toggle_button(item+"_sound", mp_ui_sounds::get_def_pref_sound(item), window);
 
 	// Set up the notification checkbox
-	ttoggle_button * notif = setup_pref_toggle_button(item+"_notification", mp_ui_sounds::get_def_pref_notif(item), window);
+	ttoggle_button * notif = setup_pref_toggle_button(item+"_notif", mp_ui_sounds::get_def_pref_notif(item), window);
 
 	// Check if desktop notifications are available
 	if (!desktop::notifications::available()) {
@@ -99,22 +99,22 @@ static void setup_item(const std::string & item, twindow & window)
 	}
 
 	// Set up the in_lobby checkbox
-	setup_pref_toggle_button(item+"_in_lobby", mp_ui_sounds::get_def_pref_lobby(item), window);
+	setup_pref_toggle_button(item+"_lobby", mp_ui_sounds::get_def_pref_lobby(item), window);
 }
 
-static void set_pref_and_button(const std::string & pref_id, const std::string widget_id, bool value, twindow & window)
+static void set_pref_and_button(const std::string & id, bool value, twindow & window)
 {
-	preferences::set(pref_id,value);
-	ttoggle_button * button = &find_widget<ttoggle_button>(&window, widget_id, false);
+	preferences::set(id,value);
+	ttoggle_button * button = &find_widget<ttoggle_button>(&window, id, false);
 	button->set_value(value);
 }
 
 static void revert_to_default_pref_values(twindow & window)
 {
 	BOOST_FOREACH(const std::string & i, mp_ui_sounds::items) {
-		set_pref_and_button(i+"_sound", i+"_sound", mp_ui_sounds::get_def_pref_sound(i), window);
-		set_pref_and_button(i+"_notif", i+"_notification", mp_ui_sounds::get_def_pref_notif(i), window);
-		set_pref_and_button(i+"_lobby", i+"_in_lobby", mp_ui_sounds::get_def_pref_lobby(i), window);
+		set_pref_and_button(i+"_sound", mp_ui_sounds::get_def_pref_sound(i), window);
+		set_pref_and_button(i+"_notif", mp_ui_sounds::get_def_pref_notif(i), window);
+		set_pref_and_button(i+"_lobby", mp_ui_sounds::get_def_pref_lobby(i), window);
 	}
 }
 
@@ -136,10 +136,10 @@ void tlobby_sounds_options::pre_show(CVideo& /*video*/, twindow& window)
 	}
 
 	ttoggle_button * in_lobby;
-	in_lobby = &find_widget<ttoggle_button>(&window,"ready_for_start_in_lobby", false);
+	in_lobby = &find_widget<ttoggle_button>(&window,"ready_for_start_lobby", false);
 	in_lobby->set_visible(twidget::tvisible::invisible);
 
-	in_lobby = &find_widget<ttoggle_button>(&window,"game_has_begun_in_lobby", false);
+	in_lobby = &find_widget<ttoggle_button>(&window,"game_has_begun_lobby", false);
 	in_lobby->set_visible(twidget::tvisible::invisible);
 
 	tbutton * defaults;
