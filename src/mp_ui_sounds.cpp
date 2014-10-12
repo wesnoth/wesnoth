@@ -62,7 +62,7 @@ void player_joins(bool is_lobby)
 		return ;
 	}
 	if (sound_pref(id)) {
-		sound::play_UI_sound(game_config::sounds::user_arrive);
+		sound::play_UI_sound(game_config::sounds::player_joins);
 	}
 	if (notif_pref(id)) {
 		desktop::notifications::send(_("Wesnoth"), _("A player has joined"), desktop::notifications::OTHER);
@@ -76,7 +76,7 @@ void player_leaves(bool is_lobby)
 		return ;
 	}
 	if (sound_pref(id)) {
-		sound::play_UI_sound(game_config::sounds::user_leave);
+		sound::play_UI_sound(game_config::sounds::player_leaves);
 	}
 	if (notif_pref(id)) {
 		desktop::notifications::send(_("Wesnoth"), _("A player has left"), desktop::notifications::OTHER);
@@ -90,7 +90,7 @@ void public_message(bool is_lobby)
 		return ;
 	}
 	if (sound_pref(id)) {
-		sound::play_UI_sound(game_config::sounds::receive_message);
+		sound::play_UI_sound(game_config::sounds::public_message);
 	}
 	if (notif_pref(id)) {
 		desktop::notifications::send(_("Wesnoth"), _("Received a message"), desktop::notifications::OTHER);
@@ -104,7 +104,7 @@ void friend_message(bool is_lobby)
 		return ;
 	}
 	if (sound_pref(id)) {
-		sound::play_UI_sound(game_config::sounds::receive_message_friend);
+		sound::play_UI_sound(game_config::sounds::friend_message);
 	}
 	if (notif_pref(id)) {
 		desktop::notifications::send(_("Wesnoth"), _("Received a message from a friend"), desktop::notifications::OTHER);
@@ -118,7 +118,7 @@ void private_message(bool is_lobby)
 		return ;
 	}
 	if (sound_pref(id)) {
-		sound::play_UI_sound(game_config::sounds::receive_message_highlight);
+		sound::play_UI_sound(game_config::sounds::private_message);
 	}
 	if (notif_pref(id)) {
 		desktop::notifications::send(_("Wesnoth"), _("Someone is talking to you"), desktop::notifications::OTHER);
@@ -132,7 +132,7 @@ void server_message(bool is_lobby)
 		return ;
 	}
 	if (sound_pref(id)) {
-		sound::play_UI_sound(game_config::sounds::receive_message_server);
+		sound::play_UI_sound(game_config::sounds::server_message);
 	}
 	if (notif_pref(id)) {
 		desktop::notifications::send(_("Wesnoth"), _("The server has sent a message"), desktop::notifications::OTHER);
@@ -144,7 +144,7 @@ void ready_for_start()
 	std::string id = "ready_for_start";
 	if (sound_pref(id)) {
 		if (preferences::UI_sound_on()) {
-			sound::play_bell(game_config::sounds::party_full_bell); //this is play_bell instead of play_UI_sound to economize on sound channels. UI only has two sounds, and turn bell has a dedicated channel.
+			sound::play_bell(game_config::sounds::ready_for_start); //this is play_bell instead of play_UI_sound to economize on sound channels. UI only has two sounds, and turn bell has a dedicated channel.
 		}
 	}
 	if (notif_pref(id)) {
@@ -156,7 +156,7 @@ void game_has_begun()
 {
 	std::string id = "game_has_begun";
 	if (sound_pref(id)) {
-		sound::play_UI_sound(game_config::sounds::mp_game_begins);
+		sound::play_UI_sound(game_config::sounds::game_has_begun);
 	}
 	if (notif_pref(id)) {
 		desktop::notifications::send(_("Wesnoth"), _ ("Game has begun!"), desktop::notifications::OTHER);
