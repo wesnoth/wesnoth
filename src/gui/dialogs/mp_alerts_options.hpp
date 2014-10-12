@@ -21,11 +21,11 @@ namespace gui2
 {
 class tlabel;
 
-class tlobby_sounds_options : public tdialog
+class tmp_alerts_options : public tdialog
 {
 public:
 	/** Constructor. */
-	tlobby_sounds_options();
+	tmp_alerts_options();
 
 	/**
 	 * The display function.
@@ -34,7 +34,7 @@ public:
 	 */
 	static void display(CVideo& video)
 	{
-		tlobby_sounds_options().show(video);
+		tmp_alerts_options().show(video);
 	}
 
 private:

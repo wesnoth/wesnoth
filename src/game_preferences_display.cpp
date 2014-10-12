@@ -23,7 +23,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/game_cache_options.hpp"
 #include "gui/dialogs/game_paths.hpp"
-#include "gui/dialogs/lobby_sounds_options.hpp"
+#include "gui/dialogs/mp_alerts_options.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/theme_list.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -1771,7 +1771,7 @@ void show_paths_dialog(display& disp)
 
 void show_mp_alerts_dialog(display & disp)
 {
-	gui2::tlobby_sounds_options::display(disp.video());
+	gui2::tmp_alerts_options::display(disp.video());
 }
 
 std::string show_wesnothd_server_search(display& disp)

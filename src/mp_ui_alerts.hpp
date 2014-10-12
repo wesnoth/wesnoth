@@ -40,7 +40,7 @@ namespace mp_ui_alerts {
 	bool get_def_pref_notif(const std::string &);
 	bool get_def_pref_lobby(const std::string &);
 
-	// Note, this list of items must match those ids defined in data/gui/dialogs/lobby_sounds_options.cfg
+	// Note, this list of items must match those ids defined in data/gui/dialogs/mp_alerts_options.cfg
 	extern const std::vector<std::string> items;
 }
 

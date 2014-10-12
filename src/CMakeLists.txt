@@ -813,12 +813,12 @@ set(wesnoth-main_SRC
 	gui/dialogs/game_save.cpp
 	gui/dialogs/gamestate_inspector.cpp
 	gui/dialogs/language_selection.cpp
-	gui/dialogs/lobby_sounds_options.cpp
 	gui/dialogs/lobby/lobby_data.cpp
 	gui/dialogs/lobby/lobby_info.cpp
 	gui/dialogs/lobby_main.cpp
 	gui/dialogs/lobby_player_info.cpp
 	gui/dialogs/message.cpp
+	gui/dialogs/mp_alerts_options.cpp
 	gui/dialogs/mp_change_control.cpp
 	gui/dialogs/mp_cmd_wrapper.cpp
 	gui/dialogs/mp_connect.cpp

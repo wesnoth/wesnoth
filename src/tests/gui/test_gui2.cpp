@@ -443,7 +443,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 
 	// No test for this right now
 	list.erase(
-			std::remove(list.begin(), list.end(), "lobby_sounds_options")
+			std::remove(list.begin(), list.end(), "mp_alerts_options")
 			, list.end());
 
 	// Test size() instead of empty() to get the number of offenders

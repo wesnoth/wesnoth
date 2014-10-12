@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/lobby_sounds_options.hpp"
+#include "gui/dialogs/mp_alerts_options.hpp"
 
 #include "desktop/notifications.hpp"
 #include "gui/auxiliary/find_widget.tpp"
@@ -39,7 +39,7 @@ namespace gui2
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
- * @order = 2_lobby_sounds_options
+ * @order = 2_mp_alerts_options
  *
  * == Lobby sounds options ==
  *
@@ -118,13 +118,13 @@ static void revert_to_default_pref_values(twindow & window)
 	}
 }
 
-REGISTER_DIALOG(lobby_sounds_options)
+REGISTER_DIALOG(mp_alerts_options)
 
-tlobby_sounds_options::tlobby_sounds_options()
+tmp_alerts_options::tmp_alerts_options()
 {
 }
 
-void tlobby_sounds_options::pre_show(CVideo& /*video*/, twindow& window)
+void tmp_alerts_options::pre_show(CVideo& /*video*/, twindow& window)
 {
 	BOOST_FOREACH(const std::string & i, mp_ui_alerts::items) {
 		setup_item(i, window);
@@ -147,7 +147,7 @@ void tlobby_sounds_options::pre_show(CVideo& /*video*/, twindow& window)
 	connect_signal_mouse_left_click(*defaults, boost::bind(&revert_to_default_pref_values, boost::ref(window)));
 }
 
-void tlobby_sounds_options::post_show(twindow& /*window*/)
+void tmp_alerts_options::post_show(twindow& /*window*/)
 {
 }
 
