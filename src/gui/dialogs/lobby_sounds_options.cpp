@@ -87,7 +87,16 @@ static void setup_item(const std::string & item, twindow & window)
 	setup_pref_toggle_button(item+"_sound", mp_ui_sounds::get_def_pref_sound(item), window);
 
 	// Set up the notification checkbox
-	setup_pref_toggle_button(item+"_notification", mp_ui_sounds::get_def_pref_notif(item), window);
+	ttoggle_button * notif = setup_pref_toggle_button(item+"_notification", mp_ui_sounds::get_def_pref_notif(item), window);
+
+	// Check if desktop notifications are available
+	if (!desktop::notifications::available()) {
+		notif->set_value(false);
+		notif->set_active(false);
+		preferences::set(item+"_notif", false);
+	} else {
+		notif->set_active(true);
+	}
 
 	// Set up the in_lobby checkbox
 	setup_pref_toggle_button(item+"_in_lobby", mp_ui_sounds::get_def_pref_lobby(item), window);
@@ -119,6 +128,11 @@ void tlobby_sounds_options::pre_show(CVideo& /*video*/, twindow& window)
 {
 	BOOST_FOREACH(const std::string & i, mp_ui_sounds::items) {
 		setup_item(i, window);
+	}
+
+	if (!desktop::notifications::available()) {
+		tlabel * nlabel = &find_widget<tlabel>(&window, "notification_label", false);
+		nlabel->set_tooltip(_("This build of wesnoth does not include support for desktop notifications, contact your package manager"));
 	}
 
 	ttoggle_button * in_lobby;

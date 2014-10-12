@@ -168,7 +168,7 @@ bool get_def_pref_sound(const std::string & id) {
 }
 
 bool get_def_pref_notif(const std::string & id) {
-	return (id == "private_message" || id == "ready_for_start" || id == "game_has_begun");
+	return (desktop::notifications::available() && (id == "private_message" || id == "ready_for_start" || id == "game_has_begun"));
 }
 
 bool get_def_pref_lobby(const std::string & id) {
