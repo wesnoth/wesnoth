@@ -129,7 +129,7 @@ void tlobby_sounds_options::pre_show(CVideo& /*video*/, twindow& window)
 	}
 
 	ttoggle_button * in_lobby;
-	in_lobby = &find_widget<ttoggle_button>(&window,"ready_to_start_in_lobby", false);
+	in_lobby = &find_widget<ttoggle_button>(&window,"ready_for_start_in_lobby", false);
 	in_lobby->set_visible(twidget::tvisible::invisible);
 
 	in_lobby = &find_widget<ttoggle_button>(&window,"game_has_begun_in_lobby", false);
