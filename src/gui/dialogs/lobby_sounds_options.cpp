@@ -90,8 +90,8 @@ static void setup_item(const std::string & item, twindow & window)
 	// Set up the sound checkbox tooltip
 	utils::string_map for_tooltip;
 	for_tooltip["id"] = sound_id;
-	std::string orig = _("This sound is selected by '$id' entry of data/game_config.cfg.");
-	sound->set_tooltip(vgettext(orig.c_str(),for_tooltip));
+
+	sound->set_tooltip(vgettext("This sound is selected by '$id' entry of data/game_config.cfg.",for_tooltip));
 
 	// Set up the notification checkbox
 	setup_pref_toggle_button(item+"_notification", mp_ui_sounds::get_def_pref_notif(item), window);
