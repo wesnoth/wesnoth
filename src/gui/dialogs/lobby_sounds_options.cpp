@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/lobby_sounds_options.hpp"
 
-#include "desktop/open.hpp"
+#include "desktop/notifications.hpp"
 #include "gui/auxiliary/find_widget.tpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/button.hpp"
@@ -84,14 +84,7 @@ static ttoggle_button * setup_pref_toggle_button(const std::string & id, bool de
 static void setup_item(const std::string & item, twindow & window)
 {
 	// Set up the sound checkbox
-	std::string sound_id = item+"_sound";
-	ttoggle_button * sound = setup_pref_toggle_button(sound_id, mp_ui_sounds::get_def_pref_sound(item), window);
-
-	// Set up the sound checkbox tooltip
-	utils::string_map for_tooltip;
-	for_tooltip["id"] = sound_id;
-
-	sound->set_tooltip(vgettext("This sound is selected by '$id' entry of data/game_config.cfg.",for_tooltip));
+	setup_pref_toggle_button(item+"_sound", mp_ui_sounds::get_def_pref_sound(item), window);
 
 	// Set up the notification checkbox
 	setup_pref_toggle_button(item+"_notification", mp_ui_sounds::get_def_pref_notif(item), window);
