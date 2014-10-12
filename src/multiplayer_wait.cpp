@@ -14,7 +14,6 @@
 
 #include "global.hpp"
 
-#include "desktop/notifications.hpp"
 #include "dialogs.hpp"
 #include "gettext.hpp"
 #include "game_config_manager.hpp"
@@ -28,7 +27,7 @@
 #include "resources.hpp"
 #include "statistics.hpp"
 #include "saved_game.hpp"
-#include "sound.hpp"
+#include "mp_ui_sounds.hpp"
 #include "unit_types.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
@@ -408,8 +407,7 @@ void wait::start_game()
 	level_to_gamestate(level_, state_);
 
 	LOG_NW << "starting game\n";
-	sound::play_UI_sound(game_config::sounds::mp_game_begins);
-	desktop::notifications::send(_("Wesnoth"), _ ("Game has begun!"), desktop::notifications::OTHER);
+	mp_ui_sounds::game_has_begun();
 }
 
 void wait::layout_children(const SDL_Rect& rect)

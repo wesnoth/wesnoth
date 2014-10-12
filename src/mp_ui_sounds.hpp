@@ -26,7 +26,7 @@
 namespace mp_ui_sounds {
 
 	// Functions called when such an event occurs
-	void player_enters(bool is_lobby);
+	void player_joins(bool is_lobby);
 	void player_leaves(bool is_lobby);
 	void public_message(bool is_lobby);
 	void friend_message(bool is_lobby);

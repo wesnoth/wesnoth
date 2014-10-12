@@ -55,7 +55,7 @@ bool notif_pref(std::string id)
 // Note: This list must agree with data/gui/.../lobby_sound_options.cfg
 const std::vector<std::string> items = boost::assign::list_of("player_joins")("player_leaves")("private_message")("friend_message")("public_message")("server_message")("ready_to_start")("game_has_begun");
 
-void player_enters(bool is_lobby)
+void player_joins(bool is_lobby)
 {
 	std::string id = "player_enters";
 	if (is_lobby && !lobby_pref(id)) {
