@@ -100,6 +100,22 @@ static void setup_item(const std::string & item, twindow & window)
 	setup_pref_toggle_button(item+"_in_lobby", mp_ui_sounds::get_def_pref_lobby(item), window);
 }
 
+static void set_pref_and_button(const std::string & pref_id, const std::string widget_id, bool value, twindow & window)
+{
+	preferences::set(pref_id,value);
+	ttoggle_button * button = &find_widget<ttoggle_button>(&window, widget_id, false);
+	button->set_value(value);
+}
+
+static void revert_to_default_pref_values(twindow & window)
+{
+	BOOST_FOREACH(const std::string & i, mp_ui_sounds::items) {
+		set_pref_and_button(i+"_sound", i+"_sound", mp_ui_sounds::get_def_pref_sound(i), window);
+		set_pref_and_button(i+"_notif", i+"_notification", mp_ui_sounds::get_def_pref_notif(i), window);
+		set_pref_and_button(i+"_lobby", i+"_in_lobby", mp_ui_sounds::get_def_pref_lobby(i), window);
+	}
+}
+
 REGISTER_DIALOG(lobby_sounds_options)
 
 tlobby_sounds_options::tlobby_sounds_options()
@@ -118,6 +134,10 @@ void tlobby_sounds_options::pre_show(CVideo& /*video*/, twindow& window)
 
 	in_lobby = &find_widget<ttoggle_button>(&window,"game_has_begun_in_lobby", false);
 	in_lobby->set_visible(twidget::tvisible::invisible);
+
+	tbutton * defaults;
+	defaults = &find_widget<tbutton>(&window,"revert_to_defaults", false);
+	connect_signal_mouse_left_click(*defaults, boost::bind(&revert_to_default_pref_values, boost::ref(window)));
 }
 
 void tlobby_sounds_options::post_show(twindow& /*window*/)
