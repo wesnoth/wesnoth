@@ -210,6 +210,7 @@ set(libwesnoth-core_STAT_SRC
 	color_range.cpp
 	config.cpp
 	filesystem.cpp
+	filesystem_common.cpp
 	game_config.cpp
 	gettext.cpp
 	hash.cpp
@@ -1214,6 +1215,7 @@ set(schema_generator_SRC
 	tools/schema/error_container.cpp
 	tools/schema/tag.cpp
 	filesystem.cpp
+	filesystem_common.cpp
 	loadscreen_empty.cpp
 )
 
@@ -1235,6 +1237,7 @@ set(schema_validator_SRC
 	tools/dummy_video.cpp
 	tools/schema/tag.cpp
 	filesystem.cpp
+	filesystem_common.cpp
 	config_cache.cpp
 	utils/sha1.cpp
 	loadscreen_empty.cpp
