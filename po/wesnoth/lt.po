@@ -790,7 +790,7 @@ msgstr ""
 #. [item]: id=buckler
 #: data/core/editor/items.cfg:159
 msgid "Buckler"
-msgstr ""
+msgstr "Skydas"
 
 #. [item]: id=burial
 #: data/core/editor/items.cfg:165
@@ -890,7 +890,7 @@ msgstr "Raktas"
 #. [item]: id=leather-pack
 #: data/core/editor/items.cfg:291
 msgid "Leather Pack"
-msgstr ""
+msgstr "Odinis krepšys"
 
 #. [item]: id=orcish-flag
 #: data/core/editor/items.cfg:297
@@ -962,7 +962,7 @@ msgstr "Baltas žiedas"
 #. [item]: id=scarecrow
 #: data/core/editor/items.cfg:381
 msgid "Scarecrow"
-msgstr ""
+msgstr "Kaliausė"
 
 #. [item]: id=sceptre-of-fire
 #: data/core/editor/items.cfg:387
@@ -987,7 +987,7 @@ msgstr "Lazda"
 #. [item]: id=stone-tablet
 #: data/core/editor/items.cfg:411
 msgid "Stone Tablet"
-msgstr ""
+msgstr "Akmeninė lentelė"
 
 #. [item]: id=storm-trident
 #. [object]
@@ -999,7 +999,7 @@ msgstr "Trišakis Audronaša"
 #. [item]: id=straw-bale2
 #: data/core/editor/items.cfg:423 data/core/editor/items.cfg:429
 msgid "Bale of Straw"
-msgstr ""
+msgstr "Šieno kupeta"
 
 #. [item]: id=sword
 #: data/core/editor/items.cfg:435
@@ -3390,8 +3390,10 @@ msgstr ""
 
 #. [theme]: id=UnitBox
 #: data/themes/unit_box.cfg:11
+#, fuzzy
+#| msgid "theme^Pandora"
 msgid "theme^UnitBox"
-msgstr ""
+msgstr "Pandora"
 
 #. [theme]: id=UnitBox
 #: data/themes/unit_box.cfg:12
@@ -3406,7 +3408,7 @@ msgstr ""
 #. [theme]: id=Widescreen
 #: data/themes/widescreen.cfg:11
 msgid "theme^Widescreen"
-msgstr "Plačiaekranė"
+msgstr ""
 
 #. [theme]: id=Widescreen
 #: data/themes/widescreen.cfg:12
@@ -3416,20 +3418,26 @@ msgstr ""
 #. [selected_unit_level]: id=selected-unit-level
 #. [unit_level]: id=unit-level
 #: data/themes/widescreen.cfg:493 data/themes/widescreen.cfg:619
+#, fuzzy
+#| msgid "statuspanel^lvl"
 msgid "statuspanel^level"
-msgstr "lygis"
+msgstr "lyg"
 
 #. [selected_unit_moves]: id=selected-unit-moves
 #. [unit_moves]: id=unit-moves
 #: data/themes/widescreen.cfg:523 data/themes/widescreen.cfg:649
+#, fuzzy
+#| msgid "statuspanel^lvl"
 msgid "statuspanel^moves"
-msgstr "žingsniai"
+msgstr "lyg"
 
 #. [selected_unit_defense]: id=selected-unit-defense
 #. [unit_defense]: id=unit-defense
 #: data/themes/widescreen.cfg:532 data/themes/widescreen.cfg:658
+#, fuzzy
+#| msgid "statuspanel^lvl"
 msgid "statuspanel^terrain def."
-msgstr "vietovės gyn."
+msgstr "lyg"
 
 #. [tip]
 #: data/tips.cfg:4
@@ -5052,9 +5060,8 @@ msgid "The game map could not be loaded: "
 msgstr "Žaidimo žemėlapis negali būti įkeltas: "
 
 #: src/game_display.cpp:949 src/game_display.cpp:975
-#, fuzzy
 msgid "Chat message"
-msgstr "Pokalbio žinučių senėjimas"
+msgstr "Pokalbio žinutė"
 
 #: src/game_display.cpp:949 src/game_display.cpp:971
 #: src/playmp_controller.cpp:101
@@ -7965,12 +7972,3 @@ msgstr "Slėpti žaidėjo $player planus"
 #: src/whiteboard/manager.cpp:1114
 msgid "Whiteboard Options"
 msgstr ""
-
-#~ msgid "' (The game will now exit)"
-#~ msgstr "“ (Žaidimas dabar išsijungs)"
-
-#~ msgid "ERROR DETAILS:"
-#~ msgstr "KLAIDOS DETALĖS:"
-
-#~ msgid "$error, value '$value' at $pos"
-#~ msgstr "$error, reikšmė '$value', esanti $pos"

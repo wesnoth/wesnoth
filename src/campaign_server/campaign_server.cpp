@@ -421,11 +421,12 @@ void server::handle_request_campaign_list(const server::request& req)
 		// Build a feedback_url string attribute from the
 		// internal [feedback] data.
 		const config& url_params = j.child_or_empty("feedback");
-		j.clear_children("feedback");
-
 		if(!url_params.empty() && !feedback_url_format_.empty()) {
 			j["feedback_url"] = format_addon_feedback_url(feedback_url_format_, url_params);
 		}
+
+		// Clients don't need to see the original data, so discard it.
+		j.clear_children("feedback");
 	}
 
 	config response;

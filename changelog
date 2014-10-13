@@ -5,6 +5,7 @@ Version 1.13.0-dev:
      least one add-on that may be upgraded.
  * Add-ons server:
    * Add-on metadata pattern blacklisting implemented.
+   * Major internal refactoring done.
  * AI:
    * New Micro AI: Fast AI
    * Messenger Escort Micro AI: new optional parameters [filter],
@@ -50,6 +51,8 @@ Version 1.13.0-dev:
    * Northern Rebirth:
      * Fixed Sister Thera and Father Morvin respawning into the recall list if
        the other is on the north or west map edges.
+   * Sceptre of Fire:
+     * Balancing changes for 'The Dragon'.
    * Son of the Black Eye:
      * S2: adjusted starting villages; scenario now ends if Kapou'e is already
        on the signpost when the messenger comes back
@@ -298,8 +301,6 @@ Version 1.13.0-dev:
    * Add [has_ally], [has_enemy] to work around issues reported here: http://forums.wesnoth.org/viewtopic.php?f=21&t=40702
      In a side_filter, [has_ally] and [has_enemy] are corrected / simplified versions of [allied_with] / [enemy_of], this
      is an extension of the bugfixes for [filter_vision].
-   * Mushroom Grove and Lit Mushroom Grove now favor the terrain with the worst
-     movement costs between the base and overlay (bug #21971).
    * Fix [side] share_view/maps always beeing false for non-first levels in mp campaigns
    * Fixes start-of-scenario multiplaer saves (#22068)
    * Fix bug wherein "lobby sounds" advanced preference didn't do anything for the normal (GUI 1) lobby.

@@ -142,7 +142,7 @@ connect_engine::connect_engine(saved_game& state,
 				team_name = "Team " +
 					lexical_cast<std::string>(original_team_names.size());
 			} else {
-				team_name = lexical_cast<std::string>(
+				team_name = "Team " + lexical_cast<std::string>(
 					name_itor - original_team_names.begin() + 1);
 			} // Note that the prefix "Team " is untranslatable, as team_name is not meant to be translated. This is needed so that the attribute
 			  // is not interpretted as an int when reading from config, which causes bugs later.
