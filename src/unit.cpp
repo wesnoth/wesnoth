@@ -1958,7 +1958,7 @@ void unit::redraw_unit()
 	// and halo_mod on secondary images and all haloes
 	params.image_mod = image_mods();
 	params.halo_mod = TC_image_mods();
-	params.image= absolute_image();
+	params.image = cfg_["image"].empty() ? cfg_["image_icon"].str() : cfg_["image"].str();
 
 
 	if(get_state(STATE_PETRIFIED)) params.image_mod +="~GS()";
@@ -2161,7 +2161,7 @@ bool unit::invalidate(const map_location &loc)
 		params.halo_y -= height_adjust;
 		params.image_mod = image_mods();
 		params.halo_mod = TC_image_mods();
-		params.image= absolute_image();
+		params.image = cfg_["image"].empty() ? cfg_["image_icon"].str() : cfg_["image"].str();
 
 		result |= get_animation()->invalidate(params);
 	}
