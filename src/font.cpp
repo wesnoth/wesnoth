@@ -347,6 +347,9 @@ void manager::update_font_path() const
 
 void manager::init() const
 {
+	LOG_FT << "Cairo version: " << cairo_version_string() << std::endl;
+	LOG_FT << "Pango version: " << pango_version_string() << std::endl;
+
 #ifdef CAIRO_HAS_FT_FONT
 	if (!FcConfigAppFontAddDir(FcConfigGetCurrent(),
 		reinterpret_cast<const FcChar8 *>((game_config::path + "/fonts").c_str())))
