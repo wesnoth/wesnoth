@@ -118,7 +118,7 @@ server::~server()
 
 int server::load_config()
 {
-	scoped_istream in = istream_file(cfg_file_);
+	filesystem::scoped_istream in = filesystem::istream_file(cfg_file_);
 	read(cfg_, *in);
 
 	read_only_ = cfg_["read_only"].to_bool(false);
@@ -171,7 +171,7 @@ void server::load_blacklist()
 	}
 
 	try {
-		scoped_istream in = istream_file(blacklist_file_);
+		filesystem::scoped_istream in = filesystem::istream_file(blacklist_file_);
 		config blcfg;
 
 		read(blcfg, *in);
@@ -185,7 +185,7 @@ void server::load_blacklist()
 
 void server::write_config()
 {
-	scoped_ostream out = ostream_file(cfg_file_);
+	filesystem::scoped_ostream out = filesystem::ostream_file(cfg_file_);
 	write(*out, cfg_);
 }
 
@@ -444,7 +444,7 @@ void server::handle_request_campaign(const server::request& req)
 	if(!campaign) {
 		send_error("Add-on '" + req.cfg["name"].str() + "' not found.", req.sock);
 	} else {
-		const int size = file_size(campaign["filename"]);
+		const int size = filesystem::file_size(campaign["filename"]);
 
 		if(size < 0) {
 			std::cerr << " size: <unknown> KiB\n";
@@ -613,12 +613,12 @@ void server::handle_upload(const server::request& req)
 		add_license(data);
 
 		{
-			scoped_ostream campaign_file = ostream_file(filename);
+			filesystem::scoped_ostream campaign_file = filesystem::ostream_file(filename);
 			config_writer writer(*campaign_file, true, compress_level_);
 			writer.write(data);
 		}
 
-		(*campaign)["size"] = file_size(filename);
+		(*campaign)["size"] = filesystem::file_size(filename);
 
 		write_config();
 
@@ -656,7 +656,7 @@ void server::handle_delete(const server::request& req)
 	}
 
 	// Erase the campaign.
-	write_file(campaign["filename"], std::string());
+	filesystem::write_file(campaign["filename"], std::string());
 	if(remove(campaign["filename"].str().c_str()) != 0) {
 		ERR_CS << "failed to delete archive for campaign '" << erase["name"]
 			   << "' (" << campaign["filename"] << "): " << strerror(errno)
@@ -711,7 +711,7 @@ void server::handle_change_passphrase(const server::request& req)
 
 int main(int argc, char**argv)
 {
-	game_config::path = get_cwd();
+	game_config::path = filesystem::get_cwd();
 
 	lg::set_log_domain_severity("campaignd", lg::info);
 	lg::timestamps(true);
@@ -719,7 +719,7 @@ int main(int argc, char**argv)
 	try {
 		printf("argc %d argv[0] %s 1 %s\n",argc,argv[0],argv[1]);
 
-		const std::string& cfg_path = normalize_path("server.cfg");
+		const std::string& cfg_path = filesystem::normalize_path("server.cfg");
 
 		if(argc >= 2 && atoi(argv[1])){
 			campaignd::server(cfg_path, atoi(argv[1])).run();
@@ -729,7 +729,7 @@ int main(int argc, char**argv)
 	} catch(config::error& /*e*/) {
 		std::cerr << "Could not parse config file\n";
 		return 1;
-	} catch(io_exception& /*e*/) {
+	} catch(filesystem::io_exception& /*e*/) {
 		std::cerr << "File I/O error\n";
 		return 2;
 	} catch(network::error& e) {

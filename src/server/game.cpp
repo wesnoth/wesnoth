@@ -1488,7 +1488,7 @@ void game::save_replay() {
 		std::replace(filename.begin(), filename.end(), ' ', '_');
 		filename.erase(std::remove_if(filename.begin(), filename.end(), is_invalid_filename_char), filename.end());
 		DBG_GAME << "saving replay: " << filename << std::endl;
-		scoped_ostream os(ostream_file(replay_save_path_ + filename));
+		filesystem::scoped_ostream os(filesystem::ostream_file(replay_save_path_ + filename));
 		(*os) << replay.output_compressed(true);
 
 		if (!os->good()) {

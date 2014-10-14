@@ -131,11 +131,11 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 #endif
 	)
 	{
-		game_config::path = get_cwd() + '/' + game_config::path;
+		game_config::path = filesystem::get_cwd() + '/' + game_config::path;
 		font_manager_.update_font_path();
 	}
 
-	const std::string app_basename = file_name(appname);
+	const std::string app_basename = filesystem::base_name(appname);
 	jump_to_editor_ = app_basename.find("editor") != std::string::npos;
 
 	if (cmdline_opts_.campaign)	{
@@ -285,9 +285,9 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 
 	std::cerr << '\n';
 	std::cerr << "Data directory: " << game_config::path
-		<< "\nUser configuration directory: " << get_user_config_dir()
-		<< "\nUser data directory: " << get_user_data_dir()
-		<< "\nCache directory: " << get_cache_dir()
+		<< "\nUser configuration directory: " << filesystem::get_user_config_dir()
+		<< "\nUser data directory: " << filesystem::get_user_data_dir()
+		<< "\nCache directory: " << filesystem::get_cache_dir()
 		<< '\n';
 
 	// disable sound in nosound mode, or when sound engine failed to initialize
@@ -607,7 +607,7 @@ bool game_launcher::load_game()
 	} catch(twml_exception& e) {
 		e.show(disp());
 		return false;
-	} catch(io_exception& e) {
+	} catch(filesystem::io_exception& e) {
 		if(e.message.empty()) {
 			gui2::show_error_message(disp().video(), _("File I/O Error while reading the game"));
 		} else {
@@ -745,7 +745,7 @@ bool game_launcher::goto_editor()
 {
 	if(jump_to_editor_){
 		jump_to_editor_ = false;
-		if (start_editor(normalize_path(game::load_game_exception::game)) ==
+		if (start_editor(filesystem::normalize_path(game::load_game_exception::game)) ==
 		    editor::EXIT_QUIT_TO_DESKTOP)
 		{
 			return false;
@@ -759,12 +759,12 @@ void game_launcher::start_wesnothd()
 {
 	const std::string wesnothd_program =
 		preferences::get_mp_server_program_name().empty() ?
-		get_program_invocation("wesnothd") : preferences::get_mp_server_program_name();
+		filesystem::get_program_invocation("wesnothd") : preferences::get_mp_server_program_name();
 
-	std::string config = get_user_config_dir() + "/lan_server.cfg";
-	if (!file_exists(config)) {
+	std::string config = filesystem::get_user_config_dir() + "/lan_server.cfg";
+	if (!filesystem::file_exists(config)) {
 		// copy file if it isn't created yet
-		write_file(config, read_file(get_wml_location("lan_server.cfg")));
+		filesystem::write_file(config, filesystem::read_file(filesystem::get_wml_location("lan_server.cfg")));
 	}
 
 #ifndef _WIN32

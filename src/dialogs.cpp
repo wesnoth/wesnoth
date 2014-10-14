@@ -740,8 +740,8 @@ void save_preview_pane::draw_contents()
 			map_data = scenario["map_data"].str();
 			if (map_data.empty() && scenario.has_attribute("map")) {
 				try {
-					map_data = read_map(scenario["map"]);
-				} catch(io_exception& e) {
+					map_data = filesystem::read_map(scenario["map"]);
+				} catch(filesystem::io_exception& e) {
 					ERR_G << "could not read map '" << scenario["map"] << "': " << e.what() << '\n';
 				}
 			}

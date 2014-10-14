@@ -718,7 +718,7 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 			throw chunk_load_exception();
 		}
 		temp_chunk.group = group;
-		std::string const &filename = get_binary_file_location("sounds", file);
+		std::string const &filename = filesystem::get_binary_file_location("sounds", file);
 
 		if (!filename.empty()) {
 			temp_chunk.set_data(Mix_LoadWAV(filename.c_str()));

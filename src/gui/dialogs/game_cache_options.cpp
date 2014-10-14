@@ -74,7 +74,7 @@ namespace gui2
 REGISTER_DIALOG(game_cache_options)
 
 tgame_cache_options::tgame_cache_options()
-	: cache_path_(get_cache_dir())
+	: cache_path_(filesystem::get_cache_dir())
 	, size_label_(NULL)
 {
 }
@@ -122,7 +122,7 @@ void tgame_cache_options::update_cache_size_display()
 		return;
 	}
 
-	size_label_->set_label(utils::si_string(dir_size(cache_path_),
+	size_label_->set_label(utils::si_string(filesystem::dir_size(cache_path_),
 											true,
 											_("unit_byte^B")));
 }

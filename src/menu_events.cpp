@@ -421,14 +421,14 @@ void menu_handler::scenario_settings_table(int selected)
 
 void menu_handler::save_map()
 {
-	std::string input_name = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps/");
+	std::string input_name = filesystem::get_dir(filesystem::get_dir(filesystem::get_user_data_dir() + "/editor") + "/maps/");
 	int res = 0;
 	int overwrite = 1;
 	do {
 		res = dialogs::show_file_chooser_dialog_save(*gui_, input_name, _("Save the Map As"), ".map");
 		if (res == 0) {
 
-			if (file_exists(input_name)) {
+			if (filesystem::file_exists(input_name)) {
 				const int res = gui2::show_message((*gui_).video(), "", _("The map already exists. Do you want to overwrite it?"), gui2::tmessage::yes_no_buttons);
 				overwrite = res == gui2::twindow::CANCEL ? 1 : 0;
 			}
@@ -440,9 +440,9 @@ void menu_handler::save_map()
 	// Try to save the map, if it fails we reset the filename.
 	if (res == 0) {
 		try {
-			write_file(input_name, map_.write());
+			filesystem::write_file(input_name, map_.write());
 			gui2::show_transient_message(gui_->video(), "", _("Map saved."));
-		} catch (io_exception& e) {
+		} catch (filesystem::io_exception& e) {
 			utils::string_map symbols;
 			symbols["msg"] = e.what();
 			const std::string msg = vgettext("Could not save the map: $msg",symbols);
@@ -451,14 +451,14 @@ void menu_handler::save_map()
 	}
 
 	/*
-	std::string input_name = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps/");
+	std::string input_name = filesystem::get_dir(filesystem::get_dir(filesystem::get_user_data_dir() + "/editor") + "/maps/");
 	int res = 0;
 	int overwrite = 1;
 	do {
 		res = dialogs::show_file_chooser_dialog_save(*gui_, input_name, _("Save the Map As"));
 		if (res == 0) {
 
-			if (file_exists(input_name)) {
+			if (filesystem::file_exists(input_name)) {
 				const int res = gui2::show_message((*gui_).video(), "", _("The map already exists. Do you want to overwrite it?"), gui2::tmessage::yes_no_buttons);
 				overwrite = res == gui2::twindow::CANCEL ? 1 : 0;
 			}
@@ -479,10 +479,10 @@ void menu_handler::save_map()
 				config_writer writer(str, false);
 				writer.write(file);
 			}
-			write_file(input_name, str.str());
+			filesystem::write_file(input_name, str.str());
 
 			gui2::show_transient_message(gui_->video(), "", _("Map saved."));
-		} catch (io_exception& e) {
+		} catch (filesystem::io_exception& e) {
 			utils::string_map symbols;
 			symbols["msg"] = e.what();
 			const std::string msg = vgettext("Could not save the map: $msg",symbols);

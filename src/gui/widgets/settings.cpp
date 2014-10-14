@@ -494,11 +494,11 @@ void load_settings()
 	try
 	{
 		schema_validation::schema_validator validator(
-				get_wml_location("gui/schema.cfg"));
+				filesystem::get_wml_location("gui/schema.cfg"));
 		preproc_map preproc(
 				game_config::config_cache::instance().get_preproc_map());
-		scoped_istream stream = preprocess_file(
-				get_wml_location("gui/default.cfg"), &preproc);
+		filesystem::scoped_istream stream = preprocess_file(
+				filesystem::get_wml_location("gui/default.cfg"), &preproc);
 
 		read(cfg, *stream, &validator);
 	}

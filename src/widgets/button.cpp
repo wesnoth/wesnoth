@@ -109,7 +109,7 @@ void button::load_images() {
 	sdl::timage pressed_image(image::get_texture(button_image_name_ + "-pressed.png"+ button_image_path_suffix_));
 	sdl::timage active_image(image::get_texture(button_image_name_ + "-active.png"+ button_image_path_suffix_));
 	sdl::timage disabled_image;
-	if (file_exists(game_config::path + "/images/" + button_image_name_ + "-disabled.png"+ button_image_path_suffix_))
+	if (filesystem::file_exists(game_config::path + "/images/" + button_image_name_ + "-disabled.png"+ button_image_path_suffix_))
 		disabled_image = image::get_texture(button_image_name_ + "-disabled.png"+ button_image_path_suffix_);
 	sdl::timage pressed_disabled_image, pressed_active_image, touched_image;
 
@@ -117,15 +117,15 @@ void button::load_images() {
 		overlayImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + ".png"+ button_image_path_suffix_);
 		overlayPressedImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + "-pressed.png"+ button_image_path_suffix_);
 
-		if (file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-active.png"+ button_image_path_suffix_))
+		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-active.png"+ button_image_path_suffix_))
 			overlayActiveImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + "-active.png"+ button_image_path_suffix_);
 
-		if (file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled.png"+ button_image_path_suffix_))
+		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled.png"+ button_image_path_suffix_))
 			overlayDisabledImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + "-disabled.png"+ button_image_path_suffix_);
 		if (overlayDisabledImage_.null())
 			overlayDisabledImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + ".png~GS()" + button_image_path_suffix_);
 
-		if (file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled-pressed.png"+ button_image_path_suffix_))
+		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled-pressed.png"+ button_image_path_suffix_))
 			overlayPressedDisabledImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + "-disabled-pressed.png"+ button_image_path_suffix_);
 		if (overlayPressedDisabledImage_.null())
 			overlayPressedDisabledImage_ = image::get_texture(button_overlay_image_name_ + size_postfix + "-pressed.png~GS()"+ button_image_path_suffix_);
@@ -152,7 +152,7 @@ void button::load_images() {
 		if (pressed_active_image.null())
 			pressed_active_image = pressed_image;
 
-		if (file_exists(game_config::path + "/images/" + button_image_name_ + size_postfix + "-disabled-pressed.png"+ button_image_path_suffix_))
+		if (filesystem::file_exists(game_config::path + "/images/" + button_image_name_ + size_postfix + "-disabled-pressed.png"+ button_image_path_suffix_))
 			pressed_disabled_image = image::get_texture(button_image_name_ + "-disabled-pressed.png"+ button_image_path_suffix_);
 		if (pressed_disabled_image.null())
 			pressed_disabled_image = image::get_texture(button_image_name_ + "-pressed.png~GS()"+ button_image_path_suffix_);
@@ -188,7 +188,7 @@ void button::load_images() {
 	surface pressed_image(image::get_image(button_image_name_ + "-pressed.png"+ button_image_path_suffix_));
 	surface active_image(image::get_image(button_image_name_ + "-active.png"+ button_image_path_suffix_));
 	surface disabled_image;
-	if (file_exists(game_config::path + "/images/" + button_image_name_ + "-disabled.png"+ button_image_path_suffix_))
+	if (filesystem::file_exists(game_config::path + "/images/" + button_image_name_ + "-disabled.png"+ button_image_path_suffix_))
 		disabled_image.assign((image::get_image(button_image_name_ + "-disabled.png"+ button_image_path_suffix_)));
 	surface pressed_disabled_image, pressed_active_image, touched_image;
 
@@ -196,15 +196,15 @@ void button::load_images() {
 		overlayImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + ".png"+ button_image_path_suffix_));
 		overlayPressedImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png"+ button_image_path_suffix_));
 
-		if (file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-active.png"+ button_image_path_suffix_))
+		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-active.png"+ button_image_path_suffix_))
 			overlayActiveImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-active.png"+ button_image_path_suffix_));
 
-		if (file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled.png"+ button_image_path_suffix_))
+		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled.png"+ button_image_path_suffix_))
 			overlayDisabledImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-disabled.png"+ button_image_path_suffix_));
 		if (overlayDisabledImage_.null())
 			overlayDisabledImage_ = image::get_image(button_overlay_image_name_ + size_postfix + ".png~GS()" + button_image_path_suffix_);
 
-		if (file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled-pressed.png"+ button_image_path_suffix_))
+		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled-pressed.png"+ button_image_path_suffix_))
 			overlayPressedDisabledImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-disabled-pressed.png"+ button_image_path_suffix_));
 		if (overlayPressedDisabledImage_.null())
 			overlayPressedDisabledImage_ = image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png~GS()"+ button_image_path_suffix_);
@@ -231,7 +231,7 @@ void button::load_images() {
 		if (pressed_active_image.null())
 			pressed_active_image.assign(pressed_image);
 
-		if (file_exists(game_config::path + "/images/" + button_image_name_ + size_postfix + "-disabled-pressed.png"+ button_image_path_suffix_))
+		if (filesystem::file_exists(game_config::path + "/images/" + button_image_name_ + size_postfix + "-disabled-pressed.png"+ button_image_path_suffix_))
 			pressed_disabled_image.assign(image::get_image(button_image_name_ + "-disabled-pressed.png"+ button_image_path_suffix_));
 		if (pressed_disabled_image.null())
 			pressed_disabled_image = image::get_image(button_image_name_ + "-pressed.png~GS()"+ button_image_path_suffix_);

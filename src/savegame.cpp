@@ -67,7 +67,7 @@ bool save_game_exists(const std::string& name, compression::format compressed)
 
 	fname += compression::format_extension(compressed);
 
-	return file_exists(get_saves_dir() + "/" + fname);
+	return filesystem::file_exists(filesystem::get_saves_dir() + "/" + fname);
 }
 
 void clean_saves(const std::string& label)
@@ -437,7 +437,7 @@ bool savegame::check_overwrite(CVideo& video)
 
 void savegame::check_filename(const std::string& filename, CVideo& video)
 {
-	if (is_compressed_file(filename)) {
+	if (filesystem::is_compressed_file(filename)) {
 		gui2::show_error_message(video, _("Save names should not end on '.gz' or '.bz2'. "
 			"Please remove the extension."));
 		throw illegal_filename_exception();
@@ -514,7 +514,7 @@ void savegame::write_game_to_disk(const std::string& filename)
 		write_game(out);
 		finish_save_game(out);
 	}
-	scoped_ostream os(open_save_game(filename_));
+	filesystem::scoped_ostream os(open_save_game(filename_));
 	(*os) << ss.str();
 
 	if (!os->good()) {
@@ -542,20 +542,20 @@ void savegame::finish_save_game(const config_writer &out)
 			throw game::save_game_failed(_("Could not write to file"));
 		}
 		save_index_manager.remove(gamestate_.classification().label);
-	} catch(io_exception& e) {
+	} catch(filesystem::io_exception& e) {
 		throw game::save_game_failed(e.what());
 	}
 }
 
 // Throws game::save_game_failed
-scoped_ostream savegame::open_save_game(const std::string &label)
+filesystem::scoped_ostream savegame::open_save_game(const std::string &label)
 {
 	std::string name = label;
 	replace_space2underbar(name);
 
 	try {
-		return scoped_ostream(ostream_file(get_saves_dir() + "/" + name));
-	} catch(io_exception& e) {
+		return filesystem::scoped_ostream(filesystem::ostream_file(filesystem::get_saves_dir() + "/" + name));
+	} catch(filesystem::io_exception& e) {
 		throw game::save_game_failed(e.what());
 	}
 }

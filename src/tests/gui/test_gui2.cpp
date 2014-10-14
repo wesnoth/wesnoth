@@ -362,7 +362,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	cache.add_define("MULTIPLAYER");
 	cache.get_config(game_config::path +"/data", main_config);
 
-	const binary_paths_manager bin_paths_manager(main_config);
+	const filesystem::binary_paths_manager bin_paths_manager(main_config);
 
 	load_language_list();
 	game_config::load_config(main_config.child("game_config"));
