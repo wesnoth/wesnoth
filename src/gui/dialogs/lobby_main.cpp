@@ -240,15 +240,15 @@ void tlobby_main::add_whisper_received(const std::string& sender,
 	if(whisper_window_open(sender, can_open_new)) {
 		if(whisper_window_active(sender)) {
 			add_active_window_message(sender, message);
-			do_notify(NOTIFY_WHISPER);
+			do_notify(NOTIFY_WHISPER, sender, message);
 		} else {
 			add_whisper_window_whisper(sender, message);
 			increment_waiting_whsipers(sender);
-			do_notify(NOTIFY_WHISPER_OTHER_WINDOW);
+			do_notify(NOTIFY_WHISPER_OTHER_WINDOW, sender, message);
 		}
 	} else if(can_go_to_active) {
 		add_active_window_whisper(sender, message);
-		do_notify(NOTIFY_WHISPER);
+		do_notify(NOTIFY_WHISPER, sender, message);
 	} else {
 		LOG_LB << "Ignoring whisper from " << sender << "\n";
 	}
@@ -295,7 +295,7 @@ void tlobby_main::add_chat_room_message_received(const std::string& room,
 		} else if(preferences::is_friend(speaker)) {
 			notify_mode = NOTIFY_FRIEND_MESSAGE;
 		}
-		do_notify(notify_mode);
+		do_notify(notify_mode, speaker, message);
 	} else {
 		LOG_LB << "Discarding message to room " << room << " from " << speaker
 			   << " (room not open)\n";
@@ -316,19 +316,19 @@ void tlobby_main::append_to_chatbox(const std::string& text, size_t id)
 	log.scroll_vertical_scrollbar(tscrollbar_::END);
 }
 
-void tlobby_main::do_notify(t_notify_mode mode)
+void tlobby_main::do_notify(t_notify_mode mode, const std::string & sender, const std::string & message)
 {
 		switch(mode) {
 			case NOTIFY_WHISPER:
 			case NOTIFY_WHISPER_OTHER_WINDOW:
 			case NOTIFY_OWN_NICK:
-				mp_ui_alerts::private_message(true);
+				mp_ui_alerts::private_message(true, sender, message);
 				break;
 			case NOTIFY_FRIEND_MESSAGE:
-				mp_ui_alerts::friend_message(true);
+				mp_ui_alerts::friend_message(true, sender, message);
 				break;
 			case NOTIFY_SERVER_MESSAGE:
-				mp_ui_alerts::server_message(true);
+				mp_ui_alerts::server_message(true, sender, message);
 				break;
 			case NOTIFY_LOBBY_QUIT:
 				mp_ui_alerts::player_leaves(true);
@@ -337,7 +337,7 @@ void tlobby_main::do_notify(t_notify_mode mode)
 				mp_ui_alerts::player_joins(true);
 				break;
 			case NOTIFY_MESSAGE:
-				mp_ui_alerts::public_message(true);
+				mp_ui_alerts::public_message(true, sender, message);
 				break;
 			default:
 				break;
@@ -1458,9 +1458,9 @@ void tlobby_main::process_gamelist_diff(const config& data)
 	int left = data.child_count("remove_child");
 	if(joined > 0 || left > 0) {
 		if(left > joined) {
-			do_notify(NOTIFY_LOBBY_QUIT);
+			do_notify(NOTIFY_LOBBY_QUIT, "", "");
 		} else {
-			do_notify(NOTIFY_LOBBY_JOIN);
+			do_notify(NOTIFY_LOBBY_JOIN, "", "");
 		}
 	}
 }

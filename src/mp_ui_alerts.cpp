@@ -83,7 +83,7 @@ void player_leaves(bool is_lobby)
 	}
 }
 
-void public_message(bool is_lobby)
+void public_message(bool is_lobby, const std::string & sender, const std::string & message)
 {
 	std::string id = "public_message";
 	if (is_lobby && !lobby_pref(id)) {
@@ -93,11 +93,11 @@ void public_message(bool is_lobby)
 		sound::play_UI_sound(game_config::sounds::public_message);
 	}
 	if (notif_pref(id)) {
-		desktop::notifications::send(_("Wesnoth"), _("Received a message"), desktop::notifications::OTHER);
+		desktop::notifications::send(sender, message, desktop::notifications::CHAT);
 	}
 }
 
-void friend_message(bool is_lobby)
+void friend_message(bool is_lobby, const std::string & sender, const std::string & message)
 {
 	std::string id = "friend_message";
 	if (is_lobby && !lobby_pref(id)) {
@@ -107,11 +107,11 @@ void friend_message(bool is_lobby)
 		sound::play_UI_sound(game_config::sounds::friend_message);
 	}
 	if (notif_pref(id)) {
-		desktop::notifications::send(_("Wesnoth"), _("Received a message from a friend"), desktop::notifications::OTHER);
+		desktop::notifications::send(sender, message, desktop::notifications::CHAT);
 	}
 }
 
-void private_message(bool is_lobby)
+void private_message(bool is_lobby, const std::string & sender, const std::string & message)
 {
 	std::string id = "private_message";
 	if (is_lobby && !lobby_pref(id)) {
@@ -121,11 +121,11 @@ void private_message(bool is_lobby)
 		sound::play_UI_sound(game_config::sounds::private_message);
 	}
 	if (notif_pref(id)) {
-		desktop::notifications::send(_("Wesnoth"), _("Someone is talking to you"), desktop::notifications::OTHER);
+		desktop::notifications::send(sender, message, desktop::notifications::CHAT);
 	}
 }
 
-void server_message(bool is_lobby)
+void server_message(bool is_lobby, const std::string & sender, const std::string & message)
 {
 	std::string id = "server_message";
 	if (is_lobby && !lobby_pref(id)) {
@@ -135,7 +135,7 @@ void server_message(bool is_lobby)
 		sound::play_UI_sound(game_config::sounds::server_message);
 	}
 	if (notif_pref(id)) {
-		desktop::notifications::send(_("Wesnoth"), _("The server has sent a message"), desktop::notifications::OTHER);
+		desktop::notifications::send(sender, message, desktop::notifications::CHAT);
 	}
 }
 

@@ -416,13 +416,13 @@ void ui::process_message(const config& msg, const bool whisper) {
 	bool is_lobby = dynamic_cast<mp::lobby*>(this) != NULL;
 
 	if (whisper || utils::word_match(message, preferences::login())) {
-		mp_ui_alerts::private_message(is_lobby);
+		mp_ui_alerts::private_message(is_lobby, sender, message);
 	} else if (preferences::is_friend(sender)) {
-		mp_ui_alerts::friend_message(is_lobby);
+		mp_ui_alerts::friend_message(is_lobby, sender, message);
 	} else if (sender == "server") {
-		mp_ui_alerts::server_message(is_lobby);
+		mp_ui_alerts::server_message(is_lobby, sender, message);
 	} else {
-		mp_ui_alerts::public_message(is_lobby);
+		mp_ui_alerts::public_message(is_lobby, sender, message);
 	}
 
 	std::string prefix;

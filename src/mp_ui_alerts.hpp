@@ -28,10 +28,10 @@ namespace mp_ui_alerts {
 	// Functions called when such an event occurs
 	void player_joins(bool is_lobby);
 	void player_leaves(bool is_lobby);
-	void public_message(bool is_lobby);
-	void friend_message(bool is_lobby);
-	void private_message(bool is_lobby);
-	void server_message(bool is_lobby);
+	void public_message(bool is_lobby, const std::string & sender, const std::string & message);
+	void friend_message(bool is_lobby, const std::string & sender, const std::string & message);
+	void private_message(bool is_lobby, const std::string & sender, const std::string & message);
+	void server_message(bool is_lobby, const std::string & sender, const std::string & message);
 	void ready_for_start();
 	void game_has_begun();
 

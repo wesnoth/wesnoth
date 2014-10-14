@@ -136,7 +136,7 @@ public:
 		NOTIFY_COUNT
 	};
 
-	void do_notify(t_notify_mode mode);
+	void do_notify(t_notify_mode mode, const std::string & sender, const std::string & message);
 
 protected:
 	/** inherited form chat_handler */
