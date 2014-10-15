@@ -60,16 +60,16 @@ base_manager::base_manager()
 {
 	try{
 #ifdef DEFAULT_PREFS_PATH
-		scoped_istream stream = istream_file(get_default_prefs_file(),false);
+		filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_default_prefs_file(),false);
 		read(prefs, *stream);
 
 		config user_prefs;
-		stream = istream_file(get_prefs_file());
+		stream = filesystem::istream_file(filesystem::get_prefs_file());
 		read(user_prefs, *stream);
 
 		prefs.merge_with(user_prefs);
 #else
-		scoped_istream stream = istream_file(get_prefs_file(),false);
+		filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_prefs_file(),false);
 		read(prefs, *stream);
 #endif
 	} catch(const config::error& e) {
@@ -95,15 +95,15 @@ void write_preferences()
 {
     #ifndef _WIN32
 
-    bool prefs_file_existed = access(get_prefs_file().c_str(), F_OK) == 0;
+    bool prefs_file_existed = access(filesystem::get_prefs_file().c_str(), F_OK) == 0;
 
     #endif
 
 	try {
-		scoped_ostream prefs_file = ostream_file(get_prefs_file());
+		filesystem::scoped_ostream prefs_file = filesystem::ostream_file(filesystem::get_prefs_file());
 		write(*prefs_file, prefs);
-	} catch(io_exception&) {
-		ERR_FS << "error writing to preferences file '" << get_prefs_file() << "'" << std::endl;
+	} catch(filesystem::io_exception&) {
+		ERR_FS << "error writing to preferences file '" << filesystem::get_prefs_file() << "'" << std::endl;
 	}
 
 
@@ -111,8 +111,8 @@ void write_preferences()
 
     if(!prefs_file_existed) {
 
-        if(chmod(get_prefs_file().c_str(), 0600) == -1) {
-			ERR_FS << "error setting permissions of preferences file '" << get_prefs_file() << "'" << std::endl;
+        if(chmod(filesystem::get_prefs_file().c_str(), 0600) == -1) {
+			ERR_FS << "error setting permissions of preferences file '" << filesystem::get_prefs_file() << "'" << std::endl;
         }
 
     }

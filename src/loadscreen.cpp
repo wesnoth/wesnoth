@@ -23,7 +23,6 @@
 #include "font.hpp"
 #include "marked-up_text.hpp"
 #include "gettext.hpp"
-#include "filesystem.hpp"
 #include "sdl/rect.hpp"
 #include "video.hpp"
 #include "image.hpp"

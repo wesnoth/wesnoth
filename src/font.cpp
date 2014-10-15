@@ -206,11 +206,11 @@ static TTF_Font* open_font(const std::string& fname, int size)
 	std::string name;
 	if(!game_config::path.empty()) {
 		name = game_config::path + "/fonts/" + fname;
-		if(!file_exists(name)) {
+		if(!filesystem::file_exists(name)) {
 			name = "fonts/" + fname;
-			if(!file_exists(name)) {
+			if(!filesystem::file_exists(name)) {
 				name = fname;
-				if(!file_exists(name)) {
+				if(!filesystem::file_exists(name)) {
 					ERR_FT << "Failed opening font: '" << name << "': No such file or directory" << std::endl;
 					return NULL;
 				}
@@ -219,8 +219,8 @@ static TTF_Font* open_font(const std::string& fname, int size)
 
 	} else {
 		name = "fonts/" + fname;
-		if(!file_exists(name)) {
-			if(!file_exists(fname)) {
+		if(!filesystem::file_exists(name)) {
+			if(!filesystem::file_exists(fname)) {
 				ERR_FT << "Failed opening font: '" << name << "': No such file or directory" << std::endl;
 				return NULL;
 			}
@@ -347,6 +347,9 @@ void manager::update_font_path() const
 
 void manager::init() const
 {
+	LOG_FT << "Cairo version: " << cairo_version_string() << std::endl;
+	LOG_FT << "Pango version: " << pango_version_string() << std::endl;
+
 #ifdef CAIRO_HAS_FT_FONT
 	if (!FcConfigAppFontAddDir(FcConfigGetCurrent(),
 		reinterpret_cast<const FcChar8 *>((game_config::path + "/fonts").c_str())))
@@ -357,9 +360,9 @@ void manager::init() const
 #endif
 
 #if CAIRO_HAS_WIN32_FONT
-	BOOST_FOREACH(const std::string& path, get_binary_paths("fonts")) {
+	BOOST_FOREACH(const std::string& path, filesystem::get_binary_paths("fonts")) {
 		std::vector<std::string> files;
-		get_files_in_dir(path, &files, NULL, ENTIRE_FILE_PATH);
+		filesystem::get_files_in_dir(path, &files, NULL, filesystem::ENTIRE_FILE_PATH);
 		BOOST_FOREACH(const std::string& file, files)
 			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
 				AddFontResourceA(file.c_str());
@@ -374,9 +377,9 @@ void manager::deinit() const
 #endif
 
 #if CAIRO_HAS_WIN32_FONT
-	BOOST_FOREACH(const std::string& path, get_binary_paths("fonts")) {
+	BOOST_FOREACH(const std::string& path, filesystem::get_binary_paths("fonts")) {
 		std::vector<std::string> files;
-		get_files_in_dir(path, &files, NULL, ENTIRE_FILE_PATH);
+		filesystem::get_files_in_dir(path, &files, NULL, filesystem::ENTIRE_FILE_PATH);
 		BOOST_FOREACH(const std::string& file, files)
 			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
 				RemoveFontResourceA(file.c_str());
@@ -408,17 +411,17 @@ static void set_font_list(const std::vector<subset_descriptor>& fontlist)
 	for(itor = fontlist.begin(); itor != fontlist.end(); ++itor) {
 		// Insert fonts only if the font file exists
 		if(game_config::path.empty() == false) {
-			if(!file_exists(game_config::path + "/fonts/" + itor->name)) {
-				if(!file_exists("fonts/" + itor->name)) {
-					if(!file_exists(itor->name)) {
+			if(!filesystem::file_exists(game_config::path + "/fonts/" + itor->name)) {
+				if(!filesystem::file_exists("fonts/" + itor->name)) {
+					if(!filesystem::file_exists(itor->name)) {
 					WRN_FT << "Failed opening font file '" << itor->name << "': No such file or directory" << std::endl;
 					continue;
 					}
 				}
 			}
 		} else {
-			if(!file_exists("fonts/" + itor->name)) {
-				if(!file_exists(itor->name)) {
+			if(!filesystem::file_exists("fonts/" + itor->name)) {
+				if(!filesystem::file_exists(itor->name)) {
 					WRN_FT << "Failed opening font file '" << itor->name << "': No such file or directory" << std::endl;
 					continue;
 				}
@@ -1425,13 +1428,13 @@ bool load_font_config()
 	//config when changing languages
 	config cfg;
 	try {
-		const std::string& cfg_path = get_wml_location("hardwired/fonts.cfg");
+		const std::string& cfg_path = filesystem::get_wml_location("hardwired/fonts.cfg");
 		if(cfg_path.empty()) {
 			ERR_FT << "could not resolve path to fonts.cfg, file not found\n";
 			return false;
 		}
 
-		scoped_istream stream = preprocess_file(cfg_path);
+		filesystem::scoped_istream stream = preprocess_file(cfg_path);
 		read(cfg, *stream);
 	} catch(config::error &e) {
 		ERR_FT << "could not read fonts.cfg:\n"

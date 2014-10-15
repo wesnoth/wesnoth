@@ -210,6 +210,7 @@ set(libwesnoth-core_STAT_SRC
 	color_range.cpp
 	config.cpp
 	filesystem.cpp
+	filesystem_common.cpp
 	game_config.cpp
 	gettext.cpp
 	hash.cpp
@@ -818,6 +819,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/lobby_main.cpp
 	gui/dialogs/lobby_player_info.cpp
 	gui/dialogs/message.cpp
+	gui/dialogs/mp_alerts_options.cpp
 	gui/dialogs/mp_change_control.cpp
 	gui/dialogs/mp_cmd_wrapper.cpp
 	gui/dialogs/mp_connect.cpp
@@ -852,6 +854,7 @@ set(wesnoth-main_SRC
 	mp_game_settings.cpp
 	mp_game_utils.cpp
 	mp_options.cpp
+	mp_ui_alerts.cpp
 	multiplayer.cpp
 	multiplayer_configure.cpp
 	multiplayer_connect.cpp
@@ -1214,6 +1217,7 @@ set(schema_generator_SRC
 	tools/schema/error_container.cpp
 	tools/schema/tag.cpp
 	filesystem.cpp
+	filesystem_common.cpp
 	loadscreen_empty.cpp
 )
 
@@ -1235,6 +1239,7 @@ set(schema_validator_SRC
 	tools/dummy_video.cpp
 	tools/schema/tag.cpp
 	filesystem.cpp
+	filesystem_common.cpp
 	config_cache.cpp
 	utils/sha1.cpp
 	loadscreen_empty.cpp

@@ -386,11 +386,11 @@ create_engine::create_engine(game_display& disp, saved_game& state) :
 	}
 
 	//TODO the editor dir is already configurable, is the preferences value
-	get_files_in_dir(get_user_data_dir() + "/editor/maps", &user_map_names_,
-		NULL, FILE_NAME_ONLY);
+	filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/maps", &user_map_names_,
+		NULL, filesystem::FILE_NAME_ONLY);
 
-	get_files_in_dir(get_user_data_dir() + "/editor/scenarios", &user_scenario_names_,
-		NULL, FILE_NAME_ONLY);
+	filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/scenarios", &user_scenario_names_,
+		NULL, filesystem::FILE_NAME_ONLY);
 
 	DBG_MP << "initializing all levels, eras and mods\n";
 
@@ -921,7 +921,7 @@ void create_engine::init_all_levels()
 		for(size_t i = 0; i < user_map_names_.size(); i++)
 		{
 			config user_map_data = gen_mp_data;
-			user_map_data["map_data"] = read_map(user_map_names_[i]);
+			user_map_data["map_data"] = filesystem::read_map(user_map_names_[i]);
 
 			// Check if a file is actually a map.
 			// Note that invalid maps should be displayed in order to
@@ -963,10 +963,10 @@ void create_engine::init_all_levels()
 		{
 			config data;
 			try {
-				read(data, *(preprocess_file(get_user_data_dir() + "/editor/scenarios/" + user_scenario_names_[i])));
+				read(data, *(preprocess_file(filesystem::get_user_data_dir() + "/editor/scenarios/" + user_scenario_names_[i])));
 			} catch (config::error & e) {
 				ERR_CF << "Caught a config error while parsing user made (editor) scenarios:\n" << e.message << std::endl;
-				ERR_CF << "Skipping file: " << (get_user_data_dir() + "/editor/scenarios/" + user_scenario_names_[i]) << std::endl;
+				ERR_CF << "Skipping file: " << (filesystem::get_user_data_dir() + "/editor/scenarios/" + user_scenario_names_[i]) << std::endl;
 				continue;
 			}
 

@@ -21,7 +21,7 @@
 #include "config.hpp"                   // for config, config::error, etc
 #include "cursor.hpp"                   // for set, CURSOR_TYPE::NORMAL, etc
 #include "editor/editor_main.hpp"
-#include "filesystem.hpp"               // for file_exists, io_exception, etc
+#include "filesystem.hpp"               // for filesystem::file_exists, filesystem::io_exception, etc
 #include "font.hpp"                     // for load_font_config, etc
 #include "formula.hpp"                  // for formula_error
 #include "game_config.hpp"              // for path, debug, debug_lua, etc
@@ -133,7 +133,7 @@ static void encode(const std::string & input_file, const std::string & output_fi
 		boost::iostreams::copy(ifile, stream);
 		ifile.close();
 		safe_exit(remove(input_file.c_str()));
-	}  catch(io_exception& e) {
+	}  catch(filesystem::io_exception& e) {
 		std::cerr << "IO error: " << e.what() << "\n";
 	}
 }
@@ -152,7 +152,7 @@ static void decode(const std::string & input_file, const std::string & output_fi
 		boost::iostreams::copy(stream, ofile);
 		ifile.close();
 		safe_exit(remove(input_file.c_str()));
-	}  catch(io_exception& e) {
+	}  catch(filesystem::io_exception& e) {
 		std::cerr << "IO error: " << e.what() << "\n";
 	}
 }
@@ -183,7 +183,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 
 	if( cmdline_opts.preprocess_input_macros ) {
 		std::string file = *cmdline_opts.preprocess_input_macros;
-		if ( file_exists( file ) == false )
+		if ( filesystem::file_exists( file ) == false )
 		{
 			std::cerr << "please specify an existing file. File "<< file <<" doesn't exist.\n";
 			return;
@@ -194,7 +194,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 		config cfg;
 
 		try {
-			scoped_istream stream = istream_file( file );
+			filesystem::scoped_istream stream = filesystem::istream_file( file );
 			read( cfg, *stream );
 		} catch (config::error & e) {
 			std::cerr << "Caught a config error while parsing file '" << file << "':\n" << e.message << std::endl;
@@ -285,7 +285,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 		std::cerr << "writing '" << outputPath << "' with "
 			<< defines_map.size() << " defines.\n";
 
-		scoped_ostream out = ostream_file(outputPath);
+		filesystem::scoped_ostream out = filesystem::ostream_file(outputPath);
 		if (!out->fail())
 		{
 			config_writer writer(*out,false);
@@ -309,17 +309,17 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 	// Options that don't change behavior based on any others should be checked alphabetically below.
 
 	if(cmdline_opts.userconfig_dir) {
-		set_user_config_dir(*cmdline_opts.userconfig_dir);
+		filesystem::set_user_config_dir(*cmdline_opts.userconfig_dir);
 	}
 	if(cmdline_opts.userconfig_path) {
-		std::cout << get_user_config_dir() << '\n';
+		std::cout << filesystem::get_user_config_dir() << '\n';
 		return 0;
 	}
 	if(cmdline_opts.userdata_dir) {
-		set_user_data_dir(*cmdline_opts.userdata_dir);
+		filesystem::set_user_data_dir(*cmdline_opts.userdata_dir);
 	}
 	if(cmdline_opts.userdata_path) {
-		std::cout << get_user_data_dir() << '\n';
+		std::cout << filesystem::get_user_data_dir() << '\n';
 		return 0;
 	}
 	if(cmdline_opts.data_dir) {
@@ -333,10 +333,10 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 #endif
 			game_config::path = datadir;
 		} else {
-			game_config::path = get_cwd() + '/' + datadir;
+			game_config::path = filesystem::get_cwd() + '/' + datadir;
 		}
 
-		if(!is_directory(game_config::path)) {
+		if(!filesystem::is_directory(game_config::path)) {
 			std::cerr << "Could not find directory '" << game_config::path << "'\n";
 			throw config::error("directory not found");
 		}
@@ -352,7 +352,7 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 	}
 	if(cmdline_opts.gunzip) {
 		const std::string input_file(*cmdline_opts.gunzip);
-		if(!is_gzip_file(input_file)) {
+		if(!filesystem::is_gzip_file(input_file)) {
 			std::cerr << "file '" << input_file << "'isn't a .gz file\n";
 			return 2;
 		}
@@ -362,7 +362,7 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 	}
 	if(cmdline_opts.bunzip2) {
 		const std::string input_file(*cmdline_opts.bunzip2);
-		if(!is_bzip2_file(input_file)) {
+		if(!filesystem::is_bzip2_file(input_file)) {
 			std::cerr << "file '" << input_file << "'isn't a .bz2 file\n";
 			return 2;
 		}
@@ -440,7 +440,7 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 /**
  * I would prefer to setup locale first so that early error
  * messages can get localized, but we need the game_launcher
- * initialized to have get_intl_dir() to work.  Note: setlocale()
+ * initialized to have filesystem::get_intl_dir() to work.  Note: setlocale()
  * does not take GUI language setting into account.
  */
 static void init_locale() {
@@ -450,7 +450,7 @@ static void init_locale() {
 		std::setlocale(LC_ALL, "C");
 		std::setlocale(LC_MESSAGES, "");
 	#endif
-	const std::string& intl_dir = get_intl_dir();
+	const std::string& intl_dir = filesystem::get_intl_dir();
 	bindtextdomain (PACKAGE, intl_dir.c_str());
 	bind_textdomain_codeset (PACKAGE, "UTF-8");
 	bindtextdomain (PACKAGE "-lib", intl_dir.c_str());
@@ -485,7 +485,7 @@ static int do_gameloop(int argc, char** argv)
 	srand(time(NULL));
 
 	commandline_options cmdline_opts = commandline_options(argc,argv);
-	game_config::wesnoth_program_dir = directory_name(argv[0]);
+	game_config::wesnoth_program_dir = filesystem::directory_name(argv[0]);
 	int finished = process_command_args(cmdline_opts);
 	if(finished != -1) {
 		return finished;
@@ -792,7 +792,7 @@ int main(int argc, char** argv)
 		const time_t t = time(NULL);
 		std::cerr << "Started on " << ctime(&t) << "\n";
 
-		const std::string& exe_dir = get_exe_dir();
+		const std::string& exe_dir = filesystem::get_exe_dir();
 		if(!exe_dir.empty()) {
 			// Try to autodetect the location of the game data dir. Note that
 			// the root of the source tree currently doubles as the data dir.
@@ -800,13 +800,13 @@ int main(int argc, char** argv)
 
 			// scons leaves the resulting binaries at the root of the source
 			// tree by default.
-			if(file_exists(exe_dir + "/data/_main.cfg")) {
+			if(filesystem::file_exists(exe_dir + "/data/_main.cfg")) {
 				auto_dir = exe_dir;
 			}
 			// cmake encourages creating a subdir at the root of the source
 			// tree for the build, and the resulting binaries are found in it.
-			else if(file_exists(exe_dir + "/../data/_main.cfg")) {
-				auto_dir = normalize_path(exe_dir + "/..");
+			else if(filesystem::file_exists(exe_dir + "/../data/_main.cfg")) {
+				auto_dir = filesystem::normalize_path(exe_dir + "/..");
 			}
 
 			if(!auto_dir.empty()) {

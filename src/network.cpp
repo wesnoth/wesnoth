@@ -1079,7 +1079,7 @@ void send_file(const std::string& filename, connection connection_num, const std
 		return;
 	}
 
-	const int size = file_size(filename);
+	const int size = filesystem::file_size(filename);
 
 	if(size < 0) {
 		ERR_NW << "Could not determine size of file " << filename << ", not sending." << std::endl;

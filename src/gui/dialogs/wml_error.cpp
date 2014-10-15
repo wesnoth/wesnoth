@@ -35,7 +35,7 @@ namespace
 
 void strip_trailing_dir_separators(std::string& str)
 {
-	while(is_path_sep(str[str.size() - 1])) {
+	while(filesystem::is_path_sep(str[str.size() - 1])) {
 		str.erase(str.size() - 1);
 	}
 }
@@ -46,36 +46,36 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 		return "";
 	}
 
-	const std::string& addons_path = get_addon_campaigns_dir();
+	const std::string& addons_path = filesystem::get_addons_dir();
 	std::vector<std::string> files(files_original);
 
 	BOOST_FOREACH(std::string & file, files)
 	{
 		std::string base;
-		std::string filename = file_name(file);
+		std::string filename = filesystem::base_name(file);
 		std::string parent_path;
 
 		const bool is_main_cfg = filename == "_main.cfg";
 
 		if(is_main_cfg) {
-			parent_path = directory_name(file) + "/..";
+			parent_path = filesystem::directory_name(file) + "/..";
 		} else {
-			parent_path = directory_name(file);
+			parent_path = filesystem::directory_name(file);
 		}
 
 		// Only proceed to pretty-format the filename if it's from the add-ons
 		// directory.
-		if(normalize_path(parent_path) != normalize_path(addons_path)) {
+		if(filesystem::normalize_path(parent_path) != filesystem::normalize_path(addons_path)) {
 			continue;
 		}
 
 		if(is_main_cfg) {
-			base = directory_name(file);
-			// HACK: fool file_name() into giving us the parent directory name
+			base = filesystem::directory_name(file);
+			// HACK: fool filesystem::base_name() into giving us the parent directory name
 			//       alone by making base seem not like a directory path,
 			//       otherwise it returns an empty string.
 			strip_trailing_dir_separators(base);
-			base = file_name(base);
+			base = filesystem::base_name(base);
 		} else {
 			base = filename;
 		}

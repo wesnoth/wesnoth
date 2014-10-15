@@ -18,7 +18,6 @@
 #include "formula_string_utils.hpp"
 
 #include "../../display.hpp"
-#include "../../filesystem.hpp"
 #include "../../gettext.hpp"
 #include "../../map_exception.hpp"
 #include "../../map_label.hpp"

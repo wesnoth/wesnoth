@@ -97,7 +97,7 @@ namespace game_config {
 
 	void config_cache::write_file(std::string path, const config& cfg)
 	{
-		scoped_ostream stream = ostream_file(path);
+		filesystem::scoped_ostream stream = filesystem::ostream_file(path);
 		const bool gzip = true;
 		config_writer writer(*stream, gzip, game_config::cache_compression_level);
 		writer.write(cfg);
@@ -106,13 +106,13 @@ namespace game_config {
 	{
 		if (defines_map.empty())
 		{
-			if (file_exists(path))
+			if (filesystem::file_exists(path))
 			{
-				delete_directory(path);
+				filesystem::delete_directory(path);
 			}
 			return;
 		}
-		scoped_ostream stream = ostream_file(path);
+		filesystem::scoped_ostream stream = filesystem::ostream_file(path);
 		const bool gzip = true;
 		config_writer writer(*stream, gzip, game_config::cache_compression_level);
 
@@ -124,7 +124,7 @@ namespace game_config {
 
 	void config_cache::read_file(const std::string& path, config& cfg)
 	{
-		scoped_istream stream = istream_file(path);
+		filesystem::scoped_istream stream = filesystem::istream_file(path);
 		read_gz(cfg, *stream);
 	}
 
@@ -154,7 +154,7 @@ namespace game_config {
 	void config_cache::read_configs(const std::string& path, config& cfg, preproc_map& defines_map)
 	{
 		//read the file and then write to the cache
-		scoped_istream stream = preprocess_file(path, &defines_map);
+		filesystem::scoped_istream stream = preprocess_file(path, &defines_map);
 		read(cfg, *stream);
 	}
 
@@ -181,26 +181,26 @@ namespace game_config {
 		// Do cache check only if  define map is valid and
 		// caching is allowed
 		if(is_valid) {
-			const std::string& cache = get_cache_dir();
+			const std::string& cache = filesystem::get_cache_dir();
 			if(cache != "") {
 				sha1_hash sha(defines_string.str()); // use a hash for a shorter display of the defines
 				const std::string fname = cache + "/" +
 										  cache_file_prefix_ + sha.display();
 				const std::string fname_checksum = fname + ".checksum" + extension;
 
-				file_tree_checksum dir_checksum;
+				filesystem::file_tree_checksum dir_checksum;
 
 				if(!force_valid_cache_ && !fake_invalid_cache_) {
 					try {
-						if(file_exists(fname_checksum)) {
+						if(filesystem::file_exists(fname_checksum)) {
 							DBG_CACHE << "Reading checksum: " << fname_checksum << "\n";
 							config checksum_cfg;
 							read_file(fname_checksum, checksum_cfg);
-							dir_checksum = file_tree_checksum(checksum_cfg);
+							dir_checksum = filesystem::file_tree_checksum(checksum_cfg);
 						}
 					} catch(config::error&) {
 						ERR_CACHE << "cache checksum is corrupt" << std::endl;
-					} catch(io_exception&) {
+					} catch(filesystem::io_exception&) {
 						ERR_CACHE << "error reading cache checksum" << std::endl;
 					}
 				}
@@ -209,20 +209,20 @@ namespace game_config {
 					LOG_CACHE << "skipping cache validation (forced)\n";
 				}
 
-				if(file_exists(fname + extension) && (force_valid_cache_ || (dir_checksum == data_tree_checksum()))) {
+				if(filesystem::file_exists(fname + extension) && (force_valid_cache_ || (dir_checksum == filesystem::data_tree_checksum()))) {
 					LOG_CACHE << "found valid cache at '" << fname << extension << "' with defines_map " << defines_string.str() << "\n";
 					log_scope("read cache");
 					try {
 						read_file(fname + extension,cfg);
 						const std::string define_file = fname + ".define" + extension;
-						if (file_exists(define_file))
+						if (filesystem::file_exists(define_file))
 						{
 							config_cache_transaction::instance().add_define_file(define_file);
 						}
 						return;
 					} catch(config::error& e) {
 						ERR_CACHE << "cache " << fname << extension << " is corrupt. Loading from files: "<< e.message<< std::endl;
-					} catch(io_exception&) {
+					} catch(filesystem::io_exception&) {
 						ERR_CACHE << "error reading cache " << fname << extension << ". Loading from files" << std::endl;
 					} catch (boost::iostreams::gzip_error& e) {
 						//read_file -> ... -> read_gz can throw this exception.
@@ -244,9 +244,9 @@ namespace game_config {
 					write_file(fname + extension, cfg);
 					write_file(fname + ".define" + extension, copy_map);
 					config checksum_cfg;
-					data_tree_checksum().write(checksum_cfg);
+					filesystem::data_tree_checksum().write(checksum_cfg);
 					write_file(fname_checksum, checksum_cfg);
-				} catch(io_exception&) {
+				} catch(filesystem::io_exception&) {
 					ERR_CACHE << "could not write to cache '" << fname << "'" << std::endl;
 				}
 				return;
@@ -313,7 +313,7 @@ namespace game_config {
 
 	void config_cache::recheck_filetree_checksum()
 	{
-		data_tree_checksum(true);
+		filesystem::data_tree_checksum(true);
 	}
 
 	void config_cache::add_define(const std::string& define)
@@ -343,7 +343,7 @@ namespace game_config {
 	bool config_cache::clean_cache()
 	{
 		std::vector<std::string> files, dirs;
-		get_files_in_dir(get_cache_dir(), &files, &dirs, ENTIRE_FILE_PATH);
+		filesystem::get_files_in_dir(filesystem::get_cache_dir(), &files, &dirs, filesystem::ENTIRE_FILE_PATH);
 
 		LOG_CACHE << "clean_cache(): " << files.size() << " files, "
 				  << dirs.size() << " dirs to check\n";
@@ -363,7 +363,7 @@ namespace game_config {
 	bool config_cache::purge_cache()
 	{
 		std::vector<std::string> files, dirs;
-		get_files_in_dir(get_cache_dir(), &files, &dirs, ENTIRE_FILE_PATH);
+		filesystem::get_files_in_dir(filesystem::get_cache_dir(), &files, &dirs, filesystem::ENTIRE_FILE_PATH);
 
 		LOG_CACHE << "purge_cache(): deleting " << files.size() << " files, "
 				  << dirs.size() << " dirs\n";
@@ -386,7 +386,7 @@ namespace game_config {
 		BOOST_FOREACH(const std::string& path, paths)
 		{
 			if(!delete_everything) {
-				const std::string& fn = file_name(path);
+				const std::string& fn = filesystem::base_name(path);
 
 				if(utils::wildcard_string_match(fn, exclude_pattern)) {
 					LOG_CACHE << "delete_cache_files(): skipping " << path
@@ -396,7 +396,7 @@ namespace game_config {
 			}
 
 			LOG_CACHE << "delete_cache_files(): deleting " << path << '\n';
-			if(!delete_directory(path)) {
+			if(!filesystem::delete_directory(path)) {
 				ERR_CACHE << "delete_cache_files(): could not delete "
 						  << path << '\n';
 				status = false;

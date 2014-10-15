@@ -145,11 +145,11 @@ namespace game_config
 	extern const size_t max_loop;
 
 	namespace sounds {
-		extern const std::string turn_bell, timer_bell, receive_message,
-				receive_message_highlight, receive_message_friend,
-				receive_message_server, user_arrive, user_leave,
-				game_user_arrive, game_user_leave, party_full_bell,
-				mp_game_begins;
+		extern std::string turn_bell, timer_bell, public_message,
+				private_message, friend_message,
+				server_message, player_joins, player_leaves,
+				game_user_arrive, game_user_leave, ready_for_start,
+				game_has_begun;
 		extern const std::string button_press, checkbox_release, slider_adjust,
 				menu_expand, menu_contract, menu_select;
 	}

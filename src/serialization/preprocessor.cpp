@@ -448,7 +448,7 @@ class preprocessor_data: preprocessor
 	 * Since @ref in_ uses the stream as well this object must be created
 	 * before @ref in_ and destroyed after @ref in_ is destroyed.
 	 */
-	scoped_istream in_scope_;
+	filesystem::scoped_istream in_scope_;
 
 	/** Input stream. */
 	buffered_istream in_;
@@ -515,30 +515,30 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::string cons
 	pos_(),
 	end_()
 {
-	if (is_directory(name)) {
+	if (filesystem::is_directory(name)) {
 
-		get_files_in_dir(name, &files_, NULL, ENTIRE_FILE_PATH, SKIP_MEDIA_DIR, DO_REORDER);
+		filesystem::get_files_in_dir(name, &files_, NULL, filesystem::ENTIRE_FILE_PATH, filesystem::SKIP_MEDIA_DIR, filesystem::DO_REORDER);
 
 		BOOST_FOREACH(std::string fname, files_) {
 			size_t cpos = fname.rfind(" ");
 			if (cpos != std::string::npos && cpos >= symbol_index) {
 				std::stringstream ss;
-				ss << "Found filename containing whitespace: '" << file_name(fname) << "' in included directory '" << name << "'.\nThe included symbol probably looks similar to '"
-				 << directory_name(fname.substr(symbol_index)) << "'";
+				ss << "Found filename containing whitespace: '" << filesystem::base_name(fname) << "' in included directory '" << name << "'.\nThe included symbol probably looks similar to '"
+				 << filesystem::directory_name(fname.substr(symbol_index)) << "'";
 				// TODO: find a real linenumber
 				target_.error(ss.str(), -1);
 			}
 		}
 	}
 	else {
-		std::istream * file_stream = istream_file(name);
+		std::istream * file_stream = filesystem::istream_file(name);
 		if (!file_stream->good()) {
 			ERR_CF << "Could not open file " << name << std::endl;
 			delete file_stream;
 		}
 		else
-			new preprocessor_data(t, file_stream, "", get_short_wml_path(name),
-				1, directory_name(name), t.textdomain_, NULL);
+			new preprocessor_data(t, file_stream, "", filesystem::get_short_wml_path(name),
+				1, filesystem::directory_name(name), t.textdomain_, NULL);
 	}
 	pos_ = files_.begin();
 	end_ = files_.end();
@@ -899,14 +899,14 @@ bool preprocessor_data::get_chunk()
 		} else if (command == "ifhave") {
 			skip_spaces();
 			std::string const &symbol = read_word();
-			bool found = !get_wml_location(symbol, directory_).empty();
+			bool found = !filesystem::get_wml_location(symbol, directory_).empty();
 			DBG_CF << "testing for file or directory " << symbol << ": "
 				<< (found ? "found" : "not found") << '\n';
 			conditional_skip(!found);
 		} else if (command == "ifnhave") {
 			skip_spaces();
 			std::string const &symbol = read_word();
-			bool found = !get_wml_location(symbol, directory_).empty();
+			bool found = !filesystem::get_wml_location(symbol, directory_).empty();
 			DBG_CF << "testing for file or directory " << symbol << ": "
 				<< (found ? "found" : "not found") << '\n';
 			conditional_skip(found);
@@ -1076,7 +1076,7 @@ bool preprocessor_data::get_chunk()
 					(*defines)[val.arguments[i]] = strings_[token.stack_pos + i + 1];
 				}
 				pop_token();
-				std::string const &dir = directory_name(val.location.substr(0, val.location.find(' ')));
+				std::string const &dir = filesystem::directory_name(val.location.substr(0, val.location.find(' ')));
 				if (!slowpath_) {
 					DBG_CF << "substituting macro " << symbol << '\n';
 					new preprocessor_data(target_, buffer, val.location, "",
@@ -1096,7 +1096,7 @@ bool preprocessor_data::get_chunk()
 			} else if (target_.depth_ < 40) {
 				LOG_CF << "Macro definition not found for " << symbol << " , attempting to open as file.\n";
 				pop_token();
-				std::string nfname = get_wml_location(symbol, directory_);
+				std::string nfname = filesystem::get_wml_location(symbol, directory_);
 				if (!nfname.empty())
 				{
 					if (!slowpath_)
@@ -1185,11 +1185,11 @@ std::istream *preprocess_file(std::string const &fname, preproc_map *defines)
 void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
 			 bool write_cfg, bool write_plain_cfg,std::string target_directory)
 {
-	if (is_directory(res_name))
+	if (filesystem::is_directory(res_name))
 	{
 		std::vector<std::string> dirs,files;
 
-		get_files_in_dir(res_name, &files, &dirs, ENTIRE_FILE_PATH, SKIP_MEDIA_DIR, DO_REORDER);
+		filesystem::get_files_in_dir(res_name, &files, &dirs, filesystem::ENTIRE_FILE_PATH, filesystem::SKIP_MEDIA_DIR, filesystem::DO_REORDER);
 
 		// subdirectories
 		BOOST_FOREACH(const std::string& dir, dirs)
@@ -1207,7 +1207,7 @@ void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
 	}
 
 	// process only config files.
-	if (ends_with(res_name, ".cfg") == false)
+	if (filesystem::ends_with(res_name, ".cfg") == false)
 		return;
 
 	LOG_PREPROC << "processing resource: " << res_name << '\n';
@@ -1215,7 +1215,7 @@ void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
 	//disable filename encoding to get clear #line in cfg.plain
 	encode_filename = false;
 
-	scoped_istream stream = preprocess_file(res_name, defines_map);
+	filesystem::scoped_istream stream = preprocess_file(res_name, defines_map);
 	std::stringstream ss;
 	// Set the failbit so if we get any preprocessor exceptions (e.g.:preproc_config::error)
 	// they will be propagated in the main program, instead of just setting the
@@ -1233,14 +1233,14 @@ void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
 		std::string streamContent = ss.str();
 
 		read(cfg, streamContent);
-		const std::string preproc_res_name = target_directory + "/" + file_name(res_name);
+		const std::string preproc_res_name = target_directory + "/" + filesystem::base_name(res_name);
 
 		// write the processed cfg file
 		if (write_cfg == true)
 		{
 			LOG_PREPROC << "writing cfg file: " << preproc_res_name << '\n';
-			create_directory_if_missing_recursive(directory_name(preproc_res_name));
-			scoped_ostream outStream(ostream_file(preproc_res_name));
+			filesystem::create_directory_if_missing_recursive(filesystem::directory_name(preproc_res_name));
+			filesystem::scoped_ostream outStream(filesystem::ostream_file(preproc_res_name));
 			write(*outStream, cfg);
 		}
 
@@ -1248,8 +1248,8 @@ void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
 		if (write_plain_cfg == true)
 		{
 			LOG_PREPROC << "writing plain cfg file: " << (preproc_res_name + ".plain") << '\n';
-			create_directory_if_missing_recursive(directory_name(preproc_res_name));
-			write_file(preproc_res_name + ".plain", streamContent);
+			filesystem::create_directory_if_missing_recursive(filesystem::directory_name(preproc_res_name));
+			filesystem::write_file(preproc_res_name + ".plain", streamContent);
 		}
 	}
 }

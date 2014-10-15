@@ -63,7 +63,8 @@ if env['default_prefs_file']:
 
 libwesnoth_core_sources.extend([
     game_config_env.Object("game_config.cpp"),
-    filesystem_env.Object("filesystem.cpp")
+    filesystem_env.Object("filesystem.cpp"),
+    filesystem_env.Object("filesystem_common.cpp"),
     ])
 
 libwesnoth_core = [env.Library("wesnoth_core", libwesnoth_core_sources)]
@@ -401,6 +402,7 @@ wesnoth_sources = Split("""
     gui/dialogs/lobby_main.cpp
     gui/dialogs/lobby_player_info.cpp
     gui/dialogs/message.cpp
+    gui/dialogs/mp_alerts_options.cpp
     gui/dialogs/mp_cmd_wrapper.cpp
     gui/dialogs/mp_change_control.cpp
     gui/dialogs/mp_connect.cpp
@@ -474,6 +476,7 @@ wesnoth_sources = Split("""
     mp_game_settings.cpp
     mp_game_utils.cpp
     mp_options.cpp
+    mp_ui_alerts.cpp
     multiplayer.cpp
     multiplayer_configure.cpp
     multiplayer_connect.cpp

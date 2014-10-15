@@ -147,8 +147,8 @@ uint32_t send_dbus_notification(DBusConnection *connection, uint32_t replaces_id
 			DBUS_TYPE_INVALID);
 	}
 
-	std::string app_icon_ = normalize_path(game_config::path + "/" + game_config::images::app_icon);
-	if (!file_exists(app_icon_)) {
+	std::string app_icon_ = filesystem::normalize_path(game_config::path + "/" + game_config::images::app_icon);
+	if (!filesystem::file_exists(app_icon_)) {
 		ERR_DU << "Error: Could not find notification icon.\n"
 			<< "raw path =\'" << game_config::path << "\' / \'" << game_config::images::app_icon << "\'\n"
 			<< "normalized path =\'" << app_icon_ << "\'\n";

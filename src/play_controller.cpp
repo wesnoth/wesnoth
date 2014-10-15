@@ -1259,6 +1259,9 @@ void play_controller::check_victory()
 	{
 		return;
 	}
+
+	check_end_level();
+
 	std::set<unsigned> not_defeated;
 
 	BOOST_FOREACH( const unit & i , gamestate_.board_.units())
@@ -1298,8 +1301,6 @@ void play_controller::check_victory()
 			tm.set_lost(false);
 		}
 	}
-
-	check_end_level();
 
 	bool found_player = false;
 	bool found_network_player = false;

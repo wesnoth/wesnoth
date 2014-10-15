@@ -146,18 +146,18 @@ namespace game_config
 	const size_t max_loop = 65536;
 
 	namespace sounds {
-		const std::string turn_bell = "bell.wav",
+		std::string turn_bell = "bell.wav",
 		timer_bell = "timer.wav",
-		receive_message = "chat-[1~3].ogg",
-		receive_message_highlight = "chat-highlight.ogg",
-		receive_message_friend = "chat-friend.ogg",
-		receive_message_server = "receive.wav",
-		user_arrive = "arrive.wav",
-		user_leave = "leave.wav",
+		public_message = "chat-[1~3].ogg",
+		private_message = "chat-highlight.ogg",
+		friend_message = "chat-friend.ogg",
+		server_message = "receive.wav",
+		player_joins = "arrive.wav",
+		player_leaves = "leave.wav",
 		game_user_arrive = "join.wav",
 		game_user_leave = "leave.wav",
-		party_full_bell = "bell.wav",
-		mp_game_begins = "join.wav";
+		ready_for_start = "bell.wav",
+		game_has_begun = "join.wav";
 
 		const std::string button_press = "button.wav",
 		checkbox_release = "checkbox.wav",
@@ -298,6 +298,22 @@ namespace game_config
 			sinf.name = server["name"].str();
 			sinf.address = server["address"].str();
 			server_list.push_back(sinf);
+		}
+
+		if(const config & s = v.child("sounds")) {
+			using namespace game_config::sounds;
+			if (s.has_attribute("turn_bell")) 		turn_bell = 			s["turn_bell"].str();
+			if (s.has_attribute("timer_bell")) 		timer_bell = 			s["timer_bell"].str();
+			if (s.has_attribute("public_message")) 		public_message = 		s["public_message"].str();
+			if (s.has_attribute("private_message")) 	private_message = 		s["private_message"].str();
+			if (s.has_attribute("friend_message")) 		friend_message = 		s["friend_message"].str();
+			if (s.has_attribute("server_message")) 		server_message = 		s["server_message"].str();
+			if (s.has_attribute("player_joins")) 		player_joins = 			s["player_joins"].str();
+			if (s.has_attribute("player_leaves")) 		player_leaves = 		s["player_leaves"].str();
+			if (s.has_attribute("game_user_arrive"))	game_user_arrive = 		s["game_user_arrive"].str();
+			if (s.has_attribute("game_user_leave")) 	game_user_leave = 		s["game_user_leave"].str();
+			if (s.has_attribute("ready_for_start")) 	ready_for_start = 		s["ready_for_start"].str();
+			if (s.has_attribute("game_has_begun")) 		game_has_begun = 		s["game_has_begun"].str();
 		}
 
 		assert(wesnoth_version.good());

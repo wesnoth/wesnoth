@@ -992,8 +992,8 @@ bool addons_manager_ui(display& disp, const std::string& remote_address)
 	} catch(const network_asio::error& e) {
 		ERR_NET << "network_asio::error thrown during transaction with add-on server; \""<< e.what() << "\"" << std::endl;
 		gui2::show_error_message(disp.video(), _("Remote host disconnected."));
-	} catch(const io_exception& e) {
-		ERR_FS << "io_exception thrown while installing an addon; \"" << e.what() << "\"" << std::endl;
+	} catch(const filesystem::io_exception& e) {
+		ERR_FS << "filesystem::io_exception thrown while installing an addon; \"" << e.what() << "\"" << std::endl;
 		gui2::show_error_message(disp.video(), _("A problem occurred when trying to create the files necessary to install this add-on."));
 	} catch(const invalid_pbl_exception& e) {
 		ERR_CFG << "could not read .pbl file " << e.path << ": " << e.message << std::endl;
