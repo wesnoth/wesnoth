@@ -136,6 +136,7 @@ public:
 		NOTIFY_COUNT
 	};
 
+	void do_notify(t_notify_mode mode) { do_notify(mode, "", ""); }
 	void do_notify(t_notify_mode mode, const std::string & sender, const std::string & message);
 
 protected:

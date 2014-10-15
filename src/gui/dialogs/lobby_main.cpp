@@ -1458,9 +1458,9 @@ void tlobby_main::process_gamelist_diff(const config& data)
 	int left = data.child_count("remove_child");
 	if(joined > 0 || left > 0) {
 		if(left > joined) {
-			do_notify(NOTIFY_LOBBY_QUIT, "", "");
+			do_notify(NOTIFY_LOBBY_QUIT);
 		} else {
-			do_notify(NOTIFY_LOBBY_JOIN, "", "");
+			do_notify(NOTIFY_LOBBY_JOIN);
 		}
 	}
 }
