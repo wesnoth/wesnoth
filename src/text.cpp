@@ -269,6 +269,22 @@ gui2::tpoint ttext::get_cursor_position(
 	return gui2::tpoint(PANGO_PIXELS(rect.x), PANGO_PIXELS(rect.y));
 }
 
+int ttext::get_string_index(const gui2::tpoint & position) const
+{
+	recalculate();
+
+	// Get the index of the character.
+	int index, trailing;
+	bool ret = pango_layout_xy_to_index(layout_, position.x * PANGO_SCALE,
+		position.y * PANGO_SCALE, &index, &trailing);
+
+	if (ret) {
+		return index;
+	} else {
+		return -1;
+	}
+}
+
 gui2::tpoint ttext::get_column_line(const gui2::tpoint& position) const
 {
 	recalculate();

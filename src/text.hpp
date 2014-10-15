@@ -163,6 +163,17 @@ public:
 		const unsigned column, const unsigned line = 0) const;
 
 	/**
+	 * Gets the string index of the character at the position.
+	 *
+	 * @param position            The pixel position in the text area.
+	 *
+	 * @returns                   The index of the character, as calculated by
+	 *			      pango function `xy_to_index`. If the point is
+	 *			      not inside the text area, returns -1.
+	 */
+	int get_string_index(const gui2::tpoint & position) const;
+
+	/**
 	 * Gets the column of line of the character at the position.
 	 *
 	 * @param position            The pixel position in the text area.
