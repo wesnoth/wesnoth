@@ -24,13 +24,7 @@ namespace gui2
 class tlabel : public tcontrol
 {
 public:
-	tlabel()
-		: tcontrol(COUNT)
-		, state_(ENABLED)
-		, can_wrap_(false)
-		, characters_per_line_(0)
-	{
-	}
+	tlabel();
 
 	/** See @ref twidget::can_wrap. */
 	virtual bool can_wrap() const OVERRIDE;
@@ -93,6 +87,12 @@ private:
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
+
+
+	/**
+	 * Left click signal handler: checks if we clicked on a hyperlink
+	 */
+	void signal_handler_left_button_click(const event::tevent event, bool & handled);
 };
 
 } // namespace gui2

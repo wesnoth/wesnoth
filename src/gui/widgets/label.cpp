@@ -16,6 +16,7 @@
 
 #include "gui/widgets/label.hpp"
 
+#include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/label.hpp"
 #include "gui/auxiliary/window_builder/label.hpp"
 #include "gui/widgets/detail/register.tpp"
@@ -27,6 +28,15 @@ namespace gui2
 {
 
 REGISTER_WIDGET(label)
+
+tlabel::tlabel()
+		: tcontrol(COUNT)
+		, state_(ENABLED)
+		, can_wrap_(false)
+		, characters_per_line_(0)
+{
+	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(&tlabel::signal_handler_left_button_click, this, _2, _3));
+}
 
 bool tlabel::can_wrap() const
 {
@@ -77,6 +87,11 @@ const std::string& tlabel::get_control_type() const
 {
 	static const std::string type = "label";
 	return type;
+}
+
+void tlabel::signal_handler_left_button_click(const event::tevent /* event */, bool & /*handled*/)
+{
+	DBG_GUI_E << "label click" << std::endl;
 }
 
 } // namespace gui2
