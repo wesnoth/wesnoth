@@ -103,7 +103,7 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_REPLAY_NEXT_MOVE, "replaynextmove", N_("Next Move"), false, scope_game, "" },
 	{ hotkey::HOTKEY_REPLAY_SHOW_EVERYTHING, "replayshoweverything", N_("Full Map"), false, scope_game, "" },
 	{ hotkey::HOTKEY_REPLAY_SHOW_EACH, "replayshoweach", N_("Each Team"), false, scope_game, "" },
-	{ hotkey::HOTKEY_REPLAY_SHOW_TEAM1, "replayshowteam1", N_("Team 1"), false, scope_game, "" },
+	{ hotkey::HOTKEY_REPLAY_SHOW_TEAM1, "replayshowteam1", N_("Human Team"), false, scope_game, "" },
 	{ hotkey::HOTKEY_REPLAY_SKIP_ANIMATION, "replayskipanimation", N_("Skip Animation"), false, scope_game, "" },
 	// Whiteboard commands
 	// TRANSLATORS: whiteboard menu entry: toggle planning mode

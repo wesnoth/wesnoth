@@ -100,7 +100,7 @@ private:
 	bool is_playing_;
 
 	bool show_everything_;
-	unsigned int show_team_;
+	bool is_multiplayer_;
 };
 
 
