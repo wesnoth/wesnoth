@@ -22,7 +22,7 @@
 #include "game_preferences.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
-#include "sound.hpp"
+#include "mp_ui_alerts.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <boost/cstdint.hpp>
@@ -74,13 +74,13 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 	if (bell) {
 		if ((type == events::chat_handler::MESSAGE_PRIVATE && (!is_observer || whisper))
 			|| utils::word_match(message, preferences::login())) {
-			sound::play_UI_sound(game_config::sounds::receive_message_highlight);
+			mp_ui_alerts::private_message(false, sender, message);
 		} else if (preferences::is_friend(sender)) {
-			sound::play_UI_sound(game_config::sounds::receive_message_friend);
+			mp_ui_alerts::friend_message(false, sender, message);
 		} else if (sender == "server") {
-			sound::play_UI_sound(game_config::sounds::receive_message_server);
+			mp_ui_alerts::server_message(false, sender, message);
 		} else {
-			sound::play_UI_sound(game_config::sounds::receive_message);
+			mp_ui_alerts::public_message(false, sender, message);
 		}
 	}
 
@@ -170,9 +170,6 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 	msg_flabel.use_markup(false);
 
 	int message_handle = font::add_floating_label(msg_flabel);
-
-	// Send system notification if appropriate.
-	desktop::notifications::send(speaker, message, desktop::notifications::CHAT);
 
 	chat_messages_.push_back(chat_message(speaker_handle,message_handle));
 

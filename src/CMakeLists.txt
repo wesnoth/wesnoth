@@ -819,6 +819,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/lobby_main.cpp
 	gui/dialogs/lobby_player_info.cpp
 	gui/dialogs/message.cpp
+	gui/dialogs/mp_alerts_options.cpp
 	gui/dialogs/mp_change_control.cpp
 	gui/dialogs/mp_cmd_wrapper.cpp
 	gui/dialogs/mp_connect.cpp
@@ -853,6 +854,7 @@ set(wesnoth-main_SRC
 	mp_game_settings.cpp
 	mp_game_utils.cpp
 	mp_options.cpp
+	mp_ui_alerts.cpp
 	multiplayer.cpp
 	multiplayer_configure.cpp
 	multiplayer_connect.cpp
