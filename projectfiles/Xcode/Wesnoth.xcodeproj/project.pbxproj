@@ -873,6 +873,10 @@
 		EC5C247D18EF07F4001FA499 /* libpangoft2-1.0.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC5C246418EF07F0001FA499 /* libpangoft2-1.0.0.dylib */; };
 		EC5C247E18EF07F4001FA499 /* libpng16.16.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC5C246518EF07F0001FA499 /* libpng16.16.dylib */; };
 		EC5C248718EF07F4001FA499 /* libz.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC5C246E18EF07F3001FA499 /* libz.1.dylib */; };
+		EC5C70BC19EEB54900432CF4 /* filesystem_common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5C70BB19EEB54900432CF4 /* filesystem_common.cpp */; };
+		EC5C70BD19EEB54900432CF4 /* filesystem_common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5C70BB19EEB54900432CF4 /* filesystem_common.cpp */; };
+		EC5C70BF19EEB57400432CF4 /* mp_alerts_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5C70BE19EEB57400432CF4 /* mp_alerts_options.cpp */; };
+		EC5C70C119EEB58300432CF4 /* mp_ui_alerts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5C70C019EEB58300432CF4 /* mp_ui_alerts.cpp */; };
 		EC6069E318EF662300CD8408 /* pangorc in Resources */ = {isa = PBXBuildFile; fileRef = EC6069E218EF662300CD8408 /* pangorc */; };
 		EC74C10C1975760700B85A1A /* singleplayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C10B1975760700B85A1A /* singleplayer.cpp */; };
 		EC74C10F1975765F00B85A1A /* depcheck_confirm_change.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C10D1975765F00B85A1A /* depcheck_confirm_change.cpp */; };
@@ -2101,6 +2105,9 @@
 		EC5C246418EF07F0001FA499 /* libpangoft2-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libpangoft2-1.0.0.dylib"; path = "lib/libpangoft2-1.0.0.dylib"; sourceTree = "<group>"; };
 		EC5C246518EF07F0001FA499 /* libpng16.16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.16.dylib; path = lib/libpng16.16.dylib; sourceTree = "<group>"; };
 		EC5C246E18EF07F3001FA499 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = lib/libz.1.dylib; sourceTree = "<group>"; };
+		EC5C70BB19EEB54900432CF4 /* filesystem_common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = filesystem_common.cpp; sourceTree = "<group>"; };
+		EC5C70BE19EEB57400432CF4 /* mp_alerts_options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mp_alerts_options.cpp; path = dialogs/mp_alerts_options.cpp; sourceTree = "<group>"; };
+		EC5C70C019EEB58300432CF4 /* mp_ui_alerts.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_ui_alerts.cpp; sourceTree = "<group>"; };
 		EC6069E218EF662300CD8408 /* pangorc */ = {isa = PBXFileReference; lastKnownFileType = text; name = pangorc; path = Resources/pangorc; sourceTree = "<group>"; };
 		EC74C10B1975760700B85A1A /* singleplayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = singleplayer.cpp; sourceTree = "<group>"; };
 		EC74C10D1975765F00B85A1A /* depcheck_confirm_change.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = depcheck_confirm_change.cpp; path = gui/dialogs/depcheck_confirm_change.cpp; sourceTree = "<group>"; };
@@ -2465,6 +2472,8 @@
 		29B97315FDCFA39411CA2CEA /* src */ = {
 			isa = PBXGroup;
 			children = (
+				EC5C70C019EEB58300432CF4 /* mp_ui_alerts.cpp */,
+				EC5C70BB19EEB54900432CF4 /* filesystem_common.cpp */,
 				ECD0C4AA199C0B72005C2173 /* campaign_settings.cpp */,
 				EC74C119197576F500B85A1A /* notifications.cpp */,
 				EC74C11A197576F500B85A1A /* notifications.hpp */,
@@ -3704,6 +3713,7 @@
 		B5A9BCA10ECA805A002BE442 /* gui */ = {
 			isa = PBXGroup;
 			children = (
+				EC5C70BE19EEB57400432CF4 /* mp_alerts_options.cpp */,
 				EC19E6EE18B7F24B003B4B81 /* screenshot_notification.cpp */,
 				EC19E6EF18B7F24B003B4B81 /* screenshot_notification.hpp */,
 				F4C5DD64158CFD5E0044F754 /* lib */,
@@ -4217,6 +4227,7 @@
 				B5599AE60EC62181008DD061 /* variable.cpp in Sources */,
 				B5599AE70EC62181008DD061 /* util.cpp in Sources */,
 				EC89A1391879D17D00A3B0B1 /* lmathlib.cpp in Sources */,
+				EC5C70BC19EEB54900432CF4 /* filesystem_common.cpp in Sources */,
 				B5599AE90EC62181008DD061 /* unit_types.cpp in Sources */,
 				B5599AEA0EC62181008DD061 /* unit_map.cpp in Sources */,
 				B5599AEB0EC62181008DD061 /* unit_id.cpp in Sources */,
@@ -4413,6 +4424,7 @@
 				B54AC6DF0FEA9EB5006F6FBD /* attack.cpp in Sources */,
 				B54AC6E00FEA9EB5006F6FBD /* contexts.cpp in Sources */,
 				B54AC6E40FEA9EB5006F6FBD /* ai.cpp in Sources */,
+				EC5C70C119EEB58300432CF4 /* mp_ui_alerts.cpp in Sources */,
 				B54AC6E50FEA9EB5006F6FBD /* candidates.cpp in Sources */,
 				B54AC6E60FEA9EB5006F6FBD /* ca.cpp in Sources */,
 				B54AC6E70FEA9EB5006F6FBD /* stage_fallback.cpp in Sources */,
@@ -4498,6 +4510,7 @@
 				B5FCE91D1104C2A50081F1DF /* slider.cpp in Sources */,
 				EC84246918F30D9100FC1EEF /* random_new.cpp in Sources */,
 				ECFA82E3184E59F3006782FB /* command_executor.cpp in Sources */,
+				EC5C70BF19EEB57400432CF4 /* mp_alerts_options.cpp in Sources */,
 				B5FCE91E1104C2A50081F1DF /* spacer.cpp in Sources */,
 				B5FCE91F1104C2A50081F1DF /* stacked_widget.cpp in Sources */,
 				B5FCE9201104C2A50081F1DF /* text_box.cpp in Sources */,
@@ -5085,6 +5098,7 @@
 				B5BB6C7B0F89427C00444FBF /* gettext.cpp in Sources */,
 				B5BB6C800F89435300444FBF /* log.cpp in Sources */,
 				B5BB6C820F89437400444FBF /* color_range.cpp in Sources */,
+				EC5C70BD19EEB54900432CF4 /* filesystem_common.cpp in Sources */,
 				B5BB6C860F8943F600444FBF /* config_cache.cpp in Sources */,
 				B5BB6C8D0F89447200444FBF /* binary_or_text.cpp in Sources */,
 				B5BB6C8F0F89448000444FBF /* parser.cpp in Sources */,
