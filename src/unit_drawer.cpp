@@ -143,7 +143,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 	// and halo_mod on secondary images and all haloes
 	params.image_mod = u.image_mods();
 	params.halo_mod = u.TC_image_mods();
-	params.image= u.absolute_image();
+	params.image= u.default_anim_image();
 
 
 	if(u.incapacitated()) params.image_mod +="~GS()";
@@ -250,7 +250,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 #endif
 	if(draw_bars) {
 		const image::locator* orb_img = NULL;
-		const surface unit_img = image::get_image(u.absolute_image());
+		const surface unit_img = image::get_image(u.default_anim_image());
 		const int xoff = (hex_size - unit_img->w)/2;
 		const int yoff = (hex_size - unit_img->h)/2;
 		/*static*/ const image::locator partmoved_orb(game_config::images::orb + "~RC(magenta>" +
