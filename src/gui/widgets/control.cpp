@@ -543,9 +543,9 @@ void tcontrol::signal_handler_notify_remove_tooltip(const event::tevent event,
 	handled = true;
 }
 
-int tcontrol::get_label_string_index(const gui2::tpoint & position) const
+std::string tcontrol::get_label_token(const gui2::tpoint & position, const char * delim) const
 {
-	return renderer_.get_string_index(position);
+	return renderer_.get_token(position, delim);
 }
 
 } // namespace gui2

@@ -163,15 +163,16 @@ public:
 		const unsigned column, const unsigned line = 0) const;
 
 	/**
-	 * Gets the string index of the character at the position.
+	 * Gets the largest collection of characters, including the token at position,
+	 * and not including any characters from the delimiters set.
 	 *
 	 * @param position            The pixel position in the text area.
 	 *
-	 * @returns                   The index of the character, as calculated by
-	 *			      pango function `xy_to_index`. If the point is
-	 *			      not inside the text area, returns -1.
+	 * @returns                   The token containing position, and none of the
+	 * 			      delimiter characters. If position is out of bounds,
+	 *			      it returns the empty string.
 	 */
-	int get_string_index(const gui2::tpoint & position) const;
+	std::string get_token(const gui2::tpoint & position, const char * delimiters = " \n\r\t") const;
 
 	/**
 	 * Gets the column of line of the character at the position.

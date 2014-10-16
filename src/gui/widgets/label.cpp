@@ -23,6 +23,8 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
+#include "gettext.hpp"
+
 #include <boost/bind.hpp>
 #include <string>
 #include <sstream>
@@ -92,6 +94,11 @@ const std::string& tlabel::get_control_type() const
 	return type;
 }
 
+static bool looks_like_url(const std::string & str)
+{
+	return (str.substr(0,7) == "http://") || (str.substr(0,8) == "https://");
+}
+
 void tlabel::signal_handler_left_button_click(const event::tevent /* event */, bool & handled)
 {
 	DBG_GUI_E << "label click" << std::endl;
@@ -103,26 +110,20 @@ void tlabel::signal_handler_left_button_click(const event::tevent /* event */, b
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 
-	int idx = get_label_string_index(mouse);
+	std::string delim = " \n\r\t";
 
-	if (idx < 0) {
-		return; // This means we didnt hit the actual label
+	std::string token = get_label_token(mouse, delim.c_str());
+
+	if (token.length() == 0) {
+		return ; // without marking event as "handled"
 	}
 
-	std::string s = label();
+	DBG_GUI_E << "Clicked Token:\"" << token << "\"\n";
 
-	unsigned int l = idx, r = idx;
+	bool url = looks_like_url(token);
 
-	while (!isspace(s[l]) && l > 0) {
-		l--;
-	}
+	DBG_GUI_E << ( url ? "Looks like a url" : "Doesn't look like a url") << std::endl;
 
-	while (!isspace(s[r]) && r < (s.length() - 1)) {
-		r++;
-	}
-
-
-	DBG_GUI_E << s.substr(l,r+1) << std::endl;
 	handled = true;
 }
 

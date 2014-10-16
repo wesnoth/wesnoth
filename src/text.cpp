@@ -269,20 +269,36 @@ gui2::tpoint ttext::get_cursor_position(
 	return gui2::tpoint(PANGO_PIXELS(rect.x), PANGO_PIXELS(rect.y));
 }
 
-int ttext::get_string_index(const gui2::tpoint & position) const
+std::string ttext::get_token(const gui2::tpoint & position, const char * delim) const
 {
 	recalculate();
 
 	// Get the index of the character.
 	int index, trailing;
-	bool ret = pango_layout_xy_to_index(layout_, position.x * PANGO_SCALE,
-		position.y * PANGO_SCALE, &index, &trailing);
-
-	if (ret) {
-		return index;
-	} else {
-		return -1;
+	if (!pango_layout_xy_to_index(layout_, position.x * PANGO_SCALE,
+		position.y * PANGO_SCALE, &index, &trailing)) {
+		return "";
 	}
+
+	std::string txt = pango_layout_get_text(layout_);
+
+	std::string d(delim);
+
+	if (index < 0 || (static_cast<size_t>(index) >= txt.size()) || d.find(txt.at(index)) != std::string::npos) {
+		return ""; // if the index is out of bounds, or the index character is a delimiter, return nothing
+	}
+
+	size_t l = index;
+	while (l > 0 && (d.find(txt.at(l-1)) == std::string::npos)) {
+		--l;
+	}
+
+	size_t r = index + 1;
+	while (r < txt.size() && (d.find(txt.at(r)) == std::string::npos)) {
+		++r;
+	}
+
+	return txt.substr(l,r-l);
 }
 
 gui2::tpoint ttext::get_column_line(const gui2::tpoint& position) const
