@@ -19,10 +19,12 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/label.hpp"
 #include "gui/auxiliary/window_builder/label.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/widgets/detail/register.tpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
+#include "desktop/open.hpp"
 #include "gettext.hpp"
 
 #include <boost/bind.hpp>
@@ -123,6 +125,13 @@ void tlabel::signal_handler_left_button_click(const event::tevent /* event */, b
 	bool url = looks_like_url(token);
 
 	DBG_GUI_E << ( url ? "Looks like a url" : "Doesn't look like a url") << std::endl;
+
+	if ( url ) {
+		const int res = gui2::show_message(get_window()->video(), "", _("Do you want to open this link?") + std::string("\n") + token, gui2::tmessage::yes_no_buttons);
+		if(res != gui2::twindow::CANCEL) {
+			desktop::open_object(token);
+		}
+	}
 
 	handled = true;
 }
