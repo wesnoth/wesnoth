@@ -175,6 +175,15 @@ public:
 	std::string get_token(const gui2::tpoint & position, const char * delimiters = " \n\r\t") const;
 
 	/**
+	 * Checks if position points to a character in a link in the text, returns it
+	 * if so, empty string otherwise. Link-awareness must be enabled to get results.
+	 * @param position            The pixel position in the text area.
+	 *
+	 * @returns                   The link if one is found, the empty string otherwise.
+	 */
+	std::string get_link(const gui2::tpoint & position) const;
+
+	/**
 	 * Gets the column of line of the character at the position.
 	 *
 	 * @param position            The pixel position in the text area.
@@ -231,6 +240,9 @@ public:
 
 	ttext& set_maximum_length(const size_t maximum_length);
 
+	bool link_aware() const { return link_aware_; }
+
+	ttext& set_link_aware(bool b);
 private:
 
 	/***** ***** ***** *****  Pango variables ***** ***** ***** *****/
@@ -255,6 +267,9 @@ private:
 
 	/** Is the text markedup if so the markedup render routines need to be used. */
 	bool markedup_text_;
+
+	/** Are hyperlinks in the text marked-up, and will get_link return them. */
+	bool link_aware_;
 
 	/** The font size to draw. */
 	unsigned font_size_;
@@ -381,6 +396,7 @@ private:
 	 */
 	bool set_markup(const std::string& text);
 
+	bool set_markup_helper(const std::string & text);
 };
 
 } // namespace font
