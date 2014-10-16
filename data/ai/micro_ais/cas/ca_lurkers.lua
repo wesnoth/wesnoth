@@ -73,6 +73,15 @@ function ca_lurkers:execution(ai, cfg)
             })
         reachable_wander_terrain:inter(reach)
 
+        -- Need to restrict that to reachable and not occupied by an ally (except own position)
+        local reachable_wander_terrain = reachable_wander_terrain:filter(function(x, y, v)
+            local occ_hex = wesnoth.get_units {
+                x = x, y = y,
+                { "not", { x = lurker.x, y = lurker.y } }
+            }[1]
+            return not occ_hex
+        end)
+
         if (reachable_wander_terrain:size() > 0) then
             local dst = reachable_wander_terrain:to_stable_pairs()
             local rand = math.random(1, reachable_wander_terrain:size())
