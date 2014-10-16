@@ -42,6 +42,7 @@ tlabel::tlabel()
 		, can_wrap_(false)
 		, characters_per_line_(0)
 {
+	set_link_aware(true);
 	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(&tlabel::signal_handler_left_button_click, this, _2, _3));
 }
 
@@ -96,14 +97,13 @@ const std::string& tlabel::get_control_type() const
 	return type;
 }
 
-static bool looks_like_url(const std::string & str)
-{
-	return (str.substr(0,7) == "http://") || (str.substr(0,8) == "https://");
-}
-
 void tlabel::signal_handler_left_button_click(const event::tevent /* event */, bool & handled)
 {
 	DBG_GUI_E << "label click" << std::endl;
+
+	if (!get_link_aware()) {
+		return ; // without marking event as "handled".
+	}
 
 	get_window()->mouse_capture();
 
@@ -112,25 +112,17 @@ void tlabel::signal_handler_left_button_click(const event::tevent /* event */, b
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 
-	std::string delim = " \n\r\t";
+	std::string link = get_label_link(mouse);
 
-	std::string token = get_label_token(mouse, delim.c_str());
-
-	if (token.length() == 0) {
+	if (link.length() == 0) {
 		return ; // without marking event as "handled"
 	}
 
-	DBG_GUI_E << "Clicked Token:\"" << token << "\"\n";
+	DBG_GUI_E << "Clicked Link:\"" << link << "\"\n";
 
-	bool url = looks_like_url(token);
-
-	DBG_GUI_E << ( url ? "Looks like a url" : "Doesn't look like a url") << std::endl;
-
-	if ( url ) {
-		const int res = gui2::show_message(get_window()->video(), "", _("Do you want to open this link?") + std::string("\n") + token, gui2::tmessage::yes_no_buttons);
-		if(res != gui2::twindow::CANCEL) {
-			desktop::open_object(token);
-		}
+	const int res = gui2::show_message(get_window()->video(), "", _("Do you want to open this link?") + std::string("\n") + link, gui2::tmessage::yes_no_buttons);
+	if(res != gui2::twindow::CANCEL) {
+		desktop::open_object(link);
 	}
 
 	handled = true;

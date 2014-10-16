@@ -233,6 +233,12 @@ public:
 		return use_markup_;
 	}
 
+	virtual void set_link_aware(bool link_aware);
+	bool get_link_aware() const
+	{
+		return link_aware_;
+	}
+
 	const t_string& tooltip() const
 	{
 		return tooltip_;
@@ -327,6 +333,9 @@ private:
 
 	/** Use markup for the label? */
 	bool use_markup_;
+
+	/** Label should be link aware? */
+	bool link_aware_;
 
 	/**
 	 * If the text doesn't fit on the label should the text be used as tooltip?
@@ -423,6 +432,8 @@ protected:
 
 	/** Exposes font::ttext::get_token, for the text label of this control */
 	std::string get_label_token(const gui2::tpoint & position, const char * delimiters = " \n\r\t") const;
+
+	std::string get_label_link(const gui2::tpoint & position) const;
 
 private:
 #ifdef GUI2_EXPERIMENTAL_LISTBOX

@@ -44,6 +44,7 @@ tcontrol::tcontrol(const unsigned canvas_count)
 	: definition_("default")
 	, label_()
 	, use_markup_(false)
+	, link_aware_(true)
 	, use_tooltip_on_label_overflow_(true)
 	, tooltip_()
 	, help_message_()
@@ -332,6 +333,17 @@ void tcontrol::set_use_markup(bool use_markup)
 	set_is_dirty(true);
 }
 
+void tcontrol::set_link_aware(bool link_aware)
+{
+	if(link_aware == link_aware_) {
+		return;
+	}
+
+	link_aware_ = link_aware;
+	//update_canvas(); this causes this function to crash if called in widget constructor
+	set_is_dirty(true);
+}
+
 void tcontrol::set_text_alignment(const PangoAlignment text_alignment)
 {
 	if(text_alignment_ == text_alignment) {
@@ -353,6 +365,7 @@ void tcontrol::update_canvas()
 	{
 		canvas.set_variable("text", variant(label_));
 		canvas.set_variable("text_markup", variant(use_markup_));
+		canvas.set_variable("text_link_aware", variant(link_aware_));
 		canvas.set_variable("text_alignment",
 							variant(encode_text_alignment(text_alignment_)));
 		canvas.set_variable("text_maximum_width", variant(max_width));
@@ -437,6 +450,7 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size,
 	const tpoint border(config_->text_extra_width, config_->text_extra_height);
 	tpoint size = minimum_size - border;
 
+	renderer_.set_link_aware(link_aware_);
 	renderer_.set_text(label_, use_markup_);
 
 	renderer_.set_font_size(config_->text_font_size);
@@ -546,6 +560,11 @@ void tcontrol::signal_handler_notify_remove_tooltip(const event::tevent event,
 std::string tcontrol::get_label_token(const gui2::tpoint & position, const char * delim) const
 {
 	return renderer_.get_token(position, delim);
+}
+
+std::string tcontrol::get_label_link(const gui2::tpoint & position) const
+{
+	return renderer_.get_link(position);
 }
 
 } // namespace gui2
