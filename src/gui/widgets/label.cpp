@@ -21,8 +21,11 @@
 #include "gui/auxiliary/window_builder/label.hpp"
 #include "gui/widgets/detail/register.tpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/window.hpp"
 
 #include <boost/bind.hpp>
+#include <string>
+#include <sstream>
 
 namespace gui2
 {
@@ -89,9 +92,38 @@ const std::string& tlabel::get_control_type() const
 	return type;
 }
 
-void tlabel::signal_handler_left_button_click(const event::tevent /* event */, bool & /*handled*/)
+void tlabel::signal_handler_left_button_click(const event::tevent /* event */, bool & handled)
 {
 	DBG_GUI_E << "label click" << std::endl;
+
+	get_window()->mouse_capture();
+
+	tpoint mouse = get_mouse_position();
+
+	mouse.x -= get_x();
+	mouse.y -= get_y();
+
+	int idx = get_label_string_index(mouse);
+
+	if (idx < 0) {
+		return; // This means we didnt hit the actual label
+	}
+
+	std::string s = label();
+
+	unsigned int l = idx, r = idx;
+
+	while (!isspace(s[l]) && l > 0) {
+		l--;
+	}
+
+	while (!isspace(s[r]) && r < (s.length() - 1)) {
+		r++;
+	}
+
+
+	DBG_GUI_E << s.substr(l,r+1) << std::endl;
+	handled = true;
 }
 
 } // namespace gui2

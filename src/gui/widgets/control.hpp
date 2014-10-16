@@ -421,6 +421,9 @@ protected:
 									  int x_offset,
 									  int y_offset) OVERRIDE;
 
+	/** Exposes font::ttext::get_string_index output, for the text label of this control */
+	int get_label_string_index(const gui2::tpoint & position) const;
+
 private:
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	/**
