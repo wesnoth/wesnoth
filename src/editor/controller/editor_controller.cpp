@@ -967,7 +967,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 
 void editor_controller::show_help()
 {
-	help::show_help(*gui_);
+	help::show_help(*gui_, "editor_overview");
 }
 
 void editor_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
