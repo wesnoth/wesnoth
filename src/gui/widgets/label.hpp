@@ -32,6 +32,9 @@ public:
 	/** See @ref tcontrol::get_characters_per_line. */
 	virtual unsigned get_characters_per_line() const OVERRIDE;
 
+	/** See @ref tcontrol::get_link_aware. */
+	virtual bool get_link_aware() const OVERRIDE;
+
 	/** See @ref tcontrol::set_active. */
 	virtual void set_active(const bool active) OVERRIDE;
 
@@ -52,6 +55,8 @@ public:
 	}
 
 	void set_characters_per_line(const unsigned set_characters_per_line);
+
+	void set_link_aware(bool l);
 
 private:
 	/**
@@ -84,6 +89,12 @@ private:
 	 * The maximum is not an exact maximum, it uses the average character width.
 	 */
 	unsigned characters_per_line_;
+
+	/**
+	 * Whether the label is link aware, rendering links with special formatting
+	 * and handling click events.
+	 */
+	bool link_aware_;
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;

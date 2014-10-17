@@ -42,8 +42,8 @@ tlabel::tlabel()
 		, state_(ENABLED)
 		, can_wrap_(false)
 		, characters_per_line_(0)
+		, link_aware_(true)
 {
-	set_link_aware(true);
 	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(&tlabel::signal_handler_left_button_click, this, _2, _3));
 	connect_signal<event::RIGHT_BUTTON_CLICK>(boost::bind(&tlabel::signal_handler_right_button_click, this, _2, _3));
 }
@@ -56,6 +56,11 @@ bool tlabel::can_wrap() const
 unsigned tlabel::get_characters_per_line() const
 {
 	return characters_per_line_;
+}
+
+bool tlabel::get_link_aware() const
+{
+	return link_aware_;
 }
 
 void tlabel::set_active(const bool active)
@@ -83,6 +88,17 @@ bool tlabel::disable_click_dismiss() const
 void tlabel::set_characters_per_line(const unsigned characters_per_line)
 {
 	characters_per_line_ = characters_per_line;
+}
+
+void tlabel::set_link_aware(bool link_aware)
+{
+	if(link_aware == link_aware_) {
+		return;
+	}
+
+	link_aware_ = link_aware;
+	update_canvas();
+	set_is_dirty(true);
 }
 
 void tlabel::set_state(const tstate state)

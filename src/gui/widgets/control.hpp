@@ -142,6 +142,22 @@ public:
 	virtual unsigned get_characters_per_line() const;
 
 	/**
+	 * Returns whether the label should be link_aware, in
+	 * in rendering and in searching for links with get_link.
+	 *
+	 * This value is used to call @ref ttext::set_link_aware
+	 * (indirectly).
+	 *
+	 * @returns		      The link aware status. This impl always
+	 *			      always returns false.
+	 */
+	virtual bool get_link_aware() const
+	{
+		return false;
+	}
+
+
+	/**
 	 * See @ref twidget::layout_initialise.
 	 *
 	 * @todo Also handle the tooltip state.
@@ -231,12 +247,6 @@ public:
 	bool get_use_markup() const
 	{
 		return use_markup_;
-	}
-
-	virtual void set_link_aware(bool link_aware);
-	bool get_link_aware() const
-	{
-		return link_aware_;
 	}
 
 	const t_string& tooltip() const
@@ -333,9 +343,6 @@ private:
 
 	/** Use markup for the label? */
 	bool use_markup_;
-
-	/** Label should be link aware? */
-	bool link_aware_;
 
 	/**
 	 * If the text doesn't fit on the label should the text be used as tooltip?
