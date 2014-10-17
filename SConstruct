@@ -357,7 +357,7 @@ if env["prereqs"]:
             return \
                 conf.CheckSDL(require_version = '1.2.0') & \
                 conf.CheckSDL("SDL_ttf", require_version = "2.0.8") & \
-                conf.CheckSDL("SDL_mixer", require_version = '1.2.0') & \
+                conf.CheckSDL("SDL_mixer", require_version = '1.2.12') & \
                 conf.CheckSDL("SDL_image", require_version = '1.2.0')
 
     have_server_prereqs = (\
