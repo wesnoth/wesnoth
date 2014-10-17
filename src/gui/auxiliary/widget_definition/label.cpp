@@ -51,10 +51,13 @@ tlabel_definition::tlabel_definition(const config& cfg)
  * @begin{tag}{name="label_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
  * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
  * @begin{table}{config}
- *     link_aware & bool & false & Whether the label is link aware. This means
+ *     link_aware & f_bool & false & Whether the label is link aware. This means
  *                                     it is rendered with links highlighted,
  *                                     and responds to click events on those
  *                                     links. $
+ *     link_color & string & #ffff00 & The color to render links with. This
+ *                                     string will be used verbatim in pango
+ *                                     markup for each link. $
  * @end{table}
  * @begin{tag}{name="state_enabled"}{min=0}{max=1}{super="generic/state"}
  * @end{tag}{name="state_enabled"}
