@@ -35,6 +35,9 @@ public:
 	/** See @ref tcontrol::get_link_aware. */
 	virtual bool get_link_aware() const OVERRIDE;
 
+	/** See @ref tcontrol::get_link_aware. */
+	virtual std::string get_link_color() const OVERRIDE;
+
 	/** See @ref tcontrol::set_active. */
 	virtual void set_active(const bool active) OVERRIDE;
 
@@ -57,6 +60,8 @@ public:
 	void set_characters_per_line(const unsigned set_characters_per_line);
 
 	void set_link_aware(bool l);
+
+	void set_link_color(const std::string & color);
 
 private:
 	/**
@@ -95,6 +100,11 @@ private:
 	 * and handling click events.
 	 */
 	bool link_aware_;
+
+	/**
+	 * What color links will be rendered in.
+	 */
+	std::string link_color_;
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;

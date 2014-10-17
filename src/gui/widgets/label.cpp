@@ -43,6 +43,7 @@ tlabel::tlabel()
 		, can_wrap_(false)
 		, characters_per_line_(0)
 		, link_aware_(false)
+		, link_color_("#ffff00")
 {
 	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(&tlabel::signal_handler_left_button_click, this, _2, _3));
 	connect_signal<event::RIGHT_BUTTON_CLICK>(boost::bind(&tlabel::signal_handler_right_button_click, this, _2, _3));
@@ -61,6 +62,11 @@ unsigned tlabel::get_characters_per_line() const
 bool tlabel::get_link_aware() const
 {
 	return link_aware_;
+}
+
+std::string tlabel::get_link_color() const
+{
+	return link_color_;
 }
 
 void tlabel::set_active(const bool active)
@@ -101,6 +107,16 @@ void tlabel::set_link_aware(bool link_aware)
 	set_is_dirty(true);
 }
 
+void tlabel::set_link_color(const std::string & color)
+{
+	if(color == link_color_) {
+		return;
+	}
+	link_color_ = color;
+	update_canvas();
+	set_is_dirty(true);
+}
+
 void tlabel::set_state(const tstate state)
 {
 	if(state != state_) {
@@ -126,6 +142,7 @@ void tlabel::load_config_extra()
 	assert(conf);
 
 	set_link_aware(conf->link_aware);
+	set_link_color(conf->link_color);
 }
 
 

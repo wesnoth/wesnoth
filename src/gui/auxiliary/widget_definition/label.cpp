@@ -67,6 +67,7 @@ tlabel_definition::tlabel_definition(const config& cfg)
 tlabel_definition::tresolution::tresolution(const config& cfg)
 	: tresolution_definition_(cfg)
 	, link_aware(cfg["link_aware"].to_bool(false))
+	, link_color(cfg["link_color"].str().size() > 0 ? cfg["link_color"].str() : "#ffff00")
 {
 	// Note the order should be the same as the enum tstate is label.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));

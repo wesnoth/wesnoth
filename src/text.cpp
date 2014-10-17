@@ -537,6 +537,17 @@ ttext& ttext::set_link_aware(bool b)
 	return *this;
 }
 
+ttext& ttext::set_link_color(const std::string & color)
+{
+	if(color != link_color_) {
+		link_color_ = color;
+		calculation_dirty_ = true;
+		surface_dirty_ = true;
+	}
+
+	return *this;
+}
+
 namespace {
 
 /** Small helper class to make sure the font object is destroyed properly. */
@@ -786,8 +797,6 @@ void ttext::create_surface_buffer(const size_t size) const
 	memset(surface_buffer_, 0, size);
 }
 
-static std::string handle_token(const std::string & token);
-
 bool ttext::set_markup(const std::string & text) {
 	if (!link_aware_) {
 		return set_markup_helper(text);
@@ -819,10 +828,10 @@ static bool looks_like_url(const std::string & str)
 	return (str.size() >= 8) && ((str.substr(0,7) == "http://") || (str.substr(0,8) == "https://"));
 }
 
-static std::string handle_token(const std::string & token)
+std::string ttext::handle_token(const std::string & token) const
 {
 	if (looks_like_url(token)) {
-		return "<span underline=\'single\' color=\'#8888ff\'>" + token + "</span>";
+		return "<span underline=\'single\' color=\'" + link_color_ + "\'>" + token + "</span>";
 	} else {
 		return token;
 	}

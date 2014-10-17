@@ -243,6 +243,8 @@ public:
 	bool link_aware() const { return link_aware_; }
 
 	ttext& set_link_aware(bool b);
+
+	ttext& set_link_color(const std::string & color);
 private:
 
 	/***** ***** ***** *****  Pango variables ***** ***** ***** *****/
@@ -270,6 +272,9 @@ private:
 
 	/** Are hyperlinks in the text marked-up, and will get_link return them. */
 	bool link_aware_;
+
+	/** The color to render links in. */
+	std::string link_color_;
 
 	/** The font size to draw. */
 	unsigned font_size_;
@@ -397,6 +402,8 @@ private:
 	bool set_markup(const std::string& text);
 
 	bool set_markup_helper(const std::string & text);
+
+	std::string handle_token(const std::string & token) const;
 };
 
 } // namespace font

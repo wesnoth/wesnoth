@@ -1273,6 +1273,9 @@ private:
 	/** The link aware switch of the text. */
 	tformula<bool> link_aware_;
 
+	/** The link color of the text. */
+	tformula<std::string> link_color_;
+
 	/** The maximum width for the text. */
 	tformula<int> maximum_width_;
 
@@ -1308,6 +1311,8 @@ private:
  *     text_markup & f_bool & false &  Can the text have mark-up? $
  *     text_link_aware & f_bool & false &
  *                                     Is the text link aware? $
+ *     text_link_color & f_string & "#ffff00" & 
+ *                                     The color of links in the text $
  *     maximum_width & f_int & -1 &    The maximum width the text is allowed to
  *                                     be. $
  *     maximum_height & f_int & -1 &   The maximum height the text is allowed
@@ -1342,6 +1347,7 @@ ttext::ttext(const config& cfg)
 	, text_(cfg["text"])
 	, text_markup_(cfg["text_markup"], false)
 	, link_aware_(cfg["text_link_aware"], false)
+	, link_color_(cfg["text_link_color"], "#ffff00")
 	, maximum_width_(cfg["maximum_width"], -1)
 	, characters_per_line_(cfg["text_characters_per_line"])
 	, maximum_height_(cfg["maximum_height"], -1)
@@ -1371,7 +1377,8 @@ void ttext::draw(surface& canvas,
 
 	static font::ttext text_renderer;
 
-	text_renderer.set_link_aware(link_aware_(variables));
+	text_renderer.set_link_aware(link_aware_(variables))
+			.set_link_color(link_color_(variables));
 	text_renderer.set_text(text, text_markup_(variables));
 
 	text_renderer.set_font_size(font_size_)

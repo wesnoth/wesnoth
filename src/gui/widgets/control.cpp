@@ -354,6 +354,7 @@ void tcontrol::update_canvas()
 		canvas.set_variable("text", variant(label_));
 		canvas.set_variable("text_markup", variant(use_markup_));
 		canvas.set_variable("text_link_aware", variant(get_link_aware()));
+		canvas.set_variable("text_link_color", variant(get_link_color()));
 		canvas.set_variable("text_alignment",
 							variant(encode_text_alignment(text_alignment_)));
 		canvas.set_variable("text_maximum_width", variant(max_width));
@@ -438,7 +439,9 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size,
 	const tpoint border(config_->text_extra_width, config_->text_extra_height);
 	tpoint size = minimum_size - border;
 
-	renderer_.set_link_aware(get_link_aware());
+	renderer_.set_link_aware(get_link_aware())
+			.set_link_color(get_link_color());
+
 	renderer_.set_text(label_, use_markup_);
 
 	renderer_.set_font_size(config_->text_font_size);

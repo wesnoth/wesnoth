@@ -30,6 +30,7 @@ struct tlabel_definition : public tcontrol_definition
 		explicit tresolution(const config& cfg);
 
 		bool link_aware;
+		std::string link_color;
 	};
 };
 

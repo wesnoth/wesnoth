@@ -156,6 +156,19 @@ public:
 		return false;
 	}
 
+	/**
+	 * Returns the color string to be used with links.
+	 *
+	 * This value is used to call @ref ttext::set_link_color
+	 * (indirectly).
+	 *
+	 * @returns		      The link color string. This impl returns "#ffff00".
+	 *
+	 */
+	virtual std::string get_link_color() const
+	{
+		return "#ffff00";
+	}
 
 	/**
 	 * See @ref twidget::layout_initialise.
