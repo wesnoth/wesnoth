@@ -315,6 +315,10 @@ public:
 
 	/** The name of the file to game_display (used in menus). */
 	std::string absolute_image() const;
+
+	/** The default image to use for animation frames with no defined image. */
+	std::string default_anim_image() const;
+
 	std::string image_halo() const { return cfg_["halo"]; }
 
 	std::string image_ellipse() const { return cfg_["ellipse"]; }

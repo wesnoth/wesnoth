@@ -1969,6 +1969,10 @@ std::string unit::absolute_image() const {
 	return cfg_["image_icon"].empty() ? cfg_["image"] : cfg_["image_icon"];
 }
 
+std::string unit::default_anim_image() const {
+	return cfg_["image"].empty() ? cfg_["image_icon"] : cfg_["image"];
+}
+
 void unit::apply_modifications()
 {
 	log_scope("apply mods");

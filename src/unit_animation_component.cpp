@@ -172,7 +172,7 @@ bool unit_animation_component::invalidate (const display & disp)
 		params.halo_y -= height_adjust;
 		params.image_mod = u_.image_mods();
 		params.halo_mod = u_.TC_image_mods();
-		params.image= u_.absolute_image();
+		params.image= u_.default_anim_image();
 
 		result |= get_animation()->invalidate(params);
 	}
