@@ -360,7 +360,8 @@ void manager::init() const
 #if CAIRO_HAS_WIN32_FONT
 	BOOST_FOREACH(const std::string& path, filesystem::get_binary_paths("fonts")) {
 		std::vector<std::string> files;
-		filesystem::get_files_in_dir(path, &files, NULL, filesystem::ENTIRE_FILE_PATH);
+		if(filesystem::is_directory(path))
+			filesystem::get_files_in_dir(path, &files, NULL, filesystem::ENTIRE_FILE_PATH);
 		BOOST_FOREACH(const std::string& file, files)
 			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
 				AddFontResourceA(file.c_str());
@@ -377,7 +378,8 @@ void manager::deinit() const
 #if CAIRO_HAS_WIN32_FONT
 	BOOST_FOREACH(const std::string& path, filesystem::get_binary_paths("fonts")) {
 		std::vector<std::string> files;
-		filesystem::get_files_in_dir(path, &files, NULL, filesystem::ENTIRE_FILE_PATH);
+		if(filesystem::is_directory(path))
+			filesystem::get_files_in_dir(path, &files, NULL, filesystem::ENTIRE_FILE_PATH);
 		BOOST_FOREACH(const std::string& file, files)
 			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
 				RemoveFontResourceA(file.c_str());

@@ -201,7 +201,7 @@ static std::string create_random_sendfile(size_t size)
 
 static void delete_random_sendfile(const std::string& file)
 {
-	filesystem::delete_directory(file);
+	filesystem::delete_file(file);
 }
 
 template<class T>
