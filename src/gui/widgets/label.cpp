@@ -24,6 +24,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
+#include "desktop/clipboard.hpp"
 #include "desktop/open.hpp"
 #include "gettext.hpp"
 
@@ -44,6 +45,7 @@ tlabel::tlabel()
 {
 	set_link_aware(true);
 	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(&tlabel::signal_handler_left_button_click, this, _2, _3));
+	connect_signal<event::RIGHT_BUTTON_CLICK>(boost::bind(&tlabel::signal_handler_right_button_click, this, _2, _3));
 }
 
 bool tlabel::can_wrap() const
@@ -130,6 +132,36 @@ void tlabel::signal_handler_left_button_click(const event::tevent /* event */, b
 	if(res != gui2::twindow::CANCEL) {
 		desktop::open_object(link);
 	}
+
+	handled = true;
+}
+
+void tlabel::signal_handler_right_button_click(const event::tevent /* event */, bool & handled)
+{
+	DBG_GUI_E << "label right click" << std::endl;
+
+	if (!get_link_aware()) {
+		return ; // without marking event as "handled".
+	}
+
+	get_window()->mouse_capture();
+
+	tpoint mouse = get_mouse_position();
+
+	mouse.x -= get_x();
+	mouse.y -= get_y();
+
+	std::string link = get_label_link(mouse);
+
+	if (link.length() == 0) {
+		return ; // without marking event as "handled"
+	}
+
+	DBG_GUI_E << "Right Clicked Link:\"" << link << "\"\n";
+
+	desktop::clipboard::copy_to_clipboard(link, false);
+
+	gui2::show_message(get_window()->video(), "", _("Copied link!"), gui2::tmessage::auto_close);
 
 	handled = true;
 }

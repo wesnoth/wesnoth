@@ -93,6 +93,11 @@ private:
 	 * Left click signal handler: checks if we clicked on a hyperlink
 	 */
 	void signal_handler_left_button_click(const event::tevent event, bool & handled);
+
+	/**
+	 * Right click signal handler: checks if we clicked on a hyperlink, copied to clipboard
+	 */
+	void signal_handler_right_button_click(const event::tevent event, bool & handled);
 };
 
 } // namespace gui2
