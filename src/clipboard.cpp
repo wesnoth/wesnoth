@@ -17,6 +17,7 @@
 #include "global.hpp"
 
 #include "clipboard.hpp"
+#include "serialization/unicode.hpp"
 #include <algorithm>
 
 #include <SDL_version.h>
@@ -451,24 +452,25 @@ std::string copy_from_clipboard(const bool)
 	if(!OpenClipboard(NULL))
 		return "";
 
-	HGLOBAL hglb = GetClipboardData(CF_TEXT);
+	HGLOBAL hglb = GetClipboardData(CF_UNICODETEXT);
 	if(hglb == NULL) {
 		CloseClipboard();
 		return "";
 	}
-	char const * buffer = reinterpret_cast<char*>(GlobalLock(hglb));
+	wchar_t const * buffer = reinterpret_cast<wchar_t*>(GlobalLock(hglb));
 	if(buffer == NULL) {
 		CloseClipboard();
 		return "";
 	}
 
+	std::wstring str(buffer);
 	// Convert newlines
-	std::string str(buffer);
-	str.erase(std::remove(str.begin(),str.end(),'\r'),str.end());
-
+	str.erase(std::remove(str.begin(),str.end(), L'\r'), str.end());
+	utf16::string ustring(str.begin(), str.end());
 	GlobalUnlock(hglb);
 	CloseClipboard();
-	return str;
+
+	return unicode_cast<std::string>(ustring);
 }
 
 #endif
