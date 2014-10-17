@@ -105,6 +105,12 @@ void tlabel::signal_handler_left_button_click(const event::tevent /* event */, b
 		return ; // without marking event as "handled".
 	}
 
+	if (!desktop::open_object_is_supported()) {
+		gui2::show_message(get_window()->video(), "", _("Opening links is not supported, contact your packager."), gui2::tmessage::auto_close);
+		handled = true;
+		return;
+	}
+
 	get_window()->mouse_capture();
 
 	tpoint mouse = get_mouse_position();
