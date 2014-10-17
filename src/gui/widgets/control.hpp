@@ -151,10 +151,7 @@ public:
 	 * @returns		      The link aware status. This impl always
 	 *			      always returns false.
 	 */
-	virtual bool get_link_aware() const
-	{
-		return false;
-	}
+	virtual bool get_link_aware() const;
 
 	/**
 	 * Returns the color string to be used with links.
@@ -165,10 +162,7 @@ public:
 	 * @returns		      The link color string. This impl returns "#ffff00".
 	 *
 	 */
-	virtual std::string get_link_color() const
-	{
-		return "#ffff00";
-	}
+	virtual std::string get_link_color() const;
 
 	/**
 	 * See @ref twidget::layout_initialise.

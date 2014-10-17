@@ -173,6 +173,16 @@ unsigned tcontrol::get_characters_per_line() const
 	return 0;
 }
 
+bool tcontrol::get_link_aware() const
+{
+	return false;
+}
+
+std::string tcontrol::get_link_color() const
+{
+	return "#ffff00";
+}
+
 void tcontrol::layout_initialise(const bool full_initialisation)
 {
 	// Inherited.
