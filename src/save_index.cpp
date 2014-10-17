@@ -381,8 +381,8 @@ void delete_game(const std::string& name)
 	std::string modified_name = name;
 	replace_space2underbar(modified_name);
 
-	remove((filesystem::get_saves_dir() + "/" + name).c_str());
-	remove((filesystem::get_saves_dir() + "/" + modified_name).c_str());
+	filesystem::delete_file(filesystem::get_saves_dir() + "/" + name);
+	filesystem::delete_file(filesystem::get_saves_dir() + "/" + modified_name);
 
 	save_index_manager.remove(name);
 }

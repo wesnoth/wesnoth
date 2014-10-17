@@ -73,6 +73,7 @@ opts.AddVariables(
     BoolVariable('lowmem', 'Set to reduce memory usage by removing extra functionality', False),
     BoolVariable('notifications', 'Enable support for desktop notifications', True),
     BoolVariable('nls','enable compile/install of gettext message catalogs',True),
+    BoolVariable('boostfilesystem', 'Use boost filesystem', True),
     PathVariable('prefix', 'autotools-style installation prefix', "/usr/local", PathVariable.PathAccept),
     PathVariable('prefsdir', 'user preferences directory', "", PathVariable.PathAccept),
     PathVariable('default_prefs_file', 'default preferences file name', "", PathVariable.PathAccept),
@@ -286,6 +287,10 @@ configure_args = dict(
     log_file="$build_dir/config.log", conf_dir="$build_dir/sconf_temp")
 
 env.MergeFlags(env["extra_flags_config"])
+
+# Some tests need to load parts of boost
+if env["boostfilesystem"]:
+    env.PrependENVPath('LD_LIBRARY_PATH', env["boostlibdir"])
 if env["prereqs"]:
     conf = env.Configure(**configure_args)
 
@@ -362,7 +367,9 @@ if env["prereqs"]:
         conf.CheckBoost("iostreams", require_version = "1.34.1") & \
         conf.CheckBoostIostreamsGZip() & \
         conf.CheckBoostIostreamsBZip2() & \
-        conf.CheckBoost("smart_ptr", header_only = True) \
+        conf.CheckBoost("smart_ptr", header_only = True) & \
+        conf.CheckBoost("system") & \
+		((not env["boostfilesystem"]) or (conf.CheckBoost("filesystem", require_version = "1.44.0"))) \
             and Info("GOOD: Base prerequisites are met")) \
             or Warning("WARN: Base prerequisites are not met")
 
