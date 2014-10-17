@@ -29,6 +29,7 @@
 #include <set>
 
 #ifdef _WIN32
+#include <boost/locale.hpp>
 #include <windows.h>
 #endif /* !_WIN32 */
 
@@ -54,6 +55,21 @@ namespace {
 	const std::string finalcfg_filename = "_final.cfg";
 	const std::string initialcfg_filename = "_initial.cfg";
 }
+#ifdef _WIN32
+namespace {
+	class static_runner {
+	public:
+		static_runner() {
+			// Boost uses the current locale to generate a UTF-8 one
+			std::locale utf8_loc = boost::locale::generator().generate("");
+			boost::filesystem::path::imbue(utf8_loc);
+		}
+	};
+
+	static static_runner static_bfs_path_imbuer;
+}
+#endif
+
 
 namespace filesystem {
 
