@@ -99,6 +99,10 @@ private:
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
 
+	/** Inherited from tcontrol. */
+	void load_config_extra();
+
+	/***** ***** ***** signal handlers ***** ****** *****/
 
 	/**
 	 * Left click signal handler: checks if we clicked on a hyperlink

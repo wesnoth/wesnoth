@@ -42,7 +42,7 @@ tlabel::tlabel()
 		, state_(ENABLED)
 		, can_wrap_(false)
 		, characters_per_line_(0)
-		, link_aware_(true)
+		, link_aware_(false)
 {
 	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(&tlabel::signal_handler_left_button_click, this, _2, _3));
 	connect_signal<event::RIGHT_BUTTON_CLICK>(boost::bind(&tlabel::signal_handler_right_button_click, this, _2, _3));
@@ -114,6 +114,20 @@ const std::string& tlabel::get_control_type() const
 	static const std::string type = "label";
 	return type;
 }
+
+void tlabel::load_config_extra()
+{
+	assert(config());
+
+	boost::intrusive_ptr<const tlabel_definition::tresolution>
+	conf = boost::dynamic_pointer_cast<const tlabel_definition::tresolution>(
+			config());
+
+	assert(conf);
+
+	set_link_aware(conf->link_aware);
+}
+
 
 void tlabel::signal_handler_left_button_click(const event::tevent /* event */, bool & handled)
 {

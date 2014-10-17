@@ -28,6 +28,8 @@ struct tlabel_definition : public tcontrol_definition
 	struct tresolution : public tresolution_definition_
 	{
 		explicit tresolution(const config& cfg);
+
+		bool link_aware;
 	};
 };
 
