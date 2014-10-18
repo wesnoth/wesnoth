@@ -369,7 +369,8 @@ if env["prereqs"]:
         conf.CheckBoostIostreamsBZip2() & \
         conf.CheckBoost("smart_ptr", header_only = True) & \
         conf.CheckBoost("system") & \
-		((not env["boostfilesystem"]) or (conf.CheckBoost("filesystem", require_version = "1.44.0"))) \
+        ((not env["boostfilesystem"]) or (conf.CheckBoost("filesystem", require_version = "1.44.0"))) & \
+        ((not env["PLATFORM"] == "win32") or (not env["boostfilesystem"]) or (conf.CheckBoost("locale"))) \
             and Info("GOOD: Base prerequisites are met")) \
             or Warning("WARN: Base prerequisites are not met")
 
