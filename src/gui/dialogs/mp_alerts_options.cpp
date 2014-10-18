@@ -142,6 +142,12 @@ void tmp_alerts_options::pre_show(CVideo& /*video*/, twindow& window)
 	in_lobby = &find_widget<ttoggle_button>(&window,"game_has_begun_lobby", false);
 	in_lobby->set_visible(twidget::tvisible::invisible);
 
+	in_lobby = &find_widget<ttoggle_button>(&window,"turn_changed_sound", false); // If we get a sound for this then don't remove this button
+	in_lobby->set_visible(twidget::tvisible::invisible);
+
+	in_lobby = &find_widget<ttoggle_button>(&window,"turn_changed_lobby", false);
+	in_lobby->set_visible(twidget::tvisible::invisible);
+
 	tbutton * defaults;
 	defaults = &find_widget<tbutton>(&window,"revert_to_defaults", false);
 	connect_signal_mouse_left_click(*defaults, boost::bind(&revert_to_default_pref_values, boost::ref(window)));
