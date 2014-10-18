@@ -447,7 +447,7 @@ void copy_to_clipboard(const std::string& text, const bool)
 
 std::string copy_from_clipboard(const bool)
 {
-	if(!IsClipboardFormatAvailable(CF_TEXT))
+	if(!IsClipboardFormatAvailable(CF_UNICODETEXT))
 		return "";
 	if(!OpenClipboard(NULL))
 		return "";
