@@ -331,7 +331,8 @@ if env["prereqs"]:
         conf.CheckSDL(require_version = '1.2.7') and \
         conf.CheckSDL('SDL_net') & \
         conf.CheckBoost("system") & \
-		((not env["boostfilesystem"]) or (conf.CheckBoost("filesystem", require_version = "1.44.0"))) \
+		((not env["boostfilesystem"]) or (conf.CheckBoost("filesystem", require_version = "1.44.0"))) & \
+        ((not env["PLATFORM"] == "win32") or (not env["boostfilesystem"]) or (conf.CheckBoost("locale"))) \
             or Warning("Base prerequisites are not met.")
 
     env = conf.Finish()
