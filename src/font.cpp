@@ -29,6 +29,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -365,7 +366,11 @@ void manager::init() const
 			filesystem::get_files_in_dir(path, &files, NULL, filesystem::ENTIRE_FILE_PATH);
 		BOOST_FOREACH(const std::string& file, files) {
 			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
-				AddFontResourceA(file.c_str());
+			{
+				utf16::string ufile = unicode_cast<utf16::string>(file);
+				std::wstring wfile(ufile.begin(), ufile.end());
+				AddFontResourceW(wfile.c_str());
+			}
 		}
 	}
 #endif
@@ -384,7 +389,11 @@ void manager::deinit() const
 			filesystem::get_files_in_dir(path, &files, NULL, filesystem::ENTIRE_FILE_PATH);
 		BOOST_FOREACH(const std::string& file, files) {
 			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
-				RemoveFontResourceA(file.c_str());
+			{
+				utf16::string ufile = unicode_cast<utf16::string>(file);
+				std::wstring wfile(ufile.begin(), ufile.end());
+				RemoveFontResourceW(wfile.c_str());
+			}
 		}
 	}
 #endif
