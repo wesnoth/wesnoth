@@ -433,15 +433,18 @@ void copy_to_clipboard(const std::string& text, const bool)
 		++last;
 	}
 
-	const HGLOBAL hglb = GlobalAlloc(GMEM_MOVEABLE, (str.size() + 1) * sizeof(TCHAR));
+	utf16::string ustring = unicode_cast<utf16::string>(str);
+	std::wstring wstr(ustring.begin(), ustring.end());
+
+	const HGLOBAL hglb = GlobalAlloc(GMEM_MOVEABLE, (wstr.size() + 1) * sizeof(wchar_t));
 	if(hglb == NULL) {
 		CloseClipboard();
 		return;
 	}
-	char* const buffer = reinterpret_cast<char* const>(GlobalLock(hglb));
-	strcpy(buffer, str.c_str());
+	wchar_t* const buffer = reinterpret_cast<wchar_t* const>(GlobalLock(hglb));
+	wcscpy(buffer, wstr.c_str());
 	GlobalUnlock(hglb);
-	SetClipboardData(CF_TEXT, hglb);
+	SetClipboardData(CF_UNICODETEXT, hglb);
 	CloseClipboard();
 }
 
