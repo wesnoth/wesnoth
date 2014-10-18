@@ -22,6 +22,7 @@
 #include "global.hpp"
 
 #include "desktop/notifications.hpp"
+#include "formula_string_utils.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "preferences.hpp"
@@ -161,6 +162,13 @@ void game_has_begun()
 	if (notif_pref(id)) {
 		desktop::notifications::send(_("Wesnoth"), _ ("Game has begun!"), desktop::notifications::OTHER);
 	}
+}
+
+void turn_changed(const std::string & player_name)
+{
+	utils::string_map player;
+	player["name"] = player_name;
+	desktop::notifications::send(_("Turn changed"), vgettext("$name has taken control", player), desktop::notifications::TURN_CHANGED);
 }
 
 bool get_def_pref_sound(const std::string & id) {
