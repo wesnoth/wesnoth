@@ -365,9 +365,10 @@ void manager::init() const
 		std::vector<std::string> files;
 		if(filesystem::is_directory(path))
 			filesystem::get_files_in_dir(path, &files, NULL, filesystem::ENTIRE_FILE_PATH);
-		BOOST_FOREACH(const std::string& file, files)
+		BOOST_FOREACH(const std::string& file, files) {
 			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
 				AddFontResourceA(file.c_str());
+		}
 	}
 #endif
 }
@@ -383,9 +384,10 @@ void manager::deinit() const
 		std::vector<std::string> files;
 		if(filesystem::is_directory(path))
 			filesystem::get_files_in_dir(path, &files, NULL, filesystem::ENTIRE_FILE_PATH);
-		BOOST_FOREACH(const std::string& file, files)
+		BOOST_FOREACH(const std::string& file, files) {
 			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
 				RemoveFontResourceA(file.c_str());
+		}
 	}
 #endif
 }
