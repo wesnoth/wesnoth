@@ -30,7 +30,6 @@
 
 class config;
 
-//TODO: will this compile for msvc <= 2010 which has a bug when it comes to forward declaring return values?
 struct SDL_RWops;
 
 namespace filesystem {
