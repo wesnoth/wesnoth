@@ -60,14 +60,14 @@ Version 1.13.0-dev:
    * Added support for hyperlinks. In particular, in chat / addon descriptions.
 
  * WML engine:
-   * Added support for a shuffle key in the [music] music to allow selecting 
+   * Added support for a shuffle key in the [music] music to allow selecting
      between random and non-random music play (bug #19653)
 
  * Miscellaneous and bug fixes:
    * Dropped support for AmigaOS, BeOS, and OS/2.
    * Fixed halos glitching through locations that become shrouded after the
      halo is rendered for the first time.
-   * OS X user data directory is now ~/Library/Application Support/Wesnoth_1.13
+   * OS X user data directory is now ~/.wesnoth1.13
    * Fix bug #3856: The turn dialog used in hotseat MP play now applies
      a blindfold for the duration of the dialog.
    * Use a dropdown menu for both "skip replay" and "enter blindfold".
@@ -75,7 +75,7 @@ Version 1.13.0-dev:
    * OS X: mark Wesnoth as not high-resolution capable. This greatly improves
      performance on retina devices.
    * Corrected behavior of "game is ready" bell. (this fixes #21910)
-   * Deliver desktop notifications in tandem with "game is ready" bell and 
+   * Deliver desktop notifications in tandem with "game is ready" bell and
      also the "game has begun" bell.
    * Disable notifications should now work for other desktops besides KDE.
    * The replay viewer now proceeds through sides with empty controllers when
@@ -84,7 +84,7 @@ Version 1.13.0-dev:
    * Fix bug stopping drag+drop for unit movements
    * Revert premoved units selection to Wesnoth 1.10 behavior (#21448)
    * Fix unit move continuation if enemy discovered (#21372)
-   * Support for total conversions, so called "cores". 
+   * Support for total conversions, so called "cores".
    * Partial moves now able to be continued properly in whiteboard (#22231)
    * Fix bug wherein "lobby sounds" advanced preference didn't do anything for the default lobby.
    * Fix bug wherein dbus notifications did not have a wesnoth icon
