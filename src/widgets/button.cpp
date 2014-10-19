@@ -242,7 +242,7 @@ void button::load_images() {
 		err_msg += button_image_name_;
 		err_msg += ".png";
 		ERR_DP << err_msg << std::endl;
-		throw game::game_error(err_msg);
+		throw game::error(err_msg);
 	}
 
 	base_height_ = button_image->h;
