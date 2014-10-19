@@ -40,6 +40,8 @@
 #include "unit_helper.hpp"
 #include "wml_separators.hpp"
 #include "serialization/parser.hpp"
+#include "time_of_day.hpp"
+#include "tod_manager.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -578,6 +580,7 @@ enum UNIT_DESCRIPTION_TYPE {FULL_DESCRIPTION, NO_DESCRIPTION, NON_REVEALING_DESC
 /// encountered.
 static UNIT_DESCRIPTION_TYPE description_type(const unit_type &type);
 static std::vector<topic> generate_ability_topics(const bool);
+static std::vector<topic> generate_time_of_day_topics(const bool);
 static std::vector<topic> generate_weapon_special_topics(const bool);
 
 static void generate_era_sections(const config *help_cfg, section &sec, int level);
@@ -1071,6 +1074,8 @@ std::vector<topic> generate_topics(const bool sort_generated,const std::string &
 		res = generate_ability_topics(sort_generated);
 	} else if (generator == "weapon_specials") {
 		res = generate_weapon_special_topics(sort_generated);
+	} else if (generator == "time_of_days") {
+		res = generate_time_of_day_topics(sort_generated);
 	} else {
 		std::vector<std::string> parts = utils::split(generator, ':', utils::STRIP_SPACES);
 		if (parts[0] == "units" && parts.size()>1) {
@@ -1153,6 +1158,38 @@ const std::vector<std::string>& topic_text::parsed_text() const
 		generator_ = NULL;
 	}
 	return parsed_text_;
+}
+
+std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
+{
+	std::vector<topic> topics;
+	std::stringstream toplevel;
+
+	if (! resources::tod_manager) {
+		toplevel << N_("Only available during a scenario.");
+		topics.push_back( topic("Time of Day Schedule", "..schedule", toplevel.str()) );
+		return topics;
+	}
+	const std::vector<time_of_day>& times = resources::tod_manager->times();
+	BOOST_FOREACH(const time_of_day& time, times)
+	{
+		const std::string id = "time_of_day_" + time.id;
+		const std::string image = "<img>src='" + time.image + "'</img>";
+		std::stringstream text;
+
+		toplevel << make_link(time.name.str(), id) << jump_to(160) <<
+				image << jump(30) << time.lawful_bonus << '\n';
+
+		text << image << '\n' <<
+				time.description.str() << '\n' <<
+				"Lawful Bonus: " << time.lawful_bonus << '\n' <<
+				'\n' << make_link(N_("Schedule"), "..schedule");
+
+		topics.push_back( topic(time.name.str(), id, text.str()) );
+	}
+
+	topics.push_back( topic("Time of Day Schedule", "..schedule", toplevel.str()) );
+	return topics;
 }
 
 std::vector<topic> generate_weapon_special_topics(const bool sort_generated)

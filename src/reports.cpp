@@ -1099,7 +1099,7 @@ REPORT_GENERATOR(tod_stats, rc)
 	int times = schedule.size();
 	text << current + 1 << "/" << times;
 
-	return text_report(text.str(), tooltip.str());
+	return text_report(text.str(), tooltip.str(), "..schedule");
 }
 
 static config time_of_day_at(reports::context & rc, const map_location& mouseover_hex)
@@ -1142,7 +1142,7 @@ static config time_of_day_at(reports::context & rc, const map_location& mouseove
 	else if (tod.bonus_modified < 0) tod_image += "~DARKEN()";
 	if (preferences::flip_time()) tod_image += "~FL(horiz)";
 
-	return image_report(tod_image, tooltip.str(), "time_of_day");
+	return image_report(tod_image, tooltip.str(), "time_of_day_" + tod.id);
 }
 REPORT_GENERATOR(time_of_day, rc)
 {
