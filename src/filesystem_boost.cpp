@@ -26,6 +26,8 @@
 #include <boost/filesystem/fstream.hpp>
 #include <boost/foreach.hpp>
 #include <boost/system/windows_error.hpp>
+#include <boost/iostreams/device/file_descriptor.hpp>
+#include <boost/iostreams/stream.hpp>
 #include <set>
 
 #ifdef _WIN32
@@ -602,6 +604,7 @@ std::string read_file(const std::string &fname)
 	ss << is->rdbuf();
 	return ss.str();
 }
+
 std::istream *istream_file(const std::string &fname, bool treat_failure_as_error)
 {
 	LOG_FS << "Streaming " << fname << " for reading.\n";
@@ -611,21 +614,41 @@ std::istream *istream_file(const std::string &fname, bool treat_failure_as_error
 		s->clear(std::ios_base::failbit);
 		return s;
 	}
-
-	bfs::ifstream *s = new bfs::ifstream(path(fname),std::ios_base::binary);
-	if (s->is_open()) {
+	
+	//mingw doesn't  support std::basic_ifstream::basic_ifstream(const wchar_t* fname)
+	//that why boost::filesystem::fstream.hpp doesnt work with mingw.
+	
+	//boost::iostreams::file_descriptor gives us no alternative to exceptions
+	try
+	{
+		boost::iostreams::file_descriptor_source fd(path(fname), std::ios_base::binary);
+		//TODO: has this still use ?
+		if (!fd.is_open() && treat_failure_as_error) {
+			ERR_FS << "Could not open '" << fname << "' for reading.\n";
+		}
+		return new boost::iostreams::stream<boost::iostreams::file_descriptor_source>(fd, 4096, 0);
+	}
+	catch(const std::exception ex)
+	{
+		if(treat_failure_as_error)
+		{
+			ERR_FS << "Could not open '" << fname << "' for reading.\n";
+		}
+		bfs::ifstream *s = new bfs::ifstream();
+		s->clear(std::ios_base::failbit);
 		return s;
 	}
-	if(treat_failure_as_error) {
-		ERR_FS << "Could not open '" << fname << "' for reading.\n";
-	}
-	return s;
-
 }
+
 std::ostream *ostream_file(std::string const &fname)
 {
 	LOG_FS << "streaming " << fname << " for writing.\n";
+#if 1
+	boost::iostreams::file_descriptor_sink fd(path(fname), std::ios_base::binary);
+	return new boost::iostreams::stream<boost::iostreams::file_descriptor_sink>(fd, 4096, 0);
+#else
 	return new bfs::ofstream(path(fname), std::ios_base::binary);
+#endif
 }
 // Throws io_exception if an error occurs
 void write_file(const std::string& fname, const std::string& data)
