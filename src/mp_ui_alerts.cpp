@@ -22,6 +22,7 @@
 #include "global.hpp"
 
 #include "desktop/notifications.hpp"
+#include "formula_string_utils.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "preferences.hpp"
@@ -53,7 +54,7 @@ bool notif_pref(std::string id)
 } // end anonymous namespace
 
 // Note: This list must agree with data/gui/.../lobby_sound_options.cfg
-const std::vector<std::string> items = boost::assign::list_of("player_joins")("player_leaves")("private_message")("friend_message")("public_message")("server_message")("ready_for_start")("game_has_begun");
+const std::vector<std::string> items = boost::assign::list_of("player_joins")("player_leaves")("private_message")("friend_message")("public_message")("server_message")("ready_for_start")("game_has_begun")("turn_changed");
 
 void player_joins(bool is_lobby)
 {
@@ -163,12 +164,22 @@ void game_has_begun()
 	}
 }
 
+void turn_changed(const std::string & player_name)
+{
+	std::string id = "turn_changed";
+	if (notif_pref(id)) {
+		utils::string_map player;
+		player["name"] = player_name;
+		desktop::notifications::send(_("Turn changed"), vgettext("$name has taken control", player), desktop::notifications::TURN_CHANGED);
+	}
+}
+
 bool get_def_pref_sound(const std::string & id) {
 	return (id != "public_message" && id != "friend_message");
 }
 
 bool get_def_pref_notif(const std::string & id) {
-	return (desktop::notifications::available() && (id == "private_message" || id == "ready_for_start" || id == "game_has_begun"));
+	return (desktop::notifications::available() && (id == "private_message" || id == "ready_for_start" || id == "game_has_begun" || id == "turn_changed"));
 }
 
 bool get_def_pref_lobby(const std::string & id) {

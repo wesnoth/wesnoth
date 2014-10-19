@@ -18,11 +18,11 @@
 #include "dialogs.hpp"
 
 #include "actions/undo.hpp"
-#include "desktop/notifications.hpp"
 #include "display_chat_manager.hpp"
 #include "game_end_exceptions.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "mp_ui_alerts.hpp"
 #include "playturn.hpp"
 #include "preferences.hpp"
 #include "resources.hpp"
@@ -100,12 +100,7 @@ void playmp_controller::stop_network(){
 
 possible_end_play_signal playmp_controller::play_side()
 {
-	utils::string_map player;
-	player["name"] = current_team().current_player();
-	std::string turn_notification_msg = _("$name has taken control");
-	turn_notification_msg = utils::interpolate_variables_into_string(turn_notification_msg, &player);
-	desktop::notifications::send(_("Turn changed"), turn_notification_msg, desktop::notifications::TURN_CHANGED);
-
+	mp_ui_alerts::turn_changed(current_team().current_player());
 	// Proceed with the parent function.
 	return playsingle_controller::play_side();
 }

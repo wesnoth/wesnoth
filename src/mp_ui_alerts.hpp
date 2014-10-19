@@ -35,6 +35,8 @@ namespace mp_ui_alerts {
 	void ready_for_start();
 	void game_has_begun();
 
+	void turn_changed(const std::string & player);
+
 	// Functions to calculate what the default preference should be
 	bool get_def_pref_sound(const std::string &);
 	bool get_def_pref_notif(const std::string &);

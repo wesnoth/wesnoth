@@ -143,6 +143,8 @@ Version 1.13.0-dev:
    * Fixed bug #22337: Bug in inspect long arrays
    * Added a new "Alerts" configuration screen under Preferences > Multiplayer,
      refactored all of the mp alerts / desktop notifications for customizability
+   * Removed "desktop_notifications" and "lobby_sounds" advanced preferences,
+     as they are subsumed by the Preferences > Multiplayer > Alerts screen now.
  * WML engine:
    * Added customizable recall costs for unit types and individual units,
      using the new recall_cost attribute in [unit_type] and [unit].
