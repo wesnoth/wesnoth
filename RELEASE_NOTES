@@ -35,6 +35,10 @@ A button that allows playing one move at a time in replay mode has been added. T
 The multiplayer alerts, i.e. the sounds and desktop notifications such as related to mp lobby events and chat messages, can now be configured under Preferences > Multiplayer > Alerts. Individual events, such as players joining or leaving, private messages, messages from friends, etc. may now prompt a sound or notification, and may be handled differently in the lobby vs. in game. The advanced preferences "lobby sounds" and "desktop notifications" have been removed, having been subsumed by this new screen. The particular sound files which are played for each of these types of events, may now be easily reconfigured by changing some attributes in data/game_config.cfg.
 [/section]
 
+[section="Hyperlinks"]
+Added support for hyperlinks to GUI2. This means that the chat log and also the addon descriptions pages should now support rendering and clicking on hyperlinks.
+[/section]
+
 [section="Example section 2"]
 Example contents 2.
 [/section]
