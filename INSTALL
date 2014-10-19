@@ -9,6 +9,7 @@ Contents:
 
 You'll need to have these libraries and their development headers to build Wesnoth:
 
+ boost_filesystem >= 1.44.0
  boost_iostreams >= 1.36.0
  boost_regex >= 1.36.0
  boost_serialization >= 1.36.0
@@ -20,7 +21,7 @@ You'll need to have these libraries and their development headers to build Wesno
  libpango (with cairo backend) >= 1.21.3
  libsdl >= 1.2.7
  libsdl-image >= 1.2 (with png support)
- libsdl-mixer >= 1.2 (with Vorbis support)
+ libsdl-mixer >= 1.2.12 (with Vorbis support)
  vorbisfile
  libsdl-net
  libsdl-ttf >= 2.0.8
