@@ -142,6 +142,29 @@ public:
 	virtual unsigned get_characters_per_line() const;
 
 	/**
+	 * Returns whether the label should be link_aware, in
+	 * in rendering and in searching for links with get_link.
+	 *
+	 * This value is used to call @ref ttext::set_link_aware
+	 * (indirectly).
+	 *
+	 * @returns		      The link aware status. This impl always
+	 *			      always returns false.
+	 */
+	virtual bool get_link_aware() const;
+
+	/**
+	 * Returns the color string to be used with links.
+	 *
+	 * This value is used to call @ref ttext::set_link_color
+	 * (indirectly).
+	 *
+	 * @returns		      The link color string. This impl returns "#ffff00".
+	 *
+	 */
+	virtual std::string get_link_color() const;
+
+	/**
 	 * See @ref twidget::layout_initialise.
 	 *
 	 * @todo Also handle the tooltip state.
@@ -420,6 +443,11 @@ protected:
 	virtual void impl_draw_foreground(surface& frame_buffer,
 									  int x_offset,
 									  int y_offset) OVERRIDE;
+
+	/** Exposes font::ttext::get_token, for the text label of this control */
+	std::string get_label_token(const gui2::tpoint & position, const char * delimiters = " \n\r\t") const;
+
+	std::string get_label_link(const gui2::tpoint & position) const;
 
 private:
 #ifdef GUI2_EXPERIMENTAL_LISTBOX

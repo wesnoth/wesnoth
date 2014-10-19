@@ -173,6 +173,16 @@ unsigned tcontrol::get_characters_per_line() const
 	return 0;
 }
 
+bool tcontrol::get_link_aware() const
+{
+	return false;
+}
+
+std::string tcontrol::get_link_color() const
+{
+	return "#ffff00";
+}
+
 void tcontrol::layout_initialise(const bool full_initialisation)
 {
 	// Inherited.
@@ -353,6 +363,8 @@ void tcontrol::update_canvas()
 	{
 		canvas.set_variable("text", variant(label_));
 		canvas.set_variable("text_markup", variant(use_markup_));
+		canvas.set_variable("text_link_aware", variant(get_link_aware()));
+		canvas.set_variable("text_link_color", variant(get_link_color()));
 		canvas.set_variable("text_alignment",
 							variant(encode_text_alignment(text_alignment_)));
 		canvas.set_variable("text_maximum_width", variant(max_width));
@@ -436,6 +448,9 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size,
 
 	const tpoint border(config_->text_extra_width, config_->text_extra_height);
 	tpoint size = minimum_size - border;
+
+	renderer_.set_link_aware(get_link_aware())
+			.set_link_color(get_link_color());
 
 	renderer_.set_text(label_, use_markup_);
 
@@ -541,6 +556,16 @@ void tcontrol::signal_handler_notify_remove_tooltip(const event::tevent event,
 	tip::remove();
 
 	handled = true;
+}
+
+std::string tcontrol::get_label_token(const gui2::tpoint & position, const char * delim) const
+{
+	return renderer_.get_token(position, delim);
+}
+
+std::string tcontrol::get_label_link(const gui2::tpoint & position) const
+{
+	return renderer_.get_link(position);
 }
 
 } // namespace gui2

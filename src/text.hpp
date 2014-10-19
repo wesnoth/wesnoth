@@ -163,6 +163,27 @@ public:
 		const unsigned column, const unsigned line = 0) const;
 
 	/**
+	 * Gets the largest collection of characters, including the token at position,
+	 * and not including any characters from the delimiters set.
+	 *
+	 * @param position            The pixel position in the text area.
+	 *
+	 * @returns                   The token containing position, and none of the
+	 * 			      delimiter characters. If position is out of bounds,
+	 *			      it returns the empty string.
+	 */
+	std::string get_token(const gui2::tpoint & position, const char * delimiters = " \n\r\t") const;
+
+	/**
+	 * Checks if position points to a character in a link in the text, returns it
+	 * if so, empty string otherwise. Link-awareness must be enabled to get results.
+	 * @param position            The pixel position in the text area.
+	 *
+	 * @returns                   The link if one is found, the empty string otherwise.
+	 */
+	std::string get_link(const gui2::tpoint & position) const;
+
+	/**
 	 * Gets the column of line of the character at the position.
 	 *
 	 * @param position            The pixel position in the text area.
@@ -219,6 +240,11 @@ public:
 
 	ttext& set_maximum_length(const size_t maximum_length);
 
+	bool link_aware() const { return link_aware_; }
+
+	ttext& set_link_aware(bool b);
+
+	ttext& set_link_color(const std::string & color);
 private:
 
 	/***** ***** ***** *****  Pango variables ***** ***** ***** *****/
@@ -243,6 +269,12 @@ private:
 
 	/** Is the text markedup if so the markedup render routines need to be used. */
 	bool markedup_text_;
+
+	/** Are hyperlinks in the text marked-up, and will get_link return them. */
+	bool link_aware_;
+
+	/** The color to render links in. */
+	std::string link_color_;
 
 	/** The font size to draw. */
 	unsigned font_size_;
@@ -369,6 +401,9 @@ private:
 	 */
 	bool set_markup(const std::string& text);
 
+	bool set_markup_helper(const std::string & text);
+
+	std::string handle_token(const std::string & token) const;
 };
 
 } // namespace font

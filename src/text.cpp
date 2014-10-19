@@ -68,6 +68,8 @@ const unsigned ttext::STYLE_BOLD = TTF_STYLE_BOLD;
 const unsigned ttext::STYLE_ITALIC = TTF_STYLE_ITALIC;
 const unsigned ttext::STYLE_UNDERLINE = TTF_STYLE_UNDERLINE;
 
+static bool looks_like_url(const std::string & token);
+
 std::string escape_text(const std::string& text)
 {
 	std::string result;
@@ -99,6 +101,7 @@ ttext::ttext() :
 #endif
 	text_(),
 	markedup_text_(false),
+	link_aware_(false),
 	font_size_(14),
 	font_style_(STYLE_NORMAL),
 	foreground_color_(0xFFFFFFFF), // solid white
@@ -267,6 +270,53 @@ gui2::tpoint ttext::get_cursor_position(
 	pango_layout_get_cursor_pos(layout_, offset, &rect, NULL);
 
 	return gui2::tpoint(PANGO_PIXELS(rect.x), PANGO_PIXELS(rect.y));
+}
+
+std::string ttext::get_token(const gui2::tpoint & position, const char * delim) const
+{
+	recalculate();
+
+	// Get the index of the character.
+	int index, trailing;
+	if (!pango_layout_xy_to_index(layout_, position.x * PANGO_SCALE,
+		position.y * PANGO_SCALE, &index, &trailing)) {
+		return "";
+	}
+
+	std::string txt = pango_layout_get_text(layout_);
+
+	std::string d(delim);
+
+	if (index < 0 || (static_cast<size_t>(index) >= txt.size()) || d.find(txt.at(index)) != std::string::npos) {
+		return ""; // if the index is out of bounds, or the index character is a delimiter, return nothing
+	}
+
+	size_t l = index;
+	while (l > 0 && (d.find(txt.at(l-1)) == std::string::npos)) {
+		--l;
+	}
+
+	size_t r = index + 1;
+	while (r < txt.size() && (d.find(txt.at(r)) == std::string::npos)) {
+		++r;
+	}
+
+	return txt.substr(l,r-l);
+}
+
+std::string ttext::get_link(const gui2::tpoint & position) const
+{
+	if (!link_aware_) {
+		return "";
+	}
+
+	std::string tok = get_token(position, " \n\r\t");
+
+	if (looks_like_url(tok)) {
+		return tok;
+	} else {
+		return "";
+	}
 }
 
 gui2::tpoint ttext::get_column_line(const gui2::tpoint& position) const
@@ -472,6 +522,27 @@ ttext& ttext::set_maximum_length(const size_t maximum_length)
 			utf8::string tmp = text_;
 			set_text(utf8::truncate(tmp, maximum_length_), false);
 		}
+	}
+
+	return *this;
+}
+
+ttext& ttext::set_link_aware(bool b)
+{
+	if (link_aware_ != b) {
+		calculation_dirty_ = true;
+		surface_dirty_ = true;
+		link_aware_ = b;
+	}
+	return *this;
+}
+
+ttext& ttext::set_link_color(const std::string & color)
+{
+	if(color != link_color_) {
+		link_color_ = color;
+		calculation_dirty_ = true;
+		surface_dirty_ = true;
 	}
 
 	return *this;
@@ -726,7 +797,47 @@ void ttext::create_surface_buffer(const size_t size) const
 	memset(surface_buffer_, 0, size);
 }
 
-bool ttext::set_markup(const std::string& text)
+bool ttext::set_markup(const std::string & text) {
+	if (!link_aware_) {
+		return set_markup_helper(text);
+	} else {
+		std::string delim = " \n\r\t";
+
+		// Tokenize according to these delimiters, and stream the results of `handle_token` on each token to get the new text.
+
+		std::stringstream ss;
+
+		int last_delim = -1;
+		for (size_t index = 0; index < text.size(); ++index) {
+			if (delim.find(text.at(index)) != std::string::npos) {
+				ss << handle_token(text.substr(last_delim + 1, index - last_delim - 1)); // want to include chars from range since last token, dont want to include any delimiters
+				ss << text.at(index);
+				last_delim = index;
+			}
+		}
+		if (last_delim < static_cast<int>(text.size()) - 1) {
+			ss << handle_token(text.substr(last_delim + 1, text.size() - last_delim - 1));
+		}
+
+		return set_markup_helper(ss.str());
+	}
+}
+
+static bool looks_like_url(const std::string & str)
+{
+	return (str.size() >= 8) && ((str.substr(0,7) == "http://") || (str.substr(0,8) == "https://"));
+}
+
+std::string ttext::handle_token(const std::string & token) const
+{
+	if (looks_like_url(token)) {
+		return "<span underline=\'single\' color=\'" + link_color_ + "\'>" + token + "</span>";
+	} else {
+		return token;
+	}
+}
+
+bool ttext::set_markup_helper(const std::string& text)
 {
 	if(pango_parse_markup(text.c_str(), text.size()
 			, 0, NULL, NULL, NULL, NULL)) {

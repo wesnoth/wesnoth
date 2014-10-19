@@ -24,19 +24,19 @@ namespace gui2
 class tlabel : public tcontrol
 {
 public:
-	tlabel()
-		: tcontrol(COUNT)
-		, state_(ENABLED)
-		, can_wrap_(false)
-		, characters_per_line_(0)
-	{
-	}
+	tlabel();
 
 	/** See @ref twidget::can_wrap. */
 	virtual bool can_wrap() const OVERRIDE;
 
 	/** See @ref tcontrol::get_characters_per_line. */
 	virtual unsigned get_characters_per_line() const OVERRIDE;
+
+	/** See @ref tcontrol::get_link_aware. */
+	virtual bool get_link_aware() const OVERRIDE;
+
+	/** See @ref tcontrol::get_link_aware. */
+	virtual std::string get_link_color() const OVERRIDE;
 
 	/** See @ref tcontrol::set_active. */
 	virtual void set_active(const bool active) OVERRIDE;
@@ -58,6 +58,10 @@ public:
 	}
 
 	void set_characters_per_line(const unsigned set_characters_per_line);
+
+	void set_link_aware(bool l);
+
+	void set_link_color(const std::string & color);
 
 private:
 	/**
@@ -91,8 +95,34 @@ private:
 	 */
 	unsigned characters_per_line_;
 
+	/**
+	 * Whether the label is link aware, rendering links with special formatting
+	 * and handling click events.
+	 */
+	bool link_aware_;
+
+	/**
+	 * What color links will be rendered in.
+	 */
+	std::string link_color_;
+
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
+
+	/** Inherited from tcontrol. */
+	void load_config_extra();
+
+	/***** ***** ***** signal handlers ***** ****** *****/
+
+	/**
+	 * Left click signal handler: checks if we clicked on a hyperlink
+	 */
+	void signal_handler_left_button_click(const event::tevent event, bool & handled);
+
+	/**
+	 * Right click signal handler: checks if we clicked on a hyperlink, copied to clipboard
+	 */
+	void signal_handler_right_button_click(const event::tevent event, bool & handled);
 };
 
 } // namespace gui2
