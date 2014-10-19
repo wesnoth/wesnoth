@@ -39,6 +39,22 @@ The multiplayer alerts, i.e. the sounds and desktop notifications such as relate
 Added support for hyperlinks to GUI2. This means that the chat log and also the addon descriptions pages should now support rendering and clicking on hyperlinks.
 [/section]
 
+[section="New Filesystem Code"]
+Revised dependencies:
+
+[list]
+[*]SDL_mixer version ticked to 1.2.12
+[*]Boost filesystem (new), at version 1.44.
+[/list]
+
+On Windows only, Boost filesystem is needed at version 1.48, for boost::locale.
+
+The boost filesystem dep may be disabled, if compiling with scons, by passing it an argument. Then it will compile using the legacy filesystem code. (This may not be maintained in the long term, however.)
+
+(The new SDL_mixer requirement cannot be similarly disabled.)
+[/section]
+
+
 [section="Example section 2"]
 Example contents 2.
 [/section]
