@@ -29,7 +29,9 @@ std::ostream &operator<<(std::ostream &s, const tod_color& c){
 time_of_day::time_of_day(const config& cfg):
 	lawful_bonus(cfg["lawful_bonus"]),
 	bonus_modified(0),
-	image(cfg["image"]), name(cfg["name"].t_str()), id(cfg["id"]),
+	image(cfg["image"]), name(cfg["name"].t_str()),
+	description(cfg["description"].t_str()),
+	id(cfg["id"]),
 	image_mask(cfg["mask"]),
 	color(cfg["red"], cfg["green"], cfg["blue"]),
 	sounds(cfg["sound"])
@@ -41,6 +43,7 @@ time_of_day::time_of_day()
 , bonus_modified(0)
 , image()
 , name(N_("Stub Time of Day"))
+, description(N_("This Time of Day is only a Stub!"))
 , id("nulltod")
 , image_mask()
 , color(0,0,0)
@@ -56,6 +59,7 @@ void time_of_day::write(config& cfg) const
 	cfg["blue"] = color.b;
 	cfg["image"] = image;
 	cfg["name"] = name;
+	cfg["description"] = description;
 	cfg["id"] = id;
 	cfg["mask"] = image_mask;
 	cfg["sound"] = sounds;
