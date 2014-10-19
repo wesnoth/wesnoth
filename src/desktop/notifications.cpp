@@ -55,8 +55,6 @@ bool available() { return true; }
 
 void send(const std::string& owner, const std::string& message, type t)
 {
-	if (!preferences::get("desktop_notifications", true)) { return; }
-
 	Uint8 app_state = SDL_GetAppState();
 
 	// Do not show notifications when the window is visible...
