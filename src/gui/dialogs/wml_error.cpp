@@ -20,13 +20,14 @@
 #include "addon/manager.hpp"
 #include "desktop/clipboard.hpp"
 #include "filesystem.hpp"
-#include "gettext.hpp"
 #include "gui/auxiliary/find_widget.tpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/control.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"
+
+#include "gettext.hpp"
 
 #include <boost/bind.hpp>
 
@@ -220,6 +221,7 @@ void twml_error::pre_show(CVideo& /*video*/, twindow& window)
 
 	if (!desktop::clipboard::available()) {
 		copy_button.set_active(false);
+		copy_button.set_tooltip(_("Clipboard support not found, contact your packager."));
 	}
 }
 

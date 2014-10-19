@@ -389,6 +389,7 @@ void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
 
 		if (!desktop::clipboard::available()) {
 			url_copy_button.set_active(false);
+			url_copy_button.set_tooltip(_("Clipboard support not found, contact your packager."));
 		}
 	} else {
 		url_go_button.set_active(false);

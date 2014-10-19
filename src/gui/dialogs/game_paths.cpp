@@ -28,6 +28,8 @@
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"
 
+#include "gettext.hpp"
+
 #include <boost/bind.hpp>
 
 namespace gui2
@@ -114,6 +116,7 @@ void tgame_paths::pre_show(CVideo& /*video*/, twindow& window)
 
 		if(!desktop::clipboard::available()) {
 			copy_w.set_active(false);
+			copy_w.set_tooltip(_("Clipboard support not found, contact your packager."));
 		}
 	}
 }
