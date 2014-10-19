@@ -16,7 +16,7 @@
 
 #include "gui/widgets/text.hpp"
 
-#include "clipboard.hpp"
+#include "desktop/clipboard.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "serialization/string_utils.hpp"
 
@@ -157,12 +157,12 @@ void ttext_::copy_selection(const bool mouse)
 		end = utf8::index(txt, start);
 		start = utf8::index(txt, start + selection_length_);
 	}
-	copy_to_clipboard(txt.substr(start, end - start), mouse);
+	desktop::clipboard::copy_to_clipboard(txt.substr(start, end - start), mouse);
 }
 
 void ttext_::paste_selection(const bool mouse)
 {
-	const std::string& text = copy_from_clipboard(mouse);
+	const std::string& text = desktop::clipboard::copy_from_clipboard(mouse);
 	if(text.empty()) {
 		return;
 	}

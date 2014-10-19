@@ -71,9 +71,9 @@ libwesnoth_core = [env.Library("wesnoth_core", libwesnoth_core_sources)]
 
 libwesnoth_sources = Split("""
     arrow.cpp
-    clipboard.cpp
     construct_dialog.cpp
     cursor.cpp
+    desktop/clipboard.cpp
     display.cpp
     display_context.cpp
     events.cpp

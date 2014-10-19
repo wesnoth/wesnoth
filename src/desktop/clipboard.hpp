@@ -21,6 +21,10 @@
 
 union SDL_Event;
 
+namespace desktop {
+
+namespace clipboard {
+
 /**
  * Copies text to the clipboard.
  *
@@ -41,5 +45,9 @@ void copy_to_clipboard(const std::string& text, const bool mouse);
 std::string copy_from_clipboard(const bool mouse);
 
 void handle_system_event(const SDL_Event& ev);
+
+} // end namespace clipboard
+
+} // end namespace desktop
 
 #endif

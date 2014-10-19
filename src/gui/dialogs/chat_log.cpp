@@ -30,7 +30,7 @@
 #include "gui/widgets/slider.hpp"
 #include "utils/foreach.tpp"
 
-#include "../../clipboard.hpp"
+#include "desktop/clipboard.hpp"
 #include "../../game_preferences.hpp"
 #include "../../log.hpp"
 #include "../../resources.hpp"
@@ -201,7 +201,7 @@ public:
 	{
 		std::ostringstream s;
 		stream_log(s, first, last, true);
-		copy_to_clipboard(s.str(), false);
+		desktop::clipboard::copy_to_clipboard(s.str(), false);
 	}
 };
 

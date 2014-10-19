@@ -16,7 +16,6 @@
 
 #include "gui/auxiliary/event/handler.hpp"
 
-#include "clipboard.hpp"
 #include "gui/auxiliary/event/dispatcher.hpp"
 #include "gui/auxiliary/timer.hpp"
 #include "gui/auxiliary/log.hpp"

@@ -14,7 +14,7 @@
 
 #include "global.hpp"
 
-#include "clipboard.hpp"
+#include "desktop/clipboard.hpp"
 #include "cursor.hpp"
 #include "events.hpp"
 #include "log.hpp"
@@ -403,7 +403,7 @@ void pump()
 #if defined(_X11) && !defined(__APPLE__)
 			case SDL_SYSWMEVENT: {
 				//clipboard support for X11
-				handle_system_event(event);
+				desktop::clipboard::handle_system_event(event);
 				break;
 			}
 #endif

@@ -16,7 +16,7 @@
 
 #include "global.hpp"
 
-#include "clipboard.hpp"
+#include "desktop/clipboard.hpp"
 #include "serialization/unicode.hpp"
 #include <algorithm>
 
@@ -33,6 +33,10 @@
  * Note SDL 2.0 has its own clipboard routines, but they don't support
  * different clipboards (yet).
  */
+
+namespace desktop {
+
+namespace clipboard {
 
 void copy_to_clipboard(const std::string& text, const bool)
 {
@@ -54,6 +58,10 @@ std::string copy_from_clipboard(const bool)
 void handle_system_event(const SDL_Event& /*event*/)
 {
 }
+
+} // end namespace clipboard
+
+} // end namespace desktop
 
 #else
 
@@ -222,6 +230,10 @@ static std::string clipboard_string;
 */
 static std::string primary_string;
 
+namespace desktop {
+
+namespace clipboard {
+
 void handle_system_event(const SDL_Event& event)
 {
 	XEvent& xev = event.syswm.msg->event.xevent;
@@ -313,6 +325,10 @@ void copy_to_clipboard(const std::string& text, const bool mouse)
 	}
 }
 
+} // end namespace clipboard
+
+} // end namespace desktop
+
 /**
  * Tries to grab a given target.
  * Returns true if successful, false otherwise.
@@ -376,6 +392,10 @@ static bool try_grab_target(Atom source, Atom target, std::string& ret)
 	return false;
 }
 
+namespace desktop {
+
+namespace clipboard {
+
 std::string copy_from_clipboard(const bool mouse)
 {
 	// in-wesnoth copy-paste
@@ -407,10 +427,18 @@ std::string copy_from_clipboard(const bool mouse)
 	return "";
 }
 
+} // end namespace clipboard
+
+} // end namespace desktop
+
 #endif
 #ifdef _WIN32
 #include <windows.h>
 #define CLIPBOARD_FUNCS_DEFINED
+
+namespace desktop {
+
+namespace clipboard {
 
 void handle_system_event(const SDL_Event& )
 {}
@@ -479,12 +507,20 @@ std::string copy_from_clipboard(const bool)
 	return unicode_cast<std::string>(ustring);
 }
 
+} // end namespace clipboard
+
+} // end namespace desktop
+
 #endif
 
 #ifdef __APPLE__
 #define CLIPBOARD_FUNCS_DEFINED
 
 #include <Carbon/Carbon.h>
+
+namespace desktop {
+
+namespace clipboard {
 
 void copy_to_clipboard(const std::string& text, const bool)
 {
@@ -564,9 +600,17 @@ void handle_system_event(const SDL_Event& /*event*/)
 {
 }
 
+} // end namespace clipboard
+
+} // end namespace desktop
+
 #endif
 
 #ifndef CLIPBOARD_FUNCS_DEFINED
+
+namespace desktop {
+
+namespace clipboard {
 
 void copy_to_clipboard(const std::string& /*text*/, const bool)
 {
@@ -581,6 +625,9 @@ void handle_system_event(const SDL_Event& /*event*/)
 {
 }
 
-#endif
-#endif
+} // end namespace clipboard
 
+} // end namespace desktop
+
+#endif
+#endif

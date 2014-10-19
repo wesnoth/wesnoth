@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/game_cache_options.hpp"
 
-#include "clipboard.hpp"
+#include "desktop/clipboard.hpp"
 #include "config_cache.hpp"
 #include "desktop/open.hpp"
 #include "filesystem.hpp"
@@ -129,7 +129,7 @@ void tgame_cache_options::update_cache_size_display()
 
 void tgame_cache_options::copy_to_clipboard_callback()
 {
-	copy_to_clipboard(cache_path_, false);
+	desktop::clipboard::copy_to_clipboard(cache_path_, false);
 }
 
 void tgame_cache_options::browse_cache_callback()

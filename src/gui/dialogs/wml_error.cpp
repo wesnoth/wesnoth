@@ -18,7 +18,7 @@
 
 #include "addon/info.hpp"
 #include "addon/manager.hpp"
-#include "clipboard.hpp"
+#include "desktop/clipboard.hpp"
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.tpp"
@@ -221,7 +221,7 @@ void twml_error::pre_show(CVideo& /*video*/, twindow& window)
 
 void twml_error::copy_report_callback()
 {
-	copy_to_clipboard(report_, false);
+	desktop::clipboard::copy_to_clipboard(report_, false);
 }
 
 } // end namespace gui2

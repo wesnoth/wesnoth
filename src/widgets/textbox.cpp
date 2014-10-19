@@ -17,7 +17,7 @@
 #include "global.hpp"
 
 #include "widgets/textbox.hpp"
-#include "clipboard.hpp"
+#include "desktop/clipboard.hpp"
 #include "log.hpp"
 #include "sdl/alpha.hpp"
 #include "sdl/rect.hpp"
@@ -611,7 +611,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 				if(is_selection())
 					erase_selection();
 
-				std::string str = copy_from_clipboard(false);
+				std::string str = desktop::clipboard::copy_from_clipboard(false);
 
 				//cut off anything after the first newline
 				str.erase(std::find_if(str.begin(),str.end(),utils::isnewline),str.end());
@@ -639,7 +639,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 
 						ucs4::string ws(text_.begin() + beg, text_.begin() + end);
 						std::string s = unicode_cast<utf8::string>(ws);
-						copy_to_clipboard(s, false);
+						desktop::clipboard::copy_to_clipboard(s, false);
 					}
 				}
 				break;

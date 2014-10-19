@@ -946,7 +946,7 @@ set(wesnoth-main_SRC
 
 set(libwesnoth-game_STAT_SRC
 	arrow.cpp
-	clipboard.cpp
+	desktop/clipboard.cpp
 	construct_dialog.cpp
 	cursor.cpp
 	display.cpp

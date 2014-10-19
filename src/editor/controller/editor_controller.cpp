@@ -39,7 +39,7 @@
 #include "dialogs.hpp"
 #include "resources.hpp"
 
-#include "../../clipboard.hpp"
+#include "desktop/clipboard.hpp"
 #include "../../game_preferences.hpp"
 #include "../../gettext.hpp"
 #include "../../leader_scroll_dialog.hpp"
@@ -1160,7 +1160,7 @@ void editor_controller::export_selection_coords()
 			++i;
 		}
 		ssx << "\n" << ssy.str() << "\n";
-		copy_to_clipboard(ssx.str(), false);
+		desktop::clipboard::copy_to_clipboard(ssx.str(), false);
 	}
 }
 

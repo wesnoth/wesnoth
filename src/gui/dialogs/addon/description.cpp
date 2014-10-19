@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/addon/description.hpp"
 
-#include "clipboard.hpp"
+#include "desktop/clipboard.hpp"
 #include "desktop/open.hpp"
 #include "formula_string_utils.hpp"
 #include "gettext.hpp"
@@ -363,7 +363,7 @@ void taddon_description::browse_url_callback()
 
 void taddon_description::copy_url_callback()
 {
-	copy_to_clipboard(feedback_url_, false);
+	desktop::clipboard::copy_to_clipboard(feedback_url_, false);
 }
 
 void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
