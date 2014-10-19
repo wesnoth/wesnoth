@@ -26,6 +26,7 @@
 #include "game_errors.hpp"
 #include "game_preferences.hpp"
 #include "generators/map_create.hpp"
+#include "generators/map_generator.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
@@ -175,6 +176,13 @@ LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& gam
 		} else {
 			e.show(disp);
 		}
+	} catch (game::error & e) {
+		if (is_unit_test) {
+			std::cerr << "caught game::error...\n";
+			return DEFEAT;
+		} else {
+			gui2::show_error_message(disp.video(), _("Error: ") + e.message);
+		}
 	}
 	return NONE;
 }
@@ -306,12 +314,18 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		} catch(incorrect_map_format_error& e) {
 			gui2::show_error_message(disp.video(), std::string(_("The game map could not be loaded: ")) + e.message);
 			return QUIT;
+		} catch (mapgen_exception& e) {
+			gui2::show_error_message(disp.video(), std::string(_("Map generator error: ") + e.message));
 		} catch(config::error& e) {
 			std::cerr << "caught config::error...\n";
 			gui2::show_error_message(disp.video(), _("Error while reading the WML: ") + e.message);
 			return QUIT;
 		} catch(twml_exception& e) {
 			e.show(disp);
+			return QUIT;
+		} catch (game::error & e) {
+			std::cerr << "caught game::error...\n";
+			gui2::show_error_message(disp.video(), _("Error: ") + e.message);
 			return QUIT;
 		}
 
