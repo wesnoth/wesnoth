@@ -427,6 +427,11 @@ std::string copy_from_clipboard(const bool mouse)
 	return "";
 }
 
+bool available()
+{
+	return true;
+}
+
 } // end namespace clipboard
 
 } // end namespace desktop
@@ -506,6 +511,12 @@ std::string copy_from_clipboard(const bool)
 
 	return unicode_cast<std::string>(ustring);
 }
+
+bool available()
+{
+	return true;
+}
+
 
 } // end namespace clipboard
 
@@ -600,6 +611,11 @@ void handle_system_event(const SDL_Event& /*event*/)
 {
 }
 
+bool available()
+{
+	return true;
+}
+
 } // end namespace clipboard
 
 } // end namespace desktop
@@ -623,6 +639,11 @@ std::string copy_from_clipboard(const bool)
 
 void handle_system_event(const SDL_Event& /*event*/)
 {
+}
+
+bool available()
+{
+	return false;
 }
 
 } // end namespace clipboard
