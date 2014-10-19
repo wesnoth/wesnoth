@@ -688,6 +688,9 @@ public:
 				boost::bind(&tgamestate_inspector::view::handle_copy_button_clicked,
 							this,
 							boost::ref(window)));
+		if (!desktop::clipboard::available()) {
+			model_.copy_button->set_active(false);
+		}
 	}
 
 private:

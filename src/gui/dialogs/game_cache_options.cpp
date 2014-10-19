@@ -92,6 +92,9 @@ void tgame_cache_options::pre_show(CVideo& video, twindow& window)
 	connect_signal_mouse_left_click(copy,
 									boost::bind(&tgame_cache_options::copy_to_clipboard_callback,
 												this));
+	if (!desktop::clipboard::available()) {
+		copy.set_active(false);
+	}
 
 	tbutton& browse = find_widget<tbutton>(&window, "browse", false);
 	connect_signal_mouse_left_click(browse,

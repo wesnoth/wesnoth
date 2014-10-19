@@ -410,6 +410,9 @@ public:
 				boost::bind(&view::handle_copy_button_clicked,
 							this,
 							boost::ref(window)));
+		if (!desktop::clipboard::available()) {
+			model_.copy_button->set_active(false);
+		}
 
 		model_.page_label = &find_widget<tcontrol>(&window, "page_label", false);
 

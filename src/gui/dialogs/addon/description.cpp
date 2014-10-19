@@ -382,9 +382,14 @@ void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
 		connect_signal_mouse_left_click(
 				url_go_button,
 				boost::bind(&taddon_description::browse_url_callback, this));
+
 		connect_signal_mouse_left_click(
 				url_copy_button,
 				boost::bind(&taddon_description::copy_url_callback, this));
+
+		if (!desktop::clipboard::available()) {
+			url_copy_button.set_active(false);
+		}
 	} else {
 		url_go_button.set_active(false);
 		url_copy_button.set_active(false);

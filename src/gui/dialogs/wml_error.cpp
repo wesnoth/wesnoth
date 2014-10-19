@@ -217,6 +217,10 @@ void twml_error::pre_show(CVideo& /*video*/, twindow& window)
 
 	connect_signal_mouse_left_click(
 			copy_button, boost::bind(&twml_error::copy_report_callback, this));
+
+	if (!desktop::clipboard::available()) {
+		copy_button.set_active(false);
+	}
 }
 
 void twml_error::copy_report_callback()

@@ -83,6 +83,10 @@ void tscreenshot_notification::pre_show(CVideo& /*video*/, twindow& window)
 	connect_signal_mouse_left_click(
 			copy_b, boost::bind(&desktop::clipboard::copy_to_clipboard, boost::ref(path_), false));
 
+	if (!desktop::clipboard::available()) {
+		copy_b.set_active(false);
+	}
+
 	tbutton& open_b = find_widget<tbutton>(&window, "open", false);
 	connect_signal_mouse_left_click(
 			open_b, boost::bind(&desktop::open_object, boost::ref(path_)));

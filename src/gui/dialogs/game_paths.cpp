@@ -111,6 +111,10 @@ void tgame_paths::pre_show(CVideo& /*video*/, twindow& window)
 			// open_object().
 			browse_w.set_visible(tcontrol::tvisible::invisible);
 		}
+
+		if(!desktop::clipboard::available()) {
+			copy_w.set_active(false);
+		}
 	}
 }
 
