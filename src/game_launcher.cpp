@@ -27,6 +27,7 @@
 #include "game_config.hpp"              // for path, no_delay, revision, etc
 #include "game_config_manager.hpp"      // for game_config_manager
 #include "game_end_exceptions.hpp"      // for LEVEL_RESULT, etc
+#include "generators/map_generator.hpp" // for mapgen_exception
 #include "gettext.hpp"                  // for _
 #include "gui/dialogs/language_selection.hpp"  // for tlanguage_selection
 #include "gui/dialogs/message.hpp" //for show error message
@@ -875,6 +876,8 @@ bool game_launcher::play_multiplayer()
 		gui2::show_error_message(disp().video(), _("The game could not be loaded: ") + e.message);
 	} catch(game::game_error& e) {
 		gui2::show_error_message(disp().video(), _("Error while playing the game: ") + e.message);
+	} catch (mapgen_exception& e) {
+		gui2::show_error_message(disp().video(), std::string(_("Map generator error: ") + e.message));
 	} catch(network::error& e) {
 		if(e.message != "") {
 			ERR_NET << "caught network::error: " << e.message << std::endl;
@@ -897,6 +900,9 @@ bool game_launcher::play_multiplayer()
 		//this will make it so next time through the title screen loop, this game is loaded
 	} catch(twml_exception& e) {
 		e.show(disp());
+	} catch (game::error & e) {
+		std::cerr << "caught game::error...\n";
+		gui2::show_error_message(disp().video(), _("Error: ") + e.message);
 	}
 
 	return false;
