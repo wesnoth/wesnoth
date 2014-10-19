@@ -1018,6 +1018,45 @@ static int intf_have_file(lua_State *L)
 	return 1;
 }
 
+class lua_filestream
+{
+public:
+	lua_filestream(const std::string& fname)
+		: pistream_(filesystem::istream_file(fname))
+	{
+		
+	}
+
+	static const char * lua_read_data(lua_State * /*L*/, void *data, size_t *size)
+	{
+		lua_filestream* lfs = (lua_filestream*) data;
+		
+		//int startpos = lfs->pistream_->tellg();
+		lfs->pistream_->read(lfs->buff_, LUAL_BUFFERSIZE);
+		//int newpos = lfs->pistream_->tellg();
+		*size = lfs->pistream_->gcount();
+#if 0
+		ERR_LUA << "read bytes from " << startpos << " to " << newpos << " in total " *size << " from steam\n";
+		ERR_LUA << "streamstate beeing " 
+			<< " goodbit:" << lfs->pistream_->good()
+			<< " endoffile:" << lfs->pistream_->eof() 
+			<< " badbit:" <<  lfs->pistream_->bad()
+			<< " failbit:" << lfs->pistream_->fail() << "\n";
+#endif
+		return lfs->buff_;
+	}
+
+	static int lua_loadfile(lua_State *L, const std::string& fname)
+	{
+		lua_filestream lfs(fname);
+		LOG_LUA << "starting to read from " << fname << "\n";
+		return  lua_load(L, &lua_filestream::lua_read_data, &lfs, fname.c_str(), NULL);
+	}
+private:
+	char buff_[LUAL_BUFFERSIZE];
+	boost::scoped_ptr<std::istream> pistream_;
+};
+
 /**
  * Loads and executes a Lua file.
  * - Arg 1: string containing the file name.
@@ -1031,8 +1070,22 @@ static int intf_dofile(lua_State *L)
 		return luaL_argerror(L, 1, "file not found");
 
 	lua_settop(L, 0);
+	
+#if 1 
+	try
+	{
+		if(lua_filestream::lua_loadfile(L, p))
+			return lua_error(L);
+	}
+	catch(const std::exception & ex)
+	{
+		luaL_argerror(L, 1, ex.what());
+	}
+#else
+	//oldcode to be deleted if newcode works
 	if (luaL_loadfile(L, p.c_str()))
 		return lua_error(L);
+#endif
 
 	lua_call(L, 0, LUA_MULTRET);
 	return lua_gettop(L);
