@@ -605,6 +605,28 @@ std::string read_file(const std::string &fname)
 	return ss.str();
 }
 
+#if BOOST_VERSION < 1048000
+//boost iostream < 1.48 expects boost filesystem v2 paths. This is an adapter
+struct iostream_path
+{
+	template<typename stringtype>
+	iostream_path(const stringtype& s)
+		: path_(s)
+	{
+
+	}
+	typedef bfs::path::string_type external_string_type;
+	external_string_type external_file_string() const
+	{
+		return path_.native();
+	}
+	bfs::path path_;
+};
+
+#else
+typedef bfs::path iostream_path;
+#endif
+
 std::istream *istream_file(const std::string &fname, bool treat_failure_as_error)
 {
 	LOG_FS << "Streaming " << fname << " for reading.\n";
@@ -614,14 +636,12 @@ std::istream *istream_file(const std::string &fname, bool treat_failure_as_error
 		s->clear(std::ios_base::failbit);
 		return s;
 	}
-	
+
 	//mingw doesn't  support std::basic_ifstream::basic_ifstream(const wchar_t* fname)
 	//that why boost::filesystem::fstream.hpp doesnt work with mingw.
-	
-	//boost::iostreams::file_descriptor gives us no alternative to exceptions
 	try
 	{
-		boost::iostreams::file_descriptor_source fd(path(fname), std::ios_base::binary);
+		boost::iostreams::file_descriptor_source fd(iostream_path(fname), std::ios_base::binary);
 		//TODO: has this still use ?
 		if (!fd.is_open() && treat_failure_as_error) {
 			ERR_FS << "Could not open '" << fname << "' for reading.\n";
@@ -644,7 +664,7 @@ std::ostream *ostream_file(std::string const &fname)
 {
 	LOG_FS << "streaming " << fname << " for writing.\n";
 #if 1
-	boost::iostreams::file_descriptor_sink fd(path(fname), std::ios_base::binary);
+	boost::iostreams::file_descriptor_sink fd(iostream_path(fname), std::ios_base::binary);
 	return new boost::iostreams::stream<boost::iostreams::file_descriptor_sink>(fd, 4096, 0);
 #else
 	return new bfs::ofstream(path(fname), std::ios_base::binary);
