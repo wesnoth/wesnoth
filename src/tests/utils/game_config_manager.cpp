@@ -43,7 +43,7 @@ namespace test_utils {
 
 	class game_config_manager {
 		config cfg_;
-		binary_paths_manager paths_manager_;
+		filesystem::binary_paths_manager paths_manager_;
 		const hotkey::manager hotkey_manager_;
 		font::manager font_manager_;
 
@@ -67,7 +67,7 @@ namespace test_utils {
 			std::setlocale(LC_ALL, "C");
 			std::setlocale(LC_MESSAGES, "");
 #endif
-			const std::string& intl_dir = get_intl_dir();
+			const std::string& intl_dir = filesystem::get_intl_dir();
 			bindtextdomain ("wesnoth", intl_dir.c_str());
 			bind_textdomain_codeset ("wesnoth", "UTF-8");
 			bindtextdomain ("wesnoth-lib", intl_dir.c_str());

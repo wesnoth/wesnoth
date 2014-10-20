@@ -1012,7 +1012,7 @@ static int intf_set_variable(lua_State *L)
 static int intf_have_file(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
-	std::string p = get_wml_location(m);
+	std::string p = filesystem::get_wml_location(m);
 	if (p.empty()) { lua_pushboolean(L, false); }
 	else { lua_pushboolean(L, true); }
 	return 1;
@@ -1026,7 +1026,7 @@ static int intf_have_file(lua_State *L)
 static int intf_dofile(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
-	std::string p = get_wml_location(m);
+	std::string p = filesystem::get_wml_location(m);
 	if (p.empty())
 		return luaL_argerror(L, 1, "file not found");
 
@@ -1059,7 +1059,7 @@ static int intf_require(lua_State *L)
 	lua_pop(L, 1);
 
 
-	std::string p = get_wml_location(m);
+	std::string p = filesystem::get_wml_location(m);
 	if (p.empty())
 		return luaL_argerror(L, 1, "file not found");
 

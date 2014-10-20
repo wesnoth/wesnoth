@@ -71,11 +71,11 @@ tgame_paths::tgame_paths()
 	// NOTE: these path_map_ entries are referenced by the GUI2 WML
 	// definition of this dialog using preprocessor macros.
 	path_map_["datadir"] = game_config::path;
-	path_map_["config"] = get_user_config_dir();
-	path_map_["userdata"] = get_user_data_dir();
-	path_map_["saves"] = get_saves_dir();
-	path_map_["addons"] = get_addon_campaigns_dir();
-	path_map_["cache"] = get_cache_dir();
+	path_map_["config"] = filesystem::get_user_config_dir();
+	path_map_["userdata"] = filesystem::get_user_data_dir();
+	path_map_["saves"] = filesystem::get_saves_dir();
+	path_map_["addons"] = filesystem::get_addons_dir();
+	path_map_["cache"] = filesystem::get_cache_dir();
 }
 
 void tgame_paths::pre_show(CVideo& /*video*/, twindow& window)

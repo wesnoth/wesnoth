@@ -60,7 +60,7 @@ private:
 
 	preproc_map old_defines_map_;
 
-	binary_paths_manager paths_manager_;
+	filesystem::binary_paths_manager paths_manager_;
 
 	game_config::config_cache& cache_;
 };

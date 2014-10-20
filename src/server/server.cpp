@@ -473,7 +473,7 @@ config server::read_config() const {
 	config configuration;
 	if (config_file_ == "") return configuration;
 	try {
-		scoped_istream stream = preprocess_file(config_file_);
+		filesystem::scoped_istream stream = preprocess_file(config_file_);
 		read(configuration, *stream);
 		LOG_SERVER << "Server configuration from file: '" << config_file_
 			<< "' read.\n";
@@ -508,7 +508,7 @@ void server::load_config() {
 	save_replays_ = cfg_["save_replays"].to_bool();
 	replay_save_path_ = cfg_["replay_save_path"].str();
 
-	tor_ip_list_ = utils::split(cfg_["tor_ip_list_path"].empty() ? "" : read_file(cfg_["tor_ip_list_path"]), '\n');
+	tor_ip_list_ = utils::split(cfg_["tor_ip_list_path"].empty() ? "" : filesystem::read_file(cfg_["tor_ip_list_path"]), '\n');
 
 	admin_passwd_ = cfg_["passwd"].str();
 	motd_ = cfg_["motd"].str();
@@ -2785,7 +2785,7 @@ int main(int argc, char** argv) {
 	std::string config_file;
 
 	// setting path to currentworking directory
-	game_config::path = get_cwd();
+	game_config::path = filesystem::get_cwd();
 
 	// show 'info' by default
 	lg::set_log_domain_severity("server", 2);
