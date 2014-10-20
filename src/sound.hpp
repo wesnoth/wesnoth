@@ -22,6 +22,8 @@ class config;
 
 namespace sound {
 
+std::string describe_versions();
+
 enum channel_group {
 	NULL_CHANNEL = -1,
 	SOUND_SOURCES = 0,

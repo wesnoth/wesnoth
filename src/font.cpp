@@ -320,6 +320,11 @@ private:
 
 namespace font {
 
+std::string describe_versions()
+{
+	return std::string("Cairo version: ") + cairo_version_string() + "\nPango version: " + pango_version_string() + "\n";
+}
+
 manager::manager()
 {
 	const int res = TTF_Init();
@@ -349,8 +354,7 @@ void manager::update_font_path() const
 
 void manager::init() const
 {
-	LOG_FT << "Cairo version: " << cairo_version_string() << std::endl;
-	LOG_FT << "Pango version: " << pango_version_string() << std::endl;
+	LOG_FT << describe_versions() << std::endl;
 
 #ifdef CAIRO_HAS_FT_FONT
 	if (!FcConfigAppFontAddDir(FcConfigGetCurrent(),

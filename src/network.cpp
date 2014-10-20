@@ -36,6 +36,7 @@
 #include <set>
 #include <cstring>
 #include <stdexcept>
+#include <sstream>
 
 #include <boost/exception/get_error_info.hpp>
 #include <boost/exception/info.hpp>
@@ -1200,6 +1201,31 @@ statistics get_receive_stats(connection handle)
     const statistics result = network_worker_pool::get_current_transfer_stats(handle == 0 ? get_socket(sockets.back()) : get_socket(handle)).second;
 
 	return result;
+}
+
+std::string describe_versions()
+{
+	std::stringstream ss;
+
+#ifdef SDL_NET_VERSION
+	SDL_version compile_version;
+	SDL_NET_VERSION(&compile_version);
+
+	ss << "Compiled with SDL_net version: "
+	<< static_cast<int> (compile_version.major) << "."
+	<< static_cast<int> (compile_version.minor) << "."
+        << static_cast<int> (compile_version.patch) << " \n";
+#endif
+
+#ifdef Net_Linked_Version
+	const SDL_version *link_version=Net_Linked_Version();
+	ss << "Running with SDL_net version: "
+	<< static_cast<int> (link_version->major) << "."
+	<< static_cast<int> (link_version->minor) << "."
+        << static_cast<int> (link_version->patch) << " .\n";
+#endif
+
+	return ss.str();
 }
 
 } // end namespace network

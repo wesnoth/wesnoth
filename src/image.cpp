@@ -1190,5 +1190,30 @@ bool precached_file_exists(const std::string& file)
 		return false;
 }
 
+std::string describe_versions()
+{
+	std::stringstream ss;
+
+#ifdef SDL_IMAGE_VERSION
+	SDL_version compile_version;
+	SDL_IMAGE_VERSION(&compile_version);
+
+	ss << "Compiled with SDL_image version: "
+	<< static_cast<int> (compile_version.major) << "."
+	<< static_cast<int> (compile_version.minor) << "."
+        << static_cast<int> (compile_version.patch) << " \n";
+#endif
+
+#ifdef Image_Linked_Version
+	const SDL_version *link_version=Image_Linked_Version();
+	ss << "Running with SDL_image version: "
+	<< static_cast<int> (link_version->major) << "."
+	<< static_cast<int> (link_version->minor) << "."
+        << static_cast<int> (link_version->patch) << " .\n";
+#endif
+
+	return ss.str();
+}
+
 } // end namespace image
 

@@ -304,6 +304,8 @@ statistics get_receive_stats(connection handle);
 extern unsigned int ping_timeout;
 /** Minimum interval between pings. */
 const int ping_interval = 30;
+
+std::string describe_versions();
 } // network namespace
 
 

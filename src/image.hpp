@@ -247,6 +247,8 @@ namespace image {
 	/// precache the existence of files in the subdir (ex: "terrain/")
 	void precache_file_existence(const std::string& subdir = "");
 	bool precached_file_exists(const std::string& file);
+
+	std::string describe_versions();
 }
 
 #endif
