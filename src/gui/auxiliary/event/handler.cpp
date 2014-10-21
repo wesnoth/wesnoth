@@ -25,6 +25,7 @@
 #include "hotkey/hotkey_item.hpp"
 #include "utils/foreach.tpp"
 #include "video.hpp"
+#include "serialization/unicode_cast.hpp"
 
 #include <cassert>
 

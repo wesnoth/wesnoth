@@ -18,7 +18,7 @@
 #include "gui/auxiliary/event/handler.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "sdl/compat.hpp"
-#include "serialization/unicode.hpp"
+#include "serialization/unicode_types.hpp"
 
 #include "SDL_events.h"
 

@@ -26,6 +26,7 @@
 #include "gettext.hpp"
 #include "marked-up_text.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
 
