@@ -241,6 +241,8 @@ inline std::size_t bit_width() {
  */
 template<typename T>
 inline std::size_t bit_width(const T& x) {
+	//msvc 2010 gives an unused parameter warning otherwise
+	(void)x;
 	return sizeof(x) * std::numeric_limits<unsigned char>::digits;
 }
 
