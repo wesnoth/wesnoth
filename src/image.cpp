@@ -772,7 +772,9 @@ static surface get_scaled_to_zoom(const locator& i_locator)
 	surface res(get_image(i_locator, UNSCALED));
 	// For some reason haloes seems to have invalid images, protect against crashing
 	if(!res.null()) {
-		return scale_surface(res, ((res.get()->w * zoom) / tile_size), ((res.get()->h * zoom) / tile_size));
+		surface xbrz(scale_surface_xbrz(res, std::max(std::min(zoom/tile_size,5),1)));
+		return scale_surface(xbrz, ((res.get()->w * zoom) / tile_size), ((res.get()->h * zoom) / tile_size));
+		//return scale_surface(res, ((res.get()->w * zoom) / tile_size), ((res.get()->h * zoom) / tile_size));
 	} else {
 		return surface(NULL);
 	}
