@@ -1641,6 +1641,10 @@ public:
 		ss << "<img>src='" << male_type.image() << "'</img> ";
 #else
 		ss << "<img>src='" << male_type.image() << "~RC(" << male_type.flag_rgb() << ">1)" << "'</img> ";
+		ss << "<img>src='" << male_type.image() << "~RC(" << male_type.flag_rgb() << ">1)~xBRZ(2)" << "'</img> ";
+		ss << "<img>src='" << male_type.image() << "~RC(" << male_type.flag_rgb() << ">1)~xBRZ(3)" << "'</img> ";
+		ss << "<img>src='" << male_type.image() << "~RC(" << male_type.flag_rgb() << ">1)~xBRZ(4)" << "'</img> ";
+		ss << "<img>src='" << male_type.image() << "~RC(" << male_type.flag_rgb() << ">1)~xBRZ(5)" << "'</img> ";
 #endif
 
 		if (&female_type != &male_type)
@@ -1648,6 +1652,10 @@ public:
 			ss << "<img>src='" << female_type.image() << "'</img> ";
 #else
 			ss << "<img>src='" << female_type.image() << "~RC(" << female_type.flag_rgb() << ">1)" << "'</img> ";
+			ss << "<img>src='" << female_type.image() << "~RC(" << female_type.flag_rgb() << ">1)~xBRZ(2)" << "'</img> ";
+			ss << "<img>src='" << female_type.image() << "~RC(" << female_type.flag_rgb() << ">1)~xBRZ(3)" << "'</img> ";
+			ss << "<img>src='" << female_type.image() << "~RC(" << female_type.flag_rgb() << ">1)~xBRZ(4)" << "'</img> ";
+			ss << "<img>src='" << female_type.image() << "~RC(" << female_type.flag_rgb() << ">1)~xBRZ(5)" << "'</img> ";
 #endif
 
 

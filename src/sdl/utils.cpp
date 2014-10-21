@@ -26,6 +26,7 @@
 #include "floating_point_emulation.hpp"
 #include "neon.hpp"
 #include "video.hpp"
+#include "xBRZ/xbrz.hpp"
 
 #include <algorithm>
 #include <cassert>
@@ -372,6 +373,44 @@ scale_surface_down(surface& dst, const surface& src, const int w_dst, const int 
 }
 
 #endif
+
+surface scale_surface_xbrz(const surface & surf, size_t z)
+{
+	if(surf == NULL)
+		return NULL;
+
+	if (z > 5) {
+		std::cerr << "Cannot use xbrz scaling with zoom factor > 5." << std::endl;
+		z = 1;
+	}
+
+
+	if (z == 1) {
+		return create_optimized_surface(surf);
+	}
+
+	surface dst(create_neutral_surface(surf->w *z, surf->h * z));
+
+	if (z == 0) {
+		std::cerr << "Create an empty image\n";
+		return create_optimized_surface(dst);
+	}
+
+	surface src(make_neutral_surface(surf));
+
+	if(src == NULL || dst == NULL) {
+		std::cerr << "Could not create surface to scale onto\n";
+		return NULL;
+	}
+
+	{
+		const_surface_lock src_lock(src);
+		surface_lock dst_lock(dst);
+
+		xbrz::scale(z, src_lock.pixels(), dst_lock.pixels(), surf->w, surf->h);
+	}
+	return create_optimized_surface(dst);
+}
 
 // NOTE: Don't pass this function 0 scaling arguments.
 surface scale_surface(const surface &surf, int w, int h, bool optimize)

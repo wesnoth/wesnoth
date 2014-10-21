@@ -158,6 +158,7 @@ libwesnoth_sdl_sources = Split("""
     sdl/image.cpp
     sdl/window.cpp
     tracer.cpp
+    xBRZ/xbrz.cpp
     """)
 libwesnoth_sdl = client_env.Library("wesnoth_sdl", libwesnoth_sdl_sources)
 

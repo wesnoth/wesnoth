@@ -375,6 +375,7 @@ set(wesnoth-sdl_SRC
 	sdl/window.cpp
 	sdl/utils.cpp
 	sdl/shader.cpp
+	xBRZ/xbrz.cpp
 )
 
 add_library(wesnoth-sdl
