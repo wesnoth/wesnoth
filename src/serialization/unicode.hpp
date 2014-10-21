@@ -17,6 +17,9 @@
 #define SERIALIZATION_UNICODE_HPP_INCLUDED
 
 #include "ucs4_iterator_base.hpp"
+#include "unicode_types.hpp"
+#include "unicode_cast.hpp"
+
 #include <boost/static_assert.hpp>
 #include <string>
 #include <vector>
@@ -51,8 +54,6 @@ namespace utf8 {
 	* Functions for converting Unicode wide-char strings to UTF-8 encoded strings,
 	* back and forth.
 	*/
-	/** also used for invalid utf16 or ucs4 strings */
-	class invalid_utf8_exception : public std::exception {};
 	struct iterator_implementation
 	{
 		static ucs4::char_t get_next_char(std::string::const_iterator& start, const std::string::const_iterator& end);
@@ -102,56 +103,5 @@ namespace utf8 {
 	 */
 	void truncate_as_ucs4(utf8::string& str, const size_t size);
 } // end namespace utf8
-
-namespace implementation {
-	std::string ucs4string_to_string(const ucs4::string &);
-	ucs4::string string_to_ucs4string(const std::string &);
-	std::string ucs4char_to_string(const ucs4::char_t);
-	ucs4::string utf16string_to_ucs4string(const utf16::string &);
-	std::string utf16string_to_string(const utf16::string &);
-	utf16::string ucs4string_to_utf16string(const ucs4::string &);
-} // end namespace implementation
-
-template <typename To, typename From> inline
-To unicode_cast(const From &) {
-	BOOST_STATIC_ASSERT(sizeof(To) == 0);
-	return To();
-}
-
-template <> inline
-utf8::string unicode_cast<utf8::string, ucs4::string>(const ucs4::string &in) {
-	return implementation::ucs4string_to_string(in);
-}
-
-template <> inline
-ucs4::string unicode_cast<ucs4::string, utf8::string>(const utf8::string &in) {
-	return implementation::string_to_ucs4string(in);
-}
-
-template <> inline
-utf8::string unicode_cast<utf8::string, ucs4::char_t>(const ucs4::char_t &in) {
-	return implementation::ucs4char_to_string(in);
-}
-
-template <> inline
-utf16::string unicode_cast<utf16::string, ucs4::string>(const ucs4::string &in) {
-	return implementation::ucs4string_to_utf16string(in);
-}
-
-template <> inline
-utf16::string unicode_cast<utf16::string, utf8::string>(const utf8::string &in) {
-	const ucs4::string u4str = unicode_cast<ucs4::string>(in);
-	return unicode_cast<utf16::string>(u4str);
-}
-
-template <> inline
-ucs4::string unicode_cast<ucs4::string, utf16::string>(const utf16::string &in) {
-	return implementation::utf16string_to_ucs4string(in);
-}
-
-template <> inline
-std::string unicode_cast<std::string, utf16::string>(const utf16::string &in) {
-	return implementation::utf16string_to_string(in);
-}
 
 #endif
