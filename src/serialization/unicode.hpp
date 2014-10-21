@@ -24,22 +24,13 @@
 #include <boost/static_assert.hpp>
 #include <string>
 #include <vector>
-#include <SDL_types.h>
 
-namespace ucs4 {
-	typedef Uint32 char_t;
-	typedef std::vector<char_t> string;
-}
-namespace utf8 {
-	typedef std::string string;
-}
 /**
  * For win32 API.
  * On windows, wchar_t is defined as Uint16
  * Wide strings are expected to be UTF-16
  */
 namespace utf16 {
-	typedef std::vector<wchar_t> string;
 	typedef ucs4::iterator_base<utf16::string, ucs4_convert_impl::convert_impl<char_t>::type> iterator;
 }
 
