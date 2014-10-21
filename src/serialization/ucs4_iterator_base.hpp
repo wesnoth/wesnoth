@@ -85,7 +85,7 @@ namespace ucs4
 			assert(current_substr.first == current_substr.second);
 			if(current_substr.first == string_end)
 				return;
-			current_char = update_implementation::get_next_char(current_substr.second, string_end);
+			current_char = update_implementation::read(current_substr.second, string_end);
 		}
 
 		ucs4::char_t current_char;

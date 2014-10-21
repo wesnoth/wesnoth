@@ -34,14 +34,6 @@
 static lg::log_domain log_engine("engine");
 #define ERR_GENERAL LOG_STREAM(err, lg::general)
 
-namespace utf16 {
-ucs4::char_t iterator_implementation::get_next_char(utf16::string::const_iterator& start, const utf16::string::const_iterator& end)
-{
-
-	return ucs4_convert_impl::utf16_impl::read(start, end);
-}
-}
-
 namespace utf8 {
 
 static int byte_size_from_utf8_first(const unsigned char ch)
@@ -57,11 +49,6 @@ static int byte_size_from_utf8_first(const unsigned char ch)
 		throw invalid_utf8_exception(); // Stop on invalid characters
 	}
 	return count;
-}
-
-ucs4::char_t iterator_implementation::get_next_char(std::string::const_iterator& start, const std::string::const_iterator& string_end)
-{
-	return ucs4_convert_impl::utf8_impl::read(start, string_end);
 }
 
 utf8::string lowercase(const utf8::string& s)
