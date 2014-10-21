@@ -1641,8 +1641,11 @@ public:
 		ss << "<img>src='" << male_type.image() << "'</img> ";
 #else
 		ss << "<img>src='" << male_type.image() << "~RC(" << male_type.flag_rgb() << ">1)" << "'</img> ";
+		ss << "<img>src='" << male_type.image() << "~RC(" << male_type.flag_rgb() << ">1)~SCALE(144,144)" << "'</img> ";
 		ss << "<img>src='" << male_type.image() << "~RC(" << male_type.flag_rgb() << ">1)~xBRZ(2)" << "'</img> ";
+		ss << "<img>src='" << male_type.image() << "~RC(" << male_type.flag_rgb() << ">1)~SCALE(216,216)" << "'</img> ";
 		ss << "<img>src='" << male_type.image() << "~RC(" << male_type.flag_rgb() << ">1)~xBRZ(3)" << "'</img> ";
+		ss << "<img>src='" << male_type.image() << "~RC(" << male_type.flag_rgb() << ">1)~SCALE(288,288)" << "'</img> ";
 		ss << "<img>src='" << male_type.image() << "~RC(" << male_type.flag_rgb() << ">1)~xBRZ(4)" << "'</img> ";
 		ss << "<img>src='" << male_type.image() << "~RC(" << male_type.flag_rgb() << ">1)~xBRZ(5)" << "'</img> ";
 #endif
