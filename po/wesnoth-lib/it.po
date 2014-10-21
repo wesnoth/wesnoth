@@ -5,13 +5,13 @@
 #
 # Automatically generated, 2004.
 # Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008, 2009, 2010.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2013.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-10-11 10:43+0200\n"
-"PO-Revision-Date: 2013-09-27 19:41+0100\n"
+"PO-Revision-Date: 2014-10-11 16:06-0000\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -84,6 +84,12 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
+"Quando le acque di un fiume sono particolarmente basse, le unità terrestri "
+"possono attraversarlo con facilità. D’altra parte, qualsiasi creatura in "
+"grado di nuotare mantiene la piena mobilità anche in queste parti del fiume. "
+"Per quanto riguarda il gioco, un guado è trattato come prateria o come acque "
+"basse, scegliendo quello che offre i bonus difensivi e di movimento migliori "
+"per l’unità. "
 
 #. [terrain_type]: id=gray_reef
 #. [terrain_type]: id=medium_reef
@@ -102,10 +108,8 @@ msgstr "Scogliera grigia"
 
 #. [terrain_type]: id=medium_reef
 #: data/core/terrain.cfg:108
-#, fuzzy
-#| msgid "Coastal Reef"
 msgid "Medium Coastal Reef"
-msgstr "Scogliera"
+msgstr "Scogliera intermedia"
 
 #. [terrain_type]: id=tropical_reef
 #: data/core/terrain.cfg:119
@@ -122,10 +126,8 @@ msgstr "Palude"
 
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:132
-#, fuzzy
-#| msgid "Swamp Human Castle Keep"
 msgid "Swamp Water Reed"
-msgstr "Castello-fortezza umana in palude"
+msgstr "Canne palustri"
 
 #. [terrain_type]: id=quagmire
 #: data/core/terrain.cfg:143
@@ -198,7 +200,7 @@ msgstr "Strada"
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:235
 msgid "Regular Cobbles"
-msgstr "Ciottoli regolari"
+msgstr "Ciottoli normali"
 
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:239
@@ -207,6 +209,9 @@ msgid ""
 "travelers passing over them. As far as gameplay is concerned, roads behave "
 "as flat terrain."
 msgstr ""
+"Le <italic>text='Strade'</italic> sono dei sentieri in terra battuta, "
+"formate dal passaggio di molti viaggiatori su di esse. Per quanto concerne "
+"il gioco, le strade sono equiparate al terreno normale."
 
 #. [terrain_type]: id=road_clean
 #: data/core/terrain.cfg:246
@@ -245,6 +250,9 @@ msgid ""
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgstr ""
+"I <italic>text='Deserti'</italic> hanno una composizione in qualche modo "
+"diversa dalle pozze di sabbia o dalle spiaggie, ma dal punto di vista del "
+"gioco sono equiparati. Vedi <ref>dst='terrain_sand' text='sabbia'</ref>."
 
 #. [terrain_type]: id=sand
 #. [terrain_type]: id=sand_beach
@@ -268,6 +276,13 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in sand."
 msgstr ""
+"L’instabilità delle <italic>text='sabbie'</italic> le rende difficili da "
+"attraversare per la maggior parte delle unità. Al contrario, piedi grandi o "
+"un corpo serpentiforme come quelli delle razze rettili agevola "
+"l’attraversamento.\n"
+"\n"
+"La maggior parte delle unità riceve sulla sabbia un bonus difensivo che "
+"varia dal 20 al 40%."
 
 #. [terrain_type]: id=oasis
 #: data/core/terrain.cfg:315
@@ -352,12 +367,12 @@ msgstr "Gigli d’acqua in fiore"
 #. [terrain_type]: id=detritus_trash
 #: data/core/terrain.cfg:471
 msgid "Trash"
-msgstr ""
+msgstr "Immondizia"
 
 #. [terrain_type]: id=detritus_bones
 #: data/core/terrain.cfg:480
 msgid "Remains"
-msgstr ""
+msgstr "Resti"
 
 #. [terrain_type]: id=great_tree
 #. [terrain_type]: id=great_tree_dead
@@ -520,10 +535,8 @@ msgstr "Montagne"
 
 #. [terrain_type]: id=regular_mountains
 #: data/core/terrain.cfg:747
-#, fuzzy
-#| msgid "Impassable Regular Mountains"
 msgid "Regular Mountains"
-msgstr "Normali montagne invalicabili"
+msgstr "Montagne normali"
 
 #. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:757
@@ -615,6 +628,19 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
 msgstr ""
+"Il terreno di tipo <italic>text='Breccia di cava'</italic> viene formato "
+"dall’azione combinata dell’acqua e del vento, che trasportando particelle "
+"abrasive scavano la roccia. Assomiglia ad una caverna sotterranea molto "
+"ruvida che riduce l’efficienza della maggior parte delle unità ma incrementa "
+"la difesa. Essendo i principali abitanti delle caverne, nani e troll si "
+"muovono in questo tipo di terreno con estrema naturalezza. In particolare, "
+"grazie alla loro piccola taglia, i nani sono quelli che si trovano più a "
+"loro agio in questo tipo di terreno.Occasionalmente queste caverne possono "
+"essere <ref>dst='terrain_illuminated_cave' text='illuminate'</ref>\n"
+"\n"
+"La maggior parte delle unità ha un bonus difensivo del 50%, mentre le unità "
+"di cavalleria sono limitate al 40%. I nani godono di un bonus difensivo del "
+"60% sulla breccia di cava."
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -631,7 +657,7 @@ msgstr "Binari da miniera"
 #: data/core/terrain.cfg:927 data/core/terrain.cfg:938
 #: data/core/terrain.cfg:949 data/core/terrain.cfg:960
 msgid "Chasm"
-msgstr "Abisso"
+msgstr "Dirupo"
 
 #. [terrain_type]: id=canyon
 #: data/core/terrain.cfg:928
@@ -669,6 +695,13 @@ msgid ""
 "immediately above it. This provides an attack bonus for lawful units and "
 "removes the attack bonus from chaotic units."
 msgstr ""
+"I pericoli intrinseci del tentare di camminare sulla <italic>text='lava'</"
+"italic> sono abbastanza ovvi. Per quanto riguarda il movimento, la lava è "
+"equivalente al terreno <ref>dst='terrain_unwalkable' text='impervio'</ref>, "
+"e può essere attraversata soltanto dalle unità in grado di volare ad una "
+"notevole distanza dalla superficie. Il magma fuso è luminescente, e illumina "
+"l’area sulla quale si estende. Questo porta un bonus in attacco alle unità "
+"legali e neutralizza quello delle unità caotiche."
 
 #. [terrain_type]: id=volcano
 #: data/core/terrain.cfg:986
@@ -950,6 +983,16 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
+"I <italic>text='villaggi sommersi'</italic> sono le case dei nereidi e dei "
+"naga. Al contrario delle creature acquatiche, a loro agio in questi "
+"villaggi, le creature terrestri attraversano e difendono questi villaggi con "
+"difficoltà. Comunque, in modo analogo agli altri villaggi, gli edifici sono "
+"praticabili da qualsiasi creatura il che permette a tutti di curare le "
+"ferite. Ad ogni unità ferma in un villaggio vengono curati otto PF, o "
+"rimosso il veleno.\n"
+"\n"
+"Nereidi e naga hanno un bonus difensivo del 60% nei villaggi sommersi, "
+"mentre solitamente le unità terrestri hanno un bonus difesa inferiore."
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1518
@@ -1007,10 +1050,8 @@ msgstr "Castello umano innevato"
 
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:1606
-#, fuzzy
-#| msgid "Elven Castle Keep"
 msgid "Elven Castle"
-msgstr "Castello-fortezza degli elfi"
+msgstr "Castello degli elfi"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:1618
@@ -1202,6 +1243,18 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
+"A chiunque sia capace di costruirne uno, l’abilità di gettare un "
+"<italic>text='ponte'</italic> offre la liberazione dalla natura volubile "
+"delle acque, con i guadi che vanno e vengono, seguendo l’alzarsi e "
+"l’abbassarsi della linea delle acque. Per non parlare del lusso di avere i "
+"piedi asciutti, cosa non risibile durante i mesi freddi dell’anno.\n"
+"\n"
+"Per chi viaggia per mare o per terra, un ponte è il meglio che possano "
+"offrire entrambi i mondi. Dal punto di vista del gioco, un ponte è trattato "
+"come prateria o come l-acqua sottostante, a seconda di quale dei due terreni "
+"offra i migliro bonus difensivi e di movimento per l’unità che occupa il "
+"ponte. Da notare che comunque una unità che sa nuotare e una terrestre non "
+"possono comunque occupare la stessa tessera simultaneamente."
 
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
@@ -1276,7 +1329,7 @@ msgstr "Nebbia"
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2225 data/core/terrain.cfg:2226
 msgid "Fungus"
-msgstr ""
+msgstr "Funghi"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2229
@@ -1292,6 +1345,18 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
+"I <italic>text='boschi di funghi'</italic> sono delle vaste foreste "
+"sotterranee di funghi giganti,\n"
+"che prosperano nei meandri umidi e bui. La maggior parte delle unità ha "
+"grosse difficoltà nell’attraversare il suolo spugnoso formato dai piccoli "
+"funghi, ma in cambio ottengono una buona copertura dai larghi fusti. Le "
+"unità a cavallo, comunque, rimangono completamente impantanate e perdono le "
+"loro abilità di movimento in combattimento. Le unità non-morte hanno una "
+"naturale affinità con la decadenza e si destreggiano discretamente nelle "
+"foreste di funghi.\n"
+"\n"
+"La maggior parte delle unità riceve un bonus difensivo che varia dal 50% al "
+"60% nelle foreste di funghi, mentre la cavalleria soltanto del 20%."
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2241
@@ -1313,11 +1378,29 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
+"I terreni di tipo <italic>text='caverna'</italic> rappresentano qualsiasi "
+"tipo di caverna sotterranea che abbia abbastanza spazio da permettere ad una "
+"unità di attraversarlo. La maggior parte delle unità sono totalmente a "
+"disagio su questo tipo di terreno, specialmente gli elfi, che sono sia "
+"rallentati che impacciati in difesa. I nani e i troll, che costruiscono "
+"normalmente le loro case nelle caverne, si muovono invece con relativa "
+"facilità su questo tipo di terreno. I nani specialmente, in ragione della "
+"loro piccola taglia posso superare facilmente molti ostacoli rispetto alle "
+"altre razze. Occasionalmente, le caverne sono "
+"<ref>dst='terrain_illuminated_cave' text='illuminate'</ref>.\n"
+"\n"
+"Raramente alcune parti del mondo sotterraneo vengono illuminate dalla luce "
+"proveniente dalla superficie che rischiara le tenebre. In queste zone le "
+"unità legali ottengono un bonus in attacco e parimenti viene rimosso il "
+"bonus per quelle caotiche. Per tutti gli altri aspetti questo terreno è "
+"funzionalmente identico al normale  <ref>dst='terrain_cave' text='terreno di "
+"caverna'</ref>.\n"
+"\n"
+"La maggior parte delle unità diceve un bonus difensivo dal 20 al 40%, mentre "
+"i nani ottengono il 50%."
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:2254
-#, fuzzy
-#| msgid "Sand"
 msgid "Sands"
 msgstr "Sabbia"
 
@@ -1332,6 +1415,14 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"Le <italic>text='scogliere'</italic> sono dei bassifondi formate da pietra, "
+"coralli e sabbia.\n"
+"Questo fornisce alla maggior parte delle unità terrestri una base "
+"decisamente più stabile e difendibile rispetto alle generiche acque poco "
+"profonde. Questo porta anche un eccezionale bonus in difesa per tutte le "
+"razze che vivono normalmente in acqua.\n"
+"\n"
+"Nereidi e Naga ottengono entrambe un bonus difensivo del 70% sulle scogliere."
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:2285
@@ -1346,6 +1437,18 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
+"Le <italic>text='colline'</italic> rappresentano qualsiasi terreno "
+"sconnesso,\n"
+"con abbastanza alti e bassi nel terreno da fornire una forma di copertura. "
+"Le colline sono difficili da attraversare per la maggior parte delle truppe. "
+"Nani, troll e orchi hanno abbastanza familiarità con questo tipo di terreno "
+"e possono attraversarlo senza alcuna penalità di movimento. La cavalleria ha "
+"qualche problema nell’attraversare questo tipo di terreno e non ottiene "
+"alcun bonus difensivo.\n"
+"\n"
+"La maggior parte delle unità ottiene un bonus difensivo del 50%, mentre la "
+"cavalleria si limita ad un 40%. I nani godono di un bonus difensivo del "
+"60%.   "
 
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:2300
@@ -1360,6 +1463,17 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
 "all generally enjoy 60%."
 msgstr ""
+"Le <italic>text='paludi'</italic> rappresentano ogni sorta di terreno "
+"umido.\n"
+"Le paludi rallentano quasi tutte le unità, e inibiscono le abilità "
+"difensive. Fanno eccezione tutte quelle razze che per loro natura si trovano "
+"a loro agio in acqua. Queste razze ottengono un bonus sia in termini di "
+"movimento che difensivo. Quelli che fanno delle zone umide il loro habitat "
+"naturale possono utilizzare questo tipo di terreno come copertura "
+"difensiva.\n"
+"\n"
+"La maggior parte delle unità ottengono un fattore difensivo del 30% nelle "
+"paludi. Nereidi, naga e sauri generalmente godono di un fattore del 60%."
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:2313
@@ -1375,6 +1489,16 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "naga and mermen enjoy 60%."
 msgstr ""
+"Le <italic>text='Acque basse'</italic> rappresentano qualsiasi forma d’acqua "
+"sufficientemente profonda da arrivare grosso modo al petto di un uomo. Tutto "
+"ciò è più che sufficiente per rallentare chiunque e per lasciarlo in balia "
+"degli attacchi. Visto che l’acqua li copre fino alla testa, i nani si "
+"trovano in estrema difficoltà in questi frangenti. Fanno eccezione tutte "
+"quelle razze i cui corpi siano intrinsecamente adatti a nuotare per questo "
+"ricevono un notevole bonus difensivo e non hanno limitazioni nel movimento.\n"
+"\n"
+"La maggior parte delle unità ha un bonus difensivo che varia dal 20 al 30% "
+"nelle acque basse, mentre sia i naga che i nereidi beneficiano di un 60%."
 
 #. [terrain_type]: id=castle
 #: data/core/terrain.cfg:2328
@@ -1388,6 +1512,17 @@ msgid ""
 "\n"
 "Most units have about 60% defense in a castle."
 msgstr ""
+"I <italic>text='Castelli'</italic> sono qualsiasi sorta di fortificazione "
+"permanente.\n"
+"Praticamente tutte le unità ricevono un considerevole bonus difensivo quando "
+"stazionano in un castello, e la maggior parte può muoversi a piena velocità. "
+"Le unità ferme in un castello rappresentano la sua capacità difensiva. Senza "
+"una unità in ogni esagono circostante, un nemico può semplicemente "
+"sgattaiolare all’interno del castello indisturbato, ottenendo lo stesso "
+"bonus difensivo come tutti gli altri occupanti del castello.\n"
+"\n"
+"La maggior parte delle unità ottiene un bonus difensivo del 60% in un "
+"castello."
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:2342
@@ -1402,6 +1537,18 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
+"Le <italic>text='Montagne'</italic> sono così scoscese che le unità spesso "
+"devono scavalcare gli ostacoli per proseguire.\n"
+"Per loro conformazione, questi terreni forniscono dei considerevoli bonus "
+"difensivi alla maggior parte delle truppe, ma contemporaneamente "
+"rappresentano un terreno difficile da attraversare. La maggior parte delle "
+"unità a cavallo semplicemente non posso attraversare i terreni montuosi. "
+"Fanno eccezione la cavalleria elfica e i goblin cavalcalupi. Sia i nani che "
+"i troll sono a proprio agio sul natio terreno montuoso,e si muovono "
+"velocemente in questo tipo di terreno.\n"
+"\n"
+"La maggior parte delle unità ottengono un bonus difensivo del 60%, mentre i "
+"nani ottengono un bonus del 70%. "
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:2354
@@ -1413,6 +1560,14 @@ msgid ""
 "\n"
 "Mermen and naga both receive 50% defense in deep water, with full movement."
 msgstr ""
+"Le <italic>text='acque profonde'</italic> rappresentano qualsiasi terreno "
+"acquatico abbastanza profondo da coprire la testa di un uomo.\n"
+"La maggior parte delle unità non possono attraversare le acque profonde: "
+"questi terreni sono riservati alle unità che o possono volare, o sono degli "
+"eccezionali nuotatori.\n"
+"\n"
+"Nereidi e naga ricevono entrambi un bonus difensivo del 50% nelle acque "
+"profonde, con piena capacità di movimento."
 
 #. [terrain_type]: id=flat
 #: data/core/terrain.cfg:2365 data/core/terrain.cfg:2366
@@ -1431,6 +1586,16 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
+"Le <italic>text='praterie'</italic> rappresentano le pianure sconfinate, a "
+"volte coltivate, a volta lasciate incolte come foraggio, altre completamente "
+"selvagge.\n"
+"Essendo un campo aperto, le praterie sono sì molto facili da attraversare, "
+"ma altrettanto difficili da difendere. Tipicamente, le unità che si trovano "
+"più a loro agio nelle praterie sono quelle a cavallo, o quelle molto agili "
+"che traggono vantaggio dagli spazi aperti.\n"
+"\n"
+"La maggior parte delle unità hanno un bonus difensivo che varia dal 30 al "
+"40%."
 
 #. [terrain_type]: id=forest
 #: data/core/terrain.cfg:2380
@@ -1450,6 +1615,22 @@ msgid ""
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
+"Le <italic>text='foreste'</italic> rappresentano una qualsiasi superficie "
+"boscosa con un significativo sottobosco, sufficiente per ostacolare il "
+"passaggio di chiunque. Sebbene le foreste rallentino quasi tutti, parimenti "
+"offrono a tutti un bonus difensivo maggiore degli spazi aperti. Comunque, le "
+"unità a cavallo hanno così tante difficoltà che qualunque azione furtiva "
+"risulta impraticabile. Gli fanno eccezione rispetto a queste regole "
+"generali. Non solo si possono muovere a velocità massima nelle foreste, ma "
+"ottengono anche un considerevole bonus difensivo. I nani sono un’altra "
+"eccezione a questa regola: sebbene siano in grado di fendere le foreste "
+"senza grossa perdita di velocità, la loro assoluta scarsa familiarità con "
+"questo tipo di terreno fa sì che essi non ricevano alcun bonus difensivo.\n"
+"\n"
+"La maggior parte delle unità ha un bonus difensivo del 50%, ma le unità di "
+"cavalleria sono limitate al 30%. D’altra parte, gli elfi godono di un bonus "
+"difensivo del 60 o 70%, anche quelli a cavallo. I nani ricevono un bonus "
+"difensivo soltanto del 30%."
 
 #. [terrain_type]: id=frozen
 #: data/core/terrain.cfg:2390 data/core/terrain.cfg:2391
@@ -1467,6 +1648,15 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
+"I terreni <italic>text='ghiacciati'</italic> sono qualsiasi area "
+"pianeggiante coperta da neve o da ghiaccio.\n"
+"La maggior parte delle unità viene rallentata da questo tipo di terreno, e "
+"si trova in difficoltà quando si deve difendere. Da notare che le unità in "
+"grado di notare, anche quelle che possono respirare sott’acqua, non possono "
+"nuotare sotto il ghiaccio.\n"
+"\n"
+"La maggior parte delle unità ha un bonus difensivo che varia dal 20 al 40% "
+"sul terreno ghiacciato."
 
 #. [terrain_type]: id=village
 #: data/core/terrain.cfg:2406
@@ -1482,6 +1672,17 @@ msgid ""
 "Most units have 50 to 60% defense in villages, whereas cavalry receive only "
 "40%."
 msgstr ""
+"I <italic>text='villaggi'</italic> rappresentano qualsiasi gruppo di "
+"edifici, umani e non.\n"
+"Praticamente tutte le unità, anche quelle a cavallo, possono facilmente "
+"attraversare i villaggi, e la maggior parte di loro ottiene un bonus "
+"difensivo nello stazionare in un villaggio. I villaggi forniscono alle unità "
+"le risorse necessarie per pulire e curare le ferite, il che permette a "
+"qualsiasi unità che vi stazioni di curare otto punti per ogni turno, o di "
+"curarsi dal veleno.\n"
+"\n"
+"La maggior parte delle unità ha nei villaggi un bonus difensivo che varia "
+"dal 50 al 60%, mentre quelle a cavallo soltanto del 40%. "
 
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:2416 data/core/terrain.cfg:2417
@@ -1497,6 +1698,12 @@ msgid ""
 "jagged peaks at such rarefied heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"Le solide pareti di pietra e le montagne così alte e ripide da essere sono "
+"costantemente coperte da nubi rappresentano ostacoli che neanche il più "
+"ostinato dei viaggiatori può superare. Persino le creature in grado di "
+"volare non possono attraversare le cime frastagliate a tali e rarefatte "
+"altezze, e persino il più feroce dei troll può infrangere le spesse pareti "
+"di pietra."
 
 #. [terrain_type]: id=unwalkable
 #: data/core/terrain.cfg:2426 data/core/terrain.cfg:2427
@@ -1511,6 +1718,12 @@ msgid ""
 "for sheer walls which would take days to traverse. As far as gameplay is "
 "concerned, only units capable of flying can cross this terrain."
 msgstr ""
+"Il <italic>text='terreno impervio'</italic> copre qualunque dirupo o gola "
+"che, come implica il nome, non possa essere attraversato semplicemente "
+"camminando. I dirupi sono connotati da pareti scoscese a strapiombo che "
+"richiederebbero giorni per essere scalate. Per quanto concerne la dinamica "
+"del gioco, solo le unità in grado di volare possono attraversare questo tipo "
+"di terreno."
 
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:2436 data/core/terrain.cfg:2437
@@ -1522,6 +1735,8 @@ msgstr "Binari"
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore. By Dwarfs. Mostly."
 msgstr ""
+"I <italic>text='binari'</italic> vengono utilizzati per trasportare "
+"minerali, dai nani, principalmente."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -1660,12 +1875,12 @@ msgstr "Scaricamenti:"
 #. [label]
 #: data/gui/default/window/addon_description.cfg:258
 msgid "date^Last updated:"
-msgstr ""
+msgstr "Ultimo aggiornamento:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:284
 msgid "date^First uploaded:"
-msgstr ""
+msgstr "Primo invio:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:329
@@ -1681,48 +1896,42 @@ msgstr "Nessuna descrizione disponibile."
 #. [label]
 #: data/gui/default/window/addon_description.cfg:376
 msgid "Website:"
-msgstr ""
+msgstr "Website:"
 
 #. [label]: id=url_none
 #: data/gui/default/window/addon_description.cfg:400
-#, fuzzy
-#| msgid "None"
 msgid "url^None"
 msgstr "Nessuno"
 
 #. [button]: id=url_copy
 #: data/gui/default/window/addon_description.cfg:435
-#, fuzzy
-#| msgid "Copy"
 msgid "url^Copy"
 msgstr "Copia"
 
 #. [button]: id=url_copy
 #: data/gui/default/window/addon_description.cfg:436
-#, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this URL to clipboard"
-msgstr "Scegli la partita da caricare"
+msgstr "Copia questo URL negli appunti"
 
 #. [button]: id=url_go
 #: data/gui/default/window/addon_description.cfg:449
 msgid "url^Go"
-msgstr ""
+msgstr "Vai a"
 
 #. [button]: id=url_go
 #: data/gui/default/window/addon_description.cfg:450
 msgid "Visit this URL with a web browser"
-msgstr ""
+msgstr "Visita questo URL con un browser"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:478
 msgid "Dependencies:"
-msgstr ""
+msgstr "Dipendenze:"
 
 #. [scroll_label]: id=dependencies
 #: data/gui/default/window/addon_description.cfg:492
 msgid "addon_dependencies^None"
-msgstr ""
+msgstr "Nessuna"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:510
@@ -1756,10 +1965,8 @@ msgstr "Fazioni MG"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:57
-#, fuzzy
-#| msgid "addons_of_type^MP campaigns"
 msgid "addons_of_type^SP/MP campaigns"
-msgstr "Campagne MG"
+msgstr "Campagne SG/MG"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:58
@@ -1798,10 +2005,8 @@ msgstr "Modifiche MG"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:170
-#, fuzzy
-#| msgid "Actions"
 msgid "Options"
-msgstr "Azioni"
+msgstr "Opzioni"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:184
@@ -1829,31 +2034,33 @@ msgstr "Seleziona tutte"
 #: data/gui/default/window/addon_filter_options.cfg:321
 msgid "Add-ons will be sorted as follows when no column is selected:"
 msgstr ""
+"Le estensioni verrano ordinate in questo modo quando non viene selezionata "
+"una colonna:"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:351
 msgid "sort^By name"
-msgstr ""
+msgstr "Per nome"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:356
 msgid "sort^By last updated"
-msgstr ""
+msgstr "Per ultimo aggiornamento"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:361
 msgid "sort^By first upload"
-msgstr ""
+msgstr "Per primo invio"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:377
 msgid "sort^Ascending"
-msgstr ""
+msgstr "Ascendente"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:382
 msgid "sort^Descending"
-msgstr ""
+msgstr "Discendente"
 
 #. [scroll_label]
 #: data/gui/default/window/addon_uninstall_list.cfg:70
@@ -1951,10 +2158,8 @@ msgstr "Precedente"
 
 #. [button]: id=previous_page
 #: data/gui/default/window/chat_log.cfg:99
-#, fuzzy
-#| msgid "Previous"
 msgid "Previous page"
-msgstr "Precedente"
+msgstr "Pagina precedente"
 
 #. [button]: id=next_page
 #. [button]: id=next_tip
@@ -1967,10 +2172,8 @@ msgstr "Successiva"
 
 #. [button]: id=next_page
 #: data/gui/default/window/chat_log.cfg:107
-#, fuzzy
-#| msgid "Next Side"
 msgid "Next page"
-msgstr "Schieramento successivo"
+msgstr "Pagina successiva"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:125
@@ -1983,12 +2186,12 @@ msgstr "Filtro:"
 #: data/gui/default/window/gamestate_inspector.cfg:238
 #: data/gui/default/window/wml_error.cfg:124
 msgid "clipboard^Copy"
-msgstr ""
+msgstr "Copia"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:45
 msgid "Custom Time of Day Schedule"
-msgstr "Personalizza Andamento Temporale Giornaliero"
+msgstr "Personalizza andamento temporale giornaliero"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:67
@@ -2028,8 +2231,9 @@ msgstr "Suono"
 
 #. [label]: id=current_sound
 #: data/gui/default/window/custom_tod.cfg:180
+#, fuzzy
 msgid "long size text"
-msgstr ""
+msgstr "testo formato lungo"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:201
@@ -2149,81 +2353,63 @@ msgstr "Visibile nell’oscurità"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_edit_scenario.cfg:42
-#, fuzzy
-#| msgid "Editor Settings"
 msgid "Edit Scenario Settings"
-msgstr "Impostazioni dell’editor"
+msgstr "Modifica Impostazioni dello scenario"
 
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:72
 msgid "Identifier:"
-msgstr ""
+msgstr "Identificatore:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:173
-#, fuzzy
-#| msgid "Experience modifier"
 msgid "Experience modifier:"
-msgstr "Modificatore dell’esperienza"
+msgstr "Modificatore dell’esperienza:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:204
-#, fuzzy
-#| msgid "Turn"
 msgid "Turns:"
-msgstr "Turno"
+msgstr "Turni:"
 
 #. [toggle_button]: id=victory_when_enemies_defeated
 #: data/gui/default/window/editor_edit_scenario.cfg:244
 msgid "Declare victory once all enemies are defeated"
-msgstr ""
+msgstr "Dichiara la vittoria quando tutti i nemici sono sconfitti"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/editor_edit_scenario.cfg:262
-#, fuzzy
-#| msgid "Random start time"
 msgid "Random starting time"
 msgstr "Ora d’inizio casuale"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_edit_side.cfg:54
-#, fuzzy
-#| msgid "Side $side"
 msgid "Side Setup"
-msgstr "Fazione $side"
+msgstr "Configurazione Fazione"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:77
-#, fuzzy
-#| msgid "Number of hills:"
 msgid "Number:"
-msgstr "Numero di colline: "
+msgstr "Numero: "
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:105
 msgid "Team identifier:"
-msgstr ""
+msgstr "Identificatore squadra:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:133
-#, fuzzy
-#| msgid "Team only"
 msgid "Team name:"
-msgstr "Solo squadra"
+msgstr "Nome squadra:"
 
 #. [toggle_button]: id=share_maps
 #: data/gui/default/window/editor_edit_side.cfg:188
-#, fuzzy
-#| msgid "Animate map"
 msgid "Share map"
-msgstr "Anima la mappa"
+msgstr "Condividi la mappa"
 
 #. [toggle_button]: id=no_leader
 #: data/gui/default/window/editor_edit_side.cfg:200
-#, fuzzy
-#| msgid "Leader"
 msgid "No leader"
-msgstr "Condottiero"
+msgstr "Nessun condottiero"
 
 #. [toggle_button]: id=fog
 #: data/gui/default/window/editor_edit_side.cfg:216
@@ -2234,63 +2420,57 @@ msgstr "Nebbia di guerra"
 #. [toggle_button]: id=share_view
 #: data/gui/default/window/editor_edit_side.cfg:228
 msgid "Share view"
-msgstr ""
+msgstr "Vista condivisa"
 
 #. [toggle_button]: id=hidden
 #: data/gui/default/window/editor_edit_side.cfg:240
-#, fuzzy
-#| msgid "Status Table"
 msgid "Hide in status table"
-msgstr "Tabella di stato"
+msgstr "Nascondi nella tabella di stato"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:269
 msgid "Gold:"
-msgstr ""
+msgstr "Oro:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:297
-#, fuzzy
-#| msgid "Gold per village"
 msgid "Gold per village:"
-msgstr "Oro per villaggio"
+msgstr "Oro per villaggio:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:325
 msgid "Income:"
-msgstr ""
+msgstr "Entrate:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:353
-#, fuzzy
-#| msgid "Gold per village"
 msgid "Support per village:"
-msgstr "Oro per villaggio"
+msgstr "Oro per villaggio:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:383
 msgid "Controller:"
-msgstr ""
+msgstr "Controller:"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:400
 msgid "controller^Human"
-msgstr ""
+msgstr "Umano"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:402
 msgid "controller^AI only"
-msgstr ""
+msgstr "solo AI "
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:404
 msgid "controller^None"
-msgstr ""
+msgstr "Nessuno"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:421
 msgid "controller^Player number:"
-msgstr ""
+msgstr "Giocatore numero:"
 
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:35
@@ -2551,73 +2731,59 @@ msgstr ""
 #: data/gui/default/window/game_paths.cfg:47
 #: data/gui/default/window/screenshot_notification.cfg:34
 msgid "filesystem^Copy"
-msgstr ""
+msgstr "Copia"
 
 #. [button]: id=copy
 #. [button]: id=copy_
 #: data/gui/default/window/game_paths.cfg:48
 #: data/gui/default/window/screenshot_notification.cfg:35
-#, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this path to clipboard"
-msgstr "Scegli la partita da caricare"
+msgstr "Copia questo percorso negli appunti"
 
 #. [button]: id=browse_
 #: data/gui/default/window/game_paths.cfg:63
 msgid "filesystem^Browse"
-msgstr ""
+msgstr "Sfoglia"
 
 #. [button]: id=browse_
 #: data/gui/default/window/game_paths.cfg:64
 msgid "Browse this location using a file manager"
-msgstr ""
+msgstr "Scorri utilizzando un file manager"
 
 #. [label]: id=title
 #: data/gui/default/window/game_paths.cfg:105
-#, fuzzy
-#| msgid "Cave Path"
 msgid "Game Paths"
-msgstr "Sentiero di caverna"
+msgstr "Percorsi del gioco"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:127
-#, fuzzy
-#| msgid "Metadata:"
 msgid "Game data:"
-msgstr "Metadata:"
+msgstr "Dati del gioco:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:129
-#, fuzzy
-#| msgid "Confirmation requested"
 msgid "Configuration:"
-msgstr "Conferma richiesta"
+msgstr "Configurazione:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:131
-#, fuzzy
-#| msgid "Metadata:"
 msgid "User data:"
-msgstr "Metadata:"
+msgstr "Dati utente:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:133
-#, fuzzy
-#| msgid "Save Game"
 msgid "Saved games:"
-msgstr "Salva la partita"
+msgstr "Partite salvate:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:135
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-ons:"
-msgstr "Estensioni"
+msgstr "Estensioni:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:137
 msgid "Cache:"
-msgstr ""
+msgstr "Cache:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -3073,7 +3239,7 @@ msgstr "Password:"
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:40
 msgid "Confirm"
-msgstr ""
+msgstr "Conferma"
 
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:98
@@ -3082,8 +3248,6 @@ msgstr "Vuoi applicare i cambiamenti?"
 
 #. [label]
 #: data/gui/default/window/mp_depcheck_select_new.cfg:40
-#, fuzzy
-#| msgid "User interaction required"
 msgid "User Interaction Required"
 msgstr "Richiesta interazione utente"
 
@@ -3208,31 +3372,27 @@ msgstr "Seleziona"
 #. [button]: id=open
 #: data/gui/default/window/screenshot_notification.cfg:50
 msgid "filesystem^Open"
-msgstr ""
+msgstr "Apri"
 
 #. [button]: id=open
 #: data/gui/default/window/screenshot_notification.cfg:51
 msgid "Open this file with an external application"
-msgstr ""
+msgstr "Apri questo file con un’applicazione esterna"
 
 #. [label]: id=title
 #: data/gui/default/window/screenshot_notification.cfg:95
-#, fuzzy
-#| msgid "Screenshot failed"
 msgid "Screenshot Saved"
-msgstr "Cattura schermata non riuscita"
+msgstr "Schermata catturata salvata"
 
 #. [button]: id=browse_dir
 #: data/gui/default/window/screenshot_notification.cfg:185
-#, fuzzy
-#| msgid "Screenshot"
 msgid "Screenshots..."
-msgstr "Schermata"
+msgstr "Schermate..."
 
 #. [button]: id=browse_dir
 #: data/gui/default/window/screenshot_notification.cfg:187
 msgid "Browse the screenshots folder using a file manager"
-msgstr ""
+msgstr "Scorri la cartella delle schermate utilizzadno un gestore di file"
 
 #. [label]
 #: data/gui/default/window/theme_list.cfg:51
@@ -3241,10 +3401,10 @@ msgstr "Scegli il tema"
 
 #. [label]
 #: data/gui/default/window/theme_list.cfg:67
-#, fuzzy
-#| msgid "New theme will take effect on next new or loaded game."
 msgid "The new theme will take effect after loading or starting a new game."
-msgstr "Il nuovo tema avrà effetto sul gioco che inizierai o che caricherai."
+msgstr ""
+"Il nuovo tema avrà effetto dopo il caricamento o l’inizio di una nuova "
+"partita."
 
 #. [button]: id=help
 #: data/gui/default/window/title_screen.cfg:180
@@ -3393,17 +3553,13 @@ msgstr "Errore"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
 #: data/gui/default/window/wml_error.cfg:112 src/gui/dialogs/wml_error.cpp:192
-#, fuzzy
-#| msgid "Rails"
 msgid "Details:"
-msgstr "Binari"
+msgstr "Dettagli:"
 
 #. [button]: id=copy
 #: data/gui/default/window/wml_error.cfg:125
-#, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this report to clipboard"
-msgstr "Scegli la partita da caricare"
+msgstr "Copia questo report negli appunti"
 
 #: src/filechooser.cpp:80
 msgid "File: "
@@ -3551,7 +3707,7 @@ msgstr "Scorciatoie"
 
 #: src/game_preferences_display.cpp:206
 msgid "Paths"
-msgstr ""
+msgstr "Percorsi"
 
 #: src/game_preferences_display.cpp:208
 msgid "Sound effects"
@@ -3777,12 +3933,16 @@ msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "'player_name notes on friend')"
 msgstr ""
+"Aggiungi questo nome alla lista dei tuoi amici (aggiung opzionalmente delle "
+"note, tipo «nome_giocatore inserito tra gli amici»)"
 
 #: src/game_preferences_display.cpp:402
 msgid ""
 "Add this username to your ignores list (add optional reason, e.g., "
 "'player_name reason ignored')"
 msgstr ""
+"Aggiungi questo nome alla lista di quelli che ignori (aggiungi opzionalmente "
+"un motivo, tipo «nome_giocatore ignorato per questo motivo»)"
 
 #: src/game_preferences_display.cpp:403
 msgid "Remove this username from your list"
@@ -3841,7 +4001,7 @@ msgstr "Guarda e configura le scorciatoie da tastiera"
 
 #: src/game_preferences_display.cpp:434
 msgid "View game file paths"
-msgstr ""
+msgstr "Visualizza i percorsi del gioco"
 
 #: src/game_preferences_display.cpp:764
 msgid "Speed: "
@@ -3951,7 +4111,7 @@ msgstr "Mostra le etichette fluttuanti"
 
 #: src/generators/mapgen_dialog.cpp:314
 msgid "/1000 tiles"
-msgstr "/1000 esagoni"
+msgstr "/1000 tessere"
 
 #: src/generators/mapgen_dialog.cpp:323
 msgid "Coastal"
@@ -4313,32 +4473,24 @@ msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Non è stato possibile mostrare una finestra che non sta nello schermo."
 
 #: src/hotkey/hotkey_command.cpp:38
-#, fuzzy
-#| msgid "Cancel"
 msgid "cancel"
-msgstr "Annulla"
+msgstr "annulla"
 
 #: src/hotkey/hotkey_command.cpp:39
-#, fuzzy
-#| msgid "Select None"
 msgid "Select Hex"
-msgstr "Annulla selezione"
+msgstr "Seleziona esagono"
 
 #: src/hotkey/hotkey_command.cpp:40
-#, fuzzy
-#| msgid "Select None"
 msgid "Deselect Hex"
-msgstr "Annulla selezione"
+msgstr "Annulla selezione esagono"
 
 #: src/hotkey/hotkey_command.cpp:41
-#, fuzzy
-#| msgid "Attack"
 msgid "Move/Attack"
-msgstr "Attacca"
+msgstr "Muovi/Attacca"
 
 #: src/hotkey/hotkey_command.cpp:42
 msgid "Select/Move/Attack"
-msgstr ""
+msgstr "Seleziona/Muovi/Attacca"
 
 #: src/hotkey/hotkey_command.cpp:43
 msgid "Animate Map"
@@ -4361,8 +4513,6 @@ msgid "End Unit Turn"
 msgstr "Termina turno dell’unità"
 
 #: src/hotkey/hotkey_command.cpp:48
-#, fuzzy
-#| msgid "Leader"
 msgid "Leader"
 msgstr "Condottiero"
 
@@ -4403,10 +4553,8 @@ msgid "Accelerated"
 msgstr "Accelerato"
 
 #: src/hotkey/hotkey_command.cpp:58
-#, fuzzy
-#| msgid "Unit Description"
 msgid "Terrain Description"
-msgstr "Descrizione dell’unità"
+msgstr "Descrizione del terreno"
 
 #: src/hotkey/hotkey_command.cpp:59
 msgid "Unit Description"
@@ -4457,10 +4605,8 @@ msgid "Mouse Scrolling"
 msgstr "Scorrimento col mouse"
 
 #: src/hotkey/hotkey_command.cpp:74
-#, fuzzy
-#| msgid "Status"
 msgid "Status Table"
-msgstr "Stato"
+msgstr "Tabella di stato"
 
 #: src/hotkey/hotkey_command.cpp:75
 msgid "Mute"
@@ -4475,10 +4621,8 @@ msgid "Change Side (Debug!)"
 msgstr "Cambia fronte dell’unità (Debug!)"
 
 #: src/hotkey/hotkey_command.cpp:79
-#, fuzzy
-#| msgid "Create Unit (Debug!)"
 msgid "Kill Unit (Debug!)"
-msgstr "Crea unità (Debug!)"
+msgstr "Uccidi unità (Debug!)"
 
 #: src/hotkey/hotkey_command.cpp:81
 msgid "Scenario Objectives"
@@ -4604,10 +4748,8 @@ msgid "Close Map"
 msgstr "Chiudi mappa"
 
 #: src/hotkey/hotkey_command.cpp:124
-#, fuzzy
-#| msgid "Switch Map"
 msgid "Switch Time of Day"
-msgstr "Cambia mappa"
+msgstr "Cambia andamento temporale"
 
 #: src/hotkey/hotkey_command.cpp:126
 msgid "Switch Map"
@@ -4615,7 +4757,7 @@ msgstr "Cambia mappa"
 
 #: src/hotkey/hotkey_command.cpp:127
 msgid "Assign Local Time"
-msgstr ""
+msgstr "Andamento temporale locale"
 
 #: src/hotkey/hotkey_command.cpp:129
 msgid "Custom Time of Day Creator"
@@ -4626,10 +4768,8 @@ msgid "Partial Undo"
 msgstr "Annullamento parziale"
 
 #: src/hotkey/hotkey_command.cpp:132
-#, fuzzy
-#| msgid "Test scenario"
 msgid "New Scenario"
-msgstr "Scenario di prova"
+msgstr "Nuovo scenario"
 
 #: src/hotkey/hotkey_command.cpp:133
 msgid "Load Map"
@@ -4640,10 +4780,8 @@ msgid "Save Map As"
 msgstr "Salva mappa come"
 
 #: src/hotkey/hotkey_command.cpp:136
-#, fuzzy
-#| msgid "Scenario start"
 msgid "Save Scenario As"
-msgstr "Inizio dello scenario"
+msgstr "Salva lo scenario come"
 
 #: src/hotkey/hotkey_command.cpp:137
 msgid "Save All Maps"
@@ -4658,14 +4796,10 @@ msgid "Map Information"
 msgstr "Informazioni sulla mappa"
 
 #: src/hotkey/hotkey_command.cpp:141
-#, fuzzy
-#| msgid "Selected game"
 msgid "Clear Selected Item Set"
-msgstr "Partita selezionata"
+msgstr "Pulisci il gruppo di oggetti selezionato"
 
 #: src/hotkey/hotkey_command.cpp:142
-#, fuzzy
-#| msgid "Swap Foreground/Background Terrains"
 msgid "Swap Foreground/Background Palette Item"
 msgstr "Scambia i terreni di sfondo e primo piano"
 
@@ -4698,23 +4832,22 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
+"Utilizza il bottone sinistro/destro del mouse per disegnare il terreno in "
+"primo piano/sullo sfondo. Usa il tasto Maiuscolo per disegnare soltanto "
+"sullo strato di base. Ctrl+click per copiare il terreno sotto il cursore."
 
 #: src/hotkey/hotkey_command.cpp:152
 msgid "Fill Tool"
 msgstr "Strumento di riempimento"
 
 #: src/hotkey/hotkey_command.cpp:153
-#, fuzzy
-#| msgid ""
-#| "Left mouse button selects or deselects, right brings up a context menu. "
-#| "Hold Shift for magic-wand selection of tiles with same terrain."
 msgid ""
 "Left mouse button selects or deselects with Ctrl, right brings up a context "
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
-"Il bottone sinisto del mouse seleziona o deseleziona, il destro attiva un "
-"menù contestuale. Tieni premuto il tasto Maiuscole per selezionare auto-"
-"magicamente tutte le tessere dello stesso tipo di terreno"
+"Il bottone sinistro del mouse seleziona o deseleziona insieme al tasto Ctrl, "
+"il destro attiva un menù contestuale. Tieni premuto il tasto Maiuscole per "
+"selezionare auto-magicamente tutte le tessere dello stesso tipo di terreno"
 
 #: src/hotkey/hotkey_command.cpp:153
 msgid "Selection Tool"
@@ -4726,6 +4859,10 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Il bottone sinistro del mouse mostra l’attuale selezione del giocatore, il "
+"destro la cancella. I tasti numerici portano alle posizioni di partenza, "
+"contemporaneamente al tasto Alt impostano le rispettive posizioni iniziali a "
+"quella del cursore, il tasto delete cancella."
 
 #: src/hotkey/hotkey_command.cpp:154
 msgid "Starting Positions Tool"
@@ -4742,88 +4879,77 @@ msgstr ""
 "annulla"
 
 #: src/hotkey/hotkey_command.cpp:156
-#, fuzzy
-#| msgid ""
-#| "Left mouse button pastes from the clipboard, right brings up a context "
-#| "menu."
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
 msgstr ""
-"Il bottone sinistro del mouse incolla dagli appunti, il destro fa apparire "
-"un menù contestuale"
+"Il bottone sinistro del mouse seleziona una nuova unità o la sposta, il "
+"destro fa apparire un menù contestuale. Necessita di una fazione definita."
 
 #: src/hotkey/hotkey_command.cpp:156
 msgid "Unit Tool"
 msgstr "Strumento per le unità"
 
 #: src/hotkey/hotkey_command.cpp:157
-#, fuzzy
-#| msgid "Next Tool"
 msgid "Item Tool"
-msgstr "Strumento successivo"
+msgstr "Strumento per oggetti"
 
 #: src/hotkey/hotkey_command.cpp:157
-#, fuzzy
-#| msgid "Left mouse button sets or drags a label, right clears."
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
 "Il bottone sinistro del mouse assegna o sposta un’etichetta, il destro "
-"annulla"
+"annulla. Non ancora implementato."
 
 #: src/hotkey/hotkey_command.cpp:158
-#, fuzzy
-#| msgid "Left mouse button sets or drags a label, right clears."
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
 msgstr ""
-"Il bottone sinistro del mouse assegna o sposta un’etichetta, il destro "
-"annulla"
+"Il bottone sinistro del mouse assegna o sposta una sorgente audio, il destro "
+"annulla. Non ancora implemenato"
 
 #: src/hotkey/hotkey_command.cpp:158
 msgid "Sound Source Tool"
-msgstr ""
+msgstr "Strumento sorgenti audio"
 
 #: src/hotkey/hotkey_command.cpp:159
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
 msgstr ""
+"Il bottone sinistro del mouse assegna il possesso del villaggio alla fazione "
+"corrente, il destro annulla il possesso. Necessita della definizione di una "
+"fazione."
 
 #: src/hotkey/hotkey_command.cpp:159
 msgid "Village Tool"
 msgstr "Strumento per i villaggi"
 
 #: src/hotkey/hotkey_command.cpp:161
-#, fuzzy
-#| msgid "Canrecruit"
 msgid "Can Recruit"
 msgstr "Può reclutare"
 
 #: src/hotkey/hotkey_command.cpp:161
 msgid "Toggle the recruit attribute of a unit."
-msgstr ""
+msgstr "Attiva/Disattiva recrutabilità di una unità"
 
 #: src/hotkey/hotkey_command.cpp:162
-#, fuzzy
-#| msgid "Change username"
 msgid "Can be Renamed"
-msgstr "Cambia nome utente"
+msgstr "Può essere rinominato"
 
 #: src/hotkey/hotkey_command.cpp:162
 msgid "Toggle the unit being renameable."
-msgstr ""
+msgstr "Attiva/Disattiva rinominabilità unità"
 
 #: src/hotkey/hotkey_command.cpp:163
 msgid "Assign Recruit List"
-msgstr ""
+msgstr "Assegna lista di reclutamento"
 
 #: src/hotkey/hotkey_command.cpp:163
 msgid "Assign the selected unit set as recruit list to the unit."
-msgstr ""
+msgstr "Assegna le unità selezionate come lista di reclutamento dell’unità"
 
 #: src/hotkey/hotkey_command.cpp:165
 msgid "Change Unit ID"
@@ -4835,25 +4961,23 @@ msgstr "Leale"
 
 #: src/hotkey/hotkey_command.cpp:168
 msgid "Toggle Minimap Unit Coding"
-msgstr ""
+msgstr "Attiva/Disattiva codici unità nella minimappa"
 
 #: src/hotkey/hotkey_command.cpp:169
 msgid "Toggle Minimap Terrain Coding"
-msgstr ""
+msgstr "Attiva/Disattiva codici terreno nella minimappa"
 
 #: src/hotkey/hotkey_command.cpp:171
 msgid "Toggle Minimap Unit Drawing"
-msgstr ""
+msgstr "Attiva/Disattiva Unità nella minimappa"
 
 #: src/hotkey/hotkey_command.cpp:172
 msgid "Toggle Minimap Village Drawing"
-msgstr ""
+msgstr "Attiva/Disattiva Villaggi nella minimappa"
 
 #: src/hotkey/hotkey_command.cpp:173
-#, fuzzy
-#| msgid "Update Terrain Transitions"
 msgid "Toggle Minimap Terrain Drawing"
-msgstr "Aggiorna transizioni del terreno"
+msgstr "Attiva/Disattiva terreno nella minimappa"
 
 #: src/hotkey/hotkey_command.cpp:175
 msgid "Next Brush"
@@ -4865,7 +4989,7 @@ msgstr "Pennello predefinito"
 
 #: src/hotkey/hotkey_command.cpp:177
 msgid "Single Tile"
-msgstr ""
+msgstr "Singola tessera"
 
 #: src/hotkey/hotkey_command.cpp:178
 msgid "Radius One"
@@ -4877,19 +5001,17 @@ msgstr "Raggio due"
 
 #: src/hotkey/hotkey_command.cpp:180
 msgid "Brush NW-SE"
-msgstr ""
+msgstr "Pennello NO-SE"
 
 #: src/hotkey/hotkey_command.cpp:181
 msgid "Brush SW-NE"
-msgstr ""
+msgstr "Pennello SO-NE"
 
 #: src/hotkey/hotkey_command.cpp:183
 msgid "Cut"
 msgstr "Taglia"
 
 #: src/hotkey/hotkey_command.cpp:184
-#, fuzzy
-#| msgid "Copy"
 msgid "Copy"
 msgstr "Copia"
 
@@ -4949,14 +5071,10 @@ msgid "Fill Selection"
 msgstr "Riempi selezione"
 
 #: src/hotkey/hotkey_command.cpp:197
-#, fuzzy
-#| msgid "Generate Tiles In Selection"
 msgid "Generate Tiles in Selection"
 msgstr "Genera tessere nella selezione"
 
 #: src/hotkey/hotkey_command.cpp:198
-#, fuzzy
-#| msgid "Randomize Tiles In Selection"
 msgid "Randomize Tiles in Selection"
 msgstr "Rendi casuali le tessere della selezione"
 
@@ -4985,10 +5103,8 @@ msgid "Update Terrain Transitions"
 msgstr "Aggiorna transizioni del terreno"
 
 #: src/hotkey/hotkey_command.cpp:209
-#, fuzzy
-#| msgid "Update Terrain Transitions"
 msgid "Toggle Terrain Transition Update"
-msgstr "Aggiorna transizioni del terreno"
+msgstr "Aggiornamento transizioni del terreno"
 
 #: src/hotkey/hotkey_command.cpp:211
 msgid "Auto-update Terrain Transitions"
@@ -5015,46 +5131,32 @@ msgid "Draw Terrain Codes"
 msgstr "Disegna i codici del terreno"
 
 #: src/hotkey/hotkey_command.cpp:219
-#, fuzzy
-#| msgid "Rotate Selection"
 msgid "Save Selection to Area"
-msgstr "Ruota selezione"
+msgstr "Salva selezione come area"
 
 #: src/hotkey/hotkey_command.cpp:220
-#, fuzzy
-#| msgid "Selected game"
 msgid "Rename Selected Area"
-msgstr "Partita selezionata"
+msgstr "Rinomina l’area selezionata"
 
 #: src/hotkey/hotkey_command.cpp:221
-#, fuzzy
-#| msgid "Selected game"
 msgid "Remove Selected Area"
-msgstr "Partita selezionata"
+msgstr "Elimina l’area selezionata"
 
 #: src/hotkey/hotkey_command.cpp:222
-#, fuzzy
-#| msgid "Add New Side"
 msgid "Add New Area"
-msgstr "Aggiungi una nuova fazione"
+msgstr "Aggiungi una nuova area"
 
 #: src/hotkey/hotkey_command.cpp:224
-#, fuzzy
-#| msgid "Editor Settings"
 msgid "Edit Scenario"
-msgstr "Impostazioni dell’editor"
+msgstr "Modifica scenario"
 
 #: src/hotkey/hotkey_command.cpp:225
-#, fuzzy
-#| msgid "Switch Side"
 msgid "Edit Side"
-msgstr "Cambia fazione"
+msgstr "Modifica fazione"
 
 #: src/hotkey/hotkey_command.cpp:226
-#, fuzzy
-#| msgid "Remove"
 msgid "Remove Side"
-msgstr "Rimuovi"
+msgstr "Rimuovi fazione"
 
 #: src/hotkey/hotkey_command.cpp:228
 msgid "Delay Shroud Updates"
@@ -5225,10 +5327,8 @@ msgid "Reset all bindings to the default values"
 msgstr "Ripristina tutto ai valori iniziali"
 
 #: src/hotkey/hotkey_preferences_display.cpp:219
-#, fuzzy
-#| msgid "Prefs section^Editor"
 msgid "Prefs section^Title Screen"
-msgstr "Editor"
+msgstr "Schermata iniziale"
 
 #: src/hotkey/hotkey_preferences_display.cpp:221
 msgid "Prefs section^Game"
@@ -5365,6 +5465,9 @@ msgstr ""
 "La chiave «$deprecated_key» è stata rinonimata in «$key». Il supporto per "
 "«$deprecated_key» verrà rimosso nella versione $removal_version."
 
+#~ msgid "controller^Human/AI"
+#~ msgstr "Umano/AI"
+
 #~ msgid "Elvish Castle"
 #~ msgstr "Castello degli elfi"
 
@@ -5435,7 +5538,6 @@ msgstr ""
 #~ msgid "Right Mouse Click"
 #~ msgstr "Clic del tasto destro"
 
-#, fuzzy
 #~| msgid "Switch Map"
 #~ msgid "Switch Area"
 #~ msgstr "Cambia mappa"
@@ -5446,7 +5548,6 @@ msgstr ""
 #~ msgid "Map-Screenshot"
 #~ msgstr "Schermata della mappa"
 
-#, fuzzy
 #~| msgid "Screenshot done"
 #~ msgid "Screenshot Done"
 #~ msgstr "Schermata catturata"
