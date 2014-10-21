@@ -7,9 +7,10 @@
 #include <cstddef>   //ptrdiff_t
 #include <cassert>   //assert
 
+#include "unicode_types.hpp"
+
 namespace ucs4
 {
-	typedef uint32_t char_t;
 	template<typename string_type, typename update_implementation>
 	class iterator_base
 	{
