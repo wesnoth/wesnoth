@@ -729,7 +729,7 @@ void thandler::key_down(const SDL_KeyboardEvent& event)
 #else
 		key_down(event.keysym.sym,
 				 event.keysym.mod,
-				 ::implementation::ucs4char_to_string(event.keysym.unicode));
+				 unicode_cast<std::string>(static_cast<ucs4::char_t>(event.keysym.unicode)));
 #endif
 	}
 }
