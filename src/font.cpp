@@ -38,6 +38,7 @@
 #include <list>
 #include <set>
 #include <stack>
+#include <sstream>
 
 #include <cairo-features.h>
 
@@ -322,7 +323,15 @@ namespace font {
 
 std::string describe_versions()
 {
-	return std::string("Cairo version: ") + cairo_version_string() + "\nPango version: " + pango_version_string() + "\n";
+	std::stringstream ss;
+
+	ss << "Compiled with Cairo version: " << CAIRO_VERSION_STRING << std::endl;
+	ss << "Running with Cairo version:  " << cairo_version_string() << std::endl;
+
+	ss << "Compiled with Pango version: " << PANGO_VERSION_STRING << std::endl;
+	ss << "Running with Pango version:  " << pango_version_string() << std::endl;
+
+	return ss.str();
 }
 
 manager::manager()

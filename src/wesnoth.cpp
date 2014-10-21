@@ -444,7 +444,7 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 	}
 	if(cmdline_opts.version) {
 		std::cout << "Battle for Wesnoth" << " " << game_config::version << "\n\n";
-		std::cout << "Boost version: " << BOOST_LIB_VERSION << "\n";
+		std::cout << "Compiled with Boost version: " << BOOST_LIB_VERSION << "\n";
 		std::cout << font::describe_versions();
 		std::cout << describe_SDL_versions();
 		std::cout << sound::describe_versions();
