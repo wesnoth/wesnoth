@@ -1275,3 +1275,36 @@ function wml_actions.store_villages( cfg )
 				    )
 	end
 end
+
+function wml_actions.put_to_recall_list(cfg)
+	local units = wesnoth.get_units(cfg)
+
+	for i, unit in ipairs(units) do	
+		if cfg.heal then
+			unit.hitpoints = unit.max_hitpoints
+			unit.moves = unit.max_moves
+			unit.attacks_left = unit.max_attacks
+			unit.status.poisoned = false
+			unit.status.slowed = false
+		end
+		wesnoth.put_recall_unit(unit, unit.side)
+		wesnoth.put_unit(unit.x, unit.y)
+	end
+end
+
+function wml_actions.full_heal(cfg)
+	local units = wesnoth.get_units(cfg)
+
+	for i, unit in ipairs(units) do	
+		if (not unit.status.unhealable) or cfg.ignore_status then
+			unit.hitpoints = unit.max_hitpoints
+			if cfg.cures then
+				unit.status.poisoned = false
+				unit.status.slowed = false
+			end
+			if cfg.animate then
+				wesnoth.fire( "animate_unit", { flag = "healed" ,  with_bars = "yes" , { "filter" , { id = unit.id } } })
+			end
+		end
+	end
+end
