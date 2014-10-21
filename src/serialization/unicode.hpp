@@ -18,6 +18,7 @@
 
 #include "ucs4_iterator_base.hpp"
 #include "unicode_types.hpp"
+#include "ucs4_convert_impl.hpp"
 #include "unicode_cast.hpp"
 
 #include <boost/static_assert.hpp>
@@ -39,13 +40,7 @@ namespace utf8 {
  */
 namespace utf16 {
 	typedef std::vector<wchar_t> string;
-	
-	struct iterator_implementation
-	{
-		static ucs4::char_t get_next_char(utf16::string::const_iterator& start, const utf16::string::const_iterator& end);
-	};
-
-	typedef ucs4::iterator_base<utf16::string, iterator_implementation> iterator;
+	typedef ucs4::iterator_base<utf16::string, ucs4_convert_impl::convert_impl<char_t>::type> iterator;
 }
 
 namespace utf8 {
@@ -54,12 +49,7 @@ namespace utf8 {
 	* Functions for converting Unicode wide-char strings to UTF-8 encoded strings,
 	* back and forth.
 	*/
-	struct iterator_implementation
-	{
-		static ucs4::char_t get_next_char(std::string::const_iterator& start, const std::string::const_iterator& end);
-	};
-
-	typedef ucs4::iterator_base<std::string, iterator_implementation> iterator;
+	typedef ucs4::iterator_base<std::string, ucs4_convert_impl::convert_impl<char_t>::type> iterator;
 
 	/** Returns a lowercased version of the string. */
 	utf8::string lowercase(const utf8::string&);
