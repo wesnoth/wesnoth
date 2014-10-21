@@ -250,9 +250,6 @@ void unit_drawer::redraw_unit (const unit & u) const
 #endif
 	if(draw_bars) {
 		const image::locator* orb_img = NULL;
-		const surface unit_img = image::get_image(u.default_anim_image());
-		const int xoff = (hex_size - unit_img->w)/2;
-		const int yoff = (hex_size - unit_img->h)/2;
 		/*static*/ const image::locator partmoved_orb(game_config::images::orb + "~RC(magenta>" +
 						preferences::partial_color() + ")"  );
 		/*static*/ const image::locator moved_orb(game_config::images::orb + "~RC(magenta>" +
@@ -299,7 +296,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 		if (orb_img != NULL) {
 			surface orb(image::get_image(*orb_img,image::SCALED_TO_ZOOM));
 			disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-				loc, xsrc + xoff, ysrc + adjusted_params.y + yoff, orb);
+				loc, xsrc, ysrc +adjusted_params.y, orb);
 		}
 
 		double unit_energy = 0.0;
@@ -311,7 +308,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 		const fixed_t bar_alpha = (loc == mouse_hex || loc == sel_hex) ? ftofxp(1.0): ftofxp(0.8);
 
-		draw_bar(*energy_file, xsrc+bar_shift+xoff, ysrc + adjusted_params.y + yoff,
+		draw_bar(*energy_file, xsrc+bar_shift, ysrc +adjusted_params.y,
 			loc, hp_bar_height, unit_energy,hp_color, bar_alpha);
 
 		if(experience > 0 && can_advance) {
@@ -319,7 +316,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 			const int xp_bar_height = static_cast<int>(max_experience * u.xp_bar_scaling() / std::max<int>(u.level(),1));
 
-			draw_bar(*energy_file, xsrc + xoff, ysrc + adjusted_params.y + yoff,
+			draw_bar(*energy_file, xsrc, ysrc +adjusted_params.y,
 				loc, xp_bar_height, filled, xp_color, bar_alpha);
 		}
 
@@ -330,7 +327,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 				//	crown = adjust_surface_alpha(crown, bar_alpha);
 				//}
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-					loc, xsrc + xoff, ysrc +adjusted_params.y + yoff, crown);
+					loc, xsrc, ysrc +adjusted_params.y, crown);
 			}
 		}
 
@@ -339,7 +336,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 			const sdl::timage ov_img(image::get_texture(*ov, image::SCALED_TO_ZOOM));
 			if(!ov_img.null()) {
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-					loc, xsrc + xoff, ysrc + adjusted_params.y + yoff, ov_img);
+					loc, xsrc, ysrc +adjusted_params.y, ov_img);
 			}
 #else
 			const surface ov_img(image::get_image(*ov, image::SCALED_TO_ZOOM));
