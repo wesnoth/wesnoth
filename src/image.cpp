@@ -1190,6 +1190,12 @@ bool precached_file_exists(const std::string& file)
 		return false;
 }
 
+void save_image(const locator & i_locator, const std::string & filename)
+{
+	surface surf = get_image(i_locator);
+	SDL_SaveBMP(surf, filename.c_str());
+}
+
 std::string describe_versions()
 {
 	std::stringstream ss;

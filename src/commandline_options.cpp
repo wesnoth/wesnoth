@@ -178,6 +178,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("nomusic", "runs the game without music.")
 		("nosound", "runs the game without sounds and music.")
 		("path", "prints the path to the data directory and exits.")
+		("render-image", po::value<two_strings>()->multitoken(), "takes two arguments: <image> <output>. Like screenshot, but instead of a map, takes a valid wesnoth 'image path string' with image path functions, and outputs to a windows .bmp file")
 		("rng-seed", po::value<unsigned int>(), "seeds the random number generator with number <arg>. Example: --rng-seed 0")
 		("screenshot", po::value<two_strings>()->multitoken(), "takes two arguments: <map> <output>. Saves a screenshot of <map> to <output> without initializing a screen. Editor must be compiled in for this to work.")
 		("server,s", po::value<std::string>()->implicit_value(std::string()), "connects to the host <arg> if specified or to the first host in your preferences.")
@@ -410,6 +411,11 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		rng_seed = vm["rng-seed"].as<unsigned int>();
 	if (vm.count("scenario"))
 		multiplayer_scenario = vm["scenario"].as<std::string>();
+	if (vm.count("render-image"))
+	{
+		render_image = vm["render-image"].as<two_strings>().get<0>();
+		render_image_dst = vm["render-image"].as<two_strings>().get<1>();
+	}
 	if (vm.count("screenshot"))
 	{
 		screenshot = true;

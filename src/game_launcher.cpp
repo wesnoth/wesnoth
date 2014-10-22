@@ -566,6 +566,34 @@ bool game_launcher::play_screenshot_mode()
 	return false;
 }
 
+bool game_launcher::play_render_image_mode()
+{
+	if(!cmdline_opts_.render_image) {
+		return true;
+	}
+
+	state_.classification().campaign_type = game_classification::MULTIPLAYER;
+	DBG_GENERAL << "Current campaign type: " << state_.classification().campaign_type << std::endl;
+
+	try {
+		resources::config_manager->
+			load_game_config_for_game(state_.classification());
+	} catch(config::error& e) {
+		std::cerr << "Error loading game config: " << e.what() << std::endl;
+		return false;
+	}
+
+	std::string outfile = cmdline_opts_.render_image->substr(0, std::min(8ul,cmdline_opts_.render_image->length())) + ".bmp";
+
+	if (cmdline_opts_.render_image_dst) {
+		outfile = *cmdline_opts_.render_image_dst;
+	}
+
+	image::save_image(*cmdline_opts_.render_image, outfile);
+
+	return false;
+}
+
 bool game_launcher::is_loading() const
 {
 	return !game::load_game_exception::game.empty();
