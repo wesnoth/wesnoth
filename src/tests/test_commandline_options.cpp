@@ -16,14 +16,15 @@
 #include "commandline_options.hpp"
 
 #include <boost/test/unit_test.hpp>
+#include <boost/assign.hpp>
 
 BOOST_AUTO_TEST_SUITE( cmdline_opts )
 
 BOOST_AUTO_TEST_CASE (test_empty_options)
 {
-	const char *argv[] = {"wesnoth"};
-	const int argc = sizeof(argv)/sizeof(const char *);
-	commandline_options co(argc,const_cast<char**>(argv));
+	
+	std::vector<std::string> args = boost::assign::list_of("wesnoth");
+	commandline_options co(args);
 
 	BOOST_CHECK(!co.bpp);
 	BOOST_CHECK(!co.campaign);
@@ -96,19 +97,16 @@ BOOST_AUTO_TEST_CASE (test_empty_options)
 
 BOOST_AUTO_TEST_CASE (test_default_options)
 {
-	const char *argv[] =
-	{
-		"wesnoth",
-		"--campaign",
-		"--editor",
-		"--logdomains",
-		"--preprocess-output-macros",
-		"--server",
-		"--test"
-	};
-	const int argc = sizeof(argv)/sizeof(const char *);
-	commandline_options co(argc,const_cast<char**>(argv));
+	std::vector<std::string> args = boost::assign::list_of
+		("wesnoth")
+		("--campaign")
+		("--editor")
+		("--logdomains")
+		("--preprocess-output-macros")
+		("--server")
+		("--test");
 
+	commandline_options co(args);
 	BOOST_CHECK(!co.bpp);
 	BOOST_CHECK(co.campaign && co.campaign->empty());
 	BOOST_CHECK(!co.campaign_difficulty);
@@ -180,83 +178,81 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 
 BOOST_AUTO_TEST_CASE (test_full_options)
 {
-	const char *argv[] =
-	{
-		"wesnoth",
-		"--ai-config=1:aifoo",
-		"--ai-config=2:aibar",
-		"--algorithm=3:algfoo",
-		"--algorithm=4:algbar",
-		"--bpp=32",
-		"--campaign=campfoo",
-		"--campaign-difficulty=16",
-		"--campaign-scenario=scenfoo",
-		"--clock",
-		"--controller=5:confoo",
-		"--controller=6:conbar",
-		"--data-dir=datadirfoo",
-		"--data-path",
-		"--debug",
+	std::vector<std::string> args = boost::assign::list_of
+		("wesnoth")
+		("--ai-config=1:aifoo")
+		("--ai-config=2:aibar")
+		("--algorithm=3:algfoo")
+		("--algorithm=4:algbar")
+		("--bpp=32")
+		("--campaign=campfoo")
+		("--campaign-difficulty=16")
+		("--campaign-scenario=scenfoo")
+		("--clock")
+		("--controller=5:confoo")
+		("--controller=6:conbar")
+		("--data-dir=datadirfoo")
+		("--data-path")
+		("--debug")
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-		"--debug-dot-domain=ddfoo",
-		"--debug-dot-level=dlfoo",
+		("--debug-dot-domain=ddfoo")
+		("--debug-dot-level=dlfoo")
 #endif
-		"--editor=editfoo",
-		"--era=erafoo",
-		"--exit-at-end",
-		"--fps",
-		"--fullscreen",
-		"--gunzip=gunzipfoo.gz",
-		"--gzip=gzipfoo",
-		"--help",
-		"--ignore-map-settings",
-		"--label=labelfoo",
-		"--load=loadfoo",
-		"--log-error=errfoo,errbar/*",
-		"--log-warning=warnfoo,warnfoo/bar",
-		"--log-info=infofoo",
-		"--log-debug=dbgfoo,dbgbar,dbg/foo/bar/baz",
-		"--logdomains=filterfoo",
-		"--max-fps=100",
-		"--multiplayer",
-		"--new-widgets",
-		"--nocache",
-		"--nodelay",
-		"--nomusic",
-		"--nosound",
-		"--nogui",
-		"--parm=7:parmfoo:valfoo",
-		"--parm=8:parmbar:valbar",
-		"--path",
-		"--preprocess", "preppathfoo", "preptargfoo",
-		"--preprocess-defines=DEFFOO,DEFBAR",
-		"--preprocess-input-macros=inmfoo",
-		"--preprocess-output-macros=outmfoo",
-		"--proxy",
-		"--proxy-address=addressfoo",
-		"--proxy-password=passfoo",
-		"--proxy-port=portfoo",
-		"--proxy-user=userfoo",
-		"--resolution=800x600",
-		"--rng-seed=1234",
-		"--scenario=scenfoo",
-		"--screenshot", "mapfoo", "outssfoo",
-		"--side=9:sidefoo",
-		"--side=10:sidebar",
-		"--server=servfoo",
-		"--test=testfoo",
-		"--turns=42",
-		"--userconfig-dir=userconfigdirfoo",
-		"--userconfig-path",
-		"--userdata-dir=userdatadirfoo",
-		"--userdata-path",
-		"--validcache",
-		"--version",
-		"--windowed",
-		"--with-replay"
-	};
-	const int argc = sizeof(argv)/sizeof(const char *);
-	commandline_options co(argc,const_cast<char**>(argv));
+		("--editor=editfoo")
+		("--era=erafoo")
+		("--exit-at-end")
+		("--fps")
+		("--fullscreen")
+		("--gunzip=gunzipfoo.gz")
+		("--gzip=gzipfoo")
+		("--help")
+		("--ignore-map-settings")
+		("--label=labelfoo")
+		("--load=loadfoo")
+		("--log-error=errfoo,errbar/*")
+		("--log-warning=warnfoo,warnfoo/bar")
+		("--log-info=infofoo")
+		("--log-debug=dbgfoo,dbgbar,dbg/foo/bar/baz")
+		("--logdomains=filterfoo")
+		("--max-fps=100")
+		("--multiplayer")
+		("--new-widgets")
+		("--nocache")
+		("--nodelay")
+		("--nomusic")
+		("--nosound")
+		("--nogui")
+		("--parm=7:parmfoo:valfoo")
+		("--parm=8:parmbar:valbar")
+		("--path")
+		("--preprocess") ("preppathfoo") ("preptargfoo")
+		("--preprocess-defines=DEFFOO,DEFBAR")
+		("--preprocess-input-macros=inmfoo")
+		("--preprocess-output-macros=outmfoo")
+		("--proxy")
+		("--proxy-address=addressfoo")
+		("--proxy-password=passfoo")
+		("--proxy-port=portfoo")
+		("--proxy-user=userfoo")
+		("--resolution=800x600")
+		("--rng-seed=1234")
+		("--scenario=scenfoo")
+		("--screenshot") ("mapfoo") ("outssfoo")
+		("--side=9:sidefoo")
+		("--side=10:sidebar")
+		("--server=servfoo")
+		("--test=testfoo")
+		("--turns=42")
+		("--userconfig-dir=userconfigdirfoo")
+		("--userconfig-path")
+		("--userdata-dir=userdatadirfoo")
+		("--userdata-path")
+		("--validcache")
+		("--version")
+		("--windowed")
+		("--with-replay");
+
+	commandline_options co(args);
 
 	BOOST_CHECK(co.bpp && *co.bpp == 32);
 	BOOST_CHECK(co.campaign && *co.campaign == "campfoo");
@@ -350,13 +346,11 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 
 BOOST_AUTO_TEST_CASE (test_positional_options)
 {
-	const char *argv[] =
-	{
-		"wesnoth",
-		"datadirfoo"
-	};
-	const int argc = sizeof(argv)/sizeof(const char *);
-	commandline_options co(argc,const_cast<char**>(argv));
+	std::vector<std::string> args = boost::assign::list_of
+		("wesnoth")
+		("datadirfoo");
+
+	commandline_options co(args);
 
 	BOOST_CHECK(!co.bpp);
 	BOOST_CHECK(!co.campaign);
