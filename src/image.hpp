@@ -249,6 +249,8 @@ namespace image {
 	bool precached_file_exists(const std::string& file);
 
 	std::string describe_versions();
+
+	void save_image(const locator& i_locator, const std::string& outfile);
 }
 
 #endif

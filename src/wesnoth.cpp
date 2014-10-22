@@ -431,7 +431,7 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 	if(cmdline_opts.rng_seed) {
 		srand(*cmdline_opts.rng_seed);
 	}
-	if(cmdline_opts.screenshot) {
+	if(cmdline_opts.screenshot || cmdline_opts.render_image) {
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 		SDL_setenv("SDL_VIDEODRIVER", "dummy", 1);
 #else
@@ -640,6 +640,10 @@ static int do_gameloop(int argc, char** argv)
 		}
 
 		if(game->play_screenshot_mode() == false) {
+			return 0;
+		}
+
+		if(game->play_render_image_mode() == false) {
 			return 0;
 		}
 

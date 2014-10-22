@@ -170,6 +170,10 @@ public:
 	boost::optional<std::string> username;
 	/// Non-empty if --password was given on the command line. Forces Wesnoth to use this network password.
 	boost::optional<std::string> password;
+	/// Image path to render. First parameter after --render-image
+	boost::optional<std::string> render_image;
+	/// Output file to put rendered image path in. Optional second parameter after --render-image
+	boost::optional<std::string> render_image_dst;
 	/// True if --screenshot was given on the command line. Starts Wesnoth in screenshot mode.
 	bool screenshot;
 	/// Map file to make a screenshot of. First parameter given after --screenshot.

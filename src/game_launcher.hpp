@@ -65,6 +65,7 @@ public:
 
 	bool play_test();
 	bool play_screenshot_mode();
+	bool play_render_image_mode();
 	int unit_test();
 
 	bool is_loading() const;
