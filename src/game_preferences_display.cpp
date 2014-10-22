@@ -21,6 +21,7 @@
 #include "filechooser.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/advanced_graphics_options.hpp"
 #include "gui/dialogs/game_cache_options.hpp"
 #include "gui/dialogs/game_paths.hpp"
 #include "gui/dialogs/mp_alerts_options.hpp"
@@ -144,6 +145,7 @@ private:
 			animate_map_button_,
 			disable_auto_move_button_,
 			mp_alerts_options_button_,
+			advanced_graphics_options_button_,
 
 			// color tab
 			orb_colors_defaults_,
@@ -246,6 +248,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  animate_map_button_(disp.video(), _("Animate map"), gui::button::TYPE_CHECK),
 	  disable_auto_move_button_(disp.video(), _("Disable automatic moves"), gui::button::TYPE_CHECK),
 	  mp_alerts_options_button_(disp.video(), _("Alerts")),
+	  advanced_graphics_options_button_(disp.video(), _("Advanced")),
 
 	  // Colors tab buttons
 	  orb_colors_defaults_(disp.video(), _("Defaults")),
@@ -609,6 +612,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&friends_);
 	h.push_back(&disable_auto_move_button_);
 	h.push_back(&mp_alerts_options_button_);
+	h.push_back(&advanced_graphics_options_button_);
 
 	// Colors tab
 	for (unsigned i = 0; i < color_ids_.size(); i++) {
@@ -706,6 +710,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	                           bottom_row_y - theme_button_.height());
 	colors_button_.set_location(rect.x + video_mode_button_.width() + theme_button_.width() + 20, bottom_row_y - colors_button_.height());
 
+	advanced_graphics_options_button_.set_location(rect.x, bottom_row_y - video_mode_button_.height() - advanced_graphics_options_button_.height() - 10);
 
 	// Color tab
 	const int width = 28; // orb_colors_ally_buttons_[0].width();
@@ -1001,6 +1006,9 @@ void preferences_dialog::process_event()
 
 		if (colors_button_.pressed())
 				set_selection(COLOR_TAB);
+
+		if (advanced_graphics_options_button_.pressed())
+			show_advanced_graphics_dialog(disp_);
 
 		return;
 	}
@@ -1606,6 +1614,7 @@ void preferences_dialog::set_selection(int index)
 	show_team_colors_button_.hide(hide_display);
 	show_grid_button_.hide(hide_display);
 	colors_button_.hide(hide_display);
+	advanced_graphics_options_button_.hide(hide_display);
 
 	const bool hide_colors = tab_ != COLOR_TAB;
 	orb_colors_ally_toggle_.hide(hide_colors);
@@ -1772,6 +1781,11 @@ void show_paths_dialog(display& disp)
 void show_mp_alerts_dialog(display & disp)
 {
 	gui2::tmp_alerts_options::display(disp.video());
+}
+
+void show_advanced_graphics_dialog(display & disp)
+{
+	gui2::tadvanced_graphics_options::display(disp.video());
 }
 
 std::string show_wesnothd_server_search(display& disp)

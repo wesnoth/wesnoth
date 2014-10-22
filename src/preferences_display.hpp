@@ -79,6 +79,7 @@ namespace preferences {
 	bool show_theme_dialog(display& disp);
 	void show_paths_dialog(display& disp);
 	void show_mp_alerts_dialog(display& disp);
+	void show_advanced_graphics_dialog(display & disp);
 
 	// If prefs is non-null, save the hotkeys in that config
 	// instead of the default.

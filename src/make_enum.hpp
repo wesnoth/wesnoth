@@ -61,6 +61,7 @@ MAKE_ENUM_STREAM_OPS2(bar , another)
  * What it does:
  *
  * generates an enum foo::enumname, with functions to convert to and from string
+ * const size_t foo::enumname_COUNT, which counts the number of possible values,
  *
  *
  * foo::string_to_enumname(std::string);                        //throws bad_enum_cast
@@ -129,6 +130,13 @@ private:
         const std::string message;
 };
 
+// Add compiler directive suppressing unused variable warning
+#if defined(__GNUCC__) || defined(__clang__) || defined(__MINGW32__)
+#define ATTR_UNUSED( x ) __attribute__((unused)) x
+#else
+#define ATTR_UNUSED( x ) x
+#endif
+
 
 #define CAT2( A, B ) A ## B
 #define CAT3( A, B, C ) A ## B ## C
@@ -152,6 +160,9 @@ private:
 #define EXPANDENUMFUNCTIONREVRETURN( a, b ) if ( val == a ) return b;
 #define EXPANDENUMFUNCTIONREV( r, data, elem ) EXPANDENUMFUNCTIONREVRETURN elem
 
+#define EXPANDENUMFUNCTIONCOUNTRETURN( a, b ) 1+
+#define EXPANDENUMFUNCTIONCOUNT( r, data, elem ) EXPANDENUMFUNCTIONCOUNTRETURN elem
+
 #define ADD_PAREN_1( A, B ) ((A, B)) ADD_PAREN_2
 #define ADD_PAREN_2( A, B ) ((A, B)) ADD_PAREN_1
 #define ADD_PAREN_1_END
@@ -161,10 +172,10 @@ private:
 #define MAKEENUMTYPE( NAME, CONTENT ) \
 enum NAME { \
 BOOST_PP_SEQ_FOR_EACH(EXPANDENUMTYPE,  , MAKEPAIRS(CONTENT)) \
-}; \
+};
 
 
-#define MAKEENUMCAST( NAME, PREFIX, CONTENT ) \
+#define MAKEENUMCAST( NAME, PREFIX, CONTENT, COUNT_VAR ) \
 PREFIX NAME CAT3(string_to_, NAME, _default) (const std::string& str, NAME def) \
 { \
         BOOST_PP_SEQ_FOR_EACH(EXPANDENUMFUNCTION,  , MAKEPAIRS(CONTENT)) \
@@ -180,13 +191,16 @@ PREFIX std::string CAT2(NAME,_to_string) (NAME val) \
         BOOST_PP_SEQ_FOR_EACH(EXPANDENUMFUNCTIONREV,  , MAKEPAIRS(CONTENT)) \
         assert(false && "Corrupted enum found with identifier NAME"); \
         throw 42; \
-}
-
+} \
+\
+PREFIX const size_t ATTR_UNUSED( COUNT_VAR ) = \
+BOOST_PP_SEQ_FOR_EACH(EXPANDENUMFUNCTIONCOUNT, , MAKEPAIRS(CONTENT)) \
+0;
 
 
 #define MAKE_ENUM( NAME, CONTENT ) \
 MAKEENUMTYPE( NAME, CONTENT ) \
-MAKEENUMCAST( NAME, static , CONTENT )
+MAKEENUMCAST( NAME, static , CONTENT, CAT2(NAME,_COUNT) )
 
 #define MAKE_ENUM_STREAM_OPS1( NAME ) \
 inline std::ostream& operator<< (std::ostream & os, NAME val) \
