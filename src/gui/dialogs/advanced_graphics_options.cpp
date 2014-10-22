@@ -25,6 +25,7 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 
+#include "image.hpp"
 #include "preferences.hpp"
 #include "formula_string_utils.hpp"
 
@@ -88,6 +89,17 @@ void tadvanced_graphics_options::setup_scale_button(const std::string & case_id,
 
 void tadvanced_graphics_options::scale_button_callback(std::string pref_id, SCALING_ALGORITHM me, twindow & window)
 {
+	tadvanced_graphics_options::SCALING_ALGORITHM algo = tadvanced_graphics_options::LINEAR;
+	try {
+		algo = string_to_SCALING_ALGORITHM(preferences::get(pref_id));
+	} catch (bad_enum_cast &) {
+		preferences::set(pref_id, SCALING_ALGORITHM_to_string(algo));
+	}
+
+	if (algo != me) {
+		image::flush_cache();
+	}
+
 	preferences::set(pref_id, SCALING_ALGORITHM_to_string(me));
 
 	for (size_t x = 0; x < SCALING_ALGORITHM_COUNT; ++x) {
