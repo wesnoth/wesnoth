@@ -50,6 +50,7 @@ script:
 
 after_failure:
     - if [ -f "errors.log" ]; then echo -e "\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n"; cat errors.log; fi
+    - ./utils/travis/test_executor.sh;
 
 notifications:
     email: false
