@@ -64,7 +64,7 @@ bad_commandline_tuple::bad_commandline_tuple(const std::string& str,
 {
 }
 
-commandline_options::commandline_options ( int argc, char** argv ) :
+commandline_options::commandline_options (const std::vector<std::string>& args) :
 	bpp(),
 	bunzip2(),
 	bzip2(),
@@ -144,8 +144,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	version(false),
 	windowed(false),
 	with_replay(false),
-	argc_(argc),
-	argv_(argv),
+	args_(args.begin() + 1 , args.end()),
+	args0_(*args.begin()),
 	all_(),
 	visible_(),
 	hidden_()
@@ -278,7 +278,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 
 	po::variables_map vm;
 	const int parsing_style = po::command_line_style::default_style ^ po::command_line_style::allow_guessing;
-	po::store(po::command_line_parser(argc_,argv_).options(all_).positional(positional).style(parsing_style).run(),vm);
+	po::store(po::command_line_parser(args_).options(all_).positional(positional).style(parsing_style).run(),vm);
 
 	if (vm.count("ai-config"))
 		multiplayer_ai_config = parse_to_uint_string_tuples_(vm["ai-config"].as<std::vector<std::string> >());
@@ -559,7 +559,7 @@ std::vector<boost::tuple<unsigned int,std::string,std::string> > commandline_opt
 
 std::ostream& operator<<(std::ostream &os, const commandline_options& cmdline_opts)
 {
-	os << "Usage: " << cmdline_opts.argv_[0] << " [<options>] [<data-directory>]\n";
+	os << "Usage: " << cmdline_opts.args0_ << " [<options>] [<data-directory>]\n";
 	os << cmdline_opts.visible_;
 	return os;
 }
