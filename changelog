@@ -178,6 +178,7 @@ Version 1.13.0-dev:
      between random and non-random music play (bug #19653)
    * Fixed a bug that prevented [animate_unit] from displaying death or victory
      animations for those units that filter them based on weapon (eg. Wose)
+   * New WML tags: [full_heal] and [put_to_recall_list].
  * Miscellaneous and bug fixes:
    * replace 'fight_on_without_leader'=yes/no with defeat_condition=no_leader/
      no_units/always/never which allows the wml developer to decide when a side
