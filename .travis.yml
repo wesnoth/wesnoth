@@ -44,7 +44,7 @@ script:
     - scons cxxtool=$CXX --debug=time build=release extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=$STRICT_COMPILATION $TARGETS
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
-    - if [ "$CPP_TESTS" = true ]; then time ./utils/travis/test_executor.sh; fi
+    - if [ "$CPP_TESTS" = true ]; then time ./test; fi          # The test executor script seems to be blocking stderr, disabling for now...   time ./utils/travis/test_executor.sh; fi
     - if [ "$WML_TESTS" = true ]; then time ./run_wml_tests -g -v -t "$WML_TEST_TIME"; fi
     - if [ "$PLAY_TEST" = true ]; then time ./utils/travis/play_test_executor.sh; fi
 
