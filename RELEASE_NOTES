@@ -60,6 +60,17 @@ For those of you compiling Wesnoth using Xcode, you also need to download a new 
 Many new features, see changelog.
 [/section]
 
+[section="--render-image command line argument"]
+A new command-line argument "--render-image" has been added. It is similar to --screenshot, but instead of a map, it takes a wesnoth imagepath and generates at bitmap with the filters applied.
+
+Example usage:
+[code]
+wesnoth --render-image "units/undead-skeletal/banebow-bow-attack-1.png~SCALE(144,144)" "banebow.bmp"
+[/code]
+
+will generate a scaled image of a banebow attack sprite.
+[/section]
+
 [section="Example section 2"]
 Example contents 2.
 [/section]
