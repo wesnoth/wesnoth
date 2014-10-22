@@ -68,7 +68,7 @@ msgstr ""
 #. [test]: id=The_Elves_Besieged
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:5
 msgid "The Elves Besieged"
-msgstr ""
+msgstr "Los Elfos Sitiados"
 
 #. [side]: type=Spearman, id=Konrad
 #. [unit]: type=Spearman, id=Konrad
@@ -84,7 +84,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:154
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:174
 msgid "Rebels"
-msgstr ""
+msgstr "Rebeldes"
 
 #. [unit]: id=Delfador, type=Elder Mage
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:49
@@ -105,7 +105,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:132
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:23
 msgid "Orcs"
-msgstr ""
+msgstr "Orcos"
 
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:107
@@ -133,11 +133,13 @@ msgid ""
 "Master Delfador! Look, there are orcs coming from all directions! What shall "
 "we do?"
 msgstr ""
+"¡Maestro Delfador! !Mirad, hay orcos viniendo de todas las direcciones! ¿Qué "
+"deberíamos hacer?"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:215
 msgid "There are too many to fight, far too many. We must escape!"
-msgstr ""
+msgstr "Hay demasiados para luchar, demasiados. ¡Debemos huir!"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:218
@@ -148,59 +150,67 @@ msgid ""
 "keeping both Konrad and Delfador alive. The same AI as in scenario \"Protect "
 "Unit"
 msgstr ""
+"Esto es una recreación del escenario \"Los Elfos Sitiados\" de la campaña "
+"principal \"Heredero al Trono\", solo que aquí la IA juega del lado de Konrad. "
+"El objetivo es mover a Konrad a la señal al noroeste, mientras mantienes "
+"tanto a Konrad como a Delfador con vida. La misma IA que en el escenario "
+"\"Proteger a la Unidad\""
 
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:224
 msgid "Move Konrad here"
-msgstr ""
+msgstr "Mueve a Konrad aquí"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:240
 msgid "Very well, we have made it this far! But where do we go next?"
-msgstr ""
+msgstr "¡Muy bien, hemos llegado hasta aquí! ¿Pero qué hacemos ahora?"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:245
 msgid ""
 "In HttT, we would travel north now, and try to make it to the Isle of "
 "Alduin. But for this demo campaign, we'll call it good here."
-msgstr ""
+msgstr "En \"Heredero al Trono\" ahora viajaríamos al norte, y trataríamos "
+"de llegar a la isla de Alduin. Pero para esta campaña de demostración "
+"lo dejaremos aquí."
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:270
-msgid "I... I don’t think I can make it anymore."
-msgstr ""
+msgid "I... I don't think I can make it anymore."
+msgstr "Yo... No creo que pueda seguir."
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:274
 msgid "Prince... you must keep fighting! Nooooooo!"
-msgstr ""
+msgstr "!Príncipe... debeis seguir luchando! ¡Noooooo!"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:278
 msgid "It is over. I am doomed..."
-msgstr ""
+msgstr "Se acabo. Estoy condenado..."
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:292
 msgid "I have... have failed in my duty to protect the prince! I am defeated."
-msgstr ""
+msgstr "¡He... he fallado en mi misión de proteger al príncipe! He sido derrotado."
 
 #. [message]: speaker=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:296
 msgid "Don’t die, Delfador! Please, you have to stay alive!"
-msgstr ""
+msgstr "¡No murais, Delfador! ¡Por favor, debeis seguir vivo"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:300
 msgid "Ugh!"
-msgstr ""
+msgstr "¡Ugh!"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:311
 msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
 msgstr ""
+"¡Oh, no! Nos hemos quedado sin tiempo, han llegado sus refuerzos..."
 
 #: data/ai/micro_ais/scenarios/animals.cfg:4
 msgid ""
@@ -226,6 +236,28 @@ msgid ""
 "Wolves Multipack AI (used in a different scenario), this Wolves AI combines "
 "all wolves of the side in the same pack."
 msgstr ""
+"<u>General</u>: Estas IA están hechas para simular (hasta cierto punto) como "
+"actuan estos animales en la vida real. Por tanto, ser animales incluye que no "
+"son super inteligentes. Por ejemplo, los lobos normalmente cazan en equipo, "
+"pero se distraen fácilmente con cualquier presa que entre en su zona de ataque. "
+"También son decentes, pero no excelentes, acorralando ciervos. Esto, "
+"mayormente, es intencional.\n"
+"\n"
+"<u>Osos, Arañas y Yetis</u> principalmente vagan por sus respectivas partes "
+"del mapa. Se mantienen apartados del resto de los suyos (y apartados de los "
+"perros), pero atacan si se ven acorralados. Atacan a otros animales más débiles "
+"(ciervos, por ejemplo) si están en su rango de ataque.\n"
+"\n"
+"<u>Los Lobos</u> atacan en grupo. Van continuamente a por el ciervo más cercano "
+"(siempre y cuando permanezca en el bosque) y tratan de acorralarlo (no siempre "
+"de forma súper exitosa), pero se distraen fácilmente con cualquier posible presa "
+que entre en su rango. Los lobos tratan de evitar entrar en el territorio de osos, "
+"arañas, perros y yetis, excepto cuando van a atacar. Si les dejas moverse lo "
+"suficiente,descubrirán que tampoco es saludable atacar a los tusklets. Cuando no "
+queden ciervos, vagarán aleatoriamente. Ten en cuenta que, al contrario que el "
+"Multipack de IA de Lobos (usado en un escenario diferente), esta IA de lobos "
+"combina todos los lobos del sitio en el mismo pack."
+
 
 #: data/ai/micro_ais/scenarios/animals.cfg:12
 msgid ""
@@ -268,7 +300,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/animals.cfg:27
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:44
 msgid "Animals"
-msgstr ""
+msgstr "Animales"
 
 #. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:40
@@ -285,12 +317,12 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/goto.cfg:109
 #: data/ai/micro_ais/scenarios/wolves.cfg:26
 msgid "Humans"
-msgstr ""
+msgstr "Humanos"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:61
 msgid "Forest Creatures"
-msgstr ""
+msgstr "Criaturas del bosque"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:74
@@ -300,7 +332,7 @@ msgstr ""
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:87
 msgid "Spiders"
-msgstr ""
+msgstr "Arañas"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:100
@@ -314,12 +346,12 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:47
 #: data/ai/micro_ais/scenarios/wolves.cfg:5
 msgid "Wolves"
-msgstr ""
+msgstr "Lobos"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:126
 msgid "Whelps"
-msgstr ""
+msgstr "Cachorros"
 
 #. [event]
 #. [set_menu_item]: id=m01_end_animals
@@ -348,7 +380,7 @@ msgstr "Finalizar escenario"
 #: data/ai/micro_ais/scenarios/wolves.cfg:98
 #: data/ai/micro_ais/scenarios/wolves.cfg:254
 msgid "Well, that was that."
-msgstr ""
+msgstr "Bueno, eso fue todo"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/animals.cfg:331
@@ -358,6 +390,11 @@ msgid ""
 "Wesnoth mainline, such as bears, sheep and sheep dogs, or deer. In this test "
 "scenario, these units have been replaced by mainline units."
 msgstr ""
+"<span color='#A00000'>Importante:</span> las micro IA de los animales en este "
+"escenario están escritas para una cantidad de tipos de unidades animales que "
+"no existen en la línea principal de Wesnoth, como osos, ovejas, perros pastores "
+"o ciervos. En este escenario de prueba, estas unidades han sido reemplazadas por "
+"unidades de la línea principal."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/animals.cfg:334
@@ -366,6 +403,9 @@ msgid ""
 "for watching only. The animal AIs behave as follows:\n"
 "\n"
 msgstr ""
+"Este es un pequeño y divertido escenario con varias IA de animales diferentes, "
+"principalmente solo para mirar. Las IA de animales actuan de la siguiente manera:\n"
+"\n"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/animals.cfg:342
@@ -373,7 +413,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:134
 #: data/ai/micro_ais/scenarios/wolves.cfg:193
 msgid "Question for the Player"
-msgstr ""
+msgstr "Preguntas para el Jugador"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/animals.cfg:346
@@ -393,22 +433,36 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Es posible añadir un Bando 1 controlado por un jugador humano, para que "
+"la acción se pare una vez cada turno para echar un vistazo (o hacer cosas "
+"en modo depuración).\n"
+"\n"
+"Ten en cuenta que no hay final en este escenario. Por propósitos de demosttración, "
+"cada unidad que muere es reemplazada por otra unidad del mismo tipo al principio "
+"del siguiente turno. Para finalizar el escenario, hay una opción haciendo click"
+"derecho, pero solo funciona en el modo controlado por un jugador humano. En modo "
+"\"solo IA\", debes apretar \"Esc\" o recargar un archivo de guardado previo.\"
+"\n"
+"Ten en cuenta también: Las IA de los animales están programadas como Micro IA. Una "
+"Micro IA se puede añadir y adaptar a las necesidades de un escenario fácilmente "
+"usando solo WML y la etiqueta [micro_ai]. Mira la <span color='#00A000'>página de la "
+"Wiki sobre Micro IA</span> en http://wiki.wesnoth.org/Micro_AIs para más información."
 
 #. [option]: speaker=narrator
 #: data/ai/micro_ais/scenarios/animals.cfg:354
 msgid "<span font='16'>I'll just watch the animals.</span>"
-msgstr ""
+msgstr "<span font='16'>Solo miraré a los animales.</span>"
 
 #. [option]: speaker=narrator
 #: data/ai/micro_ais/scenarios/animals.cfg:367
 #: data/ai/micro_ais/scenarios/wolves.cfg:216
 msgid "<span font='16'>I want to have control of Side 1.</span>"
-msgstr ""
+msgstr "<span font='16'>Quiero tener control sobre el Bando 1.</span>"
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/animals.cfg:373
 msgid "Watch the animals do their things"
-msgstr ""
+msgstr "Observa a los animales hacer sus cosas"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/animals.cfg:375
@@ -416,13 +470,13 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/swarm.cfg:151
 #: data/ai/micro_ais/scenarios/wolves.cfg:228
 msgid "Use right-click option"
-msgstr ""
+msgstr "Usa la opción haciendo click derecho"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/animals.cfg:379
 #: data/ai/micro_ais/scenarios/wolves.cfg:232
 msgid "Death of Rutburt"
-msgstr ""
+msgstr "La muerte de Rutburt"
 
 #. [note]
 #: data/ai/micro_ais/scenarios/animals.cfg:383
@@ -430,7 +484,8 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/swarm.cfg:159
 #: data/ai/micro_ais/scenarios/wolves.cfg:236
 msgid "Check out the right-click menu options for additional actions"
-msgstr ""
+msgstr "Comprueba el menú de opciones haciendo click derecho para "
+"acciones adicionales"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/animals.cfg:401
@@ -439,21 +494,24 @@ msgid ""
 "Translation: Those Ogres are mean!  We better stay away from them and their "
 "young."
 msgstr ""
+"¡Yowl!\n"
+"Traducción: ¡Esos ogros son malos! Mejor mantengámonos lejos de ellos y sus "
+"crías."
 
 #. [test]: id=bottleneck_defense
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:5
 msgid "Bottleneck Defense"
-msgstr ""
+msgstr "Defensa de Cuello de Botella"
 
 #. [side]: type=Orcish Leader, id=Big Bad Orc
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:36
 msgid "Big Bad Orc"
-msgstr ""
+msgstr "Gran Ogro Maligno"
 
 #. [event]: (id=Big Bad Orc) profile profile}
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:83
 msgid "All right, chaps. Those orcs need to be stopped."
-msgstr ""
+msgstr "Vamos, compañeros. Esos orcos deben ser detenidos"
 
 #. [event]: (id=Big Bad Orc) profile profile}
 #. [event]: id=Kraa profile profile}
