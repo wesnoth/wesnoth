@@ -373,6 +373,8 @@ Version 1.13.0-dev:
      frames with no specified image.
    * Fix bug wherein {MOVE_UNIT} would sometimes overwrite another unit.
    * New filesystem implementation based on boost filesystem
+   * Added "--render-image" command-line argument, similar to --screenshot, but instead of a map,
+     it takes a wesnoth imagepath and generates at bitmap with the filters applied.
 
 Version 1.11.11:
  * Add-ons server:
