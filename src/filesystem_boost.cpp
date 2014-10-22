@@ -21,6 +21,7 @@
 #include "global.hpp"
 
 #include "filesystem.hpp"
+#include "serialization/unicode.hpp"
 
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
@@ -56,6 +57,134 @@ namespace {
 	const std::string finalcfg_filename = "_final.cfg";
 	const std::string initialcfg_filename = "_initial.cfg";
 }
+
+namespace {
+	//only used by windows but put outside the ifdef to let it check by ci build.
+	class customcodecvt : public std::codecvt<wchar_t /*intern*/, char /*extern*/, std::mbstate_t>
+	{
+	private:
+		//private static helper things
+		template<typename char_t_to>
+		struct customcodecvt_do_conversion_writer
+		{
+			char_t_to*& to_next;
+			char_t_to* to_end;
+
+			bool can_push(size_t count)
+			{
+				return static_cast<size_t>(to_end - to_next) > count;
+			}
+
+			void push(char_t_to val)
+			{
+				assert(to_next != to_end);
+				*to_next++  = val;
+			}
+		};
+
+		template<typename char_t_from , typename char_t_to>
+		static void customcodecvt_do_conversion( std::mbstate_t& /*state*/,
+			const char_t_from* from,
+			const char_t_from* from_end,
+			const char_t_from*& from_next,
+			char_t_to* to,
+			char_t_to* to_end,
+			char_t_to*& to_next )
+		{
+			typedef typename ucs4_convert_impl::convert_impl<char_t_from>::type impl_type_from;
+			typedef typename ucs4_convert_impl::convert_impl<char_t_to>::type impl_type_to;
+
+			from_next = from;
+			to_next = to;
+			customcodecvt_do_conversion_writer<char_t_to> writer = { to_next, to_end };
+			while(from_next != from_end)
+			{
+				impl_type_to::write(writer, impl_type_from::read(from_next, from_end));
+			}
+		}
+
+	public:
+
+		//Not used by boost filesystem
+		int do_encoding() const throw() { return 0; }
+		//Not used by boost filesystem
+		bool do_always_noconv() const throw() { return false; }
+		int do_length( std::mbstate_t& /*state*/,
+			const char* /*from*/,
+			const char* /*from_end*/,
+			std::size_t /*max*/ ) const
+		{
+			//Not used by boost filesystem
+			throw "Not supported";
+		}
+
+		std::codecvt_base::result unshift( std::mbstate_t& /*state*/,
+			char* /*to*/,
+			char* /*to_end*/,
+			char*& /*to_next*/) const
+		{
+			//Not used by boost filesystem
+			throw "Not supported";
+		}
+
+		//there are still some methods which could be implemented but arent because boost filesystem won't use them.
+		std::codecvt_base::result do_in( std::mbstate_t& state,
+			const char* from,
+			const char* from_end,
+			const char*& from_next,
+			wchar_t* to,
+			wchar_t* to_end,
+			wchar_t*& to_next ) const
+		{
+			try
+			{
+				customcodecvt_do_conversion<char, wchar_t>(state, from, from_end, from_next, to, to_end, to_next);
+			}
+			catch(...)
+			{
+				ERR_FS << "Invalid UTF-8 string'" << std::string(from, from_end) << "' " << std::endl;
+				return std::codecvt_base::error;
+			}
+			return std::codecvt_base::ok;
+		}
+
+		std::codecvt_base::result do_out( std::mbstate_t& state,
+			const wchar_t* from,
+			const wchar_t* from_end,
+			const wchar_t*& from_next,
+			char* to,
+			char* to_end,
+			char*& to_next ) const
+		{
+			try
+			{
+				customcodecvt_do_conversion<wchar_t, char>(state, from, from_end, from_next, to, to_end, to_next);
+			}
+			catch(...)
+			{
+				ERR_FS << "Invalid UTF-16 string" << std::endl;
+				return std::codecvt_base::error;	
+			}
+			return std::codecvt_base::ok;
+		}
+	};
+	
+#ifdef _WIN32
+	class static_runner {
+	public:
+		static_runner() {
+			// Boost uses the current locale to generate a UTF-8 one
+			std::locale utf8_loc = boost::locale::generator().generate("");
+			// use a custom locale becasue we want to use out log.hpp functions in case of an invalid string.
+			utf8_loc = std::locale(utf8_loc, new customcodecvt());
+			boost::filesystem::path::imbue(utf8_loc);
+		}
+	};
+
+	static static_runner static_bfs_path_imbuer;
+#endif
+}
+
 
 namespace filesystem {
 
