@@ -14,6 +14,7 @@ Version 1.13.0-dev:
        'Descent into Darkness'.
    * Eastern Invasion:
      * Updated maps for scenario 14, 16 and 17b.
+     * New animation for Ravanal's shadow wave.
    * Northern Rebirth:
      * Fixed Sister Thera and Father Morvin respawning into the recall list if
        the other is on the north or west map edges.
@@ -26,6 +27,15 @@ Version 1.13.0-dev:
    * The Hammer of Thursagan:
      * Fixed missing objective in 'The Court of Karrag'.
      * Rebalanced scenarios 'Invaders', 'Mages and Drakes' and 'Fear'.
+   * Under the Burning Suns:
+     * Fixed recruited Desert Archers being always male.
+     * Fixed malformed rand range errors during AI turns on medium difficulty
+       in 'A Stirring in the Night'.
+     * Fixed 100 vs. 99 movement cost warnings caused by the Desert Shyde and
+       Star unit types
+     * Fixed bug #22800: Cloaked Figure appears in strange location.
+     * Fixed bug #22799: No allies killed by enemy reinforcements.
+     * Fixed bug #22790: Various problems with dehydration.
 
  * Graphics:
    * Smooth unit movement over terrain with elevation (e.g. keeps/bridges)
@@ -35,7 +45,7 @@ Version 1.13.0-dev:
 
  * Language and i18n:
    * Updated translations: Czech, French, German, Greek, Hungarian, Italian,
-     Lithuanian, Scottish Gaelic, Slovak, Vietnamese.
+     Lithuanian, Scottish Gaelic, Slovak, Spanish, Vietnamese.
 
  * Replays:
    * Added a button that allows playing a single move in replay mode.

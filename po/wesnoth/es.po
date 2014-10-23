@@ -1,8 +1,6 @@
 # Spanish translations for Battle for Wesnoth package.
 # Copyright (C) 2004, 2005, 2006, 2007, 2008 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-#
-#
 # David Martínez Moreno <ender@debian.org>, 2004-2006.
 # Pío Sierra <pio@piosierra.com>, 2005.
 # Terpor <terpor@gmail.com>, 2005.
@@ -18,76 +16,74 @@
 # Alvin Eloy Luna Castro <alvineloy@gmail.com>, 2011.
 # Ignacio Riquelme Morelle <shadowm2006@gmail.com>, 2011, 2012.
 # Aelonin <quianaaelonin@gmail.com>, 2011, 2012.
-#
+# Pepe <donpepe1963@gmail.com>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-03-02 18:56+0100\n"
-"PO-Revision-Date: 2012-06-27 03:00+0200\n"
-"Last-Translator: Aelonin <quianaaelonin@gmail.com>\n"
-"Language-Team: Spanish <http://wiki.wesnoth.org/SpanishTranslation>\n"
+"PO-Revision-Date: 2014-10-20 03:31+0100\n"
+"Last-Translator: Pepe <donpepe1963@gmail.com>\n"
+"Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Poedit 1.6.9\n"
 
 #. [advanced_preference]: type=combo
 #. Associated save_compression_short^ entries need to be as short as
 #. possible to avoid stretching the advanced preferences list too
 #. much.
 #: data/advanced_preferences.cfg:7
-#, fuzzy
-#| msgid "Compressed saves"
 msgid "Compress saved games"
 msgstr "Comprimir partidas guardadas"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:12
 msgid "save_compression^Gzip"
-msgstr ""
+msgstr "Gzip"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:13
 msgid "save_compression_short^gzip"
-msgstr ""
+msgstr "gzip"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:14
 msgid "save_compression_desc^Default compression, faster"
-msgstr ""
+msgstr "Por defecto, más rápida"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:18
 msgid "save_compression^Bzip2"
-msgstr ""
+msgstr "Bzip2"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:19
 msgid "save_compression_short^bzip2"
-msgstr ""
+msgstr "bzip2"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:20
 msgid "save_compression_desc^Best compression, slower"
-msgstr ""
+msgstr "Máxima compresión, más lenta"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:24
 msgid "save_compression^No"
-msgstr ""
+msgstr "No"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:25
 msgid "save_compression_short^no"
-msgstr ""
+msgstr "no"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:26
 msgid "save_compression_desc^Large plain text files"
-msgstr ""
+msgstr "Grandes ficheros de texto sin formato"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
@@ -112,7 +108,7 @@ msgstr "Continuar desplazando si el cursor abandona la ventana"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:60
 msgid "Local time of day area lighting"
-msgstr "Iluminación local de hora del día"
+msgstr "Mostrar hora del día local"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:67
@@ -127,15 +123,14 @@ msgstr "Mostrar combate"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:81
 msgid "Ping timeout"
-msgstr "Tiempo de vencido de ping"
+msgstr "El tiempo de respuesta del ping ha expirado"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:82
 msgid ""
 "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
 "disable"
-msgstr ""
-"Número de segundos a esperar ping antes de que venza. Desactivar con 0."
+msgstr "Número de segundos a esperar ping antes de que venza. Desactivar con 0"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:92
@@ -208,8 +203,6 @@ msgstr "Usar formato de 12 horas"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:170
-#, fuzzy
-#| msgid "Confirm loading of saves from a different version"
 msgid "Confirm loading saves from a different version"
 msgstr "Confirmar carga de partidas de versiones anteriores"
 
@@ -230,18 +223,20 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:185
 msgid "Experimental multiplayer lobby"
-msgstr ""
+msgstr "Sala de entrada experimental para multijugador"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:186
 msgid ""
 "Replace the classic multiplayer lobby with a newer, experimental interface"
 msgstr ""
+"Reemplaza la sala de entrada clásica para multijugador por otra con una "
+"nueva interfaz experimental"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:194
 msgid "Show color cursors"
-msgstr ""
+msgstr "Mostrar cursores de colores"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:195
@@ -249,109 +244,103 @@ msgid ""
 "Use colored mouse cursors, which may be slower or break the game (use at "
 "your own risk)"
 msgstr ""
+"Utiliza cursores del ratón en color que podrían hacer más lento el juego e "
+"incluso colgarlo (usar bajo su responsabilidad)"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:204
 msgid "Joystick support"
-msgstr "Soporte para joystick"
+msgstr "Soporte joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:211
 msgid "Joystick: number of the scroll X-axis joystick"
-msgstr "Soporte de joystick: número del joystick para despl. horizontal"
+msgstr "Joystick: número para desplazamiento en el eje x del joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:221
 msgid "Joystick: number of the scroll X-axis"
-msgstr "Soporte de joystick: número del eje para despl. horizontal"
+msgstr "Joystick: número para desplazamiento en el eje x"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:231
 msgid "Joystick: number of the scroll Y-axis joystick"
-msgstr "Soporte de joystick: número del joystick para despl. vertical"
+msgstr "Joystick: número para desplazamiento en el eje y del joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:241
 msgid "Joystick: number of the scroll Y-axis"
-msgstr "Soporte de joystick: número del eje para despl. vertical"
+msgstr "Joystick: número para desplazamiento en el eje y"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:251
 msgid "Joystick: deadzone of the scrolling stick"
-msgstr "Soporte de joystick: zona muerta del control de despl."
+msgstr "Joystick: límite para el desplazamiento del joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:261
 msgid "Joystick: number of the cursor X-axis joystick"
-msgstr ""
-"Soporte de joystick: número del joystick para despl. del cursor horizontal"
+msgstr "Joystick: número para el cursor del eje x del joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:271
 msgid "Joystick: number of the cursor X-axis"
-msgstr "Soporte de joystick: número del eje para despl. del cursor horizontal"
+msgstr "Joystick: número para el cursor del eje x"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:281
 msgid "Joystick: number of the cursor Y-axis joystick"
-msgstr ""
-"Soporte de joystick: número del joystick para despl. del cursor vertical"
+msgstr "Joystick: número para el cursor del eje y del joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:291
 msgid "Joystick: number of the cursor Y-axis"
-msgstr "Soporte de joystick: número del eje para despl. del cursor vertical"
+msgstr "Joystick: número para el cursor del eje y"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:301
 msgid "Joystick: deadzone of the cursor stick"
-msgstr "Joystick: zona muerta del bastón de control"
+msgstr "Joystick: límite para el cursor de la palanca"
 
-# No entiendo la diferencia entre esta cadena y su siguiente.
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:311
-#, fuzzy
 msgid "Joystick: number of the mouse X-axis joystick"
-msgstr "Joystick: número del eje X del cursor en el joystick"
+msgstr "Joystick: número del eje x del ratón del joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:321
 msgid "Joystick: number of the mouse X-axis"
-msgstr "Joystick: número del eje X del cursor"
+msgstr "Joystick: número del eje x del ratón"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:331
-#, fuzzy
 msgid "Joystick: number of the mouse Y-axis joystick"
-msgstr "Joystick: número del eje Y del cursor en el joystick"
+msgstr "Joystick: número del eje y del ratón del joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:341
 msgid "Joystick: number of the mouse Y-axis"
-msgstr "Joystick: número del eje Y del cursor"
+msgstr "Joystick: número del eje y del ratón"
 
-# Las comillas inglesas se usan en castellano con expresiones extranjeras.
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:351
 msgid "Joystick: deadzone of the mouse stick"
-msgstr "Joystick: zona muerta del «trackpoint»"
+msgstr "Joystick: límite para el ratón del joystick"
 
-# Las palabras extranjeras en comillas angulares deben ser en tipo itálico, pero el diálogo de preferencias no es un diálogo GUI2, así... blargh...
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:361
-#, fuzzy
 msgid "Joystick: number of the thrust axis joystick"
-msgstr "Joystick: número del eje para el propulsor «thruster» del joystick"
+msgstr "Joystick: número para el desplazamiento presionando el joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:371
 msgid "Joystick: number of the thrust axis"
-msgstr "Joystick: número del eje para el propulsor «thruster»"
+msgstr "Joystick: número para el desplazamiento en la dirección de presión"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:381
 msgid "Joystick: deadzone of the thruster"
-msgstr "Joystick: zona muerta del propulsor «thruster»"
+msgstr "Joystick: límite de la presión"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
@@ -418,7 +407,7 @@ msgstr "Distribuidores"
 #. [about]
 #: data/core/about.cfg:893
 msgid "Miscellaneous Contributors"
-msgstr "Contribuidores misceláneos"
+msgstr "Contribuidores diversos"
 
 #. [about]
 #: data/core/about.cfg:1327
@@ -613,7 +602,7 @@ msgstr "Traducción al noruego"
 #. [about]
 #: data/core/about.cfg:2490
 msgid "Old English Translation"
-msgstr "Traddución al anglosajón"
+msgstr "Traducción al anglosajón"
 
 #. [about]
 #: data/core/about.cfg:2508
@@ -642,10 +631,8 @@ msgstr "Traducción al ruso"
 
 #. [about]
 #: data/core/about.cfg:2717
-#, fuzzy
-#| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
-msgstr "Traducción al gallego"
+msgstr "Traducción al gaélico escocés"
 
 #. [about]
 #: data/core/about.cfg:2726
@@ -685,7 +672,7 @@ msgstr "Traducción al ucraniano"
 #. [about]
 #: data/core/about.cfg:2948
 msgid "Valencian (southern Catalan) Translation"
-msgstr "Traducción al valenciano (Catalán del sur)"
+msgstr "Traducción al valenciano (catalán del sur)"
 
 #. [about]
 #: data/core/about.cfg:2961
@@ -705,86 +692,83 @@ msgstr "Robots"
 #. [item_group]: id=items
 #: data/core/editor/items.cfg:4
 msgid "Items"
-msgstr ""
+msgstr "Objetos"
 
 #. [item]: id=altar_evil
 #: data/core/editor/items.cfg:9
 msgid "Evil Altar"
-msgstr ""
+msgstr "Altar maligno"
 
 #. [item]: id=altar
 #: data/core/editor/items.cfg:15
 msgid "Altar"
-msgstr ""
+msgstr "Altar"
 
+# Egyptian hieroglyphic character that read (life). ankh o anj. Ver wikipedia.
 #. [item]: id=ankh-necklace
 #: data/core/editor/items.cfg:21
 msgid "Ankh Necklace"
-msgstr ""
+msgstr "Anj"
 
 #. [item]: id=anvil
 #: data/core/editor/items.cfg:27
 msgid "Anvil"
-msgstr ""
+msgstr "Yunque"
 
 #. [item]: id=archery-target
 #: data/core/editor/items.cfg:33
 msgid "Archery Target"
-msgstr ""
+msgstr "Objetivo de arco"
 
 #. [item]: id=armor-golden
 #: data/core/editor/items.cfg:39
 msgid "Golden Armor"
-msgstr ""
+msgstr "Armadura dorada"
 
 #. [item]: id=armor
 #: data/core/editor/items.cfg:45
 msgid "Armor"
-msgstr ""
+msgstr "Armadura"
 
 #. [item]: id=axe
 #: data/core/editor/items.cfg:51
 msgid "Axe"
-msgstr ""
+msgstr "Hacha"
 
 #. [item]: id=ball-blue
 #: data/core/editor/items.cfg:57
-#, fuzzy
-#| msgid "Blue"
 msgid "Blue Ball"
-msgstr "Azul"
+msgstr "Bola azul"
 
 #. [item]: id=ball-green
 #: data/core/editor/items.cfg:63
-#, fuzzy
-#| msgid "Green"
 msgid "Green Ball"
-msgstr "Verde"
+msgstr "Bola verde"
 
 #. [item]: id=ball-magenta
 #: data/core/editor/items.cfg:69
 msgid "Magenta Ball"
-msgstr ""
+msgstr "Bola magenta"
 
 #. [item]: id=barrel
 #: data/core/editor/items.cfg:75
 msgid "Barrel"
-msgstr ""
+msgstr "Barril"
 
 #. [item]: id=bomb
 #: data/core/editor/items.cfg:81
 msgid "Bomb"
-msgstr ""
+msgstr "Bomba"
 
 #. [item]: id=bones
 #: data/core/editor/items.cfg:87
 msgid "Bones"
-msgstr ""
+msgstr "Huesos"
 
 #. [item]: id=bonestack
 #: data/core/editor/items.cfg:93
 msgid "Bonestack"
-msgstr ""
+msgstr "Pila de huesos"
 
 #. [item]: id=book1
 #. [item]: id=book2
@@ -795,88 +779,82 @@ msgstr ""
 #: data/core/editor/items.cfg:111 data/core/editor/items.cfg:117
 #: data/core/editor/items.cfg:123
 msgid "Book"
-msgstr ""
+msgstr "Libro"
 
 #. [item]: id=bow-crystal
 #: data/core/editor/items.cfg:129
 msgid "Crystal Bow"
-msgstr ""
+msgstr "Arco de cristal"
 
 #. [item]: id=bow-elven
 #: data/core/editor/items.cfg:135
 msgid "Elven Bow"
-msgstr ""
+msgstr "Arco élfico"
 
 #. [item]: id=bow
 #: data/core/editor/items.cfg:141
-#, fuzzy
-#| msgid "Brown"
 msgid "Bow"
-msgstr "Marrón"
+msgstr "Arco"
 
 #. [item]: id=box
 #: data/core/editor/items.cfg:147
 msgid "Box"
-msgstr ""
+msgstr "Caja"
 
 #. [item]: id=brazier
 #: data/core/editor/items.cfg:153
 msgid "Brazier"
-msgstr ""
+msgstr "Brasero"
 
 #. [item]: id=buckler
 #: data/core/editor/items.cfg:159
 msgid "Buckler"
-msgstr ""
+msgstr "Rodela"
 
 #. [item]: id=burial
 #: data/core/editor/items.cfg:165
-#, fuzzy
-#| msgid "Tutorial"
 msgid "Burial"
-msgstr "Tutorial"
+msgstr "Enterramiento"
 
 #. [item]: id=cage
 #: data/core/editor/items.cfg:171
 msgid "Cage"
-msgstr ""
+msgstr "Jaula"
 
 #. [item]: id=chest-plain-closed
 #: data/core/editor/items.cfg:177
 msgid "Closed Plain Chest"
-msgstr ""
+msgstr "Cofre sencillo cerrado"
 
 #. [item]: id=chest-plain-open
 #: data/core/editor/items.cfg:183
 msgid "Open Plain Chest"
-msgstr ""
+msgstr "Cofre sencillo abierto"
 
 #. [item]: id=chest
 #: data/core/editor/items.cfg:189
 msgid "Chest"
-msgstr ""
+msgstr "Cofre"
 
 #. [item]: id=cloak-green
 #: data/core/editor/items.cfg:195
-#, fuzzy
-#| msgid "Green"
 msgid "Green Cloak"
-msgstr "Verde"
+msgstr "Capa verde"
 
 #. [item]: id=coffin-closed
 #: data/core/editor/items.cfg:201
 msgid "Closed Coffin"
-msgstr ""
+msgstr "Ataúd cerrado"
 
 #. [item]: id=dragonstatue
 #: data/core/editor/items.cfg:207
 msgid "Dragon Statue"
-msgstr ""
+msgstr "Estatua de dragón"
 
 #. [item]: id=flame-sword
 #: data/core/editor/items.cfg:213
 msgid "Flaming Sword"
-msgstr ""
+msgstr "Espada ardiente"
 
 #. [item]: id=flower1
 #. [item]: id=flower2
@@ -884,40 +862,38 @@ msgstr ""
 #. [item]: id=flower4
 #: data/core/editor/items.cfg:219 data/core/editor/items.cfg:225
 #: data/core/editor/items.cfg:231 data/core/editor/items.cfg:237
-#, fuzzy
-#| msgid "slowed"
 msgid "Flower"
-msgstr "ralentizado"
+msgstr "Flor"
 
 #. [item]: id=gohere
 #: data/core/editor/items.cfg:243
 msgid "Go Here Overlay"
-msgstr ""
+msgstr "Resaltado del destino"
 
 #. [item]: id=gold-coins-large
 #: data/core/editor/items.cfg:249
 msgid "Large Pile of Gold Coins"
-msgstr ""
+msgstr "Montón grande de monedas de oro"
 
 #. [item]: id=gold-coins-medium
 #: data/core/editor/items.cfg:255
 msgid "Pile of Gold Coins"
-msgstr ""
+msgstr "Montón de monedas de oro"
 
 #. [item]: id=gold-coins-small
 #: data/core/editor/items.cfg:261
 msgid "Small Pile of Gold Coins"
-msgstr ""
+msgstr "Montón pequeño de monedas de oro"
 
 #. [item]: id=grain-sheaf
 #: data/core/editor/items.cfg:267
 msgid "Grain Sheaf"
-msgstr ""
+msgstr "Gavilla de grano"
 
 #. [item]: id=hammer-runic
 #: data/core/editor/items.cfg:273
 msgid "Runic Hammer"
-msgstr ""
+msgstr "Martillo rúnico"
 
 #. [item]: id=holly-water
 #. [object]
@@ -928,40 +904,38 @@ msgstr "Agua bendita"
 #. [item]: id=key
 #: data/core/editor/items.cfg:285
 msgid "Key"
-msgstr ""
+msgstr "Llave"
 
 #. [item]: id=leather-pack
 #: data/core/editor/items.cfg:291
 msgid "Leather Pack"
-msgstr ""
+msgstr "Bolsa de cuero"
 
 #. [item]: id=orcish-flag
 #: data/core/editor/items.cfg:297
 msgid "Orcish Flag"
-msgstr ""
+msgstr "Bandera orca"
 
 #. [item]: id=ornate1
 #. [item]: id=ornate2
 #: data/core/editor/items.cfg:303 data/core/editor/items.cfg:309
 msgid "Ornate"
-msgstr ""
+msgstr "Jarrón decorado"
 
 #. [item]: id=potion-blue
 #: data/core/editor/items.cfg:315
 msgid "Blue Potion"
-msgstr ""
+msgstr "Poción azul"
 
 #. [item]: id=potion-green
 #: data/core/editor/items.cfg:321
-#, fuzzy
-#| msgid "Invalid location"
 msgid "Green Potion"
-msgstr "Ubicación inválida"
+msgstr "Poción verde"
 
 #. [item]: id=potion-gray
 #: data/core/editor/items.cfg:327
 msgid "Gray Potion"
-msgstr ""
+msgstr "Poción gris"
 
 #. [item]: id=potion-poison
 #. [object]: id={ID}
@@ -971,76 +945,68 @@ msgstr "Veneno"
 
 #. [item]: id=potion-red
 #: data/core/editor/items.cfg:339
-#, fuzzy
-#| msgid "Invalid location"
 msgid "Red Potion"
-msgstr "Ubicación inválida"
+msgstr "Poción roja"
 
 #. [item]: id=potion-yellow
 #: data/core/editor/items.cfg:345
 msgid "Yellow Potion"
-msgstr ""
+msgstr "Poción amarilla"
 
 #. [item]: id=ring-brown
 #: data/core/editor/items.cfg:351
-#, fuzzy
-#| msgid "Brown"
 msgid "Brown Ring"
-msgstr "Marrón"
+msgstr "Anillo marrón"
 
 #. [item]: id=ring-gold
 #: data/core/editor/items.cfg:357
 msgid "Golden Ring"
-msgstr ""
+msgstr "Anillo de oro"
 
 #. [item]: id=ring-red
 #: data/core/editor/items.cfg:363
 msgid "Red Ring"
-msgstr ""
+msgstr "Anillo rojo"
 
 #. [item]: id=ring-silver
 #: data/core/editor/items.cfg:369
 msgid "Silver Ring"
-msgstr ""
+msgstr "Anillo de plata"
 
 #. [item]: id=ring-white
 #: data/core/editor/items.cfg:375
-#, fuzzy
-#| msgid "White"
 msgid "White Ring"
-msgstr "Blanco"
+msgstr "Anillo blanco"
 
 #. [item]: id=scarecrow
 #: data/core/editor/items.cfg:381
 msgid "Scarecrow"
-msgstr ""
+msgstr "Espantapájaros"
 
 #. [item]: id=sceptre-of-fire
 #: data/core/editor/items.cfg:387
-#, fuzzy
-#| msgid "sceptre of fire"
 msgid "Sceptre of Fire"
-msgstr "cetro de fuego"
+msgstr "Cetro de fuego"
 
 #. [item]: id=spear-fancy
 #: data/core/editor/items.cfg:393
 msgid "Fancy Spear"
-msgstr ""
+msgstr "Lanza ornamental"
 
 #. [item]: id=staff-magic
 #: data/core/editor/items.cfg:399
 msgid "Magic Staff"
-msgstr ""
+msgstr "Báculo mágico"
 
 #. [item]: id=staff
 #: data/core/editor/items.cfg:405
 msgid "Staff"
-msgstr ""
+msgstr "Báculo"
 
 #. [item]: id=stone-tablet
 #: data/core/editor/items.cfg:411
 msgid "Stone Tablet"
-msgstr ""
+msgstr "Tabla de piedra"
 
 #. [item]: id=storm-trident
 #. [object]
@@ -1052,90 +1018,83 @@ msgstr "Tridente de las tormentas"
 #. [item]: id=straw-bale2
 #: data/core/editor/items.cfg:423 data/core/editor/items.cfg:429
 msgid "Bale of Straw"
-msgstr ""
+msgstr "Fardo de paja"
 
 #. [item]: id=sword
 #: data/core/editor/items.cfg:435
-#, fuzzy
-#| msgid "Password: "
 msgid "Sword"
-msgstr "Contraseña: "
+msgstr "Espada"
 
+# Pepe: paisaje, vista, decorados?
 #. [item_group]: id=scenery
 #: data/core/editor/items.cfg:441
-#, fuzzy
-#| msgid "End Scenario"
 msgid "Scenery"
-msgstr "Finalizar escenario"
+msgstr "Decorados"
 
 #. [item]: id=castle-ruins
 #: data/core/editor/items.cfg:447
 msgid "Castle Ruins"
-msgstr ""
+msgstr "Castillo en ruinas"
 
 #. [item]: id=circle-magic-glow
 #: data/core/editor/items.cfg:453
 msgid "Glowing Magic Circle"
-msgstr ""
+msgstr "Círculo mágico resplandeciente"
 
 #. [item]: id=circle-magic
 #: data/core/editor/items.cfg:459
 msgid "Magic Circle"
-msgstr ""
+msgstr "Círculo mágico"
 
 #. [item]: id=dwarven-doors-closed
 #: data/core/editor/items.cfg:465
 msgid "Closed Dwarven Doors"
-msgstr ""
+msgstr "Puertas enanas cerradas"
 
 #. [item]: id=fire
 #: data/core/editor/items.cfg:472
-#, fuzzy
-#| msgid "fire"
 msgid "Campfire"
-msgstr "de fuego"
+msgstr "Hoguera"
 
 #. [item]: id=flames
 #: data/core/editor/items.cfg:479
 msgid "Flames"
-msgstr ""
+msgstr "Llamas"
 
 #. [item]: id=gate-rusty-se
 #: data/core/editor/items.cfg:485
 msgid "Rusty Gate South East"
-msgstr ""
+msgstr "Puerta herrumbrosa del sureste"
 
 #. [item]: id=gate-rusty-sw
 #: data/core/editor/items.cfg:491
 msgid "Rusty Gate South West"
-msgstr ""
+msgstr "Puerta herrumbrosa del suroeste"
 
 #. [item]: id=icepack1
 #: data/core/editor/items.cfg:497
 msgid "Ice Pack"
-msgstr ""
+msgstr "Bloque de hielo"
 
 #. [item]: id=leanto
 #: data/core/editor/items.cfg:503
 msgid "Lean-to"
-msgstr ""
+msgstr "Cobertizo"
 
 #. [item]: id=lighthouse
 #: data/core/editor/items.cfg:508
-#, fuzzy
-#| msgid "Light Red"
 msgid "Lighthouse"
-msgstr "Rojo claro"
+msgstr "Faro"
 
 #. [item]: id=mausoleum
 #: data/core/editor/items.cfg:516
 msgid "Mausoleum"
-msgstr ""
+msgstr "Mausoleo"
 
 #. [item]: id=mine-abandoned
 #: data/core/editor/items.cfg:522
 msgid "Abandoned Mine"
-msgstr ""
+msgstr "Mina abandonada"
 
 #. [item]: id=monolith1
 #. [item]: id=monolith2
@@ -1144,37 +1103,33 @@ msgstr ""
 #: data/core/editor/items.cfg:528 data/core/editor/items.cfg:534
 #: data/core/editor/items.cfg:540 data/core/editor/items.cfg:546
 msgid "Monolith"
-msgstr ""
+msgstr "Monolito"
 
 #. [item]: id=nest-empty
 #: data/core/editor/items.cfg:552
-#, fuzzy
-#| msgid "(Empty slot)"
 msgid "Empty Nest"
-msgstr "(Puesto vacío)"
+msgstr "Nido vacío"
 
 #. [item]: id=nest-full
 #: data/core/editor/items.cfg:558
 msgid "Full Nest"
-msgstr ""
+msgstr "Nido lleno"
 
 #. [item]: id=oak-leaning
 #: data/core/editor/items.cfg:564
-#, fuzzy
-#| msgid "Warning: "
 msgid "Leaning Oak"
-msgstr "Advertencia: "
+msgstr "Roble inclinado"
 
 #. [item]: id=pine1
 #. [item]: id=pine2
 #: data/core/editor/items.cfg:570 data/core/editor/items.cfg:576
 msgid "Pine Tree"
-msgstr ""
+msgstr "Pino"
 
 #. [item]: id=rock-cairn
 #: data/core/editor/items.cfg:582
 msgid "Rock Cairn"
-msgstr ""
+msgstr "Mojón de piedras"
 
 #. [item]: id=rock1
 #. [item]: id=rock2
@@ -1183,12 +1138,12 @@ msgstr ""
 #: data/core/editor/items.cfg:588 data/core/editor/items.cfg:594
 #: data/core/editor/items.cfg:600 data/core/editor/items.cfg:606
 msgid "Rock"
-msgstr ""
+msgstr "Roca"
 
 #. [item]: id=rubble
 #: data/core/editor/items.cfg:612
 msgid "Rubble"
-msgstr ""
+msgstr "Escombros"
 
 #. [item]: id=rune1
 #. [item]: id=rune2
@@ -1200,7 +1155,7 @@ msgstr ""
 #: data/core/editor/items.cfg:630 data/core/editor/items.cfg:636
 #: data/core/editor/items.cfg:642 data/core/editor/items.cfg:648
 msgid "Rune"
-msgstr ""
+msgstr "Runa"
 
 #. [item]: id=rune1-glow
 #. [item]: id=rune2-glow
@@ -1212,33 +1167,33 @@ msgstr ""
 #: data/core/editor/items.cfg:666 data/core/editor/items.cfg:672
 #: data/core/editor/items.cfg:678 data/core/editor/items.cfg:684
 msgid "Glowing Rune"
-msgstr ""
+msgstr "Runa resplandeciente"
 
 #. [item]: id=shipwreck
 #. [item]: id=wreck
 #: data/core/editor/items.cfg:690 data/core/editor/items.cfg:841
 msgid "Shipwreck"
-msgstr ""
+msgstr "Restos de un naufragio"
 
 #. [item]: id=signpost
 #: data/core/editor/items.cfg:695
 msgid "Signpost"
-msgstr ""
+msgstr "Poste indicador"
 
 #. [item]: id=slab1
 #: data/core/editor/items.cfg:701
 msgid "Slab"
-msgstr ""
+msgstr "Losa"
 
 #. [item]: id=snowbits
 #: data/core/editor/items.cfg:707
 msgid "Piles of Snow"
-msgstr ""
+msgstr "Montones de nieve"
 
 #. [item]: id=summoning-center
 #: data/core/editor/items.cfg:714
 msgid "Summoning Center"
-msgstr ""
+msgstr "Centro de invocación"
 
 #. [item]: id=summoning-circle1
 #. [item]: id=summoning-circle2
@@ -1250,42 +1205,42 @@ msgstr ""
 #: data/core/editor/items.cfg:732 data/core/editor/items.cfg:738
 #: data/core/editor/items.cfg:744 data/core/editor/items.cfg:750
 msgid "Summoning Circle"
-msgstr ""
+msgstr "Círculo de invocación"
 
 #. [item]: id=temple1
 #: data/core/editor/items.cfg:756
 msgid "Temple"
-msgstr ""
+msgstr "Templo"
 
 #. [item]: id=tent-fancy-red
 #: data/core/editor/items.cfg:762
 msgid "Fancy Red Tent"
-msgstr ""
+msgstr "Tienda roja ornamental"
 
 #. [item]: id=tent-ruin-1
 #: data/core/editor/items.cfg:768
 msgid "Ruined Tent"
-msgstr ""
+msgstr "Restos de tienda"
 
 #. [item]: id=tent-shop-weapons
 #: data/core/editor/items.cfg:773
 msgid "Weapons Shop Tent"
-msgstr ""
+msgstr "Tienda de venta de armas"
 
 #. [item]: id=trapdoor-closed
 #: data/core/editor/items.cfg:780
 msgid "Closed Trapdoor"
-msgstr ""
+msgstr "Trampilla cerrada"
 
 #. [item]: id=trapdoor-open
 #: data/core/editor/items.cfg:786
 msgid "Open Trapdoor"
-msgstr ""
+msgstr "Trampilla abierta"
 
 #. [item]: id=trash
 #: data/core/editor/items.cfg:792
 msgid "Trash Pile"
-msgstr ""
+msgstr "Montón de desechos"
 
 #. [item]: id=village-human-burned1
 #. [item]: id=village-human-burned2
@@ -1293,30 +1248,29 @@ msgstr ""
 #. [item]: id=village-human-burned4
 #: data/core/editor/items.cfg:798 data/core/editor/items.cfg:804
 #: data/core/editor/items.cfg:810 data/core/editor/items.cfg:816
-#, fuzzy
-#| msgid "Owned village"
 msgid "Burned Human Village"
-msgstr "Aldea propia"
+msgstr "Aldea humana quemada"
 
 #. [item]: id=well
 #: data/core/editor/items.cfg:821
 msgid "Well"
-msgstr ""
+msgstr "Pozo"
 
+# Según el contexto, torbellino
 #. [item]: id=whirlpool
 #: data/core/editor/items.cfg:827
 msgid "Whirlpool"
-msgstr ""
+msgstr "Remolino"
 
 #. [item]: id=windmill
 #: data/core/editor/items.cfg:835
 msgid "Windmill"
-msgstr ""
+msgstr "Molino de viento"
 
 #. [set_menu_item]: id=ai_controller_unit_control_{UNIT_ID}
 #: data/core/macros/ai_controller.cfg:22
 msgid "Ask $ai_controller_unit.name to move here"
-msgstr ""
+msgstr "Solicitar a $ai_controller_unit.name que se mueva aquí"
 
 #. [set_menu_item]: id=ai_controller_leader_control_{CONTROLLED_SIDE}
 #: data/core/macros/ai_controller.cfg:76
@@ -1401,10 +1355,8 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:248
 #: data/core/macros/ai_controller.cfg:379
 #: data/core/macros/ai_controller.cfg:383
-#, fuzzy
-#| msgid "side $temp_i"
 msgid "Side $temp_i"
-msgstr "bando $temp_i"
+msgstr "Bando $temp_i"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:249
@@ -1415,10 +1367,8 @@ msgstr "bando $temp_i"
 #. [command]
 #: data/core/macros/ai_controller.cfg:262
 #: data/core/macros/ai_controller.cfg:397
-#, fuzzy
-#| msgid "$side_i_leader.name (side $temp_i|)"
 msgid "side $temp_i ($side_i_leader.name|)"
-msgstr "$side_i_leader.name (bando $temp_i|)"
+msgstr "bando $temp_i ($side_i_leader.name|)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [value]
@@ -1588,7 +1538,7 @@ msgstr "Deseo que esta única pieza de oro me sea devuelta con creces."
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:52
 msgid "Peace throughout Wesnoth."
-msgstr "Paz en todo Wesnoth"
+msgstr "Paz en todo Wesnoth."
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:60
@@ -1598,7 +1548,7 @@ msgstr "La única cosa que vale la pena pedir es la paz en toda la tierra."
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:66
 msgid "Don’t make a wish."
-msgstr "No pedir ningún deseo"
+msgstr "No pedir ningún deseo."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:204
@@ -2680,8 +2630,16 @@ msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 msgstr ""
-"Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
-"Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
+"Altos,Almas,Alisos,Años,Arcos,Asnos,Barbos,Barcos,Baños,Bastos,Bolos,Búhos,"
+"Bulos,Cameros,Cañas,Casas,Cercos,Cirros,Coles,Cominos,Copas,Cimas,Dagas,"
+"Daños,Dolores,Dunas,Enanos,Elfos,Fangos,Fatigas,Fosos,Fríos,Frutos,Gamos,"
+"Gatos,Gentes,Hadas,Helados,Hilos,Humanos,Humos,Hongos,Iluso,Inane,Jaras,"
+"Jotas,Justas,Lanzas,Lances,Lilas,Lindes,Linos,Lobos,Locos,Lunas,Magos,Malos,"
+"Matas,Mesas,Mirtos,Mirlos,Mulas,Nagas,Nabos,Nogales,Nevadas,Olores,Olmos,"
+"Orcos,Oro,Osos,Palos,Patos,Peces,Pecos,Peras,Picos,Pinares,Piñas,Raíces,"
+"Ranas,Reyes,Rocas,Rosas,Sales,Salmones,Santos,Secos,Setos,Setas,Sapos,Silos,"
+"Simas,Soles,Sustos,Silvanos,Sirenas,Tejos,Tilos,Tocones,Topos,Tortas,"
+"Talentos,Vacas,Varas,Vides,Viñas,Vistas,Zarza,Zorros,Zumos,Zotes"
 
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:7
@@ -2761,7 +2719,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/core/macros/utils.cfg:784
 msgid "You retrieve $amount_gold pieces of gold."
-msgstr ""
+msgstr "Usted recibe $amount_gold monedas de oro."
 
 #. [color_range]: id=1
 #. [color_range]: id=red
@@ -2787,10 +2745,8 @@ msgstr "Azul"
 
 #. [color_range]: id=lightblue
 #: data/core/team-colors.cfg:38
-#, fuzzy
-#| msgid "Light Red"
 msgid "Light blue"
-msgstr "Rojo claro"
+msgstr "Azul claro"
 
 #. [color_range]: id=3
 #. [color_range]: id=green
@@ -2801,7 +2757,7 @@ msgstr "Verde"
 #. [color_range]: id=brightgreen
 #: data/core/team-colors.cfg:50
 msgid "Bright green"
-msgstr ""
+msgstr "Verde brillante"
 
 #. [color_range]: id=4
 #. [color_range]: id=purple
@@ -2830,7 +2786,7 @@ msgstr "Naranja"
 #. [color_range]: id=brightorange
 #: data/core/team-colors.cfg:80
 msgid "Bright orange"
-msgstr ""
+msgstr "Naranja brillante"
 
 #. [color_range]: id=8
 #. [color_range]: id=white
@@ -2854,64 +2810,62 @@ msgstr "Oro"
 #. [color_range]: id=reef
 #: data/core/team-colors.cfg:107
 msgid "Reef"
-msgstr ""
+msgstr "Arrecife"
 
 #. [color_range]: id=shallow_water
 #: data/core/team-colors.cfg:113
 msgid "Shallow water"
-msgstr ""
+msgstr "Aguas poco profundas"
 
 #. [color_range]: id=deep_water
 #: data/core/team-colors.cfg:119
 msgid "Deep water"
-msgstr ""
+msgstr "Aguas profundas"
 
 #. [color_range]: id=swamp_water
 #: data/core/team-colors.cfg:125
 msgid "Swamp water"
-msgstr ""
+msgstr "Aguas pantanosas"
 
 #. [color_range]: id=flat
 #: data/core/team-colors.cfg:131
 msgid "Flat"
-msgstr ""
+msgstr "Llanura"
 
 #. [color_range]: id=hills
 #: data/core/team-colors.cfg:137
-#, fuzzy
-#| msgid "Kills"
 msgid "Hills"
-msgstr "Muertos"
+msgstr "Colinas"
 
 #. [color_range]: id=mountains
 #: data/core/team-colors.cfg:143
 msgid "Mountains"
-msgstr ""
+msgstr "Montañas"
 
 #. [color_range]: id=forest
 #: data/core/team-colors.cfg:149
 msgid "Forest"
-msgstr ""
+msgstr "Bosque"
 
 #. [color_range]: id=sand
 #: data/core/team-colors.cfg:155
 msgid "Sand"
-msgstr ""
+msgstr "Arena"
 
 #. [color_range]: id=frozen
 #: data/core/team-colors.cfg:161
 msgid "Frozen"
-msgstr ""
+msgstr "Hielo"
 
 #. [color_range]: id=cave
 #: data/core/team-colors.cfg:167
 msgid "Cave"
-msgstr ""
+msgstr "Cueva"
 
 #. [color_range]: id=fungus
 #: data/core/team-colors.cfg:173
 msgid "Fungus"
-msgstr ""
+msgstr "Hongos"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
@@ -2922,29 +2876,27 @@ msgstr "Aldea"
 #. [color_range]: id=castle
 #: data/core/team-colors.cfg:185
 msgid "Castle"
-msgstr ""
+msgstr "Castillo"
 
 #. [color_range]: id=keep
 #: data/core/team-colors.cfg:191
 msgid "Keep"
-msgstr ""
+msgstr "Torreón"
 
 #. [color_range]: id=rails
 #: data/core/team-colors.cfg:197
 msgid "Rail"
-msgstr ""
+msgstr "Raíles"
 
 #. [color_range]: id=unwalkable
 #: data/core/team-colors.cfg:203
-#, fuzzy
-#| msgid "unhealable"
 msgid "Unwalkable"
-msgstr "incurable"
+msgstr "Inaccesible"
 
 #. [color_range]: id=impassable
 #: data/core/team-colors.cfg:209
 msgid "Impassable"
-msgstr ""
+msgstr "Intransitable"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
@@ -3032,25 +2984,23 @@ msgstr ""
 
 #. [language]
 #: data/english.cfg:23
-#, fuzzy
 msgid "$name|’s Bridge,$name|’s Crossing"
-msgstr "Puente de $name,Cruce de $name"
+msgstr "Puente de $name,Paso de $name"
 
 #. [language]
 #: data/english.cfg:24
-#, fuzzy
 msgid "$name|’s Highway,$name|’s Pass,Path of $name"
-msgstr "Carretera de $name,Paso de $name,Camino de $name"
+msgstr "Calzada de $name,Sendero de $name,Camino de $name"
 
 #. [language]
 #: data/english.cfg:25
 msgid "$name River,River $name"
-msgstr "Río de $name,Río $name"
+msgstr "$name del río,Río $name"
 
 #. [language]
 #: data/english.cfg:26
 msgid "$name Forest,$name|’s Forest"
-msgstr "Bosque $name,Bosque de $name,Selva $name,Selva de $name"
+msgstr "Bosque $name,Bosque de $name"
 
 #. [language]
 #: data/english.cfg:27
@@ -3060,90 +3010,86 @@ msgstr "Lago $name"
 #. [language]
 #: data/english.cfg:28
 msgid "$name|’s Peak,Mount $name"
-msgstr "Pico de $name,Monte $name"
+msgstr "Serranía de $name,Monte $name"
 
 #. [language]
 #: data/english.cfg:29
 msgid "$name|’s Swamp,$name|marsh,$name|fen"
-msgstr "Pantano de $name,Marisma de $name,Ciénaga de $name"
+msgstr "Pantano $name,Marisma $name,Ciénaga $name"
 
 #. [language]
 #: data/english.cfg:30
-#, fuzzy
 msgid "$name|bury,$name|ham,$name|ton,$name|bury"
-msgstr "$name|burgo,$name|ham,$name|ton,$name|bury"
+msgstr "Burgo de $name,Aldea $name,Villa $name,Burgo de $name"
 
 #. [language]
 #: data/english.cfg:31
-#, fuzzy
 msgid "$name|harbor,$name|port,$lake|port,$lake|harbor"
-msgstr "Puerto $name,Bahía $name,Puerto $lake,Bahía $lake"
+msgstr "$name de la bahía,$name del puerto,Puerto de $lake,Bahía de $lake"
 
 #. [language]
 #: data/english.cfg:32
-#, fuzzy
 msgid ""
 "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross,$name on river"
-msgstr "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross,$name en río"
+msgstr ""
+"Aldea $name,$name del vado,$name del paso,Vado del $river,Paso del $river,"
+"$name del río"
 
 #. [language]
 #: data/english.cfg:33
-#, fuzzy
 msgid ""
 "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|ham,"
 "$bridge|ton"
 msgstr ""
-"Puente de $river,Puente de $river,Puente de $river,$name|ham,Puente de $name,"
-"$bridge|ham,$bridge|ton"
+"Puente $river,Puente $river,Puente $river,Aldea $name,Puente $name,Aldea "
+"$bridge,Villa $bridge"
 
 #. [language]
 #: data/english.cfg:34
-#, fuzzy
 msgid "$name|ham,$name|ton,$name|field"
-msgstr "$name|ham,$name|ton,$name|field"
+msgstr "Aldea $name,Villa $name,Campo $name"
 
 #. [language]
 #: data/english.cfg:35
-#, fuzzy
 msgid ""
 "$name|ham,$name|ton,$name|wood,$name Forest,$forest|wood,$forest|ham,$forest|"
 "ton"
 msgstr ""
-"$name|ham,$name|ton,$name|wood,Bosque $name,$forest|wood,$forest|ham,$forest|"
-"ton"
+"Aldea $name,Villa $name,$name del bosque,Cabañas $name,Poblado de $forest,"
+"Aldea $forest,Villa $forest"
 
 #. [language]
 #: data/english.cfg:36
-#, fuzzy
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
+msgstr "Aldea $name,Burgo de $name,Villa $name,Refugio $name,Punta $name"
 
 #. [language]
 #: data/english.cfg:37
-#, fuzzy
 msgid "$mountain|mont,$mountain|cliff,$mountain|bury,$mountain|ham"
-msgstr "Montaña $mountain,Cerro $mountain,$mountain|bury,$mountain|ham"
+msgstr "Monte $mountain,Barranco $mountain,Burgo de $mountain,Aldea $mountain"
 
 #. [language]
 #: data/english.cfg:38
-#, fuzzy
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
-"$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
+"Aldea $name,Burgo de $name,Villa $name,$name del monte,$name del monte,$name "
+"del barranco,$name del barranco"
 
 #. [language]
 #: data/english.cfg:39
-#, fuzzy
 msgid ""
 "$road|’s Rest,$road|’s Waypoint,$road|bury,$road|ham,$name|bury,$name|ham"
-msgstr "Descanso $road,Paso $road,$road|bury,$road|ham,$name|bury,$name|ham "
+msgstr ""
+"Posada de $road,Apeadero de $road,Burgo de $road,Aldea $road,Burgo de $name,"
+"Aldea $name"
 
 #. [language]
 #: data/english.cfg:40
-#, fuzzy
 msgid "$name|bury,$name|ham,$name|ton,$swamp|bury,$swamp|ham,$swamp|ton,"
-msgstr "$name|bury,$name|ham,$name|ton,$swamp|bury,$swamp|ham,$swamp|ton,"
+msgstr ""
+"Burgo de $name,Aldea $name,Villa $name,Burgo de $swamp,Aldea $swamp,Villa "
+"$swamp,"
 
 #. [language]
 #: data/english.cfg:43
@@ -3303,12 +3249,12 @@ msgstr "eléctrico"
 #. [theme]: id=Default
 #: data/themes/default.cfg:34
 msgid "theme^Default"
-msgstr ""
+msgstr "Por defecto"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:35
 msgid "Default theme."
-msgstr ""
+msgstr "Tema predeterminado."
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:82 data/themes/pandora.cfg:114
@@ -3318,10 +3264,8 @@ msgstr "Menú"
 
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:92
-#, fuzzy
-#| msgid "Back to turn "
 msgid "Back to..."
-msgstr "Volver al turno "
+msgstr "Volver a..."
 
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:100 data/themes/unit_box.cfg:120
@@ -3364,12 +3308,13 @@ msgstr "PX"
 #. [label]: id=label-mp
 #: data/themes/default.cfg:151 data/themes/unit_box.cfg:394
 msgid "MP"
-msgstr "Multijugador"
+msgstr "PM"
 
+# Me falta contexto
 #. [label]: id=label-def
 #: data/themes/default.cfg:159
 msgid "def"
-msgstr ""
+msgstr "def"
 
 #. [label]: id=gold-icon
 #: data/themes/default.cfg:168 data/themes/pandora.cfg:181
@@ -3403,10 +3348,8 @@ msgstr "ingresos"
 
 #. [unit_level]: id=unit-level
 #: data/themes/default.cfg:394
-#, fuzzy
-#| msgid "statuspanel^level"
 msgid "statuspanel^lvl"
-msgstr "nivel"
+msgstr "nv"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=replay-label
@@ -3477,46 +3420,46 @@ msgstr "Saltar animación"
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:22
 msgid "theme^Pandora"
-msgstr ""
+msgstr "Pandora"
 
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:23
 msgid "800x480 theme optimized for Pandora devices."
-msgstr ""
+msgstr "800x480 tema optimizado para dispositivos Pandora."
 
 #. [action]: id=end-turn
 #: data/themes/pandora.cfg:153
-#, fuzzy
-#| msgid "End Turn"
 msgid ""
 "End\n"
 "Turn"
-msgstr "Finalizar turno"
+msgstr ""
+"Finalizar\n"
+"turno"
 
 #. [theme]: id=UnitBox
 #: data/themes/unit_box.cfg:11
 msgid "theme^UnitBox"
-msgstr ""
+msgstr "UnitBox"
 
 #. [theme]: id=UnitBox
 #: data/themes/unit_box.cfg:12
 msgid "Experimental work-in-progress replacement for the default theme."
-msgstr ""
+msgstr "Tema experimental, en construcción, para sustituir al predeterminado."
 
 #. [action]: id=flip_map_button_editor, type=checkbox
 #: data/themes/unit_box.cfg:205
 msgid "Not implemented yet."
-msgstr ""
+msgstr "Aún no se ha puesto en producción."
 
 #. [theme]: id=Widescreen
 #: data/themes/widescreen.cfg:11
 msgid "theme^Widescreen"
-msgstr ""
+msgstr "Pantalla panorámica"
 
 #. [theme]: id=Widescreen
 #: data/themes/widescreen.cfg:12
 msgid "Experimental theme optimized for widescreen resolutions."
-msgstr ""
+msgstr "Tema experimental optimizado para pantallas panorámicas."
 
 #. [selected_unit_level]: id=selected-unit-level
 #. [unit_level]: id=unit-level
@@ -3542,13 +3485,13 @@ msgid ""
 "Use the map editor's <i>Areas</i> menu to define regions later addressed by "
 "event or ai coding."
 msgstr ""
+"Use el menú <i>Areas</i> del editor de mapas para definir zonas a las que se "
+"podrá acceder posteriormente por un evento o por código de la IA."
 
 #. [tip]
 #: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
-#, fuzzy
-#| msgid "<i>― The Wesnoth Tactical Guide</i>"
 msgid "<i>― The Wesnoth Design Guide</i>"
-msgstr "<i>― La guía táctica de Wesnoth</i>"
+msgstr "<i>― La guía de diseño de Wesnoth</i>"
 
 #. [tip]
 #: data/tips.cfg:8
@@ -3556,6 +3499,8 @@ msgid ""
 "Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use of "
 "advanced features."
 msgstr ""
+"Crear un <i>Nuevo escenario</i> en el menú <i>Archivo</i> del editor para "
+"utilizar características avanzadas."
 
 #. [tip]
 #: data/tips.cfg:12
@@ -3563,6 +3508,9 @@ msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the mp create screen's <i>User Scenarios</i> section."
 msgstr ""
+"Los escenarios guardados en la carpeta predeterminada del editor, se pueden "
+"seleccionar en las pantallas de creación de partida multijugador, en la "
+"sección <i>Escenarios del usuario</i>."
 
 #. [tip]
 #: data/tips.cfg:16
@@ -3587,8 +3535,8 @@ msgid ""
 "where they are). Use this to make sure the enemy can’t reach your weak or "
 "injured units on his next turn."
 msgstr ""
-"En el menú de «<b>Acciones</b>», puede seleccionar «<b>Mostrar movimientos "
-"del enemigo</b>» para destacar todas las posibles ubicaciones a las que su "
+"En el menú de <b>Acciones</b>, puede seleccionar <b>Mostrar movimientos del "
+"enemigo</b> para destacar todas las posibles ubicaciones a las que su "
 "enemigo podría moverse (siempre y cuando usted no mueva sus unidades de "
 "sitio). Utilice esto para asegurarse de que el enemigo no puede alcanzar a "
 "sus unidades débiles o heridas en turnos siguientes."
@@ -3612,7 +3560,7 @@ msgid ""
 "level up. Early in a campaign, try to give killing blows to these units so "
 "you can get some high-level troops sooner."
 msgstr ""
-"Las unidades con el rasgo «<b>inteligente</b>» necesitan menos puntos de "
+"Las unidades con el rasgo <i>inteligente</i> necesitan menos puntos de "
 "experiencia para subir de nivel. Al comienzo de una campaña, trate de "
 "utilizar estas unidades para dar el golpe final a sus enemigos; así, podrá "
 "obtener tropas de mejor nivel más pronto."
@@ -3649,7 +3597,7 @@ msgid ""
 "a unit in. Placing units wisely can sometimes let you reach a village a turn "
 "earlier."
 msgstr ""
-"Puede acceder a los comandos «<b>Reclutar</b>» y «<b>Reincorporar</b>» "
+"Puede acceder a los comandos <b>Reclutar</b> y <b>Reincorporar</b> "
 "presionando el botón derecho del ratón sobre cualquier ubicación en su "
 "castillo. Esto le permitirá situar una nueva unidad en dicha ubicación. "
 "Situar unidades sabiamente puede ahorrarle turnos para alcanzar una aldea u "
@@ -3662,10 +3610,10 @@ msgid ""
 "<b>Status Table</b> will let you know how your enemies are doing, and how "
 "you are doing in comparison."
 msgstr ""
-"Algunos reportes estadísticos que le pueden ser de utilidad, se encuentran "
+"Algunos informes estadísticos que le pueden ser de utilidad, se encuentran "
 "localizados bajo el botón «Menú» en la barra superior de la ventana de "
-"partida. Por ejemplo, la «<b>Tabla de estado</b>» le permite saber cómo le "
-"va a sus enemigos en la partida en comparación con usted."
+"partida. Por ejemplo, la <b>Tabla de estado</b> le permite saber cómo le va "
+"a sus enemigos en la partida en comparación con usted."
 
 #. [tip]
 #: data/tips.cfg:40
@@ -3674,7 +3622,7 @@ msgid ""
 "can be very important when moving through difficult terrain such as water or "
 "caves. It can make the difference between being able to move one hex or two."
 msgstr ""
-"Las unidades con el rasgo «<i>rápido</i>» obtienen un punto de movimiento "
+"Las unidades con el rasgo <i>rápido</i> obtienen un punto de movimiento "
 "adicional en cada turno. Esto puede ser muy importante al desplazarse a "
 "través de terrenos difíciles, como el agua o las cuevas, y puede crear una "
 "gran diferencia al tratar de alcanzar un lugar en el menor tiempo posible."
@@ -3692,7 +3640,7 @@ msgid ""
 "harder!"
 msgstr ""
 "Después de haber jugado unos pocos escenarios, lea detenidamente la sección "
-"«<b>Juego</b>» en la pantalla <b>Ayuda</b>. ¡Los detalles se vuelven "
+"<b>Juego</b> en la pantalla <b>Ayuda</b>. ¡Los detalles se vuelven "
 "importantes cuando los escenarios se vuelven más difíciles!"
 
 #. [tip]
@@ -3713,7 +3661,7 @@ msgid ""
 "history of Wesnoth, and much more."
 msgstr ""
 "En www.wesnoth.org podrá encontrar guías de estrategia, soporte técnico, la "
-"historia de Wesnoth, y mucho más."
+"historia de Wesnoth y mucho más."
 
 #. [tip]
 #: data/tips.cfg:53
@@ -3727,11 +3675,10 @@ msgid ""
 "better at night. <i>Neutral</i> units are unaffected by the time of day. The "
 "rare <i>liminal</i> units fight best during twilight."
 msgstr ""
-"Las unidades «<i>legales</i>» luchan mejor durante el día y las "
-"«<i>caóticas</i>» durante la noche, mientras que las «<i>neutrales</i>» no "
-"se ven afectadas por ninguna de ellas. Adicional a esto, existen unas "
-"unidades menos comunes que luchan mejor durante el crepúsculo, denominadas "
-"«<i>crepusculares</i>». "
+"Las unidades <i>legales</i> luchan mejor durante el día y las <i>caóticas</"
+"i> durante la noche, mientras que las <i>neutrales</i> no se ven afectadas "
+"por ninguna de ellas. Adicional a esto, existen unas unidades menos comunes "
+"que luchan mejor durante el crepúsculo, denominadas <i>crepusculares</i>."
 
 #. [tip]
 #: data/tips.cfg:57
@@ -3763,11 +3710,11 @@ msgid ""
 "their cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units can only see as far as they can move in one turn."
 msgstr ""
-"Si está jugando con «<b>oscuridad</b>» o «<b>niebla de guerra</b>» activada, "
-"no sabrá a lo que se está enfrentando. En este caso, las unidades "
-"exploradoras de largo alcance hacen valer su precio. Trate de elegir "
-"exploradores que puedan moverse fácilmente a través del terreno, ya que las "
-"unidades solamente pueden ver tan lejos como pueden moverse en un turno."
+"Si está jugando con <b>oscuridad</b> o <b>niebla de guerra</b> activada, no "
+"sabrá a lo que se está enfrentando. En este caso, las unidades exploradoras "
+"de largo alcance hacen valer su precio. Trate de elegir exploradores que "
+"puedan moverse fácilmente a través del terreno, ya que las unidades "
+"solamente pueden ver tan lejos como pueden moverse en un turno."
 
 #. [tip]
 #: data/tips.cfg:68
@@ -3778,12 +3725,11 @@ msgid ""
 "Description</b> to see which attacks it is resistant to, and which will "
 "affect it the most."
 msgstr ""
-"Hay seis tipos de ataques: «<i>de corte</i>», «<i>de impacto</i>», «<i>de "
-"penetración</i>», «<i>de fuego</i>», «<i>de frío</i>» y «<i>arcano</i>». "
-"Diferentes unidades tienen debilidades contra diferentes tipos de ataques. "
-"Presione el botón derecho del ratón sobre una unidad y seleccione "
-"«<b>descripción de unidad</b>» para ver a cuáles ataques es resistente y a "
-"cuáles no lo es."
+"Hay seis tipos de ataques: <i>de corte</i>, <i>de impacto</i>, <i>de "
+"penetración</i>, <i>de fuego</i>, <i>de frío</i> y <i>arcano</i>. Diferentes "
+"unidades tienen debilidades contra diferentes tipos de ataques. Presione el "
+"botón derecho del ratón sobre una unidad y seleccione <b>descripción de "
+"unidad</b> para ver a cuáles ataques es resistente y a cuáles no lo es."
 
 #. [tip]
 #: data/tips.cfg:72
@@ -3812,7 +3758,7 @@ msgstr ""
 "de la muerte hasta que se elimine el veneno. Las unidades sanadoras pueden "
 "prevenir el deterioro de la unidad envenenada, pero no se eliminará el "
 "veneno a menos que la unidad se regenere o comience un turno en una aldea o "
-"al lado de una una unidad con la habilidad de «<i>curar</i>»."
+"al lado de una unidad con la habilidad de <i>curar</i>."
 
 #. [tip]
 #: data/tips.cfg:80
@@ -3821,8 +3767,8 @@ msgid ""
 "the <b>Actions</b> menu. By recalling the same units over and over, you can "
 "build up a powerful and experienced army."
 msgstr ""
-"Usted puede reusar unidades de escenarios previos, seleccionando "
-"«<b>Reincorporar</b>» en el menú «<b>Acciones</b>». Llamando a las mismas "
+"Usted puede reincorporar unidades de escenarios previos, seleccionando "
+"<b>Reincorporar</b> en el menú <b>Acciones</b>. Llamando a las mismas "
 "unidades una y otra vez, puede construir un ejército poderoso y "
 "experimentado."
 
@@ -3835,7 +3781,7 @@ msgid ""
 "between them and still create a barrier to the enemy. Beware, though: "
 "skirmishers can pass through these gaps."
 msgstr ""
-"Las unidades de nivel uno o más tienen una «<i>zona de control</i>» en cada "
+"Las unidades de nivel uno o más tienen una <i>zona de control</i> en cada "
 "una de las casillas adyacentes a ellas. Si una unidad entra en una zona de "
 "control enemiga, no se podrá mover más durante ese turno. Esto significa que "
 "esas unidades pueden tener dos casillas vacías entre ellos y todavía crear "
@@ -3854,8 +3800,8 @@ msgstr ""
 "Las posibilidades de dañar a una unidad suelen depender de su habilidad para "
 "defenderse en el terreno en el que está. Sin embargo, los ataques mágicos "
 "tienen un 70% de posibilidades de golpear y las unidades con la habilidad "
-"«<i>tirador</i>» tienen garantizados, por lo menos, un 60% de posibilidades "
-"de golpear cuando atacan en su propio turno."
+"<i>tirador</i> tienen garantizados, por lo menos, un 60% de posibilidades de "
+"golpear cuando atacan en su propio turno."
 
 #. [tip]
 #: data/tips.cfg:89
@@ -3890,8 +3836,8 @@ msgid ""
 "valuable but slow units, keep at least one fast unit with them so that you "
 "are not caught out by a surprise attack."
 msgstr ""
-"En los mapas donde se haya habilitado «<i>oscuridad</i>» o «<i>niebla de "
-"guerra</i>», el alcance de todas las unidades está limitado por su número "
+"En los mapas donde se haya habilitado <i>oscuridad</i> o <i>niebla de "
+"guerra</i>, el alcance de todas las unidades está limitado por su número "
 "máximo de movimiento. Si tiene algunas unidades valiosas, pero lentas, por "
 "lo menos, mantenga una unidad rápida junto a ellas para prevenir ataques por "
 "sorpresa."
@@ -4003,7 +3949,7 @@ msgid ""
 "make room for you on their keep so you can recruit from there, and you can "
 "even capture an enemy’s keep and use that."
 msgstr ""
-"Los «<i>líderes</i>» pueden reclutar o reincorporar unidades desde cualquier "
+"Los <i>líderes</i> pueden reclutar o reincorporar unidades desde cualquier "
 "torreón dentro de un castillo, y no necesariamente en el que empiezan. "
 "Algunas veces sus aliados podrían dejarle usar su torreón para que usted "
 "pueda reclutar unidades o podría capturar un castillo enemigo y hacerlo "
@@ -4025,7 +3971,7 @@ msgid ""
 "the same side fight better. You can move these units slowly along your "
 "battle lines and give bonuses to large numbers of lower-level troops."
 msgstr ""
-"Las unidades con la habilidad «<i>liderazgo</i>» ayudan a tropas de niveles "
+"Las unidades con la habilidad <i>liderazgo</i> ayudan a tropas de niveles "
 "más bajos, del mismo bando y que se encuentran cercanas, a luchar mejor. "
 "Puede mover estas unidades lentamente, en conjunto con líneas de batalla, "
 "para otorgarles una bonificación adicional a un número grande de tropas de "
@@ -4056,7 +4002,7 @@ msgstr "<i>― Princesa Li’sar, 515AñW</i>"
 #. [tip]
 #: data/tips.cfg:156
 msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
-msgstr "Lea la lista de «<b>Atajos</b>» en el menú de «<b>Preferencias</b>»."
+msgstr "Lea la lista de <b>Atajos</b> en el menú de <b>Preferencias</b>."
 
 #. [tip]
 #: data/tips.cfg:160
@@ -4065,7 +4011,7 @@ msgid ""
 "you can undo your move by pressing <b>u</b>."
 msgstr ""
 "Si mueve una unidad, pero no ataca ni descubre ninguna información "
-"adicional, puede deshacer ese movimiento pulsando la tecla «<b>U</b>» de su "
+"adicional, puede deshacer ese movimiento pulsando la tecla <b>U</b> de su "
 "teclado."
 
 #. [tip]
@@ -4097,14 +4043,14 @@ msgid ""
 "The <i>Slow</i> attack makes enemy units move slower and halves the damage "
 "they do on all attacks until they end a turn."
 msgstr ""
-"Los ataques con la habilidad de «<i>ralentizar</i>» no sólo hacen que el "
+"Los ataques con la habilidad de <i>ralentizar</i> no sólo hacen que el "
 "enemigo se mueva más despacio, sino que también dividen por dos el daño "
 "infligido por sus ataques hasta final de turno."
 
 #. [tip]
 #: data/tips.cfg:176
 msgid "<i>Arcane</i> attacks are very powerful against undead."
-msgstr "Los ataques «<i>arcanos</i>» son muy poderosos contra los no muertos."
+msgstr "Los ataques <i>arcanos</i> son muy poderosos contra los no muertos."
 
 #. [tip]
 #: data/tips.cfg:177
@@ -4140,7 +4086,7 @@ msgid ""
 "lower-level units instead."
 msgstr ""
 "En lugar de subir de nivel, las unidades de alto nivel ganan una "
-"bonificación de «<i>Avance Sobre el Máximo Nivel</i>» (ASMN; AMLA por sus "
+"bonificación de <i>Avance Sobre el Máximo Nivel</i> (ASMN; AMLA por sus "
 "siglas en inglés), lo que usualmente eleva el máximo de los puntos de vida "
 "(PV) de dicha unidad a 3 puntos y le sana por completo. Esto es menor que el "
 "beneficio obtenido por subir un nivel, por lo tanto es más útil subir de "
@@ -4181,8 +4127,8 @@ msgid ""
 "retaining the ability to undo, or use the new Whiteboard planning tool."
 msgstr ""
 "No puede deshacer un movimiento que haya mostrado una parte del terreno "
-"oculta por la «<b>oscuridad</b>» o la «<b>niebla de guerra</b>». Active la "
-"opción «<b>Retardar actualización de zonas oscuras</b>» cuando quiera mover "
+"oculta por la <b>oscuridad</b> o la <b>niebla de guerra</b>. Active la "
+"opción <b>Retardar actualización de zonas oscuras</b> cuando quiera mover "
 "unidades y a la vez preservar la capacidad de deshacer esos movimientos."
 
 #. [tip]
@@ -4227,14 +4173,13 @@ msgid ""
 "to escape; slow enemies are almost immobilized, and your own units suffer "
 "less retaliation damage, so it’s quicker to heal them."
 msgstr ""
-"La habilidad «<i>ralentizar</i>» es extremadamente poderosa por tener un "
+"La habilidad <i>ralentizar</i> es extremadamente poderosa por tener un "
 "amplio campo de efectos. Un enemigo no-muerto obtiene la mitad del beneficio "
-"normal de su habilidad «<i>drenar</i>», el daño de bonificación de "
-"«<i>carga</i>» o «<i>apuñalar por la espalda</i>» es cancelado y la "
-"habilidad «<i>frenesí</i>» es debilitada. Los enemigos más rápidos luchan "
-"para escapar, los enemigos lentos son casi inmovilizados y las unidades "
-"propias sufren menos daño en el contraataque, haciendo que sea más rápido "
-"sanarlas."
+"normal de su habilidad <i>drenar</i>, el daño de bonificación de <i>carga</"
+"i> o <i>apuñalar por la espalda</i> es cancelado y la habilidad <i>frenesí</"
+"i> es debilitada. Los enemigos más rápidos luchan para escapar, los enemigos "
+"lentos son casi inmovilizados y las unidades propias sufren menos daño en el "
+"contraataque, haciendo que sea más rápido sanarlas."
 
 #. [tip]
 #: data/tips.cfg:220
@@ -4246,9 +4191,9 @@ msgid ""
 msgstr ""
 "Trate de utilizar unidades con una pequeña cantidad de ataques poderosos — "
 "como los «adeptos oscuros», los «caballeros», los «soldados rasos orcos», y "
-"los «atronadores enanos» — en grupos de dos o tres.  Esto le otorgará un "
+"los «atronadores enanos» — en grupos de dos o tres. Esto le otorgará un "
 "mayor número de oportunidades de acertar un ataque devastador en contra del "
-"enemigo.  "
+"enemigo."
 
 #. [tip]
 #: data/tips.cfg:224
@@ -4274,7 +4219,7 @@ msgstr ""
 "Piense dos veces antes de expulsar a una unidad de la lista de reincorporar, "
 "no importa cuanta experiencia posea. Es conveniente, algunas veces, esperar "
 "a ver exactamente el tipo de alineamiento que el enemigo pueda tener antes "
-"de tomar esta decisión. "
+"de tomar esta decisión."
 
 #. [tip]
 #: data/tips.cfg:232
@@ -4285,8 +4230,7 @@ msgid ""
 msgstr ""
 "Cuando una de sus unidades fuertes está demasiado herida, haga que vaya a "
 "una aldea, lejos del área de batalla, para que se pueda sanar sin peligro de "
-"muerte. Esto puede hacer que recupere hasta 10 puntos de vida por cada "
-"turno. "
+"muerte. Esto puede hacer que recupere hasta 10 puntos de vida por cada turno."
 
 #. [tip]
 #: data/tips.cfg:233 data/tips.cfg:245
@@ -4302,9 +4246,9 @@ msgid ""
 "<i>Charge</i> against a slowed opponent, the results can be impressive."
 msgstr ""
 "Combinar múltiples habilidades especiales puede ser letal. Mientras que "
-"puede ser difícil, combinar las habilidades especiales «<i>liderazgo</i>», "
-"«<i>iluminar</i>» y «<i>carga</i>» en contra de un oponente ralentizado, da "
-"unos resultados impresionantes."
+"puede ser difícil, combinar las habilidades especiales <i>liderazgo</i>, "
+"<i>iluminar</i> y <i>carga</i> en contra de un oponente ralentizado, da unos "
+"resultados impresionantes."
 
 #. [tip]
 #: data/tips.cfg:240
@@ -4348,7 +4292,7 @@ msgid ""
 "if they occupy a village hex, they do not gain any defensive benefits from "
 "the village, although they will still be healed."
 msgstr ""
-"Las unidades «<i>salvajes</i>», como los murciélagos y demás animales "
+"Las unidades <i>salvajes</i>, como los murciélagos y demás animales "
 "silvestres, prefieren evitar las aldeas. Aunque ellos ocupen dichos lugares "
 "y recuperen sus puntos de vida, no recibirán defensa adicional como otras "
 "unidades."
@@ -4372,8 +4316,6 @@ msgid "You don’t have a leader to recall with."
 msgstr "No tiene un líder con el que reincorporar."
 
 #: src/actions/create.cpp:608
-#, fuzzy
-#| msgid "None of your leaders is able to recall that unit."
 msgid "None of your leaders are able to recall that unit."
 msgstr "Ninguno de sus líderes puede reincorporar esa unidad."
 
@@ -4387,17 +4329,15 @@ msgstr "No hay zonas del castillo libres para reincorporar la unidad."
 
 #: src/actions/create.cpp:626 src/actions/create.cpp:762
 msgid "An unrecognized error has occurred."
-msgstr ""
+msgstr "Ha ocurrido un error desconocido."
 
 #: src/actions/create.cpp:740
 msgid "You don’t have a leader to recruit with."
 msgstr "No tiene un líder con el que reclutar."
 
 #: src/actions/create.cpp:744
-#, fuzzy
-#| msgid "None of your leaders is able to recall that unit."
 msgid "None of your leaders are able to recruit that unit."
-msgstr "Ninguno de sus líderes puede reincorporar esa unidad."
+msgstr "Ninguno de sus líderes puede reclutar esa unidad."
 
 #: src/actions/create.cpp:748
 msgid "You must have a leader on a keep who is able to recruit the unit."
@@ -4409,13 +4349,11 @@ msgstr "No hay zonas del castillo libres para reclutar a esa unidad."
 
 #: src/actions/heal.cpp:278
 msgid "cured"
-msgstr ""
+msgstr "sanado"
 
 #: src/actions/heal.cpp:278
-#, fuzzy
-#| msgid "female^slowed"
 msgid "female^cured"
-msgstr "ralentizada"
+msgstr "sanada"
 
 #: src/actions/move.cpp:584
 msgid "Ambushed!"
@@ -4428,13 +4366,13 @@ msgstr "¡Falló el teletransporte! La salida no está vacía"
 #: src/actions/move.cpp:1122
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
-msgstr[0] "amiga"
+msgstr[0] "1 amiga"
 msgstr[1] "$friends amigas"
 
 #: src/actions/move.cpp:1123
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
-msgstr[0] "enemiga"
+msgstr[0] "1 enemiga"
 msgstr[1] "$enemies enemigas"
 
 #: src/actions/move.cpp:1124
@@ -4458,57 +4396,40 @@ msgid "(press $hotkey to keep moving)"
 msgstr "(presione $hotkey para seguir moviéndose)"
 
 #: src/addon/client.cpp:68
-#, fuzzy
-#| msgid "Connecting to Server..."
 msgid "Connecting to $server_address|..."
-msgstr "Conectando al servidor..."
+msgstr "Conectando a $server_address|..."
 
 #: src/addon/client.cpp:80
-#, fuzzy
-#| msgid "Requesting list of add-ons"
 msgid "Downloading list of add-ons..."
-msgstr "Pidiendo lista de complementos"
+msgstr "Descargando la lista de complementos..."
 
 #: src/addon/client.cpp:94
-#, fuzzy
-#| msgid "Requesting terms"
 msgid "Requesting distribution terms..."
-msgstr "Pidiendo términos"
+msgstr "Pidiendo términos para la distribución..."
 
 #: src/addon/client.cpp:143
-#, fuzzy
-#| msgid "Downloading add-on: $addon_title|..."
 msgid "Sending add-on <i>$addon_title</i>..."
-msgstr "Descargando complemento: $addon_title|..."
+msgstr "Enviando el complemento <i>$addon_title</i>..."
 
 #: src/addon/client.cpp:177
-#, fuzzy
-#| msgid "Downloading add-on: $addon_title|..."
 msgid "Removing add-on <i>$addon_title</i> from the server..."
-msgstr "Descargando complemento: $addon_title|..."
+msgstr "Borrando el complemento <i>$addon_title</i> del servidor..."
 
 #: src/addon/client.cpp:204
-#, fuzzy
-#| msgid "Downloading add-on: $addon_title|..."
 msgid "Downloading add-on <i>$addon_title</i>..."
-msgstr "Descargando complemento: $addon_title|..."
+msgstr "Descargando el complemento <i>$addon_title</i>..."
 
 #: src/addon/client.cpp:218
-#, fuzzy
-#| msgid ""
-#| "The add-on has an invalid file or directory name and cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
 msgstr ""
-"El complemento contiene un nombre de archivo o directorio inválido y no "
-"puede ser instalado."
+"El complemento <i>$addon_title</i> tiene un nombre de fichero o directorio "
+"no válido y no se ha podido instalar."
 
 #: src/addon/client.cpp:306 src/addon/manager_ui.cpp:745
-#, fuzzy
-#| msgid "Add-on Installed"
 msgid "Add-ons Manager"
-msgstr "Complemento instalado"
+msgstr "Gestor de complementos"
 
 #: src/addon/info.cpp:156
 msgid "addon_type^Campaign"
@@ -4519,10 +4440,8 @@ msgid "addon_type^Scenario"
 msgstr "Escenario"
 
 #: src/addon/info.cpp:160
-#, fuzzy
-#| msgid "addon_type^MP campaign"
 msgid "addon_type^SP/MP Campaign"
-msgstr "Campaña multijugador"
+msgstr "Campaña normal/multijugador"
 
 #: src/addon/info.cpp:162
 msgid "addon_type^MP era"
@@ -4545,10 +4464,8 @@ msgid "addon_type^MP campaign"
 msgstr "Campaña multijugador"
 
 #: src/addon/info.cpp:172
-#, fuzzy
-#| msgid "addon_type^MP faction"
 msgid "addon_type^MP modification"
-msgstr "Facción multijugador"
+msgstr "Modificación multijugador"
 
 #: src/addon/info.cpp:174
 msgid "addon_type^Resources"
@@ -4567,63 +4484,50 @@ msgid "unit_byte^B"
 msgstr "B"
 
 #: src/addon/manager_ui.cpp:97
-#, fuzzy
-#| msgid "Add-on Installed"
 msgid "addon_state^Not installed"
-msgstr "Complemento instalado"
+msgstr "No instalado"
 
 #: src/addon/manager_ui.cpp:97
 msgid "addon_state^Published, not installed"
-msgstr ""
+msgstr "Publicado, no instalado"
 
 #: src/addon/manager_ui.cpp:104
-#, fuzzy
-#| msgid "Add-on Installed"
 msgid "addon_state^Installed"
-msgstr "Complemento instalado"
+msgstr "Instalado"
 
 #: src/addon/manager_ui.cpp:104
 msgid "addon_state^Published"
-msgstr ""
+msgstr "Publicado"
 
 #: src/addon/manager_ui.cpp:107
 msgid "addon_state^Installed, upgradable"
-msgstr ""
+msgstr "Instalado, actualizable"
 
 #: src/addon/manager_ui.cpp:107
 msgid "addon_state^Published, upgradable"
-msgstr ""
+msgstr "Publicado, actualizable"
 
 #: src/addon/manager_ui.cpp:110
 msgid "addon_state^Installed, outdated on server"
-msgstr ""
+msgstr "Instalado, desactualizado en el servidor"
 
 #: src/addon/manager_ui.cpp:110
 msgid "addon_state^Published, outdated on server"
-msgstr ""
+msgstr "Publicado, desactualizado en el servidor"
 
 #: src/addon/manager_ui.cpp:113
 msgid "addon_state^Installed, broken"
-msgstr ""
+msgstr "instalado, roto"
 
 #: src/addon/manager_ui.cpp:113
 msgid "addon_state^Published, broken"
-msgstr ""
+msgstr "Publicado, roto"
 
 #: src/addon/manager_ui.cpp:115
-#, fuzzy
-#| msgid "addon_type^(unknown)"
 msgid "addon_state^Unknown"
-msgstr "(desconocido)"
+msgstr "Desconocido"
 
 #: src/addon/manager_ui.cpp:148
-#, fuzzy
-#| msgid ""
-#| "The selected add-on has the following dependency. Do you want to install "
-#| "it?"
-#| msgid_plural ""
-#| "The selected add-on has the following dependencies. Do you want to "
-#| "install them?"
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -4631,17 +4535,15 @@ msgid_plural ""
 "The selected add-on has the following dependencies, which are not currently "
 "installed or available from the server. Do you wish to continue?"
 msgstr[0] ""
-"El complemento seleccionado requiere del siguiente archivo de dependencia. "
-"¿Desea instalarlo?"
+"El complemento seleccionado depende del siguiente archivo, el cual no está "
+"instalado o disponible desde el servidor. ¿Desea continuar?"
 msgstr[1] ""
-"El complemento seleccionado requiere de los siguientes archivos de "
-"dependencias. ¿Desea instalarlos?"
+"El complemento seleccionado depende de los siguientes archivos, los cuales "
+"no están instalados o disponibles desde el servidor. ¿Desea continuar?"
 
 #: src/addon/manager_ui.cpp:157
-#, fuzzy
-#| msgid "Install dependencies"
 msgid "Broken Dependencies"
-msgstr "Instalar archivos de dependencia"
+msgstr "Dependencias de archivo rotas"
 
 #: src/addon/manager_ui.cpp:173 src/addon/manager_ui.cpp:582
 msgid "Author"
@@ -4666,19 +4568,10 @@ msgid "Type"
 msgstr "Tipo"
 
 #: src/addon/manager_ui.cpp:204
-#, fuzzy
-#| msgid "Install dependencies"
 msgid "Install Dependencies"
 msgstr "Instalar archivos de dependencia"
 
 #: src/addon/manager_ui.cpp:205
-#, fuzzy
-#| msgid ""
-#| "The selected add-on has the following dependency. Do you want to install "
-#| "it?"
-#| msgid_plural ""
-#| "The selected add-on has the following dependencies. Do you want to "
-#| "install them?"
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed. Do you wish to install it before continuing?"
@@ -4686,19 +4579,18 @@ msgid_plural ""
 "The selected add-on has the following dependencies, which are not currently "
 "installed. Do you wish to install them before continuing?"
 msgstr[0] ""
-"El complemento seleccionado requiere del siguiente archivo de dependencia. "
-"¿Desea instalarlo?"
+"El complemento seleccionado requiere del siguiente archivo de dependencia, "
+"el cual no está instalado. ¿Desea instalarlo antes de continuar?"
 msgstr[1] ""
 "El complemento seleccionado requiere de los siguientes archivos de "
-"dependencias. ¿Desea instalarlos?"
+"dependencia, los cuales no están instalados. ¿Desea instalarlos antes de "
+"continuar?"
 
 #: src/addon/manager_ui.cpp:241 src/addon/manager_ui.cpp:313
 #: src/addon/manager_ui.cpp:328 src/addon/manager_ui.cpp:333
 #: src/addon/manager_ui.cpp:878
-#, fuzzy
-#| msgid "The server responded with an error: \""
 msgid "The server responded with an error:"
-msgstr "El servidor devolvió un error: \""
+msgstr "El servidor devolvió un error:"
 
 #: src/addon/manager_ui.cpp:252
 msgid ""
@@ -4707,32 +4599,31 @@ msgid ""
 msgid_plural ""
 "The following dependencies could not be installed. Do you still wish to "
 "continue?"
-msgstr[0] ""
+msgstr[0] "La siguiente dependencia podría no instalarse. ¿Desea continuar?"
 msgstr[1] ""
+"Las siguientes dependencias podrían no instalarse. ¿Desea continuar?"
 
 #: src/addon/manager_ui.cpp:256
-#, fuzzy
-#| msgid "Installation failed"
 msgid "Dependencies Installation Failed"
-msgstr "¡La instalación ha fallado!"
+msgstr "Algunas dependencias de la instalación han fallado"
 
 #: src/addon/manager_ui.cpp:279
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
+"El complemento '$addon|' ya está instalado y contiene información adicional "
+"que se perderá permanentemente si usted continua:"
 
 #: src/addon/manager_ui.cpp:283
 msgid "Publishing information file (.pbl)"
-msgstr ""
+msgstr "Fichero con información de la publicación (.pbl)"
 
 #: src/addon/manager_ui.cpp:287
 msgid "Version control system (VCS) information"
-msgstr ""
+msgstr "Información del sistema de control de versión (VCS)"
 
 #: src/addon/manager_ui.cpp:291
-#, fuzzy
-#| msgid "Do you want to continue?"
 msgid "Do you really wish to continue?"
 msgstr "¿Desea continuar?"
 
@@ -4759,14 +4650,10 @@ msgid "Terms"
 msgstr "Términos"
 
 #: src/addon/manager_ui.cpp:578
-#, fuzzy
-#| msgid "New version"
 msgid "New Version"
 msgstr "Nueva versión"
 
 #: src/addon/manager_ui.cpp:578
-#, fuzzy
-#| msgid "Old version"
 msgid "Old Version"
 msgstr "Versión antigua"
 
@@ -4775,26 +4662,22 @@ msgid "Downloads"
 msgstr "Descargas"
 
 #: src/addon/manager_ui.cpp:705
-#, fuzzy
-#| msgid "Publish add-on: "
 msgid "Publish: $addon_title"
-msgstr "Publicar complemento: "
+msgstr "Publicar: $addon_title"
 
 #: src/addon/manager_ui.cpp:714
-#, fuzzy
-#| msgid "Delete add-on: "
 msgid "Delete: $addon_title"
-msgstr "Borrar complemento: "
+msgstr "Borrar: $addon_title"
 
 #: src/addon/manager_ui.cpp:741
 msgid "There are no add-ons available for download from this server."
 msgstr "No hay complementos disponibles para descargar de este servidor."
 
 #: src/addon/manager_ui.cpp:742
-#, fuzzy
-#| msgid "There are no add-ons available for download from this server."
 msgid "There are no add-ons matching the specified criteria on this server."
-msgstr "No hay complementos disponibles para descargar de este servidor."
+msgstr ""
+"No hay complementos disponibles en este servidor que encajen con el criterio "
+"seleccionado."
 
 #: src/addon/manager_ui.cpp:764 src/dialogs.cpp:591 src/dialogs.cpp:947
 #: src/menu_events.cpp:1018
@@ -4806,93 +4689,67 @@ msgid "Description"
 msgstr "Descripción"
 
 #: src/addon/manager_ui.cpp:779
-#, fuzzy
-#| msgid "Update all"
 msgid "Update All"
 msgstr "Actualizar todos"
 
 #: src/addon/manager_ui.cpp:786
-#, fuzzy
-#| msgid "Whiteboard Options"
 msgid "filter^Options"
-msgstr "Opciones del modo pizarra"
+msgstr "Opciones"
 
 #: src/addon/manager_ui.cpp:892
 msgid "Add-on Installed"
 msgstr "Complemento instalado"
 
 #: src/addon/manager_ui.cpp:892
-#, fuzzy
-#| msgid "Add-on Deleted"
-#| msgid_plural "Add-ons Deleted"
 msgid "Add-on Updated"
-msgstr "Complemento eliminado"
+msgstr "Complemento actualizado"
 
 #: src/addon/manager_ui.cpp:893
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "El complemento «$addon_title|» ha sido instalado con éxito."
 
 #: src/addon/manager_ui.cpp:893
-#, fuzzy
-#| msgid "The add-on '$addon_title|' has been successfully installed."
 msgid "The add-on '$addon_title|' has been successfully updated."
-msgstr "El complemento «$addon_title|» ha sido instalado con éxito."
+msgstr "El complemento '$addon_title|' se ha actualizado con éxito."
 
 #: src/addon/manager_ui.cpp:898
-#, fuzzy
-#| msgid "Add-on Installed"
 msgid "Add-ons Installed"
-msgstr "Complemento instalado"
+msgstr "Complementos instalados"
 
 #: src/addon/manager_ui.cpp:898
-#, fuzzy
-#| msgid "Add-on Deleted"
-#| msgid_plural "Add-ons Deleted"
 msgid "Add-ons Updated"
-msgstr "Complemento eliminado"
+msgstr "Complementos actualizados"
 
 #: src/addon/manager_ui.cpp:899
-#, fuzzy
-#| msgid "All add-ons updated successfully."
 msgid "All add-ons installed successfully."
-msgstr "Todos los complementos fueron actualizados exitosamente."
+msgstr "Todos los complementos fueron instalados exitosamente."
 
 #: src/addon/manager_ui.cpp:899
 msgid "All add-ons updated successfully."
 msgstr "Todos los complementos fueron actualizados exitosamente."
 
 #: src/addon/manager_ui.cpp:903
-#, fuzzy
-#| msgid "Installation failed"
 msgid "Installation Failed"
-msgstr "¡La instalación ha fallado!"
+msgstr "La instalación ha fallado"
 
 #: src/addon/manager_ui.cpp:903
-#, fuzzy
-#| msgid "Update failed"
 msgid "Update Failed"
-msgstr "Falló la actualización"
+msgstr "La actualización ha fallado"
 
 #: src/addon/manager_ui.cpp:905
-#, fuzzy
-#| msgid ""
-#| "The following add-on could not be downloaded or updated successfully:"
-#| msgid_plural ""
-#| "The following add-ons could not be downloaded or updated successfully:"
 msgid "The following add-on could not be downloaded or installed successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or installed successfully:"
 msgstr[0] ""
-"El siguiente complemento no pudo ser descargado o actualizado correctamente:"
+"El siguiente complemento no pudo ser descargado o instalado correctamente:"
 msgstr[1] ""
-"Los siguientes complementos no pudieron ser descargados o actualizados "
+"Los siguientes complementos no pudieron ser descargados o instalados "
 "correctamente:"
 
 #: src/addon/manager_ui.cpp:948 src/addon/manager_ui.cpp:958
-#, fuzzy
-#| msgid "An error occurred while communicating with the server."
 msgid "An error occurred while downloading the add-ons list from the server."
-msgstr "Ocurrió un error durante conexión con el servidor."
+msgstr ""
+"Ocurrió un error al descargar la lista de complementos desde el servidor."
 
 #: src/addon/manager_ui.cpp:976
 msgid "Network communication error."
@@ -4917,10 +4774,16 @@ msgid ""
 "File: $path\n"
 "Error message: $msg"
 msgstr ""
+"Un fichero local con información sobre la publicación del complemento no se "
+"pudo leer.\n"
+"\n"
+"Fichero: $path\n"
+"Mensaje de error: $msg"
 
 #: src/addon/manager_ui.cpp:1000
 msgid "The add-ons server address specified is not valid."
 msgstr ""
+"La dirección especificada para el servidor de complementos no es válida."
 
 #: src/addon/manager_ui.cpp:1014
 msgid "You have no add-ons installed."
@@ -5021,10 +4884,8 @@ msgstr "¿Está seguro de que quiere expulsarlo?"
 
 #. TRANSLATORS: this string ends with a space
 #: src/dialogs.cpp:105
-#, fuzzy
-#| msgid "My lord, this unit is loyal and requires no upkeep! "
 msgid "This unit is loyal and requires no upkeep. "
-msgstr "¡Mi señor, está unidad es leal y no cobra ingresos! "
+msgstr "Esta unidad es leal y no tiene gastos. "
 
 #: src/dialogs.cpp:106 src/dialogs.cpp:110 src/dialogs.cpp:115
 msgid "Do you really want to dismiss her?"
@@ -5032,19 +4893,13 @@ msgstr "¿Está seguro de que realmente quiere expulsarla?"
 
 #. TRANSLATORS: this string ends with a space
 #: src/dialogs.cpp:109
-#, fuzzy
-#| msgid "My lord, this unit is an experienced one, having advanced levels! "
 msgid "This unit is an experienced one, having advanced levels. "
-msgstr ""
-"¡Mi señor, esta unidad se ha convertido en veterana por haber subido de "
-"niveles! "
+msgstr "Esta unidad se ha convertido en veterana por haber subido de nivel. "
 
 #. TRANSLATORS: this string ends with a space
 #: src/dialogs.cpp:114
-#, fuzzy
-#| msgid "My lord, this unit is close to advancing a level! "
 msgid "This unit is close to advancing a level. "
-msgstr "¡Mi señor, está unidad está a punto de subir de nivel! "
+msgstr "Está unidad está a punto de subir de nivel. "
 
 #: src/dialogs.cpp:119 src/dialogs.cpp:595
 msgid "Dismiss Unit"
@@ -5068,7 +4923,7 @@ msgstr "Estado"
 
 #: src/dialogs.cpp:338 src/dialogs.cpp:510
 msgid "Level^Lvl."
-msgstr "Niv."
+msgstr "Nv.."
 
 #: src/dialogs.cpp:340
 msgid "unit list^Traits"
@@ -5169,14 +5024,12 @@ msgid "Load Game"
 msgstr "Cargar partida"
 
 #: src/dialogs.cpp:954
-#, fuzzy
-#| msgid "Difficulty: "
 msgid "Change difficulty"
-msgstr "Dificultad: "
+msgstr "Cambiar dificultad"
 
 #: src/dialogs.cpp:957
 msgid "Change campaign difficulty before loading"
-msgstr ""
+msgstr "Cambia la dificultad de la campaña antes de cargarla"
 
 #: src/dialogs.cpp:965
 msgid "Show replay"
@@ -5184,7 +5037,7 @@ msgstr "Mostrar repetición"
 
 #: src/dialogs.cpp:967
 msgid "Play the embedded replay from the saved game if applicable"
-msgstr ""
+msgstr "Muestra la repetición incluida en el juego guardado si es posible"
 
 #: src/dialogs.cpp:971
 msgid "Cancel orders"
@@ -5193,6 +5046,7 @@ msgstr "Cancelar órdenes"
 #: src/dialogs.cpp:973
 msgid "Cancel any pending unit movements in the saved game"
 msgstr ""
+"Cancela cualquier movimiento pendiente de las unidades en el juego guardado"
 
 #: src/dialogs.cpp:980
 msgid "Delete Save"
@@ -5241,7 +5095,7 @@ msgstr "No se encontró un tipo de líder para la facción $faction"
 
 #: src/flg_manager.cpp:289
 msgid "Cannot obtain genders for invalid leader $leader"
-msgstr ""
+msgstr "No se ha podido obtener el género para el líder no válido $leader"
 
 #: src/format_time_summary.cpp:46 src/reports.cpp:1537
 msgid "%H:%M"
@@ -5264,8 +5118,6 @@ msgid "%b %d"
 msgstr "%d de %b"
 
 #: src/format_time_summary.cpp:65
-#, fuzzy
-#| msgid "%b %d %y"
 msgid "%b %d %Y"
 msgstr "%d de %b del %y"
 
@@ -5274,10 +5126,10 @@ msgid "Invalid color range: "
 msgstr "Rango de color inválido: "
 
 #: src/game_config_manager.cpp:180
-#, fuzzy
-#| msgid "Error loading game configuration files: '"
 msgid "Error loading game configuration files. The game will now exit."
-msgstr "Error cargando archivos de configuración del juego: «"
+msgstr ""
+"Error cargando archivos de configuración de la partida. La partida "
+"finalizará."
 
 #: src/game_config_manager.cpp:279
 msgid "The following add-on had errors and could not be loaded:"
@@ -5291,7 +5143,10 @@ msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
 msgstr[0] ""
+"Por favor, informe sobre esto al autor o mantenedor de este complemento."
 msgstr[1] ""
+"Por favor, informe sobre esto a los correspondientes autores o mantenedores "
+"de estos complementos."
 
 #: src/game_controller.cpp:332 src/game_controller.cpp:921
 #: src/windows_tray_notification.cpp:107
@@ -5309,13 +5164,11 @@ msgstr "El archivo que ha intentado cargar está corrupto: «"
 
 #: src/game_controller.cpp:482
 msgid "File I/O Error while reading the game"
-msgstr "Error de E/S mientras se intentaba cargar la partida"
+msgstr "Error de E/S en el archivo mientras se intentaba cargar la partida"
 
 #: src/game_controller.cpp:484
 msgid "File I/O Error while reading the game: '"
-msgstr ""
-"Mientras se intentaba cargar la partida, se encontró un error de E/S en el "
-"archivo"
+msgstr "Error de E/S en el archivo mientras se intentaba cargar la partida: «"
 
 #: src/game_controller.cpp:534
 msgid ""
@@ -5323,6 +5176,9 @@ msgid ""
 "single-player. It is recommended to load this scenario through the "
 "Multiplayer -> Load Game dialog instead."
 msgstr ""
+"Este es un escenario multijugador. Algunas de sus partes podrían no "
+"funcionar correctamente para un solo jugador. Es recomendable cargar este "
+"escenario utilizando las opciones del menú Multijugador -> Cargar partida."
 
 #: src/game_controller.cpp:534 src/multiplayer.cpp:262
 msgid "Warning"
@@ -5352,10 +5208,8 @@ msgid "The game map could not be loaded: "
 msgstr "El mapa del juego no se ha podido cargar: "
 
 #: src/game_display.cpp:949 src/game_display.cpp:975
-#, fuzzy
-#| msgid "Chat message aging"
 msgid "Chat message"
-msgstr "Duración de mensajes de conversación"
+msgstr "Mensaje de chat"
 
 #: src/game_display.cpp:949 src/game_display.cpp:971
 #: src/playmp_controller.cpp:101
@@ -5391,9 +5245,9 @@ msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
 msgstr ""
-"No se encontró ninguna ubicación válidad para el castillo.  ¿Habrá "
-"demasiadas o pocas ubicaciones de montañas?  (Por favor, verifique el "
-"parámetro «Tamaño máximo de colinas»)"
+"No se encontró ninguna ubicación válida para el castillo. ¿Habrá demasiadas "
+"o pocas ubicaciones de montañas? (Por favor, verifique el parámetro «Tamaño "
+"máximo de colinas»)"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:211 src/multiplayer_lobby.cpp:611
 msgid "Unknown era: $era_id"
@@ -5426,8 +5280,8 @@ msgstr "Turno "
 #: src/gui/dialogs/lobby/lobby_data.cpp:318 src/multiplayer_lobby.cpp:667
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
-msgstr[0] "Posición vacante:"
-msgstr[1] "Posiciones vacantes:"
+msgstr[0] "Puesto vacante:"
+msgstr[1] "Puestos vacantes:"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:332 src/multiplayer_lobby.cpp:692
 msgid "none"
@@ -5476,22 +5330,20 @@ msgid "Quit"
 msgstr "Salir"
 
 #: src/hotkey/command_executor.cpp:509 src/hotkey/command_executor.cpp:671
-#, fuzzy
-#| msgid "Do you really want to dismiss him?"
 msgid "Do you really want to quit?"
-msgstr "¿Está seguro de que quiere expulsarlo?"
+msgstr "¿Está seguro de que desea salir?"
 
 #: src/hotkey/command_executor.cpp:626
 msgid "Map-Screenshot"
-msgstr ""
+msgstr "Captura de mapa"
 
 #: src/hotkey/command_executor.cpp:626
 msgid "Screenshot"
-msgstr ""
+msgstr "Imagen de pantalla"
 
 #: src/hotkey/command_executor.cpp:633
 msgid "Screenshot Done"
-msgstr ""
+msgstr "Captura completada"
 
 #: src/intro.cpp:36
 msgid "The End"
@@ -5568,10 +5420,6 @@ msgstr ""
 "aldea"
 
 #: src/leader_scroll_dialog.cpp:190 src/menu_events.cpp:331
-#, fuzzy
-#| msgid ""
-#| "scenario settings^Gold Per\n"
-#| "Village"
 msgid ""
 "scenario settings^Support Per\n"
 "Village"
@@ -5725,7 +5573,7 @@ msgstr ""
 
 #: src/menu_events.cpp:687
 msgid "You currently can't recall at the highlighted location"
-msgstr "Ahora no puede reincorporar en el lugar resaltado."
+msgstr "Ahora no puede reincorporar en el lugar resaltado"
 
 #: src/menu_events.cpp:699
 msgid "You must have at least 1 gold piece to recall a unit"
@@ -5753,20 +5601,14 @@ msgstr ""
 "turno?"
 
 #: src/menu_events.cpp:847
-#, fuzzy
-#| msgid "Some units have movement left. Do you really want to end your turn?"
 msgid "Some units have not moved. Do you really want to end your turn?"
-msgstr ""
-"Algunas unidades todavía tienen puntos de movimiento. ¿Quiere finalizar su "
-"turno?"
+msgstr "Algunas unidades aún no se han movido. ¿Quiere finalizar su turno?"
 
 #: src/menu_events.cpp:899
 msgid "Rename Unit"
 msgstr "Renombrar unidad"
 
 #: src/menu_events.cpp:900
-#, fuzzy
-#| msgid "Name: "
 msgid "Name:"
 msgstr "Nombre:"
 
@@ -5792,14 +5634,14 @@ msgstr "Búsqueda"
 
 #: src/menu_events.cpp:1530
 msgid "This command is currently unavailable."
-msgstr "Este comando no está disponible actualmente."
+msgstr "Esta orden no está disponible actualmente."
 
 #: src/menu_events.cpp:1536
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
-"Orden «$command» desconocida, ejecute $help_command para mostrar una lista "
+"Orden «$command|» desconocida, ejecute $help_command para mostrar una lista "
 "de órdenes disponibles."
 
 #: src/menu_events.cpp:1554
@@ -5807,8 +5649,8 @@ msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
-"Lista de comandos disponibles y ayuda específica para cada comando. Use "
-"«help all» para incluir los comandos actualmente no disponibles."
+"Lista de órdenes disponibles y ayuda específica para cada orden. Use «help "
+"all» para incluir las órdenes actualmente no disponibles."
 
 #: src/menu_events.cpp:1556
 msgid "do not translate the 'all'^[all|<command>]"
@@ -5852,11 +5694,11 @@ msgstr "alias:"
 
 #: src/menu_events.cpp:1797
 msgid "(A) — admin command"
-msgstr "(A) — comando administrativo"
+msgstr "(A) — orden de administrador"
 
 #: src/menu_events.cpp:1804 src/menu_events.cpp:2013
 msgid "(admin only)"
-msgstr "(sólo personal administrativo)"
+msgstr "(sólo administrador)"
 
 #: src/menu_events.cpp:1824
 msgid ""
@@ -5864,7 +5706,7 @@ msgid ""
 "available commands."
 msgstr ""
 "Envía una petición sin argumentos al servidor.El servidor debería informarle "
-"de los comandos disponibles."
+"de las órdenes disponibles."
 
 #: src/menu_events.cpp:1828
 msgid ""
@@ -5903,7 +5745,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1840
 msgid "Mute/Unmute all observers. (toggles)"
-msgstr "Silenciar/Quitar silencio a todos los observadores."
+msgstr "Silenciar/quitar silencio a todos los observadores. (conmuta)"
 
 #: src/menu_events.cpp:1850
 msgid ""
@@ -5927,7 +5769,7 @@ msgid ""
 "running game you observe or play in."
 msgstr ""
 "Envía un mensaje privado. No se pueden enviar mensajes a jugadores de una "
-"partida en curso que Ud. esté observando o jugando."
+"partida en curso que usted esté observando o jugando."
 
 #: src/menu_events.cpp:1859
 msgid "<nickname> <message>"
@@ -6054,10 +5896,8 @@ msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<bando> [on/off]]"
 
 #: src/menu_events.cpp:2041
-#, fuzzy
-#| msgid "Switch a side to/from AI control."
 msgid "Switch a side to/from idle state."
-msgstr "Cambia un bando al/del control de la IA."
+msgstr "Cambia un bando al/del estado inactivo."
 
 #: src/menu_events.cpp:2044
 msgid "<side> <nickname>"
@@ -6069,11 +5909,11 @@ msgstr "Asigna el control de un bando a otro jugador u observador."
 
 #: src/menu_events.cpp:2046
 msgid "<side>"
-msgstr ""
+msgstr "<bando>"
 
 #: src/menu_events.cpp:2046
 msgid "Query the controller status of a side."
-msgstr ""
+msgstr "Indagar el estado del jugador de uno de los bandos."
 
 #: src/menu_events.cpp:2048
 msgid "Clear chat history."
@@ -6095,7 +5935,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2055
 msgid "Show fps."
-msgstr "Mostrar FPS"
+msgstr "Mostrar FPS."
 
 #: src/menu_events.cpp:2057
 msgid "Save game."
@@ -6134,7 +5974,7 @@ msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
-"Cambie el número de turno (y el tiempo en el día), o auméntelo por uno si no "
+"Cambie el número de turno (y el tiempo en el día), o auméntelo en uno si no "
 "hay ningún número especificado."
 
 #: src/menu_events.cpp:2076
@@ -6176,8 +6016,7 @@ msgstr "Otorga privilegios superiores a la escritura Lua."
 #: src/menu_events.cpp:2088
 msgid "Set the command used by the custom command hotkey"
 msgstr ""
-"Establece el comando utilizado por la secuencia de acceso directo "
-"personalizada"
+"Establece la orden utilizada por la secuencia de acceso directo personalizada"
 
 #: src/menu_events.cpp:2091
 msgid "Invoke a dialog allowing changing control of MP sides."
@@ -6199,7 +6038,7 @@ msgstr "<nombre>[=<orden>]"
 
 #: src/menu_events.cpp:2099
 msgid "Set or show alias to a command"
-msgstr "Establecer o mostrar un alias para un comando"
+msgstr "Establecer o mostrar un alias para una orden"
 
 #: src/menu_events.cpp:2101
 msgid "<var>=<value>"
@@ -6225,7 +6064,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2112
 msgid "Discover all units in help."
-msgstr "Descubrir todas las unidades en los archivos de ayuda"
+msgstr "Descubrir todas las unidades en los archivos de ayuda."
 
 #: src/menu_events.cpp:2114
 msgid "'Undiscover' all units in help."
@@ -6271,7 +6110,7 @@ msgstr "Accede al diálogo de opciones del modo pizarra."
 
 #: src/menu_events.cpp:2179
 msgid "Unknown debug level: '$level'."
-msgstr "Nivel de depuración desconocido: «$level»."
+msgstr "Nivel de depuración desconocido: «$level|»."
 
 #: src/menu_events.cpp:2181 src/menu_events.cpp:2190
 msgid "error"
@@ -6279,11 +6118,11 @@ msgstr "error"
 
 #: src/menu_events.cpp:2188
 msgid "Unknown debug domain: '$domain'."
-msgstr "Dominio de depuración desconocido: «$domain»."
+msgstr "Dominio de depuración desconocido: «$domain|»."
 
 #: src/menu_events.cpp:2197
 msgid "Switched domain: '$domain' to level: '$level'."
-msgstr "Dominio cambiado: «$domain» al nivel: «$level»."
+msgstr "Dominio cambiado: «$domain|» al nivel: «$level|»."
 
 #: src/menu_events.cpp:2268
 msgid "whisper to $receiver"
@@ -6358,49 +6197,39 @@ msgstr "estableciendo $var a $value"
 
 #: src/menu_events.cpp:2499
 msgid "requesting information for user $nick"
-msgstr "solicitando información del usuario $nick."
+msgstr "solicitando información del usuario $nick"
 
 #: src/menu_events.cpp:2616
-#, fuzzy
-#| msgid "Couldn't find label or unit containing the string '$search'."
 msgid "Could not find label or unit containing the string ‘$search’."
-msgstr "No se encontró una etiqueta o unidad con la cadena «$search»."
+msgstr "No se encontró una etiqueta o unidad con la cadena «$search|»."
 
 #: src/menu_events.cpp:2655
 msgid "Can't droid invalid side: '$side'."
-msgstr "No se puede tomar el control del bando inválido: «$side»."
+msgstr "No se puede automatizar el control del bando inválido: «$side|»."
 
 #: src/menu_events.cpp:2660 src/menu_events.cpp:2694
 msgid "Can't droid networked side: '$side'."
-msgstr "No se puede tomar el control del bando en red: «$side»."
+msgstr "No se puede automatizar el control del bando en red: «$side|»."
 
 #: src/menu_events.cpp:2689
-#, fuzzy
-#| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle invalid side: '$side'."
-msgstr "No se puede tomar el control del bando inválido: «$side»."
+msgstr "No se puede poner inactivo el bando inválido: «$side|»."
 
 #: src/menu_events.cpp:2741
 msgid "Can't change control of invalid side: '$side'."
-msgstr "No se puede cambiar el control del bando inválido: «$side»."
+msgstr "No se puede cambiar el control del bando inválido: «$side|»."
 
 #: src/menu_events.cpp:2747
 msgid "Can't change control of out-of-bounds side: '$side'."
-msgstr ""
-"No se puede cambiar el control fuera de los límites del bando: «$side»."
+msgstr "No se puede cambiar el control del bando sin vincular: «$side|»."
 
 #: src/menu_events.cpp:2762
-#, fuzzy
-#| msgid "Can't change control of invalid side: '$side'."
 msgid "Can't query control of invalid side: '$side'."
-msgstr "No se puede cambiar el control del bando inválido: «$side»."
+msgstr "No se puede indagar por el control del bando inválido: «$side|»."
 
 #: src/menu_events.cpp:2768
-#, fuzzy
-#| msgid "Can't change control of out-of-bounds side: '$side'."
 msgid "Can't query control of out-of-bounds side: '$side'."
-msgstr ""
-"No se puede cambiar el control fuera de los límites del bando: «$side»."
+msgstr "No se puede indagar por el control del bando sin vincular: «$side|»."
 
 #: src/menu_events.cpp:2882
 msgid "Layers"
@@ -6424,7 +6253,7 @@ msgstr "¡Modo de depuración desactivado!"
 
 #: src/menu_events.cpp:3021
 msgid "Unsafe Lua scripts."
-msgstr "Escritura Lua insegura."
+msgstr "Automatizaciones de Lua inseguras."
 
 #: src/menu_events.cpp:3022
 msgid ""
@@ -6434,7 +6263,7 @@ msgid ""
 msgstr ""
 "Está a punto de abrir una zona insegura, que infringe las normas de "
 "seguridad y que le recomendamos que no haga, en Wesnoth. ¿Está seguro que "
-"desea continuar?  (Si usted ha descargado o piensa descargar algún "
+"desea continuar? (Si usted ha descargado o piensa descargar algún "
 "complemento a través de este medio, ¡no acepte instalarlo! Esto podría "
 "causar daños irreparables en su computadora. ¡Está siendo advertido!)"
 
@@ -6446,13 +6275,14 @@ msgstr "¡Modo inseguro activado!"
 msgid "Variable not found"
 msgstr "Variable no encontrada"
 
+# Es un elemento del WML. No se debe traducir  lawful, neutral, chaotic, o liminal.
 #: src/menu_events.cpp:3119
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr ""
-"Alineamiento inválido: «$alignment», es necesario que sea «lawful», "
-"«neutral», «chaotic» o «liminal»."
+"Invalid alignment: '$alignment', tiene que ser lawful, neutral, chaotic, o "
+"liminal."
 
 #: src/menu_events.cpp:3175
 msgid "Do you wish to clear all of your discovered units from help?"
@@ -6486,15 +6316,12 @@ msgid "prompt^Command:"
 msgstr "Orden:"
 
 #: src/mouse_events.cpp:837
-#, fuzzy
-#| msgid ""
-#| "You cannot move your leader away from the keep with some planned recruits "
-#| "left."
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
 msgstr ""
-"No puede mover a su líder del torreón si tiene algunos reclutas planeados."
+"No puede mover a su líder fuera del torreón si tiene algunos reclutamientos "
+"o reincorporaciones planeadas."
 
 #: src/mouse_events.cpp:1018 src/mouse_events.cpp:1036
 msgid "Attack Enemy"
@@ -6505,36 +6332,33 @@ msgid "Choose weapon:"
 msgstr "Escoger arma:"
 
 #: src/mp_depcheck.cpp:483
-#, fuzzy
-#| msgid "Install dependencies"
 msgid "Failed to resolve dependencies"
-msgstr "Instalar archivos de dependencia"
+msgstr "Error al resolver dependencias de archivo"
 
 #: src/mp_depcheck.cpp:509
 msgid "Scenario can't be activated. Some dependencies are missing: "
 msgstr ""
+"El escenario no se puede activar. Se han perdido algunas dependencias: "
 
 #: src/mp_depcheck.cpp:565 src/mp_depcheck.cpp:688
-#, fuzzy
-#| msgid "No eras found."
 msgid "No compatible eras found."
-msgstr "Ninguna era encontrada."
+msgstr "No se han encontrado eras compatibles."
 
 #: src/mp_depcheck.cpp:581
 msgid "Era can't be activated. Some dependencies are missing: "
-msgstr ""
+msgstr "La era no se puede activar. Se han perdido algunas dependencias: "
 
 #: src/mp_depcheck.cpp:634 src/mp_depcheck.cpp:725
-#, fuzzy
-#| msgid "No multiplayer sides found"
 msgid "No compatible scenarios found."
-msgstr "No se ha encontrado ningún bando multijugador"
+msgstr "No se ha encontrado ningún escenario compatible."
 
 #: src/mp_depcheck.cpp:663
 msgid ""
 "Not all of the chosen modifications are compatible. Some of them will be "
 "disabled."
 msgstr ""
+"No son compatibles todas las modificaciones seleccionadas. Algunas serán "
+"desactivadas."
 
 #: src/mp_game_utils.cpp:109
 msgid "Cannot find era $era"
@@ -6557,20 +6381,16 @@ msgid "Reading from Server..."
 msgstr "Recibiendo datos del servidor..."
 
 #: src/multiplayer.cpp:181
-#, fuzzy
-#| msgid ""
-#| "The server requires version '$version1' while you are using version "
-#| "'$version2'"
 msgid ""
 "The server accepts versions '$version1' while you are using version "
 "'$version2'"
 msgstr ""
-"El servidor requiere una versión «$version1», y usted está usando la versión "
-"«$version2»"
+"El servidor acepta versiones «$version1|», y usted está usando la versión "
+"«$version2|»"
 
 #: src/multiplayer.cpp:192
 msgid "Server-side redirect loop"
-msgstr "Bucle en la redirección del servidor"
+msgstr "El servidor desvió el bucle"
 
 #: src/multiplayer.cpp:251
 msgid ""
@@ -6578,8 +6398,8 @@ msgid ""
 "nickname until you activate your account via email or ask an administrator "
 "to do it for you."
 msgstr ""
-"El nombre de usuario «$nick» está inactivo. Usted no es propietario de dicho "
-"nombre de usuario hasta que active la cuenta por medio de un correo "
+"El nombre de usuario «$nick|» está inactivo. Usted no es propietario de "
+"dicho nombre de usuario hasta que active la cuenta por medio de un correo "
 "electrónico, o le pida a un administrador que lo haga por usted."
 
 #: src/multiplayer.cpp:260
@@ -6610,7 +6430,7 @@ msgstr ""
 #: src/multiplayer.cpp:355
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
-"El nombre de usuario «$nick» es demasiado largo. Los nombres de usuario "
+"El nombre de usuario «$nick|» es demasiado largo. Los nombres de usuario "
 "deben tener como máximo 20 caracteres."
 
 #: src/multiplayer.cpp:358
@@ -6655,18 +6475,17 @@ msgid "You have made too many login attempts."
 msgstr "Ha realizado demasiados intentos de acceso."
 
 #: src/multiplayer_configure.cpp:47
-#, fuzzy
-#| msgid "Confirm"
 msgid "Configure Game"
-msgstr "Confirmar"
+msgstr "Configurar juego"
 
 #: src/multiplayer_configure.cpp:56
 msgid "Time limit"
 msgstr "Límite de tiempo"
 
+# Según el contexto
 #: src/multiplayer_configure.cpp:71
 msgid "Generic"
-msgstr ""
+msgstr "Genérico"
 
 #: src/multiplayer_configure.cpp:72
 msgid "Name of game:"
@@ -6697,10 +6516,8 @@ msgid "Set Password..."
 msgstr "Contraseña..."
 
 #: src/multiplayer_configure.cpp:86
-#, fuzzy
-#| msgid "Test scenario"
 msgid "Select an entry point:"
-msgstr "Escenario de pruebas"
+msgstr "Seleccionar un punto de entrada:"
 
 #: src/multiplayer_configure.cpp:104
 msgid "The maximum number of turns the game can last"
@@ -6731,10 +6548,8 @@ msgid "The amount of income each village yields per turn"
 msgstr "La cantidad de oro que proporciona cada aldea por turno"
 
 #: src/multiplayer_configure.cpp:141
-#, fuzzy
-#| msgid "The maximum number of turns the game can last"
 msgid "The number of unit levels each village can support"
-msgstr "El máximo número de turnos que puede durar la partida"
+msgstr "El número de niveles de unidad que cada población puede sufragar"
 
 #: src/multiplayer_configure.cpp:147
 msgid "The amount of experience a unit needs to advance"
@@ -6815,8 +6630,6 @@ msgid "Village gold: "
 msgstr "Oro por aldea: "
 
 #: src/multiplayer_configure.cpp:395
-#, fuzzy
-#| msgid "Village gold: "
 msgid "Village support: "
 msgstr "Oro por aldea: "
 
@@ -6853,22 +6666,16 @@ msgid "Player/Type"
 msgstr "Jugador/Tipo"
 
 #: src/multiplayer_connect.cpp:372
-#, fuzzy
-#| msgid "Faction"
 msgid "Faction/Name"
-msgstr "Facción"
+msgstr "Facción/nombre"
 
 #: src/multiplayer_connect.cpp:374
-#, fuzzy
-#| msgid "Team/Gender"
 msgid "Leader/Gender"
-msgstr "Equipo/Género"
+msgstr "Líder/género"
 
 #: src/multiplayer_connect.cpp:376
-#, fuzzy
-#| msgid "Color"
 msgid "Team/Color"
-msgstr "Color"
+msgstr "Equipo/color"
 
 #: src/multiplayer_connect.cpp:383
 msgid "I’m Ready"
@@ -6940,20 +6747,16 @@ msgid "Create Game"
 msgstr "Crear partida"
 
 #: src/multiplayer_create.cpp:68
-#, fuzzy
-#| msgid "Filter: "
 msgid "Filter:"
-msgstr "Filtro: "
+msgstr "Filtro:"
 
 #: src/multiplayer_create.cpp:69 src/multiplayer_create.cpp:381
 msgid "Number of players: any"
-msgstr ""
+msgstr "Número de jugadores: cualquiera"
 
 #: src/multiplayer_create.cpp:70
-#, fuzzy
-#| msgid "Random start time"
 msgid "Random map options:"
-msgstr "Tiempo inicial al azar"
+msgstr "Opciones de mapa aleatorio:"
 
 #: src/multiplayer_create.cpp:71 src/multiplayer_lobby.cpp:602
 msgid "Era:"
@@ -6964,18 +6767,16 @@ msgid ""
 "No eras available\n"
 "for this game."
 msgstr ""
+"No hay eras disponibles \n"
+"para esta partida."
 
 #: src/multiplayer_create.cpp:74 src/multiplayer_lobby.cpp:622
-#, fuzzy
-#| msgid "Disable notifications"
 msgid "Modifications:"
-msgstr "Desactivar notificaciones"
+msgstr "Modificaciones:"
 
 #: src/multiplayer_create.cpp:78
-#, fuzzy
-#| msgid "Next Turn"
 msgid "Next"
-msgstr "Siguiente turno"
+msgstr "Siguiente"
 
 #: src/multiplayer_create.cpp:80
 msgid "Regenerate"
@@ -6991,43 +6792,31 @@ msgstr "Cargar partida..."
 
 #: src/multiplayer_create.cpp:83 src/multiplayer_create.cpp:278
 msgid "Activate"
-msgstr ""
+msgstr "Activar"
 
 #: src/multiplayer_create.cpp:103
-#, fuzzy
-#| msgid "End Scenario"
 msgid "Scenarios"
-msgstr "Finalizar escenario"
+msgstr "Escenarios"
 
 #: src/multiplayer_create.cpp:104
-#, fuzzy
-#| msgid "Campaign Design"
 msgid "Campaigns"
-msgstr "Diseño de campañas"
+msgstr "Campañas"
 
 #: src/multiplayer_create.cpp:105
-#, fuzzy
-#| msgid "Close"
 msgid "User Maps"
-msgstr "Cerrar"
+msgstr "Mapas de usuario"
 
 #: src/multiplayer_create.cpp:106
-#, fuzzy
-#| msgid "End Scenario"
 msgid "User Scenarios"
-msgstr "Finalizar escenario"
+msgstr "Escenarios de usuario"
 
 #: src/multiplayer_create.cpp:107
-#, fuzzy
-#| msgid "Random"
 msgid "Random Maps"
-msgstr "Aleatorio"
+msgstr "Mapas aleatorios"
 
 #: src/multiplayer_create.cpp:124 src/multiplayer_create.cpp:125
-#, fuzzy
-#| msgid "No eras found."
 msgid "No games found."
-msgstr "Ninguna era encontrada."
+msgstr "No se ha encontrado ninguna partida."
 
 #: src/multiplayer_create.cpp:162
 msgid "No eras found."
@@ -7038,24 +6827,20 @@ msgid "No eras found"
 msgstr "Ninguna era encontrada"
 
 #: src/multiplayer_create.cpp:185
-#, fuzzy
-#| msgid "Disable notifications"
 msgid ""
 "Modifications:\n"
 "None found."
-msgstr "Desactivar notificaciones"
+msgstr ""
+"Modificaciones:\n"
+"No se ha encontrado ninguna."
 
 #: src/multiplayer_create.cpp:187 src/multiplayer_create.cpp:276
-#, fuzzy
-#| msgid "Debug mode activated!"
 msgid "Deactivate"
-msgstr "¡Modo de depuración activado!"
+msgstr "Desactivado"
 
 #: src/multiplayer_create.cpp:245
-#, fuzzy
-#| msgid "The map is invalid."
 msgid "The level is invalid."
-msgstr "El mapa es inválido"
+msgstr "El nivel no es válido."
 
 #: src/multiplayer_create.cpp:330
 msgid "Players: "
@@ -7066,36 +6851,28 @@ msgid "Size: "
 msgstr "Tamaño: "
 
 #: src/multiplayer_create.cpp:383
-#, fuzzy
-#| msgid "Name of game:"
 msgid "Number of players: "
-msgstr "Nombre de la partida:"
+msgstr "Número de jugadores: "
 
 #: src/multiplayer_create.cpp:490 src/unit_types.cpp:782
 msgid "No description available."
 msgstr "No hay una descripción disponible."
 
 #: src/multiplayer_create_engine.cpp:139 src/multiplayer_create_engine.cpp:797
-#, fuzzy
-#| msgid "The game could not be loaded: "
 msgid "Map could not be loaded: "
-msgstr "La partida no se ha podido cargar: "
+msgstr "El mapa no se ha podido cargar: "
 
 #: src/multiplayer_create_engine.cpp:143
-#, fuzzy
-#| msgid "The game could not be loaded: "
 msgid "Map could not be loaded."
-msgstr "La partida no se ha podido cargar: "
+msgstr "El mapa no se ha podido cargar."
 
 #: src/multiplayer_create_engine.cpp:165
-#, fuzzy
-#| msgid " No help available."
 msgid "not available."
-msgstr " No hay ayuda disponible."
+msgstr "no disponible."
 
 #: src/multiplayer_create_engine.cpp:217
 msgid "User made map"
-msgstr ""
+msgstr "Mapa creado por el usuario"
 
 #: src/multiplayer_lobby.cpp:128
 msgid "--no games open--"
@@ -7106,26 +6883,21 @@ msgid " (Unknown Era)"
 msgstr " (Era desconocida)"
 
 #: src/multiplayer_lobby.cpp:486
-#, fuzzy
-#| msgid "End Scenario"
 msgid "Scenario:"
-msgstr "Finalizar escenario"
+msgstr "Escenario:"
 
 #: src/multiplayer_lobby.cpp:526
-#, fuzzy
-#| msgid "Campaign Design"
 msgid "Campaign:"
-msgstr "Diseño de campañas"
+msgstr "Campaña:"
 
 #: src/multiplayer_lobby.cpp:557
-#, fuzzy
-#| msgid "Campaign: $campaign_name"
 msgid "Unknown campaign: $campaign_id"
-msgstr "Campaña: $campaign_name"
+msgstr "Campaña desconocida: $campaign_id"
 
+# Desconozco el contexto. Podría ser perdida.
 #: src/multiplayer_lobby.cpp:634
 msgid " (missing)"
-msgstr ""
+msgstr " (perdido)"
 
 #: src/multiplayer_lobby.cpp:670 src/multiplayer_lobby.cpp:1017
 msgid "Password Required"
@@ -7147,9 +6919,10 @@ msgstr "Unirse a la partida"
 msgid "Quick replays"
 msgstr "Repetición rápida"
 
+# tengo que verlo en el menú o no lo entiendo bien
 #: src/multiplayer_lobby.cpp:862
 msgid "Enter blindfolded"
-msgstr ""
+msgstr "Indicar abandono por caída"
 
 #: src/multiplayer_lobby.cpp:863
 msgid "Preferences"
@@ -7165,7 +6938,7 @@ msgstr "Invertir"
 
 #: src/multiplayer_lobby.cpp:867
 msgid "Vacant slots"
-msgstr "Posiciones vacantes"
+msgstr "Puestos vacantes"
 
 #: src/multiplayer_lobby.cpp:868
 msgid "Friends in game"
@@ -7181,7 +6954,7 @@ msgstr "Saltar rápidamente al turno activo cuando se está observando"
 
 #: src/multiplayer_lobby.cpp:880
 msgid "Do not show replay turns"
-msgstr ""
+msgstr "No mostrar la repetición de los turnos"
 
 #: src/multiplayer_lobby.cpp:883
 msgid ""
@@ -7202,20 +6975,20 @@ msgstr ""
 #: src/multiplayer_lobby.cpp:890
 msgid "Only show games that have at least one vacant slot"
 msgstr ""
-"Solamente muestra partidas que contengan por lo menos un puesto vacante."
+"Solamente muestra partidas que contengan por lo menos un puesto vacante"
 
 #: src/multiplayer_lobby.cpp:894
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr ""
 "Solamente muestra partidas que están siendo jugadas u observadas por lo "
-"menos por uno de sus amigos."
+"menos por uno de sus amigos"
 
 #: src/multiplayer_lobby.cpp:900
 msgid "Only show games whose title or description contain the entered text"
 msgstr ""
 "Solamente muestra partidas que contengan el título o la descripción en el "
-"texto introducido."
+"texto introducido"
 
 #: src/multiplayer_lobby.cpp:1018
 msgid "Joining this game requires a password."
@@ -7315,23 +7088,19 @@ msgid "Auto-Save"
 msgstr "Guardado automático"
 
 #: src/play_controller.cpp:1178
-#, fuzzy
-#| msgid "Back to turn "
 msgid "Back to Turn "
 msgstr "Volver al turno "
 
 #: src/play_controller.cpp:1186
-#, fuzzy
-#| msgid "Back to turn "
 msgid "Back to Start"
-msgstr "Volver al turno "
+msgstr "Volver al comienzo"
 
 #: src/play_controller.cpp:1444
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
-"La partida no está siendo sincronizada correctamente.  No tiene sentido "
+"La partida no está siendo sincronizada correctamente. No tiene sentido "
 "continuar con la misma. ¿Desea guardar la partida?"
 
 #: src/play_controller.cpp:1445 src/replay_controller.cpp:335
@@ -7340,17 +7109,15 @@ msgstr "Detalles del error:"
 
 #: src/play_controller.cpp:1471
 msgid "Accelerated speed enabled!"
-msgstr ""
+msgstr "¡Movimiento rápido activado!"
 
 #: src/play_controller.cpp:1472
-#, fuzzy
-#| msgid "(press $hotkey to keep moving)"
 msgid "(press $hk to disable)"
-msgstr "(presione $hotkey para seguir moviéndose)"
+msgstr "(presione $hotkey para deshabilitarlo)"
 
 #: src/play_controller.cpp:1476
 msgid "Accelerated speed disabled!"
-msgstr ""
+msgstr "¡Movimiento rápido desactivado!"
 
 #: src/playcampaign.cpp:118
 msgid "Scenario Report"
@@ -7409,19 +7176,17 @@ msgid ""
 "\n"
 "Do you want to save an error log of your game?"
 msgstr ""
-"El juego no está sincronizado y no se puede continuar.  Hay una serie de "
+"El juego no está sincronizado y no se puede continuar. Hay una serie de "
 "razones por lo que esto podría suceder: 1) usted u otro jugador han "
 "modificado las opciones del juego (lo que puede significar que ¡Alguien está "
-"tratando de hacer trampas!)  2) un error en el juego (lo que es menos "
+"tratando de hacer trampas!) 2) un error en el juego (lo que es menos "
 "probable).\n"
 "\n"
 "¿Desea guardar un registro de errores de la partida?"
 
 #: src/playsingle_controller.cpp:226
-#, fuzzy
-#| msgid "(press $hotkey to keep moving)"
 msgid "(press $hotkey to deactivate)"
-msgstr "(presione $hotkey para seguir moviéndose)"
+msgstr "(presione $hotkey para desactivarlo)"
 
 #: src/playsingle_controller.cpp:272
 msgid "Remaining gold: "
@@ -7515,7 +7280,7 @@ msgstr "Es el turno de $name"
 
 #: src/playturn.cpp:255
 msgid "Replace with AI"
-msgstr "Reemplazar con inteligencia artificial"
+msgstr "Reemplazar por la IA"
 
 #: src/playturn.cpp:256
 msgid "Replace with local player"
@@ -7523,13 +7288,11 @@ msgstr "Reemplazar con jugador local"
 
 #: src/playturn.cpp:257
 msgid "Set side to idle"
-msgstr ""
+msgstr "Marcar bando como inactivo"
 
 #: src/playturn.cpp:258
-#, fuzzy
-#| msgid "Abort game"
 msgid "Save and abort game"
-msgstr "Terminar la partida"
+msgstr "Guardar y abortar la partida"
 
 #: src/playturn.cpp:266 src/playturn.cpp:280
 msgid "Replace with $player"
@@ -7550,11 +7313,11 @@ msgstr ""
 
 #: src/reports.cpp:159 src/savegame.cpp:842
 msgid "Name: "
-msgstr "Nombre:"
+msgstr "Nombre: "
 
 #: src/reports.cpp:179
 msgid "Type: "
-msgstr "Tipo:"
+msgstr "Tipo: "
 
 #: src/reports.cpp:199
 msgid "Race: "
@@ -7562,7 +7325,7 @@ msgstr "Raza: "
 
 #: src/reports.cpp:249
 msgid "Level: "
-msgstr "Nivel:"
+msgstr "Nivel: "
 
 #: src/reports.cpp:252
 msgid "No advancement"
@@ -7570,11 +7333,11 @@ msgstr "Ningún avance"
 
 #: src/reports.cpp:254
 msgid "Advances to:"
-msgstr "Se convierte en: "
+msgstr "Se convierte en:"
 
 #: src/reports.cpp:294
 msgid "Trait: "
-msgstr "Rasgo:"
+msgstr "Rasgo: "
 
 #: src/reports.cpp:317
 msgid "invisible: "
@@ -7614,12 +7377,13 @@ msgstr ""
 "Esta unidad está envenenada. Perderá 8 PV en cada turno hasta que encuentre "
 "una cura para el veneno en una aldea o una unidad amiga con la habilidad de "
 "«curar».\n"
+"\n"
 "Las unidades no pueden morir envenenadas. El veneno no afectará por debajo "
 "de 1 PV."
 
 #: src/reports.cpp:329
 msgid "petrified: "
-msgstr "petrificado:"
+msgstr "petrificado: "
 
 #: src/reports.cpp:330
 msgid "This unit has been petrified. It may not move or attack."
@@ -7631,11 +7395,11 @@ msgstr "Alineamiento: "
 
 #: src/reports.cpp:402
 msgid "Ability: "
-msgstr "Habilidad:"
+msgstr "Habilidad: "
 
 #: src/reports.cpp:404 src/reports.cpp:828
 msgid " (inactive)"
-msgstr ""
+msgstr " (inactivo)"
 
 #: src/reports.cpp:456
 msgid "Resistances: "
@@ -7651,7 +7415,7 @@ msgstr "Modificador de experiencia: "
 
 #: src/reports.cpp:535
 msgid "Terrain: "
-msgstr "Terreno:"
+msgstr "Terreno: "
 
 # No está claro a qué se refiere la traducción en inglés.
 #: src/reports.cpp:552
@@ -7665,17 +7429,15 @@ msgstr "mínimo"
 
 #: src/reports.cpp:557
 msgid "Defense: "
-msgstr "Defensa:"
+msgstr "Defensa: "
 
 #: src/reports.cpp:580
-#, fuzzy
-#| msgid "Version: "
 msgid "vision: "
-msgstr "Versión: "
+msgstr "visión: "
 
 #: src/reports.cpp:608
 msgid "Movement Costs:"
-msgstr ""
+msgstr "Costes de movimiento:"
 
 #: src/reports.cpp:698 src/reports.cpp:913 src/reports.cpp:925
 msgid "Weapon: "
@@ -7683,25 +7445,23 @@ msgstr "Arma: "
 
 #: src/reports.cpp:699 src/reports.cpp:914
 msgid "Damage: "
-msgstr "Daño:"
+msgstr "Daño: "
 
 #: src/reports.cpp:703
 msgid "Base damage: "
-msgstr "Daño base:"
+msgstr "Daño base: "
 
 #: src/reports.cpp:705 src/reports.cpp:739 src/reports.cpp:749
-#, fuzzy
-#| msgid "Weapon special: "
 msgid "With specials: "
-msgstr "Especial de arma:"
+msgstr "Con especiales: "
 
 #: src/reports.cpp:708
 msgid "Time of day: "
-msgstr "Tiempo del día:"
+msgstr "Tiempo del día: "
 
 #: src/reports.cpp:712
 msgid "Leadership: "
-msgstr "Liderazgo:"
+msgstr "Liderazgo: "
 
 #: src/reports.cpp:716
 msgid "Slowed: "
@@ -7709,31 +7469,28 @@ msgstr "Ralentizado: "
 
 #: src/reports.cpp:720
 msgid "Attacks: "
-msgstr "Ataques:"
+msgstr "Ataques: "
 
 #: src/reports.cpp:724
-#, fuzzy
-#| msgid "Turn bonus: "
 msgid "Max swarm bonus: "
-msgstr "Añadido por turno: "
+msgstr "Bono máximo por enjambre: "
 
 #: src/reports.cpp:725 src/reports.cpp:744
 msgid "Swarm: "
-msgstr "Enjambre:"
+msgstr "Enjambre: "
 
 #: src/reports.cpp:726 src/reports.cpp:737 src/reports.cpp:748
 msgid "Base attacks: "
-msgstr "Ataques básicos:"
+msgstr "Ataques básicos: "
 
 #: src/reports.cpp:732
-#, fuzzy
-#| msgid "Weapon special: "
 msgid "Specials: "
-msgstr "Especial de arma:"
+msgstr "Especiales: "
 
+# No se en que contexto está
 #: src/reports.cpp:742
 msgid "Subject to swarm: "
-msgstr ""
+msgstr "Afectado por el enjambre: "
 
 #: src/reports.cpp:761
 msgid "Weapon range: "
@@ -7757,15 +7514,13 @@ msgstr "Esquivar:"
 
 #: src/reports.cpp:826
 msgid "Weapon special: "
-msgstr "Especial de arma:"
+msgstr "Especial de arma: "
 
 #: src/reports.cpp:897
 msgid "None"
 msgstr "Ninguno"
 
 #: src/reports.cpp:1131 src/reports.cpp:1181
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful units: "
 msgstr "Unidades legales: "
 
@@ -7796,46 +7551,36 @@ msgstr ""
 "modos.\n"
 
 #: src/savegame.cpp:604
-#, fuzzy
-#| msgid "This save is from a version too old to be loaded."
 msgid ""
 "The save has corrupt version information ($version_number|) and cannot be "
 "loaded."
 msgstr ""
-"Esta partida guardada es de una versión demasiado antigua como para poder "
-"ser cargada."
+"Esta partida guardada tiene corrupta la información de versión "
+"($version_number|) y no puede ser cargada."
 
 #: src/savegame.cpp:627
-#, fuzzy
-#| msgid "This save is from a version too old to be loaded."
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
 msgstr ""
-"Esta partida guardada es de una versión demasiado antigua como para poder "
-"ser cargada."
+"Esta partida guardada es de una versión antigua no soportada "
+"($version_number|) y no se puede cargar."
 
 #: src/savegame.cpp:636
-#, fuzzy
-#| msgid ""
-#| "This save is from a different version of the game. Do you want to try to "
-#| "load it?"
 msgid ""
 "This save is from a different version of the game ($version_number|). Do you "
 "wish to try to load it?"
 msgstr ""
-"Esta partida guardada es de otra versión del juego. ¿Quiere intentar "
-"cargarla igualmente?"
+"Esta partida guardada es de otra versión del juego ($version_number|). "
+"¿Quiere intentar cargarla igualmente?"
 
 #: src/savegame.cpp:693
-#, fuzzy
-#| msgid "This is not a multiplayer save"
 msgid "This is not a multiplayer save."
-msgstr "Ésta no es una partida guardada en modo multijugador"
+msgstr "Ésta no es una partida guardada de multijugador."
 
 #: src/savegame.cpp:760
 msgid "The game could not be saved: "
-msgstr "La partida no se ha podido guardar:"
+msgstr "La partida no se ha podido guardar: "
 
 #: src/savegame.cpp:842
 msgid "Save already exists. Do you want to overwrite it?"
@@ -7846,23 +7591,19 @@ msgid "Overwrite?"
 msgstr "¿Sobrescribir?"
 
 #: src/savegame.cpp:853
-#, fuzzy
-#| msgid "Save names should not end on '.gz'. Please choose a different name."
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr ""
-"El nombre de la partida guardada no puede acabar en «.gz». Por favor escoja "
-"un nombre diferente."
+"Los nombres de los ficheros a guardar no deberían terminar en '.gz' o '."
+"bz2'. Por favor, cambie la extensión."
 
 #: src/savegame.cpp:919
 msgid "Saved"
 msgstr "Guardado"
 
 #: src/savegame.cpp:919
-#, fuzzy
-#| msgid "The game has been saved"
 msgid "The game has been saved."
-msgstr "Se ha guardado la partida"
+msgstr "Se ha guardado la partida."
 
 #: src/savegame.cpp:950 src/savegame.cpp:971
 msgid "Could not write to file"
@@ -7879,7 +7620,7 @@ msgstr "repetición"
 #: src/savegame.cpp:1032
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
-"El juego no se ha podido guardar automáticamente. Por favor, guárde "
+"El juego no se ha podido guardar automáticamente. Por favor, guárdelo "
 "manualmente."
 
 #: src/savegame.cpp:1081
@@ -7891,18 +7632,16 @@ msgid "Unexpected characters at line start"
 msgstr "Caracteres inesperados al comienzo de línea"
 
 #: src/serialization/parser.cpp:153
-#, fuzzy
-#| msgid "Missing closing tag for tag $tag at $pos"
 msgid "Missing closing tag for tag [$tag]"
-msgstr "Falta la etiqueta de cierre de la etiqueta $tag en $pos"
+msgstr "Falta la etiqueta de cierre correspondiente a la etiqueta [$tag]"
 
 #: src/serialization/parser.cpp:154
 msgid "expected at $pos"
-msgstr ""
+msgstr "esperado en $pos"
 
 #: src/serialization/parser.cpp:154 src/serialization/parser.cpp:218
 msgid "opened at $pos"
-msgstr ""
+msgstr "abierto en $pos"
 
 #: src/serialization/parser.cpp:167
 msgid "Unterminated [element] tag"
@@ -7929,18 +7668,14 @@ msgid "Unexpected closing tag"
 msgstr "Cierre de etiqueta inesperado"
 
 #: src/serialization/parser.cpp:217
-#, fuzzy
-#| msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgid "Found invalid closing tag [/$tag2] for tag [$tag1]"
 msgstr ""
-"Se ha encontrado una etiqueta de cierre inválida $tag2 de la etiqueta $tag1 "
-"(abierta en la posición $pos)"
+"Se ha encontrado una etiqueta de cierre inválida [/$tag2] para la etiqueta "
+"[$tag1]"
 
 #: src/serialization/parser.cpp:218
-#, fuzzy
-#| msgid "Close"
 msgid "closed at $pos"
-msgstr "Cerrar"
+msgstr "cerrada en $pos"
 
 #: src/serialization/parser.cpp:247 src/serialization/parser.cpp:259
 msgid "Empty variable name"
@@ -7958,13 +7693,11 @@ msgstr "Cadena entrecomillada sin terminar"
 
 #: src/serialization/parser.cpp:378
 msgid "at $pos"
-msgstr ""
+msgstr "en $pos"
 
 #: src/serialization/parser.cpp:392
-#, fuzzy
-#| msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgid "Value: '$value' Previous: '$previous_value'"
-msgstr "$error, valor «$value», previo «$previous_value» en $pos"
+msgstr "Valor: '$value' Previo: '$previous_value'"
 
 #: src/serialization/string_utils.cpp:568
 msgid "prefix_milli^m"
@@ -8063,22 +7796,16 @@ msgid "Details"
 msgstr "Detalles"
 
 #: src/statistics_dialog.cpp:169
-#, fuzzy
-#| msgid "Test scenario"
 msgid "Select Scenario"
-msgstr "Escenario de pruebas"
+msgstr "Seleccionar escenario"
 
 #: src/statistics_dialog.cpp:225 src/statistics_dialog.cpp:303
-#, fuzzy
-#| msgid "Campaign Design"
 msgid "Campaign"
-msgstr "Diseño de campañas"
+msgstr "Campaña"
 
 #: src/statistics_dialog.cpp:225 src/statistics_dialog.cpp:303
-#, fuzzy
-#| msgid "End Scenario"
 msgid "Scenario"
-msgstr "Finalizar escenario"
+msgstr "Escenario"
 
 #: src/statistics_dialog.cpp:283
 msgid "Damage"
@@ -8094,7 +7821,7 @@ msgstr "Este turno"
 
 #: src/statistics_dialog.cpp:293
 msgid "Inflicted"
-msgstr "Inflingido"
+msgstr "Infligido"
 
 #: src/statistics_dialog.cpp:297
 msgid "Taken"
@@ -8104,193 +7831,182 @@ msgstr "Tomado"
 msgid "Skip"
 msgstr "Saltar"
 
+# Nomenclatura coincidente con las bibliotecas de glibc
 #: src/strftime.cpp:23
 msgid "Mon"
-msgstr ""
+msgstr "lun"
 
 #: src/strftime.cpp:23
 msgid "Sun"
-msgstr ""
+msgstr "dom"
 
 #: src/strftime.cpp:23
 msgid "Tue"
-msgstr ""
+msgstr "mar"
 
 #: src/strftime.cpp:23
-#, fuzzy
-#| msgid "Red"
 msgid "Wed"
-msgstr "Rojo"
+msgstr "mié"
 
 #: src/strftime.cpp:24
 msgid "Fri"
-msgstr ""
+msgstr "vie"
 
 #: src/strftime.cpp:24
-#, fuzzy
-#| msgid "Status"
 msgid "Sat"
-msgstr "Estado"
+msgstr "sáb"
 
 #: src/strftime.cpp:24
 msgid "Thu"
-msgstr ""
+msgstr "jue"
 
 #: src/strftime.cpp:25
 msgid "Monday"
-msgstr ""
+msgstr "lunes"
 
 #: src/strftime.cpp:25
 msgid "Sunday"
-msgstr ""
+msgstr "domingo"
 
 #: src/strftime.cpp:25
 msgid "Tuesday"
-msgstr ""
+msgstr "martes"
 
 #: src/strftime.cpp:26
 msgid "Friday"
-msgstr ""
+msgstr "viernes"
 
 #: src/strftime.cpp:26
 msgid "Saturday"
-msgstr ""
+msgstr "sábado"
 
 #: src/strftime.cpp:26
 msgid "Thursday"
-msgstr ""
+msgstr "jueves"
 
 #: src/strftime.cpp:26
 msgid "Wednesday"
-msgstr ""
+msgstr "miércoles"
 
 #: src/strftime.cpp:27
 msgid "Apr"
-msgstr ""
+msgstr "abr"
 
 #: src/strftime.cpp:27
 msgid "Feb"
-msgstr ""
+msgstr "feb"
 
 #: src/strftime.cpp:27
 msgid "Jan"
-msgstr ""
+msgstr "ene"
 
 #: src/strftime.cpp:27
 msgid "Mar"
-msgstr ""
+msgstr "mar"
 
 #: src/strftime.cpp:28
 msgid "Aug"
-msgstr ""
+msgstr "ago"
 
 #: src/strftime.cpp:28
 msgid "Jul"
-msgstr ""
+msgstr "jul"
 
 #: src/strftime.cpp:28
 msgid "Jun"
-msgstr ""
+msgstr "jun"
 
 #: src/strftime.cpp:28
 msgid "Oct"
-msgstr ""
+msgstr "oct"
 
 #: src/strftime.cpp:28
 msgid "Sep"
-msgstr ""
+msgstr "sep"
 
 #: src/strftime.cpp:28
 msgid "abbrev^May"
-msgstr ""
+msgstr "may"
 
 #: src/strftime.cpp:29
 msgid "Dec"
-msgstr ""
+msgstr "dic"
 
 #: src/strftime.cpp:29
 msgid "Nov"
-msgstr ""
+msgstr "nov"
 
 #: src/strftime.cpp:30
 msgid "February"
-msgstr ""
+msgstr "febrero"
 
 #: src/strftime.cpp:30
 msgid "January"
-msgstr ""
+msgstr "enero"
 
 #: src/strftime.cpp:30
-#, fuzzy
-#| msgid "Search"
 msgid "March"
-msgstr "Búsqueda"
+msgstr "marzo"
 
 #: src/strftime.cpp:31
 msgid "April"
-msgstr ""
+msgstr "abril"
 
 #: src/strftime.cpp:31
 msgid "August"
-msgstr ""
+msgstr "agosto"
 
 #: src/strftime.cpp:31
 msgid "July"
-msgstr ""
+msgstr "julio"
 
 #: src/strftime.cpp:31
 msgid "June"
-msgstr ""
+msgstr "junio"
 
 #: src/strftime.cpp:31
 msgid "May"
-msgstr ""
+msgstr "mayo"
 
 #: src/strftime.cpp:32
 msgid "December"
-msgstr ""
+msgstr "diciembre"
 
 #: src/strftime.cpp:32
 msgid "November"
-msgstr ""
+msgstr "noviembre"
 
 #: src/strftime.cpp:32
 msgid "October"
-msgstr ""
+msgstr "octubre"
 
 #: src/strftime.cpp:32
 msgid "September"
-msgstr ""
+msgstr "septiembre"
 
 #: src/strftime.cpp:73
-#, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %e %H:%M:%S %Y"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%d/%m/%Y a las %H:%M:%S"
 
 #: src/strftime.cpp:77
-#, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %d %b %Y %H:%M:%S %z"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%d/%m/%Y a las %H:%M:%S %z"
 
 #: src/strftime.cpp:88
 msgid "AM"
-msgstr ""
+msgstr "AM"
 
 #: src/strftime.cpp:88
 msgid "PM"
-msgstr ""
+msgstr "PM"
 
 #: src/strftime.cpp:91
-#, fuzzy
-#| msgid "Name"
 msgid "am"
-msgstr "Nombre"
+msgstr "am"
 
 #: src/strftime.cpp:91
 msgid "pm"
-msgstr ""
+msgstr "pm"
 
 #: src/terrain.cpp:180
 msgid "Allied village"
@@ -8310,14 +8026,14 @@ msgstr "border_size debería estar entre 0.0 y 0.5."
 
 #: src/theme.cpp:599 src/theme.cpp:604
 msgid "Hotkey(s): "
-msgstr ""
+msgstr "Atajo(s) de teclado: "
 
+# Mínima?
 #: src/time_of_day.cpp:43
-#, fuzzy
-#| msgid "Time of day"
 msgid "Stub Time of Day"
-msgstr "Momento del día"
+msgstr "Hora del día mínima"
 
+# e/y
 #: src/unit.cpp:2428 src/unit.cpp:2658 src/unit.cpp:2739
 msgid " and "
 msgstr " y "
@@ -8357,12 +8073,12 @@ msgstr[1] "golpes"
 #: src/unit_types.cpp:272
 #, no-c-format
 msgid "% accuracy"
-msgstr "% certeza"
+msgstr "% precisión"
 
 #: src/unit_types.cpp:283
 #, no-c-format
 msgid "% parry"
-msgstr "% esquivación"
+msgstr "% bloqueo"
 
 #: src/unit_types.cpp:838
 msgid "chaotic"
@@ -8398,11 +8114,11 @@ msgstr "neutral"
 
 #: src/whiteboard/manager.cpp:1094
 msgid "SHOW ALL allies’ plans"
-msgstr "Mostrar TODOS los planes de aliados"
+msgstr "Mostrar TODOS los planes de los aliados"
 
 #: src/whiteboard/manager.cpp:1095
 msgid "HIDE ALL allies’ plans"
-msgstr "Ocultar TODOS los planes de aliados"
+msgstr "Ocultar TODOS los planes de los aliados"
 
 #: src/whiteboard/manager.cpp:1109
 msgid "Show plans for $player"
@@ -8428,363 +8144,221 @@ msgstr "Opciones del modo pizarra"
 #~ msgid "(side $temp_i|)"
 #~ msgstr "(bando $temp_i|)"
 
-#, fuzzy
-#~| msgid "Cancel"
 #~ msgid "cancel"
-#~ msgstr "Cancelar"
+#~ msgstr "cancelar"
 
-#, fuzzy
-#~| msgid "Test scenario"
 #~ msgid "Select Hex"
-#~ msgstr "Escenario de pruebas"
+#~ msgstr "Seleccionar hexágono"
 
-#, fuzzy
-#~| msgid "Attacker"
 #~ msgid "Move/Attack"
-#~ msgstr "Atacante"
+#~ msgstr "Mover/Atacar"
 
-#, fuzzy
-#~| msgid "Next Turn"
 #~ msgid "Next Unit"
-#~ msgstr "Siguiente turno"
+#~ msgstr "Siguiente unidad"
 
-#, fuzzy
-#~| msgid "End Turn"
 #~ msgid "End Unit Turn"
-#~ msgstr "Finalizar turno"
+#~ msgstr "Finalizar turno de unidad"
 
-#, fuzzy
-#~| msgid "Description"
 #~ msgid "Terrain Description"
-#~ msgstr "Descripción"
+#~ msgstr "Descripción de terreno"
 
-#, fuzzy
-#~| msgid "Description"
 #~ msgid "Unit Description"
-#~ msgstr "Descripción"
+#~ msgstr "Descripción de unidad"
 
-#, fuzzy
-#~| msgid "Delete add-on: "
 #~ msgid "Delete Unit"
-#~ msgstr "Borrar complemento: "
+#~ msgstr "Borrar unidad"
 
-#, fuzzy
-#~| msgid "Share Maps"
 #~ msgid "Save Map"
-#~ msgstr "Compartir mapas"
+#~ msgstr "Guardar mapa"
 
-#, fuzzy
-#~| msgid "Recruit"
 #~ msgid "Repeat Recruit"
-#~ msgstr "Reclutar"
+#~ msgstr "Repetir reclutamiento"
 
-#, fuzzy
-#~| msgid "Mouse scrolling"
 #~ msgid "Mouse Scrolling"
 #~ msgstr "Desplazar con ratón"
 
-#, fuzzy
-#~| msgid "Status"
 #~ msgid "Status Table"
-#~ msgstr "Estado"
+#~ msgstr "Tabla de estado"
 
-#, fuzzy
-#~| msgid "Create Unit (Debug!)"
 #~ msgid "Change Side (Debug!)"
-#~ msgstr "Crear unidad (¡Depuración!)"
+#~ msgstr "Cambiar de bando (Depuración)"
 
-#, fuzzy
-#~| msgid "Create Unit (Debug!)"
 #~ msgid "Kill Unit (Debug!)"
-#~ msgstr "Crear unidad (¡Depuración!)"
+#~ msgstr "Matar unidad (Depuración)"
 
-#, fuzzy
-#~| msgid "Scenario Settings"
 #~ msgid "Scenario Objectives"
-#~ msgstr "Preferencias del escenario"
+#~ msgstr "Objetivos del escenario"
 
-#, fuzzy
-#~| msgid "Network Player"
 #~ msgid "Pause Network Game"
-#~ msgstr "Jugador en red"
+#~ msgstr "Pausar juego en red"
 
-#, fuzzy
-#~| msgid "Confirm"
 #~ msgid "Continue Network Game"
-#~ msgstr "Confirmar"
+#~ msgstr "Continuar juego en red"
 
-#, fuzzy
-#~| msgid "Quit game."
 #~ msgid "Quit Game"
-#~ msgstr "Salir de la partida."
+#~ msgstr "Salir del juego"
 
-#, fuzzy
-#~| msgid "Clear all orders"
 #~ msgid "Clear Labels"
-#~ msgstr "Cancelar todas las órdenes"
+#~ msgstr "Eliminar etiquetas"
 
-#, fuzzy
-#~| msgid "Save Replay"
 #~ msgid "Play Replay"
-#~ msgstr "Guardar repetición"
+#~ msgstr "Mostrar repetición"
 
-#, fuzzy
-#~| msgid "Save Replay"
 #~ msgid "Reset Replay"
-#~ msgstr "Guardar repetición"
+#~ msgstr "Reiniciar repetición"
 
-#, fuzzy
-#~| msgid "Save Replay"
 #~ msgid "Stop Replay"
-#~ msgstr "Guardar repetición"
+#~ msgstr "Parar repetición"
 
-#, fuzzy
-#~| msgid "Team"
 #~ msgid "Each Team"
-#~ msgstr "Equipo"
+#~ msgstr "Cada equipo"
 
-#, fuzzy
-#~| msgid "Team"
 #~ msgid "Team 1"
-#~ msgstr "Equipo"
+#~ msgstr "Equipo 1"
 
-#, fuzzy
-#~| msgid "Skip animation"
 #~ msgid "Skip Animation"
 #~ msgstr "Saltar animación"
 
-#, fuzzy
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Execute Action"
-#~ msgstr "Opciones del modo pizarra"
+#~ msgstr "Realizar acción"
 
-#, fuzzy
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Execute All Actions"
-#~ msgstr "Opciones del modo pizarra"
+#~ msgstr "Realizar todas las acciones"
 
-#, fuzzy
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Delete Action"
-#~ msgstr "Opciones del modo pizarra"
+#~ msgstr "Borrar acción"
 
-#, fuzzy
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Move Action Up"
-#~ msgstr "Opciones del modo pizarra"
+#~ msgstr "Mover acción hacia arriba"
 
-#, fuzzy
-#~| msgid "Whiteboard Options"
 #~ msgid "whiteboard^Move Action Down"
-#~ msgstr "Opciones del modo pizarra"
+#~ msgstr "Mover acción hacia abajo"
 
-#, fuzzy
-#~| msgid "Time of day"
 #~ msgid "Switch Time of Day"
-#~ msgstr "Momento del día"
+#~ msgstr "Cambiar hora del día"
 
-#, fuzzy
-#~| msgid "Share Maps"
 #~ msgid "Switch Map"
-#~ msgstr "Compartir mapas"
+#~ msgstr "Cambiar mapa"
 
-#, fuzzy
-#~| msgid "Time of day"
 #~ msgid "Custom Time of Day Creator"
-#~ msgstr "Momento del día"
+#~ msgstr "Configurar el creador de hora del día"
 
-#, fuzzy
-#~| msgid "Load Game"
 #~ msgid "Load Map"
-#~ msgstr "Cargar partida"
+#~ msgstr "Cargar mapa"
 
-#, fuzzy
-#~| msgid "Save the Map As"
 #~ msgid "Save Map As"
 #~ msgstr "Guardar el mapa como"
 
-#, fuzzy
-#~| msgid "Test scenario"
 #~ msgid "Save Scenario As"
-#~ msgstr "Escenario de pruebas"
+#~ msgstr "Guardar escenario como"
 
-#, fuzzy
-#~| msgid "Save the Map As"
 #~ msgid "Save All Maps"
-#~ msgstr "Guardar el mapa como"
+#~ msgstr "Guardar todos los mapas"
 
-#, fuzzy
-#~| msgid "Skip animation"
 #~ msgid "Map Information"
-#~ msgstr "Saltar animación"
+#~ msgstr "Información del mapa"
 
-#, fuzzy
-#~| msgid "Next Side"
 #~ msgid "Add New Side"
-#~ msgstr "Siguiente bando"
+#~ msgstr "Añadir nuevo bando"
 
-#, fuzzy
-#~| msgid "Next Turn"
 #~ msgid "Next Tool"
-#~ msgstr "Siguiente turno"
+#~ msgstr "Siguiente herramienta"
 
-#, fuzzy
-#~| msgid "Starting position: "
 #~ msgid "Starting Positions Tool"
-#~ msgstr "Ubicación inicial: "
+#~ msgstr "Herramienta de posición de inicio"
 
-#, fuzzy
-#~| msgid "Village gold: "
 #~ msgid "Village Tool"
-#~ msgstr "Oro por aldea: "
+#~ msgstr "Herramienta de poblaciones"
 
-#, fuzzy
-#~| msgid "Recruit"
 #~ msgid "Can Recruit"
-#~ msgstr "Reclutar"
+#~ msgstr "Puede reclutar"
 
-#, fuzzy
-#~| msgid "Advance Unit"
 #~ msgid "Change Unit ID"
-#~ msgstr "Promocionar unidad"
+#~ msgstr "Cambiar unidad ID"
 
-#, fuzzy
-#~| msgid "Next Turn"
 #~ msgid "Next Brush"
-#~ msgstr "Siguiente turno"
+#~ msgstr "Siguiente pincel"
 
-#, fuzzy
-#~| msgid "Select unit:"
 #~ msgid "Select All"
-#~ msgstr "Seleccionar unidad:"
+#~ msgstr "Seleccionar todo"
 
-#, fuzzy
-#~| msgid "Select an add-on to update:"
 #~ msgid "Select Inverse"
-#~ msgstr "Seleccione un complemento para actualizar:"
+#~ msgstr "Invertir selección"
 
-#, fuzzy
-#~| msgid "Select unit:"
 #~ msgid "Select None"
-#~ msgstr "Seleccionar unidad:"
+#~ msgstr "Seleccionar nada"
 
-#, fuzzy
-#~| msgid "Invalid location"
 #~ msgid "Flip Selection"
-#~ msgstr "Ubicación inválida"
+#~ msgstr "Voltear selección"
 
-#, fuzzy
-#~| msgid "Randomize time of day in begin"
 #~ msgid "Randomize Tiles in Selection"
-#~ msgstr "Escoge aleatoriamente el tiempo del día"
+#~ msgstr "Aleatorizar casillas en la selección"
 
-#, fuzzy
-#~| msgid "Share Maps"
 #~ msgid "Rotate Map"
-#~ msgstr "Compartir mapas"
+#~ msgstr "Rotar el mapa"
 
-#, fuzzy
-#~| msgid "Regenerate"
 #~ msgid "Generate Map"
-#~ msgstr "Regenerar"
+#~ msgstr "Generar mapa"
 
-#, fuzzy
-#~| msgid "Create Game"
 #~ msgid "Create Mask"
-#~ msgstr "Crear partida"
+#~ msgstr "Crear una máscara"
 
-#, fuzzy
-#~| msgid "Refresh gui."
 #~ msgid "Refresh Display"
-#~ msgstr "Actualizar la interfaz gráfica."
+#~ msgstr "Actualizar pantalla"
 
-#, fuzzy
-#~| msgid "Latin Translation"
 #~ msgid "Update Terrain Transitions"
-#~ msgstr "Traducción al latín"
+#~ msgstr "Actualizar transiciones de terreno"
 
-#, fuzzy
-#~| msgid "End Scenario"
 #~ msgid "Edit Scenario"
-#~ msgstr "Finalizar escenario"
+#~ msgstr "Editar escenario"
 
-#, fuzzy
-#~| msgid "Next Side"
 #~ msgid "Edit Side"
-#~ msgstr "Siguiente bando"
+#~ msgstr "Editar bando"
 
-#, fuzzy
-#~| msgid "Next Side"
 #~ msgid "Remove Side"
-#~ msgstr "Siguiente bando"
+#~ msgstr "Eliminar bando"
 
-#, fuzzy
-#~| msgid "Update all"
 #~ msgid "Speak to Ally"
-#~ msgstr "Actualizar todos"
+#~ msgstr "Hablar con aliados"
 
-#, fuzzy
-#~| msgid "Update all"
 #~ msgid "Speak to All"
-#~ msgstr "Actualizar todos"
+#~ msgstr "Hablar con todos"
 
-#, fuzzy
-#~| msgid "prompt^Command:"
 #~ msgid "Custom Command"
-#~ msgstr "Orden:"
+#~ msgstr "Comando personalizado"
 
-#, fuzzy
-#~| msgid "Chat message aging"
 #~ msgid "Clear Messages"
-#~ msgstr "Duración de mensajes de conversación"
+#~ msgstr "Limpiar mensajes"
 
-#, fuzzy
-#~| msgid "Refresh gui."
 #~ msgid "Refresh WML"
-#~ msgstr "Actualizar la interfaz gráfica."
+#~ msgstr "Actualizar WML"
 
-#, fuzzy
-#~| msgid "Time of day"
 #~ msgid "Next Tip of the Day"
-#~ msgstr "Momento del día"
+#~ msgstr "Siguiente sugerencia del día"
 
-#, fuzzy
-#~| msgid "Tutorial"
 #~ msgid "Start Tutorial"
-#~ msgstr "Tutorial"
+#~ msgstr "Jugar el tutorial"
 
-#, fuzzy
-#~| msgid "Campaign Design"
 #~ msgid "Start Campaign"
-#~ msgstr "Diseño de campañas"
+#~ msgstr "Jugar una campaña"
 
-#, fuzzy
-#~| msgid "Multiplayer"
 #~ msgid "Start Multiplayer Game"
-#~ msgstr "Multijugador"
+#~ msgstr "Jugar una partida multijugador"
 
-#, fuzzy
-#~| msgid "Update add-ons"
 #~ msgid "Manage Add-ons"
-#~ msgstr "Actualizar complementos"
+#~ msgstr "Gestionar complementos"
 
-#, fuzzy
-#~| msgid "Show replay"
 #~ msgid "Show Credits"
-#~ msgstr "Mostrar repetición"
+#~ msgstr "Mostrar los créditos"
 
-#, fuzzy
-#~| msgid "Show replay"
 #~ msgid "Show Helptip"
-#~ msgstr "Mostrar repetición"
+#~ msgstr "Mostrar sugerencias"
 
 #, fuzzy
-#~| msgid "Compressed saves"
 #~ msgid "Compress savegames using bzip2"
 #~ msgstr "Comprimir partidas guardadas"
 
 #, fuzzy
-#~| msgid "Settings..."
 #~ msgid "Options..."
 #~ msgstr "Ajustes..."
 
@@ -8810,98 +8384,78 @@ msgstr "Opciones del modo pizarra"
 #~ msgstr "KB"
 
 #, fuzzy
-#~| msgid "Multiplayer_AI^RCA AI"
 #~ msgid "Multiplayer_AI^Default AI (RCA)"
 #~ msgstr "IA RCA"
 
 #, fuzzy
-#~| msgid "Multiplayer_AI^RCA AI"
 #~ msgid "Multiplayer_AI^Experimental AI"
 #~ msgstr "IA RCA"
 
 #, fuzzy
-#~| msgid "Enemy unit sighted!"
-#~| msgid_plural "$enemies enemy units sighted!"
 #~ msgid "Enemy unit weight  (default: 100)"
 #~ msgstr "¡Unidad enemiga divisada!"
 
 #, fuzzy
-#~| msgid "Move leader here"
 #~ msgid "Move Konrad here"
 #~ msgstr "Mover el líder aquí"
 
 #, fuzzy
-#~| msgid "help"
 #~ msgid "Whelps"
 #~ msgstr "ayuda"
 
 #, fuzzy
-#~| msgid "End Scenario"
 #~ msgid "End scenario"
 #~ msgstr "Finalizar escenario"
 
 #, fuzzy
-#~| msgid "Save the Map As"
 #~ msgid "Take the pass"
 #~ msgstr "Guardar el mapa como"
 
 #, fuzzy
-#~| msgid "Defeat"
 #~ msgid "Defeat Rowck"
 #~ msgstr "Derrota"
 
 #, fuzzy
-#~| msgid "Faction"
 #~ msgid "Station 1"
 #~ msgstr "Facción"
 
 #, fuzzy
-#~| msgid "Faction"
 #~ msgid "Station 2"
 #~ msgstr "Facción"
 
 #, fuzzy
-#~| msgid "Defeat enemy leader(s)"
 #~ msgid "Defeat all enemy units"
 #~ msgstr "Derrotar a los líderes enemigos"
 
 #, fuzzy
-#~| msgid "Notes:"
 #~ msgid "Notes"
 #~ msgstr "Notas:"
 
 #, fuzzy
-#~| msgid "Clear all orders"
 #~ msgid "Defeat all lurkers"
 #~ msgstr "Cancelar todas las órdenes"
 
 #, fuzzy
-#~| msgid "Message:"
 #~ msgid "Messenger"
 #~ msgstr "Mensaje:"
 
 #, fuzzy
-#~| msgid "Move leader here"
 #~ msgid "AI moves Messenger here"
 #~ msgstr "Mover el líder aquí"
 
 #, fuzzy
-#~| msgid "Move leader here"
 #~ msgid "Move Rossauba here"
 #~ msgstr "Mover el líder aquí"
 
 #, fuzzy
-#~| msgid "Recruit"
 #~ msgid "Recruiting"
 #~ msgstr "Reclutar"
 
 #, fuzzy
-#~| msgid "Swarm: "
 #~ msgid "Swarm"
 #~ msgstr "Enjambre:"
 
 #, fuzzy
-#~| msgid "Invalid location"
 #~ msgid "AI Location:"
 #~ msgstr "Ubicación inválida"
 
@@ -8910,62 +8464,50 @@ msgstr "Opciones del modo pizarra"
 #~ "Tipo de unidad desconocida «$type|» mientras se generaba los alineamientos"
 
 #, fuzzy
-#~| msgid "invisible: "
 #~ msgid "invisible"
 #~ msgstr "invisible: "
 
 #, fuzzy
-#~| msgid "female^slowed"
 #~ msgid "female^invisible"
 #~ msgstr "ralentizada"
 
 #, fuzzy
-#~| msgid "Fire a game event."
 #~ msgid "I triggered a moveto event."
 #~ msgstr "Desencadena un evento del juego."
 
 #, fuzzy
-#~| msgid "Version: "
 #~ msgid "Vision Test"
 #~ msgstr "Versión: "
 
 #, fuzzy
-#~| msgid "invisible: "
 #~ msgid "It is invisible!"
 #~ msgstr "invisible: "
 
 #, fuzzy
-#~| msgid "Choose weapon:"
 #~ msgid "Choose a Map to Open"
 #~ msgstr "Escoger arma:"
 
 #, fuzzy
-#~| msgid "Choose the game to load"
 #~ msgid "Choose a Mask to Apply"
 #~ msgstr "Escoja partida a cargar"
 
 #, fuzzy
-#~| msgid "Choose weapon:"
 #~ msgid "Choose Target Map"
 #~ msgstr "Escoger arma:"
 
 #, fuzzy
-#~| msgid "The map already exists. Do you want to overwrite it?"
 #~ msgid "The file already exists. Do you want to overwrite it?"
 #~ msgstr "El mapa ya existe. ¿Desea sobreescribirlo?"
 
 #, fuzzy
-#~| msgid "No era information found."
 #~ msgid "No random map generators found."
 #~ msgstr "Ninguna información de era."
 
 #, fuzzy
-#~| msgid "Installation failed"
 #~ msgid "Map creation failed."
 #~ msgstr "¡La instalación ha fallado!"
 
 #, fuzzy
-#~| msgid "The map is invalid."
 #~ msgid "This map is already open."
 #~ msgstr "El mapa es inválido"
 
@@ -9063,3 +8605,359 @@ msgstr "Opciones del modo pizarra"
 
 #~ msgid "A map without a header is not supported"
 #~ msgstr "Un mapa sin cabecera no está soportado"
+
+#~ msgid "Deselect Hex"
+#~ msgstr "Anular selección hex"
+
+#~ msgid "Select/Move/Attack"
+#~ msgstr "Seleccionar/Mover/Atacar"
+
+#~ msgid "Animate Map"
+#~ msgstr "Mapa animado"
+
+#~ msgid "Previous Unit"
+#~ msgstr "Unidad anterior"
+
+#~ msgid "Hold Position"
+#~ msgstr "Mantener posición"
+
+#~ msgid "Undo"
+#~ msgstr "Deshacer"
+
+#~ msgid "Redo"
+#~ msgstr "Rehacer"
+
+#~ msgid "Zoom In"
+#~ msgstr "Ampliación"
+
+#~ msgid "Zoom Out"
+#~ msgstr "Reducción"
+
+#~ msgid "Toggle Full Screen"
+#~ msgstr "Cambiar entre ventana y pantalla completa"
+
+#~ msgid "Map Screenshot"
+#~ msgstr "Imagen del mapa"
+
+#~ msgid "Accelerated"
+#~ msgstr "Acelerado"
+
+#~ msgid "Toggle Ellipses"
+#~ msgstr "Activar o desactivar elipses"
+
+#~ msgid "Toggle Grid"
+#~ msgstr "Activar o desactivar rejilla"
+
+#~ msgid "Mute"
+#~ msgstr "Silenciar"
+
+#~ msgid "Speak"
+#~ msgstr "Hablar"
+
+#~ msgid "Quit Editor"
+#~ msgstr "Salir del Editor"
+
+#~ msgid "Set Team Label"
+#~ msgstr "Configurar etiqueta de equipo"
+
+#~ msgid "Set Label"
+#~ msgstr "Establecer etiqueta"
+
+#~ msgid "Show Enemy Moves"
+#~ msgstr "Mostrar movimientos del enemigo"
+
+#~ msgid "Best Possible Enemy Moves"
+#~ msgstr "Mejores movimientos del enemigo"
+
+#~ msgid "Full Map"
+#~ msgstr "Mapa completo"
+
+#~ msgid "whiteboard^Planning Mode"
+#~ msgstr "Modo de planificación"
+
+#~ msgid "whiteboard^Suppose Dead"
+#~ msgstr "Si la unidad muere"
+
+#~ msgid "Quit to Desktop"
+#~ msgstr "Salir al escritorio"
+
+#~ msgid "Assign Local Time"
+#~ msgstr "Asignar hora local"
+
+#~ msgid "Partial Undo"
+#~ msgstr "Deshacer parcialmente"
+
+#~ msgid "New Map"
+#~ msgstr "Nuevo mapa"
+
+#~ msgid "Revert All Changes"
+#~ msgstr "Revertir todos los cambios"
+
+#~ msgid "Clear Selected Item Set"
+#~ msgstr "Borrar el conjunto de elementos seleccionados"
+
+#~ msgid "Swap Foreground/Background Palette Item"
+#~ msgstr "Intercambia paletas de primer y segundo plano."
+
+#~ msgid "Change Palette Group"
+#~ msgstr "Cambiar grupo de paleta"
+
+#~ msgid "Scroll Palette Left"
+#~ msgstr "Desplazar la paleta hacia la izquierda"
+
+#~ msgid "Scroll Palette Right"
+#~ msgstr "Desplazar la paleta hacia la derecha"
+
+#~ msgid "Paint Tool"
+#~ msgstr "Pincel"
+
+#~ msgid ""
+#~ "Use left/right mouse button to draw fore-/background terrain. Hold Shift "
+#~ "to paint base layer only. Ctrl+click to sample terrain under cursor."
+#~ msgstr ""
+#~ "Use el botón izquierdo o derecho del ratón para dibujar terreno del "
+#~ "primer plano o del fondo, respectivamente. Mantenga presionada «Mayús» "
+#~ "para dibujar sólo en la capa base. «Ctrl» + «clic» para tomar muestra del "
+#~ "terreno bajo el cursos."
+
+#~ msgid "Fill Tool"
+#~ msgstr "Cubeta"
+
+#~ msgid ""
+#~ "Left mouse button selects or deselects, right brings up a context menu. "
+#~ "Hold Shift for magic-wand selection of tiles with same terrain."
+#~ msgstr ""
+#~ "El botón izquierdo del ratón selecciona, y el derecho anula la selección. "
+#~ "Mantenga «Mayús» presionada para obtener el efecto de «varita mágica» en "
+#~ "las casillas adyacentes del mismo terreno."
+
+#~ msgid "Selection Tool"
+#~ msgstr "Selección"
+
+#~ msgid ""
+#~ "Left mouse button displays player selection, right clears. Number keys "
+#~ "scroll to the starting position, alt+number sets respective starting "
+#~ "position under cursor, delete clears."
+#~ msgstr ""
+#~ "El botón izquierdo del ratón permite seleccionar un jugador, y el "
+#~ "izquierdo anula la selección . Las teclas numéricas desplazan la vista a "
+#~ "la ubicación inicial; «Alt» + «número» establece la ubicación inicial de "
+#~ "los jugadores, respectivamente, bajo el puntero, y «Del» la elimina."
+
+#~ msgid "Label Tool"
+#~ msgstr "Herramienta de etiquetas"
+
+#~ msgid "Left mouse button sets or drags a label, right clears."
+#~ msgstr ""
+#~ "El botón izquierdo del ratón posiciona o arrastra una etiqueta, el "
+#~ "derecho la borra."
+
+#~ msgid ""
+#~ "Left mouse button sets a new unit or moves a unit via drag and drop, "
+#~ "right brings up a context menu. Needs a defined side."
+#~ msgstr ""
+#~ "El botón izquierdo del ratón posiciona una nueva unidad o mueve una "
+#~ "unidad mediante arrastrar y soltar, el derecho proporciona un menú "
+#~ "contextual. Se ha de tener algún bando definido."
+
+#~ msgid "Unit Tool"
+#~ msgstr "Herramienta de unidades"
+
+#~ msgid "Item Tool"
+#~ msgstr "Herramienta de objetos"
+
+#~ msgid ""
+#~ "Left mouse button sets a new item or moves it via drag and drop, right "
+#~ "clears. Not implemented yet."
+#~ msgstr ""
+#~ "El botón izquierdo del ratón posiciona un nuevo objeto o lo mueve "
+#~ "mediante arrastrar y soltar, el derecho borra. Aún no se ha puesto en "
+#~ "producción."
+
+#~ msgid ""
+#~ "Left mouse button sets or drags a sound source, right clears. Not "
+#~ "implemented yet."
+#~ msgstr ""
+#~ "El botón izquierdo del ratón posiciona o arrastra un efecto sonoro, el "
+#~ "derecho borra. Aún no se ha puesto en producción."
+
+#~ msgid "Sound Source Tool"
+#~ msgstr "Herramienta de efectos sonoros"
+
+#~ msgid ""
+#~ "Left mouse button sets the village ownership to the current side, right "
+#~ "clears. Needs a defined side."
+#~ msgstr ""
+#~ "El boton izquierdo del ratón posiciona la población seleccionada para el "
+#~ "bando actual. Se ha de tener algún bando definido."
+
+# Necesito el contexto para entenderlo mejor.
+#~ msgid "Toggle the recruit attribute of a unit."
+#~ msgstr "Cambia el atributo para que una unidad pueda reclutar."
+
+#~ msgid "Can be Renamed"
+#~ msgstr "Se puede renombrar"
+
+#~ msgid "Toggle the unit being renameable."
+#~ msgstr "Cambia el atributo de renombrable para una unidad."
+
+#~ msgid "Assign Recruit List"
+#~ msgstr "Asigna una lista de reclutamiento"
+
+#~ msgid "Assign the selected unit set as recruit list to the unit."
+#~ msgstr ""
+#~ "Asigna el conjunto de unidades seleccionadas como lista de reclutamiento "
+#~ "para la unidad."
+
+#~ msgid "Loyal"
+#~ msgstr "Leal"
+
+#~ msgid "Toggle Minimap Unit Coding"
+#~ msgstr ""
+#~ "Activa o desactiva la vista del tipo de las unidades en el minimapa."
+
+#~ msgid "Toggle Minimap Terrain Coding"
+#~ msgstr "Activa o desactiva la vista del tipo de terreno en el minimapa."
+
+#~ msgid "Toggle Minimap Unit Drawing"
+#~ msgstr "Activa o desactiva la vista de las unidades en el minimapa"
+
+#~ msgid "Toggle Minimap Village Drawing"
+#~ msgstr "Activa o desactiva la vista de las poblaciones en el minimapa"
+
+#~ msgid "Toggle Minimap Terrain Drawing"
+#~ msgstr "Activa o desactiva la vista del terreno en el minimapa"
+
+#~ msgid "Default Brush"
+#~ msgstr "Pincel predeterminado"
+
+#~ msgid "Single Tile"
+#~ msgstr "Una sola casilla"
+
+#~ msgid "Radius One"
+#~ msgstr "Radio uno"
+
+#~ msgid "Radius Two"
+#~ msgstr "Radio dos"
+
+#~ msgid "Brush NW-SE"
+#~ msgstr "Brocha NO-SE"
+
+#~ msgid "Brush SW-NE"
+#~ msgstr "Brocha SO-NE"
+
+#~ msgid "Cut"
+#~ msgstr "Cortar"
+
+#~ msgid "Copy"
+#~ msgstr "Copiar"
+
+#~ msgid ""
+#~ "Left mouse button pastes from the clipboard, right brings up a context "
+#~ "menu."
+#~ msgstr ""
+#~ "El botón izquierdo del ratón pega desde el portapapeles, el derecho "
+#~ "ofrece un menú contextual."
+
+#~ msgid "Paste"
+#~ msgstr "Pegar"
+
+#~ msgid "Export Selected Coordinates to System Clipboard"
+#~ msgstr "Exportar coordenadas seleccionadas al portapapeles del sistema"
+
+#~ msgid "Rotate Clipboard Clockwise"
+#~ msgstr "Rotar el portapapeles en sentido horario"
+
+#~ msgid "Rotate Clipboard Counter-Clockwise"
+#~ msgstr "Rotar el portapapeles en sentido antihorario"
+
+#~ msgid "Flip Clipboard Horizontally"
+#~ msgstr "Voltear el portapapeles horizontalmente"
+
+#~ msgid "Flip Clipboard Vertically"
+#~ msgstr "Voltear el portapapeles verticalmente"
+
+#~ msgid "Rotate Selection"
+#~ msgstr "Rotar selección"
+
+#~ msgid "Fill Selection"
+#~ msgstr "Rellenar selección"
+
+#~ msgid "Generate Tiles in Selection"
+#~ msgstr "Generar casillas en la selección"
+
+#~ msgid "Resize Map"
+#~ msgstr "Cambiar tamaño del mapa"
+
+#~ msgid "Apply a Mask"
+#~ msgstr "Aplicar una máscara"
+
+#, fuzzy
+#~ msgid "Toggle Terrain Transition Update"
+#~ msgstr "Activar o desactivar la actualización en la transición de terreno"
+
+#~ msgid "Auto-update Terrain Transitions"
+#~ msgstr "Actualizar automáticamente transiciones de terreno"
+
+#~ msgid "Auto-update Terrain Transitions: No"
+#~ msgstr "Actualizar automáticamente transiciones de terreno: No"
+
+#~ msgid "Auto-update Terrain Transitions: Partial"
+#~ msgstr "Actualizar automáticamente transiciones de terreno: Parcialmente"
+
+#~ msgid "Refresh Image Cache"
+#~ msgstr "Refrescar caché de imagen"
+
+#~ msgid "Draw Hex Coordinates"
+#~ msgstr "Dibujar coordinadas de casillas"
+
+#~ msgid "Draw Terrain Codes"
+#~ msgstr "Dibujar código de terrenos"
+
+#~ msgid "Save Selection to Area"
+#~ msgstr "Guardar la selección en el área"
+
+#~ msgid "Rename Selected Area"
+#~ msgstr "Renombrar área seleccionada"
+
+#~ msgid "Remove Selected Area"
+#~ msgstr "Borrar área seleccionada"
+
+#~ msgid "Add New Area"
+#~ msgstr "Añadir una nueva área"
+
+#~ msgid "Delay Shroud Updates"
+#~ msgstr "Retrasar actualización de zonas oscuras"
+
+#~ msgid "Update Shroud Now"
+#~ msgstr "Actualizar zonas oscuras"
+
+#~ msgid "Continue Move"
+#~ msgstr "Continuar moviendo"
+
+#~ msgid "Find Label or Unit"
+#~ msgstr "Buscar etiqueta o unidad"
+
+#~ msgid "Help"
+#~ msgstr "Ayuda"
+
+#~ msgid "View Chat Log"
+#~ msgstr "Ver el registro de conversaciones"
+
+#~ msgid "Enter User Command"
+#~ msgstr "Introduzca un comando"
+
+#~ msgid "Run Formula"
+#~ msgstr "Ejecutar fórmula (de IA)"
+
+#~ msgid "Change Language"
+#~ msgstr "Cambiar idioma"
+
+#~ msgid "Previous Tip of the Day"
+#~ msgstr "Anterior sugerencia del día"
+
+#~ msgid "Start Editor"
+#~ msgstr "Iniciar el editor de mapas"
+
+#~ msgid "Unrecognized Command"
+#~ msgstr "Comando desconocido"
