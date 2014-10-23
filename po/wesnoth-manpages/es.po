@@ -2,25 +2,24 @@
 # Spanish translations for Battle for Wesnoth package.
 # Copyright (C) 2004, 2005, 2006, 2007, 2008 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-#
 # Roberto Romero <sildurin@gmail.com>, 2006, 2007.
 # Sergi March <sergi.march@gmail.com>, 2008.
 # Ignacio Riquelme Morelle <shadowm2006@gmail.com>, 2008, 2009, 2012.
 # Aelonin <quianaaelonin@gmail.com>, 2012.
-#
+# Pepe <donpepe1963@gmail.com>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "POT-Creation-Date: 2014-03-23 18:06+0100\n"
-"PO-Revision-Date: 2012-01-26 19:23+0100\n"
-"Last-Translator: Aelonin <quianaaelonin@gmail.com>\n"
-"Language-Team: Spanish <http://wiki.wesnoth.org/SpanishTranslation>\n"
+"PO-Revision-Date: 2014-10-19 21:36+0100\n"
+"Last-Translator: Pepe <donpepe1963@gmail.com>\n"
+"Language-Team: Wesnoth\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Poedit 1.6.9\n"
 
 #. type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -28,11 +27,12 @@ msgstr ""
 msgid "WESNOTH"
 msgstr "WESNOTH"
 
+# Esto que es? el año?
 #. type: TH
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2013"
-msgstr ""
+msgstr "2013"
 
 #. type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -145,10 +145,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy, no-wrap
-#| msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
+#, no-wrap
 msgid "B<--campaign-difficulty [E<lt>difficultyE<gt>]>"
-msgstr "B<--campaign-difficulty E<lt>dificultadE<gt>>"
+msgstr "B<--campaign-difficulty [E<lt>dificultadE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -187,15 +186,12 @@ msgstr "reemplaza el directorio de datos con el directorio especificado"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:63
-#, fuzzy, no-wrap
-#| msgid "B<--path>"
+#, no-wrap
 msgid "B<--data-path>"
-msgstr "B<--path>"
+msgstr "B<--data-path>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:66
-#, fuzzy
-#| msgid "prints the name of the game data directory and exits."
 msgid "path the path of the data directory and exits."
 msgstr "muestra el nombre del directorio de datos de juego y finaliza."
 
@@ -228,7 +224,7 @@ msgid ""
 "to B<-l --load>"
 msgstr ""
 "inicia directamente con el editor de mapas del juego. Si I<archivo> es "
-"especificado, equivale a B<-l --load>."
+"especificado, equivale a B<-l --load>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:76
@@ -350,7 +346,7 @@ msgid ""
 "exits"
 msgstr ""
 "muestra una lista de dominios de registro definidos (únicamente aquéllos "
-"conteniendo B<filtro> si es indicado) y regresa."
+"conteniendo B<filtro> si es indicado) y regresa"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:124
@@ -445,25 +441,13 @@ msgstr "muestra el nombre del directorio de datos de juego y finaliza."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:152
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
+#, no-wrap
 msgid "B<-p, --preprocess E<lt>source file/folderE<gt> E<lt>target directoryE<gt>>"
-msgstr "B<--preprocess, -p[=E<lt>definición1E<gt>,E<lt>definición2E<gt>,...] E<lt>archivo/directorioE<gt> E<lt>directorio de salidaE<gt>>"
+msgstr "B<-p, --preprocess E<lt>source file/folderE<gt> E<lt>target directoryE<gt>>"
 
+# El preprocesador que lo preprocese, buen preprocesador será.
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:162
-#, fuzzy
-#| msgid ""
-#| "preprocesses a specified file/folder. The file(s) will be written in "
-#| "specified target directory: a plain cfg file and a processed cfg file. If "
-#| "a folder is specified, it will be preprocessed recursively based on the "
-#| "known preprocessor rules. The common macroses from the data/core/macros "
-#| "will be preprocessed before the specified resources.  B<define1,"
-#| "define2,...> - the extra defines will be added before processing the "
-#| "files. If you want to add them you must add the '=' character before.  If "
-#| "'SKIP_CORE' is in the define list the data/core won't be preprocessed.  "
-#| "Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/result> or B<-"
-#| "p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result>"
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "
@@ -474,24 +458,20 @@ msgid ""
 "preprocessor visit: http://wiki.wesnoth.org/PreprocessorRef#Command-"
 "line_preprocessor"
 msgstr ""
-"ejecuta el preprocesador en un archivo o directorio especificado. Los "
-"resultados son almacenados en el directorio de salida especificado: un "
-"archivo .cfg normal, y otro procesado. Si especifica un directorio como "
-"origen, éste será preprocesado de forma recursiva siguiendo las reglas "
-"usuales del preprocesador. Las macros comunes en data/core/macros serán "
-"preprocesadas antes de los recursos especificados. B<definición1,"
-"definición2,...> - las definiciones adicionales serán agregadas antes de "
-"procesar los archivos. Si desea agregarlas, deberá agregar el carácter '=' "
-"antes. Si 'SKIP_CORE' está en la lista, el directorio data/core no será "
-"preprocesado. Ejemplo: B<-p ~/wesnoth/data/campaigns/tutorial ~/result> o B<-"
-"p=MULTIPLAYER,MI_PROPIA_CAMPAÑA ~/wesnoth/data/campaigns/Mi_Propia_Campaña ~/"
-"result>"
+"preprocesa un fichero o carpeta de ficheros especificados. Por cada fichero, "
+"se generarán en el directorio especificado un fichero .cfg de texto plano y "
+"otro fichero .cfg procesado. Si se especifica una carpeta, se preprocesará "
+"recursivamente basándose en las reglas conocidas del preprocesador. Las "
+"macros comunes del directorio «data/core/macros» serán preprocesadas antes "
+"que los recursos especificados. Ejemplo:  B<-p ~/wesnoth/data/campaigns/"
+"tutorial ~/result.> Para más detalles en relación con el preprocesador "
+"visite: http://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:163
 #, no-wrap
 msgid "B<--preprocess-defines=DEFINE1,DEFINE2,etc>"
-msgstr ""
+msgstr "B<--preprocess-defines=DEFINICION1,DEFINICION2,etc>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:168
@@ -500,6 +480,9 @@ msgid ""
 "B<SKIP_CORE> is in the define list the \"data/core\" directory won't be "
 "preprocessed."
 msgstr ""
+"lista separada por comas de definiciones que van a ser usadas por el comando "
+"«--preprocess». Si B<SKIP_CORE> está en la lista, el directorio «data/core» "
+"no se preprocesará."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:168
@@ -530,10 +513,10 @@ msgid ""
 "file '_MACROS_.cfg' in the target directory of preprocess's command.  This "
 "switch should be typed before the --preprocess command."
 msgstr ""
-"sólo utilizado con '--preprocess'. Escribe todas las macros preprocesadas en "
-"el archivo especificado. Si omite el nombre de archivo, se utilizará el "
-"archivo '_MACROS_.cfg' en el directorio de destino de la opción --"
-"preprocess. Esta opción debe preceder a '--preprocess'."
+"sólo utilizado con el comando «--preprocess». Escribe todas las macros "
+"preprocesadas en el archivo especificado. Si omite el nombre de archivo, se "
+"utilizará el archivo «_MACROS_.cfg» en el directorio de destino de la opción "
+"--preprocess. Esta opción debe preceder a «--preprocess»."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:178
@@ -566,7 +549,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:186
 #, no-wrap
 msgid "B<--username>I<E<lt>usernameE<gt>>"
-msgstr ""
+msgstr "B<--username>I<E<lt>usernameE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:189
@@ -574,12 +557,14 @@ msgid ""
 "uses E<lt>usernameE<gt> when connecting to a server, ignoring other "
 "preferences."
 msgstr ""
+"utiliza E<lt>usernameE<gt> cuando se conecta a un servidor, ignorando otras "
+"preferencias."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:189
 #, no-wrap
 msgid "B<--password>I<E<lt>passwordE<gt>>"
-msgstr ""
+msgstr "B<--password>I<E<lt>passwordE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:192
@@ -587,6 +572,8 @@ msgid ""
 "uses E<lt>passwordE<gt> when connecting to a server, ignoring other "
 "preferences. Unsafe."
 msgstr ""
+"utiliza E<lt>passwordE<gt> cuando se conecta a un servidor, ignorando otras "
+"preferencias. Método inseguro."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:192
@@ -612,19 +599,12 @@ msgstr "inicia el juego en un pequeño escenario de prueba."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:198
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--userconfig-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ name>"
+msgstr "B<--userconfig-dir>I<\\ nombre>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:207
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#| "path for the configuration directory outside the $HOME or \"My Documents"
-#| "\\eMy Games\""
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -632,16 +612,18 @@ msgid ""
 "Games\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/"
 "wesnoth, on other systems to the userdata path."
 msgstr ""
-"establece el directorio de configuración del usuario como I<name> en $HOME o "
-"\"Mis documentos\\eMis juegos\" en Windows. También es posible especificar "
-"una ruta absoluta fuera de $HOME o \"Mis documentos\\eMis juegos\"."
+"establece el directorio de configuración del usuario como I<nombre> en $HOME "
+"o \"Mis documentos\\eMis juegos\" en Windows. También es posible especificar "
+"una ruta absoluta para el directorio de configuración fuera de $HOME o \"Mis "
+"documentos\\eMis juegos\". Con X11 está predeterminado como $XDG_CONFIG_HOME "
+"o $HOME/.config/wesnoth, en otros sistemas para la ruta de los datos de "
+"usuario."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:207
-#, fuzzy, no-wrap
-#| msgid "B<--config-path>"
+#, no-wrap
 msgid "B<--userconfig-path>"
-msgstr "B<--config-path>"
+msgstr "B<--userconfig-path>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:210
@@ -651,42 +633,32 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:210
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--userdata-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ name>"
+msgstr "B<--userdata-dir>I<\\ nombre>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:217
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#| "path for the configuration directory outside the $HOME or \"My Documents"
-#| "\\eMy Games\""
 msgid ""
 "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
 "Games\" for windows.  You can also specify an absolute path for the userdata "
 "directory outside the $HOME or \"My Documents\\eMy Games\"."
 msgstr ""
-"establece el directorio de configuración del usuario como I<name> en $HOME o "
-"\"Mis documentos\\eMis juegos\" en Windows. También es posible especificar "
-"una ruta absoluta fuera de $HOME o \"Mis documentos\\eMis juegos\"."
+"establece el directorio de datos del usuario como I<nombre> en $HOME o \"Mis "
+"documentos\\eMis juegos\" en Windows. También es posible especificar una "
+"ruta absoluta para los datos del usuario fuera de $HOME o \"Mis documentos"
+"\\eMis juegos\"."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:217
-#, fuzzy, no-wrap
-#| msgid "B<--path>"
+#, no-wrap
 msgid "B<--userdata-path>"
-msgstr "B<--path>"
+msgstr "B<--userdata-path>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:220
-#, fuzzy
-#| msgid "prints the path of the user configuration directory and exits."
 msgid "prints the path of the userdata directory and exits."
-msgstr ""
-"muestra la ruta del directorio de la configuración del usuario y regresa."
+msgstr "muestra la ruta del directorio de datos del usuario y regresa."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:220
@@ -808,7 +780,7 @@ msgid ""
 "eras.cfg> file."
 msgstr ""
 "use esta opción para jugar en la era seleccionada en lugar de la era por "
-"defecto (B<Default>). La era se selecciona usando un identificador (id). Las "
+"omisión (B<Default>). La era se selecciona usando un identificador (id). Las "
 "eras incluidas están descritas en el archivo B<data/multiplayer/eras.cfg>."
 
 #. type: TP
@@ -832,19 +804,19 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:269
 #, no-wrap
 msgid "B<--ignore-map-settings>"
-msgstr ""
+msgstr "B<--ignore-map-settings>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:272
 msgid "do not use map settings, use default values instead."
 msgstr ""
+"no se utilizan las configuraciones del mapa sino los valores predeterminados."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:272
-#, fuzzy, no-wrap
-#| msgid "B<--era=>I<value>"
+#, no-wrap
 msgid "B<--multiplayer-repeat=>I<value>"
-msgstr "B<--era=>I<valor>"
+msgstr "B<--multiplayer-repeat=>I<value>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:279
@@ -852,6 +824,8 @@ msgid ""
 "repeats a multiplayer game I<value> times. Best to use with B<--nogui> for "
 "scriptable benchmarking."
 msgstr ""
+"repite una partida multijugador I<value> veces. Es mejor usarlo con B<--"
+"nogui> para evaluaciones automatizadas."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:279
@@ -989,12 +963,9 @@ msgstr "COPYRIGHT"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:324 ../../doc/man/wesnothd.6:280
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:327 ../../doc/man/wesnothd.6:283
@@ -1180,7 +1151,7 @@ msgstr "B<-v, --verbose>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:94
 msgid "turns debug logging on."
-msgstr "activa el registro de depuración"
+msgstr "activa el registro de depuración."
 
 #. type: SH
 #: ../../doc/man/wesnothd.6:95
@@ -1408,9 +1379,9 @@ msgid ""
 "trailing /!) Defaults to `' which means the directory wesnothd was started "
 "in."
 msgstr ""
-"El directorio donde el servidor almacena repeticiones de partidas. (¡No "
-"olvide el '/' al final!) Por defecto es `' (vacío), es decir, el directorio "
-"donde wesnothd fue inicializado."
+"El directorio donde el servidor almacena repeticiones de partidas (no olvide "
+"la «/» al final). Por omisión estará «» (vacío) lo que quiere decir que el "
+"directorio wesnothd fue inicializado."
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:153
@@ -1482,7 +1453,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:168
 msgid "Example: B<versions_accepted=\"*\"> accepts any version string."
 msgstr ""
-"Ejemplo:  B<versions_accepted=\"*\"> acepta cualquier cadena de versión."
+"Ejemplo: B<versions_accepted=\"*\"> acepta cualquier cadena de versión."
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:168
@@ -1790,7 +1761,7 @@ msgstr "B<mail_port>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:264
 msgid "The port on which your mail server is running. Default is 25."
-msgstr "El puerto del servidor de correos (por defecto, 25)."
+msgstr "El puerto del servidor de correo (por defecto, 25)."
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:268

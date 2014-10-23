@@ -2,7 +2,6 @@
 # Spanish translations for Battle for Wesnoth package.
 # Copyright (C) 2004, 2005, 2006, 2007 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-#
 # David Martínez Moreno <ender@debian.org>, 2004-2006.
 # Pío Sierra <pio@piosierra.com>, 2005.
 # Terpor <terpor@gmail.com>, 2005.
@@ -15,20 +14,21 @@
 # Sergi March <sergi.march@gmail.com>, 2008.
 # Ignacio R. Morelle <shikadilord@users.sourceforge.net>, 2008, 2009.
 # Aelonin <quianaaelonin@gmail.com>, 2012.
-#
+# Pepe <donpepe1963@gmail.com>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-07-12 20:06+0200\n"
-"PO-Revision-Date: 2012-02-11 00:15+0100\n"
-"Last-Translator: Aelonin <quianaaelonin@gmail.com>\n"
-"Language-Team: Spanish <http://wiki.wesnoth.org/SpanishTranslation>\n"
+"POT-Creation-Date: 2014-10-11 10:43+0200\n"
+"PO-Revision-Date: 2014-10-19 21:36+0100\n"
+"Last-Translator: Pepe <donpepe1963@gmail.com>\n"
+"Language-Team: Wesnoth\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.9\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -38,7 +38,7 @@ msgstr "Mapa del usuario"
 #. [multiplayer_side]: id=Custom
 #: data/multiplayer/eras.cfg:5
 msgid "Custom"
-msgstr ""
+msgstr "Personalizada"
 
 #. [multiplayer_side]: id=Random
 #: data/multiplayer/eras.cfg:13
@@ -48,7 +48,7 @@ msgstr "Aleatorio"
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:125
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
-msgstr ""
+msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>Bando %d</span>"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:141
@@ -72,7 +72,7 @@ msgstr "El <span foreground='%s'>bando %d</span> tiene la ventaja."
 #. [era]: id=era_default
 #: data/multiplayer/eras.cfg:176
 msgid "Default"
-msgstr "Por defecto"
+msgstr "Predeterminada"
 
 #. [era]: id=era_default
 #: data/multiplayer/eras.cfg:177
@@ -80,6 +80,8 @@ msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
 msgstr ""
+"La era estándar para multijugador en Wesnoth. Consiste en seis facciones que "
+"se consideran equilibradas."
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:197
@@ -93,11 +95,14 @@ msgid ""
 "units available for recruit. Consists of six factions. Not considered "
 "balanced."
 msgstr ""
+"Una era con unidades de nivel más alto: líderes de nivel 3 que pueden "
+"reclutar unidades de nivel 1 y 2. Consta de seis facciones. No se considera "
+"equilibrada."
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:205
 msgid "Default + Khalifate"
-msgstr ""
+msgstr "Predeterminada + Khalifate"
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:206
@@ -109,13 +114,18 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"Una era que nos proporciona una facción adicional además de las otras seis "
+"de la era predeterminada. Las unidades de Khalifate no utilizan magia, en "
+"cambio requieren hacer un uso cuidadoso del tipo de terreno y coordinar sus "
+"ataques para cuando amanece o anochece.\n"
+"\n"
+"Esta era aún está en desarrollo, así que, por favor, informe de cualquier "
+"problema que pueda surgir."
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:216
-#, fuzzy
-#| msgid "Age of Heroes"
 msgid "Age of Heroes + Khalifate"
-msgstr "La era de los héroes"
+msgstr "La era de los héroes + Khalifate"
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:217
@@ -127,6 +137,13 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"Una era que nos proporciona una facción adicional además de las otras seis "
+"de la era de los héroes. Las unidades de Khalifate no utilizan magia, en "
+"cambio requieren hacer un uso cuidadoso del tipo de terreno y coordinar sus "
+"ataques para cuando amanece o anochece.\n"
+"\n"
+"Esta era aún está en desarrollo, así que, por favor, informe de cualquier "
+"problema que pueda surgir."
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -138,7 +155,7 @@ msgstr "Dracos"
 #: data/multiplayer/factions/khalifate-aoh.cfg:4
 #: data/multiplayer/factions/khalifate-default.cfg:4
 msgid "Khalifate"
-msgstr ""
+msgstr "Califato"
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
@@ -272,7 +289,7 @@ msgstr "Sur"
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
 msgid "Aethermaw — Created by Doc Paterson"
-msgstr "Énterañas — Diseñado por Doc Paterson."
+msgstr "Énterañas — Diseñado por Doc Paterson"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:292
@@ -514,21 +531,21 @@ msgid ""
 "cave, and lay down to rest. He was awoken by a bone-chilling roar."
 msgstr ""
 "Xikkrisx de Syrsszk era un poderoso guerrero Saurio, enviado a esta región "
-"por los ancianos del Clan Rysssrylosszkk (traducción:''Los Enemigos-"
-"Cazadores-de-los-Ríos-que-Hierven\"). Los ancianos se estaban preparando "
-"para la guerra en un puesto de avanzada humano, y estaban muy necesitados de "
-"la poderosa magia de  Oxsrrsk, un Saurio Místico que fue visto por última "
-"vez yendo hacia el lago Ruaskkolin. Xikkrisx encontró el cuerpo petrificado "
-"de Oxsrrsk, junto con un pergamino atado cuidadosamente que se había sido "
+"por los ancianos del Clan Rysssrylosszkk (traducción: «Los Enemigos-"
+"Cazadores-de-los-Ríos-que-Hierven»). Los ancianos se estaban preparando para "
+"la guerra en un puesto de avanzada humano, y estaban muy necesitados de la "
+"poderosa magia de  Oxsrrsk, un Saurio Místico que fue visto por última vez "
+"yendo hacia el lago Ruaskkolin. Xikkrisx encontró el cuerpo petrificado de "
+"Oxsrrsk, junto con un pergamino atado cuidadosamente que se había sido "
 "aparentemente depositado en una pequeña grieta en el suelo de la cueva. "
-"Abrió el pergamino y leyó un breve pasaje de la mitad del texto:''Después de "
+"Abrió el pergamino y leyó un breve pasaje de la mitad del texto: «Después de "
 "estar atado y emitido desde el Mundo Superior, El espíritu enfurecido de "
-"Chak'kso buscó la liberación, y fue capaz de ejercer una influencia "
+"Chak’kso buscó la liberación, y fue capaz de ejercer una influencia "
 "corruptora sobre determinadas regiones del Mundo Superior, canalizada a "
-"través de \"senderos de piedra\" que se extienden desde la superficie a las "
+"través de «senderos de piedra» que se extienden desde la superficie a las "
 "profundidades de los Destinos Profundos. Esta rabia alteró los huevos de los "
-"grandes lagartos, dando forma a los cuerpos y espíritus hacia lass "
-"necesidades del odio de Chak'kso. Confundido, Xikkrisx fijó su atención en "
+"grandes lagartos, dando forma a los cuerpos y espíritus hacia las "
+"necesidades del odio de Chak’kso». Confundido, Xikkrisx fijó su atención en "
 "la tarea a realizar. Pensando que tal vez los ancianos podrían encontrar "
 "alguna forma de restaurar a Oxsrrsk, comenzó la larga y ardua tarea de "
 "transportar la estatua de nuevo a los dominios del Clan de Rysssrylosszkk. "
@@ -567,13 +584,13 @@ msgstr ""
 "Oxsrrsk es un poderoso Oráculo Saurio, que en una incursión contra el clan "
 "rival Xraxss, había adquirido (de la cámara acorazada del ahora muerto "
 "Oráculo Hesx-Rzzak) el más fascinante de los pergaminos. El pergamino se "
-"titulaba ''Ney'yks el de la Mirada de Granito,'' y trataba de una criatura "
-"conocida como ''Chak'kso Ney'yks'', un nombre que, en una antigua lengua "
-"sauria, significaba '' El niño más mayor de Chak'kso.'' Chak'kso se creía "
-"que había sido un poderoso semidiós de los Destinos Profundos, descrito como "
-"un''gran demonio de la tierra'' en las Historias Élficas. De acuerdo con "
-"estas historias, Chak'kso una vez había tratado de transformar toda la vida "
-"del planeta en piedra; tan grande fue su odio por las criaturas de carne y "
+"titulaba «Ney’yks el de la Mirada de Granito», y trataba de una criatura "
+"conocida como «Chak’kso Ney’yks», un nombre que, en una antigua lengua "
+"sauria, significaba «El niño más mayor de Chak’kso». Chak’kso se creía que "
+"había sido un poderoso semidiós de los Destinos Profundos, descrito como un "
+"«gran demonio de la tierra» en las Historias Élficas. De acuerdo con estas "
+"historias, Chak’kso una vez había tratado de transformar toda la vida del "
+"planeta en piedra; tan grande fue su odio por las criaturas de carne y "
 "hueso. Fue finalmente derrotado y sometido por poderosa magia, pero en los "
 "siglos posteriores a su destierro (hacia un reino muy por debajo de la "
 "superficie del mundo), una nueva raza de criaturas comenzó a aparecer en las "
@@ -582,9 +599,9 @@ msgstr ""
 "conocidos) provocaron estragos en el mundo de los vivos, convirtiendo a "
 "miles de ellos en piedra. Uno por uno, y con grandes sacrificios, los "
 "Basiliscos fueron derrotados. Todos, al parecer, excepto uno; el Basilisco "
-"conocido como ''Ney'yks,'' o ''El Niño más mayor,'' en la lengua moderna. "
+"conocido como «Ney’yks», o «El Niño más mayor», en la lengua moderna. "
 "Sumamente convencido de su capacidad para localizar y someter a esta "
-"poderosa criatura para su servicio, Oxsrrsk se puso en camino en su viaje ..."
+"poderosa criatura para su servicio, Oxsrrsk se puso en camino en su viaje..."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:122
@@ -765,7 +782,7 @@ msgstr ""
 "Sin embargo, no mucho más tarde, la comunidad local de woses oyó del "
 "acercamiento de un horrible monstruo, tan poderoso como para destruir con "
 "facilidad a los pocos woses que vivían en la zona. Se alejaron rápidamente "
-"(rápido para los woses, de todos modos), pero  a Bramwythl le dejaron atrás. "
+"(rápido para los woses, de todos modos), pero a Bramwythl le dejaron atrás. "
 "En su precipitación, nadie se acordó de buscarle y avisarle del peligro.\n"
 "Fue pillado por sorpresa por el Basilisco, y convertido en piedra antes de "
 "que siquiera reconociera a la bestia. Su forma petrificada aún permanece "
@@ -786,7 +803,7 @@ msgid ""
 msgstr ""
 "El general Talael Ryndoc vino a este lugar para luchar en un duelo contra el "
 "Gran Mariscal Aethec Corryn, pero los dos hombres nunca se encontraron cara "
-"a cara."
+"a cara. "
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:195
@@ -803,13 +820,13 @@ msgid ""
 "\n"
 "Perhaps he should not have shouted quite so loudly.... "
 msgstr ""
-"Las últimas palabras pronunciadas por el Gran Mariscal Aethec "
-"Corryn:''¡Talael Ryndoc! Estoy buscándote! ¡Voy a hacer mi camino de regreso "
-"hasta la mansión de Haldric, y a informar al tribunal de que fuiste "
-"demasiado cobarde para asistir a nuestro duelo! Tu desgracia será más "
-"angustiosa que la muerte que yo te habría dado!''\n"
+"Las últimas palabras pronunciadas por el Gran Mariscal Aethec Corryn: "
+"«¡Talael Ryndoc! Estoy buscándote! ¡Voy a hacer mi camino de regreso hasta "
+"la mansión de Haldric, y a informar al tribunal de que fuiste demasiado "
+"cobarde para asistir a nuestro duelo! Tu desgracia será más angustiosa que "
+"la muerte que yo te habría dado!»\n"
 " \n"
-" Quizás no debería haber gritado tan fuerte...."
+"Quizás no debería haber gritado tan fuerte.... "
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:204
@@ -891,7 +908,7 @@ msgid ""
 "the necromancers from these lands in 961 YW."
 msgstr ""
 "La Provincia Cynsaun fue nombrada en honor a la reina guerrera Cynsaun "
-"Primera, quien expulsó a los nigromantes de estas tierras en el año 961 DW."
+"Primera, quien expulsó a los nigromantes de estas tierras en el año 961 AñW."
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
@@ -979,7 +996,7 @@ msgstr "Humanos"
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1227
 msgid "Death of your leader"
-msgstr "Muerte de su líder."
+msgstr "Muerte de su líder"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1228
@@ -993,7 +1010,7 @@ msgstr ""
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1231
 msgid "Death of both of your team’s leaders"
-msgstr "Muerte de ambos líderes de su equipo."
+msgstr "Muerte de ambos líderes de su equipo"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1232
@@ -1006,12 +1023,12 @@ msgstr ""
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1253
 msgid "Survive and defeat all enemy waves"
-msgstr "Sobrevive a todos los ataques enemigos."
+msgstr "Sobrevive a todos los ataques enemigos"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1273
 msgid "Dark Forecast — a random survival scenario"
-msgstr "Pronóstico oscuro — un escenario de supervivencia aleatorio."
+msgstr "Pronóstico oscuro — un escenario de supervivencia aleatorio"
 
 # Suena raro decir que un archienemigo sea "final", ya que los archienemigos son (incluso en la elaboración de historias) únicos, con su propio caracter. Supuse que el final significaba que "venían" al final.
 #. [message]: speaker=narrator
@@ -1038,24 +1055,21 @@ msgid ""
 "<span color='green'>Rhuvaen:</span>\n"
 "• WML implementation"
 msgstr ""
-"Su objetivo es sobrevivir las oleadas enemigas y derrotar al final a sus "
-"archienemigos.\n"
+"Su objetivo es sobrevivir las oleadas enemigas y derrotar a los "
+"archienemigos finales.\n"
 "\n"
 "Las oleadas enviadas son generadas aleatoriamente y serán diferentes cada "
 "vez que se juegue a Pronóstico oscuro.\n"
-"\n"
 "\n"
 "Aparecen a lo largo del norte, sur y oeste de los límites del mapa, aunque "
 "es más probable que aparezcan por el borde oeste. Las oleadas generadas "
 "aparecen a intervalos parcialmente regulares.\n"
 "\n"
-"\n"
 "La meteorología también cambiará aleatoriamente, afectando el diseño del "
 "mapa.\n"
 "\n"
 "\n"
-"\n"
-"<span color='red'>Pronóstico oscuro fue realizado por:</span>\n"
+"<b>Pronóstico oscuro fue realizado por:</b>\n"
 "\n"
 "<span color='green'>jb</span>\n"
 "— diseño del mapa, generación de oleadas y concepto del escenario\n"
@@ -1152,8 +1166,8 @@ msgid ""
 "Fight through corridors and gardens, and dominate the eastern courtyard of "
 "what used to be the glorious city of Elensefar."
 msgstr ""
-"Pelea a travéz de corredores y jardines, y domina el patio este de lo que "
-"solía ser laa gloriosa ciudad de Elensefar."
+"Pelea a través de corredores y jardines, y domina el patio este de lo que "
+"solía ser la gloriosa ciudad de Elensefar."
 
 #. [time]: id=underground_illum
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:114
@@ -1462,7 +1476,7 @@ msgstr "2 jug. — Guarnición de mil aguijones"
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
 msgid "A strange place. Designed by Doc Paterson"
-msgstr "Un lugar extraño. Diseñado por Doc Paterson."
+msgstr "Un lugar extraño. Diseñado por Doc Paterson"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:85
@@ -1883,7 +1897,7 @@ msgid ""
 "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
 "center common."
 msgstr ""
-"Un mapa de 28X28 y 2 contra 2, con torreones auxiliares y una gran y caótica "
+"Un mapa de 24X28 y 2 contra 2, con torreones auxiliares y una gran y caótica "
 "batalla en el centro común."
 
 #. [multiplayer]: id=multiplayer_Auction-X
@@ -1996,12 +2010,12 @@ msgstr "Defensor"
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:428
 msgid "Survive all enemy attacks"
-msgstr "Sobrevive a todos los ataques enemigos."
+msgstr "Sobrevive a todos los ataques enemigos"
 
 #. [objective]: condition=lose
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:434
 msgid "Death of your team leaders"
-msgstr "Muerte de los líderes de su equipo."
+msgstr "Muerte de los líderes de su equipo"
 
 #. [note]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:439
@@ -2125,7 +2139,7 @@ msgstr ""
 "Un mapa de 40x30 y 3 contra 3. Es necesaria una coordinación flexible de su "
 "alianza para evitar ser superado en número. Los equipos se establecen con "
 "los jugadores 1, 4 y 5 contra 2, 3 y 6 (norte contra sur), pero también "
-"puede ser interesante establecer un equipo con los jugadores 1, 4 y 6 ó 1, 3 "
+"puede ser interesante establecer un equipo con los jugadores 1, 4 y 6 o 1, 3 "
 "y 6. Diseñado para 150 piezas de oro iniciales, tiene 44 aldeas."
 
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
@@ -2290,10 +2304,8 @@ msgstr ""
 "Una prueba de rendimiento de wesnoth, usa --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
 
-#, fuzzy
-#~| msgid "Random map"
 #~ msgid "Random map by YAMG"
-#~ msgstr "Mapa aleatorio"
+#~ msgstr "Mapa aleatorio por YAMG"
 
 #~ msgid "4p — Lagoon"
 #~ msgstr "4 jug. — Laguna"
