@@ -41,7 +41,7 @@ class commandline_options
 friend std::ostream& operator<<(std::ostream &os, const commandline_options& cmdline_opts);
 
 public:
-	commandline_options(int argc, char **argv);
+	commandline_options(const std::vector<std::string>& args);
 
 	/// BitsPerPixel specified by --bpp option.
 	boost::optional<int> bpp;
@@ -216,8 +216,8 @@ private:
 	std::vector<boost::tuple<unsigned int,std::string> > parse_to_uint_string_tuples_(const std::vector<std::string> &strings, char separator = ':');
 	/// A helper function splitting vector of strings of format unsigned int:string:string to vector of tuples (unsigned int,string,string)
 	std::vector<boost::tuple<unsigned int,std::string,std::string> > parse_to_uint_string_string_tuples_(const std::vector<std::string> &strings, char separator = ':');
-	int argc_;
-	char **argv_;
+	std::vector<std::string> args_;
+	std::string args0_;
 	boost::program_options::options_description all_;
 	boost::program_options::options_description visible_;
 	boost::program_options::options_description hidden_;

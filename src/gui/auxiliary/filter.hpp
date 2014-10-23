@@ -24,6 +24,7 @@
 #include "map_utils.hpp"
 #include "util.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 
 namespace gui2
 {

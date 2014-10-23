@@ -25,7 +25,7 @@
 #include "gui/widgets/window.hpp"
 #include "game_preferences.hpp"
 #include "utils/foreach.tpp"
-
+#include "serialization/unicode.hpp"
 #include <boost/bind.hpp>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__

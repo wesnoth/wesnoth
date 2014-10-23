@@ -24,6 +24,7 @@
 #include "gui/widgets/detail/register.tpp"
 #include "gui/widgets/settings.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 
 #include <boost/bind.hpp>
 

@@ -31,6 +31,7 @@
 #include "utils/foreach.tpp"
 
 #include "desktop/clipboard.hpp"
+#include "serialization/unicode.hpp"
 #include "../../game_preferences.hpp"
 #include "../../log.hpp"
 #include "../../resources.hpp"

@@ -23,6 +23,7 @@
 
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode_cast.hpp"
 #include "random_new.hpp"
 
 /// Dummy race used when a race is not yet known.

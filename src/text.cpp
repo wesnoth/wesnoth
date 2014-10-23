@@ -22,6 +22,7 @@
 #include "gui/lib/types/point.hpp"
 #include "font.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 #include "tstring.hpp"
 
 #include <boost/foreach.hpp>
