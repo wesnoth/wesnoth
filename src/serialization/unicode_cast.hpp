@@ -92,13 +92,12 @@ typename ucs4_convert_impl::enableif<TD, typename TS::value_type>::type unicode_
 		input, a single character.
 	@return an instance of TD
 */
-template<typename TD , typename TI>
-//TD unicode_cast(const TI& onechar)
-typename boost::enable_if<typename boost::is_arithmetic<TI>::type, TD >::type unicode_cast(const TI& onechar)
+template<typename TD>
+TD unicode_cast(ucs4::char_t onechar)
 {
 	using namespace ucs4_convert_impl;
 	typedef typename convert_impl<typename TD::value_type>::type t_impl_writer;
-	typedef typename convert_impl<TI>::type t_impl_reader;
+	typedef convert_impl<ucs4::char_t>::type t_impl_reader;
 	typedef typename std::back_insert_iterator<TD> t_outputitor;
 	
 	TD res;

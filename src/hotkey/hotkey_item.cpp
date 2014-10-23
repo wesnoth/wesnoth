@@ -462,7 +462,7 @@ void hotkey_item::save(config& item) const
 	if (get_hat()       >= 0) item["hat"]      = get_hat();
 	if (get_value()     >= 0) item["value"]    = get_value();
 	if (get_keycode()   >= 0) item["key"]      = SDL_GetKeyName(SDLKey(get_keycode()));
-	if (get_character() >= 0) item["key"]      = unicode_cast<utf8::string, ucs4::char_t>(get_character()); // Second template argument because get_character returns a signed int
+	if (get_character() >= 0) item["key"]      = unicode_cast<utf8::string>(static_cast<ucs4::char_t>(get_character()));
 	if (get_mouse()     >= 0) item["mouse"]    = get_mouse();
 	if (get_button()    >= 0) item["button"]   = get_button();
 
