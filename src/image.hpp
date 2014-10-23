@@ -251,6 +251,7 @@ namespace image {
 	std::string describe_versions();
 
 	void save_image(const locator& i_locator, const std::string& outfile);
+	void save_image(const surface& surf, const std::string& outfile);
 }
 
 #endif

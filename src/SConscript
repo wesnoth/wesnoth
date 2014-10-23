@@ -571,6 +571,9 @@ if env["PLATFORM"] == "win32":
 if env["notifications"]:
     wesnoth_sources.append("desktop/dbus_notification.cpp")
 
+if env["png"]:
+    wesnoth_sources.append("SDL_SavePNG/savepng.cpp")
+
 wesnoth_sources.extend(client_env.Object("game_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
 
 libwesnoth_extras = client_env.Library("wesnoth_extras", wesnoth_sources)

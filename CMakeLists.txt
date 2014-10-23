@@ -85,6 +85,7 @@ option(ENABLE_LOW_MEM "Reduce memory usage by removing extra functionality" OFF)
 option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
 option(ENABLE_PANDORA "Add support for the OpenPandora by deactivating libvorbis support" OFF)
 option(ENABLE_SDL_GPU "Enable building with SDL_gpu (experimental" OFF)
+option(ENABLE_LIBPNG "Enable support for writing png files (screenshots, images)" ON)
 
 if(NOT DEFINED ENABLE_DISPLAY_REVISION)
 	# Test whether the code is used in a repository if not autorevision will
@@ -586,6 +587,12 @@ if(ENABLE_GAME)
 		endif(LIBDBUS_FOUND)
 	endif(ENABLE_NOTIFICATIONS)
 
+	find_package( PNG )
+	if(ENABLE_LIBPNG AND PNG_FOUND)
+		add_definitions(-DHAVE_LIBPNG)
+	else
+		message("Could not find lib PNG. Disabling support for writing PNG images.")	
+	endif()
 endif(ENABLE_GAME)
 
 if(ENABLE_POT_UPDATE_TARGET)
