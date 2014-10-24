@@ -583,8 +583,10 @@ bool game_launcher::play_render_image_mode()
 		return false;
 	}
 
-	std::string outfile = cmdline_opts_.render_image->substr(0, std::min(8ul,cmdline_opts_.render_image->length())) + ".bmp";
+	// A default output filename
+	std::string outfile = "wesnoth_image.bmp";
 
+	// If a output path was given as an argument, use that instead
 	if (cmdline_opts_.render_image_dst) {
 		outfile = *cmdline_opts_.render_image_dst;
 	}
