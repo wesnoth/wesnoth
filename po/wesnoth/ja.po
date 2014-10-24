@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth svn-trunk\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-10-11 10:43+0200\n"
+"POT-Creation-Date: 2014-10-24 20:20+0200\n"
 "PO-Revision-Date: 2013-01-11 21:14+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team:  <wesnoth-ja-translate@lists.sourceforge.jp>\n"
@@ -339,21 +339,21 @@ msgstr "ジョイスティック：スラスター無効範囲"
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:366
-#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:11983 src/actions/attack.cpp:983
 msgid "poisoned"
 msgstr "毒を受けた"
 
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:1837
+#: data/lua/wml/objectives.lua:12465
 msgid "Gold carryover:"
 msgstr "ゴールドの引き継ぎ:"
 
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:1838
+#: data/lua/wml/objectives.lua:12466
 msgid "Notes:"
 msgstr "メモ:"
 
@@ -578,109 +578,109 @@ msgid "Lithuanian Translation"
 msgstr "リトアニア語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2461
+#: data/core/about.cfg:2464
 msgid "Macedonian Translation"
 msgstr "マケドニア語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2468
+#: data/core/about.cfg:2471
 msgid "Marathi Translation"
 msgstr "マラーティー語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2477
+#: data/core/about.cfg:2480
 msgid "Norwegian Translation"
 msgstr "ノルウェー語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2502
+#: data/core/about.cfg:2505
 msgid "Old English Translation"
 msgstr "古英語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2520
+#: data/core/about.cfg:2523
 msgid "Polish Translation"
 msgstr "ポーランド語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2564
+#: data/core/about.cfg:2567
 msgid "Portuguese Translation"
 msgstr "ポルトガル語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2582
+#: data/core/about.cfg:2585
 msgid "Portuguese (Brazil) Translation"
 msgstr "ポルトガル語（ブラジル）翻訳"
 
 #. [about]
-#: data/core/about.cfg:2636
+#: data/core/about.cfg:2639
 msgid "Romanian Translation"
 msgstr "ルーマニア語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2644
+#: data/core/about.cfg:2647
 msgid "Russian Translation"
 msgstr "ロシア語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2733
+#: data/core/about.cfg:2736
 #, fuzzy
 msgid "Scottish Gaelic Translation"
 msgstr "ガリシア語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2742
+#: data/core/about.cfg:2745
 msgid "Serbian Translation"
 msgstr "セルビア語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2761
+#: data/core/about.cfg:2764
 msgid "Slovak Translation"
 msgstr "スロバキア語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2790
+#: data/core/about.cfg:2793
 msgid "Slovenian Translation"
 msgstr "スロベニア語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2806
+#: data/core/about.cfg:2809
 msgid "Spanish Translation"
 msgstr "スペイン語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2888
+#: data/core/about.cfg:2891
 msgid "Swedish Translation"
 msgstr "スウェーデン語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2929
+#: data/core/about.cfg:2932
 msgid "Turkish Translation"
 msgstr "トルコ語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2951
+#: data/core/about.cfg:2954
 #, fuzzy
 msgid "Ukrainian Translation"
 msgstr "ルーマニア語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2964
+#: data/core/about.cfg:2967
 msgid "Valencian (southern Catalan) Translation"
 msgstr "バレンシア語（カタロニア南部）翻訳"
 
 #. [about]
-#: data/core/about.cfg:2977
+#: data/core/about.cfg:2980
 msgid "Vietnamese Translation"
 msgstr "ベトナム語翻訳"
 
 #. [about]
-#: data/core/about.cfg:2996
+#: data/core/about.cfg:2999
 msgid "RACV’s Translation"
 msgstr "RACV 翻訳"
 
 #. [about]
-#: data/core/about.cfg:3003
+#: data/core/about.cfg:3006
 msgid "Bots"
 msgstr "ボット"
 
@@ -2663,12 +2663,12 @@ msgid "Turns run out"
 msgstr "時間切れ"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:1899
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12527
 msgid "Early finish bonus."
 msgstr "早期終了ボーナス。"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:1901
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12529
 msgid "No early finish bonus."
 msgstr "早期終了ボーナスなし。"
 
@@ -2681,7 +2681,7 @@ msgid "(early finish bonus)"
 msgstr "(早期終了ボーナス)"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:1909
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12537
 msgid "No gold carried over to the next scenario."
 msgstr "ゴールドは次のシナリオに引き継がれません。"
 
@@ -3173,67 +3173,67 @@ msgstr "DejaVu Sans,Andagii,WenQuanYi Zen Hei,Junicode"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:11983 src/actions/attack.cpp:983
 msgid "female^poisoned"
 msgstr "毒を受けた"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1357 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:988
 msgid "female^slowed"
 msgstr "遅くなった"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1357 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:988
 msgid "slowed"
 msgstr "遅くなった"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1358 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:11986 src/actions/attack.cpp:993
 msgid "female^petrified"
 msgstr "石化した"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1358 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:11986 src/actions/attack.cpp:993
 msgid "petrified"
 msgstr "石化した"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1359
+#: data/lua/wml-tags.lua:11987
 msgid "female^unhealable"
 msgstr "回復不能"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1359
+#: data/lua/wml-tags.lua:11987
 msgid "unhealable"
 msgstr "回復不能"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1835 src/mp_game_utils.cpp:155
+#: data/lua/wml/objectives.lua:12463 src/mp_game_utils.cpp:157
 msgid "Victory:"
 msgstr "勝利条件:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1836
+#: data/lua/wml/objectives.lua:12464
 msgid "Defeat:"
 msgstr "敗北条件:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1856
+#: data/lua/wml/objectives.lua:12484
 msgid "(%d turns left)"
 msgstr "（残り %d ターン）"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1858
+#: data/lua/wml/objectives.lua:12486
 msgid "(this turn left)"
 msgstr "（このターンまで）"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1911
+#: data/lua/wml/objectives.lua:12539
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "次のシナリオに %d%% のゴールドを引き継ぎます。"
 
@@ -4948,7 +4948,7 @@ msgstr "テスト用シナリオ"
 msgid "Replay"
 msgstr "リプレイ"
 
-#: src/dialogs.cpp:840 src/savegame.cpp:1096
+#: src/dialogs.cpp:840 src/savegame.cpp:1122
 msgid "Turn"
 msgstr "ターン"
 
@@ -6263,7 +6263,7 @@ msgstr "無効な場所"
 msgid "Planning mode activated!"
 msgstr "デバッグモードが有効になりました！"
 
-#: src/menu_events.cpp:3260 src/playsingle_controller.cpp:233
+#: src/menu_events.cpp:3260 src/playsingle_controller.cpp:232
 msgid "Planning mode deactivated!"
 msgstr "デバッグモードが無効になりました！"
 
@@ -6324,15 +6324,15 @@ msgid ""
 "disabled."
 msgstr ""
 
-#: src/mp_game_utils.cpp:111
+#: src/mp_game_utils.cpp:113
 msgid "Cannot find era $era"
 msgstr "$era の時代が見つかりません"
 
-#: src/mp_game_utils.cpp:157
+#: src/mp_game_utils.cpp:159
 msgid "Defeat enemy leader(s)"
 msgstr "敵のリーダー（達）を倒す"
 
-#: src/mp_game_utils.cpp:273 src/multiplayer.cpp:239 src/multiplayer.cpp:324
+#: src/mp_game_utils.cpp:275 src/multiplayer.cpp:239 src/multiplayer.cpp:324
 msgid "Connection timed out"
 msgstr "接続時間切れ"
 
@@ -7085,7 +7085,7 @@ msgid "current local time"
 msgstr "現在のローカル時間"
 
 #: src/play_controller.cpp:1199 src/savegame.cpp:406 src/savegame.cpp:418
-#: src/savegame.cpp:1052 src/savegame.cpp:1054
+#: src/savegame.cpp:1078 src/savegame.cpp:1080
 msgid "Auto-Save"
 msgstr "自動保存"
 
@@ -7151,7 +7151,7 @@ msgstr "あなたは敗れました！"
 msgid "Error while reading the WML: "
 msgstr "WML 読み込み中のエラー: "
 
-#: src/playcampaign.cpp:504 src/playsingle_controller.cpp:504
+#: src/playcampaign.cpp:504 src/playsingle_controller.cpp:503
 msgid "Game Over"
 msgstr "ゲームオーバー"
 
@@ -7192,49 +7192,49 @@ msgstr ""
 "\n"
 "ゲームのエラーログを保存しますか？"
 
-#: src/playsingle_controller.cpp:231
+#: src/playsingle_controller.cpp:230
 #, fuzzy
 #| msgid "(press $hotkey to keep moving)"
 msgid "(press $hotkey to deactivate)"
 msgstr "（移動し続けるには $hotkey を押して下さい）"
 
-#: src/playsingle_controller.cpp:277
+#: src/playsingle_controller.cpp:276
 msgid "Remaining gold: "
 msgstr "残っているゴールド: "
 
-#: src/playsingle_controller.cpp:281
+#: src/playsingle_controller.cpp:280
 msgid "Early finish bonus: "
 msgstr "早期終了ボーナス: "
 
-#: src/playsingle_controller.cpp:283
+#: src/playsingle_controller.cpp:282
 msgid "per turn"
 msgstr "／ターン"
 
-#: src/playsingle_controller.cpp:284
+#: src/playsingle_controller.cpp:283
 msgid "Turns finished early: "
 msgstr "早期に終わったターン: "
 
-#: src/playsingle_controller.cpp:286
+#: src/playsingle_controller.cpp:285
 msgid "Bonus: "
 msgstr "ボーナス: "
 
-#: src/playsingle_controller.cpp:289
+#: src/playsingle_controller.cpp:288
 msgid "Gold: "
 msgstr "所持金額: "
 
-#: src/playsingle_controller.cpp:293
+#: src/playsingle_controller.cpp:292
 msgid "Carry over percentage: "
 msgstr "持ち越し率: "
 
-#: src/playsingle_controller.cpp:296
+#: src/playsingle_controller.cpp:295
 msgid "Bonus Gold: "
 msgstr "ボーナス金額: "
 
-#: src/playsingle_controller.cpp:298
+#: src/playsingle_controller.cpp:297
 msgid "Retained Gold: "
 msgstr "保持金額: "
 
-#: src/playsingle_controller.cpp:311
+#: src/playsingle_controller.cpp:310
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -7245,7 +7245,7 @@ msgstr[0] ""
 "次のシナリオの開始ゴールドは次のシナリオに設定されている最小ゴールドに $gold "
 "を加えたものになります。"
 
-#: src/playsingle_controller.cpp:319
+#: src/playsingle_controller.cpp:318
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
@@ -7254,7 +7254,7 @@ msgstr[0] ""
 "次のシナリオの開始ゴールドは次のシナリオに設定されている最小ゴールドになりま"
 "す。"
 
-#: src/playsingle_controller.cpp:327
+#: src/playsingle_controller.cpp:326
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -7265,11 +7265,11 @@ msgstr[0] ""
 "次のシナリオの開始ゴールドは $gold あるいは次のシナリオに設定されている最小の"
 "開始ゴールドのどちらか高い方になります。"
 
-#: src/playsingle_controller.cpp:505
+#: src/playsingle_controller.cpp:504
 msgid "The game is over."
 msgstr "ゲーム終了です。"
 
-#: src/playsingle_controller.cpp:595
+#: src/playsingle_controller.cpp:594
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -7277,7 +7277,7 @@ msgstr ""
 "ネットワークが切断されたため、ゲームを続けられません。\n"
 "このゲームを保存しますか？"
 
-#: src/playsingle_controller.cpp:794
+#: src/playsingle_controller.cpp:793
 msgid "It is now $name|’s turn"
 msgstr "$name| のターンです"
 
@@ -7315,7 +7315,7 @@ msgstr ""
 "このリプレイは破損しています。これ以上再生できません。\n"
 "このゲームを保存しますか？"
 
-#: src/reports.cpp:159 src/savegame.cpp:845
+#: src/reports.cpp:159 src/savegame.cpp:871
 msgid "Name: "
 msgstr "名前: "
 
@@ -7590,19 +7590,19 @@ msgstr "この保存データはゲームとは異なるバージョンです。
 msgid "This is not a multiplayer save."
 msgstr "マルチプレイヤーの保存データではありません"
 
-#: src/savegame.cpp:763
+#: src/savegame.cpp:789
 msgid "The game could not be saved: "
 msgstr "ゲームは保存できませんでした: "
 
-#: src/savegame.cpp:845
+#: src/savegame.cpp:871
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "保存データは既に存在します。上書きしますか？"
 
-#: src/savegame.cpp:846
+#: src/savegame.cpp:872
 msgid "Overwrite?"
 msgstr "上書きしますか？"
 
-#: src/savegame.cpp:856
+#: src/savegame.cpp:882
 #, fuzzy
 #| msgid "Save names should not end on '.gz'. Please choose a different name."
 msgid ""
@@ -7610,33 +7610,33 @@ msgid ""
 msgstr ""
 "保存名は、末尾に「 .gz 」をつけることはできません。違う名前をつけて下さい。"
 
-#: src/savegame.cpp:922
+#: src/savegame.cpp:948
 msgid "Saved"
 msgstr "保存された"
 
-#: src/savegame.cpp:922
+#: src/savegame.cpp:948
 #, fuzzy
 #| msgid "The game has been saved"
 msgid "The game has been saved."
 msgstr "ゲームを保存しました。"
 
-#: src/savegame.cpp:953 src/savegame.cpp:974
+#: src/savegame.cpp:979 src/savegame.cpp:1000
 msgid "Could not write to file"
 msgstr "ファイルに書き込みできませんでした。"
 
-#: src/savegame.cpp:1008
+#: src/savegame.cpp:1034
 msgid "Save Replay"
 msgstr "リプレイを保存する"
 
-#: src/savegame.cpp:1017
+#: src/savegame.cpp:1043
 msgid "replay"
 msgstr "リプレイ"
 
-#: src/savegame.cpp:1035
+#: src/savegame.cpp:1061
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "ゲームを自動保存できませんでした。手動で保存して下さい。"
 
-#: src/savegame.cpp:1084
+#: src/savegame.cpp:1110
 msgid "Save Game"
 msgstr "ゲームの保存"
 

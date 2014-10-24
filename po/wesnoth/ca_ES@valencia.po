@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.8+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-10-11 10:43+0200\n"
+"POT-Creation-Date: 2014-10-24 20:20+0200\n"
 "PO-Revision-Date: 2009-01-31 21:25+0100\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -333,21 +333,21 @@ msgstr ""
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:366
-#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:11983 src/actions/attack.cpp:983
 msgid "poisoned"
 msgstr "enverinat"
 
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:1837
+#: data/lua/wml/objectives.lua:12465
 msgid "Gold carryover:"
 msgstr ""
 
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:1838
+#: data/lua/wml/objectives.lua:12466
 msgid "Notes:"
 msgstr ""
 
@@ -575,114 +575,114 @@ msgid "Lithuanian Translation"
 msgstr "Traducció al lituà"
 
 #. [about]
-#: data/core/about.cfg:2461
+#: data/core/about.cfg:2464
 msgid "Macedonian Translation"
 msgstr "Traducció al macedònic"
 
 #. [about]
-#: data/core/about.cfg:2468
+#: data/core/about.cfg:2471
 #, fuzzy
 msgid "Marathi Translation"
 msgstr "Traducció al llatí"
 
 #. [about]
-#: data/core/about.cfg:2477
+#: data/core/about.cfg:2480
 msgid "Norwegian Translation"
 msgstr "Traducció al noruec"
 
 #. [about]
-#: data/core/about.cfg:2502
+#: data/core/about.cfg:2505
 #, fuzzy
 msgid "Old English Translation"
 msgstr "Traducció a l'anglès (Gran Bretanya)"
 
 #. [about]
-#: data/core/about.cfg:2520
+#: data/core/about.cfg:2523
 msgid "Polish Translation"
 msgstr "Traducció al polonès"
 
 #. [about]
-#: data/core/about.cfg:2564
+#: data/core/about.cfg:2567
 msgid "Portuguese Translation"
 msgstr "Traducció al portuguès"
 
 #. [about]
-#: data/core/about.cfg:2582
+#: data/core/about.cfg:2585
 msgid "Portuguese (Brazil) Translation"
 msgstr "Traducció al portuguès (Brasil)"
 
 #. [about]
-#: data/core/about.cfg:2636
+#: data/core/about.cfg:2639
 msgid "Romanian Translation"
 msgstr "Traducció al romanès"
 
 #. [about]
-#: data/core/about.cfg:2644
+#: data/core/about.cfg:2647
 msgid "Russian Translation"
 msgstr "Traducció al rus"
 
 #. [about]
-#: data/core/about.cfg:2733
+#: data/core/about.cfg:2736
 #, fuzzy
 #| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
 msgstr "Traducció al gallec"
 
 #. [about]
-#: data/core/about.cfg:2742
+#: data/core/about.cfg:2745
 msgid "Serbian Translation"
 msgstr "Traducció al serbi"
 
 #. [about]
-#: data/core/about.cfg:2761
+#: data/core/about.cfg:2764
 msgid "Slovak Translation"
 msgstr "Traducció a l'eslovac"
 
 #. [about]
-#: data/core/about.cfg:2790
+#: data/core/about.cfg:2793
 msgid "Slovenian Translation"
 msgstr "Traducció a l'eslovè"
 
 #. [about]
-#: data/core/about.cfg:2806
+#: data/core/about.cfg:2809
 msgid "Spanish Translation"
 msgstr "Traducció al castellà"
 
 #. [about]
-#: data/core/about.cfg:2888
+#: data/core/about.cfg:2891
 msgid "Swedish Translation"
 msgstr "Traducció al suec"
 
 #. [about]
-#: data/core/about.cfg:2929
+#: data/core/about.cfg:2932
 msgid "Turkish Translation"
 msgstr "Traducció al turc"
 
 #. [about]
-#: data/core/about.cfg:2951
+#: data/core/about.cfg:2954
 #, fuzzy
 #| msgid "Romanian Translation"
 msgid "Ukrainian Translation"
 msgstr "Traducció al romanès"
 
 #. [about]
-#: data/core/about.cfg:2964
+#: data/core/about.cfg:2967
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Traducció al valencià (català meridional)"
 
 #. [about]
-#: data/core/about.cfg:2977
+#: data/core/about.cfg:2980
 #, fuzzy
 msgid "Vietnamese Translation"
 msgstr "Traducció al xinès"
 
 #. [about]
-#: data/core/about.cfg:2996
+#: data/core/about.cfg:2999
 msgid "RACV’s Translation"
 msgstr "Traducció a l'idioma de la RACV"
 
 #. [about]
-#: data/core/about.cfg:3003
+#: data/core/about.cfg:3006
 msgid "Bots"
 msgstr "Robots"
 
@@ -2599,13 +2599,13 @@ msgid "Turns run out"
 msgstr "Torns: "
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:1899
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12527
 #, fuzzy
 msgid "Early finish bonus."
 msgstr "Bonificació per rapidesa: "
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:1901
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12529
 #, fuzzy
 msgid "No early finish bonus."
 msgstr "Bonificació per rapidesa: "
@@ -2621,7 +2621,7 @@ msgid "(early finish bonus)"
 msgstr "Bonificació per rapidesa: "
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:1909
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12537
 msgid "No gold carried over to the next scenario."
 msgstr ""
 
@@ -3117,70 +3117,70 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:11983 src/actions/attack.cpp:983
 msgid "female^poisoned"
 msgstr "enverinada"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1357 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:988
 msgid "female^slowed"
 msgstr "alentida"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1357 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:988
 msgid "slowed"
 msgstr "alentit"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1358 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:11986 src/actions/attack.cpp:993
 #, fuzzy
 msgid "female^petrified"
 msgstr "enverinada"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1358 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:11986 src/actions/attack.cpp:993
 msgid "petrified"
 msgstr ""
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1359
+#: data/lua/wml-tags.lua:11987
 #, fuzzy
 msgid "female^unhealable"
 msgstr "no morta"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1359
+#: data/lua/wml-tags.lua:11987
 #, fuzzy
 msgid "unhealable"
 msgstr "Impenetrable"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1835 src/mp_game_utils.cpp:155
+#: data/lua/wml/objectives.lua:12463 src/mp_game_utils.cpp:157
 msgid "Victory:"
 msgstr "Victòria:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1836
+#: data/lua/wml/objectives.lua:12464
 msgid "Defeat:"
 msgstr "Derrota:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1856
+#: data/lua/wml/objectives.lua:12484
 msgid "(%d turns left)"
 msgstr ""
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1858
+#: data/lua/wml/objectives.lua:12486
 msgid "(this turn left)"
 msgstr ""
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1911
+#: data/lua/wml/objectives.lua:12539
 msgid "%d%% of gold carried over to the next scenario."
 msgstr ""
 
@@ -4857,7 +4857,7 @@ msgstr "Escenari remot"
 msgid "Replay"
 msgstr "Repetició"
 
-#: src/dialogs.cpp:840 src/savegame.cpp:1096
+#: src/dialogs.cpp:840 src/savegame.cpp:1122
 msgid "Turn"
 msgstr "Torn"
 
@@ -6205,7 +6205,7 @@ msgstr "Color no vàlid"
 msgid "Planning mode activated!"
 msgstr "Mode depuració activat!"
 
-#: src/menu_events.cpp:3260 src/playsingle_controller.cpp:233
+#: src/menu_events.cpp:3260 src/playsingle_controller.cpp:232
 #, fuzzy
 msgid "Planning mode deactivated!"
 msgstr "Mode depuració desactivat!"
@@ -6265,18 +6265,18 @@ msgid ""
 "disabled."
 msgstr ""
 
-#: src/mp_game_utils.cpp:111
+#: src/mp_game_utils.cpp:113
 msgid "Cannot find era $era"
 msgstr "No ha estat possible trobar $era."
 
-#: src/mp_game_utils.cpp:157
+#: src/mp_game_utils.cpp:159
 #, fuzzy
 msgid "Defeat enemy leader(s)"
 msgstr ""
 "Victòria:\n"
 "@Derrota els líders enemics"
 
-#: src/mp_game_utils.cpp:273 src/multiplayer.cpp:239 src/multiplayer.cpp:324
+#: src/mp_game_utils.cpp:275 src/multiplayer.cpp:239 src/multiplayer.cpp:324
 msgid "Connection timed out"
 msgstr "Connexió perduda."
 
@@ -7029,7 +7029,7 @@ msgid "current local time"
 msgstr "Mantenidor actual"
 
 #: src/play_controller.cpp:1199 src/savegame.cpp:406 src/savegame.cpp:418
-#: src/savegame.cpp:1052 src/savegame.cpp:1054
+#: src/savegame.cpp:1078 src/savegame.cpp:1080
 msgid "Auto-Save"
 msgstr "Partida alçada automàticament"
 
@@ -7097,7 +7097,7 @@ msgstr "Heu estat derrotat!"
 msgid "Error while reading the WML: "
 msgstr "S'ha produït un error mentre es llegia el WML: "
 
-#: src/playcampaign.cpp:504 src/playsingle_controller.cpp:504
+#: src/playcampaign.cpp:504 src/playsingle_controller.cpp:503
 msgid "Game Over"
 msgstr "Partida perduda"
 
@@ -7131,49 +7131,49 @@ msgid ""
 "Do you want to save an error log of your game?"
 msgstr ""
 
-#: src/playsingle_controller.cpp:231
+#: src/playsingle_controller.cpp:230
 #, fuzzy
 #| msgid "(press $hotkey to keep moving)"
 msgid "(press $hotkey to deactivate)"
 msgstr "(premeu $hotkey per continuar)"
 
-#: src/playsingle_controller.cpp:277
+#: src/playsingle_controller.cpp:276
 msgid "Remaining gold: "
 msgstr "Or restant: "
 
-#: src/playsingle_controller.cpp:281
+#: src/playsingle_controller.cpp:280
 msgid "Early finish bonus: "
 msgstr "Bonificació per rapidesa: "
 
-#: src/playsingle_controller.cpp:283
+#: src/playsingle_controller.cpp:282
 msgid "per turn"
 msgstr "per torn"
 
-#: src/playsingle_controller.cpp:284
+#: src/playsingle_controller.cpp:283
 msgid "Turns finished early: "
 msgstr "Torns acabats aviat: "
 
-#: src/playsingle_controller.cpp:286
+#: src/playsingle_controller.cpp:285
 msgid "Bonus: "
 msgstr "Bonificació: "
 
-#: src/playsingle_controller.cpp:289
+#: src/playsingle_controller.cpp:288
 msgid "Gold: "
 msgstr "Or: "
 
-#: src/playsingle_controller.cpp:293
+#: src/playsingle_controller.cpp:292
 msgid "Carry over percentage: "
 msgstr ""
 
-#: src/playsingle_controller.cpp:296
+#: src/playsingle_controller.cpp:295
 msgid "Bonus Gold: "
 msgstr "Bonificació d'or: "
 
-#: src/playsingle_controller.cpp:298
+#: src/playsingle_controller.cpp:297
 msgid "Retained Gold: "
 msgstr "Or conservat: "
 
-#: src/playsingle_controller.cpp:311
+#: src/playsingle_controller.cpp:310
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -7183,7 +7183,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/playsingle_controller.cpp:319
+#: src/playsingle_controller.cpp:318
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
@@ -7191,7 +7191,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/playsingle_controller.cpp:327
+#: src/playsingle_controller.cpp:326
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -7201,11 +7201,11 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/playsingle_controller.cpp:505
+#: src/playsingle_controller.cpp:504
 msgid "The game is over."
 msgstr "La partida ha acabat."
 
-#: src/playsingle_controller.cpp:595
+#: src/playsingle_controller.cpp:594
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -7214,7 +7214,7 @@ msgstr ""
 "S'ha produït una desconnexió de la xarxa i la partida no pot continuar. "
 "Voleu alçar la partida?"
 
-#: src/playsingle_controller.cpp:794
+#: src/playsingle_controller.cpp:793
 msgid "It is now $name|’s turn"
 msgstr "És el torn de $name|."
 
@@ -7253,7 +7253,7 @@ msgstr ""
 "S'ha produït una desconnexió de la xarxa i la partida no pot continuar. "
 "Voleu alçar la partida?"
 
-#: src/reports.cpp:159 src/savegame.cpp:845
+#: src/reports.cpp:159 src/savegame.cpp:871
 msgid "Name: "
 msgstr "Nom: "
 
@@ -7559,20 +7559,20 @@ msgstr ""
 msgid "This is not a multiplayer save."
 msgstr "Este fitxer no correspon a una partida multijugador."
 
-#: src/savegame.cpp:763
+#: src/savegame.cpp:789
 #, fuzzy
 msgid "The game could not be saved: "
 msgstr "No s'ha pogut alçar la partida."
 
-#: src/savegame.cpp:845
+#: src/savegame.cpp:871
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Ja existix una partida amb este nom. Voleu sobreescriure-la?"
 
-#: src/savegame.cpp:846
+#: src/savegame.cpp:872
 msgid "Overwrite?"
 msgstr "Voleu sobreescriure?"
 
-#: src/savegame.cpp:856
+#: src/savegame.cpp:882
 #, fuzzy
 #| msgid "Save names should not end on '.gz'. Please choose a different name."
 msgid ""
@@ -7581,35 +7581,35 @@ msgstr ""
 "Els noms de les partides alçades no poden acabar en «.gz». Per favor, trieu "
 "un altre nom."
 
-#: src/savegame.cpp:922
+#: src/savegame.cpp:948
 msgid "Saved"
 msgstr "Partida alçada"
 
-#: src/savegame.cpp:922
+#: src/savegame.cpp:948
 #, fuzzy
 #| msgid "The game has been saved"
 msgid "The game has been saved."
 msgstr "La partida ha estat alçada."
 
-#: src/savegame.cpp:953 src/savegame.cpp:974
+#: src/savegame.cpp:979 src/savegame.cpp:1000
 msgid "Could not write to file"
 msgstr "No ha estat possible escriure al fitxer."
 
-#: src/savegame.cpp:1008
+#: src/savegame.cpp:1034
 msgid "Save Replay"
 msgstr "Alça la repetició"
 
-#: src/savegame.cpp:1017
+#: src/savegame.cpp:1043
 msgid "replay"
 msgstr "repetició"
 
-#: src/savegame.cpp:1035
+#: src/savegame.cpp:1061
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "No ha estat possible alçar la partida automàticament. Per favor, alceu-la "
 "manualment."
 
-#: src/savegame.cpp:1084
+#: src/savegame.cpp:1110
 msgid "Save Game"
 msgstr "Alça partida"
 

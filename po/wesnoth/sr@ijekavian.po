@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-10-11 10:43+0200\n"
+"POT-Creation-Date: 2014-10-24 20:20+0200\n"
 "PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -336,21 +336,21 @@ msgstr "Џојстик: мртва зона ручке потиска"
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:366
-#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:11983 src/actions/attack.cpp:983
 msgid "poisoned"
 msgstr "отрован"
 
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:1837
+#: data/lua/wml/objectives.lua:12465
 msgid "Gold carryover:"
 msgstr "Пренесено злато:"
 
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:1838
+#: data/lua/wml/objectives.lua:12466
 msgid "Notes:"
 msgstr "Белешке:"
 
@@ -578,112 +578,112 @@ msgid "Lithuanian Translation"
 msgstr "Литвански превод"
 
 #. [about]
-#: data/core/about.cfg:2461
+#: data/core/about.cfg:2464
 msgid "Macedonian Translation"
 msgstr "Македонски превод"
 
 # well-spelled: Марати
 #. [about]
-#: data/core/about.cfg:2468
+#: data/core/about.cfg:2471
 msgid "Marathi Translation"
 msgstr "Марати превод"
 
 #. [about]
-#: data/core/about.cfg:2477
+#: data/core/about.cfg:2480
 msgid "Norwegian Translation"
 msgstr "Норвешки превод"
 
 #. [about]
-#: data/core/about.cfg:2502
+#: data/core/about.cfg:2505
 msgid "Old English Translation"
 msgstr "Староенглески превод"
 
 #. [about]
-#: data/core/about.cfg:2520
+#: data/core/about.cfg:2523
 msgid "Polish Translation"
 msgstr "Пољски превод"
 
 #. [about]
-#: data/core/about.cfg:2564
+#: data/core/about.cfg:2567
 msgid "Portuguese Translation"
 msgstr "Португалски превод"
 
 #. [about]
-#: data/core/about.cfg:2582
+#: data/core/about.cfg:2585
 msgid "Portuguese (Brazil) Translation"
 msgstr "Португалски бразилски превод"
 
 #. [about]
-#: data/core/about.cfg:2636
+#: data/core/about.cfg:2639
 msgid "Romanian Translation"
 msgstr "Румунски превод"
 
 #. [about]
-#: data/core/about.cfg:2644
+#: data/core/about.cfg:2647
 msgid "Russian Translation"
 msgstr "Руски превод"
 
 # well-spelled: Галицијански
 #. [about]
-#: data/core/about.cfg:2733
+#: data/core/about.cfg:2736
 #, fuzzy
 #| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
 msgstr "Галицијански превод"
 
 #. [about]
-#: data/core/about.cfg:2742
+#: data/core/about.cfg:2745
 msgid "Serbian Translation"
 msgstr "Српски превод"
 
 #. [about]
-#: data/core/about.cfg:2761
+#: data/core/about.cfg:2764
 msgid "Slovak Translation"
 msgstr "Словачки превод"
 
 #. [about]
-#: data/core/about.cfg:2790
+#: data/core/about.cfg:2793
 msgid "Slovenian Translation"
 msgstr "Словеначки превод"
 
 #. [about]
-#: data/core/about.cfg:2806
+#: data/core/about.cfg:2809
 msgid "Spanish Translation"
 msgstr "Шпански превод"
 
 #. [about]
-#: data/core/about.cfg:2888
+#: data/core/about.cfg:2891
 msgid "Swedish Translation"
 msgstr "Шведски превод"
 
 #. [about]
-#: data/core/about.cfg:2929
+#: data/core/about.cfg:2932
 msgid "Turkish Translation"
 msgstr "Турски превод"
 
 #. [about]
-#: data/core/about.cfg:2951
+#: data/core/about.cfg:2954
 msgid "Ukrainian Translation"
 msgstr "Украјински превод"
 
 # well-spelled: јужнокаталонски
 #. [about]
-#: data/core/about.cfg:2964
+#: data/core/about.cfg:2967
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Валенсијски (јужнокаталонски) превод"
 
 #. [about]
-#: data/core/about.cfg:2977
+#: data/core/about.cfg:2980
 msgid "Vietnamese Translation"
 msgstr "Вијетнамски превод"
 
 #. [about]
-#: data/core/about.cfg:2996
+#: data/core/about.cfg:2999
 msgid "RACV’s Translation"
 msgstr "Валенсијски (РАЦВ) превод"
 
 #. [about]
-#: data/core/about.cfg:3003
+#: data/core/about.cfg:3006
 msgid "Bots"
 msgstr "Ботови"
 
@@ -2672,12 +2672,12 @@ msgid "Turns run out"
 msgstr "Истекну ли потези"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:1899
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12527
 msgid "Early finish bonus."
 msgstr "Бонус за рани завршетак."
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:1901
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12529
 msgid "No early finish bonus."
 msgstr "Без бонуса за рани завршетак."
 
@@ -2690,7 +2690,7 @@ msgid "(early finish bonus)"
 msgstr "(бонус за рани завршетак)"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:1909
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12537
 msgid "No gold carried over to the next scenario."
 msgstr "Злато се не преноси у сљедећи сценарио."
 
@@ -3193,67 +3193,67 @@ msgstr "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:11983 src/actions/attack.cpp:983
 msgid "female^poisoned"
 msgstr "отрована"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1357 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:988
 msgid "female^slowed"
 msgstr "успорена"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1357 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:988
 msgid "slowed"
 msgstr "успорен"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1358 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:11986 src/actions/attack.cpp:993
 msgid "female^petrified"
 msgstr "окамењена"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1358 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:11986 src/actions/attack.cpp:993
 msgid "petrified"
 msgstr "окамењен"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1359
+#: data/lua/wml-tags.lua:11987
 msgid "female^unhealable"
 msgstr "неисцјељива"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1359
+#: data/lua/wml-tags.lua:11987
 msgid "unhealable"
 msgstr "неисцјељив"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1835 src/mp_game_utils.cpp:155
+#: data/lua/wml/objectives.lua:12463 src/mp_game_utils.cpp:157
 msgid "Victory:"
 msgstr "побједа:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1836
+#: data/lua/wml/objectives.lua:12464
 msgid "Defeat:"
 msgstr "пораз:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1856
+#: data/lua/wml/objectives.lua:12484
 msgid "(%d turns left)"
 msgstr "(још %d потеза)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1858
+#: data/lua/wml/objectives.lua:12486
 msgid "(this turn left)"
 msgstr "(последњи потез)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1911
+#: data/lua/wml/objectives.lua:12539
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% злата се преноси у сљедећи сценарио."
 
@@ -5039,7 +5039,7 @@ msgstr "Пробни сценарио"
 msgid "Replay"
 msgstr "Снимак"
 
-#: src/dialogs.cpp:840 src/savegame.cpp:1096
+#: src/dialogs.cpp:840 src/savegame.cpp:1122
 msgid "Turn"
 msgstr "потез"
 
@@ -6362,7 +6362,7 @@ msgstr "Лоша локација"
 msgid "Planning mode activated!"
 msgstr "Режим планирања активиран!"
 
-#: src/menu_events.cpp:3260 src/playsingle_controller.cpp:233
+#: src/menu_events.cpp:3260 src/playsingle_controller.cpp:232
 msgid "Planning mode deactivated!"
 msgstr "Режим планирања деактивиран!"
 
@@ -6423,15 +6423,15 @@ msgid ""
 "disabled."
 msgstr ""
 
-#: src/mp_game_utils.cpp:111
+#: src/mp_game_utils.cpp:113
 msgid "Cannot find era $era"
 msgstr "Не могу да нађем епоху $era"
 
-#: src/mp_game_utils.cpp:157
+#: src/mp_game_utils.cpp:159
 msgid "Defeat enemy leader(s)"
 msgstr "Поразиш ли противничке вође"
 
-#: src/mp_game_utils.cpp:273 src/multiplayer.cpp:239 src/multiplayer.cpp:324
+#: src/mp_game_utils.cpp:275 src/multiplayer.cpp:239 src/multiplayer.cpp:324
 msgid "Connection timed out"
 msgstr "Веза је истекла."
 
@@ -7187,7 +7187,7 @@ msgid "current local time"
 msgstr "тренутно локално вријеме"
 
 #: src/play_controller.cpp:1199 src/savegame.cpp:406 src/savegame.cpp:418
-#: src/savegame.cpp:1052 src/savegame.cpp:1054
+#: src/savegame.cpp:1078 src/savegame.cpp:1080
 msgid "Auto-Save"
 msgstr "Аутопозиција"
 
@@ -7253,7 +7253,7 @@ msgstr "Поражени сте!"
 msgid "Error while reading the WML: "
 msgstr "Грешка при читању ВМЛ-а: "
 
-#: src/playcampaign.cpp:504 src/playsingle_controller.cpp:504
+#: src/playcampaign.cpp:504 src/playsingle_controller.cpp:503
 msgid "Game Over"
 msgstr "Крај игре"
 
@@ -7293,49 +7293,49 @@ msgstr ""
 "\n"
 "Желите ли да сачувате дневник грешака текуће партије?"
 
-#: src/playsingle_controller.cpp:231
+#: src/playsingle_controller.cpp:230
 #, fuzzy
 #| msgid "(press $hotkey to keep moving)"
 msgid "(press $hotkey to deactivate)"
 msgstr "(притисните $hotkey да продужи)"
 
-#: src/playsingle_controller.cpp:277
+#: src/playsingle_controller.cpp:276
 msgid "Remaining gold: "
 msgstr "преостало злато: "
 
-#: src/playsingle_controller.cpp:281
+#: src/playsingle_controller.cpp:280
 msgid "Early finish bonus: "
 msgstr "бонус за рани завршетак: "
 
-#: src/playsingle_controller.cpp:283
+#: src/playsingle_controller.cpp:282
 msgid "per turn"
 msgstr "по потезу"
 
-#: src/playsingle_controller.cpp:284
+#: src/playsingle_controller.cpp:283
 msgid "Turns finished early: "
 msgstr "потеза завршено раније: "
 
-#: src/playsingle_controller.cpp:286
+#: src/playsingle_controller.cpp:285
 msgid "Bonus: "
 msgstr "бонус: "
 
-#: src/playsingle_controller.cpp:289
+#: src/playsingle_controller.cpp:288
 msgid "Gold: "
 msgstr "злато: "
 
-#: src/playsingle_controller.cpp:293
+#: src/playsingle_controller.cpp:292
 msgid "Carry over percentage: "
 msgstr "процената преношења: "
 
-#: src/playsingle_controller.cpp:296
+#: src/playsingle_controller.cpp:295
 msgid "Bonus Gold: "
 msgstr "бонус злата: "
 
-#: src/playsingle_controller.cpp:298
+#: src/playsingle_controller.cpp:297
 msgid "Retained Gold: "
 msgstr "задржано злато: "
 
-#: src/playsingle_controller.cpp:311
+#: src/playsingle_controller.cpp:310
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -7355,7 +7355,7 @@ msgstr[3] ""
 "Почињете наредни сценарио са једним златником додатим на задати најмањи "
 "почетни број."
 
-#: src/playsingle_controller.cpp:319
+#: src/playsingle_controller.cpp:318
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
@@ -7365,7 +7365,7 @@ msgstr[1] "Почињете наредни сценарио са задатим 
 msgstr[2] "Почињете наредни сценарио са задатим најмањим бројем златника."
 msgstr[3] "Почињете наредни сценарио са задатим најмањим бројем златника."
 
-#: src/playsingle_controller.cpp:327
+#: src/playsingle_controller.cpp:326
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -7385,11 +7385,11 @@ msgstr[3] ""
 "Почињете наредни сценарио са већим од једног златника и најмањег задатог "
 "почетног броја."
 
-#: src/playsingle_controller.cpp:505
+#: src/playsingle_controller.cpp:504
 msgid "The game is over."
 msgstr "Игра је завршена."
 
-#: src/playsingle_controller.cpp:595
+#: src/playsingle_controller.cpp:594
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -7397,7 +7397,7 @@ msgstr ""
 "Мрежна веза је прекинута и игра се не може наставити. Желите ли да сачувате "
 "позицију?"
 
-#: src/playsingle_controller.cpp:794
+#: src/playsingle_controller.cpp:793
 msgid "It is now $name|’s turn"
 msgstr "На потезу је $name"
 
@@ -7435,7 +7435,7 @@ msgstr ""
 "Снимак је искварен или ван синхронизације. Вероватно нема много смисла да се "
 "настави. Желите ли да сачувате позицију?"
 
-#: src/reports.cpp:159 src/savegame.cpp:845
+#: src/reports.cpp:159 src/savegame.cpp:871
 msgid "Name: "
 msgstr "Име: "
 
@@ -7712,53 +7712,53 @@ msgstr ""
 msgid "This is not a multiplayer save."
 msgstr "Ово није вишеиграчка позиција"
 
-#: src/savegame.cpp:763
+#: src/savegame.cpp:789
 msgid "The game could not be saved: "
 msgstr "Не могу да сачувам позицију: "
 
-#: src/savegame.cpp:845
+#: src/savegame.cpp:871
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Позиција већ постоји. Желите ли да је пребришете?"
 
-#: src/savegame.cpp:846
+#: src/savegame.cpp:872
 msgid "Overwrite?"
 msgstr "Пребрисати?"
 
-#: src/savegame.cpp:856
+#: src/savegame.cpp:882
 #, fuzzy
 #| msgid "Save names should not end on '.gz'. Please choose a different name."
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr "Имена позиција не треба завршавати са ‘.gz’. Задајте другачије име."
 
-#: src/savegame.cpp:922
+#: src/savegame.cpp:948
 msgid "Saved"
 msgstr "Сачувано"
 
-#: src/savegame.cpp:922
+#: src/savegame.cpp:948
 #, fuzzy
 #| msgid "The game has been saved"
 msgid "The game has been saved."
 msgstr "Позиција је сачувана"
 
-#: src/savegame.cpp:953 src/savegame.cpp:974
+#: src/savegame.cpp:979 src/savegame.cpp:1000
 msgid "Could not write to file"
 msgstr "Не могу да пишем у датотеку"
 
-#: src/savegame.cpp:1008
+#: src/savegame.cpp:1034
 msgid "Save Replay"
 msgstr "Сачувај снимак"
 
-#: src/savegame.cpp:1017
+#: src/savegame.cpp:1043
 msgid "replay"
 msgstr "снимак"
 
-#: src/savegame.cpp:1035
+#: src/savegame.cpp:1061
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Не могу да сачувам позицију аутоматски. Покушајте да је сачувате ручно."
 
-#: src/savegame.cpp:1084
+#: src/savegame.cpp:1110
 msgid "Save Game"
 msgstr "Сачувај позицију"
 

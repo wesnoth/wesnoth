@@ -56,7 +56,7 @@ id. \fBNota:\fP Al usar esta opción, asegúrese de especificar tanto la ruta de
 acceso a los datos como el argumento final, de otro modo, el juego
 interpretará el identificador de escenario o campaña como tal.
 .TP 
-\fB\-\-campaign\-difficulty [<difficulty>]\fP
+\fB\-\-campaign\-difficulty [<dificultad>]\fP
 El nivel de dificultad de la campaña especificada (de 1 al máximo). Si no
 especifica ninguno, aparecerá el diálogo de selección de nivel de
 dificultad.
@@ -69,7 +69,7 @@ defecto es el escenario inicial.
 reemplaza el directorio de datos con el directorio especificado
 .TP 
 \fB\-\-data\-path\fP
-path the path of the data directory and exits.
+muestra el nombre del directorio de datos de juego y finaliza.
 .TP 
 \fB\-d, \-\-debug\fP
 activa opciones adicionales en el modo de comandos del juego (vea la página
@@ -78,7 +78,7 @@ el modo de comandos).
 .TP 
 \fB\-e,\ \-\-editor\fP\fI\ archivo\fP
 inicia directamente con el editor de mapas del juego. Si \fIarchivo\fP es
-especificado, equivale a \fB\-l \-\-load\fP.
+especificado, equivale a \fB\-l \-\-load\fP
 .TP 
 \fB\-\-fps\fP
 muestra el número de fotogramas por segundo a los que se está ejecutando el
@@ -113,7 +113,7 @@ utilizarse para seleccionar todos los dominios. Los niveles disponibles son:
 .TP 
 \fB\-\-logdomains\ [filtro]\fP
 muestra una lista de dominios de registro definidos (únicamente aquéllos
-conteniendo \fBfiltro\fP si es indicado) y regresa.
+conteniendo \fBfiltro\fP si es indicado) y regresa
 .TP 
 \fB\-\-max\-fps\fP
 el número de fotogramas por segundo que el juego puede mostrar, el valor
@@ -141,30 +141,31 @@ ejecuta el juego sin sonidos ni música.
 muestra el nombre del directorio de datos de juego y finaliza.
 .TP 
 \fB\-p, \-\-preprocess <source file/folder> <target directory>\fP
-preprocesses a specified file/folder. For each file(s) a plain .cfg file and
-a processed .cfg file will be written in specified target directory. If a
-folder is specified, it will be preprocessed recursively based on the known
-preprocessor rules. The common macroses from the "data/core/macros"
-directory will be preprocessed before the specified resources.  Example:
-\fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
-preprocessor visit:
+preprocesa un fichero o carpeta de ficheros especificados. Por cada fichero,
+se generarán en el directorio especificado un fichero .cfg de texto plano y
+otro fichero .cfg procesado. Si se especifica una carpeta, se preprocesará
+recursivamente basándose en las reglas conocidas del preprocesador. Las
+macros comunes del directorio «data/core/macros» serán preprocesadas antes
+que los recursos especificados. Ejemplo:  \fB\-p
+~/wesnoth/data/campaigns/tutorial ~/result.\fP Para más detalles en relación
+con el preprocesador visite:
 http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
 
 .TP 
-\fB\-\-preprocess\-defines=DEFINE1,DEFINE2,etc\fP
-comma separated list of defines to be used by the '\-\-preprocess' command. If
-\fBSKIP_CORE\fP is in the define list the "data/core" directory won't be
-preprocessed.
+\fB\-\-preprocess\-defines=DEFINICION1,DEFINICION2,etc\fP
+lista separada por comas de definiciones que van a ser usadas por el comando
+«\-\-preprocess». Si \fBSKIP_CORE\fP está en la lista, el directorio «data/core»
+no se preprocesará.
 .TP 
 \fB\-\-preprocess\-input\-macros <archivo de origen>\fP
 sólo utilizado con '\-\-preprocess'. Especifica un archivo que contiene nodos
 [preproc_define] para ser incluidos antes de la operación.
 .TP 
 \fB\-\-preprocess\-output\-macros [<archivo de destino>]\fP
-sólo utilizado con '\-\-preprocess'. Escribe todas las macros preprocesadas en
-el archivo especificado. Si omite el nombre de archivo, se utilizará el
-archivo '_MACROS_.cfg' en el directorio de destino de la opción
-\-\-preprocess. Esta opción debe preceder a '\-\-preprocess'.
+sólo utilizado con el comando «\-\-preprocess». Escribe todas las macros
+preprocesadas en el archivo especificado. Si omite el nombre de archivo, se
+utilizará el archivo «_MACROS_.cfg» en el directorio de destino de la opción
+\-\-preprocess. Esta opción debe preceder a «\-\-preprocess».
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 establece la resolución de la pantalla. Por ejemplo: \fB\-r 800x600\fP
@@ -175,12 +176,12 @@ primer servidor seleccionado en las preferencias. Ejemplo: \fB\-\-server
 server.wesnoth.org\fP
 .TP 
 \fB\-\-username\fP\fI<username>\fP
-uses <username> when connecting to a server, ignoring other
-preferences.
+utiliza <username> cuando se conecta a un servidor, ignorando otras
+preferencias.
 .TP 
 \fB\-\-password\fP\fI<password>\fP
-uses <password> when connecting to a server, ignoring other
-preferences. Unsafe.
+utiliza <password> cuando se conecta a un servidor, ignorando otras
+preferencias. Método inseguro.
 .TP 
 \fB\-\-strict\-validation\fP
 trata los errores de validación como fatales.
@@ -188,23 +189,25 @@ trata los errores de validación como fatales.
 \fB\-t, \-\-test\fP
 inicia el juego en un pequeño escenario de prueba.
 .TP 
-\fB\-\-userconfig\-dir\fP\fI\ name\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy Games".
-Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
-other systems to the userdata path.
+\fB\-\-userconfig\-dir\fP\fI\ nombre\fP
+establece el directorio de configuración del usuario como \fInombre\fP en $HOME
+o "Mis documentos\eMis juegos" en Windows. También es posible especificar
+una ruta absoluta para el directorio de configuración fuera de $HOME o "Mis
+documentos\eMis juegos". Con X11 está predeterminado como $XDG_CONFIG_HOME o
+$HOME/.config/wesnoth, en otros sistemas para la ruta de los datos de
+usuario.
 .TP 
 \fB\-\-userconfig\-path\fP
 muestra la ruta del directorio de la configuración del usuario y regresa.
 .TP 
-\fB\-\-userdata\-dir\fP\fI\ name\fP
-sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
-Games" for windows.  You can also specify an absolute path for the userdata
-directory outside the $HOME or "My Documents\eMy Games".
+\fB\-\-userdata\-dir\fP\fI\ nombre\fP
+establece el directorio de datos del usuario como \fInombre\fP en $HOME o "Mis
+documentos\eMis juegos" en Windows. También es posible especificar una ruta
+absoluta para los datos del usuario fuera de $HOME o "Mis documentos\eMis
+juegos".
 .TP 
 \fB\-\-userdata\-path\fP
-prints the path of the userdata directory and exits.
+muestra la ruta del directorio de datos del usuario y regresa.
 .TP 
 \fB\-\-validcache\fP
 asume que el caché es válido (peligroso).
@@ -240,7 +243,7 @@ selecciona el controlador para este bando. Los valores disponibles son:
 .TP 
 \fB\-\-era=\fP\fIvalor\fP
 use esta opción para jugar en la era seleccionada en lugar de la era por
-defecto (\fBDefault\fP). La era se selecciona usando un identificador (id). Las
+omisión (\fBDefault\fP). La era se selecciona usando un identificador (id). Las
 eras incluidas están descritas en el archivo \fBdata/multiplayer/eras.cfg\fP.
 .TP 
 \fB\-\-exit\-at\-end\fP
@@ -249,11 +252,12 @@ victoria o derrota que requiera que el usuario pulse en Aceptar. Esto se usa
 también para pruebas de rendimiento automatizadas.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
-do not use map settings, use default values instead.
+no se utilizan las configuraciones del mapa sino los valores
+predeterminados.
 .TP 
 \fB\-\-multiplayer\-repeat=\fP\fIvalue\fP
-repeats a multiplayer game \fIvalue\fP times. Best to use with \fB\-\-nogui\fP for
-scriptable benchmarking.
+repite una partida multijugador \fIvalue\fP veces. Es mejor usarlo con
+\fB\-\-nogui\fP para evaluaciones automatizadas.
 .TP 
 \fB\-\-nogui\fP
 ejecuta el juego sin la interfaz gráfica de usuario. Esta opción debe
