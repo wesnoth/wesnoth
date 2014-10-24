@@ -16,6 +16,7 @@
 #define STRFTIME_HPP_INCLUDED
 
 #include <ctime>
+#include <string>
 
 namespace util {
 
