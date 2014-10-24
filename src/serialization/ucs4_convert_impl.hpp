@@ -93,7 +93,7 @@ namespace ucs4_convert_impl
 			assert(input != end);
 			size_t size = byte_size_from_utf8_first(*input);
 
-			uint32_t current_char = static_cast<unsigned char>(*input);
+			ucs4::char_t current_char = static_cast<unsigned char>(*input);
 
 			// Convert the first character
 			if(size != 1) {
@@ -129,7 +129,7 @@ namespace ucs4_convert_impl
 		template<typename writer>
 		static inline void write(writer out, ucs4::char_t ch)
 		{
-			const uint32_t bit17 = 0x10000;
+			const ucs4::char_t bit17 = 0x10000;
 
 			if(ch < bit17)
 			{
@@ -139,7 +139,7 @@ namespace ucs4_convert_impl
 			else 
 			{
 				assert(out.can_push(2));
-				const uint32_t char20 = ch - bit17;
+				const ucs4::char_t char20 = ch - bit17;
 				assert(char20 < (1 << 20));
 				const ucs4::char_t lead = 0xD800 + (char20 >> 10);
 				const ucs4::char_t trail = 0xDC00 + (char20 & 0x3FF);
@@ -153,15 +153,15 @@ namespace ucs4_convert_impl
 		template<typename iitor_t>
 		static inline ucs4::char_t read(iitor_t& input, const iitor_t& end)
 		{
-			const int32_t last10 = 0x3FF;
-			const int32_t type_filter = 0xFC00;
-			const int32_t type_lead = 0xD800;
-			const int32_t type_trail = 0xDC00;
+			const ucs4::char_t last10 = 0x3FF;
+			const ucs4::char_t type_filter = 0xFC00;
+			const ucs4::char_t type_lead = 0xD800;
+			const ucs4::char_t type_trail = 0xDC00;
 
 			assert(input != end);
-			uint32_t current_char = static_cast<utf16::char_t>(*input);
+			ucs4::char_t current_char = static_cast<utf16::char_t>(*input);
 			++input;
-			uint32_t type = current_char & type_filter;
+			ucs4::char_t type = current_char & type_filter;
 			if(type == type_trail)
 			{
 				//found trail without head
@@ -202,7 +202,7 @@ namespace ucs4_convert_impl
 		static inline ucs4::char_t read(iitor_t& input, const iitor_t& end)
 		{
 			assert(input != end);
-			uint32_t current_char = *input;
+			ucs4::char_t current_char = *input;
 			++input;
 			return current_char;
 		}
