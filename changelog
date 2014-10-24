@@ -84,6 +84,16 @@ Version 1.13.0-dev:
    * Disabled the tod schedule and playlist menues in pure map mode.
    * Support for displaying the saved status of the selected area.
    * Fixed error messages about missing UI elements.
+ * Graphics:
+   * New Ancient Lich baseframe and animations
+   * New stand animations (NE and SE) for the Revenant
+   * Smooth unit movement over terrain with elevation (e.g. keeps/bridges)
+   * Fixed bug #22045: Only blit neutral surfaces.
+   * [item] images are now subject to local ToD lighting effects instead of
+     just the current map-wide ToD lighting (bug #22215).
+   * Disabled "alpha thresholding" in the bilinear interpolation algorithm
+     used for all sprites and images. (This was introduced as a workaround
+     for an old bug.)
  * Help Browser:
    * Added trait list with links to the help page for unit types
    * Added "Defense Capped" column with notification in the "terrain modifiers table"
@@ -105,16 +115,6 @@ Version 1.13.0-dev:
      the table returned by the user-specified function is not completely valid,
      when wesnoth is running in debug mode (--debug command line flag).
    * Added new function wesnoth.get_all_vars().
- * Graphics:
-   * New Ancient Lich baseframe and animations
-   * New stand animations (NE and SE) for the Revenant
-   * Smooth unit movement over terrain with elevation (e.g. keeps/bridges)
-   * Fixed bug #22045: Only blit neutral surfaces.
-   * [item] images are now subject to local ToD lighting effects instead of
-     just the current map-wide ToD lighting (bug #22215).
-   * Disabled "alpha thresholding" in the bilinear interpolation algorithm
-     used for all sprites and images. (This was introduced as a workaround
-     for an old bug.)
  * Replays:
    * Added a button that allows playing a single move in replay mode.
  * Units:
