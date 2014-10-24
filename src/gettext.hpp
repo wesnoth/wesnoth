@@ -35,37 +35,44 @@
 
 // gettext-related declarations
 #include "wesconfig.h"
+#include <string>
 
-//A Hack to make the eclipse-cdt parser happy.
 #ifndef GETTEXT_DOMAIN
 # define GETTEXT_DOMAIN PACKAGE
 #endif
 
+//A Hack to make the eclipse-cdt parser happy.
 #ifdef __CDT_PARSER__
 # define GETTEXT_DOMAIN ""
 #endif
 
 namespace translation 
 {
-	const char* dgettext(const char* domain, const char* msgid);
-	const char* egettext(const char*);
-	const char* dsgettext(const char * domainname, const char *msgid);
+	std::string dgettext(const char* domain, const char* msgid);
+	std::string egettext(const char*);
+	std::string dsgettext(const char * domainname, const char *msgid);
 	//const char* sngettext(const char *singular, const char *plural, int n);
-	const char* dsngettext(const char * domainname, const char *singular, const char *plural, int n);
-	
-	static const char* gettext(const char* str) 
+	std::string dsngettext(const char * domainname, const char *singular, const char *plural, int n);
+
+	static std::string gettext(const char* str) 
 	{ return translation::dgettext(GETTEXT_DOMAIN, str); }
-	static const char* sgettext(const char* str) 
+	static std::string sgettext(const char* str) 
 	{ return translation::dsgettext(GETTEXT_DOMAIN, str); }
-	static const char* sngettext(const char* str1, const char* str2, int n) 
+	static std::string sngettext(const char* str1, const char* str2, int n) 
 	{ return translation::dsngettext(GETTEXT_DOMAIN, str1, str2 , n); }
+
 
 	void bind_textdomain(const char* domain, const char* direcory, const char* encoding);
 	void set_default_textdomain(const char* domain);
 }
 
-#define _(String) translation::dsgettext(GETTEXT_DOMAIN,String)
-#define _n(String1, String2, Int) translation::dsngettext(GETTEXT_DOMAIN, String1,String2,Int)
+//#define _(String) translation::dsgettext(GETTEXT_DOMAIN,String)
+inline static std::string _(const char* str) 
+{ return translation::dsgettext(GETTEXT_DOMAIN, str); }
+
+//#define _n(String1, String2, Int) translation::dsngettext(GETTEXT_DOMAIN, String1,String2,Int)
+inline static std::string _n(const char* str1, const char* str2, int n) 
+{ return translation::dsngettext(GETTEXT_DOMAIN, str1, str2, n); }
 
 #define gettext_noop(String) String
 #define N_(String) gettext_noop (String)

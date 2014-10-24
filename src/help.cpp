@@ -1621,7 +1621,7 @@ class unit_topic_generator: public topic_generator
 	const unit_type& type_;
 	const std::string variation_;
 	typedef std::pair< std::string, unsigned > item;
-	void push_header(std::vector< item > &row, char const *name) const {
+	void push_header(std::vector< item > &row,  const std::string& name) const {
 		row.push_back(item(bold(name), font::line_width(name, normal_font_size, TTF_STYLE_BOLD)));
 	}
 public:

@@ -124,7 +124,7 @@ static bool locale_supports_ampm(const std::tm* time)
 
 namespace util {
 
-size_t strftime(char* str, size_t count, const char* format,
+size_t strftime(char* str, size_t count, const std::string& format,
 	const std::tm* time)
 {
 	bool ampm_supported = locale_supports_ampm(time);

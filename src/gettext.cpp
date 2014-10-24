@@ -21,19 +21,19 @@
 #include <cstring>
 namespace translation
 {
-const char* dgettext(const char* domain, const char* msgid)
+std::string dgettext(const char* domain, const char* msgid)
 {
 	return ::dgettext(domain, msgid);
 }
-char const *egettext(char const *msgid)
+std::string egettext(char const *msgid)
 {
 	return msgid[0] == '\0' ? msgid : (::gettext)(msgid);
 }
 
-const char* dsgettext (const char * domainname, const char *msgid)
+std::string dsgettext (const char * domainname, const char *msgid)
 {
 	bind_textdomain_codeset(domainname, "UTF-8");
-	const char *msgval = dgettext (domainname, msgid);
+	const char *msgval = ::dgettext (domainname, msgid);
 	if (msgval == msgid) {
 		msgval = std::strrchr (msgid, '^');
 		if (msgval == NULL)
@@ -73,10 +73,10 @@ const char* sngettext (const char *singular, const char *plural, int n)
 }
 
 #endif 
-const char* dsngettext (const char * domainname, const char *singular, const char *plural, int n)
+std::string dsngettext (const char * domainname, const char *singular, const char *plural, int n)
 {
 	bind_textdomain_codeset(domainname, "UTF-8");
-	const char *msgval = dngettext (domainname, singular, plural, n);
+	const char *msgval = ::dngettext (domainname, singular, plural, n);
 	if (msgval == singular) {
 		msgval = std::strrchr (singular, '^');
 		if (msgval == NULL)
