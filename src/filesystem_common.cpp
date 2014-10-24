@@ -246,6 +246,7 @@ static int SDLCALL ifs_seek(struct SDL_RWops *context, int offset, int whence) {
 		break;
 	default:
 		assert(false);
+		throw "assertion ignored";
 	}
 	std::istream *ifs = static_cast<std::istream*>(context->hidden.unknown.data1);
 	const std::ios_base::iostate saved_state = ifs->rdstate();
