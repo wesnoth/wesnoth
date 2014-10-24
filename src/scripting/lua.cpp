@@ -1119,6 +1119,22 @@ static int intf_require(lua_State *L)
 		return luaL_argerror(L, 1, "file not found");
 
 	// Compile the file.
+	
+#if 1 
+	try
+	{
+		if(lua_filestream::lua_loadfile(L, p))
+			throw game::error(lua_tostring(L, -1));
+	}
+	catch(const std::exception & ex)
+	{
+		chat_message("Lua error", ex.what());
+		ERR_LUA << ex.what() << '\n';
+		return 0;
+	}
+#else
+	//oldcode to be deleted if newcode works
+
 	int res = luaL_loadfile(L, p.c_str());
 	if (res)
 	{
@@ -1127,6 +1143,7 @@ static int intf_require(lua_State *L)
 		ERR_LUA << m << '\n';
 		return 0;
 	}
+#endif
 
 	// Execute it.
 	if (!luaW_pcall(L, 0, 1)) return 0;
