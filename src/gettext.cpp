@@ -100,4 +100,8 @@ void set_default_textdomain(const char* domain)
 	textdomain(domain);
 }
 
+void set_language(const char* /*language*/)
+{
+}
+
 }

@@ -221,7 +221,7 @@ void set_language(const language_def& locale)
 	wesnoth_setlocale(LC_COLLATE, locale.localename, &locale.alternates);
 	wesnoth_setlocale(LC_TIME, locale.localename, &locale.alternates);
 	wesnoth_setlocale(LC_MESSAGES, locale.localename, &locale.alternates);
-
+	translation::set_language(locale.localename.c_str());
 	load_strings(false);
 }
 

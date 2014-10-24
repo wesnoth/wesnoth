@@ -64,6 +64,8 @@ namespace translation
 
 	void bind_textdomain(const char* domain, const char* direcory, const char* encoding);
 	void set_default_textdomain(const char* domain);
+
+	void set_language(const char* language);
 }
 
 //#define _(String) translation::dsgettext(GETTEXT_DOMAIN,String)
