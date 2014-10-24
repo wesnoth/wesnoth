@@ -7,9 +7,10 @@
 #include <cstddef>   //ptrdiff_t
 #include <cassert>   //assert
 
+#include "unicode_types.hpp"
+
 namespace ucs4
 {
-	typedef uint32_t char_t;
 	template<typename string_type, typename update_implementation>
 	class iterator_base
 	{
@@ -85,7 +86,7 @@ namespace ucs4
 			assert(current_substr.first == current_substr.second);
 			if(current_substr.first == string_end)
 				return;
-			current_char = update_implementation::get_next_char(current_substr.second, string_end);
+			current_char = update_implementation::read(current_substr.second, string_end);
 		}
 
 		ucs4::char_t current_char;

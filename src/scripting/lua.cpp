@@ -1093,7 +1093,7 @@ public:
 
 	static const char * lua_read_data(lua_State * /*L*/, void *data, size_t *size)
 	{
-		lua_filestream* lfs = (lua_filestream*) data;
+		lua_filestream* lfs = static_cast<lua_filestream*>(data);
 		
 		//int startpos = lfs->pistream_->tellg();
 		lfs->pistream_->read(lfs->buff_, LUAL_BUFFERSIZE);

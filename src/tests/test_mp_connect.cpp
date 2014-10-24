@@ -25,6 +25,7 @@
 
 #include <boost/foreach.hpp>
 #include <boost/scoped_ptr.hpp>
+#include <boost/assign.hpp>
 
 
 /* Definitions */
@@ -61,8 +62,8 @@ boost::scoped_ptr<saved_game> state;
 struct mp_connect_fixture {
 	mp_connect_fixture() :
 		video(),
-		dummy_argv(),
-		cmdline_opts(1, dummy_argv),
+		dummy_args(boost::assign::list_of("wesnoth").convert_to_container<std::vector<std::string> >()),
+		cmdline_opts(dummy_args),
 		hotkey_manager(),
 		config_manager()
 	{
@@ -91,7 +92,7 @@ struct mp_connect_fixture {
 	{
 	}
 	CVideo video;
-	char** dummy_argv;
+	std::vector<std::string> dummy_args;
 	commandline_options cmdline_opts;
 	hotkey::manager hotkey_manager;
 	boost::scoped_ptr<game_config_manager> config_manager;

@@ -24,6 +24,7 @@
 #include "map.hpp"
 #include "network.hpp" // ping_timeout
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode_cast.hpp"
 #include "settings.hpp"
 #include "unit.hpp"
 #include "unit_map.hpp"

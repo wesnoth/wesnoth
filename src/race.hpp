@@ -16,7 +16,7 @@
 #define RACE_HPP_INCLUDED
 
 #include "config.hpp"
-#include "serialization/unicode.hpp"
+#include "serialization/unicode_types.hpp"
 
 
 

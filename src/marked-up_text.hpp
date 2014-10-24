@@ -22,7 +22,7 @@ class CVideo;
 struct surface;
 #include <SDL_video.h>
 #include <string>
-#include "serialization/unicode.hpp"
+#include "serialization/unicode_types.hpp"
 
 #ifdef SDL_GPU
 #include "sdl/image.hpp"
