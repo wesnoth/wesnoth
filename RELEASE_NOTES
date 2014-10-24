@@ -50,12 +50,6 @@ The boost filesystem dep may be disabled, if compiling with scons, by passing it
 (The new SDL_mixer requirement cannot be similarly disabled.)
 [/section]
 
-[section="New OS X user data directory"]
-As a result of the new filesystem code described above, the OS X user data directory is now ~/.wesnoth1.13. This means that saved games, preferences and add-ons need to be reset/reloaded or copied/linked from ~/Library/Application Support/Wesnoth_1.1x (where x = 1, 2 or 3 depending on the version from which you want to copy things over).
-
-For those of you compiling Wesnoth using Xcode, you also need to download a new version of wesnoth_compile_mac_1.13.zip (as of 19 Oct 2014).
-[/section]
-
 [section="Help Browser"]
 Many new features, see changelog.
 [/section]
