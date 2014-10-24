@@ -12,20 +12,28 @@
    See the COPYING file for more details.
 */
 
+#include <libintl.h>
 #include "global.hpp"
 
 #include "gettext.hpp"
 
-#include <cstring>
 
+#include <cstring>
+namespace translation
+{
+const char* dgettext(const char* domain, const char* msgid)
+{
+	return ::dgettext(domain, msgid);
+}
 char const *egettext(char const *msgid)
 {
-	return msgid[0] == '\0' ? msgid : gettext(msgid);
+	return msgid[0] == '\0' ? msgid : (::gettext)(msgid);
 }
 
-const char* sgettext (const char *msgid)
+const char* dsgettext (const char * domainname, const char *msgid)
 {
-	const char *msgval = gettext (msgid);
+	bind_textdomain_codeset(domainname, "UTF-8");
+	const char *msgval = dgettext (domainname, msgid);
 	if (msgval == msgid) {
 		msgval = std::strrchr (msgid, '^');
 		if (msgval == NULL)
@@ -36,10 +44,11 @@ const char* sgettext (const char *msgid)
 	return msgval;
 }
 
-const char* dsgettext (const char * domainname, const char *msgid)
+#if 0
+
+const char* sgettext (const char *msgid)
 {
-	bind_textdomain_codeset(domainname, "UTF-8");
-	const char *msgval = dgettext (domainname, msgid);
+	const char *msgval = gettext (msgid);
 	if (msgval == msgid) {
 		msgval = std::strrchr (msgid, '^');
 		if (msgval == NULL)
@@ -63,6 +72,7 @@ const char* sngettext (const char *singular, const char *plural, int n)
 	return msgval;
 }
 
+#endif 
 const char* dsngettext (const char * domainname, const char *singular, const char *plural, int n)
 {
 	bind_textdomain_codeset(domainname, "UTF-8");
@@ -75,4 +85,19 @@ const char* dsngettext (const char * domainname, const char *singular, const cha
 			msgval++;
 	}
 	return msgval;
+}
+
+void bind_textdomain(const char* domain, const char* direcory, const char* encoding)
+{
+	if(direcory != NULL)
+		bindtextdomain(domain, direcory);
+	if(encoding != NULL)
+		bind_textdomain_codeset(domain, encoding);
+}
+
+void set_default_textdomain(const char* domain)
+{
+	textdomain(domain);
+}
+
 }

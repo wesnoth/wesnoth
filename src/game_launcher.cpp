@@ -910,7 +910,7 @@ bool game_launcher::play_multiplayer()
 			ERR_NET << "caught network::error: " << e.message << std::endl;
 			gui2::show_transient_message(disp().video()
 					, ""
-					, gettext(e.message.c_str()));
+					, translation::gettext(e.message.c_str()));
 		} else {
 			ERR_NET << "caught network::error" << std::endl;
 		}

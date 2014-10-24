@@ -80,7 +80,7 @@ static void add_status(config &r,
 	char const *path, char const *desc1, char const *desc2)
 {
 	std::ostringstream s;
-	s << gettext(desc1) << gettext(desc2);
+	s << translation::gettext(desc1) << translation::gettext(desc2);
 	add_image(r, path, s.str());
 }
 
@@ -431,7 +431,7 @@ static config unit_hp(reports::context& rc, const unit* u)
 	BOOST_FOREACH(const utils::string_map::value_type &resist, u->get_base_resistances())
 	{
 		std::ostringstream line;
-		line << gettext(resist.first.c_str()) << ": ";
+		line << translation::gettext(resist.first.c_str()) << ": ";
 		// Some units have different resistances when attacking or defending.
 		int res_att = 100 - u->resistance_against(resist.first, true, displayed_unit_hex);
 		int res_def = 100 - u->resistance_against(resist.first, false, displayed_unit_hex);

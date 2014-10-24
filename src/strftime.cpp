@@ -54,20 +54,20 @@ static std::string reformat(const std::string& format, const std::tm* time,
 				switch (*it) {
 				case 'a': // abbreviated weekday name
 					new_format += (time->tm_wday < 0 || time->tm_wday > 6) ?
-						"?" : sgettext(wday_abbr[time->tm_wday]);
+						"?" : translation::sgettext(wday_abbr[time->tm_wday]);
 					continue;
 				case 'A': // full weekday name
 					new_format += (time->tm_wday < 0 || time->tm_wday > 6) ?
-						"?" : sgettext(wday_full[time->tm_wday]);
+						"?" : translation::sgettext(wday_full[time->tm_wday]);
 					continue;
 				case 'b': // abbreviated month name
 				case 'h':
 					new_format += (time->tm_mon < 0 || time->tm_mon > 11) ?
-						"?" : sgettext(mon_abbr[time->tm_mon]);
+						"?" : translation::sgettext(mon_abbr[time->tm_mon]);
 					continue;
 				case 'B': // full month name
 					new_format += (time->tm_mon < 0 || time->tm_mon > 11) ?
-						"?" : sgettext(mon_full[time->tm_mon]);
+						"?" : translation::sgettext(mon_full[time->tm_mon]);
 					continue;
 				case 'c': // date and time
 					new_format += reformat(_("%a %b %e %H:%M:%S %Y"), time,

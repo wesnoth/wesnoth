@@ -320,7 +320,7 @@ void default_map_generator::user_config(display& disp)
 			slider_right + horz_margin, castlesize_rect.y);
 
 		std::stringstream landform_str;
-		landform_str << gettext(island_size_ == 0 ? N_("Inland") : (island_size_ < max_coastal ? N_("Coastal") : N_("Island")));
+		landform_str << translation::gettext(island_size_ == 0 ? N_("Inland") : (island_size_ < max_coastal ? N_("Coastal") : N_("Island")));
 		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,landform_str.str(),
 			            slider_right+horz_margin,landform_rect.y);
 

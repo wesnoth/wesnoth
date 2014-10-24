@@ -214,13 +214,13 @@ void show_hotkeys_preferences_dialog(display& disp) {
 
 	// tab names and icons
 	items.push_back(pre + "titlescreen.png" + sep
-			+ sgettext("Prefs section^Title Screen"));
+			+ translation::sgettext("Prefs section^Title Screen"));
 	items.push_back(pre + "game.png"    + sep
-			+ sgettext("Prefs section^Game"));
+			+ translation::sgettext("Prefs section^Game"));
 	items.push_back(pre + "editor.png"  + sep
-			+ sgettext("Prefs section^Editor"));
+			+ translation::sgettext("Prefs section^Editor"));
 	items.push_back(pre + "general.png" + sep
-			+ sgettext("Prefs section^General"));
+			+ translation::sgettext("Prefs section^General"));
 
 	// determine the current scope, but skip general == 0
 	int scope;

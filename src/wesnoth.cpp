@@ -27,6 +27,7 @@
 #include "game_config.hpp"              // for path, debug, debug_lua, etc
 #include "game_config_manager.hpp"      // for game_config_manager, etc
 #include "game_launcher.hpp"          // for game_launcher, etc
+#include "gettext.hpp"
 #include "gui/auxiliary/event/handler.hpp"  // for tmanager
 #include "gui/dialogs/core_selection.hpp"  // for tcore_selection
 #include "gui/dialogs/title_screen.hpp"  // for ttitle_screen, etc
@@ -56,7 +57,6 @@
 #include "wml_exception.hpp"            // for twml_exception
 
 #include <SDL.h>                        // for SDL_Init, SDL_INIT_TIMER
-#include <libintl.h>                    // for bind_textdomain_codeset, etc
 #include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/iostreams/categories.hpp>  // for input, output
 #include <boost/iostreams/copy.hpp>     // for copy
@@ -482,11 +482,9 @@ static void init_locale() {
 		std::setlocale(LC_MESSAGES, "");
 	#endif
 	const std::string& intl_dir = filesystem::get_intl_dir();
-	bindtextdomain (PACKAGE, intl_dir.c_str());
-	bind_textdomain_codeset (PACKAGE, "UTF-8");
-	bindtextdomain (PACKAGE "-lib", intl_dir.c_str());
-	bind_textdomain_codeset (PACKAGE "-lib", "UTF-8");
-	textdomain (PACKAGE);
+	translation::bind_textdomain(PACKAGE, intl_dir.c_str(), "UTF-8");
+	translation::bind_textdomain(PACKAGE "-lib", intl_dir.c_str(), "UTF-8");
+	translation::set_default_textdomain(PACKAGE);
 }
 
 /**

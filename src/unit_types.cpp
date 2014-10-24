@@ -70,7 +70,7 @@ attack_type::attack_type(const config& cfg) :
 
 {
 	if (description_.empty())
-		description_ = egettext(id_.c_str());
+		description_ = translation::egettext(id_.c_str());
 
 	if(icon_.empty()){
 		if (id_ != "")
@@ -841,7 +841,7 @@ const char* unit_type::alignment_description(unit_type::ALIGNMENT align, unit_ra
 	static const char* aligns_female[] = { N_("female^lawful"), N_("female^neutral"), N_("female^chaotic"), N_("female^liminal") };
 	const char** tlist = (gender == unit_race::MALE ? aligns : aligns_female);
 
-	return (sgettext(tlist[align]));
+	return (translation::sgettext(tlist[align]));
 }*/
 
 bool unit_type::has_ability_by_id(const std::string& ability) const

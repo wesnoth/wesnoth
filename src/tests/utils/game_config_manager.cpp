@@ -13,6 +13,7 @@
 */
 
 #define GETTEXT_DOMAIN "wesnoth-test"
+//#include <libintl.h>
 
 #include "tests/utils/game_config_manager.hpp"
 
@@ -68,11 +69,9 @@ namespace test_utils {
 			std::setlocale(LC_MESSAGES, "");
 #endif
 			const std::string& intl_dir = filesystem::get_intl_dir();
-			bindtextdomain ("wesnoth", intl_dir.c_str());
-			bind_textdomain_codeset ("wesnoth", "UTF-8");
-			bindtextdomain ("wesnoth-lib", intl_dir.c_str());
-			bind_textdomain_codeset ("wesnoth-lib", "UTF-8");
-			textdomain ("wesnoth");
+			translation::bind_textdomain("wesnoth", intl_dir.c_str(), "UTF-8");
+			translation::bind_textdomain("wesnoth-lib", intl_dir.c_str(), "UTF-8");
+			translation::set_default_textdomain("wesnoth");
 
 
 			font::load_font_config();
