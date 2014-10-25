@@ -384,7 +384,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 						!network_game, false));
 
 				if (starting_pos["allow_new_game"].to_bool(gamestate.mp_settings().show_connect) 
-				|| (game_config::debug && network::nconnections() == 0)) {
+				|| (game_config::debug && network::nconnections() == 0 && game_type == game_classification::MULTIPLAYER)) {
 					// Opens mp::connect dialog to allow users to
 					// make an adjustments for scenario.
 					// TODO: Fix this so that it works when network::nconnections() > 0 as well.
