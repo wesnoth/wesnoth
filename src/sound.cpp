@@ -489,8 +489,14 @@ static void play_new_music()
 	std::map<std::string,Mix_Music*>::const_iterator itor = music_cache.find(filename);
 	if(itor == music_cache.end()) {
 		LOG_AUDIO << "attempting to insert track '" << filename << "' into cache\n";
+
+#ifndef PANDORA
 		SDL_RWops *rwops = filesystem::load_RWops(filename);
 		Mix_Music* const music = Mix_LoadMUSType_RW(rwops, MUS_NONE, true); // SDL takes ownership of rwops
+#else
+		Mix_Music* const music = Mix_LoadMUS(filename.c_str());
+#endif
+
 		if(music == NULL) {
 			ERR_AUDIO << "Could not load music file '" << filename << "': "
 					  << Mix_GetError() << "\n";
@@ -712,8 +718,12 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 		std::string const &filename = filesystem::get_binary_file_location("sounds", file);
 
 		if (!filename.empty()) {
+#ifndef PANDORA
 			SDL_RWops *rwops = filesystem::load_RWops(filename);
 			temp_chunk.set_data(Mix_LoadWAV_RW(rwops, true)); // SDL takes ownership of rwops
+#else
+			temp_chunk.set_data(Mix_LoadWAV(filename.c_str()));
+#endif
 		} else {
 			ERR_AUDIO << "Could not load sound file '" << file << "'.\n";
 			throw chunk_load_exception();
