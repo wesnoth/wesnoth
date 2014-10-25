@@ -30,6 +30,7 @@
 #include "gui/auxiliary/event/handler.hpp"  // for tmanager
 #include "gui/dialogs/core_selection.hpp"  // for tcore_selection
 #include "gui/dialogs/title_screen.hpp"  // for ttitle_screen, etc
+#include "gui/dialogs/message.hpp" 	// for show_error_message
 #include "gui/widgets/helper.hpp"       // for init
 #include "help.hpp"                     // for help_manager
 #include "hotkey/command_executor.hpp"  // for basic_handler
@@ -719,10 +720,14 @@ static int do_gameloop(const std::vector<std::string>& args)
 				continue;
 			}
 		} else if(res == gui2::ttitle_screen::CHANGE_LANGUAGE) {
-			if (game->change_language()) {
-				tips_of_day.clear();
-				t_string::reset_translations();
-				image::flush_cache();
+			try {
+				if (game->change_language()) {
+					tips_of_day.clear();
+					t_string::reset_translations();
+					image::flush_cache();
+				}
+			} catch ( std::runtime_error & e ) {
+				gui2::show_error_message(game->disp().video(), e.what());
 			}
 			continue;
 		} else if(res == gui2::ttitle_screen::EDIT_PREFERENCES) {
