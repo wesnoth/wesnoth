@@ -69,7 +69,7 @@ attack_type::attack_type(const config& cfg) :
 
 {
 	if (description_.empty())
-		description_ = egettext(id_.c_str());
+		description_ = translation::egettext(id_.c_str());
 
 	if(icon_.empty()){
 		if (id_ != "")
@@ -845,16 +845,16 @@ int unit_type::experience_needed(bool with_acceleration) const
 	return experience_needed_;
 }
 
-const char* unit_type::alignment_description(unit_type::ALIGNMENT align, unit_race::GENDER gender)
+std::string unit_type::alignment_description(unit_type::ALIGNMENT align, unit_race::GENDER gender)
 {
 	static const char* aligns[] = { N_("lawful"), N_("neutral"), N_("chaotic"), N_("liminal") };
 	static const char* aligns_female[] = { N_("female^lawful"), N_("female^neutral"), N_("female^chaotic"), N_("female^liminal") };
 	const char** tlist = (gender == unit_race::MALE ? aligns : aligns_female);
 
-	return (sgettext(tlist[align]));
+	return (translation::sgettext(tlist[align]));
 }
 
-const char* unit_type::alignment_id(unit_type::ALIGNMENT align)
+std::string unit_type::alignment_id(unit_type::ALIGNMENT align)
 {
 	static const char* aligns[] = { "lawful", "neutral", "chaotic", "liminal" };
 	return (aligns[align]);

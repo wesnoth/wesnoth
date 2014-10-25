@@ -890,8 +890,8 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		}
 	}
 
-	const char* msg_title = NULL;
-	const char* msg_text = NULL;
+	std::string msg_title;
+	std::string msg_text;
 
 	// Use the Update terminology when using Update All or working with the
 	// Upgradable add-ons view.

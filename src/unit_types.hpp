@@ -224,8 +224,8 @@ public:
 	enum ALIGNMENT { LAWFUL, NEUTRAL, CHAOTIC, LIMINAL };
 
 	ALIGNMENT alignment() const { return alignment_; }
-	static const char* alignment_description(ALIGNMENT align, unit_race::GENDER gender = unit_race::MALE);
-	static const char* alignment_id(ALIGNMENT align);
+	static std::string alignment_description(ALIGNMENT align, unit_race::GENDER gender = unit_race::MALE);
+	static std::string alignment_id(ALIGNMENT align);
 
 	fixed_t alpha() const { return alpha_; }
 

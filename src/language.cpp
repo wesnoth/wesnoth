@@ -133,27 +133,25 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 	// instead of en_US the first time round
 	// LANGUAGE overrides other settings, so for now just get rid of it
 	// FIXME: add configure check for unsetenv
+
+	//category is never LC_MESSAGES since that case was moved to gettext.cpp to remove teh dependency to libintl.h in this file
+	//that why code like if (category == LC_MESSAGES) is outcommented here.
 #ifndef _WIN32
 #ifndef __AMIGAOS4__
 	unsetenv ("LANGUAGE"); // void so no return value to check
 #endif
-#endif
 
-#if defined(__BEOS__) || defined(__APPLE__)
-	if (category == LC_MESSAGES && setenv("LANG", locale.c_str(), 1) == -1) {
-		ERR_G << "setenv LANG failed: " << strerror(errno);
-	}
 #endif
 
 #ifdef _WIN32
 	std::string win_locale(locale, 0, 2);
 	#include "language_win32.ii"
-	if(category == LC_MESSAGES) {
-		SetEnvironmentVariableA("LANG", win_locale.c_str());
-		std::string env = "LANGUAGE=" + locale;
-		_putenv(env.c_str());
-		return;
-	}
+	//if(category == LC_MESSAGES) {
+	//	SetEnvironmentVariableA("LANG", win_locale.c_str());
+	//	std::string env = "LANGUAGE=" + locale;
+	//	_putenv(env.c_str());
+	//	return;
+	//}
 	locale = win_locale;
 #endif
 
@@ -196,15 +194,6 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 		time_locale_correct() = false;
 	}
 
-#ifndef _WIN32
-#ifndef __AMIGAOS4__
-		if(category == LC_MESSAGES) {
-			WRN_G << "Setting LANGUAGE to '" << slocale << "'.\n";
-			setenv("LANGUAGE", slocale.c_str(), 1);
-			std::setlocale(LC_MESSAGES, "");
-		}
-#endif
-#endif
 
 	done:
 	DBG_G << "Numeric locale: " << std::setlocale(LC_NUMERIC, NULL) << '\n';
@@ -224,8 +213,7 @@ void set_language(const language_def& locale)
 
 	wesnoth_setlocale(LC_COLLATE, locale.localename, &locale.alternates);
 	wesnoth_setlocale(LC_TIME, locale.localename, &locale.alternates);
-	wesnoth_setlocale(LC_MESSAGES, locale.localename, &locale.alternates);
-
+	translation::set_language(locale.localename, &locale.alternates);
 	load_strings(false);
 }
 
@@ -262,7 +250,7 @@ const language_def& get_locale()
 
 	const std::string& prefs_locale = preferences::language();
 	if(prefs_locale.empty() == false) {
-		wesnoth_setlocale(LC_MESSAGES, prefs_locale, NULL);
+		translation::set_language(prefs_locale, NULL);
 		for(language_list::const_iterator i = known_languages.begin();
 				i != known_languages.end(); ++i) {
 			if (prefs_locale == i->localename)

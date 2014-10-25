@@ -128,7 +128,7 @@ std::string describe_addon_state_info(const addon_tracking_info& state)
 			}
 			break;
 		case ADDON_INSTALLED_UPGRADABLE: {
-			const char* const vstr
+			const std::string vstr
 					= !state.can_publish
 							  ? _("addon_state^Installed ($local_version|), "
 								  "upgradable")
@@ -137,7 +137,7 @@ std::string describe_addon_state_info(const addon_tracking_info& state)
 			s = utils::interpolate_variables_into_string(vstr, &i18n_symbols);
 		} break;
 		case ADDON_INSTALLED_OUTDATED: {
-			const char* const vstr
+			const std::string vstr
 					= !state.can_publish
 							  ? _("addon_state^Installed ($local_version|), "
 								  "outdated on server")

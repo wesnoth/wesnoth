@@ -295,8 +295,9 @@ std::string save_info::format_time_local() const
 	char time_buf[256] = {0};
 	tm* tm_l = localtime(&modified());
 	if (tm_l) {
+		std::string format = preferences::use_twelve_hour_clock_format() ? _("%a %b %d %I:%M %p %Y") : _("%a %b %d %H:%M %Y");
 		const size_t res = strftime(time_buf,sizeof(time_buf),
-			(preferences::use_twelve_hour_clock_format() ? _("%a %b %d %I:%M %p %Y") : _("%a %b %d %H:%M %Y")),
+			format.c_str(),
 			tm_l);
 		if(res == 0) {
 			time_buf[0] = 0;

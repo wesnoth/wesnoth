@@ -438,7 +438,7 @@ const std::string& t_string_base::str() const
 		std::string part(w.begin(), w.end());
 
 		if(w.translatable()) {
-			translated_value_ += dsgettext(w.textdomain().c_str(), part.c_str());
+			translated_value_ += translation::dsgettext(w.textdomain().c_str(), part.c_str());
 		} else {
 			translated_value_ += part;
 		}
@@ -493,8 +493,7 @@ void t_string::add_textdomain(const std::string &name, const std::string &path)
 	LOG_CF << "Binding textdomain " << name << " to path " << path << "\n";
 
 	// Register and (re-)bind this textdomain
-	bindtextdomain(name.c_str(), path.c_str());
-	bind_textdomain_codeset(name.c_str(), "UTF-8");
+	translation::bind_textdomain(name.c_str(), path.c_str(), "UTF-8");
 }
 
 void t_string::reset_translations()
