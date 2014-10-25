@@ -252,7 +252,7 @@ public:
 		} else {
 			str = lexical_cast<std::string>(align);
 		}
-		return sgettext(str.c_str());
+		return translation::sgettext(str.c_str());
 	}
 
 	fixed_t alpha() const { return alpha_; }

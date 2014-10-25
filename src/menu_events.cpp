@@ -585,7 +585,7 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 			<< team::get_side_color_index(side_num) << ')';
 #endif
 		description << COLUMN_SEPARATOR << font::LARGE_TEXT << prefix << type->type_name() << "\n"
-				<< prefix << type->cost() << " " << sngettext("unit^Gold", "Gold", type->cost());
+				<< prefix << type->cost() << " " << translation::sngettext("unit^Gold", "Gold", type->cost());
 
 		items.push_back(description.str());
 		sample_units.push_back(type);
@@ -3303,7 +3303,7 @@ void menu_handler::do_ai_formula(const std::string& str,
 
 void menu_handler::user_command()
 {
-	textbox_info_.show(gui::TEXTBOX_COMMAND,sgettext("prompt^Command:"), "", false, *gui_);
+	textbox_info_.show(gui::TEXTBOX_COMMAND, translation::sgettext("prompt^Command:"), "", false, *gui_);
 }
 
 void menu_handler::request_control_change ( int side_num, const std::string& player )
@@ -3345,7 +3345,7 @@ void menu_handler::custom_command()
 void menu_handler::ai_formula()
 {
 			if (network::nconnections() == 0) {
-				textbox_info_.show(gui::TEXTBOX_AI,sgettext("prompt^Command:"), "", false, *gui_);
+				textbox_info_.show(gui::TEXTBOX_AI, translation::sgettext("prompt^Command:"), "", false, *gui_);
 	}
 }
 

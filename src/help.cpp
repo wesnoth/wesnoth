@@ -1621,7 +1621,7 @@ class unit_topic_generator: public topic_generator
 	const unit_type& type_;
 	const std::string variation_;
 	typedef std::pair< std::string, unsigned > item;
-	void push_header(std::vector< item > &row, char const *name) const {
+	void push_header(std::vector< item > &row,  const std::string& name) const {
 		row.push_back(item(bold(name), font::line_width(name, normal_font_size, TTF_STYLE_BOLD)));
 	}
 public:
@@ -1773,7 +1773,7 @@ public:
 
 			BOOST_FOREACH(const config & trait, traits) {
 				const std::string trait_name = trait["male_name"];
-				std::string lang_trait_name = gettext(trait_name.c_str());
+				std::string lang_trait_name = translation::gettext(trait_name.c_str());
 				const std::string ref_id = "traits_"+trait["id"].str();
 				((trait["availability"].str() == "musthave") ? must_have_traits : random_traits).push_back(std::make_pair(lang_trait_name, ref_id));
 			}
@@ -1818,7 +1818,7 @@ public:
 				 ability_end = type_.abilities().end();
 				 ability_it != ability_end; ++ability_it) {
 				const std::string ref_id = "ability_" + ability_it->base_str();
-				std::string lang_ability = gettext(ability_it->c_str());
+				std::string lang_ability = translation::gettext(ability_it->c_str());
 				ss << make_link(lang_ability, ref_id);
 				if (ability_it + 1 != ability_end)
 					ss << ", ";
@@ -1834,7 +1834,7 @@ public:
 				 ability_end = type_.adv_abilities().end();
 				 ability_it != ability_end; ++ability_it) {
 				const std::string ref_id = "ability_" + ability_it->base_str();
-				std::string lang_ability = gettext(ability_it->c_str());
+				std::string lang_ability = translation::gettext(ability_it->c_str());
 				ss << make_link(lang_ability, ref_id);
 				if (ability_it + 1 != ability_end)
 					ss << ", ";

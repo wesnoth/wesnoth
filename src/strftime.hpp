@@ -24,7 +24,7 @@ namespace util {
  * std::strftime wrapper to support date translations and
  * add missing am/pm designations.
  */
-size_t strftime(char* str, size_t count, const char* format,
+size_t strftime(char* str, size_t count, const std::string& format,
 	const std::tm* time);
 
 }
