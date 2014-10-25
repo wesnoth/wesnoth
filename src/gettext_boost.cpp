@@ -103,9 +103,10 @@ void set_default_textdomain(const char* domain)
 }
 
 
-void set_language(const char* language)
+void set_language(const std::string& language, const std::vector<std::string>* /*alternates*/)
 {
-	
+	// why shoudl we need alternates? which languages we support shoudl only be related 
+	// to which languages we ship with and not which the os supports
 	std::cerr << "setting language to  '" << language << "' \n";
 	get_manager().current_language_ = language;
 	get_manager().current_language_ += ".UTF-8";

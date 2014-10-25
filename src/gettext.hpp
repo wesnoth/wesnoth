@@ -36,6 +36,7 @@
 // gettext-related declarations
 #include "wesconfig.h"
 #include <string>
+#include <vector>
 
 #ifndef GETTEXT_DOMAIN
 # define GETTEXT_DOMAIN PACKAGE
@@ -71,7 +72,7 @@ namespace translation
 	void bind_textdomain(const char* domain, const char* direcory, const char* encoding);
 	void set_default_textdomain(const char* domain);
 
-	void set_language(const char* language);
+	void set_language(const std::string& language, const std::vector<std::string>* alternates);
 }
 
 //#define _(String) translation::dsgettext(GETTEXT_DOMAIN,String)
