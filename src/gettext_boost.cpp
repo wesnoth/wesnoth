@@ -113,4 +113,8 @@ void set_language(const std::string& language, const std::vector<std::string>* /
 	get_manager().update_locale();
 }
 
+void init()
+{
+
+}
 }

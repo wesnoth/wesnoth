@@ -73,6 +73,8 @@ namespace translation
 	void set_default_textdomain(const char* domain);
 
 	void set_language(const std::string& language, const std::vector<std::string>* alternates);
+
+	void init();
 }
 
 //#define _(String) translation::dsgettext(GETTEXT_DOMAIN,String)

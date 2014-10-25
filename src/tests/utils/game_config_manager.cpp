@@ -66,7 +66,7 @@ namespace test_utils {
 			setlocale(LC_ALL, "English");
 #else
 			std::setlocale(LC_ALL, "C");
-			std::setlocale(LC_MESSAGES, "");
+			translation::init();
 #endif
 			const std::string& intl_dir = filesystem::get_intl_dir();
 			translation::bind_textdomain("wesnoth", intl_dir.c_str(), "UTF-8");

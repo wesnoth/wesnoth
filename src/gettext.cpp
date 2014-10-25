@@ -172,4 +172,11 @@ void set_language(const std::string& slocale, const std::vector<std::string>* al
 #endif //win32
 }
 
+void init()
+{
+#ifndef _WIN32
+	std::setlocale(LC_MESSAGES, "");
+#endif
+}
+
 }
