@@ -83,7 +83,7 @@ option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ON)
 option(ENABLE_LOW_MEM "Reduce memory usage by removing extra functionality" OFF)
 option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
-option(ENABLE_PANDORA "Add support for the OpenPandora by deactivating libvorbis support" OFF)
+option(ENABLE_PANDORA "Add support for the OpenPandora by deactivating libvorbis support and boost filesystem support, this overrides the boost filesystem option below" OFF)
 option(ENABLE_SDL_GPU "Enable building with SDL_gpu (experimental" OFF)
 option(ENABLE_BOOST_FILESYSTEM "Enable building with the boost filesystem and boost locale code" ON)
 

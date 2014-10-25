@@ -227,19 +227,19 @@ set(libwesnoth-core_STAT_SRC
 	serialization/validator.cpp
 )
 
-if(ENABLE_BOOST_FILESYSTEM)
+if(ENABLE_BOOST_FILESYSTEM AND NOT ENABLE_PANDORA)
 	set(libwesnoth-core_STAT_SRC
 		${libwesnoth-core_STAT_SRC}
 		filesystem_boost.cpp
 		gettext_boost.cpp
 	)
-else(ENABLE_BOOST_FILESYSTEM)
+else(ENABLE_BOOST_FILESYSTEM AND NOT ENABLE_PANDORA)
 	set(libwesnoth-core_STAT_SRC
 		${libwesnoth-game_STAT_SRC}
 		filesystem.cpp
 		gettext.cpp
 	)
-endif(ENABLE_BOOST_FILESYSTEM)
+endif(ENABLE_BOOST_FILESYSTEM AND NOT ENABLE_PANDORA)
 
 # a 'lib' is automatically set in front when creating the library (as in the filename)
 # internal reference is the name given here
