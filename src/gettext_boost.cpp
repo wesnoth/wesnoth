@@ -108,8 +108,15 @@ void set_language(const std::string& language, const std::vector<std::string>* /
 	// why shoudl we need alternates? which languages we support shoudl only be related 
 	// to which languages we ship with and not which the os supports
 	std::cerr << "setting language to  '" << language << "' \n";
-	get_manager().current_language_ = language;
-	get_manager().current_language_ += ".UTF-8";
+	std::string::size_type at_pos = language.rfind('@');
+	if(at_pos  != std::string::npos)
+	{
+		get_manager().current_language_ = language.substr(0, at_pos) + ".UTF-8" + language.substr(at_pos);
+	}
+	else
+	{
+		get_manager().current_language_ = language + ".UTF-8";
+	}
 	get_manager().update_locale();
 }
 
