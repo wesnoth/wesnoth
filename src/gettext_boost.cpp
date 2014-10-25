@@ -88,7 +88,7 @@ std::string dsngettext (const char * domainname, const char *singular, const cha
 	return msgval;
 }
 
-void bind_textdomain(const char* domain, const char* direcory, const char* encoding)
+void bind_textdomain(const char* domain, const char* direcory, const char* /*encoding*/)
 {
 	std::cerr << "adding textdomain '" << domain << "' in directory '" << direcory << "'\n";
 	get_manager().generator_.add_messages_domain(domain);
