@@ -370,7 +370,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			// Retrieve next scenario data.
 			gamestate.expand_scenario();
 
-			if (io_type == IO_SERVER && gamestate.valid()) {
+			if (gamestate.valid()) {
 				//note that although starting_pos is const it might be changed by gamestate.some_non_const_operation()  .
 				const config& starting_pos = gamestate.get_starting_pos();
 
@@ -384,7 +384,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 						!network_game, false));
 
 				if (starting_pos["allow_new_game"].to_bool(gamestate.mp_settings().show_connect) 
-				|| (game_config::debug && network::nconnections() == 0)) {
+				|| (game_config::debug && network::nconnections() == 0 && game_type == game_classification::MULTIPLAYER)) {
 					// Opens mp::connect dialog to allow users to
 					// make an adjustments for scenario.
 					// TODO: Fix this so that it works when network::nconnections() > 0 as well.
