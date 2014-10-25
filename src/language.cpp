@@ -29,7 +29,7 @@
 
 #ifdef _WIN32
 #include <windows.h>
-#ifndef _MSC_VER
+#if !defined(_MSC_VER) && !defined(__MINGW32__)
 extern "C" int _putenv(const char*);
 #endif
 #endif

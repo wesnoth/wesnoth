@@ -83,6 +83,7 @@ option(ENABLE_NLS "Enable building of translations" ON)
 option(ENABLE_LOW_MEM "Reduce memory usage by removing extra functionality" OFF)
 option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
 option(ENABLE_PANDORA "Add support for the OpenPandora by deactivating libvorbis support" OFF)
+option(ENABLE_BOOST_FILESYSTEM "Enable building with the boost filesystem and boost locale code" ON)
 
 if(NOT DEFINED ENABLE_DISPLAY_REVISION)
 	# Test whether the code is used in a repository if not autorevision will
@@ -588,6 +589,11 @@ if(ENABLE_GAME)
 			message("Could not find dbus-1, Disabling notification support.")
 		endif(LIBDBUS_FOUND)
 	endif(ENABLE_NOTIFICATIONS)
+
+	if(ENABLE_BOOST_FILESYSTEM)
+		find_package( Boost 1.44 REQUIRED COMPONENTS filesystem )
+		find_package( Boost 1.48 REQUIRED COMPONENTS locale )
+	endif(ENABLE_BOOST_FILESYSTEM)
 
 endif(ENABLE_GAME)
 
