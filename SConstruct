@@ -73,6 +73,7 @@ opts.AddVariables(
     BoolVariable('lowmem', 'Set to reduce memory usage by removing extra functionality', False),
     BoolVariable('notifications', 'Enable support for desktop notifications', True),
     BoolVariable('nls','enable compile/install of gettext message catalogs',True),
+    BoolVariable('boostfilesystem', 'Use boost filesystem', True),
     PathVariable('prefix', 'autotools-style installation prefix', "/usr/local", PathVariable.PathAccept),
     PathVariable('prefsdir', 'user preferences directory', "", PathVariable.PathAccept),
     PathVariable('default_prefs_file', 'default preferences file name', "", PathVariable.PathAccept),
@@ -273,6 +274,10 @@ configure_args = dict(custom_tests = init_metasconf(env, ["cplusplus", "python_d
     log_file="$build_dir/config.log", conf_dir="$build_dir/sconf_temp")
 
 env.MergeFlags(env["extra_flags_config"])
+
+# Some tests need to load parts of boost
+if env["boostfilesystem"]:
+    env.PrependENVPath('LD_LIBRARY_PATH', env["boostlibdir"])
 if env["prereqs"]:
     conf = env.Configure(**configure_args)
 
@@ -324,7 +329,10 @@ if env["prereqs"]:
         conf.CheckBoostIostreamsBZip2() and \
         conf.CheckBoost("smart_ptr", header_only = True) and \
         conf.CheckSDL(require_version = '1.2.7') and \
-        conf.CheckSDL('SDL_net') or Warning("Base prerequisites are not met.")
+        conf.CheckSDL('SDL_net') & \
+        conf.CheckBoost("system") & \
+		((not env["boostfilesystem"]) or (conf.CheckBoost("filesystem", require_version = "1.44.0"))) \
+            or Warning("Base prerequisites are not met.")
 
     env = conf.Finish()
     client_env = env.Clone()

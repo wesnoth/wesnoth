@@ -83,7 +83,7 @@ void file_menu::display_current_files() {
 }
 
 int file_menu::delete_chosen_file() {
-	const int ret = remove(chosen_file_.c_str());
+	const int ret = filesystem::delete_file(chosen_file_);
 	if (ret == -1) {
 	//	gui2::show_transient_message(disp_.video(), "", _("Deletion of the file failed."));
 	}

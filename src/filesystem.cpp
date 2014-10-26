@@ -346,6 +346,15 @@ bool delete_directory(const std::string& path, const bool keep_pbl)
 	}
 	return ret;
 }
+bool delete_file(const std::string& path)
+{
+	bool ret = true;
+	if(remove(path.c_str()) != 0 && errno != ENOENT) {
+		ERR_FS << "remove(" << path << "): " << strerror(errno) << "\n";
+		ret = false;
+	}
+	return ret;
+}
 
 std::string get_cwd()
 {
@@ -593,7 +602,7 @@ static void setup_user_data_dir()
 #endif
 }
 
-const std::string& get_user_data_dir()
+std::string get_user_data_dir()
 {
 	// ensure setup gets called only once per session
 	// FIXME: this is okay and optimized, but how should we react
@@ -605,7 +614,7 @@ const std::string& get_user_data_dir()
 	return user_data_dir;
 }
 
-const std::string &get_user_config_dir()
+std::string get_user_config_dir()
 {
 	if (user_config_dir.empty())
 	{
@@ -630,7 +639,7 @@ const std::string &get_user_config_dir()
 	return user_config_dir;
 }
 
-const std::string &get_cache_dir()
+std::string get_cache_dir()
 {
 	if (cache_dir.empty())
 	{
