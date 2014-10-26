@@ -17,6 +17,7 @@
 #include "global.hpp"
 
 #include "clipboard.hpp"
+#include "serialization/unicode.hpp"
 #include <algorithm>
 
 #include <SDL_version.h>
@@ -432,43 +433,47 @@ void copy_to_clipboard(const std::string& text, const bool)
 		++last;
 	}
 
-	const HGLOBAL hglb = GlobalAlloc(GMEM_MOVEABLE, (str.size() + 1) * sizeof(TCHAR));
+	utf16::string ustring = unicode_cast<utf16::string>(str);
+	std::wstring wstr(ustring.begin(), ustring.end());
+
+	const HGLOBAL hglb = GlobalAlloc(GMEM_MOVEABLE, (wstr.size() + 1) * sizeof(wchar_t));
 	if(hglb == NULL) {
 		CloseClipboard();
 		return;
 	}
-	char* const buffer = reinterpret_cast<char* const>(GlobalLock(hglb));
-	strcpy(buffer, str.c_str());
+	wchar_t* const buffer = reinterpret_cast<wchar_t* const>(GlobalLock(hglb));
+	wcscpy(buffer, wstr.c_str());
 	GlobalUnlock(hglb);
-	SetClipboardData(CF_TEXT, hglb);
+	SetClipboardData(CF_UNICODETEXT, hglb);
 	CloseClipboard();
 }
 
 std::string copy_from_clipboard(const bool)
 {
-	if(!IsClipboardFormatAvailable(CF_TEXT))
+	if(!IsClipboardFormatAvailable(CF_UNICODETEXT))
 		return "";
 	if(!OpenClipboard(NULL))
 		return "";
 
-	HGLOBAL hglb = GetClipboardData(CF_TEXT);
+	HGLOBAL hglb = GetClipboardData(CF_UNICODETEXT);
 	if(hglb == NULL) {
 		CloseClipboard();
 		return "";
 	}
-	char const * buffer = reinterpret_cast<char*>(GlobalLock(hglb));
+	wchar_t const * buffer = reinterpret_cast<wchar_t*>(GlobalLock(hglb));
 	if(buffer == NULL) {
 		CloseClipboard();
 		return "";
 	}
 
+	std::wstring str(buffer);
 	// Convert newlines
-	std::string str(buffer);
-	str.erase(std::remove(str.begin(),str.end(),'\r'),str.end());
-
+	str.erase(std::remove(str.begin(),str.end(), L'\r'), str.end());
+	utf16::string ustring(str.begin(), str.end());
 	GlobalUnlock(hglb);
 	CloseClipboard();
-	return str;
+
+	return unicode_cast<std::string>(ustring);
 }
 
 #endif

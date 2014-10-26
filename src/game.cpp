@@ -21,6 +21,11 @@
 #include "game_config_manager.hpp"
 #include "game_controller.hpp"
 #include "gui/dialogs/title_screen.hpp"
+
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
@@ -32,6 +37,8 @@
 #include "replay.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
+#include "serialization/unicode_cast.hpp"
+
 #include "serialization/validator.hpp"
 #include "statistics.hpp"
 #include "version.hpp"
@@ -436,19 +443,19 @@ static void warn_early_init_failure()
  * Setups the game environment and enters
  * the titlescreen or game loops.
  */
-static int do_gameloop(int argc, char** argv)
+static int do_gameloop(const std::vector<std::string>& args)
 {
 	srand(time(NULL));
 
-	commandline_options cmdline_opts = commandline_options(argc,argv);
-	game_config::wesnoth_program_dir = filesystem::directory_name(argv[0]);
+	commandline_options cmdline_opts = commandline_options(args);
+	game_config::wesnoth_program_dir = filesystem::directory_name(args[0]);
 	int finished = process_command_args(cmdline_opts);
 	if(finished != -1) {
 		return finished;
 	}
 
 	boost::scoped_ptr<game_controller> game(
-		new game_controller(cmdline_opts,argv[0]));
+		new game_controller(cmdline_opts,args[0].c_str()));
 	const int start_ticks = SDL_GetTicks();
 
 	init_locale();
@@ -669,6 +676,57 @@ static int do_gameloop(int argc, char** argv)
 		}
 	}
 }
+#ifdef _WIN32
+static bool parse_commandline_argument(const char*& next, const char* end, std::string& res)
+{
+	//strip leading shitespace
+	while(next != end && *next == ' ')
+		++next;
+	if(next == end)
+		return false;
+
+	bool is_excaped = false;
+
+	for(;next != end; ++next)
+	{
+		if(*next == ' ' && !is_excaped) {
+			break;
+		}
+		else if(*next == '"' && !is_excaped) {
+			is_excaped = true;
+			continue;
+		}
+		else if(*next == '"' && is_excaped && next + 1 != end && *(next + 1) == '"') {
+			res.push_back('"');
+			++next;
+			continue;		
+		}
+		else if(*next == '"' && is_excaped ) {
+			is_excaped = false;
+			continue;	
+		}
+		else {
+			res.push_back(*next);
+		}
+	}
+	return true;
+}
+
+static std::vector<std::string> parse_commandline_arguments(std::string input)
+{
+	const char* start = &input[0];
+	const char* end = start + input.size();
+	std::string buffer;
+	std::vector<std::string> res;
+	
+	while(parse_commandline_argument(start, end, buffer))
+	{
+		res.push_back(std::string());
+		res.back().swap(buffer);
+	}
+	return res;
+}
+#endif
 
 
 #ifdef __native_client__
@@ -700,7 +758,19 @@ int main(int argc, char** argv)
 		execv(argv[0], argv);
 	}
 #endif
-
+#ifdef _WIN32
+	(void)argc;
+	(void)argv;
+	//windows argv is ansi encoded by default
+	std::vector<std::string> args = parse_commandline_arguments(unicode_cast<std::string>(std::wstring(GetCommandLineW())));
+#else
+	std::vector<std::string> args;
+	for(int i = 0; i < argc; ++i)
+	{
+		args.push_back(std::string(argv[i]));
+	}
+#endif
+	assert(!args.empty());
 	if(SDL_Init(SDL_INIT_TIMER) < 0) {
 		fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
 		return(1);
@@ -735,7 +805,7 @@ int main(int argc, char** argv)
 			}
 		}
 
-		const int res = do_gameloop(argc,argv);
+		const int res = do_gameloop(args);
 		safe_exit(res);
 	} catch(boost::program_options::error& e) {
 		std::cerr << "Error in command line: " << e.what() << '\n';
