@@ -123,10 +123,10 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	log_scope2(log_editor, "Loading file " + filename);
 
 	// 0.1 File not found
-	if (!file_exists(filename) || is_directory(filename))
+	if (!filesystem::file_exists(filename) || filesystem::is_directory(filename))
 		throw editor_map_load_exception(filename, _("File not found"));
 
-	std::string file_string = read_file(filename);
+	std::string file_string = filesystem::read_file(filename);
 
 	// 0.2 Map file empty
 	if (file_string.empty()) {
@@ -173,8 +173,8 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	// 3.0 Macro referenced pure map
 	const std::string& macro_argument = matched_macro[1];
 	LOG_ED << "Map looks like a scenario, trying {" << macro_argument << "}" << std::endl;
-	std::string new_filename = get_wml_location(macro_argument,
-			directory_name(macro_argument));
+	std::string new_filename = filesystem::get_wml_location(macro_argument,
+			filesystem::directory_name(macro_argument));
 	if (new_filename.empty()) {
 		std::string message = _("The map file looks like a scenario, "
 				"but the map_data value does not point to an existing file")
@@ -183,7 +183,7 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	}
 	LOG_ED << "New filename is: " << new_filename << std::endl;
 	filename_ = new_filename;
-	file_string = read_file(filename_);
+	file_string = filesystem::read_file(filename_);
 	map_ = editor_map::from_string(game_config, file_string);
 	pure_map_ = true;
 }
@@ -499,7 +499,7 @@ bool map_context::save_scenario()
 	assert(!is_embedded());
 
 	if (scenario_id_.empty())
-		scenario_id_ = file_name(filename_);
+		scenario_id_ = filesystem::base_name(filename_);
 	if (scenario_name_.empty())
 		scenario_name_ = scenario_id_;
 
@@ -510,9 +510,9 @@ bool map_context::save_scenario()
 			out.write(to_config());
 		}
 		if (!wml_stream.str().empty())
-			write_file(get_filename(), wml_stream.str());
+			filesystem::write_file(get_filename(), wml_stream.str());
 		clear_modified();
-	} catch (io_exception& e) {
+	} catch (filesystem::io_exception& e) {
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
 		const std::string msg = vgettext("Could not save the scenario: $msg", symbols);
@@ -529,9 +529,9 @@ bool map_context::save_map()
 
 	try {
 		if (!is_embedded()) {
-			write_file(get_filename(), map_data);
+			filesystem::write_file(get_filename(), map_data);
 		} else {
-			std::string map_string = read_file(get_filename());
+			std::string map_string = filesystem::read_file(get_filename());
 			boost::regex rexpression_map_data("(.*map_data\\s*=\\s*\")(.+?)(\".*)");
 			boost::smatch matched_map_data;
 			if (boost::regex_search(map_string, matched_map_data, rexpression_map_data,
@@ -540,13 +540,13 @@ bool map_context::save_map()
 				ss << matched_map_data[1];
 				ss << map_data;
 				ss << matched_map_data[3];
-				write_file(get_filename(), ss.str());
+				filesystem::write_file(get_filename(), ss.str());
 			} else {
 				throw editor_map_save_exception(_("Could not save into scenario"));
 			}
 		}
 		clear_modified();
-	} catch (io_exception& e) {
+	} catch (filesystem::io_exception& e) {
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
 		const std::string msg = vgettext("Could not save the map: $msg", symbols);

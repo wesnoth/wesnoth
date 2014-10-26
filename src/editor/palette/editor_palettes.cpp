@@ -62,7 +62,7 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector<std::string>& 
 				str << IMAGE_PREFIX << item_groups[mci].icon;
 				if (mci == active_group_index()) {
 
-					if (file_exists(str.str() + "_30-pressed.png" ) ) {
+					if (filesystem::file_exists(str.str() + "_30-pressed.png" ) ) {
 						str << "_30-pressed.png";
 					} else {
 						str << "_30.png~CS(70,70,0)";

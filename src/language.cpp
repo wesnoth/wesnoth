@@ -96,7 +96,7 @@ bool load_language_list()
 {
 	config cfg;
 	try {
-		scoped_istream stream = preprocess_file(get_wml_location("hardwired/language.cfg"));
+		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("hardwired/language.cfg"));
 		read(cfg, *stream);
 	} catch(config::error &) {
 		return false;
@@ -302,9 +302,9 @@ void init_textdomains(const config& cfg)
 		const std::string &path = t["path"];
 
 		if(path.empty()) {
-			t_string::add_textdomain(name, get_intl_dir());
+			t_string::add_textdomain(name, filesystem::get_intl_dir());
 		} else {
-			std::string location = get_binary_dir_location("", path);
+			std::string location = filesystem::get_binary_dir_location("", path);
 
 			if (location.empty()) {
 				//if location is empty, this causes a crash on Windows, so we

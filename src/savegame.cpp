@@ -144,7 +144,7 @@ public:
 	void rebuild(const std::string& name) {
 		std::string filename = name;
 		replace_space2underbar(filename);
-		time_t modified = file_create_time(get_saves_dir() + "/" + filename);
+		time_t modified = filesystem::file_modified_time(filesystem::get_saves_dir() + "/" + filename);
 		rebuild(name, modified);
 	}
 	void rebuild(const std::string& name, const time_t& modified) {
@@ -182,14 +182,14 @@ public:
 	void write_save_index() {
 		log_scope("write_save_index()");
 		try {
-			scoped_ostream stream = ostream_file(get_save_index_file());
+			filesystem::scoped_ostream stream = filesystem::ostream_file(filesystem::get_save_index_file());
 			if (preferences::save_compression_format() != compression::NONE) {
 				// TODO: maybe allow writing this using bz2 too?
 				write_gz(*stream, data());
 			} else {
 				write(*stream, data());
 			}
-		} catch(io_exception& e) {
+		} catch(filesystem::io_exception& e) {
 			ERR_SAVE << "error writing to save index file: '" << e.what() << "'\n";
 		}
 	}
@@ -215,14 +215,14 @@ private:
 	config& data() {
 		if(loaded_ == false) {
 			try {
-				scoped_istream stream = istream_file(get_save_index_file());
+				filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_save_index_file());
 				try {
 					read_gz(data_, *stream);
 				} catch (boost::iostreams::gzip_error&) {
 					stream->seekg(0);
 					read(data_, *stream);
 				}
-			} catch(io_exception& e) {
+			} catch(filesystem::io_exception& e) {
 				ERR_SAVE << "error reading save index: '" << e.what() << "'" << std::endl;
 			} catch(config::error& e) {
 				ERR_SAVE << "error parsing save index config file:\n" << e.message << std::endl;
@@ -252,12 +252,12 @@ private:
 
 class create_save_info {
 public:
-	create_save_info(const std::string* d = NULL) : dir(d ? *d : get_saves_dir()) {
+	create_save_info(const std::string* d = NULL) : dir(d ? *d : filesystem::get_saves_dir()) {
 	}
 	save_info operator()(const std::string& filename) const {
 		std::string name = filename;
 		replace_underbar2space(name);
-		time_t modified = file_create_time(dir + "/" + filename);
+		time_t modified = filesystem::file_modified_time(dir + "/" + filename);
 		save_index_manager.set_modified(name, modified);
 		return save_info(name, modified);
 	}
@@ -270,7 +270,7 @@ std::vector<save_info> get_saves_list(const std::string* dir, const std::string*
 	create_save_info creator(dir);
 
 	std::vector<std::string> filenames;
-	get_files_in_dir(creator.dir,&filenames);
+	filesystem::get_files_in_dir(creator.dir,&filenames);
 
 	if (filter) {
 		filenames.erase(std::remove_if(filenames.begin(), filenames.end(),
@@ -335,10 +335,10 @@ bool save_info_less_time::operator() (const save_info& a, const save_info& b) co
 
 static std::istream* find_save_file(const std::string &name, const std::string &alt_name, const std::vector<std::string> &suffixes) {
 	BOOST_FOREACH(const std::string &suf, suffixes) {
-		std::istream *file_stream = istream_file(get_saves_dir() + "/" + name + suf);
+		std::istream *file_stream = filesystem::istream_file(filesystem::get_saves_dir() + "/" + name + suf);
 		if (file_stream->fail()) {
 			delete file_stream;
-			file_stream = istream_file(get_saves_dir() + "/" + alt_name + suf);
+			file_stream = filesystem::istream_file(filesystem::get_saves_dir() + "/" + alt_name + suf);
 		}
 		if (!file_stream->fail())
 			return file_stream;
@@ -355,7 +355,7 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 	replace_space2underbar(modified_name);
 
 	static const std::vector<std::string> suffixes = boost::assign::list_of("")(".gz")(".bz2");
-	scoped_istream file_stream = find_save_file(modified_name, name, suffixes);
+	filesystem::scoped_istream file_stream = find_save_file(modified_name, name, suffixes);
 
 	cfg.clear();
 	try{
@@ -363,9 +363,9 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 		 * Test the modified name, since it might use a .gz
 		 * file even when not requested.
 		 */
-		if(is_gzip_file(modified_name)) {
+		if(filesystem::is_gzip_file(modified_name)) {
 			read_gz(cfg, *file_stream);
-		} else if(is_bzip2_file(modified_name)) {
+		} else if(filesystem::is_bzip2_file(modified_name)) {
 			read_bz2(cfg, *file_stream);
 		} else {
 			read(cfg, *file_stream);
@@ -397,7 +397,7 @@ bool save_game_exists(const std::string& name, compression::format compressed)
 
 	fname += compression::format_extension(compressed);
 
-	return file_exists(get_saves_dir() + "/" + fname);
+	return filesystem::file_exists(filesystem::get_saves_dir() + "/" + fname);
 }
 
 void clean_saves(const std::string& label)
@@ -434,8 +434,8 @@ void delete_game(const std::string& name)
 	std::string modified_name = name;
 	replace_space2underbar(modified_name);
 
-	remove((get_saves_dir() + "/" + name).c_str());
-	remove((get_saves_dir() + "/" + modified_name).c_str());
+	remove((filesystem::get_saves_dir() + "/" + name).c_str());
+	remove((filesystem::get_saves_dir() + "/" + modified_name).c_str());
 
 	save_index_manager.remove(name);
 }
@@ -878,7 +878,7 @@ bool savegame::check_overwrite(CVideo& video)
 
 void savegame::check_filename(const std::string& filename, CVideo& video)
 {
-	if (is_compressed_file(filename)) {
+	if (filesystem::is_compressed_file(filename)) {
 		gui2::show_error_message(video, _("Save names should not end on '.gz' or '.bz2'. "
 			"Please remove the extension."));
 		throw illegal_filename_exception();
@@ -972,7 +972,7 @@ void savegame::write_game_to_disk(const std::string& filename)
 		write_game(out);
 		finish_save_game(out);
 	}
-	scoped_ostream os(open_save_game(filename_));
+	filesystem::scoped_ostream os(open_save_game(filename_));
 	(*os) << ss.str();
 
 	if (!os->good()) {
@@ -1000,20 +1000,20 @@ void savegame::finish_save_game(const config_writer &out)
 			throw game::save_game_failed(_("Could not write to file"));
 		}
 		save_index_manager.remove(gamestate_.classification().label);
-	} catch(io_exception& e) {
+	} catch(filesystem::io_exception& e) {
 		throw game::save_game_failed(e.what());
 	}
 }
 
 // Throws game::save_game_failed
-scoped_ostream savegame::open_save_game(const std::string &label)
+filesystem::scoped_ostream savegame::open_save_game(const std::string &label)
 {
 	std::string name = label;
 	replace_space2underbar(name);
 
 	try {
-		return scoped_ostream(ostream_file(get_saves_dir() + "/" + name));
-	} catch(io_exception& e) {
+		return filesystem::scoped_ostream(filesystem::ostream_file(filesystem::get_saves_dir() + "/" + name));
+	} catch(filesystem::io_exception& e) {
 		throw game::save_game_failed(e.what());
 	}
 }

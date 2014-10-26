@@ -58,7 +58,6 @@ BPath be_path;
 #include "game_config.hpp"
 #include "game_preferences.hpp"
 #include "log.hpp"
-#include "loadscreen.hpp"
 #include "scoped_resource.hpp"
 #include "serialization/string_utils.hpp"
 #include "version.hpp"
@@ -87,10 +86,7 @@ namespace {
 #include <CoreFoundation/CFBase.h>
 #endif
 
-bool ends_with(const std::string& str, const std::string& suffix)
-{
-	return str.size() >= suffix.size() && std::equal(suffix.begin(),suffix.end(),str.end()-suffix.size());
-}
+namespace filesystem {
 
 void get_files_in_dir(const std::string &directory,
 					  std::vector<std::string>* files,
@@ -263,84 +259,6 @@ void get_files_in_dir(const std::string &directory,
 	}
 }
 
-#ifdef __native_client__
-// For performance reasons, on NaCl we only keep preferences and saves in persistent storage.
-std::string get_prefs_file()
-{
-	return "/wesnoth-userdata/preferences";
-}
-
-std::string get_save_index_file()
-{
-	return "/wesnoth-userdata/save_index";
-}
-
-std::string get_saves_dir()
-{
-	const std::string dir_path = "/wesnoth-userdata/saves";
-	return get_dir(dir_path);
-}
-
-#else
-
-std::string get_prefs_file()
-{
-	return get_user_config_dir() + "/preferences";
-}
-
-std::string get_default_prefs_file()
-{
-#ifdef HAS_RELATIVE_DEFPREF
-	return game_config::path + "/" + game_config::default_preferences_path;
-#else
-	return game_config::default_preferences_path;
-#endif
-}
-
-std::string get_save_index_file()
-{
-	return get_user_data_dir() + "/save_index";
-}
-
-std::string get_saves_dir()
-{
-	const std::string dir_path = get_user_data_dir() + "/saves";
-	return get_dir(dir_path);
-}
-#endif
-
-std::string get_addon_campaigns_dir()
-{
-	const std::string dir_path = get_user_data_dir() + "/data/add-ons";
-	return get_dir(dir_path);
-}
-
-std::string get_intl_dir()
-{
-#ifdef _WIN32
-	return get_cwd() + "/translations";
-#else
-
-#ifdef USE_INTERNAL_DATA
-	return get_cwd() + "/" LOCALEDIR;
-#endif
-
-#if HAS_RELATIVE_LOCALEDIR
-	std::string res = game_config::path + "/" LOCALEDIR;
-#else
-	std::string res = LOCALEDIR;
-#endif
-
-	return res;
-#endif
-}
-
-std::string get_screenshot_dir()
-{
-	const std::string dir_path = get_user_data_dir() + "/screenshots";
-	return get_dir(dir_path);
-}
-
 std::string get_next_filename(const std::string& name, const std::string& extension)
 {
 	std::string next_filename;
@@ -384,11 +302,6 @@ std::string get_dir(const std::string& dir_path)
 bool make_directory(const std::string& path)
 {
 	return (mkdir(path.c_str(),AccessMode) == 0);
-}
-
-bool looks_like_pbl(const std::string& file)
-{
-	return utils::wildcard_string_match(utils::lowercase(file), "*.pbl");
 }
 
 // This deletes a directory with no hidden files and subdirectories.
@@ -801,22 +714,6 @@ void write_file(const std::string& fname, const std::string& data)
 	}
 }
 
-
-std::string read_map(const std::string& name)
-{
-	std::string res;
-	std::string map_location = get_wml_location("maps/" + name);
-	if(!map_location.empty()) {
-		res = read_file(map_location);
-	}
-
-	if (res.empty()) {
-		res = read_file(get_user_data_dir() + "/editor/maps/" + name);
-	}
-
-	return res;
-}
-
 static bool is_directory_internal(const std::string& fname)
 {
 #ifdef _WIN32
@@ -862,7 +759,7 @@ bool file_exists(const std::string& name)
 #endif
 }
 
-time_t file_create_time(const std::string& fname)
+time_t file_modified_time(const std::string& fname)
 {
 	struct stat buf;
 	if(::stat(fname.c_str(),&buf) == -1)
@@ -893,58 +790,6 @@ bool is_bzip2_file(const std::string& filename)
 		&& filename.substr(filename.length() - 4) == ".bz2");
 }
 
-file_tree_checksum::file_tree_checksum()
-	: nfiles(0), sum_size(0), modified(0)
-{}
-
-file_tree_checksum::file_tree_checksum(const config& cfg) :
-	nfiles	(cfg["nfiles"].to_size_t()),
-	sum_size(cfg["size"].to_size_t()),
-	modified(cfg["modified"].to_time_t())
-{
-}
-
-void file_tree_checksum::write(config& cfg) const
-{
-	cfg["nfiles"] = nfiles;
-	cfg["size"] = sum_size;
-	cfg["modified"] = modified;
-}
-
-bool file_tree_checksum::operator==(const file_tree_checksum &rhs) const
-{
-	return nfiles == rhs.nfiles && sum_size == rhs.sum_size &&
-		modified == rhs.modified;
-}
-
-static void get_file_tree_checksum_internal(const std::string& path, file_tree_checksum& res)
-{
-
-	std::vector<std::string> dirs;
-	get_files_in_dir(path,NULL,&dirs, ENTIRE_FILE_PATH, SKIP_MEDIA_DIR, DONT_REORDER, &res);
-	loadscreen::increment_progress();
-
-	for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
-		get_file_tree_checksum_internal(*j,res);
-	}
-}
-
-const file_tree_checksum& data_tree_checksum(bool reset)
-{
-	static file_tree_checksum checksum;
-	if (reset)
-		checksum.reset();
-	if(checksum.nfiles == 0) {
-		get_file_tree_checksum_internal("data/",checksum);
-		get_file_tree_checksum_internal(get_user_data_dir() + "/data/",checksum);
-		LOG_FS << "calculated data tree checksum: "
-			   << checksum.nfiles << " files; "
-			   << checksum.sum_size << " bytes\n";
-	}
-
-	return checksum;
-}
-
 int file_size(const std::string& fname)
 {
 	struct stat buf;
@@ -954,7 +799,7 @@ int file_size(const std::string& fname)
 	return buf.st_size;
 }
 
-std::string file_name(const std::string& file)
+std::string base_name(const std::string& file)
 // Analogous to POSIX basename(3), but for C++ string-object pathnames
 {
 #ifdef _WIN32
@@ -1343,26 +1188,4 @@ std::string normalize_path(const std::string &p1)
 	return p4.str();
 }
 
-scoped_istream& scoped_istream::operator=(std::istream *s)
-{
-	delete stream;
-	stream = s;
-	return *this;
-}
-
-scoped_istream::~scoped_istream()
-{
-	delete stream;
-}
-
-scoped_ostream& scoped_ostream::operator=(std::ostream *s)
-{
-	delete stream;
-	stream = s;
-	return *this;
-}
-
-scoped_ostream::~scoped_ostream()
-{
-	delete stream;
 }

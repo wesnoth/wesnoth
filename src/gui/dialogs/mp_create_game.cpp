@@ -96,17 +96,16 @@ void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 	list.add_row(item);
 
 	// User maps
-	/*	FIXME implement user maps
-		std::vector<std::string> maps;
-		get_files_in_dir(get_user_data_dir() + "/editor/maps", &maps, NULL,
-	   FILE_NAME_ONLY);
+/*	FIXME implement user maps
+	std::vector<std::string> maps;
+	filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/maps", &maps, NULL, filesystem::FILE_NAME_ONLY);
 
-		FOREACH(const AUTO& map, maps) {
-			std::map<std::string, t_string> item;
-			item.insert(std::make_pair("label", map));
-			list->add_row(item);
-		}
-	*/
+	FOREACH(const AUTO& map, maps) {
+		std::map<std::string, t_string> item;
+		item.insert(std::make_pair("label", map));
+		list->add_row(item);
+	}
+*/
 
 	// Standard maps
 	int i = 0;

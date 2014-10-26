@@ -207,7 +207,7 @@ private:
 	/** Update the save_index */
 	void finish_save_game(const config_writer &out);
 	/** Throws game::save_game_failed. */
-	scoped_ostream open_save_game(const std::string &label);
+	filesystem::scoped_ostream open_save_game(const std::string &label);
 	friend class save_info;
 
 	game_state& gamestate_;

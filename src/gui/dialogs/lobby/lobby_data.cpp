@@ -220,7 +220,7 @@ game_info::game_info(const config& game, const config& game_config)
 	map_info = era;
 
 	if(map_data.empty()) {
-		map_data = read_map(game["mp_scenario"]);
+		map_data = filesystem::read_map(game["mp_scenario"]);
 	}
 
 	if(map_data.empty()) {

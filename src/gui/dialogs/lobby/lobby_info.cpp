@@ -16,7 +16,6 @@
 
 #include "config.hpp"
 #include "game_preferences.hpp"
-#include "filesystem.hpp"
 #include "formula_string_utils.hpp"
 #include "gettext.hpp"
 #include "network.hpp"
