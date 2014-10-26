@@ -511,9 +511,10 @@ void saved_game::cancel_orders()
 {
 	BOOST_FOREACH(config &side, this->starting_pos_.child_range("side"))
 	{
-		// TODO: was this line needed, was it just an optimisation, or was ist just wrong?
-		// if (side["controller"] != "human") continue;
-		// reenable it iff it was needed for some reason but please explain why.
+		// for humans "goto_x/y" is used for multi-turn-moves
+		// for the ai "goto_x/y" is a way for wml to order the ai to move a unit to a certain place.
+		// we want to cancel human order but not to break wml.
+		if (side["controller"] != "human" && side["controller"] != "network") continue;
 		BOOST_FOREACH(config &unit, side.child_range("unit"))
 		{
 			unit["goto_x"] = -999;
