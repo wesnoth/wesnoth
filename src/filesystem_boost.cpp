@@ -32,6 +32,7 @@
 #include <set>
 
 #ifdef _WIN32
+#include <boost/locale.hpp>
 #include <windows.h>
 #endif /* !_WIN32 */
 
