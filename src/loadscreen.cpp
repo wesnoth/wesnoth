@@ -260,7 +260,7 @@ void loadscreen::start_stage(char const *id)
 
 	const load_stage &cs = stages[s];
 	global_loadscreen->prcnt_ = cs.start_pos;
-	global_loadscreen->draw_screen(gettext(cs.name));
+	global_loadscreen->draw_screen(translation::gettext(cs.name));
 	stage_counter[s] = 0;
 	stage_time[s] = SDL_GetTicks();
 	current_stage = s;

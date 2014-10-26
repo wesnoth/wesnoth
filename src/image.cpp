@@ -426,7 +426,7 @@ static std::string get_localized_path (const std::string& file, const std::strin
 	// not have it when translated.
 	langs.push_back("en_US");
 	BOOST_FOREACH(const std::string &lang, langs) {
-		std::string loc_file = dir + "l10n" + "/" + lang + "/" + loc_base;
+		std::string loc_file = dir + "/" + "l10n" + "/" + lang + "/" + loc_base;
 		if (filesystem::file_exists(loc_file) && localized_file_uptodate(loc_file)) {
 			return loc_file;
 		}

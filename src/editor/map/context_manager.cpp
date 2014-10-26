@@ -870,7 +870,7 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 			replace_map_context(mc.release());
 		}
 		if (get_map_context().is_embedded()) {
-			const char* msg = _("Loaded embedded map data");
+			std::string msg = _("Loaded embedded map data");
 			gui2::show_transient_message(gui_.video(), _("Map loaded from scenario"), msg);
 		} else {
 			if (get_map_context().get_filename() != filename) {
@@ -881,12 +881,13 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 				} else {
 					utils::string_map symbols;
 					symbols["old"] = filename;
-					const char* msg = _("Loaded referenced map file:\n"
+					std::string msg = _("Loaded referenced map file:\n"
 						"$new");
 					symbols["new"] = get_map_context().get_filename();
 					symbols["map_data"] = get_map_context().get_map_data_key();
 					gui2::show_transient_message(gui_.video(), _("Map loaded from scenario"),
-						vgettext(msg, symbols));
+					//TODO:  msg is already translated does vgettext make sense ?
+						vgettext(msg.c_str(), symbols));
 				}
 			}
 		}

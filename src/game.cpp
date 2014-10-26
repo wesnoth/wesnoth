@@ -20,6 +20,7 @@
 #include "commandline_options.hpp"
 #include "game_config_manager.hpp"
 #include "game_controller.hpp"
+#include "gettext.hpp"
 #include "gui/dialogs/title_screen.hpp"
 
 #ifdef _WIN32
@@ -47,7 +48,6 @@
 #include <cerrno>
 #include <clocale>
 #include <fstream>
-#include <libintl.h>
 
 #include <boost/foreach.hpp>
 #include <boost/iostreams/copy.hpp>
@@ -411,14 +411,12 @@ static void init_locale() {
 	    setlocale(LC_ALL, "English");
 	#else
 		std::setlocale(LC_ALL, "C");
-		std::setlocale(LC_MESSAGES, "");
+		translation::init();
 	#endif
 	const std::string& intl_dir = filesystem::get_intl_dir();
-	bindtextdomain (PACKAGE, intl_dir.c_str());
-	bind_textdomain_codeset (PACKAGE, "UTF-8");
-	bindtextdomain (PACKAGE "-lib", intl_dir.c_str());
-	bind_textdomain_codeset (PACKAGE "-lib", "UTF-8");
-	textdomain (PACKAGE);
+	translation::bind_textdomain(PACKAGE, intl_dir.c_str(), "UTF-8");
+	translation::bind_textdomain(PACKAGE "-lib", intl_dir.c_str(), "UTF-8");
+	translation::set_default_textdomain(PACKAGE);
 }
 
 /**

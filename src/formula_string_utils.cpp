@@ -226,7 +226,7 @@ std::string vgettext(const char *domain
 		, const char *msgid
 		, const utils::string_map& symbols)
 {
-	const std::string orig(dgettext(domain, msgid));
+	const std::string orig(translation::dgettext(domain, msgid));
 	const std::string msg = utils::interpolate_variables_into_string(orig, &symbols);
 	return msg;
 }

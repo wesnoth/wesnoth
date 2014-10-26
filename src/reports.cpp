@@ -86,7 +86,7 @@ static void add_status(config &r,
 	char const *path, char const *desc1, char const *desc2)
 {
 	std::ostringstream s;
-	s << gettext(desc1) << gettext(desc2);
+	s << translation::gettext(desc1) << translation::gettext(desc2);
 	add_image(r, path, s.str());
 }
 
@@ -347,7 +347,7 @@ static config unit_alignment(const unit* u)
 {
 	if (!u) return report();
 	std::ostringstream str, tooltip;
-	char const *align = unit_type::alignment_description(u->alignment(), u->gender());
+	std::string align = unit_type::alignment_description(u->alignment(), u->gender());
 	std::string align_id = unit_type::alignment_id(u->alignment());
 	int cm = combat_modifier(resources::screen->displayed_unit_hex(), u->alignment(),
 			u->is_fearless());
@@ -435,7 +435,7 @@ static config unit_hp(const unit* u)
 	BOOST_FOREACH(const utils::string_map::value_type &resist, u->get_base_resistances())
 	{
 		std::ostringstream line;
-		line << gettext(resist.first.c_str()) << ": ";
+		line << translation::gettext(resist.first.c_str()) << ": ";
 		// Some units have different resistances when attacking or defending.
 		int res_att = 100 - u->resistance_against(resist.first, true, displayed_unit_hex);
 		int res_def = 100 - u->resistance_against(resist.first, false, displayed_unit_hex);

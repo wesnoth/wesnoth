@@ -78,7 +78,7 @@ static void add_lines(std::vector<std::string> &res, config const &c, bool split
 		if (!line.empty())
 		{
 			if (line[0] == '_')
-				line = gettext(line.substr(1).c_str());
+				line = translation::gettext(line.substr(1).c_str());
 			res.push_back(line);
 		}
 	}
@@ -149,7 +149,7 @@ void set_about(const config &cfg)
 			{
 				text << '+';
 				if (subtitle[0] == '_')
-					text << gettext(subtitle.substr(1, subtitle.size() - 1).c_str());
+					text << translation::gettext(subtitle.substr(1, subtitle.size() - 1).c_str());
 				else
 					text << subtitle;
 				text << '\n';
