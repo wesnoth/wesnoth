@@ -545,7 +545,7 @@ if(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_TESTS)
 	find_package( SDL_image 1.2 REQUIRED )
 endif(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_TESTS)
 if(ENABLE_GAME OR ENABLE_TESTS)
-	find_package( SDL_mixer 1.2 REQUIRED )
+	find_package( SDL_mixer 1.2.12 REQUIRED )
 	find_package( SDL_ttf 2.0.8 REQUIRED )
 
 	if(NOT MSVC)
