@@ -14,6 +14,34 @@ The release team should empty this file after each release.
 CHANGES
 =======
 
+[section="Greatly improved unicode compliance"]
+Previous versions of wesnoth were unable, on some platforms (especially windows) to properly handle unicode characters, particularly for filesystem related issues. The following features should now work with full UTF-8 on all platforms:
+
+- Loading and saving WML
+- Loading and saving games
+- Loading images and sounds
+- Loading fonts
+- Loading translations
+- Loading translated images
+- Loading of files in lua
+- Parsing command line arguments to wesnoth
+- Copying and pasting unicode from the clipboard
+
+In particular, on windows, it should now be possible to install wesnoth to a path with non-ascii characters, and also to change the language of the game.
+
+Related bug reports: http://forums.wesnoth.org/viewtopic.php?f=4&t=41018 , https://gna.org/bugs/?func=detailitem&item_id=5529 , https://gna.org/bugs/?13926 , https://gna.org/bugs/?func=detailitem&item_id=16293 , https://gna.org/bugs/?20089 , probably many more...
+[/section]
+
+[section="Dependency update"]
+For the improvements just mentioned, it was necessary to increase the library dependencies of the game. By default, the game now requires:
+
+Boost filesystem 1.44
+Boost locale (introduced in boost 1.48)
+SDL_mixer 1.2.12
+
+For both scons and cmake, the first two may be disabled (and the old code used, rolling back results of previous section) by turning off the "enable boost filesystem" flag. For cmake, the third requirement may also be removed, reducing SDL_mixer dependency to 1.2.0, by using the ENABLE_PANDORA flag.
+[/section]
+
 [section="Example section 1"]
 Example contents 1.
 [/section]
