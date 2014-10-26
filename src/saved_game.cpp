@@ -506,3 +506,29 @@ void saved_game::update_label()
 		classification().label = classification().abbrev + "-" + starting_pos_["name"];
 	}
 }
+
+void saved_game::cancel_orders()
+{
+	BOOST_FOREACH(config &side, this->starting_pos_.child_range("side"))
+	{
+		// TODO: was this line needed, was it just an optimisation, or was ist just wrong?
+		// if (side["controller"] != "human") continue;
+		// reenable it iff it was needed for some reason but please explain why.
+		BOOST_FOREACH(config &unit, side.child_range("unit"))
+		{
+			unit["goto_x"] = -999;
+			unit["goto_y"] = -999;
+		}
+	}
+}
+
+void saved_game::unify_controllers()
+{
+	BOOST_FOREACH(config &side, this->starting_pos_.child_range("side"))
+	{
+		if (side["controller"] == "network")
+			side["controller"] = "human";
+		if (side["controller"] == "network_ai")
+			side["controller"] = "ai";
+	}
+}

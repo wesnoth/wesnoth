@@ -89,6 +89,10 @@ public:
 	/** sets classification().label to the correct value. */
 	void update_label();
 
+	void cancel_orders();
+	/* removes network_ai and network controller types*/
+	void unify_controllers();
+
 	/**
 	 * If the game is saved mid-level, we have a series of replay steps
 	 * to take the game up to the position it was saved at.
