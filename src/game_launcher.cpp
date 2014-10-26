@@ -684,26 +684,12 @@ bool game_launcher::load_game()
 	}
 
 	if(state_.classification().campaign_type == game_classification::MULTIPLAYER) {
-		BOOST_FOREACH(config &side, state_.get_starting_pos().child_range("side"))
-		{
-			if (side["controller"] == "network")
-				side["controller"] = "human";
-			if (side["controller"] == "network_ai")
-				side["controller"] = "ai";
-		}
+		state_.unify_controllers();
 		gui2::show_message(disp().video(), _("Warning") , _("This is a multiplayer scenario. Some parts of it may not work properly in single-player. It is recommended to load this scenario through the <b>Multiplayer</b> → <b>Load Game</b> dialog instead."), "", true, true);
 	}
 
 	if (load.cancel_orders()) {
-		BOOST_FOREACH(config &side, state_.get_starting_pos().child_range("side"))
-		{
-			if (side["controller"] != "human") continue;
-			BOOST_FOREACH(config &unit, side.child_range("unit"))
-			{
-				unit["goto_x"] = -999;
-				unit["goto_y"] = -999;
-			}
-		}
+		state_.cancel_orders();
 	}
 
 	return true;
