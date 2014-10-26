@@ -14,10 +14,18 @@
 
 #include "global.hpp"
 #include "gettext.hpp"
+#include "log.hpp"
+
 #include <iostream>
 #include <locale>
 #include <boost/locale.hpp>
 #include <set>
+
+
+#define DBG_G LOG_STREAM(debug, lg::general)
+#define LOG_G LOG_STREAM(info, lg::general)
+#define WRN_G LOG_STREAM(warn, lg::general)
+#define ERR_G LOG_STREAM(err, lg::general)
 
 namespace 
 {
@@ -90,7 +98,7 @@ std::string dsngettext (const char * domainname, const char *singular, const cha
 
 void bind_textdomain(const char* domain, const char* direcory, const char* /*encoding*/)
 {
-	std::cerr << "adding textdomain '" << domain << "' in directory '" << direcory << "'\n";
+	LOG_G << "adding textdomain '" << domain << "' in directory '" << direcory << "'\n";
 	get_manager().generator_.add_messages_domain(domain);
 	get_manager().generator_.add_messages_path(direcory);
 	get_manager().update_locale();
@@ -107,7 +115,7 @@ void set_language(const std::string& language, const std::vector<std::string>* /
 {
 	// why shoudl we need alternates? which languages we support shoudl only be related 
 	// to which languages we ship with and not which the os supports
-	std::cerr << "setting language to  '" << language << "' \n";
+	LOG_G << "setting language to  '" << language << "' \n";
 	std::string::size_type at_pos = language.rfind('@');
 	if(at_pos  != std::string::npos)
 	{
