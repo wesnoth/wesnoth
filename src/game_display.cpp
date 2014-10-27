@@ -953,7 +953,7 @@ void game_display::send_notification(const std::string& /*owner*/, const std::st
 	CFStringRef cf_owner = CFStringCreateWithCString(NULL, owner.c_str(), kCFStringEncodingUTF8);
 	CFStringRef cf_message = CFStringCreateWithCString(NULL, message.c_str(), kCFStringEncodingUTF8);
 	//Should be changed as soon as there are more than 2 types of notifications
-	CFStringRef cf_note_name = CFStringCreateWithCString(NULL, owner == _("Turn changed") ? _("Turn changed") : _("Chat message"), kCFStringEncodingUTF8);
+	CFStringRef cf_note_name = CFStringCreateWithCString(NULL, owner == _("Turn changed") ? _("Turn changed").c_str() : _("Chat message").c_str(), kCFStringEncodingUTF8);
 
 	growl_obj.applicationName = app_name;
 	growl_obj.registrationDictionary = NULL;
