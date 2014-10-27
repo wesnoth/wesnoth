@@ -40,6 +40,8 @@ Boost locale (introduced in boost 1.48)
 SDL_mixer 1.2.12
 
 For both scons and cmake, the first two may be disabled (and the old code used, rolling back results of previous section) by turning off the "enable boost filesystem" flag. For cmake, the third requirement may also be removed, reducing SDL_mixer dependency to 1.2.0, by using the ENABLE_PANDORA flag.
+
+For those of you compiling Wesnoth on OS X using Xcode, this means that you need to download a new version of wesnoth_compile_mac_1.11.zip.
 [/section]
 
 [section="Example section 1"]
@@ -52,7 +54,7 @@ KNOWN BUGS
 
 [list][*] Start of scenario saves have some known bugs ... (Fixme: I'm not sure which bugs still affect 1.11.16+dev at the time of writing this.)
 [*]Map labels do not work at all in networked multiplayer (are not displaed for other clients), see bug [bug]22251[/bug].
-[*]The Legend of Wesmere campaign has multiple lua errors on various scenarios. 
+[*]The Legend of Wesmere campaign has multiple lua errors on various scenarios.
 [list][*]Bug [bug]22221[/bug] which causes you to lose your recall list and gold. There is a known workaround for this, see here: http://forums.wesnoth.org/viewtopic.php?f=51&t=31609&start=15#p572120
 [*] bug [bug]22073[/bug] which causes the map to be oddly shifted.
 [*] Olurf does not appear at the Elves last stand, see here: http://forums.wesnoth.org/viewtopic.php?f=4&t=40067#p567272
