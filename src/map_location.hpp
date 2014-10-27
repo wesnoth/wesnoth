@@ -350,10 +350,13 @@ inline bool tiles_adjacent(const map_location& a, const map_location& b)
 	*/
 }
 
+// OS X appears not to provide std::abs with overload for int
+inline int _abs(int x) {
+	return (x < 0) ? -x : x;
+}
+
 inline size_t distance_between(const map_location& a, const map_location& b)
 {
-	int (*_abs)( int ) = & std::abs; // Needed to resolve ambiguity for OS X compilation
-
 	const size_t hdistance = _abs(a.x - b.x);
 
 	const size_t vpenalty = ( (((a.x & 1)==0) && ((b.x & 1)==1) && (a.y < b.y))
