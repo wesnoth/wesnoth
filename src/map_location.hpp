@@ -352,7 +352,9 @@ inline bool tiles_adjacent(const map_location& a, const map_location& b)
 
 inline size_t distance_between(const map_location& a, const map_location& b)
 {
-	const size_t hdistance = std::abs(a.x - b.x);
+	int (*_abs)( int ) = & std::abs; // Needed to resolve ambiguity for OS X compilation
+
+	const size_t hdistance = _abs(a.x - b.x);
 
 	const size_t vpenalty = ( (((a.x & 1)==0) && ((b.x & 1)==1) && (a.y < b.y))
 		|| (((b.x & 1)==0) && ((a.x & 1)==1) && (b.y < a.y)) ) ? 1 : 0;
@@ -367,7 +369,7 @@ inline size_t distance_between(const map_location& a, const map_location& b)
 	// = maximum(hdistance, vdistance+hdistance-hdistance/2-hdistance%2)
 	// = maximum(hdistance,abs(a.y-b.y)+vpenalty+hdistance/2)
 
-	return std::max<int>(hdistance, std::abs(a.y - b.y) + vpenalty + hdistance/2);
+	return std::max<int>(hdistance, _abs(a.y - b.y) + vpenalty + hdistance/2);
 }
 
 
