@@ -52,17 +52,23 @@ void alphaBlend(uint32_t& dst, uint32_t col) //blend color over destination with
 
     //Note: I had to change this to perform alpha compositing -- xbrz assumes there is no alpha channel (and sets it to zero when it blends), our
     //sprites have alpha however.
-    if ((col >> 24) < 128u) return;
-    if ((dst >> 24) < 128u) {
-	dst = col;
-	return;
+    uint32_t col_alpha = col >> 24; // & with alphaMask is unnecessary
+
+    if (!col_alpha) return;
+    
+    uint32_t dst_alpha = dst >> 24;
+
+    if (!dst_alpha) {
+        dst = col;
+        return;
     }
-    //The above is a hack that seems to work fine, I tried to get proper alpha compositing to work (commented out below) but it is broken for now...
+
+    uint32_t out_alpha = 0xffff - (((0xff - col_alpha)* (0xff - dst_alpha)) >> 8);
 
     dst = (redMask   & ((col & redMask  ) * N + (dst & redMask  ) * (M - N)) / M) | //this works because 8 upper bits are free
           (greenMask & ((col & greenMask) * N + (dst & greenMask) * (M - N)) / M) |
           (blueMask  & ((col & blueMask ) * N + (dst & blueMask ) * (M - N)) / M) |
-	  alphaMask;
+	  (out_alpha << 24);
 
 /*
     if (!(dst >> 24)) {
