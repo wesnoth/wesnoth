@@ -20,6 +20,7 @@
 
 #include "save_index.hpp"
 #include "carryover.hpp"
+#include "config_assign.hpp"
 #include "configure_engine.hpp"
 #include "dialogs.hpp" //FIXME: get rid of this as soon as the two remaining dialogs are moved to gui2
 #include "format_time_summary.hpp"
@@ -797,6 +798,20 @@ static void convert_old_saves_1_13_0(config& cfg)
 			cfg.remove_child("carryover_sides_start", 0);
 		}
 	}
+#if 1
+	//This code is needed becasue for example otherwise it won't find the (empty) era 
+	if(!cfg.has_child("multiplayer")) {
+		cfg.add_child("multiplayer", config_of
+			("mp_era", "era_blank")
+			("show_connect", false)
+			("show_configure", false)
+			("mp_use_map_settings", true)
+		);
+	}
+	//the alternative code down below doesnt work replay saves or start of scenario saves 
+	//becasue those don't contain a snaphot. If the code below works with we can enable that code
+	//If it turns out that this code works well we can delete that code.
+#else
 
 	if(!cfg.has_child("multiplayer") && cfg["campaign_type"] == "scenario") {
 		saved_game tmp(cfg);
@@ -805,6 +820,7 @@ static void convert_old_saves_1_13_0(config& cfg)
 		tmp.mp_settings().mp_era = "era_blank";
 		cfg.add_child("multiplayer", tmp.mp_settings().to_config());
 	}
+#endif
 }
 
 void convert_old_saves(config& cfg)
