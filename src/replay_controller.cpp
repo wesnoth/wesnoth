@@ -23,6 +23,7 @@
 #include "game_end_exceptions.hpp"
 #include "game_errors.hpp" //needed to be thrown
 #include "game_events/handlers.hpp"
+#include "game_events/pump.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map_label.hpp"
@@ -586,7 +587,9 @@ possible_end_play_signal replay_controller::play_move_or_side(bool one_move) {
 		//during the orginal game player_number_ would also be gamestate_.board_.teams().size(),
 		player_number_ = gamestate_.board_.teams().size();
 		finish_turn();
-		gamestate_.tod_manager_.next_turn(*resources::gamedata);
+		bool is_time_left = gamestate_.tod_manager_.next_turn(*resources::gamedata);
+		if(!is_time_left)
+			game_events::fire("time over");
 		it_is_a_new_turn_ = true;
 		player_number_ = 1;
 		current_turn_++;
