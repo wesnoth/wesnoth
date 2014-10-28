@@ -731,7 +731,12 @@ static surface get_hexed(const locator& i_locator)
 static surface get_scaled_to_hex(const locator& i_locator)
 {
 	surface img = get_image(i_locator, HEXED);
-	return scale_surface(img, zoom, zoom);
+
+	if (zoom < tile_size) {
+		return scale_surface(img, zoom, zoom);
+	} else {
+		return scale_surface_sharp(img, zoom, zoom);
+	}
 }
 
 static surface get_tod_colored(const locator& i_locator)
@@ -748,7 +753,11 @@ static surface get_scaled_to_zoom(const locator& i_locator)
 	surface res(get_image(i_locator, UNSCALED));
 	// For some reason haloes seems to have invalid images, protect against crashing
 	if(!res.null()) {
-		return scale_surface(res, ((res.get()->w * zoom) / tile_size), ((res.get()->h * zoom) / tile_size));
+		if (zoom < tile_size) {
+			return scale_surface(res, ((res.get()->w * zoom) / tile_size), ((res.get()->h * zoom) / tile_size));
+		} else {
+			return scale_surface_sharp(res, ((res.get()->w * zoom) / tile_size), ((res.get()->h * zoom) / tile_size));
+		}
 	} else {
 		return surface(NULL);
 	}
