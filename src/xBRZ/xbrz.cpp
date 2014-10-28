@@ -55,7 +55,7 @@ void alphaBlend(uint32_t& dst, uint32_t col) //blend color over destination with
     uint32_t col_alpha = col >> 24; // & with alphaMask is unnecessary
 
     if (!col_alpha) return;
-    
+
     uint32_t dst_alpha = dst >> 24;
 
     if (!dst_alpha) {
@@ -63,12 +63,12 @@ void alphaBlend(uint32_t& dst, uint32_t col) //blend color over destination with
         return;
     }
 
-    uint32_t out_alpha = 0xffff - (((0xff - col_alpha)* (0xff - dst_alpha)) >> 8);
+    //uint32_t out_alpha = 0xffff - (((0xff - col_alpha)* (0xff - dst_alpha)) >> 8);
 
-    dst = (redMask   & ((col & redMask  ) * N + (dst & redMask  ) * (M - N)) / M) | //this works because 8 upper bits are free
-          (greenMask & ((col & greenMask) * N + (dst & greenMask) * (M - N)) / M) |
-          (blueMask  & ((col & blueMask ) * N + (dst & blueMask ) * (M - N)) / M) |
-	  (out_alpha << 24);
+    dst = (redMask   & ((col & redMask   ) * N + (dst & redMask   ) * (M - N)) / M) | //this works because 8 upper bits are free
+          (greenMask & ((col & greenMask ) * N + (dst & greenMask ) * (M - N)) / M) |
+          (blueMask  & ((col & blueMask  ) * N + (dst & blueMask  ) * (M - N)) / M) |
+          (alphaMask & (((col_alpha       * N + dst_alpha * (M - N)) / M) << 24)); // need to downshift and upshift because of overflow
 
 /*
     if (!(dst >> 24)) {
