@@ -88,10 +88,23 @@ else(MSVC)
 		${Boost_IOSTREAMS_LIBRARY}
 		${Boost_REGEX_LIBRARY}
 		${Boost_PROGRAM_OPTIONS_LIBRARY}
-		${LIBINTL_LIBRARIES}
+		${LIBINTL_LIBRARY}
 		${sdl_gpu-lib}
 	)
 endif(MSVC)
+
+if(ENABLE_BOOST_FILESYSTEM AND NOT ENABLE_PANDORA)
+	set(common-external-libs
+		${common-external-libs}
+		${Boost_FILESYSTEM_LIBRARY}
+		${Boost_LOCALE_LIBRARY}
+	)
+else(ENABLE_BOOST_FILESYSTEM AND NOT ENABLE_PANDORA)
+	set(common-external-libs
+		${common-external-libs}
+		${LIBINTL_LIBRARY}
+	)
+endif(ENABLE_BOOST_FILESYSTEM AND NOT ENABLE_PANDORA)
 
 set(game-external-libs
 	${common-external-libs}
