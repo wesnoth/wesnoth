@@ -385,7 +385,8 @@ if env["prereqs"]:
         conf.CheckBoost("program_options", require_version="1.35.0") & \
         conf.CheckBoost("regex", require_version = "1.35.0") & \
         conf.CheckLib("vorbisfile") & \
-        conf.CheckOgg() or Warning("WARN: Client prerequisites are not met. wesnoth, cutter and exploder cannot be built")
+        conf.CheckOgg() & \
+        conf.CheckPNG()or Warning("WARN: Client prerequisites are not met. wesnoth, cutter and exploder cannot be built")
 
     have_X = False
     if have_client_prereqs:
