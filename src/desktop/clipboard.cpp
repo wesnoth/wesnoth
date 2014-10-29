@@ -71,6 +71,8 @@ void handle_system_event(const SDL_Event& /*event*/)
 
 #include "SDL_syswm.h"
 
+#include <X11/Xlib.h>
+#include <X11/Xatom.h>
 #include <unistd.h>
 
 /**
