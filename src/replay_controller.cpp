@@ -18,6 +18,7 @@
 #include "actions/vision.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events/handlers.hpp"
+#include "game_events/pump.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map_label.hpp"
@@ -474,7 +475,9 @@ void replay_controller::play_side(){
 			//during the orginal game player_number_ would also be teams_.size(),
 			player_number_ = teams_.size();
 			finish_turn();
-			tod_manager_.next_turn();
+			bool is_time_left = tod_manager_.next_turn();
+			if(!is_time_left)
+				game_events::fire("time over");
 			it_is_a_new_turn_ = true;
 			player_number_ = 1;
 			current_turn_++;
