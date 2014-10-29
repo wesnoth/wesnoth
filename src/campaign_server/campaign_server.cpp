@@ -185,8 +185,10 @@ void server::load_blacklist()
 
 void server::write_config()
 {
+	DBG_CS << "writing configuration and add-ons list to disk...\n";
 	filesystem::scoped_ostream out = filesystem::ostream_file(cfg_file_);
 	write(*out, cfg_);
+	DBG_CS << "... done\n";
 }
 
 void server::fire(const std::string& hook, const std::string& addon)
