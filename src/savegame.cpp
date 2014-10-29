@@ -746,6 +746,8 @@ void loadgame::fill_mplevel_config(config& level){
 			c.merge_with(start_data);
 		} else {
 			level.add_child("replay_start") = start_data;
+			level.child("replay_start").add_child("variables") =
+				gamestate_.carryover_sides_start.child("variables");
 
 			BOOST_FOREACH(const config& start_side_cfg,
 					gamestate_.carryover_sides_start.child_range("side")) {
