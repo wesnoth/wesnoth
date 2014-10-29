@@ -35,6 +35,7 @@
 #include "util.hpp"
 
 #include <csignal>
+#include <ctime>
 
 #include <boost/foreach.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
@@ -79,6 +80,18 @@ void exit_sigterm(int signal)
 	assert(signal == SIGTERM);
 	LOG_CS << "SIGTERM caught, exiting without cleanup immediately.\n";
 	exit(128 + SIGTERM);
+}
+
+time_t monotonic_clock()
+{
+#ifdef _POSIX_MONOTONIC_CLOCK
+	timespec ts;
+	clock_gettime(CLOCK_MONOTONIC, &ts);
+	return ts.tv_sec;
+#else
+	#warning monotonic_clock() is not truly monotonic!
+	return time(NULL);
+#endif
 }
 
 } // end anonymous namespace
@@ -249,7 +262,7 @@ void server::run()
 {
 	network::connection sock = 0;
 
-	time_t last_ts = time(NULL);
+	time_t last_ts = monotonic_clock();
 
 	for(;;)
 	{
@@ -263,7 +276,7 @@ void server::run()
 				}
 			}
 
-			const time_t cur_ts = time(NULL);
+			const time_t cur_ts = monotonic_clock();
 			// Write config to disk every ten minutes.
 			if(labs(cur_ts - last_ts) >= 10*60) {
 				write_config();
