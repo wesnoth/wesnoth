@@ -41,9 +41,8 @@ public:
 	/** Multiplayer parameters for this game */
 	mp_game_settings& mp_settings() { return mp_settings_; }
 	const mp_game_settings& mp_settings() const { return mp_settings_; }
-	
+
 	void set_carryover_sides_start(config carryover_sides_start);
-	const config& carryover() { return carryover_; }
 
 	/// copies the content of a [scenario] with the correct id attribute from the game config into this object.
 	/// reloads the game config from disk if necessary.
