@@ -471,8 +471,7 @@ void copy_to_clipboard(const std::string& text, const bool)
 		++last;
 	}
 
-	utf16::string ustring = unicode_cast<utf16::string>(str);
-	std::wstring wstr(ustring.begin(), ustring.end());
+	std::wstring wstr = unicode_cast<std::wstring>(str);
 
 	const HGLOBAL hglb = GlobalAlloc(GMEM_MOVEABLE, (wstr.size() + 1) * sizeof(wchar_t));
 	if(hglb == NULL) {
@@ -507,11 +506,10 @@ std::string copy_from_clipboard(const bool)
 	std::wstring str(buffer);
 	// Convert newlines
 	str.erase(std::remove(str.begin(),str.end(), L'\r'), str.end());
-	utf16::string ustring(str.begin(), str.end());
 	GlobalUnlock(hglb);
 	CloseClipboard();
 
-	return unicode_cast<std::string>(ustring);
+	return unicode_cast<std::string>(str);
 }
 
 bool available()

@@ -382,8 +382,7 @@ void manager::init() const
 		BOOST_FOREACH(const std::string& file, files) {
 			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
 			{
-				utf16::string ufile = unicode_cast<utf16::string>(file);
-				std::wstring wfile(ufile.begin(), ufile.end());
+				const std::wstring wfile = unicode_cast<std::wstring>(file);
 				AddFontResourceW(wfile.c_str());
 			}
 		}
@@ -405,8 +404,7 @@ void manager::deinit() const
 		BOOST_FOREACH(const std::string& file, files) {
 			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
 			{
-				utf16::string ufile = unicode_cast<utf16::string>(file);
-				std::wstring wfile(ufile.begin(), ufile.end());
+				const std::wstring wfile = unicode_cast<std::wstring>(file);
 				RemoveFontResourceW(wfile.c_str());
 			}
 		}
