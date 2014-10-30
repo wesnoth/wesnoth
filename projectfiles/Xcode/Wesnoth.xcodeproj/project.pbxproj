@@ -853,10 +853,6 @@
 		EC50921C18FEF84A00688122 /* synced_commands.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC50921118FEF84A00688122 /* synced_commands.cpp */; };
 		EC50921D18FEF84A00688122 /* synced_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC50921318FEF84A00688122 /* synced_context.cpp */; };
 		EC50922018FEFB6A00688122 /* playturn_network_adapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC50921E18FEFB6A00688122 /* playturn_network_adapter.cpp */; };
-		EC7B830919F950740051C7D1 /* libboost_systemw.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5413AD4E35003C701D /* libboost_systemw.dylib */; };
-		EC7B830B19F9508F0051C7D1 /* libboost_filesystemw.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7B830A19F9508F0051C7D1 /* libboost_filesystemw.dylib */; };
-		EC7B830C19F950B90051C7D1 /* libboost_filesystemw.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7B830A19F9508F0051C7D1 /* libboost_filesystemw.dylib */; };
-		EC7B830E19F950E10051C7D1 /* libboost_filesystemw.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC7B830D19F950E10051C7D1 /* libboost_filesystemw.dylib */; };
 		EC89A1291879D17D00A3B0B1 /* lapi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1061879D17D00A3B0B1 /* lapi.cpp */; };
 		EC89A12A1879D17D00A3B0B1 /* lauxlib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1071879D17D00A3B0B1 /* lauxlib.cpp */; };
 		EC89A12B1879D17D00A3B0B1 /* lbaselib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1081879D17D00A3B0B1 /* lbaselib.cpp */; };
@@ -972,7 +968,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				EC7B830E19F950E10051C7D1 /* libboost_filesystemw.dylib in CopyFiles */,
 				F444918813C55729003B6442 /* libpng12.0.dylib in CopyFiles */,
 				F4EF0D8B13AD5635003C701D /* libboost_program_optionsw.dylib in CopyFiles */,
 				F4EF0D8C13AD5635003C701D /* libboost_threadw.dylib in CopyFiles */,
@@ -1999,8 +1994,6 @@
 		EC50921418FEF84A00688122 /* synced_context.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = synced_context.hpp; sourceTree = "<group>"; };
 		EC50921E18FEFB6A00688122 /* playturn_network_adapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = playturn_network_adapter.cpp; sourceTree = "<group>"; };
 		EC50921F18FEFB6A00688122 /* playturn_network_adapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = playturn_network_adapter.hpp; sourceTree = "<group>"; };
-		EC7B830A19F9508F0051C7D1 /* libboost_filesystemw.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_filesystemw.dylib; path = lib/libboost_filesystemw.dylib; sourceTree = "<group>"; };
-		EC7B830D19F950E10051C7D1 /* libboost_filesystemw.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_filesystemw.dylib; path = lib/libboost_filesystemw.dylib; sourceTree = "<group>"; };
 		EC89A1061879D17D00A3B0B1 /* lapi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lapi.cpp; sourceTree = "<group>"; };
 		EC89A1071879D17D00A3B0B1 /* lauxlib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lauxlib.cpp; sourceTree = "<group>"; };
 		EC89A1081879D17D00A3B0B1 /* lbaselib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lbaselib.cpp; sourceTree = "<group>"; };
@@ -2170,7 +2163,6 @@
 				B513B22A0ED36BFB0006E551 /* libpixman-1.0.dylib in Frameworks */,
 				B578E1A50ED5BEF600DE80D6 /* libgmodule.framework in Frameworks */,
 				B508D13F10013BF900B12852 /* Growl.framework in Frameworks */,
-				EC7B830C19F950B90051C7D1 /* libboost_filesystemw.dylib in Frameworks */,
 				F4EF0D4C13AD4D53003C701D /* libboost_iostreamsw.dylib in Frameworks */,
 				F4755E2C1458C192009F13BD /* libboost_program_optionsw.dylib in Frameworks */,
 				F4EF0D5613AD4E35003C701D /* libboost_regexw.dylib in Frameworks */,
@@ -2211,8 +2203,6 @@
 				B5BB6BC80F89407D00444FBF /* SDL.framework in Frameworks */,
 				B5BB6BCB0F89408500444FBF /* SDL_net.framework in Frameworks */,
 				B5BB6C740F89420600444FBF /* libintl.framework in Frameworks */,
-				EC7B830B19F9508F0051C7D1 /* libboost_filesystemw.dylib in Frameworks */,
-				EC7B830919F950740051C7D1 /* libboost_systemw.dylib in Frameworks */,
 				F4EF0D4D13AD4D53003C701D /* libboost_iostreamsw.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2281,7 +2271,6 @@
 		29B97314FDCFA39411CA2CEA /* Wesnoth */ = {
 			isa = PBXGroup;
 			children = (
-				EC7B830D19F950E10051C7D1 /* libboost_filesystemw.dylib */,
 				B597C49D0FACD3F900CE81F5 /* tests */,
 				B5BB6B560F893DE000444FBF /* server */,
 				080E96DDFE201D6D7F000001 /* Mac-specific */,
@@ -2683,7 +2672,6 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EC7B830A19F9508F0051C7D1 /* libboost_filesystemw.dylib */,
 				1058C7A0FEA54F0111CA2CBB /* Linked System Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Included Frameworks */,
 			);
@@ -4919,7 +4907,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
-					"$(PROJECT_DIR)/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -4946,7 +4933,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
-					"$(PROJECT_DIR)/lib",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = wesnothd;
@@ -4980,11 +4966,9 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
-					"$(PROJECT_DIR)/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -5019,11 +5003,9 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
-					"$(PROJECT_DIR)/lib",
 				);
 				"OTHER_CPLUSPLUSFLAGS[arch=*]" = (
 					"$(OTHER_CFLAGS)",
