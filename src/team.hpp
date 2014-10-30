@@ -212,6 +212,9 @@ public:
 	int minimum_recruit_price() const;
 	const std::string& last_recruit() const { return last_recruit_; }
 	void last_recruit(const std::string & u_type) { last_recruit_ = u_type; }
+	// TODO: This attribute is never used for user messages. (currently
+	// current_player is used there). It's only used for debug messages
+	// and it's accessible to wml via [store_side]. Do we really need it?
 	const std::string& name() const
 		{ return info_.name; }
 
