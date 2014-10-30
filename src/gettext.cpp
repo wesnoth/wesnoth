@@ -24,6 +24,10 @@
 #include <windows.h>
 #endif
 
+#ifdef __APPLE__
+#include <errno.h>
+#endif
+
 #define DBG_G LOG_STREAM(debug, lg::general)
 #define LOG_G LOG_STREAM(info, lg::general)
 #define WRN_G LOG_STREAM(warn, lg::general)
