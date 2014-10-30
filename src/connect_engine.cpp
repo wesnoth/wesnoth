@@ -869,7 +869,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		// Reserve a side for "current_player", unless the side
 		// is played by an AI.
 		set_controller(CNTR_RESERVED);
-	} else if (allow_player_ && !parent_.params_.saved_game) {
+	} else if (allow_player_) {
 		set_controller(parent_.default_controller_);
 	} else {
 		// AI is the default.
