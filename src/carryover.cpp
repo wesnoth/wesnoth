@@ -25,10 +25,8 @@
 
 carryover::carryover(const config& side)
 		: add_(side["add"].to_bool())
-		, color_(side["color"])
 		, current_player_(side["current_player"])
 		, gold_(side["gold"].to_int())
-		, name_(side["name"])
 		// if we load it from a snapshot we need to read the recruits from "recruits" and not from "previous_recruits".
 		, previous_recruits_(side.has_attribute("recruit") ? utils::set_split(side["recruit"]) :utils::set_split(side["previous_recruits"]))
 		, recall_list_()
@@ -47,10 +45,8 @@ carryover::carryover(const config& side)
 
 carryover::carryover(const team& t, const int gold, const bool add)
 		: add_ (add)
-		, color_(t.color())
 		, current_player_(t.current_player())
 		, gold_(gold)
-		, name_(t.name())
 		, previous_recruits_(t.recruits())
 		, recall_list_()
 		, save_id_(t.save_id())
@@ -108,9 +104,7 @@ std::string carryover::get_recruits(bool erase){
 void carryover::update_carryover(const team& t, const int gold, const bool add){
 	gold_ += gold;
 	add_ = add;
-	color_ = t.color();
 	current_player_ = t.current_player();
-	name_ = t.name();
 	previous_recruits_.insert(t.recruits().begin(), t.recruits().end());
 	BOOST_FOREACH(const unit_const_ptr & u, t.recall_list()) {
 		recall_list_.push_back(config());
@@ -141,9 +135,7 @@ void carryover::to_config(config& cfg){
 	side["save_id"] = save_id_;
 	side["gold"] = gold_;
 	side["add"] = add_;
-	side["color"] = color_;
 	side["current_player"] = current_player_;
-	side["name"] = name_;
 	side["previous_recruits"] = get_recruits(false);
 	BOOST_FOREACH(const config & u_cfg, recall_list_)
 		side.add_child("unit", u_cfg);
