@@ -279,7 +279,7 @@ void server::run()
 
 			const time_t cur_ts = monotonic_clock();
 			// Write config to disk every ten minutes.
-			if(abs(cur_ts - last_ts) >= 10*60) {
+			if(labs(cur_ts - last_ts) >= 10*60) {
 				write_config();
 				last_ts = cur_ts;
 			}
