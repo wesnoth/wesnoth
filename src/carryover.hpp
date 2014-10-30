@@ -18,10 +18,8 @@ class carryover{
 public:
 	carryover()
 		: add_ ()
-		, color_()
 		, current_player_()
 		, gold_()
-		, name_()
 		, previous_recruits_()
 		, recall_list_()
 		, save_id_()
@@ -44,10 +42,8 @@ public:
 	void set_gold(int gold, bool add);
 private:
 	bool add_;
-	std::string color_;
 	std::string current_player_;
 	int gold_;
-	std::string name_;
 	std::set<std::string> previous_recruits_;
 	// NOTE: we store configs instead of units because units often assume or
 	//       assert that various resources:: are available, which is not the

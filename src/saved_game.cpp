@@ -133,16 +133,6 @@ saved_game::saved_game(const saved_game& state)
 {
 }
 
-saved_game& saved_game::operator=(const saved_game& state)
-{
-	// Use copy constructor to make sure we are coherent
-	if (this != &state) {
-		this->~saved_game();
-		new (this) saved_game(state) ;
-	}
-	return *this ;
-}
-
 void saved_game::set_carryover_sides_start(config carryover_sides_start)
 {
 	carryover_.swap(carryover_sides_start);
