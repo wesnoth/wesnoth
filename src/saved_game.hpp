@@ -27,7 +27,6 @@ public:
 	explicit saved_game(const config& cfg);
 
 	~saved_game(){}
-	saved_game& operator=(const saved_game& state);
 
 	/// writes the config information into a stream (file)
 	void write_config(config_writer& out) const;
