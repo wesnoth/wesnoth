@@ -63,7 +63,6 @@ public:
 	// returns a variable_access that cannot be used to change the game variables
 	variable_access_const get_variable_access_read(const std::string& varname) const
 	{
-		assert(this != NULL);
 		activate_scope_variable(varname);
 		return variable_access_const(varname, variables_);
 	}
@@ -71,7 +70,6 @@ public:
 	// returns a variable_access that cannot be used to change the game variables
 	variable_access_create get_variable_access_write(const std::string& varname)
 	{
-		assert(this != NULL);
 		activate_scope_variable(varname);
 		return variable_access_create(varname, variables_);
 	}
@@ -127,7 +125,6 @@ private:
 	///Used to delete variables.
 	variable_access_throw get_variable_access_throw(const std::string& varname)
 	{
-		assert(this != NULL);
 		activate_scope_variable(varname);
 		return variable_access_throw(varname, variables_);
 	}
