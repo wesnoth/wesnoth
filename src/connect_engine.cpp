@@ -856,11 +856,17 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	// Tweak the controllers.
 	if (cfg_["controller"] == "human_ai" ||
 		cfg_["controller"] == "network_ai" ||
-		(parent_.state_.classification().campaign_type == game_classification::SCENARIO && cfg_["controller"].blank()) ||
-		(cfg_["controller"] == "network" &&  !allow_player_ && parent_.params_.saved_game)) { //this is a workaround for bug #21797
-
+		(parent_.state_.classification().campaign_type == game_classification::SCENARIO && cfg_["controller"].blank())) 
+	{
 		cfg_["controller"] = "ai";
 	}
+	//this is a workaround for bug #21797
+	if(cfg_["controller"] == "network" &&  !allow_player_ && parent_.params_.saved_game)
+	{	
+		WRN_MP << "Found a side controlled by a network player with allow_player=no" << std::endl;
+		cfg_["controller"] = "ai";
+	}
+
 	if (cfg_["controller"] == "null") {
 		set_controller(CNTR_EMPTY);
 	} else if (cfg_["controller"] == "ai") {
