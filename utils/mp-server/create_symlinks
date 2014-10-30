@@ -12,12 +12,6 @@ MINOR_V=${STABLE#*.}
 OLDSTABLE=$MAJOR_V.$(($MINOR_V-2))
 DEV=$MAJOR_V.$(($MINOR_V+1))
 PREV=$DEV-prev
-
-if [ "$OLDSTABLE" = "1.10" ]; then
-	# special case for 1.10 since it kept the 1.9 dir
-	OLDSTABLE="1.9"
-fi
-
 echo "oldstable = $OLDSTABLE; stable = $STABLE; dev = $DEV; prev = $PREV"
 
 set -x
