@@ -390,6 +390,14 @@ if(LIBDBUS_FOUND)
 	)
 endif()
 
+if(PNG_FOUND)
+	set_sources_files_properties(
+		SDL_SavePNG/savepng.cpp
+		PROPERTIES
+			COMPILE_FLAGS "${CXX_FLAG_NO_OLD_STYLE_CAST}"
+	)
+endif()
+
 ########### Helper libraries ###############
 
 set(wesnoth-sdl_SRC
@@ -1052,6 +1060,14 @@ if(LIBDBUS_FOUND)
 		desktop/dbus_notification.cpp
 	)
 endif(LIBDBUS_FOUND)
+
+# If requested, compile and link this file also to be able to save png files
+if(ENABLE_LIBPNG AND PNG_FOUND)
+	set(libwesnoth-game_STAT_SRC
+		${libwesnoth-game_STAT_SRC}
+		SDL_SavePNG/savepng.cpp
+	)
+endif(ENABLE_LIBPNG AND PNG_FOUND)
 
 if(ENABLE_GAME AND ENABLE_TESTS)
 	set(libwesnoth-game_STAT_SRC

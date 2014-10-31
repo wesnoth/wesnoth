@@ -32,6 +32,11 @@
 #include "gui/dialogs/advanced_graphics_options.hpp"
 #include "preferences.hpp"
 #include "sdl/rect.hpp"
+
+#ifdef HAVE_LIBPNG
+#include "SDL_SavePNG/savepng.h"
+#endif
+
 #include "serialization/string_utils.hpp"
 #include "video.hpp"
 
@@ -1240,7 +1245,23 @@ bool precached_file_exists(const std::string& file)
 
 void save_image(const locator & i_locator, const std::string & filename)
 {
-	surface surf = get_image(i_locator);
+	save_image(get_image(i_locator), filename);
+}
+
+void save_image(const surface & surf, const std::string & filename)
+{
+	#ifdef HAVE_LIBPNG
+	if (! ((filename.length() > 3) && (filename.substr(filename.length()-3, 3) == "bmp"))) {
+		LOG_DP << "Writing a png image to " << filename << std::endl;
+		//safest way,
+		SDL_Surface *tmp = SDL_PNGFormatAlpha(surf.get());
+		SDL_SavePNG(tmp, filename.c_str());
+		SDL_FreeSurface(tmp);
+		return ;
+	}
+	#endif
+
+	LOG_DP << "Writing a bmp image to " << filename << std::endl;
 	SDL_SaveBMP(surf, filename.c_str());
 }
 
