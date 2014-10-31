@@ -379,6 +379,10 @@ Version 1.13.0-dev:
    * New filesystem implementation based on boost filesystem
    * Added "--render-image" command-line argument, similar to --screenshot, but instead of a map,
      it takes a wesnoth imagepath and generates at bitmap with the filters applied.
+   * New gettext implementation based on boost locale. This raises min boost requirement to 1.48,
+     and adds a new dep (locale, filesystem was also added above)
+   * New image scaling routine imported from the xBRZ project (HqMAME on sourceforge)
+   * Now may save screenshots and other images as pngs, using SDL_SavePNG lib (from github)
 
 Version 1.11.11:
  * Add-ons server:
