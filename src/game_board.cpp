@@ -74,15 +74,12 @@ void game_board::set_all_units_user_end_turn() {
 	}
 }
 
-void game_board::all_survivors_to_recall() {
+void game_board::heal_all_survivors() {
 	for (unit_map::iterator it = units_.begin(); it != units_.end(); it++) {
 		unit_ptr un =  it.get_shared_ptr();
 		if (teams_[un->side() - 1].persistent()) {
 			un->new_turn();
 			un->new_scenario();
-#if 0
-			teams_[un->side() - 1].recall_list().push_back(un);
-#endif
 		}
 	}
 }

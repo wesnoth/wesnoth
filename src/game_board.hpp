@@ -108,7 +108,7 @@ class game_board : public display_context {
 	void end_turn(int pnum);
 	void set_all_units_user_end_turn();
 
-	void all_survivors_to_recall();
+	void heal_all_survivors();
 
 	// Manipulator from playturn
 

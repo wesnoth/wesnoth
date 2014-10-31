@@ -567,10 +567,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 								sound::play_music_once(victory_music);
 						}
 
-						// Add all the units that survived the scenario.
-						// this function doesn't move unit to the recalllist anymore i just keep this name to prevent merging conflicts.
-						LOG_NG << "Add units that survived the scenario to the recall list.\n";
-						gamestate_.board_.all_survivors_to_recall();
+						LOG_NG << "Healing survived units\n";
+						gamestate_.board_.heal_all_survivors();
 
 						saved_game_.remove_snapshot();
 						if(!is_observer()) {
