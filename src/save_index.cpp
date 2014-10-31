@@ -39,87 +39,12 @@ static lg::log_domain log_engine("engine");
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
-#if 0
-	#ifdef INADDR_ANY
-		#undef INADDR_ANY
-	#endif
-	#ifdef INADDR_BROADCAST
-		#undef INADDR_BROADCAST
-	#endif
-	#ifdef INADDR_NONE
-		#undef INADDR_NONE
-	#endif
-
-	#include <windows.h>
-
-	/**
-	 * conv_ansi_utf8()
-	 *   - Convert a string between ANSI encoding (for Windows filename) and UTF-8
-	 *  string &name
-	 *     - filename to be converted
-	 *  bool a2u
-	 *     - if true, convert the string from ANSI to UTF-8.
-	 *     - if false, reverse. (convert it from UTF-8 to ANSI)
-	 */
-	void conv_ansi_utf8(std::string &name, bool a2u) {
-		int wlen = MultiByteToWideChar(a2u ? CP_ACP : CP_UTF8, 0,
-									   name.c_str(), -1, NULL, 0);
-		if (wlen == 0) return;
-		WCHAR *wc = new WCHAR[wlen];
-		if (wc == NULL) return;
-		if (MultiByteToWideChar(a2u ? CP_ACP : CP_UTF8, 0, name.c_str(), -1,
-								wc, wlen) == 0) {
-			delete [] wc;
-			return;
-		}
-		int alen = WideCharToMultiByte(!a2u ? CP_ACP : CP_UTF8, 0, wc, wlen,
-									   NULL, 0, NULL, NULL);
-		if (alen == 0) {
-			delete [] wc;
-			return;
-		}
-		CHAR *ac = new CHAR[alen];
-		if (ac == NULL) {
-			delete [] wc;
-			return;
-		}
-		WideCharToMultiByte(!a2u ? CP_ACP : CP_UTF8, 0, wc, wlen,
-							ac, alen, NULL, NULL);
-		delete [] wc;
-		if (ac == NULL) {
-			return;
-		}
-		name = ac;
-		delete [] ac;
-
-		return;
-	}
-
-	void replace_underbar2space(std::string &name) {
-		LOG_SAVE << "conv(A2U)-from:[" << name << "]" << std::endl;
-		conv_ansi_utf8(name, true);
-		LOG_SAVE << "conv(A2U)-to:[" << name << "]" << std::endl;
-		LOG_SAVE << "replace_underbar2space-from:[" << name << "]" << std::endl;
-		std::replace(name.begin(), name.end(), '_', ' ');
-		LOG_SAVE << "replace_underbar2space-to:[" << name << "]" << std::endl;
-	}
-
-	void replace_space2underbar(std::string &name) {
-		LOG_SAVE << "conv(U2A)-from:[" << name << "]" << std::endl;
-		conv_ansi_utf8(name, false);
-		LOG_SAVE << "conv(U2A)-to:[" << name << "]" << std::endl;
-		LOG_SAVE << "replace_space2underbar-from:[" << name << "]" << std::endl;
-		std::replace(name.begin(), name.end(), ' ', '_');
-		LOG_SAVE << "replace_space2underbar-to:[" << name << "]" << std::endl;
-	}
-#else /* ! _WIN32 */
-	void replace_underbar2space(std::string &name) {
-		std::replace(name.begin(),name.end(),'_',' ');
-	}
-	void replace_space2underbar(std::string &name) {
-		std::replace(name.begin(),name.end(),' ','_');
-	}
-#endif /* _WIN32 */
+void replace_underbar2space(std::string &name) {
+	std::replace(name.begin(),name.end(),'_',' ');
+}
+void replace_space2underbar(std::string &name) {
+	std::replace(name.begin(),name.end(),' ','_');
+}
 
 namespace savegame {
 
