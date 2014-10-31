@@ -36,7 +36,7 @@ class unit_map;
 namespace t_translation {
 	struct t_match;
 }
-extern int sdfasf;
+
 class team_builder;
 typedef boost::shared_ptr<team_builder> team_builder_ptr;
 
