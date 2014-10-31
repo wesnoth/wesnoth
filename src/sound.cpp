@@ -38,7 +38,7 @@ static lg::log_domain log_audio("audio");
 #define ERR_AUDIO LOG_STREAM(err, log_audio)
 
 
-#if (MIX_MAJOR_VERSION <= 1) && (MIX_MINOR_VERSION <= 2) && (MIX_PATCHLEVEL <= 11)
+#if (MIX_MAJOR_VERSION < 1) || (MIX_MAJOR_VERSION == 1) && ((MIX_MINOR_VERSION < 2) || (MIX_MINOR_VERSION == 2) && (MIX_PATCHLEVEL <= 11))
 #define SDL_MIXER_OLD_VERSION
 #endif
 
