@@ -74,7 +74,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
-#include "create_engine.hpp"
+#include "game_initialization/create_engine.hpp"
 #include "tests/utils/fake_display.hpp"
 #include "saved_game.hpp"
 #include "video.hpp"

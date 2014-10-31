@@ -21,7 +21,7 @@
 #include "config_assign.hpp"
 #include "game_display.hpp"
 #include "saved_game.hpp"
-#include "playcampaign.hpp"
+#include "game_initialization/playcampaign.hpp"
 #include "unit.hpp"
 #include "unit_map.hpp"
 

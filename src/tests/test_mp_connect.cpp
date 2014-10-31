@@ -18,8 +18,8 @@
 
 #include "game_config_manager.hpp"
 #include "game_display.hpp"
-#include "multiplayer_connect.hpp"
-#include "multiplayer_ui.hpp"
+#include "game_initialization/multiplayer_connect.hpp"
+#include "game_initialization/multiplayer_ui.hpp"
 #include "hotkey/hotkey_manager.hpp"
 #include "saved_game.hpp"
 
