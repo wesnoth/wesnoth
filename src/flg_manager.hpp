@@ -27,6 +27,7 @@ const std::string random_enemy_picture("units/random-dice.png");
 
 std::string get_RC_suffix(const std::string& unit_color, const int color);
 
+/// FLG stands for faction, leader and gender.
 class flg_manager
 {
 public:
