@@ -248,24 +248,6 @@ void play_controller::init(CVideo& video){
 	browse_ = true;
 
 	init_managers();
-#if 0
-	// [era] and [modification] childs don't exist anymore in level_
-	// the events are now added in saved_game::expand_mp_events
-	// add era & mod events for MP game
-	if (const config &era_cfg = level_.child("era")) {
-		game_events::add_events(era_cfg.child_range("event"), "era_events");
-	}
-
-	if (level_.child_or_empty("modification")) {
-		BOOST_FOREACH (const config& mod_cfg, level_.child_range("modification")) {
-			game_events::add_events(mod_cfg.child_range("event"),
-									"mod_" + mod_cfg["id"].str() + "_events");
-			BOOST_FOREACH (const config::any_child& var_cfg, mod_cfg.child("variables").all_children_range()) {
-				gamestate_.gamedata_.add_variable_cfg(var_cfg.key, var_cfg.cfg);
-			}
-		}
-	}
-#endif
 	loadscreen::global_loadscreen->start_stage("start game");
 	loadscreen_manager->reset();
 }

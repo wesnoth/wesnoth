@@ -36,43 +36,6 @@ checkup::~checkup()
 {
 
 }
-#if 0
-void checkup::unit_checksum(const map_location& loc, bool local)
-{
-	unit_map::iterator u =  resources::units->find(loc);
-	bool equals;
-	config real;
-	config expected;
-
-	if (!u.valid()) {
-		std::stringstream message;
-		message << "non existent unit to checksum at " << loc.x+1 << "," << loc.y+1 << "!";
-		resources::screen->add_chat_message(time(NULL), "verification", 1, message.str(),
-				events::chat_handler::MESSAGE_PRIVATE, false);
-	}
-	else
-	{
-		expected["checksum"] = get_checksum(*u);
-	}
-
-	if(local)
-	{
-		equals = local_checkup(expected, real);
-	}
-	else
-	{
-		equals = this->networked_checkup(expected, real);
-	}
-
-	if(!equals && ((game_config::mp_debug && !local) || local))
-	{
-		std::stringstream message;
-		message << "checksum mismatch at " << loc.x+1 << "," << loc.y+1 << "!";
-		resources::screen->add_chat_message(time(NULL), "verification", 1, message.str(),
-			events::chat_handler::MESSAGE_PRIVATE, false);
-	}
-}
-#endif
 
 ignored_checkup::ignored_checkup()
 {

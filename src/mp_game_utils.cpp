@@ -131,20 +131,6 @@ config initial_level_config(saved_game& state)
 				game_config().find_child("modification", "id", mods[i]));
 	}
 
-
-#if 0
-	// we have this alredy in [multiplayer]. If removing this causes a bug than that's most likley bacause some is searchin for this information at the wrng place (not in [multiplayer])
-	// If game was reloaded, params won't contain all required information and so we
-	// need to take it from the actual level config.
-	if (params.saved_game) {
-		level["observer"] = level.child("multiplayer")["observer"];
-		level["shuffle_sides"] = level.child("multiplayer")["shuffle_sides"];
-	} else {
-		level["observer"] = params.allow_observers;
-		level["shuffle_sides"] = params.shuffle_sides;
-	}
-#endif
-
 	// This will force connecting clients to be using the same version number as us.
 	level["version"] = game_config::version;
 	return level;
