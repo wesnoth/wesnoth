@@ -318,6 +318,22 @@ private:
 };
 
 /**
+ * xBRZ scale (xBRZ) modification
+ */
+class xbrz_modification : public modification
+{
+public:
+	xbrz_modification(int z)
+		: z_(z)
+	{}
+
+	virtual surface operator()(const surface& src) const;
+
+private:
+	int z_;
+};
+
+/**
  * Opacity (O) modification
  */
 class o_modification : public modification

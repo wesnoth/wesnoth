@@ -400,6 +400,7 @@ set(wesnoth-sdl_SRC
 	sdl/window.cpp
 	sdl/utils.cpp
 	sdl/shader.cpp
+	xBRZ/xbrz.cpp
 )
 
 add_library(wesnoth-sdl
@@ -811,6 +812,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/addon/uninstall_list.cpp
 	gui/dialogs/addon_connect.cpp
 	gui/dialogs/addon_list.cpp
+	gui/dialogs/advanced_graphics_options.cpp
 	gui/dialogs/campaign_difficulty.cpp
 	gui/dialogs/campaign_selection.cpp
 	gui/dialogs/campaign_settings.cpp

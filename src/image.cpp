@@ -29,6 +29,8 @@
 #include "image_modifications.hpp"
 #include "log.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/advanced_graphics_options.hpp"
+#include "preferences.hpp"
 #include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"
 #include "video.hpp"
@@ -742,6 +744,36 @@ void set_zoom(int amount)
 	}
 }
 
+static surface scale_surface_algorithm(const surface & res, int w, int h, gui2::tadvanced_graphics_options::SCALING_ALGORITHM algo)
+{
+	switch (algo)
+	{
+		case gui2::tadvanced_graphics_options::LINEAR:
+		{
+			return scale_surface(res, w, h);
+		}
+		case gui2::tadvanced_graphics_options::NEAREST_NEIGHBOR:
+		{
+			return scale_surface_nn(res, w, h);
+		}
+		case gui2::tadvanced_graphics_options::XBRZ_LIN:
+		{
+			int z_factor = std::min(w / res.get()->w, h / res.get()->h);
+			surface xbrz_temp(scale_surface_xbrz(res, std::max(std::min(z_factor,5),1)));
+			return scale_surface(xbrz_temp, w, h);
+		}
+		case gui2::tadvanced_graphics_options::XBRZ_NN:
+		{
+			int z_factor = std::min(w / res.get()->w, h / res.get()->h);
+			surface xbrz_temp(scale_surface_xbrz(res, std::max(std::min(z_factor,5),1)));
+			return scale_surface_nn(xbrz_temp, w, h);
+		}
+		default:
+			assert(false && "I don't know how to implement this scaling algorithm");
+			throw 42;
+	}
+}
+
 static surface get_hexed(const locator& i_locator)
 {
 	surface image(get_image(i_locator, UNSCALED));
@@ -755,7 +787,18 @@ static surface get_hexed(const locator& i_locator)
 static surface get_scaled_to_hex(const locator& i_locator)
 {
 	surface img = get_image(i_locator, HEXED);
-	return scale_surface(img, zoom, zoom);
+	//return scale_surface(img, zoom, zoom);
+
+	if (!img.null()) {
+		gui2::tadvanced_graphics_options::SCALING_ALGORITHM algo = gui2::tadvanced_graphics_options::LINEAR;
+		try {
+			algo = gui2::tadvanced_graphics_options::string_to_SCALING_ALGORITHM(preferences::get("scale_hex"));
+		} catch (bad_enum_cast &) {}
+
+		return scale_surface_algorithm(img, zoom, zoom, algo);
+	} else {
+		return surface(NULL);
+	}
 }
 
 static surface get_tod_colored(const locator& i_locator)
@@ -772,7 +815,12 @@ static surface get_scaled_to_zoom(const locator& i_locator)
 	surface res(get_image(i_locator, UNSCALED));
 	// For some reason haloes seems to have invalid images, protect against crashing
 	if(!res.null()) {
-		return scale_surface(res, ((res.get()->w * zoom) / tile_size), ((res.get()->h * zoom) / tile_size));
+		gui2::tadvanced_graphics_options::SCALING_ALGORITHM algo = gui2::tadvanced_graphics_options::LINEAR;
+		try {
+			algo = gui2::tadvanced_graphics_options::string_to_SCALING_ALGORITHM(preferences::get("scale_zoom"));
+		} catch (bad_enum_cast &) {}
+
+		return scale_surface_algorithm(res, ((res.get()->w * zoom) / tile_size), ((res.get()->h * zoom) / tile_size), algo);
 	} else {
 		return surface(NULL);
 	}

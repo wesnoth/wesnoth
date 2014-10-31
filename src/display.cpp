@@ -72,7 +72,7 @@ namespace {
 	const int SmallZoom   = DefaultZoom / 2;
 
 	const int MinZoom = 4;
-	const int MaxZoom = 200;
+	const int MaxZoom = 288;
 	size_t sunset_delay = 0;
 
 	bool benchmark = false;
@@ -2282,6 +2282,7 @@ bool display::set_zoom(int amount, bool absolute)
 	if (new_zoom > MaxZoom) {
 		new_zoom = MaxZoom;
 	}
+	LOG_DP << "new_zoom = " << new_zoom << std::endl;
 	if (new_zoom != zoom_) {
 		gui::slider* zoom_slider = find_slider("map-zoom-slider");
 		if (zoom_slider) {

@@ -166,6 +166,21 @@ surface stretch_surface_horizontal(
 surface stretch_surface_vertical(
 	const surface& surf, const unsigned h, const bool optimize = true);
 
+/** Scale a surface using xBRZ algorithm
+ *  @param surf		     The source surface
+ *  @param z                 The scaling factor. Should be an integer 2-5 (1 is tolerated).
+ *  @return		     The scaled (optimized) surface
+ */
+surface scale_surface_xbrz(const surface & surf, size_t z);
+
+/** Scale a surface using the nearest neighbor algorithm (provided by xBRZ lib)
+ *  @param surf		     The sources surface
+ *  @param w		     The width of the resulting surface.
+ *  @param h		     The height of the resulting surface.
+ *  @return		     The rescaled surface.
+ */
+surface scale_surface_nn(const surface & surf, int w, int h);
+
 /** Scale a surface
  *  @param surf              The source surface.
  *  @param w                 The width of the resulting surface.

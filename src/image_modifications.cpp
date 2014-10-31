@@ -371,6 +371,15 @@ int scale_modification::get_h() const
 	return h_;
 }
 
+surface xbrz_modification::operator()(const surface& src) const
+{
+	if (z_ == 1) {
+		return src;
+	}
+
+	return scale_surface_xbrz(src, z_);
+}
+
 surface o_modification::operator()(const surface& src) const
 {
 	return adjust_surface_alpha(src, ftofxp(opacity_));
@@ -877,6 +886,17 @@ REGISTER_MOD_PARSER(SCALE, args)
 	}
 
 	return new scale_modification(w, h);
+}
+
+// xBRZ
+REGISTER_MOD_PARSER(xBRZ, args)
+{
+	int z = lexical_cast_default<int, const std::string &>(args);
+	if (z < 1 || z > 5) {
+		z = 5; //only values 2 - 5 are permitted for xbrz scaling factors.
+	}
+
+	return new xbrz_modification(z);
 }
 
 // Gaussian-like blur
