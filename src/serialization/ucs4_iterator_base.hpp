@@ -1,7 +1,6 @@
 #ifndef UCS4_ITERATOR_BASE_HPP_INCLUDED
 #define UCS4_ITERATOR_BASE_HPP_INCLUDED
 
-#include <stdint.h>  //uint32_t
 #include <iterator>  //input_iterator_tag
 #include <utility>   //pair
 #include <cstddef>   //ptrdiff_t
