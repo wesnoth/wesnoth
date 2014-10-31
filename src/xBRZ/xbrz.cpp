@@ -65,6 +65,11 @@ void alphaBlend(uint32_t& dst, uint32_t col) //blend color over destination with
 
     //uint32_t out_alpha = 0xffff - (((0xff - col_alpha)* (0xff - dst_alpha)) >> 8);
 
+    //TODO: Figure out if there's some way to combine the multiplicative approached with the "averaged alpha", and to feedback the
+    // alpha into the colors, without making it all very slow. Current approach looks okay, but I think shadows could be better,
+    // also I think some units are getting 'black outlines' now because their black pixels with 0 alpha (background) are getting
+    // averaged with their foreground.
+
     dst = (redMask   & ((col & redMask   ) * N + (dst & redMask   ) * (M - N)) / M) | //this works because 8 upper bits are free
           (greenMask & ((col & greenMask ) * N + (dst & greenMask ) * (M - N)) / M) |
           (blueMask  & ((col & blueMask  ) * N + (dst & blueMask  ) * (M - N)) / M) |
