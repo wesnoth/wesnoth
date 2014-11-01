@@ -816,6 +816,7 @@
 		EC2F601C1A048E220018C9D6 /* singleplayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F600C1A048E220018C9D6 /* singleplayer.cpp */; };
 		EC2F601E1A0490970018C9D6 /* advanced_graphics_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F601D1A0490970018C9D6 /* advanced_graphics_options.cpp */; };
 		EC2F60201A0490FC0018C9D6 /* xbrz.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F601F1A0490FC0018C9D6 /* xbrz.cpp */; };
+		EC2F60221A04983B0018C9D6 /* savepng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F60211A04983B0018C9D6 /* savepng.cpp */; };
 		EC3381C718B520120020DD6F /* theme_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3381C518B520120020DD6F /* theme_list.cpp */; };
 		EC386CF1195119AA006004ED /* unit_animation_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC386CEF195119A9006004ED /* unit_animation_component.cpp */; };
 		EC387E6C195AFB1F00FC0342 /* game_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC387E68195AFB1F00FC0342 /* game_data.cpp */; };
@@ -2026,6 +2027,8 @@
 		EC2F600C1A048E220018C9D6 /* singleplayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = singleplayer.cpp; path = game_initialization/singleplayer.cpp; sourceTree = "<group>"; };
 		EC2F601D1A0490970018C9D6 /* advanced_graphics_options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = advanced_graphics_options.cpp; path = dialogs/advanced_graphics_options.cpp; sourceTree = "<group>"; };
 		EC2F601F1A0490FC0018C9D6 /* xbrz.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xbrz.cpp; path = xBRZ/xbrz.cpp; sourceTree = "<group>"; };
+		EC2F60211A04983B0018C9D6 /* savepng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = savepng.cpp; path = SDL_SavePNG/savepng.cpp; sourceTree = "<group>"; };
+		EC2F60231A04985A0018C9D6 /* savepng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = savepng.h; path = SDL_SavePNG/savepng.h; sourceTree = "<group>"; };
 		EC3381C518B520120020DD6F /* theme_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = theme_list.cpp; path = ../gui/dialogs/theme_list.cpp; sourceTree = "<group>"; };
 		EC3381C618B520120020DD6F /* theme_list.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = theme_list.hpp; path = ../gui/dialogs/theme_list.hpp; sourceTree = "<group>"; };
 		EC386CEF195119A9006004ED /* unit_animation_component.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit_animation_component.cpp; sourceTree = "<group>"; };
@@ -2472,6 +2475,8 @@
 		29B97315FDCFA39411CA2CEA /* src */ = {
 			isa = PBXGroup;
 			children = (
+				EC2F60231A04985A0018C9D6 /* savepng.h */,
+				EC2F60211A04983B0018C9D6 /* savepng.cpp */,
 				EC2F601F1A0490FC0018C9D6 /* xbrz.cpp */,
 				EC2F5FFD1A048E210018C9D6 /* configure_engine.cpp */,
 				EC2F5FFE1A048E210018C9D6 /* connect_engine.cpp */,
@@ -4635,6 +4640,7 @@
 				6295C3B6150FC95C0077D8C5 /* action_label.cpp in Sources */,
 				6295C3B7150FC95C0077D8C5 /* action_unit.cpp in Sources */,
 				EC2F601C1A048E220018C9D6 /* singleplayer.cpp in Sources */,
+				EC2F60221A04983B0018C9D6 /* savepng.cpp in Sources */,
 				EC89A1351879D17D00A3B0B1 /* lgc.cpp in Sources */,
 				6295C3B8150FC95C0077D8C5 /* mouse_action.cpp in Sources */,
 				6295C3B9150FC95C0077D8C5 /* mouse_action_map_label.cpp in Sources */,
@@ -5237,6 +5243,11 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"LOCALEDIR=\\\"translations\\\"",
+					"LUA_USE_MACOSX=1",
+					"HAVE_LIBPNG=1",
+				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = "$(inherited)";
@@ -5271,6 +5282,11 @@
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"LOCALEDIR=\\\"translations\\\"",
+					"LUA_USE_MACOSX=1",
+					"HAVE_LIBPNG=1",
+				);
 				GCC_VERSION = "";
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
