@@ -18,7 +18,7 @@
 #include "gui/dialogs/dialog.hpp"
 
 #include "config.hpp"
-#include "create_engine.hpp"
+#include "game_initialization/create_engine.hpp"
 
 namespace gui2
 {

@@ -20,7 +20,7 @@
 #include "addon/validation.hpp"
 #include "addon/state.hpp"
 
-#include "create_engine.hpp"
+#include "game_initialization/create_engine.hpp"
 
 namespace gui2
 {

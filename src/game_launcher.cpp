@@ -41,10 +41,10 @@
 #include "loadscreen.hpp"               // for loadscreen, etc
 #include "log.hpp"                      // for LOG_STREAM, logger, general, etc
 #include "map_exception.hpp"
-#include "multiplayer.hpp"              // for start_client, etc
-#include "create_engine.hpp"
+#include "game_initialization/multiplayer.hpp"              // for start_client, etc
+#include "game_initialization/create_engine.hpp"
 #include "network.hpp"
-#include "playcampaign.hpp"             // for play_game, etc
+#include "game_initialization/playcampaign.hpp"             // for play_game, etc
 #include "preferences.hpp"              // for disable_preferences_save, etc
 #include "preferences_display.hpp"      // for detect_video_settings, etc
 #include "replay.hpp"                   // for replay, recorder
@@ -53,7 +53,7 @@
 #include "sdl/utils.hpp"                // for surface
 #include "serialization/compression.hpp"  // for format::NONE
 #include "serialization/string_utils.hpp"  // for split
-#include "singleplayer.hpp"             // for sp_create_mode
+#include "game_initialization/singleplayer.hpp"             // for sp_create_mode
 #include "statistics.hpp"
 #include "tstring.hpp"                  // for operator==, operator!=
 #include "util.hpp"                     // for lexical_cast_default

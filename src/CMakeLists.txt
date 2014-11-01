@@ -745,11 +745,11 @@ set(wesnoth-main_SRC
 	carryover.cpp
 	commandline_options.cpp
 	config_cache.cpp
-	configure_engine.cpp
-	connect_engine.cpp
+	game_initialization/configure_engine.cpp
+	game_initialization/connect_engine.cpp
 	controller_base.cpp
-	create_engine.cpp
-	depcheck.cpp
+	game_initialization/create_engine.cpp
+	game_initialization/depcheck.cpp
 	desktop/notifications.cpp
 	desktop/open.cpp
 	dialogs.cpp
@@ -785,7 +785,7 @@ set(wesnoth-main_SRC
 	fake_unit_manager.cpp
 	fake_unit_ptr.cpp
 	filechooser.cpp
-	flg_manager.cpp
+	game_initialization/flg_manager.cpp
 	floating_textbox.cpp
 	formula.cpp
 	formula_debugger.cpp
@@ -887,16 +887,16 @@ set(wesnoth-main_SRC
 	mouse_handler_base.cpp
 	movetype.cpp
 	mp_game_settings.cpp
-	mp_game_utils.cpp
-	mp_options.cpp
+	game_initialization/mp_game_utils.cpp
+	game_initialization/mp_options.cpp
 	mp_ui_alerts.cpp
-	multiplayer.cpp
-	multiplayer_configure.cpp
-	multiplayer_connect.cpp
-	multiplayer_create.cpp
-	multiplayer_lobby.cpp
-	multiplayer_ui.cpp
-	multiplayer_wait.cpp
+	game_initialization/multiplayer.cpp
+	game_initialization/multiplayer_configure.cpp
+	game_initialization/multiplayer_connect.cpp
+	game_initialization/multiplayer_create.cpp
+	game_initialization/multiplayer_lobby.cpp
+	game_initialization/multiplayer_ui.cpp
+	game_initialization/multiplayer_wait.cpp
 	network_asio.cpp
 	pathfind/pathfind.cpp
 	pathfind/teleport.cpp
@@ -904,7 +904,7 @@ set(wesnoth-main_SRC
 	persist_manager.cpp
 	persist_var.cpp
 	play_controller.cpp
-	playcampaign.cpp
+	game_initialization/playcampaign.cpp
 	playmp_controller.cpp
 	playsingle_controller.cpp
 	playturn.cpp
@@ -928,7 +928,7 @@ set(wesnoth-main_SRC
 	scripting/lua_types.cpp
 	settings.cpp
 	side_filter.cpp
-	singleplayer.cpp
+	game_initialization/singleplayer.cpp
 	statistics.cpp
 	statistics_dialog.cpp
 	storyscreen/controller.cpp

@@ -16,7 +16,7 @@
 #define GUI_DIALOGS_MP_DEPCHECK_SELECT_NEW_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-#include "depcheck.hpp"
+#include "game_initialization/depcheck.hpp"
 #include <vector>
 
 
