@@ -127,8 +127,10 @@ end
 ----- AI execution helper functions ------
 
 function ai_helper.checked_action_error(action, error_code)
+    if wesnoth.game_config.debug then
         wesnoth.message('Lua AI error', 'If you see this message, something has gone wrong. Please report this on the Wesnoth forums, ideally with a replay and/or savegame.')
         error(action .. ' could not be executed. Error code: ' .. error_code)
+    end
 end
 
 function ai_helper.checked_attack(ai, attacker, defender, weapon)
