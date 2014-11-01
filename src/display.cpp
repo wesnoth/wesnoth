@@ -34,7 +34,6 @@
 #include "play_controller.hpp" //note: this can probably be refactored out
 #include "reports.hpp"
 #include "resources.hpp"
-#include "SDL_SavePNG/savepng.h"
 #include "synced_context.hpp"
 #include "team.hpp"
 #include "terrain_builder.hpp"
