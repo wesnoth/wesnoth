@@ -326,15 +326,9 @@
 		B5599B130EC62181008DD061 /* playturn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999C80EC62181008DD061 /* playturn.cpp */; };
 		B5599B140EC62181008DD061 /* playsingle_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999CA0EC62181008DD061 /* playsingle_controller.cpp */; };
 		B5599B150EC62181008DD061 /* playmp_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999CC0EC62181008DD061 /* playmp_controller.cpp */; };
-		B5599B160EC62181008DD061 /* playcampaign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999CE0EC62181008DD061 /* playcampaign.cpp */; };
 		B5599B170EC62181008DD061 /* play_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999D00EC62181008DD061 /* play_controller.cpp */; };
 		B5599B180EC62181008DD061 /* pathutils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999D20EC62181008DD061 /* pathutils.cpp */; };
 		B5599B1A0EC62181008DD061 /* network_worker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999D60EC62181008DD061 /* network_worker.cpp */; };
-		B5599B1D0EC62181008DD061 /* multiplayer_wait.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999DC0EC62181008DD061 /* multiplayer_wait.cpp */; };
-		B5599B1E0EC62181008DD061 /* multiplayer_ui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999DE0EC62181008DD061 /* multiplayer_ui.cpp */; };
-		B5599B200EC62181008DD061 /* multiplayer_create.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999E20EC62181008DD061 /* multiplayer_create.cpp */; };
-		B5599B210EC62181008DD061 /* multiplayer_connect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999E40EC62181008DD061 /* multiplayer_connect.cpp */; };
-		B5599B220EC62181008DD061 /* multiplayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999E60EC62181008DD061 /* multiplayer.cpp */; };
 		B5599B230EC62181008DD061 /* mouse_handler_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999E80EC62181008DD061 /* mouse_handler_base.cpp */; };
 		B5599B240EC62181008DD061 /* mouse_events.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999EA0EC62181008DD061 /* mouse_events.cpp */; };
 		B5599B250EC62181008DD061 /* minimap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999EC0EC62181008DD061 /* minimap.cpp */; };
@@ -415,8 +409,6 @@
 		B561F375104B11D4001369F5 /* horizontal_listbox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B561F372104B11D4001369F5 /* horizontal_listbox.cpp */; };
 		B561F391104B11F7001369F5 /* editor_preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B561F38F104B11F7001369F5 /* editor_preferences.cpp */; };
 		B561F392104B11F7001369F5 /* editor_preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B561F38F104B11F7001369F5 /* editor_preferences.cpp */; };
-		B566BB36123D5C80005979F7 /* multiplayer_lobby.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B566BB34123D5C80005979F7 /* multiplayer_lobby.cpp */; };
-		B566BB37123D5C80005979F7 /* multiplayer_lobby.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B566BB34123D5C80005979F7 /* multiplayer_lobby.cpp */; };
 		B5795A680F05858100EB190E /* horizontal_scrollbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5795A610F05858100EB190E /* horizontal_scrollbar.cpp */; };
 		B5795A690F05858100EB190E /* scrollbar_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5795A640F05858100EB190E /* scrollbar_container.cpp */; };
 		B5795A6A0F05858100EB190E /* generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5795A670F05858100EB190E /* generator.cpp */; };
@@ -509,7 +501,6 @@
 		B597C56B0FACD6CA00CE81F5 /* unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559997F0EC62181008DD061 /* unit.cpp */; };
 		B597C56C0FACD6CA00CE81F5 /* mouse_events.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999EA0EC62181008DD061 /* mouse_events.cpp */; };
 		B597C56D0FACD6CA00CE81F5 /* game_config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A800EC62181008DD061 /* game_config.cpp */; };
-		B597C56E0FACD6CA00CE81F5 /* multiplayer_ui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999DE0EC62181008DD061 /* multiplayer_ui.cpp */; };
 		B597C56F0FACD6CA00CE81F5 /* scrollbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BD090ECA805A002BE442 /* scrollbar.cpp */; };
 		B597C5700FACD6CA00CE81F5 /* tooltips.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999830EC62181008DD061 /* tooltips.cpp */; };
 		B597C5730FACD6CA00CE81F5 /* text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BD110ECA805A002BE442 /* text.cpp */; };
@@ -533,10 +524,8 @@
 		B597C58D0FACD6CA00CE81F5 /* tokenizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999B10EC62181008DD061 /* tokenizer.cpp */; };
 		B597C58F0FACD6CA00CE81F5 /* thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559998B0EC62181008DD061 /* thread.cpp */; };
 		B597C5900FACD6CA00CE81F5 /* map_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999FB0EC62181008DD061 /* map_label.cpp */; };
-		B597C5910FACD6CA00CE81F5 /* multiplayer_wait.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999DC0EC62181008DD061 /* multiplayer_wait.cpp */; };
 		B597C5920FACD6CA00CE81F5 /* marked-up_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999F20EC62181008DD061 /* marked-up_text.cpp */; };
 		B597C5930FACD6CA00CE81F5 /* minimap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BD030ECA805A002BE442 /* minimap.cpp */; };
-		B597C5940FACD6CA00CE81F5 /* multiplayer_create.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999E20EC62181008DD061 /* multiplayer_create.cpp */; };
 		B597C5950FACD6CA00CE81F5 /* progressbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999540EC62181008DD061 /* progressbar.cpp */; };
 		B597C5970FACD6CA00CE81F5 /* widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999600EC62181008DD061 /* widget.cpp */; };
 		B597C5980FACD6CA00CE81F5 /* map_location.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999F90EC62181008DD061 /* map_location.cpp */; };
@@ -552,15 +541,12 @@
 		B597C5A60FACD6CA00CE81F5 /* tstring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999810EC62181008DD061 /* tstring.cpp */; };
 		B597C5A70FACD6CA00CE81F5 /* slider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BD0D0ECA805A002BE442 /* slider.cpp */; };
 		B597C5A80FACD6CA00CE81F5 /* editor_resize_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCB80ECA805A002BE442 /* editor_resize_map.cpp */; };
-		B597C5AB0FACD6CA00CE81F5 /* multiplayer_connect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999E40EC62181008DD061 /* multiplayer_connect.cpp */; };
 		B597C5AD0FACD6CA00CE81F5 /* animated_game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599AB50EC62181008DD061 /* animated_game.cpp */; };
 		B597C5AE0FACD6CA00CE81F5 /* attack_prediction_display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599ACA0EC62181008DD061 /* attack_prediction_display.cpp */; };
-		B597C5AF0FACD6CA00CE81F5 /* multiplayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999E60EC62181008DD061 /* multiplayer.cpp */; };
 		B597C5B00FACD6CA00CE81F5 /* time_of_day.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999870EC62181008DD061 /* time_of_day.cpp */; };
 		B597C5B10FACD6CA00CE81F5 /* formula_function.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A860EC62181008DD061 /* formula_function.cpp */; };
 		B597C5B30FACD6CA00CE81F5 /* dialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCB20ECA805A002BE442 /* dialog.cpp */; };
 		B597C5B40FACD6CA00CE81F5 /* scrollpane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559995A0EC62181008DD061 /* scrollpane.cpp */; };
-		B597C5B50FACD6CA00CE81F5 /* playcampaign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999CE0EC62181008DD061 /* playcampaign.cpp */; };
 		B597C5B60FACD6CA00CE81F5 /* unit_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999730EC62181008DD061 /* unit_map.cpp */; };
 		B597C5B70FACD6CA00CE81F5 /* addon_connect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCB00ECA805A002BE442 /* addon_connect.cpp */; };
 		B597C5B80FACD6CA00CE81F5 /* campaign_selection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5F4D7170F5B3B25005E204A /* campaign_selection.cpp */; };
@@ -812,6 +798,24 @@
 		EC2864331967990500168DFF /* variable_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2864311967990500168DFF /* variable_info.cpp */; };
 		EC28C58F19423426003B0F5E /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC28C58D19423426003B0F5E /* utils.cpp */; };
 		EC28C59119423529003B0F5E /* save_index.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC28C59019423528003B0F5E /* save_index.cpp */; };
+		EC2F600D1A048E220018C9D6 /* configure_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F5FFD1A048E210018C9D6 /* configure_engine.cpp */; };
+		EC2F600E1A048E220018C9D6 /* connect_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F5FFE1A048E210018C9D6 /* connect_engine.cpp */; };
+		EC2F600F1A048E220018C9D6 /* create_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F5FFF1A048E210018C9D6 /* create_engine.cpp */; };
+		EC2F60101A048E220018C9D6 /* depcheck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F60001A048E210018C9D6 /* depcheck.cpp */; };
+		EC2F60111A048E220018C9D6 /* flg_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F60011A048E210018C9D6 /* flg_manager.cpp */; };
+		EC2F60121A048E220018C9D6 /* mp_game_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F60021A048E210018C9D6 /* mp_game_utils.cpp */; };
+		EC2F60131A048E220018C9D6 /* mp_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F60031A048E210018C9D6 /* mp_options.cpp */; };
+		EC2F60141A048E220018C9D6 /* multiplayer_configure.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F60041A048E210018C9D6 /* multiplayer_configure.cpp */; };
+		EC2F60151A048E220018C9D6 /* multiplayer_connect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F60051A048E210018C9D6 /* multiplayer_connect.cpp */; };
+		EC2F60161A048E220018C9D6 /* multiplayer_create.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F60061A048E210018C9D6 /* multiplayer_create.cpp */; };
+		EC2F60171A048E220018C9D6 /* multiplayer_lobby.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F60071A048E210018C9D6 /* multiplayer_lobby.cpp */; };
+		EC2F60181A048E220018C9D6 /* multiplayer_ui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F60081A048E210018C9D6 /* multiplayer_ui.cpp */; };
+		EC2F60191A048E220018C9D6 /* multiplayer_wait.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F60091A048E210018C9D6 /* multiplayer_wait.cpp */; };
+		EC2F601A1A048E220018C9D6 /* multiplayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F600A1A048E210018C9D6 /* multiplayer.cpp */; };
+		EC2F601B1A048E220018C9D6 /* playcampaign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F600B1A048E210018C9D6 /* playcampaign.cpp */; };
+		EC2F601C1A048E220018C9D6 /* singleplayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F600C1A048E220018C9D6 /* singleplayer.cpp */; };
+		EC2F601E1A0490970018C9D6 /* advanced_graphics_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F601D1A0490970018C9D6 /* advanced_graphics_options.cpp */; };
+		EC2F60201A0490FC0018C9D6 /* xbrz.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F601F1A0490FC0018C9D6 /* xbrz.cpp */; };
 		EC3381C718B520120020DD6F /* theme_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3381C518B520120020DD6F /* theme_list.cpp */; };
 		EC386CF1195119AA006004ED /* unit_animation_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC386CEF195119A9006004ED /* unit_animation_component.cpp */; };
 		EC387E6C195AFB1F00FC0342 /* game_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC387E68195AFB1F00FC0342 /* game_data.cpp */; };
@@ -821,9 +825,6 @@
 		EC44E382181DDAF90037A62F /* menu_item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC44E37E181DDAF90037A62F /* menu_item.cpp */; };
 		EC44E383181DDAF90037A62F /* wmi_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC44E380181DDAF90037A62F /* wmi_container.cpp */; };
 		EC48D74D17F3148300DE80BF /* recruitment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC48D74B17F3148300DE80BF /* recruitment.cpp */; };
-		EC48D75817F318DA00DE80BF /* flg_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC48D74E17F318DA00DE80BF /* flg_manager.cpp */; };
-		EC48D75917F318DA00DE80BF /* mp_game_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC48D75017F318DA00DE80BF /* mp_game_utils.cpp */; };
-		EC48D75A17F318DA00DE80BF /* multiplayer_configure.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC48D75217F318DA00DE80BF /* multiplayer_configure.cpp */; };
 		EC49A38219F34F1200E78528 /* clipboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC49A38119F34F1200E78528 /* clipboard.cpp */; };
 		EC4D40AF17FCCF14002E7C81 /* strftime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4D40AD17FCCF14002E7C81 /* strftime.cpp */; };
 		EC4DF45519FEA7A8000EC086 /* gettext_boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4DF45419FEA7A8000EC086 /* gettext_boost.cpp */; };
@@ -876,13 +877,8 @@
 		EC5C70BF19EEB57400432CF4 /* mp_alerts_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5C70BE19EEB57400432CF4 /* mp_alerts_options.cpp */; };
 		EC5C70C119EEB58300432CF4 /* mp_ui_alerts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5C70C019EEB58300432CF4 /* mp_ui_alerts.cpp */; };
 		EC6069E318EF662300CD8408 /* pangorc in Resources */ = {isa = PBXBuildFile; fileRef = EC6069E218EF662300CD8408 /* pangorc */; };
-		EC74C10C1975760700B85A1A /* singleplayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C10B1975760700B85A1A /* singleplayer.cpp */; };
 		EC74C10F1975765F00B85A1A /* depcheck_confirm_change.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C10D1975765F00B85A1A /* depcheck_confirm_change.cpp */; };
 		EC74C1101975765F00B85A1A /* depcheck_select_new.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C10E1975765F00B85A1A /* depcheck_select_new.cpp */; };
-		EC74C1151975768400B85A1A /* configure_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C1111975768400B85A1A /* configure_engine.cpp */; };
-		EC74C1161975768400B85A1A /* connect_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C1121975768400B85A1A /* connect_engine.cpp */; };
-		EC74C1171975768400B85A1A /* create_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C1131975768400B85A1A /* create_engine.cpp */; };
-		EC74C1181975768400B85A1A /* depcheck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C1141975768400B85A1A /* depcheck.cpp */; };
 		EC74C11F197576F500B85A1A /* notifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C119197576F500B85A1A /* notifications.cpp */; };
 		EC74C120197576F500B85A1A /* open.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C11B197576F500B85A1A /* open.cpp */; };
 		EC79D70D19548D5000EC7C1F /* game_cache_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC79D70C19548D5000EC7C1F /* game_cache_options.cpp */; };
@@ -980,7 +976,6 @@
 		F4C02A10182F1F64008525C6 /* lua_api.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4C02A0D182F1F64008525C6 /* lua_api.cpp */; };
 		F4C02A11182F1F64008525C6 /* lua_types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4C02A0E182F1F64008525C6 /* lua_types.cpp */; };
 		F4C5DD68158CFD5E0044F754 /* point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4C5DD66158CFD5E0044F754 /* point.cpp */; };
-		F4D043CF16167B98007566E8 /* mp_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D043CE16167B98007566E8 /* mp_options.cpp */; };
 		F4D2A99614DAED0E00CAFF31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
 		F4D2A9D514DAED4200CAFF31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
 		F4D2DECB14DCA1D000CAFF31 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D2DECA14DCA1D000CAFF31 /* client.cpp */; };
@@ -1554,8 +1549,6 @@
 		B55999CA0EC62181008DD061 /* playsingle_controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = playsingle_controller.cpp; path = ../src/playsingle_controller.cpp; sourceTree = "<group>"; };
 		B55999CB0EC62181008DD061 /* playmp_controller.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = playmp_controller.hpp; path = ../src/playmp_controller.hpp; sourceTree = "<group>"; };
 		B55999CC0EC62181008DD061 /* playmp_controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = playmp_controller.cpp; path = ../src/playmp_controller.cpp; sourceTree = "<group>"; };
-		B55999CD0EC62181008DD061 /* playcampaign.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = playcampaign.hpp; path = ../src/playcampaign.hpp; sourceTree = "<group>"; };
-		B55999CE0EC62181008DD061 /* playcampaign.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = playcampaign.cpp; path = ../src/playcampaign.cpp; sourceTree = "<group>"; };
 		B55999CF0EC62181008DD061 /* play_controller.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = play_controller.hpp; path = ../src/play_controller.hpp; sourceTree = "<group>"; };
 		B55999D00EC62181008DD061 /* play_controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = play_controller.cpp; path = ../src/play_controller.cpp; sourceTree = "<group>"; };
 		B55999D10EC62181008DD061 /* pathutils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = pathutils.hpp; path = ../src/pathutils.hpp; sourceTree = "<group>"; };
@@ -1564,16 +1557,6 @@
 		B55999D60EC62181008DD061 /* network_worker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = network_worker.cpp; path = ../src/network_worker.cpp; sourceTree = "<group>"; };
 		B55999D90EC62181008DD061 /* network.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = network.hpp; path = ../src/network.hpp; sourceTree = "<group>"; };
 		B55999DA0EC62181008DD061 /* network.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = network.cpp; path = ../src/network.cpp; sourceTree = "<group>"; };
-		B55999DB0EC62181008DD061 /* multiplayer_wait.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = multiplayer_wait.hpp; path = ../src/multiplayer_wait.hpp; sourceTree = "<group>"; };
-		B55999DC0EC62181008DD061 /* multiplayer_wait.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = multiplayer_wait.cpp; path = ../src/multiplayer_wait.cpp; sourceTree = "<group>"; };
-		B55999DD0EC62181008DD061 /* multiplayer_ui.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = multiplayer_ui.hpp; path = ../src/multiplayer_ui.hpp; sourceTree = "<group>"; };
-		B55999DE0EC62181008DD061 /* multiplayer_ui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = multiplayer_ui.cpp; path = ../src/multiplayer_ui.cpp; sourceTree = "<group>"; };
-		B55999E10EC62181008DD061 /* multiplayer_create.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = multiplayer_create.hpp; path = ../src/multiplayer_create.hpp; sourceTree = "<group>"; };
-		B55999E20EC62181008DD061 /* multiplayer_create.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = multiplayer_create.cpp; path = ../src/multiplayer_create.cpp; sourceTree = "<group>"; };
-		B55999E30EC62181008DD061 /* multiplayer_connect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = multiplayer_connect.hpp; path = ../src/multiplayer_connect.hpp; sourceTree = "<group>"; };
-		B55999E40EC62181008DD061 /* multiplayer_connect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = multiplayer_connect.cpp; path = ../src/multiplayer_connect.cpp; sourceTree = "<group>"; };
-		B55999E50EC62181008DD061 /* multiplayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = multiplayer.hpp; path = ../src/multiplayer.hpp; sourceTree = "<group>"; };
-		B55999E60EC62181008DD061 /* multiplayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = multiplayer.cpp; path = ../src/multiplayer.cpp; sourceTree = "<group>"; };
 		B55999E70EC62181008DD061 /* mouse_handler_base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = mouse_handler_base.hpp; path = ../src/mouse_handler_base.hpp; sourceTree = "<group>"; };
 		B55999E80EC62181008DD061 /* mouse_handler_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mouse_handler_base.cpp; path = ../src/mouse_handler_base.cpp; sourceTree = "<group>"; };
 		B55999E90EC62181008DD061 /* mouse_events.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = mouse_events.hpp; path = ../src/mouse_events.hpp; sourceTree = "<group>"; };
@@ -1711,8 +1694,6 @@
 		B561F373104B11D4001369F5 /* horizontal_listbox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = horizontal_listbox.hpp; sourceTree = "<group>"; };
 		B561F38F104B11F7001369F5 /* editor_preferences.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = editor_preferences.cpp; sourceTree = "<group>"; };
 		B561F390104B11F7001369F5 /* editor_preferences.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = editor_preferences.hpp; sourceTree = "<group>"; };
-		B566BB34123D5C80005979F7 /* multiplayer_lobby.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = multiplayer_lobby.cpp; sourceTree = "<group>"; };
-		B566BB35123D5C80005979F7 /* multiplayer_lobby.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = multiplayer_lobby.hpp; sourceTree = "<group>"; };
 		B578E1A40ED5BEF600DE80D6 /* libgmodule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libgmodule.framework; path = lib/libgmodule.framework; sourceTree = "<group>"; };
 		B5795A5E0F05858100EB190E /* horizontal_scrollbar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = horizontal_scrollbar.hpp; sourceTree = "<group>"; };
 		B5795A5F0F05858100EB190E /* event_executor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = event_executor.hpp; sourceTree = "<group>"; };
@@ -2027,6 +2008,24 @@
 		EC28C58D19423426003B0F5E /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = utils.cpp; path = sdl/utils.cpp; sourceTree = "<group>"; };
 		EC28C58E19423426003B0F5E /* utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = utils.hpp; path = sdl/utils.hpp; sourceTree = "<group>"; };
 		EC28C59019423528003B0F5E /* save_index.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = save_index.cpp; sourceTree = "<group>"; };
+		EC2F5FFD1A048E210018C9D6 /* configure_engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = configure_engine.cpp; path = game_initialization/configure_engine.cpp; sourceTree = "<group>"; };
+		EC2F5FFE1A048E210018C9D6 /* connect_engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = connect_engine.cpp; path = game_initialization/connect_engine.cpp; sourceTree = "<group>"; };
+		EC2F5FFF1A048E210018C9D6 /* create_engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = create_engine.cpp; path = game_initialization/create_engine.cpp; sourceTree = "<group>"; };
+		EC2F60001A048E210018C9D6 /* depcheck.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = depcheck.cpp; path = game_initialization/depcheck.cpp; sourceTree = "<group>"; };
+		EC2F60011A048E210018C9D6 /* flg_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = flg_manager.cpp; path = game_initialization/flg_manager.cpp; sourceTree = "<group>"; };
+		EC2F60021A048E210018C9D6 /* mp_game_utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mp_game_utils.cpp; path = game_initialization/mp_game_utils.cpp; sourceTree = "<group>"; };
+		EC2F60031A048E210018C9D6 /* mp_options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mp_options.cpp; path = game_initialization/mp_options.cpp; sourceTree = "<group>"; };
+		EC2F60041A048E210018C9D6 /* multiplayer_configure.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = multiplayer_configure.cpp; path = game_initialization/multiplayer_configure.cpp; sourceTree = "<group>"; };
+		EC2F60051A048E210018C9D6 /* multiplayer_connect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = multiplayer_connect.cpp; path = game_initialization/multiplayer_connect.cpp; sourceTree = "<group>"; };
+		EC2F60061A048E210018C9D6 /* multiplayer_create.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = multiplayer_create.cpp; path = game_initialization/multiplayer_create.cpp; sourceTree = "<group>"; };
+		EC2F60071A048E210018C9D6 /* multiplayer_lobby.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = multiplayer_lobby.cpp; path = game_initialization/multiplayer_lobby.cpp; sourceTree = "<group>"; };
+		EC2F60081A048E210018C9D6 /* multiplayer_ui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = multiplayer_ui.cpp; path = game_initialization/multiplayer_ui.cpp; sourceTree = "<group>"; };
+		EC2F60091A048E210018C9D6 /* multiplayer_wait.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = multiplayer_wait.cpp; path = game_initialization/multiplayer_wait.cpp; sourceTree = "<group>"; };
+		EC2F600A1A048E210018C9D6 /* multiplayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = multiplayer.cpp; path = game_initialization/multiplayer.cpp; sourceTree = "<group>"; };
+		EC2F600B1A048E210018C9D6 /* playcampaign.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = playcampaign.cpp; path = game_initialization/playcampaign.cpp; sourceTree = "<group>"; };
+		EC2F600C1A048E220018C9D6 /* singleplayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = singleplayer.cpp; path = game_initialization/singleplayer.cpp; sourceTree = "<group>"; };
+		EC2F601D1A0490970018C9D6 /* advanced_graphics_options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = advanced_graphics_options.cpp; path = dialogs/advanced_graphics_options.cpp; sourceTree = "<group>"; };
+		EC2F601F1A0490FC0018C9D6 /* xbrz.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xbrz.cpp; path = xBRZ/xbrz.cpp; sourceTree = "<group>"; };
 		EC3381C518B520120020DD6F /* theme_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = theme_list.cpp; path = ../gui/dialogs/theme_list.cpp; sourceTree = "<group>"; };
 		EC3381C618B520120020DD6F /* theme_list.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = theme_list.hpp; path = ../gui/dialogs/theme_list.hpp; sourceTree = "<group>"; };
 		EC386CEF195119A9006004ED /* unit_animation_component.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit_animation_component.cpp; sourceTree = "<group>"; };
@@ -2045,12 +2044,6 @@
 		EC44E381181DDAF90037A62F /* wmi_container.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = wmi_container.hpp; path = game_events/wmi_container.hpp; sourceTree = "<group>"; };
 		EC48D74B17F3148300DE80BF /* recruitment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = recruitment.cpp; path = recruitment/recruitment.cpp; sourceTree = "<group>"; };
 		EC48D74C17F3148300DE80BF /* recruitment.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = recruitment.hpp; path = recruitment/recruitment.hpp; sourceTree = "<group>"; };
-		EC48D74E17F318DA00DE80BF /* flg_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = flg_manager.cpp; sourceTree = "<group>"; };
-		EC48D74F17F318DA00DE80BF /* flg_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = flg_manager.hpp; sourceTree = "<group>"; };
-		EC48D75017F318DA00DE80BF /* mp_game_utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_game_utils.cpp; sourceTree = "<group>"; };
-		EC48D75117F318DA00DE80BF /* mp_game_utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_game_utils.hpp; sourceTree = "<group>"; };
-		EC48D75217F318DA00DE80BF /* multiplayer_configure.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = multiplayer_configure.cpp; sourceTree = "<group>"; };
-		EC48D75317F318DA00DE80BF /* multiplayer_configure.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = multiplayer_configure.hpp; sourceTree = "<group>"; };
 		EC49A38119F34F1200E78528 /* clipboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = clipboard.cpp; path = desktop/clipboard.cpp; sourceTree = "<group>"; };
 		EC4D40AD17FCCF14002E7C81 /* strftime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = strftime.cpp; sourceTree = "<group>"; };
 		EC4D40AE17FCCF14002E7C81 /* strftime.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = strftime.hpp; sourceTree = "<group>"; };
@@ -2113,13 +2106,8 @@
 		EC5C70BE19EEB57400432CF4 /* mp_alerts_options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mp_alerts_options.cpp; path = dialogs/mp_alerts_options.cpp; sourceTree = "<group>"; };
 		EC5C70C019EEB58300432CF4 /* mp_ui_alerts.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_ui_alerts.cpp; sourceTree = "<group>"; };
 		EC6069E218EF662300CD8408 /* pangorc */ = {isa = PBXFileReference; lastKnownFileType = text; name = pangorc; path = Resources/pangorc; sourceTree = "<group>"; };
-		EC74C10B1975760700B85A1A /* singleplayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = singleplayer.cpp; sourceTree = "<group>"; };
 		EC74C10D1975765F00B85A1A /* depcheck_confirm_change.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = depcheck_confirm_change.cpp; path = gui/dialogs/depcheck_confirm_change.cpp; sourceTree = "<group>"; };
 		EC74C10E1975765F00B85A1A /* depcheck_select_new.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = depcheck_select_new.cpp; path = gui/dialogs/depcheck_select_new.cpp; sourceTree = "<group>"; };
-		EC74C1111975768400B85A1A /* configure_engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = configure_engine.cpp; sourceTree = "<group>"; };
-		EC74C1121975768400B85A1A /* connect_engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = connect_engine.cpp; sourceTree = "<group>"; };
-		EC74C1131975768400B85A1A /* create_engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = create_engine.cpp; sourceTree = "<group>"; };
-		EC74C1141975768400B85A1A /* depcheck.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = depcheck.cpp; sourceTree = "<group>"; };
 		EC74C119197576F500B85A1A /* notifications.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = notifications.cpp; path = desktop/notifications.cpp; sourceTree = "<group>"; };
 		EC74C11A197576F500B85A1A /* notifications.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = notifications.hpp; path = desktop/notifications.hpp; sourceTree = "<group>"; };
 		EC74C11B197576F500B85A1A /* open.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = open.cpp; path = desktop/open.cpp; sourceTree = "<group>"; };
@@ -2275,8 +2263,6 @@
 		F4C02A0F182F1F64008525C6 /* lua_types.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_types.hpp; sourceTree = "<group>"; };
 		F4C5DD66158CFD5E0044F754 /* point.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = point.cpp; sourceTree = "<group>"; };
 		F4C5DD67158CFD5E0044F754 /* point.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = point.hpp; sourceTree = "<group>"; };
-		F4D043CE16167B98007566E8 /* mp_options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_options.cpp; sourceTree = "<group>"; };
-		F4D043D216167BD1007566E8 /* mp_options.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_options.hpp; sourceTree = "<group>"; };
 		F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
 		F4D2DECA14DCA1D000CAFF31 /* client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = client.cpp; sourceTree = "<group>"; };
 		F4D2DEDE14DED86800CAFF31 /* lctype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lctype.h; sourceTree = "<group>"; };
@@ -2486,6 +2472,23 @@
 		29B97315FDCFA39411CA2CEA /* src */ = {
 			isa = PBXGroup;
 			children = (
+				EC2F601F1A0490FC0018C9D6 /* xbrz.cpp */,
+				EC2F5FFD1A048E210018C9D6 /* configure_engine.cpp */,
+				EC2F5FFE1A048E210018C9D6 /* connect_engine.cpp */,
+				EC2F5FFF1A048E210018C9D6 /* create_engine.cpp */,
+				EC2F60001A048E210018C9D6 /* depcheck.cpp */,
+				EC2F60011A048E210018C9D6 /* flg_manager.cpp */,
+				EC2F60021A048E210018C9D6 /* mp_game_utils.cpp */,
+				EC2F60031A048E210018C9D6 /* mp_options.cpp */,
+				EC2F60041A048E210018C9D6 /* multiplayer_configure.cpp */,
+				EC2F60051A048E210018C9D6 /* multiplayer_connect.cpp */,
+				EC2F60061A048E210018C9D6 /* multiplayer_create.cpp */,
+				EC2F60071A048E210018C9D6 /* multiplayer_lobby.cpp */,
+				EC2F60081A048E210018C9D6 /* multiplayer_ui.cpp */,
+				EC2F60091A048E210018C9D6 /* multiplayer_wait.cpp */,
+				EC2F600A1A048E210018C9D6 /* multiplayer.cpp */,
+				EC2F600B1A048E210018C9D6 /* playcampaign.cpp */,
+				EC2F600C1A048E220018C9D6 /* singleplayer.cpp */,
 				EC4DF45419FEA7A8000EC086 /* gettext_boost.cpp */,
 				ECF9D43C19F3FF9400E6C9D9 /* filesystem_boost.cpp */,
 				EC49A38119F34F1200E78528 /* clipboard.cpp */,
@@ -2496,13 +2499,8 @@
 				EC74C11A197576F500B85A1A /* notifications.hpp */,
 				EC74C11B197576F500B85A1A /* open.cpp */,
 				EC74C11C197576F500B85A1A /* open.hpp */,
-				EC74C1111975768400B85A1A /* configure_engine.cpp */,
-				EC74C1121975768400B85A1A /* connect_engine.cpp */,
-				EC74C1131975768400B85A1A /* create_engine.cpp */,
-				EC74C1141975768400B85A1A /* depcheck.cpp */,
 				EC74C10D1975765F00B85A1A /* depcheck_confirm_change.cpp */,
 				EC74C10E1975765F00B85A1A /* depcheck_select_new.cpp */,
-				EC74C10B1975760700B85A1A /* singleplayer.cpp */,
 				EC2864311967990500168DFF /* variable_info.cpp */,
 				EC2864321967990500168DFF /* variable_info.hpp */,
 				EC28642E1967988F00168DFF /* unit_filter.cpp */,
@@ -2581,7 +2579,6 @@
 				49E84DC117384EF800A4F376 /* leader_scroll_dialog.hpp */,
 				F468E6AB16DF872200A31A5A /* movetype.hpp */,
 				F468E6AC16DF872200A31A5A /* movetype.cpp */,
-				F4D043D216167BD1007566E8 /* mp_options.hpp */,
 				ECFA82DA184E59F3006782FB /* command_executor.cpp */,
 				ECFA82DB184E59F3006782FB /* command_executor.hpp */,
 				ECFA82DC184E59F3006782FB /* hotkey_command.cpp */,
@@ -2591,7 +2588,6 @@
 				ECFA82E0184E59F3006782FB /* hotkey_manager.cpp */,
 				ECFA82E1184E59F3006782FB /* hotkey_manager.hpp */,
 				ECFA82E2184E59F3006782FB /* hotkey_preferences_display.cpp */,
-				F4D043CE16167B98007566E8 /* mp_options.cpp */,
 				620A386115E9364E00A4F513 /* actions */,
 				F419A1F314E21246002F9ADC /* game_end_exceptions.cpp */,
 				F480CD2D14035038007175D6 /* tools */,
@@ -2612,8 +2608,6 @@
 				F419E44413354E620031448A /* lua_jailbreak_exception.cpp */,
 				B5CE46F712A0417D00D665EE /* side_filter.cpp */,
 				B5CE46F812A0417D00D665EE /* side_filter.hpp */,
-				B566BB34123D5C80005979F7 /* multiplayer_lobby.cpp */,
-				B566BB35123D5C80005979F7 /* multiplayer_lobby.hpp */,
 				B52EE9A81213640400CFBDAB /* addon */,
 				B52EE92D12135B6B00CFBDAB /* ana */,
 				B52EE8A1121359A600CFBDAB /* arrow.cpp */,
@@ -2649,14 +2643,8 @@
 				EC95E50518612BB600F3A9EF /* editor_edit_scenario.hpp */,
 				EC95E50618612BB600F3A9EF /* editor_edit_side.cpp */,
 				EC95E50718612BB600F3A9EF /* editor_edit_side.hpp */,
-				EC48D74E17F318DA00DE80BF /* flg_manager.cpp */,
-				EC48D74F17F318DA00DE80BF /* flg_manager.hpp */,
-				EC48D75017F318DA00DE80BF /* mp_game_utils.cpp */,
 				ECC8F419185FE2E1004AC3BE /* format_time_summary.cpp */,
 				ECC8F41A185FE2E1004AC3BE /* format_time_summary.hpp */,
-				EC48D75117F318DA00DE80BF /* mp_game_utils.hpp */,
-				EC48D75217F318DA00DE80BF /* multiplayer_configure.cpp */,
-				EC48D75317F318DA00DE80BF /* multiplayer_configure.hpp */,
 				B52EE8C3121359A600CFBDAB /* savegame.hpp */,
 				B52EE8C4121359A600CFBDAB /* sound_music_track.cpp */,
 				B52EE8C5121359A600CFBDAB /* sound_music_track.hpp */,
@@ -2764,8 +2752,6 @@
 				B55999CA0EC62181008DD061 /* playsingle_controller.cpp */,
 				B55999CB0EC62181008DD061 /* playmp_controller.hpp */,
 				B55999CC0EC62181008DD061 /* playmp_controller.cpp */,
-				B55999CD0EC62181008DD061 /* playcampaign.hpp */,
-				B55999CE0EC62181008DD061 /* playcampaign.cpp */,
 				B55999CF0EC62181008DD061 /* play_controller.hpp */,
 				B55999D00EC62181008DD061 /* play_controller.cpp */,
 				B55999D10EC62181008DD061 /* pathutils.hpp */,
@@ -2774,16 +2760,6 @@
 				B55999D60EC62181008DD061 /* network_worker.cpp */,
 				B55999D90EC62181008DD061 /* network.hpp */,
 				B55999DA0EC62181008DD061 /* network.cpp */,
-				B55999DB0EC62181008DD061 /* multiplayer_wait.hpp */,
-				B55999DC0EC62181008DD061 /* multiplayer_wait.cpp */,
-				B55999DD0EC62181008DD061 /* multiplayer_ui.hpp */,
-				B55999DE0EC62181008DD061 /* multiplayer_ui.cpp */,
-				B55999E10EC62181008DD061 /* multiplayer_create.hpp */,
-				B55999E20EC62181008DD061 /* multiplayer_create.cpp */,
-				B55999E30EC62181008DD061 /* multiplayer_connect.hpp */,
-				B55999E40EC62181008DD061 /* multiplayer_connect.cpp */,
-				B55999E50EC62181008DD061 /* multiplayer.hpp */,
-				B55999E60EC62181008DD061 /* multiplayer.cpp */,
 				B55999E70EC62181008DD061 /* mouse_handler_base.hpp */,
 				B55999E80EC62181008DD061 /* mouse_handler_base.cpp */,
 				B55999E90EC62181008DD061 /* mouse_events.hpp */,
@@ -3726,6 +3702,7 @@
 		B5A9BCA10ECA805A002BE442 /* gui */ = {
 			isa = PBXGroup;
 			children = (
+				EC2F601D1A0490970018C9D6 /* advanced_graphics_options.cpp */,
 				EC5C70BE19EEB57400432CF4 /* mp_alerts_options.cpp */,
 				EC19E6EE18B7F24B003B4B81 /* screenshot_notification.cpp */,
 				EC19E6EF18B7F24B003B4B81 /* screenshot_notification.hpp */,
@@ -4221,7 +4198,9 @@
 				B5599AD50EC62181008DD061 /* combo.cpp in Sources */,
 				B5599AD60EC62181008DD061 /* combo_drag.cpp in Sources */,
 				B5599AD70EC62181008DD061 /* drop_target.cpp in Sources */,
+				EC2F601E1A0490970018C9D6 /* advanced_graphics_options.cpp in Sources */,
 				B5599AD80EC62181008DD061 /* file_menu.cpp in Sources */,
+				EC2F601A1A048E220018C9D6 /* multiplayer.cpp in Sources */,
 				B5599AD90EC62181008DD061 /* label.cpp in Sources */,
 				B5599ADA0EC62181008DD061 /* menu.cpp in Sources */,
 				B5599ADB0EC62181008DD061 /* menu_style.cpp in Sources */,
@@ -4283,17 +4262,12 @@
 				B5599B130EC62181008DD061 /* playturn.cpp in Sources */,
 				B5599B140EC62181008DD061 /* playsingle_controller.cpp in Sources */,
 				B5599B150EC62181008DD061 /* playmp_controller.cpp in Sources */,
-				B5599B160EC62181008DD061 /* playcampaign.cpp in Sources */,
 				B5599B170EC62181008DD061 /* play_controller.cpp in Sources */,
 				B5599B180EC62181008DD061 /* pathutils.cpp in Sources */,
 				B5599B1A0EC62181008DD061 /* network_worker.cpp in Sources */,
-				B5599B1D0EC62181008DD061 /* multiplayer_wait.cpp in Sources */,
-				B5599B1E0EC62181008DD061 /* multiplayer_ui.cpp in Sources */,
+				EC2F60101A048E220018C9D6 /* depcheck.cpp in Sources */,
 				EC386CF1195119AA006004ED /* unit_animation_component.cpp in Sources */,
-				B5599B200EC62181008DD061 /* multiplayer_create.cpp in Sources */,
-				B5599B210EC62181008DD061 /* multiplayer_connect.cpp in Sources */,
 				EC387E6C195AFB1F00FC0342 /* game_data.cpp in Sources */,
-				B5599B220EC62181008DD061 /* multiplayer.cpp in Sources */,
 				B5599B230EC62181008DD061 /* mouse_handler_base.cpp in Sources */,
 				B5599B240EC62181008DD061 /* mouse_events.cpp in Sources */,
 				B5599B250EC62181008DD061 /* minimap.cpp in Sources */,
@@ -4330,6 +4304,7 @@
 				EC28C58F19423426003B0F5E /* utils.cpp in Sources */,
 				B5599B740EC62181008DD061 /* filechooser.cpp in Sources */,
 				B5599B750EC62181008DD061 /* events.cpp in Sources */,
+				EC2F60201A0490FC0018C9D6 /* xbrz.cpp in Sources */,
 				B5599B760EC62181008DD061 /* display.cpp in Sources */,
 				B5599B770EC62181008DD061 /* dialogs.cpp in Sources */,
 				EC84246818F30D9100FC1EEF /* random_new_synced.cpp in Sources */,
@@ -4366,6 +4341,7 @@
 				B5A9BD3D0ECA805A002BE442 /* title_screen.cpp in Sources */,
 				B5A9BD5B0ECA805A002BE442 /* button.cpp in Sources */,
 				B5A9BD5D0ECA805A002BE442 /* container.cpp in Sources */,
+				EC2F60121A048E220018C9D6 /* mp_game_utils.cpp in Sources */,
 				ECC8F41B185FE2E1004AC3BE /* format_time_summary.cpp in Sources */,
 				B5A9BD5E0ECA805A002BE442 /* control.cpp in Sources */,
 				B5A9BD610ECA805A002BE442 /* grid.cpp in Sources */,
@@ -4384,7 +4360,7 @@
 				B5A9BD6D0ECA805A002BE442 /* spacer.cpp in Sources */,
 				EC84246D18F30D9100FC1EEF /* synced_commands.cpp in Sources */,
 				B5A9BD6E0ECA805A002BE442 /* text.cpp in Sources */,
-				EC48D75817F318DA00DE80BF /* flg_manager.cpp in Sources */,
+				EC2F600D1A048E220018C9D6 /* configure_engine.cpp in Sources */,
 				B5A9BD6F0ECA805A002BE442 /* text_box.cpp in Sources */,
 				B5A9BD700ECA805A002BE442 /* toggle_button.cpp in Sources */,
 				EC84246E18F30D9100FC1EEF /* synced_context.cpp in Sources */,
@@ -4403,6 +4379,7 @@
 				B59915280F20EA1400BAD4C1 /* password_box.cpp in Sources */,
 				B514C70B0F5450CC00E273F0 /* addon_list.cpp in Sources */,
 				B5F4D7180F5B3B25005E204A /* campaign_selection.cpp in Sources */,
+				EC2F60191A048E220018C9D6 /* multiplayer_wait.cpp in Sources */,
 				B597EBEE0FC082AB00CE81F5 /* contexts.cpp in Sources */,
 				B597EBF10FC082AB00CE81F5 /* game_info.cpp in Sources */,
 				B597EBF20FC082AB00CE81F5 /* testing.cpp in Sources */,
@@ -4462,6 +4439,7 @@
 				B508D1FC100155F300B12852 /* horizontal_scrollbar.cpp in Sources */,
 				B508D1FD100155F300B12852 /* listbox.cpp in Sources */,
 				B508D1FE100155F300B12852 /* multi_page.cpp in Sources */,
+				EC2F60111A048E220018C9D6 /* flg_manager.cpp in Sources */,
 				EC1CB20819524AD600B0FA78 /* recall_list_manager.cpp in Sources */,
 				B508D1FF100155F300B12852 /* scroll_label.cpp in Sources */,
 				B508D200100155F300B12852 /* scrollbar_panel.cpp in Sources */,
@@ -4478,13 +4456,11 @@
 				ECAA3FE718E0E4EF002E8998 /* unicode.cpp in Sources */,
 				B5951A9B1013BB5A00C10B66 /* callable_objects.cpp in Sources */,
 				B5951A9C1013BB5A00C10B66 /* function_table.cpp in Sources */,
-				EC74C10C1975760700B85A1A /* singleplayer.cpp in Sources */,
 				B59F96D5103478C900A57C1A /* aspect.cpp in Sources */,
 				B59F96D6103478C900A57C1A /* goal.cpp in Sources */,
 				B59F96E0103478DE00A57C1A /* stage_side_formulas.cpp in Sources */,
 				B59F96E1103478DE00A57C1A /* stage_unit_formulas.cpp in Sources */,
 				B59F96E71034791200A57C1A /* aspect_attacks.cpp in Sources */,
-				EC74C1181975768400B85A1A /* depcheck.cpp in Sources */,
 				B59F96ED1034796700A57C1A /* lobby_player_info.cpp in Sources */,
 				B59F9733103716E400A57C1A /* unit_create.cpp in Sources */,
 				B561F368104B1042001369F5 /* component.cpp in Sources */,
@@ -4531,6 +4507,8 @@
 				EC89A1311879D17D00A3B0B1 /* ldebug.cpp in Sources */,
 				B5FCE9241104C2A50081F1DF /* vertical_scrollbar.cpp in Sources */,
 				B5FCE9251104C2A50081F1DF /* window.cpp in Sources */,
+				EC2F600E1A048E220018C9D6 /* connect_engine.cpp in Sources */,
+				EC2F60151A048E220018C9D6 /* multiplayer_connect.cpp in Sources */,
 				ECBBD7401928F41500E434C6 /* core_selection.cpp in Sources */,
 				B55BE03211234AAB00154E6C /* astarsearch.cpp in Sources */,
 				B55BE03311234AAB00154E6C /* pathfind.cpp in Sources */,
@@ -4555,7 +4533,6 @@
 				ECB58C8D19E71347007D074F /* editor_controller.cpp in Sources */,
 				EC4D40AF17FCCF14002E7C81 /* strftime.cpp in Sources */,
 				EC89A1341879D17D00A3B0B1 /* lfunc.cpp in Sources */,
-				EC48D75917F318DA00DE80BF /* mp_game_utils.cpp in Sources */,
 				B52EE897121358EF00CFBDAB /* progress_bar.cpp in Sources */,
 				EC4E3B1C19B2D7AD0049CBD7 /* default_map_generator.cpp in Sources */,
 				B52EE89D1213590500CFBDAB /* list.cpp in Sources */,
@@ -4579,7 +4556,6 @@
 				ECF9D43D19F3FF9400E6C9D9 /* filesystem_boost.cpp in Sources */,
 				B52EE8DC121359A600CFBDAB /* sound_music_track.cpp in Sources */,
 				B52EE8DD121359A600CFBDAB /* unit_helper.cpp in Sources */,
-				EC48D75A17F318DA00DE80BF /* multiplayer_configure.cpp in Sources */,
 				B52EE91512135AC300CFBDAB /* action.cpp in Sources */,
 				B52EE91612135AC300CFBDAB /* attack.cpp in Sources */,
 				EC89A13F1879D17D00A3B0B1 /* lparser.cpp in Sources */,
@@ -4594,7 +4570,6 @@
 				B52EE9AD1213640400CFBDAB /* manager.cpp in Sources */,
 				B52EE9AE1213640400CFBDAB /* validation.cpp in Sources */,
 				B553B6BA12189C5900CC8C58 /* utility.cpp in Sources */,
-				B566BB36123D5C80005979F7 /* multiplayer_lobby.cpp in Sources */,
 				B504B94C1284C06B00261FE9 /* tips.cpp in Sources */,
 				B5CE46F912A0417D00D665EE /* side_filter.cpp in Sources */,
 				B5CE46FD12A041CE00D665EE /* ca_testing_recruitment.cpp in Sources */,
@@ -4607,6 +4582,7 @@
 				B5CE470D12A0422800D665EE /* old_markup.cpp in Sources */,
 				B5DBABF312AFF7F200B5B8DC /* mp_create_game_set_password.cpp in Sources */,
 				4944F4071354FB410027E614 /* game_errors.cpp in Sources */,
+				EC2F60141A048E220018C9D6 /* multiplayer_configure.cpp in Sources */,
 				4944F4091354FB410027E614 /* portrait.cpp in Sources */,
 				4944F40B1354FB610027E614 /* drawing.cpp in Sources */,
 				EC2194491960634100420969 /* game_launcher.cpp in Sources */,
@@ -4614,8 +4590,11 @@
 				4944F4121354FB970027E614 /* debug_clock.cpp in Sources */,
 				4944F4131354FB970027E614 /* mp_login.cpp in Sources */,
 				ECFA82E4184E59F3006782FB /* hotkey_command.cpp in Sources */,
+				EC2F60131A048E220018C9D6 /* mp_options.cpp in Sources */,
 				4944F4141354FB970027E614 /* popup.cpp in Sources */,
+				EC2F600F1A048E220018C9D6 /* create_engine.cpp in Sources */,
 				4944F4151354FB970027E614 /* tip.cpp in Sources */,
+				EC2F60161A048E220018C9D6 /* multiplayer_create.cpp in Sources */,
 				4944F4171354FBB20027E614 /* description.cpp in Sources */,
 				4944F4191354FBCD0027E614 /* drawing.cpp in Sources */,
 				4944F41B1354FBFF0027E614 /* teleport.cpp in Sources */,
@@ -4655,14 +4634,13 @@
 				EC08023C194D0A80009E0050 /* unit_formula_manager.cpp in Sources */,
 				6295C3B6150FC95C0077D8C5 /* action_label.cpp in Sources */,
 				6295C3B7150FC95C0077D8C5 /* action_unit.cpp in Sources */,
-				EC74C1151975768400B85A1A /* configure_engine.cpp in Sources */,
+				EC2F601C1A048E220018C9D6 /* singleplayer.cpp in Sources */,
 				EC89A1351879D17D00A3B0B1 /* lgc.cpp in Sources */,
 				6295C3B8150FC95C0077D8C5 /* mouse_action.cpp in Sources */,
 				6295C3B9150FC95C0077D8C5 /* mouse_action_map_label.cpp in Sources */,
 				6295C3BA150FC95C0077D8C5 /* mouse_action_unit.cpp in Sources */,
 				6295C3C2150FC9750077D8C5 /* editor_map.cpp in Sources */,
 				6295C3C3150FC9750077D8C5 /* map_context.cpp in Sources */,
-				EC74C1161975768400B85A1A /* connect_engine.cpp in Sources */,
 				6295C3C4150FC9750077D8C5 /* map_fragment.cpp in Sources */,
 				6295C3D6150FC9EB0077D8C5 /* editor_palettes.cpp in Sources */,
 				6295C3D8150FC9EB0077D8C5 /* terrain_palettes.cpp in Sources */,
@@ -4671,6 +4649,8 @@
 				F4D5483E15198D060058C8A7 /* lua_jailbreak_exception.cpp in Sources */,
 				EC219454196064C500420969 /* wesnoth.cpp in Sources */,
 				EC89A12A1879D17D00A3B0B1 /* lauxlib.cpp in Sources */,
+				EC2F60181A048E220018C9D6 /* multiplayer_ui.cpp in Sources */,
+				EC2F60171A048E220018C9D6 /* multiplayer_lobby.cpp in Sources */,
 				EC21944F1960649000420969 /* display_chat_manager.cpp in Sources */,
 				62D24F2D1519982500350848 /* brush.cpp in Sources */,
 				62D24F2F1519982500350848 /* editor_toolkit.cpp in Sources */,
@@ -4683,6 +4663,7 @@
 				F4D5AFF4157120B30062EAFC /* horizontal_list.cpp in Sources */,
 				F4D5AFF5157120B30062EAFC /* vertical_list.cpp in Sources */,
 				ECFA82E6184E59F3006782FB /* hotkey_manager.cpp in Sources */,
+				EC2F601B1A048E220018C9D6 /* playcampaign.cpp in Sources */,
 				F4D5AFFA157120E60062EAFC /* viewport.cpp in Sources */,
 				EC89A1401879D17D00A3B0B1 /* lstate.cpp in Sources */,
 				62579C771573E682003089D5 /* matrix.cpp in Sources */,
@@ -4704,7 +4685,6 @@
 				620A387215E9364F00A4F513 /* undo.cpp in Sources */,
 				ECDEAF79194FEA9D00DB2F47 /* game_classification.cpp in Sources */,
 				620A387315E9364F00A4F513 /* vision.cpp in Sources */,
-				F4D043CF16167B98007566E8 /* mp_options.cpp in Sources */,
 				ECBBD73D1928F3F200E434C6 /* terrain_builder.cpp in Sources */,
 				F468E6AD16DF872200A31A5A /* movetype.cpp in Sources */,
 				49478714172FF6F8002B7ABA /* tristate_button.cpp in Sources */,
@@ -4723,7 +4703,6 @@
 				62CC8E7417B9063E00C16B75 /* action_wml.cpp in Sources */,
 				62CC8E7517B9063E00C16B75 /* conditional_wml.cpp in Sources */,
 				62CC8E7617B9063E00C16B75 /* entity_location.cpp in Sources */,
-				EC74C1171975768400B85A1A /* create_engine.cpp in Sources */,
 				EC89A12B1879D17D00A3B0B1 /* lbaselib.cpp in Sources */,
 				62CC8E7717B9063E00C16B75 /* handlers.cpp in Sources */,
 				EC89A1301879D17D00A3B0B1 /* ldblib.cpp in Sources */,
@@ -4805,7 +4784,6 @@
 				B597C56B0FACD6CA00CE81F5 /* unit.cpp in Sources */,
 				B597C56C0FACD6CA00CE81F5 /* mouse_events.cpp in Sources */,
 				B597C56D0FACD6CA00CE81F5 /* game_config.cpp in Sources */,
-				B597C56E0FACD6CA00CE81F5 /* multiplayer_ui.cpp in Sources */,
 				B597C56F0FACD6CA00CE81F5 /* scrollbar.cpp in Sources */,
 				B597C5700FACD6CA00CE81F5 /* tooltips.cpp in Sources */,
 				B597C5730FACD6CA00CE81F5 /* text.cpp in Sources */,
@@ -4829,10 +4807,8 @@
 				B597C58D0FACD6CA00CE81F5 /* tokenizer.cpp in Sources */,
 				B597C58F0FACD6CA00CE81F5 /* thread.cpp in Sources */,
 				B597C5900FACD6CA00CE81F5 /* map_label.cpp in Sources */,
-				B597C5910FACD6CA00CE81F5 /* multiplayer_wait.cpp in Sources */,
 				B597C5920FACD6CA00CE81F5 /* marked-up_text.cpp in Sources */,
 				B597C5930FACD6CA00CE81F5 /* minimap.cpp in Sources */,
-				B597C5940FACD6CA00CE81F5 /* multiplayer_create.cpp in Sources */,
 				B597C5950FACD6CA00CE81F5 /* progressbar.cpp in Sources */,
 				B597C5970FACD6CA00CE81F5 /* widget.cpp in Sources */,
 				B597C5980FACD6CA00CE81F5 /* map_location.cpp in Sources */,
@@ -4848,15 +4824,12 @@
 				B597C5A60FACD6CA00CE81F5 /* tstring.cpp in Sources */,
 				B597C5A70FACD6CA00CE81F5 /* slider.cpp in Sources */,
 				B597C5A80FACD6CA00CE81F5 /* editor_resize_map.cpp in Sources */,
-				B597C5AB0FACD6CA00CE81F5 /* multiplayer_connect.cpp in Sources */,
 				B597C5AD0FACD6CA00CE81F5 /* animated_game.cpp in Sources */,
 				B597C5AE0FACD6CA00CE81F5 /* attack_prediction_display.cpp in Sources */,
-				B597C5AF0FACD6CA00CE81F5 /* multiplayer.cpp in Sources */,
 				B597C5B00FACD6CA00CE81F5 /* time_of_day.cpp in Sources */,
 				B597C5B10FACD6CA00CE81F5 /* formula_function.cpp in Sources */,
 				B597C5B30FACD6CA00CE81F5 /* dialog.cpp in Sources */,
 				B597C5B40FACD6CA00CE81F5 /* scrollpane.cpp in Sources */,
-				B597C5B50FACD6CA00CE81F5 /* playcampaign.cpp in Sources */,
 				B597C5B60FACD6CA00CE81F5 /* unit_map.cpp in Sources */,
 				B597C5B70FACD6CA00CE81F5 /* addon_connect.cpp in Sources */,
 				B597C5B80FACD6CA00CE81F5 /* campaign_selection.cpp in Sources */,
@@ -5069,7 +5042,6 @@
 				B52EE9AF1213640400CFBDAB /* manager.cpp in Sources */,
 				B52EE9B01213640400CFBDAB /* validation.cpp in Sources */,
 				B553B6BB12189C5900CC8C58 /* utility.cpp in Sources */,
-				B566BB37123D5C80005979F7 /* multiplayer_lobby.cpp in Sources */,
 				B504B94D1284C06B00261FE9 /* tips.cpp in Sources */,
 				B5CE46FA12A0417D00D665EE /* side_filter.cpp in Sources */,
 				B5CE46FE12A041CE00D665EE /* ca_testing_recruitment.cpp in Sources */,
