@@ -391,7 +391,7 @@ if(LIBDBUS_FOUND)
 endif()
 
 if(PNG_FOUND)
-	set_sources_files_properties(
+	set_source_files_properties(
 		SDL_SavePNG/savepng.cpp
 		PROPERTIES
 			COMPILE_FLAGS "${CXX_FLAG_NO_OLD_STYLE_CAST}"

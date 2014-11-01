@@ -601,9 +601,9 @@ if(ENABLE_GAME)
 	find_package( PNG )
 	if(ENABLE_LIBPNG AND PNG_FOUND)
 		add_definitions(-DHAVE_LIBPNG)
-	else
+	else(ENABLE_LIBPNG AND PNG_FOUND)
 		message("Could not find lib PNG. Disabling support for writing PNG images.")	
-	endif()
+	endif(ENABLE_LIBPNG AND PNG_FOUND)
 endif(ENABLE_GAME)
 
 if(ENABLE_POT_UPDATE_TARGET)
