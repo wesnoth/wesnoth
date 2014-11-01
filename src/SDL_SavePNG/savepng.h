@@ -13,7 +13,7 @@
  * Returns 0 success or -1 on failure, the error message is then retrievable
  * via SDL_GetError().
  */
-//#define SDL_SavePNG(surface, file) \
+//#define SDL_SavePNG(surface, file)
 //	SDL_SavePNG_RW(surface, SDL_RWFromFile(file, "wb"), 1)
 //
 //I delete this ^ because we should always use our own filesystem functions
