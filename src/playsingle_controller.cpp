@@ -418,6 +418,10 @@ possible_end_play_signal playsingle_controller::play_scenario_main_loop(end_leve
 	// allow the first turn to have an autosave.
 	do_autosaves_ = !loading_game_;
 	ai_testing::log_game_start();
+	if(gamestate_.board_.teams().empty())
+	{
+		ERR_NG << "Playing game with 0 teams." << std::endl;
+	}
 	for(; ; first_player_ = 1) {
 		PROPOGATE_END_PLAY_SIGNAL( play_turn() );
 		do_autosaves_ = true;
