@@ -190,6 +190,7 @@ game_info::game_info(const config& game, const config& game_config)
 	, verified(true)
 	, password_required(game["password"].to_bool())
 	, have_era(true)
+	, have_all_mods(true)
 	, has_friends(false)
 	, has_ignored(false)
 	, display_status(NEW)
@@ -218,6 +219,19 @@ game_info::game_info(const config& game, const config& game_config)
 		verified = false;
 	}
 	map_info = era;
+
+	if(!game.child_or_empty("modification").empty()) {
+		BOOST_FOREACH(const config &cfg, game.child_range("modification")) {
+			if (cfg["require_modification"].to_bool(false)) {
+				const config &mod = game_config.find_child("modification", "id",
+														   cfg["id"]);
+				if (!mod) {
+					have_all_mods = false;
+					break;
+				}
+			}
+		}
+	}
 
 	if(map_data.empty()) {
 		map_data = filesystem::read_map(game["mp_scenario"]);
@@ -342,12 +356,13 @@ game_info::game_info(const config& game, const config& game_config)
 
 bool game_info::can_join() const
 {
-	return have_era && !started && vacant_slots > 0;
+	return have_era && have_all_mods && !started && vacant_slots > 0;
 }
 
 bool game_info::can_observe() const
 {
-	return (have_era && observers) || preferences::is_authenticated();
+	return (have_era && have_all_mods && observers)
+			|| preferences::is_authenticated();
 }
 
 const char* game_info::display_status_string() const
