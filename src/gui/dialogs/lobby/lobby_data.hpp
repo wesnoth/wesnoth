@@ -170,6 +170,7 @@ struct game_info
 	bool verified;
 	bool password_required;
 	bool have_era;
+	bool have_all_mods;
 
 	bool has_friends;
 	bool has_ignored;
