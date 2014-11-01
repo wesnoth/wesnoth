@@ -364,7 +364,7 @@ if env["prereqs"]:
     have_server_prereqs = (\
         conf.CheckCPlusPlus(gcc_version = "3.3") & \
         have_sdl_net() & \
-        conf.CheckGettextLibintl() & \
+        ((env["boostfilesystem"]) or (conf.CheckGettextLibintl())) & \
         conf.CheckBoost("iostreams", require_version = "1.34.1") & \
         conf.CheckBoostIostreamsGZip() & \
         conf.CheckBoostIostreamsBZip2() & \
