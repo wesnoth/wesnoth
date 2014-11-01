@@ -22,7 +22,6 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "mp_options.hpp"
-#include "replay.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
 #include "tod_manager.hpp"
@@ -143,20 +142,6 @@ void level_to_gamestate(const config& level, saved_game& state)
 	state = saved_game(level);
 	state.classification().campaign_type = type;
 	state.mp_settings().show_connect = show_connect;
-	// Any replay data is only temporary and should be removed from
-	// the level data in case we want to save the game later.
-	if (const config& replay_data = level.child("replay"))
-	{
-		LOG_NW << "setting replay\n";
-		recorder = replay(replay_data);
-		if (!recorder.empty()) {
-			recorder.set_skip(false);
-			recorder.set_to_end();
-		}
-	}
-
-
-	//save id setting  was moved to play_controller.
 }
 
 void check_response(network::connection res, const config& data)

@@ -128,6 +128,7 @@ static void show_carryover_message(saved_game& gamestate, playsingle_controller&
 LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& game_config,
 		CVideo& video, bool is_unit_test)
 {
+	recorder = replay(gamestate.replay_data);
 	// 'starting_pos' will contain the position we start the game from.
 	// this call also might expand [scenario] in case thatt there is no replay_start
 	const config& starting_pos = gamestate.get_replay_starting_pos();
@@ -262,6 +263,9 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 	const config& game_config, io_type_t io_type, bool skip_replay,
 	bool network_game, bool blindfold_replay, bool is_unit_test)
 {
+	recorder = replay(gamestate.replay_data);
+	recorder.set_to_end();
+
 	gamestate.expand_scenario();
 
 	game_classification::CAMPAIGN_TYPE game_type = gamestate.classification().campaign_type;

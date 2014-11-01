@@ -1070,7 +1070,6 @@ void lobby::process_event()
 	}
 
 	if(quit_game_.pressed()) {
-		recorder.set_skip(false);
 		set_result(QUIT);
 		return;
 	}

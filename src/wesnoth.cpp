@@ -779,13 +779,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			}
 			continue;
 		}
-
-		if (recorder.at_end()){
-			game->launch_game(should_reload);
-		}
-		else{
-			game->play_replay();
-		}
+		game->launch_game(should_reload);
 	}
 }
 #ifdef _WIN32
