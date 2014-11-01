@@ -791,7 +791,7 @@ static surface get_hexed(const locator& i_locator)
 
 static surface get_scaled_to_hex(const locator& i_locator)
 {
-	surface img = get_image(i_locator, HEXED);
+	surface img = get_image(i_locator, UNSCALED); //HEXED);
 	//return scale_surface(img, zoom, zoom);
 
 	if (!img.null()) {
@@ -800,7 +800,13 @@ static surface get_scaled_to_hex(const locator& i_locator)
 			algo = gui2::tadvanced_graphics_options::string_to_SCALING_ALGORITHM(preferences::get("scale_hex"));
 		} catch (bad_enum_cast &) {}
 
-		return scale_surface_algorithm(img, zoom, zoom, algo);
+		surface scaled = scale_surface_algorithm(img, zoom, zoom, algo);
+
+		bool is_empty = false;
+		surface cut = mask_surface(scaled, get_hexmask_scaled(), & is_empty, i_locator.get_filename());
+		i_locator.add_to_cache(is_empty_hex_, is_empty);
+
+		return cut;
 	} else {
 		return surface(NULL);
 	}
@@ -1113,6 +1119,12 @@ surface get_hexmask()
 {
 	static const image::locator terrain_mask(game_config::images::terrain_mask);
 	return get_image(terrain_mask, UNSCALED);
+}
+
+surface get_hexmask_scaled()
+{
+	static const image::locator terrain_mask(game_config::images::terrain_mask);
+	return get_image(terrain_mask, SCALED_TO_ZOOM); //actually I think maybe its better for it always to be bilinear
 }
 
 bool is_in_hex(const locator& i_locator)
