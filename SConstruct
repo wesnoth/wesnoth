@@ -103,7 +103,8 @@ opts.AddVariables(
     BoolVariable('cxx0x', 'Use C++0x features.', False),
     BoolVariable('openmp', 'Enable openmp use.', False),
     BoolVariable("fast", "Make scons faster at cost of less precise dependency tracking.", False),
-    BoolVariable("lockfile", "Create a lockfile to prevent multiple instances of scons from being run at the same time on this working copy.", False)
+    BoolVariable("lockfile", "Create a lockfile to prevent multiple instances of scons from being run at the same time on this working copy.", False),
+    BoolVariable("OS_ENV", "Forward the entire OS environment to scons", False)
     )
 
 #
@@ -124,9 +125,16 @@ if env["lockfile"]:
 opts.Save(GetOption("option_cache"), env)
 env.SConsignFile("$build_dir/sconsign.dblite")
 
+# If OS_ENV was enabled, copy the entire OS environment.
+if env['OS_ENV']:
+    env['ENV'] = os.environ
+
 # Make sure the user's environment is always available
 env['ENV']['PATH'] = os.environ.get("PATH")
-env['ENV']['TERM'] = os.environ.get("TERM")
+term = os.environ.get('TERM')
+if term is not None:
+    env['ENV']['TERM'] = term
+
 if env["PLATFORM"] == "win32":
     env.Tool("mingw")
 elif env["PLATFORM"] == "sunos":
