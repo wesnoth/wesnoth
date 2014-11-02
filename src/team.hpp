@@ -242,19 +242,20 @@ public:
 	CONTROLLER controller() const { return info_.controller; }
 	const std::string& color() const { return info_.color; }
 	void set_color(const std::string& color) { info_.color = color; }
-	bool is_human() const { return info_.controller == HUMAN; }
-	bool is_network_human() const { return info_.controller == NETWORK; }
-	bool is_network_ai() const { return info_.controller == NETWORK_AI; }
-	bool is_ai() const { return info_.controller == AI; }
+	//bool is_human() const { return info_.controller == HUMAN; }
+	//bool is_ai() const { return info_.controller == AI; }
 	bool is_idle() const { return info_.controller == IDLE; }
 	bool is_empty() const { return info_.controller == EMPTY; }
 
-	bool is_local() const { return is_human() || is_ai() || is_idle(); }
+	bool is_local() const { return is_local_human() || is_local_ai() || is_idle(); }
 	bool is_network() const { return is_network_human() || is_network_ai(); }
 
+	bool is_local_human() const { return info_.controller == HUMAN;  }
+	bool is_local_ai() const { return info_.controller == AI; }
+	bool is_network_human() const { return info_.controller == NETWORK; }
+	bool is_network_ai() const { return info_.controller == NETWORK_AI; }
+
 	void make_human() { info_.controller = HUMAN; }
-	void make_network() { info_.controller = NETWORK; }
-	void make_network_ai() { info_.controller = NETWORK_AI; }
 	void make_ai() { info_.controller = AI; }
 	void make_idle() { info_.controller = IDLE; }
 	void change_controller(const std::string& new_controller) {

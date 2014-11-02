@@ -291,7 +291,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 	}
 
 	bool show_move = show;
-	if ( current_team.is_ai() || current_team.is_network_ai() )
+	if ( current_team.is_local_ai() || current_team.is_network_ai())
 	{
 		show_move = show_move && preferences::show_ai_moves();
 	}
