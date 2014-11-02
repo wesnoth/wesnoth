@@ -4,7 +4,7 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Széll Tamás <tomi@digiflex.hu>, 2005.
-# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2007-2012.
+# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2007-2012, 2014.
 # Pintér Csaba <piere-d-siorac@freemail.hu>, 2008.
 # Fábián Balázs <nermal93@freemail.hu>, 2008.
 # Barthalos Márton <barthalosmarton@yahoo.com>, 2008-2009.
@@ -12,16 +12,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
-"PO-Revision-Date: 2012-08-15 08:35+0200\n"
-"Last-Translator: Dr. Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
+"PO-Revision-Date: 2014-10-29 22:19+0100\n"
+"Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Lokalize 1.5\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:531
@@ -38,17 +38,10 @@ msgstr "dühöngés"
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:667
 #: data/core/macros/abilities.cfg:563
-#, fuzzy
-#| msgid ""
-#| "Berserk:\n"
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Dühöngés:\n"
 "Ezzel a támadással, akár támadólag, akár védekezőleg használják, az "
 "összecsapás addig tart, amíg az egyik fél el nem esik, de legfeljebb 30 "
 "ütésváltásig."
@@ -62,39 +55,25 @@ msgstr "mágikus"
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:678
 #: data/core/macros/abilities.cfg:642
-#, fuzzy
-#| msgid ""
-#| "Magical:\n"
-#| "This attack always has a 70% chance to hit regardless of the defensive "
-#| "ability of the unit being attacked."
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
-"Mágikus:\n"
 "Ez a támadás mindig 70%-os eséllyel sebez, függetlenül attól, hogy a "
 "megtámadott egységnek milyen a védekezése."
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:687
 #: data/core/macros/abilities.cfg:686
-#, fuzzy
-#| msgid "firststrike"
 msgid "first strike"
 msgstr "első ütés"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:689
 #: data/core/macros/abilities.cfg:687
-#, fuzzy
-#| msgid ""
-#| "First Strike:\n"
-#| "This unit always strikes first with this attack, even if they are "
-#| "defending."
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
-"Első ütés:\n"
 "Ez az egység ezzel a támadással mindig elsőnek üt, még akkor is, ha őt "
 "támadták meg."
 
@@ -113,16 +92,6 @@ msgstr "gyógyítás +4"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
 #: data/core/macros/abilities.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Heals +4:\n"
-#| "Allows the unit to heal adjacent allied units at the beginning of our "
-#| "turn.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -131,7 +100,6 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Gyógyítás +4:\n"
 "Az egység képes a szomszédos mezőkön álló szövetséges egységeket gyógyítani "
 "a körünk elején.\n"
 "\n"
@@ -156,16 +124,6 @@ msgstr "gyógyítás +8"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
-#, fuzzy
-#| msgid ""
-#| "Heals +8:\n"
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -175,7 +133,6 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Gyógyítás +8:\n"
 "Ez az egység ötvözi a gyógynövények erejét a mágiával, ezáltal sokkal "
 "gyorsabban gyógyít, mint az a csatatéren általában lehetséges.\n"
 "\n"
@@ -948,47 +905,6 @@ msgstr "Északfölde"
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:113
-#, fuzzy
-#| msgid ""
-#| "There is no government of the Northlands. Various groups of orcs, "
-#| "dwarves, barbarian men and even elves populate the region. The northern "
-#| "and eastern borders are not defined, the southern border is the "
-#| "<ref>dst='great_river' text='Great River'</ref>, and the western border "
-#| "is the <ref>dst='great_ocean' text='Great Ocean'</ref>.\n"
-#| "\n"
-#| "    • Notable cities:\n"
-#| "          ◦ Glamdrol: An Orcish tribal capital\n"
-#| "          ◦ Romyr: Another Orcish tribal capital\n"
-#| "          ◦ Wesmere: The location of the Ka’lian — the Elvish Council\n"
-#| "          ◦ Dwarven Doors: A mixed human/dwarven town in the region of "
-#| "Knalga in the southern Heart Mountains. A major trade center.\n"
-#| "          ◦ Dallben and Delwyn: Human villages originally built by "
-#| "settlers who crossed the Great River during Wesnoth’s Golden Age "
-#| "expansion. Now abandoned. The forested area northeast of Elensefar, where "
-#| "these villages were located, was named the Annuvin province by men but "
-#| "was known by the elves as Wesmere.\n"
-#| "\n"
-#| "    • Notable land features:\n"
-#| "          ◦ Heart Mountains: A virtually impassable barrier between the "
-#| "river country and the Northern Plains.\n"
-#| "          ◦ Heartfangs: the particularly forbidding stretch of high peaks "
-#| "southwest of Lake Vrug and north of the Forest of Wesmere. The most "
-#| "inhospitable and dangerous portion of the Heart Mountains; only hermits, "
-#| "madmen, and mages live there.\n"
-#| "          ◦ Swamp of Dread: a very large bog located between the Heart "
-#| "Mountains and the Great River. A notoriously dangerous place.\n"
-#| "          ◦ Lake Vrug: A large mountain lake whose river carves the only "
-#| "pathway through the Northern Mountains\n"
-#| "          ◦ Arkan-thoria: The river than comes out of Lake Vrug. This is "
-#| "the elvish name; among humans it is called Longlier.\n"
-#| "          ◦ River Listra: The south-running tributary of the Great River "
-#| "into which the Arkan-thoria empties.\n"
-#| "          ◦ Lintanir Forest: The southernmost portion of the Great "
-#| "Northern Forest, a gigantic wood whose eastern and northern boundaries "
-#| "are known only the elves. Their capitol, Elensiria, has only seldom been "
-#| "visited by humans.\n"
-#| "          ◦ Great River: The origin of this river is somewhere in the "
-#| "east of the northern lands"
 msgid ""
 "There is no government of the Northlands. Various groups of orcs, dwarves, "
 "barbarian men and even elves populate the region. The northern and eastern "
@@ -1036,7 +952,6 @@ msgstr ""
 "\n"
 "    • Jelentős városok:\n"
 "          ◦ Glamdrol: egy ork törzsi székhely.\n"
-"          ◦ Romyr: egy másik ork törzsi székhely.\n"
 "          ◦ Wesmere: a Ka’lian – a Tünde Tanács – székhelye.\n"
 "          ◦ Dwarven Doors: emberek és törpök által vegyesen lakott város "
 "Knalga vidékén, a Központi-hegység déli részén. Fontos kereskedelmi "
@@ -1123,40 +1038,6 @@ msgstr "Távol-Észak"
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:152
-#, fuzzy
-#| msgid ""
-#| "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
-#| "Orcish Clannate. It lies north of the <ref>dst='heart_mountains' "
-#| "text='Heart Mountains'</ref>, which the Orcs call the Haggid-Dargor and "
-#| "claim (without merit) as their own. To the east lie the Unaligned Tribes "
-#| "of the Wild Steppe, who fell out of the control of the Clannate, instead "
-#| "roaming with wild human barbarians and clashing with the High Elves of "
-#| "the North Plains (known as North Elves in human lands). The High Elves "
-#| "themselves reside further east, where it is rumored they rule a vast "
-#| "kingdom.\n"
-#| "\n"
-#| "    • Notable cities:\n"
-#| "          ◦ Barag Gor, a city home to the Orcish Council\n"
-#| "          ◦ Bitok\n"
-#| "          ◦ Borstep\n"
-#| "          ◦ Castelfrang\n"
-#| "          ◦ Farzi\n"
-#| "          ◦ Festog\n"
-#| "          ◦ Grisbi\n"
-#| "          ◦ Lmarig\n"
-#| "          ◦ Melmog\n"
-#| "          ◦ Prestim\n"
-#| "          ◦ Tirigaz\n"
-#| "    • Notable land features:\n"
-#| "          ◦ Swamp of Desolation\n"
-#| "          ◦ Mountains of Dorth\n"
-#| "          ◦ Mountains of Haag\n"
-#| "          ◦ Green Forest\n"
-#| "          ◦ Silent Forest\n"
-#| "          ◦ Forest of Thelien\n"
-#| "          ◦ River Oumph\n"
-#| "          ◦ River Bork\n"
-#| "          ◦ Wild Steppe"
 msgid ""
 "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
 "Orcish Clannate. It lies north of the <ref>dst='heart_mountains' text='Heart "
@@ -1203,16 +1084,14 @@ msgstr ""
 "          ◦ Barag Gor, az Ork Tanács székhelye.\n"
 "          ◦ Bitok\n"
 "          ◦ Borstep\n"
-"          ◦ Castelfrang\n"
 "          ◦ Farzi\n"
-"          ◦ Festog\n"
-"          ◦ Grisbi\n"
 "          ◦ Lmarig\n"
 "          ◦ Melmog\n"
 "          ◦ Prestim\n"
 "          ◦ Tirigaz\n"
+"          ◦ Dorest, a legészakibb emberi város\n"
 "    • Jelentős szárazföldi területek:\n"
-"          ◦ Pusztulás mocsara\n"
+"          ◦ Fekete-mocsár\n"
 "          ◦ Dorth-hegység\n"
 "          ◦ Haag-hegység\n"
 "          ◦ Zöld-erdő\n"
@@ -1220,7 +1099,8 @@ msgstr ""
 "          ◦ Thelien-erdő\n"
 "          ◦ Oumph-folyó\n"
 "          ◦ Bork-folyó\n"
-"          ◦ Vad Mezők"
+"          ◦ Jeges-puszta\n"
+"          ◦ Kietlen-rónaság"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
@@ -1274,7 +1154,7 @@ msgstr "Terepek"
 #. [topic]: id=..addons
 #: data/core/help.cfg:71 data/core/help.cfg:500
 msgid "Add-ons"
-msgstr ""
+msgstr "Kiegészítések"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
@@ -1284,6 +1164,7 @@ msgstr "Parancsok"
 
 #. [topic]: id=..units
 #: data/core/help.cfg:92
+#, fuzzy
 msgid ""
 "This section will list all the units you discover as you explore the world "
 "of Wesnoth. When you see a new unit during a campaign or multiplayer "
@@ -1292,15 +1173,14 @@ msgid ""
 "its statistics, attacks, resistances, and movement and defense values.\n"
 "\n"
 msgstr ""
+"Ez a lap az összes egységet tartalmazza, amelyet felfedeztél Wesnoth "
+"világának megismerése közben. Amikor egy új egységet látsz a hadjáratok vagy "
+"többjátékos mérkőzések során, meg fog jelenni az adott faj alpontjában. "
+"Ezután bármikor megtekintheted az egység lapját, amely tartalmazza a "
+"leírását, a különböző támadási, védekezési, ellenállási és mozgási adatait."
 
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:101
-#, fuzzy
-#| msgid ""
-#| "Certain units have abilities that either directly affect other units, or "
-#| "have an impact on how the unit interacts with other units. These "
-#| "abilities will be listed under this topic as you encounter them.\n"
-#| "\n"
 msgid ""
 "Certain units have abilities that either directly affect other units or have "
 "an impact on how the unit interacts with other units. These abilities will "
@@ -1311,12 +1191,14 @@ msgid ""
 msgstr ""
 "Egyes egységek rendelkeznek bizonyos képességekkel, amelyek más egységekre "
 "vagy közvetlen hatással vannak, vagy azt befolyásolják, hogy az adott "
-"egységnek milyen a kölcsönhatása más egységekkel. Ezen képességek listáját "
-"láthatod alább.\n"
+"egységnek milyen a kölcsönhatása más egységekkel. A már megismert képességek "
+"listáját láthatod alább. Mindegyik oldal tartalmazza a képesség leírását, és "
+"hogy mely – már ismert – egységek rendelkeznek vele.\n"
 "\n"
 
 #. [topic]: id=..weapon_specials
 #: data/core/help.cfg:110
+#, fuzzy
 msgid ""
 "Some weapons have special features that increase the effectiveness of "
 "attacking with them. When you see a new weapon special during a campaign or "
@@ -1325,6 +1207,12 @@ msgid ""
 "weapon special does and which (currently discovered) units have it.\n"
 "\n"
 msgstr ""
+"Néhány fegyvernek olyan egyedi sajátossága van, amely növeli a támadásának "
+"hatékonyságát. Amikor egy ilyen különleges támadástípussal találkozol a "
+"hadjáratok vagy többjátékos küldetések során, a neve meg fog jelenni ezen a "
+"listán, melyet utána kedvedre olvasgathatsz. Minden bejegyzés részletes "
+"leírást tartalmaz a (már megismert) különleges támadástípusról, illetve "
+"tartalmazza az ezzel felfegyverzett egységek listáját is. "
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:119
@@ -1631,14 +1519,10 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:192
-#, fuzzy
-#| msgid ""
-#| " red if it can no longer move or attack, or the user ended the unit’s "
-#| "turn."
 msgid ""
 " black if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
-" piros, ha már nem léphet és nem támadhat, vagy befejezted az egység körét;"
+" fekete, ha már nem léphet és nem támadhat, vagy befejezted az egység körét;"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:193
@@ -1647,10 +1531,8 @@ msgstr " kék, ha az egység egy szövetséges egység, de nem te irányítod."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:194
-#, fuzzy
-#| msgid " Enemy units have no orb on top of their energy bar."
 msgid " Enemy units have a red orb on top of their energy bar."
-msgstr " Az ellenséges egységek energiacsíkjának tetején nincs gömböcske."
+msgstr " Az ellenséges egységek energiacsíkjának tetején piros gömböcske van."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:201
@@ -2976,18 +2858,12 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:493
-#, fuzzy
-#| msgid ""
-#| "Game maps feature a variety of terrains that affect both unit movement "
-#| "and a unit’s defensive capability in combat.\n"
-#| "\n"
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
 msgstr ""
 "A térképek egy egész sor változatos terepviszonyt vonultatnak föl, amelyek "
-"egyaránt hatással vannak az egységek mozgására és védekezésére.\n"
-"\n"
+"egyaránt hatással vannak az egységek mozgására és védekezésére."
 
 #. [topic]: id=..addons
 #: data/core/help.cfg:501
@@ -2997,19 +2873,19 @@ msgid ""
 "more beyond what is offered in the official content bundled with the game.\n"
 "\n"
 msgstr ""
+"A Wesnoth játékmotorja olyan mértékű testreszabhatóságot kínál, amely "
+"lehetővé teszi a játékosoknak a saját tartalom létrehozását, akár új "
+"küldetéseket, hadjáratokat is beleértve, és még sok mást azon túl, amit a "
+"hivatalosan kiadott játék tartalmaz.\n"
+"\n"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:511
 msgid "Using Add-ons"
-msgstr ""
+msgstr "Kiegészítések használata"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:512
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text=Damage</header>"
 msgid ""
 "\n"
 "\n"
@@ -3017,7 +2893,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=Sebzés</header>"
+"<header>text='Hadjáratok és küldetések'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:512
@@ -3025,6 +2901,8 @@ msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
 msgstr ""
+"A játékhoz számos típusú kiegészítő tartalom érhető el, melyek különböző "
+"játékmódokra használhatók."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:514
@@ -3036,17 +2914,23 @@ msgid ""
 "and regular campaigns are available from the <italic>text='Campaigns'</"
 "italic> menu at the title screen."
 msgstr ""
+"\n"
+"\n"
+"Az egyjátékos hadjáratok küldetések gyűjteményei, melyek összefüggő "
+"történetté állnak össze. Az önálló küldetések – ha a fejlesztők ilyennek "
+"szánják – és a hagyományos hadjáratok is elérhetők a kezdő képernyő "
+"<italic>text='Hadjárat'</italic> menüpontjából."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:516
-#, fuzzy
-#| msgid "<header>text='Units having this special attack'</header>"
 msgid ""
 "\n"
 "\n"
 "<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
 msgstr ""
-"<header>text='Az ezzel a speciális támadással rendelkező egységek'</header>"
+"\n"
+"\n"
+"<header>text='Többjátékos hadjáratok, küldetések és térképcsomagok'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:518
@@ -3057,14 +2941,15 @@ msgid ""
 "scripted scenarios or even specially designed campaigns. There are also "
 "packs providing sets of individual multiplayer scenarios."
 msgstr ""
+"\n"
+"\n"
+"A <italic>text='többjátékos'</italic> játszmák elérhetők teljesen testre "
+"szabott forgatókönyv szerint megírt küldetésekként, vagy akár különlegesen "
+"megtervezett hadjáratokként. Léteznek egyedi többjátékos küldetéseket "
+"tartalmazó csomagok is."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:520
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Order and Number of Strikes'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3072,7 +2957,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='A támadások száma és szabályai'</header>"
+"<header>text='Többjátékos korszakok és szövetségek'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:522
@@ -3088,14 +2973,19 @@ msgid ""
 "creating a new game, and players can pick from the available factions for "
 "that era when setting up their sides and teams."
 msgstr ""
+"\n"
+"\n"
+"A játékban a különböző fajú lények együttműködve szövetségeket alkotnak. E "
+"szövetségek kiegyensúlyozott egységpalettát és egységes arculatot "
+"jelentenek. Wesnoth főbb szövetségei az alapértelmezett korszakban vannak "
+"összegyűjtve.\n"
+"\n"
+"A <italic>text='többjátékos'</italic> módú játék készítésekor tetszőleges "
+"korszak választható, amelyben számos szövetség közül választhatnak a "
+"játékosok a csapatuk megtervezésekor."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:526
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Order and Number of Strikes'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3103,7 +2993,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='A támadások száma és szabályai'</header>"
+"<header>text='Többjátékos módosítók'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:528
@@ -3115,14 +3005,15 @@ msgid ""
 "in various ways. You can choose and configure modifications when creating a "
 "new game."
 msgstr ""
+"\n"
+"\n"
+"A módosítók a <italic>text='többjátékos'</italic> játszmákhoz készült "
+"küldetés- és korszaksemleges szkriptek, melyek számos módon képesek "
+"befolyásolni a játék alapértelmezett szabályait. Új játszma létrehozásakor "
+"lehet módosítót választani és beállítani."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:530
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Chance to Hit'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3130,7 +3021,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Sebezhetőség'</header>"
+"<header>text='Alkotói tárház'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:532
@@ -3143,11 +3034,19 @@ msgid ""
 "other playable add-ons may depend on them and suggest or require their "
 "installation during download."
 msgstr ""
+"\n"
+"\n"
+"A tartalomkészítőknek forrásanyagok állnak rendelkezésükre a kiegészítéseket "
+"tartalmazó kiszolgálón, amelyekkel saját munkájukat színesíthetik, például "
+"képekkel, zenével vagy kész forráskóddal. Általában ezeket nem a játékban "
+"való közvetlen használatra szánják, azonban számos kiegészítés függőségei "
+"lehetnek, és telepítésük javasolt vagy nélkülözhetetlen lehet azok "
+"működéséhez."
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:541
 msgid "Installing Add-ons"
-msgstr ""
+msgstr "Kiegészítések telepítése"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:542
@@ -3178,7 +3077,7 @@ msgstr ""
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:555
 msgid "Removing Add-ons"
-msgstr ""
+msgstr "Kiegészítések eltávolítása"
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:556
@@ -3193,6 +3092,16 @@ msgid ""
 "information files or the add-ons themselves using a file manager provided by "
 "your platform."
 msgstr ""
+"A kiegészítések eltávolításához használd a<bold>text='Kiegészítés "
+"eltávolítása'</bold> lehetőséget a kiegészítéseket tartalmazó kiszolgáló "
+"párbeszédablakjában. Lehetőség van tetszőleges számú telepített kiegészítő "
+"egyszerre történő eltávolítására is.\n"
+"\n"
+"Nem lehet olyan kiegészítéseket eltávolítani, amelyekhez közzétételi "
+"információ (<italic>text='.pbl'</italic> kiterjesztésű fájl) van csatolva, "
+"hogy elkerülhető legyen a véletlen adatvesztés. Ha szükséges, az információs "
+"fájlokat vagy a kiegészítéseket kézileg kell törölni egy erre alkalmas "
+"fájlkezelő segítségével."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:571
@@ -3268,6 +3177,9 @@ msgid ""
 "Display the controller status of a side.\n"
 "\n"
 msgstr ""
+"\n"
+"Egy csapat irányítási állapotának megjelenítése.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:588
@@ -3395,6 +3307,10 @@ msgid ""
 "sides.\n"
 "\n"
 msgstr ""
+"\n"
+"Párbeszédablak megnyitása, amely segít a játékgazdának a csapatok "
+"irányítójának megváltoztatásában.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:627
@@ -3404,6 +3320,10 @@ msgid ""
 "network disconnection.\n"
 "\n"
 msgstr ""
+"\n"
+"Egy csapat tétlenségi állapotának átkapcsolása. A játékgazda tétlenné tehet "
+"egy csapatot, ha irányítójának hálózati kapcsolata megszakad.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:630
@@ -3415,8 +3335,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Egy felhasználó kirúgása többjátékos játékból. A kirúgott játékosnak még "
-"vanlehetősége újra csatlakozni a játékhoz. Ha csak a csapata(i) irányítását "
+"Egy felhasználó kirúgása többjátékos játékból. A kirúgott játékosnak még van "
+"lehetősége újra csatlakozni a játékhoz. Ha csak a csapata(i) irányítását "
 "szeretnéd megváltoztatni, használd inkább a :control parancsot. \n"
 "\n"
 
@@ -3613,16 +3533,10 @@ msgstr "méregűzés"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
-#, fuzzy
-#| msgid ""
-#| "Cures:\n"
-#| "A curer can cure a unit of poison, although that unit will receive no "
-#| "additional healing on the turn it is cured of the poison."
 msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
-"Méregűzés:\n"
 "A méregűző képes kigyógyítani egy mérgezett egységet a mérgezésből, de ennek "
 "az egységnek az életerőpontjai abban a körben még nem gyarapodnak."
 
@@ -3638,16 +3552,10 @@ msgstr "regenerálódás"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:75
-#, fuzzy
-#| msgid ""
-#| "Regenerates:\n"
-#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
-#| "remove the poison instead of healing."
 msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"Regenerálódás:\n"
 "Ez az egység minden körben 8 ÉP-t gyógyul. Ha megmérgezték, akkor gyógyulás "
 "helyett elveszíti mérgezettségét."
 
@@ -3663,16 +3571,10 @@ msgstr "rendíthetetlen"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:96
-#, fuzzy
-#| msgid ""
-#| "Steadfast:\n"
-#| "This unit’s resistances are doubled, up to a maximum of 50%, when "
-#| "defending. Vulnerabilities are not affected."
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
-"Rendíthetetlen:\n"
 "Ennek az egységnek védekezéskor kétszeresek az ellenállásai, de mindig "
 "legfeljebb 50%. A sebezhetősége nem változik."
 
@@ -3694,16 +3596,6 @@ msgstr "hadvezetés"
 #: data/core/macros/abilities.cfg:111 data/core/macros/abilities.cfg:133
 #: data/core/macros/abilities.cfg:167 data/core/macros/abilities.cfg:213
 #: data/core/macros/abilities.cfg:271
-#, fuzzy
-#| msgid ""
-#| "Leadership:\n"
-#| "This unit can lead our own units that are next to it, making them fight "
-#| "better.\n"
-#| "\n"
-#| "Adjacent own units of lower level will do more damage in battle. When a "
-#| "unit adjacent to, of a lower level than, and on the same side as a unit "
-#| "with Leadership engages in combat, its attacks do 25% more damage times "
-#| "the difference in their levels."
 msgid ""
 "This unit can lead our own units that are next to it, making them fight "
 "better.\n"
@@ -3713,7 +3605,6 @@ msgid ""
 "Leadership engages in combat, its attacks do 25% more damage times the "
 "difference in their levels."
 msgstr ""
-"Hadvezetés:\n"
 "Ez az egység a csatában a közvetlenül mellette álló szövetséges egységek "
 "élére áll, így azok jobban harcolnak.\n"
 "\n"
@@ -3734,16 +3625,10 @@ msgstr "portyázó"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:339
-#, fuzzy
-#| msgid ""
-#| "Skirmisher:\n"
-#| "This unit is skilled in moving past enemies quickly, and ignores all "
-#| "enemy Zones of Control."
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
-"Portyázó:\n"
 "Ez az egység képzetten és gyorsan tör az ellenséges vonalak mögé, az "
 "ellenség ellenőrzött területeiről tudomást sem vesz."
 
@@ -3759,14 +3644,6 @@ msgstr "megvilágítás"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:354
-#, fuzzy
-#| msgid ""
-#| "Illuminates:\n"
-#| "This unit illuminates the surrounding area, making lawful units fight "
-#| "better, and chaotic units fight worse.\n"
-#| "\n"
-#| "Any units adjacent to this unit will fight as if it were dusk when it is "
-#| "night, and as if it were day when it is dusk."
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -3774,7 +3651,6 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
-"Megvilágítás: \n"
 "Az egység megvilágítja a körülötte lévő területet, így az igazságos egységek "
 "jobban, míg a törvénytelenek rosszabbul harcolnak. \n"
 "\n"
@@ -3793,16 +3669,10 @@ msgstr "teleportáció"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:368
-#, fuzzy
-#| msgid ""
-#| "Teleport:\n"
-#| "This unit may teleport between any two empty villages owned by its side "
-#| "using one of its moves."
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
-"Teleportáció:\n"
 "Ez az egység bármely két, éppen üresen álló szövetséges falu között képes "
 "egyetlen lépéspont felhasználásával térugrásos helyváltoztatásra."
 
@@ -3818,14 +3688,6 @@ msgstr "rajtaütés"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:408 data/core/macros/abilities.cfg:411
-#, fuzzy
-#| msgid ""
-#| "Ambush:\n"
-#| "This unit can hide in forest, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in forest, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -3833,7 +3695,6 @@ msgid ""
 "units next to it. Any enemy unit that first discovers this unit immediately "
 "loses all its remaining movement."
 msgstr ""
-"Rajtaütés:\n"
 "Az egység képes elrejtőzni az ellenség elől az erdőben.\n"
 "\n"
 "Ha ez az egység erdős terepen tartózkodik, az ellenség nem látja, csak ha "
@@ -3849,14 +3710,6 @@ msgstr "éjszakai lopakodás"
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:435
-#, fuzzy
-#| msgid ""
-#| "Nightstalk:\n"
-#| "The unit becomes invisible during night.\n"
-#| "\n"
-#| "Enemy units cannot see this unit at night, except if they have units next "
-#| "to it. Any enemy unit that first discovers this unit immediately loses "
-#| "all its remaining movement."
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -3864,7 +3717,6 @@ msgid ""
 "it. Any enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
-"Éjszakai lopakodás:\n"
 "Az egység az éj leszálltával láthatatlanná válik.\n"
 "\n"
 "Ha éjszaka van, az ellenség nem látja ezt az egységet, csak ha vannak "
@@ -3888,16 +3740,6 @@ msgstr "rejtőzködés"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:454 data/core/macros/abilities.cfg:459
-#, fuzzy
-#| msgid ""
-#| "Concealment:\n"
-#| "This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to "
-#| "it.\n"
-#| "\n"
-#| "Enemy units can not see this unit while it is in a village, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it.\n"
@@ -3906,7 +3748,6 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Rejtőzködés:\n"
 "Ez az egység képes elrejtőzni ellenségei elől a falvakban (kivéve a vízi "
 "falvakban), és az ellenség számára észrevétlen marad, kivéve ha épp mellette "
 "áll.\n"
@@ -3928,14 +3769,6 @@ msgstr "alámerülés"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:478 data/core/macros/abilities.cfg:483
-#, fuzzy
-#| msgid ""
-#| "Submerge:\n"
-#| "This unit can hide in deep water, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in deep water, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -3943,7 +3776,6 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Alámerülés:\n"
 "Ez az egység képes elrejtőzni ellenségei elől a mély vízben, és ellenségei "
 "számára észrevétlen marad.\n"
 "\n"
@@ -3964,15 +3796,12 @@ msgstr "bekebelezés"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:505
-#, fuzzy
-#| msgid ""
-#| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
 msgstr ""
-"Ez az egység 1 életpontot kap a maximumához, ha megöl egy élő egységet."
+"Ez az egység 1 életpontot kap a maximumához, ha megöl egy egységet, kivéve, "
+"ha az immúnis a dögvészre."
 
 #. [unstore_unit]
 #: data/core/macros/abilities.cfg:531
@@ -3986,18 +3815,11 @@ msgstr "hátbatámadás"
 
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:574
-#, fuzzy
-#| msgid ""
-#| "Backstab:\n"
-#| "When used offensively, this attack deals double damage if there is an "
-#| "enemy of the target on the opposite side of the target, and that unit is "
-#| "not incapacitated (turned to stone or otherwise paralyzed)."
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (turned to stone or otherwise paralyzed)."
 msgstr ""
-"Hátbatámadás:\n"
 "Ez az egység támadáskor kétszeres sebzést okoz, ha a célpontnak az átellenes "
 "oldalán is áll egy számára ellenséges egység. (Kivéve, ha az az egység nem "
 "harcképes, például kővé vált, vagy bárhogy lebénult.)"
@@ -4010,36 +3832,22 @@ msgstr "dögvész"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/abilities.cfg:587
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "unit identical to and on the same side as the unit with the Plague "
-#| "attack. This doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "identical to and on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
-"Dögvész:\n"
 "Ha egy egységet dögvész támadással ölnek meg, a helyén egy elpusztítójával "
 "megegyező fajtájú és vele együtt harcoló új egység támad fel. Ez nem "
 "vonatkozik az élőholtakra és a falvakban tartózkodókra."
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:598
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
-"Dögvész:\n"
 "Ha egy egységet dögvész támadással ölnek meg, a helyén egy eleven test támad "
 "fel, amely elpusztítójával egy oldalon harcol tovább. Ez nem vonatkozik az "
 "élőholtakra és a falvakban tartózkodókra."
@@ -4051,24 +3859,16 @@ msgstr "lassítás"
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:609
-#, fuzzy
-#| msgid ""
-#| "Slow:\n"
-#| "This attack slows the target until it ends a turn. Slow halves the damage "
-#| "caused by attacks and the movement cost for a slowed unit is doubled. A "
-#| "unit that is slowed will feature a snail icon in its sidebar information "
-#| "when it is selected."
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
 "that is slowed will feature a snail icon in its sidebar information when it "
 "is selected."
 msgstr ""
-"Lassítás:\n"
 "Ez a támadás lelassítja a célpontot saját körének végéig. A lassítás "
-"megfelezi az egység támadások által okozott sebzését, valamint megkétszerezi "
-"az egyes terepekre vonatkozó lépéspontköltségét. Ha kijelölünk egy "
-"lelassított egységet, a jobb oldali panelen megjelenik egy csiga."
+"megfelezi az egység támadásainak sebzését, valamint megkétszerezi az egyes "
+"terepekre vonatkozó lépéspontköltségét. Ha kijelölünk egy lelassított "
+"egységet, a jobb oldali panelen megjelenik egy csiga."
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:618
@@ -4077,16 +3877,10 @@ msgstr "kővé változtatás"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:619
-#, fuzzy
-#| msgid ""
-#| "Petrify:\n"
-#| "This attack petrifies the target, turning it to stone. Units that have "
-#| "been petrified may not move or attack."
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
-"Kővé változtatás:\n"
 "Ez a támadás a célpont egységet kővé dermeszti. A kővé vált egységek nem "
 "mozoghatnak és nem harcolhatnak."
 
@@ -4097,16 +3891,9 @@ msgstr "mesterlövész"
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:629
-#, fuzzy
-#| msgid ""
-#| "Marksman:\n"
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
-msgstr ""
-"Mesterlövész:\n"
-"Támadó hadműveleteknél legalább 60%-os eséllyel szerez találatot."
+msgstr "Támadó hadműveleteknél legalább 60%-os eséllyel szerez találatot."
 
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:653
@@ -4115,20 +3902,12 @@ msgstr "rajzás"
 
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:654
-#, fuzzy
-#| msgid ""
-#| "Swarm:\n"
-#| "The number of strikes of this attack decreases when the unit is wounded. "
-#| "The number of strikes is proportional to the percentage of its of maximum "
-#| "HP the unit has. For example a unit with 3/4 of its maximum HP will get "
-#| "3/4 of the number of strikes."
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
 "unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
 "number of strikes."
 msgstr ""
-"Rajzás:\n"
 "A támadás során végbe vitt ütések száma csökken, ha az egység megsérül. A "
 "támadások száma arányos az egység aktuális ÉP / maximum ÉP hányadosával. "
 "Például ha az egység jelenlegi ÉP értéke a 3/4-e a maximális ÉP-jének, akkor "
@@ -4141,17 +3920,10 @@ msgstr "roham"
 
 #. [damage]: id=charge
 #: data/core/macros/abilities.cfg:664
-#, fuzzy
-#| msgid ""
-#| "Charge:\n"
-#| "When used offensively, this attack deals double damage to the target. It "
-#| "also causes this unit to take double damage from the target’s "
-#| "counterattack."
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
-"Roham:\n"
 "Ez az egység támadáskor dupla sebzést okoz a célpontnak, ugyanakkor az "
 "elszenvedett sebzése is a kétszeresére nő."
 
@@ -4162,16 +3934,10 @@ msgstr "megcsapolás"
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:677
-#, fuzzy
-#| msgid ""
-#| "Drain:\n"
-#| "This unit drains health from living units, healing itself for half the "
-#| "amount of damage it deals (rounded down)."
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
-"Megcsapolás:\n"
 "Ez az egység életerőt szív el az élő egységektől, az okozott sebzés felével "
 "(lefelé kerekítve) saját magát gyógyítja."
 
@@ -4182,18 +3948,11 @@ msgstr "mérgezés"
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:697
-#, fuzzy
-#| msgid ""
-#| "Poison:\n"
-#| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
-#| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
-#| "kill a unit."
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison can not, of itself, kill "
 "a unit."
 msgstr ""
-"Mérgezés:\n"
 "Ez a támadás megmérgezi az élő célpontokat. A megmérgezett egységek "
 "körönként 8 ÉP-t veszítenek mindaddig, amíg meg nem gyógyítják őket, vagy az "
 "életerejük 1-re nem csökken. Önmagában a méreg nem öl meg senkit."
@@ -4327,98 +4086,78 @@ msgstr "Éjszaka első fele – Negyedik óra"
 
 #. [time]: id=dawn1
 #: data/core/macros/schedules.cfg:478
-#, fuzzy
-#| msgid "First Watch"
 msgid "First Dawn"
-msgstr "Éjszaka első fele"
+msgstr "Első hajnal"
 
 #. [time]: id=dawn2
 #: data/core/macros/schedules.cfg:488
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Dawn"
-msgstr "Éjszaka második fele"
+msgstr "Második hajnal"
 
 #. [time]: id=morning1
 #: data/core/macros/schedules.cfg:498
-#, fuzzy
-#| msgid "Morning"
 msgid "First Morning"
-msgstr "Reggel"
+msgstr "Első reggel"
 
 #. [time]: id=morning2
 #: data/core/macros/schedules.cfg:507
-#, fuzzy
-#| msgid "Morning"
 msgid "Second Morning"
-msgstr "Reggel"
+msgstr "Második reggel"
 
 #. [time]: id=midday1
 #: data/core/macros/schedules.cfg:516
-#, fuzzy
-#| msgid "Midday"
 msgid "First Midday"
-msgstr "Dél"
+msgstr "Első dél"
 
 #. [time]: id=midday2
 #: data/core/macros/schedules.cfg:525
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Midday"
-msgstr "Éjszaka második fele"
+msgstr "Második dél"
 
 #. [time]: id=afternoon1
 #: data/core/macros/schedules.cfg:534
-#, fuzzy
-#| msgid "Afternoon"
 msgid "First Afternoon"
-msgstr "Délután"
+msgstr "Első délután"
 
 #. [time]: id=afternoon2
 #: data/core/macros/schedules.cfg:543
-#, fuzzy
-#| msgid "Afternoon"
 msgid "Second Afternoon"
-msgstr "Délután"
+msgstr "Második délután"
 
 #. [time]: id=dusk1
 #: data/core/macros/schedules.cfg:552
-#, fuzzy
-#| msgid "firststrike"
 msgid "First Dusk"
-msgstr "első ütés"
+msgstr "Első alkonyat"
 
 #. [time]: id=dusk2
 #: data/core/macros/schedules.cfg:562
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Dusk"
-msgstr "Éjszaka második fele"
+msgstr "Második alkonyat"
 
 #. [time]: id=short_dark
 #: data/core/macros/schedules.cfg:572
 msgid "The Short Dark"
-msgstr ""
+msgstr "Rövid sötétség"
 
 #. [time]: id=long_dark1
 #: data/core/macros/schedules.cfg:584
 msgid "The Long Dark (1)"
-msgstr ""
+msgstr "Hosszú sötétség (1)"
 
 #. [time]: id=long_dark2
 #: data/core/macros/schedules.cfg:596
 msgid "The Long Dark (2)"
-msgstr ""
+msgstr "Hosszú sötétség (2)"
 
 #. [time]: id=long_dark3
 #: data/core/macros/schedules.cfg:610
 msgid "The Long Dark (3)"
-msgstr ""
+msgstr "Hosszú sötétség (3)"
 
 #. [time]: id=long_dark4
 #: data/core/macros/schedules.cfg:622
 msgid "The Long Dark (4)"
-msgstr ""
+msgstr "Hosszú sötétség (4)"
 
 #: data/core/macros/special-notes.cfg:3
 msgid ""
@@ -4884,75 +4623,6 @@ msgstr "Perzsekények"
 
 #. [race]: id=drake
 #: data/core/units.cfg:58
-#, fuzzy
-#| msgid ""
-#| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
-#| "true dragons. On average, an adult drake stands around three meters tall "
-#| "and easily weighs more than a man and a horse combined. Their skin is "
-#| "made up of hard scales, resistant to most physical strikes except "
-#| "piercing and cold damage. Most drakes are capable of true flight and can "
-#| "travel long distances quickly. However, their sheer weight and bulk "
-#| "limits their flight ability somewhat, making them ungainly in the air. "
-#| "Where possible, they make use of terrain features such as hills, "
-#| "mountains and trees as launch points in order to gain greater height and "
-#| "speed. Fortunately for their enemies, they are still quite clumsy "
-#| "creatures and surprisingly slow in combat. This, combined with their "
-#| "large size, renders them easy targets for those who dare attack them.\n"
-#| "\n"
-#| "Drakes are inherently magical creatures, with a mysterious internal fire "
-#| "fueling their very lives. This can easily be witnessed when one of their "
-#| "kind perishes in combat; its internal fire is released, burning their "
-#| "remains in to ashes. Their internal fire is also their greatest weakness; "
-#| "it makes them extremely vulnerable to cold attacks. Despite their magical "
-#| "nature, drakes are incapable of channeling magic in a controlled manner. "
-#| "While the magic imbued within a drake’s body enables it to spit fire and "
-#| "gives it life, they have no willful control over its functions of this "
-#| "magic.\n"
-#| "\n"
-#| "<header>text='Society'</header>\n"
-#| "Drakes are a relatively warlike race and their societies can be best "
-#| "described as cultured martial societies. The core of a drake tribe is a "
-#| "small group of veteran warriors headed by a mutually respected — or "
-#| "simply feared — <ref>dst='dominant' text='dominant'</ref> who rules the "
-#| "society with an iron fist. Every drake is expected to earn their place in "
-#| "the strict hierarchy, to obey their superiors and command their "
-#| "inferiors. Entry to the ruling elite is only possible through challenging "
-#| "and defeating a superior in single combat, which is the way the hierarchy "
-#| "within the elite itself is established. The use of deception of any kind "
-#| "towards any fellow drake is, without exception, seen as cowardly and "
-#| "unacceptable.\n"
-#| "\n"
-#| "While their warlike nature and sense of territory drives them to defend "
-#| "their territories savagely, drakes rarely invade or trespass on areas "
-#| "already occupied by the other major races. Instead, they settle in "
-#| "unpopulated areas to establish their own territory there. They primarily "
-#| "feed on large game they hunt in the lowlands around their homes, but "
-#| "hatchlings and lower caste drakes are known to feed also on certain of "
-#| "moss and fungi they cultivate deep in their caverns. The only technology "
-#| "drakes value is armor- and weapon-smithing, and neither know or need "
-#| "other science and culture besides this. However the few implements they "
-#| "do fashion are almost unrivaled in quality, only matched by those "
-#| "produced in the finest Dwarvish foundries.\n"
-#| "\n"
-#| "Drakes are hatched from eggs and usually live naturally between 20 to 30 "
-#| "years. Death in battle is the most preferred way for a drake to leave "
-#| "this world. Unlike the elder members of other races, drakes naturally "
-#| "grow more aggressive and reckless towards the ends of their natural "
-#| "lives, perhaps to help ensure their place in the heroic legends of their "
-#| "kind.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "Drakes originated from an archipelago of volcanic islands called "
-#| "<ref>dst='morogor' text='Morogor'</ref> in the <ref>dst='great_ocean' "
-#| "text='Great Ocean'</ref>. A combination of population pressure and the "
-#| "subsidence of many of their home islands has caused colonies of drakes to "
-#| "spread to the <ref>dst='great_continent' text='Great Continent'</ref>. "
-#| "Drakes tend to make their homes in mountain caverns near volcanoes to "
-#| "protect their eggs, hatchings and forges. While drakes naturally prefer "
-#| "warmth, their internal fire is more than capable of sustaining them even "
-#| "in a relatively cold climate, a feature which has allowed them to "
-#| "populate even some of the mountains of the far north of the Great "
-#| "Continent."
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -5070,7 +4740,7 @@ msgstr ""
 "A perzsekények tojásokból kelnek ki, és természetes körülmények között "
 "általában húsz-harminc évig élnek. Egy perzsekény számára nincs nemesebb, "
 "mint ha ütközetben hagyhatja el az árnyékvilágot. Ellentétben más fajok "
-"véneivel, a perzsekények egyre agresszívebbek és vakmerőbbek lesznek, ahogy "
+"vénjeivel, a perzsekények egyre agresszívebbek és vakmerőbbek lesznek, ahogy "
 "közeledik az életük vége, talán éppen azért, hogy így biztosítsák a helyüket "
 "fajuk hős legendáinak sorában.\n"
 "\n"
@@ -5293,24 +4963,18 @@ msgstr ""
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:132
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Falcon"
-msgstr "Ember"
+msgstr "Sólyom"
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:133
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Falcon"
-msgstr "Ember"
+msgstr "Sólyom tojó"
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:134
-#, fuzzy
-#| msgid "race^Humans"
 msgid "race^Falcons"
-msgstr "Emberek"
+msgstr "Sólymok"
 
 #. [race]: id=goblin
 #: data/core/units.cfg:145
@@ -5479,29 +5143,23 @@ msgstr ""
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:199
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Khalifate Human"
-msgstr "Ember"
+msgstr "Kalifátusi ember"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:200
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Khalifate Human"
-msgstr "Ember"
+msgstr "Kalifátusi ember"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:201
-#, fuzzy
-#| msgid "race+plural^Mechanical"
 msgid "race+plural^Khalifate"
-msgstr "Mechanikus"
+msgstr "Kalifátusiak"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:202
 msgid "This race does not have a description yet."
-msgstr ""
+msgstr "Ehhez a fajhoz még nincs leírás."
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:213
@@ -5668,22 +5326,6 @@ msgstr "Ogrék"
 
 #. [race]: id=ogre
 #: data/core/units.cfg:272
-#, fuzzy
-#| msgid ""
-#| "Ogres are a wild and uncivilized race who dwell mainly in the wilderness "
-#| "of the Great Continent. Physically, they resemble humans and orcs but are "
-#| "larger and stronger. Even their adolescents are more than a match for "
-#| "most men. Ogres are distrusted in many populated areas and usually either "
-#| "avoid them or are driven out by force. Instead, they lurk the mountainous "
-#| "areas on the edges of civilization, where hungry ogre bandits provide a "
-#| "constant threat to travelers and caravans. While ogres are not "
-#| "particularly intelligent or quick, their toughness and physical strength "
-#| "make them a valuable asset in the armies of other races. They are "
-#| "especially valued by more ruthless commanders who don't mind the ogres' "
-#| "brutality. Little is known about their biology or society, if they can "
-#| "truly be said to have one, but they are said to attack alongside wolves "
-#| "and other beasts. Whether this is a sign of cooperation, domestication, "
-#| "or simply mutual opportunism is not known."
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -5712,8 +5354,8 @@ msgstr ""
 "kedvelik őket, akiket nem zavarja a brutalitásuk. Az ogrék biológiájáról és "
 "társadalmáról csak keveset tudunk (már ha egyáltalán van nekik), de "
 "állítólag a farkasokkal és más szörnyekkel együtt szoktak támadni. Azt nem "
-"tudni, hogy ez együttműködés, háziasítás, esetleg kölcsönös "
-"alkalomkihasználás-e."
+"tudni, hogy ez együttműködés, háziasítás, esetleg az adódó lehetőségek "
+"kölcsönös kiaknázása-e."
 
 #. [race]: id=orc
 #: data/core/units.cfg:280
@@ -5952,32 +5594,6 @@ msgstr "Élőholtak"
 
 #. [race]: id=undead
 #: data/core/units.cfg:325
-#, fuzzy
-#| msgid ""
-#| "Undead are not really a single race of creatures, although often treated "
-#| "as such. Almost any dead creature can, by a sufficiently skilled "
-#| "necromancer, be reanimated and rise again in undeath. Undead are for the "
-#| "most part unnatural but mindless constructs, obeying whoever created them "
-#| "without question nor thought. A greater mystery of necromancy is in how "
-#| "constructs are sustained without continuous effort from the necromancer. "
-#| "An undead creature does not require the constant attention of the "
-#| "necromancer to command and sustain, but can work autonomously according "
-#| "to the commands of it’s master. Only rarely, perhaps once every few "
-#| "months, does the necromancer need to maintain his creation.\n"
-#| "\n"
-#| "Necromancy is almost solely limited to humans. Even the legends of "
-#| "magically apt races like elves and mermen tell of very few of their kind "
-#| "who have ever delved in the dark arts. It is surmised that necromantic "
-#| "magic requires great adaptability and a flexible mind, extremes of which "
-#| "are most commonly found in humans. The ultimate goal of most necromancers "
-#| "is to turn the same art of preserving and imbuing life upon themselves, "
-#| "to alter themselves at whatever cost, to ultimately escape death by "
-#| "preserving their own mind and spirit.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "While undead lords arrived on the Great Continent in considerable numbers "
-#| "only in the wake of Haldric I, they were not completely unheard of by "
-#| "elves and dwarves before that."
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -6132,10 +5748,8 @@ msgid "Factions are only used in multiplayer"
 msgstr "A szövetségek csak többjátékos üzemmódban szerepelnek"
 
 #: src/help.cpp:1327
-#, fuzzy
-#| msgid "Terrain"
 msgid "Base Terrain: "
-msgstr "Terep"
+msgstr "Alap terep: "
 
 #: src/help.cpp:1405
 msgid "level"
@@ -6151,17 +5765,15 @@ msgstr "Szintlépés mivé: "
 
 #: src/help.cpp:1465
 msgid "Base unit: "
-msgstr ""
+msgstr "Alap egység: "
 
 #: src/help.cpp:1470
 msgid "Base units: "
-msgstr ""
+msgstr "Alap egységek: "
 
 #: src/help.cpp:1488
-#, fuzzy
-#| msgid "Factions:"
 msgid "Variations: "
-msgstr "Szövetségek:"
+msgstr "Variációk: "
 
 #: src/help.cpp:1512 src/help.cpp:1889 src/help.cpp:2033
 msgid "race^Miscellaneous"
@@ -6189,11 +5801,11 @@ msgstr "Lépés: "
 
 #: src/help.cpp:1555
 msgid "Vision: "
-msgstr ""
+msgstr "Látótáv: "
 
 #: src/help.cpp:1557
 msgid "Jamming: "
-msgstr ""
+msgstr "Zavarás: "
 
 #: src/help.cpp:1558
 msgid "Cost: "
@@ -6261,11 +5873,11 @@ msgstr "Lépéspontköltség"
 
 #: src/help.cpp:1677
 msgid "Vision Cost"
-msgstr ""
+msgstr "Látáspontköltség"
 
 #: src/help.cpp:1680
 msgid "Jamming Cost"
-msgstr ""
+msgstr "Zavaráspontköltség"
 
 #: src/help.cpp:2039
 msgid "<header>text='Units of this race'</header>"
