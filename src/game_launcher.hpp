@@ -123,6 +123,7 @@ private:
 	std::string screenshot_map_, screenshot_filename_;
 
 	saved_game state_;
+	bool play_replay_;
 
 	std::string multiplayer_server_;
 	bool jump_to_multiplayer_;

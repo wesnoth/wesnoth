@@ -47,7 +47,6 @@
 #include "game_initialization/playcampaign.hpp"             // for play_game, etc
 #include "preferences.hpp"              // for disable_preferences_save, etc
 #include "preferences_display.hpp"      // for detect_video_settings, etc
-#include "replay.hpp"                   // for replay, recorder
 #include "resources.hpp"                // for config_manager
 #include "savegame.hpp"                 // for clean_saves, etc
 #include "sdl/utils.hpp"                // for surface
@@ -113,6 +112,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	screenshot_map_(),
 	screenshot_filename_(),
 	state_(),
+	play_replay_(false),
 	multiplayer_server_(),
 	jump_to_multiplayer_(false),
 	jump_to_campaign_(false, -1, "", ""),
@@ -653,34 +653,17 @@ bool game_launcher::load_game()
 		}
 		return false;
 	}
-	recorder = replay(state_.replay_data);
-	recorder.start_replay();
-	recorder.set_skip(false);
 
-	LOG_CONFIG << "has is middle game savefile: " << (state_.is_mid_game_save() ? "yes" : "no") << "\n";
+	play_replay_ = load.show_replay();
+	LOG_CONFIG << "is middle game savefile: " << (state_.is_mid_game_save() ? "yes" : "no") << "\n";
+	LOG_CONFIG << "show replay: " << (play_replay_ ? "yes" : "no") << "\n";
+	// in case load.show_replay() && !state_.is_mid_game_save()
+	// there won't be any turns to replay, but the
+	// user gets to watch the intro sequence again ...
 
-	if (!state_.is_mid_game_save()) {
-		//this is a start-of-scenario
-		if (load.show_replay()) {
-			// There won't be any turns to replay, but the
-			// user gets to watch the intro sequence again ...
-			LOG_CONFIG << "replaying (start of scenario)\n";
-		} else {
-			LOG_CONFIG << "skipping...\n";
-			recorder.set_skip(false);
-		}
-	} else {
-		// We have a snapshot. But does the user want to see a replay?
-		if(load.show_replay()) {
-			statistics::clear_current_scenario();
-			LOG_CONFIG << "replaying (snapshot)\n";
-		} else {
-			LOG_CONFIG << "setting replay to end...\n";
-			recorder.set_to_end();
-			if(!recorder.at_end()) {
-				WRN_CONFIG << "recorder is not at the end!!!" << std::endl;
-			}
-		}
+	if(state_.is_mid_game_save() && load.show_replay())
+	{
+		statistics::clear_current_scenario();
 	}
 
 	if(state_.classification().campaign_type == game_classification::MULTIPLAYER) {
@@ -720,6 +703,7 @@ bool game_launcher::new_campaign()
 
 	state_.mp_settings().show_configure = false;
 	state_.mp_settings().show_connect = false;
+	play_replay_ = false;
 
 	return sp::enter_create_mode(disp(), resources::config_manager->game_config(),
 		state_, jump_to_campaign_, true);
@@ -972,6 +956,12 @@ void game_launcher::show_preferences()
 
 void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 {
+	if(play_replay_)
+	{
+		play_replay();
+		return;
+	}
+
 	loadscreen::global_loadscreen_manager loadscreen_manager(disp().video());
 	loadscreen::start_stage("load data");
 	if(reload == RELOAD_DATA) {
