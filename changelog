@@ -16,6 +16,9 @@ Version 1.11.18+dev:
    * Upgraded Lua to version 5.2.3.
  * Miscellaneous and bug fixes:
    * Micro AIs: only display on-screen error messages when in debug mode
+ * WML engine:
+   * Fixed a bug that prevented [animate_unit] from displaying death or victory
+     animations for those units that filter them based on weapon (eg. Wose)
 
 Version 1.11.18:
  * Add-ons server:
