@@ -42,7 +42,7 @@ static lg::log_domain log_network("network");
 namespace {
 
 const std::string controller_names[] = {
-	"network",
+	"human",
 	"human",
 	"ai",
 	"null",

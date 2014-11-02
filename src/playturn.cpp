@@ -175,6 +175,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	}
 	else if (const config &change = cfg.child("change_controller"))
 	{
+		std::cerr << "received [change_controller]:\n" << change.debug();
 		if(change.empty())
 		{
 			return PROCESS_CONTINUE;
@@ -200,9 +201,10 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			}
 
 			bool was_local = tm.is_local();
+			bool new_local = change["is_local"].to_bool();
 			const team::CONTROLLER old_controller = tm.controller();
 
-			resources::gameboard->side_change_controller(side, new_controller, player);
+			resources::gameboard->side_change_controller(side, new_controller, new_local, player);
 
 			if (old_controller != new_controller && !was_local && tm.is_local()) {
 				resources::controller->on_not_observer();
@@ -252,7 +254,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		}
 
 		if (ctrl == team::AI){
-			resources::gameboard->side_drop_to(side_drop, ctrl);
+			resources::gameboard->side_drop_to(side_drop, team::AI);
 			return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 		}
 

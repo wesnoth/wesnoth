@@ -517,6 +517,8 @@ void saved_game::unify_controllers(bool to_network)
 {
 	BOOST_FOREACH(config &side, this->starting_pos_.child_range("side"))
 	{
+		side["is_networked"] = to_network;
+		/*
 		if(to_network)
 		{
 			if (side["controller"] == "human")
@@ -530,6 +532,6 @@ void saved_game::unify_controllers(bool to_network)
 				side["controller"] = "human";
 			if (side["controller"] == "network_ai")
 				side["controller"] = "ai";
-		}
+		}*/
 	}
 }

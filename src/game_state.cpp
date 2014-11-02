@@ -138,10 +138,11 @@ void game_state::init(const int ticks)
 	{
 		if (first_human_team_ == -1) {
 			const std::string &controller = side["controller"];
+			//FIXME: cpmparing side ["id"] with preferences::login() is wrong.
 			if (controller == "human" &&
 			    side["id"] == preferences::login()) {
 				first_human_team_ = team_num;
-			} else if (controller == "human") {
+			} else if (controller == "human" && !side["is_networked"].to_bool(false)) {
 				first_human_team_ = team_num;
 			}
 		}

@@ -49,14 +49,12 @@ namespace wb {
 class team : public savegame::savegame_config
 {
 public:
-	//enum CONTROLLER { HUMAN, AI, NETWORK, NETWORK_AI, IDLE, EMPTY };
+	//enum CONTROLLER { HUMAN, AI, IDLE, EMPTY };
 	//enum DEFEAT_CONDITION {NO_LEADER, NO_UNITS, NEVER, ALWAYS};
 
 	MAKE_ENUM(CONTROLLER,
 		(HUMAN, 	"human")
 		(AI, 		"ai")
-		(NETWORK, 	"network")
-		(NETWORK_AI, 	"network_ai")
 		(IDLE,		"idle")
 		(EMPTY,		"null")
 	)
@@ -130,6 +128,7 @@ private:
 		mutable bool objectives_changed;
 
 		CONTROLLER controller;
+		bool is_networked;
 		DEFEAT_CONDITION defeat_condition;
 
 		bool share_maps, share_view;
@@ -242,18 +241,20 @@ public:
 	CONTROLLER controller() const { return info_.controller; }
 	const std::string& color() const { return info_.color; }
 	void set_color(const std::string& color) { info_.color = color; }
-	//bool is_human() const { return info_.controller == HUMAN; }
-	//bool is_ai() const { return info_.controller == AI; }
+
+	bool is_human() const { return info_.controller == HUMAN; }
+	bool is_ai() const { return info_.controller == AI; }
 	bool is_idle() const { return info_.controller == IDLE; }
 	bool is_empty() const { return info_.controller == EMPTY; }
 
-	bool is_local() const { return is_local_human() || is_local_ai() || is_idle(); }
-	bool is_network() const { return is_network_human() || is_network_ai(); }
+	bool is_local() const { return !is_empty() && !info_.is_networked; }
+	bool is_network() const { return !is_empty() && info_.is_networked; }
+	void set_network(bool val) { info_.is_networked = val; }
 
-	bool is_local_human() const { return info_.controller == HUMAN;  }
-	bool is_local_ai() const { return info_.controller == AI; }
-	bool is_network_human() const { return info_.controller == NETWORK; }
-	bool is_network_ai() const { return info_.controller == NETWORK_AI; }
+	bool is_local_human() const { return is_human() && is_local(); }
+	bool is_local_ai() const { return is_ai() && is_local(); }
+	bool is_network_human() const { return is_human() && is_network(); }
+	bool is_network_ai() const { return is_ai() && is_network(); }
 
 	void make_human() { info_.controller = HUMAN; }
 	void make_ai() { info_.controller = AI; }

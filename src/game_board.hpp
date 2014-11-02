@@ -113,7 +113,7 @@ class game_board : public display_context {
 	// Manipulator from playturn
 
 	void side_drop_to (int side_num, team::CONTROLLER ctrl);
-	void side_change_controller (int side_num, team::CONTROLLER ctrl, const std::string pname = "");
+	void side_change_controller (int side_num, team::CONTROLLER ctrl, bool is_local , const std::string pname = "");
 
 	// Manipulator from actionwml
 

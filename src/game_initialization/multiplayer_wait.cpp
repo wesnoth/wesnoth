@@ -295,7 +295,7 @@ void wait::join_game(bool observe)
 				side_num = nb_sides;
 				break;
 			}
-			if (sd["controller"] == "network" && sd["player_id"].empty())
+			if (sd["controller"] == "human" && sd["player_id"].empty())
 			{
 				if (!side_choice) { // found the first empty side
 					side_choice = &sd;
@@ -469,6 +469,8 @@ void wait::process_network_data(const config& data, const network::connection so
 		if (config & sidetochange = get_scenario().find_child("side", "side", change["side"])) {
 			LOG_RG << "found side : " << sidetochange.debug() << std::endl;
 			sidetochange.merge_with(change);
+			//!change["is_local"] would evaluate to !change["is_local"].to_int()
+			sidetochange["is_networked"] = !change["is_local"].to_bool(false);
 			LOG_RG << "changed to : " << sidetochange.debug() << std::endl;
 		} else {
 			LOG_RG << "change_controller didn't find any side!" << std::endl;

@@ -53,7 +53,7 @@ const int team::default_team_gold_ = 100;
 // (excluding those attributes used to define the side's leader).
 const std::set<std::string> team::attributes = boost::assign::list_of("ai_config")
 	("color")("controller")("current_player")("defeat_condition")("flag")
-	("flag_icon")("fog")("fog_data")("gold")("hidden")("income")
+	("flag_icon")("fog")("fog_data")("gold")("hidden")("income")("is_networked")
 	("no_leader")("objectives")("objectives_changed")("persistent")("lost")
 	("recall_cost")("recruit")("save_id")("scroll_to_leader")
 	("share_maps")("share_view")("shroud")("shroud_data")("start_gold")
@@ -91,6 +91,7 @@ team::team_info::team_info() :
 	objectives(),
 	objectives_changed(false),
 	controller(),
+	is_networked(false),
 	defeat_condition(team::NO_LEADER),
 	share_maps(false),
 	share_view(false),
@@ -133,7 +134,7 @@ void team::team_info::read(const config &cfg)
 	hidden = cfg["hidden"].to_bool();
 	no_turn_confirmation = cfg["suppress_end_turn_confirmation"].to_bool();
 	side = cfg["side"].to_int(1);
-
+	is_networked = cfg["is_networked"].to_bool(false);
 	if(cfg.has_attribute("color")) {
 		color = cfg["color"].str();
 	} else {
@@ -184,7 +185,6 @@ void team::team_info::read(const config &cfg)
 
 	controller = lexical_cast_default<team::CONTROLLER> (cfg["controller"].str(), team::AI);
 	//by default, persistence of a team is set depending on the controller
-	//TODO: Why is network_ai marked persistent?
 	//TODO: Why do we read disallow observers differently when controller is empty?
 	persistent = !(controller == EMPTY || controller == AI);
 
@@ -236,7 +236,7 @@ void team::team_info::write(config& cfg) const
 	cfg["suppress_end_turn_confirmation"] = no_turn_confirmation;
 	cfg["scroll_to_leader"] = scroll_to_leader;
 	cfg["controller"] = (controller == IDLE ? std::string("human") : CONTROLLER_to_string (controller));
-
+	cfg["is_networked"] = is_networked;
 	std::stringstream can_recruit_str;
 	for(std::set<std::string>::const_iterator cr = can_recruit.begin(); cr != can_recruit.end(); ++cr) {
 		if(cr != can_recruit.begin())
