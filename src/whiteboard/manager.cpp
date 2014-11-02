@@ -352,7 +352,7 @@ static void hide_all_plans()
 void manager::update_plan_hiding(size_t team_index)
 {
 	//We don't control the "viewing" side ... we're probably an observer
-	if(!resources::teams->at(team_index).is_human())
+	if(!resources::teams->at(team_index).is_local_human())
 		hide_all_plans();
 	else // normal circumstance
 	{
@@ -382,7 +382,7 @@ void manager::on_viewer_change(size_t team_index)
 void manager::on_change_controller(int side, const team& t)
 {
 	wb::side_actions& sa = *t.get_side_actions();
-	if(t.is_human()) // we own this side now
+	if(t.is_local_human()) // we own this side now
 	{
 		//tell everyone to clear this side's actions -- we're starting anew
 		resources::whiteboard->queue_net_cmd(sa.team_index(),sa.make_net_cmd_clear());
@@ -390,7 +390,7 @@ void manager::on_change_controller(int side, const team& t)
 		//refresh the hidden_ attribute of every team's side_actions
 		update_plan_hiding();
 	}
-	else if(t.is_ai() || t.is_network_ai()) // no one owns this side anymore
+	else if(t.is_local_ai() || t.is_network_ai()) // no one owns this side anymore
 		sa.clear(); // clear its plans away -- the ai doesn't plan ... yet
 	else if(t.is_network()) // Another client is taking control of the side
 	{
@@ -402,7 +402,7 @@ void manager::on_change_controller(int side, const team& t)
 		for(size_t i=0; i<num_teams; ++i)
 		{
 			team& local_team = resources::teams->at(i);
-			if(local_team.is_human() && !local_team.is_enemy(side))
+			if(local_team.is_local_human() && !local_team.is_enemy(side))
 				resources::whiteboard->queue_net_cmd(i,local_team.get_side_actions()->make_net_cmd_refresh());
 		}
 	}

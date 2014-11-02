@@ -110,7 +110,7 @@ std::string menu_handler::get_title_suffix(int side_num)
 {
 	int controlled_recruiters = 0;
 	for(size_t i = 0; i < teams_.size(); ++i) {
-		if(teams_[i].is_human() && !teams_[i].recruits().empty()
+		if(teams_[i].is_local_human() && !teams_[i].recruits().empty()
 		&& units_.find_leader(i + 1) != units_.end()) {
 		++controlled_recruiters;
 		}
@@ -2689,7 +2689,7 @@ void console_handler::do_droid() {
 		symbols["side"] = lexical_cast<std::string>(side);
 		command_failed(vgettext("Can't droid networked side: '$side'.", symbols));
 		return;
-	} else if ((menu_handler_.teams_[side - 1].is_human() || menu_handler_.teams_[side - 1].is_idle()) && action != " off") {
+	} else if ((menu_handler_.teams_[side - 1].is_local_human() || menu_handler_.teams_[side - 1].is_idle()) && action != " off") {
 		//this is our side, so give it to AI
 		menu_handler_.teams_[side - 1].make_ai();
 		menu_handler_.change_controller(lexical_cast<std::string>(side),"ai");
@@ -2698,7 +2698,7 @@ void console_handler::do_droid() {
 			//play_controller, that we are no longer in control
 			throw end_turn_exception(side);
 		}
-	} else if (menu_handler_.teams_[side - 1].is_ai() && action != " on") {
+	} else if (menu_handler_.teams_[side - 1].is_local_ai() && action != " on") {
 		menu_handler_.teams_[side - 1].make_human();
 		menu_handler_.change_controller(lexical_cast<std::string>(side),"human");
 	}
@@ -2723,7 +2723,7 @@ void console_handler::do_idle() {
 		symbols["side"] = lexical_cast<std::string>(side);
 		command_failed(vgettext("Can't droid networked side: '$side'.", symbols));
 		return;
-	} else if (menu_handler_.teams_[side - 1].is_human() && action != " off") {
+	} else if (menu_handler_.teams_[side - 1].is_local_human() && action != " off") {
 		//this is our side, so give it to idle
 		menu_handler_.teams_[side - 1].make_idle();
 		menu_handler_.change_controller(lexical_cast<std::string>(side),"idle");
@@ -2732,7 +2732,7 @@ void console_handler::do_idle() {
 			//play_controller, that we are no longer in control
 			throw end_turn_exception(side);
 		}
-	} else if (menu_handler_.teams_[side - 1].is_ai() && action != " off") {
+	} else if (menu_handler_.teams_[side - 1].is_local_ai() && action != " off") {
 		//this is our side, so give it to idle, without end turn exception. tell network it is human
 		menu_handler_.teams_[side - 1].make_idle();
 		menu_handler_.change_controller(lexical_cast<std::string>(side),"human");
@@ -3310,7 +3310,7 @@ void menu_handler::request_control_change ( int side_num, const std::string& pla
 {
 	std::string side = str_cast(side_num);
 	//if this is our side we are always allowed to change the controller
-	if (teams_[side_num - 1].is_human()) {
+	if (teams_[side_num - 1].is_local_human()) {
 		if (player == preferences::login())
 			return;
 		change_side_controller(side,player);

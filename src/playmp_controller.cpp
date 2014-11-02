@@ -232,7 +232,7 @@ possible_end_play_signal playmp_controller::play_human_turn(){
 			if (new_time > 0 ){
 				current_team().set_countdown_time(new_time);
 				cur_ticks = ticks;
-				if(current_team().is_human() && !beep_warning_time_) {
+				if(current_team().is_local_human() && !beep_warning_time_) {
 					beep_warning_time_ = new_time - WARNTIME + ticks;
 				}
 				if(counting_down()) {

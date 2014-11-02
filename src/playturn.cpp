@@ -208,11 +208,11 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				resources::controller->on_not_observer();
 			}
 
-			if (resources::gameboard->is_observer() || (resources::gameboard->teams())[resources::screen->playing_team()].is_human()) {
+			if (resources::gameboard->is_observer() || (resources::gameboard->teams())[resources::screen->playing_team()].is_local_human()) {
 				resources::screen->set_team(resources::screen->playing_team());
 				resources::screen->redraw_everything();
 				resources::screen->recalculate_minimap();
-			} else if (tm.is_human()) {
+			} else if (tm.is_local_human()) {
 				resources::screen->set_team(side - 1);
 				resources::screen->redraw_everything();
 				resources::screen->recalculate_minimap();
@@ -286,7 +286,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			//get all allies in as options to transfer control
 			BOOST_FOREACH(const team &t, resources::gameboard->teams())
 			{
-				if (!t.is_enemy(side_drop) && !t.is_human() && !t.is_ai() && !t.is_network_ai() && !t.is_empty()
+				if (!t.is_enemy(side_drop) && !t.is_local_human() && !t.is_local_ai() && !t.is_network_ai() && !t.is_empty()
 					&& t.current_player() != tm.current_player())
 				{
 					//if this is an ally of the dropping side and it is not us (choose local player

@@ -1008,7 +1008,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 			// Make sanity check that side number is good
 			// then check if this side is human controlled.
 			if (side > 0 && side <= resources::teams->size() &&
-				(*resources::teams)[side-1].is_human())
+				(*resources::teams)[side-1].is_local_human())
 			{
 				side_for_show = true;
 				break;
@@ -1776,7 +1776,7 @@ WML_HANDLER_FUNCTION(scroll, /*event_info*/, cfg)
 	const std::vector<int> side_list = get_sides_vector(cfg);
 	bool side_match = false;
 	BOOST_FOREACH(int side, side_list) {
-		if((*resources::teams)[side-1].is_human()) {
+		if((*resources::teams)[side-1].is_local_human()) {
 			side_match = true;
 			break;
 		}

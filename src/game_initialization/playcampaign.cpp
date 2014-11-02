@@ -108,7 +108,7 @@ static void show_carryover_message(saved_game& gamestate, playsingle_controller&
 
 		BOOST_FOREACH(const team &t, teams)
 		{
-			if (!t.persistent() || t.lost() || !t.is_human())
+			if (!t.persistent() || t.lost() || !t.is_local_human())
 			{
 				continue;
 			}

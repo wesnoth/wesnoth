@@ -556,7 +556,7 @@ void play_controller::do_init_side(bool is_replay, bool only_visual) {
 		game_events::fire("side " + side_num + " turn " + turn_num);
 	}
 
-	if(current_team().is_human() && !is_replay) {
+	if(current_team().is_local_human() && !is_replay) {
 		update_gui_to_player(player_number_ - 1);
 	}
 	// We want to work out if units for this player should get healed,
@@ -825,7 +825,7 @@ bool play_controller::can_execute_command(const hotkey::hotkey_command& cmd, int
 			menu_handler_.current_unit().valid() &&
 			!(menu_handler_.current_unit()->unrenamable()) &&
 			menu_handler_.current_unit()->side() == gui_->viewing_side() &&
-			gamestate_.board_.teams()[menu_handler_.current_unit()->side() - 1].is_human();
+			gamestate_.board_.teams()[menu_handler_.current_unit()->side() - 1].is_local_human();
 
 	default:
 		return false;
@@ -931,13 +931,13 @@ int play_controller::find_human_team_before_current_player() const
 		return -2;
 
 	for (int i = player_number_-2; i >= 0; --i) {
-		if (gamestate_.board_.teams()[i].is_human()) {
+		if (gamestate_.board_.teams()[i].is_local_human()) {
 			return i+1;
 		}
 	}
 
 	for (int i = gamestate_.board_.teams().size()-1; i > player_number_-1; --i) {
-		if (gamestate_.board_.teams()[i].is_human()) {
+		if (gamestate_.board_.teams()[i].is_local_human()) {
 			return i+1;
 		}
 	}
@@ -1108,7 +1108,7 @@ void play_controller::show_menu(const std::vector<std::string>& items_arg, int x
 		// Remove WML commands if they would not be allowed here
 		if(*i == "wml") {
 			if(!context_menu || gui_->viewing_team() != gui_->playing_team()
-			|| events::commands_disabled || !gamestate_.board_.teams()[gui_->viewing_team()].is_human()
+			|| events::commands_disabled || !gamestate_.board_.teams()[gui_->viewing_team()].is_local_human()
 			|| (linger_ && !game_config::debug)){
 				i = items.erase(i);
 				continue;
@@ -1302,7 +1302,7 @@ void play_controller::check_victory()
 			DBG_EE << "Side " << (side+1) << " and " << *m << " are not enemies." << std::endl;
 		}
 
-		if (gamestate_.board_.teams()[side].is_human()) {
+		if (gamestate_.board_.teams()[side].is_local_human()) {
 			found_player = true;
 		}
 
