@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
-"PO-Revision-Date: 2014-02-01 15:32+0100\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
+"PO-Revision-Date: 2014-10-25 13:41+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -985,17 +985,6 @@ msgstr "Vila dos sirénidos"
 
 #. [terrain_type]: id=mermen-village
 #: data/core/terrain.cfg:1503
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
-#| "nagas. While water-dwelling creatures are at home here, land-dwellers "
-#| "have a hard time navigating and defending these villages. However, like "
-#| "any village, the facilites are available to all creatures which allow "
-#| "units to tend to their wounds. Any unit stationed in a village can heal "
-#| "eight hitpoints each turn, or be cured of poison.\n"
-#| "\n"
-#| "Merfolk and nagas have 60% defense in submerged villages, whereas land "
-#| "based units usually have a low defense."
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
 "nagas. While water-dwelling creatures are at home here, land-dwellers have a "
@@ -1074,10 +1063,8 @@ msgstr "Castelo dos humanos nevado"
 
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:1608
-#, fuzzy
-#| msgid "Elven Castle Keep"
 msgid "Elven Castle"
-msgstr "Torre de castelo dos elfos"
+msgstr "Castelo dos elfos"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:1620
@@ -1541,18 +1528,6 @@ msgstr ""
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:2344
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mountains'</italic> are steep enough that units often have "
-#| "to climb over obstacles to move. By this nature, they provide a "
-#| "considerable defensive bonus for most troops, but they also severely "
-#| "impede any passage through them. Most cavalary simply cannot enter "
-#| "mountainous terrain; however, elvish cavalry is an exception to this, as "
-#| "are the goblin wolf riders. Both dwarves and trolls re native to "
-#| "mountainous terrain, and have a very easiy time getting around.\n"
-#| "\n"
-#| "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
-#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -1709,13 +1684,6 @@ msgstr "Infranqueábel"
 
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:2421
-#, fuzzy
-#| msgid ""
-#| "Obstacles that not even the most determined traveler may overcome include "
-#| "solid walls of stone and mountains so tall and steep that they are "
-#| "constantly wreathed in cloud. Even flying creatures cannot navigate the "
-#| "jagged peaks at such rarified heights, and not even the fiercest troll "
-#| "can smash through thick walls of stone."
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -1897,17 +1865,13 @@ msgstr "Descargas:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:258
-#, fuzzy
-#| msgid "sort^By last updated"
 msgid "date^Last updated:"
-msgstr "Pola última actualización"
+msgstr "Última actualización:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:284
-#, fuzzy
-#| msgid "sort^By first upload"
 msgid "date^First uploaded:"
-msgstr "Polo envío inicial"
+msgstr "Envío inicial:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:329
@@ -3414,36 +3378,28 @@ msgstr "Seleccionar"
 
 #. [button]: id=open
 #: data/gui/default/window/screenshot_notification.cfg:50
-#, fuzzy
-#| msgid "filesystem^Copy"
 msgid "filesystem^Open"
-msgstr "Copiar"
+msgstr "Abrir"
 
 #. [button]: id=open
 #: data/gui/default/window/screenshot_notification.cfg:51
 msgid "Open this file with an external application"
-msgstr ""
+msgstr "Abrir o ficheiro cun programa externo"
 
 #. [label]: id=title
 #: data/gui/default/window/screenshot_notification.cfg:95
-#, fuzzy
-#| msgid "Screenshot failed"
 msgid "Screenshot Saved"
-msgstr "Houbo un erro ao facer a captura"
+msgstr "Gardouse a captura"
 
 #. [button]: id=browse_dir
 #: data/gui/default/window/screenshot_notification.cfg:185
-#, fuzzy
-#| msgid "Screenshot"
 msgid "Screenshots..."
-msgstr "Facer unha captura do xogo"
+msgstr "Capturas…"
 
 #. [button]: id=browse_dir
 #: data/gui/default/window/screenshot_notification.cfg:187
-#, fuzzy
-#| msgid "Browse this location using a file manager"
 msgid "Browse the screenshots folder using a file manager"
-msgstr "Buscar neste lugar cun xestor de ficheiros."
+msgstr "Explorar o cartafol de capturas cun cun xestor de ficheiros."
 
 # Non o vin no contexto.
 #. [label]
@@ -3453,10 +3409,8 @@ msgstr "Escoller"
 
 #. [label]
 #: data/gui/default/window/theme_list.cfg:67
-#, fuzzy
-#| msgid "New theme will take effect on next new or loaded game."
 msgid "The new theme will take effect after loading or starting a new game."
-msgstr "O novo tema visual terá efecto na próxima partida —cargada ou nova—."
+msgstr "O novo tema terá efecto na próxima partida —cargada ou nova—."
 
 #. [button]: id=help
 #: data/gui/default/window/title_screen.cfg:180
@@ -3606,22 +3560,18 @@ msgstr "Houbo un erro"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
 #: data/gui/default/window/wml_error.cfg:112 src/gui/dialogs/wml_error.cpp:192
-#, fuzzy
-#| msgid "Rails"
 msgid "Details:"
-msgstr "Raís"
+msgstr "Detalles:"
 
 #. [button]: id=copy
 #: data/gui/default/window/wml_error.cfg:124
 msgid "clipboard^Copy"
-msgstr ""
+msgstr "Copiar"
 
 #. [button]: id=copy
 #: data/gui/default/window/wml_error.cfg:125
-#, fuzzy
-#| msgid "Copy this path to clipboard"
 msgid "Copy this report to clipboard"
-msgstr "Copiar esta ruta no portapapeis."
+msgstr "Copiar este informe ao portapapeis"
 
 #: src/filechooser.cpp:80
 msgid "File: "
@@ -4562,26 +4512,20 @@ msgid "cancel"
 msgstr "Cancelar"
 
 #: src/hotkey/hotkey_command.cpp:39
-#, fuzzy
-#| msgid "Select None"
 msgid "Select Hex"
-msgstr "Non seleccionar nada"
+msgstr "Seleccionar o hexágono"
 
 #: src/hotkey/hotkey_command.cpp:40
-#, fuzzy
-#| msgid "Select None"
 msgid "Deselect Hex"
-msgstr "Non seleccionar nada"
+msgstr "Anular a selección do hexágono"
 
 #: src/hotkey/hotkey_command.cpp:41
-#, fuzzy
-#| msgid "Attack"
 msgid "Move/Attack"
-msgstr "Atacar"
+msgstr "Mover ou atacar"
 
 #: src/hotkey/hotkey_command.cpp:42
 msgid "Select/Move/Attack"
-msgstr ""
+msgstr "Seleccionar, mover ou atacar"
 
 # Accesible dende:
 # «Configuración → Visualización».
@@ -4606,10 +4550,8 @@ msgid "End Unit Turn"
 msgstr "Rematar a quenda da unidade"
 
 #: src/hotkey/hotkey_command.cpp:48
-#, fuzzy
-#| msgid "No leader"
 msgid "Leader"
-msgstr "Sen líder"
+msgstr "Líder"
 
 #: src/hotkey/hotkey_command.cpp:49
 msgid "Undo"
@@ -4648,10 +4590,8 @@ msgid "Accelerated"
 msgstr "Activar a velocidade acelerada"
 
 #: src/hotkey/hotkey_command.cpp:58
-#, fuzzy
-#| msgid "Unit Description"
 msgid "Terrain Description"
-msgstr "Descrición da unidade"
+msgstr "Descrición do terreo"
 
 #: src/hotkey/hotkey_command.cpp:59
 msgid "Unit Description"
@@ -4703,10 +4643,8 @@ msgid "Mouse Scrolling"
 msgstr "Desprazamento co rato."
 
 #: src/hotkey/hotkey_command.cpp:74
-#, fuzzy
-#| msgid "Status"
 msgid "Status Table"
-msgstr "Estado"
+msgstr "Táboa do estado"
 
 #: src/hotkey/hotkey_command.cpp:75
 msgid "Mute"
@@ -4857,7 +4795,7 @@ msgstr "Cambiar de mapa"
 
 #: src/hotkey/hotkey_command.cpp:126
 msgid "Assign Local Time"
-msgstr ""
+msgstr "Asignar a hora local"
 
 #: src/hotkey/hotkey_command.cpp:128
 msgid "Custom Time of Day Creator"
@@ -4868,10 +4806,8 @@ msgid "Partial Undo"
 msgstr "Desfacer parcialmente"
 
 #: src/hotkey/hotkey_command.cpp:131
-#, fuzzy
-#| msgid "Test scenario"
 msgid "New Scenario"
-msgstr "Escenario de probas"
+msgstr "Novo escenario"
 
 # Aparece no editor de mapas, menú «Ficheiro».
 #: src/hotkey/hotkey_command.cpp:132
@@ -4884,10 +4820,8 @@ msgid "Save Map As"
 msgstr "Gardar o mapa como"
 
 #: src/hotkey/hotkey_command.cpp:135
-#, fuzzy
-#| msgid "Scenario start"
 msgid "Save Scenario As"
-msgstr "Inicio do escenario"
+msgstr "Gardar o escenario como"
 
 # Aparece no editor de mapas, menú «Ficheiro».
 #: src/hotkey/hotkey_command.cpp:136
@@ -4903,10 +4837,8 @@ msgid "Map Information"
 msgstr "Información do mapa"
 
 #: src/hotkey/hotkey_command.cpp:140
-#, fuzzy
-#| msgid "Selected game"
 msgid "Clear Selected Item Set"
-msgstr "Partida escollida"
+msgstr "Baleirar o grupo de elementos seleccionado"
 
 #: src/hotkey/hotkey_command.cpp:141
 msgid "Swap Foreground/Background Palette Item"
@@ -4951,17 +4883,13 @@ msgid "Fill Tool"
 msgstr "Ferramenta de recheo"
 
 #: src/hotkey/hotkey_command.cpp:152
-#, fuzzy
-#| msgid ""
-#| "Left mouse button selects or deselects, right brings up a context menu. "
-#| "Hold Shift for magic-wand selection of tiles with same terrain."
 msgid ""
 "Left mouse button selects or deselects with Ctrl, right brings up a context "
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
-"O botón principal selecciona ou cancela a selección, o secundario abre un "
-"menú de contexto. Mantén premida a tecla «Maiús» para seleccionar mediante a "
-"vara máxica hexágonos co mesmo tipo de terreo."
+"O botón principal selecciona ou anula a selección con Ctrl, o secundario "
+"abre un menú de contexto. Mantén premida a tecla Maiús para seleccionar "
+"mediante a vara máxica hexágonos co mesmo tipo de terreo."
 
 #: src/hotkey/hotkey_command.cpp:152
 msgid "Selection Tool"
@@ -5025,8 +4953,6 @@ msgstr ""
 "elimínaa. Aínda non funciona."
 
 #: src/hotkey/hotkey_command.cpp:157
-#, fuzzy
-#| msgid "Soundsource Tool"
 msgid "Sound Source Tool"
 msgstr "Ferramenta de orixe de son"
 
@@ -5043,8 +4969,6 @@ msgid "Village Tool"
 msgstr "Ferramenta de vilas"
 
 #: src/hotkey/hotkey_command.cpp:160
-#, fuzzy
-#| msgid "Canrecruit"
 msgid "Can Recruit"
 msgstr "Pode recrutar"
 
@@ -5053,8 +4977,6 @@ msgid "Toggle the recruit attribute of a unit."
 msgstr "Conmuta o atributo de recrutar dunha unidade."
 
 #: src/hotkey/hotkey_command.cpp:161
-#, fuzzy
-#| msgid "Can be renamed"
 msgid "Can be Renamed"
 msgstr "Pode renomearse"
 
@@ -5064,11 +4986,13 @@ msgstr "Conmuta a posibilidade de renomear a unidade."
 
 #: src/hotkey/hotkey_command.cpp:162
 msgid "Assign Recruit List"
-msgstr ""
+msgstr "Asignar como lista de recrutamento"
 
 #: src/hotkey/hotkey_command.cpp:162
 msgid "Assign the selected unit set as recruit list to the unit."
 msgstr ""
+"Asignar o grupo de unidades seleccionado como lista de recrutamento á "
+"unidade."
 
 #: src/hotkey/hotkey_command.cpp:164
 msgid "Change Unit ID"
@@ -5079,34 +5003,24 @@ msgid "Loyal"
 msgstr "Leal"
 
 #: src/hotkey/hotkey_command.cpp:167
-#, fuzzy
-#| msgid "Toggle Minimap color coding"
 msgid "Toggle Minimap Unit Coding"
-msgstr "Cambiar o código de cores do minimapa"
+msgstr "Cambiar o código de unidades do minimapa"
 
 #: src/hotkey/hotkey_command.cpp:168
-#, fuzzy
-#| msgid "Toggle Minimap color coding"
 msgid "Toggle Minimap Terrain Coding"
-msgstr "Cambiar o código de cores do minimapa"
+msgstr "Cambiar o código de terreo do minimapa"
 
 #: src/hotkey/hotkey_command.cpp:170
-#, fuzzy
-#| msgid "Toggle Minimap color coding"
 msgid "Toggle Minimap Unit Drawing"
-msgstr "Cambiar o código de cores do minimapa"
+msgstr "Cambiar o debuxado de unidades do minimapa"
 
 #: src/hotkey/hotkey_command.cpp:171
-#, fuzzy
-#| msgid "Toggle Minimap color coding"
 msgid "Toggle Minimap Village Drawing"
-msgstr "Cambiar o código de cores do minimapa"
+msgstr "Cambiar o debuxado de vilas do minimapa"
 
 #: src/hotkey/hotkey_command.cpp:172
-#, fuzzy
-#| msgid "Toggle Minimap color coding"
 msgid "Toggle Minimap Terrain Drawing"
-msgstr "Cambiar o código de cores do minimapa"
+msgstr "Cambiar o debuxado de terreo do minimapa"
 
 #: src/hotkey/hotkey_command.cpp:174
 msgid "Next Brush"
@@ -5141,8 +5055,6 @@ msgid "Cut"
 msgstr "Cortar"
 
 #: src/hotkey/hotkey_command.cpp:183
-#, fuzzy
-#| msgid "url^Copy"
 msgid "Copy"
 msgstr "Copiar"
 
@@ -5204,14 +5116,10 @@ msgid "Fill Selection"
 msgstr "Encher a selección"
 
 #: src/hotkey/hotkey_command.cpp:196
-#, fuzzy
-#| msgid "Generate Tiles In Selection"
 msgid "Generate Tiles in Selection"
 msgstr "Xerar hexágonos na selección"
 
 #: src/hotkey/hotkey_command.cpp:197
-#, fuzzy
-#| msgid "Randomize Tiles In Selection"
 msgid "Randomize Tiles in Selection"
 msgstr "Xerar ao chou os hexágonos da selección"
 
@@ -5268,46 +5176,32 @@ msgid "Draw Terrain Codes"
 msgstr "Mostrar os códigos dos terreos"
 
 #: src/hotkey/hotkey_command.cpp:218
-#, fuzzy
-#| msgid "Rotate Selection"
 msgid "Save Selection to Area"
-msgstr "Rotar a selección"
+msgstr "Gardar a selección na zona"
 
 #: src/hotkey/hotkey_command.cpp:219
-#, fuzzy
-#| msgid "Selected game"
 msgid "Rename Selected Area"
-msgstr "Partida escollida"
+msgstr "Renomear a zona seleccionada"
 
 #: src/hotkey/hotkey_command.cpp:220
-#, fuzzy
-#| msgid "Selected game"
 msgid "Remove Selected Area"
-msgstr "Partida escollida"
+msgstr "Eliminar a zona seleccionada"
 
 #: src/hotkey/hotkey_command.cpp:221
-#, fuzzy
-#| msgid "Add New Side"
 msgid "Add New Area"
-msgstr "Engadir un bando"
+msgstr "Engadir unha zona nova"
 
 #: src/hotkey/hotkey_command.cpp:223
-#, fuzzy
-#| msgid "Edit Scenario Settings"
 msgid "Edit Scenario"
-msgstr "Editar a configuración do escenario"
+msgstr "Editar o escenario"
 
 #: src/hotkey/hotkey_command.cpp:224
-#, fuzzy
-#| msgid "Switch Side"
 msgid "Edit Side"
-msgstr "Cambiar de bando"
+msgstr "Editar o bando"
 
 #: src/hotkey/hotkey_command.cpp:225
-#, fuzzy
-#| msgid "Remove"
 msgid "Remove Side"
-msgstr "Eliminar"
+msgstr "Eliminar o bando"
 
 #: src/hotkey/hotkey_command.cpp:227
 msgid "Delay Shroud Updates"
