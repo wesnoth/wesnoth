@@ -250,7 +250,7 @@ if(ENABLE_BOOST_FILESYSTEM AND NOT ENABLE_PANDORA)
 	)
 else(ENABLE_BOOST_FILESYSTEM AND NOT ENABLE_PANDORA)
 	set(libwesnoth-core_STAT_SRC
-		${libwesnoth-game_STAT_SRC}
+		${libwesnoth-core_STAT_SRC}
 		filesystem.cpp
 		gettext.cpp
 	)
