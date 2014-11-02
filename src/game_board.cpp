@@ -122,17 +122,16 @@ void game_board::side_drop_to(int side_num, team::CONTROLLER ctrl) {
 	if (leader.valid()) leader->rename(lexical_cast<std::string> (ctrl) + lexical_cast<std::string> (side_num));
 }
 
-void game_board::side_change_controller(int side_num, team::CONTROLLER ctrl, bool is_local, const std::string pname) {
+void game_board::side_change_controller(int side_num, team::CONTROLLER ctrl, const std::string pname) {
 	team &tm = teams_[side_num-1];
 
 	tm.change_controller(ctrl);
-	tm.set_network(!is_local);
 	if (pname.empty()) {
 		return ;
 	}
 
 	tm.set_current_player(pname);
-
+	tm.set_controller_client_id(pname);
 	unit_map::iterator leader = units_.find_leader(side_num);
 	if (leader.valid()) {
 		leader->rename(pname);

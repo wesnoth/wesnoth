@@ -128,7 +128,8 @@ private:
 		mutable bool objectives_changed;
 
 		CONTROLLER controller;
-		bool is_networked;
+		//this shall NEVER be changable by wml.
+		std::string controller_client_id;
 		DEFEAT_CONDITION defeat_condition;
 
 		bool share_maps, share_view;
@@ -247,9 +248,10 @@ public:
 	bool is_idle() const { return info_.controller == IDLE; }
 	bool is_empty() const { return info_.controller == EMPTY; }
 
-	bool is_local() const { return !is_empty() && !info_.is_networked; }
-	bool is_network() const { return !is_empty() && info_.is_networked; }
-	void set_network(bool val) { info_.is_networked = val; }
+	bool is_local() const { return !is_empty() && !is_network_base(); }
+	bool is_network() const { return !is_empty() && is_network_base(); }
+	bool is_network_base() const;
+	void set_controller_client_id(const std::string& val) { info_.controller_client_id = val; }
 
 	bool is_local_human() const { return is_human() && is_local(); }
 	bool is_local_ai() const { return is_ai() && is_local(); }

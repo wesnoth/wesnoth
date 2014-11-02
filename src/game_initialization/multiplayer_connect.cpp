@@ -42,7 +42,7 @@ std::vector<std::string> controller_options_names(
 {
 	std::vector<std::string> names;
 	BOOST_FOREACH(const ng::controller_option& option, controller_options) {
-		names.push_back(option.second);
+		names.push_back(option.name_);
 	}
 
 	return names;

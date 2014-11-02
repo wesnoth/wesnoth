@@ -201,10 +201,9 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			}
 
 			bool was_local = tm.is_local();
-			bool new_local = change["is_local"].to_bool();
 			const team::CONTROLLER old_controller = tm.controller();
 
-			resources::gameboard->side_change_controller(side, new_controller, new_local, player);
+			resources::gameboard->side_change_controller(side, new_controller, player);
 
 			if (old_controller != new_controller && !was_local && tm.is_local()) {
 				resources::controller->on_not_observer();

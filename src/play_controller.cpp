@@ -98,13 +98,17 @@ static void clear_resources()
 
 }
 
-play_controller::play_controller(const config& level, saved_game& state_of_game,
-		const int ticks, const config& game_config,
-		CVideo& video, bool skip_replay) :
+play_controller::play_controller(const config& level, 
+		saved_game& state_of_game,
+		const int ticks, 
+		const config& game_config,
+		CVideo& video, 
+		bool skip_replay,
+		const std::string& local_client_id) :
 	controller_base(ticks, game_config, video),
 	observer(),
 	savegame_config(),
-	gamestate_(level, game_config),
+	gamestate_(level, game_config, local_client_id),
 	level_(level),
 	saved_game_(state_of_game),
 	prefs_disp_manager_(),

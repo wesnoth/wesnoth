@@ -26,6 +26,7 @@
 #include "map.hpp"
 #include "resources.hpp"
 #include "game_preferences.hpp"
+#include "play_controller.hpp"
 #include "sdl/utils.hpp" // Only needed for int_to_color (!)
 #include "unit_types.hpp"
 #include "whiteboard/side_actions.hpp"
@@ -53,7 +54,7 @@ const int team::default_team_gold_ = 100;
 // (excluding those attributes used to define the side's leader).
 const std::set<std::string> team::attributes = boost::assign::list_of("ai_config")
 	("color")("controller")("current_player")("defeat_condition")("flag")
-	("flag_icon")("fog")("fog_data")("gold")("hidden")("income")("is_networked")
+	("flag_icon")("fog")("fog_data")("gold")("hidden")("income")("controller_client_id")
 	("no_leader")("objectives")("objectives_changed")("persistent")("lost")
 	("recall_cost")("recruit")("save_id")("scroll_to_leader")
 	("share_maps")("share_view")("shroud")("shroud_data")("start_gold")
@@ -91,7 +92,7 @@ team::team_info::team_info() :
 	objectives(),
 	objectives_changed(false),
 	controller(),
-	is_networked(false),
+	controller_client_id(),
 	defeat_condition(team::NO_LEADER),
 	share_maps(false),
 	share_view(false),
@@ -134,7 +135,7 @@ void team::team_info::read(const config &cfg)
 	hidden = cfg["hidden"].to_bool();
 	no_turn_confirmation = cfg["suppress_end_turn_confirmation"].to_bool();
 	side = cfg["side"].to_int(1);
-	is_networked = cfg["is_networked"].to_bool(false);
+	controller_client_id = cfg["controller_client_id"].str();
 	if(cfg.has_attribute("color")) {
 		color = cfg["color"].str();
 	} else {
@@ -236,7 +237,7 @@ void team::team_info::write(config& cfg) const
 	cfg["suppress_end_turn_confirmation"] = no_turn_confirmation;
 	cfg["scroll_to_leader"] = scroll_to_leader;
 	cfg["controller"] = (controller == IDLE ? std::string("human") : CONTROLLER_to_string (controller));
-	cfg["is_networked"] = is_networked;
+	cfg["controller_client_id"] = controller_client_id;
 	std::stringstream can_recruit_str;
 	for(std::set<std::string>::const_iterator cr = can_recruit.begin(); cr != can_recruit.end(); ++cr) {
 		if(cr != can_recruit.begin())
@@ -812,4 +813,8 @@ config team::to_config() const
 	config& result = cfg.add_child("side");
 	write(result);
 	return result;
+}
+bool team::is_network_base() const
+{
+	return !resources::controller->is_local_client_id(this->info_.controller_client_id);
 }

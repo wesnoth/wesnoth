@@ -40,8 +40,13 @@ struct set_completion
 class playsingle_controller : public play_controller
 {
 public:
-	playsingle_controller(const config& level, saved_game& state_of_game,
-		const int ticks, const config& game_config, CVideo& video, bool skip_replay);
+	playsingle_controller(const config& level, 
+		saved_game& state_of_game,
+		const int ticks, 
+		const config& game_config, 
+		CVideo& video, 
+		bool skip_replay,
+		const std::string& local_client_id);
 	virtual ~playsingle_controller();
 
 	LEVEL_RESULT play_scenario(const config::const_child_itors &story,

@@ -941,8 +941,8 @@ config side_engine::new_config() const
 	// or the one which is reserved to it.
 	res["current_player"] = !player_id_.empty() ? player_id_ :
 		(controller_ == CNTR_RESERVED ? current_player_ : "");
-	res["controller"] = (res["current_player"] == preferences::login()) ?
-		"human" : controller_names[controller_];
+	res["controller_client_id"] = player_id_;
+	res["controller"] = controller_names[controller_];
 
 	if (player_id_.empty()) {
 		std::string description;
@@ -1091,6 +1091,8 @@ config side_engine::new_config() const
 
 bool side_engine::ready_for_start() const
 {
+	assert(controller_ != CNTR_LOCAL || player_id_ == preferences::login());
+	assert(controller_ != CNTR_COMPUTER || player_id_ == preferences::login());
 	if (!allow_player_) {
 		// Sides without players are always ready.
 		return true;
@@ -1226,20 +1228,20 @@ void side_engine::update_controller_options()
 
 	// Default options.
 	if (!parent_.local_players_only_) {
-		add_controller_option(CNTR_NETWORK, _("Network Player"), "human");
+		add_controller_option(CNTR_NETWORK, _("Network Player"), "", "human");
 	}
-	add_controller_option(CNTR_LOCAL, _("Local Player"), "human");
-	add_controller_option(CNTR_COMPUTER, _("Computer Player"), "ai");
-	add_controller_option(CNTR_EMPTY, _("Empty"), "null");
+	add_controller_option(CNTR_LOCAL, _("Local Player"), preferences::login(), "human");
+	add_controller_option(CNTR_COMPUTER, _("Computer Player"), preferences::login(), "ai");
+	add_controller_option(CNTR_EMPTY, _("Empty"), "", "null");
 
 	if (!current_player_.empty()) {
-		add_controller_option(CNTR_RESERVED, _("Reserved"), "human");
+		add_controller_option(CNTR_RESERVED, _("Reserved"), "", "human");
 	}
 
 	// Connected users.
-	add_controller_option(CNTR_LAST, _("--give--"), "human");
+	add_controller_option(CNTR_LAST, _("--give--"), "", "human");
 	BOOST_FOREACH(const std::string& user, parent_.connected_users_) {
-		add_controller_option(parent_.default_controller_, user, "human");
+		add_controller_option(parent_.default_controller_, user, user, "human");
 	}
 
 	update_current_controller_index();
@@ -1249,10 +1251,10 @@ void side_engine::update_current_controller_index()
 {
 	int i = 0;
 	BOOST_FOREACH(const controller_option& option, controller_options_) {
-		if (option.first == controller_) {
+		if (option.controller_ == controller_) {
 			current_controller_index_ = i;
 
-			if (player_id_.empty() || player_id_ == option.second) {
+			if (player_id_.empty() || player_id_ == option.name_) {
 				// Stop searching if no user is assigned to a side
 				// or the selected user is found.
 				break;
@@ -1267,20 +1269,13 @@ void side_engine::update_current_controller_index()
 
 bool side_engine::controller_changed(const int selection)
 {
-	const ng::controller selected_cntr = controller_options_[selection].first;
+	const ng::controller selected_cntr = controller_options_[selection].controller_;
 	if (selected_cntr == CNTR_LAST) {
 		return false;
 	}
 
-	// Check if user was selected. If so assign a side to him/her.
-	// If not, make sure that no user is assigned to this side.
-	if (selected_cntr == parent_.default_controller_ && selection != 0) {
-		player_id_ = controller_options_[selection].second;
-		set_waiting_to_choose_status(false);
-	} else {
-		player_id_.clear();
-	}
-
+	player_id_ = controller_options_[selection].client_id_;
+	set_waiting_to_choose_status(false);
 	set_controller(selected_cntr);
 
 	return true;
@@ -1288,6 +1283,8 @@ bool side_engine::controller_changed(const int selection)
 
 void side_engine::set_controller(ng::controller controller)
 {
+	if(controller == ng::CNTR_COMPUTER ||controller == ng::CNTR_LOCAL)
+		player_id_ = preferences::login();
 	controller_ = controller;
 
 	update_current_controller_index();
@@ -1313,7 +1310,7 @@ void side_engine::set_controller_commandline(const std::string& controller_name)
 }
 
 void side_engine::add_controller_option(ng::controller controller,
-		const std::string& name, const std::string& controller_value)
+		const std::string& name, const std::string& controller_id, const std::string& controller_value)
 {
 	if (controller_lock_ && !cfg_["controller"].empty() &&
 		cfg_["controller"] != controller_value) {
@@ -1321,7 +1318,7 @@ void side_engine::add_controller_option(ng::controller controller,
 		return;
 	}
 
-	controller_options_.push_back(std::make_pair(controller, name));
+	controller_options_.push_back(controller_option(controller, name, controller_id));
 }
 
 } // end namespace ng

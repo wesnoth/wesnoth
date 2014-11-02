@@ -469,8 +469,6 @@ void wait::process_network_data(const config& data, const network::connection so
 		if (config & sidetochange = get_scenario().find_child("side", "side", change["side"])) {
 			LOG_RG << "found side : " << sidetochange.debug() << std::endl;
 			sidetochange.merge_with(change);
-			//!change["is_local"] would evaluate to !change["is_local"].to_int()
-			sidetochange["is_networked"] = !change["is_local"].to_bool(false);
 			LOG_RG << "changed to : " << sidetochange.debug() << std::endl;
 		} else {
 			LOG_RG << "change_controller didn't find any side!" << std::endl;

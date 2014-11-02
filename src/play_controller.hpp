@@ -74,7 +74,7 @@ class play_controller : public controller_base, public events::observer, public 
 public:
 	play_controller(const config& level, saved_game& state_of_game,
 		const int ticks, const config& game_config,
-		CVideo& video, bool skip_replay);
+		CVideo& video, bool skip_replay, const std::string& local_client_id);
 	virtual ~play_controller();
 
 	//event handler, overridden from observer
@@ -149,6 +149,8 @@ public:
 	bool is_observer() const {
 		return gamestate_.board_.is_observer();
 	}
+	virtual bool is_local_client_id(const std::string& controller_client_id)
+	{ return this->gamestate_.is_local_client_id(controller_client_id); }
 
 	/**
 	 * Checks to see if a side has won, and throws an end_level_exception.

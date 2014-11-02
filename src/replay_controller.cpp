@@ -112,7 +112,7 @@ possible_end_play_signal replay_controller::try_run_to_completion() {
 replay_controller::replay_controller(const config& level,
 		saved_game& state_of_game, const int ticks,
 		const config& game_config, CVideo& video) :
-	play_controller(level, state_of_game, ticks, game_config, video, false),
+	play_controller(level, state_of_game, ticks, game_config, video, false, ""),
 	saved_game_start_(saved_game_),
 	gameboard_start_(gamestate_.board_),
 	tod_manager_start_(level),

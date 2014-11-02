@@ -34,6 +34,7 @@ enum io_type_t {
 LEVEL_RESULT play_game(game_display& disp, saved_game& state,
 		const config& game_config,
 		io_type_t io_type=IO_SERVER,
+		std::string controller_client_id = "",
 		bool skip_replay = false,
 		bool network_game = false,
 		bool blindfold_replay = false,
