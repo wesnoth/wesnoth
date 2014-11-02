@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-10-24 20:20+0200\n"
-"PO-Revision-Date: 2014-02-01 15:45+0100\n"
+"PO-Revision-Date: 2014-10-26 09:28+0100\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -1543,15 +1543,11 @@ msgstr " amarela —se xa se moveron pero poden seguir movéndose ou atacar—, 
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:192
-#, fuzzy
-#| msgid ""
-#| " red if it can no longer move or attack, or the user ended the unit’s "
-#| "turn."
 msgid ""
 " black if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
-" vermello se xa non pode moverse ou atacar ou se o usuario deu por "
-"finalizada a quenda da unidade."
+" negra —se xa non pode moverse ou atacar ou se o usuario deu por finalizada "
+"a quenda da unidade—."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:193
@@ -1560,11 +1556,9 @@ msgstr " A esfera será azul se a unidade é un aliado que non podes controlar."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:194
-#, fuzzy
-#| msgid " Enemy units have no orb on top of their energy bar."
 msgid " Enemy units have a red orb on top of their energy bar."
 msgstr ""
-" As unidades inimigas non terán ningunha esfera sobre a súa barra de vida."
+" As unidades inimigas teñen unha esfera vermella sobre a súa barra de vida."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:201
@@ -3219,6 +3213,9 @@ msgid ""
 "Display the controller status of a side.\n"
 "\n"
 msgstr ""
+"\n"
+"Mostrar o estado do controlador dun bando.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:588
@@ -3345,6 +3342,10 @@ msgid ""
 "sides.\n"
 "\n"
 msgstr ""
+"\n"
+"Mostrar un diálogo para axudar ao anfitrión a cambiar os bandos que "
+"controlan os xogadores.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:627
@@ -3354,6 +3355,10 @@ msgid ""
 "network disconnection.\n"
 "\n"
 msgstr ""
+"\n"
+"Activar ou desactivar o estado de inactividade dun bando. O anfitrión pode "
+"marcar un bando como inactivo tras unha desconexión de rede.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:630

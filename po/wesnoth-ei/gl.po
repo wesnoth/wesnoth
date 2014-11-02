@@ -4,13 +4,13 @@
 # Proxecto Trasno <http://trasno.net>
 #
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008.
-# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2010, 2011, 2012, 2013.
+# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2010, 2011, 2012, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-10-24 20:20+0200\n"
-"PO-Revision-Date: 2013-08-17 00:27+0200\n"
+"PO-Revision-Date: 2014-10-25 13:32+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -1949,25 +1949,23 @@ msgstr ""
 
 #. [scenario]: id=08_Training_the_Ogres
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:4
-#, fuzzy
-#| msgid "Training the Ogres"
 msgid "Capturing the Ogres"
-msgstr "Adestrando aos ogros"
+msgstr "Capturando os ogros"
 
 #. [side]
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:42
 msgid "Ogres"
-msgstr ""
+msgstr "Ogros"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:77
 msgid "(captured ogres will be made available for recall)"
-msgstr ""
+msgstr "(os ogros capturados poderán reincorporarse)"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:77
 msgid "Capture as many ogres as you can"
-msgstr ""
+msgstr "Captura tantos ogros como poidas."
 
 #. [note]
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:95
@@ -1975,29 +1973,27 @@ msgid ""
 "An ogre is captured when it starts a turn being unable to move more than one "
 "hex."
 msgstr ""
+"Para capturar un ogro, o ogro ten que comezar a súa quenda incapaz de "
+"moverse máis dun hexágono."
 
 #. [note]
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:98
 msgid "If an ogre reaches the edge of the map, it will escape."
-msgstr ""
+msgstr "Os ogros que consigan chegar a un dos límites do escenario escaparán."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:121
-#, fuzzy
-#| msgid ""
-#| "Look, we have found a pack of ogres. We should try to capture some to "
-#| "train."
 msgid ""
 "Look, this valley is inhabited by a tribe of ogres. We should try to capture "
 "some to train."
 msgstr ""
-"Mirade, un grupo de ogros. Deberiamos intentar capturar algúns para "
+"Mirade, unha tribo de ogros. Deberiamos intentar capturar algúns para "
 "adestralos."
 
 #. [message]: race=ogre
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:125
 msgid "Humans are coming! Run!"
-msgstr ""
+msgstr "Achéganse humanos! Fuxide!"
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:129
@@ -2005,26 +2001,27 @@ msgid ""
 "Looks like they are fleeing. I think they will surrender easily if we can "
 "surround them."
 msgstr ""
+"Parece que foxen. Se conseguimos rodealos seguro que non opoñen resistencia."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:133
 msgid "All right, we have to capture them one by one."
-msgstr ""
+msgstr "Moi ben, temos que capturalos un por un."
 
 #. [value]
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:152
 msgid "Waah! Run!"
-msgstr ""
+msgstr "Ah! Fuxide!"
 
 #. [value]
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:156
 msgid "Run for your lives!"
-msgstr ""
+msgstr "Correde polas vosas vidas!"
 
 #. [value]
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:160
 msgid "Help!"
-msgstr ""
+msgstr "Axuda!"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:204
@@ -2034,37 +2031,37 @@ msgstr "Escapounos un. Esperemos que non se repita cos outros!"
 #. [value]
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:255
 msgid "$ogre_name surrender!"
-msgstr ""
+msgstr "$ogre_name render!"
 
 #. [value]
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:259
 msgid "Don't hurt $ogre_name|!"
-msgstr ""
+msgstr "Non ferir $ogre_name|!"
 
 #. [value]
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:263
 msgid "$ogre_name will be good! Promise!"
-msgstr ""
+msgstr "$ogre_name ser bo! Prometer!"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:350
 msgid "We failed to capture any of them!"
-msgstr ""
+msgstr "Non conseguimos capturar ningún ogro!"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:359
 msgid "We only captured one ogre."
-msgstr ""
+msgstr "Só conseguimos capturar un ogro."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:368
 msgid "We failed to capture more than two of the ogres."
-msgstr ""
+msgstr "Non fomos capaces de capturar máis de dous ogros."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:377
 msgid "We captured three ogres! I hope they will prove useful."
-msgstr ""
+msgstr "Capturamos tres ogros! Espero que consigamos sacarlles partido."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:384
@@ -2072,6 +2069,7 @@ msgid ""
 "We managed to capture many ogres! They will make a good addition to our "
 "troops."
 msgstr ""
+"Conseguimos capturar moitos ogros! Serán un bo engadido ás nosas tropas."
 
 #. [scenario]: id=09_Xenophobia
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:4
@@ -2362,16 +2360,12 @@ msgstr "O cativerio"
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:20
-#, fuzzy
-#| msgid ""
-#| "After reaching the island on Lake Vrug, Gweddry and his men had been "
-#| "captured by northern orcs."
 msgid ""
 "After reaching what they believed was safety, Gweddry and his men had been "
 "captured by northern orcs."
 msgstr ""
-"Despois de chegar á illa do Lago Vrug, Uedri e os seus foron capturados "
-"polos orcos do norte."
+"Despois de chegar onde pensaban que estarían a salvo, Uedri e os seus foron "
+"capturados polos orcos do norte."
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:23
@@ -2380,6 +2374,9 @@ msgid ""
 "Nak, while the rest were thrown into the orcish prisons to await their "
 "turn..."
 msgstr ""
+"Uedri, Dasin e Ouen foron levados axiña ante o rei dos orcos, Dranan, "
+"mentres que o resto foron levados aos calabozos dos orcos, onde agardarían a "
+"que lles chegase a súa hora…"
 
 #. [side]: type=Orcish Warlord, id=King Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:44
@@ -2389,40 +2386,40 @@ msgstr "Rei Dranan"
 #. [side]: type=Orcish Warlord, id=King Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:74
 msgid "Orcs"
-msgstr ""
+msgstr "Orcos"
 
 #. [side]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:83
-#, fuzzy
-#| msgid "Prison"
 msgid "Prisoners"
-msgstr "Prisión"
+msgstr "Prisioneiros"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:382
 msgid ""
 "Several of Gweddry's men find themselves locked away in a crude orcish cell."
 msgstr ""
+"Varios dos soldados de Uedri atópanse pechados nunha inmunda cela dos orcos."
 
 #. [message]: role=escapee sidekick 1
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:388
 msgid "We've got to get out of here!"
-msgstr ""
+msgstr "Temos que saírmos de aquí!"
 
 #. [message]: role=escapee sidekick 2
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:393
 msgid "I'm sure the commander will come and save us!"
-msgstr ""
+msgstr "Seguro que o comandante ven a salvarnos."
 
 #. [message]: role=escapee sidekick 1
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:398
 msgid "What? Didn't you see those huge trolls drag them away? It's hopeless!"
 msgstr ""
+"O que? Acaso non viches como os trolles os levaban? Non temos escapatoria!"
 
 #. [message]: role=escapee leader
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:403
 msgid "Be quiet, you two! There's something back here..."
-msgstr ""
+msgstr "Calade, vós os dous! Aquí atrás hai algo…"
 
 #. [message]: role=escapee leader
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:410
@@ -2430,60 +2427,60 @@ msgid ""
 "Look! There's a gap in the wall over here. I think I can slip through if I "
 "clear away some of these rocks..."
 msgstr ""
+"Mirade! Hai unha brecha nesta parede. Se aparto estas rochas de aquí seguro "
+"que caibo…"
 
 #. [message]: role=escapee leader
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:446
 msgid "Come on! This way!"
-msgstr ""
+msgstr "Veña! Por aquí!"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:454
 msgid "Find Gweddry, Dacyn and Owaec"
-msgstr ""
+msgstr "Atopa a Uedri, Dasin e Ouen."
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:458
-#, fuzzy
-#| msgid "Well, where are the prisoners?"
 msgid "Release the other prisoners"
-msgstr "Onde están os prisioneiros?"
+msgstr "Libera o resto dos prisioneiros."
 
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:462
-#, fuzzy
-#| msgid "Death of Volas"
 msgid "Death of the escapees"
-msgstr "Morte de Volas."
+msgstr "Morte dos fuxitivos."
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:479
 msgid "The door won't open from this side."
-msgstr ""
+msgstr "A porta non dá aberto."
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:497
 msgid "There's strange noises coming from those pits. I don't like this."
 msgstr ""
+"Escóitanse sons estraños por eses furados. Isto non che me vos gusta nada…"
 
 #. [message]: side,race=2,bat
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:508
 msgid "Neep! Neep!"
-msgstr ""
+msgstr "Nip! Nip!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:539
 msgid "Ack! Get away from me!"
-msgstr ""
+msgstr "Agh! Quítateme de aquí! Fóra!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:554
 msgid "This tunnel seems to go deeper into the caves. We can't go that way."
 msgstr ""
+"Este túnel parece continuar descendendo polas covas. Non podemos seguilo."
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:579
 msgid "There's a pile of orcish gear and trash here. The stench is wretched."
-msgstr ""
+msgstr "Aquí hai unha morea de trebellos e lixo dos orcos. E mi ma como fede…"
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:605
@@ -2491,36 +2488,38 @@ msgid ""
 "The other prison cells should be to the north of that chamber. If we can get "
 "past those trolls we could free our comrades."
 msgstr ""
+"O resto de celas dos calabozos deberían estar ao norte desa cámara. Pero "
+"para liberar aos nosos camaradas antes temos que encargarnos deses trolles."
 
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:613
 msgid "But there's too many of them!"
-msgstr ""
+msgstr "Pero son demasiados!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:618
 msgid "Hmm... I have an idea."
-msgstr ""
+msgstr "Hmm… Teño unha idea."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:633
 msgid "After a while..."
-msgstr ""
+msgstr "Un tempo despois…"
 
 #. [message]: id=$unit.id
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:664
 msgid "So, how do I look?"
-msgstr ""
+msgstr "Que? Que tal estou?"
 
 #. [message]: id=$unit.id
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:669
 msgid "I'll try to slip past the trolls. You wait here."
-msgstr ""
+msgstr "Vou intentar pasar sen que se decaten. Agardade aquí por min."
 
 #. [message]: speaker=King Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:706
 msgid "Ha-ha! These humans will make excellent slaves in my mines!"
-msgstr ""
+msgstr "Hahá! Estes humanos serán excelente man de obra para as minas!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:711
@@ -2528,51 +2527,53 @@ msgid ""
 "Opening the cells should confuse the guards for a moment. But I better not "
 "get too close to them..."
 msgstr ""
+"Se abro as celas debería poder crear confusión entre os gardas uns intres. "
+"Pero será mellor que non me achegue demasiado a eles…"
 
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:779
 msgid "Eh?"
-msgstr ""
+msgstr "Eh?"
 
 #. [message]: speaker=King Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:791
 msgid "Hey! Who are you? Get her!"
-msgstr ""
+msgstr "Ei! Quen es ti? Collédea!"
 
 #. [message]: speaker=King Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:798
 msgid "Hey! Who are you? Get him!"
-msgstr ""
+msgstr "Ei! Quen es ti? Collédeo!"
 
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:805
 msgid "Uh oh!"
-msgstr ""
+msgstr "Oh oh…"
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:836
 msgid "Here's one of the prison cells! Let me open it..."
-msgstr ""
+msgstr "Atopei unha das celas! A ver que a abra…"
 
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:895
 msgid "Finally, we're rescued!"
-msgstr ""
+msgstr "Por fin libres!"
 
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:917
 msgid "At last!"
-msgstr ""
+msgstr "Por fin!"
 
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:939
 msgid "Now let's get out of here!"
-msgstr ""
+msgstr "Agora saiamos de aquí!"
 
 #. [message]: speaker=King Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:952
 msgid "What? Who's there? Get them!"
-msgstr ""
+msgstr "Pero que… Quen anda aí? Collédeos!"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:990
@@ -2585,6 +2586,8 @@ msgid ""
 "The eastern entrance is teeming with orcs. We have to find another way to "
 "exit to the west!"
 msgstr ""
+"A entrada oriental está ateigada de orcos. Temos que atopar outra forma de "
+"saír pola parte occidental."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1007
@@ -2592,25 +2595,22 @@ msgid ""
 "We have to get our gold back first! It must have been taken to their "
 "treasury."
 msgstr ""
+"Antes temos que recuperar o noso ouro! Debérono levar á súa tesouraría."
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1021
-#, fuzzy
-#| msgid "Gweddry reaches the end of the tunnel"
 msgid "Gweddry reaches the western exit"
-msgstr "Que Uedri chegue ao final do túnel."
+msgstr "Que Uedri chegue á saída occidental."
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1025
 msgid "Retrieve the stolen gold"
-msgstr ""
+msgstr "Recupera o ouro roubado."
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1035
-#, fuzzy
-#| msgid "Well, where are the prisoners?"
 msgid "Release the remaining prisoners"
-msgstr "Onde están os prisioneiros?"
+msgstr "Libera o resto dos prisioneiros."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1122
@@ -2618,26 +2618,28 @@ msgid ""
 "They have reinforcements pouring in from the eastern entrance! We have to "
 "get out of here quickly!"
 msgstr ""
+"Chegáronlles reforzos pola entrada oriental! Temos que saírmos de aquí de "
+"seguida!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1175
 msgid "All the gold the orcs took is in this chest!"
-msgstr ""
+msgstr "Neste cofre gardaron todo o ouro que roubaron!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1186
 msgid "You've regained $stored_player_gold gold!"
-msgstr ""
+msgstr "Recuperaches $stored_player_gold moedas de ouro!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1240
 msgid "Phew! I made it."
-msgstr ""
+msgstr "Menos mal, conseguímolo."
 
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1248
 msgid "Where are you going?! Come back!"
-msgstr ""
+msgstr "Onde vas? Volve!"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1267
@@ -2651,17 +2653,12 @@ msgstr "A evacuación"
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Gweddry and his men had escaped from the orcish prisons. After a harried "
-#| "chase south, they found themselves surrounded by orcs at the Great River."
 msgid ""
 "Gweddry and his men had escaped from the orcish prisons, but after returning "
 "to the daylight they soon found themselves surrounded by a host of orcs."
 msgstr ""
-"Uedri e os seus conseguiron fuxir das prisións dos orcos. Tras unha dura "
-"persecución cara o sur, os humanos acabaron á beira do Gran Río, rodeados "
-"polos orcos."
+"Uedri e os seus conseguiran fuxir das prisións dos orcos, pero tras volver á "
+"superficie, de seguida se viron rodeados por unha horda de orcos."
 
 #. [side]: type=Orcish Warlord, id=Varrak-Klar
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:42
@@ -2685,10 +2682,6 @@ msgstr "Destrúe a ponte <b>ou</b> derrota a todos os inimigos."
 
 #. [objectives]
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:178
-#, fuzzy
-#| msgid ""
-#| "Note: every unit not on the south side of the river when the bridge is "
-#| "destroyed will be lost (including non-recalled units)"
 msgid ""
 "Note: every unit not south of the bridge when it is destroyed will be lost "
 "(including non-recalled units)"
@@ -2751,16 +2744,12 @@ msgstr ""
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:224
-#, fuzzy
-#| msgid ""
-#| "Very well, we’ll protect you from the undead. But we can’t help you until "
-#| "we get across this river. Now let’s go!"
 msgid ""
 "Very well, we’ll protect you from the undead. But we can’t help you until we "
 "get off this island. Now let’s go!"
 msgstr ""
 "Moi ben, protexerémoste dos non mortos. Pero non podemos axudarte ata que "
-"crucemos o río. Vamos!"
+"saiamos desta illa. Vamos!"
 
 #. [message]: speaker=Engineer
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:228

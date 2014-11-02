@@ -7,12 +7,12 @@
 # Fran Diéguez <fran dot dieguez at glug dot es>, 2008, 2010.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2010.
 # Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail.com>, 2011.
-# Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail.com>, 2011, 2012, 2013.
+# Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail.com>, 2011, 2012, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "POT-Creation-Date: 2014-03-23 18:06+0100\n"
-"PO-Revision-Date: 2013-12-06 10:05+0100\n"
+"PO-Revision-Date: 2014-10-26 09:09+0100\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -205,16 +205,13 @@ msgstr "Substitúe o directorio dos datos polo directorio indicado."
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:63
-#, fuzzy, no-wrap
-#| msgid "B<--path>"
+#, no-wrap
 msgid "B<--data-path>"
-msgstr "B<--path>"
+msgstr "B<--data-path>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:66
-#, fuzzy
-#| msgid "prints the name of the game data directory and exits."
 msgid "path the path of the data directory and exits."
 msgstr "Devolve o directorio de datos do xogo."
 
@@ -658,20 +655,13 @@ msgstr "Executa o xogo nun pequeno escenario de proba."
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:198
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--userconfig-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ nome>"
+msgstr "B<--userconfig-dir>I<\\ nome>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:207
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#| "path for the configuration directory outside the $HOME or \"My Documents"
-#| "\\eMy Games\""
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -682,15 +672,16 @@ msgstr ""
 "Define I<nome> coma o nome do cartafol da configuración do usuario no seu "
 "directorio persoal («$HOME») ou «Os meus documentos\\eOs meus xogos» en "
 "Windows. Tamén podes indicar unha ruta absoluta para o directorio da "
-"configuración fóra dos antes mencionados."
+"configuración fóra dos antes mencionados. En X11 o cartafol predeterminado é "
+"«$XDG_CONFIG_HOME» ou «$HOME/.config/wesnoth», noutros sistemas é a ruta de "
+"datos do usuario."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:207
-#, fuzzy, no-wrap
-#| msgid "B<--config-path>"
+#, no-wrap
 msgid "B<--userconfig-path>"
-msgstr "B<--config-path>"
+msgstr "B<--userconfig-path>"
 
 # type: Plain text
 #. type: Plain text
@@ -701,45 +692,35 @@ msgstr "Devolve a ruta do directorio da configuración do usuario."
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:210
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--userdata-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ nome>"
+msgstr "B<--userdata-dir>I<\\ nome>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:217
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#| "path for the configuration directory outside the $HOME or \"My Documents"
-#| "\\eMy Games\""
 msgid ""
 "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
 "Games\" for windows.  You can also specify an absolute path for the userdata "
 "directory outside the $HOME or \"My Documents\\eMy Games\"."
 msgstr ""
-"Define I<nome> coma o nome do cartafol da configuración do usuario no seu "
+"Define I<nome> coma o nome do cartafol dos datos do usuario no seu "
 "directorio persoal («$HOME») ou «Os meus documentos\\eOs meus xogos» en "
-"Windows. Tamén podes indicar unha ruta absoluta para o directorio da "
-"configuración fóra dos antes mencionados."
+"Windows. Tamén podes indicar unha ruta absoluta para o directorio dos datos "
+"fóra dos antes mencionados."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:217
-#, fuzzy, no-wrap
-#| msgid "B<--path>"
+#, no-wrap
 msgid "B<--userdata-path>"
-msgstr "B<--path>"
+msgstr "B<--userdata-path>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:220
-#, fuzzy
-#| msgid "prints the path of the user configuration directory and exits."
 msgid "prints the path of the userdata directory and exits."
-msgstr "Devolve a ruta do directorio da configuración do usuario."
+msgstr "Devolve a ruta do directorio dos datos do usuario."
 
 # type: TP
 #. type: TP
