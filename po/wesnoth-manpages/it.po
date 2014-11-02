@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2014-03-23 18:06+0100\n"
-"PO-Revision-Date: 2014-02-25 23:50-0000\n"
+"PO-Revision-Date: 2014-10-25 14:25-0000\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -106,7 +106,7 @@ msgstr ""
 "combattimento, avendo cura di gestire le tue risorse di oro e villaggi. Ogni "
 "unità ha punti di forza e debolezze: per vincere, schiera le tue forze nel "
 "modo più vantaggioso impedendo al nemico di fare altrettanto. Le unità, con "
-"l'esperienza, acquistano nuove abilità e diventano più potenti. Gioca nella "
+"l’esperienza, acquistano nuove abilità e diventano più potenti. Gioca nella "
 "tua lingua e metti alla prova le tue capacità contro un abile nemico "
 "controllato dal computer, o unisciti alla numerosa comunità di giocatori on-"
 "line.Crea le tue unità personalizzate, scenari o campagne, e condividile con "
@@ -151,7 +151,7 @@ msgstr ""
 "Se non si specifica un identificatore, comparirà un menù dal quale sarà "
 "possibile selezionare una campagna. B<Nota:> Quando si usa questo switch, "
 "verifica attentamente di aver messo come ultimo parametro la directory dei "
-"dati, altrimenti il gioco scambierà l'identificatore della campagna/scenario "
+"dati, altrimenti il gioco scambierà l’identificatore della campagna/scenario "
 "per la directory."
 
 #. type: TP
@@ -198,16 +198,13 @@ msgstr "sostituisce la directory dei dati con quella specificata"
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:63
-#, fuzzy, no-wrap
-#| msgid "B<--path>"
+#, no-wrap
 msgid "B<--data-path>"
-msgstr "B<--path>"
+msgstr "B<--data-path>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:66
-#, fuzzy
-#| msgid "prints the name of the game data directory and exits."
 msgid "path the path of the data directory and exits."
 msgstr "stampa il nome della cartella contenente i dati del gioco ed esce."
 
@@ -225,7 +222,7 @@ msgid ""
 "enables additional command mode options in-game (see the wiki page at http://"
 "www.wesnoth.org/wiki/CommandMode for more information about command mode)."
 msgstr ""
-"abilita le opzioni aggiuntive di controllo all'interno del gioco (vedi il "
+"abilita le opzioni aggiuntive di controllo all’interno del gioco (vedi il "
 "wiki presso http://www.wesnoth.org/wiki/CommandMode per maggiori "
 "informazioni sulla shell di comando)."
 
@@ -243,7 +240,7 @@ msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-l --load>"
 msgstr ""
-"avvia il gioco direttamente dall'editor per le partite. Se I<file> è "
+"avvia il gioco direttamente dall’editor per le partite. Se I<file> è "
 "specificato, equivale a B<-l --load>"
 
 # type: TP
@@ -290,7 +287,7 @@ msgid ""
 "decompresses a file which should be in gzip format and stores it without "
 "the .gz suffix. The I<infile.gz> will be removed."
 msgstr ""
-"decomprime un file che dev'essere in formato gzip e lo memorizza senza "
+"decomprime un file che dev’essere in formato gzip e lo memorizza senza "
 "suffisso .gz. Il file I<infile.gz> sarà rimosso."
 
 # type: TP
@@ -344,7 +341,7 @@ msgid ""
 msgstr ""
 "carica il salvataggio I<file> dalla directory standard dei salvataggi. Se "
 "usato insime alle optioni B<-e> o B<--editor>, lancia l’editor con aperta la "
-"mappa del I<file>. Se è una directory, l'editor lancerà una finestra di "
+"mappa del I<file>. Se è una directory, l’editor lancerà una finestra di "
 "dialogo con un elenco di mappe caricabili. "
 
 # type: TP
@@ -653,20 +650,13 @@ msgstr "esegue il gioco con un piccolo scenario di test."
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:198
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--userconfig-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ nome>"
+msgstr "B<--userconfig-dir>I<\\ nome>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:207
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#| "path for the configuration directory outside the $HOME or \"My Documents"
-#| "\\eMy Games\""
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -674,18 +664,19 @@ msgid ""
 "Games\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/"
 "wesnoth, on other systems to the userdata path."
 msgstr ""
-"imposta la directory di configurazione dell'utente a I<nome> sotto $HOME o "
+"imposta la directory di configurazione dell’utente a I<nome> sotto $HOME o "
 "\"My Documents\\eMy Games\" per Windows. Puoi anche specificare un percorso "
 "assoluto per la directory di configurazione al di fuori di $HOME o \"My "
-"Documents\\eMy Games\""
+"Documents\\eMy Games\". In ambiente X11 lo la directory standard è "
+"$XDG_CONFIG_HOME o $HOME/.config/wesnoth, in altri ambienti corrisponde alla "
+"directory contenente i dati utente."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:207
-#, fuzzy, no-wrap
-#| msgid "B<--config-path>"
+#, no-wrap
 msgid "B<--userconfig-path>"
-msgstr "B<--config-path>"
+msgstr "B<--userconfig-path>"
 
 # type: Plain text
 #. type: Plain text
@@ -696,26 +687,19 @@ msgstr "stampa il percorso della cartella di configurazione ed esce."
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:210
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--userdata-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ nome>"
+msgstr "B<--userdata-dir>I<\\ nome>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:217
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#| "path for the configuration directory outside the $HOME or \"My Documents"
-#| "\\eMy Games\""
 msgid ""
 "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
 "Games\" for windows.  You can also specify an absolute path for the userdata "
 "directory outside the $HOME or \"My Documents\\eMy Games\"."
 msgstr ""
-"imposta la directory di configurazione dell'utente a I<nome> sotto $HOME o "
+"imposta la directory di configurazione dell’utente a I<nome> sotto $HOME o "
 "\"My Documents\\eMy Games\" per Windows. Puoi anche specificare un percorso "
 "assoluto per la directory di configurazione al di fuori di $HOME o \"My "
 "Documents\\eMy Games\""
@@ -723,18 +707,16 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:217
-#, fuzzy, no-wrap
-#| msgid "B<--path>"
+#, no-wrap
 msgid "B<--userdata-path>"
-msgstr "B<--path>"
+msgstr "B<--userdata-path>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:220
-#, fuzzy
-#| msgid "prints the path of the user configuration directory and exits."
 msgid "prints the path of the userdata directory and exits."
-msgstr "stampa il percorso della cartella di configurazione ed esce."
+msgstr ""
+"stampa il percorso della cartella di configurazione dell’utente ed esce."
 
 # type: TP
 #. type: TP
@@ -786,7 +768,7 @@ msgstr "B<--with-replay>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:234
 msgid "replays the game loaded with the B<--load> option."
-msgstr "esegue il replay della partita caricata con l'opzione B<--load>."
+msgstr "esegue il replay della partita caricata con l’opzione B<--load>."
 
 # type: SH
 #. type: SH
@@ -821,7 +803,7 @@ msgstr "B<--ai_config>I<number>B<=>I<value>"
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
 msgstr ""
-"seleziona un file di configurazione da caricare per il controllo dell'IA di "
+"seleziona un file di configurazione da caricare per il controllo dell’IA di "
 "questa fazione."
 
 # type: TP
@@ -838,7 +820,7 @@ msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. Available values: B<idle_ai> and B<sample_ai>."
 msgstr ""
-"seleziona un algoritmo non standard per il controllo dell'IA di questa "
+"seleziona un algoritmo non standard per il controllo dell’IA di questa "
 "fazione. Valori disponibili: B<idle_ai> e B<sample_ai>."
 
 # type: TP
@@ -872,7 +854,7 @@ msgid ""
 "The era is chosen by an id. Eras are described in the B<data/multiplayer/"
 "eras.cfg> file."
 msgstr ""
-"usa questa opzione per giocare nell'era selezionata invece che in quella "
+"usa questa opzione per giocare nell’era selezionata invece che in quella "
 "B<Default>. L'era è scelta per ID. Le ere sono descritte nel file data/"
 "multiplayer.cfg."
 
@@ -892,7 +874,7 @@ msgid ""
 "benchmarking."
 msgstr ""
 "esce quando lo scenario è finito, senza mostrare la finestra delle vittorie/"
-"sconfitte, che richiede che l'utente prema il pulsante OK. Anche questa "
+"sconfitte, che richiede che l’utente prema il pulsante OK. Anche questa "
 "opzione è usata per eseguire dei benchmark con script."
 
 #. type: TP
@@ -938,7 +920,7 @@ msgid ""
 "the desired effect."
 msgstr ""
 "esegue il gioco senza GUI. Deve apparire prima di B<--multiplayer> per avere "
-"l'effetto desiderato."
+"l’effetto desiderato."
 
 # type: TP
 #. type: TP
@@ -991,7 +973,7 @@ msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
 msgstr ""
-"seleziona una fazione dell'era attuale per questa squadra. La fazione è "
+"seleziona una fazione dell’era attuale per questa squadra. La fazione è "
 "scelta per ID. Le fazioni sono descritte nel file data/multiplayer.cfg."
 
 # type: TP
@@ -1006,7 +988,7 @@ msgstr "B<--turns=>I<valore>"
 #: ../../doc/man/wesnoth.6:306
 msgid "sets the number of turns for the chosen scenario. The default is B<50>."
 msgstr ""
-"imposta il numero di turni per lo scenario scelto. L'impostazione standard è "
+"imposta il numero di turni per lo scenario scelto. L’impostazione standard è "
 "B<50>."
 
 #. type: SH
@@ -1090,7 +1072,7 @@ msgstr ""
 "Questo gioco è rilasciato come Software Libero; viene rilasciato secondo i "
 "termini della licenza GPL versione 2 come pubblicata dalla Free Software "
 "Foundation. Non è fornita nessuna garanzia, né per la COMMERCIALIZZAZIONE né "
-"per l'ADEGUATEZZA AD UNO SCOPO PARTICOLARE."
+"per l’ADEGUATEZZA AD UNO SCOPO PARTICOLARE."
 
 # type: SH
 #. type: SH
@@ -1247,7 +1229,7 @@ msgid ""
 "sets the maximum number of waiting worker threads for network I/O to n "
 "(default: B<5>,\\ max:\\ B<30>)."
 msgstr ""
-"imposta il numero massimo di thread da usare per l'I/O (valore predefinito: "
+"imposta il numero massimo di thread da usare per l’I/O (valore predefinito: "
 "B<5>,\\ massimo:\\ B<30>)."
 
 # type: TP
@@ -1264,7 +1246,7 @@ msgid ""
 "sets the maximum number of worker threads that will be created.  If set to "
 "B<0> there will be no limit (default: B<0>)."
 msgstr ""
-"imposta il numero massimo di thread da creare. Se vale B<0> non c'è limite "
+"imposta il numero massimo di thread da creare. Se vale B<0> non c’è limite "
 "(valore predefinito: B<0>)."
 
 # type: TP
@@ -1372,7 +1354,7 @@ msgid ""
 "and write.  Bans will be saved to this file and read again on server start."
 msgstr ""
 "Percorso completo o relativo ad un file (compresso con gzip) che il server "
-"possa scrivere e leggere. L'elenco degli utenti messi al bando sarà "
+"possa scrivere e leggere. L’elenco degli utenti messi al bando sarà "
 "conservato in questo file e letto a tutti gli avvii del server.Percorso "
 "completo o relativo ad un file (compresso con gzip) che il server possa "
 "scrivere e leggere. L'elenco degli utenti messi al bando sarà conservato in "
@@ -1483,7 +1465,7 @@ msgid ""
 "The time period (in seconds) message flooding is detected in. (default: "
 "B<10> seconds)"
 msgstr ""
-"Il periodo di tempo (in secondi) entro il quale rilevare un'inondazione di "
+"Il periodo di tempo (in secondi) entro il quale rilevare un’inondazione di "
 "messaggi (valore predefinito: B<10> secondi)."
 
 # type: TP
@@ -1589,7 +1571,7 @@ msgid ""
 "loaded and not saved."
 msgstr ""
 "Percorso del file in cui memorizzare le informazioni sulle stanze. Questo "
-"file è letto all'avvio del server e vi viene scritto in seguito. Se è vuoto "
+"file è letto all’avvio del server e vi viene scritto in seguito. Se è vuoto "
 "o non impostato, le stanze non saranno caricate o salvate."
 
 #. type: TP
@@ -1724,7 +1706,7 @@ msgid ""
 "B<[ban_time]> A tag to define convenient keywords for temporary ban time "
 "lengths."
 msgstr ""
-"B<[ban_time]> Un'etichetta per definire parole chiave comode per periodi di "
+"B<[ban_time]> Un’etichetta per definire parole chiave comode per periodi di "
 "messa al bando temporanei."
 
 # type: TP
@@ -1802,7 +1784,7 @@ msgstr "B<db_host>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:225
 msgid "(for user_handler=forum) The hostname of the database server"
-msgstr "(per user_handler=forum) L'hostname del server del database"
+msgstr "(per user_handler=forum) L’hostname del server del database"
 
 # type: TP
 #. type: TP
@@ -1831,7 +1813,7 @@ msgid ""
 "(for user_handler=forum) The name of the user under which to log into the "
 "database"
 msgstr ""
-"(per user_handler=forum) Il nome dell'utente con cui connettersi al database"
+"(per user_handler=forum) Il nome dell’utente con cui connettersi al database"
 
 # type: TP
 #. type: TP
@@ -1912,7 +1894,7 @@ msgid ""
 "B<[mail]> Configures an SMTP server through which the user handler can send "
 "mail. Currently only used by the sample user handler."
 msgstr ""
-"B<[mail]> Configura un server SMTP attraverso il quale l'utente può inviare "
+"B<[mail]> Configura un server SMTP attraverso il quale l’utente può inviare "
 "e-mail. Attualmente utilizzato soltanto dallo user_handler sample."
 
 # type: TP
@@ -1926,7 +1908,7 @@ msgstr "B<server>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:252
 msgid "The hostname of the mail server"
-msgstr "L'hostname del sever della posta"
+msgstr "L’hostname del sever della posta"
 
 # type: TP
 #. type: TP
@@ -1965,7 +1947,7 @@ msgstr "B<from_address>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:261
 msgid "The reply-to address of you mail."
-msgstr "L'indirizzo reply-to della tua posta."
+msgstr "L’indirizzo reply-to della tua posta."
 
 # type: TP
 #. type: TP

@@ -2,16 +2,18 @@
 # Hungarian translations for PACKAGE package.
 # Copyright (C) 2013 Wesnoth development team
 # This file is distributed under the same license as the PACKAGE package.
-# Automatically generated, 2013.
 #
+# Automatically generated, 2013.
+# Farkas János <mail.janos.farkas@gmail.com>, 2014.
+# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2014.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-10-11 10:43+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2014-10-24 20:20+0200\n"
+"PO-Revision-Date: 2014-10-31 22:38+0100\n"
+"Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
+"Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,63 +21,64 @@ msgstr ""
 "#-#-#-#-#  wesnoth-ai.cpp.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "#-#-#-#-#  wesnoth-ai.wml.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.5\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:5
 msgid "Multiplayer_AI^Default AI (RCA)"
-msgstr ""
+msgstr "Alapértelmezett MI (RCA)"
 
 #. [ai]: id=ai_default_rca_strong
 #: data/ai/ais/ai_default_rca_strong.cfg:5
 msgid "Multiplayer_AI^Strong AI (RCA)"
-msgstr ""
+msgstr "Erős MI (RCA)"
 
 #. [ai]: id=experimental_ai
 #: data/ai/ais/ai_generic_rush.cfg:5
 msgid "Multiplayer_AI^Experimental AI"
-msgstr ""
+msgstr "Kísérleti MI"
 
 #. [ai]: id=ai_old_recruitment
 #: data/ai/dev/ai_old_recruitment.cfg:5
 msgid "Multiplayer_AI^Dev AI: Default + Old Recruitment"
-msgstr ""
+msgstr "Fejlesztői MI: alapértelmezett + régi toborzás"
 
 #. [ai]: id=ai_akihara
 #: data/ai/dev/akihara_recruitment.cfg:6
 msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (C++ Akihara)"
-msgstr ""
+msgstr "Fejlesztői MI: alapértelmezett + kísérleti toborzás (C++ Akihara)"
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/dev/formula_ai.cfg:4
 msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (Formula AI)"
-msgstr ""
+msgstr "Fejlesztői MI: alapértelmezett + kísérleti toborzás (minta MI)"
 
 #. [ai]: id=default_ai_poisoning
 #: data/ai/dev/formula_ai_poisoning.cfg:5
 msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
-msgstr ""
+msgstr "Fejlesztői MI: alapértelmezett + mérgezés (minta MI)"
 
 #. [ai]: id=ai_idle
 #: data/ai/dev/idle_ai.cfg:4
 msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr ""
+msgstr "Fejlesztői MI: tétlen MI"
 
 #. [ai]: id=testing_ai_recruitment
 #: data/ai/dev/testing_recruiting.cfg:5
 msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (C++)"
-msgstr ""
+msgstr "Fejlesztői MI: alapértelmezett + kísérleti toborzás (C++)"
 
 #. [test]: id=The_Elves_Besieged
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:5
 msgid "The Elves Besieged"
-msgstr ""
+msgstr "Tünde-föld ostroma"
 
 #. [side]: type=Spearman, id=Konrad
 #. [unit]: type=Spearman, id=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:34
 #: data/ai/micro_ais/scenarios/patrols.cfg:93
 msgid "Konrad"
-msgstr ""
+msgstr "Konrad"
 
 #. [side]: type=Elvish Champion, id=Galdrad
 #. [side]: type=Elvish Shyde, id=Chantal
@@ -84,17 +87,17 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:154
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:174
 msgid "Rebels"
-msgstr ""
+msgstr "Lázadók"
 
 #. [unit]: id=Delfador, type=Elder Mage
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:49
 msgid "Delfador"
-msgstr ""
+msgstr "Delfador"
 
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:88
 msgid "Urug-Telfar"
-msgstr ""
+msgstr "Urug-Telfar"
 
 #. [side]: id=Vanak, type=Orcish Ruler
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
@@ -105,42 +108,49 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:132
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:23
 msgid "Orcs"
-msgstr ""
+msgstr "Orkok"
 
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:107
 msgid "Knafa-Tan"
-msgstr ""
+msgstr "Knafa-Tan"
 
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:125
 msgid "Maga-Knafa"
-msgstr ""
+msgstr "Maga-Knafa"
 
 #. [side]: type=Elvish Champion, id=Galdrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:144
 msgid "Galdrad"
-msgstr ""
+msgstr "Galdrad"
 
 #. [side]: type=Elvish Shyde, id=Chantal
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:161
 msgid "Chantal"
-msgstr ""
+msgstr "Chantal"
 
 #. [message]: speaker=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:211
 msgid ""
 "Master Delfador! Look, there are orcs coming from all directions! What shall "
 "we do?"
-msgstr ""
+msgstr "Delfador mester! Nézd, orkok közelednek minden irányból! Mit tegyünk?"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:215
 msgid "There are too many to fight, far too many. We must escape!"
-msgstr ""
+msgstr "Túl sokan vannak a harchoz, túlságosan sokan. El kell menekülnünk!"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:218
+#, fuzzy
+#| msgid ""
+#| "This is a reenactment of scenario \"The Elves Besieged\" of the mainline "
+#| "campaign \"Heir to the Throne\", just that the AI is playing Konrad's "
+#| "side here. The goal is to move Konrad to the signpost in the northwest, "
+#| "while keeping both Konrad and Delfador alive. The same AI as in scenario "
+#| "\"Protect Unit"
 msgid ""
 "This is a reenactment of scenario The Elves Besieged of the mainline "
 "campaign Heir to the Throne, just that the AI is playing Konrad's side here. "
@@ -153,16 +163,20 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Ez az pálya a „Trónörökös” hadjárat „Tünde-föld ostroma” pályájának az "
+"újraírt verziója, csak most az MI Konrad oldalán áll. A pálya célja, hogy "
+"Konradot az északnyugati útjelző táblához vidd. Konradnak és Delfadornak "
+"életben kell maradnia. "
 
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:224
 msgid "Move Konrad here"
-msgstr ""
+msgstr "Lépj Konraddal ide"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:240
 msgid "Very well, we have made it this far! But where do we go next?"
-msgstr ""
+msgstr "Nagyon jó, eddig eljutottunk. De merre tovább?"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:245
@@ -170,42 +184,44 @@ msgid ""
 "In HttT, we would travel north now, and try to make it to the Isle of "
 "Alduin. But for this demo campaign, we'll call it good here."
 msgstr ""
+"A „Trónörökös” hadjáratban most észak felé mennénk, és megpróbálnánk elérni "
+"Alduin szigetét. De ebben a bemutató hadjáratban jó lesz nekünk itt is."
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:270
 msgid "I... I don’t think I can make it anymore."
-msgstr ""
+msgstr "Nem... nem hiszem, hogy akár egy pillanatig is bírom tovább."
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:274
 msgid "Prince... you must keep fighting! Nooooooo!"
-msgstr ""
+msgstr "Hercegem... tovább kell harcolnod! Neeeeee!"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:278
 msgid "It is over. I am doomed..."
-msgstr ""
+msgstr "Elvesztünk! Ez a végzetem!"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:292
 msgid "I have... have failed in my duty to protect the prince! I am defeated."
-msgstr ""
+msgstr "Nem sikerült... nem tudtam megvédeni a herceget! Elbuktam."
 
 #. [message]: speaker=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:296
 msgid "Don’t die, Delfador! Please, you have to stay alive!"
-msgstr ""
+msgstr "Delfador, ne halj meg! Életben kell maradnod!"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:300
 msgid "Ugh!"
-msgstr ""
+msgstr "Áááá!"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:311
 msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
-msgstr ""
+msgstr "Ó, jaj! Kifutottunk az időből, az ellenség erősítést hozott..."
 
 #: data/ai/micro_ais/scenarios/animals.cfg:4
 msgid ""
@@ -231,6 +247,27 @@ msgid ""
 "Wolves Multipack AI (used in a different scenario), this Wolves AI combines "
 "all wolves of the side in the same pack."
 msgstr ""
+"<u>Általánosságban</u>: ezek az MI-k bemutatják (bizonyos mértékig), hogy az "
+"állatok hogyan viselkednek a valóságban. Ebbe beletartozik, hogy csak "
+"állatok, tehát nem feltétlenül túl okosak: például a farkasok falkában "
+"vadásznak, de könnyen elvonja a figyelmüket egy felbukkanó másik préda. "
+"Megfelelő a vadásztudományuk, de nem kiemelkedően jó, így csak néha sikerül "
+"a szarvasok bekerítése. A legtöbb esetben ez szándékos.\n"
+"\n"
+"<u>Medvék (a hullazabálók helyett), pókok és jetik</u>: általában csak "
+"barangolnak a területükön. Kitérnek egymás és kutyák elől, de sarokba "
+"szorítva egymásnak esnek. Megtámadják a többi, gyengébb állatot (pl. "
+"szarvas), ha túl közel kerülnek.\n"
+"\n"
+"<u>Farkasok</u>: falkában vadásznak. Aktívan követik a legközelebbi szarvast "
+"(amíg az erdőben marad), és megpróbálják bekeríteni (nem mindig sikeresen), "
+"viszont könnyedén megzavarhatja őket egy másik felbukkanó préda. "
+"Megpróbálják elkerülni a medvéket, pókokat, kutyákat és jetiket, hacsak nem "
+"épp kifejezetten a falka akar támadni. Ha megfelelően hosszan hagyod őket "
+"mozogni, azt is megtanulják, hogy nem egészséges megtámadni a vaddisznókat. "
+"Ha nem maradt több szarvas, véletlenszerűen kóborolnak. Megjegyzendő, hogy a "
+"Farkas Multipack MI-vel (más hadjáratokban) szemben ez a Farkas MI egyesíti "
+"az összes farkas típust egy falkában."
 
 #: data/ai/micro_ais/scenarios/animals.cfg:12
 msgid ""
@@ -273,12 +310,12 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/animals.cfg:27
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:44
 msgid "Animals"
-msgstr ""
+msgstr "Állatok"
 
 #. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:40
 msgid "Rutburt"
-msgstr ""
+msgstr "Rutburt"
 
 #. [side]: id=Rutburt, type=Outlaw
 #. [side]: type=General, id=leader2
@@ -290,27 +327,27 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/goto.cfg:109
 #: data/ai/micro_ais/scenarios/wolves.cfg:26
 msgid "Humans"
-msgstr ""
+msgstr "Emberek"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:62
 msgid "Forest Creatures"
-msgstr ""
+msgstr "Erdei teremtmények"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:76
 msgid "Ghasts"
-msgstr ""
+msgstr "Hullazabálók"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:90
 msgid "Spiders"
-msgstr ""
+msgstr "Pókok"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:104
 msgid "Yetis"
-msgstr ""
+msgstr "Jetik"
 
 #. [event]
 #. [side]
@@ -319,12 +356,12 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:47
 #: data/ai/micro_ais/scenarios/wolves.cfg:5
 msgid "Wolves"
-msgstr ""
+msgstr "Farkasok"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:132
 msgid "Whelps"
-msgstr ""
+msgstr "Suhancok"
 
 #. [event]
 #. [set_menu_item]: id=m01_end_animals
@@ -378,7 +415,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:135
 #: data/ai/micro_ais/scenarios/wolves.cfg:195
 msgid "Question for the Player"
-msgstr ""
+msgstr "Kérdés a játékosnak"
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/animals.cfg:352
@@ -427,7 +464,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/animals.cfg:385
 #: data/ai/micro_ais/scenarios/wolves.cfg:234
 msgid "Death of Rutburt"
-msgstr ""
+msgstr "Rutburt elesik"
 
 #. [note]
 #: data/ai/micro_ais/scenarios/animals.cfg:389
@@ -444,21 +481,25 @@ msgid ""
 "Translation: Those Ogres are mean!  We better stay away from them and their "
 "young."
 msgstr ""
+"Yow!\n"
+"Fordítás: Azok az ogrék utálatosak! Jobb lesz, ha távol tartjuk magunkat "
+"tőlük és a suhancaiktól."
 
 #. [test]: id=bottleneck_defense
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:5
 msgid "Bottleneck Defense"
-msgstr ""
+msgstr "Palacknyak-védelem"
 
 #. [side]: type=Orcish Leader, id=Big Bad Orc
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:37
 msgid "Big Bad Orc"
-msgstr ""
+msgstr "Nagy Gonosz Ork"
 
 #. [event]: (id=Big Bad Orc) profile profile}
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:84
+#, fuzzy
 msgid "All right, chaps. Those orcs need to be stopped."
-msgstr ""
+msgstr "Oké, srácok! Ezeket az orkokat meg kell állítani."
 
 #. [event]: (id=Big Bad Orc) profile profile}
 #. [event]: id=Kraa profile profile}
@@ -466,8 +507,9 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:86
 #: data/ai/micro_ais/scenarios/guardians.cfg:510
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:134
+#, fuzzy
 msgid "They there!  We them get!"
-msgstr ""
+msgstr "Ott vannak! Mi elkapunk őket!"
 
 #. [event]: (id=Big Bad Orc) profile profile}
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:89
@@ -509,13 +551,15 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:117
+#, fuzzy
 msgid "Defeat all humans"
-msgstr ""
+msgstr "Öld meg az összes embert"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:121
+#, fuzzy
 msgid "Death of Big Bad Orc"
-msgstr ""
+msgstr "Gonosz Nagy Ork halála"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:125
@@ -538,7 +582,7 @@ msgstr ""
 #. [side]
 #: data/ai/micro_ais/scenarios/dragon.cfg:21
 msgid "team_name^Rowck"
-msgstr ""
+msgstr "Rowck"
 
 #. [side]: type=Dread Bat, id=Dreadful Bat
 #: data/ai/micro_ais/scenarios/dragon.cfg:32
@@ -553,7 +597,7 @@ msgstr ""
 #. [unit]: id=Rowck, type=Fire Dragon
 #: data/ai/micro_ais/scenarios/dragon.cfg:54
 msgid "Rowck"
-msgstr ""
+msgstr "Rowck"
 
 #. [event]: (id=Dreadful Bat) profile profile}
 #: data/ai/micro_ais/scenarios/dragon.cfg:80
@@ -591,7 +635,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/dragon.cfg:97
 msgid "Defeat Rowck"
-msgstr ""
+msgstr "Legyőzöd Rowckot"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/dragon.cfg:101
@@ -600,8 +644,9 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/dragon.cfg:105
+#, fuzzy
 msgid "Death of the bat leader"
-msgstr ""
+msgstr "Denevér vezér halála"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:138
@@ -612,13 +657,14 @@ msgstr ""
 #. [test]: id=goto
 #: data/ai/micro_ais/scenarios/goto.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:83
+#, fuzzy
 msgid "Goto"
-msgstr ""
+msgstr "Menj"
 
 #. [side]: id=Vaddan, type=Outlaw
 #: data/ai/micro_ais/scenarios/goto.cfg:26
 msgid "Vaddan"
-msgstr ""
+msgstr "Vaddan"
 
 #. [side]: type=Poacher, id=leader3
 #: data/ai/micro_ais/scenarios/goto.cfg:59
@@ -627,8 +673,9 @@ msgstr ""
 
 #. [side]: type=Saurian Flanker, id=leader4
 #: data/ai/micro_ais/scenarios/goto.cfg:75
+#, fuzzy
 msgid "Saurians"
-msgstr ""
+msgstr "Gyíkok"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/goto.cfg:124
@@ -642,13 +689,15 @@ msgstr ""
 
 #. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
 #: data/ai/micro_ais/scenarios/goto.cfg:184
+#, fuzzy
 msgid "General Minry"
-msgstr ""
+msgstr "Minry tábornok"
 
 #. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
 #: data/ai/micro_ais/scenarios/goto.cfg:185
+#, fuzzy
 msgid "Lieutenant Gadoc"
-msgstr ""
+msgstr "Gadoc hadnagy"
 
 #. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
 #: data/ai/micro_ais/scenarios/goto.cfg:186
@@ -703,8 +752,9 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/goto.cfg:423
+#, fuzzy
 msgid "Death of Vaddan"
-msgstr ""
+msgstr "Vaddan halála"
 
 #. [message]: speaker=messenger1
 #: data/ai/micro_ais/scenarios/goto.cfg:438
@@ -743,8 +793,9 @@ msgstr ""
 
 #. [event]: id=ghost1}
 #: data/ai/micro_ais/scenarios/goto.cfg:471
+#, fuzzy
 msgid "O no, a ghost!"
-msgstr ""
+msgstr "Jaj ne, egy szellem!"
 
 #. [event]: id=ghost1}
 #: data/ai/micro_ais/scenarios/goto.cfg:472
@@ -815,10 +866,13 @@ msgstr ""
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:631
+#, fuzzy
 msgid ""
 "Very good, $unit.language_name. Now go help your comrade get rid of that "
 "saurian infestation in the swamps."
 msgstr ""
+"Nagyon jó, $unit.language_name. Most menj és segíts a bajtársadnak "
+"megszabadulni a gyík fertőzéstől a mocsarakban."
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:639
@@ -1151,8 +1205,9 @@ msgstr ""
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/guardians.cfg:523
 #: data/ai/micro_ais/scenarios/patrols.cfg:234
+#, fuzzy
 msgid "Defeat all enemy units"
-msgstr ""
+msgstr "Legyőzöd az összes ellenséges egységet"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/guardians.cfg:527
