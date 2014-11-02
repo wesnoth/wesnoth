@@ -368,7 +368,7 @@ set_target_properties(wesnoth-lua
 			"${CXX_FLAG_NO_OLD_STYLE_CAST} ${CXX_FLAG_NO_USELESS_CAST}"
 )
 set_source_files_properties(
-	clipboard.cpp
+	desktop/clipboard.cpp
 	desktop/notifications.cpp
 	network.cpp
 	network_worker.cpp
