@@ -131,7 +131,10 @@ if env['OS_ENV']:
 
 # Make sure the user's environment is always available
 env['ENV']['PATH'] = os.environ.get("PATH")
-env['ENV']['TERM'] = os.environ.get("TERM")
+term = os.environ.get('TERM')
+if term is not None:
+    env['ENV']['TERM'] = term
+
 if env["PLATFORM"] == "win32":
     env.Tool("mingw")
 elif env["PLATFORM"] == "sunos":
