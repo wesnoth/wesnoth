@@ -4,9 +4,9 @@
 # trewe <sjrs456@yahoo.fr>, 2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.12\n"
+"Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth-manpages)\n"
 "POT-Creation-Date: 2013-11-16 09:28+0100\n"
-"PO-Revision-Date: 2013-12-07 14:48+0100\n"
+"PO-Revision-Date: 2014-10-28 12:18-0000\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
 "Language: pt\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.6.10\n"
 
 # type: TH
 #. type: TH
@@ -160,7 +160,7 @@ msgid ""
 "dir."
 msgstr ""
 "vai directamente para a campanha com base nos parâmetros. Podes escolher a "
-"campanha duma lista se não especificaste nenhuma.  B<Nota:> Ao usar esta "
+"campanha de uma lista se não especificaste nenhuma.  B<Nota:> Ao usar esta "
 "opção por favor, verifique se especificaste o caminho do directório de dados "
 "como o argumento final, caso contrário o jogo vai tomar a ID da campanha / "
 "cenário como os dados padrão."
@@ -198,18 +198,22 @@ msgid ""
 msgstr ""
 "A ID do cenário da campanha escolhida. Por predefinição o primeiro cenário."
 
-#
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:60
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--userconfig-dir>I<\\ name>"
 msgid "B<--config-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ name>"
+msgstr "B<--userconfig-dir>I<\\ nome>"
 
-#
 # Como são chamados os directórios em Windows quando portugues é definido como idioma padrão? É que uso linux e windows em inglês britanico...
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:67
+#, fuzzy
+#| msgid ""
+#| "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
+#| "Games\" for windows.  You can also specify an absolute path for the "
+#| "userdata directory outside the $HOME or \"My Documents\\eMy Games\"."
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -220,13 +224,13 @@ msgstr ""
 "\\Os Meus Jogos” em Windows.  Também podes especificar o caminho absoluto "
 "para as configurações fora de $HOME ou “Os meus Documentos\\Os Meus Jogos”."
 
-#
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:67
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--userconfig-path>"
 msgid "B<--config-path>"
-msgstr "B<--config-path>"
+msgstr "B<--userconfig-path>"
 
 #
 # type: Plain text
@@ -302,7 +306,7 @@ msgid ""
 "displays the number of frames per second the game is currently running at, "
 "in a corner of the screen."
 msgstr ""
-"mostra o número de imagens por segundo jogo, o está actualmente em execução, "
+"mostra o número de imagens por segundo jogo, o está atualmente em execução, "
 "a um canto da tela."
 
 #
@@ -473,8 +477,8 @@ msgid ""
 "together with B<--multiplayer> as explained below. Only these additional "
 "options can follow B<--multiplayer>."
 msgstr ""
-"inicia um jogo multijogador. Existem opções adicionais que podem ser usados "
-"em conjunto com este comando conforme explicado abaixo. E só estas opções "
+"inicia um jogo em rede. Existem opções adicionais que podem ser usados em "
+"conjunto com este comando conforme explicado abaixo. E só estas opções "
 "adicionais podem seguir B<--multiplayer>."
 
 #
@@ -493,7 +497,7 @@ msgid ""
 "runs the game without any delays for graphic benchmarking. This is "
 "automatically enabled by B<--nogui>."
 msgstr ""
-"executa o jogo sem atrasos para benchmark de gráficos. É seleccionado "
+"executa o jogo sem atrasos para benchmark de gráficos. É selecionado "
 "automaticamente pela opção B<--nogui>."
 
 #
@@ -815,7 +819,7 @@ msgid ""
 "number of players possible in the chosen scenario."
 msgstr ""
 "As opções específicas para equipas em modo de rede estão marcadas com "
-"E<lt>númeroE<gt>. E<lt>númeroE<gt> deve ser substituído pelo número duma "
+"E<lt>númeroE<gt>. E<lt>númeroE<gt> deve ser substituído pelo número de uma "
 "eqiuipa. Normalmente esse número é 1 ou 2, mas isso depende do número de "
 "jogadores permitidos no cenário escolhido."
 
@@ -834,7 +838,7 @@ msgstr "B<--ai_config>I<número>B<=>I<valor>"
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
 msgstr ""
-"selecciona um arquivo de configuração para carregar para o controlador de IA "
+"seleciona um arquivo de configuração para carregar para o controlador de IA "
 "para esta equipa."
 
 #
@@ -871,8 +875,7 @@ msgstr "B<--controller>I<número>B<=>I<valor>"
 msgid ""
 "selects the controller for this side. Available values: B<human> and B<ai>."
 msgstr ""
-"selecciona quem controlará esta equipa. Valores disponíveis: B<human> e "
-"B<ai>."
+"seleciona quem controlará esta equipa. Valores disponíveis: B<human> e B<ai>."
 
 #
 # type: TP
@@ -891,7 +894,7 @@ msgid ""
 "The era is chosen by an id. Eras are described in the B<data/multiplayer/"
 "eras.cfg> file."
 msgstr ""
-"usa esta opção para jogar a era seleccionada em vez da B<Padrão>. A era é "
+"usa esta opção para jogar a era selecionada em vez da B<Padrão>. A era é "
 "escolhida pela id. Eras são descritas num ficheiro em B<data/multiplayer/"
 "eras.cfg>"
 
@@ -913,7 +916,7 @@ msgid ""
 "benchmarking."
 msgstr ""
 "sai quando o cenário acabar, sem mostrar um dialogo de vitória/derrota que "
-"requer a interacção do usuário. Também é usado para benchmarking "
+"requer a interação do usuário. Também é usado para benchmarking "
 "preconfigurado."
 
 #
@@ -1001,7 +1004,7 @@ msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
 msgstr ""
-"seleccionada o cenário multijogador pela id. O cenário padrão é "
+"selecionada o cenário em rede pela id. O cenário padrão é "
 "B<multiplayer_The_Freelands>."
 
 #
@@ -1020,7 +1023,7 @@ msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
 msgstr ""
-"selecciona a facção a partir da era actual com base da sua id. Facções são "
+"seleciona a fação a partir da era atual com base da sua id. Fações são "
 "configuradas num ficheiro data/multiplayer.cfg"
 
 #
@@ -1100,7 +1103,7 @@ msgstr ""
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:305 ../../doc/man/wesnothd.6:276
 msgid "Visit the official homepage: http://www.wesnoth.org/"
-msgstr "Visita a página oficial do projecto: http://www.wesnoth.org/"
+msgstr "Visita a página oficial do projeto: http://www.wesnoth.org/"
 
 #
 # type: SH
@@ -1225,7 +1228,7 @@ msgid ""
 "sending SIGHUP to the server process."
 msgstr ""
 "diz a wesnothd onde encontrar o ficheiro de configuração para usar. Veja a "
-"secção B<CONFIGURAÇÃO DO SERVIDOR> abaixo para os comandos. Podes recarregar "
+"seção B<CONFIGURAÇÃO DO SERVIDOR> abaixo para os comandos. Podes recarregar "
 "as configurações ao enviar um SIGHUP  ao servidor."
 
 #
@@ -1461,7 +1464,7 @@ msgid ""
 "Determines whether the rooms file should be read and written to in "
 "compressed form. Defaults to B<yes>."
 msgstr ""
-"Determina quando o arquivo 'rooms' pode ser lido e escrito em forma "
+"Determina quando o arquivo ‘rooms’ pode ser lido e escrito em forma "
 "compacta. O padrão é B<yes>."
 
 #
@@ -1561,7 +1564,7 @@ msgid ""
 "The time period (in seconds) message flooding is detected in. (default: "
 "B<10> seconds)"
 msgstr ""
-"O período de tempo (em segundos) de inundação de mensagens é detectado "
+"O período de tempo (em segundos) de inundação de mensagens é detetado "
 "(padrão: B<10> segundos)"
 
 #
@@ -1600,7 +1603,7 @@ msgstr ""
 "Determina quem pode criar novas salas no servidor. Os valores disponíveis "
 "são B<everyone>, B<registered>, B<admin> e B<nobody>, e dar a permisão, "
 "respectivamente, para todos, de usuários registados, administradores ou "
-"criação desactivada de salas. O valor por defeito é B<everyone>."
+"criação desativada de salas. O valor por defeito é B<everyone>."
 
 #
 # type: TP
@@ -1743,6 +1746,11 @@ msgid ""
 "anything real you are insane). The default value is B<forum>. You must also "
 "add a B<[user_handler]> section, see below."
 msgstr ""
+"O nome da base de dados de utilizadores para ser utilizado. De momento estão "
+"disponíveis B<forum> (para ligar o servidor à base de dados phpp do fórum "
+"oficial) e B<sample> (apenas um esboço, não é aconselhável correr o servidor "
+"num ambiente real com este). Por padrão  B<forum> é usado. Também terás de "
+"usar um B<[user_handler]> como explicado abaixo."
 
 #
 # type: SS
@@ -1885,6 +1893,10 @@ msgid ""
 "B<[user_handler]> section is present in the configuration the server will "
 "run without any nick registration service."
 msgstr ""
+"B<[user_handler]> Define como gerir a base de dados de utilizadores. Opções "
+"disponíveis irão depender qual B<user_handler> esta em uso. Se nenhum "
+"B<[user_handler]> é encontrado, então o servidor irá correr sem "
+"possibilidade de registo do nome de utilizador."
 
 #
 # type: TP
@@ -1944,7 +1956,6 @@ msgstr ""
 msgid "B<db_password>"
 msgstr "B<db_password>"
 
-#
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:234
@@ -1967,6 +1978,9 @@ msgid ""
 "saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
 "(e.g. phpbb3_users)."
 msgstr ""
+"(para ser usado em conjunto com user_handler=forum) O nome da base de dados "
+"phpbb do fórum usado. Provavelmente será E<lt>table-prefixE<gt>_users (p.ex. "
+"phpbb3_users)."
 
 #
 # type: TP
@@ -1986,6 +2000,12 @@ msgid ""
 "user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
 "NOT NULL DEFAULT 0);>"
 msgstr ""
+"(para ser usado em conjunto com user_handler=forum) O nome da base de dados "
+"onde o servidor irá guardar os seus próprios dados sobre os utilizadores. "
+"Terás de criar esta base de dados manualmente, por ex. B<CREATE TABLE "
+"E<lt>table-nameE<gt>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT "
+"UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT "
+"0);>"
 
 #
 # type: TP
@@ -2099,7 +2119,7 @@ msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
 msgstr ""
-"O estado de saída normal é 0 se o servidor for correctamente fechado. Um "
+"O estado de saída normal é 0 se o servidor for corretamente fechado. Um "
 "estado de saída de 2 indica um erro com as opções da linha de comandos."
 
 #
@@ -2124,3 +2144,38 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
+
+# type: TP
+#~ msgid "B<--data-path>"
+#~ msgstr "B<--data-path>"
+
+# type: Plain text
+#~ msgid "path the path of the data directory and exits."
+#~ msgstr "imprime o nome do directório de dados e termina."
+
+# Como são chamados os directórios em Windows quando portugues é definido como idioma padrão? É que uso linux e windows em inglês britanico...
+#~ msgid ""
+#~ "sets the user configuration directory to I<name> under $HOME or \"My "
+#~ "Documents\\eMy Games\" for windows.  You can also specify an absolute "
+#~ "path for the configuration directory outside the $HOME or \"My Documents"
+#~ "\\eMy Games\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/."
+#~ "config/wesnoth, on other systems to the userdata path."
+#~ msgstr ""
+#~ "define o diretório I<nome> do utilizador em $HOME ou “Os meus Documentos"
+#~ "\\Os Meus Jogos” em Windows. Também podes especificar o caminho absoluto "
+#~ "para as configurações fora de $HOME ou “Os meus Documentos\\Os Meus "
+#~ "Jogos”. Em sistemas X11 este indica por predefinição até $XDG_CONFIG_HOME "
+#~ "ou $HOME/.config/wesnoth, nos outros sistemas operativos ao diretório do "
+#~ "utilizador."
+
+# type: TP
+#~ msgid "B<--userdata-dir>I<\\ name>"
+#~ msgstr "B<--userdata-dir>I<\\ nome>"
+
+# type: TP
+#~ msgid "B<--userdata-path>"
+#~ msgstr "B<--userdata-path>"
+
+# type: Plain text
+#~ msgid "prints the path of the userdata directory and exits."
+#~ msgstr "imprime o caminho da pasta de configurações de usuário e termina."

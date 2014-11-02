@@ -1,14 +1,13 @@
-# Portuguese translations for Battle for Wesnoth package.
-# Copyright (C) 2005 Wesnoth development team
+# European Portuguese translations for Battle for Wesnoth
+# Copyright (C) 2005-2014 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2005.
-# trewe <sjrs456@yahoo.fr>, 2013.
+# trewe <sjrs456@yahoo.fr>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.12\n"
+"Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth-lib)\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
-"PO-Revision-Date: 2014-01-06 12:49+0100\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
+"PO-Revision-Date: 2014-02-22 15:04+0100\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
 "Language: pt\n"
@@ -709,7 +708,7 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
 msgstr ""
-"A <italic>text='Caverna Rochosa'</italic> é formada pela acção da água e do "
+"A <italic>text='Caverna Rochosa'</italic> é formada pela ação da água e do "
 "vento, transportando partículas erosivas que esculpem a pedra. Assemelha-se "
 "a uma caverna subterrânea descarnada que reduz a eficiência da maioria das "
 "unidades, mas aumenta a defesa . Anões e trogloditas, que são os colonos "
@@ -1102,17 +1101,6 @@ msgstr "Aldeia aquática"
 
 #. [terrain_type]: id=mermen-village
 #: data/core/terrain.cfg:1503
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
-#| "nagas. While water-dwelling creatures are at home here, land-dwellers "
-#| "have a hard time navigating and defending these villages. However, like "
-#| "any village, the facilites are available to all creatures which allow "
-#| "units to tend to their wounds. Any unit stationed in a village can heal "
-#| "eight hitpoints each turn, or be cured of poison.\n"
-#| "\n"
-#| "Merfolk and nagas have 60% defense in submerged villages, whereas land "
-#| "based units usually have a low defense."
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
 "nagas. While water-dwelling creatures are at home here, land-dwellers have a "
@@ -1124,14 +1112,13 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
-"<italic>text='Aldeias Submersas'</italic> são os lares das sereias e nagas. "
-"Embora unidades aquáticas se sintam em casa aqui, unidades terrestres têm "
-"dificuldade em se mover e proteger nestas aldeias. Porém, como em qualquer "
-"aldeia, há lugares disponíveis para que qualquer criatura cuide das suas "
-"feridas. Qualquer unidade parada numa aldeia pode curar oito pontos de vida "
-"(PV) ou se livrar do envenenamento.\n"
-"\n"
-"Sereias e Nagas têm 60% de defesa em aldeias submersas, enquanto unidades "
+"<italic>text='Aldeias Submersas'</italic> são os lares dos aquáticos e das "
+"nagas. Embora unidades aquáticas se sintam em casa aqui, unidades terrestres "
+"têm dificuldade em se mover e proteger nestas aldeias. Porém, como em "
+"qualquer aldeia, há lugares disponíveis para que qualquer criatura cuide das "
+"suas feridas. Qualquer unidade parada numa aldeia pode curar oito pontos de "
+"vida (PV) ou se livrar do envenenamento.\n"
+"Aquáticos e Nagas têm 60% de defesa em aldeias submersas, enquanto unidades "
 "terrestres geralmente têm uma baixa defesa."
 
 #
@@ -1199,8 +1186,6 @@ msgstr "Castelo humano gelado"
 #
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:1608
-#, fuzzy
-#| msgid "Elven Castle Keep"
 msgid "Elven Castle"
 msgstr "Torre de castelo elfo"
 
@@ -1428,7 +1413,7 @@ msgstr ""
 "meses frios do ano.\n"
 "\n"
 "Para aqueles que vão por terra ou por mar, uma ponte é o melhor dos dois "
-"mundos - para fins de jogabilidade, ela é tratada tanto como planície ou da "
+"mundos — para fins de jogabilidade, ela é tratada tanto como planície ou da "
 "água subjacente, o que oferece o melhor movimento e bónus de defesa para a "
 "unidade que ocupa o hexágono . Note-se que uma unidade nadadora e uma "
 "unidade terrestre não são capazes de ocupar uma ponte ao mesmo tempo."
@@ -1598,11 +1583,11 @@ msgid ""
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
 "Os <italic>text='Recifes Costeiros'</italic> são espaços formados por pedra, "
-"coral e areia. Provêem para a maior parte das unidades um apoio mais firme e "
+"coral e areia. Proveem para a maior parte das unidades um apoio mais firme e "
 "uma melhor defesa do que vaguear em águas rasas e também concede uma defesa "
 "excepcionalmente alta para raças aquáticas.\n"
 "\n"
-"Sereias e Nagas ganham 70% de defesa nos recifes costeiros."
+"Aquáticos e Nagas ganham 70% de defesa nos recifes costeiros."
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:2287
@@ -1696,18 +1681,6 @@ msgstr ""
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:2344
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mountains'</italic> are steep enough that units often have "
-#| "to climb over obstacles to move. By this nature, they provide a "
-#| "considerable defensive bonus for most troops, but they also severely "
-#| "impede any passage through them. Most cavalary simply cannot enter "
-#| "mountainous terrain; however, elvish cavalry is an exception to this, as "
-#| "are the goblin wolf riders. Both dwarves and trolls re native to "
-#| "mountainous terrain, and have a very easiy time getting around.\n"
-#| "\n"
-#| "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
-#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -1720,7 +1693,7 @@ msgid ""
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
 "<italic>text='Montanhas'</italic> são qualquer superfície o suficientemente "
-"íngremes para necessitar de um esforço maior para as escalar. Por esta razão "
+"íngremes que necessitam de um esforço maior para as escalar. Por esta razão "
 "provêm um bónus considerável de defesa a maioria das tropas, mas também "
 "atrasam severamente a passagem. A maioria da cavalaria simplesmente não "
 "consegue passar por aqui, no entanto a cavalaria elfa é uma notável "
@@ -1865,13 +1838,6 @@ msgstr "Intransmissível"
 
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:2421
-#, fuzzy
-#| msgid ""
-#| "Obstacles that not even the most determined traveler may overcome include "
-#| "solid walls of stone and mountains so tall and steep that they are "
-#| "constantly wreathed in cloud. Even flying creatures cannot navigate the "
-#| "jagged peaks at such rarified heights, and not even the fiercest troll "
-#| "can smash through thick walls of stone."
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -1881,7 +1847,7 @@ msgid ""
 msgstr ""
 "Obstáculos que nem mesmo o viajante mais determinado pode superar incluem "
 "paredes sólidas de pedra e montanhas tão altas e íngremes que estão "
-"constantemente envoltas em nuvens. Mesmo criaturas voadoras não podem "
+"constantemente envoltas nas nuvens. Mesmo criaturas voadoras não podem "
 "navegar os picos irregulares em alturas tão refinadas, e nem mesmo os mais "
 "ferozes trogloditas podem destruir paredes espessas de pedra."
 
@@ -2069,18 +2035,14 @@ msgstr "Transferências:"
 #
 #. [label]
 #: data/gui/default/window/addon_description.cfg:258
-#, fuzzy
-#| msgid "sort^By last updated"
 msgid "date^Last updated:"
-msgstr "Pela última data de modificação"
+msgstr "Última modificação:"
 
 #
 #. [label]
 #: data/gui/default/window/addon_description.cfg:284
-#, fuzzy
-#| msgid "sort^By first upload"
 msgid "date^First uploaded:"
-msgstr "Pela primeira data de modificação"
+msgstr "Data de publicação:"
 
 #
 #. [label]
@@ -2171,7 +2133,7 @@ msgstr "Cenários"
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:54
 msgid "addons_of_type^MP factions"
-msgstr "Facções MJ"
+msgstr "Fações MJ"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:57
@@ -2249,7 +2211,7 @@ msgstr "Tipos de Extras:"
 #. [button]: id=toggle_all_displayed_types
 #: data/gui/default/window/addon_filter_options.cfg:277
 msgid "Toggle All"
-msgstr "Activar Todos"
+msgstr "Ativar Todos"
 
 #
 #. [label]
@@ -2830,7 +2792,7 @@ msgstr "Anterior Altura:"
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:154
 msgid "Expand/shrink direction:"
-msgstr "Expandir / encolher direcção:"
+msgstr "Expandir / encolher direção:"
 
 #
 #. [toggle_button]: id=copy_edge_terrain
@@ -2891,7 +2853,7 @@ msgstr "Invocar pilha"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:94
 msgid "Actions"
-msgstr "Acções"
+msgstr "Ações"
 
 #
 #. [button]: id=step
@@ -3276,13 +3238,13 @@ msgstr "Alfabeticamente"
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:337
 msgid "Selected game"
-msgstr "Partida Seleccionada"
+msgstr "Partida Selecionada"
 
 #
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:338
 msgid "Current room"
-msgstr "Sala actual"
+msgstr "Sala atual"
 
 #
 #. [definition]
@@ -3360,7 +3322,7 @@ msgstr "Preferências"
 #. [button]: id=refresh
 #: data/gui/default/window/lobby_main.cfg:672
 msgid "Refresh"
-msgstr "Actualizar"
+msgstr "Atualizar"
 
 #
 #. [button]: id=create
@@ -3620,7 +3582,7 @@ msgstr "Escolher uma Modificação"
 #. [label]: id=message
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:73
 msgid "Enable the modifications you want to be active during the game."
-msgstr "Activa as modificações que queiras ter activas durante a tua partida."
+msgstr "Ativa as modificações que queiras ter ativas durante a tua partida."
 
 #
 #. [scroll_label]: id=message
@@ -3651,13 +3613,13 @@ msgstr "Desejas gravar as tuas alterações?"
 #. [label]
 #: data/gui/default/window/mp_depcheck_select_new.cfg:40
 msgid "User Interaction Required"
-msgstr "Interactividade do usuário necessária."
+msgstr "Interatividade do usuário necessária."
 
 #
 #. [label]: id=message
 #: data/gui/default/window/mp_depcheck_select_new.cfg:59
 msgid "User interaction required"
-msgstr "Nível de interactividade do usuário necessária."
+msgstr "Nível de interatividade do usuário necessária."
 
 #
 #. [column]
@@ -3785,38 +3747,35 @@ msgstr "Endereço"
 #. [button]: id=ok
 #: data/gui/default/window/mp_server_list.cfg:217
 msgid "Select"
-msgstr "Selecciona"
+msgstr "Seleciona"
 
 #
 #. [button]: id=open
 #: data/gui/default/window/screenshot_notification.cfg:50
-#, fuzzy
-#| msgid "filesystem^Copy"
 msgid "filesystem^Open"
-msgstr "Copiar"
+msgstr "Abrir"
 
 #. [button]: id=open
 #: data/gui/default/window/screenshot_notification.cfg:51
 msgid "Open this file with an external application"
-msgstr ""
+msgstr "Abrir este ficheiro com uma aplicação externa."
 
 #. [label]: id=title
 #: data/gui/default/window/screenshot_notification.cfg:95
 msgid "Screenshot Saved"
-msgstr ""
+msgstr "Imagem do ecrã guardada"
 
 #. [button]: id=browse_dir
 #: data/gui/default/window/screenshot_notification.cfg:185
 msgid "Screenshots..."
-msgstr ""
+msgstr "Imagem do ecrã ..."
 
 #
 #. [button]: id=browse_dir
 #: data/gui/default/window/screenshot_notification.cfg:187
-#, fuzzy
-#| msgid "Browse this location using a file manager"
 msgid "Browse the screenshots folder using a file manager"
-msgstr "Abre esta localização com um navegador de ficheiros"
+msgstr ""
+"Abre a localização para as imagens do ecrã com um navegador de ficheiros"
 
 #
 #. [label]
@@ -3827,10 +3786,8 @@ msgstr "Escolha o tema"
 #
 #. [label]
 #: data/gui/default/window/theme_list.cfg:67
-#, fuzzy
-#| msgid "New theme will take effect on next new or loaded game."
 msgid "The new theme will take effect after loading or starting a new game."
-msgstr "O novo tema terá efeito a partir da próxima partida nova ou carregada."
+msgstr "O novo tema terá efeito quando o jogo for recarregado."
 
 #
 #. [button]: id=help
@@ -4007,23 +3964,19 @@ msgstr "Erro"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
 #: data/gui/default/window/wml_error.cfg:112 src/gui/dialogs/wml_error.cpp:192
-#, fuzzy
-#| msgid "Rails"
 msgid "Details:"
-msgstr "Ferrovia"
+msgstr "Detalhes:"
 
 #. [button]: id=copy
 #: data/gui/default/window/wml_error.cfg:124
 msgid "clipboard^Copy"
-msgstr ""
+msgstr "Copiar"
 
 #
 #. [button]: id=copy
 #: data/gui/default/window/wml_error.cfg:125
-#, fuzzy
-#| msgid "Copy this path to clipboard"
 msgid "Copy this report to clipboard"
-msgstr "Copia este caminho para a área de transferência"
+msgstr "Copiar esta mensagem para a área de transferência"
 
 #
 #: src/filechooser.cpp:80
@@ -4149,7 +4102,7 @@ msgstr "Lista de Amigos"
 #
 #: src/game_preferences_display.cpp:192
 msgid "Multiplayer Options"
-msgstr "Opções de Multijogador"
+msgstr "Opções dos jogos em rede"
 
 #
 #: src/game_preferences_display.cpp:193
@@ -4259,7 +4212,7 @@ msgstr "Aplicar"
 #
 #: src/game_preferences_display.cpp:218
 msgid "Show unit idle animations"
-msgstr "Mostra animações de unidades inactivas"
+msgstr "Mostra animações de unidades inativas"
 
 #
 #: src/game_preferences_display.cpp:219
@@ -4395,7 +4348,7 @@ msgstr "Exibir gráficos animados de terreno"
 #
 #: src/game_preferences_display.cpp:359
 msgid "Set the frequency of unit idle animations"
-msgstr "Configura a frequência das animações de unidades inactivas"
+msgstr "Configura a frequência das animações de unidades inativas"
 
 #
 #: src/game_preferences_display.cpp:364
@@ -4531,7 +4484,7 @@ msgstr "Mostra uma caixa de diálogo no início do seu turno"
 #
 #: src/game_preferences_display.cpp:418
 msgid "Activates Planning Mode on game start"
-msgstr "Activa Modo de Planificação no início do jogo"
+msgstr "Ativa Modo de Planificação no início do jogo"
 
 #
 #: src/game_preferences_display.cpp:421
@@ -4646,7 +4599,7 @@ msgstr "Avançados"
 #
 #: src/game_preferences_display.cpp:1463
 msgid "No known themes. Try changing from within an existing game."
-msgstr "Nenhum tema conhecido. Tenta mudar de dentro duma partida."
+msgstr "Nenhum tema conhecido. Tenta mudar de dentro de uma partida."
 
 #
 #: src/game_preferences_display.cpp:1512
@@ -4886,12 +4839,12 @@ msgstr "Publicado, e não vai verificar versão local"
 #
 #: src/gui/dialogs/addon/description.cpp:133
 msgid "addon_state^Installed ($local_version|), upgradable"
-msgstr "Instalado ($local_version|), mas actualizável"
+msgstr "Instalado ($local_version|), mas atualizável"
 
 #
 #: src/gui/dialogs/addon/description.cpp:135
 msgid "addon_state^Published ($local_version| installed), upgradable"
-msgstr "Publicado (instalado $local_version|), mas actualizável"
+msgstr "Publicado (instalado $local_version|), mas atualizável"
 
 #
 #: src/gui/dialogs/addon/description.cpp:142
@@ -4926,7 +4879,7 @@ msgstr "Não Instalado"
 #
 #: src/gui/dialogs/addon/filter_options.cpp:296
 msgid "addons_view^Upgradable"
-msgstr "Actualizável"
+msgstr "Atualizável"
 
 #
 #: src/gui/dialogs/addon/filter_options.cpp:298
@@ -5071,8 +5024,8 @@ msgid ""
 "The currently chosen scenario is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
-"O cenário actualmente escolhido não é compatível com as tuas configurações.\n"
-"Por favor selecciona um compatível."
+"O cenário atualmente escolhido não é compatível com as tuas configurações.\n"
+"Por favor seleciona um compatível."
 
 #
 #: src/gui/dialogs/mp_depcheck_select_new.cpp:72
@@ -5080,8 +5033,8 @@ msgid ""
 "The currently chosen era is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
-"A era actualmente escolhida não é compatível com as tuas configurações.\n"
-"Por favor selecciona uma compatível."
+"A era atualmente escolhida não é compatível com as tuas configurações.\n"
+"Por favor seleciona uma compatível."
 
 #
 #: src/gui/dialogs/mp_depcheck_select_new.cpp:78
@@ -5089,570 +5042,428 @@ msgid ""
 "The currently chosen modification is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
-"A modificação actual não é compatível com as tuas configurações.\n"
-"Por favor selecciona uma compatível."
+"A modificação atual não é compatível com as tuas configurações.\n"
+"Por favor seleciona uma compatível."
 
-#
 #: src/gui/dialogs/title_screen.cpp:293
 msgid "Version "
 msgstr "Versão "
 
-#
 #: src/gui/dialogs/title_screen.cpp:297
 msgid "Version"
 msgstr "Versão"
 
-#
 #: src/gui/widgets/helper.cpp:125
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Campo obrigatório '$id' não foi definido."
 
-#
 #: src/gui/widgets/settings.cpp:448
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 "A definição do campo '$definition' não contém uma referencia para '$id'."
 
-#
 #: src/gui/widgets/settings.cpp:521
 msgid "No default gui defined."
 msgstr "Nenhuma interface gráfica padrão definida."
 
-#
 #: src/gui/widgets/settings.cpp:550
 msgid "No state or draw section defined."
-msgstr "Nenhum estado ou secção de desenho definida."
+msgstr "Nenhum estado ou seção de desenho definida."
 
-#
 #: src/gui/widgets/tree_view_node.cpp:110
 msgid "Unknown builder id for tree view node."
 msgstr "Identificação construtiva desconhecida do nó da árvore."
 
-#
 #: src/gui/widgets/window.cpp:1047
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
-msgstr "Demitir precisa dum botão de “Demitir” ou “Confirmar”."
+msgstr "Demitir precisa de um botão de “Demitir” ou “Confirmar”."
 
-#
 #: src/gui/widgets/window.cpp:1072 src/gui/widgets/window.cpp:1109
 #: src/tests/gui/test_gui2.cpp:432
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Falha na mostra de um diálogo, que não cabe no monitor."
 
-#
 #: src/hotkey/hotkey_command.cpp:38
-#, fuzzy
-#| msgid "Cancel"
 msgid "cancel"
 msgstr "Cancelar"
 
-#
 #: src/hotkey/hotkey_command.cpp:39
-#, fuzzy
-#| msgid "Select"
 msgid "Select Hex"
-msgstr "Selecciona"
+msgstr "Selecionar hexágono"
 
-#
 #: src/hotkey/hotkey_command.cpp:40
-#, fuzzy
-#| msgid "Desert Keep"
 msgid "Deselect Hex"
-msgstr "Torre de Deserto"
+msgstr "Libertar hexágono"
 
-#
 #: src/hotkey/hotkey_command.cpp:41
-#, fuzzy
-#| msgid "Attack"
 msgid "Move/Attack"
-msgstr "Ataque"
+msgstr "Mover/Atacar"
 
 #: src/hotkey/hotkey_command.cpp:42
 msgid "Select/Move/Attack"
-msgstr ""
+msgstr "Selecionar/Mover/Atacar"
 
-#
 #: src/hotkey/hotkey_command.cpp:43
-#, fuzzy
-#| msgid "Animate map"
 msgid "Animate Map"
 msgstr "Animar Mapa"
 
-#
 #: src/hotkey/hotkey_command.cpp:44
-#, fuzzy
-#| msgid "Next"
 msgid "Next Unit"
-msgstr "Próximo"
+msgstr "Próxima unidade"
 
-#
 #: src/hotkey/hotkey_command.cpp:45
-#, fuzzy
-#| msgid "Previous"
 msgid "Previous Unit"
-msgstr "Anterior"
+msgstr "Unidade anterior"
 
 #: src/hotkey/hotkey_command.cpp:46
 msgid "Hold Position"
-msgstr ""
+msgstr "Manter Posição"
 
 #: src/hotkey/hotkey_command.cpp:47
 msgid "End Unit Turn"
-msgstr ""
+msgstr "Terminar o Turno da Unidade"
 
 #: src/hotkey/hotkey_command.cpp:48
-#, fuzzy
-#| msgid "No leader"
 msgid "Leader"
-msgstr "Sem líder"
+msgstr "Líder"
 
 #: src/hotkey/hotkey_command.cpp:49
 msgid "Undo"
-msgstr ""
+msgstr "Desfazer"
 
 #: src/hotkey/hotkey_command.cpp:50
 msgid "Redo"
-msgstr ""
+msgstr "Refazer"
 
 #: src/hotkey/hotkey_command.cpp:51
 msgid "Zoom In"
-msgstr ""
+msgstr "Ampliar"
 
 #: src/hotkey/hotkey_command.cpp:52
 msgid "Zoom Out"
-msgstr ""
+msgstr "Reduzir"
 
-#
 #: src/hotkey/hotkey_command.cpp:53
-#, fuzzy
-#| msgid "Default"
 msgid "Default Zoom"
-msgstr "Padrão"
+msgstr "Ampliação normal"
 
-#
 #: src/hotkey/hotkey_command.cpp:54
-#, fuzzy
-#| msgid "Full screen"
 msgid "Toggle Full Screen"
-msgstr "Ecrã Inteiro"
+msgstr "Alternar Ecrã Inteiro"
 
 #: src/hotkey/hotkey_command.cpp:55
 msgid "Screenshot"
-msgstr ""
+msgstr "Captura do ecrã"
 
 #: src/hotkey/hotkey_command.cpp:56
 msgid "Map Screenshot"
-msgstr ""
+msgstr "Foto do Mapa"
 
-#
 #: src/hotkey/hotkey_command.cpp:57
-#, fuzzy
-#| msgid "Accelerated speed"
 msgid "Accelerated"
-msgstr "Velocidade Acelerada"
+msgstr "Acelerado"
 
-#
 #: src/hotkey/hotkey_command.cpp:58
-#, fuzzy
-#| msgid "Description:"
 msgid "Terrain Description"
-msgstr "Descrição:"
+msgstr "Descrição do terreno"
 
-#
 #: src/hotkey/hotkey_command.cpp:59
-#, fuzzy
-#| msgid "Description:"
 msgid "Unit Description"
-msgstr "Descrição:"
+msgstr "Descrição da unidade"
 
 #: src/hotkey/hotkey_command.cpp:60
 msgid "Rename Unit"
-msgstr ""
+msgstr "Renomear Unidade"
 
-#
 #: src/hotkey/hotkey_command.cpp:61
-#, fuzzy
-#| msgid "Delete File"
 msgid "Delete Unit"
-msgstr "Apagar Ficheiro"
+msgstr "Remover Unidade"
 
-#
 #: src/hotkey/hotkey_command.cpp:64
-#, fuzzy
-#| msgid "Replay"
 msgid "Save Replay"
-msgstr "Revisão"
+msgstr "Guardar Revisão"
 
-#
 #: src/hotkey/hotkey_command.cpp:65 src/hotkey/hotkey_command.cpp:133
-#, fuzzy
-#| msgid "Save Game"
 msgid "Save Map"
-msgstr "Gravar o Jogo"
+msgstr "Guardar Mapa"
 
 #: src/hotkey/hotkey_command.cpp:67
 msgid "Recruit"
-msgstr ""
+msgstr "Recrutar"
 
 #: src/hotkey/hotkey_command.cpp:68
 msgid "Repeat Recruit"
-msgstr ""
+msgstr "Repetir Recrutamento"
 
 #: src/hotkey/hotkey_command.cpp:69
 msgid "Recall"
-msgstr ""
+msgstr "Convocar"
 
-#
 #: src/hotkey/hotkey_command.cpp:70
-#, fuzzy
-#| msgid "Turn"
 msgid "End Turn"
-msgstr "Turno"
+msgstr "Terminar Turno"
 
-#
 #: src/hotkey/hotkey_command.cpp:71
-#, fuzzy
-#| msgid "Toggle All"
 msgid "Toggle Ellipses"
-msgstr "Activar Todos"
+msgstr "Alternar Elipses"
 
-#
 #: src/hotkey/hotkey_command.cpp:72
-#, fuzzy
-#| msgid "Toggle All"
 msgid "Toggle Grid"
-msgstr "Activar Todos"
+msgstr "Alternar Visualização da Grelha"
 
 #: src/hotkey/hotkey_command.cpp:73
 msgid "Mouse Scrolling"
-msgstr ""
+msgstr "Rolar com o rato"
 
-#
 #: src/hotkey/hotkey_command.cpp:74
-#, fuzzy
-#| msgid "Status"
 msgid "Status Table"
-msgstr "Estado"
+msgstr "Tabela de Estado"
 
 #: src/hotkey/hotkey_command.cpp:75
 msgid "Mute"
-msgstr ""
+msgstr "Silenciar"
 
 #: src/hotkey/hotkey_command.cpp:76
 msgid "Speak"
-msgstr ""
+msgstr "Falar"
 
-#
 #: src/hotkey/hotkey_command.cpp:78
-#, fuzzy
-#| msgid "Create Unit (Debug!)"
 msgid "Change Side (Debug!)"
-msgstr "Criar Unidade (Modo de Depuração!)"
+msgstr "Mudar de Equipa (Modo de Depuração!)"
 
-#
 #: src/hotkey/hotkey_command.cpp:79
-#, fuzzy
-#| msgid "Create Unit (Debug!)"
 msgid "Kill Unit (Debug!)"
-msgstr "Criar Unidade (Modo de Depuração!)"
+msgstr "Matar Unidade (Modo de Depuração!)"
 
 #: src/hotkey/hotkey_command.cpp:81
-#, fuzzy
-#| msgid "Edit Scenario Settings"
 msgid "Scenario Objectives"
-msgstr "Editar definições de cenário"
+msgstr "Objetivos do Cenário"
 
-#
 #: src/hotkey/hotkey_command.cpp:82
-#, fuzzy
-#| msgid "View List"
 msgid "Unit List"
-msgstr "Ver Lista"
+msgstr "Lista de Unidades"
 
-#
 #: src/hotkey/hotkey_command.cpp:83
-#, fuzzy
-#| msgid "Status"
 msgid "Statistics"
-msgstr "Estado"
+msgstr "Estatísticas"
 
-#
 #: src/hotkey/hotkey_command.cpp:84
-#, fuzzy
-#| msgid "Host Networked Game"
 msgid "Pause Network Game"
-msgstr "Hospedar jogo em rede"
+msgstr "Pausar jogo em rede"
 
-#
 #: src/hotkey/hotkey_command.cpp:85
-#, fuzzy
-#| msgid "Host Networked Game"
 msgid "Continue Network Game"
-msgstr "Hospedar jogo em rede"
+msgstr "Continuar jogo em rede"
 
-#
 #: src/hotkey/hotkey_command.cpp:87
-#, fuzzy
-#| msgid "Map Editor"
 msgid "Quit Editor"
-msgstr "Editor do Mapa"
+msgstr "Sair do Editor"
 
 #: src/hotkey/hotkey_command.cpp:88
 msgid "Set Team Label"
-msgstr ""
+msgstr "Definir legenda da equipa"
 
-#
 #: src/hotkey/hotkey_command.cpp:89
-#, fuzzy
-#| msgid "Place Label"
 msgid "Set Label"
-msgstr "Colocar Legenda"
+msgstr "Definir Legenda"
 
-#
 #: src/hotkey/hotkey_command.cpp:90
-#, fuzzy
-#| msgid "Place Label"
 msgid "Clear Labels"
-msgstr "Colocar Legenda"
+msgstr "Limpar legendas"
 
-#
 #: src/hotkey/hotkey_command.cpp:91
-#, fuzzy
-#| msgid "Show team colors"
 msgid "Show Enemy Moves"
-msgstr "Mostrar Cores das Equipas"
+msgstr "Mostrar Movimentos Inimigos"
 
 #: src/hotkey/hotkey_command.cpp:92
 msgid "Best Possible Enemy Moves"
-msgstr ""
+msgstr "Melhores Movimentos Inimigos Possíveis"
 
-#
 #: src/hotkey/hotkey_command.cpp:94
-#, fuzzy
-#| msgid "Replay"
 msgid "Play Replay"
-msgstr "Revisão"
+msgstr "Ver Revisão"
 
-#
 #: src/hotkey/hotkey_command.cpp:95
-#, fuzzy
-#| msgid "Replay"
 msgid "Reset Replay"
-msgstr "Revisão"
+msgstr "Repor Revisão"
 
-#
 #: src/hotkey/hotkey_command.cpp:96
-#, fuzzy
-#| msgid "Show replay"
 msgid "Stop Replay"
-msgstr "Mostrar uma revisão"
+msgstr "Parar Revisão"
 
-#
 #: src/hotkey/hotkey_command.cpp:97
-#, fuzzy
-#| msgid "Next"
 msgid "Next Turn"
-msgstr "Próximo"
+msgstr "Próximo Turno"
 
-#
 #: src/hotkey/hotkey_command.cpp:98
-#, fuzzy
-#| msgid "Next page"
 msgid "Next Side"
-msgstr "Próxima página"
+msgstr "Próxima equipa"
 
 #: src/hotkey/hotkey_command.cpp:99
 msgid "Full Map"
-msgstr ""
+msgstr "Mapa Completo"
 
 #: src/hotkey/hotkey_command.cpp:100
 msgid "Each Team"
-msgstr ""
+msgstr "Cada equipa"
 
-#
 #: src/hotkey/hotkey_command.cpp:101
-#, fuzzy
-#| msgid "Team only"
 msgid "Team 1"
-msgstr "Só para a própria equipa"
+msgstr "Equipa 1"
 
 #: src/hotkey/hotkey_command.cpp:102
 msgid "Skip Animation"
-msgstr ""
+msgstr "Saltar animação"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkey/hotkey_command.cpp:105
 msgid "whiteboard^Planning Mode"
-msgstr ""
+msgstr "Modo de Planificação"
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
 #: src/hotkey/hotkey_command.cpp:107
 msgid "whiteboard^Execute Action"
-msgstr ""
+msgstr "Executar Ações"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkey/hotkey_command.cpp:109
 msgid "whiteboard^Execute All Actions"
-msgstr ""
+msgstr "Executar todas as ações"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
 #: src/hotkey/hotkey_command.cpp:111
 msgid "whiteboard^Delete Action"
-msgstr ""
+msgstr "Apagar Ação"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkey/hotkey_command.cpp:113
 msgid "whiteboard^Move Action Up"
-msgstr ""
+msgstr "Mover ação para a frente na fila"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
 #: src/hotkey/hotkey_command.cpp:115
 msgid "whiteboard^Move Action Down"
-msgstr ""
+msgstr "Mover ação para trás na fila"
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 #: src/hotkey/hotkey_command.cpp:117
 msgid "whiteboard^Suppose Dead"
-msgstr ""
+msgstr "Supõe morto"
 
 #: src/hotkey/hotkey_command.cpp:119
 msgid "Quit to Desktop"
-msgstr ""
+msgstr "Sair Completamente"
 
-#
 #: src/hotkey/hotkey_command.cpp:120
-#, fuzzy
-#| msgid "Close"
 msgid "Close Map"
-msgstr "Fechar"
+msgstr "Fechar Mapa"
 
 #: src/hotkey/hotkey_command.cpp:124
 msgid "Switch Time of Day"
-msgstr ""
+msgstr "Trocar Tempo de Dia"
 
 #: src/hotkey/hotkey_command.cpp:125
 msgid "Switch Map"
-msgstr ""
+msgstr "Trocar Mapa"
 
 #: src/hotkey/hotkey_command.cpp:126
 msgid "Assign Local Time"
-msgstr ""
+msgstr "Definir hora local"
 
-#
 #: src/hotkey/hotkey_command.cpp:128
-#, fuzzy
-#| msgid "Custom Time of Day Schedule"
 msgid "Custom Time of Day Creator"
-msgstr "Definição do Tempo de dia personalizado"
+msgstr "Criar Tempo de Dia personalizado"
 
 #: src/hotkey/hotkey_command.cpp:129
 msgid "Partial Undo"
-msgstr ""
+msgstr "Desfazer parcialmente"
 
-#
 #: src/hotkey/hotkey_command.cpp:131
-#, fuzzy
-#| msgid "Test scenario"
 msgid "New Scenario"
-msgstr "Cenário de teste"
+msgstr "Novo cenário"
 
-#
 #: src/hotkey/hotkey_command.cpp:132
-#, fuzzy
-#| msgid "Load Game"
 msgid "Load Map"
-msgstr "Continuar uma Partida"
+msgstr "Carregar Mapa"
 
-#
 #: src/hotkey/hotkey_command.cpp:134
-#, fuzzy
-#| msgid "Saved games:"
 msgid "Save Map As"
-msgstr "Partidas gravadas:"
+msgstr "Gravar Mapa como"
 
-#
 #: src/hotkey/hotkey_command.cpp:135
-#, fuzzy
-#| msgid "Scenario start"
 msgid "Save Scenario As"
-msgstr "Inicio do Cenário"
+msgstr "Guardar Cenário Como"
 
 #: src/hotkey/hotkey_command.cpp:136
 msgid "Save All Maps"
-msgstr ""
+msgstr "Gravar todos os Mapas"
 
 #: src/hotkey/hotkey_command.cpp:137
 msgid "Revert All Changes"
-msgstr ""
+msgstr "Reverter todas as mudanças"
 
-#
 #: src/hotkey/hotkey_command.cpp:138
-#, fuzzy
-#| msgid "Map Generator"
 msgid "Map Information"
-msgstr "Gerador do Mapa"
+msgstr "Informação do Mapa"
 
-#
 #: src/hotkey/hotkey_command.cpp:140
-#, fuzzy
-#| msgid "Selected game"
 msgid "Clear Selected Item Set"
-msgstr "Partida Seleccionada"
+msgstr "Limpar Itens Definidos"
 
 #: src/hotkey/hotkey_command.cpp:141
 msgid "Swap Foreground/Background Palette Item"
-msgstr ""
+msgstr "Trocar terreno de fundo e sobreposto"
 
 #: src/hotkey/hotkey_command.cpp:142
 msgid "Change Palette Group"
-msgstr ""
+msgstr "Mudar Grupo de Desenho"
 
 #: src/hotkey/hotkey_command.cpp:143
 msgid "Scroll Palette Left"
-msgstr ""
+msgstr "Rolar para a esquerda"
 
 #: src/hotkey/hotkey_command.cpp:144
 msgid "Scroll Palette Right"
-msgstr ""
+msgstr "Rolar para a direita"
 
 #: src/hotkey/hotkey_command.cpp:146
 msgid "Add New Side"
-msgstr ""
+msgstr "Adicionar nova equipa"
 
-#
 #: src/hotkey/hotkey_command.cpp:148
-#, fuzzy
-#| msgid "Next"
 msgid "Next Tool"
-msgstr "Próximo"
+msgstr "Próxima ferramenta"
 
 #: src/hotkey/hotkey_command.cpp:150
 msgid "Paint Tool"
-msgstr ""
+msgstr "Ferramenta de desenho"
 
 #: src/hotkey/hotkey_command.cpp:150 src/hotkey/hotkey_command.cpp:151
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
+"Usa o botão esquerdo/direito do rato para desenhar o terreno da frente/"
+"fundo. Segura Shift para pintar apenas a camada base.·Ctrl+clique·para pegar "
+"uma amostra do terreno sob o cursor."
 
 #: src/hotkey/hotkey_command.cpp:151
 msgid "Fill Tool"
-msgstr ""
+msgstr "Ferramenta de encher"
 
 #: src/hotkey/hotkey_command.cpp:152
 msgid ""
 "Left mouse button selects or deselects with Ctrl, right brings up a context "
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
+"O botão esquerdo seleciona ou liberta a seleção anterior quando usado em "
+"conjunto com Ctrl. Prima e tecle Shift para selecionares todos os hexágonos "
+"do mesmo tipo de terreno."
 
-#
 #: src/hotkey/hotkey_command.cpp:152
-#, fuzzy
-#| msgid "Select"
 msgid "Selection Tool"
-msgstr "Selecciona"
+msgstr "Ferramenta de seleção"
 
 #: src/hotkey/hotkey_command.cpp:153
 msgid ""
@@ -5660,482 +5471,423 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"O botão esquerdo do rato mostra a seleção do jogador, o direito limpa. "
+"Teclas numéricas rolam para a posição inicial, alt+número ajusta a posição "
+"inicial para o ponto debaixo do cursor, a tecla del remove-a."
 
 #: src/hotkey/hotkey_command.cpp:153
 msgid "Starting Positions Tool"
-msgstr ""
+msgstr "Ferramenta de definição de posições iniciais"
 
 #
 #: src/hotkey/hotkey_command.cpp:154
-#, fuzzy
-#| msgid "Label:"
 msgid "Label Tool"
-msgstr "Legenda:"
+msgstr "Ferramenta de legendas"
 
 #: src/hotkey/hotkey_command.cpp:154
 msgid "Left mouse button sets or drags a label, right clears."
-msgstr ""
+msgstr "O botão esquerdo define ou arrasta uma legenda, o direito limpa-a."
 
 #: src/hotkey/hotkey_command.cpp:155
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
 msgstr ""
+"O botão esquerdo do rato cria uma nova unidade, o direito traz à toa um menu "
+"de contexto. Tens de ter uma equipa definida."
 
 #: src/hotkey/hotkey_command.cpp:155
 msgid "Unit Tool"
-msgstr ""
+msgstr "Ferramenta de unidades"
 
 #: src/hotkey/hotkey_command.cpp:156
 msgid "Item Tool"
-msgstr ""
+msgstr "Ferramenta de Itens"
 
 #: src/hotkey/hotkey_command.cpp:156
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
+"O botão esquerdo cria um novo item ou move um existente, o direito elimina. "
+"Ainda não implementado."
 
 #: src/hotkey/hotkey_command.cpp:157
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
 msgstr ""
+"O botão direito define um som de fundo ou modifica um existente, o direito "
+"elimina. Ainda não implementado."
 
 #: src/hotkey/hotkey_command.cpp:157
 msgid "Sound Source Tool"
-msgstr ""
+msgstr "Ferramenta de fonte sonora"
 
 #: src/hotkey/hotkey_command.cpp:158
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
 msgstr ""
+"O botão esquerdo do rato muda o controlo das aldeias para a equipa atual, o "
+"direito limpa. Tens de definir uma equipa primeiro."
 
 #
 #: src/hotkey/hotkey_command.cpp:158
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Tool"
-msgstr "Ouro por aldeia"
+msgstr "Ferramenta de aldeia"
 
 #: src/hotkey/hotkey_command.cpp:160
 msgid "Can Recruit"
-msgstr ""
+msgstr "Pode recrutar"
 
 #: src/hotkey/hotkey_command.cpp:160
 msgid "Toggle the recruit attribute of a unit."
-msgstr ""
+msgstr "Mudar se a unidade pode recrutar ou não."
 
 #: src/hotkey/hotkey_command.cpp:161
 msgid "Can be Renamed"
-msgstr ""
+msgstr "Pode ser renomeado"
 
 #: src/hotkey/hotkey_command.cpp:161
 msgid "Toggle the unit being renameable."
-msgstr ""
+msgstr "Permite que a unidade seja renomeada"
 
 #: src/hotkey/hotkey_command.cpp:162
 msgid "Assign Recruit List"
-msgstr ""
+msgstr "Define a lista de recrutamento"
 
 #: src/hotkey/hotkey_command.cpp:162
 msgid "Assign the selected unit set as recruit list to the unit."
-msgstr ""
+msgstr "Define a unidade selecionada como uma das que pode ser recruta."
 
 #
 #: src/hotkey/hotkey_command.cpp:164
-#, fuzzy
-#| msgid "Change Control"
 msgid "Change Unit ID"
-msgstr "mudança de controlo"
+msgstr "Mudar ID da unidade"
 
 #: src/hotkey/hotkey_command.cpp:165
 msgid "Loyal"
-msgstr ""
+msgstr "Leal"
 
 #: src/hotkey/hotkey_command.cpp:167
 msgid "Toggle Minimap Unit Coding"
-msgstr ""
+msgstr "Mostra a codificação das unidades"
 
 #: src/hotkey/hotkey_command.cpp:168
 msgid "Toggle Minimap Terrain Coding"
-msgstr ""
+msgstr "Mostra a codificação do terreno"
 
 #: src/hotkey/hotkey_command.cpp:170
 msgid "Toggle Minimap Unit Drawing"
-msgstr ""
+msgstr "Mostra a visualização das unidades"
 
 #: src/hotkey/hotkey_command.cpp:171
 msgid "Toggle Minimap Village Drawing"
-msgstr ""
+msgstr "Mostra a visualização das aldeias"
 
 #: src/hotkey/hotkey_command.cpp:172
 msgid "Toggle Minimap Terrain Drawing"
-msgstr ""
+msgstr "Mostra a visualização do terreno"
 
 #: src/hotkey/hotkey_command.cpp:174
 msgid "Next Brush"
-msgstr ""
+msgstr "Próximo Pincel"
 
 #
 #: src/hotkey/hotkey_command.cpp:175
-#, fuzzy
-#| msgid "Defaults"
 msgid "Default Brush"
-msgstr "Predefinições"
+msgstr "Pincel Padrão"
 
 #: src/hotkey/hotkey_command.cpp:176
 msgid "Single Tile"
-msgstr ""
+msgstr "Hexágono Único"
 
 #: src/hotkey/hotkey_command.cpp:177
 msgid "Radius One"
-msgstr ""
+msgstr "De rádio um"
 
 #: src/hotkey/hotkey_command.cpp:178
 msgid "Radius Two"
-msgstr ""
+msgstr "De rádio dois"
 
 #: src/hotkey/hotkey_command.cpp:179
 msgid "Brush NW-SE"
-msgstr ""
+msgstr "Linha Noroeste-Sudeste"
 
 #: src/hotkey/hotkey_command.cpp:180
 msgid "Brush SW-NE"
-msgstr ""
+msgstr "Linha Sudoeste-Nordeste"
 
 #
 #: src/hotkey/hotkey_command.cpp:182
-#, fuzzy
-#| msgid "Hut"
 msgid "Cut"
-msgstr "Cabana"
+msgstr "Cortar"
 
 #: src/hotkey/hotkey_command.cpp:183
-#, fuzzy
-#| msgid "url^Copy"
 msgid "Copy"
-msgstr "Copiar URL"
+msgstr "Copiar"
 
 #: src/hotkey/hotkey_command.cpp:184
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
+"O botão esquerdo do rato copia da área de transferência, o direito traz à "
+"toa um menu de contexto."
 
 #: src/hotkey/hotkey_command.cpp:184
 msgid "Paste"
-msgstr ""
+msgstr "Colar"
 
 #: src/hotkey/hotkey_command.cpp:185
 msgid "Export Selected Coordinates to System Clipboard"
-msgstr ""
+msgstr "Exportar coordenadas selecionadas para área de transferência"
 
 #
 #: src/hotkey/hotkey_command.cpp:186
-#, fuzzy
-#| msgid "Select"
 msgid "Select All"
-msgstr "Selecciona"
+msgstr "Selecionar Tudo"
 
 #
 #: src/hotkey/hotkey_command.cpp:187
-#, fuzzy
-#| msgid "Select"
 msgid "Select Inverse"
-msgstr "Selecciona"
+msgstr "Inverter seleção"
 
-#
 #: src/hotkey/hotkey_command.cpp:188
-#, fuzzy
-#| msgid "Select"
 msgid "Select None"
-msgstr "Selecciona"
+msgstr "Selecionar Nada"
 
 #: src/hotkey/hotkey_command.cpp:189
 msgid "Rotate Clipboard Clockwise"
-msgstr ""
+msgstr "Rodar Seleção no sentido do relógio"
 
 #: src/hotkey/hotkey_command.cpp:190
 msgid "Rotate Clipboard Counter-Clockwise"
-msgstr ""
+msgstr "Rodar Seleção contra o sentido do relógio"
 
 #: src/hotkey/hotkey_command.cpp:191
 msgid "Flip Clipboard Horizontally"
-msgstr ""
+msgstr "Espelhar Seleção Horizontalmente"
 
 #: src/hotkey/hotkey_command.cpp:192
 msgid "Flip Clipboard Vertically"
-msgstr ""
+msgstr "Espelhar Seleção Verticalmente"
 
 #: src/hotkey/hotkey_command.cpp:193
 msgid "Rotate Selection"
-msgstr ""
+msgstr "Rodar Seleção"
 
 #
 #: src/hotkey/hotkey_command.cpp:194
-#, fuzzy
-#| msgid "Select"
 msgid "Flip Selection"
-msgstr "Selecciona"
+msgstr "Girar Seleção"
 
 #
 #: src/hotkey/hotkey_command.cpp:195
-#, fuzzy
-#| msgid "Select"
 msgid "Fill Selection"
-msgstr "Selecciona"
+msgstr "Preencher Seleção"
 
 #: src/hotkey/hotkey_command.cpp:196
 msgid "Generate Tiles in Selection"
-msgstr ""
+msgstr "Gerar terreno na seleção"
 
 #: src/hotkey/hotkey_command.cpp:197
 msgid "Randomize Tiles in Selection"
-msgstr ""
+msgstr "Terreno na seleção aleatório"
 
 #
 #: src/hotkey/hotkey_command.cpp:199
-#, fuzzy
-#| msgid "Resize Map"
 msgid "Rotate Map"
-msgstr "Redimensionar Mapa"
+msgstr "Rodar Mapa"
 
 #
 #: src/hotkey/hotkey_command.cpp:200
-#, fuzzy
-#| msgid "Generate"
 msgid "Generate Map"
-msgstr "Gerar"
+msgstr "Gerar Mapa"
 
 #: src/hotkey/hotkey_command.cpp:201
 msgid "Apply a Mask"
-msgstr ""
+msgstr "Aplicar máscara"
 
 #
 #: src/hotkey/hotkey_command.cpp:202
-#, fuzzy
-#| msgid "Create Game"
 msgid "Create Mask"
-msgstr "Criar Partida"
+msgstr "Criar Máscara"
 
 #
 #: src/hotkey/hotkey_command.cpp:203
-#, fuzzy
-#| msgid "Refresh"
 msgid "Refresh Display"
-msgstr "Actualizar"
+msgstr "Atualizar Ecrã"
 
 #: src/hotkey/hotkey_command.cpp:205
 msgid "Update Terrain Transitions"
-msgstr ""
+msgstr "Atualizar transições de terreno"
 
 #: src/hotkey/hotkey_command.cpp:208
 msgid "Toggle Terrain Transition Update"
-msgstr ""
+msgstr "Ligar atualização das transições de terreno"
 
 #: src/hotkey/hotkey_command.cpp:210
 msgid "Auto-update Terrain Transitions"
-msgstr ""
+msgstr "Atualizar Automaticamente Transições de Terreno"
 
 #: src/hotkey/hotkey_command.cpp:211
 msgid "Auto-update Terrain Transitions: No"
-msgstr ""
+msgstr "Atualização automática das transições: não"
 
 #: src/hotkey/hotkey_command.cpp:212
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr ""
+msgstr "Atualização automática das transições: parcial"
 
 #: src/hotkey/hotkey_command.cpp:214
 msgid "Refresh Image Cache"
-msgstr ""
+msgstr "Atualizar Cache de Imagens"
 
 #: src/hotkey/hotkey_command.cpp:215
 msgid "Draw Hex Coordinates"
-msgstr ""
+msgstr "Desenhar coordenadas dos hexágonos"
 
 #: src/hotkey/hotkey_command.cpp:216
 msgid "Draw Terrain Codes"
-msgstr ""
+msgstr "Desenhar código do Terreno"
 
 #: src/hotkey/hotkey_command.cpp:218
 msgid "Save Selection to Area"
-msgstr ""
+msgstr "Gravar Seleção para um Canal"
 
 #
 #: src/hotkey/hotkey_command.cpp:219
-#, fuzzy
-#| msgid "Selected game"
 msgid "Rename Selected Area"
-msgstr "Partida Seleccionada"
+msgstr "Renomear a área selecionada"
 
 #
 #: src/hotkey/hotkey_command.cpp:220
-#, fuzzy
-#| msgid "Selected game"
 msgid "Remove Selected Area"
-msgstr "Partida Seleccionada"
+msgstr "Mover a área selecionada"
 
 #: src/hotkey/hotkey_command.cpp:221
 msgid "Add New Area"
-msgstr ""
+msgstr "Adicionar nova área"
 
 #: src/hotkey/hotkey_command.cpp:223
-#, fuzzy
-#| msgid "Edit Scenario Settings"
 msgid "Edit Scenario"
-msgstr "Editar definições de cenário"
+msgstr "Editar Cenário"
 
 #
 #: src/hotkey/hotkey_command.cpp:224
-#, fuzzy
-#| msgid "Side"
 msgid "Edit Side"
-msgstr "Equipa"
+msgstr "Editar Equipa"
 
 #
 #: src/hotkey/hotkey_command.cpp:225
-#, fuzzy
-#| msgid "Remove"
 msgid "Remove Side"
-msgstr "Remover"
+msgstr "Remover Equipa"
 
 #: src/hotkey/hotkey_command.cpp:227
 msgid "Delay Shroud Updates"
-msgstr ""
+msgstr "Adiar Atualizações da Sombra"
 
 #: src/hotkey/hotkey_command.cpp:228
 msgid "Update Shroud Now"
-msgstr ""
+msgstr "Atualizar a Sombra Agora"
 
 #
 #: src/hotkey/hotkey_command.cpp:229
-#, fuzzy
-#| msgid "Continue"
 msgid "Continue Move"
-msgstr "Continuar"
+msgstr "Continuar Movimento"
 
 #: src/hotkey/hotkey_command.cpp:230
 msgid "Find Label or Unit"
-msgstr ""
+msgstr "Procurar Etiqueta ou Unidade"
 
 #: src/hotkey/hotkey_command.cpp:231
 msgid "Speak to Ally"
-msgstr ""
+msgstr "Falar com Aliados"
 
 #: src/hotkey/hotkey_command.cpp:232
 msgid "Speak to All"
-msgstr ""
+msgstr "Falar com Todos"
 
 #
 #: src/hotkey/hotkey_command.cpp:234
-#, fuzzy
-#| msgid "Chat Log"
 msgid "View Chat Log"
-msgstr "Histórico da Conversa"
+msgstr "Ver Registo da Conversa"
 
 #: src/hotkey/hotkey_command.cpp:235
 msgid "Enter User Command"
-msgstr ""
+msgstr "Introduzir comando personalizado"
 
 #
 #: src/hotkey/hotkey_command.cpp:236
-#, fuzzy
-#| msgid "Custom"
 msgid "Custom Command"
-msgstr "Próprio"
+msgstr "Comando Próprio"
 
 #: src/hotkey/hotkey_command.cpp:237
 msgid "Run Formula"
-msgstr ""
+msgstr "Executar Fórmula"
 
 #
 #: src/hotkey/hotkey_command.cpp:238
-#, fuzzy
-#| msgid "Message:"
 msgid "Clear Messages"
-msgstr "Mensagem:"
+msgstr "Apagar mensagens"
 
-#
 #: src/hotkey/hotkey_command.cpp:240
-#, fuzzy
-#| msgid "Change the language"
 msgid "Change Language"
-msgstr "Modificar o idioma"
+msgstr "Modificar o Idioma"
 
 #
 #: src/hotkey/hotkey_command.cpp:241
-#, fuzzy
-#| msgid "Refresh"
 msgid "Refresh WML"
-msgstr "Actualizar"
+msgstr "Atualizar WML"
 
 #
 #: src/hotkey/hotkey_command.cpp:242
-#, fuzzy
-#| msgid "Show next tip of the day"
 msgid "Next Tip of the Day"
-msgstr "Mostrar a próxima dica do dia"
+msgstr "Próxima dica do dia"
 
 #
 #: src/hotkey/hotkey_command.cpp:243
-#, fuzzy
-#| msgid "Show previous tip of the day"
 msgid "Previous Tip of the Day"
-msgstr "Mostrar a anterior dica do dia"
+msgstr "Anterior dica do dia"
 
 #
 #: src/hotkey/hotkey_command.cpp:244
-#, fuzzy
-#| msgid "Tutorial"
 msgid "Start Tutorial"
-msgstr "Tutorial"
+msgstr "Iniciar o Tutorial"
 
 #
 #: src/hotkey/hotkey_command.cpp:245
-#, fuzzy
-#| msgid "Campaign"
 msgid "Start Campaign"
-msgstr "Campanha"
+msgstr "Começar uma Campanha"
 
 #
 #: src/hotkey/hotkey_command.cpp:246
-#, fuzzy
-#| msgid "Multiplayer"
 msgid "Start Multiplayer Game"
-msgstr "Jogo em Rede"
+msgstr "Começar um jogo em rede"
 
 #
 #: src/hotkey/hotkey_command.cpp:247
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Manage Add-ons"
-msgstr "Extras"
+msgstr "Administrar Complementos"
 
 #
 #: src/hotkey/hotkey_command.cpp:248
-#, fuzzy
-#| msgid "Map Editor"
 msgid "Start Editor"
-msgstr "Editor do Mapa"
+msgstr "Iniciar o editor de mapa"
 
 #
 #: src/hotkey/hotkey_command.cpp:249
-#, fuzzy
-#| msgid "Credits"
 msgid "Show Credits"
-msgstr "Créditos"
+msgstr "Mostrar os créditos"
 
 #
 #: src/hotkey/hotkey_command.cpp:251
-#, fuzzy
-#| msgid "Show replay"
 msgid "Show Helptip"
-msgstr "Mostrar uma revisão"
+msgstr "Mostrar Dicas de Ajuda"
 
 #: src/hotkey/hotkey_command.cpp:254
 msgid "Unrecognized Command"
-msgstr ""
+msgstr "Comando não reconhecido"
 
 #
 #: src/hotkey/hotkey_item.cpp:402 src/hotkey/hotkey_item.cpp:405
@@ -6261,7 +6013,7 @@ msgstr "Apagar o Atalho"
 #
 #: src/hotkey/hotkey_preferences_display.cpp:256
 msgid "Action"
-msgstr "Acção"
+msgstr "Ação"
 
 #
 #: src/hotkey/hotkey_preferences_display.cpp:257
@@ -6335,8 +6087,8 @@ msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
 msgstr ""
-"Um terreno com código com mais de 4 caracteres foi encontrado, o terreno "
-"afectado é :"
+"Um terreno com código com mais de 4 carateres foi encontrado, o terreno "
+"afetado é :"
 
 #
 #: src/text.cpp:749
@@ -6363,13 +6115,13 @@ msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
 msgstr ""
-"Na secção  '[$section|]' onde '$primary_key| = $primary_value' a chave "
+"Na seção  '[$section|]' onde '$primary_key| = $primary_value' a chave "
 "obrigatória '$key|' não é definida."
 
 #
 #: src/wml_exception.cpp:99
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
-msgstr "Na secção  '[$section|]' a chave obrigatória '$key|' não é definida."
+msgstr "Na seção  '[$section|]' a chave obrigatória '$key|' não é definida."
 
 #
 #: src/wml_exception.cpp:115
@@ -6389,6 +6141,5 @@ msgstr ""
 "A chave '$deprecated_key' foi renomeada para '$key'. Suporte para "
 "'$deprecated_key' será removido na versão $removal_version."
 
-#
-#~ msgid "Elvish Castle"
-#~ msgstr "Castelo Elfo"
+#~ msgid "addons_of_type^SP/MP Campaigns"
+#~ msgstr "Campanhas Híbridas"
