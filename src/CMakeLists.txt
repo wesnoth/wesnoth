@@ -129,11 +129,13 @@ if(USE_ANA_NETWORK)
 	set(server-external-libs
 		${common-external-libs}
 		${ANA_LIBRARIES}
+		${Boost_SYSTEM_LIBRARIES}
 )
 else(USE_ANA_NETWORK)
 	set(server-external-libs
 		${common-external-libs}
 		${SDLNET_LIBRARY}
+		${Boost_SYSTEM_LIBRARIES}
 	)
 	set(game-external-libs
 		${game-external-libs}
