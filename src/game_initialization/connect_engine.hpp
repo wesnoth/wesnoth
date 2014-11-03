@@ -247,11 +247,13 @@ private:
 	int color_;
 	int gold_;
 	int income_;
-	// set during create_engines constructor never set after that.
-	// the name of teh player who is preferred for this side, 
-	// if controller_ == reserved only this player can take this side.
-	// can also be a number of a side if this side shoudl be controlled 
+	// The name of the player who is preferred for this side"
+	// If controller_ == reserved only this player can take this side,
+	// if controller_ == human/network this is only a recommendation.
+	// Can also be a number of a side if this side shoudl be controlled 
 	// by the player who controlls  that side
+	// This attribute is set during create_engines constructor and never
+	// changed after that.
 	std::string reserved_for_;
 	// The name of teh player who controlls this side, that is 
 	// - always the host for AI sides

@@ -1180,6 +1180,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		notify_new_host();
 	}
 
+	//only used for a message.
 	bool ai_transfer = false;
 	// Look for all sides the player controlled and drop them.
 	// (Give them to the host.)
