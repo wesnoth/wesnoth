@@ -65,7 +65,7 @@ const std::set<std::string> team::attributes = boost::assign::list_of("ai_config
 	("countdown_time")("disallow_observers")("faction")
 	("faction_from_recruit")("faction_name")("gold_lock")("income_lock")
 	("leader")("random_leader")("team_lock")("terrain_liked")
-	("user_description")("default_recruit")("controller_lock")("chose_random")
+	("default_recruit")("controller_lock")("chose_random")
 	("description");
 
 team::team_info::team_info() :

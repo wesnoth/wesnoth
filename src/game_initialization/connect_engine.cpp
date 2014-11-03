@@ -995,15 +995,14 @@ config side_engine::new_config() const
 			break;
 		} // end switch
 
-		res["user_description"] = t_string(description, "wesnoth");
+		res["name"] = t_string(description, "wesnoth");
 	} else {
 		if (!parent_.params_.saved_game && !cfg_.has_attribute("save_id")) {
 			res["save_id"] = player_id_ + res["side"];
 		}
-		res["user_description"] = player_id_;
+		res["name"] = player_id_;
 	}
 
-	res["name"] = res["user_description"];
 	res["allow_changes"] = allow_changes_;
 	res["chose_random"] = chose_random_;
 
@@ -1067,11 +1066,6 @@ config side_engine::new_config() const
 
 		BOOST_FOREACH(const std::string& attribute, attributes_to_trim) {
 			trimmed.remove_attribute(attribute);
-		}
-
-		if (controller_ != CNTR_COMPUTER) {
-			// Only override names for computer controlled players.
-			trimmed.remove_attribute("user_description");
 		}
 
 		res.merge_with(trimmed);
