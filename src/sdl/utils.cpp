@@ -826,6 +826,34 @@ surface greyscale_image(const surface &surf, bool optimize)
 	return optimize ? create_optimized_surface(nsurf) : nsurf;
 }
 
+surface alpha_to_greyscale(const surface &surf, bool optimize)
+{
+	if(surf == NULL)
+		return NULL;
+
+	surface nsurf(make_neutral_surface(surf));
+	if(nsurf == NULL) {
+		std::cerr << "failed to make neutral surface\n";
+		return NULL;
+	}
+
+	{
+		surface_lock lock(nsurf);
+		Uint32* beg = lock.pixels();
+		Uint32* end = beg + nsurf->w*surf->h;
+
+		while(beg != end) {
+			Uint8 alpha = (*beg) >> 24;
+
+			*beg = (0xff << 24) | (alpha << 16) | (alpha << 8) | alpha;
+
+			++beg;
+		}
+	}
+
+	return optimize ? create_optimized_surface(nsurf) : nsurf;
+}
+
 surface shadow_image(const surface &surf, bool optimize)
 {
 	if(surf == NULL)

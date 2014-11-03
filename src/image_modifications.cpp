@@ -200,6 +200,11 @@ surface gs_modification::operator()(const surface& src) const
 	return greyscale_image(src);
 }
 
+surface plot_alpha_modification::operator()(const surface& src) const
+{
+	return alpha_to_greyscale(src);
+}
+
 surface crop_modification::operator()(const surface& src) const
 {
 	SDL_Rect area = slice_;
@@ -727,6 +732,12 @@ REGISTER_MOD_PARSER(ROTATE, args)
 REGISTER_MOD_PARSER(GS, )
 {
 	return new gs_modification;
+}
+
+// Plot Alpha
+REGISTER_MOD_PARSER(Alpha, )
+{
+	return new plot_alpha_modification;
 }
 
 // Color-shift
