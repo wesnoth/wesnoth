@@ -229,6 +229,8 @@ set(libwesnoth-core_STAT_SRC
 	hash.cpp
 	log.cpp
 	md5.cpp
+	mt_rng.cpp
+	seed_rng.cpp
 	thread.cpp
 	tstring.cpp
 	util.cpp
@@ -1380,8 +1382,9 @@ if(ENABLE_TESTS)
 		tests/test_lexical_cast.cpp
 		tests/test_map_location.cpp
 		tests/test_make_enum.cpp
-		tests/test_mp_connect.cpp
 		tests/test_network_worker.cpp
+		tests/test_rng.cpp
+		tests/test_mp_connect.cpp
 		tests/test_sdl_utils.cpp
 		tests/test_serialization.cpp
 		tests/test_team.cpp

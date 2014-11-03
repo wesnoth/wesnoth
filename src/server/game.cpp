@@ -24,6 +24,8 @@
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
 
+#include <sstream>
+#include <iomanip>
 #include <boost/bind.hpp>
 
 static lg::log_domain log_server("server");
@@ -67,7 +69,8 @@ game::game(player_map& players, const network::connection host,
 	termination_(),
 	save_replays_(save_replays),
 	replay_save_path_(replay_save_path),
-	global_wait_side_(0)
+	global_wait_side_(0),
+	rng_()
 {
 	assert(owner_);
 	players_.push_back(owner_);
@@ -1019,13 +1022,17 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 void game::require_random(const simple_wml::document &/*data*/, const player_map::iterator /*user*/)
 {
 	// note, that during end turn events, it's side=1 for the server but side= side_count() on the clients.
+	
+	uint32_t seed = rng_.get_next_random();
 
-	int seed = rand() & 0x7FFFFFFF;
+	std::stringstream stream;
+	stream << std::setfill('0') << std::setw(sizeof(uint32_t)*2) << std::hex << seed;
+
 	simple_wml::document* mdata = new simple_wml::document;
 	simple_wml::node& turn = mdata->root().add_child("turn");
 	simple_wml::node& command = turn.add_child("command");
 	simple_wml::node& random_seed = command.add_child("random_seed");
-	random_seed.set_attr_int("new_seed",seed);
+	random_seed.set_attr_dup("new_seed",stream.str().c_str());
 	command.set_attr("from_side", "server");
 	command.set_attr("dependent", "yes");
 

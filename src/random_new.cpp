@@ -16,8 +16,9 @@
 #include "log.hpp"
 
 
-
+#include <cassert>
 #include <stdlib.h>
+
 static lg::log_domain log_random("random");
 #define DBG_RND LOG_STREAM(debug, log_random)
 #define LOG_RND LOG_STREAM(info, log_random)
@@ -44,19 +45,39 @@ namespace random_new
 		return random_calls_;
 	}
 
-	int rng::next_random()
+	uint32_t rng::next_random()
 	{
 		random_calls_++;
 		return next_random_impl();
 	}
 
-	int rng::next_random_impl()
+	/** 
+	 *  This code is based on the boost implementation of uniform_smallint.
+	 *  http://www.boost.org/doc/libs/1_55_0/boost/random/uniform_smallint.hpp
+	 *  Using that code would be ideal, except that boost, and C++11, do not
+	 *  guarantee that it will work the same way on all platforms, or that the 
+	 *  results may not be different in future versions of the library.
+	 *  The simplified version I have written should work the same on all
+	 *  platforms, which is the most important thing for us.
+	 *  The existence of "modulo bias" seems less important when we have moved
+	 *  to boost::mt19937, since it guarantees that there are no "bad bits"
+	 *  and has a very large range.
+	 *
+	 *  If a standard cross platform version becomes available then this should
+	 *  be replaced.
+	 */
+	int rng::get_random_int_in_range_zero_to(int max)
+	{
+		assert(max >= 0);
+		return static_cast<int> (next_random() % (static_cast<uint32_t>(max)+1));
+	}
+
+	uint32_t rng::next_random_impl()
 	{
 		//getting here means random was called form outsiude a synced context.
-		int retv = rand();
-
+		uint32_t retv = rand();
+		
 		LOG_RND << "random_new::rng::next_random returned " << retv;
 		return retv;
 	}
-
 }

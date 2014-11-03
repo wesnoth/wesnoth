@@ -376,6 +376,7 @@ if env["prereqs"]:
         conf.CheckBoost("iostreams", require_version = "1.34.1") & \
         conf.CheckBoostIostreamsGZip() & \
         conf.CheckBoostIostreamsBZip2() & \
+        conf.CheckBoost("random",require_version = "1.40.0") & \
         conf.CheckBoost("smart_ptr", header_only = True) & \
         conf.CheckBoost("system") & \
         ((not env["boostfilesystem"]) or 

@@ -72,7 +72,7 @@ public:
 	/*
 		Generates a new seed for a synced event, by asking the 'server'
 	*/
-	static int generate_random_seed();
+	static std::string generate_random_seed();
 	/**
 		called from get_user_choice while waiting for a remove user choice.
 	*/

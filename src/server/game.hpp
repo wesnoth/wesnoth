@@ -23,6 +23,8 @@
 #include <map>
 #include <vector>
 
+#include "../mt_rng.hpp"
+
 //class player;
 
 namespace wesnothd {
@@ -392,6 +394,9 @@ private:
 
 	/** The side from which global variable data is expected*/
 	int global_wait_side_;
+
+	/** A wrapper for mersenne twister rng which generates randomness for this game */
+	rand_rng::mt_rng rng_;
 };
 
 struct game_is_member {

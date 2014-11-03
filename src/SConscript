@@ -21,6 +21,8 @@ libwesnoth_core_sources = Split("""
     map.cpp
     map_location.cpp
     md5.cpp
+    mt_rng.cpp
+    seed_rng.cpp
     network.cpp
     thread.cpp
     tstring.cpp
@@ -701,6 +703,7 @@ test_sources = Split("""
     tests/test_lexical_cast.cpp
     tests/test_map_location.cpp
     tests/test_make_enum.cpp
+    tests/test_rng.cpp
     tests/test_mp_connect.cpp
     tests/test_network_worker.cpp
     tests/test_sdl_utils.cpp
