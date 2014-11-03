@@ -25,6 +25,7 @@
 
 carryover::carryover(const config& side)
 		: add_(side["add"].to_bool())
+		// TODO: i cannot see that "current_player" is ever used here.
 		, current_player_(side["current_player"])
 		, gold_(side["gold"].to_int())
 		// if we load it from a snapshot we need to read the recruits from "recruits" and not from "previous_recruits".

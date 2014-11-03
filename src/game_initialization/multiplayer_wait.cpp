@@ -290,7 +290,7 @@ void wait::join_game(bool observe)
 		int side_num = -1, nb_sides = 0;
 		BOOST_FOREACH(const config &sd, get_scenario().child_range("side"))
 		{
-			if (sd["controller"] == "reserved" && sd["current_player"] == preferences::login())
+			if (sd["controller"] == "reserved" && sd["reserved_for"] == preferences::login())
 			{
 				side_choice = &sd;
 				side_num = nb_sides;
@@ -302,7 +302,7 @@ void wait::join_game(bool observe)
 					side_choice = &sd;
 					side_num = nb_sides;
 				}
-				if (sd["current_player"] == preferences::login()) {
+				if (sd["reserved_for"] == preferences::login()) {
 					side_choice = &sd;
 					side_num = nb_sides;
 					break;  // found the preferred one

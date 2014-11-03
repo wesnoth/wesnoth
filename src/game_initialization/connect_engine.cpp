@@ -831,7 +831,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	color_(index),
 	gold_(cfg["gold"].to_int(100)),
 	income_(cfg["income"]),
-	reserved_for_(cfg["current_player"]),
+	reserved_for_(cfg["controller_client_id"]),
 	player_id_(),
 	ai_algorithm_(),
 	waiting_to_choose_faction_(allow_changes_),
@@ -947,6 +947,7 @@ config side_engine::new_config() const
 		res["current_player"] = reserved_for_;
 	}
 
+	res["reserved_for"] = reserved_for_;
 	res["controller_client_id"] = player_id_;
 	res["controller"] = controller_names[controller_];
 

@@ -307,7 +307,7 @@ bool game::take_side(const player_map::const_iterator user)
 	const simple_wml::node::child_list& sides = get_sides_list();
 	for(simple_wml::node::child_list::const_iterator side = sides.begin(); side != sides.end(); ++side) {
 		if(((**side)["controller"] == "human" || (**side)["controller"] == "reserved")
-				&& (**side)["current_player"] == user->second.name().c_str())
+				&& (**side)["reserved_for"] == user->second.name().c_str())
 		{
 			if (send_taken_side(cfg, side)) return true;
 		}
@@ -1551,7 +1551,7 @@ std::string game::debug_sides_info() const {
 		result << "side " << (**s)["side"].to_int() << " :\t" << (**s)["controller"].to_string()
 			<< "\t, " << side_controllers_[(**s)["side"].to_int() - 1]
 			<< "\t( " << sides_[(**s)["side"].to_int()-1] << ",\t"
-			<< (**s)["current_player"].to_string() << " )\n";
+			<< (**s)["controller_client_id"].to_string() << " )\n";
 	}
 
 	return result.str();
