@@ -34,6 +34,7 @@
 #include "formula_string_utils.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/range/algorithm/unique.hpp>
 
 static lg::log_domain log_network("network");
 #define DBG_NW LOG_STREAM(debug, log_network)
@@ -295,7 +296,7 @@ void wait::join_game(bool observe)
 				side_num = nb_sides;
 				break;
 			}
-			if (sd["controller"] == "human" && sd["player_id"].empty())
+			if (sd["controller"] == "human" && sd["controller_client_id"].empty())
 			{
 				if (!side_choice) { // found the first empty side
 					side_choice = &sd;
@@ -481,6 +482,12 @@ void wait::process_network_data(const config& data, const network::connection so
 		generate_menu();
 	}
 }
+//TODO:  there really no function in std or boost that does that?
+template<typename Itorrange>
+std::vector<typename Itorrange::value_type> to_vector(const Itorrange& range)
+{
+	return std::vector<typename Itorrange::value_type>(range.begin(), range.end());
+}
 
 void wait::generate_menu()
 {
@@ -513,8 +520,8 @@ void wait::generate_menu()
 			}
 		}
 
-		if(!sd["player_id"].empty())
-			playerlist.push_back(sd["player_id"]);
+		if(!sd["controller_client_id"].empty())
+			playerlist.push_back(sd["controller_client_id"]);
 
 		std::string leader_name;
 		std::string leader_image;
@@ -596,8 +603,10 @@ void wait::generate_menu()
 
 	// Uses the actual connected player list if we do not have any
 	// "gamelist" user data
+	// note that this is most likeley only temporary and we get a update from the server soon.
 	if (!gamelist().child("user")) {
-		set_user_list(playerlist, true);
+		//std::cerr << "setting userlist to is (" << boost::algorithm::join(playerlist, ",") << ")\n";
+		set_user_list(to_vector(boost::range::unique(playerlist)), true);
 	}
 }
 
