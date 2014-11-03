@@ -301,7 +301,7 @@ private:
 };
 
 /**
- * Scale (SCALE) modification.
+ * Scale (SCALE) modification. (Uses bilinear interpolation.)
  */
 class scale_modification : public modification
 {
@@ -316,6 +316,24 @@ public:
 private:
 	int w_, h_;
 };
+
+/**
+ * Scale sharp (SCALE_SHARP) modification. (Uses nearest neighbor.)
+ */
+class scale_sharp_modification : public modification
+{
+public:
+	scale_sharp_modification(int width, int height)
+		: w_(width), h_(height)
+	{}
+	virtual surface operator()(const surface& src) const;
+	int get_w() const;
+	int get_h() const;
+
+private:
+	int w_, h_;
+};
+
 
 /**
  * xBRZ scale (xBRZ) modification

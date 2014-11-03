@@ -371,6 +371,39 @@ int scale_modification::get_h() const
 	return h_;
 }
 
+surface scale_sharp_modification::operator()(const surface& src) const
+{
+	const int old_w = src->w;
+	const int old_h = src->h;
+	int w = w_;
+	int h = h_;
+
+	if(w <= 0) {
+		if(w < 0) {
+			ERR_DP << "width of SCALE_SHARP is negative - resetting to original width" << std::endl;
+		}
+		w = old_w;
+	}
+	if(h <= 0) {
+		if(h < 0) {
+			ERR_DP << "height of SCALE_SHARP is negative - resetting to original height" << std::endl;
+		}
+		h = old_h;
+	}
+
+	return scale_surface_sharp(src, w, h);
+}
+
+int scale_sharp_modification::get_w() const
+{
+	return w_;
+}
+
+int scale_sharp_modification::get_h() const
+{
+	return h_;
+}
+
 surface xbrz_modification::operator()(const surface& src) const
 {
 	if (z_ == 1) {
@@ -888,6 +921,28 @@ REGISTER_MOD_PARSER(SCALE, args)
 	return new scale_modification(w, h);
 }
 
+REGISTER_MOD_PARSER(SCALE_SHARP, args)
+{
+	std::vector<std::string> const& scale_params = utils::split(args, ',', utils::STRIP_SPACES);
+	const size_t s = scale_params.size();
+
+	if(s == 0 || (s == 1 && scale_params[0].empty())) {
+		ERR_DP << "no arguments passed to the ~SCALE_SHARP() function" << std::endl;
+		return NULL;
+	}
+
+	int w = 0, h = 0;
+
+	w = lexical_cast_default<int, const std::string&>(scale_params[0]);
+
+	if(s > 1) {
+		h = lexical_cast_default<int, const std::string&>(scale_params[1]);
+	}
+
+	return new scale_sharp_modification(w, h);
+}
+
+
 // xBRZ
 REGISTER_MOD_PARSER(xBRZ, args)
 {
@@ -898,6 +953,8 @@ REGISTER_MOD_PARSER(xBRZ, args)
 
 	return new xbrz_modification(z);
 }
+
+// scale
 
 // Gaussian-like blur
 REGISTER_MOD_PARSER(BL, args)
