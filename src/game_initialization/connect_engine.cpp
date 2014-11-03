@@ -773,12 +773,15 @@ void connect_engine::save_reserved_sides_information()
 {
 	// Add information about reserved sides to the level config.
 	// N.B. This information is needed only for a host player.
+
+	//TODO: this attribute doesn't track reassignments during the game
+	// maybe we should store this information in carryover?
 	std::map<std::string, std::string> side_users =
 		utils::map_split(level_.child_or_empty("multiplayer")["side_users"]);
 	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
 		const std::string& save_id = side->save_id();
 		const std::string& player_id = side->player_id();
-		if (!save_id.empty() && !player_id.empty()) {
+		if (!save_id.empty() && !player_id.empty() && side->controller() != ng::CNTR_COMPUTER) {
 			side_users[save_id] = player_id;
 		}
 	}
