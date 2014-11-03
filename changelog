@@ -385,11 +385,11 @@ Version 1.13.0-dev:
      and adds a new dep (locale, filesystem was also added above)
    * New image scaling routine imported from the xBRZ project (HqMAME on sourceforge)
    * Now may save screenshots and other images as pngs, using SDL_SavePNG lib (from github)
-   * Image path function ~xBRZ added, taking one argument, the scaling factor. A number 1-5.
+   * Image path function ~XBRZ added, taking one argument, the scaling factor. A number 1-5.
    * Image path function ~SCALE_SHARP added, analogous to ~SCALE but using nearest neighbor algo.
-   * Image path function ~Alpha added. Takes no arguments, plots the alpha channel in greyscale.
+   * Image path function ~PlOT_ALPHA added. Takes no arguments, plots the alpha channel in greyscale.
      Mainly useful for diagnostics of other ipf combinations, or debugging the engine itself.
-   * Image path function ~Wipe_Alpha added. Again mainly useful for diagnostics.
+   * Image path function ~WIPE_ALPHA added. Again mainly useful for diagnostics.
 
 Version 1.11.11:
  * Add-ons server:

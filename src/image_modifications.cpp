@@ -740,13 +740,13 @@ REGISTER_MOD_PARSER(GS, )
 }
 
 // Plot Alpha
-REGISTER_MOD_PARSER(Alpha, )
+REGISTER_MOD_PARSER(PLOT_ALPHA, )
 {
 	return new plot_alpha_modification;
 }
 
 // Wipe Alpha
-REGISTER_MOD_PARSER(Wipe_Alpha, )
+REGISTER_MOD_PARSER(WIPE_ALPHA, )
 {
 	return new wipe_alpha_modification;
 }
@@ -966,7 +966,7 @@ REGISTER_MOD_PARSER(SCALE_SHARP, args)
 
 
 // xBRZ
-REGISTER_MOD_PARSER(xBRZ, args)
+REGISTER_MOD_PARSER(XBRZ, args)
 {
 	int z = lexical_cast_default<int, const std::string &>(args);
 	if (z < 1 || z > 5) {
