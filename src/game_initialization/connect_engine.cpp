@@ -251,18 +251,16 @@ void connect_engine::import_user(const config& data, const bool observer,
 		}
 	}
 
-	if (side_taken < 0) {
-		// If no sides were assigned for a user,
-		// take a first available side.
-		if (!side_assigned) {
-			BOOST_FOREACH(side_engine_ptr side, side_engines_) {
-				if (side->available_for_user(username) ||
-					side->controller() == CNTR_LOCAL) {
+	// If no sides were assigned for a user,
+	// take a first available side.
+	if (side_taken < 0 && !side_assigned) {
+		BOOST_FOREACH(side_engine_ptr side, side_engines_) {
+			if (side->available_for_user(username) ||
+				side->controller() == CNTR_LOCAL) {
 					side->place_user(data);
 
 					side_assigned = true;
 					break;
-				}
 			}
 		}
 	}
