@@ -385,6 +385,8 @@ Version 1.13.0-dev:
      and adds a new dep (locale, filesystem was also added above)
    * New image scaling routine imported from the xBRZ project (HqMAME on sourceforge)
    * Now may save screenshots and other images as pngs, using SDL_SavePNG lib (from github)
+   * Image path function ~xBRZ added, taking one argument, the scaling factor. A number 1-5.
+   * Image path function ~SCALE_SHARP added, analogous to ~SCALE but using nearest neighbor algo.
 
 Version 1.11.11:
  * Add-ons server:
