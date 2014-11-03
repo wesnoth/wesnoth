@@ -1,4 +1,14 @@
 Version 1.11.18+dev:
+ * Campaigns:
+   * Legend of Wesmere:
+     * Ka’lian under attack: fixed more issues due to new map size.
+     * Ka’lian under attack: fixed two issues with fog. This fixes bug #22880.
+     * Elves Last Stand: fixed not all elvish leaders being able to recruit.
+     * Elves Last Stand: fixed bugs in Olurf and Olurf's party arrival.
+     * Bounty Hunters: fixed several coordinate issues due to new map size.
+     * Cliffs of Thoria: fixed so that yetis can be seen moving in hole in fog.
+     * Fixed player team name in several scenarios.
+     * Fixed player side carryover in several scenarios.
  * Language and i18n:
    * Updated translations: Galician, German, Italian, Portuguese,
      Scottish Gaelic, Slovak, Spanish
@@ -11,6 +21,18 @@ Version 1.11.18:
  * Campaigns:
    * Eastern Invasion:
      * Updated maps for scenario 14, 16 and 17b.
+   * Legend of Wesmere:
+     * Fixed broken sides configuration and starting locations in several
+       scenarios.
+     * The Uprooting: fixed Arkildur not appearing in multiplayer mode.
+     * Ka’lian under attack: fixed units and labels offset due to different map
+       sizes after Kalenz and Landar appear (bug #22073).
+     * Bounty Hunters: fixed Olurf being unable to recruit.
+     * Human Alliance: completely redone and rebalanced. This fixes bug #21941,
+       implements FR #16600, and addresses comments made in the feedback topic
+       on the forums.
+     * Chapter 4 is now available in multiplayer mode again.
+     * Minor (mostly cosmetic) changes to several maps.
    * Under the Burning Suns:
      * Fixed recruited Desert Archers being always male.
      * Fixed malformed rand range errors during AI turns on medium difficulty

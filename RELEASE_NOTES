@@ -48,17 +48,23 @@ Wesnoth OS X builds and release packages do not use the new dependencies in orde
 Example contents 1.
 [/section]
 
+[rasection="[i]Legend of Wesmere[/i]: Bug fixes”]Remaining known issues affecting [i]Legend of Wesmere[/i] (single player mode) have been fixed:
+
+[list][*]“Ka’lian under attack”: fixed more issues due to new map size.
+[*]“Ka’lian under attack”: fixed two issues with fog. This fixes bug [bug]22880[/bug].
+[*]“Elves Last Stand”: fixed not all elvish leaders being able to recruit.
+[*]“Elves Last Stand”: fixed bugs in Olurf and Olurf's party arrival.
+[*]“Bounty Hunters”: fixed several coordinate issues due to new map size.
+[*]“Cliffs of Thoria”: fixed so that yetis can be seen moving in hole in fog.
+[*]Fixed player team name in several scenarios.
+[*]Fixed player side carryover in several scenarios.[/list][/rasection]
+
 ==========
 KNOWN BUGS
 ==========
 
 [list][*] Start of scenario saves have some known bugs ... (Fixme: I'm not sure which bugs still affect 1.11.16+dev at the time of writing this.)
 [*]Map labels do not work at all in networked multiplayer (are not displaed for other clients), see bug [bug]22251[/bug].
-[*]The Legend of Wesmere campaign has multiple lua errors on various scenarios.
-[list][*]Bug [bug]22221[/bug] which causes you to lose your recall list and gold. There is a known workaround for this, see here: http://forums.wesnoth.org/viewtopic.php?f=51&t=31609&start=15#p572120
-[*] bug [bug]22073[/bug] which causes the map to be oddly shifted.
-[*] Olurf does not appear at the Elves last stand, see here: http://forums.wesnoth.org/viewtopic.php?f=4&t=40067#p567272
-[/list]
 [*] There are some known bugs with hotkeys: [list]
 [*][bug] 21969 [/bug] where your hotkey file gets spammed with "null".
 [*][bug] 21983 [/bug] you cannot clear some default hotkeys with the "clear hotkeys" menu option. This will not be treated as a bug in 1.12.
