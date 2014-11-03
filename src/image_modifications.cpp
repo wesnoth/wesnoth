@@ -205,6 +205,11 @@ surface plot_alpha_modification::operator()(const surface& src) const
 	return alpha_to_greyscale(src);
 }
 
+surface wipe_alpha_modification::operator()(const surface& src) const
+{
+	return wipe_alpha(src);
+}
+
 surface crop_modification::operator()(const surface& src) const
 {
 	SDL_Rect area = slice_;
@@ -738,6 +743,12 @@ REGISTER_MOD_PARSER(GS, )
 REGISTER_MOD_PARSER(Alpha, )
 {
 	return new plot_alpha_modification;
+}
+
+// Wipe Alpha
+REGISTER_MOD_PARSER(Wipe_Alpha, )
+{
+	return new wipe_alpha_modification;
 }
 
 // Color-shift

@@ -231,6 +231,15 @@ public:
 };
 
 /**
+ * Wipe Alpha (Wipe_Alpha) modification
+ */
+class wipe_alpha_modification : public modification
+{
+public:
+	virtual surface operator()(const surface& src) const;
+};
+
+/**
  * Crop (CROP) modification.
  */
 class crop_modification : public modification

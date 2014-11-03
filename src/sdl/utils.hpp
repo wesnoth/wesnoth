@@ -221,6 +221,7 @@ surface tile_surface(const surface &surf, int w, int h, bool optimize=true);
 surface adjust_surface_color(const surface &surf, int r, int g, int b, bool optimize=true);
 surface greyscale_image(const surface &surf, bool optimize=true);
 surface alpha_to_greyscale(const surface & surf, bool optimize=true);
+surface wipe_alpha(const surface & surf, bool optimize=true);
 /** create an heavy shadow of the image, by blurring, increasing alpha and darkening */
 surface shadow_image(const surface &surf, bool optimize=true);
 
