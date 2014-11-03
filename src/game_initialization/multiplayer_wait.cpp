@@ -492,6 +492,11 @@ std::vector<typename Itorrange::value_type> to_vector(const Itorrange& range)
 
 static std::string generate_user_description(const config& side)
 {
+	//allow the host to overwrite it (deactivated becasue not used).
+	if(const config::attribute_value* desc = side.get("user_description")) {
+		return desc->str();
+	}
+	
 	std::string controller_type = side["controller"].str();
 	std::string reservation = side["reserved_for"].str();
 	std::string owner = side["controller_client_id"].str();

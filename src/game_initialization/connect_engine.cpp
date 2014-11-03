@@ -936,28 +936,22 @@ config side_engine::new_config() const
 	res["reserved_for"] = reserved_for_;
 	res["controller_client_id"] = player_id_;
 	res["controller"] = controller_names[controller_];
+	res["allow_changes"] = allow_changes_;
+	res["chose_random"] = chose_random_;
 
-	if (player_id_.empty()) {
-		std::string description;
+	// set "save_id" if needed
+	if(!parent_.params_.saved_game && !cfg_.has_attribute("save_id") && !cfg_.has_attribute("id")) {
+		res["save_id"] = "side_id_number_" + res["side"].str();
+	}
+	// set "name" and "user_description" if needed.
+	{
+		std::string alternative_name;
 		switch(controller_) {
-		case CNTR_NETWORK:
-			description = N_("(Vacant slot)");
-
-			break;
+		case CNTR_NETWORK: //fall though
 		case CNTR_LOCAL:
-			if (!parent_.params_.saved_game && !cfg_.has_attribute("save_id")) {
-				res["save_id"] = preferences::login() + res["side"].str();
-			}
-
-			res["current_player"] = preferences::login();
-			description = N_("Anonymous local player");
-
+			alternative_name = player_id_;
 			break;
 		case CNTR_COMPUTER: {
-			if (!parent_.params_.saved_game && !cfg_.has_attribute("saved_id")) {
-				res["save_id"] = "ai" + res["side"].str();
-			}
-
 			utils::string_map symbols;
 			if (allow_player_) {
 				const config& ai_cfg =
@@ -971,40 +965,30 @@ config side_engine::new_config() const
 			}
 
 			symbols["side"] = res["side"].str();
-			description = vgettext("$playername $side", symbols);
-
+			alternative_name = vgettext("$playername $side", symbols);
+			// Clients might not have ai config description availabe, 
+			// so give them the description in this attribute.
+			// "user_description" is only used by mp_wait
+			res["user_description"] = alternative_name;
 			break;
 		}
 		case CNTR_EMPTY:
-			description = N_("(Empty slot)");
 			res["no_leader"] = true;
-
 			break;
-		case CNTR_RESERVED: {
-			utils::string_map symbols;
-			symbols["playername"] = reserved_for_;
-			description = vgettext("(Reserved for $playername)",symbols);
-
+		case CNTR_RESERVED:
+			//will never be the case during the actual game.
 			break;
-		}
 		case CNTR_LAST:
 		default:
-			description = N_("(empty)");
+			alternative_name = N_("(empty)");
 			assert(false);
-
 			break;
 		} // end switch
-
-		res["name"] = t_string(description, "wesnoth");
-	} else {
-		if (!parent_.params_.saved_game && !cfg_.has_attribute("save_id")) {
-			res["save_id"] = player_id_ + res["side"];
+		// "name" here is most likeley the name of the leader.
+		if(!res.has_attribute("name")){
+			res["name"] = t_string(alternative_name, "wesnoth");
 		}
-		res["name"] = player_id_;
-	}
-
-	res["allow_changes"] = allow_changes_;
-	res["chose_random"] = chose_random_;
+	} // end set "name" and "user_description" if needed.
 
 	if (!parent_.params_.saved_game) {
 		// Find a config where a default leader is and set a new type
