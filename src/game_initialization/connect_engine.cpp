@@ -937,8 +937,16 @@ config side_engine::new_config() const
 	}
 	// Side's current player is the player which is currently taken that side
 	// or the one which is reserved to it.
-	res["current_player"] = !player_id_.empty() ? player_id_ :
-		(controller_ == CNTR_RESERVED ? reserved_for_ : "");
+	if(controller_ == CNTR_EMPTY|| controller_ == CNTR_COMPUTER) {
+		//leave "current_player" to what was defined in wml.
+	}
+	else if (!player_id_.empty()) {
+		res["current_player"] = player_id_;
+	}
+	else if (!reserved_for_.empty()) {
+		res["current_player"] = reserved_for_;
+	}
+
 	res["controller_client_id"] = player_id_;
 	res["controller"] = controller_names[controller_];
 
