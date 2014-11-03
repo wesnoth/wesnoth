@@ -244,7 +244,7 @@ void connect_engine::import_user(const config& data, const bool observer,
 
 	// Check if user has a side(s) reserved for him.
 	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
-		if (side->current_player() == username && side->player_id().empty()) {
+		if (side->reserved_for() == username && side->player_id().empty()) {
 			side->place_user(data);
 
 			side_assigned = true;
@@ -270,9 +270,9 @@ void connect_engine::import_user(const config& data, const bool observer,
 	BOOST_FOREACH(side_engine_ptr user_side, side_engines_) {
 		if (user_side->player_id() == username) {
 			BOOST_FOREACH(side_engine_ptr side, side_engines_) {
-				if (!side->current_player().empty() &&
+				if (!side->reserved_for().empty() &&
 					side->player_id().empty() &&
-					side->current_player() == user_side->cfg()["side"]) {
+					side->reserved_for() == user_side->cfg()["side"]) {
 
 					side->place_user(data);
 				}
@@ -796,7 +796,7 @@ void connect_engine::load_previous_sides_users(LOAD_USERS load_users)
 	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
 		const std::string& save_id = side->save_id();
 		if (side_users.find(save_id) != side_users.end()) {
-			side->set_current_player(side_users[save_id]);
+			side->set_reserved_for(side_users[save_id]);
 
 			if (load_users == RESERVE_USERS) {
 				side->update_controller_options();
@@ -831,7 +831,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	color_(index),
 	gold_(cfg["gold"].to_int(100)),
 	income_(cfg["income"]),
-	current_player_(cfg["current_player"]),
+	reserved_for_(cfg["current_player"]),
 	player_id_(),
 	ai_algorithm_(),
 	waiting_to_choose_faction_(allow_changes_),
@@ -842,7 +842,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	// Check if this side should give its control to some other side.
 	const int side_cntr = cfg_["controller"].to_int(-1);
 	if (side_cntr != -1) {
-		current_player_ = lexical_cast<std::string>(side_cntr);
+		reserved_for_ = lexical_cast<std::string>(side_cntr);
 
 		// Remove this attribute to avoid locking side
 		// to non-existing controller type.
@@ -869,7 +869,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		set_controller(CNTR_EMPTY);
 	} else if (cfg_["controller"] == "ai") {
 		set_controller(CNTR_COMPUTER);
-	} else if (!current_player_.empty()) {
+	} else if (!reserved_for_.empty()) {
 		// Reserve a side for "current_player", unless the side
 		// is played by an AI.
 		set_controller(CNTR_RESERVED);
@@ -938,7 +938,7 @@ config side_engine::new_config() const
 	// Side's current player is the player which is currently taken that side
 	// or the one which is reserved to it.
 	res["current_player"] = !player_id_.empty() ? player_id_ :
-		(controller_ == CNTR_RESERVED ? current_player_ : "");
+		(controller_ == CNTR_RESERVED ? reserved_for_ : "");
 	res["controller"] = (res["current_player"] == preferences::login()) ?
 		"human" : controller_names[controller_];
 
@@ -988,7 +988,7 @@ config side_engine::new_config() const
 			break;
 		case CNTR_RESERVED: {
 			utils::string_map symbols;
-			symbols["playername"] = current_player_;
+			symbols["playername"] = reserved_for_;
 			description = vgettext("(Reserved for $playername)",symbols);
 
 			break;
@@ -1127,7 +1127,7 @@ bool side_engine::available_for_user(const std::string& name) const
 		// Side is still available to someone.
 		return true;
 	}
-	if (controller_ == CNTR_RESERVED && current_player_ == name) {
+	if (controller_ == CNTR_RESERVED && reserved_for_ == name) {
 		// Side is available only for the player with specific name.
 		return true;
 	}
@@ -1230,7 +1230,7 @@ void side_engine::update_controller_options()
 	add_controller_option(CNTR_COMPUTER, _("Computer Player"), "ai");
 	add_controller_option(CNTR_EMPTY, _("Empty"), "null");
 
-	if (!current_player_.empty()) {
+	if (!reserved_for_.empty()) {
 		add_controller_option(CNTR_RESERVED, _("Reserved"), "human");
 	}
 
