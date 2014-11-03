@@ -41,6 +41,7 @@ static lg::log_domain log_network("network");
 
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
+#define ERR_RG LOG_STREAM(err, log_enginerefac)
 
 namespace {
 
@@ -482,6 +483,40 @@ void wait::process_network_data(const config& data, const network::connection so
 	}
 }
 
+static std::string generate_user_description(const config& side)
+{
+	//allow the host to overwrite it, this is needed because only the host knows the ai_algorithm.
+	if(const config::attribute_value* desc = side.get("user_description")) {
+		return desc->str();
+	}
+
+	std::string controller_type = side["controller"].str();
+	std::string reservation = side["reserved_for"].str();
+	std::string owner = side["player_id"].str();
+
+	if(controller_type == "ai") {
+		return _("Computer Player");
+	}
+	else if (controller_type == "null") {
+		return _("(Empty slot)");
+	}
+	else if(owner.empty()) {
+		return _("(Vacant slot)");
+	}
+	else if (controller_type == "reserved") {
+		utils::string_map symbols;
+		symbols["playername"] = reservation;
+		return vgettext("(Reserved for $playername)",symbols);
+	}
+	else if (controller_type == "human" || controller_type == "network") {
+		return owner;
+	}
+	else {
+		ERR_RG << "Found unknown controller type:" << controller_type << std::endl;
+		return _("(empty)");
+	}
+}
+
 void wait::generate_menu()
 {
 	if (stop_updates_)
@@ -496,7 +531,7 @@ void wait::generate_menu()
 			continue;
 		}
 
-		std::string description = sd["user_description"];
+		std::string description = generate_user_description(sd);
 
 		t_string side_name = sd["faction_name"];
 		std::string leader_type = sd["type"];

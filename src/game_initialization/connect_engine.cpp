@@ -940,13 +940,10 @@ config side_engine::new_config() const
 		(controller_ == CNTR_RESERVED ? reserved_for_ : "");
 	res["controller"] = (res["current_player"] == preferences::login()) ?
 		"human" : controller_names[controller_];
-
 	if (player_id_.empty()) {
 		std::string description;
 		switch(controller_) {
 		case CNTR_NETWORK:
-			description = N_("(Vacant slot)");
-
 			break;
 		case CNTR_LOCAL:
 			if (!parent_.params_.saved_game && !cfg_.has_attribute("save_id")) {
@@ -956,7 +953,7 @@ config side_engine::new_config() const
 			res["player_id"] = preferences::login();
 			res["current_player"] = preferences::login();
 			description = N_("Anonymous local player");
-
+			res["user_description"] = t_string(description, "wesnoth");
 			break;
 		case CNTR_COMPUTER: {
 			if (!parent_.params_.saved_game && !cfg_.has_attribute("saved_id")) {
@@ -977,39 +974,37 @@ config side_engine::new_config() const
 
 			symbols["side"] = res["side"].str();
 			description = vgettext("$playername $side", symbols);
-
+			// Clients might not have ai config description availabe,
+			// so give them the description in this attribute.
+			// "user_description" is only used by mp_wait
+			res["user_description"] = description;
 			break;
 		}
 		case CNTR_EMPTY:
-			description = N_("(Empty slot)");
 			res["no_leader"] = true;
 
 			break;
 		case CNTR_RESERVED: {
-			utils::string_map symbols;
-			symbols["playername"] = reserved_for_;
-			description = vgettext("(Reserved for $playername)",symbols);
-
+			//will never be the case during the actual game.
 			break;
 		}
 		case CNTR_LAST:
 		default:
-			description = N_("(empty)");
 			assert(false);
 
 			break;
 		} // end switch
-
-		res["user_description"] = t_string(description, "wesnoth");
+		if(res["name"].str().empty() && !description.empty()) {
+			res["name"] = t_string(description, "wesnoth");
+		} 
 	} else {
 		res["player_id"] = player_id_;
 		if (!parent_.params_.saved_game && !cfg_.has_attribute("save_id")) {
 			res["save_id"] = player_id_ + res["side"];
 		}
-		res["user_description"] = player_id_;
+		res["name"] = player_id_;
 	}
 
-	res["name"] = res["user_description"];
 	res["allow_changes"] = allow_changes_;
 	res["chose_random"] = chose_random_;
 
