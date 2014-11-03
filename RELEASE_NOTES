@@ -67,6 +67,12 @@ wesnoth --render-image "units/undead-skeletal/banebow-bow-attack-1.png~SCALE(144
 will generate a scaled image of a banebow attack sprite.
 [/section]
 
+[section="Boost random"]
+Wesnoth's random generator has been upgraded, instead of using the C `rand` function from the 80s, we now use the modern Meresenne Twister generator distributed by boost. The server (and your local client) also generates seeds using /dev/urandom, or platform equivalent (handled by boost random device). The boost random library is now a build requirement.
+
+This means that the WML rand= function should now be much more random and seeded properly. lua on the otherhand still uses the C `rand` function, so it is advised not to use that anymore.
+[/section]
+
 [section="Example section 2"]
 Example contents 2.
 [/section]
