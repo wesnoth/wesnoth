@@ -773,6 +773,18 @@ static void convert_old_saves_1_11_0(config& cfg)
 		cfg.remove_child("snapshot", 0);
 	}
 }
+
+static void unify_controllers(config & level)
+{
+	BOOST_FOREACH(config& side, level.child_range("side"))
+	{
+		if(side["controller"] == "network")
+			side["controller"] = "human";
+		if(side["controller"] == "network_ai")
+			side["controller"] = "ai";
+
+	}
+}
 //changes done during 1.13.0-dev
 static void convert_old_saves_1_13_0(config& cfg)
 {
@@ -821,6 +833,18 @@ static void convert_old_saves_1_13_0(config& cfg)
 		cfg.add_child("multiplayer", tmp.mp_settings().to_config());
 	}
 #endif
+	if(config& snapshot = cfg.child("snapshot"))
+	{
+		unify_controllers(snapshot);
+	}
+	if(config& snapshot = cfg.child("replay_start"))
+	{
+		unify_controllers(snapshot);
+	}
+	if(config& snapshot = cfg.child("scenario"))
+	{
+		unify_controllers(snapshot);
+	}
 }
 
 void convert_old_saves(config& cfg)
