@@ -62,7 +62,7 @@ connect::side::side(connect& parent, ng::side_engine_ptr engine) :
 	changed_(false),
 	label_player_number_(parent.video(), str_cast(engine_->index() + 1),
 		font::SIZE_LARGE, font::LOBBY_COLOR),
-	label_original_controller_(parent.video(), engine_->current_player(),
+	label_original_controller_(parent.video(), engine_->reserved_for(),
 		font::SIZE_SMALL),
 	label_gold_(parent.video(), "100", font::SIZE_SMALL, font::LOBBY_COLOR),
 	label_income_(parent.video(), _("Normal"), font::SIZE_SMALL,
@@ -352,7 +352,7 @@ void connect::side::update_controller_ui()
 			combo_ai_algorithm_.hide(true);
 
 			label_original_controller_.hide(false);
-			label_original_controller_.set_text(engine_->current_player());
+			label_original_controller_.set_text(engine_->reserved_for());
 		}
 	} else {
 		combo_ai_algorithm_.hide(true);
