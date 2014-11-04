@@ -927,17 +927,17 @@ config side_engine::new_config() const
 	}
 	// "current_player" is the name of the side, used in dialogs like "it's now ...'s turn".
 	// It's not used by mp connect during game initialization or by mp sync during the game.
-	if(controller_ == CNTR_EMPTY|| controller_ == CNTR_COMPUTER) {
-		//leave "current_player" to what was defined in wml.
-	}
-	else if (!player_id_.empty()) {
+	// for computer players we use what is given by wml.
+	if(!player_id_.empty() && !(controller_ == CNTR_EMPTY|| controller_ == CNTR_COMPUTER)) {
 		res["current_player"] = player_id_;
 	}
-	else if (!reserved_for_.empty()) {
-		res["current_player"] = reserved_for_;
+	// Don't write "reserved_for" for sides that are not available, so that there will be no "reserved_for"
+	// attributes in the final gamestate.
+	if(!reserved_for_.empty() && player_id_.empty() && !(controller_ == CNTR_EMPTY|| controller_ == CNTR_COMPUTER)) {
+		res["reserved_for"] = reserved_for_;
 	}
-
-	res["reserved_for"] = reserved_for_;
+	// Used by the actual game to know which sides are controlled by which client.
+	// Used during mp connect to know which sides are already taken. (empty == not taken)
 	res["controller_client_id"] = player_id_;
 	res["controller"] = controller_names[controller_];
 	res["allow_changes"] = allow_changes_;
