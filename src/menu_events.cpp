@@ -2854,7 +2854,7 @@ void console_handler::do_layers() {
 
 		std::ostringstream str;
 
-		int tz = image::tile_size;
+		int tz = game_config::tile_size;
 		SDL_Rect r = sdl::create_rect(0,0,tz,tz);
 
 		surface surf = image::get_image(img.get_filename());

@@ -55,6 +55,8 @@ static lg::log_domain log_display("display");
 static lg::log_domain log_config("config");
 #define ERR_CFG LOG_STREAM(err , log_config)
 
+using game_config::tile_size;
+
 template<typename T>
 struct cache_item
 {
@@ -167,7 +169,7 @@ int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
 /** List of colors used by the TC image modification */
 std::vector<std::string> team_colors;
 
-int zoom = image::tile_size;
+int zoom = tile_size;
 int cached_zoom = 0;
 
 } // end anon namespace
