@@ -28,7 +28,6 @@ before_install:
     - if [ "$CXX" = "g++" ]; then export WML_TESTS=false; fi
     - if [ "$CXX" = "g++" ]; then export PLAY_TEST=false; fi
     - if [ "$CXX" = "g++" ]; then export CHECK_UTF8=false; fi
-    - $CXX -v
 
 install:
     - sudo add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu/ saucy main universe"
@@ -37,6 +36,7 @@ install:
     - if [ "$CXX" = "g++" ]; then time sudo apt-get -qq install g++-4.8; fi
     - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8"; fi
     - if [ "$CHECK_UTF8" = true ]; then time sudo apt-get install -qq moreutils; fi
+    - $CXX -v
 
 script: 
     - if [ "$CHECK_UTF8" = true ]; then time ./utils/travis/check_utf8.sh; fi
