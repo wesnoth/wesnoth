@@ -390,6 +390,8 @@ Version 1.13.0-dev:
    * Image path function ~PlOT_ALPHA added. Takes no arguments, plots the alpha channel in greyscale.
      Mainly useful for diagnostics of other ipf combinations, or debugging the engine itself.
    * Image path function ~WIPE_ALPHA added. Again mainly useful for diagnostics.
+   * New RNG implementation using boost::mt19937, and boost::random_device for seeds.
+     The boost random library is now a build requirement.
 
 Version 1.11.11:
  * Add-ons server:
