@@ -18,11 +18,13 @@
 #include "generators/cave_map_generator.hpp"
 #include "generators/yamg/ya_mapgen.hpp"
 #include "generators/default_map_generator.hpp"
+#include "generators/lua_map_generator.hpp"
 #include "log.hpp"
 #include "scoped_resource.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <cassert>
+#include <sstream>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -35,6 +37,8 @@ map_generator* create_map_generator(const std::string& name, const config &cfg)
 		return new cave_map_generator(cfg);
 	} else if(name == "yamg") {
 		return new ya_mapgen(cfg);
+	} else if(name == "lua") {
+		return new lua_map_generator(cfg);
 	} else {
 		return NULL;
 	}
@@ -50,8 +54,9 @@ std::string random_generate_map(const std::string& parms, const config &cfg)
 	assert(!parameters.empty()); //we use parameters.front() in the next line.
 	util::scoped_ptr<map_generator> generator(create_map_generator(parameters.front(),cfg));
 	if(generator == NULL) {
-		ERR_CF << "could not find map generator '" << parameters.front() << "'" << std::endl;
-		return std::string();
+		std::stringstream ss;
+		ss << "could not find map generator '" << parameters.front() << "'";
+		throw mapgen_exception(ss.str());
 	}
 
 	parameters.erase(parameters.begin());
@@ -66,8 +71,9 @@ config random_generate_scenario(const std::string& parms, const config &cfg)
 	assert(!parameters.empty()); //we use parameters.front() in the next line.
 	util::scoped_ptr<map_generator> generator(create_map_generator(parameters.front(),cfg));
 	if(generator == NULL) {
-		ERR_CF << "could not find map generator '" << parameters.front() << "'" << std::endl;
-		return config();
+		std::stringstream ss;
+		ss << "could not find map generator '" << parameters.front() << "'";
+		throw mapgen_exception(ss.str());
 	}
 
 	parameters.erase(parameters.begin());
