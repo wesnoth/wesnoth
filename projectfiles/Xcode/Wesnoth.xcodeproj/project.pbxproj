@@ -878,6 +878,13 @@
 		EC5C70BF19EEB57400432CF4 /* mp_alerts_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5C70BE19EEB57400432CF4 /* mp_alerts_options.cpp */; };
 		EC5C70C119EEB58300432CF4 /* mp_ui_alerts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5C70C019EEB58300432CF4 /* mp_ui_alerts.cpp */; };
 		EC6069E318EF662300CD8408 /* pangorc in Resources */ = {isa = PBXBuildFile; fileRef = EC6069E218EF662300CD8408 /* pangorc */; };
+		EC64D75B1A085C800092EF75 /* libboost_randomw.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC64D75A1A085C800092EF75 /* libboost_randomw.dylib */; };
+		EC64D75D1A085C9A0092EF75 /* libboost_randomw.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC64D75C1A085C990092EF75 /* libboost_randomw.dylib */; };
+		EC64D7611A085CE60092EF75 /* seed_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC64D75F1A085CE60092EF75 /* seed_rng.cpp */; };
+		EC64D7651A085F120092EF75 /* mt_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC64D7641A085F120092EF75 /* mt_rng.cpp */; };
+		EC64D7661A085F120092EF75 /* mt_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC64D7641A085F120092EF75 /* mt_rng.cpp */; };
+		EC64D7671A085F2F0092EF75 /* seed_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC64D75F1A085CE60092EF75 /* seed_rng.cpp */; };
+		EC64D7681A085F4A0092EF75 /* libboost_randomw.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC64D75C1A085C990092EF75 /* libboost_randomw.dylib */; };
 		EC74C10F1975765F00B85A1A /* depcheck_confirm_change.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C10D1975765F00B85A1A /* depcheck_confirm_change.cpp */; };
 		EC74C1101975765F00B85A1A /* depcheck_select_new.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C10E1975765F00B85A1A /* depcheck_select_new.cpp */; };
 		EC74C11F197576F500B85A1A /* notifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C119197576F500B85A1A /* notifications.cpp */; };
@@ -1020,6 +1027,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				EC64D75D1A085C9A0092EF75 /* libboost_randomw.dylib in CopyFiles */,
 				EC4DF45A19FEA839000EC086 /* libboost_localew.dylib in CopyFiles */,
 				ECF9D44419F40CD800E6C9D9 /* libboost_filesystemw.dylib in CopyFiles */,
 				EC1D88DD18EF414400E66AC1 /* libpixman-1.0.dylib in CopyFiles */,
@@ -2109,6 +2117,10 @@
 		EC5C70BE19EEB57400432CF4 /* mp_alerts_options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mp_alerts_options.cpp; path = dialogs/mp_alerts_options.cpp; sourceTree = "<group>"; };
 		EC5C70C019EEB58300432CF4 /* mp_ui_alerts.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_ui_alerts.cpp; sourceTree = "<group>"; };
 		EC6069E218EF662300CD8408 /* pangorc */ = {isa = PBXFileReference; lastKnownFileType = text; name = pangorc; path = Resources/pangorc; sourceTree = "<group>"; };
+		EC64D75A1A085C800092EF75 /* libboost_randomw.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_randomw.dylib; path = lib/libboost_randomw.dylib; sourceTree = "<group>"; };
+		EC64D75C1A085C990092EF75 /* libboost_randomw.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_randomw.dylib; path = lib/libboost_randomw.dylib; sourceTree = "<group>"; };
+		EC64D75F1A085CE60092EF75 /* seed_rng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = seed_rng.cpp; sourceTree = "<group>"; };
+		EC64D7641A085F120092EF75 /* mt_rng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mt_rng.cpp; sourceTree = "<group>"; };
 		EC74C10D1975765F00B85A1A /* depcheck_confirm_change.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = depcheck_confirm_change.cpp; path = gui/dialogs/depcheck_confirm_change.cpp; sourceTree = "<group>"; };
 		EC74C10E1975765F00B85A1A /* depcheck_select_new.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = depcheck_select_new.cpp; path = gui/dialogs/depcheck_select_new.cpp; sourceTree = "<group>"; };
 		EC74C119197576F500B85A1A /* notifications.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = notifications.cpp; path = desktop/notifications.cpp; sourceTree = "<group>"; };
@@ -2325,6 +2337,7 @@
 				B55999270EC61F59008DD061 /* SDL_mixer.framework in Frameworks */,
 				B5599E9C0EC68BF2008DD061 /* SDL_ttf.framework in Frameworks */,
 				B508D13F10013BF900B12852 /* Growl.framework in Frameworks */,
+				EC64D75B1A085C800092EF75 /* libboost_randomw.dylib in Frameworks */,
 				EC4DF45819FEA81D000EC086 /* libboost_localew.dylib in Frameworks */,
 				ECF9D44019F4026D00E6C9D9 /* libboost_filesystemw.dylib in Frameworks */,
 				F4EF0D4C13AD4D53003C701D /* libboost_iostreamsw.dylib in Frameworks */,
@@ -2366,6 +2379,7 @@
 				F4D2A9D514DAED4200CAFF31 /* CoreFoundation.framework in Frameworks */,
 				B5BB6BC80F89407D00444FBF /* SDL.framework in Frameworks */,
 				B5BB6BCB0F89408500444FBF /* SDL_net.framework in Frameworks */,
+				EC64D7681A085F4A0092EF75 /* libboost_randomw.dylib in Frameworks */,
 				EC4DF45B19FEA84A000EC086 /* libboost_localew.dylib in Frameworks */,
 				ECF9D44219F4050E00E6C9D9 /* libboost_systemw.dylib in Frameworks */,
 				ECF9D44119F4042700E6C9D9 /* libboost_filesystemw.dylib in Frameworks */,
@@ -2437,6 +2451,7 @@
 		29B97314FDCFA39411CA2CEA /* Wesnoth */ = {
 			isa = PBXGroup;
 			children = (
+				EC64D75C1A085C990092EF75 /* libboost_randomw.dylib */,
 				EC4DF45919FEA838000EC086 /* libboost_localew.dylib */,
 				ECF9D44319F40CD800E6C9D9 /* libboost_filesystemw.dylib */,
 				EC6069E218EF662300CD8408 /* pangorc */,
@@ -2475,6 +2490,8 @@
 		29B97315FDCFA39411CA2CEA /* src */ = {
 			isa = PBXGroup;
 			children = (
+				EC64D7641A085F120092EF75 /* mt_rng.cpp */,
+				EC64D75F1A085CE60092EF75 /* seed_rng.cpp */,
 				EC2F60231A04985A0018C9D6 /* savepng.h */,
 				EC2F60211A04983B0018C9D6 /* savepng.cpp */,
 				EC2F601F1A0490FC0018C9D6 /* xbrz.cpp */,
@@ -2887,6 +2904,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EC64D75A1A085C800092EF75 /* libboost_randomw.dylib */,
 				EC4DF45719FEA81D000EC086 /* libboost_localew.dylib */,
 				ECF9D43F19F4026D00E6C9D9 /* libboost_filesystemw.dylib */,
 				EC5C242218EF07B4001FA499 /* libbz2.1.0.dylib */,
@@ -4408,6 +4426,7 @@
 				B54AC6DA0FEA9EB5006F6FBD /* engine.cpp in Sources */,
 				B54AC6DB0FEA9EB5006F6FBD /* engine_default.cpp in Sources */,
 				EC4DF45519FEA7A8000EC086 /* gettext_boost.cpp in Sources */,
+				EC64D7611A085CE60092EF75 /* seed_rng.cpp in Sources */,
 				B54AC6DC0FEA9EB5006F6FBD /* rca.cpp in Sources */,
 				EC89A1371879D17D00A3B0B1 /* liolib.cpp in Sources */,
 				EC89A1421879D17D00A3B0B1 /* lstrlib.cpp in Sources */,
@@ -4501,6 +4520,7 @@
 				B5FCE91B1104C2A50081F1DF /* scroll_label.cpp in Sources */,
 				B5FCE91C1104C2A50081F1DF /* scrollbar_panel.cpp in Sources */,
 				B5FCE91D1104C2A50081F1DF /* slider.cpp in Sources */,
+				EC64D7651A085F120092EF75 /* mt_rng.cpp in Sources */,
 				EC84246918F30D9100FC1EEF /* random_new.cpp in Sources */,
 				ECFA82E3184E59F3006782FB /* command_executor.cpp in Sources */,
 				EC5C70BF19EEB57400432CF4 /* mp_alerts_options.cpp in Sources */,
@@ -5081,6 +5101,7 @@
 				B5BB6BC60F89406100444FBF /* network.cpp in Sources */,
 				B5BB6BCD0F8940A000444FBF /* network_worker.cpp in Sources */,
 				B5BB6C670F8940FF00444FBF /* thread.cpp in Sources */,
+				EC64D7671A085F2F0092EF75 /* seed_rng.cpp in Sources */,
 				B5BB6C6F0F8941CD00444FBF /* game_config.cpp in Sources */,
 				B5BB6C710F8941F000444FBF /* tstring.cpp in Sources */,
 				B5BB6C790F89426400444FBF /* version.cpp in Sources */,
@@ -5098,6 +5119,7 @@
 				B5BB6CD90F89470B00444FBF /* server_main.m in Sources */,
 				B54AC6800FEA9C4A006F6FBD /* player_network.cpp in Sources */,
 				B54AC6810FEA9C4A006F6FBD /* room.cpp in Sources */,
+				EC64D7661A085F120092EF75 /* mt_rng.cpp in Sources */,
 				B54AC6820FEA9C4A006F6FBD /* room_manager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
