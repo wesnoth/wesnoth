@@ -176,13 +176,6 @@ LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& gam
 		} else {
 			e.show(disp);
 		}
-	} catch (game::error & e) {
-		std::cerr << "caught game::error...\n";
-		if (is_unit_test) {
-			return DEFEAT;
-		} else {
-			gui2::show_error_message(disp.video(), _("Error: ") + e.message);
-		}
 	}
 	return NONE;
 }
@@ -322,10 +315,6 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			return QUIT;
 		} catch(twml_exception& e) {
 			e.show(disp);
-			return QUIT;
-		} catch (game::error & e) {
-			std::cerr << "caught game::error...\n";
-			gui2::show_error_message(disp.video(), _("Error: ") + e.message);
 			return QUIT;
 		}
 
