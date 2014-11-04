@@ -42,6 +42,7 @@ public:
 	virtual void set_metadata() = 0;
 
 	virtual std::string name() const;
+	virtual std::string icon() const;
 	virtual std::string description() const;
 	virtual std::string id() const;
 	virtual bool allow_era_choice() const;

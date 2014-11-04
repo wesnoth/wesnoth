@@ -91,6 +91,11 @@ std::string level::name() const
 	return data_["name"];
 }
 
+std::string level::icon() const
+{
+	return data_["icon"];
+}
+
 std::string level::id() const
 {
 	return data_["id"];
@@ -640,8 +645,8 @@ std::vector<std::string> create_engine::levels_menu_item_names() const
 	std::vector<std::string> menu_names;
 
 	BOOST_FOREACH(level_ptr level, get_levels_by_type(current_level_type_)) {
-		menu_names.push_back(level->name() + HELP_STRING_SEPARATOR +
-			level->name());
+		menu_names.push_back(IMAGE_PREFIX + level->icon() + IMG_TEXT_SEPARATOR + level->name()
+				+ HELP_STRING_SEPARATOR + level->name());
 	}
 
 	return menu_names;
