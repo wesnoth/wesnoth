@@ -12,9 +12,9 @@ env:
 matrix:
   exclude:
     - compiler: gcc
-      env: ALTERNATE_CONFIGURATION=true
+      env: ALTERNATE_CONFIGURATION=true CXX11=false
     - compiler: clang
-      env: CXX11=true
+      env: ALTERNATE_CONIFGURATION=false CXX11=true
 
 before_install:
     - export TARGETS="wesnoth wesnothd campaignd test"
