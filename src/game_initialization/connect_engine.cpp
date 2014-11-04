@@ -955,8 +955,9 @@ config side_engine::new_config() const
 		// Merge the faction data to res.
 		config faction = flg_.current_faction();
 		faction.remove_attribute("id");
+		res["faction_name"] = faction["name"];
+		faction.remove_attribute("name");
 		res.append(faction);
-		res["faction_name"] = res["name"];
 	}
 
 	if (!cfg_.has_attribute("side") || cfg_["side"].to_int() != index_ + 1) {
