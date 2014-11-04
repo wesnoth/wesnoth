@@ -5,13 +5,16 @@ compiler:
     - clang
 
 env:
-    - ALTERNATE_CONFIGURATION=false
-    - ALTERNATE_CONFIGURATION=true
+    - ALTERNATE_CONFIGURATION=false CXX11=false
+    - ALTERNATE_CONFIGURATION=true  CXX11=false
+    - ALTERNATE_CONFIGURATION=false CXX11=true
 
 matrix:
   exclude:
     - compiler: gcc
       env: ALTERNATE_CONFIGURATION=true
+    - compiler: clang
+      env: CXX11=true
 
 before_install:
     - export TARGETS="wesnoth wesnothd campaignd test"
@@ -41,7 +44,7 @@ install:
 script: 
     - if [ "$CHECK_UTF8" = true ]; then time ./utils/travis/check_utf8.sh; fi
     - time ./utils/travis/utf8_bom_dog.sh
-    - scons cxxtool=$CXX --debug=time build=release extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=$STRICT_COMPILATION $TARGETS
+    - scons cxxtool=$CXX --debug=time build=release extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=$STRICT_COMPILATION $TARGETS cxx0x=$CXX11
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
     - if [ "$CPP_TESTS" = true ]; then time ./test; fi          # The test executor script seems to be blocking stderr, disabling for now...   time ./utils/travis/test_executor.sh; fi
