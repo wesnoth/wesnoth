@@ -34,7 +34,7 @@ before_install:
     - export ALTERNATE_CONFIGURATION=false
     - export CXX11=false
 
-    - if [ "$BUILD" = 3 ] then export ALTERNATE_CONFIGURATION=true; fi
+    - if [ "$BUILD" = 3 ]; then export ALTERNATE_CONFIGURATION=true; fi
     - if [ "$BUILD" = 4 ]; then export CXX11=true; fi
 
     -
