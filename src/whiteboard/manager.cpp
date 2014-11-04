@@ -390,7 +390,7 @@ void manager::on_change_controller(int side, const team& t)
 		//refresh the hidden_ attribute of every team's side_actions
 		update_plan_hiding();
 	}
-	else if(t.is_local_ai() || t.is_network_ai()) // no one owns this side anymore
+	else if(t.is_ai()) // no one owns this side anymore
 		sa.clear(); // clear its plans away -- the ai doesn't plan ... yet
 	else if(t.is_network()) // Another client is taking control of the side
 	{

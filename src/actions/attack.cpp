@@ -1395,7 +1395,7 @@ namespace
 			{
 				res = dialogs::advance_unit_dialog(loc_);
 			}
-			else if(t.is_local_ai() || t.is_network_ai() || t.is_empty() || t.is_idle())
+			else if(t.is_ai() || t.is_empty() || t.is_idle())
 			{
 				res = rand() % nb_options_;
 
