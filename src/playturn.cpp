@@ -175,7 +175,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	}
 	else if (const config &change = cfg.child("change_controller"))
 	{
-		std::cerr << "received [change_controller]:\n" << change.debug();
 		if(change.empty())
 		{
 			return PROCESS_CONTINUE;
