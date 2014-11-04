@@ -2160,7 +2160,7 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 				BOOST_FOREACH(const config &cfg, data) {
 					merged_children.append(cfg);
 				}
-				data = boost::assign::list_of(merged_children);
+				data = boost::assign::list_of(merged_children).convert_to_container<std::vector<config> >();
 			}
 			dest.merge_array(data);
 		}
