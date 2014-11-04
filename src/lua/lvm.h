@@ -18,8 +18,7 @@
 
 #define equalobj(L,o1,o2)  (ttisequal(o1, o2) && luaV_equalobj_(L, o1, o2))
 
-#define luaV_rawequalobj(t1,t2)  \
-        (ttisequal(t1,t2) && luaV_equalobj_(NULL,t1,t2))
+#define luaV_rawequalobj(o1,o2)		equalobj(NULL,o1,o2)
 
 
 /* not to called directly */
