@@ -5,16 +5,21 @@ compiler:
     - clang
 
 env:
-    - ALTERNATE_CONFIGURATION=false CXX11=false
-    - ALTERNATE_CONFIGURATION=true  CXX11=false
-    - ALTERNATE_CONFIGURATION=false CXX11=true
+    - BUILD=1
+    - BUILD=2
+    - BUILD=3
+    - BUILD=4
 
 matrix:
   exclude:
     - compiler: gcc
-      env: ALTERNATE_CONFIGURATION=true CXX11=false
+      env: BUILD=2
+    - compiler: gcc
+      env: BUILD=3
     - compiler: clang
-      env: ALTERNATE_CONIFGURATION=false CXX11=true
+      env: BUILD=1
+    - compiler: clang
+      env: BUILD=4
 
 before_install:
     - export TARGETS="wesnoth wesnothd campaignd test"
@@ -25,6 +30,14 @@ before_install:
     - export STRICT_COMPILATION=true
     - export EXTRA_FLAGS_RELEASE="-O0"
     - export WML_TEST_TIME=40
+
+    - export ALTERNATE_CONFIGURATION=false
+    - export CXX11=false
+
+    - if [ "$BUILD" = 3 ] then export ALTERNATE_CONFIGURATION=true; fi
+    - if [ "$BUILD" = 4 ]; then export CXX11=true; fi
+
+    -
     - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export STRICT_COMPILATION=false; fi
     - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export EXTRA_FLAGS_RELEASE=""; fi
     - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export WML_TEST_TIME=20; fi
