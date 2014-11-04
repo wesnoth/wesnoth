@@ -522,25 +522,19 @@ void game::change_controller(const size_t side_num,
 
 	change.set_attr("side", side.c_str());
 	change.set_attr("player", player_name.c_str());
+	change.set_attr("controller", (side_controllers_[side_num] == "ai" ? "ai" : "human"));
 
 	// Tell everyone but the new player that this side's controller changed.
-	change.set_attr("controller", (side_controllers_[side_num] == "ai" ? "ai" : "human"));
 	send_data(response, sock);
-	if (started_) { //this is added instead of the if (started_) {...} below
-		simple_wml::document *record = new simple_wml::document;
-		simple_wml::node& recchg = record->root().add_child("change_controller");
-		recchg.set_attr_dup("side", side.c_str());
-		recchg.set_attr_dup("player", player_name.c_str());
-		recchg.set_attr_dup("controller", (side_controllers_[side_num] == "ai" ? "ai" : "human"));
-
-		record_data(record); //the purpose of these records is so that observers, replay viewers, get controller updates correctly
-	}
-
 	// Tell the new player that he controls this side now.
 	// Just don't send it when the player left the game. (The host gets the
 	// side_drop already.)
 	if (!player_left) {
 		wesnothd::send_to_one(response, sock);
+	}
+	//record this change, so that observers and replay viewers, get controller updates correctly.
+	if (started_) { 
+		record_data(response.clone()); 
 	}
 }
 
