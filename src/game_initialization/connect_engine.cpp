@@ -925,8 +925,8 @@ config side_engine::new_config() const
 	if (!cfg_.has_attribute("side") || cfg_["side"].to_int() != index_ + 1) {
 		res["side"] = index_ + 1;
 	}
-	// Side's current player is the player which is currently taken that side
-	// or the one which is reserved to it.
+	// "current_player" is the name of the side, used in dialogs like "it's now ...'s turn".
+	// It's not used by mp connect during game initialization or by mp sync during the game.
 	if(controller_ == CNTR_EMPTY|| controller_ == CNTR_COMPUTER) {
 		//leave "current_player" to what was defined in wml.
 	}
