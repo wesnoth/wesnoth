@@ -44,6 +44,7 @@ before_install:
     - if [ "$CXX" = "g++" ]; then export WML_TESTS=false; fi
     - if [ "$CXX" = "g++" ]; then export PLAY_TEST=false; fi
     - if [ "$CXX" = "g++" ]; then export CHECK_UTF8=false; fi
+    - if [ "$CXX11" = true ]; then export STRICT_COMPILATION=false; fi
 
 install:
     - sudo add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu/ saucy main universe"
