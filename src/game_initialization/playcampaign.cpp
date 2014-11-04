@@ -148,29 +148,29 @@ LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& gam
 
 		return res;
 	} catch(game::load_game_failed& e) {
-		std::cerr << std::string(_("The game could not be loaded: ")) + " (game::load_game_failed) " + e.message << std::endl;
+		ERR_NG << std::string(_("The game could not be loaded: ")) + " (game::load_game_failed) " + e.message << std::endl;
 		if (is_unit_test) {
 			return DEFEAT;
 		} else {
 			gui2::show_error_message(disp.video(), _("The game could not be loaded: ") + e.message);
 		}
 	} catch(game::game_error& e) {
-		std::cerr << std::string(_("Error while playing the game: ")) + " (game::game_error) " + e.message << std::endl;
+		ERR_NG << std::string(_("Error while playing the game: ")) + " (game::game_error) " + e.message << std::endl;
 		if (is_unit_test) {
 			return DEFEAT;
 		} else {
 			gui2::show_error_message(disp.video(), std::string(_("Error while playing the game: ")) + e.message);
 		}
 	} catch(incorrect_map_format_error& e) {
-		std::cerr << std::string(_("The game map could not be loaded: ")) + " (incorrect_map_format_error) " + e.message << std::endl;
+		ERR_NG << std::string(_("The game map could not be loaded: ")) + " (incorrect_map_format_error) " + e.message << std::endl;
 		if (is_unit_test) {
 			return DEFEAT;
 		} else {
 			gui2::show_error_message(disp.video(), std::string(_("The game map could not be loaded: ")) + e.message);
 		}
 	} catch(twml_exception& e) {
-		std::cerr << std::string("WML Exception: ") + e.user_message << std::endl;
-		std::cerr << std::string("Dev Message: ") + e.dev_message << std::endl;
+		ERR_NG << std::string("WML Exception: ") + e.user_message << std::endl;
+		ERR_NG << std::string("Dev Message: ") + e.dev_message << std::endl;
 		if (is_unit_test) {
 			return DEFEAT;
 		} else {
@@ -310,7 +310,6 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		} catch (mapgen_exception& e) {
 			gui2::show_error_message(disp.video(), std::string(_("Map generator error: ") + e.message));
 		} catch(config::error& e) {
-			std::cerr << "caught config::error...\n";
 			gui2::show_error_message(disp.video(), _("Error while reading the WML: ") + e.message);
 			return QUIT;
 		} catch(twml_exception& e) {
