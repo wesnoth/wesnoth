@@ -394,7 +394,7 @@ if(LIBDBUS_FOUND)
 	)
 endif()
 
-if(PNG_FOUND)
+if(ENABLE_LIBPNG AND PNG_FOUND)
 	set_source_files_properties(
 		SDL_SavePNG/savepng.cpp
 		PROPERTIES
@@ -414,6 +414,15 @@ set(wesnoth-sdl_SRC
 	sdl/shader.cpp
 	xBRZ/xbrz.cpp
 )
+
+# If requested, compile and link this file also to be able to save png files
+if(ENABLE_LIBPNG AND PNG_FOUND)
+	set(wesnoth-sdl_SRC
+		${wesnoth-sdl_SRC}
+		SDL_SavePNG/savepng.cpp
+	)
+endif(ENABLE_LIBPNG AND PNG_FOUND)
+
 
 add_library(wesnoth-sdl
 	${LIBRARY_TYPE}
@@ -1064,14 +1073,6 @@ if(LIBDBUS_FOUND)
 		desktop/dbus_notification.cpp
 	)
 endif(LIBDBUS_FOUND)
-
-# If requested, compile and link this file also to be able to save png files
-if(ENABLE_LIBPNG AND PNG_FOUND)
-	set(libwesnoth-game_STAT_SRC
-		${libwesnoth-game_STAT_SRC}
-		SDL_SavePNG/savepng.cpp
-	)
-endif(ENABLE_LIBPNG AND PNG_FOUND)
 
 if(ENABLE_GAME AND ENABLE_TESTS)
 	set(libwesnoth-game_STAT_SRC
