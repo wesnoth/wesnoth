@@ -470,30 +470,38 @@ void create_engine::init_generated_level_data()
 		return;
 	}
 
-	if (!cur_lev->generate_whole_scenario())
-	{
-		DBG_MP << "** replacing map ** \n";
+	try {
+		if (!cur_lev->generate_whole_scenario())
+		{
+			DBG_MP << "** replacing map ** \n";
 
+			config data = cur_lev->data();
+
+			data["map_data"] = generator_->create_map();
+
+			cur_lev->set_data(data);
+
+		} else { //scenario generation
+
+			DBG_MP << "** replacing scenario ** \n";
+
+			config data = generator_->create_scenario();
+
+			// Set the scenario to have placing of sides
+			// based on the terrain they prefer
+			if (!data.has_attribute("modify_placing")) {
+				data["modify_placing"] = "true";
+			}
+
+			const std::string& description = cur_lev->data()["description"];
+			data["description"] = description;
+
+			cur_lev->set_data(data);
+		}
+	} catch (mapgen_exception & e) {
 		config data = cur_lev->data();
 
-		data["map_data"] = generator_->create_map();
-
-		cur_lev->set_data(data);
-
-	} else { //scenario generation
-
-		DBG_MP << "** replacing scenario ** \n";
-
-		config data = generator_->create_scenario();
-
-		// Set the scenario to have placing of sides
-		// based on the terrain they prefer
-		if (!data.has_attribute("modify_placing")) {
-			data["modify_placing"] = "true";
-		}
-
-		const std::string& description = cur_lev->data()["description"];
-		data["description"] = description;
+		data["error_message"] = e.what();
 
 		cur_lev->set_data(data);
 	}
