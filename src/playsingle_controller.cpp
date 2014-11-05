@@ -352,6 +352,7 @@ possible_end_play_signal playsingle_controller::play_scenario_init(end_level_dat
 	HANDLE_END_PLAY_SIGNAL( fire_preload() );
 
 	replaying_ = (recorder.at_end() == false);
+	assert(!replaying_);
 
 	if(!loading_game_ )
 	{
