@@ -66,22 +66,22 @@ void luaX_init (lua_State *L) {
   for (i=0; i<NUM_RESERVED; i++) {
     TString *ts = luaS_new(L, luaX_tokens[i]);
     luaS_fix(ts);  /* reserved words are never collected */
-    ts->tsv.reserved = cast_byte(i+1);  /* reserved word */
+    ts->tsv.extra = cast_byte(i+1);  /* reserved word */
   }
 }
 
 
 const char *luaX_token2str (LexState *ls, int token) {
-  if (token < FIRST_RESERVED - 1) {
+  if (token < FIRST_RESERVED - 1) {  /* single-byte symbols? */
     lua_assert(token == cast(unsigned char, token));
     return (lisprint(token)) ? luaO_pushfstring(ls->L, LUA_QL("%c"), token) :
                               luaO_pushfstring(ls->L, "char(%d)", token);
   }
   else {
     const char *s = luaX_tokens[token - FIRST_RESERVED];
-    if (token < TK_EOS)
+    if (token < TK_EOS)  /* fixed format (symbols and reserved words)? */
       return luaO_pushfstring(ls->L, LUA_QS, s);
-    else
+    else  /* names, strings, and numerals */
       return s;
   }
 }
@@ -131,6 +131,9 @@ TString *luaX_newstring (LexState *ls, const char *str, size_t l) {
        table has no metatable, so it does not need to invalidate cache */
     setbvalue(o, 1);  /* t[string] = true */
     luaC_checkGC(L);
+  }
+  else {  /* string already present */
+    ts = rawtsvalue(keyfromval(o));  /* re-use value previously stored */
   }
   L->top--;  /* remove string from stack */
   return ts;
@@ -221,13 +224,24 @@ static void trydecpoint (LexState *ls, SemInfo *seminfo) {
 
 
 /* LUA_NUMBER */
+/*
+** this function is quite liberal in what it accepts, as 'luaO_str2d'
+** will reject ill-formed numerals.
+*/
 static void read_numeral (LexState *ls, SemInfo *seminfo) {
+  const char *expo = "Ee";
+  int first = ls->current;
   lua_assert(lisdigit(ls->current));
-  do {
-    save_and_next(ls);
-    if (check_next(ls, "EePp"))  /* exponent part? */
+  save_and_next(ls);
+  if (first == '0' && check_next(ls, "Xx"))  /* hexadecimal? */
+    expo = "Pp";
+  for (;;) {
+    if (check_next(ls, expo))  /* exponent part? */
       check_next(ls, "+-");  /* optional exponent sign */
-  } while (lislalnum(ls->current) || ls->current == '.');
+    if (lisxdigit(ls->current) || ls->current == '.')
+      save_and_next(ls);
+    else  break;
+  }
   save(ls, '\0');
   buffreplace(ls, '.', ls->decpoint);  /* follow locale for decimal point */
   if (!buff2d(ls->buff, &seminfo->r))  /* format error? */
@@ -301,7 +315,7 @@ static int readhexaesc (LexState *ls) {
   int c[3], i;  /* keep input for error message */
   int r = 0;  /* result accumulator */
   c[0] = 'x';  /* for error message */
-  for (i = 1; i < 3; i++) {  /* read two hexa digits */
+  for (i = 1; i < 3; i++) {  /* read two hexadecimal digits */
     c[i] = next(ls);
     if (!lisxdigit(c[i]))
       escerror(ls, c, i + 1, "hexadecimal digit expected");
@@ -479,8 +493,8 @@ static int llex (LexState *ls, SemInfo *seminfo) {
           ts = luaX_newstring(ls, luaZ_buffer(ls->buff),
                                   luaZ_bufflen(ls->buff));
           seminfo->ts = ts;
-          if (ts->tsv.reserved > 0)  /* reserved word? */
-            return ts->tsv.reserved - 1 + FIRST_RESERVED;
+          if (isreserved(ts))  /* reserved word? */
+            return ts->tsv.extra - 1 + FIRST_RESERVED;
           else {
             return TK_NAME;
           }

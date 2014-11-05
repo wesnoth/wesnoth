@@ -103,7 +103,7 @@ static int isneg (const char **s) {
 
 static lua_Number readhexa (const char **s, lua_Number r, int *count) {
   for (; lisxdigit(cast_uchar(**s)); (*s)++) {  /* read integer part */
-    r = (r * 16.0) + cast_num(luaO_hexavalue(cast_uchar(**s)));
+    r = (r * cast_num(16.0)) + cast_num(luaO_hexavalue(cast_uchar(**s)));
     (*count)++;
   }
   return r;
@@ -148,7 +148,7 @@ static lua_Number lua_strx2number (const char *s, char **endptr) {
   *endptr = cast(char *, s);  /* valid up to here */
  ret:
   if (neg) r = -r;
-  return ldexp(r, e);
+  return l_mathop(ldexp)(r, e);
 }
 
 #endif
@@ -170,8 +170,7 @@ int luaO_str2d (const char *s, size_t len, lua_Number *result) {
 
 
 static void pushstr (lua_State *L, const char *str, size_t l) {
-  setsvalue2s(L, L->top, luaS_newlstr(L, str, l));
-  incr_top(L);
+  setsvalue2s(L, L->top++, luaS_newlstr(L, str, l));
 }
 
 
@@ -181,8 +180,8 @@ const char *luaO_pushvfstring (lua_State *L, const char *fmt, va_list argp) {
   for (;;) {
     const char *e = strchr(fmt, '%');
     if (e == NULL) break;
-    setsvalue2s(L, L->top, luaS_newlstr(L, fmt, e-fmt));
-    incr_top(L);
+    luaD_checkstack(L, 2);  /* fmt + item */
+    pushstr(L, fmt, e - fmt);
     switch (*(e+1)) {
       case 's': {
         const char *s = va_arg(argp, char *);
@@ -197,13 +196,11 @@ const char *luaO_pushvfstring (lua_State *L, const char *fmt, va_list argp) {
         break;
       }
       case 'd': {
-        setnvalue(L->top, cast_num(va_arg(argp, int)));
-        incr_top(L);
+        setnvalue(L->top++, cast_num(va_arg(argp, int)));
         break;
       }
       case 'f': {
-        setnvalue(L->top, cast_num(va_arg(argp, l_uacNumber)));
-        incr_top(L);
+        setnvalue(L->top++, cast_num(va_arg(argp, l_uacNumber)));
         break;
       }
       case 'p': {
@@ -225,6 +222,7 @@ const char *luaO_pushvfstring (lua_State *L, const char *fmt, va_list argp) {
     n += 2;
     fmt = e+2;
   }
+  luaD_checkstack(L, 1);
   pushstr(L, fmt, strlen(fmt));
   if (n > 0) luaV_concat(L, n + 1);
   return svalue(L->top - 1);

@@ -83,8 +83,8 @@ static void DumpConstants(const Proto* f, DumpState* D)
  for (i=0; i<n; i++)
  {
   const TValue* o=&f->k[i];
-  DumpChar(ttype(o),D);
-  switch (ttype(o))
+  DumpChar(ttypenv(o),D);
+  switch (ttypenv(o))
   {
    case LUA_TNIL:
 	break;
@@ -97,6 +97,7 @@ static void DumpConstants(const Proto* f, DumpState* D)
    case LUA_TSTRING:
 	DumpString(rawtsvalue(o),D);
 	break;
+    default: lua_assert(0);
   }
  }
  n=f->sizep;

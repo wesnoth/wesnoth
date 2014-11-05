@@ -249,7 +249,7 @@ static void PrintString(const TString* ts)
 static void PrintConstant(const Proto* f, int i)
 {
  const TValue* o=&f->k[i];
- switch (ttype(o))
+ switch (ttypenv(o))
  {
   case LUA_TNIL:
 	printf("nil");
