@@ -50,7 +50,7 @@
 #define LUA_USE_POSIX
 #define LUA_USE_DLOPEN		/* needs an extra library: -ldl */
 #define LUA_USE_READLINE	/* needs some extra libraries */
-#define LUA_USE_STRTODHEX	/* assume 'strtod' handles hexa formats */
+#define LUA_USE_STRTODHEX	/* assume 'strtod' handles hex formats */
 #define LUA_USE_AFORMAT		/* assume 'printf' handles 'aA' specifiers */
 #define LUA_USE_LONGLONG	/* assume support for long long */
 #endif
@@ -59,7 +59,7 @@
 #define LUA_USE_POSIX
 #define LUA_USE_DLOPEN		/* does not need -ldl */
 #define LUA_USE_READLINE	/* needs an extra library: -lreadline */
-#define LUA_USE_STRTODHEX	/* assume 'strtod' handles hexa formats */
+#define LUA_USE_STRTODHEX	/* assume 'strtod' handles hex formats */
 #define LUA_USE_AFORMAT		/* assume 'printf' handles 'aA' specifiers */
 #define LUA_USE_LONGLONG	/* assume support for long long */
 #endif
@@ -236,6 +236,13 @@ inline void fwrite_wrapper(const void * ptr, size_t size, size_t count, FILE * s
 	(fprintf(stderr, (s), (p)), fflush(stderr))
 
 
+/*
+@@ LUAI_MAXSHORTLEN is the maximum length for short strings, that is,
+** strings that are internalized. (Cannot be smaller than reserved words
+** or tags for metamethods, as these strings must be internalized;
+** #("function") = 8, #("__newindex") = 10.)
+*/
+#define LUAI_MAXSHORTLEN        40
 
 
 
@@ -412,9 +419,15 @@ inline void fwrite_wrapper(const void * ptr, size_t size, size_t count, FILE * s
 
 
 /*
+@@ l_mathop allows the addition of an 'l' or 'f' to all math operations
+*/
+#define l_mathop(x)		(x)
+
+
+/*
 @@ lua_str2number converts a decimal numeric string to a number.
 @@ lua_strx2number converts an hexadecimal numeric string to a number.
-** In C99, 'strtod' do both conversions. C89, however, has no function
+** In C99, 'strtod' does both conversions. C89, however, has no function
 ** to convert floating hexadecimal strings to numbers. For these
 ** systems, you can leave 'lua_strx2number' undefined and Lua will
 ** provide its own implementation.
@@ -433,8 +446,8 @@ inline void fwrite_wrapper(const void * ptr, size_t size, size_t count, FILE * s
 /* the following operations need the math library */
 #if defined(lobject_c) || defined(lvm_c)
 #include <math.h>
-#define luai_nummod(L,a,b)	((a) - floor((a)/(b))*(b))
-#define luai_numpow(L,a,b)	(pow(a,b))
+#define luai_nummod(L,a,b)	((a) - l_mathop(floor)((a)/(b))*(b))
+#define luai_numpow(L,a,b)	(l_mathop(pow)(a,b))
 #endif
 
 /* these are quite standard operations */
@@ -466,65 +479,74 @@ inline void fwrite_wrapper(const void * ptr, size_t size, size_t count, FILE * s
 #define LUA_UNSIGNED	unsigned LUA_INT32
 
 
-#if defined(LUA_CORE)		/* { */
+
+/*
+** Some tricks with doubles
+*/
 
 #if defined(LUA_NUMBER_DOUBLE) && !defined(LUA_ANSI)	/* { */
-
-/* On a Microsoft compiler on a Pentium, use assembler to avoid clashes
-   with a DirectX idiosyncrasy */
-#if defined(LUA_WIN) && defined(_MSC_VER) && defined(_M_IX86)	/* { */
-
-#define MS_ASMTRICK
-
-#else				/* }{ */
-/* the next definition uses a trick that should work on any machine
-   using IEEE754 with a 32-bit integer type */
-
-#define LUA_IEEE754TRICK
-
 /*
+** The next definitions activate some tricks to speed up the
+** conversion from doubles to integer types, mainly to LUA_UNSIGNED.
+**
+@@ LUA_MSASMTRICK uses Microsoft assembler to avoid clashes with a
+** DirectX idiosyncrasy.
+**
+@@ LUA_IEEE754TRICK uses a trick that should work on any machine
+** using IEEE754 with a 32-bit integer type.
+**
+@@ LUA_IEEELL extends the trick to LUA_INTEGER; should only be
+** defined when LUA_INTEGER is a 32-bit integer.
+**
 @@ LUA_IEEEENDIAN is the endianness of doubles in your machine
 ** (0 for little endian, 1 for big endian); if not defined, Lua will
-** check it dynamically.
+** check it dynamically for LUA_IEEE754TRICK (but not for LUA_NANTRICK).
+**
+@@ LUA_NANTRICK controls the use of a trick to pack all types into
+** a single double value, using NaN values to represent non-number
+** values. The trick only works on 32-bit machines (ints and pointers
+** are 32-bit values) with numbers represented as IEEE 754-2008 doubles
+** with conventional endianess (12345678 or 87654321), in CPUs that do
+** not produce signaling NaN values (all NaNs are quiet).
 */
-/* check for known architectures */
-#if defined(__i386__) || defined(__i386) || defined(__X86__) || \
-    defined (__x86_64)
-#define LUA_IEEEENDIAN	0
-#elif defined(__POWERPC__) || defined(__ppc__)
-#define LUA_IEEEENDIAN	1
-#endif
 
-#endif				/* } */
+/* Microsoft compiler on a Pentium (32 bit) ? */
+#if defined(LUA_WIN) && defined(_MSC_VER) && defined(_M_IX86)	/* { */
 
-#endif			/* } */
-
-#endif			/* } */
-
-/* }================================================================== */
+#define LUA_MSASMTRICK
+#define LUA_IEEEENDIAN		0
+#define LUA_NANTRICK
 
 
-/*
-@@ LUA_NANTRICK_LE/LUA_NANTRICK_BE controls the use of a trick to
-** pack all types into a single double value, using NaN values to
-** represent non-number values. The trick only works on 32-bit machines
-** (ints and pointers are 32-bit values) with numbers represented as
-** IEEE 754-2008 doubles with conventional endianess (12345678 or
-** 87654321), in CPUs that do not produce signaling NaN values (all NaNs
-** are quiet).
-*/
-#if defined(LUA_CORE) && \
-    defined(LUA_NUMBER_DOUBLE) && !defined(LUA_ANSI)	/* { */
+/* pentium 32 bits? */
+#elif defined(__i386__) || defined(__i386) || defined(__X86__) /* }{ */
 
-/* little-endian architectures that satisfy those conditions */
-#if defined(__i386__) || defined(__i386) || defined(__X86__) || \
-    defined(_M_IX86)
+#define LUA_IEEE754TRICK
+#define LUA_IEEELL
+#define LUA_IEEEENDIAN		0
+#define LUA_NANTRICK
 
-#define LUA_NANTRICK_LE
+/* pentium 64 bits? */
+#elif defined(__x86_64)						/* }{ */
 
-#endif
+#define LUA_IEEE754TRICK
+#define LUA_IEEEENDIAN		0
+
+#elif defined(__POWERPC__) || defined(__ppc__)			/* }{ */
+
+#define LUA_IEEE754TRICK
+#define LUA_IEEEENDIAN		1
+
+#else								/* }{ */
+
+/* assume IEEE754 and a 32-bit integer type */
+#define LUA_IEEE754TRICK
+
+#endif								/* } */
 
 #endif							/* } */
+
+/* }================================================================== */
 
 
 

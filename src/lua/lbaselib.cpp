@@ -241,10 +241,16 @@ static int luaB_ipairs (lua_State *L) {
 }
 
 
-static int load_aux (lua_State *L, int status) {
-  if (status == LUA_OK)
+static int load_aux (lua_State *L, int status, int envidx) {
+  if (status == LUA_OK) {
+    if (envidx != 0) {  /* 'env' parameter? */
+      lua_pushvalue(L, envidx);  /* environment for loaded function */
+      if (!lua_setupvalue(L, -2, 1))  /* set it as 1st upvalue */
+        lua_pop(L, 1);  /* remove 'env' if not used by previous call */
+    }
     return 1;
-  else {
+  }
+  else {  /* error (message is on top of the stack) */
     lua_pushnil(L);
     lua_insert(L, -2);  /* put before error message */
     return 2;  /* return nil plus error message */
@@ -255,13 +261,9 @@ static int load_aux (lua_State *L, int status) {
 static int luaB_loadfile (lua_State *L) {
   const char *fname = luaL_optstring(L, 1, NULL);
   const char *mode = luaL_optstring(L, 2, NULL);
-  int env = !lua_isnone(L, 3);  /* 'env' parameter? */
+  int env = (!lua_isnone(L, 3) ? 3 : 0);  /* 'env' index or 0 if no 'env' */
   int status = luaL_loadfilex(L, fname, mode);
-  if (status == LUA_OK && env) {  /* 'env' parameter? */
-    lua_pushvalue(L, 3);
-    lua_setupvalue(L, -2, 1);  /* set it as 1st upvalue of loaded chunk */
-  }
-  return load_aux(L, status);
+  return load_aux(L, status, env);
 }
 
 
@@ -292,6 +294,7 @@ static const char *generic_reader (lua_State *L, void *ud, size_t *size) {
   lua_pushvalue(L, 1);  /* get function */
   lua_call(L, 0, 1);  /* call it */
   if (lua_isnil(L, -1)) {
+    lua_pop(L, 1);  /* pop result */
     *size = 0;
     return NULL;
   }
@@ -305,9 +308,9 @@ static const char *generic_reader (lua_State *L, void *ud, size_t *size) {
 static int luaB_load (lua_State *L) {
   int status;
   size_t l;
-  int top = lua_gettop(L);
   const char *s = lua_tolstring(L, 1, &l);
   const char *mode = luaL_optstring(L, 3, "bt");
+  int env = (!lua_isnone(L, 4) ? 4 : 0);  /* 'env' index or 0 if no 'env' */
   if (s != NULL) {  /* loading a string? */
     const char *chunkname = luaL_optstring(L, 2, s);
     status = luaL_loadbufferx(L, s, l, chunkname, mode);
@@ -318,11 +321,7 @@ static int luaB_load (lua_State *L) {
     lua_settop(L, RESERVEDSLOT);  /* create reserved slot */
     status = lua_load(L, generic_reader, NULL, chunkname, mode);
   }
-  if (status == LUA_OK && top >= 4) {  /* is there an 'env' argument */
-    lua_pushvalue(L, 4);  /* environment for loaded function */
-    lua_setupvalue(L, -2, 1);  /* set it as 1st upvalue */
-  }
-  return load_aux(L, status);
+  return load_aux(L, status, env);
 }
 
 /* }====================================================== */
@@ -336,7 +335,8 @@ static int dofilecont (lua_State *L) {
 static int luaB_dofile (lua_State *L) {
   const char *fname = luaL_optstring(L, 1, NULL);
   lua_settop(L, 1);
-  if (luaL_loadfile(L, fname) != LUA_OK) lua_error(L);
+  if (luaL_loadfile(L, fname) != LUA_OK)
+    return lua_error(L);
   lua_callk(L, 0, LUA_MULTRET, 0, dofilecont);
   return dofilecont(L);
 }

@@ -59,10 +59,15 @@ int luaV_tostring (lua_State *L, StkId obj) {
 static void traceexec (lua_State *L) {
   CallInfo *ci = L->ci;
   lu_byte mask = L->hookmask;
-  if ((mask & LUA_MASKCOUNT) && L->hookcount == 0) {
-    resethookcount(L);
-    luaD_hook(L, LUA_HOOKCOUNT, -1);
+  int counthook = ((mask & LUA_MASKCOUNT) && L->hookcount == 0);
+  if (counthook)
+    resethookcount(L);  /* reset count */
+  if (ci->callstatus & CIST_HOOKYIELD) {  /* called hook last time? */
+    ci->callstatus &= ~CIST_HOOKYIELD;  /* erase mark */
+    return;  /* do not call hook again (VM yielded, so it did not move) */
   }
+  if (counthook)
+    luaD_hook(L, LUA_HOOKCOUNT, -1);  /* call count hook */
   if (mask & LUA_MASKLINE) {
     Proto *p = ci_func(ci)->p;
     int npc = pcRel(ci->u.l.savedpc, p);
@@ -70,11 +75,15 @@ static void traceexec (lua_State *L) {
     if (npc == 0 ||  /* call linehook when enter a new function, */
         ci->u.l.savedpc <= L->oldpc ||  /* when jump back (loop), or when */
         newline != getfuncline(p, pcRel(L->oldpc, p)))  /* enter a new line */
-      luaD_hook(L, LUA_HOOKLINE, newline);
+      luaD_hook(L, LUA_HOOKLINE, newline);  /* call line hook */
   }
   L->oldpc = ci->u.l.savedpc;
   if (L->status == LUA_YIELD) {  /* did hook yield? */
+    if (counthook)
+      L->hookcount = 1;  /* undo decrement to zero */
     ci->u.l.savedpc--;  /* undo increment (resume will increment it again) */
+    ci->callstatus |= CIST_HOOKYIELD;  /* mark that it yielded */
+    ci->func = L->top - 1;  /* protect stack below results */
     luaD_throw(L, LUA_YIELD);
   }
 }
@@ -88,7 +97,6 @@ static void callTM (lua_State *L, const TValue *f, const TValue *p1,
   setobj2s(L, L->top++, p2);  /* 2nd argument */
   if (!hasres)  /* no result? 'p3' is third argument */
     setobj2s(L, L->top++, p3);  /* 3rd argument */
-  luaD_checkstack(L, 0);
   /* metamethod may yield only when called from Lua code */
   luaD_call(L, L->top - (4 - hasres), hasres, isLua(L->ci));
   if (hasres) {  /* if has result, move it to its place */
@@ -257,7 +265,8 @@ int luaV_equalobj_ (lua_State *L, const TValue *t1, const TValue *t2) {
     case LUA_TBOOLEAN: return bvalue(t1) == bvalue(t2);  /* true must be 1 !! */
     case LUA_TLIGHTUSERDATA: return pvalue(t1) == pvalue(t2);
     case LUA_TLCF: return fvalue(t1) == fvalue(t2);
-    case LUA_TSTRING: return eqstr(rawtsvalue(t1), rawtsvalue(t2));
+    case LUA_TSHRSTR: return eqshrstr(rawtsvalue(t1), rawtsvalue(t2));
+    case LUA_TLNGSTR: return luaS_eqlngstr(rawtsvalue(t1), rawtsvalue(t2));
     case LUA_TUSERDATA: {
       if (uvalue(t1) == uvalue(t2)) return 1;
       else if (L == NULL) return 0;
@@ -292,7 +301,7 @@ void luaV_concat (lua_State *L, int total) {
     else if (tsvalue(top-1)->len == 0)  /* second operand is empty? */
       (void)tostring(L, top - 2);  /* result is first operand */
     else if (ttisstring(top-2) && tsvalue(top-2)->len == 0) {
-      setsvalue2s(L, top-2, rawtsvalue(top-1));  /* result is second op. */
+      setobjs2s(L, top - 2, top - 1);  /* result is second op. */
     }
     else {
       /* at least two non-empty string values; get as many as possible */
@@ -393,7 +402,8 @@ static void pushclosure (lua_State *L, Proto *p, UpVal **encup, StkId base,
   int nup = p->sizeupvalues;
   Upvaldesc *uv = p->upvalues;
   int i;
-  Closure *ncl = luaF_newLclosure(L, p);
+  Closure *ncl = luaF_newLclosure(L, nup);
+  ncl->l.p = p;
   setclLvalue(L, ra, ncl);  /* anchor new closure in stack */
   for (i = 0; i < nup; i++) {  /* fill in its upvalues */
     if (uv[i].instack)  /* upvalue refers to local variable? */
@@ -458,7 +468,7 @@ void luaV_finishOp (lua_State *L) {
         L->top = ci->top;  /* adjust results */
       break;
     }
-    case OP_TAILCALL: case OP_SETTABUP:  case OP_SETTABLE:
+    case OP_TAILCALL: case OP_SETTABUP: case OP_SETTABLE:
       break;
     default: lua_assert(0);
   }
@@ -499,7 +509,11 @@ void luaV_finishOp (lua_State *L) {
 
 #define Protect(x)	{ {x;}; base = ci->u.l.base; }
 
-#define checkGC(L,c)	Protect(luaC_condGC(L, c); luai_threadyield(L);)
+#define checkGC(L,c)  \
+  Protect( luaC_condGC(L,{L->top = (c);  /* limit of live values */ \
+                          luaC_step(L); \
+                          L->top = ci->top;})  /* restore top */ \
+           luai_threadyield(L); )
 
 
 #define arith_op(op,tm) { \
@@ -592,11 +606,7 @@ void luaV_execute (lua_State *L) {
         sethvalue(L, ra, t);
         if (b != 0 || c != 0)
           luaH_resize(L, t, luaO_fb2int(b), luaO_fb2int(c));
-        checkGC(L,
-          L->top = ra + 1;  /* limit of live values */
-          luaC_step(L);
-          L->top = ci->top;  /* restore top */
-        )
+        checkGC(L, ra + 1);
       )
       vmcase(OP_SELF,
         StkId rb = RB(i);
@@ -648,10 +658,7 @@ void luaV_execute (lua_State *L) {
         ra = RA(i);  /* 'luav_concat' may invoke TMs and move the stack */
         rb = b + base;
         setobjs2s(L, ra, rb);
-        checkGC(L,
-          L->top = (ra >= rb ? ra + 1 : rb);  /* limit of live values */
-          luaC_step(L);
-        )
+        checkGC(L, (ra >= rb ? ra + 1 : rb));
         L->top = ci->top;  /* restore top */
       )
       vmcase(OP_JMP,
@@ -829,11 +836,7 @@ void luaV_execute (lua_State *L) {
           pushclosure(L, p, cl->upvals, base, ra);  /* create a new one */
         else
           setclLvalue(L, ra, ncl);  /* push cashed closure */
-        checkGC(L,
-          L->top = ra + 1;  /* limit of live values */
-          luaC_step(L);
-          L->top = ci->top;  /* restore top */
-        )
+        checkGC(L, ra + 1);
       )
       vmcase(OP_VARARG,
         int b = GETARG_B(i) - 1;
