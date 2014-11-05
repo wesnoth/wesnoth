@@ -357,10 +357,12 @@ void server::register_handlers()
 {
 	REGISTER_CAMPAIGND_HANDLER(request_campaign_list);
 	REGISTER_CAMPAIGND_HANDLER(request_campaign);
+	REGISTER_CAMPAIGND_HANDLER(submit_gameplay_times);
 	REGISTER_CAMPAIGND_HANDLER(request_terms);
 	REGISTER_CAMPAIGND_HANDLER(upload);
 	REGISTER_CAMPAIGND_HANDLER(delete);
 	REGISTER_CAMPAIGND_HANDLER(change_passphrase);
+	REGISTER_CAMPAIGND_HANDLER(rate_addon);
 }
 
 void server::handle_request_campaign_list(const server::request& req)
@@ -476,6 +478,36 @@ void server::handle_request_campaign(const server::request& req)
 		if(req.cfg["increase_downloads"].to_bool(true)) {
 			const int downloads = campaign["downloads"].to_int() + 1;
 			campaign["downloads"] = downloads;
+		}
+	}
+}
+
+void server::handle_submit_gameplay_times(const server::request& req)
+{
+	time_t epoch = time(NULL);
+	BOOST_FOREACH(const config &entry, req.child_range("played_addon"))
+	{
+		if (entry["name"].empty() || entry["time"].empty()) continue;
+		config& campaign = campaigns().find_child("campaign", "name", entry["name"]);
+		if (!campaign) continue;
+		config& gameplay_entry = campaign.find_child("played", "ip", network::ip_address(sock) );
+		if (gameplay_entry) {
+			if (epoch - gameplay_entry["timestamp"].to_int() < entry["time"].to_int() / 30) {
+				gameplay_entry["time"] = (epoch - gameplay_entry["timestamp"].to_int()) / 30;
+				std::cerr << "Somebody tried to upload too many gameplay hours for add-on: " << entry["name"] << std::endl;
+			} else {
+				gameplay_entry["time"] = str_cast(gameplay_entry["time"].to_int() + entry["time"].to_int());
+			}
+			gameplay_entry["timestamp"] = lexical_cast<std::string>(epoch);
+		} else {
+			config& new_entry = campaign.add_child("played");
+			new_entry["ip"] = network::ip_address(sock);
+			if (epoch - campaign["timestamp"].to_int() < entry["time"].to_int() / 100) {
+				std::cerr << "Somebody tried to upload too many gameplay hours for add-on: " << entry["name"] << std::endl;
+			} else {
+				new_entry["time"] = entry["time"];
+			}
+			new_entry["timestamp"] = lexical_cast<std::string>(epoch);
 		}
 	}
 }
@@ -687,17 +719,194 @@ void server::handle_delete(const server::request& req)
 		}
 	}
 
+<<<<<<< HEAD
 	write_config();
+=======
+		network::connection sock = 0;
+		for(int increment = 0; ; ++increment) {
+			try {
+ 				std::string admin_cmd;
+ 				if (input_ && input_->read_line(admin_cmd))
+ 				{
+ 					// process command
+ 					if (admin_cmd == "shut_down")
+ 					{
+ 						break;
+ 					}
+ 				}
+			//write config to disk every ten minutes
+				if((increment%(60*10*50)) == 0) {
+					BOOST_FOREACH(config &campaign, campaigns().child_range("campaign"))
+					{
+						long int total_votes = 0;
+						long int total_points = 0;
+						std::map< std::string, initialised_int> ips;
+						BOOST_REVERSE_FOREACH(const config &rate, campaign.child_range("rate"))
+						{
+							if (ips[rate["ip"]]() == 0) {
+								total_points += rate["num"];
+								total_votes++;
+							}
+							ips[rate["ip"]] += 1;
+						}
+						for (std::map< std::string, initialised_int>::iterator iter = ips.begin(); iter != ips.end(); iter++) {
+							if (iter->second() >= 10) {
+								std::cerr << "Suspiciously many votes from a single IP address for campaign " << campaign["title"] << " from address " << iter->first << ", please check it out.\n";
+							}
+						}
+						if (total_votes != 0) {
+							campaign["user_rating"] = total_points/total_votes;
+						} else {
+							campaign["user_rating"] = -1;
+						}
+						BOOST_FOREACH(config &review, campaign.child_range("review"))
+						{
+							long int likes = 0;
+							std::map< std::string, initialised_int> likers_ips;
+							likers_ips[review["ip"]] = 1;
+							std::string ips_string = review["likers_ips"];
+							unsigned long int i = 0;
+							while (i < ips_string.size()) {
+								long int start = i;
+								for ( ; i < ips_string.size(); i++) if (ips_string[i] == 44) break;
+								std::string this_ip = ips_string.substr(start,i - start);
+								if (likers_ips[this_ip]() == 0) likes++;
+								likers_ips[this_ip] += 1;
+								i++;
+							}
+							for (std::map< std::string, initialised_int>::iterator iter = ips.begin(); iter != ips.end(); iter++) {
+								if (iter->second() >= 10) {
+									std::cerr << "Suspiciously many votes from a single IP address for review " << review["id"] << " from address " << iter->first << ", please check it out.\n";
+								}
+							}
+							review["likes"] = likes;
+						}
+						long int hours_played = 0;
+						BOOST_FOREACH(config &entry, campaign.child_range("played"))
+						{
+							hours_played += entry["time"].to_int(0) / 10;
+						}
+						campaign["hours_played"] = str_cast(hours_played);
+					}
+
+					scoped_ostream cfgfile = ostream_file(file_);
+					write(*cfgfile, cfg_);
+				}
+>>>>>>> 2a9491e... Made add-ons's list window display ratings instead of download counts, made the
 
 	send_message("Add-on deleted.", req.sock);
 
 	fire("hook_post_erase", erase["name"]);
-
 }
 
+<<<<<<< HEAD
 void server::handle_change_passphrase(const server::request& req)
 {
 	const config& cpass = req.cfg;
+=======
+				config data;
+				while((sock = network::receive_data(data, 0)) != network::null_connection) {
+					if (const config &req = data.child("request_campaign_list"))
+					{
+						LOG_CS << "sending campaign list to " << network::ip_address(sock) << " using gzip";
+						time_t epoch = time(NULL);
+						config campaign_list;
+						campaign_list["timestamp"] = lexical_cast<std::string>(epoch);
+						if (req["times_relative_to"] != "now") {
+							epoch = 0;
+						}
+
+						bool before_flag = false;
+						time_t before = epoch;
+						try {
+							before = before + lexical_cast<time_t>(req["before"]);
+							before_flag = true;
+						} catch(bad_lexical_cast) {}
+
+						bool after_flag = false;
+						time_t after = epoch;
+						try {
+							after = after + lexical_cast<time_t>(req["after"]);
+							after_flag = true;
+						} catch(bad_lexical_cast) {}
+
+						std::string name = req["name"], lang = req["language"];
+						BOOST_FOREACH(const config &i, campaigns().child_range("campaign"))
+						{
+							if (!name.empty() && name != i["name"]) continue;
+							std::string tm = i["timestamp"];
+							if (before_flag && (tm.empty() || lexical_cast_default<time_t>(tm, 0) >= before)) continue;
+							if (after_flag && (tm.empty() || lexical_cast_default<time_t>(tm, 0) <= after)) continue;
+							if (!lang.empty()) {
+								bool found = false;
+								BOOST_FOREACH(const config &j, i.child_range("translation")) {
+									if (j["language"] == lang) {
+										found = true;
+										break;
+									}
+								}
+								if (!found) continue;
+							}
+							campaign_list.add_child("campaign", i);
+						}
+
+						BOOST_FOREACH(config &j, campaign_list.child_range("campaign")) {
+							j["passphrase"] = t_string();
+							j["upload_ip"] = t_string();
+							j["email"] = t_string();
+							j["feedback_url"] = t_string();
+							j.clear_children("rate");
+
+
+							BOOST_FOREACH(config &review, j.child_range("review")) {
+								review["likers_ips"] = t_string();
+								review["ip"] = t_string();
+							}
+
+							// Build a feedback_url string attribute from the
+							// internal [feedback] data.
+							config url_params = j.child_or_empty("feedback");
+							j.clear_children("feedback");
+
+							if(!url_params.empty() && !feedback_url_format_.empty()) {
+								j["feedback_url"] = format_addon_feedback_url(feedback_url_format_, url_params);
+							}
+						}
+
+						config response;
+						response.add_child("campaigns",campaign_list);
+
+						std::cerr << " size: " << (network::send_data(response, sock)/1024) << "KiB\n";
+					}
+					else if (const config &req = data.child("submit_gameplay_times"))
+					{
+						time_t epoch = time(NULL);
+						BOOST_FOREACH(const config &entry, req.child_range("played_addon"))
+						{
+							if (entry["name"].empty() || entry["time"].empty()) continue;
+							config& campaign = campaigns().find_child("campaign", "name", entry["name"]);
+							if (!campaign) continue;
+							config& gameplay_entry = campaign.find_child("played", "ip", network::ip_address(sock) );
+							if (gameplay_entry) {
+								if (epoch - gameplay_entry["timestamp"].to_int() < entry["time"].to_int() / 30) {
+									gameplay_entry["time"] = (epoch - gameplay_entry["timestamp"].to_int()) / 30;
+									std::cerr << "Somebody tried to upload too many gameplay hours for add-on: " << entry["name"] << std::endl;
+								} else {
+									gameplay_entry["time"] = str_cast(gameplay_entry["time"].to_int() + entry["time"].to_int());
+								}
+								gameplay_entry["timestamp"] = lexical_cast<std::string>(epoch);
+							} else {
+								config& new_entry = campaign.add_child("played");
+								new_entry["ip"] = network::ip_address(sock);
+								if (epoch - campaign["timestamp"].to_int() < entry["time"].to_int() / 100) {
+									std::cerr << "Somebody tried to upload too many gameplay hours for add-on: " << entry["name"] << std::endl;
+								} else {
+									new_entry["time"] = entry["time"];
+								}
+								new_entry["timestamp"] = lexical_cast<std::string>(epoch);
+							}
+						}
+>>>>>>> 2a9491e... Made add-ons's list window display ratings instead of download counts, made the
 
 	if(read_only_) {
 		LOG_CS << "in read-only mode, request to change passphrase denied\n";
@@ -705,6 +914,7 @@ void server::handle_change_passphrase(const server::request& req)
 		return;
 	}
 
+<<<<<<< HEAD
 	config& campaign = campaigns().find_child("campaign", "name", cpass["name"]);
 
 	if(!campaign) {
@@ -720,6 +930,347 @@ void server::handle_change_passphrase(const server::request& req)
 
 		send_message("Passphrase changed.", req.sock);
 	}
+}
+
+void server::handle_rate_addon(const server::request& req)
+{
+	LOG_CS << "received rating of '" << req["addon_name"] << "' from " << network::ip_address(sock) << std::endl;
+	config &campaign = campaigns().find_child("campaign", "name", req["addon_name"]);
+	if (!campaign) {
+		network::send_data(construct_error("Add-on '" + req["addon_name"].str() + "' not found."), sock);
+	} else {
+		if (!req["rating"].empty()) {
+			config& new_rating = campaign.add_child("rate");
+			new_rating["num"] = req["rating"];
+			new_rating["ip"] = network::ip_address(sock);
+			new_rating["time"] = lexical_cast<std::string>(time(NULL));
+			campaign["user_rating"] = req["rating"];
+		}
+		const config& users_review = req.child_or_empty("user_review");
+		if (!users_review.empty()) {
+			config& new_review = campaign.add_child("review");
+			if (!users_review["gameplay"].empty()) {
+				new_review["gameplay"] = users_review["gameplay"];
+			}
+			if (!users_review["visuals"].empty()) {
+				new_review["visuals"] = users_review["visuals"];
+			}
+			if (!users_review["story"].empty())
+			{
+				new_review["story"] = users_review["story"];
+			}
+			if (!users_review["balance"].empty())
+			{
+				new_review["balance"] = users_review["balance"];
+			}
+			if (!users_review["overall"].empty())
+			{
+				new_review["overall"] = users_review["overall"];
+			}
+			new_review["ip"] = network::ip_address(sock);
+			new_review["time"] = lexical_cast<std::string>(time(NULL));
+			campaign["highest_review_id"] = campaign["highest_review_id"].to_int() + 1;
+			new_review["id"] = campaign["highest_review_id"];
+		}
+		BOOST_FOREACH(const config &liked_review, req.child_range("liked_review"))
+		{
+			config& review = campaign.find_child("review", "id", liked_review["number"]);
+			if (review) {
+				if (!review["likers_ips"].empty()) {
+					review["likers_ips"] = review["likers_ips"] + std::string(",") + network::ip_address(sock);
+=======
+					}
+					else if (data.child("request_terms"))
+					{
+						// This usually means the client wants to upload content, so tell it
+						// to give up when we're in read-only mode.
+						if(read_only_) {
+							LOG_CS << "in read-only mode, request for upload terms denied\n";
+							network::send_data(construct_error("The server is currently in read-only mode, add-on uploads are disabled."), sock);
+							continue;
+						}
+
+						LOG_CS << "sending terms " << network::ip_address(sock) << "\n";
+						network::send_data(construct_message("All add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL). By uploading content to this server, you certify that you have the right to place the content under the conditions of the GPL, and choose to do so."), sock);
+						LOG_CS << " Done\n";
+					}
+					else if (config &upload = data.child("upload"))
+					{
+						LOG_CS << "uploading campaign '" << upload["name"] << "' from " << network::ip_address(sock) << ".\n";
+						config &data = upload.child("data");
+						const std::string& name = upload["name"];
+						std::string lc_name(name.size(), ' ');
+						std::transform(name.begin(), name.end(), lc_name.begin(), tolower);
+						config *campaign = NULL;
+						BOOST_FOREACH(config &c, campaigns().child_range("campaign")) {
+							if (utf8::lowercase(c["name"]) == lc_name) {
+								campaign = &c;
+								break;
+							}
+						}
+
+						if (read_only_) {
+							LOG_CS << "Upload aborted - uploads not permitted in read-only mode.\n";
+							network::send_data(construct_error("Add-on rejected: The server is currently in read-only mode."), sock);
+						} else if (!data) {
+							LOG_CS << "Upload aborted - no add-on data.\n";
+							network::send_data(construct_error("Add-on rejected: No add-on data was supplied."), sock);
+						} else if (!addon_name_legal(upload["name"])) {
+							LOG_CS << "Upload aborted - invalid add-on name.\n";
+							network::send_data(construct_error("Add-on rejected: The name of the add-on is invalid."), sock);
+						} else if (is_text_markup_char(upload["name"].str()[0])) {
+							LOG_CS << "Upload aborted - add-on name starts with an illegal formatting character.\n";
+							network::send_data(construct_error("Add-on rejected: The name of the add-on starts with an illegal formatting character."), sock);
+						} else if (upload["title"].empty()) {
+							LOG_CS << "Upload aborted - no add-on title specified.\n";
+							network::send_data(construct_error("Add-on rejected: You did not specify the title of the add-on in the pbl file!"), sock);
+						} else if (is_text_markup_char(upload["title"].str()[0])) {
+							LOG_CS << "Upload aborted - add-on title starts with an illegal formatting character.\n";
+							network::send_data(construct_error("Add-on rejected: The title of the add-on starts with an illegal formatting character."), sock);
+						} else if (get_addon_type(upload["type"]) == ADDON_UNKNOWN) {
+							LOG_CS << "Upload aborted - unknown add-on type specified.\n";
+							network::send_data(construct_error("Add-on rejected: You did not specify a known type for the add-on in the pbl file! (See PblWML: wiki.wesnoth.org/PblWML)"), sock);
+						} else if (upload["author"].empty()) {
+							LOG_CS << "Upload aborted - no add-on author specified.\n";
+							network::send_data(construct_error("Add-on rejected: You did not specify the author(s) of the add-on in the pbl file!"), sock);
+						} else if (upload["version"].empty()) {
+							LOG_CS << "Upload aborted - no add-on version specified.\n";
+							network::send_data(construct_error("Add-on rejected: You did not specify the version of the add-on in the pbl file!"), sock);
+						} else if (upload["description"].empty()) {
+							LOG_CS << "Upload aborted - no add-on description specified.\n";
+							network::send_data(construct_error("Add-on rejected: You did not specify a description of the add-on in the pbl file!"), sock);
+						} else if (upload["email"].empty()) {
+							LOG_CS << "Upload aborted - no add-on email specified.\n";
+							network::send_data(construct_error("Add-on rejected: You did not specify your email address in the pbl file!"), sock);
+						} else if (!check_names_legal(data)) {
+							LOG_CS << "Upload aborted - invalid file names in add-on data.\n";
+							network::send_data(construct_error("Add-on rejected: The add-on contains an illegal file or directory name."
+									" File or directory names may not contain whitespace or any of the following characters: '/ \\ : ~'"), sock);
+						} else if (campaign && (*campaign)["passphrase"].str() != upload["passphrase"]) {
+							LOG_CS << "Upload aborted - incorrect passphrase.\n";
+							network::send_data(construct_error("Add-on rejected: The add-on already exists, and your passphrase was incorrect."), sock);
+						} else {
+							const time_t upload_ts = time(NULL);
+
+							LOG_CS << "Upload is owner upload.\n";
+							std::string message = "Add-on accepted.";
+
+							if (!version_info(upload["version"]).good()) {
+								message += "\n<255,255,0>Note: The version you specified is invalid. This add-on will be ignored for automatic update checks.";
+							}
+
+							if(campaign == NULL) {
+								campaign = &campaigns().add_child("campaign");
+								(*campaign)["original_timestamp"] = lexical_cast<std::string>(upload_ts);
+							}
+
+							(*campaign)["title"] = upload["title"];
+							(*campaign)["name"] = upload["name"];
+							(*campaign)["filename"] = "data/" + upload["name"].str();
+							(*campaign)["passphrase"] = upload["passphrase"];
+							(*campaign)["author"] = upload["author"];
+							(*campaign)["description"] = upload["description"];
+							(*campaign)["version"] = upload["version"];
+							(*campaign)["icon"] = upload["icon"];
+							(*campaign)["translate"] = upload["translate"];
+							(*campaign)["dependencies"] = upload["dependencies"];
+							(*campaign)["upload_ip"] = network::ip_address(sock);
+							(*campaign)["type"] = upload["type"];
+							(*campaign)["email"] = upload["email"];
+
+							if((*campaign)["highest_review_id"].empty()) {
+								(*campaign)["highest_review_id"] = 0;
+							}
+							if((*campaign)["downloads"].empty()) {
+								(*campaign)["downloads"] = 0;
+							}
+							(*campaign)["timestamp"] = lexical_cast<std::string>(upload_ts);
+
+							int uploads = (*campaign)["uploads"].to_int() + 1;
+							(*campaign)["uploads"] = uploads;
+
+							(*campaign).clear_children("feedback");
+							if(const config& url_params = upload.child("feedback")) {
+								(*campaign).add_child("feedback", url_params);
+							}
+
+							std::string filename = (*campaign)["filename"];
+							data["title"] = (*campaign)["title"];
+							data["name"] = "";
+							data["campaign_name"] = (*campaign)["name"];
+							data["author"] = (*campaign)["author"];
+							data["description"] = (*campaign)["description"];
+							data["version"] = (*campaign)["version"];
+							data["timestamp"] = (*campaign)["timestamp"];
+							data["original_timestamp"] = (*campaign)["original_timestamp"];
+							data["icon"] = (*campaign)["icon"];
+							data["type"] = (*campaign)["type"];
+							(*campaign).clear_children("translation");
+							find_translations(data, *campaign);
+
+							add_license(data);
+
+							{
+								scoped_ostream campaign_file = ostream_file(filename);
+								config_writer writer(*campaign_file, true, compress_level_);
+								writer.write(data);
+							}
+//							write_compressed(*campaign_file, *data);
+
+							(*campaign)["size"] = lexical_cast<std::string>(
+									file_size(filename));
+							scoped_ostream cfgfile = ostream_file(file_);
+							write(*cfgfile, cfg_);
+							network::send_data(construct_message(message), sock);
+
+							fire("hook_post_upload", upload["name"]);
+						}
+					}
+					else if (const config &erase = data.child("delete"))
+					{
+						if(read_only_) {
+							LOG_CS << "in read-only mode, request to delete '" << erase["name"] << "' from " << network::ip_address(sock) << " denied\n";
+							network::send_data(construct_error("Cannot delete add-on: The server is currently in read-only mode."), sock);
+							continue;
+						}
+
+						LOG_CS << "deleting campaign '" << erase["name"] << "' requested from " << network::ip_address(sock) << "\n";
+						const config &campaign = campaigns().find_child("campaign", "name", erase["name"]);
+						if (!campaign) {
+							network::send_data(construct_error("The add-on does not exist."), sock);
+							continue;
+						}
+
+						if (campaign["passphrase"] != erase["passphrase"]
+								&& (campaigns()["master_password"].empty()
+								|| campaigns()["master_password"] != erase["passphrase"]))
+						{
+							network::send_data(construct_error("The passphrase is incorrect."), sock);
+							continue;
+						}
+
+						//erase the campaign
+						write_file(campaign["filename"], std::string());
+						remove(campaign["filename"].str().c_str());
+
+						config::child_itors itors = campaigns().child_range("campaign");
+						for (size_t index = 0; itors.first != itors.second;
+						     ++index, ++itors.first)
+						{
+							if (&campaign == &*itors.first) {
+								campaigns().remove_child("campaign", index);
+								break;
+							}
+						}
+						scoped_ostream cfgfile = ostream_file(file_);
+						write(*cfgfile, cfg_);
+						network::send_data(construct_message("Add-on deleted."), sock);
+
+						fire("hook_post_erase", erase["name"]);
+					}
+					else if (const config &cpass = data.child("change_passphrase"))
+					{
+						if(read_only_) {
+							LOG_CS << "in read-only mode, request to change passphrase denied\n";
+							network::send_data(construct_error("Cannot change passphrase: The server is currently in read-only mode."), sock);
+							continue;
+						}
+
+						config &campaign = campaigns().find_child("campaign", "name", cpass["name"]);
+						if (!campaign) {
+							network::send_data(construct_error("No add-on with that name exists."), sock);
+						} else if (campaign["passphrase"] != cpass["passphrase"]) {
+							network::send_data(construct_error("Your old passphrase was incorrect."), sock);
+						} else if (cpass["new_passphrase"].empty()) {
+							network::send_data(construct_error("No new passphrase was supplied."), sock);
+						} else {
+							campaign["passphrase"] = cpass["new_passphrase"];
+							scoped_ostream cfgfile = ostream_file(file_);
+							write(*cfgfile, cfg_);
+							network::send_data(construct_message("Passphrase changed."), sock);
+						}
+					}
+					else if (const config &req = data.child("rate_addon"))
+					{
+						LOG_CS << "received rating of '" << req["addon_name"] << "' from " << network::ip_address(sock) << std::endl;
+						config &campaign = campaigns().find_child("campaign", "name", req["addon_name"]);
+						if (!campaign) {
+							network::send_data(construct_error("Add-on '" + req["addon_name"].str() + "' not found."), sock);
+						} else {
+							if (!req["rating"].empty()) {
+								config& new_rating = campaign.add_child("rate");
+								new_rating["num"] = req["rating"];
+								new_rating["ip"] = network::ip_address(sock);
+								new_rating["time"] = lexical_cast<std::string>(time(NULL));
+								campaign["user_rating"] = req["rating"];
+							}
+							const config& users_review = req.child_or_empty("user_review");
+							if (!users_review.empty()) {
+								config& new_review = campaign.add_child("review");
+								if (!users_review["gameplay"].empty()) {
+									new_review["gameplay"] = users_review["gameplay"];
+								}
+								if (!users_review["visuals"].empty()) {
+									new_review["visuals"] = users_review["visuals"];
+								}
+								if (!users_review["story"].empty())
+								{
+									new_review["story"] = users_review["story"];
+								}
+								if (!users_review["balance"].empty())
+								{
+									new_review["balance"] = users_review["balance"];
+								}
+								if (!users_review["overall"].empty())
+								{
+									new_review["overall"] = users_review["overall"];
+								}
+								new_review["ip"] = network::ip_address(sock);
+								new_review["time"] = lexical_cast<std::string>(time(NULL));
+								campaign["highest_review_id"] = campaign["highest_review_id"].to_int() + 1;
+								new_review["id"] = campaign["highest_review_id"];
+							}
+							BOOST_FOREACH(const config &liked_review, req.child_range("liked_review"))
+							{
+								config& review = campaign.find_child("review", "id", liked_review["number"]);
+								if (review) {
+									if (!review["likers_ips"].empty()) {
+										review["likers_ips"] = review["likers_ips"] + std::string(",") + network::ip_address(sock);
+									} else {
+										review["likers_ips"] = network::ip_address(sock);
+									}
+								}
+							}
+						}
+					}
+				}
+			} catch(network::error& e) {
+				if(!e.socket) {
+					LOG_CS << "fatal network error: " << e.message << "\n";
+					throw;
+				} else {
+					LOG_CS << "client disconnect: " << e.message << " " << network::ip_address(e.socket) << "\n";
+					e.disconnect();
+				}
+			} catch(const config::error& e) {
+				network::connection err_sock = 0;
+				network::connection const * err_connection = boost::get_error_info<network::connection_info>(e);
+				if(err_connection != NULL) {
+					err_sock = *err_connection;
+				}
+				if(err_sock == 0 && sock > 0)
+					err_sock = sock;
+				if(err_sock) {
+					LOG_CS << "client disconnect due to exception: " << e.what() << " " << network::ip_address(err_sock) << "\n";
+					network::disconnect(err_sock);
+>>>>>>> 2a9491e... Made add-ons's list window display ratings instead of download counts, made the
+				} else {
+					review["likers_ips"] = network::ip_address(sock);
+				}
+			}
+		}
+	}
+
 }
 
 } // end namespace campaignd

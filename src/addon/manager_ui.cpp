@@ -82,6 +82,8 @@ bool get_addons_list(addons_client& client, addons_list& list)
 		return false;
 	}
 
+	client.submit_gameplay_times();
+
 	read_addons_list(cfg, list);
 
 	return true;
@@ -346,10 +348,11 @@ class description_display_action : public gui::dialog_button_action
 	addons_list addons_;
 	addons_tracking_list tracking_;
 	gui::filter_textbox* filter_;
+	addons_client& client;
 
 public:
-	description_display_action(display& disp, const std::vector<std::string>& display_ids, const addons_list& addons, const addons_tracking_list& tracking, gui::filter_textbox* filter)
-		: disp_(disp) , display_ids_(display_ids), addons_(addons), tracking_(tracking), filter_(filter)
+	description_display_action(display& disp, const std::vector<std::string>& display_ids, addons_list& addons, const addons_tracking_list& tracking, gui::filter_textbox* filter,  addons_client& _client)
+		: disp_(disp) , display_ids_(display_ids), addons_(addons), tracking_(tracking), filter_(filter), client(_client)
 	{}
 
 	virtual gui::dialog_button_action::RESULT button_pressed(int filter_choice)
@@ -363,7 +366,15 @@ public:
 		if(choice < display_ids_.size()) {
 			const std::string& id = display_ids_[choice];
 			assert(tracking_.find(id) != tracking_.end());
-			gui2::taddon_description::display(id, addons_, tracking_, disp_.video());
+
+			addon_info::this_users_rating current_users_rating;
+			current_users_rating = gui2::taddon_description::display(id, addons_, tracking_, disp_.video());
+
+			if (current_users_rating.numerical != -1 || current_users_rating.liked_reviews.size() != 0 || current_users_rating.submitted_review == true) {
+				current_users_rating.id = id;
+				config archive;
+				client.rate_addon(archive,current_users_rating);
+			}
 		}
 
 		return gui::CONTINUE_DIALOG;
@@ -387,7 +398,7 @@ struct addons_filter_state
 		: keywords()
 		, types(ADDON_TYPES_COUNT, true)
 		, status(FILTER_ALL)
-		, sort(SORT_NAMES)
+		, sort(SORT_RATING)
 		, direction(DIRECTION_ASCENDING)
 		, changed(false)
 	{}
@@ -458,6 +469,10 @@ struct addon_pointer_list_sorter
 		}
 
 		switch(sort_) {
+		case SORT_RATING:
+			// These are technically strings, but comparing will work as well.
+			// They have to be strings, because sometimes there is no rating.
+			return a->second.general_rating > b->second.general_rating;
 		case SORT_NAMES:
 			// Alphanumerical by name, case insensitive.
 			return utf8::lowercase(a->second.title) < utf8::lowercase(b->second.title);
@@ -588,7 +603,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 	// if its translated contents don't fit, instead of truncating other, more
 	// important columns such as Size.
 	if(!updates_only) {
-		header += sep + _("Downloads") + sep + _("Type");
+		header += sep + _("Rating") + sep + _("Type");
 	}
 	// end of list header
 
@@ -631,9 +646,16 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		const std::string& display_sep = sep;
 		const std::string& display_size = size_display_string(addon.size);
 		const std::string& display_type = addon.display_type();
-		const std::string& display_down = str_cast(addon.downloads);
 		const std::string& display_icon = addon.display_icon();
 		const std::string& display_status = describe_addon_status(tracking[addon.id]);
+
+		std::string general_rating;
+		if (addon.general_rating == 0) {
+			general_rating = "None";
+		} else {
+			general_rating = str_cast(addon.general_rating / 10.0);
+		}
+		const std::string& display_down = general_rating;
 
 		std::string display_version = addon.version.str();
 		std::string display_old_version = tracking[addon.id].installed_version;
@@ -775,7 +797,10 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		filter_box->set_text(filter.keywords);
 		dlg.set_textbox(filter_box);
 
-		description_display_action description_helper(disp, option_ids, addons, tracking, filter_box);
+		addon_info::this_users_rating current_users_rating;
+		current_users_rating.numerical = -1;
+		description_display_action description_helper(disp, option_ids, addons, tracking, filter_box, client);
+
 		gui::dialog_button* description_button = new gui::dialog_button(disp.video(),
 			_("Description"), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &description_helper);
 		dlg.add_button(description_button, gui::dialog::BUTTON_EXTRA);
@@ -961,6 +986,9 @@ bool addons_manager_ui(display& disp, const std::string& remote_address)
 								"add-ons list from the server."));
 					return need_wml_cache_refresh;
 				}
+
+				client.submit_gameplay_times();
+
 				gui2::taddon_list dlg(cfg);
 				dlg.show(disp.video());
 				return need_wml_cache_refresh;

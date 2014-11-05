@@ -53,6 +53,8 @@ private:
 	void set_color_info();
 	void set_unit_data();
 
+	void pair_subjects_with_addon(const std::string& main, const config& umc_cfg);
+
 	const commandline_options& cmdline_opts_;
 	game_display& disp_;
 	const bool jump_to_editor_;

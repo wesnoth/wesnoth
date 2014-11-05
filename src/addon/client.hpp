@@ -65,6 +65,17 @@ public:
 	bool request_addons_list(config& cfg);
 
 	/**
+	 * Uploads the player's gameplay statistics
+	 *
+	 * @return @a true on success, @a false on failure. Retrieve the error message with @a get_last_server_error.
+	 *
+	 * @param entry       Several entries about add-ons
+	 * @param name        Add-on name.
+	 * @param time        Time he spent playing it.
+	 */
+	bool submit_gameplay_times();
+
+	/**
 	 * Request the add-ons server distribution terms message.
 	 */
 	bool request_distribution_terms(std::string& terms);
@@ -101,6 +112,19 @@ public:
 	 * single entry atm.
 	 */
 	bool install_addon(config& archive_cfg, const addon_info& info);
+
+	/**
+	 * Uploads the player's rating of an add-on
+	 *
+	 * @return @a true on success, @a false on failure. Retrieve the error message with @a get_last_server_error.
+	 *
+	 * @param id          Add-on id.
+	 * @param rating      The users numerical rating
+	 * @param liked_review One or more tags with the number key that mark which add-ons were marked as liked
+	 * @param user_review Review the player wrote, keys gameplay, visuals, balance, story and overall are the
+	 *                    player's ratings
+	 */
+	bool rate_addon(config& archive_cfg, addon_info::this_users_rating rating);
 
 	/**
 	 * Requests the specified add-on to be uploaded.

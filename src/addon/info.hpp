@@ -27,6 +27,26 @@ typedef std::map<std::string, addon_info> addons_list;
 
 struct addon_info
 {
+
+	typedef struct {
+		int id;
+		std::string overall;
+		std::string gameplay;
+		std::string visuals;
+		std::string story;
+		std::string balance;
+		int likes;
+		bool sorted;
+	} addon_review;
+
+	typedef struct {
+		std::string id;
+		int numerical;
+		addon_review custom_review;
+		std::vector<int> liked_reviews;
+		bool submitted_review;
+	} this_users_rating;
+
 	std::string id;
 	std::string title;
 	std::string description;
@@ -41,6 +61,12 @@ struct addon_info
 	int downloads;
 	int uploads;
 
+	int user_rating;
+	int hours_played;
+	int this_user_rating;
+
+	std::vector<addon_review> reviews;
+
 	ADDON_TYPE type;
 
 	std::vector<std::string> locales;
@@ -51,6 +77,8 @@ struct addon_info
 	// std::vector<addon_dependency> conflicts, recommends, replaces;
 
 	std::string feedback_url;
+
+	int general_rating;
 
 	time_t updated;
 	time_t created;
@@ -63,7 +91,8 @@ struct addon_info
 	addon_info()
 		: id(), title(), description(), icon()
 		, version(), author(), size(), downloads()
-		, uploads(), type(), locales()
+		, uploads(), user_rating(), hours_played()
+		, this_user_rating(), reviews(), type(), locales()
 		, core()
 		, depends()
 		, feedback_url()
@@ -76,6 +105,8 @@ struct addon_info
 		: id(), title(), description(), icon()
 		, version(), author(), size(), downloads()
 		, uploads(), type(), locales()
+		, uploads(), user_rating(), hours_played()
+		, this_user_rating(), reviews(), type(), locales()
 		, core()
 		, depends()
 		, feedback_url()
@@ -98,6 +129,10 @@ struct addon_info
 			this->downloads = o.downloads;
 			this->uploads = o.uploads;
 			this->type = o.type;
+			this->user_rating = o.user_rating;
+			this->hours_played = o.hours_played;
+			this->this_user_rating = o.this_user_rating;
+			this->reviews = o.reviews;
 			this->locales = o.locales;
 			this->core = o.core;
 			this->depends = o.depends;

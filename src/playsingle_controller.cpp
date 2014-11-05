@@ -91,12 +91,51 @@ playsingle_controller::playsingle_controller(const config& level,
 	ai::game_info ai_info;
 	ai::manager::set_ai_info(ai_info);
 	ai::manager::add_observer(this) ;
+
+	started_at_ = time(NULL);
+	if (!state_of_game.classification().campaign.empty()) {
+		if (game_config.find_child("subject_addon_pair", "subject", state_of_game.classification().campaign)) {
+			addons_active_.push_back(game_config.find_child("subject_addon_pair", "subject", state_of_game.classification().campaign)["addon_id"]);
+		} //Otherwise it's a mainline campaign that isn't rated.
+	} else {
+		BOOST_FOREACH(const std::string& mod_name, state_of_game.mp_settings().active_mods) {
+			const config& this_mod_entry = game_config.find_child("subject_addon_pair", "subject", mod_name);
+			if (!this_mod_entry.empty()) {
+				addons_active_.push_back(this_mod_entry["addon_id"]);
+			}
+		}
+		if (!state_of_game.mp_settings().mp_scenario.empty()) {
+			if (game_config.find_child("subject_addon_pair", "subject", state_of_game.mp_settings().mp_scenario)) {
+				addons_active_.push_back(game_config.find_child("subject_addon_pair", "subject", state_of_game.mp_settings().mp_scenario)["addon_id"]);
+			}
+		}
+		if (!state_of_game.mp_settings().mp_era.empty()) {
+			if (game_config.find_child("subject_addon_pair", "subject", state_of_game.mp_settings().mp_era)) {
+				addons_active_.push_back(game_config.find_child("subject_addon_pair", "subject", state_of_game.mp_settings().mp_era)["addon_id"]);
+			}
+		}
+
+	}
 }
 
 playsingle_controller::~playsingle_controller()
 {
 	ai::manager::remove_observer(this) ;
 	ai::manager::clear_ais() ;
+
+	// Save gameplay statistics
+	config* prefs = preferences::get_prefs();
+	int gameplay_time = (time(NULL) - started_at_) / (6 * 20); // Measuring in tenths of hours
+	BOOST_FOREACH(const std::string& id, addons_active_) {
+		std::cout << id << std::endl;
+		if (prefs->find_child("gameplay_times" , "name" , id)) {
+			prefs->find_child("gameplay_times" , "name" , id)["time"] = str_cast( prefs->find_child("gameplay_times" , "name" , id)["time"].to_int() + gameplay_time);
+		} else {
+			config& entry = prefs->add_child("gameplay_times");
+			entry["name"] = id;
+			entry["time"] = str_cast(gameplay_time);
+		}
+	}
 }
 
 void playsingle_controller::init_gui(){

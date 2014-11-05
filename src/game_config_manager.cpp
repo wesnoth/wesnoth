@@ -291,6 +291,7 @@ void game_config_manager::load_addons_cfg()
 		try {
 			config umc_cfg;
 			cache_.get_config(toplevel, umc_cfg);
+			pair_subjects_with_addon(toplevel,umc_cfg);
 			game_config_.append(umc_cfg);
 		} catch(config::error& err) {
 			ERR_CONFIG << "error reading usermade add-on '" << uc << "'" << std::endl;
@@ -414,6 +415,45 @@ void game_config_manager::load_game_config_for_game(
 		load_game_config(NO_FORCE_RELOAD);
 
 		throw;
+	}
+}
+
+void game_config_manager::pair_subjects_with_addon(const std::string& main, const config& umc_cfg) {
+	std::string without_ending;
+	if (main.find("_main.cfg")) {
+		without_ending = main.substr(0,main.find_last_of("/\\"));
+	} else {
+		without_ending = main.substr(0,main.find_last_of(".cfg"));
+	}
+	std::string addon_id(without_ending.substr(without_ending.find_last_of("/\\")+1));
+
+	BOOST_FOREACH(const config &campaign, umc_cfg.child_range("campaign")) {
+		if (!campaign["id"].empty()) {
+			config& this_entry = game_config_.add_child("subject_addon_pair");
+			this_entry["addon_id"] = addon_id;
+			this_entry["subject"] = campaign["id"];
+		}
+	}
+	BOOST_FOREACH(const config &multiplayer, umc_cfg.child_range("multiplayer")) {
+		if (!multiplayer["id"].empty()) {
+			config& this_entry = game_config_.add_child("subject_addon_pair");
+			this_entry["addon_id"] = addon_id;
+			this_entry["subject"] = multiplayer["id"];
+		}
+	}
+	BOOST_FOREACH(const config &era, umc_cfg.child_range("era")) {
+		if (!era["id"].empty()) {
+			config& this_entry = game_config_.add_child("subject_addon_pair");
+			this_entry["addon_id"] = addon_id;
+			this_entry["subject"] = era["id"];
+		}
+	}
+	BOOST_FOREACH(const config &modification, umc_cfg.child_range("modification")) {
+		if (!modification["id"].empty()) {
+			config& this_entry = game_config_.add_child("subject_addon_pair");
+			this_entry["addon_id"] = addon_id;
+			this_entry["subject"] = modification["id"];
+		}
 	}
 }
 

@@ -959,5 +959,16 @@ void set_disable_auto_moves(bool value)
 	preferences::set("disable_auto_moves", value);
 }
 
+void add_gameplay_time(std::string campaign)
+{
+	config gameplay_times = prefs.child_or_empty("gameplay_times");
+	config& entry = gameplay_times.find_child("entry", "name", campaign);
+	if (!entry["time"].empty()) {
+		entry["time"] = str_cast(entry["time"].to_int() + 1);
+	} else {
+		entry["time"] = str_cast(1);
+	}
+}
+
 } // end namespace preferences
 

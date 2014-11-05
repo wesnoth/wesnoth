@@ -71,6 +71,50 @@ void addon_info::read(const config& cfg)
 	this->size = cfg["size"];
 	this->downloads = cfg["downloads"];
 	this->uploads = cfg["uploads"];
+	this->user_rating = cfg["user_rating"];
+	this->hours_played = cfg["hours_played"];
+
+	int rating = cfg["user_rating"].to_int() / 2;
+	int downloads_per_year = 0;
+	int hours_played_per_year = 0;
+
+
+	if (!cfg["original_timestamp"].empty() && cfg["original_timestamp"].to_int() != time(NULL)) {
+		float years_it_exists = (time(NULL) - cfg["original_timestamp"].to_int()) / (365.3 * 24.0 * 600.0);
+		downloads_per_year = cfg["downloads"].to_int() / years_it_exists;
+		hours_played_per_year = cfg["hours_played"].to_int() / years_it_exists;
+	}	else {
+		// This shouldn't normally happen without old 1.11's addons.
+		downloads_per_year = cfg["downloads"].to_int();
+		hours_played_per_year = cfg["hours_played"].to_int();
+	}
+
+	// Apologising for using magic numbers, but a number reflecting as many quality
+	// numbers as possible is highly desirable
+
+	// The point is that the rating is a weighted average between the players' ratings
+	// and objective ratings like number of downloads and hours played per unit of time
+	// These two ratings are exponential functions desiged to give some score even to
+	// the ones with little downloads and not too much to the ones with many, they will
+	// have to be adjusted over time.
+
+	rating += 25 * (1.0 - pow(2.0,(downloads_per_year / -300.0 )));
+
+	rating += 25 * (1.0 - pow(2.0,(-1 * log10( 1 + hours_played_per_year / 1000.0))));
+	// Addons like resource packs are not played, but they will not be compensated for
+	// that handicap, because they are usually resource packs and such, things that
+	// are rather dependencies and files for UMC authors, not playable stuff players
+	// want to download.
+
+	this->general_rating = rating;
+
+	const config::const_child_itors& reviews = cfg.child_range("review");
+	BOOST_FOREACH(const config& review, reviews) {
+		this->reviews.push_back((addon_info::addon_review){
+									review["id"], review["overall"], review["gameplay"], review["visuals"],
+									review["story"], review["balance"], review["likes"], false});
+	}
+
 	this->type = get_addon_type(cfg["type"].str());
 
 	const config::const_child_itors& locales = cfg.child_range("translation");
@@ -98,6 +142,22 @@ void addon_info::write(config& cfg) const
 	cfg["size"] = this->size;
 	cfg["downloads"] = this->downloads;
 	cfg["uploads"] = this->uploads;
+	cfg["user_rating"] = this->user_rating;
+	cfg["hours_played"] = this->hours_played;
+
+	BOOST_FOREACH(const addon_info::addon_review& review, this->reviews) {
+		config review_wml;
+		config& review_wml_to_append = review_wml;
+		review_wml["id"] = review.id;
+		review_wml["overall"] = review.overall;
+		review_wml["gameplay"] = review.gameplay;
+		review_wml["visuals"] = review.visuals;
+		review_wml["story"] = review.story;
+		review_wml["balance"] = review.balance;
+		review_wml["likes"] = review.likes;
+		cfg.add_child("review") = review_wml_to_append;
+	}
+
 	cfg["type"] = get_addon_type_string(this->type);
 
 	BOOST_FOREACH(const std::string& locale_id, this->locales) {
