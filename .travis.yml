@@ -36,8 +36,8 @@ before_install:
 
     - if [ "$BUILD" = 3 ]; then export ALTERNATE_CONFIGURATION=true; fi
     - if [ "$BUILD" = 4 ]; then export CXX11=true; fi
+    - if [ "$BUILD" = 4 ]; then export CPP_TESTS=false; fi
 
-    -
     - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export STRICT_COMPILATION=false; fi
     - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export EXTRA_FLAGS_RELEASE=""; fi
     - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export WML_TEST_TIME=20; fi
