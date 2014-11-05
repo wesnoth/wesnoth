@@ -13,10 +13,17 @@
 #include "lua.h"
 
 
+/*
+** This macro avoids the runtime division MAX_SIZET/(e), as 'e' is
+** always constant.
+** The macro is somewhat complex to avoid warnings:
+** +1 avoids warnings of "comparison has constant result";
+** cast to 'void' avoids warnings of "value unused".
+*/
 #define luaM_reallocv(L,b,on,n,e) \
-	((cast(size_t, (n)+1) > MAX_SIZET/(e)) ?  /* +1 to avoid warnings */ \
-		(luaM_toobig(L), (void *)0) : \
-		luaM_realloc_(L, (b), (on)*(e), (n)*(e)))
+  (cast(void, \
+     (cast(size_t, (n)+1) > MAX_SIZET/(e)) ? (luaM_toobig(L), 0) : 0), \
+   luaM_realloc_(L, (b), (on)*(e), (n)*(e)))
 
 #define luaM_freemem(L, b, s)	luaM_realloc_(L, (b), (s), 0)
 #define luaM_free(L, b)		luaM_realloc_(L, (b), sizeof(*(b)), 0)

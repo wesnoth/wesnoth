@@ -20,18 +20,15 @@
 
 
 Closure *luaF_newCclosure (lua_State *L, int n) {
-  Closure *c = &luaC_newobj(L, LUA_TFUNCTION, sizeCclosure(n), NULL, 0)->cl;
-  c->c.isC = 1;
+  Closure *c = &luaC_newobj(L, LUA_TCCL, sizeCclosure(n), NULL, 0)->cl;
   c->c.nupvalues = cast_byte(n);
   return c;
 }
 
 
-Closure *luaF_newLclosure (lua_State *L, Proto *p) {
-  int n = p->sizeupvalues;
-  Closure *c = &luaC_newobj(L, LUA_TFUNCTION, sizeLclosure(n), NULL, 0)->cl;
-  c->l.isC = 0;
-  c->l.p = p;
+Closure *luaF_newLclosure (lua_State *L, int n) {
+  Closure *c = &luaC_newobj(L, LUA_TLCL, sizeLclosure(n), NULL, 0)->cl;
+  c->l.p = NULL;
   c->l.nupvalues = cast_byte(n);
   while (n--) c->l.upvals[n] = NULL;
   return c;
@@ -54,12 +51,12 @@ UpVal *luaF_findupval (lua_State *L, StkId level) {
   while (*pp != NULL && (p = gco2uv(*pp))->v >= level) {
     GCObject *o = obj2gco(p);
     lua_assert(p->v != &p->u.value);
+    lua_assert(!isold(o) || isold(obj2gco(L)));
     if (p->v == level) {  /* found a corresponding upvalue? */
       if (isdead(g, o))  /* is it dead? */
         changewhite(o);  /* resurrect it */
       return p;
     }
-    resetoldbit(o);  /* may create a newer upval after this one */
     pp = &p->next;
   }
   /* not found: create a new one */
@@ -142,13 +139,6 @@ void luaF_freeproto (lua_State *L, Proto *f) {
   luaM_freearray(L, f->locvars, f->sizelocvars);
   luaM_freearray(L, f->upvalues, f->sizeupvalues);
   luaM_free(L, f);
-}
-
-
-void luaF_freeclosure (lua_State *L, Closure *c) {
-  int size = (c->c.isC) ? sizeCclosure(c->c.nupvalues) :
-                          sizeLclosure(c->l.nupvalues);
-  luaM_freemem(L, c, size);
 }
 
 

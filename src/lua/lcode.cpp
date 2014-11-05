@@ -329,10 +329,9 @@ int luaK_numberK (FuncState *fs, lua_Number r) {
   setnvalue(&o, r);
   if (r == 0 || luai_numisnan(NULL, r)) {  /* handle -0 and NaN */
     /* use raw representation as key to avoid numeric problems */
-    setsvalue(L, L->top, luaS_newlstr(L, (char *)&r, sizeof(r)));
-     incr_top(L);
-     n = addk(fs, L->top - 1, &o);
-     L->top--;
+    setsvalue(L, L->top++, luaS_newlstr(L, (char *)&r, sizeof(r)));
+    n = addk(fs, L->top - 1, &o);
+    L->top--;
   }
   else
     n = addk(fs, &o, &o);  /* regular case */
@@ -425,7 +424,7 @@ static void discharge2reg (FuncState *fs, expdesc *e, int reg) {
       luaK_nil(fs, reg, 1);
       break;
     }
-    case VFALSE:  case VTRUE: {
+    case VFALSE: case VTRUE: {
       luaK_codeABC(fs, OP_LOADBOOL, reg, e->k == VTRUE, 0);
       break;
     }

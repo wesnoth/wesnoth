@@ -128,7 +128,8 @@ static int b_rot (lua_State *L, int i) {
   b_uint r = luaL_checkunsigned(L, 1);
   i &= (LUA_NBITS - 1);  /* i = i % NBITS */
   r = trim(r);
-  r = (r << i) | (r >> (LUA_NBITS - i));
+  if (i != 0)  /* avoid undefined shift of LUA_NBITS when i == 0 */
+    r = (r << i) | (r >> (LUA_NBITS - i));
   lua_pushunsigned(L, trim(r));
   return 1;
 }
@@ -146,7 +147,9 @@ static int b_rrot (lua_State *L) {
 
 /*
 ** get field and width arguments for field-manipulation functions,
-** checking whether they are valid
+** checking whether they are valid.
+** ('luaL_error' called without 'return' to avoid later warnings about
+** 'width' being used uninitialized.)
 */
 static int fieldargs (lua_State *L, int farg, int *width) {
   int f = luaL_checkint(L, farg);
