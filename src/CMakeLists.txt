@@ -109,6 +109,7 @@ endif(ENABLE_BOOST_FILESYSTEM AND NOT ENABLE_PANDORA)
 set(game-external-libs
 	${common-external-libs}
 	${Boost_SYSTEM_LIBRARIES}
+	${Boost_RANDOM_LIBRARY}
 	${SDLIMAGE_LIBRARY}
 	${SDLMIXER_LIBRARY}
 	${ANA_LIBRARIES}
@@ -117,6 +118,13 @@ set(game-external-libs
 	${FONTCONFIG_LIBRARIES}
 	${LIBDBUS_LIBRARIES}
 )
+
+if(ENABLE_LIBPNG AND PNG_FOUND)
+	set(game-external-libs
+		${game-external-libs}
+		${PNG_LIBRARIES}
+	)
+endif(ENABLE_LIBPNG AND PNG_FOUND)
 
 if(NOT ENABLE_PANDORA)
 	set(game-external-libs
