@@ -73,6 +73,16 @@ public:
 		dir_ = direction;
 	}
 
+	void set_upload_gameplay_times(bool upload_gameplay_times)
+	{
+		upload_gameplay_times_ = upload_gameplay_times;
+	}
+
+	bool get_upload_gameplay_times()
+	{
+		return upload_gameplay_times_;
+	}
+
 private:
 	ADDON_STATUS_FILTER displayed_status_;
 	boost::array<bool, ADDON_TYPES_COUNT> displayed_types_;
@@ -80,6 +90,8 @@ private:
 
 	ADDON_SORT sort_;
 	ADDON_SORT_DIRECTION dir_;
+
+	bool upload_gameplay_times_;
 
 	typedef std::pair<ttoggle_button*, ADDON_SORT> sort_toggle;
 	typedef std::pair<ttoggle_button*, ADDON_SORT_DIRECTION> dir_toggle;

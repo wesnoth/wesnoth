@@ -104,7 +104,6 @@ struct addon_info
 	explicit addon_info(const config& cfg)
 		: id(), title(), description(), icon()
 		, version(), author(), size(), downloads()
-		, uploads(), type(), locales()
 		, uploads(), user_rating(), hours_played()
 		, this_user_rating(), reviews(), type(), locales()
 		, core()

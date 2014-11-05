@@ -144,6 +144,8 @@ taddon_filter_options::taddon_filter_options()
 	// FIXME: (also in WML) should this and Unknown be a single option in the
 	// UI?
 	register_displayed_type_field("show_other", ADDON_OTHER);
+
+	register_bool("upload_statistics", true, upload_gameplay_times_);
 }
 
 void taddon_filter_options::register_displayed_type_field(

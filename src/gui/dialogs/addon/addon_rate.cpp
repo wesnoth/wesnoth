@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2014 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2008 - 2014 by Ján Dugáček
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -55,8 +55,7 @@ taddon_rate::taddon_rate(int& input)
 void taddon_rate::pre_show(CVideo& /*video*/, twindow& window)
 {
 	tslider& slider = find_widget<tslider>(&window, "rating_input", false);
-	slider.set_decimals(1);
-	slider.set_show_maximum(true);
+	slider.set_value(5);
 }
 
 } // namespace gui2

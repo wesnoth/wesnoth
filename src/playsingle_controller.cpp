@@ -127,7 +127,6 @@ playsingle_controller::~playsingle_controller()
 	config* prefs = preferences::get_prefs();
 	int gameplay_time = (time(NULL) - started_at_) / (6 * 20); // Measuring in tenths of hours
 	BOOST_FOREACH(const std::string& id, addons_active_) {
-		std::cout << id << std::endl;
 		if (prefs->find_child("gameplay_times" , "name" , id)) {
 			prefs->find_child("gameplay_times" , "name" , id)["time"] = str_cast( prefs->find_child("gameplay_times" , "name" , id)["time"].to_int() + gameplay_time);
 		} else {

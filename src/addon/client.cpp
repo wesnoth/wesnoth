@@ -98,11 +98,12 @@ bool addons_client::submit_gameplay_times()
 		config& added = request_body.add_child("played_addon");
 		added["name"] = entry["name"];
 		added["time"] = entry["time"];
-		std::cout << "Uploading_gameplay_times for " << entry["name"] << std::endl;
+		LOG_ADDONS << "Uploading_gameplay_times for " << entry["name"] << std::endl;
 	}
 	prefs->clear_children("gameplay_times");
 
 	this->send_request(request, response_buf);
+	this->wait_for_transfer_done(_("Sending information about the add-ons you spent playing"));
 
 	return !this->update_last_error(response_buf);
 }
@@ -114,6 +115,7 @@ bool addons_client::request_distribution_terms(std::string& terms)
 	config response_buf;
 
 	this->send_simple_request("request_terms", response_buf);
+
 	this->wait_for_transfer_done(_("Requesting distribution terms..."));
 
 	if(const config& msg_cfg = response_buf.child("message")) {
@@ -313,7 +315,7 @@ bool addons_client::rate_addon(config& archive_cfg, addon_info::this_users_ratin
 	LOG_ADDONS << "rating add-on " << rating.id << '\n';
 
 	this->send_request(request_buf, archive_cfg);
-	//this->wait_for_transfer_done(vgettext("Sending information about your rating of the <i>$addon_title</i> add-on...", i18n_symbols));
+	this->wait_for_transfer_done(vgettext("Sending information about your rating of the <i>$addon_title</i> add-on...", i18n_symbols));
 
 	return !this->update_last_error(archive_cfg);
 }
