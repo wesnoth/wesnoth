@@ -150,6 +150,7 @@ lua_map_generator::lua_map_generator(const config & cfg)
 	: id_(cfg["id"])
 	, config_name_(cfg["config_name"])
 	, create_map_(cfg["create_map"])
+	, create_scenario_(cfg["create_scenario"])
 	, mState_(luaL_newstate())
 {
 	const char* required[] = {"id", "config_name", "create_map"};
@@ -213,4 +214,45 @@ std::string lua_map_generator::create_map()
 		throw mapgen_exception(msg);
 	}
 	return lua_tostring(mState_, -1);
+}
+
+config lua_map_generator::create_scenario()
+{
+	if (!create_scenario_.size()) {
+		return map_generator::create_scenario();
+	}
+
+	{
+		int errcode = luaL_loadstring(mState_, create_scenario_.c_str());
+		if (errcode != LUA_OK) {
+			std::string msg = "Error when running lua_map_generator create_scenario.\n";
+			msg += "The generator was: " + config_name_ + "\n";
+			msg += "Error when parsing create_scenario function. ";
+			if (errcode == LUA_ERRSYNTAX) {
+				msg += "There was a syntax error:\n";
+			} else {
+				msg += "There was a memory error:\n";
+			}
+			msg += lua_tostring(mState_, -1);
+			throw mapgen_exception(msg);
+		}
+	}
+	{
+		int errcode = lua_pcall(mState_, 0, 1, 0);
+		if (errcode != LUA_OK) {
+			std::string msg = "Error when running lua_map_generator create_scenario.\n";
+			msg += "The generator was: " + config_name_ + "\n";
+			msg += "Error when running create_scenario function. ";
+			if (errcode == LUA_ERRRUN) {
+				msg += "There was a runtime error:\n";
+			} else if (errcode == LUA_ERRERR) {
+				msg += "There was an error with the attached debugger:\n";
+			} else {
+				msg += "There was a memory or garbage collection error:\n";
+			}
+			msg += lua_tostring(mState_, -1);
+			throw mapgen_exception(msg);
+		}
+	}
+	return luaW_checkconfig(mState_, -1);
 }

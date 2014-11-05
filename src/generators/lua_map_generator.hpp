@@ -41,11 +41,13 @@ public:
 	std::string config_name() const { return config_name_; }
 
 	virtual std::string create_map();
+	virtual config create_scenario();
 
 private:
 	std::string id_, config_name_;
 
 	std::string create_map_;
+	std::string create_scenario_;
 
 	lua_State * mState_;
 };
