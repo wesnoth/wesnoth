@@ -343,7 +343,12 @@ taddon_description::taddon_description(const std::string& addon_id,
 				true);
 	}
 
-	register_label("players_rating", true, str_cast(addon.user_rating/10) + "." + str_cast(addon.user_rating % 10) + "/10");
+	if (addon.user_rating != -1) {
+		register_label("players_rating", true, str_cast(addon.user_rating/10) + "." + str_cast(addon.user_rating % 10) + "/10");
+	} else {
+		register_label("players_rating", true, "None yet");
+	}
+
 	register_label("hours_spent_playing", true, str_cast(addon.hours_played));
 
 	feedback_url_ = addon.feedback_url;
@@ -436,10 +441,10 @@ void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
 void taddon_description::rate_button_callback(twindow& window)
 {
 	if (current_users_rating_.numerical == -1) {
-		current_users_rating_.numerical = 50;
+		current_users_rating_.numerical = 5;
 	}
 	gui2::taddon_rate::execute(current_users_rating_.numerical,window.video());
-
+		current_users_rating_.numerical *= 10;
 }
 
 void taddon_description::reviews_button_callback(twindow& window)

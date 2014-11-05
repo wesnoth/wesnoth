@@ -113,6 +113,16 @@ private:
 	void write_config();
 
 	/**
+	 * Recalculates the times players spent playing add-ons and users' rating of all add-ons.
+	 */
+	void recalculate_player_data();
+
+	/**
+	 * Recalculates the users' ratings of add-ons.
+	 */
+	void recalculate_campaign_ratings(std::string& campaign);
+
+	/**
 	 * Reads the add-ons upload blacklist from WML.
 	 */
 	void load_blacklist();

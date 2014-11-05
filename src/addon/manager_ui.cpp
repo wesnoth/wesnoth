@@ -71,7 +71,7 @@ inline const addon_info& addon_at(const std::string& id, const addons_list& addo
 	return it->second;
 }
 
-bool get_addons_list(addons_client& client, addons_list& list)
+bool get_addons_list(addons_client& client, addons_list& list, display& disp)
 {
 	list.clear();
 
@@ -82,7 +82,21 @@ bool get_addons_list(addons_client& client, addons_list& list)
 		return false;
 	}
 
-	client.submit_gameplay_times();
+	config* prefs = preferences::get_prefs();
+	if (prefs->has_attribute("upload_gameplay_times_set") == false) {
+		std::string message(_("To help other players know which add-ons are popular, it would be useful to upload information which add-ons you play. Do you want to enable it?"));
+		int retval = gui2::show_message(disp.video(), _("Privacy disclaimer"), message, gui2::tmessage::yes_no_buttons);
+		if (retval == gui2::twindow::OK) {
+			(*prefs)["upload_gameplay_times"] = true;
+		}
+		if (retval == gui2::twindow::CANCEL) {
+			(*prefs)["upload_gameplay_times"] = false;
+		}
+		(*prefs)["upload_gameplay_times_set"] = true;
+	}
+	if ((*prefs)["upload_gameplay_times"].to_bool()) {
+		client.submit_gameplay_times();
+	}
 
 	read_addons_list(cfg, list);
 
@@ -425,12 +439,17 @@ public:
 		dlg.set_sort(f_.sort);
 		dlg.set_direction(f_.direction);
 
+		config* prefs = preferences::get_prefs();
+		dlg.set_upload_gameplay_times((*prefs)["upload_gameplay_times"].to_bool());
+
 		dlg.show(video_);
 
 		const std::vector<bool> new_types = dlg.displayed_types();
 		const ADDON_STATUS_FILTER new_status = dlg.displayed_status();
 		const ADDON_SORT new_sort = dlg.sort();
 		const ADDON_SORT_DIRECTION new_direction = dlg.direction();
+
+		(*prefs)["upload_gameplay_times"] = dlg.get_upload_gameplay_times();
 
 		assert(f_.types.size() == new_types.size());
 
@@ -987,14 +1006,12 @@ bool addons_manager_ui(display& disp, const std::string& remote_address)
 					return need_wml_cache_refresh;
 				}
 
-				client.submit_gameplay_times();
-
 				gui2::taddon_list dlg(cfg);
 				dlg.show(disp.video());
 				return need_wml_cache_refresh;
 			}
 
-			if(!get_addons_list(client, addons)) {
+			if(!get_addons_list(client, addons, disp)) {
 				gui2::show_error_message(disp.video(), _("An error occurred while downloading the add-ons list from the server."));
 				return need_wml_cache_refresh;
 			}
