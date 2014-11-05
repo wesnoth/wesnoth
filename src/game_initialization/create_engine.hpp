@@ -108,7 +108,7 @@ private:
 class random_map : public scenario
 {
 public:
-	random_map(const config& generator_data);
+	random_map(const config& data);
 	virtual ~random_map();
 
 	const config& generator_data() const;
@@ -116,12 +116,20 @@ public:
 	std::string name() const;
 	std::string description() const;
 	std::string id() const;
+	std::string generator_name() const;
+
+	map_generator * create_map_generator() const;
+
+	bool generate_whole_scenario() const;
 
 private:
 	random_map(const random_map&);
 	void operator=(const random_map&);
 
 	config generator_data_;
+
+	bool generate_whole_scenario_;
+	std::string generator_name_;
 };
 
 class campaign : public level
