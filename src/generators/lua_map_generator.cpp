@@ -152,6 +152,7 @@ lua_map_generator::lua_map_generator(const config & cfg)
 	, create_map_(cfg["create_map"])
 	, create_scenario_(cfg["create_scenario"])
 	, mState_(luaL_newstate())
+	, generator_data_(cfg)
 {
 	const char* required[] = {"id", "config_name", "create_map"};
 	BOOST_FOREACH(std::string req, required) {
@@ -189,7 +190,8 @@ std::string lua_map_generator::create_map()
 		}
 	}
 	{
-		int errcode = lua_pcall(mState_, 0, 1, 0);
+		luaW_pushconfig(mState_, generator_data_);
+		int errcode = lua_pcall(mState_, 1, 1, 0);
 		if (errcode != LUA_OK) {
 			std::string msg = "Error when running lua_map_generator create_map.\n";
 			msg += "The generator was: " + config_name_ + "\n";
@@ -238,7 +240,8 @@ config lua_map_generator::create_scenario()
 		}
 	}
 	{
-		int errcode = lua_pcall(mState_, 0, 1, 0);
+		luaW_pushconfig(mState_, generator_data_);
+		int errcode = lua_pcall(mState_, 1, 1, 0);
 		if (errcode != LUA_OK) {
 			std::string msg = "Error when running lua_map_generator create_scenario.\n";
 			msg += "The generator was: " + config_name_ + "\n";

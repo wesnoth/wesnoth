@@ -15,11 +15,11 @@
 #ifndef LUA_MAP_GENERATOR_DEFINED
 #define LUA_MAP_GENERATOR_DEFINED
 
+#include "config.hpp"
 #include "map_generator.hpp"
 
 #include <string>
 
-class config;
 struct lua_State;
 
 // TODO: Add support for user configurability (via defining a gui2 dialog in lua)
@@ -50,6 +50,8 @@ private:
 	std::string create_scenario_;
 
 	lua_State * mState_;
+
+	config generator_data_;
 };
 
 #endif
