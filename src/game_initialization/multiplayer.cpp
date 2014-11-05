@@ -594,11 +594,16 @@ static bool enter_configure_mode(game_display& disp, const config& game_config,
 		mp::ui::result res;
 
 		{
-			mp::configure ui(disp, game_config, gamechat, gamelist, state,
-				local_players_only);
-			run_lobby_loop(disp, ui);
-			res = ui.get_result();
-			ui.get_parameters();
+			if (!state.get_starting_pos().child("side")) {
+				gui2::show_error_message(disp.video(), "No sides found", "This map doesn't have any sides, you can't configure it, skipping...");
+				res = mp::ui::CREATE;
+			} else {
+				mp::configure ui(disp, game_config, gamechat, gamelist, state,
+					local_players_only);
+				run_lobby_loop(disp, ui);
+				res = ui.get_result();
+				ui.get_parameters();
+			}
 		}
 
 		switch (res) {
