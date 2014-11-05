@@ -120,7 +120,7 @@ private:
 	/**
 	 * Recalculates the users' ratings of add-ons.
 	 */
-	void recalculate_campaign_ratings(std::string& campaign);
+	void recalculate_campaign_ratings(std::string campaign_name);
 
 	/**
 	 * Reads the add-ons upload blacklist from WML.

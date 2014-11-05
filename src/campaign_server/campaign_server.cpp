@@ -195,14 +195,14 @@ void server::recalculate_player_data()
 		}
 		campaign["hours_played"] = str_cast(hours_played);
 
-		recalculate_campaign_ratings(campaign["name"].to_string());
+		recalculate_campaign_ratings(campaign["name"]);
 	}
 
 }
 
-void server::recalculate_campaign_ratings(std::string& campaign)
+void server::recalculate_campaign_ratings(std::string campaign_name)
 {
-	config& campaign = campaigns().find_child("campaign", "name", req.cfg["name"]);
+	config& campaign = campaigns().find_child("campaign", "name", campaign_name);
 
 	long int total_votes = 0;
 	long int total_points = 0;
@@ -867,7 +867,7 @@ void server::handle_rate_addon(const server::request& req)
 				}
 			}
 		}
-		recalculate_campaign_ratings(campaign["name"].to_string());
+		recalculate_campaign_ratings(campaign["name"]);
 	}
 
 }
