@@ -15,6 +15,7 @@
 #include "lua_map_generator.hpp"
 
 #include "config.hpp"
+#include "log.hpp"
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
@@ -32,6 +33,10 @@
 
 #include <boost/foreach.hpp>
 
+static lg::log_domain log_mapgen("mapgen");
+#define ERR_NG LOG_STREAM(err, log_mapgen)
+#define LOG_NG LOG_STREAM(info, log_mapgen)
+#define DBG_NG LOG_STREAM(debug, log_mapgen)
 
 // Add compiler directive suppressing unused variable warning
 #if defined(__GNUC__) || defined(__clang__) || defined(__MINGW32__)
@@ -125,7 +130,13 @@ int impl_rng_create(lua_State* L)
 }
 int impl_rng_destroy(lua_State* L)
 {
-	static_cast< mt_rng * >( lua_touserdata( L , 1 ) )->~mt_rng();
+	mt_rng * d = static_cast< mt_rng *> (luaL_testudata(L, 1, Rng));
+	if (d == NULL) {
+		ERR_NG << "rng_destroy called on data of type: " << lua_typename( L, lua_type( L, 1 ) ) << std::endl;
+		ERR_NG << "This may indicate a memory leak, please report at bugs.wesnoth.org" << std::endl;
+	} else {
+		d->~mt_rng();
+	}
 	return 0;
 }
 int impl_rng_seed(lua_State* L)
