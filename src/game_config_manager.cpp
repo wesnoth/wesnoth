@@ -138,7 +138,8 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		config core_terrain_rules;
 		core_terrain_rules.splice_children(game_config_, "terrain_graphics");
 
-		load_addons_cfg();
+		if (!cmdline_opts_.noaddons)
+			load_addons_cfg();
 
 		// If multiplayer campaign is being loaded, [scenario] tags should
 		// become [multiplayer] tags and campaign's id should be added to them

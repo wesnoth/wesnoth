@@ -124,6 +124,8 @@ public:
 	boost::optional<std::string> multiplayer_turns;
 	/// Max FPS specified by --max-fps option.
 	boost::optional<int> max_fps;
+	/// True if --noaddons was given on the command line. Disables the loading of all add-ons.
+	bool noaddons;
 	/// True if --nocache was given on the command line. Disables cache usage.
 	bool nocache;
 	/// True if --nodelay was given on the command line.

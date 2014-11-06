@@ -105,6 +105,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	multiplayer_side(),
 	multiplayer_turns(),
 	max_fps(),
+	noaddons(false),
 	nocache(false),
 	nodelay(false),
 	nogui(false),
@@ -173,6 +174,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("help,h", "prints this message and exits.")
 		("language,L", po::value<std::string>(), "uses language <arg> (symbol) this session. Example: --language ang_GB@latin")
 		("load,l", po::value<std::string>(), "loads the save <arg> from the standard save game directory. When launching the map editor via -e, the map <arg> is loaded, relative to the current directory. If it is a directory, the editor will start with a load map dialog opened there.")
+		("noaddons", "disables the loading of all add-ons.")
 		("nocache", "disables caching of game data.")
 		("nodelay", "runs the game without any delays.")
 		("nomusic", "runs the game without music.")
@@ -367,6 +369,8 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		multiplayer_repeat = vm["multiplayer-repeat"].as<unsigned int>();
 	if (vm.count("new-widgets"))
 		new_widgets = true;
+	if (vm.count("noaddons"))
+		noaddons = true;
 	if (vm.count("nocache"))
 		nocache = true;
 	if (vm.count("nodelay"))
