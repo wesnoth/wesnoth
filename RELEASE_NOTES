@@ -75,6 +75,121 @@ Wesnoth's random generator has been upgraded, instead of using the C `rand` func
 This means that the WML rand= function should now be much more random and seeded properly. lua on the otherhand still uses the C `rand` function, so it is advised not to use that anymore.
 [/section]
 
+[section="Optional Dependency on libpng"]
+(Note that it's a bit misleading, you *must* have libpng support in your SDL_image or obviously there's no way you can run the game. However, if you also have libpng available when compiling and running the wesnoth binary, you get something more.)
+
+Wesnoth can now save images as png files. This includes screenshots, map screenshots (taken at command line), and also the new "--render-image" feature. png vs bmp saving is now decided based on the extension of the filename you are trying to save to. If it's bmp, wesnoth saves a bmp. Otherwise if possible wesnoth will save a png.
+[/section]
+
+[section="lua random map generator"]
+Wesnoth now supports a new random map generator type, "lua". To use it, select either [tt]map_generation="lua"[/tt] or [tt]scenario_generation="lua"[/tt] in your scenario. You should then have a generator tag which includes attributes either "create_map" or "create_scenario", which should be set equal to a lua script which will generate a map / scenario.
+
+Here is a trivial example:
+
+[code]
+     [label]
+         x = {X}
+         y = {Y}
+         text = {STRING}
+     [/label]
+[multiplayer]
+    id=lua_map_gen
+    name= _ "Lua Map Gen Test Scenario"
+    description= _ "test test test of lua map gen"
+    map_generation="lua"
+    [generator]
+        id="test"
+	config_name="Test Lua Map Generator"
+	create_map = << local rng = Rng:create()
+
+			print(rng:draw())
+			print(rng:draw())
+			print(rng:draw())
+
+			local w = 50
+		        local h = 40
+
+			map=""
+			for y=1,h do
+			  local r = rng:draw() % 2
+			  for x=1,w do
+                            if x == 10 and y == 10 then
+                              map = map .. " 1 "
+ 			    end
+                            if x == (w-10) and y == (h-10) then
+                              map = map .. " 2 "
+ 			    end
+			    if ((x + y) % 2) == r then
+			      map = map .. "Gg"
+			    else
+			      map = map .. "Md"
+			    end
+                            if x ~= w then
+                              map = map .. ","
+                            end
+                          end
+                          map = map .. "\n"
+                        end
+                        return map
+                     >>
+    [/generator]
+
+    id = foo
+    random_start_time=yes
+
+    {DEFAULT_SCHEDULE}
+    [event]
+        name=prestart
+        {LABEL 25 20 ("Lua map generator")}
+    [/event]
+
+    [side]
+         [ai]
+             villages_per_scout=8
+         [/ai]
+         id=RBY_Side1
+         side=1
+         save_id=RBY_Side1
+         persistent=yes
+         color=red
+         team_name=Red
+         user_team_name= _ "teamname^Red"
+         controller=human
+         canrecruit=yes
+         shroud=no
+         fog=no
+         gold=1000000
+    [/side]
+    [side]
+         [ai]
+             villages_per_scout=8
+         [/ai]
+         id=RBY_Side2
+         side=2
+         save_id=RBY_Side2
+         persistent=yes
+         color=blue
+         team_name=Blue
+         user_team_name= _ "teamname^Blue"
+         controller=human
+         canrecruit=yes
+         shroud=no
+         fog=no
+         gold=1000000
+    [/side]
+[/multiplayer]
+
+[/code]
+
+Note that:
+[list]
+[*] For map generation, simply return a string containing the map data. For scenario generation, return the entire WML for the scenario as a lua table. (see [wiki]LuaWML[/wiki]
+[*] You cannot use any of the "wesnoth." api, because you are not in a game at the time that this script is running. The script runs in an entirely separate lua environment from the one used in game, and from every other map generator script.
+[*] You can instantiate wesnoth's high-quality random generator (mt19937, much better than the "rand" used by lua's math.random) by using the table [tt]Rng[/tt] to create an rng object, with [tt]seed[/tt] and [tt]draw[/tt] methods.
+[/list]
+
+[/section]
+
 [section="Example section 2"]
 Example contents 2.
 [/section]
