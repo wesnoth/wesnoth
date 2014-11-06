@@ -60,7 +60,7 @@ namespace game_config
 	std::string wesnoth_program_dir;
 	bool debug = false, debug_lua = false, editor = false,
 		ignore_replay_errors = false, mp_debug = false, exit_at_end = false,
-		no_delay = false, disable_autosave = false;
+		no_delay = false, disable_autosave = false, no_addons = false;
 
 	int cache_compression_level = 6;
 
