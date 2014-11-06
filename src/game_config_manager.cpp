@@ -138,7 +138,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		config core_terrain_rules;
 		core_terrain_rules.splice_children(game_config_, "terrain_graphics");
 
-		if (!cmdline_opts_.noaddons)
+		if (!game_config::no_addons)
 			load_addons_cfg();
 
 		// If multiplayer campaign is being loaded, [scenario] tags should
