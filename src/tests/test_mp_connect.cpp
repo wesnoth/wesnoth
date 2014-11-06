@@ -62,7 +62,7 @@ boost::scoped_ptr<saved_game> state;
 struct mp_connect_fixture {
 	mp_connect_fixture() :
 		video(),
-		dummy_args(boost::assign::list_of("wesnoth").convert_to_container<std::vector<std::string> >()),
+		dummy_args(boost::assign::list_of("wesnoth")("--noaddons").convert_to_container<std::vector<std::string> >()),
 		cmdline_opts(dummy_args),
 		hotkey_manager(),
 		config_manager()
