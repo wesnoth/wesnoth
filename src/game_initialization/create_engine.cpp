@@ -22,6 +22,7 @@
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "filesystem.hpp"
 #include "formula_string_utils.hpp"
+#include "hash.hpp"
 #include "log.hpp"
 #include "generators/map_create.hpp"
 #include "map_exception.hpp"
@@ -138,16 +139,21 @@ bool scenario::can_launch_game() const
 	return map_.get() != NULL;
 }
 
-surface* scenario::create_image_surface(const SDL_Rect& image_rect)
+surface scenario::create_image_surface(const SDL_Rect& image_rect)
 {
-	surface* minimap = NULL;
-
-	if (map_.get() != NULL) {
-		minimap = new surface(image::getMinimap(image_rect.w,
-			image_rect.h, *map_, 0));
+	if (!map_) {
+		minimap_img_ = surface();
+		return minimap_img_;
 	}
 
-	return minimap;
+	std::basic_string<unsigned char> current_hash = util::md5(map_->write());
+
+	if (minimap_img_.null() || (map_hash_ != current_hash)) { // If there's no minimap image, or the map hash doesn't match, regenerate the image cache.
+		minimap_img_ = image::getMinimap(image_rect.w, image_rect.h, *map_, 0);
+		map_hash_ = current_hash;
+	}
+
+	return minimap_img_;
 }
 
 void scenario::set_metadata()
@@ -333,15 +339,12 @@ bool campaign::can_launch_game() const
 	return !data_.empty();
 }
 
-surface* campaign::create_image_surface(const SDL_Rect& image_rect)
+surface campaign::create_image_surface(const SDL_Rect& image_rect)
 {
 	surface temp_image(
 		image::get_image(image::locator(image_label_)));
 
-	surface* campaign_image = new surface(scale_surface(temp_image,
-		image_rect.w, image_rect.h));
-
-	return campaign_image;
+	return scale_surface(temp_image, image_rect.w, image_rect.h);
 }
 
 void campaign::set_metadata()

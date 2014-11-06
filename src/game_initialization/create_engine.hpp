@@ -37,7 +37,7 @@ public:
 
 	virtual bool can_launch_game() const = 0;
 
-	virtual surface* create_image_surface(const SDL_Rect& image_rect) = 0;
+	virtual surface create_image_surface(const SDL_Rect& image_rect) = 0;
 
 	virtual void set_metadata() = 0;
 
@@ -67,7 +67,7 @@ public:
 
 	bool can_launch_game() const;
 
-	surface* create_image_surface(const SDL_Rect& image_rect);
+	surface create_image_surface(const SDL_Rect& image_rect);
 
 	void set_metadata();
 
@@ -78,6 +78,9 @@ protected:
 	void set_sides();
 
 	boost::scoped_ptr<gamemap> map_;
+
+	surface minimap_img_;
+	std::basic_string<unsigned char> map_hash_;
 
 private:
 	scenario(const scenario&);
@@ -140,7 +143,7 @@ public:
 
 	bool can_launch_game() const;
 
-	surface* create_image_surface(const SDL_Rect& image_rect);
+	surface create_image_surface(const SDL_Rect& image_rect);
 
 	void set_metadata();
 
