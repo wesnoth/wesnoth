@@ -42,6 +42,7 @@ static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
 static lg::log_domain log_mp_create_engine("mp/create/engine");
+#define WRN_MP LOG_STREAM(warn, log_mp_create_engine)
 #define DBG_MP LOG_STREAM(debug, log_mp_create_engine)
 
 namespace {
@@ -251,10 +252,27 @@ std::string user_map::id() const
 	return name_;
 }
 
-random_map::random_map(const config& generator_data) :
-	scenario(config()),
-	generator_data_(generator_data)
+random_map::random_map(const config& data) :
+	scenario(data),
+	generator_data_(),
+	generate_whole_scenario_(data_.has_attribute("scenario_generation")),
+	generator_name_(generate_whole_scenario_ ? data_["scenario_generation"] : data_["map_generation"])
 {
+	if (!data.has_child("generator")) {
+		data_ = config();
+		generator_data_= config();
+		data_["description"] = "Error: Random map found with missing generator information. Scenario should have a [generator] child.";
+		data_["error_message"] = "missing [generator] tag";
+	} else {
+		generator_data_ = data.child("generator");
+	}
+
+	if (!data.has_attribute("scenario_generation") && !data.has_attribute("map_generation")) {
+		data_ = config();
+		generator_data_= config();
+		data_["description"] = "Error: Random map found with missing generator information. Scenario should have a [generator] child.";
+		data_["error_message"] = "couldn't find 'scenario_generation' or 'map_generation' attribute";
+	}
 }
 
 random_map::~random_map()
@@ -268,17 +286,32 @@ const config& random_map::generator_data() const
 
 std::string random_map::name() const
 {
-	return generator_data_["name"];
+	return data_["name"];
 }
 
 std::string random_map::description() const
 {
-	return generator_data_["description"];
+	return data_["description"];
 }
 
 std::string random_map::id() const
 {
-	return generator_data_["id"];
+	return data_["id"];
+}
+
+bool random_map::generate_whole_scenario() const
+{
+	return generate_whole_scenario_;
+}
+
+std::string random_map::generator_name() const
+{
+	return generator_name_;
+}
+
+map_generator * random_map::create_map_generator() const
+{
+	return ::create_map_generator(generator_name(), generator_data());
 }
 
 campaign::campaign(const config& data) :
@@ -427,16 +460,55 @@ void create_engine::init_generated_level_data()
 {
 	DBG_MP << "initializing generated level data\n";
 
-	config data = generator_->create_scenario();
+	//DBG_MP << "current data:\n";
+	//DBG_MP << current_level().data().debug();
 
-	// Set the scenario to have placing of sides
-	// based on the terrain they prefer
-	data["modify_placing"] = "true";
+	random_map * cur_lev = dynamic_cast<random_map *> (&current_level());
 
-	const std::string& description = current_level().data()["description"];
-	data["description"] = description;
+	if (!cur_lev) {
+		WRN_MP << "Tried to initialized generated level data on a level that wasn't a random map\n";
+		return;
+	}
 
-	current_level().set_data(data);
+	try {
+		if (!cur_lev->generate_whole_scenario())
+		{
+			DBG_MP << "** replacing map ** \n";
+
+			config data = cur_lev->data();
+
+			data["map_data"] = generator_->create_map();
+
+			cur_lev->set_data(data);
+
+		} else { //scenario generation
+
+			DBG_MP << "** replacing scenario ** \n";
+
+			config data = generator_->create_scenario();
+
+			// Set the scenario to have placing of sides
+			// based on the terrain they prefer
+			if (!data.has_attribute("modify_placing")) {
+				data["modify_placing"] = "true";
+			}
+
+			const std::string& description = cur_lev->data()["description"];
+			data["description"] = description;
+
+			cur_lev->set_data(data);
+		}
+	} catch (mapgen_exception & e) {
+		config data = cur_lev->data();
+
+		data["error_message"] = e.what();
+
+		cur_lev->set_data(data);
+	}
+
+	//DBG_MP << "final data:\n";
+	//DBG_MP << current_level().data().debug();
+
 }
 
 void create_engine::prepare_for_new_level()
@@ -579,6 +651,7 @@ void create_engine::prepare_for_saved_game()
 
 void create_engine::prepare_for_other()
 {
+	DBG_MP << "prepare_for_other\n";
 	state_.set_scenario(current_level().data());
 	state_.mp_settings().hash = current_level().data().hash();
 }
@@ -735,9 +808,7 @@ void create_engine::set_current_level(const size_t index)
 		random_map* current_random_map =
 			dynamic_cast<random_map*>(&current_level());
 
-		generator_.reset(create_map_generator(
-			current_random_map->generator_data()["map_generation"],
-			current_random_map->generator_data().child("generator")));
+		generator_.reset(current_random_map->create_map_generator());
 	} else {
 		generator_.reset(NULL);
 	}
@@ -998,7 +1069,7 @@ void create_engine::init_all_levels()
 		if (!data["allow_new_game"].to_bool(true))
 			continue;
 
-		if (!data["map_generation"].empty()) {
+		if (data.has_attribute("map_generation") || data.has_attribute("scenario_generation")) {
 			random_map_ptr new_random_map(new random_map(data));
 			random_maps_.push_back(new_random_map);
 			random_maps_.back()->set_metadata();

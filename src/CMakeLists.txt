@@ -1006,6 +1006,7 @@ set(libwesnoth-game_STAT_SRC
 	generators/map_create.cpp
 	generators/map_generator.cpp
 	generators/default_map_generator.cpp
+	generators/lua_map_generator.cpp
 	generators/yamg/ya_mapgen.cpp
 	generators/yamg/yamg_hex.cpp
 	generators/yamg/yamg_hexheap.cpp

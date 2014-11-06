@@ -6,15 +6,27 @@
 
 #include <boost/foreach.hpp>
 #include <cassert>
+#include <sstream>
 
 namespace ng {
+
+static const config dummy;
 
 configure_engine::configure_engine(saved_game& state) :
 	state_(state),
 	parameters_(state_.mp_settings()),
 	sides_(state_.get_starting_pos().child_range("side")),
-	cfg_((assert(sides_.first != sides_.second), *sides_.first))
+	cfg_(sides_.first != sides_.second ? *sides_.first : dummy) //second part is just any old config, it will be ignored
 {
+	if (sides_.first == sides_.second) {
+		std::stringstream msg;
+		msg << "Configure Engine: No sides found in scenario, aborting.";
+		std::cerr << msg;
+		std::cerr << "Full scenario config:\n";
+		std::cerr << state_.to_config().debug();
+		throw game::error(msg.str());
+	}
+
 	set_use_map_settings(use_map_settings_default());
 
 	BOOST_FOREACH(const config& scenario,

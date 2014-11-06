@@ -34,9 +34,9 @@
 
 #include <boost/foreach.hpp>
 
-static lg::log_domain log_engine("engine");
-#define ERR_NG LOG_STREAM(err, log_engine)
-#define LOG_NG LOG_STREAM(info, log_engine)
+static lg::log_domain log_mapgen("mapgen");
+#define ERR_NG LOG_STREAM(err, log_mapgen)
+#define LOG_NG LOG_STREAM(info, log_mapgen)
 
 config map_generator::create_scenario()
 {

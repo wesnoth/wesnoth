@@ -86,6 +86,8 @@
 #include "SDL_stdinc.h"                 // for SDL_putenv, Uint32
 #include "SDL_timer.h"                  // for SDL_GetTicks
 
+//#define NO_CATCH_AT_GAME_END
+
 #ifdef _WIN32
 #include <windows.h>
 #endif

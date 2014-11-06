@@ -820,7 +820,7 @@ struct twrapper<gui2::teditor_generate_map>
 
 		std::vector<map_generator*> map_generators;
 		BOOST_FOREACH(const config &i, main_config.child_range("multiplayer")) {
-			if(i["map_generation"] == "default") {
+			if(i["scenario_generation"] == "default") {
 				const config &generator_cfg = i.child("generator");
 				if (generator_cfg) {
 					map_generators.push_back(
