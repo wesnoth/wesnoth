@@ -57,6 +57,8 @@ public:
 	boost::optional<std::string> campaign_scenario;
 	/// True if --clock was given on the command line. Enables
 	bool clock;
+	/// Non-empty if --core was given on the command line. Chooses the core to be loaded.
+	boost::optional<std::string> core_id;
 	/// True if --data-path was given on the command line. Prints path to data directory and exits.
 	bool data_path;
 	/// Non-empty if --data-dir was given on the command line. Sets the config dir to the specified one.

@@ -160,6 +160,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("clock", "Adds the option to show a clock for testing the drawing timer.")
 		("config-dir", po::value<std::string>(), "sets the path of the userdata directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. DEPRECATED: use userdata-path and userconfig-path instead.")
 		("config-path", "prints the path of the userdata directory and exits. DEPRECATED: use userdata-path and userconfig-path instead.")
+		("core", po::value<std::string>(), "overrides the loaded core with the one which id is spcified.")
 		("data-dir", po::value<std::string>(), "overrides the data directory with the one specified.")
 		("data-path", "prints the path of the data directory and exits.")
 		("debug,d", "enables additional command mode options in-game.")
@@ -301,6 +302,8 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		campaign_scenario = vm["campaign-scenario"].as<std::string>();
 	if (vm.count("clock"))
 		clock = true;
+	if (vm.count("core"))
+		core_id = vm["core"].as<std::string>();
 	if (vm.count("config-dir"))
 		userdata_dir = vm["config-dir"].as<std::string>(); //TODO: complain and remove
 	if (vm.count("config-path"))
