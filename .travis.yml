@@ -63,7 +63,7 @@ script:
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
     - if [ "$CPP_TESTS" = true ]; then time ./test; fi          # The test executor script seems to be blocking stderr, disabling for now...   time ./utils/travis/test_executor.sh; fi
-    - if [ "$WML_TESTS" = true ]; then time ./run_wml_tests -g -v -t "$WML_TEST_TIME"; fi
+    - if [ "$WML_TESTS" = true ]; then time ./run_wml_tests -g -v -c -t "$WML_TEST_TIME"; fi
     - if [ "$PLAY_TEST" = true ]; then time ./utils/travis/play_test_executor.sh; fi
 
 after_failure:
