@@ -839,6 +839,7 @@
 		EC4E3B2019B2D8480049CBD7 /* stage_sf_with_rca.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4E3B1E19B2D8480049CBD7 /* stage_sf_with_rca.cpp */; };
 		EC4E3B2219B2D8880049CBD7 /* simulated_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4E3B2119B2D8880049CBD7 /* simulated_actions.cpp */; };
 		EC51DB7818F8BFA4004621D9 /* playturn_network_adapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC51DB7618F8BFA4004621D9 /* playturn_network_adapter.cpp */; };
+		EC5590771A0B11C600675179 /* lua_map_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5590761A0B11C600675179 /* lua_map_generator.cpp */; };
 		EC5C243B18EF07B4001FA499 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242218EF07B4001FA499 /* libbz2.1.0.dylib */; };
 		EC5C243C18EF07B4001FA499 /* libexpat.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242318EF07B4001FA499 /* libexpat.1.dylib */; };
 		EC5C243D18EF07B4001FA499 /* libffi.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242418EF07B4001FA499 /* libffi.6.dylib */; };
@@ -2069,6 +2070,7 @@
 		EC4E3B2119B2D8880049CBD7 /* simulated_actions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simulated_actions.cpp; sourceTree = "<group>"; };
 		EC51DB7618F8BFA4004621D9 /* playturn_network_adapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = playturn_network_adapter.cpp; sourceTree = "<group>"; };
 		EC51DB7718F8BFA4004621D9 /* playturn_network_adapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = playturn_network_adapter.hpp; sourceTree = "<group>"; };
+		EC5590761A0B11C600675179 /* lua_map_generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_map_generator.cpp; sourceTree = "<group>"; };
 		EC5C242218EF07B4001FA499 /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = lib/libbz2.1.0.dylib; sourceTree = "<group>"; };
 		EC5C242318EF07B4001FA499 /* libexpat.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libexpat.1.dylib; path = lib/libexpat.1.dylib; sourceTree = "<group>"; };
 		EC5C242418EF07B4001FA499 /* libffi.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libffi.6.dylib; path = lib/libffi.6.dylib; sourceTree = "<group>"; };
@@ -3085,6 +3087,7 @@
 		62CC8E7917B9064B00C16B75 /* generators */ = {
 			isa = PBXGroup;
 			children = (
+				EC5590761A0B11C600675179 /* lua_map_generator.cpp */,
 				EC4E3B1819B2D7AD0049CBD7 /* cave_map_generator.cpp */,
 				EC4E3B1919B2D7AD0049CBD7 /* default_map_generator.cpp */,
 				EC4E3B1A19B2D7AD0049CBD7 /* map_generator.cpp */,
@@ -4343,6 +4346,7 @@
 				B5599B810EC62181008DD061 /* callable_objects.cpp in Sources */,
 				B5599B830EC62181008DD061 /* animated_game.cpp in Sources */,
 				B5599B8B0EC62181008DD061 /* about.cpp in Sources */,
+				EC5590771A0B11C600675179 /* lua_map_generator.cpp in Sources */,
 				B5599B8E0EC62181008DD061 /* attack_prediction_display.cpp in Sources */,
 				B5599B910EC62181008DD061 /* attack_prediction.cpp in Sources */,
 				EC89A13B1879D17D00A3B0B1 /* loadlib.cpp in Sources */,
