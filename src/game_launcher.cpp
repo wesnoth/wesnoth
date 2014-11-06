@@ -139,6 +139,9 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	const std::string app_basename = filesystem::base_name(appname);
 	jump_to_editor_ = app_basename.find("editor") != std::string::npos;
 
+	if (cmdline_opts_.core_id) {
+		preferences::set_core_id(*cmdline_opts_.core_id);
+	}
 	if (cmdline_opts_.campaign)	{
 		jump_to_campaign_.jump_ = true;
 		jump_to_campaign_.campaign_id_ = *cmdline_opts_.campaign;
