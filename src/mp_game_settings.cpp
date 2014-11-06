@@ -139,8 +139,8 @@ void mp_game_settings::set_from_config(const config& game_cfg)
 	difficulty_define = cfg["difficulty_define"].str();
 	active_mods = utils::split(cfg["active_mods"], ',');
 	side_users = utils::map_split(cfg["side_users"]);
-	show_configure = cfg["enable_configure"].to_bool(true);
-	show_connect = cfg["enable_connect"].to_bool(true);
+	show_configure = cfg["show_configure"].to_bool(true);
+	show_connect = cfg["show_connect"].to_bool(true);
 	xp_modifier = cfg["experience_modifier"];
 	use_map_settings = cfg["mp_use_map_settings"].to_bool();
 	random_start_time = cfg["mp_random_start_time"].to_bool();
