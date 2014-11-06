@@ -138,7 +138,12 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		config core_terrain_rules;
 		core_terrain_rules.splice_children(game_config_, "terrain_graphics");
 
-		load_addons_cfg();
+		//TODO: it would be better actually if this were not the default behavior for tests,
+		// and instead is specified by a command-line argument "--no-addons" or some such,
+		// to permit umc defined unit tests to run
+		if (!(classification && classification->campaign_type == game_classification::TEST)) {
+			load_addons_cfg();
+		}
 
 		// If multiplayer campaign is being loaded, [scenario] tags should
 		// become [multiplayer] tags and campaign's id should be added to them
