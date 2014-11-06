@@ -164,6 +164,8 @@ endif(USE_ANA_NETWORK)
 set(tools-external-libs
 	${common-external-libs}
 	${SDLIMAGE_LIBRARY}
+	${Boost_FILESYSTEM_LIBRARY}
+	${Boost_SYSTEM_LIBRARIES}
 )
 
 if(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
@@ -269,6 +271,7 @@ endif(ENABLE_BOOST_FILESYSTEM AND NOT ENABLE_PANDORA)
 # a 'lib' is automatically set in front when creating the library (as in the filename)
 # internal reference is the name given here
 add_library(wesnoth-core ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${libwesnoth-core_STAT_SRC})
+target_link_libraries(wesnoth-core ${Boost_FILESYSTEM_LIBRARY})
 
 # Depending on the flag create a real file or an empty dummy.
 #
@@ -1190,7 +1193,7 @@ add_executable(wesnothd WIN32
 	${wesnothd_SRC}
 )
 
-target_link_libraries(wesnothd wesnoth-core ${server-external-libs})
+target_link_libraries(wesnothd wesnoth-core ${server-external-libs} ${Boost_RANDOM_LIBRARY})
 set_target_properties(wesnothd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnothd${BINARY_SUFFIX})
 
 install(TARGETS wesnothd DESTINATION ${BINDIR})
