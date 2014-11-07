@@ -762,9 +762,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			gui2::tcore_selection core_dlg(cores, current);
 			if (core_dlg.show(game->disp().video())) {
 				int core_index = core_dlg.get_choice();
-				const std::string& wml_tree_root = cores[core_index]["path"];
 				const std::string& core_id = cores[core_index]["id"];
-				preferences::set_wml_tree_root(wml_tree_root);
 				preferences::set_core_id(core_id);
 				config_manager.reload_changed_game_config();
 			}

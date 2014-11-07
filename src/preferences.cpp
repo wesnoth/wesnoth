@@ -234,16 +234,6 @@ void set_allied_color(const std::string& color_id) {
 	prefs["ally_orb_color"] = color_id;
 }
 
-std::string wml_tree_root() {
-	std::string wml_tree_root = get("wml_tree_root");
-	if (wml_tree_root.empty())
-		return "_main.cfg";
-	return wml_tree_root;
-}
-void set_wml_tree_root(const std::string& wml_tree_root) {
-	prefs["wml_tree_root"] = wml_tree_root;
-}
-
 std::string core_id() {
 	std::string core_id = get("core");
 	if (core_id.empty())

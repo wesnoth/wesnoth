@@ -55,9 +55,6 @@ namespace preferences {
 
 	config* get_prefs();
 
-	std::string wml_tree_root();
-	void set_wml_tree_root(const std::string& root);
-
 	std::string core_id();
 	void set_core_id(const std::string& root);
 
