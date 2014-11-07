@@ -342,7 +342,7 @@ void create_terrain_maps(const config::const_child_itors &cfgs,
 				if(clean_merge) {
 					LOG_G << "Editor groups merged to: " << joined << "\n";
 				} else {
-					ERR_G << "Merged terrain " << terrain.number()
+					LOG_G << "Merged terrain " << terrain.number()
 					<< ": " << terrain.id() << " (" << terrain.name() << ") "
 					<< "with duplicate editor groups [" << terrain.editor_group() << "] "
 					<< "and [" << curr.editor_group() << "]\n";
