@@ -24,7 +24,6 @@ class display;
 class game_display;
 class saved_game;
 class config;
-class CVideo;
 
 enum io_type_t {
 	IO_SERVER,
@@ -40,7 +39,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& state,
 		bool is_unit_test = false);
 
 LEVEL_RESULT play_replay(display& disp, saved_game& state,
-		const config& game_config, CVideo& video,
+		const config& game_config,
 		bool is_unit_test = false);
 
 #endif // PLAYCAMPAIGN_H_INCLUDED

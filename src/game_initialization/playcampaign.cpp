@@ -127,7 +127,7 @@ static void show_carryover_message(saved_game& gamestate, playsingle_controller&
 }
 
 LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& game_config,
-		CVideo& video, bool is_unit_test)
+		bool is_unit_test)
 {
 	recorder = replay(gamestate.replay_data);
 	// 'starting_pos' will contain the position we start the game from.
@@ -141,7 +141,7 @@ LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& gam
 		//if (gamestate.abbrev.empty())
 		//	gamestate.abbrev = (*scenario)["abbrev"];
 
-		LEVEL_RESULT res = play_replay_level(game_config, video, gamestate, is_unit_test);
+		LEVEL_RESULT res = play_replay_level(game_config, disp.video(), gamestate, is_unit_test);
 
 		recorder.clear();
 		gamestate.replay_data.clear();

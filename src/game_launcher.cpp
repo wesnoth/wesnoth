@@ -533,7 +533,7 @@ int game_launcher::unit_test()
 
 	try {
 		//LEVEL_RESULT res = play_game(disp(), state_, resources::config_manager->game_config(), IO_SERVER, false,false,false,true);
-		LEVEL_RESULT res = ::play_replay(disp(), state_, resources::config_manager->game_config(), video_, true);
+		LEVEL_RESULT res = ::play_replay(disp(), state_, resources::config_manager->game_config(), true);
 		if (!(res == VICTORY || res == NONE)) {
 			std::cerr << "Observed failure on replay" << std::endl;
 			return 4;
@@ -1003,8 +1003,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 void game_launcher::play_replay()
 {
 	try {
-		::play_replay(disp(),state_,resources::config_manager->game_config(),
-		    video_);
+		::play_replay(disp(),state_,resources::config_manager->game_config());
 
 		clear_loaded_game();
 	} catch (game::load_game_exception &) {
