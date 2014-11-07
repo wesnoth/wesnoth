@@ -623,6 +623,51 @@ WML_HANDLER_FUNCTION(color_adjust, /*event_info*/, cfg)
 	screen.draw(true,true);
 }
 
+WML_HANDLER_FUNCTION(delay, /*event_info*/, cfg)
+{
+	if (cfg["time"].blank()) {
+		std::stringstream ss;
+		ss << "[delay] tag expects an attribute \'time\', none found:\n" << cfg.get_config().debug();
+		WRN_NG << ss.str(); // FAIL ( ss.str() );
+		WRN_NG << "\nignoring\n";
+		return ;
+	}
+
+	int delay_time = cfg["time"].to_int(-1);
+	bool ignore_accel = cfg["ignore_acceleration"].to_bool(false);
+
+	if (delay_time < 0) {
+		std::stringstream ss;
+		ss << "[delay] tag expected an unsigned int representing delay in milliseconds for \'time\', found:\n" << delay_time;
+		WRN_NG << ss.str(); //FAIL( ss.str() );
+		WRN_NG << "\nignoring\n";
+		return ;
+	}
+
+	double speed = 1;
+
+	if (!ignore_accel) {
+		display*disp = display::get_singleton();
+		double speed = disp->turbo_speed();
+
+		if (speed < .001) {
+			std::stringstream ss;
+			ss << "speed = " << speed << ", this is a low (currently impossible) animation speed value, avoiding a potential division by zero\n";
+			WRN_NG << ss.str(); //FAIL( ss.str() );
+			WRN_NG << "\nignoring\n";
+			return;
+		}
+	}
+
+	unsigned final = SDL_GetTicks() + (delay_time / speed);
+
+	do {
+		resources::controller->play_slice(false);
+		resources::screen->delay((speed >= 1) ? 10 : 10 * speed);
+	} while (static_cast<int>(final - SDL_GetTicks()) > 0);
+
+}
+
 WML_HANDLER_FUNCTION(deprecated_message, /*event_info*/, cfg)
 {
 	handle_deprecated_message( cfg.get_parsed_config() );

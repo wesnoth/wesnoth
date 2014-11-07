@@ -3485,20 +3485,6 @@ static int intf_remove_tile_overlay(lua_State *L)
 }
 
 /**
- * Delays engine for a while.
- * - Arg 1: integer.
- */
-static int intf_delay(lua_State *L)
-{
-	unsigned final = SDL_GetTicks() + luaL_checkinteger(L, 1);
-	do {
-		resources::controller->play_slice(false);
-		resources::screen->delay(10);
-	} while (int(final - SDL_GetTicks()) > 0);
-	return 0;
-}
-
-/**
  * Gets the dimension of an image.
  * - Arg 1: string.
  * - Ret 1: width.
@@ -3795,7 +3781,6 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "create_unit",              &intf_create_unit              },
 		{ "debug",                    &intf_debug                    },
 		{ "debug_ai",                 &intf_debug_ai                 },
-		{ "delay",                    &intf_delay                    },
 		{ "dofile",                   &intf_dofile                   },
 		{ "eval_conditional",         &intf_eval_conditional         },
 		{ "extract_unit",             &intf_extract_unit             },
