@@ -20,10 +20,12 @@
 #include "movetype.hpp"
 
 #include "game_board.hpp"
+#include "game_config_manager.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "resources.hpp"
 #include "terrain_translation.hpp"
+#include "terrain_type_data.hpp"
 #include "unit_types.hpp" // for attack_type
 
 #include <boost/assign.hpp>
@@ -282,13 +284,19 @@ int movetype::terrain_info::data::calc_value(
 			   << " depth " << recurse_count << '\n';
 		return params_.default_value;
 	}
-	assert(resources::gameboard);
-	const gamemap & map = resources::gameboard->map();
+
+	tdata_cache tdata;
+	if (resources::gameboard) {
+		tdata = resources::gameboard->map().tdata();
+	} else if (resources::config_manager){
+		tdata = resources::config_manager->terrain_types(); //This permits to get terrain info in unit help pages from the help in title screen, even if there is no residual gamemap object
+	}
+	assert(tdata);
 
 	// Get a list of underlying terrains.
 	const t_translation::t_list & underlying = params_.use_move ?
-			map.underlying_mvt_terrain(terrain) :
-			map.underlying_def_terrain(terrain);
+			tdata->underlying_mvt_terrain(terrain) :
+			tdata->underlying_def_terrain(terrain);
 	assert(!underlying.empty());
 
 
@@ -297,7 +305,7 @@ int movetype::terrain_info::data::calc_value(
 		// This is not an alias; get the value directly.
 		int result = params_.default_value;
 
-		const std::string & id = map.get_terrain_info(terrain).id();
+		const std::string & id = tdata->get_terrain_info(terrain).id();
 		if (const config::attribute_value *val = cfg_.get(id)) {
 			// Read the value from our config.
 			result = val->to_int(params_.default_value);

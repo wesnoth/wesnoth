@@ -46,6 +46,7 @@
 #include "save_index.hpp"
 #include "strftime.hpp"
 #include "synced_context.hpp"
+#include "terrain_type_data.hpp"
 #include "thread.hpp"
 #include "unit.hpp"
 #include "unit_animation.hpp"
@@ -909,7 +910,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sel
 		items.push_back(str.str());
 	}
 
-	gamemap map_obj(game_config, "");
+	gamemap map_obj(boost::make_shared<terrain_type_data>(game_config), "");
 
 
 	gui::dialog lmenu(disp,

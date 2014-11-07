@@ -38,11 +38,13 @@
 #include "resources.hpp"
 #include "tod_manager.hpp"
 #include "sound.hpp"
+#include "terrain_type_data.hpp"
 #include "unit.hpp"
 #include "unit_drawer.hpp"
 #include "whiteboard/manager.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/make_shared.hpp>
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -89,7 +91,7 @@ game_display* game_display::create_dummy_display(CVideo& video)
 {
 	static config dummy_cfg;
 	static config dummy_cfg2;
-	static game_board dummy_board(dummy_cfg, dummy_cfg2);
+	static game_board dummy_board(boost::make_shared<terrain_type_data>(dummy_cfg), dummy_cfg2);
 	static tod_manager dummy_tod(dummy_cfg);
 	return new game_display(dummy_board, video, boost::shared_ptr<wb::manager>(), dummy_tod,
 			dummy_cfg, dummy_cfg);

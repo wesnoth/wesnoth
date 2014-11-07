@@ -37,7 +37,7 @@ public:
 
 	int first_human_team_; //needed to initialize the viewpoint during setup
 
-	game_state(const config & level, const config & game_config);
+	game_state(const config & level, const tdata_cache & tdata);
 
 	~game_state();
 

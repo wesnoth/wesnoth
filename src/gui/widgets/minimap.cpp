@@ -23,9 +23,11 @@
 #include "gui/widgets/settings.hpp"
 #include "map.hpp"
 #include "map_exception.hpp"
+#include "terrain_type_data.hpp"
 #include "../../minimap.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/make_shared.hpp>
 
 #include <algorithm>
 
@@ -211,7 +213,7 @@ const surface tminimap::get_image(const int w, const int h) const
 
 	try
 	{
-		const gamemap map(*terrain_, map_data_);
+		const gamemap map(boost::make_shared<terrain_type_data>(*terrain_), map_data_);
 		const surface surf = image::getMinimap(w, h, map, NULL);
 		cache.insert(std::make_pair(key, tvalue(surf)));
 #ifdef DEBUG_MINIMAP_CACHE

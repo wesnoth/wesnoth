@@ -94,6 +94,7 @@
 #include "terrain.hpp"                  // for terrain_type
 #include "terrain_filter.hpp"           // for terrain_filter
 #include "terrain_translation.hpp"      // for read_terrain_code, etc
+#include "terrain_type_data.hpp"
 #include "time_of_day.hpp"              // for time_of_day, tod_color
 #include "tod_manager.hpp"              // for tod_manager
 #include "tstring.hpp"                  // for t_string, operator+
@@ -1431,7 +1432,7 @@ static int intf_get_terrain_info(lua_State *L)
 	char const *m = luaL_checkstring(L, 1);
 	t_translation::t_terrain t = t_translation::read_terrain_code(m);
 	if (t == t_translation::NONE_TERRAIN) return 0;
-	terrain_type const &info = resources::gameboard->map().get_terrain_info(t);
+	terrain_type const &info = resources::gameboard->map().tdata()->get_terrain_info(t);
 
 	lua_newtable(L);
 	lua_pushstring(L, info.id().c_str());

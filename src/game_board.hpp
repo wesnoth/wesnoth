@@ -19,6 +19,7 @@
 
 #include "display_context.hpp"
 #include "team.hpp"
+#include "terrain_type_data.hpp"
 #include "unit_map.hpp"
 
 #include <boost/optional.hpp>
@@ -84,7 +85,7 @@ class game_board : public display_context {
 
 	// Constructors, trivial dtor, and const accessors
 
-	game_board(const config & game_config, const config & level);
+	game_board(const tdata_cache & tdata, const config & level);
 	virtual ~game_board();
 
 	virtual const std::vector<team> & teams() const { return teams_; }

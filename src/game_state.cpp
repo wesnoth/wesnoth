@@ -32,10 +32,10 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
-game_state::game_state(const config & level, const config & game_config) :
+game_state::game_state(const config & level, const tdata_cache & tdata) :
 	level_(level),
 	gamedata_(level_),
-	board_(game_config,level_),
+	board_(tdata,level_),
 	tod_manager_(level_),
 	pathfind_manager_(),
 	first_human_team_(-1)

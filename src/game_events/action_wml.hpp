@@ -69,7 +69,7 @@ namespace game_events
 	 * Ensures that villages are properly lost and that new terrains are discovered.
 	 */
 	void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
-	                    gamemap::tmerge_mode mode, bool replace_if_failed);
+	                    terrain_type_data::tmerge_mode mode, bool replace_if_failed);
 
 	/** Used for [deprecated_message]. */
 	void handle_deprecated_message(const config& cfg);
