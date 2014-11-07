@@ -203,8 +203,6 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	}
 	if (cmdline_opts_.new_widgets)
 		gui2::new_widgets = true;
-	if (cmdline_opts_.noaddons)
-		game_config::no_addons = true;
 	if (cmdline_opts_.nodelay)
 		game_config::no_delay = true;
 	if (cmdline_opts_.nomusic)
