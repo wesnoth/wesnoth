@@ -114,9 +114,12 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 	// NOTE: even without loadscreen, needed after MP lobby.
 	try {
 		// Read all game configs.
-		// First we should load data/,
-		// then handle terrains so that they are last loaded from data/.
-		// 2nd everything in userdata.
+		// First we load all core configs, the mainline one and the ones from the addons.
+		// Validate the cores and discard the invalid.
+		// Then find the path to the selected core.
+		// Load the selected core.
+		// Handle terrains so that they are last loaded from the core.
+		// Load every compatible addon.
 		loadscreen::start_stage("verify cache");
 		filesystem::data_tree_checksum();
 		loadscreen::start_stage("create cache");
@@ -124,12 +127,98 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		// Start transaction so macros are shared.
 		game_config::config_cache_transaction main_transaction;
 
+		config cores_cfg;
+		// Load mainline cores definition file.
+		cache_.get_config(game_config::path + "/data/cores.cfg", cores_cfg);
+
+		// Append the $user_campaign_dir/*/cores.cfg files to the cores.
+		std::vector<std::string> user_dirs;
+		{
+			const std::string user_campaign_dir = filesystem::get_addons_dir();
+			std::vector<std::string> user_files;
+			filesystem::get_files_in_dir(user_campaign_dir, &user_files, &user_dirs,
+					filesystem::ENTIRE_FILE_PATH);
+		}
+		BOOST_FOREACH(const std::string& umc, user_dirs) {
+			const std::string cores_file = umc + "/cores.cfg";
+			if (filesystem::file_exists(cores_file)) {
+				config cores;
+				cache_.get_config(cores_file, cores);
+				cores_cfg.append(cores);
+			}
+		}
+
+		// Validate every core
+		config valid_cores;
+		bool current_core_valid = false;
+		std::string wml_tree_root;
+		BOOST_FOREACH(const config& core, cores_cfg.child_range("core")) {
+
+			const std::string& id = core["id"];
+			if (id.empty()) {
+				gui2::twml_error::display(
+						_("Error validating data core."),
+						_("Found a core without id attribute.")
+						+ '\n' +  _("Skipping the core."),
+						disp_.video());
+				continue;
+			}
+			if (*&valid_cores.find_child("core", "id", id)) {
+				gui2::twml_error::display(
+						_("Error validating data core."),
+						_("Core ID: ") + id
+						+ '\n' + _("The ID is already in use.")
+						+ '\n' + _("Skipping the core."),
+						disp_.video());
+				continue;
+			}
+
+			const std::string& path = core["path"];
+			if (!filesystem::file_exists(filesystem::get_wml_location(path))) {
+				gui2::twml_error::display(
+						_("Error validating data core."),
+						_("Core ID: ") + id
+						+ '\n' + _("Core Path: ") + path
+						+ '\n' + _("File not found.")
+						+ '\n' + _("Skipping the core."),
+						disp_.video());
+				continue;
+			}
+
+			if (id == "default" && !current_core_valid) {
+				wml_tree_root = path;
+			}
+			if (id == preferences::core_id()) {
+				current_core_valid = true;
+				wml_tree_root = path;
+			}
+
+			valid_cores.add_child("core", core);  // append(core);
+		}
+
+		if (!current_core_valid) {
+			gui2::twml_error::display(
+					_("Error loading core data."),
+					_("Core ID: ") + preferences::core_id()
+					+ '\n' + _("Error loading the core with named id.")
+					+ '\n' + _("Falling back to the default core."),
+					disp_.video());
+			preferences::set_core_id("default");
+		}
+
+		// check if we have a valid default core which should always be the case.
+		if (wml_tree_root.empty()) {
+			gui2::twml_error::display(
+					_("Error loading core data."),
+					_("Can't locate the default core.")
+					+ '\n' + _("The game will now exit."),
+					disp_.video());
+			throw;
+		}
+
 		// Load the selected core
-		cache_.get_config(filesystem::get_wml_location(preferences::wml_tree_root()), game_config_);
-		// Load the mainline core definitions to make sure switching back is always possible.
-		config default_core_cfg;
-		cache_.get_config(game_config::path + "/data/cores.cfg", default_core_cfg);
-		game_config_.append(default_core_cfg);
+		cache_.get_config(filesystem::get_wml_location(wml_tree_root), game_config_);
+		game_config_.append(valid_cores);
 
 		main_transaction.lock();
 
@@ -186,16 +275,23 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 	} catch(game::error& e) {
 		ERR_CONFIG << "Error loading game configuration files\n" << e.message << '\n';
 
-		if (preferences::wml_tree_root() != "/"){
+		// Try reloading without add-ons
+		if (!game_config::no_addons) {
+			game_config::no_addons = true;
 			gui2::twml_error::display(
-					_("Error loading custom game configuration files. The game will fallback to the default files."),
+					_("Error loading custom game configuration files. The game will try without loading add-ons."),
 					e.message, disp_.video());
-			preferences::set_wml_tree_root("/");
+			load_game_config(force_reload, classification);
+		} else if (preferences::core_id() != "default") {
+			gui2::twml_error::display(
+					_("Error loading custom game configuration files. The game will fallback to the default core files."),
+					e.message, disp_.video());
 			preferences::set_core_id("default");
+			game_config::no_addons = false;
 			load_game_config(force_reload, classification);
 		} else {
 			gui2::twml_error::display(
-					_("Error loading default game configuration files. The game will now exit."),
+					_("Error loading default core game configuration files. The game will now exit."),
 					e.message, disp_.video());
 			throw;
 		}
