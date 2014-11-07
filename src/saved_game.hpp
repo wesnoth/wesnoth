@@ -89,7 +89,7 @@ public:
 
 	void cancel_orders();
 	/* removes network_ai and network controller types*/
-	void unify_controllers();
+	void unify_controllers(bool to_network = false);
 
 	/**
 	 * If the game is saved mid-level, we have a series of replay steps

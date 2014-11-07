@@ -513,13 +513,10 @@ void saved_game::cancel_orders()
 	}
 }
 
-void saved_game::unify_controllers()
+void saved_game::unify_controllers(bool /*to_network*/)
 {
 	BOOST_FOREACH(config &side, this->starting_pos_.child_range("side"))
 	{
-		if (side["controller"] == "network")
-			side["controller"] = "human";
-		if (side["controller"] == "network_ai")
-			side["controller"] = "ai";
+		side.remove_attribute("controller_client_id");
 	}
 }

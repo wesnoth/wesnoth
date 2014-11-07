@@ -34,10 +34,10 @@ public:
 	game_board board_;
 	tod_manager tod_manager_;
 	boost::scoped_ptr<pathfind::manager> pathfind_manager_;
-
+	const std::string local_client_id_;
 	int first_human_team_; //needed to initialize the viewpoint during setup
 
-	game_state(const config & level, const config & game_config);
+	game_state(const config & level, const config & game_config, const std::string& local_client_id);
 
 	~game_state();
 
@@ -49,6 +49,8 @@ public:
 
 	virtual const display_context & get_disp_context() const { return board_; }
 	virtual const tod_manager & get_tod_man() const { return tod_manager_; }
+	virtual bool is_local_client_id(const std::string& controller_client_id)
+	{ return local_client_id_.empty() || local_client_id_.empty() || controller_client_id == local_client_id_; }
 };
 
 #endif

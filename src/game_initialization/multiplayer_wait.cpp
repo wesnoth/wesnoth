@@ -34,6 +34,7 @@
 #include "formula_string_utils.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/range/algorithm/unique.hpp>
 
 static lg::log_domain log_network("network");
 #define DBG_NW LOG_STREAM(debug, log_network)
@@ -41,6 +42,7 @@ static lg::log_domain log_network("network");
 
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
+#define ERR_RG LOG_STREAM(err, log_enginerefac)
 
 namespace {
 
@@ -289,19 +291,19 @@ void wait::join_game(bool observe)
 		int side_num = -1, nb_sides = 0;
 		BOOST_FOREACH(const config &sd, get_scenario().child_range("side"))
 		{
-			if (sd["controller"] == "reserved" && sd["current_player"] == preferences::login())
+			if (sd["controller"] == "reserved" && sd["reserved_for"] == preferences::login())
 			{
 				side_choice = &sd;
 				side_num = nb_sides;
 				break;
 			}
-			if (sd["controller"] == "network" && sd["player_id"].empty())
+			if (sd["controller"] == "human" && sd["controller_client_id"].empty())
 			{
 				if (!side_choice) { // found the first empty side
 					side_choice = &sd;
 					side_num = nb_sides;
 				}
-				if (sd["current_player"] == preferences::login()) {
+				if (sd["reserved_for"] == preferences::login()) {
 					side_choice = &sd;
 					side_num = nb_sides;
 					break;  // found the preferred one
@@ -481,6 +483,46 @@ void wait::process_network_data(const config& data, const network::connection so
 		generate_menu();
 	}
 }
+//TODO:  there really no function in std or boost that does that?
+template<typename Itorrange>
+std::vector<typename Itorrange::value_type> to_vector(const Itorrange& range)
+{
+	return std::vector<typename Itorrange::value_type>(range.begin(), range.end());
+}
+
+static std::string generate_user_description(const config& side)
+{
+	//allow the host to overwrite it (deactivated becasue not used).
+	if(const config::attribute_value* desc = side.get("user_description")) {
+		return desc->str();
+	}
+	
+	std::string controller_type = side["controller"].str();
+	std::string reservation = side["reserved_for"].str();
+	std::string owner = side["controller_client_id"].str();
+
+	if(controller_type == "ai") {
+		return _("Computer Player");
+	}
+	else if (controller_type == "null") {
+		return _("(Empty slot)");
+	}
+	else if(owner.empty()) {
+		return _("(Vacant slot)");
+	}
+	else if (controller_type == "reserved") {
+		utils::string_map symbols;
+		symbols["playername"] = reservation;
+		return vgettext("(Reserved for $playername)",symbols);
+	}
+	else if (controller_type == "human") {
+		return owner;
+	}
+	else {
+		ERR_RG << "Found unknown controller type:" << controller_type << std::endl;
+		return _("(empty)");
+	}
+}
 
 void wait::generate_menu()
 {
@@ -496,7 +538,7 @@ void wait::generate_menu()
 			continue;
 		}
 
-		std::string description = sd["user_description"];
+		std::string description = generate_user_description(sd);
 
 		t_string side_name = sd["faction_name"];
 		std::string leader_type = sd["type"];
@@ -513,8 +555,8 @@ void wait::generate_menu()
 			}
 		}
 
-		if(!sd["player_id"].empty())
-			playerlist.push_back(sd["player_id"]);
+		if(!sd["controller_client_id"].empty())
+			playerlist.push_back(sd["controller_client_id"]);
 
 		std::string leader_name;
 		std::string leader_image;
@@ -596,8 +638,10 @@ void wait::generate_menu()
 
 	// Uses the actual connected player list if we do not have any
 	// "gamelist" user data
+	// note that this is most likeley only temporary and we get a update from the server soon.
 	if (!gamelist().child("user")) {
-		set_user_list(playerlist, true);
+		//std::cerr << "setting userlist to is (" << boost::algorithm::join(playerlist, ",") << ")\n";
+		set_user_list(to_vector(boost::range::unique(playerlist)), true);
 	}
 }
 

@@ -126,13 +126,12 @@ void game_board::side_change_controller(int side_num, team::CONTROLLER ctrl, con
 	team &tm = teams_[side_num-1];
 
 	tm.change_controller(ctrl);
-
 	if (pname.empty()) {
 		return ;
 	}
 
 	tm.set_current_player(pname);
-
+	tm.set_controller_client_id(pname);
 	unit_map::iterator leader = units_.find_leader(side_num);
 	if (leader.valid()) {
 		leader->rename(pname);

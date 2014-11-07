@@ -38,7 +38,20 @@ class side_engine;
 
 typedef boost::scoped_ptr<connect_engine> connect_engine_ptr;
 typedef boost::shared_ptr<side_engine> side_engine_ptr;
-typedef std::pair<ng::controller, std::string> controller_option;
+struct controller_option
+{
+	controller_option(ng::controller controller, const std::string& name, const std::string& client_id)
+	: controller_(controller), name_(name), client_id_(client_id) {}
+	ng::controller controller_;
+	std::string name_;
+	std::string client_id_;
+	friend bool operator ==(const controller_option& first, const controller_option& second)
+	{
+		return first.controller_ == second.controller_
+			&& first.name_ == second.name_
+			&& first.client_id_ == second.client_id_;
+	}
+};
 
 class connect_engine
 {
@@ -195,9 +208,10 @@ public:
 	int income() const { return income_; }
 	void set_income(int income) { income_ = income; }
 	const std::string& player_id() const { return player_id_; }
-	const std::string& current_player() const { return current_player_; }
-	void set_current_player(const std::string& current_player)
-		{ current_player_ = current_player; }
+	void set_player_id(const std::string& value) { player_id_ = value; }
+	const std::string& reserved_for() const { return reserved_for_; }
+	void set_reserved_for(const std::string& reserved_for)
+		{ reserved_for_ = reserved_for; }
 	const std::string& ai_algorithm() const { return ai_algorithm_; }
 	void set_ai_algorithm(const std::string& ai_algorithm)
 		{ ai_algorithm_ = ai_algorithm; }
@@ -215,7 +229,7 @@ private:
 	void operator=(const side_engine&);
 
 	void add_controller_option(ng::controller controller,
-		const std::string& name, const std::string& controller_value);
+		const std::string& name, const std::string& controller_id, const std::string& controller_value);
 
 	config cfg_;
 	connect_engine& parent_;
@@ -233,7 +247,18 @@ private:
 	int color_;
 	int gold_;
 	int income_;
-	std::string current_player_;
+	// The name of the player who is preferred for this side"
+	// If controller_ == reserved only this player can take this side,
+	// if controller_ == human/network this is only a recommendation.
+	// Can also be a number of a side if this side shoudl be controlled 
+	// by the player who controlls  that side
+	// This attribute is set during create_engines constructor and never
+	// changed after that.
+	std::string reserved_for_;
+	// The name of teh player who controlls this side, that is 
+	// - always the host for AI sides
+	// - always empty for null controlled sides
+	// - any player for a human side
 	std::string player_id_;
 	std::string ai_algorithm_;
 

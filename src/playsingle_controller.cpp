@@ -67,8 +67,8 @@ static lg::log_domain log_enginerefac("enginerefac");
 
 playsingle_controller::playsingle_controller(const config& level,
 		saved_game& state_of_game, const int ticks,
-		const config& game_config, CVideo& video, bool skip_replay) :
-	play_controller(level, state_of_game, ticks, game_config, video, skip_replay),
+		const config& game_config, CVideo& video, bool skip_replay, const std::string& local_client_id) :
+	play_controller(level, state_of_game, ticks, game_config, video, skip_replay, local_client_id),
 	cursor_setter(cursor::NORMAL),
 	textbox_info_(),
 	replay_sender_(recorder),
@@ -723,7 +723,7 @@ possible_end_play_signal playsingle_controller::play_side()
 
 		statistics::reset_turn_stats(gamestate_.board_.teams()[player_number_ - 1].save_id());
 
-		if(current_team().is_human() || temporary_human) {
+		if(current_team().is_local_human() || temporary_human) {
 			LOG_NG << "is human...\n";
 			temporary_human = false;
 			// If a side is dead end the turn, but play at least side=1's
@@ -746,7 +746,7 @@ possible_end_play_signal playsingle_controller::play_side()
 								player_type_changed_ = true;
 								// If new controller is not human,
 								// reset gui to prev human one
-								if (!gamestate_.board_.teams()[player_number_-1].is_human()) {
+								if (!gamestate_.board_.teams()[player_number_-1].is_local_human()) {
 									browse_ = true;
 									int s = find_human_team_before_current_player();
 									if (s <= 0)
@@ -765,7 +765,7 @@ possible_end_play_signal playsingle_controller::play_side()
 				after_human_turn();
 			LOG_NG << "human finished turn...\n";
 
-		} else if(current_team().is_ai()) {
+		} else if(current_team().is_local_ai()) {
 			try {
 				play_ai_turn();
 			} catch(fallback_ai_to_human_exception&) {
@@ -804,7 +804,7 @@ possible_end_play_signal playsingle_controller::play_side()
 							player_type_changed_ = true;
 							// If new controller is not human,
 							// reset gui to prev human one
-							if (!gamestate_.board_.teams()[player_number_-1].is_human()) {
+							if (!gamestate_.board_.teams()[player_number_-1].is_local_human()) {
 								browse_ = true;
 								int s = find_human_team_before_current_player();
 								if (s <= 0)
@@ -1060,7 +1060,7 @@ bool playsingle_controller::can_execute_command(const hotkey::hotkey_command& cm
 
 		case hotkey::HOTKEY_WML:
 			//code mixed from play_controller::show_menu and code here
-			return (gui_->viewing_team() == gui_->playing_team()) && !events::commands_disabled && gamestate_.board_.teams()[gui_->viewing_team()].is_human() && !linger_ && !browse_;
+			return (gui_->viewing_team() == gui_->playing_team()) && !events::commands_disabled && gamestate_.board_.teams()[gui_->viewing_team()].is_local_human() && !linger_ && !browse_;
 		case hotkey::HOTKEY_UNIT_HOLD_POSITION:
 		case hotkey::HOTKEY_END_UNIT_TURN:
 			return !browse_ && !linger_ && !events::commands_disabled;

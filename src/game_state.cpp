@@ -32,12 +32,13 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
-game_state::game_state(const config & level, const config & game_config) :
+game_state::game_state(const config & level, const config & game_config, const std::string& local_client_id) :
 	level_(level),
 	gamedata_(level_),
 	board_(game_config,level_),
 	tod_manager_(level_),
 	pathfind_manager_(),
+	local_client_id_(local_client_id),
 	first_human_team_(-1)
 {}
 
@@ -138,10 +139,7 @@ void game_state::init(const int ticks)
 	{
 		if (first_human_team_ == -1) {
 			const std::string &controller = side["controller"];
-			if (controller == "human" &&
-			    side["id"] == preferences::login()) {
-				first_human_team_ = team_num;
-			} else if (controller == "human") {
+			if (controller == "human" && is_local_client_id(side["controller_client_id"].str())) {
 				first_human_team_ = team_num;
 			}
 		}

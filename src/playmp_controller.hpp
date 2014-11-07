@@ -26,7 +26,7 @@ class playmp_controller : public playsingle_controller, public events::pump_moni
 public:
 	playmp_controller(const config& level, saved_game& state_of_game,
 		const int ticks, const config& game_config, CVideo& video,
-		bool skip_replay, bool blindfold_replay, bool is_host);
+		bool skip_replay, bool blindfold_replay, bool is_host, const std::string& controller_client_id);
 	virtual ~playmp_controller();
 
 	static unsigned int replay_last_turn() { return replay_last_turn_; }

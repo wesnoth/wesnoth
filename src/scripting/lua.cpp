@@ -2798,6 +2798,7 @@ namespace {
 			config cfg;
 			int index = 1;
 			if (!lua_isnoneornil(L, 2)) {
+				// we know already its local so need to check is_local_ai()
 				if ((*resources::teams)[side - 1].is_ai())
 					index = 2;
 			}
