@@ -20,9 +20,14 @@
 
 #include "game_end_exceptions.hpp"
 
+#include <boost/shared_ptr.hpp>
+
 class display;
 class game_display;
 class saved_game;
+class terrain_type_data;
+typedef boost::shared_ptr<terrain_type_data> tdata_cache;
+
 class config;
 
 enum io_type_t {
@@ -32,6 +37,7 @@ enum io_type_t {
 
 LEVEL_RESULT play_game(game_display& disp, saved_game& state,
 		const config& game_config,
+		const tdata_cache & tdata,
 		io_type_t io_type=IO_SERVER,
 		bool skip_replay = false,
 		bool network_game = false,
@@ -40,6 +46,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& state,
 
 LEVEL_RESULT play_replay(display& disp, saved_game& state,
 		const config& game_config,
+		const tdata_cache & tdata,
 		bool is_unit_test = false);
 
 #endif // PLAYCAMPAIGN_H_INCLUDED

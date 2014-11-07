@@ -101,12 +101,12 @@ static void clear_resources()
 }
 
 play_controller::play_controller(const config& level, saved_game& state_of_game,
-		const int ticks, const config& game_config,
+		const int ticks, const config& game_config, const tdata_cache & tdata,
 		CVideo& video, bool skip_replay) :
 	controller_base(ticks, game_config, video),
 	observer(),
 	savegame_config(),
-	gamestate_(level, boost::make_shared<terrain_type_data>(game_config)),
+	gamestate_(level, tdata),
 	level_(level),
 	saved_game_(state_of_game),
 	prefs_disp_manager_(),

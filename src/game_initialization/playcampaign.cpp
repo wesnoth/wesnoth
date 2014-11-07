@@ -44,6 +44,7 @@
 #include "savegame.hpp"
 #include "saved_game.hpp"
 #include "sound.hpp"
+#include "terrain_type_data.hpp"
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
 
@@ -127,7 +128,7 @@ static void show_carryover_message(saved_game& gamestate, playsingle_controller&
 }
 
 LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& game_config,
-		bool is_unit_test)
+		const tdata_cache & tdata, bool is_unit_test)
 {
 	recorder = replay(gamestate.replay_data);
 	// 'starting_pos' will contain the position we start the game from.
@@ -141,7 +142,7 @@ LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& gam
 		//if (gamestate.abbrev.empty())
 		//	gamestate.abbrev = (*scenario)["abbrev"];
 
-		LEVEL_RESULT res = play_replay_level(game_config, disp.video(), gamestate, is_unit_test);
+		LEVEL_RESULT res = play_replay_level(game_config, tdata, disp.video(), gamestate, is_unit_test);
 
 		recorder.clear();
 		gamestate.replay_data.clear();
@@ -181,6 +182,7 @@ LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& gam
 }
 
 static LEVEL_RESULT playsingle_scenario(const config& game_config,
+		const tdata_cache & tdata,
 		display& disp, saved_game& state_of_game,
 		const config::const_child_itors &story,
 		bool skip_replay, end_level_data &end_level)
@@ -188,7 +190,7 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 	const int ticks = SDL_GetTicks();
 
 	LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
-	playsingle_controller playcontroller(state_of_game.get_starting_pos(), state_of_game, ticks, game_config, disp.video(), skip_replay);
+	playsingle_controller playcontroller(state_of_game.get_starting_pos(), state_of_game, ticks, game_config, tdata, disp.video(), skip_replay);
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
 
 	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
@@ -220,6 +222,7 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 
 
 static LEVEL_RESULT playmp_scenario(const config& game_config,
+		const tdata_cache & tdata,
 		display& disp, saved_game& state_of_game,
 		const config::const_child_itors &story, bool skip_replay,
 		bool blindfold_replay, io_type_t& io_type, end_level_data &end_level)
@@ -227,7 +230,7 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 	const int ticks = SDL_GetTicks();
 
 	playmp_controller playcontroller(state_of_game.get_starting_pos(), state_of_game, ticks,
-		game_config, disp.video(), skip_replay, blindfold_replay, io_type == IO_SERVER);
+		game_config, tdata, disp.video(), skip_replay, blindfold_replay, io_type == IO_SERVER);
 	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
 
 	end_level = playcontroller.get_end_level_data_const();
@@ -261,7 +264,8 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 }
 
 LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
-	const config& game_config, io_type_t io_type, bool skip_replay,
+	const config& game_config, const tdata_cache & tdata, 
+	io_type_t io_type, bool skip_replay,
 	bool network_game, bool blindfold_replay, bool is_unit_test)
 {
 	recorder = replay(gamestate.replay_data);
@@ -291,11 +295,11 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 
 #if !defined(ALWAYS_USE_MP_CONTROLLER)
 			if (game_type != game_classification::MULTIPLAYER) {
-				res = playsingle_scenario(game_config, disp, gamestate, story, skip_replay, end_level);
+				res = playsingle_scenario(game_config, tdata, disp, gamestate, story, skip_replay, end_level);
 			} else 
 #endif
 			{
-				res = playmp_scenario(game_config, disp, gamestate, story, skip_replay, blindfold_replay, io_type, end_level);
+				res = playmp_scenario(game_config, tdata, disp, gamestate, story, skip_replay, blindfold_replay, io_type, end_level);
 			}
 				
 		} catch(game::load_game_failed& e) {
