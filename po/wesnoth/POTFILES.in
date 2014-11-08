@@ -87,6 +87,8 @@ src/editor/action/mouse/mouse_action_village.cpp
 src/editor/editor_preferences.cpp
 src/editor/toolkit/editor_toolkit.cpp
 src/events.cpp
+src/filesystem_boost.cpp
+src/filesystem_common.cpp
 src/filesystem.cpp
 src/flg_manager.cpp
 src/floating_textbox.cpp
@@ -116,6 +118,7 @@ src/generators/cavegen.cpp
 src/generators/map_create.cpp
 src/generators/mapgen.cpp
 src/generic_event.cpp
+src/gettext_boost.cpp
 src/gettext.cpp
 src/gui/auxiliary/old_markup.cpp
 src/gui/auxiliary/timer.cpp
@@ -237,6 +240,7 @@ src/serialization/preprocessor.cpp
 src/serialization/schema_validator.cpp
 src/serialization/string_utils.cpp
 src/serialization/tokenizer.cpp
+src/serialization/unicode.cpp
 src/serialization/validator.cpp
 src/server/ban.cpp
 src/server/forum_user_handler.cpp

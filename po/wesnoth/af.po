@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-10-24 20:20+0200\n"
+"POT-Creation-Date: 2014-11-08 21:20+0100\n"
 "PO-Revision-Date: 2011-04-30 20:33-0000\n"
 "Last-Translator: Len vanDalsen <l.dog.96@gmail.com>\n"
 "Language-Team: Afrikaans\n"
@@ -326,21 +326,21 @@ msgstr ""
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:366
-#: data/lua/wml-tags.lua:11983 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:983
 msgid "poisoned"
 msgstr "vergiftig"
 
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:12465
+#: data/lua/wml/objectives.lua:12467
 msgid "Gold carryover:"
 msgstr ""
 
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:12466
+#: data/lua/wml/objectives.lua:12468
 msgid "Notes:"
 msgstr ""
 
@@ -2570,12 +2570,12 @@ msgid "Turns run out"
 msgstr "Beurte uit hardkloop"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12527
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12529
 msgid "Early finish bonus."
 msgstr "Bonus vir vroeg klaarspeel."
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12529
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12531
 msgid "No early finish bonus."
 msgstr "Geen bonus vir vroeg klaarspeel: "
 
@@ -2590,7 +2590,7 @@ msgid "(early finish bonus)"
 msgstr "(bonus vir vroeg klaarspeel) "
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12537
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12539
 msgid "No gold carried over to the next scenario."
 msgstr ""
 
@@ -2826,15 +2826,15 @@ msgstr "Woestynberge"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:215 src/gui/dialogs/lobby/lobby_data.cpp:324
+#: data/core/team-colors.cfg:215 src/gui/dialogs/lobby/lobby_data.cpp:338
 #: src/multiplayer_lobby.cpp:678
 msgid "Fog"
 msgstr "Mis"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:221 src/gui/dialogs/lobby/lobby_data.cpp:327
-#: src/gui/dialogs/lobby/lobby_data.cpp:330 src/multiplayer_configure.cpp:78
+#: data/core/team-colors.cfg:221 src/gui/dialogs/lobby/lobby_data.cpp:341
+#: src/gui/dialogs/lobby/lobby_data.cpp:344 src/multiplayer_configure.cpp:78
 #: src/multiplayer_lobby.cpp:682 src/multiplayer_lobby.cpp:688
 msgid "Shroud"
 msgstr "Sluier"
@@ -3084,68 +3084,68 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11983 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:983
 msgid "female^poisoned"
 msgstr "vroumens^vergiftig"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:11987 src/actions/attack.cpp:988
 msgid "female^slowed"
 msgstr "vroumens^vertraag"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:11987 src/actions/attack.cpp:988
 msgid "slowed"
 msgstr "vertraag"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11986 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:11988 src/actions/attack.cpp:993
 msgid "female^petrified"
 msgstr "vroumens^versteen"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11986 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:11988 src/actions/attack.cpp:993
 msgid "petrified"
 msgstr "versteen"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11987
+#: data/lua/wml-tags.lua:11989
 #, fuzzy
 msgid "female^unhealable"
 msgstr "vroumens^"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11987
+#: data/lua/wml-tags.lua:11989
 msgid "unhealable"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12463 src/mp_game_utils.cpp:157
+#: data/lua/wml/objectives.lua:12465 src/mp_game_utils.cpp:157
 msgid "Victory:"
 msgstr "Oorwinning:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12464
+#: data/lua/wml/objectives.lua:12466
 msgid "Defeat:"
 msgstr "Nederlaag:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12484
+#: data/lua/wml/objectives.lua:12486
 msgid "(%d turns left)"
 msgstr ""
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12486
+#: data/lua/wml/objectives.lua:12488
 msgid "(this turn left)"
 msgstr ""
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12539
+#: data/lua/wml/objectives.lua:12541
 msgid "%d%% of gold carried over to the next scenario."
 msgstr ""
 
@@ -4759,11 +4759,11 @@ msgstr "Karaktertrekke"
 msgid "Recall"
 msgstr "Terugroep"
 
-#: src/dialogs.cpp:785 src/savegame.cpp:299
+#: src/dialogs.cpp:785 src/savegame.cpp:298
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:785 src/savegame.cpp:299
+#: src/dialogs.cpp:785 src/savegame.cpp:298
 #, fuzzy
 #| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %I:%M %p %Y"
@@ -4795,7 +4795,7 @@ msgstr "Onbekende scenario: '"
 msgid "Replay"
 msgstr "Wys weer"
 
-#: src/dialogs.cpp:840 src/savegame.cpp:1122
+#: src/dialogs.cpp:840 src/savegame.cpp:1125
 msgid "Turn"
 msgstr "Beurt"
 
@@ -4829,7 +4829,7 @@ msgstr ""
 msgid "Date"
 msgstr "Datum"
 
-#: src/dialogs.cpp:892 src/savegame.cpp:642
+#: src/dialogs.cpp:892 src/savegame.cpp:643
 msgid "Load Game"
 msgstr "Laai Spel"
 
@@ -4974,7 +4974,7 @@ msgid "The file you have tried to load is corrupt"
 msgstr "Die lêer wat jy probeer laai het is beskadig"
 
 #: src/game_controller.cpp:483 src/game_controller.cpp:501
-#: src/savegame.cpp:690
+#: src/savegame.cpp:691
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Die lêer wat jy probeer laai het, is beskadig: '"
 
@@ -5067,41 +5067,41 @@ msgid ""
 "check the 'max hill size' parameter)"
 msgstr ""
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:211 src/multiplayer_lobby.cpp:611
+#: src/gui/dialogs/lobby/lobby_data.cpp:212 src/multiplayer_lobby.cpp:611
 #, fuzzy
 msgid "Unknown era: $era_id"
 msgstr "Onbekende scenario: '"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:216 src/multiplayer_lobby.cpp:615
+#: src/gui/dialogs/lobby/lobby_data.cpp:217 src/multiplayer_lobby.cpp:615
 #, fuzzy
 msgid "Unknown era"
 msgstr "Onbekende scenario: '"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:507
+#: src/gui/dialogs/lobby/lobby_data.cpp:297 src/multiplayer_lobby.cpp:507
 #, fuzzy
 msgid "Remote scenario"
 msgstr "Onbekende scenario: '"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:291 src/multiplayer_lobby.cpp:515
+#: src/gui/dialogs/lobby/lobby_data.cpp:305 src/multiplayer_lobby.cpp:515
 #, fuzzy
 msgid "Unknown scenario: $scenario_id"
 msgstr "Onbekende scenario: '"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:296 src/multiplayer_lobby.cpp:519
+#: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_lobby.cpp:519
 #, fuzzy
 msgid "Unknown scenario"
 msgstr "Onbekende scenario: '"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:302 src/multiplayer_lobby.cpp:647
+#: src/gui/dialogs/lobby/lobby_data.cpp:316 src/multiplayer_lobby.cpp:647
 #, fuzzy
 msgid "Reloaded game"
 msgstr "Laai 'n enkel speler gestoorde spel"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:313 src/multiplayer_lobby.cpp:663
+#: src/gui/dialogs/lobby/lobby_data.cpp:327 src/multiplayer_lobby.cpp:663
 msgid "Turn "
 msgstr "Beurt"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:318 src/multiplayer_lobby.cpp:667
+#: src/gui/dialogs/lobby/lobby_data.cpp:332 src/multiplayer_lobby.cpp:667
 #, fuzzy
 #| msgid "Vacant Slot:"
 #| msgid_plural "Vacant slots:"
@@ -5110,7 +5110,7 @@ msgid_plural "Vacant Slots:"
 msgstr[0] "Vakante Gleuf:"
 msgstr[1] "Vakante Gleuwe:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:332 src/multiplayer_lobby.cpp:692
+#: src/gui/dialogs/lobby/lobby_data.cpp:346 src/multiplayer_lobby.cpp:692
 msgid "none"
 msgstr "geen"
 
@@ -5285,66 +5285,66 @@ msgstr "Scenario Begin"
 msgid " < Back"
 msgstr " < Terug"
 
-#: src/loadscreen.cpp:223
+#: src/loadscreen.cpp:222
 msgid "Initializing user interface"
 msgstr ""
 
-#: src/loadscreen.cpp:224
+#: src/loadscreen.cpp:223
 #, fuzzy
 msgid "Loading game configuration"
 msgstr "Fout met laai van konfigurasie lêers: '"
 
-#: src/loadscreen.cpp:225 src/loadscreen.cpp:232
+#: src/loadscreen.cpp:224 src/loadscreen.cpp:231
 msgid "Verifying cache"
 msgstr ""
 
-#: src/loadscreen.cpp:226 src/loadscreen.cpp:233
+#: src/loadscreen.cpp:225 src/loadscreen.cpp:232
 msgid "Reading files and creating cache"
 msgstr ""
 
-#: src/loadscreen.cpp:227 src/loadscreen.cpp:234
+#: src/loadscreen.cpp:226 src/loadscreen.cpp:233
 #, fuzzy
 msgid "Reading unit files"
 msgstr "Besig om te konnekteer aan Bediener..."
 
-#: src/loadscreen.cpp:228
+#: src/loadscreen.cpp:227
 msgid "Reinitialize fonts for the current language"
 msgstr ""
 
-#: src/loadscreen.cpp:229
+#: src/loadscreen.cpp:228
 #, fuzzy
 msgid "Searching for installed add-ons"
 msgstr "Besig om veldtog af te laai..."
 
-#: src/loadscreen.cpp:230
+#: src/loadscreen.cpp:229
 msgid "Loading title screen"
 msgstr ""
 
-#: src/loadscreen.cpp:231
+#: src/loadscreen.cpp:230
 msgid "Loading data files"
 msgstr ""
 
-#: src/loadscreen.cpp:235
+#: src/loadscreen.cpp:234
 msgid "Loading level"
 msgstr ""
 
-#: src/loadscreen.cpp:236
+#: src/loadscreen.cpp:235
 msgid "Initializing teams"
 msgstr ""
 
-#: src/loadscreen.cpp:237
+#: src/loadscreen.cpp:236
 msgid "Loading units"
 msgstr ""
 
-#: src/loadscreen.cpp:238 src/loadscreen.cpp:240
+#: src/loadscreen.cpp:237 src/loadscreen.cpp:239
 msgid "Initializing display"
 msgstr ""
 
-#: src/loadscreen.cpp:239
+#: src/loadscreen.cpp:238
 msgid "Building terrain rules"
 msgstr ""
 
-#: src/loadscreen.cpp:241
+#: src/loadscreen.cpp:240
 #, fuzzy
 msgid "Starting game"
 msgstr "Skop op"
@@ -6936,13 +6936,13 @@ msgstr ""
 msgid "time left for current turn"
 msgstr ""
 
-#: src/play_controller.cpp:259 src/replay_controller.cpp:147
+#: src/play_controller.cpp:259 src/replay_controller.cpp:148
 #, fuzzy
 msgid "current local time"
 msgstr "Huidige doelwit:"
 
-#: src/play_controller.cpp:1199 src/savegame.cpp:406 src/savegame.cpp:418
-#: src/savegame.cpp:1078 src/savegame.cpp:1080
+#: src/play_controller.cpp:1199 src/savegame.cpp:407 src/savegame.cpp:419
+#: src/savegame.cpp:1081 src/savegame.cpp:1083
 msgid "Auto-Save"
 msgstr "Outo-stoor"
 
@@ -6967,7 +6967,7 @@ msgstr ""
 "Die spel is nie in pas nie en sal stop. Wil jy 'n foutregister van jou spel "
 "bêre?"
 
-#: src/play_controller.cpp:1505 src/replay_controller.cpp:366
+#: src/play_controller.cpp:1505 src/replay_controller.cpp:367
 #, fuzzy
 msgid "Error details:"
 msgstr "Fout"
@@ -7018,7 +7018,7 @@ msgstr "Spel is Oor"
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
 
-#: src/playcampaign.cpp:642
+#: src/playcampaign.cpp:641
 #, fuzzy
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Onbekende scenario: '"
@@ -7161,7 +7161,7 @@ msgstr "Vervang met $player"
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player het die spel verlaat. Wat wil jy doen?"
 
-#: src/replay_controller.cpp:365
+#: src/replay_controller.cpp:366
 #, fuzzy
 msgid ""
 "The replay is corrupt/out of sync. It might not make much sense to continue. "
@@ -7170,7 +7170,7 @@ msgstr ""
 "'n Netwerk-koppelprobleem het ontstaan en die spel kan nie voortgaan nie. "
 "Wil jy die spel stoor?"
 
-#: src/reports.cpp:159 src/savegame.cpp:871
+#: src/reports.cpp:159 src/savegame.cpp:874
 msgid "Name: "
 msgstr "Naam:"
 
@@ -7415,17 +7415,17 @@ msgstr "Wettige eenhede: "
 msgid "Observers:"
 msgstr "Waarnemers:"
 
-#: src/savegame.cpp:327 src/savegame.cpp:329
+#: src/savegame.cpp:328 src/savegame.cpp:330
 msgid " replay"
 msgstr " wys weer"
 
-#: src/savegame.cpp:567 src/savegame.cpp:571
+#: src/savegame.cpp:568 src/savegame.cpp:572
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Waarskuwing: Die lêer wat jy probeer laai het is beskadig. Laai in elk "
 "geval.\n"
 
-#: src/savegame.cpp:607
+#: src/savegame.cpp:608
 #, fuzzy
 msgid ""
 "The save has corrupt version information ($version_number|) and cannot be "
@@ -7434,7 +7434,7 @@ msgstr ""
 "Hierdie lêer is van 'n ander weergawe van die spel. Wil jy probeer om dit te "
 "laai?"
 
-#: src/savegame.cpp:630
+#: src/savegame.cpp:631
 #, fuzzy
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
@@ -7443,7 +7443,7 @@ msgstr ""
 "Hierdie lêer is van 'n ander weergawe van die spel. Wil jy probeer om dit te "
 "laai?"
 
-#: src/savegame.cpp:639
+#: src/savegame.cpp:640
 #, fuzzy
 #| msgid ""
 #| "This save is from a different version of the game. Do you want to try to "
@@ -7455,26 +7455,26 @@ msgstr ""
 "Hierdie lêer is van 'n ander weergawe van die spel. Wil jy probeer om dit te "
 "laai?"
 
-#: src/savegame.cpp:696
+#: src/savegame.cpp:697
 #, fuzzy
 #| msgid "This is not a multiplayer save"
 msgid "This is not a multiplayer save."
 msgstr "Hierdie is nie 'n veelspeler gestoorde lêer nie"
 
-#: src/savegame.cpp:789
+#: src/savegame.cpp:792
 msgid "The game could not be saved: "
 msgstr "Die spel kon nie gestoor word nie"
 
-#: src/savegame.cpp:871
+#: src/savegame.cpp:874
 #, fuzzy
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Lêer bestaan reeds. Wil jy daar bo-oor skryf?"
 
-#: src/savegame.cpp:872
+#: src/savegame.cpp:875
 msgid "Overwrite?"
 msgstr "Stoor bo-oor?"
 
-#: src/savegame.cpp:882
+#: src/savegame.cpp:885
 #, fuzzy
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
@@ -7482,34 +7482,34 @@ msgstr ""
 "Gestoorde name mag nie deeltekens of skuinsstrepe bevat nie. Kies asseblief "
 "'n ander naam."
 
-#: src/savegame.cpp:948
+#: src/savegame.cpp:951
 msgid "Saved"
 msgstr "Gestoor"
 
-#: src/savegame.cpp:948
+#: src/savegame.cpp:951
 #, fuzzy
 #| msgid "The game has been saved"
 msgid "The game has been saved."
 msgstr "Die spel is gestoor"
 
-#: src/savegame.cpp:979 src/savegame.cpp:1000
+#: src/savegame.cpp:982 src/savegame.cpp:1003
 msgid "Could not write to file"
 msgstr "Kon nie die lêer stoor nie"
 
-#: src/savegame.cpp:1034
+#: src/savegame.cpp:1037
 #, fuzzy
 msgid "Save Replay"
 msgstr "Wys weer"
 
-#: src/savegame.cpp:1043
+#: src/savegame.cpp:1046
 msgid "replay"
 msgstr "wys weer"
 
-#: src/savegame.cpp:1061
+#: src/savegame.cpp:1064
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Kon nie die spel outo-stoor nie. Stoor die spel self, asseblief."
 
-#: src/savegame.cpp:1110
+#: src/savegame.cpp:1113
 msgid "Save Game"
 msgstr "Stoor Spel"
 

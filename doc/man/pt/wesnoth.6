@@ -52,7 +52,7 @@ define o valor de Bits Por Pixel. Por exemplo:—\-bpp 32
 .TP 
 \fB\-c, \-\-campaign \ [<campanha>]\fP
 vai directamente para a campanha com base nos parâmetros. Podes escolher a
-campanha duma lista se não especificaste nenhuma.  \fBNota:\fP Ao usar esta
+campanha de uma lista se não especificaste nenhuma.  \fBNota:\fP Ao usar esta
 opção por favor, verifique se especificaste o caminho do directório de dados
 como o argumento final, caso contrário o jogo vai tomar a ID da campanha /
 cenário como os dados padrão.
@@ -68,7 +68,7 @@ A ID do cenário da campanha escolhida. Por predefinição o primeiro cenário.
 substituirá o directório de dados com o especificado
 .TP 
 \fB\-\-data\-path\fP
-path the path of the data directory and exits.
+imprime o nome do directório de dados e termina.
 .TP 
 \fB\-d, \-\-debug\fP
 possibilita opções de comando adicionais de modo em\-jogo (veja a página wiki
@@ -80,7 +80,7 @@ inicia o editor de mapas directamente. Se o \fIficheiro\fP for especificado é
 equivalente a \fB\-l \-\-load\fP
 .TP 
 \fB\-\-fps\fP
-mostra o número de imagens por segundo jogo, o está actualmente em execução,
+mostra o número de imagens por segundo jogo, o está atualmente em execução,
 a um canto da tela.
 .TP 
 \fB\-f, \-\-fullscreen\fP
@@ -117,12 +117,12 @@ o número de frames por segundo que o jogo pode mostrar, o valor deve estar
 entre 1 e 1000, por defeito é \fB50\fP.
 .TP 
 \fB\-m, \-\-multiplayer\fP
-inicia um jogo multijogador. Existem opções adicionais que podem ser usados
-em conjunto com este comando conforme explicado abaixo. E só estas opções
+inicia um jogo em rede. Existem opções adicionais que podem ser usados em
+conjunto com este comando conforme explicado abaixo. E só estas opções
 adicionais podem seguir \fB\-\-multiplayer\fP.
 .TP 
 \fB\-\-no\-delay\fP
-executa o jogo sem atrasos para benchmark de gráficos. É seleccionado
+executa o jogo sem atrasos para benchmark de gráficos. É selecionado
 automaticamente pela opção \fB\-\-nogui\fP.
 .TP 
 \fB\-\-nocache\fP
@@ -185,22 +185,23 @@ erros de validação são tratados como fatais.
 inicia o jogo com um pequeno cenário de teste.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ nome\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy Games".
-Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
-other systems to the userdata path.
+define o diretório \fInome\fP do utilizador em $HOME ou “Os meus Documentos\Os
+Meus Jogos” em Windows. Também podes especificar o caminho absoluto para as
+configurações fora de $HOME ou “Os meus Documentos\Os Meus Jogos”. Em
+sistemas X11 este indica por predefinição até $XDG_CONFIG_HOME ou
+$HOME/.config/wesnoth, nos outros sistemas operativos ao diretório do
+utilizador.
 .TP 
 \fB\-\-userconfig\-path\fP
 imprime o caminho da pasta de configurações de usuário e sai.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ nome\fP
-sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
-Games" for windows.  You can also specify an absolute path for the userdata
-directory outside the $HOME or "My Documents\eMy Games".
+define o directório \fInome\fP do utilizador em $HOME ou “Os meus Documentos\Os
+Meus Jogos” em Windows.  Também podes especificar o caminho absoluto para as
+configurações fora de $HOME ou “Os meus Documentos\Os Meus Jogos”.
 .TP 
 \fB\-\-userdata\-path\fP
-prints the path of the userdata directory and exits.
+imprime o caminho da pasta de configurações de usuário e termina.
 .TP 
 \fB\-\-validcache\fP
 assume que a cache é válida. (perigoso)
@@ -217,12 +218,12 @@ inicia uma revisão do jogo carregado com a opção \fB\-\-load\fP.
 .SH "Opções para \-\-multiplayer"
 .
 As opções específicas para equipas em modo de rede estão marcadas com
-<número>. <número> deve ser substituído pelo número duma
+<número>. <número> deve ser substituído pelo número de uma
 eqiuipa. Normalmente esse número é 1 ou 2, mas isso depende do número de
 jogadores permitidos no cenário escolhido.
 .TP 
 \fB\-\-ai_config\fP\fInúmero\fP\fB=\fP\fIvalor\fP
-selecciona um arquivo de configuração para carregar para o controlador de IA
+seleciona um arquivo de configuração para carregar para o controlador de IA
 para esta equipa.
 .TP 
 \fB\-\-algorithm\fP\fInúmero\fP\fB=\fP\fIvalor\fP
@@ -230,17 +231,17 @@ Escolhe um algoritmo não padrão para ser usado pelo controlador da IA para
 esta equipa. Valores possíveis: \fBidle_ai\fP e \fBsample_ai\fP.
 .TP 
 \fB\-\-controller\fP\fInúmero\fP\fB=\fP\fIvalor\fP
-selecciona quem controlará esta equipa. Valores disponíveis: \fBhuman\fP e
+seleciona quem controlará esta equipa. Valores disponíveis: \fBhuman\fP e
 \fBai\fP.
 .TP 
 \fB\-\-era=\fP\fIvalor\fP
-usa esta opção para jogar a era seleccionada em vez da \fBPadrão\fP. A era é
+usa esta opção para jogar a era selecionada em vez da \fBPadrão\fP. A era é
 escolhida pela id. Eras são descritas num ficheiro em
 \fBdata/multiplayer/eras.cfg\fP
 .TP 
 \fB\-\-exit\-at\-end\fP
 sai quando o cenário acabar, sem mostrar um dialogo de vitória/derrota que
-requer a interacção do usuário. Também é usado para benchmarking
+requer a interação do usuário. Também é usado para benchmarking
 preconfigurado.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
@@ -260,11 +261,11 @@ usadas com \fB\-\-controller\fP e \fB\-\-algorithm.\fP Só terá utilidade para 
 cria a sua própria IA. (ainda não está completamente documentado)
 .TP 
 \fB\-\-scenario=\fP\fIvalor\fP
-seleccionada o cenário multijogador pela id. O cenário padrão é
+selecionada o cenário em rede pela id. O cenário padrão é
 \fBmultiplayer_The_Freelands\fP.
 .TP 
 \fB\-\-side\fP\fInúmero\fP\fB=\fP\fIvalor\fP
-selecciona a facção a partir da era actual com base da sua id. Facções são
+seleciona a fação a partir da era atual com base da sua id. Fações são
 configuradas num ficheiro data/multiplayer.cfg
 .TP 
 \fB\-\-turns=\fP\fIvalor\fP
@@ -287,7 +288,7 @@ Editado por Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
 A página do manual foi escrita originalmente por Cyril Bouthors
 <cyril@bouthors.org>.
 .br
-Visita a página oficial do projecto: http://www.wesnoth.org/
+Visita a página oficial do projeto: http://www.wesnoth.org/
 .
 .SH "DIREITOS DE AUTOR"
 .

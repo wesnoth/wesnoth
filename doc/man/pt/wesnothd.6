@@ -42,7 +42,7 @@ servidor aceita via o cliente wesnoth (/query) ou via fifo.
 .TP 
 \fB\-c\ \fP\fIpath\fP\fB,\ \-\-config\fP\fI\ path\fP
 diz a wesnothd onde encontrar o ficheiro de configuração para usar. Veja a
-secção \fBCONFIGURAÇÃO DO SERVIDOR\fP abaixo para os comandos. Podes recarregar
+seção \fBCONFIGURAÇÃO DO SERVIDOR\fP abaixo para os comandos. Podes recarregar
 as configurações ao enviar um SIGHUP  ao servidor.
 .TP 
 \fB\-d, \-\-daemon\fP
@@ -101,7 +101,7 @@ servidor possa ler e escrever.  Expulsões serão gravados para o arquivo e
 lidos de novo ao ligar o servidor.
 .TP 
 \fBcompress_stored_rooms\fP
-Determina quando o arquivo 'rooms' pode ser lido e escrito em forma
+Determina quando o arquivo ‘rooms’ pode ser lido e escrito em forma
 compacta. O padrão é \fByes\fP.
 .TP 
 \fBconnections_allowed\fP
@@ -124,7 +124,7 @@ O número de mensagens permitidas no período de
 \fBmessages_time_period\fP. (padrão: \fB4\fP)
 .TP 
 \fBmessages_time_period\fP
-O período de tempo (em segundos) de inundação de mensagens é detectado
+O período de tempo (em segundos) de inundação de mensagens é detetado
 (padrão: \fB10\fP segundos)
 .TP 
 \fBmotd\fP
@@ -134,7 +134,7 @@ A mensagem do dia.
 Determina quem pode criar novas salas no servidor. Os valores disponíveis
 são \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP e \fBnobody\fP, e dar a permisão,
 respectivamente, para todos, de usuários registados, administradores ou
-criação desactivada de salas. O valor por defeito é \fBeveryone\fP.
+criação desativada de salas. O valor por defeito é \fBeveryone\fP.
 .TP 
 \fBpasswd\fP
 A palavra\-passe usada para ganhar privilégios de administrador (por via
@@ -166,11 +166,11 @@ desta instalação do wesnoth)
 Exemplo: \fBversions_accepted="*"\fP aceita qualquer versão.
 .TP  
 \fBuser_handler\fP
-The name of the user handler to use. Currently available user handlers are
-\fBforum\fP (to connect wesnothd to a phpbb forum database) and \fBsample\fP (a
-sample implementation of the user handler interface, if you use this on
-anything real you are insane). The default value is \fBforum\fP. You must also
-add a \fB[user_handler]\fP section, see below.
+O nome da base de dados de utilizadores para ser utilizado. De momento estão
+disponíveis \fBforum\fP (para ligar o servidor à base de dados phpp do fórum
+oficial) e \fBsample\fP (apenas um esboço, não é aconselhável correr o servidor
+num ambiente real com este). Por padrão  \fBforum\fP é usado. Também terás de
+usar um \fB[user_handler]\fP como explicado abaixo.
 .
 .SS "Tags Globais:"
 .
@@ -210,10 +210,10 @@ as requisições dos clientes conectados para um outro servidor especificado.
 Aceita as mesmas chaves que \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. Available keys vary depending
-on which user handler is set with the \fBuser_handler\fP key. If no
-\fB[user_handler]\fP section is present in the configuration the server will
-run without any nick registration service.
+\fB[user_handler]\fP Define como gerir a base de dados de utilizadores. Opções
+disponíveis irão depender qual \fBuser_handler\fP esta em uso. Se nenhum
+\fB[user_handler]\fP é encontrado, então o servidor irá correr sem
+possibilidade de registo do nome de utilizador.
 .RS
 .TP  
 \fBdb_host\fP
@@ -230,14 +230,15 @@ de dados
 (para user_handler=forum) a senha deste usuário
 .TP  
 \fBdb_users_table\fP
-(for user_handler=forum) The name of the table in which your phpbb forums
-saves its user data. Most likely this will be <table\-prefix>_users
-(e.g. phpbb3_users).
+(para ser usado em conjunto com user_handler=forum) O nome da base de dados
+phpbb do fórum usado. Provavelmente será <table\-prefix>_users
+(p.ex. phpbb3_users).
 .TP  
 \fBdb_extra_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about users. You will have to create this table manually, e.g.:
-\fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY KEY,
+(para ser usado em conjunto com user_handler=forum) O nome da base de dados
+onde o servidor irá guardar os seus próprios dados sobre os
+utilizadores. Terás de criar esta base de dados manualmente, por
+ex. \fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY KEY,
 user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
 NOT NULL DEFAULT 0);\fP
 .TP  
@@ -267,7 +268,7 @@ A porta na qual o teu servidor de correio iniciar. O padrão é 25.
 .
 .SH "ESTADO DE SAÍDA"
 .
-O estado de saída normal é 0 se o servidor for correctamente fechado. Um
+O estado de saída normal é 0 se o servidor for corretamente fechado. Um
 estado de saída de 2 indica um erro com as opções da linha de comandos.
 .
 .SH AUTOR
@@ -278,7 +279,7 @@ Soliton <soliton.de@gmail.com> e Thomas Baumhauer
 <thomas.baumhauer@gmail.com>.  Esta página de manual foi
 originalmente escrita por Cyril Bouthors <cyril@bouthors.org>.
 .br
-Visita a página oficial do projecto: http://www.wesnoth.org/
+Visita a página oficial do projeto: http://www.wesnoth.org/
 .
 .SH "DIREITOS DE AUTOR"
 .

@@ -37,7 +37,7 @@ Sconfiggi tutti i condottieri nemici usando un'oculata scelta di unità di
 combattimento, avendo cura di gestire le tue risorse di oro e villaggi. Ogni
 unità ha punti di forza e debolezze: per vincere, schiera le tue forze nel
 modo più vantaggioso impedendo al nemico di fare altrettanto. Le unità, con
-l'esperienza, acquistano nuove abilità e diventano più potenti. Gioca nella
+l’esperienza, acquistano nuove abilità e diventano più potenti. Gioca nella
 tua lingua e metti alla prova le tue capacità contro un abile nemico
 controllato dal computer, o unisciti alla numerosa comunità di giocatori
 on\-line.Crea le tue unità personalizzate, scenari o campagne, e condividile
@@ -54,7 +54,7 @@ salta direttamente alla campagna con identificatore
 <id_campagna>. Se non si specifica un identificatore, comparirà un
 menù dal quale sarà possibile selezionare una campagna. \fBNota:\fP Quando si
 usa questo switch, verifica attentamente di aver messo come ultimo parametro
-la directory dei dati, altrimenti il gioco scambierà l'identificatore della
+la directory dei dati, altrimenti il gioco scambierà l’identificatore della
 campagna/scenario per la directory.
 .TP 
 \fB\-\-campaign\-difficulty [<difficoltà>\fP
@@ -69,15 +69,15 @@ primo scenario.
 sostituisce la directory dei dati con quella specificata
 .TP 
 \fB\-\-data\-path\fP
-path the path of the data directory and exits.
+stampa il nome della cartella contenente i dati del gioco ed esce.
 .TP 
 \fB\-d, \-\-debug\fP
-abilita le opzioni aggiuntive di controllo all'interno del gioco (vedi il
+abilita le opzioni aggiuntive di controllo all’interno del gioco (vedi il
 wiki presso http://www.wesnoth.org/wiki/CommandMode per maggiori
 informazioni sulla shell di comando).
 .TP 
 \fB\-e,\ \-\-editor\fP\fI\ file\fP
-avvia il gioco direttamente dall'editor per le partite. Se \fIfile\fP è
+avvia il gioco direttamente dall’editor per le partite. Se \fIfile\fP è
 specificato, equivale a \fB\-l \-\-load\fP
 .TP 
 \fB\-\-fps\fP
@@ -88,7 +88,7 @@ gioco sta generando attualmente.
 esegue il gioco a tutto schermo.
 .TP 
 \fB\-\-gunzip\fP\fI\ infile.gz\fP
-decomprime un file che dev'essere in formato gzip e lo memorizza senza
+decomprime un file che dev’essere in formato gzip e lo memorizza senza
 suffisso .gz. Il file \fIinfile.gz\fP sarà rimosso.
 .TP 
 \fB\-\-gzip\fP\fI\ infile\fP
@@ -102,7 +102,7 @@ standard ed esce.
 \fB\-l,\ \-\-load\fP\fI\ file\fP
 carica il salvataggio \fIfile\fP dalla directory standard dei salvataggi. Se
 usato insime alle optioni \fB\-e\fP o \fB\-\-editor\fP, lancia l’editor con aperta la
-mappa del \fIfile\fP. Se è una directory, l'editor lancerà una finestra di
+mappa del \fIfile\fP. Se è una directory, l’editor lancerà una finestra di
 dialogo con un elenco di mappe caricabili.
 .TP 
 \fB\-\-log\-\fP\fIlivello\fP\fB=\fP\fIdominio1\fP\fB,\fP\fIdominio2\fP\fB,\fP\fI...\fP
@@ -187,23 +187,25 @@ errori di validazione sono trattati come errori fatali.
 \fB\-t, \-\-test\fP
 esegue il gioco con un piccolo scenario di test.
 .TP 
-\fB\-\-userconfig\-dir\fP\fI\ name\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy Games".
-Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
-other systems to the userdata path.
+\fB\-\-userconfig\-dir\fP\fI\ nome\fP
+imposta la directory di configurazione dell’utente a \fInome\fP sotto $HOME o
+"My Documents\eMy Games" per Windows. Puoi anche specificare un percorso
+assoluto per la directory di configurazione al di fuori di $HOME o "My
+Documents\eMy Games". In ambiente X11 lo la directory standard è
+$XDG_CONFIG_HOME o $HOME/.config/wesnoth, in altri ambienti corrisponde alla
+directory contenente i dati utente.
 .TP 
 \fB\-\-userconfig\-path\fP
 stampa il percorso della cartella di configurazione ed esce.
 .TP 
-\fB\-\-userdata\-dir\fP\fI\ name\fP
-sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
-Games" for windows.  You can also specify an absolute path for the userdata
-directory outside the $HOME or "My Documents\eMy Games".
+\fB\-\-userdata\-dir\fP\fI\ nome\fP
+imposta la directory di configurazione dell’utente a \fInome\fP sotto $HOME o
+"My Documents\eMy Games" per Windows. Puoi anche specificare un percorso
+assoluto per la directory di configurazione al di fuori di $HOME o "My
+Documents\eMy Games"
 .TP 
 \fB\-\-userdata\-path\fP
-prints the path of the userdata directory and exits.
+stampa il percorso della cartella di configurazione dell’utente ed esce.
 .TP 
 \fB\-\-validcache\fP
 assume che la cache sia valida (pericoloso).
@@ -215,7 +217,7 @@ mostra il numero di versione ed esce.
 esegue il gioco in una finestra.
 .TP 
 \fB\-\-with\-replay\fP
-esegue il replay della partita caricata con l'opzione \fB\-\-load\fP.
+esegue il replay della partita caricata con l’opzione \fB\-\-load\fP.
 .
 .SH "opzioni per \-\-multiplayer"
 .
@@ -225,11 +227,11 @@ fazione. Normalmente è 1 o 2 ma dipende dal numero di giocatori possibili
 nello scenario scelto.
 .TP 
 \fB\-\-ai_config\fP\fInumber\fP\fB=\fP\fIvalue\fP
-seleziona un file di configurazione da caricare per il controllo dell'IA di
+seleziona un file di configurazione da caricare per il controllo dell’IA di
 questa fazione.
 .TP 
 \fB\-\-algorithm\fP\fInumero\fP\fB=\fP\fIvalore\fP
-seleziona un algoritmo non standard per il controllo dell'IA di questa
+seleziona un algoritmo non standard per il controllo dell’IA di questa
 fazione. Valori disponibili: \fBidle_ai\fP e \fBsample_ai\fP.
 .TP 
 \fB\-\-controller\fP\fInumero\fP\fB=\fP\fIvalore\fP
@@ -237,13 +239,13 @@ seleziona il tipo di controllo per questa fazione. Valori disponibili:
 \fBhuman\fP e \fBai\fP.
 .TP 
 \fB\-\-era=\fP\fIvalore\fP
-usa questa opzione per giocare nell'era selezionata invece che in quella
+usa questa opzione per giocare nell’era selezionata invece che in quella
 \fBDefault\fP. L'era è scelta per ID. Le ere sono descritte nel file
 data/multiplayer.cfg.
 .TP 
 \fB\-\-exit\-at\-end\fP
 esce quando lo scenario è finito, senza mostrare la finestra delle
-vittorie/sconfitte, che richiede che l'utente prema il pulsante OK. Anche
+vittorie/sconfitte, che richiede che l’utente prema il pulsante OK. Anche
 questa opzione è usata per eseguire dei benchmark con script.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
@@ -255,7 +257,7 @@ utilizzare insime a \fB\-\-nogui\fP per eseguire benchmark con script.
 .TP 
 \fB\-\-nogui\fP
 esegue il gioco senza GUI. Deve apparire prima di \fB\-\-multiplayer\fP per avere
-l'effetto desiderato.
+l’effetto desiderato.
 .TP 
 \fB\-\-parm\fP\fInumero\fP\fB=\fP\fInome\fP\fB:\fP\fIvalore\fP
 imposta parametri aggiuntivi per questa fazione. Questo parametro dipende
@@ -268,11 +270,11 @@ seleziona uno scenario multigiocatore. lo scenario predefinito è
 \fBmultiplayer_The_Freelands\fP.
 .TP 
 \fB\-\-side\fP\fInumero\fP\fB=\fP\fIvalore\fP
-seleziona una fazione dell'era attuale per questa squadra. La fazione è
+seleziona una fazione dell’era attuale per questa squadra. La fazione è
 scelta per ID. Le fazioni sono descritte nel file data/multiplayer.cfg.
 .TP 
 \fB\-\-turns=\fP\fIvalore\fP
-imposta il numero di turni per lo scenario scelto. L'impostazione standard è
+imposta il numero di turni per lo scenario scelto. L’impostazione standard è
 \fB50\fP.
 .
 .SH "STATO DI USCITA"
@@ -300,7 +302,7 @@ Copyright \(co 2003\-2013 David White <davidnwhite@verizon.net>
 Questo gioco è rilasciato come Software Libero; viene rilasciato secondo i
 termini della licenza GPL versione 2 come pubblicata dalla Free Software
 Foundation. Non è fornita nessuna garanzia, né per la COMMERCIALIZZAZIONE né
-per l'ADEGUATEZZA AD UNO SCOPO PARTICOLARE.
+per l’ADEGUATEZZA AD UNO SCOPO PARTICOLARE.
 .
 .SH "SEE ALSO"
 .
