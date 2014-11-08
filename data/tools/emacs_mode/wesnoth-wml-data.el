@@ -2,21 +2,21 @@
   ("value")
   ("invalidate_on_gamestate_change" "value" "name" "engine"))
  (nil
-  ("default" "po4a_langs" "advanced_preference" "language" "game_config" "schema" "part" "mask" "era" "change" "remove" "panel" "theme" "test_key2" "test_key" "test_lead_space" "umc" "lobby_music" "generic_multiplayer" "multiplayer" "remove_item" "set_menu_item" "multiplayer_side" "locale" "fonts" "tip" "gui" "wml_schema" "window" "button_definition" "drawing_definition" "horizontal_scrollbar_definition" "image_definition" "horizontal_listbox_definition" "listbox_definition" "matrix_definition" "minimap_definition" "multi_page_definition" "panel_definition" "progress_bar_definition" "scroll_label_definition" "scrollbar_panel_definition" "slider_definition" "spacer_definition" "stacked_widget_definition" "text_box_definition" "text" "rectangle" "toggle_button_definition" "toggle_panel_definition" "tree_view_definition" "vertical_scrollbar_definition" "window_definition" "about" "help" "hotkey" "color_palette" "color_range" "stage" "sheath_weapon_anim" "post_movement_anim" "movement_anim" "pre_movement_anim" "missile_frame" "magic_missile_trail_3_frame" "magic_missile_trail_2_frame" "magic_missile_trail_1_frame" "magic_missile_frame" "standing_anim" "filter" "store_side" "fire_event" "object" "sound" "else" "music" "gold" "set_variables" "topic" "section" "titlescreen_music" "brush" "item_group" "editor_music" "editor_times" "allow_undo" "print" "label" "remove_unit_overlay" "allow_recruit" "disallow_recruit" "movetype" "effect" "image" "leadership" "abilities" "modifications" "message" "time" "item" "store_locations" "terrain" "story" "attack_anim" "attack" "teleport_fill_frame" "frame" "teleport_sparkle_3_frame" "teleport_sparkle_2_frame" "if" "editor_group" "terrain_type" "color_adjust" "scroll" "delay" "unstore_unit" "set_recruit" "kill" "not" "store_unit" "redraw" "capture_village" "heal_unit" "lua" "units" "objective" "recall" "clear_variable" "while" "set_variable" "unit_type" "binary_path" "campaign" "textdomain" "background_layer" "scenario" "aspect" "event" "test" "ai" "terrain_graphics" "unit")
-  ("lan_server" "versions_accepted" "motd" "cut" "ctrl" "cmd" "version" "future_string_7" "future_string_6" "future_string_5" "future_string_4" "future_string_3" "future_string_2" "future_string_1" "shadow_start_time" "sling_stone_start_time" "missile_halo_y" "missile_halo_x" "missile_offset" "water_start_time" "flare_start_time" "magic_missile_flare_start_time" "magic_missile_trail_3_start_time" "magic_missile_trail_2_start_time" "magic_missile_trail_1_start_time" "magic_missile_start_time" "halo_auto_vflip" "missile_start_time" "sound_start_time" "carryover_percentage" "carryover_add" "ellipse" "overlays" "blue" "red" "green" "flag_rgb" "female_names" "male_names" "caption" "border_size" "current_time" "attack_sound_start_time" "villages_per_scout" "income" "random_traits" "cost" "require_amla" "description" "do_not_list" "hide_help" "show_title" "flag_icon" "flag" "y" "placement" "gender" "color" "extra_recruit" "faction" "income_lock" "gold_lock" "team_lock" "persistence" "village_gold" "turns" "turn_at" "current_tod" "die_sound" "usage" "advances_to" "alignment" "level" "experience" "movement" "movement_type" "hitpoints" "image" "race" "teleport_fill_start_time" "teleport_ring_start_time" "teleport_sparkle_3_start_time" "teleport_sparkle_2_start_time" "teleport_sparkle_1_start_time" "start_time" "profile" "persistent" "save_id" "map_data" "background" "recruit" "unrenamable" "canrecruit" "name" "id" "type" "user_team_name" "team_name" "controller" "side"))
+  ("default" "po4a_langs" "advanced_preference" "language" "game_config" "schema" "tip" "part" "mask" "slider" "action" "mini_map" "change" "remove" "panel" "theme" "test_key2" "test_key" "test_lead_space" "umc" "lobby_music" "generic_multiplayer" "era" "multiplayer" "remove_item" "set_menu_item" "multiplayer_side" "locale" "fonts" "gui" "wml_schema" "window" "button_definition" "drawing_definition" "horizontal_scrollbar_definition" "image_definition" "horizontal_listbox_definition" "listbox_definition" "matrix_definition" "minimap_definition" "multi_page_definition" "panel_definition" "progress_bar_definition" "scroll_label_definition" "scrollbar_panel_definition" "slider_definition" "spacer_definition" "stacked_widget_definition" "text_box_definition" "text" "rectangle" "toggle_button_definition" "toggle_panel_definition" "tree_view_definition" "vertical_scrollbar_definition" "window_definition" "about" "help" "hotkey" "color_palette" "color_range" "stage" "sheath_weapon_anim" "post_movement_anim" "movement_anim" "pre_movement_anim" "missile_frame" "magic_missile_trail_3_frame" "magic_missile_trail_2_frame" "magic_missile_trail_1_frame" "magic_missile_frame" "standing_anim" "filter" "store_side" "fire_event" "object" "image" "sound" "else" "music" "gold" "set_variables" "topic" "section" "titlescreen_music" "brush" "item_group" "editor_music" "editor_times" "allow_undo" "print" "label" "remove_unit_overlay" "and" "allow_recruit" "disallow_recruit" "movetype" "effect" "switch" "leadership" "store_map_dimensions" "abilities" "modifications" "shift_labels" "replace_map" "store_villages" "message" "filter_wml" "item" "store_locations" "terrain" "story" "attack_anim" "attack" "teleport_fill_frame" "frame" "teleport_sparkle_3_frame" "teleport_sparkle_2_frame" "if" "editor_group" "terrain_type" "color_adjust" "scroll" "delay" "unstore_unit" "set_recruit" "kill" "not" "store_unit" "redraw" "capture_village" "heal_unit" "lua" "units" "objective" "recall" "clear_variable" "while" "set_variable" "unit_type" "binary_path" "campaign" "textdomain" "background_layer" "scenario" "aspect" "event" "test" "ai" "terrain_graphics" "unit")
+  ("lan_server" "versions_accepted" "motd" "cut" "ctrl" "cmd" "version" "future_string_7" "future_string_6" "future_string_5" "future_string_4" "future_string_3" "future_string_2" "future_string_1" "shadow_start_time" "missile_2_start_time" "missile_1_start_time" "sling_stone_start_time" "missile_halo_y" "missile_halo_x" "missile_offset" "water_start_time" "flare_start_time" "magic_missile_flare_start_time" "magic_missile_trail_3_start_time" "magic_missile_trail_2_start_time" "magic_missile_trail_1_start_time" "magic_missile_start_time" "halo_auto_vflip" "missile_start_time" "sound_start_time" "carryover_percentage" "carryover_add" "ellipse" "overlays" "blue" "red" "green" "flag_rgb" "female_names" "male_names" "caption" "border_size" "current_time" "attack_sound_start_time" "villages_per_scout" "income" "random_traits" "cost" "require_amla" "description" "do_not_list" "hide_help" "show_title" "flag_icon" "flag" "y" "color" "extra_recruit" "gender" "faction" "income_lock" "gold_lock" "team_lock" "village_gold" "die_sound" "usage" "advances_to" "alignment" "level" "experience" "movement" "movement_type" "hitpoints" "image" "race" "teleport_fill_start_time" "teleport_ring_start_time" "teleport_sparkle_3_start_time" "teleport_sparkle_2_start_time" "teleport_sparkle_1_start_time" "start_time" "profile" "persistent" "save_id" "map_data" "background" "recruit" "unrenamable" "canrecruit" "name" "id" "type" "user_team_name" "team_name" "controller" "side"))
  ("po4a_paths" nil nil)
  ("po4a_langs"
   ("po4a_paths")
   nil)
  ("rectangle" nil nil)
  ("draw"
-  ("circle" "text" "line" "image" "rectangle")
+  ("circle" "pre_commit" "text" "line" "image" "rectangle")
   nil)
  ("state_enabled"
   ("draw")
   nil)
  ("resolution"
-  ("terrain" "palette" "slider" "action" "status" "label" "mini_map" "menu" "main_map_border" "main_map" "panel" "screen" "helptip" "tooltip" "linked_group" "content" "state_focussed_selected" "state_disabled_selected" "state_enabled_selected" "state_focussed" "state_pressed" "state_disabled" "state_enabled" "grid" "foreground" "background")
+  ("palette" "status" "label" "menu" "action" "mini_map" "main_map" "panel" "screen" "helptip" "tooltip" "linked_group" "content" "state_focussed_selected" "state_disabled_selected" "state_enabled_selected" "state_focussed" "state_pressed" "state_disabled" "state_enabled" "grid" "foreground" "background")
   ("y" "x" "window_width" "window_height" "vertical_placement" "maximum_width" "maximum_height" "horizontal_placement" "definition" "click_dismiss" "automatic_placement" "_linked_group" "_grid" "inherits" "_status" "_panel" "_mini_map" "_menu" "_main_map_border" "_main_map" "_label" "height" "width" "id"))
  ("progress_bar_definition"
   ("resolution")
@@ -31,7 +31,7 @@
   ("column" "row")
   ("linked_group" "id" "_row"))
  ("label" nil
-  ("visible_in_shroud" "immutable" "font_rgb" "icon" "yanchor" "xanchor" "rect" "ref" "font_size" "id" "label" "y" "x" "visible_in_fog" "text" "color"))
+  ("visible_in_shroud" "immutable" "font_size" "font_rgb" "yanchor" "xanchor" "rect" "ref" "icon" "id" "label" "y" "x" "visible_in_fog" "text" "color"))
  ("linked_group" nil nil)
  ("window"
   ("resolution")
@@ -48,7 +48,7 @@
   nil)
  ("image"
   ("variant")
-  ("h" "random_start" "variations" "center" "y" "x" "centered" "delay" "file" "base" "layer" "name"))
+  ("h" "random_start" "variations" "center" "centered" "delay" "file" "base" "layer" "name"))
  ("units"
   ("unit_type" "movetype" "race" "hide_help")
   ("_unit_type" "_trait" "_race" "_movetype" "unwalkable" "frozen" "castle" "village" "mountains" "hills" "forest" "sand" "flat" "swamp_water" "reef" "shallow_water" "deep_water"))
@@ -61,8 +61,11 @@
   ("default_config")
   ("_default_config" "_ai"))
  ("advanced_preference"
-  ("description")
+  ("option" "description")
   ("step" "max" "min" "type" "name" "field" "description" "default"))
+ ("option"
+  ("show_if" "command")
+  ("description" "name_short" "name" "id" "message"))
  ("language" nil
   ("type_arcane" "type_cold" "type_fire" "type_impact" "type_pierce" "type_blade" "range_ranged" "range_melee" "village_name_swamp" "village_name_road" "village_name_mountain_anonymous" "village_name_mountain" "village_name_hill" "village_name_forest" "village_name_grassland" "village_name_river_bridge" "village_name_river" "village_name_lake" "village_name" "swamp_name" "mountain_name" "lake_name" "forest_name" "river_name" "road_name" "bridge_name" "liminal_description" "chaotic_description" "neutral_description" "lawful_description" "NIGHTMARE" "HARD" "NORMAL" "EASY" "type_electrical" "range_very_long"))
  ("game_config"
@@ -75,14 +78,14 @@
  ("team_formula" nil
   ("rulebase"))
  ("ai"
-  ("team_formula" "register_candidate_action" "candidate_action" "not" "protect_area" "aspect" "leader_goal" "avoid" "vars" "modify_ai" "engine" "goal" "stage")
+  ("team_formula" "register_candidate_action" "not" "candidate_action" "protect_area" "aspect" "leader_goal" "avoid" "vars" "modify_ai" "engine" "goal" "stage")
   ("priority" "formula" "eval_list" "_stage" "_aspect" "leader" "loop_formula" "y" "x" "passive_leader_shares_keep" "leader_aggression" "number_of_possible_recruits_to_force_recruit" "time_of_day" "ai_algorithm" "scout_village_targeting" "turns" "attack_depth" "grouping" "villages_per_scout" "leader_value" "village_value" "leader_shares_keep" "passive_leader" "recruitment_pattern" "simple_targeting" "recruitment_ignore_bad_combat" "recruitment_ignore_bad_movement" "caution" "aggression" "version" "description" "id"))
  ("side"
   ("leader" "variables" "goal" "village" "unit" "ai" "modifications")
-  ("recall_cost" "village_support" "gold_lock" "faction_from_recruit" "income_lock" "team_lock" "disallow_observers" "variation" "ai_special" "hitpoints" "overlays" "ai_algorithm" "generate_name" "random_traits" "extra_recruit" "y" "x" "allow_player" "faction" "image" "experience" "race" "facing" "moves" "color" "share_maps" "share_view" "shroud" "fog" "profile" "scroll_to_leader" "village_gold" "unrenamable" "gender" "save_id" "income" "no_leader" "gold" "recruit" "canrecruit" "user_team_name" "team_name" "persistent" "max_moves" "type" "id" "name" "hidden" "controller" "side"))
+  ("recall_cost" "village_support" "gold_lock" "faction_from_recruit" "income_lock" "team_lock" "disallow_observers" "variation" "ai_special" "hitpoints" "overlays" "ai_algorithm" "generate_name" "random_traits" "y" "x" "extra_recruit" "faction" "allow_player" "image" "experience" "race" "share_vision" "facing" "moves" "color" "share_maps" "share_view" "shroud" "fog" "profile" "scroll_to_leader" "village_gold" "unrenamable" "gender" "save_id" "income" "defeat_condition" "no_leader" "gold" "recruit" "canrecruit" "user_team_name" "team_name" "persistent" "max_moves" "type" "id" "name" "hidden" "controller" "side"))
  ("test"
   ("item" "label" "event" "side")
-  ("defeat_music" "victory_music" "current_tod" "usage" "random_start_time" "description" "victory_when_enemies_defeated" "turns" "map_data" "next_scenario" "name" "id"))
+  ("defeat_music" "victory_music" "current_time" "usage" "random_start_time" "description" "victory_when_enemies_defeated" "turns" "map_data" "next_scenario" "name" "id"))
  ("register_candidate_move" nil
   ("evaluation" "action" "type" "name"))
  ("stage"
@@ -90,12 +93,12 @@
   ("move" "code" "engine" "name" "id"))
  ("unit"
   ("abilities" "event" "insert_tag" "object" "movement_costs" "status" "variables" "ai" "modifications")
-  ("image_icon" "jamming" "vision" "alignment" "random_gender" "description" "goto_y" "goto_x" "max_experience" "advances_to" "recruit" "max_moves" "max_hitpoints" "extra_recruit" "to_variable" "role" "canrecruit" "attacks_left" "variation" "moves" "animate" "facing" "gender" "profile" "experience" "placement" "generate_name" "hitpoints" "y" "x" "unrenamable" "ai_special" "random_traits" "overlays" "upkeep" "side" "name" "type" "id"))
+  ("image_icon" "ellipse" "level" "jamming" "vision" "alignment" "random_gender" "description" "goto_y" "goto_x" "max_experience" "advances_to" "recruit" "to_variable" "max_moves" "max_hitpoints" "extra_recruit" "role" "canrecruit" "attacks_left" "variation" "moves" "animate" "facing" "gender" "profile" "experience" "placement" "generate_name" "hitpoints" "y" "x" "unrenamable" "ai_special" "random_traits" "overlays" "upkeep" "side" "name" "type" "id"))
  ("vars" nil
   ("guard_loc" "next_step" "waypoints" "guard_radius" "home_loc"))
  ("effect"
   ("color_palette" "extra_anim" "attack_anim" "defense" "movement_costs" "standing_anim" "animation" "abilities" "filter" "set_specials" "resistance" "specials")
-  ("halo" "attack_weight" "remove" "ellipse" "times" "add" "increase_attacks" "set_icon" "set_name" "portrait" "set_description" "increase" "increase_damage" "number" "damage" "type" "icon" "description" "value" "replace" "set_type" "range" "heal_full" "increase_total" "set" "name" "apply_to"))
+  ("halo" "attack_weight" "remove" "ellipse" "times" "increase_attacks" "set_icon" "set_name" "add" "portrait" "set_description" "increase" "increase_damage" "number" "damage" "type" "icon" "description" "value" "replace" "set_type" "range" "heal_full" "increase_total" "set" "name" "apply_to"))
  ("trait"
   ("effect")
   ("availability" "female_name" "male_name" "description" "name" "id"))
@@ -106,28 +109,28 @@
   ("tutorial" "chamber" "gold" "endlevel" "kill" "if" "else" "message" "filter" "event")
   ("village_density" "flipx_chance" "map_height" "map_width"))
  ("event"
-  ("replace_schedule" "deprecated_message" "inspect" "move_units_fake" "set_global_variable" "clear_global_variable" "get_global_variable" "check_substitution" "my_lua_action" "select_unit" "end_turn" "wml_message" "clear_menu_item" "show_objectives" "insert_tag" "modify_ai" "heal_unit" "unpetrify" "petrify" "harm_unit" "reset_fog" "lift_fog" "filter_location" "modifications" "filter_adjacent_location" "time_area" "and" "filter_wml" "scroll" "store_time_of_day" "sound_source" "allow_extra_recruit" "goal" "shift_labels" "replace_map" "store_side" "filter_adjacent" "store_villages" "set_variables" "find_path" "filter_condition" "modify_turns" "store_gold" "switch" "place_shroud" "store_starting_location" "filter_second_attack" "filter_attack" "terrain_mask" "remove_item" "while" "disallow_recruit" "allow_undo" "color_adjust" "animate_unit" "gold" "sound" "remove_unit_overlay" "allow_recruit" "unit_overlay" "unstore_unit" "unhide_unit" "scroll_to" "clear_variable" "item" "set_recruit" "remove_shroud" "store_locations" "redraw" "teleport" "delay" "recall" "music" "role" "move_unit_fake" "command" "set_variable" "capture_village" "label" "facet" "move_unit" "scroll_to_unit" "not" "kill" "event" "terrain" "hide_unit" "else" "then" "store_reachable_locations" "store_unit" "fire_event" "unit" "endlevel" "filter_second" "modify_unit" "modify_side" "lua" "objectives" "message" "micro_ai" "set_menu_item" "if" "object" "filter")
-  ("message" "caption" "speaker" "profile" "facing" "remove" "id" "overlays" "race" "upkeep" "generate_name" "type" "animate" "store_location_as" "same_location_as_previous" "delayed_variable_substitution" "role" "canrecruit" "terrain" "random_traits" "side" "y" "x" "first_time_only" "name"))
+  ("replace_schedule" "deprecated_message" "inspect" "move_units_fake" "set_global_variable" "clear_global_variable" "get_global_variable" "check_substitution" "my_lua_action" "select_unit" "end_turn" "wml_message" "clear_menu_item" "show_objectives" "insert_tag" "modify_ai" "heal_unit" "unpetrify" "petrify" "harm_unit" "reset_fog" "lift_fog" "modifications" "filter_adjacent_location" "time_area" "and" "scroll" "store_time_of_day" "sound_source" "allow_extra_recruit" "goal" "shift_labels" "replace_map" "store_side" "or" "filter_location" "filter_wml" "filter_adjacent" "store_villages" "set_variables" "find_path" "filter_condition" "modify_turns" "store_gold" "switch" "place_shroud" "store_starting_location" "filter_second_attack" "filter_attack" "terrain_mask" "remove_item" "while" "disallow_recruit" "allow_undo" "color_adjust" "animate_unit" "gold" "sound" "remove_unit_overlay" "allow_recruit" "unit_overlay" "unstore_unit" "unhide_unit" "scroll_to" "clear_variable" "item" "set_recruit" "remove_shroud" "store_locations" "redraw" "teleport" "delay" "recall" "music" "role" "move_unit_fake" "command" "set_variable" "capture_village" "label" "facet" "move_unit" "scroll_to_unit" "not" "kill" "event" "terrain" "hide_unit" "else" "then" "store_reachable_locations" "store_unit" "fire_event" "unit" "endlevel" "filter_second" "modify_unit" "modify_side" "lua" "objectives" "message" "micro_ai" "set_menu_item" "if" "object" "filter")
+  ("message" "caption" "speaker" "profile" "facing" "remove" "overlays" "race" "upkeep" "type" "animate" "store_location_as" "same_location_as_previous" "delayed_variable_substitution" "generate_name" "id" "role" "canrecruit" "terrain" "random_traits" "side" "y" "x" "first_time_only" "name"))
  ("message"
-  ("filter_location" "show_if" "and" "not" "text_input" "option")
-  ("movement_cost" "icon" "name" "scroll" "y" "x" "side_for" "canrecruit" "sound" "duration" "race" "role" "id" "type" "side" "message" "image" "caption" "speaker"))
+  ("filter_location" "show_if" "and" "filter_adjacent" "not" "text_input" "option")
+  ("movement_cost" "icon" "find_in" "name" "scroll" "side_for" "canrecruit" "y" "x" "sound" "duration" "race" "role" "id" "type" "side" "message" "image" "caption" "speaker"))
  ("filter"
   ("filter_vision" "or" "filter_adjacent" "and" "filter_wml" "filter_location" "not")
-  ("has_weapon" "ability" "variation" "movement_cost" "alignment" "level" "speaker" "radius" "role" "race" "terrain" "id" "canrecruit" "target" "me" "type" "y" "x" "side"))
+  ("has_weapon" "ability" "find_in" "variation" "movement_cost" "alignment" "level" "speaker" "radius" "role" "race" "terrain" "id" "canrecruit" "target" "me" "type" "y" "x" "side"))
  ("terrain"
   ("filter_adjacent_location" "and")
-  ("yanchor" "xanchor" "rect" "ref" "font_size" "id" "find_in" "radius" "layer" "terrain" "y" "x"))
+  ("font_size" "yanchor" "xanchor" "rect" "ref" "id" "find_in" "radius" "layer" "terrain" "y" "x"))
  ("teleport"
   ("tunnel" "filter")
   ("description" "female_name" "name" "id" "y" "x" "animate"))
  ("kill"
   ("filter_adjacent" "not" "filter_location" "filter")
-  ("movement_cost" "role" "y" "x" "event_fire" "type" "race" "canrecruit" "fire_event" "animate" "id" "side"))
+  ("movement_cost" "find_in" "role" "y" "x" "event_fire" "type" "race" "canrecruit" "fire_event" "animate" "id" "side"))
  ("filter_location"
   ("or" "filter_radius" "and" "filter" "filter_adjacent_location" "not")
-  ("terrain_type" "time_of_day" "time_of_day_id" "find_in" "radius" "y" "x" "terrain"))
+  ("area" "terrain_type" "time_of_day" "time_of_day_id" "find_in" "radius" "y" "x" "terrain"))
  ("filter_second"
-  ("or" "filter_wml" "not")
+  ("or" "filter_side" "filter_wml" "not")
   ("canrecruit" "ability" "role" "y" "x" "race" "id" "type" "side"))
  ("hides"
   ("filter" "filter_self")
@@ -139,51 +142,56 @@
   ("filter")
   ("action" "evaluation" "type" "name"))
  ("redraw"
-  ("language" "units" "color_palette" "color_range" "label" "scroll" "item" "scroll_to_unit" "set_variable" "remove_item" "color_adjust" "terrain" "move_unit" "else" "capture_village" "store_villages" "modify_side" "store_side" "remove_shroud" "unstore_unit" "clear_variable" "objectives" "store_locations" "sound" "terrain_mask" "option" "if" "allow_recruit" "disallow_recruit" "store_unit" "kill" "unit" "scroll_to" "endlevel" "redraw" "event" "message" "unhide_unit" "teleport" "move_unit_fake" "hide_unit" "delay")
+  ("language" "units" "color_palette" "color_range" "label" "scroll" "item" "animate_unit" "scroll_to_unit" "set_variable" "remove_item" "color_adjust" "terrain" "move_unit" "capture_village" "store_villages" "store_side" "terrain_graphics" "else" "place_shroud" "unstore_unit" "clear_variable" "objectives" "store_locations" "sound" "terrain_mask" "modify_side" "remove_shroud" "option" "if" "allow_recruit" "disallow_recruit" "store_unit" "kill" "unit" "scroll_to" "endlevel" "redraw" "event" "message" "unhide_unit" "teleport" "move_unit_fake" "hide_unit" "delay")
   ("message" "caption" "speaker" "side"))
  ("unit_type"
-  ("victory_anim" "filter_attack" "sheath_weapon_anim" "draw_weapon_anim" "recruit_anim" "frame" "explosion_6_frame" "explosion_5_frame" "explosion_4_frame" "explosion_3_frame" "explosion_2_frame" "explosion_1_frame" "flame_burst_6_frame" "flame_burst_5_frame" "flame_burst_4_frame" "flame_burst_3_frame" "flame_burst_2_frame" "flame_burst_1_frame" "die_sound_frame" "else" "if" "advancement" "filter_second_attack" "filter" "movement_anim" "female" "death" "healing_anim" "variation" "idle_anim" "leading_anim" "defense" "animation" "recruiting_anim" "defend" "movement_costs" "base_unit" "standing_anim" "event" "attack_anim" "advancefrom" "resistance" "attack" "portrait" "abilities")
-  ("zoc" "flag_rgb" "_variation" "_trait" "_resistance" "_portrait" "_movement_costs" "_male" "_female" "_defense" "_defend" "_death" "_attack" "_animation" "_advancement" "_abilities" "yanchor" "xanchor" "rect" "font_size" "generate_name" "ellipse" "explosion_6_start_time" "explosion_5_start_time" "explosion_4_start_time" "explosion_3_start_time" "explosion_2_start_time" "explosion_1_start_time" "flame_burst_6_start_time" "flame_burst_5_start_time" "flame_burst_4_start_time" "flame_burst_3_start_time" "flame_burst_2_start_time" "flame_burst_1_start_time" "die_sound_start_time" "missile_start_time" "start_time" "image_icon" "halo" "small_profile" "ignore_race_traits" "gender" "do_not_list" "hide_help" "undead_variation" "attacks" "die_sound" "description" "usage" "cost" "advances_to" "alignment" "level" "experience" "movement" "movement_type" "hitpoints" "profile" "image" "race" "name" "id"))
+  ("victory_anim" "filter_attack" "sheath_weapon_anim" "draw_weapon_anim" "recruit_anim" "advancement" "healing_anim" "filter_second_attack" "death" "filter" "movement_anim" "female" "variation" "idle_anim" "leading_anim" "defense" "animation" "recruiting_anim" "defend" "movement_costs" "base_unit" "standing_anim" "event" "attack_anim" "advancefrom" "resistance" "attack" "portrait" "abilities")
+  ("zoc" "flag_rgb" "ellipse" "_variation" "_trait" "_resistance" "_portrait" "_movement_costs" "_male" "_female" "_defense" "_defend" "_death" "_attack" "_animation" "_advancement" "_abilities" "yanchor" "xanchor" "rect" "font_size" "ref" "generate_name" "small_profile" "image_icon" "halo" "ignore_race_traits" "gender" "do_not_list" "hide_help" "undead_variation" "attacks" "die_sound" "description" "usage" "cost" "advances_to" "alignment" "level" "experience" "movement" "movement_type" "hitpoints" "profile" "image" "race" "name" "id"))
  ("base_unit" nil
   ("id"))
+ ("then"
+  ("end_turn" "tunnel" "print" "set_menu_item" "store_gold" "capture_village" "filter_wml" "hide_unit" "scroll" "store_side" "insert_tag" "set_recruit" "terrain_mask" "recall" "remove_shroud" "teleport" "part" "store_starting_location" "remove_unit_overlay" "color_adjust" "wml_message" "then" "sound_source" "set_variables" "scroll_to_unit" "scroll_to" "floating_text" "terrain" "animate_unit" "store_locations" "modify_unit" "sound" "item" "switch" "role" "music" "event" "delay" "object" "redraw" "objectives" "allow_undo" "clear_variable" "remove_item" "unit_overlay" "if" "unit" "move_unit_fake" "unstore_unit" "set_variable" "gold" "allow_recruit" "disallow_recruit" "micro_ai" "message" "store_reachable_locations" "fire_event" "kill" "store_unit" "endlevel" "modify_side" "while" "removeitem")
+  ("side"))
+ ("if"
+  ("sling_stone_frame" "flame_burst_5_frame" "flame_burst_4_frame" "flame_burst_3_frame" "flame_burst_2_frame" "flame_burst_1_frame" "halo_frame" "filter_second_attack" "missile_2_frame" "missile_1_frame" "attack_sound_frame" "poisoned_sound_frame" "slowed_sound_frame" "filter_second" "frame" "hit_sound_frame" "missile_frame" "sound_frame" "have_location" "and" "or" "have_unit" "not" "else" "then" "variable")
+  ("alpha" "start_time" "value_second" "missile_start_time" "base_score" "attack_sound_start_time" "poisoned_sound_start_time" "slowed_sound_start_time" "offset" "hit_sound_start_time" "direction" "hits"))
+ ("variable" nil
+  ("less_then" "value" "boolean_not_equals" "numerical_not_equals" "boolean_equals" "greater_than_equal_to" "not_equal" "contains" "not_equals" "less_than_equal_to" "equals" "less_than" "greater_than" "numerical_equals" "name"))
+ ("set_variable"
+  ("join")
+  ("ipart" "divide" "to_variable" "time" "round" "multiply" "equals" "rand" "modulo" "add" "sub" "value" "name"))
+ ("store_locations"
+  ("filter_radius" "filter_adjacent_location" "or" "filter" "not" "and")
+  ("range" "find_in" "y" "x" "terrain" "variable" "radius"))
  ("command"
   ("switch" "store_locations" "item" "store_reachable_locations" "unit_worth" "clear_variable" "unstore_unit" "insert_tag" "set_variables" "while" "print" "goal" "role" "remove_shroud" "disallow_recruit" "modify_unit" "capture_village" "store_villages" "music" "store_side" "unit" "store_unit" "unpetrify" "if" "objectives" "object" "allow_recruit" "allow_undo" "terrain" "sound" "event" "delay" "redraw" "remove_item" "gold" "set_menu_item" "message" "set_variable" "lua" "fire_event" "end_turn" "kill" "endlevel" "modify_side")
   nil)
  ("set_menu_item"
   ("default_hotkey" "filter_location" "command" "show_if")
-  ("image" "description" "id"))
+  ("needs_select" "image" "description" "id"))
  ("default_hotkey" nil
   ("key"))
  ("have_unit"
-  ("filter_adjacent" "or" "filter_wml" "and" "filter_vision" "not" "filter_location")
+  ("or" "filter_adjacent" "filter_wml" "and" "filter_vision" "not" "filter_location")
   ("role" "canrecruit" "y" "x" "search_recall_list" "race" "id" "type" "side" "count"))
  ("show_if"
   ("or" "and" "variable" "have_unit" "not")
   ("side"))
  ("filter_wml"
-  ("modifications" "not" "abilities" "variables" "status")
+  ("modifications" "not" "abilities" "attack" "variables" "status")
   ("attacks_left" "max_moves" "usage" "hitpoints" "upkeep"))
  ("not"
-  ("status" "filter_adjacent" "filter_wml" "have_location" "variable" "filter_radius" "not" "filter_adjacent_location" "or" "filter_location" "filter" "have_unit")
-  ("terrain_type" "ai_special" "time_of_day" "time_of_day_id" "ability" "usage" "range" "role" "find_in" "terrain" "owner_side" "y" "x" "level" "side" "race" "canrecruit" "type" "radius" "id"))
- ("then"
-  ("end_turn" "tunnel" "print" "set_menu_item" "store_gold" "capture_village" "filter_wml" "hide_unit" "scroll" "store_side" "insert_tag" "place_shroud" "set_recruit" "terrain_mask" "recall" "remove_shroud" "teleport" "part" "store_starting_location" "remove_unit_overlay" "color_adjust" "wml_message" "then" "sound_source" "set_variables" "scroll_to_unit" "scroll_to" "floating_text" "terrain" "animate_unit" "store_locations" "modify_unit" "sound" "item" "switch" "role" "music" "event" "delay" "object" "redraw" "objectives" "allow_undo" "clear_variable" "remove_item" "unit_overlay" "if" "unit" "move_unit_fake" "unstore_unit" "set_variable" "gold" "allow_recruit" "disallow_recruit" "micro_ai" "message" "store_reachable_locations" "fire_event" "kill" "store_unit" "endlevel" "modify_side" "while" "removeitem")
-  ("side"))
+  ("status" "filter_adjacent" "have_location" "variable" "filter_radius" "and" "filter_wml" "not" "filter_adjacent_location" "or" "filter_location" "filter" "have_unit")
+  ("terrain_type" "ai_special" "time_of_day" "time_of_day_id" "ability" "usage" "range" "find_in" "role" "terrain" "owner_side" "y" "x" "level" "side" "race" "canrecruit" "type" "radius" "id"))
  ("object"
   ("effect" "then" "filter")
   ("silent" "cannot_use_message" "description" "duration" "image" "name" "id"))
  ("filter_attack" nil
   ("direction" "type" "range" "special" "name"))
- ("option"
-  ("show_if" "command")
-  ("id" "message"))
  ("clear_variable" nil
   ("name"))
  ("scroll_to_unit" nil
   ("check_fogged" "type" "race" "role" "y" "x" "id"))
- ("set_variable"
-  ("join")
-  ("ipart" "divide" "time" "to_variable" "round" "multiply" "equals" "rand" "modulo" "add" "sub" "value" "name"))
  ("unpetrify" nil
   ("id"))
  ("insert_tag" nil
@@ -193,19 +201,16 @@
   ("name" "message" "disabled_for_sides" "ally_sides" "player_side" "option_name" "enabled"))
  ("value"
   ("message" "leader_option_2" "leader_option_1" "research" "warfare" "mining" "farming" "command" "insert_tag" "gold" "if" "filter" "recruit" "not")
-  ("code" "ally_8" "ally_7" "ally_6" "ally_5" "ally_4" "ally_3" "ally_2" "ally_1" "troops" "troop_7" "troop_6" "troop_5" "troop_4" "troop_3" "troop_2" "troop_1" "max_risk" "auto_remove" "y" "x" "move" "side" "message" "experience" "hitpoints" "cumulative" "value" "gender" "first_time_only" "turn" "toggles_y" "toggles_x" "image_on" "image_off" "undead_type" "human_type" "description" "id" "type" "number" "save_on_negative_income" "spend_all_gold" "end" "begin" "active" "name" "engine"))
+  ("code" "ally_8" "ally_7" "ally_6" "ally_5" "ally_4" "ally_3" "ally_2" "ally_1" "troops" "troop_7" "troop_6" "troop_5" "troop_4" "troop_3" "troop_2" "troop_1" "max_risk" "auto_remove" "y" "x" "move" "end" "begin" "side" "experience" "hitpoints" "cumulative" "value" "gender" "first_time_only" "turn" "toggles_y" "toggles_x" "image_on" "image_off" "undead_type" "human_type" "description" "id" "message" "type" "number" "active" "name" "engine"))
  ("set_variables"
   ("insert_tag" "literal" "split" "value")
   ("to_variable" "mode" "name"))
  ("lua"
   ("args")
   ("code"))
- ("store_locations"
-  ("filter_radius" "filter_adjacent_location" "or" "filter" "not" "and")
-  ("range" "find_in" "y" "x" "terrain" "variable" "radius"))
  ("capture_village"
   ("and")
-  ("terrain" "y" "x" "side"))
+  ("owner_side" "terrain" "y" "x" "side"))
  ("filter_radius"
   ("or" "not")
   ("terrain"))
@@ -216,12 +221,10 @@
   ("role" "animate"))
  ("store_unit"
   ("filter")
-  ("y" "x" "fire_event" "kill" "mode" "variable"))
+  ("fire_event" "kill" "mode" "variable"))
  ("while"
   ("not" "and" "or" "do" "variable")
   nil)
- ("variable" nil
-  ("less_then" "numerical_not_equals" "value" "boolean_not_equals" "greater_than_equal_to" "boolean_equals" "not_equal" "contains" "not_equals" "less_than_equal_to" "equals" "less_than" "greater_than" "numerical_equals" "name"))
  ("replace_schedule" nil nil)
  ("replace_map" nil
   ("expand" "shrink" "map" "y" "x"))
@@ -230,19 +233,19 @@
   ("filter_wml" "not")
   ("canrecruit" "id" "y" "x" "side" "race" "role" "type"))
  ("frame" nil
-  ("offset" "image_mod" "end" "begin" "blend_ratio" "blend_color" "alpha" "duration" "halo" "sound" "image"))
+  ("end" "begin" "offset" "image_mod" "auto_hflip" "blend_ratio" "blend_color" "halo_x" "alpha" "duration" "halo" "sound" "image"))
  ("standing_anim"
   ("else" "if" "filter" "frame")
-  ("alpha" "terrain_type" "submerge" "direction" "layer" "start_time"))
+  ("alpha" "direction" "terrain_type" "submerge" "layer" "start_time"))
  ("specials"
-  ("heal_on_hit" "drains")
+  ("heal_on_hit" "drains" "firststrike")
   nil)
  ("unstore_unit" nil
   ("animate" "advance" "check_passability" "y" "x" "text" "find_vacant" "variable"))
  ("deprecated_message" nil
   ("message"))
  ("else"
-  ("tunnel" "music" "sling_stone_frame" "flame_burst_5_frame" "flame_burst_4_frame" "flame_burst_3_frame" "flame_burst_2_frame" "flame_burst_1_frame" "halo_frame" "set_variables" "attack_sound_frame" "unit_overlay" "modify_unit" "remove_shroud" "frame" "redraw" "terrain_mask" "terrain" "remove_item" "part" "move_unit_fake" "gold" "remove_sound_source" "switch" "fire_event" "print" "animate_unit" "missile_frame" "objectives" "unstore_unit" "item" "store_unit" "recall" "sound_frame" "store_locations" "delay" "color_adjust" "sound" "scroll_to_unit" "role" "event" "object" "set_variable" "if" "unit" "allow_undo" "message" "allow_recruit" "disallow_recruit" "store_reachable_locations" "endlevel" "modify_side" "kill")
+  ("tunnel" "music" "sling_stone_frame" "flame_burst_5_frame" "flame_burst_4_frame" "flame_burst_3_frame" "flame_burst_2_frame" "flame_burst_1_frame" "halo_frame" "set_variables" "missile_2_frame" "missile_1_frame" "attack_sound_frame" "unit_overlay" "modify_unit" "remove_shroud" "frame" "redraw" "terrain_mask" "terrain" "remove_item" "part" "move_unit_fake" "gold" "remove_sound_source" "switch" "fire_event" "print" "animate_unit" "missile_frame" "objectives" "unstore_unit" "item" "store_unit" "recall" "sound_frame" "store_locations" "delay" "color_adjust" "sound" "scroll_to_unit" "role" "event" "object" "set_variable" "if" "unit" "allow_undo" "message" "allow_recruit" "disallow_recruit" "store_reachable_locations" "endlevel" "modify_side" "kill")
   ("alpha" "value_second" "offset" "start_time" "missile_offset" "missile_start_time" "animate" "random_traits" "role" "name" "side" "direction" "hits"))
  ("switch"
   ("else" "case")
@@ -253,7 +256,7 @@
  ("sound" nil
   ("name"))
  ("primary_unit"
-  ("filter_location")
+  ("filter_location" "filter_wml")
   ("side" "y" "x" "id"))
  ("fire_event"
   ("secondary_unit" "primary_unit")
@@ -267,7 +270,7 @@
   ("border" "y" "x" "border_size" "usage" "mask"))
  ("animate_unit"
   ("animate" "facing" "primary_attack" "filter")
-  ("blue" "green" "red" "text" "hits" "flag"))
+  ("with_bars" "blue" "green" "red" "text" "hits" "flag"))
  ("item" nil
   ("name" "id" "halo" "image" "y" "x"))
  ("color_palette" nil
@@ -275,14 +278,11 @@
  ("color_range" nil
   ("name" "rgb" "id"))
  ("remove_shroud"
-  ("not" "filter_side")
-  ("radius" "find_in" "y" "x" "side"))
+  ("filter_side" "not" "and")
+  ("find_in" "radius" "y" "x" "side"))
  ("modify_side"
   ("filter_side" "ai")
-  ("shroud_data" "recruit" "shroud" "user_team_name" "fog" "team_name" "share_maps" "share_view" "income" "gold" "switch_ai" "hidden" "controller" "side"))
- ("if"
-  ("sling_stone_frame" "flame_burst_5_frame" "flame_burst_4_frame" "flame_burst_3_frame" "flame_burst_2_frame" "flame_burst_1_frame" "halo_frame" "filter_second_attack" "attack_sound_frame" "poisoned_sound_frame" "slowed_sound_frame" "filter_second" "frame" "hit_sound_frame" "missile_frame" "sound_frame" "have_location" "and" "or" "have_unit" "not" "else" "then" "variable")
-  ("alpha" "start_time" "value_second" "missile_start_time" "base_score" "attack_sound_start_time" "poisoned_sound_start_time" "slowed_sound_start_time" "offset" "hit_sound_start_time" "direction" "hits"))
+  ("shroud_data" "reset_maps" "shroud" "user_team_name" "fog" "team_name" "recruit" "share_maps" "share_view" "income" "gold" "switch_ai" "hidden" "controller" "side"))
  ("store_side" nil
   ("variable" "side"))
  ("primary_attack" nil
@@ -318,7 +318,7 @@
   ("filter_radius" "filter_vision" "not" "filter_adjacent" "filter_wml" "or" "and" "have_location" "variable" "have_unit")
   ("terrain_type" "ability" "side" "radius" "y" "x" "race" "role" "find_in" "type" "id" "terrain"))
  ("and"
-  ("filter_adjacent_location" "filter_location" "filter_radius" "filter" "or" "not" "variable" "have_unit")
+  ("filter_vision" "filter_adjacent_location" "filter_location" "filter_radius" "filter" "or" "not" "variable" "have_unit")
   ("ability" "side" "find_in" "race" "role" "terrain" "id" "type" "radius" "y" "x"))
  ("gold" nil
   ("prefix_literal" "prefix" "yanchor" "xanchor" "rect" "ref" "font_size" "id" "amount" "side"))
@@ -332,10 +332,10 @@
   ("sounds" "fade_range" "full_range" "y" "x" "loop" "check_fogged" "chance" "delay" "id"))
  ("time_area"
   ("time")
-  ("current_time" "current_tod" "terrain" "radius" "id" "find_in" "y" "x"))
+  ("current_time" "terrain" "radius" "id" "find_in" "y" "x"))
  ("status"
-  ("zoom_level" "report_countdown" "tod_stats" "unit_weapons" "unit_vision" "terrain_info" "unit_box" "unit_status" "highlighted_unit_weapons" "unit_xp" "unit_hp" "unit_defense" "unit_moves" "unit_abilities" "unit_traits" "unit_alignment" "unit_level" "unit_race" "unit_type" "unit_name" "unit_image" "selected_unit_status" "selected_unit_weapons" "selected_unit_xp" "selected_unit_hp" "selected_unit_defense" "selected_unit_moves" "selected_unit_abilities" "selected_unit_traits" "selected_unit_alignment" "selected_unit_level" "selected_unit_race" "selected_unit_type" "selected_unit_name" "selected_unit_image" "selected_unit_profile" "observers" "terrain" "position" "panel" "income" "upkeep" "num_units" "villages" "gold" "turn" "side_playing" "selected_time_of_day" "time_of_day")
-  ("unhealable" "entangled" "not_living" "worked_this_turn" "unplagueable" "unpoisonable" "dehydration_slowed_by_healer" "dehydrated" "slowed" "petrified" "poisoned" "stunned"))
+  ("unit_weapons" "unit_defense" "unit_vision" "unit_traits" "unit_race" "unit_abilities" "unit_level" "unit_type" "unit_side" "observers" "upkeep" "num_units" "villages" "terrain" "zoom_level" "unit_alignment" "unit_status" "unit_moves" "unit_xp" "unit_hp" "unit_name" "unit_image" "report_countdown" "income" "gold" "turn" "side_playing" "tod_stats" "time_of_day" "terrain_info" "position")
+  ("unhealable" "entangled" "not_living" "worked_this_turn" "unplagueable" "unpoisonable" "slowed" "dehydration_slowed_by_healer" "dehydrated" "petrified" "poisoned" "stunned"))
  ("select_unit" nil
   ("fire_event" "type"))
  ("remove_item" nil
@@ -348,18 +348,18 @@
  ("music" nil
   ("ms_before" "play_once" "append" "immediate" "name"))
  ("modify_unit"
-  ("object" "variables" "modifications" "filter")
+  ("object" "variables" "movement_costs" "modifications" "filter")
   ("vision" "description" "facing" "canrecruit" "ellipse" "hitpoints" "profile" "name" "id" "type" "side" "moves"))
  ("filter_adjacent"
   ("and" "filter_wml")
-  ("race" "is_enemy" "count" "role" "side" "id"))
+  ("race" "is_enemy" "count" "type" "role" "side" "id"))
  ("drains" nil
   ("multiply" "apply_to" "add" "value" "description" "name" "id"))
  ("heal_on_hit"
   ("filter_opponent")
   ("description_inactive" "name_inactive" "value" "apply_to" "sub" "description" "name" "id"))
  ("set_specials"
-  ("heal_on_hit" "dummy" "firststrike" "chance_to_hit" "berserk")
+  ("heal_on_hit" "dummy" "chance_to_hit" "berserk" "firststrike")
   ("mode"))
  ("defense" nil
   ("fungus" "impassable" "unwalkable" "frozen" "cave" "castle" "village" "hills" "forest" "sand" "flat" "swamp_water" "reef" "shallow_water" "deep_water" "mountains"))
@@ -412,8 +412,8 @@
  ("topic" nil
   ("text" "generator" "title" "id"))
  ("theme"
-  ("resolution" "partialresolution")
-  ("_resolution" "_partialresolution" "hidden" "name"))
+  ("partialresolution" "resolution")
+  ("_resolution" "_partialresolution" "hidden" "description" "name" "id"))
  ("section" nil
   ("generator" "sort_sections" "sections_generator" "sections" "sort_topics" "topics" "title" "id"))
  ("race" nil
@@ -443,12 +443,14 @@
   ("text"))
  ("campaign"
   ("about")
-  ("_about" "max_players" "min_players" "type" "extra_defines" "description" "define" "difficulty_descriptions" "difficulties" "first_scenario" "rank" "abbrev" "name" "image" "icon" "id"))
+  ("_about" "allow_era_choice" "max_players" "min_players" "type" "extra_defines" "description" "define" "difficulty_descriptions" "difficulties" "first_scenario" "rank" "abbrev" "name" "image" "icon" "id"))
  ("about"
   ("description" "entry")
-  ("text" "_entry" "images" "title"))
+  ("text" "_entry" "title"))
+ ("tip" nil
+  ("source" "text"))
  ("part"
-  ("if" "image")
+  ("image")
   ("pos" "title" "name" "music" "scale_background" "background" "delay" "show_title" "story"))
  ("mask" nil
   ("shift" "image" "name"))
@@ -461,37 +463,38 @@
  ("multiplayer"
   ("music" "while" "unit" "if" "object" "unstore_unit" "store_unit" "item" "story" "generator" "scroll_to" "event" "side")
   ("random_start_time" "victory_when_enemies_defeated" "turns" "experience_modifier" "map_generation" "border_size" "map_data" "description" "name" "id"))
- ("remove" nil
-  ("image" "id"))
  ("change" nil
-  ("ref" "font_size" "rect" "image" "id"))
+  ("font_size" "image" "ref" "rect" "id"))
  ("unit_weapons" nil
   ("yanchor" "xanchor" "rect" "ref" "font_size" "id"))
  ("unit_defense" nil
-  ("ref" "yanchor" "xanchor" "prefix_literal" "prefix" "rect" "font_size" "id"))
+  ("yanchor" "xanchor" "rect" "font_size" "id" "ref"))
  ("unit_moves" nil
-  ("ref" "yanchor" "xanchor" "prefix_literal" "prefix" "rect" "font_size" "id"))
+  ("prefix_literal" "ref" "yanchor" "xanchor" "rect" "font_size" "id"))
  ("unit_xp" nil
-  ("yanchor" "xanchor" "rect" "ref" "font_size" "id"))
+  ("prefix_literal" "ref" "yanchor" "xanchor" "rect" "font_size" "id"))
  ("unit_hp" nil
-  ("yanchor" "xanchor" "rect" "ref" "font_size" "id"))
+  ("prefix_literal" "ref" "yanchor" "xanchor" "rect" "font_size" "id"))
  ("unit_vision" nil
+  ("yanchor" "xanchor" "rect" "ref" "font_size" "id"))
+ ("unit_traits" nil
+  ("yanchor" "xanchor" "rect" "font_rgb" "font_size" "prefix" "id"))
+ ("unit_race" nil
   ("yanchor" "xanchor" "rect" "font_size" "id"))
  ("unit_abilities" nil
-  ("yanchor" "xanchor" "rect" "font_size" "id"))
- ("unit_traits" nil
-  ("ref" "yanchor" "xanchor" "rect" "font_size" "id"))
+  ("yanchor" "xanchor" "rect" "font_size" "id" "font_rgb" "prefix"))
+ ("unit_alignment" nil
+  ("font_rgb" "prefix" "yanchor" "xanchor" "rect" "id" "ref" "font_size"))
  ("unit_level" nil
   ("yanchor" "xanchor" "prefix_literal" "prefix" "rect" "font_size" "id"))
+ ("unit_side" nil
+  ("yanchor" "xanchor" "rect" "font_size" "id"))
  ("unit_name" nil
   ("yanchor" "xanchor" "rect" "ref" "font_size" "id"))
  ("unit_image" nil
   ("yanchor" "xanchor" "rect" "ref" "id"))
  ("observers" nil
   ("yanchor" "xanchor" "rect" "font_size" "id"))
- ("panel"
-  ("grid")
-  ("yanchor" "xanchor" "rect" "ref" "image" "id"))
  ("income" nil
   ("prefix_literal" "prefix" "yanchor" "xanchor" "rect" "ref" "font_size" "id"))
  ("upkeep" nil
@@ -505,8 +508,6 @@
  ("side_playing" nil
   ("yanchor" "xanchor" "rect" "ref" "id"))
  ("unit_status" nil
-  ("yanchor" "xanchor" "rect" "ref" "font_size" "id"))
- ("unit_alignment" nil
   ("ref" "yanchor" "xanchor" "rect" "font_size" "id"))
  ("tod_stats" nil
   ("yanchor" "xanchor" "rect" "font_size" "id"))
@@ -515,70 +516,37 @@
  ("terrain_info" nil
   ("yanchor" "xanchor" "rect" "ref" "id"))
  ("position" nil
-  ("yanchor" "xanchor" "rect" "ref" "font_size" "id"))
+  ("font_size" "yanchor" "xanchor" "rect" "ref" "id"))
  ("zoom_level" nil
   ("font_size" "yanchor" "xanchor" "rect" "ref" "id"))
  ("action" nil
-  ("overlay" "title2" "title" "ref" "tooltip" "tooltip_name_prepend" "yanchor" "xanchor" "rect" "auto_tooltip" "image" "type" "items" "id"))
- ("slider" nil
-  ("yanchor" "xanchor" "rect" "ref" "black_line" "id" "image"))
- ("mini_map" nil
-  ("yanchor" "xanchor" "rect" "ref" "id"))
+  ("title2" "tooltip" "tooltip_name_prepend" "title" "overlay" "yanchor" "xanchor" "rect" "auto_tooltip" "image" "type" "items" "id" "ref"))
  ("menu" nil
-  ("tooltip" "overlay" "button" "type" "font_size" "title2" "is_context_menu" "yanchor" "xanchor" "rect" "ref" "items" "image" "title" "id"))
+  ("tooltip" "overlay" "button" "type" "is_context_menu" "yanchor" "xanchor" "rect" "font_size" "ref" "items" "image" "title" "id"))
+ ("panel"
+  ("grid")
+  ("yanchor" "xanchor" "rect" "image" "id" "ref"))
  ("main_map" nil
-  ("yanchor" "xanchor" "rect" "ref" "id"))
+  ("yanchor" "xanchor" "ref" "rect" "id"))
  ("screen" nil
   ("rect" "id"))
+ ("remove" nil
+  ("id"))
  ("palette" nil
   ("yanchor" "xanchor" "rect" "ref" "id"))
- ("main_map_border" nil nil)
  ("add"
   ("menu" "action" "label" "panel")
   nil)
  ("replay"
-  ("add" "change")
+  ("change" "add")
   nil)
  ("report_countdown" nil
   ("yanchor" "xanchor" "rect" "ref" "font_size" "id"))
- ("unit_box" nil
+ ("slider" nil
+  ("yanchor" "xanchor" "rect" "ref" "black_line" "id" "image"))
+ ("mini_map" nil
   ("yanchor" "xanchor" "rect" "ref" "id"))
- ("highlighted_unit_weapons" nil
-  ("yanchor" "xanchor" "rect" "ref" "font_size" "id"))
- ("unit_race" nil
-  ("yanchor" "xanchor" "prefix" "rect" "font_size" "id"))
- ("selected_unit_status" nil
-  ("yanchor" "xanchor" "rect" "ref" "font_size" "id"))
- ("selected_unit_weapons" nil
-  ("yanchor" "xanchor" "rect" "ref" "font_size" "id"))
- ("selected_unit_xp" nil
-  ("yanchor" "xanchor" "rect" "ref" "font_size" "id"))
- ("selected_unit_hp" nil
-  ("yanchor" "xanchor" "rect" "ref" "font_size" "id"))
- ("selected_unit_defense" nil
-  ("yanchor" "xanchor" "prefix_literal" "prefix" "rect" "font_size" "id"))
- ("selected_unit_moves" nil
-  ("yanchor" "xanchor" "prefix_literal" "prefix" "rect" "font_size" "id"))
- ("selected_unit_abilities" nil
-  ("yanchor" "xanchor" "rect" "font_size" "id"))
- ("selected_unit_traits" nil
-  ("yanchor" "xanchor" "rect" "font_size" "id"))
- ("selected_unit_alignment" nil
-  ("yanchor" "xanchor" "rect" "font_size" "id"))
- ("selected_unit_level" nil
-  ("yanchor" "xanchor" "prefix_literal" "prefix" "rect" "font_size" "id"))
- ("selected_unit_race" nil
-  ("yanchor" "xanchor" "prefix" "rect" "font_size" "id"))
- ("selected_unit_type" nil
-  ("yanchor" "xanchor" "rect" "font_size" "id"))
- ("selected_unit_name" nil
-  ("yanchor" "xanchor" "rect" "ref" "font_size" "id"))
- ("selected_unit_image" nil
-  ("yanchor" "xanchor" "rect" "ref" "id"))
- ("selected_unit_profile" nil
-  ("yanchor" "xanchor" "rect" "ref" "id"))
- ("selected_time_of_day" nil
-  ("yanchor" "xanchor" "rect" "ref" "id"))
+ ("main_map_border" nil nil)
  ("test_key2" nil
   ("define"))
  ("test_key4" nil nil)
@@ -601,14 +569,14 @@
   ("show_if")
   ("description"))
  ("movement_costs" nil
-  ("castle" "village" "reef" "unwalkable" "fungus" "hills" "frozen" "sand" "flat" "cave" "forest" "shallow_water" "deep_water" "swamp_water" "mountains" "impassable"))
+  ("castle" "village" "reef" "unwalkable" "fungus" "hills" "sand" "cave" "frozen" "forest" "shallow_water" "deep_water" "swamp_water" "mountains" "impassable" "flat"))
  ("filter_condition"
-  ("or" "have_unit" "have_location" "not" "variable")
+  ("or" "have_location" "not" "have_unit" "variable")
   nil)
  ("print" nil
   ("blue" "green" "red" "duration" "size" "text"))
  ("time" nil
-  ("sound" "mask" "blue" "green" "red" "lawful_bonus" "image" "name" "id"))
+  ("sound" "blue" "green" "red" "lawful_bonus" "image" "name" "id"))
  ("allow_recruit" nil
   ("type" "side"))
  ("disallow_recruit" nil
@@ -632,8 +600,8 @@
  ("height" nil
   ("terrain" "height"))
  ("scenario"
-  ("fire_event" "music" "avoid" "objectives" "terrain_graphics" "time" "unstore_unit" "replace_map" "capture_village" "store_villages" "gold_carryover" "objective" "if" "store_unit" "goal" "move_unit_fake" "generator" "ai" "have_unit" "object" "recall" "then" "scroll_to" "time_area" "variable" "label" "allow_recruit" "message" "delay" "set_variable" "endlevel" "clear_variable" "item" "redraw" "terrain" "modify_side" "gold" "unit" "story" "event" "side")
-  ("random_traits" "role" "animate" "ai_special" "village_gold" "snapshot" "recruit" "note" "side" "force_lock_settings" "new_game_title" "y" "x" "experience_modifier" "random_start_time" "allow_new_game" "scenario_generation" "bonus" "disallow_recall" "victory_when_enemies_defeated" "next_scenario" "turns" "map_data" "id" "name"))
+  ("unstore_unit" "fire_event" "music" "avoid" "objectives" "modify_unit" "time" "gold_carryover" "objective" "if" "store_unit" "goal" "move_unit_fake" "generator" "ai" "have_unit" "object" "then" "scroll_to" "time_area" "variable" "label" "allow_recruit" "message" "delay" "set_variable" "endlevel" "clear_variable" "item" "redraw" "terrain" "modify_side" "gold" "unit" "story" "event" "side")
+  ("random_traits" "role" "animate" "ai_special" "snapshot" "note" "side" "new_game_title" "y" "x" "income" "village_gold" "experience_modifier" "force_lock_settings" "random_start_time" "allow_new_game" "scenario_generation" "bonus" "disallow_recall" "victory_when_enemies_defeated" "next_scenario" "turns" "map_data" "id" "name"))
  ("scroll_to" nil
   ("check_fogged" "y" "x"))
  ("leader_option_2" nil
@@ -650,14 +618,12 @@
   ("gold" "target" "progress"))
  ("facet"
   ("value" "filter_enemy" "filter_own")
-  ("time_of_day" "turns" "value" "id" "invalidate_on_gamestate_change" "name"))
+  ("time_of_day" "value" "turns" "id" "invalidate_on_gamestate_change" "name"))
  ("aspect"
   ("facet" "default")
   ("invalidate_on_gamestate_change" "name" "engine" "id"))
  ("locale" nil
   ("alternates" "dir" "sort_name" "locale" "name"))
- ("tip" nil
-  ("source" "text"))
  ("key" nil
   ("mandatory" "default" "type" "name"))
  ("tag"
@@ -674,6 +640,15 @@
  ("helptip" nil nil)
  ("tooltip" nil nil)
  ("scroll_label" nil nil)
+ ("layer"
+  ("row")
+  nil)
+ ("stack"
+  ("layer")
+  nil)
+ ("stacked_widget"
+  ("stack")
+  nil)
  ("drawing"
   ("draw")
   nil)
@@ -703,15 +678,6 @@
   nil)
  ("tree_view"
   ("node")
-  nil)
- ("layer"
-  ("row")
-  nil)
- ("stack"
-  ("layer")
-  nil)
- ("stacked_widget"
-  ("stack")
   nil)
  ("state_focussed"
   ("draw")
@@ -781,6 +747,10 @@
  ("panel_definition"
   ("resolution")
   nil)
+ ("blur" nil nil)
+ ("pre_commit"
+  ("blur")
+  nil)
  ("repeating_button_definition" nil nil)
  ("scroll_label_definition" nil nil)
  ("scrollbar_panel_definition"
@@ -810,10 +780,6 @@
   nil)
  ("tree_view_definition" nil nil)
  ("vertical_scrollbar_definition" nil nil)
- ("blur" nil nil)
- ("pre_commit"
-  ("blur")
-  nil)
  ("repeating_button" nil nil)
  ("horizontal_scrollbar" nil nil)
  ("vertical_scrollbar" nil nil)
@@ -829,14 +795,14 @@
   ("filter" "filter_base_value")
   ("active_on" "female_name" "multiply" "affect_self" "description" "name" "apply_to" "max_value" "add" "id" "cold" "fire" "arcane" "impact" "blade" "pierce"))
  ("attack_anim"
-  ("throw_sound_frame" "attack_sound_frame" "flame_trail_5_frame" "flame_trail_4_frame" "flame_trail_3_frame" "flame_trail_2_frame" "flame_trail_1_frame" "impact_burst_frame" "filter" "horse_sound_frame" "sound_frame" "halo_frame" "else" "if" "frame" "missile_frame" "filter_attack")
-  ("alpha" "sling_stone_start_time" "flame_burst_5_start_time" "flame_burst_4_start_time" "flame_burst_3_start_time" "flame_burst_2_start_time" "flame_burst_1_start_time" "throw_sound_start_time" "attack_sound_start_time" "flame_trail_5_start_time" "flame_trail_4_start_time" "flame_trail_3_start_time" "flame_trail_2_start_time" "flame_trail_1_start_time" "impact_burst_start_time" "horse_sound_start_time" "halo_start_time" "offset" "sound_start_time" "hits" "direction" "start_time" "missile_start_time"))
+  ("throw_sound_frame" "flame_trail_5_frame" "flame_trail_4_frame" "flame_trail_3_frame" "flame_trail_2_frame" "flame_trail_1_frame" "impact_burst_frame" "halo2_frame" "halo1_frame" "filter" "horse_sound_frame" "sound_frame" "halo_frame" "else" "if" "attack_sound_frame" "frame" "missile_frame" "filter_attack")
+  ("alpha" "sling_stone_start_time" "flame_burst_5_start_time" "flame_burst_4_start_time" "flame_burst_3_start_time" "flame_burst_2_start_time" "flame_burst_1_start_time" "throw_sound_start_time" "flame_trail_5_start_time" "flame_trail_4_start_time" "flame_trail_3_start_time" "flame_trail_2_start_time" "flame_trail_1_start_time" "impact_burst_start_time" "halo2_start_time" "halo1_start_time" "horse_sound_start_time" "halo_start_time" "offset" "sound_start_time" "attack_sound_start_time" "hits" "direction" "start_time" "missile_start_time"))
  ("attack"
   ("specials")
   ("defense_weight" "attack_weight" "icon" "number" "damage" "range" "type" "description" "name"))
  ("death"
-  ("filter_attack" "else" "if" "frame")
-  ("direction" "start_time"))
+  ("filter_attack" "else" "if" "die_sound_frame" "frame")
+  ("auto_vflip" "auto_hflip" "halo" "duration" "start_time"))
  ("variation"
   ("death" "standing_anim" "defense" "movement_costs" "movement_anim" "advancement" "leading_anim" "defend" "filter_second_attack" "attack_anim" "attack" "abilities" "resistance")
   ("hide_help" "inherit" "die_sound" "description" "usage" "cost" "advances_to" "alignment" "level" "experience" "movement" "movement_type" "hitpoints" "image" "race" "name" "id" "variation_name"))
@@ -851,13 +817,13 @@
  ("advancefrom" nil
   ("experience" "unit"))
  ("female"
-  ("recruiting_anim" "animation" "healing_anim" "idle_anim" "defend" "portrait" "death" "attack_anim")
+  ("recruiting_anim" "animation" "healing_anim" "defend" "portrait" "idle_anim" "death" "attack_anim")
   ("description" "profile" "die_sound" "image" "gender" "name"))
  ("idle_anim"
   ("filter" "frame")
   ("direction" "start_time"))
  ("missile_frame" nil
-  ("auto_hflip" "auto_vflip" "alpha" "sound" "halo_y" "halo_x" "directional_x" "end" "begin" "y" "x" "offset" "halo" "image_diagonal" "image" "duration"))
+  ("auto_hflip" "halo_y" "halo_x" "auto_vflip" "y" "x" "sound" "alpha" "directional_x" "halo" "offset" "image_diagonal" "image" "duration"))
  ("recruit_anim"
   ("frame")
   ("start_time"))
@@ -868,15 +834,15 @@
  ("sling_stone_frame" nil
   ("offset" "y" "halo_y" "halo_x" "halo"))
  ("flame_burst_5_frame" nil
-  ("offset" "halo" "duration"))
+  ("offset" "halo"))
  ("flame_burst_4_frame" nil
-  ("offset" "halo" "duration"))
+  ("offset" "halo"))
  ("flame_burst_3_frame" nil
-  ("offset" "halo" "duration"))
+  ("offset" "halo"))
  ("flame_burst_2_frame" nil
-  ("offset" "halo" "duration"))
+  ("offset" "halo"))
  ("flame_burst_1_frame" nil
-  ("offset" "halo" "duration"))
+  ("offset" "halo"))
  ("throw_sound_frame" nil
   ("sound"))
  ("healing_anim"
@@ -891,6 +857,8 @@
  ("draw_weapon_anim"
   ("filter_attack" "frame")
   ("terrain_type"))
+ ("horse_sound_frame" nil
+  ("sound"))
  ("leading_anim"
   ("halo_frame" "frame")
   ("halo_start_time" "start_time"))
@@ -913,8 +881,8 @@
  ("poison" nil
   ("description" "name" "id"))
  ("firststrike"
-  ("filter_opponent")
-  ("description" "name_inactive" "name" "id"))
+  ("filter_opponent" "filter_self")
+  ("name_inactive" "description" "name" "id"))
  ("damage" nil
   ("apply_to" "active_on" "backstab" "multiply" "description" "name" "id"))
  ("swarm" nil
@@ -972,12 +940,12 @@
   ("option_description"))
  ("revoke_behavior_orders"
   ("actions_when_applied")
-  ("option_description"))
+  ("currently_doing_description" "option_description"))
  ("revoke_objective_orders"
   ("actions_when_applied")
-  ("option_description"))
+  ("currently_doing_description" "option_description"))
  ("criteria"
-  ("filter_location" "filter_adjacent" "or" "not")
+  ("filter_location" "filter_adjacent" "not")
   ("type" "role" "y" "x" "race" "canrecruit" "side" "id"))
  ("goal"
   ("criteria")
@@ -1027,6 +995,10 @@
   ("terrain_type" "start_time"))
  ("shadow_frame" nil
   ("layer" "y" "image_diagonal" "image" "alpha" "offset" "duration"))
+ ("missile_2_frame" nil
+  ("alpha" "directional_y" "directional_x" "y" "x" "image_diagonal" "image" "offset"))
+ ("missile_1_frame" nil
+  ("alpha" "directional_y" "directional_x" "y" "x" "image_diagonal" "image" "offset"))
  ("water_frame" nil
   ("halo"))
  ("flare_frame" nil
@@ -1060,7 +1032,8 @@
  ("lift_fog"
   ("filter_side")
   ("multiturn" "radius"))
- ("filter_side" nil
+ ("filter_side"
+  ("has_unit" "allied_with")
   ("side"))
  ("recall" nil
   ("facing" "side" "show" "y" "x" "animate" "type" "role" "id"))
@@ -1070,6 +1043,8 @@
   ("sound"))
  ("slowed_sound_frame" nil
   ("sound"))
+ ("store_map_dimensions" nil
+  ("variable"))
  ("move_unit" nil
   ("fire_event" "to_y" "to_x" "role" "id"))
  ("titlescreen_music"
@@ -1096,42 +1071,28 @@
  ("tutorial"
   ("music" "event" "side")
   ("victory_when_enemies_defeated" "next_scenario" "border_size" "turns" "map_data" "name" "id"))
+ ("extra_anim"
+  ("frame")
+  ("start_time" "flag"))
  ("hide_unit" nil
   ("id" "y" "x" "canrecruit" "side"))
  ("hide_help" nil
   ("type" "type_adv_tree"))
  ("vision_costs" nil
   ("unwalkable" "fungus" "frozen" "cave" "castle" "village" "mountains" "hills" "forest" "sand" "flat" "swamp_water" "reef" "deep_water" "shallow_water"))
- ("explosion_6_frame" nil
-  ("halo" "duration"))
- ("explosion_5_frame" nil
-  ("halo" "duration"))
- ("explosion_4_frame" nil
-  ("halo" "duration"))
- ("explosion_3_frame" nil
-  ("halo" "duration"))
- ("explosion_2_frame" nil
-  ("halo" "duration"))
- ("explosion_1_frame" nil
-  ("halo" "duration"))
- ("flame_burst_6_frame" nil
-  ("halo" "duration"))
  ("die_sound_frame" nil
   ("sound" "duration"))
  ("filter_self"
-  ("filter_location")
+  ("filter_adjacent" "filter_location")
   ("side" "role"))
  ("gold_carryover" nil
   ("carryover_percentage" "bonus"))
  ("place_shroud"
   ("not")
-  ("find_in" "y" "x" "side"))
+  ("find_in" "y" "x" "radius" "side"))
  ("filter_adjacent_location"
   ("filter_adjacent_location" "not" "filter")
   ("direction" "find_in" "count" "terrain" "adjacent"))
- ("variables"
-  ("landing_party" "insert_tag")
-  ("dehydrated" "has_sorf" "great_horde_upkeep_mod_applied" "destination_y" "destination_x" "boarding_transport" "dock_y" "dock_x" "transport_num" "role" "turned_to_undead_at_least_once" "prison_y" "prison_x" "casting_the_spell" "random_lich" "got_inside_manor" "s" "label"))
  ("heal_unit"
   ("filter")
   ("restore_statuses" "restore_attacks" "moves" "animate" "amount"))
@@ -1143,7 +1104,7 @@
   nil)
  ("animate"
   ("secondary_attack" "facing" "filter")
-  ("blue" "green" "red" "text" "hits" "flag"))
+  ("with_bars" "blue" "green" "red" "text" "hits" "flag"))
  ("secondary_attack" nil
   ("name"))
  ("avoid"
@@ -1151,15 +1112,19 @@
   ("y" "x" "terrain"))
  ("micro_ai"
   ("avoid_unit" "filter_location_enemy" "mobilize_condition" "avoid" "filter_location_wander" "filter_location" "unit" "probability" "filter_second" "filter")
-  ("weapon" "disable_move_leader_to_keep" "avoid_type" "tusklet_type" "tusker_type" "rabbit_type" "deer_type" "active_side_leader" "leadership_y" "leadership_x" "healer_y" "healer_x" "enemy_y" "enemy_x" "y" "x" "show_messages" "rest_turns" "use_straight_line" "avoid_enemies" "unique_goals" "release_all_units_at_goal" "release_unit_at_goal" "ca_id" "seek_x" "distance" "aggression" "injured_units_only" "stationary" "out_and_back" "attack" "one_time_only" "waypoint_y" "waypoint_x" "id" "skip_low_gold_recruiting" "ca_score" "pack_size" "show_pack_number" "action" "ai_type" "side"))
+  ("weapon" "disable_move_leader_to_keep" "avoid_type" "tusklet_type" "tusker_type" "rabbit_type" "deer_type" "active_side_leader" "leadership_y" "leadership_x" "healer_y" "healer_x" "enemy_y" "enemy_x" "y" "x" "rest_turns" "use_straight_line" "avoid_enemies" "unique_goals" "release_all_units_at_goal" "release_unit_at_goal" "ca_id" "seek_x" "distance" "aggression" "injured_units_only" "stationary" "out_and_back" "attack" "one_time_only" "waypoint_y" "waypoint_x" "id" "skip_low_gold_recruiting" "ca_score" "pack_size" "show_pack_number" "action" "ai_type" "side"))
  ("petrify" nil
   ("id"))
  ("background_layer" nil
   ("base_layer" "keep_aspect_ratio" "scale_horizontally" "scale_vertically" "image"))
- ("extra_anim"
-  ("frame")
-  ("start_time" "flag"))
+ ("variables"
+  ("landing_party" "insert_tag")
+  ("has_sorf" "great_horde_upkeep_mod_applied" "destination_y" "destination_x" "boarding_transport" "dock_y" "dock_x" "transport_num" "role" "turned_to_undead_at_least_once" "prison_y" "prison_x" "casting_the_spell" "temporary_free_upkeep" "undercover" "random_lich" "got_inside_manor" "s" "label"))
  ("leader_goal" nil nil)
+ ("halo2_frame" nil
+  ("auto_hflip" "auto_vflip" "offset" "halo"))
+ ("halo1_frame" nil
+  ("auto_hflip" "auto_vflip" "offset" "halo"))
  ("landing_party" nil nil)
  ("store_time_of_day" nil
   ("variable"))
@@ -1171,18 +1136,21 @@
  ("items"
   ("side")
   nil)
- ("horse_sound_frame" nil
-  ("sound"))
  ("outlaw_type_hack" nil
   ("id"))
  ("filter_recall" nil
   ("race" "type"))
  ("remove_sound_source" nil
   ("id"))
- ("allow_extra_recruit" nil
-  ("extra_recruit" "id"))
  ("shift_labels" nil
   ("y" "x"))
+ ("allow_extra_recruit" nil
+  ("extra_recruit" "id"))
+ ("has_unit" nil
+  ("id"))
+ ("allied_with"
+  ("has_unit")
+  nil)
  ("floating_text"
   ("filter")
   ("text"))
@@ -1193,6 +1161,9 @@
   ("alpha" "image" "duration"))
  ("teleport_ring_frame" nil
   ("alpha" "image" "duration"))
+ ("filter_enemy"
+  ("not")
+  nil)
  ("protect_area" nil
   ("y" "x" "value" "radius"))
  ("find_path"
@@ -1202,9 +1173,6 @@
   ("y" "x"))
  ("traveler" nil
   ("id"))
- ("filter_enemy"
-  ("not")
-  nil)
  ("filter_own" nil
   ("race"))
  ("filter_location_wander" nil
@@ -1231,6 +1199,11 @@
   ("IMAGESTEM"))
  ("ODD" nil)
  ("EVEN" nil)
+ ("FONT_RGB_LEVEL1" nil)
+ ("DEFAULT_FONT_REALLYTINY_HEIGHT" nil)
+ ("DEFAULT_FONT_TINY_HEIGHT" nil)
+ ("DEFAULT_FONT_SMALL_HEIGHT" nil)
+ ("DEFAULT_FONT_NORMAL_HEIGHT" nil)
  ("DEFAULT_EDITOR_FONT_REALLYTINY" nil)
  ("DEFAULT_EDITOR_FONT_TINY" nil)
  ("DEFAULT_EDITOR_FONT_SMALL" nil)
@@ -1240,6 +1213,8 @@
  ("COUNTDOWN_THEME_STATUS"
   ("FONT_SMALL_SIZE"))
  ("COUNTDOWN_THEME" nil)
+ ("MINIMAP_THEME" nil)
+ ("MINIMAP_THEME_600" nil)
  ("CHANGE_STATUS_BOX"
   ("X1" "Y1" "X2" "Y2" "ID" "REF"))
  ("REMOVE_STATUS_BOX"
@@ -1247,9 +1222,6 @@
  ("STATUS_BOX"
   ("X1" "Y1" "X2" "Y2" "ID" "REF" "XANCHOR" "YANCHOR"))
  ("MAIN_MAP_BORDER" nil)
- ("DEFAULT_FONT320_TINY" nil)
- ("DEFAULT_FONT320_SMALL" nil)
- ("DEFAULT_FONT320_NORMAL" nil)
  ("DEFAULT_FONT_REALLYTINY" nil)
  ("DEFAULT_FONT_TINY" nil)
  ("DEFAULT_FONT_SMALL" nil)
@@ -1423,6 +1395,8 @@
   ("ID" "LABEL"))
  ("_GUI_TICK_MARK"
   ("ANGLE" "TEXT"))
+ ("_GUI_SIDE_CONTROLLER_OPTION"
+  ("ID" "LABEL"))
  ("__GUI_GAME_PATHS_ENTRY"
   ("ID_STEM" "LABEL"))
  ("_GUI_CONTROL_AREA" nil)
@@ -1457,6 +1431,7 @@
  ("_GUI_LISTBOXES_GRID" nil)
  ("_GUI_NICKS_LISTBOX" nil)
  ("_GUI_SIDES_LISTBOX" nil)
+ ("__GUI_FILENAME_OPTIONS_GRID" nil)
  ("_GUI_MENU_SECTION" nil)
  ("_GUI_BUTTON"
   ("ID" "CAPTION" "TOOLTIP"))
@@ -1470,6 +1445,12 @@
  ("_GUI_BG_RATIO" nil)
  ("_GUI_BG_WRATIO" nil)
  ("_GUI_BG_HRATIO" nil)
+ ("__GUI_WINDOW_REEVALUATE_BEST_SIZE" nil)
+ ("__GUI_WINDOW_WIDTH" nil)
+ ("__GUI_WINDOW_Y" nil)
+ ("__GUI_WINDOW_X" nil)
+ ("__GUI_WINDOW_FUNCTIONS" nil)
+ ("__GUI_WINDOW_HEIGHT" nil)
  ("_GUI_BUTTON_ROW" nil)
  ("_GUI_BIG_WEAPON_PANEL" nil)
  ("_GUI_BIG_UNIT_PANEL" nil)
@@ -1516,22 +1497,30 @@
   ("RESOLUTION" "BORDER" "OFFSET_SIDE_1" "OFFSET_SIDE_2" "OFFSET_TOTAL"))
  ("_GUI_RESOLUTION"
   ("RESOLUTION" "BORDER_SIDE_1" "BORDER_SIDE_2" "OFFSET_SIDE_1" "OFFSET_TOTAL"))
- ("_GUI_BASE_NAME" nil)
  ("_GUI_DEFINITION"
   ("ID" "DESCRIPTION" "IMAGE" "IMAGE_OVERLAY" "IPF"))
  ("_GUI_RESOLUTION"
   ("RESOLUTION" "SIZE" "IMAGE" "IMAGE_OVERLAY" "IPF"))
+ ("_GUI_BASE_NAME" nil)
  ("_GUI_RESOLUTION"
   ("RESOLUTION" "MIN_WIDTH" "DEFAULT_WIDTH" "HEIGHT" "POSITIONER_LENGTH" "RIGHT_OFFSET" "TEXT_OFFSET" "TEXT_WIDTH" "FONT_SIZE"))
  ("_GUI_STATE"
   ("IMAGE_SUFFIX" "GROOVE_COLOR" "TEXT_COLOR" "RIGHT_OFFSET" "TEXT_OFFSET" "TEXT_WIDTH" "FONT_SIZE"))
  ("_GUI_RESOLUTION"
-  ("RESOLUTION" "MIN_WIDTH" "DEFAULT_WIDTH" "HEIGHT" "X_OFFSET" "EXTRA_WIDTH" "FONT_SIZE"))
+  ("RESOLUTION" "MIN_WIDTH" "DEFAULT_WIDTH" "HEIGHT" "POSITIONER_LENGTH"))
+ ("_GUI_STATE"
+  ("IMAGE_SUFFIX" "GROOVE_COLOR"))
+ ("_GUI_RESOLUTION"
+  ("RESOLUTION" "MIN_WIDTH" "DEFAULT_WIDTH" "HEIGHT" "X_OFFSET" "EXTRA_WIDTH" "FONT_SIZE" "BACKGROUND_ENABLED" "BACKGROUND_DISABLED"))
  ("_GUI_DRAW_CURSOR"
   ("X_OFFSET"))
  ("_GUI_DRAW_TEXT"
   ("SIZE" "COLOR"))
  ("_GUI_DRAW_BORDER"
+  ("COLOR"))
+ ("_GUI_TEXTBOX_BACKGROUND_DISABLED" nil)
+ ("_GUI_TEXTBOX_BACKGROUND_ENABLED" nil)
+ ("_GUI_DRAW_BACKGROUND"
   ("COLOR"))
  ("_GUI_RESOLUTION"
   ("RESOLUTION" "SIZE"))
@@ -3293,6 +3282,14 @@
   ("TERRAINLIST"))
  ("DISABLE_BASE_TRANSITIONS_F"
   ("TERRAIN" "FLAG"))
+ ("TRASH_C"
+  ("TERRAIN" "FLAG" "FLAG2" "PROB" "VARIATIONS" "IMAGE"))
+ ("TRASH_B"
+  ("TERRAIN" "FLAG" "PROB" "VARIATIONS" "IMAGE"))
+ ("LITTER_BASE"
+  ("TERRAIN" "IMAGESTEM"))
+ ("TRASH_A"
+  ("TERRAIN" "PROB" "IMAGESTEM"))
  ("VILLAGE_COMPLETE"
   ("TERRAIN" "ADJACENT" "IMAGESTEM"))
  ("VILLAGE_COMPLETE_L"
@@ -3791,6 +3788,9 @@
   ("X" "Y" "AUTOREMOVE_VALUE"))
  ("AI_SIMPLE_FORMULA_AI_EXPERIMENTAL_RECRUITMENT" nil)
  ("AI_FORMULA_AI_EXPERIMENTAL_RECRUITMENT" nil)
+ ("AI_SAVE_GOLD_DEFAULT" nil)
+ ("AI_SAVE_GOLD"
+  ("ACTIVE" "BEGIN" "END"))
  ("AI_NO_RECRUITMENT" nil)
  ("AI_DEACTIVATE_SAVE_GOLD" nil)
  ("AI_SCALE_ATTACK_DEPTH_BY_DIFFICULTY" nil)
@@ -3935,6 +3935,8 @@
   ("DRAKE_NAME"))
  ("DRAKE_UNWALKABLE_TERRAINS" nil)
  ("MISSILE_FRAME_SHADOW_WAVE" nil)
+ ("MISSILE_FRAME_CHILL_TEMPEST"
+  ("X" "Y"))
  ("MISSILE_FRAME_CHILL_WAVE"
   ("X" "Y"))
  ("MISSILE_FRAME_STONE_MISS"
@@ -4179,6 +4181,7 @@
  ("NAGA_NAMES" nil)
  ("MERMAN_NAMES" nil)
  ("LIZARD_NAMES" nil)
+ ("KHALIFATE_NAMES" nil)
  ("HUMAN_NAMES" nil)
  ("GRYPHON_NAMES" nil)
  ("ELVISH_NAMES" nil)
@@ -4208,6 +4211,22 @@
  ("EVERYWHERE" nil)
  ("INFINITY" nil)
  ("FOREVER" nil)
+ ("TWO_SUNS_DEFAULT_SCHEDULE" nil)
+ ("LONGDARK4" nil)
+ ("LONGDARK3" nil)
+ ("LONGDARK2" nil)
+ ("LONGDARK1" nil)
+ ("SHORTDARK" nil)
+ ("DUSK2" nil)
+ ("DUSK1" nil)
+ ("AFTERNOON2" nil)
+ ("AFTERNOON1" nil)
+ ("MIDDAY2" nil)
+ ("MIDDAY1" nil)
+ ("MORNING2" nil)
+ ("MORNING1" nil)
+ ("DAWN2" nil)
+ ("DAWN1" nil)
  ("DEFAULT_SCHEDULE_24H" nil)
  ("FIRST_WATCH_HOUR4" nil)
  ("FIRST_WATCH_HOUR3" nil)
@@ -4367,6 +4386,10 @@
   ("DIRECTION"))
  ("NO_UPKEEP" nil)
  ("GUARDIAN" nil)
+ ("RECALL_XY"
+  ("ID_STRING" "X" "Y"))
+ ("RECALL"
+  ("ID_STRING"))
  ("NAMED_NOTRAIT_UNIT"
   ("SIDE" "TYPE" "X" "Y" "ID_STRING" "NAME_STRING"))
  ("NAMED_GENERIC_UNIT"
@@ -4540,14 +4563,9 @@
  ("UTBS_SHAKE_SCREEN" nil)
  ("INCREASE_RECRUIT_COSTS"
   ("X"))
- ("FIND_LOCATION_FOR_DARK_ASSASSIN" nil)
- ("ENDLOOP"
-  ("VAR"))
- ("STARTLOOP"
-  ("VAR"))
  ("CLEAR_PLACEMENT_AREA" nil)
  ("PLACE_UNITS_RANDOMLY"
-  ("NUMBER" "SIDE" "TYPE" "ID_STRING" "NAME_STRING" "TRAIT_WML"))
+  ("NUMBER" "SIDE" "TYPE" "ROLE_STRING" "NAME_STRING" "TRAIT_WML"))
  ("RANDOM_PLACEMENT_AREA"
   ("X" "Y" "RADIUS"))
  ("STORY_EPILOGUE" nil)
@@ -4565,28 +4583,8 @@
  ("STORY_STIRRING_IN_THE_NIGHT" nil)
  ("STORY_ACROSS_THE_HARSH_SANDS" nil)
  ("STORY_THE_MORNING_AFTER" nil)
- ("TWO_SUNS_DEFAULT_SCHEDULE" nil)
- ("LONGDARK4" nil)
- ("LONGDARK3" nil)
- ("LONGDARK2" nil)
- ("LONGDARK1" nil)
- ("SHORTDARK" nil)
- ("DUSK2" nil)
- ("DUSK1" nil)
- ("AFTERNOON2" nil)
- ("AFTERNOON1" nil)
- ("MIDDAY2" nil)
- ("MIDDAY1" nil)
- ("MORNING2" nil)
- ("MORNING1" nil)
- ("DAWN2" nil)
- ("DAWN1" nil)
- ("CENTRAL_BODY_DEATH_ANIMATION"
-  ("BASE_IMAGE_AFFIX" "OVERLAY_IMAGE_AFFIX"))
- ("CENTRAL_BODY_ATTACK_ANIMATION"
-  ("AFFIX"))
- ("PULSING_SPIRE_ATTACK_ANIMATION"
-  ("AFFIX"))
+ ("BURST_FRAME"
+  ("NUMBER" "TIME" "DELAY" "POS"))
  ("DESERT_ARCHER_VARIANT"
   ("SUFFIX_NUMBER" "COST"))
  ("DESERT_FIGHTER_VARIANT"
@@ -4648,7 +4646,6 @@
  ("DEFEAT_AZKOTEP_OBJECTIVE" nil)
  ("VILLAGE_CONTROL_OBJECTIVE" nil)
  ("NAGA_ATTACK" nil)
- ("CALL_ASSASSIN" nil)
  ("ALLY_REINFORCEMENTS" nil)
  ("ENEMY_ATTACK" nil)
  ("DEFENDER"
@@ -4674,8 +4671,6 @@
  ("BIGMAP_09A" nil)
  ("BIGMAP_08B" nil)
  ("BIGMAP_08A" nil)
- ("BIGMAP_07B" nil)
- ("BIGMAP_07A" nil)
  ("BIGMAP_06B" nil)
  ("BIGMAP_06A" nil)
  ("JOURNEY_09A_NEW" nil)
@@ -4683,10 +4678,6 @@
  ("JOURNEY_08B_NEW" nil)
  ("JOURNEY_08A_OLD" nil)
  ("JOURNEY_08A_NEW" nil)
- ("JOURNEY_07B_OLD" nil)
- ("JOURNEY_07B_NEW" nil)
- ("JOURNEY_07A_OLD" nil)
- ("JOURNEY_07A_NEW" nil)
  ("JOURNEY_06B_OLD" nil)
  ("JOURNEY_06B_NEW" nil)
  ("JOURNEY_06A_OLD" nil)
@@ -4704,104 +4695,30 @@
  ("TROLL_HELP" nil)
  ("ILLUMINATING_CAMPFIRE"
   ("X" "Y"))
+ ("BIGMAP_23" nil)
+ ("BIGMAP_22" nil)
+ ("BIGMAP_21" nil)
+ ("BIGMAP_20" nil)
+ ("BIGMAP_19" nil)
+ ("BIGMAP_17D" nil)
+ ("BIGMAP_17C" nil)
+ ("BIGMAP_17B" nil)
+ ("BIGMAP_17A" nil)
+ ("JOURNEY_19_OLD" nil)
+ ("JOURNEY_19_NEW" nil)
+ ("JOURNEY_17D_OLD" nil)
+ ("JOURNEY_17D_NEW" nil)
+ ("JOURNEY_17C_OLD" nil)
+ ("JOURNEY_17C_NEW" nil)
+ ("JOURNEY_17B_OLD" nil)
+ ("JOURNEY_17B_NEW" nil)
+ ("JOURNEY_17A_OLD" nil)
+ ("JOURNEY_17A_NEW" nil)
+ ("TROW_GREAT_CONTINENT_BIGMAP" nil)
+ ("TROW_GREEN_ISLE_BIGMAP" nil)
  ("SPECIAL_NOTES_DISTRACT" nil)
  ("ABILITY_DISTRACT" nil)
- ("EPILOGUE_BIGMAP" nil)
- ("RISE_OF_WESNOTH_BIGMAP" nil)
- ("THE_PLAN_BIGMAP" nil)
- ("RETURN_OF_THE_FLEET_BIGMAP" nil)
- ("THE_VANGUARD_BIGMAP" nil)
- ("A_SPY_IN_THE_WOODS_BIGMAP" nil)
- ("CURSED_ISLE_BIGMAP" nil)
- ("TROLL_HOLE_BIGMAP" nil)
- ("LIZARD_BEACH_BIGMAP" nil)
- ("THE_DRAGON_BIGMAP" nil)
- ("THE_KALIAN_BIGMAP" nil)
- ("QUEST_CONDITIONAL" nil)
- ("A_NEW_LAND_BIGMAP" nil)
- ("AFTER_QUEST_COMPLETE" nil)
- ("AFTER_QUEST_STAGE5_END" nil)
- ("AFTER_QUEST_STAGE5" nil)
- ("AFTER_QUEST_STAGE4_END" nil)
- ("AFTER_QUEST_STAGE4" nil)
- ("AFTER_QUEST_STAGE3_END" nil)
- ("AFTER_QUEST_STAGE3" nil)
- ("AFTER_QUEST_STAGE2_END" nil)
- ("AFTER_QUEST_STAGE2" nil)
- ("AFTER_QUEST_STAGE1_END" nil)
- ("AFTER_QUEST_STAGE1" nil)
- ("KALIAN_TO_CURSED_ISLE_COMPLETE" nil)
- ("KALIAN_TO_CURSED_ISLE_STAGE1_END" nil)
- ("KALIAN_TO_CURSED_ISLE_STAGE1" nil)
- ("KALIAN_TO_TROLL_HOLE_COMPLETE" nil)
- ("KALIAN_TO_TROLL_HOLE_STAGE1_END" nil)
- ("KALIAN_TO_TROLL_HOLE_STAGE1" nil)
- ("KALIAN_TO_BEACH_COMPLETE" nil)
- ("KALIAN_TO_BEACH_STAGE1_END" nil)
- ("KALIAN_TO_BEACH_STAGE1" nil)
- ("KALIAN_TO_DRAGON_COMPLETE" nil)
- ("KALIAN_TO_DRAGON_STAGE1_END" nil)
- ("KALIAN_TO_DRAGON_STAGE1" nil)
- ("LANDING_TO_KALIAN_COMPLETE" nil)
- ("LANDING_TO_KALIAN_STAGE2_END" nil)
- ("LANDING_TO_KALIAN_STAGE2" nil)
- ("LANDING_TO_KALIAN_STAGE1_END" nil)
- ("LANDING_TO_KALIAN_STAGE1" nil)
- ("LANDING_COMPLETE" nil)
- ("LANDING_STAGE1_END" nil)
- ("LANDING_STAGE1" nil)
  ("TROW_DEATHS" nil)
- ("PEOPLES_IN_DECLINE_BIGMAP" nil)
- ("A_FINAL_SPRING_BIGMAP" nil)
- ("SOUTHBAY_IN_WINTER_BIGMAP" nil)
- ("SEWER_OF_SOUTHBAY_BIGMAP" nil)
- ("FALLEN_LICH_POINT_BIGMAP" nil)
- ("CLEARWATER_PORT_BIGMAP" nil)
- ("RETURN_TO_OLDWOOD_BIGMAP" nil)
- ("TEMPLE_IN_THE_DEEP_BIGMAP" nil)
- ("FROM_OLDWOOD" nil)
- ("THE_OLDWOOD_BIGMAP" nil)
- ("THE_MIDLANDS_BIGMAP" nil)
- ("THE_RIVER_ROAD_BIGMAP" nil)
- ("A_HARROWING_ESCAPE_BIGMAP" nil)
- ("THE_FALL_BIGMAP" nil)
- ("A_SUMMER_OF_STORMS_BIGMAP" nil)
- ("TROW_GREEN_ISLE_LABELS_NO_TITLE" nil)
- ("TROW_GREEN_ISLE_LABELS" nil)
- ("EXODUS_COMPLETE" nil)
- ("EXODUS_STAGE8_END" nil)
- ("EXODUS_STAGE8" nil)
- ("EXODUS_STAGE7_END" nil)
- ("EXODUS_STAGE7" nil)
- ("EXODUS_STAGE6_END" nil)
- ("EXODUS_STAGE6" nil)
- ("EXODUS_STAGE5_END" nil)
- ("EXODUS_STAGE5" nil)
- ("EXODUS_STAGE4_END" nil)
- ("EXODUS_STAGE4" nil)
- ("EXODUS_STAGE3_END" nil)
- ("EXODUS_STAGE3" nil)
- ("EXODUS_STAGE2_END" nil)
- ("EXODUS_STAGE2" nil)
- ("EXODUS_STAGE1_END" nil)
- ("EXODUS_STAGE1" nil)
- ("THE_MIDLANDS_COMPLETE" nil)
- ("THE_MIDLANDS_STAGE2_END" nil)
- ("THE_MIDLANDS_STAGE2" nil)
- ("THE_MIDLANDS_STAGE1_END" nil)
- ("THE_MIDLANDS_STAGE1" nil)
- ("THE_RIVER_ROAD_COMPLETE" nil)
- ("THE_RIVER_ROAD_STAGE2_END" nil)
- ("THE_RIVER_ROAD_STAGE2" nil)
- ("THE_RIVER_ROAD_STAGE1_END" nil)
- ("THE_RIVER_ROAD_STAGE1" nil)
- ("FROM_STORMVALE_COMPLETE" nil)
- ("FROM_STORMVALE_STAGE3_END" nil)
- ("FROM_STORMVALE_STAGE3" nil)
- ("FROM_STORMVALE_STAGE2_END" nil)
- ("FROM_STORMVALE_STAGE2" nil)
- ("FROM_STORMVALE_STAGE1_END" nil)
- ("FROM_STORMVALE_STAGE1" nil)
  ("RISE_UP_RISE_UP" nil)
  ("LIVING_INTEL"
   ("TYPE" "ID_STRING" "NAME_STRING" "PROFILE" "SIDE" "X" "Y"))
@@ -4811,12 +4728,6 @@
   ("TYPE" "ID_STRING" "NAME_STRING" "SIDE" "X" "Y"))
  ("HERO"
   ("TYPE" "ID_STRING" "NAME_STRING" "SIDE" "X" "Y" "PROFILE"))
- ("TROW_A_NEW_LAND_STORY" nil)
- ("TROW_ROUGH_LANDING_STORY" nil)
- ("TROW_PEOPLES_IN_DECLINE_STORY" nil)
- ("TROW_NOHOME_STORY" nil)
- ("TROW_THE_FALL_STORY" nil)
- ("TROW_INTRO_STORY" nil)
  ("NORTH_GUARD"
   ("X" "Y" "ID_STRING" "NAME_STRING" "SECOND_TRAIT_WML"))
  ("ESCAPE_VICTORY" nil)
@@ -4904,12 +4815,6 @@
   ("SIDE" "X" "Y"))
  ("KAL_KARTHAN"
   ("X" "Y" "TYPE" "STRING"))
- ("BIGMAP_18" nil)
- ("BIGMAP_17" nil)
- ("BIGMAP_16" nil)
- ("BIGMAP_15" nil)
- ("BIGMAP_14" nil)
- ("BIGMAP_13" nil)
  ("SOTBE_BIGMAP" nil)
  ("GENERALS_MUST_SURVIVE" nil)
  ("INARIX_DEATH" nil)
@@ -4917,6 +4822,9 @@
  ("KAPOUE_DEATH" nil)
  ("SHAMAN_DEATHS" nil)
  ("DEFEAT" nil)
+ ("AI_FORCE_ATTACK_HIGH_XP_UNITS"
+  ("SIDE"))
+ ("AI_FORCE_ATTACK_HIGH_XP_UNITS_SETUP" nil)
  ("GOT_THE_GREAT_HORDE"
   ("SIDES"))
  ("GREAT_HORDE_NOTE" nil)
@@ -4926,11 +4834,11 @@
   ("VAR" "NAME" "STRING"))
  ("BLACK_FLAG" nil)
  ("ORCISH_SHAMAN"
-  ("X" "Y" "ID_STRING" "NAME_STRING"))
+  ("SIDE" "X" "Y" "ID_STRING" "NAME_STRING"))
  ("NOVICE_ORCISH_SHAMAN"
-  ("X" "Y" "ID_STRING" "NAME_STRING"))
+  ("SIDE" "X" "Y" "ID_STRING" "NAME_STRING"))
  ("OLD_ORCISH_SHAMAN"
-  ("X" "Y" "ID_STRING" "NAME_STRING"))
+  ("SIDE" "X" "Y" "ID_STRING" "NAME_STRING"))
  ("NOT_SAFE_LOCATIONS" nil)
  ("HUMAN_SHIP"
   ("X" "Y" "FACING_VALUE" "ID_VALUE"))
@@ -4939,6 +4847,8 @@
  ("CASTLE_OF_FLARTAR" nil)
  ("HUMAN_REINFORCEMENTS"
   ("ID_GENERAL"))
+ ("ATTACK_ANIM"
+  ("ID_ATTACKER" "ID_DEFENDER" "HITS" "DAMAGE" "TEXT"))
  ("BIGMAP_04T" nil)
  ("BIGMAP_03T" nil)
  ("BIGMAP_02T" nil)
@@ -4960,13 +4870,15 @@
   ("X" "Y"))
  ("IN_CAVES" nil)
  ("RANDOM_MERCENARY"
-  ("TYPE"))
+  ("TYPE" "X" "Y"))
  ("CHANGE_MAP"
   ("TURN"))
  ("RANDOM_MERCENARY_2"
   ("TYPE"))
  ("ROYAL_GUARDIAN"
   ("X" "Y"))
+ ("FIND_NR_WHITE_MAGE_RESPAWN"
+  ("HUB_CANDIDATE"))
  ("TO_SHOWDOWN" nil)
  ("TO_GET_THE_GOLD" nil)
  ("TO_EASTERN_FLANK" nil)
@@ -5050,12 +4962,17 @@
  ("ANDUILAS" nil)
  ("URADREDIA" nil)
  ("EL_ISOMITHIR" nil)
+ ("ERADION" nil)
  ("GALTRID" nil)
+ ("OLURF_PARTY"
+  ("SIDE"))
  ("OLURF" nil)
  ("TAMERIL_ISIMERIL" nil)
  ("LARIL" nil)
  ("CLEODIL" nil)
  ("LANDAR" nil)
+ ("SCOUT" nil)
+ ("HURALDUR" nil)
  ("PLAYABLE" nil)
  ("TO_END_OF_WAR" nil)
  ("TO_NORTHERN_BATTLE" nil)
@@ -5103,6 +5020,8 @@
  ("SAURIANS_STAGE1_END" nil)
  ("SAURIANS_STAGE1" nil)
  ("ALLIANCE_COMPLETE" nil)
+ ("ALLIANCE_STAGE5_END" nil)
+ ("ALLIANCE_STAGE5" nil)
  ("ALLIANCE_STAGE4_END" nil)
  ("ALLIANCE_STAGE4" nil)
  ("ALLIANCE_STAGE3_END" nil)
@@ -5112,6 +5031,8 @@
  ("ALLIANCE_STAGE1_END" nil)
  ("ALLIANCE_STAGE1" nil)
  ("BOOK_COMPLETE" nil)
+ ("BOOK_STAGE4_END" nil)
+ ("BOOK_STAGE4" nil)
  ("BOOK_STAGE3_END" nil)
  ("BOOK_STAGE3" nil)
  ("BOOK_STAGE2_END" nil)
@@ -5194,6 +5115,7 @@
  ("FILTER_LOYALS" nil)
  ("MULTIPLAYER_GOLD_04" nil)
  ("PLAYER_GOLD_04" nil)
+ ("LOW_BIGMAP" nil)
  ("BIRD_SOUND"
   ("X" "Y"))
  ("RIVER_FAST"
@@ -5208,13 +5130,12 @@
   ("NAME" "X" "Y"))
  ("LOW_MASK_IN_EVENT"
   ("NAME" "X" "Y"))
+ ("LOAD_SUBMAP"
+  ("X_SPAN" "Y_SPAN" "OFFSET_X" "OFFSET_Y" "MAP"))
  ("LOW_MAP"
   ("NAME"))
  ("VICTORY_CONDITIONAL" nil)
  ("BETRAY_SPEECH" nil)
- ("ORCS" nil)
- ("LOAD_SUBMAP"
-  ("X_SPAN" "Y_SPAN" "OFFSET_X" "OFFSET_Y"))
  ("ORCISH_GUARD" nil)
  ("INVISIBILITY_POTION"
   ("AFFIX" "DESCRIPTION"))
@@ -5226,13 +5147,11 @@
  ("SAURIAN_AI" nil)
  ("ELVISH_MOUNTED_UNITS" nil)
  ("TREASURY_LOCATION" nil)
- ("PLACE_B" nil)
- ("PLACE_A" nil)
  ("OBJECTIVES" nil)
  ("RECRUIT_ORC" nil)
  ("ASK_AI" nil)
  ("OLURF_SPEAK" nil)
- ("OLURF_PARTY" nil)
+ ("MULTIPLAYER_GOLD" nil)
  ("SINGLEPLAYER_GOLD" nil)
  ("ENDSPEECH"
   ("SPEAKER_NAME"))
@@ -5248,11 +5167,16 @@
  ("CLEAN_AI"
   ("SIDE"))
  ("OLURFS_LAND" nil)
- ("MULTIPLAYER_GOLD" nil)
- ("PLAYER_GOLD" nil)
  ("ORC_BATTLEFIELD_EVALUATION_FAILURE" nil)
  ("ORC_BATTLEFIELD_EVALUATION_SUCCESS" nil)
  ("ORC_BATTLEFIELD_EVALUATION" nil)
+ ("PLAYER_GOLD" nil)
+ ("WEAPON_SPECIAL_INITIATIVE_EVENTS" nil)
+ ("LACKS_INITIATIVE_FILTER" nil)
+ ("INITIATIVE_OBJECT"
+  ("FILTER"))
+ ("SPECIAL_NOTES_INITIATIVE" nil)
+ ("ABILITY_INITIATIVE" nil)
  ("BIGMAP_BATTLE_FOR_WESNOTH" nil)
  ("BIGMAP_TEST_OF_THE_CLANS" nil)
  ("BIGMAP_RETURN_TO_WESNOTH" nil)
@@ -5299,16 +5223,6 @@
  ("JOURNEY_18_OLD" nil)
  ("JOURNEY_18_NEW" nil)
  ("JOURNEY_17_OLD" nil)
- ("JOURNEY_17_NEW" nil)
- ("JOURNEY_16_OLD" nil)
- ("JOURNEY_16_NEW" nil)
- ("JOURNEY_15_OLD" nil)
- ("JOURNEY_15_NEW" nil)
- ("JOURNEY_14_OLD" nil)
- ("JOURNEY_14_NEW" nil)
- ("JOURNEY_13_OLD" nil)
- ("JOURNEY_13_NEW" nil)
- ("JOURNEY_12_OLD" nil)
  ("JOURNEY_05B_OLD" nil)
  ("JOURNEY_05B_NEW" nil)
  ("JOURNEY_05A_OLD" nil)
@@ -5395,71 +5309,42 @@
  ("LIGHT_SHIELD_IN_ANIMATION" nil)
  ("LIGHT_SHIELD_OUT_ANIMATION" nil)
  ("TELEPORT_FAILED_ANIMATION" nil)
+ ("BIGMAP_18" nil)
+ ("BIGMAP_17" nil)
+ ("BIGMAP_16" nil)
+ ("BIGMAP_15" nil)
+ ("BIGMAP_14" nil)
+ ("BIGMAP_13" nil)
+ ("BIGMAP_07B" nil)
+ ("BIGMAP_07A" nil)
+ ("BIGMAP_04C" nil)
+ ("BIGMAP_04B" nil)
+ ("BIGMAP_04A" nil)
+ ("JOURNEY_17_NEW" nil)
+ ("JOURNEY_16_OLD" nil)
+ ("JOURNEY_16_NEW" nil)
+ ("JOURNEY_15_OLD" nil)
+ ("JOURNEY_15_NEW" nil)
+ ("JOURNEY_14_OLD" nil)
+ ("JOURNEY_14_NEW" nil)
+ ("JOURNEY_13_OLD" nil)
+ ("JOURNEY_13_NEW" nil)
+ ("JOURNEY_12_OLD" nil)
+ ("JOURNEY_07B_OLD" nil)
+ ("JOURNEY_07B_NEW" nil)
+ ("JOURNEY_07A_OLD" nil)
+ ("JOURNEY_07A_NEW" nil)
+ ("JOURNEY_04C_OLD" nil)
+ ("JOURNEY_04C_NEW" nil)
+ ("JOURNEY_04B_OLD" nil)
+ ("JOURNEY_04B_NEW" nil)
+ ("JOURNEY_04A_OLD" nil)
+ ("JOURNEY_04A_NEW" nil)
+ ("EI_BIGMAP" nil)
  ("LATE_DEFEAT" nil)
  ("WESNOTH_DEFEAT" nil)
  ("FOREIGN_DEFEAT" nil)
  ("EARLY_DEFEAT" nil)
- ("TO_THE_COUNCIL" nil)
- ("TO_APPROACHING_WELDYN" nil)
- ("TO_THE_DROWNED_PLAINS" nil)
- ("TO_EVACUATION" nil)
- ("TO_LAKE_VRUG" nil)
- ("TO_XENOPHOBIA" nil)
- ("FROM_TRAINING_THE_OGRES"
-  ("AFTER_WML"))
- ("TO_TRAINING_THE_OGRES" nil)
- ("TO_THE_CROSSING" nil)
- ("TO_UNDEAD_CROSSING" nil)
- ("TO_TWO_PATHS" nil)
- ("TO_NORTHERN_OUTPOST" nil)
- ("TO_MAL_RAVANALS_CAPITOL" nil)
- ("TO_THE_UNDEAD_BORDER_PATROL" nil)
- ("TO_AN_ELVEN_ALLIANCE" nil)
- ("TO_AN_UNEXPECTED_APPEARANCE" nil)
- ("TO_THE_OUTPOST" nil)
- ("JOURNEY7_COMPLETE" nil)
- ("JOURNEY7_STAGE6_END" nil)
- ("JOURNEY7_STAGE6" nil)
- ("JOURNEY7_STAGE5_END" nil)
- ("JOURNEY7_STAGE5" nil)
- ("JOURNEY7_STAGE4_END" nil)
- ("JOURNEY7_STAGE4" nil)
- ("JOURNEY7_STAGE3_END" nil)
- ("JOURNEY7_STAGE3" nil)
- ("JOURNEY7_STAGE2_END" nil)
- ("JOURNEY7_STAGE2" nil)
- ("JOURNEY7_STAGE1_END" nil)
- ("JOURNEY7_STAGE1" nil)
- ("JOURNEY6_COMPLETE" nil)
- ("JOURNEY6_STAGE2_END" nil)
- ("JOURNEY6_STAGE2" nil)
- ("JOURNEY6_STAGE1_END" nil)
- ("JOURNEY6_STAGE1" nil)
- ("JOURNEY5_COMPLETE" nil)
- ("JOURNEY5_STAGE2_END" nil)
- ("JOURNEY5_STAGE2" nil)
- ("JOURNEY5_STAGE1_END" nil)
- ("JOURNEY5_STAGE1" nil)
- ("JOURNEY4_COMPLETE" nil)
- ("JOURNEY4_STAGE1_END" nil)
- ("JOURNEY4_STAGE1" nil)
- ("JOURNEY3_COMPLETE" nil)
- ("JOURNEY3_STAGE3_END" nil)
- ("JOURNEY3_STAGE3" nil)
- ("JOURNEY3_STAGE2_END" nil)
- ("JOURNEY3_STAGE2" nil)
- ("JOURNEY3_STAGE1_END" nil)
- ("JOURNEY3_STAGE1" nil)
- ("JOURNEY2_COMPLETE" nil)
- ("JOURNEY2_STAGE2_END" nil)
- ("JOURNEY2_STAGE2" nil)
- ("JOURNEY2_STAGE1_END" nil)
- ("JOURNEY2_STAGE1" nil)
- ("JOURNEY1_COMPLETE" nil)
- ("JOURNEY1_STAGE2_END" nil)
- ("JOURNEY1_STAGE2" nil)
- ("JOURNEY1_STAGE1_END" nil)
- ("JOURNEY1_STAGE1" nil)
  ("BRAZIERS" nil)
  ("THRONEROOM_DECOR" nil)
  ("THRONEROOM_GUARD"
@@ -5470,15 +5355,7 @@
  ("REVENANT"
   ("X" "Y"))
  ("CUTTLEFISH" nil)
- ("OGRE" nil)
- ("ROLE"
-  ("TYPE" "ROLE_VALUE" "X" "Y"))
- ("SIDE3"
-  ("X" "Y" "TYPE"))
- ("ATTACKER"
-  ("X" "Y" "TYPE"))
- ("GUARD"
-  ("X" "Y" "TYPE"))
+ ("MAP_EDGES_SLF" nil)
  ("TROLL_GUARD"
   ("SIDE" "X" "Y" "WML"))
  ("UNDEAD_AMBUSH_AREA"

@@ -16,6 +16,10 @@
 
 #define invalidateTMcache(t)	((t)->flags = 0)
 
+/* returns the key, given the value of a table entry */
+#define keyfromval(v) \
+  (gkey(cast(Node *, cast(char *, (v)) - offsetof(Node, i_val))))
+
 
 LUAI_FUNC const TValue *luaH_getint (Table *t, int key);
 LUAI_FUNC void luaH_setint (lua_State *L, Table *t, int key, TValue *value);

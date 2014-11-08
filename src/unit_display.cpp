@@ -803,22 +803,42 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 		std::vector<attack_type> attacks = u->attacks();
 		std::vector<attack_type>::iterator itor;
 
-		filter = cfg.child("primary_attack");
-		if(!filter.null()) {
-			for(itor = attacks.begin(); itor != attacks.end(); ++itor){
-				if(itor->matches_filter(filter.get_parsed_config())) {
-					primary = &*itor;
-					break;
-				}
+		// death and victory animations are handled here because usually
+		// the code iterates through all the unit's attacks
+		// but in these two specific cases we need to create dummy attacks
+		// to fire correctly certain animations
+		// this is especially evident with the Wose's death animations
+		if (cfg["flag"] == "death" || cfg["flag"] == "victory") {
+			filter = cfg.child("primary_attack");
+			if(!filter.null()) {
+				attack_type dummy_primary = static_cast<attack_type>(filter.get_config());
+				primary = &dummy_primary;
+			}
+			filter = cfg.child("secondary_attack");
+			if(!filter.null()) {
+				attack_type dummy_secondary = static_cast<attack_type>(filter.get_config());
+				secondary = &dummy_secondary;
 			}
 		}
 
-		filter = cfg.child("secondary_attack");
-		if(!filter.null()) {
-			for(itor = attacks.begin(); itor != attacks.end(); ++itor){
-				if(itor->matches_filter(filter.get_parsed_config())) {
-					secondary = &*itor;
-					break;
+		else {
+			filter = cfg.child("primary_attack");
+			if(!filter.null()) {
+				for(itor = attacks.begin(); itor != attacks.end(); ++itor){
+					if(itor->matches_filter(filter.get_parsed_config())) {
+						primary = &*itor;
+						break;
+					}
+				}
+			}
+
+			filter = cfg.child("secondary_attack");
+			if(!filter.null()) {
+				for(itor = attacks.begin(); itor != attacks.end(); ++itor){
+					if(itor->matches_filter(filter.get_parsed_config())) {
+						secondary = &*itor;
+						break;
+					}
 				}
 			}
 		}

@@ -15,8 +15,8 @@
 #include "lualib.h"
 
 
-#define aux_getn(L,n)  \
-	(luaL_checktype(L, n, LUA_TTABLE), luaL_len(L, n))
+#define aux_getn(L,n)	(luaL_checktype(L, n, LUA_TTABLE), luaL_len(L, n))
+
 
 
 #if defined(LUA_COMPAT_MAXN)
@@ -48,7 +48,7 @@ static int tinsert (lua_State *L) {
     case 3: {
       int i;
       pos = luaL_checkint(L, 2);  /* 2nd argument is the position */
-      if (pos > e) e = pos;  /* `grow' array if necessary */
+      luaL_argcheck(L, 1 <= pos && pos <= e, 2, "position out of bounds");
       for (i = e; i > pos; i--) {  /* move up elements */
         lua_rawgeti(L, 1, i-1);
         lua_rawseti(L, 1, i);  /* t[i] = t[i-1] */
@@ -65,17 +65,17 @@ static int tinsert (lua_State *L) {
 
 
 static int tremove (lua_State *L) {
-  int e = aux_getn(L, 1);
-  int pos = luaL_optint(L, 2, e);
-  if (!(1 <= pos && pos <= e))  /* position is outside bounds? */
-    return 0;  /* nothing to remove */
+  int size = aux_getn(L, 1);
+  int pos = luaL_optint(L, 2, size);
+  if (pos != size)  /* validate 'pos' if given */
+    luaL_argcheck(L, 1 <= pos && pos <= size + 1, 1, "position out of bounds");
   lua_rawgeti(L, 1, pos);  /* result = t[pos] */
-  for ( ;pos<e; pos++) {
+  for ( ; pos < size; pos++) {
     lua_rawgeti(L, 1, pos+1);
     lua_rawseti(L, 1, pos);  /* t[pos] = t[pos+1] */
   }
   lua_pushnil(L);
-  lua_rawseti(L, 1, e);  /* t[e] = nil */
+  lua_rawseti(L, 1, pos);  /* t[pos] = nil */
   return 1;
 }
 

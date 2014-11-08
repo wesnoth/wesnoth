@@ -41,12 +41,23 @@ SDL_mixer 1.2.12
 
 For both scons and cmake, the first two may be disabled (and the old code used, rolling back results of previous section) by turning off the "enable boost filesystem" flag. For cmake, the third requirement may also be removed, reducing SDL_mixer dependency to 1.2.0, by using the ENABLE_PANDORA flag.
 
-For those of you compiling Wesnoth on OS X using Xcode, this means that you need to download a new version of wesnoth_compile_mac_1.11.zip.
+Wesnoth OS X builds and release packages do not use the new dependencies in order to retain support of OS X Leopard (10.5) for the Wesnoth 1.12 series. Unicode character support does not seem to be a problem on OS X.
 [/section]
 
 [section="Example section 1"]
 Example contents 1.
 [/section]
+
+[rasection="[i]Legend of Wesmere[/i]: Bug fixes”]Remaining known issues affecting [i]Legend of Wesmere[/i] (single player mode) have been fixed:
+
+[list][*]“Ka’lian under attack”: fixed more issues due to new map size.
+[*]“Ka’lian under attack”: fixed two issues with fog. This fixes bug [bug]22880[/bug].
+[*]“Elves Last Stand”: fixed not all elvish leaders being able to recruit.
+[*]“Elves Last Stand”: fixed bugs in Olurf and Olurf's party arrival.
+[*]“Bounty Hunters”: fixed several coordinate issues due to new map size.
+[*]“Cliffs of Thoria”: fixed so that yetis can be seen moving in hole in fog.
+[*]Fixed player team name in several scenarios.
+[*]Fixed player side carryover in several scenarios.[/list][/rasection]
 
 ==========
 KNOWN BUGS

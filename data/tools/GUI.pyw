@@ -63,7 +63,10 @@ def run_tool(tool,queue,command):
     if sys.platform=="win32":
         # Windows wants a string, Linux wants a list and Polly wants a cracker
         # Windows wants also strings flavoured with double quotes
-        wrapped_line=map(wrap_elem,command)
+        # since maps return iterators, we must cast them as lists, otherwise join won't work
+        # not doing this causes an OSError: [WinError 87]
+        # this doesn't happen on Python 2.7, because here map() returns a list
+        wrapped_line=list(map(wrap_elem,command))
         queue.put_nowait(' '.join(wrapped_line)+"\n")
         si=subprocess.STARTUPINFO()
         si.dwFlags=subprocess.STARTF_USESHOWWINDOW|subprocess.SW_HIDE # to avoid showing a DOS prompt
@@ -173,8 +176,18 @@ If the widget isn't active, some options do not appear"""
                          image=ICONS['select_all'],
                          compound=LEFT,
                          accelerator='Ctrl+A',
-                         command=lambda: self.widget.event_generate("<<SelectAll>>"))
+                         command=self.on_select_all)
         self.tk_popup(x,y) # self.post does not destroy the menu when clicking out of it
+    def on_select_all(self):
+        # disabled Text widgets have a different way to handle selection
+        if isinstance(self.widget,Text):
+            # adding a SEL tag to a chunk of text causes it to be selected
+            self.widget.tag_add(SEL,"1.0",END)
+        elif isinstance(self.widget,Entry) or \
+             isinstance(self.widget,Spinbox) or \
+             isinstance(self.widget,Combobox):
+            # if the widget is active or readonly, just fire the correct event
+            self.widget.event_generate("<<SelectAll>>")
 
 class EntryContext(Entry):
     def __init__(self,parent,**kwargs):
@@ -188,12 +201,26 @@ Use like any other Entry widget"""
         # some mice don't even have two buttons, so the user is forced
         # to use Control + the only button
         # bear in mind that I don't have a Mac, so this point may be bugged
-        if sys.platform=="darwin":
-            self.bind("<Button-2>",self.on_right_click)
-            self.bind("<Control-Button-1>",self.on_right_click)
-        else:
-            self.bind("<Button-3>",self.on_right_click)
-    def on_right_click(self,event):
+        # bind also the context menu key, for those keyboards that have it
+        # that is, most of the Windows and Linux ones (however, in Win it's
+        # called App, while on Linux is called Menu)
+        # Mac doesn't have a context menu key on its keyboards, so no binding
+        # finally, bind also the Shift+F10 shortcut (same as Menu/App key)
+        # the call to tk windowingsystem is justified by the fact
+        # that it is possible to install X11 over Darwin
+        windowingsystem = self.tk.call('tk', 'windowingsystem')
+        if windowingsystem == "win32": # Windows, both 32 and 64 bit
+            self.bind("<Button-3>",self.on_context_menu)
+            self.bind("<KeyPress-App>",self.on_context_menu)
+            self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+        elif windowingsystem == "aqua": # MacOS with Aqua
+            self.bind("<Button-2>",self.on_context_menu)
+            self.bind("<Control-Button-1>",self.on_context_menu)
+        elif windowingsystem == "x11": # Linux, FreeBSD, Darwin with X11
+            self.bind("<Button-3>",self.on_context_menu)
+            self.bind("<KeyPress-Menu>",self.on_context_menu)
+            self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+    def on_context_menu(self,event):
         if str(self.cget('state')) != DISABLED:
             ContextMenu(event.x_root,event.y_root,event.widget)
 
@@ -205,18 +232,48 @@ Use like any other Spinbox widget"""
             super().__init__(parent,**kwargs)
         else:
             Spinbox.__init__(self,parent,**kwargs)
-        # on Mac the right button fires a Button-2 event, or so I'm told
-        # some mice don't even have two buttons, so the user is forced
-        # to use Control + the only button
-        # bear in mind that I don't have a Mac, so this point may be bugged
-        if sys.platform=="darwin":
-            self.bind("<Button-2>",self.on_right_click)
-            self.bind("<Control-Button-1>",self.on_right_click)
-        else:
-            self.bind("<Button-3>",self.on_right_click)
-    def on_right_click(self,event):
+        # see the above widget for an explanation of this block
+        windowingsystem = self.tk.call('tk', 'windowingsystem')
+        if windowingsystem == "win32":
+            self.bind("<Button-3>",self.on_context_menu)
+            self.bind("<KeyPress-App>",self.on_context_menu)
+            self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+        elif windowingsystem == "aqua":
+            self.bind("<Button-2>",self.on_context_menu)
+            self.bind("<Control-Button-1>",self.on_context_menu)
+        elif windowingsystem == "x11":
+            self.bind("<Button-3>",self.on_context_menu)
+            self.bind("<KeyPress-Menu>",self.on_context_menu)
+            self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+    def on_context_menu(self,event):
         if str(self.cget('state')) != DISABLED:
             ContextMenu(event.x_root,event.y_root,event.widget)
+
+class EnhancedText(Text):
+    def __init__(self,*args,**kwargs):
+        """A subclass of Text with a context menu
+Use it like any other Text widget"""
+        if sys.version_info.major>=3:
+            super().__init__(*args,**kwargs)
+        else:
+            Text.__init__(self,*args,**kwargs)
+        # see descriptions of above widgets
+        windowingsystem = self.tk.call('tk', 'windowingsystem')
+        if windowingsystem == "win32": # Windows, both 32 and 64 bit
+            self.bind("<Button-3>",self.on_context_menu)
+            self.bind("<KeyPress-App>",self.on_context_menu)
+            self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+        elif windowingsystem == "aqua": # MacOS with Aqua
+            self.bind("<Button-2>",self.on_context_menu)
+            self.bind("<Control-Button-1>",self.on_context_menu)
+        elif windowingsystem == "x11": # Linux, FreeBSD, Darwin with X11
+            self.bind("<Button-3>",self.on_context_menu)
+            self.bind("<KeyPress-Menu>",self.on_context_menu)
+            self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+    def on_context_menu(self,event):
+        # the disabled state in a Text widget is pretty much
+        # like the readonly state in Entry, hence no state check
+        ContextMenu(event.x_root,event.y_root,event.widget)
 
 class SelectDirectory(LabelFrame):
     def __init__(self,parent,textvariable=None,**kwargs):
@@ -338,7 +395,7 @@ class WmllintTab(Frame):
         self.verbosity_frame.grid(row=0,
                                   column=1,
                                   sticky=N+E+S+W)
-        self.verbosity_variable=IntVar(0)
+        self.verbosity_variable=IntVar()
         self.radio_v0=Radiobutton(self.verbosity_frame,
                                   text="Terse",
                                   variable=self.verbosity_variable,
@@ -376,7 +433,7 @@ class WmllintTab(Frame):
         self.options_frame.grid(row=0,
                                 column=2,
                                 sticky=N+E+S+W)
-        self.stripcr_variable=IntVar(0)
+        self.stripcr_variable=BooleanVar()
         self.stripcr_check=Checkbutton(self.options_frame,
                                        text="Convert EOL characters to Unix style",
                                        variable=self.stripcr_variable)
@@ -384,7 +441,7 @@ class WmllintTab(Frame):
                                 column=0,
                                 sticky=W,
                                 padx=10)
-        self.missing_variable=IntVar(0)
+        self.missing_variable=BooleanVar()
         self.missing_check=Checkbutton(self.options_frame,
                                         text="Don't warn about tags without side= keys",
                                         variable=self.missing_variable)
@@ -392,7 +449,7 @@ class WmllintTab(Frame):
                                  column=0,
                                  sticky=W,
                                  padx=10)
-        self.known_variable=IntVar(0)
+        self.known_variable=BooleanVar()
         self.known_check=Checkbutton(self.options_frame,
                                      text="Disable checks for unknown units",
                                      variable=self.known_variable)
@@ -400,7 +457,7 @@ class WmllintTab(Frame):
                               column=0,
                               sticky=W,
                               padx=10)
-        self.spell_variable=IntVar(0)
+        self.spell_variable=BooleanVar()
         self.spell_check=Checkbutton(self.options_frame,
                                      text="Disable spellchecking",
                                      variable=self.spell_variable)
@@ -408,7 +465,7 @@ class WmllintTab(Frame):
                               column=0,
                               sticky=W,
                               padx=10)
-        self.freeze_variable=IntVar(0)
+        self.freeze_variable=BooleanVar()
         self.freeze_check=Checkbutton(self.options_frame,
                                       text="Ignore newlines in messages",
                                       variable=self.freeze_variable)
@@ -435,7 +492,7 @@ class WmlscopeTab(Frame):
         self.normal_options.grid(row=0,
                                  column=0,
                                  sticky=N+E+S+W)
-        self.crossreference_variable=IntVar(0) # equivalent to warnlevel 1
+        self.crossreference_variable=BooleanVar() # equivalent to warnlevel 1
         self.crossreference_check=Checkbutton(self.normal_options,
                                               text="Check for duplicate macro definitions",
                                               variable=self.crossreference_variable)
@@ -443,7 +500,7 @@ class WmlscopeTab(Frame):
                                        column=0,
                                        sticky=W,
                                        padx=10)
-        self.collisions_variable=IntVar(0)
+        self.collisions_variable=BooleanVar()
         self.collisions_check=Checkbutton(self.normal_options,
                                           text="Check for duplicate resource files",
                                           variable=self.collisions_variable)
@@ -451,7 +508,7 @@ class WmlscopeTab(Frame):
                                    column=0,
                                    sticky=W,
                                    padx=10)
-        self.definitions_variable=IntVar(0)
+        self.definitions_variable=BooleanVar()
         self.definitions_check=Checkbutton(self.normal_options,
                                            text="Make definition list",
                                            variable=self.definitions_variable)
@@ -459,7 +516,7 @@ class WmlscopeTab(Frame):
                                     column=0,
                                     sticky=W,
                                     padx=10)
-        self.listfiles_variable=IntVar(0)
+        self.listfiles_variable=BooleanVar()
         self.listfiles_check=Checkbutton(self.normal_options,
                                          text="List files that will be processed",
                                          variable=self.listfiles_variable)
@@ -467,7 +524,7 @@ class WmlscopeTab(Frame):
                                   column=0,
                                   sticky=W,
                                   padx=10)
-        self.unresolved_variable=IntVar(0)
+        self.unresolved_variable=BooleanVar()
         self.unresolved_check=Checkbutton(self.normal_options,
                                           text="Report unresolved macro references",
                                           variable=self.unresolved_variable)
@@ -475,7 +532,7 @@ class WmlscopeTab(Frame):
                                    column=0,
                                    sticky=W,
                                    padx=10)
-        self.extracthelp_variable=IntVar(0)
+        self.extracthelp_variable=BooleanVar()
         self.extracthelp_check=Checkbutton(self.normal_options,
                                            text="Extract help from macro definition comments",
                                            variable=self.extracthelp_variable)
@@ -483,7 +540,7 @@ class WmlscopeTab(Frame):
                                     column=0,
                                     sticky=W,
                                     padx=10)
-        self.unchecked_variable=IntVar(0)
+        self.unchecked_variable=BooleanVar()
         self.unchecked_check=Checkbutton(self.normal_options,
                                          text="Report all macros with untyped formals",
                                          variable=self.unchecked_variable)
@@ -491,7 +548,7 @@ class WmlscopeTab(Frame):
                                   column=0,
                                   sticky=W,
                                   padx=10)
-        self.progress_variable=IntVar(0)
+        self.progress_variable=BooleanVar()
         self.progress_check=Checkbutton(self.normal_options,
                                         text="Show progress",
                                         variable=self.progress_variable)
@@ -508,7 +565,7 @@ class WmlscopeTab(Frame):
         self.options_with_regexp.grid(row=0,
                                       column=2,
                                       sticky=N+E+S+W)
-        self.exclude_variable=IntVar(0)
+        self.exclude_variable=BooleanVar()
         self.exclude_check=Checkbutton(self.options_with_regexp,
                                        text="Exclude files matching regexp:",
                                        variable=self.exclude_variable,
@@ -525,7 +582,7 @@ class WmlscopeTab(Frame):
                                 column=1,
                                 sticky=E+W,
                                 padx=10)
-        self.from_variable=IntVar(0)
+        self.from_variable=BooleanVar()
         self.from_check=Checkbutton(self.options_with_regexp,
                                     text="Exclude files not matching regexp:",
                                     variable=self.from_variable,
@@ -542,7 +599,7 @@ class WmlscopeTab(Frame):
                              column=1,
                              sticky=E+W,
                              padx=10)
-        self.refcount_variable=IntVar(0)
+        self.refcount_variable=BooleanVar()
         self.refcount_check=Checkbutton(self.options_with_regexp,
                                         text="Report only on macros referenced\nin at least n files:",
                                         variable=self.refcount_variable,
@@ -551,7 +608,7 @@ class WmlscopeTab(Frame):
                                  column=0,
                                  sticky=W,
                                  padx=10)
-        self.refcount_number=IntVar(0)
+        self.refcount_number=IntVar()
         self.refcount_spin=SpinboxContext(self.options_with_regexp,
                                           from_=0,to=999,
                                           textvariable=self.refcount_number,
@@ -561,7 +618,7 @@ class WmlscopeTab(Frame):
                                 column=1,
                                 sticky=E+W,
                                 padx=10)
-        self.typelist_variable=IntVar(0)
+        self.typelist_variable=BooleanVar()
         self.typelist_check=Checkbutton(self.options_with_regexp,
                                         text="List actual & formal argtypes\nfor calls in fname",
                                         variable=self.typelist_variable,
@@ -578,7 +635,7 @@ class WmlscopeTab(Frame):
                                  column=1,
                                  sticky=E+W,
                                  padx=10)
-        self.force_variable=IntVar(0)
+        self.force_variable=BooleanVar()
         self.force_check=Checkbutton(self.options_with_regexp,
                                      text="Ignore refcount 0 on names\nmatching regexp:",
                                      variable=self.force_variable,
@@ -663,7 +720,7 @@ class WmlindentTab(Frame):
         self.options_frame.grid(row=0,
                                 column=1,
                                 sticky=N+E+S+W)
-        self.verbose_variable=IntVar(0)
+        self.verbose_variable=BooleanVar()
         self.verbose_check=Checkbutton(self.options_frame,
                                        text="Report also unchanged files",
                                        variable=self.verbose_variable)
@@ -671,7 +728,7 @@ class WmlindentTab(Frame):
                                 column=0,
                                 sticky=W,
                                 padx=10)
-        self.exclude_variable=IntVar(0)
+        self.exclude_variable=BooleanVar()
         self.exclude_check=Checkbutton(self.options_frame,
                                        text="Exclude files matching regexp:",
                                        variable=self.exclude_variable,
@@ -689,7 +746,7 @@ class WmlindentTab(Frame):
                                column=1,
                                sticky=E+W,
                                padx=10)
-        self.quiet_variable=IntVar(0)
+        self.quiet_variable=BooleanVar()
         self.quiet_check=Checkbutton(self.options_frame,
                                      text="Do not generate output",
                                      variable=self.quiet_variable)
@@ -791,10 +848,10 @@ class MainFrame(Frame):
         self.output_frame.grid(row=3,
                                column=0,
                                sticky=N+E+S+W)
-        self.text=Text(self.output_frame,
-                       wrap=WORD,
-                       state=DISABLED,
-                       takefocus=True)
+        self.text=EnhancedText(self.output_frame,
+                               wrap=WORD,
+                               state=DISABLED,
+                               takefocus=True)
         self.text.grid(row=0,
                        column=0,
                        sticky=N+E+S+W)
@@ -1015,7 +1072,7 @@ Error code: {1}
 
 Part of The Battle for Wesnoth project and released under the GNU GPL v2 license
 
-Icons are taken from the Tango project, and are released in the Public Domain""")
+Icons are taken from the Tango Desktop Project (http://tango.freedesktop.org), and are released in the Public Domain""")
 
 root=Tk()
 
