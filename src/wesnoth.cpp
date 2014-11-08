@@ -785,7 +785,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 #ifdef _WIN32
 static bool parse_commandline_argument(const char*& next, const char* end, std::string& res)
 {
-	//strip leading shitespace
+	//strip leading whitespace
 	while(next != end && *next == ' ')
 		++next;
 	if(next == end)
