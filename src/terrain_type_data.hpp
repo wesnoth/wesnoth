@@ -22,14 +22,17 @@
 
 class terrain_type_data {
 private:
-	t_translation::t_list terrainList_;
-	std::map<t_translation::t_terrain, terrain_type> tcodeToTerrain_;
+	mutable t_translation::t_list terrainList_;
+	mutable std::map<t_translation::t_terrain, terrain_type> tcodeToTerrain_;
+
+	mutable bool initialized_;
+	const config & game_config_;
 
 public:
 	terrain_type_data(const config & game_config);
 
-	const t_translation::t_list & list() const { return terrainList_; }
-	const std::map<t_translation::t_terrain, terrain_type> & map() const { return tcodeToTerrain_; }
+	const t_translation::t_list & list() const;
+	const std::map<t_translation::t_terrain, terrain_type> & map() const;
 
 	/**
 	 * Get the corresponding terrain_type information object

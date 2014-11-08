@@ -21,9 +21,34 @@
 #include <map>
 
 terrain_type_data::terrain_type_data(const config & game_config)
+	: terrainList_()
+	, tcodeToTerrain_()
+	, initialized_(false)
+	, game_config_(game_config)
 {
-	create_terrain_maps(game_config.child_range("terrain_type"), terrainList_, tcodeToTerrain_);
 }
+
+const t_translation::t_list & terrain_type_data::list() const
+{
+	if (!initialized_) {
+		create_terrain_maps(game_config_.child_range("terrain_type"), terrainList_, tcodeToTerrain_);
+		initialized_ = true;
+	}
+
+	return terrainList_;
+}
+
+
+const std::map<t_translation::t_terrain, terrain_type> & terrain_type_data::map() const
+{
+	if (!initialized_) {
+		create_terrain_maps(game_config_.child_range("terrain_type"), terrainList_, tcodeToTerrain_);
+		initialized_ = true;
+	}
+
+	return tcodeToTerrain_;
+}
+
 
 const terrain_type& terrain_type_data::get_terrain_info(const t_translation::t_terrain & terrain) const
 {
