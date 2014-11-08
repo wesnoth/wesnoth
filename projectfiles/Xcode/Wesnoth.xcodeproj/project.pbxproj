@@ -948,6 +948,7 @@
 		ECDEAF75194FE86C00DB2F47 /* animated.tpp in Resources */ = {isa = PBXBuildFile; fileRef = ECDEAF74194FE86C00DB2F47 /* animated.tpp */; };
 		ECDEAF77194FEA8500DB2F47 /* syncmp_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDEAF76194FEA8400DB2F47 /* syncmp_handler.cpp */; };
 		ECDEAF79194FEA9D00DB2F47 /* game_classification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDEAF78194FEA9D00DB2F47 /* game_classification.cpp */; };
+		ECE17E121A0DD79F00B76473 /* terrain_type_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE17E111A0DD79F00B76473 /* terrain_type_data.cpp */; };
 		ECF3A0B318AD3E8800DD643A /* wml_error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF3A0B118AD3E8700DD643A /* wml_error.cpp */; };
 		ECF9D43D19F3FF9400E6C9D9 /* filesystem_boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF9D43C19F3FF9400E6C9D9 /* filesystem_boost.cpp */; settings = {COMPILER_FLAGS = "-DPREFERENCES_DIR='\"Library/Application Support/Wesnoth_1.13\"' -DHAS_RELATIVE_LOCALEDIR"; }; };
 		ECF9D43E19F3FF9400E6C9D9 /* filesystem_boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF9D43C19F3FF9400E6C9D9 /* filesystem_boost.cpp */; };
@@ -2206,6 +2207,7 @@
 		ECDEAF74194FE86C00DB2F47 /* animated.tpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = animated.tpp; sourceTree = "<group>"; };
 		ECDEAF76194FEA8400DB2F47 /* syncmp_handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = syncmp_handler.cpp; sourceTree = "<group>"; };
 		ECDEAF78194FEA9D00DB2F47 /* game_classification.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_classification.cpp; sourceTree = "<group>"; };
+		ECE17E111A0DD79F00B76473 /* terrain_type_data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = terrain_type_data.cpp; sourceTree = "<group>"; };
 		ECF3A0B118AD3E8700DD643A /* wml_error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = wml_error.cpp; path = gui/dialogs/wml_error.cpp; sourceTree = "<group>"; };
 		ECF3A0B218AD3E8800DD643A /* wml_error.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = wml_error.hpp; path = gui/dialogs/wml_error.hpp; sourceTree = "<group>"; };
 		ECF9D43C19F3FF9400E6C9D9 /* filesystem_boost.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = filesystem_boost.cpp; sourceTree = "<group>"; };
@@ -2492,6 +2494,7 @@
 		29B97315FDCFA39411CA2CEA /* src */ = {
 			isa = PBXGroup;
 			children = (
+				ECE17E111A0DD79F00B76473 /* terrain_type_data.cpp */,
 				EC64D7641A085F120092EF75 /* mt_rng.cpp */,
 				EC64D75F1A085CE60092EF75 /* seed_rng.cpp */,
 				EC2F60231A04985A0018C9D6 /* savepng.h */,
@@ -4248,6 +4251,7 @@
 				EC5C70BC19EEB54900432CF4 /* filesystem_common.cpp in Sources */,
 				B5599AE90EC62181008DD061 /* unit_types.cpp in Sources */,
 				B5599AEA0EC62181008DD061 /* unit_map.cpp in Sources */,
+				ECE17E121A0DD79F00B76473 /* terrain_type_data.cpp in Sources */,
 				B5599AEB0EC62181008DD061 /* unit_id.cpp in Sources */,
 				B5599AEC0EC62181008DD061 /* unit_frame.cpp in Sources */,
 				B5599AED0EC62181008DD061 /* unit_display.cpp in Sources */,
