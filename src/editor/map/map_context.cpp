@@ -24,6 +24,7 @@
 #include "resources.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
+#include "terrain_type_data.hpp"
 #include "team.hpp"
 #include "unit.hpp"
 #include "wml_exception.hpp"
@@ -347,9 +348,9 @@ void map_context::draw_terrain_actual(const t_translation::t_terrain & terrain,
 	t_translation::t_terrain old_terrain = map_.get_terrain(loc);
 	if (terrain != old_terrain) {
 		if (terrain.base == t_translation::NO_LAYER) {
-			map_.set_terrain(loc, terrain, gamemap::OVERLAY);
+			map_.set_terrain(loc, terrain, terrain_type_data::OVERLAY);
 		} else if (one_layer_only) {
-			map_.set_terrain(loc, terrain, gamemap::BASE);
+			map_.set_terrain(loc, terrain, terrain_type_data::BASE);
 		} else {
 			map_.set_terrain(loc, terrain);
 		}

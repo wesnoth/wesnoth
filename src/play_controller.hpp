@@ -24,6 +24,7 @@
 #include "mouse_events.hpp"
 #include "persist_manager.hpp"
 #include "statistics.hpp"
+#include "terrain_type_data.hpp"
 #include "tod_manager.hpp"
 #include "unit_types.hpp"
 
@@ -74,6 +75,7 @@ class play_controller : public controller_base, public events::observer, public 
 public:
 	play_controller(const config& level, saved_game& state_of_game,
 		const int ticks, const config& game_config,
+		const tdata_cache & tdata,
 		CVideo& video, bool skip_replay);
 	virtual ~play_controller();
 

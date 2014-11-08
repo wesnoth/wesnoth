@@ -18,6 +18,7 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "recall_list_manager.hpp"
+#include "terrain_type_data.hpp"
 #include "unit.hpp"
 
 #include "utils/foreach.tpp"
@@ -30,7 +31,7 @@ static lg::log_domain log_engine("enginerefac");
 #define WRN_RG LOG_STREAM(warn, log_engine)
 #define ERR_RG LOG_STREAM(err, log_engine)
 
-game_board::game_board(const config & game_config, const config & level) : teams_(), map_(new gamemap(game_config, level)), units_() {}
+game_board::game_board(const tdata_cache & tdata, const config & level) : teams_(), map_(new gamemap(tdata, level)), units_() {}
 
 game_board::game_board(const game_board & other) : teams_(other.teams_), map_(new gamemap(*(other.map_))), units_(other.units_) {}
 
@@ -199,10 +200,10 @@ bool game_board::change_terrain(const map_location &loc, const std::string &t_st
 	t_translation::t_terrain terrain = t_translation::read_terrain_code(t_str);
 	if (terrain == t_translation::NONE_TERRAIN) return false;
 
-	gamemap::tmerge_mode mode = gamemap::BOTH;
+	terrain_type_data::tmerge_mode mode = terrain_type_data::BOTH;
 
-	if (mode_str == "base") mode = gamemap::BASE;
-	else if (mode_str == "overlay") mode = gamemap::OVERLAY;
+	if (mode_str == "base") mode = terrain_type_data::BASE;
+	else if (mode_str == "overlay") mode = terrain_type_data::OVERLAY;
 
 	/*
 	 * When a hex changes from a village terrain to a non-village terrain, and
@@ -216,11 +217,11 @@ bool game_board::change_terrain(const map_location &loc, const std::string &t_st
 
 	t_translation::t_terrain
 		old_t = map_->get_terrain(loc),
-		new_t = map_->merge_terrains(old_t, terrain, mode, replace_if_failed);
+		new_t = map_->tdata()->merge_terrains(old_t, terrain, mode, replace_if_failed);
 	if (new_t == t_translation::NONE_TERRAIN) return false;
 	preferences::encountered_terrains().insert(new_t);
 
-	if (map_->is_village(old_t) && !map_->is_village(new_t)) {
+	if (map_->tdata()->is_village(old_t) && !map_->tdata()->is_village(new_t)) {
 		int owner = village_owner(loc);
 		if (owner != -1)
 			teams_[owner].lose_village(loc);

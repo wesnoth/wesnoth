@@ -48,7 +48,7 @@ static lg::log_domain log_replay("replay");
 
 possible_end_play_signal play_replay_level_main_loop(replay_controller & replaycontroller, bool & is_unit_test);
 
-LEVEL_RESULT play_replay_level(const config& game_config,
+LEVEL_RESULT play_replay_level(const config& game_config, const tdata_cache & tdata,
 		CVideo& video, saved_game& state_of_game, bool is_unit_test)
 {
 	const int ticks = SDL_GetTicks();
@@ -58,7 +58,7 @@ LEVEL_RESULT play_replay_level(const config& game_config,
 	boost::scoped_ptr<replay_controller> rc;
 
 	try {
-		rc.reset(new replay_controller(state_of_game.get_replay_starting_pos(), state_of_game, ticks, game_config, video));
+		rc.reset(new replay_controller(state_of_game.get_replay_starting_pos(), state_of_game, ticks, game_config, tdata, video));
 	} catch (end_level_exception & e){
 		return e.result;
 	} catch (end_turn_exception &) {
@@ -111,8 +111,9 @@ possible_end_play_signal replay_controller::try_run_to_completion() {
 
 replay_controller::replay_controller(const config& level,
 		saved_game& state_of_game, const int ticks,
-		const config& game_config, CVideo& video) :
-	play_controller(level, state_of_game, ticks, game_config, video, false),
+		const config& game_config, 
+		const tdata_cache & tdata, CVideo& video) :
+	play_controller(level, state_of_game, ticks, game_config, tdata, video, false),
 	saved_game_start_(saved_game_),
 	gameboard_start_(gamestate_.board_),
 	tod_manager_start_(level),

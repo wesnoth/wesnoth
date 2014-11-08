@@ -30,9 +30,11 @@
 #include "resources.hpp"
 #include "scripting/lua.hpp"
 #include "terrain_builder.hpp"
+#include "terrain_type_data.hpp"
 #include "unit_types.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/make_shared.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
@@ -270,6 +272,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		set_unit_data();
 
 		terrain_builder::set_terrain_rules_cfg(game_config());
+		tdata_ = boost::make_shared<terrain_type_data>(game_config_);
 		::init_strings(game_config());
 		theme::set_known_themes(&game_config());
 	} catch(game::error& e) {

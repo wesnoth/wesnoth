@@ -348,9 +348,7 @@ void display::init_flags_for_side_internal(size_t n, const std::string& side_col
 #ifdef SDL_GPU
 sdl::timage display::get_flag(const map_location& loc)
 {
-	t_translation::t_terrain terrain = get_map().get_terrain(loc);
-
-	if(!get_map().is_village(terrain)) {
+	if(!get_map().is_village(loc)) {
 		return surface(NULL);
 	}
 
@@ -370,9 +368,7 @@ sdl::timage display::get_flag(const map_location& loc)
 #else
 surface display::get_flag(const map_location& loc)
 {
-	t_translation::t_terrain terrain = get_map().get_terrain(loc);
-
-	if(!get_map().is_village(terrain)) {
+	if(!get_map().is_village(loc)) {
 		return surface(NULL);
 	}
 

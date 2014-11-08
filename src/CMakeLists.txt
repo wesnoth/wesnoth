@@ -954,6 +954,7 @@ set(wesnoth-main_SRC
 	synced_commands.cpp
 	syncmp_handler.cpp
 	team.cpp
+	terrain_type_data.cpp
 	terrain_filter.cpp
 	tod_manager.cpp
 	tooltips.cpp

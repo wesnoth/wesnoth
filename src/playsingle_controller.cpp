@@ -67,8 +67,9 @@ static lg::log_domain log_enginerefac("enginerefac");
 
 playsingle_controller::playsingle_controller(const config& level,
 		saved_game& state_of_game, const int ticks,
-		const config& game_config, CVideo& video, bool skip_replay) :
-	play_controller(level, state_of_game, ticks, game_config, video, skip_replay),
+		const config& game_config, const tdata_cache & tdata,
+		CVideo& video, bool skip_replay) :
+	play_controller(level, state_of_game, ticks, game_config, tdata, video, skip_replay),
 	cursor_setter(cursor::NORMAL),
 	textbox_info_(),
 	replay_sender_(recorder),

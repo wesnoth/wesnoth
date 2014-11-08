@@ -18,7 +18,10 @@
 
 #include "game_board.hpp"
 #include "game_display.hpp"
+#include "terrain_type_data.hpp"
 #include "tod_manager.hpp"
+
+#include <boost/make_shared.hpp>
 
 namespace wb {
 	class manager;
@@ -62,7 +65,7 @@ namespace test_utils {
 	   	video_(CVideo::FAKE_TEST),
 		dummy_cfg_(),
 		dummy_cfg2_(),
-		dummy_board_(dummy_cfg_, dummy_cfg2_),
+		dummy_board_(boost::make_shared<terrain_type_data>(dummy_cfg_), dummy_cfg2_),
 		dummy_tod_(dummy_cfg_),
 		main_event_context_(),
 		disp_(dummy_board_, video_, boost::shared_ptr<wb::manager> (), dummy_tod_,

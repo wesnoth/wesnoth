@@ -20,9 +20,10 @@
 #include "map_location.hpp"
 
 #include <boost/scoped_ptr.hpp>
+#include <boost/shared_ptr.hpp>
 
 class config;
-
+class terrain_type_data;
 
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 namespace test_utils {
@@ -72,6 +73,7 @@ namespace test_utils {
 		const std::string id_;
 		fake_event_source source_;
 		const config& game_config_;
+		const boost::shared_ptr<terrain_type_data> tdata_;
 		timing current_time_;
 		event_node_ptr end_pos_;
 

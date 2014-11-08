@@ -22,8 +22,11 @@
 #include "game_display.hpp"
 #include "saved_game.hpp"
 #include "game_initialization/playcampaign.hpp"
+#include "terrain_type_data.hpp"
 #include "unit.hpp"
 #include "unit_map.hpp"
+
+#include <boost/make_shared.hpp>
 
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 namespace test_utils {
@@ -31,6 +34,7 @@ namespace test_utils {
 		id_(id),
 		source_(),
 		game_config_(get_test_config_ref()),
+		tdata_(boost::make_shared<terrain_type_data>(game_config_)),
 		current_time_(80),
 		end_pos_()
 	{
@@ -114,7 +118,7 @@ namespace test_utils {
 		state.set_carryover_sides_start(
 			config_of("next_scenario", id_)
 		);
-		play_game(get_fake_display(1024, 768), state, game_config_);
+		play_game(get_fake_display(1024, 768), state, game_config_, tdata_);
 	}
 
 	std::string play_scenario::get_unit_id(const map_location &loc)

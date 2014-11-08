@@ -467,7 +467,7 @@ static void enter_wait_mode(game_display& disp, const config& game_config,
 
 	switch (res) {
 	case mp::ui::PLAY:
-		play_game(disp, state, game_config, IO_CLIENT,
+		play_game(disp, state, game_config, resources::config_manager->terrain_types(), IO_CLIENT,
 			preferences::skip_mp_replay() && observe, true, preferences::blindfold_replay() && observe);
 		recorder.clear();
 
@@ -511,7 +511,7 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 
 	switch (res) {
 	case mp::ui::PLAY:
-		play_game(disp, state, game_config, IO_SERVER, false,
+		play_game(disp, state, game_config, resources::config_manager->terrain_types(), IO_SERVER, false,
 			!local_players_only);
 		recorder.clear();
 
@@ -893,7 +893,7 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 	unsigned int repeat = (cmdline_opts.multiplayer_repeat) ? *cmdline_opts.multiplayer_repeat : 1;
 	for(unsigned int i = 0; i < repeat; i++){
 		saved_game state_copy(state);
-		play_game(disp, state_copy, game_config, IO_SERVER, false, false);
+		play_game(disp, state_copy, game_config, resources::config_manager->terrain_types(), IO_SERVER, false, false);
 	}
 	recorder.clear();
 }

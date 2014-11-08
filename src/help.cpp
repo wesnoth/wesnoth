@@ -27,6 +27,7 @@
 #include "display.hpp"
 #include "display_context.hpp"
 #include "exceptions.hpp"
+#include "game_config_manager.hpp" //solely to get terrain info from in some circumstances
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -40,6 +41,7 @@
 #include "unit_helper.hpp"
 #include "wml_separators.hpp"
 #include "serialization/parser.hpp"
+#include "terrain_type_data.hpp"
 #include "time_of_day.hpp"
 #include "tod_manager.hpp"
 
@@ -638,6 +640,17 @@ static std::string escape(const std::string &s)
 /// Return the first word in s, not removing any spaces in the start of
 /// it.
 static std::string get_first_word(const std::string &s);
+
+/// Load the appropriate terrain types data to use
+static tdata_cache load_terrain_types_data() {
+	if (display::get_singleton()) {
+		return display::get_singleton()->get_disp_context().map().tdata();
+	} else if (resources::config_manager){
+		return resources::config_manager->terrain_types();
+	} else {
+		return tdata_cache();
+	}
+}
 
 } // namespace help
 
@@ -1438,11 +1451,11 @@ static std::string best_str(bool best) {
 
 typedef t_translation::t_list::const_iterator t_it;
 // Gets an english desription of a terrain t_list alias behavior: "Best of cave, hills", "Worst of Swamp, Forest" etc.
-static std::string print_behavior_description(t_it start, t_it end, const gamemap & map, bool first_level = true, bool begin_best = true)
+static std::string print_behavior_description(t_it start, t_it end, const tdata_cache & tdata, bool first_level = true, bool begin_best = true)
 {
 
 	if (start == end) return "";
-	if (*start == t_translation::MINUS || *start == t_translation::PLUS) return print_behavior_description(start+1, end, map, first_level, *start == t_translation::PLUS); //absorb any leading mode changes by calling again, with a new default value begin_best.
+	if (*start == t_translation::MINUS || *start == t_translation::PLUS) return print_behavior_description(start+1, end, tdata, first_level, *start == t_translation::PLUS); //absorb any leading mode changes by calling again, with a new default value begin_best.
 
 	boost::optional<t_it> last_change_pos;
 
@@ -1459,7 +1472,7 @@ static std::string print_behavior_description(t_it start, t_it end, const gamema
 	if (!last_change_pos) {
 		std::vector<std::string> names;
 		for (t_it i = start; i != end; i++) {
-			const terrain_type tt = map.get_terrain_info(*i);
+			const terrain_type tt = tdata->get_terrain_info(*i);
 			if (!tt.editor_name().empty())
 				names.push_back(tt.editor_name());
 		}
@@ -1479,18 +1492,18 @@ static std::string print_behavior_description(t_it start, t_it end, const gamema
 	} else {
 		std::vector<std::string> names;
 		for (t_it i = *last_change_pos+1; i != end; i++) {
-			const terrain_type tt = map.get_terrain_info(*i);
+			const terrain_type tt = tdata->get_terrain_info(*i);
 			if (!tt.editor_name().empty())
 				names.push_back(tt.editor_name());
 		}
 
 		if (names.empty()) { //This alias list is apparently padded with junk at the end, so truncate it without adding more parens
-			return print_behavior_description(start, *last_change_pos, map, first_level, begin_best);
+			return print_behavior_description(start, *last_change_pos, tdata, first_level, begin_best);
 		}
 
 		ss << best_str(best) << " ";
 		if (!first_level) ss << "( ";
-		ss << print_behavior_description(start, *last_change_pos-1, map, false, begin_best);
+		ss << print_behavior_description(start, *last_change_pos-1, tdata, false, begin_best);
 		// Printed the (parenthesized) leading part from before the change, now print the remaining names in this group.
 		BOOST_FOREACH(const std::string & s, names) {
 			ss << ", " << s;
@@ -1520,21 +1533,22 @@ public:
 
 		ss << type_.help_topic_text().str() << "\n";
 
-		if (!display::get_singleton()) {
-			WRN_HP << "When building terrain help topics, the display object was null and we couldn't finish.\n";
+		tdata_cache tdata = load_terrain_types_data();
+
+		if (!tdata) {
+			WRN_HP << "When building terrain help topics, we couldn't acquire any terrain types data\n";
 			return ss.str();
-		} // abort early if we can't get a gamemap object from the display
-		const gamemap & map = display::get_singleton()->get_disp_context().map();
+		}
 
 		if (!(type_.union_type().size() == 1 && type_.union_type()[0] == type_.number() && type_.is_nonnull())) {
 
-			const t_translation::t_list& underlying_mvt_terrains = map.underlying_mvt_terrain(type_.number());
+			const t_translation::t_list& underlying_mvt_terrains = tdata->underlying_mvt_terrain(type_.number());
 
 			ss << "\n" << N_("Base Terrain: ");
 
 			bool first = true;
 			BOOST_FOREACH(const t_translation::t_terrain& underlying_terrain, underlying_mvt_terrains) {
-				const terrain_type& mvt_base = map.get_terrain_info(underlying_terrain);
+				const terrain_type& mvt_base = tdata->get_terrain_info(underlying_terrain);
 
 				if (mvt_base.editor_name().empty()) continue;
 				if (!first) ss << ",";
@@ -1545,11 +1559,11 @@ public:
 			ss << "\n";
 
 			ss << "\n" << N_("Movement properties: ");
-			ss << print_behavior_description(underlying_mvt_terrains.begin(), underlying_mvt_terrains.end(), map) << "\n";
+			ss << print_behavior_description(underlying_mvt_terrains.begin(), underlying_mvt_terrains.end(), tdata) << "\n";
 
-			const t_translation::t_list& underlying_def_terrains = map.underlying_def_terrain(type_.number());
+			const t_translation::t_list& underlying_def_terrains = tdata->underlying_def_terrain(type_.number());
 			ss << "\n" << N_("Defense properties: ");
-			ss << print_behavior_description(underlying_def_terrains.begin(), underlying_def_terrains.end(), map) << "\n";
+			ss << print_behavior_description(underlying_def_terrains.begin(), underlying_def_terrains.end(), tdata) << "\n";
 		}
 
 		if (game_config::debug) {
@@ -1583,13 +1597,13 @@ public:
 				ss << "\nEditor Image: " << type_.editor_image() << "\n";
 			}
 
-			const t_translation::t_list& underlying_mvt_terrains = map.underlying_mvt_terrain(type_.number());
+			const t_translation::t_list& underlying_mvt_terrains = tdata->underlying_mvt_terrain(type_.number());
 			ss << "\nDebug Mvt Description String:";
 			BOOST_FOREACH(const t_translation::t_terrain & t, underlying_mvt_terrains) {
 				ss << " " << t;
 			}
 
-			const t_translation::t_list& underlying_def_terrains = map.underlying_def_terrain(type_.number());
+			const t_translation::t_list& underlying_def_terrains = tdata->underlying_def_terrain(type_.number());
 			ss << "\nDebug Def Description String:";
 			BOOST_FOREACH(const t_translation::t_terrain & t, underlying_def_terrains) {
 				ss << " " << t;
@@ -1972,10 +1986,7 @@ public:
 		}
 		ss << generate_table(resistance_table);
 
-		if (display::get_singleton() != NULL && resources::gameboard != NULL) { //check to gameboard is necessary to prevent segfault when accessing help from the title screen, at current revision.
-			// get the gamemap from the display object
-			const gamemap & map = display::get_singleton()->get_disp_context().map();
-
+		if (tdata_cache tdata = load_terrain_types_data()) {
 			// Print the terrain modifier table of the unit.
 			ss << "\n\n<header>text='" << escape(_("Terrain Modifiers"))
 			   << "'</header>\n\n";
@@ -2006,7 +2017,7 @@ public:
 				const t_translation::t_terrain terrain = *terrain_it;
 				if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER)
 					continue;
-				const terrain_type& info = map.get_terrain_info(terrain);
+				const terrain_type& info = tdata->get_terrain_info(terrain);
 
 				if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
 					std::vector<item> row;
@@ -2258,21 +2269,20 @@ void generate_era_sections(const config* help_cfg, section & sec, int level)
 
 void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*level*/)
 {
-	if (display::get_singleton() == NULL) {
-		WRN_HP << "When building terrain help sections, the display object was null, aborting.\n";
+	tdata_cache tdata = load_terrain_types_data();
+
+	if (!tdata) {
+		WRN_HP << "When building terrain help sections, couldn't acquire terrain types data, aborting.\n";
 		return;
 	}
 
-	// get the gamemap from the display object
-	const gamemap & map = display::get_singleton()->get_disp_context().map();
-
 	std::map<std::string, section> base_map;
 
-	const t_translation::t_list& t_listi = map.get_terrain_list();
+	const t_translation::t_list& t_listi = tdata->list();
 
 	BOOST_FOREACH(const t_translation::t_terrain& t, t_listi) {
 
-		const terrain_type& info = map.get_terrain_info(t);
+		const terrain_type& info = tdata->get_terrain_info(t);
 
 		bool hidden = info.is_combined() || info.hide_help();
 
@@ -2285,10 +2295,10 @@ void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*l
 		terrain_topic.id    = hidden_symbol(hidden) + terrain_prefix + info.id();
 		terrain_topic.text  = new terrain_topic_generator(info);
 
-		t_translation::t_list base_terrains = map.underlying_union_terrain(t);
+		t_translation::t_list base_terrains = tdata->underlying_union_terrain(t);
 		BOOST_FOREACH(const t_translation::t_terrain& base, base_terrains) {
 
-			const terrain_type& base_info = map.get_terrain_info(base);
+			const terrain_type& base_info = tdata->get_terrain_info(base);
 
 			if (!base_info.is_nonnull() || base_info.hide_help())
 				continue;

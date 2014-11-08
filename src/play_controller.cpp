@@ -50,6 +50,7 @@
 #include "sound.hpp"
 #include "soundsource.hpp"
 #include "synced_context.hpp"
+#include "terrain_type_data.hpp"
 #include "tooltips.hpp"
 #include "unit.hpp"
 #include "unit_id.hpp"
@@ -58,6 +59,7 @@
 #include "wml_exception.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/make_shared.hpp>
 
 static lg::log_domain log_aitesting("aitesting");
 #define LOG_AIT LOG_STREAM(info, log_aitesting)
@@ -99,12 +101,12 @@ static void clear_resources()
 }
 
 play_controller::play_controller(const config& level, saved_game& state_of_game,
-		const int ticks, const config& game_config,
+		const int ticks, const config& game_config, const tdata_cache & tdata,
 		CVideo& video, bool skip_replay) :
 	controller_base(ticks, game_config, video),
 	observer(),
 	savegame_config(),
-	gamestate_(level, game_config),
+	gamestate_(level, tdata),
 	level_(level),
 	saved_game_(state_of_game),
 	prefs_disp_manager_(),

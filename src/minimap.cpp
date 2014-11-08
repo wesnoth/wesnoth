@@ -24,8 +24,8 @@
 #include "map.hpp"
 #include "resources.hpp"
 #include "sdl/utils.hpp"
-
 #include "team.hpp"
+#include "terrain_type_data.hpp"
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
 
@@ -44,6 +44,8 @@ namespace image {
 
 surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::map<map_location,unsigned int> *reach_map)
 {
+	const terrain_type_data & tdata = *map.tdata();
+
 	const int scale = 8;
 
 	DBG_DP << "creating minimap " << int(map.w()*scale*0.75) << "," << map.h()*scale << "\n";
@@ -91,7 +93,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 			const t_translation::t_terrain terrain = shrouded ?
 					t_translation::VOID_TERRAIN : map[loc];
-			const terrain_type& terrain_info = map.get_terrain_info(terrain);
+			const terrain_type& terrain_info = tdata.get_terrain_info(terrain);
 
 			// we need a balanced shift up and down of the hexes.
 			// if not, only the bottom half-hexes are clipped
@@ -142,7 +144,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 						//Compose images of base and overlay if necessary
 						// NOTE we also skip overlay when base is missing (to avoid hiding the error)
-						if(tile != NULL && map.get_terrain_info(terrain).is_combined()) {
+						if(tile != NULL && tdata.get_terrain_info(terrain).is_combined()) {
 							std::string overlay_file =
 									"terrain/" + terrain_info.minimap_image_overlay() + ".png";
 							surface overlay = get_image(overlay_file,image::HEXED);
@@ -190,10 +192,10 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 						col = int_to_color(it->second.rep());
 
 					bool first = true;
-					const t_translation::t_list& underlying_terrains = map.underlying_union_terrain(terrain);
+					const t_translation::t_list& underlying_terrains = tdata.underlying_union_terrain(terrain);
 					BOOST_FOREACH(const t_translation::t_terrain& underlying_terrain, underlying_terrains) {
 
-						const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
+						const std::string& terrain_id = tdata.get_terrain_info(underlying_terrain).id();
 						std::map<std::string, color_range>::const_iterator it = game_config::team_rgb_range.find(terrain_id);
 						if (it == game_config::team_rgb_range.end())
 							continue;
@@ -285,6 +287,8 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 #ifdef SDL_GPU
 SDL_Rect draw_minimap(CVideo &video, const SDL_Rect &area, const gamemap &map, const team *vw, const std::map<map_location, unsigned int> *reach_map)
 {
+	const terrain_type_data & tdata = *map.tdata();
+
 	const float width = map.w() * 72 * 3/4;
 	const float height = map.h() * 72 + 72 * 1/4;
 	const float scale_factor = std::min(area.w / width, area.h / height);
@@ -309,7 +313,7 @@ SDL_Rect draw_minimap(CVideo &video, const SDL_Rect &area, const gamemap &map, c
 
 			const t_translation::t_terrain terrain = shrouded ?
 					t_translation::VOID_TERRAIN : map[loc];
-			const terrain_type& terrain_info = map.get_terrain_info(terrain);
+			const terrain_type& terrain_info = tdata.get_terrain_info(terrain);
 
 			const int xpos = x * tile_size * 3/4 + xoff;
 			const int ypos = y * tile_size + tile_size / 4 * (is_odd(x) ? 2 : 0) + yoff;
@@ -350,10 +354,10 @@ SDL_Rect draw_minimap(CVideo &video, const SDL_Rect &area, const gamemap &map, c
 						col = int_to_color(it->second.rep());
 
 					bool first = true;
-					const t_translation::t_list& underlying_terrains = map.underlying_union_terrain(terrain);
+					const t_translation::t_list& underlying_terrains = tdata.underlying_union_terrain(terrain);
 					BOOST_FOREACH(const t_translation::t_terrain& underlying_terrain, underlying_terrains) {
 
-						const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
+						const std::string& terrain_id = tdata.get_terrain_info(underlying_terrain).id();
 						std::map<std::string, color_range>::const_iterator it = game_config::team_rgb_range.find(terrain_id);
 						if (it == game_config::team_rgb_range.end())
 							continue;

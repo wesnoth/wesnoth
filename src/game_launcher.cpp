@@ -468,7 +468,7 @@ bool game_launcher::play_test()
 		load_game_config_for_game(state_.classification());
 
 	try {
-		play_game(disp(),state_,resources::config_manager->game_config());
+		play_game(disp(),state_,resources::config_manager->game_config(), resources::config_manager->terrain_types());
 	} catch (game::load_game_exception &) {
 		return true;
 	}
@@ -500,7 +500,7 @@ int game_launcher::unit_test()
 		load_game_config_for_game(state_.classification());
 
 	try {
-		LEVEL_RESULT res = play_game(disp(),state_,resources::config_manager->game_config(), IO_SERVER, false, false, false, true);
+		LEVEL_RESULT res = play_game(disp(),state_,resources::config_manager->game_config(), resources::config_manager->terrain_types(), IO_SERVER, false, false, false, true);
 		if (!(res == VICTORY || res == NONE) || lg::broke_strict()) {
 			return 1;
 		}
@@ -536,7 +536,7 @@ int game_launcher::unit_test()
 
 	try {
 		//LEVEL_RESULT res = play_game(disp(), state_, resources::config_manager->game_config(), IO_SERVER, false,false,false,true);
-		LEVEL_RESULT res = ::play_replay(disp(), state_, resources::config_manager->game_config(), true);
+		LEVEL_RESULT res = ::play_replay(disp(), state_, resources::config_manager->game_config(), resources::config_manager->terrain_types(), true);
 		if (!(res == VICTORY || res == NONE)) {
 			std::cerr << "Observed failure on replay" << std::endl;
 			return 4;
@@ -984,7 +984,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 
 	try {
 		const LEVEL_RESULT result = play_game(disp(),state_,
-		    resources::config_manager->game_config());
+		    resources::config_manager->game_config(), resources::config_manager->terrain_types());
 		// don't show The End for multiplayer scenario
 		// change this if MP campaigns are implemented
 		if(result == VICTORY && state_.classification().campaign_type != game_classification::MULTIPLAYER) {
@@ -1006,7 +1006,8 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 void game_launcher::play_replay()
 {
 	try {
-		::play_replay(disp(),state_,resources::config_manager->game_config());
+		::play_replay(disp(),state_,resources::config_manager->game_config(),
+		    resources::config_manager->terrain_types());
 
 		clear_loaded_game();
 	} catch (game::load_game_exception &) {
