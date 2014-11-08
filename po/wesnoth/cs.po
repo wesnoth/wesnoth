@@ -10,12 +10,13 @@
 # Yeti <yeti@physics.muni.cz> et al, 2004.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007, 2010.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
+# Jan Dědič <jan.dedic@gmail.com>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-03-02 18:56+0100\n"
-"PO-Revision-Date: 2014-04-02 14:49+0100\n"
+"PO-Revision-Date: 2014-10-07 14:37+0100\n"
 "Last-Translator: Jan Dědič <jan.dedic@gmail.com>\n"
 "Language-Team: Český <wesnoth-cs-l@buchtovi.cz>\n"
 "Language: cs\n"
@@ -24,7 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Generator: Poedit 1.6.9\n"
 
 #. [advanced_preference]: type=combo
 #. Associated save_compression_short^ entries need to be as short as
@@ -37,47 +38,47 @@ msgstr "Komprimovat uložené hry"
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:12
 msgid "save_compression^Gzip"
-msgstr "save_compression^Gzip"
+msgstr "Gzip"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:13
 msgid "save_compression_short^gzip"
-msgstr "save_compression_short^gzip"
+msgstr "gzip"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:14
 msgid "save_compression_desc^Default compression, faster"
-msgstr "save_compression_desc^Výchozí komprese, rychlejší"
+msgstr "Výchozí komprese, rychlejší"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:18
 msgid "save_compression^Bzip2"
-msgstr "save_compression^Bzip2"
+msgstr "Bzip2"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:19
 msgid "save_compression_short^bzip2"
-msgstr "save_compression_short^bzip2"
+msgstr "bzip2"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:20
 msgid "save_compression_desc^Best compression, slower"
-msgstr "save_compression_desc^Nejlepší komprese, pomalejší"
+msgstr "Nejlepší komprese, pomalejší"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:24
 msgid "save_compression^No"
-msgstr "save_compression^Ne"
+msgstr "Ne"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:25
 msgid "save_compression_short^no"
-msgstr "save_compression_short^ne"
+msgstr "ne"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:26
 msgid "save_compression_desc^Large plain text files"
-msgstr "save_compression_desc^Soubory s prostým textem"
+msgstr "Soubory s prostým textem"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
@@ -3222,7 +3223,7 @@ msgstr "elektrický"
 #. [theme]: id=Default
 #: data/themes/default.cfg:34
 msgid "theme^Default"
-msgstr "theme^Výchozí"
+msgstr "Výchozí"
 
 # | msgid "Defeat enemy leader(s)"
 #. [theme]: id=Default
@@ -3323,7 +3324,7 @@ msgstr "příjmy"
 #. [unit_level]: id=unit-level
 #: data/themes/default.cfg:394
 msgid "statuspanel^lvl"
-msgstr "statuspanel^úroveň"
+msgstr "úroveň"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=replay-label
@@ -3394,7 +3395,7 @@ msgstr "Přeskočit animaci"
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:22
 msgid "theme^Pandora"
-msgstr "theme^Pandora"
+msgstr "Pandora"
 
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:23
@@ -4287,7 +4288,7 @@ msgstr "vyléčen"
 
 #: src/actions/heal.cpp:278
 msgid "female^cured"
-msgstr "female^vyléčená"
+msgstr "vyléčená"
 
 #: src/actions/move.cpp:584
 msgid "Ambushed!"
@@ -4379,7 +4380,7 @@ msgstr "Scénář"
 
 #: src/addon/info.cpp:160
 msgid "addon_type^SP/MP Campaign"
-msgstr "addon_type^Tažení pro jedoho/více hráčů"
+msgstr "Tažení pro jedoho/více hráčů"
 
 #: src/addon/info.cpp:162
 msgid "addon_type^MP era"
@@ -4403,7 +4404,7 @@ msgstr "Tažení pro více hráčů"
 
 #: src/addon/info.cpp:172
 msgid "addon_type^MP modification"
-msgstr "addon_type^Frakce MP"
+msgstr "Frakce MP"
 
 #: src/addon/info.cpp:174
 msgid "addon_type^Resources"
@@ -4420,51 +4421,51 @@ msgstr "(neznámý)"
 # jednotka informace "byte"
 #: src/addon/info.cpp:217 src/dialogs.cpp:1485
 msgid "unit_byte^B"
-msgstr "unit_byte^B"
+msgstr "B"
 
 #: src/addon/manager_ui.cpp:97
 msgid "addon_state^Not installed"
-msgstr "addon_type^Rozšíření nenainstalováno"
+msgstr "Rozšíření nenainstalováno"
 
 #: src/addon/manager_ui.cpp:97
 msgid "addon_state^Published, not installed"
-msgstr "addon_state^Vydaný, nenainstalovaný"
+msgstr "Vydaný, nenainstalovaný"
 
 #: src/addon/manager_ui.cpp:104
 msgid "addon_state^Installed"
-msgstr "addon_type^Nainstalováno"
+msgstr "Nainstalováno"
 
 #: src/addon/manager_ui.cpp:104
 msgid "addon_state^Published"
-msgstr "addon_state^Vydaný"
+msgstr "Vydaný"
 
 #: src/addon/manager_ui.cpp:107
 msgid "addon_state^Installed, upgradable"
-msgstr "addon_state^Nainstalovaný, upgradovatelný"
+msgstr "Nainstalovaný, upgradovatelný"
 
 #: src/addon/manager_ui.cpp:107
 msgid "addon_state^Published, upgradable"
-msgstr "addon_state^Vydaný, upgradovatelný"
+msgstr "Vydaný, upgradovatelný"
 
 #: src/addon/manager_ui.cpp:110
 msgid "addon_state^Installed, outdated on server"
-msgstr "addon_state^Nainstalovaný, na serveru zastaralý"
+msgstr "Nainstalovaný, na serveru zastaralý"
 
 #: src/addon/manager_ui.cpp:110
 msgid "addon_state^Published, outdated on server"
-msgstr "addon_state^Vydaný, na serveru zastaralý"
+msgstr "Vydaný, na serveru zastaralý"
 
 #: src/addon/manager_ui.cpp:113
 msgid "addon_state^Installed, broken"
-msgstr "addon_state^Nainstalovaný, poškozený"
+msgstr "Nainstalovaný, poškozený"
 
 #: src/addon/manager_ui.cpp:113
 msgid "addon_state^Published, broken"
-msgstr "addon_state^Vydaný, poškozený"
+msgstr "Vydaný, poškozený"
 
 #: src/addon/manager_ui.cpp:115
 msgid "addon_state^Unknown"
-msgstr "addon_type^Neznámý"
+msgstr "Neznámý"
 
 #: src/addon/manager_ui.cpp:148
 msgid ""
@@ -4640,7 +4641,7 @@ msgstr "Aktualizovat vše"
 
 #: src/addon/manager_ui.cpp:786
 msgid "filter^Options"
-msgstr "filter^Nastavení"
+msgstr "Nastavení"
 
 #: src/addon/manager_ui.cpp:892
 msgid "Add-on Installed"
@@ -5368,7 +5369,7 @@ msgid ""
 "scenario settings^Support Per\n"
 "Village"
 msgstr ""
-"scenario settings^Zlatých\n"
+"Zlatých\n"
 "na vesnici"
 
 #: src/leader_scroll_dialog.cpp:191 src/menu_events.cpp:332
