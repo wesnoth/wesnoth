@@ -66,7 +66,7 @@ namespace {
 	const int SmallZoom   = DefaultZoom / 2;
 
 	const int MinZoom = 4;
-	const int MaxZoom = 200;
+	const int MaxZoom = 288;
 	size_t sunset_delay = 0;
 
 	bool benchmark = false;
