@@ -24,6 +24,12 @@
 #include <windows.h>
 #endif
 
+#ifdef setlocale
+// Someone in libintl world decided it was a good idea to define a "setlocale" macro.
+// Note: This is necessary to compile on OS X, it fixes bug #16649
+#undef setlocale
+#endif
+
 #ifdef __APPLE__
 #include <errno.h>
 #endif
