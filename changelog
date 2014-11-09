@@ -5,6 +5,7 @@ Version 1.11.19+dev:
    * Fixed recursive directory creation failing for working dir-relative paths
      without an explicit `./` at the start (e.g. in `wesnoth -p data/core foo`)
      for builds using Boost.filesystem.
+   * Fixed default language. (https://gna.org/bugs/?22921)
 
 Version 1.11.19:
  * Campaigns:
