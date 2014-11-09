@@ -1,4 +1,12 @@
-Version 1.11.18+dev:
+Version 1.11.19+dev:
+ * Language and i18n:
+   * Updated translations: German
+ * Miscellaneous and bug fixes:
+   * Fixed recursive directory creation failing for working dir-relative paths
+     without an explicit `./` at the start (e.g. in `wesnoth -p data/core foo`)
+     for builds using Boost.filesystem.
+
+Version 1.11.19:
  * Campaigns:
    * Legend of Wesmere:
      * Ka’lian under attack: fixed more issues due to new map size.
@@ -10,7 +18,7 @@ Version 1.11.18+dev:
      * Fixed player team name in several scenarios.
      * Fixed player side carryover in several scenarios.
  * Language and i18n:
-   * Updated translations: Galician, German, Italian, Portuguese,
+   * Updated translations: Czech, Galician, German, Italian, Portuguese,
      Scottish Gaelic, Slovak, Spanish
  * Lua API:
    * Upgraded Lua to version 5.2.3.
@@ -18,6 +26,7 @@ Version 1.11.18+dev:
    * Micro AIs: only display on-screen error messages when in debug mode
    * Nearest neighbor interpolation used when zooming in on units and terrains
      See https://github.com/wesnoth/wesnoth/pull/316 and related dev-talk email
+   * New filesystem implementation based on boost filesystem
  * WML engine:
    * Fixed a bug that prevented [animate_unit] from displaying death or victory
      animations for those units that filter them based on weapon (eg. Wose)

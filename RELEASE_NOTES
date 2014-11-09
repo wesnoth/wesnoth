@@ -14,50 +14,9 @@ The release team should empty this file after each release.
 CHANGES
 =======
 
-[section="Greatly improved unicode compliance"]
-Previous versions of wesnoth were unable, on some platforms (especially windows) to properly handle unicode characters, particularly for filesystem related issues. The following features should now work with full UTF-8 on all platforms:
-
-- Loading and saving WML
-- Loading and saving games
-- Loading images and sounds
-- Loading fonts
-- Loading translations
-- Loading translated images
-- Loading of files in lua
-- Parsing command line arguments to wesnoth
-- Copying and pasting unicode from the clipboard
-
-In particular, on windows, it should now be possible to install wesnoth to a path with non-ascii characters.
-
-Related bug reports: http://forums.wesnoth.org/viewtopic.php?f=4&t=41018 , https://gna.org/bugs/?func=detailitem&item_id=5529 , https://gna.org/bugs/?13926 , https://gna.org/bugs/?func=detailitem&item_id=16293 , https://gna.org/bugs/?20089 , probably many more...
-[/section]
-
-[section="Dependency update"]
-For the improvements just mentioned, it was necessary to increase the library dependencies of the game. By default, the game now requires:
-
-Boost filesystem 1.44
-Boost locale (introduced in boost 1.48)
-SDL_mixer 1.2.12
-
-For both scons and cmake, the first two may be disabled (and the old code used, rolling back results of previous section) by turning off the "enable boost filesystem" flag. For cmake, the third requirement may also be removed, reducing SDL_mixer dependency to 1.2.0, by using the ENABLE_PANDORA flag.
-
-Wesnoth OS X builds and release packages do not use the new dependencies in order to retain support of OS X Leopard (10.5) for the Wesnoth 1.12 series. Unicode character support does not seem to be a problem on OS X.
-[/section]
-
 [section="Example section 1"]
 Example contents 1.
 [/section]
-
-[rasection="[i]Legend of Wesmere[/i]: Bug fixes”]Remaining known issues affecting [i]Legend of Wesmere[/i] (single player mode) have been fixed:
-
-[list][*]“Ka’lian under attack”: fixed more issues due to new map size.
-[*]“Ka’lian under attack”: fixed two issues with fog. This fixes bug [bug]22880[/bug].
-[*]“Elves Last Stand”: fixed not all elvish leaders being able to recruit.
-[*]“Elves Last Stand”: fixed bugs in Olurf and Olurf's party arrival.
-[*]“Bounty Hunters”: fixed several coordinate issues due to new map size.
-[*]“Cliffs of Thoria”: fixed so that yetis can be seen moving in hole in fog.
-[*]Fixed player team name in several scenarios.
-[*]Fixed player side carryover in several scenarios.[/list][/rasection]
 
 ==========
 KNOWN BUGS

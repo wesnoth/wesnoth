@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-10-24 20:20+0200\n"
+"POT-Creation-Date: 2014-11-08 21:20+0100\n"
 "PO-Revision-Date: 2008-09-24 02:09+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -329,21 +329,21 @@ msgstr ""
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:366
-#: data/lua/wml-tags.lua:11983 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:983
 msgid "poisoned"
 msgstr "enverinat"
 
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:12465
+#: data/lua/wml/objectives.lua:12467
 msgid "Gold carryover:"
 msgstr ""
 
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:12466
+#: data/lua/wml/objectives.lua:12468
 msgid "Notes:"
 msgstr ""
 
@@ -2628,13 +2628,13 @@ msgid "Turns run out"
 msgstr "Tandes"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12527
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12529
 #, fuzzy
 msgid "Early finish bonus."
 msgstr "Bonificació per rapidea: "
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12529
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12531
 #, fuzzy
 msgid "No early finish bonus."
 msgstr "Bonificació per rapidea: "
@@ -2650,7 +2650,7 @@ msgid "(early finish bonus)"
 msgstr "Bonificació per rapidea: "
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12537
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12539
 #, fuzzy
 msgid "No gold carried over to the next scenario."
 msgstr "El 80% de l'or es manté per al següent escenari."
@@ -2895,15 +2895,15 @@ msgstr "Montanyes infranquejables"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:215 src/gui/dialogs/lobby/lobby_data.cpp:324
+#: data/core/team-colors.cfg:215 src/gui/dialogs/lobby/lobby_data.cpp:338
 #: src/multiplayer_lobby.cpp:678
 msgid "Fog"
 msgstr "Boira"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:221 src/gui/dialogs/lobby/lobby_data.cpp:327
-#: src/gui/dialogs/lobby/lobby_data.cpp:330 src/multiplayer_configure.cpp:78
+#: data/core/team-colors.cfg:221 src/gui/dialogs/lobby/lobby_data.cpp:341
+#: src/gui/dialogs/lobby/lobby_data.cpp:344 src/multiplayer_configure.cpp:78
 #: src/multiplayer_lobby.cpp:682 src/multiplayer_lobby.cpp:688
 msgid "Shroud"
 msgstr "Ocultació"
@@ -3154,72 +3154,72 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11983 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:983
 #, fuzzy
 msgid "female^poisoned"
 msgstr "no morta"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:11987 src/actions/attack.cpp:988
 #, fuzzy
 msgid "female^slowed"
 msgstr "lleal"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:11987 src/actions/attack.cpp:988
 msgid "slowed"
 msgstr "retardat"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11986 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:11988 src/actions/attack.cpp:993
 #, fuzzy
 msgid "female^petrified"
 msgstr "no morta"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11986 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:11988 src/actions/attack.cpp:993
 #, fuzzy
 msgid "petrified"
 msgstr "Espectre"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11987
+#: data/lua/wml-tags.lua:11989
 #, fuzzy
 msgid "female^unhealable"
 msgstr "no morta"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11987
+#: data/lua/wml-tags.lua:11989
 msgid "unhealable"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12463 src/mp_game_utils.cpp:157
+#: data/lua/wml/objectives.lua:12465 src/mp_game_utils.cpp:157
 msgid "Victory:"
 msgstr "Victòria:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12464
+#: data/lua/wml/objectives.lua:12466
 msgid "Defeat:"
 msgstr "Derrota:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12484
+#: data/lua/wml/objectives.lua:12486
 msgid "(%d turns left)"
 msgstr ""
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12486
+#: data/lua/wml/objectives.lua:12488
 msgid "(this turn left)"
 msgstr ""
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12539
+#: data/lua/wml/objectives.lua:12541
 #, fuzzy
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "El 80% de l'or es manté per al següent escenari."
@@ -4919,11 +4919,11 @@ msgstr "Traces"
 msgid "Recall"
 msgstr "Reincorporar"
 
-#: src/dialogs.cpp:785 src/savegame.cpp:299
+#: src/dialogs.cpp:785 src/savegame.cpp:298
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:785 src/savegame.cpp:299
+#: src/dialogs.cpp:785 src/savegame.cpp:298
 #, fuzzy
 #| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %I:%M %p %Y"
@@ -4955,7 +4955,7 @@ msgstr "Escenari remot"
 msgid "Replay"
 msgstr "Repetició"
 
-#: src/dialogs.cpp:840 src/savegame.cpp:1122
+#: src/dialogs.cpp:840 src/savegame.cpp:1125
 msgid "Turn"
 msgstr "Tanda"
 
@@ -4989,7 +4989,7 @@ msgstr ""
 msgid "Date"
 msgstr "Data"
 
-#: src/dialogs.cpp:892 src/savegame.cpp:642
+#: src/dialogs.cpp:892 src/savegame.cpp:643
 msgid "Load Game"
 msgstr "Carrega una partida"
 
@@ -5129,7 +5129,7 @@ msgid "The file you have tried to load is corrupt"
 msgstr "L'archiu que ha intentat carregar està danyat."
 
 #: src/game_controller.cpp:483 src/game_controller.cpp:501
-#: src/savegame.cpp:690
+#: src/savegame.cpp:691
 msgid "The file you have tried to load is corrupt: '"
 msgstr "L'archiu que has intentat carregar està danyat: '"
 
@@ -5228,35 +5228,35 @@ msgid ""
 "check the 'max hill size' parameter)"
 msgstr ""
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:211 src/multiplayer_lobby.cpp:611
+#: src/gui/dialogs/lobby/lobby_data.cpp:212 src/multiplayer_lobby.cpp:611
 msgid "Unknown era: $era_id"
 msgstr "Era desconeguda: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:216 src/multiplayer_lobby.cpp:615
+#: src/gui/dialogs/lobby/lobby_data.cpp:217 src/multiplayer_lobby.cpp:615
 msgid "Unknown era"
 msgstr "Era desconeguda"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:507
+#: src/gui/dialogs/lobby/lobby_data.cpp:297 src/multiplayer_lobby.cpp:507
 msgid "Remote scenario"
 msgstr "Escenari remot"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:291 src/multiplayer_lobby.cpp:515
+#: src/gui/dialogs/lobby/lobby_data.cpp:305 src/multiplayer_lobby.cpp:515
 msgid "Unknown scenario: $scenario_id"
 msgstr "Escenari desconegut: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:296 src/multiplayer_lobby.cpp:519
+#: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_lobby.cpp:519
 msgid "Unknown scenario"
 msgstr "Escenari desconegut"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:302 src/multiplayer_lobby.cpp:647
+#: src/gui/dialogs/lobby/lobby_data.cpp:316 src/multiplayer_lobby.cpp:647
 msgid "Reloaded game"
 msgstr "Partida recarregada"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:313 src/multiplayer_lobby.cpp:663
+#: src/gui/dialogs/lobby/lobby_data.cpp:327 src/multiplayer_lobby.cpp:663
 msgid "Turn "
 msgstr "Tanda"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:318 src/multiplayer_lobby.cpp:667
+#: src/gui/dialogs/lobby/lobby_data.cpp:332 src/multiplayer_lobby.cpp:667
 #, fuzzy
 #| msgid "Vacant Slot:"
 #| msgid_plural "Vacant slots:"
@@ -5265,7 +5265,7 @@ msgid_plural "Vacant Slots:"
 msgstr[0] "Plaça lliure:"
 msgstr[1] "Places lliures:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:332 src/multiplayer_lobby.cpp:692
+#: src/gui/dialogs/lobby/lobby_data.cpp:346 src/multiplayer_lobby.cpp:692
 msgid "none"
 msgstr "cap"
 
@@ -5449,73 +5449,73 @@ msgstr "Paràmetros de l'escenari"
 msgid " < Back"
 msgstr " < Arrere"
 
-#: src/loadscreen.cpp:223
+#: src/loadscreen.cpp:222
 #, fuzzy
 msgid "Initializing user interface"
 msgstr "Iniciant equips"
 
-#: src/loadscreen.cpp:224
+#: src/loadscreen.cpp:223
 #, fuzzy
 msgid "Loading game configuration"
 msgstr "Carregant configuració del joc."
 
-#: src/loadscreen.cpp:225 src/loadscreen.cpp:232
+#: src/loadscreen.cpp:224 src/loadscreen.cpp:231
 #, fuzzy
 msgid "Verifying cache"
 msgstr "Verificant la caché."
 
-#: src/loadscreen.cpp:226 src/loadscreen.cpp:233
+#: src/loadscreen.cpp:225 src/loadscreen.cpp:232
 #, fuzzy
 msgid "Reading files and creating cache"
 msgstr "Llegint archius i creant la caché."
 
-#: src/loadscreen.cpp:227 src/loadscreen.cpp:234
+#: src/loadscreen.cpp:226 src/loadscreen.cpp:233
 #, fuzzy
 msgid "Reading unit files"
 msgstr "Llegint archius d'unitats."
 
-#: src/loadscreen.cpp:228
+#: src/loadscreen.cpp:227
 #, fuzzy
 msgid "Reinitialize fonts for the current language"
 msgstr "Reiniciant tipografies per a l'idioma actual."
 
-#: src/loadscreen.cpp:229
+#: src/loadscreen.cpp:228
 #, fuzzy
 msgid "Searching for installed add-ons"
 msgstr "S'està solicitant el llistat d'expansions"
 
-#: src/loadscreen.cpp:230
+#: src/loadscreen.cpp:229
 #, fuzzy
 msgid "Loading title screen"
 msgstr "Carregant pantalla inicial."
 
-#: src/loadscreen.cpp:231
+#: src/loadscreen.cpp:230
 msgid "Loading data files"
 msgstr "Llegint archius de senyes."
 
-#: src/loadscreen.cpp:235
+#: src/loadscreen.cpp:234
 #, fuzzy
 msgid "Loading level"
 msgstr "Carregant pantalla inicial."
 
-#: src/loadscreen.cpp:236
+#: src/loadscreen.cpp:235
 msgid "Initializing teams"
 msgstr "Iniciant equips"
 
-#: src/loadscreen.cpp:237
+#: src/loadscreen.cpp:236
 #, fuzzy
 msgid "Loading units"
 msgstr "Llegint archius d'unitats."
 
-#: src/loadscreen.cpp:238 src/loadscreen.cpp:240
+#: src/loadscreen.cpp:237 src/loadscreen.cpp:239
 msgid "Initializing display"
 msgstr "Iniciant visualisació"
 
-#: src/loadscreen.cpp:239
+#: src/loadscreen.cpp:238
 msgid "Building terrain rules"
 msgstr ""
 
-#: src/loadscreen.cpp:241
+#: src/loadscreen.cpp:240
 msgid "Starting game"
 msgstr "Començant la partida"
 
@@ -7163,12 +7163,12 @@ msgstr "S'ha trobat un terreny ab un cost de moviment menor que 1."
 msgid "time left for current turn"
 msgstr ""
 
-#: src/play_controller.cpp:259 src/replay_controller.cpp:147
+#: src/play_controller.cpp:259 src/replay_controller.cpp:148
 msgid "current local time"
 msgstr ""
 
-#: src/play_controller.cpp:1199 src/savegame.cpp:406 src/savegame.cpp:418
-#: src/savegame.cpp:1078 src/savegame.cpp:1080
+#: src/play_controller.cpp:1199 src/savegame.cpp:407 src/savegame.cpp:419
+#: src/savegame.cpp:1081 src/savegame.cpp:1083
 msgid "Auto-Save"
 msgstr "Partida guardada automàticament"
 
@@ -7193,7 +7193,7 @@ msgstr ""
 "La partida no està sincronisada i haurà de finalisar. ¿Vols guardar un "
 "registre d'erros de la partida?"
 
-#: src/play_controller.cpp:1505 src/replay_controller.cpp:366
+#: src/play_controller.cpp:1505 src/replay_controller.cpp:367
 #, fuzzy
 msgid "Error details:"
 msgstr "Erro"
@@ -7244,7 +7244,7 @@ msgstr "Partida perduda"
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Est escenari ha acabat. ¿Voleu continuar la campanya?"
 
-#: src/playcampaign.cpp:642
+#: src/playcampaign.cpp:641
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Escenari desconegut: '$scenario|'"
 
@@ -7403,7 +7403,7 @@ msgstr "Reemplaçar ab $player"
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player ha deixat la partida. ¿Qué vols fer?"
 
-#: src/replay_controller.cpp:365
+#: src/replay_controller.cpp:366
 #, fuzzy
 msgid ""
 "The replay is corrupt/out of sync. It might not make much sense to continue. "
@@ -7412,7 +7412,7 @@ msgstr ""
 "S'ha produït una desconexió de la ret i la partida no pot continuar. ¿Vols "
 "guardar la partida?"
 
-#: src/reports.cpp:159 src/savegame.cpp:871
+#: src/reports.cpp:159 src/savegame.cpp:874
 msgid "Name: "
 msgstr "Nom: "
 
@@ -7674,17 +7674,17 @@ msgstr "Unitats llegals: "
 msgid "Observers:"
 msgstr "Observadors:"
 
-#: src/savegame.cpp:327 src/savegame.cpp:329
+#: src/savegame.cpp:328 src/savegame.cpp:330
 msgid " replay"
 msgstr " repetició"
 
-#: src/savegame.cpp:567 src/savegame.cpp:571
+#: src/savegame.cpp:568 src/savegame.cpp:572
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Avís: l'archiu que has intentat carregar està danyat. S'intentarà carregar "
 "de totes maneres.\n"
 
-#: src/savegame.cpp:607
+#: src/savegame.cpp:608
 #, fuzzy
 #| msgid "This save is from a version too old to be loaded."
 msgid ""
@@ -7692,7 +7692,7 @@ msgid ""
 "loaded."
 msgstr "Esta partida és d'una versió massa antiga com per a carregar-se."
 
-#: src/savegame.cpp:630
+#: src/savegame.cpp:631
 #, fuzzy
 #| msgid "This save is from a version too old to be loaded."
 msgid ""
@@ -7700,7 +7700,7 @@ msgid ""
 "be loaded."
 msgstr "Esta partida és d'una versió massa antiga com per a carregar-se."
 
-#: src/savegame.cpp:639
+#: src/savegame.cpp:640
 #, fuzzy
 #| msgid ""
 #| "This save is from a different version of the game. Do you want to try to "
@@ -7712,26 +7712,26 @@ msgstr ""
 "Esta partida és d'una versió diferent del joc. ¿Vols intentar carregar-la "
 "igualment?"
 
-#: src/savegame.cpp:696
+#: src/savegame.cpp:697
 #, fuzzy
 #| msgid "This is not a multiplayer save"
 msgid "This is not a multiplayer save."
 msgstr "Est archiu no correspon a una partida multijugador."
 
-#: src/savegame.cpp:789
+#: src/savegame.cpp:792
 #, fuzzy
 msgid "The game could not be saved: "
 msgstr "No s'ha pogut guardar la partida."
 
-#: src/savegame.cpp:871
+#: src/savegame.cpp:874
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Ya existix una partida ab este nom. ¿Vols sobreescriure-la?"
 
-#: src/savegame.cpp:872
+#: src/savegame.cpp:875
 msgid "Overwrite?"
 msgstr "¿Vols sobreescriure?"
 
-#: src/savegame.cpp:882
+#: src/savegame.cpp:885
 #, fuzzy
 #| msgid "Save names should not end on '.gz'. Please choose a different name."
 msgid ""
@@ -7740,35 +7740,35 @@ msgstr ""
 "Els noms de les partides guardades no poden acabar en «.gz». Per favor, tria "
 "un atre nom."
 
-#: src/savegame.cpp:948
+#: src/savegame.cpp:951
 msgid "Saved"
 msgstr "Partida guardada"
 
-#: src/savegame.cpp:948
+#: src/savegame.cpp:951
 #, fuzzy
 #| msgid "The game has been saved"
 msgid "The game has been saved."
 msgstr "La partida ha segut guardada."
 
-#: src/savegame.cpp:979 src/savegame.cpp:1000
+#: src/savegame.cpp:982 src/savegame.cpp:1003
 msgid "Could not write to file"
 msgstr "No ha segut possible escriure en l'archiu."
 
-#: src/savegame.cpp:1034
+#: src/savegame.cpp:1037
 msgid "Save Replay"
 msgstr "Guardar Repetició"
 
-#: src/savegame.cpp:1043
+#: src/savegame.cpp:1046
 msgid "replay"
 msgstr "repetició"
 
-#: src/savegame.cpp:1061
+#: src/savegame.cpp:1064
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "No ha segut possible guardar la partida automàticament. Per favor, guarda-la "
 "manualment."
 
-#: src/savegame.cpp:1110
+#: src/savegame.cpp:1113
 msgid "Save Game"
 msgstr "Guardar partida"
 

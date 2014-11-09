@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-10-24 20:20+0200\n"
+"POT-Creation-Date: 2014-11-08 21:20+0100\n"
 "PO-Revision-Date: 2014-10-26 09:23+0100\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -339,21 +339,21 @@ msgstr "Mando: límite do empurre"
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:366
-#: data/lua/wml-tags.lua:11983 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:983
 msgid "poisoned"
 msgstr "Envelenado"
 
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:12465
+#: data/lua/wml/objectives.lua:12467
 msgid "Gold carryover:"
 msgstr "Ouro retido:"
 
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:12466
+#: data/lua/wml/objectives.lua:12468
 msgid "Notes:"
 msgstr "Notas:"
 
@@ -2571,12 +2571,12 @@ msgid "Turns run out"
 msgstr "Que se esgoten as roldas."
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12527
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12529
 msgid "Early finish bonus."
 msgstr "Hai bonificación por rematar cedo."
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12529
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12531
 msgid "No early finish bonus."
 msgstr "Non hai bonificación por rematar cedo."
 
@@ -2589,7 +2589,7 @@ msgid "(early finish bonus)"
 msgstr "(hai bonificación por rematar cedo)"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12537
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12539
 msgid "No gold carried over to the next scenario."
 msgstr "Non se conserva ouro para o seguinte escenario."
 
@@ -2826,15 +2826,15 @@ msgstr "Infranqueábel"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:215 src/gui/dialogs/lobby/lobby_data.cpp:324
+#: data/core/team-colors.cfg:215 src/gui/dialogs/lobby/lobby_data.cpp:338
 #: src/multiplayer_lobby.cpp:678
 msgid "Fog"
 msgstr "Néboa da guerra"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:221 src/gui/dialogs/lobby/lobby_data.cpp:327
-#: src/gui/dialogs/lobby/lobby_data.cpp:330 src/multiplayer_configure.cpp:78
+#: data/core/team-colors.cfg:221 src/gui/dialogs/lobby/lobby_data.cpp:341
+#: src/gui/dialogs/lobby/lobby_data.cpp:344 src/multiplayer_configure.cpp:78
 #: src/multiplayer_lobby.cpp:682 src/multiplayer_lobby.cpp:688
 msgid "Shroud"
 msgstr "Manto do descoñecido"
@@ -3223,69 +3223,69 @@ msgstr "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11983 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:983
 msgid "female^poisoned"
 msgstr "Envelenada"
 
 # “ralentizada” non é unha palabra normativa, pero dada a súa popularidade (por efecto do castelán?) e maila falta de boas alternativas (frear, refrear, entorpecer, desacelerar...) paréceme a mellor escolla.
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:11987 src/actions/attack.cpp:988
 msgid "female^slowed"
 msgstr "Ralentizada"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:11987 src/actions/attack.cpp:988
 msgid "slowed"
 msgstr "Ralentizado"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11986 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:11988 src/actions/attack.cpp:993
 msgid "female^petrified"
 msgstr "Petrificada"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11986 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:11988 src/actions/attack.cpp:993
 msgid "petrified"
 msgstr "Petrificado"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11987
+#: data/lua/wml-tags.lua:11989
 msgid "female^unhealable"
 msgstr "Insandábel"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11987
+#: data/lua/wml-tags.lua:11989
 msgid "unhealable"
 msgstr "Insandábel"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12463 src/mp_game_utils.cpp:157
+#: data/lua/wml/objectives.lua:12465 src/mp_game_utils.cpp:157
 msgid "Victory:"
 msgstr "Vitoria:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12464
+#: data/lua/wml/objectives.lua:12466
 msgid "Defeat:"
 msgstr "Derrota:"
 
 # Aparece na lista de obxectivos dos escenarios. Pode verse, por exemplo, na segunda parte da aprendizaxe. Vai a continuación do texto «Que se esgoten as roldas. ».
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12484
+#: data/lua/wml/objectives.lua:12486
 msgid "(%d turns left)"
 msgstr "Restan %d roldas."
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12486
+#: data/lua/wml/objectives.lua:12488
 msgid "(this turn left)"
 msgstr "(é a última rolda)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12539
+#: data/lua/wml/objectives.lua:12541
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "Conservarase un %d%% do ouro para o seguinte escenario."
 
@@ -4949,12 +4949,12 @@ msgid "Recall"
 msgstr "Reincorporar"
 
 # Aparece ao cargar partidas.
-#: src/dialogs.cpp:785 src/savegame.cpp:299
+#: src/dialogs.cpp:785 src/savegame.cpp:298
 msgid "%a %b %d %H:%M %Y"
 msgstr "%d/%m/%Y ás %H:%M"
 
 # Aparece ao cargar partidas.
-#: src/dialogs.cpp:785 src/savegame.cpp:299
+#: src/dialogs.cpp:785 src/savegame.cpp:298
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%d/%m/%Y ás %I:%M %p"
 
@@ -4983,7 +4983,7 @@ msgid "Replay"
 msgstr "Repetición"
 
 # En referencia á rolda en que está a partida (unha rolda é o grupo formado por unha quenda de cada xogador).
-#: src/dialogs.cpp:840 src/savegame.cpp:1122
+#: src/dialogs.cpp:840 src/savegame.cpp:1125
 msgid "Turn"
 msgstr "Rolda"
 
@@ -5018,7 +5018,7 @@ msgstr ""
 msgid "Date"
 msgstr "Data"
 
-#: src/dialogs.cpp:892 src/savegame.cpp:642
+#: src/dialogs.cpp:892 src/savegame.cpp:643
 msgid "Load Game"
 msgstr "Cargar unha partida"
 
@@ -5152,7 +5152,7 @@ msgid "The file you have tried to load is corrupt"
 msgstr "O ficheiro que intentaches cargar non está ben."
 
 #: src/game_controller.cpp:483 src/game_controller.cpp:501
-#: src/savegame.cpp:690
+#: src/savegame.cpp:691
 msgid "The file you have tried to load is corrupt: '"
 msgstr "O ficheiro que intentaches cargar non está ben: «"
 
@@ -5245,42 +5245,42 @@ msgstr ""
 "Non se atopou un lugar para o castelo. Hai demasiados ou demasiado poucos "
 "hexágonos de montaña (comprobe o «tamaño máximo dos outeiros»)?"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:211 src/multiplayer_lobby.cpp:611
+#: src/gui/dialogs/lobby/lobby_data.cpp:212 src/multiplayer_lobby.cpp:611
 msgid "Unknown era: $era_id"
 msgstr "Era descoñecida: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:216 src/multiplayer_lobby.cpp:615
+#: src/gui/dialogs/lobby/lobby_data.cpp:217 src/multiplayer_lobby.cpp:615
 msgid "Unknown era"
 msgstr "Era descoñecida"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:507
+#: src/gui/dialogs/lobby/lobby_data.cpp:297 src/multiplayer_lobby.cpp:507
 msgid "Remote scenario"
 msgstr "Escenario remoto"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:291 src/multiplayer_lobby.cpp:515
+#: src/gui/dialogs/lobby/lobby_data.cpp:305 src/multiplayer_lobby.cpp:515
 msgid "Unknown scenario: $scenario_id"
 msgstr "Escenario descoñecido: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:296 src/multiplayer_lobby.cpp:519
+#: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_lobby.cpp:519
 msgid "Unknown scenario"
 msgstr "Escenario descoñecido"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:302 src/multiplayer_lobby.cpp:647
+#: src/gui/dialogs/lobby/lobby_data.cpp:316 src/multiplayer_lobby.cpp:647
 msgid "Reloaded game"
 msgstr "Partida recargada"
 
 # Refírese á cantidade de roldas xogadas nas partidas de varios xogadores que se están xogando.
-#: src/gui/dialogs/lobby/lobby_data.cpp:313 src/multiplayer_lobby.cpp:663
+#: src/gui/dialogs/lobby/lobby_data.cpp:327 src/multiplayer_lobby.cpp:663
 msgid "Turn "
 msgstr "Rolda "
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:318 src/multiplayer_lobby.cpp:667
+#: src/gui/dialogs/lobby/lobby_data.cpp:332 src/multiplayer_lobby.cpp:667
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Posto vacante:"
 msgstr[1] "Postos vacantes:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:332 src/multiplayer_lobby.cpp:692
+#: src/gui/dialogs/lobby/lobby_data.cpp:346 src/multiplayer_lobby.cpp:692
 msgid "none"
 msgstr "ningún"
 
@@ -5453,63 +5453,63 @@ msgstr "Configuración do escenario"
 msgid " < Back"
 msgstr "Volver ao cadro da situación"
 
-#: src/loadscreen.cpp:223
+#: src/loadscreen.cpp:222
 msgid "Initializing user interface"
 msgstr "Cargando a interface de usuario…"
 
-#: src/loadscreen.cpp:224
+#: src/loadscreen.cpp:223
 msgid "Loading game configuration"
 msgstr "Cargando a configuración do xogo…"
 
-#: src/loadscreen.cpp:225 src/loadscreen.cpp:232
+#: src/loadscreen.cpp:224 src/loadscreen.cpp:231
 msgid "Verifying cache"
 msgstr "Verificando a caché…"
 
-#: src/loadscreen.cpp:226 src/loadscreen.cpp:233
+#: src/loadscreen.cpp:225 src/loadscreen.cpp:232
 msgid "Reading files and creating cache"
 msgstr "Lendo os ficheiros e creando a caché…"
 
-#: src/loadscreen.cpp:227 src/loadscreen.cpp:234
+#: src/loadscreen.cpp:226 src/loadscreen.cpp:233
 msgid "Reading unit files"
 msgstr "Lendo os ficheiros das unidades…"
 
-#: src/loadscreen.cpp:228
+#: src/loadscreen.cpp:227
 msgid "Reinitialize fonts for the current language"
 msgstr "Recargando os tipos de letra para a lingua actual…"
 
-#: src/loadscreen.cpp:229
+#: src/loadscreen.cpp:228
 msgid "Searching for installed add-ons"
 msgstr "Buscando os complementos instalados…"
 
-#: src/loadscreen.cpp:230
+#: src/loadscreen.cpp:229
 msgid "Loading title screen"
 msgstr "Cargando a pantalla principal…"
 
-#: src/loadscreen.cpp:231
+#: src/loadscreen.cpp:230
 msgid "Loading data files"
 msgstr "Cargando os ficheiros de datos…"
 
-#: src/loadscreen.cpp:235
+#: src/loadscreen.cpp:234
 msgid "Loading level"
 msgstr "Cargando o nivel…"
 
-#: src/loadscreen.cpp:236
+#: src/loadscreen.cpp:235
 msgid "Initializing teams"
 msgstr "Cargando as alianzas…"
 
-#: src/loadscreen.cpp:237
+#: src/loadscreen.cpp:236
 msgid "Loading units"
 msgstr "Cargando as unidades…"
 
-#: src/loadscreen.cpp:238 src/loadscreen.cpp:240
+#: src/loadscreen.cpp:237 src/loadscreen.cpp:239
 msgid "Initializing display"
 msgstr "Iniciando a visualización…"
 
-#: src/loadscreen.cpp:239
+#: src/loadscreen.cpp:238
 msgid "Building terrain rules"
 msgstr "Construíndo as regras do terreo…"
 
-#: src/loadscreen.cpp:241
+#: src/loadscreen.cpp:240
 msgid "Starting game"
 msgstr "Iniciando a partida…"
 
@@ -7092,12 +7092,12 @@ msgstr "Atopouse un terreo cun custe de movemento inferior a 1."
 msgid "time left for current turn"
 msgstr "tempo restante da quenda actual"
 
-#: src/play_controller.cpp:259 src/replay_controller.cpp:147
+#: src/play_controller.cpp:259 src/replay_controller.cpp:148
 msgid "current local time"
 msgstr "hora local"
 
-#: src/play_controller.cpp:1199 src/savegame.cpp:406 src/savegame.cpp:418
-#: src/savegame.cpp:1078 src/savegame.cpp:1080
+#: src/play_controller.cpp:1199 src/savegame.cpp:407 src/savegame.cpp:419
+#: src/savegame.cpp:1081 src/savegame.cpp:1083
 msgid "Auto-Save"
 msgstr "Gardado automático"
 
@@ -7117,7 +7117,7 @@ msgstr ""
 "A partida non está sincronizada. Pode que non teña moito sentido continuar. "
 "Quere gardala?"
 
-#: src/play_controller.cpp:1505 src/replay_controller.cpp:366
+#: src/play_controller.cpp:1505 src/replay_controller.cpp:367
 msgid "Error details:"
 msgstr "Detalles:"
 
@@ -7165,7 +7165,7 @@ msgstr "Rematou a partida"
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Este escenario rematou. Queres continuar a campaña?"
 
-#: src/playcampaign.cpp:642
+#: src/playcampaign.cpp:641
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Escenario descoñecido: «$scenario|»."
 
@@ -7312,7 +7312,7 @@ msgstr "Substituír por $player"
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player deixou a partida. Que queres facer?"
 
-#: src/replay_controller.cpp:365
+#: src/replay_controller.cpp:366
 msgid ""
 "The replay is corrupt/out of sync. It might not make much sense to continue. "
 "Do you want to save the game?"
@@ -7320,7 +7320,7 @@ msgstr ""
 "A repetición está mal ou non está sincronizada. Pode que non teña moito "
 "sentido continuar. Quere gardala?"
 
-#: src/reports.cpp:159 src/savegame.cpp:871
+#: src/reports.cpp:159 src/savegame.cpp:874
 msgid "Name: "
 msgstr "Nome: "
 
@@ -7548,17 +7548,17 @@ msgstr "Unidades crepusculares: "
 msgid "Observers:"
 msgstr "Observadores:"
 
-#: src/savegame.cpp:327 src/savegame.cpp:329
+#: src/savegame.cpp:328 src/savegame.cpp:330
 msgid " replay"
 msgstr " repetición"
 
-#: src/savegame.cpp:567 src/savegame.cpp:571
+#: src/savegame.cpp:568 src/savegame.cpp:572
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Advertencia: o ficheiro que intentaches cargar está mal. Vaise cargar aínda "
 "así.\n"
 
-#: src/savegame.cpp:607
+#: src/savegame.cpp:608
 msgid ""
 "The save has corrupt version information ($version_number|) and cannot be "
 "loaded."
@@ -7566,7 +7566,7 @@ msgstr ""
 "Esta partida non pode cargarse por ter información de versión incorrecta "
 "($version_number|)."
 
-#: src/savegame.cpp:630
+#: src/savegame.cpp:631
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
@@ -7574,7 +7574,7 @@ msgstr ""
 "Esta partida corresponde a unha versión demasiado antiga para poder cargala "
 "($version_number|)."
 
-#: src/savegame.cpp:639
+#: src/savegame.cpp:640
 msgid ""
 "This save is from a different version of the game ($version_number|). Do you "
 "wish to try to load it?"
@@ -7582,57 +7582,57 @@ msgstr ""
 "Esta partida é dunha versión diferente do xogo ($version_number|). Queres "
 "intentar cargala?"
 
-#: src/savegame.cpp:696
+#: src/savegame.cpp:697
 msgid "This is not a multiplayer save."
 msgstr "Esta non é unha partida para varios xogadores."
 
-#: src/savegame.cpp:789
+#: src/savegame.cpp:792
 msgid "The game could not be saved: "
 msgstr "Non foi posíbel gardar a partida: "
 
-#: src/savegame.cpp:871
+#: src/savegame.cpp:874
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Xa hai unha partida gardada con ese nome. Queres substituíla?"
 
-#: src/savegame.cpp:872
+#: src/savegame.cpp:875
 msgid "Overwrite?"
 msgstr "Substituíla?"
 
-#: src/savegame.cpp:882
+#: src/savegame.cpp:885
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr ""
 "Os nomes das partidas gardadas non poden rematar en «.gz» ou «.bz2». Elixe "
 "outro nome."
 
-#: src/savegame.cpp:948
+#: src/savegame.cpp:951
 msgid "Saved"
 msgstr "Gardada."
 
-#: src/savegame.cpp:948
+#: src/savegame.cpp:951
 msgid "The game has been saved."
 msgstr "Gardouse a partida."
 
-#: src/savegame.cpp:979 src/savegame.cpp:1000
+#: src/savegame.cpp:982 src/savegame.cpp:1003
 msgid "Could not write to file"
 msgstr "Non foi posíbel escribir no ficheiro."
 
-#: src/savegame.cpp:1034
+#: src/savegame.cpp:1037
 msgid "Save Replay"
 msgstr "Gardar a repetición"
 
 # A maiúscula é a propósito, aparece ao principio dunha liña ao cargar partidas (repeticións).
-#: src/savegame.cpp:1043
+#: src/savegame.cpp:1046
 msgid "replay"
 msgstr "Repetición"
 
-#: src/savegame.cpp:1061
+#: src/savegame.cpp:1064
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Non foi posíbel gardar automaticamente a partida. Garda a partida "
 "manualmente."
 
-#: src/savegame.cpp:1110
+#: src/savegame.cpp:1113
 msgid "Save Game"
 msgstr "Gardar a partida"
 

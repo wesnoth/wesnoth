@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-10-24 20:20+0200\n"
+"POT-Creation-Date: 2014-11-08 21:20+0100\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -327,21 +327,21 @@ msgstr ""
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:366
-#: data/lua/wml-tags.lua:11983 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:983
 msgid "poisoned"
 msgstr "apnuodytas"
 
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:12465
+#: data/lua/wml/objectives.lua:12467
 msgid "Gold carryover:"
 msgstr "Aukso pernešimas:"
 
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:12466
+#: data/lua/wml/objectives.lua:12468
 msgid "Notes:"
 msgstr "Pastabos:"
 
@@ -2616,12 +2616,12 @@ msgid "Turns run out"
 msgstr "Pasibaigia ėjimai"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12527
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12529
 msgid "Early finish bonus."
 msgstr "Ankstyvo pabaigimo premija."
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12529
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12531
 msgid "No early finish bonus."
 msgstr "Nėra ankstyvo pabaigimo premijos."
 
@@ -2634,7 +2634,7 @@ msgid "(early finish bonus)"
 msgstr "(ankstyvo pabaigimo premija)"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12537
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12539
 msgid "No gold carried over to the next scenario."
 msgstr "Nė kiek aukso nepernešama į kitą scenarijų."
 
@@ -2868,15 +2868,15 @@ msgstr "Nepereinama"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:215 src/gui/dialogs/lobby/lobby_data.cpp:324
+#: data/core/team-colors.cfg:215 src/gui/dialogs/lobby/lobby_data.cpp:338
 #: src/multiplayer_lobby.cpp:678
 msgid "Fog"
 msgstr "Rūkas"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:221 src/gui/dialogs/lobby/lobby_data.cpp:327
-#: src/gui/dialogs/lobby/lobby_data.cpp:330 src/multiplayer_configure.cpp:78
+#: data/core/team-colors.cfg:221 src/gui/dialogs/lobby/lobby_data.cpp:341
+#: src/gui/dialogs/lobby/lobby_data.cpp:344 src/multiplayer_configure.cpp:78
 #: src/multiplayer_lobby.cpp:682 src/multiplayer_lobby.cpp:688
 msgid "Shroud"
 msgstr "Uždanga"
@@ -3111,68 +3111,68 @@ msgstr "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11983 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:983
 msgid "female^poisoned"
 msgstr "apnuodyta"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:11987 src/actions/attack.cpp:988
 msgid "female^slowed"
 msgstr "sulėtinta"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:11987 src/actions/attack.cpp:988
 msgid "slowed"
 msgstr "sulėtintas"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11986 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:11988 src/actions/attack.cpp:993
 msgid "female^petrified"
 msgstr "suakmenėjusi"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11986 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:11988 src/actions/attack.cpp:993
 msgid "petrified"
 msgstr "suakmenėjęs"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11987
+#: data/lua/wml-tags.lua:11989
 msgid "female^unhealable"
 msgstr "negydoma"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11987
+#: data/lua/wml-tags.lua:11989
 msgid "unhealable"
 msgstr "negydomas"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12463 src/mp_game_utils.cpp:157
+#: data/lua/wml/objectives.lua:12465 src/mp_game_utils.cpp:157
 msgid "Victory:"
 msgstr "Pergalė:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12464
+#: data/lua/wml/objectives.lua:12466
 msgid "Defeat:"
 msgstr "Pralaimėjimas:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12484
+#: data/lua/wml/objectives.lua:12486
 #, fuzzy
 msgid "(%d turns left)"
 msgstr "(liko %d ėjimų)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12486
+#: data/lua/wml/objectives.lua:12488
 msgid "(this turn left)"
 msgstr "(liko šis ėjimas)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12539
+#: data/lua/wml/objectives.lua:12541
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% aukso pernešama į kitą scenarijų."
 
@@ -4741,11 +4741,11 @@ msgstr "Bruožai"
 msgid "Recall"
 msgstr "Grąžinti"
 
-#: src/dialogs.cpp:785 src/savegame.cpp:299
+#: src/dialogs.cpp:785 src/savegame.cpp:298
 msgid "%a %b %d %H:%M %Y"
 msgstr "%Y %b %d %a %H:%M"
 
-#: src/dialogs.cpp:785 src/savegame.cpp:299
+#: src/dialogs.cpp:785 src/savegame.cpp:298
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%Y %b %d %a %H:%M"
 
@@ -4773,7 +4773,7 @@ msgstr "Testinis scenarijus"
 msgid "Replay"
 msgstr "Peržaidimas"
 
-#: src/dialogs.cpp:840 src/savegame.cpp:1122
+#: src/dialogs.cpp:840 src/savegame.cpp:1125
 msgid "Turn"
 msgstr "Ėjimas"
 
@@ -4807,7 +4807,7 @@ msgstr ""
 msgid "Date"
 msgstr "Data"
 
-#: src/dialogs.cpp:892 src/savegame.cpp:642
+#: src/dialogs.cpp:892 src/savegame.cpp:643
 msgid "Load Game"
 msgstr "Įkelti žaidimą"
 
@@ -4944,7 +4944,7 @@ msgid "The file you have tried to load is corrupt"
 msgstr "Failas, kurį bandėte įkelti, yra sugadintas"
 
 #: src/game_controller.cpp:483 src/game_controller.cpp:501
-#: src/savegame.cpp:690
+#: src/savegame.cpp:691
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Failas, kurį bandėte įkelti, sugadintas: „"
 
@@ -5031,35 +5031,35 @@ msgstr ""
 "Tinkamos vietos piliai nerasta. Per daug arba per mažai kalnų laukelių? "
 "(Prašome pasirinkti „maksimalaus kalno dydžio“ parametrą)"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:211 src/multiplayer_lobby.cpp:611
+#: src/gui/dialogs/lobby/lobby_data.cpp:212 src/multiplayer_lobby.cpp:611
 msgid "Unknown era: $era_id"
 msgstr "Nežinoma era: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:216 src/multiplayer_lobby.cpp:615
+#: src/gui/dialogs/lobby/lobby_data.cpp:217 src/multiplayer_lobby.cpp:615
 msgid "Unknown era"
 msgstr "Nežinoma era"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:507
+#: src/gui/dialogs/lobby/lobby_data.cpp:297 src/multiplayer_lobby.cpp:507
 msgid "Remote scenario"
 msgstr "Nutolęs scenarijus"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:291 src/multiplayer_lobby.cpp:515
+#: src/gui/dialogs/lobby/lobby_data.cpp:305 src/multiplayer_lobby.cpp:515
 msgid "Unknown scenario: $scenario_id"
 msgstr "Nežinomas scenarijus: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:296 src/multiplayer_lobby.cpp:519
+#: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_lobby.cpp:519
 msgid "Unknown scenario"
 msgstr "Nežinomas scenarijus"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:302 src/multiplayer_lobby.cpp:647
+#: src/gui/dialogs/lobby/lobby_data.cpp:316 src/multiplayer_lobby.cpp:647
 msgid "Reloaded game"
 msgstr "Iš naujo įkeltas žaidimas"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:313 src/multiplayer_lobby.cpp:663
+#: src/gui/dialogs/lobby/lobby_data.cpp:327 src/multiplayer_lobby.cpp:663
 msgid "Turn "
 msgstr "Ėjimas "
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:318 src/multiplayer_lobby.cpp:667
+#: src/gui/dialogs/lobby/lobby_data.cpp:332 src/multiplayer_lobby.cpp:667
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Laisva vieta:"
@@ -5067,7 +5067,7 @@ msgstr[1] "Laisvų vietų:"
 msgstr[2] "Laisvų vietų:"
 msgstr[3] "Laisvų vietų:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:332 src/multiplayer_lobby.cpp:692
+#: src/gui/dialogs/lobby/lobby_data.cpp:346 src/multiplayer_lobby.cpp:692
 msgid "none"
 msgstr "nieko"
 
@@ -5237,63 +5237,63 @@ msgstr "Scenarijaus nustatymai"
 msgid " < Back"
 msgstr " < Atgal"
 
-#: src/loadscreen.cpp:223
+#: src/loadscreen.cpp:222
 msgid "Initializing user interface"
 msgstr "Paruošiama naudotojo sąsaja"
 
-#: src/loadscreen.cpp:224
+#: src/loadscreen.cpp:223
 msgid "Loading game configuration"
 msgstr "Įkeliama žaidimo konfigūracija"
 
-#: src/loadscreen.cpp:225 src/loadscreen.cpp:232
+#: src/loadscreen.cpp:224 src/loadscreen.cpp:231
 msgid "Verifying cache"
 msgstr "Tikrinamas podėlis"
 
-#: src/loadscreen.cpp:226 src/loadscreen.cpp:233
+#: src/loadscreen.cpp:225 src/loadscreen.cpp:232
 msgid "Reading files and creating cache"
 msgstr "Skaitomi failai ir kuriamas podėlis"
 
-#: src/loadscreen.cpp:227 src/loadscreen.cpp:234
+#: src/loadscreen.cpp:226 src/loadscreen.cpp:233
 msgid "Reading unit files"
 msgstr "Skaitomi dalinių failai"
 
-#: src/loadscreen.cpp:228
+#: src/loadscreen.cpp:227
 msgid "Reinitialize fonts for the current language"
 msgstr "Iš naujo įkeliami šriftai naudojamai kalbai"
 
-#: src/loadscreen.cpp:229
+#: src/loadscreen.cpp:228
 msgid "Searching for installed add-ons"
 msgstr "Ieškoma įdiegtų priedų"
 
-#: src/loadscreen.cpp:230
+#: src/loadscreen.cpp:229
 msgid "Loading title screen"
 msgstr "Įkeliamas titulinis vaizdas"
 
-#: src/loadscreen.cpp:231
+#: src/loadscreen.cpp:230
 msgid "Loading data files"
 msgstr "Įkeliami duomenų failai"
 
-#: src/loadscreen.cpp:235
+#: src/loadscreen.cpp:234
 msgid "Loading level"
 msgstr "Įkeliamas lygis"
 
-#: src/loadscreen.cpp:236
+#: src/loadscreen.cpp:235
 msgid "Initializing teams"
 msgstr "Paruošiamos komandos"
 
-#: src/loadscreen.cpp:237
+#: src/loadscreen.cpp:236
 msgid "Loading units"
 msgstr "Įkeliami daliniai"
 
-#: src/loadscreen.cpp:238 src/loadscreen.cpp:240
+#: src/loadscreen.cpp:237 src/loadscreen.cpp:239
 msgid "Initializing display"
 msgstr "Paruošiamas ekranas"
 
-#: src/loadscreen.cpp:239
+#: src/loadscreen.cpp:238
 msgid "Building terrain rules"
 msgstr "Vietovių taisyklių sudarymas"
 
-#: src/loadscreen.cpp:241
+#: src/loadscreen.cpp:240
 msgid "Starting game"
 msgstr "Paleidžiamas žaidimas"
 
@@ -6836,12 +6836,12 @@ msgstr "Rasta vietovė su judėjimo kaina mažesne nei 1."
 msgid "time left for current turn"
 msgstr "šiam ėjimui likęs laikas"
 
-#: src/play_controller.cpp:259 src/replay_controller.cpp:147
+#: src/play_controller.cpp:259 src/replay_controller.cpp:148
 msgid "current local time"
 msgstr "dabartinis vietinis laikas"
 
-#: src/play_controller.cpp:1199 src/savegame.cpp:406 src/savegame.cpp:418
-#: src/savegame.cpp:1078 src/savegame.cpp:1080
+#: src/play_controller.cpp:1199 src/savegame.cpp:407 src/savegame.cpp:419
+#: src/savegame.cpp:1081 src/savegame.cpp:1083
 msgid "Auto-Save"
 msgstr "Autoišsaugojimas"
 
@@ -6861,7 +6861,7 @@ msgstr ""
 "Šis žaidimas išsisinchronizavo. Nėra prasmės tęsti žaidimą. Ar norite "
 "išsaugoti žaidimą?"
 
-#: src/play_controller.cpp:1505 src/replay_controller.cpp:366
+#: src/play_controller.cpp:1505 src/replay_controller.cpp:367
 msgid "Error details:"
 msgstr "Klaidos detalės:"
 
@@ -6910,7 +6910,7 @@ msgstr "Žaidimas baigtas"
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Šis scenarijus pasibaigė. Ar norite tęsti kampaniją?"
 
-#: src/playcampaign.cpp:642
+#: src/playcampaign.cpp:641
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Nežinomas scenarijus: „$scenario|“"
 
@@ -7073,7 +7073,7 @@ msgstr "Pakeisti į $player"
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player paliko žaidimą. Ką norite daryti?"
 
-#: src/replay_controller.cpp:365
+#: src/replay_controller.cpp:366
 #, fuzzy
 msgid ""
 "The replay is corrupt/out of sync. It might not make much sense to continue. "
@@ -7082,7 +7082,7 @@ msgstr ""
 "Įvyko tinklo atsijungimas ir žaidimas negali tęstis.\n"
 "Ar norite išsaugoti šį žaidimą?"
 
-#: src/reports.cpp:159 src/savegame.cpp:871
+#: src/reports.cpp:159 src/savegame.cpp:874
 msgid "Name: "
 msgstr "Vardas: "
 
@@ -7310,16 +7310,16 @@ msgstr "Priblandos daliniai:"
 msgid "Observers:"
 msgstr "Stebėtojai:"
 
-#: src/savegame.cpp:327 src/savegame.cpp:329
+#: src/savegame.cpp:328 src/savegame.cpp:330
 msgid " replay"
 msgstr " peržaidimas"
 
-#: src/savegame.cpp:567 src/savegame.cpp:571
+#: src/savegame.cpp:568 src/savegame.cpp:572
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Dėmesio: Failas, kurį bandote įkelti yra sugadintas. Įkeliama vis tiek.\n"
 
-#: src/savegame.cpp:607
+#: src/savegame.cpp:608
 #, fuzzy
 msgid ""
 "The save has corrupt version information ($version_number|) and cannot be "
@@ -7327,14 +7327,14 @@ msgid ""
 msgstr ""
 "Išsaugojimas yra iš per senos versijos ($version_number|), kad būtų įkeltas."
 
-#: src/savegame.cpp:630
+#: src/savegame.cpp:631
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
 msgstr ""
 "Išsaugojimas yra iš per senos versijos ($version_number|), kad būtų įkeltas."
 
-#: src/savegame.cpp:639
+#: src/savegame.cpp:640
 msgid ""
 "This save is from a different version of the game ($version_number|). Do you "
 "wish to try to load it?"
@@ -7342,56 +7342,56 @@ msgstr ""
 "Išsaugojimas yra iš kitos žaidimo versijos  ($version_number|). Ar norite "
 "pabandyti jį įkelti?"
 
-#: src/savegame.cpp:696
+#: src/savegame.cpp:697
 msgid "This is not a multiplayer save."
 msgstr "Tai nėra daugelio žaidėjų žaidimo išsaugojimas."
 
-#: src/savegame.cpp:789
+#: src/savegame.cpp:792
 msgid "The game could not be saved: "
 msgstr "Žaidimas negali būti išsaugotas: "
 
-#: src/savegame.cpp:871
+#: src/savegame.cpp:874
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Išsaugojimas jau egzistuoja. Ar norite jį perrašyti?"
 
-#: src/savegame.cpp:872
+#: src/savegame.cpp:875
 msgid "Overwrite?"
 msgstr "Perrašyti?"
 
-#: src/savegame.cpp:882
+#: src/savegame.cpp:885
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr ""
 "Išsaugojimų pavadinimai neturėtų baigtis „.gz“ arba „.bz2“. Prašome "
 "pašalintį šį plėtinį."
 
-#: src/savegame.cpp:948
+#: src/savegame.cpp:951
 msgid "Saved"
 msgstr "Išsaugota"
 
-#: src/savegame.cpp:948
+#: src/savegame.cpp:951
 msgid "The game has been saved."
 msgstr "Žaidimas išsaugotas."
 
-#: src/savegame.cpp:979 src/savegame.cpp:1000
+#: src/savegame.cpp:982 src/savegame.cpp:1003
 msgid "Could not write to file"
 msgstr "Nepavyksta įrašyti į failą"
 
-#: src/savegame.cpp:1034
+#: src/savegame.cpp:1037
 msgid "Save Replay"
 msgstr "Išsaugoti peržaidimą"
 
-#: src/savegame.cpp:1043
+#: src/savegame.cpp:1046
 msgid "replay"
 msgstr "peržaidimas"
 
-#: src/savegame.cpp:1061
+#: src/savegame.cpp:1064
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Nepavyko automatiškai išsaugoti žaidimo. Prašome išsaugoti žaidimą rankiniu "
 "būdu."
 
-#: src/savegame.cpp:1110
+#: src/savegame.cpp:1113
 msgid "Save Game"
 msgstr "Išsaugoti žaidimą"
 
