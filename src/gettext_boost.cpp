@@ -117,7 +117,12 @@ void set_language(const std::string& language, const std::vector<std::string>* /
 	// to which languages we ship with and not which the os supports
 	LOG_G << "setting language to  '" << language << "' \n";
 	std::string::size_type at_pos = language.rfind('@');
-	if(at_pos  != std::string::npos)
+	if(language.empty())
+	{
+		//Don't add "UTF-8" to default language.
+		get_manager().current_language_ = "";
+	}
+	else if(at_pos  != std::string::npos)
 	{
 		get_manager().current_language_ = language.substr(0, at_pos) + ".UTF-8" + language.substr(at_pos);
 	}
