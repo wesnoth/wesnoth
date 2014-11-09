@@ -26,6 +26,7 @@ Version 1.11.19:
    * Micro AIs: only display on-screen error messages when in debug mode
    * Nearest neighbor interpolation used when zooming in on units and terrains
      See https://github.com/wesnoth/wesnoth/pull/316 and related dev-talk email
+   * New filesystem implementation based on boost filesystem
  * WML engine:
    * Fixed a bug that prevented [animate_unit] from displaying death or victory
      animations for those units that filter them based on weapon (eg. Wose)
