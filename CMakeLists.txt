@@ -191,7 +191,7 @@ endmacro(check_compiler_has_flag)
 
 
 ### Set the environment compiler flags.
-option(ENABLE_STD_G11 "compile with latest c++ standard on GCC" ON)
+option(ENABLE_STD_G11 "compile with latest c++ standard on GCC" OFF)
 
 if(CONFIGURED)
 	# The CONFIGURED flag was replaced when trunk `was' 1.11, before the release of 1.11.0
