@@ -283,7 +283,7 @@ static bool create_directory_if_missing_recursive(const path& dirpath)
 		return false;
 	}
 
-	if (create_directory_if_missing_recursive(dirpath.parent_path())) {
+	if (!dirpath.has_parent_path() || create_directory_if_missing_recursive(dirpath.parent_path())) {
 		return create_directory_if_missing(dirpath);
 	} else {
 		ERR_FS << "Could not create parents to " << dirpath.string() << '\n';
