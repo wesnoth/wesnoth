@@ -1,6 +1,10 @@
 Version 1.11.19+dev:
  * Language and i18n:
    * Updated translations: German
+ * Miscellaneous and bug fixes:
+   * Fixed recursive directory creation failing for working dir-relative paths
+     without an explicit `./` at the start (e.g. in `wesnoth -p data/core foo`)
+     for builds using Boost.filesystem.
 
 Version 1.11.19:
  * Campaigns:
