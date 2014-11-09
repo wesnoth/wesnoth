@@ -10,6 +10,7 @@ Contents:
 You'll need to have these libraries and their development headers to build Wesnoth:
 
  boost_filesystem >= 1.44.0
+ boost_locale >= 1.48.0
  boost_iostreams >= 1.36.0
  boost_regex >= 1.36.0
  boost_serialization >= 1.36.0
@@ -26,13 +27,21 @@ You'll need to have these libraries and their development headers to build Wesno
  libsdl-net
  libsdl-ttf >= 2.0.8
  libz
+ libbz2
 
 Note that problems with SDL 1.2.14 have been reported, thus we advise you to use SDL
 1.2.13 for now.
 
+(Note also that although differring boost requirements are displayed, boost libs from different releases are in general incompatible and you should not mix and match.)
+
 These libraries are optional dependencies that enable additional features:
 
  libdbus-1 (used for desktop notifications)
+ libpng (save images as pngs, otherwise only bmp is possible)
+
+As a temporary compatibility measure, it is possible to build the game without requiring boost filesystem or boost locale, using libintl for translations instead. The cost is that wesnoth won't support UTF-8 in filepaths on all platforms.
+For this, target filesystem.cpp and gettext.cpp instead of filesystem_boost.cpp and gettext_boost.cpp. For scons/cmake the "boost filesystem" option toggles these.
+Similarly it is possible, although not recommended, to compile the game with any libsdl-mixer version >= 1.2.0, at the cost of reduced UTF-8 support.
 
 There are currently two ways to build wesnoth:
  * scons >= 0.98.3
