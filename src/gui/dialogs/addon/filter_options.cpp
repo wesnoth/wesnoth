@@ -99,8 +99,8 @@ namespace gui2
  * sort_descending & & toggle_button & m &
  *     Display add-ons in descending order by default. $
  *
- * * sort_by_rating & & toggle_button & m &
- *     Sort add-ons by rating by default. $
+ * * sort_by_score & & toggle_button & m &
+ *     Sort add-ons by score by default. $
  *
  * sort_by_name & & toggle_button & m &
  *     Sort add-ons by name by default. $
@@ -239,7 +239,7 @@ void taddon_filter_options::pre_show(CVideo& /*video*/, twindow& window)
 						boost::ref(window)));
 
 	sort_tgroup_.clear();
-	register_sort_toggle(window, "by_rating", SORT_RATING);
+	register_sort_toggle(window, "by_score", SORT_SCORE);
 	register_sort_toggle(window, "by_name", SORT_NAMES);
 	register_sort_toggle(window, "by_last_updated", SORT_UPDATED);
 	register_sort_toggle(window, "by_first_upload", SORT_CREATED);

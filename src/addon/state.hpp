@@ -88,7 +88,7 @@ enum ADDON_STATUS_FILTER {
  * Add-on fallback/default sorting criteria for the user interface.
  */
 enum ADDON_SORT {
-	SORT_RATING,		/**< Sort by the add-on's calculated rating. */
+	SORT_SCORE,		/**< Sort by the add-on's calculated rating. */
 	SORT_NAMES,			/**< Sort by add-on name. */
 	SORT_UPDATED,		/**< Sort by last upload time. */
 	SORT_CREATED		/**< Sort by creation time. */

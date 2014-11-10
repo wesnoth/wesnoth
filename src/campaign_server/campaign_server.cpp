@@ -189,11 +189,27 @@ void server::recalculate_player_data()
 	BOOST_FOREACH(config &campaign, campaigns().child_range("campaign"))
 	{
 		long int hours_played = 0;
+		std::vector<int> too_old;
+		int total_of_too_old;
+		time_t epoch = time(NULL);
+		total_of_too_old = campaign["total_of_too_old_hours_played"].to_int();
+		int index = 0;
 		BOOST_FOREACH(config &entry, campaign.child_range("played"))
 		{
-			hours_played += entry["time"].to_int(0) / 10;
+			hours_played += entry["time"].to_int(0);
+			if (entry["timestamp"].to_int() > epoch - 3600 * 24 * 30) // Older than a month
+			{
+				too_old.push_back(index);
+				total_of_too_old += entry["time"].to_int();
+			}
+			index++;
 		}
-		campaign["hours_played"] = str_cast(hours_played);
+		for (int i = too_old.size() - 1; i >= 0; i--) {
+			campaign.remove_child("played",too_old[i]); // Erase from the back to avoid messing up indexes
+		}
+
+		campaign["hours_played"] = str_cast( (hours_played + total_of_too_old) / 10);
+		campaign["total_of_too_old_hours_played"] = str_cast(total_of_too_old);
 
 		recalculate_campaign_ratings(campaign["name"]);
 	}
@@ -206,24 +222,14 @@ void server::recalculate_campaign_ratings(std::string campaign_name)
 
 	long int total_votes = 0;
 	long int total_points = 0;
-	std::map< std::string, initialised_int> ips;
 	BOOST_REVERSE_FOREACH(const config &rate, campaign.child_range("rate"))
 	{
-		if (ips[rate["ip"]]() == 0) {
-			total_points += rate["num"];
-			total_votes++;
-		}
-		ips[rate["ip"]] += 1;
-	}
-
-	for (std::map< std::string, initialised_int>::iterator iter = ips.begin(); iter != ips.end(); iter++) {
-		if (iter->second() >= 10) {
-			std::cerr << "Suspiciously many votes from a single IP address for campaign " << campaign["title"] << " from address " << iter->first << ", please check it out.\n";
-		}
+		total_points += rate["num"].to_int() * 10;
+		total_votes++;
 	}
 
 	if (total_votes != 0) {
-		campaign["user_rating"] = total_points/total_votes;
+		campaign["user_rating"] = total_points / total_votes;
 	} else {
 		campaign["user_rating"] = -1;
 	}
@@ -231,23 +237,13 @@ void server::recalculate_campaign_ratings(std::string campaign_name)
 	BOOST_FOREACH(config &review, campaign.child_range("review"))
 	{
 		long int likes = 0;
-		std::map< std::string, initialised_int> likers_ips;
-		likers_ips[review["ip"]] = 1;
 		std::string ips_string = review["likers_ips"];
-		unsigned long int i = 0;
 
-		while (i < ips_string.size()) {
-			long int start = i;
-			for ( ; i < ips_string.size(); i++) if (ips_string[i] == 44) break;
-			std::string this_ip = ips_string.substr(start,i - start);
-			if (likers_ips[this_ip]() == 0) likes++;
-			likers_ips[this_ip] += 1;
-			i++;
-		}
-
-		for (std::map< std::string, initialised_int>::iterator iter = ips.begin(); iter != ips.end(); iter++) {
-			if (iter->second() >= 10) {
-				std::cerr << "Suspiciously many votes from a single IP address for review " << review["id"] << " from address " << iter->first << ", please check it out.\n";
+		if (!ips_string.empty())
+		{
+			likes = 1;
+			for (unsigned long int i = 0; i < ips_string.size(); i++) {
+				if (ips_string[i] == 44) likes++;
 			}
 		}
 
@@ -552,9 +548,9 @@ void server::handle_submit_gameplay_times(const server::request& req)
 		if (!campaign) continue;
 		config& gameplay_entry = campaign.find_child("played", "ip", network::ip_address(req.sock) );
 		if (gameplay_entry) {
-			if (epoch - gameplay_entry["timestamp"].to_int() < entry["time"].to_int() / 30) {
-				gameplay_entry["time"] = (epoch - gameplay_entry["timestamp"].to_int()) / 30;
-				std::cerr << "Somebody tried to upload too many gameplay hours for add-on: " << entry["name"] << std::endl;
+			if (epoch - gameplay_entry["timestamp"].to_int() * 3600 < entry["time"].to_int()) {
+				gameplay_entry["time"] = ((epoch - gameplay_entry["timestamp"].to_int()) / 3600);
+				LOG_CS << "Somebody tried to upload too many gameplay hours for add-on: " << entry["name"] << std::endl;
 			} else {
 				gameplay_entry["time"] = str_cast(gameplay_entry["time"].to_int() + entry["time"].to_int());
 			}
@@ -562,8 +558,9 @@ void server::handle_submit_gameplay_times(const server::request& req)
 		} else {
 			config& new_entry = campaign.add_child("played");
 			new_entry["ip"] = network::ip_address(req.sock);
-			if (epoch - campaign["timestamp"].to_int() < entry["time"].to_int() / 100) {
-				std::cerr << "Somebody tried to upload too many gameplay hours for add-on: " << entry["name"] << std::endl;
+			if (entry["time"].to_int() > 24 * 30) { //Nobody can upload more than one month of gameplay time, too unlikely
+				new_entry["time"] = 24 * 30;
+				LOG_CS << "Somebody tried to upload too many gameplay hours for add-on: " << entry["name"] << std::endl;
 			} else {
 				new_entry["time"] = entry["time"];
 			}
@@ -690,6 +687,9 @@ void server::handle_upload(const server::request& req)
 		(*campaign)["type"] = upload["type"];
 		(*campaign)["email"] = upload["email"];
 
+		if((*campaign)["total_of_too_old_hours_played"].empty()) {
+			(*campaign)["total_of_too_old_hours_played"] = 0;
+		}
 		if((*campaign)["highest_review_id"].empty()) {
 			(*campaign)["highest_review_id"] = 0;
 		}
@@ -822,54 +822,64 @@ void server::handle_rate_addon(const server::request& req)
 	config &campaign = campaigns().find_child("campaign", "name", req.cfg["addon_name"]);
 	if (!campaign) {
 		send_error("Add-on '" + req.cfg["addon_name"].str() + "' not found.", req.sock);
-	} else {
-		if (!req.cfg["rating"].empty()) {
+		return;
+	}
+
+	// If there are more ratings from the same IP, make the newer ones overwrite the older
+	if (!req.cfg["rating"].empty()) {
+		config &previous_rating = campaign.find_child("rate", "ip", network::ip_address(req.sock));
+		if (!previous_rating) {
 			config& new_rating = campaign.add_child("rate");
 			new_rating["num"] = req.cfg["rating"];
 			new_rating["ip"] = network::ip_address(req.sock);
 			new_rating["time"] = lexical_cast<std::string>(time(NULL));
-			campaign["user_rating"] = req.cfg["rating"];
+		} else {
+			previous_rating["time"] = lexical_cast<std::string>(time(NULL));
+			previous_rating["num"] = req.cfg["rating"];
 		}
-		const config& users_review = req.cfg.child_or_empty("user_review");
-		if (!users_review.empty()) {
-			config& new_review = campaign.add_child("review");
-			if (!users_review["gameplay"].empty()) {
-				new_review["gameplay"] = users_review["gameplay"];
-			}
-			if (!users_review["visuals"].empty()) {
-				new_review["visuals"] = users_review["visuals"];
-			}
-			if (!users_review["story"].empty())
-			{
-				new_review["story"] = users_review["story"];
-			}
-			if (!users_review["balance"].empty())
-			{
-				new_review["balance"] = users_review["balance"];
-			}
-			if (!users_review["overall"].empty())
-			{
-				new_review["overall"] = users_review["overall"];
-			}
-			new_review["ip"] = network::ip_address(req.sock);
-			new_review["time"] = lexical_cast<std::string>(time(NULL));
-			campaign["highest_review_id"] = campaign["highest_review_id"].to_int() + 1;
-			new_review["id"] = campaign["highest_review_id"];
+	}
+
+	const config& users_review = req.cfg.child_or_empty("user_review");
+	if (!users_review.empty()) {
+		config& new_review = campaign.add_child("review");
+		if (!users_review["gameplay"].empty()) {
+			new_review["gameplay"] = users_review["gameplay"];
 		}
-		BOOST_FOREACH(const config &liked_review, req.cfg.child_range("liked_review"))
+		if (!users_review["visuals"].empty()) {
+			new_review["visuals"] = users_review["visuals"];
+		}
+		if (!users_review["story"].empty())
 		{
-			config& review = campaign.find_child("review", "id", liked_review["number"]);
-			if (review) {
-				if (!review["likers_ips"].empty()) {
-					review["likers_ips"] = review["likers_ips"] + std::string(",") + network::ip_address(req.sock);
-				} else {
+			new_review["story"] = users_review["story"];
+		}
+		if (!users_review["balance"].empty())
+		{
+			new_review["balance"] = users_review["balance"];
+		}
+		if (!users_review["overall"].empty())
+		{
+			new_review["overall"] = users_review["overall"];
+		}
+		new_review["ip"] = network::ip_address(req.sock);
+		new_review["time"] = lexical_cast<std::string>(time(NULL));
+		campaign["highest_review_id"] = campaign["highest_review_id"].to_int() + 1;
+		new_review["id"] = campaign["highest_review_id"];
+	}
+	BOOST_FOREACH(const config &liked_review, req.cfg.child_range("liked_review"))
+	{
+		config& review = campaign.find_child("review", "id", liked_review["number"]);
+		if (review && network::ip_address(req.sock) != review["ip"]) {
+			if (!review["likers_ips"].empty()) {
+				review["likers_ips"] = review["likers_ips"] + std::string(",") + network::ip_address(req.sock);
+			} else {
+				if (review["likers_ips"].str().find(network::ip_address(req.sock)) != std::string::npos) {
 					review["likers_ips"] = network::ip_address(req.sock);
 				}
 			}
 		}
-		recalculate_campaign_ratings(campaign["name"]);
 	}
-
+	recalculate_campaign_ratings(campaign["name"]);
+	send_message("Feedback received.", req.sock);
 }
 
 } // end namespace campaignd

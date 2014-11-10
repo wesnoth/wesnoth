@@ -106,7 +106,7 @@ void addon_info::read(const config& cfg)
 	// are rather dependencies and files for UMC authors, not playable stuff players
 	// want to download.
 
-	this->general_rating = rating;
+	this->score = rating;
 
 	const config::const_child_itors& reviews = cfg.child_range("review");
 	BOOST_FOREACH(const config& review, reviews) {

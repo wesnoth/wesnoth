@@ -96,6 +96,22 @@ bool get_addons_list(addons_client& client, addons_list& list, display& disp)
 	}
 	if ((*prefs)["upload_gameplay_times"].to_bool()) {
 		client.submit_gameplay_times();
+
+		// Write down how much did the player play the add-ons just for him to know
+		BOOST_FOREACH(config &entry, prefs->child_range("gameplay_times"))
+		{
+			config& record = prefs->find_child("addon_rating", "name", entry["name"]);
+			if (record) {
+				record["hours_played"] = record["hours_played"].to_int() + entry["time"].to_int();
+			} else {
+				config& new_entry = prefs->add_child("addon_rating");
+				new_entry["name"] = entry["name"];
+				new_entry["numerical"] = -1;
+				record["hours_played"] = entry["time"].to_int();
+			}
+		}
+
+		prefs->clear_children("gameplay_times");
 	}
 
 	read_addons_list(cfg, list);
@@ -381,13 +397,31 @@ public:
 			const std::string& id = display_ids_[choice];
 			assert(tracking_.find(id) != tracking_.end());
 
-			addon_info::this_users_rating current_users_rating;
-			current_users_rating = gui2::taddon_description::display(id, addons_, tracking_, disp_.video());
+			addon_info::this_users_rating previous_users_rating(id);
+			addon_info::this_users_rating current_users_rating(previous_users_rating);
+
+			current_users_rating = gui2::taddon_description::display(id, addons_, tracking_, disp_.video(), current_users_rating);
+
+			current_users_rating.save(); // Save the changes locally
+
+			//Check out what was changed and commit only the new changes
+			if (current_users_rating.numerical == previous_users_rating.numerical) current_users_rating.numerical = -1;
+
+			std::vector<int> new_liked_reviews; // Better create a new vector, vector::erase is too slow
+			for (unsigned int i = 0; i < current_users_rating.liked_reviews.size(); i++) {
+				bool found = false;
+				for (unsigned int j = 0; j < previous_users_rating.liked_reviews.size(); j++) {
+					if (current_users_rating.liked_reviews[i] == previous_users_rating.liked_reviews[j]) found = true;
+				}
+				if (!found) new_liked_reviews.push_back(current_users_rating.liked_reviews[i]);
+			}
+			current_users_rating.liked_reviews = new_liked_reviews;
 
 			if (current_users_rating.numerical != -1 || current_users_rating.liked_reviews.size() != 0 || current_users_rating.submitted_review == true) {
 				current_users_rating.id = id;
 				config archive;
 				client.rate_addon(archive,current_users_rating);
+				gui2::show_message(disp_.video(), "", _("Thank you for your feedback. It will be considered."), gui2::tmessage::auto_close);
 			}
 		}
 
@@ -412,7 +446,7 @@ struct addons_filter_state
 		: keywords()
 		, types(ADDON_TYPES_COUNT, true)
 		, status(FILTER_ALL)
-		, sort(SORT_RATING)
+		, sort(SORT_SCORE)
 		, direction(DIRECTION_ASCENDING)
 		, changed(false)
 	{}
@@ -488,10 +522,10 @@ struct addon_pointer_list_sorter
 		}
 
 		switch(sort_) {
-		case SORT_RATING:
+		case SORT_SCORE:
 			// These are technically strings, but comparing will work as well.
 			// They have to be strings, because sometimes there is no rating.
-			return a->second.general_rating > b->second.general_rating;
+			return a->second.score > b->second.score;
 		case SORT_NAMES:
 			// Alphanumerical by name, case insensitive.
 			return utf8::lowercase(a->second.title) < utf8::lowercase(b->second.title);
@@ -622,7 +656,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 	// if its translated contents don't fit, instead of truncating other, more
 	// important columns such as Size.
 	if(!updates_only) {
-		header += sep + _("Rating") + sep + _("Type");
+		header += sep + _("Score") + sep + _("Type");
 	}
 	// end of list header
 
@@ -668,13 +702,13 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		const std::string& display_icon = addon.display_icon();
 		const std::string& display_status = describe_addon_status(tracking[addon.id]);
 
-		std::string general_rating;
-		if (addon.general_rating == 0) {
-			general_rating = "None";
+		std::string score;
+		if (addon.score == 0) {
+			score = "None";
 		} else {
-			general_rating = str_cast(addon.general_rating / 10.0);
+			score = str_cast(addon.score / 10.0);
 		}
-		const std::string& display_down = general_rating;
+		const std::string& display_down = score;
 
 		std::string display_version = addon.version.str();
 		std::string display_old_version = tracking[addon.id].installed_version;
@@ -816,8 +850,8 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		filter_box->set_text(filter.keywords);
 		dlg.set_textbox(filter_box);
 
-		addon_info::this_users_rating current_users_rating;
-		current_users_rating.numerical = -1;
+//		addon_info::this_users_rating current_users_rating;
+//		current_users_rating.numerical = -1;
 		description_display_action description_helper(disp, option_ids, addons, tracking, filter_box, client);
 
 		gui::dialog_button* description_button = new gui::dialog_button(disp.video(),

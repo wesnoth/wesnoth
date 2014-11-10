@@ -24,6 +24,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
+#include "gui/dialogs/message.hpp"
 #include "utils/foreach.tpp"
 #include "gettext.hpp"
 #include "addon/info.hpp"
@@ -95,7 +96,7 @@ taddon_reviews_list::taddon_reviews_list(addon_info& _addon, addon_info::this_us
 	if (addon.reviews.empty()) {
 		initial_comment = _("There are no reviews for this add-on yet. If you know this add-on, help fellow players and add your own review!");
 	} else {
-		initial_comment = _("If you know this add-on, vote for the review that reflects your opinion the best or write your own review.");
+		initial_comment = _("If you have played this add-on before, vote for the review that reflects your opinion the best, or write your own review.");
 	}
 	register_label("initial_comment", true, initial_comment);
 }
@@ -107,7 +108,7 @@ void taddon_reviews_list::pre_show(CVideo& /*video*/, twindow& window)
 	{
 		entry.sorted = false;
 	}
-
+	order.resize(addon.reviews.size());
 	for (unsigned int i = 0; i < addon.reviews.size(); i++) {
 		int most = -1;
 		int best = -1;
@@ -146,13 +147,25 @@ void taddon_reviews_list::pre_show(CVideo& /*video*/, twindow& window)
 			column["label"] = review_content;
 			data.insert(std::make_pair("review_box", column));
 
-			std::string agreements(str_cast(addon.reviews[best].likes) + _(" people like this review. Do you like it too?"));
+			std::string agreements;
+			if (addon.reviews[best].likes == 0) agreements = _("This review has not been rated before. Do you like this review?");
+			else if (addon.reviews[best].likes == 1) agreements = _("One person likes this review. Do you like it too?");
+			else agreements = str_cast(addon.reviews[best].likes) + _(" people like this review. Do you like it too?");
 			column["label"] = agreements;
 			data.insert(std::make_pair("people_who_agree", column));
 
 			list.add_row(data);
+
 			addon.reviews[best].sorted = true;
+			order[best] = i;
 		}
+	}
+
+	for (unsigned int i = 0; i < current_users_rating_.liked_reviews.size(); i++) {
+		tgrid* row = list.get_row_grid( order[ current_users_rating_.liked_reviews[i] - 1 ]);
+		ttoggle_button& checkbox
+				= find_widget<ttoggle_button>(row, "player_agrees", true);
+		checkbox.set_value(true);
 	}
 
 	connect_signal_mouse_left_click(
@@ -175,7 +188,7 @@ void taddon_reviews_list::post_show(twindow& window)
 		ttoggle_button& checkbox
 				= find_widget<ttoggle_button>(row, "player_agrees", false);
 		if (checkbox.get_value()) {
-			current_users_rating_.liked_reviews.push_back(entry.id);
+			current_users_rating_.liked_reviews.push_back(order[entry.id - 1] + 1);
 		}
 		i++;
 	}
@@ -188,6 +201,8 @@ void taddon_reviews_list::write_review_button_callback(twindow& window)
 			current_users_rating_.custom_review.visuals.size() == 0 && current_users_rating_.custom_review.gameplay.size() == 0 &&
 			current_users_rating_.custom_review.balance.size() == 0 && current_users_rating_.custom_review.story.size() == 0) {
 		current_users_rating_.submitted_review = false;
+	} else {
+		gui2::show_message(window.video(), "", _("Your review will be submitted."), gui2::tmessage::auto_close);
 	}
 }
 

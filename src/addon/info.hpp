@@ -20,7 +20,10 @@
 
 #include "addon/validation.hpp"
 
+#include "game_preferences.hpp"
+
 #include <set>
+#include <sstream>
 
 struct addon_info;
 typedef std::map<std::string, addon_info> addons_list;
@@ -28,7 +31,7 @@ typedef std::map<std::string, addon_info> addons_list;
 struct addon_info
 {
 
-	typedef struct {
+	struct addon_review {
 		int id;
 		std::string overall;
 		std::string gameplay;
@@ -37,15 +40,82 @@ struct addon_info
 		std::string balance;
 		int likes;
 		bool sorted;
-	} addon_review;
+	};
 
-	typedef struct {
+	struct this_users_rating {
 		std::string id;
 		int numerical;
-		addon_review custom_review;
+		int hours_played;
+		addon_review custom_review; // Note: This one isn't saved locally, player can submit more reviews if he changes opinion
 		std::vector<int> liked_reviews;
 		bool submitted_review;
-	} this_users_rating;
+		this_users_rating(std::string name) {
+			id = name;
+			config* prefs = preferences::get_prefs();
+			config& campaign = prefs->find_child("addon_rating", "name", name);
+			if (campaign) {
+				numerical = campaign["numerical"].to_int();
+				hours_played = campaign["hours_played"].to_int();
+				if (!(*prefs)["upload_gameplay_times"].to_bool()) {
+					config& unuploaded = prefs->find_child("gameplay_times", "name", name);
+					if (unuploaded) hours_played += unuploaded["time"].to_int();
+				}
+				std::string reviews_liked_string = campaign["liked_reviews"];
+				unsigned long int i = 0;
+				while (i < reviews_liked_string.size()) {
+					long int start = i;
+					for ( ; i < reviews_liked_string.size(); i++) if (reviews_liked_string[i] == 44) break;
+					std::string this_like = reviews_liked_string.substr(start,i - start);
+					liked_reviews.push_back(atoi(this_like.c_str()));
+					i++;
+				}
+			} else {
+				numerical = -1;
+				hours_played = 0;
+			}
+			submitted_review = false;
+		}
+		this_users_rating(addon_info::this_users_rating& duplicated) :
+			id(duplicated.id),
+			numerical(duplicated.numerical),
+			hours_played(duplicated.hours_played)
+		{
+			for (unsigned int i = 0; i < duplicated.liked_reviews.size(); i++) {
+				liked_reviews.push_back(duplicated.liked_reviews[i]);
+			}
+		}
+		void save() {
+			config* prefs = preferences::get_prefs();
+			config& campaign = prefs->find_child("addon_rating", "name", id);
+			submitted_review = false;
+
+			// Remove duplicate liked reviews
+			std::vector<int> new_liked_reviews;
+			for (unsigned int i = 0; i < liked_reviews.size(); i++) {
+				bool exists = false;
+				for (unsigned int j = 0; j < new_liked_reviews.size(); j++)
+					if (liked_reviews[i] == new_liked_reviews[j])
+						exists = true;
+				if (!exists) new_liked_reviews.push_back(liked_reviews[i]);
+			}
+			liked_reviews = new_liked_reviews;
+
+			std::stringstream liked_reviews_list;
+			if (!liked_reviews.empty()) liked_reviews_list << liked_reviews[0];
+			for (unsigned int i = 1; i < liked_reviews.size(); i++) liked_reviews_list << "," << liked_reviews[i];
+
+			if (campaign) {
+				campaign["numerical"] = numerical;
+				campaign["liked_reviews"] = liked_reviews_list.str();
+			} else {
+				config& new_entry = prefs->add_child("addon_rating");
+				new_entry["name"] = id;
+				new_entry["numerical"] = numerical;
+				new_entry["liked_reviews"] = liked_reviews_list.str();
+				new_entry["hours_played"] = hours_played;
+			}
+		}
+	};
 
 	std::string id;
 	std::string title;
@@ -78,7 +148,7 @@ struct addon_info
 
 	std::string feedback_url;
 
-	int general_rating;
+	int score;
 
 	time_t updated;
 	time_t created;

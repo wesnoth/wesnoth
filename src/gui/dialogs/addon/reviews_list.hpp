@@ -42,6 +42,8 @@ private:
 
 	std::string initial_comment;
 
+	std::vector<int> order;
+
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 

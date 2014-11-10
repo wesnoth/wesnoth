@@ -22,6 +22,7 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.tpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
@@ -31,6 +32,7 @@
 #include "utils/foreach.tpp"
 
 #include <boost/bind.hpp>
+#include <sstream>
 
 #include "gui/dialogs/addon/addon_rate.hpp"
 #include "gui/dialogs/addon/reviews_list.hpp"
@@ -343,14 +345,6 @@ taddon_description::taddon_description(const std::string& addon_id,
 				true);
 	}
 
-	if (addon.user_rating != -1) {
-		register_label("players_rating", true, str_cast(addon.user_rating/10) + "." + str_cast(addon.user_rating % 10) + "/10");
-	} else {
-		register_label("players_rating", true, "None yet");
-	}
-
-	register_label("hours_spent_playing", true, str_cast(addon.hours_played));
-
 	feedback_url_ = addon.feedback_url;
 
 	std::string languages;
@@ -369,6 +363,13 @@ taddon_description::taddon_description(const std::string& addon_id,
 	if(!languages.empty()) {
 		register_label("translations", true, languages);
 	}
+
+	std::stringstream hours_played_stream;
+	if (addon.hours_played > 0) hours_played_stream << addon.hours_played;
+	else hours_played_stream << _("Unavailable");
+	if (current_users_rating_.hours_played > 0) hours_played_stream << _(" (") <<
+																	   (float)current_users_rating_.hours_played / 10 << _(" hours by you)");
+	register_label("hours_spent_playing", true, hours_played_stream.str());
 }
 
 void taddon_description::browse_url_callback()
@@ -436,6 +437,7 @@ void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
 		// open_object().
 		url_go_button.set_visible(tcontrol::tvisible::invisible);
 	}
+	set_rating_label_contents(window);
 }
 
 void taddon_description::rate_button_callback(twindow& window)
@@ -444,7 +446,8 @@ void taddon_description::rate_button_callback(twindow& window)
 		current_users_rating_.numerical = 5;
 	}
 	gui2::taddon_rate::execute(current_users_rating_.numerical,window.video());
-		current_users_rating_.numerical *= 10;
+
+	set_rating_label_contents(window);
 }
 
 void taddon_description::reviews_button_callback(twindow& window)
@@ -458,6 +461,21 @@ void taddon_description::reviews_button_callback(twindow& window)
 			break;
 		}
 	}
+}
+
+void taddon_description::set_rating_label_contents(twindow& window)
+{
+	const addon_info& addon = const_at(addon_id_, list_of_addons_);
+	std::stringstream rating;
+	if (addon.user_rating != -1) {
+		rating << str_cast(addon.user_rating/10) << "." <<
+					   str_cast(addon.user_rating % 10) << "/10";
+	} else {
+		rating << std::string("None yet");
+	}
+	if (current_users_rating_.numerical != -1) rating << " ( your rating " << current_users_rating_.numerical << "/10)";
+	tlabel& label = find_widget<tlabel>(&window, "players_rating" , true);
+	label.set_label(rating.str());
 }
 
 } // namespace  gui2

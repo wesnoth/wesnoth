@@ -100,7 +100,6 @@ bool addons_client::submit_gameplay_times()
 		added["time"] = entry["time"];
 		LOG_ADDONS << "Uploading_gameplay_times for " << entry["name"] << std::endl;
 	}
-	prefs->clear_children("gameplay_times");
 
 	this->send_request(request, response_buf);
 	this->wait_for_transfer_done(_("Sending information about the add-ons you spent playing"));

@@ -55,7 +55,6 @@ taddon_rate::taddon_rate(int& input)
 void taddon_rate::pre_show(CVideo& /*video*/, twindow& window)
 {
 	tslider& slider = find_widget<tslider>(&window, "rating_input", false);
-	slider.set_value(5);
 }
 
 } // namespace gui2

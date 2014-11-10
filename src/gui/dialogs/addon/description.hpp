@@ -46,10 +46,9 @@ public:
 	 *
 	 * See @ref tdialog for more information.
 	 */
-	static addon_info::this_users_rating display(const std::string& addon_id, addons_list& addons_list, const addons_tracking_list& addon_states, CVideo& video)
+	static addon_info::this_users_rating display(const std::string& addon_id, addons_list& addons_list,
+												 const addons_tracking_list& addon_states, CVideo& video, addon_info::this_users_rating& users_rating)
 	{
-		addon_info::this_users_rating users_rating;
-		users_rating.numerical = -1; //Not rated yet.
 		taddon_description addon_description(addon_id, addons_list, addon_states, users_rating);
 		addon_description.show(video);
 		return addon_description.current_users_rating_;
@@ -73,6 +72,8 @@ private:
 
 	void rate_button_callback(twindow& window);
 	void reviews_button_callback(twindow& window);
+
+	void set_rating_label_contents(twindow& window);
 
 };
 }
