@@ -611,8 +611,6 @@
 		B597EBFC0FC082AB00CE81F5 /* contexts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B597EBDB0FC082AB00CE81F5 /* contexts.cpp */; };
 		B597EBFF0FC082AB00CE81F5 /* game_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B597EBE10FC082AB00CE81F5 /* game_info.cpp */; };
 		B597EC000FC082AB00CE81F5 /* testing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B597EBE30FC082AB00CE81F5 /* testing.cpp */; };
-		B597EC090FC0832B00CE81F5 /* lua.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B597EC070FC0832B00CE81F5 /* lua.cpp */; };
-		B597EC0A0FC0832B00CE81F5 /* lua.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B597EC070FC0832B00CE81F5 /* lua.cpp */; };
 		B597EC140FC0835900CE81F5 /* controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B597EC0C0FC0835900CE81F5 /* controller.cpp */; };
 		B597EC150FC0835900CE81F5 /* interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B597EC0E0FC0835900CE81F5 /* interface.cpp */; };
 		B597EC160FC0835900CE81F5 /* part.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B597EC100FC0835900CE81F5 /* part.cpp */; };
@@ -787,6 +785,11 @@
 		EC1D88DB18EF413100E66AC1 /* libpixman-1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B513B2280ED36BFB0006E551 /* libpixman-1.0.dylib */; };
 		EC1D88DD18EF414400E66AC1 /* libpixman-1.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC1D88DC18EF414400E66AC1 /* libpixman-1.0.dylib */; };
 		EC1D88DF18EF448400E66AC1 /* fonts.conf in Resources */ = {isa = PBXBuildFile; fileRef = EC1D88DE18EF448400E66AC1 /* fonts.conf */; };
+		EC218E9C1A1064F4007C910C /* application_lua_kernel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC218E9A1A1064F4007C910C /* application_lua_kernel.cpp */; };
+		EC218E9D1A1064F4007C910C /* lua_game_launcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC218E9B1A1064F4007C910C /* lua_game_launcher.cpp */; };
+		EC218EA01A106648007C910C /* lua_common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC218E9E1A106648007C910C /* lua_common.cpp */; };
+		EC218EA11A106648007C910C /* lua_kernel_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC218E9F1A106648007C910C /* lua_kernel_base.cpp */; };
+		EC218EA31A106673007C910C /* game_lua_kernel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC218EA21A106673007C910C /* game_lua_kernel.cpp */; };
 		EC2194451960614000420969 /* sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2194431960614000420969 /* sha1.cpp */; };
 		EC2194461960614000420969 /* sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2194431960614000420969 /* sha1.cpp */; };
 		EC2194491960634100420969 /* game_launcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2194471960634100420969 /* game_launcher.cpp */; };
@@ -1764,8 +1767,6 @@
 		B597EBE20FC082AB00CE81F5 /* game_info.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_info.hpp; sourceTree = "<group>"; };
 		B597EBE30FC082AB00CE81F5 /* testing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testing.cpp; sourceTree = "<group>"; };
 		B597EBE40FC082AB00CE81F5 /* testing.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = testing.hpp; sourceTree = "<group>"; };
-		B597EC070FC0832B00CE81F5 /* lua.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua.cpp; sourceTree = "<group>"; };
-		B597EC080FC0832B00CE81F5 /* lua.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua.hpp; sourceTree = "<group>"; };
 		B597EC0C0FC0835900CE81F5 /* controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = controller.cpp; sourceTree = "<group>"; };
 		B597EC0D0FC0835900CE81F5 /* controller.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = controller.hpp; sourceTree = "<group>"; };
 		B597EC0E0FC0835900CE81F5 /* interface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = interface.cpp; sourceTree = "<group>"; };
@@ -2003,6 +2004,11 @@
 		EC1CB20719524AD600B0FA78 /* recall_list_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = recall_list_manager.hpp; sourceTree = "<group>"; };
 		EC1D88DC18EF414400E66AC1 /* libpixman-1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libpixman-1.0.dylib"; path = "lib/libpixman-1.0.dylib"; sourceTree = "<group>"; };
 		EC1D88DE18EF448400E66AC1 /* fonts.conf */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = fonts.conf; path = Resources/fonts.conf; sourceTree = "<group>"; };
+		EC218E9A1A1064F4007C910C /* application_lua_kernel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = application_lua_kernel.cpp; sourceTree = "<group>"; };
+		EC218E9B1A1064F4007C910C /* lua_game_launcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_game_launcher.cpp; sourceTree = "<group>"; };
+		EC218E9E1A106648007C910C /* lua_common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_common.cpp; sourceTree = "<group>"; };
+		EC218E9F1A106648007C910C /* lua_kernel_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_kernel_base.cpp; sourceTree = "<group>"; };
+		EC218EA21A106673007C910C /* game_lua_kernel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_lua_kernel.cpp; sourceTree = "<group>"; };
 		EC2194431960614000420969 /* sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sha1.cpp; path = utils/sha1.cpp; sourceTree = "<group>"; };
 		EC2194441960614000420969 /* sha1.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = sha1.hpp; path = utils/sha1.hpp; sourceTree = "<group>"; };
 		EC2194471960634100420969 /* game_launcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_launcher.cpp; sourceTree = "<group>"; };
@@ -3606,12 +3612,15 @@
 		B597EC060FC0832B00CE81F5 /* scripting */ = {
 			isa = PBXGroup;
 			children = (
+				EC218EA21A106673007C910C /* game_lua_kernel.cpp */,
+				EC218E9E1A106648007C910C /* lua_common.cpp */,
+				EC218E9F1A106648007C910C /* lua_kernel_base.cpp */,
+				EC218E9A1A1064F4007C910C /* application_lua_kernel.cpp */,
+				EC218E9B1A1064F4007C910C /* lua_game_launcher.cpp */,
 				F4C02A0D182F1F64008525C6 /* lua_api.cpp */,
 				F4C02A0E182F1F64008525C6 /* lua_types.cpp */,
 				F4C02A0F182F1F64008525C6 /* lua_types.hpp */,
 				B5A5E45012132DE30047782D /* lua_api.hpp */,
-				B597EC070FC0832B00CE81F5 /* lua.cpp */,
-				B597EC080FC0832B00CE81F5 /* lua.hpp */,
 			);
 			path = scripting;
 			sourceTree = "<group>";
@@ -4293,6 +4302,7 @@
 				B5599B140EC62181008DD061 /* playsingle_controller.cpp in Sources */,
 				B5599B150EC62181008DD061 /* playmp_controller.cpp in Sources */,
 				B5599B170EC62181008DD061 /* play_controller.cpp in Sources */,
+				EC218EA31A106673007C910C /* game_lua_kernel.cpp in Sources */,
 				B5599B180EC62181008DD061 /* pathutils.cpp in Sources */,
 				B5599B1A0EC62181008DD061 /* network_worker.cpp in Sources */,
 				EC2F60101A048E220018C9D6 /* depcheck.cpp in Sources */,
@@ -4396,6 +4406,7 @@
 				B5A9BD700ECA805A002BE442 /* toggle_button.cpp in Sources */,
 				EC84246E18F30D9100FC1EEF /* synced_context.cpp in Sources */,
 				B5A9BD710ECA805A002BE442 /* toggle_panel.cpp in Sources */,
+				EC218EA11A106648007C910C /* lua_kernel_base.cpp in Sources */,
 				EC89A12C1879D17D00A3B0B1 /* lbitlib.cpp in Sources */,
 				B5A9BD730ECA805A002BE442 /* vertical_scrollbar.cpp in Sources */,
 				B5A9BD750ECA805A002BE442 /* widget.cpp in Sources */,
@@ -4414,7 +4425,6 @@
 				B597EBEE0FC082AB00CE81F5 /* contexts.cpp in Sources */,
 				B597EBF10FC082AB00CE81F5 /* game_info.cpp in Sources */,
 				B597EBF20FC082AB00CE81F5 /* testing.cpp in Sources */,
-				B597EC090FC0832B00CE81F5 /* lua.cpp in Sources */,
 				B597EC140FC0835900CE81F5 /* controller.cpp in Sources */,
 				B597EC150FC0835900CE81F5 /* interface.cpp in Sources */,
 				B597EC160FC0835900CE81F5 /* part.cpp in Sources */,
@@ -4430,6 +4440,7 @@
 				B54AC69F0FEA9E8F006F6FBD /* manager.cpp in Sources */,
 				B54AC6A00FEA9E8F006F6FBD /* registry.cpp in Sources */,
 				B54AC6D80FEA9EB5006F6FBD /* ai.cpp in Sources */,
+				EC218EA01A106648007C910C /* lua_common.cpp in Sources */,
 				B54AC6D90FEA9EB5006F6FBD /* contexts.cpp in Sources */,
 				B54AC6DA0FEA9EB5006F6FBD /* engine.cpp in Sources */,
 				B54AC6DB0FEA9EB5006F6FBD /* engine_default.cpp in Sources */,
@@ -4675,6 +4686,7 @@
 				6295C3BA150FC95C0077D8C5 /* mouse_action_unit.cpp in Sources */,
 				6295C3C2150FC9750077D8C5 /* editor_map.cpp in Sources */,
 				6295C3C3150FC9750077D8C5 /* map_context.cpp in Sources */,
+				EC218E9C1A1064F4007C910C /* application_lua_kernel.cpp in Sources */,
 				6295C3C4150FC9750077D8C5 /* map_fragment.cpp in Sources */,
 				6295C3D6150FC9EB0077D8C5 /* editor_palettes.cpp in Sources */,
 				6295C3D8150FC9EB0077D8C5 /* terrain_palettes.cpp in Sources */,
@@ -4687,6 +4699,7 @@
 				EC2F60171A048E220018C9D6 /* multiplayer_lobby.cpp in Sources */,
 				EC21944F1960649000420969 /* display_chat_manager.cpp in Sources */,
 				62D24F2D1519982500350848 /* brush.cpp in Sources */,
+				EC218E9D1A1064F4007C910C /* lua_game_launcher.cpp in Sources */,
 				62D24F2F1519982500350848 /* editor_toolkit.cpp in Sources */,
 				62D24F321519987400350848 /* context_manager.cpp in Sources */,
 				62D24F351519995200350848 /* palette_manager.cpp in Sources */,
@@ -4924,7 +4937,6 @@
 				B597EBFC0FC082AB00CE81F5 /* contexts.cpp in Sources */,
 				B597EBFF0FC082AB00CE81F5 /* game_info.cpp in Sources */,
 				B597EC000FC082AB00CE81F5 /* testing.cpp in Sources */,
-				B597EC0A0FC0832B00CE81F5 /* lua.cpp in Sources */,
 				B597EC180FC0835900CE81F5 /* controller.cpp in Sources */,
 				B597EC190FC0835900CE81F5 /* interface.cpp in Sources */,
 				B597EC1A0FC0835900CE81F5 /* part.cpp in Sources */,
