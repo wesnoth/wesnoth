@@ -935,9 +935,13 @@ set(wesnoth-main_SRC
 	save_index.cpp
 	saved_game.cpp
 	savegame.cpp
+	scripting/application_lua_kernel.cpp
 	scripting/debug_lua.cpp
-	scripting/lua.cpp
+	scripting/game_lua_kernel.cpp
 	scripting/lua_api.cpp
+	scripting/lua_common.cpp
+	scripting/lua_game_launcher.cpp
+	scripting/lua_kernel_base.cpp
 	scripting/lua_types.cpp
 	settings.cpp
 	side_filter.cpp

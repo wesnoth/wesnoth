@@ -29,7 +29,7 @@
 #include "log.hpp"
 #include "map_location.hpp"
 #include "resources.hpp"
-#include "scripting/lua.hpp"
+#include "scripting/game_lua_kernel.hpp"
 #include "team.hpp"
 #include "terrain_filter.hpp"
 #include "unit.hpp"

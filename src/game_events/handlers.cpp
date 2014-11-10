@@ -29,7 +29,7 @@
 #include "../log.hpp"
 #include "../reports.hpp"
 #include "../resources.hpp"
-#include "../scripting/lua.hpp"
+#include "../scripting/game_lua_kernel.hpp"
 #include "../serialization/string_utils.hpp"
 #include "../soundsource.hpp"
 #include "../util.hpp"

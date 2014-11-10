@@ -31,7 +31,7 @@
 #include "../log.hpp"
 #include "../play_controller.hpp"
 #include "../resources.hpp"
-#include "../scripting/lua.hpp"
+#include "../scripting/game_lua_kernel.hpp"
 #include "../side_filter.hpp"
 #include "../unit.hpp"
 #include "../unit_map.hpp"

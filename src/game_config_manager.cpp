@@ -28,7 +28,7 @@
 #include "log.hpp"
 #include "preferences.hpp"
 #include "resources.hpp"
-#include "scripting/lua.hpp"
+#include "scripting/game_lua_kernel.hpp"
 #include "terrain_builder.hpp"
 #include "terrain_type_data.hpp"
 #include "unit_types.hpp"

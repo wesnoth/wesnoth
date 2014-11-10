@@ -26,6 +26,7 @@ static char const v_tstringKey = 0;
 static char const v_unitvarKey = 0;
 static char const v_ustatusKey = 0;
 static char const v_vconfigKey = 0;
+static char const v_currentscriptKey = 0;
 
 
 luatypekey const dlgclbkKey = static_cast<void *>(const_cast<char *>(&v_dlgclbkKey));
@@ -39,3 +40,4 @@ luatypekey const tstringKey = static_cast<void *>(const_cast<char *>(&v_tstringK
 luatypekey const unitvarKey = static_cast<void *>(const_cast<char *>(&v_unitvarKey));
 luatypekey const ustatusKey = static_cast<void *>(const_cast<char *>(&v_ustatusKey));
 luatypekey const vconfigKey = static_cast<void *>(const_cast<char *>(&v_vconfigKey));
+luatypekey const currentscriptKey = static_cast<void *>(const_cast<char *>(&v_currentscriptKey));

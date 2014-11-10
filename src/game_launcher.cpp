@@ -50,6 +50,7 @@
 #include "preferences_display.hpp"      // for detect_video_settings, etc
 #include "resources.hpp"                // for config_manager
 #include "savegame.hpp"                 // for clean_saves, etc
+#include "scripting/application_lua_kernel.hpp"
 #include "sdl/utils.hpp"                // for surface
 #include "serialization/compression.hpp"  // for format::NONE
 #include "serialization/string_utils.hpp"  // for split
@@ -441,6 +442,40 @@ bool game_launcher::init_video()
 #endif
 #endif
 	return true;
+}
+
+bool game_launcher::init_lua_script()
+{
+	// start the application lua kernel, register it in resources, and load script file, if script file is present
+	if (cmdline_opts_.script_file)
+	{
+		filesystem::scoped_istream sf = filesystem::istream_file(*cmdline_opts_.script_file);
+
+		if (!sf->fail()) {
+			/* Cancel all "jumps" to editor / campaign / multiplayer */
+			jump_to_multiplayer_ = false;
+			jump_to_editor_ = false;
+			jump_to_campaign_.jump_ = false;
+
+			std::string full_script((std::istreambuf_iterator<char>(*sf)), std::istreambuf_iterator<char>());
+
+			std::cerr << "\nRunning lua script: " << *cmdline_opts_.script_file << std::endl;
+
+			resources::app_lua_kernel = new application_lua_kernel();
+			resources::app_lua_kernel->initialize(this);
+
+			if (cmdline_opts_.script_unsafe_mode) {
+				resources::app_lua_kernel->load_package(); //load the "package" package, so that scripts can get what packages they want
+			}
+
+			resources::app_lua_kernel->run(full_script.c_str());
+
+			return true;
+		} else {
+			std::cerr << "Scripting disabled, encountered failure when opening " << *cmdline_opts_.script_file << std::endl;
+		}
+	}
+	return false;
 }
 
 bool game_launcher::play_test()

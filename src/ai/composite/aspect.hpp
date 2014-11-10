@@ -23,7 +23,7 @@
 #include "value_translator.hpp"
 #include "../lua/lua_object.hpp"
 #include "../lua/core.hpp"
-#include "../../scripting/lua.hpp"
+#include "../../scripting/game_lua_kernel.hpp"
 
 #include "../../log.hpp"
 

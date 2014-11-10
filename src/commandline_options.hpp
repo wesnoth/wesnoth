@@ -35,6 +35,8 @@ public:
 						  const std::string& expected_format);
 };
 
+class config;
+
 class commandline_options
 {
 /// To be used for printing help to the commandline.
@@ -42,6 +44,8 @@ friend std::ostream& operator<<(std::ostream &os, const commandline_options& cmd
 
 public:
 	commandline_options(const std::vector<std::string>& args);
+
+	config to_config() const; /* Used by lua scrips. Not all of the options need to be exposed here, just those exposed to lua */
 
 	/// BitsPerPixel specified by --bpp option.
 	boost::optional<int> bpp;
@@ -184,6 +188,10 @@ public:
 	boost::optional<std::string> screenshot_map_file;
 	/// Output file to put screenshot in. Second parameter given after --screenshot.
 	boost::optional<std::string> screenshot_output_file;
+	/// File to load lua script (mp-bot) from.
+	boost::optional<std::string> script_file;
+	/// Whether to load the "package" package for the scripting environment. (This allows to load arbitrary lua packages, and gives untrusted lua the same permissions as wesnoth executable)
+	bool script_unsafe_mode;
 	/// True if --strict-validation was given on the command line. Makes Wesnoth trust validation errors as fatal WML errors and create WML exception, if so.
 	bool strict_validation;
 	/// Non-empty if --test was given on the command line. Goes directly into test mode, into a scenario, if specified.
