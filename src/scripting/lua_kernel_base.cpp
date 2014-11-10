@@ -147,12 +147,12 @@ static int intf_require(lua_State *L)
 
 	// Check if there is already an entry.
 
-	luaW_getglobal(L, "wesnoth", NULL); 	// [1:fn 2:wesnoth]
-	lua_pushstring(L, "package"); 		// [1:fn 2:wesnoth 3:"package"]
-	lua_rawget(L, -2); 			// [1:fn 2:wesnoth 3:package]
-	lua_pushvalue(L, 1); 			// [1:fn 2:wesnoth 3:package 4:fn]
-	lua_rawget(L, -2);			// [1:fn 2:wesnoth 3:package 4:nil/file]
-	if (!lua_isnil(L, -1) && !game_config::debug_lua) return 1; // Am I wrong, or this return leaves 4 values on the stack? (neph)
+	luaW_getglobal(L, "wesnoth", NULL);
+	lua_pushstring(L, "package");
+	lua_rawget(L, -2);
+	lua_pushvalue(L, 1);
+	lua_rawget(L, -2);
+	if (!lua_isnil(L, -1) && !game_config::debug_lua) return 1;
 	lua_pop(L, 1);
 
 
