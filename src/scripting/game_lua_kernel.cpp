@@ -153,6 +153,13 @@ void extract_preload_scripts(config const &game_config)
 	preload_config = game_config.child("game_config");
 }
 
+void LuaKernel::log_error(char const * msg, char const * context)
+{
+	lua_kernel_base::log_error(msg, context);
+	chat_message(context, msg);
+}
+
+
 namespace {
 	/**
 	 * Stack storing the queued_event objects needed for calling WML actions.
@@ -3717,14 +3724,6 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_setfield(L, -2, "theme_items");
 	lua_pop(L, 1);
 
-	// Store the error handler.
-	lua_pushlightuserdata(L
-			, executeKey);
-	lua_getglobal(L, "debug");
-	lua_getfield(L, -1, "traceback");
-	lua_remove(L, -2);
-	lua_rawset(L, LUA_REGISTRYINDEX);
-
 	lua_settop(L, 0);
 }
 
@@ -3795,10 +3794,10 @@ void LuaKernel::initialize()
 	// Execute the preload scripts.
 	game_config::load_config(preload_config);
 	BOOST_FOREACH(const config &cfg, preload_scripts) {
-		execute(cfg["code"].str().c_str(), 0, 0);
+		run(cfg["code"].str().c_str());
 	}
 	BOOST_FOREACH(const config &cfg, level_.child_range("lua")) {
-		execute(cfg["code"].str().c_str(), 0, 0);
+		run(cfg["code"].str().c_str());
 	}
 
 	load_game();
@@ -3886,8 +3885,7 @@ void LuaKernel::save_game(config &cfg)
 			 * and the extra UMC ones.
 			 */
 			const std::string m = "Tag is already used: [" + i->key + "]";
-			chat_message("Lua error", m);
-			ERR_LUA << m << '\n';
+			log_error(m.c_str());
 			v.erase(i);
 			continue;
 		}
@@ -3979,8 +3977,7 @@ bool LuaKernel::run_filter(char const *name, unit const &u)
 	if(!luaW_getglobal(L, name, NULL))
 	{
 		std::string message = std::string() + "function " + name + " not found";
-		chat_message("Lua SUF Error", message);
-		ERR_LUA << "Lua SUF Error: " << message << std::endl;
+		log_error(message.c_str(), "Lua SUF Error");
 		//we pushed nothing and can safeley return.
 		return false;
 	}
@@ -3997,13 +3994,6 @@ bool LuaKernel::run_filter(char const *name, unit const &u)
 	lua_pop(L, 1);
 	return b;
 }
-
-// This is needed because default args don't work through function pointers
-static int luaW_pcall_default_args(lua_State * L, int a, int b) {
-	return luaW_pcall(L,a,b,false);
-}
-
-pcall_fcn_ptr LuaKernel::pcall_fcn() { return &luaW_pcall_default_args; } //this causes the run() function to use luaW_pcall instead of lua_pcall
 
 ai::lua_ai_context* LuaKernel::create_lua_ai_context(char const *code, ai::engine_lua *engine)
 {

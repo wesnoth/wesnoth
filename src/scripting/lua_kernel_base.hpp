@@ -16,25 +16,35 @@
 #define SCRIPTING_LUA_KERNEL_BASE_HPP
 
 #include <string>                       // for string
+#include "utils/boost_function_guarded.hpp"
 
 struct lua_State;
 
-typedef int (*pcall_fcn_ptr)(lua_State *, int, int);
-
 class lua_kernel_base {
-protected:
-	lua_State *mState;
-	bool execute(char const *, int, int);
 public:
 	lua_kernel_base();
 	virtual ~lua_kernel_base();
 
-	/** Runs a plain script. */
+	/** Runs a plain script. Doesn't throw lua_error.*/
 	void run(char const *prog);
 
 	void load_package();
 
-	virtual pcall_fcn_ptr pcall_fcn(); //when running scripts, in the "base" kernel type we should just use pcall. But for the in-game kernel, we want to call the luaW_pcall function instead which extends it using things specific to that api, and returns errors on a WML channel
+	virtual void log_error(char const* msg, char const* context = "Lua error");
+	virtual void throw_exception(char const* msg, char const* context = "Lua error"); //throws game::lua_error
+
+	typedef boost::function<void(char const*, char const*)> error_handler;
+
+protected:
+	lua_State *mState;
+
+	// Execute a protected call. Error handler is called in case of an error, using syntax for log_error and throw_exception above. Returns true if successful.
+	bool protected_call(int nArgs, int nRets, error_handler);
+	// Load a string onto the stack as a function. Returns true if successful, error handler is called if not.
+	bool load_string(char const * prog, error_handler);
+
+	virtual bool protected_call(int nArgs, int nRets); 	// select default error handler polymorphically
+	virtual bool load_string(char const * prog);		// select default error handler polymorphically
 };
 
 #endif

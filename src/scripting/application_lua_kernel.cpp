@@ -104,8 +104,7 @@ void application_lua_kernel::call_script(const config & event_cfg) {
 
 	luaW_pushconfig(L, event_cfg); //push the config as an argument
 
-	pcall_fcn_ptr pcall = pcall_fcn();
-	if (!pcall(L, 1, 0)) //call the script from protected mode, there is one argument and we expect no return values.
+	if (!luaW_pcall(L, 1, 0)) //call the script from protected mode, there is one argument and we expect no return values.
 	{
 		WRN_LUA << "Got an error when executing script:\n" << lua_tostring(L,-1) << std::endl;
 	}

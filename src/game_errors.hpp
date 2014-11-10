@@ -48,6 +48,14 @@ struct game_error : public error {
 };
 
 /**
+ * Error used to report an error in a lua script or in the lua interpreter.
+ */
+struct lua_error : public error {
+	lua_error(const std::string& msg) : error("lua_error: " + msg) {}
+	lua_error(const std::string& msg, const std::string& context) : error(context + ": " + msg) {}
+};
+
+/**
  * Exception used to signal that the user has decided to abort a game,
  * and to load another game instead.
  */

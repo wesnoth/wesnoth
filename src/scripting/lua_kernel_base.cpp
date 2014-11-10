@@ -20,6 +20,7 @@
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
 #include "lua/lualib.h"
+#include "game_errors.hpp"
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"
@@ -29,6 +30,7 @@
 
 #include <cstring>
 #include <string>
+#include <boost/bind.hpp>
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
@@ -82,6 +84,14 @@ lua_kernel_base::lua_kernel_base()
 	}
 	lua_pop(L, 1);
 
+	// Store the error handler.
+	lua_pushlightuserdata(L
+			, executeKey);
+	lua_getglobal(L, "debug");
+	lua_getfield(L, -1, "traceback");
+	lua_remove(L, -2);
+	lua_rawset(L, LUA_REGISTRYINDEX);
+
 	lua_settop(L, 0);
 }
 
@@ -90,51 +100,105 @@ lua_kernel_base::~lua_kernel_base()
 	lua_close(mState);
 }
 
-// This is needed because lua_pcall is actually a macro
-static int lua_pcall_fcn(lua_State * L, int a, int b)
+void lua_kernel_base::log_error(char const * msg, char const * context)
 {
-	return lua_pcall(L,a,b,0);
+	ERR_LUA << context << ": " << msg;
 }
 
-// In the "base" configuration we just want to call lua_pcall when running scripts.
-pcall_fcn_ptr lua_kernel_base::pcall_fcn() { return &lua_pcall_fcn; }
+void lua_kernel_base::throw_exception(char const * msg, char const * context)
+{
+	throw game::lua_error(msg, context);
+}
 
-/**
- * Runs a script on a stack containing @a nArgs arguments.
- * @return true if the script was successful and @a nRets return values are available.
- */
-bool lua_kernel_base::execute(char const *prog, int nArgs, int nRets)
+bool lua_kernel_base::protected_call(int nArgs, int nRets)
+{
+	error_handler eh = boost::bind(&lua_kernel_base::log_error, this, _1, _2 );
+	return protected_call(nArgs, nRets, eh);
+}
+
+bool lua_kernel_base::load_string(char const * prog)
+{
+	error_handler eh = boost::bind(&lua_kernel_base::log_error, this, _1, _2 );
+	return load_string(prog, eh);
+}
+
+bool lua_kernel_base::protected_call(int nArgs, int nRets, error_handler e_h)
 {
 	lua_State *L = mState;
 
-	// Compile script into a variadic function.
-	int res = luaL_loadstring(L, prog);
-	if (res)
-	{
-		char const *m = lua_tostring(L, -1);
-		chat_message("Lua error", m);
-		ERR_LUA << m << '\n';
-		lua_pop(L, 1);
-		return true;
+	// Load the error handler before the function and its arguments.
+	lua_pushlightuserdata(L
+			, executeKey);
+
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_insert(L, -2 - nArgs);
+
+	int error_handler_index = lua_gettop(L) - nArgs - 1;
+
+	// Call the function.
+	int errcode = lua_pcall(L, nArgs, nRets, -2 - nArgs);
+	tlua_jailbreak_exception::rethrow();
+
+	// Remove the error handler.
+	lua_remove(L, error_handler_index);
+
+	if (errcode != LUA_OK) {
+		std::string message = lua_tostring(L, -1);
+
+		std::string context = "When executing, ";
+		if (errcode == LUA_ERRRUN) {
+			context += "Lua runtime error: ";
+		} else if (errcode == LUA_ERRERR) {
+			context += "Lua error in attached debugger: ";
+		} else if (errcode == LUA_ERRMEM) {
+			context += "Lua out of memory error: ";
+		} else if (errcode == LUA_ERRGCMM) {
+			context += "Lua error in garbage collection metamethod: ";
+		} else {
+			context += "unknown lua error: ";
+		}
+
+		e_h(message.c_str(), context.c_str());
+
+		return false;
 	}
 
-	// Place the function before its arguments.
-	if (nArgs)
-		lua_insert(L, -1 - nArgs);
-
-	pcall_fcn_ptr f = pcall_fcn();
-	return f(L, nArgs, nRets);
+	return true;
 }
 
+bool lua_kernel_base::load_string(char const * prog, error_handler e_h)
+{
+	int errcode = luaL_loadstring(mState, prog);
+	if (errcode != LUA_OK) {
+		std::string msg = lua_tostring(mState, -1);
+
+		std::string context = "When parsing a string to lua, ";
+
+		if (errcode == LUA_ERRSYNTAX) {
+			msg += " a syntax error: ";
+		} else if(errcode == LUA_ERRMEM){
+			msg += " a memory error: ";
+		} else if(errcode == LUA_ERRGCMM) {
+			msg += " an error in garbage collection metamethod: ";
+		} else {
+			msg += " an unknown error: ";
+		}
+
+		e_h(msg.c_str(), context.c_str());
+
+		return false;
+	}
+	return true;
+}
+
+// Call load_string and protected call. Make them throw exceptions, and if we catch one, reformat it with signature for this function and log it.
 void lua_kernel_base::run(const char * prog) {
-	if (execute(prog, 0, 0)) {
-		lua_State *L = mState;
-
-		char const *m = lua_tostring(L, -1);
-		ERR_LUA << "lua_kernel::run(): " << m << '\n';
-		lua_pop(L,1);
-
-		//execute("print(debug.traceback())",0,0);
+	try {
+		error_handler eh = boost::bind(&lua_kernel_base::throw_exception, this, _1, _2 );
+		load_string(prog, eh);
+		protected_call(0, 0, eh);
+	} catch (game::lua_error & e) {
+		lua_kernel_base::log_error(e.what(), "In function lua_kernel::run()");
 	}
 }
 
