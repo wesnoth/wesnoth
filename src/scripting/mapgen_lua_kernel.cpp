@@ -122,6 +122,7 @@ std::string mapgen_lua_kernel::create_map(const char * prog, const config & gene
 	if (!lua_isstring(mState,-1)) {
 		std::string msg = "expected a string, found a ";
 		msg += lua_typename(mState, lua_type(mState, -1));
+		lua_pop(mState, 1);
 		throw game::lua_error(msg.c_str(),"bad return value");
 	}
 
@@ -135,11 +136,13 @@ config mapgen_lua_kernel::create_scenario(const char * prog, const config & gene
 	if (!lua_istable(mState, -1)) {
 		std::string msg = "expected a config (table), found a ";
 		msg += lua_typename(mState, lua_type(mState, -1));
+		lua_pop(mState, 1);
 		throw game::lua_error(msg.c_str(),"bad return value");
 	}
 	config result;
 	if (!luaW_toconfig(mState, -1, result)) {
-		std::string msg = "expected a config, it seems malformed ";
+		std::string msg = "expected a config, but it is malformed ";
+		lua_pop(mState, 1);
 		throw game::lua_error(msg.c_str(),"bad return value");
 	}
 	return result;

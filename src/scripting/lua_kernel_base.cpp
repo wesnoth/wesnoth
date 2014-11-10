@@ -398,6 +398,8 @@ bool lua_kernel_base::protected_call(int nArgs, int nRets, error_handler e_h)
 			context += "unknown lua error: ";
 		}
 
+		lua_pop(mState, 1);
+
 		e_h(message.c_str(), context.c_str());
 
 		return false;
@@ -423,6 +425,8 @@ bool lua_kernel_base::load_string(char const * prog, error_handler e_h)
 		} else {
 			msg += " an unknown error: ";
 		}
+
+		lua_pop(mState, 1);
 
 		e_h(msg.c_str(), context.c_str());
 
