@@ -18,6 +18,8 @@
 #include "config.hpp"
 #include "map_generator.hpp"
 
+#include "scripting/mapgen_lua_kernel.hpp"
+
 #include <string>
 
 struct lua_State;
@@ -29,8 +31,6 @@ struct lua_State;
 class lua_map_generator : public map_generator {
 public:
 	lua_map_generator(const config & cfg);
-
-	~lua_map_generator();
 
 	bool allow_user_config() const { return false; }
 
@@ -49,7 +49,7 @@ private:
 	std::string create_map_;
 	std::string create_scenario_;
 
-	lua_State * mState_;
+	mapgen_lua_kernel lk_;
 
 	config generator_data_;
 };
