@@ -3547,7 +3547,12 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "view_locked",              &intf_view_locked              },
 		{ NULL, NULL }
 	};
-	luaL_register(L, "wesnoth", callbacks);
+	lua_getglobal(L, "wesnoth");
+	if (!lua_istable(L,-1)) {
+		lua_newtable(L);
+	}
+	luaL_setfuncs(L, callbacks, 0);
+	lua_setglobal(L, "wesnoth");
 
 	// Create the getside metatable.
 	lua_pushlightuserdata(L
