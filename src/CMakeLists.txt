@@ -902,6 +902,7 @@ set(wesnoth-main_SRC
 	halo.cpp
 	help/help.cpp
 	help/help_button.cpp
+	help/help_impl.cpp
 	hotkey/hotkey_preferences_display.cpp
 	intro.cpp
 	leader_scroll_dialog.cpp
