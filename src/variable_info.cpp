@@ -24,7 +24,7 @@
 
 #include <stdexcept>
 
-using namespace variable_info_3_detail;
+using namespace variable_info_detail;
 
 /// general helpers
 namespace
@@ -50,7 +50,7 @@ namespace
 		}
 	}
 
-	template<const variable_info_3_type vit>
+	template<const variable_info_type vit>
 	typename maybe_const<vit, config>::type& get_child_at(typename maybe_const<vit, config>::type& cfg, const std::string& key, int index = 0);
 
 	template<>
@@ -132,12 +132,12 @@ namespace
 		throw std::range_error("Failed to convert the TVisitor::param_type type");
 	}
 
-	template <const variable_info_3_type vit, typename TResult>
+	template <const variable_info_type vit, typename TResult>
 	class variable_info_visitor
 	{
 	public:
 		typedef TResult result_type;
-		typedef variable_info_3_state<vit>& param_type;
+		typedef variable_info_state<vit>& param_type;
 #define DEFAULTHANDLER(name) result_type name(param_type) const { throw invalid_variablename_exception(); }
 		DEFAULTHANDLER(from_start)
 		DEFAULTHANDLER(from_named)
@@ -146,12 +146,12 @@ namespace
 #undef DEFAULTHANDLER
 	};
 
-	template <const variable_info_3_type vit, typename TResult>
+	template <const variable_info_type vit, typename TResult>
 	class variable_info_visitor_const
 	{
 	public:
 		typedef TResult result_type;
-		typedef const variable_info_3_state<vit>& param_type;
+		typedef const variable_info_state<vit>& param_type;
 #define DEFAULTHANDLER(name) result_type name(param_type) const { throw invalid_variablename_exception(); }
 		DEFAULTHANDLER(from_start)
 		DEFAULTHANDLER(from_named)
@@ -181,7 +181,7 @@ namespace
 	}
 
 	/// Adds a '.<key>' to the current variable
-	template<const variable_info_3_type vit>
+	template<const variable_info_type vit>
 	class get_variable_key_visitor
 		: public variable_info_visitor<vit, void>
 	{
@@ -221,7 +221,7 @@ namespace
 
 	/// appens a [index] to the variable.
 	/// we only support from_named since [index][index2] or a.length[index] both doesn't make sense.
-	template<const variable_info_3_type vit>
+	template<const variable_info_type vit>
 	class get_variable_index_visitor
 		: public variable_info_visitor<vit, void>
 	{
@@ -241,7 +241,7 @@ namespace
 namespace
 {
 	///tries to convert it to an (maybe const) attribute value
-	template<const variable_info_3_type vit>
+	template<const variable_info_type vit>
 	class as_skalar_visitor
 		: public variable_info_visitor_const<vit, typename maybe_const<vit, config::attribute_value>::type&>
 	{
@@ -274,7 +274,7 @@ namespace
 
 	/// tries to convert to a (const) config&, unlike range based operation this also supports 'from_start'
 	/// Note: Currently getting the 'from_start' case here is impossible, becasue we always apply at least one string key.
-	template<const variable_info_3_type vit>
+	template<const variable_info_type vit>
 	class as_container_visitor
 		: public variable_info_visitor_const<vit, typename maybe_const<vit, config>::type&>
 	{
@@ -296,8 +296,9 @@ namespace
 /// range_based operations
 namespace {
 
-
-	template<const variable_info_3_type vit, typename THandler>
+	// as_range_visitor_base wants to partially specialize from_indexed but nothing else
+	// so we put everything else in this base class which is common for both as_range_visitor_base versions.
+	template<const variable_info_type vit, typename THandler>
 	class as_range_visitor_base2
 		: public variable_info_visitor_const<vit, typename THandler::result_type>
 	{
@@ -307,28 +308,30 @@ namespace {
 		{
 			return handler_(*state.child_, state.key_, 0, state.child_->child_count(state.key_));
 		}
-		typename as_range_visitor_base2::result_type from_indexed(typename as_range_visitor_base2::param_type state) const
-		{
-			//Ensure we have a config at the given explicit position.
-			get_child_at<vit>(*state.child_, state.key_, state.index_);
-			return this->handler_(*state.child_, state.key_, state.index_, state.index_ + 1);
-		}
 	protected:
 		const THandler& handler_;
 	};
 
-	template<const variable_info_3_type vit, typename THandler>
+	/// @param THandler a function 
+	///        ( (const-) config& cfg, const std::string& name, int range_begin, int range_end) -> THandler::result_type
+	///        that does the actual work on the range of children of cfg with name name.
+	template<const variable_info_type vit, typename THandler>
 	class as_range_visitor_base
 		: public as_range_visitor_base2<vit, THandler>
 	{
 	public:
 		as_range_visitor_base(const THandler& handler) : as_range_visitor_base2<vit, THandler>(handler) {}
-		//inherit all from as_range_visitor_base2
+
+		typename as_range_visitor_base::result_type from_indexed(typename as_range_visitor_base::param_type state) const
+		{
+			//Ensure we have a config at the given explicit position.
+			get_child_at<vit>(*state.child_, state.key_, state.index_);
+			return this->handler_(*state.child_, state.key_, state.index_, state.index_ + 1);
+		}
 	};
 
 	const config non_empty_const_cfg = config_of("_", config());
 
-	//we cannot partly specialise methods so we are using inheritance.
 	template<typename THandler>
 	class as_range_visitor_base<vit_const, THandler>
 		: public as_range_visitor_base2<vit_const, THandler>
@@ -347,7 +350,7 @@ namespace {
 		}
 	};
 
-	template<const variable_info_3_type vit>
+	template<const variable_info_type vit>
 	class variable_as_array_h
 	{
 	public:
@@ -452,7 +455,7 @@ namespace {
 /// misc
 namespace
 {
-	template<const variable_info_3_type vit>
+	template<const variable_info_type vit>
 	class clear_value_visitor
 		: public variable_info_visitor_const<vit, void>
 	{
@@ -474,7 +477,7 @@ namespace
 		bool only_tables_;
 	};
 
-	template<const variable_info_3_type vit>
+	template<const variable_info_type vit>
 	class exists_as_container_visitor
 		: public variable_info_visitor_const<vit, bool>
 	{
@@ -498,8 +501,8 @@ namespace
 	};
 }
 
-template<const variable_info_3_type vit>
-variable_info_3<vit>::variable_info_3(const std::string& varname, t_config& vars)
+template<const variable_info_type vit>
+variable_info<vit>::variable_info(const std::string& varname, t_config& vars)
 	: name_(varname)
 	, state_(vars)
 	, valid_(true)
@@ -514,13 +517,13 @@ variable_info_3<vit>::variable_info_3(const std::string& varname, t_config& vars
 	}
 }
 
-template<const variable_info_3_type vit>
-variable_info_3<vit>::~variable_info_3()
+template<const variable_info_type vit>
+variable_info<vit>::~variable_info()
 {
 }
 
-template<const variable_info_3_type vit>
-void variable_info_3<vit>::calculate_value()
+template<const variable_info_type vit>
+void variable_info<vit>::calculate_value()
 {
 	// this->state_ is initialized in the constructor.
 	size_t previous_index = 0;
@@ -563,36 +566,36 @@ void variable_info_3<vit>::calculate_value()
 	}
 }
 
-template<const variable_info_3_type vit>
-bool variable_info_3<vit>::explicit_index() const
+template<const variable_info_type vit>
+bool variable_info<vit>::explicit_index() const
 {
 	throw_on_invalid();
 	return this->state_.type_ == state_start || this->state_.type_ == state_indexed;
 }
 
-template<const variable_info_3_type vit>
-typename maybe_const<vit, config::attribute_value>::type& variable_info_3<vit>::as_scalar() const
+template<const variable_info_type vit>
+typename maybe_const<vit, config::attribute_value>::type& variable_info<vit>::as_scalar() const
 {
 	throw_on_invalid();
 	return apply_visitor(as_skalar_visitor<vit>(), this->state_);
 }
 
-template<const variable_info_3_type vit>
-typename maybe_const<vit, config>::type& variable_info_3<vit>::as_container() const
+template<const variable_info_type vit>
+typename maybe_const<vit, config>::type& variable_info<vit>::as_container() const
 {
 	throw_on_invalid();
 	return apply_visitor(as_container_visitor<vit>(), this->state_);
 }
 
-template<const variable_info_3_type vit>
-typename maybe_const<vit, config::child_itors>::type variable_info_3<vit>::as_array() const
+template<const variable_info_type vit>
+typename maybe_const<vit, config::child_itors>::type variable_info<vit>::as_array() const
 {
 	throw_on_invalid();
 	return apply_visitor(as_range_visitor_base<vit,variable_as_array_h<vit> >(variable_as_array_h<vit>()), this->state_);
 }
 
-template<const variable_info_3_type vit>
-void variable_info_3<vit>::throw_on_invalid() const
+template<const variable_info_type vit>
+void variable_info<vit>::throw_on_invalid() const
 {
 	if(!this->valid_)
 	{
@@ -601,74 +604,74 @@ void variable_info_3<vit>::throw_on_invalid() const
 }
 
 template<>
-std::string variable_info_3<vit_const>::get_error_message() const
+std::string variable_info<vit_const>::get_error_message() const
 {
 	return "Cannot resolve variablename '" + this->name_ + "' for reading.";
 }
 
 template<>
-std::string variable_info_3<vit_create_if_not_existent>::get_error_message() const
+std::string variable_info<vit_create_if_not_existent>::get_error_message() const
 {
 	return "Cannot resolve variablename '" + this->name_ + "' for writing.";
 }
 
 template<>
-std::string variable_info_3<vit_throw_if_not_existent>::get_error_message() const
+std::string variable_info<vit_throw_if_not_existent>::get_error_message() const
 {
 	return "Cannot resolve variablename '" + this->name_ + "' for writing without creating new childs.";
 }
 
-template<const variable_info_3_type vit>
-void non_const_variable_info_3<vit>::clear(bool only_tables) const
+template<const variable_info_type vit>
+void non_const_variable_info<vit>::clear(bool only_tables) const
 {
 	this->throw_on_invalid();
 	return apply_visitor(clear_value_visitor<vit>(only_tables), this->state_);
 }
 
-template<const variable_info_3_type vit>
-config::child_itors non_const_variable_info_3<vit>::append_array(std::vector<config> childs) const
+template<const variable_info_type vit>
+config::child_itors non_const_variable_info<vit>::append_array(std::vector<config> childs) const
 {
 	this->throw_on_invalid();
 	return apply_visitor(as_range_visitor_base<vit,append_range_h>(append_range_h(childs)), this->state_);
 }
 
-template<const variable_info_3_type vit>
-config::child_itors non_const_variable_info_3<vit>::insert_array(std::vector<config> childs) const
+template<const variable_info_type vit>
+config::child_itors non_const_variable_info<vit>::insert_array(std::vector<config> childs) const
 {
 	this->throw_on_invalid();
 	return apply_visitor(as_range_visitor_base<vit,insert_range_h>(insert_range_h(childs)), this->state_);
 }
 
-template<const variable_info_3_type vit>
-config::child_itors non_const_variable_info_3<vit>::replace_array(std::vector<config> childs) const
+template<const variable_info_type vit>
+config::child_itors non_const_variable_info<vit>::replace_array(std::vector<config> childs) const
 {
 	this->throw_on_invalid();
 	return apply_visitor(as_range_visitor_base<vit,replace_range_h>(replace_range_h(childs)), this->state_);
 }
 
-template<const variable_info_3_type vit>
-void non_const_variable_info_3<vit>::merge_array(std::vector<config> childs) const
+template<const variable_info_type vit>
+void non_const_variable_info<vit>::merge_array(std::vector<config> childs) const
 {
 	this->throw_on_invalid();
 	apply_visitor(as_range_visitor_base<vit,merge_range_h>(merge_range_h(childs)), this->state_);
 }
 
-template<const variable_info_3_type vit>
-bool variable_info_3<vit>::exists_as_attribute() const
+template<const variable_info_type vit>
+bool variable_info<vit>::exists_as_attribute() const
 {
 	this->throw_on_invalid();
 	return (this->state_.type_ == state_temporary) || ((this->state_.type_ == state_named) && this->state_.child_->has_attribute(this->state_.key_));
 }
-template<const variable_info_3_type vit>
-bool variable_info_3<vit>::exists_as_container() const
+template<const variable_info_type vit>
+bool variable_info<vit>::exists_as_container() const
 {
 	this->throw_on_invalid();
 	return apply_visitor(exists_as_container_visitor<vit>(), this->state_);
 }
 
 ///explicit instantiations
-template class variable_info_3<vit_const>;
-template class variable_info_3<vit_create_if_not_existent>;
-template class variable_info_3<vit_throw_if_not_existent>;
-template class non_const_variable_info_3<vit_create_if_not_existent>;
-template class non_const_variable_info_3<vit_throw_if_not_existent>;
+template class variable_info<vit_const>;
+template class variable_info<vit_create_if_not_existent>;
+template class variable_info<vit_throw_if_not_existent>;
+template class non_const_variable_info<vit_create_if_not_existent>;
+template class non_const_variable_info<vit_throw_if_not_existent>;
