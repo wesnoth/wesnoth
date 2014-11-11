@@ -296,8 +296,8 @@ namespace
 /// range_based operations
 namespace {
 
-	// as_range_visitor_base wants to partaly specialise from_indexed but nothing else
-	// so we put "everything" else in this base class which is common for both as_range_visitor_base versions.
+	// as_range_visitor_base wants to partially specialize from_indexed but nothing else
+	// so we put everything else in this base class which is common for both as_range_visitor_base versions.
 	template<const variable_info_type vit, typename THandler>
 	class as_range_visitor_base2
 		: public variable_info_visitor_const<vit, typename THandler::result_type>
