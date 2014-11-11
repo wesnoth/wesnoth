@@ -19,12 +19,12 @@
 #include <string>
 #include "config.hpp"
 
-namespace variable_info_3_detail
+namespace variable_info_detail
 {
-	enum variable_info_3_type {vit_const, vit_create_if_not_existent, vit_throw_if_not_existent,  };
-	enum variable_info_3_state_type {
+	enum variable_info_type {vit_const, vit_create_if_not_existent, vit_throw_if_not_existent,  };
+	enum variable_info_state_type {
 		state_start = 0, // for internal use
-		                 // only used at the 'starting_pos' of the variable_info_3::calculate_value algorithm
+		                 // only used at the 'starting_pos' of the variable_info::calculate_value algorithm
 		state_named,     // the result of .someval this can eigher man an attribute value or an
 		                 // child range
 		state_indexed,   // the result of .someval[index] this is never an attribute value,
@@ -34,7 +34,7 @@ namespace variable_info_3_detail
 	};
 
 	//Special case of boost::enable_if
-	template<const variable_info_3_type vit>
+	template<const variable_info_type vit>
 	struct enable_if_non_const
 	{
 		typedef enable_if_non_const<vit> type;
@@ -45,7 +45,7 @@ namespace variable_info_3_detail
 	{
 	};
 
-	template<const variable_info_3_type vit, typename T>
+	template<const variable_info_type vit, typename T>
 	struct maybe_const
 	{
 		typedef T type;
@@ -64,12 +64,12 @@ namespace variable_info_3_detail
 	};
 
 
-	template<const variable_info_3_type vit>
-	struct variable_info_3_state
+	template<const variable_info_type vit>
+	struct variable_info_state
 	{
 		typedef typename maybe_const<vit,config>::type t_child;
 
-		variable_info_3_state(t_child& vars)
+		variable_info_state(t_child& vars)
 			: child_(&vars)
 			, key_()
 			, index_(0)
@@ -89,8 +89,8 @@ namespace variable_info_3_detail
 		// Then we store the result here.
 		config::attribute_value temp_val_;
 
-		// See the definition of 'variable_info_3_state_type'
-		variable_info_3_state_type type_;
+		// See the definition of 'variable_info_state_type'
+		variable_info_state_type type_;
 	};
 }
 

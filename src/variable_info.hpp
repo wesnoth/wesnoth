@@ -32,15 +32,15 @@ public:
 	}
 };
 
-template<const variable_info_3_detail::variable_info_3_type vit>
-class variable_info_3
+template<const variable_info_detail::variable_info_type vit>
+class variable_info
 {
 public:
 
-	typedef typename variable_info_3_detail::maybe_const<vit,config>::type t_config;
+	typedef typename variable_info_detail::maybe_const<vit,config>::type t_config;
 	/// Doesn't throw
-	variable_info_3(const std::string& varname, t_config& vars);
-	~variable_info_3();
+	variable_info(const std::string& varname, t_config& vars);
+	~variable_info();
 	std::string get_error_message() const;
 	/// Doesn't throw
 	bool explicit_index() const;
@@ -54,27 +54,27 @@ public:
 		NOTE:
 			If vit == vit_const, then the lifime of the returned const attribute_value& might end with the lifetime of this object.
 	*/
-	typename variable_info_3_detail::maybe_const<vit, config::attribute_value>::type &as_scalar() const;
+	typename variable_info_detail::maybe_const<vit, config::attribute_value>::type &as_scalar() const;
 	/// might throw invalid_variablename_exception
-	typename variable_info_3_detail::maybe_const<vit, config>::type & as_container() const;
+	typename variable_info_detail::maybe_const<vit, config>::type & as_container() const;
 	/// might throw invalid_variablename_exception
-	typename variable_info_3_detail::maybe_const<vit, config::child_itors>::type as_array() const; //range may be empty
+	typename variable_info_detail::maybe_const<vit, config::child_itors>::type as_array() const; //range may be empty
 
 protected:
 	std::string name_;
-	variable_info_3_detail::variable_info_3_state<vit> state_;
+	variable_info_detail::variable_info_state<vit> state_;
 	void throw_on_invalid() const;
 	bool valid_;
 	void calculate_value();
 };
 
-/// Extends variable_info_3 with methods that can only be applied if vit != vit_const
-template<const variable_info_3_detail::variable_info_3_type vit>
-class non_const_variable_info_3 : public variable_info_3<vit>, variable_info_3_detail::enable_if_non_const<vit>::type
+/// Extends variable_info with methods that can only be applied if vit != vit_const
+template<const variable_info_detail::variable_info_type vit>
+class non_const_variable_info : public variable_info<vit>, variable_info_detail::enable_if_non_const<vit>::type
 {
 public:
-	non_const_variable_info_3(const std::string& name, config& game_vars) : variable_info_3<vit>(name, game_vars) {}
-	~non_const_variable_info_3() {}
+	non_const_variable_info(const std::string& name, config& game_vars) : variable_info<vit>(name, game_vars) {}
+	~non_const_variable_info() {}
 
 	/// clears the vale this object points to
 	/// if only_tables = true it will not clear attribute values.
@@ -102,15 +102,15 @@ public:
 /**
 	this variable accessor will create a childtable when resolving name if it doesnt exist yet.
 */
-typedef non_const_variable_info_3<variable_info_3_detail::vit_create_if_not_existent> variable_access_create;
+typedef non_const_variable_info<variable_info_detail::vit_create_if_not_existent> variable_access_create;
 /**
 	this variable accessor will throw an exception when trying to access a non existent table.
 	Note that the other types can throw too if name is invlid like '..[[[a'.
 */
-typedef non_const_variable_info_3<variable_info_3_detail::vit_throw_if_not_existent>  variable_access_throw;
+typedef non_const_variable_info<variable_info_detail::vit_throw_if_not_existent>  variable_access_throw;
 /**
 	this variable accessor is takes a const reference and is guaranteed to not change the config.
 */
-typedef variable_info_3<variable_info_3_detail::vit_const>                            variable_access_const;
+typedef variable_info<variable_info_detail::vit_const>                            variable_access_const;
 
 #endif
