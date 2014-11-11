@@ -24,7 +24,6 @@
 #include "help.hpp"
 
 #include "about.hpp"
-#include "construct_dialog.hpp"
 #include "display.hpp"
 #include "display_context.hpp"
 #include "exceptions.hpp"
@@ -32,7 +31,6 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "hotkey/hotkey_command.hpp"
 #include "language.hpp"
 #include "log.hpp"
 #include "map.hpp"
@@ -59,6 +57,49 @@ static lg::log_domain log_help("help");
 #define DBG_HP LOG_STREAM(debug, log_help)
 
 namespace help {
+
+help_button::help_button(display& disp, const std::string &help_topic)
+	: dialog_button(disp.video(), _("Help")), disp_(disp), topic_(help_topic), help_hand_(NULL)
+{}
+
+help_button::~help_button() {
+	delete help_hand_;
+}
+
+int help_button::action(gui::dialog_process_info &info) {
+	if(!topic_.empty()) {
+		show_help();
+		info.clear_buttons();
+	}
+	return gui::CONTINUE_DIALOG;
+}
+
+void help_button::show_help()
+{
+	help::show_help(disp_, topic_);
+}
+
+bool help_button::can_execute_command(const hotkey::hotkey_command& cmd, int/*index*/) const
+{
+	hotkey::HOTKEY_COMMAND command = cmd.id;
+	return (topic_.empty() == false && command == hotkey::HOTKEY_HELP) || command == hotkey::HOTKEY_SCREENSHOT;
+}
+
+void help_button::join() {
+	dialog_button::join();
+
+	//wait until we join the event context to start a hotkey handler
+	delete help_hand_;
+	help_hand_ = new hotkey::basic_handler(&disp_, this);
+}
+
+void help_button::leave() {
+	dialog_button::leave();
+
+	//now kill the hotkey handler
+	delete help_hand_;
+	help_hand_ = NULL;
+}
 
 /// Generate the help contents from the configurations given to the
 /// manager.

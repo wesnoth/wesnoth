@@ -37,7 +37,6 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 
-#include "construct_dialog.hpp"
 #include "formula_string_utils.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
