@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef LUA_GUI2_DEFINED
-#define LUA_GUI2_DEFINED
+#ifndef LUA_GUI2_HPP_INCLUDED
+#define LUA_GUI2_HPP_INCLUDED
 
 struct lua_State;
 

@@ -78,7 +78,7 @@ namespace {
 	}
 }//unnamed namespace for scoped_dialog
 
-gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
+static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
 {
 	if (!scoped_dialog::current) {
 		luaL_error(L, "no visible dialog");
