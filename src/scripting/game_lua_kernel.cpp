@@ -75,7 +75,6 @@
 #include "scripting/lua_api.hpp"        // for luaW_toboolean, etc
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_types.hpp"      // for getunitKey, dlgclbkKey, etc
-#include "scripting/lua_gui2.hpp"
 #include "sdl/utils.hpp"                // for surface
 #include "serialization/string_utils.hpp"  // for string_map
 #include "side_filter.hpp"              // for side_filter
@@ -2913,7 +2912,6 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "fire_event",               &intf_fire_event               },
 		{ "float_label",              &intf_float_label              },
 		{ "get_all_vars",             &intf_get_all_vars             },
-		{ "get_dialog_value",         &intf_get_dialog_value         },
 		{ "get_displayed_unit",       &intf_get_displayed_unit       },
 		{ "get_era",                  &intf_get_era                  },
 		{ "get_image_size",           &intf_get_image_size           },
@@ -2948,16 +2946,10 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "remove_tile_overlay",      &intf_remove_tile_overlay      },
 		{ "scroll_to_tile",           &intf_scroll_to_tile           },
 		{ "select_hex",               &intf_select_hex               },
-		{ "set_dialog_active",        &intf_set_dialog_active        },
-		{ "set_dialog_callback",      &intf_set_dialog_callback      },
-		{ "set_dialog_canvas",        &intf_set_dialog_canvas        },
-		{ "set_dialog_markup",        &intf_set_dialog_markup        },
-		{ "set_dialog_value",         &intf_set_dialog_value         },
 		{ "set_music",                &intf_set_music                },
 		{ "set_terrain",              &intf_set_terrain              },
 		{ "set_variable",             &intf_set_variable             },
 		{ "set_village_owner",        &intf_set_village_owner        },
-		{ "show_dialog",              &intf_show_dialog              },
 		{ "simulate_combat",          &intf_simulate_combat          },
 		{ "synchronize_choice",       &intf_synchronize_choice       },
 		{ "tovconfig",                &intf_tovconfig    },

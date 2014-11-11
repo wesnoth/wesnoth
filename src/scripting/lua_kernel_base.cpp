@@ -30,6 +30,7 @@
 
 #include "scripting/lua_api.hpp"
 #include "scripting/lua_common.hpp"
+#include "scripting/lua_gui2.hpp"
 
 #include "version.hpp"                  // for do_version_check, etc
 
@@ -317,6 +318,14 @@ lua_kernel_base::lua_kernel_base()
 		{ "have_file",                &intf_have_file                },
 		{ "require",                  &intf_require                  },
 		{ "textdomain",               &lua_common::intf_textdomain   },
+		{ "get_dialog_value",         &intf_get_dialog_value         },
+		{ "set_dialog_active",        &intf_set_dialog_active        },
+		{ "set_dialog_callback",      &intf_set_dialog_callback      },
+		{ "set_dialog_canvas",        &intf_set_dialog_canvas        },
+		{ "set_dialog_markup",        &intf_set_dialog_markup        },
+		{ "set_dialog_value",         &intf_set_dialog_value         },
+		{ "show_dialog",              &intf_show_dialog              },
+
 		{ NULL, NULL }
 	};
 
