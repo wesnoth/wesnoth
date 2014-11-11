@@ -3190,9 +3190,7 @@ static char const *handled_file_tags[] = {
 	"event", "generator", "label", "lua", "map", "menu_item",
 	"modification", "music", "options", "side", "sound_source",
 	"story", "terrain_graphics", "time", "time_area", "tunnel",
-	"undo_stack", "variables",
-	/// @todo: These are only needed for MP campaigns and only for subsequent scenarios, see bug #18883
-	"multiplayer", "replay_start", "snapshot"
+	"undo_stack", "variables"
 };
 
 static bool is_handled_file_tag(const std::string &s)
