@@ -18,6 +18,7 @@
 class display;
 
 #include "help_impl.hpp"
+#include "help_text_area.hpp"
 #include "widgets/button.hpp"
 #include "widgets/widget.hpp"
 

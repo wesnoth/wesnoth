@@ -904,6 +904,7 @@ set(wesnoth-main_SRC
 	help/help_browser.cpp
 	help/help_button.cpp
 	help/help_impl.cpp
+	help/help_text_area.cpp
 	hotkey/hotkey_preferences_display.cpp
 	intro.cpp
 	leader_scroll_dialog.cpp
