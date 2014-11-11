@@ -901,6 +901,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/wml_message.cpp
 	halo.cpp
 	help/help.cpp
+	help/help_browser.cpp
 	help/help_button.cpp
 	help/help_impl.cpp
 	hotkey/hotkey_preferences_display.cpp

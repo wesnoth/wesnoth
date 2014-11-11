@@ -32,6 +32,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "help_impl.hpp"
+#include "help_browser.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "language.hpp"
 #include "log.hpp"
