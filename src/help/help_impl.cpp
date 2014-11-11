@@ -15,17 +15,24 @@
 #include "help_impl.hpp"
 
 #include "about.hpp"                    // for get_text
+#include "display.hpp"                  // for display
+#include "display_context.hpp"          // for display_context
 #include "game_config.hpp"              // for debug, menu_contract, etc
+#include "game_config_manager.hpp"      // for game_config_manager
 #include "game_preferences.hpp"         // for encountered_terrains, etc
 #include "gettext.hpp"                  // for _, gettext, N_
 #include "hotkey/hotkey_command.hpp"    // for is_scope_active, etc
+#include "image.hpp"                    // for get_image, locator
 #include "language.hpp"                 // for string_table, symbol_table
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
 #include "make_enum.hpp"                // for operator<<
+#include "map.hpp"                      // for gamemap
 #include "marked-up_text.hpp"           // for is_cjk_char, word_wrap_text
 #include "movetype.hpp"                 // for movetype, movetype::effects, etc
 #include "race.hpp"                     // for unit_race, etc
-#include "resources.hpp"                // for tod_manager
+#include "resources.hpp"                // for tod_manager, config_manager
+#include "sdl/utils.hpp"                // for surface
+#include "serialization/string_utils.hpp"  // for split, quoted_split, etc
 #include "serialization/unicode_cast.hpp"  // for unicode_cast
 #include "serialization/unicode_types.hpp"  // for char_t, etc
 #include "terrain.hpp"                  // for terrain_type
@@ -41,16 +48,13 @@
 #include <assert.h>                     // for assert
 #include <algorithm>                    // for sort, find, transform, etc
 #include <boost/foreach.hpp>            // for auto_any_base, etc
-#include <boost/mpl/bool.hpp>           // for bool_
 #include <boost/optional/optional.hpp>  // for optional
-#include <boost/smart_ptr/shared_ptr.hpp>  // for shared_ptr
+#include <boost/shared_ptr.hpp>  // for shared_ptr
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <iterator>                     // for back_insert_iterator, etc
 #include <map>                          // for map, etc
 #include <set>
 #include <SDL.h>
-
-class CVideo;
 
 static lg::log_domain log_display("display");
 #define WRN_DP LOG_STREAM(warn, log_display)
@@ -2057,5 +2061,113 @@ void generate_contents()
 		}
 	}
 }
+
+// id starting with '.' are hidden
+std::string hidden_symbol(bool hidden) {
+	return (hidden ? "." : "");
+}
+
+bool is_visible_id(const std::string &id) {
+	return (id.empty() || id[0] != '.');
+}
+
+/// Return true if the id is valid for user defined topics and
+/// sections. Some IDs are special, such as toplevel and may not be
+/// be defined in the config.
+bool is_valid_id(const std::string &id) {
+	if (id == "toplevel") {
+		return false;
+	}
+	if (id.find(unit_prefix) == 0 || id.find(hidden_symbol() + unit_prefix) == 0) {
+		return false;
+	}
+	if (id.find("ability_") == 0) {
+		return false;
+	}
+	if (id.find("weaponspecial_") == 0) {
+		return false;
+	}
+	if (id == "hidden") {
+		return false;
+	}
+	return true;
+}
+
+
+// Return the width for the image with filename.
+unsigned image_width(const std::string &filename)
+{
+	image::locator loc(filename);
+	surface surf(image::get_image(loc));
+	if (surf != NULL) {
+		return surf->w;
+	}
+	return 0;
+}
+
+void push_tab_pair(std::vector<std::pair<std::string, unsigned int> > &v, const std::string &s)
+{
+	v.push_back(std::make_pair(s, font::line_width(s, normal_font_size)));
+}
+
+std::string generate_table(const table_spec &tab, const unsigned int spacing)
+{
+	table_spec::const_iterator row_it;
+	std::vector<std::pair<std::string, unsigned> >::const_iterator col_it;
+	unsigned int num_cols = 0;
+	for (row_it = tab.begin(); row_it != tab.end(); ++row_it) {
+		if (row_it->size() > num_cols) {
+			num_cols = row_it->size();
+		}
+	}
+	std::vector<unsigned int> col_widths(num_cols, 0);
+	// Calculate the width of all columns, including spacing.
+	for (row_it = tab.begin(); row_it != tab.end(); ++row_it) {
+		unsigned int col = 0;
+		for (col_it = row_it->begin(); col_it != row_it->end(); ++col_it) {
+			if (col_widths[col] < col_it->second + spacing) {
+				col_widths[col] = col_it->second + spacing;
+			}
+			++col;
+		}
+	}
+	std::vector<unsigned int> col_starts(num_cols);
+	// Calculate the starting positions of all columns
+	for (unsigned int i = 0; i < num_cols; ++i) {
+		unsigned int this_col_start = 0;
+		for (unsigned int j = 0; j < i; ++j) {
+			this_col_start += col_widths[j];
+		}
+		col_starts[i] = this_col_start;
+	}
+	std::stringstream ss;
+	for (row_it = tab.begin(); row_it != tab.end(); ++row_it) {
+		unsigned int col = 0;
+		for (col_it = row_it->begin(); col_it != row_it->end(); ++col_it) {
+			ss << jump_to(col_starts[col]) << col_it->first;
+			++col;
+		}
+		ss << "\n";
+	}
+	return ss.str();
+}
+
+/// Prepend all chars with meaning inside attributes with a backslash.
+std::string escape(const std::string &s)
+{
+	return utils::escape(s, "'\\");
+}
+
+/// Load the appropriate terrain types data to use
+tdata_cache load_terrain_types_data() {
+	if (display::get_singleton()) {
+		return display::get_singleton()->get_disp_context().map().tdata();
+	} else if (resources::config_manager){
+		return resources::config_manager->terrain_types();
+	} else {
+		return tdata_cache();
+	}
+}
+
 
 } // end namespace help

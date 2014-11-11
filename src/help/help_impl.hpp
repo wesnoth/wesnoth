@@ -3,30 +3,22 @@
 #define HELP_IMPL_INCLUDED
 
 #include "config.hpp"                   // for config
-#include "display.hpp"                  // for display
-#include "display_context.hpp"          // for display_context
 #include "exceptions.hpp"               // for error
 #include "font.hpp"                     // for line_width, relative_size
-#include "game_config_manager.hpp"      // for game_config_manager
-#include "image.hpp"                    // for get_image, locator
-#include "map.hpp"                      // for gamemap
-#include "resources.hpp"                // for config_manager
-#include "sdl/utils.hpp"                // for surface, surface_restorer
-#include "serialization/string_utils.hpp"  // for escape
-#include "terrain_type_data.hpp"        // for tdata_cache
-#include "widgets/menu.hpp"             // for menu
 
 #include "SDL_video.h"                  // for SDL_Color, SDL_Surface
-#include <string>                       // for strcoll, NULL
 #include <list>                         // for list
 #include <ostream>                      // for operator<<, stringstream, etc
 #include <set>                          // for set
 #include <string>                       // for string, allocator, etc
 #include <utility>                      // for pair, make_pair
 #include <vector>                       // for vector, etc
+#include <boost/shared_ptr.hpp>
 
 class CVideo;
 class unit_type;
+class terrain_type_data;
+typedef boost::shared_ptr<terrain_type_data> tdata_cache;
 namespace help { struct section; }  // lines 51-51
 
 namespace help {
@@ -283,25 +275,14 @@ std::vector<std::string> split_in_width(const std::string &s, const int font_siz
 std::string remove_first_space(const std::string& text);
 
 /// Prepend all chars with meaning inside attributes with a backslash.
-inline std::string escape(const std::string &s)
-{
-	return utils::escape(s, "'\\");
-}
+std::string escape(const std::string &s);
 
 /// Return the first word in s, not removing any spaces in the start of
 /// it.
 std::string get_first_word(const std::string &s);
 
 /// Load the appropriate terrain types data to use
-inline tdata_cache load_terrain_types_data() {
-	if (display::get_singleton()) {
-		return display::get_singleton()->get_disp_context().map().tdata();
-	} else if (resources::config_manager){
-		return resources::config_manager->terrain_types();
-	} else {
-		return tdata_cache();
-	}
-}
+tdata_cache load_terrain_types_data();
 
 extern const config *game_cfg;
 // The default toplevel.
@@ -336,35 +317,14 @@ extern const std::string era_prefix;
 extern const std::string variation_prefix;
 
 // id starting with '.' are hidden
-inline std::string hidden_symbol(bool hidden = true) {
-	return (hidden ? "." : "");
-}
+std::string hidden_symbol(bool hidden = true);
 
-inline bool is_visible_id(const std::string &id) {
-	return (id.empty() || id[0] != '.');
-}
+bool is_visible_id(const std::string &id);
 
 /// Return true if the id is valid for user defined topics and
 /// sections. Some IDs are special, such as toplevel and may not be
 /// be defined in the config.
-inline bool is_valid_id(const std::string &id) {
-	if (id == "toplevel") {
-		return false;
-	}
-	if (id.find(unit_prefix) == 0 || id.find(hidden_symbol() + unit_prefix) == 0) {
-		return false;
-	}
-	if (id.find("ability_") == 0) {
-		return false;
-	}
-	if (id.find("weaponspecial_") == 0) {
-		return false;
-	}
-	if (id == "hidden") {
-		return false;
-	}
-	return true;
-}
+bool is_valid_id(const std::string &id);
 
 /// Class to be used as a function object when generating the about
 /// text. Translate the about dialog formatting to format suitable
@@ -412,69 +372,17 @@ inline std::string bold(const std::string &s)
 		return ss.str();
 	}
 
-	typedef std::vector<std::vector<std::pair<std::string, unsigned int > > > table_spec;
-	// Create a table using the table specs. Return markup with jumps
-	// that create a table. The table spec contains a vector with
-	// vectors with pairs. The pairs are the markup string that should
-	// be in a cell, and the width of that cell.
-inline std::string generate_table(const table_spec &tab, const unsigned int spacing=font::relative_size(20))
-  {
-		table_spec::const_iterator row_it;
-		std::vector<std::pair<std::string, unsigned> >::const_iterator col_it;
-		unsigned int num_cols = 0;
-		for (row_it = tab.begin(); row_it != tab.end(); ++row_it) {
-			if (row_it->size() > num_cols) {
-				num_cols = row_it->size();
-			}
-		}
-		std::vector<unsigned int> col_widths(num_cols, 0);
-		// Calculate the width of all columns, including spacing.
-		for (row_it = tab.begin(); row_it != tab.end(); ++row_it) {
-			unsigned int col = 0;
-			for (col_it = row_it->begin(); col_it != row_it->end(); ++col_it) {
-				if (col_widths[col] < col_it->second + spacing) {
-					col_widths[col] = col_it->second + spacing;
-				}
-				++col;
-			}
-		}
-		std::vector<unsigned int> col_starts(num_cols);
-		// Calculate the starting positions of all columns
-		for (unsigned int i = 0; i < num_cols; ++i) {
-			unsigned int this_col_start = 0;
-			for (unsigned int j = 0; j < i; ++j) {
-				this_col_start += col_widths[j];
-			}
-			col_starts[i] = this_col_start;
-		}
-		std::stringstream ss;
-		for (row_it = tab.begin(); row_it != tab.end(); ++row_it) {
-			unsigned int col = 0;
-			for (col_it = row_it->begin(); col_it != row_it->end(); ++col_it) {
-				ss << jump_to(col_starts[col]) << col_it->first;
-				++col;
-			}
-			ss << "\n";
-		}
-		return ss.str();
-	}
+typedef std::vector<std::vector<std::pair<std::string, unsigned int > > > table_spec;
+// Create a table using the table specs. Return markup with jumps
+// that create a table. The table spec contains a vector with
+// vectors with pairs. The pairs are the markup string that should
+// be in a cell, and the width of that cell.
+std::string generate_table(const table_spec &tab, const unsigned int spacing=font::relative_size(20));
 
-	// Return the width for the image with filename.
-inline unsigned image_width(const std::string &filename)
-	{
-		image::locator loc(filename);
-		surface surf(image::get_image(loc));
-		if (surf != NULL) {
-			return surf->w;
-		}
-		return 0;
-	}
+// Return the width for the image with filename.
+unsigned image_width(const std::string &filename);
 
-inline void push_tab_pair(std::vector<std::pair<std::string, unsigned int> > &v, const std::string &s)
-	{
-		v.push_back(std::make_pair(s, font::line_width(s, normal_font_size)));
-	}
-
+void push_tab_pair(std::vector<std::pair<std::string, unsigned int> > &v, const std::string &s);
 
 } // end namespace help
 
