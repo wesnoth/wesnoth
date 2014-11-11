@@ -19,8 +19,8 @@
 
 class config;
 
-#include "terrain.hpp"
 #include "map_location.hpp"
+#include "terrain_translation.hpp"
 #include "terrain_type_data.hpp"
 
 #include <boost/shared_ptr.hpp>

@@ -22,6 +22,7 @@
 #include "filter_context.hpp"
 #include "game_data.hpp"
 #include "make_enum.hpp"
+#include "map.hpp"
 #include "map_location.hpp"
 #include "resources.hpp" //Needed for lua kernel pointer
 #include "scripting/game_lua_kernel.hpp" //Needed for lua kernel

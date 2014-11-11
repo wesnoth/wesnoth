@@ -39,8 +39,11 @@
  */
 
 #include "gui/auxiliary/event/dispatcher.hpp"
-#include "gui/widgets/event_executor.hpp"
+#include "gui/auxiliary/event/handler.hpp"
 #include "gui/lib/types/point.hpp"
+#include "serialization/unicode_types.hpp"
+#include <string>
+#include <vector>
 
 namespace gui2
 {

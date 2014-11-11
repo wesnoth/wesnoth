@@ -22,16 +22,25 @@
 #define GUI_WIDGETS_WINDOW_HPP_INCLUDED
 
 #include "cursor.hpp"
+#include "formula_callable.hpp"
+#include "formula_function.hpp"
 #include "gui/auxiliary/formula.hpp"
-#include "gui/widgets/helper.hpp"
+#include "gui/auxiliary/event/handler.hpp"
+#include "gui/auxiliary/window_builder.hpp"
 #include "gui/widgets/panel.hpp"
+#include "sdl/utils.hpp"
 
-#include "events.hpp"
-
+#include <map>
 #include <string>
+#include <vector>
 #include "utils/boost_function_guarded.hpp"
 
 class CVideo;
+
+namespace boost { template <class T> class intrusive_ptr; }
+namespace gui2 { class twidget; }
+namespace gui2 { namespace event { struct tmessage; } }
+namespace gui2 { struct tpoint; }
 
 namespace gui2
 {

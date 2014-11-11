@@ -17,20 +17,23 @@
  * Routines related to game-maps, terrain, locations, directions. etc.
  */
 
-#include "global.hpp"
-
-#include <cassert>
-
 #include "map.hpp"
 
+#include "global.hpp"
+
+#include "config.hpp"
 #include "formula_string_utils.hpp"
-#include "gettext.hpp"
 #include "log.hpp"
 #include "map_exception.hpp"
 #include "serialization/parser.hpp"
+#include "serialization/string_utils.hpp"
+#include "terrain.hpp"
 #include "terrain_type_data.hpp"
-#include "util.hpp"
 #include "wml_exception.hpp"
+
+#include <algorithm>
+#include <sstream>
+#include <utility>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)

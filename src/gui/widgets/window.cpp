@@ -21,30 +21,55 @@
 
 #include "gui/widgets/window_private.hpp"
 
+#include "config.hpp"
+#include "cursor.hpp"
+#include "display.hpp"
+#include "events.hpp"
+#include "formula_callable.hpp"
 #include "font.hpp"
-#include "game_display.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "gui/auxiliary/event/distributor.hpp"
+#include "gui/auxiliary/event/handler.hpp"
 #include "gui/auxiliary/event/message.hpp"
+#include "gui/auxiliary/formula.hpp"
 #include "gui/auxiliary/find_widget.tpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/layout_exception.hpp"
+#include "gui/auxiliary/widget_definition/window.hpp"
+#include "gui/auxiliary/window_builder.hpp"
 #include "gui/auxiliary/window_builder/control.hpp"
 #include "gui/dialogs/title_screen.hpp"
 #include "gui/dialogs/tip.hpp"
+#include "gui/lib/types/point.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/container.hpp"
 #include "gui/widgets/detail/register.tpp"
+#include "gui/widgets/grid.hpp"
+#include "gui/widgets/helper.hpp"
+#include "gui/widgets/panel.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/widget.hpp"
+#include "gui/widgets/window.hpp"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
 #include "preferences.hpp"
 #include "preferences_display.hpp"
+#include "reference_counted_object.hpp"
+#include "sdl/rect.hpp"
+#include "sdl/utils.hpp"
+#include "tstring.hpp"
 #include "utils/foreach.tpp"
+#include "variant.hpp"
 #include "video.hpp"
+#include "wml_exception.hpp"
 
 #include <boost/bind.hpp>
+
+namespace game_logic { class function_symbol_table; }
+namespace gui2 { class tbutton; }
+
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'

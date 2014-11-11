@@ -16,7 +16,7 @@
 #define GUI_WIDGETS_GENERATOR_HPP_INCLUDED
 
 #include "widget.hpp"
-#include "config.hpp"
+#include "tstring.hpp"
 
 #include <boost/intrusive_ptr.hpp>
 
