@@ -474,7 +474,12 @@ wesnoth_sources = Split("""
     gui/widgets/widget.cpp
     gui/widgets/window.cpp
     halo.cpp
-    help.cpp
+    help/help.cpp
+    help/help_browser.cpp
+    help/help_button.cpp
+    help/help_impl.cpp
+    help/help_menu.cpp
+    help/help_text_area.cpp
     hotkey/hotkey_preferences_display.cpp
     intro.cpp
     leader_scroll_dialog.cpp

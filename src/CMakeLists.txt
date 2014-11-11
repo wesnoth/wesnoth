@@ -900,7 +900,12 @@ set(wesnoth-main_SRC
 	gui/dialogs/wml_error.cpp
 	gui/dialogs/wml_message.cpp
 	halo.cpp
-	help.cpp
+	help/help.cpp
+	help/help_browser.cpp
+	help/help_button.cpp
+	help/help_impl.cpp
+	help/help_menu.cpp
+	help/help_text_area.cpp
 	hotkey/hotkey_preferences_display.cpp
 	intro.cpp
 	leader_scroll_dialog.cpp

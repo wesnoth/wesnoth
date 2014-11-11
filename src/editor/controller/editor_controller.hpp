@@ -23,7 +23,7 @@
 #include "editor/toolkit/editor_toolkit.hpp"
 
 #include "../../controller_base.hpp"
-#include "../../help.hpp"
+#include "help/help.hpp"
 #include "../../mouse_handler_base.hpp"
 #include "../../tooltips.hpp"
 

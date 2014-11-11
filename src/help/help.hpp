@@ -16,12 +16,11 @@
 
 class config;
 class display;
-class gamemap;
 class terrain_type;
+class unit;
 class unit_type;
 
-#include "hotkey/command_executor.hpp"
-#include "construct_dialog.hpp"
+#include <string>
 
 namespace help {
 
@@ -53,23 +52,6 @@ void show_variation_help(display &disp, const std::string &unit_id, const std::s
 /// wrapper to add terrain prefix and hiding symbol
 void show_terrain_help(display &disp, const std::string& unit_id, bool hidden = false,
 				int xloc = -1, int yloc = -1);
-
-class help_button : public gui::dialog_button, public hotkey::command_executor {
-public:
-	help_button(display& disp, const std::string &help_topic);
-	~help_button();
-	int action(gui::dialog_process_info &info);
-	std::string topic() const { return topic_; }
-	void join();
-	void leave();
-private:
-	void show_help();
-	bool can_execute_command(const hotkey::hotkey_command& command, int/*index*/ =-1) const;
-
-	display &disp_;
-	const std::string topic_;
-	hotkey::basic_handler *help_hand_;
-};
 
 void show_unit_description(const unit_type &t);
 void show_unit_description(const unit &u);

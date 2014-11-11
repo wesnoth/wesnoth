@@ -17,6 +17,8 @@
 #define PLAYSINGLE_CONTROLLER_H_INCLUDED
 
 #include "play_controller.hpp"
+
+#include "cursor.hpp"
 #include "playturn_network_adapter.hpp"
 #include "playturn.hpp"
 #include "replay.hpp"
