@@ -15,8 +15,6 @@
 #ifndef HELP_TEXT_AREA_HPP
 #define HELP_TEXT_AREA_HPP
 
-class display;
-
 #include <list>                         // for list
 #include <string>                       // for string
 #include <utility>                      // for pair

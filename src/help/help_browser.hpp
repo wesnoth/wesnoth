@@ -18,7 +18,7 @@
 #include <deque>                        // for deque
 #include <string>                       // for string
 #include "SDL_events.h"                 // for SDL_Event
-#include "help_impl.hpp"                // for help_menu
+#include "help_menu.hpp"		// for help_menu
 #include "help_text_area.hpp"           // for help_text_area
 #include "widgets/button.hpp"           // for button
 #include "widgets/widget.hpp"           // for widget
