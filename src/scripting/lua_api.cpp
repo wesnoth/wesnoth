@@ -15,23 +15,28 @@
 #include "lua_api.hpp"
 #include "lua_types.hpp"
 
-#include "lua/lualib.h"
 #include "lua/lauxlib.h"
+#include "lua/lua.h"                    // for lua_State, lua_settop, etc
+#include "lua_jailbreak_exception.hpp"  // for tlua_jailbreak_exception
 
+#include "chat_events.hpp"              // for chat_handler, etc
 #include "config.hpp"
 #include "display_chat_manager.hpp"
 #include "game_display.hpp"
 #include "log.hpp"
-#include "recall_list_manager.hpp"
+#include "map_location.hpp"             // for map_location
 #include "resources.hpp"
 #include "tstring.hpp"
 #include "unit.hpp"
 #include "unit_map.hpp"
 #include "variable.hpp"
 
-#include <boost/bind.hpp>
 #include <boost/foreach.hpp>
 #include <boost/variant/static_visitor.hpp>
+#include <map>                          // for map<>::key_type
+#include <new>                          // for operator new
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <utility>                      // for pair
 
 #include <string>
 

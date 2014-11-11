@@ -29,10 +29,15 @@
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
 #include "scripting/lua_api.hpp"
+#include "scripting/lua_types.hpp"      // for gettextKey, tstringKey, etc
+#include "tstring.hpp"                  // for t_string
 #include "variable.hpp" // for vconfig
 
 #include <boost/foreach.hpp>
 #include <cstring>
+#include <iterator>                     // for distance, advance
+#include <new>                          // for operator new
+#include <string>                       // for string, basic_string
 
 namespace lua_common {
 

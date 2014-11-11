@@ -40,9 +40,6 @@
 #include "attack_prediction.hpp"        // for combatant
 #include "config.hpp"                   // for config, etc
 #include "display_chat_manager.hpp"	// for clear_chat_messages
-#include "filesystem.hpp"               // for get_wml_location
-#include "filter_context.hpp"
-#include "font.hpp"                     // for LABEL_COLOR
 #include "game_board.hpp"               // for game_board
 #include "game_classification.hpp"      // for game_classification, etc
 #include "game_config.hpp"              // for debug, base_income, etc
@@ -57,7 +54,6 @@
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
 #include "lua/lauxlib.h"                // for luaL_checkinteger, etc
 #include "lua/lua.h"                    // for lua_setfield, etc
-#include "lua/lualib.h"                 // for luaopen_base, luaopen_debug, etc
 #include "make_enum.hpp"                // for operator<<
 #include "map.hpp"                      // for gamemap
 #include "map_label.hpp"
@@ -76,7 +72,6 @@
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_types.hpp"      // for getunitKey, dlgclbkKey, etc
 #include "sdl/utils.hpp"                // for surface
-#include "serialization/string_utils.hpp"  // for string_map
 #include "side_filter.hpp"              // for side_filter
 #include "sound.hpp"                    // for commit_music_changes, etc
 #include "synced_context.hpp"           // for synced_context, etc
@@ -96,6 +91,7 @@
 #include "unit_types.hpp"    // for unit_type_data, unit_types, etc
 #include "util.hpp"                     // for lexical_cast
 #include "variable.hpp"                 // for vconfig, etc
+#include "variable_info.hpp"
 
 #include <boost/bind.hpp>               // for bind_t, bind
 #include <boost/foreach.hpp>            // for auto_any_base, etc

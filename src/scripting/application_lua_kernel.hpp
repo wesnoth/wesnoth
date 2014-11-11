@@ -18,9 +18,6 @@
 
 #include "scripting/lua_kernel_base.hpp"
 
-#include <cstring>
-#include <string>
-
 class config;
 class game_launcher;
 

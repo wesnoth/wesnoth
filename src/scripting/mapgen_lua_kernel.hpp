@@ -19,7 +19,6 @@
 
 class config;
 
-#include <cstring>
 #include <string>
 
 class mapgen_lua_kernel : public lua_kernel_base {

@@ -28,27 +28,18 @@
 #include "global.hpp"
 
 #include "log.hpp"
-#include "lua/lauxlib.h"
 #include "lua/lua.h"
-#include "lua/lualib.h"
 #include "scripting/lua_api.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_game_launcher.hpp"
 #include "scripting/lua_kernel_base.hpp"
 #include "scripting/lua_types.hpp"
 
-#include "log.hpp"
-#include "lua/lauxlib.h"
-#include "lua/lua.h"
-#include "lua/lualib.h"
-
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"
 #endif
 
-#include "scripting/lua_api.hpp"
-
-#include <cstring>
+#include <ostream>
 #include <string>
 
 

@@ -14,6 +14,9 @@
    See the COPYING file for more details.
 */
 
+#ifndef VARIABLE_INFO_HPP
+#define VARIABLE_INFO_HPP
+
 /** Information on a WML variable. */
 #include <string>
 #include "config.hpp"
@@ -109,3 +112,5 @@ typedef non_const_variable_info_3<variable_info_3_detail::vit_throw_if_not_exist
 	this variable accessor is takes a const reference and is guaranteed to not change the config.
 */
 typedef variable_info_3<variable_info_3_detail::vit_const>                            variable_access_const;
+
+#endif

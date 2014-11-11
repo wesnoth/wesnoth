@@ -28,7 +28,6 @@ namespace ai { class engine_lua; }
 namespace ai { class lua_ai_action_handler; }
 namespace ai { class lua_ai_context; }
 namespace game_events { struct queued_event; }
-struct lua_State;
 
 void extract_preload_scripts(config const &);
 

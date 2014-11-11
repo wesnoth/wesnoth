@@ -19,12 +19,12 @@
 #include "log.hpp"
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
-#include "lua/lualib.h"
 #include "mt_rng.hpp"
 #include "scripting/lua_api.hpp"
 #include "scripting/lua_common.hpp"
 
-#include <cstring>
+#include <new>
+#include <ostream>
 #include <string>
 #include <boost/bind.hpp>
 
