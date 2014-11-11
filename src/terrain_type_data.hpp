@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef DEFINED_TERRAIN_TYPE_DATA
-#define DEFINED_TERRAIN_TYPE_DATA
+#ifndef TERRAIN_TYPE_DATA_HPP_INCLUDED
+#define TERRAIN_TYPE_DATA_HPP_INCLUDED
 
 #include "terrain.hpp"
 

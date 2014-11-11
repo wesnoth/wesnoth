@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef LUA_MAP_GENERATOR_DEFINED
-#define LUA_MAP_GENERATOR_DEFINED
+#ifndef LUA_MAP_GENERATOR_HPP_INCLUDED
+#define LUA_MAP_GENERATOR_HPP_INCLUDED
 
 #include "config.hpp"
 #include "map_generator.hpp"
