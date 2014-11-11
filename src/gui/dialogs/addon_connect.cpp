@@ -21,7 +21,7 @@
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
-#include "help.hpp"
+#include "help/help.hpp"
 
 #include <boost/bind.hpp>
 

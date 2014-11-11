@@ -35,7 +35,7 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/settings.hpp"
-#include "help.hpp"
+#include "help/help.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "wml_separators.hpp"
