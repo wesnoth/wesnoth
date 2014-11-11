@@ -906,6 +906,7 @@ set(wesnoth-main_SRC
 	help/help_impl.cpp
 	help/help_menu.cpp
 	help/help_text_area.cpp
+	help/help_topic_generators.cpp
 	hotkey/hotkey_preferences_display.cpp
 	intro.cpp
 	leader_scroll_dialog.cpp

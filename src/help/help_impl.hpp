@@ -6,16 +6,14 @@
 #include "exceptions.hpp"               // for error
 #include "font.hpp"                     // for line_width, relative_size
 
-#include "SDL_video.h"                  // for SDL_Color, SDL_Surface
 #include <list>                         // for list
 #include <ostream>                      // for operator<<, stringstream, etc
-#include <set>                          // for set
 #include <string>                       // for string, allocator, etc
 #include <utility>                      // for pair, make_pair
 #include <vector>                       // for vector, etc
 #include <boost/shared_ptr.hpp>
+#include <SDL.h>                  // for SDL_Color, SDL_Surface
 
-class CVideo;
 class unit_type;
 class terrain_type_data;
 typedef boost::shared_ptr<terrain_type_data> tdata_cache;
