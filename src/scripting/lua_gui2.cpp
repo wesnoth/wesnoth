@@ -20,6 +20,7 @@
 #include "gui/widgets/listbox.hpp"
 #endif
 
+#include "log.hpp"
 #include "lua/lauxlib.h"                // for luaL_checkinteger, etc
 #include "lua/lua.h"                    // for lua_setfield, etc
 #include "resources.hpp"		// for resources::screen
@@ -28,6 +29,9 @@
 #include "scripting/lua_types.hpp"      // for getunitKey, dlgclbkKey, etc
 
 #include <boost/bind.hpp>
+
+static lg::log_domain log_scripting_lua("scripting/lua");
+#define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
 namespace {
 	struct scoped_dialog
@@ -145,6 +149,12 @@ gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
  */
 int intf_show_dialog(lua_State *L)
 {
+	if (!resources::screen) {
+		ERR_LUA << "Cannot show dialog, the display object is not available.";
+		lua_error(L);
+		return 0;
+	}
+
 	config def_cfg = luaW_checkconfig(L, 1);
 
 	gui2::twindow_builder::tresolution def(def_cfg);
