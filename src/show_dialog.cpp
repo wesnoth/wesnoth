@@ -16,10 +16,14 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "show_dialog.hpp"
+
+#include "construct_dialog.hpp"
 #include "display.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/event/handler.hpp"
 #include "help/help.hpp"
+#include "hotkey/command_executor.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 
