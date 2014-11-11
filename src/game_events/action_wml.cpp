@@ -67,6 +67,7 @@
 
 #include <boost/foreach.hpp>
 #include <boost/assign/list_of.hpp>
+#include <boost/scoped_ptr.hpp>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
