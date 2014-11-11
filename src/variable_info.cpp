@@ -296,7 +296,8 @@ namespace
 /// range_based operations
 namespace {
 
-
+	// as_range_visitor_base wants to partaly specialise from_indexed but nothing else
+	// so we put "everything" else in this base class which is common for both as_range_visitor_base versions.
 	template<const variable_info_type vit, typename THandler>
 	class as_range_visitor_base2
 		: public variable_info_visitor_const<vit, typename THandler::result_type>
@@ -307,28 +308,30 @@ namespace {
 		{
 			return handler_(*state.child_, state.key_, 0, state.child_->child_count(state.key_));
 		}
-		typename as_range_visitor_base2::result_type from_indexed(typename as_range_visitor_base2::param_type state) const
-		{
-			//Ensure we have a config at the given explicit position.
-			get_child_at<vit>(*state.child_, state.key_, state.index_);
-			return this->handler_(*state.child_, state.key_, state.index_, state.index_ + 1);
-		}
 	protected:
 		const THandler& handler_;
 	};
 
+	/// @param THandler a function 
+	///        ( (const-) config& cfg, const std::string& name, int range_begin, int range_end) -> THandler::result_type
+	///        that does the actual work on the range of children of cfg with name name.
 	template<const variable_info_type vit, typename THandler>
 	class as_range_visitor_base
 		: public as_range_visitor_base2<vit, THandler>
 	{
 	public:
 		as_range_visitor_base(const THandler& handler) : as_range_visitor_base2<vit, THandler>(handler) {}
-		//inherit all from as_range_visitor_base2
+
+		typename as_range_visitor_base::result_type from_indexed(typename as_range_visitor_base::param_type state) const
+		{
+			//Ensure we have a config at the given explicit position.
+			get_child_at<vit>(*state.child_, state.key_, state.index_);
+			return this->handler_(*state.child_, state.key_, state.index_, state.index_ + 1);
+		}
 	};
 
 	const config non_empty_const_cfg = config_of("_", config());
 
-	//we cannot partly specialise methods so we are using inheritance.
 	template<typename THandler>
 	class as_range_visitor_base<vit_const, THandler>
 		: public as_range_visitor_base2<vit_const, THandler>
