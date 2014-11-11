@@ -626,7 +626,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 		}
 	}
 
-	const int text_widget_y = dim.y + top_padding + text_and_image_height - (text_and_image_height > 0 ? 6 : 0) + menu_hpadding;
+	const int text_widget_y = dim.y + top_padding + text_and_image_height - 6 + menu_hpadding;
 
 	if(use_textbox) {
 		dim.textbox.x = dim.x + left_padding + text_widget_width - dim.textbox.w;
@@ -677,7 +677,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 	//set the position of any tick boxes. by default, they go right below the menu,
 	//slammed against the right side of the dialog
 	if(extra_buttons_.empty() == false) {
-		int options_y = text_widget_y + top_widgets_height + menu_->height() + button_height_padding + menu_hpadding;
+		int options_y = dim.menu_y + menu_->height() + menu_hpadding + button_height_padding;
 		int options_left_y = options_y;
 		for(button_pool_const_iterator b = button_pool_.begin(); b != button_pool_.end(); ++b) {
 		dialog_button const *const btn = b->first;
