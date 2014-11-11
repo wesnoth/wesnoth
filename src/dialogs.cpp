@@ -30,6 +30,7 @@
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
+#include "help/help_button.hpp"
 #include "language.hpp"
 #include "log.hpp"
 #include "map.hpp"
