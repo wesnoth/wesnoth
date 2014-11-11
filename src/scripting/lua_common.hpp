@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+#ifndef LUA_COMMON_HPP_INCLUDED
+#define LUA_COMMON_HPP_INCLUDED
+
 struct lua_State;
 
 namespace lua_common {
@@ -138,3 +141,4 @@ namespace lua_common {
 		return 0; \
 	}
 
+#endif
