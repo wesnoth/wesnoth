@@ -643,6 +643,8 @@ static void on_replay_error(const std::string& message, bool /*b*/)
 // This allows to perform scripting in WML that will use the same code path as player actions, for example.
 WML_HANDLER_FUNCTION(do_command, /*event_info*/, cfg)
 {
+	//TODO: don't allow this if we are in a whiteboard applied context.
+
 	static const std::set<std::string> allowed_tags = boost::assign::list_of("attack")("move")("recruit")("recall")("disband")("fire_event")("lua_ai");
 
 	const bool is_too_early = resources::gamedata->phase() != game_data::START && resources::gamedata->phase() != game_data::PLAY;

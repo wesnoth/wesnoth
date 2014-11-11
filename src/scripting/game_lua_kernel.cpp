@@ -107,7 +107,6 @@
 #include "unit_types.hpp"    // for unit_type_data, unit_types, etc
 #include "util.hpp"                     // for lexical_cast
 #include "variable.hpp"                 // for vconfig, etc
-#include "version.hpp"                  // for do_version_check, etc
 
 #include <boost/bind.hpp>               // for bind_t, bind
 #include <boost/foreach.hpp>            // for auto_any_base, etc
@@ -152,6 +151,13 @@ void extract_preload_scripts(config const &game_config)
 	}
 	preload_config = game_config.child("game_config");
 }
+
+void LuaKernel::log_error(char const * msg, char const * context)
+{
+	lua_kernel_base::log_error(msg, context);
+	chat_message(context, msg);
+}
+
 
 namespace {
 	/**
@@ -758,157 +764,6 @@ static int intf_set_variable(lua_State *L)
 		ERR_LUA << "invlid variable name in wesnoth.set_veriable" << std::endl;
 	}
 	return 0;
-}
-
-/**
- * Checks if a file exists (not necessarily a Lua script).
- * - Arg 1: string containing the file name.
- * - Ret 1: boolean
- */
-static int intf_have_file(lua_State *L)
-{
-	char const *m = luaL_checkstring(L, 1);
-	std::string p = filesystem::get_wml_location(m);
-	if (p.empty()) { lua_pushboolean(L, false); }
-	else { lua_pushboolean(L, true); }
-	return 1;
-}
-
-class lua_filestream
-{
-public:
-	lua_filestream(const std::string& fname)
-		: pistream_(filesystem::istream_file(fname))
-	{
-		
-	}
-
-	static const char * lua_read_data(lua_State * /*L*/, void *data, size_t *size)
-	{
-		lua_filestream* lfs = static_cast<lua_filestream*>(data);
-		
-		//int startpos = lfs->pistream_->tellg();
-		lfs->pistream_->read(lfs->buff_, LUAL_BUFFERSIZE);
-		//int newpos = lfs->pistream_->tellg();
-		*size = lfs->pistream_->gcount();
-#if 0
-		ERR_LUA << "read bytes from " << startpos << " to " << newpos << " in total " *size << " from steam\n";
-		ERR_LUA << "streamstate beeing " 
-			<< " goodbit:" << lfs->pistream_->good()
-			<< " endoffile:" << lfs->pistream_->eof() 
-			<< " badbit:" <<  lfs->pistream_->bad()
-			<< " failbit:" << lfs->pistream_->fail() << "\n";
-#endif
-		return lfs->buff_;
-	}
-
-	static int lua_loadfile(lua_State *L, const std::string& fname)
-	{
-		lua_filestream lfs(fname);
-		//lua uses '@' to know that this is a file (as opposed to a something as opposed to something loaded via loadstring )
-		std::string chunkname = '@' + fname;
-		LOG_LUA << "starting to read from " << fname << "\n";
-		return  lua_load(L, &lua_filestream::lua_read_data, &lfs, chunkname.c_str(), NULL);
-	}
-private:
-	char buff_[LUAL_BUFFERSIZE];
-	boost::scoped_ptr<std::istream> pistream_;
-};
-
-/**
- * Loads and executes a Lua file.
- * - Arg 1: string containing the file name.
- * - Ret *: values returned by executing the file body.
- */
-static int intf_dofile(lua_State *L)
-{
-	char const *m = luaL_checkstring(L, 1);
-	std::string p = filesystem::get_wml_location(m);
-	if (p.empty())
-		return luaL_argerror(L, 1, "file not found");
-
-	lua_settop(L, 0);
-	
-#if 1 
-	try
-	{
-		if(lua_filestream::lua_loadfile(L, p))
-			return lua_error(L);
-	}
-	catch(const std::exception & ex)
-	{
-		luaL_argerror(L, 1, ex.what());
-	}
-#else
-	//oldcode to be deleted if newcode works
-	if (luaL_loadfile(L, p.c_str()))
-		return lua_error(L);
-#endif
-
-	lua_call(L, 0, LUA_MULTRET);
-	return lua_gettop(L);
-}
-
-/**
- * Loads and executes a Lua file, if there is no corresponding entry in wesnoth.package.
- * Stores the result of the script in wesnoth.package and returns it.
- * - Arg 1: string containing the file name.
- * - Ret 1: value returned by the script.
- */
-static int intf_require(lua_State *L)
-{
-	char const *m = luaL_checkstring(L, 1);
-
-	// Check if there is already an entry.
-
-	luaW_getglobal(L, "wesnoth", NULL); 	// [1:fn 2:wesnoth]
-	lua_pushstring(L, "package"); 		// [1:fn 2:wesnoth 3:"package"]
-	lua_rawget(L, -2); 			// [1:fn 2:wesnoth 3:package]
-	lua_pushvalue(L, 1); 			// [1:fn 2:wesnoth 3:package 4:fn]
-	lua_rawget(L, -2);			// [1:fn 2:wesnoth 3:package 4:nil/file]
-	if (!lua_isnil(L, -1) && !game_config::debug_lua) return 1; // Am I wrong, or this return leaves 4 values on the stack? (neph)
-	lua_pop(L, 1);
-
-
-	std::string p = filesystem::get_wml_location(m);
-	if (p.empty())
-		return luaL_argerror(L, 1, "file not found");
-
-	// Compile the file.
-	
-#if 1 
-	try
-	{
-		if(lua_filestream::lua_loadfile(L, p))
-			throw game::error(lua_tostring(L, -1));
-	}
-	catch(const std::exception & ex)
-	{
-		chat_message("Lua error", ex.what());
-		ERR_LUA << ex.what() << '\n';
-		return 0;
-	}
-#else
-	//oldcode to be deleted if newcode works
-
-	int res = luaL_loadfile(L, p.c_str());
-	if (res)
-	{
-		char const *m = lua_tostring(L, -1);
-		chat_message("Lua error", m);
-		ERR_LUA << m << '\n';
-		return 0;
-	}
-#endif
-
-	// Execute it.
-	if (!luaW_pcall(L, 0, 1)) return 0;
-
-	// Add the return value to the table.
-	lua_pushvalue(L, 1);
-	lua_pushvalue(L, -2);
-	lua_settable(L, -4);
-	return 1;
 }
 
 /**
@@ -2436,27 +2291,6 @@ static int intf_scroll_to_tile(lua_State *L)
 }
 
 /**
- * Compares 2 version strings - which is newer.
- * - Args 1,3: version strings
- * - Arg 2: comparison operator (string)
- * - Ret 1: comparison result
- */
-static int intf_compare_versions(lua_State* L)
-{
-	char const *v1 = luaL_checkstring(L, 1);
-
-	const VERSION_COMP_OP vop = parse_version_op(luaL_checkstring(L, 2));
-	if(vop == OP_INVALID) return luaL_argerror(L, 2, "unknown version comparison operator - allowed are ==, !=, <, <=, > and >=");
-
-	char const *v2 = luaL_checkstring(L, 3);
-
-	const bool result = do_version_check(version_info(v1), vop, version_info(v2));
-	lua_pushboolean(L, result);
-
-	return 1;
-}
-
-/**
  * Selects and highlights the given location on the map.
  * - Args 1,2: location.
  * - Args 3,4: booleans
@@ -3465,13 +3299,11 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "add_modification",         &intf_add_modification         },
 		{ "add_tile_overlay",         &intf_add_tile_overlay         },
 		{ "clear_messages",           &intf_clear_messages           },
-		{ "compare_versions",         &intf_compare_versions         },
 		{ "copy_unit",                &intf_copy_unit                },
 		{ "create_unit",              &intf_create_unit              },
 		{ "debug",                    &intf_debug                    },
 		{ "debug_ai",                 &intf_debug_ai                 },
 		{ "delay",                    &intf_delay                    },
-		{ "dofile",                   &intf_dofile                   },
 		{ "eval_conditional",         &intf_eval_conditional         },
 		{ "extract_unit",             &intf_extract_unit             },
 		{ "find_cost_map",            &intf_find_cost_map            },
@@ -3502,7 +3334,6 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "get_variable",             &intf_get_variable             },
 		{ "get_village_owner",        &intf_get_village_owner        },
 		{ "get_villages",             &intf_get_villages             },
-		{ "have_file",                &intf_have_file                },
 		{ "highlight_hex",            &intf_highlight_hex            },
 		{ "is_enemy",                 &intf_is_enemy                 },
 		{ "lock_view",                &intf_lock_view                },
@@ -3515,7 +3346,6 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "put_recall_unit",          &intf_put_recall_unit          },
 		{ "put_unit",                 &intf_put_unit                 },
 		{ "remove_tile_overlay",      &intf_remove_tile_overlay      },
-		{ "require",                  &intf_require                  },
 		{ "scroll_to_tile",           &intf_scroll_to_tile           },
 		{ "select_hex",               &intf_select_hex               },
 		{ "set_dialog_active",        &intf_set_dialog_active        },
@@ -3530,7 +3360,6 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "show_dialog",              &intf_show_dialog              },
 		{ "simulate_combat",          &intf_simulate_combat          },
 		{ "synchronize_choice",       &intf_synchronize_choice       },
-		{ "textdomain",               &lua_common::intf_textdomain   },
 		{ "tovconfig",                &intf_tovconfig    },
 		{ "transform_unit",           &intf_transform_unit           },
 		{ "unit_ability",             &intf_unit_ability             },
@@ -3540,7 +3369,12 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "view_locked",              &intf_view_locked              },
 		{ NULL, NULL }
 	};
-	luaL_register(L, "wesnoth", callbacks);
+	lua_getglobal(L, "wesnoth");
+	if (!lua_istable(L,-1)) {
+		lua_newtable(L);
+	}
+	luaL_setfuncs(L, callbacks, 0);
+	lua_setglobal(L, "wesnoth");
 
 	// Create the getside metatable.
 	lua_pushlightuserdata(L
@@ -3551,16 +3385,6 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_pushcfunction(L, impl_side_set);
 	lua_setfield(L, -2, "__newindex");
 	lua_pushstring(L, "side");
-	lua_setfield(L, -2, "__metatable");
-	lua_rawset(L, LUA_REGISTRYINDEX);
-
-	// Create the gettext metatable.
-	lua_pushlightuserdata(L
-			, gettextKey);
-	lua_createtable(L, 0, 2);
-	lua_pushcfunction(L, lua_common::impl_gettext);
-	lua_setfield(L, -2, "__call");
-	lua_pushstring(L, "message domain");
 	lua_setfield(L, -2, "__metatable");
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
@@ -3597,20 +3421,6 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_pushcfunction(L, impl_unit_set);
 	lua_setfield(L, -2, "__newindex");
 	lua_pushstring(L, "unit");
-	lua_setfield(L, -2, "__metatable");
-	lua_rawset(L, LUA_REGISTRYINDEX);
-
-	// Create the tstring metatable.
-	lua_pushlightuserdata(L
-			, tstringKey);
-	lua_createtable(L, 0, 4);
-	lua_pushcfunction(L, lua_common::impl_tstring_concat);
-	lua_setfield(L, -2, "__concat");
-	lua_pushcfunction(L, lua_common::impl_tstring_collect);
-	lua_setfield(L, -2, "__gc");
-	lua_pushcfunction(L, lua_common::impl_tstring_tostring);
-	lua_setfield(L, -2, "__tostring");
-	lua_pushstring(L, "translatable string");
 	lua_setfield(L, -2, "__metatable");
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
@@ -3655,12 +3465,6 @@ LuaKernel::LuaKernel(const config &cfg)
 	// Create the ai elements table.
 	ai::lua_ai_context::init(L);
 
-	// Delete dofile and loadfile.
-	lua_pushnil(L);
-	lua_setglobal(L, "dofile");
-	lua_pushnil(L);
-	lua_setglobal(L, "loadfile");
-
 	// Create the game_config variable with its metatable.
 	lua_getglobal(L, "wesnoth");
 	lua_newuserdata(L, 0);
@@ -3687,12 +3491,6 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_setfield(L, -2, "current");
 	lua_pop(L, 1);
 
-	// Create the package table.
-	lua_getglobal(L, "wesnoth");
-	lua_newtable(L);
-	lua_setfield(L, -2, "package");
-	lua_pop(L, 1);
-
 	// Create the wml_actions table.
 	lua_getglobal(L, "wesnoth");
 	lua_newtable(L);
@@ -3716,14 +3514,6 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_setmetatable(L, -2);
 	lua_setfield(L, -2, "theme_items");
 	lua_pop(L, 1);
-
-	// Store the error handler.
-	lua_pushlightuserdata(L
-			, executeKey);
-	lua_getglobal(L, "debug");
-	lua_getfield(L, -1, "traceback");
-	lua_remove(L, -2);
-	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	lua_settop(L, 0);
 }
@@ -3795,10 +3585,10 @@ void LuaKernel::initialize()
 	// Execute the preload scripts.
 	game_config::load_config(preload_config);
 	BOOST_FOREACH(const config &cfg, preload_scripts) {
-		execute(cfg["code"].str().c_str(), 0, 0);
+		run(cfg["code"].str().c_str());
 	}
 	BOOST_FOREACH(const config &cfg, level_.child_range("lua")) {
-		execute(cfg["code"].str().c_str(), 0, 0);
+		run(cfg["code"].str().c_str());
 	}
 
 	load_game();
@@ -3886,8 +3676,7 @@ void LuaKernel::save_game(config &cfg)
 			 * and the extra UMC ones.
 			 */
 			const std::string m = "Tag is already used: [" + i->key + "]";
-			chat_message("Lua error", m);
-			ERR_LUA << m << '\n';
+			log_error(m.c_str());
 			v.erase(i);
 			continue;
 		}
@@ -3979,8 +3768,7 @@ bool LuaKernel::run_filter(char const *name, unit const &u)
 	if(!luaW_getglobal(L, name, NULL))
 	{
 		std::string message = std::string() + "function " + name + " not found";
-		chat_message("Lua SUF Error", message);
-		ERR_LUA << "Lua SUF Error: " << message << std::endl;
+		log_error(message.c_str(), "Lua SUF Error");
 		//we pushed nothing and can safeley return.
 		return false;
 	}
@@ -3997,13 +3785,6 @@ bool LuaKernel::run_filter(char const *name, unit const &u)
 	lua_pop(L, 1);
 	return b;
 }
-
-// This is needed because default args don't work through function pointers
-static int luaW_pcall_default_args(lua_State * L, int a, int b) {
-	return luaW_pcall(L,a,b,false);
-}
-
-pcall_fcn_ptr LuaKernel::pcall_fcn() { return &luaW_pcall_default_args; } //this causes the run() function to use luaW_pcall instead of lua_pcall
 
 ai::lua_ai_context* LuaKernel::create_lua_ai_context(char const *code, ai::engine_lua *engine)
 {
