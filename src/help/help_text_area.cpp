@@ -13,7 +13,22 @@
 */
 
 #include "help_text_area.hpp"
-#include "log.hpp"
+
+#include "config.hpp"                   // for config, etc
+#include "game_config.hpp"              // for debug
+#include "help/help_impl.hpp"           // for parse_error, box_width, etc
+#include "image.hpp"                    // for get_image
+#include "log.hpp"                      // for LOG_STREAM, log_domain, etc
+#include "sdl/rect.hpp"                 // for draw_rectangle, etc
+#include "serialization/parser.hpp"     // for read, write
+#include "util.hpp"                     // for lexical_cast, etc
+#include "video.hpp"                    // for update_rect, CVideo
+
+#include <stddef.h>                     // for NULL
+#include <algorithm>                    // for max, min, find_if
+#include <ostream>                      // for operator<<, stringstream, etc
+#include <vector>                       // for vector, etc
+#include <SDL.h>                        // for TTF_STYLE_BOLD, etc
 
 static lg::log_domain log_display("display");
 #define WRN_DP LOG_STREAM(warn, log_display)

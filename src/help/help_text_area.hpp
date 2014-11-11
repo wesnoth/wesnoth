@@ -17,13 +17,17 @@
 
 class display;
 
-#include "help_impl.hpp"
-#include "widgets/button.hpp"
-#include "widgets/widget.hpp"
-
-#include <deque>
-#include <string>
-#include <SDL.h>
+#include <list>                         // for list
+#include <string>                       // for string
+#include <utility>                      // for pair
+#include "SDL_video.h"                  // for SDL_Color (ptr only), etc
+#include "font.hpp"                     // for NORMAL_COLOR
+#include "sdl/utils.hpp"                // for surface
+#include "widgets/scrollarea.hpp"       // for scrollarea
+class CVideo;
+class config;
+namespace help { struct section; }
+namespace help { struct topic; }
 
 namespace help {
 

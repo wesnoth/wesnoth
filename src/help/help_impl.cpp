@@ -1,40 +1,59 @@
+/*
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+
 #include "help_impl.hpp"
 
-#include "game_config.hpp"
-#include "display.hpp"
-#include "game_config_manager.hpp" //solely to get terrain info from in some circumstances
-#include "game_errors.hpp"
-#include "map.hpp"
-#include "resources.hpp"
-#include "terrain_type_data.hpp"
-#include "widgets/widget.hpp"
+#include "about.hpp"                    // for get_text
+#include "game_config.hpp"              // for debug, menu_contract, etc
+#include "game_preferences.hpp"         // for encountered_terrains, etc
+#include "gettext.hpp"                  // for _, gettext, N_
+#include "hotkey/hotkey_command.hpp"    // for is_scope_active, etc
+#include "language.hpp"                 // for string_table, symbol_table
+#include "log.hpp"                      // for LOG_STREAM, logger, etc
+#include "make_enum.hpp"                // for operator<<
+#include "marked-up_text.hpp"           // for is_cjk_char, word_wrap_text
+#include "movetype.hpp"                 // for movetype, movetype::effects, etc
+#include "race.hpp"                     // for unit_race, etc
+#include "resources.hpp"                // for tod_manager
+#include "serialization/unicode_cast.hpp"  // for unicode_cast
+#include "serialization/unicode_types.hpp"  // for char_t, etc
+#include "sound.hpp"                    // for play_UI_sound
+#include "terrain.hpp"                  // for terrain_type
+#include "terrain_translation.hpp"      // for operator==, t_list, etc
+#include "terrain_type_data.hpp"        // for terrain_type_data, etc
+#include "time_of_day.hpp"              // for time_of_day
+#include "tod_manager.hpp"              // for tod_manager
+#include "tstring.hpp"                  // for t_string, operator<<
+#include "unit_helper.hpp"              // for resistance_color
+#include "unit_types.hpp"               // for unit_type, unit_type_data, etc
+#include "serialization/unicode.hpp"  // for iterator
+#include "wml_separators.hpp"           // for IMG_TEXT_SEPARATOR, etc
 
-#include "about.hpp"
-#include "construct_dialog.hpp"
-#include "display.hpp"
-#include "display_context.hpp"
-#include "exceptions.hpp"
-#include "game_preferences.hpp"
-#include "gettext.hpp"
-#include "gui/dialogs/transient_message.hpp"
-#include "help_impl.hpp"
-#include "hotkey/hotkey_command.hpp"
-#include "language.hpp"
-#include "log.hpp"
-#include "map.hpp"
-#include "marked-up_text.hpp"
-#include "resources.hpp"
-#include "sound.hpp"
-#include "unit.hpp"
-#include "unit_helper.hpp"
-#include "wml_separators.hpp"
-#include "serialization/parser.hpp"
-#include "time_of_day.hpp"
-#include "tod_manager.hpp"
+#include <assert.h>                     // for assert
+#include <stdio.h>                      // for NULL, snprintf
+#include <stdlib.h>                     // for atoi
+#include <algorithm>                    // for sort, find, transform, etc
+#include <boost/foreach.hpp>            // for auto_any_base, etc
+#include <boost/mpl/bool.hpp>           // for bool_
+#include <boost/optional/optional.hpp>  // for optional
+#include <boost/smart_ptr/shared_ptr.hpp>  // for shared_ptr
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <iterator>                     // for back_insert_iterator, etc
+#include <map>                          // for map, etc
+#include <SDL.h>
 
-#include <boost/foreach.hpp>
-
-#include <queue>
+class CVideo;
 
 static lg::log_domain log_display("display");
 #define WRN_DP LOG_STREAM(warn, log_display)

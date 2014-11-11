@@ -20,36 +20,34 @@
 #define GETTEXT_DOMAIN "wesnoth-help"
 
 #include "global.hpp"
-#include "asserts.hpp"
 #include "help.hpp"
 
-#include "about.hpp"
-#include "construct_dialog.hpp"
-#include "display.hpp"
-#include "display_context.hpp"
-#include "exceptions.hpp"
+#include "config.hpp"                   // for config, etc
+#include "display.hpp"                  // for display
+#include "events.hpp"                   // for raise_draw_event, pump, etc
+#include "font.hpp"                     // for relative_size
 #include "game_preferences.hpp"
-#include "gettext.hpp"
+#include "gettext.hpp"                  // for _
 #include "gui/dialogs/transient_message.hpp"
-#include "help_impl.hpp"
-#include "help_browser.hpp"
-#include "hotkey/hotkey_command.hpp"
-#include "language.hpp"
-#include "log.hpp"
-#include "map.hpp"
-#include "marked-up_text.hpp"
-#include "resources.hpp"
-#include "sound.hpp"
-#include "unit.hpp"
-#include "unit_helper.hpp"
-#include "wml_separators.hpp"
-#include "serialization/parser.hpp"
-#include "time_of_day.hpp"
-#include "tod_manager.hpp"
+#include "help_browser.hpp"             // for help_browser
+#include "help_impl.hpp"                // for hidden_symbol, toplevel, etc
+#include "key.hpp"                      // for CKey
+#include "log.hpp"                      // for LOG_STREAM, log_domain
+#include "sdl/utils.hpp"                // for surface
+#include "show_dialog.hpp"              // for dialog_frame, etc
+#include "terrain.hpp"                  // for terrain_type
+#include "unit.hpp"                     // for unit
+#include "unit_types.hpp"               // for unit_type, unit_type_data, etc
+#include "video.hpp"                    // for CVideo, resize_lock
+#include "widgets/button.hpp"           // for button
 
-#include <boost/foreach.hpp>
+#include <assert.h>                     // for assert
+#include <stddef.h>                     // for NULL
+#include <algorithm>                    // for min
+#include <ostream>                      // for basic_ostream, operator<<, etc
+#include <vector>                       // for vector, vector<>::iterator
+#include <SDL.h>
 
-#include <queue>
 
 static lg::log_domain log_display("display");
 #define WRN_DP LOG_STREAM(warn, log_display)

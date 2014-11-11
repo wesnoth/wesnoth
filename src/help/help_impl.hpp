@@ -2,53 +2,38 @@
 #ifndef HELP_IMPL_INCLUDED
 #define HELP_IMPL_INCLUDED
 
-#include "display.hpp"
-#include "game_config_manager.hpp" //solely to get terrain info from in some circumstances
-#include "game_errors.hpp"
-#include "map.hpp"
-#include "resources.hpp"
-#include "terrain_type_data.hpp"
-#include "widgets/widget.hpp"
+#include "config.hpp"                   // for config
+#include "display.hpp"                  // for display
+#include "display_context.hpp"          // for display_context
+#include "exceptions.hpp"               // for error
+#include "font.hpp"                     // for line_width, relative_size
+#include "game_config_manager.hpp"      // for game_config_manager
+#include "image.hpp"                    // for get_image, locator
+#include "map.hpp"                      // for gamemap
+#include "resources.hpp"                // for config_manager
+#include "sdl/utils.hpp"                // for surface, surface_restorer
+#include "serialization/string_utils.hpp"  // for escape
+#include "terrain_type_data.hpp"        // for tdata_cache
+#include "widgets/menu.hpp"             // for menu
 
-#include "about.hpp"
-#include "construct_dialog.hpp"
-#include "display.hpp"
-#include "display_context.hpp"
-#include "exceptions.hpp"
-#include "game_preferences.hpp"
-#include "gettext.hpp"
-#include "gui/dialogs/transient_message.hpp"
-#include "help_impl.hpp"
-#include "hotkey/hotkey_command.hpp"
-#include "language.hpp"
-#include "log.hpp"
-#include "map.hpp"
-#include "marked-up_text.hpp"
-#include "resources.hpp"
-#include "sound.hpp"
-#include "unit.hpp"
-#include "unit_helper.hpp"
-#include "wml_separators.hpp"
-#include "serialization/parser.hpp"
-#include "time_of_day.hpp"
-#include "tod_manager.hpp"
+#include "SDL_video.h"                  // for SDL_Color, SDL_Surface
+#include <string>                       // for strcoll, NULL
+#include <list>                         // for list
+#include <ostream>                      // for operator<<, stringstream, etc
+#include <set>                          // for set
+#include <string>                       // for string, allocator, etc
+#include <utility>                      // for pair, make_pair
+#include <vector>                       // for vector, etc
 
-#include <boost/foreach.hpp>
-
-#include <queue>
-
-
-#include <string>
-#include <vector>
-#include <SDL.h>
+class CVideo;
+class unit_type;
+namespace help { struct section; }  // lines 51-51
 
 namespace help {
 
 /// Generate the help contents from the configurations given to the
 /// manager.
 void generate_contents();
-
-struct section;
 
 typedef std::vector<section *> section_list;
 
