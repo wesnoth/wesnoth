@@ -42,7 +42,7 @@
 #include "../gui/dialogs/transient_message.hpp"
 #include "../gui/dialogs/wml_message.hpp"
 #include "../gui/widgets/window.hpp"
-#include "../help.hpp"
+#include "help/help.hpp"
 #include "../log.hpp"
 #include "../map.hpp"
 #include "../map_exception.hpp"
