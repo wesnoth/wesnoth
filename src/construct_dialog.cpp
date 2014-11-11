@@ -675,7 +675,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 	//set the position of any tick boxes. by default, they go right below the menu,
 	//slammed against the right side of the dialog
 	if(extra_buttons_.empty() == false) {
-		int options_y = text_widget_y + std::max<int>(text_widget_height, top_button_height) + menu_->height() + button_height_padding + menu_hpadding;
+		int options_y = text_widget_y + top_widgets_height + menu_->height() + button_height_padding + menu_hpadding;
 		int options_left_y = options_y;
 		for(button_pool_const_iterator b = button_pool_.begin(); b != button_pool_.end(); ++b) {
 		dialog_button const *const btn = b->first;
