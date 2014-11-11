@@ -33,7 +33,7 @@
 #include "gui/dialogs/title_screen.hpp"  // for ttitle_screen, etc
 #include "gui/dialogs/message.hpp" 	// for show_error_message
 #include "gui/widgets/helper.hpp"       // for init
-#include "help/help.hpp"                     // for help_manager
+#include "help.hpp"                     // for help_manager
 #include "hotkey/command_executor.hpp"  // for basic_handler
 #include "image.hpp"                    // for flush_cache, etc
 #include "loadscreen.hpp"               // for loadscreen, etc

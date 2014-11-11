@@ -17,7 +17,7 @@
 
 #include "font.hpp"
 #include "game_display.hpp"
-#include "help/help.hpp"
+#include "help.hpp"
 #include "marked-up_text.hpp"
 #include "resources.hpp"
 #include "video.hpp"

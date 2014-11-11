@@ -19,7 +19,7 @@
 #include "display.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/event/handler.hpp"
-#include "help/help.hpp"
+#include "help.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 

@@ -50,7 +50,7 @@
 #include "gui/dialogs/unit_create.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "help/help.hpp"
+#include "help.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "map_label.hpp"
