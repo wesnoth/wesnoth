@@ -110,12 +110,14 @@ protected:
 	game_display& disp_;
 	game_display& disp() { return disp_; }
 
+public:
 	/**
 	 * Returns the main game config, as defined by loading the preprocessed WML
 	 * files. Children of this class may need this to obtain, for example, the
 	 * list of available eras.
 	 */
 	const config& game_config() const;
+protected:
 
 	virtual void draw_contents();
 
@@ -124,10 +126,15 @@ protected:
 	virtual void handle_event(const SDL_Event& event);
 	virtual void handle_key_event(const SDL_KeyboardEvent& event);
 
+public:
+	virtual void handle_lua_request(const config & req);
+
+protected:
 	/** Override chat_handler. */
 	void add_chat_message(const time_t& time, const std::string& speaker,
 			int side, const std::string& message,
 			events::chat_handler::MESSAGE_TYPE type=events::chat_handler::MESSAGE_PRIVATE);
+
 	void send_chat_message(const std::string& message, bool allies_only=false);
 
 	/** Process chat messages. */
@@ -186,9 +193,11 @@ protected:
 	void set_user_list(const std::vector<std::string>&, bool silent);
 	void set_user_menu_items(const std::vector<std::string>& list);
 
+public:
 	/** Returns the current gamelist */
 	config& gamelist() { return gamelist_; }
 
+protected:
 	void append_to_title(const std::string& name);
 	const gui::label& title() const;
 
@@ -264,6 +273,8 @@ private:
 		bool           registered;
 		bool operator> (const user_info& b) const;
 	};
+
+	friend class lua_mp_interface;
 };
 
 }

@@ -88,6 +88,11 @@ void application_lua_kernel::call_script(const config & event_cfg) {
 	lua_pushlightuserdata(L	, currentscriptKey);
 	lua_rawget(L, LUA_REGISTRYINDEX); //get the script from the registry, on the top of the stack
 
+	if (lua_type(L, -1) == LUA_TNIL) {
+		WRN_LUA << "Script variable was nil when executing a call." << std::endl;
+		return ;
+	}
+
 	if (lua_type(L, -1) != LUA_TFUNCTION) {
 		WRN_LUA << "Tried to execute script from registry, but did not retrieve a function. Aborting." << std::endl;
 		return ;

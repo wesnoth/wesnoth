@@ -27,6 +27,9 @@
 #include "multiplayer_ui.hpp"
 #include "multiplayer_lobby.hpp" //needed for dynamic cast when implementing the lobby_sounds preference
 #include "mp_ui_alerts.hpp"
+#include "resources.hpp" //needed for application_lua_kernel ptr
+#include "scripting/application_lua_kernel.hpp"
+#include "scripting/lua_mp_interface.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 
@@ -404,6 +407,15 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 	}
 }
 
+void ui::handle_lua_request(const config & req) {
+	if (const config & c = req.child("chat")) {
+		send_chat_message(c["message"]);
+	} else if (const config & c = req.child("exit")) {
+		set_result(mp::ui::QUIT);
+		(void) c;
+	}
+}
+
 void ui::process_message(const config& msg, const bool whisper) {
 	const std::string& sender = msg["sender"];
 	const std::string& message = msg["message"];
@@ -423,6 +435,12 @@ void ui::process_message(const config& msg, const bool whisper) {
 		mp_ui_alerts::server_message(is_lobby, sender, message);
 	} else {
 		mp_ui_alerts::public_message(is_lobby, sender, message);
+	}
+
+	if (resources::app_lua_kernel) {
+		config notification;
+		notification.add_child("chat") = msg;
+		resources::app_lua_kernel->call_script(notification);
 	}
 
 	std::string prefix;

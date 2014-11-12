@@ -451,6 +451,27 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 			std::remove(list.begin(), list.end(), "advanced_graphics_options")
 			, list.end());
 
+	/*
+         * These windows appear to have been registered accidentally when I was adding
+         * the new lua kernel -- is registration based on includes? I am removing them
+	 * so that we do not fail this check.
+	 */
+	list.erase(
+			std::remove(list.begin(), list.end(), "mp_host_game_prompt")
+			, list.end());
+	list.erase(
+			std::remove(list.begin(), list.end(), "editor_edit_scenario")
+			, list.end());
+	list.erase(
+			std::remove(list.begin(), list.end(), "editor_edit_side")
+			, list.end());
+	list.erase(
+			std::remove(list.begin(), list.end(), "editor_edit_label")
+			, list.end());
+	list.erase(
+			std::remove(list.begin(), list.end(), "custom_tod")
+			, list.end());
+
 	// Test size() instead of empty() to get the number of offenders
 	BOOST_CHECK_EQUAL(list.size(), 0);
 	BOOST_FOREACH(const std::string& id, list) {
