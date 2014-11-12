@@ -40,6 +40,7 @@
 #include <boost/scoped_ptr.hpp>
 
 static lg::log_domain log_scripting_lua("scripting/lua");
+#define DBG_LUA LOG_STREAM(debug, log_scripting_lua)
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
@@ -220,15 +221,87 @@ static int intf_compare_versions(lua_State* L)
 	return 1;
 }
 
+/**
+ * Replacement print function -- instead of printing to std::cout, print to the command log.
+ * Intended to be bound to this' command_log at registration time.
+ */
+int lua_kernel_base::intf_print(lua_State* L)
+{
+	DBG_LUA << "intf_print called:\n";
+	size_t nargs = lua_gettop(L);
+
+	for (size_t i = 2; i <= nargs; ++i) { // ignore first argument, since it's the userdata from boost cfunc binding
+		cmd_log_ << lua_tostring(L,i);
+		DBG_LUA << "'" << lua_tostring(L,i) << "'\n";
+	}
+
+	cmd_log_ << "\n";
+	DBG_LUA << "\n";
+
+	lua_pop(L, nargs - 1);
+
+	return 0;
+}
+
+// Make the possibility to push the boost::bind 'ed intf_print onto the lua stack, using a dispatcher to get around the C++ / boost::function aspect of this
+char const * boost_cfunc = "Boost_C_Function";
+
+typedef boost::function<int(lua_State*)> lua_cfunc;
+
+static int intf_boost_cfunc_dispatcher ( lua_State* L )
+{
+	lua_cfunc *f = static_cast<lua_cfunc *> (lua_touserdata(L, 1));
+	int result = (*f)(L);
+	lua_remove(L,1);
+	return result;
+}
+
+static int intf_boost_cfunc_cleanup ( lua_State* L )
+{
+	lua_cfunc * d = static_cast< lua_cfunc *> (luaL_testudata(L, 1, boost_cfunc));
+	if (d == NULL) {
+		ERR_LUA << "boost_cfunc_cleanup called on data of type: " << lua_typename( L, lua_type( L, 1 ) ) << std::endl;
+		ERR_LUA << "This may indicate a memory leak, please report at bugs.wesnoth.org" << std::endl;
+	} else {
+		d->~lua_cfunc();
+	}
+	return 0;
+}
+
+static void register_boost_cfunc_metatable ( lua_State* L )
+{
+	luaL_newmetatable(L, boost_cfunc);
+	lua_pushcfunction(L, intf_boost_cfunc_dispatcher);
+	lua_setfield(L, -2, "__call");
+	lua_pushcfunction(L, intf_boost_cfunc_cleanup);
+	lua_setfield(L, -2, "__gc");
+	lua_pushvalue(L, -1); //make a copy of this table, set it to be its own __index table
+	lua_setfield(L, -2, "__index");
+
+	lua_pop(L, 1);
+}
+
+static void push_boost_cfunc( lua_State* L, const lua_cfunc & f )
+{
+	void * p = lua_newuserdata(L, sizeof(lua_cfunc));
+	luaL_setmetatable(L, boost_cfunc);
+	new (p) lua_cfunc(f);
+}
+
 // End Callback implementations
 
 lua_kernel_base::lua_kernel_base()
  : mState(luaL_newstate())
+ , cmd_log_()
 {
 	lua_State *L = mState;
 
+	cmd_log_ << "Initializing " << my_name() << "...\n";
+
 	// Open safe libraries.
 	// Debug and OS are not, but most of their functions will be disabled below.
+	cmd_log_ << "Adding standard libs...\n";
+
 	static const luaL_Reg safe_libs[] = {
 		{ "",       luaopen_base   },
 		{ "table",  luaopen_table  },
@@ -276,6 +349,8 @@ lua_kernel_base::lua_kernel_base()
 	lua_setglobal(L, "loadfile");
 
 	// Store the error handler.
+	cmd_log_ << "Adding error handler...\n";
+
 	lua_pushlightuserdata(L
 			, executeKey);
 	lua_getglobal(L, "debug");
@@ -285,6 +360,8 @@ lua_kernel_base::lua_kernel_base()
 	lua_pop(L, 1);
 
 	// Create the gettext metatable.
+	cmd_log_ << "Adding gettext metatable...\n";
+
 	lua_pushlightuserdata(L
 			, gettextKey);
 	lua_createtable(L, 0, 2);
@@ -295,6 +372,8 @@ lua_kernel_base::lua_kernel_base()
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	// Create the tstring metatable.
+	cmd_log_ << "Adding tstring metatable...\n";
+
 	lua_pushlightuserdata(L
 			, tstringKey);
 	lua_createtable(L, 0, 4);
@@ -311,6 +390,7 @@ lua_kernel_base::lua_kernel_base()
 	lua_settop(L, 0);
 
 	// Add some callback from the wesnoth lib
+	cmd_log_ << "Registering basic wesnoth API...\n";
 
 	static luaL_Reg const callbacks[] = {
 		{ "compare_versions",         &intf_compare_versions         },
@@ -325,7 +405,6 @@ lua_kernel_base::lua_kernel_base()
 		{ "set_dialog_markup",        &intf_set_dialog_markup        },
 		{ "set_dialog_value",         &intf_set_dialog_value         },
 		{ "show_dialog",              &intf_show_dialog              },
-
 		{ NULL, NULL }
 	};
 
@@ -335,6 +414,18 @@ lua_kernel_base::lua_kernel_base()
 	}
 	luaL_setfuncs(L, callbacks, 0);
 	lua_setglobal(L, "wesnoth");
+
+	// Define the Boost_C_Function metatable ( so we can override print to point to a C++ member function )
+	cmd_log_ << "Adding boost cfunc proxy...\n";
+
+	register_boost_cfunc_metatable(L);
+
+	// Override the print function
+	cmd_log_ << "Redirecting print function...\n";
+
+	lua_cfunc my_print = boost::bind(&lua_kernel_base::intf_print, this, _1);
+	push_boost_cfunc(L, my_print);
+	lua_setglobal(L, "print");
 
 	// Create the package table.
 	lua_getglobal(L, "wesnoth");
@@ -444,16 +535,25 @@ bool lua_kernel_base::load_string(char const * prog, error_handler e_h)
 	return true;
 }
 
-// Call load_string and protected call. Make them throw exceptions, and if we catch one, reformat it with signature for this function and log it.
+// Call load_string and protected call. Make them throw exceptions.
+// 
+void lua_kernel_base::throwing_run(const char * prog) {
+	cmd_log_ << "$ " << prog << "\n";
+	error_handler eh = boost::bind(&lua_kernel_base::throw_exception, this, _1, _2 );
+	load_string(prog, eh);
+	protected_call(0, 0, eh);
+}
+
+// Do a throwing run, but if we catch a lua_error, reformat it with signature for this function and log it.
 void lua_kernel_base::run(const char * prog) {
 	try {
-		error_handler eh = boost::bind(&lua_kernel_base::throw_exception, this, _1, _2 );
-		load_string(prog, eh);
-		protected_call(0, 0, eh);
+		throwing_run(prog);
 	} catch (game::lua_error & e) {
+		cmd_log_ << e.what() << "\n";
 		lua_kernel_base::log_error(e.what(), "In function lua_kernel::run()");
 	}
 }
+
 
 
 /**
@@ -468,4 +568,68 @@ void lua_kernel_base::load_package()
 	lua_pushcfunction(L, luaopen_package);
 	lua_pushstring(L, "package");
 	lua_call(L, 1, 0);
+}
+
+/**
+ * Gets all the global variable names in the Lua environment. This is useful for tab completion.
+ */
+std::vector<std::string> lua_kernel_base::get_global_var_names()
+{
+	std::vector<std::string> ret;
+
+	lua_State *L = mState;
+
+	int idx = lua_gettop(L);
+	lua_getglobal(L, "_G");
+	lua_pushnil(L);
+	
+	while (lua_next(L, idx+1) != 0) {
+		if (lua_isstring(L, -2)) {
+			ret.push_back(lua_tostring(L,-2));
+		}
+		lua_pop(L,1);
+	}
+	lua_settop(L, idx);
+	return ret;
+}
+
+/**
+ * Gets all attribute names of an extended variable name. This is useful for tab completion.
+ */
+std::vector<std::string> lua_kernel_base::get_attribute_names(const std::string & input)
+{
+	std::vector<std::string> ret;
+	std::string var_path = input; // it's convenient to make a copy, even if it's a little slower
+
+	lua_State *L = mState;
+
+	int base = lua_gettop(L);
+	lua_getglobal(L, "_G");
+
+	size_t idx = var_path.find('.');
+	size_t last_dot = 0;
+	while (idx != std::string::npos ) {
+		last_dot += idx + 1; // Since idx was not npos, add it to the "last_dot" idx, so that last_dot keeps track of indices in input string
+		lua_pushstring(L, var_path.substr(0, idx).c_str()); //push the part of the path up to the period
+		lua_rawget(L, -2);
+
+		if (!lua_istable(L,-1) && !lua_isuserdata(L,-1)) {
+			return ret; //if we didn't get a table or userdata we can't proceed
+		}
+
+		var_path = var_path.substr(idx+1); // chop off the part of the path we just dereferenced		
+		idx = var_path.find('.'); // find the next .
+	}
+	
+	std::string prefix = input.substr(0, last_dot);
+
+	lua_pushnil(L);
+	while (lua_next(L, -2) != 0) {
+		if (lua_isstring(L, -2)) {
+			ret.push_back(prefix + lua_tostring(L,-2));
+		}
+		lua_pop(L,1);
+	}
+	lua_settop(L, base);
+	return ret;
 }

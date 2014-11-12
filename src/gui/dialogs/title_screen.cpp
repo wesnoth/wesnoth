@@ -26,6 +26,7 @@
 #include "gui/auxiliary/tips.hpp"
 #include "gui/dialogs/debug_clock.hpp"
 #include "gui/dialogs/language_selection.hpp"
+#include "gui/dialogs/lua_interpreter.hpp"
 //#define DEBUG_TOOLTIP
 #ifdef DEBUG_TOOLTIP
 #include "gui/dialogs/tip.hpp"
@@ -46,6 +47,9 @@
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define WRN_CF LOG_STREAM(warn, log_config)
+
+static lg::log_domain log_general("general");
+#define ERR_GEN LOG_STREAM(err, log_general)
 
 namespace gui2
 {
@@ -188,6 +192,12 @@ static bool fullscreen(CVideo& video)
 	return true;
 }
 
+static bool launch_lua_console(twindow & window)
+{
+	gui2::tlua_interpreter::display(window.video(), gui2::tlua_interpreter::APP);
+	return true;
+}
+
 void ttitle_screen::post_build(CVideo& video, twindow& window)
 {
 	/** @todo Should become a title screen hotkey. */
@@ -258,6 +268,10 @@ void ttitle_screen::post_build(CVideo& video, twindow& window)
 
 	window.register_hotkey(hotkey::HOTKEY_QUIT_GAME,
 						   boost::bind(&hotkey, boost::ref(window), QUIT_GAME));
+
+	window.register_hotkey(
+			hotkey::LUA_CONSOLE,
+			boost::bind(&launch_lua_console, boost::ref(window)));
 }
 
 #ifdef DEBUG_TOOLTIP

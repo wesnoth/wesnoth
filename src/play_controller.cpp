@@ -793,6 +793,7 @@ bool play_controller::can_execute_command(const hotkey::hotkey_command& cmd, int
 	case hotkey::HOTKEY_MINIMAP_DRAW_VILLAGES:
 	case hotkey::HOTKEY_NULL:
 	case hotkey::HOTKEY_SAVE_REPLAY:
+	case hotkey::LUA_CONSOLE:
 		return true;
 
 	// Commands that have some preconditions:

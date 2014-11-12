@@ -2877,6 +2877,8 @@ LuaKernel::LuaKernel(const config &cfg)
 {
 	lua_State *L = mState;
 
+	cmd_log_ << "Registering game-specific wesnoth lib functions...\n";
+
 	// Put some callback functions in the scripting environment.
 	static luaL_Reg const callbacks[] = {
 		{ "add_known_unit",           &intf_add_known_unit           },
@@ -2954,6 +2956,8 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_setglobal(L, "wesnoth");
 
 	// Create the getside metatable.
+	cmd_log_ << "Adding getside metatable...\n";
+
 	lua_pushlightuserdata(L
 			, getsideKey);
 	lua_createtable(L, 0, 3);
@@ -2966,6 +2970,8 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	// Create the gettype metatable.
+	cmd_log_ << "Adding gettype metatable...\n";
+
 	lua_pushlightuserdata(L
 			, gettypeKey);
 	lua_createtable(L, 0, 2);
@@ -2976,6 +2982,8 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	//Create the getrace metatable
+	cmd_log_ << "Adding getrace metatable...\n";
+
 	lua_pushlightuserdata(L
 			, getraceKey);
 	lua_createtable(L, 0, 2);
@@ -2986,6 +2994,8 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	// Create the getunit metatable.
+	cmd_log_ << "Adding getunit metatable...\n";
+
 	lua_pushlightuserdata(L
 			, getunitKey);
 	lua_createtable(L, 0, 5);
@@ -3002,6 +3012,8 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	// Create the unit status metatable.
+	cmd_log_ << "Adding unit status metatable...\n";
+
 	lua_pushlightuserdata(L
 			, ustatusKey);
 	lua_createtable(L, 0, 3);
@@ -3014,6 +3026,8 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	// Create the unit variables metatable.
+	cmd_log_ << "Adding unit variables metatable...\n";
+
 	lua_pushlightuserdata(L
 			, unitvarKey);
 	lua_createtable(L, 0, 3);
@@ -3026,6 +3040,8 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	// Create the vconfig metatable.
+	cmd_log_ << "Adding vconfig metatable...\n";
+
 	lua_pushlightuserdata(L
 			, vconfigKey);
 	lua_createtable(L, 0, 4);
@@ -3040,9 +3056,13 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	// Create the ai elements table.
+	cmd_log_ << "Adding ai elements table...\n";
+
 	ai::lua_ai_context::init(L);
 
 	// Create the game_config variable with its metatable.
+	cmd_log_ << "Adding game_config table...\n";
+
 	lua_getglobal(L, "wesnoth");
 	lua_newuserdata(L, 0);
 	lua_createtable(L, 0, 3);
@@ -3057,6 +3077,8 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_pop(L, 1);
 
 	// Create the current variable with its metatable.
+	cmd_log_ << "Adding wesnoth current table...\n";
+
 	lua_getglobal(L, "wesnoth");
 	lua_newuserdata(L, 0);
 	lua_createtable(L, 0, 2);
@@ -3069,18 +3091,24 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_pop(L, 1);
 
 	// Create the wml_actions table.
+	cmd_log_ << "Adding wml_actions table...\n";
+
 	lua_getglobal(L, "wesnoth");
 	lua_newtable(L);
 	lua_setfield(L, -2, "wml_actions");
 	lua_pop(L, 1);
 
 	// Create the game_events table.
+	cmd_log_ << "Adding game_events table...\n";
+
 	lua_getglobal(L, "wesnoth");
 	lua_newtable(L);
 	lua_setfield(L, -2, "game_events");
 	lua_pop(L, 1);
 
 	// Create the theme_items table.
+	cmd_log_ << "Adding theme_items table...\n";
+
 	lua_getglobal(L, "wesnoth");
 	lua_newtable(L);
 	lua_createtable(L, 0, 2);
@@ -3122,6 +3150,8 @@ void LuaKernel::initialize()
 	lua_pop(L, 2);
 
 	// Create the unit_types table.
+	cmd_log_ << "Adding unit_types table...\n";
+
 	lua_getglobal(L, "wesnoth");
 	lua_pushlightuserdata(L
 			, gettypeKey);
@@ -3140,6 +3170,8 @@ void LuaKernel::initialize()
 	lua_pop(L, 2);
 
 	//Create the races table.
+	cmd_log_ << "Adding races table...\n";
+
 	lua_getglobal(L, "wesnoth");
 	lua_pushlightuserdata(L
 			, getraceKey);
@@ -3160,6 +3192,8 @@ void LuaKernel::initialize()
 	lua_pop(L, 2);
 
 	// Execute the preload scripts.
+	cmd_log_ << "Running preload scripts...\n";
+
 	game_config::load_config(preload_config);
 	BOOST_FOREACH(const config &cfg, preload_scripts) {
 		run(cfg["code"].str().c_str());

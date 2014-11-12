@@ -25,6 +25,8 @@ class mapgen_lua_kernel : public lua_kernel_base {
 public:
 	mapgen_lua_kernel();
 
+	virtual std::string my_name() { return "Mapgen Lua Kernel"; }
+
 	std::string create_map(const char * prog, const config & generator); // throws game::lua_error
 	config create_scenario(const char * prog, const config & generator); // throws game::lua_error
 

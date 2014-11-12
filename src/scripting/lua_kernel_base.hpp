@@ -15,7 +15,10 @@
 #ifndef SCRIPTING_LUA_KERNEL_BASE_HPP
 #define SCRIPTING_LUA_KERNEL_BASE_HPP
 
-#include <string>                       // for string
+#include <ostream>
+#include <sstream>
+#include <string>
+#include <vector>
 #include "utils/boost_function_guarded.hpp"
 
 struct lua_State;
@@ -28,7 +31,19 @@ public:
 	/** Runs a plain script. Doesn't throw lua_error.*/
 	void run(char const *prog);
 
+	/** Runs a plain script, but reports errors by throwing lua_error.*/
+	void throwing_run(char const * prog);
+
 	void load_package();
+
+	std::vector<std::string> get_global_var_names();
+	std::vector<std::string> get_attribute_names(const std::string & var_path);
+
+	virtual std::string my_name() { return "Basic Lua Kernel"; }
+
+	const std::stringstream & get_log() { cmd_log_.log_ << std::flush; return cmd_log_.log_; }
+	void clear_log() { cmd_log_.log_.str(""); cmd_log_.log_.clear(); }
+	void set_external_log( std::ostream * lg ) { cmd_log_.external_log_ = lg; }
 
 	virtual void log_error(char const* msg, char const* context = "Lua error");
 	virtual void throw_exception(char const* msg, char const* context = "Lua error"); //throws game::lua_error
@@ -37,6 +52,33 @@ public:
 
 protected:
 	lua_State *mState;
+
+	struct command_log {
+		std::stringstream log_;
+		std::ostream * external_log_;
+
+		command_log()
+			: log_()
+			, external_log_(NULL)
+		{}
+
+		inline command_log & operator<< (const std::string & str) {
+			log_ << str;
+			if (external_log_) {
+				(*external_log_) << str;
+			}
+			return *this;
+		}
+
+		inline command_log & operator<< (char const* str) {
+			return *this << std::string(str);
+		}
+	};
+
+	command_log cmd_log_;
+
+	// Print text to the command log for this lua kernel. Used as a replacement impl for lua print.
+	int intf_print(lua_State * L);
 
 	// Execute a protected call. Error handler is called in case of an error, using syntax for log_error and throw_exception above. Returns true if successful.
 	bool protected_call(int nArgs, int nRets, error_handler);

@@ -877,6 +877,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/lobby/lobby_info.cpp
 	gui/dialogs/lobby_main.cpp
 	gui/dialogs/lobby_player_info.cpp
+	gui/dialogs/lua_interpreter.cpp
 	gui/dialogs/message.cpp
 	gui/dialogs/mp_alerts_options.cpp
 	gui/dialogs/mp_change_control.cpp

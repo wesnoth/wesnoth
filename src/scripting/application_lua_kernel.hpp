@@ -26,6 +26,8 @@ public:
 	application_lua_kernel();
 	bool initialize(game_launcher* gl);
 
+	virtual std::string my_name() { return "Application Lua Kernel"; }
+
 	static int intf_set_script(lua_State * L); /* Registers a lua function as the current script */
 	void call_script(const config & cfg); /* Call the current script, with config passed as argument */
 };
