@@ -488,7 +488,7 @@ void wait::generate_menu()
 		return;
 
 	std::vector<std::string> details;
-	std::vector<std::string> playerlist;
+	std::set<std::string> playerlist;
 
 	BOOST_FOREACH(const config &sd, get_scenario().child_range("side"))
 	{
@@ -514,7 +514,7 @@ void wait::generate_menu()
 		}
 
 		if(!sd["player_id"].empty())
-			playerlist.push_back(sd["player_id"]);
+			playerlist.insert(sd["player_id"]);
 
 		std::string leader_name;
 		std::string leader_image;
@@ -597,7 +597,7 @@ void wait::generate_menu()
 	// Uses the actual connected player list if we do not have any
 	// "gamelist" user data
 	if (!gamelist().child("user")) {
-		set_user_list(playerlist, true);
+		set_user_list(std::vector<std::string>(playerlist.begin(), playerlist.end()), true);
 	}
 }
 

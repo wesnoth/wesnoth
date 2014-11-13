@@ -953,8 +953,8 @@ config side_engine::new_config() const
 			if (!parent_.params_.saved_game && !cfg_.has_attribute("save_id")) {
 				res["save_id"] = preferences::login() + res["side"].str();
 			}
-
-			res["player_id"] = preferences::login() + res["side"].str();
+			assert(!preferences::login().empty());
+			res["player_id"] = preferences::login();
 			res["current_player"] = preferences::login();
 			description = N_("Anonymous local player");
 
@@ -1003,7 +1003,7 @@ config side_engine::new_config() const
 
 		res["user_description"] = t_string(description, "wesnoth");
 	} else {
-		res["player_id"] = player_id_ + res["side"];
+		res["player_id"] = player_id_;
 		if (!parent_.params_.saved_game && !cfg_.has_attribute("save_id")) {
 			res["save_id"] = player_id_ + res["side"];
 		}
