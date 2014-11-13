@@ -155,8 +155,7 @@ void mouse_action::set_terrain_mouse_overlay(editor_display& disp, const t_trans
 	}
 
 	// Create a transparent surface of the right size.
-	surface image = create_compatible_surface(image_fg, image_fg->w, image_fg->h);
-	sdl::fill_rect(image,NULL,SDL_MapRGBA(image->format,0,0,0, 0));
+	surface image = create_neutral_surface(image_fg->w, image_fg->h);
 
 	// For efficiency the size of the tile is cached.
 	// We assume all tiles are of the same size.
@@ -164,29 +163,34 @@ void mouse_action::set_terrain_mouse_overlay(editor_display& disp, const t_trans
 	// NOTE: when zooming and not moving the mouse, there are glitches.
 	// Since the optimal alpha factor is unknown, it has to be calculated
 	// on the fly, and caching the surfaces makes no sense yet.
-	static const Uint8 alpha = 196;
+	static const fixed_t alpha = 196;
 	static const int size = image_fg->w;
 	static const int half_size = size / 2;
 	static const int quarter_size = size / 4;
 	static const int offset = 2;
 	static const int new_size = half_size - 2;
-	const int zoom = static_cast<int>(size * disp.get_zoom_factor());
 
 	// Blit left side
 	image_fg = scale_surface(image_fg, new_size, new_size);
 	SDL_Rect rcDestLeft = sdl::create_rect(offset, quarter_size, 0, 0);
-	sdl_blit ( image_fg, NULL, image, &rcDestLeft );
+	blit_surface ( image_fg, NULL, image, &rcDestLeft );
 
 	// Blit right side
 	image_bg = scale_surface(image_bg, new_size, new_size);
 	SDL_Rect rcDestRight = sdl::create_rect(half_size, quarter_size, 0, 0);
-	sdl_blit ( image_bg, NULL, image, &rcDestRight );
+	blit_surface ( image_bg, NULL, image, &rcDestRight );
 
 	//apply mask so the overlay is contained within the mouseover hex
 	image = mask_surface(image, image::get_hexmask());
 
-	// Add the alpha factor and scale the image
-	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
+	// Add the alpha factor
+	image = adjust_surface_alpha(image, alpha);
+
+	// scale the image
+	const int zoom = disp.hex_size();
+	if (zoom != game_config::tile_size) {
+		image = scale_surface(image, zoom, zoom);
+	}
 
 	// Set as mouseover
 	disp.set_mouseover_hex_overlay(image);
