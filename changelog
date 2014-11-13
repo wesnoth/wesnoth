@@ -397,6 +397,8 @@ Version 1.13.0-dev:
    * New RNG implementation using boost::mt19937, and boost::random_device for seeds.
      The boost random library is now a build requirement.
    * Add "lua" random map generation
+   * Image path function ~ADJUST_ALPHA added. Takes either a % or an 8-bit integer, and "multiplies"
+     the alpha channel by this.
 
 Version 1.11.11:
  * Add-ons server:
