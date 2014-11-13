@@ -813,7 +813,10 @@ static void convert_old_saves_1_13_0(config& cfg)
 	//If it turns out that this code works well we can delete that code.
 #else
 
-	if(!cfg.has_child("multiplayer") && cfg["campaign_type"] == "scenario") {
+	if(!cfg.has_child("multiplayer")
+			&& cfg["campaign_type"] == "scenario"
+			&& !cfg.child("carryover_sides_start"))
+	{
 		saved_game tmp(cfg);
 		ng::configure_engine eng(tmp);
 		eng.set_default_values();
