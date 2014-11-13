@@ -395,7 +395,7 @@ namespace {
 			}
 			/// variable_as_array_h only uses the template argument (vit_throw_if_not_existent here)
 			/// to determine constness which is always false here
-			return variable_as_array_h<vit_throw_if_not_existent>()(child, key, startindex, datasource_.size());
+			return variable_as_array_h<vit_throw_if_not_existent>()(child, key, startindex, startindex + datasource_.size());
 		}
 	private:
 		std::vector<config>& datasource_;
