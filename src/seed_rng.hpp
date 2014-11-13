@@ -25,6 +25,8 @@
 #include <boost/cstdint.hpp>
 #include <string>
 
+using boost::uint32_t;
+
 #ifndef SEED_RNG_HPP_INCLUDED
 #define SEED_RNG_HPP_INCLUDED
 
