@@ -37,6 +37,9 @@ class LuaKernel : public lua_kernel_base
 
 public:
 	LuaKernel(const config &);
+
+	virtual std::string my_name() { return "Game Lua Kernel"; }
+
 	void initialize();
 	void save_game(config &);
 	void load_game();

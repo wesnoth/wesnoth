@@ -259,6 +259,8 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 
 	{ hotkey::GLOBAL__HELPTIP, "global__helptip", N_("Show Helptip"), false, scope_game | scope_editor | scope_main, "" },
 
+	{ hotkey::LUA_CONSOLE, "global__lua__console", N_("Show Lua Console"), false, scope_game | scope_editor | scope_main, ""},
+
 	//This list item must stay at the end since it is used as terminator for iterating.
 	{ hotkey::HOTKEY_NULL, "null", N_("Unrecognized Command"), true, hotkey::SCOPE_COUNT, "" }
 };

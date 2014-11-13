@@ -17,6 +17,7 @@
 
 #include "boost/foreach.hpp"
 
+#include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -32,6 +33,7 @@
 
 static lg::log_domain log_config("config");
 #define ERR_G  LOG_STREAM(err,   lg::general)
+#define WRN_G  LOG_STREAM(warn,   lg::general)
 #define LOG_G  LOG_STREAM(info,  lg::general)
 #define DBG_G  LOG_STREAM(debug, lg::general)
 #define ERR_CF LOG_STREAM(err,   log_config)
@@ -686,6 +688,13 @@ void execute_command(display& disp, const hotkey_command& command, command_execu
 					throw end_level_exception(QUIT);
 				}
 			}
+			break;
+		}
+		case LUA_CONSOLE: {
+			if (!disp.in_game()) {
+				WRN_G << "caution: attempting to interface console with game lua kernel when we are not in game...\n";
+			}
+			gui2::tlua_interpreter::display(disp.video(), gui2::tlua_interpreter::GAME);
 			break;
 		}
 		default:

@@ -54,6 +54,9 @@ application_lua_kernel::application_lua_kernel()
 
 bool application_lua_kernel::initialize(game_launcher * gl)
 {
+
+	cmd_log_ << "Adding game_launcher...\n"; 
+
 	//if (resources::app_lua_kernel && resources::app_lua_kernel != this) {
 	//	throw "you appear to have multiple application lua kernels, this is bad";
 	//}
