@@ -852,8 +852,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	update_controller_options();
 
 	// Tweak the controllers.
-	if (cfg_["controller"] == "human_ai" ||
-		cfg_["controller"] == "network_ai" ||
+	if (cfg_["controller"] == "network_ai" ||
 		(parent_.state_.classification().campaign_type == game_classification::SCENARIO && cfg_["controller"].blank())) 
 	{
 		cfg_["controller"] = "ai";
