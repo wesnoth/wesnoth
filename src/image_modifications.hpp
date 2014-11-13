@@ -240,6 +240,22 @@ public:
 };
 
 /**
+ * Adjust Alpha (ADJUST_ALPHA) modification
+ */
+class adjust_alpha_modification : public modification
+{
+public:
+	adjust_alpha_modification(fixed_t amount)
+		: amount_(amount)
+	{}
+
+	virtual surface operator()(const surface& src) const;
+
+private:
+	fixed_t amount_;
+};
+
+/**
  * Crop (CROP) modification.
  */
 class crop_modification : public modification

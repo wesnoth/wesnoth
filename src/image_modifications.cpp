@@ -210,6 +210,11 @@ surface wipe_alpha_modification::operator()(const surface& src) const
 	return wipe_alpha(src);
 }
 
+surface adjust_alpha_modification::operator()(const surface & src) const
+{
+	return adjust_surface_alpha(src, amount_);
+}
+
 surface crop_modification::operator()(const surface& src) const
 {
 	SDL_Rect area = slice_;
@@ -749,6 +754,28 @@ REGISTER_MOD_PARSER(PLOT_ALPHA, )
 REGISTER_MOD_PARSER(WIPE_ALPHA, )
 {
 	return new wipe_alpha_modification;
+}
+
+// Adjust Alpha
+REGISTER_MOD_PARSER(ADJUST_ALPHA, args)
+{
+	const std::vector<std::string>& params = utils::split(args, ',');
+
+	if(params.size() != 1) {
+		ERR_DP << "~ADJUST_ALPHA() requires exactly 1 arguments" << std::endl;
+		return NULL;
+	}
+
+	std::string opacity_str = params.at(0);
+
+	const size_t p100_pos = opacity_str.find('%');
+
+	if (p100_pos == std::string::npos) {
+		return new adjust_alpha_modification(lexical_cast_default<fixed_t> (opacity_str));
+	} else {
+		float opacity = lexical_cast_default<float>(opacity_str.substr(0,p100_pos)) / 100.0f;
+		return new adjust_alpha_modification(static_cast<fixed_t> (255 * opacity));
+	}
 }
 
 // Color-shift
