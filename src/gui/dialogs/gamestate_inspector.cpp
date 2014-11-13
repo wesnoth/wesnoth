@@ -18,6 +18,7 @@
 
 #include "gui/auxiliary/find_widget.tpp"
 #include "gui/dialogs/helper.hpp"
+#include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/widgets/button.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
@@ -139,6 +140,7 @@ public:
 	tcontrol* inspect;
 	tcontrol* inspector_name;
 	tbutton* copy_button;
+	tbutton* lua_button;
 
 	static const unsigned int max_inspect_win_len = 20000;
 
@@ -605,6 +607,10 @@ public:
 		desktop::clipboard::copy_to_clipboard(model_.inspect->label(), false);
 	}
 
+	void handle_lua_button_clicked(CVideo & video)
+	{
+		tlua_interpreter::display(video, tlua_interpreter::GAME);
+	}
 
 private:
 	model& model_;
@@ -643,6 +649,10 @@ public:
 		controller_.handle_copy_button_clicked();
 	}
 
+	void handle_lua_button_clicked(twindow& window)
+	{
+		controller_.handle_lua_button_clicked(window.video());
+	}
 
 	void bind(twindow& window)
 	{
@@ -655,6 +665,8 @@ public:
 				= &find_widget<tcontrol>(&window, "inspector_name", false);
 		model_.copy_button
 				= &find_widget<tbutton>(&window, "copy", false);
+		model_.lua_button
+				= &find_widget<tbutton>(&window, "lua", false);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 		connect_signal_notify_modified(
@@ -688,6 +700,13 @@ public:
 				boost::bind(&tgamestate_inspector::view::handle_copy_button_clicked,
 							this,
 							boost::ref(window)));
+
+		connect_signal_mouse_left_click(
+				*model_.lua_button,
+				boost::bind(&tgamestate_inspector::view::handle_lua_button_clicked,
+							this,
+							boost::ref(window)));
+
 		if (!desktop::clipboard::available()) {
 			model_.copy_button->set_active(false);
 			model_.copy_button->set_tooltip(_("Clipboard support not found, contact your packager."));
