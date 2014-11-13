@@ -25,7 +25,10 @@ if [[ "$#" -ne 1 ]]; then
     exit 1;
 fi
 
-rm -r headers-annotated
+if [ -d headers-annotated ]; then
+    rm -r headers-annotated
+fi
+
 cp -fR headers headers-annotated
 cd headers-annotated/
 for file in `find . -name "*.cpp" -type f -print0 | xargs -0`; do
