@@ -26,6 +26,8 @@
 
 #include <boost/foreach.hpp>
 #include <stdlib.h>
+#include <ctime>
+
 static lg::log_domain log_config("config");
 #define LOG_CF LOG_STREAM(info, log_config)
 #define WRN_CF LOG_STREAM(warn, log_config)
@@ -848,6 +850,13 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		// to non-existing controller type.
 		cfg_.remove_attribute("controller");
 	}
+	if(!parent_.params_.saved_game && cfg_["save_id"].str().empty()) {
+		assert(cfg_["id"].empty()); // we already setted "save_id" to "id" if "id" existed.
+		std::ostringstream save_id;
+		//generating a save_id that is unique for this campaign playthrough.
+		save_id << "save_id_" << time(NULL) << "_" << index;
+		cfg_["save_id"] = save_id.str();
+	}
 
 	update_controller_options();
 
@@ -946,9 +955,6 @@ config side_engine::new_config() const
 		case CNTR_NETWORK:
 			break;
 		case CNTR_LOCAL:
-			if (!parent_.params_.saved_game && !cfg_.has_attribute("save_id")) {
-				res["save_id"] = preferences::login() + res["side"].str();
-			}
 			assert(!preferences::login().empty());
 			res["player_id"] = preferences::login();
 			res["current_player"] = preferences::login();
@@ -956,10 +962,6 @@ config side_engine::new_config() const
 			res["user_description"] = t_string(description, "wesnoth");
 			break;
 		case CNTR_COMPUTER: {
-			if (!parent_.params_.saved_game && !cfg_.has_attribute("saved_id")) {
-				res["save_id"] = "ai" + res["side"].str();
-			}
-
 			utils::string_map symbols;
 			if (allow_player_) {
 				const config& ai_cfg =
@@ -999,9 +1001,6 @@ config side_engine::new_config() const
 		} 
 	} else {
 		res["player_id"] = player_id_;
-		if (!parent_.params_.saved_game && !cfg_.has_attribute("save_id")) {
-			res["save_id"] = player_id_ + res["side"];
-		}
 		res["name"] = player_id_;
 	}
 
