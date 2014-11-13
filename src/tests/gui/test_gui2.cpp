@@ -451,6 +451,12 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 			std::remove(list.begin(), list.end(), "advanced_graphics_options")
 			, list.end());
 
+	// No test for this right now
+	list.erase(
+			std::remove(list.begin(), list.end(), "lua_interpreter")
+			, list.end());
+
+
 	// Test size() instead of empty() to get the number of offenders
 	BOOST_CHECK_EQUAL(list.size(), 0);
 	BOOST_FOREACH(const std::string& id, list) {
