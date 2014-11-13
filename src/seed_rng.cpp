@@ -19,6 +19,7 @@
 */
 
 #include "seed_rng.hpp"
+#include <boost/version.hpp>
 
 /*****
   Use preprocessor tests to decide whether to try to include and
