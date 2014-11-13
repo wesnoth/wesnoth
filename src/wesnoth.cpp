@@ -48,6 +48,7 @@
 #include "serialization/parser.hpp"     // for read
 #include "serialization/preprocessor.hpp"  // for preproc_define, etc
 #include "serialization/validator.hpp"  // for strict_validation_enabled
+#include "serialization/unicode_cast.hpp"
 #include "sound.hpp"                    // for commit_music_changes, etc
 #include "statistics.hpp"               // for fresh_stats
 #include "tstring.hpp"                  // for operator==, t_string
