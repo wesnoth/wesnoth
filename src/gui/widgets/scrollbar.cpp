@@ -130,7 +130,7 @@ void tscrollbar_::set_item_position(const unsigned item_position)
 							 ? item_count_ - visible_items_
 							 : item_position;
 
-	item_position_ = ((step_size_ * item_position_) + step_size_ - 1) / step_size_; // round to nearest step size
+	item_position_ = (item_position_ + step_size_ - 1) / step_size_;
 
 	if(all_items_visible()) {
 		item_position_ = 0;
