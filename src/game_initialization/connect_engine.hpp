@@ -141,6 +141,11 @@ public:
 		const int index);
 	~side_engine();
 
+	// An untranslated user_description which is used by other clients
+	// An empty string means the other clients should generate the description on their own
+	// Used by new_config().
+	std::string user_description() const;
+
 	// Creates a config representing this side.
 	config new_config() const;
 

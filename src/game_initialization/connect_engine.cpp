@@ -25,6 +25,7 @@
 #include "tod_manager.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/assign.hpp>
 #include <stdlib.h>
 #include <ctime>
 
@@ -57,6 +58,7 @@ const std::string attributes_to_trim[] = {
 	"gender",
 	"recruit",
 	"extra_recruit",
+	"player_id",
 	"previous_recruits",
 	"controller",
 	"current_player",
@@ -918,6 +920,23 @@ side_engine::~side_engine()
 {
 }
 
+std::string side_engine::user_description() const
+{
+	switch(controller_) 
+	{
+	case CNTR_LOCAL:
+		return N_("Anonymous local player");
+	case CNTR_COMPUTER:
+		if (allow_player_) {
+			return ai::configuration::get_ai_config_for(ai_algorithm_)["description"];
+		} else {
+			return N_("Computer Player");
+		}
+	default:
+		return "";
+	}
+}
+
 config side_engine::new_config() const
 {
 	config res = cfg_;
@@ -943,65 +962,55 @@ config side_engine::new_config() const
 	if (!cfg_.has_attribute("side") || cfg_["side"].to_int() != index_ + 1) {
 		res["side"] = index_ + 1;
 	}
-	// Side's current player is the player which is currently taken that side
+	
+	res["controller"] = controller_names[controller_];
+	
+	std::string desc = user_description();
+	if(!desc.empty()) {
+		res["user_description"] = t_string(desc, "wesnoth");
+		desc = vgettext(
+			"$playername $side", 
+			boost::assign::map_list_of
+				("playername", _(desc.c_str()))
+				("side", res["side"].str())
+		);
+	} else if (!player_id_.empty()) {
+		desc = player_id_;
+	}
+	if(res["name"].str().empty() && !desc.empty()) {
+		res["name"] = desc;
+	} 
+
+	assert(controller_ != CNTR_LAST);
+	if(controller_ == CNTR_COMPUTER && allow_player_) {
+		// Do not import default ai cfg otherwise - all is set by scenario config.
+		res.add_child("ai", ai::configuration::get_ai_config_for(ai_algorithm_));
+	}
+
+	if(controller_ == CNTR_EMPTY) {
+		res["no_leader"] = true;
+	}
+
+	// Side's "current_player" is the player which is currently taken that side
 	// or the one which is reserved to it.
-	res["current_player"] = !player_id_.empty() ? player_id_ :
-		(controller_ == CNTR_RESERVED ? reserved_for_ : "");
-	res["controller"] = (res["current_player"] == preferences::login()) ?
-		"human" : controller_names[controller_];
-	if (player_id_.empty()) {
-		std::string description;
-		switch(controller_) {
-		case CNTR_NETWORK:
-			break;
-		case CNTR_LOCAL:
-			assert(!preferences::login().empty());
-			res["player_id"] = preferences::login();
-			res["current_player"] = preferences::login();
-			description = N_("Anonymous local player");
-			res["user_description"] = t_string(description, "wesnoth");
-			break;
-		case CNTR_COMPUTER: {
-			utils::string_map symbols;
-			if (allow_player_) {
-				const config& ai_cfg =
-					ai::configuration::get_ai_config_for(ai_algorithm_);
-				res.add_child("ai", ai_cfg);
-				symbols["playername"] = ai_cfg["description"];
-			} else {
-				// Do not import default ai cfg here -
-				// all is set by scenario config.
-				symbols["playername"] = _("Computer Player");
-			}
-
-			symbols["side"] = res["side"].str();
-			description = vgettext("$playername $side", symbols);
-			// Clients might not have ai config description availabe,
-			// so give them the description in this attribute.
-			// "user_description" is only used by mp_wait
-			res["user_description"] = description;
-			break;
-		}
-		case CNTR_EMPTY:
-			res["no_leader"] = true;
-
-			break;
-		case CNTR_RESERVED: {
-			//will never be the case during the actual game.
-			break;
-		}
-		case CNTR_LAST:
-		default:
-			assert(false);
-
-			break;
-		} // end switch
-		if(res["name"].str().empty() && !description.empty()) {
-			res["name"] = t_string(description, "wesnoth");
-		} 
-	} else {
+	// "player_id" is the id of the client who controlls that side, 
+	// that always the host for Local players and AIs
+	// any always empty for free/reserved sides or null controlled sides.
+	// especialy you can use !res["player_id"].empty() to check whether a side is already taken.
+	assert(!preferences::login().empty());
+	if(controller_ == CNTR_LOCAL) {
+		res["player_id"] = preferences::login();
+		res["current_player"] = preferences::login();
+	} else if(controller_ == CNTR_RESERVED) {
+		res.remove_attribute("player_id");
+		res["current_player"] = reserved_for_;
+	} else if(controller_ == CNTR_COMPUTER) {
+		//TODO what is teh content of player_id_ here ?
+		res["current_player"] = player_id_;
+		res["player_id"] = preferences::login(); 
+	} else if(!player_id_.empty()) {
 		res["player_id"] = player_id_;
-		res["name"] = player_id_;
+		res["current_player"] = player_id_;
 	}
 
 	res["allow_changes"] = allow_changes_;
