@@ -153,7 +153,7 @@ namespace game_config
 		game_user_arrive = "join.wav",
 		game_user_leave = "leave.wav",
 		party_full_bell = "bell.wav",
-		mp_game_begins = "join.wav";
+		mp_game_begins = "gamestart.ogg";
 
 		const std::string button_press = "button.wav",
 		checkbox_release = "checkbox.wav",
