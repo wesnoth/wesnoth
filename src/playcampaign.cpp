@@ -619,7 +619,8 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 			}
 
 			// If this isn't the last scenario, then save the game
-			if(save_game_after_scenario) {
+			if(save_game_after_scenario//) {
+				&& (io_type == IO_NONE)) { // don't save mp start of scenario, it is broken and disabled in 1.12.0
 
 				// For multiplayer, we want the save
 				// to contain the starting position.
