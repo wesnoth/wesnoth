@@ -17,6 +17,7 @@
 #include "gui/dialogs/lua_interpreter.hpp"
 
 #include "gui/auxiliary/find_widget.tpp"
+#include "gui/dialogs/field.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/settings.hpp"
@@ -105,6 +106,7 @@ void tlua_interpreter::bind(twindow& window)
 	msg_label->set_vertical_scrollbar_mode(tscrollbar_container::always_visible);
 	msg_label->set_label("");
 
+	register_text("text_entry", false, text_entry_, true);
 	text_entry = &find_widget<ttext_box>(&window, "text_entry", false);
 	//text_entry->set_text_changed_callback(
 	//		boost::bind(&view::filter, this, boost::ref(window)));
@@ -223,7 +225,9 @@ void tlua_interpreter::input_keypress_callback(bool& handled,
 	LOG_LUA << "keypress_callback\n";
 	if(key == SDLK_RETURN || key == SDLK_KP_ENTER) {
 		LOG_LUA << "executing...\n";
-		model_->execute(text_entry->get_value());
+		if (model_->execute(text_entry->get_value())) {
+			text_entry->save_to_history();
+		}
 		update_contents();
 		text_entry->set_value("");
 		handled = true;

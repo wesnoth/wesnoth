@@ -63,6 +63,8 @@ private:
 	tscroll_label* msg_label;
 	tbutton* copy_button;
 	ttext_box* text_entry;
+
+	std::string text_entry_;
 };
 
 }
