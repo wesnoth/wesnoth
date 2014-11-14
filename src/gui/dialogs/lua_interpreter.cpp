@@ -20,6 +20,7 @@
 #include "gui/dialogs/field.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
@@ -89,15 +90,6 @@ twindow* tlua_interpreter::build_window(CVideo& video)
 }
 
 
-void tlua_interpreter::pre_show(CVideo& /*video*/, twindow& window)
-{
-	LOG_LUA << "Entering tlua_interpreter::view::pre_show" << std::endl;
-	bind(window);
-	update_contents();
-	//window.invalidate_layout(); // workaround for assertion failure
-	LOG_LUA << "Exiting tlua_interpreter::view::pre_show" << std::endl;
-}
-
 void tlua_interpreter::bind(twindow& window)
 {
 	LOG_LUA << "Entering tlua_interpreter::bind" << std::endl;
@@ -155,7 +147,7 @@ public:
 		log_ << lk.get_log().str() << std::flush;
 		L_.set_external_log(&log_); //register our log to get commands and output from the lua interpreter
 		//DBG_LUA << "recieved:\n" << log_.str() << "\n.\n";
-		
+
 		DBG_LUA << "finished constructing a tlua_interpreter::model\n";
 
 	}
@@ -171,6 +163,7 @@ public:
 	void add_dialog_message(const std::string & msg); //formats a message from the dialog, puts in interpreter log but not lua's log
 
 	std::string get_log() const { return log_.str(); }
+	std::string get_name() const { return L_.my_name(); }
 
 	std::vector<std::string> get_globals() { return L_.get_global_var_names(); }
 	std::vector<std::string> get_attribute_names(const std::string & s) { return L_.get_attribute_names(s); }
@@ -308,6 +301,19 @@ void tlua_interpreter::input_keypress_callback(bool& handled,
 		handled = true;
 		halt = true;
 	}
+}
+
+void tlua_interpreter::pre_show(CVideo& /*video*/, twindow& window)
+{
+	LOG_LUA << "Entering tlua_interpreter::view::pre_show" << std::endl;
+	bind(window);
+
+	tlabel *kernel_type_label = &find_widget<tlabel>(&window, "kernel_type", false);
+	kernel_type_label->set_label(model_->get_name());
+
+	update_contents();
+	//window.invalidate_layout(); // workaround for assertion failure
+	LOG_LUA << "Exiting tlua_interpreter::view::pre_show" << std::endl;
 }
 
 } // end of namespace gui2
