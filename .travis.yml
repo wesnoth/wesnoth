@@ -38,7 +38,6 @@ before_install:
     - if [ "$BUILD" = 3 ]; then export ALTERNATE_CONFIGURATION=true; fi
     - if [ "$BUILD" = 4 ]; then export CXX11=true; fi
     - if [ "$BUILD" = 4 ]; then export CPP_TESTS=false; fi
-    - if [ "$BUILD" = 4 ]; then export NLS=false; fi
 
     - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export STRICT_COMPILATION=false; fi
     - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export EXTRA_FLAGS_RELEASE=""; fi
@@ -46,6 +45,7 @@ before_install:
     - if [ "$CXX" = "g++" ]; then export WML_TESTS=false; fi
     - if [ "$CXX" = "g++" ]; then export PLAY_TEST=false; fi
     - if [ "$CXX" = "g++" ]; then export CHECK_UTF8=false; fi
+    - if [ "$CXX" = "g++" ]; then export NLS=false; fi
     - if [ "$CXX11" = true ]; then export STRICT_COMPILATION=false; fi
 
 install:
