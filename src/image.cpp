@@ -775,6 +775,10 @@ static surface scale_surface_algorithm(const surface & res, int w, int h, gui2::
 			surface xbrz_temp(scale_surface_xbrz(res, std::max(std::min(z_factor,5),1)));
 			return scale_surface_nn(xbrz_temp, w, h);
 		}
+		case gui2::tadvanced_graphics_options::LEGACY_LINEAR:
+		{
+			return scale_surface_legacy(res, w, h);
+		}
 		default:
 			assert(false && "I don't know how to implement this scaling algorithm");
 			throw 42;

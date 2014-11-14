@@ -503,6 +503,137 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 				const int dy = (ysrcint + 1 < src->h) ? src->w : 0;
 
 				Uint8 r,g,b,a;
+				Uint32 rr,gg,bb,aa, temp;
+
+				Uint32 pix[4], bilin[4];
+
+				// This next part is the fixed point
+				// equivalent of "take everything to
+				// the right of the decimal point."
+				// These fundamental weights decide
+				// the contributions from various
+				// input pixels. The labels assume
+				// that the upper left corner of the
+				// screen ("northeast") is 0,0 but the
+				// code should still be consistent if
+				// the graphics origin is actually
+				// somewhere else.
+				//
+				// That is, the bilin array holds the
+				// "geometric" weights. I.E. If I'm scaling
+				// a 2 x 2 block a 10 x 10 block, then for
+				// pixel (2,2) of ouptut, the upper left
+				// pixel should be 10:1 more influential than
+				// the upper right, and also 10:1 more influential
+				// than lower left, and 100:1 more influential
+				// than lower right.
+
+				const fixed_t e = 0x000000FF & xsrc;
+				const fixed_t s = 0x000000FF & ysrc;
+				const fixed_t n = 0xFF - s;
+				const fixed_t w = 0xFF - e;
+
+				pix[0] = *src_word;              // northwest
+				pix[1] = *(src_word + dx);       // northeast
+				pix[2] = *(src_word + dy);       // southwest
+				pix[3] = *(src_word + dx + dy);  // southeast
+
+				bilin[0] = n*w;
+				bilin[1] = n*e;
+				bilin[2] = s*w;
+				bilin[3] = s*e;
+
+				int loc;
+				rr = bb = gg = aa = 0;
+				for (loc=0; loc<4; loc++) {
+				  a = pix[loc] >> 24;
+				  r = pix[loc] >> 16;
+				  g = pix[loc] >> 8;
+				  b = pix[loc] >> 0;
+
+				  //We also have to implement weighting by alpha for the RGB components
+				  //If a unit has some parts solid and some parts translucent,
+				  //i.e. a red cloak but a dark shadow, then when we scale in
+				  //the shadow shouldn't appear to become red at the edges.
+				  //This part also smoothly interpolates between alpha=0 being
+				  //transparent and having no contribution, vs being opaque.
+				  temp = (a * bilin[loc]);
+				  rr += r * temp;
+				  gg += g * temp;
+				  bb += b * temp;
+				  aa += temp;
+				}
+
+				a = aa >> (16); // we average the alphas, they don't get weighted by any other factor besides bilin
+				if (a != 0) {
+					rr /= a;	// finish alpha weighting: divide by sum of alphas
+					gg /= a;
+					bb /= a;
+				}
+				r = rr >> (16); // now shift over by 16 for the bilin part, 8
+				g = gg >> (16);
+				b = bb >> (16);
+				*dst_word = (a << 24) + (r << 16) + (g << 8) + b;
+			}
+		}
+	}
+
+	return optimize ? create_optimized_surface(dst) : dst;
+}
+
+// NOTE: Don't pass this function 0 scaling arguments.
+surface scale_surface_legacy(const surface &surf, int w, int h, bool optimize)
+{
+	// Since SDL version 1.1.5 0 is transparent, before 255 was transparent.
+	assert(SDL_ALPHA_TRANSPARENT==0);
+
+	if(surf == NULL)
+		return NULL;
+
+	if(w == surf->w && h == surf->h) {
+		return surf;
+	}
+	assert(w >= 0);
+	assert(h >= 0);
+
+	surface dst(create_neutral_surface(w,h));
+
+	if (w == 0 || h ==0) {
+		std::cerr << "Create an empty image\n";
+		return create_optimized_surface(dst);
+	}
+
+	surface src(make_neutral_surface(surf));
+	// Now both surfaces are always in the "neutral" pixel format
+
+	if(src == NULL || dst == NULL) {
+		std::cerr << "Could not create surface to scale onto\n";
+		return NULL;
+	}
+
+	{
+		const_surface_lock src_lock(src);
+		surface_lock dst_lock(dst);
+
+		const Uint32* const src_pixels = src_lock.pixels();
+		Uint32* const dst_pixels = dst_lock.pixels();
+
+		fixed_t xratio = fxpdiv(surf->w,w);
+		fixed_t yratio = fxpdiv(surf->h,h);
+
+		fixed_t ysrc = ftofxp(0.0);
+		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
+			fixed_t xsrc = ftofxp(0.0);
+			for(int xdst = 0; xdst != w; ++xdst, xsrc += xratio) {
+				const int xsrcint = fxptoi(xsrc);
+				const int ysrcint = fxptoi(ysrc);
+
+				const Uint32* const src_word = src_pixels + ysrcint*src->w + xsrcint;
+				Uint32* const dst_word = dst_pixels +    ydst*dst->w + xdst;
+				const int dx = (xsrcint + 1 < src->w) ? 1 : 0;
+				const int dy = (ysrcint + 1 < src->h) ? src->w : 0;
+
+				Uint8 r,g,b,a;
 				Uint32 rr,gg,bb,aa;
 				Uint16 avg_r, avg_g, avg_b, avg_a;
 				Uint32 pix[4], bilin[4];
@@ -568,6 +699,19 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 				// Some of the input images are hex tiles,
 				// created using a hexagon shaped alpha channel
 				// that is either set to full-on or full-off.
+				//
+				// If intermediate alpha values are introduced
+				// along a hex edge, it produces a gametime artifact.
+				// Moving the mouse around will leave behind
+				// "hexagon halos" from the temporary highlighting.
+				// In other words, the Wesnoth rendering engine
+				// freaks out.
+				//
+				// The alpha thresholding step attempts
+				// to accommodates this limitation.
+				// There is a small loss of quality.
+				// For example, skeleton bowstrings
+				// are not as good as they could be.
 
 				rr = gg = bb = aa = 0;
 				for (loc=0; loc<4; loc++) {
@@ -589,6 +733,7 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 				g = gg >> 16;
 				b = bb >> 16;
 				a = aa >> 16;
+				a = (a < avg_a/2) ? 0 : avg_a;
 				*dst_word = (a << 24) + (r << 16) + (g << 8) + b;
 			}
 		}

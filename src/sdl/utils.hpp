@@ -193,6 +193,19 @@ surface scale_surface_nn(const surface & surf, int w, int h);
  */
 surface scale_surface(const surface &surf, int w, int h, bool optimize=true);
 
+/** Scale a surface (legacy (1.10, 1.12) version)
+ *  @param surf              The source surface.
+ *  @param w                 The width of the resulting surface.
+ *  @param h                 The height of the resulting surface.
+ *  @param optimize          Should the return surface be RLE optimized.
+ *  @return                  A surface containing the scaled version of the source.
+ *  @retval 0                Returned upon error.
+ *  @retval surf             Returned if w == surf->w and h == surf->h
+ *                           note this ignores the optimize flag.
+ */
+surface scale_surface_legacy(const surface &surf, int w, int h, bool optimize=true);
+
+
 /** Scale a surface using modified nearest neighbour algorithm. Use only if
  * preserving sharp edges is a priority (e.g. minimap).
  *  @param surf              The source surface.
