@@ -327,8 +327,7 @@ bool game::take_side(const player_map::const_iterator user)
 	const simple_wml::node::child_list& sides = get_sides_list();
 	for(simple_wml::node::child_list::const_iterator side = sides.begin(); side != sides.end(); ++side) {
 		if(((**side)["controller"] == "network" || (**side)["controller"] == "reserved")
-				&& ((**side)["save_id"] == user->second.name().c_str()
-				|| (**side)["current_player"] == user->second.name().c_str()))
+				&& (**side)["current_player"] == user->second.name().c_str())
 		{
 			if (send_taken_side(cfg, side)) return true;
 		}
