@@ -157,7 +157,7 @@ namespace game_config
 		game_user_arrive = "join.wav",
 		game_user_leave = "leave.wav",
 		ready_for_start = "bell.wav",
-		game_has_begun = "join.wav";
+		game_has_begun = "gamestart.ogg";
 
 		const std::string button_press = "button.wav",
 		checkbox_release = "checkbox.wav",
