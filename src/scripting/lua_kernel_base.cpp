@@ -487,15 +487,15 @@ bool lua_kernel_base::protected_call(int nArgs, int nRets, error_handler e_h)
 
 		std::string context = "When executing, ";
 		if (errcode == LUA_ERRRUN) {
-			context += "Lua runtime error: ";
+			context += "Lua runtime error";
 		} else if (errcode == LUA_ERRERR) {
-			context += "Lua error in attached debugger: ";
+			context += "Lua error in attached debugger";
 		} else if (errcode == LUA_ERRMEM) {
-			context += "Lua out of memory error: ";
+			context += "Lua out of memory error";
 		} else if (errcode == LUA_ERRGCMM) {
-			context += "Lua error in garbage collection metamethod: ";
+			context += "Lua error in garbage collection metamethod";
 		} else {
-			context += "unknown lua error: ";
+			context += "unknown lua error";
 		}
 
 		lua_pop(mState, 1);
@@ -517,13 +517,13 @@ bool lua_kernel_base::load_string(char const * prog, error_handler e_h)
 		std::string context = "When parsing a string to lua, ";
 
 		if (errcode == LUA_ERRSYNTAX) {
-			msg += " a syntax error: ";
+			context += " a syntax error";
 		} else if(errcode == LUA_ERRMEM){
-			msg += " a memory error: ";
+			context += " a memory error";
 		} else if(errcode == LUA_ERRGCMM) {
-			msg += " an error in garbage collection metamethod: ";
+			context += " an error in garbage collection metamethod";
 		} else {
-			msg += " an unknown error: ";
+			context += " an unknown error";
 		}
 
 		lua_pop(mState, 1);

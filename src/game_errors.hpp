@@ -52,7 +52,7 @@ struct game_error : public error {
  */
 struct lua_error : public error {
 	lua_error(const std::string& msg) : error("lua_error: " + msg) {}
-	lua_error(const std::string& msg, const std::string& context) : error(context + ": " + msg) {}
+	lua_error(const std::string& msg, const std::string& context) : error(context + ":\n  " + msg) {}
 };
 
 /**
