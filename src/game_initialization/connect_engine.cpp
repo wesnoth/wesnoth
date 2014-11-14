@@ -925,7 +925,7 @@ std::string side_engine::user_description() const
 	switch(controller_) 
 	{
 	case CNTR_LOCAL:
-		return N_("Anonymous local player");
+		return N_("Anonymous player");
 	case CNTR_COMPUTER:
 		if (allow_player_) {
 			return ai::configuration::get_ai_config_for(ai_algorithm_)["description"];
