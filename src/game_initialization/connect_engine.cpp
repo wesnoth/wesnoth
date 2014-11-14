@@ -26,6 +26,8 @@
 
 #include <boost/foreach.hpp>
 #include <stdlib.h>
+#include <ctime>
+
 static lg::log_domain log_config("config");
 #define LOG_CF LOG_STREAM(info, log_config)
 #define WRN_CF LOG_STREAM(warn, log_config)
@@ -848,12 +850,18 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		// to non-existing controller type.
 		cfg_.remove_attribute("controller");
 	}
+	if(!parent_.params_.saved_game && cfg_["save_id"].str().empty()) {
+		assert(cfg_["id"].empty()); // we already setted "save_id" to "id" if "id" existed.
+		std::ostringstream save_id;
+		//generating a save_id that is unique for this campaign playthrough.
+		save_id << "save_id_" << time(NULL) << "_" << index;
+		cfg_["save_id"] = save_id.str();
+	}
 
 	update_controller_options();
 
 	// Tweak the controllers.
-	if (cfg_["controller"] == "human_ai" ||
-		cfg_["controller"] == "network_ai" ||
+	if (cfg_["controller"] == "network_ai" ||
 		(parent_.state_.classification().campaign_type == game_classification::SCENARIO && cfg_["controller"].blank())) 
 	{
 		cfg_["controller"] = "ai";
@@ -941,29 +949,19 @@ config side_engine::new_config() const
 		(controller_ == CNTR_RESERVED ? reserved_for_ : "");
 	res["controller"] = (res["current_player"] == preferences::login()) ?
 		"human" : controller_names[controller_];
-
 	if (player_id_.empty()) {
 		std::string description;
 		switch(controller_) {
 		case CNTR_NETWORK:
-			description = N_("(Vacant slot)");
-
 			break;
 		case CNTR_LOCAL:
-			if (!parent_.params_.saved_game && !cfg_.has_attribute("save_id")) {
-				res["save_id"] = preferences::login() + res["side"].str();
-			}
 			assert(!preferences::login().empty());
 			res["player_id"] = preferences::login();
 			res["current_player"] = preferences::login();
 			description = N_("Anonymous local player");
-
+			res["user_description"] = t_string(description, "wesnoth");
 			break;
 		case CNTR_COMPUTER: {
-			if (!parent_.params_.saved_game && !cfg_.has_attribute("saved_id")) {
-				res["save_id"] = "ai" + res["side"].str();
-			}
-
 			utils::string_map symbols;
 			if (allow_player_) {
 				const config& ai_cfg =
@@ -978,39 +976,34 @@ config side_engine::new_config() const
 
 			symbols["side"] = res["side"].str();
 			description = vgettext("$playername $side", symbols);
-
+			// Clients might not have ai config description availabe,
+			// so give them the description in this attribute.
+			// "user_description" is only used by mp_wait
+			res["user_description"] = description;
 			break;
 		}
 		case CNTR_EMPTY:
-			description = N_("(Empty slot)");
 			res["no_leader"] = true;
 
 			break;
 		case CNTR_RESERVED: {
-			utils::string_map symbols;
-			symbols["playername"] = reserved_for_;
-			description = vgettext("(Reserved for $playername)",symbols);
-
+			//will never be the case during the actual game.
 			break;
 		}
 		case CNTR_LAST:
 		default:
-			description = N_("(empty)");
 			assert(false);
 
 			break;
 		} // end switch
-
-		res["user_description"] = t_string(description, "wesnoth");
+		if(res["name"].str().empty() && !description.empty()) {
+			res["name"] = t_string(description, "wesnoth");
+		} 
 	} else {
 		res["player_id"] = player_id_;
-		if (!parent_.params_.saved_game && !cfg_.has_attribute("save_id")) {
-			res["save_id"] = player_id_ + res["side"];
-		}
-		res["user_description"] = player_id_;
+		res["name"] = player_id_;
 	}
 
-	res["name"] = res["user_description"];
 	res["allow_changes"] = allow_changes_;
 	res["chose_random"] = chose_random_;
 
