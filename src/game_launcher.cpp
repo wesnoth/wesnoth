@@ -307,6 +307,11 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	else if (no_music) { // else disable the music in nomusic mode
 		preferences::set_music(false);
 	}
+
+	// This isn't always needed right now but it allows to help debug the lua console even if you don't have a script file local.
+	// Eventually it will be needed for plugins to work.
+	resources::app_lua_kernel = new application_lua_kernel();
+	resources::app_lua_kernel->initialize(this);
 }
 
 game_display& game_launcher::disp()
@@ -446,11 +451,6 @@ bool game_launcher::init_video()
 
 bool game_launcher::init_lua_script()
 {
-	// This isn't always needed right now but it allows to help debug the lua console even if you don't have a script file local.
-	// Eventually it will be needed for plugins to work.
-	resources::app_lua_kernel = new application_lua_kernel();
-	resources::app_lua_kernel->initialize(this);
-
 	// start the application lua kernel, register it in resources, and load script file, if script file is present
 	if (cmdline_opts_.script_file)
 	{
