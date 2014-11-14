@@ -388,28 +388,24 @@ void game::update_side_data() {
 			if (side_num < 0 || side_num >= gamemap::MAX_PLAYERS
 					|| sides_[side_num] != 0) continue;
 
-			if ((**side)["controller"] == "network") {
-				if ((**side)["current_player"] == info->second.name().c_str()) {
-					side_controllers_[side_num] = "human";
-					sides_[side_num] = *user;
-					side_found = true;
+			const simple_wml::string_span& player_id = (**side)["player_id"];
+			const simple_wml::string_span& controller = (**side)["controller"];
+			if ( player_id == info->second.name().c_str()) {
+				//if this is called before perform_controller_tweaks() we have "ai" and "human" controllers
+				//if its called after that we have "network" and "network_ai" controllers.
+				if(controller != "network" && controller != "human" && controller != "ai" && controller != "network_ai") {
+					//we found invalid [side] data. Some message would be cool.
+					continue;
 				}
-			} else if (*user == owner_) {
-				if ((**side)["controller"] == "ai" || (**side)["controller"] == "human") {
-					side_controllers_[side_num] = (**side)["controller"].to_string();
-					sides_[side_num] = owner_;
-					side_found = true;
-				} else if ((**side)["controller"] == "network_ai") {
-					side_controllers_[side_num] = "ai"; //on server this field should only contain "ai" for ais. (there are no ais local to server)
-					sides_[side_num] = owner_;
-					side_found = true;
-				} else {
-					// "null"
-					side_controllers_[side_num] = (**side)["controller"].to_string();
-				}
-			} else {
-				// "reserved"
-				side_controllers_[side_num] = (**side)["controller"].to_string();
+				//convert "network_ai" -> "ai", "network" -> "human"
+				side_controllers_[side_num] = controller == "network" ? "human" : controller == "network_ai" ? "ai" : controller.to_string();
+				sides_[side_num] = *user;
+				side_found = true;
+			}
+			else if (*user == owner_ && (controller == "null" || controller == "reserved")) {
+				//the *user == owner_ check has no effect, 
+				//it's just an optimisation so that we only do this once.
+				side_controllers_[side_num] = controller.to_string();
 			}
 		}
 		if (side_found) {
