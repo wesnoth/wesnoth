@@ -500,13 +500,13 @@ static std::string generate_user_description(const config& side)
 	else if (controller_type == "null") {
 		return _("(Empty slot)");
 	}
-	else if(owner.empty()) {
-		return _("(Vacant slot)");
-	}
 	else if (controller_type == "reserved") {
 		utils::string_map symbols;
 		symbols["playername"] = reservation;
 		return vgettext("(Reserved for $playername)",symbols);
+	}
+	else if(owner.empty()) {
+		return _("(Vacant slot)");
 	}
 	else if (controller_type == "human" || controller_type == "network") {
 		return owner;
