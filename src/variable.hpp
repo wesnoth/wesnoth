@@ -74,7 +74,7 @@ public:
 	operator safe_bool() const	{ return !null() ? &safe_bool_impl::nonnull : NULL; }
 #endif
 
-	bool null() const { return cfg_ == NULL; }
+	bool null() const { assert(cfg_); return cfg_ == &default_empty_config; }
 	void make_safe() const; //!< instruct the vconfig to make a private copy of its underlying data.
 	const config& get_config() const { return *cfg_; }
 	config get_parsed_config() const;
@@ -163,6 +163,7 @@ private:
 	mutable boost::shared_ptr<const config> cache_;
 	/// Used to access our config (original or copy, as appropriate).
 	mutable const config* cfg_;
+	static const config default_empty_config;
 };
 
 struct vconfig::all_children_iterator::pointer_proxy

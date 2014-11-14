@@ -57,9 +57,12 @@ namespace
 		}
 	}
 }
-	
+
+const config vconfig::default_empty_config = config();
+
+
 vconfig::vconfig() :
-	cache_(), cfg_(NULL)
+	cache_(), cfg_(&default_empty_config)
 {
 }
 
