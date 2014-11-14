@@ -570,7 +570,7 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 					gg /= a;
 					bb /= a;
 				}
-				r = rr >> (16); // now shift over by 16 for the bilin part, 8
+				r = rr >> (16); // now shift over by 16 for the bilin part
 				g = gg >> (16);
 				b = bb >> (16);
 				*dst_word = (a << 24) + (r << 16) + (g << 8) + b;
