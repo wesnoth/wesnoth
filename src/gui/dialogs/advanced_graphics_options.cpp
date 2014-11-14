@@ -106,6 +106,8 @@ void tadvanced_graphics_options::scale_button_callback(std::string pref_id, SCAL
 		ttoggle_button * b = &find_widget<ttoggle_button>(&window, pref_id + "_" + SCALING_ALGORITHM_to_string(static_cast<SCALING_ALGORITHM>(x)), false);
 		b->set_value(x == me);
 	}
+
+	image::update_from_preferences();
 }
 
 void tadvanced_graphics_options::setup_scale_case(const std::string & i, twindow & window)

@@ -42,6 +42,7 @@
 
 #include "SDL_image.h"
 
+#include <boost/bind.hpp>
 #include <boost/functional/hash.hpp>
 #include <boost/foreach.hpp>
 
@@ -171,6 +172,11 @@ std::vector<std::string> team_colors;
 
 int zoom = tile_size;
 int cached_zoom = 0;
+
+/** Algorithm choices */
+typedef boost::function<surface(const surface &, int, int)> scaling_function;
+scaling_function scale_to_zoom_func;
+scaling_function scale_to_hex_func;
 
 } // end anon namespace
 
@@ -801,12 +807,7 @@ static surface get_scaled_to_hex(const locator& i_locator)
 	//return scale_surface(img, zoom, zoom);
 
 	if (!img.null()) {
-		gui2::tadvanced_graphics_options::SCALING_ALGORITHM algo = gui2::tadvanced_graphics_options::LINEAR;
-		try {
-			algo = gui2::tadvanced_graphics_options::string_to_SCALING_ALGORITHM(preferences::get("scale_hex"));
-		} catch (bad_enum_cast &) {}
-
-		return scale_surface_algorithm(img, zoom, zoom, algo);
+		return scale_to_hex_func(img, zoom, zoom);
 	} else {
 		return surface(NULL);
 	}
@@ -826,12 +827,7 @@ static surface get_scaled_to_zoom(const locator& i_locator)
 	surface res(get_image(i_locator, UNSCALED));
 	// For some reason haloes seems to have invalid images, protect against crashing
 	if(!res.null()) {
-		gui2::tadvanced_graphics_options::SCALING_ALGORITHM algo = gui2::tadvanced_graphics_options::LINEAR;
-		try {
-			algo = gui2::tadvanced_graphics_options::string_to_SCALING_ALGORITHM(preferences::get("scale_zoom"));
-		} catch (bad_enum_cast &) {}
-
-		return scale_surface_algorithm(res, ((res.get()->w * zoom) / tile_size), ((res.get()->h * zoom) / tile_size), algo);
+		return scale_to_zoom_func(res, ((res.get()->w * zoom) / tile_size), ((res.get()->h * zoom) / tile_size));
 	} else {
 		return surface(NULL);
 	}
@@ -1296,6 +1292,25 @@ std::string describe_versions()
 #endif
 
 	return ss.str();
+}
+
+bool update_from_preferences()
+{
+	gui2::tadvanced_graphics_options::SCALING_ALGORITHM algo = gui2::tadvanced_graphics_options::LINEAR;
+	try {
+		algo = gui2::tadvanced_graphics_options::string_to_SCALING_ALGORITHM(preferences::get("scale_hex"));
+	} catch (bad_enum_cast &) {}
+
+	scale_to_hex_func = boost::bind(& scale_surface_algorithm, _1, _2, _3, algo);
+
+	algo = gui2::tadvanced_graphics_options::LINEAR;
+	try {
+		algo = gui2::tadvanced_graphics_options::string_to_SCALING_ALGORITHM(preferences::get("scale_zoom"));
+	} catch (bad_enum_cast &) {}
+
+	scale_to_zoom_func = boost::bind(& scale_surface_algorithm, _1, _2, _3, algo);
+
+	return true;
 }
 
 } // end namespace image
