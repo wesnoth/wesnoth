@@ -2479,18 +2479,20 @@ void server::process_data_game(const network::connection sock,
 			return;
 		}
 		g->save_replay();
-		size_t nsides = 0;
-		const simple_wml::node::child_list& sides = wesnothd::game::starting_pos(*scenario)->children("side");
-		for (simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
-	        	++nsides;
-		}
-		if (nsides > gamemap::MAX_PLAYERS) {
-			delete_game(itor);
-			std::stringstream msg;
-			msg << "This server does not support games with more than "
-				<< gamemap::MAX_PLAYERS << " sides.";
-			rooms_.lobby().send_server_message(msg.str(), sock);
-			return;
+		{
+			size_t nsides = 0;
+			const simple_wml::node::child_list& sides = wesnothd::game::starting_pos(*scenario)->children("side");
+			for (simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
+				++nsides;
+			}
+			if (nsides > gamemap::MAX_PLAYERS) {
+				delete_game(itor);
+				std::stringstream msg;
+				msg << "This server does not support games with more than "
+					<< gamemap::MAX_PLAYERS << " sides.";
+				rooms_.lobby().send_server_message(msg.str(), sock);
+				return;
+			}
 		}
 		// Record the full scenario in g->level()
 		g->level().clear();
