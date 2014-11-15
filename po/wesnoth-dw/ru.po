@@ -1,19 +1,20 @@
 # O_o <mm-94@mail.ru>, 2010.
+# Fedor Khodkov <fkhodkov@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-01-04 20:07+0100\n"
-"PO-Revision-Date: 2012-04-06 16:05+0400\n"
+"PO-Revision-Date: 2014-11-11 12:09+0300\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
-"Language-Team: ZumZoom\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Virtaal 0.6.1\n"
+"X-Generator: Emacs 24.3.1, po-mode 2.22+0.4\n"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:11
@@ -107,7 +108,7 @@ msgstr "Дополнительная графика"
 #. [lua]
 #: data/campaigns/Dead_Water/_main.cfg:85
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
+msgstr "ошеломлен: Этот боец ошеломлен. Он не держит свою зону контроля."
 
 #. [scenario]: id=01_Invasion
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:36
@@ -1064,16 +1065,12 @@ msgstr "Отважный и добрый выбор! Я терпеть не мо
 #. 'words of a human' here; it signifies rather 'words of a
 #. moral adult' as opposed to a child or dependant.
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:382
-#, fuzzy
-#| msgid ""
-#| "Those were the words of a merman, Kai Krellis, and well spoken. The folk "
-#| "are truly yours now."
 msgid ""
 "Those were the words of a man and a leader, Kai Krellis, and well spoken. "
 "The folk are truly yours now."
 msgstr ""
-"Это были слова настоящего водяного, Кай Креллис. Мы последуем за тобой хоть "
-"на край света."
+"Это были слова взрослого вождя, Кай Креллис, ты говоришь мудро. Мы последуем "
+"за тобой хоть на край света."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:389
@@ -2966,22 +2963,16 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:62
-#, fuzzy
-#| msgid ""
-#| "Cylanna never traveled far again, but stayed in Jotha as a respected "
-#| "elder. She remained a royal advisor, but her main work was healing the "
-#| "sick, and presiding at christenings and weddings. All this agreed with "
-#| "her disposition much better than battling undead."
 msgid ""
 "Cylanna never traveled far again, but stayed in Jotha as a respected elder. "
 "She remained a royal advisor, but her main work was healing the sick, and "
 "presiding at naming ceremonies and weddings. All this agreed with her "
 "disposition much better than battling undead."
 msgstr ""
-"Циланна больше не путешествовала, а осталась в Йоте. Она осталась "
-"королевским советником, но её основной работой стало исцеление больных и "
-"раненых, главенство на крестинах и свадьбах. Всё это соответствовало ей "
-"намного больше, чем борьба с нежитью."
+"Циланна больше не путешествовала, а осталась в Йоте как уважаемая "
+"страейшина. Она осталась королевским советником, но её основной работой "
+"стало исцеление больных и раненых, главенство на церемониях наречения и "
+"свадьбах. Всё это соответствовало ей намного больше, чем борьба с нежитью."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:69
@@ -3342,68 +3333,9 @@ msgstr "оглушить"
 
 #. [damage]: id=tail_stun
 #: data/campaigns/Dead_Water/utils/specials.cfg:10
-#, fuzzy
-#| msgid ""
-#| "This attack hits so hard that the defender is dazed and can no longer "
-#| "enforce a zone of control. The effect wears off on the defender’s next "
-#| "turn."
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
 "Эта атака так сильна, что оглушает противника: оглушённый боец не может "
-"следить за зоной контроля. Эффект заканчивается на следующем ходу "
-"обороняющегося."
-
-#~ msgid "You receive 200 gold."
-#~ msgstr "Вы получили 200 золота."
-
-#~ msgid "I think that could be useful. I’ll take it."
-#~ msgstr "Она выглядит полезной. Я возьму её."
-
-#~ msgid "What?!"
-#~ msgstr "Что?!"
-
-#~ msgid "I was young then, and he was very handsome."
-#~ msgstr "Тогда я была молода, а он был красавчиком."
-
-#~ msgid "Fire Guardian"
-#~ msgstr "Огненный Страж"
-
-#~ msgid ""
-#~ "Fire Guardians are spirits of smoke and flame. No one is exactly sure "
-#~ "where they come from, but they are occasionally summoned by powerful "
-#~ "mages to do their bidding. When not being controlled they like to frolic "
-#~ "in pools of lava and take great delight in burning anything they can "
-#~ "reach."
-#~ msgstr ""
-#~ "Огненные стражи - духи из дыма и огня. Никто не может точно сказать, "
-#~ "откуда они появились, но иногда их призывают могущественные маги, которые "
-#~ "делают их своими слугами. Когда никто ими не управляет, они любят "
-#~ "резвиться в бассейнах лавы и получают огромное удовольствие, сжигая все, "
-#~ "до чего они могут добраться."
-
-#~ msgid "fire claws"
-#~ msgstr "огненные когти"
-
-#~ msgid "fire breath"
-#~ msgstr "огненное дыхание"
-
-#~ msgid ""
-#~ "<span color='white'>Alternative objective:</span>\n"
-#~ "<span color='#00ff00'>Defeat all enemy leaders</span> <small>(different "
-#~ "bonus for each)</small>"
-#~ msgstr ""
-#~ "<span color='white'>Альтернативная цель:</span>\n"
-#~ "<span color='#00ff00'>Победите всех лидеров противника</span> "
-#~ "<small>(различные награды за каждого)</small>"
-
-#~ msgid ""
-#~ "Early finish bonus only if you also kill Marg-Tonz. (You can destroy the "
-#~ "undead first.)"
-#~ msgstr ""
-#~ "Награда за быстрый финиш, если Вы также убьёте Марг-Тонза. (Вы можете "
-#~ "сперва уничтожить мертвецов.)"
-
-#~ msgid "Run out of Turns"
-#~ msgstr "Кончились ходы"
+"следить за зоной контроля. Эффект заканчивается на следующем ходу противника."
