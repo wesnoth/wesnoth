@@ -48,6 +48,20 @@ std::vector<std::string> controller_options_names(
 	return names;
 }
 
+static std::string get_income_string(int income)
+{
+
+	std::stringstream buf;
+	if (income < 0) {
+		buf << _("(") << income << _(")");
+	} else if (income > 0) {
+		buf << _("+") << income;
+	} else {
+		buf << _("Normal");
+	}
+	return buf.str();
+}
+
 connect::side::side(connect& parent, ng::side_engine_ptr engine) :
 	parent_(&parent),
 	engine_(engine),
@@ -64,8 +78,8 @@ connect::side::side(connect& parent, ng::side_engine_ptr engine) :
 		font::SIZE_LARGE, font::LOBBY_COLOR),
 	label_original_controller_(parent.video(), engine_->reserved_for(),
 		font::SIZE_SMALL),
-	label_gold_(parent.video(), "100", font::SIZE_SMALL, font::LOBBY_COLOR),
-	label_income_(parent.video(), _("Normal"), font::SIZE_SMALL,
+	label_gold_(parent.video(), str_cast(engine_->gold()), font::SIZE_SMALL, font::LOBBY_COLOR),
+	label_income_(parent.video(), get_income_string(engine_->income()), font::SIZE_SMALL,
 		font::LOBBY_COLOR),
 	combo_controller_(new gui::combo_drag(parent.disp(),
 		std::vector<std::string>(), parent.combo_control_group_)),
@@ -202,23 +216,15 @@ void connect::side::process_event()
 		engine_->set_team(combo_team_.selected());
 		changed_ = true;
 	}
-	if (slider_gold_.value() != engine_->gold()) {
+	if (slider_gold_.value() != engine_->gold() && slider_gold_.enabled()) {
 		engine_->set_gold(slider_gold_.value());
+		changed_ = true;
 		label_gold_.set_text(str_cast(engine_->gold()));
-		changed_ = true;
 	}
-	if (slider_income_.value() != engine_->income()) {
+	if (slider_income_.value() != engine_->income() && slider_income_.enabled()) {
 		engine_->set_income(slider_income_.value());
-		std::stringstream buf;
-		if (engine_->income() < 0) {
-			buf << _("(") << engine_->income() << _(")");
-		} else if (engine_->income() > 0) {
-			buf << _("+") << engine_->income();
-		} else {
-			buf << _("Normal");
-		}
-		label_income_.set_text(buf.str());
 		changed_ = true;
+		label_income_.set_text(get_income_string(engine_->income()));
 	}
 }
 
