@@ -2336,6 +2336,12 @@ void server::process_data_lobby(const network::connection sock,
 	}
 }
 
+
+size_t count_sides(const simple_wml::node& scenario)
+{
+	return wesnothd::game::starting_pos(scenario)->children("side").size();
+}
+
 /**
  * Process data sent from a member of a game.
  */
@@ -2365,13 +2371,7 @@ void server::process_data_game(const network::connection sock,
 		if (!g->is_owner(sock)) {
 			return;
 		}
-		size_t nsides = 0;
-		const simple_wml::node* starting_pos = wesnothd::game::starting_pos(data.root());
-		const simple_wml::node::child_list& sides = starting_pos->children("side");
-		for (simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
-			++nsides;
-		}
-		if (nsides > gamemap::MAX_PLAYERS) {
+		if (count_sides(data.root()) > gamemap::MAX_PLAYERS) {
 			delete_game(itor);
 			std::stringstream msg;
 			msg << "This server does not support games with more than "
@@ -2379,7 +2379,6 @@ void server::process_data_game(const network::connection sock,
 			rooms_.lobby().send_server_message(msg.str(), sock);
 			return;
 		}
-
 		// If this game is having its level data initialized
 		// for the first time, and is ready for players to join.
 		// We should currently have a summary of the game in g->level().
@@ -2479,20 +2478,13 @@ void server::process_data_game(const network::connection sock,
 			return;
 		}
 		g->save_replay();
-		{
-			size_t nsides = 0;
-			const simple_wml::node::child_list& sides = wesnothd::game::starting_pos(*scenario)->children("side");
-			for (simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
-				++nsides;
-			}
-			if (nsides > gamemap::MAX_PLAYERS) {
-				delete_game(itor);
-				std::stringstream msg;
-				msg << "This server does not support games with more than "
-					<< gamemap::MAX_PLAYERS << " sides.";
-				rooms_.lobby().send_server_message(msg.str(), sock);
-				return;
-			}
+		if (count_sides(*scenario) > gamemap::MAX_PLAYERS) {
+			delete_game(itor);
+			std::stringstream msg;
+			msg << "This server does not support games with more than "
+				<< gamemap::MAX_PLAYERS << " sides.";
+			rooms_.lobby().send_server_message(msg.str(), sock);
+			return;
 		}
 		// Record the full scenario in g->level()
 		g->level().clear();
