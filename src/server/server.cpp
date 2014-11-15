@@ -2337,7 +2337,7 @@ void server::process_data_lobby(const network::connection sock,
 }
 
 
-size_t count_sides(const simple_wml::node& scenario)
+static size_t count_sides(const simple_wml::node& scenario)
 {
 	return wesnothd::game::starting_pos(scenario)->children("side").size();
 }
