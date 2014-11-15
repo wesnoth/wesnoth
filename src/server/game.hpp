@@ -318,6 +318,8 @@ private:
 	/** Function to log when we don't find a connection in player_info_. */
 	void missing_user(network::connection socket, const std::string& func) const;
 
+	/** calculates the initial value for sides_, side_controllerds_, nsides_*/
+	void reset_sides();
 	/** Helps debugging player and observer lists. */
 	std::string debug_player_info() const;
 	/** Helps debugging controller tweaks. */

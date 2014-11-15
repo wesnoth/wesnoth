@@ -17,7 +17,6 @@
 #include "../filesystem.hpp"
 #include "../game_config.hpp" // game_config::observer_team_name
 #include "../log.hpp"
-#include "../map.hpp" // gamemap::MAX_PLAYERS
 
 #include "game.hpp"
 #include "player_network.hpp"
@@ -56,8 +55,8 @@ game::game(player_map& players, const network::connection host,
 	players_(),
 	observers_(),
 	muted_observers_(),
-	sides_(gamemap::MAX_PLAYERS),
-	side_controllers_(gamemap::MAX_PLAYERS),
+	sides_(),
+	side_controllers_(),
 	nsides_(0),
 	started_(false),
 	level_(),
@@ -179,10 +178,7 @@ void game::perform_controller_tweaks() {
 
 	update_side_data(); // Necessary to read the level_ and get sides_, etc. updated to match
 
-	nsides_ = 0;
-
 	for(simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
-		nsides_++;
 		if ((**s)["controller"] != "null") {
 			const size_t side_index = (**s)["side"].to_int() - 1;
 			if(side_index >= sides_.size()) {
@@ -347,8 +343,17 @@ bool game::take_side(const player_map::const_iterator user)
 	//if we get here we couldn't find a side to take
 	return false;
 }
+void game::reset_sides()
+{
+	side_controllers_.clear();
+	sides_.clear();
+	nsides_ = get_sides_list().size();
+	side_controllers_.resize(nsides_);
+	sides_.resize(nsides_);
+}
 
-void game::update_side_data() {
+void game::update_side_data() 
+{
 				//added by iceiceice: since level_ will now reflect how an observer
 	if (started_) return; 	//views the replay start position and not the current position, the sides_, side_controllers_,
 				//players_ info should not be updated from the level_ after the game has started.
@@ -359,14 +364,9 @@ void game::update_side_data() {
 	DBG_GAME << debug_player_info();
 	// Remember everyone that is in the game.
 	const user_vector users = all_game_users();
-
-	side_controllers_.clear();
-	side_controllers_.resize(gamemap::MAX_PLAYERS);
-	sides_.clear();
-	sides_.resize(gamemap::MAX_PLAYERS);
 	players_.clear();
 	observers_.clear();
-
+	reset_sides();
 	const simple_wml::node::child_list& level_sides = get_sides_list();
 	/* This causes data corruption for some reason
 	if (!lg::debug.dont_log(log_server)) {
