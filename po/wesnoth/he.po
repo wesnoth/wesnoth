@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-11-08 21:20+0100\n"
+"POT-Creation-Date: 2014-11-15 10:53+0100\n"
 "PO-Revision-Date: 2011-08-29 14:25+0300\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -356,21 +356,21 @@ msgstr "ג'ויסטיק: האיזור המת של הדחף"
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:366
-#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:983
 msgid "poisoned"
 msgstr "מורעל"
 
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:12467
+#: data/lua/wml/objectives.lua:1837
 msgid "Gold carryover:"
 msgstr "זהב שהועבר:"
 
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:12468
+#: data/lua/wml/objectives.lua:1838
 msgid "Notes:"
 msgstr "הערות:"
 
@@ -2246,12 +2246,12 @@ msgid "Turns run out"
 msgstr "נגמר הזמן"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12529
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:1899
 msgid "Early finish bonus."
 msgstr "בונוס סיום מוקדם."
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12531
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:1901
 msgid "No early finish bonus."
 msgstr "אין בונוס סיום מוקדם."
 
@@ -2264,7 +2264,7 @@ msgid "(early finish bonus)"
 msgstr "(בונוס סיום מוקדם)"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12539
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:1909
 msgid "No gold carried over to the next scenario."
 msgstr "לא הועבר זהב להתקלות הבאה."
 
@@ -2756,67 +2756,67 @@ msgstr "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:983
 msgid "female^poisoned"
 msgstr "מורעלת"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11987 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:1357 src/actions/attack.cpp:988
 msgid "female^slowed"
 msgstr "מואטת"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11987 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:1357 src/actions/attack.cpp:988
 msgid "slowed"
 msgstr "מואט"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11988 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:1358 src/actions/attack.cpp:993
 msgid "female^petrified"
 msgstr "מאובנת"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11988 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:1358 src/actions/attack.cpp:993
 msgid "petrified"
 msgstr "מאובן"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11989
+#: data/lua/wml-tags.lua:1359
 msgid "female^unhealable"
 msgstr "לא ברת-מרפא"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11989
+#: data/lua/wml-tags.lua:1359
 msgid "unhealable"
 msgstr "לא בר-מרפא"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12465 src/mp_game_utils.cpp:157
+#: data/lua/wml/objectives.lua:1835 src/mp_game_utils.cpp:157
 msgid "Victory:"
 msgstr "ניצחון:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12466
+#: data/lua/wml/objectives.lua:1836
 msgid "Defeat:"
 msgstr "תבוסה:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12486
+#: data/lua/wml/objectives.lua:1856
 msgid "(%d turns left)"
 msgstr "(נותרו %d תורים)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12488
+#: data/lua/wml/objectives.lua:1858
 msgid "(this turn left)"
 msgstr "(נותר התור הזה)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12541
+#: data/lua/wml/objectives.lua:1911
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% מהזהב הועבר להתקלות הבאה."
 
@@ -6766,7 +6766,7 @@ msgstr "המשחק נגמר"
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "ההתקלות נגמרה, האם ברצונך להמשיך במערכה?"
 
-#: src/playcampaign.cpp:641
+#: src/playcampaign.cpp:642
 msgid "Unknown scenario: '$scenario|'"
 msgstr "התקלות לא ידועה: '$scenario|'"
 

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-11-08 21:20+0100\n"
+"POT-Creation-Date: 2014-11-15 10:53+0100\n"
 "PO-Revision-Date: 2014-10-26 09:23+0100\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -339,21 +339,21 @@ msgstr "Mando: límite do empurre"
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:366
-#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:983
 msgid "poisoned"
 msgstr "Envelenado"
 
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:12467
+#: data/lua/wml/objectives.lua:1837
 msgid "Gold carryover:"
 msgstr "Ouro retido:"
 
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:12468
+#: data/lua/wml/objectives.lua:1838
 msgid "Notes:"
 msgstr "Notas:"
 
@@ -2571,12 +2571,12 @@ msgid "Turns run out"
 msgstr "Que se esgoten as roldas."
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12529
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:1899
 msgid "Early finish bonus."
 msgstr "Hai bonificación por rematar cedo."
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12531
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:1901
 msgid "No early finish bonus."
 msgstr "Non hai bonificación por rematar cedo."
 
@@ -2589,7 +2589,7 @@ msgid "(early finish bonus)"
 msgstr "(hai bonificación por rematar cedo)"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12539
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:1909
 msgid "No gold carried over to the next scenario."
 msgstr "Non se conserva ouro para o seguinte escenario."
 
@@ -3223,69 +3223,69 @@ msgstr "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:983
 msgid "female^poisoned"
 msgstr "Envelenada"
 
 # “ralentizada” non é unha palabra normativa, pero dada a súa popularidade (por efecto do castelán?) e maila falta de boas alternativas (frear, refrear, entorpecer, desacelerar...) paréceme a mellor escolla.
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11987 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:1357 src/actions/attack.cpp:988
 msgid "female^slowed"
 msgstr "Ralentizada"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11987 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:1357 src/actions/attack.cpp:988
 msgid "slowed"
 msgstr "Ralentizado"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11988 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:1358 src/actions/attack.cpp:993
 msgid "female^petrified"
 msgstr "Petrificada"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11988 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:1358 src/actions/attack.cpp:993
 msgid "petrified"
 msgstr "Petrificado"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11989
+#: data/lua/wml-tags.lua:1359
 msgid "female^unhealable"
 msgstr "Insandábel"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11989
+#: data/lua/wml-tags.lua:1359
 msgid "unhealable"
 msgstr "Insandábel"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12465 src/mp_game_utils.cpp:157
+#: data/lua/wml/objectives.lua:1835 src/mp_game_utils.cpp:157
 msgid "Victory:"
 msgstr "Vitoria:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12466
+#: data/lua/wml/objectives.lua:1836
 msgid "Defeat:"
 msgstr "Derrota:"
 
 # Aparece na lista de obxectivos dos escenarios. Pode verse, por exemplo, na segunda parte da aprendizaxe. Vai a continuación do texto «Que se esgoten as roldas. ».
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12486
+#: data/lua/wml/objectives.lua:1856
 msgid "(%d turns left)"
 msgstr "Restan %d roldas."
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12488
+#: data/lua/wml/objectives.lua:1858
 msgid "(this turn left)"
 msgstr "(é a última rolda)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12541
+#: data/lua/wml/objectives.lua:1911
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "Conservarase un %d%% do ouro para o seguinte escenario."
 
@@ -7165,7 +7165,7 @@ msgstr "Rematou a partida"
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Este escenario rematou. Queres continuar a campaña?"
 
-#: src/playcampaign.cpp:641
+#: src/playcampaign.cpp:642
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Escenario descoñecido: «$scenario|»."
 

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-11-08 21:20+0100\n"
+"POT-Creation-Date: 2014-11-15 10:53+0100\n"
 "PO-Revision-Date: 2014-04-14 13:01+0100\n"
 "Last-Translator: Émile Enguehard <zerbugug@gmail.com>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
@@ -342,21 +342,21 @@ msgstr "Joystick : zone morte du levier de l'axe de poussée"
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:366
-#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:983
 msgid "poisoned"
 msgstr "empoisonné"
 
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:12467
+#: data/lua/wml/objectives.lua:1837
 msgid "Gold carryover:"
 msgstr "Or conservé :"
 
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:12468
+#: data/lua/wml/objectives.lua:1838
 msgid "Notes:"
 msgstr "Remarques :"
 
@@ -2639,12 +2639,12 @@ msgid "Turns run out"
 msgstr "Fin des tours atteinte"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12529
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:1899
 msgid "Early finish bonus."
 msgstr "Bonus de fin anticipée."
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12531
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:1901
 msgid "No early finish bonus."
 msgstr "Aucun bonus de fin anticipée."
 
@@ -2657,7 +2657,7 @@ msgid "(early finish bonus)"
 msgstr "(bonus de fin anticipée)"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12539
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:1909
 msgid "No gold carried over to the next scenario."
 msgstr "Pas de pièce d'or conservée pour le prochain scénario."
 
@@ -3196,67 +3196,67 @@ msgstr "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:983
 msgid "female^poisoned"
 msgstr "empoisonnée"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11987 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:1357 src/actions/attack.cpp:988
 msgid "female^slowed"
 msgstr "ralentie"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11987 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:1357 src/actions/attack.cpp:988
 msgid "slowed"
 msgstr "ralenti"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11988 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:1358 src/actions/attack.cpp:993
 msgid "female^petrified"
 msgstr "pétrifiée"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11988 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:1358 src/actions/attack.cpp:993
 msgid "petrified"
 msgstr "pétrifié"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11989
+#: data/lua/wml-tags.lua:1359
 msgid "female^unhealable"
 msgstr "insoignable"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11989
+#: data/lua/wml-tags.lua:1359
 msgid "unhealable"
 msgstr "insoignable"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12465 src/mp_game_utils.cpp:157
+#: data/lua/wml/objectives.lua:1835 src/mp_game_utils.cpp:157
 msgid "Victory:"
 msgstr "Victoire : "
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12466
+#: data/lua/wml/objectives.lua:1836
 msgid "Defeat:"
 msgstr "Défaite : "
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12486
+#: data/lua/wml/objectives.lua:1856
 msgid "(%d turns left)"
 msgstr "(%d tours restants)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12488
+#: data/lua/wml/objectives.lua:1858
 msgid "(this turn left)"
 msgstr "(dernier tour restant)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12541
+#: data/lua/wml/objectives.lua:1911
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% de l'or sera conservé dans le scénario suivant."
 
@@ -7132,7 +7132,7 @@ msgstr "Fin de la partie"
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Ce scénario est terminé. Voulez-vous continuer la campagne ?"
 
-#: src/playcampaign.cpp:641
+#: src/playcampaign.cpp:642
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Scénario inconnu : « $scenario| »"
 

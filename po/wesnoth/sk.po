@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-11-08 21:20+0100\n"
+"POT-Creation-Date: 2014-11-15 10:53+0100\n"
 "PO-Revision-Date: 2014-03-03 23:09+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -329,21 +329,21 @@ msgstr "Joystick: mŕtva zóna pre ovládač tlaku"
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:366
-#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:983
 msgid "poisoned"
 msgstr "otrávený"
 
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:12467
+#: data/lua/wml/objectives.lua:1837
 msgid "Gold carryover:"
 msgstr "Prenos zlata:"
 
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:12468
+#: data/lua/wml/objectives.lua:1838
 msgid "Notes:"
 msgstr "Poznámky:"
 
@@ -2611,12 +2611,12 @@ msgid "Turns run out"
 msgstr "Vyprší čas"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12529
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:1899
 msgid "Early finish bonus."
 msgstr "Bonus za rýchly koniec."
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12531
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:1901
 msgid "No early finish bonus."
 msgstr "Žiadny bonus za rýchly koniec."
 
@@ -2629,7 +2629,7 @@ msgid "(early finish bonus)"
 msgstr "(bonus za rýchly koniec)"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12539
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:1909
 msgid "No gold carried over to the next scenario."
 msgstr "Žiadne zlato sa neprenáša do ďalšej scény."
 
@@ -3123,67 +3123,67 @@ msgstr "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11985 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:983
 msgid "female^poisoned"
 msgstr "otrávená"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11987 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:1357 src/actions/attack.cpp:988
 msgid "female^slowed"
 msgstr "spomalená"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11987 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:1357 src/actions/attack.cpp:988
 msgid "slowed"
 msgstr "spomalený"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11988 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:1358 src/actions/attack.cpp:993
 msgid "female^petrified"
 msgstr "skamenená"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11988 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:1358 src/actions/attack.cpp:993
 msgid "petrified"
 msgstr "skamenený"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11989
+#: data/lua/wml-tags.lua:1359
 msgid "female^unhealable"
 msgstr "neliečiteľná"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11989
+#: data/lua/wml-tags.lua:1359
 msgid "unhealable"
 msgstr "neliečiteľný"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12465 src/mp_game_utils.cpp:157
+#: data/lua/wml/objectives.lua:1835 src/mp_game_utils.cpp:157
 msgid "Victory:"
 msgstr "Vyhráš, ak:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12466
+#: data/lua/wml/objectives.lua:1836
 msgid "Defeat:"
 msgstr "Prehráš, ak:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12486
+#: data/lua/wml/objectives.lua:1856
 msgid "(%d turns left)"
 msgstr "(%d kôl zostáva)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12488
+#: data/lua/wml/objectives.lua:1858
 msgid "(this turn left)"
 msgstr "(toto kolo zostáva)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12541
+#: data/lua/wml/objectives.lua:1911
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% zlata sa prenáša do ďalšej scény."
 
@@ -6967,7 +6967,7 @@ msgstr "Koniec hry"
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Scéna skončila. Chceš pokračovať vo výprave?"
 
-#: src/playcampaign.cpp:641
+#: src/playcampaign.cpp:642
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Neznáma scéna: '$scenario|'"
 

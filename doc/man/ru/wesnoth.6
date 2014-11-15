@@ -65,7 +65,7 @@ wesnoth \- Битва за Веснот, пошаговая стратегиче
 перезаписывает каталог данных вновь указанным
 .TP 
 \fB\-\-data\-path\fP
-path the path of the data directory and exits.
+вывести путь к каталогу данных и выйти.
 .TP 
 \fB\-d, \-\-debug\fP
 включить дополнительные команды в игре (см. Wiki\-страницу на сайте
@@ -131,21 +131,21 @@ http://wiki.wesnoth.org/CommandMode/ru для информации о коман
 \fB\-\-path\fP
 вывести название каталога данных игры и выйти.
 .TP 
-\fB\-p, \-\-preprocess <source file/folder> <target directory>\fP
-preprocesses a specified file/folder. For each file(s) a plain .cfg file and
-a processed .cfg file will be written in specified target directory. If a
-folder is specified, it will be preprocessed recursively based on the known
-preprocessor rules. The common macroses from the "data/core/macros"
-directory will be preprocessed before the specified resources.  Example:
-\fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
-preprocessor visit:
+\fB\-p, \-\-preprocess <исходный файл/каталог> <целеой каталог>\fP
+запустить препоцессор для заданного файла (каталога).  Для каждого файла в
+заданный целевой каталог пишется исходный cfg\-файл и обработанный cfg\-файл.
+Если каталог задан, он будет обрабатываться рекурсивно в соответствии с
+известными правилами препроцессора.  Общие макросы из каталога
+"data/core/macros" будут обработаны до заданных ресурсов.  Пример: \fB\-p
+~/wesnoth/data/campaigns/tutorial ~/result.\fP Подробнее о препроцессоре можно
+прочитать здесь:
 http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
 
 .TP 
-\fB\-\-preprocess\-defines=DEFINE1,DEFINE2,etc\fP
-comma separated list of defines to be used by the '\-\-preprocess' command. If
-\fBSKIP_CORE\fP is in the define list the "data/core" directory won't be
-preprocessed.
+\fB\-\-preprocess\-defines=ОПРЕДЕЛЕНИЕ1,ОПРЕДЕЛЕНИЕ2,итд\fP
+список определений, используемых командой '\-\-preprocess'. Если в списке
+определения есть \fBSKIP_CORE\fP, то каталог "data/core" не будет прогоняться
+через препроцессор.
 .TP 
 \fB\-\-preprocess\-input\-macros <исходный файл>\fP
 используется только командой '\-\-preprocess'.  Задает файл который содержит
@@ -168,13 +168,13 @@ server.wesnoth.org\fPпоключится к указаному хосту ес�
 поключится к первому, указанному в настройках. Например: \fB\-\-server
 server.wesnoth.org\fP
 .TP 
-\fB\-\-username\fP\fI<username>\fP
-uses <username> when connecting to a server, ignoring other
-preferences.
+\fB\-\-username\fP\fI<имя_пользователя>\fP
+использовать <имя_пользователя> при соединении с сервером, игнорируя
+другие предпочтения.
 .TP 
-\fB\-\-password\fP\fI<password>\fP
-uses <password> when connecting to a server, ignoring other
-preferences. Unsafe.
+\fB\-\-password\fP\fI<пароль>\fP
+использовать <пароль> при соединении с сервером, игнорируя другие
+предпочтения. Небезопасно.
 .TP 
 \fB\-\-strict\-validation\fP
 ошибки валидации считаются фатальными.
@@ -182,23 +182,25 @@ preferences. Unsafe.
 \fB\-t, \-\-test\fP
 запустить маленький тестовый сценарий.
 .TP 
-\fB\-\-userconfig\-dir\fP\fI\ name\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy Games".
-Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
-other systems to the userdata path.
+\fB\-\-userconfig\-dir\fP\fI\ имя\fP
+устанавливает, что папка с пользовательскими настройками находится в
+подкаталоге \fIимя\fP каталога $HOME (или "Мои документы\eМои игры" для
+Windows).  Если папка с пользовательскими настройками находится вне папки
+$HOME (или "Мои документы\eМои игры"), задайте абсолютный путь.  В X11 по
+умолчанию используется $XDG_CONFIG_HOME или $HOME/.config/wesnoth, в других
+системах — путь к пользовательским данным.
 .TP 
 \fB\-\-userconfig\-path\fP
 вывести название каталога пользовательских настроек игры и выйти.
 .TP 
-\fB\-\-userdata\-dir\fP\fI\ name\fP
-sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
-Games" for windows.  You can also specify an absolute path for the userdata
-directory outside the $HOME or "My Documents\eMy Games".
+\fB\-\-userdata\-dir\fP\fI\ имя\fP
+устанавливает, что папка пользовательских данных находится в подкаталоге
+\fIимя\fP каталога $HOME (или "Мои документы\eМои игры" для Windows).  Если
+папка пользовательских данных находится вне папки $HOME (или "Мои
+документы\eМои игры"), задайте абсолютный путь.
 .TP 
 \fB\-\-userdata\-path\fP
-prints the path of the userdata directory and exits.
+вывести путь к каталогу пользовательских данных и выйти.
 .TP 
 \fB\-\-validcache\fP
 предполагает, что кэш правильный. (опасно)
@@ -242,11 +244,11 @@ prints the path of the userdata directory and exits.
 скриптового бенчмаркинга.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
-do not use map settings, use default values instead.
+не использовать настройки карты, взять значения по умолчанию.
 .TP 
-\fB\-\-multiplayer\-repeat=\fP\fIvalue\fP
-repeats a multiplayer game \fIvalue\fP times. Best to use with \fB\-\-nogui\fP for
-scriptable benchmarking.
+\fB\-\-multiplayer\-repeat=\fP\fIчисло\fP
+повторить многопользовательскую игру \fIчисло\fP раз. Для скриптов тестирования
+лучше использовать с \fB\-\-nogui\fP.
 .TP 
 \fB\-\-nogui\fP
 запустить игру без GUI. Должен указываться до \fB\-\-multiplayer\fP для
