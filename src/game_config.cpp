@@ -345,20 +345,6 @@ namespace game_config
 				continue;
 			}
 			team_rgb_colors.insert(std::make_pair(id,tp));
-			//if this is being used, output log of palette for artists use.
-			DBG_NG << "color palette creation:\n";
-			std::ostringstream str;
-			str << id << " = ";
-			for (std::vector<Uint32>::const_iterator r = tp.begin(),
-			     r_end = tp.end(), r_beg = r; r != r_end; ++r)
-			{
-				int red = ((*r) & 0x00FF0000) >> 16;
-				int green = ((*r) & 0x0000FF00) >> 8;
-				int blue = ((*r) & 0x000000FF);
-				if (r != r_beg) str << ',';
-				str << red << ',' << green << ',' << blue;
-			}
-			DBG_NG << str.str() << '\n';
 		}
 
 		BOOST_FOREACH(const config &cp, v.child_range("color_palette"))
