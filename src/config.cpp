@@ -1363,6 +1363,7 @@ std::ostream& operator << (std::ostream& outstream, const config& cfg)
 	static int i = 0;
 	i++;
 	BOOST_FOREACH(const config::attribute &val, cfg.attribute_range()) {
+		if(val.second.blank()) continue;
 		for (int j = 0; j < i-1; j++){ outstream << char(9); }
 		outstream << val.first << " = " << val.second << '\n';
 	}
