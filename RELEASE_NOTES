@@ -14,8 +14,14 @@ The release team should empty this file after each release.
 CHANGES
 =======
 
-[section="Example section 1"]
-Example contents 1.
+[section="Start-of-scenario saves disabled in multiplayer"]
+Since we were not able to solve [bug]22068[/bug], we have instead disabled MP start of scenario save generation.
+https://github.com/wesnoth/wesnoth/commit/4dabb59b90fbfac2d6b72c73ce9ab822d3b7985d
+[/section]
+
+[section="Final sound selected for mp start of game"]
+Thanks to zookeeper for fashioning an entirely new sound.
+https://github.com/wesnoth/wesnoth/commit/80bd380425ce603f7c8cc72f31ddac8207c98b6a
 [/section]
 
 ==========
