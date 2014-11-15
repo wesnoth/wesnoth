@@ -238,28 +238,28 @@ void game::start_game(const player_map::const_iterator starter) {
 
 	started_ = true;
 	// Prevent inserting empty keys when reading.
-	const simple_wml::node& s = get_multiplayer(level_.root());
+	const simple_wml::node& multiplayer = get_multiplayer(level_.root());
 
-	const bool save = s["savegame"].to_bool();
+	const bool save = multiplayer["savegame"].to_bool();
 	LOG_GAME << network::ip_address(starter->first) << "\t"
 		<< starter->second.name() << "\t" << "started"
 		<< (save ? " reloaded" : "") << " game:\t\"" << name_ << "\" (" << id_
 		// << ") with: " << list_users(players_, __func__) << ". Settings: map: " << s["id"]
-		<< ") with: " << list_users(players_, __func__) << ". Settings: map: " << s["mp_scenario"]
+		<< ") with: " << list_users(players_, __func__) << ". Settings: map: " << multiplayer["mp_scenario"]
 		// << "\tera: "       << (s.child("era") ? (*s.child("era"))["id"] : "")
-		<< "\tera: "       << s["mp_era"]
-		<< "\tXP: "        << s["experience_modifier"]
-		<< "\tGPV: "       << s["mp_village_gold"]
-		<< "\tfog: "       << s["mp_fog"]
-		<< "\tshroud: "    << s["mp_shroud"]
-		<< "\tobservers: " << s["observer"]
-		<< "\tshuffle: "   << s["shuffle_sides"]
-		<< "\ttimer: "     << s["mp_countdown"]
-		<< (s["mp_countdown"].to_bool() ?
-			"\treservoir time: " + s["mp_countdown_reservoir_time"].to_string() +
-			"\tinit time: "      + s["mp_countdown_init_time"].to_string() +
-			"\taction bonus: "   + s["mp_countdown_action_bonus"].to_string() +
-			"\tturn bonus: "     + s["mp_countdown_turn_bonus"].to_string() : "")
+		<< "\tera: "       << multiplayer["mp_era"]
+		<< "\tXP: "        << multiplayer["experience_modifier"]
+		<< "\tGPV: "       << multiplayer["mp_village_gold"]
+		<< "\tfog: "       << multiplayer["mp_fog"]
+		<< "\tshroud: "    << multiplayer["mp_shroud"]
+		<< "\tobservers: " << multiplayer["observer"]
+		<< "\tshuffle: "   << multiplayer["shuffle_sides"]
+		<< "\ttimer: "     << multiplayer["mp_countdown"]
+		<< (multiplayer["mp_countdown"].to_bool() ?
+			"\treservoir time: " + multiplayer["mp_countdown_reservoir_time"].to_string() +
+			"\tinit time: "      + multiplayer["mp_countdown_init_time"].to_string() +
+			"\taction bonus: "   + multiplayer["mp_countdown_action_bonus"].to_string() +
+			"\tturn bonus: "     + multiplayer["mp_countdown_turn_bonus"].to_string() : "")
 		<< "\n";
 
 	for(simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
@@ -281,7 +281,7 @@ void game::start_game(const player_map::const_iterator starter) {
 	int turn = 1;
 	int side = 0;
 	// Savegames have a snapshot that tells us which side starts.
-	if (const simple_wml::node* snapshot = s.child("snapshot")) {
+	if (const simple_wml::node* snapshot = level_.root().child("snapshot")) {
 		turn = lexical_cast_default<int>((*snapshot)["turn_at"], 1);
 		side = lexical_cast_default<int>((*snapshot)["playing_team"], 0);
 		LOG_GAME << "Reload from turn: " << turn
