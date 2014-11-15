@@ -818,6 +818,7 @@
 		EC2F601E1A0490970018C9D6 /* advanced_graphics_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F601D1A0490970018C9D6 /* advanced_graphics_options.cpp */; };
 		EC2F60201A0490FC0018C9D6 /* xbrz.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F601F1A0490FC0018C9D6 /* xbrz.cpp */; };
 		EC2F60221A04983B0018C9D6 /* savepng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F60211A04983B0018C9D6 /* savepng.cpp */; };
+		EC2F9A041A18112D00A14878 /* lua_interpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F9A031A18112D00A14878 /* lua_interpreter.cpp */; };
 		EC3381C718B520120020DD6F /* theme_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3381C518B520120020DD6F /* theme_list.cpp */; };
 		EC386CF1195119AA006004ED /* unit_animation_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC386CEF195119A9006004ED /* unit_animation_component.cpp */; };
 		EC387E6C195AFB1F00FC0342 /* game_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC387E68195AFB1F00FC0342 /* game_data.cpp */; };
@@ -2050,6 +2051,7 @@
 		EC2F601F1A0490FC0018C9D6 /* xbrz.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xbrz.cpp; path = xBRZ/xbrz.cpp; sourceTree = "<group>"; };
 		EC2F60211A04983B0018C9D6 /* savepng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = savepng.cpp; path = SDL_SavePNG/savepng.cpp; sourceTree = "<group>"; };
 		EC2F60231A04985A0018C9D6 /* savepng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = savepng.h; path = SDL_SavePNG/savepng.h; sourceTree = "<group>"; };
+		EC2F9A031A18112D00A14878 /* lua_interpreter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_interpreter.cpp; sourceTree = "<group>"; };
 		EC3381C518B520120020DD6F /* theme_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = theme_list.cpp; path = ../gui/dialogs/theme_list.cpp; sourceTree = "<group>"; };
 		EC3381C618B520120020DD6F /* theme_list.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = theme_list.hpp; path = ../gui/dialogs/theme_list.hpp; sourceTree = "<group>"; };
 		EC386CEF195119A9006004ED /* unit_animation_component.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit_animation_component.cpp; sourceTree = "<group>"; };
@@ -3776,6 +3778,7 @@
 		B5A9BCA20ECA805A002BE442 /* dialogs */ = {
 			isa = PBXGroup;
 			children = (
+				EC2F9A031A18112D00A14878 /* lua_interpreter.cpp */,
 				ECBBD73E1928F41500E434C6 /* core_selection.cpp */,
 				ECBBD73F1928F41500E434C6 /* core_selection.hpp */,
 				ECA9E67C17F478D600F5DDC4 /* game_paths.cpp */,
@@ -4287,6 +4290,7 @@
 				B5599AED0EC62181008DD061 /* unit_display.cpp in Sources */,
 				B5599AEE0EC62181008DD061 /* unit_animation.cpp in Sources */,
 				B5599AEF0EC62181008DD061 /* unit_abilities.cpp in Sources */,
+				EC2F9A041A18112D00A14878 /* lua_interpreter.cpp in Sources */,
 				EC2864301967989000168DFF /* unit_filter.cpp in Sources */,
 				B5599AF00EC62181008DD061 /* unit.cpp in Sources */,
 				ECA1E0FC1A1272EE00426E00 /* help_impl.cpp in Sources */,
