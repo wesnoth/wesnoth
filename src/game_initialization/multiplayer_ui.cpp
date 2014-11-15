@@ -215,15 +215,6 @@ void ui::process_network()
 		gamelist_refresh_ = false;
 		lobby_clock_ = SDL_GetTicks();
 	}
-
-	if (accept_connections()) {
-		network::connection sock = network::accept_connection();
-		if(sock) {
-			LOG_NW << "Received connection\n";
-
-			process_network_connection(sock);
-		}
-	}
 }
 
 ui::result ui::get_result()
@@ -514,11 +505,6 @@ void ui::process_network_error(network::error& error)
 
 	// Default behavior is to re-throw the error. May be overridden.
 	throw error;
-}
-
-void ui::process_network_connection(const network::connection /*sock*/)
-{
-	LOG_NW << "Caught network connection.\n";
 }
 
 void ui::hide_children(bool hide)

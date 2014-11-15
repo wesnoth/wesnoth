@@ -74,7 +74,6 @@ public:
 	std::pair<bool, bool> process_network_data(const config& data,
 		const network::connection sock);
 	void process_network_error(network::error& error);
-	void process_network_connection(const network::connection sock);
 
 	// Returns the side which is taken by a given user,
 	// or -1 if none was found.

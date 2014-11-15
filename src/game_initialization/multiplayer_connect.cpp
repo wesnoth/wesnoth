@@ -568,17 +568,6 @@ void connect::process_network_error(network::error& error)
 	engine_.process_network_error(error);
 }
 
-void connect::process_network_connection(const network::connection sock)
-{
-	ui::process_network_connection(sock);
-	engine_.process_network_connection(sock);
-}
-
-bool connect::accept_connections()
-{
-	return engine_.sides_available();
-}
-
 void connect::update_playerlist_state(bool silent)
 {
 	DBG_MP << "updating player list state" << std::endl;

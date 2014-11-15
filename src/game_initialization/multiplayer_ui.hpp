@@ -147,15 +147,6 @@ protected:
 	virtual void process_network_error(network::error& error);
 
 	/**
-	 * Return true if we must accept incoming connections, false if not.
-	 * Defaults to not.
-	 */
-	virtual bool accept_connections() { return false; }
-
-	/** Processes a pending network connection. */
-	virtual void process_network_connection(const network::connection sock);
-
-	/**
 	 * Hides or shows all gui::widget children of this widget. Should be
 	 * overridden by subclasses which add their own children.
 	 */

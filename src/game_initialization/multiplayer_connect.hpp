@@ -111,8 +111,6 @@ protected:
 	virtual void process_network_data(const config& data,
 		const network::connection sock);
 	virtual void process_network_error(network::error& error);
-	virtual void process_network_connection(const network::connection sock);
-	virtual bool accept_connections();
 
 private:
 	connect(const connect&);

@@ -736,14 +736,6 @@ void connect_engine::process_network_error(network::error& error)
 	throw network::error(error.message);
 }
 
-void connect_engine::process_network_connection(const network::connection sock)
-{
-	network::send_data(config("join_game"), 0);
-
-	// If we are connected, send data to the connected host.
-	send_level_data(sock);
-}
-
 int connect_engine::find_user_side_index_by_id(const std::string& id) const
 {
 	size_t i = 0;
