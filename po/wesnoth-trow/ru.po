@@ -12,13 +12,13 @@
 # Ilya Kasnacheev <ilya.kasnacheev@gmail.com>, 2005.
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006.
 # Igor <cheer6@gmail.com>, 2008.
-# Fedor Khod'kov <fedor76@istra.ru>, 2009, 2010
+# Fedor Khod'kov <fkhodkov@gmail.com>, 2009-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: ru-trow\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-10-11 10:43+0200\n"
-"PO-Revision-Date: 2012-04-07 03:05+0400\n"
+"PO-Revision-Date: 2014-11-11 12:04+0300\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Emacs 24.0.50.1, po-mode 2.2+0.4\n"
+"X-Generator: Emacs 24.3.1, po-mode 2.22+0.4\n"
 "X-Poedit-Language: Russian\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -1890,13 +1890,6 @@ msgstr ""
 
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:392
-#, fuzzy
-#| msgid ""
-#| "Other than losing our war in the far West, then our refugee war to your "
-#| "people, and this orc thing, it wasn’t such a bad deal. Lich-Lord Lenvan "
-#| "was one of our greatest leaders. He led our escape to the this land. "
-#| "Albeit, after being down in that hole for so long I don’t imagine he’s "
-#| "too happy."
 msgid ""
 "Other than losing our war in the far West, then our refugee war to your "
 "people, and this orc thing, it wasn’t such a bad deal. Lich-Lord Lenvan was "
@@ -2897,16 +2890,12 @@ msgstr ""
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:264
-#, fuzzy
-#| msgid ""
-#| "Okay. Let’s un-petrify that lich and take his book, then get into the "
-#| "sewers. Umm, what language would that book be in?"
 msgid ""
 "Well, let’s un-petrify that lich and take his book, then get into the "
 "sewers. Umm, what language would that book be in?"
 msgstr ""
-"Хорошо. Расколдуем этого лича, заберём его книгу, затем уйдём в канализацию. "
-"Мм, а на каком она хоть языке?"
+"Ну, тогда мы расколдуем этого лича, заберём его книгу, затем уйдём в "
+"канализацию. Мм, а на каком она хоть языке?"
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:268
@@ -3380,12 +3369,6 @@ msgstr "Впустите всех! Во имя остатков человечн
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:144
-#, fuzzy
-#| msgid ""
-#| "And because I can sweeten the deal. I can save the lives of all of the "
-#| "people left on this isle. I will reveal all, if you swear on the soul of "
-#| "your eldest son that you will let all of the Wesfolk who may come into "
-#| "the city, and to allow them to participate in what must happen next."
 msgid ""
 "And because I can sweeten the deal. I can save the lives of all of the "
 "people left on this isle. I will reveal all, if you swear on the soul of "
@@ -4278,14 +4261,12 @@ msgstr "Иоварар"
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:189
 msgid "(the scenario ends when any unit perishes)"
-msgstr ""
+msgstr "(сценарий закончиться, как только кто-либо погибнет)"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:189
-#, fuzzy
-#| msgid "Avoid engagement for as long as possible"
 msgid "Avoid deaths for as long as possible"
-msgstr "Избегайте столкновений, пока возможно"
+msgstr "Избегайте убийств, пока возможно"
 
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:205
@@ -4293,16 +4274,18 @@ msgid ""
 "You will receive a finish bonus — equal to an early finish bonus — for the "
 "number of turns you lasted."
 msgstr ""
+"Вы получите награду — аналогичную награде за быстрое завершение — в "
+"зависимости от числа ходов, которое вы продержитесь."
 
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:209
 msgid "20% of finishing gold carried over to the next scenario."
-msgstr ""
+msgstr "20% золота переносится в следующий сценарий."
 
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:216
 msgid "Enemies will not initiate an attack if there is a risk of them dying."
-msgstr ""
+msgstr "Враги не будут на вас нападать, если есть риск, что они погибнут."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:226
@@ -4361,10 +4344,6 @@ msgstr "Стойте, я вижу корабль. Много кораблей. �
 
 #. [message]: speaker=Dursil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:252
-#, fuzzy
-#| msgid ""
-#| "Umm, we’re being invaded? Okay, we’ll sort out our differences later. "
-#| "Let’s get them first."
 msgid ""
 "Umm, we’re being invaded? Fine, we’ll sort out our differences later. Let’s "
 "get them first."
@@ -4383,11 +4362,6 @@ msgstr "Взять их!"
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:324
-#, fuzzy
-#| msgid ""
-#| "Gee, and you were practicing that speech for days. I guess that’s it for "
-#| "diplomacy then. Haldric, we should avoid calling upon too many units, and "
-#| "avoid fighting them. There has to be a peaceful resolution to this."
 msgid ""
 "Gee, and you were practicing that speech for days. I guess that’s it for "
 "diplomacy then. Haldric, we should avoid bloodshed even if we have to ward "
@@ -5124,11 +5098,6 @@ msgstr "Ссирк"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_Lizard_Beach.cfg:137
-#, fuzzy
-#| msgid ""
-#| "After a long trek Prince Haldric, and his companions find themselves on a "
-#| "sunny beach. While normally this would be a pleasant occurrence, they "
-#| "find the saurians hard at work there."
 msgid ""
 "After a long trek, Prince Haldric and his companions find themselves on a "
 "sunny beach. While normally this would be a pleasant occurrence, they find "
@@ -6294,11 +6263,6 @@ msgstr "Глупец, или доведенная до отчаяния кучк
 
 #. [message]: speaker=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:331
-#, fuzzy
-#| msgid ""
-#| "Casting fire is the least of the Ruby's abilities. You are twice a fool, "
-#| "for having failed to plumb more than its most trivial use and for having "
-#| "given it away."
 msgid ""
 "Casting fire is the least of the Ruby’s abilities. You are twice a fool, for "
 "having failed to plumb more than its most trivial use and for having given "
@@ -6928,11 +6892,6 @@ msgstr ""
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:306
-#, fuzzy
-#| msgid ""
-#| "Probably not. And, if nothing else, the hero-king of Wesnoth, Haldric "
-#| "Dragonbane, will need someone to remind him that he does not eat lighting "
-#| "and belch thunder. I... accept."
 msgid ""
 "Probably not. And, if nothing else, the hero-king of Wesnoth, Haldric "
 "Dragonbane, will need someone to remind him that he does not eat lightning "
@@ -6944,14 +6903,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:310
-#, fuzzy
-#| msgid ""
-#| "It was never said afterwards that the marriage of Haldric and Jessene was "
-#| "exactly tranquil. But it was also said that neither could stand be long "
-#| "separated from the other, and she bore him strong children that mingled "
-#| "the blood of their diverse ancestries. Many followed their example, and "
-#| "the two refugee peoples from the Green Isles became fused into one in the "
-#| "new kingdom."
 msgid ""
 "It was never said afterwards that the marriage of Haldric and Jessene was "
 "exactly tranquil. But it was also said that neither could long stand to be "
@@ -6968,12 +6919,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:315
-#, fuzzy
-#| msgid ""
-#| "In later ages the bards would sing the ‘The Breaking of the Pact’, an "
-#| "epic tale of Haldric’s betrayal of the elves. They would whisper of the "
-#| "price he and his descendants would pay for that betrayal without knowing "
-#| "the whole truth."
 msgid ""
 "In later ages the bards would sing ‘The Breaking of the Pact’, an epic tale "
 "of Haldric’s betrayal of the elves. They would whisper of the price he and "
@@ -7141,14 +7086,6 @@ msgstr "Знатная Весфолька"
 #. [unit_type]: id=Wesfolk Leader, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:22
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:23
-#, fuzzy
-#| msgid ""
-#| "Born in the Wesfolk aristocracy, she and her people were excluded from "
-#| "society by their lords, who betrayed their loyalty when a war against "
-#| "Haldric’s people was being lost. This outcast still conserves her "
-#| "nobleness in her veins and in the battlefield she has earned valuable "
-#| "experience, which continues increasing with time, as does her natural "
-#| "leadership."
 msgid ""
 "Born in the Wesfolk aristocracy, she and her people were excluded from "
 "society by their lords, who betrayed their loyalty when a war against "
@@ -7188,14 +7125,6 @@ msgstr "Весфолькская изгнанница"
 
 #. [unit_type]: id=Wesfolk Outcast, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Born in the Wesfolk aristocracy, she and her people were excluded from "
-#| "society by their lords, who betrayed their loyalty when a war against "
-#| "Haldric’s people was being lost. This outcast still conserves her "
-#| "nobleness in her veins and in the battlefield she has earned valuable "
-#| "experience, which she can lend to her people for turning a fight in their "
-#| "favor."
 msgid ""
 "Born in the Wesfolk aristocracy, she and her people were excluded from "
 "society by their lords, who betrayed their loyalty when a war against "
@@ -7250,16 +7179,10 @@ msgstr "отвлекает"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:7
-#, fuzzy
-#| msgid ""
-#| "Distract:\n"
-#| "This unit negates enemy Zones of Control around itself for allied units "
-#| "(but not for itself)."
 msgid ""
 "This unit negates enemy Zones of Control around itself for allied units (but "
 "not for itself)."
 msgstr ""
-"Отвлекает:\n"
 "Этот боец нейтрализует вражеские зоны контроля вокруг себя для своих "
 "союзников (но не для себя самого)."
 
@@ -7396,15 +7319,3 @@ msgid ""
 msgstr ""
 "Это действительно замечательные новости. Наши ряды удвоились. Но вернёмся к "
 "насущным вопросам."
-
-#~ msgid "You retrieve $amount_gold pieces of gold."
-#~ msgstr "Вы получили $amount_gold золотых монет."
-
-#~ msgid "No. It can’t be!"
-#~ msgstr "Нет. Не может быть!"
-
-#~ msgid "Surprisingly-Treelike"
-#~ msgstr "Подозрительно-Похож-На-Дерево"
-
-#~ msgid "Theylook-Thesame-Toyou"
-#~ msgstr "Попробуй-Их-Различи"

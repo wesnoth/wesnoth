@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-man.po\n"
 "POT-Creation-Date: 2014-03-23 18:06+0100\n"
-"PO-Revision-Date: 2013-08-01 14:05+0400\n"
+"PO-Revision-Date: 2014-11-11 12:41+0300\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Poedit-Language: Russian\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Emacs 24.2.50.1, po-mode 2.2+0.4\n"
+"X-Generator: Emacs 24.3.1, po-mode 2.22+0.4\n"
 
 # type: TH
 #. type: TH
@@ -152,10 +152,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy, no-wrap
-#| msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
+#, no-wrap
 msgid "B<--campaign-difficulty [E<lt>difficultyE<gt>]>"
-msgstr "B<--campaign-difficulty E<lt>сложностьE<gt>>"
+msgstr "B<--campaign-difficulty [E<lt>difficultyE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -196,18 +195,15 @@ msgstr "перезаписывает каталог данных вновь ук
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:63
-#, fuzzy, no-wrap
-#| msgid "B<--path>"
+#, no-wrap
 msgid "B<--data-path>"
-msgstr "B<--path>"
+msgstr "B<--data-path>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:66
-#, fuzzy
-#| msgid "prints the name of the game data directory and exits."
 msgid "path the path of the data directory and exits."
-msgstr "вывести название каталога данных игры и выйти."
+msgstr "вывести путь к каталогу данных и выйти."
 
 # type: TP
 #. type: TP
@@ -481,25 +477,12 @@ msgstr "вывести название каталога данных игры �
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:152
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
+#, no-wrap
 msgid "B<-p, --preprocess E<lt>source file/folderE<gt> E<lt>target directoryE<gt>>"
-msgstr "B<--preprocess, -p[=E<lt>определение1E<gt>,E<lt>определение2E<gt>,...] E<lt>файл/директорияE<gt> E<lt>целевая директорияE<gt>>"
+msgstr "B<-p, --preprocess E<lt>исходный файл/каталогE<gt> E<lt>целеой каталогE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:162
-#, fuzzy
-#| msgid ""
-#| "preprocesses a specified file/folder. The file(s) will be written in "
-#| "specified target directory: a plain cfg file and a processed cfg file. If "
-#| "a folder is specified, it will be preprocessed recursively based on the "
-#| "known preprocessor rules. The common macroses from the data/core/macros "
-#| "will be preprocessed before the specified resources.  B<define1,"
-#| "define2,...> - the extra defines will be added before processing the "
-#| "files. If you want to add them you must add the '=' character before.  If "
-#| "'SKIP_CORE' is in the define list the data/core won't be preprocessed.  "
-#| "Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/result> or B<-"
-#| "p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result>"
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "
@@ -510,22 +493,19 @@ msgid ""
 "preprocessor visit: http://wiki.wesnoth.org/PreprocessorRef#Command-"
 "line_preprocessor"
 msgstr ""
-"запустить препоцессор для заданного файла (каталога).  Файл(ы) пише(у)тся в "
-"заданный целевой каталог: исходный cfg-файл и обработанный cfg-файл.  Если "
-"каталог задан, он будет обрабатываться рекурсивно в соответствии с "
-"известными правилами препроцессора.  Общие макросы из каталога data/core/"
-"macros будут обработаны до заданных ресурсов.  B<define1,define2,...> - "
-"дополнительные определения будут добавлены перед обработкой файлов.  Если вы "
-"хотите их добавить, поставьте перед ними знак '='.  Если в списке "
-"определений есть 'SKIP_CORE', то каталог data/core обработан не будет.  "
-"Пример: B<-p ~/wesnoth/data/campaigns/tutorial ~/result> или B<-"
-"p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result>"
+"запустить препоцессор для заданного файла (каталога).  Для каждого файла в "
+"заданный целевой каталог пишется исходный cfg-файл и обработанный cfg-файл.  "
+"Если каталог задан, он будет обрабатываться рекурсивно в соответствии с "
+"известными правилами препроцессора.  Общие макросы из каталога \"data/core/"
+"macros\" будут обработаны до заданных ресурсов.  Пример: B<-p ~/wesnoth/data/"
+"campaigns/tutorial ~/result.> Подробнее о препроцессоре можно прочитать "
+"здесь: http://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:163
 #, no-wrap
 msgid "B<--preprocess-defines=DEFINE1,DEFINE2,etc>"
-msgstr ""
+msgstr "B<--preprocess-defines=ОПРЕДЕЛЕНИЕ1,ОПРЕДЕЛЕНИЕ2,итд>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:168
@@ -534,6 +514,9 @@ msgid ""
 "B<SKIP_CORE> is in the define list the \"data/core\" directory won't be "
 "preprocessed."
 msgstr ""
+"список определений, используемых командой '--preprocess'. Если в списке "
+"определения есть B<SKIP_CORE>, то каталог \"data/core\" не будет прогоняться "
+"через препроцессор."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:168
@@ -606,7 +589,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:186
 #, no-wrap
 msgid "B<--username>I<E<lt>usernameE<gt>>"
-msgstr ""
+msgstr "B<--username>I<E<lt>имя_пользователяE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:189
@@ -614,12 +597,14 @@ msgid ""
 "uses E<lt>usernameE<gt> when connecting to a server, ignoring other "
 "preferences."
 msgstr ""
+"использовать E<lt>имя_пользователяE<gt> при соединении с сервером, игнорируя "
+"другие предпочтения."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:189
 #, no-wrap
 msgid "B<--password>I<E<lt>passwordE<gt>>"
-msgstr ""
+msgstr "B<--password>I<E<lt>парольE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:192
@@ -627,6 +612,8 @@ msgid ""
 "uses E<lt>passwordE<gt> when connecting to a server, ignoring other "
 "preferences. Unsafe."
 msgstr ""
+"использовать E<lt>парольE<gt> при соединении с сервером, игнорируя другие "
+"предпочтения. Небезопасно."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:192
@@ -655,19 +642,12 @@ msgstr "запустить маленький тестовый сценарий.
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:198
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--userconfig-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ name>"
+msgstr "B<--userconfig-dir>I<\\ имя>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:207
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#| "path for the configuration directory outside the $HOME or \"My Documents"
-#| "\\eMy Games\""
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -676,17 +656,18 @@ msgid ""
 "wesnoth, on other systems to the userdata path."
 msgstr ""
 "устанавливает, что папка с пользовательскими настройками находится в "
-"подкаталоге I<name> каталога $HOME (или \"Мои документы\\eМои игры\" для "
+"подкаталоге I<имя> каталога $HOME (или \"Мои документы\\eМои игры\" для "
 "Windows).  Если папка с пользовательскими настройками находится вне папки "
-"$HOME (или \"Мои документы\\eМои игры\"), задайте абсолютный путь."
+"$HOME (или \"Мои документы\\eМои игры\"), задайте абсолютный путь.  В X11 по "
+"умолчанию используется $XDG_CONFIG_HOME или $HOME/.config/wesnoth, в других "
+"системах — путь к пользовательским данным."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:207
-#, fuzzy, no-wrap
-#| msgid "B<--config-path>"
+#, no-wrap
 msgid "B<--userconfig-path>"
-msgstr "B<--config-path>"
+msgstr "B<--userconfig-path>"
 
 # type: Plain text
 #. type: Plain text
@@ -697,44 +678,34 @@ msgstr "вывести название каталога пользовател�
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:210
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
+#, no-wrap
 msgid "B<--userdata-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ name>"
+msgstr "B<--userdata-dir>I<\\ имя>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:217
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#| "path for the configuration directory outside the $HOME or \"My Documents"
-#| "\\eMy Games\""
 msgid ""
 "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
 "Games\" for windows.  You can also specify an absolute path for the userdata "
 "directory outside the $HOME or \"My Documents\\eMy Games\"."
 msgstr ""
-"устанавливает, что папка с пользовательскими настройками находится в "
-"подкаталоге I<name> каталога $HOME (или \"Мои документы\\eМои игры\" для "
-"Windows).  Если папка с пользовательскими настройками находится вне папки "
-"$HOME (или \"Мои документы\\eМои игры\"), задайте абсолютный путь."
+"устанавливает, что папка пользовательских данных находится в подкаталоге "
+"I<имя> каталога $HOME (или \"Мои документы\\eМои игры\" для Windows).  Если "
+"папка пользовательских данных находится вне папки $HOME (или \"Мои документы"
+"\\eМои игры\"), задайте абсолютный путь."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:217
-#, fuzzy, no-wrap
-#| msgid "B<--path>"
+#, no-wrap
 msgid "B<--userdata-path>"
-msgstr "B<--path>"
+msgstr "B<--userdata-path>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:220
-#, fuzzy
-#| msgid "prints the path of the user configuration directory and exits."
 msgid "prints the path of the userdata directory and exits."
-msgstr "вывести название каталога пользовательских настроек игры и выйти."
+msgstr "вывести путь к каталогу пользовательских данных и выйти."
 
 # type: TP
 #. type: TP
@@ -899,20 +870,19 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:269
 #, no-wrap
 msgid "B<--ignore-map-settings>"
-msgstr ""
+msgstr "B<--ignore-map-settings>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:272
 msgid "do not use map settings, use default values instead."
-msgstr ""
+msgstr "не использовать настройки карты, взять значения по умолчанию."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:272
-#, fuzzy, no-wrap
-#| msgid "B<--era=>I<value>"
+#, no-wrap
 msgid "B<--multiplayer-repeat=>I<value>"
-msgstr "B<--era=>I<значение>"
+msgstr "B<--multiplayer-repeat=>I<число>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:279
@@ -920,6 +890,8 @@ msgid ""
 "repeats a multiplayer game I<value> times. Best to use with B<--nogui> for "
 "scriptable benchmarking."
 msgstr ""
+"повторить многопользовательскую игру I<число> раз. Для скриптов тестирования "
+"лучше использовать с B<--nogui>."
 
 # type: TP
 #. type: TP

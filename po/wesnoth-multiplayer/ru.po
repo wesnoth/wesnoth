@@ -8,12 +8,13 @@
 # Alexandr Menovchicov (VaM) - orders@kypi.ru
 # Sergey Khlutchin (Khlut) - Sergey.Khlutchin@gmail.com
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006, 2007.
+# Fedor Khodkov <fkhodkov@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-07-12 20:06+0200\n"
-"PO-Revision-Date: 2012-11-16 16:04+0400\n"
+"PO-Revision-Date: 2014-11-11 12:48+0300\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -22,7 +23,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Emacs 24.2.1, po-mode 2.2+0.4\n"
+"X-Generator: Emacs 24.3.1, po-mode 2.22+0.4\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Language: Russian\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
@@ -35,7 +36,7 @@ msgstr "Пользовательская карта"
 #. [multiplayer_side]: id=Custom
 #: data/multiplayer/eras.cfg:5
 msgid "Custom"
-msgstr ""
+msgstr "По выбору"
 
 #. [multiplayer_side]: id=Random
 #: data/multiplayer/eras.cfg:13
@@ -46,6 +47,7 @@ msgstr "Случайная"
 #: data/multiplayer/eras.cfg:125
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgstr ""
+"<span strikethrough='true' foreground='#%02x%02x%02x'>Сторона %d</span>"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:141
@@ -77,6 +79,8 @@ msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
 msgstr ""
+"Стандартная эра веснотского мультиплеера. Состоит из шести фракций и в целом "
+"сбалансирована."
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:197
@@ -90,11 +94,13 @@ msgid ""
 "units available for recruit. Consists of six factions. Not considered "
 "balanced."
 msgstr ""
+"Эра с более высоким уровнем бойцов: лидеры уровня 3 с возможностью нанимать "
+"бойцов уровня 1 и 2. Состоит из шести фракций. Не считается сбалансированной."
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:205
 msgid "Default + Khalifate"
-msgstr ""
+msgstr "По умолчанию+Халифат"
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:206
@@ -106,13 +112,16 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"Эра с еще одной фракцией в дополнение к шести из эры по умолчанию. Бойцы "
+"Халифата не используют магию, но полагаются на использование местности и "
+"скоориднированные удары на восходе или закате.\n"
+"\n"
+"Эра все еще дорабатывается так что не стесняйтесь сообщать о любых проблемах."
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:216
-#, fuzzy
-#| msgid "Age of Heroes"
 msgid "Age of Heroes + Khalifate"
-msgstr "Эпоха героев"
+msgstr "Эпоха героев+Халифат"
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:217
@@ -124,6 +133,11 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"Эра с еще одной фракцией в дополнение к шести из Эры Героев. Бойцы Халифата "
+"не используют магию, но полагаются на использование местности и "
+"скоориднированные удары на восходе или закате.\n"
+"\n"
+"Эра все еще дорабатывается так что не стесняйтесь сообщать о любых проблемах."
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -135,7 +149,7 @@ msgstr "Дрейки"
 #: data/multiplayer/factions/khalifate-aoh.cfg:4
 #: data/multiplayer/factions/khalifate-default.cfg:4
 msgid "Khalifate"
-msgstr ""
+msgstr "Халифат"
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
@@ -2231,15 +2245,3 @@ msgid ""
 msgstr ""
 "Тестирование Веснота, использует --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#, fuzzy
-#~| msgid "Random map"
-#~ msgid "Random map by YAMG"
-#~ msgstr "Случайная карта"
-
-#~ msgid "4p — Lagoon"
-#~ msgstr "4и - Лагуна"
-
-#~ msgid "Four factions contend for dominance over this watery settlement."
-#~ msgstr ""
-#~ "Четыре команды борятся за доминирование над этим болотистым поселением."

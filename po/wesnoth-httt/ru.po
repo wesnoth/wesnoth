@@ -11,13 +11,13 @@
 # Kotov Ilya <kotov_ilya@mail.ru>, 2006.
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2005, 2006, 2007.
 # Alexey Khudiakov <alexey.skladnoy@gmail.com>, 2007,2008.
-# Fedor Khod'kov <fedor76@istra.ru>, 2009, 2010
+# Fedor Khod'kov <fedor76@istra.ru>, 2009-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-httt.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-10-24 20:20+0200\n"
-"PO-Revision-Date: 2013-08-01 14:08+0400\n"
+"PO-Revision-Date: 2014-11-11 12:08+0300\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru_RU\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Emacs 24.2.50.1, po-mode 2.2+0.4\n"
+"X-Generator: Emacs 24.3.1, po-mode 2.22+0.4\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [campaign]: id=Heir_To_The_Throne
@@ -4804,6 +4804,8 @@ msgstr "Захватите Огненный Скипетр Конрадом ил
 msgid ""
 "If Delfador rests, he can concentrate on the location of the Sceptre of Fire."
 msgstr ""
+"Если дать Делфадору отдохнуть, он может сосредоточиться и увидеть место, где "
+"хранится Огненный скипетр."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:164
@@ -4881,11 +4883,13 @@ msgid ""
 "I think... I think if I were to concentrate a bit I could tell you where it "
 "is."
 msgstr ""
+"Я думаю... думаю, если мне удастся немного сосредоточиться, я смогу сказать "
+"вам, где скипетр."
 
 #. [floating_text]
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:275
 msgid "Concentrating"
-msgstr ""
+msgstr "Сосредоточен"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:299
@@ -4893,51 +4897,53 @@ msgid ""
 "I sense we are quite near the Sceptre; in fact, we should be able to see it "
 "right about now..."
 msgstr ""
+"Я думаю, мы уже рядом со Скипетром; вообще-то, мы уже должны были его "
+"увидеть..."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:362
 msgid "I sense the path to the sceptre is to the east of me."
-msgstr ""
+msgstr "Я чувствую, что скипетр к востоку от меня."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:363
 msgid "I sense the path to the sceptre is to the south-east of me."
-msgstr ""
+msgstr "Я чувствую, что скипетр к юго-востоку от меня."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:364
 msgid "I sense the path to the sceptre is to the south of me."
-msgstr ""
+msgstr "Я чувствую, что скипетр к югу от меня."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:365
 msgid "I sense the path to the sceptre is to the south-west of me."
-msgstr ""
+msgstr "Я чувствую, что скипетр к юго-западу от меня."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:366
 msgid "I sense the path to the sceptre is to the west of me."
-msgstr ""
+msgstr "Я чувствую, что скипетр к западу от меня."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:367
 msgid "I sense the path to the sceptre is to the north-west of me."
-msgstr ""
+msgstr "Я чувствую, что скипетр к северо-западу от меня."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:368
 msgid "I sense the path to the sceptre is to the north of me."
-msgstr ""
+msgstr "Я чувствую, что скипетр к северу от меня."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:369
 msgid "I sense the path to the sceptre is to the north-east of me."
-msgstr ""
+msgstr "Я чувствую, что скипетр к северо-востоку от меня."
 
 #. [scenario]: id=18_A_Choice_Must_Be_Made
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:4
 msgid "A Choice Must Be Made"
-msgstr "Нелёгкий выбор"
+msgstr "Время выбирать"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:16
@@ -6910,16 +6916,12 @@ msgstr ""
 
 #. [message]: speaker=Parandra
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:155
-#, fuzzy
-#| msgid ""
-#| "Princess, when Delfador the Great speaks of the Queen Mother, Asheviere, "
-#| "ordering the princes of Wesnoth to be put to death, he speaks the truth."
 msgid ""
 "Princess, when Delfador the Great speaks of the Queen Dowager, Asheviere, "
 "ordering the princes of Wesnoth to be put to death, he speaks the truth."
 msgstr ""
-"Принцесса, когда Делфадор Великий говорит, что королева-мать Ашевир велела "
-"убить наследников Веснота, он говорит правду."
+"Принцесса, когда Делфадор Великий говорит, что Вдовствующая королева Ашевир "
+"велела убить наследников Веснота, он говорит правду."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:159
@@ -6940,20 +6942,14 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:173
-#, fuzzy
-#| msgid ""
-#| "Well, that is why I must take the Sceptre. I will return, and people will "
-#| "accept me as Queen. I will rule justly and fairly. My mother is only "
-#| "Queen Mother. The throne is rightfully mine, and with the Sceptre I can "
-#| "prove it."
 msgid ""
 "Well, that is why I must take the Sceptre. I will return, and people will "
 "accept me as Queen. I will rule justly and fairly. My mother is only Queen "
 "Dowager. The throne is rightfully mine, and with the Sceptre I can prove it."
 msgstr ""
 "Но именно по этому я должна получить Скипетр. Я вернусь, и люди признают "
-"меня королевой. Я буду править честно и справедливо. Моя мама всего лишь "
-"королева-мать. Трон по праву принадлежит мне, и Скипетр докажет это."
+"меня королевой. Я буду править честно и справедливо. Моя мать всего лишь "
+"Вдовствующая королева. Трон по праву принадлежит мне, и Скипетр докажет это."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:178
@@ -6966,12 +6962,6 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:184
-#, fuzzy
-#| msgid ""
-#| "Well, I have the Sceptre! I will return and the people will accept me as "
-#| "Queen! My mother is only Queen Mother. The Throne is rightfully mine, and "
-#| "I will rule from it with justice and fairness. I may even accept you as "
-#| "my adviser and counselor, Delfador."
 msgid ""
 "Well, I have the Sceptre! I will return and the people will accept me as "
 "Queen! My mother is only Queen Dowager. The Throne is rightfully mine, and I "
@@ -6979,8 +6969,8 @@ msgid ""
 "adviser and counselor, Delfador."
 msgstr ""
 "Но Скипетр у меня! Я вернусь, и люди признают меня королевой! Моя мама всего "
-"лишь королева-мать. Трон по праву принадлежит мне, и я буду править честно и "
-"справедливо. Я даже сделаю тебя своим советником, Делфадор."
+"лишь вдовствующая королева. Трон по праву принадлежит мне, и я буду править "
+"честно и справедливо. Я даже сделаю тебя своим советником, Делфадор."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:189
@@ -8188,17 +8178,12 @@ msgstr "Тёмная Королева"
 
 #. [unit_type]: id=Dark Queen, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:19
-#, fuzzy
-#| msgid ""
-#| "The evil queen mother Asheviere has terrorized Wesnoth for many years. "
-#| "Her knowledge of magic makes her a worthy foe in combat, although her "
-#| "power is mostly derived from those she commands."
 msgid ""
 "The evil queen Asheviere has terrorized Wesnoth for many years. Her "
 "knowledge of magic makes her a worthy foe in combat, although her power is "
 "mostly derived from those she commands."
 msgstr ""
-"Злобная королева-мать Ашевир терроризировала Веснот много лет. Её познания в "
+"Злобная королева Ашевир терроризировала Веснот много лет. Её познания в "
 "магии делают её опасным врагом в битве, хотя подлинная опора её могущества — "
 "те, кем она командует."
 
@@ -8260,13 +8245,6 @@ msgstr "Принцесса"
 #. [variation]: id=Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:33
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:93
-#, fuzzy
-#| msgid ""
-#| "A noble by birth, the Princess has learnt swordplay with the greatest "
-#| "generals and battle tactics with the greatest sages, making her both a "
-#| "great combatant and leader. The units of lower level around the Princess "
-#| "will fight better due to her presence. The Princess is also nimble and "
-#| "dextrous, having skills like that of a thief."
 msgid ""
 "A noble by birth, the Princess has learnt swordplay with the greatest "
 "generals and battle tactics with the greatest sages, making her both a great "
@@ -8276,8 +8254,7 @@ msgstr ""
 "Принцесса, потомок знатного рода, училась искусству владения мечом у "
 "величайших воинов, тактике боя у выдающихся стратегов, став великой "
 "воительницей и лидером. Сильная волей, закалённая в боях, она помогает всем, "
-"кто окружает её, сражаться ещё искуснее. Кроме того, принцесса проворна и "
-"сообразительна — многие воры позавидуют её умениям."
+"кто окружает её, сражаться ещё искуснее."
 
 #. [unit_type]: id=Sea Orc, race=orc
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:4
@@ -8316,7 +8293,7 @@ msgstr "когти"
 #. [dummy]: id=initiative
 #: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:9
 msgid "initiative"
-msgstr ""
+msgstr "инициатива"
 
 #. [dummy]: id=initiative
 #: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:10
@@ -8324,12 +8301,16 @@ msgid ""
 "All adjacent friendly units will strike first in melee combat, even when "
 "defending."
 msgstr ""
+"Все окружающие дружественные бойцы будут наносить первый удар в рукопашной "
+"схватке — даже если они защищаются."
 
 #: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:15
 msgid ""
 "This unit's grasp of melee tactics allows adjacent allies to strike the "
 "first blow even when defending."
 msgstr ""
+"Этот боец так хорошо понимает в тактике рукопашного боя, что окружающие "
+"союзники будут наносить первый удар — даже если они защищаются."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/utils/deaths.cfg:9

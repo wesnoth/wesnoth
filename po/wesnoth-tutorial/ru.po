@@ -1,12 +1,12 @@
 # translation of comp.po to Russian
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006, 2007.
-# Fedor Khodkov <fedor76@istra.ru> 2009, 2010
+# Fedor Khodkov <fedor76@istra.ru> 2009-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: comp\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-05-24 20:08+0200\n"
-"PO-Revision-Date: 2012-04-07 03:21+0400\n"
+"PO-Revision-Date: 2014-11-15 12:03+0300\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Emacs 24.0.94.1, po-mode 2.2+0.4\n"
+"X-Generator: Emacs 24.4.1, po-mode 2.22+0.4\n"
 "X-Poedit-Language: Russian\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -816,7 +816,7 @@ msgstr ""
 #. [set_menu_item]: id=skip_item
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1202
 msgid "End Scenario"
-msgstr ""
+msgstr "Завершить сценарий"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1215
@@ -824,6 +824,8 @@ msgid ""
 "Do you want to keep practicing? You can end this scenario at any time by "
 "using the <b>End Scenario</b> item in the context menu."
 msgstr ""
+"Хотите продолжить тренировку? Вы можете закончить этот сценарий в любой "
+"момент, выбрав пункт <b>Конец сценарий</b> в контекстном меню."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1217
@@ -1414,25 +1416,17 @@ msgstr "Нападите на орка лучником."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:955
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "To review the capabilities of any unit—including an enemy—hover the mouse "
-#| "over it, and you will see a unit summary on the right of the screen"
 msgid ""
 "To review the capabilities of any unit—including an enemy—hover the mouse "
 "over it, and you will see a unit summary on the right of the screen"
 msgstr ""
-"\n"
 "Чтобы посмотреть, на что способен любой боец — включая врагов — наведите на "
 "него мышь, и увидите его свойства в правой части экрана"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:955
-#, fuzzy
-#| msgid "<big>Unit Summaries</big>"
 msgid "Unit Summaries"
-msgstr "<big>Свойства бойца</big>"
+msgstr "Свойства бойца"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:963
@@ -1474,25 +1468,16 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:992
-#, fuzzy
-#| msgid "<big>Long-distance Movement</big>"
 msgid "Long-distance Movement"
-msgstr "<big>Длинные ходы</big>"
+msgstr "Длинные ходы"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:992
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can order a unit to move for multiple turns by selecting the unit and "
-#| "clicking on the destination. A number will indicate how many turns it "
-#| "will take to get there."
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
 "take to get there."
 msgstr ""
-"\n"
 "Вы можете отдать бойцу приказ двигаться в течение нескольких ходов. Для "
 "этого выберите бойца и кликните на месте назначения. Число покажет, сколько "
 "ходов ему потребуется, чтобы туда добраться."
@@ -1684,28 +1669,19 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1214
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "After this dialog, hold the mouse over the landscape image below the "
-#| "minimap on the right. This brings up a description of the time of day, "
-#| "showing who has the advantage."
 msgid ""
 "After this dialog, hold the mouse over the landscape image below the minimap "
 "on the right. This brings up a description of the time of day, showing who "
 "has the advantage."
 msgstr ""
-"\n"
 "После этого диалога наведите указатель мыши на изображение ландшафта над "
 "миникартой справа. Вы увидите описание времени суток и узнаете, у кого "
 "сейчас преимущество."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1214
-#, fuzzy
-#| msgid "<big>Time of Day</big>"
 msgid "Time of Day"
-msgstr "<big>Время суток</big>"
+msgstr "Время суток"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1221
@@ -1733,21 +1709,11 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1235
-#, fuzzy
-#| msgid "<big>Tracking Unused Units</big>"
 msgid "Tracking Unused Units"
-msgstr "<big>Ищем неиспользованных бойцов</big>"
+msgstr "Ищем неиспользованных бойцов"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1235
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can ensure you use all your troops by pressing <b>n</b> to step from "
-#| "one unit to the next. If you press <b>space</b>, you can mark the "
-#| "currently selected unit as having finished its turn, which stops you "
-#| "moving it by accident later on. When <b>n</b> no longer selects a new "
-#| "unit, it’s safe to end your turn."
 msgid ""
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
 "unit to the next. If you press <b>space</b>, you can mark the currently "
@@ -1755,7 +1721,6 @@ msgid ""
 "accident later on. When <b>n</b> no longer selects a new unit, it’s safe to "
 "end your turn."
 msgstr ""
-"\n"
 "Чтобы убедиться, что вы использовали всех своих бойцов, нажмите на клавишу "
 "<b>n</b>. Она автоматически выбирает следующего бойца. Нажмите <b>пробел</"
 "b>, чтобы обозначить, что боец на этом ходу больше никуда не пойдёт. Когда "
@@ -1764,48 +1729,31 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1240
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "In this scenario, you only need to defeat the orc leader to win. (Victory "
-#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
-#| "the <b>Main Menu</b>)."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. (Victory "
 "conditions for a scenario are given under <b>Scenario Objectives</b> in the "
 "<b>Main Menu</b>)."
 msgstr ""
-"\n"
 "В этой сценарии для победы достаточно убить лидера орков. (Условия победы в "
 "сценарии можно увидеть, выбрав пункт <b>Задачи сценария</b> в <b>главном "
 "меню</b>)."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1240
-#, fuzzy
-#| msgid "<big>Victory Conditions</big>"
 msgid "Victory Conditions"
-msgstr "<big>Условия победы</big>"
+msgstr "Условия победы"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1245
-#, fuzzy
-#| msgid "<big>Recruit the Right Unit Types</big>"
 msgid "Recruit the Right Unit Types"
-msgstr "<big>Вербуйте бойцов с умом</big>"
+msgstr "Вербуйте бойцов с умом"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1245
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Remember to recruit troops useful for the situation. Archers are "
-#| "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgstr ""
-"\n"
 "Не забывай при необходимости вербовать бойцов. Лучники обычно хороши против "
 "пехоты орков, волчьих всадников, и их лидера."
 
@@ -1902,25 +1850,16 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1440
-#, fuzzy
-#| msgid "<big>Tracking Enemy Movement</big>"
 msgid "Tracking Enemy Movement"
-msgstr "<big>Отслеживаем ходы противника</big>"
+msgstr "Отслеживаем ходы противника"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1440
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can see where an enemy can reach by moving the mouse over them. You "
-#| "can see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
-#| "command from the <b>Actions</b> menu."
 msgid ""
 "You can see where an enemy can reach by moving the mouse over them. You can "
 "see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
 "command from the <b>Actions</b> menu."
 msgstr ""
-"\n"
 "Если навести указатель мыши на противника, то можно увидеть, насколько "
 "далеко он может двигаться. Также можно увидеть все возможные ходы противника "
 "с помощью команды <b>Показывать ходы противника</b> из меню <b>Действия</b>."
@@ -2066,6 +2005,3 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:24
 msgid "flail"
 msgstr "кистень"
-
-#~ msgid "Do you want to keep practicing?"
-#~ msgstr "Хотите продолжить практиковаться?"
