@@ -2336,12 +2336,6 @@ void server::process_data_lobby(const network::connection sock,
 	}
 }
 
-
-static size_t count_sides(const simple_wml::node& scenario)
-{
-	return wesnothd::game::starting_pos(scenario)->children("side").size();
-}
-
 /**
  * Process data sent from a member of a game.
  */
@@ -2369,14 +2363,6 @@ void server::process_data_game(const network::connection sock,
 	// If this is data describing the level for a game.
 	if (data.child("snapshot") || data.child("scenario")) {
 		if (!g->is_owner(sock)) {
-			return;
-		}
-		if (count_sides(data.root()) > gamemap::MAX_PLAYERS) {
-			delete_game(itor);
-			std::stringstream msg;
-			msg << "This server does not support games with more than "
-				<< gamemap::MAX_PLAYERS << " sides. Game aborted.";
-			rooms_.lobby().send_server_message(msg.str(), sock);
 			return;
 		}
 		// If this game is having its level data initialized
@@ -2478,14 +2464,6 @@ void server::process_data_game(const network::connection sock,
 			return;
 		}
 		g->save_replay();
-		if (count_sides(*scenario) > gamemap::MAX_PLAYERS) {
-			delete_game(itor);
-			std::stringstream msg;
-			msg << "This server does not support games with more than "
-				<< gamemap::MAX_PLAYERS << " sides.";
-			rooms_.lobby().send_server_message(msg.str(), sock);
-			return;
-		}
 		// Record the full scenario in g->level()
 		g->level().clear();
 		scenario->copy_into(g->level().root());
