@@ -989,6 +989,7 @@ void playsingle_controller::play_ai_turn(){
 	catch(...) {
 		turn_data_.sync_network();
 	}
+	turn_data_.sync_network();
 	gui_->recalculate_minimap();
 	gui_->invalidate_unit();
 	gui_->invalidate_game_status();

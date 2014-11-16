@@ -260,6 +260,7 @@ possible_end_play_signal playmp_controller::play_human_turn(){
 			turn_data_.send_data();
 			throw;
 		}
+		turn_data_.send_data();
 
 		gui_->draw();
 	}
@@ -303,6 +304,7 @@ possible_end_play_signal playmp_controller::play_idle_loop()
 			turn_data_.send_data();
 			throw;
 		}
+		turn_data_.send_data();
 	}
 	return boost::none;
 }
