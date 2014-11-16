@@ -179,7 +179,7 @@ possible_end_play_signal playmp_controller::play_human_turn(){
 		end_turn_enable(true);
 	}
 	while(!end_turn_) {
-		turn_info_send send_safe(turn_data_);
+		try {
 			config cfg;
 
 			if(network_reader_.read(cfg)) {
@@ -254,6 +254,12 @@ possible_end_play_signal playmp_controller::play_human_turn(){
 				//throw end_turn_exception();
 			}
 		}
+		}
+		catch(...)
+		{
+			turn_data_.send_data();
+			throw;
+		}
 
 		gui_->draw();
 	}
@@ -268,7 +274,8 @@ possible_end_play_signal playmp_controller::play_idle_loop()
 
 	while (!end_turn_)
 	{
-		turn_info_send send_safe(turn_data_);
+		try
+		{
 		config cfg;
 		if(network_reader_.read(cfg)) {
 			turn_info::PROCESS_DATA_RESULT res;
@@ -290,6 +297,12 @@ possible_end_play_signal playmp_controller::play_idle_loop()
 		}
 
 		gui_->draw();
+		}
+		catch(...)
+		{
+			turn_data_.send_data();
+			throw;
+		}
 	}
 	return boost::none;
 }

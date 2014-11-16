@@ -979,11 +979,15 @@ void playsingle_controller::play_ai_turn(){
 	}
 
 	turn_data_.send_data();
-	turn_info_sync sync_safe(turn_data_);
-
 	try {
-		ai::manager::play_turn(player_number_);
-	} catch (end_turn_exception&) {
+		try {
+			ai::manager::play_turn(player_number_);
+		} 
+		catch (end_turn_exception&) {
+		}
+	} 
+	catch(...) {
+		turn_data_.sync_network();
 	}
 	gui_->recalculate_minimap();
 	gui_->invalidate_unit();
