@@ -2655,6 +2655,9 @@ void server::process_data_game(const network::connection sock,
 	} else if (data.child("whiteboard")) {
 		g->process_whiteboard(data,pl);
 		return;
+	} else if (data.child("change_controller_wml")) {
+		g->process_change_controller_wml(data,pl);
+		return;
 	} else if (data.child("require_random")) {
 		g->require_random(data,pl);
 		return;

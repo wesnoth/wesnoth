@@ -117,10 +117,11 @@ bool game::is_observer(const network::connection player) const {
 }
 
 bool game::is_muted_observer(const network::connection player) const {
-	if (is_observer(player)) {
-		if (all_observers_muted_) return true;
-	} else {
+	if (!is_observer(player)) {
 		return false;
+	}
+	if (all_observers_muted_) {
+		return true;
 	}
 	return std::find(muted_observers_.begin(), muted_observers_.end(), player)
 		!= muted_observers_.end();
@@ -1064,6 +1065,32 @@ void game::process_whiteboard(simple_wml::document& data, const player_map::cons
 	}
 
 	send_data_team(data,team_name,user->first,"whiteboard");
+}
+
+void game::process_change_controller_wml(simple_wml::document& data, const player_map::const_iterator user)
+{
+	if(!started_ || !is_player(user->first))
+		return;
+
+	simple_wml::node const& ccw_node = *data.child("change_controller_wml");
+	const size_t side_index = ccw_node["side"].to_int() - 1;
+	const std::string new_controller = ccw_node["controller"].to_string();
+	if(new_controller != "human" && new_controller != "ai" && new_controller != "null") {
+		return;	
+	}
+	if(side_index >= sides_.size()) {
+		return;
+	}
+	const bool was_null = this->side_controllers_[side_index] == "null";
+	const bool becomes_null = new_controller == "null";
+	if(was_null) {
+		sides_[side_index] = user->first;
+	}
+	if(becomes_null) {
+		sides_[side_index] = 0;
+	}
+	side_controllers_[side_index] = new_controller;
+	//Dont send or store this change, all players should have gotten it by wml.
 }
 
 bool game::end_turn() {

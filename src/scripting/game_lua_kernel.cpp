@@ -883,7 +883,7 @@ static int impl_side_set(lua_State *L)
 	modify_bool_attrib("scroll_to_leader", t.set_scroll_to_leader(value));
 	modify_tstring_attrib("user_team_name", t.change_team(t.team_name(), value));
 	modify_string_attrib("team_name", t.change_team(value, t.user_team_name()));
-	modify_string_attrib("controller", t.change_controller(value));
+	modify_string_attrib("controller", t.change_controller_by_wml(value));
 	modify_string_attrib("color", t.set_color(value));
 	modify_string_attrib("defeat_condition", t.set_defeat_condition_string(value));
 	modify_bool_attrib("lost", t.set_lost(value));

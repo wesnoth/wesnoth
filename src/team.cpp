@@ -25,10 +25,13 @@
 #include "game_data.hpp"
 #include "map.hpp"
 #include "resources.hpp"
+#include "play_controller.hpp"
 #include "game_preferences.hpp"
 #include "sdl/utils.hpp" // Only needed for int_to_color (!)
 #include "unit_types.hpp"
 #include "whiteboard/side_actions.hpp"
+#include "network.hpp"
+#include "config_assign.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/assign/list_of.hpp>
@@ -37,6 +40,7 @@ static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define WRN_NG LOG_STREAM(warn, log_engine)
+#define ERR_NG LOG_STREAM(warn, log_engine)
 
 static lg::log_domain log_engine_enemies("engine/enemies");
 #define DBG_NGE LOG_STREAM(debug, log_engine_enemies)
@@ -459,6 +463,44 @@ void team::set_share_maps( bool share_maps ){
 
 void team::set_share_view( bool share_view ){
 	info_.share_view = share_view;
+}
+void team::change_controller_by_wml(const std::string& new_controller_string)
+{
+	try
+	{
+		CONTROLLER new_controller = lexical_cast<CONTROLLER> (new_controller_string);
+		if(new_controller == NETWORK || new_controller == NETWORK_AI) {
+			throw bad_enum_cast(new_controller_string, "CONTROLLER"); //catched below
+		}
+		if(new_controller == EMPTY && resources::controller->current_side() == this->side()) {
+			//We dont allow changing the currently active side to "null" controlled.
+			throw bad_enum_cast(new_controller_string, "CONTROLLER"); //catched below 
+		}
+		if((*teams)[resources::controller->current_side() - 1].is_local()) {
+			//TODO: move netword stuff to playturn.cpp
+			//the currently active side informs the mp server about the controller change,
+			network::send_data(config_of
+					("change_controller_wml",config(config_of
+						("side", this->side())
+						("controller", new_controller_string)
+					))
+				, 0);
+		}
+		// In case this->is_empty() this side wasn't contorlled by any client yet, we need to assign controll to some client
+		// We assign controll to the currentyl active client, and asume the server does the same.
+		bool is_networked = this->is_empty() ? (*teams)[resources::controller->current_side() - 1].is_network() : this->is_network();
+		if(is_networked && new_controller == AI) {
+			new_controller = NETWORK_AI;
+		}
+		if(is_networked && new_controller == HUMAN) {
+			new_controller = NETWORK;
+		}
+		change_controller(new_controller);
+	}
+	catch(const bad_enum_cast&)
+	{
+		ERR_NG << "ignored attempt to change controller to " << new_controller_string << std::endl;
+	}
 }
 
 void team::change_team(const std::string &name, const t_string &user_name)

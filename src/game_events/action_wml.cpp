@@ -1175,7 +1175,7 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 		}
 		// Set controller
 		if (!controller.empty()) {
-			teams[team_index].change_controller(controller);
+			teams[team_index].change_controller_by_wml(controller);
 		}
 		// Set defeat_condition
 		if (!defeat_condition.empty()) {

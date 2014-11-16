@@ -163,6 +163,8 @@ public:
 
 	/** Handles incoming [whiteboard] data. */
 	void process_whiteboard(simple_wml::document& data, const player_map::const_iterator user);
+	/** Handles incoming [change_controller_wml] data. */
+	void process_change_controller_wml(simple_wml::document& data, const player_map::const_iterator user);
 
 	/**
 	 * Set the description to the number of available slots.

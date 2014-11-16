@@ -261,6 +261,7 @@ public:
 	void change_controller(const std::string& new_controller) {
 		info_.controller = lexical_cast_default<CONTROLLER> (new_controller, AI);
 	}
+	void change_controller_by_wml(const std::string& new_controller);
 	void change_controller(CONTROLLER controller) { info_.controller = controller; }
 
 	const std::string& team_name() const { return info_.team_name; }
