@@ -832,10 +832,23 @@ void game::process_message(simple_wml::document& data, const player_map::iterato
 	send_data(data, user->first, "game message");
 }
 
-bool game::is_legal_command(const simple_wml::node& command, const player_map::const_iterator user) {
+bool game::is_legal_command(const simple_wml::node& command, const player_map::const_iterator user)
+{
 	const bool is_player = this->is_player(user->first);
 	const bool is_host = user->first == owner_;
 	const bool is_current = is_current_player(user->first);
+
+	if(command.has_attr("from_side")) {
+		const size_t from_side_index = command["from_side"].to_int() - 1;
+		if(command["from_side"] == "server") {
+			//Someone pretends to be the server...
+			return false;
+		}
+		if(from_side_index >= sides_.size() || sides_[from_side_index] != user->first) {
+			return false;
+		}
+	}
+
 	if(is_current) return true;
 	// Only single commands allowed.
 	// NOTE: non-dependent commands might contain a [checkup] tag after their first data.
@@ -913,23 +926,6 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 								std::find(sides_.begin(), sides_.end(), user->first);
 						speak.set_attr_dup("side", lexical_cast<std::string>(s - sides_.begin() + 1).c_str());
 					}
-				}
-			}
-		}
-		else if((**command).has_attr("from_side"))
-		{
-			if((**command)["from_side"] == "server")
-			{
-				//this could mean someone wants to cheat.
-				(**command).set_attr("side_invalid", "true");
-			}
-			else
-			{
-				int from_side = (**command)["from_side"].to_int() - 1;
-				if(from_side < 0 || static_cast<unsigned int>(from_side) >= sides_.size() ||sides_[from_side] != user->first)
-				{
-					//this could mean someone wants to cheat.
-					(**command).set_attr("side_invalid", "true");
 				}
 			}
 		}
