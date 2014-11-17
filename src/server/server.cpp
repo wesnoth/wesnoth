@@ -2406,7 +2406,7 @@ void server::process_data_game(const network::connection sock,
 				return;
 			}
 			g->set_description(&desc);
-			desc.set_attr_dup("id", lexical_cast<std::string>(g->id()).c_str());
+			desc.set_attr_dup("id", lexical_cast_default<std::string>(g->id()).c_str());
 		} else {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tsent scenario data in game:\t\"" << g->name() << "\" ("
