@@ -414,7 +414,9 @@ config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
 	for (int cmd = cmd_start; cmd < cmd_end; ++cmd)
 	{
 		config &c = command(cmd);
-		if ((data_type == ALL_DATA || !c["undo"].to_bool(true)) && !c["sent"].to_bool(false))
+		//prevent creating 'blank' attribute values during checks
+		const config &cc = c;
+		if ((data_type == ALL_DATA || !cc["undo"].to_bool(true)) && !cc["sent"].to_bool(false))
 		{
 			res.add_child("command", c);
 			if (data_type == NON_UNDO_DATA) c["sent"] = true;
