@@ -16,9 +16,6 @@
 #define GUI_DIALOGS_LUA_INT_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
-#include "gui/widgets/button.hpp"
-#include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/text_box.hpp"
 
 #include <boost/scoped_ptr.hpp>
 
@@ -31,6 +28,8 @@ class tlua_interpreter : public tdialog
 {
 public:
 	class model;
+	class view;
+	class controller;
 
 	tlua_interpreter(lua_kernel_base & lk);
 
@@ -44,29 +43,12 @@ public:
 	static void display(CVideo& video, lua_kernel_base * lk);
 	static void display(CVideo& video, WHICH_KERNEL which);
 private:
-	boost::scoped_ptr<model> model_;
+	boost::scoped_ptr<controller> controller_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
-
-	void bind(twindow& window);
-
-	void update_contents();
-
-	void handle_copy_button_clicked(twindow & window);
-
-	void input_keypress_callback(bool& handled,
-						   bool& halt,
-						   const SDLKey key,
-						   twindow& window);
-
-	tscroll_label* msg_label;
-	tbutton* copy_button;
-	ttext_box* text_entry;
-
-	std::string text_entry_;
 };
 
 }
 
-#endif /* ! GUI_DIALOGS_CHAT_LOG_HPP_INCLUDED */
+#endif /* ! GUI_DIALOGS_LUA_INT_HPP_INCLUDED */
