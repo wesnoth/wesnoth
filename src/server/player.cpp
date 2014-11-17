@@ -68,7 +68,7 @@ void wesnothd::player::mark_available(const int game_id,
 	} else {
 		cfg_.set_attr("available", "no");
 	}
-	cfg_.set_attr_dup("game_id", lexical_cast<std::string>(game_id).c_str());
+	cfg_.set_attr_dup("game_id", lexical_cast_default<std::string>(game_id).c_str());
 	cfg_.set_attr_dup("location", location.c_str());
 }
 
