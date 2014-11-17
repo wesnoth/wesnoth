@@ -834,6 +834,8 @@ void game::process_message(simple_wml::document& data, const player_map::iterato
 
 bool game::is_legal_command(const simple_wml::node& command, bool is_player) {
 	// Only single commands allowed.
+	// NOTE: non-dependent commands might contain a [checkup] tag after their first data.
+	// But those packages are usually sended by teh currenly active player which is not checks here
 	if (!command.one_child()) return false;
 	// Chatting is never an illegal command.
 	if (command.child("speak")) return true;
