@@ -25,8 +25,8 @@
 
 lua_map_generator::lua_map_generator(const config & cfg)
 	: id_(cfg["id"])
-	, user_config_(cfg["user_config"])
 	, config_name_(cfg["config_name"])
+	, user_config_(cfg["user_config"])
 	, create_map_(cfg["create_map"])
 	, create_scenario_(cfg["create_scenario"])
 	, lk_()
