@@ -28,6 +28,7 @@
 #include "gui/auxiliary/layout_exception.hpp"
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/addon_list.hpp"
+#include "gui/dialogs/advanced_graphics_options.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/campaign_settings.hpp"
@@ -51,7 +52,9 @@
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/lobby_main.hpp"
 #include "gui/dialogs/lobby_player_info.hpp"
+#include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/mp_alerts_options.hpp"
 #include "gui/dialogs/mp_change_control.hpp"
 #include "gui/dialogs/mp_cmd_wrapper.hpp"
 #include "gui/dialogs/mp_connect.hpp"
@@ -77,6 +80,7 @@
 #include "game_initialization/create_engine.hpp"
 #include "tests/utils/fake_display.hpp"
 #include "saved_game.hpp"
+//#include "scripting/lua_kernel_base.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
 
@@ -417,6 +421,10 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::twml_error>();
 	test<gui2::twml_message_left>();
 	test<gui2::twml_message_right>();
+	test<gui2::tmp_alerts_options>();
+	test<gui2::tadvanced_graphics_options>();
+
+	//test<gui2::tlua_interpreter>(& lua_kernel_base());
 
 	/* The tpopup classes. */
 	test_popup<gui2::tdebug_clock>();
@@ -441,17 +449,8 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 			std::remove(list.begin(), list.end(), "chat_log")
 			, list.end());
 
-	// No test for this right now
-	list.erase(
-			std::remove(list.begin(), list.end(), "mp_alerts_options")
-			, list.end());
-
-	// No test for this right now
-	list.erase(
-			std::remove(list.begin(), list.end(), "advanced_graphics_options")
-			, list.end());
-
-	// No test for this right now
+	// No test for this right now, not sure how to use the test system
+	// for dialog with no default constructor
 	list.erase(
 			std::remove(list.begin(), list.end(), "lua_interpreter")
 			, list.end());
