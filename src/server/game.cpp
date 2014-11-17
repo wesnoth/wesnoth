@@ -832,7 +832,10 @@ void game::process_message(simple_wml::document& data, const player_map::iterato
 	send_data(data, user->first, "game message");
 }
 
-bool game::is_legal_command(const simple_wml::node& command, bool is_player) {
+bool game::is_legal_command(const simple_wml::node& command, const player_map::const_iterator user) {
+	const bool is_player = this->is_player(user->first);
+	const bool is_host = user->first == owner_;
+
 	// Only single commands allowed.
 	// NOTE: non-dependent commands might contain a [checkup] tag after their first data.
 	// But those packages are usually sended by teh currenly active player which is not checks here
@@ -844,7 +847,7 @@ bool game::is_legal_command(const simple_wml::node& command, bool is_player) {
 	{
 		return true;
 	}
-	if (is_player
+	if ((is_player || is_host)
 	&& (command.child("label")
 		|| command.child("clear_labels")
 		|| command.child("rename")
@@ -869,10 +872,9 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 	std::vector<int> marked;
 	const simple_wml::node::child_list& commands = turn->children("command");
 	simple_wml::node::child_list::const_iterator command;
-	const bool player = (is_player(user->first) || user->first == owner_);
 	for (command = commands.begin(); command != commands.end(); ++command) {
 		if (!is_current_player(user->first)
-		&& !is_legal_command(**command, player)) {
+		&& !is_legal_command(**command, user)) {
 			LOG_GAME << "ILLEGAL COMMAND in game: " << id_ << " ((("
 				<< simple_wml::node_to_string(**command) << ")))\n";
 			std::stringstream msg;

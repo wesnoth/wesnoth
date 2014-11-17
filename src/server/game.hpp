@@ -280,7 +280,7 @@ private:
 
 	bool observers_can_label() const { return false; }
 	bool observers_can_chat() const { return true; }
-	bool is_legal_command(const simple_wml::node& command, bool is_player);
+	bool is_legal_command(const simple_wml::node& command, const player_map::const_iterator user);
 
 	/**
 	 * Function which returns true iff 'player' is on 'team'.
