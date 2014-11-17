@@ -263,6 +263,7 @@ void tlua_interpreter::controller::bind(twindow& window)
 /** Copy text to the clipboard */
 void tlua_interpreter::controller::handle_copy_button_clicked(twindow & /*window*/)
 {
+	assert(model_);
 	desktop::clipboard::copy_to_clipboard(model_->get_log(), false);
 }
 
@@ -272,6 +273,9 @@ void tlua_interpreter::controller::input_keypress_callback(bool& handled,
 							   const SDLKey key,
 							   twindow& /*window*/)
 {
+	assert(model_);
+	assert(text_entry);
+
 	LOG_LUA << "keypress_callback\n";
 	if(key == SDLK_RETURN || key == SDLK_KP_ENTER) { // handle executing whatever is in the command entry field
 		LOG_LUA << "executing...\n";
