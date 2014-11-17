@@ -508,7 +508,7 @@ void game::change_controller(const size_t side_num,
 {
 	DBG_GAME << __func__ << "...\n";
 
-	const std::string& side = lexical_cast<std::string, size_t>(side_num + 1);
+	const std::string& side = lexical_cast_default<std::string, size_t>(side_num + 1);
 	sides_[side_num] = sock;
 
 	if (player_left && side_controllers_[side_num] == "ai") {
@@ -912,11 +912,11 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 				if (side_num < 1 || side_num > gamemap::MAX_PLAYERS
 				|| sides_[side_num - 1] != user->first) {
 					if (user->first == current_player()) {
-						speak.set_attr_dup("side", lexical_cast<std::string>(current_side() + 1).c_str());
+						speak.set_attr_dup("side", lexical_cast_default<std::string>(current_side() + 1).c_str());
 					} else {
 						const side_vector::const_iterator s =
 								std::find(sides_.begin(), sides_.end(), user->first);
-						speak.set_attr_dup("side", lexical_cast<std::string>(s - sides_.begin() + 1).c_str());
+						speak.set_attr_dup("side", lexical_cast_default<std::string>(s - sides_.begin() + 1).c_str());
 					}
 				}
 			}
@@ -1211,7 +1211,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		}
 
 		//send the host a notification of removal of this side
-		const std::string side_drop = lexical_cast<std::string, size_t>(side_num + 1);
+		const std::string side_drop = lexical_cast_default<std::string, size_t>(side_num + 1);
 		simple_wml::document drop;
 		drop.root().set_attr("side_drop", side_drop.c_str());
 		drop.root().set_attr("controller", side_controllers_[side_num].c_str());
