@@ -221,8 +221,6 @@ public:
 
 	void set_termination_reason(const std::string& reason);
 
-	void allow_global(const simple_wml::document &data);
-
 	void require_random(const simple_wml::document &data, const player_map::iterator user);
 
 private:
@@ -395,9 +393,6 @@ private:
 
 	bool save_replays_;
 	std::string replay_save_path_;
-
-	/** The side from which global variable data is expected*/
-	int global_wait_side_;
 
 	/** A wrapper for mersenne twister rng which generates randomness for this game */
 	rand_rng::mt_rng rng_;

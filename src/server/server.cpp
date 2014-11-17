@@ -2667,9 +2667,6 @@ void server::process_data_game(const network::connection sock,
 	} else if (data.child("stop_updates")) {
 		g->send_data(data, sock);
 		return;
-	} else if (data.child("wait_global")) {
-		g->allow_global(data);
-		return;
 	// Data to ignore.
 	} else if (data.child("error")
 	|| data.child("side_secured")
