@@ -532,7 +532,7 @@ void room_manager::fill_room_list(simple_wml::node& root)
 		const room& r = *tr.second;
 		simple_wml::node& room = rooms.add_child("room");
 		room.set_attr_dup("name", r.name().c_str());
-		room.set_attr_dup("size", lexical_cast<std::string>(r.members().size()).c_str());
+		room.set_attr_dup("size", lexical_cast_default<std::string>(r.members().size()).c_str());
 	}
 }
 
