@@ -1,7 +1,5 @@
 #include "lua_gui2.hpp"
 
-#include "game_display.hpp"		// to deal with resources::screen
-
 #include "gui/auxiliary/canvas.hpp"     // for tcanvas
 #include "gui/auxiliary/window_builder.hpp"  // for twindow_builder, etc
 #include "gui/widgets/clickable.hpp"    // for tclickable_
@@ -20,15 +18,22 @@
 #include "gui/widgets/listbox.hpp"
 #endif
 
+#include "config.hpp"
 #include "log.hpp"
 #include "lua/lauxlib.h"                // for luaL_checkinteger, etc
 #include "lua/lua.h"                    // for lua_setfield, etc
-#include "resources.hpp"		// for resources::screen
 #include "scripting/lua_api.hpp"        // for luaW_toboolean, etc
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_types.hpp"      // for getunitKey, dlgclbkKey, etc
+#include "serialization/string_utils.hpp"
+#include "tstring.hpp"
+#include "video.hpp"
 
 #include <boost/bind.hpp>
+
+#include <map>
+#include <utility>
+#include <vector>
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
@@ -140,6 +145,8 @@ static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
 	return w;
 }
 
+namespace lua_gui2 {
+
 /**
  * Displays a window.
  * - Arg 1: WML table describing the window.
@@ -147,18 +154,12 @@ static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
  * - Arg 3: function called at post-show.
  * - Ret 1: integer.
  */
-int intf_show_dialog(lua_State *L)
+int show_dialog(lua_State *L, CVideo & video)
 {
-	if (!resources::screen) {
-		ERR_LUA << "Cannot show dialog, the display object is not available.";
-		lua_error(L);
-		return 0;
-	}
-
 	config def_cfg = luaW_checkconfig(L, 1);
 
 	gui2::twindow_builder::tresolution def(def_cfg);
-	scoped_dialog w(L, gui2::build(resources::screen->video(), &def));
+	scoped_dialog w(L, gui2::build(video, &def));
 
 	if (!lua_isnoneornil(L, 2)) {
 		lua_pushvalue(L, 2);
@@ -422,3 +423,5 @@ int intf_set_dialog_active(lua_State *L)
 	c->set_active(b);
 	return 0;
 }
+
+} // end namespace lua_gui2

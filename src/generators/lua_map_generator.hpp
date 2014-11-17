@@ -23,6 +23,7 @@
 #include <string>
 
 struct lua_State;
+class display;
 
 // TODO: Add support for user configurability (via defining a gui2 dialog in lua)
 // What's missing is that you need access to the 'wesnoth' object to call show dialog
@@ -40,12 +41,14 @@ public:
 
 	std::string config_name() const { return config_name_; }
 
+	virtual void user_config(display & disp);
 	virtual std::string create_map();
 	virtual config create_scenario();
 
 private:
 	std::string id_, config_name_;
 
+	std::string user_config_;
 	std::string create_map_;
 	std::string create_scenario_;
 

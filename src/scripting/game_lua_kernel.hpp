@@ -22,6 +22,7 @@
 #include <string>                       // for string
 
 class config;
+class CVideo;
 class unit;
 class vconfig;
 namespace ai { class engine_lua; }
@@ -36,7 +37,7 @@ class LuaKernel : public lua_kernel_base
 	const config &level_;
 
 public:
-	LuaKernel(const config &);
+	LuaKernel(const config &, CVideo *);
 
 	virtual std::string my_name() { return "Game Lua Kernel"; }
 

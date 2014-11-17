@@ -30,7 +30,6 @@
 #include "log.hpp"
 #include "lua/lua.h"
 #include "scripting/lua_api.hpp"
-#include "scripting/lua_common.hpp"
 #include "scripting/lua_game_launcher.hpp"
 #include "scripting/lua_kernel_base.hpp"
 #include "scripting/lua_types.hpp"
@@ -42,14 +41,16 @@
 #include <ostream>
 #include <string>
 
+class CVideo;
+struct lua_State;
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
-application_lua_kernel::application_lua_kernel()
- : lua_kernel_base()
+application_lua_kernel::application_lua_kernel(CVideo * ptr)
+ : lua_kernel_base(ptr)
 {}
 
 bool application_lua_kernel::initialize(game_launcher * gl)

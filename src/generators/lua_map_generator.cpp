@@ -15,7 +15,7 @@
 #include "lua_map_generator.hpp"
 
 #include "config.hpp"
-
+#include "display.hpp"
 #include "game_errors.hpp"
 #include "scripting/mapgen_lua_kernel.hpp"
 
@@ -25,6 +25,7 @@
 
 lua_map_generator::lua_map_generator(const config & cfg)
 	: id_(cfg["id"])
+	, user_config_(cfg["user_config"])
 	, config_name_(cfg["config_name"])
 	, create_map_(cfg["create_map"])
 	, create_scenario_(cfg["create_scenario"])
@@ -39,6 +40,19 @@ lua_map_generator::lua_map_generator(const config & cfg)
 			msg += "Config was '" + cfg.debug() + "'";
 			throw mapgen_exception(msg);
 		}
+	}
+}
+
+void lua_map_generator::user_config(display & disp)
+{
+	lk_.set_video(&disp.video());
+	try {
+		lk_.user_config(user_config_.c_str(), generator_data_);
+	} catch (game::lua_error & e) {
+		std::string msg = "Error when running lua_map_generator user_config.\n";
+		msg += "The generator was: " + config_name_ + "\n";
+		msg += e.what();
+		throw mapgen_exception(msg);
 	}
 }
 

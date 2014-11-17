@@ -18,12 +18,16 @@
 
 #include "scripting/lua_kernel_base.hpp"
 
+#include <string>
+
 class config;
+class CVideo;
 class game_launcher;
+struct lua_State;
 
 class application_lua_kernel : public lua_kernel_base {
 public:
-	application_lua_kernel();
+	application_lua_kernel(CVideo *);
 	bool initialize(game_launcher* gl);
 
 	virtual std::string my_name() { return "Application Lua Kernel"; }

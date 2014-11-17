@@ -15,17 +15,17 @@
 #ifndef SCRIPTING_LUA_KERNEL_BASE_HPP
 #define SCRIPTING_LUA_KERNEL_BASE_HPP
 
-#include <ostream>
 #include <sstream>
 #include <string>
 #include <vector>
 #include "utils/boost_function_guarded.hpp"
 
 struct lua_State;
+class CVideo;
 
 class lua_kernel_base {
 public:
-	lua_kernel_base();
+	lua_kernel_base(CVideo * ptr);
 	virtual ~lua_kernel_base();
 
 	/** Runs a plain script. Doesn't throw lua_error.*/
@@ -50,8 +50,11 @@ public:
 
 	typedef boost::function<void(char const*, char const*)> error_handler;
 
+	void set_video(CVideo * ptr) { video_ = ptr; }
+
 protected:
 	lua_State *mState;
+	CVideo * video_;
 
 	struct command_log {
 		std::stringstream log_;
@@ -79,6 +82,9 @@ protected:
 
 	// Print text to the command log for this lua kernel. Used as a replacement impl for lua print.
 	int intf_print(lua_State * L);
+
+	// Show a dialog to the currently connected video object (if available)
+	int intf_show_dialog(lua_State * L);
 
 	// Execute a protected call. Error handler is called in case of an error, using syntax for log_error and throw_exception above. Returns true if successful.
 	bool protected_call(int nArgs, int nRets, error_handler);

@@ -84,6 +84,7 @@ static void clear_resources()
 	resources::filter_con = NULL;
 	resources::gameboard = NULL;
 	resources::gamedata = NULL;
+	resources::lua_kernel = NULL;
 	resources::persist = NULL;
 	resources::screen = NULL;
 	resources::soundsources = NULL;
@@ -191,6 +192,8 @@ void play_controller::init(CVideo& video){
 	// This *needs* to be created before the show_intro and show_map_scene
 	// as that functions use the manager state_of_game
 	// Has to be done before registering any events!
+	lua_kernel_.reset(new LuaKernel(level_, &video));
+	resources::lua_kernel=lua_kernel_.get();
 	events_manager_.reset(new game_events::manager(level_));
 
 	LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks_) << std::endl;

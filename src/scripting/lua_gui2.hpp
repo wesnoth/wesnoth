@@ -16,6 +16,9 @@
 #define LUA_GUI2_HPP_INCLUDED
 
 struct lua_State;
+class CVideo;
+
+namespace lua_gui2 {
 
 int intf_set_dialog_value(lua_State *L);
 int intf_get_dialog_value(lua_State *L);
@@ -23,6 +26,8 @@ int intf_set_dialog_callback(lua_State *L);
 int intf_set_dialog_markup(lua_State *L);
 int intf_set_dialog_canvas(lua_State *L);
 int intf_set_dialog_active(lua_State *L);
-int intf_show_dialog(lua_State *L);
+int show_dialog(lua_State *L, CVideo & video);
+
+} // end namespace lua_gui2
 
 #endif

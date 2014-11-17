@@ -111,6 +111,7 @@
 #include "SDL_timer.h"                  // for SDL_GetTicks
 #include "SDL_video.h"                  // for SDL_Color, SDL_Surface
 
+class CVideo;
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"
@@ -2872,8 +2873,8 @@ static int intf_get_all_vars(lua_State *L) {
 	return 1;
 }
 
-LuaKernel::LuaKernel(const config &cfg)
-	: lua_kernel_base(), level_(cfg)
+LuaKernel::LuaKernel(const config &cfg, CVideo * vid)
+	: lua_kernel_base(vid), level_(cfg)
 {
 	lua_State *L = mState;
 

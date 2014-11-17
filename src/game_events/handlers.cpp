@@ -294,8 +294,7 @@ manager::manager(const config& cfg)
 
 	// Guard against a memory leak (now) / memory corruption (when this is deleted).
 	// This is why creating multiple manager objects is prohibited.
-	assert(resources::lua_kernel == NULL);
-	resources::lua_kernel = new LuaKernel(cfg);
+	assert(resources::lua_kernel != NULL);
 
 	wml_action::map::const_iterator action_end = wml_action::end();
 	wml_action::map::const_iterator action_cur = wml_action::begin();
@@ -320,8 +319,6 @@ manager::~manager() {
 	event_handlers.clear();
 	hotkey::delete_all_wml_hotkeys();
 	reports::reset_generators();
-	delete resources::lua_kernel;
-	resources::lua_kernel = NULL;
 	unit_wml_ids.clear();
 	used_items.clear();
 }

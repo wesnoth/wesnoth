@@ -16,6 +16,7 @@
 
 #include "global.hpp"
 
+#include "exceptions.hpp"
 #include "filesystem.hpp"
 #include "game_errors.hpp"
 #include "game_config.hpp" //for game_config::debug_lua
@@ -23,6 +24,8 @@
 #include "lua/lauxlib.h"
 #include "lua/lua.h"
 #include "lua/lualib.h"
+#include "lua/luaconf.h"                // for LUAL_BUFFERSIZE
+#include "lua_jailbreak_exception.hpp"  // for tlua_jailbreak_exception
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"
@@ -31,13 +34,19 @@
 #include "scripting/lua_api.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_gui2.hpp"
+#include "scripting/lua_types.hpp"
 
 #include "version.hpp"                  // for do_version_check, etc
 
-#include <cstring>
-#include <string>
 #include <boost/bind.hpp>
 #include <boost/scoped_ptr.hpp>
+
+#include <cstring>
+#include <exception>
+#include <new>
+#include <string>
+#include <sstream>
+#include <vector>
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define DBG_LUA LOG_STREAM(debug, log_scripting_lua)
@@ -288,10 +297,24 @@ static void push_boost_cfunc( lua_State* L, const lua_cfunc & f )
 	new (p) lua_cfunc(f);
 }
 
+// The show-dialog call back is here implemented as a method of lua kernel, since it needs a pointer to external object CVideo
+int lua_kernel_base::intf_show_dialog(lua_State *L)
+{
+	if (!video_) {
+		ERR_LUA << "Cannot show dialog, no video object is available to this lua kernel.";
+		lua_error(L);
+		return 0;
+	}
+
+	return lua_gui2::show_dialog(L, *video_);
+}
+
+
 // End Callback implementations
 
-lua_kernel_base::lua_kernel_base()
+lua_kernel_base::lua_kernel_base(CVideo * video)
  : mState(luaL_newstate())
+ , video_(video)
  , cmd_log_()
 {
 	lua_State *L = mState;
@@ -389,22 +412,26 @@ lua_kernel_base::lua_kernel_base()
 
 	lua_settop(L, 0);
 
+	// Define the Boost_C_Function metatable ( so we can override print to point to a C++ member function )
+	cmd_log_ << "Adding boost cfunc proxy...\n";
+
+	register_boost_cfunc_metatable(L);
+
 	// Add some callback from the wesnoth lib
 	cmd_log_ << "Registering basic wesnoth API...\n";
 
 	static luaL_Reg const callbacks[] = {
-		{ "compare_versions",         &intf_compare_versions         },
-		{ "dofile",                   &intf_dofile                   },
-		{ "have_file",                &intf_have_file                },
-		{ "require",                  &intf_require                  },
-		{ "textdomain",               &lua_common::intf_textdomain   },
-		{ "get_dialog_value",         &intf_get_dialog_value         },
-		{ "set_dialog_active",        &intf_set_dialog_active        },
-		{ "set_dialog_callback",      &intf_set_dialog_callback      },
-		{ "set_dialog_canvas",        &intf_set_dialog_canvas        },
-		{ "set_dialog_markup",        &intf_set_dialog_markup        },
-		{ "set_dialog_value",         &intf_set_dialog_value         },
-		{ "show_dialog",              &intf_show_dialog              },
+		{ "compare_versions",         &intf_compare_versions         		},
+		{ "dofile",                   &intf_dofile                   		},
+		{ "have_file",                &intf_have_file                		},
+		{ "require",                  &intf_require                  		},
+		{ "textdomain",               &lua_common::intf_textdomain   		},
+		{ "get_dialog_value",         &lua_gui2::intf_get_dialog_value		},
+		{ "set_dialog_active",        &lua_gui2::intf_set_dialog_active		},
+		{ "set_dialog_callback",      &lua_gui2::intf_set_dialog_callback	},
+		{ "set_dialog_canvas",        &lua_gui2::intf_set_dialog_canvas		},
+		{ "set_dialog_markup",        &lua_gui2::intf_set_dialog_markup		},
+		{ "set_dialog_value",         &lua_gui2::intf_set_dialog_value		},
 		{ NULL, NULL }
 	};
 
@@ -415,17 +442,21 @@ lua_kernel_base::lua_kernel_base()
 	luaL_setfuncs(L, callbacks, 0);
 	lua_setglobal(L, "wesnoth");
 
-	// Define the Boost_C_Function metatable ( so we can override print to point to a C++ member function )
-	cmd_log_ << "Adding boost cfunc proxy...\n";
-
-	register_boost_cfunc_metatable(L);
-
 	// Override the print function
 	cmd_log_ << "Redirecting print function...\n";
 
 	lua_cfunc my_print = boost::bind(&lua_kernel_base::intf_print, this, _1);
 	push_boost_cfunc(L, my_print);
 	lua_setglobal(L, "print");
+
+	// Add the show_dialog function
+	cmd_log_ << "Adding dialog support...\n";
+
+	lua_getglobal(L, "wesnoth");
+	lua_cfunc show_dialog = boost::bind(&lua_kernel_base::intf_show_dialog, this, _1);
+	push_boost_cfunc(L, show_dialog);
+	lua_setfield(L, -2, "show_dialog");
+	lua_pop(L,1);
 
 	// Create the package table.
 	lua_getglobal(L, "wesnoth");

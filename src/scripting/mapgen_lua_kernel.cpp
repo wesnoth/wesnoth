@@ -86,7 +86,7 @@ static int impl_rng_draw(lua_State* L)
 // End Lua Rng bindings
 
 mapgen_lua_kernel::mapgen_lua_kernel()
-	: lua_kernel_base()
+	: lua_kernel_base(NULL)
 {
 	lua_State *L = mState;
 
@@ -115,6 +115,11 @@ void mapgen_lua_kernel::run_generator(const char * prog, const config & generato
 	load_string(prog, boost::bind(&lua_kernel_base::throw_exception, this, _1, _2));
 	luaW_pushconfig(mState, generator);
 	protected_call(1, 1, boost::bind(&lua_kernel_base::throw_exception, this, _1, _2));
+}
+
+void mapgen_lua_kernel::user_config(const char * prog, const config & generator)
+{
+	run_generator(prog, generator);
 }
 
 std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator) // throws game::lua_error

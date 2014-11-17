@@ -310,7 +310,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 
 	// This isn't always needed right now but it allows to help debug the lua console even if you don't have a script file local.
 	// Eventually it will be needed for plugins to work.
-	resources::app_lua_kernel = new application_lua_kernel();
+	resources::app_lua_kernel = new application_lua_kernel(&video_);
 	resources::app_lua_kernel->initialize(this);
 }
 
