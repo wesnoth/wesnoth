@@ -31,6 +31,7 @@
 #include "../serialization/parser.hpp"
 #include "../serialization/preprocessor.hpp"
 #include "../serialization/string_utils.hpp"
+#include "../serialization/unicode.hpp"
 #include "../util.hpp"
 
 #include "game.hpp"
@@ -1053,8 +1054,8 @@ void server::process_login(const network::connection sock,
 	for (std::vector<std::string>::const_iterator d_it = disallowed_names_.begin();
 		d_it != disallowed_names_.end(); ++d_it)
 	{
-		if (utils::wildcard_string_match(utils::lowercase(username),
-			utils::lowercase(*d_it)))
+		if (utils::wildcard_string_match(utf8::lowercase(username),
+			utf8::lowercase(*d_it)))
 		{
 			send_error(sock, "The nickname '" + username + "' is reserved and cannot be used by players",
 				MP_NAME_RESERVED_ERROR);
@@ -1377,7 +1378,7 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 	}
 
 	const std::string::iterator i = std::find(query.begin(), query.end(), ' ');
-	const std::string command = utils::lowercase(std::string(query.begin(), i));
+	const std::string command = utf8::lowercase(std::string(query.begin(), i));
 	std::string parameters = (i == query.end() ? "" : std::string(i + 1, query.end()));
 	utils::strip(parameters);
 
@@ -1499,7 +1500,7 @@ void server::netstats_handler(const std::string& /*issuer_name*/, const std::str
 		<< stats.npending_sends << "\nBytes in buffers: "
 		<< stats.nbytes_pending_sends << "\n";
 
-	if (utils::lowercase(parameters) == "all") {
+	if (utf8::lowercase(parameters) == "all") {
 		*out << network::get_bandwidth_stats_all();
 	} else {
 		*out << network::get_bandwidth_stats(); // stats from previuos hour
@@ -1673,9 +1674,9 @@ void server::bans_handler(const std::string& /*issuer_name*/, const std::string&
 
 	if (parameters.empty()) {
 		ban_manager_.list_bans(*out);
-	} else if (utils::lowercase(parameters) == "deleted") {
+	} else if (utf8::lowercase(parameters) == "deleted") {
 		ban_manager_.list_deleted_bans(*out);
-	} else if (utils::lowercase(parameters).find("deleted") == 0) {
+	} else if (utf8::lowercase(parameters).find("deleted") == 0) {
 		std::string mask = parameters.substr(7);
 		ban_manager_.list_deleted_bans(*out, utils::strip(mask));
 	} else {
@@ -2017,7 +2018,7 @@ void server::dul_handler(const std::string& /*issuer_name*/, const std::string& 
 	if (parameters == "") {
 		*out << "Unregistered login is " << (deny_unregistered_login_ ? "disallowed" : "allowed") << ".";
 	} else {
-		deny_unregistered_login_ = (utils::lowercase(parameters) == "yes");
+		deny_unregistered_login_ = (utf8::lowercase(parameters) == "yes");
 		*out << "Unregistered login is now " << (deny_unregistered_login_ ? "disallowed" : "allowed") << ".";
 	}
 }
