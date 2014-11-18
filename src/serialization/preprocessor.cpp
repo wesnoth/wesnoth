@@ -1086,6 +1086,9 @@ bool preprocessor_data::get_chunk()
 					std::ostringstream res;
 					preprocessor_streambuf *buf =
 						new preprocessor_streambuf(target_);
+					// Make the nested preprocessor_data responsible for
+					// restoring our current textdomain if needed.
+					buf->textdomain_ = target_.textdomain_;
 					{	std::istream in(buf);
 						new preprocessor_data(*buf, buffer, val.location, "",
 						                      val.linenum, dir, val.textdomain, defines);
