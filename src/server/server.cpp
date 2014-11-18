@@ -1051,12 +1051,18 @@ void server::process_login(const network::connection sock,
 	for (std::vector<std::string>::const_iterator d_it = disallowed_names_.begin();
 		d_it != disallowed_names_.end(); ++d_it)
 	{
+		try {
+
 		if (utils::wildcard_string_match(utils::lowercase(username),
 			utils::lowercase(*d_it)))
 		{
 			send_error(sock, "The nickname '" + username + "' is reserved and cannot be used by players",
 				MP_NAME_RESERVED_ERROR);
 			return;
+		}
+
+		} catch ( utils::invalid_utf8_exception & e ) {
+			ERR_SERVER << "While checking a username vs a list of disallowed names, caught an invalid utf8 exception: " << e.what() << std::endl;
 		}
 	}
 
@@ -1375,6 +1381,9 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 	}
 
 	const std::string::iterator i = std::find(query.begin(), query.end(), ' ');
+
+	try {
+
 	const std::string command = utils::lowercase(std::string(query.begin(), i));
 	std::string parameters = (i == query.end() ? "" : std::string(i + 1, query.end()));
 	utils::strip(parameters);
@@ -1390,10 +1399,18 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		} catch (boost::bad_function_call & ex) {
 			ERR_SERVER << "While handling a command '" << command << "', caught a boost::bad_function_call exception.\n";
 			ERR_SERVER << ex.what() << std::endl;
+			out << "An internal server error occurred (boost::bad_function_call) while executing '" << command << "'\n";
 		}
 	}
 
 	return out.str();
+
+	} catch ( utils::invalid_utf8_exception & e ) {
+		std::string msg = "While handling a command, caught an invalid utf8 exception: ";
+		msg += e.what();
+		ERR_SERVER << msg << std::endl;
+		return (msg + '\n');
+	}
 }
 
 // Shutdown, restart and sample commands can only be issued via the socket.
@@ -1497,10 +1514,16 @@ void server::netstats_handler(const std::string& /*issuer_name*/, const std::str
 		<< stats.npending_sends << "\nBytes in buffers: "
 		<< stats.nbytes_pending_sends << "\n";
 
+	try {
+
 	if (utils::lowercase(parameters) == "all") {
 		*out << network::get_bandwidth_stats_all();
 	} else {
 		*out << network::get_bandwidth_stats(); // stats from previuos hour
+	}
+
+	} catch ( utils::invalid_utf8_exception & e ) {
+		ERR_SERVER << "While handling a netstats command, caught an invalid utf8 exception: " << e.what() << std::endl;
 	}
 }
 
@@ -1669,6 +1692,9 @@ void server::clones_handler(const std::string& /*issuer_name*/, const std::strin
 void server::bans_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
 	assert(out != NULL);
 
+	try
+	{
+
 	if (parameters.empty()) {
 		ban_manager_.list_bans(*out);
 	} else if (utils::lowercase(parameters) == "deleted") {
@@ -1678,6 +1704,10 @@ void server::bans_handler(const std::string& /*issuer_name*/, const std::string&
 		ban_manager_.list_deleted_bans(*out, utils::strip(mask));
 	} else {
 		ban_manager_.list_bans(*out, utils::strip(parameters));
+	}
+
+	} catch ( utils::invalid_utf8_exception & e ) {
+		ERR_SERVER << "While handling bans, caught an invalid utf8 exception: " << e.what() << std::endl;
 	}
 }
 
@@ -2012,11 +2042,17 @@ void server::searchlog_handler(const std::string& /*issuer_name*/, const std::st
 void server::dul_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
 	assert(out != NULL);
 
+	try {
+
 	if (parameters == "") {
 		*out << "Unregistered login is " << (deny_unregistered_login_ ? "disallowed" : "allowed") << ".";
 	} else {
 		deny_unregistered_login_ = (utils::lowercase(parameters) == "yes");
 		*out << "Unregistered login is now " << (deny_unregistered_login_ ? "disallowed" : "allowed") << ".";
+	}
+
+	} catch ( utils::invalid_utf8_exception & e ) {
+		ERR_SERVER << "While handling dul (deny unregistered logins), caught an invalid utf8 exception: " << e.what() << std::endl;
 	}
 }
 
