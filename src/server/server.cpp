@@ -1385,7 +1385,12 @@ std::string server::process_command(std::string query, std::string issuer_name) 
 		out << "Command '" << command << "' is not recognized.\n" << help_msg;
 	} else {
 		const cmd_handler &handler = handler_itor->second;
-		handler(this, issuer_name, query, parameters, &out);
+		try {
+			handler(this, issuer_name, query, parameters, &out);
+		} catch (boost::bad_function_call & ex) {
+			ERR_SERVER << "While handling a command '" << command << "', caught a boost::bad_function_call exception.\n";
+			ERR_SERVER << ex.what() << std::endl;
+		}
 	}
 
 	return out.str();
