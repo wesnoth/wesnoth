@@ -8,6 +8,8 @@ Version 1.12.0+dev:
    * Fixed nested macros emitting incorrect bindings to the default 'wesnoth'
      textdomain at the end of a substitution instead of the parent textdomain,
      thus breaking localization of subsequent strings (bug #22962).
+   * Fixed special _initial.cfg and _final.cfg file inclusion order not being
+     honored by Windows builds using Boost.filesystem (bug #22967).
 
 Version 1.12.0:
  * Language and i18n:
