@@ -43,6 +43,9 @@ before_install:
     - if [ "$BUILD" = 4 ]; then export CPP_TESTS=false; fi
     - if [ "$BUILD" = 5 ]; then export NLS=true; fi
     - if [ "$BUILD" = 5 ]; then export TARGETS="translations"; fi
+    - if [ "$BUILD" = 5 ]; then export WML_TESTS=false; fi
+    - if [ "$BUILD" = 5 ]; then export CPP_TESTS=false; fi
+    - if [ "$BUILD" = 5 ]; then export PLAY_TEST=false; fi
 
     - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export STRICT_COMPILATION=false; fi
     - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export EXTRA_FLAGS_RELEASE=""; fi
