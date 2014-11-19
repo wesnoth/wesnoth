@@ -128,6 +128,7 @@ public:
 		, inspect()
 		, inspector_name()
 		, copy_button()
+		, lua_button()
 	{
 		name = cfg["name"].str();
 	}
