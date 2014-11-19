@@ -355,13 +355,13 @@ namespace {
  */
 struct road_path_calculator : pathfind::cost_calculator
 {
-	road_path_calculator(const terrain_map& terrain, const config& cfg) :
+	road_path_calculator(const terrain_map& terrain, const config& cfg, int seed) :
     	calls(0),
 		map_(terrain),
 		cfg_(cfg),
 		// Find out how windy roads should be.
 		windiness_(std::max<int>(1, cfg["road_windiness"].to_int())),
-		seed_(rand()),
+		seed_(seed),
 		cache_()
 	{
 	}
@@ -1017,7 +1017,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 	std::set<location> bridges;
 
-	road_path_calculator calc(terrain,cfg);
+	road_path_calculator calc(terrain, cfg, rand());
 	for (int road = 0; road != nroads; ++road) {
 		log_scope("creating road");
 
