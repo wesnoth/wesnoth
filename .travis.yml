@@ -9,6 +9,7 @@ env:
     - BUILD=2
     - BUILD=3
     - BUILD=4
+    - BUILD=5
 
 matrix:
   exclude:
@@ -16,6 +17,8 @@ matrix:
       env: BUILD=2
     - compiler: gcc
       env: BUILD=3
+    - compiler: gcc
+      env: BUILD=5
     - compiler: clang
       env: BUILD=1
     - compiler: clang
@@ -30,7 +33,7 @@ before_install:
     - export STRICT_COMPILATION=true
     - export EXTRA_FLAGS_RELEASE="-O0"
     - export WML_TEST_TIME=40
-    - export NLS=true
+    - export NLS=false
 
     - export ALTERNATE_CONFIGURATION=false
     - export CXX11=false
@@ -38,6 +41,8 @@ before_install:
     - if [ "$BUILD" = 3 ]; then export ALTERNATE_CONFIGURATION=true; fi
     - if [ "$BUILD" = 4 ]; then export CXX11=true; fi
     - if [ "$BUILD" = 4 ]; then export CPP_TESTS=false; fi
+    - if [ "$BUILD" = 5 ]; then export NLS=true; fi
+    - if [ "$BUILD" = 5 ]; then export TARGETS="translations"; fi
 
     - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export STRICT_COMPILATION=false; fi
     - if [ "$ALTERNATE_CONFIGURATION" = true ]; then export EXTRA_FLAGS_RELEASE=""; fi
@@ -45,7 +50,6 @@ before_install:
     - if [ "$CXX" = "g++" ]; then export WML_TESTS=false; fi
     - if [ "$CXX" = "g++" ]; then export PLAY_TEST=false; fi
     - if [ "$CXX" = "g++" ]; then export CHECK_UTF8=false; fi
-    - if [ "$CXX" = "g++" ]; then export NLS=false; fi
     - if [ "$CXX11" = true ]; then export STRICT_COMPILATION=false; fi
 
 install:
