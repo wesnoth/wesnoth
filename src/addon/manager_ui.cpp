@@ -797,9 +797,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		if(dummy_addons_list) {
 			filter_box->hide(true);
 			description_button->enable(false);
-			if(update_all_button) {
-				update_all_button->enable(false);
-			}
+			update_all_button->enable(false);
 			addons_list_menu->hide(true);
 		}
 
