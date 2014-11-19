@@ -138,7 +138,12 @@ bool persist_file_context::clear_var(const std::string &global, bool immediate)
 			ret = exists;
 		}
 	}
-	while ((active->empty()) && (!namespace_.lineage_.empty())) {
+
+	// TODO: figure out when this is the case and adjust the next loop
+	//       condition accordingly. -- shadowm
+	assert(active);
+
+	while (active && active->empty() && !namespace_.lineage_.empty()) {
 		name_space prev = namespace_.prev();
 		active = get_node(cfg_, prev);
 		if (active == NULL) {
