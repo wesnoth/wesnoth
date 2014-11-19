@@ -96,12 +96,12 @@ twidget::~twidget()
 
 void twidget::set_id(const std::string& id)
 {
+	tcontrol* this_ctrl = dynamic_cast<tcontrol*>(this);
+
 	DBG_GUI_LF
 	<< "set id of " << static_cast<void*>(this) << " to '" << id << "' "
 	<< "(was '" << id_ << "'). Widget type: "
-	<< (dynamic_cast<tcontrol*>(this)
-				? dynamic_cast<tcontrol*>(this)->get_control_type()
-				: typeid(twidget).name()) << "\n";
+	<< (this_ctrl ? this_ctrl->get_control_type() : typeid(twidget).name()) << "\n";
 
 	id_ = id;
 }

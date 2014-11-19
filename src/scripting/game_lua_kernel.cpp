@@ -2781,6 +2781,9 @@ static int intf_debug_ai(lua_State *L)
 		//so set up a dummy engine
 
 		ai::ai_composite * ai_ptr = dynamic_cast<ai::ai_composite *>(c);
+
+		assert(ai_ptr);
+
 		ai::ai_context& ai_context = ai_ptr->get_ai_context();
 		config cfg = ai::configuration::get_default_ai_parameters();
 

@@ -811,6 +811,8 @@ void create_engine::set_current_level(const size_t index)
 		random_map* current_random_map =
 			dynamic_cast<random_map*>(&current_level());
 
+		assert(current_random_map); // if dynamic cast has failed then we somehow have gotten all the pointers mixed together.
+
 		generator_.reset(current_random_map->create_map_generator());
 	} else {
 		generator_.reset(NULL);

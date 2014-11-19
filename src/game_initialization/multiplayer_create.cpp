@@ -368,6 +368,8 @@ void create::process_event()
 			ng::scenario* current_scenario =
 				dynamic_cast<ng::scenario*>(&engine_.current_level());
 
+			assert(current_scenario);
+
 			players << current_scenario->num_players();
 			map_size << _("Size: ") << current_scenario->map_size();
 
@@ -377,6 +379,8 @@ void create::process_event()
 		case ng::level::SP_CAMPAIGN: {
 			 ng::campaign* current_campaign =
 				dynamic_cast<ng::campaign*>(&engine_.current_level());
+
+			assert(current_campaign);
 
 			players << current_campaign->min_players();
 			if (current_campaign->max_players() !=
