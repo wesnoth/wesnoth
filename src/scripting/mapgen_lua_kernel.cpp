@@ -36,11 +36,6 @@ mapgen_lua_kernel::mapgen_lua_kernel()
 	: lua_kernel_base(NULL)
 {
 	lua_State *L = mState;
-
-	// Add mersenne twister rng wrapper
-	cmd_log_ << "Adding mt19937 metatable...\n";
-
-	lua_rng::load_tables(L);
 	lua_settop(L, 0);
 }
 
