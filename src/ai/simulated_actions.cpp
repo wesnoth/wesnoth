@@ -244,6 +244,10 @@ void helper_advance_unit(const map_location& loc){
 	if(advance_choice < options.size()){
 		std::string advance_unit_typename = options[advance_choice];
 		const unit_type *advanced_type = unit_types.find(advance_unit_typename);
+		if(!advanced_type) {
+			ERR_AI_SIM_ACTIONS << "Simulating advancing to unknown unit type: " << advance_unit_typename;
+			assert(false && "simulating to unknown unit type");
+		}
 		advanced_unit.set_experience(advanced_unit.experience() - advanced_unit.max_experience());
 		advanced_unit.advance_to(*advanced_type);
 		advanced_unit.heal_all();

@@ -791,6 +791,8 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 		unit_animation::hit_type hits=  unit_animation::INVALID;
 		std::vector<attack_type> attacks = u->attacks();
 		std::vector<attack_type>::iterator itor;
+		boost::scoped_ptr<attack_type> dummy_primary;
+		boost::scoped_ptr<attack_type> dummy_secondary;
 
 		// death and victory animations are handled here because usually
 		// the code iterates through all the unit's attacks
@@ -800,13 +802,13 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 		if (cfg["flag"] == "death" || cfg["flag"] == "victory") {
 			filter = cfg.child("primary_attack");
 			if(!filter.null()) {
-				attack_type dummy_primary = static_cast<attack_type>(filter.get_config());
-				primary = &dummy_primary;
+				dummy_primary.reset(new attack_type(filter.get_config()));
+				primary = dummy_primary.get();
 			}
 			filter = cfg.child("secondary_attack");
 			if(!filter.null()) {
-				attack_type dummy_secondary = static_cast<attack_type>(filter.get_config());
-				secondary = &dummy_secondary;
+				dummy_secondary.reset(new attack_type(filter.get_config()));
+				secondary = dummy_secondary.get();
 			}
 		}
 
