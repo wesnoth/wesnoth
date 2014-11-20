@@ -654,7 +654,7 @@ void context_manager::generate_map_dialog()
 	if (dialog.get_retval() == gui2::twindow::OK) {
 		std::string map_string;
 		try {
-			map_string = dialog.get_selected_map_generator()->create_map();
+			map_string = dialog.get_selected_map_generator()->create_map(dialog.get_seed());
 		} catch (mapgen_exception& e) {
 			gui2::show_transient_message(gui_.video(), _("Map creation failed."), e.what());
 			return;

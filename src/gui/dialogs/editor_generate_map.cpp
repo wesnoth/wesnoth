@@ -21,6 +21,7 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/text_box.hpp"
 #include "generators/map_generator.hpp"
 
 #include <boost/bind.hpp>
@@ -58,6 +59,7 @@ REGISTER_DIALOG(editor_generate_map)
 teditor_generate_map::teditor_generate_map()
 	: map_generators_()
 	, current_map_generator_(0)
+	, random_seed_()
 	, current_generator_label_(NULL)
 	, gui_(NULL)
 {
@@ -105,6 +107,8 @@ void teditor_generate_map::pre_show(CVideo& /*video*/, twindow& window)
 
 	current_generator_label_
 			= &find_widget<tlabel>(&window, "current_generator", false);
+	
+	register_text("seed_textbox", false, random_seed_, false);
 
 	tbutton& settings_button = find_widget<tbutton>(&window, "settings", false);
 	connect_signal_mouse_left_click(
@@ -122,6 +126,16 @@ void teditor_generate_map::pre_show(CVideo& /*video*/, twindow& window)
 						boost::ref(window)));
 
 	update_current_generator_label(window);
+}
+
+boost::optional<boost::uint32_t> teditor_generate_map::get_seed()
+{
+	try {
+		return lexical_cast<boost::uint32_t>(random_seed_);
+	}
+	catch(const bad_lexical_cast& ) {
+		return boost::none;
+	}
 }
 
 } // namespace gui2

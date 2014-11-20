@@ -16,6 +16,8 @@
 #define GUI_DIALOGS_EDITOR_GENERATE_MAP_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
+#include <boost/optional/optional.hpp>
+#include <boost/cstdint.hpp>
 
 class map_generator;
 class display;
@@ -24,6 +26,7 @@ namespace gui2
 {
 
 class tlabel;
+class ttext_box;
 
 /** The dialog for selecting which random generator to use in the editor. */
 class teditor_generate_map : public tdialog
@@ -59,7 +62,7 @@ public:
 	{
 		return gui_;
 	}
-
+	boost::optional<boost::uint32_t> get_seed();
 private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
@@ -72,6 +75,9 @@ private:
 
 	/** Current map generator index */
 	int current_map_generator_;
+	
+	/** random seed integer input*/
+	std::string random_seed_;
 
 	/** Label for the current map generator */
 	tlabel* current_generator_label_;
