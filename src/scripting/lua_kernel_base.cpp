@@ -655,6 +655,10 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 	// Override the print function
 	cmd_log_ << "Redirecting print function...\n";
 
+	lua_getglobal(L, "print");
+	lua_setglobal(L, "std_print"); //storing original impl as 'std_print'
+	lua_settop(L, 0); //clear stack, just to be sure
+
 	lua_cfunc my_print = boost::bind(&lua_kernel_base::intf_print, this, _1);
 	push_boost_cfunc(L, my_print);
 	lua_setglobal(L, "print");
