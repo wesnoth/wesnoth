@@ -23,6 +23,7 @@
 #include "language.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "map_generator.hpp"// mapgen_esxeption
 #include "default_map_generator_job.hpp"
 #include "pathfind/pathfind.hpp"
 #include "pathutils.hpp"
@@ -33,10 +34,23 @@
 #include "SDL.h"
 
 #include <boost/foreach.hpp>
-
+#include "seed_rng.hpp"
 static lg::log_domain log_mapgen("mapgen");
 #define ERR_NG LOG_STREAM(err, log_mapgen)
 #define LOG_NG LOG_STREAM(info, log_mapgen)
+
+default_map_generator_job::default_map_generator_job()
+	: rng_(seed_rng::next_seed())
+{
+
+}
+
+default_map_generator_job::default_map_generator_job(uint32_t seed)
+	: rng_(seed)
+{
+
+}
+
 
 typedef std::vector<std::vector<int> > height_map;
 typedef t_translation::t_map terrain_map;
@@ -55,11 +69,11 @@ typedef map_location location;
  * the center of the map will be inverted (i.e. be valleys).  'island_size' as
  * 0 indicates no island.
  */
-static height_map generate_height_map(size_t width, size_t height,
+height_map default_map_generator_job::generate_height_map(size_t width, size_t height,
                                size_t iterations, size_t hill_size,
 							   size_t island_size, size_t island_off_center)
 {
-	height_map res(width,std::vector<int>(height,0));
+	height_map res(width, std::vector<int>(height,0));
 
 	size_t center_x = width/2;
 	size_t center_y = height/2;
@@ -67,7 +81,7 @@ static height_map generate_height_map(size_t width, size_t height,
 	LOG_NG << "off-centering...\n";
 
 	if(island_off_center != 0) {
-		switch(rand()%4) {
+		switch(rng_()%4) {
 		case 0:
 			center_x += island_off_center;
 			break;
@@ -104,10 +118,10 @@ static height_map generate_height_map(size_t width, size_t height,
 		// Is this a negative hill? (i.e. a valley)
 		bool is_valley = false;
 
-		int x1 = island_size > 0 ? center_x - island_size + (rand()%(island_size*2)) :
-			                                 int(rand()%width);
-		int y1 = island_size > 0 ? center_y - island_size + (rand()%(island_size*2)) :
-			                                 int(rand()%height);
+		int x1 = island_size > 0 ? center_x - island_size + (rng_()%(island_size*2)) :
+			                                 int(rng_()%width);
+		int y1 = island_size > 0 ? center_y - island_size + (rng_()%(island_size*2)) :
+			                                 int(rng_()%height);
 
 		// We have to check whether this is actually a valley
 		if(island_size != 0) {
@@ -117,7 +131,7 @@ static height_map generate_height_map(size_t width, size_t height,
 			is_valley = dist > island_size;
 		}
 
-		const int radius = rand()%hill_size + 1;
+		const int radius = rng_()%hill_size + 1;
 
 		const int min_x = x1 - radius > 0 ? x1 - radius : 0;
 		const int max_x = x1 + radius < static_cast<long>(res.size()) ? x1 + radius : res.size();
@@ -181,7 +195,7 @@ static height_map generate_height_map(size_t width, size_t height,
  * chance to make another water tile in each of the directions. This will
  * continue recursively.
  */
-static bool generate_lake(terrain_map& terrain, int x, int y, int lake_fall_off, std::set<location>& locs_touched)
+bool default_map_generator_job::generate_lake(terrain_map& terrain, int x, int y, int lake_fall_off, std::set<location>& locs_touched)
 {
 	if(x < 0 || y < 0 || size_t(x) >= terrain.size() || size_t(y) >= terrain.front().size()) {
 		return false;
@@ -190,19 +204,19 @@ static bool generate_lake(terrain_map& terrain, int x, int y, int lake_fall_off,
 	terrain[x][y] = t_translation::SHALLOW_WATER;
 	locs_touched.insert(location(x,y));
 
-	if((rand()%100) < lake_fall_off) {
+	if((rng_()%100) < lake_fall_off) {
 		generate_lake(terrain,x+1,y,lake_fall_off/2,locs_touched);
 	}
 
-	if((rand()%100) < lake_fall_off) {
+	if((rng_()%100) < lake_fall_off) {
 		generate_lake(terrain,x-1,y,lake_fall_off/2,locs_touched);
 	}
 
-	if((rand()%100) < lake_fall_off) {
+	if((rng_()%100) < lake_fall_off) {
 		generate_lake(terrain,x,y+1,lake_fall_off/2,locs_touched);
 	}
 
-	if((rand()%100) < lake_fall_off) {
+	if((rng_()%100) < lake_fall_off) {
 		generate_lake(terrain,x,y-1,lake_fall_off/2,locs_touched);
 	}
 
@@ -298,15 +312,15 @@ static std::vector<location> generate_river(const height_map& heights, terrain_m
  * Returns a random tile at one of the borders of a map that is of the given
  * dimensions.
  */
-static location random_point_at_side(size_t width, size_t height)
+map_location default_map_generator_job::random_point_at_side(size_t width, size_t height)
 {
-	const int side = rand()%4;
+	const int side = rng_()%4;
 	if(side < 2) {
-		const int x = rand()%width;
+		const int x = rng_()%width;
 		const int y = side == 0 ? 0 : height-1;
 		return location(x,y);
 	} else {
-		const int y = rand()%height;
+		const int y = rng_()%height;
 		const int x = side == 2 ? 0 : width-1;
 		return location(x,y);
 	}
@@ -576,13 +590,12 @@ static map_location place_village(const t_translation::t_map& map,
 	return best_loc;
 }
 
-static std::string generate_name(const unit_race& name_generator, const std::string& id,
-		std::string* base_name=NULL,
-		utils::string_map* additional_symbols=NULL)
+std::string default_map_generator_job::generate_name(const unit_race& name_generator, const std::string& id,
+		std::string* base_name, utils::string_map* additional_symbols)
 {
 	const std::vector<std::string>& options = utils::split(string_table[id].str());
 	if(options.empty() == false) {
-		const size_t choice = rand()%options.size();
+		const size_t choice = rng_()%options.size();
 		LOG_NG << "calling name generator...\n";
 		const std::string& name = name_generator.generate_name(unit_race::MALE);
 		LOG_NG << "name generator returned '" << name << "'\n";
@@ -721,7 +734,7 @@ t_translation::t_terrain terrain_converter::convert_to() const
 
 } // end anon namespace
 
-std::string default_generate_map(size_t width, size_t height, size_t island_size, size_t island_off_center,
+std::string default_map_generator_job::default_generate_map(size_t width, size_t height, size_t island_size, size_t island_off_center,
                                  size_t iterations, size_t hill_size,
 						         size_t max_lakes, size_t nvillages, size_t castle_size, size_t nplayers, bool roads_between_castles,
 								 std::map<map_location,std::string>* labels, const config& cfg)
@@ -808,11 +821,11 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 	std::map<location, std::string> river_names, lake_names, road_names, bridge_names, mountain_names, forest_names, swamp_names;
 
-	const size_t nlakes = max_lakes > 0 ? (rand()%max_lakes) : 0;
+	const size_t nlakes = max_lakes > 0 ? (rng_()%max_lakes) : 0;
 	for(size_t lake = 0; lake != nlakes; ++lake) {
 		for(int tries = 0; tries != 100; ++tries) {
-			const int x = rand()%width;
-			const int y = rand()%height;
+			const int x = rng_()%width;
+			const int y = rng_()%height;
 			if (heights[x][y] > cfg["min_lake_height"].to_int()) {
 				std::vector<location> river = generate_river(heights,
 					terrain, x, y, cfg["river_frequency"]);
@@ -1017,7 +1030,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 	std::set<location> bridges;
 
-	road_path_calculator calc(terrain, cfg, rand());
+	road_path_calculator calc(terrain, cfg, rng_());
 	for (int road = 0; road != nroads; ++road) {
 		log_scope("creating road");
 
@@ -1214,7 +1227,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				std::set<std::string> used_names;
 				if (t_translation::terrain_matches(terr, t_translation::ALL_MOUNTAINS)) {
 					//name every 15th mountain
-					if ((rand()%15) == 0) {
+					if ((rng_()%15) == 0) {
 						for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
 							name = generate_name(name_generator, "mountain_name", &base_name);
 						}
@@ -1281,10 +1294,10 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 		for(size_t vx = 0; vx < width; vx += village_x) {
 			LOG_NG << "village at " << vx << "\n";
-			for(size_t vy = rand()%village_y; vy < height; vy += village_y) {
+			for(size_t vy = rng_()%village_y; vy < height; vy += village_y) {
 
-				const size_t add_x = rand()%3;
-				const size_t add_y = rand()%3;
+				const size_t add_x = rng_()%3;
+				const size_t add_y = rng_()%3;
 				const size_t x = (vx + add_x) - 1;
 				const size_t y = (vy + add_y) - 1;
 

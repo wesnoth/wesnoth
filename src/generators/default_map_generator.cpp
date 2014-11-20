@@ -397,7 +397,8 @@ std::string default_map_generator::generate_map(std::map<map_location,std::strin
 			labels_copy = *labels;
 		}
 		try{
-			map = default_generate_map(width_, height_, island_size, island_off_center,
+			default_map_generator_job job;
+			map = job.default_generate_map(width_, height_, island_size, island_off_center,
 				iterations, hill_size_, max_lakes, (nvillages_ * width_ * height_) / 1000,
 				castle_size_, nplayers_, link_castles_, labels_ptr, cfg_);
 			error_message = "";
