@@ -285,7 +285,7 @@ bool default_map_generator_job::generate_river_internal(const height_map& height
 	location current_loc(x,y);
 	location adj[6];
 	get_adjacent_tiles(current_loc,adj);
-	static int items[6] = {0,1,2,3,4,5};
+	int items[6] = {0,1,2,3,4,5};
 	for_randomshuffle shufflehelper(rng_);
 	std::random_shuffle(items, items + 4, shufflehelper);
 
