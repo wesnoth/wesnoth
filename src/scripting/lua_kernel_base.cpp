@@ -884,6 +884,7 @@ std::vector<std::string> lua_kernel_base::get_attribute_names(const std::string 
 		lua_rawget(L, -2);
 
 		if (!lua_istable(L,-1) && !lua_isuserdata(L,-1)) {
+			lua_settop(L, base);
 			return ret; //if we didn't get a table or userdata we can't proceed
 		}
 
