@@ -18,7 +18,6 @@
 #include "scripting/lua_kernel_base.hpp"
 
 class config;
-class CVideo;
 
 #include <string>
 

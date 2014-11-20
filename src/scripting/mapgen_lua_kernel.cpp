@@ -17,13 +17,10 @@
 #include "config.hpp"
 #include "game_errors.hpp"
 #include "log.hpp"
-#include "lua/lauxlib.h"
 #include "lua/lua.h"
-#include "mt_rng.hpp"
 #include "scripting/lua_api.hpp"
-#include "scripting/lua_common.hpp"
+#include "scripting/lua_rng.hpp"
 
-#include <new>
 #include <ostream>
 #include <string>
 #include <boost/bind.hpp>
@@ -33,57 +30,7 @@ static lg::log_domain log_mapgen("mapgen");
 #define LOG_NG LOG_STREAM(info, log_mapgen)
 #define DBG_NG LOG_STREAM(debug, log_mapgen)
 
-// Add compiler directive suppressing unused variable warning
-#if defined(__GNUC__) || defined(__clang__) || defined(__MINGW32__)
-#define ATTR_UNUSED( x ) __attribute__((unused)) x
-#else
-#define ATTR_UNUSED( x ) x
-#endif
-
-// Begin lua rng bindings
-
-using rand_rng::mt_rng;
-
-static const char * Rng = "Rng";
-
-static int impl_rng_create(lua_State* L)
-{
-	mt_rng * ATTR_UNUSED(rng) = new ( lua_newuserdata(L, sizeof(mt_rng)) ) mt_rng();
-	luaL_setmetatable(L, Rng);
-
-	return 1;
-}
-
-static int impl_rng_destroy(lua_State* L)
-{
-	mt_rng * d = static_cast< mt_rng *> (luaL_testudata(L, 1, Rng));
-	if (d == NULL) {
-		ERR_NG << "rng_destroy called on data of type: " << lua_typename( L, lua_type( L, 1 ) ) << std::endl;
-		ERR_NG << "This may indicate a memory leak, please report at bugs.wesnoth.org" << std::endl;
-	} else {
-		d->~mt_rng();
-	}
-	return 0;
-}
-
-static int impl_rng_seed(lua_State* L)
-{
-	mt_rng * rng = static_cast<mt_rng *>(luaL_checkudata(L, 1, Rng));
-	std::string seed = luaL_checkstring(L, 2);
-
-	rng->seed_random(seed);
-	return 0;
-}
-
-static int impl_rng_draw(lua_State* L)
-{
-	mt_rng * rng = static_cast<mt_rng *>(luaL_checkudata(L, 1, Rng));
-
-	lua_pushnumber(L, rng->get_next_random());
-	return 1;
-}
-
-// End Lua Rng bindings
+struct lua_State;
 
 mapgen_lua_kernel::mapgen_lua_kernel()
 	: lua_kernel_base(NULL)
@@ -93,21 +40,8 @@ mapgen_lua_kernel::mapgen_lua_kernel()
 	// Add mersenne twister rng wrapper
 	cmd_log_ << "Adding mt19937 metatable...\n";
 
-	luaL_newmetatable(L, Rng);
-
-	static luaL_Reg const callbacks[] = {
-		{ "create",         &impl_rng_create},
-		{ "__gc",           &impl_rng_destroy},
-		{ "seed", 	    &impl_rng_seed},
-		{ "draw",	    &impl_rng_draw},
-		{ NULL, NULL }
-	};
-	luaL_setfuncs(L, callbacks, 0);
-
-	lua_pushvalue(L, -1); //make a copy of this table, set it to be its own __index table
-	lua_setfield(L, -2, "__index");
-
-	lua_setglobal(L, Rng);
+	lua_rng::load_tables(L);
+	lua_settop(L, 0);
 }
 
 void mapgen_lua_kernel::run_generator(const char * prog, const config & generator)
