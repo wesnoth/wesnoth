@@ -643,7 +643,6 @@ std::string get_exe_dir()
 	error_code ec;
 	path exe = bfs::read_symlink(self_exe, ec);
 	if (ec) {
-		ERR_FS << "Failed to dereference " << self_exe.string() << ": " << ec.message() << '\n';
 		return std::string();
 	}
 
