@@ -626,7 +626,7 @@ void context_manager::init_map_generators(const config& game_config)
 {
 	BOOST_FOREACH(const config &i, game_config.child_range("multiplayer")) {
 
-		if (!i["map_generation"].empty()) {
+		if (!i["map_generation"].empty() || !i["scenario_generation"].empty()) {
 
 			const config &generator_cfg = i.child("generator");
 			if (!generator_cfg) {
