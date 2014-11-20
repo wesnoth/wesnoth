@@ -19,11 +19,11 @@
 
 #include "config.hpp"
 #include "generators/map_generator.hpp"
-#include "simple_rng.hpp"
 #include "terrain_translation.hpp"
 
 #include <set>
 #include <boost/optional.hpp>
+#include <boost/random.hpp>
 
 class cave_map_generator : public map_generator
 {
@@ -73,8 +73,8 @@ private:
 		void set_terrain(map_location loc, const t_translation::t_terrain & t);
 		void place_castle(int starting_position, const map_location &loc);
 
-	size_t translate_x(size_t x) const;
-	size_t translate_y(size_t y) const;
+		size_t translate_x(size_t x) const;
+		size_t translate_y(size_t y) const;
 
 		
 		const cave_map_generator& params;
@@ -86,7 +86,7 @@ private:
 		std::vector<chamber> chambers_;
 		std::vector<passage> passages_;
 		config res_;
-		rand_rng::simple_rng rng_;
+		boost::random::mt19937 rng_;
 	};
 
 	bool on_board(const map_location& loc) const
