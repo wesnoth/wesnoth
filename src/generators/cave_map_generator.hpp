@@ -34,13 +34,13 @@ public:
 
 	std::string config_name() const;
 
-	std::string create_map();
-	config create_scenario();
+	std::string create_map(boost::optional<boost::uint32_t> randomseed = boost::none);
+	config create_scenario(boost::optional<boost::uint32_t> randomseed = boost::none);
 
 private:
 	struct cave_map_generator_job
 	{
-		cave_map_generator_job(const cave_map_generator& params, boost::optional<int> randomseed = boost::none);
+		cave_map_generator_job(const cave_map_generator& params, boost::optional<boost::uint32_t> randomseed = boost::none);
 
 		struct chamber {
 			chamber()

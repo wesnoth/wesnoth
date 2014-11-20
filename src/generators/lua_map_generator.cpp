@@ -56,7 +56,7 @@ void lua_map_generator::user_config(display & disp)
 	}
 }
 
-std::string lua_map_generator::create_map()
+std::string lua_map_generator::create_map(boost::optional<boost::uint32_t>)
 {
 	try {
 		return lk_.create_map(create_map_.c_str(), generator_data_);
@@ -68,7 +68,7 @@ std::string lua_map_generator::create_map()
 	}
 }
 
-config lua_map_generator::create_scenario()
+config lua_map_generator::create_scenario(boost::optional<boost::uint32_t>)
 {
 	if (!create_scenario_.size()) {
 		return map_generator::create_scenario();

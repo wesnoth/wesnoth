@@ -25,7 +25,7 @@
 #include "map.hpp"
 #include "marked-up_text.hpp"
 #include "show_dialog.hpp"
-
+#include "seed_rng.hpp"
 #include "widgets/slider.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -346,13 +346,21 @@ std::string default_map_generator::config_name() const
 	return std::string();
 }
 
-std::string default_map_generator::create_map()
+std::string default_map_generator::create_map(boost::optional<boost::uint32_t> randomseed)
 {
-	return generate_map();
+	return generate_map(NULL, randomseed);
 }
 
-std::string default_map_generator::generate_map(std::map<map_location,std::string>* labels)
+std::string default_map_generator::generate_map(std::map<map_location,std::string>* labels, boost::optional<boost::uint32_t> randomseed)
 {
+	boost::uint32_t seed;
+	if(const boost::uint32_t* pseed = randomseed.get_ptr()) {
+		seed = *pseed;
+	}
+	else {
+		seed = seed_rng::next_seed();
+	}
+
 	// Suppress labels?
 	if ( !show_labels_ )
 		labels = NULL;
@@ -390,6 +398,8 @@ std::string default_map_generator::generate_map(std::map<map_location,std::strin
 	std::map<map_location,std::string> labels_copy;
 	std::map<map_location,std::string> * labels_ptr =  labels ? &labels_copy : NULL;
 	std::string error_message;
+	//initilize the job outside the loop so that we really get a different result everytime we run the loop.
+	default_map_generator_job job(seed);
 	int tries = 10;
 	do {
 		if (labels) {
@@ -397,7 +407,6 @@ std::string default_map_generator::generate_map(std::map<map_location,std::strin
 			labels_copy = *labels;
 		}
 		try{
-			default_map_generator_job job;
 			map = job.default_generate_map(width_, height_, island_size, island_off_center,
 				iterations, hill_size_, max_lakes, (nvillages_ * width_ * height_) / 1000,
 				castle_size_, nplayers_, link_castles_, labels_ptr, cfg_);
@@ -418,7 +427,7 @@ std::string default_map_generator::generate_map(std::map<map_location,std::strin
 	return map;
 }
 
-config default_map_generator::create_scenario()
+config default_map_generator::create_scenario(boost::optional<boost::uint32_t> randomseed)
 {
 	DBG_NG << "creating scenario...\n";
 
@@ -430,7 +439,7 @@ config default_map_generator::create_scenario()
 	DBG_NG << "generating map...\n";
 
 	try{
-		res["map_data"] = generate_map(&labels);
+		res["map_data"] = generate_map(&labels, randomseed);
 	}
 	catch (mapgen_exception& exc){
 		res["map_data"] = "";

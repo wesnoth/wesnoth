@@ -42,8 +42,8 @@ public:
 	std::string config_name() const { return config_name_; }
 
 	virtual void user_config(display & disp);
-	virtual std::string create_map();
-	virtual config create_scenario();
+	virtual std::string create_map(boost::optional<boost::uint32_t> randomseed);
+	virtual config create_scenario(boost::optional<boost::uint32_t> randomseed);
 
 private:
 	std::string id_, config_name_;

@@ -197,26 +197,27 @@ height_map default_map_generator_job::generate_height_map(size_t width, size_t h
  */
 bool default_map_generator_job::generate_lake(terrain_map& terrain, int x, int y, int lake_fall_off, std::set<location>& locs_touched)
 {
-	if(x < 0 || y < 0 || size_t(x) >= terrain.size() || size_t(y) >= terrain.front().size()) {
+	if(x < 0 || y < 0 || size_t(x) >= terrain.size() || size_t(y) >= terrain.front().size() || lake_fall_off < 0) {
 		return false;
 	}
-
+	//we checked for this eariler.
+	unsigned int ulake_fall_off = lake_fall_off;
 	terrain[x][y] = t_translation::SHALLOW_WATER;
 	locs_touched.insert(location(x,y));
 
-	if((rng_()%100) < lake_fall_off) {
+	if((rng_()%100) < ulake_fall_off) {
 		generate_lake(terrain,x+1,y,lake_fall_off/2,locs_touched);
 	}
 
-	if((rng_()%100) < lake_fall_off) {
+	if((rng_()%100) < ulake_fall_off) {
 		generate_lake(terrain,x-1,y,lake_fall_off/2,locs_touched);
 	}
 
-	if((rng_()%100) < lake_fall_off) {
+	if((rng_()%100) < ulake_fall_off) {
 		generate_lake(terrain,x,y+1,lake_fall_off/2,locs_touched);
 	}
 
-	if((rng_()%100) < lake_fall_off) {
+	if((rng_()%100) < ulake_fall_off) {
 		generate_lake(terrain,x,y-1,lake_fall_off/2,locs_touched);
 	}
 

@@ -73,19 +73,19 @@ size_t cave_map_generator::cave_map_generator_job::translate_y(size_t y) const
 	return y;
 }
 
-std::string cave_map_generator::create_map()
+std::string cave_map_generator::create_map(boost::optional<boost::uint32_t> randomseed)
 {
-	const config res = create_scenario();
+	const config res = create_scenario(randomseed);
 	return res["data"];
 }
 
-config cave_map_generator::create_scenario()
+config cave_map_generator::create_scenario(boost::optional<boost::uint32_t> randomseed)
 {
-	cave_map_generator_job job(*this);
+	cave_map_generator_job job(*this, randomseed);
 	return job.res_;
 }
 
-cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_map_generator& pparams, boost::optional<int> randomseed)
+cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_map_generator& pparams, boost::optional<boost::uint32_t> randomseed)
 	: params(pparams)
 	, flipx_(false)
 	, flipy_(false)
@@ -98,7 +98,7 @@ cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_ma
 	, res_(params.cfg_.child_or_empty("settings"))
 	, rng_() //initialises with rand()
 {
-	if(int* seed = randomseed.get_ptr())
+	if(boost::uint32_t* seed = randomseed.get_ptr())
 	{
 		rng_.seed_random(*seed);
 	}

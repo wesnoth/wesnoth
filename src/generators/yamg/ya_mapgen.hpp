@@ -86,7 +86,7 @@ public:
 #ifndef YAMG_STANDALONE
 	std::string name() const; // {return "yamg";};
 	std::string config_name() const; // {return "generator";};
-	std::string create_map();
+	std::string create_map(boost::optional<boost::uint32_t> randomseed);
 #endif
 
 //----------------- Methods -------------

@@ -322,7 +322,7 @@ std::string ya_mapgen::config_name() const {
  *** create_map
  Parameters and errors reporting are not defined yet, so this is a mere skeleton.
  */
-std::string ya_mapgen::create_map() {
+std::string ya_mapgen::create_map(boost::optional<boost::uint32_t>) {
 
 	yamg_params *par = new yamg_params();
 
