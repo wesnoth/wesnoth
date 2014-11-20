@@ -45,6 +45,13 @@ public:
 private:
 	
 	typedef std::vector<std::vector<int> > height_map;
+	typedef t_translation::t_map terrain_map;
+
+	bool generate_river_internal(const height_map& heights,
+		terrain_map& terrain, int x, int y, std::vector<map_location>& river,
+		std::set<map_location>& seen_locations, int river_uphill);
+
+	std::vector<map_location> generate_river(const height_map& heights, terrain_map& terrain, int x, int y, int river_uphill);
 
 	height_map generate_height_map(size_t width, size_t height,
                                size_t iterations, size_t hill_size,

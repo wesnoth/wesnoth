@@ -241,7 +241,17 @@ bool default_map_generator_job::generate_lake(terrain_map& terrain, int x, int y
  * false will be returned.  true is returned if the river is generated
  * successfully.
  */
-static bool generate_river_internal(const height_map& heights,
+
+namespace 
+{
+	struct for_randomshuffle
+	{
+		for_randomshuffle(boost::random::mt19937& rng) : rng_(rng) {}
+		boost::random::mt19937& rng_;
+		uint32_t operator ()(uint32_t end) { return rng_() % end; }
+	};
+}
+bool default_map_generator_job::generate_river_internal(const height_map& heights,
 	terrain_map& terrain, int x, int y, std::vector<location>& river,
 	std::set<location>& seen_locations, int river_uphill)
 {
@@ -276,7 +286,8 @@ static bool generate_river_internal(const height_map& heights,
 	location adj[6];
 	get_adjacent_tiles(current_loc,adj);
 	static int items[6] = {0,1,2,3,4,5};
-	std::random_shuffle(items,items+4);
+	for_randomshuffle shufflehelper(rng_);
+	std::random_shuffle(items, items + 4, shufflehelper);
 
 	// Mark that we have attempted from this location
 	seen_locations.insert(current_loc);
@@ -297,7 +308,7 @@ static bool generate_river_internal(const height_map& heights,
 	return false;
 }
 
-static std::vector<location> generate_river(const height_map& heights, terrain_map& terrain, int x, int y, int river_uphill)
+std::vector<location> default_map_generator_job::generate_river(const height_map& heights, terrain_map& terrain, int x, int y, int river_uphill)
 {
 	std::vector<location> river;
 	std::set<location> seen_locations;
