@@ -20,7 +20,7 @@
 
 #include <string>
 #include <utility>
-
+#include <ciso646>   // for and
 /**
  * Helper function which gets a map location from the stack. Handles lua (1-based) to C++ (0-based) conversion.
  * Expected: stack has at least two elements, top is y, next is x.
