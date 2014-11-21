@@ -47,6 +47,7 @@ tristate_button::tristate_button(CVideo& video,
 				pressedDownImage_(NULL), pressedUpImage_(NULL), pressedBothImage_(NULL),
 				pressedBothActiveImage_(NULL), pressedDownActiveImage_(NULL), pressedUpActiveImage_(NULL),
 				touchedDownImage_(NULL), touchedUpImage_(NULL), touchedBothImage_(NULL),
+				textRect_(),
 				state_(NORMAL), pressed_(false),
 				base_height_(0), base_width_(0),
 				palette_(palette), item_id_()
