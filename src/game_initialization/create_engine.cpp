@@ -849,6 +849,7 @@ size_t create_engine::current_mod_index() const
 
 bool create_engine::toggle_current_mod(bool force)
 {
+	force |= (current_level_type_ == ng::level::CAMPAIGN || current_level_type_ == ng::level::SP_CAMPAIGN);
 	bool is_active = dependency_manager_.is_modification_active(current_mod_index_);
 	dependency_manager_.try_modification_by_index(current_mod_index_, !is_active, force);
 
