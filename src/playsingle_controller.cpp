@@ -988,6 +988,7 @@ void playsingle_controller::play_ai_turn(){
 	} 
 	catch(...) {
 		turn_data_.sync_network();
+		throw;
 	}
 	turn_data_.sync_network();
 	gui_->recalculate_minimap();
