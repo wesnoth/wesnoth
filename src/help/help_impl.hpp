@@ -12,6 +12,23 @@
    See the COPYING file for more details.
 */
 
+/**
+ * Note:
+ * Prior to the creation of this file, all the code associated to the help
+ * browser existed in a single file src/help.cpp, including all of the
+ * widgets, topic generators, and implementation details. This totaled
+ * ~4000 lines of code.
+ *
+ * I have split it all up now, so that the gui aspects are separated from
+ * the content, the "front facing" part which the rest of the code base
+ * interacts with is in src/help/help.?pp, and the topic generators are
+ * separated. The remaining "guts" are here. It is implemented in a static
+ * singleton pattern, using "extern"'d variables, simply for ease of translation
+ * from the previous state. It would probably be a good idea to rewrite this
+ * guy as a proper C++ object. Feel free to do so, or to adopt some other
+ * design pattern.
+ */
+
 #ifndef HELP_IMPL_INCLUDED
 #define HELP_IMPL_INCLUDED
 
