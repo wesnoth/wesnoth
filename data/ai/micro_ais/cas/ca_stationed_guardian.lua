@@ -97,6 +97,10 @@ function ca_stationed_guardian:execution(ai, cfg)
     -- If no enemy is within the target zone, move toward station position
     else
         local nh = AH.next_hop(guardian, cfg.station_x, cfg.station_y)
+        if not nh then
+            nh = { guardian.x, guardian.y }
+        end
+
         AH.movefull_stopunit(ai, guardian, nh)
     end
 
