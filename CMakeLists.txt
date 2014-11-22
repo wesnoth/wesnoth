@@ -88,7 +88,7 @@ option(ENABLE_PANDORA "Add support for the OpenPandora by deactivating libvorbis
 option(ENABLE_SDL_GPU "Enable building with SDL_gpu (experimental" OFF)
 option(ENABLE_BOOST_FILESYSTEM "Enable building with the boost filesystem and boost locale code" ON)
 option(ENABLE_LIBPNG "Enable support for writing png files (screenshots, images)" ON)
-option(ENABLE_READLINE "Enable using readline for history in lua console" OFF)
+option(ENABLE_READLINE "Enable using GNU readline for history in lua console" ON)
 
 if(NOT DEFINED ENABLE_DISPLAY_REVISION)
 	# Test whether the code is used in a repository if not autorevision will
