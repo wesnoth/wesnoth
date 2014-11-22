@@ -100,7 +100,7 @@ function methods:stable_iter(f)
 	table.sort(indices)
 	for i,p in ipairs(indices) do
 		local x, y = revindex(p)
-		f(x, y, v)
+		f(x, y)
 	end
 end
 
