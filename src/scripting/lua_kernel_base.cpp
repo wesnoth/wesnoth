@@ -476,7 +476,25 @@ void lua_kernel_base::run(const char * prog) {
 	}
 }
 
+// Tests if a program resolves to an expression, and pretty prints it if it is, otherwise it runs it normally. Throws exceptions.
+void lua_kernel_base::interactive_run(char const * prog) {
+	std::string experiment = "_pretty_print(";
+	experiment += prog;
+	experiment += ")";
 
+	error_handler eh = boost::bind(&lua_kernel_base::throw_exception, this, _1, _2 );
+
+	try {
+		// Try to load the experiment without syntax errors
+		load_string(experiment.c_str(), eh);
+	} catch (game::lua_error & e) {
+		throwing_run(prog);	// Since it failed, fall back to the usual throwing_run, on the original input.
+		return;
+	}
+	// experiment succeeded, now run but log normally.
+	cmd_log_ << "$ " << prog << "\n";
+	protected_call(0, 0, eh);
+}
 
 /**
  * Loads the "package" package into the Lua environment.

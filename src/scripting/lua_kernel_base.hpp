@@ -34,6 +34,9 @@ public:
 	/** Runs a plain script, but reports errors by throwing lua_error.*/
 	void throwing_run(char const * prog);
 
+	/** Tests if a program resolves to an expression, and pretty prints it if it is, otherwise it runs it normally. Throws exceptions.*/
+	void interactive_run(char const * prog);
+
 	void load_package();
 
 	std::vector<std::string> get_global_var_names();
