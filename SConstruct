@@ -106,6 +106,7 @@ opts.AddVariables(
     BoolVariable("fast", "Make scons faster at cost of less precise dependency tracking.", False),
     BoolVariable("lockfile", "Create a lockfile to prevent multiple instances of scons from being run at the same time on this working copy.", False),
     BoolVariable("OS_ENV", "Forward the entire OS environment to scons", False),
+    BoolVariable("readline", "Clear to disable readline support in lua console", False),
     BoolVariable("sdl2", "Build with SDL2 support (experimental!)", False)
     )
 
@@ -413,6 +414,10 @@ if env["prereqs"]:
         env["png"] = env["png"] and conf.CheckLib("png")
         if env["png"]:
             client_env.Append(CPPDEFINES = ["HAVE_LIBPNG"])
+
+        env["readline"] = env["readline"] and conf.CheckLib("readline")
+        if env["readline"]:
+            client_env.Append(CPPDEFINES = ["HAVE_READLINE"])
 
     if env["forum_user_handler"]:
         flags = env.ParseFlags("!mysql_config --libs --cflags")

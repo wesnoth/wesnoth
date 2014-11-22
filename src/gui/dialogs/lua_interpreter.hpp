@@ -27,7 +27,8 @@ namespace gui2
 class tlua_interpreter : public tdialog
 {
 public:
-	class model;
+	class lua_model;
+	class input_model;
 	class view;
 	class controller;
 
