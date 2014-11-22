@@ -175,55 +175,55 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	}
 	else if (const config &change = cfg.child("change_controller"))
 	{
-		if(change.empty())
-		{
+		if(change.empty()) {
+			ERR_NW << "Bad [change_controller] signal from server, [change_controller] tag was empty." << std::endl;
 			return PROCESS_CONTINUE;
 		}
 		//don't use lexical_cast_default it's "safer" to end on error
 		const int side = lexical_cast<int>(change["side"]);
 		const size_t index = side - 1;
-		
-		if(index < resources::gameboard->teams().size()) {
 
-			const team & tm = resources::gameboard->teams()[index];
-			const std::string &player = change["player"];
-			const bool restart = resources::screen->playing_side() == side;
-			const bool was_local = tm.is_local();
-			
-			team::CONTROLLER new_controller = team::CONTROLLER();
-			try {
-				new_controller = team::string_to_CONTROLLER (change["controller"].str());
-			} catch (bad_enum_cast & e) {
-				ERR_NW << "Bad [change_controller] message from server:\n" << e.what() << std::endl << change.debug() << std::endl;
-				return PROCESS_CONTINUE;
-			}
-
-			resources::gameboard->side_change_controller(side, new_controller, player);
-
-			if (!was_local && tm.is_local()) {
-				resources::controller->on_not_observer();
-			}
-
-			if (resources::gameboard->is_observer() || (resources::gameboard->teams())[resources::screen->playing_team()].is_local_human()) {
-				resources::screen->set_team(resources::screen->playing_team());
-				resources::screen->redraw_everything();
-				resources::screen->recalculate_minimap();
-			} else if (tm.is_local_human()) {
-				resources::screen->set_team(side - 1);
-				resources::screen->redraw_everything();
-				resources::screen->recalculate_minimap();
-			}
-
-			resources::controller->maybe_do_init_side();
-
-			resources::whiteboard->on_change_controller(side,tm);
-
-			resources::screen->labels().recalculate_labels();
-
-			return restart ? PROCESS_RESTART_TURN : PROCESS_CONTINUE;
-		} else {
+		if(index >= resources::gameboard->teams().size()) {
 			ERR_NW << "Bad [change_controller] signal from server, side out of bounds: " << change.debug() << std::endl;
+			return PROCESS_CONTINUE;
 		}
+
+		const team & tm = resources::gameboard->teams()[index];
+		const std::string &player = change["player"];
+		const bool was_local = tm.is_local();
+
+		team::CONTROLLER new_controller = team::CONTROLLER();
+		try {
+			new_controller = team::string_to_CONTROLLER (change["controller"].str());
+		} catch (bad_enum_cast & e) {
+			ERR_NW << "Bad [change_controller] message from server:\n" << e.what() << std::endl << change.debug() << std::endl;
+			return PROCESS_CONTINUE;
+		}
+
+		resources::gameboard->side_change_controller(side, new_controller, player);
+
+		if (!was_local && tm.is_local()) {
+			resources::controller->on_not_observer();
+		}
+
+		if (resources::gameboard->is_observer() || (resources::gameboard->teams())[resources::screen->playing_team()].is_local_human()) {
+			resources::screen->set_team(resources::screen->playing_team());
+			resources::screen->redraw_everything();
+			resources::screen->recalculate_minimap();
+		} else if (tm.is_local_human()) {
+			resources::screen->set_team(side - 1);
+			resources::screen->redraw_everything();
+			resources::screen->recalculate_minimap();
+		}
+
+		resources::controller->maybe_do_init_side();
+
+		resources::whiteboard->on_change_controller(side,tm);
+
+		resources::screen->labels().recalculate_labels();
+
+		const bool restart = resources::screen->playing_side() == side && (was_local || tm.is_local());
+		return restart ? PROCESS_RESTART_TURN : PROCESS_CONTINUE;
 	}
 
 	else if (const config &side_drop_c = cfg.child("side_drop"))
