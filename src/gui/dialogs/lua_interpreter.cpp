@@ -99,6 +99,18 @@ public:
 		msg_label->set_label(str);
 		msg_label->scroll_vertical_scrollbar(tscrollbar_::END);
 	}
+
+	void pg_up()
+	{
+		assert(msg_label);
+		msg_label->scroll_vertical_scrollbar(tscrollbar_::JUMP_BACKWARDS);
+	}
+
+	void pg_down()
+	{
+		assert(msg_label);
+		msg_label->scroll_vertical_scrollbar(tscrollbar_::JUMP_FORWARD);
+	}
 };
 
 /**
@@ -485,7 +497,16 @@ void tlua_interpreter::controller::input_keypress_callback(bool& handled,
 		search(1);
 		handled = true;
 		halt = true;
+	} else if(key == SDLK_PAGEUP) {
+		view_->pg_up();
+		handled = true;
+		halt = true;
+	} else if(key == SDLK_PAGEDOWN) {
+		view_->pg_down();
+		handled = true;
+		halt = true;
 	}
+
 }
 
 void tlua_interpreter::controller::execute()
