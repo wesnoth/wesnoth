@@ -816,8 +816,9 @@ possible_end_play_signal playsingle_controller::play_side()
 				}
 			}
 		}
-
-		// Else current_team().is_empty(), so do nothing.
+		else {
+			assert(current_team().is_empty()); // Do nothing.
+		}
 
 	} while (player_type_changed_);
 	// Keep looping if the type of a team (human/ai/networked)
