@@ -300,6 +300,33 @@ public:
 		return "History is disabled, you did not compile with readline support.";
 #endif
 	}
+
+	// Does history expansion in a command line. A return value of true indicates an error,
+	// the error message will be returned in the string argument. A return value of false
+	// indicates success and that execution should proceed.
+	bool do_history_expansion (std::string & cmd) {
+#ifdef HAVE_READLINE
+		// Do history expansions
+		char * cmd_cstr = new char [cmd.length()+1];
+		std::strcpy (cmd_cstr, cmd.c_str());
+
+		char * expansion;
+
+		int result = history_expand(cmd_cstr, &expansion);
+		free(cmd_cstr);
+
+		if (result < 0 || result == 2) {
+			cmd = expansion; // return error message in cmd var
+			free(expansion);
+			return true;
+		}
+
+		cmd = expansion;
+		free(expansion);
+#endif
+		(void) cmd;
+		return false;
+	}
 };
 
 /**
@@ -484,26 +511,11 @@ void tlua_interpreter::controller::execute()
 		return;
 	}
 
-#ifdef HAVE_READLINE
-	// Do history expansions
-	char * cmd_cstr = new char [cmd.length()+1];
-	std::strcpy (cmd_cstr, cmd.c_str());
-
-	char * expansion;
-
-	int result = history_expand(cmd_cstr, &expansion);
-	free(cmd_cstr);
-
-	if (result < 0 || result == 2) {
-		lua_model_->add_dialog_message(expansion);
+	if (input_model_->do_history_expansion(cmd)) {
+		lua_model_->add_dialog_message(cmd);
 		update_view();
-		free(expansion);
-		return ;
+		return;
 	}
-
-	cmd = expansion;
-	free(expansion);
-#endif
 
 	if (lua_model_->execute(cmd)) {
 		input_model_->add_to_history(cmd);
