@@ -109,6 +109,8 @@ BUILD_ID="$TYPE-$VERSION-git-$COMMIT"
 
 DEST="$DEST_ROOT/$BUILD_ID"
 INT="$INT_ROOT/$SOURCE_VERSION"
+SCONS_LOG="$DEST/scons.log"
+CONF_LOG="$INT/build/config.log"
 
 mkdir -p "$DEST" "$INT"
 
@@ -131,6 +133,8 @@ echo "            Version: $VERSION"
 echo "         Source dir: $SOURCE"
 echo "   Intermediate dir: $INT"
 echo "    Destination dir: $DEST"
+echo "   SCons output log: $SCONS_LOG"
+echo "   SCons config log: $CONF_LOG"
 
 set -x
 
@@ -157,7 +161,7 @@ scons \
 		localedir= \
 		prefsdir= \
 		$BUILD_OPTIONS \
-> "$DEST/scons.log"
+> "$SCONS_LOG"
 
 # Discard the man pages.
 rm -rf "$DEST"/share/
