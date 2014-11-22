@@ -4,36 +4,22 @@
 -- will try to print out tables recursively, subject to the pretty_print_limit value.
 -- Steve Donovan, 2007
 -- Adapted by iceiceice for wesnoth, 2014
+-- Retrived from: http://lua-users.org/files/wiki_insecure/users/steved/ilua.lua
 
 local pretty_print_limit = 20
 local max_depth = 7
 local table_clever = true
-local prompt = '> '
-local verbose = false
-local strict = true
 -- suppress strict warnings
 _ = true
 
 -- imported global functions
 local sub = string.sub
-local match = string.match
-local find = string.find
 local push = table.insert
 local pop = table.remove
-local append = table.insert
-local concat = table.concat
+local pack = table.pack
 local floor = math.floor
 
-local savef
-local collisions = {}
-local G_LIB = {}
 local declared = {}
-local line_handler_fn, global_handler_fn
-local print_handlers = {}
-
-ilua = {}
-local num_prec
-local num_all
 
 local jstack = {}
 
@@ -89,13 +75,8 @@ local function join(tbl,delim,limit,depth)
     return sub(res,2)
 end
 
-
-function val2str(val)
+local function val2str(val)
     local tp = type(val)
-    if print_handlers[tp] then
-        local s = print_handlers[tp](val)
-        return s or '?'
-    end
     if tp == 'function' then
         return tostring(val)
     elseif tp == 'table' then
@@ -107,23 +88,55 @@ function val2str(val)
     elseif tp == 'string' then
         return "'"..val.."'"
     elseif tp == 'number' then
-        -- we try only to apply floating-point precision for numbers deemed to be floating-point,
-        -- unless the 3rd arg to precision() is true.
-        if num_prec and (num_all or floor(val) ~= val) then
-            return num_prec:format(val)
-        else
-            return tostring(val)
-        end
+	-- removed numeric precision features, but we might actually want these... might put them back
+        return tostring(val)
     else
         return tostring(val)
     end
 end
 
-function _pretty_print(...)
-    arg = table.pack(...)
+local function _pretty_print(...)
+    local arg = pack(...)
     for i,val in ipairs(arg) do
         print(val2str(val))
     end
     _G['_'] = arg[1]
 end
 
+--
+-- strict.lua
+-- checks uses of undeclared global variables
+-- All global variables must be 'declared' through a regular assignment
+-- (even assigning nil will do) in a main chunk before being used
+-- anywhere.
+--
+local function set_strict()
+    local mt = getmetatable(_G)
+    if mt == nil then
+        mt = {}
+        setmetatable(_G, mt)
+    end
+
+    local function what ()
+        local d = debug.getinfo(3, "S")
+        return d and d.what or "C"
+    end
+
+    mt.__newindex = function (t, n, v)
+        declared[n] = true
+        rawset(t, n, v)
+    end
+
+    mt.__index = function (t, n)
+        if not declared[n] and what() ~= "C" then
+            error("variable '"..n.."' must be assigned before being used", 2)
+        end
+        return rawget(t, n)
+    end
+end
+
+return {
+val2str = val2str,
+_pretty_print = _pretty_print,
+set_strict = set_strict
+}

@@ -205,8 +205,8 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 	while(lua_next(L, -2) != 0) {
 		lua_pop(L, 1);
 		char const* function = lua_tostring(L, -1);
-		if(strcmp(function, "traceback") == 0) continue;
-		lua_pushnil(L);
+		if(strcmp(function, "traceback") == 0 || strcmp(function, "getinfo") == 0) continue;	//traceback is needed for our error handler
+		lua_pushnil(L);										//getinfo is needed for ilua strict mode
 		lua_setfield(L, -3, function);
 	}
 	lua_pop(L, 1);
@@ -350,7 +350,16 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 	lua_pushstring(L, "lua/ilua.lua");
 	int result = lua_fileops::intf_require(L);
 	if (result == 1) {
-		lua_setglobal(L, "ilua");
+		//run "ilua.set_strict()"
+		lua_pushstring(L, "set_strict");
+		lua_gettable(L, -2);
+		if (!protected_call(0,0, boost::bind(&lua_kernel_base::log_error, this, _1, _2))) {
+			cmd_log_ << "Failed to activate strict mode.\n";
+		} else {
+			cmd_log_ << "Activated strict mode.\n";
+		}
+
+		lua_setglobal(L, "ilua"); //save ilua table as a global
 	} else {
 		cmd_log_ << "Error: failed to load ilua.\n";
 	}
@@ -478,7 +487,7 @@ void lua_kernel_base::run(const char * prog) {
 
 // Tests if a program resolves to an expression, and pretty prints it if it is, otherwise it runs it normally. Throws exceptions.
 void lua_kernel_base::interactive_run(char const * prog) {
-	std::string experiment = "_pretty_print(";
+	std::string experiment = "ilua._pretty_print(";
 	experiment += prog;
 	experiment += ")";
 

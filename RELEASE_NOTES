@@ -192,7 +192,23 @@ Note that:
 
 [section="Lua interpreter console"]
 As a debugging aide, a lua interpreter console has been added to the game. At time of writing it is accessible from a button the gamestate inspector, also it may be brought up using hotkey '`' by default.
+
+The lua interpreter console supports command-line history, backed up by the GNU readline library. This is an optional dependency, but if you don't have it you won't be able to use the feature.
 [/section]
+
+[section="Compatability breaking changes"]
+[list]
+[*] By default, all lua in wesnoth is now run using "strict globals". This means that you must assign a value to a global variable before using it, or it is a runtime error. Even assigning "nil" is acceptable. While this is strictly speaking a compatability-breaking change, it is quite uncommon that you would require the default behavior for your script to work, and this change greatly improves the maintainability of lua in add-ons, by giving an error message in case of a programmer typo, rather than pretending that everything is fine. This change also improves the behavior of the lua interpreter console.
+
+The implementation is based on a module called "ilua" (interactive lua) available here: http://lua-users.org/files/wiki_insecure/users/steved/ilua.lua
+
+If you must, you can disable the feature in one of the following ways:
+[list]
+[*] [code] setmetatable(_G, nil) [/code] to disable, and [code] ilua.set_strict() [/code] to re-enable.
+[*] [code] result, err = pcall ( possible_global_var ~= nil ) [/code]
+[*] [code] result = rawget(_G, "possible_global_var") [/code]
+[/list]
+[/list]
 
 [section="Example section 2"]
 Example contents 2.
