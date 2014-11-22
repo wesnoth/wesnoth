@@ -162,31 +162,36 @@ class tlua_interpreter::input_model {
 private:
 	std::string prefix_;
 	bool end_of_history_;
+#ifdef HAVE_READLINE
+	std::string filename_;
+#endif
 
 public:
 	input_model()
 	: prefix_()
 	, end_of_history_(true)
-	{
 #ifdef HAVE_READLINE
+	, filename_(filesystem::get_user_config_dir() + "/lua_command_history")
+	{
 		using_history();
-		read_history ((filesystem::get_user_config_dir() + "lua_command_history").c_str());
-#endif
+		read_history (filename_.c_str());
 	}
+#else
+	{}
+#endif
 
 #ifdef HAVE_READLINE
 	~input_model()
 	{
 		try {
 			const size_t history_max = 500;
-			std::string filename = filesystem::get_user_config_dir() + "lua_command_history";
-			if (filesystem::file_exists(filename)) {
-				append_history (history_max,filename.c_str());
+			if (filesystem::file_exists(filename_)) {
+				append_history (history_max,filename_.c_str());
 			} else {
-				write_history (filename.c_str());
+				write_history (filename_.c_str());
 			}
 
-			history_truncate_file ((filesystem::get_user_config_dir() + "lua_command_history").c_str(), history_max);
+			history_truncate_file (filename_.c_str(), history_max);
 		} catch (...) { std::cerr << "Swallowed an exception when trying to write lua command line history\n";}
 	}
 #endif
@@ -258,6 +263,42 @@ public:
 		std::string temp = prefix_;
 		prefix_ = "";
 		return temp;
+	}
+
+	std::string clear_history() {
+#ifdef HAVE_READLINE
+		clear_history();
+		write_history (filename_.c_str());
+		return "Cleared history.";
+#else
+		return "History is disabled, you did not compile with readline support.";
+#endif
+	}
+
+	std::string list_history() {
+#ifdef HAVE_READLINE
+		HIST_ENTRY **the_list;
+
+		the_list = history_list ();
+		if (the_list) {
+			if (!*the_list) {
+				return "History is empty.";
+			}
+
+			std::string result;
+			for (int i = 0; the_list[i]; i++) {
+				result += lexical_cast<std::string, int>(i+history_base);
+				result += ": ";
+				result += the_list[i]->line;
+				result += "\n";
+			}
+			return result;
+		} else {
+			return "Couldn't find history.";
+		}
+#else
+		return "History is disabled, you did not compile with readline support.";
+#endif
 	}
 };
 
@@ -430,41 +471,15 @@ void tlua_interpreter::controller::execute()
 	LOG_LUA << "Executing '"<< cmd << "'\n";
 
 	if (cmd.size() >= 13 && (cmd.substr(0,13) == "history clear" || cmd.substr(0,13) == "clear history")) {
-#ifdef HAVE_READLINE
-		clear_history();
-		write_history ((filesystem::get_user_config_dir() + "lua_command_history").c_str());
+		lua_model_->add_dialog_message(input_model_->clear_history());
 		text_entry->set_value("");
-		lua_model_->add_dialog_message("Cleared history.");
-#else
-		lua_model_->add_dialog_message("History is disabled, you did not compile with readline support.");
-#endif
 		update_view();
 		return;
 	}
 
 	if (cmd.size() >= 7 && (cmd.substr(0,7) == "history")) {
-#ifdef HAVE_READLINE
-		std::string result;
-		HIST_ENTRY **the_list;
-
-		the_list = history_list ();
-		if (the_list) {
-			if (!*the_list) {
-				result += "History is empty.";
-			}
-			for (int i = 0; the_list[i]; i++) {
-				result += lexical_cast<std::string, int>(i+history_base);
-				result += ": ";
-				result += the_list[i]->line;
-				result += "\n";
-			}
-		} else {
-			result += "Couldn't find history.";
-		}
-		lua_model_->add_dialog_message(result);
-#else
-		lua_model_->add_dialog_message("History is disabled, you did not compile with readline support.");
-#endif
+		lua_model_->add_dialog_message(input_model_->list_history());
+		text_entry->set_value("");
 		update_view();
 		return;
 	}
