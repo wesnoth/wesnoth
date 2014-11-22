@@ -179,6 +179,10 @@ Version 1.13.0-dev:
    * Added support for hyperlink rendering and clicking in gui2 labels.
    * Added lua interpreter console, accessible via a hotkey
    * Add lua console button to gamestate inspector
+   * Add command history and history expansion to lua console, based on optional
+     support from GNU readline history library.
+   * Add support to evaluate expressions automatically in lua console, based on
+     a lua lib "ilua", and "experimental compilation" technique.
  * WML engine:
    * Added customizable recall costs for unit types and individual units,
      using the new recall_cost attribute in [unit_type] and [unit].
