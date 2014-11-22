@@ -119,7 +119,7 @@ if [ $TYPE = wesnothd ]; then
 	BUILD_OPTIONS="fifodir=$DEST/var/run raw_sockets=1 forum_user_handler=1"
 	case $(hostname) in
 	  gonzo.dicp.de)
-		BUILD_OPTIONS="fifodir=$DEST/var/run raw_sockets=1 boostdir=$HOME/tools/include boostlibdir=$HOME/tools/lib boost_suffix=-mt"
+		BUILD_OPTIONS="fifodir=$DEST/var/run raw_sockets=1 boostdir=$HOME/tools/include boostlibdir=$HOME/tools/lib"
 		;;
 	  basilic)
 		BUILD_OPTIONS="fifodir=$DEST/var/run raw_sockets=1"
