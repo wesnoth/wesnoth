@@ -208,6 +208,9 @@ If you must, you can disable the feature in one of the following ways:
 [*] [code] result, err = pcall ( possible_global_var ~= nil ) [/code]
 [*] [code] result = rawget(_G, "possible_global_var") [/code]
 [/list]
+
+Note that this change already revealed a bug in our core WML API as soon as it was implemented.
+https://github.com/wesnoth/wesnoth/commit/d31253f585bd1e111705f59bdc37012ff6675f38
 [/list]
 
 [section="Example section 2"]
