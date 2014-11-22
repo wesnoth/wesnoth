@@ -182,16 +182,15 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		//don't use lexical_cast_default it's "safer" to end on error
 		const int side = lexical_cast<int>(change["side"]);
 		const size_t index = side - 1;
-
-		const std::string &player = change["player"];
-
+		
 		if(index < resources::gameboard->teams().size()) {
+
 			const team & tm = resources::gameboard->teams()[index];
-
-			bool restart = resources::screen->playing_side() == side;
-
+			const std::string &player = change["player"];
+			const bool restart = resources::screen->playing_side() == side;
+			const bool was_local = tm.is_local();
+			
 			team::CONTROLLER new_controller = team::CONTROLLER();
-
 			try {
 				new_controller = team::string_to_CONTROLLER (change["controller"].str());
 			} catch (bad_enum_cast & e) {
@@ -199,12 +198,9 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				return PROCESS_CONTINUE;
 			}
 
-			bool was_local = tm.is_local();
-			const team::CONTROLLER old_controller = tm.controller();
-
 			resources::gameboard->side_change_controller(side, new_controller, player);
 
-			if (old_controller != new_controller && !was_local && tm.is_local()) {
+			if (!was_local && tm.is_local()) {
 				resources::controller->on_not_observer();
 			}
 
