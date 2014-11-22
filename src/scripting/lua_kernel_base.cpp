@@ -343,6 +343,18 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 	// Add mersenne twister rng wrapper
 	cmd_log_ << "Adding rng tables...\n";
 	lua_rng::load_tables(L);
+
+	// Loading ilua:
+	cmd_log_ << "Loading ilua...\n";
+
+	lua_pushstring(L, "lua/ilua.lua");
+	int result = lua_fileops::intf_require(L);
+	if (result == 1) {
+		lua_setglobal(L, "ilua");
+	} else {
+		cmd_log_ << "Error: failed to load ilua.\n";
+	}
+	lua_settop(L, 0);
 }
 
 lua_kernel_base::~lua_kernel_base()
