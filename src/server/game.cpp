@@ -68,7 +68,8 @@ game::game(player_map& players, const network::connection host,
 	termination_(),
 	save_replays_(save_replays),
 	replay_save_path_(replay_save_path),
-	rng_()
+	rng_(),
+	last_synced_context_id_(-1) /* or maybe 0 ? it shouldn't matter*/
 {
 	assert(owner_);
 	players_.push_back(owner_);
@@ -984,7 +985,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 	return turn_ended;
 }
 
-void game::require_random(const simple_wml::document &/*data*/, const player_map::iterator /*user*/)
+void game::require_random(const simple_wml::document &data, const player_map::iterator /*user*/)
 {
 	// note, that during end turn events, it's side=1 for the server but side= side_count() on the clients.
 
@@ -997,6 +998,19 @@ void game::require_random(const simple_wml::document &/*data*/, const player_map
 	// TODO: it would be better if all clients could send "require random seed" and then the server would just ignore
 	// all non-first "require random seed" per synced context. The plan could be that we add a numerical
 	// "synced context id" in "require random seed"
+
+	const simple_wml::node* require_random = data.root().child("require_random");
+	if(!require_random) return;
+	if(require_random->has_attr("context_id"))
+	{
+		int context_id = (*require_random)["context_id"].to_int();
+		if(context_id <= last_synced_context_id_)
+		{
+			// We gave already a randpm seed for this synced context.
+			return;
+		}
+		last_synced_context_id_ = context_id;
+	}
 
 	uint32_t seed = rng_.get_next_random();
 

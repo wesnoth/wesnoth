@@ -396,6 +396,7 @@ private:
 
 	/** A wrapper for mersenne twister rng which generates randomness for this game */
 	rand_rng::mt_rng rng_;
+	int last_synced_context_id_;
 };
 
 struct game_is_member {
