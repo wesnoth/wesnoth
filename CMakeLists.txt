@@ -88,7 +88,7 @@ option(ENABLE_PANDORA "Add support for the OpenPandora by deactivating libvorbis
 option(ENABLE_SDL_GPU "Enable building with SDL_gpu (experimental" OFF)
 option(ENABLE_BOOST_FILESYSTEM "Enable building with the boost filesystem and boost locale code" ON)
 option(ENABLE_LIBPNG "Enable support for writing png files (screenshots, images)" ON)
-option(ENABLE_READLINE "Enable using GNU readline for history in lua console" ON)
+option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
 
 if(NOT DEFINED ENABLE_DISPLAY_REVISION)
 	# Test whether the code is used in a repository if not autorevision will
@@ -607,12 +607,12 @@ if(ENABLE_GAME)
 		message("Could not find lib PNG. Disabling support for writing PNG images.")	
 	endif(ENABLE_LIBPNG AND PNG_FOUND)
 
-	find_package( READLINE )
-	if(ENABLE_READLINE AND READLINE_FOUND)
-		add_definitions(-DHAVE_READLINE)
-	else(ENABLE_READLINE AND READLINE_FOUND)
-		message("Could not find readline. Disabling support for command history in lua console.")
-	endif(ENABLE_READLINE AND READLINE_FOUND)
+	find_package( HISTORY )
+	if(ENABLE_HISTORY AND HISTORY_FOUND)
+		add_definitions(-DHAVE_HISTORY)
+	else(ENABLE_HISTORY AND HISTORY_FOUND)
+		message("Could not find GNU history. Disabling support for command history in lua console.")
+	endif(ENABLE_HISTORY AND HISTORY_FOUND)
 endif(ENABLE_GAME)
 
 if(ENABLE_POT_UPDATE_TARGET)

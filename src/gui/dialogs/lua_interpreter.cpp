@@ -45,7 +45,7 @@
 #include <boost/bind.hpp>
 #include <boost/scoped_ptr.hpp>
 
-#ifdef HAVE_READLINE
+#ifdef HAVE_HISTORY
 #include "filesystem.hpp"
 #include <readline/history.h>
 #endif
@@ -174,7 +174,7 @@ class tlua_interpreter::input_model {
 private:
 	std::string prefix_;
 	bool end_of_history_;
-#ifdef HAVE_READLINE
+#ifdef HAVE_HISTORY
 	std::string filename_;
 #endif
 
@@ -182,7 +182,7 @@ public:
 	input_model()
 	: prefix_()
 	, end_of_history_(true)
-#ifdef HAVE_READLINE
+#ifdef HAVE_HISTORY
 	, filename_(filesystem::get_user_config_dir() + "/lua_command_history")
 	{
 		using_history();
@@ -192,7 +192,7 @@ public:
 	{}
 #endif
 
-#ifdef HAVE_READLINE
+#ifdef HAVE_HISTORY
 	~input_model()
 	{
 		try {
@@ -210,7 +210,7 @@ public:
 	void add_to_history (std::string str) {
 		prefix_ = "";
 		(void) str;
-#ifdef HAVE_READLINE
+#ifdef HAVE_HISTORY
 		add_history(str.c_str());
 #endif
 		end_of_history_ = true;
@@ -228,7 +228,7 @@ public:
 	}
 
 	std::string search( int direction ) {
-#ifdef HAVE_READLINE
+#ifdef HAVE_HISTORY
 		LOG_LUA << "searching in direction " << direction << " from position " << where_history() << "\n";
 
 		HIST_ENTRY * e = NULL;
@@ -278,17 +278,17 @@ public:
 	}
 
 	std::string clear_history() {
-#ifdef HAVE_READLINE
+#ifdef HAVE_HISTORY
 		::clear_history();
 		write_history (filename_.c_str());
 		return "Cleared history.";
 #else
-		return "History is disabled, you did not compile with readline support.";
+		return "History is disabled, you did not compile with GNU history support.";
 #endif
 	}
 
 	std::string list_history() {
-#ifdef HAVE_READLINE
+#ifdef HAVE_HISTORY
 		HIST_ENTRY **the_list;
 
 		the_list = history_list ();
@@ -309,7 +309,7 @@ public:
 			return "Couldn't find history.";
 		}
 #else
-		return "History is disabled, you did not compile with readline support.";
+		return "History is disabled, you did not compile with GNU history support.";
 #endif
 	}
 
@@ -317,7 +317,7 @@ public:
 	// the error message will be returned in the string argument. A return value of false
 	// indicates success and that execution should proceed.
 	bool do_history_expansion (std::string & cmd) {
-#ifdef HAVE_READLINE
+#ifdef HAVE_HISTORY
 		// Do history expansions
 		char * cmd_cstr = new char [cmd.length()+1];
 		std::strcpy (cmd_cstr, cmd.c_str());
@@ -624,8 +624,8 @@ void tlua_interpreter::controller::search(int direction)
 	input_model_->maybe_update_prefix(current_text);
 	text_entry->set_value(input_model_->search(direction));
 
-#ifndef HAVE_READLINE
-	lua_model_->add_dialog_message("History is disabled, you did not compile with readline support.");
+#ifndef HAVE_HISTORY
+	lua_model_->add_dialog_message("History is disabled, you did not compile with GNU history support.");
 	update_view();
 #endif
 

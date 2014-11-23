@@ -38,7 +38,7 @@ These libraries are optional dependencies that enable additional features:
 
  libdbus-1 (used for desktop notifications)
  libpng (save images as pngs, otherwise only bmp is possible)
- readline (for command history and history expansion in the lua console)
+ history (GNU history for command history and history expansion in the lua console)
 
 As a temporary compatibility measure, it is possible to build the game without requiring boost filesystem or boost locale, using libintl for translations instead. The cost is that wesnoth won't support UTF-8 in filepaths on all platforms.
 For this, target filesystem.cpp and gettext.cpp instead of filesystem_boost.cpp and gettext_boost.cpp. For scons/cmake the "boost filesystem" option toggles these.
