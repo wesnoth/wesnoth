@@ -1229,12 +1229,19 @@ set(campaignd_SRC
 	loadscreen_empty.cpp
 )
 
+check_library_exists(rt clock_gettime "time.h" HAVE_CLOCK_GETTIME_RT)
+if(HAVE_CLOCK_GETTIME_RT)
+	set(LIBRT rt)
+endif()
+
 add_executable(campaignd ${campaignd_SRC})
 target_link_libraries(campaignd
 	wesnoth-core
 	${server-external-libs}
 	${SDLNET_LIBRARY} 				# NEEDED with ANA
 	${LIBINTL_LIBRARIES}
+	${Boost_RANDOM_LIBRARY}
+	${LIBRT}
 	)
 set_target_properties(campaignd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}campaignd${BINARY_SUFFIX})
 
