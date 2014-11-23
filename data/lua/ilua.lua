@@ -23,7 +23,9 @@ local declared = {}
 
 local jstack = {}
 
-local function join(tbl,delim,limit,depth)
+local ilua = {}
+
+function ilua.join(tbl,delim,limit,depth)
     if not limit then limit = pretty_print_limit end
     if not depth then depth = max_depth end
     local n = #tbl
@@ -49,7 +51,7 @@ local function join(tbl,delim,limit,depth)
     end
     if is_list then
         for i,v in ipairs(tbl) do
-            res = res..delim..val2str(v)
+            res = res..delim..ilua.val2str(v)
             k = k + 1
             if k > limit then
                 res = res.." ... "
@@ -63,7 +65,7 @@ local function join(tbl,delim,limit,depth)
             else
                 key = tostring(key)
             end
-            res = res..delim..key..'='..val2str(v)
+            res = res..delim..key..'='..ilua.val2str(v)
             k = k + 1
             if k > limit then
                 res = res.." ... "
@@ -75,7 +77,7 @@ local function join(tbl,delim,limit,depth)
     return sub(res,2)
 end
 
-local function val2str(val)
+function ilua.val2str(val)
     local tp = type(val)
     if tp == 'function' then
         return tostring(val)
@@ -83,7 +85,7 @@ local function val2str(val)
         if val.__tostring  then
             return tostring(val)
         else
-            return '{'..join(val,',')..'}'
+            return '{'..ilua.join(val,',')..'}'
         end
     elseif tp == 'string' then
         return "'"..val.."'"
@@ -95,10 +97,10 @@ local function val2str(val)
     end
 end
 
-local function _pretty_print(...)
+function ilua._pretty_print(...)
     local arg = pack(...)
     for i,val in ipairs(arg) do
-        print(val2str(val))
+        print(ilua.val2str(val))
     end
     _G['_'] = arg[1]
 end
@@ -110,7 +112,7 @@ end
 -- (even assigning nil will do) in a main chunk before being used
 -- anywhere.
 --
-local function set_strict()
+function ilua.set_strict()
     local mt = getmetatable(_G)
     if mt == nil then
         mt = {}
@@ -135,8 +137,4 @@ local function set_strict()
     end
 end
 
-return {
-val2str = val2str,
-_pretty_print = _pretty_print,
-set_strict = set_strict
-}
+return ilua
