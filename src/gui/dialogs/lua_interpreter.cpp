@@ -154,8 +154,8 @@ public:
 	 **/
 	void add_dialog_message(const std::string & msg);
 
-	std::string get_log() const { return log_.str(); } //< Get the log string
-	std::string get_name() const { return L_.my_name(); } //< Get a string describing the name of lua kernel
+	std::string get_log() const { return log_.str(); } ///< Get the log string
+	std::string get_name() const { return L_.my_name(); } ///< Get a string describing the name of lua kernel
 
 	//* Tab completion: Get list of presently defined global variables */
 	std::vector<std::string> get_globals() { return L_.get_global_var_names(); }
@@ -381,7 +381,7 @@ public:
 						   const SDLKey key,
 						   twindow& window);
 
-	void update_view(); //< Update the view based on the model
+	void update_view(); ///< Update the view based on the model
 
 	friend class tlua_interpreter;
 };

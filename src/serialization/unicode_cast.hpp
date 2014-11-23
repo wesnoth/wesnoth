@@ -27,7 +27,7 @@ namespace ucs4_convert_impl
 	struct iteratorwriter
 	{
 		oitor_t& out_;
-		iteratorwriter(oitor_t& out) : out_(out) {};
+		iteratorwriter(oitor_t& out) : out_(out) {}
 
 		bool can_push(size_t /*count*/)
 		{
@@ -48,9 +48,9 @@ namespace ucs4_convert_impl
 }
 
 /**
-	@param TD  
+	@tparam TD
 		output, a collection type.
-	@param TS 
+	@tparam TS
 		input, a collection type.
 	@return an instance of TD
 */
@@ -86,10 +86,8 @@ typename ucs4_convert_impl::enableif<TD, typename TS::value_type>::type unicode_
 }
 
 /**
-	@param TD  
+	@tparam TD
 		output, a collection type.
-	@param TI 
-		input, a single character.
 	@return an instance of TD
 */
 template<typename TD>

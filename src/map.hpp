@@ -85,7 +85,7 @@ public:
 	 * Data should be a series of lines, with each character representing one
 	 * hex on the map.  Starting locations are represented by numbers.
 	 *
-	 * @param cfg the game config.
+	 * @param tdata the terrain data
 	 * @param data the map data to load.
 	 */
 	gamemap(const tdata_cache &tdata, const std::string &data); //throw(incorrect_map_format_error)
@@ -97,7 +97,7 @@ public:
 	 * Data should be a series of lines, with each character representing one
 	 * hex on the map.  Starting locations are represented by numbers
 	 *
-	 * @param cfg the game config.
+	 * @param tdata the terrain data
 	 * @param level the scenario config to load from.
 	 */
 	gamemap(const tdata_cache &tdata, const config &level); //throw(incorrect_map_format_error)
