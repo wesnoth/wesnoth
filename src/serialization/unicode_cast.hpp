@@ -27,7 +27,7 @@ namespace ucs4_convert_impl
 	struct iteratorwriter
 	{
 		oitor_t& out_;
-		iteratorwriter(oitor_t& out) : out_(out) {};
+		iteratorwriter(oitor_t& out) : out_(out) {}
 
 		bool can_push(size_t /*count*/)
 		{
