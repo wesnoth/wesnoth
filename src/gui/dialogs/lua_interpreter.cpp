@@ -279,7 +279,7 @@ public:
 
 	std::string clear_history() {
 #ifdef HAVE_READLINE
-		clear_history();
+		::clear_history();
 		write_history (filename_.c_str());
 		return "Cleared history.";
 #else
