@@ -307,7 +307,8 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 			if(is_local_side && !did_require)
 			{
 				config data;
-				data.add_child("require_random");
+				config& rr = data.add_child("require_random");
+				rr["context_id"] = resources::controller->get_synced_context_number();
 				network::send_data(data,0);
 				did_require = true;
 			}
@@ -375,7 +376,7 @@ set_scontext_synced::set_scontext_synced(int number)
 */
 void set_scontext_synced::init()
 {
-
+	resources::controller->increase_synced_context_number();
 	LOG_REPLAY << "set_scontext_synced::set_scontext_synced\n";
 	assert(synced_context::get_synced_state() == synced_context::UNSYNCED);
 

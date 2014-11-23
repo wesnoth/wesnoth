@@ -141,7 +141,8 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	end_level_data_(),
 	victory_music_(),
 	defeat_music_(),
-	scope_()
+	scope_(),
+	synced_context_number_(0)
 {
 	resources::controller = this;
 	resources::gameboard = &gamestate_.board_;

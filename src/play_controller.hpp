@@ -182,6 +182,8 @@ public:
 	boost::shared_ptr<wb::manager> get_whiteboard();
 	const mp_game_settings& get_mp_settings();
 	const game_classification & get_classification();
+	int get_synced_context_number() const { return synced_context_number_; }
+	void increase_synced_context_number() { ++synced_context_number_; }
 
 	static const std::string wml_menu_hotkey_prefix;
 protected:
@@ -302,6 +304,8 @@ private:
 	std::vector<std::string> defeat_music_;
 
 	hotkey::scope_changer scope_;
+	// used to sync with the mpserver, not persistent in savefiles.
+	int synced_context_number_;
 
 };
 
