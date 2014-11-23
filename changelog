@@ -125,6 +125,9 @@ Version 1.13.0-dev:
      when wesnoth is running in debug mode (--debug command line flag).
    * Added new function wesnoth.get_all_vars().
    * Add (tentative, preliminary) support for lua scripting of wesnoth application functions
+   * Enable ilua "strict mode" by default. This safety feature helps to catch errors caused by mistyped
+     variable names, and improves the behavior of the lua interpreter console. See 1.13.0 RELEASE NOTES
+     for more details.
  * Replays:
    * Added a button that allows playing a single move in replay mode.
  * Units:
