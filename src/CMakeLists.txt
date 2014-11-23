@@ -1336,6 +1336,8 @@ target_link_libraries(schema_validator
 	wesnoth-core
 	wesnoth-sdl
 	${common-external-libs}
+	${Boost_SYSTEM_LIBRARIES}
+	${Boost_RANDOM_LIBRARY}
 )
 set_target_properties(schema_validator PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}schema_validator${BINARY_SUFFIX}
 							COMPILE_DEFINITIONS VALIDATION_ERRORS_LOG)
