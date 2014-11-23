@@ -312,7 +312,7 @@ namespace {
 		const THandler& handler_;
 	};
 
-	/// @param THandler a function 
+	/// @tparam THandler a function
 	///        ( (const-) config& cfg, const std::string& name, int range_begin, int range_end) -> THandler::result_type
 	///        that does the actual work on the range of children of cfg with name name.
 	template<const variable_info_type vit, typename THandler>
