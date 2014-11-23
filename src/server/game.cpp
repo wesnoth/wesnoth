@@ -987,7 +987,17 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 void game::require_random(const simple_wml::document &/*data*/, const player_map::iterator /*user*/)
 {
 	// note, that during end turn events, it's side=1 for the server but side= side_count() on the clients.
-	
+
+	// Currently the clients make sure that one "require random seed" is sended to the server per synced context.
+	// This is ensured becasue only the currently active player sends the "require random seed" the drawback is,
+	// that in the situation that another client was faster, he has to wait for the current player to get
+	// to the same point where the current player then sends the "require random action".
+	// Then the server sends that "random_seed" to all the clients and the other client who was faster can continue. 
+	// This can especialy happen during 'start' events where the 'current_player' is player 1. 
+	// TODO: it would be better if all clients could send "require random seed" and then the server would just ignore
+	// all non-first "require random seed" per synced context. The plan could be that we add a numerical
+	// "synced context id" in "require random seed"
+
 	uint32_t seed = rng_.get_next_random();
 
 	std::stringstream stream;
