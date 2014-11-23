@@ -23,7 +23,7 @@ namespace ucs4_convert_impl
 {
 	struct utf8_impl
 	{
-		static const char* get_name()  { return "utf8"; };
+		static const char* get_name()  { return "utf8"; }
 		static size_t byte_size_from_ucs4_codepoint(ucs4::char_t ch)
 		{
 			if(ch < (1u << 7))
@@ -55,7 +55,7 @@ namespace ucs4_convert_impl
 				throw utf8::invalid_utf8_exception(); // Stop on invalid characters
 			}
 			return count;
-		};
+		}
 
 		/**
 			@param out an object to write utf8::char_t. required operations are:
@@ -125,7 +125,7 @@ namespace ucs4_convert_impl
 	
 	struct utf16_impl
 	{
-		static const char* get_name()  { return "utf16"; };
+		static const char* get_name()  { return "utf16"; }
 		template<typename writer>
 		static inline void write(writer out, ucs4::char_t ch)
 		{
@@ -190,7 +190,7 @@ namespace ucs4_convert_impl
 	
 	struct utf32_impl
 	{
-		static const char* get_name()  { return "UCS4"; };
+		static const char* get_name()  { return "UCS4"; }
 		template<typename writer>
 		static inline void write(writer out, ucs4::char_t ch)
 		{
