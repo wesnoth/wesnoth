@@ -6,10 +6,24 @@
  */
 #include <SDL.h>
 
+#ifdef __GNUC__
+#if __GNUC__ > 4 || __GNUC__== 4 && __GNUC_MINOR__ >= 9
+#define HAVE_GCC_4_9
+#endif
+#endif
+
+#ifdef HAVE_GCC_4_9
 #pragma GCC diagnostic push
+#ifndef __clang__
 #pragma GCC diagnostic ignored "-Wliteral-suffix" //GCC 4.9 with C++11 gives a warning about this in libpng header
+#endif
+#endif
+
 #include <png.h>
+
+#ifdef HAVE_GCC_4_9
 #pragma GCC diagnostic pop
+#endif
 
 #include "savepng.h"
 
