@@ -5,7 +5,11 @@
  * http://www.libpng.org/pub/png/src/libpng-LICENSE.txt
  */
 #include <SDL.h>
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wliteral-suffix" //GCC 4.9 with C++11 gives a warning about this in libpng header
 #include <png.h>
+#pragma GCC diagnostic pop
 
 #include "savepng.h"
 
