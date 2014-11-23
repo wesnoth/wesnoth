@@ -113,9 +113,9 @@ public:
 	static bool can_undo();
 private:
 	/*
-		similar to get_user_choice but asks the server instead of a user.
+		generates a random seed, if we are in a mp game, ask the server, otherwise generate the seed ourselves.
 	*/
-	static config ask_server(const std::string &name, const mp_sync::user_choice &uch);
+	static config ask_server_for_seed();
 	/*
 		weather we are in a synced move, in a user_choice, or none of them
 	*/
@@ -180,18 +180,5 @@ private:
 	random_new::rng* old_rng_;
 	synced_context::synced_state previous_state_;
 };
-
-/*
-	a helper object to server random seed generation.
-*/
-class random_seed_choice : public mp_sync::user_choice
-{
-public:
-	random_seed_choice();
-	virtual ~random_seed_choice();
-	virtual config query_user(int /*side*/) const;
-	virtual config random_choice(int /*side*/) const;
-};
-
 
 #endif

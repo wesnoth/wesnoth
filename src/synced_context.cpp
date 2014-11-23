@@ -155,8 +155,7 @@ void synced_context::set_synced_state(synced_state newstate)
 
 std::string synced_context::generate_random_seed()
 {
-	random_seed_choice cho;
-	config retv_c = synced_context::ask_server("random_seed", cho);
+	config retv_c = synced_context::ask_server_for_seed();
 	config::attribute_value seed_val = retv_c["new_seed"];
 
 	return seed_val.str();
@@ -240,35 +239,23 @@ boost::shared_ptr<random_new::rng> synced_context::get_rng_for_action()
 	}
 }
 
-config synced_context::ask_server(const std::string &name, const mp_sync::user_choice &uch)
+static void send_require_random()
 {
-	assert(get_synced_state() == synced_context::SYNCED);
+	config data;
+	config& rr = data.add_child("require_random");
+	rr["context_id"] = resources::controller->get_synced_context_number();
+	network::send_data(data,0);		
+}
 
-	int current_side = resources::controller->current_side();
-	int side = current_side;
-	bool is_mp_game = network::nconnections() != 0;
-	const int max_side  = static_cast<int>(resources::teams->size());
+
+config synced_context::ask_server_for_seed()
+{
+	std::string name = "random_seed";
+	assert(get_synced_state() == synced_context::SYNCED);
+	const bool is_mp_game = network::nconnections() != 0;
 	bool did_require = false;
 
-
-	if ((*resources::teams)[side-1].is_empty())
-	{
-		/*
-
-		*/
-		DBG_REPLAY << "MP synchronization: side 1 being null-controlled in get_user_choice.\n";
-		side = 1;
-		while ( side <= max_side  &&  (*resources::teams)[side-1].is_empty() )
-			side++;
-		assert(side <= max_side);
-	}
-
-
-
-	assert(1 <= side  && side  <= max_side);
-	assert(1 <= current_side  && current_side  <= max_side);
-
-	DBG_REPLAY << "ask_server for :" << name << "\n";
+	DBG_REPLAY << "ask_server for random_seed\n";
 	/*
 		as soon as random or similar is involved, undoing is impossible.
 	*/
@@ -276,11 +263,9 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 	/*
 		there might be speak or similar commands in the replay before the user input.
 	*/
-	while(true){
+	while(true) {
 
 		do_replay_handle();
-		// the current_side on the server is a lie because it can happen on one client we are already executing side 2
-		bool is_local_side = (*resources::teams)[side-1].is_local();
 		bool is_replay_end = get_replay_source().at_end();
 
 		if (is_replay_end && !is_mp_game)
@@ -288,7 +273,7 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 			/* The decision is ours, and it will be inserted
 			into the replay. */
 			DBG_REPLAY << "MP synchronization: local server choice\n";
-			config cfg = uch.query_user(-1);
+			config cfg = config_of("new_seed", seed_rng::next_seed_str());
 			//-1 for "server" todo: change that.
 			recorder.user_input(name, cfg, -1);
 			return cfg;
@@ -304,28 +289,13 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 			/*
 				we don't want to send multiple "require_random" to the server.
 			*/
-			if(is_local_side && !did_require)
-			{
-				config data;
-				config& rr = data.add_child("require_random");
-				rr["context_id"] = resources::controller->get_synced_context_number();
-				network::send_data(data,0);
+			if(!did_require)
+			{	
+				send_require_random();
 				did_require = true;
 			}
-			else if (!did_require)
-			{
-				if(resources::gamedata->phase() != game_data::PLAY && resources::gamedata->phase() != game_data::START)
-				{
-					//this is needed becasue sometimes a package gets stuck on the server
-					//and in this case sending any package can free that package
-					//especialy when this function is called from prestart events where the screen is locked, we don't want to make the user wait.
-					//I currently can only reproduce this bug on local wesnothd (windows 7x64, msvc 32 bit release build), not on the offical server
-					network::send_data(config_of("give_me_a_package", "now"));
-				}
-				did_require = true;
-			}
-			SDL_Delay(10);
 
+			SDL_Delay(10);
 			continue;
 
 		}
@@ -340,14 +310,14 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 			{
 				replay::process_error("[" + name + "] expected but none found\n");
 				get_replay_source().revert_action();
-				return uch.query_user(-1);
+				return config_of("new_seed", seed_rng::next_seed_str());
 			}
 			if (!action->has_child(name))
 			{
 				replay::process_error("[" + name + "] expected but none found, found instead:\n " + action->debug() + "\n");
 
 				get_replay_source().revert_action();
-				return uch.query_user(-1);
+				return config_of("new_seed", seed_rng::next_seed_str());
 			}
 			if((*action)["from_side"].str() != "server" || (*action)["side_invalid"].to_bool(false) )
 			{
@@ -461,37 +431,4 @@ set_scontext_leave_for_draw::~set_scontext_leave_for_draw()
 	synced_context::set_synced_state(synced_context::SYNCED);
 	delete random_new::generator;
 	random_new::generator = old_rng_;
-}
-
-
-
-random_seed_choice::random_seed_choice()
-{
-
-}
-
-random_seed_choice::~random_seed_choice()
-{
-
-}
-
-config random_seed_choice::query_user(int /*side*/) const
-{
-	//getting here means we are in a sp game
-
-
-	config retv;
-
-	retv["new_seed"] = seed_rng::next_seed_str();
-	return retv;
-}
-config random_seed_choice::random_choice(int /*side*/) const
-{
-	//it obviously doesn't make sense to call the uninitialized random generator to generatoe a seed ofr the same random generator;
-	//this shoud never happen
-	assert(false && "random_seed_choice::random_choice called");
-
-	config retv;
-	retv["new_seed"] = "deadbeef";
-	return retv;
 }
