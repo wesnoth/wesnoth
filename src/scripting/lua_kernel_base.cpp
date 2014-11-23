@@ -85,15 +85,13 @@ int lua_kernel_base::intf_print(lua_State* L)
 	DBG_LUA << "intf_print called:\n";
 	size_t nargs = lua_gettop(L);
 
-	for (size_t i = 2; i <= nargs; ++i) { // ignore first argument, since it's the userdata from boost cfunc binding
+	for (size_t i = 1; i <= nargs; ++i) {
 		cmd_log_ << lua_tostring(L,i);
 		DBG_LUA << "'" << lua_tostring(L,i) << "'\n";
 	}
 
 	cmd_log_ << "\n";
 	DBG_LUA << "\n";
-
-	lua_pop(L, nargs - 1);
 
 	return 0;
 }
@@ -105,9 +103,9 @@ typedef boost::function<int(lua_State*)> lua_cfunc;
 
 static int intf_boost_cfunc_dispatcher ( lua_State* L )
 {
-	lua_cfunc *f = static_cast<lua_cfunc *> (lua_touserdata(L, 1));
-	int result = (*f)(L);
-	lua_remove(L,1);
+	lua_cfunc f = * static_cast<lua_cfunc *> (lua_touserdata(L, 1)); //make a temporary copy, in case lua_remove(L,1) might cause lua to garbage collect and destroy it
+	lua_remove(L,1); // remove from the stack before executing, so that like all other callbacks, f finds only its intended arguments on the stack.
+	int result = (f)(L);
 	return result;
 }
 
