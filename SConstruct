@@ -415,7 +415,8 @@ if env["prereqs"]:
         if env["png"]:
             client_env.Append(CPPDEFINES = ["HAVE_LIBPNG"])
 
-        env["readline"] = env["readline"] and conf.CheckLib("readline")
+        env["readline"] = env["readline"] and (conf.CheckLib("readline") or conf.CheckLib("readline6") or Warning("Can't find readline, disabling readline support."))
+        #Note: the "readline6" part is to help out scons when cross-compiling, it didn't find my cross-compiled readline otherwise... feel free to figure out a cleaner solution. --iceiceice
         if env["readline"]:
             client_env.Append(CPPDEFINES = ["HAVE_READLINE"])
 
