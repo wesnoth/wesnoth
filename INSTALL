@@ -12,12 +12,14 @@ You'll need to have these libraries and their development headers to build Wesno
  boost_filesystem >= 1.44.0
  boost_locale >= 1.48.0
  boost_iostreams >= 1.36.0
+ boost_multiindex >= 1.36.0 (header only)
+ boost_random >= 1.48.0
  boost_regex >= 1.36.0
- boost_serialization >= 1.36.0
- boost_asio >= 1.36.0
+ boost_serialization >= 1.36.0 (header only)
+ boost_asio >= 1.36.0 (header only)
  boost_program_options >= 1.36.0
  boost_system >= 1.36.0
- boost_thread >= 1.36.0
+ boost_thread >= 1.36.0 (header only)
  libfontconfig >= 2.4.1
  libpango (with cairo backend) >= 1.21.3
  libsdl >= 1.2.7
