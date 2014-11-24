@@ -97,4 +97,31 @@ void set_functions( lua_State* L, const lua_cpp::Reg * l)
 	}
 }
 
+static int intf_closure_dispatcher( lua_State* L )
+{
+	lua_function * f = static_cast< lua_function *> (luaL_checkudata(L, lua_upvalueindex(1), cpp_function)); //assume the boost::function is the first upvalue
+	return (*f)(L);
+}
+
+void push_closure( lua_State* L, const lua_function & f, int nup)
+{
+	push_function(L, f);
+	lua_insert(L, -(1+nup)); //move the function beneath the upvalues
+	lua_pushcclosure(L, &intf_closure_dispatcher, 1+nup);
+}
+
+void set_functions( lua_State* L, const lua_cpp::Reg * l, int nup )
+{
+	luaL_checkversion(L);
+	luaL_checkstack(L, nup+1, "too many upvalues");
+	for (; l->name != NULL; l++) {  /* fill the table with given functions */
+		int i;
+		for (i = 0; i < nup; i++)  /* copy upvalues to the top */
+			lua_pushvalue(L, -nup);
+		push_closure(L, l->func, nup);  /* closure with those upvalues */
+		lua_setfield(L, -(nup + 2), l->name);
+	}
+	lua_pop(L, nup);  /* remove upvalues */
+}
+
 } // end namespace lua_cpp

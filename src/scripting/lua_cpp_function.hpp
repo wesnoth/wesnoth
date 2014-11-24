@@ -43,9 +43,40 @@ typedef struct {
 
 void register_metatable ( lua_State* L );
 
+/**
+ * Pushes a boost::function wrapper object onto the stack. It does
+ * not support up-values. If you need that use push_closure (a little slower).
+ *
+ * NOTE: This object has type userdata, not function. Its metatable has a call operator.
+ * If this is not sufficient for your needs then use push_closure.
+ */
 void push_function( lua_State* L, const lua_function & f );
 
-void set_functions( lua_State* L, const lua_cpp::Reg * l); //no support for up-value right now, use boost bind or something please (or implement yourself)
+/**
+ * Analogous to lua_setfuncs, it registers a collection of function wrapper
+ * objects into a table, using push_function.
+ *
+ * The note above applies.
+ */
+void set_functions( lua_State* L, const lua_cpp::Reg * l);
+
+/**
+ * Pushes a closure which retains a boost::function object as its first up-value.
+ * Note that this is *NOT* strictly compatible with the lua c function push_closure --
+ * if you request additional upvalues they will be indexed starting at 2 rather than 1.
+ *
+ * Note that unlike push_function above this results in a function and not userdata
+ * being pushed on the stack.
+ */
+void push_closure( lua_State* L, const lua_function & f, int nup);
+
+/**
+ * Analogous to lua_setfuncs and set_functions above, but pushes closures.
+ *
+ * NOTE: set_functions(L, l, 0) is NOT the same as set_functions(L, l), as
+ * the latter produces userdata and the former doesn't.
+ */
+void set_functions( lua_State* L, const lua_cpp::Reg * l, int nup);
 
 } // end namespace lua_cpp_func
 
