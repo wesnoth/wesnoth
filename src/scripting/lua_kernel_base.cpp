@@ -121,6 +121,16 @@ static int intf_boost_cfunc_cleanup ( lua_State* L )
 	return 0;
 }
 
+static int intf_boost_cfunc_tostring( lua_State* L )
+{
+	lua_cfunc * d = static_cast< lua_cfunc *> (luaL_checkudata(L, 1, boost_cfunc));
+	// d is not null, if it was null then checkudata raised a lua error and a longjump was executed.
+	std::stringstream result;
+	result << "boost function: " << std::hex << d;
+	lua_pushstring(L, result.str().c_str());
+	return 1;
+}
+
 static void register_boost_cfunc_metatable ( lua_State* L )
 {
 	luaL_newmetatable(L, boost_cfunc);
@@ -128,6 +138,8 @@ static void register_boost_cfunc_metatable ( lua_State* L )
 	lua_setfield(L, -2, "__call");
 	lua_pushcfunction(L, intf_boost_cfunc_cleanup);
 	lua_setfield(L, -2, "__gc");
+	lua_pushcfunction(L, intf_boost_cfunc_tostring);
+	lua_setfield(L, -2, "__tostring");
 	lua_pushvalue(L, -1); //make a copy of this table, set it to be its own __index table
 	lua_setfield(L, -2, "__index");
 
