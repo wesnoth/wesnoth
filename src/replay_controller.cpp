@@ -33,6 +33,7 @@
 #include "resources.hpp"
 #include "savegame.hpp"
 #include "saved_game.hpp"
+#include "scripting/game_lua_kernel.hpp"
 #include "synced_context.hpp"
 
 #include <boost/foreach.hpp>
@@ -324,14 +325,23 @@ void replay_controller::reset_replay()
 	gui_->change_display_context(&gamestate_.board_); //this doesn't change the pointer value, but it triggers the gui to update the internal terrain builder object,
 						   //idk what the consequences of not doing that are, but its probably a good idea to do it, esp. if layout
 						   //of game_board changes in the future
-	if (events_manager_ ){
+
+
+	/*if (events_manager_ ){
 		// NOTE: this double reset is required so that the new
 		// instance of game_events::manager isn't created before the
 		// old manager is actually destroyed (triggering an assertion
 		// failure)
 		events_manager_.reset();
 		events_manager_.reset(new game_events::manager(level_));
-	}
+	}*/
+
+	events_manager_.reset();
+	lua_kernel_.reset();
+	resources::lua_kernel=NULL;
+	lua_kernel_.reset(new game_lua_kernel(level_, *gui_, gamestate_));
+	resources::lua_kernel=lua_kernel_.get();
+	events_manager_.reset(new game_events::manager(level_));
 
 	gui_->labels().read(level_);
 
