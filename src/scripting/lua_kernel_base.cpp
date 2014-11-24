@@ -103,8 +103,10 @@ typedef boost::function<int(lua_State*)> lua_cfunc;
 
 static int intf_boost_cfunc_dispatcher ( lua_State* L )
 {
-	lua_cfunc f = * static_cast<lua_cfunc *> (lua_touserdata(L, 1)); //make a temporary copy, in case lua_remove(L,1) might cause lua to garbage collect and destroy it
-	lua_remove(L,1); // remove from the stack before executing, so that like all other callbacks, f finds only its intended arguments on the stack.
+	//make a temporary copy, in case lua_remove(L,1) might cause lua to garbage collect and destroy it
+	lua_cfunc f = * static_cast<lua_cfunc *> (luaL_checkudata(L, 1, boost_cfunc));
+	// remove from the stack before executing, so that like all other callbacks, f finds only its intended arguments on the stack.
+	lua_remove(L,1);
 	int result = (f)(L);
 	return result;
 }
@@ -115,6 +117,8 @@ static int intf_boost_cfunc_cleanup ( lua_State* L )
 	if (d == NULL) {
 		ERR_LUA << "boost_cfunc_cleanup called on data of type: " << lua_typename( L, lua_type( L, 1 ) ) << std::endl;
 		ERR_LUA << "This may indicate a memory leak, please report at bugs.wesnoth.org" << std::endl;
+		lua_pushstring(L, "Boost function object garbage collection failure");
+		lua_error(L);
 	} else {
 		d->~lua_cfunc();
 	}
