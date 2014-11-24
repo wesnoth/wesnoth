@@ -30,7 +30,7 @@ namespace ai { class lua_ai_action_handler; }
 namespace ai { class lua_ai_context; }
 namespace game_events { struct queued_event; }
 
-class LuaKernel : public lua_kernel_base
+class game_lua_kernel : public lua_kernel_base
 {
 	const config &level_;
 
@@ -40,7 +40,7 @@ class LuaKernel : public lua_kernel_base
 
 	friend class game_config_manager; // to allow it to call extract_preload_scripts
 public:
-	LuaKernel(const config &, CVideo *);
+	game_lua_kernel(const config &, CVideo *);
 
 	virtual std::string my_name() { return "Game Lua Kernel"; }
 

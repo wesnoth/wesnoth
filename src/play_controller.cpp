@@ -194,7 +194,7 @@ void play_controller::init(CVideo& video){
 	// This *needs* to be created before the show_intro and show_map_scene
 	// as that functions use the manager state_of_game
 	// Has to be done before registering any events!
-	lua_kernel_.reset(new LuaKernel(level_, &video));
+	lua_kernel_.reset(new game_lua_kernel(level_, &video));
 	resources::lua_kernel=lua_kernel_.get();
 	events_manager_.reset(new game_events::manager(level_));
 

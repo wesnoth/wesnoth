@@ -261,7 +261,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		}
 
 		// Extract the Lua scripts at toplevel.
-		LuaKernel::extract_preload_scripts(game_config_);
+		game_lua_kernel::extract_preload_scripts(game_config_);
 		game_config_.clear_children("lua");
 
 		// Put the gfx rules back to game config.

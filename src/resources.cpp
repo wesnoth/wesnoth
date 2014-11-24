@@ -22,7 +22,7 @@ namespace resources
 	play_controller      *controller = NULL;
 	game_data            *gamedata = NULL;
 	filter_context	     *filter_con = NULL;
-	LuaKernel            *lua_kernel = NULL;
+	game_lua_kernel            *lua_kernel = NULL;
 	application_lua_kernel *app_lua_kernel = NULL;
 	persist_manager      *persist = NULL;
 	game_display         *screen = NULL;

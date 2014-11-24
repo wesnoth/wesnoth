@@ -34,7 +34,7 @@
 class game_display;
 class saved_game;
 class game_data;
-class LuaKernel;
+class game_lua_kernel;
 class team;
 class unit;
 class wmi_pager;
@@ -227,7 +227,7 @@ protected:
 	//managers
 	boost::scoped_ptr<preferences::display_manager> prefs_disp_manager_;
 	boost::scoped_ptr<tooltips::manager> tooltips_manager_;
-	boost::scoped_ptr<LuaKernel> lua_kernel_;
+	boost::scoped_ptr<game_lua_kernel> lua_kernel_;
 	boost::scoped_ptr<game_events::manager> events_manager_;
 	font::floating_label_context labels_manager_;
 	help::help_manager help_manager_;

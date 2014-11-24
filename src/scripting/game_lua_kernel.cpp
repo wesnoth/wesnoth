@@ -122,19 +122,19 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 #define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
-std::vector<config> LuaKernel::preload_scripts;
-config LuaKernel::preload_config;
+std::vector<config> game_lua_kernel::preload_scripts;
+config game_lua_kernel::preload_config;
 
-void LuaKernel::extract_preload_scripts(config const &game_config)
+void game_lua_kernel::extract_preload_scripts(config const &game_config)
 {
-	LuaKernel::preload_scripts.clear();
+	game_lua_kernel::preload_scripts.clear();
 	BOOST_FOREACH(config const &cfg, game_config.child_range("lua")) {
-		LuaKernel::preload_scripts.push_back(cfg);
+		game_lua_kernel::preload_scripts.push_back(cfg);
 	}
-	LuaKernel::preload_config = game_config.child("game_config");
+	game_lua_kernel::preload_config = game_config.child("game_config");
 }
 
-void LuaKernel::log_error(char const * msg, char const * context)
+void game_lua_kernel::log_error(char const * msg, char const * context)
 {
 	lua_kernel_base::log_error(msg, context);
 	chat_message(context, msg);
@@ -2876,7 +2876,7 @@ static int intf_get_all_vars(lua_State *L) {
 	return 1;
 }
 
-LuaKernel::LuaKernel(const config &cfg, CVideo * vid)
+game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * vid)
 	: lua_kernel_base(vid), level_(cfg)
 {
 	lua_State *L = mState;
@@ -3127,7 +3127,7 @@ LuaKernel::LuaKernel(const config &cfg, CVideo * vid)
 	lua_settop(L, 0);
 }
 
-void LuaKernel::initialize()
+void game_lua_kernel::initialize()
 {
 	lua_State *L = mState;
 
@@ -3198,8 +3198,8 @@ void LuaKernel::initialize()
 	// Execute the preload scripts.
 	cmd_log_ << "Running preload scripts...\n";
 
-	game_config::load_config(LuaKernel::preload_config);
-	BOOST_FOREACH(const config &cfg, LuaKernel::preload_scripts) {
+	game_config::load_config(game_lua_kernel::preload_config);
+	BOOST_FOREACH(const config &cfg, game_lua_kernel::preload_scripts) {
 		run(cfg["code"].str().c_str());
 	}
 	BOOST_FOREACH(const config &cfg, level_.child_range("lua")) {
@@ -3232,7 +3232,7 @@ static bool is_handled_file_tag(const std::string &s)
  * Executes the game_events.on_load function and passes to it all the
  * scenario tags not yet handled.
  */
-void LuaKernel::load_game()
+void game_lua_kernel::load_game()
 {
 	lua_State *L = mState;
 
@@ -3259,7 +3259,7 @@ void LuaKernel::load_game()
  * Executes the game_events.on_save function and adds to @a cfg the
  * returned tags. Also flushes the [lua] tags.
  */
-void LuaKernel::save_game(config &cfg)
+void game_lua_kernel::save_game(config &cfg)
 {
 	BOOST_FOREACH(const config &v, level_.child_range("lua")) {
 		cfg.add_child("lua", v);
@@ -3301,7 +3301,7 @@ void LuaKernel::save_game(config &cfg)
  * Executes the game_events.on_event function.
  * Returns false if there was no lua handler for this event
  */
-bool LuaKernel::run_event(game_events::queued_event const &ev)
+bool game_lua_kernel::run_event(game_events::queued_event const &ev)
 {
 	lua_State *L = mState;
 
@@ -3330,7 +3330,7 @@ static int cfun_wml_action(lua_State *L)
 /**
  * Registers a function for use as an action handler.
  */
-void LuaKernel::set_wml_action(std::string const &cmd, game_events::wml_action::handler h)
+void game_lua_kernel::set_wml_action(std::string const &cmd, game_events::wml_action::handler h)
 {
 	lua_State *L = mState;
 
@@ -3350,7 +3350,7 @@ void LuaKernel::set_wml_action(std::string const &cmd, game_events::wml_action::
  * @note @a cfg should be either volatile or long-lived since the Lua
  *       code may grab it for an arbitrary long time.
  */
-bool LuaKernel::run_wml_action(std::string const &cmd, vconfig const &cfg,
+bool game_lua_kernel::run_wml_action(std::string const &cmd, vconfig const &cfg,
 	game_events::queued_event const &ev)
 {
 	lua_State *L = mState;
@@ -3370,7 +3370,7 @@ bool LuaKernel::run_wml_action(std::string const &cmd, vconfig const &cfg,
  * Runs a script from a unit filter.
  * The script is an already compiled function given by its name.
  */
-bool LuaKernel::run_filter(char const *name, unit const &u)
+bool game_lua_kernel::run_filter(char const *name, unit const &u)
 {
 	lua_State *L = mState;
 
@@ -3399,12 +3399,12 @@ bool LuaKernel::run_filter(char const *name, unit const &u)
 	return b;
 }
 
-ai::lua_ai_context* LuaKernel::create_lua_ai_context(char const *code, ai::engine_lua *engine)
+ai::lua_ai_context* game_lua_kernel::create_lua_ai_context(char const *code, ai::engine_lua *engine)
 {
 	return ai::lua_ai_context::create(mState,code,engine);
 }
 
-ai::lua_ai_action_handler* LuaKernel::create_lua_ai_action_handler(char const *code, ai::lua_ai_context &context)
+ai::lua_ai_action_handler* game_lua_kernel::create_lua_ai_action_handler(char const *code, ai::lua_ai_context &context)
 {
 	return ai::lua_ai_action_handler::create(mState,code,context);
 }

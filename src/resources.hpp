@@ -24,7 +24,7 @@ class game_display;
 class gamemap;
 class game_data;
 class filter_context;
-class LuaKernel;
+class game_lua_kernel;
 class application_lua_kernel;
 class play_controller;
 class team;
@@ -50,7 +50,7 @@ namespace resources
 	extern play_controller        *controller;
 	extern game_board             *gameboard;
 	extern game_data              *gamedata;
-	extern LuaKernel              *lua_kernel;     // Set by game_events::manager.
+	extern game_lua_kernel              *lua_kernel;     // Set by game_events::manager.
 	extern application_lua_kernel *app_lua_kernel;
 	extern persist_manager        *persist;
 	extern game_classification    *classification;

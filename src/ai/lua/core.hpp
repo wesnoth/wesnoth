@@ -18,7 +18,7 @@
 #include <boost/shared_ptr.hpp>
 
 struct lua_State;
-class LuaKernel;
+class game_lua_kernel;
 class config;
 
 
@@ -55,7 +55,7 @@ public:
 	void get_persistent_data(config &) const;
 	void set_persistent_data(const config &);
 	static void init(lua_State *L);
-	friend class ::LuaKernel;
+	friend class ::game_lua_kernel;
 };
 
 
@@ -75,7 +75,7 @@ private:
 public:
 	~lua_ai_action_handler();
 	void handle(config &, bool configOut, lua_object_ptr);
-	friend class ::LuaKernel;
+	friend class ::game_lua_kernel;
 };
 
 }//of namespace ai
