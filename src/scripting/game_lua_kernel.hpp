@@ -30,8 +30,30 @@ namespace ai { class lua_ai_action_handler; }
 namespace ai { class lua_ai_context; }
 namespace game_events { struct queued_event; }
 
+class game_display;
+class game_state;
+class game_board;
+class unit_map;
+class gamemap;
+class team;
+class game_data;
+class tod_manager;
+
+typedef int (*lua_CFunction) (lua_State *L);
+
 class game_lua_kernel : public lua_kernel_base
 {
+	game_display & game_display_;
+	game_state & game_state_;
+
+	// Private functions to ease access to parts of game_state
+	game_board & board();
+	unit_map & units();
+	const gamemap & map();
+	std::vector<team> & teams();
+	game_data & gamedata();
+	tod_manager & tod_man();
+
 	const config &level_;
 
 	static void extract_preload_scripts(config const & game_config);
@@ -39,8 +61,60 @@ class game_lua_kernel : public lua_kernel_base
 	static config preload_config;
 
 	friend class game_config_manager; // to allow it to call extract_preload_scripts
+
+	// Private lua callbacks
+	int intf_get_unit(lua_State *);
+	int intf_get_units(lua_State *);
+	int intf_get_displayed_unit(lua_State*);
+	int intf_match_unit(lua_State *L);
+	int intf_get_recall_units(lua_State *L);
+	int intf_get_variable(lua_State *L);
+	int intf_set_variable(lua_State *L);
+	int intf_highlight_hex(lua_State *L);
+	int intf_is_enemy(lua_State *L);
+	int intf_view_locked(lua_State *L);
+	int intf_lock_view(lua_State *L);
+	int intf_get_terrain(lua_State *L);
+	int intf_set_terrain(lua_State *L);
+	int intf_get_terrain_info(lua_State *L);
+	int intf_get_time_of_day(lua_State *L);
+	int intf_get_village_owner(lua_State *L);
+	int intf_set_village_owner(lua_State *L);
+	int intf_get_map_size(lua_State *L);
+	int intf_get_mouseover_tile(lua_State *L);
+	int intf_get_selected_tile(lua_State *L);
+	int intf_get_starting_location(lua_State* L);
+	int impl_game_config_get(lua_State *L);
+	int impl_game_config_set(lua_State *L);
+	std::string synced_state();
+	int impl_current_get(lua_State *L);
+	int intf_clear_messages(lua_State*);
+	int intf_find_path(lua_State *L);
+	int intf_find_reach(lua_State *L);
+	int intf_find_cost_map(lua_State *L);
+	int intf_put_unit(lua_State *L);
+	int intf_put_recall_unit(lua_State *L);
+	int intf_extract_unit(lua_State *L);
+	int intf_find_vacant_tile(lua_State *L);
+	int intf_float_label(lua_State *L);
+	int intf_simulate_combat(lua_State *L);
+	int intf_scroll_to_tile(lua_State *L);
+	int intf_select_hex(lua_State *L);
+	int intf_synchronize_choice(lua_State *L);
+	int intf_get_locations(lua_State *L);
+	int intf_get_villages(lua_State *L);
+	int intf_match_location(lua_State *L);
+	int intf_match_side(lua_State *L);
+	int intf_get_sides(lua_State* L);
+	int intf_add_tile_overlay(lua_State *L);
+	int intf_remove_tile_overlay(lua_State *L);
+	int intf_delay(lua_State *L);
+	int intf_get_all_vars(lua_State *L);
+	int impl_theme_item(lua_State *L, std::string name);
+	int impl_theme_items_get(lua_State *L);
+
 public:
-	game_lua_kernel(const config &, CVideo *);
+	game_lua_kernel(const config &, game_display &, game_state &);
 
 	virtual std::string my_name() { return "Game Lua Kernel"; }
 

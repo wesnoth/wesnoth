@@ -251,7 +251,7 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 	lua_settop(L, 0); //clear stack, just to be sure
 
 	lua_cpp::lua_function my_print = boost::bind(&lua_kernel_base::intf_print, this, _1);
-	lua_cpp::push_function(L, my_print);
+	lua_cpp::push_closure(L, my_print, 0);
 	lua_setglobal(L, "print");
 
 	// Add the show_dialog function
@@ -259,7 +259,7 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 
 	lua_getglobal(L, "wesnoth");
 	lua_cpp::lua_function show_dialog = boost::bind(&lua_kernel_base::intf_show_dialog, this, _1);
-	lua_cpp::push_function(L, show_dialog);
+	lua_cpp::push_closure(L, show_dialog, 0);
 	lua_setfield(L, -2, "show_dialog");
 	lua_pop(L,1);
 

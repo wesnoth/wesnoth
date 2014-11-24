@@ -191,13 +191,6 @@ void play_controller::init(CVideo& video){
 	loadscreen::start_stage("load level");
 	recorder.set_skip(false);
 
-	// This *needs* to be created before the show_intro and show_map_scene
-	// as that functions use the manager state_of_game
-	// Has to be done before registering any events!
-	lua_kernel_.reset(new game_lua_kernel(level_, &video));
-	resources::lua_kernel=lua_kernel_.get();
-	events_manager_.reset(new game_events::manager(level_));
-
 	LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks_) << std::endl;
 	gamestate_.init(ticks_);
 	resources::tunnels = gamestate_.pathfind_manager_.get();
@@ -233,6 +226,15 @@ void play_controller::init(CVideo& video){
 	resources::screen = gui_.get();
 
 	LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks_) << std::endl;
+
+	LOG_NG << "building lua kernel and game events manager... " << (SDL_GetTicks() - ticks_) << std::endl;
+	//loadscreen::start_stage("build events manager & lua");
+	// This *needs* to be created before the show_intro and show_map_scene
+	// as that functions use the manager state_of_game
+	// Has to be done before registering any events!
+	lua_kernel_.reset(new game_lua_kernel(level_, *gui_, gamestate_));
+	resources::lua_kernel=lua_kernel_.get();
+	events_manager_.reset(new game_events::manager(level_));
 
 	if(gamestate_.first_human_team_ != -1) {
 		gui_->set_team(gamestate_.first_human_team_);
