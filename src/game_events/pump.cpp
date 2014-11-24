@@ -427,11 +427,13 @@ void put_wml_message(const std::string& logger, const std::string& message, bool
 
 void run_lua_commands(char const *lua_code)
 {
+	assert(resources::lua_kernel);
 	resources::lua_kernel->run(lua_code);
 }
 
 void handle_event_commands(const queued_event& event_info, const vconfig &cfg)
 {
+	assert(resources::lua_kernel);
 	resources::lua_kernel->run_wml_action("command", cfg, event_info);
 }
 
@@ -443,6 +445,7 @@ void handle_event_command(const std::string &cmd,
 		<< std::hex << std::setiosflags(std::ios::uppercase)
 		<< reinterpret_cast<uintptr_t>(&cfg.get_config()) << std::dec << "\n";
 
+	assert(resources::lua_kernel);
 	if (!resources::lua_kernel->run_wml_action(cmd, cfg, event_info))
 	{
 		ERR_NG << "Couldn't find function for wml tag: "<< cmd << std::endl;
