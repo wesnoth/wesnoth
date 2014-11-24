@@ -30,12 +30,15 @@ namespace ai { class lua_ai_action_handler; }
 namespace ai { class lua_ai_context; }
 namespace game_events { struct queued_event; }
 
-void extract_preload_scripts(config const &);
-
 class LuaKernel : public lua_kernel_base
 {
 	const config &level_;
 
+	static void extract_preload_scripts(config const & game_config);
+	static std::vector<config> preload_scripts;
+	static config preload_config;
+
+	friend class game_config_manager; // to allow it to call extract_preload_scripts
 public:
 	LuaKernel(const config &, CVideo *);
 

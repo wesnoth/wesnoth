@@ -122,16 +122,16 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 #define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
-static std::vector<config> preload_scripts;
-static config preload_config;
+std::vector<config> LuaKernel::preload_scripts;
+config LuaKernel::preload_config;
 
-void extract_preload_scripts(config const &game_config)
+void LuaKernel::extract_preload_scripts(config const &game_config)
 {
-	preload_scripts.clear();
+	LuaKernel::preload_scripts.clear();
 	BOOST_FOREACH(config const &cfg, game_config.child_range("lua")) {
-		preload_scripts.push_back(cfg);
+		LuaKernel::preload_scripts.push_back(cfg);
 	}
-	preload_config = game_config.child("game_config");
+	LuaKernel::preload_config = game_config.child("game_config");
 }
 
 void LuaKernel::log_error(char const * msg, char const * context)
@@ -3198,8 +3198,8 @@ void LuaKernel::initialize()
 	// Execute the preload scripts.
 	cmd_log_ << "Running preload scripts...\n";
 
-	game_config::load_config(preload_config);
-	BOOST_FOREACH(const config &cfg, preload_scripts) {
+	game_config::load_config(LuaKernel::preload_config);
+	BOOST_FOREACH(const config &cfg, LuaKernel::preload_scripts) {
 		run(cfg["code"].str().c_str());
 	}
 	BOOST_FOREACH(const config &cfg, level_.child_range("lua")) {
