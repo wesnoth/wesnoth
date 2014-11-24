@@ -958,6 +958,7 @@
 		ECD0C4AB199C0B72005C2173 /* campaign_settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD0C4AA199C0B72005C2173 /* campaign_settings.cpp */; };
 		ECD39893194B830300CF2125 /* saved_game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD39891194B830300CF2125 /* saved_game.cpp */; };
 		ECD39895194B844A00CF2125 /* display_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD39894194B844A00CF2125 /* display_context.cpp */; };
+		ECD5D7BF1A22DC8600114175 /* lua_cpp_function.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD5D7BE1A22DC8600114175 /* lua_cpp_function.cpp */; };
 		ECDEAF72194FE84000DB2F47 /* fake_unit_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDEAF6D194FE84000DB2F47 /* fake_unit_manager.cpp */; };
 		ECDEAF75194FE86C00DB2F47 /* animated.tpp in Resources */ = {isa = PBXBuildFile; fileRef = ECDEAF74194FE86C00DB2F47 /* animated.tpp */; };
 		ECDEAF77194FEA8500DB2F47 /* syncmp_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDEAF76194FEA8400DB2F47 /* syncmp_handler.cpp */; };
@@ -2231,6 +2232,7 @@
 		ECD39891194B830300CF2125 /* saved_game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = saved_game.cpp; sourceTree = "<group>"; };
 		ECD39892194B830300CF2125 /* saved_game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = saved_game.hpp; sourceTree = "<group>"; };
 		ECD39894194B844A00CF2125 /* display_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = display_context.cpp; sourceTree = "<group>"; };
+		ECD5D7BE1A22DC8600114175 /* lua_cpp_function.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_cpp_function.cpp; sourceTree = "<group>"; };
 		ECDEAF6D194FE84000DB2F47 /* fake_unit_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fake_unit_manager.cpp; sourceTree = "<group>"; };
 		ECDEAF6E194FE84000DB2F47 /* fake_unit_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fake_unit_manager.hpp; sourceTree = "<group>"; };
 		ECDEAF74194FE86C00DB2F47 /* animated.tpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = animated.tpp; sourceTree = "<group>"; };
@@ -3642,6 +3644,7 @@
 		B597EC060FC0832B00CE81F5 /* scripting */ = {
 			isa = PBXGroup;
 			children = (
+				ECD5D7BE1A22DC8600114175 /* lua_cpp_function.cpp */,
 				ECA4A6781A1EC319006BCCF2 /* lua_fileops.cpp */,
 				ECA4A6791A1EC319006BCCF2 /* lua_map_location_ops.cpp */,
 				ECA4A67A1A1EC319006BCCF2 /* lua_rng.cpp */,
@@ -4371,6 +4374,7 @@
 				B5599B390EC62181008DD061 /* halo.cpp in Sources */,
 				B5599B640EC62181008DD061 /* generic_event.cpp in Sources */,
 				B5599B670EC62181008DD061 /* game_preferences_display.cpp in Sources */,
+				ECD5D7BF1A22DC8600114175 /* lua_cpp_function.cpp in Sources */,
 				B5599B680EC62181008DD061 /* game_preferences.cpp in Sources */,
 				EC74C1101975765F00B85A1A /* depcheck_select_new.cpp in Sources */,
 				B5599B6A0EC62181008DD061 /* game_display.cpp in Sources */,
