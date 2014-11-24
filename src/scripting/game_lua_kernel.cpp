@@ -2201,18 +2201,6 @@ static int intf_simulate_combat(lua_State *L)
 }
 
 /**
- * Creates a vconfig containing the WML table.
- * - Arg 1: WML table.
- * - Ret 1: vconfig userdata.
- */
-static int intf_tovconfig(lua_State *L)
-{
-	vconfig vcfg = luaW_checkvconfig(L, 1);
-	luaW_pushvconfig(L, vcfg);
-	return 1;
-}
-
-/**
  * Modifies the music playlist.
  * - Arg 1: WML table, or nil to force changes.
  */
@@ -2943,7 +2931,6 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * vid)
 		{ "set_village_owner",        &intf_set_village_owner        },
 		{ "simulate_combat",          &intf_simulate_combat          },
 		{ "synchronize_choice",       &intf_synchronize_choice       },
-		{ "tovconfig",                &intf_tovconfig    },
 		{ "transform_unit",           &intf_transform_unit           },
 		{ "unit_ability",             &intf_unit_ability             },
 		{ "unit_defense",             &intf_unit_defense             },

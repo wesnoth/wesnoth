@@ -226,6 +226,7 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 		{ "have_file",                &lua_fileops::intf_have_file              },
 		{ "require",                  &lua_fileops::intf_require                },
 		{ "textdomain",               &lua_common::intf_textdomain   		},
+		{ "tovconfig",                &lua_common::intf_tovconfig		},
 		{ "get_dialog_value",         &lua_gui2::intf_get_dialog_value		},
 		{ "set_dialog_active",        &lua_gui2::intf_set_dialog_active		},
 		{ "set_dialog_callback",      &lua_gui2::intf_set_dialog_callback	},

@@ -26,6 +26,7 @@ namespace lua_common {
 	int impl_vconfig_get(lua_State *L);
 	int impl_vconfig_size(lua_State *L);
 	int impl_vconfig_collect(lua_State *L);
+	int intf_tovconfig(lua_State* L);
 }
 
 #define return_tstring_attrib(name, accessor) \

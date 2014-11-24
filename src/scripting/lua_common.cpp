@@ -237,4 +237,16 @@ int impl_vconfig_collect(lua_State *L)
 	return 0;
 }
 
+/**
+ * Creates a vconfig containing the WML table.
+ * - Arg 1: WML table.
+ * - Ret 1: vconfig userdata.
+ */
+int intf_tovconfig(lua_State *L)
+{
+	vconfig vcfg = luaW_checkvconfig(L, 1);
+	luaW_pushvconfig(L, vcfg);
+	return 1;
+}
+
 } // end namespace lua_common
