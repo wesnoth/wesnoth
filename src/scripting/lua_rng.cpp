@@ -25,13 +25,6 @@
 static lg::log_domain log_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_lua)
 
-// Add compiler directive suppressing unused variable warning
-#if defined(__GNUC__) || defined(__clang__) || defined(__MINGW32__)
-#define ATTR_UNUSED( x ) __attribute__((unused)) x
-#else
-#define ATTR_UNUSED( x ) x
-#endif
-
 // Begin lua rng bindings
 namespace lua_rng {
 
@@ -41,7 +34,7 @@ static const char * Rng = "Rng";
 
 int impl_rng_create(lua_State* L)
 {
-	mt_rng * ATTR_UNUSED(rng) = new ( lua_newuserdata(L, sizeof(mt_rng)) ) mt_rng();
+	new ( lua_newuserdata(L, sizeof(mt_rng)) ) mt_rng();
 	luaL_setmetatable(L, Rng);
 
 	return 1;
