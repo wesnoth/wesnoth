@@ -46,6 +46,8 @@ int impl_rng_destroy(lua_State* L)
 	if (d == NULL) {
 		ERR_LUA << "rng_destroy called on data of type: " << lua_typename( L, lua_type( L, 1 ) ) << std::endl;
 		ERR_LUA << "This may indicate a memory leak, please report at bugs.wesnoth.org" << std::endl;
+		lua_pushstring(L, "Rng object garbage collection failure");
+		lua_error(L);
 	} else {
 		d->~mt_rng();
 	}
