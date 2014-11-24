@@ -45,7 +45,7 @@ void register_metatable ( lua_State* L );
 
 void push_function( lua_State* L, const lua_function & f );
 
-void set_cpp_funcs( lua_State* L, lua_cpp::Reg * l); //no support for up-value right now, use boost bind or something please (or implement yourself)
+void set_functions( lua_State* L, const lua_cpp::Reg * l); //no support for up-value right now, use boost bind or something please (or implement yourself)
 
 } // end namespace lua_cpp_func
 

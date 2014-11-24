@@ -88,7 +88,7 @@ void push_function( lua_State* L, const lua_function & f )
 	new (p) lua_function(f);
 }
 
-void set_cpp_funcs( lua_State* L, lua_cpp::Reg * l)
+void set_functions( lua_State* L, const lua_cpp::Reg * l)
 {
 	luaL_checkversion(L);
 	for (; l->name != NULL; l++) {  /* fill the table with given functions */
