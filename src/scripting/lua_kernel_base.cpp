@@ -29,6 +29,7 @@
 #endif
 
 #include "scripting/lua_common.hpp"
+#include "scripting/lua_cpp_function.hpp"
 #include "scripting/lua_fileops.hpp"
 #include "scripting/lua_gui2.hpp"
 #include "scripting/lua_map_location_ops.hpp"
@@ -94,67 +95,6 @@ int lua_kernel_base::intf_print(lua_State* L)
 	DBG_LUA << "\n";
 
 	return 0;
-}
-
-// Make the possibility to push the boost::bind 'ed intf_print onto the lua stack, using a dispatcher to get around the C++ / boost::function aspect of this
-char const * boost_cfunc = "Boost_C_Function";
-
-typedef boost::function<int(lua_State*)> lua_cfunc;
-
-static int intf_boost_cfunc_dispatcher ( lua_State* L )
-{
-	//make a temporary copy, in case lua_remove(L,1) might cause lua to garbage collect and destroy it
-	lua_cfunc f = * static_cast<lua_cfunc *> (luaL_checkudata(L, 1, boost_cfunc));
-	// remove from the stack before executing, so that like all other callbacks, f finds only its intended arguments on the stack.
-	lua_remove(L,1);
-	int result = (f)(L);
-	return result;
-}
-
-static int intf_boost_cfunc_cleanup ( lua_State* L )
-{
-	lua_cfunc * d = static_cast< lua_cfunc *> (luaL_testudata(L, 1, boost_cfunc));
-	if (d == NULL) {
-		ERR_LUA << "boost_cfunc_cleanup called on data of type: " << lua_typename( L, lua_type( L, 1 ) ) << std::endl;
-		ERR_LUA << "This may indicate a memory leak, please report at bugs.wesnoth.org" << std::endl;
-		lua_pushstring(L, "Boost function object garbage collection failure");
-		lua_error(L);
-	} else {
-		d->~lua_cfunc();
-	}
-	return 0;
-}
-
-static int intf_boost_cfunc_tostring( lua_State* L )
-{
-	lua_cfunc * d = static_cast< lua_cfunc *> (luaL_checkudata(L, 1, boost_cfunc));
-	// d is not null, if it was null then checkudata raised a lua error and a longjump was executed.
-	std::stringstream result;
-	result << "boost function: " << std::hex << d;
-	lua_pushstring(L, result.str().c_str());
-	return 1;
-}
-
-static void register_boost_cfunc_metatable ( lua_State* L )
-{
-	luaL_newmetatable(L, boost_cfunc);
-	lua_pushcfunction(L, intf_boost_cfunc_dispatcher);
-	lua_setfield(L, -2, "__call");
-	lua_pushcfunction(L, intf_boost_cfunc_cleanup);
-	lua_setfield(L, -2, "__gc");
-	lua_pushcfunction(L, intf_boost_cfunc_tostring);
-	lua_setfield(L, -2, "__tostring");
-	lua_pushvalue(L, -1); //make a copy of this table, set it to be its own __index table
-	lua_setfield(L, -2, "__index");
-
-	lua_pop(L, 1);
-}
-
-static void push_boost_cfunc( lua_State* L, const lua_cfunc & f )
-{
-	void * p = lua_newuserdata(L, sizeof(lua_cfunc));
-	luaL_setmetatable(L, boost_cfunc);
-	new (p) lua_cfunc(f);
 }
 
 // The show-dialog call back is here implemented as a method of lua kernel, since it needs a pointer to external object CVideo
@@ -272,10 +212,10 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 
 	lua_settop(L, 0);
 
-	// Define the Boost_C_Function metatable ( so we can override print to point to a C++ member function )
-	cmd_log_ << "Adding boost cfunc proxy...\n";
+	// Define the CPP_function metatable ( so we can override print to point to a C++ member function, add "show_dialog" for this kernel, etc. )
+	cmd_log_ << "Adding boost function proxy...\n";
 
-	register_boost_cfunc_metatable(L);
+	lua_cpp::register_metatable(L);
 
 	// Add some callback from the wesnoth lib
 	cmd_log_ << "Registering basic wesnoth API...\n";
@@ -309,16 +249,16 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 	lua_setglobal(L, "std_print"); //storing original impl as 'std_print'
 	lua_settop(L, 0); //clear stack, just to be sure
 
-	lua_cfunc my_print = boost::bind(&lua_kernel_base::intf_print, this, _1);
-	push_boost_cfunc(L, my_print);
+	lua_cpp::lua_function my_print = boost::bind(&lua_kernel_base::intf_print, this, _1);
+	lua_cpp::push_function(L, my_print);
 	lua_setglobal(L, "print");
 
 	// Add the show_dialog function
 	cmd_log_ << "Adding dialog support...\n";
 
 	lua_getglobal(L, "wesnoth");
-	lua_cfunc show_dialog = boost::bind(&lua_kernel_base::intf_show_dialog, this, _1);
-	push_boost_cfunc(L, show_dialog);
+	lua_cpp::lua_function show_dialog = boost::bind(&lua_kernel_base::intf_show_dialog, this, _1);
+	lua_cpp::push_function(L, show_dialog);
 	lua_setfield(L, -2, "show_dialog");
 	lua_pop(L,1);
 
