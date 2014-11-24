@@ -25,7 +25,6 @@
 #include "mp_ui_alerts.hpp"
 #include "playturn.hpp"
 #include "preferences.hpp"
-#include "resources.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
 #include "formula_string_utils.hpp"
@@ -47,7 +46,7 @@ playmp_controller::playmp_controller(const config& level,
 		game_config, tdata, video, skip_replay || blindfold_replay_), //this || means that if blindfold is enabled, quick replays will be on.
 	beep_warning_time_(0),
 	network_processing_stopped_(false),
-	blindfold_(*resources::screen,blindfold_replay_)
+	blindfold_(*gui_,blindfold_replay_)
 {
 	turn_data_.set_host(is_host);
 	turn_data_.host_transfer().attach_handler(this);
@@ -118,10 +117,10 @@ void playmp_controller::on_not_observer() {
 }
 
 void playmp_controller::remove_blindfold() {
-	if (resources::screen->is_blindfolded()) {
+	if (gui_->is_blindfolded()) {
 		blindfold_.unblind();
 		LOG_NG << "Taking off the blindfold now " << std::endl;
-		resources::screen->redraw_everything();
+		gui_->redraw_everything();
 	}
 }
 
@@ -537,7 +536,7 @@ void playmp_controller::process_oos(const std::string& err_msg) const {
 	}
 
 	savegame::oos_savegame save(saved_game_, *gui_, to_config());
-	save.save_game_interactive(resources::screen->video(), temp_buf.str(), gui::YES_NO);
+	save.save_game_interactive(gui_->video(), temp_buf.str(), gui::YES_NO);
 }
 
 void playmp_controller::handle_generic_event(const std::string& name){
@@ -571,8 +570,8 @@ bool playmp_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case hotkey::HOTKEY_ENDTURN:
 			if  (linger_)
 			{
-				bool has_next_scenario = !resources::gamedata->next_scenario().empty() &&
-					resources::gamedata->next_scenario() != "null";
+				bool has_next_scenario = !gamestate_.gamedata_.next_scenario().empty() &&
+					gamestate_.gamedata_.next_scenario() != "null";
 				return is_host() || !has_next_scenario;
 			}
 			else
@@ -602,7 +601,7 @@ bool playmp_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 
 void playmp_controller::do_idle_notification()
 {
-	resources::screen->get_chat_manager().add_chat_message(time(NULL), "", 0,
+	gui_->get_chat_manager().add_chat_message(time(NULL), "", 0,
 		_("This side is in an idle state. To proceed with the game, it must be assigned to another controller. You may use :droid, :control or :give_control for example."),
 		events::chat_handler::MESSAGE_PUBLIC, false);
 }

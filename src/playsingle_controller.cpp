@@ -35,7 +35,6 @@
 #include "map_label.hpp"
 #include "marked-up_text.hpp"
 #include "playturn.hpp"
-#include "resources.hpp"
 #include "random_new_deterministic.hpp"
 #include "replay_helper.hpp"
 #include "savegame.hpp"
@@ -119,21 +118,21 @@ void playsingle_controller::recruit(){
 	if (!browse_)
 		menu_handler_.recruit(player_number_, mouse_handler_.get_last_hex());
 	else if (whiteboard_manager_->is_active())
-		menu_handler_.recruit(resources::screen->viewing_side(), mouse_handler_.get_last_hex());
+		menu_handler_.recruit(gui_->viewing_side(), mouse_handler_.get_last_hex());
 }
 
 void playsingle_controller::repeat_recruit(){
 	if (!browse_)
 		menu_handler_.repeat_recruit(player_number_, mouse_handler_.get_last_hex());
 	else if (whiteboard_manager_->is_active())
-		menu_handler_.repeat_recruit(resources::screen->viewing_side(), mouse_handler_.get_last_hex());
+		menu_handler_.repeat_recruit(gui_->viewing_side(), mouse_handler_.get_last_hex());
 }
 
 void playsingle_controller::recall(){
 	if (!browse_)
 		menu_handler_.recall(player_number_, mouse_handler_.get_last_hex());
 	else if (whiteboard_manager_->is_active())
-		menu_handler_.recall(resources::screen->viewing_side(), mouse_handler_.get_last_hex());
+		menu_handler_.recall(gui_->viewing_side(), mouse_handler_.get_last_hex());
 }
 
 void playsingle_controller::toggle_shroud_updates(){
@@ -730,7 +729,7 @@ possible_end_play_signal playsingle_controller::play_side()
 			// If a side is dead end the turn, but play at least side=1's
 			// turn in case all sides are dead
 			if (gamestate_.board_.side_units(player_number_) != 0
-				|| (resources::units->size() == 0 && player_number_ == 1))
+				|| (gamestate_.board_.units().size() == 0 && player_number_ == 1))
 			{
 				possible_end_play_signal signal = before_human_turn();
 
@@ -848,9 +847,9 @@ possible_end_play_signal playsingle_controller::before_human_turn()
 
 void playsingle_controller::show_turn_dialog(){
 	if(preferences::turn_dialog() && (level_result_ == NONE) ) {
-		blindfold b(*resources::screen, true); //apply a blindfold for the duration of this dialog
-		resources::screen->redraw_everything();
-		resources::screen->recalculate_minimap();
+		blindfold b(*gui_, true); //apply a blindfold for the duration of this dialog
+		gui_->redraw_everything();
+		gui_->recalculate_minimap();
 		std::string message = _("It is now $name|’s turn");
 		utils::string_map symbols;
 		symbols["name"] = gamestate_.board_.teams()[player_number_ - 1].current_player();
@@ -1006,7 +1005,7 @@ void playsingle_controller::play_ai_turn(){
  */
 void playsingle_controller::do_idle_notification()
 {
-	resources::screen->get_chat_manager().add_chat_message(time(NULL), "Wesnoth", 0,
+	gui_->get_chat_manager().add_chat_message(time(NULL), "Wesnoth", 0,
 		"This side is in an idle state. To proceed with the game, the host must assign it to another controller.",
 		events::chat_handler::MESSAGE_PUBLIC, false);
 }
@@ -1032,7 +1031,7 @@ void playsingle_controller::handle_generic_event(const std::string& name){
 }
 
 possible_end_play_signal playsingle_controller::check_time_over(){
-	bool b = gamestate_.tod_manager_.next_turn(*resources::gamedata);
+	bool b = gamestate_.tod_manager_.next_turn(gamestate_.gamedata_);
 	it_is_a_new_turn_ = true;
 	if(!b) {
 
@@ -1099,7 +1098,7 @@ bool playsingle_controller::can_execute_command(const hotkey::hotkey_command& cm
 			break;
 		case hotkey::HOTKEY_LABEL_TEAM_TERRAIN:
 		case hotkey::HOTKEY_LABEL_TERRAIN: {
-			const terrain_label *label = resources::screen->labels().get_label(mouse_handler_.get_last_hex());
+			const terrain_label *label = gui_->labels().get_label(mouse_handler_.get_last_hex());
 			res = !events::commands_disabled && gamestate_.board_.map().on_board(mouse_handler_.get_last_hex())
 				&& !gui_->shrouded(mouse_handler_.get_last_hex())
 				&& !is_observer()
