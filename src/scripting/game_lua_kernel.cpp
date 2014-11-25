@@ -68,7 +68,6 @@
 #include "recall_list_manager.hpp"      // for recall_list_manager
 #include "replay.hpp"                   // for get_user_choice, etc
 #include "reports.hpp"                  // for register_generator, etc
-#include "resources.hpp"                // for teams, gameboard, units, etc
 #include "scripting/lua_api.hpp"        // for luaW_toboolean, etc
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
@@ -1199,8 +1198,8 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 	return_bool_attrib("debug_lua", game_config::debug_lua);
 	return_bool_attrib("mp_debug", game_config::mp_debug);
 
-	const mp_game_settings& mp_settings = *resources::mp_settings;
-	const game_classification & classification = *resources::classification;
+	const mp_game_settings& mp_settings = play_controller_.get_mp_settings();
+	const game_classification & classification = play_controller_.get_classification();
 
 	return_string_attrib("campaign_type", lexical_cast<std::string>(classification.campaign_type));
 	if(classification.campaign_type==game_classification::MULTIPLAYER) {

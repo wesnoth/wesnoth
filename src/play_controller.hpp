@@ -32,12 +32,15 @@
 #include <boost/shared_ptr.hpp>
 
 class game_display;
-class saved_game;
 class game_data;
 class game_lua_kernel;
 class team;
 class unit;
 class wmi_pager;
+
+class saved_game;
+struct mp_game_settings;
+class game_classification;
 
 namespace actions {
 	class undo_list;
@@ -177,6 +180,8 @@ public:
 	events::menu_handler& get_menu_handler() { return menu_handler_; }
 
 	boost::shared_ptr<wb::manager> get_whiteboard();
+	const mp_game_settings& get_mp_settings();
+	const game_classification & get_classification();
 
 	static const std::string wml_menu_hotkey_prefix;
 protected:

@@ -965,6 +965,14 @@ boost::shared_ptr<wb::manager> play_controller::get_whiteboard() {
 	return whiteboard_manager_;
 }
 
+const mp_game_settings & play_controller::get_mp_settings() {
+	return saved_game_.mp_settings();
+}
+
+const game_classification & play_controller::get_classification() {
+	return saved_game_.classification();
+}
+
 game_display& play_controller::get_display() {
 	return *gui_;
 }
