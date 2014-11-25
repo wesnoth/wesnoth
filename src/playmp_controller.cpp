@@ -622,7 +622,6 @@ void playmp_controller::maybe_linger()
 
 void playmp_controller::pull_remote_choice()
 {
-	int expected_controller_changes = 0;
 	turn_info::PROCESS_DATA_RESULT res = turn_data_.sync_network();
 	assert(res != turn_info::PROCESS_END_LINGER);
 	assert(res != turn_info::PROCESS_END_TURN);
