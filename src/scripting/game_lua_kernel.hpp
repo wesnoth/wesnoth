@@ -88,12 +88,12 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_get_starting_location(lua_State* L);
 	int impl_game_config_get(lua_State *L);
 	int impl_game_config_set(lua_State *L);
-	std::string synced_state();
 	int impl_current_get(lua_State *L);
 	int intf_clear_messages(lua_State*);
 	int intf_find_path(lua_State *L);
 	int intf_find_reach(lua_State *L);
 	int intf_find_cost_map(lua_State *L);
+	int intf_message(lua_State *L);
 	int intf_play_sound(lua_State *L);
 	int intf_put_unit(lua_State *L);
 	int intf_put_recall_unit(lua_State *L);
@@ -115,6 +115,10 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_get_all_vars(lua_State *L);
 	int impl_theme_item(lua_State *L, std::string name);
 	int impl_theme_items_get(lua_State *L);
+
+	//private helpers
+	std::string synced_state();
+	void lua_chat(std::string const &caption, std::string const &msg);
 
 public:
 	game_lua_kernel(const config &, game_display &, game_state &, play_controller &);

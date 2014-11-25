@@ -38,6 +38,7 @@
 #include "ai/lua/core.hpp"              // for lua_ai_context, etc
 #include "ai/manager.hpp"               // for manager, holder
 #include "attack_prediction.hpp"        // for combatant
+#include "chat_events.hpp"              // for chat_handler, etc
 #include "config.hpp"                   // for config, etc
 #include "display_chat_manager.hpp"	// for clear_chat_messages
 #include "formatter.hpp"
@@ -138,7 +139,13 @@ void game_lua_kernel::extract_preload_scripts(config const &game_config)
 void game_lua_kernel::log_error(char const * msg, char const * context)
 {
 	lua_kernel_base::log_error(msg, context);
-	chat_message(context, msg);
+	lua_chat(context, msg);
+}
+
+void game_lua_kernel::lua_chat(std::string const &caption, std::string const &msg)
+{
+	game_display_.get_chat_manager().add_chat_message(time(NULL), caption, 0, msg,
+		events::chat_handler::MESSAGE_PUBLIC, false);
 }
 
 
@@ -1312,7 +1319,7 @@ int game_lua_kernel::impl_current_get(lua_State *L)
  * - Arg 1: optional message header.
  * - Arg 2 (or 1): message.
  */
-static int intf_message(lua_State *L)
+int game_lua_kernel::intf_message(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
 	char const *h = m;
@@ -1321,7 +1328,7 @@ static int intf_message(lua_State *L)
 	} else {
 		m = luaL_checkstring(L, 2);
 	}
-	chat_message(h, m);
+	lua_chat(h, m);
 	LOG_LUA << "Script says: \"" << m << "\"\n";
 	return 0;
 }
@@ -2274,9 +2281,15 @@ int game_lua_kernel::intf_select_hex(lua_State *L)
 namespace {
 	struct lua_synchronize : mp_sync::user_choice
 	{
+		typedef boost::function<void(std::string const &, std::string const &)> error_reporter;
 		lua_State *L;
 		const std::vector<team> & teams_;
-		lua_synchronize(lua_State *l, const std::vector<team> & t): L(l), teams_(t) {}
+		error_reporter error_reporter_;
+		lua_synchronize(lua_State *l, const std::vector<team> & t, error_reporter & eh)
+			: L(l)
+			, teams_(t)
+			, error_reporter_(eh)
+		{}
 
 		virtual config query_user(int side) const
 		{
@@ -2292,7 +2305,7 @@ namespace {
 				if(!luaW_toconfig(L, -1, cfg)) {
 					std::string message = "function returned to wesnoth.synchronize_choice a table which was partially invalid";
 					if (game_config::debug) {
-						chat_message("Lua warning", message);
+						error_reporter_("Lua warning", message.c_str());
 					}
 					WRN_LUA << message << std::endl;
 				}
@@ -2333,7 +2346,8 @@ int game_lua_kernel::intf_synchronize_choice(lua_State *L)
 			lua_pop(L, 1);
 		}
 		typedef std::map<int,config> retv_t;
-		retv_t r = mp_sync::get_user_choice_multiple_sides("input", lua_synchronize(L, teams()), vals);
+		lua_synchronize::error_reporter er = boost::bind(&game_lua_kernel::lua_chat, this, _1, _2);
+		retv_t r = mp_sync::get_user_choice_multiple_sides("input", lua_synchronize(L, teams(), er), vals);
 		lua_newtable(L);
 		BOOST_FOREACH(retv_t::value_type& pair, r)
 		{
@@ -2344,7 +2358,8 @@ int game_lua_kernel::intf_synchronize_choice(lua_State *L)
 	}
 	else
 	{
-		config cfg = mp_sync::get_user_choice("input", lua_synchronize(L, teams()));
+		lua_synchronize::error_reporter er = boost::bind(&game_lua_kernel::lua_chat, this, _1, _2);
+		config cfg = mp_sync::get_user_choice("input", lua_synchronize(L, teams(),  er));
 		luaW_pushconfig(L, cfg);
 	}
 	return 1;
@@ -2916,7 +2931,6 @@ game_lua_kernel::game_lua_kernel(const config &cfg, game_display & gd, game_stat
 		{ "get_image_size",           &intf_get_image_size           },
 		{ "get_time_stamp",           &intf_get_time_stamp           },
 		{ "get_traits",               &intf_get_traits               },
-		{ "message",                  &intf_message                  },
 		{ "modify_ai",                &intf_modify_ai                },
 		{ "set_music",                &intf_set_music                },
 		{ "transform_unit",           &intf_transform_unit           },
@@ -2959,6 +2973,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, game_display & gd, game_stat
 		{ "match_location",		boost::bind(&game_lua_kernel::intf_match_location, this, _1)			},
 		{ "match_side",			boost::bind(&game_lua_kernel::intf_match_side, this, _1)			},
 		{ "match_unit",			boost::bind(&game_lua_kernel::intf_match_unit, this, _1)			},
+		{ "message",			boost::bind(&game_lua_kernel::intf_message, this, _1)				},
 		{ "play_sound",			boost::bind(&game_lua_kernel::intf_play_sound, this, _1)			},
 		{ "putt_recall_unit",		boost::bind(&game_lua_kernel::intf_put_recall_unit, this, _1)			},
 		{ "put_unit",			boost::bind(&game_lua_kernel::intf_put_unit, this, _1)				},
