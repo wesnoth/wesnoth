@@ -3309,26 +3309,17 @@ void menu_handler::user_command()
 void menu_handler::request_control_change ( int side_num, const std::string& player )
 {
 	std::string side = str_cast(side_num);
-	//if this is our side we are always allowed to change the controller
-	if (teams_[side_num - 1].is_local_human()) {
-		if (player == preferences::login())
-			return;
-		change_side_controller(side,player);
-	} else if (teams_[side_num - 1].is_idle()) { //if this is our side and it is idle, make human and throw an end turn exception
+	if (teams_[side_num - 1].is_local_human() && player == preferences::login()) {
+		//this is already our side.
+		return;
+	} else if (teams_[side_num - 1].is_idle() && player == preferences::login()) {
+		//the server thinks this is already our side, he will reject change_controller.
 		LOG_NG << " *** Got an idle side with requested control change " << std::endl;
 		teams_[side_num - 1].make_human();
-		change_controller(lexical_cast<std::string>(side_num),"human");
-
-		if (player == preferences::login()) {
-			LOG_NG << " *** It's us, throwing end turn exception " << std::endl;
-		} else {
-			LOG_NG << " *** It's not us, changing sides now as usual, then throwing end_turn " << std::endl;
-			change_side_controller(side,player);
-		}
 		throw end_turn_exception(side_num);
 	} else {
-		//it is not our side, the server will decide if we can change the
-		//controller (that is if we are host of the game)
+		//The server will (or won't becasue we aren't allowed to change the controller)
+		//send us a [change_controller] back, which we then hndle in playturn.cpp 
 		change_side_controller(side,player);
 	}
 }
