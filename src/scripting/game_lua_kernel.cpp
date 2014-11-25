@@ -1278,8 +1278,8 @@ int game_lua_kernel::impl_current_get(lua_State *L)
 	char const *m = luaL_checkstring(L, 2);
 
 	// Find the corresponding attribute.
-	return_int_attrib("side", resources::controller->current_side());
-	return_int_attrib("turn", resources::controller->turn());
+	return_int_attrib("side", play_controller_.current_side());
+	return_int_attrib("turn", play_controller_.turn());
 	return_string_attrib("synced_state", synced_state());
 
 	if (strcmp(m, "event_context") == 0)
@@ -2223,10 +2223,10 @@ static int intf_set_music(lua_State *L)
  * - Arg 1: string.
  * - Arg 2: optional integer.
  */
-static int intf_play_sound(lua_State *L)
+int game_lua_kernel::intf_play_sound(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
-	if (resources::controller->is_skipping_replay()) return 0;
+	if (play_controller_.is_skipping_replay()) return 0;
 	int repeats = lua_tointeger(L, 2);
 	sound::play_sound(m, sound::SOUND_FX, repeats);
 	return 0;
@@ -2265,7 +2265,7 @@ int game_lua_kernel::intf_select_hex(lua_State *L)
 	if(!lua_isnoneornil(L, 3))
 		highlight = luaW_toboolean(L, 3);
 	const bool fire_event = luaW_toboolean(L, 4);
-	resources::controller->get_mouse_handler_base().select_hex(
+	play_controller_.get_mouse_handler_base().select_hex(
 		loc, false, highlight, fire_event);
 	if(highlight)
 		game_display_.highlight_hex(loc);
@@ -2601,7 +2601,7 @@ int game_lua_kernel::intf_delay(lua_State *L)
 {
 	unsigned final = SDL_GetTicks() + luaL_checkinteger(L, 1);
 	do {
-		resources::controller->play_slice(false);
+		play_controller_.play_slice(false);
 		game_display_.delay(10);
 	} while (int(final - SDL_GetTicks()) > 0);
 	return 0;
@@ -2831,7 +2831,7 @@ namespace {
  */
 int game_lua_kernel::impl_theme_item(lua_State *L, std::string m)
 {
-	reports::context temp_context = reports::context(board(), game_display_, tod_man(), resources::whiteboard, resources::controller->get_mouse_handler_base());
+	reports::context temp_context = reports::context(board(), game_display_, tod_man(), play_controller_.get_whiteboard(), play_controller_.get_mouse_handler_base());
 	luaW_pushconfig(L, reports::generate_report(m.c_str(), temp_context , true));
 	return 1;
 }
@@ -2896,8 +2896,8 @@ tod_manager & game_lua_kernel::tod_man() {
 	return game_state_.tod_manager_;
 }
 
-game_lua_kernel::game_lua_kernel(const config &cfg, game_display & gd, game_state & gs)
-	: lua_kernel_base(&gd.video()), game_display_(gd), game_state_(gs), level_(cfg)
+game_lua_kernel::game_lua_kernel(const config &cfg, game_display & gd, game_state & gs, play_controller & pc)
+	: lua_kernel_base(&gd.video()), game_display_(gd), game_state_(gs), play_controller_(pc), level_(cfg)
 {
 	lua_State *L = mState;
 
@@ -2919,7 +2919,6 @@ game_lua_kernel::game_lua_kernel(const config &cfg, game_display & gd, game_stat
 		{ "get_traits",               &intf_get_traits               },
 		{ "message",                  &intf_message                  },
 		{ "modify_ai",                &intf_modify_ai                },
-		{ "play_sound",               &intf_play_sound               },
 		{ "set_music",                &intf_set_music                },
 		{ "transform_unit",           &intf_transform_unit           },
 		{ "unit_ability",             &intf_unit_ability             },
@@ -2961,6 +2960,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, game_display & gd, game_stat
 		{ "match_location",		boost::bind(&game_lua_kernel::intf_match_location, this, _1)			},
 		{ "match_side",			boost::bind(&game_lua_kernel::intf_match_side, this, _1)			},
 		{ "match_unit",			boost::bind(&game_lua_kernel::intf_match_unit, this, _1)			},
+		{ "play_sound",			boost::bind(&game_lua_kernel::intf_play_sound, this, _1)			},
 		{ "putt_recall_unit",		boost::bind(&game_lua_kernel::intf_put_recall_unit, this, _1)			},
 		{ "put_unit",			boost::bind(&game_lua_kernel::intf_put_unit, this, _1)				},
 		{ "remove_tile_overlay",	boost::bind(&game_lua_kernel::intf_remove_tile_overlay, this, _1)		},

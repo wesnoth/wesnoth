@@ -176,6 +176,8 @@ public:
 	events::mouse_handler& get_mouse_handler_base();
 	events::menu_handler& get_menu_handler() { return menu_handler_; }
 
+	boost::shared_ptr<wb::manager> get_whiteboard();
+
 	static const std::string wml_menu_hotkey_prefix;
 protected:
 	void slice_before_scroll();

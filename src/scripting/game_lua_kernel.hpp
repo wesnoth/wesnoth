@@ -38,6 +38,7 @@ class gamemap;
 class team;
 class game_data;
 class tod_manager;
+class play_controller;
 
 typedef int (*lua_CFunction) (lua_State *L);
 
@@ -45,6 +46,7 @@ class game_lua_kernel : public lua_kernel_base
 {
 	game_display & game_display_;
 	game_state & game_state_;
+	play_controller & play_controller_;
 
 	// Private functions to ease access to parts of game_state
 	game_board & board();
@@ -92,6 +94,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_find_path(lua_State *L);
 	int intf_find_reach(lua_State *L);
 	int intf_find_cost_map(lua_State *L);
+	int intf_play_sound(lua_State *L);
 	int intf_put_unit(lua_State *L);
 	int intf_put_recall_unit(lua_State *L);
 	int intf_extract_unit(lua_State *L);
@@ -114,7 +117,7 @@ class game_lua_kernel : public lua_kernel_base
 	int impl_theme_items_get(lua_State *L);
 
 public:
-	game_lua_kernel(const config &, game_display &, game_state &);
+	game_lua_kernel(const config &, game_display &, game_state &, play_controller &);
 
 	virtual std::string my_name() { return "Game Lua Kernel"; }
 

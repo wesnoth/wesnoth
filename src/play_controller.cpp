@@ -232,7 +232,7 @@ void play_controller::init(CVideo& video){
 	// This *needs* to be created before the show_intro and show_map_scene
 	// as that functions use the manager state_of_game
 	// Has to be done before registering any events!
-	lua_kernel_.reset(new game_lua_kernel(level_, *gui_, gamestate_));
+	lua_kernel_.reset(new game_lua_kernel(level_, *gui_, gamestate_, *this));
 	resources::lua_kernel=lua_kernel_.get();
 	events_manager_.reset(new game_events::manager(level_));
 
@@ -959,6 +959,10 @@ void play_controller::slice_before_scroll() {
 
 events::mouse_handler& play_controller::get_mouse_handler_base() {
 	return mouse_handler_;
+}
+
+boost::shared_ptr<wb::manager> play_controller::get_whiteboard() {
+	return whiteboard_manager_;
 }
 
 game_display& play_controller::get_display() {
