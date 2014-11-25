@@ -23,6 +23,7 @@
 #include "lua/lua.h"
 #include "lua/luaconf.h"                // for LUAL_BUFFERSIZE
 #include "scripting/lua_api.hpp"	// for chat_message, luaW_pcall
+#include "scripting/lua_common.hpp"	// for chat_message, luaW_pcall
 
 #include <exception>
 #include <string>

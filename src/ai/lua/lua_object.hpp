@@ -26,6 +26,7 @@
 #include "../../map_location.hpp"
 #include "../../resources.hpp"
 #include "../../scripting/lua_api.hpp"
+#include "../../scripting/lua_common.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../variable.hpp"
 #include "../default/contexts.hpp"

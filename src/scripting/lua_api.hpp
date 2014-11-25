@@ -22,8 +22,6 @@
 #include "unit_ptr.hpp"
 
 struct lua_State;
-class t_string;
-class vconfig;
 
 /**
  * Converts a Lua value to a unit pointer.
@@ -36,96 +34,16 @@ unit_ptr luaW_tounit(lua_State *L, int index, bool only_on_map = false);
 void chat_message(std::string const &caption, std::string const &msg);
 
 /**
- * Pushes a vconfig on the top of the stack.
- */
-void luaW_pushvconfig(lua_State *L, vconfig const &cfg);
-
-/**
- * Pushes a t_string on the top of the stack.
- */
-void luaW_pushtstring(lua_State *L, t_string const &v);
-
-/**
- * Converts a string into a Lua object pushed at the top of the stack.
- */
-void luaW_pushscalar(lua_State *L, config::attribute_value const &v);
-
-
-/**
- * Returns true if the metatable of the object is the one found in the registry.
- */
-bool luaW_hasmetatable(lua_State *L, int index, luatypekey key);
-
-/**
- * Converts a scalar to a translatable string.
- */
-bool luaW_totstring(lua_State *L, int index, t_string &str);
-
-/**
- * Converts a scalar to a translatable string.
- */
-t_string luaW_checktstring(lua_State *L, int index);
-
-/**
- * Converts a config object to a Lua table.
- * The destination table should be at the top of the stack on entry. It is
- * still at the top on exit.
- */
-void luaW_filltable(lua_State *L, config const &cfg);
-
-/**
- * Converts a config object to a Lua table pushed at the top of the stack.
- */
-void luaW_pushconfig(lua_State *L, config const &cfg);
-
-/**
- * Converts an optional table or vconfig to a config object.
- * @param tstring_meta absolute stack position of t_string's metatable, or 0 if none.
- * @return false if some attributes had not the proper type.
- * @note If the table has holes in the integer keys or floating-point keys,
- *       some keys will be ignored and the error will go undetected.
- */
-bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta = 0);
-
-/**
- * Converts an optional table or vconfig to a config object.
- */
-config luaW_checkconfig(lua_State *L, int index);
-
-/**
- * Gets an optional vconfig from either a table or a userdata.
- * @return false in case of failure.
- */
-bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg);
-
-/**
- * Gets an optional vconfig from either a table or a userdata.
- * @param allow_missing true if missing values are allowed; the function
- *        then returns an unconstructed vconfig.
- */
-vconfig luaW_checkvconfig(lua_State *L, int index, bool allow_missing = false);
-
-/**
  * Calls a Lua function stored below its @a nArgs arguments at the top of the stack.
  * @param nRets LUA_MULTRET for unbounded return values.
  * @return true if the call was successful and @a nRets return values are available.
  */
 bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error = false);
 
-
-/**
- * Pushes the value found by following the variadic names (char *), if the
- * value is not nil.
- * @return true if an element was pushed.
- */
-bool luaW_getglobal(lua_State *L, ...);
-
 /**
  * Converts a Lua value to a unit pointer.
  */
 unit_ptr luaW_checkunit(lua_State *L, int index, bool only_on_map = false);
-
-bool luaW_toboolean(lua_State *L, int n);
 
 struct map_location;
 

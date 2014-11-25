@@ -19,6 +19,7 @@
 #include "log.hpp"
 #include "lua/lua.h"
 #include "scripting/lua_api.hpp"
+#include "scripting/lua_common.hpp"
 #include "scripting/lua_rng.hpp"
 
 #include <ostream>

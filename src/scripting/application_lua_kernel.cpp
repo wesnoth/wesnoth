@@ -30,6 +30,7 @@
 #include "log.hpp"
 #include "lua/lua.h"
 #include "scripting/lua_api.hpp"
+#include "scripting/lua_common.hpp"
 #include "scripting/lua_game_launcher.hpp"
 #include "scripting/lua_kernel_base.hpp"
 #include "scripting/lua_types.hpp"
