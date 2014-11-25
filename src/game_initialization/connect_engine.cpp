@@ -1047,12 +1047,12 @@ config side_engine::new_config() const
 		res["income"] = income_;
 
 		if (!parent_.params_.use_map_settings || res["fog"].empty() ||
-			(res["fog"] != "yes" && res["fog"] != "no")) {
+			(res["fog"].to_bool(true) == true && res["fog"].to_bool(false) == false)) {
 			res["fog"] = parent_.params_.fog_game;
 		}
 
 		if (!parent_.params_.use_map_settings || res["shroud"].empty() ||
-			(res["shroud"] != "yes" && res["shroud"] != "no")) {
+			(res["shroud"].to_bool(true) == true && res["shroud"].to_bool(false) == false)) {
 			res["shroud"] = parent_.params_.shroud_game;
 		}
 		//share view default to true here to restore the previous behaviour.
