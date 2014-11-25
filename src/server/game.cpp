@@ -1000,6 +1000,10 @@ void game::require_random(const simple_wml::document &data, const player_map::it
 	// all non-first "require random seed" per synced context. The plan could be that we add a numerical
 	// "synced context id" in "require random seed"
 
+	// NOTE:
+	// With the new strategy we allow observers to cause OOS for the playing clients by sending
+	// [require_random] packages based on incompatible local changes. We might want to block 
+	// [require_random] from observers if this is a problem.
 	const simple_wml::node* require_random = data.root().child("require_random");
 	if(!require_random) return;
 	if(require_random->has_attr("request_id"))
