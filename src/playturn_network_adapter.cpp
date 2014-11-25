@@ -128,7 +128,7 @@ playturn_network_adapter::~playturn_network_adapter()
 	try {
 		if(!is_at_end())
 		{
-			ERR_NW << "Destroing playturn_network_adapter with an non empty buffer, this means loss of network data" << std::endl;
+			ERR_NW << "Destroying playturn_network_adapter with an non empty buffer, this means loss of network data" << std::endl;
 		}
 	} catch (...) {}
 }
