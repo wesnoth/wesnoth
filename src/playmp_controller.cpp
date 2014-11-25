@@ -184,8 +184,7 @@ possible_end_play_signal playmp_controller::play_human_turn(){
 			if(network_reader_.read(cfg)) {
 				turn_info::PROCESS_DATA_RESULT res;
 				HANDLE_END_PLAY_SIGNAL( res = turn_data_.process_network_data(cfg, skip_replay_) );
-				//PROCESS_RESTART_TURN_TEMPORARY_LOCAL should be impossible because that's means the currently active side (that's us) left.
-				if (res == turn_info::PROCESS_RESTART_TURN || res == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL)
+				if (res == turn_info::PROCESS_RESTART_TURN)
 				{
 					// Clean undo stack if turn has to be restarted (losing control)
 					if ( undo_stack_->can_undo() )
@@ -281,7 +280,7 @@ possible_end_play_signal playmp_controller::play_idle_loop()
 			turn_info::PROCESS_DATA_RESULT res;
 			HANDLE_END_PLAY_SIGNAL( res = turn_data_.process_network_data(cfg, skip_replay_) );
 
-			if (res == turn_info::PROCESS_RESTART_TURN || res == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL)
+			if (res == turn_info::PROCESS_RESTART_TURN)
 			{
 				end_turn_struct ets = {static_cast<unsigned>(gui_->playing_side())};
 				return possible_end_play_signal(ets);
@@ -478,7 +477,7 @@ possible_end_play_signal playmp_controller::play_network_turn(){
 					//we received a player change/quit during waiting in get_user_choice/synced_context::pull_remote_user_input
 					return boost::none;
 				}
-				if (result == turn_info::PROCESS_RESTART_TURN || result == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL) {
+				if (result == turn_info::PROCESS_RESTART_TURN) {
 					player_type_changed_ = true;
 					return boost::none;
 				} else if (result == turn_info::PROCESS_END_TURN) {
@@ -627,7 +626,7 @@ void playmp_controller::pull_remote_choice()
 	turn_info::PROCESS_DATA_RESULT res = turn_data_.sync_network();
 	assert(res != turn_info::PROCESS_END_LINGER);
 	assert(res != turn_info::PROCESS_END_TURN);
-	if(res == turn_info::PROCESS_RESTART_TURN || res == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL )
+	if(res == turn_info::PROCESS_RESTART_TURN)
 	{
 		player_type_changed_ = true;
 	}

@@ -351,7 +351,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 						resources::gameboard->side_drop_to(side_drop, team::AI);
 						change_controller(side_drop, team::CONTROLLER_to_string(team::AI));
 					}
-					return restart ? PROCESS_RESTART_TURN_TEMPORARY_LOCAL : PROCESS_SIDE_TEMPORARY_LOCAL;
+					return restart ? PROCESS_RESTART_TURN : PROCESS_CONTINUE;
 				}
 				break;
 		}
