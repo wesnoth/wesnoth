@@ -989,6 +989,7 @@ void game::require_random(const simple_wml::document &data, const player_map::it
 {
 	// note, that during end turn events, it's side=1 for the server but side= side_count() on the clients.
 
+	// OUTDATED INFO:
 	// Currently the clients make sure that one "require random seed" is sended to the server per synced context.
 	// This is ensured becasue only the currently active player sends the "require random seed" the drawback is,
 	// that in the situation that another client was faster, he has to wait for the current player to get
@@ -1006,7 +1007,7 @@ void game::require_random(const simple_wml::document &data, const player_map::it
 		int context_id = (*require_random)["request_id"].to_int();
 		if(context_id <= last_synced_context_id_)
 		{
-			// We gave already a randpm seed for this synced context.
+			// We gave already a random seed for this synced context.
 			return;
 		}
 		LOG_GAME << "answering seed request " << context_id << " by player " << user->second.name() << "(" << user->first << ")" << std::endl;
