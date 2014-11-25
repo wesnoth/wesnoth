@@ -12,6 +12,8 @@ Version 1.12.0+dev:
      thus breaking localization of subsequent strings (bug #22962).
    * Fixed special _initial.cfg and _final.cfg file inclusion order not being
      honored by Windows builds using Boost.filesystem (bug #22967).
+   * Fixed dotfiles being included when {including} directories in WML, on
+     builds using the new filesystem code (regression introduced in 1.11.19).
 
 Version 1.12.0:
  * Language and i18n:
