@@ -23,7 +23,6 @@
 #include "game_config_manager.hpp"
 #include "log.hpp"
 #include "map.hpp"
-#include "resources.hpp"
 #include "terrain_translation.hpp"
 #include "terrain_type_data.hpp"
 #include "unit_types.hpp" // for attack_type
@@ -286,10 +285,8 @@ int movetype::terrain_info::data::calc_value(
 	}
 
 	tdata_cache tdata;
-	if (resources::gameboard) {
-		tdata = resources::gameboard->map().tdata();
-	} else if (resources::config_manager){
-		tdata = resources::config_manager->terrain_types(); //This permits to get terrain info in unit help pages from the help in title screen, even if there is no residual gamemap object
+	if (game_config_manager::get()){
+		tdata = game_config_manager::get()->terrain_types(); //This permits to get terrain info in unit help pages from the help in title screen, even if there is no residual gamemap object
 	}
 	assert(tdata);
 

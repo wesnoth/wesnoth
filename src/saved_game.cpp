@@ -38,7 +38,6 @@
 #include "carryover.hpp"
 #include "cursor.hpp"
 #include "log.hpp"
-#include "resources.hpp"
 #include "game_config_manager.hpp"
 #include "generators/map_create.hpp"
 #include "statistics.hpp"
@@ -196,8 +195,8 @@ void saved_game::expand_scenario()
 {
 	if(this->starting_pos_type_ == STARTINGPOS_NONE && !has_carryover_expanded_)
 	{
-		resources::config_manager->load_game_config_for_game(this->classification());
-		const config& game_config = resources::config_manager->game_config();
+		game_config_manager::get()->load_game_config_for_game(this->classification());
+		const config& game_config = game_config_manager::get()->game_config();
 		const config& scenario = game_config.find_child(lexical_cast_default<std::string>
 				(classification().campaign_type == game_classification::SCENARIO ?
 				 game_classification::MULTIPLAYER : classification().campaign_type),
@@ -265,7 +264,7 @@ void saved_game::expand_mp_events()
 
 		BOOST_FOREACH(modevents_entry& mod, mods)
 		{
-			if(const config& cfg = resources::config_manager->
+			if(const config& cfg = game_config_manager::get()->
 				game_config().find_child(mod.type, "id", mod.id))
 			{
 				BOOST_FOREACH(const config& modevent, cfg.child_range("event"))

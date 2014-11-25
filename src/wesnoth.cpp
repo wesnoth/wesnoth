@@ -42,7 +42,6 @@
 #include "preferences.hpp"              // for core_id, etc
 #include "preferences_display.hpp"      // for display_manager
 #include "replay.hpp"                   // for recorder, replay
-#include "resources.hpp"                // for config_manager
 #include "sdl/exception.hpp"            // for texception
 #include "serialization/binary_or_text.hpp"  // for config_writer
 #include "serialization/parser.hpp"     // for read
@@ -779,7 +778,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			int current = 0;
 			std::vector<config> cores;
 			BOOST_FOREACH(const config& core,
-					resources::config_manager->game_config().child_range("core")) {
+					game_config_manager::get()->game_config().child_range("core")) {
 				cores.push_back(core);
 				if (core["id"] == preferences::core_id())
 					current = cores.size() -1;

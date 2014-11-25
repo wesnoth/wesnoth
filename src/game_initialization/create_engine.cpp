@@ -27,7 +27,6 @@
 #include "generators/map_create.hpp"
 #include "map_exception.hpp"
 #include "minimap.hpp"
-#include "resources.hpp"
 #include "saved_game.hpp"
 #include "wml_separators.hpp"
 #include "wml_exception.hpp"
@@ -161,7 +160,7 @@ void scenario::set_metadata()
 	const std::string& map_data = data_["map_data"];
 
 	try {
-		map_.reset(new gamemap(resources::config_manager->terrain_types(),
+		map_.reset(new gamemap(game_config_manager::get()->terrain_types(),
 			map_data));
 	} catch(incorrect_map_format_error& e) {
 		data_["description"] = _("Map could not be loaded: ") + e.message;
@@ -405,7 +404,7 @@ create_engine::create_engine(game_display& disp, saved_game& state) :
 	mods_(),
 	state_(state),
 	disp_(disp),
-	dependency_manager_(resources::config_manager->game_config(), disp.video()),
+	dependency_manager_(game_config_manager::get()->game_config(), disp.video()),
 	generator_(NULL)
 {
 	DBG_MP << "restoring game config\n";
@@ -420,9 +419,9 @@ create_engine::create_engine(game_display& disp, saved_game& state) :
 	state_.mp_settings().show_connect = connect;
 
 	if (!(type == game_classification::SCENARIO &&
-			resources::config_manager->old_defines_map().count("TITLE_SCREEN") != 0))
+			game_config_manager::get()->old_defines_map().count("TITLE_SCREEN") != 0))
 	{
-		resources::config_manager->
+		game_config_manager::get()->
 			load_game_config_for_game(state_.classification());
 	}
 
@@ -442,7 +441,7 @@ create_engine::create_engine(game_display& disp, saved_game& state) :
 	state_.mp_settings().saved_game = false;
 
 	BOOST_FOREACH (const std::string& str, preferences::modifications()) {
-		if (resources::config_manager->
+		if (game_config_manager::get()->
 				game_config().find_child("modification", "id", str))
 			state_.mp_settings().active_mods.push_back(str);
 	}
@@ -524,11 +523,11 @@ void create_engine::prepare_for_new_level()
 void create_engine::prepare_for_era_and_mods()
 {
 	state_.classification().era_define =
-		resources::config_manager->game_config().find_child(
+		game_config_manager::get()->game_config().find_child(
 			"era", "id", get_parameters().mp_era)["define"].str();
 	BOOST_FOREACH(const std::string& mod_id, get_parameters().active_mods) {
 		state_.classification().mod_defines.push_back(
-				resources::config_manager->game_config().find_child(
+				game_config_manager::get()->game_config().find_child(
 					"modification", "id", mod_id)["define"].str());
 	}
 }
@@ -642,7 +641,7 @@ void create_engine::prepare_for_saved_game()
 {
 	DBG_MP << "preparing mp_game_settings for saved game\n";
 
-	resources::config_manager->load_game_config_for_game(state_.classification());
+	game_config_manager::get()->load_game_config_for_game(state_.classification());
 	//The save migh be a start-of-scenario save so make sure we have the scenario data loaded.
 	state_.expand_scenario();
 	state_.mp_settings().saved_game = true;
@@ -994,7 +993,7 @@ const mp_game_settings& create_engine::get_parameters()
 void create_engine::init_all_levels()
 {
 	if (const config &generic_multiplayer =
-		resources::config_manager->game_config().child(
+		game_config_manager::get()->game_config().child(
 			"generic_multiplayer")) {
 		config gen_mp_data = generic_multiplayer;
 
@@ -1011,7 +1010,7 @@ void create_engine::init_all_levels()
 			bool add_map = true;
 			boost::scoped_ptr<gamemap> map;
 			try {
-				map.reset(new gamemap(resources::config_manager->terrain_types(),
+				map.reset(new gamemap(game_config_manager::get()->terrain_types(),
 					user_map_data["map_data"]));
 			} catch (incorrect_map_format_error& e) {
 				user_map_data["description"] = _("Map could not be loaded: ") +
@@ -1069,7 +1068,7 @@ void create_engine::init_all_levels()
 
 	// Stand-alone scenarios.
 	BOOST_FOREACH(const config &data,
-		resources::config_manager->game_config().child_range(
+		game_config_manager::get()->game_config().child_range(
 		lexical_cast<std::string> (game_classification::MULTIPLAYER)))
 	{
 		if (!data["allow_new_game"].to_bool(true))
@@ -1088,7 +1087,7 @@ void create_engine::init_all_levels()
 
 	// Campaigns.
 	BOOST_FOREACH(const config &data,
-		resources::config_manager->game_config().child_range("campaign"))
+		game_config_manager::get()->game_config().child_range("campaign"))
 	{
 		const std::string& type = data["type"];
 		bool mp = state_.classification().campaign_type == game_classification::MULTIPLAYER;
@@ -1116,7 +1115,7 @@ void create_engine::init_extras(const MP_EXTRA extra_type)
 	const std::string extra_name = (extra_type == ERA) ? "era" : "modification";
 
 	BOOST_FOREACH(const config &extra,
-		resources::config_manager->game_config().child_range(extra_name)) {
+		game_config_manager::get()->game_config().child_range(extra_name)) {
 
 		extras_metadata_ptr new_extras_metadata(new extras_metadata());
 		new_extras_metadata->id = extra["id"].str();

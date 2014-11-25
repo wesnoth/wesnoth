@@ -42,6 +42,8 @@ public:
 	void load_game_config_for_editor();
 	void load_game_config_for_game(const game_classification& classification);
 
+	static game_config_manager * get();
+
 private:
 	game_config_manager(const game_config_manager&);
 	void operator=(const game_config_manager&);

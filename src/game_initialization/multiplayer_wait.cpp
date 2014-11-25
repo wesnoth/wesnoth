@@ -24,7 +24,6 @@
 #include "marked-up_text.hpp"
 #include "mp_game_utils.hpp"
 #include "multiplayer_wait.hpp"
-#include "resources.hpp"
 #include "statistics.hpp"
 #include "saved_game.hpp"
 #include "mp_ui_alerts.hpp"
@@ -208,7 +207,7 @@ wait::~wait()
 		state_ = saved_game();
 		state_.classification().campaign_type = game_classification::MULTIPLAYER;
 
-		resources::config_manager->
+		game_config_manager::get()->
 			load_game_config_for_game(state_.classification());
 	}
 	} catch (...) {}
@@ -235,15 +234,15 @@ void wait::join_game(bool observe)
 		state_ = saved_game();
 		state_.classification().campaign_type = game_classification::MULTIPLAYER;
 
-		const config* campaign = &resources::config_manager->
+		const config* campaign = &game_config_manager::get()->
 			game_config().find_child("campaign", "id",
 				level_.child("multiplayer")["mp_campaign"]);
 
-		const config* scenario = &resources::config_manager->
+		const config* scenario = &game_config_manager::get()->
 			game_config().find_child("multiplayer", "id",
 				level_.child(lexical_cast<std::string>(game_classification::MULTIPLAYER))["id"]);
 
-		const config* era = &resources::config_manager->
+		const config* era = &game_config_manager::get()->
 			game_config().find_child("era", "id", level_.child("era")["id"]);
 
 		if (*campaign) {
@@ -264,7 +263,7 @@ void wait::join_game(bool observe)
 				(*era)["define"].str();
 
 		BOOST_FOREACH(const config& mod, level_.child_range("modification")) {
-			const config* modification = &resources::config_manager->
+			const config* modification = &game_config_manager::get()->
 				game_config().find_child("modification", "id", mod["id"]);
 			if (*modification) {
 				state_.classification().mod_defines.push_back(
@@ -274,7 +273,7 @@ void wait::join_game(bool observe)
 
 
 		// Make sure that we have the same config as host, if possible.
-		resources::config_manager->
+		game_config_manager::get()->
 			load_game_config_for_game(state_.classification());
 	}
 

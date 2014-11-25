@@ -501,11 +501,11 @@ bool game_launcher::play_test()
 
 
 	
-	resources::config_manager->
+	game_config_manager::get()->
 		load_game_config_for_game(state_.classification());
 
 	try {
-		play_game(disp(),state_,resources::config_manager->game_config(), resources::config_manager->terrain_types());
+		play_game(disp(),state_,game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
 	} catch (game::load_game_exception &) {
 		return true;
 	}
@@ -533,11 +533,11 @@ int game_launcher::unit_test()
 	);
 
 
-	resources::config_manager->
+	game_config_manager::get()->
 		load_game_config_for_game(state_.classification());
 
 	try {
-		LEVEL_RESULT res = play_game(disp(),state_,resources::config_manager->game_config(), resources::config_manager->terrain_types(), IO_SERVER, false, false, false, true);
+		LEVEL_RESULT res = play_game(disp(),state_,game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), IO_SERVER, false, false, false, true);
 		if (!(res == VICTORY || res == NONE) || lg::broke_strict()) {
 			return 1;
 		}
@@ -572,13 +572,13 @@ int game_launcher::unit_test()
 	}
 
 	try {
-		//LEVEL_RESULT res = play_game(disp(), state_, resources::config_manager->game_config(), IO_SERVER, false,false,false,true);
-		LEVEL_RESULT res = ::play_replay(disp(), state_, resources::config_manager->game_config(), resources::config_manager->terrain_types(), true);
+		//LEVEL_RESULT res = play_game(disp(), state_, game_config_manager::get()->game_config(), IO_SERVER, false,false,false,true);
+		LEVEL_RESULT res = ::play_replay(disp(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), true);
 		if (!(res == VICTORY || res == NONE)) {
 			std::cerr << "Observed failure on replay" << std::endl;
 			return 4;
 		}
-		/*::play_replay(disp(),state_,resources::config_manager->game_config(),
+		/*::play_replay(disp(),state_,game_config_manager::get()->game_config(),
 		    video_);*/
 		clear_loaded_game();
 	} catch (game::load_game_exception &) {
@@ -598,11 +598,11 @@ bool game_launcher::play_screenshot_mode()
 		return true;
 	}
 
-	resources::config_manager->load_game_config_for_editor();
+	game_config_manager::get()->load_game_config_for_editor();
 
-	::init_textdomains(resources::config_manager->game_config());
+	::init_textdomains(game_config_manager::get()->game_config());
 
-	editor::start(resources::config_manager->game_config(), video_,
+	editor::start(game_config_manager::get()->game_config(), video_,
 	    screenshot_map_, true, screenshot_filename_);
 	return false;
 }
@@ -617,7 +617,7 @@ bool game_launcher::play_render_image_mode()
 	DBG_GENERAL << "Current campaign type: " << state_.classification().campaign_type << std::endl;
 
 	try {
-		resources::config_manager->
+		game_config_manager::get()->
 			load_game_config_for_game(state_.classification());
 	} catch(config::error& e) {
 		std::cerr << "Error loading game config: " << e.what() << std::endl;
@@ -644,11 +644,11 @@ bool game_launcher::is_loading() const
 
 bool game_launcher::load_game()
 {
-	assert(resources::config_manager);
+	assert(game_config_manager::get());
 
 	DBG_GENERAL << "Current campaign type: " << state_.classification().campaign_type << std::endl;
 
-	savegame::loadgame load(disp(), resources::config_manager->game_config(),
+	savegame::loadgame load(disp(), game_config_manager::get()->game_config(),
 	    state_);
 
 	try {
@@ -656,7 +656,7 @@ bool game_launcher::load_game()
 
 
 		try {
-			resources::config_manager->
+			game_config_manager::get()->
 				load_game_config_for_game(state_.classification());
 		} catch(config::error&) {
 			return false;
@@ -746,7 +746,7 @@ bool game_launcher::new_campaign()
 	state_.mp_settings().show_connect = false;
 	play_replay_ = false;
 
-	return sp::enter_create_mode(disp(), resources::config_manager->game_config(),
+	return sp::enter_create_mode(disp(), game_config_manager::get()->game_config(),
 		state_, jump_to_campaign_, true);
 }
 
@@ -887,7 +887,7 @@ bool game_launcher::play_multiplayer()
 
 		}
 
-		resources::config_manager->
+		game_config_manager::get()->
 			load_game_config_for_game(state_.classification());
 
 		events::discard_input(); // prevent the "keylogger" effect
@@ -895,7 +895,7 @@ bool game_launcher::play_multiplayer()
 
 		if(res == 3) {
 			mp::start_local_game(disp(),
-			    resources::config_manager->game_config(), state_);
+			    game_config_manager::get()->game_config(), state_);
 		} else if((res >= 0 && res <= 2) || res == 4) {
 			std::string host;
 			if(res == 0) {
@@ -906,7 +906,7 @@ bool game_launcher::play_multiplayer()
 				host = multiplayer_server_;
 				multiplayer_server_ = "";
 			}
-			mp::start_client(disp(), resources::config_manager->game_config(),
+			mp::start_client(disp(), game_config_manager::get()->game_config(),
 				state_, host);
 		}
 
@@ -960,14 +960,14 @@ bool game_launcher::play_multiplayer_commandline()
 	state_ = saved_game();
 	state_.classification().campaign_type = game_classification::MULTIPLAYER;
 
-	resources::config_manager->
+	game_config_manager::get()->
 		load_game_config_for_game(state_.classification());
 
 	events::discard_input(); // prevent the "keylogger" effect
 	cursor::set(cursor::NORMAL);
 
 	mp::start_local_game_commandline(disp(),
-	    resources::config_manager->game_config(), state_, cmdline_opts_);
+	    game_config_manager::get()->game_config(), state_, cmdline_opts_);
 
 	return false;
 }
@@ -995,7 +995,7 @@ void game_launcher::show_preferences()
 {
 	const preferences::display_manager disp_manager(&disp());
 	preferences::show_preferences_dialog(disp(),
-	    resources::config_manager->game_config());
+	    game_config_manager::get()->game_config());
 
 	disp().redraw_everything();
 }
@@ -1012,7 +1012,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 	loadscreen::start_stage("load data");
 	if(reload == RELOAD_DATA) {
 		try {
-			resources::config_manager->
+			game_config_manager::get()->
 				load_game_config_for_game(state_.classification());
 		} catch(config::error&) {
 			return;
@@ -1021,7 +1021,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 
 	try {
 		const LEVEL_RESULT result = play_game(disp(),state_,
-		    resources::config_manager->game_config(), resources::config_manager->terrain_types());
+		    game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
 		// don't show The End for multiplayer scenario
 		// change this if MP campaigns are implemented
 		if(result == VICTORY && state_.classification().campaign_type != game_classification::MULTIPLAYER) {
@@ -1043,8 +1043,8 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 void game_launcher::play_replay()
 {
 	try {
-		::play_replay(disp(),state_,resources::config_manager->game_config(),
-		    resources::config_manager->terrain_types());
+		::play_replay(disp(),state_,game_config_manager::get()->game_config(),
+		    game_config_manager::get()->terrain_types());
 
 		clear_loaded_game();
 	} catch (game::load_game_exception &) {
@@ -1057,17 +1057,17 @@ void game_launcher::play_replay()
 editor::EXIT_STATUS game_launcher::start_editor(const std::string& filename)
 {
 	while(true){
-		resources::config_manager->load_game_config_for_editor();
+		game_config_manager::get()->load_game_config_for_editor();
 
-		::init_textdomains(resources::config_manager->game_config());
+		::init_textdomains(game_config_manager::get()->game_config());
 
 		editor::EXIT_STATUS res = editor::start(
-		    resources::config_manager->game_config(), video_, filename);
+		    game_config_manager::get()->game_config(), video_, filename);
 
 		if(res != editor::EXIT_RELOAD_DATA)
 			return res;
 
-		resources::config_manager->reload_changed_game_config();
+		game_config_manager::get()->reload_changed_game_config();
 		image::flush_cache();
 	}
 	return editor::EXIT_ERROR; // not supposed to happen

@@ -22,7 +22,6 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "mp_options.hpp"
-#include "resources.hpp"
 #include "savegame.hpp"
 #include "tod_manager.hpp"
 #include "unit_id.hpp"
@@ -99,7 +98,7 @@ config initial_level_config(saved_game& state)
 	// Initialize the list of sides available for the current era.
 	// We also need this no not get a segfault in mp_connect for ai configuation
 	const config &era_cfg =
-		resources::config_manager->game_config().find_child("era", "id", era);
+		game_config_manager::get()->game_config().find_child("era", "id", era);
 	if (!era_cfg) {
 		if (!params.saved_game)
 		{
@@ -116,7 +115,7 @@ config initial_level_config(saved_game& state)
 	{
 		/*config& cfg = */level.add_child("era", era_cfg);
 
-		const config& custom_side = resources::config_manager->
+		const config& custom_side = game_config_manager::get()->
 			game_config().find_child("multiplayer_side", "id", "Custom");
 		level.child("era").add_child_at("multiplayer_side", custom_side, 0);
 
@@ -126,7 +125,7 @@ config initial_level_config(saved_game& state)
 	const std::vector<std::string>& mods = params.active_mods;
 	for (unsigned i = 0; i < mods.size(); i++) {
 		/*config& cfg = */level.add_child("modification",
-			resources::config_manager->
+			game_config_manager::get()->
 				game_config().find_child("modification", "id", mods[i]));
 	}
 

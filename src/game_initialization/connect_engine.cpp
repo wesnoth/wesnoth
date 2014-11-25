@@ -21,7 +21,6 @@
 #include "map.hpp"
 #include "multiplayer_ui.hpp"
 #include "mp_game_utils.hpp"
-#include "resources.hpp"
 #include "tod_manager.hpp"
 
 #include <boost/foreach.hpp>

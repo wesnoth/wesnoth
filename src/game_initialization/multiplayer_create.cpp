@@ -36,7 +36,6 @@
 #include "minimap.hpp"
 #include "multiplayer_create.hpp"
 #include "filesystem.hpp"
-#include "resources.hpp"
 #include "savegame.hpp"
 #include "log.hpp"
 #include "wml_exception.hpp"
@@ -264,7 +263,7 @@ void create::process_event()
 		try
 		{
 			savegame::loadgame load(disp_,
-				resources::config_manager->game_config(), engine_.get_state());
+				game_config_manager::get()->game_config(), engine_.get_state());
 			load.load_multiplayer_game();
 
 			engine_.prepare_for_saved_game();

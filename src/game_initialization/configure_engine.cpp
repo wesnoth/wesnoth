@@ -1,7 +1,6 @@
 #include "configure_engine.hpp"
 #include "formula_string_utils.hpp"
 #include "game_config_manager.hpp"
-#include "resources.hpp"
 #include "settings.hpp"
 
 #include <boost/foreach.hpp>
@@ -30,7 +29,7 @@ configure_engine::configure_engine(saved_game& state) :
 	set_use_map_settings(use_map_settings_default());
 
 	BOOST_FOREACH(const config& scenario,
-		resources::config_manager->game_config().child_range("multiplayer")) {
+		game_config_manager::get()->game_config().child_range("multiplayer")) {
 
 		if (!scenario["campaign_id"].empty() &&
 			(scenario["allow_new_game"].to_bool(true) || game_config::debug)) {

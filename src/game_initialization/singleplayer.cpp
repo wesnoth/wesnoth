@@ -115,7 +115,7 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 			return false;
 		}
 
-		configure_canceled = !enter_configure_mode(disp, resources::config_manager->game_config(),
+		configure_canceled = !enter_configure_mode(disp, game_config_manager::get()->game_config(),
 				state, jump_to_campaign, local_players_only);
 
 	} while (configure_canceled);

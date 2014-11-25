@@ -1434,8 +1434,8 @@ std::string escape(const std::string &s)
 tdata_cache load_terrain_types_data() {
 	if (display::get_singleton()) {
 		return display::get_singleton()->get_disp_context().map().tdata();
-	} else if (resources::config_manager){
-		return resources::config_manager->terrain_types();
+	} else if (game_config_manager::get()){
+		return game_config_manager::get()->terrain_types();
 	} else {
 		return tdata_cache();
 	}

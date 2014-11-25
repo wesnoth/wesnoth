@@ -46,7 +46,6 @@ namespace wb { class manager; } //whiteboard manager
 
 namespace resources
 {
-	extern game_config_manager    *config_manager;
 	extern play_controller        *controller;
 	extern game_board             *gameboard;
 	extern game_data              *gamedata;

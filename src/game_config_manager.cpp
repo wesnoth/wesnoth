@@ -27,7 +27,6 @@
 #include "loadscreen.hpp"
 #include "log.hpp"
 #include "preferences.hpp"
-#include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "terrain_builder.hpp"
 #include "terrain_type_data.hpp"
@@ -41,6 +40,8 @@ static lg::log_domain log_config("config");
 #define WRN_CONFIG LOG_STREAM(warn, log_config)
 #define LOG_CONFIG LOG_STREAM(info, log_config)
 
+static game_config_manager * singleton;
+
 game_config_manager::game_config_manager(
 		const commandline_options& cmdline_opts,
 		game_display& display,
@@ -53,7 +54,8 @@ game_config_manager::game_config_manager(
 	paths_manager_(),
 	cache_(game_config::config_cache::instance())
 {
-	resources::config_manager = this;
+	assert(!singleton);
+	singleton = this;
 
 	if(cmdline_opts_.nocache) {
 		cache_.set_use_cache(false);
@@ -65,7 +67,12 @@ game_config_manager::game_config_manager(
 
 game_config_manager::~game_config_manager()
 {
-	resources::config_manager = NULL;
+	assert(singleton);
+	singleton = NULL;
+}
+
+game_config_manager * game_config_manager::get() {
+	return singleton;
 }
 
 bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)

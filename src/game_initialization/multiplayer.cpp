@@ -39,11 +39,9 @@
 #include "multiplayer_lobby.hpp"
 #include "playcampaign.hpp"
 #include "playmp_controller.hpp"
-#include "resources.hpp"
 #include "settings.hpp"
 #include "sound.hpp"
 #include "unit_id.hpp"
-#include "resources.hpp"
 #include "game_config_manager.hpp"
 
 #include <boost/bind.hpp>
@@ -467,7 +465,7 @@ static void enter_wait_mode(game_display& disp, const config& game_config,
 
 	switch (res) {
 	case mp::ui::PLAY:
-		play_game(disp, state, game_config, resources::config_manager->terrain_types(), IO_CLIENT,
+		play_game(disp, state, game_config, game_config_manager::get()->terrain_types(), IO_CLIENT,
 			preferences::skip_mp_replay() && observe, true, preferences::blindfold_replay() && observe);
 		recorder.clear();
 
@@ -511,7 +509,7 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 
 	switch (res) {
 	case mp::ui::PLAY:
-		play_game(disp, state, game_config, resources::config_manager->terrain_types(), IO_SERVER, false,
+		play_game(disp, state, game_config, game_config_manager::get()->terrain_types(), IO_SERVER, false,
 			!local_players_only);
 		recorder.clear();
 
@@ -821,11 +819,11 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 		classification.campaign_type = game_classification::MULTIPLAYER;
 		classification.scenario_define = level_preload["define"].str();
 		classification.era_define = era_cfg_preload["define"].str();
-		resources::config_manager->load_game_config_for_game(classification);
+		game_config_manager::get()->load_game_config_for_game(classification);
 	}
 
-	const config& era_cfg = resources::config_manager->game_config().find_child("era", "id", parameters.mp_era);
-	const config& level = resources::config_manager->game_config().find_child("multiplayer", "id", parameters.name);
+	const config& era_cfg = game_config_manager::get()->game_config().find_child("era", "id", parameters.mp_era);
+	const config& level = game_config_manager::get()->game_config().find_child("multiplayer", "id", parameters.name);
 
 	if (cmdline_opts.multiplayer_side) {
 		for(std::vector<boost::tuple<unsigned int, std::string> >::const_iterator
@@ -893,7 +891,7 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 	unsigned int repeat = (cmdline_opts.multiplayer_repeat) ? *cmdline_opts.multiplayer_repeat : 1;
 	for(unsigned int i = 0; i < repeat; i++){
 		saved_game state_copy(state);
-		play_game(disp, state_copy, game_config, resources::config_manager->terrain_types(), IO_SERVER, false, false);
+		play_game(disp, state_copy, game_config, game_config_manager::get()->terrain_types(), IO_SERVER, false, false);
 	}
 	recorder.clear();
 }
