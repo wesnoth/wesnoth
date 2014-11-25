@@ -631,32 +631,6 @@ void playmp_controller::pull_remote_choice()
 	{
 		player_type_changed_ = true;
 	}
-	if(res == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL || res == turn_info::PROCESS_SIDE_TEMPORARY_LOCAL)
-	{
-		expected_controller_changes++;
-	}
-	//If we still expect controler changes we cannot return.
-	//Becasue we might get into the situation that we want to do a decision that has already been name on another client.
-	//FIXME: if the server failed to process a transfer_side this is an infinite loop.
-	//as a temporary fix we abort the loop if it runs too long.
-	time_t time_start = time(NULL);
-	while((expected_controller_changes != 0) && (difftime(time(NULL), time_start) < 20))
-	{
-		playsingle_controller::handle_generic_event("ai_user_interact");
-		res = turn_data_.sync_network();
-		assert(res != turn_info::PROCESS_END_LINGER);
-		assert(res != turn_info::PROCESS_END_TURN);
-		if(res == turn_info::PROCESS_RESTART_TURN)
-		{
-			expected_controller_changes--;
-		}
-		else if(res == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL || res == turn_info::PROCESS_SIDE_TEMPORARY_LOCAL)
-		{
-			expected_controller_changes++;
-		}
-		SDL_Delay(10);
-	}
-	turn_data_.send_data();
 }
 
 void playmp_controller::send_user_choice()

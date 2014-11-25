@@ -1003,7 +1003,7 @@ static std::map<int, config> get_user_choice_internal(const std::string &name, c
 			if(retv.find(side) == retv.end())
 			{
 				//and it is local
-				if((*resources::teams)[side-1].is_local())
+				if((*resources::teams)[side-1].is_local() && !(*resources::teams)[side-1].is_idle())
 				{
 					//then we have to make a local choice.
 					local_side = side;
