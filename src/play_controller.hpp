@@ -182,8 +182,8 @@ public:
 	boost::shared_ptr<wb::manager> get_whiteboard();
 	const mp_game_settings& get_mp_settings();
 	const game_classification & get_classification();
-	int get_synced_context_number() const { return synced_context_number_; }
-	void increase_synced_context_number() { ++synced_context_number_; }
+	int get_server_request_number() const { return server_request_number_; }
+	void increase_server_request_number() { ++server_request_number_; }
 
 	static const std::string wml_menu_hotkey_prefix;
 protected:
@@ -305,7 +305,7 @@ private:
 
 	hotkey::scope_changer scope_;
 	// used to sync with the mpserver, not persistent in savefiles.
-	int synced_context_number_;
+	int server_request_number_;
 
 };
 

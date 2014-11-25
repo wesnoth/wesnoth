@@ -985,7 +985,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 	return turn_ended;
 }
 
-void game::require_random(const simple_wml::document &data, const player_map::iterator /*user*/)
+void game::require_random(const simple_wml::document &data, const player_map::iterator user)
 {
 	// note, that during end turn events, it's side=1 for the server but side= side_count() on the clients.
 
@@ -1001,14 +1001,15 @@ void game::require_random(const simple_wml::document &data, const player_map::it
 
 	const simple_wml::node* require_random = data.root().child("require_random");
 	if(!require_random) return;
-	if(require_random->has_attr("context_id"))
+	if(require_random->has_attr("request_id"))
 	{
-		int context_id = (*require_random)["context_id"].to_int();
+		int context_id = (*require_random)["request_id"].to_int();
 		if(context_id <= last_synced_context_id_)
 		{
 			// We gave already a randpm seed for this synced context.
 			return;
 		}
+		LOG_GAME << "answering seed request " << context_id << " by player " << user->second.name() << "(" << user->first << ")" << std::endl;
 		last_synced_context_id_ = context_id;
 	}
 

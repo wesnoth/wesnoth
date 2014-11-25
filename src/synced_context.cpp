@@ -243,13 +243,14 @@ static void send_require_random()
 {
 	config data;
 	config& rr = data.add_child("require_random");
-	rr["context_id"] = resources::controller->get_synced_context_number();
+	rr["request_id"] = resources::controller->get_server_request_number();
 	network::send_data(data,0);		
 }
 
 
 config synced_context::ask_server_for_seed()
 {
+	resources::controller->increase_server_request_number();
 	std::string name = "random_seed";
 	assert(get_synced_state() == synced_context::SYNCED);
 	const bool is_mp_game = network::nconnections() != 0;
@@ -346,7 +347,6 @@ set_scontext_synced::set_scontext_synced(int number)
 */
 void set_scontext_synced::init()
 {
-	resources::controller->increase_synced_context_number();
 	LOG_REPLAY << "set_scontext_synced::set_scontext_synced\n";
 	assert(synced_context::get_synced_state() == synced_context::UNSYNCED);
 
