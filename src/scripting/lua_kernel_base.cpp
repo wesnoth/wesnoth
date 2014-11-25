@@ -17,6 +17,7 @@
 #include "global.hpp"
 
 #include "exceptions.hpp"
+#include "game_config.hpp"
 #include "game_errors.hpp"
 #include "log.hpp"
 #include "lua/lauxlib.h"
@@ -222,9 +223,7 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 
 	static luaL_Reg const callbacks[] = {
 		{ "compare_versions",         &intf_compare_versions         		},
-		{ "dofile",                   &lua_fileops::intf_dofile                 },
 		{ "have_file",                &lua_fileops::intf_have_file              },
-		{ "require",                  &lua_fileops::intf_require                },
 		{ "textdomain",               &lua_common::intf_textdomain   		},
 		{ "tovconfig",                &lua_common::intf_tovconfig		},
 		{ "get_dialog_value",         &lua_gui2::intf_get_dialog_value		},
@@ -235,12 +234,19 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 		{ "set_dialog_value",         &lua_gui2::intf_set_dialog_value		},
 		{ NULL, NULL }
 	};
+	lua_cpp::Reg const cpp_callbacks[] = {
+		{ "dofile", 		boost::bind(&lua_kernel_base::intf_dofile, this, _1)},
+		{ "require", 		boost::bind(&lua_kernel_base::intf_require, this, _1)},
+		{ "show_dialog",	boost::bind(&lua_kernel_base::intf_show_dialog, this, _1)},
+		{ NULL, NULL }
+	};
 
 	lua_getglobal(L, "wesnoth");
 	if (!lua_istable(L,-1)) {
 		lua_newtable(L);
 	}
 	luaL_setfuncs(L, callbacks, 0);
+	lua_cpp::set_functions(L, cpp_callbacks, 0);
 	lua_setglobal(L, "wesnoth");
 
 	// Override the print function
@@ -253,15 +259,6 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 	lua_cpp::lua_function my_print = boost::bind(&lua_kernel_base::intf_print, this, _1);
 	lua_cpp::push_closure(L, my_print, 0);
 	lua_setglobal(L, "print");
-
-	// Add the show_dialog function
-	cmd_log_ << "Adding dialog support...\n";
-
-	lua_getglobal(L, "wesnoth");
-	lua_cpp::lua_function show_dialog = boost::bind(&lua_kernel_base::intf_show_dialog, this, _1);
-	lua_cpp::push_closure(L, show_dialog, 0);
-	lua_setfield(L, -2, "show_dialog");
-	lua_pop(L,1);
 
 	// Create the package table.
 	lua_getglobal(L, "wesnoth");
@@ -303,7 +300,7 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 	cmd_log_ << "Loading ilua...\n";
 
 	lua_pushstring(L, "lua/ilua.lua");
-	int result = lua_fileops::intf_require(L);
+	int result = intf_require(L);
 	if (result == 1) {
 		//run "ilua.set_strict()"
 		lua_pushstring(L, "set_strict");
@@ -459,7 +456,55 @@ void lua_kernel_base::interactive_run(char const * prog) {
 	cmd_log_ << "$ " << prog << "\n";
 	protected_call(0, 0, eh);
 }
+/**
+ * Loads and executes a Lua file.
+ * - Arg 1: string containing the file name.
+ * - Ret *: values returned by executing the file body.
+ */
+int lua_kernel_base::intf_dofile(lua_State* L)
+{
+	if (lua_fileops::load_file(L) != 1) return 0;
+	//^ should end with the file contents loaded on the stack. actually it will call lua_error otherwise, the return 0 is redundant.
+	lua_call(L, 0, LUA_MULTRET);
+	return lua_gettop(L);
+}
 
+/**
+ * Loads and executes a Lua file, if there is no corresponding entry in wesnoth.package.
+ * Stores the result of the script in wesnoth.package and returns it.
+ * - Arg 1: string containing the file name.
+ * - Ret 1: value returned by the script.
+ */
+int lua_kernel_base::intf_require(lua_State* L)
+{
+	luaL_checkstring(L, 1);
+
+	// Check if there is already an entry.
+
+	luaW_getglobal(L, "wesnoth", NULL);
+	lua_pushstring(L, "package");
+	lua_rawget(L, -2);
+	lua_pushvalue(L, 1);
+	lua_rawget(L, -2);
+	if (!lua_isnil(L, -1) && !game_config::debug_lua) return 1;
+	lua_pop(L, 1);
+
+	if (lua_fileops::load_file(L) != 1) return 0;
+	//^ should end with the file contents loaded on the stack. actually it will call lua_error otherwise, the return 0 is redundant.
+
+	if (!protected_call(0, 1)) return 0;
+	//^ historically if wesnoth.require fails it just yields nil and some logging messages, not a lua error
+	// stack is now [packagename] [wesnoth] [package] [results]
+
+	lua_pushvalue(L, 1);
+	lua_pushvalue(L, -2);
+	// stack is now [packagename] [wesnoth] [package] [results] [packagename] [results]
+	// Add the return value to the table.
+
+	lua_settable(L, -4);
+	// stack is now [packagename] [wesnoth] [package] [results]
+	return 1;
+}
 /**
  * Loads the "package" package into the Lua environment.
  * This action is inherently unsafe, as Lua scripts will now be able to

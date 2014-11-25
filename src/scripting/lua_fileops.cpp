@@ -94,18 +94,16 @@ private:
 };
 
 /**
- * Loads and executes a Lua file.
+ * Loads a Lua file and pushes the contents on the stack.
  * - Arg 1: string containing the file name.
- * - Ret *: values returned by executing the file body.
+ * - Ret 1: the loaded contents of the file
  */
-int intf_dofile(lua_State *L)
+int load_file(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
 	std::string p = filesystem::get_wml_location(m);
 	if (p.empty())
 		return luaL_argerror(L, 1, "file not found");
-
-	lua_settop(L, 0);
 
 #if 1
 	try
@@ -122,71 +120,6 @@ int intf_dofile(lua_State *L)
 	if (luaL_loadfile(L, p.c_str()))
 		return lua_error(L);
 #endif
-
-	lua_call(L, 0, LUA_MULTRET);
-	return lua_gettop(L);
-}
-
-
-/**
- * Loads and executes a Lua file, if there is no corresponding entry in wesnoth.package.
- * Stores the result of the script in wesnoth.package and returns it.
- * - Arg 1: string containing the file name.
- * - Ret 1: value returned by the script.
- */
-int intf_require(lua_State *L)
-{
-	char const *m = luaL_checkstring(L, 1);
-
-	// Check if there is already an entry.
-
-	luaW_getglobal(L, "wesnoth", NULL);
-	lua_pushstring(L, "package");
-	lua_rawget(L, -2);
-	lua_pushvalue(L, 1);
-	lua_rawget(L, -2);
-	if (!lua_isnil(L, -1) && !game_config::debug_lua) return 1;
-	lua_pop(L, 1);
-
-
-	std::string p = filesystem::get_wml_location(m);
-	if (p.empty())
-		return luaL_argerror(L, 1, "file not found");
-
-	// Compile the file.
-
-#if 1
-	try
-	{
-		if(lua_filestream::lua_loadfile(L, p))
-			throw game::error(lua_tostring(L, -1));
-	}
-	catch(const std::exception & ex)
-	{
-		chat_message("Lua error", ex.what());
-		ERR_LUA << ex.what() << '\n';
-		return 0;
-	}
-#else
-	//oldcode to be deleted if newcode works
-
-	int res = luaL_loadfile(L, p.c_str());
-	if (res)
-	{
-		char const *m = lua_tostring(L, -1);
-		chat_message("Lua error", m);
-		ERR_LUA << m << '\n';
-		return 0;
-	}
-#endif
-
-	// Execute it.
-	if (!luaW_pcall(L, 0, 1)) return 0;
-
-	// Add the return value to the table.
-	lua_pushvalue(L, 1);
-	lua_pushvalue(L, -2);
-	lua_settable(L, -4);
 	return 1;
 }
 

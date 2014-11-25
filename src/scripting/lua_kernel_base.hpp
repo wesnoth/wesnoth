@@ -96,6 +96,12 @@ protected:
 
 	virtual bool protected_call(int nArgs, int nRets); 	// select default error handler polymorphically
 	virtual bool load_string(char const * prog);		// select default error handler polymorphically
+
+	// dofile (using lua_fileops)
+	int intf_dofile(lua_State * L);
+
+	// require (using lua_fileops, protected_call)
+	int intf_require(lua_State * L);
 };
 
 #endif
