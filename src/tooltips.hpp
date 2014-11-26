@@ -16,6 +16,7 @@
 #define TOOLTIPS_HPP_INCLUDED
 
 #include <string>
+#include "sdl/utils.hpp"
 
 class CVideo;
 struct SDL_Rect;
@@ -30,7 +31,7 @@ struct manager
 
 void clear_tooltips();
 void clear_tooltips(const SDL_Rect& rect);
-void add_tooltip(const SDL_Rect& rect, const std::string& message, const std::string& action ="", bool use_markup = true);
+void add_tooltip(const SDL_Rect& rect, const std::string& message, const std::string& action ="", bool use_markup = true, const surface& foreground = surface(NULL));
 void process(int mousex, int mousey);
 
 // Check if we clicked on a tooltip having an action.
