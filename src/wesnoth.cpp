@@ -42,6 +42,8 @@
 #include "preferences.hpp"              // for core_id, etc
 #include "preferences_display.hpp"      // for display_manager
 #include "replay.hpp"                   // for recorder, replay
+#include "scripting/application_lua_kernel.hpp"
+#include "scripting/plugins/manager.hpp"
 #include "sdl/exception.hpp"            // for texception
 #include "serialization/binary_or_text.hpp"  // for config_writer
 #include "serialization/parser.hpp"     // for read
@@ -631,6 +633,8 @@ static int do_gameloop(const std::vector<std::string>& args)
 	loadscreen::start_stage("titlescreen");
 
 	LOG_CONFIG << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
+
+	plugins_manager plugins(new application_lua_kernel(&game->disp().video()));
 
 	for (;;)
 	{

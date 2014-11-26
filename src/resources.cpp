@@ -23,7 +23,6 @@ namespace resources
 	filter_context	     *filter_con = NULL;
 	game_events::manager *game_events = NULL;
 	game_lua_kernel            *lua_kernel = NULL;
-	application_lua_kernel *app_lua_kernel = NULL;
 	persist_manager      *persist = NULL;
 	game_display         *screen = NULL;
 	soundsource::manager *soundsources = NULL;

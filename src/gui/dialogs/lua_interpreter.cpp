@@ -31,7 +31,7 @@
 #include "game_errors.hpp"
 #include "gettext.hpp"
 #include "resources.hpp" //for help fetching lua kernel pointers
-#include "scripting/application_lua_kernel.hpp" //needed for the WHICH_KERNEL version of display
+#include "scripting/plugins/manager.hpp" //needed for the WHICH_KERNEL version of display
 #include "scripting/game_lua_kernel.hpp"	//needed for the WHICH_KERNEL version of display
 #include "scripting/lua_kernel_base.hpp"
 #include "serialization/string_utils.hpp"
@@ -646,7 +646,7 @@ void tlua_interpreter::display(CVideo& video, lua_kernel_base * lk) {
 /** Helper function to assist those callers which don't want to include resources.hpp */
 void tlua_interpreter::display(CVideo& video, tlua_interpreter::WHICH_KERNEL which) {
 	if (which == tlua_interpreter::APP) {
-		display(video, resources::app_lua_kernel);
+		display(video, plugins_manager::get()->get_kernel_base());
 	} else if (which == tlua_interpreter::GAME) {
 		display(video, resources::lua_kernel);
 	}

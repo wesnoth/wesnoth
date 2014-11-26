@@ -149,6 +149,7 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 		{ "table",  luaopen_table  },
 		{ "string", luaopen_string },
 		{ "math",   luaopen_math   },
+		{ "coroutine",   luaopen_coroutine   },
 		{ "debug",  luaopen_debug  },
 		{ "os",     luaopen_os     },
 		{ NULL, NULL }
