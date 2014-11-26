@@ -118,7 +118,7 @@ enum LABEL_SCROLL_MODE { ANCHOR_LABEL_SCREEN, ANCHOR_LABEL_MAP };
 class floating_label
 {
 public:
-	floating_label(const std::string& text);
+	floating_label(const std::string& text, const surface& surface = NULL);
 
 	void set_font_size(int font_size) {font_size_ = font_size;}
 
