@@ -32,8 +32,11 @@ public:
 	typedef boost::function<bool(config)> callback_function;
 	typedef struct { char const * name; callback_function func; } Reg;
 
+	typedef boost::function<config(void)> accessor_function;
+	typedef struct { char const * name; accessor_function func; } aReg;
+
 	plugins_context( const std::string & name );
-	plugins_context( const std::string & name, const Reg * callbacks);
+	plugins_context( const std::string & name, const Reg * callbacks, const aReg * accessors);
 
 	void play_slice();
 
@@ -41,11 +44,18 @@ public:
 	size_t erase_callback(const std::string & name);
 	size_t clear_callbacks();
 
-	//friend class plugins_manager;
+	void set_accessor(const std::string & name, accessor_function);
+	size_t erase_accessor(const std::string & name);
+	size_t clear_accessors();
+
 	friend class application_lua_kernel;
 
 private:
-	std::map<std::string, callback_function > callbacks_;
+	typedef std::map<std::string, callback_function > callback_list;
+	typedef std::map<std::string, accessor_function > accessor_list;
+
+	callback_list callbacks_;
+	accessor_list accessors_;
 	std::string name_;
 };
 

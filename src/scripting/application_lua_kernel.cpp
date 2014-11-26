@@ -196,6 +196,16 @@ static int impl_context_backend(lua_State * L, boost::shared_ptr<lua_context_bac
 	return 0;
 }
 
+static int impl_context_accessor(lua_State * L, boost::shared_ptr<lua_context_backend> backend, plugins_context::accessor_function func)
+{
+	if (!backend->valid) {
+		luaL_error(L , "Error, you tried to use an invalid context object in a lua thread");
+	}
+
+	luaW_pushconfig(L, func());
+	return 1;
+}
+
 application_lua_kernel::request_list application_lua_kernel::thread::run_script(const plugins_context & ctxt, const std::vector<plugins_manager::event> & queue)
 {
 	// There are two possibilities: (1) this is the first execution, and the C function is the only thing on the stack
@@ -222,8 +232,21 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 		lua_settable(T_, -3);
 	}
 
-	// Now we resume the function, calling the coroutine with the two arguments.
-	lua_resume(T_, NULL, 2);
+	// Now we have to create the info object (context accessors). It is arranged as a table of boost functions.
+	lua_newtable(T_); // this will be the info table
+	lua_pushstring(T_, "name");
+	lua_pushstring(T_, ctxt.name_.c_str());
+	lua_settable(T_, -3);
+	BOOST_FOREACH( const plugins_context::accessor_list::value_type & v, ctxt.accessors_) {
+		const std::string & key = v.first;
+		const plugins_context::accessor_function & func = v.second;
+		lua_pushstring(T_, key.c_str());
+		lua_cpp::push_function(T_, boost::bind(&impl_context_accessor, _1, this_context_backend, func));
+		lua_settable(T_, -3);
+	}
+
+	// Now we resume the function, calling the coroutine with the three arguments (events, context, info).
+	lua_resume(T_, NULL, 3);
 
 	started_ = true;
 
