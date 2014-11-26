@@ -68,6 +68,7 @@ install:
 script: 
     - if [ "$CHECK_UTF8" = true ]; then time ./utils/travis/check_utf8.sh; fi
     - time ./utils/travis/utf8_bom_dog.sh
+    - $CXX --version
     - echo "*Params* --- " "cxxtool=$CXX --debug=time build=release extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=$STRICT_COMPILATION $TARGETS cxx0x=$CXX11 nls=$NLS"
     - scons cxxtool=$CXX --debug=time build=release extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=$STRICT_COMPILATION $TARGETS cxx0x=$CXX11 nls=$NLS
     - "export DISPLAY=:99.0"
