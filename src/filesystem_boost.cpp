@@ -484,14 +484,14 @@ void set_user_data_dir(std::string newprefdir)
 		//allow absolute path override
 		user_data_dir = newprefdir;
 	} else {
-		typedef BOOL (WINAPI *SHGSFPAddress)(HWND, LPSTR, int, BOOL);
-		SHGSFPAddress SHGetSpecialFolderPathA;
+		typedef BOOL (WINAPI *SHGSFPAddress)(HWND, LPWSTR, int, BOOL);
+		SHGSFPAddress SHGetSpecialFolderPathW;
 		HMODULE module = LoadLibraryA("shell32");
-		SHGetSpecialFolderPathA = reinterpret_cast<SHGSFPAddress>(GetProcAddress(module, "SHGetSpecialFolderPathA"));
-		if(SHGetSpecialFolderPathA) {
+		SHGetSpecialFolderPathW = reinterpret_cast<SHGSFPAddress>(GetProcAddress(module, "SHGetSpecialFolderPathW"));
+		if(SHGetSpecialFolderPathW) {
 			LOG_FS << "Using SHGetSpecialFolderPath to find My Documents\n";
-			char my_documents_path[MAX_PATH];
-			if(SHGetSpecialFolderPathA(NULL, my_documents_path, 5, 1)) {
+			wchar_t my_documents_path[MAX_PATH];
+			if(SHGetSpecialFolderPathW(NULL, my_documents_path, 5, 1)) {
 				path mygames_path = path(my_documents_path) / "My Games";
 				create_directory_if_missing(mygames_path);
 				user_data_dir = mygames_path / newprefdir;
