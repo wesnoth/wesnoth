@@ -107,13 +107,6 @@ private:
 							const battle_context_unit_stats& stats,
 								const battle_context_unit_stats& opp_stats,
 								surface& surf, int& width, int& height);
-
-	// This method blends a RGB color. The method takes as input a surface,
-	// the RGB color to blend and a value specifying how much blending to
-	// apply. The blended color is returned. Caution: if you use a
-	// transparent color, make sure the resulting color is not equal to the
-	// transparent color.
-	Uint32 blend_rgb(const surface& surf, unsigned char r, unsigned char g, unsigned char b, unsigned char drop);
 };
 
 // This class is used when the user clicks on the button

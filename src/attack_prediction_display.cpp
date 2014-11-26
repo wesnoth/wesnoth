@@ -505,16 +505,16 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 		int bar_len = std::max<int>(static_cast<int>((prob * (bar_space - 4)) + 0.5), 2);
 
 		SDL_Rect bar_rect_1 = sdl::create_rect(hp_sep + 4, 6 + (fs + 2) * i, bar_len, 8);
-		sdl::fill_rect(surf, &bar_rect_1, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 100));
+		sdl::fill_rect(surf, &bar_rect_1, blend_rgba(surf, row_color.r, row_color.g, row_color.b, row_color.unused, 100));
 
 		SDL_Rect bar_rect_2 = sdl::create_rect(hp_sep + 4, 7 + (fs + 2) * i, bar_len, 6);
-		sdl::fill_rect(surf, &bar_rect_2, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 66));
+		sdl::fill_rect(surf, &bar_rect_2, blend_rgba(surf, row_color.r, row_color.g, row_color.b, row_color.unused, 66));
 
 		SDL_Rect bar_rect_3 = sdl::create_rect(hp_sep + 4, 8 + (fs + 2) * i, bar_len, 4);
-		sdl::fill_rect(surf, &bar_rect_3, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 33));
+		sdl::fill_rect(surf, &bar_rect_3, blend_rgba(surf, row_color.r, row_color.g, row_color.b, row_color.unused, 33));
 
 		SDL_Rect bar_rect_4 = sdl::create_rect(hp_sep + 4, 9 + (fs + 2) * i, bar_len, 2);
-		sdl::fill_rect(surf, &bar_rect_4, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 0));
+		sdl::fill_rect(surf, &bar_rect_4, blend_rgba(surf, row_color.r, row_color.g, row_color.b, row_color.unused, 0));
 
 		// Draw probability percentage, aligned right.
 		format_prob(str_buf, prob);
@@ -522,16 +522,6 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 		font::draw_text_line(surf, clip_rect, fs, font::NORMAL_COLOR, str_buf,
 						 width - prob_width - 4, 2 + (fs + 2) * i, 0, TTF_STYLE_NORMAL);
 	}
-}
-
-Uint32 battle_prediction_pane::blend_rgb(const surface& surf, unsigned char r, unsigned char g, unsigned char b, unsigned char drop)
-{
-	// We simply decrement each component.
-	if(r < drop) r = 0; else r -= drop;
-	if(g < drop) g = 0; else g -= drop;
-	if(b < drop) b = 0; else b -= drop;
-
-	return SDL_MapRGB(surf->format, r, g, b);
 }
 
 attack_prediction_displayer::RESULT attack_prediction_displayer::button_pressed(int selection)
