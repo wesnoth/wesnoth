@@ -3309,6 +3309,7 @@ void menu_handler::user_command()
 void menu_handler::request_control_change ( int side_num, const std::string& player )
 {
 	std::string side = str_cast(side_num);
+	int current_side = resources::controller->current_side();
 	if (teams_[side_num - 1].is_local_human() && player == preferences::login()) {
 		//this is already our side.
 		return;
@@ -3316,7 +3317,10 @@ void menu_handler::request_control_change ( int side_num, const std::string& pla
 		//the server thinks this is already our side, he will reject change_controller.
 		LOG_NG << " *** Got an idle side with requested control change " << std::endl;
 		teams_[side_num - 1].make_human();
-		throw end_turn_exception(side_num);
+		// we dont want to restart it, if it isn't the current turn.
+		if(current_side == side_num) {
+			throw end_turn_exception(side_num);
+		}
 	} else {
 		//The server will (or won't becasue we aren't allowed to change the controller)
 		//send us a [change_controller] back, which we then hndle in playturn.cpp 
