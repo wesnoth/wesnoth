@@ -811,6 +811,10 @@ possible_end_play_signal playsingle_controller::play_side()
 									s = gui_->playing_side();
 								update_gui_to_player(s-1);
 							}
+							else {
+								//This side was previously not human controlled.
+								update_gui_to_player(player_number_ - 1);
+							}
 						}
 				}
 			}
