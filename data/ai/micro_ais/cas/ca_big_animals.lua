@@ -23,11 +23,14 @@ function ca_big_animals:execution(ai, cfg)
     -- and attack whatever is in their range (except for some units that they avoid)
 
     local big_animals = get_big_animals(cfg)
-    local avoid_map = LS.of_pairs(wesnoth.get_locations { radius = 1,
-        { "filter", { { "and", cfg.avoid_unit },
-            { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
-        } }
-    })
+    local avoid_map = LS.create()
+    if cfg.avoid_unit then
+        avoid_map = LS.of_pairs(wesnoth.get_locations { radius = 1,
+            { "filter", { { "and", cfg.avoid_unit },
+                { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
+            } }
+        })
+    end
 
     for _,unit in ipairs(big_animals) do
         local goal = MAIUV.get_mai_unit_variables(unit, cfg.ai_id)
