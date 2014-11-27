@@ -62,6 +62,7 @@
 #include "ai/lua/unit_advancements_aspect.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/make_shared.hpp>
 
 //#ifdef _WIN32
 //#include "locale.h"
