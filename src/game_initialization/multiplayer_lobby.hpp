@@ -205,6 +205,25 @@ private:
 	std::map<std::string,std::string> minimaps_;
 
 	std::string search_string_;
+
+	struct process_event_data {
+		bool join;
+		bool observe;
+		bool create;
+		bool quit;
+
+		process_event_data()
+			: join(false), observe(false), create(false), quit(false)
+		{}
+
+		process_event_data(bool j, bool o, bool c, bool q)
+			: join(j), observe(o), create(c), quit(q)
+		{}
+	};
+
+	// This is added to make it easier for plugins to trigger events, and to separate some of the "controller" from the internal logic
+	void process_event_impl(const process_event_data &);
+	bool plugin_event_helper(const process_event_data &);
 };
 
 } // end namespace mp

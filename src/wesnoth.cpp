@@ -43,6 +43,7 @@
 #include "preferences_display.hpp"      // for display_manager
 #include "replay.hpp"                   // for recorder, replay
 #include "scripting/application_lua_kernel.hpp"
+#include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
 #include "sdl/exception.hpp"            // for texception
 #include "serialization/binary_or_text.hpp"  // for config_writer
@@ -537,6 +538,14 @@ static void handle_lua_script_args(game_launcher * game, commandline_options & c
 }
 
 /**
+ * Handles when a plugin requests to close the program.
+ */
+static bool safe_exit_wrapper(config c) {
+	safe_exit(c["code"].to_int(0));
+	return false;
+}
+
+/**
  * Setups the game environment and enters
  * the titlescreen or game loops.
  */
@@ -634,7 +643,19 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	LOG_CONFIG << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
 
-	plugins_manager plugins(new application_lua_kernel(&game->disp().video()));
+	plugins_manager plugins_man(new application_lua_kernel(&game->disp().video()));
+
+	plugins_context::Reg const callbacks[] = {
+		{ "play_multiplayer",		boost::bind(&game_launcher::play_multiplayer, game.get())},
+		{ "exit",			plugins_context::callback_function(&safe_exit_wrapper)},
+		{ NULL, NULL }
+	};
+	plugins_context::aReg const accessors[] = {
+		{ "command_line",		boost::bind(&commandline_options::to_config, &cmdline_opts)},
+		{ NULL, NULL }
+	};
+
+	plugins_context plugins("titlescreen", callbacks, accessors);
 
 	for (;;)
 	{
@@ -662,6 +683,8 @@ static int do_gameloop(const std::vector<std::string>& args)
 		loadscreen_manager.reset();
 
 		handle_lua_script_args(&*game,cmdline_opts);
+
+		plugins.play_slice();
 
 		if(cmdline_opts.unit_test) {
 			if(cmdline_opts.timeout) {

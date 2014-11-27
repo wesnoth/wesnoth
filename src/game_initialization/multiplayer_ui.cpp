@@ -189,7 +189,8 @@ ui::ui(game_display& disp, const std::string& title, const config& cfg, chat& c,
 
 	result_(CONTINUE),
 	gamelist_refresh_(false),
-	lobby_clock_(0)
+	lobby_clock_(0),
+	plugins_context_(NULL)
 {
 	const SDL_Rect area = sdl::create_rect(0
 			, 0
@@ -709,6 +710,10 @@ void ui::append_to_title(const std::string& text) {
 const gui::label& ui::title() const
 {
 	return title_;
+}
+
+plugins_context * ui::get_plugins_context() {
+	return plugins_context_.get();
 }
 
 }// namespace mp

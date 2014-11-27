@@ -41,6 +41,7 @@ public:
 	void play_slice();
 
 	void set_callback(const std::string & name, callback_function);
+	void set_callback(const std::string & name, boost::function<void(config)> function, bool preserves_context);
 	size_t erase_callback(const std::string & name);
 	size_t clear_callbacks();
 

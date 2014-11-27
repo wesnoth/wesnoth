@@ -18,6 +18,7 @@
 
 #include <assert.h>
 #include <utility>
+#include <boost/bind.hpp>
 
 plugins_context::plugins_context(const std::string & name)
 	: callbacks_()
@@ -76,4 +77,15 @@ void plugins_context::play_slice()
 {
 	assert(plugins_manager::get());
 	plugins_manager::get()->play_slice(*this);
+}
+
+static bool shim(config cfg, boost::function<void(config)> func, bool return_value)
+{
+	func(cfg);
+	return return_value;
+}
+
+void plugins_context::set_callback(const std::string & name, boost::function<void(config)> func, bool preserves_context)
+{
+	set_callback(name, boost::bind(shim, _1, func, preserves_context));
 }

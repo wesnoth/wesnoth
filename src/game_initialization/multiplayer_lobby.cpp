@@ -36,6 +36,7 @@
 #include "terrain_type_data.hpp"
 
 #include <cassert>
+#include <boost/bind.hpp>
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 
@@ -922,6 +923,24 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 
 	gamelist_updated();
 	sound::play_music_repeatedly(game_config::lobby_music);
+
+	//A shim to assist in retrieving config attribute values
+	boost::function< const std::string & ( const config & , const std::string & ) > get_str = 
+		boost::bind(&config::attribute_value::str,
+			boost::bind(static_cast<const config::attribute_value &(config::*)(const std::string &) const>(&config::operator[]) , _1, _2));
+
+	plugins_context_.reset(new plugins_context("Multiplayer Lobby"));
+
+	//These structure initializers create a lobby::process_data_event
+	plugins_context_->set_callback("join", 		boost::bind(&lobby::plugin_event_helper, this, process_event_data (true, false, false, false)));
+	plugins_context_->set_callback("observe", 	boost::bind(&lobby::plugin_event_helper, this, process_event_data (false, true, false, false)));
+	plugins_context_->set_callback("create", 	boost::bind(&lobby::plugin_event_helper, this, process_event_data (false, false, true, false)));
+	plugins_context_->set_callback("quit", 		boost::bind(&lobby::plugin_event_helper, this, process_event_data (false, false, false, true)));
+	plugins_context_->set_callback("chat",		boost::bind(&lobby::send_chat_message, this, boost::bind(get_str, _1, "message"), false),	true);
+	plugins_context_->set_callback("select_game",	boost::bind(&gamebrowser::select_game, &(this->games_menu_), boost::bind(get_str, _1, "id")),	true);
+
+	plugins_context_->set_accessor("game_list",	boost::bind(&lobby::gamelist, this));
+	plugins_context_->set_accessor("game_config",	boost::bind(&lobby::game_config, this));
 }
 
 void lobby::hide_children(bool hide)
@@ -997,11 +1016,23 @@ void lobby::gamelist_updated(bool silent)
 
 void lobby::process_event()
 {
+	process_event_data data;
+	data.join 		= join_game_.pressed();
+	data.observe		= observe_game_.pressed();
+	data.create		= create_game_.pressed();
+	data.quit		= quit_game_.pressed();
+
+	process_event_impl(data);
+}
+
+// The return value should be true if the gui result was not chnaged
+void lobby::process_event_impl(const process_event_data & data)
+{
 	join_game_.enable(games_menu_.selection_is_joinable());
 	observe_game_.enable(games_menu_.selection_is_observable());
 
-	const bool observe = (observe_game_.pressed() || (games_menu_.selected() && !games_menu_.selection_is_joinable())) && games_menu_.selection_is_observable();
-	const bool join = (join_game_.pressed() || games_menu_.selected()) && games_menu_.selection_is_joinable();
+	const bool observe = (data.observe || (games_menu_.selected() && !games_menu_.selection_is_joinable())) && games_menu_.selection_is_observable();
+	const bool join = (data.join || games_menu_.selected()) && games_menu_.selection_is_joinable();
 	games_menu_.reset_selection();
 	preferences::set_skip_mp_replay(replay_options_.selected() == 1);
 	preferences::set_blindfold_replay(replay_options_.selected() == 2);
@@ -1062,7 +1093,7 @@ void lobby::process_event()
 		return;
 	}
 
-	if(create_game_.pressed()) {
+	if(data.create) {
 		set_result(CREATE);
 		return;
 	}
@@ -1072,7 +1103,7 @@ void lobby::process_event()
 		return;
 	}
 
-	if(quit_game_.pressed()) {
+	if(data.quit) {
 		set_result(QUIT);
 		return;
 	}
@@ -1118,6 +1149,12 @@ void lobby::process_event()
 	    gamelist_updated();
 	}
 
+}
+
+bool lobby::plugin_event_helper(const process_event_data & data)
+{
+	process_event_impl(data);
+	return get_result() == mp::ui::CONTINUE;
 }
 
 void lobby::process_network_data(const config& data, const network::connection sock)
