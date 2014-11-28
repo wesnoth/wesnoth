@@ -1,5 +1,6 @@
 local LS = wesnoth.require "lua/location_set.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local H = wesnoth.require "lua/helper.lua"
 
 local function get_lurker(cfg)
     -- We simply pick the first of the lurkers, they have no strategy
@@ -58,6 +59,8 @@ function ca_lurkers:execution(ai, cfg)
 
             AH.movefull_stopunit(ai, lurker, dst[rand])
             if (not lurker) or (not lurker.valid) then return end
+            if (not target) or (not target.valid) then return end
+            if (H.distance_between(lurker.x, lurker.y, target.x, target.y) ~= 1) then return end
 
             AH.checked_attack(ai, lurker, target)
             return
