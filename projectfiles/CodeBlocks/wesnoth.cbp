@@ -39,6 +39,8 @@
 			<Add option="-DHAVE_PYTHON" />
 			<Add option="-DUSE_GZIP" />
 			<Add option="-D_WIN32_WINDOWS" />
+			<Add option="-D_WIN32_WINNT=0x0501" />
+			<Add option="-DDWINVER=0x0501" />
 			<Add directory="..\..\src" />
 			<Add directory="..\..\src\sdl_ttf" />
 			<Add directory="..\..\src\serialization" />
@@ -57,7 +59,6 @@
 			<Add library="SDL_ttf" />
 			<Add library="freetype" />
 			<Add library="intl" />
-			<Add library="z" />
 			<Add library="ws2_32" />
 			<Add library="pango-1.0" />
 			<Add library="pangocairo-1.0" />
@@ -66,13 +67,14 @@
 			<Add library="fontconfig" />
 			<Add library="libglib-2.0" />
 			<Add library="liblua" />
-			<Add library="libboost_iostreams-mgw45-mt-1_46_1" />
-			<Add library="libboost_program_options-mgw45-mt-1_46_1" />
-			<Add library="libboost_regex-mgw45-mt-1_46_1" />
-			<Add library="libboost_system-mgw45-mt-1_46_1" />
-			<Add library="libboost_thread-mgw45-mt-1_46_1" />
-			<Add library="libz.dll" />
-			<Add library="libbz2" />
+			<Add library="libboost_filesystem-mgw45-mt-1_57.a" />
+			<Add library="libboost_iostreams-mgw45-mt-1_57.a" />
+			<Add library="libboost_locale-mgw45-mt-1_57.a" />
+			<Add library="libboost_program_options-mgw45-mt-1_57.a" />
+			<Add library="libboost_regex-mgw45-mt-1_57.a" />
+			<Add library="libboost_system-mgw45-mt-1_57.a" />
+			<Add library="libboost_zlib-mgw45-mt-1_57.a" />
+			<Add library="libboost_bzip2-mgw45-mt-1_57.a" />
 			<Add directory=".\" />
 		</Linker>
 		<Unit filename="..\..\packaging\windows\wesnoth.rc">
@@ -292,8 +294,8 @@
 		<Unit filename="..\..\src\exceptions.hpp" />
 		<Unit filename="..\..\src\filechooser.cpp" />
 		<Unit filename="..\..\src\filechooser.hpp" />
-		<Unit filename="..\..\src\filesystem.cpp" />
 		<Unit filename="..\..\src\filesystem.hpp" />
+		<Unit filename="..\..\src\filesystem_boost.cpp" />
 		<Unit filename="..\..\src\filesystem_common.cpp" />
 		<Unit filename="..\..\src\filesystem_win32.ii" />
 		<Unit filename="..\..\src\flg_manager.cpp" />
@@ -363,8 +365,8 @@
 		<Unit filename="..\..\src\generators\mapgen_dialog.hpp" />
 		<Unit filename="..\..\src\generic_event.cpp" />
 		<Unit filename="..\..\src\generic_event.hpp" />
-		<Unit filename="..\..\src\gettext.cpp" />
 		<Unit filename="..\..\src\gettext.hpp" />
+		<Unit filename="..\..\src\gettext_boost.cpp" />
 		<Unit filename="..\..\src\global.hpp" />
 		<Unit filename="..\..\src\gui\auxiliary\canvas.cpp" />
 		<Unit filename="..\..\src\gui\auxiliary\canvas.hpp" />
