@@ -110,6 +110,24 @@ int lua_kernel_base::intf_show_dialog(lua_State *L)
 	return lua_gui2::show_dialog(L, *video_);
 }
 
+// The show lua console callback is similarly a method of lua kernel
+int lua_kernel_base::intf_show_lua_console(lua_State *L)
+{
+	if (!video_) {
+		ERR_LUA << "Cannot show dialog, no video object is available to this lua kernel.";
+		lua_error(L);
+		return 0;
+	}
+
+	if (cmd_log_.external_log_ != NULL) {
+		std::string message = "There is already an external logger attached to this lua kernel, you cannot open the lua console right now.";
+		log_error(message.c_str());
+		cmd_log_ << message << "\n";
+		return 0;
+	}
+
+	return lua_gui2::show_lua_console(L, *video_, this);
+}
 
 // End Callback implementations
 
@@ -238,6 +256,7 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 		{ "dofile", 		boost::bind(&lua_kernel_base::intf_dofile, this, _1)},
 		{ "require", 		boost::bind(&lua_kernel_base::intf_require, this, _1)},
 		{ "show_dialog",	boost::bind(&lua_kernel_base::intf_show_dialog, this, _1)},
+		{ "show_lua_console",	boost::bind(&lua_kernel_base::intf_show_lua_console, this, _1)},
 		{ NULL, NULL }
 	};
 

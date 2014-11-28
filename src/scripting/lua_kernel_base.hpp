@@ -89,6 +89,9 @@ protected:
 	// Show a dialog to the currently connected video object (if available)
 	int intf_show_dialog(lua_State * L);
 
+	// Show the interactive lua console (for debugging purposes)
+	int intf_show_lua_console(lua_State * L);
+
 	// Execute a protected call. Error handler is called in case of an error, using syntax for log_error and throw_exception above. Returns true if successful.
 	bool protected_call(int nArgs, int nRets, error_handler);
 	// Load a string onto the stack as a function. Returns true if successful, error handler is called if not.
