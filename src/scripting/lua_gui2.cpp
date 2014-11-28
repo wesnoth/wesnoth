@@ -16,6 +16,7 @@
 
 #include "gui/auxiliary/canvas.hpp"     // for tcanvas
 #include "gui/auxiliary/window_builder.hpp"  // for twindow_builder, etc
+#include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/widgets/clickable.hpp"    // for tclickable_
 #include "gui/widgets/control.hpp"      // for tcontrol
 #include "gui/widgets/multi_page.hpp"   // for tmulti_page
@@ -435,6 +436,12 @@ int intf_set_dialog_active(lua_State *L)
 	if (!c) return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 
 	c->set_active(b);
+	return 0;
+}
+
+int show_lua_console(lua_State * /*L*/, CVideo & video, lua_kernel_base * lk)
+{
+	gui2::tlua_interpreter::display(video, lk);
 	return 0;
 }
 
