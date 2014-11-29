@@ -403,7 +403,7 @@ private:
 
 struct game_is_member {
 	game_is_member(network::connection sock) : sock_(sock) {}
-	bool operator()(const game* g) const { return g->is_owner(sock_) || g->is_member(sock_); }
+	bool operator()(const game& g) const { return g.is_owner(sock_) || g.is_member(sock_); }
 
 private:
 	network::connection sock_;
@@ -411,7 +411,7 @@ private:
 
 struct game_id_matches {
 	game_id_matches(int id) : id_(id) {}
-	bool operator()(const game* g) const { return g->id() == id_; }
+	bool operator()(const game& g) const { return g.id() == id_; }
 
 private:
 	int id_;

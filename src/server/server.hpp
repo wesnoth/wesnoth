@@ -27,7 +27,7 @@
 
 #include "utils/boost_function_guarded.hpp"
 #include <boost/scoped_ptr.hpp>
-
+#include <boost/ptr_container/ptr_vector.hpp>
 class server
 {
 public:
@@ -94,7 +94,8 @@ private:
 	wesnothd::player_map players_;
 	std::set<network::connection> ghost_players_;
 
-	std::vector<wesnothd::game*> games_;
+	typedef boost::ptr_vector<wesnothd::game> t_games;
+	t_games games_;
 	std::set<network::connection> not_logged_in_;
 
 	wesnothd::room_manager rooms_;
@@ -177,9 +178,9 @@ private:
 	                        simple_wml::document& data);
 	void process_data_game(const network::connection sock,
 	                       simple_wml::document& data);
-	void delete_game(std::vector<wesnothd::game*>::iterator game_it);
+	void delete_game(t_games::iterator game_it);
 
-	void update_game_in_lobby(const wesnothd::game* g, network::connection exclude=0);
+	void update_game_in_lobby(const wesnothd::game& g, network::connection exclude=0);
 
 	void start_new_server();
 
