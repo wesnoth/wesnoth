@@ -351,7 +351,7 @@ void get_files_in_dir(const std::string &dir,
 					checksum->modified = mtime;
 				}
 
-				uintmax_t size = bfs::file_size(di->path(), ec);
+				unsigned long long size = bfs::file_size(di->path(), ec);
 				if (ec) {
 					ERR_FS << "Failed to read filesize of " << di->path().string() << ": " << ec.message() << '\n';
 				} else {
@@ -843,7 +843,7 @@ bool is_bzip2_file(const std::string& filename)
 int file_size(const std::string& fname)
 {
 	error_code ec;
-	uintmax_t size = bfs::file_size(path(fname), ec);
+	unsigned long long size = bfs::file_size(path(fname), ec);
 	if (ec) {
 		ERR_FS << "Failed to read filesize of " << fname << ": " << ec.message() << '\n';
 		return -1;
@@ -856,7 +856,7 @@ int file_size(const std::string& fname)
 int dir_size(const std::string& pname)
 {
 	bfs::path p(pname);
-	uintmax_t size_sum = 0;
+	unsigned long long size_sum = 0;
 	error_code ec;
 	for ( bfs::recursive_directory_iterator i(p), end; i != end && !ec; ++i ) {
 		if(bfs::is_regular_file(i->path())) {
