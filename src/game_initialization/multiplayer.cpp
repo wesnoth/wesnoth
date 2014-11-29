@@ -103,6 +103,7 @@ void run_lobby_loop(display& disp, mp::ui& ui)
 
 		if (plugins_context * pc = ui.get_plugins_context()) {
 			pc->play_slice();
+			DBG_MP << "* playing a plugins slice\n";
 		}
 
 		events::pump();
