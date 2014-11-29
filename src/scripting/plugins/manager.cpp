@@ -25,6 +25,15 @@
 #include <string>
 #include <vector>
 
+#include "log.hpp"
+
+static lg::log_domain log_plugins("plugins");
+#define DBG_PLG LOG_STREAM(debug, log_plugins)
+#define LOG_PLG LOG_STREAM(info,  log_plugins)
+#define WRN_PLG LOG_STREAM(warn,  log_plugins)
+#define ERR_PLG LOG_STREAM(err,   log_plugins)
+
+
 struct plugin {
 	std::string name;
 	std::string source;
@@ -94,10 +103,15 @@ std::string plugins_manager::get_name(size_t idx) {
 
 void plugins_manager::start_plugin(size_t idx)
 {
+	DBG_PLG << "start_plugin[" << idx <<"]\n";
 	if (idx < plugins_.size()) {
 		if (!plugins_[idx].thread) {
+			DBG_PLG << "creating thread[" << idx << "]\n";
 			plugins_[idx].thread.reset(plugins_[idx].is_file ? 
 						kernel_->load_script_from_file(plugins_[idx].source) : kernel_->load_script_from_string(plugins_[idx].source));
+			DBG_PLG << "finished [" << idx << "], status = '" << plugins_[idx].thread->status() << "'\n";
+		} else {
+			DBG_PLG << "thread already exists, skipping\n";
 		}
 		return ;
 	}
@@ -157,8 +171,13 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 
 	for (size_t idx = 0; idx < size(); ++idx)
 	{
+		DBG_PLG << "play_slice[" << idx << "] ... \n";
 		if (plugins_[idx].thread && plugins_[idx].thread->is_running()) {
-			if (!*local) return;		//check playing_ before each call to be sure that we should still continue
+			DBG_PLG << "is running...";
+			if (!*local) {			//check playing_ before each call to be sure that we should still continue
+				DBG_PLG << "aborting\n";
+				return;
+			}
 
 			std::vector<event> input = plugins_[idx].queue; //empty the queue to a temporary variable
 			plugins_[idx].queue = std::vector<event>();
@@ -167,13 +186,21 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 			std::vector<boost::function<bool(void)> > requests =
 				plugins_[idx].thread->run_script(ctxt, input);
 
+			DBG_PLG << "thread returned " << requests.size() << " requests\n";
+
 			for (size_t j = 0; j < requests.size(); ++j) {
 				if (!*local) return;		//check playing_ before each call to be sure that we should still continue
-				if (!requests[j]) {
+				if (!requests[j]()) {
 					*local = false;
 					return ; //call the function but if it returns false (error) then stop
 				}
 			}
+
+			DBG_PLG << "play_slice[" << idx << "] finished.\n";
+		} else if (!plugins_[idx].thread) {
+			DBG_PLG << "thread ["<< idx << "] not created\n";
+		} else {
+			DBG_PLG << "thread ["<< idx << "] not running\n";
 		}
 	}
 	*local = false;
