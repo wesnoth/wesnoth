@@ -183,10 +183,11 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("nomusic", "runs the game without music.")
 		("nosound", "runs the game without sounds and music.")
 		("path", "prints the path to the data directory and exits.")
+		("plugin", po::value<std::string>(), "(experimental) load a script which defines a wesnoth plugin. similar to --script below, but lua file should return a function which will be run as a coroutine and periodically woken up with updates.")
 		("render-image", po::value<two_strings>()->multitoken(), "takes two arguments: <image> <output>. Like screenshot, but instead of a map, takes a valid wesnoth 'image path string' with image path functions, and outputs to a windows .bmp file")
 		("rng-seed", po::value<unsigned int>(), "seeds the random number generator with number <arg>. Example: --rng-seed 0")
 		("screenshot", po::value<two_strings>()->multitoken(), "takes two arguments: <map> <output>. Saves a screenshot of <map> to <output> without initializing a screen. Editor must be compiled in for this to work.")
-		("script", po::value<std::string>(), "file containing a lua script to control the client")
+		("script", po::value<std::string>(), "(experimental) file containing a lua script to control the client")
 		("unsafe-scripts", "makes the \'package\' package available to lua scripts, so that they can load arbitrary packages. Do not do this with untrusted scripts! This action gives lua the same permissions as the wesnoth executable.")
 		("server,s", po::value<std::string>()->implicit_value(std::string()), "connects to the host <arg> if specified or to the first host in your preferences.")
 		("username", po::value<std::string>(), "uses <username> when connecting to a server, ignoring other preferences.")
@@ -437,6 +438,8 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		script_file = vm["script"].as<std::string>();
 	if (vm.count("unsafe-scripts"))
 		script_unsafe_mode = true;
+	if (vm.count("plugin"))
+		plugin_file = vm["plugin"].as<std::string>();
 	if (vm.count("server"))
 		server = vm["server"].as<std::string>();
 	if (vm.count("username"))

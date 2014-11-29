@@ -524,7 +524,7 @@ static void warn_early_init_failure()
  * Handles the lua script command line arguments if present.
  * This function will only run once.
  */
-static void handle_lua_script_args(game_launcher * game, commandline_options & cmdline_opts)
+static void handle_lua_script_args(game_launcher * game, commandline_options & /*cmdline_opts*/)
 {
 	static bool first_time = true;
 
@@ -532,8 +532,9 @@ static void handle_lua_script_args(game_launcher * game, commandline_options & c
 
 	first_time = false;
 
-	if (cmdline_opts.script_file && !game->init_lua_script()) {
-		std::cerr << "could not load lua script: " << *cmdline_opts.script_file << std::endl;
+	if (!game->init_lua_script()) {
+		std::cerr << "error when loading lua scripts at startup\n";
+		//std::cerr << "could not load lua script: " << *cmdline_opts.script_file << std::endl;
 	}
 }
 
