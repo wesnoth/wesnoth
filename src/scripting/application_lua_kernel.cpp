@@ -47,6 +47,7 @@
 #endif
 
 #include <map>
+#include <sstream>
 #include <string>
 #include <utility>
 
@@ -66,9 +67,40 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 #define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
+static int intf_describe_plugins(lua_State * L)
+{
+	std::cerr << "describe plugins (" << plugins_manager::get()->size() << "):\n";
+	lua_getglobal(L, "print");
+	for (size_t i = 0; i < plugins_manager::get()->size(); ++i) {
+		lua_pushvalue(L,-1); //duplicate the print
+
+		std::stringstream line;
+		line << i
+		     << ":\t"
+		     << plugins_manager::get()->get_status(i)
+		     << "\t\t"
+		     << plugins_manager::get()->get_name(i)
+		     << "\n";
+
+		DBG_LUA << line;
+
+		lua_pushstring(L, line.str().c_str());
+		lua_call(L, 1, 0);
+	}
+	if (!plugins_manager::get()->size()) {
+		lua_pushstring(L, "No plugins available.\n");
+		lua_call(L, 1, 0);
+	}
+	return 0;
+}
+
 application_lua_kernel::application_lua_kernel(CVideo * ptr)
  : lua_kernel_base(ptr)
-{}
+{
+	lua_pushcfunction(mState, &intf_describe_plugins);
+	lua_setglobal(mState, "describe_plugins");
+	lua_settop(mState, 0);
+}
 
 application_lua_kernel::thread::thread(lua_State * T) : T_(T), started_(false) {}
 
