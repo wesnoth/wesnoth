@@ -924,11 +924,6 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 	gamelist_updated();
 	sound::play_music_repeatedly(game_config::lobby_music);
 
-	//A shim to assist in retrieving config attribute values
-	boost::function< const std::string & ( const config & , const std::string & ) > get_str = 
-		boost::bind(&config::attribute_value::str,
-			boost::bind(static_cast<const config::attribute_value &(config::*)(const std::string &) const>(&config::operator[]) , _1, _2));
-
 	plugins_context_.reset(new plugins_context("Multiplayer Lobby"));
 
 	//These structure initializers create a lobby::process_data_event
