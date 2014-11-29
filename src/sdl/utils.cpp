@@ -451,6 +451,10 @@ surface scale_surface_nn (const surface & surf, int w, int h)
 }
 
 // NOTE: Don't pass this function 0 scaling arguments.
+surface scale_surface(const surface &surf, int w, int h) {
+	return scale_surface(surf, w, h, true);
+}
+
 surface scale_surface(const surface &surf, int w, int h, bool optimize)
 {
 	// Since SDL version 1.1.5 0 is transparent, before 255 was transparent.
@@ -582,6 +586,10 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 }
 
 // NOTE: Don't pass this function 0 scaling arguments.
+surface scale_surface_legacy(const surface &surf, int w, int h) {
+	return scale_surface_legacy(surf, w, h, true);
+}
+
 surface scale_surface_legacy(const surface &surf, int w, int h, bool optimize)
 {
 	// Since SDL version 1.1.5 0 is transparent, before 255 was transparent.

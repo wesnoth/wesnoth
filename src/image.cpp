@@ -174,7 +174,8 @@ int zoom = tile_size;
 int cached_zoom = 0;
 
 /** Algorithm choices */
-typedef boost::function<surface(const surface &, int, int)> scaling_function;
+//typedef boost::function<surface(const surface &, int, int)> scaling_function;
+typedef surface(*scaling_function)(const surface &, int, int);
 scaling_function scale_to_zoom_func;
 scaling_function scale_to_hex_func;
 
@@ -757,33 +758,43 @@ void set_zoom(int amount)
 	}
 }
 
-static surface scale_surface_algorithm(const surface & res, int w, int h, gui2::tadvanced_graphics_options::SCALING_ALGORITHM algo)
+// F should be a scaling algorithm without "integral" zoom limitations
+template <scaling_function F>
+static surface scale_xbrz_helper(const surface & res, int w, int h)
+{
+	int best_integer_zoom = std::min(w / res.get()->w, h / res.get()->h);
+	int legal_zoom = std::max(std::min(best_integer_zoom, 5), 1);
+	return F(scale_surface_xbrz(res, legal_zoom), w, h);
+}
+
+static scaling_function select_algorithm(gui2::tadvanced_graphics_options::SCALING_ALGORITHM algo)
 {
 	switch (algo)
 	{
 		case gui2::tadvanced_graphics_options::LINEAR:
 		{
-			return scale_surface(res, w, h);
+			scaling_function result = &scale_surface;
+			return result;
 		}
 		case gui2::tadvanced_graphics_options::NEAREST_NEIGHBOR:
 		{
-			return scale_surface_nn(res, w, h);
+			scaling_function result = &scale_surface_nn;
+			return result;
 		}
 		case gui2::tadvanced_graphics_options::XBRZ_LIN:
 		{
-			int z_factor = std::min(w / res.get()->w, h / res.get()->h);
-			surface xbrz_temp(scale_surface_xbrz(res, std::max(std::min(z_factor,5),1)));
-			return scale_surface(xbrz_temp, w, h);
+			scaling_function result = &scale_xbrz_helper<scale_surface>;
+			return result;
 		}
 		case gui2::tadvanced_graphics_options::XBRZ_NN:
 		{
-			int z_factor = std::min(w / res.get()->w, h / res.get()->h);
-			surface xbrz_temp(scale_surface_xbrz(res, std::max(std::min(z_factor,5),1)));
-			return scale_surface_nn(xbrz_temp, w, h);
+			scaling_function result = &scale_xbrz_helper<scale_surface_nn>;
+			return result;
 		}
 		case gui2::tadvanced_graphics_options::LEGACY_LINEAR:
 		{
-			return scale_surface_legacy(res, w, h);
+			scaling_function result = &scale_surface_legacy;
+			return result;
 		}
 		default:
 			assert(false && "I don't know how to implement this scaling algorithm");
@@ -1301,14 +1312,14 @@ bool update_from_preferences()
 		algo = gui2::tadvanced_graphics_options::string_to_SCALING_ALGORITHM(preferences::get("scale_hex"));
 	} catch (bad_enum_cast &) {}
 
-	scale_to_hex_func = boost::bind(& scale_surface_algorithm, _1, _2, _3, algo);
+	scale_to_hex_func = select_algorithm(algo);
 
 	algo = gui2::tadvanced_graphics_options::LINEAR;
 	try {
 		algo = gui2::tadvanced_graphics_options::string_to_SCALING_ALGORITHM(preferences::get("scale_zoom"));
 	} catch (bad_enum_cast &) {}
 
-	scale_to_zoom_func = boost::bind(& scale_surface_algorithm, _1, _2, _3, algo);
+	scale_to_zoom_func = select_algorithm(algo);
 
 	return true;
 }
