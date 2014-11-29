@@ -25,6 +25,7 @@
 
 #include "../mt_rng.hpp"
 
+#include <boost/ptr_container/ptr_vector.hpp>
 //class player;
 
 namespace wesnothd {
@@ -378,7 +379,8 @@ private:
 	simple_wml::document level_;
 
 	/** Replay data. */
-	mutable std::vector<simple_wml::document*> history_;
+	typedef boost::ptr_vector<simple_wml::document> t_history;
+	mutable t_history history_;
 
 	/** Pointer to the game's description in the games_and_users_list_. */
 	simple_wml::node* description_;
