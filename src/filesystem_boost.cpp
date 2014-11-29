@@ -68,6 +68,10 @@ namespace {
 		template<typename char_t_to>
 		struct customcodecvt_do_conversion_writer
 		{
+			customcodecvt_do_conversion_writer(char_t_to*& _to_next, char_t_to* _to_end) :
+				to_next(_to_next),
+				to_end(_to_end)
+			{}
 			char_t_to*& to_next;
 			char_t_to* to_end;
 
@@ -97,7 +101,7 @@ namespace {
 
 			from_next = from;
 			to_next = to;
-			customcodecvt_do_conversion_writer<char_t_to> writer = { to_next, to_end };
+			customcodecvt_do_conversion_writer<char_t_to> writer(to_next, to_end);
 			while(from_next != from_end)
 			{
 				impl_type_to::write(writer, impl_type_from::read(from_next, from_end));
