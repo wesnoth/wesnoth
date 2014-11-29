@@ -44,6 +44,12 @@ public:
 		return *this;
 	}
 
+	config_of& operator()(const std::string& tagname, const config_of& child)
+	{
+		data_.add_child(tagname, child);
+		return *this;
+	}
+
 	operator config() const
 	{
 		return data_;
