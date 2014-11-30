@@ -93,3 +93,8 @@ void plugins_context::set_callback(const std::string & name, boost::function<voi
 const boost::function< std::string ( const config & , const std::string & ) > get_str = 
 	boost::bind(&config::attribute_value::str,
 		boost::bind(static_cast<const config::attribute_value &(config::*)(const std::string &) const>(&config::operator[]) , _1, _2));
+
+const boost::function< int ( const config & , const std::string &, int ) > get_int = 
+	boost::bind(&config::attribute_value::to_int,
+		boost::bind(static_cast<const config::attribute_value &(config::*)(const std::string &) const>(&config::operator[]) , _1, _2)
+		, _3);

@@ -539,14 +539,6 @@ static void handle_lua_script_args(game_launcher * game, commandline_options & /
 }
 
 /**
- * Handles when a plugin requests to close the program.
- */
-static bool safe_exit_wrapper(config c) {
-	safe_exit(c["code"].to_int(0));
-	return false;
-}
-
-/**
  * Setups the game environment and enters
  * the titlescreen or game loops.
  */
@@ -648,7 +640,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	plugins_context::Reg const callbacks[] = {
 		{ "play_multiplayer",		boost::bind(&game_launcher::play_multiplayer, game.get())},
-		{ "exit",			plugins_context::callback_function(&safe_exit_wrapper)},
 		{ NULL, NULL }
 	};
 	plugins_context::aReg const accessors[] = {
@@ -657,6 +648,8 @@ static int do_gameloop(const std::vector<std::string>& args)
 	};
 
 	plugins_context plugins("titlescreen", callbacks, accessors);
+
+	plugins.set_callback("exit", boost::bind(&safe_exit, boost::bind(get_int, _1, "code", 0)), false);
 
 	for (;;)
 	{
