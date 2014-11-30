@@ -108,8 +108,9 @@ int load_file(lua_State *L)
 #if 1
 	try
 	{
-		if(lua_filestream::lua_loadfile(L, p))
+		if(lua_filestream::lua_loadfile(L, p)) {
 			return lua_error(L);
+		}
 	}
 	catch(const std::exception & ex)
 	{
