@@ -177,7 +177,7 @@ application_lua_kernel::thread * application_lua_kernel::load_script_from_string
 
 		throw game::lua_error(msg, context);
 	}
-	if (!luaW_pcall(T, 0, 1)) {
+	if (!lua_kernel_base::protected_call(T, 0, 1, boost::bind(&lua_kernel_base::log_error, this, _1, _2))) {
 		throw game::lua_error("Error when executing a script to make a lua thread.");
 	}
 	if (!lua_isfunction(T, -1)) {
@@ -194,7 +194,7 @@ application_lua_kernel::thread * application_lua_kernel::load_script_from_file(c
 
 	lua_pushstring(T, file.c_str());
 	lua_fileops::load_file(T);
-	if (!luaW_pcall(T, 0, 1)) {
+	if (!lua_kernel_base::protected_call(T, 0, 1, boost::bind(&lua_kernel_base::log_error, this, _1, _2))) {
 		throw game::lua_error("Error when executing a file to make a lua thread.");
 	}
 	if (!lua_isfunction(T, -1)) {

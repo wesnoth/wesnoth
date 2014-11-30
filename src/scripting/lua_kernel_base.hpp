@@ -94,6 +94,8 @@ protected:
 
 	// Execute a protected call. Error handler is called in case of an error, using syntax for log_error and throw_exception above. Returns true if successful.
 	bool protected_call(int nArgs, int nRets, error_handler);
+	// Execute a protected call, taking a lua_State as argument. For functions pushed into the lua environment, this version should be used, or the function cannot be used by coroutines without segfaulting (since they have a different lua_State pointer). This version is called by the above version.
+	static bool protected_call(lua_State * L, int nArgs, int nRets, error_handler);
 	// Load a string onto the stack as a function. Returns true if successful, error handler is called if not.
 	bool load_string(char const * prog, error_handler);
 

@@ -367,8 +367,11 @@ bool lua_kernel_base::load_string(char const * prog)
 
 bool lua_kernel_base::protected_call(int nArgs, int nRets, error_handler e_h)
 {
-	lua_State *L = mState;
+	return protected_call(mState, nArgs, nRets, e_h);
+}
 
+bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_handler e_h)
+{
 	// Load the error handler before the function and its arguments.
 	lua_pushlightuserdata(L
 			, executeKey);
@@ -402,7 +405,7 @@ bool lua_kernel_base::protected_call(int nArgs, int nRets, error_handler e_h)
 			context += "unknown lua error";
 		}
 
-		lua_pop(mState, 1);
+		lua_pop(L, 1);
 
 		e_h(message.c_str(), context.c_str());
 
@@ -521,7 +524,7 @@ int lua_kernel_base::intf_require(lua_State* L)
 	// stack is now [packagename] [wesnoth] [package] [chunk]
 	DBG_LUA << "require: loaded a file, now calling it\n";
 
-	if (!protected_call(0, 1)) return 0;
+	if (!protected_call(L, 0, 1, boost::bind(&lua_kernel_base::log_error, this, _1, _2))) return 0;
 	//^ historically if wesnoth.require fails it just yields nil and some logging messages, not a lua error
 	// stack is now [packagename] [wesnoth] [package] [results]
 
