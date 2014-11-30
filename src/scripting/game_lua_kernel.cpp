@@ -98,7 +98,7 @@
 #include <boost/bind.hpp>               // for bind_t, bind
 #include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
-#include <boost/range/algorithm.hpp>    // boost::copy
+#include <boost/range/algorithm/copy.hpp>    // boost::copy
 #include <boost/range/adaptors.hpp>     // boost::adaptors::filtered
 #include <boost/tuple/tuple.hpp>        // for tuple
 #include <cassert>                      // for assert

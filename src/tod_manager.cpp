@@ -28,7 +28,7 @@
 
 #include <boost/foreach.hpp>
 #include <boost/range/adaptors.hpp>
-#include <boost/range/algorithm.hpp>
+#include <boost/range/algorithm/copy.hpp>
 #include <boost/lambda/bind.hpp>
 #include <boost/lambda/lambda.hpp>
 #include <boost/bind.hpp>

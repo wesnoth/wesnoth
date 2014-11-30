@@ -45,7 +45,7 @@
 #include "util.hpp"
 
 #include <boost/range/adaptors.hpp>
-#include <boost/range/algorithm.hpp>
+#include <boost/range/algorithm/copy.hpp>
 #include <boost/foreach.hpp>
 #include <cassert>
 
