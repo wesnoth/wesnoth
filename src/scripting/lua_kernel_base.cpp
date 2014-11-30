@@ -386,7 +386,8 @@ bool lua_kernel_base::protected_call(int nArgs, int nRets, error_handler e_h)
 	lua_remove(L, error_handler_index);
 
 	if (errcode != LUA_OK) {
-		std::string message = lua_tostring(L, -1);
+		char const * msg = lua_tostring(L, -1);
+		std::string message = msg ? msg : "null string";
 
 		std::string context = "When executing, ";
 		if (errcode == LUA_ERRRUN) {
@@ -415,7 +416,8 @@ bool lua_kernel_base::load_string(char const * prog, error_handler e_h)
 {
 	int errcode = luaL_loadstring(mState, prog);
 	if (errcode != LUA_OK) {
-		std::string msg = lua_tostring(mState, -1);
+		char const * msg = lua_tostring(mState, -1);
+		std::string message = msg ? msg : "null string";
 
 		std::string context = "When parsing a string to lua, ";
 
@@ -431,7 +433,7 @@ bool lua_kernel_base::load_string(char const * prog, error_handler e_h)
 
 		lua_pop(mState, 1);
 
-		e_h(msg.c_str(), context.c_str());
+		e_h(message.c_str(), context.c_str());
 
 		return false;
 	}
@@ -504,7 +506,7 @@ int lua_kernel_base::intf_require(lua_State* L)
 
 	// Check if there is already an entry.
 
-	luaW_getglobal(L, "wesnoth", NULL);
+	lua_getglobal(L, "wesnoth");
 	lua_pushstring(L, "package");
 	lua_rawget(L, -2);
 	lua_pushvalue(L, 1);
@@ -517,6 +519,7 @@ int lua_kernel_base::intf_require(lua_State* L)
 	if (lua_fileops::load_file(L) != 1) return 0;
 	//^ should end with the file contents loaded on the stack. actually it will call lua_error otherwise, the return 0 is redundant.
 	// stack is now [packagename] [wesnoth] [package] [chunk]
+	DBG_LUA << "require: loaded a file, now calling it\n";
 
 	if (!protected_call(0, 1)) return 0;
 	//^ historically if wesnoth.require fails it just yields nil and some logging messages, not a lua error
