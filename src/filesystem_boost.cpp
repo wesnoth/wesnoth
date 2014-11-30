@@ -352,7 +352,7 @@ void get_files_in_dir(const std::string &dir,
 					checksum->modified = mtime;
 				}
 
-				uintmax_t size = bfs::file_size(di->path(), ec);
+				unsigned long long size = bfs::file_size(di->path(), ec);
 				if (ec) {
 					ERR_FS << "Failed to read filesize of " << di->path().string() << ": " << ec.message() << '\n';
 				} else {
@@ -842,7 +842,7 @@ bool is_bzip2_file(const std::string& filename)
 int file_size(const std::string& fname)
 {
 	error_code ec;
-	uintmax_t size = bfs::file_size(path(fname), ec);
+	unsigned long long size = bfs::file_size(path(fname), ec);
 	if (ec) {
 		ERR_FS << "Failed to read filesize of " << fname << ": " << ec.message() << '\n';
 		return -1;
