@@ -15,6 +15,7 @@
 
 #include "carryover.hpp"
 #include "config.hpp"
+#include "config_assign.hpp"
 #include "dialogs.hpp"
 #include "formula_string_utils.hpp"
 #include "saved_game.hpp"
@@ -51,6 +52,9 @@ static void add_multiplayer_classification(config& multiplayer, saved_game& stat
 	multiplayer["mp_scenario_name"] = state.get_starting_pos()["name"];
 	multiplayer["difficulty_define"] = state.classification().difficulty;
 	multiplayer["mp_campaign"] = state.classification().campaign;
+	//Note that "password" is written to [multiplayer] but wont be read back into state.mp_settings() in level_to_gamestate.
+	multiplayer["password"] = state.mp_settings().password;
+	multiplayer["require_scenario"] = state.get_starting_pos()["require_scenario"].to_bool(false);
 }
 
 config initial_level_config(saved_game& state)
@@ -89,8 +93,12 @@ config initial_level_config(saved_game& state)
 	}
 
 	config level = state.to_config();
-	add_multiplayer_classification(level.child_or_add("multiplayer"), state);
-
+	config& multiplayer = level.child_or_add("multiplayer");
+	add_multiplayer_classification(multiplayer, state);
+	
+	// We don't want the password in the savefiles, but adding this here is ok becasue we don't 
+	// read this value when creating the gamestate in level_to_gamestate. So it's lost after mp_connect.
+	
 	std::string era = params.mp_era;
 	//[multiplayer] mp_era= should be persistent over saves.
 
@@ -113,22 +121,25 @@ config initial_level_config(saved_game& state)
 	}
 	else
 	{
-		/*config& cfg = */level.add_child("era", era_cfg);
+		config& cfg_era = level.add_child("era", era_cfg);
 
 		const config& custom_side = game_config_manager::get()->
 			game_config().find_child("multiplayer_side", "id", "Custom");
-		level.child("era").add_child_at("multiplayer_side", custom_side, 0);
-
+		cfg_era.add_child_at("multiplayer_side", custom_side, 0);
+		multiplayer["require_era"] = cfg_era["require_era"].to_bool(true);
 	}
 	// Add modifications, needed for ai aglorithms which are applied in mp_connect
 
 	const std::vector<std::string>& mods = params.active_mods;
 	for (unsigned i = 0; i < mods.size(); i++) {
-		/*config& cfg = */level.add_child("modification",
+		config& cfg_mod = level.add_child("modification",
 			game_config_manager::get()->
 				game_config().find_child("modification", "id", mods[i]));
+		multiplayer.add_child("modification", config_of
+			("id", cfg_mod["id"].str())
+			("require_modification", cfg_mod["require_modification"].to_bool(false))
+		);
 	}
-
 	// This will force connecting clients to be using the same version number as us.
 	level["version"] = game_config::version;
 	return level;

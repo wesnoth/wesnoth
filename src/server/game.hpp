@@ -38,7 +38,7 @@ class game
 {
 public:
 	game(player_map& players, const network::connection host=0,
-			const std::string& name="", bool save_replays=false,
+			const std::string& name="", const std::string& password="", bool save_replays=false,
 			const std::string& replay_save_path="");
 	~game();
 

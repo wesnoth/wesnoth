@@ -771,12 +771,6 @@ void connect_engine::send_level_data(const network::connection sock) const
 {
 	// Send initial information.
 	if (first_scenario_) {
-		network::send_data(config_of
-			("create_game", config_of
-				("name", params_.name)
-				("password", params_.password)
-			)	
-		);
 		network::send_data(level_, sock);
 	} else {
 		network::send_data(config_of("update_game", config()), 0);
