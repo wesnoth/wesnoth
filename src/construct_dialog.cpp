@@ -17,14 +17,18 @@
 
 #include "construct_dialog.hpp"
 
+#include "config_assign.hpp"
 #include "display.hpp"
 #include "formula_string_utils.hpp"
 #include "gettext.hpp"
 #include "sound.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
+#include "scripting/plugins/context.hpp"
+#include "scripting/plugins/manager.hpp"
 #include "sdl/utils.hpp"
 
+#include <boost/bind.hpp>
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -303,6 +307,14 @@ int dialog::show()
 	draw_contents();
 
 	//process
+	plugins_manager::get()->notify_event("show_dialog", config(config_of
+			("title",	title_)
+			("message",	message_->get_text())
+		));
+
+	plugins_context pc("Dialog");
+	pc.set_callback("set_result", boost::bind(&dialog::set_result, this, boost::bind(get_int, _1, "result", CLOSE_DIALOG)), false);
+
 	dialog_process_info dp_info;
 	do
 	{
@@ -313,6 +325,8 @@ int dialog::show()
 		}
 		action(dp_info);
 		dp_info.cycle();
+
+		pc.play_slice();
 	} while(!done());
 
 	clear_background();
