@@ -17,6 +17,7 @@
 #include "lua/lua.h"
 #include "lua/lauxlib.h"
 #include "map_location.hpp"
+#include "util.hpp"
 
 #include <string>
 #include <utility>
@@ -57,7 +58,7 @@ int intf_get_direction(lua_State* L)
 	int nargs = lua_gettop(L);
 	if (nargs != 3 and nargs != 4) {
 		std::string msg("get_direction: must pass 3 or 4 args, found ");
-		msg += nargs;
+		msg += str_cast(nargs);
 		luaL_error(L, msg.c_str());
 		return 0;
 	}
