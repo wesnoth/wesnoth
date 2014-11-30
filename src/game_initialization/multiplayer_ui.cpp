@@ -29,6 +29,8 @@
 #include "mp_ui_alerts.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
+#include "scripting/plugins/context.hpp"
+#include "scripting/plugins/manager.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -437,6 +439,10 @@ void ui::process_message(const config& msg, const bool whisper) {
 
 	chat_.add_message(time(NULL), room + prefix, msg["message"]);
 	chat_.update_textbox(chat_textbox_);
+
+	config temp = msg;
+	temp["whisper"] = whisper;
+	plugins_manager::get()->notify_event("chat", temp); //notify plugins of the network message
 }
 
 void ui::process_network_data(const config& data, const network::connection /*sock*/)
