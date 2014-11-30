@@ -467,7 +467,7 @@ void lua_kernel_base::interactive_run(char const * prog) {
 	try {
 		// Try to load the experiment without syntax errors
 		load_string(experiment.c_str(), eh);
-	} catch (game::lua_error & e) {
+	} catch (game::lua_error &) {
 		throwing_run(prog);	// Since it failed, fall back to the usual throwing_run, on the original input.
 		return;
 	}
