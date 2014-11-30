@@ -393,6 +393,10 @@ possible_end_play_signal playsingle_controller::play_scenario_init(end_level_dat
 	return boost::none;
 }
 
+#ifdef _MSC_VER
+#pragma warning (push)
+#pragma warning (disable:4702)
+#endif
 possible_end_play_signal playsingle_controller::play_scenario_main_loop(end_level_data & end_level, bool & /*past_prestart*/) {
 	LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
 
@@ -429,6 +433,9 @@ possible_end_play_signal playsingle_controller::play_scenario_main_loop(end_leve
 	} //end for loop
 	return boost::none;
 }
+#ifdef _MSC_VER
+#pragma warning (pop)
+#endif
 
 LEVEL_RESULT playsingle_controller::play_scenario(
 	const config::const_child_itors &story,
