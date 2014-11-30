@@ -93,6 +93,20 @@ private:
 	std::vector<ng::level::TYPE> available_level_types_;
 
 	ng::create_engine engine_;
+
+	struct process_event_data {
+		bool create, load, quit;
+
+		process_event_data()
+			: create(false), load(false), quit(false)
+		{}
+		process_event_data(bool c, bool l, bool q)
+			: create(c), load(l), quit(q)
+		{}
+	};
+
+	void process_event_impl(const process_event_data &);
+	bool plugin_event_helper(const process_event_data &);
 };
 
 } // end namespace mp

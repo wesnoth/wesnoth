@@ -37,11 +37,13 @@
 #include "multiplayer_create.hpp"
 #include "filesystem.hpp"
 #include "savegame.hpp"
+#include "scripting/plugins/context.hpp"
 #include "log.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 
+#include <boost/bind.hpp>
 #include <boost/foreach.hpp>
 
 static lg::log_domain log_config("config");
@@ -183,6 +185,16 @@ create::create(game_display& disp, const config& cfg, saved_game& state,
 	}
 
 	gamelist_updated();
+
+	plugins_context_.reset(new plugins_context("Multiplayer Create"));
+
+	//These structure initializers create a lobby::process_data_event
+	plugins_context_->set_callback("create", 	boost::bind(&create::plugin_event_helper, this, process_event_data (true, false, false)));
+	plugins_context_->set_callback("load", 		boost::bind(&create::plugin_event_helper, this, process_event_data (false, true, false)));
+	plugins_context_->set_callback("quit", 		boost::bind(&create::plugin_event_helper, this, process_event_data (false, false, true)));
+
+	plugins_context_->set_accessor("game_config",	boost::bind(&create::game_config, this));
+
 }
 
 create::~create()
@@ -209,18 +221,34 @@ const mp_game_settings& create::get_parameters()
 	return engine_.get_parameters();
 }
 
+bool create::plugin_event_helper(const process_event_data & data)
+{
+	process_event_impl(data);
+	return get_result() == mp::ui::CONTINUE;
+}
+
 void create::process_event()
 {
 	int mousex, mousey;
 	SDL_GetMouseState(&mousex,&mousey);
 	tooltips::process(mousex, mousey);
 
-	if (cancel_game_.pressed()) {
+	process_event_data data;
+	data.quit = cancel_game_.pressed();
+	data.create = launch_game_.pressed() || levels_menu_.double_clicked();
+	data.load = load_game_.pressed();
+
+	process_event_impl(data);
+}
+
+void create::process_event_impl(const process_event_data & data)
+{
+	if (data.quit) {
 		set_result(QUIT);
 		return;
 	}
 
-	if (launch_game_.pressed() || levels_menu_.double_clicked()) {
+	if (data.create) {
 		if (engine_.current_level().can_launch_game()) {
 
 			engine_.prepare_for_era_and_mods();
@@ -259,7 +287,7 @@ void create::process_event()
 		init_level_type_changed(0);
 	}
 
-	if (load_game_.pressed()) {
+	if (data.load) {
 		try
 		{
 			savegame::loadgame load(disp_,
