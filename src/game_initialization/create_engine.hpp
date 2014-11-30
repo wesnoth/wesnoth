@@ -15,6 +15,7 @@
 #define MULTIPLAYER_CREATE_ENGINE_HPP_INCLUDED
 
 #include "config.hpp"
+#include "make_enum.hpp"
 #include "map.hpp"
 #include "depcheck.hpp"
 #include "mp_game_settings.hpp"
@@ -33,7 +34,14 @@ public:
 	level(const config& data);
 	virtual ~level() {}
 
-	enum TYPE { SCENARIO, USER_MAP, USER_SCENARIO, RANDOM_MAP, CAMPAIGN, SP_CAMPAIGN};
+	MAKE_ENUM( TYPE,
+		(SCENARIO,		"scenario")
+		(USER_MAP,		"user_map")
+		(USER_SCENARIO,		"user_scenario")
+		(RANDOM_MAP,		"random_map")
+		(CAMPAIGN,		"campaign")
+		(SP_CAMPAIGN,		"sp_campaign")
+	)
 
 	virtual bool can_launch_game() const = 0;
 
@@ -58,6 +66,7 @@ private:
 	level(const level&);
 	void operator=(const level&);
 };
+MAKE_ENUM_STREAM_OPS2( level, TYPE )
 
 class scenario : public level
 {

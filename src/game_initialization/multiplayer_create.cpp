@@ -23,6 +23,7 @@
 #include "game_config_manager.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
+#include "config_assign.hpp"
 #include "construct_dialog.hpp"
 #include "settings.hpp"
 #include "map.hpp"
@@ -57,6 +58,18 @@ const SDL_Rect null_rect = {0, 0, 0, 0};
 }
 
 namespace mp {
+
+static config get_selected_helper(const ng::create_engine * eng_ptr)
+{
+	assert(eng_ptr);
+	const ng::create_engine & eng = *eng_ptr;
+	return config_of("id", eng.current_level().id())
+		("name", eng.current_level().name())
+		("icon", eng.current_level().icon())
+		("description", eng.current_level().description())
+		("allow_era_choice", eng.current_level().allow_era_choice())
+		("type", ng::level::TYPE_to_string(eng.current_level_type()));
+}
 
 create::create(game_display& disp, const config& cfg, saved_game& state,
 	chat& c, config& gamelist) :
@@ -194,7 +207,7 @@ create::create(game_display& disp, const config& cfg, saved_game& state,
 	plugins_context_->set_callback("quit", 		boost::bind(&create::plugin_event_helper, this, process_event_data (false, false, true)));
 
 	plugins_context_->set_accessor("game_config",	boost::bind(&create::game_config, this));
-
+	plugins_context_->set_accessor("get_selected",  boost::bind(&get_selected_helper, &engine_));
 }
 
 create::~create()
