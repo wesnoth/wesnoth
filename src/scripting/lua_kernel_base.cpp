@@ -497,7 +497,10 @@ int lua_kernel_base::intf_dofile(lua_State* L)
  */
 int lua_kernel_base::intf_require(lua_State* L)
 {
-	luaL_checkstring(L, 1);
+	const char * m = luaL_checkstring(L, 1);
+	if (!m) {
+		luaL_argerror(L, 1, "found a null string argument to wesnoth require");
+	}
 
 	// Check if there is already an entry.
 

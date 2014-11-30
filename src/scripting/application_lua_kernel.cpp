@@ -287,8 +287,24 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 	if (lua_status(T_) != LUA_YIELD) {
 		LOG_LUA << "Thread status = '" << lua_status(T_) << "'\n";
 		if (lua_status(T_) != LUA_OK) {
-			ERR_LUA << "encountered an error:\n"
-				<< lua_tostring(T_, -1) << "\n";
+			std::stringstream ss;
+			ss << "encountered a";
+			switch(lua_status(T_)) {
+				case LUA_ERRSYNTAX:
+					ss << " syntax ";
+					break;
+				case LUA_ERRRUN:
+					ss << " runtime ";
+					break;
+				case LUA_ERRERR:
+					ss << " error-handler ";
+					break;
+				default:
+					ss << " ";
+					break;
+			}
+			ss << "error:\n" << lua_tostring(T_, -1) << "\n";
+			ERR_LUA << ss.str() << std::endl;
 		}
 	}
 
