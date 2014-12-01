@@ -344,12 +344,20 @@ void playsingle_controller::report_victory(
 	report << '\n' << goldmsg;
 }
 
-possible_end_play_signal playsingle_controller::play_scenario_init(end_level_data & /*eld*/, bool & past_prestart) {
+boost::optional<LEVEL_RESULT> playsingle_controller::play_scenario_init(end_level_data & /*eld*/, bool & past_prestart) {
 	// At the beginning of the scenario, save a snapshot as replay_start
 	if(saved_game_.replay_start().empty()){
 		saved_game_.replay_start() = to_config();
 	}
-	HANDLE_END_PLAY_SIGNAL( fire_preload() );
+
+	try {
+		fire_preload();
+	} catch (end_level_exception & e) {
+		return e.result;
+	} catch (end_turn_exception & e) {
+		assert(false && "caugh end_turn exception in a bad place... terminating.");
+		std::terminate();
+	}
 
 	replaying_ = (recorder.at_end() == false);
 	assert(!replaying_);
@@ -373,13 +381,30 @@ possible_end_play_signal playsingle_controller::play_scenario_init(end_level_dat
 		//we can only use a set_scontext_synced with a non empty recorder.
 		set_scontext_synced sync;
 
-		HANDLE_END_PLAY_SIGNAL( fire_prestart() );
+		try {
+			fire_prestart();
+		} catch (end_level_exception & e) {
+			return e.result;
+		} catch (end_turn_exception & e) {
+			assert(false && "caugh end_turn exception in a bad place... terminating.");
+			std::terminate();
+		}
+
+
 		init_gui();
 		past_prestart = true;
 		LOG_NG << "first_time..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
 
 		events::raise_draw_event();
-		HANDLE_END_PLAY_SIGNAL( fire_start(true) );
+		try {
+			fire_start(true);
+		} catch (end_level_exception & e) {
+			return e.result;
+		} catch (end_turn_exception & e) {
+			assert(false && "caugh end_turn exception in a bad place... terminating.");
+			std::terminate();
+		}
+
 		gui_->recalculate_minimap();
 	}
 	else
@@ -387,13 +412,20 @@ possible_end_play_signal playsingle_controller::play_scenario_init(end_level_dat
 		init_gui();
 		past_prestart = true;
 		events::raise_draw_event();
-		HANDLE_END_PLAY_SIGNAL( fire_start(false) );
+		try {
+			fire_start(false);
+		} catch (end_level_exception & e) {
+			return e.result;
+		} catch (end_turn_exception & e) {
+			assert(false && "caugh end_turn exception in a bad place... terminating.");
+			std::terminate();
+		}
 		gui_->recalculate_minimap();
 	}
 	return boost::none;
 }
 
-possible_end_play_signal playsingle_controller::play_scenario_main_loop(end_level_data & end_level, bool & /*past_prestart*/) {
+boost::optional<LEVEL_RESULT> playsingle_controller::play_scenario_main_loop(end_level_data & end_level, bool & /*past_prestart*/) {
 	LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
 
 	// Initialize countdown clock.
@@ -410,8 +442,7 @@ possible_end_play_signal playsingle_controller::play_scenario_main_loop(end_leve
 		end_level.read(level_.child_or_empty("end_level_data"));
 		end_level.transient.carryover_report = false;
 		end_level.transient.disabled = true;
-		end_level_struct els = { SKIP_TO_LINGER };
-		return possible_end_play_signal ( els );
+		return SKIP_TO_LINGER;
 		//throw end_level_exception(SKIP_TO_LINGER);
 	}
 
@@ -424,7 +455,18 @@ possible_end_play_signal playsingle_controller::play_scenario_main_loop(end_leve
 		ERR_NG << "Playing game with 0 teams." << std::endl;
 	}
 	for(; ; first_player_ = 1) {
-		PROPOGATE_END_PLAY_SIGNAL( play_turn() );
+		possible_end_play_signal signal = play_turn();
+
+		if (signal) {
+			switch (boost::apply_visitor( get_signal_type(), *signal )) {
+				case END_LEVEL:
+					return boost::apply_visitor( get_result(), *signal );
+				case END_TURN:
+					assert(false && "end turn signal propagated to playsingle_controller::play_scenario_main_loop, terminating");
+					std::terminate();
+			}
+		}
+
 		do_autosaves_ = true;
 	} //end for loop
 }
@@ -469,132 +511,122 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 
 	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks_) << "\n";
 	try {
-		possible_end_play_signal signal = play_scenario_init(end_level, past_prestart);
+		boost::optional<LEVEL_RESULT> signal = play_scenario_init(end_level, past_prestart);
 
 		if (!signal) {
-
 			signal = play_scenario_main_loop(end_level, past_prestart);
 		}
 
 		if (signal) {
-			switch (boost::apply_visitor( get_signal_type(), *signal )) {
-				//BEGIN CASES
-				case END_TURN:
-					assert(false && "end turn signal propogated to playsingle_controller::play_scenario. This results in terminate!");
-					throw 42;
-				case END_LEVEL:
-					if(!past_prestart) {
-						sdl::draw_solid_tinted_rectangle(
-							0, 0, gui_->video().getx(), gui_->video().gety(), 0, 0, 0, 1.0,
-							gui_->video().getSurface()
-						);
-						update_rect(0, 0, gui_->video().getx(), gui_->video().gety());
-					}
+			LEVEL_RESULT end_level_result = *signal;
 
-					ai_testing::log_game_end();
-					LEVEL_RESULT end_level_result = boost::apply_visitor( get_result(), *signal );
-					if (!end_level.transient.custom_endlevel_music.empty()) {
-						if (end_level_result == DEFEAT) {
-							set_defeat_music_list(end_level.transient.custom_endlevel_music);
-						} else {
-							set_victory_music_list(end_level.transient.custom_endlevel_music);
-						}
-					}
+			if(!past_prestart) {
+				sdl::draw_solid_tinted_rectangle(
+					0, 0, gui_->video().getx(), gui_->video().gety(), 0, 0, 0, 1.0,
+					gui_->video().getSurface()
+				);
+				update_rect(0, 0, gui_->video().getx(), gui_->video().gety());
+			}
 
-					if (gamestate_.board_.teams().empty())
-					{
-						//store persistent teams
-						saved_game_.set_snapshot(config());
+			ai_testing::log_game_end();
+			if (!end_level.transient.custom_endlevel_music.empty()) {
+				if (end_level_result == DEFEAT) {
+					set_defeat_music_list(end_level.transient.custom_endlevel_music);
+				} else {
+					set_victory_music_list(end_level.transient.custom_endlevel_music);
+				}
+			}
 
-						return VICTORY; // this is probably only a story scenario, i.e. has its endlevel in the prestart event
-					}
-					const bool obs = is_observer();
-					if (game_config::exit_at_end) {
-						exit(0);
-					}
-					if (end_level_result == DEFEAT || end_level_result == VICTORY)
-					{
-						saved_game_.classification().completion = (end_level_result == VICTORY) ? "victory" : "defeat";
-						// If we're a player, and the result is victory/defeat, then send
-						// a message to notify the server of the reason for the game ending.
-						if (!obs) {
-							config cfg;
-							config& info = cfg.add_child("info");
-							info["type"] = "termination";
-							info["condition"] = "game over";
-							info["result"] = saved_game_.classification().completion;
-							network::send_data(cfg, 0);
-						} else {
-							gui2::show_transient_message(gui_->video(),_("Game Over"),
-												_("The game is over."));
-							return OBSERVER_END;
-						}
-					}
+			if (gamestate_.board_.teams().empty())
+			{
+				//store persistent teams
+				saved_game_.set_snapshot(config());
 
-					if (end_level_result == QUIT) {
-						return QUIT;
-					}
-					else if (end_level_result == DEFEAT)
-					{
-						saved_game_.classification().completion = "defeat";
-						game_events::fire("defeat");
+				return VICTORY; // this is probably only a story scenario, i.e. has its endlevel in the prestart event
+			}
+			const bool obs = is_observer();
+			if (game_config::exit_at_end) {
+				exit(0);
+			}
+			if (end_level_result == DEFEAT || end_level_result == VICTORY)
+			{
+				saved_game_.classification().completion = (end_level_result == VICTORY) ? "victory" : "defeat";
+				// If we're a player, and the result is victory/defeat, then send
+				// a message to notify the server of the reason for the game ending.
+				if (!obs) {
+					config cfg;
+					config& info = cfg.add_child("info");
+					info["type"] = "termination";
+					info["condition"] = "game over";
+					info["result"] = saved_game_.classification().completion;
+					network::send_data(cfg, 0);
+				} else {
+					gui2::show_transient_message(gui_->video(),_("Game Over"),
+										_("The game is over."));
+					return OBSERVER_END;
+				}
+			}
 
-						if (!obs) {
-							const std::string& defeat_music = select_defeat_music();
-							if(defeat_music.empty() != true)
-								sound::play_music_once(defeat_music);
+			if (end_level_result == QUIT) {
+				return QUIT;
+			}
+			else if (end_level_result == DEFEAT)
+			{
+				saved_game_.classification().completion = "defeat";
+				game_events::fire("defeat");
 
-							persist_.end_transaction();
-							return DEFEAT;
-						} else {
-							return QUIT;
-						}
-					}
-					else if (end_level_result == VICTORY)
-					{
-						saved_game_.classification().completion =
-							!end_level.transient.linger_mode ? "running" : "victory";
-						game_events::fire("victory");
+				if (!obs) {
+					const std::string& defeat_music = select_defeat_music();
+					if(defeat_music.empty() != true)
+						sound::play_music_once(defeat_music);
+						persist_.end_transaction();
+					return DEFEAT;
+				} else {
+					return QUIT;
+				}
+			}
+			else if (end_level_result == VICTORY)
+			{
+				saved_game_.classification().completion =
 
-						//
-						// Play victory music once all victory events
-						// are finished, if we aren't observers.
-						//
-						// Some scenario authors may use 'continue'
-						// result for something that is not story-wise
-						// a victory, so let them use [music] tags
-						// instead should they want special music.
-						//
-						if (!obs && end_level.transient.linger_mode) {
-							const std::string& victory_music = select_victory_music();
-							if(victory_music.empty() != true)
-								sound::play_music_once(victory_music);
-						}
+				!end_level.transient.linger_mode ? "running" : "victory";
+				game_events::fire("victory");
 
-						LOG_NG << "Healing survived units\n";
-						gamestate_.board_.heal_all_survivors();
+				//
+				// Play victory music once all victory events
+				// are finished, if we aren't observers.
+				//
+				// Some scenario authors may use 'continue'
+				// result for something that is not story-wise
+				// a victory, so let them use [music] tags
+				// instead should they want special music.
+				//
+				if (!obs && end_level.transient.linger_mode) {
+					const std::string& victory_music = select_victory_music();
+					if(victory_music.empty() != true)
+						sound::play_music_once(victory_music);
+				}
 
-						saved_game_.remove_snapshot();
-						if(!is_observer()) {
-							persist_.end_transaction();
-						}
+				LOG_NG << "Healing survived units\n";
+				gamestate_.board_.heal_all_survivors();
 
-						return VICTORY;
-					}
-					else if (end_level_result == SKIP_TO_LINGER)
-					{
-						LOG_NG << "resuming from loaded linger state...\n";
-						//as carryover information is stored in the snapshot, we have to re-store it after loading a linger state
-						saved_game_.set_snapshot(config());
-						if(!is_observer()) {
-							persist_.end_transaction();
-						}
-						return VICTORY;
-					}
+				saved_game_.remove_snapshot();
+				if(!is_observer()) {
+					persist_.end_transaction();
+				}
 
-					break;
-				//END CASES
-			} // END SWITCH
+				return VICTORY;
+			}
+			else if (end_level_result == SKIP_TO_LINGER)
+			{
+				LOG_NG << "resuming from loaded linger state...\n";
+				//as carryover information is stored in the snapshot, we have to re-store it after loading a linger state
+				saved_game_.set_snapshot(config());
+				if(!is_observer()) {
+					persist_.end_transaction();
+				}
+				return VICTORY;
+			}
 		} //end if
 	} catch(const game::load_game_exception &) {
 		// Loading a new game is effectively a quit.

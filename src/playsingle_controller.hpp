@@ -48,8 +48,8 @@ public:
 
 	LEVEL_RESULT play_scenario(const config::const_child_itors &story,
 		bool skip_replay);
-	possible_end_play_signal play_scenario_init(end_level_data & eld, bool & past_prestart );
-	possible_end_play_signal play_scenario_main_loop(end_level_data & eld, bool & past_prestart );
+	boost::optional<LEVEL_RESULT> play_scenario_init(end_level_data & eld, bool & past_prestart );
+	boost::optional<LEVEL_RESULT> play_scenario_main_loop(end_level_data & eld, bool & past_prestart );
 
 	virtual void handle_generic_event(const std::string& name);
 
