@@ -141,6 +141,20 @@ private:
 	gui::button launch_;
 	gui::button cancel_;
 	gui::drop_group_manager_ptr combo_control_group_;
+
+	struct process_event_data {
+		bool launch, quit;
+
+		process_event_data()
+			: launch(false), quit(false)
+		{}
+		process_event_data(bool l, bool q)
+			: launch(l), quit(q)
+		{}
+	};
+
+	void process_event_impl(const process_event_data &);
+	bool plugin_event_helper(const process_event_data &);
 };
 
 } // end namespace mp
