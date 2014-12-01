@@ -27,11 +27,13 @@
 #include "statistics.hpp"
 #include "saved_game.hpp"
 #include "mp_ui_alerts.hpp"
+#include "scripting/plugins/context.hpp"
 #include "unit_types.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 
+#include <boost/bind.hpp>
 #include <boost/foreach.hpp>
 
 static lg::log_domain log_network("network");
@@ -198,6 +200,12 @@ wait::wait(game_display& disp, const config& cfg, saved_game& state,
 {
 	game_menu_.set_numeric_keypress_selection(false);
 	gamelist_updated();
+
+	plugins_context_.reset(new plugins_context("Multiplayer Wait"));
+
+	//These structure initializers create a lobby::process_data_event
+	plugins_context_->set_callback("quit", 		boost::bind(&wait::process_event_impl, this, true), 						false);
+	plugins_context_->set_callback("chat",		boost::bind(&wait::send_chat_message, this, boost::bind(get_str, _1, "message"), false),	true);
 }
 
 wait::~wait()
@@ -215,8 +223,14 @@ wait::~wait()
 
 void wait::process_event()
 {
-	if (cancel_button_.pressed())
+	process_event_impl(cancel_button_.pressed());
+}
+
+void wait::process_event_impl(bool quit)
+{
+	if (quit) {
 		set_result(QUIT);
+	}
 }
 
 void wait::join_game(bool observe)

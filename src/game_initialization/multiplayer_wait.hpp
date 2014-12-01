@@ -79,6 +79,8 @@ private:
 
 	const bool first_scenario_;
 	bool stop_updates_;
+
+	void process_event_impl(bool);
 };
 
 }
