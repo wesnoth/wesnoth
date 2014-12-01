@@ -131,10 +131,10 @@ private:
 };
 
 // Add compiler directive suppressing unused variable warning
-#if defined(__GNUCC__) || defined(__clang__) || defined(__MINGW32__)
-#define ATTR_UNUSED( x ) __attribute__((unused)) x
+#if defined(__GNUC__) || defined(__clang__) || defined(__MINGW32__)
+#define ATTR_UNUSED __attribute__((unused))
 #else
-#define ATTR_UNUSED( x ) x
+#define ATTR_UNUSED
 #endif
 
 
@@ -176,24 +176,24 @@ BOOST_PP_SEQ_FOR_EACH(EXPANDENUMTYPE,  , MAKEPAIRS(CONTENT)) \
 
 
 #define MAKEENUMCAST( NAME, PREFIX, CONTENT, COUNT_VAR ) \
-PREFIX NAME CAT3(string_to_, NAME, _default) (const std::string& str, NAME def) \
+PREFIX NAME ATTR_UNUSED CAT3(string_to_, NAME, _default) (const std::string& str, NAME def) \
 { \
         BOOST_PP_SEQ_FOR_EACH(EXPANDENUMFUNCTION,  , MAKEPAIRS(CONTENT)) \
         return def; \
 } \
-PREFIX NAME CAT2(string_to_,NAME) (const std::string& str) \
+PREFIX NAME ATTR_UNUSED CAT2(string_to_,NAME) (const std::string& str) \
 { \
         BOOST_PP_SEQ_FOR_EACH(EXPANDENUMFUNCTION,  , MAKEPAIRS(CONTENT)) \
         throw bad_enum_cast( #NAME , str); \
 } \
-PREFIX std::string CAT2(NAME,_to_string) (NAME val) \
+PREFIX std::string ATTR_UNUSED CAT2(NAME,_to_string) (NAME val) \
 { \
         BOOST_PP_SEQ_FOR_EACH(EXPANDENUMFUNCTIONREV,  , MAKEPAIRS(CONTENT)) \
         assert(false && "Corrupted enum found with identifier NAME"); \
         throw 42; \
 } \
 \
-PREFIX const size_t ATTR_UNUSED( COUNT_VAR ) = \
+PREFIX const size_t ATTR_UNUSED COUNT_VAR  = \
 BOOST_PP_SEQ_FOR_EACH(EXPANDENUMFUNCTIONCOUNT, , MAKEPAIRS(CONTENT)) \
 0;
 

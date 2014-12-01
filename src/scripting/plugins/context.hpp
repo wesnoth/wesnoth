@@ -46,6 +46,8 @@ public:
 	size_t clear_callbacks();
 
 	void set_accessor(const std::string & name, accessor_function);
+	void set_accessor_string(const std::string & name, boost::function<std::string(config)>);	//helpers which create a config from a simple type
+	void set_accessor_int(const std::string & name, boost::function<int(config)>);
 	size_t erase_accessor(const std::string & name);
 	size_t clear_accessors();
 

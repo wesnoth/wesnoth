@@ -16,6 +16,8 @@
 
 #include "scripting/plugins/manager.hpp"
 
+#include "config_assign.hpp"
+
 #include <assert.h>
 #include <utility>
 #include <boost/bind.hpp>
@@ -60,6 +62,23 @@ void plugins_context::set_accessor(const std::string & name, accessor_function f
 {
 	accessors_[name] = func;
 }
+
+template<typename T>
+static config make_config(const std::string & name, const T & val)
+{
+	return config_of(name, val);
+}
+
+void plugins_context::set_accessor_string(const std::string & name, boost::function<std::string(config)> func)
+{
+	set_accessor(name, boost::bind(&make_config<std::string>, name, boost::bind(func, _1)));
+}
+
+void plugins_context::set_accessor_int(const std::string & name, boost::function<int(config)> func)
+{
+	set_accessor(name, boost::bind(&make_config<int>, name, boost::bind(func, _1)));
+}
+
 
 size_t plugins_context::erase_accessor(const std::string & name)
 {

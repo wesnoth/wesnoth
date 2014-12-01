@@ -44,6 +44,7 @@
 #include "formula_string_utils.hpp"
 #include "events.hpp"
 #include "save_blocker.hpp"
+#include "scripting/plugins/context.hpp"
 #include "soundsource.hpp"
 #include "storyscreen/interface.hpp"
 #include "unit.hpp"
@@ -92,6 +93,9 @@ playsingle_controller::playsingle_controller(const config& level,
 	ai::game_info ai_info;
 	ai::manager::set_ai_info(ai_info);
 	ai::manager::add_observer(this) ;
+
+	plugins_context_->set_accessor_string("level_result", boost::bind(&LEVEL_RESULT_to_string, level_result_));
+	plugins_context_->set_accessor_int("turn", boost::bind(&play_controller::turn, this));
 }
 
 playsingle_controller::~playsingle_controller()

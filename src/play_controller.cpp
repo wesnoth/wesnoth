@@ -48,6 +48,7 @@
 #include "saved_game.hpp"
 #include "save_blocker.hpp"
 #include "scripting/game_lua_kernel.hpp"
+#include "scripting/plugins/context.hpp"
 #include "sound.hpp"
 #include "soundsource.hpp"
 #include "synced_context.hpp"
@@ -265,6 +266,8 @@ void play_controller::init(CVideo& video){
 	init_managers();
 	loadscreen::global_loadscreen->start_stage("start game");
 	loadscreen_manager->reset();
+
+	plugins_context_->set_callback("quit", boost::bind(&play_controller::force_end_level, this, QUIT), false);
 }
 
 void play_controller::init_managers(){
