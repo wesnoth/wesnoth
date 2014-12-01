@@ -98,6 +98,20 @@ private:
 	mp_game_settings& parameters_;
 	ng::configure_engine engine_;
 	options::manager options_manager_;
+
+	struct process_event_data {
+		bool launch, quit;
+
+		process_event_data()
+			: launch(false), quit(false)
+		{}
+		process_event_data(bool l, bool q)
+			: launch(l), quit(q)
+		{}
+	};
+
+	void process_event_impl(const process_event_data &);
+	bool plugin_event_helper(const process_event_data &);
 };
 
 } // end namespace mp

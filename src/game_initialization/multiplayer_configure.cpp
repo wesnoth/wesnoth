@@ -30,10 +30,12 @@
 #include "filesystem.hpp"
 #include "log.hpp"
 #include "saved_game.hpp"
+#include "scripting/plugins/context.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 
+#include <boost/bind.hpp>
 #include <boost/foreach.hpp>
 
 static lg::log_domain log_config("config");
@@ -200,6 +202,13 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	name_entry_.set_text(engine_.game_name_default());
 
 	gamelist_updated();
+
+	plugins_context_.reset(new plugins_context("Multiplayer Configure"));
+
+	//These structure initializers create a lobby::process_data_event
+	plugins_context_->set_callback("launch", 	boost::bind(&configure::plugin_event_helper, this, process_event_data (true, false)));
+	plugins_context_->set_callback("quit", 		boost::bind(&configure::plugin_event_helper, this, process_event_data (false, true)));
+	plugins_context_->set_callback("set_name",	boost::bind(&gui::textbox::set_text, &name_entry_, boost::bind(get_str, _1, "name"), font::NORMAL_COLOR), true);
 }
 
 configure::~configure()
@@ -283,18 +292,33 @@ const mp_game_settings& configure::get_parameters()
 	return engine_.get_parameters();
 }
 
+bool configure::plugin_event_helper(const process_event_data & data)
+{
+	process_event_impl(data);
+	return get_result() == mp::ui::CONTINUE;
+}
+
 void configure::process_event()
 {
 	int mousex, mousey;
 	SDL_GetMouseState(&mousex,&mousey);
 	tooltips::process(mousex, mousey);
 
-	if(cancel_game_.pressed()) {
+	process_event_data data;
+	data.launch = launch_game_.pressed();
+	data.quit = cancel_game_.pressed();
+
+	process_event_impl(data);
+}
+
+void configure::process_event_impl(const process_event_data & data)
+{
+	if(data.quit) {
 		set_result(QUIT);
 		return;
 	}
 
-	if(launch_game_.pressed()) {
+	if(data.launch) {
 		// check if the map is valid
 		if (name_entry_.text() == "") {
 			gui2::show_transient_message(disp_.video(), "", _("You must enter a name."));
