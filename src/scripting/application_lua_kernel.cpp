@@ -234,8 +234,17 @@ static int impl_context_accessor(lua_State * L, boost::shared_ptr<lua_context_ba
 		luaL_error(L , "Error, you tried to use an invalid context object in a lua thread");
 	}
 
-	luaW_pushconfig(L, func());
-	return 1;
+	if(lua_gettop(L)) {
+		config temp;
+		if(!luaW_toconfig(L, 1, temp)) {
+			luaL_argerror(L, 1, "Error, tried to parse a config but some fields were invalid");
+		}
+		luaW_pushconfig(L, func(temp));
+		return 1;
+	} else {
+		luaW_pushconfig(L, func(config()));
+		return 1;
+	}
 }
 
 application_lua_kernel::request_list application_lua_kernel::thread::run_script(const plugins_context & ctxt, const std::vector<plugins_manager::event> & queue)

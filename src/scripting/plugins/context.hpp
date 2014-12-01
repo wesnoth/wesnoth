@@ -32,7 +32,7 @@ public:
 	typedef boost::function<bool(config)> callback_function;
 	typedef struct { char const * name; callback_function func; } Reg;
 
-	typedef boost::function<config(void)> accessor_function;
+	typedef boost::function<config(config)> accessor_function;
 	typedef struct { char const * name; accessor_function func; } aReg;
 
 	plugins_context( const std::string & name );

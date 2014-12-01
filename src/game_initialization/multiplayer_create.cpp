@@ -71,6 +71,16 @@ static config get_selected_helper(const ng::create_engine * eng_ptr)
 		("type", ng::level::TYPE_to_string(eng.current_level_type()));
 }
 
+static config find_helper(const ng::create_engine * eng_ptr, const config & cfg)
+{
+	assert(eng_ptr);
+	const ng::create_engine & eng = *eng_ptr;
+	std::string str = cfg["id"].str();
+
+	return config_of("index", eng.find_level_by_id(str))
+		("type", ng::level::TYPE_to_string(eng.find_level_type_by_id(str)));
+}
+
 create::create(game_display& disp, const config& cfg, saved_game& state,
 	chat& c, config& gamelist) :
 	ui(disp, _("Create Game"), cfg, c, gamelist),
@@ -208,6 +218,7 @@ create::create(game_display& disp, const config& cfg, saved_game& state,
 
 	plugins_context_->set_accessor("game_config",	boost::bind(&create::game_config, this));
 	plugins_context_->set_accessor("get_selected",  boost::bind(&get_selected_helper, &engine_));
+	plugins_context_->set_accessor("find_level",  	boost::bind(&find_helper, &engine_, _1));
 }
 
 create::~create()
