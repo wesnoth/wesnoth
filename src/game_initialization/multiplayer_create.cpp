@@ -215,6 +215,7 @@ create::create(game_display& disp, const config& cfg, saved_game& state,
 	plugins_context_->set_callback("create", 	boost::bind(&create::plugin_event_helper, this, process_event_data (true, false, false)));
 	plugins_context_->set_callback("load", 		boost::bind(&create::plugin_event_helper, this, process_event_data (false, true, false)));
 	plugins_context_->set_callback("quit", 		boost::bind(&create::plugin_event_helper, this, process_event_data (false, false, true)));
+	plugins_context_->set_callback("select_level",	boost::bind(&gui::menu::move_selection, &levels_menu_, boost::bind(get_size_t, _1, "index", 0u)), true);
 
 	plugins_context_->set_accessor("game_config",	boost::bind(&create::game_config, this));
 	plugins_context_->set_accessor("get_selected",  boost::bind(&get_selected_helper, &engine_));

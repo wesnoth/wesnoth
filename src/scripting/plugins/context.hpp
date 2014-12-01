@@ -63,5 +63,6 @@ private:
 //A shim to assist in retrieving config attribute values
 extern const boost::function< std::string ( const config & , const std::string & ) > get_str;
 extern const boost::function< int ( const config & , const std::string &, int ) > get_int;
+extern const boost::function< size_t ( const config & , const std::string &, size_t ) > get_size_t;
 
 #endif
