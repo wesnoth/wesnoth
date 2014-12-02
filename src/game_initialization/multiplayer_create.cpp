@@ -215,6 +215,7 @@ create::create(game_display& disp, const config& cfg, saved_game& state,
 	plugins_context_->set_callback("create", 	boost::bind(&create::plugin_event_helper, this, process_event_data (true, false, false)));
 	plugins_context_->set_callback("load", 		boost::bind(&create::plugin_event_helper, this, process_event_data (false, true, false)));
 	plugins_context_->set_callback("quit", 		boost::bind(&create::plugin_event_helper, this, process_event_data (false, false, true)));
+	plugins_context_->set_callback("chat",		boost::bind(&create::send_chat_message, this, boost::bind(get_str, _1, "message"), false),	true);
 	plugins_context_->set_callback("select_level",	boost::bind(&gui::menu::move_selection, &levels_menu_, boost::bind(get_size_t, _1, "index", 0u)), true);
 	plugins_context_->set_callback("select_type",	boost::bind(&create::select_level_type_helper, this, boost::bind(get_str, _1, "type")), true);
 
