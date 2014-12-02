@@ -425,7 +425,7 @@ boost::optional<LEVEL_RESULT> playsingle_controller::play_scenario_init(end_leve
 	return boost::none;
 }
 
-boost::optional<LEVEL_RESULT> playsingle_controller::play_scenario_main_loop(end_level_data & end_level, bool & /*past_prestart*/) {
+LEVEL_RESULT playsingle_controller::play_scenario_main_loop(end_level_data & end_level, bool & /*past_prestart*/) {
 	LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
 
 	// Initialize countdown clock.
@@ -517,7 +517,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			signal = play_scenario_main_loop(end_level, past_prestart);
 		}
 
-		if (signal) {
+		assert(signal); //play_scenario_main_loop always returns a LEVEL_RESULT
+		{
 			LEVEL_RESULT end_level_result = *signal;
 
 			if(!past_prestart) {
