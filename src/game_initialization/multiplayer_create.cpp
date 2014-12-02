@@ -216,10 +216,22 @@ create::create(game_display& disp, const config& cfg, saved_game& state,
 	plugins_context_->set_callback("load", 		boost::bind(&create::plugin_event_helper, this, process_event_data (false, true, false)));
 	plugins_context_->set_callback("quit", 		boost::bind(&create::plugin_event_helper, this, process_event_data (false, false, true)));
 	plugins_context_->set_callback("select_level",	boost::bind(&gui::menu::move_selection, &levels_menu_, boost::bind(get_size_t, _1, "index", 0u)), true);
+	plugins_context_->set_callback("select_type",	boost::bind(&create::select_level_type_helper, this, boost::bind(get_str, _1, "type")), true);
 
 	plugins_context_->set_accessor("game_config",	boost::bind(&create::game_config, this));
 	plugins_context_->set_accessor("get_selected",  boost::bind(&get_selected_helper, &engine_));
 	plugins_context_->set_accessor("find_level",  	boost::bind(&find_helper, &engine_, _1));
+}
+
+void create::select_level_type_helper(const std::string & str)
+{
+	for (size_t idx = 0; idx < available_level_types_.size(); idx++) {
+		if (ng::level::TYPE_to_string(available_level_types_[idx]) == str) {
+			level_type_combo_.set_selected(idx);
+			init_level_type_changed(0);
+			process_event_impl(process_event_data(false, false, false));
+		}
+	}
 }
 
 create::~create()

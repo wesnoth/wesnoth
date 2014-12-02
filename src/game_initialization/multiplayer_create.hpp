@@ -107,6 +107,8 @@ private:
 
 	void process_event_impl(const process_event_data &);
 	bool plugin_event_helper(const process_event_data &);
+
+	void select_level_type_helper(const std::string & str);
 };
 
 } // end namespace mp
