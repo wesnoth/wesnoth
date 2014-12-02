@@ -1446,10 +1446,8 @@ void game::send_history(const network::connection sock) const
 	//concatenating the buffers.
 	//TODO: Work out how to concentate buffers without decompressing.
 	std::string buf;
-	for(std::vector<simple_wml::document*>::iterator i = history_.begin();
-	    i != history_.end(); ++i) {
-		buf += (*i)->output();
-		delete *i;
+	for(t_history::iterator i = history_.begin(); i != history_.end(); ++i) {
+		buf += i->output();
 	}
 
 	try {
@@ -1477,14 +1475,11 @@ void game::save_replay() {
 	if (!save_replays_ || !started_ || history_.empty()) return;
 
 	std::string replay_commands;
-	for(std::vector<simple_wml::document*>::iterator i = history_.begin();
-			i != history_.end(); ++i) {
-		const simple_wml::node::child_list& turn_list = (*i)->root().children("turn");
-		for (simple_wml::node::child_list::const_iterator turn = turn_list.begin();
-				turn != turn_list.end(); ++turn) {
+	for(t_history::iterator i = history_.begin(); i != history_.end(); ++i) {
+		const simple_wml::node::child_list& turn_list = i->root().children("turn");
+		for (simple_wml::node::child_list::const_iterator turn = turn_list.begin(); turn != turn_list.end(); ++turn) {
 			replay_commands += simple_wml::node_to_string(**turn);
 		}
-		delete *i;
 	}
 	history_.clear();
 
@@ -1535,9 +1530,6 @@ void game::record_data(simple_wml::document* data) {
 
 void game::clear_history() {
 	if (history_.empty()) return;
-	for(std::vector<simple_wml::document*>::iterator i = history_.begin(); i != history_.end(); ++i) {
-		delete *i;
-	}
 	history_.clear();
 }
 
