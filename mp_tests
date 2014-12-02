@@ -1,0 +1,18 @@
+#!/bin/bash
+
+tab="--tab"
+cmd0="bash -c './wesnothd --port 12345 --log-debug=server --log-warning=config';bash"
+cmd1="bash -c './wesnoth --plugin host.lua --server=localhost:12345 --username=host';bash"
+cmd2="bash -c './wesnoth --plugin join.lua --server=localhost:12345 --username=join';bash"
+#cmd3="bash -c './client3';bash"
+
+foo=""
+
+foo+=($tab -e "$cmd0")
+foo+=($tab -e "$cmd1")
+foo+=($tab -e "$cmd2")
+#foo+=($tab -e "$cmd3")
+
+gnome-terminal "${foo[@]}"
+
+exit 0
