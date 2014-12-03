@@ -57,6 +57,8 @@ public:
 	std::string get_detailed_status(size_t idx);
 	std::string get_name (size_t idx);
 
+	bool any_running();
+
 	size_t load_plugin(const std::string & name, const std::string & filename); 	//throws exceptions in case of failure
 	size_t add_plugin(const std::string & name, const std::string & prog);		//throws exceptions in case of failure
 

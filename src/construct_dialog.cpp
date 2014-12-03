@@ -286,7 +286,24 @@ int dialog::show(int xloc, int yloc)
 
 int dialog::show()
 {
-    if (disp_.video().faked()) return CLOSE_DIALOG;
+	if (disp_.video().faked()) {
+		plugins_manager * pm = plugins_manager::get();
+		if (pm && pm->any_running()) {
+			pm->notify_event("show_dialog", config(config_of
+					("title",	title_)
+					("message",	message_->get_text())
+			));
+
+			plugins_context pc("Dialog");
+			pc.set_callback("set_result", boost::bind(&dialog::set_result, this, boost::bind(get_int, _1, "result", CLOSE_DIALOG)), false);
+
+			while (pm->any_running() && result() == CONTINUE_DIALOG) {
+				pc.play_slice();
+			}
+			return result();
+		}
+		return CLOSE_DIALOG;
+	}
 
 	if(disp_.video().update_locked()) {
 		ERR_DP << "display locked ignoring dialog '" << title_ << "' '" << message_->get_text() << "'" << std::endl;

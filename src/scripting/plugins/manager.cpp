@@ -205,3 +205,13 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 	}
 	*local = false;
 }
+
+bool plugins_manager::any_running()
+{
+	for (size_t i = 0; i < size(); ++i) {
+		if (RUNNING == get_status(i)) {
+			return true;
+		}
+	}
+	return false;
+}
