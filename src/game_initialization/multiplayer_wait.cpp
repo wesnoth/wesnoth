@@ -44,6 +44,10 @@ static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 #define ERR_RG LOG_STREAM(err, log_enginerefac)
 
+static lg::log_domain log_mp("mp/main");
+#define DBG_MP LOG_STREAM(debug, log_mp)
+
+
 namespace {
 
 const SDL_Rect leader_pane_position = {-260,-370,260,370};
@@ -237,6 +241,7 @@ void wait::join_game(bool observe)
 {
 	const bool download_res = download_level_data();
 	if (!download_res) {
+		DBG_MP << "mp wait: could not download level data, quitting...";
 		set_result(QUIT);
 		return;
 	} else if (!get_scenario()["allow_new_game"].to_bool(true) && !level_.child_or_empty("multiplayer")["savegame"].to_bool(false)) {
@@ -303,6 +308,8 @@ void wait::join_game(bool observe)
 		int side_num = -1, nb_sides = 0;
 		BOOST_FOREACH(const config &sd, get_scenario().child_range("side"))
 		{
+			DBG_MP << "*** side " << nb_sides << "***\n" << sd.debug() << "***\n";
+
 			if (sd["controller"] == "reserved" && sd["current_player"] == preferences::login())
 			{
 				side_choice = &sd;
@@ -324,6 +331,11 @@ void wait::join_game(bool observe)
 			++nb_sides;
 		}
 		if (!side_choice) {
+			size_t count = 0;
+			for(config::child_itors its = get_scenario().child_range("side"); its.second != its.first; ++its.first) {
+				++count;
+			}
+			DBG_MP << "could not find a side, all " << count << " sides were unsuitable\n";
 			set_result(QUIT);
 			return;
 		}
@@ -660,6 +672,7 @@ bool wait::has_level_data() const
 
 bool wait::download_level_data()
 {
+	DBG_MP << "download_level_data()\n";
 	if (!first_scenario_) {
 		// Ask for the next scenario data.
 		network::send_data(config("load_next_scenario"), 0);
@@ -670,6 +683,7 @@ bool wait::download_level_data()
 			disp(), _("Getting game data..."), level_);
 
 		if (!data_res) {
+			DBG_MP << "download_level_data bad results\n";
 			return false;
 		}
 		check_response(data_res, level_);
@@ -682,6 +696,8 @@ bool wait::download_level_data()
 		config cfg = level_.child("next_scenario");
 		level_ = cfg;
 	}
+
+	DBG_MP << "download_level_data() success.\n";
 
 	return true;
 }
