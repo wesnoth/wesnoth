@@ -34,6 +34,15 @@
 #include <cassert>
 #ifdef _WIN32
 #include <boost/range/iterator_range.hpp>
+#ifdef INADDR_ANY
+	#undef INADDR_ANY
+#endif
+#ifdef INADDR_BROADCAST
+	#undef INADDR_BROADCAST
+#endif
+#ifdef INADDR_NONE
+	#undef INADDR_NONE
+#endif
 #include <windows.h> //GetUserName
 #endif
 
