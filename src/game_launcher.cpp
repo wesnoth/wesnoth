@@ -372,7 +372,7 @@ bool game_launcher::init_video()
 {
 	if(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test) {
 		if( !(cmdline_opts_.multiplayer || cmdline_opts_.screenshot || cmdline_opts_.headless_unit_test) ) {
-			std::cerr << "--nogui flag is only valid with --multiplayer flag or --screenshot flag\n";
+			std::cerr << "--nogui flag is only valid with --multiplayer or --screenshot flags\n";
 			return false;
 		}
 		video_.make_fake();
