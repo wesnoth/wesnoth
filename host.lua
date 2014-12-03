@@ -21,11 +21,14 @@ local function plugin()
 
   repeat
     events, context, info = coroutine.yield()
-    idle_text("in " .. info.name .. " waiting for titlescreen")
-  until info.name == "titlescreen"
+    idle_text("in " .. info.name .. " waiting for titlescreen or lobby")
+  until info.name == "titlescreen" or info.name == "Multiplayer Lobby"
 
-  context.play_multiplayer({})
-  std_print("host: playing multiplayer...")
+  while info.name == "titlescreen" do
+    context.play_multiplayer({})
+    std_print("host: playing multiplayer...")
+    events, context, info = coroutine.yield()
+  end
 
   repeat
     events, context, info = coroutine.yield()
