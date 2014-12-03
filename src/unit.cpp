@@ -51,7 +51,14 @@
 #include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/intrusive_ptr.hpp>      // for intrusive_ptr
 #include <boost/function_output_iterator.hpp>
+#ifdef _MSC_VER
+#pragma warning (push)
+#pragma warning (disable: 4510 4610)
+#endif
 #include <boost/range/algorithm.hpp>
+#ifdef _MSC_VER
+#pragma warning (pop)
+#endif
 #include <cassert>                     // for assert
 #include <cstdlib>                     // for NULL, rand
 #include <exception>                    // for exception
@@ -59,6 +66,7 @@
 #include <new>                          // for operator new
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include "SDL_video.h"                  // for SDL_Color
+
 
 namespace t_translation { struct t_terrain; }
 
