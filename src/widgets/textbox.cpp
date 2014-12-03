@@ -332,6 +332,10 @@ surface textbox::add_text_line(const ucs4::string& text, const SDL_Color& color)
 					char_y_.erase(char_y_.end()-backup, char_y_.end());
 					wrapped_text.erase(wrapped_text.end()-backup, wrapped_text.end());
 				}
+			} else {
+				if (visible_string == std::string("").append(unicode_cast<utf8::string>(*itor))) {
+					break;	//breaks infinite loop where when running with a fake display, we word wrap a single character infinitely.
+				}
 			}
 			backup_itor = text.end();
 			wrapped_text.push_back(ucs4::char_t('\n'));

@@ -39,6 +39,9 @@ static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
 #define ERR_NW LOG_STREAM(err, log_network)
 
+static lg::log_domain log_mp("mp/main");
+#define DBG_MP LOG_STREAM(debug, log_mp)
+
 namespace {
 	/** The maximum number of messages in the chat history. */
 	const size_t max_messages = 256;
@@ -113,10 +116,12 @@ void chat::init_textbox(gui::textbox& textbox)
 
 void chat::update_textbox(gui::textbox& textbox)
 {
+	//DBG_MP << "update_textbox...\n";
 	for(msg_hist::const_iterator itor = message_history_.begin() + last_update_;
 			itor != message_history_.end(); ++itor) {
 		textbox.append_text(format_message(*itor), true, color_message(*itor));
 	}
+	//DBG_MP << "update_textbox end\n";
 
 	last_update_ = message_history_.size();
 }
