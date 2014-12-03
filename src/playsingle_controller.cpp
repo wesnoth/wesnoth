@@ -354,7 +354,7 @@ boost::optional<LEVEL_RESULT> playsingle_controller::play_scenario_init(end_leve
 		fire_preload();
 	} catch (end_level_exception & e) {
 		return e.result;
-	} catch (end_turn_exception & e) {
+	} catch (end_turn_exception &) {
 		assert(false && "caugh end_turn exception in a bad place... terminating.");
 		std::terminate();
 	}
@@ -385,7 +385,7 @@ boost::optional<LEVEL_RESULT> playsingle_controller::play_scenario_init(end_leve
 			fire_prestart();
 		} catch (end_level_exception & e) {
 			return e.result;
-		} catch (end_turn_exception & e) {
+		} catch (end_turn_exception &) {
 			assert(false && "caugh end_turn exception in a bad place... terminating.");
 			std::terminate();
 		}
@@ -400,7 +400,7 @@ boost::optional<LEVEL_RESULT> playsingle_controller::play_scenario_init(end_leve
 			fire_start(true);
 		} catch (end_level_exception & e) {
 			return e.result;
-		} catch (end_turn_exception & e) {
+		} catch (end_turn_exception &) {
 			assert(false && "caugh end_turn exception in a bad place... terminating.");
 			std::terminate();
 		}
@@ -416,7 +416,7 @@ boost::optional<LEVEL_RESULT> playsingle_controller::play_scenario_init(end_leve
 			fire_start(false);
 		} catch (end_level_exception & e) {
 			return e.result;
-		} catch (end_turn_exception & e) {
+		} catch (end_turn_exception &) {
 			assert(false && "caugh end_turn exception in a bad place... terminating.");
 			std::terminate();
 		}
