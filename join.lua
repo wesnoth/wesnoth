@@ -81,23 +81,29 @@ local function plugin()
 
   context.join({})
 
-  repeat
-    events, context, info = coroutine.yield()
-    if context.join then
-      context.join({})
-    end
-
-    idle_text("in " .. info.name .. " waiting for leader select dialog")
-  until info.name == "Dialog"
-
-  std_print("join: got a leader select dialog...")
-  context.set_result({result = 0})
   events, context, info = coroutine.yield()
 
   repeat
+    if context.join then
+      context.join({})
+    else
+      std_print("did not find join...")
+    end
+
     events, context, info = coroutine.yield()
-    idle_text("in " .. info.name .. " waiting for mp wait")
-  until info.name == "Multiplayer Wait"
+    idle_text("in " .. info.name .. " waiting for leader select dialog")
+  until info.name == "Dialog" or info.name == "Multiplayer Wait"
+
+  if info.name == "Dialog" then
+    std_print("join: got a leader select dialog...")
+    context.set_result({result = 0})
+    events, context, info = coroutine.yield()
+
+    repeat
+      events, context, info = coroutine.yield()
+      idle_text("in " .. info.name .. " waiting for mp wait")
+    until info.name == "Multiplayer Wait"
+  end
 
   std_print("join: got to multiplayer wait...")
   context.chat({message = "ready"})
