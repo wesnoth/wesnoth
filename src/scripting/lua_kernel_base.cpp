@@ -507,9 +507,12 @@ int lua_kernel_base::intf_require(lua_State* L)
 	lua_rawget(L, -2);
 	if (!lua_isnil(L, -1) && !game_config::debug_lua) return 1;
 	lua_pop(L, 1);
+	lua_pushvalue(L, 1);
+	// stack is now [packagename] [wesnoth] [package] [packagename]
 
 	if (lua_fileops::load_file(L) != 1) return 0;
 	//^ should end with the file contents loaded on the stack. actually it will call lua_error otherwise, the return 0 is redundant.
+	// stack is now [packagename] [wesnoth] [package] [chunk]
 
 	if (!protected_call(0, 1)) return 0;
 	//^ historically if wesnoth.require fails it just yields nil and some logging messages, not a lua error
