@@ -100,10 +100,10 @@ private:
  */
 int load_file(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 1);
+	char const *m = luaL_checkstring(L, -1);
 	std::string p = filesystem::get_wml_location(m);
 	if (p.empty())
-		return luaL_argerror(L, 1, "file not found");
+		return luaL_argerror(L, -1, "file not found");
 
 #if 1
 	try
@@ -113,13 +113,15 @@ int load_file(lua_State *L)
 	}
 	catch(const std::exception & ex)
 	{
-		luaL_argerror(L, 1, ex.what());
+		luaL_argerror(L, -1, ex.what());
 	}
 #else
 	//oldcode to be deleted if newcode works
 	if (luaL_loadfile(L, p.c_str()))
 		return lua_error(L);
 #endif
+	lua_remove(L, -2);	//remove the filename from the stack
+
 	return 1;
 }
 
