@@ -113,13 +113,18 @@ class node
 {
 public:
 	node(document& doc, node* parent);
-	node(document& doc, node* parent, const char** str, int depth=0);
+	node(document& doc, node* parent, const char** str, int depth, string_span& textdomain);
 	~node();
 	struct attribute
 	{
-		attribute(const string_span& k, const string_span& v) : key(k), value(v) {}
+		attribute(const string_span& k, const string_span& v) : key(k), value(v), textdomain(string_span(0, 0))  {}
+		attribute(const string_span& k, const string_span& v, const string_span& t) : key(k), value(v), textdomain(t) {}
 		string_span key;
 		string_span value;
+		string_span textdomain;
+
+		bool is_translatable() const
+		{ return textdomain.size() != 0; }
 	};
 	typedef std::vector<node*> child_list;
 
@@ -161,8 +166,8 @@ public:
 
 	enum CACHE_STATUS { REFRESH_CACHE, DO_NOT_MODIFY_CACHE };
 
-	int output_size() const;
-	void output(char*& buf, CACHE_STATUS status=DO_NOT_MODIFY_CACHE);
+	int output_size(string_span& textdomain) const;
+	void output(char*& buf, string_span& textdomain, CACHE_STATUS status=DO_NOT_MODIFY_CACHE);
 
 	void copy_into(node& n) const;
 
