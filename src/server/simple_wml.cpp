@@ -344,8 +344,8 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 
 			read_attribute:
 			string_span value(s, end - s);
-			if(attr_.empty() == false && !(attr_.back().first < name)) {
-				ERR_SWML << "attributes: '" << attr_.back().first << "' < '" << name << "'" << std::endl;
+			if(attr_.empty() == false && !(attr_.back().key < name)) {
+				ERR_SWML << "attributes: '" << attr_.back().key << "' < '" << name << "'" << std::endl;
 				throw error("attributes not in order");
 			}
 
@@ -373,16 +373,16 @@ namespace {
 struct string_span_pair_comparer
 {
 	bool operator()(const string_span& a, const node::attribute& b) const {
-		return a < b.first;
+		return a < b.key;
 	}
 
 	bool operator()(const node::attribute& a, const string_span& b) const {
-		return a.first < b;
+		return a.key < b;
 	}
 
 	bool operator()(const node::attribute& a,
 	                const node::attribute& b) const {
-		return a.first < b.first;
+		return a.key < b.key;
 	}
 };
 }
@@ -394,7 +394,7 @@ const string_span& node::operator[](const char* key) const
 	std::pair<attribute_list::const_iterator,
 	          attribute_list::const_iterator> range = std::equal_range(attr_.begin(), attr_.end(), span, string_span_pair_comparer());
 	if(range.first != range.second) {
-		return range.first->second;
+		return range.first->value;
 	}
 
 	return empty;
@@ -416,7 +416,7 @@ node& node::set_attr(const char* key, const char* value)
 	std::pair<attribute_list::iterator,
 	          attribute_list::iterator> range = std::equal_range(attr_.begin(), attr_.end(), span, string_span_pair_comparer());
 	if(range.first != range.second) {
-		range.first->second = string_span(value);
+		range.first->value = string_span(value);
 	} else {
 		attr_.insert(range.first, attribute(span, string_span(value)));
 	}
@@ -702,7 +702,7 @@ int node::output_size() const
 
 	int res = 0;
 	for(attribute_list::const_iterator i = attr_.begin(); i != attr_.end(); ++i) {
-		res += i->first.size() + i->second.size() + 4;
+		res += i->key.size() + i->value.size() + 4;
 	}
 
 	size_t count_children = 0;
@@ -726,8 +726,8 @@ void node::shift_buffers(ptrdiff_t offset)
 	}
 
 	for(std::vector<attribute>::iterator i = attr_.begin(); i != attr_.end(); ++i) {
-		i->first = string_span(i->first.begin() + offset, i->first.size());
-		i->second = string_span(i->second.begin() + offset, i->second.size());
+		i->key = string_span(i->key.begin() + offset, i->key.size());
+		i->value = string_span(i->value.begin() + offset, i->value.size());
 	}
 
 	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
@@ -753,14 +753,14 @@ void node::output(char*& buf, CACHE_STATUS cache_status)
 	char* begin = buf;
 
 	for(std::vector<attribute>::iterator i = attr_.begin(); i != attr_.end(); ++i) {
-		memcpy(buf, i->first.begin(), i->first.size());
-		i->first = string_span(buf, i->first.size());
-		buf += i->first.size();
+		memcpy(buf, i->key.begin(), i->key.size());
+		i->key = string_span(buf, i->key.size());
+		buf += i->key.size();
 		*buf++ = '=';
 		*buf++ = '"';
-		memcpy(buf, i->second.begin(), i->second.size());
-		i->second = string_span(buf, i->second.size());
-		buf += i->second.size();
+		memcpy(buf, i->value.begin(), i->value.size());
+		i->value = string_span(buf, i->value.size());
+		buf += i->value.size();
 		*buf++ = '"';
 		*buf++ = '\n';
 	}
@@ -806,8 +806,8 @@ void node::copy_into(node& n) const
 {
 	n.set_dirty();
 	for(attribute_list::const_iterator i = attr_.begin(); i != attr_.end(); ++i) {
-		char* key = i->first.duplicate();
-		char* value = i->second.duplicate();
+		char* key = i->key.duplicate();
+		char* value = i->value.duplicate();
 		n.doc_->take_ownership_of_buffer(key);
 		n.doc_->take_ownership_of_buffer(value);
 		n.set_attr(key, value);
@@ -829,8 +829,8 @@ void node::apply_diff(const node& diff)
 	const node* inserts = diff.child("insert");
 	if(inserts != nullptr) {
 		for(attribute_list::const_iterator i = inserts->attr_.begin(); i != inserts->attr_.end(); ++i) {
-			char* name = i->first.duplicate();
-			char* value = i->second.duplicate();
+			char* name = i->key.duplicate();
+			char* value = i->value.duplicate();
 			set_attr(name, value);
 			doc_->take_ownership_of_buffer(name);
 			doc_->take_ownership_of_buffer(value);
@@ -841,7 +841,7 @@ void node::apply_diff(const node& diff)
 	if(deletes != nullptr) {
 		for(attribute_list::const_iterator i = deletes->attr_.begin(); i != deletes->attr_.end(); ++i) {
 			std::pair<attribute_list::iterator,
-	                  attribute_list::iterator> range = std::equal_range(attr_.begin(), attr_.end(), i->first, string_span_pair_comparer());
+	                  attribute_list::iterator> range = std::equal_range(attr_.begin(), attr_.end(), i->key, string_span_pair_comparer());
 			if(range.first != range.second) {
 				attr_.erase(range.first);
 			}
