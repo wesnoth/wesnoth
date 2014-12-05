@@ -115,8 +115,12 @@ public:
 	node(document& doc, node* parent);
 	node(document& doc, node* parent, const char** str, int depth=0);
 	~node();
-
-	typedef std::pair<string_span, string_span> attribute;
+	struct attribute
+	{
+		attribute(const string_span& k, const string_span& v) : key(k), value(v) {}
+		string_span key;
+		string_span value;
+	};
 	typedef std::vector<node*> child_list;
 
 	const string_span& operator[](const char* key) const;
