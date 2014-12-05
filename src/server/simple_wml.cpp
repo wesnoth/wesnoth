@@ -34,6 +34,22 @@ std::size_t document::document_size_limit = 40000000;
 
 namespace {
 
+inline const char* textdomain_str()
+{
+	return "#textdomain "; 
+}
+inline size_t textdomain_str_size()
+{
+	return sizeof("#textdomain ") - 1; /*-1 for terminating null character in string literal*/
+}
+
+//for extra safety this is only used when reading the document not when writing.
+string_span default_textdomain()
+{
+	return string_span("wesnoth");
+}
+
+
 void debug_delete(node* n) {
 	delete n;
 }
@@ -213,11 +229,22 @@ node::node(document& doc, node* parent) :
 {
 }
 
+static void maybe_change_textdomain(const char* beginline, const char* endline, string_span& textdomain)
+{
+	size_t size = endline - beginline;
+	if(size < textdomain_str_size()) {
+		return;
+	}
+	if(strncmp(beginline, textdomain_str(), textdomain_str_size()) != 0) {
+		return;
+	}
+	textdomain = string_span(beginline + textdomain_str_size(), endline - beginline - textdomain_str_size());
+}
 #ifdef _MSC_VER
 #pragma warning (push)
 #pragma warning (disable: 4706)
 #endif
-node::node(document& doc, node* parent, const char** str, int depth) :
+node::node(document& doc, node* parent, const char** str, int depth, string_span& textdomain) :
 	doc_(&doc),
 	attr_(),
 	parent_(parent),
@@ -257,7 +284,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 
 			s = end + 1;
 
-			children_[list_index].second.push_back(new node(doc, this, str, depth+1));
+			children_[list_index].second.push_back(new node(doc, this, str, depth+1, textdomain));
 			ordered_children_.emplace_back(list_index, children_[list_index].second.size() - 1);
 			check_ordered_children();
 
@@ -268,14 +295,18 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 		case '\n':
 			++s;
 			break;
-		case '#':
-			s = strchr(s, '\n');
-			if(s == nullptr) {
+		case '#': {
+			const char * const endline = strchr(s, '\n');
+			if(endline == nullptr) {
 				throw error("did not find newline after '#'");
 			}
+			maybe_change_textdomain(s, endline, textdomain);
+			s = endline;
 			break;
+		}
 		default: {
 			const char* end = strchr(s, '=');
+			bool is_translatable = false;
 			if(end == nullptr) {
 				ERR_SWML << "attribute: " << s << std::endl;
 				throw error("did not find '=' after attribute");
@@ -284,6 +315,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			string_span name(s, end - s);
 			s = end + 1;
 			if(*s == '_') {
+				is_translatable = true;
 				s = strchr(s, '"');
 				if(s == nullptr) {
 					throw error("did not find '\"' after '_'");
@@ -326,7 +358,9 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 
 				// Read textdomain marker.
 				if (*endline == '#') {
-					endline = strchr(endline + 1, '\n');
+					const char* endline2 = strchr(endline + 1, '\n');
+					maybe_change_textdomain(endline, endline2, textdomain);
+					endline = endline2;
 					if (!endline)
 						throw error("did not find newline after '#'");
 					++endline;
@@ -350,8 +384,10 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			}
 
 			s = end + 1;
-
-			attr_.emplace_back(name, value);
+			if(is_translatable)
+				attr_.emplace_back(name, value, textdomain);		
+			else
+				attr_.emplace_back(name, value);
 		}
 		}
 	}
@@ -693,7 +729,7 @@ const string_span& node::first_child() const
 	return children_.begin()->first;
 }
 
-int node::output_size() const
+int node::output_size(string_span& textdomain) const
 {
 	check_ordered_children();
 	if(output_cache_.empty() == false) {
@@ -703,13 +739,20 @@ int node::output_size() const
 	int res = 0;
 	for(attribute_list::const_iterator i = attr_.begin(); i != attr_.end(); ++i) {
 		res += i->key.size() + i->value.size() + 4;
+		if(i->is_translatable()) {
+			if(i->textdomain != textdomain) {
+				res += textdomain_str_size() + i->textdomain.size() + 1/* \n */;
+			}
+			textdomain = i->textdomain;
+			res += 1; // "_"
+		}
 	}
 
 	std::size_t count_children = 0;
 	for(child_map::const_iterator i = children_.begin(); i != children_.end(); ++i) {
 		for(child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
 			res += i->first.size()*2 + 7;
-			res += (*j)->output_size();
+			res += (*j)->output_size(textdomain);
 			++count_children;
 		}
 	}
@@ -739,9 +782,10 @@ void node::shift_buffers(ptrdiff_t offset)
 	}
 }
 
-void node::output(char*& buf, CACHE_STATUS cache_status)
+void node::output(char*& buf, string_span& textdomain, CACHE_STATUS cache_status)
 {
 	if(output_cache_.empty() == false) {
+		// fixme: this skips over textdomain changes. 
 		memcpy(buf, output_cache_.begin(), output_cache_.size());
 		if(cache_status == REFRESH_CACHE) {
 			shift_buffers(buf - output_cache_.begin());
@@ -753,10 +797,28 @@ void node::output(char*& buf, CACHE_STATUS cache_status)
 	char* begin = buf;
 
 	for(std::vector<attribute>::iterator i = attr_.begin(); i != attr_.end(); ++i) {
+
+		if(i->is_translatable()) {
+			if(textdomain != i->textdomain) {
+				memcpy(buf, textdomain_str(), textdomain_str_size());
+				buf += textdomain_str_size();
+
+				memcpy(buf, i->textdomain.begin(), i->textdomain.size());
+				textdomain = string_span(buf, i->textdomain.size());
+
+				buf += i->textdomain.size();
+				*buf++ = '\n';
+			}
+			i->textdomain = textdomain;
+		}
+
 		memcpy(buf, i->key.begin(), i->key.size());
 		i->key = string_span(buf, i->key.size());
 		buf += i->key.size();
 		*buf++ = '=';
+		if(i->is_translatable()) {
+			*buf++ = '_';
+		}
 		*buf++ = '"';
 		memcpy(buf, i->value.begin(), i->value.size());
 		i->value = string_span(buf, i->value.size());
@@ -776,7 +838,7 @@ void node::output(char*& buf, CACHE_STATUS cache_status)
 		buf += attr.size();
 		*buf++ = ']';
 		*buf++ = '\n';
-		children_[i->child_map_index].second[i->child_list_index]->output(buf, cache_status);
+		children_[i->child_map_index].second[i->child_list_index]->output(buf, textdomain, cache_status);
 		*buf++ = '[';
 		*buf++ = '/';
 		memcpy(buf, attr.begin(), attr.size());
@@ -794,10 +856,12 @@ std::string node_to_string(const node& n)
 {
 	//calling output with status=DO_NOT_MODIFY_CACHE really doesn't modify the
 	//node, so we can do it safely
+	string_span textdomain(0, 0);
 	node& mutable_node = const_cast<node&>(n);
-	std::vector<char> v(mutable_node.output_size());
+	std::vector<char> v(mutable_node.output_size(textdomain));
 	char* ptr = &v[0];
-	mutable_node.output(ptr, node::DO_NOT_MODIFY_CACHE);
+	textdomain = string_span(0, 0);
+	mutable_node.output(ptr, textdomain, node::DO_NOT_MODIFY_CACHE);
 	assert(ptr == &v[0] + v.size());
 	return std::string(v.begin(), v.end());
 }
@@ -957,7 +1021,8 @@ document::document(char* buf, INIT_BUFFER_CONTROL control) :
 		buffers_.push_back(buf);
 	}
 	const char* cbuf = buf;
-	root_ = new node(*this, nullptr, &cbuf);
+	string_span textdomain = default_textdomain();
+	root_ = new node(*this, nullptr, &cbuf, 0, textdomain);
 
 	attach_list();
 }
@@ -974,7 +1039,8 @@ document::document(const char* buf, INIT_STATE state) :
 		output_compressed();
 		output_ = nullptr;
 	} else {
-		root_ = new node(*this, nullptr, &buf);
+		string_span textdomain = default_textdomain();
+		root_ = new node(*this, nullptr, &buf, 0, textdomain);
 	}
 
 	attach_list();
@@ -993,7 +1059,8 @@ document::document(string_span compressed_buf) :
 	output_ = uncompressed_buf.begin();
 	const char* cbuf = output_;
 	try {
-		root_ = new node(*this, nullptr, &cbuf);
+		string_span textdomain(0, 0);
+		root_ = new node(*this, nullptr, &cbuf, 0, textdomain);
 	} catch(...) {
 		delete [] buffers_.front();
 		buffers_.clear();
@@ -1042,8 +1109,9 @@ const char* document::output()
 
 	std::vector<char*> bufs;
 	bufs.swap(buffers_);
-
-	const int buf_size = root_->output_size() + 1;
+	
+	string_span textdomain(0, 0);
+	const int buf_size = root_->output_size(textdomain) + 1;
 	char* buf;
 	try {
 		buf = new char[buf_size];
@@ -1054,8 +1122,9 @@ const char* document::output()
 	}
 	buffers_.push_back(buf);
 	output_ = buf;
-
-	root_->output(buf, node::REFRESH_CACHE);
+	
+	textdomain = string_span(0, 0);
+	root_->output(buf, textdomain, node::REFRESH_CACHE);
 	*buf++ = 0;
 	assert(buf == output_ + buf_size);
 
@@ -1112,7 +1181,8 @@ void document::generate_root()
 
 	assert(root_ == nullptr);
 	const char* cbuf = output_;
-	root_ = new node(*this, nullptr, &cbuf);
+	string_span textdomain(0, 0);
+	root_ = new node(*this, nullptr, &cbuf, 0, textdomain);
 }
 
 document* document::clone()
