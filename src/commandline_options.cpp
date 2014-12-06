@@ -139,6 +139,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	unit_test(),
 	headless_unit_test(false),
 	noreplaycheck(false),
+	mptest(false),
 	userconfig_path(false),
 	userconfig_dir(),
 	userdata_path(false),
@@ -256,6 +257,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("timeout", po::value<unsigned int>(), "sets a timeout (milliseconds) for the unit test. (DEPRECATED)")
 		("log-strict", po::value<std::string>(), "sets the strict level of the logger. any messages sent to log domains of this level or more severe will cause the unit test to fail regardless of the victory result.")
 		("noreplaycheck", "don't try to validate replay of unit test")
+		("mp-test", "load the test mp scenarios")
 		;
 
 	po::options_description preprocessor_opts("Preprocessor mode options");
@@ -371,6 +373,8 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		parse_log_strictness(vm["log-strict"].as<std::string>());
 	if (vm.count("max-fps"))
 		max_fps = vm["max-fps"].as<int>();
+	if (vm.count("mp-test"))
+		mptest = true;
 	if (vm.count("multiplayer"))
 		multiplayer = true;
 	if (vm.count("multiplayer-repeat"))

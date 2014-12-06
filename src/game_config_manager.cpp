@@ -81,6 +81,7 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 	game_config::scoped_preproc_define multiplayer("MULTIPLAYER",
 		cmdline_opts_.multiplayer);
 	game_config::scoped_preproc_define test("TEST", cmdline_opts_.test);
+	game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest);
 	game_config::scoped_preproc_define editor("EDITOR", jump_to_editor_);
 	game_config::scoped_preproc_define title_screen("TITLE_SCREEN",
 		!cmdline_opts_.multiplayer && !cmdline_opts_.test && !jump_to_editor_);
@@ -489,6 +490,8 @@ void game_config_manager::load_game_config_for_game(
 	game_config::scoped_preproc_define era(classification.era_define,
 		!classification.era_define.empty());
 	game_config::scoped_preproc_define multiplayer("MULTIPLAYER",
+		classification.campaign_type == game_classification::MULTIPLAYER);
+	game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest &&
 		classification.campaign_type == game_classification::MULTIPLAYER);
 
 	typedef boost::shared_ptr<game_config::scoped_preproc_define> define;

@@ -206,6 +206,8 @@ public:
 	boost::optional<unsigned int> timeout;
 	/// True if --noreplaycheck was given on the comand line. Dependent on --unit.
 	bool noreplaycheck;
+	/// True if --mp-test was given on the command line.
+	bool mptest;
 	/// True if --userconfig-path was given on the command line. Prints path to user config directory and exits.
 	bool userconfig_path;
 	/// Non-empty if --userconfig-dir was given on the command line. Sets the user config dir to the specified one.
