@@ -2,8 +2,8 @@
 
 tab="--tab"
 cmd0="bash -c './wesnothd --port 12345 --log-debug=server --log-warning=config';bash"
-cmd1="bash -c './wesnoth --plugin=host.lua --server=localhost:12345 --username=host --nogui';bash"
-cmd2="bash -c './wesnoth --plugin=join.lua --server=localhost:12345 --username=join --nogui';bash"
+cmd1="bash -c './wesnoth --plugin=host.lua --server=localhost:12345 --username=host --nogui --mp-test';bash"
+cmd2="bash -c './wesnoth --plugin=join.lua --server=localhost:12345 --username=join --nogui --mp-test';bash"
 #cmd3="bash -c './client3';bash"
 
 foo=""
