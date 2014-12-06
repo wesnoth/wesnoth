@@ -330,14 +330,21 @@ void create::process_event_impl(const process_event_data & data)
 		{
 			savegame::loadgame load(disp_,
 				game_config_manager::get()->game_config(), engine_.get_state());
-			
-			if (load.load_multiplayer_game()) {
-				engine_.prepare_for_saved_game();
 
-				set_result(LOAD_GAME);
-
-				return;
+			if (data.filename) {
+				if (!load.load_game(*data.filename, false, false, false, "", true)) {
+					return ;
+				}
+			} else {
+				if (!load.load_multiplayer_game()) {
+					return ;
+				}
 			}
+
+			engine_.prepare_for_saved_game();
+			set_result(LOAD_GAME);
+
+			return;
 		}
 		catch(config::error&) {
 		}

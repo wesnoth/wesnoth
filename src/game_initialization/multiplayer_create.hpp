@@ -96,12 +96,16 @@ private:
 
 	struct process_event_data {
 		bool create, load, quit;
+		boost::optional<std::string> filename;
 
 		process_event_data()
-			: create(false), load(false), quit(false)
+			: create(false), load(false), quit(false), filename()
 		{}
 		process_event_data(bool c, bool l, bool q)
-			: create(c), load(l), quit(q)
+			: create(c), load(l), quit(q), filename()
+		{}
+		process_event_data(const std::string & fname)
+			: create(false), load(true), quit(false), filename(fname)
 		{}
 	};
 

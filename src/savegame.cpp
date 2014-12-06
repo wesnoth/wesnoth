@@ -170,7 +170,9 @@ void loadgame::show_difficulty_dialog()
 // throws a "load_game_exception" to signal a resulting load game request.
 bool loadgame::load_game()
 {
-	show_dialog(false, false);
+	if (!gui_.video().faked()) {
+		show_dialog(false, false);
+	}
 
 	if(filename_.empty()) {
 		return false;
