@@ -44,6 +44,12 @@ local function plugin()
     idle_text("in " .. info.name .. " waiting for create")
   until info.name == "Multiplayer Create"
 
+  context.select_type({type = "scenario"})
+  local s = info.find_level({id = "test1"})
+  context.select_level({index = s.index})
+
+  events, context, info = coroutine.yield()
+
   std_print("host: configuring a game")
   context.create({})
 
