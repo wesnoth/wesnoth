@@ -134,6 +134,8 @@ Version 1.13.0-dev:
      for more details.
  * Replays:
    * Added a button that allows playing a single move in replay mode.
+ * Sound:
+   * Fixed issues with slowed and poisoned sounds not always playing correctly.
  * Units:
    * Increased the experience requirement for the Rami from 32 to 39
    * Increased the experience requirement for the Saree from 56 to 64
@@ -212,6 +214,8 @@ Version 1.13.0-dev:
    * Fixed nested macros emitting incorrect bindings to the default 'wesnoth'
      textdomain at the end of a substitution instead of the parent textdomain,
      this breaking localization of subsequent strings (bug #22962).
+   * Sounds for slow and poison are automatically played when slowing/poisoning
+     a unit, and should no longer be played by the attack animations.
  * Miscellaneous and bug fixes:
    * replace 'fight_on_without_leader'=yes/no with defeat_condition=no_leader/
      no_units/always/never which allows the wml developer to decide when a side
