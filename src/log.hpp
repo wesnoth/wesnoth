@@ -16,6 +16,30 @@
 /**
  * @file
  * Standard logging facilities (interface).
+ *
+ * To use one of the standard log channels, put something like the following at the start
+ * of your .cpp file:
+ *
+ * static lg::log_domain log_display("display");
+ * #define ERR_DP LOG_STREAM(err, log_display)
+ * #define LOG_DP LOG_STREAM(info, log_display)
+ *
+ * Then stream logging info to ERR_DP, or LOG_DP, as if it were an ostream like std::cerr.
+ * (In general it will actually be std::cerr at runtime when logging is enabled.)
+ *
+ * LOG_DP << "Found a window resize event: ...\n";
+ *
+ * Please do not use iomanip features like std::hex directly on the logger. Because of the
+ * design of the logger, this will result in all of the loggers (in fact std::cerr) being
+ * imbued with std::hex. Please use a formatter instead.
+ *
+ * #include "formatter.hpp"
+ *
+ * LOG_DP << (formatter() << "The random seed is: '" << std::hex << seed << "'\n").str();
+ *
+ * It might be nice if somehow the logger class / macros could support using iomanip
+ * things directly, but right now it doesn't, and it seems that it would complicate the
+ * design greatly enough that it doesn't seem worth it.
  */
 
 #ifndef LOG_HPP_INCLUDED
