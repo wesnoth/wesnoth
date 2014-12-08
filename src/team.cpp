@@ -480,10 +480,10 @@ void team::change_controller_by_wml(const std::string& new_controller_string)
 			//TODO: move netword stuff to playturn.cpp
 			//the currently active side informs the mp server about the controller change,
 			network::send_data(config_of
-					("change_controller_wml",config(config_of
+					("change_controller_wml", config_of
 						("side", this->side())
 						("controller", new_controller_string)
-					))
+					)
 				, 0);
 		}
 		// In case this->is_empty() this side wasn't contorlled by any client yet, we need to assign controll to some client

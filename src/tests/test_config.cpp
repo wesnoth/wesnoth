@@ -230,16 +230,31 @@ BOOST_AUTO_TEST_CASE ( test_variable_info )
 	{
 		const config nonempty = config_of
 			("tag1", config())
-			("tag1", config(config_of
-				("tag2",config())
-				("tag2",config())
-				("tag2",config(config_of
+			("tag1", config_of
+				("tag2", config())
+				("tag2", config())
+				("tag2", config_of
 					("atribute1", 88)
 					("atribute2", "value")
-				))
-			))
+				)
+			)
 			("tag1", config());
-
+		/** This is the config:
+		[tag1]
+		[/tag1]
+		[tag1]
+			[tag2]
+			[/tag2]
+			[tag2]
+			[/tag2]
+			[tag2]
+				atribute1 = 88
+				atribute2 = "value"
+			[/tag2]
+		[/tag1]
+		[tag1]
+		[/tag1]
+		*/
 		BOOST_CHECK_EQUAL (variable_access_const("tag1.length", nonempty).as_scalar(), 3);
 		BOOST_CHECK_EQUAL (variable_access_const("tag1.tag2.length", nonempty).as_scalar(), 0);
 		BOOST_CHECK_EQUAL (variable_access_const("tag1[1].tag2.length", nonempty).as_scalar(), 3);
