@@ -2505,6 +2505,7 @@ void server::process_data_game(const network::connection sock,
 			return;
 		}
 		g.save_replay();
+		g.reset_last_synced_context_id();
 		// Record the full scenario in g.level()
 		g.level().clear();
 		scenario->copy_into(g.level().root());

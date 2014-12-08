@@ -224,6 +224,7 @@ public:
 
 	void require_random(const simple_wml::document &data, const player_map::iterator user);
 
+	void reset_last_synced_context_id() { last_synced_context_id_ = -1; }
 private:
 	//forbidden operations
 	game(const game&);
