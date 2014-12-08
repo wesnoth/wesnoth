@@ -1186,12 +1186,15 @@ static size_t move_unit_internal(undo_list* undo_stack,
 	mover.try_actual_movement(show_move);
 
 	config co;
-	config cn = config_of("stopped_early", mover.stopped_early())("final_hex_x", mover.final_hex().x + 1)("final_hex_y", mover.final_hex().y + 1);
+	config cn = config_of
+		("stopped_early", mover.stopped_early())
+		("final_hex_x", mover.final_hex().x + 1)
+		("final_hex_y", mover.final_hex().y + 1);
 	bool matches_replay = checkup_instance->local_checkup(cn,co);
 	if(!matches_replay)
 	{
 		replay::process_error("calculated movement destination (x="+ cn["final_hex_x"].str() +  " y=" + cn["final_hex_y"].str() +
-			")didn't match the original destination(x="+ co["final_hex_x"].str() +  " y=" + co["final_hex_y"].str());
+			") didn't match the original destination(x="+ co["final_hex_x"].str() +  " y=" + co["final_hex_y"].str() + ")\n");
 
 		//TODO: move the unit by force to the desired destination with something like mover.reset_final_hex(co["x"], co["y"]);
 	}
