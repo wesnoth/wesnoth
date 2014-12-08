@@ -45,7 +45,7 @@ public:
 	   some failure or abort of the load process */
 
 	/** Load a game without providing any information. */
-	void load_game();
+	bool load_game();
 	/** Load a game with pre-setting information for the load-game dialog. */
 	bool load_game(
 			  const std::string& filename

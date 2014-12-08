@@ -166,12 +166,38 @@ void loadgame::show_difficulty_dialog()
 	difficulty_ = difficulties[difficulty_dlg.selected_index()];
 }
 
-void loadgame::load_game()
+// Called only by play_controller to handle in-game attempts to load. Instead of returning true,
+// throws a "load_game_exception" to signal a resulting load game request.
+bool loadgame::load_game()
 {
 	show_dialog(false, false);
 
-	if(filename_ != "")
-		throw game::load_game_exception(filename_, show_replay_, cancel_orders_, select_difficulty_, difficulty_);
+	if(filename_.empty()) {
+		return false;
+	}
+
+	std::string error_log;
+	{
+		cursor::setter cur(cursor::WAIT);
+		log_scope("load_game");
+
+		read_save_file(filename_, load_config_, &error_log);
+
+		gamestate_ = saved_game(load_config_);
+	}
+
+	if(!error_log.empty()) {
+		gui2::show_error_message(gui_.video(),
+				_("The file you have tried to load is corrupt: '") +
+				error_log);
+		return false;
+	}
+
+	if (!check_version_compatibility()) {
+		return false;
+	}
+
+	throw game::load_game_exception(filename_, show_replay_, cancel_orders_, select_difficulty_, difficulty_);
 }
 
 bool loadgame::load_game(
