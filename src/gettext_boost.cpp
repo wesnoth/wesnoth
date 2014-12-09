@@ -57,10 +57,10 @@ namespace
 				const boost::locale::info& info = std::use_facet< boost::locale::info >(current_locale_);
 				LOG_G << "updated locale to '" << current_language_ << "' locale is now '" << current_locale_.name() << "' ( "
 				      << "name='" << info.name()
-					  << "' country='"  << info.country()
-					  << "' language='"  << info.language()
-					  << "' encoding='"  << info.encoding()
-					  << "' variant='"  << info.variant() << "')\n";
+				      << "' country='"  << info.country()
+				      << "' language='"  << info.language()
+				      << "' encoding='"  << info.encoding()
+				      << "' variant='"  << info.variant() << "')\n";
 			}
 			catch(const boost::locale::conv::conversion_error&)
 			{
