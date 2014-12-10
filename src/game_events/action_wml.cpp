@@ -1994,24 +1994,16 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 				}
 			}
 
-			/*
-			* Choice gets a value in the range [0..32768).
-			* So need to add a second set of random values when a value
-			* outside the range is requested.
-			*/
-			if(num_choices > 0x3fffffff) {
+			assert(num_choices > 0);
+			// On most plattforms long can never hold a bigger value than a uint32_t, but there are exceptions where long is 64 bit.
+			if(unsigned long(num_choices) > std::numeric_limits<uint32_t>::max()) {
 				WRN_NG << "Requested random number with an upper bound of "
 					<< num_choices
 					<< " however the maximum number generated will be "
-					<< 0x3fffffff
+					<< std::numeric_limits<uint32_t>::max()
 					<< ".\n";
 			}
-			uint32_t choice = random_new::generator->next_random();// gameinfo->rng().get_next_random();
-			if(num_choices >= 32768) {
-				choice <<= 15;
-				choice += random_new::generator->next_random();//gameinfo->rng().get_next_random();
-			}
-			choice %= num_choices;
+			uint32_t choice = random_new::generator->next_random() % num_choices;
 			uint32_t tmp = 0;
 			for(size_t i = 0; i < ranges.size(); ++i) {
 				tmp += (ranges[i].second - ranges[i].first) + 1;
