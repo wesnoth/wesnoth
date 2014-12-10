@@ -31,6 +31,12 @@
 #include <boost/iostreams/stream.hpp>
 #include <set>
 
+#if defined(_MSC_VER) && (_MSC_VER <= 1500)
+typedef unsigned long int uintmax_t;
+#else
+#include <stdint.h>
+#endif
+
 #ifdef _WIN32
 #include <boost/locale.hpp>
 #include <windows.h>
@@ -51,10 +57,6 @@ static lg::log_domain log_filesystem("filesystem");
 namespace bfs = boost::filesystem;
 using boost::filesystem::path;
 using boost::system::error_code;
-
-#ifndef uintmax_t	//MSVC 9 does not have this typedef, according to commit message in 3f3687388f7ee528931de15a25a0b5acb4697561
-typedef unsigned long long uintmax_t;
-#endif
 
 namespace {
 	// These are the filenames that get special processing
