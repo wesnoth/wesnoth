@@ -19,6 +19,7 @@
 #include <iostream>
 #include <locale>
 #include <boost/locale.hpp>
+#include <boost/foreach.hpp>
 #include <set>
 
 
@@ -27,7 +28,8 @@
 #define WRN_G LOG_STREAM(warn, lg::general)
 #define ERR_G LOG_STREAM(err, lg::general)
 
-namespace 
+namespace bl = boost::locale;
+namespace
 {
 	struct translation_manager
 	{
@@ -38,10 +40,40 @@ namespace
 			, generator_()
 			, current_locale_()
 		{
+			const bl::localization_backend_manager& g_mgr = bl::localization_backend_manager::global();
+			BOOST_FOREACH(const std::string& name, g_mgr.get_all_backends())
+			{
+				LOG_G << "Found boost locale backend: '" << name << "'\n";
+			}
 			generator_.use_ansi_encoding(false);
 			update_locale();
 		}
-		void update_locale() { current_locale_ = generator_.generate(current_language_); }
+		void update_locale()
+		{
+			try
+			{
+				LOG_G << "attemptng to generate locale by name '" << current_language_ << "'\n";
+				current_locale_ = generator_.generate(current_language_);
+				const boost::locale::info& info = std::use_facet< boost::locale::info >(current_locale_);
+				LOG_G << "updated locale to '" << current_language_ << "' locale is now '" << current_locale_.name() << "' ( "
+				      << "name='" << info.name()
+				      << "' country='"  << info.country()
+				      << "' language='"  << info.language()
+				      << "' encoding='"  << info.encoding()
+				      << "' variant='"  << info.variant() << "')\n";
+			}
+			catch(const boost::locale::conv::conversion_error&)
+			{
+				const boost::locale::info& info = std::use_facet< boost::locale::info >(current_locale_);
+				ERR_G << "Failed to update locale due to conversion error, locale is now: " 
+				      << "name='" << info.name()
+				      << "' country='" << info.country()
+				      << "' language='" << info.language()
+				      << "' encoding='" << info.encoding()
+				      << "' variant='" << info.variant() 
+				      << "'" << std::endl;
+			}
+		}
 
 		std::set<std::string> loaded_paths_;
 		std::set<std::string> loaded_domains_;
@@ -60,7 +92,7 @@ namespace
 
 namespace translation
 {
-	
+
 std::string dgettext(const char* domain, const char* msgid)
 {
 	return boost::locale::dgettext(domain, msgid, get_manager().current_locale_);
@@ -106,6 +138,7 @@ void bind_textdomain(const char* domain, const char* direcory, const char* /*enc
 
 void set_default_textdomain(const char* domain)
 {
+	LOG_G << "set_default_textdomain: '" << domain << "'\n";
 	get_manager().generator_.set_default_messages_domain(domain);
 	get_manager().update_locale();
 }
