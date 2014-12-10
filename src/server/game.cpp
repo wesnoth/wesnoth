@@ -1014,7 +1014,7 @@ void game::require_random(const simple_wml::document &data, const player_map::it
 			// We gave already a random seed for this synced context.
 			return;
 		}
-		LOG_GAME << "answering seed request " << context_id << " by player " << user->second.name() << "(" << user->first << ")" << std::endl;
+		DBG_GAME << "answering seed request " << context_id << " by player " << user->second.name() << "(" << user->first << ")" << std::endl;
 		last_synced_context_id_ = context_id;
 	}
 
