@@ -1996,7 +1996,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 			assert(num_choices > 0);
 			// On most plattforms long can never hold a bigger value than a uint32_t, but there are exceptions where long is 64 bit.
-			if(unsigned long(num_choices) > std::numeric_limits<uint32_t>::max()) {
+			if(static_cast<unsigned long>(num_choices) > std::numeric_limits<uint32_t>::max()) {
 				WRN_NG << "Requested random number with an upper bound of "
 					<< num_choices
 					<< " however the maximum number generated will be "
