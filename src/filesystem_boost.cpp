@@ -52,6 +52,10 @@ namespace bfs = boost::filesystem;
 using boost::filesystem::path;
 using boost::system::error_code;
 
+#ifndef uintmax_t	//MSVC 9 does not have this typedef, according to commit message in 3f3687388f7ee528931de15a25a0b5acb4697561
+typedef unsigned long long uintmax_t;
+#endif
+
 namespace {
 	// These are the filenames that get special processing
 	const std::string maincfg_filename = "_main.cfg";
@@ -355,7 +359,7 @@ void get_files_in_dir(const std::string &dir,
 					checksum->modified = mtime;
 				}
 
-				unsigned long long size = bfs::file_size(di->path(), ec);
+				uintmax_t size = bfs::file_size(di->path(), ec);
 				if (ec) {
 					ERR_FS << "Failed to read filesize of " << di->path().string() << ": " << ec.message() << '\n';
 				} else {
@@ -847,7 +851,7 @@ bool is_bzip2_file(const std::string& filename)
 int file_size(const std::string& fname)
 {
 	error_code ec;
-	unsigned long long size = bfs::file_size(path(fname), ec);
+	uintmax_t size = bfs::file_size(path(fname), ec);
 	if (ec) {
 		ERR_FS << "Failed to read filesize of " << fname << ": " << ec.message() << '\n';
 		return -1;
@@ -860,7 +864,7 @@ int file_size(const std::string& fname)
 int dir_size(const std::string& pname)
 {
 	bfs::path p(pname);
-	unsigned long long size_sum = 0;
+	uintmax_t size_sum = 0;
 	error_code ec;
 	for ( bfs::recursive_directory_iterator i(p), end; i != end && !ec; ++i ) {
 		if(bfs::is_regular_file(i->path())) {
