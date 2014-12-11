@@ -31,6 +31,42 @@
 namespace bl = boost::locale;
 namespace
 {
+	class default_utf8_locale_name
+	{
+	public:
+		static const std::string& name()
+		{
+			//Use pointers becasue we don't want it to be destructed at programm end.
+			static default_utf8_locale_name* lname = new default_utf8_locale_name();
+			return lname->name_;
+		}
+	private:
+		default_utf8_locale_name() 
+			: name_()
+		{
+			LOG_G << "Generating default locale\n";
+			try
+			{
+				//NOTE: the default_locale objects needs to live as least as long as the locale_info object. Otherwise the programm will segfault.
+				std::locale default_locale = bl::generator().generate("");
+				const boost::locale::info& locale_info = std::use_facet< boost::locale::info >(default_locale);
+				name_ += locale_info.language();
+				if(!locale_info.country().empty())
+					name_ += "_" + locale_info.country();
+				name_ += ".UTF-8";
+				if(!locale_info.variant().empty())
+					name_ += "@" + locale_info.variant();
+			}
+			catch(const std::exception& e)
+			{
+				ERR_G << "Failed to generate default locale string. message:" << e.what() << std::endl;
+			}
+			LOG_G << "Finished generating default locale, default is now '" << name_ << "'\n";
+		}
+
+		std::string name_;
+	};
+
 	struct translation_manager
 	{
 		translation_manager()
@@ -40,6 +76,7 @@ namespace
 			, generator_()
 			, current_locale_()
 		{
+			current_language_ = default_utf8_locale_name::name();
 			const bl::localization_backend_manager& g_mgr = bl::localization_backend_manager::global();
 			BOOST_FOREACH(const std::string& name, g_mgr.get_all_backends())
 			{
@@ -152,8 +189,7 @@ void set_language(const std::string& language, const std::vector<std::string>* /
 	std::string::size_type at_pos = language.rfind('@');
 	if(language.empty())
 	{
-		//Don't add "UTF-8" to default language.
-		get_manager().current_language_ = "";
+		get_manager().current_language_ = default_utf8_locale_name::name();	
 	}
 	else if(at_pos  != std::string::npos)
 	{
