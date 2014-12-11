@@ -160,12 +160,11 @@ void loadgame::show_difficulty_dialog()
 	difficulty_dlg.show(gui_.video());
 
 	if (difficulty_dlg.get_retval() != gui2::twindow::OK) {
-		throw load_game_cancelled_exception();
+		return;
 	}
 
 	difficulty_ = difficulties[difficulty_dlg.selected_index()];
 }
-
 
 void loadgame::load_game()
 {
@@ -175,7 +174,7 @@ void loadgame::load_game()
 		throw game::load_game_exception(filename_, show_replay_, cancel_orders_, select_difficulty_, difficulty_);
 }
 
-void loadgame::load_game(
+bool loadgame::load_game(
 		  const std::string& filename
 		, const bool show_replay
 		, const bool cancel_orders
@@ -195,7 +194,7 @@ void loadgame::load_game(
 	}
 
 	if (filename_.empty())
-		throw load_game_cancelled_exception();
+		return false;
 
 	if (select_difficulty_)
 		show_difficulty_dialog();
@@ -230,14 +229,14 @@ void loadgame::load_game(
 	// read classification to for loading the game_config config object.
 	gamestate_.classification() = game_classification(load_config_);
 #endif
-	check_version_compatibility();
 
+	return check_version_compatibility();
 }
 
-void loadgame::check_version_compatibility()
+bool loadgame::check_version_compatibility()
 {
 	if (gamestate_.classification().version == game_config::version) {
-		return;
+		return true;
 	}
 
 	const version_info save_version = gamestate_.classification().version;
@@ -249,7 +248,7 @@ void loadgame::check_version_compatibility()
 		utils::string_map symbols;
 		symbols["version_number"] = gamestate_.classification().version;
 		gui2::show_error_message(gui_.video(), utils::interpolate_variables_into_string(message, &symbols));
-		throw load_game_cancelled_exception();
+		return false;
 	}
 
 	// Even minor version numbers indicate stable releases which are
@@ -258,7 +257,7 @@ void loadgame::check_version_compatibility()
 	    wesnoth_version.major_version() == save_version.major_version() &&
 	    wesnoth_version.minor_version() == save_version.minor_version())
 	{
-		return;
+		return true;
 	}
 
 	// Do not load if too old. If either the savegame or the current
@@ -272,7 +271,7 @@ void loadgame::check_version_compatibility()
 		utils::string_map symbols;
 		symbols["version_number"] = save_version.str();
 		gui2::show_error_message(gui_.video(), utils::interpolate_variables_into_string(message, &symbols));
-		throw load_game_cancelled_exception();
+		return false;
 	}
 
 	int res = gui2::twindow::OK;
@@ -285,8 +284,10 @@ void loadgame::check_version_compatibility()
 	}
 
 	if(res == gui2::twindow::CANCEL) {
-		throw load_game_cancelled_exception();
+		return false;
 	}
+
+	return true;
 }
 
 void loadgame::set_gamestate()
@@ -294,12 +295,12 @@ void loadgame::set_gamestate()
 	gamestate_ = saved_game(load_config_);
 }
 
-void loadgame::load_multiplayer_game()
+bool loadgame::load_multiplayer_game()
 {
 	show_dialog(false, false);
 
 	if (filename_.empty())
-		throw load_game_cancelled_exception();
+		return false;
 
 	std::string error_log;
 	{
@@ -316,15 +317,15 @@ void loadgame::load_multiplayer_game()
 		gui2::show_error_message(gui_.video(),
 				_("The file you have tried to load is corrupt: '") +
 				error_log);
-		throw load_game_cancelled_exception();
+		return false;
 	}
 
 	if(gamestate_.classification().campaign_type != game_classification::MULTIPLAYER) {
 		gui2::show_transient_error_message(gui_.video(), _("This is not a multiplayer save."));
-		throw load_game_cancelled_exception();
+		return false;
 	}
 
-	check_version_compatibility();
+	return check_version_compatibility();
 }
 
 void loadgame::copy_era(config &cfg)

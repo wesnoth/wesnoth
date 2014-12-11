@@ -652,8 +652,10 @@ bool game_launcher::load_game()
 	    state_);
 
 	try {
-		load.load_game(game::load_game_exception::game, game::load_game_exception::show_replay, game::load_game_exception::cancel_orders, game::load_game_exception::select_difficulty, game::load_game_exception::difficulty);
-
+		if(!load.load_game(game::load_game_exception::game, game::load_game_exception::show_replay, game::load_game_exception::cancel_orders, game::load_game_exception::select_difficulty, game::load_game_exception::difficulty)) {
+			clear_loaded_game();
+			return false;
+		}
 
 		try {
 			game_config_manager::get()->
@@ -664,9 +666,6 @@ bool game_launcher::load_game()
 
 		load.set_gamestate();
 
-	} catch(load_game_cancelled_exception&) {
-		clear_loaded_game();
-		return false;
 	} catch(config::error& e) {
 		if(e.message.empty()) {
 			gui2::show_error_message(disp().video(), _("The file you have tried to load is corrupt"));
