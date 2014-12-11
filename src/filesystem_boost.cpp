@@ -31,6 +31,12 @@
 #include <boost/iostreams/stream.hpp>
 #include <set>
 
+#if defined(_MSC_VER) && (_MSC_VER <= 1500)
+typedef unsigned long int uintmax_t;
+#else
+#include <stdint.h>
+#endif
+
 #ifdef _WIN32
 #include <boost/locale.hpp>
 #include <windows.h>
@@ -356,7 +362,7 @@ void get_files_in_dir(const std::string &dir,
 					checksum->modified = mtime;
 				}
 
-				unsigned long long size = bfs::file_size(di->path(), ec);
+				uintmax_t size = bfs::file_size(di->path(), ec);
 				if (ec) {
 					ERR_FS << "Failed to read filesize of " << di->path().string() << ": " << ec.message() << '\n';
 				} else {
@@ -846,7 +852,7 @@ bool is_bzip2_file(const std::string& filename)
 int file_size(const std::string& fname)
 {
 	error_code ec;
-	unsigned long long size = bfs::file_size(path(fname), ec);
+	uintmax_t size = bfs::file_size(path(fname), ec);
 	if (ec) {
 		ERR_FS << "Failed to read filesize of " << fname << ": " << ec.message() << '\n';
 		return -1;
