@@ -671,29 +671,83 @@ unit::~unit()
 	} catch (...) {}
 }
 
+/**
+ * Swap, for copy and swap idiom
+ */
+void unit::swap(unit & o)
+{
+	using std::swap;
 
+	// Don't swap reference count, or it will be incorrect...
+	swap(cfg_, o.cfg_);
+	swap(loc_, o.loc_);
+	swap(advances_to_, o.advances_to_);
+	swap(type_, o.type_);
+	swap(type_name_, o.type_name_);
+	swap(race_, o.race_);
+	swap(id_, o.id_);
+	swap(name_, o.name_);
+	swap(underlying_id_, o.underlying_id_);
+	swap(undead_variation_, o.undead_variation_);
+	swap(variation_, o.variation_);
+	swap(hit_points_, o.hit_points_);
+	swap(max_hit_points_, o.max_hit_points_);
+	swap(experience_, o.experience_);
+	swap(max_experience_, o.max_experience_);
+	swap(level_, o.level_);
+	swap(recall_cost_, o.recall_cost_);
+	swap(canrecruit_, o.canrecruit_);
+	swap(recruit_list_, o.recruit_list_);
+	swap(alignment_, o.alignment_);
+	swap(flag_rgb_, o.flag_rgb_);
+	swap(image_mods_, o.image_mods_);
+	swap(unrenamable_, o.unrenamable_);
+	swap(side_, o.side_);
+	swap(gender_, o.gender_);
+	swap(alpha_, o.alpha_);
+	swap(formula_man_, o.formula_man_);
+	swap(movement_, o.movement_);
+	swap(max_movement_, o.max_movement_);
+	swap(vision_, o.vision_);
+	swap(jamming_, o.jamming_);
+	swap(movement_type_, o.movement_type_);
+	swap(hold_position_, o.hold_position_);
+	swap(end_turn_, o.end_turn_);
+	swap(resting_, o.resting_);
+	swap(attacks_left_, o.attacks_left_);
+	swap(max_attacks_, o.max_attacks_);
+	swap(states_, o.states_);
+	swap(known_boolean_states_, o.known_boolean_states_);
+	swap(variables_, o.variables_);
+	swap(events_, o.events_);
+	swap(filter_recall_, o.filter_recall_);
+	swap(emit_zoc_, o.emit_zoc_);
+	swap(overlays_, o.overlays_);
+	swap(role_, o.role_);
+	swap(attacks_, o.attacks_);
+	swap(facing_, o.facing_);
+	swap(trait_names_, o.trait_names_);
+	swap(trait_descriptions_, o.trait_descriptions_);
+	swap(unit_value_, o.unit_value_);
+	swap(goto_, o.goto_);
+	swap(interrupted_move_, o.interrupted_move_);
+	swap(is_fearless_, o.is_fearless_);
+	swap(is_healthy_, o.is_healthy_);
+	swap(modification_descriptions_, o.modification_descriptions_);
+	swap(anim_comp_, o.anim_comp_);
+	swap(getsHit_, o.getsHit_);
+	swap(hidden_, o.hidden_);
+	swap(modifications_, o.modifications_);
+	swap(invisibility_cache_, o.invisibility_cache_);
+}
 
 /**
  * Assignment operator.
- *
- * This function is unsuitable for derived classes and MUST be overridden.
- * Furthermore, derived classes must not explicitly call this version.
- *
- * The overriding function can be almost the same, except "new (this)" should
- * be followed by the derived class instead of "unit(u)".
- * (There was only one derived class when this was written, so this approach
- * might be simplest.)
  */
-unit& unit::operator=(const unit& u)
+unit& unit::operator=(unit other)
 {
-	// Use copy constructor to make sure we are coherent
-	if (this != &u) {
-		int old_ref_count = ref_count_;
-		this->~unit();
-		new (this) unit(u) ;
-		ref_count_ = old_ref_count; // TODO: Replace this mess with copy and swap.
-	}
-	return *this ;
+	swap(other);
+	return *this;
 }
 
 

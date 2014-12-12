@@ -107,7 +107,10 @@ public:
 	unit(const unit_type& t, int side, bool real_unit,
 		unit_race::GENDER gender = unit_race::NUM_GENDERS);
 	virtual ~unit();
-	virtual unit& operator=(const unit&);
+
+	void swap (unit &);
+
+	unit& operator=(unit);
 
 
 	/** Advances this unit to another type */
@@ -431,7 +434,7 @@ private:
 
 	int side_;
 
-	const unit_race::GENDER gender_;
+	unit_race::GENDER gender_;
 
 	fixed_t alpha_;
 
