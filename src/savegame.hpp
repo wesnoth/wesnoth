@@ -23,8 +23,6 @@
 class config_writer;
 class game_display;
 
-struct illegal_filename_exception {};
-
 namespace savegame {
 /** converts saves from older versions of wesnoth*/
 void convert_old_saves(config& cfg);
@@ -125,7 +123,7 @@ protected:
 		use this method instead. */
 	void set_filename(std::string filename);
 	/** Check, if the filename contains illegal constructs like ".gz". */
-	void check_filename(const std::string& filename, CVideo& video);
+	bool check_filename(const std::string& filename, CVideo& video);
 
 	/** Customize the standard error message */
 	void set_error_message(const std::string& error_message) { error_message_ = error_message; }

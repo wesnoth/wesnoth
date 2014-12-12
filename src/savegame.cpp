@@ -403,19 +403,14 @@ bool savegame::save_game_interactive(CVideo& video, const std::string& message,
 	int res = gui2::twindow::OK;
 	bool exit = true;
 
-	do{
-		try{
-			res = show_save_dialog(video, message, dialog_type);
-			exit = true;
+	res = show_save_dialog(video, message, dialog_type);
 
-			if (res == gui2::twindow::OK){
-				exit = check_overwrite(video);
-			}
-		}
-		catch (illegal_filename_exception){
-			exit = false;
-		}
+	if (res == gui2::twindow::OK){
+		exit = check_overwrite(video);
+
+		return false;
 	}
+
 	while (!exit);
 
 	if (res == 2) //Quit game
@@ -444,8 +439,11 @@ int savegame::show_save_dialog(CVideo& video, const std::string& message, const 
 		res = dlg.get_retval();
 	}
 
-	check_filename(filename, video);
 	set_filename(filename);
+
+	if (!check_filename(filename, video)) {
+		res = gui2::twindow::CANCEL;
+	}
 
 	return res;
 }
@@ -463,12 +461,14 @@ bool savegame::check_overwrite(CVideo& video)
 	}
 }
 
-void savegame::check_filename(const std::string& filename, CVideo& video)
+bool savegame::check_filename(const std::string& filename, CVideo& video)
 {
 	if (filesystem::is_compressed_file(filename)) {
 		gui2::show_error_message(video, _("Save names should not end on '.gz' or '.bz2'. "
 			"Please remove the extension."));
-		throw illegal_filename_exception();
+		return false;
+	} else {
+		return true;
 	}
 }
 
@@ -668,8 +668,11 @@ int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, co
 		res = dlg.get_retval();
 	}
 
-	check_filename(filename, video);
 	set_filename(filename);
+
+	if (!check_filename(filename, video)) {
+		res = gui2::twindow::CANCEL;
+	}
 
 	return res;
 }
@@ -826,7 +829,7 @@ static void convert_old_saves_1_13_0(config& cfg)
 		}
 	}
 #if 1
-	//This code is needed becasue for example otherwise it won't find the (empty) era 
+	//This code is needed becasue for example otherwise it won't find the (empty) era
 	if(!cfg.has_child("multiplayer")) {
 		cfg.add_child("multiplayer", config_of
 			("mp_era", "era_blank")
@@ -835,7 +838,7 @@ static void convert_old_saves_1_13_0(config& cfg)
 			("mp_use_map_settings", true)
 		);
 	}
-	//the alternative code down below doesnt work replay saves or start of scenario saves 
+	//the alternative code down below doesnt work replay saves or start of scenario saves
 	//becasue those don't contain a snaphot. If the code below works with we can enable that code
 	//If it turns out that this code works well we can delete that code.
 #else
@@ -856,8 +859,8 @@ void convert_old_saves(config& cfg)
 	if(loaded_version < version_info("1.12.0"))
 	{
 		convert_old_saves_1_11_0(cfg);
-	}	
-	// '<= version_info("1.13.0")' doesn't work 
+	}
+	// '<= version_info("1.13.0")' doesn't work
 	//because version_info cannot handle 1.13.0-dev versions correctly.
 	if(loaded_version < version_info("1.13.1"))
 	{
