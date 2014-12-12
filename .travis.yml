@@ -61,7 +61,7 @@ install:
     - if [ "$CXX" = "g++" ]; then time sudo apt-get -qq install g++-4.8; fi
     - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8"; fi
     - if [ "$CHECK_UTF8" = true ]; then time sudo apt-get install -qq moreutils; fi
-    - if [ "$CXX11" = false ]; then time sudo apt-get -o Dpkg::Options::='--force-confold' --force-yes -fuy upgrade; fi
+    - if [ "$CPP_TESTS" = true ]; then time sudo apt-get -o Dpkg::Options::='--force-confold' --force-yes -fuy upgrade; fi
     - $CXX -v
 
 script: 
