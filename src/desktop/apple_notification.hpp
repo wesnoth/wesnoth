@@ -12,12 +12,12 @@
    See the COPYING file for more details.
 */
 
-#ifndef GROWL_NOTIFICATION_HPP_
-#define GROWL_NOTIFICATION_HPP_
+#ifndef APPLE_NOTIFICATION_HPP_
+#define APPLE_NOTIFICATION_HPP_
 
 #include <string>
 
-namespace growl {
+namespace apple_notifications {
 	void send_notification(const std::string& owner, const std::string& message, const std::string & note_name);
 }
 

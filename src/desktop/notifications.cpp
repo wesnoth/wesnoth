@@ -30,8 +30,8 @@
 #include "dbus_notification.hpp"
 #endif
 
-#ifdef HAVE_GROWL
-#include "growl_notification.hpp"
+#ifdef __APPLE__
+#include "apple_notification.hpp"
 #endif
 
 #ifdef _WIN32
@@ -42,7 +42,7 @@ namespace desktop {
 
 namespace notifications {
 
-#if !(defined(HAVE_LIBDBUS) || defined(HAVE_GROWL) || defined(_WIN32))
+#if !(defined(HAVE_LIBDBUS) || defined(__APPLE__) || defined(_WIN32))
 
 bool available() { return false; }
 
@@ -70,7 +70,7 @@ void send(const std::string& owner, const std::string& message, type t)
 	dbus::send_notification(owner, message, t == CHAT);
 #endif
 
-#ifdef HAVE_GROWL
+#ifdef __APPLE__
 	std::string note_name = "";
 	switch (t) {
 		case CHAT:
@@ -84,7 +84,7 @@ void send(const std::string& owner, const std::string& message, type t)
 			break;
 	}
 
-	growl::send_notification(owner, message, note_name);
+	apple_notifications::send_notification(owner, message, note_name);
 #endif
 
 #ifdef _WIN32
