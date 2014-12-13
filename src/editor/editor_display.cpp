@@ -53,8 +53,9 @@ const display_context * get_dummy_display_context() {
 // End dummy display context
 
 editor_display::editor_display(const display_context * dc, CVideo& video,
+		reports & reports_object,
 		const config& theme_cfg, const config& level)
-	: display(dc, video, boost::shared_ptr<wb::manager>(), theme_cfg, level)
+	: display(dc, video, boost::shared_ptr<wb::manager>(), reports_object, theme_cfg, level)
 	, brush_locations_()
 	, palette_report_()
 {

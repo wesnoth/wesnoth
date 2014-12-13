@@ -215,6 +215,8 @@ class editor_controller : public controller_base,
 
 		editor::menu_type active_menu_;
 
+		/** Reports object. Must be initialized before the gui_ */
+		boost::scoped_ptr<reports> reports_;
 
 		/** The display object used and owned by the editor. */
 		boost::scoped_ptr<editor_display> gui_;

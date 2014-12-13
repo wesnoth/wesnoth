@@ -318,7 +318,6 @@ manager::~manager() {
 	clear_events();
 	event_handlers.clear();
 	hotkey::delete_all_wml_hotkeys();
-	reports::reset_generators();
 	unit_wml_ids.clear();
 	used_items.clear();
 }

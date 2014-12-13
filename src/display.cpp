@@ -148,7 +148,7 @@ void display::remove_single_overlay(const map_location& loc, const std::string& 
 
 
 
-display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::manager> wb, const config& theme_cfg, const config& level) :
+display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::manager> wb, reports & reports_object, const config& theme_cfg, const config& level) :
 	dc_(dc),
 	halo_man_(new halo::manager(*this)),
 	wb_(wb),
@@ -176,6 +176,7 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 	turbo_(false),
 	invalidateGameStatus_(true),
 	map_labels_(new map_labels(*this, 0)),
+	reports_object_(reports_object),
 	scroll_event_("scrolled"),
 	complete_redraw_event_("completely_redrawn"),
 	nextDraw_(0),
@@ -3083,7 +3084,7 @@ void display::refresh_report(std::string const &report_name, const config * new_
 
 	reports::context temp_context = reports::context(*dc_, *this, *resources::tod_manager, wb_.lock(), mhb);
 
-	const config generated_cfg = new_cfg ? config() : reports::generate_report(report_name, temp_context);
+	const config generated_cfg = new_cfg ? config() : reports_object_.generate_report(report_name, temp_context);
 	if ( new_cfg == NULL )
 		new_cfg = &generated_cfg;
 
@@ -3294,7 +3295,7 @@ void display::refresh_report(std::string const &report_name, const config * new_
 
 	reports::context temp_context = reports::context(*dc_, *this, *resources::tod_manager, wb_.lock(), mhb);
 
-	const config generated_cfg = new_cfg ? config() : reports::generate_report(report_name, temp_context);
+	const config generated_cfg = new_cfg ? config() : reports_object_.generate_report(report_name, temp_context);
 	if ( new_cfg == NULL )
 		new_cfg = &generated_cfg;
 

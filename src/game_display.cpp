@@ -68,9 +68,10 @@ std::vector<surface> footsteps_images(const map_location& loc, const pathfind::m
 #endif
 
 game_display::game_display(game_board& board, CVideo& video, boost::weak_ptr<wb::manager> wb,
+		reports & reports_object,
 		const tod_manager& tod,
 		const config& theme_cfg, const config& level) :
-		display(&board, video, wb, theme_cfg, level),
+		display(&board, video, wb, reports_object, theme_cfg, level),
 		overlay_map_(),
 		attack_indicator_src_(),
 		attack_indicator_dst_(),
@@ -93,7 +94,8 @@ game_display* game_display::create_dummy_display(CVideo& video)
 	static config dummy_cfg2;
 	static game_board dummy_board(boost::make_shared<terrain_type_data>(dummy_cfg), dummy_cfg2);
 	static tod_manager dummy_tod(dummy_cfg);
-	return new game_display(dummy_board, video, boost::shared_ptr<wb::manager>(), dummy_tod,
+	static reports rep_;
+	return new game_display(dummy_board, video, boost::shared_ptr<wb::manager>(), rep_, dummy_tod,
 			dummy_cfg, dummy_cfg);
 }
 
@@ -470,7 +472,7 @@ void game_display::draw_sidebar()
 
 		// We display the unit the mouse is over if it is over a unit,
 		// otherwise we display the unit that is selected.
-		BOOST_FOREACH(const std::string &name, reports::report_list()) {
+		BOOST_FOREACH(const std::string &name, reports_object_.report_list()) {
 			refresh_report(name);
 		}
 		invalidateGameStatus_ = false;

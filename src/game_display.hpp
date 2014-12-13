@@ -40,6 +40,7 @@ class game_display : public display
 public:
 	game_display(game_board& board, CVideo& video,
 			boost::weak_ptr<wb::manager> wb,
+			reports & reports_object,
 			const tod_manager& tod_manager,
 			const config& theme_cfg,
 			const config& level);
