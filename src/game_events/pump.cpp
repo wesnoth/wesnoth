@@ -425,12 +425,6 @@ void put_wml_message(const std::string& logger, const std::string& message, bool
 	}
 }
 
-void run_lua_commands(char const *lua_code)
-{
-	assert(resources::lua_kernel);
-	resources::lua_kernel->run(lua_code);
-}
-
 void handle_event_commands(const queued_event& event_info, const vconfig &cfg)
 {
 	assert(resources::lua_kernel);
