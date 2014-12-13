@@ -179,6 +179,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 
 play_controller::~play_controller()
 {
+	hotkey::delete_all_wml_hotkeys();
 	clear_resources();
 }
 

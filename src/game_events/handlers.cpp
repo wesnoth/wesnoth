@@ -25,7 +25,6 @@
 
 #include "../formula_string_utils.hpp"
 #include "../game_data.hpp"
-#include "../hotkey/hotkey_command.hpp"
 #include "../log.hpp"
 #include "../reports.hpp"
 #include "../resources.hpp"
@@ -317,7 +316,6 @@ manager::manager(const config& cfg)
 manager::~manager() {
 	clear_events();
 	event_handlers.clear();
-	hotkey::delete_all_wml_hotkeys();
 	unit_wml_ids.clear();
 	used_items.clear();
 }
