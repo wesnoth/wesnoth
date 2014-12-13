@@ -2846,7 +2846,7 @@ namespace {
 int game_lua_kernel::impl_theme_item(lua_State *L, std::string m)
 {
 	reports::context temp_context = reports::context(board(), game_display_, tod_man(), play_controller_.get_whiteboard(), play_controller_.get_mouse_handler_base());
-	luaW_pushconfig(L, reports::generate_report(m.c_str(), temp_context , true));
+	luaW_pushconfig(L, reports_.generate_report(m.c_str(), temp_context , true));
 	return 1;
 }
 
@@ -2860,20 +2860,20 @@ int game_lua_kernel::impl_theme_items_get(lua_State *L)
 	lua_pushvalue(L, 2);
 	lua_pushvalue(L, -2);
 	lua_rawset(L, 1);
-	reports::register_generator(m, new lua_report_generator(L, m));
+	reports_.register_generator(m, new lua_report_generator(L, m));
 	return 1;
 }
 
 /**
  * Sets a field of the theme_items table (__newindex metamethod).
  */
-static int impl_theme_items_set(lua_State *L)
+int game_lua_kernel::impl_theme_items_set(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 2);
 	lua_pushvalue(L, 2);
 	lua_pushvalue(L, 3);
 	lua_rawset(L, 1);
-	reports::register_generator(m, new lua_report_generator(L, m));
+	reports_.register_generator(m, new lua_report_generator(L, m));
 	return 0;
 }
 
@@ -2910,8 +2910,8 @@ tod_manager & game_lua_kernel::tod_man() {
 	return game_state_.tod_manager_;
 }
 
-game_lua_kernel::game_lua_kernel(const config &cfg, game_display & gd, game_state & gs, play_controller & pc)
-	: lua_kernel_base(&gd.video()), game_display_(gd), game_state_(gs), play_controller_(pc), level_(cfg)
+game_lua_kernel::game_lua_kernel(const config &cfg, game_display & gd, game_state & gs, play_controller & pc, reports & reports_object)
+	: lua_kernel_base(&gd.video()), game_display_(gd), game_state_(gs), play_controller_(pc), reports_(reports_object), level_(cfg)
 {
 	lua_State *L = mState;
 
@@ -3155,7 +3155,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, game_display & gd, game_stat
 	lua_createtable(L, 0, 2);
 	lua_cpp::push_closure(L, boost::bind(&game_lua_kernel::impl_theme_items_get, this, _1), 0);
 	lua_setfield(L, -2, "__index");
-	lua_pushcfunction(L, impl_theme_items_set);
+	lua_cpp::push_closure(L, boost::bind(&game_lua_kernel::impl_theme_items_set, this, _1), 0);
 	lua_setfield(L, -2, "__newindex");
 	lua_setmetatable(L, -2);
 	lua_setfield(L, -2, "theme_items");

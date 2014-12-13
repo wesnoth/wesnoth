@@ -38,6 +38,7 @@ class fake_unit_manager;
 class terrain_builder;
 class map_labels;
 class arrow;
+class reports;
 
 namespace halo {
 	class manager;
@@ -77,6 +78,7 @@ class display : public filter_context
 {
 public:
 	display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::manager> wb,
+			reports & reports_object,
 			const config& theme_cfg, const config& level);
 	virtual ~display();
 	static display* get_singleton() { return singleton_ ;}
@@ -777,7 +779,7 @@ protected:
 	bool turbo_;
 	bool invalidateGameStatus_;
 	boost::scoped_ptr<map_labels> map_labels_;
-
+	reports & reports_object_;
 
 	/** Event raised when the map is being scrolled */
 	mutable events::generic_event scroll_event_;

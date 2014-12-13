@@ -98,7 +98,7 @@ public:
 		TYPE type;
 	};
 
-	virtual handler_vector handler_members();
+	virtual sdl_handler_vector handler_members();
 private:
 
 	void process_event();
@@ -533,9 +533,9 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	set_friends_menu();
 }
 
-handler_vector preferences_dialog::handler_members()
+sdl_handler_vector preferences_dialog::handler_members()
 {
-	handler_vector h;
+	sdl_handler_vector h;
 	h.push_back(&music_slider_);
 	h.push_back(&sound_slider_);
 	h.push_back(&bell_slider_);

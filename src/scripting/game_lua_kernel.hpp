@@ -39,6 +39,7 @@ class team;
 class game_data;
 class tod_manager;
 class play_controller;
+class reports;
 
 typedef int (*lua_CFunction) (lua_State *L);
 
@@ -47,6 +48,7 @@ class game_lua_kernel : public lua_kernel_base
 	game_display & game_display_;
 	game_state & game_state_;
 	play_controller & play_controller_;
+	reports & reports_;
 
 	// Private functions to ease access to parts of game_state
 	game_board & board();
@@ -115,13 +117,14 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_get_all_vars(lua_State *L);
 	int impl_theme_item(lua_State *L, std::string name);
 	int impl_theme_items_get(lua_State *L);
+	int impl_theme_items_set(lua_State *L);
 
 	//private helpers
 	std::string synced_state();
 	void lua_chat(std::string const &caption, std::string const &msg);
 
 public:
-	game_lua_kernel(const config &, game_display &, game_state &, play_controller &);
+	game_lua_kernel(const config &, game_display &, game_state &, play_controller &, reports &);
 
 	virtual std::string my_name() { return "Game Lua Kernel"; }
 

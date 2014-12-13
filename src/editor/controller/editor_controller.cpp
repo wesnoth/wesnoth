@@ -38,6 +38,7 @@
 
 #include "dialogs.hpp"
 #include "resources.hpp"
+#include "reports.hpp"
 
 #include "desktop/clipboard.hpp"
 #include "../../game_preferences.hpp"
@@ -63,7 +64,8 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	: controller_base(SDL_GetTicks(), game_config, video)
 	, mouse_handler_base()
 	, active_menu_(editor::MAP)
-	, gui_(new editor_display(editor::get_dummy_display_context(), video, get_theme(game_config, "editor"), config()))
+	, reports_(new reports())
+	, gui_(new editor_display(editor::get_dummy_display_context(), video, *reports_, get_theme(game_config, "editor"), config()))
 	, tods_()
 	, context_manager_(new context_manager(*gui_.get(), game_config_))
 	, toolkit_(NULL)

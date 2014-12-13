@@ -53,6 +53,7 @@
 #include "replay.hpp"
 #include "random_new.hpp"
 #include "resources.hpp"
+#include "scripting/game_lua_kernel.hpp"
 #include "side_filter.hpp"
 #include "sound.hpp"
 #include "soundsource.hpp"
@@ -502,6 +503,10 @@ namespace { // Support functions
 		resources::screen->invalidate_all();
 	}
 
+	void handle_event_commands(const queued_event& event_info, const vconfig &cfg) {
+		assert(resources::lua_kernel);
+		resources::lua_kernel->run_wml_action("command", cfg, event_info);
+	}
 } // end anonymous namespace (support functions)
 
 void handle_deprecated_message(const config& cfg)
@@ -957,8 +962,8 @@ WML_HANDLER_FUNCTION(label, /*event_info*/, cfg)
 
 	terrain_label label(screen.labels(), cfg.get_config());
 
-	screen.labels().set_label(label.location(), label.text(),
-		label.team_name(), label.color(), label.visible_in_fog(), label.visible_in_shroud(), label.immutable());
+	screen.labels().set_label(label.location(), label.text(), label.team_name(), label.color(),
+			label.visible_in_fog(), label.visible_in_shroud(), label.immutable(), label.tooltip());
 }
 
 WML_HANDLER_FUNCTION(lift_fog, /*event_info*/, cfg)

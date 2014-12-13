@@ -32,17 +32,17 @@
 namespace editor {
 
 template<class Item>
-handler_vector editor_palette<Item>::handler_members()
+sdl_handler_vector editor_palette<Item>::handler_members()
 {
-	handler_vector h;
+	sdl_handler_vector h;
 	BOOST_FOREACH(gui::widget& b, buttons_) {
 		h.push_back(&b);
 	}
 	return h;
 }
-template handler_vector editor_palette<t_translation::t_terrain>::handler_members();
-template handler_vector editor_palette<unit_type>::handler_members();
-template handler_vector editor_palette<overlay>::handler_members();
+template sdl_handler_vector editor_palette<t_translation::t_terrain>::handler_members();
+template sdl_handler_vector editor_palette<unit_type>::handler_members();
+template sdl_handler_vector editor_palette<overlay>::handler_members();
 
 template<class Item>
 void editor_palette<Item>::expand_palette_groups_menu(std::vector<std::string>& items)

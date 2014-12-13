@@ -25,7 +25,6 @@
 
 #include "../formula_string_utils.hpp"
 #include "../game_data.hpp"
-#include "../hotkey/hotkey_command.hpp"
 #include "../log.hpp"
 #include "../reports.hpp"
 #include "../resources.hpp"
@@ -317,8 +316,6 @@ manager::manager(const config& cfg)
 manager::~manager() {
 	clear_events();
 	event_handlers.clear();
-	hotkey::delete_all_wml_hotkeys();
-	reports::reset_generators();
 	unit_wml_ids.clear();
 	used_items.clear();
 }
@@ -472,8 +469,10 @@ void event_handler::handle_event(const queued_event& event_info, handler_ptr& ha
 		handler_p.reset();
 	}
 	// *WARNING*: At this point, dereferencing this could be a memory violation!
+	// ^ this comment does not refer to resources::lua_kernel below, but to the vconfig
 
-	handle_event_commands(event_info, vcfg);
+	assert(resources::lua_kernel);
+	resources::lua_kernel->run_wml_action("command", vcfg, event_info);
 }
 
 bool event_handler::matches_name(const std::string &name) const
@@ -564,12 +563,6 @@ void write_events(config& cfg)
 
 	cfg["used_items"] = utils::join(used_items);
 	cfg["unit_wml_ids"] = utils::join(unit_wml_ids);
-
-	if (resources::soundsources)
-		resources::soundsources->write_sourcespecs(cfg);
-
-	assert(resources::lua_kernel != NULL);
-	resources::lua_kernel->save_game(cfg);
 }
 
 } // end namespace game_events

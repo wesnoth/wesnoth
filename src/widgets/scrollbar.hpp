@@ -78,7 +78,7 @@ public:
 	void scroll_up();
 
 protected:
-	virtual handler_vector handler_members();
+	virtual sdl_handler_vector handler_members();
 	virtual void update_location(SDL_Rect const &rect);
 	virtual void handle_event(const SDL_Event& event);
 	virtual void process_event();

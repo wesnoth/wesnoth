@@ -42,6 +42,7 @@
 #include "pathfind/teleport.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
+#include "reports.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
 #include "saved_game.hpp"
@@ -112,6 +113,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	saved_game_(state_of_game),
 	prefs_disp_manager_(),
 	tooltips_manager_(),
+	reports_(new reports()),
 	events_manager_(),
 	labels_manager_(),
 	help_manager_(&game_config),
@@ -177,6 +179,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 
 play_controller::~play_controller()
 {
+	hotkey::delete_all_wml_hotkeys();
 	clear_resources();
 }
 
@@ -213,7 +216,7 @@ void play_controller::init(CVideo& video){
 
 	LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("build terrain");
-	gui_.reset(new game_display(gamestate_.board_, video, whiteboard_manager_, gamestate_.tod_manager_, theme_cfg, level_));
+	gui_.reset(new game_display(gamestate_.board_, video, whiteboard_manager_, *reports_, gamestate_.tod_manager_, theme_cfg, level_));
 	if (!gui_->video().faked()) {
 		if (saved_game_.mp_settings().mp_countdown)
 			gui_->get_theme().modify_label("time-icon", _ ("time left for current turn"));
@@ -233,7 +236,7 @@ void play_controller::init(CVideo& video){
 	// This *needs* to be created before the show_intro and show_map_scene
 	// as that functions use the manager state_of_game
 	// Has to be done before registering any events!
-	lua_kernel_.reset(new game_lua_kernel(level_, *gui_, gamestate_, *this));
+	lua_kernel_.reset(new game_lua_kernel(level_, *gui_, gamestate_, *this, *reports_));
 	resources::lua_kernel=lua_kernel_.get();
 	events_manager_.reset(new game_events::manager(level_));
 
@@ -430,7 +433,7 @@ void play_controller::fire_preload()
 {
 	// Run initialization scripts, even if loading from a snapshot.
 	gamestate_.gamedata_.set_phase(game_data::PRELOAD);
-	resources::lua_kernel->initialize();
+	lua_kernel_->initialize();
 	gamestate_.gamedata_.get_variable("turn_number") = int(turn());
 	game_events::fire("preload");
 }
@@ -649,6 +652,11 @@ config play_controller::to_config() const
 	//Write the game events.
 	game_events::write_events(cfg);
 
+	//Write the soundsources.
+	soundsources_manager_->write_sourcespecs(cfg);
+
+	//Call the lua save_game functions
+	lua_kernel_->save_game(cfg);
 
 	if(gui_.get() != NULL){
 		cfg["playing_team"] = str_cast(gui_->playing_team());

@@ -80,8 +80,8 @@ public:
 	label *caption() const { return caption_; }
 	void draw_contents();
 
-	handler_vector handler_members() {
-		handler_vector h;
+	sdl_handler_vector handler_members() {
+		sdl_handler_vector h;
 		if(caption_) h.push_back(caption_);
 		return h;
 	}
@@ -101,8 +101,8 @@ public:
 
 	label *get_label() const { return label_; }
 
-	handler_vector handler_members() {
-		handler_vector h = textbox::handler_members();
+	sdl_handler_vector handler_members() {
+		sdl_handler_vector h = textbox::handler_members();
 		if(label_) h.push_back(label_);
 		return h;
 	}

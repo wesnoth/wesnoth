@@ -75,9 +75,9 @@ scrollbar::scrollbar(CVideo &video)
 	}
 }
 
-handler_vector scrollbar::handler_members()
+sdl_handler_vector scrollbar::handler_members()
 {
-	handler_vector h;
+	sdl_handler_vector h;
 	h.push_back(&uparrow_);
 	h.push_back(&downarrow_);
 	return h;

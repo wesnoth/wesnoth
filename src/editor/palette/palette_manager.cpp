@@ -141,7 +141,7 @@ void palette_manager::draw_contents()
 //	set_dirty(false);
 }
 
-handler_vector palette_manager::handler_members()
+sdl_handler_vector palette_manager::handler_members()
 {
 	//handler_vector h;
 //	BOOST_FOREACH(gui::widget& b, active_palette().get_widgets()) {

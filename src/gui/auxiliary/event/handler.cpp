@@ -121,7 +121,7 @@ static Uint32 timer_sdl_poll_events(Uint32, void*)
  *
  * It's a new experimental class.
  */
-class thandler : public events::handler
+class thandler : public events::sdl_handler
 {
 	friend bool gui2::is_in_dialog();
 
@@ -130,7 +130,7 @@ public:
 
 	~thandler();
 
-	/** Inherited from events::handler. */
+	/** Inherited from events::sdl_handler. */
 	void handle_event(const SDL_Event& event);
 
 	/**
@@ -162,7 +162,7 @@ private:
 	/***** Handlers *****/
 
 	/** Fires a draw event. */
-	using events::handler::draw;
+	using events::sdl_handler::draw;
 	void draw(const bool force);
 
 	/**
@@ -293,7 +293,7 @@ private:
 };
 
 thandler::thandler()
-	: events::handler(false)
+	: events::sdl_handler(false)
 	, mouse_focus(NULL)
 	, dispatchers_()
 	, keyboard_focus_(NULL)

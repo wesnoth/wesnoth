@@ -40,7 +40,8 @@ namespace events {
 	class mouse_handler;
 }
 
-namespace reports {
+class reports {
+public:
 
 class context
 {
@@ -71,12 +72,22 @@ struct generator
 	virtual ~generator() {}
 };
 
-void reset_generators();
 void register_generator(const std::string &name, generator *);
 
 config generate_report(const std::string &name, context & ct, bool only_static = false);
 
 const std::set<std::string> &report_list();
-}
+
+
+typedef config (*generator_function)(reports::context & );
+typedef std::map<std::string, boost::shared_ptr<reports::generator> > dynamic_report_generators;
+
+private:
+
+std::set<std::string> all_reports_;
+
+dynamic_report_generators dynamic_generators_;
+
+};
 
 #endif

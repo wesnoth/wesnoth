@@ -174,7 +174,7 @@ public:
 	virtual bool show_above() const { return false; }
 	virtual bool left_side() const = 0;
 	virtual void set_selection(int index) = 0;
-	virtual handler_vector handler_members() { return widget::handler_members(); }
+	virtual sdl_handler_vector handler_members() { return widget::handler_members(); }
 };
 
 //if a menu is given, then returns -1 if the dialog was canceled, and the

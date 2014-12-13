@@ -31,7 +31,7 @@ namespace events {
 class mouse_handler_base;
 }
 
-class controller_base : public hotkey::command_executor, public events::handler
+class controller_base : public hotkey::command_executor, public events::sdl_handler
 {
 public:
 	controller_base(const int ticks, const config& game_config, CVideo& video);

@@ -33,6 +33,7 @@
 #include "recall_list_manager.hpp"
 #include "replay.hpp" //user choice
 #include "resources.hpp"
+#include "scripting/game_lua_kernel.hpp"
 #include <boost/foreach.hpp>
 
 static lg::log_domain log_replay("replay");
@@ -335,7 +336,8 @@ SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child,  /*use_undo*/, /*show*/, erro
 SYNCED_COMMAND_HANDLER_FUNCTION(lua_ai, child,  /*use_undo*/, /*show*/, /*error_handler*/)
 {
 	const std::string &lua_code = child["code"];
-	game_events::run_lua_commands(lua_code.c_str());
+	assert(resources::lua_kernel);
+	resources::lua_kernel->run(lua_code.c_str());
 	return true;
 }
 

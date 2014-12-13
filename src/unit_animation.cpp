@@ -1399,50 +1399,15 @@ void unit_animator::wait_until(int animation_time) const
 	new_animation_frame();
 }
 
-namespace {
-class reentry_preventer {
-public:
-	class entry {
-	public:
-		bool valid() {
-			return valid_;
-		}
-		operator bool() {
-			return valid();
-		}
-		~entry() {
-			--parent_->depth;
-		}
-	private:
-		entry(reentry_preventer *p) : parent_(p), valid_(++p->depth == 1) {}
-		reentry_preventer *parent_;
-		bool valid_;
-		friend class reentry_preventer;
-	};
-
-	reentry_preventer() : depth(0) {}
-	entry enter() {
-		return entry(this);
-	}
-private:
-	unsigned depth;
-};
-}
-
 void unit_animator::wait_for_end() const
 {
 	if (game_config::no_delay) return;
-	//static reentry_preventer rp;
-	//reentry_preventer::entry rpe = rp.enter();
-	//assert(rpe || (false && "Reentered a unit animation. See bug #18921")); //Catches reentry
+
 	bool finished = false;
 	display*disp = display::get_singleton();
 	while(!finished) {
 		resources::controller->play_slice(false);
-		// Replacing the below assert with a conditional break will fix the local segfault,
-		// but this just exposes a different one.
-		// It's also unnecessary given the one a few lines up.
-		//assert(rpe || (false && "Reentered a unit animation. See bug #18921")); //Catches a past reentry
+
 		disp->delay(10);
 		finished = true;
 		for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {

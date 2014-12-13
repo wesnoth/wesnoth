@@ -945,11 +945,11 @@ std::stack<std::set<int> > label_contexts;
 
 namespace font {
 
-floating_label::floating_label(const std::string& text)
+floating_label::floating_label(const std::string& text, const surface& surf)
 #if 0
 		: img_(),
 #else
-		: surf_(NULL), buf_(NULL),
+		: surf_(surf), buf_(NULL),
 #endif
 		text_(text),
 		font_size_(SIZE_NORMAL),

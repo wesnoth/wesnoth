@@ -20,6 +20,7 @@
 #include "game_display.hpp"
 #include "terrain_type_data.hpp"
 #include "tod_manager.hpp"
+#include "reports.hpp"
 
 #include <boost/make_shared.hpp>
 
@@ -37,6 +38,7 @@ namespace test_utils {
 		config dummy_cfg2_;
 		game_board dummy_board_;
 		tod_manager dummy_tod_;
+		reports dummy_reports;
 		const events::event_context main_event_context_;
 
 
@@ -68,7 +70,7 @@ namespace test_utils {
 		dummy_board_(boost::make_shared<terrain_type_data>(dummy_cfg_), dummy_cfg2_),
 		dummy_tod_(dummy_cfg_),
 		main_event_context_(),
-		disp_(dummy_board_, video_, boost::shared_ptr<wb::manager> (), dummy_tod_,
+		disp_(dummy_board_, video_, boost::shared_ptr<wb::manager> (), dummy_reports, dummy_tod_,
 				dummy_cfg_, dummy_cfg_)
 	{
 	}

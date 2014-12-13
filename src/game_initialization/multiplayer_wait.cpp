@@ -177,8 +177,8 @@ void wait::leader_preview_pane::set_selection(int selection)
 	}
 }
 
-handler_vector wait::leader_preview_pane::handler_members() {
-	handler_vector h;
+sdl_handler_vector wait::leader_preview_pane::handler_members() {
+	sdl_handler_vector h;
 	h.push_back(&combo_leader_);
 	h.push_back(&combo_gender_);
 	return h;
