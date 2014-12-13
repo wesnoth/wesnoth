@@ -469,8 +469,10 @@ void event_handler::handle_event(const queued_event& event_info, handler_ptr& ha
 		handler_p.reset();
 	}
 	// *WARNING*: At this point, dereferencing this could be a memory violation!
+	// ^ this comment does not refer to resources::lua_kernel below, but to the vconfig
 
-	handle_event_commands(event_info, vcfg);
+	assert(resources::lua_kernel);
+	resources::lua_kernel->run_wml_action("command", vcfg, event_info);
 }
 
 bool event_handler::matches_name(const std::string &name) const

@@ -425,12 +425,6 @@ void put_wml_message(const std::string& logger, const std::string& message, bool
 	}
 }
 
-void handle_event_commands(const queued_event& event_info, const vconfig &cfg)
-{
-	assert(resources::lua_kernel);
-	resources::lua_kernel->run_wml_action("command", cfg, event_info);
-}
-
 bool fire(const std::string& event,
           const entity_location& loc1,
           const entity_location& loc2,

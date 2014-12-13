@@ -100,11 +100,6 @@ namespace game_events
 	void put_wml_message(const std::string& logger, const std::string& message, bool in_chat);
 
 	/**
-	 * Runs the action handler associated to the command sequence @a cfg.
-	 */
-	void handle_event_commands(const queued_event &event_info, const vconfig &cfg);
-
-	/**
 	 * Function to fire an event.
 	 *
 	 * Events may have up to two arguments, both of which must be locations.
