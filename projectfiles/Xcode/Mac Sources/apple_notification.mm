@@ -43,20 +43,24 @@ void send_growl_notification(const std::string& owner, const std::string& messag
 #pragma clang diagnostic ignored "-Wunused-parameter"
 #ifdef HAVE_NS_USER_NOTIFICATION
 void send_notification(const std::string& owner, const std::string& message, const std::string& note_name) {
-    Class appleNotificationClass = NSClassFromString(@"NSUserNotificationCenter");
-    if (appleNotificationClass) {
-        send_cocoa_notification(owner, message);
-    } else {
-#ifdef HAVE_GROWL
-        send_growl_notification(owner, message, note_name);
-#endif
+    @autoreleasepool {
+        Class appleNotificationClass = NSClassFromString(@"NSUserNotificationCenter");
+        if (appleNotificationClass) {
+            send_cocoa_notification(owner, message);
+        } else {
+    #ifdef HAVE_GROWL
+            send_growl_notification(owner, message, note_name);
+    #endif
+        }
     }
 }
 #else
 void send_notification(const std::string& owner, const std::string& message, const std::string& note_name) {
+    @autoreleasepool {
 #ifdef HAVE_GROWL
-    send_growl_notification(owner, message, note_name);
+        send_growl_notification(owner, message, note_name);
 #endif
+    }
 }
 #endif
 #pragma clang diagnostic pop
