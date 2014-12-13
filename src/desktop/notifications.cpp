@@ -71,20 +71,7 @@ void send(const std::string& owner, const std::string& message, type t)
 #endif
 
 #ifdef __APPLE__
-	std::string note_name = "";
-	switch (t) {
-		case CHAT:
-			note_name = _("Chat Message");
-			break;
-		case TURN_CHANGED:
-			note_name = _("Turn Changed");
-			break;
-		case OTHER:
-			note_name = _("Wesnoth");
-			break;
-	}
-
-	apple_notifications::send_notification(owner, message, note_name);
+	apple_notifications::send_notification(owner, message, t);
 #endif
 
 #ifdef _WIN32
