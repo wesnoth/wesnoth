@@ -62,14 +62,14 @@ public:
 
 private:
 
-	/// overrides events::handler::process_event
+	/// overrides events::sdl_handler::process_event
 	void process_event();
 
 	/// overrides gui::widget::update_location
 	void update_location(SDL_Rect const &rect);
 
 	/// overrides gui::preview_pane::handler_members
-	virtual handler_vector handler_members();
+	virtual sdl_handler_vector handler_members();
 
 	/// implements gui::preview_pane::set_selection
 	void set_selection(int index);
@@ -424,8 +424,8 @@ void hotkey_preferences_dialog::set_hotkey_menu(bool keep_viewport) {
 
 }
 
-handler_vector hotkey_preferences_dialog::handler_members() {
-	handler_vector h;
+sdl_handler_vector hotkey_preferences_dialog::handler_members() {
+	sdl_handler_vector h;
 	h.push_back(&add_button_);
 	h.push_back(&clear_button_);
 	h.push_back(&general_hotkeys_);

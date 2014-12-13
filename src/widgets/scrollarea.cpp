@@ -37,9 +37,9 @@ bool scrollarea::has_scrollbar() const
 	return shown_size_ < full_size_ && scrollbar_.is_valid_height(location().h);
 }
 
-handler_vector scrollarea::handler_members()
+sdl_handler_vector scrollarea::handler_members()
 {
-	handler_vector h;
+	sdl_handler_vector h;
 	h.push_back(&scrollbar_);
 	return h;
 }

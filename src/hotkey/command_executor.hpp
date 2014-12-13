@@ -142,7 +142,7 @@ void execute_command(display& disp, const hotkey_command& command, command_execu
 
 // Object which will ensure that basic keyboard events like escape
 // are handled properly for the duration of its lifetime.
-struct basic_handler : public events::handler {
+struct basic_handler : public events::sdl_handler {
 	basic_handler(display* disp, command_executor* exec=NULL);
 
 	void handle_event(const SDL_Event& event);

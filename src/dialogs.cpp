@@ -1027,9 +1027,9 @@ unit_preview_pane::unit_preview_pane(const gui::filter_textbox *filter, TYPE typ
 }
 
 
-handler_vector unit_preview_pane::handler_members()
+sdl_handler_vector unit_preview_pane::handler_members()
 {
-	handler_vector h;
+	sdl_handler_vector h;
 	h.push_back(&details_button_);
 	return h;
 }

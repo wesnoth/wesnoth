@@ -22,7 +22,7 @@ class CVideo;
 
 namespace gui {
 
-class widget : public events::handler
+class widget : public events::sdl_handler
 {
 public:
 	SDL_Rect const &location() const;
@@ -87,7 +87,7 @@ protected:
 	virtual void update_location(SDL_Rect const &rect);
 
 	const SDL_Rect* clip_rect() const;
-	virtual handler_vector member_handlers() { return handler::handler_members(); }
+	virtual sdl_handler_vector member_handlers() { return sdl_handler::handler_members(); }
 
 	virtual void handle_event(SDL_Event const &/*event*/) {}
 	bool focus_;		// Should user input be ignored?

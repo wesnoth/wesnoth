@@ -50,7 +50,7 @@ private:
 		bool left_side() const;
 		void set_selection(int index);
 
-		handler_vector handler_members();
+		sdl_handler_vector handler_members();
 
 	private:
 		virtual void process_event();

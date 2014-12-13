@@ -54,7 +54,7 @@ public:
 
 	void adjust_size();
 
-	handler_vector handler_members();
+	sdl_handler_vector handler_members();
 	virtual void handle_event(const SDL_Event& event);
 
 	/**

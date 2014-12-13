@@ -247,7 +247,7 @@ void set_idle_anim_rate(int rate) {
 }
 
 namespace {
-class escape_handler : public events::handler {
+class escape_handler : public events::sdl_handler {
 public:
 	escape_handler() : escape_pressed_(false) {}
 	bool escape_pressed() const { return escape_pressed_; }

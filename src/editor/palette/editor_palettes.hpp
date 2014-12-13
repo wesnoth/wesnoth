@@ -56,7 +56,7 @@ public:
 
 
 
-	virtual handler_vector handler_members();
+	virtual sdl_handler_vector handler_members();
 
 	void set_start_item(size_t index) { items_start_ = index; }
 
