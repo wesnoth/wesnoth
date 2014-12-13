@@ -559,8 +559,8 @@ void game_display::draw_movement_info(const map_location& loc)
 	// When out-of-turn, it's still interesting to check out the terrain defs of the selected unit
 	else if (selectedHex_.valid() && loc == mouseoverHex_)
 	{
-		const unit_map::const_iterator selectedUnit = resources::gameboard->find_visible_unit(selectedHex_,resources::teams->at(currentTeam_));
-		const unit_map::const_iterator mouseoveredUnit = resources::gameboard->find_visible_unit(mouseoverHex_,resources::teams->at(currentTeam_));
+		const unit_map::const_iterator selectedUnit = resources::gameboard->find_visible_unit(selectedHex_,dc_->teams()[currentTeam_]);
+		const unit_map::const_iterator mouseoveredUnit = resources::gameboard->find_visible_unit(mouseoverHex_,dc_->teams()[currentTeam_]);
 		if(selectedUnit != dc_->units().end() && mouseoveredUnit == dc_->units().end()) {
 			// Display the def% of this terrain
 			int def =  100 - selectedUnit->defense_modifier(get_map().get_terrain(loc));
