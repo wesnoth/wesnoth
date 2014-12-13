@@ -19,6 +19,7 @@
 #include "game_data.hpp"
 #include "map_label.hpp"
 #include "resources.hpp"
+#include "tooltips.hpp"
 #include "formula_string_utils.hpp"
 
 #include <boost/foreach.hpp>
@@ -147,7 +148,8 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 					   const SDL_Color color,
 					   const bool visible_in_fog,
 					   const bool visible_in_shroud,
-					   const bool immutable)
+					   const bool immutable,
+					   const t_string& tooltip )
 {
 	terrain_label* res = NULL;
 
@@ -173,7 +175,7 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 		}
 		else
 		{
-			current_label->second->update_info(text, team_name, color, visible_in_fog, visible_in_shroud, immutable);
+			current_label->second->update_info(text, tooltip, team_name, color, visible_in_fog, visible_in_shroud, immutable);
 			res = current_label->second;
 		}
 	}
@@ -190,7 +192,8 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 				color,
 				visible_in_fog,
 				visible_in_shroud,
-				immutable);
+				immutable,
+				tooltip);
 		add_label(loc, res);
 
 		// Hide the old label.
@@ -285,22 +288,24 @@ void map_labels::recalculate_shroud()
 
 /// creating new label
 terrain_label::terrain_label(const t_string& text,
-							 const std::string& team_name,
-							 const map_location& loc,
-							 const map_labels& parent,
-							 const SDL_Color color,
-							 const bool visible_in_fog,
-							 const bool visible_in_shroud,
-							 const bool immutable)  :
-		handle_(0),
-		text_(text),
-		team_name_(team_name),
-		visible_in_fog_(visible_in_fog),
-		visible_in_shroud_(visible_in_shroud),
-		immutable_(immutable),
-		color_(color),
-		parent_(&parent),
-		loc_(loc)
+		const std::string& team_name,
+		const map_location& loc,
+		const map_labels& parent,
+		const SDL_Color color,
+		const bool visible_in_fog,
+		const bool visible_in_shroud,
+		const bool immutable,
+		const t_string& tooltip ) :
+				handle_(0),
+				text_(text),
+				tooltip_(tooltip),
+				team_name_(team_name),
+				visible_in_fog_(visible_in_fog),
+				visible_in_shroud_(visible_in_shroud),
+				immutable_(immutable),
+				color_(color),
+				parent_(&parent),
+				loc_(loc)
 {
 	draw();
 }
@@ -309,6 +314,7 @@ terrain_label::terrain_label(const t_string& text,
 terrain_label::terrain_label(const map_labels &parent, const config &cfg) :
 		handle_(0),
 		text_(),
+		tooltip_(),
 		team_name_(),
 		visible_in_fog_(true),
 		visible_in_shroud_(false),
@@ -335,6 +341,7 @@ void terrain_label::read(const config &cfg)
 	std::string tmp_color = cfg["color"];
 
 	text_ = cfg["text"];
+	tooltip_ = cfg["tooltip"];
 	team_name_ = cfg["team_name"].str();
 	visible_in_fog_ = cfg["visible_in_fog"].to_bool(true);
 	visible_in_shroud_ = cfg["visible_in_shroud"].to_bool();
@@ -357,6 +364,7 @@ void terrain_label::write(config& cfg) const
 {
 	loc_.write(cfg);
 	cfg["text"] = text();
+	cfg["tooltip"] = tooltip();
 	cfg["team_name"] = (this->team_name());
 	cfg["color"] = cfg_color();
 	cfg["visible_in_fog"] = visible_in_fog_;
@@ -367,6 +375,11 @@ void terrain_label::write(config& cfg) const
 const t_string& terrain_label::text() const
 {
 	return text_;
+}
+
+const t_string& terrain_label::tooltip() const
+{
+	return tooltip_;
 }
 
 const std::string& terrain_label::team_name() const
@@ -420,16 +433,19 @@ void terrain_label::set_text(const t_string& text)
 }
 
 void terrain_label::update_info(const t_string& text,
+								const t_string& tooltip,
 								const std::string& team_name,
 								const SDL_Color color)
 {
 	color_ = color;
 	text_ = text;
+	tooltip_ = tooltip;
 	team_name_ = team_name;
 	draw();
 }
 
 void terrain_label::update_info(const t_string& text,
+								const t_string& tooltip,
 								const std::string& team_name,
 								const SDL_Color color,
 								const bool visible_in_fog,
@@ -439,7 +455,7 @@ void terrain_label::update_info(const t_string& text,
 	visible_in_fog_ = visible_in_fog;
 	visible_in_shroud_ = visible_in_shroud;
 	immutable_ = immutable;
-	update_info(text, team_name, color);
+	update_info(text, tooltip, team_name, color);
 }
 
 void terrain_label::recalculate()
@@ -447,17 +463,42 @@ void terrain_label::recalculate()
 	draw();
 }
 
-void terrain_label::calculate_shroud() const
+void terrain_label::calculate_shroud()
 {
-	if (handle_)
-	{
+	if (handle_) {
 		font::show_floating_label(handle_, !hidden());
 	}
+
+	if (tooltip_.empty() || hidden()) {
+		tooltips::remove_tooltip(tooltip_handle_);
+		tooltip_handle_ = 0;
+		return;
+	}
+
+	//tooltips::update_tooltip(tooltip_handle, get_rect(), tooltip_.str(), "", true);
+
+	if (tooltip_handle_)
+		tooltips::update_tooltip(tooltip_handle_,get_rect(), tooltip_.str(), "", true);
+	else
+		tooltip_handle_ = tooltips::add_tooltip(get_rect(), tooltip_.str());
+}
+
+SDL_Rect terrain_label::get_rect() const
+{
+	SDL_Rect rect;
+	int hex_size = parent_->disp().hex_size();
+
+	rect.x = parent_->disp().get_location_x(loc_) + hex_size / 4;
+	rect.y = parent_->disp().get_location_y(loc_);
+	rect.h = parent_->disp().hex_size();
+	rect.w = parent_->disp().hex_size() - hex_size/2;
+
+	return rect;
 }
 
 void terrain_label::draw()
 {
-	if (text_.empty())
+	if (text_.empty() && tooltip_.empty())
 		return;
 	clear();
 
@@ -487,7 +528,6 @@ void terrain_label::draw()
 	handle_ = font::add_floating_label(flabel);
 
 	calculate_shroud();
-
 }
 
 /**
@@ -540,5 +580,10 @@ void terrain_label::clear()
 	{
 		font::remove_floating_label(handle_);
 		handle_ = 0;
+	}
+	if (tooltip_handle_)
+	{
+		tooltips::remove_tooltip(tooltip_handle_);
+		tooltip_handle_ = 0;
 	}
 }
