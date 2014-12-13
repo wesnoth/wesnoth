@@ -430,7 +430,7 @@ void play_controller::fire_preload()
 {
 	// Run initialization scripts, even if loading from a snapshot.
 	gamestate_.gamedata_.set_phase(game_data::PRELOAD);
-	resources::lua_kernel->initialize();
+	lua_kernel_->initialize();
 	gamestate_.gamedata_.get_variable("turn_number") = int(turn());
 	game_events::fire("preload");
 }
