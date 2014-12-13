@@ -2197,6 +2197,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 		return false;
 
 	font::scroll_floating_labels(dx, dy);
+	labels().recalculate_shroud();
 
 	surface screen(screen_.getSurface());
 
