@@ -129,9 +129,10 @@ void menu_handler::objectives(int side_num)
 {
 	config cfg;
 	cfg["side"] = str_cast(side_num);
-	game_events::handle_event_command("show_objectives",
+	assert(resources::lua_kernel);
+	resources::lua_kernel->run_wml_action("show_objectives", vconfig(cfg),
 		game_events::queued_event("_from_interface", map_location(),
-			map_location(), config()), vconfig(cfg));
+			map_location(), config()));
 	team &current_team = teams_[side_num - 1];
 	dialogs::show_objectives(level_, current_team.objectives());
 	current_team.reset_objectives_changed();

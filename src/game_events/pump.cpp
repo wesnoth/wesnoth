@@ -431,24 +431,6 @@ void handle_event_commands(const queued_event& event_info, const vconfig &cfg)
 	resources::lua_kernel->run_wml_action("command", cfg, event_info);
 }
 
-void handle_event_command(const std::string &cmd,
-                          const queued_event &event_info, const vconfig &cfg)
-{
-	log_scope2(log_engine, "handle_event_command");
-	LOG_NG << "handling command '" << cmd << "' from cfg 0x"
-		<< std::hex << std::setiosflags(std::ios::uppercase)
-		<< reinterpret_cast<uintptr_t>(&cfg.get_config()) << std::dec << "\n";
-
-	assert(resources::lua_kernel);
-	if (!resources::lua_kernel->run_wml_action(cmd, cfg, event_info))
-	{
-		ERR_NG << "Couldn't find function for wml tag: "<< cmd << std::endl;
-	}
-
-	DBG_NG << "done handling command...\n";
-}
-
-
 bool fire(const std::string& event,
           const entity_location& loc1,
           const entity_location& loc2,

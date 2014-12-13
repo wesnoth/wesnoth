@@ -105,13 +105,6 @@ namespace game_events
 	void handle_event_commands(const queued_event &event_info, const vconfig &cfg);
 
 	/**
-	 * Runs the action handler associated to @a cmd with parameters @a cfg.
-	 */
-	void handle_event_command(const std::string &cmd,
-	                          const queued_event &event_info, const vconfig &cfg);
-
-
-	/**
 	 * Function to fire an event.
 	 *
 	 * Events may have up to two arguments, both of which must be locations.
