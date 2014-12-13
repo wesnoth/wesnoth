@@ -36,6 +36,7 @@
 #include "whiteboard/manager.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/shared_ptr.hpp>
 
 #include <cassert>
 #include <ctime>
@@ -1566,7 +1567,7 @@ REPORT_GENERATOR(report_countdown, rc)
 void reports::register_generator(const std::string &name, reports::generator *g)
 {
 	std::pair<dynamic_report_generators::iterator, bool> ib =
-		dynamic_generators_.insert(std::make_pair(name, g));
+		dynamic_generators_.insert(std::make_pair(name, boost::shared_ptr<reports::generator>(g)));
 	if (!ib.second) {
 		ib.first->second.reset(g);
 	}
