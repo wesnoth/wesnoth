@@ -14,8 +14,12 @@
 
 #include "apple_notification.hpp"
 
+#if defined MAC_OS_X_VERSION_10_8 && (MAC_OS_X_VERSION_10_8 <= MAC_OS_X_VERSION_MAX_ALLOWED)
+#define HAVE_NS_USER_NOTIFICATION
+#endif
+
 #import <Foundation/Foundation.h>
-#if HAVE_GROWL
+#ifdef HAVE_GROWL
 #import "Growl/Growl.h"
 
 @interface WesnothGrowlDelegate : NSObject <GrowlApplicationBridgeDelegate>
@@ -28,23 +32,36 @@
 
 namespace apple_notifications {
 
+#ifdef HAVE_NS_USER_NOTIFICATION
 void send_cocoa_notification(const std::string& owner, const std::string& message);
+#endif
+#ifdef HAVE_GROWL
 void send_growl_notification(const std::string& owner, const std::string& message, const std::string& note_name);
+#endif
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"
+#ifdef HAVE_NS_USER_NOTIFICATION
 void send_notification(const std::string& owner, const std::string& message, const std::string& note_name) {
     Class appleNotificationClass = NSClassFromString(@"NSUserNotificationCenter");
     if (appleNotificationClass) {
         send_cocoa_notification(owner, message);
     } else {
-#if HAVE_GROWL
+#ifdef HAVE_GROWL
         send_growl_notification(owner, message, note_name);
 #endif
     }
 }
+#else
+void send_notification(const std::string& owner, const std::string& message, const std::string& note_name) {
+#ifdef HAVE_GROWL
+    send_growl_notification(owner, message, note_name);
+#endif
+}
+#endif
 #pragma clang diagnostic pop
-    
+  
+#ifdef HAVE_NS_USER_NOTIFICATION
 void send_cocoa_notification(const std::string& owner, const std::string& message) {
     NSString *title = [NSString stringWithCString:owner.c_str() encoding:NSUTF8StringEncoding];
     NSString *description = [NSString stringWithCString:message.c_str() encoding:NSUTF8StringEncoding];
@@ -55,8 +72,9 @@ void send_cocoa_notification(const std::string& owner, const std::string& messag
     
     [[NSUserNotificationCenter defaultUserNotificationCenter] scheduleNotification:notification];
 }
+#endif
 
-#if HAVE_GROWL
+#ifdef HAVE_GROWL
 void send_growl_notification(const std::string& owner, const std::string& message, const std::string& note_name) {
     static WesnothGrowlDelegate *delegate = nil;
     if (!delegate) {
