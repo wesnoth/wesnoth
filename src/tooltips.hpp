@@ -31,7 +31,12 @@ struct manager
 
 void clear_tooltips();
 void clear_tooltips(const SDL_Rect& rect);
-void add_tooltip(const SDL_Rect& rect, const std::string& message, const std::string& action ="", bool use_markup = true, const surface& foreground = surface(NULL));
+int  add_tooltip(const SDL_Rect& rect, const std::string& message, const std::string& action ="", bool use_markup = true, const surface& foreground = surface(NULL));
+bool update_tooltip(int id, const SDL_Rect& rect, const std::string& message,
+		const std::string& action, bool use_markup, const surface& foreground);
+bool update_tooltip(int id, const SDL_Rect& rect, const std::string& message,
+		const std::string& action, bool use_markup);
+void remove_tooltip(int id);
 void process(int mousex, int mousey);
 
 // Check if we clicked on a tooltip having an action.
