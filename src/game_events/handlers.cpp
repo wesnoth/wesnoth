@@ -564,12 +564,6 @@ void write_events(config& cfg)
 
 	cfg["used_items"] = utils::join(used_items);
 	cfg["unit_wml_ids"] = utils::join(unit_wml_ids);
-
-	if (resources::soundsources)
-		resources::soundsources->write_sourcespecs(cfg);
-
-	assert(resources::lua_kernel != NULL);
-	resources::lua_kernel->save_game(cfg);
 }
 
 } // end namespace game_events

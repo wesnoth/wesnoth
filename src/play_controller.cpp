@@ -649,6 +649,11 @@ config play_controller::to_config() const
 	//Write the game events.
 	game_events::write_events(cfg);
 
+	//Write the soundsources.
+	soundsources_manager_->write_sourcespecs(cfg);
+
+	//Call the lua save_game functions
+	lua_kernel_->save_game(cfg);
 
 	if(gui_.get() != NULL){
 		cfg["playing_team"] = str_cast(gui_->playing_team());
