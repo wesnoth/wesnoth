@@ -273,8 +273,7 @@ void create::process_event()
 				return;
 			}
 		}
-		catch(config::error&)
-		{
+		catch(config::error&) {
 		}
 	}
 
