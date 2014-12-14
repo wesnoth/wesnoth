@@ -149,8 +149,6 @@ namespace game_events
 	/// and destroyed at the end of the scenario.
 	/// If a second manager object is created before destroying the previous
 	/// one, the game will crash with an assertion failure.
-	///
-	/// This class is responsible for setting and clearing resources::lua_kernel.
 	class manager : boost::noncopyable {
 	public:
 		/// This class is similar to an input iterator through event handlers,
