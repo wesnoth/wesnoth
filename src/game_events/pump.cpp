@@ -100,6 +100,22 @@ namespace { // Types
 	unsigned pump_manager::instance_count=0;
 } // end anonymous namespace (types)
 
+namespace context {
+	/// State when processing a particular flight of events or commands.
+	struct state {
+		bool mutated;
+		bool skip_messages;
+
+		explicit state(bool s) : mutated(true), skip_messages(s) {}
+	};
+
+	class scoped {
+	public:
+		scoped();
+		~scoped();
+	};
+}
+
 namespace { // Variables
 	std::vector<queued_event> events_queue;
 
@@ -107,6 +123,8 @@ namespace { // Variables
 	size_t internal_wml_tracking = 0;
 
 	std::stringstream wml_messages_stream;
+
+	std::stack<context::state> contexts_;
 } // end anonymous namespace (variables)
 
 namespace { // Support functions
@@ -381,26 +399,51 @@ namespace { // Support functions
 
 } // end anonymous namespace (support functions)
 
-
-// Static members of context.
-context::state context::default_context_(false);
-context::state *context::current_context_ = &default_context_;
-
-
-context::scoped::scoped() :
-	old_context_(context::current_context_),
-	new_context_(old_context_ != &context::default_context_  &&
-	             old_context_->skip_messages)
+context::scoped::scoped()
 {
-	context::current_context_ = &new_context_;
+	//If the contexts stack is empty, push the default context. This shouldn't happen more than once.
+	if (contexts_.size() == 0) {
+		static bool first_time = true;
+		assert(first_time);
+		contexts_.push(context::state(false));
+		first_time = false;
+	}
+
+	bool skip_messages = (contexts_.size() > 1) && contexts_.top().skip_messages;
+	contexts_.push(context::state(skip_messages));
 }
 
 context::scoped::~scoped()
 {
-	old_context_->mutated |= new_context_.mutated;
-	context::current_context_ = old_context_;
+	assert(contexts_.size() > 1);
+	bool mutated = contexts_.top().mutated;
+	contexts_.pop();
+	contexts_.top().mutated |= mutated;
 }
 
+bool context::mutated()
+{
+	assert(contexts_.size() > 1);
+	return contexts_.top().mutated;
+}
+
+void context::mutated(bool b)
+{
+	assert(contexts_.size() > 1);
+	contexts_.top().mutated = b;
+}
+
+bool context::skip_messages()
+{
+	assert(contexts_.size() > 1);
+	return contexts_.top().skip_messages;
+}
+
+void context::skip_messages(bool b)
+{
+	assert(contexts_.size() > 1);
+	contexts_.top().skip_messages = b;
+}
 
 /**
  * Helper function which determines whether a wml_message text can

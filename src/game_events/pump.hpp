@@ -49,46 +49,16 @@ namespace game_events
 	};
 
 	/// The general environment within which events are processed.
-	class context {
-		/// State when processing a particular flight of events or commands.
-		struct state {
-			bool mutated;
-			bool skip_messages;
-
-			explicit state(bool s) : mutated(true), skip_messages(s) {}
-		};
-
-	public:
-		/// Context state with automatic lifetime handling.
-		class scoped {
-		public:
-			scoped();
-			~scoped();
-
-		private:
-			context::state *old_context_;
-			context::state new_context_;
-		};
-		friend class scoped;
-
-	public:
-		// No constructor needed since this is a static-only class for now.
-
+	namespace context {
 		/// Returns whether or not we believe WML might have changed something.
-		static bool mutated()	{ return current_context_->mutated; }
+		bool mutated();
 		/// Sets whether or not we believe WML might have changed something.
-		static void mutated(bool mutated)	{ current_context_->mutated = mutated; }
+		void mutated(bool mutated);
 		/// Returns whether or not we are skipping messages.
-		static bool skip_messages()	{ return current_context_->skip_messages; }
+		bool skip_messages();
 		/// Sets whether or not we are skipping messages.
-		static void skip_messages(bool skip)	{ current_context_->skip_messages = skip; }
-
-	private:
-		static state * current_context_;
-		/// A default value used to avoid NULL pointers.
-		static state default_context_;
-	};
-
+		void skip_messages(bool skip);
+	}
 
 	/// Helper function which determines whether a wml_message text can
 	/// really be pushed into the wml_messages_stream, and does it.
