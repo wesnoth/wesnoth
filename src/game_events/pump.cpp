@@ -388,8 +388,8 @@ namespace { // Support functions
 
 
 // Static members of context.
-context::event_context context::default_context_(false);
-context::event_context *context::current_context_ = &default_context_;
+context::state context::default_context_(false);
+context::state *context::current_context_ = &default_context_;
 bool context::rebuild_screen_ = false;
 
 

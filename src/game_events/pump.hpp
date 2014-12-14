@@ -51,11 +51,11 @@ namespace game_events
 	/// The general environment within which events are processed.
 	class context {
 		/// State when processing a particular flight of events or commands.
-		struct event_context {
+		struct state {
 			bool mutated;
 			bool skip_messages;
 
-			explicit event_context(bool s) : mutated(true), skip_messages(s) {}
+			explicit state(bool s) : mutated(true), skip_messages(s) {}
 		};
 
 	public:
@@ -66,8 +66,8 @@ namespace game_events
 			~scoped();
 
 		private:
-			context::event_context *old_context_;
-			context::event_context new_context_;
+			context::state *old_context_;
+			context::state new_context_;
 		};
 		friend class scoped;
 
@@ -88,10 +88,10 @@ namespace game_events
 		static void skip_messages(bool skip)	{ current_context_->skip_messages = skip; }
 
 	private:
-		static event_context * current_context_;
+		static state * current_context_;
 		static bool rebuild_screen_;
 		/// A default value used to avoid NULL pointers.
-		static event_context default_context_;
+		static state default_context_;
 	};
 
 
