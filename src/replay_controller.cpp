@@ -337,11 +337,13 @@ void replay_controller::reset_replay()
 	}*/
 
 	events_manager_.reset();
+	resources::game_events=NULL;
 	lua_kernel_.reset();
 	resources::lua_kernel=NULL;
 	lua_kernel_.reset(new game_lua_kernel(level_, *gui_, gamestate_, *this, *reports_));
 	resources::lua_kernel=lua_kernel_.get();
 	events_manager_.reset(new game_events::manager(level_));
+	resources::game_events=events_manager_.get();
 
 	gui_->labels().read(level_);
 
@@ -356,7 +358,7 @@ void replay_controller::reset_replay()
 
 	// Add era events for MP game.
 	if (const config &era_cfg = level_.child("era")) {
-		game_events::add_events(era_cfg.child_range("event"), "era_events");
+		events_manager_->add_events(era_cfg.child_range("event"), "era_events");
 	}
 
 	// Scenario initialization. (c.f. playsingle_controller::play_scenario())

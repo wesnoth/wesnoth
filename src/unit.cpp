@@ -361,8 +361,10 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 			events_.add_child("event", unit_event);
 		}
 	}
-	game_events::add_events(events_.child_range("event"));
 
+	if (resources::game_events) {
+		resources::game_events->add_events(events_.child_range("event"));
+	}
 
 	facing_ = map_location::parse_direction(cfg["facing"]);
 	if(facing_ == map_location::NDIRECTIONS) facing_ = static_cast<map_location::DIRECTION>(rand()%map_location::NDIRECTIONS);
@@ -960,7 +962,10 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 		hit_points_ = max_hit_points_;
 
 	// In case the unit carries EventWML, apply it now
-	game_events::add_events(cfg_.child_range("event"), new_type.id());
+	if (resources::game_events) {
+		resources::game_events->add_events(cfg_.child_range("event"), new_type.id());
+	}
+
 	cfg_.clear_children("event");
 
 	anim_comp_->reset_after_advance(&new_type);

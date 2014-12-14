@@ -85,6 +85,7 @@ static void clear_resources()
 	resources::filter_con = NULL;
 	resources::gameboard = NULL;
 	resources::gamedata = NULL;
+	resources::game_events = NULL;
 	resources::lua_kernel = NULL;
 	resources::persist = NULL;
 	resources::screen = NULL;
@@ -239,6 +240,7 @@ void play_controller::init(CVideo& video){
 	lua_kernel_.reset(new game_lua_kernel(level_, *gui_, gamestate_, *this, *reports_));
 	resources::lua_kernel=lua_kernel_.get();
 	events_manager_.reset(new game_events::manager(level_));
+	resources::game_events=events_manager_.get();
 
 	if(gamestate_.first_human_team_ != -1) {
 		gui_->set_team(gamestate_.first_human_team_);
@@ -650,7 +652,7 @@ config play_controller::to_config() const
 	undo_stack_->write(cfg.add_child("undo_stack"));
 
 	//Write the game events.
-	game_events::write_events(cfg);
+	events_manager_->write_events(cfg);
 
 	//Write the soundsources.
 	soundsources_manager_->write_sourcespecs(cfg);

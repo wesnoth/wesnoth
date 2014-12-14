@@ -747,12 +747,13 @@ WML_HANDLER_FUNCTION(end_turn, /*event_info*/, /*cfg*/)
 /// Adding new events
 WML_HANDLER_FUNCTION(event, /*event_info*/, cfg)
 {
+	assert(resources::game_events);
 	if (cfg["remove"].to_bool(false)) {
-		remove_event_handler(cfg["id"]);
+		resources::game_events->remove_event_handler(cfg["id"]);
 	} else if (!cfg["delayed_variable_substitution"].to_bool(true)) {
-		add_event_handler(cfg.get_parsed_config());
+		resources::game_events->add_event_handler(cfg.get_parsed_config());
 	} else {
-		add_event_handler(cfg.get_config());
+		resources::game_events->add_event_handler(cfg.get_config());
 	}
 }
 
@@ -1407,7 +1408,8 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 	std::string id = cfg["id"];
 
 	// If this item has already been used
-	if ( item_used(id) )
+	assert(resources::game_events);
+	if ( resources::game_events->item_used(id) )
 		return;
 
 	std::string image = cfg["image"];
@@ -1450,7 +1452,7 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 		resources::screen->invalidate_unit();
 
 		// Mark this item as used up.
-		item_used(id, true);
+		resources::game_events->item_used(id, true);
 	} else {
 		text = cfg["cannot_use_message"].str();
 		command_type = "else";

@@ -36,6 +36,8 @@ class game_classification;
 struct mp_game_settings;
 namespace actions { class undo_list; }
 
+namespace game_events { class manager; }
+
 namespace halo { class manager; }
 
 namespace soundsource { class manager; }
@@ -49,6 +51,7 @@ namespace resources
 	extern play_controller        *controller;
 	extern game_board             *gameboard;
 	extern game_data              *gamedata;
+	extern game_events::manager   *game_events;
 	extern game_lua_kernel              *lua_kernel;     // Set by game_events::manager.
 	extern application_lua_kernel *app_lua_kernel;
 	extern persist_manager        *persist;

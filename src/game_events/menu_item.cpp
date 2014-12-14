@@ -215,8 +215,10 @@ void wml_menu_item::fire_event(const map_location & event_hex) const
  */
 void wml_menu_item::finish_handler() const
 {
-	if ( !command_.empty() )
-		remove_event_handler(command_["id"]);
+	if ( !command_.empty() ) {
+		assert(resources::game_events);
+		resources::game_events->remove_event_handler(command_["id"]);
+	}
 
 	// Hotkey support
 	if ( use_hotkey_ )
@@ -229,8 +231,10 @@ void wml_menu_item::finish_handler() const
 void wml_menu_item::init_handler() const
 {
 	// If this menu item has a [command], add a handler for it.
-	if ( !command_.empty() )
-		add_event_handler(command_, true);
+	if ( !command_.empty() ) {
+		assert(resources::game_events);
+		resources::game_events->add_event_handler(command_, true);
+	}
 
 	// Hotkey support
 	if ( use_hotkey_ ) {
@@ -342,11 +346,12 @@ void wml_menu_item::update_command(const config & new_command)
 {
 	// If there is an old command, remove it from the event handlers.
 	if ( !command_.empty() ) {
+		assert(resources::game_events);
 		manager::iteration iter(event_name_);
 		while ( handler_ptr hand = *iter ) {
 			if ( hand->is_menu_item() ) {
 				LOG_NG << "Removing command for " << event_name_ << ".\n";
-				remove_event_handler(command_["id"].str());
+				resources::game_events->remove_event_handler(command_["id"].str());
 			}
 			++iter;
 		}
@@ -368,7 +373,8 @@ void wml_menu_item::update_command(const config & new_command)
 
 		// Register the event.
 		LOG_NG << "Setting command for " << event_name_ << " to:\n" << command_;
-		add_event_handler(command_, true);
+		assert(resources::game_events);
+		resources::game_events->add_event_handler(command_, true);
 	}
 }
 

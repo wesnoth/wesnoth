@@ -246,7 +246,7 @@ namespace { // Variables
 
 
 /** Create an event handler. */
-void add_event_handler(const config & handler, bool is_menu_item)
+void manager::add_event_handler(const config & handler, bool is_menu_item)
 {
 	event_handlers.add_event_handler(handler, is_menu_item);
 }
@@ -255,13 +255,13 @@ void add_event_handler(const config & handler, bool is_menu_item)
  * Checks if an item has been used.
  * (An empty id will never be considered used.)
  */
-bool item_used(const std::string & id)
+bool manager::item_used(const std::string & id)
 {
 	return !id.empty()  &&  used_items.count(id) > 0;
 }
 
 /** Records if an item has been used. */
-void item_used(const std::string & id, bool used)
+void manager::item_used(const std::string & id, bool used)
 {
 	// Empty IDs are not tracked.
 	if ( id.empty() )
@@ -274,7 +274,7 @@ void item_used(const std::string & id, bool used)
 }
 
 /** Removes an event handler. */
-void remove_event_handler(const std::string & id)
+void manager::remove_event_handler(const std::string & id)
 {
 	event_handlers.remove_event_handler(id);
 }
@@ -536,7 +536,7 @@ bool event_handler::matches_name(const std::string &name) const
 }
 
 
-void add_events(const config::const_child_itors &cfgs, const std::string& type)
+void manager::add_events(const config::const_child_itors &cfgs, const std::string& type)
 {
 	if(!type.empty()) {
 		if(std::find(unit_wml_ids.begin(),unit_wml_ids.end(),type) != unit_wml_ids.end()) return;
@@ -552,7 +552,7 @@ void add_events(const config::const_child_itors &cfgs, const std::string& type)
 	}
 }
 
-void write_events(config& cfg)
+void manager::write_events(config& cfg)
 {
 	BOOST_FOREACH(const handler_ptr &eh, event_handlers) {
 		if ( !eh || eh->is_menu_item() ) {

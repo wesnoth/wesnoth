@@ -204,20 +204,21 @@ namespace game_events
 		/// and must remain valid for the life of the object.
 		explicit manager(const config& scenario_cfg);
 		~manager();
+
+		/// Create an event handler.
+		void add_event_handler(const config & handler, bool is_menu_item=false);
+		/// Checks if an item has been used.
+		bool item_used(const std::string & id);
+		/// Records if an item has been used.
+		void item_used(const std::string & id, bool used);
+		/// Removes an event handler.
+		void remove_event_handler(const std::string & id);
+
+		void add_events(const config::const_child_itors &cfgs,
+		                const std::string& type = std::string());
+		void write_events(config& cfg);
+
 	};
-
-	/// Create an event handler.
-	void add_event_handler(const config & handler, bool is_menu_item=false);
-	/// Checks if an item has been used.
-	bool item_used(const std::string & id);
-	/// Records if an item has been used.
-	void item_used(const std::string & id, bool used);
-	/// Removes an event handler.
-	void remove_event_handler(const std::string & id);
-
-	void add_events(const config::const_child_itors &cfgs,
-	                const std::string& type = std::string());
-	void write_events(config& cfg);
 }
 
 #endif // GAME_EVENTS_HANDLERS_H_INCLUDED
