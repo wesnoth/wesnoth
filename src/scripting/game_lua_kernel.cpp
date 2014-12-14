@@ -151,30 +151,24 @@ void game_lua_kernel::lua_chat(std::string const &caption, std::string const &ms
 
 namespace {
 	/**
-	 * Stack storing the queued_event objects needed for calling WML actions.
+	 * Temporary entry to a queued_event stack
 	 */
 	struct queued_event_context
 	{
 		typedef game_events::queued_event qe;
-		static qe default_qe;
-		static qe const *current_qe;
-		static qe const &get()
-		{ return *(current_qe ? current_qe : &default_qe); }
-		qe const *previous_qe;
+		std::stack<qe const *> & stack_;
 
-		queued_event_context(qe const *new_qe)
-			: previous_qe(current_qe)
+		queued_event_context(qe const *new_qe, std::stack<qe const*> & stack)
+			: stack_(stack)
 		{
-			current_qe = new_qe;
+			stack_.push(new_qe);
 		}
 
 		~queued_event_context()
-		{ current_qe = previous_qe; }
+		{
+			stack_.pop();
+		}
 	};
-
-	game_events::queued_event const *queued_event_context::current_qe = NULL;
-	game_events::queued_event queued_event_context::default_qe
-		("_from_lua", map_location(), map_location(), config());
 }//unnamed namespace for queued_event_context
 
 /**
@@ -1290,7 +1284,7 @@ int game_lua_kernel::impl_current_get(lua_State *L)
 
 	if (strcmp(m, "event_context") == 0)
 	{
-		const game_events::queued_event &ev = queued_event_context::get();
+		const game_events::queued_event &ev = *queued_events_.top();
 		config cfg;
 		cfg["name"] = ev.name;
 		if (const config &weapon = ev.data.child("first")) {
@@ -2911,8 +2905,17 @@ tod_manager & game_lua_kernel::tod_man() {
 }
 
 game_lua_kernel::game_lua_kernel(const config &cfg, game_display & gd, game_state & gs, play_controller & pc, reports & reports_object)
-	: lua_kernel_base(&gd.video()), game_display_(gd), game_state_(gs), play_controller_(pc), reports_(reports_object), level_(cfg)
+	: lua_kernel_base(&gd.video())
+	, game_display_(gd)
+	, game_state_(gs)
+	, play_controller_(pc)
+	, reports_(reports_object)
+	, level_(cfg)
+	, queued_events_()
 {
+	static game_events::queued_event default_queued_event("_from_lua", map_location(), map_location(), config());
+	queued_events_.push(&default_queued_event);
+
 	lua_State *L = mState;
 
 	cmd_log_ << "Registering game-specific wesnoth lib functions...\n";
@@ -3345,7 +3348,7 @@ bool game_lua_kernel::run_event(game_events::queued_event const &ev)
 	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_event", NULL))
 		return false;
 
-	queued_event_context dummy(&ev);
+	queued_event_context dummy(&ev, queued_events_);
 	lua_pushstring(L, ev.name.c_str());
 	luaW_pcall(L, 1, 0, false);
 	return true;
@@ -3360,7 +3363,7 @@ int game_lua_kernel::cfun_wml_action(lua_State *L)
 		(lua_touserdata(L, lua_upvalueindex(2))); // refer to lua_cpp_function.hpp for the reason that this is upvalueindex(2) and not (1)
 
 	vconfig vcfg = luaW_checkvconfig(L, 1);
-	h(queued_event_context::get(), vcfg);
+	h(*queued_events_.top(), vcfg);
 	return 0;
 }
 
@@ -3396,7 +3399,7 @@ bool game_lua_kernel::run_wml_action(std::string const &cmd, vconfig const &cfg,
 	if (!luaW_getglobal(L, "wesnoth", "wml_actions", cmd.c_str(), NULL))
 		return false;
 
-	queued_event_context dummy(&ev);
+	queued_event_context dummy(&ev, queued_events_);
 	luaW_pushvconfig(L, cfg);
 	luaW_pcall(L, 1, 0, true);
 	return true;

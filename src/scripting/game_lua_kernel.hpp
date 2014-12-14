@@ -19,6 +19,7 @@
 
 #include "game_events/action_wml.hpp"   // for wml_action, etc
 
+#include <stack>
 #include <string>                       // for string
 
 class config;
@@ -59,6 +60,8 @@ class game_lua_kernel : public lua_kernel_base
 	tod_manager & tod_man();
 
 	const config &level_;
+
+	std::stack<game_events::queued_event const * > queued_events_;
 
 	static void extract_preload_scripts(config const & game_config);
 	static std::vector<config> preload_scripts;
