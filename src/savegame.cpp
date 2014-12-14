@@ -759,18 +759,18 @@ static void convert_old_saves_1_11_0(config& cfg)
 	//if replay and snapshot are empty we've got a start of scenario save and don't want replay_start either
 	if(replay.empty() && snapshot.empty()){
 		LOG_RG<<"removing replay_start \n";
-		cfg.remove_child("replay_start", 0);
+		cfg.clear_children("replay_start");
 	}
 
 	//remove empty replay or snapshot so type of save can be detected more easily
 	if(replay.empty()){
 		LOG_RG<<"removing replay \n";
-		cfg.remove_child("replay", 0);
+		cfg.clear_children("replay");
 	}
 
 	if(snapshot.empty()){
 		LOG_RG<<"removing snapshot \n";
-		cfg.remove_child("snapshot", 0);
+		cfg.clear_children("snapshot");
 	}
 }
 //changes done during 1.13.0-dev
@@ -783,20 +783,31 @@ static void convert_old_saves_1_13_0(config& cfg)
 			carryover_sides_start["next_underlying_unit_id"] = cfg["next_underlying_unit_id"];
 		}
 	}
-
+	if(cfg.child_or_empty("snapshot").empty())
+	{
+		cfg.clear_children("snapshot");
+	}
+	if(cfg.child_or_empty("replay_start").empty())
+	{
+		cfg.clear_children("replay_start");
+	}
 	if(config& snapshot = cfg.child("snapshot"))
 	{
 		//make [end_level] -> [end_level_data] since its alo called [end_level_data] in the carryover.
 		if(config& end_level = cfg.child("end_level") )
 		{
 			snapshot.add_child("end_level_data", end_level);
-			snapshot.remove_child("end_level", 0);
+			snapshot.clear_children("end_level");
 		}
 		//if we have a snapshot then we already applied carryover so there is no reason to keep this data.
 		if(cfg.has_child("carryover_sides_start"))
 		{
-			cfg.remove_child("carryover_sides_start", 0);
+			cfg.clear_children("carryover_sides_start");
 		}
+	}
+	if(!cfg.has_child("snapshot") && !cfg.has_child("replay_start"))
+	{
+		cfg.clear_children("carryover_sides");
 	}
 #if 1
 	//This code is needed becasue for example otherwise it won't find the (empty) era 
