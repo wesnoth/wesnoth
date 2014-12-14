@@ -73,6 +73,7 @@ namespace
 			, current_language_()
 			, generator_()
 			, current_locale_()
+			, is_dirty_(true)
 		{
 			current_language_ = default_utf8_locale_name::name();
 			const bl::localization_backend_manager& g_mgr = bl::localization_backend_manager::global();
@@ -80,11 +81,14 @@ namespace
 			{
 				LOG_G << "Found boost locale backend: '" << name << "'\n";
 			}
+
 			generator_.use_ansi_encoding(false);
-			generator_.locale_cache_enabled(true);
 			generator_.categories(bl::message_facet | bl::information_facet);
 			generator_.characters(bl::char_facet);
-			update_locale();
+			//we cannot have current_locale_ beeing a non boost gerenerated locale since it might not suppy
+			//the boost::locale::info facet. as soon as we add message paths update_locale_internal might fail
+			//for example becasue of invalid .mo files. So make sure we call it at least once before adding paths/domains
+			update_locale_internal();
 		}
 
 		void add_messages_domain(const std::string& domain)
@@ -131,8 +135,12 @@ namespace
 			update_locale();
 		}
 
-
 		void update_locale()
+		{
+			is_dirty_ = true;
+		}
+
+		void update_locale_internal()
 		{
 			try
 			{
@@ -148,6 +156,7 @@ namespace
 			}
 			catch(const boost::locale::conv::conversion_error&)
 			{
+				assert(std::has_facet<boost::locale::info>(current_locale_));
 				const boost::locale::info& info = std::use_facet< boost::locale::info >(current_locale_);
 				ERR_G << "Failed to update locale due to conversion error, locale is now: "
 				      << "name='" << info.name()
@@ -157,9 +166,17 @@ namespace
 				      << "' variant='" << info.variant()
 				      << "'" << std::endl;
 			}
+			is_dirty_ = false;
 		}
+
 		const std::locale& get_locale()
-		{ return current_locale_; }
+		{
+			if(is_dirty_)
+			{
+				update_locale_internal();
+			}
+			return current_locale_;
+		}
 
 	private:
 		std::set<std::string> loaded_paths_;
@@ -167,6 +184,7 @@ namespace
 		std::string current_language_;
 		boost::locale::generator generator_;
 		std::locale current_locale_;
+		bool is_dirty_;
 	};
 
 	translation_manager& get_manager()
