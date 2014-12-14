@@ -3354,10 +3354,10 @@ bool game_lua_kernel::run_event(game_events::queued_event const &ev)
 /**
  * Executes its upvalue as a wml action.
  */
-static int cfun_wml_action(lua_State *L)
+int game_lua_kernel::cfun_wml_action(lua_State *L)
 {
 	game_events::wml_action::handler h = reinterpret_cast<game_events::wml_action::handler>
-		(lua_touserdata(L, lua_upvalueindex(1)));
+		(lua_touserdata(L, lua_upvalueindex(2))); // refer to lua_cpp_function.hpp for the reason that this is upvalueindex(2) and not (1)
 
 	vconfig vcfg = luaW_checkvconfig(L, 1);
 	h(queued_event_context::get(), vcfg);
@@ -3376,7 +3376,7 @@ void game_lua_kernel::set_wml_action(std::string const &cmd, game_events::wml_ac
 	lua_rawget(L, -2);
 	lua_pushstring(L, cmd.c_str());
 	lua_pushlightuserdata(L, reinterpret_cast<void *>(h));
-	lua_pushcclosure(L, cfun_wml_action, 1);
+	lua_cpp::push_closure(L, boost::bind(&game_lua_kernel::cfun_wml_action, this, _1), 1);
 	lua_rawset(L, -3);
 	lua_pop(L, 2);
 }

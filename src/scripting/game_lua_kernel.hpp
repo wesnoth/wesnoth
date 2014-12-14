@@ -118,6 +118,7 @@ class game_lua_kernel : public lua_kernel_base
 	int impl_theme_item(lua_State *L, std::string name);
 	int impl_theme_items_get(lua_State *L);
 	int impl_theme_items_set(lua_State *L);
+	int cfun_wml_action(lua_State *L);
 
 	//private helpers
 	std::string synced_state();
