@@ -21,7 +21,7 @@
 #include "global.hpp"
 #include "action_wml.hpp"
 #include "conditional_wml.hpp"
-#include "handlers.hpp"
+#include "manager.hpp"
 #include "pump.hpp"
 
 #include "actions/attack.hpp"

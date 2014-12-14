@@ -17,10 +17,13 @@
  * Definitions for a class that implements WML-defined (right-click) menu items.
  */
 
-#include "../global.hpp"
 #include "menu_item.hpp"
+
+#include "../global.hpp"
+
 #include "conditional_wml.hpp"
 #include "handlers.hpp"
+#include "manager.hpp"
 #include "pump.hpp"
 
 #include "../actions/undo.hpp"

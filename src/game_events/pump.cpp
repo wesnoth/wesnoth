@@ -22,6 +22,7 @@
 #include "pump.hpp"
 #include "conditional_wml.hpp"
 #include "handlers.hpp"
+#include "manager.hpp"
 
 #include "../display_chat_manager.hpp"
 #include "../game_config.hpp"

@@ -29,7 +29,7 @@
 #include "dialogs.hpp"
 #include "display_chat_manager.hpp"
 #include "formula_string_utils.hpp"
-#include "game_events/handlers.hpp"
+#include "game_events/manager.hpp"
 #include "game_events/menu_item.hpp"
 #include "game_events/pump.hpp"
 #include "game_preferences.hpp"

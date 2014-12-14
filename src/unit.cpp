@@ -26,7 +26,7 @@
 #include "game_data.hpp"
 #include "game_config.hpp"              // for add_color_info, etc
 #include "game_errors.hpp"              // for game_error
-#include "game_events/handlers.hpp"     // for add_events
+#include "game_events/manager.hpp"     // for add_events
 #include "game_preferences.hpp"         // for encountered_units
 #include "gettext.hpp"                  // for N_
 #include "log.hpp"                      // for LOG_STREAM, logger, etc

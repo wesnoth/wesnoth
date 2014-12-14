@@ -22,7 +22,7 @@
 #include "display_chat_manager.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_errors.hpp" //needed to be thrown
-#include "game_events/handlers.hpp"
+#include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
