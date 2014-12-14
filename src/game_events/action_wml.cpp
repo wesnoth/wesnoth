@@ -1614,12 +1614,10 @@ WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 		}
 		screen.recalculate_minimap();
 	}
-	if ( context::screen_needs_rebuild() ) {
-		context::screen_needs_rebuild(false);
-		screen.recalculate_minimap();
-		screen.rebuild_all();
+	bool result = screen.maybe_rebuild();
+	if (!result) {
+		screen.invalidate_all();
 	}
-	screen.invalidate_all();
 	screen.draw(true,true);
 }
 
@@ -1685,7 +1683,7 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 	}
 
 	resources::screen->reload_map();
-	context::screen_needs_rebuild(true);
+	resources::screen->needs_rebuild(true);
 	ai::manager::raise_map_changed();
 }
 
@@ -2376,7 +2374,7 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 	}
 	bool border = cfg["border"].to_bool();
 	resources::gameboard->overlay_map(mask_map, cfg.get_parsed_config(), loc, border);
-	context::screen_needs_rebuild(true);
+	resources::screen->needs_rebuild(true);
 }
 
 /// Adding/removing new time_areas dynamically with Standard Location Filters.

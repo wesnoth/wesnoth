@@ -78,10 +78,6 @@ namespace game_events
 		static bool mutated()	{ return current_context_->mutated; }
 		/// Sets whether or not we believe WML might have changed something.
 		static void mutated(bool mutated)	{ current_context_->mutated = mutated; }
-		/// Returns whether or not the screen (map visuals) needs to be rebuilt.
-		static bool screen_needs_rebuild()	{ return rebuild_screen_; }
-		/// Sets whether or not the screen (map visuals) needs to be rebuilt.
-		static void screen_needs_rebuild(bool rebuild)	{ rebuild_screen_ = rebuild; }
 		/// Returns whether or not we are skipping messages.
 		static bool skip_messages()	{ return current_context_->skip_messages; }
 		/// Sets whether or not we are skipping messages.
@@ -89,7 +85,6 @@ namespace game_events
 
 	private:
 		static state * current_context_;
-		static bool rebuild_screen_;
 		/// A default value used to avoid NULL pointers.
 		static state default_context_;
 	};

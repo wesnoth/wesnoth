@@ -793,4 +793,19 @@ void game_display::begin_game()
 	invalidate_all();
 }
 
+void game_display::needs_rebuild(bool b) {
+	if (b) {
+		needs_rebuild_ = true;
+	}
+}
 
+bool game_display::maybe_rebuild() {
+	if (needs_rebuild_) {
+		needs_rebuild_ = false;
+		recalculate_minimap();
+		invalidate_all();
+		rebuild_all();
+		return true;
+	}
+	return false;
+}

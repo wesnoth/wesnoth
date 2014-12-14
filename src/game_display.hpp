@@ -218,6 +218,12 @@ public:
 
 	void set_game_mode(const tgame_mode game_mode);
 
+	/// Sets whether the screen (map visuals) needs to be rebuilt. This is typically after the map has been changed by wml.
+	void needs_rebuild(bool b);
+
+	/// Rebuilds the screen if needs_rebuild(true) was previously called, and resets the flag.
+	bool maybe_rebuild();
+
 private:
 	game_display(const game_display&);
 	void operator=(const game_display&);
@@ -251,7 +257,7 @@ private:
 	// For debug mode
 	static std::map<map_location, int> debugHighlights_;
 
-
+	bool needs_rebuild_;
 
 };
 

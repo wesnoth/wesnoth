@@ -955,7 +955,7 @@ int game_lua_kernel::intf_set_terrain(lua_State *L)
 	}
 
 	bool result = board().change_terrain(map_location(x - 1, y - 1), t_str, mode_str, replace_if_failed);
-	game_events::context::screen_needs_rebuild(result);
+	game_display_.needs_rebuild(result);
 	return 0;
 }
 

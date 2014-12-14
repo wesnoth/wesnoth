@@ -272,13 +272,7 @@ namespace { // Support functions
 			resources::gamedata->last_selected = ev.loc1;
 		}
 
-		if ( context::screen_needs_rebuild() ) {
-			context::screen_needs_rebuild(false);
-			game_display *screen = resources::screen;
-			screen->recalculate_minimap();
-			screen->invalidate_all();
-			screen->rebuild_all();
-		}
+		resources::screen->maybe_rebuild();
 
 		return context::mutated();
 	}
@@ -390,7 +384,6 @@ namespace { // Support functions
 // Static members of context.
 context::state context::default_context_(false);
 context::state *context::current_context_ = &default_context_;
-bool context::rebuild_screen_ = false;
 
 
 context::scoped::scoped() :
