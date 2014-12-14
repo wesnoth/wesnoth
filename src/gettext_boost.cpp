@@ -22,7 +22,6 @@
 #include <boost/foreach.hpp>
 #include <set>
 
-
 #define DBG_G LOG_STREAM(debug, lg::general)
 #define LOG_G LOG_STREAM(info, lg::general)
 #define WRN_G LOG_STREAM(warn, lg::general)
@@ -41,7 +40,7 @@ namespace
 			return lname->name_;
 		}
 	private:
-		default_utf8_locale_name() 
+		default_utf8_locale_name()
 			: name_()
 		{
 			LOG_G << "Generating default locale\n";
@@ -66,7 +65,6 @@ namespace
 
 		std::string name_;
 	};
-
 	struct translation_manager
 	{
 		translation_manager()
@@ -83,8 +81,57 @@ namespace
 				LOG_G << "Found boost locale backend: '" << name << "'\n";
 			}
 			generator_.use_ansi_encoding(false);
+			generator_.locale_cache_enabled(true);
+			generator_.categories(bl::message_facet | bl::information_facet);
+			generator_.characters(bl::char_facet);
 			update_locale();
 		}
+
+		void add_messages_domain(const std::string& domain)
+		{
+			if(loaded_domains_.find(domain) != loaded_domains_.end())
+			{
+				return;
+			}
+			generator_.add_messages_domain(domain);
+			loaded_domains_.insert(domain);
+		}
+
+		void add_messages_path(const std::string& path)
+		{
+			if(loaded_paths_.find(path) != loaded_paths_.end())
+			{
+				return;
+			}
+			generator_.add_messages_path(path);
+			loaded_paths_.insert(path);
+		}
+
+		void set_default_messages_domain(const std::string& domain)
+		{
+			generator_.set_default_messages_domain(domain);
+			update_locale();
+		}
+
+		void set_language(const std::string& language)
+		{
+			std::string::size_type at_pos = language.rfind('@');
+			if(language.empty())
+			{
+				current_language_ = default_utf8_locale_name::name();
+			}
+			else if(at_pos  != std::string::npos)
+			{
+				current_language_ = language.substr(0, at_pos) + ".UTF-8" + language.substr(at_pos);
+			}
+			else
+			{
+				current_language_ = language + ".UTF-8";
+			}
+			update_locale();
+		}
+
+
 		void update_locale()
 		{
 			try
@@ -102,16 +149,19 @@ namespace
 			catch(const boost::locale::conv::conversion_error&)
 			{
 				const boost::locale::info& info = std::use_facet< boost::locale::info >(current_locale_);
-				ERR_G << "Failed to update locale due to conversion error, locale is now: " 
+				ERR_G << "Failed to update locale due to conversion error, locale is now: "
 				      << "name='" << info.name()
 				      << "' country='" << info.country()
 				      << "' language='" << info.language()
 				      << "' encoding='" << info.encoding()
-				      << "' variant='" << info.variant() 
+				      << "' variant='" << info.variant()
 				      << "'" << std::endl;
 			}
 		}
+		const std::locale& get_locale()
+		{ return current_locale_; }
 
+	private:
 		std::set<std::string> loaded_paths_;
 		std::set<std::string> loaded_domains_;
 		std::string current_language_;
@@ -132,11 +182,11 @@ namespace translation
 
 std::string dgettext(const char* domain, const char* msgid)
 {
-	return boost::locale::dgettext(domain, msgid, get_manager().current_locale_);
+	return boost::locale::dgettext(domain, msgid, get_manager().get_locale());
 }
 std::string egettext(char const *msgid)
 {
-	return msgid[0] == '\0' ? msgid : boost::locale::gettext(msgid, get_manager().current_locale_);
+	return msgid[0] == '\0' ? msgid : boost::locale::gettext(msgid, get_manager().get_locale());
 }
 
 std::string dsgettext (const char * domainname, const char *msgid)
@@ -154,7 +204,7 @@ std::string dsgettext (const char * domainname, const char *msgid)
 
 std::string dsngettext (const char * domainname, const char *singular, const char *plural, int n)
 {
-	std::string msgval = boost::locale::dngettext(domainname, singular, plural, n, get_manager().current_locale_);
+	std::string msgval = boost::locale::dngettext(domainname, singular, plural, n, get_manager().get_locale());
 	if (msgval == singular) {
 		const char* firsthat = std::strrchr (singular, '^');
 		if (firsthat == NULL)
@@ -168,38 +218,24 @@ std::string dsngettext (const char * domainname, const char *singular, const cha
 void bind_textdomain(const char* domain, const char* direcory, const char* /*encoding*/)
 {
 	LOG_G << "adding textdomain '" << domain << "' in directory '" << direcory << "'\n";
-	get_manager().generator_.add_messages_domain(domain);
-	get_manager().generator_.add_messages_path(direcory);
+	get_manager().add_messages_domain(domain);
+	get_manager().add_messages_path(direcory);
 	get_manager().update_locale();
 }
 
 void set_default_textdomain(const char* domain)
 {
 	LOG_G << "set_default_textdomain: '" << domain << "'\n";
-	get_manager().generator_.set_default_messages_domain(domain);
-	get_manager().update_locale();
+	get_manager().set_default_messages_domain(domain);
 }
 
 
 void set_language(const std::string& language, const std::vector<std::string>* /*alternates*/)
 {
-	// why shoudl we need alternates? which languages we support shoudl only be related 
+	// why shoudl we need alternates? which languages we support shoudl only be related
 	// to which languages we ship with and not which the os supports
 	LOG_G << "setting language to  '" << language << "' \n";
-	std::string::size_type at_pos = language.rfind('@');
-	if(language.empty())
-	{
-		get_manager().current_language_ = default_utf8_locale_name::name();	
-	}
-	else if(at_pos  != std::string::npos)
-	{
-		get_manager().current_language_ = language.substr(0, at_pos) + ".UTF-8" + language.substr(at_pos);
-	}
-	else
-	{
-		get_manager().current_language_ = language + ".UTF-8";
-	}
-	get_manager().update_locale();
+	get_manager().set_language(language);
 }
 
 void init()
