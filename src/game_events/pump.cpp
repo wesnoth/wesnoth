@@ -485,7 +485,8 @@ bool pump()
 			++internal_wml_tracking;
 
 		// Initialize an iteration over event handlers matching this event.
-		manager::iteration handler_iter(event_name);
+		assert(resources::game_events);
+		manager::iteration handler_iter(event_name, *resources::game_events);
 
 		// If there are any matching event handlers, initialize variables.
 		// Note: Initializing variables all the time would not be

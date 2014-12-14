@@ -50,9 +50,8 @@ static lg::log_domain log_event_handler("event_handler");
 // This file is in the game_events namespace.
 namespace game_events {
 
-
-namespace { // Types
-	class t_event_handlers {
+	//t_event_handlers is essentially the implementation details of the manager
+	class manager::t_event_handlers {
 		typedef boost::unordered_map<std::string, handler_list> map_t;
 		typedef boost::unordered_map<std::string, boost::weak_ptr<event_handler> > id_map_t;
 
@@ -87,10 +86,9 @@ namespace { // Types
 		const handler_list & get(const std::string & name) const;
 
 		/// Adds an event handler.
-		void add_event_handler(const config & cfg, bool is_menu_item=false);
+		void add_event_handler(const config & cfg, manager & man, bool is_menu_item=false);
 		/// Removes an event handler, identified by its ID.
 		void remove_event_handler(std::string const & id);
-		void clear();
 
 		iterator begin() { return active_.begin(); }
 		const_iterator begin() const { return active_.begin(); }
@@ -104,7 +102,7 @@ namespace { // Types
 		handler_ptr & operator[](size_type index) { return active_[index]; }
 	};//t_event_handlers
 
-	void t_event_handlers::log_handlers()
+	void manager::t_event_handlers::log_handlers()
 	{
 		if(lg::debug.dont_log("event_handler")) return;
 
@@ -124,7 +122,7 @@ namespace { // Types
 	 * This means stripping leading and trailing spaces, and converting internal
 	 * spaces to underscores.
 	 */
-	std::string t_event_handlers::standardize_name(const std::string & name)
+	std::string manager::t_event_handlers::standardize_name(const std::string & name)
 	{
 		std::string retval;
 		size_t name_index = 0;
@@ -151,7 +149,7 @@ namespace { // Types
 	/**
 	 * Read-only access to the handlers with fixed event names, by event name.
 	 */
-	const handler_list & t_event_handlers::get(const std::string & name) const
+	const handler_list & manager::t_event_handlers::get(const std::string & name) const
 	{
 		// Empty list for the "not found" case.
 		static const handler_list empty_list;
@@ -166,7 +164,7 @@ namespace { // Types
 	 * An event with a nonempty ID will not be added if an event with that
 	 * ID already exists.
 	 */
-	void t_event_handlers::add_event_handler(const config & cfg, bool is_menu_item)
+	void manager::t_event_handlers::add_event_handler(const config & cfg, manager & man, bool is_menu_item)
 	{
 		const std::string name = cfg["name"];
 		std::string id = cfg["id"];
@@ -184,7 +182,7 @@ namespace { // Types
 		// Create a new handler.
 		DBG_EH << "inserting event handler for name=" << name <<
 			" with id=" << id << "\n";
-		handler_ptr new_handler(new event_handler(cfg, is_menu_item, active_.size()));
+		handler_ptr new_handler(new event_handler(cfg, is_menu_item, active_.size(), man));
 		active_.push_back(new_handler);
 
 		// File by name.
@@ -206,7 +204,7 @@ namespace { // Types
 	 * Removes an event handler, identified by its ID.
 	 * Events with empty IDs cannot be removed.
 	 */
-	void t_event_handlers::remove_event_handler(std::string const & id)
+	void manager::t_event_handlers::remove_event_handler(std::string const & id)
 	{
 		if ( id.empty() )
 			return;
@@ -227,28 +225,10 @@ namespace { // Types
 		log_handlers();
 	}
 
-	void t_event_handlers::clear()
-	{
-		active_.clear();
-		by_name_.clear();
-		dynamic_.clear();
-		id_map_.clear();
-	}
-
-}// end anonymous namespace (types)
-
-namespace { // Variables
-	t_event_handlers event_handlers;
-	/** Map of the default action handlers known of the engine. */
-	std::set<std::string> unit_wml_ids;
-	std::set<std::string> used_items;
-}// end anonymous namespace (variables)
-
-
 /** Create an event handler. */
 void manager::add_event_handler(const config & handler, bool is_menu_item)
 {
-	event_handlers.add_event_handler(handler, is_menu_item);
+	event_handlers_->add_event_handler(handler, *this, is_menu_item);
 }
 
 /**
@@ -257,7 +237,7 @@ void manager::add_event_handler(const config & handler, bool is_menu_item)
  */
 bool manager::item_used(const std::string & id)
 {
-	return !id.empty()  &&  used_items.count(id) > 0;
+	return !id.empty()  &&  used_items_.count(id) > 0;
 }
 
 /** Records if an item has been used. */
@@ -268,27 +248,30 @@ void manager::item_used(const std::string & id, bool used)
 		return;
 
 	if ( used )
-		used_items.insert(id);
+		used_items_.insert(id);
 	else
-		used_items.erase(id);
+		used_items_.erase(id);
 }
 
 /** Removes an event handler. */
 void manager::remove_event_handler(const std::string & id)
 {
-	event_handlers.remove_event_handler(id);
+	event_handlers_->remove_event_handler(id);
 }
 
 
 /* ** manager ** */
 
 manager::manager(const config& cfg)
+	: event_handlers_(new t_event_handlers())
+	, unit_wml_ids_()
+	, used_items_()
 {
 	BOOST_FOREACH(const config &ev, cfg.child_range("event")) {
 		add_event_handler(ev);
 	}
 	BOOST_FOREACH(const std::string &id, utils::split(cfg["unit_wml_ids"])) {
-		unit_wml_ids.insert(id);
+		unit_wml_ids_.insert(id);
 	}
 
 	// Guard against a memory leak (now) / memory corruption (when this is deleted).
@@ -315,9 +298,6 @@ manager::manager(const config& cfg)
 
 manager::~manager() {
 	clear_events();
-	event_handlers.clear();
-	unit_wml_ids.clear();
-	used_items.clear();
 }
 
 
@@ -329,11 +309,11 @@ manager::~manager() {
  * (including those defined via menu items).
  * An empty @a event_name will automatically match nothing.
  */
-manager::iteration::iteration(const std::string & event_name) :
-	main_list_(event_handlers.get(event_name)),
-	var_list_(event_handlers.get()),
+manager::iteration::iteration(const std::string & event_name, manager & man) :
+	main_list_(man.event_handlers_->get(event_name)),
+	var_list_(man.event_handlers_->get()),
 	event_name_(event_name),
-	end_(event_handlers.size()),
+	end_(man.event_handlers_->size()),
 	current_is_known_(false),
 	main_is_current_(false),
 	main_it_(main_list_.begin()),
@@ -422,9 +402,12 @@ handler_ptr handler_list::iterator::operator*()
 
 /* ** event_handler ** */
 
-event_handler::event_handler(const config &cfg, bool imi, handler_vec::size_type index) :
-	first_time_only_(cfg["first_time_only"].to_bool(true)),
-	is_menu_item_(imi), index_(index), cfg_(cfg)
+event_handler::event_handler(const config &cfg, bool imi, handler_vec::size_type index, manager & man)
+	: first_time_only_(cfg["first_time_only"].to_bool(true))
+	, is_menu_item_(imi)
+	, index_(index)
+	, man_(&man)
+	, cfg_(cfg)
 {}
 
 /**
@@ -437,10 +420,12 @@ event_handler::event_handler(const config &cfg, bool imi, handler_vec::size_type
  */
 void event_handler::disable()
 {
+	assert(man_);
+	assert(man_->event_handlers_);
 	// Handlers must have an index after they're created.
-	assert ( index_ < event_handlers.size() );
+	assert ( index_ < man_->event_handlers_->size() );
 	// Disable this handler.
-	event_handlers[index_].reset();
+	(*man_->event_handlers_)[index_].reset();
 }
 
 /**
@@ -539,8 +524,8 @@ bool event_handler::matches_name(const std::string &name) const
 void manager::add_events(const config::const_child_itors &cfgs, const std::string& type)
 {
 	if(!type.empty()) {
-		if(std::find(unit_wml_ids.begin(),unit_wml_ids.end(),type) != unit_wml_ids.end()) return;
-		unit_wml_ids.insert(type);
+		if(std::find(unit_wml_ids_.begin(),unit_wml_ids_.end(),type) != unit_wml_ids_.end()) return;
+		unit_wml_ids_.insert(type);
 	}
 	BOOST_FOREACH(const config &new_ev, cfgs) {
 		if(type.empty() && new_ev["id"].empty())
@@ -554,15 +539,15 @@ void manager::add_events(const config::const_child_itors &cfgs, const std::strin
 
 void manager::write_events(config& cfg)
 {
-	BOOST_FOREACH(const handler_ptr &eh, event_handlers) {
+	BOOST_FOREACH(const handler_ptr &eh, *event_handlers_) {
 		if ( !eh || eh->is_menu_item() ) {
 			continue;
 		}
 		cfg.add_child("event", eh->get_config());
 	}
 
-	cfg["used_items"] = utils::join(used_items);
-	cfg["unit_wml_ids"] = utils::join(unit_wml_ids);
+	cfg["used_items"] = utils::join(used_items_);
+	cfg["unit_wml_ids"] = utils::join(unit_wml_ids_);
 }
 
 } // end namespace game_events

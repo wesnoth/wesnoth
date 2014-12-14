@@ -28,15 +28,17 @@
 #include "../utils/smart_list.hpp"
 
 #include <boost/noncopyable.hpp>
+#include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
-
+#include <set>
+#include <string>
 
 namespace game_events
 {
 	struct queued_event;
 	class event_handler;  // Defined a few lines down.
-
+	class manager;
 
 	/// Shared pointer to handler objects.
 	typedef boost::shared_ptr<event_handler> handler_ptr;
@@ -48,7 +50,7 @@ namespace game_events
 	{
 		public:
 			event_handler(const config &cfg, bool is_menu_item,
-			              handler_vec::size_type index);
+			              handler_vec::size_type index, manager &);
 
 			/// The index of *this should only be of interest when controlling iterations.
 			handler_vec::size_type index() const { return index_; }
@@ -67,6 +69,7 @@ namespace game_events
 			bool first_time_only_;
 			bool is_menu_item_;
 			handler_vec::size_type index_;
+			manager * man_;
 			config cfg_;
 	};
 
@@ -166,7 +169,7 @@ namespace game_events
 		{
 		public:
 			/// Event-specific constructor.
-			explicit iteration(const std::string & event_name);
+			explicit iteration(const std::string & event_name, manager &);
 
 			// Increment:
 			iteration & operator++();
@@ -198,6 +201,12 @@ namespace game_events
 			/// The current (or next) element from var_list_.
 			handler_list::iterator var_it_;
 		};
+
+		class t_event_handlers;
+
+		boost::scoped_ptr<t_event_handlers> event_handlers_;
+		std::set<std::string> unit_wml_ids_;
+		std::set<std::string> used_items_;
 
 	public:
 		/// Note that references will be maintained,
