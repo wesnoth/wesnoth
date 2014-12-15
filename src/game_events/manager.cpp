@@ -46,12 +46,14 @@ static lg::log_domain log_event_handler("event_handler");
 
 namespace game_events {
 
-t_context::t_context(game_lua_kernel * lk, filter_context * fc, game_display * sc, game_data * gd, unit_map * um)
+t_context::t_context(game_lua_kernel * lk, filter_context * fc, game_display * sc, game_data * gd, unit_map * um, boost::function<void()> wb_callback, boost::function<int()> current_side_accessor)
 	: lua_kernel(lk)
 	, filter_con(fc)
 	, screen(sc)
 	, gamedata(gd)
 	, units(um)
+	, on_gamestate_change(wb_callback)
+	, current_side(current_side_accessor)
 {}
 
 /** Create an event handler. */
@@ -95,7 +97,7 @@ manager::manager(const config& cfg, const t_context & res)
 	: event_handlers_(new t_event_handlers())
 	, unit_wml_ids_()
 	, used_items_()
-	, pump_(new game_events::t_pump())
+	, pump_(new game_events::t_pump(*this, res))
 	, resources_(res)
 {
 	BOOST_FOREACH(const config &ev, cfg.child_range("event")) {

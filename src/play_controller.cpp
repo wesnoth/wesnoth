@@ -239,7 +239,7 @@ void play_controller::init(CVideo& video){
 	// Has to be done before registering any events!
 	lua_kernel_.reset(new game_lua_kernel(level_, *gui_, gamestate_, *this, *reports_));
 	resources::lua_kernel=lua_kernel_.get();
-	events_manager_.reset(new game_events::manager(level_, game_events::t_context(lua_kernel_.get(), &gamestate_, gui_.get(), &gamestate_.gamedata_, &gamestate_.board_.units_)));
+	events_manager_.reset(new game_events::manager(level_, game_events::t_context(lua_kernel_.get(), &gamestate_, gui_.get(), &gamestate_.gamedata_, &gamestate_.board_.units_, boost::bind(&wb::manager::on_gamestate_change, whiteboard_manager_.get()), boost::bind(&play_controller::current_side, this))));
 	resources::game_events=events_manager_.get();
 
 	if(gamestate_.first_human_team_ != -1) {

@@ -17,6 +17,7 @@
 
 #include "game_events/handlers.hpp"
 
+#include <boost/function.hpp>
 #include <boost/noncopyable.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
@@ -38,7 +39,10 @@ namespace game_events {
 		game_data * gamedata;
 		unit_map * units;
 
-		t_context(game_lua_kernel * lua_kernel, filter_context * filter_con, game_display * screen, game_data * gamedata, unit_map * um);
+		boost::function<void()> on_gamestate_change; //whiteboard callback
+		boost::function<int()> current_side; //current_side function
+
+		t_context(game_lua_kernel * lua_kernel, filter_context * filter_con, game_display * screen, game_data * gamedata, unit_map * um, boost::function<void()>, boost::function<int()>);
 	};
 
 	class t_pump;
