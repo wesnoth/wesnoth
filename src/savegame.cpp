@@ -197,7 +197,7 @@ bool loadgame::load_game()
 		return false;
 	}
 
-	throw game::load_game_exception(filename_, show_replay_, cancel_orders_, select_difficulty_, difficulty_);
+	throw game::load_game_exception(filename_, show_replay_, cancel_orders_, select_difficulty_, difficulty_, true);
 }
 
 bool loadgame::load_game(
@@ -205,7 +205,8 @@ bool loadgame::load_game(
 		, const bool show_replay
 		, const bool cancel_orders
 		, const bool select_difficulty
-		, const std::string& difficulty)
+		, const std::string& difficulty
+		, bool skip_version_check)
 {
 	filename_ = filename;
 	difficulty_ = difficulty;
@@ -255,6 +256,10 @@ bool loadgame::load_game(
 	// read classification to for loading the game_config config object.
 	gamestate_.classification() = game_classification(load_config_);
 #endif
+
+	if (skip_version_check) {
+		return true;
+	}
 
 	return check_version_compatibility();
 }

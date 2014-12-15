@@ -50,7 +50,8 @@ public:
 			, const bool show_replay
 			, const bool cancel_orders
 			, const bool select_difficulty
-			, const std::string& difficulty);
+			, const std::string& difficulty
+			, bool skip_version_check);
 	/** Loading a game from within the multiplayer-create dialog. */
 	bool load_multiplayer_game();
 	/** Generate the gamestate out of the loaded game config. */

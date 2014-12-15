@@ -652,7 +652,7 @@ bool game_launcher::load_game()
 	    state_);
 
 	try {
-		if(!load.load_game(game::load_game_exception::game, game::load_game_exception::show_replay, game::load_game_exception::cancel_orders, game::load_game_exception::select_difficulty, game::load_game_exception::difficulty)) {
+		if(!load.load_game(game::load_game_exception::game, game::load_game_exception::show_replay, game::load_game_exception::cancel_orders, game::load_game_exception::select_difficulty, game::load_game_exception::difficulty, game::load_game_exception::skip_version_check)) {
 			clear_loaded_game();
 			return false;
 		}

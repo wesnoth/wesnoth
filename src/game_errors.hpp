@@ -74,7 +74,8 @@ public:
 			, const bool show_replay_
 			, const bool cancel_orders_
 			, const bool select_difficulty_
-			, const std::string& difficulty_)
+			, const std::string& difficulty_
+			, bool skip_version_check_ = false)
 		: tlua_jailbreak_exception()
 	{
 		game = game_;
@@ -82,6 +83,7 @@ public:
 		cancel_orders = cancel_orders_;
 		select_difficulty = select_difficulty_;
 		difficulty = difficulty_;
+		skip_version_check = skip_version_check_;
 	}
 
 	static std::string game;
@@ -89,6 +91,7 @@ public:
 	static bool cancel_orders;
 	static bool select_difficulty;
 	static std::string difficulty;
+	static bool skip_version_check;
 
 private:
 
