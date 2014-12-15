@@ -21,11 +21,11 @@
 #include "menu_item.hpp"
 #include "pump.hpp"
 
+#include "filter_context.hpp"
 #include "formula_string_utils.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
 #include "reports.hpp"
-#include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "serialization/string_utils.hpp"
 #include "soundsource.hpp"
@@ -45,6 +45,14 @@ static lg::log_domain log_event_handler("event_handler");
 #define DBG_EH LOG_STREAM(debug, log_event_handler)
 
 namespace game_events {
+
+t_context::t_context(game_lua_kernel * lk, filter_context * fc, game_display * sc, game_data * gd, unit_map * um)
+	: lua_kernel(lk)
+	, filter_con(fc)
+	, screen(sc)
+	, gamedata(gd)
+	, units(um)
+{}
 
 /** Create an event handler. */
 void manager::add_event_handler(const config & handler, bool is_menu_item)
@@ -83,11 +91,12 @@ void manager::remove_event_handler(const std::string & id)
 
 /* ** manager ** */
 
-manager::manager(const config& cfg)
+manager::manager(const config& cfg, const t_context & res)
 	: event_handlers_(new t_event_handlers())
 	, unit_wml_ids_()
 	, used_items_()
 	, pump_(new game_events::t_pump())
+	, resources_(res)
 {
 	BOOST_FOREACH(const config &ev, cfg.child_range("event")) {
 		add_event_handler(ev);
@@ -98,12 +107,12 @@ manager::manager(const config& cfg)
 
 	// Guard against a memory leak (now) / memory corruption (when this is deleted).
 	// This is why creating multiple manager objects is prohibited.
-	assert(resources::lua_kernel != NULL);
+	assert(resources_.lua_kernel != NULL);
 
 	wml_action::map::const_iterator action_end = wml_action::end();
 	wml_action::map::const_iterator action_cur = wml_action::begin();
 	for ( ; action_cur != action_end; ++action_cur ) {
-		resources::lua_kernel->set_wml_action(action_cur->first, action_cur->second);
+		resources_.lua_kernel->set_wml_action(action_cur->first, action_cur->second);
 	}
 
 	const std::string used = cfg["used_items"];
@@ -115,7 +124,7 @@ manager::manager(const config& cfg)
 	}
 
 	// Create the event handlers for menu items.
-	resources::gamedata->get_wml_menu_items().init_handlers();
+	resources_.gamedata->get_wml_menu_items().init_handlers();
 }
 
 manager::~manager() {}

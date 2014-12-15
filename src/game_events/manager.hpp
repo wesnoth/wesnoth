@@ -24,8 +24,22 @@
 #include <string>
 
 class game_lua_kernel;
+class filter_context;
+class game_display;
+class game_data;
+class unit_map;
 
 namespace game_events {
+
+	struct t_context {
+		game_lua_kernel * lua_kernel;
+		filter_context * filter_con;
+		game_display * screen;
+		game_data * gamedata;
+		unit_map * units;
+
+		t_context(game_lua_kernel * lua_kernel, filter_context * filter_con, game_display * screen, game_data * gamedata, unit_map * um);
+	};
 
 	class t_pump;
 
@@ -94,11 +108,12 @@ namespace game_events {
 		std::set<std::string> used_items_;
 
 		boost::scoped_ptr<game_events::t_pump> pump_;
+		t_context resources_;
 
 	public:
 		/// Note that references will be maintained,
 		/// and must remain valid for the life of the object.
-		explicit manager(const config& scenario_cfg);
+		explicit manager(const config& scenario_cfg, const t_context &);
 		~manager();
 
 		/// Create an event handler.
