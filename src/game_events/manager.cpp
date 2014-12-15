@@ -87,7 +87,7 @@ manager::manager(const config& cfg)
 	: event_handlers_(new t_event_handlers())
 	, unit_wml_ids_()
 	, used_items_()
-	, pump_(new game_events::pump())
+	, pump_(new game_events::t_pump())
 {
 	BOOST_FOREACH(const config &ev, cfg.child_range("event")) {
 		add_event_handler(ev);
@@ -225,7 +225,7 @@ void manager::write_events(config& cfg)
 	cfg["unit_wml_ids"] = utils::join(unit_wml_ids_);
 }
 
-pump & manager::pump()
+game_events::t_pump & manager::pump()
 {
 	return *pump_;
 }

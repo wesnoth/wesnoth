@@ -1428,6 +1428,6 @@ void play_controller::do_consolesave(const std::string& filename)
 }
 
 
-game_events::pump & play_controller::pump() {
+game_events::t_pump & play_controller::pump() {
 	return events_manager_->pump();
 }

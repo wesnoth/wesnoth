@@ -56,11 +56,11 @@ namespace game_events
 
 	struct pump_impl;
 
-	class pump {
+	class t_pump {
 		boost::scoped_ptr<pump_impl> impl_;
 	public:
-		pump();
-		~pump();
+		t_pump();
+		~t_pump();
 		/// Context: The general environment within which events are processed.
 		/// Returns whether or not we believe WML might have changed something.
 		bool context_mutated();

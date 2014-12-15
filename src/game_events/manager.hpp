@@ -27,7 +27,7 @@ class game_lua_kernel;
 
 namespace game_events {
 
-	class pump;
+	class t_pump;
 
 	class t_event_handlers;
 
@@ -93,7 +93,7 @@ namespace game_events {
 		std::set<std::string> unit_wml_ids_;
 		std::set<std::string> used_items_;
 
-		boost::scoped_ptr<pump> pump_;
+		boost::scoped_ptr<game_events::t_pump> pump_;
 
 	public:
 		/// Note that references will be maintained,
@@ -114,7 +114,7 @@ namespace game_events {
 		                const std::string& type = std::string());
 		void write_events(config& cfg);
 
-		pump & pump();
+		game_events::t_pump & pump();
 	};
 }
 

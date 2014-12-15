@@ -182,7 +182,7 @@ namespace { // Support functions
 	/**
 	 * Returns true iff the given event passes all its filters.
 	 */
-	bool pump::filter_event(const event_handler& handler, const queued_event& ev)
+	bool t_pump::filter_event(const event_handler& handler, const queued_event& ev)
 	{
 		const unit_map *units = resources::units;
 		unit_map::const_iterator unit1 = units->find(ev.loc1);
@@ -274,7 +274,7 @@ namespace { // Support functions
 	 *
 	 * @returns true if the game state changed.
 	 */
-	bool pump::process_event(handler_ptr& handler_p, const queued_event& ev)
+	bool t_pump::process_event(handler_ptr& handler_p, const queued_event& ev)
 	{
 		// We currently never pass a null pointer to this function, but to
 		// guard against future modifications:
@@ -309,7 +309,7 @@ namespace { // Support functions
 	 * Helper function for show_wml_messages(), which gathers
 	 * the messages from a stringstream.
 	 */
-	void pump::fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stringstream& source)
+	void t_pump::fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stringstream& source)
 	{
 		while(true) {
 			std::string msg;
@@ -341,7 +341,7 @@ namespace { // Support functions
 	 * to be the order in which these messages are encountered.
 	 * Messages are also written to std::cerr if to_cerr is true.
 	 */
-	void pump::show_wml_messages(std::stringstream& source, const std::string & caption,
+	void t_pump::show_wml_messages(std::stringstream& source, const std::string & caption,
 	                       bool to_cerr)
 	{
 		// Get all unique messages in messages,
@@ -375,7 +375,7 @@ namespace { // Support functions
 	 * to be the order in which these messages are encountered.
 	 * Messages are always written to std::cerr.
 	 */
-	void pump::show_wml_errors()
+	void t_pump::show_wml_errors()
 	{
 		static const std::string caption("Invalid WML found");
 
@@ -389,14 +389,14 @@ namespace { // Support functions
 	 * The order in which the messages are shown does not need
 	 * to be the order in which these messages are encountered.
 	 */
-	void pump::show_wml_messages()
+	void t_pump::show_wml_messages()
 	{
 		static const std::string caption("WML");
 
 		show_wml_messages(impl_->wml_messages_stream, caption, false);
 	}
 
-	void pump::put_wml_message(lg::logger& logger, const std::string& prefix, const std::string& message, bool in_chat)
+	void t_pump::put_wml_message(lg::logger& logger, const std::string& prefix, const std::string& message, bool in_chat)
 	{
 		logger(log_wml) << message << std::endl;
 		if (in_chat)
@@ -424,25 +424,25 @@ context::scoped::~scoped()
 	contexts_.top().mutated |= mutated;
 }
 
-bool pump::context_mutated()
+bool t_pump::context_mutated()
 {
 	assert(impl_->contexts_.size() > 0);
 	return impl_->contexts_.top().mutated;
 }
 
-void pump::context_mutated(bool b)
+void t_pump::context_mutated(bool b)
 {
 	assert(impl_->contexts_.size() > 0);
 	impl_->contexts_.top().mutated = b;
 }
 
-bool pump::context_skip_messages()
+bool t_pump::context_skip_messages()
 {
 	assert(impl_->contexts_.size() > 0);
 	return impl_->contexts_.top().skip_messages;
 }
 
-void pump::context_skip_messages(bool b)
+void t_pump::context_skip_messages(bool b)
 {
 	assert(impl_->contexts_.size() > 0);
 	impl_->contexts_.top().skip_messages = b;
@@ -452,7 +452,7 @@ void pump::context_skip_messages(bool b)
  * Helper function which determines whether a wml_message text can
  * really be pushed into the wml_messages_stream, and does it.
  */
-void pump::put_wml_message(const std::string& logger, const std::string& message, bool in_chat)
+void t_pump::put_wml_message(const std::string& logger, const std::string& message, bool in_chat)
 {
 	if (logger == "err" || logger == "error") {
 		put_wml_message(lg::err, _("Error: "), message, in_chat );
@@ -465,7 +465,7 @@ void pump::put_wml_message(const std::string& logger, const std::string& message
 	}
 }
 
-bool pump::fire(const std::string& event,
+bool t_pump::fire(const std::string& event,
           const entity_location& loc1,
           const entity_location& loc2,
           const config& data)
@@ -474,7 +474,7 @@ bool pump::fire(const std::string& event,
 	return (*this)();
 }
 
-void pump::raise(const std::string& event,
+void t_pump::raise(const std::string& event,
            const entity_location& loc1,
            const entity_location& loc2,
            const config& data)
@@ -487,7 +487,7 @@ void pump::raise(const std::string& event,
 	impl_->events_queue.push_back(queued_event(event, loc1, loc2, data));
 }
 
-bool pump::operator()()
+bool t_pump::operator()()
 {
 	// Quick aborts:
 	if(resources::screen == NULL)
@@ -574,7 +574,7 @@ bool pump::operator()()
 	return result;
 }
 
-void pump::flush_messages()
+void t_pump::flush_messages()
 {
 	// Dialogs can only be shown if the display is not locked
 	if (!resources::screen->video().update_locked()) {
@@ -599,16 +599,16 @@ void pump::flush_messages()
  * from caching some aspect of the game state and that cannot rely on
  * [allow_undo] not being used when that state changes.
  */
-size_t pump::wml_tracking()
+size_t t_pump::wml_tracking()
 {
 	return impl_->internal_wml_tracking;
 }
 
-pump::pump()
+t_pump::t_pump()
 	: impl_(new pump_impl())
 {}
 
-pump::~pump() {}
+t_pump::~t_pump() {}
 
 } // end namespace game_events
 
