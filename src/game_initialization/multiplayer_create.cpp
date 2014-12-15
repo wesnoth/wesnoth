@@ -264,21 +264,17 @@ void create::process_event()
 		{
 			savegame::loadgame load(disp_,
 				game_config_manager::get()->game_config(), engine_.get_state());
-			load.load_multiplayer_game();
+			
+			if (load.load_multiplayer_game()) {
+				engine_.prepare_for_saved_game();
 
-			engine_.prepare_for_saved_game();
+				set_result(LOAD_GAME);
 
-			set_result(LOAD_GAME);
-
-			return;
+				return;
+			}
 		}
-		catch (load_game_cancelled_exception)
-		{
+		catch(config::error&) {
 		}
-		catch(config::error&)
-		{
-		}
-
 	}
 
 	bool update_mod_button_label = mod_selection_ != mods_menu_.selection();

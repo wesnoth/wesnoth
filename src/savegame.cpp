@@ -160,27 +160,53 @@ void loadgame::show_difficulty_dialog()
 	difficulty_dlg.show(gui_.video());
 
 	if (difficulty_dlg.get_retval() != gui2::twindow::OK) {
-		throw load_game_cancelled_exception();
+		return;
 	}
 
 	difficulty_ = difficulties[difficulty_dlg.selected_index()];
 }
 
-
-void loadgame::load_game()
+// Called only by play_controller to handle in-game attempts to load. Instead of returning true,
+// throws a "load_game_exception" to signal a resulting load game request.
+bool loadgame::load_game()
 {
 	show_dialog(false, false);
 
-	if(filename_ != "")
-		throw game::load_game_exception(filename_, show_replay_, cancel_orders_, select_difficulty_, difficulty_);
+	if(filename_.empty()) {
+		return false;
+	}
+
+	std::string error_log;
+	{
+		cursor::setter cur(cursor::WAIT);
+		log_scope("load_game");
+
+		read_save_file(filename_, load_config_, &error_log);
+
+		gamestate_ = saved_game(load_config_);
+	}
+
+	if(!error_log.empty()) {
+		gui2::show_error_message(gui_.video(),
+				_("The file you have tried to load is corrupt: '") +
+				error_log);
+		return false;
+	}
+
+	if (!check_version_compatibility()) {
+		return false;
+	}
+
+	throw game::load_game_exception(filename_, show_replay_, cancel_orders_, select_difficulty_, difficulty_, true);
 }
 
-void loadgame::load_game(
+bool loadgame::load_game(
 		  const std::string& filename
 		, const bool show_replay
 		, const bool cancel_orders
 		, const bool select_difficulty
-		, const std::string& difficulty)
+		, const std::string& difficulty
+		, bool skip_version_check)
 {
 	filename_ = filename;
 	difficulty_ = difficulty;
@@ -195,7 +221,7 @@ void loadgame::load_game(
 	}
 
 	if (filename_.empty())
-		throw load_game_cancelled_exception();
+		return false;
 
 	if (select_difficulty_)
 		show_difficulty_dialog();
@@ -230,14 +256,18 @@ void loadgame::load_game(
 	// read classification to for loading the game_config config object.
 	gamestate_.classification() = game_classification(load_config_);
 #endif
-	check_version_compatibility();
 
+	if (skip_version_check) {
+		return true;
+	}
+
+	return check_version_compatibility();
 }
 
-void loadgame::check_version_compatibility()
+bool loadgame::check_version_compatibility()
 {
 	if (gamestate_.classification().version == game_config::version) {
-		return;
+		return true;
 	}
 
 	const version_info save_version = gamestate_.classification().version;
@@ -249,7 +279,7 @@ void loadgame::check_version_compatibility()
 		utils::string_map symbols;
 		symbols["version_number"] = gamestate_.classification().version;
 		gui2::show_error_message(gui_.video(), utils::interpolate_variables_into_string(message, &symbols));
-		throw load_game_cancelled_exception();
+		return false;
 	}
 
 	// Even minor version numbers indicate stable releases which are
@@ -258,7 +288,7 @@ void loadgame::check_version_compatibility()
 	    wesnoth_version.major_version() == save_version.major_version() &&
 	    wesnoth_version.minor_version() == save_version.minor_version())
 	{
-		return;
+		return true;
 	}
 
 	// Do not load if too old. If either the savegame or the current
@@ -272,7 +302,7 @@ void loadgame::check_version_compatibility()
 		utils::string_map symbols;
 		symbols["version_number"] = save_version.str();
 		gui2::show_error_message(gui_.video(), utils::interpolate_variables_into_string(message, &symbols));
-		throw load_game_cancelled_exception();
+		return false;
 	}
 
 	int res = gui2::twindow::OK;
@@ -285,8 +315,10 @@ void loadgame::check_version_compatibility()
 	}
 
 	if(res == gui2::twindow::CANCEL) {
-		throw load_game_cancelled_exception();
+		return false;
 	}
+
+	return true;
 }
 
 void loadgame::set_gamestate()
@@ -294,12 +326,12 @@ void loadgame::set_gamestate()
 	gamestate_ = saved_game(load_config_);
 }
 
-void loadgame::load_multiplayer_game()
+bool loadgame::load_multiplayer_game()
 {
 	show_dialog(false, false);
 
 	if (filename_.empty())
-		throw load_game_cancelled_exception();
+		return false;
 
 	std::string error_log;
 	{
@@ -316,15 +348,15 @@ void loadgame::load_multiplayer_game()
 		gui2::show_error_message(gui_.video(),
 				_("The file you have tried to load is corrupt: '") +
 				error_log);
-		throw load_game_cancelled_exception();
+		return false;
 	}
 
 	if(gamestate_.classification().campaign_type != game_classification::MULTIPLAYER) {
 		gui2::show_transient_error_message(gui_.video(), _("This is not a multiplayer save."));
-		throw load_game_cancelled_exception();
+		return false;
 	}
 
-	check_version_compatibility();
+	return check_version_compatibility();
 }
 
 void loadgame::copy_era(config &cfg)
@@ -376,19 +408,14 @@ bool savegame::save_game_interactive(CVideo& video, const std::string& message,
 	int res = gui2::twindow::OK;
 	bool exit = true;
 
-	do{
-		try{
-			res = show_save_dialog(video, message, dialog_type);
-			exit = true;
+	res = show_save_dialog(video, message, dialog_type);
 
-			if (res == gui2::twindow::OK){
-				exit = check_overwrite(video);
-			}
-		}
-		catch (illegal_filename_exception){
-			exit = false;
-		}
+	if (res == gui2::twindow::OK) {
+		exit = check_overwrite(video);
+
+		return false;
 	}
+
 	while (!exit);
 
 	if (res == 2) //Quit game
@@ -417,8 +444,11 @@ int savegame::show_save_dialog(CVideo& video, const std::string& message, const 
 		res = dlg.get_retval();
 	}
 
-	check_filename(filename, video);
 	set_filename(filename);
+
+	if (!check_filename(filename, video)) {
+		res = gui2::twindow::CANCEL;
+	}
 
 	return res;
 }
@@ -436,12 +466,14 @@ bool savegame::check_overwrite(CVideo& video)
 	}
 }
 
-void savegame::check_filename(const std::string& filename, CVideo& video)
+bool savegame::check_filename(const std::string& filename, CVideo& video)
 {
 	if (filesystem::is_compressed_file(filename)) {
 		gui2::show_error_message(video, _("Save names should not end on '.gz' or '.bz2'. "
 			"Please remove the extension."));
-		throw illegal_filename_exception();
+		return false;
+	} else {
+		return true;
 	}
 }
 
@@ -641,8 +673,11 @@ int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, co
 		res = dlg.get_retval();
 	}
 
-	check_filename(filename, video);
 	set_filename(filename);
+
+	if (!check_filename(filename, video)) {
+		res = gui2::twindow::CANCEL;
+	}
 
 	return res;
 }
@@ -810,7 +845,7 @@ static void convert_old_saves_1_13_0(config& cfg)
 		cfg.clear_children("carryover_sides");
 	}
 #if 1
-	//This code is needed becasue for example otherwise it won't find the (empty) era 
+	//This code is needed becasue for example otherwise it won't find the (empty) era
 	if(!cfg.has_child("multiplayer")) {
 		cfg.add_child("multiplayer", config_of
 			("mp_era", "era_blank")
@@ -819,7 +854,7 @@ static void convert_old_saves_1_13_0(config& cfg)
 			("mp_use_map_settings", true)
 		);
 	}
-	//the alternative code down below doesnt work replay saves or start of scenario saves 
+	//the alternative code down below doesnt work replay saves or start of scenario saves
 	//becasue those don't contain a snaphot. If the code below works with we can enable that code
 	//If it turns out that this code works well we can delete that code.
 #else
@@ -840,8 +875,8 @@ void convert_old_saves(config& cfg)
 	if(loaded_version < version_info("1.12.0"))
 	{
 		convert_old_saves_1_11_0(cfg);
-	}	
-	// '<= version_info("1.13.0")' doesn't work 
+	}
+	// '<= version_info("1.13.0")' doesn't work
 	//because version_info cannot handle 1.13.0-dev versions correctly.
 	if(loaded_version < version_info("1.13.1"))
 	{

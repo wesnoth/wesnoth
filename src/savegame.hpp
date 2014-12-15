@@ -23,9 +23,6 @@
 class config_writer;
 class game_display;
 
-struct load_game_cancelled_exception {};
-struct illegal_filename_exception {};
-
 namespace savegame {
 /** converts saves from older versions of wesnoth*/
 void convert_old_saves(config& cfg);
@@ -42,17 +39,21 @@ public:
 	loadgame(display& gui, const config& game_config, saved_game& gamestate);
 	virtual ~loadgame() {}
 
+	/* In any of the following three function, a bool value of false indicates
+	   some failure or abort of the load process */
+
 	/** Load a game without providing any information. */
-	void load_game();
+	bool load_game();
 	/** Load a game with pre-setting information for the load-game dialog. */
-	void load_game(
+	bool load_game(
 			  const std::string& filename
 			, const bool show_replay
 			, const bool cancel_orders
 			, const bool select_difficulty
-			, const std::string& difficulty);
+			, const std::string& difficulty
+			, bool skip_version_check);
 	/** Loading a game from within the multiplayer-create dialog. */
-	void load_multiplayer_game();
+	bool load_multiplayer_game();
 	/** Generate the gamestate out of the loaded game config. */
 	void set_gamestate();
 
@@ -66,7 +67,7 @@ private:
 	/** Display the difficulty dialog. */
 	void show_difficulty_dialog();
 	/** Check if the version of the savefile is compatible with the current version. */
-	void check_version_compatibility();
+	bool check_version_compatibility();
 	/** Copy era information into the snapshot. */
 	void copy_era(config& cfg);
 
@@ -123,7 +124,7 @@ protected:
 		use this method instead. */
 	void set_filename(std::string filename);
 	/** Check, if the filename contains illegal constructs like ".gz". */
-	void check_filename(const std::string& filename, CVideo& video);
+	bool check_filename(const std::string& filename, CVideo& video);
 
 	/** Customize the standard error message */
 	void set_error_message(const std::string& error_message) { error_message_ = error_message; }
