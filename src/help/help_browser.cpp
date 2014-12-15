@@ -38,8 +38,8 @@ help_browser::help_browser(display &disp, const section &toplevel) :
 	ref_cursor_(false),
 	back_topics_(),
 	forward_topics_(),
-	back_button_(disp.video(), _(" < Back"), gui::button::TYPE_PRESS),
-	forward_button_(disp.video(), _("Forward >"), gui::button::TYPE_PRESS),
+	back_button_(disp.video(), _(" ← Back"), gui::button::TYPE_PRESS),
+	forward_button_(disp.video(), _("Forward →"), gui::button::TYPE_PRESS),
 	shown_topic_(NULL)
 {
 	// Hide the buttons at first since we do not have any forward or
