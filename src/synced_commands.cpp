@@ -27,6 +27,7 @@
 #include "actions/undo.hpp"
 #include "preferences.hpp"
 #include "game_preferences.hpp"
+#include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 #include "dialogs.hpp"
 #include "unit_helper.hpp"
@@ -320,13 +321,13 @@ SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child,  /*use_undo*/, /*show*/, erro
 	if(const config &last_select = child.child("last_select"))
 	{
 		//the select event cannot clear the undo stack.
-		game_events::fire("select", map_location(last_select, resources::gamedata));
+		resources::game_events->pump().fire("select", map_location(last_select, resources::gamedata));
 	}
 	const std::string &event_name = child["raise"];
 	if (const config &source = child.child("source")) {
-		undoable = undoable & !game_events::fire(event_name, map_location(source, resources::gamedata));
+		undoable = undoable & !resources::game_events->pump().fire(event_name, map_location(source, resources::gamedata));
 	} else {
-		undoable = undoable & !game_events::fire(event_name);
+		undoable = undoable & !resources::game_events->pump().fire(event_name);
 	}
 	if ( !undoable)
 		resources::undo_stack->clear();

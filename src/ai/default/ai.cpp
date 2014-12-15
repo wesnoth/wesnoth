@@ -26,6 +26,7 @@
 #include "../../array.hpp"
 #include "../../dialogs.hpp"
 #include "../../game_board.hpp"
+#include "game_events/manager.hpp"
 #include "../../game_events/pump.hpp"
 #include "../../game_classification.hpp"
 #include "../../log.hpp"
@@ -100,7 +101,7 @@ int idle_ai::get_recursion_count() const
 
 void idle_ai::play_turn()
 {
-	game_events::fire("ai turn");
+	resources::game_events->pump().fire("ai turn");
 }
 
 

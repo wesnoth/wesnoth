@@ -27,6 +27,7 @@
 #include "../dialogs.hpp"
 #include "../game_config.hpp"
 #include "../game_display.hpp"
+#include "game_events/manager.hpp"
 #include "../game_events/pump.hpp"
 #include "../game_preferences.hpp"
 #include "../game_data.hpp"
@@ -827,11 +828,11 @@ namespace {
 		}
 		if(n == "attack_end") {
 			// We want to fire attack_end event in any case! Even if one of units was removed by WML
-			game_events::fire(n, a_.loc_, d_.loc_, ev_data);
+			resources::game_events->pump().fire(n, a_.loc_, d_.loc_, ev_data);
 			return;
 		}
 		const int defender_side = d_.get_unit().side();
-		game_events::fire(n, game_events::entity_location(a_.loc_, a_.id_),
+		resources::game_events->pump().fire(n, game_events::entity_location(a_.loc_, a_.id_),
 			game_events::entity_location(d_.loc_, d_.id_), ev_data);
 
 		// The event could have killed either the attacker or
@@ -1096,7 +1097,7 @@ namespace {
 				update_fog = true;
 				attacker.n_attacks_ = 0;
 				defender.n_attacks_ = -1; // Petrified.
-				game_events::fire("petrified", defender.loc_, attacker.loc_);
+				resources::game_events->pump().fire("petrified", defender.loc_, attacker.loc_);
 				refresh_bc();
 			}
 		}
@@ -1139,7 +1140,7 @@ namespace {
 		dat.add_child("first",  d_weapon_cfg);
 		dat.add_child("second", a_weapon_cfg);
 
-		game_events::fire("last breath", death_loc, attacker_loc, dat);
+		resources::game_events->pump().fire("last breath", death_loc, attacker_loc, dat);
 		refresh_bc();
 
 		if (!defender.valid() || defender.get_unit().hitpoints() > 0) {
@@ -1156,7 +1157,7 @@ namespace {
 				attacker.loc_, &attacker.get_unit());
 		}
 
-		game_events::fire("die", death_loc, attacker_loc, dat);
+		resources::game_events->pump().fire("die", death_loc, attacker_loc, dat);
 		refresh_bc();
 
 		if (!defender.valid() || defender.get_unit().hitpoints() > 0) {
@@ -1462,7 +1463,7 @@ void advance_unit_at(const advance_unit_params& params)
 		if(params.fire_events_)
 		{
 			LOG_NG << "Firing pre_advance event at " << params.loc_ <<".\n";
-			game_events::fire("pre_advance", params.loc_);
+			resources::game_events->pump().fire("pre_advance", params.loc_);
 			//TODO: maybe use id instead of location here ?.
 			u = resources::units->find(params.loc_);
 			if(!unit_helper::will_certainly_advance(u))
@@ -1573,7 +1574,7 @@ void advance_unit(map_location loc, const std::string &advance_to,
 	if(fire_event)
 	{
 		LOG_NG << "Firing advance event at " << loc <<".\n";
-		game_events::fire("advance",loc);
+		resources::game_events->pump().fire("advance",loc);
 
 		if (!u.valid() || u->experience() < u->max_experience() ||
 			u->type_id() != original_type)
@@ -1610,7 +1611,7 @@ void advance_unit(map_location loc, const std::string &advance_to,
 	if(fire_event)
 	{
 		LOG_NG << "Firing post_advance event at " << loc << ".\n";
-		game_events::fire("post_advance",loc);
+		resources::game_events->pump().fire("post_advance",loc);
 	}
 
 	// "sighted" event(s).

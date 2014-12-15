@@ -437,7 +437,7 @@ void play_controller::fire_preload()
 	gamestate_.gamedata_.set_phase(game_data::PRELOAD);
 	lua_kernel_->initialize();
 	gamestate_.gamedata_.get_variable("turn_number") = int(turn());
-	game_events::fire("preload");
+	events_manager_->pump().fire("preload");
 }
 void play_controller::fire_prestart()
 {
@@ -445,7 +445,7 @@ void play_controller::fire_prestart()
 	// as those may cause the display to be refreshed.
 	update_locker lock_display(gui_->video());
 	gamestate_.gamedata_.set_phase(game_data::PRESTART);
-	game_events::fire("prestart");
+	events_manager_->pump().fire("prestart");
 	check_end_level();
 	// prestart event may modify start turn with WML, reflect any changes.
 	start_turn_ = turn();
@@ -455,7 +455,7 @@ void play_controller::fire_prestart()
 void play_controller::fire_start(bool execute){
 	if(execute) {
 		gamestate_.gamedata_.set_phase(game_data::START);
-		game_events::fire("start");
+		events_manager_->pump().fire("start");
 		check_end_level();
 		// start event may modify start turn with WML, reflect any changes.
 		start_turn_ = turn();
@@ -558,15 +558,15 @@ void play_controller::do_init_side(bool is_replay, bool only_visual) {
 	if (!only_visual) {
 		if(it_is_a_new_turn_)
 		{
-			game_events::fire("turn " + turn_num);
-			game_events::fire("new turn");
+			events_manager_->pump().fire("turn " + turn_num);
+			events_manager_->pump().fire("new turn");
 			it_is_a_new_turn_ = false;
 		}
 
-		game_events::fire("side turn");
-		game_events::fire("side " + side_num + " turn");
-		game_events::fire("side turn " + turn_num);
-		game_events::fire("side " + side_num + " turn " + turn_num);
+		events_manager_->pump().fire("side turn");
+		events_manager_->pump().fire("side " + side_num + " turn");
+		events_manager_->pump().fire("side turn " + turn_num);
+		events_manager_->pump().fire("side " + side_num + " turn " + turn_num);
 	}
 
 	if(current_team().is_local_human() && !is_replay) {
@@ -596,10 +596,10 @@ void play_controller::do_init_side(bool is_replay, bool only_visual) {
 		// Prepare the undo stack.
 		undo_stack_->new_side_turn(player_number_);
 
-		game_events::fire("turn refresh");
-		game_events::fire("side " + side_num + " turn refresh");
-		game_events::fire("turn " + turn_num + " refresh");
-		game_events::fire("side " + side_num + " turn " + turn_num + " refresh");
+		events_manager_->pump().fire("turn refresh");
+		events_manager_->pump().fire("side " + side_num + " turn refresh");
+		events_manager_->pump().fire("turn " + turn_num + " refresh");
+		events_manager_->pump().fire("side " + side_num + " turn " + turn_num + " refresh");
 
 		// Make sure vision is accurate.
 		actions::clear_shroud(player_number_, true);
@@ -686,10 +686,10 @@ void play_controller::finish_side_turn(){
 
 	{ //Block for set_scontext_synced
 		set_scontext_synced sync(1);
-		game_events::fire("side turn end");
-		game_events::fire("side "+ side_num + " turn end");
-		game_events::fire("side turn " + turn_num + " end");
-		game_events::fire("side " + side_num + " turn " + turn_num + " end");
+		events_manager_->pump().fire("side turn end");
+		events_manager_->pump().fire("side "+ side_num + " turn end");
+		events_manager_->pump().fire("side turn " + turn_num + " end");
+		events_manager_->pump().fire("side " + side_num + " turn " + turn_num + " end");
 	}
 	// This is where we refog, after all of a side's events are done.
 	actions::recalculate_fog(player_number_);
@@ -703,15 +703,15 @@ void play_controller::finish_side_turn(){
 
 	mouse_handler_.deselect_hex();
 	n_unit::id_manager::instance().reset_fake();
-	game_events::pump();
+	events_manager_->pump()();
 }
 
 void play_controller::finish_turn()
 {
 	set_scontext_synced sync(2);
 	const std::string turn_num = str_cast(turn());
-	game_events::fire("turn end");
-	game_events::fire("turn " + turn_num + " end");
+	events_manager_->pump().fire("turn end");
+	events_manager_->pump().fire("turn " + turn_num + " end");
 }
 
 bool play_controller::enemies_visible() const
@@ -1343,7 +1343,7 @@ void play_controller::check_victory()
 	}
 
 	if (found_player || found_network_player) {
-		game_events::fire("enemies defeated");
+		events_manager_->pump().fire("enemies defeated");
 		check_end_level();
 	}
 
@@ -1428,3 +1428,6 @@ void play_controller::do_consolesave(const std::string& filename)
 }
 
 
+game_events::pump & play_controller::pump() {
+	return events_manager_->pump();
+}

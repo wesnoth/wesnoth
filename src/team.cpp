@@ -21,6 +21,7 @@
 
 #include "ai/manager.hpp"
 #include "formula_string_utils.hpp"
+#include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 #include "game_data.hpp"
 #include "map.hpp"
@@ -365,7 +366,7 @@ bool team::get_village(const map_location& loc, const int owner_side, game_data 
 		config::attribute_value& var = gamedata->get_variable("owner_side");
 		const config::attribute_value old_value = var;
 		var = owner_side;
-		gamestate_changed = game_events::fire("capture",loc);
+		gamestate_changed = resources::game_events->pump().fire("capture",loc);
 		if(old_value.blank())
 			gamedata->clear_variable("owner_side");
 		else

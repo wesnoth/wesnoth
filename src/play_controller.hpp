@@ -47,8 +47,9 @@ namespace actions {
 }
 
 namespace game_events {
-	class  manager;
-	class  wml_menu_item;
+	class pump;
+	class manager;
+	class wml_menu_item;
 } // namespace game_events
 
 namespace preferences {
@@ -186,6 +187,9 @@ public:
 	void increase_server_request_number() { ++server_request_number_; }
 
 	static const std::string wml_menu_hotkey_prefix;
+
+	game_events::pump & pump();
+
 protected:
 	void slice_before_scroll();
 

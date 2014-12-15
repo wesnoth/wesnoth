@@ -28,6 +28,7 @@
 #include "../filter_context.hpp"
 #include "../game_board.hpp"
 #include "../game_display.hpp"
+#include "../game_events/manager.hpp"
 #include "../game_events/pump.hpp"
 #include "../game_preferences.hpp"
 #include "../game_data.hpp"
@@ -926,7 +927,7 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 		const std::string event_name = is_recall ? "prerecall" : "prerecruit";
 		LOG_NG << "firing " << event_name << " event\n";
 		{
-			mutated |= game_events::fire(event_name, current_loc, recruited_from);
+			mutated |= resources::game_events->pump().fire(event_name, current_loc, recruited_from);
 		}
 		if ( !validate_recruit_iterator(new_unit_itor, current_loc) )
 			return true;
@@ -961,7 +962,7 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 		const std::string event_name = is_recall ? "recall" : "recruit";
 		LOG_NG << "firing " << event_name << " event\n";
 		{
-			mutated |= game_events::fire(event_name, current_loc, recruited_from);
+			mutated |= resources::game_events->pump().fire(event_name, current_loc, recruited_from);
 		}
 	}
 

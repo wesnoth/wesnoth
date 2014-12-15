@@ -72,34 +72,6 @@ static lg::log_domain log_event_handler("event_handler");
 // This file is in the game_events namespace.
 namespace game_events {
 
-namespace { // Types
-	class pump_manager {
-	public:
-		pump_manager();
-		~pump_manager();
-
-		/// Allows iteration through the queued events.
-		queued_event & next() { return queue_[pumped_count_++]; }
-		/// Indicates the iteration is over.
-		bool done() const { return pumped_count_ >= queue_.size(); }
-
-		static unsigned count() {
-			return instance_count;
-		}
-
-	private:
-		static unsigned instance_count;
-		int x1_, x2_, y1_, y2_;
-		/// Tracks the events to process.
-		/// This isolates these events from any events that might be generated
-		/// during the processing.
-		std::vector<queued_event> queue_;
-		/// Tracks how many events have been processed.
-		size_t pumped_count_;
-	};
-	unsigned pump_manager::instance_count=0;
-} // end anonymous namespace (types)
-
 namespace context {
 	/// State when processing a particular flight of events or commands.
 	struct state {
@@ -111,25 +83,67 @@ namespace context {
 
 	class scoped {
 	public:
-		scoped();
+		scoped(std::stack<context::state> & contexts);
 		~scoped();
+	private:
+		std::stack<context::state> & contexts_;
 	};
 }
 
-namespace { // Variables
+struct pump_impl {
 	std::vector<queued_event> events_queue;
 
 	/// The value returned by wml_tracking();
-	size_t internal_wml_tracking = 0;
+	size_t internal_wml_tracking;
 
 	std::stringstream wml_messages_stream;
 
 	std::stack<context::state> contexts_;
-} // end anonymous namespace (variables)
+
+	unsigned instance_count;
+
+	pump_impl()
+		: events_queue()
+		, internal_wml_tracking(0)
+		, wml_messages_stream()
+		, contexts_()
+		, instance_count(0)
+	{
+		contexts_.push(context::state(false));
+	}
+};
+
+namespace { // Types
+	class pump_manager {
+	public:
+		pump_manager(pump_impl & );
+		~pump_manager();
+
+		/// Allows iteration through the queued events.
+		queued_event & next() { return queue_[pumped_count_++]; }
+		/// Indicates the iteration is over.
+		bool done() const { return pumped_count_ >= queue_.size(); }
+
+		unsigned count() {
+			return impl_.instance_count;
+		}
+
+	private:
+		pump_impl & impl_;
+		int x1_, x2_, y1_, y2_;
+		/// Tracks the events to process.
+		/// This isolates these events from any events that might be generated
+		/// during the processing.
+		std::vector<queued_event> queue_;
+		/// Tracks how many events have been processed.
+		size_t pumped_count_;
+	};
+} // end anonymous namespace (types)
 
 namespace { // Support functions
 
-	pump_manager::pump_manager() :
+	pump_manager::pump_manager(pump_impl & impl) :
+		impl_(impl),
 		x1_(resources::gamedata->get_variable("x1")),
 		x2_(resources::gamedata->get_variable("x2")),
 		y1_(resources::gamedata->get_variable("y1")),
@@ -137,12 +151,12 @@ namespace { // Support functions
 		queue_(), // Filled later with a swap().
 		pumped_count_(0)
 	{
-		queue_.swap(events_queue);
-		++instance_count;
+		queue_.swap(impl_.events_queue);
+		++impl_.instance_count;
 	}
 
 	pump_manager::~pump_manager() {
-		--instance_count;
+		--impl_.instance_count;
 
 		// Not sure what the correct thing to do is here. In princple,
 		// discarding all events (i.e. clearing events_queue) seems like
@@ -152,9 +166,9 @@ namespace { // Support functions
 		if ( !done() ) {
 			// The remainig events get inserted at the beginning of events_queue.
 			std::vector<queued_event> temp;
-			events_queue.swap(temp);
-			events_queue.insert(events_queue.end(), queue_.begin() + pumped_count_, queue_.end());
-			events_queue.insert(events_queue.end(), temp.begin(), temp.end());
+			impl_.events_queue.swap(temp);
+			impl_.events_queue.insert(impl_.events_queue.end(), queue_.begin() + pumped_count_, queue_.end());
+			impl_.events_queue.insert(impl_.events_queue.end(), temp.begin(), temp.end());
 		}
 
 		// Restore the old values of the game variables.
@@ -163,17 +177,12 @@ namespace { // Support functions
 		resources::gamedata->get_variable("x2") = x2_;
 		resources::gamedata->get_variable("x1") = x1_;
 	}
-
-
-	inline bool events_init()
-	{
-		return resources::screen != NULL;
-	}
+}
 
 	/**
 	 * Returns true iff the given event passes all its filters.
 	 */
-	bool filter_event(const event_handler& handler, const queued_event& ev)
+	bool pump::filter_event(const event_handler& handler, const queued_event& ev)
 	{
 		const unit_map *units = resources::units;
 		unit_map::const_iterator unit1 = units->find(ev.loc1);
@@ -265,7 +274,7 @@ namespace { // Support functions
 	 *
 	 * @returns true if the game state changed.
 	 */
-	bool process_event(handler_ptr& handler_p, const queued_event& ev)
+	bool pump::process_event(handler_ptr& handler_p, const queued_event& ev)
 	{
 		// We currently never pass a null pointer to this function, but to
 		// guard against future modifications:
@@ -282,8 +291,8 @@ namespace { // Support functions
 			return false;
 
 		// The event hasn't been filtered out, so execute the handler.
-		++internal_wml_tracking;
-		context::scoped evc;
+		++impl_->internal_wml_tracking;
+		context::scoped evc(impl_->contexts_);
 		handler_p->handle_event(ev, handler_p);
 		// NOTE: handler_p may be null at this point!
 
@@ -293,14 +302,14 @@ namespace { // Support functions
 
 		resources::screen->maybe_rebuild();
 
-		return context::mutated();
+		return context_mutated();
 	}
 
 	/**
 	 * Helper function for show_wml_messages(), which gathers
 	 * the messages from a stringstream.
 	 */
-	void fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stringstream& source)
+	void pump::fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stringstream& source)
 	{
 		while(true) {
 			std::string msg;
@@ -332,7 +341,7 @@ namespace { // Support functions
 	 * to be the order in which these messages are encountered.
 	 * Messages are also written to std::cerr if to_cerr is true.
 	 */
-	void show_wml_messages(std::stringstream& source, const std::string & caption,
+	void pump::show_wml_messages(std::stringstream& source, const std::string & caption,
 	                       bool to_cerr)
 	{
 		// Get all unique messages in messages,
@@ -366,7 +375,7 @@ namespace { // Support functions
 	 * to be the order in which these messages are encountered.
 	 * Messages are always written to std::cerr.
 	 */
-	void show_wml_errors()
+	void pump::show_wml_errors()
 	{
 		static const std::string caption("Invalid WML found");
 
@@ -380,34 +389,28 @@ namespace { // Support functions
 	 * The order in which the messages are shown does not need
 	 * to be the order in which these messages are encountered.
 	 */
-	void show_wml_messages()
+	void pump::show_wml_messages()
 	{
 		static const std::string caption("WML");
 
-		show_wml_messages(wml_messages_stream, caption, false);
+		show_wml_messages(impl_->wml_messages_stream, caption, false);
 	}
 
-	void put_wml_message(lg::logger& logger, const std::string& prefix, const std::string& message, bool in_chat)
+	void pump::put_wml_message(lg::logger& logger, const std::string& prefix, const std::string& message, bool in_chat)
 	{
 		logger(log_wml) << message << std::endl;
 		if (in_chat)
 		{
-			wml_messages_stream << prefix << message << std::endl;
+			impl_->wml_messages_stream << prefix << message << std::endl;
 		}
 	}
 
 
-} // end anonymous namespace (support functions)
-
-context::scoped::scoped()
+context::scoped::scoped(std::stack<context::state> & contexts)
+	: contexts_(contexts)
 {
-	//If the contexts stack is empty, push the default context. This shouldn't happen more than once.
-	if (contexts_.size() == 0) {
-		static bool first_time = true;
-		assert(first_time);
-		contexts_.push(context::state(false));
-		first_time = false;
-	}
+	//The default context at least should always be on the stack
+	assert(contexts_.size() > 0);
 
 	bool skip_messages = (contexts_.size() > 1) && contexts_.top().skip_messages;
 	contexts_.push(context::state(skip_messages));
@@ -421,35 +424,35 @@ context::scoped::~scoped()
 	contexts_.top().mutated |= mutated;
 }
 
-bool context::mutated()
+bool pump::context_mutated()
 {
-	assert(contexts_.size() > 1);
-	return contexts_.top().mutated;
+	assert(impl_->contexts_.size() > 0);
+	return impl_->contexts_.top().mutated;
 }
 
-void context::mutated(bool b)
+void pump::context_mutated(bool b)
 {
-	assert(contexts_.size() > 1);
-	contexts_.top().mutated = b;
+	assert(impl_->contexts_.size() > 0);
+	impl_->contexts_.top().mutated = b;
 }
 
-bool context::skip_messages()
+bool pump::context_skip_messages()
 {
-	assert(contexts_.size() > 1);
-	return contexts_.top().skip_messages;
+	assert(impl_->contexts_.size() > 0);
+	return impl_->contexts_.top().skip_messages;
 }
 
-void context::skip_messages(bool b)
+void pump::context_skip_messages(bool b)
 {
-	assert(contexts_.size() > 1);
-	contexts_.top().skip_messages = b;
+	assert(impl_->contexts_.size() > 0);
+	impl_->contexts_.top().skip_messages = b;
 }
 
 /**
  * Helper function which determines whether a wml_message text can
  * really be pushed into the wml_messages_stream, and does it.
  */
-void put_wml_message(const std::string& logger, const std::string& message, bool in_chat)
+void pump::put_wml_message(const std::string& logger, const std::string& message, bool in_chat)
 {
 	if (logger == "err" || logger == "error") {
 		put_wml_message(lg::err, _("Error: "), message, in_chat );
@@ -462,58 +465,58 @@ void put_wml_message(const std::string& logger, const std::string& message, bool
 	}
 }
 
-bool fire(const std::string& event,
+bool pump::fire(const std::string& event,
           const entity_location& loc1,
           const entity_location& loc2,
           const config& data)
 {
 	raise(event,loc1,loc2,data);
-	return pump();
+	return (*this)();
 }
 
-void raise(const std::string& event,
+void pump::raise(const std::string& event,
            const entity_location& loc1,
            const entity_location& loc2,
            const config& data)
 {
-	if(!events_init())
+	if(resources::screen == NULL)
 		return;
 
 	DBG_EH << "raising event: " << event << "\n";
 
-	events_queue.push_back(queued_event(event, loc1, loc2, data));
+	impl_->events_queue.push_back(queued_event(event, loc1, loc2, data));
 }
 
-bool pump()
+bool pump::operator()()
 {
 	// Quick aborts:
-	if(!events_init())
+	if(resources::screen == NULL)
 		return false;
 	assert(resources::lua_kernel != NULL);
-	if ( events_queue.empty() ) {
+	if ( impl_->events_queue.empty() ) {
 		DBG_EH << "Processing queued events, but none found.\n";
 		return false;
 	}
-	if(pump_manager::count() >= game_config::max_loop) {
-		ERR_NG << "game_events::pump() waiting to process new events because "
+	if(impl_->instance_count >= game_config::max_loop) {
+		ERR_NG << "resources::game_events->pump()() waiting to process new events because "
 		       << "recursion level would exceed maximum: " << game_config::max_loop << '\n';
 		return false;
 	}
 	if(!lg::debug.dont_log("event_handler")) {
 		std::stringstream ss;
-		BOOST_FOREACH(const queued_event& ev, events_queue) {
+		BOOST_FOREACH(const queued_event& ev, impl_->events_queue) {
 			ss << "name=" << ev.name << "; ";
 		}
 		DBG_EH << "processing queued events: " << ss.str() << "\n";
 	}
 
-	const size_t old_wml_track = internal_wml_tracking;
+	const size_t old_wml_track = impl_->internal_wml_tracking;
 	bool result = false;
 	// Ensure the whiteboard doesn't attempt to build its future unit map
 	// while events are being processed.
 	wb::real_map real_unit_map;
 
-	pump_manager pump_instance;
+	pump_manager pump_instance(*impl_);
 
 	// Loop through the events we need to process.
 	while ( !pump_instance.done() )
@@ -525,8 +528,9 @@ bool pump()
 		// due to status changes by WML. Every event will flush the cache.
 		unit::clear_status_caches();
 
-		if ( resources::lua_kernel->run_event(ev) )
-			++internal_wml_tracking;
+		if ( resources::lua_kernel->run_event(ev) ) {
+			++impl_->internal_wml_tracking;
+		}
 
 		// Initialize an iteration over event handlers matching this event.
 		assert(resources::game_events);
@@ -562,7 +566,7 @@ bool pump()
 		flush_messages();
 	}
 
-	if ( old_wml_track != internal_wml_tracking )
+	if ( old_wml_track != impl_->internal_wml_tracking )
 		// Notify the whiteboard of any event.
 		// This is used to track when moves, recruits, etc. happen.
 		resources::whiteboard->on_gamestate_change();
@@ -570,13 +574,7 @@ bool pump()
 	return result;
 }
 
-/** Clears all events tha have been raised (and not pumped). */
-void clear_events()
-{
-	events_queue.clear();
-}
-
-void flush_messages()
+void pump::flush_messages()
 {
 	// Dialogs can only be shown if the display is not locked
 	if (!resources::screen->video().update_locked()) {
@@ -601,10 +599,16 @@ void flush_messages()
  * from caching some aspect of the game state and that cannot rely on
  * [allow_undo] not being used when that state changes.
  */
-size_t wml_tracking()
+size_t pump::wml_tracking()
 {
-	return internal_wml_tracking;
+	return impl_->internal_wml_tracking;
 }
+
+pump::pump()
+	: impl_(new pump_impl())
+{}
+
+pump::~pump() {}
 
 } // end namespace game_events
 

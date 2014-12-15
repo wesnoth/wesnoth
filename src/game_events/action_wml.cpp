@@ -187,7 +187,7 @@ namespace { // Types
 			resources::screen->draw(true,true);
 
 			if (dlg_result == gui2::twindow::CANCEL) {
-				context::skip_messages(true);
+				resources::game_events->pump().context_skip_messages(true);
 			}
 
 			config cfg;
@@ -522,7 +522,7 @@ void handle_wml_log_message(const config& cfg)
 	const std::string& msg = cfg["message"];
 	bool in_chat = cfg["to_chat"].to_bool(true);
 
-	put_wml_message(logger,msg,in_chat);
+	resources::game_events->pump().put_wml_message(logger,msg,in_chat);
 }
 
 
@@ -580,7 +580,7 @@ WML_HANDLER_FUNCTION(allow_end_turn, /*event_info*/, /*cfg*/)
 /// Allow undo sets the flag saying whether the event has mutated the game to false.
 WML_HANDLER_FUNCTION(allow_undo,/*event_info*/,/*cfg*/)
 {
-	context::mutated(false);
+	resources::game_events->pump().context_mutated(false);
 }
 
 WML_HANDLER_FUNCTION(animate_unit, event_info, cfg)
@@ -904,7 +904,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 					}
 			}
 		if (fire_event) {
-			fire("last breath", death_loc, killer_loc);
+			resources::game_events->pump().fire("last breath", death_loc, killer_loc);
 		}
 
 		// Visual consequences of the kill.
@@ -924,7 +924,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 		resources::screen->redraw_minimap();
 
 		if (fire_event) {
-			fire("die", death_loc, killer_loc);
+			resources::game_events->pump().fire("die", death_loc, killer_loc);
 			unit_map::iterator iun = resources::units->find(death_loc);
 			if ( death_loc.matches_unit(iun) ) {
 				resources::units->erase(iun);
@@ -987,7 +987,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 	play_controller *controller = resources::controller;
 	if(!has_input && (
 			 controller->is_skipping_replay() ||
-			 context::skip_messages()
+			 resources::game_events->pump().context_skip_messages()
 			 ))
 	{
 		return;

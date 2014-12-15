@@ -634,7 +634,7 @@ int game_lua_kernel::intf_get_recall_units(lua_State *L)
  * - Arg 7: optional WML table used as the [second_weapon] tag.
  * - Ret 1: boolean indicating whether the event was processed or not.
  */
-static int intf_fire_event(lua_State *L)
+int game_lua_kernel::intf_fire_event(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
 
@@ -660,7 +660,7 @@ static int intf_fire_event(lua_State *L)
 		data.add_child("second", luaW_checkconfig(L, pos));
 	}
 
-	bool b = game_events::fire(m, l1, l2, data);
+	bool b = play_controller_.pump().fire(m, l1, l2, data);
 	lua_pushboolean(L, b);
 	return 1;
 }
@@ -2929,7 +2929,6 @@ game_lua_kernel::game_lua_kernel(const config &cfg, game_display & gd, game_stat
 		{ "debug",                    &intf_debug                    },
 		{ "debug_ai",                 &intf_debug_ai                 },
 		{ "eval_conditional",         &intf_eval_conditional         },
-		{ "fire_event",               &intf_fire_event               },
 		{ "get_era",                  &intf_get_era                  },
 		{ "get_image_size",           &intf_get_image_size           },
 		{ "get_time_stamp",           &intf_get_time_stamp           },
@@ -2952,6 +2951,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, game_display & gd, game_stat
 		{ "find_path",			boost::bind(&game_lua_kernel::intf_find_path, this, _1)				},
 		{ "find_reach",			boost::bind(&game_lua_kernel::intf_find_reach, this, _1)			},
 		{ "find_vacant_tile",		boost::bind(&game_lua_kernel::intf_find_vacant_tile, this, _1)			},
+		{ "fire_event",               	boost::bind(&game_lua_kernel::intf_fire_event, this, _1)			},
 		{ "float_label",		boost::bind(&game_lua_kernel::intf_float_label, this, _1)			},
 		{ "get_all_vars",		boost::bind(&game_lua_kernel::intf_get_all_vars, this, _1)			},
 		{ "get_locations",		boost::bind(&game_lua_kernel::intf_get_locations, this, _1)			},

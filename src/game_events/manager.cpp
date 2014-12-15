@@ -87,6 +87,7 @@ manager::manager(const config& cfg)
 	: event_handlers_(new t_event_handlers())
 	, unit_wml_ids_()
 	, used_items_()
+	, pump_(new game_events::pump())
 {
 	BOOST_FOREACH(const config &ev, cfg.child_range("event")) {
 		add_event_handler(ev);
@@ -117,10 +118,7 @@ manager::manager(const config& cfg)
 	resources::gamedata->get_wml_menu_items().init_handlers();
 }
 
-manager::~manager() {
-	clear_events();
-}
-
+manager::~manager() {}
 
 /* ** manager::iteration ** */
 
@@ -225,6 +223,11 @@ void manager::write_events(config& cfg)
 
 	cfg["used_items"] = utils::join(used_items_);
 	cfg["unit_wml_ids"] = utils::join(unit_wml_ids_);
+}
+
+pump & manager::pump()
+{
+	return *pump_;
 }
 
 } //end namespace game_events

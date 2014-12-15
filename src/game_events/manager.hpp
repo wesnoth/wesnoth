@@ -27,6 +27,8 @@ class game_lua_kernel;
 
 namespace game_events {
 
+	class pump;
+
 	class t_event_handlers;
 
 	/// The game event manager loads the scenario configuration object,
@@ -91,6 +93,8 @@ namespace game_events {
 		std::set<std::string> unit_wml_ids_;
 		std::set<std::string> used_items_;
 
+		boost::scoped_ptr<pump> pump_;
+
 	public:
 		/// Note that references will be maintained,
 		/// and must remain valid for the life of the object.
@@ -110,6 +114,7 @@ namespace game_events {
 		                const std::string& type = std::string());
 		void write_events(config& cfg);
 
+		pump & pump();
 	};
 }
 

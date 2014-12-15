@@ -27,6 +27,7 @@
 #include "dialogs.hpp"
 #include "display_chat_manager.hpp"
 #include "game_end_exceptions.hpp"
+#include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -574,7 +575,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			else if (end_level_result == DEFEAT)
 			{
 				saved_game_.classification().completion = "defeat";
-				game_events::fire("defeat");
+				events_manager_->pump().fire("defeat");
 
 				if (!obs) {
 					const std::string& defeat_music = select_defeat_music();
@@ -591,7 +592,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 				saved_game_.classification().completion =
 
 				!end_level.transient.linger_mode ? "running" : "victory";
-				game_events::fire("victory");
+				events_manager_->pump().fire("victory");
 
 				//
 				// Play victory music once all victory events
@@ -1072,7 +1073,7 @@ possible_end_play_signal playsingle_controller::check_time_over(){
 	if(!b) {
 
 		LOG_NG << "firing time over event...\n";
-		game_events::fire("time over");
+		events_manager_->pump().fire("time over");
 		LOG_NG << "done firing time over event...\n";
 		//if turns are added while handling 'time over' event
 		if (gamestate_.tod_manager_.is_time_left()) {

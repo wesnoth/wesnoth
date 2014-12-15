@@ -34,6 +34,7 @@
 #include "formula_string_utils.hpp"
 #include "game_board.hpp"
 #include "game_end_exceptions.hpp"
+#include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -1159,12 +1160,12 @@ void menu_handler::kill_unit(mouse_handler& mousehandler)
 	const unit_map::iterator i = units_.find(loc);
 	if(i != units_.end()) {
 		const int dying_side = i->side();
-		game_events::fire("last breath", loc, loc);
+		resources::game_events->pump().fire("last breath", loc, loc);
 		if (i.valid()) {
 			unit_display::unit_die(loc, *i);
 		}
 		resources::screen->redraw_minimap();
-		game_events::fire("die", loc, loc);
+		resources::game_events->pump().fire("die", loc, loc);
 		if (i.valid()) {
 			resources::units->erase(i);
 		}
@@ -3043,7 +3044,7 @@ void console_handler::do_nodebug() {
 }
 void console_handler::do_lua() {
 	resources::lua_kernel->run(get_data().c_str());
-	game_events::flush_messages();
+	resources::game_events->pump().flush_messages();
 }
 
 void console_handler::do_unsafe_lua()
@@ -3263,7 +3264,7 @@ void console_handler::do_gold() {
 	menu_handler_.gui_->redraw_everything();
 }
 void console_handler::do_event() {
-	game_events::fire(get_data());
+	resources::game_events->pump().fire(get_data());
 	menu_handler_.gui_->redraw_everything();
 }
 void console_handler::do_toggle_draw_coordinates() {

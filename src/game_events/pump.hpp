@@ -28,11 +28,17 @@
 #ifndef GAME_EVENTS_PUMP_H_INCLUDED
 #define GAME_EVENTS_PUMP_H_INCLUDED
 
-#include "entity_location.hpp"
-#include "../config.hpp"
+#include "game_events/entity_location.hpp"
+#include "game_events/handlers.hpp"
+
+#include "config.hpp"
+
+#include<string>
+#include<sstream>
 
 class vconfig;
 
+namespace lg { class logger; }
 
 namespace game_events
 {
@@ -48,52 +54,69 @@ namespace game_events
 		config data;
 	};
 
-	/// The general environment within which events are processed.
-	namespace context {
+	struct pump_impl;
+
+	class pump {
+		boost::scoped_ptr<pump_impl> impl_;
+	public:
+		pump();
+		~pump();
+		/// Context: The general environment within which events are processed.
 		/// Returns whether or not we believe WML might have changed something.
-		bool mutated();
+		bool context_mutated();
 		/// Sets whether or not we believe WML might have changed something.
-		void mutated(bool mutated);
+		void context_mutated(bool mutated);
 		/// Returns whether or not we are skipping messages.
-		bool skip_messages();
+		bool context_skip_messages();
 		/// Sets whether or not we are skipping messages.
-		void skip_messages(bool skip);
-	}
+		void context_skip_messages(bool skip);
 
-	/// Helper function which determines whether a wml_message text can
-	/// really be pushed into the wml_messages_stream, and does it.
-	void put_wml_message(const std::string& logger, const std::string& message, bool in_chat);
+		/// Helper function which determines whether a wml_message text can
+		/// really be pushed into the wml_messages_stream, and does it.
+		void put_wml_message(const std::string& logger, const std::string& message, bool in_chat);
 
-	/**
-	 * Function to fire an event.
-	 *
-	 * Events may have up to two arguments, both of which must be locations.
-	 */
-	bool fire(const std::string& event,
-	          const entity_location& loc1=entity_location::null_entity,
-	          const entity_location& loc2=entity_location::null_entity,
-	          const config& data=config());
+		/**
+		 * Function to fire an event.
+		 *
+		 * Events may have up to two arguments, both of which must be locations.
+		 */
+		bool fire(const std::string& event,
+		          const entity_location& loc1=entity_location::null_entity,
+		          const entity_location& loc2=entity_location::null_entity,
+		          const config& data=config());
 
-	void raise(const std::string& event,
-	           const entity_location& loc1=entity_location::null_entity,
-	           const entity_location& loc2=entity_location::null_entity,
-	           const config& data=config());
+		void raise(const std::string& event,
+		           const entity_location& loc1=entity_location::null_entity,
+		           const entity_location& loc2=entity_location::null_entity,
+		           const config& data=config());
 
-	bool pump();
+		bool operator()();
 
-	/// Clears all events tha have been raised (and not pumped).
-	void clear_events();
+		/**
+		 * Flushes WML messages and errors.
+		 */
+		void flush_messages();
 
-	/**
-	 * Flushes WML messages and errors.
-	 */
-	void flush_messages();
+		/**
+		 * This function can be used to detect when no WML/Lua has been executed.
+		 */
+		size_t wml_tracking();
 
-	/**
-	 * This function can be used to detect when no WML/Lua has been executed.
-	 */
-	size_t wml_tracking();
+	private:
+		bool filter_event(const event_handler& handler, const queued_event& ev);
 
+		bool process_event(handler_ptr& handler_p, const queued_event& ev);
+
+		void fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stringstream& source);
+
+		void show_wml_messages(std::stringstream& source, const std::string & caption, bool to_cerr);
+
+		void show_wml_errors();
+
+		void show_wml_messages();
+
+		void put_wml_message(lg::logger& logger, const std::string& prefix, const std::string& message, bool in_chat);
+	};
 }
 
 #endif // GAME_EVENTS_PUMP_H_INCLUDED

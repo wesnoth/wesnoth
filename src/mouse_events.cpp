@@ -26,6 +26,7 @@
 #include "dialogs.hpp"                  // for units_list_preview_pane, etc
 #include "game_board.hpp"               // for game_board, etc
 #include "game_config.hpp"              // for red_to_green
+#include "game_events/manager.hpp"
 #include "game_events/pump.hpp"		// for fire
 #include "gettext.hpp"                  // for _
 #include "gui/dialogs/transient_message.hpp"  // for show_transient_message
@@ -756,7 +757,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 				if(fire_event) {
 					// ensure unit map is back to normal while event is fired
 					wb::real_map srum;
-					game_events::fire("select", hex);
+					resources::game_events->pump().fire("select", hex);
 					//end forced real unit map
 				}
 			}

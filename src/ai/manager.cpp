@@ -20,6 +20,7 @@
 #include "manager.hpp"
 
 #include "../config.hpp"             // for config, etc
+#include "game_events/manager.hpp"
 #include "../game_events/pump.hpp"
 #include "../generic_event.hpp"      // for generic_event, etc
 #include "../log.hpp"
@@ -788,7 +789,7 @@ void manager::play_turn( side_number side ){
 	/*hack. @todo 1.9 rework via extended event system*/
 	get_ai_info().recent_attacks.clear();
 	interface& ai_obj = get_active_ai_for_side(side);
-	game_events::fire("ai turn");
+	resources::game_events->pump().fire("ai turn");
 	raise_turn_started();
 	ai_obj.new_turn();
 	ai_obj.play_turn();

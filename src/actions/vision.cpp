@@ -23,6 +23,7 @@
 
 #include "../config.hpp"
 #include "../game_display.hpp"
+#include "game_events/manager.hpp"
 #include "../game_events/pump.hpp"
 #include "../log.hpp"
 #include "../map.hpp"
@@ -565,14 +566,13 @@ bool shroud_clearer::fire_events()
 			                         find_it->get_location();
 
 		{	// Raise the event based on the latest data.
-			using namespace game_events;
-			raise(sighted_str,
-			      entity_location(event.seen_loc, event.seen_id),
-			      entity_location(sight_loc, event.sighter_id, event.sighter_loc));
+			resources::game_events->pump().raise(sighted_str,
+			      game_events::entity_location(event.seen_loc, event.seen_id),
+			      game_events::entity_location(sight_loc, event.sighter_id, event.sighter_loc));
 		}
 	}
 
-	return game_events::pump();
+	return resources::game_events->pump()();
 }
 
 
@@ -684,12 +684,11 @@ bool actor_sighted(const unit & target, const std::vector<int> * cache)
 	const game_events::entity_location target_entity(target);
 	for ( size_t i = 0; i != teams_size; ++i )
 		if ( second_units[i] != NULL ) {
-			using namespace game_events;
-			raise(sighted_str, target_entity, entity_location(*second_units[i]));
+			resources::game_events->pump().raise(sighted_str, target_entity, game_events::entity_location(*second_units[i]));
 		}
 
 	// Fire the events and return.
-	return game_events::pump();
+	return resources::game_events->pump()();
 }
 
 

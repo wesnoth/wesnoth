@@ -24,7 +24,8 @@
 
 #include "../config_assign.hpp"
 #include "../game_display.hpp"
-#include "../game_events/pump.hpp"
+#include "game_events/manager.hpp"
+#include "game_events/pump.hpp"
 #include "../game_preferences.hpp"
 #include "../gettext.hpp"
 #include "hotkey/hotkey_item.hpp"
@@ -370,7 +371,7 @@ namespace { // Private helpers for move_unit()
 		current_uses_fog_(current_team_->fog_or_shroud()  &&
 		                  current_team_->auto_shroud_updates()),
 		move_loc_(begin_),
-		do_move_track_(game_events::wml_tracking()),
+		do_move_track_(resources::game_events->pump().wml_tracking()),
 		// The remaining fields are set to some sort of "zero state".
 		zoc_stop_(map_location::null_location()),
 		ambush_stop_(map_location::null_location()),
@@ -512,7 +513,7 @@ namespace { // Private helpers for move_unit()
 			move_loc_ = step_to;
 
 			// Show this move.
-			const size_t current_tracking = game_events::wml_tracking();
+			const size_t current_tracking = resources::game_events->pump().wml_tracking();
 			animator.proceed_to(move_it_.get_shared_ptr(), step_to - begin_,
 			                    current_tracking != do_move_track_, false);
 			do_move_track_ = current_tracking;
@@ -695,13 +696,13 @@ namespace { // Private helpers for move_unit()
 		                            const route_iterator & current,
 	                                const route_iterator & other)
 	{
-		const size_t track = game_events::wml_tracking();
+		const size_t track = resources::game_events->pump().wml_tracking();
 		bool valid = true;
 
 		const game_events::entity_location mover(*move_it_, *current);
-		const bool event = game_events::fire(event_name, mover, *other);
+		const bool event = resources::game_events->pump().fire(event_name, mover, *other);
 
-		if ( track != game_events::wml_tracking() )
+		if ( track != resources::game_events->pump().wml_tracking() )
 			// Some WML fired, so update our status.
 			valid = post_wml(current);
 
@@ -821,12 +822,12 @@ namespace { // Private helpers for move_unit()
 	 */
 	bool unit_mover::pump_sighted(const route_iterator & from)
 	{
-		const size_t track = game_events::wml_tracking();
+		const size_t track = resources::game_events->pump().wml_tracking();
 		bool valid = true;
 
 		const bool event = clearer_.fire_events();
 
-		if ( track != game_events::wml_tracking() )
+		if ( track != resources::game_events->pump().wml_tracking() )
 			// Some WML fired, so update our status.
 			valid = post_wml(from);
 
@@ -1062,7 +1063,7 @@ namespace { // Private helpers for move_unit()
 		}
 
 		// Finally, the moveto event.
-		event_mutated_ |= game_events::fire("moveto", final_loc, *begin_);
+		event_mutated_ |= resources::game_events->pump().fire("moveto", final_loc, *begin_);
 		post_wml();
 
 		// Record keeping.
