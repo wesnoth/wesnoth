@@ -194,6 +194,8 @@ Version 1.13.0-dev:
      support from GNU readline history library.
    * Add support to evaluate expressions automatically in lua console, based on
      a lua lib "ilua", and "experimental compilation" technique.
+   * Fixed game falling back to desktop if a user declines to load a previous
+     version save from within a game
  * WML engine:
    * Added customizable recall costs for unit types and individual units,
      using the new recall_cost attribute in [unit_type] and [unit].
