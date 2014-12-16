@@ -1093,12 +1093,12 @@ set(libwesnoth-game_STAT_SRC
 )
 
 # On windows only, this file needs to be linked, as its header is included #ifdef win32.
-if(MSVC)
+if(WIN32)
 	set(libwesnoth-game_STAT_SRC
 		${libwesnoth-game_STAT_SRC}
 		desktop/windows_tray_notification.cpp
 	)
-endif(MSVC)
+endif(WIN32)
 
 # For libdbus (essentially just for linux), this file needs to be linked, as its header is included #ifdef HAVE_LIBDBUS
 if(LIBDBUS_FOUND)
