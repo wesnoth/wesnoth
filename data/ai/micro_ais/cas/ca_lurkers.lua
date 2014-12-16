@@ -20,7 +20,7 @@ end
 
 function ca_lurkers:execution(ai, cfg)
     local lurker = get_lurker(cfg)
-    local targets = wesnoth.get_units {
+    local targets = AH.get_live_units {
         { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
     }
 
