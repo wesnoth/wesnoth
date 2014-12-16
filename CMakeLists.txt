@@ -37,10 +37,12 @@ if(NOT MSVC)
 	set(SDL_CONFIG "sdl-config" CACHE STRING "Path to sdl-config script")
 	exec_program(${SDL_CONFIG} ARGS "--cflags" OUTPUT_VARIABLE SDL_CFLAGS)
 	add_definitions(${SDL_CFLAGS})
+endif(NOT MSVC)
 
+if(NOT WIN32)
 	# Use the safer `mkstemp' instead of `tmpnam' on POSIX systems.
 	add_definitions(-DLUA_USE_POSIX)
-endif(NOT MSVC)
+endif(NOT WIN32)
 
 if(MSVC)
 	add_definitions(-D_SCL_SECURE_NO_WARNINGS)
