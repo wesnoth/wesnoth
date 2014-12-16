@@ -963,6 +963,8 @@
 		ECDEAF75194FE86C00DB2F47 /* animated.tpp in Resources */ = {isa = PBXBuildFile; fileRef = ECDEAF74194FE86C00DB2F47 /* animated.tpp */; };
 		ECDEAF77194FEA8500DB2F47 /* syncmp_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDEAF76194FEA8400DB2F47 /* syncmp_handler.cpp */; };
 		ECDEAF79194FEA9D00DB2F47 /* game_classification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDEAF78194FEA9D00DB2F47 /* game_classification.cpp */; };
+		ECDF18201A3FE0DE00D157A6 /* manager_impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDF181E1A3FE0DE00D157A6 /* manager_impl.cpp */; };
+		ECDF18211A3FE0DE00D157A6 /* manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECDF181F1A3FE0DE00D157A6 /* manager.cpp */; };
 		ECE17E121A0DD79F00B76473 /* terrain_type_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE17E111A0DD79F00B76473 /* terrain_type_data.cpp */; };
 		ECEEB7F01A1E8AB20006575B /* default_map_generator_job.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEEB7EF1A1E8AB20006575B /* default_map_generator_job.cpp */; };
 		ECF3A0B318AD3E8800DD643A /* wml_error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF3A0B118AD3E8700DD643A /* wml_error.cpp */; };
@@ -2239,6 +2241,8 @@
 		ECDEAF74194FE86C00DB2F47 /* animated.tpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = animated.tpp; sourceTree = "<group>"; };
 		ECDEAF76194FEA8400DB2F47 /* syncmp_handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = syncmp_handler.cpp; sourceTree = "<group>"; };
 		ECDEAF78194FEA9D00DB2F47 /* game_classification.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_classification.cpp; sourceTree = "<group>"; };
+		ECDF181E1A3FE0DE00D157A6 /* manager_impl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = manager_impl.cpp; sourceTree = "<group>"; };
+		ECDF181F1A3FE0DE00D157A6 /* manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = manager.cpp; sourceTree = "<group>"; };
 		ECE17E111A0DD79F00B76473 /* terrain_type_data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = terrain_type_data.cpp; sourceTree = "<group>"; };
 		ECEEB7EF1A1E8AB20006575B /* default_map_generator_job.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = default_map_generator_job.cpp; sourceTree = "<group>"; };
 		ECF3A0B118AD3E8700DD643A /* wml_error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = wml_error.cpp; path = gui/dialogs/wml_error.cpp; sourceTree = "<group>"; };
@@ -3113,6 +3117,8 @@
 		62CC8E6917B9063D00C16B75 /* game_events */ = {
 			isa = PBXGroup;
 			children = (
+				ECDF181E1A3FE0DE00D157A6 /* manager_impl.cpp */,
+				ECDF181F1A3FE0DE00D157A6 /* manager.cpp */,
 				EC3381C518B520120020DD6F /* theme_list.cpp */,
 				EC3381C618B520120020DD6F /* theme_list.hpp */,
 				62CC8E6A17B9063D00C16B75 /* action_wml.cpp */,
@@ -4368,6 +4374,7 @@
 				B5599B2B0EC62181008DD061 /* map_location.cpp in Sources */,
 				ECFB9FA8193BFAD900146ED0 /* carryover.cpp in Sources */,
 				B5599B2C0EC62181008DD061 /* map_label.cpp in Sources */,
+				ECDF18211A3FE0DE00D157A6 /* manager.cpp in Sources */,
 				B5599B2E0EC62181008DD061 /* map.cpp in Sources */,
 				B5599B2F0EC62181008DD061 /* log.cpp in Sources */,
 				B5599B310EC62181008DD061 /* loadscreen.cpp in Sources */,
@@ -4696,6 +4703,7 @@
 				ECA4A67C1A1EC319006BCCF2 /* lua_map_location_ops.cpp in Sources */,
 				EC2F60161A048E220018C9D6 /* multiplayer_create.cpp in Sources */,
 				4944F4171354FBB20027E614 /* description.cpp in Sources */,
+				ECDF18201A3FE0DE00D157A6 /* manager_impl.cpp in Sources */,
 				4944F4191354FBCD0027E614 /* drawing.cpp in Sources */,
 				4944F41B1354FBFF0027E614 /* teleport.cpp in Sources */,
 				49DA0D1E13550E1E000AFEBD /* mp_change_control.cpp in Sources */,
