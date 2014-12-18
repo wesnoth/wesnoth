@@ -61,10 +61,10 @@ install:
     - if [ "$CXX" = "g++" ]; then time sudo apt-get -qq install g++-4.8; fi
     - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8"; fi
     - if [ "$CHECK_UTF8" = true ]; then time sudo apt-get install -qq moreutils; fi
-    - if [ "$CPP_TESTS" = true ]; then time sudo update-alternatives --remove postmaster.1.gz /usr/share/postgresql/9.1/man/man1/postmaster.1.gz; fi
-    - if [ "$CPP_TESTS" = true ]; then time sudo apt-get -f; fi
-    - if [ "$CPP_TESTS" = true ]; then time sudo apt-get install --reinstall postgresql-9.1; fi
-    - if [ "$CPP_TESTS" = true ]; then time sudo apt-get -o Dpkg::Options::='--force-confold' --force-yes -fuy upgrade; fi
+#    - if [ "$CPP_TESTS" = true ]; then time sudo update-alternatives --remove postmaster.1.gz /usr/share/postgresql/9.1/man/man1/postmaster.1.gz; fi
+#    - if [ "$CPP_TESTS" = true ]; then time sudo apt-get -f; fi
+#    - if [ "$CPP_TESTS" = true ]; then time sudo apt-get install --reinstall postgresql-9.1; fi
+#    - if [ "$CPP_TESTS" = true ]; then time sudo apt-get -o Dpkg::Options::='--force-confold' --force-yes -fuy upgrade; fi
     - $CXX -v
 
 script: 
