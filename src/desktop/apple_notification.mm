@@ -49,9 +49,9 @@ void send_notification(const std::string& owner, const std::string& message, con
         if (appleNotificationClass) {
             send_cocoa_notification(owner, message);
         } else {
-    #ifdef HAVE_GROWL
+#ifdef HAVE_GROWL
             send_growl_notification(owner, message, note_type);
-    #endif
+#endif
         }
     }
 }
