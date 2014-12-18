@@ -12,6 +12,8 @@
  See the COPYING file for more details.
 */
 
+#ifdef __APPLE__
+
 #include "apple_notification.hpp"
 
 #import <Foundation/Foundation.h>
@@ -55,7 +57,7 @@ void send_notification(const std::string& owner, const std::string& message, con
         }
     }
 }
-#else
+#else // HAVE_NS_USER_NOTIFICATION
 void send_notification(const std::string& owner, const std::string& message, const desktop::notifications::type note_type) {
     @autoreleasepool {
 #ifdef HAVE_GROWL
@@ -63,7 +65,7 @@ void send_notification(const std::string& owner, const std::string& message, con
 #endif
     }
 }
-#endif
+#endif //end else HAVE_NS_USER_NOTIFICATION
 #pragma clang diagnostic pop
   
 #ifdef HAVE_NS_USER_NOTIFICATION
@@ -77,9 +79,9 @@ void send_cocoa_notification(const std::string& owner, const std::string& messag
     
     [[NSUserNotificationCenter defaultUserNotificationCenter] scheduleNotification:notification];
 }
-#endif
+#endif //end
 
-#ifdef HAVE_GROWL
+#ifdef HAVE_GROWL HAVE_NS_USER_NOTIFICATION
 void send_growl_notification(const std::string& owner, const std::string& message, const desktop::notifications::type note_type) {
     static WesnothGrowlDelegate *delegate = nil;
     if (!delegate) {
@@ -109,6 +111,7 @@ void send_growl_notification(const std::string& owner, const std::string& messag
                                    isSticky:NO
                                clickContext:nil];
 }
-#endif
+#endif //end HAVE_GROWL
 
 }
+#endif //end __APPLE__
