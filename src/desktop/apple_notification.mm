@@ -79,9 +79,9 @@ void send_cocoa_notification(const std::string& owner, const std::string& messag
     
     [[NSUserNotificationCenter defaultUserNotificationCenter] scheduleNotification:notification];
 }
-#endif //end
+#endif //end HAVE_NS_USER_NOTIFICATION
 
-#ifdef HAVE_GROWL HAVE_NS_USER_NOTIFICATION
+#ifdef HAVE_GROWL
 void send_growl_notification(const std::string& owner, const std::string& message, const desktop::notifications::type note_type) {
     static WesnothGrowlDelegate *delegate = nil;
     if (!delegate) {
