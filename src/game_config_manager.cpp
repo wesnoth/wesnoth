@@ -262,6 +262,8 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 				BOOST_FOREACH(config& cfg, scenarios) {
 					cfg["campaign_id"] = campaign_id;
 					cfg["require_scenario"] = require_campaign;
+					// make force_lock_settings default to true for [scenario]
+					cfg["force_lock_settings"] = cfg["force_lock_settings"].to_bool(true);
 					game_config_.add_child(lexical_cast<std::string>(game_classification::MULTIPLAYER), cfg);
 				}
 			}
