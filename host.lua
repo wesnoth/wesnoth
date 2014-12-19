@@ -3,6 +3,10 @@
 
 local function plugin()
 
+  local function log(text)
+    std_print("host: " .. text)
+  end
+
   local counter = 0
 
   local events, context, info
@@ -13,11 +17,11 @@ local function plugin()
     counter = counter + 1
     if counter >= 100 then
       counter = 0
-      std_print("host: idling " .. text)
+      log("idling " .. text)
     end
   end
 
-  std_print("host: hello world")
+  log("hello world")
 
   repeat
     events, context, info = coroutine.yield()
@@ -26,7 +30,7 @@ local function plugin()
 
   while info.name == "titlescreen" do
     context.play_multiplayer({})
-    std_print("host: playing multiplayer...")
+    log("playing multiplayer...")
     events, context, info = coroutine.yield()
   end
 
@@ -36,7 +40,7 @@ local function plugin()
   until info.name == "Multiplayer Lobby"
 
   context.chat({message = "hosting"})
-  std_print("host: creating a game")
+  log("creating a game")
   context.create({})
 
   repeat
@@ -50,7 +54,7 @@ local function plugin()
 
   events, context, info = coroutine.yield()
 
-  std_print("host: configuring a game")
+  log("configuring a game")
   context.create({})
 
   repeat
@@ -59,7 +63,7 @@ local function plugin()
   until info.name == "Multiplayer Configure"
 
   context.set_name({name = "Test"})
-  std_print("host: hosting a game")
+  log("hosting a game")
   context.launch({})
 
   ready = nil
@@ -76,7 +80,7 @@ local function plugin()
     idle_text("in " .. info.name .. " waiting for ready in chat")
   until ready
 
-  std_print("host: starting game...")
+  log("starting game...")
   context.chat({message = "starting"})
   context.launch({})
 
@@ -85,18 +89,18 @@ local function plugin()
     idle_text("in " .. info.name .. " waiting for game")
   until info.name == "Game"
 
-  std_print("host: got to a game context...")
+  log("got to a game context...")
 
   repeat
     events, context, info = coroutine.yield()
     idle_text("in " .. info.name .. " waiting for not game")
   until info.name ~= "Game"
 
-  std_print("host: left a game context...")
+  log("left a game context...")
 
   repeat
     context.quit({})
-    std_print("join: quitting a " .. info.name .. " context...")
+    log("quitting a " .. info.name .. " context...")
     events, context, info = coroutine.yield()
   until info.name == "titlescreen"
 
