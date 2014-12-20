@@ -221,6 +221,7 @@ Version 1.13.0-dev:
      this breaking localization of subsequent strings (bug #22962).
    * Sounds for slow and poison are automatically played when slowing/poisoning
      a unit, and should no longer be played by the attack animations.
+   * force_lock_settings defaults to yes in [scenario].
  * Miscellaneous and bug fixes:
    * replace 'fight_on_without_leader'=yes/no with defeat_condition=no_leader/
      no_units/always/never which allows the wml developer to decide when a side
