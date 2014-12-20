@@ -44,8 +44,6 @@ public:
 
 	int get_ticks();
 
-	plugins_context * get_plugins_context();
-
 protected:
 	/**
 	 * Get a reference to a mouse handler member a derived class uses

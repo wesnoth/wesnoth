@@ -363,13 +363,6 @@ const config& controller_base::get_theme(const config& game_config, std::string 
 	return empty;
 }
 
-plugins_context * controller_base::get_plugins_context() {
-	if (boost::shared_ptr<plugins_context> l = plugins_context_.lock()) {
-		return l.get();
-	}
-	return NULL;
-}
-
 void controller_base::set_plugins_context(const boost::shared_ptr<plugins_context> & ptr)
 {
 	plugins_context_ = ptr;
