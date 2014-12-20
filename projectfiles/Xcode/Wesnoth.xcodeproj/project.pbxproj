@@ -784,7 +784,6 @@
 		EC1D88DD18EF414400E66AC1 /* libpixman-1.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC1D88DC18EF414400E66AC1 /* libpixman-1.0.dylib */; };
 		EC1D88DF18EF448400E66AC1 /* fonts.conf in Resources */ = {isa = PBXBuildFile; fileRef = EC1D88DE18EF448400E66AC1 /* fonts.conf */; };
 		EC218E9C1A1064F4007C910C /* application_lua_kernel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC218E9A1A1064F4007C910C /* application_lua_kernel.cpp */; };
-		EC218E9D1A1064F4007C910C /* lua_game_launcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC218E9B1A1064F4007C910C /* lua_game_launcher.cpp */; };
 		EC218EA01A106648007C910C /* lua_common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC218E9E1A106648007C910C /* lua_common.cpp */; };
 		EC218EA11A106648007C910C /* lua_kernel_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC218E9F1A106648007C910C /* lua_kernel_base.cpp */; };
 		EC218EA31A106673007C910C /* game_lua_kernel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC218EA21A106673007C910C /* game_lua_kernel.cpp */; };
@@ -842,6 +841,8 @@
 		EC4E3B2219B2D8880049CBD7 /* simulated_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4E3B2119B2D8880049CBD7 /* simulated_actions.cpp */; };
 		EC51DB7818F8BFA4004621D9 /* playturn_network_adapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC51DB7618F8BFA4004621D9 /* playturn_network_adapter.cpp */; };
 		EC5590771A0B11C600675179 /* lua_map_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5590761A0B11C600675179 /* lua_map_generator.cpp */; };
+		EC59F2611A4529D2001910CB /* context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC59F25F1A4529D2001910CB /* context.cpp */; };
+		EC59F2621A4529D2001910CB /* manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC59F2601A4529D2001910CB /* manager.cpp */; };
 		EC5C243B18EF07B4001FA499 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242218EF07B4001FA499 /* libbz2.1.0.dylib */; };
 		EC5C243C18EF07B4001FA499 /* libexpat.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242318EF07B4001FA499 /* libexpat.1.dylib */; };
 		EC5C243D18EF07B4001FA499 /* libffi.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242418EF07B4001FA499 /* libffi.6.dylib */; };
@@ -2019,7 +2020,6 @@
 		EC1D88DC18EF414400E66AC1 /* libpixman-1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libpixman-1.0.dylib"; path = "lib/libpixman-1.0.dylib"; sourceTree = "<group>"; };
 		EC1D88DE18EF448400E66AC1 /* fonts.conf */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = fonts.conf; path = Resources/fonts.conf; sourceTree = "<group>"; };
 		EC218E9A1A1064F4007C910C /* application_lua_kernel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = application_lua_kernel.cpp; sourceTree = "<group>"; };
-		EC218E9B1A1064F4007C910C /* lua_game_launcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_game_launcher.cpp; sourceTree = "<group>"; };
 		EC218E9E1A106648007C910C /* lua_common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_common.cpp; sourceTree = "<group>"; };
 		EC218E9F1A106648007C910C /* lua_kernel_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_kernel_base.cpp; sourceTree = "<group>"; };
 		EC218EA21A106673007C910C /* game_lua_kernel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_lua_kernel.cpp; sourceTree = "<group>"; };
@@ -2093,6 +2093,8 @@
 		EC51DB7618F8BFA4004621D9 /* playturn_network_adapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = playturn_network_adapter.cpp; sourceTree = "<group>"; };
 		EC51DB7718F8BFA4004621D9 /* playturn_network_adapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = playturn_network_adapter.hpp; sourceTree = "<group>"; };
 		EC5590761A0B11C600675179 /* lua_map_generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_map_generator.cpp; sourceTree = "<group>"; };
+		EC59F25F1A4529D2001910CB /* context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = context.cpp; path = plugins/context.cpp; sourceTree = "<group>"; };
+		EC59F2601A4529D2001910CB /* manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = manager.cpp; path = plugins/manager.cpp; sourceTree = "<group>"; };
 		EC5C242218EF07B4001FA499 /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = lib/libbz2.1.0.dylib; sourceTree = "<group>"; };
 		EC5C242318EF07B4001FA499 /* libexpat.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libexpat.1.dylib; path = lib/libexpat.1.dylib; sourceTree = "<group>"; };
 		EC5C242418EF07B4001FA499 /* libffi.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libffi.6.dylib; path = lib/libffi.6.dylib; sourceTree = "<group>"; };
@@ -3655,6 +3657,8 @@
 		B597EC060FC0832B00CE81F5 /* scripting */ = {
 			isa = PBXGroup;
 			children = (
+				EC59F25F1A4529D2001910CB /* context.cpp */,
+				EC59F2601A4529D2001910CB /* manager.cpp */,
 				ECD5D7BE1A22DC8600114175 /* lua_cpp_function.cpp */,
 				ECA4A6781A1EC319006BCCF2 /* lua_fileops.cpp */,
 				ECA4A6791A1EC319006BCCF2 /* lua_map_location_ops.cpp */,
@@ -3665,7 +3669,6 @@
 				EC218E9E1A106648007C910C /* lua_common.cpp */,
 				EC218E9F1A106648007C910C /* lua_kernel_base.cpp */,
 				EC218E9A1A1064F4007C910C /* application_lua_kernel.cpp */,
-				EC218E9B1A1064F4007C910C /* lua_game_launcher.cpp */,
 				F4C02A0D182F1F64008525C6 /* lua_api.cpp */,
 				F4C02A0E182F1F64008525C6 /* lua_types.cpp */,
 				F4C02A0F182F1F64008525C6 /* lua_types.hpp */,
@@ -4310,6 +4313,7 @@
 				EC5C70BC19EEB54900432CF4 /* filesystem_common.cpp in Sources */,
 				ECA4A67D1A1EC319006BCCF2 /* lua_rng.cpp in Sources */,
 				B5599AE90EC62181008DD061 /* unit_types.cpp in Sources */,
+				EC59F2621A4529D2001910CB /* manager.cpp in Sources */,
 				B5599AEA0EC62181008DD061 /* unit_map.cpp in Sources */,
 				ECE17E121A0DD79F00B76473 /* terrain_type_data.cpp in Sources */,
 				B5599AEB0EC62181008DD061 /* unit_id.cpp in Sources */,
@@ -4520,6 +4524,7 @@
 				B54AC6E50FEA9EB5006F6FBD /* candidates.cpp in Sources */,
 				B54AC6E60FEA9EB5006F6FBD /* ca.cpp in Sources */,
 				B54AC6E70FEA9EB5006F6FBD /* stage_fallback.cpp in Sources */,
+				EC59F2611A4529D2001910CB /* context.cpp in Sources */,
 				B54AC6E80FEA9EB5006F6FBD /* stage_rca.cpp in Sources */,
 				B54AC6EE0FEA9F7A006F6FBD /* control.cpp in Sources */,
 				B54AC6F50FEA9F92006F6FBD /* lobby_main.cpp in Sources */,
@@ -4763,7 +4768,6 @@
 				EC2F60171A048E220018C9D6 /* multiplayer_lobby.cpp in Sources */,
 				EC21944F1960649000420969 /* display_chat_manager.cpp in Sources */,
 				62D24F2D1519982500350848 /* brush.cpp in Sources */,
-				EC218E9D1A1064F4007C910C /* lua_game_launcher.cpp in Sources */,
 				62D24F2F1519982500350848 /* editor_toolkit.cpp in Sources */,
 				62D24F321519987400350848 /* context_manager.cpp in Sources */,
 				62D24F351519995200350848 /* palette_manager.cpp in Sources */,
