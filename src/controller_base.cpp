@@ -39,8 +39,8 @@ controller_base::controller_base(
 	browse_(false),
 	scrolling_(false),
 	joystick_manager_(),
-	plugins_context_(new plugins_context("Game")),
-	soundsources_(NULL)
+	plugins_context_(),
+	soundsources_()
 {
 }
 
@@ -217,17 +217,19 @@ void controller_base::play_slice(bool is_delay_enabled)
 {
 	CKey key;
 
-	if (plugins_context_) {
-		plugins_context_->play_slice();
+	if (boost::shared_ptr<plugins_context> l = plugins_context_.lock()) {
+		l->play_slice();
 	}
 
 	events::pump();
 	events::raise_process_event();
 	events::raise_draw_event();
 
-	if (soundsources_) {
-		soundsources_->update();
+	// Update sound sources before scrolling
+	if (boost::shared_ptr<soundsource::manager> l = soundsources_.lock()) {
+		l->update();
 	}
+
 	const theme::menu* const m = get_display().menu_pressed();
 	if(m != NULL) {
 		const SDL_Rect& menu_loc = m->location(get_display().screen_area());
@@ -362,10 +364,18 @@ const config& controller_base::get_theme(const config& game_config, std::string 
 }
 
 plugins_context * controller_base::get_plugins_context() {
-	return plugins_context_.get();
+	if (boost::shared_ptr<plugins_context> l = plugins_context_.lock()) {
+		return l.get();
+	}
+	return NULL;
 }
 
-void controller_base::set_soundsource_manager(soundsource::manager * ptr)
+void controller_base::set_plugins_context(const boost::shared_ptr<plugins_context> & ptr)
+{
+	plugins_context_ = ptr;
+}
+
+void controller_base::set_soundsource_manager(const boost::shared_ptr<soundsource::manager> & ptr)
 {
 	soundsources_ = ptr;
 }

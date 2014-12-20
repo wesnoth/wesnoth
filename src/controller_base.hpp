@@ -25,7 +25,7 @@
 
 #include "map.hpp"
 
-#include <boost/scoped_ptr.hpp>
+#include <boost/weak_ptr.hpp>
 
 class CVideo;
 class plugins_context;
@@ -110,11 +110,13 @@ protected:
 	bool scrolling_;
 	joystick_manager joystick_manager_;
 
-	boost::scoped_ptr<plugins_context> plugins_context_;
+	void set_plugins_context(const boost::shared_ptr<plugins_context> &);
 
-	void set_soundsource_manager(soundsource::manager *);
+	boost::weak_ptr<plugins_context> plugins_context_;
 
-	soundsource::manager * soundsources_;
+	void set_soundsource_manager(const boost::shared_ptr<soundsource::manager> &);
+
+	boost::weak_ptr<soundsource::manager> soundsources_;
 };
 
 

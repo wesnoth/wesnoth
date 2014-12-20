@@ -249,7 +249,7 @@ protected:
 	//more managers
 	events::mouse_handler mouse_handler_;
 	events::menu_handler menu_handler_;
-	boost::scoped_ptr<soundsource::manager> soundsources_manager_;
+	boost::shared_ptr<soundsource::manager> soundsources_manager_;
 	persist_manager persist_;
 
 	//other objects
@@ -262,6 +262,9 @@ protected:
 
 	//whiteboard manager
 	boost::shared_ptr<wb::manager> whiteboard_manager_;
+
+	//plugins context
+	boost::shared_ptr<plugins_context> plugins_context_;
 
 	//if a team is specified whose turn it is, it means we're loading a game
 	//instead of starting a fresh one. Gets reset to false after init_side
