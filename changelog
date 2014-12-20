@@ -135,6 +135,8 @@ Version 1.13.0-dev:
    * Enable ilua "strict mode" by default. This safety feature helps to catch errors caused by mistyped
      variable names, and improves the behavior of the lua interpreter console. See 1.13.0 RELEASE NOTES
      for more details.
+   * Add multiplayer client scripting (join lobby, chat, host games, save games, reload games) and mp
+     unit tests based on this
  * Replays:
    * Added a button that allows playing a single move in replay mode.
  * Sound:
