@@ -54,11 +54,6 @@ protected:
 	virtual void slice_before_scroll();
 
 	/**
-	 * Called at the very end of play_slice
-	 */
-	virtual void slice_end();
-
-	/**
 	 * Get a reference to a mouse handler member a derived class uses
 	 */
 	virtual events::mouse_handler_base& get_mouse_handler_base() = 0;

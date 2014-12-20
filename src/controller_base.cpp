@@ -288,15 +288,9 @@ void controller_base::play_slice(bool is_delay_enabled)
 		// scrolling ended, update the cursor and the brightened hex
 		get_mouse_handler_base().mouse_update(browse_, highlighted_hex);
 	}
-	slice_end();
 }
 
 void controller_base::slice_before_scroll()
-{
-	//no action by default
-}
-
-void controller_base::slice_end()
 {
 	//no action by default
 }
