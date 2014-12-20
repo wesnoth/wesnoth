@@ -144,8 +144,10 @@ void game_lua_kernel::log_error(char const * msg, char const * context)
 
 void game_lua_kernel::lua_chat(std::string const &caption, std::string const &msg)
 {
-	game_display_.get_chat_manager().add_chat_message(time(NULL), caption, 0, msg,
-		events::chat_handler::MESSAGE_PUBLIC, false);
+	if (game_display_) {
+		game_display_->get_chat_manager().add_chat_message(time(NULL), caption, 0, msg,
+			events::chat_handler::MESSAGE_PUBLIC, false);
+	}
 }
 
 
@@ -504,10 +506,14 @@ int game_lua_kernel::intf_get_unit(lua_State *L)
  */
 int game_lua_kernel::intf_get_displayed_unit(lua_State *L)
 {
+	if (!game_display_) {
+		return 0;
+	}
+
 	unit_map::const_iterator ui = board().find_visible_unit(
-		game_display_.displayed_unit_hex(),
-		teams()[game_display_.viewing_team()],
-		game_display_.show_everything());
+		game_display_->displayed_unit_hex(),
+		teams()[game_display_->viewing_team()],
+		game_display_->show_everything());
 	if (!ui.valid()) return 0;
 
 	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->underlying_id());
@@ -760,15 +766,19 @@ int game_lua_kernel::intf_highlight_hex(lua_State *L)
 {
 	ERR_LUA << "wesnoth.highlight_hex is deprecated, use wesnoth.select_hex" << std::endl;
 
+	if (!game_display_) {
+		return 0;
+	}
+
 	int x = luaL_checkinteger(L, 1) - 1;
 	int y = luaL_checkinteger(L, 2) - 1;
 	const map_location loc(x, y);
-	game_display_.highlight_hex(loc);
-	game_display_.display_unit_hex(loc);
+	game_display_->highlight_hex(loc);
+	game_display_->display_unit_hex(loc);
 
 	unit_map::const_unit_iterator i = board().units().find(loc);
 	if(i != board().units().end()) {
-		game_display_.highlight_reach(pathfind::paths(*i, false,
+		game_display_->highlight_reach(pathfind::paths(*i, false,
 			true, teams().front()));
 			/// @todo: teams().front() is not always the correct
 			///        choice for the viewing team.
@@ -797,7 +807,11 @@ int game_lua_kernel::intf_is_enemy(lua_State *L)
  */
 int game_lua_kernel::intf_view_locked(lua_State *L)
 {
-	lua_pushboolean(L, game_display_.view_locked());
+	if (!game_display_) {
+		return 0;
+	}
+
+	lua_pushboolean(L, game_display_->view_locked());
 	return 1;
 }
 
@@ -808,7 +822,9 @@ int game_lua_kernel::intf_view_locked(lua_State *L)
 int game_lua_kernel::intf_lock_view(lua_State *L)
 {
 	bool lock = luaW_toboolean(L, 1);
-	game_display_.set_view_locked(lock);
+	if (game_display_) {
+		game_display_->set_view_locked(lock);
+	}
 	return 0;
 }
 
@@ -949,7 +965,11 @@ int game_lua_kernel::intf_set_terrain(lua_State *L)
 	}
 
 	bool result = board().change_terrain(map_location(x - 1, y - 1), t_str, mode_str, replace_if_failed);
-	game_display_.needs_rebuild(result);
+
+	if (game_display_) {
+		game_display_->needs_rebuild(result);
+	}
+
 	return 0;
 }
 
@@ -1118,7 +1138,11 @@ int game_lua_kernel::intf_get_map_size(lua_State *L)
  */
 int game_lua_kernel::intf_get_mouseover_tile(lua_State *L)
 {
-	const map_location &loc = game_display_.mouseover_hex();
+	if (!game_display_) {
+		return 0;
+	}
+
+	const map_location &loc = game_display_->mouseover_hex();
 	if (!board().map().on_board(loc)) return 0;
 	lua_pushinteger(L, loc.x + 1);
 	lua_pushinteger(L, loc.y + 1);
@@ -1132,7 +1156,11 @@ int game_lua_kernel::intf_get_mouseover_tile(lua_State *L)
  */
 int game_lua_kernel::intf_get_selected_tile(lua_State *L)
 {
-	const map_location &loc = game_display_.selected_hex();
+	if (!game_display_) {
+		return 0;
+	}
+
+	const map_location &loc = game_display_->selected_hex();
 	if (!board().map().on_board(loc)) return 0;
 	lua_pushinteger(L, loc.x + 1);
 	lua_pushinteger(L, loc.y + 1);
@@ -1345,7 +1373,9 @@ static int intf_debug(lua_State* L)
  */
 int game_lua_kernel::intf_clear_messages(lua_State*)
 {
-	game_display_.get_chat_manager().clear_chat_messages();
+	if (game_display_) {
+		game_display_->get_chat_manager().clear_chat_messages();
+	}
 	return 0;
 }
 
@@ -1754,14 +1784,16 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 
 	if (debug)
 	{
-		game_display_.labels().clear_all();
-		BOOST_FOREACH(const map_location& loc, location_set)
-		{
-			std::stringstream s;
-			s << cost_map.get_pair_at(loc.x, loc.y).first;
-			s << " / ";
-			s << cost_map.get_pair_at(loc.x, loc.y).second;
-			game_display_.labels().set_label(loc, s.str());
+		if (game_display_) {
+			game_display_->labels().clear_all();
+			BOOST_FOREACH(const map_location& loc, location_set)
+			{
+				std::stringstream s;
+				s << cost_map.get_pair_at(loc.x, loc.y).first;
+				s << " / ";
+				s << cost_map.get_pair_at(loc.x, loc.y).second;
+				game_display_->labels().set_label(loc, s.str());
+			}
 		}
 	}
 
@@ -1836,7 +1868,10 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		u = unit_ptr (new unit(cfg, true));
 	}
 
-	game_display_.invalidate(loc);
+	if (game_display_) {
+		game_display_->invalidate(loc);
+	}
+
 	units().erase(loc);
 	if (!u) return 0;
 
@@ -1966,8 +2001,10 @@ int game_lua_kernel::intf_float_label(lua_State *L)
 	loc.y = luaL_checkinteger(L, 2) - 1;
 
 	t_string text = luaW_checktstring(L, 3);
-	game_display_.float_label(loc, text, font::LABEL_COLOR.r,
-		font::LABEL_COLOR.g, font::LABEL_COLOR.b);
+	if (game_display_) {
+		game_display_->float_label(loc, text, font::LABEL_COLOR.r,
+			font::LABEL_COLOR.g, font::LABEL_COLOR.b);
+	}
 	return 0;
 }
 
@@ -2244,8 +2281,10 @@ int game_lua_kernel::intf_scroll_to_tile(lua_State *L)
 	int y = luaL_checkinteger(L, 2) - 1;
 	bool check_fogged = luaW_toboolean(L, 3);
 	bool immediate = luaW_toboolean(L, 4);
-	game_display_.scroll_to_tile(map_location(x, y),
-		immediate ? game_display::WARP : game_display::SCROLL, check_fogged);
+	if (game_display_) {
+		game_display_->scroll_to_tile(map_location(x, y),
+			immediate ? game_display::WARP : game_display::SCROLL, check_fogged);
+	}
 	return 0;
 }
 
@@ -2267,8 +2306,9 @@ int game_lua_kernel::intf_select_hex(lua_State *L)
 	const bool fire_event = luaW_toboolean(L, 4);
 	play_controller_.get_mouse_handler_base().select_hex(
 		loc, false, highlight, fire_event);
-	if(highlight)
-		game_display_.highlight_hex(loc);
+	if(highlight && game_display_) {
+		game_display_->highlight_hex(loc);
+	}
 	return 0;
 }
 
@@ -2577,8 +2617,10 @@ int game_lua_kernel::intf_add_tile_overlay(lua_State *L)
 	int y = luaL_checkinteger(L, 2) - 1;
 	config cfg = luaW_checkconfig(L, 3);
 
-	game_display_.add_overlay(map_location(x, y), cfg["image"], cfg["halo"],
-		cfg["team_name"], cfg["visible_in_fog"].to_bool(true));
+	if (game_display_) {
+		game_display_->add_overlay(map_location(x, y), cfg["image"], cfg["halo"],
+			cfg["team_name"], cfg["visible_in_fog"].to_bool(true));
+	}
 	return 0;
 }
 
@@ -2594,9 +2636,13 @@ int game_lua_kernel::intf_remove_tile_overlay(lua_State *L)
 	char const *m = lua_tostring(L, 3);
 
 	if (m) {
-		game_display_.remove_single_overlay(map_location(x, y), m);
+		if (game_display_) {
+			game_display_->remove_single_overlay(map_location(x, y), m);
+		}
 	} else {
-		game_display_.remove_overlay(map_location(x, y));
+		if (game_display_) {
+			game_display_->remove_overlay(map_location(x, y));
+		}
 	}
 	return 0;
 }
@@ -2610,7 +2656,9 @@ int game_lua_kernel::intf_delay(lua_State *L)
 	unsigned final = SDL_GetTicks() + luaL_checkinteger(L, 1);
 	do {
 		play_controller_.play_slice(false);
-		game_display_.delay(10);
+		if (game_display_) {
+			game_display_->delay(10);
+		}
 	} while (int(final - SDL_GetTicks()) > 0);
 	return 0;
 }
@@ -2839,7 +2887,7 @@ namespace {
  */
 int game_lua_kernel::impl_theme_item(lua_State *L, std::string m)
 {
-	reports::context temp_context = reports::context(board(), game_display_, tod_man(), play_controller_.get_whiteboard(), play_controller_.get_mouse_handler_base());
+	reports::context temp_context = reports::context(board(), *game_display_, tod_man(), play_controller_.get_whiteboard(), play_controller_.get_mouse_handler_base());
 	luaW_pushconfig(L, reports_.generate_report(m.c_str(), temp_context , true));
 	return 1;
 }
@@ -2904,9 +2952,9 @@ tod_manager & game_lua_kernel::tod_man() {
 	return game_state_.tod_manager_;
 }
 
-game_lua_kernel::game_lua_kernel(const config &cfg, game_display & gd, game_state & gs, play_controller & pc, reports & reports_object)
-	: lua_kernel_base(&gd.video())
-	, game_display_(gd)
+game_lua_kernel::game_lua_kernel(const config &cfg, CVideo & video, game_state & gs, play_controller & pc, reports & reports_object)
+	: lua_kernel_base(&video)
+	, game_display_(NULL)
 	, game_state_(gs)
 	, play_controller_(pc)
 	, reports_(reports_object)
@@ -3247,6 +3295,13 @@ void game_lua_kernel::initialize()
 	}
 
 	load_game();
+}
+
+void game_lua_kernel::set_game_display(game_display * gd) {
+	game_display_ = gd;
+	if (gd) {
+		set_video(&gd->video());
+	}
 }
 
 /// These are the child tags of [scenario] (and the like) that are handled

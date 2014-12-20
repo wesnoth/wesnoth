@@ -342,7 +342,8 @@ void replay_controller::reset_replay()
 	resources::game_events=NULL;
 	lua_kernel_.reset();
 	resources::lua_kernel=NULL;
-	lua_kernel_.reset(new game_lua_kernel(level_, *gui_, gamestate_, *this, *reports_));
+	lua_kernel_.reset(new game_lua_kernel(level_, gui_->video(), gamestate_, *this, *reports_));
+	lua_kernel_->set_game_display(gui_.get());
 	resources::lua_kernel=lua_kernel_.get();
 	events_manager_.reset(new game_events::manager(level_, game_events::t_context(lua_kernel_.get(), &gamestate_, gui_.get(), &gamestate_.gamedata_, resources::units, boost::bind(&wb::manager::on_gamestate_change, whiteboard_manager_.get()), boost::bind(&play_controller::current_side, this)))); //&gamestate_.board_.units_)));
 	resources::game_events=events_manager_.get();

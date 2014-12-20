@@ -46,7 +46,7 @@ typedef int (*lua_CFunction) (lua_State *L);
 
 class game_lua_kernel : public lua_kernel_base
 {
-	game_display & game_display_;
+	game_display * game_display_;
 	game_state & game_state_;
 	play_controller & play_controller_;
 	reports & reports_;
@@ -129,7 +129,9 @@ class game_lua_kernel : public lua_kernel_base
 	void lua_chat(std::string const &caption, std::string const &msg);
 
 public:
-	game_lua_kernel(const config &, game_display &, game_state &, play_controller &, reports &);
+	game_lua_kernel(const config &, CVideo &, game_state &, play_controller &, reports &);
+
+	void set_game_display(game_display * gd);
 
 	virtual std::string my_name() { return "Game Lua Kernel"; }
 
