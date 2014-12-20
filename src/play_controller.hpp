@@ -100,7 +100,9 @@ public:
 	virtual void right_mouse_click();
 	virtual void status_table();
 	virtual void save_game();
+	void save_game_auto(const std::string & filename);
 	virtual void save_replay();
+	void save_replay_auto(const std::string & filename);
 	virtual void save_map();
 	virtual void load_game();
 	virtual void preferences();

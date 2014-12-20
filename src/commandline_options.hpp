@@ -188,8 +188,10 @@ public:
 	boost::optional<std::string> screenshot_map_file;
 	/// Output file to put screenshot in. Second parameter given after --screenshot.
 	boost::optional<std::string> screenshot_output_file;
-	/// File to load lua script (mp-bot) from.
+	/// File to load lua script from.
 	boost::optional<std::string> script_file;
+	/// File to load a lua plugin (similar to a script) from. Experimental / may replace script.
+	boost::optional<std::string> plugin_file;
 	/// Whether to load the "package" package for the scripting environment. (This allows to load arbitrary lua packages, and gives untrusted lua the same permissions as wesnoth executable)
 	bool script_unsafe_mode;
 	/// True if --strict-validation was given on the command line. Makes Wesnoth trust validation errors as fatal WML errors and create WML exception, if so.
@@ -204,6 +206,8 @@ public:
 	boost::optional<unsigned int> timeout;
 	/// True if --noreplaycheck was given on the comand line. Dependent on --unit.
 	bool noreplaycheck;
+	/// True if --mp-test was given on the command line.
+	bool mptest;
 	/// True if --userconfig-path was given on the command line. Prints path to user config directory and exits.
 	bool userconfig_path;
 	/// Non-empty if --userconfig-dir was given on the command line. Sets the user config dir to the specified one.

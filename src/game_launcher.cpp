@@ -48,7 +48,6 @@
 #include "game_initialization/playcampaign.hpp"             // for play_game, etc
 #include "preferences.hpp"              // for disable_preferences_save, etc
 #include "preferences_display.hpp"      // for detect_video_settings, etc
-#include "resources.hpp"                // for config_manager
 #include "savegame.hpp"                 // for clean_saves, etc
 #include "scripting/application_lua_kernel.hpp"
 #include "sdl/utils.hpp"                // for surface
@@ -307,11 +306,6 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	else if (no_music) { // else disable the music in nomusic mode
 		preferences::set_music(false);
 	}
-
-	// This isn't always needed right now but it allows to help debug the lua console even if you don't have a script file local.
-	// Eventually it will be needed for plugins to work.
-	resources::app_lua_kernel = new application_lua_kernel(&video_);
-	resources::app_lua_kernel->initialize(this);
 }
 
 game_display& game_launcher::disp()
@@ -377,8 +371,8 @@ bool game_launcher::init_language()
 bool game_launcher::init_video()
 {
 	if(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test) {
-		if( !(cmdline_opts_.multiplayer || cmdline_opts_.screenshot || cmdline_opts_.headless_unit_test) ) {
-			std::cerr << "--nogui flag is only valid with --multiplayer flag or --screenshot flag\n";
+		if( !(cmdline_opts_.multiplayer || cmdline_opts_.screenshot || cmdline_opts_.plugin_file || cmdline_opts_.headless_unit_test) ) {
+			std::cerr << "--nogui flag is only valid with --multiplayer or --screenshot or --plugin flags\n";
 			return false;
 		}
 		video_.make_fake();
@@ -451,7 +445,13 @@ bool game_launcher::init_video()
 
 bool game_launcher::init_lua_script()
 {
-	// start the application lua kernel, register it in resources, and load script file, if script file is present
+	std::cerr << "checking lua scripts\n";
+
+	if (cmdline_opts_.script_unsafe_mode) {
+		plugins_manager::get()->get_kernel_base()->load_package(); //load the "package" package, so that scripts can get what packages they want
+	}
+
+	// get the application lua kernel, load and execute script file, if script file is present
 	if (cmdline_opts_.script_file)
 	{
 		filesystem::scoped_istream sf = filesystem::istream_file(*cmdline_opts_.script_file);
@@ -466,17 +466,69 @@ bool game_launcher::init_lua_script()
 
 			std::cerr << "\nRunning lua script: " << *cmdline_opts_.script_file << std::endl;
 
-			if (cmdline_opts_.script_unsafe_mode) {
-				resources::app_lua_kernel->load_package(); //load the "package" package, so that scripts can get what packages they want
-			}
-
-			resources::app_lua_kernel->run(full_script.c_str());
+			plugins_manager::get()->get_kernel_base()->run(full_script.c_str());
 
 			return true;
 		} else {
-			std::cerr << "Scripting disabled, encountered failure when opening " << *cmdline_opts_.script_file << std::endl;
+			std::cerr << "Encountered failure when opening script '" << *cmdline_opts_.script_file << "'\n";
 		}
 	}
+
+	if (cmdline_opts_.plugin_file)
+	{
+		std::string filename = *cmdline_opts_.plugin_file;
+
+		std::cerr << "Loading a plugin file'" << filename << "'...\n";
+
+		filesystem::scoped_istream sf = filesystem::istream_file(filename);
+
+		try {
+			if (sf->fail()) {
+				throw std::runtime_error("failed to open plugin file");
+			}
+
+			/* Cancel all "jumps" to editor / campaign / multiplayer */
+			jump_to_multiplayer_ = false;
+			jump_to_editor_ = false;
+			jump_to_campaign_.jump_ = false;
+
+			std::string full_plugin((std::istreambuf_iterator<char>(*sf)), std::istreambuf_iterator<char>());
+
+			plugins_manager & pm = *plugins_manager::get();
+
+			size_t i = pm.add_plugin(filename, full_plugin);
+
+			for (size_t j = 0 ; j < pm.size(); ++j) {
+				std::cerr << j << ": " << pm.get_name(j) << " -- " << pm.get_detailed_status(j) << std::endl;
+			}
+
+			std::cerr << "Starting a plugin...\n";
+			pm.start_plugin(i);
+
+			for (size_t j = 0 ; j < pm.size(); ++j) {
+				std::cerr << j << ": " << pm.get_name(j) << " -- " << pm.get_detailed_status(j) << std::endl;
+			}
+
+			plugins_context pc("init");
+
+			for (size_t repeat = 0; repeat < 5; ++repeat) {
+				std::cerr << "Playing a slice...\n";
+				pc.play_slice();
+
+				for (size_t j = 0 ; j < pm.size(); ++j) {
+					std::cerr << j << ": " << pm.get_name(j) << " -- " << pm.get_detailed_status(j) << std::endl;
+				}
+			}
+
+			return true;
+		} catch (std::exception & e) {
+			gui2::show_error_message(disp().video(), std::string("When loading a plugin, error:\n") + e.what());
+		}
+	}
+	else {
+		std::cerr << "no plugin file found\n";
+	}
+
 	return false;
 }
 

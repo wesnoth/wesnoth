@@ -30,6 +30,7 @@ before_install:
     - export CPP_TESTS=true
     - export CHECK_UTF8=true
     - export PLAY_TEST=true
+    - export MP_TEST=false
     - export STRICT_COMPILATION=true
     - export EXTRA_FLAGS_RELEASE="-O0"
     - export WML_TEST_TIME=40
@@ -39,6 +40,7 @@ before_install:
     - if [ "$BUILD" = 3 ]; then export STRICT_COMPILATION=false; fi
     - if [ "$BUILD" = 3 ]; then export EXTRA_FLAGS_RELEASE=""; fi
     - if [ "$BUILD" = 3 ]; then export WML_TEST_TIME=20; fi
+    - if [ "$BUILD" = 3 ]; then export MP_TEST=true; fi
 
     - if [ "$BUILD" = 4 ]; then export CXX11=true; fi
     - if [ "$BUILD" = 4 ]; then export EXTRA_FLAGS_RELEASE="-O0 -Wno-literal-suffix -Wno-deprecated-declarations"; fi
@@ -78,6 +80,7 @@ script:
     - if [ "$CPP_TESTS" = true ]; then time ./test; fi          # The test executor script seems to be blocking stderr, disabling for now...   time ./utils/travis/test_executor.sh; fi
     - if [ "$WML_TESTS" = true ]; then time ./run_wml_tests -g -v -c -t "$WML_TEST_TIME"; fi
     - if [ "$PLAY_TEST" = true ]; then time ./utils/travis/play_test_executor.sh; fi
+    - if [ "$MP_TEST" = true ]; then time ./utils/travis/mp_test_executor.sh; fi
 
 after_failure:
     - if [ -f "errors.log" ]; then echo -e "\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n"; cat errors.log; fi

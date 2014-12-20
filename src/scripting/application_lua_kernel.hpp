@@ -17,23 +17,41 @@
 #define SCRIPTING_APP_LUA_KERNEL_HPP
 
 #include "scripting/lua_kernel_base.hpp"
+#include "scripting/plugins/context.hpp"
+#include "scripting/plugins/manager.hpp"
 
+#include <boost/function.hpp>
+#include <boost/noncopyable.hpp>
 #include <string>
+#include <vector>
 
-class config;
 class CVideo;
-class game_launcher;
 struct lua_State;
 
 class application_lua_kernel : public lua_kernel_base {
 public:
 	application_lua_kernel(CVideo *);
-	bool initialize(game_launcher* gl);
 
 	virtual std::string my_name() { return "Application Lua Kernel"; }
 
-	static int intf_set_script(lua_State * L); /* Registers a lua function as the current script */
-	void call_script(const config & cfg); /* Call the current script, with config passed as argument */
+	typedef std::vector<boost::function<bool(void)> > request_list;
+
+	class thread : private boost::noncopyable {
+		lua_State * T_;
+		bool started_;
+
+		thread(lua_State *);
+	public :
+		bool is_running();
+		std::string status();
+
+		request_list run_script(const plugins_context & ctxt, const std::vector<plugins_manager::event> & queue);
+
+		friend class application_lua_kernel;
+	};
+
+	thread * load_script_from_string(const std::string &);	//throws
+	thread * load_script_from_file(const std::string &);	//throws
 };
 
 #endif

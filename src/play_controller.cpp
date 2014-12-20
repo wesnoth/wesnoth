@@ -48,6 +48,7 @@
 #include "saved_game.hpp"
 #include "save_blocker.hpp"
 #include "scripting/game_lua_kernel.hpp"
+#include "scripting/plugins/context.hpp"
 #include "sound.hpp"
 #include "soundsource.hpp"
 #include "synced_context.hpp"
@@ -265,6 +266,10 @@ void play_controller::init(CVideo& video){
 	init_managers();
 	loadscreen::global_loadscreen->start_stage("start game");
 	loadscreen_manager->reset();
+
+	plugins_context_->set_callback("save_game", boost::bind(&play_controller::save_game_auto, this, boost::bind(get_str, _1, "filename" )), true);
+	plugins_context_->set_callback("save_replay", boost::bind(&play_controller::save_replay_auto, this, boost::bind(get_str, _1, "filename" )), true);
+	plugins_context_->set_callback("quit", boost::bind(&play_controller::force_end_level, this, QUIT), false);
 }
 
 void play_controller::init_managers(){
@@ -303,6 +308,14 @@ void play_controller::save_game(){
 	}
 }
 
+void play_controller::save_game_auto(const std::string & filename) {
+	if(save_blocker::try_block()) {
+		save_blocker::save_unblocker unblocker;
+		savegame::ingame_savegame save(saved_game_, *gui_, to_config(), preferences::save_compression_format());
+		save.save_game_automatic(gui_->video(), false, filename);
+	}
+}
+
 void play_controller::save_replay(){
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
@@ -310,6 +323,14 @@ void play_controller::save_replay(){
 		save.save_game_interactive(gui_->video(), "", gui::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_replay);
+	}
+}
+
+void play_controller::save_replay_auto(const std::string & filename) {
+	if(save_blocker::try_block()) {
+		save_blocker::save_unblocker unblocker;
+		savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
+		save.save_game_automatic(gui_->video(), false, filename);
 	}
 }
 

@@ -23,6 +23,7 @@
 #include "game_config_manager.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
+#include "config_assign.hpp"
 #include "construct_dialog.hpp"
 #include "settings.hpp"
 #include "map.hpp"
@@ -37,11 +38,13 @@
 #include "multiplayer_create.hpp"
 #include "filesystem.hpp"
 #include "savegame.hpp"
+#include "scripting/plugins/context.hpp"
 #include "log.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 
+#include <boost/bind.hpp>
 #include <boost/foreach.hpp>
 
 static lg::log_domain log_config("config");
@@ -55,6 +58,28 @@ const SDL_Rect null_rect = {0, 0, 0, 0};
 }
 
 namespace mp {
+
+static config get_selected_helper(const ng::create_engine * eng_ptr)
+{
+	assert(eng_ptr);
+	const ng::create_engine & eng = *eng_ptr;
+	return config_of("id", eng.current_level().id())
+		("name", eng.current_level().name())
+		("icon", eng.current_level().icon())
+		("description", eng.current_level().description())
+		("allow_era_choice", eng.current_level().allow_era_choice())
+		("type", ng::level::TYPE_to_string(eng.current_level_type()));
+}
+
+static config find_helper(const ng::create_engine * eng_ptr, const config & cfg)
+{
+	assert(eng_ptr);
+	const ng::create_engine & eng = *eng_ptr;
+	std::string str = cfg["id"].str();
+
+	return config_of("index", eng.find_level_by_id(str))
+		("type", ng::level::TYPE_to_string(eng.find_level_type_by_id(str)));
+}
 
 create::create(game_display& disp, const config& cfg, saved_game& state,
 	chat& c, config& gamelist) :
@@ -183,6 +208,31 @@ create::create(game_display& disp, const config& cfg, saved_game& state,
 	}
 
 	gamelist_updated();
+
+	plugins_context_.reset(new plugins_context("Multiplayer Create"));
+
+	//These structure initializers create a lobby::process_data_event
+	plugins_context_->set_callback("create", 	boost::bind(&create::plugin_event_helper, this, process_event_data (true, false, false)));
+	plugins_context_->set_callback("load", 		boost::bind(&create::plugin_event_helper, this, process_event_data (false, true, false)));
+	plugins_context_->set_callback("quit", 		boost::bind(&create::plugin_event_helper, this, process_event_data (false, false, true)));
+	plugins_context_->set_callback("chat",		boost::bind(&create::send_chat_message, this, boost::bind(get_str, _1, "message"), false),	true);
+	plugins_context_->set_callback("select_level",	boost::bind(&gui::menu::move_selection, &levels_menu_, boost::bind(get_size_t, _1, "index", 0u)), true);
+	plugins_context_->set_callback("select_type",	boost::bind(&create::select_level_type_helper, this, boost::bind(get_str, _1, "type")), true);
+
+	plugins_context_->set_accessor("game_config",	boost::bind(&create::game_config, this));
+	plugins_context_->set_accessor("get_selected",  boost::bind(&get_selected_helper, &engine_));
+	plugins_context_->set_accessor("find_level",  	boost::bind(&find_helper, &engine_, _1));
+}
+
+void create::select_level_type_helper(const std::string & str)
+{
+	for (size_t idx = 0; idx < available_level_types_.size(); idx++) {
+		if (ng::level::TYPE_to_string(available_level_types_[idx]) == str) {
+			level_type_combo_.set_selected(idx);
+			init_level_type_changed(0);
+			process_event_impl(process_event_data(false, false, false));
+		}
+	}
 }
 
 create::~create()
@@ -209,18 +259,34 @@ const mp_game_settings& create::get_parameters()
 	return engine_.get_parameters();
 }
 
+bool create::plugin_event_helper(const process_event_data & data)
+{
+	process_event_impl(data);
+	return get_result() == mp::ui::CONTINUE;
+}
+
 void create::process_event()
 {
 	int mousex, mousey;
 	SDL_GetMouseState(&mousex,&mousey);
 	tooltips::process(mousex, mousey);
 
-	if (cancel_game_.pressed()) {
+	process_event_data data;
+	data.quit = cancel_game_.pressed();
+	data.create = launch_game_.pressed() || levels_menu_.double_clicked();
+	data.load = load_game_.pressed();
+
+	process_event_impl(data);
+}
+
+void create::process_event_impl(const process_event_data & data)
+{
+	if (data.quit) {
 		set_result(QUIT);
 		return;
 	}
 
-	if (launch_game_.pressed() || levels_menu_.double_clicked()) {
+	if (data.create) {
 		if (engine_.current_level().can_launch_game()) {
 
 			engine_.prepare_for_era_and_mods();
@@ -259,19 +325,26 @@ void create::process_event()
 		init_level_type_changed(0);
 	}
 
-	if (load_game_.pressed()) {
+	if (data.load) {
 		try
 		{
 			savegame::loadgame load(disp_,
 				game_config_manager::get()->game_config(), engine_.get_state());
-			
-			if (load.load_multiplayer_game()) {
-				engine_.prepare_for_saved_game();
 
-				set_result(LOAD_GAME);
-
-				return;
+			if (data.filename) {
+				if (!load.load_game(*data.filename, false, false, false, "", true)) {
+					return ;
+				}
+			} else {
+				if (!load.load_multiplayer_game()) {
+					return ;
+				}
 			}
+
+			engine_.prepare_for_saved_game();
+			set_result(LOAD_GAME);
+
+			return;
 		}
 		catch(config::error&) {
 		}

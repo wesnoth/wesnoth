@@ -26,9 +26,11 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
-#include "wml_separators.hpp"
 #include "mp_ui_alerts.hpp"
+#include "scripting/plugins/context.hpp"
+#include "wml_separators.hpp"
 
+#include <boost/bind.hpp>
 #include <boost/foreach.hpp>
 
 static lg::log_domain log_mp_connect("mp/connect");
@@ -438,13 +440,35 @@ connect::connect(game_display& disp, const std::string& game_name,
 	income_title_label_.hide(params().saved_game);
 
 	update_playerlist_state(true);
+
+	plugins_context_.reset(new plugins_context("Multiplayer Connect"));
+
+	//These structure initializers create a lobby::process_data_event
+	plugins_context_->set_callback("launch", 	boost::bind(&connect::plugin_event_helper, this, process_event_data (true, false)));
+	plugins_context_->set_callback("quit", 		boost::bind(&connect::plugin_event_helper, this, process_event_data (false, true)));
+	plugins_context_->set_callback("chat",		boost::bind(&connect::send_chat_message, this, boost::bind(get_str, _1, "message"), false),	true);
 }
 
 connect::~connect()
 {
 }
 
+bool connect::plugin_event_helper(const process_event_data & data)
+{
+	process_event_impl(data);
+	return get_result() == mp::ui::CONTINUE;
+}
+
 void connect::process_event()
+{
+	process_event_data data;
+	data.quit = cancel_.pressed();
+	data.launch = launch_.pressed();
+
+	process_event_impl(data);
+}
+
+void connect::process_event_impl(const process_event_data & data)
 {
 	bool changed = false;
 
@@ -455,7 +479,7 @@ void connect::process_event()
 		}
 	}
 
-	if (cancel_.pressed()) {
+	if (data.quit) {
 		if (network::nconnections() > 0) {
 			config cfg;
 			cfg.add_child("leave_game");
@@ -466,7 +490,7 @@ void connect::process_event()
 		return;
 	}
 
-	if (launch_.pressed()) {
+	if (data.launch) {
 		if (engine_.can_start_game()) {
 			set_result(mp::ui::PLAY);
 		}

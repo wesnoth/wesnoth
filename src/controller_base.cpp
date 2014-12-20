@@ -22,8 +22,10 @@
 #include "mouse_handler_base.hpp"
 #include "resources.hpp"
 #include "play_controller.hpp"
+#include "scripting/plugins/context.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/scoped_ptr.hpp>
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -35,7 +37,8 @@ controller_base::controller_base(
 	key_(),
 	browse_(false),
 	scrolling_(false),
-	joystick_manager_()
+	joystick_manager_(),
+	plugins_context_(new plugins_context("Game"))
 {
 }
 
@@ -211,6 +214,11 @@ bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse
 void controller_base::play_slice(bool is_delay_enabled)
 {
 	CKey key;
+
+	if (plugins_context_) {
+		plugins_context_->play_slice();
+	}
+
 	events::pump();
 	events::raise_process_event();
 	events::raise_draw_event();
@@ -358,4 +366,8 @@ const config& controller_base::get_theme(const config& game_config, std::string 
 
 	static config empty;
 	return empty;
+}
+
+plugins_context * controller_base::get_plugins_context() {
+	return plugins_context_.get();
 }

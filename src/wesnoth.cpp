@@ -42,6 +42,9 @@
 #include "preferences.hpp"              // for core_id, etc
 #include "preferences_display.hpp"      // for display_manager
 #include "replay.hpp"                   // for recorder, replay
+#include "scripting/application_lua_kernel.hpp"
+#include "scripting/plugins/context.hpp"
+#include "scripting/plugins/manager.hpp"
 #include "sdl/exception.hpp"            // for texception
 #include "serialization/binary_or_text.hpp"  // for config_writer
 #include "serialization/parser.hpp"     // for read
@@ -521,7 +524,7 @@ static void warn_early_init_failure()
  * Handles the lua script command line arguments if present.
  * This function will only run once.
  */
-static void handle_lua_script_args(game_launcher * game, commandline_options & cmdline_opts)
+static void handle_lua_script_args(game_launcher * game, commandline_options & /*cmdline_opts*/)
 {
 	static bool first_time = true;
 
@@ -529,8 +532,9 @@ static void handle_lua_script_args(game_launcher * game, commandline_options & c
 
 	first_time = false;
 
-	if (cmdline_opts.script_file && !game->init_lua_script()) {
-		std::cerr << "could not load lua script: " << *cmdline_opts.script_file << std::endl;
+	if (!game->init_lua_script()) {
+		std::cerr << "error when loading lua scripts at startup\n";
+		//std::cerr << "could not load lua script: " << *cmdline_opts.script_file << std::endl;
 	}
 }
 
@@ -632,6 +636,21 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	LOG_CONFIG << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
 
+	plugins_manager plugins_man(new application_lua_kernel(&game->disp().video()));
+
+	plugins_context::Reg const callbacks[] = {
+		{ "play_multiplayer",		boost::bind(&game_launcher::play_multiplayer, game.get())},
+		{ NULL, NULL }
+	};
+	plugins_context::aReg const accessors[] = {
+		{ "command_line",		boost::bind(&commandline_options::to_config, &cmdline_opts)},
+		{ NULL, NULL }
+	};
+
+	plugins_context plugins("titlescreen", callbacks, accessors);
+
+	plugins.set_callback("exit", boost::bind(&safe_exit, boost::bind(get_int, _1, "code", 0)), false);
+
 	for (;;)
 	{
 		// reset the TC, since a game can modify it, and it may be used
@@ -658,6 +677,8 @@ static int do_gameloop(const std::vector<std::string>& args)
 		loadscreen_manager.reset();
 
 		handle_lua_script_args(&*game,cmdline_opts);
+
+		plugins.play_slice();
 
 		if(cmdline_opts.unit_test) {
 			if(cmdline_opts.timeout) {

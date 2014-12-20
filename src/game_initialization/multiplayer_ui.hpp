@@ -18,16 +18,19 @@
 #include "hotkey/command_executor.hpp"
 #include "network.hpp"
 #include "preferences_display.hpp"
+#include "scripting/plugins/context.hpp"
 #include "widgets/combo.hpp"
 #include "widgets/label.hpp"
 #include "widgets/menu.hpp"
 #include "widgets/textbox.hpp"
 
 #include <deque>
+#include <boost/scoped_ptr.hpp>
 
 class display;
 class game_display;
 class config;
+class plugins_context;
 
 namespace mp {
 
@@ -255,6 +258,11 @@ private:
 		bool           registered;
 		bool operator> (const user_info& b) const;
 	};
+
+protected:
+	boost::scoped_ptr<plugins_context> plugins_context_;
+public:
+	plugins_context * get_plugins_context();
 };
 
 }

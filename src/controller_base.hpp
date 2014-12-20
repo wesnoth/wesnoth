@@ -25,7 +25,10 @@
 
 #include "map.hpp"
 
+#include <boost/scoped_ptr.hpp>
+
 class CVideo;
+class plugins_context;
 
 namespace events {
 class mouse_handler_base;
@@ -40,6 +43,8 @@ public:
 	void play_slice(bool is_delay_enabled = true);
 
 	int get_ticks();
+
+	plugins_context * get_plugins_context();
 
 protected:
 	/**
@@ -115,6 +120,8 @@ protected:
 	bool browse_;
 	bool scrolling_;
 	joystick_manager joystick_manager_;
+
+	boost::scoped_ptr<plugins_context> plugins_context_;
 };
 
 

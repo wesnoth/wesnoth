@@ -25,20 +25,22 @@
 #include "lua_jailbreak_exception.hpp"
 
 #include "config.hpp"
+#include "make_enum.hpp"
 
 #include <string>
 
 #include <boost/optional.hpp>
 #include <boost/variant/variant.hpp>
 
-enum LEVEL_RESULT {
-	NONE,
-	VICTORY,
-	DEFEAT,
-	QUIT,
-	OBSERVER_END,
-	SKIP_TO_LINGER
-};
+MAKE_ENUM(LEVEL_RESULT,
+	(NONE,		"none")
+	(VICTORY,	"victory")
+	(DEFEAT,	"defeat")
+	(QUIT,		"quit")
+	(OBSERVER_END,	"observer_end")
+	(SKIP_TO_LINGER,"skip_to_linger")
+)
+MAKE_ENUM_STREAM_OPS1(LEVEL_RESULT)
 
 /**
  * Struct used to transmit info caught from an end_turn_exception.

@@ -27,6 +27,7 @@
 #include "actions/undo.hpp"
 #include "actions/vision.hpp"
 #include "ai/manager.hpp"
+#include "config_assign.hpp"
 #include "dialogs.hpp"
 #include "display_chat_manager.hpp"
 #include "filechooser.hpp"
@@ -66,6 +67,7 @@
 #include "savegame.hpp"
 #include "save_index.hpp"
 #include "scripting/game_lua_kernel.hpp"
+#include "scripting/plugins/manager.hpp"
 #include "sound.hpp"
 #include "statistics_dialog.hpp"
 #include "synced_context.hpp"
@@ -1402,6 +1404,10 @@ void menu_handler::add_chat_message(const time_t& time,
 		events::chat_handler::MESSAGE_TYPE type)
 {
 	gui_->get_chat_manager().add_chat_message(time, speaker, side, message, type, false);
+
+	plugins_manager::get()->notify_event("chat", config_of("sender", preferences::login())
+								("message", message)
+								("whisper", type == events::chat_handler::MESSAGE_PRIVATE));
 }
 
 //simple command args parser, separated from command_handler for clarity.
@@ -2568,9 +2574,9 @@ void menu_handler::send_chat_message(const std::string& message, bool allies_onl
 	}
 
 	recorder.speak(cfg);
+
 	add_chat_message(time, cfg["id"], side, message,
 			private_message ? events::chat_handler::MESSAGE_PRIVATE : events::chat_handler::MESSAGE_PUBLIC);
-
 }
 
 

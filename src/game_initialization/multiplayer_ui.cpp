@@ -29,6 +29,8 @@
 #include "mp_ui_alerts.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
+#include "scripting/plugins/context.hpp"
+#include "scripting/plugins/manager.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -38,6 +40,9 @@ static lg::log_domain log_config("config");
 static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
 #define ERR_NW LOG_STREAM(err, log_network)
+
+static lg::log_domain log_mp("mp/main");
+#define DBG_MP LOG_STREAM(debug, log_mp)
 
 namespace {
 	/** The maximum number of messages in the chat history. */
@@ -113,10 +118,12 @@ void chat::init_textbox(gui::textbox& textbox)
 
 void chat::update_textbox(gui::textbox& textbox)
 {
+	//DBG_MP << "update_textbox...\n";
 	for(msg_hist::const_iterator itor = message_history_.begin() + last_update_;
 			itor != message_history_.end(); ++itor) {
 		textbox.append_text(format_message(*itor), true, color_message(*itor));
 	}
+	//DBG_MP << "update_textbox end\n";
 
 	last_update_ = message_history_.size();
 }
@@ -184,7 +191,8 @@ ui::ui(game_display& disp, const std::string& title, const config& cfg, chat& c,
 
 	result_(CONTINUE),
 	gamelist_refresh_(false),
-	lobby_clock_(0)
+	lobby_clock_(0),
+	plugins_context_(NULL)
 {
 	const SDL_Rect area = sdl::create_rect(0
 			, 0
@@ -431,6 +439,10 @@ void ui::process_message(const config& msg, const bool whisper) {
 
 	chat_.add_message(time(NULL), room + prefix, msg["message"]);
 	chat_.update_textbox(chat_textbox_);
+
+	config temp = msg;
+	temp["whisper"] = whisper;
+	plugins_manager::get()->notify_event("chat", temp); //notify plugins of the network message
 }
 
 void ui::process_network_data(const config& data, const network::connection /*sock*/)
@@ -704,6 +716,10 @@ void ui::append_to_title(const std::string& text) {
 const gui::label& ui::title() const
 {
 	return title_;
+}
+
+plugins_context * ui::get_plugins_context() {
+	return plugins_context_.get();
 }
 
 }// namespace mp

@@ -692,9 +692,11 @@ void execute_command(display& disp, const hotkey_command& command, command_execu
 		}
 		case LUA_CONSOLE: {
 			if (!disp.in_game()) {
-				WRN_G << "caution: attempting to interface console with game lua kernel when we are not in game...\n";
+				//WRN_G << "caution: attempting to interface console with game lua kernel when we are not in game...\n";
+				gui2::tlua_interpreter::display(disp.video(), gui2::tlua_interpreter::APP);
+			} else {
+				gui2::tlua_interpreter::display(disp.video(), gui2::tlua_interpreter::GAME);
 			}
-			gui2::tlua_interpreter::display(disp.video(), gui2::tlua_interpreter::GAME);
 			break;
 		}
 		default:

@@ -40,6 +40,7 @@
 #include "playcampaign.hpp"
 #include "playmp_controller.hpp"
 #include "settings.hpp"
+#include "scripting/plugins/context.hpp"
 #include "sound.hpp"
 #include "unit_id.hpp"
 #include "game_config_manager.hpp"
@@ -99,6 +100,11 @@ void run_lobby_loop(display& disp, mp::ui& ui)
 		// or uptodate data can prevent invalid actions
 		// i.e. press cancel while you receive [start_game] or press start game while someone leaves
 		ui.process_network();
+
+		if (plugins_context * pc = ui.get_plugins_context()) {
+			pc->play_slice();
+			//DBG_MP << "* playing a plugins slice\n";
+		}
 
 		events::pump();
 		events::raise_process_event();
@@ -460,6 +466,8 @@ static void enter_wait_mode(game_display& disp, const config& game_config,
 				//FIXME implement true skip replay
 				//state = ui.request_snapshot();
 			//}
+		} else {
+			DBG_MP << "skipped wait mode, result = " << res << std::endl;
 		}
 	}
 
