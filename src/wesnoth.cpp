@@ -533,7 +533,7 @@ static void handle_lua_script_args(game_launcher * game, commandline_options & /
 	first_time = false;
 
 	if (!game->init_lua_script()) {
-		std::cerr << "error when loading lua scripts at startup\n";
+		//std::cerr << "error when loading lua scripts at startup\n";
 		//std::cerr << "could not load lua script: " << *cmdline_opts.script_file << std::endl;
 	}
 }

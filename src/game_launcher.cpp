@@ -445,7 +445,9 @@ bool game_launcher::init_video()
 
 bool game_launcher::init_lua_script()
 {
-	std::cerr << "checking lua scripts\n";
+	bool error = false;
+
+	std::cerr << "checking lua scripts... ";
 
 	if (cmdline_opts_.script_unsafe_mode) {
 		plugins_manager::get()->get_kernel_base()->load_package(); //load the "package" package, so that scripts can get what packages they want
@@ -467,10 +469,9 @@ bool game_launcher::init_lua_script()
 			std::cerr << "\nRunning lua script: " << *cmdline_opts_.script_file << std::endl;
 
 			plugins_manager::get()->get_kernel_base()->run(full_script.c_str());
-
-			return true;
 		} else {
 			std::cerr << "Encountered failure when opening script '" << *cmdline_opts_.script_file << "'\n";
+			error = true;
 		}
 	}
 
@@ -523,13 +524,15 @@ bool game_launcher::init_lua_script()
 			return true;
 		} catch (std::exception & e) {
 			gui2::show_error_message(disp().video(), std::string("When loading a plugin, error:\n") + e.what());
+			error = true;
 		}
 	}
-	else {
-		std::cerr << "no plugin file found\n";
+
+	if (!error) {
+		std::cerr << "ok\n";
 	}
 
-	return false;
+	return !error;
 }
 
 bool game_launcher::play_test()
