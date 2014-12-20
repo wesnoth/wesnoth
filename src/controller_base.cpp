@@ -32,9 +32,8 @@ static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
 controller_base::controller_base(
-		const int ticks, const config& game_config, CVideo& /*video*/) :
+		const config& game_config, CVideo& /*video*/) :
 	game_config_(game_config),
-	ticks_(ticks),
 	key_(),
 	browse_(false),
 	scrolling_(false),
@@ -46,10 +45,6 @@ controller_base::controller_base(
 
 controller_base::~controller_base()
 {
-}
-
-int controller_base::get_ticks() {
-	return ticks_;
 }
 
 void controller_base::handle_event(const SDL_Event& event)

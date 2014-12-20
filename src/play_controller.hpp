@@ -192,6 +192,8 @@ public:
 
 	game_events::t_pump & pump();
 
+	int get_ticks();
+
 protected:
 	game_display& get_display();
 	bool have_keyboard_focus();
@@ -278,6 +280,8 @@ protected:
 	bool it_is_a_new_turn_;
 	bool init_side_done_;
 
+	const int ticks_;
+
 	const std::string& select_victory_music() const;
 	const std::string& select_defeat_music()  const;
 
@@ -314,7 +318,6 @@ private:
 	hotkey::scope_changer scope_;
 	// used to sync with the mpserver, not persistent in savefiles.
 	int server_request_number_;
-
 };
 
 

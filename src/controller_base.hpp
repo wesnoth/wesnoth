@@ -37,12 +37,10 @@ namespace soundsource { class manager; }
 class controller_base : public hotkey::command_executor, public events::sdl_handler
 {
 public:
-	controller_base(const int ticks, const config& game_config, CVideo& video);
+	controller_base(const config& game_config, CVideo& video);
 	virtual ~controller_base();
 
 	void play_slice(bool is_delay_enabled = true);
-
-	int get_ticks();
 
 protected:
 	/**
@@ -102,7 +100,6 @@ protected:
 
 	static const config &get_theme(const config& game_config, std::string theme_name);
 	const config& game_config_;
-	const int ticks_;
 	CKey key_;
 	bool browse_;
 	bool scrolling_;

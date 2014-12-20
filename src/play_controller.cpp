@@ -107,7 +107,7 @@ static void clear_resources()
 play_controller::play_controller(const config& level, saved_game& state_of_game,
 		const int ticks, const config& game_config, const tdata_cache & tdata,
 		CVideo& video, bool skip_replay) :
-	controller_base(ticks, game_config, video),
+	controller_base(game_config, video),
 	observer(),
 	savegame_config(),
 	gamestate_(level, tdata),
@@ -135,6 +135,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	linger_(false),
 	it_is_a_new_turn_(true),
 	init_side_done_(level["init_side_done"].to_bool(true)),
+	ticks_(ticks),
 	savenames_(),
 	wml_commands_(),
 	wml_command_pager_(new wmi_pager()),
@@ -1452,4 +1453,8 @@ void play_controller::do_consolesave(const std::string& filename)
 
 game_events::t_pump & play_controller::pump() {
 	return events_manager_->pump();
+}
+
+int play_controller::get_ticks() {
+	return ticks_;
 }

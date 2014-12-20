@@ -61,7 +61,7 @@ static std::vector<std::string> saved_windows_;
 namespace editor {
 
 editor_controller::editor_controller(const config &game_config, CVideo& video)
-	: controller_base(SDL_GetTicks(), game_config, video)
+	: controller_base(game_config, video)
 	, mouse_handler_base()
 	, active_menu_(editor::MAP)
 	, reports_(new reports())
