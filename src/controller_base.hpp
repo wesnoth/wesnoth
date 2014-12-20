@@ -30,9 +30,9 @@
 class CVideo;
 class plugins_context;
 
-namespace events {
-class mouse_handler_base;
-}
+namespace events { class mouse_handler_base; }
+
+namespace soundsource { class manager; }
 
 class controller_base : public hotkey::command_executor, public events::sdl_handler
 {
@@ -47,12 +47,6 @@ public:
 	plugins_context * get_plugins_context();
 
 protected:
-	/**
-	 * Called by play_slice after events:: calls, but before processing scroll
-	 * and other things like menu.
-	 */
-	virtual void slice_before_scroll();
-
 	/**
 	 * Get a reference to a mouse handler member a derived class uses
 	 */
@@ -117,6 +111,10 @@ protected:
 	joystick_manager joystick_manager_;
 
 	boost::scoped_ptr<plugins_context> plugins_context_;
+
+	void set_soundsource_manager(soundsource::manager *);
+
+	soundsource::manager * soundsources_;
 };
 
 

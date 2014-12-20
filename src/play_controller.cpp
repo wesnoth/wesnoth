@@ -280,6 +280,7 @@ void play_controller::init_managers(){
 	soundsources_manager_.reset(new soundsource::manager(*gui_));
 
 	resources::soundsources = soundsources_manager_.get();
+	controller_base::set_soundsource_manager(soundsources_manager_.get());
 	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << std::endl;
 }
 
@@ -984,10 +985,6 @@ int play_controller::find_human_team_before_current_player() const
 	}
 
 	return -1;
-}
-
-void play_controller::slice_before_scroll() {
-	soundsources_manager_->update();
 }
 
 events::mouse_handler& play_controller::get_mouse_handler_base() {

@@ -23,6 +23,7 @@
 #include "resources.hpp"
 #include "play_controller.hpp"
 #include "scripting/plugins/context.hpp"
+#include "soundsource.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/scoped_ptr.hpp>
@@ -38,7 +39,8 @@ controller_base::controller_base(
 	browse_(false),
 	scrolling_(false),
 	joystick_manager_(),
-	plugins_context_(new plugins_context("Game"))
+	plugins_context_(new plugins_context("Game")),
+	soundsources_(NULL)
 {
 }
 
@@ -223,7 +225,9 @@ void controller_base::play_slice(bool is_delay_enabled)
 	events::raise_process_event();
 	events::raise_draw_event();
 
-	slice_before_scroll();
+	if (soundsources_) {
+		soundsources_->update();
+	}
 	const theme::menu* const m = get_display().menu_pressed();
 	if(m != NULL) {
 		const SDL_Rect& menu_loc = m->location(get_display().screen_area());
@@ -288,11 +292,6 @@ void controller_base::play_slice(bool is_delay_enabled)
 		// scrolling ended, update the cursor and the brightened hex
 		get_mouse_handler_base().mouse_update(browse_, highlighted_hex);
 	}
-}
-
-void controller_base::slice_before_scroll()
-{
-	//no action by default
 }
 
 void controller_base::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
@@ -364,4 +363,9 @@ const config& controller_base::get_theme(const config& game_config, std::string 
 
 plugins_context * controller_base::get_plugins_context() {
 	return plugins_context_.get();
+}
+
+void controller_base::set_soundsource_manager(soundsource::manager * ptr)
+{
+	soundsources_ = ptr;
 }
