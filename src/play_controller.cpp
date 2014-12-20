@@ -210,7 +210,7 @@ void play_controller::init(CVideo& video){
 
 	LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("init theme");
-	const config &theme_cfg = get_theme(game_config_, level_["theme"]);
+	const config &theme_cfg = controller_base::get_theme(game_config_, level_["theme"]);
 
 	LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks_) << std::endl;
 	whiteboard_manager_.reset(new wb::manager());

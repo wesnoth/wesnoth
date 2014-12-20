@@ -113,7 +113,7 @@ protected:
 
 	virtual bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
 
-	const config &get_theme(const config& game_config, std::string theme_name);
+	static const config &get_theme(const config& game_config, std::string theme_name);
 	const config& game_config_;
 	const int ticks_;
 	CKey key_;

@@ -180,7 +180,7 @@ void replay_controller::init_replay_display(){
 
 void replay_controller::rebuild_replay_theme()
 {
-	const config &theme_cfg = get_theme(game_config_, level_["theme"]);
+	const config &theme_cfg = controller_base::get_theme(game_config_, level_["theme"]);
 	if (const config &res = theme_cfg.child("resolution"))
 	{
 		if (const config &replay_theme_cfg = res.child("replay"))
