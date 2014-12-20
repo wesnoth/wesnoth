@@ -355,9 +355,8 @@ void replay_controller::reset_replay()
 	statistics::fresh_stats();
 	set_victory_when_enemies_defeated(level_["victory_when_enemies_defeated"].to_bool(true));
 
-	resources::screen->recalculate_minimap();
-	resources::screen->invalidate_all();
-	resources::screen->rebuild_all();
+	gui_->needs_rebuild(true);
+	gui_->maybe_rebuild();
 
 	// Add era events for MP game.
 	if (const config &era_cfg = level_.child("era")) {
