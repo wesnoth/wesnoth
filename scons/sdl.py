@@ -131,6 +131,9 @@ def CheckPNG(context):
 \n
 '''
     context.Message("Checking for PNG support in SDL... ")
+    if context.env["host"]:
+        context.Result("n/a (cross-compile)")
+        return True
     (result, output) = context.TryRun(test_program, ".c")
     if result:
         context.Result("yes")
