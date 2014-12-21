@@ -32,14 +32,12 @@ static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
 controller_base::controller_base(
-		const config& game_config, CVideo& /*video*/) :
-	game_config_(game_config),
-	key_(),
-	browse_(false),
-	scrolling_(false),
-	joystick_manager_(),
-	plugins_context_(),
-	soundsources_()
+		const config& game_config, CVideo& /*video*/)
+	: game_config_(game_config)
+	, key_()
+	, browse_(false)
+	, scrolling_(false)
+	, joystick_manager_()
 {
 }
 
@@ -212,7 +210,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 {
 	CKey key;
 
-	if (boost::shared_ptr<plugins_context> l = plugins_context_.lock()) {
+	if (plugins_context *l = get_plugins_context()) {
 		l->play_slice();
 	}
 
@@ -221,7 +219,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 	events::raise_draw_event();
 
 	// Update sound sources before scrolling
-	if (boost::shared_ptr<soundsource::manager> l = soundsources_.lock()) {
+	if (soundsource::manager *l = get_soundsource_man()) {
 		l->update();
 	}
 
@@ -356,14 +354,4 @@ const config& controller_base::get_theme(const config& game_config, std::string 
 
 	static config empty;
 	return empty;
-}
-
-void controller_base::set_plugins_context(const boost::shared_ptr<plugins_context> & ptr)
-{
-	plugins_context_ = ptr;
-}
-
-void controller_base::set_soundsource_manager(const boost::shared_ptr<soundsource::manager> & ptr)
-{
-	soundsources_ = ptr;
 }

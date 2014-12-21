@@ -194,6 +194,9 @@ public:
 
 	int get_ticks();
 
+	virtual soundsource::manager * get_soundsource_man();
+	virtual plugins_context * get_plugins_context();
+
 protected:
 	game_display& get_display();
 	bool have_keyboard_focus();
@@ -251,7 +254,7 @@ protected:
 	//more managers
 	events::mouse_handler mouse_handler_;
 	events::menu_handler menu_handler_;
-	boost::shared_ptr<soundsource::manager> soundsources_manager_;
+	boost::scoped_ptr<soundsource::manager> soundsources_manager_;
 	persist_manager persist_;
 
 	//other objects
@@ -266,7 +269,7 @@ protected:
 	boost::shared_ptr<wb::manager> whiteboard_manager_;
 
 	//plugins context
-	boost::shared_ptr<plugins_context> plugins_context_;
+	boost::scoped_ptr<plugins_context> plugins_context_;
 
 	//if a team is specified whose turn it is, it means we're loading a game
 	//instead of starting a fresh one. Gets reset to false after init_side

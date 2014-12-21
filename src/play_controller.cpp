@@ -273,8 +273,6 @@ void play_controller::init(CVideo& video){
 	plugins_context_->set_callback("save_game", boost::bind(&play_controller::save_game_auto, this, boost::bind(get_str, _1, "filename" )), true);
 	plugins_context_->set_callback("save_replay", boost::bind(&play_controller::save_replay_auto, this, boost::bind(get_str, _1, "filename" )), true);
 	plugins_context_->set_callback("quit", boost::bind(&play_controller::force_end_level, this, QUIT), false);
-
-	controller_base::set_plugins_context(plugins_context_);
 }
 
 void play_controller::init_managers(){
@@ -284,7 +282,6 @@ void play_controller::init_managers(){
 	soundsources_manager_.reset(new soundsource::manager(*gui_));
 
 	resources::soundsources = soundsources_manager_.get();
-	controller_base::set_soundsource_manager(soundsources_manager_);
 	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << std::endl;
 }
 
@@ -1457,4 +1454,12 @@ game_events::t_pump & play_controller::pump() {
 
 int play_controller::get_ticks() {
 	return ticks_;
+}
+
+soundsource::manager * play_controller::get_soundsource_man() {
+	return soundsources_manager_.get();
+}
+
+plugins_context * play_controller::get_plugins_context() {
+	return plugins_context_.get();
 }

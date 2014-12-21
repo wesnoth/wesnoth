@@ -42,8 +42,6 @@
 #include "joystick.hpp"
 #include "key.hpp"
 
-#include <boost/weak_ptr.hpp>
-
 class CVideo;
 class plugins_context;
 
@@ -69,6 +67,15 @@ protected:
 	 */
 	virtual display& get_display() = 0;
 
+	/**
+	 * Get (optionally) a soundsources manager a derived class uses
+	 */
+	virtual soundsource::manager * get_soundsource_man() { return NULL; }
+
+	/**
+	 * Get (optionally) a plugins context a derived class uses
+	 */
+	virtual plugins_context * get_plugins_context() { return NULL; }
 
 	/**
 	 * Derived classes should override this to return false when arrow keys
@@ -121,14 +128,6 @@ protected:
 	bool browse_;
 	bool scrolling_;
 	joystick_manager joystick_manager_;
-
-	void set_plugins_context(const boost::shared_ptr<plugins_context> &);
-
-	boost::weak_ptr<plugins_context> plugins_context_;
-
-	void set_soundsource_manager(const boost::shared_ptr<soundsource::manager> &);
-
-	boost::weak_ptr<soundsource::manager> soundsources_;
 };
 
 
