@@ -1175,7 +1175,8 @@ function wml_actions.find_path(cfg)
 	if not cfg.check_visibility then viewing_side = 0 end -- if check_visiblity then shroud is taken in account
 
 	local locations = wesnoth.get_locations(filter_location) -- only the location with the lowest distance and lowest movement cost will match. If there will still be more than 1, only the 1st maching one.
-	if not allow_multiple_turns then local max_cost = unit.moves end --to avoid wrong calculation on already moved units
+	local max_cost = nil
+	if not allow_multiple_turns then max_cost = unit.moves end --to avoid wrong calculation on already moved units
 	local current_distance, current_cost = math.huge, math.huge
 	local current_location = {}
 
