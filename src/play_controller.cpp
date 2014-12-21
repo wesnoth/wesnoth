@@ -34,6 +34,7 @@
 #include "game_events/pump.hpp"
 #include "game_preferences.hpp"
 #include "hotkey/hotkey_item.hpp"
+#include "hotkey_handler.hpp"
 #include "map_label.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
@@ -58,7 +59,6 @@
 #include "unit.hpp"
 #include "unit_id.hpp"
 #include "whiteboard/manager.hpp"
-#include "wmi_pager.hpp"
 #include "wml_exception.hpp"
 
 #include <boost/foreach.hpp>
@@ -122,6 +122,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	help_manager_(&game_config),
 	mouse_handler_(NULL, gamestate_.board_),
 	menu_handler_(NULL, gamestate_.board_, level, game_config),
+	hotkey_handler_(new hotkey_handler(*this, saved_game_, gamestate_)),
 	soundsources_manager_(),
 	persist_(),
 	gui_(),
@@ -137,11 +138,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	it_is_a_new_turn_(true),
 	init_side_done_(level["init_side_done"].to_bool(true)),
 	ticks_(ticks),
-	savenames_(),
-	wml_commands_(),
-	wml_command_pager_(new wmi_pager()),
-	last_context_menu_x_(0),
-	last_context_menu_y_(0),
 	victory_when_enemies_defeated_(true),
 	remove_from_carryover_on_defeat_(true),
 	end_level_data_(),
@@ -284,176 +280,6 @@ void play_controller::init_managers(){
 
 	resources::soundsources = soundsources_manager_.get();
 	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << std::endl;
-}
-
-void play_controller::objectives(){
-	menu_handler_.objectives(gui_->viewing_team()+1);
-}
-
-void play_controller::show_statistics(){
-	menu_handler_.show_statistics(gui_->viewing_team()+1);
-}
-
-void play_controller::unit_list(){
-	menu_handler_.unit_list();
-}
-
-void play_controller::status_table(){
-	menu_handler_.status_table();
-}
-
-void play_controller::save_game(){
-	if(save_blocker::try_block()) {
-		save_blocker::save_unblocker unblocker;
-		savegame::ingame_savegame save(saved_game_, *gui_, to_config(), preferences::save_compression_format());
-		save.save_game_interactive(gui_->video(), "", gui::OK_CANCEL);
-	} else {
-		save_blocker::on_unblock(this,&play_controller::save_game);
-	}
-}
-
-void play_controller::save_game_auto(const std::string & filename) {
-	if(save_blocker::try_block()) {
-		save_blocker::save_unblocker unblocker;
-		savegame::ingame_savegame save(saved_game_, *gui_, to_config(), preferences::save_compression_format());
-		save.save_game_automatic(gui_->video(), false, filename);
-	}
-}
-
-void play_controller::save_replay(){
-	if(save_blocker::try_block()) {
-		save_blocker::save_unblocker unblocker;
-		savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
-		save.save_game_interactive(gui_->video(), "", gui::OK_CANCEL);
-	} else {
-		save_blocker::on_unblock(this,&play_controller::save_replay);
-	}
-}
-
-void play_controller::save_replay_auto(const std::string & filename) {
-	if(save_blocker::try_block()) {
-		save_blocker::save_unblocker unblocker;
-		savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
-		save.save_game_automatic(gui_->video(), false, filename);
-	}
-}
-
-void play_controller::save_map(){
-	if(save_blocker::try_block()) {
-		save_blocker::save_unblocker unblocker;
-		menu_handler_.save_map();
-	} else {
-		save_blocker::on_unblock(this,&play_controller::save_map);
-	}
-}
-
-void play_controller::load_game(){
-	savegame::loadgame load(*gui_, game_config_, saved_game_);
-	load.load_game();
-}
-
-void play_controller::preferences(){
-	menu_handler_.preferences();
-}
-
-void play_controller::left_mouse_click(){
-	int x = gui_->get_location_x(gui_->mouseover_hex());
-	int y = gui_->get_location_y(gui_->mouseover_hex());
-
-	SDL_MouseButtonEvent event;
-
-	event.button = 1;
-	event.x = x + 30;
-	event.y = y + 30;
-	event.which = 0;
-	event.state = SDL_PRESSED;
-
-	mouse_handler_.mouse_press(event, false);
-}
-
-void play_controller::select_and_action() {
-	mouse_handler_.select_or_action(browse_);
-}
-
-void play_controller::move_action(){
-	mouse_handler_.move_action(browse_);
-}
-
-void play_controller::deselect_hex(){
-	mouse_handler_.deselect_hex();
-}
-void play_controller::select_hex(){
-	mouse_handler_.select_hex(gui_->mouseover_hex(), false);
-}
-
-void play_controller::right_mouse_click(){
-	int x = gui_->get_location_x(gui_->mouseover_hex());
-	int y = gui_->get_location_y(gui_->mouseover_hex());
-
-	SDL_MouseButtonEvent event;
-
-	event.button = 3;
-	event.x = x + 30;
-	event.y = y + 30;
-	event.which = 0;
-	event.state = SDL_PRESSED;
-
-	mouse_handler_.mouse_press(event, true);
-}
-
-
-void play_controller::cycle_units(){
-	mouse_handler_.cycle_units(browse_);
-}
-
-void play_controller::cycle_back_units(){
-	mouse_handler_.cycle_back_units(browse_);
-}
-
-void play_controller::show_chat_log(){
-	menu_handler_.show_chat_log();
-}
-
-void play_controller::show_help(){
-	menu_handler_.show_help();
-}
-
-void play_controller::undo(){
-	mouse_handler_.deselect_hex();
-	undo_stack_->undo();
-}
-
-void play_controller::redo(){
-	mouse_handler_.deselect_hex();
-	undo_stack_->redo();
-}
-
-void play_controller::show_enemy_moves(bool ignore_units){
-	menu_handler_.show_enemy_moves(ignore_units, player_number_);
-}
-
-void play_controller::goto_leader(){
-	menu_handler_.goto_leader(player_number_);
-}
-
-void play_controller::unit_description(){
-	menu_handler_.unit_description();
-}
-
-void play_controller::terrain_description(){
-	menu_handler_.terrain_description(mouse_handler_);
-}
-
-void play_controller::toggle_ellipses(){
-	menu_handler_.toggle_ellipses();
-}
-
-void play_controller::toggle_grid(){
-	menu_handler_.toggle_grid();
-}
-
-void play_controller::search(){
-	menu_handler_.search();
 }
 
 void play_controller::fire_preload()
@@ -755,126 +581,6 @@ bool play_controller::enemies_visible() const
 	return false;
 }
 
-bool play_controller::execute_command(const hotkey::hotkey_command& cmd, int index)
-{
-	hotkey::HOTKEY_COMMAND command = cmd.id;
-	if(index >= 0) {
-		unsigned i = static_cast<unsigned>(index);
-		if(i < savenames_.size() && !savenames_[i].empty()) {
-			// Load the game by throwing load_game_exception
-			throw game::load_game_exception(savenames_[i],false,false,false,"",true);
-
-		} else if ( i < wml_commands_.size()  &&  wml_commands_[i] ) {
-			if (!wml_command_pager_->capture(*wml_commands_[i])) {
-				wml_commands_[i]->fire_event(mouse_handler_.get_last_hex());
-			} else { //relaunch the menu
-				show_menu(get_display().get_theme().context_menu()->items(),last_context_menu_x_,last_context_menu_y_,true, get_display());
-			}
-			return true;
-		}
-	}
-	int prefixlen = wml_menu_hotkey_prefix.length();
-	if(command == hotkey::HOTKEY_WML && cmd.command.compare(0, prefixlen, wml_menu_hotkey_prefix) == 0)
-	{
-		std::string name = cmd.command.substr(prefixlen);
-		const map_location& hex = mouse_handler_.get_last_hex();
-
-		gamestate_.gamedata_.get_wml_menu_items().fire_item(name, hex);
-		/// @todo Shouldn't the function return at this point?
-	}
-	return command_executor::execute_command(cmd, index);
-}
-
-bool play_controller::can_execute_command(const hotkey::hotkey_command& cmd, int index) const
-{
-	if(index >= 0) {
-		unsigned i = static_cast<unsigned>(index);
-		if((i < savenames_.size() && !savenames_[i].empty())
-		|| (i < wml_commands_.size() && wml_commands_[i])) {
-			return true;
-		}
-	}
-	switch(cmd.id) {
-
-	// Commands we can always do:
-	case hotkey::HOTKEY_LEADER:
-	case hotkey::HOTKEY_CYCLE_UNITS:
-	case hotkey::HOTKEY_CYCLE_BACK_UNITS:
-	case hotkey::HOTKEY_ZOOM_IN:
-	case hotkey::HOTKEY_ZOOM_OUT:
-	case hotkey::HOTKEY_ZOOM_DEFAULT:
-	case hotkey::HOTKEY_FULLSCREEN:
-	case hotkey::HOTKEY_SCREENSHOT:
-	case hotkey::HOTKEY_MAP_SCREENSHOT:
-	case hotkey::HOTKEY_ACCELERATED:
-	case hotkey::HOTKEY_SAVE_MAP:
-	case hotkey::HOTKEY_TOGGLE_ELLIPSES:
-	case hotkey::HOTKEY_TOGGLE_GRID:
-	case hotkey::HOTKEY_MOUSE_SCROLL:
-	case hotkey::HOTKEY_ANIMATE_MAP:
-	case hotkey::HOTKEY_STATUS_TABLE:
-	case hotkey::HOTKEY_MUTE:
-	case hotkey::HOTKEY_PREFERENCES:
-	case hotkey::HOTKEY_OBJECTIVES:
-	case hotkey::HOTKEY_UNIT_LIST:
-	case hotkey::HOTKEY_STATISTICS:
-	case hotkey::HOTKEY_QUIT_GAME:
-	case hotkey::HOTKEY_SEARCH:
-	case hotkey::HOTKEY_HELP:
-	case hotkey::HOTKEY_USER_CMD:
-	case hotkey::HOTKEY_CUSTOM_CMD:
-	case hotkey::HOTKEY_AI_FORMULA:
-	case hotkey::HOTKEY_CLEAR_MSG:
-	case hotkey::HOTKEY_SELECT_HEX:
-	case hotkey::HOTKEY_DESELECT_HEX:
-	case hotkey::HOTKEY_MOVE_ACTION:
-	case hotkey::HOTKEY_SELECT_AND_ACTION:
-	case hotkey::HOTKEY_MINIMAP_CODING_TERRAIN:
-	case hotkey::HOTKEY_MINIMAP_CODING_UNIT:
-	case hotkey::HOTKEY_MINIMAP_DRAW_UNITS:
-	case hotkey::HOTKEY_MINIMAP_DRAW_TERRAIN:
-	case hotkey::HOTKEY_MINIMAP_DRAW_VILLAGES:
-	case hotkey::HOTKEY_NULL:
-	case hotkey::HOTKEY_SAVE_REPLAY:
-	case hotkey::LUA_CONSOLE:
-		return true;
-
-	// Commands that have some preconditions:
-	case hotkey::HOTKEY_SAVE_GAME:
-		return !events::commands_disabled;
-
-	case hotkey::HOTKEY_SHOW_ENEMY_MOVES:
-	case hotkey::HOTKEY_BEST_ENEMY_MOVES:
-		return !linger_ && enemies_visible();
-
-	case hotkey::HOTKEY_LOAD_GAME:
-		return network::nconnections() == 0; // Can only load games if not in a network game
-
-	case hotkey::HOTKEY_CHAT_LOG:
-		return true;
-
-	case hotkey::HOTKEY_REDO:
-		return !linger_ && undo_stack_->can_redo() && !events::commands_disabled && !browse_;
-	case hotkey::HOTKEY_UNDO:
-		return !linger_ && undo_stack_->can_undo() && !events::commands_disabled && !browse_;
-
-	case hotkey::HOTKEY_UNIT_DESCRIPTION:
-		return menu_handler_.current_unit().valid();
-
-	case hotkey::HOTKEY_TERRAIN_DESCRIPTION:
-		return mouse_handler_.get_last_hex().valid();
-
-	case hotkey::HOTKEY_RENAME_UNIT:
-		return !events::commands_disabled &&
-			menu_handler_.current_unit().valid() &&
-			!(menu_handler_.current_unit()->unrenamable()) &&
-			menu_handler_.current_unit()->side() == gui_->viewing_side() &&
-			gamestate_.board_.teams()[menu_handler_.current_unit()->side() - 1].is_local_human();
-
-	default:
-		return false;
-	}
-}
 
 void play_controller::enter_textbox()
 {
@@ -1065,195 +771,72 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 	}
 }
 
-static void trim_items(std::vector<std::string>& newitems) {
-	if (newitems.size() > 5) {
-		std::vector<std::string> subitems;
-		subitems.push_back(newitems[0]);
-		subitems.push_back(newitems[1]);
-		subitems.push_back(newitems[newitems.size() / 3]);
-		subitems.push_back(newitems[newitems.size() * 2 / 3]);
-		subitems.push_back(newitems.back());
-		newitems = subitems;
+void play_controller::save_game(){
+	if(save_blocker::try_block()) {
+		save_blocker::save_unblocker unblocker;
+		savegame::ingame_savegame save(saved_game_, *gui_, to_config(), preferences::save_compression_format());
+		save.save_game_interactive(gui_->video(), "", gui::OK_CANCEL);
+	} else {
+		save_blocker::on_unblock(this,&play_controller::save_game);
 	}
 }
 
-void play_controller::expand_autosaves(std::vector<std::string>& items)
-{
-	const compression::format comp_format =
-		preferences::save_compression_format();
-
-	savenames_.clear();
-	for (unsigned int i = 0; i < items.size(); ++i) {
-		if (items[i] == "AUTOSAVES") {
-			items.erase(items.begin() + i);
-			std::vector<std::string> newitems;
-			std::vector<std::string> newsaves;
-			for (unsigned int turn = this->turn(); turn != 0; turn--) {
-				std::string name = saved_game_.classification().label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn);
-				if (savegame::save_game_exists(name, comp_format)) {
-					newsaves.push_back(
-						name + compression::format_extension(comp_format));
-					newitems.push_back(_("Back to Turn ") + lexical_cast<std::string>(turn));
-				}
-			}
-
-			const std::string& start_name = saved_game_.classification().label;
-			if(savegame::save_game_exists(start_name, comp_format)) {
-				newsaves.push_back(
-					start_name + compression::format_extension(comp_format));
-				newitems.push_back(_("Back to Start"));
-			}
-
-			// Make sure list doesn't get too long: keep top two,
-			// midpoint and bottom.
-			trim_items(newitems);
-			trim_items(newsaves);
-
-			items.insert(items.begin()+i, newitems.begin(), newitems.end());
-			savenames_.insert(savenames_.end(), newsaves.begin(), newsaves.end());
-			break;
-		}
-		savenames_.push_back("");
-	}
-}
-///replaces "wml" in @items with all active wml menu items for the current field
-void play_controller::expand_wml_commands(std::vector<std::string>& items)
-{
-	wml_commands_.clear();
-	for (unsigned int i = 0; i < items.size(); ++i) {
-		if (items[i] == "wml") {
-			std::vector<std::string> newitems;
-
-			// Replace this placeholder entry with available menu items.
-			items.erase(items.begin() + i);
-			wml_command_pager_->update_ref(&gamestate_.gamedata_.get_wml_menu_items());
-			wml_command_pager_->get_items(mouse_handler_.get_last_hex(),
-			                                         wml_commands_, newitems);
-			items.insert(items.begin()+i, newitems.begin(), newitems.end());
-			// End the "for" loop.
-			break;
-		}
-		// Pad the commands with null pointers (keeps the indices of items and
-		// wml_commands_ synced).
-		wml_commands_.push_back(const_item_ptr());
+void play_controller::save_game_auto(const std::string & filename) {
+	if(save_blocker::try_block()) {
+		save_blocker::save_unblocker unblocker;
+		savegame::ingame_savegame save(saved_game_, *gui_, to_config(), preferences::save_compression_format());
+		save.save_game_automatic(gui_->video(), false, filename);
 	}
 }
 
-void play_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
-{
-	if (context_menu)
-	{
-		last_context_menu_x_ = xloc;
-		last_context_menu_y_ = yloc;
-	}
-
-	std::vector<std::string> items = items_arg;
-	const hotkey::hotkey_command* cmd;
-	std::vector<std::string>::iterator i = items.begin();
-	while(i != items.end()) {
-		if (*i == "AUTOSAVES") {
-			// Autosave visibility is similar to LOAD_GAME hotkey
-			cmd = &hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_LOAD_GAME);
-		} else {
-			cmd = &hotkey::get_hotkey_command(*i);
-		}
-		// Remove WML commands if they would not be allowed here
-		if(*i == "wml") {
-			if(!context_menu || gui_->viewing_team() != gui_->playing_team()
-			|| events::commands_disabled || !gamestate_.board_.teams()[gui_->viewing_team()].is_local_human()
-			|| (linger_ && !game_config::debug)){
-				i = items.erase(i);
-				continue;
-			}
-		// Remove commands that can't be executed or don't belong in this type of menu
-		} else if(!can_execute_command(*cmd)
-			|| (context_menu && !in_context_menu(cmd->id))) {
-			i = items.erase(i);
-			continue;
-		}
-		++i;
-	}
-
-	// Add special non-hotkey items to the menu and remember their indices
-	expand_autosaves(items);
-	expand_wml_commands(items);
-
-	if(items.empty())
-		return;
-
-	command_executor::show_menu(items, xloc, yloc, context_menu, disp);
-}
-
-bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
-{
-	switch(command) {
-	// Only display these if the mouse is over a castle or keep tile
-	case hotkey::HOTKEY_RECRUIT:
-	case hotkey::HOTKEY_REPEAT_RECRUIT:
-	case hotkey::HOTKEY_RECALL: {
-		// last_hex_ is set by mouse_events::mouse_motion
-		const map_location & last_hex = mouse_handler_.get_last_hex();
-		const int viewing_side = gui_->viewing_side();
-
-		// A quick check to save us having to create the future map and
-		// possibly loop through all units.
-		if ( !gamestate_.board_.map().is_keep(last_hex)  &&
-		     !gamestate_.board_.map().is_castle(last_hex) )
-			return false;
-
-		wb::future_map future; /* lasts until method returns. */
-
-		unit_map::const_iterator leader = gamestate_.board_.units().find(last_hex);
-		if ( leader != gamestate_.board_.units().end() )
-			return leader->can_recruit()  &&  leader->side() == viewing_side  &&
-			       can_recruit_from(*leader);
-		else
-			// Look for a leader who can recruit on last_hex.
-			for ( leader = gamestate_.board_.units().begin(); leader != gamestate_.board_.units().end(); ++leader) {
-				if ( leader->can_recruit()  &&  leader->side() == viewing_side  &&
-				     can_recruit_on(*leader, last_hex) )
-					return true;
-			}
-		// No leader found who can recruit at last_hex.
-		return false;
-	}
-	default:
-		return true;
+void play_controller::save_replay(){
+	if(save_blocker::try_block()) {
+		save_blocker::save_unblocker unblocker;
+		savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
+		save.save_game_interactive(gui_->video(), "", gui::OK_CANCEL);
+	} else {
+		save_blocker::on_unblock(this,&play_controller::save_replay);
 	}
 }
 
-std::string play_controller::get_action_image(hotkey::HOTKEY_COMMAND command, int index) const
-{
-	if(index >= 0 && index < static_cast<int>(wml_commands_.size())) {
-		const const_item_ptr wmi = wml_commands_[index];
-		if ( wmi ) {
-			return wmi->image();
-		}
+void play_controller::save_replay_auto(const std::string & filename) {
+	if(save_blocker::try_block()) {
+		save_blocker::save_unblocker unblocker;
+		savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
+		save.save_game_automatic(gui_->video(), false, filename);
 	}
-	return command_executor::get_action_image(command, index);
 }
 
-hotkey::ACTION_STATE play_controller::get_action_state(hotkey::HOTKEY_COMMAND command, int /*index*/) const
-{
-	switch(command) {
-
-	case hotkey::HOTKEY_MINIMAP_DRAW_VILLAGES:
-		return (preferences::minimap_draw_villages()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
-	case hotkey::HOTKEY_MINIMAP_CODING_UNIT:
-		return (preferences::minimap_movement_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
-	case hotkey::HOTKEY_MINIMAP_CODING_TERRAIN:
-		return (preferences::minimap_terrain_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
-	case hotkey::HOTKEY_MINIMAP_DRAW_UNITS:
-		return (preferences::minimap_draw_units()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
-	case hotkey::HOTKEY_MINIMAP_DRAW_TERRAIN:
-		return (preferences::minimap_draw_terrain()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
-	case hotkey::HOTKEY_ZOOM_DEFAULT:
-		return (gui_->get_zoom_factor() == 1.0) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
-	case hotkey::HOTKEY_DELAY_SHROUD:
-		return gamestate_.board_.teams()[gui_->viewing_team()].auto_shroud_updates() ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
-	default:
-		return hotkey::ACTION_STATELESS;
+void play_controller::save_map(){
+	if(save_blocker::try_block()) {
+		save_blocker::save_unblocker unblocker;
+		menu_handler_.save_map();
+	} else {
+		save_blocker::on_unblock(this,&play_controller::save_map);
 	}
+}
+
+void play_controller::load_game() {
+	savegame::loadgame load(*gui_, game_config_, saved_game_);
+	load.load_game();
+}
+
+void play_controller::undo(){
+	mouse_handler_.deselect_hex();
+	undo_stack_->undo();
+}
+
+void play_controller::redo(){
+	mouse_handler_.deselect_hex();
+	undo_stack_->redo();
+}
+
+bool play_controller::can_undo() const {
+	return !linger_ && !browse_ && !events::commands_disabled && undo_stack_->can_undo();
+}
+
+bool play_controller::can_redo() const {
+	return !linger_ && !browse_ && !events::commands_disabled && undo_stack_->can_redo();
 }
 
 namespace {
@@ -1406,32 +989,12 @@ void play_controller::process_oos(const std::string& msg) const
 	save.save_game_interactive(gui_->video(), message.str(), gui::YES_NO); // can throw end_level_exception
 }
 
-//this should be at the end of the file but it caused merging problems there.
-const std::string play_controller::wml_menu_hotkey_prefix = "wml_menu:";
-
-
 void play_controller::update_gui_to_player(const int team_index, const bool observe)
 {
 	gui_->set_team(team_index, observe);
 	gui_->recalculate_minimap();
 	gui_->invalidate_all();
 	gui_->draw(true,true);
-}
-
-void play_controller::toggle_accelerated_speed()
-{
-	preferences::set_turbo(!preferences::turbo());
-
-	if (preferences::turbo())
-	{
-		utils::string_map symbols;
-		symbols["hk"] = hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_ACCELERATED).command);
-		gui_->announce(std::string(_("Accelerated speed enabled!")) + "\n" + vgettext("(press $hk to disable)", symbols), font::NORMAL_COLOR);
-	}
-	else
-	{
-		gui_->announce(_("Accelerated speed disabled!"), font::NORMAL_COLOR);
-	}
 }
 
 void play_controller::do_autosave()
@@ -1466,5 +1029,5 @@ plugins_context * play_controller::get_plugins_context() {
 }
 
 hotkey::command_executor * play_controller::get_hotkey_command_executor() {
-	return this;
+	return hotkey_handler_.get();
 }

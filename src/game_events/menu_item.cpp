@@ -31,7 +31,9 @@
 #include "../game_data.hpp"
 #include "../log.hpp"
 #include "../mouse_handler_base.hpp"
-#include "../play_controller.hpp"
+#include "hotkey/hotkey_command.hpp"
+#include "hotkey_handler.hpp"
+#include "play_controller.hpp"
 #include "../preferences.hpp"
 #include "../replay.hpp"
 #include "../replay_helper.hpp"
@@ -67,7 +69,7 @@ namespace { // Some helpers for construction.
 	 */
 	inline std::string make_item_hotkey(const std::string & id)
 	{
-		return play_controller::wml_menu_hotkey_prefix + id;
+		return play_controller::hotkey_handler::wml_menu_hotkey_prefix + id;
 	}
 
 }// anonymous namespace

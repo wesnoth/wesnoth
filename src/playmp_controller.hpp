@@ -42,15 +42,13 @@ public:
 
 	void pull_remote_choice();
 	void send_user_choice();
+
+	class hotkey_handler;
 protected:
 	virtual void handle_generic_event(const std::string& name);
 
-	virtual void speak();
-	virtual void whisper();
-	virtual void shout();
-	virtual void start_network();
-	virtual void stop_network();
-	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const;
+	void start_network();
+	void stop_network();
 
 	virtual possible_end_play_signal play_side();
 	virtual possible_end_play_signal before_human_turn();

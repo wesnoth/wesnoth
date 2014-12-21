@@ -53,36 +53,6 @@ public:
 
 	virtual void handle_generic_event(const std::string& name);
 
-	virtual void recruit();
-	virtual void repeat_recruit();
-	virtual void recall();
-	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const;
-	virtual void toggle_shroud_updates();
-	virtual void update_shroud_now();
-	virtual void end_turn();
-	virtual void force_end_turn();
-	virtual void rename_unit();
-	virtual void create_unit();
-	virtual void change_side();
-	virtual void kill_unit();
-	virtual void label_terrain(bool);
-	virtual void clear_labels();
-	virtual void continue_move();
-	virtual void unit_hold_position();
-	virtual void end_unit_turn();
-	virtual void user_command();
-	virtual void custom_command();
-	virtual void ai_formula();
-	virtual void clear_messages();
-	// Whiteboard hotkeys
-	virtual void whiteboard_toggle();
-	virtual void whiteboard_execute_action();
-	virtual void whiteboard_execute_all_actions();
-	virtual void whiteboard_delete_action();
-	virtual void whiteboard_bump_up_action();
-	virtual void whiteboard_bump_down_action();
-	virtual void whiteboard_suppose_dead();
-
 	virtual void force_end_level(LEVEL_RESULT res)
 	{ level_result_ = res; }
 	virtual void check_end_level();
@@ -93,6 +63,11 @@ public:
 	bool is_host() const ;
 	virtual void maybe_linger();
 
+	void end_turn();
+	void force_end_turn();
+
+	class hotkey_handler;
+
 protected:
 	possible_end_play_signal play_turn();
 	virtual possible_end_play_signal play_side();
@@ -102,7 +77,6 @@ protected:
 	virtual possible_end_play_signal play_human_turn();
 	virtual void after_human_turn();
 	void end_turn_enable(bool enable);
-	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
 	void play_ai_turn();
 	virtual possible_end_play_signal play_idle_loop();
 	virtual void do_idle_notification();

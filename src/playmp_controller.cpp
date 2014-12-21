@@ -21,6 +21,7 @@
 #include "display_chat_manager.hpp"
 #include "game_end_exceptions.hpp"
 #include "gettext.hpp"
+#include "hotkey_handler_mp.hpp"
 #include "log.hpp"
 #include "mp_ui_alerts.hpp"
 #include "playturn.hpp"
@@ -48,6 +49,8 @@ playmp_controller::playmp_controller(const config& level,
 	network_processing_stopped_(false),
 	blindfold_(*gui_,blindfold_replay_)
 {
+	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_, gamestate_)); //upgrade hotkey handler to the mp (network enabled) version
+
 	turn_data_.set_host(is_host);
 	turn_data_.host_transfer().attach_handler(this);
 	// We stop quick replay if play isn't yet past turn 1
@@ -74,18 +77,6 @@ playmp_controller::~playmp_controller() {
 
 void playmp_controller::set_replay_last_turn(unsigned int turn){
 	 replay_last_turn_ = turn;
-}
-
-void playmp_controller::speak(){
-	menu_handler_.speak();
-}
-
-void playmp_controller::whisper(){
-	menu_handler_.whisper();
-}
-
-void playmp_controller::shout(){
-	menu_handler_.shout();
 }
 
 void playmp_controller::start_network(){
@@ -559,43 +550,6 @@ void playmp_controller::handle_generic_event(const std::string& name){
 	if (end_turn_) {
 		throw end_turn_exception();
 	}
-}
-
-bool playmp_controller::can_execute_command(const hotkey::hotkey_command& cmd, int index) const
-{
-	hotkey::HOTKEY_COMMAND command = cmd.id;
-	bool res = true;
-	switch (command){
-		case hotkey::HOTKEY_ENDTURN:
-			if  (linger_)
-			{
-				bool has_next_scenario = !gamestate_.gamedata_.next_scenario().empty() &&
-					gamestate_.gamedata_.next_scenario() != "null";
-				return is_host() || !has_next_scenario;
-			}
-			else
-			{
-				return playsingle_controller::can_execute_command(cmd, index);
-			}
-		case hotkey::HOTKEY_SPEAK:
-		case hotkey::HOTKEY_SPEAK_ALLY:
-		case hotkey::HOTKEY_SPEAK_ALL:
-			res = network::nconnections() > 0;
-			break;
-		case hotkey::HOTKEY_START_NETWORK:
-		case hotkey::HOTKEY_STOP_NETWORK:
-			res = is_observer();
-			break;
-		case hotkey::HOTKEY_REPLAY_STOP:
-			if (is_observer()){
-				network_processing_stopped_ = true;
-				LOG_NG << "network processing stopped";
-			}
-			break;
-	    default:
-			return playsingle_controller::can_execute_command(cmd, index);
-	}
-	return res;
 }
 
 void playmp_controller::do_idle_notification()
