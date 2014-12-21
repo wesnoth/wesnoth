@@ -20,7 +20,6 @@
 #include "game_preferences.hpp"
 #include "log.hpp"
 #include "mouse_handler_base.hpp"
-#include "resources.hpp"
 #include "play_controller.hpp"
 #include "scripting/plugins/context.hpp"
 #include "soundsource.hpp"
