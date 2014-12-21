@@ -82,7 +82,7 @@ static int intf_describe_plugins(lua_State * L)
 		     << plugins_manager::get()->get_name(i)
 		     << "\n";
 
-		DBG_LUA << line;
+		DBG_LUA << line.str();
 
 		lua_pushstring(L, line.str().c_str());
 		lua_call(L, 1, 0);

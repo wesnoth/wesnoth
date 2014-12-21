@@ -20,7 +20,7 @@ configure_engine::configure_engine(saved_game& state) :
 	if (sides_.first == sides_.second) {
 		std::stringstream msg;
 		msg << "Configure Engine: No sides found in scenario, aborting.";
-		std::cerr << msg;
+		std::cerr << msg.str();
 		std::cerr << "Full scenario config:\n";
 		std::cerr << state_.to_config().debug();
 		throw game::error(msg.str());
