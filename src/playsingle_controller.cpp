@@ -826,6 +826,7 @@ possible_end_play_signal playsingle_controller::play_side()
 			do_idle_notification();
 
 			possible_end_play_signal signal = before_human_turn();
+			browse_ = true;
 
 			if (!signal) {
 				signal = play_idle_loop();
