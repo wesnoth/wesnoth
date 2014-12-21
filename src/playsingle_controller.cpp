@@ -743,6 +743,7 @@ void playsingle_controller::play_side()
 				end_turn_enable(false);
 				do_idle_notification();
 				before_human_turn();
+				browse_ = false;
 				play_idle_loop();
 				
 			} catch(end_turn_exception& end_turn) {
