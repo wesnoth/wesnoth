@@ -912,6 +912,10 @@ set(wesnoth-main_SRC
 	help/help_text_area.cpp
 	help/help_topic_generators.cpp
 	hotkey/hotkey_preferences_display.cpp
+	hotkey_handler.cpp
+	hotkey_handler_sp.cpp
+	hotkey_handler_mp.cpp
+	hotkey_handler_replay.cpp
 	intro.cpp
 	leader_scroll_dialog.cpp
 	map.cpp

@@ -25,6 +25,7 @@
 #include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 #include "gettext.hpp"
+#include "hotkey_handler_replay.hpp"
 #include "log.hpp"
 #include "map_label.hpp"
 #include "mouse_handler_base.hpp"
@@ -125,6 +126,8 @@ replay_controller::replay_controller(const config& level,
 	show_everything_(false),
 	show_team_(state_of_game.classification().campaign_type == game_classification::MULTIPLAYER ? 0 : 1)
 {
+	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_, gamestate_)); //upgrade hotkey handler to the replay controller version
+
 	// Our parent class correctly detects that we are loading a game. However,
 	// we are not loading mid-game, so from here on, treat this as not loading
 	// a game. (Allows turn_1 et al. events to fire at the correct time.)
@@ -646,15 +649,6 @@ void replay_controller::update_gui(){
 	(*gui_).draw();
 }
 
-void replay_controller::preferences(){
-	play_controller::preferences();
-	update_gui();
-}
-
-void replay_controller::show_statistics(){
-	menu_handler_.show_statistics(gui_->playing_team()+1);
-}
-
 void replay_controller::handle_generic_event(const std::string& name){
 
 	if( name == "completely_redrawn" ) {
@@ -669,37 +663,6 @@ void replay_controller::handle_generic_event(const std::string& name){
 	}
 }
 
-bool replay_controller::can_execute_command(const hotkey::hotkey_command& cmd, int index) const
-{
-	hotkey::HOTKEY_COMMAND command = cmd.id;
-	bool result = play_controller::can_execute_command(cmd,index);
-
-	switch(command) {
-
-	//commands we can always do
-	case hotkey::HOTKEY_REPLAY_SHOW_EVERYTHING:
-	case hotkey::HOTKEY_REPLAY_SHOW_EACH:
-	case hotkey::HOTKEY_REPLAY_SHOW_TEAM1:
-	case hotkey::HOTKEY_REPLAY_SKIP_ANIMATION:
-	case hotkey::HOTKEY_SAVE_GAME:
-	case hotkey::HOTKEY_SAVE_REPLAY:
-	case hotkey::HOTKEY_CHAT_LOG:
-		return true;
-
-	case hotkey::HOTKEY_REPLAY_RESET:
-		return events::commands_disabled <= 1;
-
-	//commands we only can do before the end of the replay
-	case hotkey::HOTKEY_REPLAY_STOP:
-		return !recorder.at_end();
-	case hotkey::HOTKEY_REPLAY_PLAY:
-	case hotkey::HOTKEY_REPLAY_NEXT_TURN:
-	case hotkey::HOTKEY_REPLAY_NEXT_SIDE:
-	case hotkey::HOTKEY_REPLAY_NEXT_MOVE:
-		//we have one events_disabler when starting the replay_controller and a second when entering the synced context.
-		return (events::commands_disabled <= 1 ) && !recorder.at_end();
-	default:
-		return result;
-	}
+bool replay_controller::recorder_at_end() {
+	return recorder.at_end();
 }
-

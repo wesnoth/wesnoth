@@ -76,7 +76,7 @@ namespace wb {
 // Holds gamestate related objects
 class game_state;
 
-class play_controller : public controller_base, public hotkey::command_executor, public events::observer, public savegame::savegame_config
+class play_controller : public controller_base, public events::observer, public savegame::savegame_config
 {
 public:
 	play_controller(const config& level, saved_game& state_of_game,
@@ -89,38 +89,19 @@ public:
 	//there is nothing to handle in this class actually but that might change in the future
 	virtual void handle_generic_event(const std::string& /*name*/) {}
 
-	//event handlers, overridden from command_executor
-	virtual void objectives();
-	virtual void show_statistics();
-	virtual void unit_list();
-	virtual void left_mouse_click();
-	virtual void move_action();
-	virtual void select_and_action();
-	virtual void select_hex();
-	virtual void deselect_hex();
-	virtual void right_mouse_click();
-	virtual void status_table();
-	virtual void save_game();
+	bool can_undo() const;
+	bool can_redo() const;
+
+	void undo();
+	void redo();
+
+	void load_game();
+
+	void save_game();
 	void save_game_auto(const std::string & filename);
-	virtual void save_replay();
+	void save_replay();
 	void save_replay_auto(const std::string & filename);
-	virtual void save_map();
-	virtual void load_game();
-	virtual void preferences();
-	virtual void show_chat_log();
-	virtual void show_help();
-	virtual void cycle_units();
-	virtual void cycle_back_units();
-	virtual void undo();
-	virtual void redo();
-	virtual void show_enemy_moves(bool ignore_units);
-	virtual void goto_leader();
-	virtual void unit_description();
-	virtual void terrain_description();
-	virtual void toggle_ellipses();
-	virtual void toggle_grid();
-	virtual void search();
-	virtual void toggle_accelerated_speed();
+	void save_map();
 
 	void maybe_do_init_side(bool is_replay = false, bool only_visual = false);
 	void do_init_side(bool is_replay = false, bool only_visual = false);
@@ -149,6 +130,11 @@ public:
 	const std::vector<team>& get_teams_const() const {
 		return gamestate_.board_.teams_;
 	}
+
+	const unit_map & get_units_const() const {
+		return gamestate_.board_.units();
+	}
+
 	const gamemap& get_map_const() const{
 		return gamestate_.board_.map();
 	}
@@ -189,35 +175,26 @@ public:
 	int get_server_request_number() const { return server_request_number_; }
 	void increase_server_request_number() { ++server_request_number_; }
 
-	static const std::string wml_menu_hotkey_prefix;
-
 	game_events::t_pump & pump();
 
 	int get_ticks();
 
 	virtual soundsource::manager * get_soundsource_man();
 	virtual plugins_context * get_plugins_context();
-	virtual hotkey::command_executor * get_hotkey_command_executor();
+	hotkey::command_executor * get_hotkey_command_executor();
+
+	bool is_browsing() { return browse_; }
+	bool is_lingering() { return linger_; }
+
+	class hotkey_handler;
 
 protected:
+
 	game_display& get_display();
 	bool have_keyboard_focus();
 	void process_focus_keydown_event(const SDL_Event& event);
 	void process_keydown_event(const SDL_Event& event);
 	void process_keyup_event(const SDL_Event& event);
-
-	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND, int index) const;
-	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
-	/** Check if a command can be executed. */
-	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const;
-	virtual bool execute_command(const hotkey::hotkey_command& command, int index=-1);
-	void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp);
-
-	/**
-	 *  Determines whether the command should be in the context menu or not.
-	 *  Independent of whether or not we can actually execute the command.
-	 */
-	bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
 
 	void init_managers();
 	///preload events cannot be synced
@@ -256,6 +233,7 @@ protected:
 	//more managers
 	events::mouse_handler mouse_handler_;
 	events::menu_handler menu_handler_;
+	boost::scoped_ptr<hotkey_handler> hotkey_handler_;
 	boost::scoped_ptr<soundsource::manager> soundsources_manager_;
 	persist_manager persist_;
 
@@ -299,20 +277,8 @@ protected:
 	void update_gui_to_player(const int team_index, const bool observe = false);
 
 private:
-	/// A smart pointer used when retrieving menu items.
-	typedef boost::shared_ptr<const game_events::wml_menu_item> const_item_ptr;
 
 	void init(CVideo &video);
-	// Expand AUTOSAVES in the menu items, setting the real savenames.
-	void expand_autosaves(std::vector<std::string>& items);
-
-	std::vector<std::string> savenames_;
-
-	void expand_wml_commands(std::vector<std::string>& items);
-	std::vector<const_item_ptr> wml_commands_;
-	boost::scoped_ptr<wmi_pager> wml_command_pager_;
-	int last_context_menu_x_;
-	int last_context_menu_y_;
 
 	bool victory_when_enemies_defeated_;
 	bool remove_from_carryover_on_defeat_;

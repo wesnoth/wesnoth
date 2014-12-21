@@ -31,11 +31,6 @@ public:
 		const int ticks, const config& game_config, const tdata_cache & tdata, CVideo& video);
 	virtual ~replay_controller();
 
-	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const;
-
-	//event handlers
-	virtual void preferences();
-	virtual void show_statistics();
 	possible_end_play_signal play_replay();
 	void reset_replay();
 	void stop_replay();
@@ -55,6 +50,10 @@ public:
 	virtual void on_not_observer() {}
 
 	possible_end_play_signal try_run_to_completion();
+
+	bool recorder_at_end();
+
+	class hotkey_handler;
 
 protected:
 	virtual void init_gui();
