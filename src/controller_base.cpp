@@ -17,15 +17,16 @@
 
 #include "dialogs.hpp"
 #include "display.hpp"
+#include "events.hpp"
 #include "game_preferences.hpp"
+#include "hotkey/command_executor.hpp"
+#include "hotkey/hotkey_command.hpp"
 #include "log.hpp"
 #include "mouse_handler_base.hpp"
-#include "play_controller.hpp"
 #include "scripting/plugins/context.hpp"
 #include "soundsource.hpp"
 
 #include <boost/foreach.hpp>
-#include <boost/scoped_ptr.hpp>
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
