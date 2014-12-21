@@ -20,6 +20,7 @@
 #include "game_end_exceptions.hpp"
 #include "game_state.hpp"
 #include "help/help.hpp"
+#include "hotkey/command_executor.hpp"
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
 #include "persist_manager.hpp"
@@ -75,7 +76,7 @@ namespace wb {
 // Holds gamestate related objects
 class game_state;
 
-class play_controller : public controller_base, public events::observer, public savegame::savegame_config
+class play_controller : public controller_base, public hotkey::command_executor, public events::observer, public savegame::savegame_config
 {
 public:
 	play_controller(const config& level, saved_game& state_of_game,
@@ -196,6 +197,7 @@ public:
 
 	virtual soundsource::manager * get_soundsource_man();
 	virtual plugins_context * get_plugins_context();
+	virtual hotkey::command_executor * get_hotkey_command_executor();
 
 protected:
 	game_display& get_display();

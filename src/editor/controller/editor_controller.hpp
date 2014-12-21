@@ -24,6 +24,7 @@
 
 #include "../../controller_base.hpp"
 #include "help/help.hpp"
+#include "hotkey/command_executor.hpp"
 #include "../../mouse_handler_base.hpp"
 #include "../../tooltips.hpp"
 
@@ -68,6 +69,7 @@ enum menu_type {
  * general logic.
  */
 class editor_controller : public controller_base,
+	public hotkey::command_executor,
 	public events::mouse_handler_base,
 	private boost::noncopyable
 {
@@ -158,6 +160,7 @@ class editor_controller : public controller_base,
 		void right_drag_end(int x, int y, const bool browse);
 		void right_mouse_up(int x, int y, const bool browse);
 
+		virtual hotkey::command_executor * get_hotkey_command_executor();
 
 	protected:
 		/* controller_base overrides */

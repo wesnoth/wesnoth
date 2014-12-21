@@ -37,6 +37,7 @@
 #include "map_label.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
+#include "hotkey/command_executor.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
 #include "pathfind/teleport.hpp"
@@ -1462,4 +1463,8 @@ soundsource::manager * play_controller::get_soundsource_man() {
 
 plugins_context * play_controller::get_plugins_context() {
 	return plugins_context_.get();
+}
+
+hotkey::command_executor * play_controller::get_hotkey_command_executor() {
+	return this;
 }
