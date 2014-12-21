@@ -38,18 +38,22 @@
 
 #include "global.hpp"
 
-#include "hotkey/command_executor.hpp"
+#include "events.hpp"
+#include "hotkey/hotkey_command.hpp"
 #include "joystick.hpp"
 #include "key.hpp"
 
 class CVideo;
+class display;
 class plugins_context;
 
 namespace events { class mouse_handler_base; }
 
+namespace hotkey { class command_executor; }
+
 namespace soundsource { class manager; }
 
-class controller_base : public hotkey::command_executor, public events::sdl_handler
+class controller_base : public events::sdl_handler
 {
 public:
 	controller_base(const config& game_config, CVideo& video);
@@ -76,6 +80,11 @@ protected:
 	 * Get (optionally) a plugins context a derived class uses
 	 */
 	virtual plugins_context * get_plugins_context() { return NULL; }
+
+	/**
+	 * Get (optionally) a command executor to handle context menu events
+	 */
+	virtual hotkey::command_executor * get_hotkey_command_executor() { return NULL; }
 
 	/**
 	 * Derived classes should override this to return false when arrow keys

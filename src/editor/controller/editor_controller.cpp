@@ -963,7 +963,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			gui().invalidate_all();
 			return true;
 		default:
-			return controller_base::execute_command(cmd, index);
+			return hotkey::command_executor::execute_command(cmd, index);
 	}
 }
 
@@ -1339,5 +1339,8 @@ void editor_controller::process_keyup_event(const SDL_Event& event)
 	toolkit_->set_mouseover_overlay();
 }
 
+hotkey::command_executor * editor_controller::get_hotkey_command_executor() {
+	return this;
+}
 
 } //end namespace editor

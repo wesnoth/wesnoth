@@ -513,6 +513,7 @@ void jhat_event(display& disp, const SDL_JoyHatEvent& event, command_executor* e
 
 void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* executor)
 {
+	if (!executor) return;
 	if(event.keysym.sym == SDLK_ESCAPE && disp.in_game()) {
 		LOG_G << "escape pressed..showing quit\n";
 		const int res = gui2::show_message(disp.video(), _("Quit"),
@@ -529,6 +530,7 @@ void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* 
 
 void mbutton_event_execute(display& disp, const SDL_MouseButtonEvent& event, command_executor* executor)
 {
+	if (!executor) return;
 	const hotkey_item* hk = &get_hotkey(event);
 	if (!hk->active()) {
 		return;
@@ -540,6 +542,7 @@ void mbutton_event_execute(display& disp, const SDL_MouseButtonEvent& event, com
 
 void jbutton_event_execute(display& disp, const SDL_JoyButtonEvent& event, command_executor* executor)
 {
+	if (!executor) return;
 	const hotkey_item* hk = &get_hotkey(event);
 	if (!hk->active()) {
 		return;
@@ -551,6 +554,7 @@ void jbutton_event_execute(display& disp, const SDL_JoyButtonEvent& event, comma
 
 void jhat_event_execute(display& disp, const SDL_JoyHatEvent& event, command_executor* executor)
 {
+	if (!executor) return;
 	const hotkey_item* hk = &get_hotkey(event);
 	if (!hk->active()) {
 		return;
@@ -562,6 +566,7 @@ void jhat_event_execute(display& disp, const SDL_JoyHatEvent& event, command_exe
 
 void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_executor* executor)
 {
+	if (!executor) return;
 	const hotkey_item* hk = &get_hotkey(event);
 
 #if 0
