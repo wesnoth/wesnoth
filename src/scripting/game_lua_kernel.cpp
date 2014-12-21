@@ -3026,7 +3026,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo & video, game_state &
 		{ "match_unit",			boost::bind(&game_lua_kernel::intf_match_unit, this, _1)			},
 		{ "message",			boost::bind(&game_lua_kernel::intf_message, this, _1)				},
 		{ "play_sound",			boost::bind(&game_lua_kernel::intf_play_sound, this, _1)			},
-		{ "putt_recall_unit",		boost::bind(&game_lua_kernel::intf_put_recall_unit, this, _1)			},
+		{ "put_recall_unit",		boost::bind(&game_lua_kernel::intf_put_recall_unit, this, _1)			},
 		{ "put_unit",			boost::bind(&game_lua_kernel::intf_put_unit, this, _1)				},
 		{ "remove_tile_overlay",	boost::bind(&game_lua_kernel::intf_remove_tile_overlay, this, _1)		},
 		{ "scroll_to_tile",		boost::bind(&game_lua_kernel::intf_scroll_to_tile, this, _1)			},
