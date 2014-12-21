@@ -13,17 +13,34 @@
    See the COPYING file for more details.
 */
 
+/**
+ * @file
+ * controller_base framework:
+ * controller_base is roughly analogous to a "dialog" class in a GUI toolkit
+ * which is appropriate for deriving wesnoth game modes, e.g. single player
+ * mode, multiplayer mode, replay mode, editor mode.
+ *
+ * It provides implementation details for:
+ * - play_slice, which is essentially one pass of the "main loop" of
+ *   the application, pumping and dispatching SDL events, raising draw
+ *   events, handling scrolling, sound sources, and some joystick issues
+ *   It also handles displaying menus (Menu, Action).
+ *
+ * - showing context menus (much is delegated to command executor though)
+ *
+ * Other than this it functions as an abstract interface, enforcing that
+ * controllers derive from events::sdl_handler, hotkey_command_executor,
+ * and provide some accessors needed for event handling.
+ */
+
 #ifndef CONTROLLER_BASE_H_INCLUDED
 #define CONTROLLER_BASE_H_INCLUDED
 
 #include "global.hpp"
 
 #include "hotkey/command_executor.hpp"
-#include "key.hpp"
-
 #include "joystick.hpp"
-
-#include "map.hpp"
+#include "key.hpp"
 
 #include <boost/weak_ptr.hpp>
 
