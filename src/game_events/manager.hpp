@@ -134,6 +134,8 @@ namespace game_events {
 		void write_events(config& cfg);
 
 		game_events::t_pump & pump();
+
+		void reset_display(game_display *);
 	};
 }
 

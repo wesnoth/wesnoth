@@ -36,6 +36,7 @@
 #include<string>
 #include<sstream>
 
+class game_display;
 class vconfig;
 
 namespace lg { class logger; }
@@ -105,6 +106,8 @@ namespace game_events
 		 * This function can be used to detect when no WML/Lua has been executed.
 		 */
 		size_t wml_tracking();
+
+		void reset_display(game_display *);
 
 	private:
 		bool filter_event(const event_handler& handler, const queued_event& ev);

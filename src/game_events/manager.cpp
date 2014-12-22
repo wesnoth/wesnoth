@@ -241,4 +241,10 @@ game_events::t_pump & manager::pump()
 	return *pump_;
 }
 
+void manager::reset_display(game_display * gd)
+{
+	resources_.screen = gd;
+	pump_->reset_display(gd);
+}
+
 } //end namespace game_events

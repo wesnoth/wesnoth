@@ -609,6 +609,11 @@ size_t t_pump::wml_tracking()
 	return impl_->internal_wml_tracking;
 }
 
+void t_pump::reset_display(game_display * gd)
+{
+	impl_->resources.screen = gd;
+}
+
 t_pump::t_pump(manager & man, const t_context & res)
 	: impl_(new pump_impl(man, res))
 {}
