@@ -194,7 +194,7 @@ connect_engine::connect_engine(saved_game& state,
 		config& create_game = response.add_child("create_game");
 		create_game["name"] = params_.name;
 		if (params_.password.empty() == false) {
-			response["password"] = params_.password;
+			create_game["password"] = params_.password;
 		}
 	} else {
 		response.add_child("update_game");
