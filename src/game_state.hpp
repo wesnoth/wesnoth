@@ -49,6 +49,22 @@ public:
 
 	virtual const display_context & get_disp_context() const { return board_; }
 	virtual const tod_manager & get_tod_man() const { return tod_manager_; }
+
+	/// Checks to see if a leader at @a leader_loc could recruit somewhere.
+	bool can_recruit_from(const map_location& leader_loc, int side) const;
+	/// Checks to see if @a leader (assumed a leader) can recruit somewhere.
+	/// This takes into account terrain, shroud, and the presence of visible units.
+	bool can_recruit_from(const unit& leader) const;
+
+	/// Checks to see if a leader at @a leader_loc could recruit on @a recruit_loc.
+	bool can_recruit_on(const map_location& leader_loc, const map_location& recruit_loc, int side) const;
+	/// Checks to see if @a leader (assumed a leader) can recruit on @a recruit_loc.
+	/// This takes into account terrain, shroud, and whether or not there is already
+	/// a visible unit at recruit_loc.
+	bool can_recruit_on(const unit& leader, const map_location& recruit_loc) const;
+
+	/// Checks if any of the sides leaders can recruit at a location
+	bool side_can_recruit_on(int side, map_location loc) const;
 };
 
 #endif

@@ -67,21 +67,6 @@ private:
 
 };
 
-
-/// Checks to see if a leader at @a leader_loc could recruit somewhere.
-bool can_recruit_from(const map_location& leader_loc, int side);
-/// Checks to see if @a leader (assumed a leader) can recruit somewhere.
-/// This takes into account terrain, shroud, and the presence of visible units.
-bool can_recruit_from(const unit& leader);
-
-/// Checks to see if a leader at @a leader_loc could recruit on @a recruit_loc.
-bool can_recruit_on(const map_location& leader_loc, const map_location& recruit_loc, int side);
-/// Checks to see if @a leader (assumed a leader) can recruit on @a recruit_loc.
-/// This takes into account terrain, shroud, and whether or not there is already
-/// a visible unit at recruit_loc.
-bool can_recruit_on(const unit& leader, const map_location& recruit_loc);
-
-
 namespace actions {
 
 /// The possible results of finding a location for recruiting (or recalling).

@@ -18,9 +18,11 @@
 #include "loadscreen.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "pathfind/pathfind.hpp"
 #include "pathfind/teleport.hpp"
 #include "game_preferences.hpp"
 #include "random_new_deterministic.hpp"
+#include "unit.hpp"
 
 #include <boost/foreach.hpp>
 #include <SDL_timer.h>
@@ -180,4 +182,127 @@ config game_state::to_config() const
 	gamedata_.write_snapshot(cfg);
 
 	return cfg;
+}
+
+namespace {
+	struct castle_cost_calculator : pathfind::cost_calculator
+	{
+		castle_cost_calculator(const gamemap& map, const team & view_team) :
+			map_(map),
+			viewer_(view_team),
+			use_shroud_(view_team.uses_shroud())
+		{}
+
+		virtual double cost(const map_location& loc, const double) const
+		{
+			if(!map_.is_castle(loc))
+				return 10000;
+
+			if ( use_shroud_ && viewer_.shrouded(loc) )
+				return 10000;
+
+			return 1;
+		}
+
+	private:
+		const gamemap& map_;
+		const team& viewer_;
+		const bool use_shroud_; // Allows faster checks when shroud is disabled.
+	};
+}//anonymous namespace
+
+
+/**
+ * Checks to see if a leader at @a leader_loc could recruit somewhere.
+ * This takes into account terrain, shroud (for side @a side), and the presence
+ * of visible units.
+ * The behavior for an invalid @a side is subject to change for future needs.
+ */
+bool game_state::can_recruit_from(const map_location& leader_loc, int side) const
+{
+	const gamemap& map = board_.map();
+
+	if( !map.is_keep(leader_loc) )
+		return false;
+
+	if ( side < 1  ||  board_.teams().size() < static_cast<size_t>(side) ) {
+		// Invalid side specified.
+		// Currently this cannot happen, but it could conceivably be used in
+		// the future to request that shroud and visibility be ignored. Until
+		// that comes to pass, just return.
+ 		return false;
+	}
+
+	return pathfind::find_vacant_tile(leader_loc, pathfind::VACANT_CASTLE, NULL,
+	                                  &(board_.teams())[side-1])
+	       != map_location::null_location();
+}
+
+bool game_state::can_recruit_from(const unit& leader) const
+{
+	return can_recruit_from(leader.get_location(), leader.side());
+}
+
+
+/**
+ * Checks to see if a leader at @a leader_loc could recruit on @a recruit_loc.
+ * This takes into account terrain, shroud (for side @a side), and whether or
+ * not there is already a visible unit at recruit_loc.
+ * The behavior for an invalid @a side is subject to change for future needs.
+ */
+bool game_state::can_recruit_on(const map_location& leader_loc, const map_location& recruit_loc, int side) const
+{
+	const gamemap& map = board_.map();
+
+	if( !map.is_castle(recruit_loc) )
+		return false;
+
+	if( !map.is_keep(leader_loc) )
+		return false;
+
+	if ( side < 1  ||  board_.teams().size() < static_cast<size_t>(side) ) {
+		// Invalid side specified.
+		// Currently this cannot happen, but it could conceivably be used in
+		// the future to request that shroud and visibility be ignored. Until
+		// that comes to pass, just return.
+		return false;
+	}
+	const team & view_team = board_.teams()[side-1];
+
+	if ( view_team.shrouded(recruit_loc) )
+		return false;
+
+	if ( board_.has_visible_unit(recruit_loc, view_team) )
+		return false;
+
+	castle_cost_calculator calc(map, view_team);
+	// The limit computed in the third argument is more than enough for
+	// any convex castle on the map. Strictly speaking it could be
+	// reduced to sqrt(map.w()**2 + map.h()**2).
+	pathfind::plain_route rt =
+		pathfind::a_star_search(leader_loc, recruit_loc, map.w()+map.h(), &calc,
+		                        map.w(), map.h());
+	return !rt.steps.empty();
+}
+
+bool game_state::can_recruit_on(const unit& leader, const map_location& recruit_loc) const
+{
+	return can_recruit_on(leader.get_location(), recruit_loc, leader.side());
+}
+
+bool game_state::side_can_recruit_on(int side, map_location hex) const
+{
+	unit_map::const_iterator leader = board_.units().find(hex);
+	if ( leader != board_.units().end() ) {
+		return leader->can_recruit() && leader->side() == side && can_recruit_from(*leader);
+	} else {
+		// Look for a leader who can recruit on last_hex.
+		for ( leader = board_.units().begin(); leader != board_.units().end(); ++leader) {
+			if ( leader->can_recruit() && leader->side() == side && can_recruit_on(*leader, hex) ) {
+				return true;
+			}
+		}
+	}
+	// No leader found who can recruit at last_hex.
+	return false;
 }
