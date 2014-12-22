@@ -30,6 +30,7 @@
 #include "../game_display.hpp"
 #include "../game_events/manager.hpp"
 #include "../game_events/pump.hpp"
+#include "game_state.hpp"
 #include "../game_preferences.hpp"
 #include "../game_data.hpp"
 #include "../gettext.hpp"
@@ -57,35 +58,6 @@ static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)
-
-
-namespace {
-	struct castle_cost_calculator : pathfind::cost_calculator
-	{
-		castle_cost_calculator(const gamemap& map, const team & view_team) :
-			map_(map),
-			viewer_(view_team),
-			use_shroud_(view_team.uses_shroud())
-		{}
-
-		virtual double cost(const map_location& loc, const double) const
-		{
-			if(!map_.is_castle(loc))
-				return 10000;
-
-			if ( use_shroud_ && viewer_.shrouded(loc) )
-				return 10000;
-
-			return 1;
-		}
-
-	private:
-		const gamemap& map_;
-		const team& viewer_;
-		const bool use_shroud_; // Allows faster checks when shroud is disabled.
-	};
-}//anonymous namespace
-
 
 unit_creator::unit_creator(team &tm, const map_location &start_pos)
   : add_to_recall_(false),discover_(false),get_village_(false),invalidate_(false), rename_side_(false), show_(false), start_pos_(start_pos), team_(tm)
@@ -261,87 +233,6 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 }
 
 
-/**
- * Checks to see if a leader at @a leader_loc could recruit somewhere.
- * This takes into account terrain, shroud (for side @a side), and the presence
- * of visible units.
- * The behavior for an invalid @a side is subject to change for future needs.
- */
-bool can_recruit_from(const map_location& leader_loc, int side)
-{
-	const gamemap& map = resources::gameboard->map();
-
-	if( !map.is_keep(leader_loc) )
-		return false;
-
-	if ( side < 1  ||  resources::teams == NULL  ||
-	     resources::teams->size() < static_cast<size_t>(side) ) {
-		// Invalid side specified.
-		// Currently this cannot happen, but it could conceivably be used in
-		// the future to request that shroud and visibility be ignored. Until
-		// that comes to pass, just return.
- 		return false;
-	}
-
-	return pathfind::find_vacant_tile(leader_loc, pathfind::VACANT_CASTLE, NULL,
-	                                  &(*resources::teams)[side-1])
-	       != map_location::null_location();
-}
-
-bool can_recruit_from(const unit& leader)
-{
-	return can_recruit_from(leader.get_location(), leader.side());
-}
-
-
-/**
- * Checks to see if a leader at @a leader_loc could recruit on @a recruit_loc.
- * This takes into account terrain, shroud (for side @a side), and whether or
- * not there is already a visible unit at recruit_loc.
- * The behavior for an invalid @a side is subject to change for future needs.
- */
-bool can_recruit_on(const map_location& leader_loc, const map_location& recruit_loc, int side)
-{
-	const gamemap& map = resources::gameboard->map();
-
-	if( !map.is_castle(recruit_loc) )
-		return false;
-
-	if( !map.is_keep(leader_loc) )
-		return false;
-
-	if ( side < 1  ||  resources::teams == NULL  ||
-	     resources::teams->size() < static_cast<size_t>(side) ) {
-		// Invalid side specified.
-		// Currently this cannot happen, but it could conceivably be used in
-		// the future to request that shroud and visibility be ignored. Until
-		// that comes to pass, just return.
- 		return false;
-	}
-	const team & view_team = (*resources::teams)[side-1];
-
-	if ( view_team.shrouded(recruit_loc) )
-		return false;
-
-	if ( resources::gameboard->has_visible_unit(recruit_loc, view_team) )
-		return false;
-
-	castle_cost_calculator calc(map, view_team);
-	// The limit computed in the third argument is more than enough for
-	// any convex castle on the map. Strictly speaking it could be
-	// reduced to sqrt(map.w()**2 + map.h()**2).
-	pathfind::plain_route rt =
-		pathfind::a_star_search(leader_loc, recruit_loc, map.w()+map.h(), &calc,
-		                        map.w(), map.h());
-	return !rt.steps.empty();
-}
-
-bool can_recruit_on(const unit& leader, const map_location& recruit_loc)
-{
-	return can_recruit_on(leader.get_location(), recruit_loc, leader.side());
-}
-
-
 namespace actions {
 
 
@@ -388,7 +279,7 @@ const std::set<std::string> get_recruits(int side, const map_location &recruit_l
 				continue;
 
 			// Check if the leader is on a connected keep.
-			if ( allow_local && can_recruit_on(*u, recruit_loc) ) {
+			if ( allow_local && dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(*u, recruit_loc) ) {
 				leader_in_place= true;
 				local_result.insert(u->recruits().begin(), u->recruits().end());
 			}
@@ -493,7 +384,7 @@ std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_lo
 				continue;
 
 			// Check if the leader is on a connected keep.
-			if ( !can_recruit_on(*u, recall_loc) )
+			if ( !dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(*u, recall_loc) )
 				continue;
 			leader_in_place= true;
 
@@ -547,7 +438,7 @@ namespace { // Helpers for check_recall_location()
 			return RECRUIT_NO_VACANCY;
 
 		// See if the preferred location cannot be used.
-		if ( !can_recruit_on(recaller, preferred) ) {
+		if ( !dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(recaller, preferred) ) {
 			alternative = permissible;
 			return RECRUIT_ALTERNATE_LOCATION;
 		}
@@ -677,7 +568,7 @@ namespace { // Helpers for check_recruit_location()
 			return RECRUIT_NO_VACANCY;
 
 		// See if the preferred location cannot be used.
-		if ( !can_recruit_on(recruiter, preferred) ) {
+		if ( !dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(recruiter, preferred) ) {
 			alternative = permissible;
 			return RECRUIT_ALTERNATE_LOCATION;
 		}
@@ -823,13 +714,13 @@ namespace { // Helpers for place_recruit()
 		// See if the preferred location is an option.
 		unit_map::const_iterator leader = units.find(recruited_from);
 		if ( leader != units.end()  &&  leader->can_recruit()  &&
-			 leader->side() == side &&  can_recruit_on(*leader, recruit_location) )
+			 leader->side() == side && dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(*leader, recruit_location) )
 			return leader->get_location();
 
 		// Check all units.
 		for ( leader = units.begin(); leader != units.end(); ++leader )
 			if ( leader->can_recruit()  &&  leader->side() == side  &&
-				 can_recruit_on(*leader, recruit_location) )
+				 dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(*leader, recruit_location) )
 				return leader->get_location();
 
 		// No usable leader found.

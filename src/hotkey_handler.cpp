@@ -472,12 +472,12 @@ bool play_controller::hotkey_handler::in_context_menu(hotkey::HOTKEY_COMMAND com
 		unit_map::const_iterator leader = gamestate_.board_.units().find(last_hex);
 		if ( leader != gamestate_.board_.units().end() )
 			return leader->can_recruit()  &&  leader->side() == viewing_side  &&
-			       can_recruit_from(*leader);
+			       gamestate_.can_recruit_from(*leader);
 		else
 			// Look for a leader who can recruit on last_hex.
 			for ( leader = gamestate_.board_.units().begin(); leader != gamestate_.board_.units().end(); ++leader) {
 				if ( leader->can_recruit()  &&  leader->side() == viewing_side  &&
-				     can_recruit_on(*leader, last_hex) )
+				     gamestate_.can_recruit_on(*leader, last_hex) )
 					return true;
 			}
 		// No leader found who can recruit at last_hex.

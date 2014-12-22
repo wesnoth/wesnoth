@@ -70,7 +70,7 @@ unit_const_ptr find_backup_leader(const unit & leader)
 	{
 		if (unit->can_recruit() && unit->id() != leader.id())
 		{
-			if ( can_recruit_on(*unit, leader.get_location()) )
+			if ( dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(*unit, leader.get_location()) )
 				return unit.get_shared_ptr();
 		}
 	}
@@ -85,7 +85,7 @@ unit* find_recruiter(size_t team_index, map_location const& hex)
 	BOOST_FOREACH(unit& u, *resources::units)
 		if(u.can_recruit()
 				&& u.side() == static_cast<int>(team_index+1)
-				&& can_recruit_on(u, hex))
+				&& dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(u, hex))
 			return &u;
 	return NULL;
 }
