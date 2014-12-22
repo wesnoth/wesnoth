@@ -218,7 +218,7 @@ namespace {
  * of visible units.
  * The behavior for an invalid @a side is subject to change for future needs.
  */
-bool game_state::can_recruit_from(const map_location& leader_loc, int side)
+bool game_state::can_recruit_from(const map_location& leader_loc, int side) const
 {
 	const gamemap& map = board_.map();
 
@@ -238,7 +238,7 @@ bool game_state::can_recruit_from(const map_location& leader_loc, int side)
 	       != map_location::null_location();
 }
 
-bool game_state::can_recruit_from(const unit& leader)
+bool game_state::can_recruit_from(const unit& leader) const
 {
 	return can_recruit_from(leader.get_location(), leader.side());
 }
@@ -250,7 +250,7 @@ bool game_state::can_recruit_from(const unit& leader)
  * not there is already a visible unit at recruit_loc.
  * The behavior for an invalid @a side is subject to change for future needs.
  */
-bool game_state::can_recruit_on(const map_location& leader_loc, const map_location& recruit_loc, int side)
+bool game_state::can_recruit_on(const map_location& leader_loc, const map_location& recruit_loc, int side) const
 {
 	const gamemap& map = board_.map();
 
@@ -285,7 +285,24 @@ bool game_state::can_recruit_on(const map_location& leader_loc, const map_locati
 	return !rt.steps.empty();
 }
 
-bool game_state::can_recruit_on(const unit& leader, const map_location& recruit_loc)
+bool game_state::can_recruit_on(const unit& leader, const map_location& recruit_loc) const
 {
 	return can_recruit_on(leader.get_location(), recruit_loc, leader.side());
+}
+
+bool game_state::side_can_recruit_on(int side, map_location hex) const
+{
+	unit_map::const_iterator leader = board_.units().find(hex);
+	if ( leader != board_.units().end() ) {
+		return leader->can_recruit() && leader->side() == side && can_recruit_from(*leader);
+	} else {
+		// Look for a leader who can recruit on last_hex.
+		for ( leader = board_.units().begin(); leader != board_.units().end(); ++leader) {
+			if ( leader->can_recruit() && leader->side() == side && can_recruit_on(*leader, hex) ) {
+				return true;
+			}
+		}
+	}
+	// No leader found who can recruit at last_hex.
+	return false;
 }
