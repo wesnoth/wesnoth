@@ -3323,7 +3323,6 @@ void menu_handler::user_command()
 void menu_handler::request_control_change ( int side_num, const std::string& player )
 {
 	std::string side = str_cast(side_num);
-	int current_side = resources::controller->current_side();
 	if (teams_[side_num - 1].is_local_human() && player == preferences::login()) {
 		//this is already our side.
 		return;
