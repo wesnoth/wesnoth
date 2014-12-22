@@ -44,10 +44,7 @@ before_install:
 
     - if [ "$BUILD" = 4 ]; then export CXX11=true; fi
     - if [ "$BUILD" = 4 ]; then export EXTRA_FLAGS_RELEASE="-O0 -Wno-literal-suffix -Wno-deprecated-declarations"; fi
-    - if [ "$BUILD" = 4 ]; then export CPP_TESTS=false; fi
-    - if [ "$BUILD" = 4 ]; then export WML_TESTS=false; fi
     - if [ "$BUILD" = 4 ]; then export PLAY_TEST=false; fi
-    - if [ "$BUILD" = 4 ]; then export CHECK_UTF8=false; fi
 
     - if [ "$BUILD" = 5 ]; then export NLS=true; fi
     - if [ "$BUILD" = 5 ]; then export TARGETS="translations"; fi
