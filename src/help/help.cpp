@@ -88,7 +88,7 @@ void show_unit_description(const unit_type &t)
 	if (use_variation)
 		help::show_variation_help(*display::get_singleton(), t.id(), var_id, hide_help);
 	else
-		help::show_unit_help(*display::get_singleton(), t.id(), !t.variations().empty(), hide_help);
+		help::show_unit_help(*display::get_singleton(), t.id(), t.show_variations_in_help(), hide_help);
 }
 
 help_manager::help_manager(const config *cfg) //, gamemap *_map)
