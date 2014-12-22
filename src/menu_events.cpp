@@ -2697,18 +2697,23 @@ void console_handler::do_droid() {
 		symbols["side"] = lexical_cast<std::string>(side);
 		command_failed(vgettext("Can't droid networked side: '$side'.", symbols));
 		return;
-	} else if ((menu_handler_.teams_[side - 1].is_local_human() || menu_handler_.teams_[side - 1].is_idle()) && action != " off") {
-		//this is our side, so give it to AI
-		menu_handler_.teams_[side - 1].make_ai();
-		menu_handler_.change_controller(lexical_cast<std::string>(side),"ai");
+	} else if (menu_handler_.teams_[side - 1].is_local_human()) {
+		if (menu_handler_.teams_[side - 1].is_droid() ? action == " on" : action == " off") {
+			return;
+		}
+		menu_handler_.teams_[side - 1].toggle_droid();
 		if(team_num_ == side) {
 			//if it is our turn at the moment, we have to indicate to the
 			//play_controller, that we are no longer in control
 			throw end_turn_exception(side);
 		}
-	} else if (menu_handler_.teams_[side - 1].is_local_ai() && action != " on") {
-		menu_handler_.teams_[side - 1].make_human();
-		menu_handler_.change_controller(lexical_cast<std::string>(side),"human");
+	} else if (menu_handler_.teams_[side - 1].is_local_ai()) {
+//		menu_handler_.teams_[side - 1].make_human();
+//		menu_handler_.change_controller(lexical_cast<std::string>(side),"human");
+
+		utils::string_map symbols;
+		symbols["side"] = side_s;
+		command_failed(vgettext("Can't droid a local ai side: '$side'.", symbols));
 	}
 	menu_handler_.textbox_info_.close(*menu_handler_.gui_);
 }
@@ -2729,27 +2734,22 @@ void console_handler::do_idle() {
 	} else if (menu_handler_.teams_[side - 1].is_network()) {
 		utils::string_map symbols;
 		symbols["side"] = lexical_cast<std::string>(side);
-		command_failed(vgettext("Can't droid networked side: '$side'.", symbols));
+		command_failed(vgettext("Can't idle networked side: '$side'.", symbols));
 		return;
-	} else if (menu_handler_.teams_[side - 1].is_local_human() && action != " off") {
-		//this is our side, so give it to idle
-		menu_handler_.teams_[side - 1].make_idle();
-		menu_handler_.change_controller(lexical_cast<std::string>(side),"idle");
+	} else if (menu_handler_.teams_[side - 1].is_local_ai()) {
+		utils::string_map symbols;
+		symbols["side"] = lexical_cast<std::string>(side);
+		command_failed(vgettext("Can't idle local ai side: '$side'.", symbols));
+		return;
+	} else if (menu_handler_.teams_[side - 1].is_local_human()) {
+		if (menu_handler_.teams_[side - 1].is_idle() ? action == " on" : action == " off") {
+			return;
+		}
+		//toggle the proxy controller between idle / non idle
+		menu_handler_.teams_[side - 1].toggle_idle();
 		if(team_num_ == side) {
 			//if it is our turn at the moment, we have to indicate to the
 			//play_controller, that we are no longer in control
-			throw end_turn_exception(side);
-		}
-	} else if (menu_handler_.teams_[side - 1].is_local_ai() && action != " off") {
-		//this is our side, so give it to idle, without end turn exception. tell network it is human
-		menu_handler_.teams_[side - 1].make_idle();
-		menu_handler_.change_controller(lexical_cast<std::string>(side),"human");
-	} else if (menu_handler_.teams_[side - 1].is_idle() && action != " on") {
-		menu_handler_.teams_[side - 1].make_human();
-		menu_handler_.change_controller(lexical_cast<std::string>(side),"human");
-		if(team_num_ == side) {
-			//if it is our turn at the moment, we have to indicate to the
-			//play_controller, that idle should no longer be in control
 			throw end_turn_exception(side);
 		}
 	}
@@ -2806,7 +2806,13 @@ void console_handler::do_controller()
 		command_failed(vgettext("Can't query control of out-of-bounds side: '$side'.",	symbols));
 		return;
 	}
-	print(get_cmd(), team::CONTROLLER_to_string (menu_handler_.teams_[side_num - 1].controller()));
+
+	std::string report = team::CONTROLLER_to_string (menu_handler_.teams_[side_num - 1].controller());
+	if (!menu_handler_.teams_[side_num - 1].is_proxy_human()) {
+		report += " (" + team::PROXY_CONTROLLER_to_string(menu_handler_.teams_[side_num - 1].proxy_controller()) + ")";
+	}
+
+	print(get_cmd(), report);
 }
 
 void console_handler::do_clear() {
@@ -3321,14 +3327,6 @@ void menu_handler::request_control_change ( int side_num, const std::string& pla
 	if (teams_[side_num - 1].is_local_human() && player == preferences::login()) {
 		//this is already our side.
 		return;
-	} else if (teams_[side_num - 1].is_idle() && player == preferences::login()) {
-		//the server thinks this is already our side, he will reject change_controller.
-		LOG_NG << " *** Got an idle side with requested control change " << std::endl;
-		teams_[side_num - 1].make_human();
-		// we dont want to restart it, if it isn't the current turn.
-		if(current_side == side_num) {
-			throw end_turn_exception(side_num);
-		}
 	} else {
 		//The server will (or won't becasue we aren't allowed to change the controller)
 		//send us a [change_controller] back, which we then hndle in playturn.cpp 

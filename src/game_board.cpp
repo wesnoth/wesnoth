@@ -112,10 +112,11 @@ unit* game_board::get_visible_unit(const map_location &loc,
 	return &*ui;
 }
 
-void game_board::side_drop_to(int side_num, team::CONTROLLER ctrl) {
+void game_board::side_drop_to(int side_num, team::CONTROLLER ctrl, team::PROXY_CONTROLLER proxy) {
 	team &tm = teams_[side_num-1];
 
 	tm.change_controller(ctrl);
+	tm.change_proxy(proxy);
 
 	tm.set_current_player(lexical_cast<std::string> (ctrl) + lexical_cast<std::string> (side_num));
 

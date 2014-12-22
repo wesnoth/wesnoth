@@ -308,8 +308,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		switch(action) {
 			case 0:
 				resources::controller->on_not_observer();
-				resources::gameboard->side_drop_to(side_drop, team::AI);
-				change_controller(side_drop, team::CONTROLLER_to_string(team::AI));
+				resources::gameboard->side_drop_to(side_drop, team::HUMAN, team::PROXY_AI);
+				change_controller(side_drop, team::CONTROLLER_to_string(team::HUMAN));
 
 				resources::controller->maybe_do_init_side();
 
@@ -317,14 +317,15 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 			case 1:
 				resources::controller->on_not_observer();
-				resources::gameboard->side_drop_to(side_drop, team::HUMAN);
+				resources::gameboard->side_drop_to(side_drop, team::HUMAN, team::PROXY_HUMAN);
 				change_controller(side_drop, team::CONTROLLER_to_string(team::HUMAN));
 
 				resources::controller->maybe_do_init_side();
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 			case 2:
-				resources::gameboard->side_drop_to(side_drop, team::IDLE);
+				resources::gameboard->side_drop_to(side_drop, team::HUMAN, team::PROXY_IDLE);
+				change_controller(side_drop, team::CONTROLLER_to_string(team::HUMAN));
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 
@@ -338,7 +339,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 					{
 						// Server thinks this side is ours now so in case of error transferring side we have to make local state to same as what server thinks it is.
-						resources::gameboard->side_drop_to(side_drop, team::IDLE);
+						resources::gameboard->side_drop_to(side_drop, team::HUMAN, team::PROXY_IDLE);
 					}
 
 					const size_t index = static_cast<size_t>(action - first_observer_option_idx);
@@ -348,8 +349,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 						size_t i = index - observers.size();
 						change_side_controller(side_drop, allies[i]->current_player());
 					} else {
-						resources::gameboard->side_drop_to(side_drop, team::AI);
-						change_controller(side_drop, team::CONTROLLER_to_string(team::AI));
+						resources::gameboard->side_drop_to(side_drop, team::HUMAN, team::PROXY_AI);
+						change_controller(side_drop, team::CONTROLLER_to_string(team::HUMAN));
 					}
 					return restart ? PROCESS_RESTART_TURN : PROCESS_CONTINUE;
 				}

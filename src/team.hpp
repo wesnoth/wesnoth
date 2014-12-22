@@ -57,9 +57,15 @@ public:
 		(AI, 		"ai")
 		(NETWORK, 	"network")
 		(NETWORK_AI, 	"network_ai")
-		(IDLE,		"idle")
 		(EMPTY,		"null")
 	)
+
+	MAKE_ENUM(PROXY_CONTROLLER,
+		(PROXY_HUMAN,	"human")
+		(PROXY_AI,	"ai")
+		(PROXY_IDLE,	"idle")
+	)
+
 	MAKE_ENUM(DEFEAT_CONDITION,
 		(NO_LEADER, "no_leader_left")
 		(NO_UNITS, "no_units_left")
@@ -131,6 +137,10 @@ private:
 
 		CONTROLLER controller;
 		DEFEAT_CONDITION defeat_condition;
+
+		PROXY_CONTROLLER proxy_controller;	// when controller == HUMAN, the proxy controller determines what input method is actually used.
+							// proxy controller is an interface property, not gamestate. it is not synced, not known to server.
+							// also not saved in save game file
 
 		bool share_maps, share_view;
 		bool disallow_observers;
@@ -244,10 +254,9 @@ public:
 	void set_color(const std::string& color) { info_.color = color; }
 	//bool is_human() const { return info_.controller == HUMAN; }
 	//bool is_ai() const { return info_.controller == AI; }
-	bool is_idle() const { return info_.controller == IDLE; }
 	bool is_empty() const { return info_.controller == EMPTY; }
 
-	bool is_local() const { return is_local_human() || is_local_ai() || is_idle(); }
+	bool is_local() const { return is_local_human() || is_local_ai(); }
 	bool is_network() const { return is_network_human() || is_network_ai(); }
 
 	bool is_local_human() const { return info_.controller == HUMAN;  }
@@ -257,12 +266,26 @@ public:
 
 	void make_human() { info_.controller = HUMAN; }
 	void make_ai() { info_.controller = AI; }
-	void make_idle() { info_.controller = IDLE; }
 	void change_controller(const std::string& new_controller) {
 		info_.controller = lexical_cast_default<CONTROLLER> (new_controller, AI);
 	}
 	void change_controller_by_wml(const std::string& new_controller);
 	void change_controller(CONTROLLER controller) { info_.controller = controller; }
+
+	PROXY_CONTROLLER proxy_controller() const { return info_.proxy_controller; }
+	bool is_proxy_human() const { return info_.proxy_controller == PROXY_HUMAN; }
+	bool is_droid() const { return info_.proxy_controller == PROXY_AI; }
+	bool is_idle() const { return info_.proxy_controller == PROXY_IDLE; }
+
+	void make_droid() { info_.proxy_controller = PROXY_AI; }
+	void make_idle() { info_.proxy_controller = PROXY_IDLE; }
+	void make_proxy_human() { info_.proxy_controller = PROXY_HUMAN; }
+	void clear_proxy() { make_proxy_human(); }
+
+	void change_proxy(PROXY_CONTROLLER proxy) { info_.proxy_controller = proxy; }
+
+	void toggle_droid() { info_.proxy_controller = (info_.proxy_controller == PROXY_AI  ) ? PROXY_HUMAN : PROXY_AI;   }
+	void toggle_idle()  { info_.proxy_controller = (info_.proxy_controller == PROXY_IDLE) ? PROXY_HUMAN : PROXY_IDLE; }
 
 	const std::string& team_name() const { return info_.team_name; }
 	const t_string &user_team_name() const { return info_.user_team_name; }
@@ -380,6 +403,7 @@ private:
 };
 
 MAKE_ENUM_STREAM_OPS2(team, CONTROLLER)
+MAKE_ENUM_STREAM_OPS2(team, PROXY_CONTROLLER)
 MAKE_ENUM_STREAM_OPS2(team, DEFEAT_CONDITION)
 
 //function which will validate a side. Throws game::game_error

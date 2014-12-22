@@ -1392,11 +1392,11 @@ namespace
 
 			//to make mp games equal we only allow selecting advancements to the current side.
 			//otherwise we'd give an unfair advantage to the side that hosts ai sides if units advance during ai turns.
-			if(!non_interactive() && (force_dialog_ || (t.is_local_human() && (is_current_side || !is_mp))))
+			if(!non_interactive() && (force_dialog_ || (t.is_local_human() && !t.is_idle() && (is_current_side || !is_mp))))
 			{
 				res = dialogs::advance_unit_dialog(loc_);
 			}
-			else if(t.is_local_ai() || t.is_network_ai() || t.is_empty() || t.is_idle())
+			else if(t.is_local_ai() || t.is_network_ai() || t.is_empty())
 			{
 				res = rand() % nb_options_;
 

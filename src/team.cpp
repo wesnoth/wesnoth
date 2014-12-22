@@ -96,6 +96,7 @@ team::team_info::team_info() :
 	objectives(),
 	objectives_changed(false),
 	controller(),
+	proxy_controller(team::PROXY_HUMAN),
 	defeat_condition(team::NO_LEADER),
 	share_maps(false),
 	share_view(false),
@@ -240,7 +241,7 @@ void team::team_info::write(config& cfg) const
 	cfg["hidden"] = hidden;
 	cfg["suppress_end_turn_confirmation"] = no_turn_confirmation;
 	cfg["scroll_to_leader"] = scroll_to_leader;
-	cfg["controller"] = (controller == IDLE ? std::string("human") : CONTROLLER_to_string (controller));
+	cfg["controller"] = CONTROLLER_to_string (controller);
 
 	std::stringstream can_recruit_str;
 	for(std::set<std::string>::const_iterator cr = can_recruit.begin(); cr != can_recruit.end(); ++cr) {
