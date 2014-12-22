@@ -260,6 +260,11 @@ public:
 	 */
 	bool has_variation(const std::string& variation_id) const;
 
+	/**
+	 * Whether the unit type has at least one help-visible variation.
+	 */
+	bool show_variations_in_help() const;
+
 	/// Returns the ID of this type's race without the need to build the type.
 	std::string race_id() const { return cfg_["race"]; } //race_->id(); }
 	/// Never returns NULL, but may point to the null race.

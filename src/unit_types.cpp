@@ -1068,6 +1068,18 @@ bool unit_type::has_variation(const std::string& variation_id) const
 	return variations_.find(variation_id) != variations_.end();
 }
 
+bool unit_type::show_variations_in_help() const
+{
+	BOOST_FOREACH(const variations_map::value_type &val, variations_) {
+		assert(val.second != NULL);
+		if (!val.second->hide_help()) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 /**
  * Generates (and returns) a trimmed config suitable for use with units.
  */

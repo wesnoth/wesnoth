@@ -1046,7 +1046,7 @@ void editor_controller::unit_description()
 	const unit_map & units = context_manager_->get_map_context().get_units();
 	const unit_map::const_unit_iterator un = units.find(loc);
 	if(un != units.end()) {
-		help::show_unit_help(*gui_, un->type_id(), !un->type().variations().empty(), false);
+		help::show_unit_help(*gui_, un->type_id(), un->type().show_variations_in_help(), false);
 	} else {
 		help::show_help(*gui_, "..units");
 	}

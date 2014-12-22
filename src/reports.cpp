@@ -174,7 +174,7 @@ REPORT_GENERATOR(selected_unit_name)
 static config unit_type(const unit* u)
 {
 	if (!u) return report();
-	std::string has_variations_prefix = (!u->type().variations().empty() ? ".." : "");
+	std::string has_variations_prefix = (u->type().show_variations_in_help() ? ".." : "");
 	std::ostringstream str, tooltip;
 	str << u->type_name();
 	tooltip << _("Type: ") << "<b>" << u->type_name() << "</b>\n"
