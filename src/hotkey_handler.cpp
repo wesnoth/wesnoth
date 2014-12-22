@@ -56,6 +56,9 @@ game_display * play_controller::hotkey_handler::gui() const {
 bool play_controller::hotkey_handler::browse() const { return play_controller_.is_browsing(); }
 bool play_controller::hotkey_handler::linger() const { return play_controller_.is_lingering(); }
 
+const team & play_controller::hotkey_handler::viewing_team() const { return play_controller_.get_teams_const()[gui()->viewing_team()]; }
+bool play_controller::hotkey_handler::viewing_team_is_playing() const { return gui()->viewing_team() == gui()->playing_team(); }
+
 void play_controller::hotkey_handler::objectives(){
 	menu_handler_.objectives(gui()->viewing_team()+1);
 }
@@ -422,8 +425,8 @@ void play_controller::hotkey_handler::show_menu(const std::vector<std::string>& 
 		}
 		// Remove WML commands if they would not be allowed here
 		if(*i == "wml") {
-			if(!context_menu || gui()->viewing_team() != gui()->playing_team()
-			|| events::commands_disabled || !play_controller_.get_teams_const()[gui()->viewing_team()].is_local_human()
+			if(!context_menu || !viewing_team_is_playing()
+			|| events::commands_disabled || !viewing_team().is_local_human()
 			|| (linger() && !game_config::debug)){
 				i = items.erase(i);
 				continue;
@@ -513,7 +516,7 @@ hotkey::ACTION_STATE play_controller::hotkey_handler::get_action_state(hotkey::H
 	case hotkey::HOTKEY_ZOOM_DEFAULT:
 		return (gui()->get_zoom_factor() == 1.0) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_DELAY_SHROUD:
-		return gamestate_.board_.teams()[gui()->viewing_team()].auto_shroud_updates() ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
+		return viewing_team().auto_shroud_updates() ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
 	default:
 		return hotkey::ACTION_STATELESS;
 	}

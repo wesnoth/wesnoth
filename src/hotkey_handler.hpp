@@ -35,6 +35,8 @@ class game_state;
 class saved_game;
 class wmi_pager;
 
+class team;
+
 class play_controller::hotkey_handler : public hotkey::command_executor {
 
 protected:
@@ -67,6 +69,9 @@ private:
 protected:
 	bool browse() const;
 	bool linger() const;
+
+	const team & viewing_team() const;
+	bool viewing_team_is_playing() const;
 
 public:
 	hotkey_handler(play_controller &, saved_game &, game_state &);

@@ -188,7 +188,7 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 
 		case hotkey::HOTKEY_WML:
 			//code mixed from play_controller::show_menu and code here
-			return (gui()->viewing_team() == gui()->playing_team()) && !events::commands_disabled && play_controller_.get_teams_const()[gui()->viewing_team()].is_local_human() && !linger() && !browse();
+			return viewing_team_is_playing() && !events::commands_disabled && viewing_team().is_local_human() && !linger() && !browse();
 		case hotkey::HOTKEY_UNIT_HOLD_POSITION:
 		case hotkey::HOTKEY_END_UNIT_TURN:
 			return !browse() && !linger() && !events::commands_disabled;
@@ -200,13 +200,13 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 			return (!browse() || linger()) && !events::commands_disabled;
 
 		case hotkey::HOTKEY_DELAY_SHROUD:
-			return !linger() && (play_controller_.get_teams_const()[gui()->viewing_team()].uses_fog() || play_controller_.get_teams_const()[gui()->viewing_team()].uses_shroud())
+			return !linger() && (viewing_team().uses_fog() || viewing_team().uses_shroud())
 			&& !events::commands_disabled;
 		case hotkey::HOTKEY_UPDATE_SHROUD:
 			return !linger()
-				&& play_controller_.current_side() == gui()->viewing_side()
+				&& viewing_team_is_playing()
 				&& !events::commands_disabled
-				&& play_controller_.get_teams_const()[gui()->viewing_team()].auto_shroud_updates() == false;
+				&& viewing_team().auto_shroud_updates() == false;
 
 		// Commands we can only do if in debug mode
 		case hotkey::HOTKEY_CREATE_UNIT:
