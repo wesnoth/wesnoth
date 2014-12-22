@@ -25,6 +25,7 @@
 #include <boost/optional.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
+#include <set>
 #include <vector>
 
 class config;
@@ -111,6 +112,8 @@ class game_board : public display_context {
 	void set_all_units_user_end_turn();
 
 	void heal_all_survivors();
+
+	void check_victory(bool &, bool &, bool &, bool &, std::set<unsigned> &, bool);
 
 	// Manipulator from playturn
 

@@ -881,69 +881,17 @@ void play_controller::check_victory()
 
 	check_end_level();
 
+	bool continue_level, found_player, found_network_player, invalidate_all;
 	std::set<unsigned> not_defeated;
 
-	BOOST_FOREACH( const unit & i , gamestate_.board_.units())
-	{
-		DBG_EE << "Found a unit: " << i.id() << " on side " << i.side() << std::endl;
-		const team& tm = gamestate_.board_.teams()[i.side()-1];
-		DBG_EE << "That team's defeat condition is: " << lexical_cast<std::string> (tm.defeat_condition()) << std::endl;
-		if (i.can_recruit() && tm.defeat_condition() == team::NO_LEADER) {
-			not_defeated.insert(i.side());
-		} else if (tm.defeat_condition() == team::NO_UNITS) {
-			not_defeated.insert(i.side());
-		}
+	gamestate_.board_.check_victory(continue_level, found_player, found_network_player, invalidate_all, not_defeated, remove_from_carryover_on_defeat_);
+
+	if (invalidate_all) {
+		gui_->invalidate_all();
 	}
 
-	BOOST_FOREACH(team& tm, gamestate_.board_.teams_)
-	{
-		if(tm.defeat_condition() == team::NEVER)
-		{
-			not_defeated.insert(tm.side());
-		}
-		// Clear villages for teams that have no leader and
-		// mark side as lost if it should be removed from carryover.
-		if (not_defeated.find(tm.side()) == not_defeated.end())
-		{
-			tm.clear_villages();
-			// invalidate_all() is overkill and expensive but this code is
-			// run rarely so do it the expensive way.
-			gui_->invalidate_all();
-
-			if (remove_from_carryover_on_defeat_)
-			{
-				tm.set_lost(true);
-			}
-		}
-		else if(remove_from_carryover_on_defeat_)
-		{
-			tm.set_lost(false);
-		}
-	}
-
-	bool found_player = false;
-	bool found_network_player = false;
-
-	for (std::set<unsigned>::iterator n = not_defeated.begin(); n != not_defeated.end(); ++n) {
-		size_t side = *n - 1;
-
-		DBG_EE << "Side " << (side+1) << " is a not-defeated team" << std::endl;
-
-		std::set<unsigned>::iterator m(n);
-		for (++m; m != not_defeated.end(); ++m) {
-			if (gamestate_.board_.teams()[side].is_enemy(*m)) {
-				return;
-			}
-			DBG_EE << "Side " << (side+1) << " and " << *m << " are not enemies." << std::endl;
-		}
-
-		if (gamestate_.board_.teams()[side].is_local_human()) {
-			found_player = true;
-		}
-
-		if (gamestate_.board_.teams()[side].is_network()) {
-			found_network_player = true;
-		}
+	if (continue_level) {
+		return ;
 	}
 
 	if (found_player || found_network_player) {

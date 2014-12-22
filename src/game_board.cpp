@@ -24,12 +24,17 @@
 #include "utils/foreach.tpp"
 
 #include <boost/foreach.hpp>
+#include <set>
+#include <vector>
 
 static lg::log_domain log_engine("enginerefac");
 #define DBG_RG LOG_STREAM(debug, log_engine)
 #define LOG_RG LOG_STREAM(info, log_engine)
 #define WRN_RG LOG_STREAM(warn, log_engine)
 #define ERR_RG LOG_STREAM(err, log_engine)
+
+static lg::log_domain log_engine_enemies("engine/enemies");
+#define DBG_EE LOG_STREAM(debug, log_engine_enemies)
 
 game_board::game_board(const tdata_cache & tdata, const config & level) : teams_(), map_(new gamemap(tdata, level)), units_() {}
 
@@ -83,6 +88,78 @@ void game_board::heal_all_survivors() {
 			un->new_scenario();
 		}
 	}
+}
+
+void game_board::check_victory(bool & continue_level, bool & found_player, bool & found_network_player, bool & cleared_villages, std::set<unsigned> & not_defeated, bool remove_from_carryover_on_defeat)
+{
+	continue_level = true;
+	found_player = false;
+	found_network_player = false;
+	cleared_villages = false;
+
+	not_defeated = std::set<unsigned>();
+
+	BOOST_FOREACH( const unit & i , units())
+	{
+		DBG_EE << "Found a unit: " << i.id() << " on side " << i.side() << std::endl;
+		const team& tm = teams()[i.side()-1];
+		DBG_EE << "That team's defeat condition is: " << lexical_cast<std::string> (tm.defeat_condition()) << std::endl;
+		if (i.can_recruit() && tm.defeat_condition() == team::NO_LEADER) {
+			not_defeated.insert(i.side());
+		} else if (tm.defeat_condition() == team::NO_UNITS) {
+			not_defeated.insert(i.side());
+		}
+	}
+
+	BOOST_FOREACH(team& tm, teams_)
+	{
+		if(tm.defeat_condition() == team::NEVER)
+		{
+			not_defeated.insert(tm.side());
+		}
+		// Clear villages for teams that have no leader and
+		// mark side as lost if it should be removed from carryover.
+		if (not_defeated.find(tm.side()) == not_defeated.end())
+		{
+			tm.clear_villages();
+			// invalidate_all() is overkill and expensive but this code is
+			// run rarely so do it the expensive way.
+			cleared_villages = true;
+
+			if (remove_from_carryover_on_defeat)
+			{
+				tm.set_lost(true);
+			}
+		}
+		else if(remove_from_carryover_on_defeat)
+		{
+			tm.set_lost(false);
+		}
+	}
+
+	for (std::set<unsigned>::iterator n = not_defeated.begin(); n != not_defeated.end(); ++n) {
+		size_t side = *n - 1;
+
+		DBG_EE << "Side " << (side+1) << " is a not-defeated team" << std::endl;
+
+		std::set<unsigned>::iterator m(n);
+		for (++m; m != not_defeated.end(); ++m) {
+			if (teams()[side].is_enemy(*m)) {
+				return;
+			}
+			DBG_EE << "Side " << (side+1) << " and " << *m << " are not enemies." << std::endl;
+		}
+
+		if (teams()[side].is_local_human()) {
+			found_player = true;
+		}
+
+		if (teams()[side].is_network_human()) {
+			found_network_player = true;
+		}
+	}
+
+	continue_level = false;
 }
 
 unit_map::iterator game_board::find_visible_unit(const map_location &loc,
