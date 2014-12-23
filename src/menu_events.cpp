@@ -137,10 +137,13 @@ std::string menu_handler::get_title_suffix(int side_num)
 
 void menu_handler::objectives(int side_num)
 {
+	if (!gamestate().lua_kernel_) {
+		return ;
+	}
+
 	config cfg;
 	cfg["side"] = str_cast(side_num);
-	assert(resources::lua_kernel);
-	resources::lua_kernel->run_wml_action("show_objectives", vconfig(cfg),
+	gamestate().lua_kernel_->run_wml_action("show_objectives", vconfig(cfg),
 		game_events::queued_event("_from_interface", map_location(),
 			map_location(), config()));
 	team &current_team = teams()[side_num - 1];
@@ -3066,18 +3069,24 @@ void console_handler::do_nodebug() {
 	}
 }
 void console_handler::do_lua() {
-	resources::lua_kernel->run(get_data().c_str());
+	if (!menu_handler_.gamestate().lua_kernel_) {
+		return ;
+	}
+	menu_handler_.gamestate().lua_kernel_->run(get_data().c_str());
 	menu_handler_.pc_.pump().flush_messages();
 }
 
 void console_handler::do_unsafe_lua()
 {
+	if (!menu_handler_.gamestate().lua_kernel_) {
+		return ;
+	}
 	if (gui2::show_message(menu_handler_.gui_->video(), _("Unsafe Lua scripts."),
 		_("You are about to open a security breach in Wesnoth. Are you sure you want to continue? If you have downloaded add-ons, do not click 'ok'! They would instantly take over your computer. You have been warned."),
 		gui2::tmessage::ok_cancel_buttons) == gui2::twindow::OK)
 	{
 		print(get_cmd(), _("Unsafe mode enabled!"));
-		resources::lua_kernel->load_package();
+		menu_handler_.gamestate().lua_kernel_->load_package();
 	}
 }
 
