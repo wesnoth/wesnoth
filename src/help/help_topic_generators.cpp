@@ -289,7 +289,7 @@ std::string unit_topic_generator::operator()() const {
 					std::string lang_unit = type->type_name();
 					std::string ref_id;
 					if (description_type(*type) == FULL_DESCRIPTION) {
-						const std::string section_prefix = type->variations().empty() ? "" : "..";
+						const std::string section_prefix = type->show_variations_in_help() ? ".." : "";
 						ref_id = section_prefix + unit_prefix + type->id();
 					} else {
 						ref_id = unknown_unit_topic;
@@ -315,7 +315,7 @@ std::string unit_topic_generator::operator()() const {
 					first = false;
 				}
 				const unit_type* base_type = unit_types.find(base_id, unit_type::HELP_INDEXED);
-				const std::string section_prefix = base_type->variations().empty() ? "" : "..";
+				const std::string section_prefix = base_type->show_variations_in_help() ? ".." : "";
 				ss << make_link(base_type->type_name(), section_prefix + unit_prefix + base_id) << "\n";
 			}
 		}
