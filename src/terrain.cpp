@@ -121,11 +121,13 @@ terrain_type::terrain_type(const config& cfg) :
 		t_translation::write_terrain_code(number_)));
 #endif
 
-	if(editor_image_.empty())
+	if(editor_image_.empty()) {
 		editor_image_ = "terrain/" + minimap_image_ + ".png";
+	}
 
-	if (hide_in_editor_)
+	if(hide_in_editor_) {
 		editor_image_ = "";
+	}
 
 	mvt_type_.push_back(number_);
 	def_type_.push_back(number_);
