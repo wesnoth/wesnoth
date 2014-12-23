@@ -116,8 +116,8 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	saved_game_(state_of_game),
 	prefs_disp_manager_(),
 	tooltips_manager_(),
-	reports_(new reports()),
-	events_manager_(),
+	whiteboard_manager_(),
+	plugins_context_(),
 	labels_manager_(),
 	help_manager_(&game_config),
 	mouse_handler_(NULL, gamestate_.board_),
@@ -128,7 +128,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	gui_(),
 	statistics_context_(level["name"]),
 	undo_stack_(new actions::undo_list(level.child("undo_stack"))),
-	whiteboard_manager_(),
 	loading_game_(level["playing_team"].empty() == false),
 	player_number_(1),
 	first_player_(level["playing_team"].to_int() + 1),
@@ -195,8 +194,12 @@ void play_controller::init(CVideo& video){
 	loadscreen::start_stage("load level");
 	recorder.set_skip(false);
 
+	LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks_) << std::endl;
+	whiteboard_manager_.reset(new wb::manager()),
+	resources::whiteboard = whiteboard_manager_;
+
 	LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks_) << std::endl;
-	gamestate_.init(ticks_);
+	gamestate_.init(ticks_, *this);
 	resources::tunnels = gamestate_.pathfind_manager_.get();
 
 	// mouse_handler expects at least one team for linger mode to work.
@@ -210,13 +213,9 @@ void play_controller::init(CVideo& video){
 	loadscreen::start_stage("init theme");
 	const config &theme_cfg = controller_base::get_theme(game_config_, level_["theme"]);
 
-	LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks_) << std::endl;
-	whiteboard_manager_.reset(new wb::manager());
-	resources::whiteboard = whiteboard_manager_;
-
 	LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("build terrain");
-	gui_.reset(new game_display(gamestate_.board_, video, whiteboard_manager_, *reports_, gamestate_.tod_manager_, theme_cfg, level_));
+	gui_.reset(new game_display(gamestate_.board_, video, whiteboard_manager_, *gamestate_.reports_, gamestate_.tod_manager_, theme_cfg, level_));
 	if (!gui_->video().faked()) {
 		if (saved_game_.mp_settings().mp_countdown)
 			gui_->get_theme().modify_label("time-icon", _ ("time left for current turn"));
@@ -236,11 +235,9 @@ void play_controller::init(CVideo& video){
 	// This *needs* to be created before the show_intro and show_map_scene
 	// as that functions use the manager state_of_game
 	// Has to be done before registering any events!
-	lua_kernel_.reset(new game_lua_kernel(level_, video, gamestate_, *this, *reports_));
-	lua_kernel_->set_game_display(gui_.get());
-	resources::lua_kernel=lua_kernel_.get();
-	events_manager_.reset(new game_events::manager(level_, game_events::t_context(lua_kernel_.get(), &gamestate_, gui_.get(), &gamestate_.gamedata_, &gamestate_.board_.units_, boost::bind(&wb::manager::on_gamestate_change, whiteboard_manager_.get()), boost::bind(&play_controller::current_side, this))));
-	resources::game_events=events_manager_.get();
+	gamestate_.set_game_display(gui_.get());
+	resources::lua_kernel=gamestate_.lua_kernel_.get();
+	resources::game_events=gamestate_.events_manager_.get();
 
 	if(gamestate_.first_human_team_ != -1) {
 		gui_->set_team(gamestate_.first_human_team_);
@@ -286,9 +283,9 @@ void play_controller::fire_preload()
 {
 	// Run initialization scripts, even if loading from a snapshot.
 	gamestate_.gamedata_.set_phase(game_data::PRELOAD);
-	lua_kernel_->initialize();
+	gamestate_.lua_kernel_->initialize();
 	gamestate_.gamedata_.get_variable("turn_number") = int(turn());
-	events_manager_->pump().fire("preload");
+	pump().fire("preload");
 }
 void play_controller::fire_prestart()
 {
@@ -296,7 +293,7 @@ void play_controller::fire_prestart()
 	// as those may cause the display to be refreshed.
 	update_locker lock_display(gui_->video());
 	gamestate_.gamedata_.set_phase(game_data::PRESTART);
-	events_manager_->pump().fire("prestart");
+	pump().fire("prestart");
 	check_end_level();
 	// prestart event may modify start turn with WML, reflect any changes.
 	start_turn_ = turn();
@@ -306,7 +303,7 @@ void play_controller::fire_prestart()
 void play_controller::fire_start(bool execute){
 	if(execute) {
 		gamestate_.gamedata_.set_phase(game_data::START);
-		events_manager_->pump().fire("start");
+		pump().fire("start");
 		check_end_level();
 		// start event may modify start turn with WML, reflect any changes.
 		start_turn_ = turn();
@@ -409,15 +406,15 @@ void play_controller::do_init_side(bool is_replay, bool only_visual) {
 	if (!only_visual) {
 		if(it_is_a_new_turn_)
 		{
-			events_manager_->pump().fire("turn " + turn_num);
-			events_manager_->pump().fire("new turn");
+			pump().fire("turn " + turn_num);
+			pump().fire("new turn");
 			it_is_a_new_turn_ = false;
 		}
 
-		events_manager_->pump().fire("side turn");
-		events_manager_->pump().fire("side " + side_num + " turn");
-		events_manager_->pump().fire("side turn " + turn_num);
-		events_manager_->pump().fire("side " + side_num + " turn " + turn_num);
+		pump().fire("side turn");
+		pump().fire("side " + side_num + " turn");
+		pump().fire("side turn " + turn_num);
+		pump().fire("side " + side_num + " turn " + turn_num);
 	}
 
 	if(current_team().is_local_human() && !is_replay) {
@@ -447,10 +444,10 @@ void play_controller::do_init_side(bool is_replay, bool only_visual) {
 		// Prepare the undo stack.
 		undo_stack_->new_side_turn(player_number_);
 
-		events_manager_->pump().fire("turn refresh");
-		events_manager_->pump().fire("side " + side_num + " turn refresh");
-		events_manager_->pump().fire("turn " + turn_num + " refresh");
-		events_manager_->pump().fire("side " + side_num + " turn " + turn_num + " refresh");
+		pump().fire("turn refresh");
+		pump().fire("side " + side_num + " turn refresh");
+		pump().fire("turn " + turn_num + " refresh");
+		pump().fire("side " + side_num + " turn " + turn_num + " refresh");
 
 		// Make sure vision is accurate.
 		actions::clear_shroud(player_number_, true);
@@ -502,14 +499,8 @@ config play_controller::to_config() const
 	// Preserve the undo stack so that fog/shroud clearing is kept accurate.
 	undo_stack_->write(cfg.add_child("undo_stack"));
 
-	//Write the game events.
-	events_manager_->write_events(cfg);
-
 	//Write the soundsources.
 	soundsources_manager_->write_sourcespecs(cfg);
-
-	//Call the lua save_game functions
-	lua_kernel_->save_game(cfg);
 
 	if(gui_.get() != NULL){
 		cfg["playing_team"] = str_cast(gui_->playing_team());
@@ -537,10 +528,10 @@ void play_controller::finish_side_turn(){
 
 	{ //Block for set_scontext_synced
 		set_scontext_synced sync(1);
-		events_manager_->pump().fire("side turn end");
-		events_manager_->pump().fire("side "+ side_num + " turn end");
-		events_manager_->pump().fire("side turn " + turn_num + " end");
-		events_manager_->pump().fire("side " + side_num + " turn " + turn_num + " end");
+		pump().fire("side turn end");
+		pump().fire("side "+ side_num + " turn end");
+		pump().fire("side turn " + turn_num + " end");
+		pump().fire("side " + side_num + " turn " + turn_num + " end");
 	}
 	// This is where we refog, after all of a side's events are done.
 	actions::recalculate_fog(player_number_);
@@ -554,15 +545,15 @@ void play_controller::finish_side_turn(){
 
 	mouse_handler_.deselect_hex();
 	n_unit::id_manager::instance().reset_fake();
-	events_manager_->pump()();
+	pump()();
 }
 
 void play_controller::finish_turn()
 {
 	set_scontext_synced sync(2);
 	const std::string turn_num = str_cast(turn());
-	events_manager_->pump().fire("turn end");
-	events_manager_->pump().fire("turn " + turn_num + " end");
+	pump().fire("turn end");
+	pump().fire("turn " + turn_num + " end");
 }
 
 bool play_controller::enemies_visible() const
@@ -895,7 +886,7 @@ void play_controller::check_victory()
 	}
 
 	if (found_player || found_network_player) {
-		events_manager_->pump().fire("enemies defeated");
+		pump().fire("enemies defeated");
 		check_end_level();
 	}
 
@@ -961,7 +952,7 @@ void play_controller::do_consolesave(const std::string& filename)
 
 
 game_events::t_pump & play_controller::pump() {
-	return events_manager_->pump();
+	return gamestate_.events_manager_->pump();
 }
 
 int play_controller::get_ticks() {

@@ -34,7 +34,6 @@
 
 class game_display;
 class game_data;
-class game_lua_kernel;
 class team;
 class unit;
 class wmi_pager;
@@ -224,13 +223,16 @@ protected:
 	//managers
 	boost::scoped_ptr<preferences::display_manager> prefs_disp_manager_;
 	boost::scoped_ptr<tooltips::manager> tooltips_manager_;
-	boost::scoped_ptr<game_lua_kernel> lua_kernel_;
-	boost::scoped_ptr<reports> reports_;
-	boost::scoped_ptr<game_events::manager> events_manager_;
-	font::floating_label_context labels_manager_;
-	help::help_manager help_manager_;
+
+	//whiteboard manager
+	boost::shared_ptr<wb::manager> whiteboard_manager_;
+
+	//plugins context
+	boost::scoped_ptr<plugins_context> plugins_context_;
 
 	//more managers
+	font::floating_label_context labels_manager_;
+	help::help_manager help_manager_;
 	events::mouse_handler mouse_handler_;
 	events::menu_handler menu_handler_;
 	boost::scoped_ptr<hotkey_handler> hotkey_handler_;
@@ -244,12 +246,6 @@ protected:
 	/// undo_list can be an incomplete type at this point (which reduces the
 	/// number of files that depend on actions/undo.hpp).
 	boost::scoped_ptr<actions::undo_list> undo_stack_;
-
-	//whiteboard manager
-	boost::shared_ptr<wb::manager> whiteboard_manager_;
-
-	//plugins context
-	boost::scoped_ptr<plugins_context> plugins_context_;
 
 	//if a team is specified whose turn it is, it means we're loading a game
 	//instead of starting a fresh one. Gets reset to false after init_side

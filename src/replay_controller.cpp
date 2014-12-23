@@ -341,15 +341,15 @@ void replay_controller::reset_replay()
 		events_manager_.reset(new game_events::manager(level_));
 	}*/
 
-	events_manager_.reset();
+	gamestate_.events_manager_.reset();
 	resources::game_events=NULL;
-	lua_kernel_.reset();
+	gamestate_.lua_kernel_.reset();
 	resources::lua_kernel=NULL;
-	lua_kernel_.reset(new game_lua_kernel(level_, gui_->video(), gamestate_, *this, *reports_));
-	lua_kernel_->set_game_display(gui_.get());
-	resources::lua_kernel=lua_kernel_.get();
-	events_manager_.reset(new game_events::manager(level_, game_events::t_context(lua_kernel_.get(), &gamestate_, gui_.get(), &gamestate_.gamedata_, resources::units, boost::bind(&wb::manager::on_gamestate_change, whiteboard_manager_.get()), boost::bind(&play_controller::current_side, this)))); //&gamestate_.board_.units_)));
-	resources::game_events=events_manager_.get();
+	gamestate_.lua_kernel_.reset(new game_lua_kernel(level_, &gui_->video(), gamestate_, *this, *gamestate_.reports_));
+	gamestate_.lua_kernel_->set_game_display(gui_.get());
+	resources::lua_kernel=gamestate_.lua_kernel_.get();
+	gamestate_.events_manager_.reset(new game_events::manager(level_, game_events::t_context(gamestate_.lua_kernel_.get(), &gamestate_, gui_.get(), &gamestate_.gamedata_, resources::units, boost::bind(&wb::manager::on_gamestate_change, whiteboard_manager_.get()), boost::bind(&play_controller::current_side, this))));
+	resources::game_events=gamestate_.events_manager_.get();
 
 	gui_->labels().read(level_);
 
@@ -363,7 +363,7 @@ void replay_controller::reset_replay()
 
 	// Add era events for MP game.
 	if (const config &era_cfg = level_.child("era")) {
-		events_manager_->add_events(era_cfg.child_range("event"), "era_events");
+		gamestate_.events_manager_->add_events(era_cfg.child_range("event"), "era_events");
 	}
 
 	// Scenario initialization. (c.f. playsingle_controller::play_scenario())
@@ -607,8 +607,9 @@ possible_end_play_signal replay_controller::play_move_or_side(bool one_move) {
 		player_number_ = gamestate_.board_.teams().size();
 		finish_turn();
 		bool is_time_left = gamestate_.tod_manager_.next_turn(*resources::gamedata);
-		if(!is_time_left)
-			events_manager_->pump().fire("time over");
+		if(!is_time_left) {
+			pump().fire("time over");
+		}
 		it_is_a_new_turn_ = true;
 		player_number_ = 1;
 		current_turn_++;

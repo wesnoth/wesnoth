@@ -14,16 +14,23 @@
 
 #include "game_state.hpp"
 
+#include "game_board.hpp"
 #include "game_data.hpp"
+#include "game_events/manager.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "pathfind/pathfind.hpp"
 #include "pathfind/teleport.hpp"
+#include "play_controller.hpp"
 #include "game_preferences.hpp"
 #include "random_new_deterministic.hpp"
+#include "reports.hpp"
+#include "scripting/game_lua_kernel.hpp"
 #include "unit.hpp"
+#include "whiteboard/manager.hpp"
 
+#include <boost/bind.hpp>
 #include <boost/foreach.hpp>
 #include <SDL_timer.h>
 
@@ -40,6 +47,9 @@ game_state::game_state(const config & level, const tdata_cache & tdata) :
 	board_(tdata,level_),
 	tod_manager_(level_),
 	pathfind_manager_(),
+	reports_(new reports()),
+	lua_kernel_(),
+	events_manager_(),
 	first_human_team_(-1)
 {}
 
@@ -116,7 +126,7 @@ void game_state::place_sides_in_preferred_locations()
 	}
 }
 
-void game_state::init(const int ticks)
+void game_state::init(const int ticks, play_controller & pc)
 {
 	if (level_["modify_placing"].to_bool()) {
 		LOG_NG << "modifying placing..." << std::endl;
@@ -166,19 +176,37 @@ void game_state::init(const int ticks)
 	}
 
 	pathfind_manager_.reset(new pathfind::manager(level_));
+
+	lua_kernel_.reset(new game_lua_kernel(level_, NULL, *this, pc, *reports_));
+	events_manager_.reset(new game_events::manager(level_, game_events::t_context(lua_kernel_.get(), this, NULL, &gamedata_, &board_.units_, boost::bind(&wb::manager::on_gamestate_change, pc.get_whiteboard().get()), boost::bind(&play_controller::current_side, &pc))));
+}
+
+void game_state::set_game_display(game_display * gd)
+{
+	lua_kernel_->set_game_display(gd);
+	events_manager_->reset_display(gd);
 }
 
 config game_state::to_config() const
 {
 	config cfg;
 
+	//Call the lua save_game functions
+	lua_kernel_->save_game(cfg);
+
+	//Write the game events.
+	events_manager_->write_events(cfg);
+
+	//Write the map, unit_map, and teams info
 	board_.write_config(cfg);
 
+	//Write the tod manager, and time areas
 	cfg.merge_with(tod_manager_.to_config());
 
 	//write out the current state of the map
 	cfg.merge_with(pathfind_manager_->to_config());
 
+	//Write the game data, including wml vars
 	gamedata_.write_snapshot(cfg);
 
 	return cfg;

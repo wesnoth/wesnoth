@@ -129,7 +129,7 @@ class game_lua_kernel : public lua_kernel_base
 	void lua_chat(std::string const &caption, std::string const &msg);
 
 public:
-	game_lua_kernel(const config &, CVideo &, game_state &, play_controller &, reports &);
+	game_lua_kernel(const config &, CVideo *, game_state &, play_controller &, reports &);
 
 	void set_game_display(game_display * gd);
 

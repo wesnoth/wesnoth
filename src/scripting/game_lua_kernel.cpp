@@ -2952,8 +2952,8 @@ tod_manager & game_lua_kernel::tod_man() {
 	return game_state_.tod_manager_;
 }
 
-game_lua_kernel::game_lua_kernel(const config &cfg, CVideo & video, game_state & gs, play_controller & pc, reports & reports_object)
-	: lua_kernel_base(&video)
+game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state & gs, play_controller & pc, reports & reports_object)
+	: lua_kernel_base(video)
 	, game_display_(NULL)
 	, game_state_(gs)
 	, play_controller_(pc)

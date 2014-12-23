@@ -24,6 +24,13 @@ class config;
 
 #include <boost/scoped_ptr.hpp>
 
+class game_display;
+class play_controller;
+class game_lua_kernel;
+class reports;
+
+namespace game_events { class manager; }
+
 namespace pathfind { class manager; }
 
 class game_state : public filter_context
@@ -34,6 +41,9 @@ public:
 	game_board board_;
 	tod_manager tod_manager_;
 	boost::scoped_ptr<pathfind::manager> pathfind_manager_;
+	boost::scoped_ptr<reports> reports_;
+	boost::scoped_ptr<game_lua_kernel> lua_kernel_;
+	boost::scoped_ptr<game_events::manager> events_manager_;
 
 	int first_human_team_; //needed to initialize the viewpoint during setup
 
@@ -43,7 +53,9 @@ public:
 
 	void place_sides_in_preferred_locations();
 
-	void init(int ticks);
+	void init(int ticks, play_controller & );
+
+	void set_game_display(game_display *);
 
 	config to_config() const;
 
