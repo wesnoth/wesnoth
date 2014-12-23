@@ -64,7 +64,6 @@
 #include "preferences_display.hpp"
 #include "replay.hpp"
 #include "replay_helper.hpp"
-#include "resources.hpp"
 #include "savegame.hpp"
 #include "save_index.hpp"
 #include "scripting/game_lua_kernel.hpp"
@@ -800,7 +799,7 @@ void menu_handler::toggle_shroud_updates(int side_num)
 
 	// Toggle the setting and record this.
 	synced_context::run_in_synced_context("auto_shroud", replay_helper::get_auto_shroud(!auto_shroud));
-	resources::undo_stack->add_auto_shroud(!auto_shroud);
+	pc_.get_undo_stack().add_auto_shroud(!auto_shroud);
 }
 
 void menu_handler::update_shroud_now(int /* side_num */)
@@ -867,7 +866,7 @@ bool menu_handler::end_turn(int side_num)
 	}
 	// Ask for confirmation if the player hasn't made any moves.
 	else if ( preferences::confirm_no_moves()  &&
-	          !resources::undo_stack->player_acted()  &&
+	          !pc_.get_undo_stack().player_acted()  &&
 	          (!pc_.get_whiteboard() || !pc_.get_whiteboard()->current_side_has_actions())  &&
 	          units_alive(side_num, units()) )
 	{
@@ -1253,7 +1252,7 @@ void menu_handler::move_unit_to_loc(const unit_map::iterator &ui,
 	gui_->unhighlight_reach();
 	{
 		LOG_NG << "move_unit_to_loc " << route.steps.front() << " to " << route.steps.back() << "\n";
-		actions::move_unit_and_record(route.steps, resources::undo_stack, continue_move);
+		actions::move_unit_and_record(route.steps, &pc_.get_undo_stack(), continue_move);
 	}
 	gui_->set_route(NULL);
 	gui_->invalidate_game_status();
@@ -1326,7 +1325,7 @@ void menu_handler::execute_gotos(mouse_handler &mousehandler, int side)
 
 			{
 				LOG_NG << "execute goto from " << route.steps.front() << " to " << route.steps.back() << "\n";
-				int moves = actions::move_unit_and_record(route.steps, resources::undo_stack);
+				int moves = actions::move_unit_and_record(route.steps, &pc_.get_undo_stack());
 				change = moves > 0;
 			}
 

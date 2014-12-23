@@ -182,6 +182,8 @@ public:
 	virtual plugins_context * get_plugins_context();
 	hotkey::command_executor * get_hotkey_command_executor();
 
+	actions::undo_list & get_undo_stack() { return *undo_stack_; }
+
 	bool is_browsing() { return browse_; }
 	bool is_lingering() { return linger_; }
 
