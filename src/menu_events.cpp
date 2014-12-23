@@ -891,7 +891,7 @@ bool menu_handler::end_turn(int side_num)
 
 	// Auto-execute remaining whiteboard planned actions
 	// Only finish turn if they all execute successfully, i.e. no ambush, etc.
-	if (pc_.get_whiteboard() && pc_.get_whiteboard()->allow_end_turn()) {
+	if (pc_.get_whiteboard() && !pc_.get_whiteboard()->allow_end_turn()) {
 		return false;
 	}
 
