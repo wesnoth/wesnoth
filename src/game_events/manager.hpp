@@ -105,6 +105,8 @@ namespace game_events {
 			handler_list::iterator main_it_;
 			/// The current (or next) element from var_list_.
 			handler_list::iterator var_it_;
+
+			game_data * gamedata_;
 		};
 
 		boost::scoped_ptr<t_event_handlers> event_handlers_;

@@ -34,6 +34,9 @@
 #include <set>
 #include <string>
 
+class game_data;
+class game_lua_kernel;
+
 namespace game_events
 {
 	struct queued_event;
@@ -55,13 +58,13 @@ namespace game_events
 			/// The index of *this should only be of interest when controlling iterations.
 			handler_vec::size_type index() const { return index_; }
 
-			bool matches_name(const std::string& name) const;
+			bool matches_name(const std::string& name, const game_data * data) const;
 
 			bool is_menu_item() const { return is_menu_item_; }
 
 			/// Disables *this, removing it from the game.
 			void disable();
-			void handle_event(const queued_event& event_info, handler_ptr& handler_p);
+			void handle_event(const queued_event& event_info, handler_ptr& handler_p, game_lua_kernel &);
 
 			const config &get_config() const { return cfg_; }
 

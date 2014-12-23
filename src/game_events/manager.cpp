@@ -147,7 +147,8 @@ manager::iteration::iteration(const std::string & event_name, manager & man) :
 	current_is_known_(false),
 	main_is_current_(false),
 	main_it_(main_list_.begin()),
-	var_it_(event_name.empty() ? var_list_.end() : var_list_.begin())
+	var_it_(event_name.empty() ? var_list_.end() : var_list_.begin()),
+	gamedata_(man.resources_->gamedata)
 {
 }
 
@@ -192,7 +193,7 @@ handler_ptr manager::iteration::operator*()
 	handler_ptr var_ptr = *var_it_;
 	// (Loop while var_ptr would be chosen over main_ptr, but the name does not match.)
 	while ( var_ptr  &&  var_ptr->index() < main_index  &&
-	        !var_ptr->matches_name(event_name_) )
+	        !var_ptr->matches_name(event_name_, gamedata_) )
 		var_ptr = *++var_it_;
 	handler_vec::size_type var_index = ptr_index(var_ptr);
 

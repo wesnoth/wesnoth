@@ -297,7 +297,8 @@ namespace { // Support functions
 		// The event hasn't been filtered out, so execute the handler.
 		++impl_->internal_wml_tracking;
 		context::scoped evc(impl_->contexts_);
-		handler_p->handle_event(ev, handler_p);
+		assert(impl_->resources->lua_kernel);
+		handler_p->handle_event(ev, handler_p, *impl_->resources->lua_kernel);
 		// NOTE: handler_p may be null at this point!
 
 		if(ev.name == "select") {

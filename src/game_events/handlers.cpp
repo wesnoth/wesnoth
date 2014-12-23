@@ -29,7 +29,6 @@
 #include "../game_data.hpp"
 #include "../log.hpp"
 #include "../reports.hpp"
-#include "../resources.hpp"
 #include "../scripting/game_lua_kernel.hpp"
 #include "../serialization/string_utils.hpp"
 #include "../soundsource.hpp"
@@ -112,7 +111,7 @@ void event_handler::disable()
  * @param[in,out] handler_p   The caller's smart pointer to *this. It may be
  *                            reset() during processing.
  */
-void event_handler::handle_event(const queued_event& event_info, handler_ptr& handler_p)
+void event_handler::handle_event(const queued_event& event_info, handler_ptr& handler_p, game_lua_kernel & lk)
 {
 	// We will need our config after possibly self-destructing. Make a copy now.
 	vconfig vcfg(cfg_, true);
@@ -129,16 +128,14 @@ void event_handler::handle_event(const queued_event& event_info, handler_ptr& ha
 		handler_p.reset();
 	}
 	// *WARNING*: At this point, dereferencing this could be a memory violation!
-	// ^ this comment does not refer to resources::lua_kernel below, but to the vconfig
 
-	assert(resources::lua_kernel);
-	resources::lua_kernel->run_wml_action("command", vcfg, event_info);
+	lk.run_wml_action("command", vcfg, event_info);
 }
 
-bool event_handler::matches_name(const std::string &name) const
+bool event_handler::matches_name(const std::string &name, const game_data * gd) const
 {
-	const std::string my_names =
-		utils::interpolate_variables_into_string(cfg_["name"], *(resources::gamedata));
+	const std::string my_names = !gd ? cfg_["name"].str() :
+		utils::interpolate_variables_into_string(cfg_["name"], *gd);
 	std::string::const_iterator itor,
 		it_begin = my_names.begin(),
 		it_end = my_names.end(),
