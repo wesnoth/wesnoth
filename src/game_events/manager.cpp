@@ -93,7 +93,7 @@ void manager::remove_event_handler(const std::string & id)
 
 /* ** manager ** */
 
-manager::manager(const config& cfg, const t_context & res)
+manager::manager(const config& cfg, const boost::shared_ptr<t_context> & res)
 	: event_handlers_(new t_event_handlers())
 	, unit_wml_ids_()
 	, used_items_()
@@ -109,12 +109,12 @@ manager::manager(const config& cfg, const t_context & res)
 
 	// Guard against a memory leak (now) / memory corruption (when this is deleted).
 	// This is why creating multiple manager objects is prohibited.
-	assert(resources_.lua_kernel != NULL);
+	assert(resources_->lua_kernel != NULL);
 
 	wml_action::map::const_iterator action_end = wml_action::end();
 	wml_action::map::const_iterator action_cur = wml_action::begin();
 	for ( ; action_cur != action_end; ++action_cur ) {
-		resources_.lua_kernel->set_wml_action(action_cur->first, action_cur->second);
+		resources_->lua_kernel->set_wml_action(action_cur->first, action_cur->second);
 	}
 
 	const std::string used = cfg["used_items"];
@@ -126,7 +126,7 @@ manager::manager(const config& cfg, const t_context & res)
 	}
 
 	// Create the event handlers for menu items.
-	resources_.gamedata->get_wml_menu_items().init_handlers();
+	resources_->gamedata->get_wml_menu_items().init_handlers();
 }
 
 manager::~manager() {}
@@ -239,12 +239,6 @@ void manager::write_events(config& cfg)
 game_events::t_pump & manager::pump()
 {
 	return *pump_;
-}
-
-void manager::reset_display(game_display * gd)
-{
-	resources_.screen = gd;
-	pump_->reset_display(gd);
 }
 
 } //end namespace game_events

@@ -112,12 +112,12 @@ namespace game_events {
 		std::set<std::string> used_items_;
 
 		boost::scoped_ptr<game_events::t_pump> pump_;
-		t_context resources_;
+		boost::shared_ptr<t_context> resources_;
 
 	public:
 		/// Note that references will be maintained,
 		/// and must remain valid for the life of the object.
-		explicit manager(const config& scenario_cfg, const t_context &);
+		explicit manager(const config& scenario_cfg, const boost::shared_ptr<t_context> &);
 		~manager();
 
 		/// Create an event handler.
@@ -134,8 +134,6 @@ namespace game_events {
 		void write_events(config& cfg);
 
 		game_events::t_pump & pump();
-
-		void reset_display(game_display *);
 	};
 }
 

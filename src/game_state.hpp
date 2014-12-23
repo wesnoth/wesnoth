@@ -23,6 +23,7 @@ class config;
 #include "tod_manager.hpp"
 
 #include <boost/scoped_ptr.hpp>
+#include <boost/shared_ptr.hpp>
 
 class game_display;
 class play_controller;
@@ -30,6 +31,7 @@ class game_lua_kernel;
 class reports;
 
 namespace game_events { class manager; }
+namespace game_events { struct t_context; }
 
 namespace pathfind { class manager; }
 
@@ -37,6 +39,10 @@ namespace wb { class manager; }
 
 class game_state : public filter_context
 {
+private:
+	boost::shared_ptr<game_events::t_context> game_events_resources_; //!< This allows us to easily rebind the pointers used by the game events manager and pump
+
+	friend class replay_controller;
 public:
 	const config& level_;
 	game_data gamedata_;
@@ -55,7 +61,9 @@ public:
 
 	void place_sides_in_preferred_locations();
 
-	wb::manager * init(int ticks, play_controller & );
+	void init(int ticks, play_controller & );
+
+	void bind(wb::manager *, game_display *);
 
 	void set_game_display(game_display *);
 

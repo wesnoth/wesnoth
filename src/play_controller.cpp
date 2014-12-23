@@ -194,15 +194,13 @@ void play_controller::init(CVideo& video){
 	loadscreen::start_stage("load level");
 	recorder.set_skip(false);
 
-	{
 	LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks_) << std::endl;
-	wb::manager * whiteboard = gamestate_.init(ticks_, *this);
+	gamestate_.init(ticks_, *this);
 	resources::tunnels = gamestate_.pathfind_manager_.get();
 
 	LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks_) << std::endl;
-	whiteboard_manager_.reset(whiteboard),
+	whiteboard_manager_.reset(new wb::manager());
 	resources::whiteboard = whiteboard_manager_;
-	}
 
 	// mouse_handler expects at least one team for linger mode to work.
 	if (gamestate_.board_.teams().empty()) end_level_data_.transient.linger_mode = false;
@@ -232,12 +230,12 @@ void play_controller::init(CVideo& video){
 
 	LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks_) << std::endl;
 
-	LOG_NG << "building lua kernel and game events manager... " << (SDL_GetTicks() - ticks_) << std::endl;
+	LOG_NG << "building gamestate to gui and whiteboard... " << (SDL_GetTicks() - ticks_) << std::endl;
 	//loadscreen::start_stage("build events manager & lua");
 	// This *needs* to be created before the show_intro and show_map_scene
 	// as that functions use the manager state_of_game
 	// Has to be done before registering any events!
-	gamestate_.set_game_display(gui_.get());
+	gamestate_.bind(whiteboard_manager_.get(), gui_.get());
 	resources::lua_kernel=gamestate_.lua_kernel_.get();
 	resources::game_events=gamestate_.events_manager_.get();
 

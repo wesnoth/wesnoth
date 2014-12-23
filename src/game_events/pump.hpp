@@ -64,7 +64,7 @@ namespace game_events
 	class t_pump {
 		boost::scoped_ptr<pump_impl> impl_;
 	public:
-		t_pump(manager &, const t_context &);
+		t_pump(manager &, const boost::shared_ptr<t_context> &);
 		~t_pump();
 		/// Context: The general environment within which events are processed.
 		/// Returns whether or not we believe WML might have changed something.
@@ -106,8 +106,6 @@ namespace game_events
 		 * This function can be used to detect when no WML/Lua has been executed.
 		 */
 		size_t wml_tracking();
-
-		void reset_display(game_display *);
 
 	private:
 		bool filter_event(const event_handler& handler, const queued_event& ev);

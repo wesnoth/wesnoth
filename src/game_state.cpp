@@ -32,6 +32,8 @@
 
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
+#include <boost/make_shared.hpp>
+#include <boost/shared_ptr.hpp>
 #include <SDL_timer.h>
 
 #include <algorithm>
@@ -126,7 +128,9 @@ void game_state::place_sides_in_preferred_locations()
 	}
 }
 
-wb::manager * game_state::init(const int ticks, play_controller & pc)
+static void no_op() {}
+
+void game_state::init(const int ticks, play_controller & pc)
 {
 	if (level_["modify_placing"].to_bool()) {
 		LOG_NG << "modifying placing..." << std::endl;
@@ -177,18 +181,27 @@ wb::manager * game_state::init(const int ticks, play_controller & pc)
 
 	pathfind_manager_.reset(new pathfind::manager(level_));
 
-	wb::manager * whiteboard = new wb::manager();
-
 	lua_kernel_.reset(new game_lua_kernel(level_, NULL, *this, pc, *reports_));
-	events_manager_.reset(new game_events::manager(level_, game_events::t_context(lua_kernel_.get(), this, NULL, &gamedata_, &board_.units_, boost::bind(&wb::manager::on_gamestate_change, whiteboard), boost::bind(&play_controller::current_side, &pc))));
 
-	return whiteboard;
+	game_events_resources_ = boost::make_shared<game_events::t_context>(lua_kernel_.get(), this, static_cast<game_display*>(NULL), &gamedata_, &board_.units_, &no_op, boost::bind(&play_controller::current_side, &pc));
+
+	events_manager_.reset(new game_events::manager(level_, game_events_resources_));
+}
+
+void game_state::bind(wb::manager * whiteboard, game_display * gd)
+{
+	if (whiteboard) {
+		game_events_resources_->on_gamestate_change = boost::bind(&wb::manager::on_gamestate_change, whiteboard);
+	} else {
+		game_events_resources_->on_gamestate_change = &no_op;
+	}
+	set_game_display(gd);
 }
 
 void game_state::set_game_display(game_display * gd)
 {
 	lua_kernel_->set_game_display(gd);
-	events_manager_->reset_display(gd);
+	game_events_resources_->screen = gd;
 }
 
 config game_state::to_config() const
