@@ -38,7 +38,7 @@ protected:
 	bool is_observer() const;
 
 public:
-	hotkey_handler(playsingle_controller &, saved_game &, game_state &);
+	hotkey_handler(playsingle_controller &, saved_game &);
 	~hotkey_handler();
 
 	virtual void recruit();

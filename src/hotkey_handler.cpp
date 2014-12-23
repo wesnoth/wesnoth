@@ -34,12 +34,11 @@
 
 const std::string play_controller::hotkey_handler::wml_menu_hotkey_prefix = "wml_menu:";
 
-play_controller::hotkey_handler::hotkey_handler(play_controller & pc, saved_game & sg, game_state & gs)
+play_controller::hotkey_handler::hotkey_handler(play_controller & pc, saved_game & sg)
 	: play_controller_(pc)
 	, menu_handler_(pc.get_menu_handler())
 	, mouse_handler_(pc.get_mouse_handler_base())
 	, saved_game_(sg)
-	, gamestate_(gs)
 	, savenames_()
 	, wml_commands_()
 	, wml_command_pager_(new wmi_pager())
@@ -51,6 +50,14 @@ play_controller::hotkey_handler::~hotkey_handler(){}
 
 game_display * play_controller::hotkey_handler::gui() const {
 	return &play_controller_.get_display();
+}
+
+game_state & play_controller::hotkey_handler::gamestate() {
+	return play_controller_.gamestate();
+}
+
+const game_state & play_controller::hotkey_handler::gamestate() const {
+	return play_controller_.gamestate();
 }
 
 bool play_controller::hotkey_handler::browse() const { return play_controller_.is_browsing(); }
@@ -233,7 +240,7 @@ bool play_controller::hotkey_handler::execute_command(const hotkey::hotkey_comma
 		std::string name = cmd.command.substr(prefixlen);
 		const map_location& hex = mouse_handler_.get_last_hex();
 
-		gamestate_.gamedata_.get_wml_menu_items().fire_item(name, hex);
+		gamestate().gamedata_.get_wml_menu_items().fire_item(name, hex);
 		/// @todo Shouldn't the function return at this point?
 	}
 	return command_executor::execute_command(cmd, index);
@@ -392,7 +399,7 @@ void play_controller::hotkey_handler::expand_wml_commands(std::vector<std::strin
 
 			// Replace this placeholder entry with available menu items.
 			items.erase(items.begin() + i);
-			wml_command_pager_->update_ref(&gamestate_.gamedata_.get_wml_menu_items());
+			wml_command_pager_->update_ref(&gamestate().gamedata_.get_wml_menu_items());
 			wml_command_pager_->get_items(mouse_handler_.get_last_hex(),
 			                                         wml_commands_, newitems);
 			items.insert(items.begin()+i, newitems.begin(), newitems.end());
@@ -469,7 +476,7 @@ bool play_controller::hotkey_handler::in_context_menu(hotkey::HOTKEY_COMMAND com
 
 		wb::future_map future; /* lasts until method returns. */
 
-		return gamestate_.side_can_recruit_on(viewing_side, last_hex);
+		return gamestate().side_can_recruit_on(viewing_side, last_hex);
 	}
 	default:
 		return true;

@@ -47,7 +47,8 @@ protected:
 	events::mouse_handler & mouse_handler_;
 	game_display * gui() const;
 	saved_game & saved_game_;
-	game_state & gamestate_;
+	game_state & gamestate();
+	const game_state & gamestate() const;
 
 private:
 	/** Private data related to menu implementation (expansion of AUTOSAVES, WML entries) */
@@ -74,7 +75,7 @@ protected:
 	bool viewing_team_is_playing() const;
 
 public:
-	hotkey_handler(play_controller &, saved_game &, game_state &);
+	hotkey_handler(play_controller &, saved_game &);
 	~hotkey_handler();
 
 	static const std::string wml_menu_hotkey_prefix;

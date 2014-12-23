@@ -49,7 +49,7 @@ playmp_controller::playmp_controller(const config& level,
 	network_processing_stopped_(false),
 	blindfold_(*gui_,blindfold_replay_)
 {
-	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_, gamestate_)); //upgrade hotkey handler to the mp (network enabled) version
+	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the mp (network enabled) version
 
 	turn_data_.set_host(is_host);
 	turn_data_.host_transfer().attach_handler(this);

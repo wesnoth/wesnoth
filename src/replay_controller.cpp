@@ -126,7 +126,7 @@ replay_controller::replay_controller(const config& level,
 	show_everything_(false),
 	show_team_(state_of_game.classification().campaign_type == game_classification::MULTIPLAYER ? 0 : 1)
 {
-	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_, gamestate_)); //upgrade hotkey handler to the replay controller version
+	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the replay controller version
 
 	// Our parent class correctly detects that we are loading a game. However,
 	// we are not loading mid-game, so from here on, treat this as not loading

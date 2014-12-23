@@ -84,7 +84,7 @@ playsingle_controller::playsingle_controller(const config& level,
 	do_autosaves_(false),
 	level_result_(NONE)
 {
-	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_, gamestate_)); //upgrade hotkey handler to the sp (whiteboard enabled) version
+	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the sp (whiteboard enabled) version
 
 	// game may need to start in linger mode
 	if (state_of_game.classification().completion == "victory" || state_of_game.classification().completion == "defeat")

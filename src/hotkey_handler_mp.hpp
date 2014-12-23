@@ -30,7 +30,7 @@ protected:
 	playmp_controller & playmp_controller_;
 
 public:
-	hotkey_handler(playmp_controller &, saved_game &, game_state &);
+	hotkey_handler(playmp_controller &, saved_game &);
 	~hotkey_handler();
 
 	virtual void speak();

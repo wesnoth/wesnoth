@@ -20,8 +20,8 @@
 #include "playsingle_controller.hpp"
 #include "playmp_controller.hpp"
 
-playmp_controller::hotkey_handler::hotkey_handler(playmp_controller & pc, saved_game & sg, game_state & gs)
-	: playsingle_controller::hotkey_handler(pc, sg, gs)
+playmp_controller::hotkey_handler::hotkey_handler(playmp_controller & pc, saved_game & sg)
+	: playsingle_controller::hotkey_handler(pc, sg)
 	, playmp_controller_(pc)
 {}
 
@@ -55,8 +55,8 @@ bool playmp_controller::hotkey_handler::can_execute_command(const hotkey::hotkey
 		case hotkey::HOTKEY_ENDTURN:
 			if  (linger())
 			{
-				bool has_next_scenario = !gamestate_.gamedata_.next_scenario().empty() &&
-					gamestate_.gamedata_.next_scenario() != "null";
+				bool has_next_scenario = !gamestate().gamedata_.next_scenario().empty() &&
+					gamestate().gamedata_.next_scenario() != "null";
 				return playsingle_controller_.is_host() || !has_next_scenario;
 			}
 			else

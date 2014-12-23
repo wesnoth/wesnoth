@@ -24,8 +24,8 @@
 
 #include "unit.hpp"
 
-playsingle_controller::hotkey_handler::hotkey_handler(playsingle_controller & pc, saved_game & sg, game_state & gs)
-	: play_controller::hotkey_handler(pc, sg, gs)
+playsingle_controller::hotkey_handler::hotkey_handler(playsingle_controller & pc, saved_game & sg)
+	: play_controller::hotkey_handler(pc, sg)
 	, playsingle_controller_(pc)
 	, whiteboard_manager_(pc.get_whiteboard())
 {}

@@ -20,8 +20,8 @@
 #include "play_controller.hpp"
 #include "replay_controller.hpp"
 
-replay_controller::hotkey_handler::hotkey_handler(replay_controller & pc, saved_game & sg, game_state & gs)
-	: play_controller::hotkey_handler(pc, sg, gs)
+replay_controller::hotkey_handler::hotkey_handler(replay_controller & pc, saved_game & sg)
+	: play_controller::hotkey_handler(pc, sg)
 	, replay_controller_(pc)
 {}
 

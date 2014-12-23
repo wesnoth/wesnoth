@@ -30,7 +30,7 @@ protected:
 	replay_controller & replay_controller_;
 
 public:
-	hotkey_handler(replay_controller &, saved_game &, game_state &);
+	hotkey_handler(replay_controller &, saved_game &);
 	~hotkey_handler();
 
 	virtual void preferences();
