@@ -758,6 +758,12 @@ int game_lua_kernel::intf_set_variable(lua_State *L)
 	return 0;
 }
 
+int game_lua_kernel::intf_set_menu_item(lua_State *L)
+{
+	gamedata().get_wml_menu_items().set_item(luaL_checkstring(L, 1), luaW_checkvconfig(L,2));
+	return 0;
+}
+
 /**
  * Highlights the given location on the map.
  * - Args 1,2: location.
@@ -3031,6 +3037,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "remove_tile_overlay",	boost::bind(&game_lua_kernel::intf_remove_tile_overlay, this, _1)		},
 		{ "scroll_to_tile",		boost::bind(&game_lua_kernel::intf_scroll_to_tile, this, _1)			},
 		{ "select_hex",			boost::bind(&game_lua_kernel::intf_select_hex, this, _1)			},
+		{ "set_menu_item",		boost::bind(&game_lua_kernel::intf_set_menu_item, this, _1)			},
 		{ "set_terrain",		boost::bind(&game_lua_kernel::intf_set_terrain, this, _1)			},
 		{ "set_variable",		boost::bind(&game_lua_kernel::intf_set_variable, this, _1)			},
 		{ "set_village_owner",		boost::bind(&game_lua_kernel::intf_set_village_owner, this, _1)			},
