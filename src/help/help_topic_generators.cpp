@@ -146,8 +146,13 @@ std::string terrain_topic_generator::operator()() const {
 			const terrain_type& mvt_base = tdata->get_terrain_info(underlying_terrain);
 
 			if (mvt_base.editor_name().empty()) continue;
-			if (!first) ss << ",";
-			else first = false;
+
+			if (!first) {
+				ss << ", ";
+			} else {
+				first = false;
+			}
+
 			ss << make_link(mvt_base.editor_name(), ".." + terrain_prefix + mvt_base.id());
 		}
 
