@@ -22,7 +22,11 @@
  * can interact with the gui layout algorithm.
  */
 
+class filter_context;
+class game_data;
+class game_state;
 struct map_location;
+class unit_map;
 namespace game_events { class wml_menu_item; }
 namespace game_events { class wmi_container; }
 
@@ -44,6 +48,7 @@ public:
 
 	/** Adds the currently paged range of menu items to the given lists */
 	void get_items(const map_location& hex, //!< Game hex related to this context menu
+		game_data & gamedata, filter_context & fc, unit_map & units, //!< Data needed to create scoped objects when evaluating wml filters
                std::vector<boost::shared_ptr<const game_events::wml_menu_item> > & items, //!< List of accumulated menu items so far.
                std::vector<std::string> & descriptions); //!< List of menu item descriptions
 

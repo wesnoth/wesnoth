@@ -168,7 +168,7 @@ const std::string & wml_menu_item::image() const
  * Assumes game variables x1, y1, and unit have been set.
  * @param[in]  hex  The hex where the menu will appear.
  */
-bool wml_menu_item::can_show(const map_location & hex) const
+bool wml_menu_item::can_show(const map_location & hex, const game_data & data, filter_context & filter_con) const
 {
 	// Failing the [show_if] tag means no show.
 	if ( !show_if_.empty() && !conditional_passed(show_if_) )
@@ -176,11 +176,11 @@ bool wml_menu_item::can_show(const map_location & hex) const
 
 	// Failing the [fiter_location] tag means no show.
 	if ( !filter_location_.empty() &&
-	     !terrain_filter(filter_location_, resources::filter_con)(hex) )
+	     !terrain_filter(filter_location_, &filter_con)(hex) )
 		return false;
 
 	// Failing to have a required selection means no show.
-	if ( needs_select_ && !resources::gamedata->last_selected.valid() )
+	if ( needs_select_ && !data.last_selected.valid() )
 		return false;
 
 	// Passed all tests.
@@ -196,9 +196,9 @@ bool wml_menu_item::can_show(const map_location & hex) const
  * @param[in] event_hex    The location of the event (where the menu was opened).
  * @param[in] last_select  The location of the most recent "select" event.
  */
-void wml_menu_item::fire_event(const map_location & event_hex) const
+void wml_menu_item::fire_event(const map_location & event_hex, const game_data & data) const
 {
-	const map_location & last_select = resources::gamedata->last_selected;
+	const map_location & last_select = data.last_selected;
 
 	// No new player-issued commands allowed while this is firing.
 	const events::command_disabler disable_commands;

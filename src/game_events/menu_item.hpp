@@ -24,8 +24,10 @@
 #include "../tstring.hpp"
 #include "../variable.hpp"
 
+class filter_context;
+class game_data;
 struct map_location;
-
+class unit_map;
 
 namespace game_events
 {
@@ -49,9 +51,9 @@ public:
 	bool use_wml_menu() const { return use_wml_menu_; }
 
 	/// Returns whether or not *this is applicable given the context.
-	bool can_show(const map_location & hex) const;
+	bool can_show(const map_location & hex, const game_data & data, filter_context & context) const;
 	/// Causes the event associated with this item to fire.
-	void fire_event(const map_location & event_hex) const;
+	void fire_event(const map_location & event_hex, const game_data & data) const;
 	/// Removes the implicit event handler for an inlined [command].
 	void finish_handler() const;
 	/// Initializes the implicit event handler for an inlined [command].

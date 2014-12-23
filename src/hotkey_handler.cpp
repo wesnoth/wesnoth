@@ -227,7 +227,7 @@ bool play_controller::hotkey_handler::execute_command(const hotkey::hotkey_comma
 
 		} else if ( i < wml_commands_.size()  &&  wml_commands_[i] ) {
 			if (!wml_command_pager_->capture(*wml_commands_[i])) {
-				wml_commands_[i]->fire_event(mouse_handler_.get_last_hex());
+				wml_commands_[i]->fire_event(mouse_handler_.get_last_hex(), gamestate().gamedata_);
 			} else { //relaunch the menu
 				show_menu(gui()->get_theme().context_menu()->items(),last_context_menu_x_,last_context_menu_y_,true, *gui());
 			}
@@ -240,7 +240,7 @@ bool play_controller::hotkey_handler::execute_command(const hotkey::hotkey_comma
 		std::string name = cmd.command.substr(prefixlen);
 		const map_location& hex = mouse_handler_.get_last_hex();
 
-		gamestate().gamedata_.get_wml_menu_items().fire_item(name, hex);
+		gamestate().gamedata_.get_wml_menu_items().fire_item(name, hex, gamestate().gamedata_, gamestate(), gamestate().board_.units_);
 		/// @todo Shouldn't the function return at this point?
 	}
 	return command_executor::execute_command(cmd, index);
@@ -401,6 +401,7 @@ void play_controller::hotkey_handler::expand_wml_commands(std::vector<std::strin
 			items.erase(items.begin() + i);
 			wml_command_pager_->update_ref(&gamestate().gamedata_.get_wml_menu_items());
 			wml_command_pager_->get_items(mouse_handler_.get_last_hex(),
+							gamestate().gamedata_, gamestate(), gamestate().board_.units_,
 			                                         wml_commands_, newitems);
 			items.insert(items.begin()+i, newitems.begin(), newitems.end());
 			// End the "for" loop.

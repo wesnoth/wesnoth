@@ -82,6 +82,7 @@ static std::string select_second(const wmi_pair & p)
 }
 
 void wmi_pager::get_items(const map_location& hex,
+		game_data & gamedata, filter_context & fc, unit_map & units,
                std::vector<wmi_ptr > & items,
                std::vector<std::string> & descriptions)
 {
@@ -97,7 +98,7 @@ void wmi_pager::get_items(const map_location& hex,
 
 	assert(page_size > 2u && "if we dont have at least 3 items, we can't display anything on a middle page...");
 
-	std::vector<wmi_pair > bar = foo_->get_items(hex);
+	std::vector<wmi_pair > bar = foo_->get_items(hex, gamedata, fc, units);
 
 	if (bar.size() <= page_size) { //In this case the first page is sufficient and we don't have to do anything.
 		std::transform(bar.begin(), bar.end(), back_inserter(items), select_first);

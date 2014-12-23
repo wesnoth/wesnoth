@@ -26,7 +26,6 @@
 #include "../game_data.hpp"
 #include "../log.hpp"
 #include "../map_location.hpp"
-#include "../resources.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -79,7 +78,7 @@ wmi_container::size_type wmi_container::erase(const std::string & id)
  * NOTE: The return value could be altered if it is decided that
  * play_controller::execute_command() needs something different.
  */
-bool wmi_container::fire_item(const std::string & id, const map_location & hex) const
+bool wmi_container::fire_item(const std::string & id, const map_location & hex, game_data & gamedata, filter_context & fc, unit_map & units) const
 {
 	// Does this item exist?
 	const_iterator iter = find(id);
@@ -88,13 +87,13 @@ bool wmi_container::fire_item(const std::string & id, const map_location & hex) 
 	const wml_menu_item & wmi = **iter;
 
 	// Prepare for can show().
-	resources::gamedata->get_variable("x1") = hex.x + 1;
-	resources::gamedata->get_variable("y1") = hex.y + 1;
-	scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, *resources::units);
+	gamedata.get_variable("x1") = hex.x + 1;
+	gamedata.get_variable("y1") = hex.y + 1;
+	scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, units);
 
 	// Can this item be shown?
-	if ( wmi.can_show(hex) )
-		wmi.fire_event(hex);
+	if ( wmi.can_show(hex, gamedata, fc) )
+		wmi.fire_event(hex, gamedata);
 
 	return true;
 }
@@ -106,7 +105,7 @@ bool wmi_container::fire_item(const std::string & id, const map_location & hex) 
  * @param[out] descriptions Menu item text will be pushed onto @descriptions (in the same order as @a items).
  */
 std::vector<std::pair<boost::shared_ptr<const wml_menu_item>, std::string> > wmi_container::get_items(const map_location& hex,
-                              const_iterator start, const_iterator finish) const
+	game_data & gamedata, filter_context & fc, unit_map & units, const_iterator start, const_iterator finish) const
 {
 	std::vector<std::pair<boost::shared_ptr<const wml_menu_item>, std::string> > ret;
 	if ( empty() )
@@ -114,15 +113,15 @@ std::vector<std::pair<boost::shared_ptr<const wml_menu_item>, std::string> > wmi
 		return ret;
 
 	// Prepare for can show().
-	resources::gamedata->get_variable("x1") = hex.x + 1;
-	resources::gamedata->get_variable("y1") = hex.y + 1;
-	scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, *resources::units);
+	gamedata.get_variable("x1") = hex.x + 1;
+	gamedata.get_variable("y1") = hex.y + 1;
+	scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, units);
 
 	// Check each menu item.
 	BOOST_FOREACH( const item_ptr & item, std::make_pair (start, finish) )
 	{
 		// Can this item be shown?
-		if ( item->use_wml_menu() && item->can_show(hex) )
+		if ( item->use_wml_menu() && item->can_show(hex, gamedata, fc) )
 		{
 			// Include this item.
 			ret.push_back(std::make_pair(item, item->menu_text()));
