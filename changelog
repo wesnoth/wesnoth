@@ -19,6 +19,7 @@ Version 1.12.0+dev:
  * Editor:
    * Fixed falcon race missing an icon due to having incorrectly-named image
      files.
+   * Fixed editor starting slow http://forums.wesnoth.org/viewtopic.php?f=4&t=41421
  * Help browser:
    * Unit types that do not include any visible (hide_help=no) variations no
      longer generate topic sections.
@@ -28,6 +29,7 @@ Version 1.12.0+dev:
    * Fixed the Set Password option during game creation not having an effect
      due to a misplaced WML attribute in the client's command for the server
      (bug #23015).
+   * Work around modifications didn't work for MP campaigns sometimes (bug #22334).
  * Units:
    * Assigned capitalized translatable names to Walking Corpse and Soulless
      variations (bug #22902).
@@ -41,6 +43,11 @@ Version 1.12.0+dev:
      honored by Windows builds using Boost.filesystem (bug #22967).
    * Fixed dotfiles being included when {including} directories in WML, on
      builds using the new filesystem code (regression introduced in 1.11.19).
+ * Miscellaneous and bug fixes:
+   * Fixed non-ASCII characters in the user's path prevent
+     BfW to launch on windows (bug #22983)
+   * Fixed wesnoth doesn't start on some systems related to non utf8 default locales.
+     http://forums.wesnoth.org/viewtopic.php?f=4&t=41268
 
 Version 1.12.0:
  * Language and i18n:
