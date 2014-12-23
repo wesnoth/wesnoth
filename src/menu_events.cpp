@@ -86,12 +86,11 @@ static lg::log_domain log_engine("engine");
 
 namespace events{
 
-menu_handler::menu_handler(game_display* gui, play_controller & pc, game_state & gs,
+menu_handler::menu_handler(game_display* gui, play_controller & pc,
 		const config& level,
 		const config& game_config) :
 	gui_(gui),
 	pc_(pc),
-	game_state_(gs),
 	level_(level),
 	game_config_(game_config),
 	textbox_info_(),
@@ -104,12 +103,12 @@ menu_handler::~menu_handler()
 {
 }
 
-game_state & menu_handler::gamestate() { return game_state_; }
-game_data & menu_handler::gamedata() { return game_state_.gamedata_; }
-game_board & menu_handler::board() const { return game_state_.board_; }
-unit_map& menu_handler::units() { return game_state_.board_.units_; }
-std::vector<team>& menu_handler::teams() const { return game_state_.board_.teams_; }
-const gamemap& menu_handler::map() { return game_state_.board_.map(); }
+game_state & menu_handler::gamestate() const { return pc_.gamestate(); }
+game_data & menu_handler::gamedata() { return gamestate().gamedata_; }
+game_board & menu_handler::board() const { return gamestate().board_; }
+unit_map& menu_handler::units() { return gamestate().board_.units_; }
+std::vector<team>& menu_handler::teams() const { return gamestate().board_.teams_; }
+const gamemap& menu_handler::map() { return gamestate().board_.map(); }
 
 gui::floating_textbox& menu_handler::get_textbox(){
 	return textbox_info_;

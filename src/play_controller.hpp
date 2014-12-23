@@ -145,6 +145,10 @@ public:
 		return gamestate_.board_.is_observer();
 	}
 
+	game_state & gamestate() {
+		return gamestate_;
+	}
+
 	/**
 	 * Checks to see if a side has won, and throws an end_level_exception.
 	 * Will also remove control of villages from sides with dead leaders.
