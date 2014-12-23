@@ -38,6 +38,7 @@
 #include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 #include "game_preferences.hpp"
+#include "game_state.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/chat_log.hpp"
 #include "gui/dialogs/edit_label.hpp"
@@ -86,14 +87,13 @@ static lg::log_domain log_engine("engine");
 
 namespace events{
 
-menu_handler::menu_handler(game_display* gui, game_board & board,
+menu_handler::menu_handler(game_display* gui, play_controller & pc, game_state & gs,
 		const config& level,
 		const config& game_config) :
 	gui_(gui),
-	units_(board.units_),
-	teams_(board.teams_),
+	pc_(pc),
+	game_state_(gs),
 	level_(level),
-	map_(board.map()),
 	game_config_(game_config),
 	textbox_info_(),
 	last_search_(),
@@ -105,6 +105,13 @@ menu_handler::~menu_handler()
 {
 }
 
+game_state & menu_handler::gamestate() { return game_state_; }
+game_data & menu_handler::gamedata() { return game_state_.gamedata_; }
+game_board & menu_handler::board() const { return game_state_.board_; }
+unit_map& menu_handler::units() { return game_state_.board_.units_; }
+std::vector<team>& menu_handler::teams() const { return game_state_.board_.teams_; }
+const gamemap& menu_handler::map() { return game_state_.board_.map(); }
+
 gui::floating_textbox& menu_handler::get_textbox(){
 	return textbox_info_;
 }
@@ -112,16 +119,16 @@ gui::floating_textbox& menu_handler::get_textbox(){
 std::string menu_handler::get_title_suffix(int side_num)
 {
 	int controlled_recruiters = 0;
-	for(size_t i = 0; i < teams_.size(); ++i) {
-		if(teams_[i].is_local_human() && !teams_[i].recruits().empty()
-		&& units_.find_leader(i + 1) != units_.end()) {
+	for(size_t i = 0; i < teams().size(); ++i) {
+		if(teams()[i].is_local_human() && !teams()[i].recruits().empty()
+		&& units().find_leader(i + 1) != units().end()) {
 		++controlled_recruiters;
 		}
 	}
 	std::stringstream msg;
 	if(controlled_recruiters >= 2) {
-		unit_map::const_iterator leader = units_.find_leader(side_num);
-		if (leader != units_.end() && !leader->name().empty()) {
+		unit_map::const_iterator leader = units().find_leader(side_num);
+		if (leader != units().end() && !leader->name().empty()) {
 			msg << " (" << leader->name(); msg << ")";
 		}
 	}
@@ -136,14 +143,14 @@ void menu_handler::objectives(int side_num)
 	resources::lua_kernel->run_wml_action("show_objectives", vconfig(cfg),
 		game_events::queued_event("_from_interface", map_location(),
 			map_location(), config()));
-	team &current_team = teams_[side_num - 1];
+	team &current_team = teams()[side_num - 1];
 	dialogs::show_objectives(level_, current_team.objectives());
 	current_team.reset_objectives_changed();
 }
 
 void menu_handler::show_statistics(int side_num)
 {
-	team &current_team = teams_[side_num - 1];
+	team &current_team = teams()[side_num - 1];
 	// Current Player name
 	const std::string &player = current_team.current_player();
 	//add player's name to title of dialog
@@ -214,7 +221,7 @@ void menu_handler::status_table(int selected)
 	std::vector<bool> leader_bools;
 	items.push_back(heading.str());
 
-	const team& viewing_team = teams_[gui_->viewing_team()];
+	const team& viewing_team = teams()[gui_->viewing_team()];
 
 	unsigned total_villages = 0;
 	// a variable to check if there are any teams to show in the table
@@ -225,8 +232,8 @@ void menu_handler::status_table(int selected)
 	//side, allied sides and a ??? is shown to demonstrate
 	//lack of information about the other sides But he see
 	//all names with in colors
-	for(size_t n = 0; n != teams_.size(); ++n) {
-		if(teams_[n].hidden()) {
+	for(size_t n = 0; n != teams().size(); ++n) {
+		if(teams()[n].hidden()) {
 			continue;
 		}
 		status_table_empty=false;
@@ -236,13 +243,13 @@ void menu_handler::status_table(int selected)
 
 		std::stringstream str;
 
-		const team_data data = resources::gameboard->calculate_team_data(teams_[n],n+1);
+		const team_data data = board().calculate_team_data(teams()[n],n+1);
 
-		unit_map::const_iterator leader = units_.find_leader(n + 1);
+		unit_map::const_iterator leader = units().find_leader(n + 1);
 		std::string leader_name;
 		//output the number of the side first, and this will
 		//cause it to be displayed in the correct color
-		if(leader != units_.end()) {
+		if(leader != units().end()) {
 			const bool fogged = viewing_team.fogged(leader->get_location());
 			// Add leader image. If it's fogged
 			// show only a random leader image.
@@ -256,21 +263,21 @@ void menu_handler::status_table(int selected)
 			} else {
 				str << IMAGE_PREFIX << std::string("units/unknown-unit.png");
 #ifndef LOW_MEM
-				str << "~RC(magenta>" << teams_[n].color() << ")";
+				str << "~RC(magenta>" << teams()[n].color() << ")";
 #endif
 				leader_bools.push_back(false);
 				leader_name = "Unknown";
 			}
 
 			if (resources::classification->campaign_type == game_classification::MULTIPLAYER)
-				leader_name = teams_[n].current_player();
+				leader_name = teams()[n].current_player();
 
 		} else {
 			leader_bools.push_back(false);
 		}
 		str << COLUMN_SEPARATOR	<< team::get_side_highlight(n)
 			<< leader_name << COLUMN_SEPARATOR
-			<< (data.teamname.empty() ? teams_[n].team_name() : data.teamname)
+			<< (data.teamname.empty() ? teams()[n].team_name() : data.teamname)
 			<< COLUMN_SEPARATOR;
 
 		if(!known && !game_config::debug) {
@@ -289,7 +296,7 @@ void menu_handler::status_table(int selected)
 		}
 		str << data.villages;
                 if(!(viewing_team.uses_fog() || viewing_team.uses_shroud())) {
-                        str << "/" << map_.villages().size();
+                        str << "/" << map().villages().size();
                 }
 		str << COLUMN_SEPARATOR
 			<< data.units << COLUMN_SEPARATOR << data.upkeep << COLUMN_SEPARATOR
@@ -297,8 +304,8 @@ void menu_handler::status_table(int selected)
 		total_villages += data.villages;
 		items.push_back(str.str());
 	}
-	if (total_villages > map_.villages().size()) {
-		ERR_NG << "Logic error: map has " << map_.villages().size() << " villages but status table shows " << total_villages << " owned in total" << std::endl;
+	if (total_villages > map().villages().size()) {
+		ERR_NG << "Logic error: map has " << map().villages().size() << " villages but status table shows " << total_villages << " owned in total" << std::endl;
 	}
 
 	if (status_table_empty)
@@ -351,20 +358,20 @@ void menu_handler::scenario_settings_table(int selected)
 	std::vector<bool> leader_bools;
 	items.push_back(heading.str());
 
-	const team& viewing_team = teams_[gui_->viewing_team()];
+	const team& viewing_team = teams()[gui_->viewing_team()];
 	bool settings_table_empty = true;
 	bool fogged;
 
-	for(size_t n = 0; n != teams_.size(); ++n) {
-		if(teams_[n].hidden()) {
+	for(size_t n = 0; n != teams().size(); ++n) {
+		if(teams()[n].hidden()) {
 			continue;
 		}
 		settings_table_empty = false;
 
 		std::stringstream str;
-		unit_map::const_iterator leader = units_.find_leader(n + 1);
+		unit_map::const_iterator leader = units().find_leader(n + 1);
 
-		if(leader != units_.end()) {
+		if(leader != units().end()) {
 			// Add leader image. If it's fogged
 			// show only a random leader image.
 			fogged=viewing_team.fogged(leader->get_location());
@@ -384,14 +391,14 @@ void menu_handler::scenario_settings_table(int selected)
 		}
 
 		str << COLUMN_SEPARATOR	<< team::get_side_highlight(n)
-			<< teams_[n].current_player() << COLUMN_SEPARATOR
+			<< teams()[n].current_player() << COLUMN_SEPARATOR
 			<< n + 1 << COLUMN_SEPARATOR
-			<< teams_[n].start_gold() << COLUMN_SEPARATOR
-			<< teams_[n].base_income() << COLUMN_SEPARATOR
-			<< teams_[n].village_gold() << COLUMN_SEPARATOR
-			<< teams_[n].village_support() << COLUMN_SEPARATOR
-			<< (teams_[n].uses_fog()    ? _("yes") : _("no")) << COLUMN_SEPARATOR
-			<< (teams_[n].uses_shroud() ? _("yes") : _("no")) << COLUMN_SEPARATOR;
+			<< teams()[n].start_gold() << COLUMN_SEPARATOR
+			<< teams()[n].base_income() << COLUMN_SEPARATOR
+			<< teams()[n].village_gold() << COLUMN_SEPARATOR
+			<< teams()[n].village_support() << COLUMN_SEPARATOR
+			<< (teams()[n].uses_fog()    ? _("yes") : _("no")) << COLUMN_SEPARATOR
+			<< (teams()[n].uses_shroud() ? _("yes") : _("no")) << COLUMN_SEPARATOR;
 
 		items.push_back(str.str());
 	}
@@ -444,7 +451,7 @@ void menu_handler::save_map()
 	// Try to save the map, if it fails we reset the filename.
 	if (res == 0) {
 		try {
-			filesystem::write_file(input_name, map_.write());
+			filesystem::write_file(input_name, map().write());
 			gui2::show_transient_message(gui_->video(), "", _("Map saved."));
 		} catch (filesystem::io_exception& e) {
 			utils::string_map symbols;
@@ -476,7 +483,7 @@ void menu_handler::save_map()
 		try {
 			config file;
 			config& map = file.add_child("map");
-			map_.write(map);
+			map().write(map);
 
 			std::stringstream str;
 			{
@@ -522,7 +529,7 @@ void menu_handler::show_help()
 void menu_handler::speak()
 {
 	textbox_info_.show(gui::TEXTBOX_MESSAGE,_("Message:"),
-		has_friends() ? resources::gameboard->is_observer() ? _("Send to observers only") : _("Send to allies only")
+		has_friends() ? board().is_observer() ? _("Send to observers only") : _("Send to allies only")
 					  : "", preferences::message_private(), *gui_);
 }
 
@@ -540,12 +547,12 @@ void menu_handler::shout()
 
 bool menu_handler::has_friends() const
 {
-	if(resources::gameboard->is_observer()) {
+	if(board().is_observer()) {
 		return !gui_->observers().empty();
 	}
 
-	for(size_t n = 0; n != teams_.size(); ++n) {
-		if(n != gui_->viewing_team() && teams_[gui_->viewing_team()].team_name() == teams_[n].team_name() && teams_[n].is_network()) {
+	for(size_t n = 0; n != teams().size(); ++n) {
+		if(n != gui_->viewing_team() && teams()[gui_->viewing_team()].team_name() == teams()[n].team_name() && teams()[n].is_network()) {
 			return true;
 		}
 	}
@@ -555,7 +562,7 @@ bool menu_handler::has_friends() const
 
 void menu_handler::recruit(int side_num, const map_location &last_hex)
 {
-	team &current_team = teams_[side_num - 1];
+	team &current_team = teams()[side_num - 1];
 
 	std::vector<const unit_type*> sample_units;
 
@@ -610,7 +617,7 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 
 void menu_handler::repeat_recruit(int side_num, const map_location &last_hex)
 {
-	const std::string & last_recruit = teams_[side_num - 1].last_recruit();
+	const std::string & last_recruit = teams()[side_num - 1].last_recruit();
 	if ( last_recruit.empty() == false )
 		do_recruit(last_recruit, side_num, last_hex);
 }
@@ -618,7 +625,7 @@ void menu_handler::repeat_recruit(int side_num, const map_location &last_hex)
 bool menu_handler::do_recruit(const std::string &name, int side_num,
 	const map_location &last_hex)
 {
-	team &current_team = teams_[side_num - 1];
+	team &current_team = teams()[side_num - 1];
 
 	//search for the unit to be recruited in recruits
 	if ( !util::contains(actions::get_recruits(side_num, last_hex), name) )
@@ -666,7 +673,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		return;
 	}
 
-	team &current_team = teams_[side_num - 1];
+	team &current_team = teams()[side_num - 1];
 	if(!current_team.persistent()) {
 		ERR_NG << "cannot recall a unit for side " << side_num
 			<< ", which has no recall list!\n";
@@ -762,15 +769,15 @@ void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 	gui_->unhighlight_reach();
 
 	// Compute enemy movement positions
-	for(unit_map::iterator u = units_.begin(); u != units_.end(); ++u) {
+	for(unit_map::iterator u = units().begin(); u != units().end(); ++u) {
 		bool invisible = u->invisible(u->get_location());
 
-		if (teams_[side_num - 1].is_enemy(u->side()) &&
+		if (teams()[side_num - 1].is_enemy(u->side()) &&
 		    !gui_->fogged(u->get_location()) && !u->incapacitated() && !invisible)
 		{
 			const unit_movement_resetter move_reset(*u);
 			const pathfind::paths& path = pathfind::paths(*u, false, true,
-				teams_[gui_->viewing_team()], 0, false, ignore_units);
+				teams()[gui_->viewing_team()], 0, false, ignore_units);
 
 			gui_->highlight_another_reach(path);
 		}
@@ -779,7 +786,7 @@ void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 
 void menu_handler::toggle_shroud_updates(int side_num)
 {
-	team &current_team = teams_[side_num - 1];
+	team &current_team = teams()[side_num - 1];
 	bool auto_shroud = current_team.auto_shroud_updates();
 	// If we're turning automatic shroud updates on, then commit all moves
 	if (!auto_shroud) update_shroud_now(side_num);
@@ -810,13 +817,13 @@ namespace { // Helpers for menu_handler::end_turn()
 	/**
 	 * Returns true if @a side_num has at least one unit that can still move.
 	 */
-	bool partmoved_units(int side_num, const unit_map & units)
+	bool partmoved_units(int side_num, const unit_map & units, const game_board & board)
 	{
 		for ( unit_map::const_iterator un = units.begin(); un != units.end(); ++un ) {
 			if ( un->side() == side_num ) {
 				// @todo whiteboard should take into consideration units that have
 				// a planned move but can still plan more movement in the same turn
-				if ( resources::gameboard->unit_can_move(*un) && !un->user_end_turn()
+				if ( board.unit_can_move(*un) && !un->user_end_turn()
 						&& !resources::whiteboard->unit_has_actions(&*un) )
 					return true;
 			}
@@ -827,11 +834,11 @@ namespace { // Helpers for menu_handler::end_turn()
 	 * Returns true if @a side_num has at least one unit that (can but) has not
 	 * moved.
 	 */
-	bool unmoved_units(int side_num, const unit_map & units)
+	bool unmoved_units(int side_num, const unit_map & units, const game_board & board)
 	{
 		for ( unit_map::const_iterator un = units.begin(); un != units.end(); ++un ) {
 			if ( un->side() == side_num ) {
-				if ( resources::gameboard->unit_can_move(*un)  &&  !un->has_moved()  && !un->user_end_turn()
+				if ( board.unit_can_move(*un)  &&  !un->has_moved()  && !un->user_end_turn()
 						&& !resources::whiteboard->unit_has_actions(&*un) )
 					return true;
 			}
@@ -842,20 +849,20 @@ namespace { // Helpers for menu_handler::end_turn()
 
 bool menu_handler::end_turn(int side_num)
 {
-	if(!resources::gamedata->allow_end_turn()) {
+	if(!gamedata().allow_end_turn()) {
 		gui2::show_message((*gui_).video(), "", _("You cannot end your turn yet!"), gui2::tmessage::ok_button);
 		return false;
 	}
 
 	size_t team_num = static_cast<size_t>(side_num - 1);
-	if ( team_num < teams_.size()  &&  teams_[team_num].no_turn_confirmation() ) {
+	if ( team_num < teams().size()  &&  teams()[team_num].no_turn_confirmation() ) {
 		// Skip the confirmations that follow.
 	}
 	// Ask for confirmation if the player hasn't made any moves.
 	else if ( preferences::confirm_no_moves()  &&
 	          !resources::undo_stack->player_acted()  &&
 	          !resources::whiteboard->current_side_has_actions()  &&
-	          units_alive(side_num, units_) )
+	          units_alive(side_num, units()) )
 	{
 		const int res = gui2::show_message((*gui_).video(), "", _("You have not started your turn yet. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
 		if(res == gui2::twindow::CANCEL) {
@@ -863,14 +870,14 @@ bool menu_handler::end_turn(int side_num)
 		}
 	}
 	// Ask for confirmation if units still have some movement left.
-	else if ( preferences::yellow_confirm() && partmoved_units(side_num, units_) ) {
+	else if ( preferences::yellow_confirm() && partmoved_units(side_num, units(), board()) ) {
 		const int res = gui2::show_message((*gui_).video(), "", _("Some units have movement left. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
 		if(res == gui2::twindow::CANCEL) {
 			return false;
 		}
 	}
 	// Ask for confirmation if units still have all movement left.
-	else if ( preferences::green_confirm() && unmoved_units(side_num, units_) ) {
+	else if ( preferences::green_confirm() && unmoved_units(side_num, units(), board()) ) {
 		const int res = gui2::show_message((*gui_).video(), "", _("Some units have not moved. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
 		if(res == gui2::twindow::CANCEL) {
 			return false;
@@ -888,8 +895,8 @@ bool menu_handler::end_turn(int side_num)
 
 void menu_handler::goto_leader(int side_num)
 {
-	unit_map::const_iterator i = units_.find_leader(side_num);
-	if(i != units_.end()) {
+	unit_map::const_iterator i = units().find_leader(side_num);
+	if(i != units().end()) {
 		gui_->scroll_to_tile(i->get_location(), game_display::WARP);
 	}
 }
@@ -897,7 +904,7 @@ void menu_handler::goto_leader(int side_num)
 void menu_handler::unit_description()
 {
 	const unit_map::const_iterator un = current_unit();
-	if(un != units_.end()) {
+	if(un != units().end()) {
 		help::show_unit_description(*un);
 	}
 }
@@ -905,19 +912,19 @@ void menu_handler::unit_description()
 void menu_handler::terrain_description(mouse_handler& mousehandler)
 {
 	const map_location& loc = mousehandler.get_last_hex();
-	if (map_.on_board(loc) == false) {
+	if (map().on_board(loc) == false) {
 		return;
 	}
 
-	const terrain_type& type = map_.get_terrain_info(loc);
-	//const terrain_type& info = resources::gameboard->map().get_terrain_info(terrain);
+	const terrain_type& type = map().get_terrain_info(loc);
+	//const terrain_type& info = board().map().get_terrain_info(terrain);
 	help::show_terrain_description(type);
 }
 
 void menu_handler::rename_unit()
 {
 	const unit_map::iterator un = current_unit();
-	if (un == units_.end() || gui_->viewing_side() != un->side())
+	if (un == units().end() || gui_->viewing_side() != un->side())
 		return;
 	if (un->unrenamable())
 		return;
@@ -935,15 +942,15 @@ void menu_handler::rename_unit()
 
 unit_map::iterator menu_handler::current_unit()
 {
-	const mouse_handler& mousehandler = resources::controller->get_mouse_handler_base();
+	const mouse_handler& mousehandler = pc_.get_mouse_handler_base();
 
-	unit_map::iterator res = resources::gameboard->find_visible_unit(mousehandler.get_last_hex(),
-		teams_[gui_->viewing_team()]);
-	if(res != units_.end()) {
+	unit_map::iterator res = board().find_visible_unit(mousehandler.get_last_hex(),
+		teams()[gui_->viewing_team()]);
+	if(res != units().end()) {
 		return res;
 	} else {
-		return resources::gameboard->find_visible_unit(mousehandler.get_selected_hex(),
-			teams_[gui_->viewing_team()]);
+		return board().find_visible_unit(mousehandler.get_selected_hex(),
+			teams()[gui_->viewing_team()]);
 	}
 }
 
@@ -1122,35 +1129,35 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 	                                                choose_unit(*gui_);
 	if ( selection.first != NULL )
 		// Make it so.
-		create_and_place(*gui_, map_, units_, destination,
+		create_and_place(*gui_, map(), units(), destination,
 		                 *selection.first, selection.second);
 }
 
 void menu_handler::change_side(mouse_handler& mousehandler)
 {
 	const map_location& loc = mousehandler.get_last_hex();
-	const unit_map::iterator i = units_.find(loc);
-	if(i == units_.end()) {
-		if(!map_.is_village(loc))
+	const unit_map::iterator i = units().find(loc);
+	if(i == units().end()) {
+		if(!map().is_village(loc))
 			return;
 
 		// village_owner returns -1 for free village, so team 0 will get it
-		int team = resources::gameboard->village_owner(loc) + 1;
+		int team = board().village_owner(loc) + 1;
 		// team is 0-based so team=team::nteams() is not a team
 		// but this will make get_village free it
-		if(team > static_cast<int> (teams_.size())) {
+		if(team > static_cast<int> (teams().size())) {
 			team = 0;
 		}
 		actions::get_village(loc, team + 1);
 	} else {
 		int side = i->side();
 		++side;
-		if(side > static_cast<int> (teams_.size())) {
+		if(side > static_cast<int> (teams().size())) {
 			side = 1;
 		}
 		i->set_side(side);
 
-		if(map_.is_village(loc)) {
+		if(map().is_village(loc)) {
 			actions::get_village(loc, side);
 		}
 	}
@@ -1159,27 +1166,27 @@ void menu_handler::change_side(mouse_handler& mousehandler)
 void menu_handler::kill_unit(mouse_handler& mousehandler)
 {
 	const map_location& loc = mousehandler.get_last_hex();
-	const unit_map::iterator i = units_.find(loc);
-	if(i != units_.end()) {
+	const unit_map::iterator i = units().find(loc);
+	if(i != units().end()) {
 		const int dying_side = i->side();
-		resources::game_events->pump().fire("last breath", loc, loc);
+		pc_.pump().fire("last breath", loc, loc);
 		if (i.valid()) {
 			unit_display::unit_die(loc, *i);
 		}
 		gui_->redraw_minimap();
-		resources::game_events->pump().fire("die", loc, loc);
+		pc_.pump().fire("die", loc, loc);
 		if (i.valid()) {
-			resources::units->erase(i);
+			units().erase(i);
 		}
 		actions::recalculate_fog(dying_side);
-		resources::controller->check_victory();
+		pc_.check_victory();
 	}
 }
 
 void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 {
 	const map_location& loc = mousehandler.get_last_hex();
-	if (map_.on_board(loc) == false) {
+	if (map().on_board(loc) == false) {
 		return;
 	}
 
@@ -1204,7 +1211,7 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 void menu_handler::clear_labels()
 {
 	if (gui_->team_valid()
-	   && !resources::gameboard->is_observer())
+	   && !board().is_observer())
 	{
 		gui_->labels().clear(gui_->current_team_name(), false);
 		recorder.clear_labels(gui_->current_team_name(), false);
@@ -1214,9 +1221,9 @@ void menu_handler::clear_labels()
 void menu_handler::continue_move(mouse_handler &mousehandler, int side_num)
 {
 	unit_map::iterator i = current_unit();
-	if (i == units_.end() || !i->move_interrupted()) {
-		i = units_.find(mousehandler.get_selected_hex());
-		if (i == units_.end() || !i->move_interrupted()) return;
+	if (i == units().end() || !i->move_interrupted()) {
+		i = units().find(mousehandler.get_selected_hex());
+		if (i == units().end() || !i->move_interrupted()) return;
 	}
 	move_unit_to_loc(i, i->get_interrupted_move(), true,
 		side_num, mousehandler);
@@ -1226,9 +1233,9 @@ void menu_handler::move_unit_to_loc(const unit_map::iterator &ui,
 	const map_location& target, bool continue_move, int side_num,
 	mouse_handler &mousehandler)
 {
-	assert(ui != units_.end());
+	assert(ui != units().end());
 
-	pathfind::marked_route route = mousehandler.get_route(&*ui, target, teams_[side_num - 1]);
+	pathfind::marked_route route = mousehandler.get_route(&*ui, target, teams()[side_num - 1]);
 
 	if(route.steps.empty())
 		return;
@@ -1259,7 +1266,7 @@ void menu_handler::execute_gotos(mouse_handler &mousehandler, int side)
 	do {
 		change = false;
 		blocked_unit = false;
-		for(unit_map::iterator ui = units_.begin(); ui != units_.end(); ++ui) {
+		for(unit_map::iterator ui = units().begin(); ui != units().end(); ++ui) {
 			if (ui->side() != side  || ui->movement_left() == 0)
 				continue;
 
@@ -1271,14 +1278,14 @@ void menu_handler::execute_gotos(mouse_handler &mousehandler, int side)
 				continue;
 			}
 
-			if(!map_.on_board(goto_loc))
+			if(!map().on_board(goto_loc))
 				continue;
 
 			// avoid pathfinding calls for finished units
 			if(fully_moved.count(current_loc))
 				continue;
 
-			pathfind::marked_route route = mousehandler.get_route(&*ui, goto_loc, teams_[side - 1]);
+			pathfind::marked_route route = mousehandler.get_route(&*ui, goto_loc, teams()[side - 1]);
 
 			if(route.steps.size() <= 1) { // invalid path
 				fully_moved.insert(current_loc);
@@ -1302,7 +1309,7 @@ void menu_handler::execute_gotos(mouse_handler &mousehandler, int side)
 
 			// we delay each blocked move because some other change
 			// may open a another not blocked path
-			if(units_.count(next_stop)) {
+			if(units().count(next_stop)) {
 				blocked_unit = true;
 				if (wait_blocker_move)
 					continue;
@@ -1349,8 +1356,8 @@ void menu_handler::toggle_grid()
 
 void menu_handler::unit_hold_position(mouse_handler &mousehandler, int side_num)
 {
-	const unit_map::iterator un = units_.find(mousehandler.get_selected_hex());
-	if (un != units_.end() && un->side() == side_num && un->movement_left() >= 0)
+	const unit_map::iterator un = units().find(mousehandler.get_selected_hex());
+	if (un != units().end() && un->side() == side_num && un->movement_left() >= 0)
 	{
 		un->toggle_hold_position();
 		gui_->invalidate(mousehandler.get_selected_hex());
@@ -1366,8 +1373,8 @@ void menu_handler::unit_hold_position(mouse_handler &mousehandler, int side_num)
 
 void menu_handler::end_unit_turn(mouse_handler &mousehandler, int side_num)
 {
-	const unit_map::iterator un = units_.find(mousehandler.get_selected_hex());
-	if (un != units_.end() && un->side() == side_num && un->movement_left() >= 0)
+	const unit_map::iterator un = units().find(mousehandler.get_selected_hex());
+	if (un != units().end() && un->side() == side_num && un->movement_left() >= 0)
 	{
 		un->toggle_user_end_turn();
 		gui_->invalidate(mousehandler.get_selected_hex());
@@ -1949,7 +1956,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		//convenience typedef
 		typedef map_command_handler<console_handler> chmap;
 		console_handler(menu_handler& menu_handler)
-		: chmap(), chat_command_handler(menu_handler, true), menu_handler_(menu_handler), team_num_(resources::controller->current_side())
+		: chmap(), chat_command_handler(menu_handler, true), menu_handler_(menu_handler), team_num_(menu_handler.pc_.current_side())
 		{}
 		using chmap::dispatch; //disambiguate
 		using chmap::get_commands_list;
@@ -2558,18 +2565,18 @@ void menu_handler::send_chat_message(const std::string& message, bool allies_onl
 	ss << time;
 	cfg["time"] = ss.str();
 
-	const int side = resources::gameboard->is_observer() ? 0 : gui_->viewing_side();
-	if(!resources::gameboard->is_observer()) {
+	const int side = board().is_observer() ? 0 : gui_->viewing_side();
+	if(!board().is_observer()) {
 		cfg["side"] = side;
 	}
 
 	bool private_message = has_friends() && allies_only;
 
 	if(private_message) {
-		if (resources::gameboard->is_observer()) {
+		if (board().is_observer()) {
 			cfg["team_name"] = game_config::observer_team_name;
 		} else {
-			cfg["team_name"] = teams_[gui_->viewing_team()].team_name();
+			cfg["team_name"] = teams()[gui_->viewing_team()].team_name();
 		}
 	}
 
@@ -2595,20 +2602,20 @@ void menu_handler::do_search(const std::string& new_search)
 		int x, y;
 		x = lexical_cast_default<int>(args[0], 0)-1;
 		y = lexical_cast_default<int>(args[1], 0)-1;
-		if(x >= 0 && x < map_.w() && y >= 0 && y < map_.h()) {
+		if(x >= 0 && x < map().w() && y >= 0 && y < map().h()) {
 			loc = map_location(x,y);
 			found = true;
 		}
 	}
 	//Start scanning the game map
 	if(loc.valid() == false)
-		loc = map_location(map_.w()-1,map_.h()-1);
+		loc = map_location(map().w()-1,map().h()-1);
 	map_location start = loc;
 	while (!found) {
 		//Move to the next location
-		loc.x = (loc.x + 1) % map_.w();
+		loc.x = (loc.x + 1) % map().w();
 		if(loc.x == 0)
-			loc.y = (loc.y + 1) % map_.h();
+			loc.y = (loc.y + 1) % map().h();
 
 		//Search label
 		if (!gui_->shrouded(loc)) {
@@ -2624,13 +2631,13 @@ void menu_handler::do_search(const std::string& new_search)
 		}
 		//Search unit name
 		if (!gui_->fogged(loc)) {
-			unit_map::const_iterator ui = units_.find(loc);
-			if(ui != units_.end()) {
+			unit_map::const_iterator ui = units().find(loc);
+			if(ui != units().end()) {
 				const std::string name = ui->name();
 				if(std::search(name.begin(), name.end(),
 						last_search_.begin(), last_search_.end(),
 						chars_equal_insensitive) != name.end()) {
-					if (!teams_[gui_->viewing_team()].is_enemy(ui->side()) ||
+					if (!teams()[gui_->viewing_team()].is_enemy(ui->side()) ||
 					    !ui->invisible(ui->get_location())) {
 						found = true;
 					}
@@ -2687,28 +2694,28 @@ void console_handler::do_droid() {
 	const unsigned int side = side_s.empty() ?
 		team_num_ : lexical_cast_default<unsigned int>(side_s);
 
-	if (side < 1 || side > menu_handler_.teams_.size()) {
+	if (side < 1 || side > menu_handler_.teams().size()) {
 		utils::string_map symbols;
 		symbols["side"] = side_s;
 		command_failed(vgettext("Can't droid invalid side: '$side'.", symbols));
 		return;
-	} else if (menu_handler_.teams_[side - 1].is_network()) {
+	} else if (menu_handler_.teams()[side - 1].is_network()) {
 		utils::string_map symbols;
 		symbols["side"] = lexical_cast<std::string>(side);
 		command_failed(vgettext("Can't droid networked side: '$side'.", symbols));
 		return;
-	} else if (menu_handler_.teams_[side - 1].is_local_human()) {
-		if (menu_handler_.teams_[side - 1].is_droid() ? action == " on" : action == " off") {
+	} else if (menu_handler_.teams()[side - 1].is_local_human()) {
+		if (menu_handler_.teams()[side - 1].is_droid() ? action == " on" : action == " off") {
 			return;
 		}
-		menu_handler_.teams_[side - 1].toggle_droid();
+		menu_handler_.teams()[side - 1].toggle_droid();
 		if(team_num_ == side) {
 			//if it is our turn at the moment, we have to indicate to the
 			//play_controller, that we are no longer in control
 			throw end_turn_exception(side);
 		}
-	} else if (menu_handler_.teams_[side - 1].is_local_ai()) {
-//		menu_handler_.teams_[side - 1].make_human();
+	} else if (menu_handler_.teams()[side - 1].is_local_ai()) {
+//		menu_handler_.teams()[side - 1].make_human();
 //		menu_handler_.change_controller(lexical_cast<std::string>(side),"human");
 
 		utils::string_map symbols;
@@ -2726,27 +2733,27 @@ void console_handler::do_idle() {
 	const unsigned int side = side_s.empty() ?
 		team_num_ : lexical_cast_default<unsigned int>(side_s);
 
-	if (side < 1 || side > menu_handler_.teams_.size()) {
+	if (side < 1 || side > menu_handler_.teams().size()) {
 		utils::string_map symbols;
 		symbols["side"] = side_s;
 		command_failed(vgettext("Can't idle invalid side: '$side'.", symbols));
 		return;
-	} else if (menu_handler_.teams_[side - 1].is_network()) {
+	} else if (menu_handler_.teams()[side - 1].is_network()) {
 		utils::string_map symbols;
 		symbols["side"] = lexical_cast<std::string>(side);
 		command_failed(vgettext("Can't idle networked side: '$side'.", symbols));
 		return;
-	} else if (menu_handler_.teams_[side - 1].is_local_ai()) {
+	} else if (menu_handler_.teams()[side - 1].is_local_ai()) {
 		utils::string_map symbols;
 		symbols["side"] = lexical_cast<std::string>(side);
 		command_failed(vgettext("Can't idle local ai side: '$side'.", symbols));
 		return;
-	} else if (menu_handler_.teams_[side - 1].is_local_human()) {
-		if (menu_handler_.teams_[side - 1].is_idle() ? action == " on" : action == " off") {
+	} else if (menu_handler_.teams()[side - 1].is_local_human()) {
+		if (menu_handler_.teams()[side - 1].is_idle() ? action == " on" : action == " off") {
 			return;
 		}
 		//toggle the proxy controller between idle / non idle
-		menu_handler_.teams_[side - 1].toggle_idle();
+		menu_handler_.teams()[side - 1].toggle_idle();
 		if(team_num_ == side) {
 			//if it is our turn at the moment, we have to indicate to the
 			//play_controller, that we are no longer in control
@@ -2779,7 +2786,7 @@ void console_handler::do_control() {
 		command_failed(vgettext("Can't change control of invalid side: '$side'.", symbols));
 		return;
 	}
-	if (side_num < 1 || side_num > menu_handler_.teams_.size()) {
+	if (side_num < 1 || side_num > menu_handler_.teams().size()) {
 		utils::string_map symbols;
 		symbols["side"] = side;
 		command_failed(vgettext("Can't change control of out-of-bounds side: '$side'.",	symbols));
@@ -2800,16 +2807,16 @@ void console_handler::do_controller()
 		command_failed(vgettext("Can't query control of invalid side: '$side'.", symbols));
 		return;
 	}
-	if (side_num < 1 || side_num > menu_handler_.teams_.size()) {
+	if (side_num < 1 || side_num > menu_handler_.teams().size()) {
 		utils::string_map symbols;
 		symbols["side"] = side;
 		command_failed(vgettext("Can't query control of out-of-bounds side: '$side'.",	symbols));
 		return;
 	}
 
-	std::string report = team::CONTROLLER_to_string (menu_handler_.teams_[side_num - 1].controller());
-	if (!menu_handler_.teams_[side_num - 1].is_proxy_human()) {
-		report += " (" + team::PROXY_CONTROLLER_to_string(menu_handler_.teams_[side_num - 1].proxy_controller()) + ")";
+	std::string report = team::CONTROLLER_to_string (menu_handler_.teams()[side_num - 1].controller());
+	if (!menu_handler_.teams()[side_num - 1].is_proxy_human()) {
+		report += " (" + team::PROXY_CONTROLLER_to_string(menu_handler_.teams()[side_num - 1].proxy_controller()) + ")";
 	}
 
 	print(get_cmd(), report);
@@ -2828,7 +2835,7 @@ void console_handler::do_foreground() {
 }
 
 void console_handler::do_layers() {
-	const mouse_handler& mousehandler = resources::controller->get_mouse_handler_base();
+	const mouse_handler& mousehandler = menu_handler_.pc_.get_mouse_handler_base();
 	const map_location &loc = mousehandler.get_last_hex();
 
 	std::vector<std::string> layers;
@@ -2935,7 +2942,7 @@ void console_handler::do_benchmark() {
 	menu_handler_.gui_->toggle_benchmark();
 }
 void console_handler::do_save() {
-	resources::controller->do_consolesave(get_data());
+	menu_handler_.pc_.do_consolesave(get_data());
 }
 void console_handler::do_save_quit() {
 	do_save();
@@ -2954,8 +2961,8 @@ void console_handler::do_nosaves() {
 void console_handler::do_next_level()
 {
 	if (!get_data().empty())
-		resources::gamedata->set_next_scenario(get_data());
-	end_level_data &e = resources::controller->get_end_level_data();
+		menu_handler_.gamedata().set_next_scenario(get_data());
+	end_level_data &e = menu_handler_.pc_.get_end_level_data();
 	e.carryover_percentage = 100;
 	e.carryover_add = false;
 	e.gold_bonus = false;
@@ -2973,7 +2980,7 @@ void console_handler::do_choose_level() {
 	{
 		const std::string &id = sc["id"];
 		options.push_back(id);
-		if (id == resources::gamedata->next_scenario())
+		if (id == menu_handler_.gamedata().next_scenario())
 			next = nb;
 		++nb;
 	}
@@ -2986,7 +2993,7 @@ void console_handler::do_choose_level() {
 		{
 			const std::string &id = mp["id"];
 			options.push_back(id);
-			if (id == resources::gamedata->next_scenario())
+			if (id == menu_handler_.gamedata().next_scenario())
 				next = nb;
 			++nb;
 			scenario = mp["next_scenario"].str();
@@ -3005,8 +3012,8 @@ void console_handler::do_choose_level() {
 		return;
 
 	if (size_t(choice) < options.size()) {
-		resources::gamedata->set_next_scenario(options[choice]);
-		end_level_data &e = resources::controller->get_end_level_data();
+		menu_handler_.gamedata().set_next_scenario(options[choice]);
+		end_level_data &e = menu_handler_.pc_.get_end_level_data();
 		e.carryover_percentage = 100;
 		e.carryover_add = false;
 		e.gold_bonus = false;
@@ -3025,7 +3032,7 @@ void console_handler::do_turn()
 	if (!data.empty()) {
 		turn = lexical_cast_default<int>(data, 1);
 	}
-	resources::tod_manager->set_turn(turn, *resources::gamedata);
+	resources::tod_manager->set_turn(turn, menu_handler_.gamedata());
 
 	menu_handler_.gui_->new_turn();
 	menu_handler_.gui_->redraw_everything();
@@ -3056,7 +3063,7 @@ void console_handler::do_nodebug() {
 }
 void console_handler::do_lua() {
 	resources::lua_kernel->run(get_data().c_str());
-	resources::game_events->pump().flush_messages();
+	menu_handler_.pc_.pump().flush_messages();
 }
 
 void console_handler::do_unsafe_lua()
@@ -3108,7 +3115,7 @@ void console_handler::do_set_var() {
 		const std::string value(j+1,data.end());
 		try
 		{
-			resources::gamedata->set_variable(name,value);
+			menu_handler_.gamedata().set_variable(name,value);
 		}
 		catch(const invalid_variablename_exception&)
 		{
@@ -3120,7 +3127,7 @@ void console_handler::do_set_var() {
 	}
 }
 void console_handler::do_show_var() {
-	gui2::show_transient_message((*menu_handler_.gui_).video(),"",resources::gamedata->get_variable_const(get_data()));
+	gui2::show_transient_message((*menu_handler_.gui_).video(),"",menu_handler_.gamedata().get_variable_const(get_data()));
 }
 
 
@@ -3147,7 +3154,7 @@ void console_handler::do_unit() {
 	if (events::commands_disabled > 0)
 		return;
 	unit_map::iterator i = menu_handler_.current_unit();
-	if (i == menu_handler_.units_.end()) return;
+	if (i == menu_handler_.units().end()) return;
 	const map_location loc = i->get_location();
 	const std::string data = get_data(1);
 	std::vector<std::string> parameters = utils::split(data, '=', utils::STRIP_SPACES);
@@ -3187,7 +3194,7 @@ void console_handler::do_unit() {
 			i->set_experience(i->max_experience());
 
 			advance_unit_at(advance_unit_params(loc).force_dialog(true));
-			i = menu_handler_.units_.find(loc);
+			i = menu_handler_.units().find(loc);
 			if (!i.valid()) {
 				break;
 			}
@@ -3195,10 +3202,10 @@ void console_handler::do_unit() {
 	} else {
 		config cfg;
 		i->write(cfg);
-		menu_handler_.units_.erase(loc);
+		menu_handler_.units().erase(loc);
 		cfg[name] = value;
 		unit new_u(cfg, true);
-		menu_handler_.units_.add(loc, new_u);
+		menu_handler_.units().add(loc, new_u);
 	}
 	if (name == "fail") { //testcase for bug #18488
 		assert(i.valid());
@@ -3243,9 +3250,9 @@ void console_handler::do_undiscover() {
  * Implements the (debug mode) console command that creates a unit.
  */
 void console_handler::do_create() {
-	const mouse_handler& mousehandler = resources::controller->get_mouse_handler_base();
+	const mouse_handler& mousehandler = menu_handler_.pc_.get_mouse_handler_base();
 	const map_location &loc = mousehandler.get_last_hex();
-	if (menu_handler_.map_.on_board(loc)) {
+	if (menu_handler_.map().on_board(loc)) {
 		const unit_type *ut = unit_types.find(get_data());
 		if (!ut) {
 			command_failed(_("Invalid unit type"));
@@ -3253,30 +3260,30 @@ void console_handler::do_create() {
 		}
 
 		// Create the unit.
-		create_and_place(*menu_handler_.gui_, menu_handler_.map_,
-		                 menu_handler_.units_, loc, *ut);
+		create_and_place(*menu_handler_.gui_, menu_handler_.map(),
+		                 menu_handler_.units(), loc, *ut);
 	} else {
 		command_failed(_("Invalid location"));
 	}
 }
 void console_handler::do_fog() {
-	menu_handler_.teams_[team_num_ - 1].set_fog( !menu_handler_.teams_[team_num_ - 1].uses_fog() );
+	menu_handler_.teams()[team_num_ - 1].set_fog( !menu_handler_.teams()[team_num_ - 1].uses_fog() );
 	actions::recalculate_fog(team_num_);
 	menu_handler_.gui_->recalculate_minimap();
 	menu_handler_.gui_->redraw_everything();
 }
 void console_handler::do_shroud() {
-	menu_handler_.teams_[team_num_ - 1].set_shroud( !menu_handler_.teams_[team_num_ - 1].uses_shroud() );
+	menu_handler_.teams()[team_num_ - 1].set_shroud( !menu_handler_.teams()[team_num_ - 1].uses_shroud() );
 	actions::clear_shroud(team_num_);
 	menu_handler_.gui_->recalculate_minimap();
 	menu_handler_.gui_->redraw_everything();
 }
 void console_handler::do_gold() {
-	menu_handler_.teams_[team_num_ - 1].spend_gold(-lexical_cast_default<int>(get_data(),1000));
+	menu_handler_.teams()[team_num_ - 1].spend_gold(-lexical_cast_default<int>(get_data(),1000));
 	menu_handler_.gui_->redraw_everything();
 }
 void console_handler::do_event() {
-	resources::game_events->pump().fire(get_data());
+	menu_handler_.pc_.pump().fire(get_data());
 	menu_handler_.gui_->redraw_everything();
 }
 void console_handler::do_toggle_draw_coordinates() {
@@ -3309,7 +3316,7 @@ void menu_handler::do_ai_formula(const std::string& str,
 	try {
 		add_chat_message(time(NULL), _("ai"), 0, ai::manager::evaluate_command(side_num, str));
 	} catch(end_turn_exception&) {
-		resources::controller->force_end_turn();
+		pc_.force_end_turn();
 	} catch(...) {
 		//add_chat_message(time(NULL), _("ai"), 0, "ERROR IN FORMULA");
 	}
@@ -3323,7 +3330,7 @@ void menu_handler::user_command()
 void menu_handler::request_control_change ( int side_num, const std::string& player )
 {
 	std::string side = str_cast(side_num);
-	if (teams_[side_num - 1].is_local_human() && player == preferences::login()) {
+	if (teams()[side_num - 1].is_local_human() && player == preferences::login()) {
 		//this is already our side.
 		return;
 	} else {

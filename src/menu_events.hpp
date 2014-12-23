@@ -21,8 +21,16 @@
 #include "floating_textbox.hpp"
 #include "unit_map.hpp"
 
+#include <vector>
+
+class game_state;
+class gamemap;
+class game_data;
 class game_board;
 class gamemap;
+class play_controller;
+class team;
+class unit_map;
 
 namespace events {
 	class mouse_handler;
@@ -34,7 +42,7 @@ namespace events {
 
 class menu_handler : private chat_handler {
 public:
-	menu_handler(game_display* gui, game_board & board,
+	menu_handler(game_display* gui, play_controller & pc, game_state & gs,
 		const config& level,
 		const config& game_config);
 	virtual ~menu_handler();
@@ -113,10 +121,17 @@ private:
 	void scenario_settings_table(int selected=0);
 
 	game_display* gui_;
-	unit_map& units_;
-	std::vector<team>& teams_;
+	play_controller & pc_;
+	game_state & game_state_;
+
+	game_state & gamestate();
+	game_data & gamedata();
+	game_board & board() const;
+	unit_map& units();
+	std::vector<team>& teams() const;
+	const gamemap& map();
+
 	const config& level_;
-	const gamemap& map_;
 	const config& game_config_;
 
 	gui::floating_textbox textbox_info_;
