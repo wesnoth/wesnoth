@@ -230,6 +230,23 @@ public:
 			return (valid_for_dereference() && i_->second.unit);
 		}
 
+#ifndef HAVE_CXX11
+		struct safe_bool_impl { void nonnull() {} };
+		/**
+		 * Used as the return type of the conversion operator for boolean contexts.
+		 * Needed, since the compiler would otherwise consider the following
+		 * conversion (C legacy): cfg["abc"] -> "abc"[bool(cfg)] -> 'b'
+		 */
+		typedef void (safe_bool_impl::*safe_bool)();
+
+		operator safe_bool() const
+		{ return valid() ? &safe_bool_impl::nonnull : NULL; }
+#else
+		explicit operator bool() const
+		{ return valid(); }
+#endif
+
+
 		bool operator==(const iterator_base &rhs) const { return (tank_ == rhs.tank_) && ( i_ == rhs.i_ ); }
 		bool operator!=(const iterator_base &rhs) const { return !operator==(rhs); }
 
