@@ -27,7 +27,7 @@
 #include "SDL_events.h"                 // for SDL_MouseButtonEvent
 
 class battle_context;  // lines 23-23
-class game_board;
+class play_controller;
 class team;
 class unit;
 
@@ -35,7 +35,7 @@ namespace events{
 
 class mouse_handler : public mouse_handler_base {
 public:
-	mouse_handler(game_display* gui, game_board & board);
+	mouse_handler(game_display* gui, play_controller & pc);
 	~mouse_handler();
 	static mouse_handler* get_singleton() { return singleton_ ;}
 	void set_side(int side_number);
@@ -132,7 +132,7 @@ private:
 	team &current_team();
 
 	game_display* gui_;
-	game_board & board_;
+	play_controller & pc_;
 
 	// previous highlighted hexes
 	// the hex of the selected unit and empty hex are "free"
