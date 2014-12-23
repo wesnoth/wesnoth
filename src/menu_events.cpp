@@ -582,12 +582,16 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 		item_keys.push_back(*it);
 
 		char prefix;
+		int wb_gold = 0;
+
+		if (const boost::shared_ptr<wb::manager> & whiteb = pc_.get_whiteboard())
 		{ wb::future_map future; // so gold takes into account planned spending
-			int wb_gold = resources::whiteboard->get_spent_gold_for(side_num);
+			wb_gold = whiteb->get_spent_gold_for(side_num);
 			//display units that we can't afford to recruit in red
-			prefix = (type->cost() > current_team.gold() - wb_gold
-					? font::BAD_TEXT : font::NULL_MARKUP);
 		} // end planned unit map scope
+
+		prefix = (type->cost() > current_team.gold() - wb_gold
+				? font::BAD_TEXT : font::NULL_MARKUP);
 
 		std::stringstream description;
 		description << font::IMAGE << type->image();
@@ -634,7 +638,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 	const unit_type *u_type = unit_types.find(name);
 	assert(u_type);
 
-	if (u_type->cost() > current_team.gold() - resources::whiteboard->get_spent_gold_for(side_num)) {
+	if (u_type->cost() > current_team.gold() - (pc_.get_whiteboard() ? pc_.get_whiteboard()->get_spent_gold_for(side_num) : 0)) {
 		gui2::show_transient_message(gui_->video(), "",
 			_("You don’t have enough gold to recruit that unit"));
 		return false;
@@ -654,7 +658,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 		return false;
 	}
 
-	if (!resources::whiteboard->save_recruit(name, side_num, loc)) {
+	if (!pc_.get_whiteboard() || !pc_.get_whiteboard()->save_recruit(name, side_num, loc)) {
 		//MP_COUNTDOWN grant time bonus for recruiting
 		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
@@ -719,7 +723,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		unit_cost = recall_list_team[res]->recall_cost();
 	}
 
-	int wb_gold = resources::whiteboard->get_spent_gold_for(side_num);
+	int wb_gold = pc_.get_whiteboard() ? pc_.get_whiteboard()->get_spent_gold_for(side_num) : 0;
 	if (current_team.gold() - wb_gold < unit_cost) {
 		utils::string_map i18n_symbols;
 		i18n_symbols["cost"] = lexical_cast<std::string>(unit_cost);
@@ -745,7 +749,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		return;
 	}
 
-	if (!resources::whiteboard->save_recall(*recall_list_team[res], side_num, recall_location)) {
+	if (!pc_.get_whiteboard() || !pc_.get_whiteboard()->save_recall(*recall_list_team[res], side_num, recall_location)) {
 		bool success = synced_context::run_in_synced_context("recall",
 			replay_helper::get_recall(recall_list_team[res]->id(), recall_location, recall_from),
 			true,
@@ -817,14 +821,14 @@ namespace { // Helpers for menu_handler::end_turn()
 	/**
 	 * Returns true if @a side_num has at least one unit that can still move.
 	 */
-	bool partmoved_units(int side_num, const unit_map & units, const game_board & board)
+	bool partmoved_units(int side_num, const unit_map & units, const game_board & board, const boost::shared_ptr<wb::manager> & whiteb)
 	{
 		for ( unit_map::const_iterator un = units.begin(); un != units.end(); ++un ) {
 			if ( un->side() == side_num ) {
 				// @todo whiteboard should take into consideration units that have
 				// a planned move but can still plan more movement in the same turn
 				if ( board.unit_can_move(*un) && !un->user_end_turn()
-						&& !resources::whiteboard->unit_has_actions(&*un) )
+						&& (!whiteb || !whiteb->unit_has_actions(&*un)) )
 					return true;
 			}
 		}
@@ -834,12 +838,12 @@ namespace { // Helpers for menu_handler::end_turn()
 	 * Returns true if @a side_num has at least one unit that (can but) has not
 	 * moved.
 	 */
-	bool unmoved_units(int side_num, const unit_map & units, const game_board & board)
+	bool unmoved_units(int side_num, const unit_map & units, const game_board & board, const boost::shared_ptr<wb::manager> & whiteb)
 	{
 		for ( unit_map::const_iterator un = units.begin(); un != units.end(); ++un ) {
 			if ( un->side() == side_num ) {
 				if ( board.unit_can_move(*un)  &&  !un->has_moved()  && !un->user_end_turn()
-						&& !resources::whiteboard->unit_has_actions(&*un) )
+						&& (!whiteb || !whiteb->unit_has_actions(&*un)) )
 					return true;
 			}
 		}
@@ -861,7 +865,7 @@ bool menu_handler::end_turn(int side_num)
 	// Ask for confirmation if the player hasn't made any moves.
 	else if ( preferences::confirm_no_moves()  &&
 	          !resources::undo_stack->player_acted()  &&
-	          !resources::whiteboard->current_side_has_actions()  &&
+	          (!pc_.get_whiteboard() || !pc_.get_whiteboard()->current_side_has_actions())  &&
 	          units_alive(side_num, units()) )
 	{
 		const int res = gui2::show_message((*gui_).video(), "", _("You have not started your turn yet. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
@@ -870,14 +874,14 @@ bool menu_handler::end_turn(int side_num)
 		}
 	}
 	// Ask for confirmation if units still have some movement left.
-	else if ( preferences::yellow_confirm() && partmoved_units(side_num, units(), board()) ) {
+	else if ( preferences::yellow_confirm() && partmoved_units(side_num, units(), board(), pc_.get_whiteboard()) ) {
 		const int res = gui2::show_message((*gui_).video(), "", _("Some units have movement left. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
 		if(res == gui2::twindow::CANCEL) {
 			return false;
 		}
 	}
 	// Ask for confirmation if units still have all movement left.
-	else if ( preferences::green_confirm() && unmoved_units(side_num, units(), board()) ) {
+	else if ( preferences::green_confirm() && unmoved_units(side_num, units(), board(), pc_.get_whiteboard()) ) {
 		const int res = gui2::show_message((*gui_).video(), "", _("Some units have not moved. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
 		if(res == gui2::twindow::CANCEL) {
 			return false;
@@ -886,7 +890,7 @@ bool menu_handler::end_turn(int side_num)
 
 	// Auto-execute remaining whiteboard planned actions
 	// Only finish turn if they all execute successfully, i.e. no ambush, etc.
-	if (!resources::whiteboard->allow_end_turn()) {
+	if (pc_.get_whiteboard() && pc_.get_whiteboard()->allow_end_turn()) {
 		return false;
 	}
 
@@ -3296,18 +3300,22 @@ void console_handler::do_toggle_draw_terrain_codes() {
 }
 
 void console_handler::do_toggle_whiteboard() {
-	resources::whiteboard->set_active(!resources::whiteboard->is_active());
-	if (resources::whiteboard->is_active()) {
-		print(get_cmd(), _("Planning mode activated!"));
-		resources::whiteboard->print_help_once();
-	} else {
-		print(get_cmd(), _("Planning mode deactivated!"));
+	if (const boost::shared_ptr<wb::manager> & whiteb = menu_handler_.pc_.get_whiteboard()) {
+		whiteb->set_active(!whiteb->is_active());
+		if (whiteb->is_active()) {
+			print(get_cmd(), _("Planning mode activated!"));
+			whiteb->print_help_once();
+		} else {
+			print(get_cmd(), _("Planning mode deactivated!"));
+		}
 	}
 }
 
 void console_handler::do_whiteboard_options()
 {
-	resources::whiteboard->options_dlg();
+	if (menu_handler_.pc_.get_whiteboard()) {
+		menu_handler_.pc_.get_whiteboard()->options_dlg();
+	}
 }
 
 void menu_handler::do_ai_formula(const std::string& str,
