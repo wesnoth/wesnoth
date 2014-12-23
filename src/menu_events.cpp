@@ -3034,12 +3034,14 @@ void console_handler::do_choose_level() {
 
 void console_handler::do_turn()
 {
-	int turn = resources::tod_manager->turn() + 1;
+	tod_manager& tod_man = menu_handler_.gamestate().tod_manager_;
+
+	int turn = tod_man.turn() + 1;
 	const std::string& data = get_data();
 	if (!data.empty()) {
 		turn = lexical_cast_default<int>(data, 1);
 	}
-	resources::tod_manager->set_turn(turn, menu_handler_.gamedata());
+	tod_man.set_turn(turn, menu_handler_.gamedata());
 
 	menu_handler_.gui_->new_turn();
 	menu_handler_.gui_->redraw_everything();
@@ -3047,7 +3049,7 @@ void console_handler::do_turn()
 
 void console_handler::do_turn_limit()
 {
-	tod_manager& tod_man = *resources::tod_manager;
+	tod_manager& tod_man = menu_handler_.gamestate().tod_manager_;
 	int limit =
 		get_data().empty() ? -1 : lexical_cast_default<int>(get_data(), 1);
 	tod_man.set_number_of_turns(limit);
