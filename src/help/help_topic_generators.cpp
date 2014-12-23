@@ -117,13 +117,16 @@ std::string terrain_topic_generator::operator()() const {
 	std::stringstream ss;
 
 	if (!type_.icon_image().empty())
-	ss << "<img>src='images/buttons/icon-base-32.png~RC(magenta>" << type_.id()
+		ss << "<img>src='images/buttons/icon-base-32.png~RC(magenta>" << type_.id()
 			<< ")~BLIT("<< "terrain/" << type_.icon_image() << "_30.png)" << "'</img> ";
 
 	if (!type_.editor_image().empty())
 		ss << "<img>src='" << type_.editor_image() << "'</img> ";
 
-	ss << "\n\n" << type_.help_topic_text().str() << "\n";
+	if (!type_.help_topic_text().empty())
+		ss << "\n\n" << type_.help_topic_text().str() << "\n";
+	else
+		ss << "\n";
 
 	tdata_cache tdata = load_terrain_types_data();
 
