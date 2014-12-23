@@ -123,7 +123,7 @@ std::string terrain_topic_generator::operator()() const {
 	if (!type_.editor_image().empty())
 		ss << "<img>src='" << type_.editor_image() << "'</img> ";
 
-	ss << type_.help_topic_text().str() << "\n";
+	ss << "\n\n" << type_.help_topic_text().str() << "\n";
 
 	tdata_cache tdata = load_terrain_types_data();
 
