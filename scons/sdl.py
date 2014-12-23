@@ -142,6 +142,37 @@ def CheckPNG(context):
         context.Result("no")
         return False
 
+def CheckJPG(context):
+    test_program = '''
+    #include <SDL_image.h>
+    #include <stdlib.h>
+
+    int main(int argc, char **argv)
+    {
+            SDL_RWops *src;
+            char *testimage = "data/core/images/maps/background.jpg";
+
+            src = SDL_RWFromFile(testimage, "rb");
+            if (src == NULL) {
+                    exit(2);
+            }
+            exit(!IMG_isJPG(src));
+    }
+\n
+'''
+    context.Message("Checking for JPG support in SDL... ")
+    if context.env["host"]:
+        context.Result("n/a (cross-compile)")
+        return True
+    (result, output) = context.TryRun(test_program, ".c")
+    if result:
+        context.Result("yes")
+        return True
+    else:
+        context.Result("no")
+        return False
+
 config_checks = { 'CheckSDL' : CheckSDL,
                   'CheckOgg' : CheckOgg,
-                  'CheckPNG' : CheckPNG }
+                  'CheckPNG' : CheckPNG,
+                  'CheckJPG' : CheckJPG }
