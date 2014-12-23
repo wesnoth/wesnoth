@@ -27,6 +27,8 @@ Version 1.12.0+dev:
  * Units:
    * Assigned capitalized translatable names to Walking Corpse and Soulless
      variations (bug #22902).
+   * Hid alternate Great Wolf variation from help as it is identical to the
+     default variation stats-wise.
  * WML engine:
    * Fixed nested macros emitting incorrect bindings to the default 'wesnoth'
      textdomain at the end of a substitution instead of the parent textdomain,
