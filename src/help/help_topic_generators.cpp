@@ -158,11 +158,11 @@ std::string terrain_topic_generator::operator()() const {
 
 		ss << "\n";
 
-		ss << "\n" << N_("Movement properties: ");
+		ss << "\n" << _("Movement properties: ");
 		ss << print_behavior_description(underlying_mvt_terrains.begin(), underlying_mvt_terrains.end(), tdata) << "\n";
 
 		const t_translation::t_list& underlying_def_terrains = tdata->underlying_def_terrain(type_.number());
-		ss << "\n" << N_("Defense properties: ");
+		ss << "\n" << _("Defense properties: ");
 		ss << print_behavior_description(underlying_def_terrains.begin(), underlying_def_terrains.end(), tdata) << "\n";
 	}
 
