@@ -188,7 +188,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			return PROCESS_CONTINUE;
 		}
 
-		const team & tm = resources::gameboard->teams()[index];
+		assert(resources::gameboard);
+		const team & tm = resources::gameboard->teams().at(index);
 		const std::string &player = change["player"];
 		const bool was_local = tm.is_local();
 

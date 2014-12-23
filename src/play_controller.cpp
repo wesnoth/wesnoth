@@ -194,13 +194,15 @@ void play_controller::init(CVideo& video){
 	loadscreen::start_stage("load level");
 	recorder.set_skip(false);
 
-	LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks_) << std::endl;
-	whiteboard_manager_.reset(new wb::manager()),
-	resources::whiteboard = whiteboard_manager_;
-
+	{
 	LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks_) << std::endl;
-	gamestate_.init(ticks_, *this);
+	wb::manager * whiteboard = gamestate_.init(ticks_, *this);
 	resources::tunnels = gamestate_.pathfind_manager_.get();
+
+	LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks_) << std::endl;
+	whiteboard_manager_.reset(whiteboard),
+	resources::whiteboard = whiteboard_manager_;
+	}
 
 	// mouse_handler expects at least one team for linger mode to work.
 	if (gamestate_.board_.teams().empty()) end_level_data_.transient.linger_mode = false;

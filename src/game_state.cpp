@@ -126,7 +126,7 @@ void game_state::place_sides_in_preferred_locations()
 	}
 }
 
-void game_state::init(const int ticks, play_controller & pc)
+wb::manager * game_state::init(const int ticks, play_controller & pc)
 {
 	if (level_["modify_placing"].to_bool()) {
 		LOG_NG << "modifying placing..." << std::endl;
@@ -177,8 +177,12 @@ void game_state::init(const int ticks, play_controller & pc)
 
 	pathfind_manager_.reset(new pathfind::manager(level_));
 
+	wb::manager * whiteboard = new wb::manager();
+
 	lua_kernel_.reset(new game_lua_kernel(level_, NULL, *this, pc, *reports_));
-	events_manager_.reset(new game_events::manager(level_, game_events::t_context(lua_kernel_.get(), this, NULL, &gamedata_, &board_.units_, boost::bind(&wb::manager::on_gamestate_change, pc.get_whiteboard().get()), boost::bind(&play_controller::current_side, &pc))));
+	events_manager_.reset(new game_events::manager(level_, game_events::t_context(lua_kernel_.get(), this, NULL, &gamedata_, &board_.units_, boost::bind(&wb::manager::on_gamestate_change, whiteboard), boost::bind(&play_controller::current_side, &pc))));
+
+	return whiteboard;
 }
 
 void game_state::set_game_display(game_display * gd)

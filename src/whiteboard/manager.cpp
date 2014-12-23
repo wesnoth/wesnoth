@@ -635,6 +635,7 @@ void manager::process_network_data(config const& cfg)
 
 void manager::queue_net_cmd(size_t team_index, side_actions::net_cmd const& cmd)
 {
+	assert(team_index < net_buffer_.size());
 	net_buffer_[team_index].add_child("net_cmd",cmd);
 }
 

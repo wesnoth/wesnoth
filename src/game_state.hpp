@@ -33,6 +33,8 @@ namespace game_events { class manager; }
 
 namespace pathfind { class manager; }
 
+namespace wb { class manager; }
+
 class game_state : public filter_context
 {
 public:
@@ -53,7 +55,7 @@ public:
 
 	void place_sides_in_preferred_locations();
 
-	void init(int ticks, play_controller & );
+	wb::manager * init(int ticks, play_controller & );
 
 	void set_game_display(game_display *);
 
