@@ -1324,7 +1324,7 @@ public:
 
 			const t_translation::t_list& underlying_terrains = resources::game_map->underlying_mvt_terrain(type_.number());
 
-			ss << "\n" << N_("Base Terrain: ");
+			ss << "\n" << _("Base Terrain: ");
 
 			bool first = true;
 			BOOST_FOREACH(const t_translation::t_terrain& underlying_terrain, underlying_terrains) {
