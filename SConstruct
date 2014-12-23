@@ -357,7 +357,9 @@ if env["prereqs"]:
         conf.CheckSDL("SDL_mixer", require_version = '1.2.12') and \
         conf.CheckLib("vorbisfile") and \
         conf.CheckSDL("SDL_image", require_version = '1.2.0') and \
-        conf.CheckOgg() or Warning("Client prerequisites are not met. wesnoth, cutter and exploder cannot be built.")
+        conf.CheckOgg() and \
+        conf.CheckPNG() and \
+        conf.CheckJPG() or Warning("Client prerequisites are not met. wesnoth, cutter and exploder cannot be built.")
 
     have_X = False
     if have_client_prereqs:
