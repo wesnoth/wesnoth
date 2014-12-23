@@ -126,9 +126,13 @@ void tgame_cache_options::update_cache_size_display()
 		return;
 	}
 
-	size_label_->set_label(utils::si_string(filesystem::dir_size(cache_path_),
-											true,
-											_("unit_byte^B")));
+	const int size = filesystem::dir_size(cache_path_);
+
+	if(size < 0) {
+		size_label_->set_label(_("dir_size^Unknown"));
+	} else {
+		size_label_->set_label(utils::si_string(size, true, _("unit_byte^B")));
+	}
 }
 
 void tgame_cache_options::copy_to_clipboard_callback()
