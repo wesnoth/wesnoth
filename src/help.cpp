@@ -1331,8 +1331,13 @@ public:
 				const terrain_type& mvt_base = resources::game_map->get_terrain_info(underlying_terrain);
 
 				if (mvt_base.editor_name().empty()) continue;
-				if (!first) ss << ",";
-				else first = false;
+
+				if (!first) {
+					ss << ", ";
+				} else {
+					first = false;
+				}
+
 				ss << make_link(mvt_base.editor_name(), ".." + terrain_prefix + mvt_base.id());
 			}
 		}
