@@ -16,7 +16,8 @@
  *
  * This class is an abstract base class which represents a display context
  * (game map, units, and teams) together with a TOD manager. This, plus
- * a lua kernel (currently a singleton) is sufficient to evaluate filters.
+ * the game data (WML variables) and a lua kernel (currently a singleton)
+ * is sufficient to evaluate filters.
  *
  **/
 
@@ -27,6 +28,8 @@
 
 class display_context;
 class tod_manager;
+class game_data;
+class game_lua_kernel;
 
 class filter_context {
 public:
@@ -34,6 +37,8 @@ public:
 
 	virtual const display_context & get_disp_context() const = 0;
 	virtual const tod_manager & get_tod_man() const = 0;
+	virtual const game_data * get_game_data() const = 0;
+	virtual game_lua_kernel * get_lua_kernel() const = 0;
 
 	// Dtor
 

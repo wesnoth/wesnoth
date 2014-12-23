@@ -169,6 +169,8 @@ public:
 	void change_display_context(const display_context * dc);
 	const display_context & get_disp_context() const { return *dc_; }
 	virtual const tod_manager & get_tod_man() const; //!< This is implemented properly in game_display. The display:: impl could be pure virtual here but we decide not to.
+	virtual const game_data * get_game_data() const { return NULL; }
+	virtual game_lua_kernel * get_lua_kernel() const { return NULL; } //!< TODO: display should not work as a filter context, this was only done for expedience so that the unit animation code can have a convenient and correct filter context readily available. a more correct solution is most likely to pass it a filter context from unit_animator when it needs to be matched. (it's not possible to store filter contexts with animations, because animations are cached across scenarios.) Note that after these lines which return NULL, unit filters used in animations will not be able to make use of wml variables or lua scripting (but the latter was a bad idea anyways because it would be slow to constantly recompile the script.)
 
 	void reset_halo_manager();
 	void reset_halo_manager(halo::manager & hm);

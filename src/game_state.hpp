@@ -61,6 +61,8 @@ public:
 
 	virtual const display_context & get_disp_context() const { return board_; }
 	virtual const tod_manager & get_tod_man() const { return tod_manager_; }
+	virtual const game_data * get_game_data() const { return &gamedata_; }
+	virtual game_lua_kernel * get_lua_kernel() const { return lua_kernel_.get(); }
 
 	/// Checks to see if a leader at @a leader_loc could recruit somewhere.
 	bool can_recruit_from(const map_location& leader_loc, int side) const;
