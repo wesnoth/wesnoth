@@ -508,7 +508,7 @@ void menu_handler::show_chat_log()
         config c;
         c["name"] = "prototype of chat log";
         gui2::tchat_log chat_log_dialog(vconfig(c),&recorder);
-        chat_log_dialog.show(resources::screen->video());
+        chat_log_dialog.show(gui_->video());
         //std::string text = recorder.build_chat_log();
         //gui::show_dialog(*gui_,NULL,_("Chat Log"),"",gui::CLOSE_ONLY,NULL,NULL,"",&text);
 
@@ -1166,7 +1166,7 @@ void menu_handler::kill_unit(mouse_handler& mousehandler)
 		if (i.valid()) {
 			unit_display::unit_die(loc, *i);
 		}
-		resources::screen->redraw_minimap();
+		gui_->redraw_minimap();
 		resources::game_events->pump().fire("die", loc, loc);
 		if (i.valid()) {
 			resources::units->erase(i);
@@ -3061,7 +3061,7 @@ void console_handler::do_lua() {
 
 void console_handler::do_unsafe_lua()
 {
-	if (gui2::show_message(resources::screen->video(), _("Unsafe Lua scripts."),
+	if (gui2::show_message(menu_handler_.gui_->video(), _("Unsafe Lua scripts."),
 		_("You are about to open a security breach in Wesnoth. Are you sure you want to continue? If you have downloaded add-ons, do not click 'ok'! They would instantly take over your computer. You have been warned."),
 		gui2::tmessage::ok_cancel_buttons) == gui2::twindow::OK)
 	{
@@ -3127,19 +3127,19 @@ void console_handler::do_show_var() {
 void console_handler::do_inspect() {
 	vconfig cfg = vconfig::empty_vconfig();
 	gui2::tgamestate_inspector inspect_dialog(cfg);
-	inspect_dialog.show(resources::screen->video());
+	inspect_dialog.show(menu_handler_.gui_->video());
 }
 
 void console_handler::do_control_dialog()
 {
 	gui2::tmp_change_control mp_change_control(&menu_handler_);
-	mp_change_control.show(resources::screen->video());
+	mp_change_control.show(menu_handler_.gui_->video());
 }
 
 void console_handler::do_manage() {
 	config cfg;
 	gui2::tdata_manage manager;
-	manager.show(resources::screen->video());
+	manager.show(menu_handler_.gui_->video());
 }
 
 void console_handler::do_unit() {
