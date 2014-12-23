@@ -1801,32 +1801,6 @@ WML_HANDLER_FUNCTION(set_global_variable,/**/,pcfg)
 		verify_and_set_global_variable(pcfg);
 }
 
-/// Setting of menu items
-WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
-{
-	/*
-	   [set_menu_item]
-	   id=test1
-	   image="buttons/group_all.png"
-	   description="Summon Troll"
-	   [show_if]
-	   [not]
-	   [have_unit]
-	   x,y=$x1,$y1
-	   [/have_unit]
-	   [/not]
-	   [/show_if]
-	   [filter_location]
-	   [/filter_location]
-	   [command]
-	   {LOYAL_UNIT $side_number (Troll) $x1 $y1 (Myname) ( _ "Myname")}
-	   [/command]
-	   [/set_menu_item]
-	   */
-	std::string id = cfg["id"];
-	resources::gamedata->get_wml_menu_items().set_item(id, cfg);
-}
-
 WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 {
 	game_data *gameinfo = resources::gamedata;

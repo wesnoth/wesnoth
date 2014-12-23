@@ -105,6 +105,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_extract_unit(lua_State *L);
 	int intf_find_vacant_tile(lua_State *L);
 	int intf_float_label(lua_State *L);
+	int intf_set_menu_item(lua_State *L);
 	int intf_simulate_combat(lua_State *L);
 	int intf_scroll_to_tile(lua_State *L);
 	int intf_select_hex(lua_State *L);
