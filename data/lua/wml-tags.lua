@@ -1363,6 +1363,15 @@ function wml_actions.end_turn(cfg)
 	wesnoth.end_turn()
 end
 
+function wml_actions.event(cfg)
+	local remove = cfg.remove
+	if remove then
+		wesnoth.remove_event_handler(cfg.id)
+	else
+		wesnoth.add_event_handler(cfg)
+	end
+end
+
 function wml_actions.label(cfg)
 	wesnoth.label(cfg)
 end

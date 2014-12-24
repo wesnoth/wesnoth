@@ -51,6 +51,7 @@
 #include "game_display.hpp"             // for game_display
 #include "game_errors.hpp"              // for game_error
 #include "game_events/conditional_wml.hpp"  // for conditional_passed
+#include "game_events/manager.hpp"	// for add_event_handler
 #include "game_events/pump.hpp"         // for queued_event
 #include "game_preferences.hpp"         // for encountered_units
 #include "image.hpp"                    // for get_image, locator
@@ -2729,6 +2730,26 @@ int game_lua_kernel::intf_remove_tile_overlay(lua_State *L)
 	return 0;
 }
 
+/// Adding new events
+int game_lua_kernel::intf_add_event(lua_State *L)
+{
+	vconfig cfg(luaW_checkvconfig(L, 1));
+	game_events::manager & man = *game_state_.events_manager_;
+
+	if (!cfg["delayed_variable_substitution"].to_bool(true)) {
+		man.add_event_handler(cfg.get_parsed_config());
+	} else {
+		man.add_event_handler(cfg.get_config());
+	}
+	return 0;
+}
+
+int game_lua_kernel::intf_remove_event(lua_State *L)
+{
+	game_state_.events_manager_->remove_event_handler(luaL_checkstring(L, 1));
+	return 0;
+}
+
 int game_lua_kernel::intf_color_adjust(lua_State *L)
 {
 	if (game_display_) {
@@ -3219,6 +3240,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ NULL, NULL }
 	};
 	lua_cpp::Reg const cpp_callbacks[] = {
+		{ "add_event_handler",		boost::bind(&game_lua_kernel::intf_add_event, this, _1)				},
 		{ "add_tile_overlay",		boost::bind(&game_lua_kernel::intf_add_tile_overlay, this, _1)			},
 		{ "allow_end_turn",		boost::bind(&game_lua_kernel::intf_allow_end_turn, this, _1)			},
 		{ "allow_undo",			boost::bind(&game_lua_kernel::intf_allow_undo, this, _1)			},
@@ -3264,6 +3286,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "put_recall_unit",		boost::bind(&game_lua_kernel::intf_put_recall_unit, this, _1)			},
 		{ "put_unit",			boost::bind(&game_lua_kernel::intf_put_unit, this, _1)				},
 		{ "redraw",			boost::bind(&game_lua_kernel::intf_redraw, this, _1)				},
+		{ "remove_event_handler",	boost::bind(&game_lua_kernel::intf_remove_event, this, _1)			},
 		{ "remove_shroud",		boost::bind(&game_lua_kernel::intf_shroud_op, this, _1, false)			},
 		{ "remove_tile_overlay",	boost::bind(&game_lua_kernel::intf_remove_tile_overlay, this, _1)		},
 		{ "replace_schedule",		boost::bind(&game_lua_kernel::intf_replace_schedule, this, _1)			},

@@ -670,19 +670,6 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 	}
 }
 
-/// Adding new events
-WML_HANDLER_FUNCTION(event, /*event_info*/, cfg)
-{
-	assert(resources::game_events);
-	if (cfg["remove"].to_bool(false)) {
-		resources::game_events->remove_event_handler(cfg["id"]);
-	} else if (!cfg["delayed_variable_substitution"].to_bool(true)) {
-		resources::game_events->add_event_handler(cfg.get_parsed_config());
-	} else {
-		resources::game_events->add_event_handler(cfg.get_config());
-	}
-}
-
 /// Experimental data persistence
 /// @todo Finish experimenting.
 WML_HANDLER_FUNCTION(get_global_variable,/**/,pcfg)

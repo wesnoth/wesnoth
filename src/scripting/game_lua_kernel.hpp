@@ -124,6 +124,8 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_get_sides(lua_State* L);
 	int intf_add_tile_overlay(lua_State *L);
 	int intf_remove_tile_overlay(lua_State *L);
+	int intf_add_event(lua_State *L);
+	int intf_remove_event(lua_State *L);
 	int intf_color_adjust(lua_State *L);
 	int intf_delay(lua_State *L);
 	int intf_label(lua_State *L);
