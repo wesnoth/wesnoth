@@ -555,19 +555,6 @@ WML_HANDLER_FUNCTION(clear_global_variable,/**/,pcfg)
 		verify_and_clear_global_variable(pcfg);
 }
 
-WML_HANDLER_FUNCTION(clear_menu_item, /*event_info*/, cfg)
-{
-	const std::string ids = cfg["id"].str();
-	BOOST_FOREACH(const std::string& id, utils::split(ids, ',', utils::STRIP_SPACES)) {
-		if(id.empty()) {
-			WRN_NG << "[clear_menu_item] has been given an empty id=, ignoring" << std::endl;
-			continue;
-		}
-
-		resources::gamedata->get_wml_menu_items().erase(id);
-	}
-}
-
 WML_HANDLER_FUNCTION(color_adjust, /*event_info*/, cfg)
 {
 	game_display &screen = *resources::screen;

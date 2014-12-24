@@ -1322,6 +1322,10 @@ function wml_actions.disallow_end_turn(cfg)
 	wesnoth.allow_end_turn(false)
 end
 
+function wml_actions.clear_menu_item(cfg)
+	wesnoth.clear_menu_item(cfg.id)
+end
+
 function wml_actions.set_menu_item(cfg)
 	wesnoth.set_menu_item(cfg.id, cfg)
 end

@@ -783,6 +783,20 @@ int game_lua_kernel::intf_set_menu_item(lua_State *L)
 	return 0;
 }
 
+int game_lua_kernel::intf_clear_menu_item(lua_State *L)
+{
+	std::string ids(luaL_checkstring(L, 1));
+	BOOST_FOREACH(const std::string& id, utils::split(ids, ',', utils::STRIP_SPACES)) {
+		if(id.empty()) {
+			WRN_LUA << "[clear_menu_item] has been given an empty id=, ignoring" << std::endl;
+			continue;
+		}
+
+		gamedata().get_wml_menu_items().erase(id);
+	}
+	return 0;
+}
+
 int game_lua_kernel::intf_shroud_op(lua_State *L, bool place_shroud)
 {
 	vconfig cfg = luaW_checkvconfig(L, 1);
@@ -3069,6 +3083,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "add_tile_overlay",		boost::bind(&game_lua_kernel::intf_add_tile_overlay, this, _1)			},
 		{ "allow_end_turn",		boost::bind(&game_lua_kernel::intf_allow_end_turn, this, _1)			},
 		{ "allow_undo",			boost::bind(&game_lua_kernel::intf_allow_undo, this, _1)			},
+		{ "clear_menu_item",		boost::bind(&game_lua_kernel::intf_clear_menu_item, this, _1)			},
 		{ "clear_messages",		boost::bind(&game_lua_kernel::intf_clear_messages, this, _1)			},
 		{ "delay",			boost::bind(&game_lua_kernel::intf_delay, this, _1)				},
 		{ "extract_unit",		boost::bind(&game_lua_kernel::intf_extract_unit, this, _1)			},
