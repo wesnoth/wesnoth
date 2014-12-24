@@ -487,12 +487,6 @@ wml_action::wml_action(const std::string & tag, handler function)
 	static void wml_func_##pname(const queued_event& pei, const vconfig& pcfg)
 
 
-WML_HANDLER_FUNCTION(animate_unit, event_info, cfg)
-{
-	const events::command_disabler disable_commands;
-	unit_display::wml_animation(cfg, event_info.loc1);
-}
-
 /// Experimental data persistence
 /// @todo Finish experimenting.
 WML_HANDLER_FUNCTION(clear_global_variable,/**/,pcfg)

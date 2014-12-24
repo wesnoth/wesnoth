@@ -494,6 +494,16 @@ static int impl_unit_variables_set(lua_State *L)
 	return 0;
 }
 
+int game_lua_kernel::intf_animate_unit(lua_State *L)
+{
+	// if (game_display_)
+	{
+		events::command_disabler disable_commands;
+		unit_display::wml_animation(luaW_checkvconfig(L, 1), get_event_info().loc1);
+	}
+	return 0;
+}
+
 int game_lua_kernel::intf_gamestate_inspector(lua_State *L)
 {
 	if (game_display_) {
