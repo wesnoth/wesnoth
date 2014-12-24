@@ -5,17 +5,17 @@ compiler:
     - clang
 
 env:
-    - BUILD=1
-    - BUILD=3
-    - BUILD=4
-    - BUILD=5
+    - BUILD="-O0"
+    - BUILD="-O2"
+    - BUILD="C++11 -O0"
+    - BUILD="translations"
 
 matrix:
   exclude:
     - compiler: gcc
-      env: BUILD=3
+      env: BUILD="-O2"
     - compiler: gcc
-      env: BUILD=5
+      env: BUILD="translations"
 
 before_install:
     - export TARGETS="wesnoth wesnothd campaignd test"
@@ -30,21 +30,21 @@ before_install:
     - export NLS=false
     - export CXX11=false
 
-    - if [ "$BUILD" = 3 ]; then export STRICT_COMPILATION=false; fi
-    - if [ "$BUILD" = 3 ]; then export EXTRA_FLAGS_RELEASE=""; fi
-    - if [ "$BUILD" = 3 ]; then export WML_TEST_TIME=20; fi
-    - if [ "$BUILD" = 3 ]; then export MP_TEST=true; fi
+    - if [ "$BUILD" == "-O0" ]; then export STRICT_COMPILATION=false; fi
+    - if [ "$BUILD" == "-O0" ]; then export EXTRA_FLAGS_RELEASE=""; fi
+    - if [ "$BUILD" == "-O0" ]; then export WML_TEST_TIME=20; fi
+    - if [ "$BUILD" == "-O0" ]; then export MP_TEST=true; fi
 
-    - if [ "$BUILD" = 4 ]; then export CXX11=true; fi
-    - if [ "$BUILD" = 4 ]; then export EXTRA_FLAGS_RELEASE="-O0 -Wno-literal-suffix -Wno-deprecated-declarations"; fi
-    - if [[ "$BUILD" = 4 ]] && [[ "$CXX" == "clang++" ]]; then export EXTRA_FLAGS_RELEASE="-O0 -Wno-literal-suffix -Wno-deprecated-declarations -Wno-deprecated-register"; fi
-    - if [ "$BUILD" = 4 ]; then export PLAY_TEST=false; fi
+    - if [ "$BUILD" == "C++11 -O0" ]; then export CXX11=true; fi
+    - if [ "$BUILD" == "C++11 -O0" ]; then export EXTRA_FLAGS_RELEASE="-O0 -Wno-literal-suffix -Wno-deprecated-declarations"; fi
+    - if [[ "$BUILD" == "C++11 -O0" ]] && [[ "$CXX" == "clang" ]]; then export EXTRA_FLAGS_RELEASE="-O0 -Wno-literal-suffix -Wno-deprecated-declarations -Wno-deprecated-register"; fi
+    - if [ "$BUILD" == "C++11 -O0" ]; then export PLAY_TEST=false; fi
 
-    - if [ "$BUILD" = 5 ]; then export NLS=true; fi
-    - if [ "$BUILD" = 5 ]; then export TARGETS="translations"; fi
-    - if [ "$BUILD" = 5 ]; then export WML_TESTS=false; fi
-    - if [ "$BUILD" = 5 ]; then export CPP_TESTS=false; fi
-    - if [ "$BUILD" = 5 ]; then export PLAY_TEST=false; fi
+    - if [ "$BUILD" == "translations" ]; then export NLS=true; fi
+    - if [ "$BUILD" == "translations" ]; then export TARGETS="translations"; fi
+    - if [ "$BUILD" == "translations" ]; then export WML_TESTS=false; fi
+    - if [ "$BUILD" == "translations" ]; then export CPP_TESTS=false; fi
+    - if [ "$BUILD" == "translations" ]; then export PLAY_TEST=false; fi
 
 install:
     - sudo add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu/ saucy main universe"
