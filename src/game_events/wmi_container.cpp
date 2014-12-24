@@ -133,7 +133,7 @@ std::vector<std::pair<boost::shared_ptr<const wml_menu_item>, std::string> > wmi
 /**
  * Initializes the implicit event handlers for inlined [command]s.
  */
-void wmi_container::init_handlers() const
+void wmi_container::init_handlers(const boost::shared_ptr<manager * const> & man) const
 {
 	// Applying default hotkeys here currently does not work because
 	// the hotkeys are reset by play_controler::init_managers() ->
@@ -149,7 +149,7 @@ void wmi_container::init_handlers() const
 	// Loop through each menu item.
 	BOOST_FOREACH( const item_ptr & wmi, *this ) {
 		// If this menu item has a [command], add a handler for it.
-		wmi->init_handler();
+		wmi->init_handler(man);
 		// Count the menu items (for the diagnostic message).
 		++wmi_count;
 	}

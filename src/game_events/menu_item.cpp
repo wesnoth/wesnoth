@@ -37,7 +37,6 @@
 #include "../preferences.hpp"
 #include "../replay.hpp"
 #include "../replay_helper.hpp"
-#include "../resources.hpp"
 #include "../synced_context.hpp"
 #include "../terrain_filter.hpp"
 
@@ -92,7 +91,8 @@ wml_menu_item::wml_menu_item(const std::string& id, const config & cfg) :
 		command_(cfg.child_or_empty("command")),
 		default_hotkey_(cfg.child_or_empty("default_hotkey")),
 		use_hotkey_(cfg["use_hotkey"].to_bool(true)),
-		use_wml_menu_(cfg["use_hotkey"].str() != "only")
+		use_wml_menu_(cfg["use_hotkey"].str() != "only"),
+		my_manager_()
 {
 }
 
@@ -146,7 +146,8 @@ wml_menu_item::wml_menu_item(const std::string& id, const vconfig & definition,
 		command_(original.command_),
 		default_hotkey_(original.default_hotkey_),
 		use_hotkey_(original.use_hotkey_),
-		use_wml_menu_(original.use_wml_menu_)
+		use_wml_menu_(original.use_wml_menu_),
+		my_manager_()
 {
 	// Apply WML.
 	update(definition);
@@ -221,24 +222,29 @@ void wml_menu_item::fire_event(const map_location & event_hex, const game_data &
 void wml_menu_item::finish_handler() const
 {
 	if ( !command_.empty() ) {
-		assert(resources::game_events);
-		resources::game_events->remove_event_handler(command_["id"]);
+		if (boost::shared_ptr<manager * const> man = my_manager_.lock()) {
+			(**man).remove_event_handler(command_["id"]);
+		} else {
+			LOG_NG << "Tried to finish handler for a wml menu item, but the manager could not be found.\n";
+		}
 	}
 
 	// Hotkey support
-	if ( use_hotkey_ )
+	if ( use_hotkey_ ) {
 		hotkey::remove_wml_hotkey(hotkey_id_);
+	}
 }
 
 /**
  * Initializes the implicit event handler for an inlined [command].
  */
-void wml_menu_item::init_handler() const
+void wml_menu_item::init_handler(const boost::shared_ptr<manager * const> & man) const
 {
 	// If this menu item has a [command], add a handler for it.
 	if ( !command_.empty() ) {
-		assert(resources::game_events);
-		resources::game_events->add_event_handler(command_, true);
+		assert(man);
+		my_manager_ = man;
+		(**man).add_event_handler(command_, true);
 	}
 
 	// Hotkey support
@@ -349,37 +355,39 @@ void wml_menu_item::update(const vconfig & vcfg)
  */
 void wml_menu_item::update_command(const config & new_command)
 {
-	// If there is an old command, remove it from the event handlers.
-	if ( !command_.empty() ) {
-		assert(resources::game_events);
-		manager::iteration iter(event_name_, *resources::game_events);
-		while ( handler_ptr hand = *iter ) {
-			if ( hand->is_menu_item() ) {
-				LOG_NG << "Removing command for " << event_name_ << ".\n";
-				resources::game_events->remove_event_handler(command_["id"].str());
+	if (boost::shared_ptr<manager * const> man = my_manager_.lock()) {
+		// If there is an old command, remove it from the event handlers.
+		if ( !command_.empty() ) {
+			manager::iteration iter(event_name_, **man);
+			while ( handler_ptr hand = *iter ) {
+				if ( hand->is_menu_item() ) {
+					LOG_NG << "Removing command for " << event_name_ << ".\n";
+					(**man).remove_event_handler(command_["id"].str());
+				}
+				++iter;
 			}
-			++iter;
 		}
-	}
 
-	// Update our stored command.
-	if ( new_command.empty() )
-		command_.clear();
-	else {
-		command_ = new_command;
+		// Update our stored command.
+		if ( new_command.empty() )
+			command_.clear();
+		else {
+			command_ = new_command;
 
-		// Set some fields required by event processing.
-		config::attribute_value & event_id = command_["id"];
-		if ( event_id.empty() && !item_id_.empty() ) {
-			event_id = item_id_;
+			// Set some fields required by event processing.
+			config::attribute_value & event_id = command_["id"];
+			if ( event_id.empty() && !item_id_.empty() ) {
+				event_id = item_id_;
+			}
+			command_["name"] = event_name_;
+			command_["first_time_only"] = false;
+
+			// Register the event.
+			LOG_NG << "Setting command for " << event_name_ << " to:\n" << command_;
+			(**man).add_event_handler(command_, true);
 		}
-		command_["name"] = event_name_;
-		command_["first_time_only"] = false;
-
-		// Register the event.
-		LOG_NG << "Setting command for " << event_name_ << " to:\n" << command_;
-		assert(resources::game_events);
-		resources::game_events->add_event_handler(command_, true);
+	} else {
+		ERR_NG << "Tried to set a command for a menu item, but the manager could not be found\n";
 	}
 }
 

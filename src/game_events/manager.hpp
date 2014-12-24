@@ -115,6 +115,7 @@ namespace game_events {
 
 		boost::scoped_ptr<game_events::t_pump> pump_;
 		boost::shared_ptr<t_context> resources_;
+		boost::shared_ptr<manager* const> me_;
 
 	public:
 		/// Note that references will be maintained,
