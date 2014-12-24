@@ -1350,3 +1350,7 @@ end
 function wml_actions.replace_schedule(cfg)
 	wesnoth.replace_schedule(cfg)
 end
+
+function wml_actions.scroll(cfg)
+	wesnoth.scroll(cfg)
+end
