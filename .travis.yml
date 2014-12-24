@@ -37,7 +37,7 @@ before_install:
 
     - if [ "$BUILD" = 4 ]; then export CXX11=true; fi
     - if [ "$BUILD" = 4 ]; then export EXTRA_FLAGS_RELEASE="-O0 -Wno-literal-suffix -Wno-deprecated-declarations"; fi
-    - if [ "$BUILD" = 4 && "$CXX" == "clang++" ]; then export EXTRA_FLAGS_RELEASE="-O0 -Wno-literal-suffix -Wno-deprecated-declarations -Wno-deprecated-register"; fi
+    - if [[ "$BUILD" = 4 ]] && [[ "$CXX" == "clang++" ]]; then export EXTRA_FLAGS_RELEASE="-O0 -Wno-literal-suffix -Wno-deprecated-declarations -Wno-deprecated-register"; fi
     - if [ "$BUILD" = 4 ]; then export PLAY_TEST=false; fi
 
     - if [ "$BUILD" = 5 ]; then export NLS=true; fi
