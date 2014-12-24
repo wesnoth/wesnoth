@@ -51,6 +51,7 @@
 #include "game_display.hpp"             // for game_display
 #include "game_errors.hpp"              // for game_error
 #include "game_events/conditional_wml.hpp"  // for conditional_passed
+#include "game_events/entity_location.hpp"
 #include "game_events/manager.hpp"	// for add_event_handler
 #include "game_events/pump.hpp"         // for queued_event
 #include "game_preferences.hpp"         // for encountered_units
@@ -90,6 +91,7 @@
 #include "tstring.hpp"                  // for t_string, operator+
 #include "unit.hpp"                     // for unit, intrusive_ptr_add_ref, etc
 #include "unit_animation_component.hpp"  // for unit_animation_component
+#include "unit_display.hpp"
 #include "unit_filter.hpp"
 #include "unit_map.hpp"  // for unit_map, etc
 #include "unit_ptr.hpp"                 // for unit_const_ptr, unit_ptr
@@ -2959,6 +2961,166 @@ int game_lua_kernel::intf_delay(lua_State *L)
 	return 0;
 }
 
+namespace { // Types
+
+	class recursion_preventer {
+		typedef std::map<map_location, int> t_counter;
+		static t_counter counter_;
+		static const int max_recursion = 10;
+
+		map_location loc_;
+		bool too_many_recursions_;
+
+		public:
+		recursion_preventer(map_location& loc) :
+			loc_(loc),
+			too_many_recursions_(false)
+		{
+			t_counter::iterator inserted = counter_.insert(std::make_pair(loc_, 0)).first;
+			++inserted->second;
+			too_many_recursions_ = inserted->second >= max_recursion;
+		}
+		~recursion_preventer()
+		{
+			t_counter::iterator itor = counter_.find(loc_);
+			if (--itor->second == 0)
+			{
+				counter_.erase(itor);
+			}
+		}
+		bool too_many_recursions() const
+		{
+			return too_many_recursions_;
+		}
+	};
+	recursion_preventer::t_counter recursion_preventer::counter_;
+	typedef boost::scoped_ptr<recursion_preventer> recursion_preventer_ptr;
+} // end anonymouse namespace (types)
+
+int game_lua_kernel::intf_kill(lua_State *L)
+{
+	vconfig cfg(luaW_checkvconfig(L, 1));
+
+	const game_events::queued_event &event_info = *queued_events_.top();
+
+	size_t number_killed = 0;
+
+	bool secondary_unit = cfg.has_child("secondary_unit");
+	game_events::entity_location killer_loc(map_location(0, 0));
+	if(cfg["fire_event"].to_bool() && secondary_unit)
+	{
+		secondary_unit = false;
+		const unit_filter ufilt(cfg.child("secondary_unit"), &game_state_);
+		for(unit_map::const_unit_iterator unit = units().begin(); unit; ++unit) {
+				if ( ufilt( *unit) )
+				{
+					killer_loc = game_events::entity_location(*unit);
+					secondary_unit = true;
+					break;
+				}
+		}
+		if(!secondary_unit) {
+			WRN_LUA << "failed to match [secondary_unit] in [kill] with a single on-board unit" << std::endl;
+		}
+	}
+
+	//Find all the dead units first, because firing events ruins unit_map iteration
+	std::vector<unit *> dead_men_walking;
+	const unit_filter ufilt(cfg, &game_state_);
+	BOOST_FOREACH(unit & u, units()){
+		if ( ufilt(u) ) {
+			dead_men_walking.push_back(&u);
+		}
+	}
+
+	BOOST_FOREACH(unit * un, dead_men_walking) {
+		map_location loc(un->get_location());
+		bool fire_event = false;
+		game_events::entity_location death_loc(*un);
+		if(!secondary_unit) {
+			killer_loc = game_events::entity_location(*un);
+		}
+
+		if (cfg["fire_event"].to_bool())
+			{
+				// Prevent infinite recursion of 'die' events
+				fire_event = true;
+				recursion_preventer_ptr recursion_prevent;
+
+				if (event_info.loc1 == death_loc && (event_info.name == "die" || event_info.name == "last breath"))
+					{
+						recursion_prevent.reset(new recursion_preventer(death_loc));
+
+						if(recursion_prevent->too_many_recursions())
+							{
+								fire_event = false;
+
+								ERR_LUA << "tried to fire 'die' or 'last breath' event on primary_unit inside its own 'die' or 'last breath' event with 'first_time_only' set to false!" << std::endl;
+							}
+					}
+			}
+		if (fire_event) {
+			play_controller_.pump().fire("last breath", death_loc, killer_loc);
+		}
+
+		// Visual consequences of the kill.
+		if (game_display_) {
+			if (cfg["animate"].to_bool()) {
+				game_display_->scroll_to_tile(loc);
+				if (unit_map::iterator iun = units().find(loc)) {
+					unit_display::unit_die(loc, *iun);
+				}
+			} else {
+				// Make sure the unit gets (fully) cleaned off the screen.
+				game_display_->invalidate(loc);
+				if (unit_map::iterator iun = units().find(loc)) {
+					iun->anim_comp().invalidate(*game_display_);
+				}
+			}
+			game_display_->redraw_minimap();
+		}
+
+		if (fire_event) {
+			play_controller_.pump().fire("die", death_loc, killer_loc);
+			unit_map::iterator iun = units().find(death_loc);
+			if ( death_loc.matches_unit(iun) ) {
+				units().erase(iun);
+			}
+		}
+		else units().erase(loc);
+
+		++number_killed;
+	}
+
+	// If the filter doesn't contain positional information,
+	// then it may match units on all recall lists.
+	const config::attribute_value cfg_x = cfg["x"];
+	const config::attribute_value cfg_y = cfg["y"];
+	if((cfg_x.empty() || cfg_x == "recall")
+	&& (cfg_y.empty() || cfg_y == "recall"))
+	{
+		const unit_filter ufilt(cfg, &game_state_);
+		//remove the unit from the corresponding team's recall list
+		for(std::vector<team>::iterator pi = teams().begin();
+				pi!=teams().end(); ++pi)
+		{
+			for(std::vector<unit_ptr>::iterator j = pi->recall_list().begin(); j != pi->recall_list().end();) { //TODO: This block is really messy, cleanup somehow...
+				scoped_recall_unit auto_store("this_unit", pi->save_id(), j - pi->recall_list().begin());
+				if (ufilt( *(*j), map_location() )) {
+					j = pi->recall_list().erase(j);
+					++number_killed;
+				} else {
+					++j;
+				}
+			}
+		}
+	}
+
+	lua_pushinteger(L, number_killed);
+
+	return 1;
+}
+
 int game_lua_kernel::intf_label(lua_State *L)
 {
 	if (game_display_) {
@@ -3456,6 +3618,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "get_displayed_unit",		boost::bind(&game_lua_kernel::intf_get_displayed_unit, this, _1)		},
 		{ "highlight_hex",		boost::bind(&game_lua_kernel::intf_highlight_hex, this, _1)			},
 		{ "is_enemy",			boost::bind(&game_lua_kernel::intf_is_enemy, this, _1)				},
+		{ "kill",			boost::bind(&game_lua_kernel::intf_kill, this, _1)				},
 		{ "label",			boost::bind(&game_lua_kernel::intf_label, this, _1)				},
 		{ "lock_view",			boost::bind(&game_lua_kernel::intf_lock_view, this, _1)				},
 		{ "match_location",		boost::bind(&game_lua_kernel::intf_match_location, this, _1)			},

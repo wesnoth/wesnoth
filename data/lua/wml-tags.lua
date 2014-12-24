@@ -1376,6 +1376,10 @@ function wml_actions.inspect(cfg)
 	wesnoth.gamestate_inspector(cfg)
 end
 
+function wml_actions.kill(cfg)
+	wesnoth.kill(cfg)
+end
+
 function wml_actions.label(cfg)
 	wesnoth.label(cfg)
 end
