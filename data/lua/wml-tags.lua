@@ -1310,6 +1310,18 @@ function wml_actions.full_heal(cfg)
 	end
 end
 
+function wml_actions.allow_undo(cfg)
+	wesnoth.allow_undo()
+end
+
+function wml_actions.allow_end_turn(cfg)
+	wesnoth.allow_end_turn(true)
+end
+
+function wml_actions.disallow_end_turn(cfg)
+	wesnoth.allow_end_turn(false)
+end
+
 function wml_actions.set_menu_item(cfg)
 	wesnoth.set_menu_item(cfg.id, cfg)
 end

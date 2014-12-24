@@ -541,17 +541,6 @@ wml_action::wml_action(const std::string & tag, handler function)
 	static void wml_func_##pname(const queued_event& pei, const vconfig& pcfg)
 
 
-WML_HANDLER_FUNCTION(allow_end_turn, /*event_info*/, /*cfg*/)
-{
-	resources::gamedata->set_allow_end_turn(true);
-}
-
-/// Allow undo sets the flag saying whether the event has mutated the game to false.
-WML_HANDLER_FUNCTION(allow_undo,/*event_info*/,/*cfg*/)
-{
-	resources::game_events->pump().context_mutated(false);
-}
-
 WML_HANDLER_FUNCTION(animate_unit, event_info, cfg)
 {
 	const events::command_disabler disable_commands;
@@ -591,11 +580,6 @@ WML_HANDLER_FUNCTION(color_adjust, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(deprecated_message, /*event_info*/, cfg)
 {
 	handle_deprecated_message( cfg.get_parsed_config() );
-}
-
-WML_HANDLER_FUNCTION(disallow_end_turn, /*event_info*/, /*cfg*/)
-{
-	resources::gamedata->set_allow_end_turn(false);
 }
 
 static void on_replay_error(const std::string& message, bool /*b*/)

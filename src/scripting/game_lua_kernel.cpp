@@ -2920,6 +2920,20 @@ static int intf_debug_ai(lua_State *L)
 	return 1;
 }
 
+/// Allow undo sets the flag saying whether the event has mutated the game to false.
+int game_lua_kernel::intf_allow_end_turn(lua_State * L)
+{
+	gamedata().set_allow_end_turn(lua_toboolean(L, 1));
+	return 0;
+}
+
+/// Allow undo sets the flag saying whether the event has mutated the game to false.
+int game_lua_kernel::intf_allow_undo(lua_State *)
+{
+	play_controller_.pump().context_mutated(false);
+	return 0;
+}
+
 namespace {
 	struct lua_report_generator : reports::generator
 	{
@@ -3053,6 +3067,8 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 	};
 	lua_cpp::Reg const cpp_callbacks[] = {
 		{ "add_tile_overlay",		boost::bind(&game_lua_kernel::intf_add_tile_overlay, this, _1)			},
+		{ "allow_end_turn",		boost::bind(&game_lua_kernel::intf_allow_end_turn, this, _1)			},
+		{ "allow_undo",			boost::bind(&game_lua_kernel::intf_allow_undo, this, _1)			},
 		{ "clear_messages",		boost::bind(&game_lua_kernel::intf_clear_messages, this, _1)			},
 		{ "delay",			boost::bind(&game_lua_kernel::intf_delay, this, _1)				},
 		{ "extract_unit",		boost::bind(&game_lua_kernel::intf_extract_unit, this, _1)			},

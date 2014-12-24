@@ -70,6 +70,8 @@ class game_lua_kernel : public lua_kernel_base
 	friend class game_config_manager; // to allow it to call extract_preload_scripts
 
 	// Private lua callbacks
+	int intf_allow_end_turn(lua_State *);
+	int intf_allow_undo(lua_State *);
 	int intf_get_unit(lua_State *);
 	int intf_get_units(lua_State *);
 	int intf_get_displayed_unit(lua_State*);
