@@ -396,8 +396,13 @@ namespace game_config {
 			}
 
 			LOG_CACHE << "delete_cache_files(): deleting " << path << '\n';
-			if(!filesystem::delete_directory(path)) {
-				ERR_CACHE << "delete_cache_files(): could not delete "
+
+			if(filesystem::is_directory(path) && !filesystem::delete_directory(path)) {
+				ERR_CACHE << "delete_cache_files(): could not delete dir "
+						  << path << '\n';
+				status = false;
+			} else if(!filesystem::delete_file(path)) {
+				ERR_CACHE << "delete_cache_files(): could not delete file "
 						  << path << '\n';
 				status = false;
 			}
