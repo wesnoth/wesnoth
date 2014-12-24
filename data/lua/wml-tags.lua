@@ -1354,3 +1354,14 @@ end
 function wml_actions.scroll(cfg)
 	wesnoth.scroll(cfg)
 end
+
+function wml_actions.redraw(cfg)
+	local clear_shroud = cfg.clear_shroud
+
+	-- Backwards compat, the behavior of the tag was to clear shroud in case that side= is given.
+	if cfg.clear_shroud == nil and cfg.side ~= nil then
+		clear_shroud = true
+	end
+
+	wesnoth.redraw(cfg, clear_shroud)
+end

@@ -1532,32 +1532,6 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 	LOG_WML << "A [recall] tag with the following content failed:\n" << cfg.get_config().debug();
 }
 
-WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
-{
-	game_display &screen = *resources::screen;
-
-	const config::attribute_value clear_shroud_av = cfg["clear_shroud"];
-	const config::attribute_value side = cfg["side"];
-	bool clear_shroud_bool = clear_shroud_av.to_bool(false);
-	if(clear_shroud_av.blank() && !side.blank()) {
-		//Backwards compat, behavior of the tag was to clear shroud in case that side= is given.
-		clear_shroud_bool = true;
-	}
-
-	if (clear_shroud_bool) {
-		side_filter filter(cfg, resources::filter_con);
-		BOOST_FOREACH(const int side, filter.get_teams()){
-			actions::clear_shroud(side);
-		}
-		screen.recalculate_minimap();
-	}
-	bool result = screen.maybe_rebuild();
-	if (!result) {
-		screen.invalidate_all();
-	}
-	screen.draw(true,true);
-}
-
 WML_HANDLER_FUNCTION(remove_sound_source, /*event_info*/, cfg)
 {
 	resources::soundsources->remove(cfg["id"]);

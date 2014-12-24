@@ -28,6 +28,7 @@
 #include "global.hpp"
 
 #include "actions/attack.hpp"           // for battle_context_unit_stats, etc
+#include "actions/vision.hpp"		// for clear_shroud
 #include "ai/composite/ai.hpp"          // for ai_composite
 #include "ai/composite/component.hpp"   // for component, etc
 #include "ai/composite/contexts.hpp"    // for ai_context
@@ -2738,6 +2739,31 @@ int game_lua_kernel::intf_delay(lua_State *L)
 	return 0;
 }
 
+int game_lua_kernel::intf_redraw(lua_State *L)
+{
+	if (game_display_) {
+		game_display & screen = *game_display_;
+
+		vconfig cfg(luaW_checkvconfig(L, 1));
+		bool clear_shroud(lua_toboolean(L, 2));
+
+		if (clear_shroud) {
+			side_filter filter(cfg, &game_state_);
+			BOOST_FOREACH(const int side, filter.get_teams()){
+				actions::clear_shroud(side);
+			}
+			screen.recalculate_minimap();
+		}
+
+		bool result = screen.maybe_rebuild();
+		if (!result) {
+			screen.invalidate_all();
+		}
+		screen.draw(true,true);
+	}
+	return 0;
+}
+
 /**
  * Gets the dimension of an image.
  * - Arg 1: string.
@@ -3201,6 +3227,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "place_shroud",		boost::bind(&game_lua_kernel::intf_shroud_op, this, _1, true)			},
 		{ "put_recall_unit",		boost::bind(&game_lua_kernel::intf_put_recall_unit, this, _1)			},
 		{ "put_unit",			boost::bind(&game_lua_kernel::intf_put_unit, this, _1)				},
+		{ "redraw",			boost::bind(&game_lua_kernel::intf_redraw, this, _1)				},
 		{ "remove_shroud",		boost::bind(&game_lua_kernel::intf_shroud_op, this, _1, false)			},
 		{ "remove_tile_overlay",	boost::bind(&game_lua_kernel::intf_remove_tile_overlay, this, _1)		},
 		{ "replace_schedule",		boost::bind(&game_lua_kernel::intf_replace_schedule, this, _1)			},
