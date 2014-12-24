@@ -138,6 +138,7 @@ void get_files_in_dir(const std::string &directory,
 	DIR* dir = opendir(directory.c_str());
 
 	if(dir == NULL) {
+		// Probably not a directory, let the caller deal with it.
 		return;
 	}
 
