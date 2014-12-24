@@ -63,6 +63,8 @@ class game_lua_kernel : public lua_kernel_base
 
 	std::stack<game_events::queued_event const * > queued_events_;
 
+	const game_events::queued_event & get_event_info();
+
 	static void extract_preload_scripts(config const & game_config);
 	static std::vector<config> preload_scripts;
 	static config preload_config;
@@ -74,6 +76,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_allow_undo(lua_State *);
 	int intf_add_time_area(lua_State *);
 	int intf_remove_time_area(lua_State *);
+	int intf_animate_unit(lua_State *);
 	int intf_gamestate_inspector(lua_State *);
 	int intf_get_unit(lua_State *);
 	int intf_get_units(lua_State *);
@@ -105,6 +108,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_find_reach(lua_State *L);
 	int intf_find_cost_map(lua_State *L);
 	int intf_message(lua_State *L);
+	int intf_open_help(lua_State *L);
 	int intf_play_sound(lua_State *L);
 	int intf_put_unit(lua_State *L);
 	int intf_put_recall_unit(lua_State *L);

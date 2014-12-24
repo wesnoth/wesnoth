@@ -55,6 +55,7 @@
 #include "game_events/manager.hpp"	// for add_event_handler
 #include "game_events/pump.hpp"         // for queued_event
 #include "game_preferences.hpp"         // for encountered_units
+#include "help/help.hpp"
 #include "image.hpp"                    // for get_image, locator
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
 #include "lua/lauxlib.h"                // for luaL_checkinteger, etc
@@ -489,6 +490,16 @@ static int impl_unit_variables_set(lua_State *L)
 			// no break
 		default:
 			return luaL_typerror(L, 3, "WML scalar");
+	}
+	return 0;
+}
+
+int game_lua_kernel::intf_animate_unit(lua_State *L)
+{
+	// if (game_display_)
+	{
+		events::command_disabler disable_commands;
+		unit_display::wml_animation(luaW_checkvconfig(L, 1), get_event_info().loc1);
 	}
 	return 0;
 }
@@ -1400,7 +1411,7 @@ int game_lua_kernel::impl_current_get(lua_State *L)
 
 	if (strcmp(m, "event_context") == 0)
 	{
-		const game_events::queued_event &ev = *queued_events_.top();
+		const game_events::queued_event &ev = get_event_info();
 		config cfg;
 		cfg["name"] = ev.name;
 		if (const config &weapon = ev.data.child("first")) {
@@ -1440,6 +1451,14 @@ int game_lua_kernel::intf_message(lua_State *L)
 	}
 	lua_chat(h, m);
 	LOG_LUA << "Script says: \"" << m << "\"\n";
+	return 0;
+}
+
+int game_lua_kernel::intf_open_help(lua_State *L)
+{
+	if (game_display_) {
+		help::show_help(*game_display_, luaL_checkstring(L, 1));
+	}
 	return 0;
 }
 
@@ -3001,7 +3020,7 @@ int game_lua_kernel::intf_kill(lua_State *L)
 {
 	vconfig cfg(luaW_checkvconfig(L, 1));
 
-	const game_events::queued_event &event_info = *queued_events_.top();
+	const game_events::queued_event &event_info = get_event_info();
 
 	size_t number_killed = 0;
 
@@ -3544,6 +3563,10 @@ tod_manager & game_lua_kernel::tod_man() {
 	return game_state_.tod_manager_;
 }
 
+const game_events::queued_event & game_lua_kernel::get_event_info() {
+	return *queued_events_.top();
+}
+
 game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state & gs, play_controller & pc, reports & reports_object)
 	: lua_kernel_base(video)
 	, game_display_(NULL)
@@ -3626,6 +3649,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "match_unit",			boost::bind(&game_lua_kernel::intf_match_unit, this, _1)			},
 		{ "message",			boost::bind(&game_lua_kernel::intf_message, this, _1)				},
 		{ "modify_side",		boost::bind(&game_lua_kernel::intf_modify_side, this, _1)			},
+		{ "open_help",			boost::bind(&game_lua_kernel::intf_open_help, this, _1)				},
 		{ "play_sound",			boost::bind(&game_lua_kernel::intf_play_sound, this, _1)			},
 		{ "place_shroud",		boost::bind(&game_lua_kernel::intf_shroud_op, this, _1, true)			},
 		{ "put_recall_unit",		boost::bind(&game_lua_kernel::intf_put_recall_unit, this, _1)			},
@@ -4026,7 +4050,7 @@ int game_lua_kernel::cfun_wml_action(lua_State *L)
 		(lua_touserdata(L, lua_upvalueindex(2))); // refer to lua_cpp_function.hpp for the reason that this is upvalueindex(2) and not (1)
 
 	vconfig vcfg = luaW_checkvconfig(L, 1);
-	h(*queued_events_.top(), vcfg);
+	h(get_event_info(), vcfg);
 	return 0;
 }
 

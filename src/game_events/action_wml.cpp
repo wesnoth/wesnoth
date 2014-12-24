@@ -487,12 +487,6 @@ wml_action::wml_action(const std::string & tag, handler function)
 	static void wml_func_##pname(const queued_event& pei, const vconfig& pcfg)
 
 
-WML_HANDLER_FUNCTION(animate_unit, event_info, cfg)
-{
-	const events::command_disabler disable_commands;
-	unit_display::wml_animation(cfg, event_info.loc1);
-}
-
 /// Experimental data persistence
 /// @todo Finish experimenting.
 WML_HANDLER_FUNCTION(clear_global_variable,/**/,pcfg)
@@ -1039,13 +1033,6 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 	BOOST_FOREACH(const vconfig &cmd, cfg.get_children(command_type)) {
 		handle_event_commands(event_info, cmd);
 	}
-}
-
-WML_HANDLER_FUNCTION(open_help,  /*event_info*/, cfg)
-{
-	game_display &screen = *resources::screen;
-	t_string topic_id = cfg["topic"];
-	help::show_help(screen, topic_id.to_serialized());
 }
 
 WML_HANDLER_FUNCTION(print, /*event_info*/, cfg)

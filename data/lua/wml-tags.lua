@@ -1355,6 +1355,10 @@ function wml_actions.scroll(cfg)
 	wesnoth.scroll(cfg)
 end
 
+function wml_actions.animate_unit(cfg)
+	wesnoth.animate_unit(cfg)
+end
+
 function wml_actions.color_adjust(cfg)
 	wesnoth.color_adjust(cfg)
 end
@@ -1386,6 +1390,10 @@ end
 
 function wml_actions.modify_side(cfg)
 	wesnoth.modify_side(cfg)
+end
+
+function wml_actions.open_help(cfg)
+	wesnoth.open_help(cfg.topic)
 end
 
 function wml_actions.redraw(cfg)
