@@ -106,6 +106,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_find_vacant_tile(lua_State *L);
 	int intf_float_label(lua_State *L);
 	int intf_set_menu_item(lua_State *L);
+	int intf_shroud_op(lua_State *L, bool place_shroud);
 	int intf_simulate_combat(lua_State *L);
 	int intf_scroll_to_tile(lua_State *L);
 	int intf_select_hex(lua_State *L);
@@ -128,6 +129,7 @@ class game_lua_kernel : public lua_kernel_base
 	//private helpers
 	std::string synced_state();
 	void lua_chat(std::string const &caption, std::string const &msg);
+	std::vector<int> get_sides_vector(const vconfig& cfg);
 
 public:
 	game_lua_kernel(const config &, CVideo *, game_state &, play_controller &, reports &);

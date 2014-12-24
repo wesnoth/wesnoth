@@ -1313,3 +1313,11 @@ end
 function wml_actions.set_menu_item(cfg)
 	wesnoth.set_menu_item(cfg.id, cfg)
 end
+
+function wml_actions.place_shroud(cfg)
+	wesnoth.place_shroud(cfg)
+end
+
+function wml_actions.remove_shroud(cfg)
+	wesnoth.remove_shroud(cfg)
+end

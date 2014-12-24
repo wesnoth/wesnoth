@@ -150,6 +150,25 @@ void game_lua_kernel::lua_chat(std::string const &caption, std::string const &ms
 	}
 }
 
+/**
+ * Gets a vector of sides from side= attribute in a given config node.
+ * Promotes consistent behavior.
+ */
+std::vector<int> game_lua_kernel::get_sides_vector(const vconfig& cfg)
+{
+	const config::attribute_value sides = cfg["side"];
+	const vconfig &ssf = cfg.child("filter_side");
+
+	if (!ssf.null()) {
+		if(!sides.empty()) { WRN_LUA << "ignoring duplicate side filter information (inline side=)" << std::endl; }
+		side_filter filter(ssf, &game_state_);
+		return filter.get_teams();
+	}
+
+	side_filter filter(sides.str(), &game_state_);
+	return filter.get_teams();
+}
+
 
 namespace {
 	/**
@@ -763,6 +782,42 @@ int game_lua_kernel::intf_set_menu_item(lua_State *L)
 	gamedata().get_wml_menu_items().set_item(luaL_checkstring(L, 1), luaW_checkvconfig(L,2));
 	return 0;
 }
+
+int game_lua_kernel::intf_shroud_op(lua_State *L, bool place_shroud)
+{
+	vconfig cfg = luaW_checkvconfig(L, 1);
+
+	// Filter the sides.
+	std::vector<int> sides = get_sides_vector(cfg);
+	size_t index;
+
+	// Filter the locations.
+	std::set<map_location> locs;
+	const terrain_filter filter(cfg, &game_state_);
+	filter.get_locations(locs, true);
+
+	BOOST_FOREACH(const int &side_num, sides)
+	{
+		index = side_num - 1;
+		team &t = teams()[index];
+
+		BOOST_FOREACH(map_location const &loc, locs)
+		{
+			if (place_shroud) {
+				t.place_shroud(loc);
+			} else {
+				t.clear_shroud(loc);
+			}
+		}
+	}
+
+	game_display_->labels().recalculate_shroud();
+	game_display_->recalculate_minimap();
+	game_display_->invalidate_all();
+
+	return 0;
+}
+
 
 /**
  * Highlights the given location on the map.
@@ -3032,8 +3087,10 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "match_unit",			boost::bind(&game_lua_kernel::intf_match_unit, this, _1)			},
 		{ "message",			boost::bind(&game_lua_kernel::intf_message, this, _1)				},
 		{ "play_sound",			boost::bind(&game_lua_kernel::intf_play_sound, this, _1)			},
+		{ "place_shroud",		boost::bind(&game_lua_kernel::intf_shroud_op, this, _1, true)			},
 		{ "put_recall_unit",		boost::bind(&game_lua_kernel::intf_put_recall_unit, this, _1)			},
 		{ "put_unit",			boost::bind(&game_lua_kernel::intf_put_unit, this, _1)				},
+		{ "remove_shroud",		boost::bind(&game_lua_kernel::intf_shroud_op, this, _1, false)			},
 		{ "remove_tile_overlay",	boost::bind(&game_lua_kernel::intf_remove_tile_overlay, this, _1)		},
 		{ "scroll_to_tile",		boost::bind(&game_lua_kernel::intf_scroll_to_tile, this, _1)			},
 		{ "select_hex",			boost::bind(&game_lua_kernel::intf_select_hex, this, _1)			},

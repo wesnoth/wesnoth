@@ -472,37 +472,6 @@ namespace { // Support functions
 		resources::screen->invalidate_all();
 	}
 
-	void toggle_shroud(const bool remove, const vconfig& cfg)
-	{
-		// Filter the sides.
-		std::vector<int> sides = get_sides_vector(cfg);
-		size_t index;
-
-		// Filter the locations.
-		std::set<map_location> locs;
-		const terrain_filter filter(cfg, resources::filter_con);
-		filter.get_locations(locs, true);
-
-		BOOST_FOREACH(const int &side_num, sides)
-		{
-			index = side_num - 1;
-			team &t = (*resources::teams)[index];
-
-			BOOST_FOREACH(map_location const &loc, locs)
-			{
-				if (remove) {
-					t.clear_shroud(loc);
-				} else {
-					t.place_shroud(loc);
-				}
-			}
-		}
-
-		resources::screen->labels().recalculate_shroud();
-		resources::screen->recalculate_minimap();
-		resources::screen->invalidate_all();
-	}
-
 	void handle_event_commands(const queued_event& event_info, const vconfig &cfg) {
 		assert(resources::lua_kernel);
 		resources::lua_kernel->run_wml_action("command", cfg, event_info);
@@ -1482,11 +1451,6 @@ WML_HANDLER_FUNCTION(open_help,  /*event_info*/, cfg)
 	help::show_help(screen, topic_id.to_serialized());
 }
 
-WML_HANDLER_FUNCTION(place_shroud, /*event_info*/,cfg)
-{
-	toggle_shroud(false,cfg );
-}
-
 WML_HANDLER_FUNCTION(print, /*event_info*/, cfg)
 {
 	// Remove any old message.
@@ -1621,11 +1585,6 @@ WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 		screen.invalidate_all();
 	}
 	screen.draw(true,true);
-}
-
-WML_HANDLER_FUNCTION(remove_shroud, /*event_info*/, cfg)
-{
-	toggle_shroud(true,cfg);
 }
 
 WML_HANDLER_FUNCTION(remove_sound_source, /*event_info*/, cfg)
