@@ -6,7 +6,6 @@ compiler:
 
 env:
     - BUILD=1
-    - BUILD=2
     - BUILD=3
     - BUILD=4
     - BUILD=5
@@ -14,15 +13,9 @@ env:
 matrix:
   exclude:
     - compiler: gcc
-      env: BUILD=2
-    - compiler: gcc
       env: BUILD=3
     - compiler: gcc
       env: BUILD=5
-    - compiler: clang
-      env: BUILD=1
-    - compiler: clang
-      env: BUILD=4
 
 before_install:
     - export TARGETS="wesnoth wesnothd campaignd test"
