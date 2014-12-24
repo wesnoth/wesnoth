@@ -36,7 +36,6 @@
 #include "game_errors.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
-#include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/window.hpp"
@@ -732,12 +731,6 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 		if(animate) unit_display::unit_healing(*u, healers, heal_amount);
 		if(only_unit_at_loc1) return;
 	}
-}
-
-WML_HANDLER_FUNCTION(inspect, /*event_info*/, cfg)
-{
-	gui2::tgamestate_inspector inspect_dialog(cfg);
-	inspect_dialog.show(resources::screen->video());
 }
 
 WML_HANDLER_FUNCTION(kill, event_info, cfg)

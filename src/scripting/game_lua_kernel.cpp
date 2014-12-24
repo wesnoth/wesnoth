@@ -74,6 +74,7 @@
 #include "scripting/lua_api.hpp"        // for luaW_toboolean, etc
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
+#include "scripting/lua_gui2.hpp"	// for show_gamestate_inspector
 #include "scripting/lua_types.hpp"      // for getunitKey, dlgclbkKey, etc
 #include "sdl/utils.hpp"                // for surface
 #include "side_filter.hpp"              // for side_filter
@@ -486,6 +487,14 @@ static int impl_unit_variables_set(lua_State *L)
 			// no break
 		default:
 			return luaL_typerror(L, 3, "WML scalar");
+	}
+	return 0;
+}
+
+int game_lua_kernel::intf_gamestate_inspector(lua_State *L)
+{
+	if (game_display_) {
+		return lua_gui2::show_gamestate_inspector(game_display_->video(), luaW_checkvconfig(L, 1));
 	}
 	return 0;
 }

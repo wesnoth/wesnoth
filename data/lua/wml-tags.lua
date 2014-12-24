@@ -1372,6 +1372,10 @@ function wml_actions.event(cfg)
 	end
 end
 
+function wml_actions.inspect(cfg)
+	wesnoth.gamestate_inspector(cfg)
+end
+
 function wml_actions.label(cfg)
 	wesnoth.label(cfg)
 end
