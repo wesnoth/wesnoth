@@ -398,7 +398,7 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 
 		// Check that there's a unit at the target location
 		const unit_map::const_iterator target_unit = find_unit(loc);
-		bool target_eligible = target_unit;
+		bool target_eligible = target_unit.valid();
 		if (!target_eligible) return map_location();
 
 		// The player controlling this client must be an enemy of the target unit's side
