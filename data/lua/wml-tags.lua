@@ -1363,6 +1363,10 @@ function wml_actions.end_turn(cfg)
 	wesnoth.end_turn()
 end
 
+function wml_actions.label(cfg)
+	wesnoth.label(cfg)
+end
+
 function wml_actions.redraw(cfg)
 	local clear_shroud = cfg.clear_shroud
 

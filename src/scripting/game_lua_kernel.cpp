@@ -2757,6 +2757,21 @@ int game_lua_kernel::intf_delay(lua_State *L)
 	return 0;
 }
 
+int game_lua_kernel::intf_label(lua_State *L)
+{
+	if (game_display_) {
+		vconfig cfg(luaW_checkvconfig(L, 1));
+
+		game_display &screen = *game_display_;
+
+		terrain_label label(screen.labels(), cfg.get_config());
+
+		screen.labels().set_label(label.location(), label.text(), label.team_name(), label.color(),
+				label.visible_in_fog(), label.visible_in_shroud(), label.immutable(), label.tooltip());
+	}
+	return 0;
+}
+
 int game_lua_kernel::intf_redraw(lua_State *L)
 {
 	if (game_display_) {
@@ -3238,6 +3253,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "get_displayed_unit",		boost::bind(&game_lua_kernel::intf_get_displayed_unit, this, _1)		},
 		{ "highlight_hex",		boost::bind(&game_lua_kernel::intf_highlight_hex, this, _1)			},
 		{ "is_enemy",			boost::bind(&game_lua_kernel::intf_is_enemy, this, _1)				},
+		{ "label",			boost::bind(&game_lua_kernel::intf_label, this, _1)				},
 		{ "lock_view",			boost::bind(&game_lua_kernel::intf_lock_view, this, _1)				},
 		{ "match_location",		boost::bind(&game_lua_kernel::intf_match_location, this, _1)			},
 		{ "match_side",			boost::bind(&game_lua_kernel::intf_match_side, this, _1)			},
