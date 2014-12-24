@@ -121,6 +121,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_get_villages(lua_State *L);
 	int intf_match_location(lua_State *L);
 	int intf_match_side(lua_State *L);
+	int intf_modify_side(lua_State *L);
 	int intf_get_sides(lua_State* L);
 	int intf_add_tile_overlay(lua_State *L);
 	int intf_remove_tile_overlay(lua_State *L);

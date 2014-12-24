@@ -2588,6 +2588,178 @@ int game_lua_kernel::intf_match_side(lua_State *L)
 	return 1;
 }
 
+int game_lua_kernel::intf_modify_side(lua_State *L)
+{
+	vconfig cfg(luaW_checkvconfig(L, 1));
+
+	bool invalidate_screen = false;
+
+	std::string team_name = cfg["team_name"];
+	std::string user_team_name = cfg["user_team_name"];
+	std::string controller = cfg["controller"];
+	std::string defeat_condition = cfg["defeat_condition"];
+	std::string recruit_str = cfg["recruit"];
+	std::string shroud_data = cfg["shroud_data"];
+	std::string village_support = cfg["village_support"];
+	const config& parsed = cfg.get_parsed_config();
+	const config::const_child_itors &ai = parsed.child_range("ai");
+	std::string switch_ai = cfg["switch_ai"];
+
+	std::vector<int> sides = get_sides_vector(cfg);
+	size_t team_index;
+
+	BOOST_FOREACH(const int &side_num, sides)
+	{
+		team_index = side_num - 1;
+
+		team & tm = teams()[team_index];
+
+		LOG_LUA << "modifying side: " << side_num << "\n";
+		if(!team_name.empty()) {
+			LOG_LUA << "change side's team to team_name '" << team_name << "'\n";
+			tm.change_team(team_name,
+					user_team_name);
+		} else if(!user_team_name.empty()) {
+			LOG_LUA << "change side's user_team_name to '" << user_team_name << "'\n";
+			tm.change_team(tm.team_name(),
+					user_team_name);
+		}
+		// Modify recruit list (override)
+		if (!recruit_str.empty()) {
+			tm.set_recruits(utils::set_split(recruit_str));
+		}
+		// Modify income
+		config::attribute_value income = cfg["income"];
+		if (!income.empty()) {
+			tm.set_base_income(income.to_int() + game_config::base_income);
+		}
+		// Modify total gold
+		config::attribute_value gold = cfg["gold"];
+		if (!gold.empty()) {
+			tm.set_gold(gold);
+		}
+		// Set controller
+		if (!controller.empty()) {
+			tm.change_controller_by_wml(controller);
+		}
+		// Set defeat_condition
+		if (!defeat_condition.empty()) {
+			tm.set_defeat_condition_string(defeat_condition);
+		}
+		// Set shroud
+		config::attribute_value shroud = cfg["shroud"];
+		if (!shroud.empty()) {
+			tm.set_shroud(shroud.to_bool(true));
+			invalidate_screen = true;
+		}
+		// Reset shroud
+		if ( cfg["reset_maps"].to_bool(false) ) {
+			tm.reshroud();
+			invalidate_screen = true;
+		}
+		// Merge shroud data
+		if (!shroud_data.empty()) {
+			tm.merge_shroud_map_data(shroud_data);
+			invalidate_screen = true;
+		}
+		// Set whether team is hidden in status table
+		config::attribute_value hidden = cfg["hidden"];
+		if (!hidden.empty()) {
+			tm.set_hidden(hidden.to_bool(true));
+		}
+		// Set fog
+		config::attribute_value fog = cfg["fog"];
+		if (!fog.empty()) {
+			tm.set_fog(fog.to_bool(true));
+			invalidate_screen = true;
+		}
+		// Reset fog
+		if ( cfg["reset_view"].to_bool(false) ) {
+			tm.refog();
+			invalidate_screen = true;
+		}
+		// Set income per village
+		config::attribute_value village_gold = cfg["village_gold"];
+		if (!village_gold.empty()) {
+			tm.set_village_gold(village_gold);
+		}
+		// Set support (unit levels supported per village, for upkeep purposes)
+		if (!village_support.empty()) {
+			tm.set_village_support(lexical_cast_default<int>(village_support, game_config::village_support));
+		}
+		// Redeploy ai from location (this ignores current AI parameters)
+		if (!switch_ai.empty()) {
+			ai::manager::add_ai_for_side_from_file(side_num,switch_ai,true);
+		}
+		// Override AI parameters
+		if (ai.first != ai.second) {
+			ai::manager::modify_active_ai_config_old_for_side(side_num,ai);
+		}
+		// Change team color
+		config::attribute_value color = cfg["color"];
+		if(!color.empty()) {
+			tm.set_color(color);
+			invalidate_screen = true;
+		}
+		// Change flag imageset
+		config::attribute_value flag = cfg["flag"];
+		if(!flag.empty()) {
+			tm.set_flag(flag);
+			// Needed especially when map isn't animated.
+			invalidate_screen = true;
+		}
+		// If either the flag set or the team color changed, we need to
+		// rebuild the team's flag cache to reflect the changes. Note that
+		// this is not required for flag icons (used by the theme UI only).
+		if((!color.empty() || !flag.empty()) && game_display_) {
+			game_display_->reinit_flags_for_side(team_index);
+		}
+		// Change flag icon
+		config::attribute_value flag_icon = cfg["flag_icon"];
+		if(!flag_icon.empty()) {
+			tm.set_flag_icon(flag_icon);
+			// Not needed.
+			//invalidate_screen = true;
+		}
+		// Add shared view to current team
+		config::attribute_value share_view = cfg["share_view"];
+		if (!share_view.empty()){
+			tm.set_share_view(share_view.to_bool(true));
+			team::clear_caches();
+			invalidate_screen = true;
+		}
+		// Add shared maps to current team
+		// IMPORTANT: this MUST happen *after* share_view is changed
+		config::attribute_value share_maps = cfg["share_maps"];
+		if (!share_maps.empty()){
+			tm.set_share_maps(share_maps.to_bool(true));
+			team::clear_caches();
+			invalidate_screen = true;
+		}
+
+		// Suppress end turn confirmations?
+		config::attribute_value setc = cfg["suppress_end_turn_confirmation"];
+		if ( !setc.empty() ) {
+			tm.set_no_turn_confirmation(setc.to_bool());
+		}
+
+		// Change leader scrolling options
+		config::attribute_value stl = cfg["scroll_to_leader"];
+		if ( !stl.empty()) {
+			tm.set_scroll_to_leader(stl.to_bool(true));
+		}
+	}
+
+	// Flag an update of the screen, if needed.
+	if ( invalidate_screen && game_display_) {
+		game_display_->recalculate_minimap();
+		game_display_->invalidate_all();
+	}
+
+
+	return 0;
+}
+
 /**
  * Returns a proxy table array for all sides matching the given SSF.
  * - Arg 1: SSF
@@ -3281,6 +3453,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "match_side",			boost::bind(&game_lua_kernel::intf_match_side, this, _1)			},
 		{ "match_unit",			boost::bind(&game_lua_kernel::intf_match_unit, this, _1)			},
 		{ "message",			boost::bind(&game_lua_kernel::intf_message, this, _1)				},
+		{ "modify_side",		boost::bind(&game_lua_kernel::intf_modify_side, this, _1)			},
 		{ "play_sound",			boost::bind(&game_lua_kernel::intf_play_sound, this, _1)			},
 		{ "place_shroud",		boost::bind(&game_lua_kernel::intf_shroud_op, this, _1, true)			},
 		{ "put_recall_unit",		boost::bind(&game_lua_kernel::intf_put_recall_unit, this, _1)			},
