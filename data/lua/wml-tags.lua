@@ -1337,3 +1337,12 @@ end
 function wml_actions.remove_shroud(cfg)
 	wesnoth.remove_shroud(cfg)
 end
+
+function wml_actions.time_area(cfg)
+	local remove = cfg.remove
+	if remove then
+		wesnoth.remove_time_area(cfg.id)
+	else
+		wesnoth.add_time_area(cfg.id, cfg)
+	end
+end

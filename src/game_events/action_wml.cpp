@@ -2283,39 +2283,6 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 	resources::screen->needs_rebuild(true);
 }
 
-/// Adding/removing new time_areas dynamically with Standard Location Filters.
-WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
-{
-	log_scope("time_area");
-
-	bool remove = cfg["remove"].to_bool();
-	std::string ids = cfg["id"];
-
-	if(remove) {
-		const std::vector<std::string> id_list =
-			utils::split(ids, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
-		BOOST_FOREACH(const std::string& id, id_list) {
-			resources::tod_manager->remove_time_area(id);
-			LOG_NG << "event WML removed time_area '" << id << "'\n";
-		}
-	}
-	else {
-		std::string id;
-		if(ids.find(',') != std::string::npos) {
-			id = utils::split(ids,',',utils::STRIP_SPACES | utils::REMOVE_EMPTY).front();
-			ERR_NG << "multiple ids for inserting a new time_area; will use only the first" << std::endl;
-		} else {
-			id = ids;
-		}
-		std::set<map_location> locs;
-		const terrain_filter filter(cfg, resources::filter_con);
-		filter.get_locations(locs, true);
-		config parsed_cfg = cfg.get_parsed_config();
-		resources::tod_manager->add_time_area(id, locs, parsed_cfg);
-		LOG_NG << "event WML inserted time_area '" << id << "'\n";
-	}
-}
-
 WML_HANDLER_FUNCTION(tunnel, /*event_info*/, cfg)
 {
 	const bool remove = cfg["remove"].to_bool(false);

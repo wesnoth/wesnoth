@@ -72,6 +72,8 @@ class game_lua_kernel : public lua_kernel_base
 	// Private lua callbacks
 	int intf_allow_end_turn(lua_State *);
 	int intf_allow_undo(lua_State *);
+	int intf_add_time_area(lua_State *);
+	int intf_remove_time_area(lua_State *);
 	int intf_get_unit(lua_State *);
 	int intf_get_units(lua_State *);
 	int intf_get_displayed_unit(lua_State*);
