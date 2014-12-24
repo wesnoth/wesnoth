@@ -1455,6 +1455,12 @@ int game_lua_kernel::intf_clear_messages(lua_State*)
 	return 0;
 }
 
+int game_lua_kernel::intf_end_turn(lua_State*)
+{
+	play_controller_.force_end_turn();
+	return 0;
+}
+
 /**
  * Evaluates a boolean WML conditional.
  * - Arg 1: WML table.
@@ -3205,6 +3211,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "clear_messages",		boost::bind(&game_lua_kernel::intf_clear_messages, this, _1)			},
 		{ "color_adjust",		boost::bind(&game_lua_kernel::intf_color_adjust, this, _1)			},
 		{ "delay",			boost::bind(&game_lua_kernel::intf_delay, this, _1)				},
+		{ "end_turn",			boost::bind(&game_lua_kernel::intf_end_turn, this, _1)				},
 		{ "extract_unit",		boost::bind(&game_lua_kernel::intf_extract_unit, this, _1)			},
 		{ "find_cost_map",		boost::bind(&game_lua_kernel::intf_find_cost_map, this, _1)			},
 		{ "find_path",			boost::bind(&game_lua_kernel::intf_find_path, this, _1)				},

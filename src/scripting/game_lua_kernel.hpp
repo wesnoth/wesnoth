@@ -99,6 +99,7 @@ class game_lua_kernel : public lua_kernel_base
 	int impl_game_config_set(lua_State *L);
 	int impl_current_get(lua_State *L);
 	int intf_clear_messages(lua_State*);
+	int intf_end_turn(lua_State*);
 	int intf_find_path(lua_State *L);
 	int intf_find_reach(lua_State *L);
 	int intf_find_cost_map(lua_State *L);

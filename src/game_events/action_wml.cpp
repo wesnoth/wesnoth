@@ -670,11 +670,6 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 	}
 }
 
-WML_HANDLER_FUNCTION(end_turn, /*event_info*/, /*cfg*/)
-{
-	resources::controller->force_end_turn();
-}
-
 /// Adding new events
 WML_HANDLER_FUNCTION(event, /*event_info*/, cfg)
 {

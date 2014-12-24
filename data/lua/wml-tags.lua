@@ -1359,6 +1359,10 @@ function wml_actions.color_adjust(cfg)
 	wesnoth.color_adjust(cfg)
 end
 
+function wml_actions.end_turn(cfg)
+	wesnoth.end_turn()
+end
+
 function wml_actions.redraw(cfg)
 	local clear_shroud = cfg.clear_shroud
 
