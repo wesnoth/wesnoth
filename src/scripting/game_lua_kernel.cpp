@@ -1401,7 +1401,7 @@ int game_lua_kernel::impl_current_get(lua_State *L)
 
 	if (strcmp(m, "event_context") == 0)
 	{
-		const game_events::queued_event &ev = *queued_events_.top();
+		const game_events::queued_event &ev = get_event_info();
 		config cfg;
 		cfg["name"] = ev.name;
 		if (const config &weapon = ev.data.child("first")) {
@@ -3010,7 +3010,7 @@ int game_lua_kernel::intf_kill(lua_State *L)
 {
 	vconfig cfg(luaW_checkvconfig(L, 1));
 
-	const game_events::queued_event &event_info = *queued_events_.top();
+	const game_events::queued_event &event_info = get_event_info();
 
 	size_t number_killed = 0;
 
@@ -3553,6 +3553,10 @@ tod_manager & game_lua_kernel::tod_man() {
 	return game_state_.tod_manager_;
 }
 
+const game_events::queued_event & game_lua_kernel::get_event_info() {
+	return *queued_events_.top();
+}
+
 game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state & gs, play_controller & pc, reports & reports_object)
 	: lua_kernel_base(video)
 	, game_display_(NULL)
@@ -4036,7 +4040,7 @@ int game_lua_kernel::cfun_wml_action(lua_State *L)
 		(lua_touserdata(L, lua_upvalueindex(2))); // refer to lua_cpp_function.hpp for the reason that this is upvalueindex(2) and not (1)
 
 	vconfig vcfg = luaW_checkvconfig(L, 1);
-	h(*queued_events_.top(), vcfg);
+	h(get_event_info(), vcfg);
 	return 0;
 }
 

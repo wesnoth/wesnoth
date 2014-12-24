@@ -63,6 +63,8 @@ class game_lua_kernel : public lua_kernel_base
 
 	std::stack<game_events::queued_event const * > queued_events_;
 
+	const game_events::queued_event & get_event_info();
+
 	static void extract_preload_scripts(config const & game_config);
 	static std::vector<config> preload_scripts;
 	static config preload_config;
