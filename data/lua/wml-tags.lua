@@ -1309,3 +1309,7 @@ function wml_actions.full_heal(cfg)
 		end
 	end
 end
+
+function wml_actions.set_menu_item(cfg)
+	wesnoth.set_menu_item(cfg.id, cfg)
+end
