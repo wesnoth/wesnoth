@@ -2723,6 +2723,18 @@ int game_lua_kernel::intf_remove_tile_overlay(lua_State *L)
 	return 0;
 }
 
+int game_lua_kernel::intf_color_adjust(lua_State *L)
+{
+	if (game_display_) {
+		vconfig cfg(luaW_checkvconfig(L, 1));
+
+		game_display_->adjust_color_overlay(cfg["red"], cfg["green"], cfg["blue"]);
+		game_display_->invalidate_all();
+		game_display_->draw(true,true);
+	}
+	return 0;
+}
+
 /**
  * Delays engine for a while.
  * - Arg 1: integer.
@@ -3191,6 +3203,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "allow_undo",			boost::bind(&game_lua_kernel::intf_allow_undo, this, _1)			},
 		{ "clear_menu_item",		boost::bind(&game_lua_kernel::intf_clear_menu_item, this, _1)			},
 		{ "clear_messages",		boost::bind(&game_lua_kernel::intf_clear_messages, this, _1)			},
+		{ "color_adjust",		boost::bind(&game_lua_kernel::intf_color_adjust, this, _1)			},
 		{ "delay",			boost::bind(&game_lua_kernel::intf_delay, this, _1)				},
 		{ "extract_unit",		boost::bind(&game_lua_kernel::intf_extract_unit, this, _1)			},
 		{ "find_cost_map",		boost::bind(&game_lua_kernel::intf_find_cost_map, this, _1)			},

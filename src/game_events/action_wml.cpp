@@ -555,15 +555,6 @@ WML_HANDLER_FUNCTION(clear_global_variable,/**/,pcfg)
 		verify_and_clear_global_variable(pcfg);
 }
 
-WML_HANDLER_FUNCTION(color_adjust, /*event_info*/, cfg)
-{
-	game_display &screen = *resources::screen;
-
-	screen.adjust_color_overlay(cfg["red"], cfg["green"], cfg["blue"]);
-	screen.invalidate_all();
-	screen.draw(true,true);
-}
-
 WML_HANDLER_FUNCTION(deprecated_message, /*event_info*/, cfg)
 {
 	handle_deprecated_message( cfg.get_parsed_config() );
