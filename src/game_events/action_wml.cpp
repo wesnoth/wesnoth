@@ -1041,13 +1041,6 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 	}
 }
 
-WML_HANDLER_FUNCTION(open_help,  /*event_info*/, cfg)
-{
-	game_display &screen = *resources::screen;
-	t_string topic_id = cfg["topic"];
-	help::show_help(screen, topic_id.to_serialized());
-}
-
 WML_HANDLER_FUNCTION(print, /*event_info*/, cfg)
 {
 	// Remove any old message.

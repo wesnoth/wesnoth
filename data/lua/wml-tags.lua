@@ -1388,6 +1388,10 @@ function wml_actions.modify_side(cfg)
 	wesnoth.modify_side(cfg)
 end
 
+function wml_actions.open_help(cfg)
+	wesnoth.open_help(cfg.topic)
+end
+
 function wml_actions.redraw(cfg)
 	local clear_shroud = cfg.clear_shroud
 

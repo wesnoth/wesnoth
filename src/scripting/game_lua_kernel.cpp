@@ -55,6 +55,7 @@
 #include "game_events/manager.hpp"	// for add_event_handler
 #include "game_events/pump.hpp"         // for queued_event
 #include "game_preferences.hpp"         // for encountered_units
+#include "help/help.hpp"
 #include "image.hpp"                    // for get_image, locator
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
 #include "lua/lauxlib.h"                // for luaL_checkinteger, etc
@@ -1440,6 +1441,14 @@ int game_lua_kernel::intf_message(lua_State *L)
 	}
 	lua_chat(h, m);
 	LOG_LUA << "Script says: \"" << m << "\"\n";
+	return 0;
+}
+
+int game_lua_kernel::intf_open_help(lua_State *L)
+{
+	if (game_display_) {
+		help::show_help(*game_display_, luaL_checkstring(L, 1));
+	}
 	return 0;
 }
 
@@ -3626,6 +3635,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "match_unit",			boost::bind(&game_lua_kernel::intf_match_unit, this, _1)			},
 		{ "message",			boost::bind(&game_lua_kernel::intf_message, this, _1)				},
 		{ "modify_side",		boost::bind(&game_lua_kernel::intf_modify_side, this, _1)			},
+		{ "open_help",			boost::bind(&game_lua_kernel::intf_open_help, this, _1)				},
 		{ "play_sound",			boost::bind(&game_lua_kernel::intf_play_sound, this, _1)			},
 		{ "place_shroud",		boost::bind(&game_lua_kernel::intf_shroud_op, this, _1, true)			},
 		{ "put_recall_unit",		boost::bind(&game_lua_kernel::intf_put_recall_unit, this, _1)			},
