@@ -821,6 +821,38 @@ int game_lua_kernel::intf_clear_menu_item(lua_State *L)
 	return 0;
 }
 
+int game_lua_kernel::intf_set_end_campaign_credits(lua_State *L)
+{
+	game_classification &classification = const_cast<game_classification &> (play_controller_.get_classification());
+	classification.end_credits = lua_toboolean(L, 1);
+	return 0;
+}
+
+int game_lua_kernel::intf_set_end_campaign_text(lua_State *L)
+{
+	game_classification &classification = const_cast<game_classification &> (play_controller_.get_classification());
+
+	const char *m = luaL_checkstring(L, 1);
+	if (m && *m != '\0') {
+		classification.end_text = m;
+	}
+
+	if (lua_isnumber(L, 2)) {
+		classification.end_text_duration = static_cast<int> (lua_tonumber(L, 2));
+	}
+
+	return 0;
+}
+
+int game_lua_kernel::intf_set_next_scenario(lua_State *L)
+{
+	const char *m = luaL_checkstring(L, 1);
+	if (m && *m != '\0') {
+		gamedata().set_next_scenario(m);
+	}
+	return 0;
+}
+
 int game_lua_kernel::intf_shroud_op(lua_State *L, bool place_shroud)
 {
 	vconfig cfg = luaW_checkvconfig(L, 1);
@@ -1475,6 +1507,12 @@ static int intf_debug(lua_State* L)
 	return 1;
 }
 
+int game_lua_kernel::intf_check_end_level_disabled(lua_State * L)
+{
+	lua_pushboolean(L, play_controller_.get_end_level_data().transient.disabled);
+	return 1;
+}
+
 /**
  * Removes all messages from the chat window.
  */
@@ -1483,6 +1521,57 @@ int game_lua_kernel::intf_clear_messages(lua_State*)
 	if (game_display_) {
 		game_display_->get_chat_manager().clear_chat_messages();
 	}
+	return 0;
+}
+
+int game_lua_kernel::intf_end_level(lua_State *L)
+{
+	vconfig cfg(luaW_checkvconfig(L, 1));
+
+	end_level_data &data = play_controller_.get_end_level_data();
+
+	if (data.transient.disabled) {
+		return 0;
+	}
+	data.transient.disabled = true;
+
+	// Remove 0-hp units from the unit map to avoid the following problem:
+	// In case a die event triggers an endlevel the dead unit is still as a
+	// 'ghost' in linger mode. After save loading in linger mode the unit
+	// is fully visible again.
+	unit_map & um = units();
+	unit_map::iterator u = um.begin();
+	while (u) {
+		if (u->hitpoints() <= 0) {
+			um.erase(u++);
+		} else {
+			++u;
+		}
+	}
+
+	std::string result = cfg["result"];
+	VALIDATE_WITH_DEV_MESSAGE(
+			  result.empty() || result == "victory" || result == "defeat"
+			, _("Invalid value in the result key for [end_level]")
+			, "result = '"  + result + "'.");
+	data.transient.custom_endlevel_music = cfg["music"].str();
+	data.transient.carryover_report = cfg["carryover_report"].to_bool(true);
+	data.prescenario_save = cfg["save"].to_bool(true);
+	data.replay_save = cfg["replay_save"].to_bool(true);
+	data.transient.linger_mode = cfg["linger_mode"].to_bool(true)
+		&& !teams().empty();
+	data.transient.reveal_map = cfg["reveal_map"].to_bool(true);
+	data.gold_bonus = cfg["bonus"].to_bool(true);
+	data.carryover_percentage = cfg["carryover_percentage"].to_int(game_config::gold_carryover_percentage);
+	data.carryover_add = cfg["carryover_add"].to_bool();
+
+	if(result == "defeat") {
+		data.carryover_add = false;
+		play_controller_.force_end_level(DEFEAT);
+	} else {
+		play_controller_.force_end_level(VICTORY);
+	}
+
 	return 0;
 }
 
@@ -3610,11 +3699,13 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "add_tile_overlay",		boost::bind(&game_lua_kernel::intf_add_tile_overlay, this, _1)			},
 		{ "allow_end_turn",		boost::bind(&game_lua_kernel::intf_allow_end_turn, this, _1)			},
 		{ "allow_undo",			boost::bind(&game_lua_kernel::intf_allow_undo, this, _1)			},
+		{ "check_end_level_disabled",	boost::bind(&game_lua_kernel::intf_check_end_level_disabled, this, _1)		},
 		{ "clear_menu_item",		boost::bind(&game_lua_kernel::intf_clear_menu_item, this, _1)			},
 		{ "clear_messages",		boost::bind(&game_lua_kernel::intf_clear_messages, this, _1)			},
 		{ "color_adjust",		boost::bind(&game_lua_kernel::intf_color_adjust, this, _1)			},
 		{ "delay",			boost::bind(&game_lua_kernel::intf_delay, this, _1)				},
 		{ "end_turn",			boost::bind(&game_lua_kernel::intf_end_turn, this, _1)				},
+		{ "end_level",			boost::bind(&game_lua_kernel::intf_end_level, this, _1)				},
 		{ "extract_unit",		boost::bind(&game_lua_kernel::intf_extract_unit, this, _1)			},
 		{ "find_cost_map",		boost::bind(&game_lua_kernel::intf_find_cost_map, this, _1)			},
 		{ "find_path",			boost::bind(&game_lua_kernel::intf_find_path, this, _1)				},
@@ -3662,7 +3753,10 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "scroll",			boost::bind(&game_lua_kernel::intf_scroll, this, _1)				},
 		{ "scroll_to_tile",		boost::bind(&game_lua_kernel::intf_scroll_to_tile, this, _1)			},
 		{ "select_hex",			boost::bind(&game_lua_kernel::intf_select_hex, this, _1)			},
+		{ "set_end_campaign_credits",	boost::bind(&game_lua_kernel::intf_set_end_campaign_credits, this, _1)		},
+		{ "set_end_campaign_text",	boost::bind(&game_lua_kernel::intf_set_end_campaign_text, this, _1)		},
 		{ "set_menu_item",		boost::bind(&game_lua_kernel::intf_set_menu_item, this, _1)			},
+		{ "set_next_scenario",		boost::bind(&game_lua_kernel::intf_set_next_scenario, this, _1)			},
 		{ "set_terrain",		boost::bind(&game_lua_kernel::intf_set_terrain, this, _1)			},
 		{ "set_variable",		boost::bind(&game_lua_kernel::intf_set_variable, this, _1)			},
 		{ "set_village_owner",		boost::bind(&game_lua_kernel::intf_set_village_owner, this, _1)			},

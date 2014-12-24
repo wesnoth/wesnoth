@@ -1367,6 +1367,31 @@ function wml_actions.end_turn(cfg)
 	wesnoth.end_turn()
 end
 
+function wml_actions.endlevel(cfg)
+	if wesnoth.check_end_level_disabled() then
+		wesnoth.message("Repeated [endlevel] execution, ignoring")
+		return
+	end
+
+	local next_scenario = cfg.next_scenario
+	if next_scenario then
+		wesnoth.set_next_scenario(next_scenario)
+	end
+
+	local end_text = cfg.end_text
+	local end_text_duration = cfg.end_text_duration
+	if end_text or end_text_duration then
+		wesnoth.set_end_campaign_text(end_text or "", end_text_duration)
+	end
+
+	local end_credits = cfg.end_credits
+	if end_credits ~= nil then
+		wesnoth.set_end_campaign_credits(end_credits)
+	end
+
+	wesnoth.end_level(cfg)
+end
+
 function wml_actions.event(cfg)
 	local remove = cfg.remove
 	if remove then

@@ -102,7 +102,9 @@ class game_lua_kernel : public lua_kernel_base
 	int impl_game_config_get(lua_State *L);
 	int impl_game_config_set(lua_State *L);
 	int impl_current_get(lua_State *L);
+	int intf_check_end_level_disabled(lua_State *L);
 	int intf_clear_messages(lua_State*);
+	int intf_end_level(lua_State*);
 	int intf_end_turn(lua_State*);
 	int intf_find_path(lua_State *L);
 	int intf_find_reach(lua_State *L);
@@ -115,8 +117,11 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_extract_unit(lua_State *L);
 	int intf_find_vacant_tile(lua_State *L);
 	int intf_float_label(lua_State *L);
+	int intf_set_end_campaign_credits(lua_State *L);
+	int intf_set_end_campaign_text(lua_State *L);
 	int intf_clear_menu_item(lua_State *L);
 	int intf_set_menu_item(lua_State *L);
+	int intf_set_next_scenario(lua_State *L);
 	int intf_shroud_op(lua_State *L, bool place_shroud);
 	int intf_simulate_combat(lua_State *L);
 	int intf_scroll_to_tile(lua_State *L);
