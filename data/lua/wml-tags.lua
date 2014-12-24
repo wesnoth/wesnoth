@@ -1346,3 +1346,7 @@ function wml_actions.time_area(cfg)
 		wesnoth.add_time_area(cfg.id, cfg)
 	end
 end
+
+function wml_actions.replace_schedule(cfg)
+	wesnoth.replace_schedule(cfg)
+end

@@ -1619,18 +1619,6 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 	ai::manager::raise_map_changed();
 }
 
-/// Replacing the current time of day schedule.
-WML_HANDLER_FUNCTION(replace_schedule, /*event_info*/, cfg)
-{
-	if(cfg.get_children("time").empty()) {
-		ERR_NG << "attempted to to replace ToD schedule with empty schedule" << std::endl;
-	} else {
-		resources::tod_manager->replace_schedule(cfg.get_parsed_config());
-		resources::screen->new_turn();
-		LOG_NG << "replaced ToD schedule\n";
-	}
-}
-
 WML_HANDLER_FUNCTION(reset_fog, /*event_info*/, cfg)
 {
 	toggle_fog(false, cfg, cfg["reset_view"].to_bool(false));

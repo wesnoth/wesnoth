@@ -2989,6 +2989,22 @@ int game_lua_kernel::intf_remove_time_area(lua_State * L)
 	return 0;
 }
 
+/// Replacing the current time of day schedule.
+int game_lua_kernel::intf_replace_schedule(lua_State * L)
+{
+	vconfig cfg = luaW_checkvconfig(L, 1);
+
+	if(cfg.get_children("time").empty()) {
+		ERR_LUA << "attempted to to replace ToD schedule with empty schedule" << std::endl;
+	} else {
+		tod_man().replace_schedule(cfg.get_parsed_config());
+		if (game_display_) {
+			game_display_->new_turn();
+		}
+		LOG_LUA << "replaced ToD schedule\n";
+	}
+	return 0;
+}
 
 namespace {
 	struct lua_report_generator : reports::generator
@@ -3165,6 +3181,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "put_unit",			boost::bind(&game_lua_kernel::intf_put_unit, this, _1)				},
 		{ "remove_shroud",		boost::bind(&game_lua_kernel::intf_shroud_op, this, _1, false)			},
 		{ "remove_tile_overlay",	boost::bind(&game_lua_kernel::intf_remove_tile_overlay, this, _1)		},
+		{ "replace_schedule",		boost::bind(&game_lua_kernel::intf_replace_schedule, this, _1)			},
 		{ "scroll_to_tile",		boost::bind(&game_lua_kernel::intf_scroll_to_tile, this, _1)			},
 		{ "select_hex",			boost::bind(&game_lua_kernel::intf_select_hex, this, _1)			},
 		{ "set_menu_item",		boost::bind(&game_lua_kernel::intf_set_menu_item, this, _1)			},
