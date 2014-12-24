@@ -334,7 +334,7 @@ void get_files_in_dir(const std::string &dir,
 	bfs::directory_iterator di(dirpath, ec);
 	bfs::directory_iterator end;
 	if (ec) {
-		ERR_FS << "Failed to open directory " << dirpath.string() << ": " << ec.message() << '\n';
+		// Probably not a directory, let the caller deal with it.
 		return;
 	}
 	for(; di != end; ++di) {
