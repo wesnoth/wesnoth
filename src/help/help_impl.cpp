@@ -481,7 +481,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 					ability_description.insert(std::make_pair(abil_name, abil_desc));
 
 					if (!type.hide_help()) {
-						//add a link in the list of units having this ability
+						//add a link in the list of units with this ability
 						std::string type_name = type.type_name();
 						std::string ref_id = unit_prefix +  type.id();
 						//we put the translated name at the beginning of the hyperlink,
@@ -499,7 +499,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 		std::string id = "ability_" + a->first.base_str();
 		std::stringstream text;
 		text << a->second;  //description
-		text << "\n\n" << _("<header>text='Units having this ability'</header>") << "\n";
+		text << "\n\n" << _("<header>text='Units with this ability'</header>") << "\n";
 		std::set<std::string, string_less> &units = ability_units[a->first];
 		for (std::set<std::string, string_less>::iterator u = units.begin(); u != units.end(); ++u) {
 			text << (*u) << "\n";
