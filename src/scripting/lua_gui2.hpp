@@ -18,6 +18,7 @@
 struct lua_State;
 class CVideo;
 class lua_kernel_base;
+class vconfig;
 
 namespace lua_gui2 {
 
@@ -29,6 +30,7 @@ int intf_set_dialog_canvas(lua_State *L);
 int intf_set_dialog_active(lua_State *L);
 int show_dialog(lua_State *L, CVideo & video);
 int show_lua_console(lua_State*L, CVideo & video, lua_kernel_base * lk);
+int show_gamestate_inspector(CVideo & video, const vconfig & cfg);
 
 } // end namespace lua_gui2
 

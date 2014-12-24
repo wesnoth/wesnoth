@@ -36,7 +36,6 @@
 #include "game_errors.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
-#include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/window.hpp"
@@ -103,40 +102,6 @@ namespace { // advance declarations
 }
 
 namespace { // Types
-
-	class recursion_preventer {
-		typedef std::map<map_location, int> t_counter;
-		static t_counter counter_;
-		static const int max_recursion = 10;
-
-		map_location loc_;
-		bool too_many_recursions_;
-
-		public:
-		recursion_preventer(map_location& loc) :
-			loc_(loc),
-			too_many_recursions_(false)
-		{
-			t_counter::iterator inserted = counter_.insert(std::make_pair(loc_, 0)).first;
-			++inserted->second;
-			too_many_recursions_ = inserted->second >= max_recursion;
-		}
-		~recursion_preventer()
-		{
-			t_counter::iterator itor = counter_.find(loc_);
-			if (--itor->second == 0)
-			{
-				counter_.erase(itor);
-			}
-		}
-		bool too_many_recursions() const
-		{
-			return too_many_recursions_;
-		}
-	};
-	recursion_preventer::t_counter recursion_preventer::counter_;
-	typedef boost::scoped_ptr<recursion_preventer> recursion_preventer_ptr;
-
 	struct message_user_choice : mp_sync::user_choice
 	{
 		vconfig cfg;
@@ -356,25 +321,6 @@ namespace { // Support functions
 #endif
 		}
 		return image;
-	}
-
-	/**
-	 * Gets a vector of sides from side= attribute in a given config node.
-	 * Promotes consistent behavior.
-	 */
-	std::vector<int> get_sides_vector(const vconfig& cfg)
-	{
-		const config::attribute_value sides = cfg["side"];
-		const vconfig &ssf = cfg.child("filter_side");
-
-		if (!ssf.null()) {
-			if(!sides.empty()) { WRN_NG << "ignoring duplicate side filter information (inline side=)" << std::endl; }
-			side_filter filter(ssf, resources::filter_con);
-			return filter.get_teams();
-		}
-
-		side_filter filter(sides.str(), resources::filter_con);
-		return filter.get_teams();
 	}
 
 	/**
@@ -670,19 +616,6 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 	}
 }
 
-/// Adding new events
-WML_HANDLER_FUNCTION(event, /*event_info*/, cfg)
-{
-	assert(resources::game_events);
-	if (cfg["remove"].to_bool(false)) {
-		resources::game_events->remove_event_handler(cfg["id"]);
-	} else if (!cfg["delayed_variable_substitution"].to_bool(true)) {
-		resources::game_events->add_event_handler(cfg.get_parsed_config());
-	} else {
-		resources::game_events->add_event_handler(cfg.get_config());
-	}
-}
-
 /// Experimental data persistence
 /// @todo Finish experimenting.
 WML_HANDLER_FUNCTION(get_global_variable,/**/,pcfg)
@@ -763,123 +696,6 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 
 		if(animate) unit_display::unit_healing(*u, healers, heal_amount);
 		if(only_unit_at_loc1) return;
-	}
-}
-
-WML_HANDLER_FUNCTION(inspect, /*event_info*/, cfg)
-{
-	gui2::tgamestate_inspector inspect_dialog(cfg);
-	inspect_dialog.show(resources::screen->video());
-}
-
-WML_HANDLER_FUNCTION(kill, event_info, cfg)
-{
-	bool secondary_unit = cfg.has_child("secondary_unit");
-	entity_location killer_loc(map_location(0, 0));
-	if(cfg["fire_event"].to_bool() && secondary_unit)
-	{
-		secondary_unit = false;
-		const unit_filter ufilt(cfg.child("secondary_unit"), resources::filter_con);
-		for(unit_map::const_unit_iterator unit = resources::units->begin();
-			unit != resources::units->end(); ++unit) {
-				if ( ufilt( *unit) )
-				{
-					killer_loc = entity_location(*unit);
-					secondary_unit = true;
-					break;
-				}
-		}
-		if(!secondary_unit) {
-			WRN_NG << "failed to match [secondary_unit] in [kill] with a single on-board unit" << std::endl;
-		}
-	}
-
-	//Find all the dead units first, because firing events ruins unit_map iteration
-	std::vector<unit *> dead_men_walking;
-	const unit_filter ufilt(cfg, resources::filter_con);
-	BOOST_FOREACH(unit & u, *resources::units){
-		if ( ufilt(u) ) {
-			dead_men_walking.push_back(&u);
-		}
-	}
-
-	BOOST_FOREACH(unit * un, dead_men_walking) {
-		map_location loc(un->get_location());
-		bool fire_event = false;
-		entity_location death_loc(*un);
-		if(!secondary_unit) {
-			killer_loc = entity_location(*un);
-		}
-
-		if (cfg["fire_event"].to_bool())
-			{
-				// Prevent infinite recursion of 'die' events
-				fire_event = true;
-				recursion_preventer_ptr recursion_prevent;
-
-				if (event_info.loc1 == death_loc && (event_info.name == "die" || event_info.name == "last breath"))
-					{
-						recursion_prevent.reset(new recursion_preventer(death_loc));
-
-						if(recursion_prevent->too_many_recursions())
-							{
-								fire_event = false;
-
-								ERR_NG << "tried to fire 'die' or 'last breath' event on primary_unit inside its own 'die' or 'last breath' event with 'first_time_only' set to false!" << std::endl;
-							}
-					}
-			}
-		if (fire_event) {
-			resources::game_events->pump().fire("last breath", death_loc, killer_loc);
-		}
-
-		// Visual consequences of the kill.
-		if (cfg["animate"].to_bool()) {
-			resources::screen->scroll_to_tile(loc);
-			unit_map::iterator iun = resources::units->find(loc);
-			if (iun != resources::units->end() && iun.valid()) {
-				unit_display::unit_die(loc, *iun);
-			}
-		} else {
-			// Make sure the unit gets (fully) cleaned off the screen.
-			resources::screen->invalidate(loc);
-			unit_map::iterator iun = resources::units->find(loc);
-			if ( iun != resources::units->end()  &&  iun.valid() )
-				iun->anim_comp().invalidate(*resources::screen);
-		}
-		resources::screen->redraw_minimap();
-
-		if (fire_event) {
-			resources::game_events->pump().fire("die", death_loc, killer_loc);
-			unit_map::iterator iun = resources::units->find(death_loc);
-			if ( death_loc.matches_unit(iun) ) {
-				resources::units->erase(iun);
-			}
-		}
-		else resources::units->erase(loc);
-	}
-
-	// If the filter doesn't contain positional information,
-	// then it may match units on all recall lists.
-	t_string const& cfg_x = cfg["x"];
-	t_string const& cfg_y = cfg["y"];
-	if((cfg_x.empty() || cfg_x == "recall")
-	&& (cfg_y.empty() || cfg_y == "recall"))
-	{
-		const unit_filter ufilt(cfg, resources::filter_con);
-		//remove the unit from the corresponding team's recall list
-		for(std::vector<team>::iterator pi = resources::teams->begin();
-				pi!=resources::teams->end(); ++pi)
-		{
-			for(std::vector<unit_ptr>::iterator j = pi->recall_list().begin(); j != pi->recall_list().end();) { //TODO: This block is really messy, cleanup somehow...
-				scoped_recall_unit auto_store("this_unit", pi->save_id(), j - pi->recall_list().begin());
-				if (ufilt( *(*j), map_location() )) {
-					j = pi->recall_list().erase(j);
-				} else {
-					++j;
-				}
-			}
-		}
 	}
 }
 
@@ -1045,172 +861,6 @@ WML_HANDLER_FUNCTION(modify_ai, /*event_info*/, cfg)
 	BOOST_FOREACH(const int &side_num, sides)
 	{
 		ai::manager::modify_active_ai_for_side(side_num,cfg.get_parsed_config());
-	}
-}
-
-WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
-{
-	std::vector<team> &teams = *resources::teams;
-
-	bool invalidate_screen = false;
-
-	std::string team_name = cfg["team_name"];
-	std::string user_team_name = cfg["user_team_name"];
-	std::string controller = cfg["controller"];
-	std::string defeat_condition = cfg["defeat_condition"];
-	std::string recruit_str = cfg["recruit"];
-	std::string shroud_data = cfg["shroud_data"];
-	std::string village_support = cfg["village_support"];
-	const config& parsed = cfg.get_parsed_config();
-	const config::const_child_itors &ai = parsed.child_range("ai");
-	std::string switch_ai = cfg["switch_ai"];
-
-	std::vector<int> sides = get_sides_vector(cfg);
-	size_t team_index;
-
-	BOOST_FOREACH(const int &side_num, sides)
-	{
-		team_index = side_num - 1;
-		LOG_NG << "modifying side: " << side_num << "\n";
-		if(!team_name.empty()) {
-			LOG_NG << "change side's team to team_name '" << team_name << "'\n";
-			teams[team_index].change_team(team_name,
-					user_team_name);
-		} else if(!user_team_name.empty()) {
-			LOG_NG << "change side's user_team_name to '" << user_team_name << "'\n";
-			teams[team_index].change_team(teams[team_index].team_name(),
-					user_team_name);
-		}
-		// Modify recruit list (override)
-		if (!recruit_str.empty()) {
-			teams[team_index].set_recruits(utils::set_split(recruit_str));
-		}
-		// Modify income
-		config::attribute_value income = cfg["income"];
-		if (!income.empty()) {
-			teams[team_index].set_base_income(income.to_int() + game_config::base_income);
-		}
-		// Modify total gold
-		config::attribute_value gold = cfg["gold"];
-		if (!gold.empty()) {
-			teams[team_index].set_gold(gold);
-		}
-		// Set controller
-		if (!controller.empty()) {
-			teams[team_index].change_controller_by_wml(controller);
-		}
-		// Set defeat_condition
-		if (!defeat_condition.empty()) {
-			teams[team_index].set_defeat_condition_string(defeat_condition);
-		}
-		// Set shroud
-		config::attribute_value shroud = cfg["shroud"];
-		if (!shroud.empty()) {
-			teams[team_index].set_shroud(shroud.to_bool(true));
-			invalidate_screen = true;
-		}
-		// Reset shroud
-		if ( cfg["reset_maps"].to_bool(false) ) {
-			teams[team_index].reshroud();
-			invalidate_screen = true;
-		}
-		// Merge shroud data
-		if (!shroud_data.empty()) {
-			teams[team_index].merge_shroud_map_data(shroud_data);
-			invalidate_screen = true;
-		}
-		// Set whether team is hidden in status table
-		config::attribute_value hidden = cfg["hidden"];
-		if (!hidden.empty()) {
-			teams[team_index].set_hidden(hidden.to_bool(true));
-		}
-		// Set fog
-		config::attribute_value fog = cfg["fog"];
-		if (!fog.empty()) {
-			teams[team_index].set_fog(fog.to_bool(true));
-			invalidate_screen = true;
-		}
-		// Reset fog
-		if ( cfg["reset_view"].to_bool(false) ) {
-			teams[team_index].refog();
-			invalidate_screen = true;
-		}
-		// Set income per village
-		config::attribute_value village_gold = cfg["village_gold"];
-		if (!village_gold.empty()) {
-			teams[team_index].set_village_gold(village_gold);
-		}
-		// Set support (unit levels supported per village, for upkeep purposes)
-		if (!village_support.empty()) {
-			teams[team_index].set_village_support(lexical_cast_default<int>(village_support, game_config::village_support));
-		}
-		// Redeploy ai from location (this ignores current AI parameters)
-		if (!switch_ai.empty()) {
-			ai::manager::add_ai_for_side_from_file(side_num,switch_ai,true);
-		}
-		// Override AI parameters
-		if (ai.first != ai.second) {
-			ai::manager::modify_active_ai_config_old_for_side(side_num,ai);
-		}
-		// Change team color
-		config::attribute_value color = cfg["color"];
-		if(!color.empty()) {
-			teams[team_index].set_color(color);
-			invalidate_screen = true;
-		}
-		// Change flag imageset
-		config::attribute_value flag = cfg["flag"];
-		if(!flag.empty()) {
-			teams[team_index].set_flag(flag);
-			// Needed especially when map isn't animated.
-			invalidate_screen = true;
-		}
-		// If either the flag set or the team color changed, we need to
-		// rebuild the team's flag cache to reflect the changes. Note that
-		// this is not required for flag icons (used by the theme UI only).
-		if(!color.empty() || !flag.empty()) {
-			resources::screen->reinit_flags_for_side(team_index);
-		}
-		// Change flag icon
-		config::attribute_value flag_icon = cfg["flag_icon"];
-		if(!flag_icon.empty()) {
-			teams[team_index].set_flag_icon(flag_icon);
-			// Not needed.
-			//invalidate_screen = true;
-		}
-		// Add shared view to current team
-		config::attribute_value share_view = cfg["share_view"];
-		if (!share_view.empty()){
-			teams[team_index].set_share_view(share_view.to_bool(true));
-			team::clear_caches();
-			invalidate_screen = true;
-		}
-		// Add shared maps to current team
-		// IMPORTANT: this MUST happen *after* share_view is changed
-		config::attribute_value share_maps = cfg["share_maps"];
-		if (!share_maps.empty()){
-			teams[team_index].set_share_maps(share_maps.to_bool(true));
-			team::clear_caches();
-			invalidate_screen = true;
-		}
-
-		// Suppress end turn confirmations?
-		config::attribute_value setc = cfg["suppress_end_turn_confirmation"];
-		if ( !setc.empty() ) {
-			teams[team_index].set_no_turn_confirmation(setc.to_bool());
-		}
-
-		// Change leader scrolling options
-		config::attribute_value stl = cfg["scroll_to_leader"];
-		if ( !stl.empty()) {
-			teams[team_index].set_scroll_to_leader(stl.to_bool(true));
-		}
-	}
-
-	// Flag an update of the screen, if needed.
-	if ( invalidate_screen ) {
-		resources::screen->recalculate_minimap();
-		resources::screen->invalidate_all();
 	}
 }
 

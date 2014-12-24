@@ -51,6 +51,8 @@
 #include "game_display.hpp"             // for game_display
 #include "game_errors.hpp"              // for game_error
 #include "game_events/conditional_wml.hpp"  // for conditional_passed
+#include "game_events/entity_location.hpp"
+#include "game_events/manager.hpp"	// for add_event_handler
 #include "game_events/pump.hpp"         // for queued_event
 #include "game_preferences.hpp"         // for encountered_units
 #include "image.hpp"                    // for get_image, locator
@@ -73,6 +75,7 @@
 #include "scripting/lua_api.hpp"        // for luaW_toboolean, etc
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
+#include "scripting/lua_gui2.hpp"	// for show_gamestate_inspector
 #include "scripting/lua_types.hpp"      // for getunitKey, dlgclbkKey, etc
 #include "sdl/utils.hpp"                // for surface
 #include "side_filter.hpp"              // for side_filter
@@ -88,6 +91,7 @@
 #include "tstring.hpp"                  // for t_string, operator+
 #include "unit.hpp"                     // for unit, intrusive_ptr_add_ref, etc
 #include "unit_animation_component.hpp"  // for unit_animation_component
+#include "unit_display.hpp"
 #include "unit_filter.hpp"
 #include "unit_map.hpp"  // for unit_map, etc
 #include "unit_ptr.hpp"                 // for unit_const_ptr, unit_ptr
@@ -485,6 +489,14 @@ static int impl_unit_variables_set(lua_State *L)
 			// no break
 		default:
 			return luaL_typerror(L, 3, "WML scalar");
+	}
+	return 0;
+}
+
+int game_lua_kernel::intf_gamestate_inspector(lua_State *L)
+{
+	if (game_display_) {
+		return lua_gui2::show_gamestate_inspector(game_display_->video(), luaW_checkvconfig(L, 1));
 	}
 	return 0;
 }
@@ -2587,6 +2599,178 @@ int game_lua_kernel::intf_match_side(lua_State *L)
 	return 1;
 }
 
+int game_lua_kernel::intf_modify_side(lua_State *L)
+{
+	vconfig cfg(luaW_checkvconfig(L, 1));
+
+	bool invalidate_screen = false;
+
+	std::string team_name = cfg["team_name"];
+	std::string user_team_name = cfg["user_team_name"];
+	std::string controller = cfg["controller"];
+	std::string defeat_condition = cfg["defeat_condition"];
+	std::string recruit_str = cfg["recruit"];
+	std::string shroud_data = cfg["shroud_data"];
+	std::string village_support = cfg["village_support"];
+	const config& parsed = cfg.get_parsed_config();
+	const config::const_child_itors &ai = parsed.child_range("ai");
+	std::string switch_ai = cfg["switch_ai"];
+
+	std::vector<int> sides = get_sides_vector(cfg);
+	size_t team_index;
+
+	BOOST_FOREACH(const int &side_num, sides)
+	{
+		team_index = side_num - 1;
+
+		team & tm = teams()[team_index];
+
+		LOG_LUA << "modifying side: " << side_num << "\n";
+		if(!team_name.empty()) {
+			LOG_LUA << "change side's team to team_name '" << team_name << "'\n";
+			tm.change_team(team_name,
+					user_team_name);
+		} else if(!user_team_name.empty()) {
+			LOG_LUA << "change side's user_team_name to '" << user_team_name << "'\n";
+			tm.change_team(tm.team_name(),
+					user_team_name);
+		}
+		// Modify recruit list (override)
+		if (!recruit_str.empty()) {
+			tm.set_recruits(utils::set_split(recruit_str));
+		}
+		// Modify income
+		config::attribute_value income = cfg["income"];
+		if (!income.empty()) {
+			tm.set_base_income(income.to_int() + game_config::base_income);
+		}
+		// Modify total gold
+		config::attribute_value gold = cfg["gold"];
+		if (!gold.empty()) {
+			tm.set_gold(gold);
+		}
+		// Set controller
+		if (!controller.empty()) {
+			tm.change_controller_by_wml(controller);
+		}
+		// Set defeat_condition
+		if (!defeat_condition.empty()) {
+			tm.set_defeat_condition_string(defeat_condition);
+		}
+		// Set shroud
+		config::attribute_value shroud = cfg["shroud"];
+		if (!shroud.empty()) {
+			tm.set_shroud(shroud.to_bool(true));
+			invalidate_screen = true;
+		}
+		// Reset shroud
+		if ( cfg["reset_maps"].to_bool(false) ) {
+			tm.reshroud();
+			invalidate_screen = true;
+		}
+		// Merge shroud data
+		if (!shroud_data.empty()) {
+			tm.merge_shroud_map_data(shroud_data);
+			invalidate_screen = true;
+		}
+		// Set whether team is hidden in status table
+		config::attribute_value hidden = cfg["hidden"];
+		if (!hidden.empty()) {
+			tm.set_hidden(hidden.to_bool(true));
+		}
+		// Set fog
+		config::attribute_value fog = cfg["fog"];
+		if (!fog.empty()) {
+			tm.set_fog(fog.to_bool(true));
+			invalidate_screen = true;
+		}
+		// Reset fog
+		if ( cfg["reset_view"].to_bool(false) ) {
+			tm.refog();
+			invalidate_screen = true;
+		}
+		// Set income per village
+		config::attribute_value village_gold = cfg["village_gold"];
+		if (!village_gold.empty()) {
+			tm.set_village_gold(village_gold);
+		}
+		// Set support (unit levels supported per village, for upkeep purposes)
+		if (!village_support.empty()) {
+			tm.set_village_support(lexical_cast_default<int>(village_support, game_config::village_support));
+		}
+		// Redeploy ai from location (this ignores current AI parameters)
+		if (!switch_ai.empty()) {
+			ai::manager::add_ai_for_side_from_file(side_num,switch_ai,true);
+		}
+		// Override AI parameters
+		if (ai.first != ai.second) {
+			ai::manager::modify_active_ai_config_old_for_side(side_num,ai);
+		}
+		// Change team color
+		config::attribute_value color = cfg["color"];
+		if(!color.empty()) {
+			tm.set_color(color);
+			invalidate_screen = true;
+		}
+		// Change flag imageset
+		config::attribute_value flag = cfg["flag"];
+		if(!flag.empty()) {
+			tm.set_flag(flag);
+			// Needed especially when map isn't animated.
+			invalidate_screen = true;
+		}
+		// If either the flag set or the team color changed, we need to
+		// rebuild the team's flag cache to reflect the changes. Note that
+		// this is not required for flag icons (used by the theme UI only).
+		if((!color.empty() || !flag.empty()) && game_display_) {
+			game_display_->reinit_flags_for_side(team_index);
+		}
+		// Change flag icon
+		config::attribute_value flag_icon = cfg["flag_icon"];
+		if(!flag_icon.empty()) {
+			tm.set_flag_icon(flag_icon);
+			// Not needed.
+			//invalidate_screen = true;
+		}
+		// Add shared view to current team
+		config::attribute_value share_view = cfg["share_view"];
+		if (!share_view.empty()){
+			tm.set_share_view(share_view.to_bool(true));
+			team::clear_caches();
+			invalidate_screen = true;
+		}
+		// Add shared maps to current team
+		// IMPORTANT: this MUST happen *after* share_view is changed
+		config::attribute_value share_maps = cfg["share_maps"];
+		if (!share_maps.empty()){
+			tm.set_share_maps(share_maps.to_bool(true));
+			team::clear_caches();
+			invalidate_screen = true;
+		}
+
+		// Suppress end turn confirmations?
+		config::attribute_value setc = cfg["suppress_end_turn_confirmation"];
+		if ( !setc.empty() ) {
+			tm.set_no_turn_confirmation(setc.to_bool());
+		}
+
+		// Change leader scrolling options
+		config::attribute_value stl = cfg["scroll_to_leader"];
+		if ( !stl.empty()) {
+			tm.set_scroll_to_leader(stl.to_bool(true));
+		}
+	}
+
+	// Flag an update of the screen, if needed.
+	if ( invalidate_screen && game_display_) {
+		game_display_->recalculate_minimap();
+		game_display_->invalidate_all();
+	}
+
+
+	return 0;
+}
+
 /**
  * Returns a proxy table array for all sides matching the given SSF.
  * - Arg 1: SSF
@@ -2729,6 +2913,26 @@ int game_lua_kernel::intf_remove_tile_overlay(lua_State *L)
 	return 0;
 }
 
+/// Adding new events
+int game_lua_kernel::intf_add_event(lua_State *L)
+{
+	vconfig cfg(luaW_checkvconfig(L, 1));
+	game_events::manager & man = *game_state_.events_manager_;
+
+	if (!cfg["delayed_variable_substitution"].to_bool(true)) {
+		man.add_event_handler(cfg.get_parsed_config());
+	} else {
+		man.add_event_handler(cfg.get_config());
+	}
+	return 0;
+}
+
+int game_lua_kernel::intf_remove_event(lua_State *L)
+{
+	game_state_.events_manager_->remove_event_handler(luaL_checkstring(L, 1));
+	return 0;
+}
+
 int game_lua_kernel::intf_color_adjust(lua_State *L)
 {
 	if (game_display_) {
@@ -2755,6 +2959,166 @@ int game_lua_kernel::intf_delay(lua_State *L)
 		}
 	} while (int(final - SDL_GetTicks()) > 0);
 	return 0;
+}
+
+namespace { // Types
+
+	class recursion_preventer {
+		typedef std::map<map_location, int> t_counter;
+		static t_counter counter_;
+		static const int max_recursion = 10;
+
+		map_location loc_;
+		bool too_many_recursions_;
+
+		public:
+		recursion_preventer(map_location& loc) :
+			loc_(loc),
+			too_many_recursions_(false)
+		{
+			t_counter::iterator inserted = counter_.insert(std::make_pair(loc_, 0)).first;
+			++inserted->second;
+			too_many_recursions_ = inserted->second >= max_recursion;
+		}
+		~recursion_preventer()
+		{
+			t_counter::iterator itor = counter_.find(loc_);
+			if (--itor->second == 0)
+			{
+				counter_.erase(itor);
+			}
+		}
+		bool too_many_recursions() const
+		{
+			return too_many_recursions_;
+		}
+	};
+	recursion_preventer::t_counter recursion_preventer::counter_;
+	typedef boost::scoped_ptr<recursion_preventer> recursion_preventer_ptr;
+} // end anonymouse namespace (types)
+
+int game_lua_kernel::intf_kill(lua_State *L)
+{
+	vconfig cfg(luaW_checkvconfig(L, 1));
+
+	const game_events::queued_event &event_info = *queued_events_.top();
+
+	size_t number_killed = 0;
+
+	bool secondary_unit = cfg.has_child("secondary_unit");
+	game_events::entity_location killer_loc(map_location(0, 0));
+	if(cfg["fire_event"].to_bool() && secondary_unit)
+	{
+		secondary_unit = false;
+		const unit_filter ufilt(cfg.child("secondary_unit"), &game_state_);
+		for(unit_map::const_unit_iterator unit = units().begin(); unit; ++unit) {
+				if ( ufilt( *unit) )
+				{
+					killer_loc = game_events::entity_location(*unit);
+					secondary_unit = true;
+					break;
+				}
+		}
+		if(!secondary_unit) {
+			WRN_LUA << "failed to match [secondary_unit] in [kill] with a single on-board unit" << std::endl;
+		}
+	}
+
+	//Find all the dead units first, because firing events ruins unit_map iteration
+	std::vector<unit *> dead_men_walking;
+	const unit_filter ufilt(cfg, &game_state_);
+	BOOST_FOREACH(unit & u, units()){
+		if ( ufilt(u) ) {
+			dead_men_walking.push_back(&u);
+		}
+	}
+
+	BOOST_FOREACH(unit * un, dead_men_walking) {
+		map_location loc(un->get_location());
+		bool fire_event = false;
+		game_events::entity_location death_loc(*un);
+		if(!secondary_unit) {
+			killer_loc = game_events::entity_location(*un);
+		}
+
+		if (cfg["fire_event"].to_bool())
+			{
+				// Prevent infinite recursion of 'die' events
+				fire_event = true;
+				recursion_preventer_ptr recursion_prevent;
+
+				if (event_info.loc1 == death_loc && (event_info.name == "die" || event_info.name == "last breath"))
+					{
+						recursion_prevent.reset(new recursion_preventer(death_loc));
+
+						if(recursion_prevent->too_many_recursions())
+							{
+								fire_event = false;
+
+								ERR_LUA << "tried to fire 'die' or 'last breath' event on primary_unit inside its own 'die' or 'last breath' event with 'first_time_only' set to false!" << std::endl;
+							}
+					}
+			}
+		if (fire_event) {
+			play_controller_.pump().fire("last breath", death_loc, killer_loc);
+		}
+
+		// Visual consequences of the kill.
+		if (game_display_) {
+			if (cfg["animate"].to_bool()) {
+				game_display_->scroll_to_tile(loc);
+				if (unit_map::iterator iun = units().find(loc)) {
+					unit_display::unit_die(loc, *iun);
+				}
+			} else {
+				// Make sure the unit gets (fully) cleaned off the screen.
+				game_display_->invalidate(loc);
+				if (unit_map::iterator iun = units().find(loc)) {
+					iun->anim_comp().invalidate(*game_display_);
+				}
+			}
+			game_display_->redraw_minimap();
+		}
+
+		if (fire_event) {
+			play_controller_.pump().fire("die", death_loc, killer_loc);
+			unit_map::iterator iun = units().find(death_loc);
+			if ( death_loc.matches_unit(iun) ) {
+				units().erase(iun);
+			}
+		}
+		else units().erase(loc);
+
+		++number_killed;
+	}
+
+	// If the filter doesn't contain positional information,
+	// then it may match units on all recall lists.
+	const config::attribute_value cfg_x = cfg["x"];
+	const config::attribute_value cfg_y = cfg["y"];
+	if((cfg_x.empty() || cfg_x == "recall")
+	&& (cfg_y.empty() || cfg_y == "recall"))
+	{
+		const unit_filter ufilt(cfg, &game_state_);
+		//remove the unit from the corresponding team's recall list
+		for(std::vector<team>::iterator pi = teams().begin();
+				pi!=teams().end(); ++pi)
+		{
+			for(std::vector<unit_ptr>::iterator j = pi->recall_list().begin(); j != pi->recall_list().end();) { //TODO: This block is really messy, cleanup somehow...
+				scoped_recall_unit auto_store("this_unit", pi->save_id(), j - pi->recall_list().begin());
+				if (ufilt( *(*j), map_location() )) {
+					j = pi->recall_list().erase(j);
+					++number_killed;
+				} else {
+					++j;
+				}
+			}
+		}
+	}
+
+	lua_pushinteger(L, number_killed);
+
+	return 1;
 }
 
 int game_lua_kernel::intf_label(lua_State *L)
@@ -3219,6 +3583,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ NULL, NULL }
 	};
 	lua_cpp::Reg const cpp_callbacks[] = {
+		{ "add_event_handler",		boost::bind(&game_lua_kernel::intf_add_event, this, _1)				},
 		{ "add_tile_overlay",		boost::bind(&game_lua_kernel::intf_add_tile_overlay, this, _1)			},
 		{ "allow_end_turn",		boost::bind(&game_lua_kernel::intf_allow_end_turn, this, _1)			},
 		{ "allow_undo",			boost::bind(&game_lua_kernel::intf_allow_undo, this, _1)			},
@@ -3253,17 +3618,20 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "get_displayed_unit",		boost::bind(&game_lua_kernel::intf_get_displayed_unit, this, _1)		},
 		{ "highlight_hex",		boost::bind(&game_lua_kernel::intf_highlight_hex, this, _1)			},
 		{ "is_enemy",			boost::bind(&game_lua_kernel::intf_is_enemy, this, _1)				},
+		{ "kill",			boost::bind(&game_lua_kernel::intf_kill, this, _1)				},
 		{ "label",			boost::bind(&game_lua_kernel::intf_label, this, _1)				},
 		{ "lock_view",			boost::bind(&game_lua_kernel::intf_lock_view, this, _1)				},
 		{ "match_location",		boost::bind(&game_lua_kernel::intf_match_location, this, _1)			},
 		{ "match_side",			boost::bind(&game_lua_kernel::intf_match_side, this, _1)			},
 		{ "match_unit",			boost::bind(&game_lua_kernel::intf_match_unit, this, _1)			},
 		{ "message",			boost::bind(&game_lua_kernel::intf_message, this, _1)				},
+		{ "modify_side",		boost::bind(&game_lua_kernel::intf_modify_side, this, _1)			},
 		{ "play_sound",			boost::bind(&game_lua_kernel::intf_play_sound, this, _1)			},
 		{ "place_shroud",		boost::bind(&game_lua_kernel::intf_shroud_op, this, _1, true)			},
 		{ "put_recall_unit",		boost::bind(&game_lua_kernel::intf_put_recall_unit, this, _1)			},
 		{ "put_unit",			boost::bind(&game_lua_kernel::intf_put_unit, this, _1)				},
 		{ "redraw",			boost::bind(&game_lua_kernel::intf_redraw, this, _1)				},
+		{ "remove_event_handler",	boost::bind(&game_lua_kernel::intf_remove_event, this, _1)			},
 		{ "remove_shroud",		boost::bind(&game_lua_kernel::intf_shroud_op, this, _1, false)			},
 		{ "remove_tile_overlay",	boost::bind(&game_lua_kernel::intf_remove_tile_overlay, this, _1)		},
 		{ "replace_schedule",		boost::bind(&game_lua_kernel::intf_replace_schedule, this, _1)			},

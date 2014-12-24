@@ -16,6 +16,7 @@
 
 #include "gui/auxiliary/canvas.hpp"     // for tcanvas
 #include "gui/auxiliary/window_builder.hpp"  // for twindow_builder, etc
+#include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/widgets/clickable.hpp"    // for tclickable_
 #include "gui/widgets/control.hpp"      // for tcontrol
@@ -442,6 +443,13 @@ int intf_set_dialog_active(lua_State *L)
 int show_lua_console(lua_State * /*L*/, CVideo & video, lua_kernel_base * lk)
 {
 	gui2::tlua_interpreter::display(video, lk);
+	return 0;
+}
+
+int show_gamestate_inspector(CVideo & video, const vconfig & cfg)
+{
+	gui2::tgamestate_inspector inspect_dialog(cfg);
+	inspect_dialog.show(video);
 	return 0;
 }
 
