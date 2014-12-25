@@ -239,7 +239,10 @@ std::string unit_topic_generator::operator()() const {
 		const unit_type& female_type = type_.get_gender_unit_type(unit_race::FEMALE);
 		const unit_type& male_type = type_.get_gender_unit_type(unit_race::MALE);
 
-		// Show the unit's image and its level.
+		ss << "Level " << type_.level();
+		ss << "\n\n";
+
+		// Show the unit's image.
 #ifdef LOW_MEM
 		ss << "<img>src='" << male_type.image() << "~XBRZ(2)'</img> ";
 #else
@@ -252,10 +255,6 @@ std::string unit_topic_generator::operator()() const {
 #else
 			ss << "<img>src='" << female_type.image() << "~RC(" << female_type.flag_rgb() << ">1)~XBRZ(2)" << "'</img> ";
 #endif
-
-
-		ss << "<format>font_size=" << font::relative_size(11) << " text=' " << escape(_("level"))
-		   << " " << type_.level() << "'</format>";
 
 		const std::string &male_portrait = male_type.small_profile();
 		const std::string &female_portrait = female_type.small_profile();
