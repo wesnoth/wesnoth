@@ -28,15 +28,12 @@ class vconfig;
 #include "scripting/lua_types.hpp"
 
 namespace lua_common {
-	int impl_gettext(lua_State *L);
 	int intf_textdomain(lua_State *L);
-	int impl_tstring_concat(lua_State *L);
-	int impl_tstring_collect(lua_State *L);
-	int impl_tstring_tostring(lua_State *L);
-	int impl_vconfig_get(lua_State *L);
-	int impl_vconfig_size(lua_State *L);
-	int impl_vconfig_collect(lua_State *L);
 	int intf_tovconfig(lua_State* L);
+
+	std::string register_gettext_metatable(lua_State *L);
+	std::string register_tstring_metatable(lua_State *L);
+	std::string register_vconfig_metatable(lua_State *L);
 }
 
 /**

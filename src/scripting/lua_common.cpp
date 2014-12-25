@@ -47,7 +47,7 @@ namespace lua_common {
  * - Arg 2: string to translate.
  * - Ret 1: string containing the translatable string.
  */
-int impl_gettext(lua_State *L)
+static int impl_gettext(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 2);
 	char const *d = static_cast<char *>(lua_touserdata(L, 1));
@@ -104,7 +104,7 @@ static void tstring_concat_aux(lua_State *L, t_string &dst, int src)
 /**
  * Appends a scalar to a t_string object (__concat metamethod).
  */
-int impl_tstring_concat(lua_State *L)
+static int impl_tstring_concat(lua_State *L)
 {
 	// Create a new t_string.
 	t_string *t = new(lua_newuserdata(L, sizeof(t_string))) t_string;
@@ -125,7 +125,7 @@ int impl_tstring_concat(lua_State *L)
 /**
  * Destroys a t_string object before it is collected (__gc metamethod).
  */
-int impl_tstring_collect(lua_State *L)
+static int impl_tstring_collect(lua_State *L)
 {
 	t_string *t = static_cast<t_string *>(lua_touserdata(L, 1));
 	t->t_string::~t_string();
@@ -136,7 +136,7 @@ int impl_tstring_collect(lua_State *L)
  * Converts a t_string object to a string (__tostring metamethod);
  * that is, performs a translation.
  */
-int impl_tstring_tostring(lua_State *L)
+static int impl_tstring_tostring(lua_State *L)
 {
 	t_string *t = static_cast<t_string *>(lua_touserdata(L, 1));
 	lua_pushstring(L, t->c_str());
@@ -148,7 +148,7 @@ int impl_tstring_tostring(lua_State *L)
  * Special fields __literal, __shallow_literal, __parsed, and
  * __shallow_parsed, return Lua tables.
  */
-int impl_vconfig_get(lua_State *L)
+static int impl_vconfig_get(lua_State *L)
 {
 	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
 
@@ -219,7 +219,7 @@ int impl_vconfig_get(lua_State *L)
 /**
  * Returns the number of a child of a vconfig object.
  */
-int impl_vconfig_size(lua_State *L)
+static int impl_vconfig_size(lua_State *L)
 {
 	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
 	lua_pushinteger(L, v->null() ? 0 :
@@ -230,7 +230,7 @@ int impl_vconfig_size(lua_State *L)
 /**
  * Destroys a vconfig object before it is collected (__gc metamethod).
  */
-int impl_vconfig_collect(lua_State *L)
+static int impl_vconfig_collect(lua_State *L)
 {
 	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
 	v->vconfig::~vconfig();
@@ -247,6 +247,65 @@ int intf_tovconfig(lua_State *L)
 	vconfig vcfg = luaW_checkvconfig(L, 1);
 	luaW_pushvconfig(L, vcfg);
 	return 1;
+}
+
+/**
+ * Adds the gettext metatable
+ */
+std::string register_gettext_metatable(lua_State *L)
+{
+	lua_pushlightuserdata(L
+			, gettextKey);
+	lua_createtable(L, 0, 2);
+	lua_pushcfunction(L, lua_common::impl_gettext);
+	lua_setfield(L, -2, "__call");
+	lua_pushstring(L, "message domain");
+	lua_setfield(L, -2, "__metatable");
+	lua_rawset(L, LUA_REGISTRYINDEX);
+
+	return "Adding gettext metatable...\n";
+}
+
+/**
+ * Adds the tstring metatable
+ */
+std::string register_tstring_metatable(lua_State *L)
+{
+	lua_pushlightuserdata(L
+			, tstringKey);
+	lua_createtable(L, 0, 4);
+	lua_pushcfunction(L, impl_tstring_concat);
+	lua_setfield(L, -2, "__concat");
+	lua_pushcfunction(L, impl_tstring_collect);
+	lua_setfield(L, -2, "__gc");
+	lua_pushcfunction(L, impl_tstring_tostring);
+	lua_setfield(L, -2, "__tostring");
+	lua_pushstring(L, "translatable string");
+	lua_setfield(L, -2, "__metatable");
+	lua_rawset(L, LUA_REGISTRYINDEX);
+
+	return "Adding tstring metatable...\n";
+}
+
+/**
+ * Adds the vconfig metatable
+ */
+std::string register_vconfig_metatable(lua_State *L)
+{
+	lua_pushlightuserdata(L
+			, vconfigKey);
+	lua_createtable(L, 0, 4);
+	lua_pushcfunction(L, impl_vconfig_collect);
+	lua_setfield(L, -2, "__gc");
+	lua_pushcfunction(L, impl_vconfig_get);
+	lua_setfield(L, -2, "__index");
+	lua_pushcfunction(L, impl_vconfig_size);
+	lua_setfield(L, -2, "__len");
+	lua_pushstring(L, "wml object");
+	lua_setfield(L, -2, "__metatable");
+	lua_rawset(L, LUA_REGISTRYINDEX);
+
+	return "Adding vconfig metatable...\n";
 }
 
 } // end namespace lua_common
