@@ -215,20 +215,8 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	// Create the tstring metatable.
-	cmd_log_ << "Adding tstring metatable...\n";
+	cmd_log_ << lua_common::register_tstring_metatable(L);
 
-	lua_pushlightuserdata(L
-			, tstringKey);
-	lua_createtable(L, 0, 4);
-	lua_pushcfunction(L, lua_common::impl_tstring_concat);
-	lua_setfield(L, -2, "__concat");
-	lua_pushcfunction(L, lua_common::impl_tstring_collect);
-	lua_setfield(L, -2, "__gc");
-	lua_pushcfunction(L, lua_common::impl_tstring_tostring);
-	lua_setfield(L, -2, "__tostring");
-	lua_pushstring(L, "translatable string");
-	lua_setfield(L, -2, "__metatable");
-	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	lua_settop(L, 0);
 

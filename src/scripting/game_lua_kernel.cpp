@@ -3858,20 +3858,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	// Create the vconfig metatable.
-	cmd_log_ << "Adding vconfig metatable...\n";
-
-	lua_pushlightuserdata(L
-			, vconfigKey);
-	lua_createtable(L, 0, 4);
-	lua_pushcfunction(L, lua_common::impl_vconfig_collect);
-	lua_setfield(L, -2, "__gc");
-	lua_pushcfunction(L, lua_common::impl_vconfig_get);
-	lua_setfield(L, -2, "__index");
-	lua_pushcfunction(L, lua_common::impl_vconfig_size);
-	lua_setfield(L, -2, "__len");
-	lua_pushstring(L, "wml object");
-	lua_setfield(L, -2, "__metatable");
-	lua_rawset(L, LUA_REGISTRYINDEX);
+	cmd_log_ << lua_common::register_vconfig_metatable(L);
 
 	// Create the ai elements table.
 	cmd_log_ << "Adding ai elements table...\n";
