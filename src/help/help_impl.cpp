@@ -870,7 +870,10 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	}
 
 	std::stringstream text;
-	text << race_description << "\n\n";
+
+	if (!race_description.empty()) {
+		text << race_description << "\n\n";
+	}
 
 	if (alignments.size() > 0) {
 		std::set<std::string>::iterator it = alignments.begin();
