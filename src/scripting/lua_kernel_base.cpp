@@ -203,16 +203,7 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 	lua_pop(L, 1);
 
 	// Create the gettext metatable.
-	cmd_log_ << "Adding gettext metatable...\n";
-
-	lua_pushlightuserdata(L
-			, gettextKey);
-	lua_createtable(L, 0, 2);
-	lua_pushcfunction(L, lua_common::impl_gettext);
-	lua_setfield(L, -2, "__call");
-	lua_pushstring(L, "message domain");
-	lua_setfield(L, -2, "__metatable");
-	lua_rawset(L, LUA_REGISTRYINDEX);
+	cmd_log_ << lua_common::register_gettext_metatable(L);
 
 	// Create the tstring metatable.
 	cmd_log_ << lua_common::register_tstring_metatable(L);
