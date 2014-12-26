@@ -127,9 +127,12 @@ bool application_lua_kernel::thread::is_running() {
 	return started_ ? (lua_status(T_) == LUA_YIELD) : (lua_status(T_) == LUA_OK);
 }
 
+static char * v_threadtableKey = 0;
+static void * const threadtableKey = static_cast<void *> (& v_threadtableKey);
+
 static lua_State * get_new_thread(lua_State * L)
 {
-	lua_pushlightuserdata(L	, currentscriptKey);
+	lua_pushlightuserdata(L	, threadtableKey);
 	lua_pushvalue(L,1);				// duplicate script key, since we need to store later
 							// stack is now [script key] [script key]
 

@@ -34,7 +34,9 @@ namespace lua_common {
 	std::string register_gettext_metatable(lua_State *L);
 	std::string register_tstring_metatable(lua_State *L);
 	std::string register_vconfig_metatable(lua_State *L);
+
 }
+extern const char * tstringKey;
 
 /**
  * Pushes a vconfig on the top of the stack.
@@ -86,7 +88,7 @@ void luaW_pushconfig(lua_State *L, config const &cfg);
  * @note If the table has holes in the integer keys or floating-point keys,
  *       some keys will be ignored and the error will go undetected.
  */
-bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta = 0);
+bool luaW_toconfig(lua_State *L, int index, config &cfg);
 
 /**
  * Converts an optional table or vconfig to a config object.

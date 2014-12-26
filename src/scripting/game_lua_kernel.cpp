@@ -77,7 +77,9 @@
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
 #include "scripting/lua_gui2.hpp"	// for show_gamestate_inspector
+#include "scripting/lua_team.hpp"
 #include "scripting/lua_types.hpp"      // for getunitKey, dlgclbkKey, etc
+#include "scripting/lua_unit_type.hpp"
 #include "sdl/utils.hpp"                // for surface
 #include "side_filter.hpp"              // for side_filter
 #include "sound.hpp"                    // for commit_music_changes, etc
@@ -197,33 +199,6 @@ namespace {
 		}
 	};
 }//unnamed namespace for queued_event_context
-
-/**
- * Gets some data on a unit type (__index metamethod).
- * - Arg 1: table containing an "id" field.
- * - Arg 2: string containing the name of the property.
- * - Ret 1: something containing the attribute.
- */
-static int impl_unit_type_get(lua_State *L)
-{
-	char const *m = luaL_checkstring(L, 2);
-	lua_pushstring(L, "id");
-	lua_rawget(L, 1);
-	const unit_type *utp = unit_types.find(lua_tostring(L, -1));
-	if (!utp) return luaL_argerror(L, 1, "unknown unit type");
-	unit_type const &ut = *utp;
-
-	// Find the corresponding attribute.
-	return_tstring_attrib("name", ut.type_name());
-	return_int_attrib("max_hitpoints", ut.hitpoints());
-	return_int_attrib("max_moves", ut.movement());
-	return_int_attrib("max_experience", ut.experience_needed());
-	return_int_attrib("cost", ut.cost());
-	return_int_attrib("level", ut.level());
-	return_int_attrib("recall_cost", ut.recall_cost());
-	return_cfgref_attrib("__cfg", ut.get_cfg());
-	return 0;
-}
 
 /**
  * Gets some data on a race (__index metamethod).
@@ -483,8 +458,8 @@ static int impl_unit_variables_set(lua_State *L)
 			v = lua_tostring(L, 3);
 			break;
 		case LUA_TUSERDATA:
-			if (luaW_hasmetatable(L, 3, tstringKey)) {
-				v = *static_cast<t_string *>(lua_touserdata(L, 3));
+			if (t_string * t_str = static_cast<t_string *> (luaL_testudata(L, 3, tstringKey))) {
+				v = *t_str;
 				break;
 			}
 			// no break
@@ -777,8 +752,8 @@ int game_lua_kernel::intf_set_variable(lua_State *L)
 			v.as_scalar() = lua_tostring(L, 2);
 			break;
 		case LUA_TUSERDATA:
-			if (luaW_hasmetatable(L, 2, tstringKey)) {
-				v.as_scalar() = *static_cast<t_string *>(lua_touserdata(L, 2));
+			if (t_string * t_str = static_cast<t_string*> (luaL_testudata(L, 2, tstringKey))) {
+				v.as_scalar() = *t_str;
 				break;
 			}
 			// no break
@@ -957,101 +932,6 @@ int game_lua_kernel::intf_lock_view(lua_State *L)
 		game_display_->set_view_locked(lock);
 	}
 	return 0;
-}
-
-/**
- * Gets some data on a side (__index metamethod).
- * - Arg 1: full userdata containing the team.
- * - Arg 2: string containing the name of the property.
- * - Ret 1: something containing the attribute.
- */
-static int impl_side_get(lua_State *L)
-{
-	// Hidden metamethod, so arg1 has to be a pointer to a team.
-	team &t = **static_cast<team **>(lua_touserdata(L, 1));
-	char const *m = luaL_checkstring(L, 2);
-
-	// Find the corresponding attribute.
-	return_int_attrib("side", t.side());
-	return_int_attrib("gold", t.gold());
-	return_tstring_attrib("objectives", t.objectives());
-	return_int_attrib("village_gold", t.village_gold());
-	return_int_attrib("village_support", t.village_support());
-	return_int_attrib("recall_cost", t.recall_cost());
-	return_int_attrib("base_income", t.base_income());
-	return_int_attrib("total_income", t.total_income());
-	return_bool_attrib("objectives_changed", t.objectives_changed());
-	return_bool_attrib("fog", t.uses_fog());
-	return_bool_attrib("shroud", t.uses_shroud());
-	return_bool_attrib("hidden", t.hidden());
-	return_bool_attrib("scroll_to_leader", t.get_scroll_to_leader());
-	return_string_attrib("flag", t.flag());
-	return_string_attrib("flag_icon", t.flag_icon());
-	return_tstring_attrib("user_team_name", t.user_team_name());
-	return_string_attrib("team_name", t.team_name());
-	return_string_attrib("name", t.name());
-	return_string_attrib("color", t.color());
-	return_cstring_attrib("controller", team::CONTROLLER_to_string(t.controller()).c_str());
-	return_string_attrib("defeat_condition", team::DEFEAT_CONDITION_to_string(t.defeat_condition()));
-	return_bool_attrib("lost", t.lost());
-
-	if (strcmp(m, "recruit") == 0) {
-		std::set<std::string> const &recruits = t.recruits();
-		lua_createtable(L, recruits.size(), 0);
-		int i = 1;
-		BOOST_FOREACH(std::string const &r, t.recruits()) {
-			lua_pushstring(L, r.c_str());
-			lua_rawseti(L, -2, i++);
-		}
-		return 1;
-	}
-
-	return_cfg_attrib("__cfg", t.write(cfg));
-	return 0;
-}
-
-/**
- * Sets some data on a side (__newindex metamethod).
- * - Arg 1: full userdata containing the team.
- * - Arg 2: string containing the name of the property.
- * - Arg 3: something containing the attribute.
- */
-static int impl_side_set(lua_State *L)
-{
-	// Hidden metamethod, so arg1 has to be a pointer to a team.
-	team &t = **static_cast<team **>(lua_touserdata(L, 1));
-	char const *m = luaL_checkstring(L, 2);
-
-	// Find the corresponding attribute.
-	modify_int_attrib("gold", t.set_gold(value));
-	modify_tstring_attrib("objectives", t.set_objectives(value, true));
-	modify_int_attrib("village_gold", t.set_village_gold(value));
-	modify_int_attrib("village_support", t.set_village_support(value));
-	modify_int_attrib("recall_cost", t.set_recall_cost(value));
-	modify_int_attrib("base_income", t.set_base_income(value));
-	modify_bool_attrib("objectives_changed", t.set_objectives_changed(value));
-	modify_bool_attrib("hidden", t.set_hidden(value));
-	modify_bool_attrib("scroll_to_leader", t.set_scroll_to_leader(value));
-	modify_tstring_attrib("user_team_name", t.change_team(t.team_name(), value));
-	modify_string_attrib("team_name", t.change_team(value, t.user_team_name()));
-	modify_string_attrib("controller", t.change_controller_by_wml(value));
-	modify_string_attrib("color", t.set_color(value));
-	modify_string_attrib("defeat_condition", t.set_defeat_condition_string(value));
-	modify_bool_attrib("lost", t.set_lost(value));
-
-	if (strcmp(m, "recruit") == 0) {
-		t.set_recruits(std::set<std::string>());
-		if (!lua_istable(L, 3)) return 0;
-		for (int i = 1;; ++i) {
-			lua_rawgeti(L, 3, i);
-			if (lua_isnil(L, -1)) break;
-			t.add_recruit(lua_tostring(L, -1));
-			lua_pop(L, 1);
-		}
-		return 0;
-	}
-
-	return luaL_argerror(L, 2, "unknown modifiable property");
 }
 
 /**
@@ -2899,25 +2779,12 @@ int game_lua_kernel::intf_get_sides(lua_State* L)
 		sides = filter.get_teams();
 	}
 
-	//keep this stack in the loop:
-	//1: getsideKey getmetatable
-	//2: return table
-	//3: userdata for a side
-	//4: getsideKey metatable copy (of index 1)
-
 	lua_settop(L, 0);
-	lua_pushlightuserdata(L
-			, getsideKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_createtable(L, sides.size(), 0);
 	unsigned index = 1;
 	BOOST_FOREACH(int side, sides) {
-		// Create a full userdata containing a pointer to the team.
-		team** t = static_cast<team**>(lua_newuserdata(L, sizeof(team*)));
-		*t = &(teams()[side - 1]);
-		lua_pushvalue(L, 1);
-		lua_setmetatable(L, 3);
-		lua_rawseti(L, 2, index);
+		luaW_pushteam(L, teams()[side - 1]);
+		lua_rawseti(L, -2, index);
 		++index;
 	}
 
@@ -3775,30 +3642,10 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 	lua_setglobal(L, "wesnoth");
 
 	// Create the getside metatable.
-	cmd_log_ << "Adding getside metatable...\n";
-
-	lua_pushlightuserdata(L
-			, getsideKey);
-	lua_createtable(L, 0, 3);
-	lua_pushcfunction(L, impl_side_get);
-	lua_setfield(L, -2, "__index");
-	lua_pushcfunction(L, impl_side_set);
-	lua_setfield(L, -2, "__newindex");
-	lua_pushstring(L, "side");
-	lua_setfield(L, -2, "__metatable");
-	lua_rawset(L, LUA_REGISTRYINDEX);
+	cmd_log_ << lua_team::register_metatable(L);
 
 	// Create the gettype metatable.
-	cmd_log_ << "Adding gettype metatable...\n";
-
-	lua_pushlightuserdata(L
-			, gettypeKey);
-	lua_createtable(L, 0, 2);
-	lua_pushcfunction(L, impl_unit_type_get);
-	lua_setfield(L, -2, "__index");
-	lua_pushstring(L, "unit type");
-	lua_setfield(L, -2, "__metatable");
-	lua_rawset(L, LUA_REGISTRYINDEX);
+	cmd_log_ << lua_unit_type::register_metatable(L);
 
 	//Create the getrace metatable
 	cmd_log_ << "Adding getrace metatable...\n";
@@ -3939,45 +3786,34 @@ void game_lua_kernel::initialize()
 	// Still needed for backwards compatibility.
 	lua_getglobal(L, "wesnoth");
 
-	lua_pushlightuserdata(L
-			, getsideKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_createtable(L, teams().size(), 0);
-	for (unsigned i = 0; i != teams().size(); ++i)
-	{
-		// Create a full userdata containing a pointer to the team.
-		team **p = static_cast<team **>(lua_newuserdata(L, sizeof(team *)));
-		*p = &teams()[i];
-		lua_pushvalue(L, -3);
-		lua_setmetatable(L, -2);
-		lua_rawseti(L, -2, i + 1);
+	lua_pushstring(L, "get_sides");
+	lua_rawget(L, -2);
+	lua_createtable(L, 0, 0);
+
+	if (!protected_call(1, 1, boost::bind(&lua_kernel_base::log_error, this, _1, _2))) {
+		cmd_log_ << "Failed to compute wesnoth.sides\n";
+	} else {
+		lua_setfield(L, -2, "sides");
+		cmd_log_ << "Added wesnoth.sides\n";
 	}
-	lua_setfield(L, -3, "sides");
-	lua_pop(L, 2);
 
 	// Create the unit_types table.
 	cmd_log_ << "Adding unit_types table...\n";
 
+	lua_settop(L, 0);
 	lua_getglobal(L, "wesnoth");
-	lua_pushlightuserdata(L
-			, gettypeKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_newtable(L);
 	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &ut, unit_types.types())
 	{
-		lua_createtable(L, 0, 1);
-		lua_pushstring(L, ut.first.c_str());
-		lua_setfield(L, -2, "id");
-		lua_pushvalue(L, -3);
-		lua_setmetatable(L, -2);
+		luaW_pushunittype(L, ut.first);
 		lua_setfield(L, -2, ut.first.c_str());
 	}
-	lua_setfield(L, -3, "unit_types");
-	lua_pop(L, 2);
+	lua_setfield(L, -2, "unit_types");
 
 	//Create the races table.
 	cmd_log_ << "Adding races table...\n";
 
+	lua_settop(L, 0);
 	lua_getglobal(L, "wesnoth");
 	lua_pushlightuserdata(L
 			, getraceKey);

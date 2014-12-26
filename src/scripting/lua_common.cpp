@@ -39,6 +39,10 @@
 #include <new>                          // for operator new
 #include <string>                       // for string, basic_string
 
+static const char * gettextKey = "gettext";
+static const char * vconfigKey = "vconfig";
+const char * tstringKey = "translatable string";
+
 namespace lua_common {
 
 /**
@@ -65,13 +69,11 @@ int intf_textdomain(lua_State *L)
 {
 	size_t l;
 	char const *m = luaL_checklstring(L, 1, &l);
+
 	void *p = lua_newuserdata(L, l + 1);
 	memcpy(p, m, l + 1);
-	lua_pushlightuserdata(L
-			, gettextKey);
 
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, -2);
+	luaL_setmetatable(L, gettextKey);
 	return 1;
 }
 
@@ -108,17 +110,12 @@ static int impl_tstring_concat(lua_State *L)
 {
 	// Create a new t_string.
 	t_string *t = new(lua_newuserdata(L, sizeof(t_string))) t_string;
-
-	lua_pushlightuserdata(L
-			, tstringKey);
-
-	lua_rawget(L, LUA_REGISTRYINDEX);
+	luaL_setmetatable(L, tstringKey);
 
 	// Append both arguments to t.
 	tstring_concat_aux(L, *t, 1);
 	tstring_concat_aux(L, *t, 2);
 
-	lua_setmetatable(L, -2);
 	return 1;
 }
 
@@ -159,15 +156,11 @@ static int impl_vconfig_get(lua_State *L)
 		unsigned pos = lua_tointeger(L, 2) - 1;
 		if (pos >= len) return 0;
 		std::advance(i, pos);
+
 		lua_createtable(L, 2, 0);
 		lua_pushstring(L, i.get_key().c_str());
 		lua_rawseti(L, -2, 1);
-		new(lua_newuserdata(L, sizeof(vconfig))) vconfig(i.get_child());
-		lua_pushlightuserdata(L
-				, vconfigKey);
-
-		lua_rawget(L, LUA_REGISTRYINDEX);
-		lua_setmetatable(L, -2);
+		luaW_pushvconfig(L, vconfig(i.get_child()));
 		lua_rawseti(L, -2, 2);
 		return 1;
 	}
@@ -254,14 +247,16 @@ int intf_tovconfig(lua_State *L)
  */
 std::string register_gettext_metatable(lua_State *L)
 {
-	lua_pushlightuserdata(L
-			, gettextKey);
-	lua_createtable(L, 0, 2);
-	lua_pushcfunction(L, lua_common::impl_gettext);
-	lua_setfield(L, -2, "__call");
+	luaL_newmetatable(L, gettextKey);
+
+	static luaL_Reg const callbacks[] = {
+		{ "__call", 	    &impl_gettext},
+		{ NULL, NULL }
+	};
+	luaL_setfuncs(L, callbacks, 0);
+
 	lua_pushstring(L, "message domain");
 	lua_setfield(L, -2, "__metatable");
-	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	return "Adding gettext metatable...\n";
 }
@@ -271,18 +266,18 @@ std::string register_gettext_metatable(lua_State *L)
  */
 std::string register_tstring_metatable(lua_State *L)
 {
-	lua_pushlightuserdata(L
-			, tstringKey);
-	lua_createtable(L, 0, 4);
-	lua_pushcfunction(L, impl_tstring_concat);
-	lua_setfield(L, -2, "__concat");
-	lua_pushcfunction(L, impl_tstring_collect);
-	lua_setfield(L, -2, "__gc");
-	lua_pushcfunction(L, impl_tstring_tostring);
-	lua_setfield(L, -2, "__tostring");
+	luaL_newmetatable(L, tstringKey);
+
+	static luaL_Reg const callbacks[] = {
+		{ "__concat", 	    &impl_tstring_concat},
+		{ "__gc",           &impl_tstring_collect},
+		{ "__tostring",	    &impl_tstring_tostring},
+		{ NULL, NULL }
+	};
+	luaL_setfuncs(L, callbacks, 0);
+
 	lua_pushstring(L, "translatable string");
 	lua_setfield(L, -2, "__metatable");
-	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	return "Adding tstring metatable...\n";
 }
@@ -292,18 +287,18 @@ std::string register_tstring_metatable(lua_State *L)
  */
 std::string register_vconfig_metatable(lua_State *L)
 {
-	lua_pushlightuserdata(L
-			, vconfigKey);
-	lua_createtable(L, 0, 4);
-	lua_pushcfunction(L, impl_vconfig_collect);
-	lua_setfield(L, -2, "__gc");
-	lua_pushcfunction(L, impl_vconfig_get);
-	lua_setfield(L, -2, "__index");
-	lua_pushcfunction(L, impl_vconfig_size);
-	lua_setfield(L, -2, "__len");
+	luaL_newmetatable(L, vconfigKey);
+
+	static luaL_Reg const callbacks[] = {
+		{ "__gc",           &impl_vconfig_collect},
+		{ "__index", 	    &impl_vconfig_get},
+		{ "__len",	    &impl_vconfig_size},
+		{ NULL, NULL }
+	};
+	luaL_setfuncs(L, callbacks, 0);
+
 	lua_pushstring(L, "wml object");
 	lua_setfield(L, -2, "__metatable");
-	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	return "Adding vconfig metatable...\n";
 }
@@ -313,21 +308,13 @@ std::string register_vconfig_metatable(lua_State *L)
 void luaW_pushvconfig(lua_State *L, vconfig const &cfg)
 {
 	new(lua_newuserdata(L, sizeof(vconfig))) vconfig(cfg);
-	lua_pushlightuserdata(L
-			, vconfigKey);
-
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, -2);
+	luaL_setmetatable(L, vconfigKey);
 }
 
 void luaW_pushtstring(lua_State *L, t_string const &v)
 {
 	new(lua_newuserdata(L, sizeof(t_string))) t_string(v);
-	lua_pushlightuserdata(L
-			, tstringKey);
-
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, -2);
+	luaL_setmetatable(L, tstringKey);
 }
 
 
@@ -384,9 +371,12 @@ bool luaW_totstring(lua_State *L, int index, t_string &str)
 			break;
 		case LUA_TUSERDATA:
 		{
-			if (!luaW_hasmetatable(L, index, tstringKey)) return false;
-			str = *static_cast<t_string *>(lua_touserdata(L, index));
-			break;
+			if (t_string * tstr = static_cast<t_string *> (luaL_checkudata(L, index, tstringKey))) {
+				str = *tstr;
+				break;
+			} else {
+				return false;
+			}
 		}
 		default:
 			return false;
@@ -437,7 +427,7 @@ void luaW_pushconfig(lua_State *L, config const &cfg)
 #define return_misformed() \
   do { lua_settop(L, initial_top); return false; } while (0)
 
-bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta)
+bool luaW_toconfig(lua_State *L, int index, config &cfg)
 {
 	if (!lua_checkstack(L, LUA_MINSTACK))
 		return false;
@@ -453,25 +443,18 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta)
 			break;
 		case LUA_TUSERDATA:
 		{
-			if (!luaW_hasmetatable(L, index, vconfigKey))
+			if (vconfig * ptr = static_cast<vconfig *> (luaL_checkudata(L, index, vconfigKey))) {
+				cfg = ptr->get_parsed_config();
+				return true;
+			} else {
 				return false;
-			cfg = static_cast<vconfig *>(lua_touserdata(L, index))->get_parsed_config();
-			return true;
+			}
 		}
 		case LUA_TNONE:
 		case LUA_TNIL:
 			return true;
 		default:
 			return false;
-	}
-
-	// Get t_string's metatable, so that it can be used later to detect t_string object.
-	if (!tstring_meta) {
-		lua_pushlightuserdata(L
-				, tstringKey);
-
-		lua_rawget(L, LUA_REGISTRYINDEX);
-		tstring_meta = initial_top + 1;
 	}
 
 	// First convert the children (integer indices).
@@ -483,7 +466,7 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta)
 		char const *m = lua_tostring(L, -1);
 		if (!m) return_misformed();
 		lua_rawgeti(L, -2, 2);
-		if (!luaW_toconfig(L, -1, cfg.add_child(m), tstring_meta))
+		if (!luaW_toconfig(L, -1, cfg.add_child(m)))
 			return_misformed();
 		lua_pop(L, 3);
 	}
@@ -506,12 +489,12 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta)
 				break;
 			case LUA_TUSERDATA:
 			{
-				if (!lua_getmetatable(L, -1)) return_misformed();
-				bool tstr = lua_rawequal(L, -1, tstring_meta) != 0;
-				lua_pop(L, 1);
-				if (!tstr) return_misformed();
-				v = *static_cast<t_string *>(lua_touserdata(L, -1));
-				break;
+				if (t_string * tptr = static_cast<t_string *>(luaL_testudata(L, -1, tstringKey))) {
+					v = *tptr;
+					break;
+				} else {
+					return_misformed();
+				}
 			}
 			default:
 				return_misformed();
@@ -546,10 +529,11 @@ bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg)
 			break;
 		}
 		case LUA_TUSERDATA:
-			if (!luaW_hasmetatable(L, index, vconfigKey))
+			if (vconfig * ptr = static_cast<vconfig *> (luaL_testudata(L, index, vconfigKey))) {
+				vcfg = *ptr;
+			} else {
 				return false;
-			vcfg = *static_cast<vconfig *>(lua_touserdata(L, index));
-			break;
+			}
 		case LUA_TNONE:
 		case LUA_TNIL:
 			break;

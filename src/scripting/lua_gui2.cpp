@@ -54,6 +54,8 @@
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
+static const char * dlgclbkKey = "dialog callback";
+
 namespace {
 	struct scoped_dialog
 	{
@@ -75,7 +77,7 @@ namespace {
 	scoped_dialog::scoped_dialog(lua_State *l, gui2::twindow *w)
 		: L(l), prev(current), window(w), callbacks()
 	{
-		lua_pushlightuserdata(L
+		lua_pushstring(L
 				, dlgclbkKey);
 		lua_createtable(L, 1, 0);
 		lua_pushvalue(L, -2);
@@ -89,7 +91,7 @@ namespace {
 	{
 		delete window;
 		current = prev;
-		lua_pushlightuserdata(L
+		lua_pushstring(L
 				, dlgclbkKey);
 		lua_pushvalue(L, -1);
 		lua_rawget(L, LUA_REGISTRYINDEX);
@@ -305,7 +307,7 @@ namespace { // helpers of intf_set_dialog_callback()
 			cb = i->second;
 		}
 		lua_State *L = scoped_dialog::current->L;
-		lua_pushlightuserdata(L
+		lua_pushstring(L
 				, dlgclbkKey);
 		lua_rawget(L, LUA_REGISTRYINDEX);
 		lua_rawgeti(L, -1, cb);
@@ -337,7 +339,7 @@ int intf_set_dialog_callback(lua_State *L)
 	scoped_dialog::callback_map::iterator i = m.find(w);
 	if (i != m.end())
 	{
-		lua_pushlightuserdata(L
+		lua_pushstring(L
 				, dlgclbkKey);
 		lua_rawget(L, LUA_REGISTRYINDEX);
 		lua_pushnil(L);
@@ -374,7 +376,7 @@ int intf_set_dialog_callback(lua_State *L)
 	else
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 
-	lua_pushlightuserdata(L
+	lua_pushstring(L
 			, dlgclbkKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	int n = lua_rawlen(L, -1) + 1;

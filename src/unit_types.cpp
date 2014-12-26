@@ -26,6 +26,7 @@
 //#include "gettext.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
+#include "make_enum.hpp"
 #include "portrait.hpp"
 #include "unit.hpp"
 #include "unit_abilities.hpp"
@@ -1142,6 +1143,31 @@ bool unit_type::resistance_filter_matches(const config& cfg, bool attacker, cons
 	if (!unit_abilities::filter_base_matches(cfg, res)) return false;
 	return true;
 }
+
+/** Implementation detail of unit_type::alignment_description */
+
+MAKE_ENUM (ALIGNMENT_FEMALE_VARIATION,
+	(FEMALE_LAWFUL, N_("female^lawful"))
+	(FEMALE_NEUTRAL, N_("female^neutral"))
+	(FEMALE_CHAOTIC, N_("female^chaotic"))
+	(FEMALE_LIMINAL, N_("female^liminal"))
+)
+
+MAKE_ENUM_STREAM_OPS1(ALIGNMENT_FEMALE_VARIATION)
+
+std::string unit_type::alignment_description(ALIGNMENT align, unit_race::GENDER gender)
+{
+	std::string str = std::string();
+	if (gender == unit_race::FEMALE) {
+		ALIGNMENT_FEMALE_VARIATION fem = static_cast<ALIGNMENT_FEMALE_VARIATION> (align);
+		str = lexical_cast<std::string>(fem);
+	} else {
+		str = lexical_cast<std::string>(align);
+	}
+	return translation::sgettext(str.c_str());
+}
+
+
 /* ** unit_type_data ** */
 
 
