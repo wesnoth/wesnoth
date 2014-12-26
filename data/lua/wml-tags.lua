@@ -1401,6 +1401,12 @@ function wml_actions.event(cfg)
 	end
 end
 
+function wml_actions.remove_event(cfg)
+	local id = cfg.id or helper.wml_error("[remove_event] missing required id= key")
+
+	wesnoth.remove_event_handler(id)
+end
+
 function wml_actions.inspect(cfg)
 	wesnoth.gamestate_inspector(cfg)
 end
