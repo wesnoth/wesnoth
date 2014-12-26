@@ -483,8 +483,8 @@ static int impl_unit_variables_set(lua_State *L)
 			v = lua_tostring(L, 3);
 			break;
 		case LUA_TUSERDATA:
-			if (luaW_hasmetatable(L, 3, tstringKey)) {
-				v = *static_cast<t_string *>(lua_touserdata(L, 3));
+			if (t_string * t_str = static_cast<t_string *> (luaL_testudata(L, 3, tstringKey))) {
+				v = *t_str;
 				break;
 			}
 			// no break
@@ -777,8 +777,8 @@ int game_lua_kernel::intf_set_variable(lua_State *L)
 			v.as_scalar() = lua_tostring(L, 2);
 			break;
 		case LUA_TUSERDATA:
-			if (luaW_hasmetatable(L, 2, tstringKey)) {
-				v.as_scalar() = *static_cast<t_string *>(lua_touserdata(L, 2));
+			if (t_string * t_str = static_cast<t_string*> (luaL_testudata(L, 2, tstringKey))) {
+				v.as_scalar() = *t_str;
 				break;
 			}
 			// no break
