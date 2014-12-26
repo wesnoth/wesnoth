@@ -26,6 +26,5 @@ extern luatypekey const getraceKey;
 extern luatypekey const getunitKey;
 extern luatypekey const unitvarKey;
 extern luatypekey const ustatusKey;
-extern luatypekey const currentscriptKey;
 
 #endif
