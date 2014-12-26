@@ -16,7 +16,6 @@
 
 /* Dummy pointer for getting unique keys for Lua's registry. */
 static char const v_executeKey = 0;
-static char const v_gettypeKey = 0;
 static char const v_getraceKey = 0;
 static char const v_getunitKey = 0;
 static char const v_unitvarKey = 0;
@@ -24,7 +23,6 @@ static char const v_ustatusKey = 0;
 
 
 luatypekey const executeKey = static_cast<void *>(const_cast<char *>(&v_executeKey));
-luatypekey const gettypeKey = static_cast<void *>(const_cast<char *>(&v_gettypeKey));
 luatypekey const getraceKey = static_cast<void *>(const_cast<char *>(&v_getraceKey));
 luatypekey const getunitKey = static_cast<void *>(const_cast<char *>(&v_getunitKey));
 luatypekey const unitvarKey = static_cast<void *>(const_cast<char *>(&v_unitvarKey));

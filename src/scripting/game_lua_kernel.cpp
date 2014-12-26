@@ -79,6 +79,7 @@
 #include "scripting/lua_gui2.hpp"	// for show_gamestate_inspector
 #include "scripting/lua_team.hpp"
 #include "scripting/lua_types.hpp"      // for getunitKey, dlgclbkKey, etc
+#include "scripting/lua_unit_type.hpp"
 #include "sdl/utils.hpp"                // for surface
 #include "side_filter.hpp"              // for side_filter
 #include "sound.hpp"                    // for commit_music_changes, etc
@@ -198,33 +199,6 @@ namespace {
 		}
 	};
 }//unnamed namespace for queued_event_context
-
-/**
- * Gets some data on a unit type (__index metamethod).
- * - Arg 1: table containing an "id" field.
- * - Arg 2: string containing the name of the property.
- * - Ret 1: something containing the attribute.
- */
-static int impl_unit_type_get(lua_State *L)
-{
-	char const *m = luaL_checkstring(L, 2);
-	lua_pushstring(L, "id");
-	lua_rawget(L, 1);
-	const unit_type *utp = unit_types.find(lua_tostring(L, -1));
-	if (!utp) return luaL_argerror(L, 1, "unknown unit type");
-	unit_type const &ut = *utp;
-
-	// Find the corresponding attribute.
-	return_tstring_attrib("name", ut.type_name());
-	return_int_attrib("max_hitpoints", ut.hitpoints());
-	return_int_attrib("max_moves", ut.movement());
-	return_int_attrib("max_experience", ut.experience_needed());
-	return_int_attrib("cost", ut.cost());
-	return_int_attrib("level", ut.level());
-	return_int_attrib("recall_cost", ut.recall_cost());
-	return_cfgref_attrib("__cfg", ut.get_cfg());
-	return 0;
-}
 
 /**
  * Gets some data on a race (__index metamethod).
@@ -3670,16 +3644,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 	cmd_log_ << lua_team::register_metatable(L);
 
 	// Create the gettype metatable.
-	cmd_log_ << "Adding gettype metatable...\n";
-
-	lua_pushlightuserdata(L
-			, gettypeKey);
-	lua_createtable(L, 0, 2);
-	lua_pushcfunction(L, impl_unit_type_get);
-	lua_setfield(L, -2, "__index");
-	lua_pushstring(L, "unit type");
-	lua_setfield(L, -2, "__metatable");
-	lua_rawset(L, LUA_REGISTRYINDEX);
+	cmd_log_ << lua_unit_type::register_metatable(L);
 
 	//Create the getrace metatable
 	cmd_log_ << "Adding getrace metatable...\n";
@@ -3834,26 +3799,20 @@ void game_lua_kernel::initialize()
 	// Create the unit_types table.
 	cmd_log_ << "Adding unit_types table...\n";
 
+	lua_settop(L, 0);
 	lua_getglobal(L, "wesnoth");
-	lua_pushlightuserdata(L
-			, gettypeKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_newtable(L);
 	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &ut, unit_types.types())
 	{
-		lua_createtable(L, 0, 1);
-		lua_pushstring(L, ut.first.c_str());
-		lua_setfield(L, -2, "id");
-		lua_pushvalue(L, -3);
-		lua_setmetatable(L, -2);
+		luaW_pushunittype(L, ut.first);
 		lua_setfield(L, -2, ut.first.c_str());
 	}
-	lua_setfield(L, -3, "unit_types");
-	lua_pop(L, 2);
+	lua_setfield(L, -2, "unit_types");
 
 	//Create the races table.
 	cmd_log_ << "Adding races table...\n";
 
+	lua_settop(L, 0);
 	lua_getglobal(L, "wesnoth");
 	lua_pushlightuserdata(L
 			, getraceKey);
