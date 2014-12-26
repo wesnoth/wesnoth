@@ -21,7 +21,7 @@ You'll need to have these libraries and their development headers to build Wesno
  boost_system >= 1.36.0
  libfontconfig >= 2.4.1
  libpango (with cairo backend) >= 1.21.3
- libsdl >= 1.2.7
+ libsdl >= 1.2.10
  libsdl-image >= 1.2 (with png and jpg support)
  libsdl-mixer >= 1.2.12 (with Vorbis support)
  vorbisfile
@@ -30,10 +30,12 @@ You'll need to have these libraries and their development headers to build Wesno
  libz
  libbz2
 
-Note that problems with SDL 1.2.14 have been reported, thus we advise you to use SDL
-1.2.13 for now.
+Note that although differring boost requirements are displayed, boost libs
+from different releases are in general incompatible and you should not mix
+and match.
 
-(Note also that although differring boost requirements are displayed, boost libs from different releases are in general incompatible and you should not mix and match.)
+Also note that SDL 1.2.14 is known to have problems on Windows, so we advise
+you to use SDL 1.2.15.
 
 These libraries are optional dependencies that enable additional features:
 

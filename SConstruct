@@ -360,12 +360,12 @@ if env["prereqs"]:
     else:
         def have_sdl_net():
             return \
-                conf.CheckSDL(require_version = '1.2.0') & \
+                conf.CheckSDL(require_version = '1.2.10') & \
                 conf.CheckSDL('SDL_net')
 
         def have_sdl_other():
             return \
-                conf.CheckSDL(require_version = '1.2.0') & \
+                conf.CheckSDL(require_version = '1.2.10') & \
                 conf.CheckSDL("SDL_ttf", require_version = "2.0.8") & \
                 conf.CheckSDL("SDL_mixer", require_version = '1.2.12') & \
                 conf.CheckSDL("SDL_image", require_version = '1.2.0')
