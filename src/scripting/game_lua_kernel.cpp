@@ -3699,6 +3699,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "add_tile_overlay",		boost::bind(&game_lua_kernel::intf_add_tile_overlay, this, _1)			},
 		{ "allow_end_turn",		boost::bind(&game_lua_kernel::intf_allow_end_turn, this, _1)			},
 		{ "allow_undo",			boost::bind(&game_lua_kernel::intf_allow_undo, this, _1)			},
+		{ "animate_unit",		boost::bind(&game_lua_kernel::intf_animate_unit, this, _1)			},
 		{ "check_end_level_disabled",	boost::bind(&game_lua_kernel::intf_check_end_level_disabled, this, _1)		},
 		{ "clear_menu_item",		boost::bind(&game_lua_kernel::intf_clear_menu_item, this, _1)			},
 		{ "clear_messages",		boost::bind(&game_lua_kernel::intf_clear_messages, this, _1)			},

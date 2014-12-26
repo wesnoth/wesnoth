@@ -934,6 +934,7 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 
 	flag_rgb_ = new_type.flag_rgb();
 
+	anim_comp_->reset_after_advance(&new_type);
 
 	if (cfg_["random_traits"].to_bool(true)) {
 		generate_traits(!use_traits);
@@ -967,8 +968,6 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 	}
 
 	cfg_.clear_children("event");
-
-	anim_comp_->reset_after_advance(&new_type);
 }
 
 std::string unit::big_profile() const
