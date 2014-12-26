@@ -9,8 +9,6 @@
 local pretty_print_limit = 20
 local max_depth = 7
 local table_clever = true
--- suppress strict warnings
-_ = true
 
 -- imported global functions
 local sub = string.sub
@@ -102,7 +100,6 @@ function ilua._pretty_print(...)
     for i,val in ipairs(arg) do
         print(ilua.val2str(val))
     end
-    _G['_'] = arg[1]
 end
 
 --
