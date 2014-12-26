@@ -520,7 +520,7 @@ for env in [test_env, client_env, env]:
         env[d] = os.path.join(env["prefix"], env[d])
 
     if env["PLATFORM"] == 'win32':
-        env.Append(LIBS = ["wsock32", "z"], CCFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"], CPPDEFINES = ["_WIN32_WINNT=0x0500"])
+        env.Append(LIBS = ["wsock32", "iconv", "z"], CCFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"], CPPDEFINES = ["_WIN32_WINNT=0x0500"])
     if env["PLATFORM"] == 'darwin':            # Mac OS X
         env.Append(FRAMEWORKS = "Carbon")            # Carbon GUI
 
