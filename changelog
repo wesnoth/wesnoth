@@ -131,6 +131,8 @@ Version 1.13.0-dev:
    * Updated translations: Czech, French, Galician, German, Greek, Hungarian,
      Italian, Lithuanian, Portuguese, Russian, Scottish Gaelic, Slovak, Spanish,
      Vietnamese
+   * Fixed cmake pot-update target on Debian and other systems that do not use
+     bash as the default /bin/sh.
  * Lua API:
    * Upgraded Lua to version 5.2.3.
    * Fix bug #21761: wesnoth.synchronize_choice will now give a warning when
