@@ -220,11 +220,7 @@ void wait::join_game(bool observe)
 	if (!download_res) {
 		set_result(QUIT);
 		return;
-	} else if (!level_["allow_new_game"].to_bool(true)) {
-		set_result(PLAY);
-		return;
 	}
-
 	if (first_scenario_) {
 		state_ = game_state();
 		state_.classification().campaign_type = "multiplayer";
@@ -244,6 +240,11 @@ void wait::join_game(bool observe)
 		// Make sure that we have the same config as host, if possible.
 		resources::config_manager->
 			load_game_config_for_game(state_.classification());
+	}
+
+	if (!level_["allow_new_game"].to_bool(true)) {
+		set_result(PLAY);
+		return;
 	}
 
 	// Add the map name to the title.
