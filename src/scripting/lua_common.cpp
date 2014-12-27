@@ -90,14 +90,14 @@ static void tstring_concat_aux(lua_State *L, t_string &dst, int src)
 		case LUA_TNUMBER:
 		case LUA_TSTRING:
 			dst += lua_tostring(L, src);
-			break;
+			return;
 		case LUA_TUSERDATA:
 			// Compare its metatable with t_string's metatable.
-			if (!lua_getmetatable(L, src) || !lua_rawequal(L, -1, -2))
-				luaL_typerror(L, src, "string");
-			dst += *static_cast<t_string *>(lua_touserdata(L, src));
-			lua_pop(L, 1);
-			break;
+			if (t_string * src_ptr = static_cast<t_string *> (luaL_testudata(L, src, tstringKey))) {
+				dst += *src_ptr;
+				return;
+			}
+			//intentional fall-through
 		default:
 			luaL_typerror(L, src, "string");
 	}
@@ -371,7 +371,7 @@ bool luaW_totstring(lua_State *L, int index, t_string &str)
 			break;
 		case LUA_TUSERDATA:
 		{
-			if (t_string * tstr = static_cast<t_string *> (luaL_checkudata(L, index, tstringKey))) {
+			if (t_string * tstr = static_cast<t_string *> (luaL_testudata(L, index, tstringKey))) {
 				str = *tstr;
 				break;
 			} else {
@@ -443,7 +443,7 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg)
 			break;
 		case LUA_TUSERDATA:
 		{
-			if (vconfig * ptr = static_cast<vconfig *> (luaL_checkudata(L, index, vconfigKey))) {
+			if (vconfig * ptr = static_cast<vconfig *> (luaL_testudata(L, index, vconfigKey))) {
 				cfg = ptr->get_parsed_config();
 				return true;
 			} else {
