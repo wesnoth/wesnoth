@@ -18,6 +18,7 @@
 
 #include "desktop/clipboard.hpp"
 #include "config_cache.hpp"
+#include "cursor.hpp"
 #include "desktop/open.hpp"
 #include "filesystem.hpp"
 #include "gui/auxiliary/find_widget.tpp"
@@ -161,6 +162,7 @@ void tgame_cache_options::clean_cache_callback(CVideo& video)
 
 bool tgame_cache_options::clean_cache()
 {
+	const cursor::setter cs(cursor::WAIT);
 	return game_config::config_cache::instance().clean_cache();
 }
 
@@ -191,6 +193,7 @@ void tgame_cache_options::purge_cache_callback(CVideo& video)
 
 bool tgame_cache_options::purge_cache()
 {
+	const cursor::setter cs(cursor::WAIT);
 	return game_config::config_cache::instance().purge_cache();
 }
 
