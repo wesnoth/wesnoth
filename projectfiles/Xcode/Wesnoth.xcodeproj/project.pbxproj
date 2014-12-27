@@ -840,6 +840,8 @@
 		EC4E3B2019B2D8480049CBD7 /* stage_sf_with_rca.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4E3B1E19B2D8480049CBD7 /* stage_sf_with_rca.cpp */; };
 		EC4E3B2219B2D8880049CBD7 /* simulated_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4E3B2119B2D8880049CBD7 /* simulated_actions.cpp */; };
 		EC51DB7818F8BFA4004621D9 /* playturn_network_adapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC51DB7618F8BFA4004621D9 /* playturn_network_adapter.cpp */; };
+		EC5430231A4E6024006D206C /* lua_team.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5430211A4E6024006D206C /* lua_team.cpp */; };
+		EC5430241A4E6024006D206C /* lua_unit_type.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5430221A4E6024006D206C /* lua_unit_type.cpp */; };
 		EC5590771A0B11C600675179 /* lua_map_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5590761A0B11C600675179 /* lua_map_generator.cpp */; };
 		EC59F2611A4529D2001910CB /* context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC59F25F1A4529D2001910CB /* context.cpp */; };
 		EC59F2621A4529D2001910CB /* manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC59F2601A4529D2001910CB /* manager.cpp */; };
@@ -2096,6 +2098,8 @@
 		EC4E3B2119B2D8880049CBD7 /* simulated_actions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simulated_actions.cpp; sourceTree = "<group>"; };
 		EC51DB7618F8BFA4004621D9 /* playturn_network_adapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = playturn_network_adapter.cpp; sourceTree = "<group>"; };
 		EC51DB7718F8BFA4004621D9 /* playturn_network_adapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = playturn_network_adapter.hpp; sourceTree = "<group>"; };
+		EC5430211A4E6024006D206C /* lua_team.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_team.cpp; sourceTree = "<group>"; };
+		EC5430221A4E6024006D206C /* lua_unit_type.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_unit_type.cpp; sourceTree = "<group>"; };
 		EC5590761A0B11C600675179 /* lua_map_generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_map_generator.cpp; sourceTree = "<group>"; };
 		EC59F25F1A4529D2001910CB /* context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = context.cpp; path = plugins/context.cpp; sourceTree = "<group>"; };
 		EC59F2601A4529D2001910CB /* manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = manager.cpp; path = plugins/manager.cpp; sourceTree = "<group>"; };
@@ -3669,6 +3673,8 @@
 		B597EC060FC0832B00CE81F5 /* scripting */ = {
 			isa = PBXGroup;
 			children = (
+				EC5430211A4E6024006D206C /* lua_team.cpp */,
+				EC5430221A4E6024006D206C /* lua_unit_type.cpp */,
 				EC59F25F1A4529D2001910CB /* context.cpp */,
 				EC59F2601A4529D2001910CB /* manager.cpp */,
 				ECD5D7BE1A22DC8600114175 /* lua_cpp_function.cpp */,
@@ -4744,6 +4750,7 @@
 				F444917713C5562C003B6442 /* folder_create.cpp in Sources */,
 				EC89A12D1879D17D00A3B0B1 /* lcode.cpp in Sources */,
 				F4FE7FA613DCFF660054F220 /* network.cpp in Sources */,
+				EC5430241A4E6024006D206C /* lua_unit_type.cpp in Sources */,
 				F449349C13FF652800DF01D5 /* validator.cpp in Sources */,
 				F480CD1F14034E6D007175D6 /* mapbuilder.cpp in Sources */,
 				F480CD2414034F18007175D6 /* schema_validator.cpp in Sources */,
@@ -4808,6 +4815,7 @@
 				F49F12BB15B1E4E400B64B0B /* recruitment.cpp in Sources */,
 				F49F134A15BC627C00B64B0B /* editor_edit_label.cpp in Sources */,
 				ECA1E0FE1A1272EE00426E00 /* help_text_area.cpp in Sources */,
+				EC5430231A4E6024006D206C /* lua_team.cpp in Sources */,
 				62973FDE15C2EA7800D18140 /* action_village.cpp in Sources */,
 				62973FE215C2EAF300D18140 /* mouse_action_village.cpp in Sources */,
 				620A386E15E9364E00A4F513 /* attack.cpp in Sources */,
