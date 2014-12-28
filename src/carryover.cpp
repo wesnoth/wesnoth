@@ -150,7 +150,7 @@ carryover_info::carryover_info(const config& cfg, bool from_snpashot)
 	, next_scenario_(cfg["next_scenario"])
 	, next_underlying_unit_id_(cfg["next_underlying_unit_id"].to_int(0))
 {
-	int turns_left = cfg["turns"].to_int() - cfg["turn_at"].to_int();
+	int turns_left = std::max(0, cfg["turns"].to_int() - cfg["turn_at"].to_int());
 	end_level_.read(cfg.child_or_empty("end_level_data"));
 	BOOST_FOREACH(const config& side, cfg.child_range("side"))
 	{
@@ -165,12 +165,8 @@ carryover_info::carryover_info(const config& cfg, bool from_snpashot)
 		{
 			//adjust gold
 			//base_income is side["income"] + game_config::base_income;
-			int finishing_bonus_per_turn = cfg["map_villages_num"] * side["village_gold"] + side["income"] + game_config::base_income;
-			int finishing_bonus = std::max(0, finishing_bonus_per_turn * turns_left);
-			if(end_level_.gold_bonus)
-			{
-				carryover_sides_.back().set_gold(div100rounded((finishing_bonus + side["gold"]) * end_level_.carryover_percentage), end_level_.carryover_add);
-			}
+			int finishing_bonus_per_turn = end_level_.gold_bonus ? cfg["map_villages_num"] * side["village_gold"] + side["income"] + game_config::base_income : 0;
+			carryover_sides_.back().set_gold(div100rounded((finishing_bonus_per_turn * turns_left + side["gold"]) * end_level_.carryover_percentage), end_level_.carryover_add);
 		}
 	}
 
