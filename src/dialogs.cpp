@@ -63,6 +63,7 @@
 
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
+#include <boost/shared_ptr.hpp>
 
 //#ifdef _WIN32
 //#include "locale.h"
@@ -91,20 +92,33 @@ namespace
 class delete_recall_unit : public gui::dialog_button_action
 {
 public:
-	delete_recall_unit(display& disp, gui::filter_textbox& filter, const std::vector<unit_const_ptr >& units) : disp_(disp), filter_(filter), units_(units) {}
+	delete_recall_unit(display& disp, gui::filter_textbox& filter, const boost::shared_ptr<std::vector<unit_const_ptr > >& units) : disp_(disp), filter_(filter), units_(units) {}
 private:
 	gui::dialog_button_action::RESULT button_pressed(int menu_selection);
 
 	display& disp_;
 	gui::filter_textbox& filter_;
-	const std::vector<unit_const_ptr >& units_;
+	boost::shared_ptr<std::vector<unit_const_ptr > > units_;
 };
+
+template<typename T> void dump(const T & units)
+{
+	log_scope2(log_display, "dump()")
+
+	LOG_DP << "size: " << units.size() << "\n";
+	size_t idx = 0;
+	BOOST_FOREACH(const unit_const_ptr & u_ptr, units) {
+		LOG_DP << "unit[" << (idx++) << "]: " << u_ptr->id() << " name = '" << u_ptr->name() << "'\n";
+	}
+}
 
 gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_selection)
 {
 	const size_t index = size_t(filter_.get_index(menu_selection));
-	if(index < units_.size()) {
-		const unit_const_ptr & u_ptr = units_[index];
+
+	LOG_DP << "units_:\n"; dump(*units_);
+	if(index < units_->size()) {
+		const unit_const_ptr & u_ptr = units_->at(index);
 		const unit & u = *u_ptr;
 
 		//If the unit is of level > 1, or is close to advancing,
@@ -131,10 +145,17 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 				return gui::CONTINUE_DIALOG;
 			}
 		}
+		// Remove the item from our dialog's list
+		units_->erase(units_->begin() + index);
+
 		// Remove the item from filter_textbox memory
 		filter_.delete_item(menu_selection);
 		//add dismissal to the undo stack
 		resources::undo_stack->add_dismissal(u_ptr);
+
+		LOG_DP << "Dismissing a unit, side = " << u.side() << " id = '" << u.id() << "'\n";
+		LOG_DP << "That side's recall list:\n";
+		dump((*resources::teams)[u.side() -1].recall_list());
 
 		// Find the unit in the recall list.
 		unit_ptr dismissed_unit = (*resources::teams)[u.side() -1].recall_list().find_if_matches_id(u.id());
@@ -161,10 +182,10 @@ int advance_unit_dialog(const map_location &loc)
 
 	std::vector<std::string> lang_options;
 
-	std::vector<unit> sample_units;
+	boost::shared_ptr<std::vector<unit_const_ptr> > sample_units(boost::make_shared<std::vector<unit_const_ptr> >());
 	for(std::vector<std::string>::const_iterator op = options.begin(); op != options.end(); ++op) {
-		sample_units.push_back(::get_advanced_unit(*u, *op));
-		const unit& type = sample_units.back();
+		sample_units->push_back(::get_advanced_unit(*u, *op));
+		const unit& type = *sample_units->back();
 
 #ifdef LOW_MEM
 		lang_options.push_back(IMAGE_PREFIX
@@ -180,8 +201,8 @@ int advance_unit_dialog(const map_location &loc)
 	BOOST_FOREACH(const config &mod, u->get_modification_advances())
 	{
 		if (mod["always_display"].to_bool()) always_display = true;
-		sample_units.push_back(::get_amla_unit(*u, mod));
-		const unit& type = sample_units.back();
+		sample_units->push_back(::get_amla_unit(*u, mod));
+		const unit& type = *sample_units->back();
 		if (!mod["image"].empty()) {
 			lang_options.push_back(IMAGE_PREFIX + mod["image"].str() + COLUMN_SEPARATOR + mod["description"].str());
 		} else {
@@ -296,7 +317,7 @@ void show_unit_list(display& gui)
 	items.push_back(heading);
 
 	std::vector<map_location> locations_list;
-	std::vector<unit> units_list;
+	boost::shared_ptr<std::vector<unit_const_ptr> > units_list = boost::make_shared<std::vector<unit_const_ptr> >();
 
 	int selected = 0;
 
@@ -310,7 +331,7 @@ void show_unit_list(display& gui)
 		// If a unit is already selected on the map, we do the same in the unit list dialog
 		if (gui.selected_hex() == i->get_location()) {
 			row << DEFAULT_ITEM;
-			selected = units_list.size();
+			selected = units_list->size();
 		}
 		// If unit is leader, show name in special color, e.g. gold/silver
 		/** @todo TODO: hero just has overlay "misc/hero-icon.png" - needs an ability to query */
@@ -378,7 +399,7 @@ void show_unit_list(display& gui)
 		items.push_back(row.str());
 
 		locations_list.push_back(i->get_location());
-		units_list.push_back(*i);
+		units_list->push_back(i.get_shared_ptr());
 	}
 
 	{
@@ -445,9 +466,9 @@ int recruit_dialog(display& disp, std::vector< const unit_type* >& units, const 
 
 
 #ifdef LOW_MEM
-int recall_dialog(display& disp, std::vector< unit_const_ptr >& units, int /*side*/, const std::string& title_suffix, const int team_recall_cost)
+int recall_dialog(display& disp, const boost::shared_ptr<std::vector< unit_const_ptr > > & units, int /*side*/, const std::string& title_suffix, const int team_recall_cost)
 #else
-int recall_dialog(display& disp, std::vector< unit_const_ptr >& units, int side, const std::string& title_suffix, const int team_recall_cost)
+int recall_dialog(display& disp, const boost::shared_ptr<std::vector< unit_const_ptr > > & units, int side, const std::string& title_suffix, const int team_recall_cost)
 #endif
 {
 	std::vector<std::string> options, options_to_filter;
@@ -466,7 +487,7 @@ int recall_dialog(display& disp, std::vector< unit_const_ptr >& units, int side,
 	options.push_back(heading.str());
 	options_to_filter.push_back(options.back());
 
-	BOOST_FOREACH(const unit_const_ptr & u, units)
+	BOOST_FOREACH(const unit_const_ptr & u, *units)
 	{
 		std::stringstream option, option_to_filter;
 		std::string name = u->name();
@@ -1364,36 +1385,28 @@ void unit_preview_pane::draw_contents()
 #endif
 }
 
+
 units_list_preview_pane::units_list_preview_pane(unit_const_ptr u, TYPE type, bool on_left_side) :
 	unit_preview_pane(NULL, type, on_left_side),
-	units_(1, u)
+	units_(boost::make_shared<const std::vector<unit_const_ptr> >(1, u))
 {
 }
 
-units_list_preview_pane::units_list_preview_pane(const std::vector<unit_const_ptr > &units,
+units_list_preview_pane::units_list_preview_pane(const boost::shared_ptr<const std::vector<unit_const_ptr > > &units,
 		const gui::filter_textbox* filter, TYPE type, bool on_left_side) :
 	unit_preview_pane(filter, type, on_left_side),
 	units_(units)
 {
 }
 
-units_list_preview_pane::units_list_preview_pane(const std::vector<unit> &units,
-		const gui::filter_textbox* filter, TYPE type, bool on_left_side) :
-	unit_preview_pane(filter, type, on_left_side),
-	units_(units.size())
-{
-	for (unsigned i = 0; i < units.size(); ++i)
-		units_[i] = unit_const_ptr (new unit(units[i]));
-}
-
 size_t units_list_preview_pane::size() const
 {
-	return units_.size();
+	return units_->size();
 }
 
 const unit_preview_pane::details units_list_preview_pane::get_details() const
 {
-	const unit &u = *units_[index_];
+	const unit &u = *units_->at(index_);
 	details det;
 
 	/** Get an SDL surface, ready for display for place where we need a still-image of the unit. */
@@ -1453,7 +1466,7 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 void units_list_preview_pane::process_event()
 {
 	if (details_button_.pressed() && index_ >= 0 && index_ < int(size())) {
-		help::show_unit_description(*units_[index_]);
+		help::show_unit_description(*units_->at(index_));
 	}
 }
 

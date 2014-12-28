@@ -685,16 +685,16 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		return;
 	}
 
-	std::vector<unit_const_ptr > recall_list_team;
+	boost::shared_ptr<std::vector<unit_const_ptr > > recall_list_team = boost::make_shared<std::vector<unit_const_ptr> >();
 	{ wb::future_map future; // ensures recall list has planned recalls removed
-		recall_list_team = actions::get_recalls(side_num, last_hex);
+		*recall_list_team = actions::get_recalls(side_num, last_hex);
 	}
 
 	gui_->draw(); //clear the old menu
 
 
 	DBG_WB <<"menu_handler::recall: Contents of wb-modified recall list:\n";
-	BOOST_FOREACH(const unit_const_ptr & unit, recall_list_team)
+	BOOST_FOREACH(const unit_const_ptr & unit, *recall_list_team)
 	{
 		DBG_WB << unit->name() << " [" << unit->id() <<"]\n";
 	}
@@ -705,7 +705,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 			" veteran survivors from a previous scenario)"));
 		return;
 	}
-	if(recall_list_team.empty()) {
+	if(recall_list_team->empty()) {
 		gui2::show_transient_message(gui_->video(), "",
 			_("You currently can't recall at the highlighted location"));
 		return;
@@ -720,8 +720,8 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	// if it does we use it elsewise we use the team.recall_cost()
 	// the magic number -1 is what it gets set to if the unit doesn't
 	// have a special recall_cost of its own.
-	else if(recall_list_team[res]->recall_cost() > -1) {
-		unit_cost = recall_list_team[res]->recall_cost();
+	else if(recall_list_team->at(res)->recall_cost() > -1) {
+		unit_cost = recall_list_team->at(res)->recall_cost();
 	}
 
 	int wb_gold = pc_.get_whiteboard() ? pc_.get_whiteboard()->get_spent_gold_for(side_num) : 0;
@@ -743,16 +743,16 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	map_location recall_from = map_location::null_location();
 	std::string err;
 	{ wb::future_map_if_active future; // future unit map removes invisible units from map, don't do this outside of planning mode
-		err = actions::find_recall_location(side_num, recall_location, recall_from, *(recall_list_team[res]));
+		err = actions::find_recall_location(side_num, recall_location, recall_from, *(recall_list_team->at(res)));
 	} // end planned unit map scope
 	if(!err.empty()) {
 		gui2::show_transient_message(gui_->video(), "", err);
 		return;
 	}
 
-	if (!pc_.get_whiteboard() || !pc_.get_whiteboard()->save_recall(*recall_list_team[res], side_num, recall_location)) {
+	if (!pc_.get_whiteboard() || !pc_.get_whiteboard()->save_recall(*recall_list_team->at(res), side_num, recall_location)) {
 		bool success = synced_context::run_in_synced_context("recall",
-			replay_helper::get_recall(recall_list_team[res]->id(), recall_location, recall_from),
+			replay_helper::get_recall(recall_list_team->at(res)->id(), recall_location, recall_from),
 			true,
 			true,
 			true,

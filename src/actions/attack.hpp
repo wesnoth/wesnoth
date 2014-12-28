@@ -230,12 +230,12 @@ void advance_unit_at(const advance_unit_params& params);
 /**
  * Returns the advanced version of a unit (with traits and items retained).
  */
-unit get_advanced_unit(const unit &u, const std::string &advance_to);
+unit_ptr get_advanced_unit(const unit &u, const std::string &advance_to);
 
 /**
  * Returns the AMLA-advanced version of a unit (with traits and items retained).
  */
-unit get_amla_unit(const unit &u, const config &mod_option);
+unit_ptr get_amla_unit(const unit &u, const config &mod_option);
 
 /**
  * Function which will advance the unit at @a loc to 'advance_to'.
