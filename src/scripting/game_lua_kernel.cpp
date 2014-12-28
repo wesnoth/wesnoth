@@ -709,7 +709,7 @@ int game_lua_kernel::intf_get_variable(lua_State *L)
 		else if(v.exists_as_container())
 		{
 			lua_newtable(L);
-			if (lua_toboolean(L, 2))
+			if (luaW_toboolean(L, 2))
 				luaW_filltable(L, v.as_container());
 			return 1;
 		}
@@ -799,7 +799,7 @@ int game_lua_kernel::intf_clear_menu_item(lua_State *L)
 int game_lua_kernel::intf_set_end_campaign_credits(lua_State *L)
 {
 	game_classification &classification = const_cast<game_classification &> (play_controller_.get_classification());
-	classification.end_credits = lua_toboolean(L, 1);
+	classification.end_credits = luaW_toboolean(L, 1);
 	return 0;
 }
 
@@ -3117,7 +3117,7 @@ int game_lua_kernel::intf_redraw(lua_State *L)
 		game_display & screen = *game_display_;
 
 		vconfig cfg(luaW_checkvconfig(L, 1));
-		bool clear_shroud(lua_toboolean(L, 2));
+		bool clear_shroud(luaW_toboolean(L, 2));
 
 		if (clear_shroud) {
 			side_filter filter(cfg, &game_state_);
@@ -3335,7 +3335,7 @@ static int intf_debug_ai(lua_State *L)
 /// Allow undo sets the flag saying whether the event has mutated the game to false.
 int game_lua_kernel::intf_allow_end_turn(lua_State * L)
 {
-	gamedata().set_allow_end_turn(lua_toboolean(L, 1));
+	gamedata().set_allow_end_turn(luaW_toboolean(L, 1));
 	return 0;
 }
 
