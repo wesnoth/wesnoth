@@ -52,7 +52,7 @@ BOOST_AUTO_TEST_CASE( test_1 ) {
 	BOOST_CHECK_EQUAL(recall_man.size(), 1);
 	BOOST_CHECK_MESSAGE(recall_man[0] == orc1, "unexpected result at index [0]");
 	BOOST_CHECK_MESSAGE(recall_man.find_if_matches_id("larry") == orc1, "found something unexpected");
-	BOOST_CHECK_MESSAGE(recall_man.find_if_matches_id("moe") == false, "found something unexpected");
+	BOOST_CHECK_MESSAGE(!recall_man.find_if_matches_id("moe"), "found something unexpected");
 
 	recall_man.add(orc2);
 	BOOST_CHECK_EQUAL(recall_man.size(), 2);
@@ -64,7 +64,7 @@ BOOST_AUTO_TEST_CASE( test_1 ) {
 	recall_man.erase_if_matches_id("larry");
 	BOOST_CHECK_EQUAL(recall_man.size(), 1);
 	BOOST_CHECK_MESSAGE(recall_man[0] == orc2, "unexpected result at index [0]");
-	BOOST_CHECK_MESSAGE(recall_man.find_if_matches_id("larry") == false, "found something unexpected");
+	BOOST_CHECK_MESSAGE(!recall_man.find_if_matches_id("larry"), "found something unexpected");
 	BOOST_CHECK_MESSAGE(recall_man.find_if_matches_id("moe") == orc2, "found something unexpected");
 
 	recall_man.add(orc1);
