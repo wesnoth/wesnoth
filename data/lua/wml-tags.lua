@@ -24,6 +24,10 @@ local function trim(s)
 	return r
 end
 
+local function split(s)
+	return string.gmatch(s, "[^%s,][^,]*")
+end
+
 local function optional_side_filter(cfg, key_name, filter_name)
 	local key_name = key_name or "side"
 	local sides = cfg[key_name]
@@ -101,7 +105,7 @@ end
 function wml_actions.clear_variable(cfg)
 	local names = cfg.name or
 		helper.wml_error "[clear_variable] missing required name= attribute."
-	for w in string.gmatch(names, "[^%s,][^,]*") do
+	for w in split(names) do
 		wesnoth.set_variable(trim(w))
 	end
 end
@@ -122,7 +126,7 @@ function wml_actions.store_unit_type(cfg)
 		helper.wml_error "[store_unit_type] missing required type= attribute."
 	wesnoth.set_variable(var)
 	local i = 0
-	for w in string.gmatch(types, "[^%s,][^,]*") do
+	for w in split(types) do
 		local unit_type = wesnoth.unit_types[w] or
 			helper.wml_error(string.format("Attempt to store nonexistent unit type '%s'.", w))
 		wesnoth.set_variable(string.format("%s[%d]", var, i), unit_type.__cfg)
@@ -152,7 +156,7 @@ function wml_actions.allow_recruit(cfg)
 	local unit_types = cfg.type or helper.wml_error("[allow_recruit] missing required type= attribute")
 	for index, team in ipairs(wesnoth.get_sides(cfg)) do
 		local v = team.recruit
-		for type in string.gmatch(unit_types, "[^%s,][^,]*") do
+		for type in split(unit_types) do
 			table.insert(v, type)
 			wesnoth.add_known_unit(type)
 		end
@@ -164,7 +168,7 @@ function wml_actions.allow_extra_recruit(cfg)
 	local recruits = cfg.extra_recruit or helper.wml_error("[allow_extra_recruit] missing required extra_recruit= attribute")
 	for index, unit in ipairs(wesnoth.get_units(cfg)) do
 		local v = unit.extra_recruit
-		for recruit in string.gmatch(recruits, "[^%s,][^,]*") do
+		for recruit in split(recruits) do
 			table.insert(v, recruit)
 			wesnoth.add_known_unit(recruit)
 		end
@@ -176,7 +180,7 @@ function wml_actions.disallow_recruit(cfg)
 	local unit_types = cfg.type or helper.wml_error("[disallow_recruit] missing required type= attribute")
 	for index, team in ipairs(wesnoth.get_sides(cfg)) do
 		local v = team.recruit
-		for w in string.gmatch(unit_types, "[^%s,][^,]*") do
+		for w in split(unit_types) do
 			for i, r in ipairs(v) do
 				if r == w then
 					table.remove(v, i)
@@ -192,7 +196,7 @@ function wml_actions.disallow_extra_recruit(cfg)
 	local recruits = cfg.extra_recruit or helper.wml_error("[disallow_extra_recruit] missing required extra_recruit= attribute")
 	for index, unit in ipairs(wesnoth.get_units(cfg)) do
 		local v = unit.extra_recruit
-		for w in string.gmatch(recruits, "[^%s,][^,]*") do
+		for w in split(recruits) do
 			for i, r in ipairs(v) do
 				if r == w then
 					table.remove(v, i)
@@ -208,7 +212,7 @@ function wml_actions.set_recruit(cfg)
 	local recruit = cfg.recruit or helper.wml_error("[set_recruit] missing required recruit= attribute")
 	for index, team in ipairs(wesnoth.get_sides(cfg)) do
 		local v = {}
-		for w in string.gmatch(recruit, "[^%s,][^,]*") do
+		for w in split(recruit) do
 			table.insert(v, w)
 		end
 		team.recruit = v
@@ -219,7 +223,7 @@ function wml_actions.set_extra_recruit(cfg)
 	local recruits = cfg.extra_recruit or helper.wml_error("[set_extra_recruit] missing required extra_recruit= attribute")
 	local v = {}
 
-	for w in string.gmatch(recruits, "[^%s,][^,]*") do
+	for w in split(recruits) do
 		table.insert(v, w)
 	end
 
@@ -244,7 +248,7 @@ function wml_actions.unit_worth(cfg)
 	local xp = u.experience / u.max_experience
 	local recall_cost = unit.recall_cost
 	local best_adv = ut.cost
-	for w in string.gmatch(ut.__cfg.advances_to, "[^%s,][^,]*") do
+	for w in split(ut.__cfg.advances_to) do
 		local uta = wesnoth.unit_types[w]
 		if uta and uta.cost > best_adv then best_adv = uta.cost end
 	end
@@ -392,7 +396,7 @@ function wml_actions.switch(cfg)
 	-- Execute all the [case]s where the value matches.
 	for v in helper.child_range(cfg, "case") do
 		local match = false
-		for w in string.gmatch(v.value, "[^%s,][^,]*") do
+		for w in split(v.value) do
 			if w == tostring(value) then match = true ; break end
 		end
 		if match then
@@ -440,7 +444,7 @@ function wml_actions.unit_overlay(cfg)
 	local img = cfg.image or helper.wml_error( "[unit_overlay] missing required image= attribute" )
 	for i,u in ipairs(wesnoth.get_units(cfg)) do
 		local ucfg = u.__cfg
-		for w in string.gmatch(ucfg.overlays, "[^%s,][^,]*") do
+		for w in split(ucfg.overlays) do
 			if w == img then ucfg = nil end
 		end
 		if ucfg then
