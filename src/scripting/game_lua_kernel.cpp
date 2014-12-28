@@ -738,10 +738,11 @@ int game_lua_kernel::intf_set_variable(lua_State *L)
 		gamedata().clear_variable(m);
 		return 0;
 	}
+	int variabletype = lua_type(L, 2);
 	try
 	{
 		variable_access_create v = gamedata().get_variable_access_write(m);
-		switch (lua_type(L, 2)) {
+		switch (variabletype) {
 		case LUA_TBOOLEAN:
 			v.as_scalar() = luaW_toboolean(L, 2);
 			break;
@@ -771,7 +772,8 @@ int game_lua_kernel::intf_set_variable(lua_State *L)
 	}
 	catch (const invalid_variablename_exception&)
 	{
-		ERR_LUA << "invlid variable name in wesnoth.set_veriable" << std::endl;
+		std::string msg = "invalid variable name '" + m + "' for type '" + lua_typename(L, variabletype) + "'";
+		return luaL_argerror(L, 1, msg.c_str());
 	}
 	return 0;
 }
