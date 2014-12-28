@@ -69,7 +69,6 @@
 #include "pathfind/pathfind.hpp"        // for full_cost_map, plain_route, etc
 #include "pathfind/teleport.hpp"        // for get_teleport_locations, etc
 #include "play_controller.hpp"          // for play_controller
-#include "race.hpp"                     // for unit_race, race_map
 #include "recall_list_manager.hpp"      // for recall_list_manager
 #include "replay.hpp"                   // for get_user_choice, etc
 #include "reports.hpp"                  // for register_generator, etc
@@ -77,6 +76,7 @@
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
 #include "scripting/lua_gui2.hpp"	// for show_gamestate_inspector
+#include "scripting/lua_race.hpp"
 #include "scripting/lua_team.hpp"
 #include "scripting/lua_types.hpp"      // for getunitKey, dlgclbkKey, etc
 #include "scripting/lua_unit_type.hpp"
@@ -199,32 +199,6 @@ namespace {
 		}
 	};
 }//unnamed namespace for queued_event_context
-
-/**
- * Gets some data on a race (__index metamethod).
- * - Arg 1: table containing an "id" field.
- * - Arg 2: string containing the name of the property.
- * - Ret 1: something containing the attribute.
- */
-static int impl_race_get(lua_State* L)
-{
-	char const* m = luaL_checkstring(L, 2);
-	lua_pushstring(L, "id");
-	lua_rawget(L, 1);
-	const unit_race* raceptr = unit_types.find_race(lua_tostring(L, -1));
-	if(!raceptr) return luaL_argerror(L, 1, "unknown race");
-	unit_race const &race = *raceptr;
-
-	return_tstring_attrib("description", race.description());
-	return_tstring_attrib("name", race.name());
-	return_int_attrib("num_traits", race.num_traits());
-	return_tstring_attrib("plural_name", race.plural_name());
-	return_bool_attrib("ignore_global_traits", !race.uses_global_traits());
-	return_string_attrib("undead_variation", race.undead_variation());
-	return_cfgref_attrib("__cfg", race.get_cfg());
-
-	return 0;
-}
 
 /**
  * Destroys a unit object before it is collected (__gc metamethod).
@@ -3648,16 +3622,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 	cmd_log_ << lua_unit_type::register_metatable(L);
 
 	//Create the getrace metatable
-	cmd_log_ << "Adding getrace metatable...\n";
-
-	lua_pushlightuserdata(L
-			, getraceKey);
-	lua_createtable(L, 0, 2);
-	lua_pushcfunction(L, impl_race_get);
-	lua_setfield(L, -2, "__index");
-	lua_pushstring(L, "race");
-	lua_setfield(L, -2, "__metatable");
-	lua_rawset(L, LUA_REGISTRYINDEX);
+	cmd_log_ << lua_race::register_metatable(L);
 
 	// Create the getunit metatable.
 	cmd_log_ << "Adding getunit metatable...\n";
@@ -3815,23 +3780,9 @@ void game_lua_kernel::initialize()
 
 	lua_settop(L, 0);
 	lua_getglobal(L, "wesnoth");
-	lua_pushlightuserdata(L
-			, getraceKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	const race_map& races = unit_types.races();
-	lua_createtable(L, 0, races.size());
-	BOOST_FOREACH(const race_map::value_type &race, races)
-	{
-		lua_createtable(L, 0, 1);
-		char const* id = race.first.c_str();
-		lua_pushstring(L, id);
-		lua_setfield(L, -2, "id");
-		lua_pushvalue(L, -3);
-		lua_setmetatable(L, -2);
-		lua_setfield(L, -2, id);
-	}
-	lua_setfield(L, -3, "races");
-	lua_pop(L, 2);
+	luaW_pushracetable(L);
+	lua_setfield(L, -2, "races");
+	lua_pop(L, 1);
 
 	// Execute the preload scripts.
 	cmd_log_ << "Running preload scripts...\n";
