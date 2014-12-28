@@ -8,4 +8,6 @@ set -e
 find src/ -type f -print0 | xargs -0 isutf8 --
 find data/ -not -name "*.png" -not -name "*.ogg" -not -name "*.jpg" -not -name "*.wav" -not -name "*.gif" -not -name "*.xcf" -type f -print0 | xargs -0 isutf8 --
 find po/ -type f -print0 | xargs -0 isutf8 --
-
+isutf8 changelog
+isutf8 players_changelog
+isutf8 RELEASE_NOTES
