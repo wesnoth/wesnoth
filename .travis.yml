@@ -29,10 +29,10 @@ before_install:
     - export NLS=false
     - export CXX11=false
 
-    - if [ "$BUILD" == "-O0" ]; then export STRICT_COMPILATION=false; fi
-    - if [ "$BUILD" == "-O0" ]; then export EXTRA_FLAGS_RELEASE=""; fi
-    - if [ "$BUILD" == "-O0" ]; then export WML_TEST_TIME=20; fi
-    - if [ "$BUILD" == "-O0" ]; then export MP_TEST=true; fi
+    - if [ "$BUILD" == "-O2" ]; then export STRICT_COMPILATION=false; fi
+    - if [ "$BUILD" == "-O2" ]; then export EXTRA_FLAGS_RELEASE=""; fi
+    - if [ "$BUILD" == "-O2" ]; then export WML_TEST_TIME=20; fi
+    - if [ "$BUILD" == "-O2" ]; then export MP_TEST=true; fi
 
     - if [ "$BUILD" == "C++11 -O0" ]; then export CXX11=true; fi
     - if [ "$BUILD" == "C++11 -O0" ]; then export EXTRA_FLAGS_RELEASE="-O0 -Wno-literal-suffix -Wno-deprecated-declarations"; fi
