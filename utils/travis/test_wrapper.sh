@@ -8,7 +8,7 @@ while [ $COUNTER -gt 0 -a $ERRORCODE -eq 200 ]; do
     ./test
     ERRORCODE=$?
 done
-if [ $ERRORCODE -eq 200 ];
+if [ $ERRORCODE -eq 200 ]; then
     echo "test gave error code 200 ten times. suppressing this error...\n"
     ERRORCODE=0
 fi
