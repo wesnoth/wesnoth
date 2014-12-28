@@ -119,9 +119,6 @@ public:
 	units_list_preview_pane(const std::vector<unit_const_ptr > &units,
 		const gui::filter_textbox *filter = NULL,
 		TYPE type = SHOW_ALL, bool left_side = true);
-	units_list_preview_pane(const std::vector<unit> &units,
-		const gui::filter_textbox *filter = NULL,
-		TYPE type = SHOW_ALL, bool left_side = true);
 
 private:
 	size_t size() const;

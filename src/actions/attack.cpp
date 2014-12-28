@@ -1528,22 +1528,22 @@ void attack_unit_and_advance(const map_location &attacker, const map_location &d
 }
 
 
-unit get_advanced_unit(const unit &u, const std::string& advance_to)
+unit_ptr get_advanced_unit(const unit &u, const std::string& advance_to)
 {
 	const unit_type *new_type = unit_types.find(advance_to);
 	if (!new_type) {
 		throw game::game_error("Could not find the unit being advanced"
 			" to: " + advance_to);
 	}
-	unit new_unit(u);
-	new_unit.set_experience(new_unit.experience() - new_unit.max_experience());
-	new_unit.advance_to(*new_type);
-	new_unit.heal_all();
-	new_unit.set_state(unit::STATE_POISONED, false);
-	new_unit.set_state(unit::STATE_SLOWED, false);
-	new_unit.set_state(unit::STATE_PETRIFIED, false);
-	new_unit.set_user_end_turn(false);
-	new_unit.set_hidden(false);
+	unit_ptr new_unit(new unit(u));
+	new_unit->set_experience(new_unit->experience() - new_unit->max_experience());
+	new_unit->advance_to(*new_type);
+	new_unit->heal_all();
+	new_unit->set_state(unit::STATE_POISONED, false);
+	new_unit->set_state(unit::STATE_SLOWED, false);
+	new_unit->set_state(unit::STATE_PETRIFIED, false);
+	new_unit->set_user_end_turn(false);
+	new_unit->set_hidden(false);
 	return new_unit;
 }
 
@@ -1551,11 +1551,11 @@ unit get_advanced_unit(const unit &u, const std::string& advance_to)
 /**
  * Returns the AMLA-advanced version of a unit (with traits and items retained).
  */
-unit get_amla_unit(const unit &u, const config &mod_option)
+unit_ptr get_amla_unit(const unit &u, const config &mod_option)
 {
-	unit amla_unit(u);
-	amla_unit.set_experience(amla_unit.experience() - amla_unit.max_experience());
-	amla_unit.add_modification("advance", mod_option);
+	unit_ptr amla_unit(new unit(u));
+	amla_unit->set_experience(amla_unit->experience() - amla_unit->max_experience());
+	amla_unit->add_modification("advance", mod_option);
 	return amla_unit;
 }
 
@@ -1593,19 +1593,19 @@ void advance_unit(map_location loc, const std::string &advance_to,
 
 	// Create the advanced unit.
 	bool use_amla = mod_option != NULL;
-	unit new_unit = use_amla ? get_amla_unit(*u, *mod_option) :
+	unit_ptr new_unit = use_amla ? get_amla_unit(*u, *mod_option) :
 	                           get_advanced_unit(*u, advance_to);
 	if ( !use_amla )
 	{
-		statistics::advance_unit(new_unit);
-		preferences::encountered_units().insert(new_unit.type_id());
-		LOG_CF << "Added '" << new_unit.type_id() << "' to the encountered units.\n";
+		statistics::advance_unit(*new_unit);
+		preferences::encountered_units().insert(new_unit->type_id());
+		LOG_CF << "Added '" << new_unit->type_id() << "' to the encountered units.\n";
 	}
-	u = resources::units->replace(loc, new_unit).first;
+	u = resources::units->replace(loc, *new_unit).first;
 
 	// Update fog/shroud.
 	actions::shroud_clearer clearer;
-	clearer.clear_unit(loc, new_unit);
+	clearer.clear_unit(loc, *new_unit);
 
 	// "post_advance" event.
 	if(fire_event)

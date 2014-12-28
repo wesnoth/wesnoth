@@ -91,13 +91,13 @@ namespace
 class delete_recall_unit : public gui::dialog_button_action
 {
 public:
-	delete_recall_unit(display& disp, gui::filter_textbox& filter, const std::vector<unit_const_ptr >& units) : disp_(disp), filter_(filter), units_(units) {}
+	delete_recall_unit(display& disp, gui::filter_textbox& filter, std::vector<unit_const_ptr >& units) : disp_(disp), filter_(filter), units_(units) {}
 private:
 	gui::dialog_button_action::RESULT button_pressed(int menu_selection);
 
 	display& disp_;
 	gui::filter_textbox& filter_;
-	const std::vector<unit_const_ptr >& units_;
+	std::vector<unit_const_ptr >& units_;
 };
 
 template<typename T> void dump(const T & units)
@@ -144,6 +144,9 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 				return gui::CONTINUE_DIALOG;
 			}
 		}
+		// Remove the item from our dialog's list
+		units_.erase(units_.begin() + index);
+
 		// Remove the item from filter_textbox memory
 		filter_.delete_item(menu_selection);
 		//add dismissal to the undo stack
@@ -178,10 +181,10 @@ int advance_unit_dialog(const map_location &loc)
 
 	std::vector<std::string> lang_options;
 
-	std::vector<unit> sample_units;
+	std::vector<unit_const_ptr> sample_units;
 	for(std::vector<std::string>::const_iterator op = options.begin(); op != options.end(); ++op) {
 		sample_units.push_back(::get_advanced_unit(*u, *op));
-		const unit& type = sample_units.back();
+		const unit& type = *sample_units.back();
 
 #ifdef LOW_MEM
 		lang_options.push_back(IMAGE_PREFIX
@@ -198,7 +201,7 @@ int advance_unit_dialog(const map_location &loc)
 	{
 		if (mod["always_display"].to_bool()) always_display = true;
 		sample_units.push_back(::get_amla_unit(*u, mod));
-		const unit& type = sample_units.back();
+		const unit& type = *sample_units.back();
 		if (!mod["image"].empty()) {
 			lang_options.push_back(IMAGE_PREFIX + mod["image"].str() + COLUMN_SEPARATOR + mod["description"].str());
 		} else {
@@ -313,7 +316,7 @@ void show_unit_list(display& gui)
 	items.push_back(heading);
 
 	std::vector<map_location> locations_list;
-	std::vector<unit> units_list;
+	std::vector<unit_const_ptr> units_list;
 
 	int selected = 0;
 
@@ -395,7 +398,7 @@ void show_unit_list(display& gui)
 		items.push_back(row.str());
 
 		locations_list.push_back(i->get_location());
-		units_list.push_back(*i);
+		units_list.push_back(i.get_shared_ptr());
 	}
 
 	{
@@ -1392,15 +1395,6 @@ units_list_preview_pane::units_list_preview_pane(const std::vector<unit_const_pt
 	unit_preview_pane(filter, type, on_left_side),
 	units_(units)
 {
-}
-
-units_list_preview_pane::units_list_preview_pane(const std::vector<unit> &units,
-		const gui::filter_textbox* filter, TYPE type, bool on_left_side) :
-	unit_preview_pane(filter, type, on_left_side),
-	units_(units.size())
-{
-	for (unsigned i = 0; i < units.size(); ++i)
-		units_[i] = unit_const_ptr (new unit(units[i]));
 }
 
 size_t units_list_preview_pane::size() const
