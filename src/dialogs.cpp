@@ -100,9 +100,22 @@ private:
 	const std::vector<unit_const_ptr >& units_;
 };
 
+template<typename T> void dump(const T & units)
+{
+	log_scope2(log_display, "dump()")
+
+	LOG_DP << "size: " << units.size() << "\n";
+	size_t idx = 0;
+	BOOST_FOREACH(const unit_const_ptr & u_ptr, units) {
+		LOG_DP << "unit[" << (idx++) << "]: " << u_ptr->id() << " name = '" << u_ptr->name() << "'\n";
+	}
+}
+
 gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_selection)
 {
 	const size_t index = size_t(filter_.get_index(menu_selection));
+
+	LOG_DP << "units_:\n"; dump(units_);
 	if(index < units_.size()) {
 		const unit_const_ptr & u_ptr = units_[index];
 		const unit & u = *u_ptr;
@@ -135,6 +148,10 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		filter_.delete_item(menu_selection);
 		//add dismissal to the undo stack
 		resources::undo_stack->add_dismissal(u_ptr);
+
+		LOG_DP << "Dismissing a unit, side = " << u.side() << " id = '" << u.id() << "'\n";
+		LOG_DP << "That side's recall list:\n";
+		dump((*resources::teams)[u.side() -1].recall_list());
 
 		// Find the unit in the recall list.
 		unit_ptr dismissed_unit = (*resources::teams)[u.side() -1].recall_list().find_if_matches_id(u.id());
