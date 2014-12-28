@@ -1878,6 +1878,88 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 	return 1;
 }
 
+int game_lua_kernel::intf_heal_unit(lua_State *L)
+{
+	vconfig cfg(luaW_checkvconfig(L, 1));
+
+	const game_events::queued_event &event_info = get_event_info();
+
+	unit_map & temp = units();
+	unit_map* units = & temp;
+
+	const vconfig & healers_filter = cfg.child("filter_second");
+	std::vector<unit*> healers;
+	if (!healers_filter.null()) {
+		const unit_filter ufilt(healers_filter, &game_state_);
+		BOOST_FOREACH(unit& u, *units) {
+			if ( ufilt(u) && u.has_ability_type("heals") ) {
+				healers.push_back(&u);
+			}
+		}
+	}
+
+	const config::attribute_value amount = cfg["amount"];
+	const config::attribute_value moves = cfg["moves"];
+	const bool restore_attacks = cfg["restore_attacks"].to_bool(false);
+	const bool restore_statuses = cfg["restore_statuses"].to_bool(true);
+	const bool animate = cfg["animate"].to_bool(false);
+
+	const vconfig & healed_filter = cfg.child("filter");
+	bool only_unit_at_loc1 = healed_filter.null();
+	bool heal_amount_to_set = true;
+
+	const unit_filter ufilt(healed_filter, &game_state_);
+	for(unit_map::unit_iterator u  = units->begin(); u != units->end(); ++u) {
+		if (only_unit_at_loc1)
+		{
+			u = units->find(event_info.loc1);
+			if(!u.valid()) return 0;
+		}
+		else if ( !ufilt(*u) ) continue;
+
+		int heal_amount = u->max_hitpoints() - u->hitpoints();
+		if(amount.blank() || amount == "full") u->set_hitpoints(u->max_hitpoints());
+		else {
+			heal_amount = lexical_cast_default<int, config::attribute_value> (amount, heal_amount);
+			const int new_hitpoints = std::max(1, std::min(u->max_hitpoints(), u->hitpoints() + heal_amount));
+			heal_amount = new_hitpoints - u->hitpoints();
+			u->set_hitpoints(new_hitpoints);
+		}
+
+		if(!moves.blank()) {
+			if(moves == "full") u->set_movement(u->total_movement());
+			else {
+				// set_movement doesn't set below 0
+				u->set_movement(std::min<int>(
+					u->total_movement(),
+					u->movement_left() + lexical_cast_default<int, config::attribute_value> (moves, 0)
+					));
+			}
+		}
+
+		if(restore_attacks) u->set_attacks(u->max_attacks());
+
+		if(restore_statuses)
+		{
+			u->set_state(unit::STATE_POISONED, false);
+			u->set_state(unit::STATE_SLOWED, false);
+			u->set_state(unit::STATE_PETRIFIED, false);
+			u->set_state(unit::STATE_UNHEALABLE, false);
+			u->anim_comp().set_standing();
+		}
+
+		if (heal_amount_to_set)
+		{
+			heal_amount_to_set = false;
+			gamedata().get_variable("heal_amount") = heal_amount;
+		}
+
+		if(animate) unit_display::unit_healing(*u, healers, heal_amount);
+		if(only_unit_at_loc1) return 0;
+	}
+	return 0;
+}
+
 /**
  * Places a unit on the map.
  * - Args 1,2: (optional) location.
@@ -3572,6 +3654,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "get_villages",		boost::bind(&game_lua_kernel::intf_get_villages, this, _1)			},
 		{ "get_village_owner",		boost::bind(&game_lua_kernel::intf_get_village_owner, this, _1)			},
 		{ "get_displayed_unit",		boost::bind(&game_lua_kernel::intf_get_displayed_unit, this, _1)		},
+		{ "heal_unit",			boost::bind(&game_lua_kernel::intf_heal_unit, this, _1)				},
 		{ "highlight_hex",		boost::bind(&game_lua_kernel::intf_highlight_hex, this, _1)			},
 		{ "is_enemy",			boost::bind(&game_lua_kernel::intf_is_enemy, this, _1)				},
 		{ "kill",			boost::bind(&game_lua_kernel::intf_kill, this, _1)				},
