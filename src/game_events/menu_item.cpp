@@ -147,7 +147,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const vconfig & definition,
 		default_hotkey_(original.default_hotkey_),
 		use_hotkey_(original.use_hotkey_),
 		use_wml_menu_(original.use_wml_menu_),
-		my_manager_()
+		my_manager_(original.my_manager_)
 {
 	// Apply WML.
 	update(definition);
