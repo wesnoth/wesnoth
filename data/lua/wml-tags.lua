@@ -20,8 +20,7 @@ local location_set = wesnoth.require "lua/location_set.lua"
 local wml_actions = wesnoth.wml_actions
 
 local function trim(s)
-	local r = string.gsub(s, "^%s*(.-)%s*$", "%1")
-	return r
+	return string.gsub(s, "^%s*(.-)%s*$", "%1")
 end
 
 local function split(s)
