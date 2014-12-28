@@ -1396,9 +1396,8 @@ function wml_actions.endlevel(cfg)
 end
 
 function wml_actions.event(cfg)
-	local remove = cfg.remove
-	if remove then
-		wesnoth.remove_event_handler(cfg.id)
+	if cfg.remove then
+		wml_actions.remove_event(cfg)
 	else
 		wesnoth.add_event_handler(cfg)
 	end
@@ -1407,7 +1406,9 @@ end
 function wml_actions.remove_event(cfg)
 	local id = cfg.id or helper.wml_error("[remove_event] missing required id= key")
 
-	wesnoth.remove_event_handler(id)
+	for w in split(id) do
+		wesnoth.remove_event_handler(w)
+	end
 end
 
 function wml_actions.inspect(cfg)
