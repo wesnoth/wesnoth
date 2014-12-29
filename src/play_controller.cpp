@@ -396,7 +396,7 @@ void play_controller::maybe_do_init_side(bool is_replay, bool only_visual) {
 void play_controller::do_init_side(bool is_replay, bool only_visual) {
 	log_scope("player turn");
 	//In case we might end up calling sync:network during the side turn events,
-	//and we dont want do_init_side to be called when a player drops.
+	//and we don't want do_init_side to be called when a player drops.
 	init_side_done_ = true;
 
 	const std::string turn_num = str_cast(turn());

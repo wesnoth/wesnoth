@@ -580,7 +580,7 @@ possible_end_play_signal replay_controller::play_move_or_side(bool one_move) {
 
 		DBG_REPLAY << "doing replay " << player_number_ << "\n";
 		// if have reached the end we don't want to execute finish_side_turn and finish_turn
-		// becasue we might not have enough data to execute them (like advancements during turn_end for example)
+		// because we might not have enough data to execute them (like advancements during turn_end for example)
 		
 		try {
 			last_replay_action = do_replay(one_move);

@@ -204,8 +204,8 @@ void wml_menu_item::fire_event(const map_location & event_hex, const game_data &
 	// No new player-issued commands allowed while this is firing.
 	const events::command_disabler disable_commands;
 
-	// instead of adding a second "select" event like it sdone before, we just fire the select event again, and this time in a synced context.
-	// note that there coudnt be and user choiced durign teh last "select" event because it didn't run in a synced context.
+	// instead of adding a second "select" event like it was done before, we just fire the select event again, and this time in a synced context.
+	// note that there coudn't be a user choice during the last "select" event because it didn't run in a synced context.
 	if ( needs_select_  &&  last_select.valid() )
 	{
 		synced_context::run_in_synced_context("fire_event",  replay_helper::get_event(event_name_, event_hex, &last_select));
