@@ -105,7 +105,7 @@ function wml_actions.clear_variable(cfg)
 	local names = cfg.name or
 		helper.wml_error "[clear_variable] missing required name= attribute."
 	for w in split(names) do
-		wesnoth.set_variable(trim(w))
+		wesnoth.set_variable((trim(w))) -- use (f(a)) to get first argument
 	end
 end
 
