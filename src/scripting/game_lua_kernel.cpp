@@ -3622,6 +3622,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 	lua_cpp::Reg const cpp_callbacks[] = {
 		{ "add_event_handler",		boost::bind(&game_lua_kernel::intf_add_event, this, _1)				},
 		{ "add_tile_overlay",		boost::bind(&game_lua_kernel::intf_add_tile_overlay, this, _1)			},
+		{ "add_time_area",		boost::bind(&game_lua_kernel::intf_add_time_area, this, _1)			},
 		{ "allow_end_turn",		boost::bind(&game_lua_kernel::intf_allow_end_turn, this, _1)			},
 		{ "allow_undo",			boost::bind(&game_lua_kernel::intf_allow_undo, this, _1)			},
 		{ "animate_unit",		boost::bind(&game_lua_kernel::intf_animate_unit, this, _1)			},
@@ -3676,6 +3677,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "remove_event_handler",	boost::bind(&game_lua_kernel::intf_remove_event, this, _1)			},
 		{ "remove_shroud",		boost::bind(&game_lua_kernel::intf_shroud_op, this, _1, false)			},
 		{ "remove_tile_overlay",	boost::bind(&game_lua_kernel::intf_remove_tile_overlay, this, _1)		},
+		{ "remove_time_area",		boost::bind(&game_lua_kernel::intf_remove_time_area, this, _1)			},
 		{ "replace_schedule",		boost::bind(&game_lua_kernel::intf_replace_schedule, this, _1)			},
 		{ "scroll",			boost::bind(&game_lua_kernel::intf_scroll, this, _1)				},
 		{ "scroll_to_tile",		boost::bind(&game_lua_kernel::intf_scroll_to_tile, this, _1)			},
