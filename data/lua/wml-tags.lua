@@ -60,15 +60,9 @@ end
 
 function wml_actions.chat(cfg)
 	local side_list = wesnoth.get_sides(cfg)
+	local speaker = tostring(cfg.speaker) or "WML"
 	local message = tostring(cfg.message) or
 		helper.wml_error "[chat] missing required message= attribute."
-
-	local speaker = cfg.speaker
-	if speaker then
-		speaker = tostring(speaker)
-	else
-		speaker = "WML"
-	end
 
 	for index, side in ipairs(side_list) do
 		if side.controller == "human" then
