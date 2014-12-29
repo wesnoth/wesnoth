@@ -86,7 +86,7 @@ void wmi_pager::get_items(const map_location& hex,
                std::vector<wmi_ptr > & items,
                std::vector<std::string> & descriptions)
 {
-	if (!foo_) {
+	if (!wmi_container_) {
 		return;
 	}
 
@@ -98,11 +98,11 @@ void wmi_pager::get_items(const map_location& hex,
 
 	assert(page_size > 2u && "if we dont have at least 3 items, we can't display anything on a middle page...");
 
-	std::vector<wmi_pair > bar = foo_->get_items(hex, gamedata, fc, units);
+	std::vector<wmi_pair > new_items = wmi_container_->get_items(hex, gamedata, fc, units);
 
-	if (bar.size() <= page_size) { //In this case the first page is sufficient and we don't have to do anything.
-		std::transform(bar.begin(), bar.end(), back_inserter(items), select_first);
-		std::transform(bar.begin(), bar.end(), back_inserter(descriptions), select_second);
+	if (new_items.size() <= page_size) { //In this case the first page is sufficient and we don't have to do anything.
+		std::transform(new_items.begin(), new_items.end(), back_inserter(items), select_first);
+		std::transform(new_items.begin(), new_items.end(), back_inserter(descriptions), select_second);
 
 		page_num_ = 0; //reset page num in case there are more items later.
 		return;
@@ -114,11 +114,11 @@ void wmi_pager::get_items(const map_location& hex,
 	}
 
 	if (page_num_ == 0) { //we are on the first page, so show page_size-1 items and a next button
-		wmi_it end_first_page = bar.begin();
+		wmi_it end_first_page = new_items.begin();
 		std::advance(end_first_page, page_size - 1);
 
-		std::transform(bar.begin(), end_first_page, back_inserter(items), select_first);
-		std::transform(bar.begin(), end_first_page, back_inserter(descriptions), select_second);
+		std::transform(new_items.begin(), end_first_page, back_inserter(items), select_first);
+		std::transform(new_items.begin(), end_first_page, back_inserter(descriptions), select_second);
 
 		add_next_page_item(items, descriptions);
 		return;
@@ -133,17 +133,17 @@ void wmi_pager::get_items(const map_location& hex,
 	size_t first_displayed_index = (page_size - 2) * page_num_ + 1; //this is the 0-based index of the first item displayed on this page.
 									//alternatively, the number of items displayed on earlier pages
 
-	while (first_displayed_index >= bar.size())
+	while (first_displayed_index >= new_items.size())
 	{
 		page_num_--; //The list must have gotten shorter and our page counter is now off the end, so decrement
 		first_displayed_index = (page_size - 2) * page_num_ + 1; //recalculate
 	}
-	// ^ This loop terminates with first_displayed_index > 0, because bar.size() > page_size or else we exited earlier, and we only decrease by (page_size-2) each time.
+	// ^ This loop terminates with first_displayed_index > 0, because new_items.size() > page_size or else we exited earlier, and we only decrease by (page_size-2) each time.
 
-	if (first_displayed_index + page_size-1 >= bar.size()) //if this can be the last page, then we won't put next page at the bottom.
+	if (first_displayed_index + page_size-1 >= new_items.size()) //if this can be the last page, then we won't put next page at the bottom.
 	{
 		//The last page we treat differently -- we always want to display (page_size) entries, to prevent resizing the context menu, so count back from end.
-		wmi_it end_range = bar.end(); // It doesn't really matter if we display some entries that appeared on the previous page by doing this.
+		wmi_it end_range = new_items.end(); // It doesn't really matter if we display some entries that appeared on the previous page by doing this.
 		wmi_it start_range = end_range;
 		std::advance(start_range, -static_cast<signed int>(page_size-1));
 
@@ -151,7 +151,7 @@ void wmi_pager::get_items(const map_location& hex,
 		std::transform(start_range, end_range, back_inserter(descriptions), select_second);
 		return;
 	} else { //we are in a middle page
-		wmi_it start_range = bar.begin();
+		wmi_it start_range = new_items.begin();
 		std::advance(start_range, first_displayed_index); // <-- get an iterator to the start of our range. begin() + n doesn't work because map is not random access
 
 		wmi_it end_range = start_range;

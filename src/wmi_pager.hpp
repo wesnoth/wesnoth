@@ -39,12 +39,12 @@ namespace game_events { class wmi_container; }
 class wmi_pager {
 private:
 	int page_num_; //!< Current page number
-	const game_events::wmi_container * foo_; //!< Internal pointer to the collection of wml menu items
+	const game_events::wmi_container * wmi_container_; //!< Internal pointer to the collection of wml menu items
 
 public:
-	wmi_pager() : page_num_(0), foo_(NULL) {}
+	wmi_pager() : page_num_(0), wmi_container_(NULL) {}
 
-	void update_ref(game_events::wmi_container * ptr) { foo_ = ptr; } //!< Updates the internal wmi_container pointer
+	void update_ref(game_events::wmi_container * ptr) { wmi_container_ = ptr; } //!< Updates the internal wmi_container pointer
 
 	/** Adds the currently paged range of menu items to the given lists */
 	void get_items(const map_location& hex, //!< Game hex related to this context menu
