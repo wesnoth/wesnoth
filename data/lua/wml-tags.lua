@@ -21,11 +21,11 @@ local wml_actions = wesnoth.wml_actions
 
 local function trim(s)
 	-- use (f(a)) to get first argument
-	return (string.gsub(s, "^%s*(.-)%s*$", "%1"))
+	return (s:gsub("^%s*(.-)%s*$", "%1"))
 end
 
 local function split(s)
-	return string.gmatch(s, "[^%s,][^,]*")
+	return s:gmatch("[^%s,][^,]*")
 end
 
 local function optional_side_filter(cfg, key_name, filter_name)
