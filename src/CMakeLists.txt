@@ -1001,6 +1001,7 @@ set(wesnoth-main_SRC
 	unit_abilities.cpp
 	unit_animation.cpp
 	unit_animation_component.cpp
+	unit_attack_type.cpp
 	unit_display.cpp
 	unit_drawer.cpp
 	unit_filter.cpp
