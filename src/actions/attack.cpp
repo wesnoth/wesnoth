@@ -815,10 +815,10 @@ namespace {
 		config& a_weapon_cfg = ev_data.add_child("first");
 		config& d_weapon_cfg = ev_data.add_child("second");
 		if(a_stats_->weapon != NULL && a_.valid()) {
-			a_weapon_cfg = a_stats_->weapon->get_cfg();
+			a_stats_->weapon->write(a_weapon_cfg);
 		}
 		if(d_stats_->weapon != NULL && d_.valid()) {
-			d_weapon_cfg = d_stats_->weapon->get_cfg();
+			d_stats_->weapon->write(d_weapon_cfg);
 		}
 		if(a_weapon_cfg["name"].empty()) {
 			a_weapon_cfg["name"] = "none";
@@ -1130,9 +1130,9 @@ namespace {
 		// get weapon info for last_breath and die events
 		config dat;
 		config a_weapon_cfg = attacker_stats->weapon && attacker.valid() ?
-			attacker_stats->weapon->get_cfg() : config();
+			attacker_stats->weapon->to_config() : config();
 		config d_weapon_cfg = defender_stats->weapon && defender.valid() ?
-			defender_stats->weapon->get_cfg() : config();
+			defender_stats->weapon->to_config() : config();
 		if (a_weapon_cfg["name"].empty())
 			a_weapon_cfg["name"] = "none";
 		if (d_weapon_cfg["name"].empty())

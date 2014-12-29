@@ -1427,7 +1427,7 @@ void unit::write(config& cfg) const
 	cfg["zoc"] = emit_zoc_;
 	cfg.clear_children("attack");
 	for(std::vector<attack_type>::const_iterator i = attacks_.begin(); i != attacks_.end(); ++i) {
-		cfg.add_child("attack",i->get_cfg());
+		i->write(cfg.add_child("attack"));
 	}
 	cfg["cost"] = unit_value_;
 	cfg.clear_children("modifications");
