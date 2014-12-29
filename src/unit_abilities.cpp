@@ -519,35 +519,30 @@ namespace {
  */
 bool attack_type::get_special_bool(const std::string& special, bool simple_check) const
 {
-	//log_scope("get_special_bool");
-	if (const config &specials = cfg_.child("specials"))
 	{
 		std::vector<const config*> list;
-		if ( get_special_children(list, specials, special, simple_check) )
+		if ( get_special_children(list, specials_, special, simple_check) ) {
 			return true;
-
+		}
 		// If we make it to here, then either list.empty() or !simple_check.
 		// So if the list is not empty, then this is not a simple check and
 		// we need to check each special in the list to see if any are active.
-		for (std::vector<const config*>::iterator i = list.begin(),
-		     i_end = list.end(); i != i_end; ++i) {
-			if ( special_active(**i, AFFECT_SELF) )
+		for (std::vector<const config*>::iterator i = list.begin(), i_end = list.end(); i != i_end; ++i) {
+			if ( special_active(**i, AFFECT_SELF) ) {
 				return true;
+			}
 		}
 	}
-
 	// Skip checking the opponent's attack?
-	if ( simple_check || !other_attack_ )
+	if ( simple_check || !other_attack_ ) {
 		return false;
+	}
 
-	if (const config &specials = other_attack_->cfg_.child("specials"))
-	{
-		std::vector<const config*> list;
-		get_special_children(list, specials, special);
-		for (std::vector<const config*>::iterator i = list.begin(),
-		     i_end = list.end(); i != i_end; ++i) {
-			if ( other_attack_->special_active(**i, AFFECT_OTHER) )
-				return true;
+	std::vector<const config*> list;
+	get_special_children(list, other_attack_->specials_, special);
+	for (std::vector<const config*>::iterator i = list.begin(), i_end = list.end(); i != i_end; ++i) {
+		if ( other_attack_->special_active(**i, AFFECT_OTHER) ) {
+			return true;
 		}
 	}
 	return false;
@@ -561,20 +556,14 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 {
 	//log_scope("get_specials");
 	unit_ability_list res;
-	if (const config &specials = cfg_.child("specials"))
-	{
-		BOOST_FOREACH(const config &i, specials.child_range(special)) {
-			if ( special_active(i, AFFECT_SELF) )
-				res.push_back(unit_ability(&i, self_loc_));
-		}
+	BOOST_FOREACH(const config &i, specials_.child_range(special)) {
+		if ( special_active(i, AFFECT_SELF) )
+			res.push_back(unit_ability(&i, self_loc_));
 	}
 	if (!other_attack_) return res;
-	if (const config &specials = other_attack_->cfg_.child("specials"))
-	{
-		BOOST_FOREACH(const config &i, specials.child_range(special)) {
-			if ( other_attack_->special_active(i, AFFECT_OTHER) )
-				res.push_back(unit_ability(&i, other_loc_));
-		}
+	BOOST_FOREACH(const config &i, other_attack_->specials_.child_range(special)) {
+		if ( other_attack_->special_active(i, AFFECT_OTHER) )
+			res.push_back(unit_ability(&i, other_loc_));
 	}
 	return res;
 }
@@ -596,10 +585,7 @@ std::vector<std::pair<t_string, t_string> > attack_type::special_tooltips(
 	if ( active_list )
 		active_list->clear();
 
-	const config &specials = cfg_.child("specials");
-	if (!specials) return res;
-
-	BOOST_FOREACH(const config::any_child &sp, specials.all_children_range())
+	BOOST_FOREACH(const config::any_child &sp, specials_.all_children_range())
 	{
 		if ( !active_list || special_active(sp.cfg, AFFECT_EITHER) ) {
 			const t_string &name = sp.cfg["name"];
@@ -632,10 +618,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 {
 	//log_scope("weapon_specials");
 	std::string res;
-	const config &specials = cfg_.child("specials");
-	if (!specials) return res;
-
-	BOOST_FOREACH(const config::any_child &sp, specials.all_children_range())
+	BOOST_FOREACH(const config::any_child &sp, specials_.all_children_range())
 	{
 		if ( only_active  &&  !special_active(sp.cfg, AFFECT_EITHER, is_backstab) )
 			continue;

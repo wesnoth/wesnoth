@@ -36,16 +36,11 @@ static lg::log_domain log_unit("unit");
 #define DBG_UT LOG_STREAM(debug, log_unit)
 #define ERR_UT LOG_STREAM(err, log_unit)
 
-
-/* ** attack_type ** */
-
-
 attack_type::attack_type(const config& cfg) :
 	self_loc_(),
 	other_loc_(),
 	is_attacker_(false),
 	other_attack_(NULL),
-	cfg_(cfg),
 	description_(cfg["description"].t_str()),
 	id_(cfg["name"]),
 	type_(cfg["type"]),
@@ -59,8 +54,8 @@ attack_type::attack_type(const config& cfg) :
 	defense_weight_(cfg["defense_weight"].to_double(1.0)),
 	accuracy_(cfg["accuracy"]),
 	movement_used_(cfg["movement_used"].to_int(100000)),
-	parry_(cfg["parry"])
-
+	parry_(cfg["parry"]),
+	specials_(cfg.child_or_empty("specials"))
 {
 	if (description_.empty())
 		description_ = translation::egettext(id_.c_str());
@@ -190,49 +185,40 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 	if(set_name.empty() == false) {
 		id_ = set_name;
-		cfg_["name"] = id_;
 	}
 
 	if(set_desc.empty() == false) {
 		description_ = set_desc;
-		cfg_["description"] = description_;
 	}
 
 	if(set_type.empty() == false) {
 		type_ = set_type;
-		cfg_["type"] = type_;
 	}
 
 	if(set_icon.empty() == false) {
 		icon_ = set_icon;
-		cfg_["icon"] = icon_;
 	}
 
 	if(del_specials.empty() == false) {
 		const std::vector<std::string>& dsl = utils::split(del_specials);
-		if (config &specials = cfg_.child("specials"))
-		{
-			config new_specials;
-			BOOST_FOREACH(const config::any_child &vp, specials.all_children_range()) {
-				std::vector<std::string>::const_iterator found_id =
-					std::find(dsl.begin(), dsl.end(), vp.cfg["id"].str());
-				if (found_id == dsl.end()) {
-					new_specials.add_child(vp.key, vp.cfg);
-				}
+		config new_specials;
+		BOOST_FOREACH(const config::any_child &vp, specials_.all_children_range()) {
+			std::vector<std::string>::const_iterator found_id =
+				std::find(dsl.begin(), dsl.end(), vp.cfg["id"].str());
+			if (found_id == dsl.end()) {
+				new_specials.add_child(vp.key, vp.cfg);
 			}
-			cfg_.clear_children("specials");
-			cfg_.add_child("specials",new_specials);
 		}
+		specials_ = new_specials;
 	}
 
 	if (set_specials) {
 		const std::string &mode = set_specials["mode"];
 		if (mode != "append") {
-			cfg_.clear_children("specials");
+			specials_.clear();
 		}
-		config &new_specials = cfg_.child_or_add("specials");
 		BOOST_FOREACH(const config::any_child &value, set_specials.all_children_range()) {
-			new_specials.add_child(value.key, value.cfg);
+			specials_.add_child(value.key, value.cfg);
 		}
 	}
 
@@ -241,7 +227,6 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		if (damage_ < 0) {
 			damage_ = 0;
 		}
-		cfg_["damage"] = damage_;
 
 		if(description != NULL) {
 			add_and(desc);
@@ -253,7 +238,6 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 	if(increase_attacks.empty() == false) {
 		num_attacks_ = utils::apply_modifier(num_attacks_, increase_attacks, 1);
-		cfg_["number"] = num_attacks_;
 
 		if(description != NULL) {
 			add_and(desc);
@@ -265,7 +249,6 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 	if(increase_accuracy.empty() == false) {
 		accuracy_ = utils::apply_modifier(accuracy_, increase_accuracy, 1);
-		cfg_["accuracy"] = accuracy_;
 
 		if(description != NULL) {
 			add_and(desc);
@@ -278,7 +261,6 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 	if(increase_parry.empty() == false) {
 		parry_ = utils::apply_modifier(parry_, increase_parry, 1);
-		cfg_["parry"] = parry_;
 
 		if(description != NULL) {
 			add_and(desc);
@@ -290,12 +272,10 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 	if(set_attack_weight.empty() == false) {
 		attack_weight_ = lexical_cast_default<double>(set_attack_weight,1.0);
-		cfg_["attack_weight"] = attack_weight_;
 	}
 
 	if(set_defense_weight.empty() == false) {
 		defense_weight_ = lexical_cast_default<double>(set_defense_weight,1.0);
-		cfg_["defense_weight"] = defense_weight_;
 	}
 
 	if(description != NULL) {
@@ -350,5 +330,19 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 void attack_type::write(config& cfg) const
 {
-	cfg = cfg_;
+	cfg["description"] = description_;
+	cfg["name"] = id_;
+	cfg["type"] = type_;
+	cfg["icon"] = icon_;
+	cfg["range"] = range_;
+	cfg["min_range"] = min_range_;
+	cfg["max_range"] = max_range_;
+	cfg["damage"] = damage_;
+	cfg["number"] = num_attacks_;
+	cfg["attack_weight"] = attack_weight_;
+	cfg["defense_weight"] = defense_weight_;
+	cfg["accuracy"] = accuracy_;
+	cfg["movement_used"] = movement_used_;
+	cfg["parry"] = parry_;
+	cfg.add_child("specials", specials_);
 }

@@ -19,6 +19,7 @@
 #include "map_location.hpp"
 #include "util.hpp"
 #include "tstring.hpp"
+#include "config.hpp"
 #include <string>
 #include <vector>
 
@@ -89,7 +90,6 @@ private:
 	mutable bool is_attacker_;
 	mutable const attack_type* other_attack_;
 
-	config cfg_;
 	t_string description_;
 	std::string id_;
 	std::string type_;
@@ -104,5 +104,6 @@ private:
 	int accuracy_;
 	int movement_used_;
 	int parry_;
+	config specials_;
 };
 #endif
