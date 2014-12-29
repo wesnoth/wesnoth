@@ -961,6 +961,7 @@
 		ECB58C8D19E71347007D074F /* editor_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECB58C8B19E71347007D074F /* editor_controller.cpp */; };
 		ECBBD73D1928F3F200E434C6 /* terrain_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECBBD73B1928F3F100E434C6 /* terrain_builder.cpp */; };
 		ECBBD7401928F41500E434C6 /* core_selection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECBBD73E1928F41500E434C6 /* core_selection.cpp */; };
+		ECC2FFFA1A51A00900023AF4 /* lua_race.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECC2FFF91A51A00900023AF4 /* lua_race.cpp */; };
 		ECC8F41B185FE2E1004AC3BE /* format_time_summary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECC8F419185FE2E1004AC3BE /* format_time_summary.cpp */; };
 		ECD0C4AB199C0B72005C2173 /* campaign_settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD0C4AA199C0B72005C2173 /* campaign_settings.cpp */; };
 		ECD39893194B830300CF2125 /* saved_game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD39891194B830300CF2125 /* saved_game.cpp */; };
@@ -2243,6 +2244,7 @@
 		ECBBD73C1928F3F100E434C6 /* terrain_builder.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = terrain_builder.hpp; sourceTree = "<group>"; };
 		ECBBD73E1928F41500E434C6 /* core_selection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = core_selection.cpp; sourceTree = "<group>"; };
 		ECBBD73F1928F41500E434C6 /* core_selection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = core_selection.hpp; sourceTree = "<group>"; };
+		ECC2FFF91A51A00900023AF4 /* lua_race.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_race.cpp; sourceTree = "<group>"; };
 		ECC8F419185FE2E1004AC3BE /* format_time_summary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = format_time_summary.cpp; sourceTree = "<group>"; };
 		ECC8F41A185FE2E1004AC3BE /* format_time_summary.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = format_time_summary.hpp; sourceTree = "<group>"; };
 		ECD0C4AA199C0B72005C2173 /* campaign_settings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = campaign_settings.cpp; path = gui/dialogs/campaign_settings.cpp; sourceTree = "<group>"; };
@@ -3673,6 +3675,7 @@
 		B597EC060FC0832B00CE81F5 /* scripting */ = {
 			isa = PBXGroup;
 			children = (
+				ECC2FFF91A51A00900023AF4 /* lua_race.cpp */,
 				EC5430211A4E6024006D206C /* lua_team.cpp */,
 				EC5430221A4E6024006D206C /* lua_unit_type.cpp */,
 				EC59F25F1A4529D2001910CB /* context.cpp */,
@@ -4848,6 +4851,7 @@
 				EC89A12B1879D17D00A3B0B1 /* lbaselib.cpp in Sources */,
 				62CC8E7717B9063E00C16B75 /* handlers.cpp in Sources */,
 				EC89A1301879D17D00A3B0B1 /* ldblib.cpp in Sources */,
+				ECC2FFFA1A51A00900023AF4 /* lua_race.cpp in Sources */,
 				62CC8E7817B9063E00C16B75 /* pump.cpp in Sources */,
 				EC28C59119423529003B0F5E /* save_index.cpp in Sources */,
 				62CC8E8D17B9064D00C16B75 /* map_create.cpp in Sources */,
