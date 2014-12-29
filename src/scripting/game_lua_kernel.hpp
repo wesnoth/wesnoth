@@ -109,6 +109,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_find_path(lua_State *L);
 	int intf_find_reach(lua_State *L);
 	int intf_find_cost_map(lua_State *L);
+	int intf_heal_unit(lua_State *L);
 	int intf_message(lua_State *L);
 	int intf_open_help(lua_State *L);
 	int intf_play_sound(lua_State *L);

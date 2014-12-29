@@ -1041,6 +1041,10 @@ function wml_actions.harm_unit(cfg)
 	end_var_scope("this_unit", this_unit)
 end
 
+function wml_actions.heal_unit(cfg)
+	wesnoth.heal_unit(cfg)
+end
+
 function wml_actions.transform_unit(cfg)
 	local transform_to = cfg.transform_to
 

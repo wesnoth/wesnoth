@@ -69,7 +69,6 @@
 #include "pathfind/pathfind.hpp"        // for full_cost_map, plain_route, etc
 #include "pathfind/teleport.hpp"        // for get_teleport_locations, etc
 #include "play_controller.hpp"          // for play_controller
-#include "race.hpp"                     // for unit_race, race_map
 #include "recall_list_manager.hpp"      // for recall_list_manager
 #include "replay.hpp"                   // for get_user_choice, etc
 #include "reports.hpp"                  // for register_generator, etc
@@ -77,6 +76,7 @@
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
 #include "scripting/lua_gui2.hpp"	// for show_gamestate_inspector
+#include "scripting/lua_race.hpp"
 #include "scripting/lua_team.hpp"
 #include "scripting/lua_types.hpp"      // for getunitKey, dlgclbkKey, etc
 #include "scripting/lua_unit_type.hpp"
@@ -199,32 +199,6 @@ namespace {
 		}
 	};
 }//unnamed namespace for queued_event_context
-
-/**
- * Gets some data on a race (__index metamethod).
- * - Arg 1: table containing an "id" field.
- * - Arg 2: string containing the name of the property.
- * - Ret 1: something containing the attribute.
- */
-static int impl_race_get(lua_State* L)
-{
-	char const* m = luaL_checkstring(L, 2);
-	lua_pushstring(L, "id");
-	lua_rawget(L, 1);
-	const unit_race* raceptr = unit_types.find_race(lua_tostring(L, -1));
-	if(!raceptr) return luaL_argerror(L, 1, "unknown race");
-	unit_race const &race = *raceptr;
-
-	return_tstring_attrib("description", race.description());
-	return_tstring_attrib("name", race.name());
-	return_int_attrib("num_traits", race.num_traits());
-	return_tstring_attrib("plural_name", race.plural_name());
-	return_bool_attrib("ignore_global_traits", !race.uses_global_traits());
-	return_string_attrib("undead_variation", race.undead_variation());
-	return_cfgref_attrib("__cfg", race.get_cfg());
-
-	return 0;
-}
 
 /**
  * Destroys a unit object before it is collected (__gc metamethod).
@@ -1904,6 +1878,88 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 		++counter;
 	}
 	return 1;
+}
+
+int game_lua_kernel::intf_heal_unit(lua_State *L)
+{
+	vconfig cfg(luaW_checkvconfig(L, 1));
+
+	const game_events::queued_event &event_info = get_event_info();
+
+	unit_map & temp = units();
+	unit_map* units = & temp;
+
+	const vconfig & healers_filter = cfg.child("filter_second");
+	std::vector<unit*> healers;
+	if (!healers_filter.null()) {
+		const unit_filter ufilt(healers_filter, &game_state_);
+		BOOST_FOREACH(unit& u, *units) {
+			if ( ufilt(u) && u.has_ability_type("heals") ) {
+				healers.push_back(&u);
+			}
+		}
+	}
+
+	const config::attribute_value amount = cfg["amount"];
+	const config::attribute_value moves = cfg["moves"];
+	const bool restore_attacks = cfg["restore_attacks"].to_bool(false);
+	const bool restore_statuses = cfg["restore_statuses"].to_bool(true);
+	const bool animate = cfg["animate"].to_bool(false);
+
+	const vconfig & healed_filter = cfg.child("filter");
+	bool only_unit_at_loc1 = healed_filter.null();
+	bool heal_amount_to_set = true;
+
+	const unit_filter ufilt(healed_filter, &game_state_);
+	for(unit_map::unit_iterator u  = units->begin(); u != units->end(); ++u) {
+		if (only_unit_at_loc1)
+		{
+			u = units->find(event_info.loc1);
+			if(!u.valid()) return 0;
+		}
+		else if ( !ufilt(*u) ) continue;
+
+		int heal_amount = u->max_hitpoints() - u->hitpoints();
+		if(amount.blank() || amount == "full") u->set_hitpoints(u->max_hitpoints());
+		else {
+			heal_amount = lexical_cast_default<int, config::attribute_value> (amount, heal_amount);
+			const int new_hitpoints = std::max(1, std::min(u->max_hitpoints(), u->hitpoints() + heal_amount));
+			heal_amount = new_hitpoints - u->hitpoints();
+			u->set_hitpoints(new_hitpoints);
+		}
+
+		if(!moves.blank()) {
+			if(moves == "full") u->set_movement(u->total_movement());
+			else {
+				// set_movement doesn't set below 0
+				u->set_movement(std::min<int>(
+					u->total_movement(),
+					u->movement_left() + lexical_cast_default<int, config::attribute_value> (moves, 0)
+					));
+			}
+		}
+
+		if(restore_attacks) u->set_attacks(u->max_attacks());
+
+		if(restore_statuses)
+		{
+			u->set_state(unit::STATE_POISONED, false);
+			u->set_state(unit::STATE_SLOWED, false);
+			u->set_state(unit::STATE_PETRIFIED, false);
+			u->set_state(unit::STATE_UNHEALABLE, false);
+			u->anim_comp().set_standing();
+		}
+
+		if (heal_amount_to_set)
+		{
+			heal_amount_to_set = false;
+			gamedata().get_variable("heal_amount") = heal_amount;
+		}
+
+		if(animate) unit_display::unit_healing(*u, healers, heal_amount);
+		if(only_unit_at_loc1) return 0;
+	}
+	return 0;
 }
 
 /**
@@ -3600,6 +3656,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "get_villages",		boost::bind(&game_lua_kernel::intf_get_villages, this, _1)			},
 		{ "get_village_owner",		boost::bind(&game_lua_kernel::intf_get_village_owner, this, _1)			},
 		{ "get_displayed_unit",		boost::bind(&game_lua_kernel::intf_get_displayed_unit, this, _1)		},
+		{ "heal_unit",			boost::bind(&game_lua_kernel::intf_heal_unit, this, _1)				},
 		{ "highlight_hex",		boost::bind(&game_lua_kernel::intf_highlight_hex, this, _1)			},
 		{ "is_enemy",			boost::bind(&game_lua_kernel::intf_is_enemy, this, _1)				},
 		{ "kill",			boost::bind(&game_lua_kernel::intf_kill, this, _1)				},
@@ -3650,16 +3707,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 	cmd_log_ << lua_unit_type::register_metatable(L);
 
 	//Create the getrace metatable
-	cmd_log_ << "Adding getrace metatable...\n";
-
-	lua_pushlightuserdata(L
-			, getraceKey);
-	lua_createtable(L, 0, 2);
-	lua_pushcfunction(L, impl_race_get);
-	lua_setfield(L, -2, "__index");
-	lua_pushstring(L, "race");
-	lua_setfield(L, -2, "__metatable");
-	lua_rawset(L, LUA_REGISTRYINDEX);
+	cmd_log_ << lua_race::register_metatable(L);
 
 	// Create the getunit metatable.
 	cmd_log_ << "Adding getunit metatable...\n";
@@ -3817,23 +3865,9 @@ void game_lua_kernel::initialize()
 
 	lua_settop(L, 0);
 	lua_getglobal(L, "wesnoth");
-	lua_pushlightuserdata(L
-			, getraceKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	const race_map& races = unit_types.races();
-	lua_createtable(L, 0, races.size());
-	BOOST_FOREACH(const race_map::value_type &race, races)
-	{
-		lua_createtable(L, 0, 1);
-		char const* id = race.first.c_str();
-		lua_pushstring(L, id);
-		lua_setfield(L, -2, "id");
-		lua_pushvalue(L, -3);
-		lua_setmetatable(L, -2);
-		lua_setfield(L, -2, id);
-	}
-	lua_setfield(L, -3, "races");
-	lua_pop(L, 2);
+	luaW_pushracetable(L);
+	lua_setfield(L, -2, "races");
+	lua_pop(L, 1);
 
 	// Execute the preload scripts.
 	cmd_log_ << "Running preload scripts...\n";

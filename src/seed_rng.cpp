@@ -49,16 +49,14 @@
 
 namespace seed_rng {
 
-	#ifdef SEED_RNG_USE_BOOST_RANDOM_DEVICE
 	uint32_t next_seed() {
+	#ifdef SEED_RNG_USE_BOOST_RANDOM_DEVICE
 		static boost::random_device rnd_;
 		return rnd_();
-	}
 	#else
-	uint32_t next_seed() {
 		return static_cast<uint32_t> (std::time(0));
-	}
 	#endif
+	}
 
 	std::string next_seed_str() {
 		uint32_t random_seed_ = next_seed();
