@@ -1325,7 +1325,7 @@ def global_sanity_check(filename, lines):
                     (key, prefix, value, comment) = parse_attribute(lines[i])
                     if key == "ellipse" and value in ("misc/ellipse-nozoc","misc/ellipse-leader"):
                         print '"%s", line %d: [effect] apply_to=ellipse needs to be removed' % (filename, i+1)
-                    elif key == "ellipse" and value not in ("misc/ellipse","misc/ellipse-hero"):
+                    elif key == "ellipse" and value not in ("none","misc/ellipse","misc/ellipse-hero"):
                         print '"%s", line %d: custom ellipse %s may need to be updated' % (filename, i+1, value)
                 except TypeError: # this is needed to handle tags, that parse_attribute cannot split
                     pass
@@ -1334,7 +1334,7 @@ def global_sanity_check(filename, lines):
                     (key, prefix, value, comment) = parse_attribute(lines[i])
                     if key == "ellipse" and value in ("misc/ellipse-nozoc","misc/ellipse-leader"):
                         print '"%s", line %d: %s=%s needs to be removed' % (filename, i+1, key, value)
-                    elif key == "ellipse" and value not in ("misc/ellipse","misc/ellipse-hero"):
+                    elif key == "ellipse" and value not in ("none","misc/ellipse","misc/ellipse-hero"):
                         print '"%s", line %d: custom ellipse %s may need to be updated' % (filename, i+1, value)
                 except TypeError: # this is needed to handle tags, that parse_attribute cannot split
                     pass
