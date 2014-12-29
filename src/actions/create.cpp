@@ -694,7 +694,10 @@ namespace { // Helpers for place_recruit()
 			error_msg << "SYNC: In recruit " << new_unit.type_id() <<
 				": has checksum " << checksum <<
 				" while datasource has checksum " << old_checksum << "\n";
-			ERR_NG << error_msg.str();
+			if(old_checksum.empty()) 
+			{
+				error_msg << "Original result is \n" << original_checksum_config << "\n";
+			}
 			config cfg_unit1;
 			new_unit.write(cfg_unit1);
 			DBG_NG << cfg_unit1;

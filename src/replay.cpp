@@ -210,7 +210,7 @@ void replay::append(const config& cfg)
 */
 void replay::process_error(const std::string& msg)
 {
-	ERR_REPLAY << msg;
+	ERR_REPLAY << msg << std::flush;
 
 	resources::controller->process_oos(msg); // might throw end_level_exception(QUIT)
 }
