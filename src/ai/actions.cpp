@@ -646,8 +646,8 @@ void recall_result::do_execute()
 	}
 
 	// Do the actual recalling.
-	//we ignore possible erros (=unit doesnt exist on the recall list)
-	//becasue that was the previous behaviour.
+	// We ignore possible errors (=unit doesn't exist on the recall list)
+	// because that was the previous behavior.
 	synced_context::run_in_synced_context_if_not_already("recall",
 		replay_helper::get_recall(unit_id_, recall_location_, recall_from_),
 		false,

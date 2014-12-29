@@ -100,7 +100,7 @@ public:
 
 
 /**
-	this variable accessor will create a childtable when resolving name if it doesnt exist yet.
+	this variable accessor will create a childtable when resolving name if it doesn't exist yet.
 */
 typedef non_const_variable_info<variable_info_detail::vit_create_if_not_existent> variable_access_create;
 /**

@@ -1003,7 +1003,7 @@ config side_engine::new_config() const
 		res.remove_attribute("player_id");
 		res["current_player"] = reserved_for_;
 	} else if(controller_ == CNTR_COMPUTER) {
-		//TODO what is teh content of player_id_ here ?
+		//TODO what is the content of player_id_ here ?
 		res["current_player"] = desc;
 		res["player_id"] = preferences::login(); 
 	} else if(!player_id_.empty()) {

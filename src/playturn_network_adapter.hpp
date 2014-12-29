@@ -9,7 +9,7 @@
 
 /*
 	The purpose if this class is to preprocess incoming network data, and provide a steam that always returns just one command/action at a time.
-	Especialy we want each replay command in his own [turn].
+	Especially we want each replay command in his own [turn].
 */
 class playturn_network_adapter
 {
@@ -20,8 +20,8 @@ public:
 	~playturn_network_adapter();
 
 	//returns true on success.
-	//dst has to be empty befor the call.
-	//after the call dst contains one child chen returned true otherise it's empty.
+	//dst has to be empty before the call.
+	//after the call dst contains one child when returned true otherwise it's empty.
 	bool read(config& dst);
 	//returns false if there is still data in the internal buffer.
 	bool is_at_end();
@@ -33,11 +33,11 @@ public:
 private:
 	//reads data from the network stream.
 	void read_from_network();
-	//this always contains one empty config becasue we want a vaid value for next_.
+	//this always contains one empty config because we want a valid value for next_.
 	std::list<config> data_;
 	//the position of the next to be received element in data_->front().
 	config::all_children_iterator next_;
-	//if we are processing a [turn] with mutiple [command] we want to split them.
+	//if we are processing a [turn] with multiple [command] we want to split them.
 	//In this case next_command_num_ is the next to be processed turn into a command otherwise it's 0;
 	unsigned int next_command_num_;
 	//a function to receive data from the network.

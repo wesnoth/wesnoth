@@ -206,7 +206,7 @@ namespace
 		}
 		void from_indexed(typename get_variable_key_visitor::param_type state) const
 		{
-			//we dont support aaa[0].length
+			//we do not support aaa[0].length
 			return do_from_config(get_child_at<vit>(*state.child_, state.key_, state.index_), state);
 		}
 	private:
@@ -273,7 +273,7 @@ namespace
 	}
 
 	/// tries to convert to a (const) config&, unlike range based operation this also supports 'from_start'
-	/// Note: Currently getting the 'from_start' case here is impossible, becasue we always apply at least one string key.
+	/// Note: Currently getting the 'from_start' case here is impossible, because we always apply at least one string key.
 	template<const variable_info_type vit>
 	class as_container_visitor
 		: public variable_info_visitor_const<vit, typename maybe_const<vit, config>::type&>

@@ -1273,7 +1273,7 @@ size_t move_unit_and_record(const std::vector<map_location> &steps,
 	}
 	else
 	{
-		//we are already in synced mode ad dont need to reenter it again.
+		//we are already in synced mode and don't need to reenter it again.
 		return  move_unit_internal(undo_stack, show_move, interrupted, mover);
 	}
 }

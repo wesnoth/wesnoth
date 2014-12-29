@@ -92,11 +92,11 @@ config initial_level_config(saved_game& state)
 	add_multiplayer_classification(level.child_or_add("multiplayer"), state);
 
 	std::string era = params.mp_era;
-	//[multiplayer] mp_era= shoudl be psersistent over saves.
+	//[multiplayer] mp_era= should be persistent over saves.
 
-	//[era], [modification]s are toplevel tags here, they are not part of teh saved_game and only used during mp_connect/mp_wait
+	//[era], [modification]s are toplevel tags here, they are not part of the saved_game and only used during mp_connect/mp_wait
 	// Initialize the list of sides available for the current era.
-	// We also need this no not get a segfault in mp_connect for ai configuation
+	// We also need this no not get a segfault in mp_connect for ai configuration
 	const config &era_cfg =
 		game_config_manager::get()->game_config().find_child("era", "id", era);
 	if (!era_cfg) {

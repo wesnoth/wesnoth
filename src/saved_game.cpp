@@ -7,7 +7,7 @@
 	    This is present in all savefiles but it's not handled by playcampaign/play_controller/saved_game.
 		It's handled by savegame.cpp
 	 * [snapshot]
-	    If a savegame was saved during a scenaio this contzaings a snapshot of teh game at the point when it was saved.
+	    If a savegame was saved during a scenario this contains a snapshot of the game at the point when it was saved.
 	 * [carryover_sides_start]
 	    At start-of-scenrio saves this contains data from the previous scenario that was preserved
 	 * [carryover_sides]
@@ -22,16 +22,16 @@
 	The following types of savegames are known:
 	 * Start of scenario savefiles
 	    These files only contain general information, statistics, and [carryover_sides_start]
-		When these saves are loaded the scenario is loaded form teh game config by the next_scenario attribute from [carryover_sides_start]
+		When these saves are loaded, the scenario data is loaded form the game config using the next_scenario attribute from [carryover_sides_start]
 	 * Expanded Start of scenario savefiles
-	    Similar to normal Start-of-scenario savefiles, but the also contain a [scenario] that contins the scenario
-		This type is only used internaly and usualy doesn't get written to the disk.
+	    Similar to normal Start-of-scenario savefiles, but the also contain a [scenario] that contains the scenario data.
+		This type is only used internally and usually doesn't get written to the disk.
 	 * Ingame savefile
-	    These files contain genral information, statistics, [snapshot], [replay], [replay_start], [snapshot], [carryover_sides]
-		Thedse files don't contain a [carryover_sides_start] because both starting points ([replay_start] and [snapshot])
+	    These files contain general information, statistics, [snapshot], [replay], [replay_start], [snapshot], [carryover_sides]
+		These files don't contain a [carryover_sides_start] because both starting points ([replay_start] and [snapshot])
 		were made after [carryover_sides_start] was merged into the scenario.
 	 * Replay savefiles
-	    Like a Ingame save made durign linger mode, but without the [snapshot]
+	    Like a Ingame save made during linger mode, but without the [snapshot]
 */
 
 #include "saved_game.hpp"
@@ -344,7 +344,7 @@ void saved_game::expand_random_scenario()
 			starting_pos_["map_data"] = filesystem::read_map(starting_pos_["map"]);
 		}
 		// If the map should be randomly generated
-		// We dont want that we accidently to this twice so we check for starting_pos_["map_data"].empty()
+		// We don’t want that we accidentally to this twice so we check for starting_pos_["map_data"].empty()
 		if(starting_pos_["map_data"].empty() && !starting_pos_["map_generation"].empty()) {
 			LOG_NG << "randomly generating map...\n";
 			const cursor::setter cursor_setter(cursor::WAIT);

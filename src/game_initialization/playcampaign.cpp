@@ -94,8 +94,8 @@ static void show_carryover_message(saved_game& gamestate, playsingle_controller&
 			gamestate.classification().campaign_type == game_classification::TEST))
 	{
 		gamemap map = playcontroller.get_map_const();
-		// NOTE: this function uses game_config::village_income/game_config::base_income which is teh same for all teams
-		// the function that actualy does the carryover (carryover.cpp) uses team.base_income() / team.village_gold() since 1.13
+		// NOTE: this function uses game_config::village_income/game_config::base_income which is the same for all teams
+		// the function that actually does the carryover (carryover.cpp) uses team.base_income() / team.village_gold() since 1.13
 		// which can be different for every team
 		int finishing_bonus_per_turn =
 				map.villages().size() * game_config::village_income +

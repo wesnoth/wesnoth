@@ -270,7 +270,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 		WRN_REPLAY << "Warning: Move destination " << dst << " appears occupied." << std::endl;
 		// We'll still proceed with this movement, though, since
 		// an event might intervene.
-		// 'event' doesnt mean wml event but rather it means 'hidden' units form the movers point of view.
+		// 'event' doesn't mean wml event but rather it means 'hidden' units form the movers point of view.
 	}
 
 	u = resources::units->find(src);

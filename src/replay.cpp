@@ -756,8 +756,8 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		//if there is an empty command tag or a start tag
 		if (ch_itors.first == ch_itors.second || cfg->has_child("start"))
 		{
-			//this shouldn't happen anymore becasue replaycontroller now moves over the [start] with get_next_action
-			//also we removed the the "add empty replay entry at scenario reload" behaviour.
+			//this shouldn't happen anymore because replaycontroller now moves over the [start] with get_next_action
+			//also we removed the the "add empty replay entry at scenario reload" behavior.
 			ERR_REPLAY << "found "<<  cfg->debug() <<" in replay" << std::endl;
 			//do nothing
 		}

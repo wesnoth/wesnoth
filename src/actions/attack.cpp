@@ -1420,8 +1420,8 @@ namespace
 			else
 			{
 				//we are in the situation, that the unit is owned by a human, but he's not allowed to do this decision.
-				//becasue it's a mp game and it's not his turn.
-				//note that it doens't matter wether we call random_new::generator->next_random() or rand().
+				//because it's a mp game and it's not his turn.
+				//note that it doesn't matter whether we call random_new::generator->next_random() or rand().
 				res = random_new::generator->get_random_int(0, nb_options_-1);
 			}
 			LOG_NG << "unit at position " << loc_ << "choose advancement number " << res << "\n";

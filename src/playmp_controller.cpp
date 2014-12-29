@@ -202,7 +202,7 @@ possible_end_play_signal playmp_controller::play_human_turn(){
 				else if(res == turn_info::PROCESS_END_LINGER)
 				{
 					if(!linger_)
-						replay::process_error("Received unexpected next_scenario durign the game");
+						replay::process_error("Received unexpected next_scenario during the game");
 					else
 					{
 						//we end the turn immidiately to prevent receiving data of the next scenario while we are not playing it.

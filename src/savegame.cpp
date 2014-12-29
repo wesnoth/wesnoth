@@ -847,7 +847,7 @@ static void convert_old_saves_1_13_0(config& cfg)
 		cfg.clear_children("carryover_sides");
 	}
 #if 1
-	//This code is needed becasue for example otherwise it won't find the (empty) era
+	//This code is needed because for example otherwise it won't find the (empty) era
 	if(!cfg.has_child("multiplayer")) {
 		cfg.add_child("multiplayer", config_of
 			("mp_era", "era_blank")
@@ -856,8 +856,8 @@ static void convert_old_saves_1_13_0(config& cfg)
 			("mp_use_map_settings", true)
 		);
 	}
-	//the alternative code down below doesnt work replay saves or start of scenario saves
-	//becasue those don't contain a snaphot. If the code below works with we can enable that code
+	//the alternative code down below doesn’t work replay saves or start of scenario saves
+	//because those don't contain a snapshot. If the code below works with we can enable that code
 	//If it turns out that this code works well we can delete that code.
 #else
 

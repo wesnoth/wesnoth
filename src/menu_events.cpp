@@ -3351,8 +3351,8 @@ void menu_handler::request_control_change ( int side_num, const std::string& pla
 		//this is already our side.
 		return;
 	} else {
-		//The server will (or won't becasue we aren't allowed to change the controller)
-		//send us a [change_controller] back, which we then hndle in playturn.cpp 
+		//The server will (or won't because we aren't allowed to change the controller)
+		//send us a [change_controller] back, which we then handle in playturn.cpp 
 		change_side_controller(side,player);
 	}
 }

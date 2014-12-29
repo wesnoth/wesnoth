@@ -134,8 +134,8 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 	// LANGUAGE overrides other settings, so for now just get rid of it
 	// FIXME: add configure check for unsetenv
 
-	//category is never LC_MESSAGES since that case was moved to gettext.cpp to remove teh dependency to libintl.h in this file
-	//that why code like if (category == LC_MESSAGES) is outcommented here.
+	//category is never LC_MESSAGES since that case was moved to gettext.cpp to remove the dependency to libintl.h in this file
+	//that's why code like if (category == LC_MESSAGES) is outcommented here.
 #ifndef _WIN32
 	unsetenv ("LANGUAGE"); // void so no return value to check
 #endif
