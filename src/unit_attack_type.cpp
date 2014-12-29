@@ -347,3 +347,8 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 	return true;
 }
+
+void attack_type::write(config& cfg) const
+{
+	cfg = cfg_;
+}

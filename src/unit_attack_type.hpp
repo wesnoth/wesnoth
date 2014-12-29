@@ -72,7 +72,8 @@ public:
 
 	int movement_used() const { return movement_used_; }
 
-	const config& get_cfg() const { return cfg_; }
+	void write(config& cfg) const;
+	inline config to_config() const { config c; write(c); return c; }
 
 private:
 	// In unit_abilities.cpp:
