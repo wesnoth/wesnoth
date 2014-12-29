@@ -3640,6 +3640,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "find_vacant_tile",		boost::bind(&game_lua_kernel::intf_find_vacant_tile, this, _1)			},
 		{ "fire_event",               	boost::bind(&game_lua_kernel::intf_fire_event, this, _1)			},
 		{ "float_label",		boost::bind(&game_lua_kernel::intf_float_label, this, _1)			},
+		{ "gamestate_inspector",	boost::bind(&game_lua_kernel::intf_gamestate_inspector, this, _1)		},
 		{ "get_all_vars",		boost::bind(&game_lua_kernel::intf_get_all_vars, this, _1)			},
 		{ "get_locations",		boost::bind(&game_lua_kernel::intf_get_locations, this, _1)			},
 		{ "get_map_size",		boost::bind(&game_lua_kernel::intf_get_map_size, this, _1)			},
