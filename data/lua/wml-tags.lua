@@ -20,7 +20,8 @@ local location_set = wesnoth.require "lua/location_set.lua"
 local wml_actions = wesnoth.wml_actions
 
 local function trim(s)
-	return string.gsub(s, "^%s*(.-)%s*$", "%1")
+	-- use (f(a)) to get first argument
+	return (string.gsub(s, "^%s*(.-)%s*$", "%1"))
 end
 
 local function split(s)
@@ -105,7 +106,7 @@ function wml_actions.clear_variable(cfg)
 	local names = cfg.name or
 		helper.wml_error "[clear_variable] missing required name= attribute."
 	for w in split(names) do
-		wesnoth.set_variable((trim(w))) -- use (f(a)) to get first argument
+		wesnoth.set_variable(trim(w))
 	end
 end
 
