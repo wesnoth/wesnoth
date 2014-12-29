@@ -60,9 +60,10 @@ end
 
 function wml_actions.chat(cfg)
 	local side_list = wesnoth.get_sides(cfg)
-	local speaker = tostring(cfg.speaker) or "WML"
-	local message = tostring(cfg.message) or
+	local speaker = tostring(cfg.speaker or "WML")
+	local message = tostring(cfg.message or
 		helper.wml_error "[chat] missing required message= attribute."
+	)
 
 	for index, side in ipairs(side_list) do
 		if side.controller == "human" then
@@ -710,8 +711,8 @@ end
 
 function wml_actions.move_unit(cfg)
 	local coordinate_error = "invalid coordinate in [move_unit]"
-	local to_x = tostring(cfg.to_x) or helper.wml_error(coordinate_error)
-	local to_y = tostring(cfg.to_y) or helper.wml_error(coordinate_error)
+	local to_x = tostring(cfg.to_x or helper.wml_error(coordinate_error))
+	local to_y = tostring(cfg.to_y or helper.wml_error(coordinate_error))
 	local fire_event = cfg.fire_event
 	local muf_force_scroll = cfg.force_scroll
 	local check_passability = cfg.check_passability; if check_passability == nil then check_passability = true end
