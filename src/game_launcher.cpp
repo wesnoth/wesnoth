@@ -778,6 +778,8 @@ void game_launcher::set_tutorial()
 	state_ = saved_game();
 	state_.classification().campaign_type = game_classification::TUTORIAL;
 	state_.classification().campaign_define = "TUTORIAL";
+	state_.mp_settings().mp_era = "era_blank";
+	state_.mp_settings().show_connect = false;
 	state_.set_carryover_sides_start(
 		config_of("next_scenario", "tutorial")
 	);
