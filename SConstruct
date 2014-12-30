@@ -370,6 +370,13 @@ if env["prereqs"]:
                 conf.CheckSDL("SDL_mixer", require_version = '1.2.12') & \
                 conf.CheckSDL("SDL_image", require_version = '1.2.0')
 
+    if env["libintl"]:
+        def have_i18n_prereqs():
+            return conf.CheckGettextLibintl()
+    else:
+        def have_i18n_prereqs():
+            return conf.CheckBoost("locale")
+
     have_server_prereqs = (\
         conf.CheckCPlusPlus(gcc_version = "3.3") & \
         have_sdl_net() & \
@@ -380,8 +387,7 @@ if env["prereqs"]:
         conf.CheckBoost("smart_ptr", header_only = True) & \
         conf.CheckBoost("system") & \
         conf.CheckBoost("filesystem", require_version = "1.44.0") & \
-        ((not env["libintl"]) or conf.CheckGettextLibintl()) & \
-        (env["libintl"] or conf.CheckBoost("locale")) \
+        have_i18n_prereqs() \
             and Info("GOOD: Base prerequisites are met")) \
             or Warning("WARN: Base prerequisites are not met")
 
