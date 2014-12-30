@@ -242,26 +242,14 @@ void team::team_info::write(config& cfg) const
 	cfg["suppress_end_turn_confirmation"] = no_turn_confirmation;
 	cfg["scroll_to_leader"] = scroll_to_leader;
 	cfg["controller"] = CONTROLLER_to_string (controller);
-
-	std::stringstream can_recruit_str;
-	for(std::set<std::string>::const_iterator cr = can_recruit.begin(); cr != can_recruit.end(); ++cr) {
-		if(cr != can_recruit.begin())
-			can_recruit_str << ",";
-
-		can_recruit_str << *cr;
-	}
-
-	cfg["recruit"] = can_recruit_str.str();
-
+	cfg["recruit"] = utils::join(can_recruit);
 	cfg["share_maps"] = share_maps;
 	cfg["share_view"] = share_view;
-
 	cfg["color"] = color;
-
 	cfg["persistent"] = persistent;
 	cfg["lost"] = lost;
 
-	cfg.add_child("ai",ai::manager::to_config(side));
+	cfg.add_child("ai", ai::manager::to_config(side));
 }
 
 team::team() :
