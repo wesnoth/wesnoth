@@ -320,7 +320,8 @@ static int impl_unit_set(lua_State *L)
 	unit &u = *pu;
 
 	// Find the corresponding attribute.
-	//modify_int_attrib_check_range("side", u.set_side(value), 1, static_cast<int>(teams().size())); TODO: Figure out if this is a good idea
+	//modify_int_attrib_check_range("side", u.set_side(value), 1, static_cast<int>(teams().size())); TODO: Figure out if this is a good idea, to refer to teams() and make this depend on having a gamestate
+	modify_int_attrib("side", u.set_side(value));
 	modify_int_attrib("moves", u.set_movement(value));
 	modify_int_attrib("hitpoints", u.set_hitpoints(value));
 	modify_int_attrib("experience", u.set_experience(value));
