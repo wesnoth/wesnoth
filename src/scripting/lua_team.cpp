@@ -129,7 +129,9 @@ static int impl_side_set(lua_State *L)
 		return 0;
 	}
 
-	return luaL_argerror(L, 2, "unknown modifiable property");
+	std::string err_msg = "unknown modifiable property of side: ";
+	err_msg += m;
+	return luaL_argerror(L, 2, err_msg.c_str());
 }
 
 namespace lua_team {
