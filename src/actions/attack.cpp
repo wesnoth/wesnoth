@@ -724,6 +724,12 @@ namespace {
 			std::string dump();
 		};
 
+		/**
+		 * Used in perform_hit to confirm a replay is in sync.
+		 * Check OOS_error_ after this method, true if error detected.
+		 */
+		void check_replay_attack_result(bool, int, int, config, unit_info&);
+
 		void unit_killed(unit_info &, unit_info &,
 			const battle_context_unit_stats *&, const battle_context_unit_stats *&,
 			bool);
@@ -900,7 +906,6 @@ namespace {
 			resources::gamedata->get_variable("damage_inflicted") = damage;
 		}
 
-
 		// Make sure that if we're serializing a game here,
 		// we got the same results as the game did originally.
 		const config local_results = config_of("chance", attacker.cth_)("hits", hits)("damage", damage);
@@ -908,63 +913,11 @@ namespace {
 		bool equals_replay = checkup_instance->local_checkup(local_results, replay_results);
 		if (!equals_replay)
 		{
-
-			int results_chance = replay_results["chance"];
-			bool results_hits = replay_results["hits"].to_bool();
-			int results_damage = replay_results["damage"];
-			/*
-			errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
-				<< " replay data differs from local calculated data:"
-				<< " chance to hit in data source: " << results_chance
-				<< " chance to hit in calculated:  " << attacker.cth_
-				<< " chance to hit in data source: " << results_chance
-				<< " chance to hit in calculated:  " << attacker.cth_
-				;
-
-				attacker.cth_ = results_chance;
-				hits = results_hits;
-				damage = results_damage;
-
-				OOS_error_ = true;
-				*/
-			if (results_chance != attacker.cth_)
-			{
-				errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
-					<< ": chance to hit is inconsistent. Data source: "
-					<< results_chance << "; Calculation: " << attacker.cth_
-					<< " (over-riding game calculations with data source results)\n";
-				attacker.cth_ = results_chance;
-				OOS_error_ = true;
-			}
-
-			if (results_hits != hits)
-			{
-				errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
-					<< ": the data source says the hit was "
-					<< (results_hits ? "successful" : "unsuccessful")
-					<< ", while in-game calculations say the hit was "
-					<< (hits ? "successful" : "unsuccessful")
-					<< " random number: " << ran_num << " = "
-					<< (ran_num % 100) << "/" << results_chance
-					<< " (over-riding game calculations with data source results)\n";
-				hits = results_hits;
-				OOS_error_ = true;
-			}
-
-			if (results_damage != damage)
-			{
-				errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
-					<< ": the data source says the hit did " << results_damage
-					<< " damage, while in-game calculations show the hit doing "
-					<< damage
-					<< " damage (over-riding game calculations with data source results)\n";
-				damage = results_damage;
-				OOS_error_ = true;
-			}
+			check_replay_attack_result(hits, ran_num, damage, replay_results, attacker);
 		}
 
+		// can do no more damage than the defender has hitpoints
 		int damage_done = std::min<int>(defender.get_unit().hitpoints(), attacker.damage_);
-
 		int drains_damage = 0;
 		if (hits && attacker_stats->drains) {
 			drains_damage = damage_done * attacker_stats->drain_percent / 100 + attacker_stats->drain_constant;
@@ -1290,7 +1243,10 @@ namespace {
 			++abs_n_attack_;
 
 			if (a_.n_attacks_ > 0 && !defender_strikes_first) {
-				if (!perform_hit(true, attack_stats)) break;
+				if (!perform_hit(true, attack_stats)) {
+					DBG_NG << "broke from attack loop on attacker turn\n";
+					break;
+				}
 			}
 
 			// If the defender got to strike first, they use it up here.
@@ -1298,7 +1254,10 @@ namespace {
 			++abs_n_defend_;
 
 			if (d_.n_attacks_ > 0) {
-				if (!perform_hit(false, attack_stats)) break;
+				if (!perform_hit(false, attack_stats)) {
+					DBG_NG << "broke from attack loop on defender turn\n";
+					break;
+				}
 			}
 
 			// Continue the fight to death; if one of the units got petrified,
@@ -1354,8 +1313,63 @@ namespace {
 		}
 	}
 
-} //end anonymous namespace
+	void attack::check_replay_attack_result(bool hits, int ran_num, int damage,
+			config replay_results, unit_info& attacker)
+	{
+		int results_chance = replay_results["chance"];
+		bool results_hits = replay_results["hits"].to_bool();
+		int results_damage = replay_results["damage"];
+		/*
+		   errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
+		   << " replay data differs from local calculated data:"
+		   << " chance to hit in data source: " << results_chance
+		   << " chance to hit in calculated:  " << attacker.cth_
+		   << " chance to hit in data source: " << results_chance
+		   << " chance to hit in calculated:  " << attacker.cth_
+		   ;
 
+		   attacker.cth_ = results_chance;
+		   hits = results_hits;
+		   damage = results_damage;
+
+		   OOS_error_ = true;
+		   */
+		if (results_chance != attacker.cth_)
+		{
+			errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
+				<< ": chance to hit is inconsistent. Data source: "
+				<< results_chance << "; Calculation: " << attacker.cth_
+				<< " (over-riding game calculations with data source results)\n";
+			attacker.cth_ = results_chance;
+			OOS_error_ = true;
+		}
+
+		if (results_hits != hits)
+		{
+			errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
+				<< ": the data source says the hit was "
+				<< (results_hits ? "successful" : "unsuccessful")
+				<< ", while in-game calculations say the hit was "
+				<< (hits ? "successful" : "unsuccessful")
+				<< " random number: " << ran_num << " = "
+				<< (ran_num % 100) << "/" << results_chance
+				<< " (over-riding game calculations with data source results)\n";
+			hits = results_hits;
+			OOS_error_ = true;
+		}
+
+		if (results_damage != damage)
+		{
+			errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
+				<< ": the data source says the hit did " << results_damage
+				<< " damage, while in-game calculations show the hit doing "
+				<< damage
+				<< " damage (over-riding game calculations with data source results)\n";
+			damage = results_damage;
+			OOS_error_ = true;
+		}
+	}
+} //end anonymous namespace
 
 void attack_unit(const map_location &attacker, const map_location &defender,
 	int attack_with, int defend_with, bool update_display)
@@ -1363,7 +1377,6 @@ void attack_unit(const map_location &attacker, const map_location &defender,
 	attack dummy(attacker, defender, attack_with, defend_with, update_display);
 	dummy.perform();
 }
-
 
 
 namespace
