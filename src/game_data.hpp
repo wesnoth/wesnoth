@@ -23,22 +23,17 @@
 #include "map_location.hpp"
 #include "mt_rng.hpp"
 #include "variable_info.hpp"
-#include <boost/shared_ptr.hpp>
 
 class config_writer;
 class game_display;
 class gamemap;
 class scoped_wml_variable;
 class t_string;
-class team;
 class unit_map;
 
 namespace t_translation {
 	struct t_match;
 }
-
-class team_builder;
-typedef boost::shared_ptr<team_builder> team_builder_ptr;
 
 class game_data  : public variable_set  {
 public:
@@ -93,16 +88,6 @@ public:
 	};
 	PHASE phase() const { return phase_; }
 	void set_phase(PHASE phase) { phase_ = phase; }
-
-	//create an object responsible for creating and populating a team from a config
-	team_builder_ptr create_team_builder(const config& side_cfg, std::vector<team>& teams,
-		const config& level, gamemap& map);
-
-	//do first stage of team initialization (everything except unit placement)
-	void build_team_stage_one(team_builder_ptr tb_ptr);
-
-	//do second stage of team initialization (unit placement)
-	void build_team_stage_two(team_builder_ptr tb_ptr);
 
 	bool allow_end_turn() const { return can_end_turn_; }
 	void set_allow_end_turn(bool value) { can_end_turn_ = value; }

@@ -993,6 +993,7 @@ set(wesnoth-main_SRC
 	synced_commands.cpp
 	syncmp_handler.cpp
 	team.cpp
+	teambuilder.cpp
 	terrain_type_data.cpp
 	terrain_filter.cpp
 	tod_manager.cpp

@@ -27,6 +27,7 @@
 #include "random_new_deterministic.hpp"
 #include "reports.hpp"
 #include "scripting/game_lua_kernel.hpp"
+#include "teambuilder.hpp"
 #include "unit.hpp"
 #include "whiteboard/manager.hpp"
 
@@ -161,10 +162,10 @@ void game_state::init(const int ticks, play_controller & pc)
 				first_human_team_ = team_num;
 			}
 		}
-		team_builder_ptr tb_ptr = gamedata_.create_team_builder(side,
+		team_builder_ptr tb_ptr = create_team_builder(side,
 			board_.teams_, level_, *board_.map_);
 		++team_num;
-		gamedata_.build_team_stage_one(tb_ptr);
+		build_team_stage_one(tb_ptr);
 		team_builders.push_back(tb_ptr);
 	}
 	{
@@ -175,7 +176,7 @@ void game_state::init(const int ticks, play_controller & pc)
 
 		BOOST_FOREACH(team_builder_ptr tb_ptr, team_builders)
 		{
-			gamedata_.build_team_stage_two(tb_ptr);
+			build_team_stage_two(tb_ptr);
 		}
 	}
 

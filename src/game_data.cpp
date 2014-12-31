@@ -35,7 +35,6 @@
 #include "serialization/binary_or_text.hpp"
 #include "statistics.hpp"
 #include "team.hpp"
-#include "teambuilder.hpp"
 #include "unit.hpp"
 #include "unit_id.hpp"
 #include "wesconfig.h"
@@ -198,23 +197,6 @@ void game_data::write_config(config_writer& out){
 	config cfg;
 	wml_menu_items_.to_config(cfg);
 	out.write_child("menu_item", cfg);
-}
-
-team_builder_ptr game_data::create_team_builder(const config& side_cfg,
-					 std::vector<team>& teams,
-					 const config& level, gamemap& map)
-{
-	return team_builder_ptr(new team_builder(side_cfg, teams, level, map));
-}
-
-void game_data::build_team_stage_one(team_builder_ptr tb_ptr)
-{
-	tb_ptr->build_team_stage_one();
-}
-
-void game_data::build_team_stage_two(team_builder_ptr tb_ptr)
-{
-	tb_ptr->build_team_stage_two();
 }
 
 game_data& game_data::operator=(const game_data& info)
