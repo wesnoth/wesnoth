@@ -918,6 +918,14 @@ namespace {
 
 		// can do no more damage than the defender has hitpoints
 		int damage_done = std::min<int>(defender.get_unit().hitpoints(), attacker.damage_);
+		// expected damage = damage potential * chance to hit (as a percentage)
+		double expected_damage = damage_done*attacker.cth_*0.01;
+		if (attacker_turn) {
+			stats.attack_expected_damage(expected_damage, 0);
+		} else {
+			stats.attack_expected_damage(0, expected_damage);
+		}
+
 		int drains_damage = 0;
 		if (hits && attacker_stats->drains) {
 			drains_damage = damage_done * attacker_stats->drain_percent / 100 + attacker_stats->drain_constant;
@@ -1203,17 +1211,6 @@ namespace {
 
 		DBG_NG << "getting attack statistics\n";
 		statistics::attack_context attack_stats(a_.get_unit(), d_.get_unit(), a_stats_->chance_to_hit, d_stats_->chance_to_hit);
-
-		{
-			// Calculate stats for battle
-			combatant attacker(bc_->get_attacker_stats());
-			combatant defender(bc_->get_defender_stats());
-			attacker.fight(defender,false);
-			const double attacker_inflict = static_cast<double>(d_.get_unit().hitpoints()) - defender.average_hp();
-			const double defender_inflict = static_cast<double>(a_.get_unit().hitpoints()) - attacker.average_hp();
-
-			attack_stats.attack_expected_damage(attacker_inflict,defender_inflict);
-		}
 
 		a_.orig_attacks_ = a_stats_->num_blows;
 		d_.orig_attacks_ = d_stats_->num_blows;
