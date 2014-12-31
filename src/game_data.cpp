@@ -23,7 +23,6 @@
 
 #include "log.hpp" //LOG_STREAM
 #include "util.hpp" //lexical_cast
-#include "serialization/binary_or_text.hpp" //config_writer
 #include "variable.hpp" //scoped_wml_variable
 
 #include <boost/assign.hpp>

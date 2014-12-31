@@ -24,7 +24,6 @@
 #include "mt_rng.hpp"
 #include "variable_info.hpp"
 
-class config_writer;
 class scoped_wml_variable;
 class t_string;
 
