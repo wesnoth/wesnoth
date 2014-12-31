@@ -14,8 +14,8 @@
 
 /** @file */
 
-#ifndef GAME_STATUS_HPP_INCLUDED
-#define GAME_STATUS_HPP_INCLUDED
+#ifndef GAME_DATA_HPP_INCLUDED
+#define GAME_DATA_HPP_INCLUDED
 
 #include "config.hpp"
 #include "game_end_exceptions.hpp"
@@ -25,15 +25,8 @@
 #include "variable_info.hpp"
 
 class config_writer;
-class game_display;
-class gamemap;
 class scoped_wml_variable;
 class t_string;
-class unit_map;
-
-namespace t_translation {
-	struct t_match;
-}
 
 class game_data  : public variable_set  {
 public:
@@ -44,35 +37,34 @@ public:
 	std::vector<scoped_wml_variable*> scoped_variables;
 
 	const config& get_variables() const { return variables_; }
-
-	// Variable access
+	/// throws invalid_variablename_exception if varname is no valid variable name.
 	config::attribute_value &get_variable(const std::string &varname);
+	/// returns a blank attribute value if varname is no valid variable name.
 	virtual config::attribute_value get_variable_const(const std::string& varname) const;
+	/// throws invalid_variablename_exception if varname is no valid variable name.
 	config& get_variable_cfg(const std::string& varname);
-
+	/// does nothing if varname is no valid variable name.
 	void set_variable(const std::string& varname, const t_string& value);
+	/// throws invalid_variablename_exception if varname is no valid variable name.
 	config& add_variable_cfg(const std::string& varname, const config& value=config());
-
-	void activate_scope_variable(std::string var_name) const;
-
-	// returns a variable_access that cannot be used to change the game variables
+	/// returns a variable_access that cannot be used to change the game variables
 	variable_access_const get_variable_access_read(const std::string& varname) const
 	{
 		activate_scope_variable(varname);
 		return variable_access_const(varname, variables_);
 	}
-
-	// returns a variable_access that cannot be used to change the game variables
+	/// returns a variable_access that can be used to change the game variables
 	variable_access_create get_variable_access_write(const std::string& varname)
 	{
 		activate_scope_variable(varname);
 		return variable_access_create(varname, variables_);
 	}
-
-
-
+	/// Clears attributes config children
+	/// does nothing if varname is no valid variable name.
 	void clear_variable(const std::string& varname);
-	void clear_variable_cfg(const std::string& varname); // Clears only the config children
+	/// Clears only the config children
+	/// does nothing if varname is no valid variable name.
+	void clear_variable_cfg(const std::string& varname); 
 
 	game_events::wmi_container& get_wml_menu_items() { return wml_menu_items_; }
 
@@ -86,27 +78,25 @@ public:
 		START,
 		PLAY
 	};
+
 	PHASE phase() const { return phase_; }
 	void set_phase(PHASE phase) { phase_ = phase; }
 
 	bool allow_end_turn() const { return can_end_turn_; }
 	void set_allow_end_turn(bool value) { can_end_turn_ = value; }
 
-	/** the last location where a select event fired. */
+	/** the last location where a select event fired. Used by wml menu items with needs_select=yes*/
 	map_location last_selected;
 
-	void write_snapshot(config& cfg) const ;
-	void write_config(config_writer& out);
+	void write_snapshot(config& cfg) const;
 
 	const std::string& next_scenario() const { return next_scenario_; }
 	void set_next_scenario(const std::string& next_scenario) { next_scenario_ = next_scenario; }
 
 	game_data& operator=(const game_data& info);
-	game_data* operator=(const game_data* info);
 
 private:
-
-
+	void activate_scope_variable(std::string var_name) const;
 	///Used to delete variables.
 	variable_access_throw get_variable_access_throw(const std::string& varname)
 	{
@@ -119,6 +109,7 @@ private:
 	config variables_;
 	PHASE phase_;
 	bool can_end_turn_;
+	//TODO: why do we need this variable?
 	std::string scenario_;                            /**< the scenario being played */
 	std::string next_scenario_;                       /**< the scenario coming next (for campaigns) */
 };

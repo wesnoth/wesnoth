@@ -14,47 +14,19 @@
 
 /**
  * @file
- * Maintain status of a game, load&save games.
+ * Maintain game variables + misc.
  */
 
 #include "global.hpp"
 
 #include "game_data.hpp"
 
-#include "carryover.hpp"
-#include "filesystem.hpp"
-#include "formula_string_utils.hpp"
-#include "game_config.hpp"
-#include "game_preferences.hpp"
-#include "gettext.hpp"
-#include "log.hpp"
-#include "map.hpp"
-#include "recall_list_manager.hpp"
-#include "replay.hpp"
-#include "resources.hpp"
-#include "serialization/binary_or_text.hpp"
-#include "statistics.hpp"
-#include "team.hpp"
-#include "unit.hpp"
-#include "unit_id.hpp"
-#include "wesconfig.h"
-#include "wml_exception.hpp"
-#include "variable.hpp"
-#include "pathfind/pathfind.hpp"
-#include "whiteboard/side_actions.hpp"
-#include "sound.hpp"
-#include "soundsource.hpp"
-#include "map_label.hpp"
-#include "unit.hpp"
-#include "unit_map.hpp"
+#include "log.hpp" //LOG_STREAM
+#include "util.hpp" //lexical_cast
+#include "serialization/binary_or_text.hpp" //config_writer
+#include "variable.hpp" //scoped_wml_variable
 
 #include <boost/assign.hpp>
-#include <boost/bind.hpp>
-#include <boost/foreach.hpp>
-
-#ifndef _MSC_VER
-#include <sys/time.h>
-#endif
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -62,15 +34,9 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
-static lg::log_domain log_enginerefac("enginerefac");
-#define LOG_RG LOG_STREAM(info, log_enginerefac)
-
-
-/// The default difficulty setting for campaigns.
-const std::string DEFAULT_DIFFICULTY("NORMAL");
-
 game_data::game_data()
-		: scoped_variables()
+		: variable_set()
+		, scoped_variables()
 		, last_selected(map_location::null_location())
 		, wml_menu_items_()
 		, rng_()
@@ -82,7 +48,8 @@ game_data::game_data()
 		{}
 
 game_data::game_data(const config& level)
-		: scoped_variables()
+		: variable_set()
+		, scoped_variables()
 		, last_selected(map_location::null_location())
 		, wml_menu_items_()
 		, rng_(level)
@@ -96,7 +63,7 @@ game_data::game_data(const config& level)
 }
 
 game_data::game_data(const game_data& data)
-		: variable_set() // Not sure why empty, copied from old code
+		: variable_set() // variable set is just an interface.
 		, scoped_variables(data.scoped_variables)
 		, last_selected(data.last_selected)
 		, wml_menu_items_(data.wml_menu_items_)
@@ -186,19 +153,6 @@ void game_data::write_snapshot(config& cfg) const {
 	wml_menu_items_.to_config(cfg);
 }
 
-void game_data::write_config(config_writer& out){
-	out.write_key_val("scenario", scenario_);
-	out.write_key_val("next_scenario", next_scenario_);
-
-	out.write_key_val("random_seed", rng_.get_random_seed_str());
-	out.write_key_val("random_calls", lexical_cast<std::string>(rng_.get_random_calls()));
-	out.write_child("variables", variables_);
-
-	config cfg;
-	wml_menu_items_.to_config(cfg);
-	out.write_child("menu_item", cfg);
-}
-
 game_data& game_data::operator=(const game_data& info)
 {
 	// Use copy constructor to make sure we are coherent
@@ -207,16 +161,6 @@ game_data& game_data::operator=(const game_data& info)
 		new (this) game_data(info) ;
 	}
 	return *this ;
-}
-
-game_data* game_data::operator=(const game_data* info)
-{
-	// Use copy constructor to make sure we are coherent
-	if (this != info) {
-		this->~game_data();
-		new (this) game_data(*info) ;
-	}
-	return this ;
 }
 
 namespace {
