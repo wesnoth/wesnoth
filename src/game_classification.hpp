@@ -51,7 +51,6 @@ public:
 
 	std::string abbrev;                              /**< the campaign abbreviation */
 //	std::string scenario;                            /**< the scenario being played */
-//	std::string next_scenario;                       /**< the scenario coming next (for campaigns) */
 	std::string completion;                          /**< running. victory, or defeat */
 	bool end_credits;                                /**< whether to show the standard credits at the end */
 	std::string end_text;                            /**< end-of-campaign text */
