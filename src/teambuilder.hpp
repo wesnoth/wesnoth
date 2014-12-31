@@ -38,8 +38,7 @@ static lg::log_domain log_engine_tc("engine/team_construction");
 class team_builder {
 public:
 	team_builder(const config& side_cfg, std::vector<team>& teams,
-		     const config& level, gamemap& map,
-		     game_data & gamedata)
+		     const config& level, gamemap& map)
 		: gold_info_ngold_(0)
 		, leader_configs_()
 		, level_(level)
@@ -51,7 +50,6 @@ public:
 		, t_(NULL)
 		, teams_(teams)
 		, unit_configs_()
-		, gamedata_(gamedata)
 	{
 	}
 
@@ -106,8 +104,6 @@ protected:
 	team *t_;
 	std::vector<team> &teams_;
 	std::vector<const config*> unit_configs_;
-	game_data & gamedata_;
-
 
 	void log_step(const char *s) const
 	{
@@ -163,7 +159,7 @@ protected:
 	void new_team()
 	{
 		log_step("new team");
-		t_->build(side_cfg_, map_, &gamedata_, gold_info_ngold_);
+		t_->build(side_cfg_, map_, gold_info_ngold_);
 		//t_->set_gold_add(gold_info_add_);
 	}
 

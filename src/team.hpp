@@ -167,7 +167,7 @@ public:
 	/// from a side's config before using it to create the side's leader.
 	static const std::set<std::string> attributes;
 
-	void build(const config &cfg, const gamemap &map, const game_data * gamedata, int gold = default_team_gold_);
+	void build(const config &cfg, const gamemap &map, int gold = default_team_gold_);
 
 	void write(config& cfg) const;
 

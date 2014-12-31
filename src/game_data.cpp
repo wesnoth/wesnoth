@@ -204,7 +204,7 @@ team_builder_ptr game_data::create_team_builder(const config& side_cfg,
 					 std::vector<team>& teams,
 					 const config& level, gamemap& map)
 {
-	return team_builder_ptr(new team_builder(side_cfg, teams, level, map, *this));
+	return team_builder_ptr(new team_builder(side_cfg, teams, level, map));
 }
 
 void game_data::build_team_stage_one(team_builder_ptr tb_ptr)
