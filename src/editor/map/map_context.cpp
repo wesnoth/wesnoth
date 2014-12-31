@@ -304,7 +304,7 @@ void map_context::load_scenario(const config& game_config)
 	{
 		team t;
 		side["side"] = i;
-		t.build(side, map_, NULL); //It's okay to pass a NULL gamedata ptr here, it is only used ultimately in map_location ctor and checked for null.
+		t.build(side, map_);
 		teams_.push_back(t);
 
 		BOOST_FOREACH(config &a_unit, side.child_range("unit")) {
