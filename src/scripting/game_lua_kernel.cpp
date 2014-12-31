@@ -757,7 +757,8 @@ int game_lua_kernel::intf_set_variable(lua_State *L)
 
 int game_lua_kernel::intf_set_menu_item(lua_State *L)
 {
-	gamedata().get_wml_menu_items().set_item(luaL_checkstring(L, 1), luaW_checkvconfig(L,2));
+	gamedata().get_wml_menu_items().set_item(luaL_checkstring(L, 1), luaW_checkvconfig(L,2), game_state_.events_manager_.get());
+
 	return 0;
 }
 
