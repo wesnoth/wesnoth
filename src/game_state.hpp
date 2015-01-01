@@ -67,7 +67,7 @@ public:
 
 	void set_game_display(game_display *);
 
-	config to_config() const;
+	void write(config& cfg) const;
 
 	virtual const display_context & get_disp_context() const { return board_; }
 	virtual const tod_manager & get_tod_man() const { return tod_manager_; }

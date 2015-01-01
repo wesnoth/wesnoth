@@ -205,10 +205,8 @@ void game_state::set_game_display(game_display * gd)
 	game_events_resources_->screen = gd;
 }
 
-config game_state::to_config() const
+void game_state::write(config& cfg) const
 {
-	config cfg;
-
 	//Call the lua save_game functions
 	lua_kernel_->save_game(cfg);
 
@@ -226,8 +224,6 @@ config game_state::to_config() const
 
 	//Write the game data, including wml vars
 	gamedata_.write_snapshot(cfg);
-
-	return cfg;
 }
 
 namespace {

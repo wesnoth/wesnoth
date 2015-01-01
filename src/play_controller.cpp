@@ -479,7 +479,7 @@ config play_controller::to_config() const
 	cfg["init_side_done"] = init_side_done_;
 	cfg.merge_attributes(level_);
 
-	cfg.merge_with(gamestate_.to_config());
+	gamestate_.write(cfg);
 
 	if(linger_) {
 		end_level_data_.write(cfg.add_child("end_level_data"));
