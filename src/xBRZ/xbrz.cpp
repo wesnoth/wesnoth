@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2015 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

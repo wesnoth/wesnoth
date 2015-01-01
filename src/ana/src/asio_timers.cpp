@@ -4,7 +4,7 @@
  * @brief Implementation details for the ana project dealing with timers.
  *
  * ana: Asynchronous Network API.
- * Copyright (C) 2010 - 2014 Guillermo Biset.
+ * Copyright (C) 2010 - 2015 Guillermo Biset.
  *
  * This file is part of the ana project.
  *

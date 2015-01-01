@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2014 by Google Inc.
+ Copyright (C) 2014 - 2015 by Google Inc.
  Part of the Battle for Wesnoth Project http://www.wesnoth.org/
  
  This program is free software; you can redistribute it and/or modify
