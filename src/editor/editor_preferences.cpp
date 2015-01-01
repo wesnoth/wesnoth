@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2014 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2009 - 2015 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
