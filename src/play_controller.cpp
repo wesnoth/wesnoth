@@ -509,8 +509,6 @@ config play_controller::to_config() const
 	}
 
 	cfg["next_underlying_unit_id"] = str_cast(n_unit::id_manager::instance().get_save_id());
-	//TODO: i am not sure whether the next line is needed.
-	cfg.merge_attributes(saved_game_.classification().to_config());
 	return cfg;
 }
 
