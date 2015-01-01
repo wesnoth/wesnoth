@@ -482,9 +482,7 @@ config play_controller::to_config() const
 	cfg.merge_with(gamestate_.to_config());
 
 	if(linger_) {
-		config endlevel;
-		end_level_data_.write(endlevel);
-		cfg.add_child("end_level_data", endlevel);
+		end_level_data_.write(cfg.add_child("end_level_data"));
 	}
 
 	// Write terrain_graphics data in snapshot, too
@@ -492,9 +490,7 @@ config play_controller::to_config() const
 		cfg.add_child("terrain_graphics", tg);
 	}
 
-	config display;
-	gui_->write(display);
-	cfg.add_child("display", display);
+	gui_->write(cfg.add_child("display"));
 
 	// Preserve the undo stack so that fog/shroud clearing is kept accurate.
 	undo_stack_->write(cfg.add_child("undo_stack"));
