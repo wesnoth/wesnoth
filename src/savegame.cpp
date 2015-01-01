@@ -408,25 +408,18 @@ bool savegame::save_game_interactive(CVideo& video, const std::string& message,
 	create_filename();
 
 	int res = gui2::twindow::OK;
-	bool exit = true;
 
 	res = show_save_dialog(video, message, dialog_type);
 
-	if (res == gui2::twindow::OK) {
-		exit = check_overwrite(video);
-
-		return false;
+	if (res == 2) { 
+		throw end_level_exception(QUIT); //Quit game
 	}
 
-	while (!exit);
+	if (res == gui2::twindow::OK && check_overwrite(video)) {
+		return save_game(&video);
+	}
 
-	if (res == 2) //Quit game
-		throw end_level_exception(QUIT);
-
-	if (res != gui2::twindow::OK)
-		return false;
-
-	return save_game(&video);
+	return false;
 }
 
 int savegame::show_save_dialog(CVideo& video, const std::string& message, const gui::DIALOG_TYPE dialog_type)
