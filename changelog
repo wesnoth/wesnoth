@@ -113,6 +113,7 @@ Version 1.13.0-dev:
    * Add a new bilinear interpolation implementation, which properly performs
      alpha weighting when averaging colors, and rename old one as the legacy
      version.
+   * Align unit overlays to the sprite rather than the occupied hex.
  * Help browser:
    * Added trait list with links to the help page for unit types
    * Added "Defense Capped" column with notification in the "terrain modifiers table"
