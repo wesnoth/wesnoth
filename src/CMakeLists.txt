@@ -228,6 +228,7 @@ set(libwesnoth-core_STAT_SRC
 	serialization/preprocessor.cpp
 	serialization/string_utils.cpp
 	serialization/tokenizer.cpp
+	serialization/unicode.cpp
 	serialization/validator.cpp
 )
 
