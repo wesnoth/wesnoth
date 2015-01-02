@@ -3615,6 +3615,10 @@ void display::invalidate_animations()
 	BOOST_FOREACH(const unit & u, dc_->units()) {
 		open_mp_list.push_back(&u);
 	}
+	// Note that it is an important assumption of the
+	// system that the fake units are added to the list
+	// after the real units, so that e.g. whiteboard
+	// planned moves are drawn over the real units.
 	BOOST_FOREACH(const unit* u, *fake_unit_man_) {
 		open_mp_list.push_back(u);
 	}
