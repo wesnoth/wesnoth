@@ -3615,13 +3615,22 @@ void display::invalidate_animations()
 	BOOST_FOREACH(const unit & u, dc_->units()) {
 		open_mp_list.push_back(&u);
 	}
+	// Note that it is an important assumption of the
+	// system that the fake units are added to the list
+	// after the real units, so that e.g. whiteboard
+	// planned moves are drawn over the real units.
 	BOOST_FOREACH(const unit* u, *fake_unit_man_) {
 		open_mp_list.push_back(u);
 	}
 
 	// openMP can't iterate over size_t
 	const int omp_iterations = open_mp_list.size();
-	#pragma omp parallel for shared(open_mp_list)
+	//#pragma omp parallel for shared(open_mp_list)
+	//this loop must not be parallelized. refresh is not thread-safe,
+	//for one, unit filters are not thread safe. this is because,
+	//adding new "scoped" wml variables is not thread safe. lua itself
+	//is not thread safe. when this loop was parallelized, assertion
+	//failures were reported in windows openmp builds.
 	for (int i = 0; i < omp_iterations; i++) {
 		open_mp_list[i]->anim_comp().refresh();
 	}
