@@ -10,7 +10,6 @@ Contents:
 You'll need to have these libraries and their development headers to build Wesnoth:
 
  boost_filesystem >= 1.44.0
- boost_locale >= 1.48.0
  boost_iostreams >= 1.36.0
  boost_multiindex >= 1.36.0 (header only)
  boost_random >= 1.48.0
@@ -37,6 +36,13 @@ and match.
 Also note that SDL 1.2.14 is known to have problems on Windows, so we advise
 you to use SDL 1.2.15.
 
+Additionally you must have *at least one* of:
+ boost_locale >= 1.48.0
+ libintl
+
+For scons, set the "libintl" option to true to enable using libintl instead of locale.
+For windows builds you should not select libintl. 
+
 These libraries are optional dependencies that enable additional features:
 
  libdbus-1 (used for desktop notifications)
@@ -44,7 +50,7 @@ These libraries are optional dependencies that enable additional features:
  history (GNU history for command history and history expansion in the lua console)
 
 As a temporary compatibility measure, it is possible to build the game without requiring boost filesystem or boost locale, using libintl for translations instead. The cost is that wesnoth won't support UTF-8 in filepaths on all platforms.
-For this, target filesystem.cpp and gettext.cpp instead of filesystem_boost.cpp and gettext_boost.cpp. For scons/cmake the "boost filesystem" option toggles these.
+For this, target filesystem.cpp and gettext.cpp instead of filesystem_boost.cpp and gettext_boost.cpp. For cmake the "boost filesystem" option toggles these.
 Similarly it is possible, although not recommended, to compile the game with any libsdl-mixer version >= 1.2.0, at the cost of reduced UTF-8 support.
 
 There are currently two ways to build wesnoth:
