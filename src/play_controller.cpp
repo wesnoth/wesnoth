@@ -58,6 +58,7 @@
 #include "tooltips.hpp"
 #include "unit.hpp"
 #include "unit_id.hpp"
+#include "unit_types.hpp"
 #include "whiteboard/manager.hpp"
 #include "wml_exception.hpp"
 
@@ -126,6 +127,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	soundsources_manager_(),
 	persist_(),
 	gui_(),
+	xp_mod_(new unit_type::experience_accelerator(level["experience_modifier"].to_int(100))),
 	statistics_context_(level["name"]),
 	undo_stack_(new actions::undo_list(level.child("undo_stack"))),
 	loading_game_(level["playing_team"].empty() == false),

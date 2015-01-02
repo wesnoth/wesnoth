@@ -247,6 +247,7 @@ protected:
 
 	//other objects
 	boost::scoped_ptr<game_display> gui_;
+	boost::scoped_ptr<unit_type::experience_accelerator> xp_mod_;
 	const statistics::scenario_context statistics_context_;
 	/// undo_stack_ is never NULL. It is implemented as a pointer so that
 	/// undo_list can be an incomplete type at this point (which reduces the
