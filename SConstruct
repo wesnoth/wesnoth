@@ -73,7 +73,7 @@ opts.AddVariables(
     BoolVariable('lowmem', 'Set to reduce memory usage by removing extra functionality', False),
     BoolVariable('notifications', 'Enable support for desktop notifications', True),
     BoolVariable('nls','enable compile/install of gettext message catalogs',True),
-    BoolVariable('boostfilesystem', 'Use boost filesystem', True),
+    BoolVariable('libintl', 'Use lib intl for translations, instead of boost locale', False),
     BoolVariable('png', 'Clear to disable writing png files for screenshots, images', True),
     PathVariable('prefix', 'autotools-style installation prefix', "/usr/local", PathVariable.PathAccept),
     PathVariable('prefsdir', 'user preferences directory', "", PathVariable.PathAccept),
@@ -299,8 +299,8 @@ configure_args = dict(
 env.MergeFlags(env["extra_flags_config"])
 
 # Some tests need to load parts of boost
-if env["boostfilesystem"]:
-    env.PrependENVPath('LD_LIBRARY_PATH', env["boostlibdir"])
+env.PrependENVPath('LD_LIBRARY_PATH', env["boostlibdir"])
+
 if env["prereqs"]:
     conf = env.Configure(**configure_args)
 
@@ -370,19 +370,24 @@ if env["prereqs"]:
                 conf.CheckSDL("SDL_mixer", require_version = '1.2.12') & \
                 conf.CheckSDL("SDL_image", require_version = '1.2.0')
 
+    if env["libintl"]:
+        def have_i18n_prereqs():
+            return conf.CheckGettextLibintl()
+    else:
+        def have_i18n_prereqs():
+            return conf.CheckBoost("locale")
+
     have_server_prereqs = (\
         conf.CheckCPlusPlus(gcc_version = "3.3") & \
         have_sdl_net() & \
-        ((env["boostfilesystem"]) or (conf.CheckGettextLibintl())) & \
         conf.CheckBoost("iostreams", require_version = "1.34.1") & \
         conf.CheckBoostIostreamsGZip() & \
         conf.CheckBoostIostreamsBZip2() & \
         conf.CheckBoost("random",require_version = "1.40.0") & \
         conf.CheckBoost("smart_ptr", header_only = True) & \
         conf.CheckBoost("system") & \
-        ((not env["boostfilesystem"]) or 
-            (conf.CheckBoost("filesystem", require_version = "1.44.0") & \
-            conf.CheckBoost("locale"))) \
+        conf.CheckBoost("filesystem", require_version = "1.44.0") & \
+        have_i18n_prereqs() \
             and Info("GOOD: Base prerequisites are met")) \
             or Warning("WARN: Base prerequisites are not met")
 
@@ -404,6 +409,10 @@ if env["prereqs"]:
     if have_client_prereqs:
         if env["PLATFORM"] != "win32":
             have_X = conf.CheckLib('X11')
+        else:
+            if env["libintl"]:
+                Warning("ERROR: You cannot use the libintl option when building for windows")
+                have_client_prereqs = False
 
         env["notifications"] = env["notifications"] and conf.CheckPKG("dbus-1")
         if env["notifications"]:
@@ -521,6 +530,7 @@ for env in [test_env, client_env, env]:
 
     if env["PLATFORM"] == 'win32':
         env.Append(LIBS = ["wsock32", "iconv", "z"], CCFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"], CPPDEFINES = ["_WIN32_WINNT=0x0500"])
+
     if env["PLATFORM"] == 'darwin':            # Mac OS X
         env.Append(FRAMEWORKS = "Carbon")            # Carbon GUI
 
