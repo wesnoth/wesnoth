@@ -307,17 +307,13 @@ bool loadgame::check_version_compatibility()
 		return false;
 	}
 
-	int res = gui2::twindow::OK;
 	if(preferences::confirm_load_save_from_different_version()) {
 		const std::string message = _("This save is from a different version of the game ($version_number|). Do you wish to try to load it?");
 		utils::string_map symbols;
 		symbols["version_number"] = save_version.str();
-		res = gui2::show_message(gui_.video(), _("Load Game"), utils::interpolate_variables_into_string(message, &symbols),
+		const int res = gui2::show_message(gui_.video(), _("Load Game"), utils::interpolate_variables_into_string(message, &symbols),
 			gui2::tmessage::yes_no_buttons);
-	}
-
-	if(res == gui2::twindow::CANCEL) {
-		return false;
+		return res == gui2::twindow::OK; 
 	}
 
 	return true;
@@ -424,22 +420,20 @@ int savegame::show_save_dialog(CVideo& video, const std::string& message, const 
 {
 	int res = 0;
 
-	std::string filename = filename_;
-
 	if (dialog_type == gui::OK_CANCEL){
-		gui2::tgame_save dlg(filename, title_);
+		gui2::tgame_save dlg(filename_, title_);
 		dlg.show(video);
 		res = dlg.get_retval();
 	}
 	else if (dialog_type == gui::YES_NO){
-		gui2::tgame_save_message dlg(filename, title_, message);
+		gui2::tgame_save_message dlg(filename_, title_, message);
 		dlg.show(video);
 		res = dlg.get_retval();
 	}
 
-	set_filename(filename);
+	set_filename(filename_);
 
-	if (!check_filename(filename, video)) {
+	if (!check_filename(filename_, video)) {
 		res = gui2::twindow::CANCEL;
 	}
 
@@ -448,15 +442,15 @@ int savegame::show_save_dialog(CVideo& video, const std::string& message, const 
 
 bool savegame::check_overwrite(CVideo& video)
 {
-	std::string filename = filename_;
-	if (save_game_exists(filename, compress_saves_)) {
-		std::stringstream message;
-		message << _("Save already exists. Do you want to overwrite it?") << "\n" << _("Name: ") << filename;
-		int retval = gui2::show_message(video, _("Overwrite?"), message.str(), gui2::tmessage::yes_no_buttons);
-		return retval == gui2::twindow::OK;
-	} else {
+	if(!save_game_exists(filename_, compress_saves_)) {
 		return true;
 	}
+
+	std::ostringstream message;
+	message << _("Save already exists. Do you want to overwrite it?") << "\n" << _("Name: ") << filename_;
+	const int res = gui2::show_message(video, _("Overwrite?"), message.str(), gui2::tmessage::yes_no_buttons);
+	return res == gui2::twindow::OK;
+	
 }
 
 bool savegame::check_filename(const std::string& filename, CVideo& video)
@@ -465,9 +459,9 @@ bool savegame::check_filename(const std::string& filename, CVideo& video)
 		gui2::show_error_message(video, _("Save names should not end on '.gz' or '.bz2'. "
 			"Please remove the extension."));
 		return false;
-	} else {
-		return true;
 	}
+
+	return true;
 }
 
 bool savegame::is_illegal_file_char(char c)
