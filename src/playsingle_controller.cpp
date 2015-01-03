@@ -71,19 +71,19 @@ static lg::log_domain log_enginerefac("enginerefac");
 playsingle_controller::playsingle_controller(const config& level,
 		saved_game& state_of_game, const int ticks,
 		const config& game_config, const tdata_cache & tdata,
-		CVideo& video, bool skip_replay) :
-	play_controller(level, state_of_game, ticks, game_config, tdata, video, skip_replay),
-	cursor_setter(cursor::NORMAL),
-	textbox_info_(),
-	replay_sender_(recorder),
-	network_reader_(),
-	turn_data_(replay_sender_, network_reader_),
-	end_turn_(false),
-	player_type_changed_(false),
-	replaying_(false),
-	skip_next_turn_(false),
-	do_autosaves_(false),
-	level_result_(NONE)
+		CVideo& video, bool skip_replay)
+	: play_controller(level, state_of_game, ticks, game_config, tdata, video, skip_replay)
+	, cursor_setter(cursor::NORMAL)
+	, textbox_info_()
+	, replay_sender_(recorder)
+	, network_reader_()
+	, turn_data_(replay_sender_, network_reader_)
+	, end_turn_(false)
+	, player_type_changed_(false)
+	, replaying_(false)
+	, skip_next_turn_(false)
+	, do_autosaves_(false)
+	, level_result_(NONE)
 {
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the sp (whiteboard enabled) version
 

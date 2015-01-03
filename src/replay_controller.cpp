@@ -117,15 +117,15 @@ possible_end_play_signal replay_controller::try_run_to_completion() {
 replay_controller::replay_controller(const config& level,
 		saved_game& state_of_game, const int ticks,
 		const config& game_config, 
-		const tdata_cache & tdata, CVideo& video) :
-	play_controller(level, state_of_game, ticks, game_config, tdata, video, false),
-	saved_game_start_(saved_game_),
-	gameboard_start_(gamestate_.board_),
-	tod_manager_start_(level),
-	current_turn_(1),
-	is_playing_(false),
-	show_everything_(false),
-	show_team_(state_of_game.classification().campaign_type == game_classification::MULTIPLAYER ? 0 : 1)
+		const tdata_cache & tdata, CVideo& video)
+	: play_controller(level, state_of_game, ticks, game_config, tdata, video, false)
+	, saved_game_start_(saved_game_)
+	, gameboard_start_(gamestate_.board_)
+	, tod_manager_start_(level)
+	, current_turn_(1)
+	, is_playing_(false)
+	, show_everything_(false)
+	, show_team_(state_of_game.classification().campaign_type == game_classification::MULTIPLAYER ? 0 : 1)
 {
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the replay controller version
 

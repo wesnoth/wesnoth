@@ -109,44 +109,44 @@ static void clear_resources()
 
 play_controller::play_controller(const config& level, saved_game& state_of_game,
 		const int ticks, const config& game_config, const tdata_cache & tdata,
-		CVideo& video, bool skip_replay) :
-	controller_base(game_config, video),
-	observer(),
-	savegame_config(),
-	gamestate_(level, tdata),
-	level_(level),
-	saved_game_(state_of_game),
-	prefs_disp_manager_(),
-	tooltips_manager_(),
-	whiteboard_manager_(),
-	plugins_context_(),
-	labels_manager_(),
-	help_manager_(&game_config),
-	mouse_handler_(NULL, *this),
-	menu_handler_(NULL, *this, level, game_config),
-	hotkey_handler_(new hotkey_handler(*this, saved_game_)),
-	soundsources_manager_(),
-	persist_(),
-	gui_(),
-	xp_mod_(new unit_experience_accelerator(level["experience_modifier"].to_int(100))),
-	statistics_context_(new statistics::scenario_context(level["name"])),
-	undo_stack_(new actions::undo_list(level.child("undo_stack"))),
-	loading_game_(level["playing_team"].empty() == false),
-	player_number_(1),
-	first_player_(level["playing_team"].to_int() + 1),
-	start_turn_(gamestate_.tod_manager_.turn()), // gamestate_.tod_manager_ constructed above
-	skip_replay_(skip_replay),
-	linger_(false),
-	it_is_a_new_turn_(true),
-	init_side_done_(level["init_side_done"].to_bool(true)),
-	ticks_(ticks),
-	victory_when_enemies_defeated_(true),
-	remove_from_carryover_on_defeat_(true),
-	end_level_data_(),
-	victory_music_(),
-	defeat_music_(),
-	scope_(),
-	server_request_number_(0)
+		CVideo& video, bool skip_replay)
+	: controller_base(game_config, video)
+	, observer()
+	, savegame_config()
+	, gamestate_(level, tdata)
+	, level_(level)
+	, saved_game_(state_of_game)
+	, prefs_disp_manager_()
+	, tooltips_manager_()
+	, whiteboard_manager_()
+	, plugins_context_()
+	, labels_manager_()
+	, help_manager_(&game_config)
+	, mouse_handler_(NULL, *this)
+	, menu_handler_(NULL, *this, level, game_config)
+	, hotkey_handler_(new hotkey_handler(*this, saved_game_))
+	, soundsources_manager_()
+	, persist_()
+	, gui_()
+	, xp_mod_(new unit_experience_accelerator(level["experience_modifier"].to_int(100)))
+	, statistics_context_(new statistics::scenario_context(level["name"]))
+	, undo_stack_(new actions::undo_list(level.child("undo_stack")))
+	, loading_game_(level["playing_team"].empty() == false)
+	, player_number_(1)
+	, first_player_(level["playing_team"].to_int() + 1)
+	, start_turn_(gamestate_.tod_manager_.turn()) // gamestate_.tod_manager_ constructed above
+	, skip_replay_(skip_replay)
+	, linger_(false)
+	, it_is_a_new_turn_(true)
+	, init_side_done_(level["init_side_done"].to_bool(true))
+	, ticks_(ticks)
+	, victory_when_enemies_defeated_(true)
+	, remove_from_carryover_on_defeat_(true)
+	, end_level_data_()
+	, victory_music_()
+	, defeat_music_()
+	, scope_()
+	, server_request_number_(0)
 {
 	resources::controller = this;
 	resources::gameboard = &gamestate_.board_;
