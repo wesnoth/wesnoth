@@ -87,17 +87,14 @@ function wml_actions.select_character()
 
 	local character = wesnoth.show_dialog(character_selection_dialog)
 	local unit = wesnoth.get_variable("student_store")
-	local gender = "male"
 
 	if character == 2 then
-		gender = "female"
-
 		unit.type    = "Fighteress"
 		unit.name    = "Li’sar"
+		unit.gender  = "female"
 		unit.profile = "portraits/lisar.png"
 	end
 
-	wesnoth.set_variable("gender", gender)
 	wesnoth.put_unit(unit)
 	wesnoth.redraw {}
 end
