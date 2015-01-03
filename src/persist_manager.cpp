@@ -17,6 +17,17 @@
 
 #include <boost/foreach.hpp>
 
+persist_manager::persist_manager()
+	: in_transaction_(false)
+	, contexts_()
+{}
+
+persist_manager::~persist_manager() {
+	cancel_transaction();
+	for (context_map::iterator i = contexts_.begin(); i != contexts_.end(); ++i)
+		delete (i->second);
+}
+
 persist_context &persist_manager::get_context(const std::string &ns)
 {
 	persist_context::name_space name(ns,true);
