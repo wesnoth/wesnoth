@@ -35,6 +35,7 @@
 #include "savegame.hpp"
 #include "saved_game.hpp"
 #include "scripting/game_lua_kernel.hpp"
+#include "statistics.hpp"
 #include "synced_context.hpp"
 #include "whiteboard/manager.hpp"
 

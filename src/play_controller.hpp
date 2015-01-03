@@ -24,7 +24,6 @@
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
 #include "persist_manager.hpp"
-#include "statistics.hpp"
 #include "terrain_type_data.hpp"
 #include "tod_manager.hpp"
 
@@ -59,6 +58,10 @@ namespace preferences {
 namespace soundsource {
 	class manager;
 } // namespace soundsource
+
+namespace statistics {
+	struct scenario_context;
+} // namespace statistics
 
 namespace pathfind {
 	class manager;
@@ -248,7 +251,7 @@ protected:
 	//other objects
 	boost::scoped_ptr<game_display> gui_;
 	boost::scoped_ptr<unit_experience_accelerator> xp_mod_;
-	const statistics::scenario_context statistics_context_;
+	boost::scoped_ptr<const statistics::scenario_context> statistics_context_;
 	/// undo_stack_ is never NULL. It is implemented as a pointer so that
 	/// undo_list can be an incomplete type at this point (which reduces the
 	/// number of files that depend on actions/undo.hpp).

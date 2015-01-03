@@ -42,6 +42,7 @@
 #include "settings.hpp"
 #include "scripting/plugins/context.hpp"
 #include "sound.hpp"
+#include "statistics.hpp"
 #include "unit_id.hpp"
 #include "game_config_manager.hpp"
 

@@ -47,6 +47,7 @@
 #include "save_blocker.hpp"
 #include "scripting/plugins/context.hpp"
 #include "soundsource.hpp"
+#include "statistics.hpp"
 #include "storyscreen/interface.hpp"
 #include "unit.hpp"
 #include "unit_animation.hpp"

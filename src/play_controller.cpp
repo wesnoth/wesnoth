@@ -53,6 +53,7 @@
 #include "scripting/plugins/context.hpp"
 #include "sound.hpp"
 #include "soundsource.hpp"
+#include "statistics.hpp"
 #include "synced_context.hpp"
 #include "terrain_type_data.hpp"
 #include "tooltips.hpp"
@@ -128,7 +129,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	persist_(),
 	gui_(),
 	xp_mod_(new unit_experience_accelerator(level["experience_modifier"].to_int(100))),
-	statistics_context_(level["name"]),
+	statistics_context_(new statistics::scenario_context(level["name"])),
 	undo_stack_(new actions::undo_list(level.child("undo_stack"))),
 	loading_game_(level["playing_team"].empty() == false),
 	player_number_(1),
