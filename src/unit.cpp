@@ -2038,7 +2038,7 @@ void unit::apply_modifications()
 	}
 
 	//apply the experience acceleration last
-	int exp_accel = unit_type::experience_accelerator::get_acceleration();
+	int exp_accel = unit_experience_accelerator::get_acceleration();
 	max_experience_ = std::max<int>(1, (max_experience_ * exp_accel + 50)/100);
 }
 

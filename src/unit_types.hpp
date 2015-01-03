@@ -140,14 +140,6 @@ public:
 
 	int experience_needed(bool with_acceleration=true) const;
 
-	struct experience_accelerator {
-		experience_accelerator(int modifier);
-		~experience_accelerator();
-		static int get_acceleration();
-	private:
-		int old_value_;
-	};
-
 	//enum ALIGNMENT { LAWFUL, NEUTRAL, CHAOTIC, LIMINAL };
 	MAKE_ENUM (ALIGNMENT,
 		(LAWFUL, N_("lawful"))
@@ -354,6 +346,14 @@ namespace legacy {
 	/// Strips the name of an ability/special from its description.
 	t_string ability_description(const t_string & description);
 }
+
+struct unit_experience_accelerator {
+	unit_experience_accelerator(int modifier);
+	~unit_experience_accelerator();
+	static int get_acceleration();
+private:
+	int old_value_;
+};
 
 
 #endif

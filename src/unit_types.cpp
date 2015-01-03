@@ -499,17 +499,17 @@ namespace {
 	int experience_modifier = 100;
 }
 
-unit_type::experience_accelerator::experience_accelerator(int modifier) : old_value_(experience_modifier)
+unit_experience_accelerator::unit_experience_accelerator(int modifier) : old_value_(experience_modifier)
 {
 	experience_modifier = modifier;
 }
 
-unit_type::experience_accelerator::~experience_accelerator()
+unit_experience_accelerator::~unit_experience_accelerator()
 {
 	experience_modifier = old_value_;
 }
 
-int unit_type::experience_accelerator::get_acceleration()
+int unit_experience_accelerator::get_acceleration()
 {
 	return experience_modifier;
 }

@@ -470,7 +470,7 @@ static config unit_xp(const unit* u)
 	str << span_color(u->xp_color()) << u->experience()
 		<< '/' << u->max_experience() << naps;
 
-	int exp_mod = unit_type::experience_accelerator::get_acceleration();
+	int exp_mod = unit_experience_accelerator::get_acceleration();
 	tooltip << _("Experience Modifier: ") << exp_mod << '%';
 	return text_report(str.str(), tooltip.str());
 }

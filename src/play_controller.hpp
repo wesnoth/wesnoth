@@ -27,7 +27,6 @@
 #include "statistics.hpp"
 #include "terrain_type_data.hpp"
 #include "tod_manager.hpp"
-#include "unit_types.hpp"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
@@ -41,6 +40,7 @@ class wmi_pager;
 class saved_game;
 struct mp_game_settings;
 class game_classification;
+struct unit_experience_accelerator;
 
 namespace actions {
 	class undo_list;
@@ -247,7 +247,7 @@ protected:
 
 	//other objects
 	boost::scoped_ptr<game_display> gui_;
-	boost::scoped_ptr<unit_type::experience_accelerator> xp_mod_;
+	boost::scoped_ptr<unit_experience_accelerator> xp_mod_;
 	const statistics::scenario_context statistics_context_;
 	/// undo_stack_ is never NULL. It is implemented as a pointer so that
 	/// undo_list can be an incomplete type at this point (which reduces the
