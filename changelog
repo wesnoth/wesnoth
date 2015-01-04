@@ -33,6 +33,8 @@ Version 1.12.0+dev:
      due to a misplaced WML attribute in the client's command for the server
      (bug #23015).
    * Work around modifications didn't work for MP campaigns sometimes (bug #22334).
+   * Observer crashed on joining non-first scenario of a campaign (bug #23036) could be fixed.
+   * AI-controlled sides become controlled by human on mp reload (bug #22968) could be fixed.
  * Units:
    * Assigned capitalized translatable names to Walking Corpse and Soulless
      variations (bug #22902).
