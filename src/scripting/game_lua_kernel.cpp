@@ -3416,14 +3416,11 @@ int game_lua_kernel::intf_add_time_area(lua_State * L)
 	log_scope("time_area");
 
 	vconfig cfg(luaW_checkvconfig(L, 1));
-	std::string ids = cfg["id"];
+	std::string id = cfg["id"];
 
-	std::string id;
-	if(ids.find(',') != std::string::npos) {
-		id = utils::split(ids,',',utils::STRIP_SPACES | utils::REMOVE_EMPTY).front();
+	if(id.find(',') != std::string::npos) {
+		id = utils::split(id,',',utils::STRIP_SPACES | utils::REMOVE_EMPTY).front();
 		ERR_LUA << "multiple ids for inserting a new time_area; will use only the first" << std::endl;
-	} else {
-		id = ids;
 	}
 
 	std::set<map_location> locs;
