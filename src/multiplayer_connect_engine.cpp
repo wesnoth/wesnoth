@@ -257,7 +257,7 @@ void connect_engine::import_user(const config& data, const bool observer,
 
 	// Check if user has a side(s) reserved for him.
 	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
-		if (side->current_player() == username && side->player_id().empty()) {
+		if (side->current_player() == username && side->player_id().empty() && side->controller() != CNTR_COMPUTER) {
 			side->place_user(data);
 
 			side_assigned = true;
