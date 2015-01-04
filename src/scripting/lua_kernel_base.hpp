@@ -57,6 +57,13 @@ public:
 
 protected:
 	lua_State *mState;
+
+	template<typename T>
+	static T& get_lua_kernel(lua_State *L)
+	{
+		return *static_cast<T*>(get_lua_kernel_base_ptr(L));
+	}
+
 	CVideo * video_;
 
 	struct command_log {
@@ -107,6 +114,8 @@ protected:
 
 	// require (using lua_fileops, protected_call)
 	int intf_require(lua_State * L);
+private:
+	static lua_kernel_base*& get_lua_kernel_base_ptr(lua_State *L);
 };
 
 #endif
