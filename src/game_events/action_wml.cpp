@@ -391,7 +391,7 @@ namespace { // Support functions
 		// Filter the locations.
 		std::set<map_location> locs;
 		const terrain_filter t_filter(cfg, resources::filter_con);
-		t_filter.get_locations(locs, true);
+		t_filter.get_locations(locs);
 
 		// Loop through sides.
 		BOOST_FOREACH(const int &side_num, sides)

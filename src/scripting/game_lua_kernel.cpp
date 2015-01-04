@@ -818,7 +818,7 @@ int game_lua_kernel::intf_shroud_op(lua_State *L, bool place_shroud)
 	// Filter the locations.
 	std::set<map_location> locs;
 	const terrain_filter filter(cfg, &game_state_);
-	filter.get_locations(locs, true);
+	filter.get_locations(locs);
 
 	BOOST_FOREACH(const int &side_num, sides)
 	{
@@ -1828,7 +1828,7 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 	}
 	filter_context & fc = game_state_;
 	const terrain_filter t_filter(filter, &fc);
-	t_filter.get_locations(location_set, true);
+	t_filter.get_locations(location_set);
 	++arg;
 
 	// build cost_map
@@ -2557,7 +2557,7 @@ int game_lua_kernel::intf_get_locations(lua_State *L)
 	std::set<map_location> res;
 	filter_context & fc = game_state_;
 	const terrain_filter t_filter(filter, &fc);
-	t_filter.get_locations(res, true);
+	t_filter.get_locations(res);
 
 	lua_createtable(L, res.size(), 0);
 	int i = 1;
@@ -3428,7 +3428,7 @@ int game_lua_kernel::intf_add_time_area(lua_State * L)
 
 	std::set<map_location> locs;
 	const terrain_filter filter(cfg, &game_state_);
-	filter.get_locations(locs, true);
+	filter.get_locations(locs);
 	config parsed_cfg = cfg.get_parsed_config();
 	tod_man().add_time_area(id, locs, parsed_cfg);
 	LOG_LUA << "event WML inserted time_area '" << id << "'\n";

@@ -55,7 +55,7 @@ public:
 
 	//get_locations: gets all locations on the map that match this filter
 	// @param locs - out parameter containing the results
-	void get_locations(std::set<map_location>& locs, bool with_border=false) const;
+	void get_locations(std::set<map_location>& locs) const;
 
 	//restrict: limits the allowed radius size and also limits nesting
 	// The purpose to limit the time spent for WML handling
