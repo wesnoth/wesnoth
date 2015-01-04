@@ -180,137 +180,137 @@ const std::string& unit::leader_crown()
 }
 
 // Copy constructor
-unit::unit(const unit& o):
-	ref_count_(0),
-	cfg_(o.cfg_),
-	loc_(o.loc_),
-	advances_to_(o.advances_to_),
-	type_(o.type_),
-	type_name_(o.type_name_),
-	race_(o.race_),
-	id_(o.id_),
-	name_(o.name_),
-	underlying_id_(o.underlying_id_),
-	undead_variation_(o.undead_variation_),
-	variation_(o.variation_),
-	hit_points_(o.hit_points_),
-	max_hit_points_(o.max_hit_points_),
-	experience_(o.experience_),
-	max_experience_(o.max_experience_),
-	level_(o.level_),
-	recall_cost_(o.recall_cost_),
-	canrecruit_(o.canrecruit_),
-	recruit_list_(o.recruit_list_),
-	alignment_(o.alignment_),
-	flag_rgb_(o.flag_rgb_),
-	image_mods_(o.image_mods_),
-	unrenamable_(o.unrenamable_),
-	side_(o.side_),
-	gender_(o.gender_),
-	alpha_(o.alpha_),
-	formula_man_(new unit_formula_manager(o.formula_manager())),
-	movement_(o.movement_),
-	max_movement_(o.max_movement_),
-	vision_(o.vision_),
-	jamming_(o.jamming_),
-	movement_type_(o.movement_type_),
-	hold_position_(o.hold_position_),
-	end_turn_(o.end_turn_),
-	resting_(o.resting_),
-	attacks_left_(o.attacks_left_),
-	max_attacks_(o.max_attacks_),
-	states_(o.states_),
-	known_boolean_states_(o.known_boolean_states_),
-	variables_(o.variables_),
-	events_(o.events_),
-	filter_recall_(o.filter_recall_),
-	emit_zoc_(o.emit_zoc_),
-	overlays_(o.overlays_),
-	role_(o.role_),
-	attacks_(o.attacks_),
-	facing_(o.facing_),
-	trait_names_(o.trait_names_),
-	trait_descriptions_(o.trait_descriptions_),
-	unit_value_(o.unit_value_),
-	goto_(o.goto_),
-	interrupted_move_(o.interrupted_move_),
-	is_fearless_(o.is_fearless_),
-	is_healthy_(o.is_healthy_),
-	modification_descriptions_(o.modification_descriptions_),
-	anim_comp_(new unit_animation_component(*this, *o.anim_comp_)),
-	getsHit_(o.getsHit_),
-	hidden_(o.hidden_),
-	hp_bar_scaling_(o.hp_bar_scaling_),
-	xp_bar_scaling_(o.xp_bar_scaling_),
-	modifications_(o.modifications_),
-	invisibility_cache_()
+unit::unit(const unit& o)
+	: ref_count_(0)
+	, cfg_(o.cfg_)
+	, loc_(o.loc_)
+	, advances_to_(o.advances_to_)
+	, type_(o.type_)
+	, type_name_(o.type_name_)
+	, race_(o.race_)
+	, id_(o.id_)
+	, name_(o.name_)
+	, underlying_id_(o.underlying_id_)
+	, undead_variation_(o.undead_variation_)
+	, variation_(o.variation_)
+	, hit_points_(o.hit_points_)
+	, max_hit_points_(o.max_hit_points_)
+	, experience_(o.experience_)
+	, max_experience_(o.max_experience_)
+	, level_(o.level_)
+	, recall_cost_(o.recall_cost_)
+	, canrecruit_(o.canrecruit_)
+	, recruit_list_(o.recruit_list_)
+	, alignment_(o.alignment_)
+	, flag_rgb_(o.flag_rgb_)
+	, image_mods_(o.image_mods_)
+	, unrenamable_(o.unrenamable_)
+	, side_(o.side_)
+	, gender_(o.gender_)
+	, alpha_(o.alpha_)
+	, formula_man_(new unit_formula_manager(o.formula_manager()))
+	, movement_(o.movement_)
+	, max_movement_(o.max_movement_)
+	, vision_(o.vision_)
+	, jamming_(o.jamming_)
+	, movement_type_(o.movement_type_)
+	, hold_position_(o.hold_position_)
+	, end_turn_(o.end_turn_)
+	, resting_(o.resting_)
+	, attacks_left_(o.attacks_left_)
+	, max_attacks_(o.max_attacks_)
+	, states_(o.states_)
+	, known_boolean_states_(o.known_boolean_states_)
+	, variables_(o.variables_)
+	, events_(o.events_)
+	, filter_recall_(o.filter_recall_)
+	, emit_zoc_(o.emit_zoc_)
+	, overlays_(o.overlays_)
+	, role_(o.role_)
+	, attacks_(o.attacks_)
+	, facing_(o.facing_)
+	, trait_names_(o.trait_names_)
+	, trait_descriptions_(o.trait_descriptions_)
+	, unit_value_(o.unit_value_)
+	, goto_(o.goto_)
+	, interrupted_move_(o.interrupted_move_)
+	, is_fearless_(o.is_fearless_)
+	, is_healthy_(o.is_healthy_)
+	, modification_descriptions_(o.modification_descriptions_)
+	, anim_comp_(new unit_animation_component(*this, *o.anim_comp_))
+	, getsHit_(o.getsHit_)
+	, hidden_(o.hidden_)
+	, hp_bar_scaling_(o.hp_bar_scaling_)
+	, xp_bar_scaling_(o.xp_bar_scaling_)
+	, modifications_(o.modifications_)
+	, invisibility_cache_()
 {
 }
 
-unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
-	ref_count_(0),
-	cfg_(),
-	loc_(cfg["x"] - 1, cfg["y"] - 1),
-	advances_to_(),
-	type_(&get_unit_type(cfg["parent_type"].blank() ? cfg["type"] : cfg["parent_type"])),
-	type_name_(),
-	race_(&unit_race::null_race),
-	id_(cfg["id"]),
-	name_(cfg["name"].t_str()),
-	underlying_id_(0),
-	undead_variation_(),
-	variation_(cfg["variation"].empty() ? type_->default_variation() : cfg["variation"]),
-	hit_points_(1),
-	max_hit_points_(0),
-	experience_(0),
-	max_experience_(0),
-	level_(0),
-	recall_cost_(-1),
-	canrecruit_(cfg["canrecruit"].to_bool()),
-	recruit_list_(),
-	alignment_(),
-	flag_rgb_(),
-	image_mods_(),
-	unrenamable_(false),
-	side_(0),
-	gender_(generate_gender(*type_, cfg)),
-	alpha_(),
-	formula_man_(new unit_formula_manager()),
-	movement_(0),
-	max_movement_(0),
-	vision_(-1),
-	jamming_(0),
-	movement_type_(),
-	hold_position_(false),
-	end_turn_(false),
-	resting_(false),
-	attacks_left_(0),
-	max_attacks_(0),
-	states_(),
-	known_boolean_states_(known_boolean_state_names_.size(),false),
-	variables_(),
-	events_(),
-	filter_recall_(),
-	emit_zoc_(0),
-	overlays_(),
-	role_(cfg["role"]),
-	attacks_(),
-	facing_(map_location::NDIRECTIONS),
-	trait_names_(),
-	trait_descriptions_(),
-	unit_value_(),
-	goto_(),
-	interrupted_move_(),
-	is_fearless_(false),
-	is_healthy_(false),
-	modification_descriptions_(),
-	anim_comp_(new unit_animation_component(*this)),
-	getsHit_(0),
-	hidden_(false),
-	hp_bar_scaling_(cfg["hp_bar_scaling"].blank() ? type_->hp_bar_scaling() : cfg["hp_bar_scaling"]),
-	xp_bar_scaling_(cfg["xp_bar_scaling"].blank() ? type_->xp_bar_scaling() : cfg["xp_bar_scaling"]),
-	modifications_(),
-	invisibility_cache_()
+unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
+	: ref_count_(0)
+	, cfg_()
+	, loc_(cfg["x"] - 1, cfg["y"] - 1)
+	, advances_to_()
+	, type_(&get_unit_type(cfg["parent_type"].blank() ? cfg["type"] : cfg["parent_type"]))
+	, type_name_()
+	, race_(&unit_race::null_race)
+	, id_(cfg["id"])
+	, name_(cfg["name"].t_str())
+	, underlying_id_(0)
+	, undead_variation_()
+	, variation_(cfg["variation"].empty() ? type_->default_variation() : cfg["variation"])
+	, hit_points_(1)
+	, max_hit_points_(0)
+	, experience_(0)
+	, max_experience_(0)
+	, level_(0)
+	, recall_cost_(-1)
+	, canrecruit_(cfg["canrecruit"].to_bool())
+	, recruit_list_()
+	, alignment_()
+	, flag_rgb_()
+	, image_mods_()
+	, unrenamable_(false)
+	, side_(0)
+	, gender_(generate_gender(*type_, cfg))
+	, alpha_()
+	, formula_man_(new unit_formula_manager())
+	, movement_(0)
+	, max_movement_(0)
+	, vision_(-1)
+	, jamming_(0)
+	, movement_type_()
+	, hold_position_(false)
+	, end_turn_(false)
+	, resting_(false)
+	, attacks_left_(0)
+	, max_attacks_(0)
+	, states_()
+	, known_boolean_states_(known_boolean_state_names_.size(),false)
+	, variables_()
+	, events_()
+	, filter_recall_()
+	, emit_zoc_(0)
+	, overlays_()
+	, role_(cfg["role"])
+	, attacks_()
+	, facing_(map_location::NDIRECTIONS)
+	, trait_names_()
+	, trait_descriptions_()
+	, unit_value_()
+	, goto_()
+	, interrupted_move_()
+	, is_fearless_(false)
+	, is_healthy_(false)
+	, modification_descriptions_()
+	, anim_comp_(new unit_animation_component(*this))
+	, getsHit_(0)
+	, hidden_(false)
+	, hp_bar_scaling_(cfg["hp_bar_scaling"].blank() ? type_->hp_bar_scaling() : cfg["hp_bar_scaling"])
+	, xp_bar_scaling_(cfg["xp_bar_scaling"].blank() ? type_->xp_bar_scaling() : cfg["xp_bar_scaling"])
+	, modifications_()
+	, invisibility_cache_()
 {
 	side_ = cfg["side"];
 	if(side_ <= 0) {
@@ -563,69 +563,69 @@ void unit::clear_status_caches()
 }
 
 unit::unit(const unit_type &u_type, int side, bool real_unit,
-	unit_race::GENDER gender) :
-	ref_count_(0),
-	cfg_(),
-	loc_(),
-	advances_to_(),
-	type_(&u_type),
-	type_name_(),
-	race_(&unit_race::null_race),
-	id_(),
-	name_(),
-	underlying_id_(real_unit? 0: n_unit::id_manager::instance().next_fake_id()),
-	undead_variation_(),
-	variation_(type_->default_variation()),
-	hit_points_(0),
-	max_hit_points_(0),
-	experience_(0),
-	max_experience_(0),
-	level_(0),
-	recall_cost_(-1),
-	canrecruit_(false),
-	recruit_list_(),
-	alignment_(),
-	flag_rgb_(),
-	image_mods_(),
-	unrenamable_(false),
-	side_(side),
-	gender_(gender != unit_race::NUM_GENDERS ?
-		gender : generate_gender(u_type, real_unit)),
-	alpha_(),
-	formula_man_(new unit_formula_manager()),
-	movement_(0),
-	max_movement_(0),
-	vision_(-1),
-	jamming_(0),
-	movement_type_(),
-	hold_position_(false),
-	end_turn_(false),
-	resting_(false),
-	attacks_left_(0),
-	max_attacks_(0),
-	states_(),
-	known_boolean_states_( get_known_boolean_state_names().size(),false),
-	variables_(),
-	events_(),
-	filter_recall_(),
-	emit_zoc_(0),
-	overlays_(),
-	role_(),
-	attacks_(),
-	facing_(static_cast<map_location::DIRECTION>(rand()%map_location::NDIRECTIONS)),
-	trait_names_(),
-	trait_descriptions_(),
-	unit_value_(),
-	goto_(),
-	interrupted_move_(),
-	is_fearless_(false),
-	is_healthy_(false),
-	modification_descriptions_(),
-	anim_comp_(new unit_animation_component(*this)),
-	getsHit_(0),
-	hidden_(false),
-	modifications_(),
-	invisibility_cache_()
+	unit_race::GENDER gender)
+	: ref_count_(0)
+	, cfg_()
+	, loc_()
+	, advances_to_()
+	, type_(&u_type)
+	, type_name_()
+	, race_(&unit_race::null_race)
+	, id_()
+	, name_()
+	, underlying_id_(real_unit? 0: n_unit::id_manager::instance().next_fake_id())
+	, undead_variation_()
+	, variation_(type_->default_variation())
+	, hit_points_(0)
+	, max_hit_points_(0)
+	, experience_(0)
+	, max_experience_(0)
+	, level_(0)
+	, recall_cost_(-1)
+	, canrecruit_(false)
+	, recruit_list_()
+	, alignment_()
+	, flag_rgb_()
+	, image_mods_()
+	, unrenamable_(false)
+	, side_(side)
+	, gender_(gender != unit_race::NUM_GENDERS ?
+		gender : generate_gender(u_type, real_unit))
+	, alpha_()
+	, formula_man_(new unit_formula_manager())
+	, movement_(0)
+	, max_movement_(0)
+	, vision_(-1)
+	, jamming_(0)
+	, movement_type_()
+	, hold_position_(false)
+	, end_turn_(false)
+	, resting_(false)
+	, attacks_left_(0)
+	, max_attacks_(0)
+	, states_()
+	, known_boolean_states_( get_known_boolean_state_names().size(),false)
+	, variables_()
+	, events_()
+	, filter_recall_()
+	, emit_zoc_(0)
+	, overlays_()
+	, role_()
+	, attacks_()
+	, facing_(static_cast<map_location::DIRECTION>(rand()%map_location::NDIRECTIONS))
+	, trait_names_()
+	, trait_descriptions_()
+	, unit_value_()
+	, goto_()
+	, interrupted_move_()
+	, is_fearless_(false)
+	, is_healthy_(false)
+	, modification_descriptions_()
+	, anim_comp_(new unit_animation_component(*this))
+	, getsHit_(0)
+	, hidden_(false)
+	, modifications_()
+	, invisibility_cache_()
 {
 	cfg_["upkeep"]="full";
 
