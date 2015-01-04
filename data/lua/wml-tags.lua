@@ -1345,7 +1345,7 @@ function wml_actions.time_area(cfg)
 	if remove then
 		wesnoth.remove_time_area(cfg.id)
 	else
-		wesnoth.add_time_area(cfg.id, cfg)
+		wesnoth.add_time_area(cfg)
 	end
 end
 

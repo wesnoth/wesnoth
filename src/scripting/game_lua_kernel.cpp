@@ -3415,8 +3415,8 @@ int game_lua_kernel::intf_add_time_area(lua_State * L)
 {
 	log_scope("time_area");
 
-	std::string ids = luaL_checkstring(L, 1);
-	vconfig cfg(luaW_checkvconfig(L, 2));
+	vconfig cfg(luaW_checkvconfig(L, 1));
+	std::string ids = cfg["id"];
 
 	std::string id;
 	if(ids.find(',') != std::string::npos) {
