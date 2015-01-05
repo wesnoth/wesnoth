@@ -1072,8 +1072,11 @@ end
 
 function wml_actions.store_side(cfg)
 	local variable = cfg.variable or "side"
+	local is_explicit_index = string.sub(str, string.len(str)) == "]"
 	local index = 0
-	wesnoth.set_variable(variable)
+	if not is_explicit_index then
+		wesnoth.set_variable(variable)
+	end
 	for t, side_number in helper.get_sides(cfg) do
 		local container = {
 				controller = t.controller,
@@ -1094,7 +1097,11 @@ function wml_actions.store_side(cfg)
 				flag_icon = t.flag_icon,
 				side = side_number
 			}
-		wesnoth.set_variable(string.format("%s[%u]", variable, index), container)
+		if is_explicit_index then
+			wesnoth.set_variable(variable, container)
+		else
+			wesnoth.set_variable(string.format("%s[%u]", variable, index), container)
+		end
 		index = index + 1
 	end
 end
