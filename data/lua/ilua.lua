@@ -21,7 +21,7 @@ local declared = {}
 
 local jstack = {}
 
-local ilua = {}
+local ilua = { strict = true }
 
 function ilua.join(tbl,delim,limit,depth)
     if not limit then limit = pretty_print_limit end
@@ -127,7 +127,7 @@ function ilua.set_strict()
     end
 
     mt.__index = function (t, n)
-        if not declared[n] and what() ~= "C" then
+        if not declared[n] and ilua.strict and what() ~= "C" then
             error("variable '"..n.."' must be assigned before being used", 2)
         end
         return rawget(t, n)
