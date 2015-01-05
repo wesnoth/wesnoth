@@ -1072,7 +1072,7 @@ end
 
 function wml_actions.store_side(cfg)
 	local variable = cfg.variable or "side"
-	local is_explicit_index = string.sub(str, string.len(str)) == "]"
+	local is_explicit_index = string.sub(variable, string.len(variable)) == "]"
 	local index = 0
 	if not is_explicit_index then
 		wesnoth.set_variable(variable)
