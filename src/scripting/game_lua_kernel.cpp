@@ -709,7 +709,7 @@ int game_lua_kernel::intf_get_variable(lua_State *L)
  */
 int game_lua_kernel::intf_set_variable(lua_State *L)
 {
-	const std::string& m = luaL_checkstring(L, 1);
+	const std::string m = luaL_checkstring(L, 1);
 	if(m.empty()) return luaL_argerror(L, 1, "empty variable name");
 	if (lua_isnoneornil(L, 2)) {
 		gamedata().clear_variable(m);
