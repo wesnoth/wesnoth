@@ -1139,7 +1139,7 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 /// @todo Finish experimenting.
 WML_HANDLER_FUNCTION(set_global_variable,/**/,pcfg)
 {
-	if (get_replay_source().at_end() || (network::nconnections() != 0))
+	if (!resources::controller->is_replay())
 		verify_and_set_global_variable(pcfg);
 }
 

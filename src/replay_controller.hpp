@@ -16,6 +16,7 @@
 #ifndef REPLAY_CONTROLLER_H_INCLUDED
 #define REPLAY_CONTROLLER_H_INCLUDED
 
+#include "global.hpp"
 #include "game_end_exceptions.hpp"
 #include "saved_game.hpp"
 #include "play_controller.hpp"
@@ -54,7 +55,8 @@ public:
 	bool recorder_at_end();
 
 	class hotkey_handler;
-
+	
+	virtual bool is_replay() OVERRIDE { return true; }
 protected:
 	virtual void init_gui();
 

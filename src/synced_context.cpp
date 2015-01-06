@@ -103,10 +103,18 @@ bool synced_context::run_in_synced_context_if_not_already(const std::string& com
 	switch(synced_context::get_synced_state())
 	{
 	case(synced_context::UNSYNCED):
+	{
+		if(resources::controller->is_replay())
+		{
+			ERR_REPLAY << "ignored attempt to invoke a synced command during replay\n";
+		}
 		return run_in_synced_context(commandname, data, use_undo, show, true, error_handler);
+	}
 	case(synced_context::LOCAL_CHOICE):
 		ERR_REPLAY << "trying to execute action while being in a local_choice" << std::endl;
 		//we reject it because such actions usually change the gamestate badly which is not intented during a local_choice.
+		//Also we cannot invoke synced commands here, becasue multiple clients might run local choices
+		//simultaniously so it could result in invoking different synced commands simultaniously.
 		return false;
 	case(synced_context::SYNCED):
 	{

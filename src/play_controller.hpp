@@ -195,7 +195,7 @@ public:
 	bool is_lingering() { return linger_; }
 
 	class hotkey_handler;
-
+	virtual bool is_replay() { return false; }
 protected:
 
 	game_display& get_display();
