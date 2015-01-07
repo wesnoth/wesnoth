@@ -28,6 +28,34 @@ local function split(s)
 	return tostring(s):gmatch("[^%s,][^,]*")
 end
 
+local function vwriter_init(cfg, default_variable)
+	local variable = cfg.variable or default_variable
+	local is_explicit_index = string.sub(variable, string.len(variable)) == "]"
+	local mode = cfg.mode or "always_clear"
+	local index = 0
+	if is_explicit_index then
+		-- explicit indexes behave always like "replace"
+	elseif mode == "append" then
+		index = wesnoth.get_variable(variable .. ".length")
+	elseif mode ~= "replace" then
+		wesnoth.set_variable(variable)
+	end
+	return {
+		variable = variable,
+		is_explicit_index = is_explicit_index,
+		index = index,
+	}
+end
+
+local function vwriter_write(self, container)
+	if self.is_explicit_index then
+		wesnoth.set_variable(self.variable, container)
+	else
+		wesnoth.set_variable(string.format("%s[%u]", self.variable, self.index), container)
+	end
+	self.index = self.index + 1
+end
+
 local function optional_side_filter(cfg, key_name, filter_name)
 	local key_name = key_name or "side"
 	local sides = cfg[key_name]
@@ -116,16 +144,13 @@ function wml_actions.store_unit_type_ids(cfg)
 end
 
 function wml_actions.store_unit_type(cfg)
-	local var = cfg.variable or "unit_type"
 	local types = cfg.type or
 		helper.wml_error "[store_unit_type] missing required type= attribute."
-	wesnoth.set_variable(var)
-	local i = 0
+	local writer = vwriter_init(cfg, "unit_type")
 	for w in split(types) do
 		local unit_type = wesnoth.unit_types[w] or
 			helper.wml_error(string.format("Attempt to store nonexistent unit type '%s'.", w))
-		wesnoth.set_variable(string.format("%s[%d]", var, i), unit_type.__cfg)
-		i = i + 1
+		vwriter_write(writer, unit_type.__cfg)
 	end
 end
 
@@ -507,22 +532,15 @@ function wml_actions.store_unit(cfg)
 	local filter = helper.get_child(cfg, "filter") or
 		helper.wml_error "[store_unit] missing required [filter] tag"
 	local kill_units = cfg.kill
-	local mode = cfg.mode
 
-	local var = cfg.variable or "unit"
-	local idx = 0
 	--cache the needed units here, since the filter might reference the to-be-cleared variable(s)
 	local units = wesnoth.get_units(filter)
 	local recall_units = wesnoth.get_recall_units(filter)
-	if mode == "append" then
-		idx = wesnoth.get_variable(var .. ".length")
-	elseif mode ~= "replace" then
-		wesnoth.set_variable(var)
-	end
+	
+	local writer = vwriter_init(cfg, "unit")
 
 	for i,u in ipairs(units) do
-		wesnoth.set_variable(string.format("%s[%d]", var, idx), u.__cfg)
-		idx = idx + 1
+		vwriter_write(writer, u.__cfg)
 		if kill_units then wesnoth.put_unit(u.x, u.y) end
 	end
 
@@ -531,8 +549,7 @@ function wml_actions.store_unit(cfg)
 			local ucfg = u.__cfg
 			ucfg.x = "recall"
 			ucfg.y = "recall"
-			wesnoth.set_variable(string.format("%s[%d]", var, idx), ucfg)
-			idx = idx + 1
+			vwriter_write(writer, ucfg)
 			if kill_units then wesnoth.extract_unit(u) end
 		end
 	end
@@ -544,11 +561,10 @@ function wml_actions.sound(cfg)
 end
 
 function wml_actions.store_locations(cfg)
-	local var = cfg.variable or "location"
 	-- the variable can be mentioned in a [find_in] subtag, so it
 	-- cannot be cleared before the locations are recovered
 	local locs = wesnoth.get_locations(cfg)
-	wesnoth.set_variable(var)
+	local writer = vwriter_init(cfg, "location")
 	for i, loc in ipairs(locs) do
 		local x, y = loc[1], loc[2]
 		local t = wesnoth.get_terrain(x, y)
@@ -556,7 +572,7 @@ function wml_actions.store_locations(cfg)
 		if wesnoth.get_terrain_info(t).village then
 			res.owner_side = wesnoth.get_village_owner(x, y) or 0
 		end
-		wesnoth.set_variable(string.format("%s[%d]", var, i - 1), res)
+		vwriter_write(writer, res)
 	end
 end
 
@@ -1071,12 +1087,7 @@ function wml_actions.transform_unit(cfg)
 end
 
 function wml_actions.store_side(cfg)
-	local variable = cfg.variable or "side"
-	local is_explicit_index = string.sub(variable, string.len(variable)) == "]"
-	local index = 0
-	if not is_explicit_index then
-		wesnoth.set_variable(variable)
-	end
+	local writer = vwriter_init(cfg, "side")
 	for t, side_number in helper.get_sides(cfg) do
 		local container = {
 				controller = t.controller,
@@ -1097,12 +1108,7 @@ function wml_actions.store_side(cfg)
 				flag_icon = t.flag_icon,
 				side = side_number
 			}
-		if is_explicit_index then
-			wesnoth.set_variable(variable, container)
-		else
-			wesnoth.set_variable(string.format("%s[%u]", variable, index), container)
-		end
-		index = index + 1
+		vwriter_write(writer, container)
 	end
 end
 
@@ -1254,9 +1260,7 @@ function wml_actions.find_path(cfg)
 end
 
 function wml_actions.store_starting_location(cfg)
-	local variable = cfg.variable or "location"
-	wesnoth.set_variable(variable)
-	local index = 0
+	local writer = vwriter_init(cfg, "location")
 	for possibly_wrong_index, side in ipairs(wesnoth.get_sides(cfg)) do
 		local loc = wesnoth.get_starting_location(side.side)
 		if loc then
@@ -1265,7 +1269,7 @@ function wml_actions.store_starting_location(cfg)
 			if wesnoth.get_terrain_info(terrain).village then
 				result.owner_side = wesnoth.get_village_owner(loc[1], loc[2]) or 0
 			end
-			wesnoth.set_variable(string.format("%s[%u]", variable, index), result)
+			vwriter_write(writer, result)
 			index = index + 1
 		end
 	end
@@ -1273,16 +1277,14 @@ end
 
 function wml_actions.store_villages( cfg )
 	local villages = wesnoth.get_villages( cfg )
-	local variable = cfg.variable or "location"
-
+	local writer = vwriter_init(cfg, "location")
 	for index, village in ipairs( villages ) do
-		wesnoth.set_variable( string.format( "%s[%d]", variable, index-1 ),
-				      { x = village[1],
-				        y = village[2],
-				        terrain = wesnoth.get_terrain( village[1], village[2] ),
-				        owner_side = wesnoth.get_village_owner( village[1], village[2] ) or 0
-				      }
-				    )
+		vwriter_write(writer, {
+			x = village[1],
+			y = village[2],
+			terrain = wesnoth.get_terrain( village[1], village[2] ),
+			owner_side = wesnoth.get_village_owner( village[1], village[2] ) or 0
+		})
 	end
 end
 
