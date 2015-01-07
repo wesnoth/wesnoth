@@ -73,6 +73,7 @@ public:
 	void set_fog_game(bool val);
 	void set_shroud_game(bool val);
 	void set_allow_observers(bool val);
+	void set_oos_debug(bool val);
 	void set_shuffle_sides(bool val);
 	void set_options(const config& cfg);
 
