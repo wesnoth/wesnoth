@@ -57,6 +57,7 @@ public:
 	unsigned int end_text_duration;                  /**< for how long the end-of-campaign text is shown */
 	std::string difficulty; /**< The difficulty level the game is being played on. */
 	std::string random_mode;
+	bool oos_debug;
 };
 MAKE_ENUM_STREAM_OPS2(game_classification, CAMPAIGN_TYPE)
 

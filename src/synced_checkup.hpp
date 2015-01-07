@@ -34,36 +34,23 @@ public:
 		returns whether the two config objects are equal.
 	*/
 	virtual bool local_checkup(const config& expected_data, config& real_data) = 0;
-	/**
-		compares data on all clients in a networked game, the disadvantage is,
-		that the clients have to communicate more which  might be not wanted if some persons have laggy inet.
-		returns whether the two config objects are equal.
-
-		This is currently not used.
-		This is currently not implemented.
-
-		TODO: we might want to change the design to have a 'local_checkup' subclass (the normal case)
-		and a 'networked_checkup' subclass (for network OOS debugging) of the checkup class that then replace
-		the synced_checkup class. Instead of having 2 different methods local_checkup,networked_checkup.
-	*/
-	virtual bool networked_checkup(const config& expected_data, config& real_data) = 0;
 };
 
+/**
+	This checkup compares whether the results calculated during the original game match the ones calculated during replay.
+	Whether this checkup also compares the calculated results of different clients in a a mp game depends on whether
+	there was already data sended about the current synced command.
+*/
 class synced_checkup : public checkup
 {
 public:
 	synced_checkup(config& buffer);
 	virtual ~synced_checkup();
 	virtual bool local_checkup(const config& expected_data, config& real_data);
-	virtual bool networked_checkup(const config& expected_data, config& real_data);
 private:
 	config& buffer_;
 	unsigned int  pos_;
 };
-
-/*
-	the only purpose of these function isto thro OOS erros, because they should never be called.
-*/
 
 class ignored_checkup : public checkup
 {
@@ -74,10 +61,16 @@ public:
 		always returns true
 	*/
 	virtual bool local_checkup(const config& expected_data, config& real_data);
-	/**
-		always returns true
-	*/
-	virtual bool networked_checkup(const config& expected_data, config& real_data);
+};
+/**
+	This checkup always compares the results in from different clients in a mp game but it also causes more network overhead.
+*/
+class mp_debug_checkup : public checkup
+{
+public:
+	mp_debug_checkup();
+	virtual ~mp_debug_checkup();
+	virtual bool local_checkup(const config& expected_data, config& real_data);
 };
 
 /*
