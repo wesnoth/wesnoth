@@ -202,23 +202,23 @@ void ttitle_screen::post_build(CVideo& video, twindow& window)
 			hotkey::HOTKEY_PREFERENCES,
 			boost::bind(&hotkey, boost::ref(window), EDIT_PREFERENCES));
 
-	static const boost::function<void()> next_tip_wrapper = boost::bind(
+	boost::function<void()> next_tip_wrapper = boost::bind(
 			&ttitle_screen::update_tip, this, boost::ref(window), true);
 
 	window.register_hotkey(
 			hotkey::TITLE_SCREEN__NEXT_TIP,
 			boost::bind(function_wrapper<bool, boost::function<void()> >,
 						true,
-						boost::cref(next_tip_wrapper)));
+						next_tip_wrapper));
 
-	static const boost::function<void()> previous_tip_wrapper = boost::bind(
+	boost::function<void()> previous_tip_wrapper = boost::bind(
 			&ttitle_screen::update_tip, this, boost::ref(window), false);
 
 	window.register_hotkey(
 			hotkey::TITLE_SCREEN__PREVIOUS_TIP,
 			boost::bind(function_wrapper<bool, boost::function<void()> >,
 						true,
-						boost::cref(previous_tip_wrapper)));
+						previous_tip_wrapper));
 
 	window.register_hotkey(hotkey::TITLE_SCREEN__TUTORIAL,
 						   boost::bind(&hotkey, boost::ref(window), TUTORIAL));
