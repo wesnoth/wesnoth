@@ -212,7 +212,7 @@ void wml_menu_item::fire_event(const map_location & event_hex, const game_data &
 	}
 	else
 	{
-		synced_context::run_in_synced_context("fire_event",  replay_helper::get_event(event_name_, event_hex, NULL));
+		synced_context::run_in_synced_context_if_not_already("fire_event",  replay_helper::get_event(event_name_, event_hex, NULL));
 	}
 }
 

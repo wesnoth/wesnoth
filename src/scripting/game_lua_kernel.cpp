@@ -667,6 +667,31 @@ int game_lua_kernel::intf_fire_event(lua_State *L)
 }
 
 /**
+ * Fires a wml menu item.
+ * - Arg 1: id of the item. it is not possible to fire items that don't have ids with this function.
+ * - Arg 2,3: optional first location.
+ * - Ret 1: boolean, true indicating that the event was fired successfully
+ *
+ * NOTE: This is not an "official" feature, it may currently cause assertion failures if used with
+ * menu items which have "needs_select". It is not supported right now to use it this way.
+ * The purpose of this function right now is to make it possible to have automated sanity tests for
+ * the wml menu items system.
+ */
+int game_lua_kernel::intf_fire_wml_menu_item(lua_State *L)
+{
+	char const *m = luaL_checkstring(L, 1);
+
+	map_location l1;
+
+	l1.x = luaL_checkinteger(L, 2) - 1;
+	l1.y = luaL_checkinteger(L, 3) - 1;
+
+	bool b = gamedata().get_wml_menu_items().fire_item(m, l1, gamedata(), game_state_, units());
+	lua_pushboolean(L, b);
+	return 1;
+}
+
+/**
  * Gets a WML variable.
  * - Arg 1: string containing the variable name.
  * - Arg 2: optional bool indicating if tables for containers should be left empty.
@@ -3643,6 +3668,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "find_reach",                boost::bind(&game_lua_kernel::intf_find_reach,                this, _1        )},
 		{ "find_vacant_tile",          boost::bind(&game_lua_kernel::intf_find_vacant_tile,          this, _1        )},
 		{ "fire_event",                boost::bind(&game_lua_kernel::intf_fire_event,                this, _1        )},
+		{ "fire_wml_menu_item",        boost::bind(&game_lua_kernel::intf_fire_wml_menu_item,        this, _1        )},
 		{ "float_label",               boost::bind(&game_lua_kernel::intf_float_label,               this, _1        )},
 		{ "gamestate_inspector",       boost::bind(&game_lua_kernel::intf_gamestate_inspector,       this, _1        )},
 		{ "get_all_vars",              boost::bind(&game_lua_kernel::intf_get_all_vars,              this, _1        )},
