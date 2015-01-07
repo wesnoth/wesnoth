@@ -398,7 +398,7 @@ bool terrain_filter::match(const map_location& loc) const
 	return false;
 }
 
-void terrain_filter::get_locations(std::set<map_location>& locs) const
+void terrain_filter::get_locations(std::set<map_location>& locs, bool with_border) const
 {
 	std::set<map_location> match_set;
 
@@ -409,10 +409,10 @@ void terrain_filter::get_locations(std::set<map_location>& locs) const
 
 		//consider all locations on the map
 		int bs = fc_->get_disp_context().map().border_size();
-		int w  = fc_->get_disp_context().map().w() + bs;
-		int h  = fc_->get_disp_context().map().h() + bs;
-		for (int x = 0 - bs; x < w; ++x) {
-			for (int y = 0 - bs; y < h; ++y) {
+		int w = with_border ? fc_->get_disp_context().map().w() + bs : fc_->get_disp_context().map().w();
+		int h = with_border ? fc_->get_disp_context().map().h() + bs : fc_->get_disp_context().map().h();
+		for (int x = with_border ? 0 - bs : 0; x < w; ++x) {
+			for (int y = with_border ? 0 - bs : 0; y < h; ++y) {
 				match_set.insert(map_location(x,y));
 			}
 		}
@@ -424,7 +424,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs) const
 			&& !cfg_.has_attribute("area") ) {
 
 		std::vector<map_location> xy_vector;
-		xy_vector = fc_->get_disp_context().map().parse_location_range(cfg_["x"], cfg_["y"], true);
+		xy_vector = fc_->get_disp_context().map().parse_location_range(cfg_["x"], cfg_["y"], with_border);
 		match_set.insert(xy_vector.begin(), xy_vector.end());
 	} else
 
@@ -466,7 +466,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs) const
 			&& !cfg_.has_attribute("area") ) {
 
 		std::vector<map_location> xy_vector;
-		xy_vector = fc_->get_disp_context().map().parse_location_range(cfg_["x"], cfg_["y"], true);
+		xy_vector = fc_->get_disp_context().map().parse_location_range(cfg_["x"], cfg_["y"], with_border);
 		match_set.insert(xy_vector.begin(), xy_vector.end());
 
 		// remove any locations not found in the specified variable
@@ -497,7 +497,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs) const
 			&& cfg_.has_attribute("area") ) {
 
 		std::vector<map_location> xy_vector;
-		xy_vector = fc_->get_disp_context().map().parse_location_range(cfg_["x"], cfg_["y"], true);
+		xy_vector = fc_->get_disp_context().map().parse_location_range(cfg_["x"], cfg_["y"], with_border);
 		const std::set<map_location>& area = fc_->get_tod_man().get_area_by_id(cfg_["area"]);
 
 		BOOST_FOREACH(const map_location& loc, xy_vector) {
@@ -539,7 +539,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs) const
 			&& cfg_.has_attribute("area") ) {
 
 		const std::vector<map_location>& xy_vector =
-				fc_->get_disp_context().map().parse_location_range(cfg_["x"], cfg_["y"], true);
+				fc_->get_disp_context().map().parse_location_range(cfg_["x"], cfg_["y"], with_border);
 		std::set<map_location> xy_set(xy_vector.begin(), xy_vector.end());
 
 		const std::set<map_location>& area = fc_->get_tod_man().get_area_by_id(cfg_["area"]);
@@ -572,7 +572,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs) const
 		for (unsigned i = 0; i < adj_cfgs.size(); ++i) {
 			std::set<map_location> adj_set;
 			/* GCC-3.3 doesn't like operator[] so use at(), which has the same result */
-			terrain_filter(adj_cfgs.at(i), *this).get_locations(adj_set);
+			terrain_filter(adj_cfgs.at(i), *this).get_locations(adj_set, with_border);
 			cache_.adjacent_matches->push_back(adj_set);
 			if(i >= max_loop_ && i+1 < adj_cfgs.size()) {
 				ERR_NG << "terrain_filter: loop count greater than " << max_loop_
@@ -607,7 +607,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs) const
 		//handle [and]
 		if(cond_name == "and") {
 			std::set<map_location> intersect_hexes;
-			terrain_filter(cond_cfg, *this).get_locations(intersect_hexes);
+			terrain_filter(cond_cfg, *this).get_locations(intersect_hexes, with_border);
 			std::set<map_location>::iterator intersect_itor = match_set.begin();
 			while(intersect_itor != match_set.end()) {
 				if(intersect_hexes.find(*intersect_itor) == intersect_hexes.end()) {
@@ -620,7 +620,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs) const
 		//handle [or]
 		else if(cond_name == "or") {
 			std::set<map_location> union_hexes;
-			terrain_filter(cond_cfg, *this).get_locations(union_hexes);
+			terrain_filter(cond_cfg, *this).get_locations(union_hexes, with_border);
 			//match_set.insert(union_hexes.begin(), union_hexes.end()); //doesn't compile on MSVC
 			std::set<map_location>::iterator insert_itor = union_hexes.begin();
 			while(insert_itor != union_hexes.end()) {
@@ -631,7 +631,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs) const
 		//handle [not]
 		else if(cond_name == "not") {
 			std::set<map_location> removal_hexes;
-			terrain_filter(cond_cfg, *this).get_locations(removal_hexes);
+			terrain_filter(cond_cfg, *this).get_locations(removal_hexes, with_border);
 			std::set<map_location>::iterator erase_itor = removal_hexes.begin();
 			while(erase_itor != removal_hexes.end()) {
 				match_set.erase(*erase_itor++);
@@ -654,9 +654,9 @@ void terrain_filter::get_locations(std::set<map_location>& locs) const
 		std::vector<map_location> xy_vector (match_set.begin(), match_set.end());
 		if(cfg_.has_child("filter_radius")) {
 			terrain_filter r_filter(cfg_.child("filter_radius"), *this);
-			get_tiles_radius(fc_->get_disp_context().map(), xy_vector, radius, locs, true, r_filter);
+			get_tiles_radius(fc_->get_disp_context().map(), xy_vector, radius, locs, with_border, r_filter);
 		} else {
-			get_tiles_radius(fc_->get_disp_context().map(), xy_vector, radius, locs, true);
+			get_tiles_radius(fc_->get_disp_context().map(), xy_vector, radius, locs, with_border);
 		}
 	} else {
 		locs.insert(match_set.begin(), match_set.end());
