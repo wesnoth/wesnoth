@@ -1120,10 +1120,23 @@ int game_lua_kernel::intf_set_village_owner(lua_State *L)
 		return 0;
 
 	int old_side = board().village_owner(loc) + 1;
+
+	team::DEFEAT_CONDITION defeat_condition = teams()[new_side - 1].defeat_condition();
+	bool has_units = false;
+	for(unit_map::const_unit_iterator u = board().units().begin();
+		u != board().units().end();
+		++u) {
+		if (u->side() == new_side) {
+			has_units = true;
+			break;
+		}
+	}
 	if (new_side == old_side
 			|| new_side < 0
 			|| new_side > static_cast<int>(teams().size())
-			|| (new_side && !board().units().find_leader(new_side).valid()))
+			|| (new_side && defeat_condition == team::NO_LEADER && !board().units().find_leader(new_side).valid())
+			|| (new_side && defeat_condition == team::NO_UNITS && !has_units)
+			|| (new_side && defeat_condition == team::ALWAYS))
 		return 0;
 
 	if (old_side) teams()[old_side - 1].lose_village(loc);
