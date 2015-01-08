@@ -247,7 +247,7 @@ void connect_engine::import_user(const config& data, const bool observer,
 
 	// Check if user has a side(s) reserved for him.
 	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
-		if (side->reserved_for() == username && side->player_id().empty()) {
+		if (side->reserved_for() == username && side->player_id().empty() && side->controller() != CNTR_COMPUTER) {
 			side->place_user(data);
 
 			side_assigned = true;
@@ -793,7 +793,7 @@ void connect_engine::load_previous_sides_users(LOAD_USERS load_users)
 		if (side_users.find(save_id) != side_users.end()) {
 			side->set_reserved_for(side_users[save_id]);
 
-			if (load_users == RESERVE_USERS) {
+			if (load_users == RESERVE_USERS && side->controller() != CNTR_COMPUTER) {
 				side->update_controller_options();
 				side->set_controller(CNTR_RESERVED);
 			} else if (load_users == FORCE_IMPORT_USERS) {
