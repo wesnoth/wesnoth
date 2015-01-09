@@ -1,6 +1,5 @@
 --! #textdomain wesnoth
 
-
 function wesnoth.game_events.on_load(cfg)
 	if #cfg == 0 then return end
 	local t = {}
@@ -1113,13 +1112,12 @@ function wml_actions.store_side(cfg)
 end
 
 function wml_actions.add_ai_behavior(cfg)
-	local unit = wesnoth.get_units(helper.get_child(cfg, "filter"))[1]
-
-	if not unit then
+	local unit = wesnoth.get_units(helper.get_child(cfg, "filter"))[1] or
 		helper.wml_error("[add_ai_behavior]: no unit specified")
-	end
 
-	local side = cfg.side
+	local side = cfg.side or
+		helper.wml_error("[add_ai_behavior]: no side attribute given")
+
 	local sticky = cfg.sticky or false
 	local loop_id = cfg.loop_id or "main_loop"
 	local eval = cfg.evaluation
@@ -1129,14 +1127,9 @@ function wml_actions.add_ai_behavior(cfg)
 	local ux = unit.x -- @note: did I get it right that coordinates in C++ differ by 1 from thos in-game(and in Lua)?
 	local uy = unit.y
 
-	if not side then
-		helper.wml_error("[add_ai_behavior]: no side attribute given")
-	end
-
 	if not (eval and exec) then
 		helper.wml_error("[add_ai_behavior]: invalid execution/evaluation handler(s)")
 	end
-
 
 	local path = "stage[" .. loop_id .. "].candidate_action[" .. id .. "]" -- bca: behavior candidate action
 
@@ -1166,13 +1159,13 @@ function wml_actions.find_path(cfg)
 	local filter_unit = (helper.get_child(cfg, "traveler")) or helper.wml_error("[find_path] missing required [traveler] tag")
 	-- only the first unit matching
 	local unit = wesnoth.get_units(filter_unit)[1] or helper.wml_error("[find_path]'s filter didn't match any unit")
-	if not helper.get_child(cfg, "destination") then helper.wml_error( "[find_path] missing required [destination] tag" ) end
+	local filter_location = helper.get_child(cfg, "destination") or helper.wml_error( "[find_path] missing required [destination] tag" ) end
 	-- support for $this_unit
 	local this_unit = start_var_scope("this_unit")
+
 	wesnoth.set_variable ( "this_unit" ) -- clearing this_unit
 	wesnoth.set_variable("this_unit", unit.__cfg) -- cfg field needed
 
-	local filter_location = (helper.get_child(cfg, "destination")) or helper.wml_error("[find_path] missing required [destination] tag")
 	local variable = cfg.variable or "path"
 	local ignore_units = false
 	local ignore_teleport = false
