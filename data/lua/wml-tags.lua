@@ -1263,7 +1263,6 @@ function wml_actions.store_starting_location(cfg)
 				result.owner_side = wesnoth.get_village_owner(loc[1], loc[2]) or 0
 			end
 			vwriter_write(writer, result)
-			index = index + 1
 		end
 	end
 end
