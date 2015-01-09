@@ -815,7 +815,7 @@ void connect_engine::load_previous_sides_users(LOAD_USERS load_users)
 		utils::map_split(level_.child("multiplayer")["side_users"]);
 	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
 		const std::string& save_id = side->save_id();
-		if (side_users.find(save_id) != side_users.end()) {
+		if (side_users.find(save_id) != side_users.end() && side->controller() != CNTR_COMPUTER) {
 			side->set_current_player(side_users[save_id]);
 
 			if (load_users == RESERVE_USERS) {
