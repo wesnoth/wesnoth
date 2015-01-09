@@ -1159,7 +1159,7 @@ function wml_actions.find_path(cfg)
 	local filter_unit = (helper.get_child(cfg, "traveler")) or helper.wml_error("[find_path] missing required [traveler] tag")
 	-- only the first unit matching
 	local unit = wesnoth.get_units(filter_unit)[1] or helper.wml_error("[find_path]'s filter didn't match any unit")
-	local filter_location = helper.get_child(cfg, "destination") or helper.wml_error( "[find_path] missing required [destination] tag" ) end
+	local filter_location = (helper.get_child(cfg, "destination")) or helper.wml_error( "[find_path] missing required [destination] tag" )
 	-- support for $this_unit
 	local this_unit = start_var_scope("this_unit")
 
