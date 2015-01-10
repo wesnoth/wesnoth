@@ -1020,11 +1020,15 @@ bool playsingle_controller::can_execute_command(const hotkey::hotkey_command& cm
 			return (!browse_ || linger_) && !events::commands_disabled;
 
 		case hotkey::HOTKEY_DELAY_SHROUD:
-			return !linger_ && (teams_[gui_->viewing_team()].uses_fog() || teams_[gui_->viewing_team()].uses_shroud())
-			&& !events::commands_disabled;
+			return !linger_
+				&& (gui_->viewing_team() == gui_->playing_team())
+				&& teams_[gui_->viewing_team()].is_human()
+				&& (teams_[gui_->viewing_team()].uses_fog() || teams_[gui_->viewing_team()].uses_shroud())
+				&& !events::commands_disabled;
 		case hotkey::HOTKEY_UPDATE_SHROUD:
 			return !linger_
 				&& player_number_ == gui_->viewing_side()
+				&& teams_[gui_->viewing_team()].is_human()
 				&& !events::commands_disabled
 				&& teams_[gui_->viewing_team()].auto_shroud_updates() == false;
 
