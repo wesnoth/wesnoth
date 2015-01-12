@@ -891,10 +891,10 @@ function wml_actions.harm_unit(cfg)
 			if animate then
 				if animate ~= "defender" and harmer and harmer.valid then
 					wesnoth.scroll_to_tile(harmer.x, harmer.y, true)
-					wml_actions.animate_unit( { flag = "attack", hits = true, { "filter", { id = harmer.id } },
+					wesnoth.animate_unit({ flag = "attack", hits = true, { "filter", { id = harmer.id } },
 						{ "primary_attack", primary_attack },
 						{ "secondary_attack", secondary_attack }, with_bars = true,
-						{ "facing", { x = unit_to_harm.x, y = unit_to_harm.y } } } )
+						{ "facing", { x = unit_to_harm.x, y = unit_to_harm.y } } })
 				end
 				wesnoth.scroll_to_tile(unit_to_harm.x, unit_to_harm.y, true)
 			end
@@ -981,14 +981,14 @@ function wml_actions.harm_unit(cfg)
 
 			if animate and animate ~= "attacker" then
 				if harmer and harmer.valid then
-					wml_actions.animate_unit( { flag = "defend", hits = true, { "filter", { id = unit_to_harm.id } },
+					wesnoth.animate_unit({ flag = "defend", hits = true, { "filter", { id = unit_to_harm.id } },
 						{ "primary_attack", primary_attack },
 						{ "secondary_attack", secondary_attack }, with_bars = true },
-						{ "facing", { x = harmer.x, y = harmer.y } } )
+						{ "facing", { x = harmer.x, y = harmer.y } })
 				else
-					wml_actions.animate_unit( { flag = "defend", hits = true, { "filter", { id = unit_to_harm.id } },
+					wesnoth.animate_unit({ flag = "defend", hits = true, { "filter", { id = unit_to_harm.id } },
 						{ "primary_attack", primary_attack },
-						{ "secondary_attack", secondary_attack }, with_bars = true } )
+						{ "secondary_attack", secondary_attack }, with_bars = true })
 				end
 			end
 
@@ -1307,7 +1307,7 @@ function wml_actions.full_heal(cfg)
 				unit.status.slowed = false
 			end
 			if cfg.animate then
-				wesnoth.fire( "animate_unit", { flag = "healed" ,  with_bars = "yes" , { "filter" , { id = unit.id } } })
+				wesnoth.animate_unit({ flag = "healed" ,  with_bars = "yes" , { "filter" , { id = unit.id } } })
 			end
 		end
 	end
