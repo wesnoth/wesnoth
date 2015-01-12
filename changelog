@@ -48,6 +48,8 @@ Version 1.12.0+dev:
      honored by Windows builds using Boost.filesystem (bug #22967).
    * Fixed dotfiles being included when {including} directories in WML, on
      builds using the new filesystem code (regression introduced in 1.11.19).
+   * Preprocessor #warning messages now conform better to the new WML
+     parser/preprocessor diagnostics format introduced in version 1.11.10.
  * Miscellaneous and bug fixes:
    * Fixed non-ASCII characters in the user's path prevent
      BfW to launch on windows (bug #22983)
