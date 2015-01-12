@@ -311,6 +311,11 @@ namespace { // Support functions
 	std::string get_image(const vconfig& cfg, unit_map::iterator speaker)
 	{
 		std::string image = cfg["image"];
+
+		if (image == "none") {
+			return "";
+		}
+
 		if (image.empty() && speaker != resources::units->end())
 		{
 			image = speaker->big_profile();
