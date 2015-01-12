@@ -240,6 +240,7 @@ class preprocessor_streambuf: public streambuf
 public:
 	preprocessor_streambuf(preproc_map *);
 	void error(const std::string &, int);
+	void warning(const std::string &, int);
 };
 
 preprocessor_streambuf::preprocessor_streambuf(preproc_map *def) :
@@ -355,6 +356,17 @@ void preprocessor_streambuf::error(const std::string& error_type, int l)
 	error += "at " + position;
 	ERR_CF << error << '\n';
 	throw preproc_config::error(error);
+}
+
+void preprocessor_streambuf::warning(const std::string& warning_type, int l)
+{
+	std::string position, warning;
+	std::ostringstream pos;
+	pos << l << ' ' << location_;
+	position = lineno_string(pos.str());
+	warning = warning_type + '\n';
+	warning += "at " + position;
+	WRN_CF << warning << '\n';
 }
 
 
@@ -991,9 +1003,9 @@ bool preprocessor_data::get_chunk()
 		} else if (command == "warning") {
 			if (!skipping_) {
 				skip_spaces();
-				std::string message = read_rest_of_line();
-				WRN_CF << "#warning: \"" << message << "\" at "
-					<< linenum_ << ' ' << get_location(target_.location_) << '\n';
+				std::ostringstream warning;
+				warning << "#warning: \"" << read_rest_of_line() << '"';
+				target_.warning(warning.str(), linenum_);
 			} else
 				DBG_CF << "Skipped a warning\n";
 		} else
