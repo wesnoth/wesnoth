@@ -518,7 +518,7 @@ std::vector<topic> generate_era_topics(const bool sort_generated, const std::str
 	std::vector<topic> topics;
 
 	const config & era = game_cfg->find_child("era","id", era_id);
-	if(era) {
+	if(era && !era["hide_help"].to_bool()) {
 		topics = generate_faction_topics(era, sort_generated);
 
 		std::vector<std::string> faction_links;
@@ -709,6 +709,10 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 void generate_era_sections(const config* help_cfg, section & sec, int level)
 {
 	BOOST_FOREACH(const config & era, game_cfg->child_range("era")) {
+		if (era["hide_help"].to_bool()) {
+			continue;
+		}
+
 		DBG_HP << "Adding help section: " << era["id"].str() << "\n";
 
 		section era_section;
