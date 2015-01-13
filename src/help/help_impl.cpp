@@ -433,7 +433,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		std::string id = "weaponspecial_" + s->first.base_str();
 		std::stringstream text;
 		text << s->second;
-		text << "\n\n" << _("<header>text='Units having this special attack'</header>") << "\n";
+		text << "\n\n" << _("<header>text='Units with this special attack'</header>") << "\n";
 		std::set<std::string, string_less> &units = special_units[s->first];
 		for (std::set<std::string, string_less>::iterator u = units.begin(); u != units.end(); ++u) {
 			text << (*u) << "\n";
