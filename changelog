@@ -20,7 +20,7 @@ Version 1.12.0+dev:
  * Editor:
    * Fixed falcon race missing an icon due to having incorrectly-named image
      files.
-   * Fixed editor starting slow http://forums.wesnoth.org/viewtopic.php?f=4&t=41421
+   * Fixed editor startup slowness. <http://r.wesnoth.org/t41421>
  * Help browser:
    * Unit types that do not include any visible (hide_help=no) variations no
      longer generate topic sections.
@@ -32,9 +32,14 @@ Version 1.12.0+dev:
    * Fixed the Set Password option during game creation not having an effect
      due to a misplaced WML attribute in the client's command for the server
      (bug #23015).
-   * Work around modifications didn't work for MP campaigns sometimes (bug #22334).
-   * Fixed Observer crashed on joining non-first scenario of a campaign (bug #23036).
-   * AI-controlled sides become controlled by human on mp reload (bug #22968) could be fixed.
+   * Workaround for modifications failing to work with MP campaigns
+     (bug #22334).
+   * Fixed Observer crashed on joining non-first scenario of a campaign
+     (bug #23036).
+   * Fixed AI-controlled sides being transferred to human players on MP game
+     reloading (bug #22968).
+ * Music and sound effects:
+   * Changed main menu track to Transience.
  * Units:
    * Assigned capitalized translatable names to Walking Corpse and Soulless
      variations (bug #22902).
@@ -46,19 +51,19 @@ Version 1.12.0+dev:
      thus breaking localization of subsequent strings (bug #22962).
    * Fixed special _initial.cfg and _final.cfg file inclusion order not being
      honored by Windows builds using Boost.filesystem (bug #22967).
-   * Fixed dotfiles being included when {including} directories in WML, on
+   * Fixed dot-files being considered when {including} directories in WML, on
      builds using the new filesystem code (regression introduced in 1.11.19).
    * Preprocessor #warning messages now conform better to the new WML
      parser/preprocessor diagnostics format introduced in version 1.11.10.
  * Miscellaneous and bug fixes:
-   * Fixed non-ASCII characters in the user's path prevent
-     BfW to launch on windows (bug #22983)
-   * Fixed wesnoth doesn't start on some systems related to non utf8 default locales.
-     http://forums.wesnoth.org/viewtopic.php?f=4&t=41268
-   * Fixed hotkeys for changing tips in titlescreen (bug #18926).
-   * Made toggeling delayed shroud updates impossible when it's not your turn becasue it causes OOS.
- * Music:
-   * Changed main menu track to Transience.
+   * Fixed non-ASCII characters in the player's profile path preventing Wesnoth
+     to launch on Windows (bug #22983).
+   * Fixed wesnoth failing to start on some systems using non-UTF-8 locales.
+     <http://r.wesnoth.org/t41268>
+   * Fixed hotkeys for displaying tips on the titlescreen crashing the game
+     (bug #18926).
+   * Disallowed toggling Delayed Shroud Updates when not the player's turn as
+     it causes OOS.
 
 Version 1.12.0:
  * Language and i18n:

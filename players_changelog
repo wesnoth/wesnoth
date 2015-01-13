@@ -26,15 +26,18 @@ Version 1.12.0+dev:
      due to a misplaced WML attribute in the client's command for the server
      (bug #23015).
 
+ * Music and sound effects:
+   * Changed main menu track to Transience.
+
  * Units:
    * Assigned capitalized translatable names to Walking Corpse and Soulless
      variations (bug #22902).
 
  * Miscellaneous and bug fixes:
    * Fixed hotkeys for changing tips in titlescreen.
+   * Disallowed toggling Delayed Shroud Updates when not the player's turn as
+     it causes OOS.
 
- * Music
-   * Changed main menu track to Transience.
 
 Version 1.12.0:
  * Language and i18n:
@@ -52,6 +55,7 @@ Version 1.11.19:
      * Cliffs of Thoria: fixed so that yetis can be seen moving in hole in fog.
      * Fixed player team name in several scenarios.
      * Fixed player side carryover in several scenarios.
+
  * Language and i18n:
    * Updated translations: Czech, Galician, German, Italian, Portuguese,
      Scottish Gaelic, Slovak, Spanish.
