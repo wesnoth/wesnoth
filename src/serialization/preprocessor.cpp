@@ -37,14 +37,11 @@
 
 #include <stdexcept>
 
-static lg::log_domain log_config("config");
-#define ERR_CF LOG_STREAM(err, log_config)
-#define WRN_CF LOG_STREAM(warn, log_config)
-#define LOG_CF LOG_STREAM(info, log_config)
-#define DBG_CF LOG_STREAM(debug, log_config)
-
 static lg::log_domain log_preprocessor("preprocessor");
-#define LOG_PREPROC LOG_STREAM(info,log_preprocessor)
+#define ERR_PREPROC LOG_STREAM(err,   log_preprocessor)
+#define WRN_PREPROC LOG_STREAM(warn,  log_preprocessor)
+#define LOG_PREPROC LOG_STREAM(info,  log_preprocessor)
+#define DBG_PREPROC LOG_STREAM(debug, log_preprocessor)
 
 using std::streambuf;
 
@@ -354,7 +351,7 @@ void preprocessor_streambuf::error(const std::string& error_type, int l)
 	position = lineno_string(pos.str());
 	error = error_type + '\n';
 	error += "at " + position;
-	ERR_CF << error << '\n';
+	ERR_PREPROC << error << '\n';
 	throw preproc_config::error(error);
 }
 
@@ -366,7 +363,7 @@ void preprocessor_streambuf::warning(const std::string& warning_type, int l)
 	position = lineno_string(pos.str());
 	warning = warning_type + '\n';
 	warning += "at " + position;
-	WRN_CF << warning << '\n';
+	WRN_PREPROC << warning << '\n';
 }
 
 
@@ -545,7 +542,7 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::string cons
 	else {
 		std::istream * file_stream = filesystem::istream_file(name);
 		if (!file_stream->good()) {
-			ERR_CF << "Could not open file " << name << std::endl;
+			ERR_PREPROC << "Could not open file " << name << std::endl;
 			delete file_stream;
 		}
 		else
@@ -707,7 +704,7 @@ std::string preprocessor_data::read_word()
 	for(;;) {
 		int c = in_.peek();
 		if (c == preprocessor_streambuf::traits_type::eof() || utils::portable_isspace(c)) {
-			// DBG_CF << "(" << res << ")\n";
+			// DBG_PREPROC << "(" << res << ")\n";
 			return res;
 		}
 		in_.get();
@@ -892,34 +889,34 @@ bool preprocessor_data::get_chunk()
 				buffer.erase(buffer.end() - 7, buffer.end());
 				(*target_.defines_)[symbol] = preproc_define(buffer, items, target_.textdomain_,
 					                       linenum + 1, target_.location_);
-				LOG_CF << "defining macro " << symbol << " (location " << get_location(target_.location_) << ")\n";
+				LOG_PREPROC << "defining macro " << symbol << " (location " << get_location(target_.location_) << ")\n";
 			}
 		} else if (command == "ifdef") {
 			skip_spaces();
 			std::string const &symbol = read_word();
 			bool found = target_.defines_->count(symbol) != 0;
-			DBG_CF << "testing for macro " << symbol << ": "
+			DBG_PREPROC << "testing for macro " << symbol << ": "
 				<< (found ? "defined" : "not defined") << '\n';
 			conditional_skip(!found);
 		} else if (command == "ifndef") {
 			skip_spaces();
 			std::string const &symbol = read_word();
 			bool found = target_.defines_->count(symbol) != 0;
-			DBG_CF << "testing for macro " << symbol << ": "
+			DBG_PREPROC << "testing for macro " << symbol << ": "
 				<< (found ? "defined" : "not defined") << '\n';
 			conditional_skip(found);
 		} else if (command == "ifhave") {
 			skip_spaces();
 			std::string const &symbol = read_word();
 			bool found = !filesystem::get_wml_location(symbol, directory_).empty();
-			DBG_CF << "testing for file or directory " << symbol << ": "
+			DBG_PREPROC << "testing for file or directory " << symbol << ": "
 				<< (found ? "found" : "not found") << '\n';
 			conditional_skip(!found);
 		} else if (command == "ifnhave") {
 			skip_spaces();
 			std::string const &symbol = read_word();
 			bool found = !filesystem::get_wml_location(symbol, directory_).empty();
-			DBG_CF << "testing for file or directory " << symbol << ": "
+			DBG_PREPROC << "testing for file or directory " << symbol << ": "
 				<< (found ? "found" : "not found") << '\n';
 			conditional_skip(found);
 		} else if (command == "ifver" || command == "ifnver") {
@@ -945,7 +942,7 @@ bool preprocessor_data::get_chunk()
 				version_info const version2(vverstr);
 
 				const bool found = do_version_check(version1, vop, version2);
-				DBG_CF << "testing version '" << version1.str() << "' against '" << version2.str() << "' (" << vopstr << "): "
+				DBG_PREPROC << "testing version '" << version1.str() << "' against '" << version2.str() << "' (" << vopstr << "): "
 					<< (found ? "match" : "no match") << '\n';
 
 				conditional_skip(command == "ifver" ? !found : found);
@@ -990,7 +987,7 @@ bool preprocessor_data::get_chunk()
 			std::string const &symbol = read_word();
 			if (!skipping_) {
 				target_.defines_->erase(symbol);
-				LOG_CF << "undefine macro " << symbol << " (location " << get_location(target_.location_) << ")\n";
+				LOG_PREPROC << "undefine macro " << symbol << " (location " << get_location(target_.location_) << ")\n";
 			}
 		} else if (command == "error") {
 			if (!skipping_) {
@@ -999,7 +996,7 @@ bool preprocessor_data::get_chunk()
 				error << "#error: \"" << read_rest_of_line() << '"';
 				target_.error(error.str(), linenum_);
 			} else
-				DBG_CF << "Skipped an error\n";
+				DBG_PREPROC << "Skipped an error\n";
 		} else if (command == "warning") {
 			if (!skipping_) {
 				skip_spaces();
@@ -1007,7 +1004,7 @@ bool preprocessor_data::get_chunk()
 				warning << "#warning: \"" << read_rest_of_line() << '"';
 				target_.warning(warning.str(), linenum_);
 			} else
-				DBG_CF << "Skipped a warning\n";
+				DBG_PREPROC << "Skipped a warning\n";
 		} else
 			comment = token.type != token_desc::MACRO_SPACE;
 		skip_eol();
@@ -1090,11 +1087,11 @@ bool preprocessor_data::get_chunk()
 				pop_token();
 				std::string const &dir = filesystem::directory_name(val.location.substr(0, val.location.find(' ')));
 				if (!slowpath_) {
-					DBG_CF << "substituting macro " << symbol << '\n';
+					DBG_PREPROC << "substituting macro " << symbol << '\n';
 					new preprocessor_data(target_, buffer, val.location, "",
 					                      val.linenum, dir, val.textdomain, defines);
 				} else {
-					DBG_CF << "substituting (slow) macro " << symbol << '\n';
+					DBG_PREPROC << "substituting (slow) macro " << symbol << '\n';
 					std::ostringstream res;
 					preprocessor_streambuf *buf =
 						new preprocessor_streambuf(target_);
@@ -1109,7 +1106,7 @@ bool preprocessor_data::get_chunk()
 					put(res.str());
 				}
 			} else if (target_.depth_ < 40) {
-				LOG_CF << "Macro definition not found for " << symbol << " , attempting to open as file.\n";
+				LOG_PREPROC << "Macro definition not found for " << symbol << " , attempting to open as file.\n";
 				pop_token();
 				std::string nfname = filesystem::get_wml_location(symbol, directory_);
 				if (!nfname.empty())

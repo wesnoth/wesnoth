@@ -246,6 +246,8 @@ Version 1.13.0-dev:
    * Sounds for slow and poison are automatically played when slowing/poisoning
      a unit, and should no longer be played by the attack animations.
    * force_lock_settings defaults to yes in [scenario].
+   * Moved all preprocessor diagnostics from the 'config' log domain to
+     'preprocessor'.
  * Miscellaneous and bug fixes:
    * replace 'fight_on_without_leader'=yes/no with defeat_condition=no_leader/
      no_units/always/never which allows the wml developer to decide when a side
