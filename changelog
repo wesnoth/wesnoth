@@ -150,6 +150,7 @@ Version 1.13.0-dev:
      unit tests based on this
    * Add functions in wesnoth.map_location to perform map location arithmetic using the same functions
      the C++ engine does
+   * Enabled support for the bit32 library (bitwise operations)
  * Multiplayer:
    * Fixed the Set Password option during game creation not having an effect
      due to a misplaced WML attribute in the client's command for the server
