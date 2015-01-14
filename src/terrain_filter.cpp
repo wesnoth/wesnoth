@@ -402,6 +402,9 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 {
 	std::set<map_location> match_set;
 
+	// See if the caller provided an override to with_border
+	with_border = cfg_["include_borders"].to_bool(with_border);
+
 	// None of the generators provided
 	if ( !cfg_.has_attribute("x") && !cfg_.has_attribute("y")
 			&& !cfg_.has_attribute("find_in")
