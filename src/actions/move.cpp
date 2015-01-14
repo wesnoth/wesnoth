@@ -192,7 +192,7 @@ namespace { // Private helpers for move_unit()
 	public:
 		unit_mover(const std::vector<map_location> & route,
 		           move_unit_spectator *move_spectator,
-		           bool skip_sightings, bool skip_ally_sightings, const map_location *replay_dest);
+		           bool skip_sightings, bool skip_ally_sightings);
 		~unit_mover();
 
 		/// Determines how far along the route the unit can expect to move this turn.
@@ -343,10 +343,10 @@ namespace { // Private helpers for move_unit()
 	/// affects whether or not gotos are changed).
 	unit_mover::unit_mover(const std::vector<map_location> & route,
 	                       move_unit_spectator *move_spectator,
-	                       bool skip_sightings, bool skip_ally_sightings,  const map_location *replay_dest) :
+	                       bool skip_sightings, bool skip_ally_sightings) :
 		spectator_(move_spectator),
-		is_replay_(replay_dest != NULL),
-		replay_dest_(is_replay_ ? *replay_dest : route.back()),
+		is_replay_(false),
+		replay_dest_(route.back()),
 		skip_sighting_(is_replay_ || skip_sightings),
 		skip_ally_sighting_(is_replay_ || skip_ally_sightings),
 		playing_team_is_viewing_(resources::screen->playing_team() ==
@@ -1257,7 +1257,7 @@ size_t move_unit_and_record(const std::vector<map_location> &steps,
 	const bool skip_ally_sighted = !preferences::interrupt_when_ally_sighted();
 
 	// Evaluate this move.
-	unit_mover mover(steps, move_spectator, continued_move, skip_ally_sighted, NULL);
+	unit_mover mover(steps, move_spectator, continued_move, skip_ally_sighted);
 	if ( !mover.check_expected_movement() )
 		return 0;
 	if(synced_context::get_synced_state() != synced_context::SYNCED)
@@ -1283,7 +1283,7 @@ size_t move_unit_from_replay(const std::vector<map_location> &steps,
                  bool continued_move,bool skip_ally_sighted, bool show_move)
 {
 	// Evaluate this move.
-	unit_mover mover(steps, NULL, continued_move,skip_ally_sighted, NULL);
+	unit_mover mover(steps, NULL, continued_move,skip_ally_sighted);
 	if ( !mover.check_expected_movement() )
 	{
 		replay::process_error("found corrupt movement in replay.");
