@@ -2579,11 +2579,12 @@ int game_lua_kernel::intf_synchronize_choice(lua_State *L)
 int game_lua_kernel::intf_get_locations(lua_State *L)
 {
 	vconfig filter = luaW_checkvconfig(L, 1);
+	const bool with_borders = filter["include_borders"].to_bool(true);
 
 	std::set<map_location> res;
 	filter_context & fc = game_state_;
 	const terrain_filter t_filter(filter, &fc);
-	t_filter.get_locations(res, true);
+	t_filter.get_locations(res, with_borders);
 
 	lua_createtable(L, res.size(), 0);
 	int i = 1;
