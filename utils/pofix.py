@@ -99,6 +99,9 @@ stringfixes = {
 ("It couldna’ been more then a day now.", "It couldna’ been more than a day now."),
 ("It couldna’ ha’ been more then a day now.", "It couldna’ ha’ been more than a day now."),
 ("They are no more then a few days", "They are no more than a few days"),
+("fearsome a foe then a dwarf.", "fearsome a foe than a dwarf."),
+("hold the orcs off far longer and with less loss then ye could ha’ done", "hold the orcs off far longer and with less loss than ye could ha’ done"),
+("Bah! I have better things to do then stamp out your insignificant life.", "Bah! I have better things to do than stamp out your insignificant life."),
 ),
 
 "wesnoth-sotbe" : (
