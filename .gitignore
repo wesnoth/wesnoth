@@ -1,74 +1,180 @@
-.settings
-.project
-.cproject
-.pydevproject
-revision.h
-*.swp
-.DS_Store
-make_translation
-merge_translations
+# stderr.txt output + copies
+stderr*.txt
+stdout*.txt
+
+# project files
+.*project
+Project.*
+
+# Makefiles
 Makefile
-autom4te.cache
-stamp-h1
-.libs
+Makefile.in
+
+# cmake
+CMakeFiles
+CMakeLists.txt.user*
+cmake_install.cmake
+CPack*Config.cmake
+uninstall.cmake
+CMakeCache.txt
+
+# scons
+.scons-option-cache
+*sconsign.dblite
+.sconf_temp
+buildlog.txt
+
+# win32/MSVC:
+ALL_BUILD.vcproj
+INSTALL.vcproj
+PACKAGE.vcproj
+ZERO_CHECK.vcproj
+uninstall.vcproj
+*.vcproj.*.user
+projectfiles/VC[12]*
+src/**/*.vcproj
+
+# XCode
+projectfiles/Xcode/**/build
+projectfiles/Xcode/**/Headers
+projectfiles/Xcode/**/Wesnoth.dmgCanvas
+projectfiles/Xcode/**/*.mode1v3
+projectfiles/Xcode/**/*.pbxuser
+projectfiles/Xcode/**/xcuserdata
+projectfiles/Xcode/**/project.xcworkspace
+
+# CodeBlocks
+projectfiles/**/.clang
+projectfiles/**/cb
+projectfiles/**/wesnoth.tags
+projectfiles/**/wesnoth.workspace.*
+projectfiles/**/*.depend
+projectfiles/**/*.layout
+projectfiles/**/*_build_log.html
+projectfiles/**/*objs*
+
+# eclipse
+.settings
+!utils/umc_dev/org.wesnoth*/.settings/
+!utils/umc_dev/org.wesnoth*/.project
+
+# autotools
 config.h
+config.h.in
 config.log
 config.status
-configure.lineno
-Makefile.in
-aclocal.m4
-config.h.in
 configure
-.scons-option-cache
-.sconsign.dblite
-.sconf_temp
-CMakeFiles
-CMakeLists.txt.user
-CMakeLists.txt.user.*
-cmake_install.cmake
-CPackConfig.cmake
-CPackSourceConfig.cmake
-uninstall.cmake
-translations
-6not
+configure.lineno
+aclocal.m4
+autom4te.cache
+stamp-h1
+
+# build directories
+/wesnoth*
+/wesnothd*
+wesnothd/
+/campaignd*
+campaignd/
+/cutter*
+cutter/
+/exploder*
+/build/
+Release
 Debug
+ReleaseDEBUG
+Debug (fast)
 tags
+
+# build results ect.
+wesnoth_zip
 wesnoth.exp
 wesnoth.ilk
 wesnoth.lib
 wesnoth.ncb
+wesnoth.suo
 wesnoth.opt
 wesnoth.plg
-userdata
-Lib
 *.exe
 *.dll
-*.txt
-boost_test_result.xml
-/wesnothd*
+
+# library files
+.libs
+[Ll]ib
+!data/ai/formula/lib/
+!src/gui/lib/
+
+# release-only directories
+translations
+userdata
+
+# testing
 /test*
-/wesnoth*
-/campaignd*
-/cutter*
-/exploder*
-/build/
+!/test_wrapper.sh
+src/test
+error*.log
+boost_test_result.xml
+*build*.sh
+
+# translations
 locales
-.kdev_include_paths
-.kdev4
-cmake/Linux/CodeBlocks:
-Project.cbp
-Project.layout
-#cmake/win32/MSVC:
-ALL_BUILD.vcproj
-INSTALL.vcproj
-PACKAGE.vcproj
-Project.sln
-ZERO_CHECK.vcproj
-uninstall.vcproj
-Project.ncb
-Project.suo
-*.vcproj.*.user
-projectfiles/VC10
+make_translation
+merge_translations
+*.gmo
+po/**/[a-z][a-z]
+po/**/[a-z][a-z]_[GB]R
+po/**/POTFILES
+po/**/pot-update.sh
+po/**/stamp-po
+po/**/remove-potcdate.s*
+po/**/Makefile*
+!po/wesnoth-manpages/Makefile
+!po/wesnoth-manual/Makefile
+
+# tools
+data/tools/unit_tree/**/files
+data/tools/unit_tree/**/reports
+data/tools/unit_tree/**/Locale
+
+# doc
+doc/doxygen/html
+doc/manual/**/*.xml
+
+# keep src clean from tools
+src/**/wesnoth/
+src/**/exploder
+src/**/wesnoth_addon_manager
+src/**/wmllint
+src/**/wmlscope
+src/**/wmlindent
+
+# file for loading lua from within test scenario on-the-fly
+data/lua/**/code.lua
+
+# previous .gitignore files
+po/**/.gitignore
+images/**/.gitignore
+data/core/images/**/.gitignore
+data/campaigns/**/images/**/.gitignore
+
+# OS created files
+.DS_Store
+[Tt]humbs.db
 *Neuer Ordner*
-Thumbs.db
-do_build_and_tests.sh
+
+# extensions
+*.pyc
+*.sw[po]
+*.pbl
+*.xhtml
+*.[ao]
+*.out
+*~
+.deps
+.dirstamp
+
+# uncategorized
+revision*
+config.h
+6not
+.kdev*
+callgrind.out.*
