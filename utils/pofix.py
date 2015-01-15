@@ -87,9 +87,35 @@ stringfixes = {
 ("Who then is your leader? Who do we serve?", "Who then is your leader? Whom do we serve?"),
 ),
 
+"wesnoth-nr" : (
+# fixes added in 1.12.0+dev
+("They are stronger then we thought.", "They are stronger than we thought."),
+("Hmmm, they are stronger then we thought", "Hmmm, they are stronger than we thought"),
+("torment other then self destruction.", "torment other than self destruction."),
+("Rod of Justice for more then a few", "Rod of Justice for more than a few"),
+("you have aided the Northern Elves more then you can imagine.", "you have aided the Northern Elves more than you can imagine."),
+("been more then a few months ago", "been more than a few months ago"),
+("they cannot be more then two days’ march from here.", "they cannot be more than two days’ march from here."),
+("It couldna’ been more then a day now.", "It couldna’ been more than a day now."),
+("It couldna’ ha’ been more then a day now.", "It couldna’ ha’ been more than a day now."),
+("They are no more then a few days", "They are no more than a few days"),
+),
+
+"wesnoth-sotbe" : (
+# fixes added in 1.12.0+dev
+("becomes no less then a boot-licking spy for the humans.", "becomes no less than a boot-licking spy for the humans."),
+("consequently, those orcs thirsting for battle got more then", "consequently, those orcs thirsting for battle got more than"),
+),
+
 "wesnoth-tutorial" : (
 # conversion added in 1.11.0-dev
 ("$unit.type", "$unit.language_name"),
+),
+
+"wesnoth-utbs" : (
+# fixes added in 1.12.0+dev
+("On the tallest peak was build", "On the tallest peak was built"),
+("He killed himself rather then surrender to us!", "He killed himself rather than surrender to us!"),
 ),
 
 }
