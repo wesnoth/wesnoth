@@ -92,6 +92,11 @@ stringfixes = {
 ("$unit.type", "$unit.language_name"),
 ),
 
+"wesnoth-utbs" : (
+# fix added in 1.12.0+dev
+("On the tallest peak was build", "On the tallest peak was built"),
+),
+
 }
 
 # Speak, if all argument files are newer than this timestamp
