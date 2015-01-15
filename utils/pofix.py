@@ -103,6 +103,9 @@ stringfixes = {
 
 "wesnoth-sotbe" : (
 # fixes added in 1.12.0+dev
+("Easier said then done, Chief. There are many humans in that city.", "Easier said than done, Chief. There are many humans in that city."),
+("then your kind can. Take the orcish prisoners and hurry to Melmog.", "than your kind can. Take the orcish prisoners and hurry to Melmog."),
+("Better late then never. Now it’s time to kill!", "Better late than never. Now it’s time to kill!"),
 ("becomes no less then a boot-licking spy for the humans.", "becomes no less than a boot-licking spy for the humans."),
 ("consequently, those orcs thirsting for battle got more then", "consequently, those orcs thirsting for battle got more than"),
 ),
