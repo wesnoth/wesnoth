@@ -881,9 +881,9 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 	search_string_(preferences::fi_text())
 {
 	std::vector<std::string> replay_options_strings_;
-	replay_options_strings_.push_back(_("Normal replays"));
-	replay_options_strings_.push_back(_("Quick replays"));
-	replay_options_strings_.push_back(_("Enter game blindfolded"));
+	replay_options_strings_.push_back(_("Normal Replays"));
+	replay_options_strings_.push_back(_("Quick Replays"));
+	replay_options_strings_.push_back(_("Enter Blindfolded"));
 
 	replay_options_.set_items(replay_options_strings_);
 
