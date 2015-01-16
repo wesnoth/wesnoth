@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-10-11 10:43+0200\n"
+"POT-Creation-Date: 2015-01-15 22:59-0300\n"
 "PO-Revision-Date: 2012-01-22 12:21+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -3354,7 +3354,7 @@ msgstr "Rada Westin przybędzie w turze $council_arrive_turn|."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:511
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:324
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:331
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:12
 msgid "I have failed my kingdom and duty..."
 msgstr "Zawiodłem moje królestwo i moją powinność..."
@@ -3489,7 +3489,6 @@ msgstr ""
 "takich występków! Zginiesz wraz z nimi!"
 
 #. [event]
-#. [message]
 #. [unit]: type=$unit_type
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:222
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:223
@@ -3499,7 +3498,6 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:227
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:228
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:299
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:311
 msgid "Disciple of Mebrin"
 msgstr "Uczeń Mebrina"
 
@@ -3534,19 +3532,19 @@ msgstr "Obóz Itheldena"
 msgid "Send Ethiliel to the Great Tree and parley with Ithelden"
 msgstr "Doprowadź Ethiliel do Wielkiego Drzewa na pertraktacje z Itheldenem"
 
-#. [message]
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:312
+#. [message]: speaker=$new_elf.id
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:317
 msgid "For every one of us you strike down, more will rise!"
 msgstr "Na miejsce każdego, którego ubijesz, stanie kilku następnych!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:338
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:345
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:64
 msgid "I have given my all for my kingdom! Avenge me, Deoran!"
 msgstr "Poświęciłem wszystko mojemu królestwu! Pomścij mnie, Deoranie!"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:351
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:358
 msgid ""
 "Ithelden’s elves have killed Ethiliel! Now we have no chance to come to an "
 "agreement with them. A war with the Elves is imminent."
@@ -3555,7 +3553,7 @@ msgstr ""
 "porozumienia. Wojna z elfami jest nieunikniona."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:355
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:362
 msgid ""
 "We are far away from Weldyn. We’ll surely all be killed long before any "
 "reinforcements arrive."

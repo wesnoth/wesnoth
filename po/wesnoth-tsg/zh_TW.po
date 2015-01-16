@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-10-11 10:43+0200\n"
+"POT-Creation-Date: 2015-01-15 22:59-0300\n"
 "PO-Revision-Date: 2009-05-24 18:50+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Ch.Andrew <chandrew1119@gmail.com>\n"
@@ -3160,7 +3160,7 @@ msgstr "韋斯汀議會將在第 $council_arrive_turn| 回合到達。"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:511
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:324
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:331
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:12
 msgid "I have failed my kingdom and duty..."
 msgstr "王國和重任尚未完成啊......"
@@ -3289,7 +3289,6 @@ msgstr ""
 "了我們的領袖！我們不能容忍這種事情！妳和他們都得死！"
 
 #. [event]
-#. [message]
 #. [unit]: type=$unit_type
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:222
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:223
@@ -3299,7 +3298,6 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:227
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:228
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:299
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:311
 msgid "Disciple of Mebrin"
 msgstr "米布林的追隨者"
 
@@ -3332,19 +3330,19 @@ msgstr "伊蒂爾丹的基地"
 msgid "Send Ethiliel to the Great Tree and parley with Ithelden"
 msgstr "讓依茜麗兒抵達大樹並與伊蒂爾丹會談"
 
-#. [message]
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:312
+#. [message]: speaker=$new_elf.id
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:317
 msgid "For every one of us you strike down, more will rise!"
 msgstr "每一個被你們殺死的人，都將引來更多！"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:338
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:345
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:64
 msgid "I have given my all for my kingdom! Avenge me, Deoran!"
 msgstr "我已為王國奉獻所有！為我報仇，迪奧蘭！"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:351
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:358
 #, fuzzy
 msgid ""
 "Ithelden’s elves have killed Ethiliel! Now we have no chance to come to an "
@@ -3354,7 +3352,7 @@ msgstr ""
 "即將來臨。"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:355
+#: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:362
 #, fuzzy
 msgid ""
 "We are far away from Weldyn. We’ll surely all be killed long before any "
