@@ -473,6 +473,14 @@ class WmllintTab(Frame):
                                column=0,
                                sticky=W,
                                padx=10)
+        self.skip_variable=BooleanVar()
+        self.skip_core=Checkbutton(self.options_frame,
+                                   text="Skip core directory",
+                                   variable=self.skip_variable)
+        self.skip_core.grid(row=5,
+                               column=0,
+                               sticky=W,
+                               padx=10)
         self.columnconfigure(0,weight=1)
         self.columnconfigure(1,weight=1)
         self.columnconfigure(2,weight=1)
@@ -922,7 +930,8 @@ class MainFrame(Frame):
             wmllint_command_string.append("--nospellcheck")
         if self.wmllint_tab.freeze_variable.get():
             wmllint_command_string.append("--stringfreeze")
-        wmllint_command_string.append(WESNOTH_CORE_DIR)
+        if not self.wmllint_tab.skip_variable.get():
+            wmllint_command_string.append(WESNOTH_CORE_DIR)
         umc_dir=self.dir_variable.get()
         if os.path.exists(umc_dir): # add-on exists
             wmllint_command_string.append(umc_dir)
