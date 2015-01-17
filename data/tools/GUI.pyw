@@ -1077,7 +1077,7 @@ Error code: {1}
         self.text.configure(state=DISABLED)
 
     def on_about(self):
-        showinfo("About Maintenance tools GUI","""(C) Elvish_Hunter, 2014
+        showinfo("About Maintenance tools GUI","""© Elvish_Hunter, 2014
 
 Part of The Battle for Wesnoth project and released under the GNU GPL v2 license
 
