@@ -134,7 +134,7 @@ void mp_game_settings::set_from_config(const config& game_cfg)
 	hash = cfg["hash"].str();
 	mp_era = cfg["mp_era"].str();
 	mp_scenario = cfg["mp_scenario"].str();
-	mp_scenario_name = cfg["scenario_name"].str();
+	mp_scenario_name = cfg["mp_scenario_name"].str();
 	mp_campaign = cfg["mp_campaign"].str();
 	difficulty_define = cfg["difficulty_define"].str();
 	active_mods = utils::split(cfg["active_mods"], ',');
