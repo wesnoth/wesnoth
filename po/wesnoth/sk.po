@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-03-02 18:56+0100\n"
-"PO-Revision-Date: 2014-03-03 23:09+0100\n"
+"PO-Revision-Date: 2015-01-17 20:46+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -3217,8 +3217,10 @@ msgstr "Štandardná"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:35
+#, fuzzy
+#| msgid "The default theme"
 msgid "Default theme."
-msgstr "Štandardná téma."
+msgstr "Štandardná téma"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:82 data/themes/pandora.cfg:114
@@ -3387,8 +3389,10 @@ msgstr "Pandora"
 
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:23
+#, fuzzy
+#| msgid "An 800×480 theme optimized for Pandora devices"
 msgid "800x480 theme optimized for Pandora devices."
-msgstr "Téma pre 800x480 na zariadeniach Pandora."
+msgstr "Téma pre rozlíšenie 800x480 na zariadeniach Pandora."
 
 #. [action]: id=end-turn
 #: data/themes/pandora.cfg:153
@@ -6799,10 +6803,14 @@ msgid "Join Game"
 msgstr "Pridaj sa k hre"
 
 #: src/multiplayer_lobby.cpp:861
+#, fuzzy
+#| msgid "Quick Replays"
 msgid "Quick replays"
 msgstr "Rýchle záznamy"
 
 #: src/multiplayer_lobby.cpp:862
+#, fuzzy
+#| msgid "Enter Blindfolded"
 msgid "Enter blindfolded"
 msgstr "Vstúpiť so zaviazanými očami"
 
@@ -7997,6 +8005,24 @@ msgstr "Skryť plán pre $player"
 #: src/whiteboard/manager.cpp:1114
 msgid "Whiteboard Options"
 msgstr "Nastavenia tabule"
+
+#~| msgid "Next Side"
+#~ msgid "Next Move"
+#~ msgstr "Nasledujúci ťah"
+
+#~| msgid "play side turn"
+#~ msgid "play single move"
+#~ msgstr "prehrať jeden ťah"
+
+#~ msgid "theme^Classic"
+#~ msgstr "Klasická"
+
+#~ msgid "The classic, pre-1.12 theme"
+#~ msgstr "Klasická téma z verzií pred 1.12"
+
+#~| msgid "Save Replay"
+#~ msgid "Normal Replays"
+#~ msgstr "Normálne záznam"
 
 #~ msgid "' (The game will now exit)"
 #~ msgstr "' (Hra teraz skončí)"
