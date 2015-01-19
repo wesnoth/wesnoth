@@ -486,6 +486,8 @@ class WmllintTab(Frame):
         self.columnconfigure(1,weight=1)
         self.columnconfigure(2,weight=1)
     def skip_core_dir_callback(self):
+        # if Skip core directory is enabled
+        # avoid checking for unknown unit types
         if self.skip_variable.get():
             self.known_variable.set(True)
             self.known_check.configure(state=DISABLED)
@@ -908,6 +910,14 @@ class MainFrame(Frame):
             self.run_button.configure(text="Run wmlindent",command=self.on_run_wmlindent)
 
     def on_run_wmllint(self):
+        # first of all, check if we have something to run wmllint on it
+        # if not, stop here
+        umc_dir=self.dir_variable.get()
+        if not umc_dir and self.wmllint_tab.skip_variable.get():
+            showerror("Error","""wmllint cannot run because there is no directory selected.
+
+Please select a directory or disable the "Skip core directory" option""")
+            return
         # build the command line
         wmllint_command_string=[]
         # get the path of the Python interpreter
@@ -940,7 +950,6 @@ class MainFrame(Frame):
             wmllint_command_string.append("--stringfreeze")
         if not self.wmllint_tab.skip_variable.get():
             wmllint_command_string.append(WESNOTH_CORE_DIR)
-        umc_dir=self.dir_variable.get()
         if os.path.exists(umc_dir): # add-on exists
             wmllint_command_string.append(umc_dir)
         elif not umc_dir: # path does not exists because the box was left empty
