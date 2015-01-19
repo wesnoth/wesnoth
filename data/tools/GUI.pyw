@@ -476,7 +476,8 @@ class WmllintTab(Frame):
         self.skip_variable=BooleanVar()
         self.skip_core=Checkbutton(self.options_frame,
                                    text="Skip core directory",
-                                   variable=self.skip_variable)
+                                   variable=self.skip_variable,
+                                   command=self.skip_core_dir_callback)
         self.skip_core.grid(row=5,
                                column=0,
                                sticky=W,
@@ -484,6 +485,13 @@ class WmllintTab(Frame):
         self.columnconfigure(0,weight=1)
         self.columnconfigure(1,weight=1)
         self.columnconfigure(2,weight=1)
+    def skip_core_dir_callback(self):
+        if self.skip_variable.get():
+            self.known_variable.set(True)
+            self.known_check.configure(state=DISABLED)
+        else:
+            self.known_variable.set(False)
+            self.known_check.configure(state=NORMAL)
 
 class WmlscopeTab(Frame):
     def __init__(self,parent):
