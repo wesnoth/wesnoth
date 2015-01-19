@@ -502,15 +502,30 @@ void server::handle_upload(const server::request& req)
 	config data = upload.child("data");
 
 	const std::string& name = upload["name"];
-	const std::string& lc_name = utils::lowercase(name);
-
 	config *campaign = NULL;
 
-	BOOST_FOREACH(config& c, campaigns().child_range("campaign"))
-	{
-		if(utils::lowercase(c["name"]) == lc_name) {
-			campaign = &c;
-			break;
+	bool passed_name_utf8_check = false;
+
+	try {
+		const std::string& lc_name = utils::lowercase(name);
+		passed_name_utf8_check = true;
+
+		BOOST_FOREACH(config& c, campaigns().child_range("campaign"))
+		{
+			if(utils::lowercase(c["name"]) == lc_name) {
+				campaign = &c;
+				break;
+			}
+		}
+	} catch(const utils::invalid_utf8_exception&) {
+		if(!passed_name_utf8_check) {
+			LOG_CS << "Upload aborted - invalid_utf8_exception caught on handle_upload() check 1, "
+			       << "the add-on pbl info contains invalid UTF-8\n";
+			send_error("Add-on rejected: The add-on name contains an invalid UTF-8 sequence.", req.sock);
+		} else {
+			LOG_CS << "Upload aborted - invalid_utf8_exception caught on handle_upload() check 2, "
+			       << "the internal add-ons list contains invalid UTF-8\n";
+			send_error("Server error: The server add-ons list is damaged.", req.sock);
 		}
 	}
 
@@ -560,16 +575,22 @@ void server::handle_upload(const server::request& req)
 
 		LOG_CS << "Upload is owner upload.\n";
 
-		if(blacklist_.is_blacklisted(name,
-									 upload["title"].str(),
-									 upload["description"].str(),
-									 upload["author"].str(),
-									 req.addr,
-									 upload["email"].str()))
-		{
-			LOG_CS << "Upload denied - blacklisted add-on information.\n";
-			send_error("Add-on upload denied. Please contact the server administration for assistance.", req.sock);
-			return;
+		try {
+			if(blacklist_.is_blacklisted(name,
+										 upload["title"].str(),
+										 upload["description"].str(),
+										 upload["author"].str(),
+										 req.addr,
+										 upload["email"].str()))
+			{
+				LOG_CS << "Upload denied - blacklisted add-on information.\n";
+				send_error("Add-on upload denied. Please contact the server administration for assistance.", req.sock);
+				return;
+			}
+		} catch(const utils::invalid_utf8_exception&) {
+			LOG_CS << "Upload aborted - the add-on pbl info contains invalid UTF-8 and cannot be "
+				   << "checked against the blacklist\n";
+			send_error("Add-on rejected: The add-on publish information contains an invalid UTF-8 sequence.", req.sock);
 		}
 
 		std::string message = "Add-on accepted.";
