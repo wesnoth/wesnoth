@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-03-02 18:56+0100\n"
-"PO-Revision-Date: 2014-10-25 13:01+0100\n"
+"PO-Revision-Date: 2015-01-19 20:28+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.7.3\n"
 
 #. [advanced_preference]: type=combo
 #. Associated save_compression_short^ entries need to be as short as
@@ -3253,8 +3253,10 @@ msgstr "Por defecto"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:35
+#, fuzzy
+#| msgid "The default theme"
 msgid "Default theme."
-msgstr "Tema predeterminado."
+msgstr "Tema predeterminado"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:82 data/themes/pandora.cfg:114
@@ -3424,8 +3426,10 @@ msgstr "Pandora"
 
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:23
+#, fuzzy
+#| msgid "An 800×480 theme optimized for Pandora devices"
 msgid "800x480 theme optimized for Pandora devices."
-msgstr "800x480 tema optimizado para dispositivos Pandora."
+msgstr "Un tema de 800x480 optimizado para dispositivos Pandora"
 
 #. [action]: id=end-turn
 #: data/themes/pandora.cfg:153
@@ -6917,13 +6921,17 @@ msgid "Join Game"
 msgstr "Unirse a la partida"
 
 #: src/multiplayer_lobby.cpp:861
+#, fuzzy
+#| msgid "Quick Replays"
 msgid "Quick replays"
 msgstr "Repetición rápida"
 
 # tengo que verlo en el menú o no lo entiendo bien
 #: src/multiplayer_lobby.cpp:862
+#, fuzzy
+#| msgid "Enter Blindfolded"
 msgid "Enter blindfolded"
-msgstr "Indicar abandono por caída"
+msgstr "Entrar a ciegas"
 
 #: src/multiplayer_lobby.cpp:863
 msgid "Preferences"
@@ -8132,6 +8140,21 @@ msgstr "Ocultar planes de $player"
 #: src/whiteboard/manager.cpp:1114
 msgid "Whiteboard Options"
 msgstr "Opciones del modo pizarra"
+
+#~ msgid "Next Move"
+#~ msgstr "Siguiente movimiento"
+
+#~ msgid "play single move"
+#~ msgstr "realizar un solo movimiento"
+
+#~ msgid "theme^Classic"
+#~ msgstr "Clásico"
+
+#~ msgid "The classic, pre-1.12 theme"
+#~ msgstr "El tema clásico anterior a 1.12"
+
+#~ msgid "Normal Replays"
+#~ msgstr "Repetición normal"
 
 #~ msgid "' (The game will now exit)"
 #~ msgstr "» (el juego finalizará en este momento)"
