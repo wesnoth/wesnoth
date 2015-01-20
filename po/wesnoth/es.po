@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-01-15 22:59-0300\n"
-"PO-Revision-Date: 2014-10-25 13:01+0100\n"
+"PO-Revision-Date: 2015-01-19 20:28+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.7.3\n"
 
 #. [advanced_preference]: type=combo
 #. Associated save_compression_short^ entries need to be as short as
@@ -3314,27 +3314,23 @@ msgstr "Repetición"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:600
-#, fuzzy
-#| msgid "Next Side"
 msgid "Next Move"
-msgstr "Siguiente bando"
+msgstr "Siguiente movimiento"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:601
-#, fuzzy
-#| msgid "play side turn"
 msgid "play single move"
-msgstr "jugar el turno del bando"
+msgstr "realizar un solo movimiento"
 
 #. [theme]: id=Classic
 #: data/themes/classic.cfg:11
 msgid "theme^Classic"
-msgstr ""
+msgstr "Clásico"
 
 #. [theme]: id=Classic
 #: data/themes/classic.cfg:13
 msgid "The classic, pre-1.12 theme"
-msgstr ""
+msgstr "El tema clásico anterior a 1.12"
 
 #. [menu]: id=menu-main
 #: data/themes/classic.cfg:106 data/themes/default.cfg:80
@@ -3420,10 +3416,8 @@ msgstr "Por defecto"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:33
-#, fuzzy
-#| msgid "Default theme."
 msgid "The default theme"
-msgstr "Tema predeterminado."
+msgstr "Tema predeterminado"
 
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:90
@@ -3453,10 +3447,8 @@ msgstr "Pandora"
 
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:21
-#, fuzzy
-#| msgid "800x480 theme optimized for Pandora devices."
 msgid "An 800×480 theme optimized for Pandora devices"
-msgstr "800x480 tema optimizado para dispositivos Pandora."
+msgstr "Un tema de 800x480 optimizado para dispositivos Pandora"
 
 #. [action]: id=end-turn
 #: data/themes/pandora.cfg:151
@@ -6929,23 +6921,17 @@ msgid "Search:"
 msgstr "Buscar:"
 
 #: src/multiplayer_lobby.cpp:876
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Normal Replays"
-msgstr "Guardar repetición"
+msgstr "Repetición normal"
 
 #: src/multiplayer_lobby.cpp:877
-#, fuzzy
-#| msgid "Quick replays"
 msgid "Quick Replays"
 msgstr "Repetición rápida"
 
 # tengo que verlo en el menú o no lo entiendo bien
 #: src/multiplayer_lobby.cpp:878
-#, fuzzy
-#| msgid "Enter blindfolded"
 msgid "Enter Blindfolded"
-msgstr "Indicar abandono por caída"
+msgstr "Entrar a ciegas"
 
 #: src/multiplayer_lobby.cpp:882
 msgid "Skip quickly to the active turn when observing"
