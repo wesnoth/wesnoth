@@ -304,40 +304,46 @@ It comes complete with a context menu and a directory selection screen"""
                                  command=self.on_clear)
         self.clear_button.pack(side=LEFT)
     def on_browse(self):
-        # os.path.expanduser gets the current user's home directory on every platform
-        if sys.platform=="win32":
-            # get userdata directory on Windows
-            # it assumes that you choose to store userdata in the My Games directory
-            # while installing Wesnoth
-            userdata=os.path.join(os.path.expanduser("~"),
-                                  "Documents",
-                                  "My Games",
-                                  "Wesnoth"+WESNOTH_SERIES,
-                                  "data",
-                                  "add-ons")
-        elif sys.platform.startswith("linux"): # we're on Linux; usually this string is 'linux2'
-            userdata=os.path.join(os.path.expanduser("~"),
-                                  ".local",
-                                  "share",
-                                  "wesnoth",
-                                  WESNOTH_SERIES,
-                                  "data",
-                                  "add-ons")
-        elif sys.platform=="darwin": # we're on MacOS
-            # bear in mind that I don't have a Mac, so this point may be bugged
-            userdata=os.path.join(os.path.expanduser("~"),
-                                  "Library",
-                                  "Application Support",
-                                  "Wesnoth_"+WESNOTH_SERIES,
-                                  "data",
-                                  "add-ons")
-        else: # unknown system; if someone else wants to add other rules, be my guest
-            userdata="."
-        
-        if os.path.exists(userdata): # we may have gotten it wrong
-            directory=askdirectory(initialdir=userdata)
+        # if the user already selected a directory, try to use it
+        current_dir=self.textvariable.get()
+        if os.path.exists(current_dir):
+            directory=askdirectory(initialdir=current_dir)
+        # otherwise attempt to detect the user's userdata folder
         else:
-            directory=askdirectory(initialdir=".")
+            # os.path.expanduser gets the current user's home directory on every platform
+            if sys.platform=="win32":
+                # get userdata directory on Windows
+                # it assumes that you choose to store userdata in the My Games directory
+                # while installing Wesnoth
+                userdata=os.path.join(os.path.expanduser("~"),
+                                      "Documents",
+                                      "My Games",
+                                      "Wesnoth"+WESNOTH_SERIES,
+                                      "data",
+                                      "add-ons")
+            elif sys.platform.startswith("linux"): # we're on Linux; usually this string is 'linux2'
+                userdata=os.path.join(os.path.expanduser("~"),
+                                      ".local",
+                                      "share",
+                                      "wesnoth",
+                                      WESNOTH_SERIES,
+                                      "data",
+                                      "add-ons")
+            elif sys.platform=="darwin": # we're on MacOS
+                # bear in mind that I don't have a Mac, so this point may be bugged
+                userdata=os.path.join(os.path.expanduser("~"),
+                                      "Library",
+                                      "Application Support",
+                                      "Wesnoth_"+WESNOTH_SERIES,
+                                      "data",
+                                      "add-ons")
+            else: # unknown system; if someone else wants to add other rules, be my guest
+                userdata="."
+
+            if os.path.exists(userdata): # we may have gotten it wrong
+                directory=askdirectory(initialdir=userdata)
+            else:
+                directory=askdirectory(initialdir=".")
         
         if directory:
             self.textvariable.set(directory)
