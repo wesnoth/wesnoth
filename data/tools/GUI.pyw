@@ -297,7 +297,6 @@ It comes complete with a context menu and a directory selection screen"""
                                text="Browse...",
                                command=self.on_browse)
         self.dir_button.pack(side=LEFT)
-        self.img=PhotoImage(file="/media/linux/USB DISK/GUI/edit-clear3.gif")
         self.clear_button=Button(self,
                                  image=ICONS['clear16'],
                                  compound=LEFT,
