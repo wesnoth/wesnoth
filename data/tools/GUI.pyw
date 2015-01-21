@@ -748,7 +748,7 @@ class WmlindentTab(Frame):
                                 sticky=N+E+S+W)
         self.verbose_variable=BooleanVar()
         self.verbose_check=Checkbutton(self.options_frame,
-                                       text="Report also unchanged files",
+                                       text="Also report unchanged files",
                                        variable=self.verbose_variable)
         self.verbose_check.grid(row=0,
                                 column=0,
