@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth)\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-01-15 22:59-0300\n"
-"PO-Revision-Date: 2014-10-23 22:16-0000\n"
+"PO-Revision-Date: 2015-01-16 21:18-0000\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
 "Language: pt\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.7.3\n"
 "Country: PORTUGAL\n"
 
 #. [advanced_preference]: type=combo
@@ -3606,28 +3606,24 @@ msgstr "Revisão"
 #
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:600
-#, fuzzy
-#| msgid "Next Side"
 msgid "Next Move"
-msgstr "Próxima Equipa"
+msgstr "Próximo turno"
 
 #
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:601
-#, fuzzy
-#| msgid "play side turn"
 msgid "play single move"
-msgstr "jogar lado ativo"
+msgstr "mostrar único turno"
 
 #. [theme]: id=Classic
 #: data/themes/classic.cfg:11
 msgid "theme^Classic"
-msgstr ""
+msgstr "Clássico"
 
 #. [theme]: id=Classic
 #: data/themes/classic.cfg:13
 msgid "The classic, pre-1.12 theme"
-msgstr ""
+msgstr "O tema clássico, como das versões pre-1.12."
 
 #
 #. [menu]: id=menu-main
@@ -3727,8 +3723,6 @@ msgstr "Predefinição"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:33
-#, fuzzy
-#| msgid "Default theme."
 msgid "The default theme"
 msgstr "Tema por omissão"
 
@@ -3761,10 +3755,8 @@ msgstr "Tema para Pandora"
 
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:21
-#, fuzzy
-#| msgid "800x480 theme optimized for Pandora devices."
 msgid "An 800×480 theme optimized for Pandora devices"
-msgstr "Tema optimizado para os dispositivos 800×600 Pandora."
+msgstr "Tema otimizado para os dispositivos 800×600 Pandora."
 
 #. [action]: id=end-turn
 #: data/themes/pandora.cfg:151
@@ -7543,7 +7535,7 @@ msgstr "Criar Partida"
 #
 #: src/multiplayer_create.cpp:68
 msgid "Filter:"
-msgstr "Filtro: "
+msgstr "Filtro:"
 
 #
 #: src/multiplayer_create.cpp:69 src/multiplayer_create.cpp:375
@@ -7768,23 +7760,17 @@ msgstr "Procurar:"
 
 #
 #: src/multiplayer_lobby.cpp:876
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Normal Replays"
-msgstr "Guardar Revisão"
+msgstr "Revisão normal"
 
 #
 #: src/multiplayer_lobby.cpp:877
-#, fuzzy
-#| msgid "Quick replays"
 msgid "Quick Replays"
-msgstr "Revisões Rápidas"
+msgstr "Revisão rápida"
 
 #: src/multiplayer_lobby.cpp:878
-#, fuzzy
-#| msgid "Enter blindfolded"
 msgid "Enter Blindfolded"
-msgstr "Revisão Cega"
+msgstr "Esconder mapa"
 
 #
 #: src/multiplayer_lobby.cpp:882
