@@ -747,22 +747,44 @@ class WmlindentTab(Frame):
                                column=0,
                                sticky=W,
                                padx=10)
+        self.verbosity_frame=LabelFrame(self,
+                                        text="Verbosity level")
+        self.verbosity_frame.grid(row=0,
+                                  column=1,
+                                  sticky=N+E+S+W)
+        self.verbosity_variable=IntVar()
+        self.radio_v0=Radiobutton(self.verbosity_frame,
+                                  text="Terse",
+                                  variable=self.verbosity_variable,
+                                  value=0)
+        self.radio_v0.grid(row=0,
+                           column=0,
+                           sticky=W,
+                           padx=10)
+        self.radio_v1=Radiobutton(self.verbosity_frame,
+                                  text="Verbose",
+                                  variable=self.verbosity_variable,
+                                  value=1)
+        self.radio_v1.grid(row=1,
+                           column=0,
+                           sticky=W,
+                           padx=10)
+        self.radio_v2=Radiobutton(self.verbosity_frame,
+                                  text="Report also unchanged files",
+                                  variable=self.verbosity_variable,
+                                  value=2)
+        self.radio_v2.grid(row=2,
+                           column=0,
+                           sticky=W,
+                           padx=10)
         self.options_frame=LabelFrame(self,
                                       text="wmlindent options")
         self.options_frame.grid(row=0,
-                                column=1,
+                                column=2,
                                 sticky=N+E+S+W)
-        self.verbose_variable=BooleanVar()
-        self.verbose_check=Checkbutton(self.options_frame,
-                                       text="Also report unchanged files",
-                                       variable=self.verbose_variable)
-        self.verbose_check.grid(row=0,
-                                column=0,
-                                sticky=W,
-                                padx=10)
         self.exclude_variable=BooleanVar()
         self.exclude_check=Checkbutton(self.options_frame,
-                                       text="Exclude files matching regexp:",
+                                       text="Exclude files\nmatching regexp:",
                                        variable=self.exclude_variable,
                                        command=self.exclude_callback)
         self.exclude_check.grid(row=1,
@@ -1043,8 +1065,9 @@ wmlscope will be run only on the Wesnoth core directory""")
             pass
         elif mode==1:
             wmlindent_command_string.append("--dryrun")
-        if self.wmlindent_tab.verbose_variable.get():
-            wmlindent_command_string.append("-v -v")
+        verbosity=self.wmlindent_tab.verbosity_variable.get()
+        for n in range(verbosity):
+            wmlindent_command_string.append("-v")
         if self.wmlindent_tab.exclude_variable.get():
             wmlindent_command_string.append('--exclude="{0}"'.format(self.wmlindent_tab.regexp_variable.get()))
         if self.wmlindent_tab.quiet_variable.get():
