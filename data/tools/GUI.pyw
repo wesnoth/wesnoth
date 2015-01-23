@@ -810,6 +810,7 @@ class WmlindentTab(Frame):
                               padx=10)
         self.columnconfigure(0,weight=1)
         self.columnconfigure(1,weight=1)
+        self.columnconfigure(2,weight=1)
         self.options_frame.columnconfigure(1,weight=1)
     def exclude_callback(self):
         if self.exclude_variable.get():
