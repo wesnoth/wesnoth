@@ -770,7 +770,7 @@ class WmlindentTab(Frame):
                            sticky=W,
                            padx=10)
         self.radio_v2=Radiobutton(self.verbosity_frame,
-                                  text="Report also unchanged files",
+                                  text="Also report\nunchanged files",
                                   variable=self.verbosity_variable,
                                   value=2)
         self.radio_v2.grid(row=2,
