@@ -468,6 +468,8 @@ Version 1.13.0-dev:
    * Fixed a stingstream syntax error that caused the build to fail in Visual Studio 13
    * Fixed hotkeys for changing tips in titlescreen (bug #18926).
    * Fixed problems building wesnothd using cmake if not building the game
+   * Fixed a bug in which sides without a leader, but not defeated due to defeat_condition set to
+     no_units_left or never couldn't capture villages
  * Music:
    * Change main menu track to Transience.
 
