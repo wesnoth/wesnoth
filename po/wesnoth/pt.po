@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth)\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-03-02 18:56+0100\n"
-"PO-Revision-Date: 2014-10-23 22:16-0000\n"
+"PO-Revision-Date: 2015-01-16 21:18-0000\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
 "Language: pt\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.7.3\n"
 "Country: PORTUGAL\n"
 
 #. [advanced_preference]: type=combo
@@ -3531,6 +3531,8 @@ msgstr "Predefinição"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:35
+#, fuzzy
+#| msgid "The default theme"
 msgid "Default theme."
 msgstr "Tema por omissão"
 
@@ -3727,8 +3729,10 @@ msgstr "Tema para Pandora"
 
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:23
+#, fuzzy
+#| msgid "An 800×480 theme optimized for Pandora devices"
 msgid "800x480 theme optimized for Pandora devices."
-msgstr "Tema optimizado para os dispositivos 800×600 Pandora."
+msgstr "Tema otimizado para os dispositivos 800×600 Pandora."
 
 #. [action]: id=end-turn
 #: data/themes/pandora.cfg:153
@@ -7556,7 +7560,7 @@ msgstr "Criar Partida"
 #
 #: src/multiplayer_create.cpp:68
 msgid "Filter:"
-msgstr "Filtro: "
+msgstr "Filtro:"
 
 #
 #: src/multiplayer_create.cpp:69 src/multiplayer_create.cpp:381
@@ -7751,12 +7755,16 @@ msgstr "Juntar-se a partida"
 
 #
 #: src/multiplayer_lobby.cpp:861
+#, fuzzy
+#| msgid "Quick Replays"
 msgid "Quick replays"
-msgstr "Revisões Rápidas"
+msgstr "Revisão rápida"
 
 #: src/multiplayer_lobby.cpp:862
+#, fuzzy
+#| msgid "Enter Blindfolded"
 msgid "Enter blindfolded"
-msgstr "Revisão Cega"
+msgstr "Esconder mapa"
 
 #
 #: src/multiplayer_lobby.cpp:863
@@ -9205,6 +9213,24 @@ msgstr "Esconder os planos de $player"
 #: src/whiteboard/manager.cpp:1114
 msgid "Whiteboard Options"
 msgstr "Opções do modo de planificação"
+
+#
+#~ msgid "Next Move"
+#~ msgstr "Próximo turno"
+
+#
+#~ msgid "play single move"
+#~ msgstr "mostrar único turno"
+
+#~ msgid "theme^Classic"
+#~ msgstr "Clássico"
+
+#~ msgid "The classic, pre-1.12 theme"
+#~ msgstr "O tema clássico, como das versões pre-1.12."
+
+#
+#~ msgid "Normal Replays"
+#~ msgstr "Revisão normal"
 
 #
 #~ msgid "' (The game will now exit)"

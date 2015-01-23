@@ -166,7 +166,6 @@ msgid "There are too many to fight, far too many. We must escape!"
 msgstr ""
 "São demasiados orcs para podermos lutar. Demasiados orcs. Temos de fugir!"
 
-#
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:218
 msgid ""
@@ -1049,13 +1048,14 @@ msgstr "cobarde r=5"
 msgid "Coward 2"
 msgstr "Covarde 2"
 
-#
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:147
+#, fuzzy
+#| msgid "coward r=5"
 msgid ""
 "coward r=5\n"
 "    s=24 5"
-msgstr ""
+msgstr "cobarde r=5"
 
 #
 #. [unit]: type=Giant Rat, id=coward3
@@ -1063,7 +1063,6 @@ msgstr ""
 msgid "Coward 3"
 msgstr "Covarde 3"
 
-#
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:171
 msgid ""
@@ -1077,13 +1076,14 @@ msgstr ""
 msgid "Coward 4"
 msgstr "Covarde 4"
 
-#
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:196
+#, fuzzy
+#| msgid "coward r=5"
 msgid ""
 "coward r=5\n"
 "    s=32,--"
-msgstr ""
+msgstr "cobarde r=5"
 
 #
 #. [event]
@@ -1141,7 +1141,6 @@ msgstr "fixo 21,10"
 msgid "Stationed Guardian 1"
 msgstr ""
 
-#
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:286
 msgid ""
@@ -1155,7 +1154,6 @@ msgstr ""
 msgid "Stationed Guardian 2"
 msgstr ""
 
-#
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:308
 msgid ""
@@ -1182,7 +1180,6 @@ msgstr "Guardião Zonal"
 msgid "Home Keeper"
 msgstr "Guarda Hospedado"
 
-#
 #. [variables]
 #: data/ai/micro_ais/scenarios/guardians.cfg:359
 msgid ""
@@ -2117,7 +2114,7 @@ msgstr ""
 #. [objectives]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:166
 msgid "Protect Rossauba while moving him to the signpost"
-msgstr "Proteja Rossauba enquanto o moves para o posto de sinalização "
+msgstr "Proteja Rossauba enquanto o moves para o posto de sinalização"
 
 #
 #. [objective]: condition=lose
