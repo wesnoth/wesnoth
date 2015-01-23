@@ -80,6 +80,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	fog_game_(disp.video(), _("Fog of war"), gui::button::TYPE_CHECK),
 	shroud_game_(disp.video(), _("Shroud"), gui::button::TYPE_CHECK),
 	observers_game_(disp.video(), _("Observers"), gui::button::TYPE_CHECK),
+	oos_debug_(disp.video(), _("Debug OOS"), gui::button::TYPE_CHECK),
 	shuffle_sides_(disp.video(), _("Shuffle sides"), gui::button::TYPE_CHECK),
 	cancel_game_(disp.video(), _("Back")),
 	launch_game_(disp.video(), _("OK")),
@@ -174,6 +175,10 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	observers_game_.set_check(engine_.allow_observers_default());
 	observers_game_.set_help_string(_("Allow users who are not playing to watch the game"));
 	observers_game_.enable(state_.classification().campaign_type != game_classification::SCENARIO);
+
+	oos_debug_.set_check(false);
+	oos_debug_.set_help_string(_("More checks for OOS errors but also more network traffic"));
+	oos_debug_.enable(true);
 
 	shuffle_sides_.set_check(engine_.shuffle_sides_default());
 	shuffle_sides_.set_help_string(_("Assign sides to players at random"));
@@ -285,6 +290,7 @@ const mp_game_settings& configure::get_parameters()
 	engine_.set_fog_game(fog_game_.checked());
 	engine_.set_shroud_game(shroud_game_.checked());
 	engine_.set_allow_observers(observers_game_.checked());
+	engine_.set_oos_debug(oos_debug_.checked());
 	engine_.set_shuffle_sides(shuffle_sides_.checked());
 
 	engine_.set_options(options_manager_.get_values());
@@ -475,6 +481,7 @@ void configure::hide_children(bool hide)
 	fog_game_.hide(hide);
 	shroud_game_.hide(hide);
 	observers_game_.hide(hide);
+	oos_debug_.hide(hide);
 	shuffle_sides_.hide(hide);
 	cancel_game_.hide(hide);
 	launch_game_.hide(hide);
@@ -569,6 +576,9 @@ void configure::layout_children(const SDL_Rect& rect)
 	countdown_action_bonus_slider_.set_width(slider_width);
 	options_pane_left_.add_widget(&countdown_action_bonus_slider_, xpos_left, ypos_left);
 	ypos_left += countdown_action_bonus_slider_.height() + border_size;
+
+	options_pane_left_.add_widget(&oos_debug_, xpos_left, ypos_left	);
+	ypos_left += oos_debug_.height() + border_size;
 
 	if (show_entry_points_) {
 		int x = ca.x;

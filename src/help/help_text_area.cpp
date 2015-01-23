@@ -313,7 +313,7 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 		return;
 	}
 	const std::string first_word = get_first_word(text);
-	int state = ref_dst == "" ? 0 : TTF_STYLE_UNDERLINE;
+	int state = 0;
 	state |= bold ? TTF_STYLE_BOLD : 0;
 	state |= italic ? TTF_STYLE_ITALIC : 0;
 	if (curr_loc_.first != get_min_x(curr_loc_.second, curr_row_height_)

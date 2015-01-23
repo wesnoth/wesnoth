@@ -152,6 +152,7 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 		{ "coroutine",   luaopen_coroutine   },
 		{ "debug",  luaopen_debug  },
 		{ "os",     luaopen_os     },
+		{ "bit32",  luaopen_bit32  }, // added in Lua 5.2
 		{ NULL, NULL }
 	};
 	for (luaL_Reg const *lib = safe_libs; lib->func; ++lib)

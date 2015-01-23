@@ -478,7 +478,7 @@ void tmouse_button<sdl_button_down,
 		}
 
 		if(mouse_over != mouse_focus_) {
-			WRN_GUI_E << LOG_HEADER << ". Mouse down on non focussed widget "
+			WRN_GUI_E << LOG_HEADER << ". Mouse down on non focused widget "
 					  << "and mouse not captured, we missed events.\n";
 			mouse_focus_ = mouse_over;
 		}

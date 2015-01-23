@@ -3,22 +3,22 @@
 # Copyright (C) 2012 Wesnoth development team
 # This file is distributed under the same license as the wesnoth_up package.
 # Automatically generated, 2012.
-# GunChleoc <fios@foramnagaidhlig.net>, 2012, 2013, 2014.
+# GunChleoc <fios@foramnagaidhlig.net>, 2012, 2013, 2014, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-03-02 18:56+0100\n"
-"PO-Revision-Date: 2014-03-16 07:16-0000\n"
-"Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
-"Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
+"PO-Revision-Date: 2015-01-20 11:57+0100\n"
+"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
+"Language-Team: Fòram na Gàidhlig\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #. [advanced_preference]: type=combo
 #. Associated save_compression_short^ entries need to be as short as
@@ -3393,8 +3393,10 @@ msgstr "Tùsail"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:35
+#, fuzzy
+#| msgid "The default theme"
 msgid "Default theme."
-msgstr "Ùrlar tùsail"
+msgstr "An t-ùrlar tùsail"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:82 data/themes/pandora.cfg:114
@@ -3563,8 +3565,10 @@ msgstr "Pandora"
 
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:23
+#, fuzzy
+#| msgid "An 800×480 theme optimized for Pandora devices"
 msgid "800x480 theme optimized for Pandora devices."
-msgstr "Ùrlar 800x480 air a phiseachadh do dh’uidheaman Pandora."
+msgstr "Ùrlar 800×480 air a phiseachadh do dh’uidheaman Pandora."
 
 #. [action]: id=end-turn
 #: data/themes/pandora.cfg:153
@@ -7135,10 +7139,14 @@ msgid "Join Game"
 msgstr "Gabh ann an geama"
 
 #: src/multiplayer_lobby.cpp:861
+#, fuzzy
+#| msgid "Quick Replays"
 msgid "Quick replays"
 msgstr "Ath-chluichean luatha"
 
 #: src/multiplayer_lobby.cpp:862
+#, fuzzy
+#| msgid "Enter Blindfolded"
 msgid "Enter blindfolded"
 msgstr "Rach a-steach ’nad dhallan"
 
@@ -8365,6 +8373,24 @@ msgstr "Falaich planaichean airson $player"
 #: src/whiteboard/manager.cpp:1114
 msgid "Whiteboard Options"
 msgstr "Roghainnean a’ bhùird-ghil"
+
+#~| msgid "Next Side"
+#~ msgid "Next Move"
+#~ msgstr "Ath ghluasad"
+
+#~| msgid "play side turn"
+#~ msgid "play single move"
+#~ msgstr "cluich aon ghluasad"
+
+#~ msgid "theme^Classic"
+#~ msgstr "Clasaigeach"
+
+#~ msgid "The classic, pre-1.12 theme"
+#~ msgstr "An u-ùrlar clasaigeach a bh’ againn ro 1.12"
+
+#~| msgid "Save Replay"
+#~ msgid "Normal Replays"
+#~ msgstr "Ath-chluichean àbhaisteach"
 
 #~ msgid "(side $temp_i|)"
 #~ msgstr "(taobh $temp_i|)"

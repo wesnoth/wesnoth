@@ -97,6 +97,7 @@ void configure_engine::set_random_start_time(bool val) { parameters_.random_star
 void configure_engine::set_fog_game(bool val) { parameters_.fog_game = val; }
 void configure_engine::set_shroud_game(bool val) { parameters_.shroud_game = val; }
 void configure_engine::set_allow_observers(bool val) { parameters_.allow_observers = val; }
+void configure_engine::set_oos_debug(bool val) { state_.classification().oos_debug = val; }
 void configure_engine::set_shuffle_sides(bool val) { parameters_.shuffle_sides = val; }
 void configure_engine::set_options(const config& cfg) { parameters_.options = cfg; }
 

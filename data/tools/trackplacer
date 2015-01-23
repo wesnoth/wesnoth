@@ -222,7 +222,7 @@ class JourneyTracks:
         "Initialize a journey from map and track information."
         if type(fp) == type(""):
             try:
-                fp = open(fp)
+                fp = open(fp, "rU")
             except IOError:
                 raise IOException("Cannot read file.", fp)
         if self.tracks:

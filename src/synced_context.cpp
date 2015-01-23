@@ -339,15 +339,27 @@ config synced_context::ask_server_for_seed()
 }
 
 set_scontext_synced::set_scontext_synced()
-	: new_rng_(synced_context::get_rng_for_action()), new_checkup_(recorder.get_last_real_command().child_or_add("checkup")), disabler_()
+	: new_rng_(synced_context::get_rng_for_action()), new_checkup_(generate_checkup("checkup")), disabler_()
 {
 	init();
 }
 
 set_scontext_synced::set_scontext_synced(int number)
-	: new_rng_(synced_context::get_rng_for_action()), new_checkup_(recorder.get_last_real_command().child_or_add("checkup" + boost::lexical_cast<std::string>(number))), disabler_()
+	: new_rng_(synced_context::get_rng_for_action()), new_checkup_(generate_checkup("checkup" + boost::lexical_cast<std::string>(number))), disabler_()
 {
 	init();
+}
+
+checkup* set_scontext_synced::generate_checkup(const std::string& tagname)
+{
+	if(resources::classification->oos_debug)
+	{
+		return new mp_debug_checkup();
+	}
+	else
+	{
+		return new synced_checkup(recorder.get_last_real_command().child_or_add(tagname));
+	}
 }
 
 /*
@@ -362,7 +374,7 @@ void set_scontext_synced::init()
 	synced_context::reset_is_simultaneously();
 
 	old_checkup_ = checkup_instance;
-	checkup_instance = & new_checkup_;
+	checkup_instance = &*new_checkup_;
 	old_rng_ = random_new::generator;
 	random_new::generator = new_rng_.get();
 }
@@ -370,7 +382,7 @@ set_scontext_synced::~set_scontext_synced()
 {
 	LOG_REPLAY << "set_scontext_synced:: destructor\n";
 	assert(synced_context::get_synced_state() == synced_context::SYNCED);
-	assert(checkup_instance == &new_checkup_);
+	assert(checkup_instance == &*new_checkup_);
 	config co;
 	if(!checkup_instance->local_checkup(config_of("random_calls", new_rng_->get_random_calls()), co))
 	{
@@ -393,7 +405,7 @@ int set_scontext_synced::get_random_calls()
 
 set_scontext_local_choice::set_scontext_local_choice()
 {
-
+	//TODO: should we also reset the synced checkup?
 	assert(synced_context::get_synced_state() == synced_context::SYNCED);
 	synced_context::set_synced_state(synced_context::LOCAL_CHOICE);
 

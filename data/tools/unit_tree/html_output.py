@@ -341,7 +341,12 @@ class HTMLOutput:
 
         # Races / Factions
 
+        target = self.target
+        if self.campaign == "units":
+            target = "mainline.html"
+
         if not self.is_era:
+            
             x = self.translate("Race", "wesnoth-lib")
             add_menu("races_menu", x)
 
@@ -368,7 +373,7 @@ class HTMLOutput:
                     write(" -<br/>")
                 else:
                     write(" <a href=\"%s#%s\">%s</a><br/>" % (
-                        self.target, racename, racename))
+                        target, racename, racename))
 
             write("</div></li>\n")
         else:
@@ -415,7 +420,7 @@ class HTMLOutput:
                 c = self.campaign
                 if c == "units": c = "mainline"
                 write("<a href=\"%s#%s\">%s</a><br/>" % (
-                    self.target, r, r))
+                    target, r, r))
                 for uid in races[r]:
                     un = self.wesnoth.unit_lookup[uid]
                     if un.hidden: continue

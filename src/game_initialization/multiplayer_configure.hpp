@@ -77,6 +77,7 @@ private:
 	gui::button fog_game_;
 	gui::button shroud_game_;
 	gui::button observers_game_;
+	gui::button oos_debug_;
 	gui::button shuffle_sides_;
 	gui::button cancel_game_;
 	gui::button launch_game_;

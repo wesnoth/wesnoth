@@ -44,7 +44,8 @@ game_classification::game_classification():
 	end_text(),
 	end_text_duration(),
 	difficulty(DEFAULT_DIFFICULTY),
-	random_mode("")
+	random_mode(""),
+	oos_debug(false)
 	{}
 
 game_classification::game_classification(const config& cfg):
@@ -64,7 +65,8 @@ game_classification::game_classification(const config& cfg):
 	end_text(cfg["end_text"]),
 	end_text_duration(cfg["end_text_duration"]),
 	difficulty(cfg["difficulty"].empty() ? DEFAULT_DIFFICULTY : cfg["difficulty"].str()),
-	random_mode(cfg["random_mode"])
+	random_mode(cfg["random_mode"]),
+	oos_debug(cfg["oos_debug"].to_bool(false))
 	{}
 
 game_classification::game_classification(const game_classification& gc):
@@ -84,7 +86,8 @@ game_classification::game_classification(const game_classification& gc):
 	end_text(gc.end_text),
 	end_text_duration(gc.end_text_duration),
 	difficulty(gc.difficulty),
-	random_mode(gc.random_mode)
+	random_mode(gc.random_mode),
+	oos_debug(gc.oos_debug)
 {
 }
 
@@ -108,6 +111,6 @@ config game_classification::to_config() const
 	cfg["end_text_duration"] = str_cast<unsigned int>(end_text_duration);
 	cfg["difficulty"] = difficulty;
 	cfg["random_mode"] = random_mode;
-
+	cfg["oos_debug"] = oos_debug;
 	return cfg;
 }

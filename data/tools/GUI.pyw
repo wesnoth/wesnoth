@@ -297,6 +297,12 @@ It comes complete with a context menu and a directory selection screen"""
                                text="Browse...",
                                command=self.on_browse)
         self.dir_button.pack(side=LEFT)
+        self.clear_button=Button(self,
+                                 image=ICONS['clear16'],
+                                 compound=LEFT,
+                                 text="Clear",
+                                 command=self.on_clear)
+        self.clear_button.pack(side=LEFT)
     def on_browse(self):
         # os.path.expanduser gets the current user's home directory on every platform
         if sys.platform=="win32":
@@ -335,6 +341,8 @@ It comes complete with a context menu and a directory selection screen"""
         
         if directory:
             self.textvariable.set(directory)
+    def on_clear(self):
+        self.textvariable.set("")
 
 class WmllintTab(Frame):
     def __init__(self,parent):
@@ -473,9 +481,27 @@ class WmllintTab(Frame):
                                column=0,
                                sticky=W,
                                padx=10)
+        self.skip_variable=BooleanVar()
+        self.skip_core=Checkbutton(self.options_frame,
+                                   text="Skip core directory",
+                                   variable=self.skip_variable,
+                                   command=self.skip_core_dir_callback)
+        self.skip_core.grid(row=5,
+                               column=0,
+                               sticky=W,
+                               padx=10)
         self.columnconfigure(0,weight=1)
         self.columnconfigure(1,weight=1)
         self.columnconfigure(2,weight=1)
+    def skip_core_dir_callback(self):
+        # if Skip core directory is enabled
+        # avoid checking for unknown unit types
+        if self.skip_variable.get():
+            self.known_variable.set(True)
+            self.known_check.configure(state=DISABLED)
+        else:
+            self.known_variable.set(False)
+            self.known_check.configure(state=NORMAL)
 
 class WmlscopeTab(Frame):
     def __init__(self,parent):
@@ -892,6 +918,14 @@ class MainFrame(Frame):
             self.run_button.configure(text="Run wmlindent",command=self.on_run_wmlindent)
 
     def on_run_wmllint(self):
+        # first of all, check if we have something to run wmllint on it
+        # if not, stop here
+        umc_dir=self.dir_variable.get()
+        if not umc_dir and self.wmllint_tab.skip_variable.get():
+            showerror("Error","""wmllint cannot run because there is no directory selected.
+
+Please select a directory or disable the "Skip core directory" option""")
+            return
         # build the command line
         wmllint_command_string=[]
         # get the path of the Python interpreter
@@ -922,8 +956,8 @@ class MainFrame(Frame):
             wmllint_command_string.append("--nospellcheck")
         if self.wmllint_tab.freeze_variable.get():
             wmllint_command_string.append("--stringfreeze")
-        wmllint_command_string.append(WESNOTH_CORE_DIR)
-        umc_dir=self.dir_variable.get()
+        if not self.wmllint_tab.skip_variable.get():
+            wmllint_command_string.append(WESNOTH_CORE_DIR)
         if os.path.exists(umc_dir): # add-on exists
             wmllint_command_string.append(umc_dir)
         elif not umc_dir: # path does not exists because the box was left empty
@@ -1068,7 +1102,7 @@ Error code: {1}
         self.text.configure(state=DISABLED)
 
     def on_about(self):
-        showinfo("About Maintenance tools GUI","""(C) Elvish_Hunter, 2014
+        showinfo("About Maintenance tools GUI","""© Elvish_Hunter, 2014
 
 Part of The Battle for Wesnoth project and released under the GNU GPL v2 license
 
@@ -1220,6 +1254,25 @@ BAEKAH8ALAAAAAAQABAAAAfOgH+Cg4SFf0QoiYkrhoMmcGxqaGhcMI1/I2pVUUxLSycaGBcXFox/
 IWdPS0dCP0pjam5yZhOCH2VKRD06OTg4OTo9PQmCHGG6OTY1NDM0NTc3A4IWXj0ZDtjZ2QgQIhRT
 OQtvdHR1c+foawQPSjcNd1lWV1n0WVpfbQcGQTUSeF0AA3aRgiSOggA6aFTIA6Zhwy1NkkCxwwAA
 jRcg0mCh4sQIjx0ggZCJMEBGCRdimgDxwbLlkCIdBJBw0IKFips4cXqIkaKAz59Af274EwgAOw=='''),
+           "clear16":PhotoImage(data=b'''
+R0lGODlhEAAQAOeIAKsbDbg4HX9QCaxDFKxDJYRUCoJUEKhJGYpYDIlZDIZaGLtKKIdbGothIoxi
+IqZpCqlrCqttC7FsHbJyDLJ2C8htM7x6D5uHAKGIAcF9EJyLAKCQCKGRC6KRDaGSEKOSD6SSEKOT
+EaOTEqOTE6SUEaWUFKWWF6aWF6qOY6eXG6qZLqydIa2eKK2fKrChJLOjJ7CjNrynL72tMbqodrum
+h7mtULmuUbuwVsGyNryyW72yWsS0NMa1M8W1OMW2NdexYs29QcS7dcy+R9rCA9vDBM7ASNzEB9zF
+ENHCT9zGENzGFcnBgNXHVc7Brd/KJtjIT+PLEdDFltDDsOXNFNDJlufQGNzNWNPIuNLMm93PXuTS
+SeTTTOHTW+XUTu7XI+LUZ+bWVufXW9jUsOfYX/PbKu3aRtrVs+fZbdrWtOjabNvXtvbYYfbeL+zc
+aOrccuvdd+ved/vkN/PjZfzlPPvlRP3mPOPgzOTh0OTi0v3pUubk1v3qX/3qY/3rYf3rbPjqiPvq
+hP3sa+jn3P3sbfvti/3uff3vhP3vivDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw
+8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw
+8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw
+8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw
+8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw
+8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw
+8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8CH5BAEKAP8ALAAAAAAQABAA
+AAjBAK84YNDkn8GDCA0qeBBBgJSEEA1MyAChwb8gEA/SQGAhQwIVGjIeRFGAAgYZL9SINDjjAhA4
+Eg60WCIIIpYNT9pUAPDDjRAQOvQgpCIixoIAa/j4KfRHCIcbZhASGAAokKFBeejIeVPExYiDUXAc
+2tMnTx0yVZJo+VIC4QlCc+Kw8TKFyBAwPmwgZJGlTBUoRoYM2WKlQ0IxK9IcEawkDBMSaCDC6DHG
+SZczO0zYEZkCCRceH2qs/IfHQ4gcdxIGBAA7'''),
            "cut":PhotoImage(data=b'''
 R0lGODlhEAAQAMZ5AKYBAaYCAqcDA6YFBacFBagFBKYGBqgHB6gKCqkLC6sREbYPDqsUFK0ZGa4a
 Gq8bG6wcHK4dHcAZF60fH8AaGccaGckaGrAiIrAjI7AkJMwdHM0dHbAlJcofH8wgIM4gINAgINEg
