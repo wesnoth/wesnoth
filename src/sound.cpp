@@ -584,8 +584,6 @@ void play_music_config(const config &music_node)
 	if (track.immediate()) {
 		current_track = track;
 		play_music();
-	} else if (!track.append()) { // Make sure the current track is finished
-		current_track.set_play_once(true);
 	}
 }
 
