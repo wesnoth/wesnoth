@@ -304,40 +304,46 @@ It comes complete with a context menu and a directory selection screen"""
                                  command=self.on_clear)
         self.clear_button.pack(side=LEFT)
     def on_browse(self):
-        # os.path.expanduser gets the current user's home directory on every platform
-        if sys.platform=="win32":
-            # get userdata directory on Windows
-            # it assumes that you choose to store userdata in the My Games directory
-            # while installing Wesnoth
-            userdata=os.path.join(os.path.expanduser("~"),
-                                  "Documents",
-                                  "My Games",
-                                  "Wesnoth"+WESNOTH_SERIES,
-                                  "data",
-                                  "add-ons")
-        elif sys.platform.startswith("linux"): # we're on Linux; usually this string is 'linux2'
-            userdata=os.path.join(os.path.expanduser("~"),
-                                  ".local",
-                                  "share",
-                                  "wesnoth",
-                                  WESNOTH_SERIES,
-                                  "data",
-                                  "add-ons")
-        elif sys.platform=="darwin": # we're on MacOS
-            # bear in mind that I don't have a Mac, so this point may be bugged
-            userdata=os.path.join(os.path.expanduser("~"),
-                                  "Library",
-                                  "Application Support",
-                                  "Wesnoth_"+WESNOTH_SERIES,
-                                  "data",
-                                  "add-ons")
-        else: # unknown system; if someone else wants to add other rules, be my guest
-            userdata="."
-        
-        if os.path.exists(userdata): # we may have gotten it wrong
-            directory=askdirectory(initialdir=userdata)
+        # if the user already selected a directory, try to use it
+        current_dir=self.textvariable.get()
+        if os.path.exists(current_dir):
+            directory=askdirectory(initialdir=current_dir)
+        # otherwise attempt to detect the user's userdata folder
         else:
-            directory=askdirectory(initialdir=".")
+            # os.path.expanduser gets the current user's home directory on every platform
+            if sys.platform=="win32":
+                # get userdata directory on Windows
+                # it assumes that you choose to store userdata in the My Games directory
+                # while installing Wesnoth
+                userdata=os.path.join(os.path.expanduser("~"),
+                                      "Documents",
+                                      "My Games",
+                                      "Wesnoth"+WESNOTH_SERIES,
+                                      "data",
+                                      "add-ons")
+            elif sys.platform.startswith("linux"): # we're on Linux; usually this string is 'linux2'
+                userdata=os.path.join(os.path.expanduser("~"),
+                                      ".local",
+                                      "share",
+                                      "wesnoth",
+                                      WESNOTH_SERIES,
+                                      "data",
+                                      "add-ons")
+            elif sys.platform=="darwin": # we're on MacOS
+                # bear in mind that I don't have a Mac, so this point may be bugged
+                userdata=os.path.join(os.path.expanduser("~"),
+                                      "Library",
+                                      "Application Support",
+                                      "Wesnoth_"+WESNOTH_SERIES,
+                                      "data",
+                                      "add-ons")
+            else: # unknown system; if someone else wants to add other rules, be my guest
+                userdata="."
+
+            if os.path.exists(userdata): # we may have gotten it wrong
+                directory=askdirectory(initialdir=userdata)
+            else:
+                directory=askdirectory(initialdir=".")
         
         if directory:
             self.textvariable.set(directory)
@@ -741,22 +747,44 @@ class WmlindentTab(Frame):
                                column=0,
                                sticky=W,
                                padx=10)
+        self.verbosity_frame=LabelFrame(self,
+                                        text="Verbosity level")
+        self.verbosity_frame.grid(row=0,
+                                  column=1,
+                                  sticky=N+E+S+W)
+        self.verbosity_variable=IntVar()
+        self.radio_v0=Radiobutton(self.verbosity_frame,
+                                  text="Terse",
+                                  variable=self.verbosity_variable,
+                                  value=0)
+        self.radio_v0.grid(row=0,
+                           column=0,
+                           sticky=W,
+                           padx=10)
+        self.radio_v1=Radiobutton(self.verbosity_frame,
+                                  text="Verbose",
+                                  variable=self.verbosity_variable,
+                                  value=1)
+        self.radio_v1.grid(row=1,
+                           column=0,
+                           sticky=W,
+                           padx=10)
+        self.radio_v2=Radiobutton(self.verbosity_frame,
+                                  text="Also report\nunchanged files",
+                                  variable=self.verbosity_variable,
+                                  value=2)
+        self.radio_v2.grid(row=2,
+                           column=0,
+                           sticky=W,
+                           padx=10)
         self.options_frame=LabelFrame(self,
                                       text="wmlindent options")
         self.options_frame.grid(row=0,
-                                column=1,
+                                column=2,
                                 sticky=N+E+S+W)
-        self.verbose_variable=BooleanVar()
-        self.verbose_check=Checkbutton(self.options_frame,
-                                       text="Report also unchanged files",
-                                       variable=self.verbose_variable)
-        self.verbose_check.grid(row=0,
-                                column=0,
-                                sticky=W,
-                                padx=10)
         self.exclude_variable=BooleanVar()
         self.exclude_check=Checkbutton(self.options_frame,
-                                       text="Exclude files matching regexp:",
+                                       text="Exclude files\nmatching regexp:",
                                        variable=self.exclude_variable,
                                        command=self.exclude_callback)
         self.exclude_check.grid(row=1,
@@ -782,6 +810,7 @@ class WmlindentTab(Frame):
                               padx=10)
         self.columnconfigure(0,weight=1)
         self.columnconfigure(1,weight=1)
+        self.columnconfigure(2,weight=1)
         self.options_frame.columnconfigure(1,weight=1)
     def exclude_callback(self):
         if self.exclude_variable.get():
@@ -1037,8 +1066,9 @@ wmlscope will be run only on the Wesnoth core directory""")
             pass
         elif mode==1:
             wmlindent_command_string.append("--dryrun")
-        if self.wmlindent_tab.verbose_variable.get():
-            wmlindent_command_string.append("-v -v")
+        verbosity=self.wmlindent_tab.verbosity_variable.get()
+        for n in range(verbosity):
+            wmlindent_command_string.append("-v")
         if self.wmlindent_tab.exclude_variable.get():
             wmlindent_command_string.append('--exclude="{0}"'.format(self.wmlindent_tab.regexp_variable.get()))
         if self.wmlindent_tab.quiet_variable.get():
