@@ -218,6 +218,27 @@ void game_board::side_change_controller(int side_num, team::CONTROLLER ctrl, con
 	}
 }
 
+bool game_board::team_is_defeated(const team& t) const
+{
+	switch(t.defeat_condition())
+	{
+	case team::ALWAYS:
+		return true;
+	case team::NO_LEADER:
+		return !units_.find_leader(t.side()).valid();
+	case team::NO_UNITS:
+		BOOST_FOREACH(const unit& u, units_)
+		{
+			if(u.side() == t.side())
+				return false;
+		}
+		return true;
+	case team::NEVER:
+	default:
+		return false;
+	}
+}
+
 bool game_board::try_add_unit_to_recall_list(const map_location& loc, const unit_ptr u)
 {
 	if(teams_[u->side()-1].persistent()) {

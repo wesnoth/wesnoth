@@ -146,16 +146,7 @@ bool get_village(const map_location& loc, int side, int *action_timebonus)
 		return false;
 	}
 
-	bool has_leader = resources::units->find_leader(side).valid();
-	bool has_units = false;
-	for(unit_map::iterator u = resources::units->begin();
-		u != resources::units->end();
-		++u) {
-		if (u->side() == side) {
-			has_units = true;
-			break;
-		}
-	}
+	bool not_defeated = t && !resources::gameboard->team_is_defeated(*t);
 
 	bool grants_timebonus = false;
 
@@ -164,12 +155,7 @@ bool get_village(const map_location& loc, int side, int *action_timebonus)
 	// and our side is already defeated (and thus we can't occupy it)
 	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
 		int i_side = i - teams.begin() + 1;
-		if (!t ||
-			(t->defeat_condition() == team::NO_LEADER && has_leader) ||
-			(t->defeat_condition() == team::NO_UNITS && has_units) ||
-			t->defeat_condition() == team::NEVER ||
-			t->is_enemy(i_side)
-			) {
+		if (!t || not_defeated || t->is_enemy(i_side)) {
 			if(i->owns_village(loc)) {
 				old_owner_side = i_side;
 				i->lose_village(loc);
@@ -187,9 +173,7 @@ bool get_village(const map_location& loc, int side, int *action_timebonus)
 		*action_timebonus = 1;
 	}
 
-	if((t->defeat_condition() == team::NO_LEADER && has_leader) ||
-		(t->defeat_condition() == team::NO_UNITS && has_units) ||
-		t->defeat_condition() == team::NEVER) {
+	if(not_defeated) {
 		if (resources::screen != NULL) {
 			resources::screen->invalidate(loc);
 		}
