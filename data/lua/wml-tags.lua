@@ -196,18 +196,22 @@ function wml_actions.allow_extra_recruit(cfg)
 end
 
 function wml_actions.disallow_recruit(cfg)
-	local unit_types = cfg.type or helper.wml_error("[disallow_recruit] missing required type= attribute")
+	local unit_types = cfg.type
 	for index, team in ipairs(wesnoth.get_sides(cfg)) do
-		local v = team.recruit
-		for w in split(unit_types) do
-			for i, r in ipairs(v) do
-				if r == w then
-					table.remove(v, i)
-					break
+		if unit_types then
+			local v = team.recruit
+			for w in split(unit_types) do
+				for i, r in ipairs(v) do
+					if r == w then
+						table.remove(v, i)
+						break
+					end
 				end
 			end
+			team.recruit = v
+		else
+			team.recruit = nil
 		end
-		team.recruit = v
 	end
 end
 
