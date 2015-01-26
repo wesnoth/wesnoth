@@ -59,7 +59,9 @@
 # which pofix will be applied. All replacements will always be applied on *ALL*
 # files!
 
-stringfixes = {
+import argparse
+
+game_stringfixes = {
 
 "wesnoth" : (
 # conversion added in 1.11.10+dev
@@ -74,10 +76,6 @@ stringfixes = {
 "wesnoth-lib" : (
 # conversion added in 1.11.15+dev
 ("SP/MP Campaigns", "SP/MP campaigns"),
-),
-
-"1.10-announcement" : (
-("roleplaying", "role-playing"),
 ),
 
 "wesnoth-httt" : (
@@ -127,6 +125,13 @@ stringfixes = {
 
 }
 
+website_stringfixes = {
+}
+
+# Whether -w was passed in the command line. Selects website_stringfixes
+# instead of game_stringfixes.
+website_mode = 0
+
 # Speak, if all argument files are newer than this timestamp
 # Try to use UTC here
 # date --utc "+%s  # %c"
@@ -146,6 +151,10 @@ def process_file(path):
     before = open(path, "r").read()
     decommented = re.sub("#.*", "", before)
     lines = before.split('\n')
+    if website_mode:
+        stringfixes = website_stringfixes
+    else:
+        stringfixes = game_stringfixes
     for (domain, fixes) in stringfixes.items():
         # In case of screwed-up pairs that are hard to find, uncomment the following:
         #for fix in fixes:
@@ -181,6 +190,14 @@ def process_file(path):
         return 0
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-w', action='store_true', dest='website_mode',
+                        help='selects the website string fixes table instead of the game string fixes table')
+    parser.add_argument('paths', nargs='*')
+    args = parser.parse_args()
+    website_mode = args.website_mode
+    if website_mode:
+        print("pofix: Using website string fixes table")
     newer = 0
     modified = 0
     pocount = 0
