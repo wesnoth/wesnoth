@@ -59,8 +59,6 @@
 # which pofix will be applied. All replacements will always be applied on *ALL*
 # files!
 
-import argparse
-
 game_stringfixes = {
 
 "wesnoth" : (
@@ -144,7 +142,7 @@ website_mode = 0
 # date --utc "+%s  # %c"
 timecheck = 1283156523  # Mo 30 Aug 2010 08:22:03 UTC
 
-import os, sys, time, stat, re
+import os, sys, time, stat, re, argparse
 try:
     from multiprocessing import Pool, cpu_count
     def parallel_map(*args, **kw):
