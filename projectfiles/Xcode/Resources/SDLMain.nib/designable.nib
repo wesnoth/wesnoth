@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="1050" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication"/>
@@ -588,6 +588,125 @@ changelog: https://github.com/wesnoth/wesnoth-old/blob/master/changelog
                                             <string key="content" base64-UTF8="YES">
 Cgo
 </string>
+                                            <attributes>
+                                                <font key="NSFont" size="10" name="LucidaGrande"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural">
+                                                    <tabStops>
+                                                        <textTab alignment="left" location="0.0"/>
+                                                        <textTab alignment="left" location="56"/>
+                                                        <textTab alignment="left" location="112"/>
+                                                        <textTab alignment="left" location="168"/>
+                                                        <textTab alignment="left" location="224"/>
+                                                        <textTab alignment="left" location="280"/>
+                                                        <textTab alignment="left" location="336"/>
+                                                        <textTab alignment="left" location="392"/>
+                                                        <textTab alignment="left" location="448"/>
+                                                        <textTab alignment="left" location="504"/>
+                                                        <textTab alignment="left" location="560"/>
+                                                        <textTab alignment="left" location="616"/>
+                                                        <textTab alignment="left" location="672"/>
+                                                        <textTab alignment="left" location="728"/>
+                                                        <textTab alignment="left" location="784"/>
+                                                        <textTab alignment="left" location="840"/>
+                                                        <textTab alignment="left" location="896"/>
+                                                        <textTab alignment="left" location="952"/>
+                                                        <textTab alignment="left" location="1008"/>
+                                                        <textTab alignment="left" location="1064"/>
+                                                        <textTab alignment="left" location="1120"/>
+                                                        <textTab alignment="left" location="1176"/>
+                                                        <textTab alignment="left" location="1232"/>
+                                                        <textTab alignment="left" location="1288"/>
+                                                        <textTab alignment="left" location="1344"/>
+                                                        <textTab alignment="left" location="1400"/>
+                                                        <textTab alignment="left" location="1456"/>
+                                                        <textTab alignment="left" location="1512"/>
+                                                        <textTab alignment="left" location="1568"/>
+                                                        <textTab alignment="left" location="1624"/>
+                                                        <textTab alignment="left" location="1680"/>
+                                                        <textTab alignment="left" location="1736"/>
+                                                    </tabStops>
+                                                </paragraphStyle>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="Version 1.12.1:">
+                                            <attributes>
+                                                <font key="NSFont" size="12" name="LucidaGrande-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural">
+                                                    <tabStops>
+                                                        <textTab alignment="left" location="0.0"/>
+                                                        <textTab alignment="left" location="56"/>
+                                                        <textTab alignment="left" location="112"/>
+                                                        <textTab alignment="left" location="168"/>
+                                                        <textTab alignment="left" location="224"/>
+                                                        <textTab alignment="left" location="280"/>
+                                                        <textTab alignment="left" location="336"/>
+                                                        <textTab alignment="left" location="392"/>
+                                                        <textTab alignment="left" location="448"/>
+                                                        <textTab alignment="left" location="504"/>
+                                                        <textTab alignment="left" location="560"/>
+                                                        <textTab alignment="left" location="616"/>
+                                                        <textTab alignment="left" location="672"/>
+                                                        <textTab alignment="left" location="728"/>
+                                                        <textTab alignment="left" location="784"/>
+                                                        <textTab alignment="left" location="840"/>
+                                                        <textTab alignment="left" location="896"/>
+                                                        <textTab alignment="left" location="952"/>
+                                                        <textTab alignment="left" location="1008"/>
+                                                        <textTab alignment="left" location="1064"/>
+                                                        <textTab alignment="left" location="1120"/>
+                                                        <textTab alignment="left" location="1176"/>
+                                                        <textTab alignment="left" location="1232"/>
+                                                        <textTab alignment="left" location="1288"/>
+                                                        <textTab alignment="left" location="1344"/>
+                                                        <textTab alignment="left" location="1400"/>
+                                                        <textTab alignment="left" location="1456"/>
+                                                        <textTab alignment="left" location="1512"/>
+                                                        <textTab alignment="left" location="1568"/>
+                                                        <textTab alignment="left" location="1624"/>
+                                                        <textTab alignment="left" location="1680"/>
+                                                        <textTab alignment="left" location="1736"/>
+                                                    </tabStops>
+                                                </paragraphStyle>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment>
+                                            <mutableString key="content">
+
+ * Campaigns:
+   * Heir to the Throne:
+     * Tweaked and expanded music playlists for all scenarios.
+     * Hide unit variations that should not be listed in the help browser.
+   * Liberty:
+     * Fixed possibility of no viable routes around guards in 'Hide and Seek'.
+   * The Rise of Wesnoth:
+     * Hide unit variations that should not be listed in the help browser.
+   * Under the Burning Suns:
+     * Hide unit variations that should not be listed in the help browser.
+
+ * Help browser:
+   * Unit types that do not include any visible (hide_help=no) variations no
+     longer generate topic sections.
+
+ * Language and i18n:
+   * Updated translations: French, Portuguese, Russian, Scottish Gaelic, Slovak,
+     Spanish.
+
+ * Multiplayer:
+   * Fixed the Set Password option during game creation not having an effect
+     due to a misplaced WML attribute in the client's command for the server
+     (bug #23015).
+
+ * Units:
+   * Assigned capitalized translatable names to Walking Corpse and Soulless
+     variations (bug #22902).
+
+ * Miscellaneous and bug fixes:
+   * Fixed hotkeys for changing tips in titlescreen.
+   * Disallowed toggling Delayed Shroud Updates when not the player's turn as
+     it causes OOS.
+
+
+</mutableString>
                                             <attributes>
                                                 <font key="NSFont" size="10" name="LucidaGrande"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural">
