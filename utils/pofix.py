@@ -202,8 +202,8 @@ if __name__ == '__main__':
     modified = 0
     pocount = 0
     files = []
-    for path in sys.argv[1:]:
-        if not path.endswith(".po") and not path.endswith(".pot") and not path.endswith(".cfg"):
+    for path in args.paths:
+        if not path.endswith(".po") and not path.endswith(".pot") and not path.endswith(".cfg") and not path.endswith(".html"):
             continue
         pocount += 1
         # Notice how many files are newer than the time check
