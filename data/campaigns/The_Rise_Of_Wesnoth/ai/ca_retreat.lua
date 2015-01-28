@@ -7,7 +7,7 @@ function retreat:evaluation(ai, cfg, self)
 
     local units = wesnoth.get_units {
         side = wesnoth.current.side,
-        formula = '$this_unit.moves > 0'
+        formula = 'moves > 0'
     }
     --print('#units', #units)
     if (not units[1]) then return 0 end
