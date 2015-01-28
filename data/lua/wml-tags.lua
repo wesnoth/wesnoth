@@ -85,30 +85,33 @@ function wml_actions.sync_variable(cfg)
 			local res = {}
 			for name_raw in split(names) do
 				local name = trim(name_raw)
-				local content = wesnoth.get_variable(name)
-				if type(content) == "table" then
-					table.insert(res, { "variable",  {
-						name = trim(name),
-						{ "value",  {content }}
-					}})
+				local variable_type = string.sub(name, string.len(name)) == "]" and "indexed" or ( wesnoth.get_variable(name .. ".length") > 0 and "array" or "attribute")
+				local variable_info = { name = name, type = variable_type }
+				table.insert(res, { "variable", variable_info })
+				if variable_type == "indexed" then 
+					table.insert(variable_info, { "value", wesnoth.get_variable(name) } )
+				elseif variable_type == "array" then
+					for i = 1, wesnoth.get_variable(name .. ".length") do
+						table.insert(variable_info, { "value",  wesnoth.get_variable(string.format("%s[%d]", name, i - 1)) } )
+					end
 				else
-					table.insert(res, { "variable", {
-						name = trim(name),
-						value = content
-					}})
+					variable_info.value = wesnoth.get_variable(name)
 				end
 			end
 			return res
 		end
 	)
-	for index, variable in ipairs(result) do
-		local name = variable[2].name
-		if variable[2][1] ~= nil then
-			-- a table variable
-			wesnoth.set_variable(name, variable[2][1][2])
+	for variable in helper.child_range(result, "variable") do
+		local name = variable.name
+		
+		if variable.type == "indexed" then
+			wesnoth.set_variable(name, variable[1][2])
+		elseif variable.type == "array" then
+			for index, cfg_pair in ipairs(variable) do
+				wesnoth.set_variable( string.format("%s[%d]", name, index - 1), cfg_pair[2])
+			end
 		else
-			-- a scalar variable
-			wesnoth.set_variable(name, variable[2].value)
+			wesnoth.set_variable(name, variable.value)
 		end
 	end
 end
