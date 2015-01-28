@@ -78,6 +78,41 @@ end
 
 local engine_message = wml_actions.message
 
+function wml_actions.sync_variable(cfg)
+	local names = cfg.name or helper.wml_error "[sync_variable] missing required name= attribute."
+	local result = wesnoth.synchronize_choice(
+		function()
+			local res = {}
+			for name_raw in split(names) do
+				local name = trim(name_raw)
+				local content = wesnoth.get_variable(name)
+				if type(content) == "table" then
+					table.insert(res, { "variable",  {
+						name = trim(name),
+						{ "value",  {content }}
+					}})
+				else
+					table.insert(res, { "variable", {
+						name = trim(name),
+						value = content
+					}})
+				end
+			end
+			return res
+		end
+	)
+	for index, variable in ipairs(result) do
+		local name = variable[2].name
+		if variable[2][1] ~= nil then
+			-- a table variable
+			wesnoth.set_variable(name, variable[2][1][2])
+		else
+			-- a scalar variable
+			wesnoth.set_variable(name, variable[2].value)
+		end
+	end
+end
+
 function wml_actions.message(cfg)
 	local show_if = helper.get_child(cfg, "show_if")
 	if not show_if or wesnoth.eval_conditional(show_if) then
