@@ -46,8 +46,6 @@
 # content, first run wmllint-1.4 to convert to "1.4", before running this
 # one.
 #
-# Standalone terrain mask files *must* have a .mask extension on their name
-# or they'll have an incorrect usage=map generated into them.
 #
 #                              MAGIC COMMENTS
 #
@@ -2221,8 +2219,6 @@ def translator(filename, mapxforms, textxform):
                         and line.count("}") == 0
                         and not within('time')):
             outmap = []
-            add_border = True
-            add_usage = True
             have_header = have_delimiter = False
             maskwarn = False
             maptype = None
@@ -2259,18 +2255,6 @@ def translator(filename, mapxforms, textxform):
                 if len(line) == 0 or line[0] == '#' or '=' in line:
                     if '=' in line:
                         have_header = True
-                    if 'border_size' in line:
-                        add_border = False
-                    if "usage" in line:
-                        add_usage = False
-                        usage = line.split("=")[1].strip()
-                        if usage == 'mask':
-                            add_border = False
-                            if filename.endswith(".map"):
-                                print "warning: usage=mask in file with .map extension"
-                        elif usage == 'map':
-                            if filename.endswith(".mask"):
-                                print "warning: usage=map in file with .mask extension"
                     if len(line) == 0:
                         have_delimiter = True
                     savedheaders.append(line + terminator)
@@ -2291,11 +2275,6 @@ def translator(filename, mapxforms, textxform):
                               '"%s", line %d: warning, fog in map file' \
                               % (filename, lineno+1)
                         maskwarn = True
-            # Checking the outmap length here is a bit of a crock;
-            # the one-line map we don't want to mess with is in the
-            # NO_MAP macro.
-            if len(outmap) == 1:
-                add_border = add_usage = False
             # Deduce the map type
             if not map_only:
                 if maptype == "map":
@@ -2306,30 +2285,6 @@ def translator(filename, mapxforms, textxform):
             for transform in mapxforms:
                 for y in xrange(len(outmap)):
                     transform(filename, baseline, outmap, y)
-            if maptype == "mask":
-                add_border = False
-            if add_border:
-                print '%s, "line %d": adding map border...' % \
-                      (filename, baseline)
-                newdata.append("border_size=1" + terminator)
-                have_header = True
-                # Start by duplicating the current outermost ring
-                outmap = [outmap[0]] + outmap + [outmap[-1]]
-                for i in xrange(len(outmap)):
-                    outmap[i] = [outmap[i][0]] + outmap[i] + [outmap[i][-1]]
-                # Strip villages out of the edges
-                outermap(lambda n: re.sub(r"\^V[a-z]+", "", n), outmap)
-                # Strip keeps out of the edges
-                outermap(lambda n: re.sub(r"K([a-z]+)", r"C\1", n), outmap)
-                # Strip the starting positions out of the edges
-                outermap(lambda n: re.sub(r"[1-9] ", r"", n), outmap)
-                # Turn big trees on the edges to ordinary forest hexes
-                outermap(lambda n: n.replace(r"Gg^Fet", r"Gs^Fp"), outmap)
-            if add_usage:
-                print '%s, "line %d": adding %s usage header...' % \
-                      (filename, baseline, maptype)
-                newdata.append("usage=" + maptype + terminator)
-                have_header = True
             newdata += savedheaders
             if have_header and not have_delimiter:
                 newdata.append(terminator)
