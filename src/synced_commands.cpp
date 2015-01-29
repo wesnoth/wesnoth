@@ -309,18 +309,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child,  /*use_undo*/, /*show*/, error_handler)
 {
-	//i don't know the reason for the following three lines.
-	//TODO: find out wheter we can delete them. I think this code was introduced in bbfdfcf9ed6ca44f01da32bf74c39d5fa9a75c37
-	BOOST_FOREACH(const config &v, child.child_range("set_variable")) {
-		try
-		{
-			resources::gamedata->set_variable(v["name"], v["value"]);
-		}
-		catch(const invalid_variablename_exception&)
-		{
-			error_handler("invalid variable name", false);
-		}
-	}
 	bool undoable = true;
 
 	if(const config &last_select = child.child("last_select"))
