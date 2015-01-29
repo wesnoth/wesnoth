@@ -46,8 +46,6 @@
 # content, first run wmllint-1.4 to convert to "1.4", before running this
 # one.
 #
-# Standalone terrain mask files *must* have a .mask extension on their name
-# or they'll have an incorrect usage=map generated into them.
 #
 #                              MAGIC COMMENTS
 #
@@ -2291,9 +2289,6 @@ def translator(filename, mapxforms, textxform):
                               '"%s", line %d: warning, fog in map file' \
                               % (filename, lineno+1)
                         maskwarn = True
-            # Checking the outmap length here is a bit of a crock;
-            # the one-line map we don't want to mess with is in the
-            # NO_MAP macro.
             if len(outmap) == 1:
                 add_border = add_usage = False
             # Deduce the map type
