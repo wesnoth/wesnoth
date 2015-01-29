@@ -35,6 +35,7 @@
 #include "game_end_exceptions.hpp"
 #include "seed_rng.hpp"
 #include "syncmp_handler.hpp"
+#include "unit_id.hpp"
 
 #include <boost/lexical_cast.hpp>
 
@@ -378,18 +379,45 @@ void set_scontext_synced::init()
 	old_rng_ = random_new::generator;
 	random_new::generator = new_rng_.get();
 }
+
+void set_scontext_synced::do_final_checkup()
+{
+	std::stringstream msg;
+	config co;
+	config cn = config_of
+		("random_calls", new_rng_->get_random_calls())
+		("next_unit_id", n_unit::id_manager::instance().get_save_id() + 1);
+	if(checkup_instance->local_checkup(cn, co))
+	{
+		return;
+	}
+	if(co["random_calls"].empty())
+	{
+		msg << "cannot find random_calls check in replay" << std::endl;
+	}
+	else if(co["random_calls"] != cn["random_calls"])
+	{
+		msg << "We called random " << new_rng_->get_random_calls() << " times, but the original game called random " << co["random_calls"].to_int() << " times." << std::endl;
+	}
+	//Ignore empty next_unit_id to prevent false positives with older saves.
+	if(!co["next_unit_id"].empty() && co["next_unit_id"] != cn["next_unit_id"])
+	{
+		msg << "Our next unit id is " << cn["next_unit_id"].to_int() << " but during the original the next unit id was " << co["next_unit_id"].to_int() << std::endl;
+	}
+	if(!msg.str().empty())
+	{
+		msg << co.debug() << std::endl;
+		ERR_REPLAY << msg.str() << std::flush;
+	}
+}
+
 set_scontext_synced::~set_scontext_synced()
 {
 	LOG_REPLAY << "set_scontext_synced:: destructor\n";
 	assert(synced_context::get_synced_state() == synced_context::SYNCED);
 	assert(checkup_instance == &*new_checkup_);
-	config co;
-	if(!checkup_instance->local_checkup(config_of("random_calls", new_rng_->get_random_calls()), co))
-	{
-		//if we really get -999 we have a very serious OOS.
-		ERR_REPLAY << "We called random " << new_rng_->get_random_calls() << " times, but the original game called random " << co["random_calls"].to_int(-99) << " times." << std::endl;
-		ERR_REPLAY << co.debug() << std::endl;
-	}
+
+	do_final_checkup();
 
 	random_new::generator = old_rng_;
 	synced_context::set_synced_state(synced_context::UNSYNCED);

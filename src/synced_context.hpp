@@ -143,6 +143,7 @@ public:
 	set_scontext_synced(int num);
 	~set_scontext_synced();
 	int get_random_calls();
+	void do_final_checkup();
 private:
 	//only called by contructors.
 	void init();
