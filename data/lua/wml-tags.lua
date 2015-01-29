@@ -78,6 +78,44 @@ end
 
 local engine_message = wml_actions.message
 
+function wml_actions.sync_variable(cfg)
+	local names = cfg.name or helper.wml_error "[sync_variable] missing required name= attribute."
+	local result = wesnoth.synchronize_choice(
+		function()
+			local res = {}
+			for name_raw in split(names) do
+				local name = trim(name_raw)
+				local variable_type = string.sub(name, string.len(name)) == "]" and "indexed" or ( wesnoth.get_variable(name .. ".length") > 0 and "array" or "attribute")
+				local variable_info = { name = name, type = variable_type }
+				table.insert(res, { "variable", variable_info })
+				if variable_type == "indexed" then 
+					table.insert(variable_info, { "value", wesnoth.get_variable(name) } )
+				elseif variable_type == "array" then
+					for i = 1, wesnoth.get_variable(name .. ".length") do
+						table.insert(variable_info, { "value",  wesnoth.get_variable(string.format("%s[%d]", name, i - 1)) } )
+					end
+				else
+					variable_info.value = wesnoth.get_variable(name)
+				end
+			end
+			return res
+		end
+	)
+	for variable in helper.child_range(result, "variable") do
+		local name = variable.name
+		
+		if variable.type == "indexed" then
+			wesnoth.set_variable(name, variable[1][2])
+		elseif variable.type == "array" then
+			for index, cfg_pair in ipairs(variable) do
+				wesnoth.set_variable( string.format("%s[%d]", name, index - 1), cfg_pair[2])
+			end
+		else
+			wesnoth.set_variable(name, variable.value)
+		end
+	end
+end
+
 function wml_actions.message(cfg)
 	local show_if = helper.get_child(cfg, "show_if")
 	if not show_if or wesnoth.eval_conditional(show_if) then
