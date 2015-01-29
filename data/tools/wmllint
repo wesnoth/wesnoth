@@ -1011,7 +1011,7 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
             print errlead + 'translatability mark before non-string'
     # Most tags are not allowed with [part]
     if ("[part]" in ancestors or parent == "[part]") and isOpener(nav.element) and \
-                    nav.element not in ("[part]", "[image]", "[insert_tag]",
+                    nav.element not in ("[part]", "[background_layer]", "[image]", "[insert_tag]",
                     "[if]", "[then]", "[else]", "[switch]", "[case]",
                     "[variable]", "[deprecated_message]"):
         print errlead + '%s not permitted within [part] tag' % nav.element
