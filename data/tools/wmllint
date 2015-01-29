@@ -1672,7 +1672,7 @@ def global_sanity_check(filename, lines):
                 pass
             elif key == 'letter':	# May be led with _s for void
                 pass
-            elif key in ('name', 'male_name', 'female_name', 'value'):		# FIXME: check this someday
+            elif key in ('name', 'male_name', 'female_name', 'variation_name', 'value'):		# FIXME: check this someday
                 pass
             elif translatables.search(key):
                 if markcheck and has_tr_mark and lines[i].find("\"\"")>-1:
