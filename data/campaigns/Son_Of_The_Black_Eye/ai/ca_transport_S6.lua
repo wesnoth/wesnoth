@@ -11,7 +11,7 @@ local ca_transport = {}
 -- Also unload units onto best hexes adjacent to landing site
 
 function ca_transport:evaluation(ai)
-    local units = wesnoth.get_units { side = wesnoth.current.side, formula = '$this_unit.moves > 0' }
+    local units = wesnoth.get_units { side = wesnoth.current.side, formula = 'movement_left > 0' }
 
     for i,u in ipairs(units) do
         local vars = H.get_child(u.__cfg, "variables")

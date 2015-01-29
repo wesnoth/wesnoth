@@ -7,7 +7,7 @@ local ca_ogres_flee = {}
 
 function ca_ogres_flee:evaluation(ai, cfg, self)
     local units = wesnoth.get_units { side = wesnoth.current.side,
-        formula = '$this_unit.moves > 0'
+        formula = 'movement_left > 0'
     }
 
     if (not units[1]) then return 0 end
@@ -16,11 +16,11 @@ end
 
 function ca_ogres_flee:execution(ai, cfg, self)
     local units = wesnoth.get_units { side = wesnoth.current.side,
-        formula = '$this_unit.moves > 0'
+        formula = 'movement_left > 0'
     }
 
     local units_noMP = wesnoth.get_units { side = wesnoth.current.side,
-        formula = '$this_unit.moves = 0'
+        formula = 'movement_left = 0'
     }
 
     local width, height = wesnoth.get_map_size()

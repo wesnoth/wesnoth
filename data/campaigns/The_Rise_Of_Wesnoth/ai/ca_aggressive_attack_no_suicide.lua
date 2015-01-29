@@ -6,7 +6,7 @@ function ca_aggressive_attack_no_suicide:evaluation(ai, cfg, self)
 
     local units = wesnoth.get_units {
         side = wesnoth.current.side,
-        formula = "attacks_left > 0"
+        formula = 'attacks_left > 0'
     }
     --print('#units', #units)
     if (not units[1]) then return 0 end

@@ -93,7 +93,7 @@ return {
             local leader = wesnoth.get_units {
                     side = wesnoth.current.side,
                     canrecruit = 'yes',
-                    formula = '($this_unit.moves = $this_unit.max_moves) and ($this_unit.hitpoints = $this_unit.max_hitpoints)'
+                    formula = '(movement_left = total_movement) and (hitpoints = max_hitpoints)'
                 }[1]
             if not leader then
                 -- CA is irrelevant if no leader or the leader may have moved from another CA
@@ -266,7 +266,7 @@ return {
 
             -- Check if there are units with moves left
             local units = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'no',
-                formula = '$this_unit.moves > 0'
+                formula = 'movement_left > 0'
             }
             if (not units[1]) then
                 if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
@@ -408,7 +408,7 @@ return {
             -- If a unit with a poisoned weapon can make an attack, we'll do that preferentially
             -- (with some exceptions)
             local poisoners = AH.get_live_units { side = wesnoth.current.side,
-                formula = '$this_unit.attacks_left > 0',
+                formula = 'attacks_left > 0',
                 { "filter_wml", {
                     { "attack", {
                         { "specials", {
@@ -523,7 +523,7 @@ return {
         function generic_rush:retreat_injured_units_eval()
             local units = wesnoth.get_units {
                 side = wesnoth.current.side,
-                formula = '$this_unit.moves > 0'
+                formula = 'movement_left > 0'
             }
             local unit, loc = R.retreat_injured_units(units)
             if unit then
@@ -574,7 +574,7 @@ return {
             local units = wesnoth.get_units {
                 side = wesnoth.current.side,
                 canrecruit = false,
-                formula = '$this_unit.moves > 0'
+                formula = 'movement_left > 0'
             }
 
             if not units[1] then
@@ -588,7 +588,7 @@ return {
             local unit = wesnoth.get_units({
                 side = wesnoth.current.side,
                 canrecruit = false,
-                formula = '$this_unit.moves > 0'
+                formula = 'movement_left > 0'
             })[1]
 
             local villages = wesnoth.get_villages()

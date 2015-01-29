@@ -8,7 +8,7 @@ return {
             local units = wesnoth.get_units {
                 side = wesnoth.current.side,
                 canrecruit = 'no',
-                formula = '$this_unit.moves > 0'
+                formula = 'movement_left > 0'
             }
 
             if (not units[1]) then
