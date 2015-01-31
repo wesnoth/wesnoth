@@ -17,7 +17,7 @@ else:
         
         print "Processing: ", sourcePath
         input = open(sourcePath)
-        output = open(targetPath, "w")
+        output = open(targetPath, "wb")
         for s in input.xreadlines():
             output.write(s.replace(stext, rtext))
         input.close()
