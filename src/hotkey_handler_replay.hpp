@@ -23,6 +23,7 @@
 
 #include "replay_controller.hpp"
 #include "hotkey_handler.hpp"
+#include "global.hpp"
 
 class replay_controller::hotkey_handler : public play_controller::hotkey_handler {
 
@@ -36,6 +37,28 @@ public:
 	virtual void preferences();
 	virtual void show_statistics();
 	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const;
+	
+	virtual void reset_replay() OVERRIDE
+	{ return replay_controller_.reset_replay(); }
+	virtual void stop_replay() OVERRIDE
+	{ return replay_controller_.stop_replay(); }
+	virtual possible_end_play_signal play_replay() OVERRIDE
+	{ return replay_controller_.play_replay(); }
+	virtual possible_end_play_signal replay_next_turn() OVERRIDE
+	{ return replay_controller_.replay_next_turn(); }
+	virtual possible_end_play_signal replay_next_side() OVERRIDE
+	{ return replay_controller_.replay_next_side(); }
+	virtual possible_end_play_signal replay_next_move() OVERRIDE
+	{ return replay_controller_.replay_next_move(); }
+	virtual void replay_show_everything() OVERRIDE
+	{ return replay_controller_.replay_show_everything(); }
+	virtual void replay_show_each() OVERRIDE
+	{ return replay_controller_.replay_show_each(); }
+	virtual void replay_show_team1() OVERRIDE
+	{ return replay_controller_.replay_show_team1(); }
+	virtual void replay_skip_animation() OVERRIDE
+	{ return replay_controller_.replay_skip_animation(); }
+
 };
 
 #endif
