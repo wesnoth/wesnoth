@@ -1,24 +1,25 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2011 Wesnoth development team
+# Copyright (C) 2005-2015 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Dionysus(unicon) <huang.wei.bhu@gmail.com>, 2007.
 # sylecn <sylecn@yahoo.com.cn>, 2009.
 # CloudiDust <cloudidust@gmail.com>, 2010.
+# Yifan <yyf1992@mail.ustc.edu.cn>, 2015.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.10\n"
+"Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
-"PO-Revision-Date: 2012-04-04 18:51+0800\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
+"PO-Revision-Date: 2015-01-12 21:28+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
-"Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
-"translation-cn>\n"
+"Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
+"X-Generator: Poedit 1.7.1\n"
 
 #. [terrain_type]: id=deep_water
 #. [terrain_type]: id=deep_water_gray
@@ -83,6 +84,9 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
+"如果一条河恰好特别浅，那么陆地单位可以轻松的跨越它。另外，擅于游泳的单位也能"
+"在河里的这种地方全速移动。单就游戏逻辑而言，河岸被看作草地或者浅水，根据单位"
+"的闪避率和移动力择优。"
 
 #. [terrain_type]: id=gray_reef
 #. [terrain_type]: id=medium_reef
@@ -101,10 +105,8 @@ msgstr "灰色礁石"
 
 #. [terrain_type]: id=medium_reef
 #: data/core/terrain.cfg:108
-#, fuzzy
-#| msgid "Coastal Reef"
 msgid "Medium Coastal Reef"
-msgstr "礁石"
+msgstr "中型海岸礁石"
 
 #. [terrain_type]: id=tropical_reef
 #: data/core/terrain.cfg:119
@@ -121,10 +123,8 @@ msgstr "沼泽"
 
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:132
-#, fuzzy
-#| msgid "Swamp Human Castle Keep"
 msgid "Swamp Water Reed"
-msgstr "沼泽中的人类城堡主楼"
+msgstr "沼泽芦苇"
 
 #. [terrain_type]: id=quagmire
 #: data/core/terrain.cfg:143
@@ -206,6 +206,8 @@ msgid ""
 "travelers passing over them. As far as gameplay is concerned, roads behave "
 "as flat terrain."
 msgstr ""
+"<italic>text='道路'</italic> 是平整过的土地，被过往的旅行者所踩出。就游戏逻辑"
+"而言，道路被当做平原地形处理。"
 
 #. [terrain_type]: id=road_clean
 #: data/core/terrain.cfg:246
@@ -244,6 +246,8 @@ msgid ""
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgstr ""
+"<italic>text='沙漠'</italic> 的构造与小沙丘和沙滩有所不同。但是，从游戏规则的"
+"角度看，它们是等同的。请见 <ref>dst='terrain_sand' text='sand'</ref>。"
 
 #. [terrain_type]: id=sand
 #. [terrain_type]: id=sand_beach
@@ -267,6 +271,11 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in sand."
 msgstr ""
+"<italic>text='沙地'</italic>的不稳定性令大多数单位在其上行走艰难，并且令他们"
+"更难以闪避攻击。另一方面，拥有宽足或者蛇一样身体的爬虫类生物在山上游走就容易"
+"多了。\n"
+"\n"
+"大多数单位在沙地上的闪避率是20%到40%。"
 
 #. [terrain_type]: id=oasis
 #: data/core/terrain.cfg:315
@@ -325,10 +334,8 @@ msgstr "风车"
 
 #. [terrain_type]: id=campfire
 #: data/core/terrain.cfg:423
-#, fuzzy
-#| msgid "Campaign"
 msgid "Campfire"
-msgstr "战役"
+msgstr "营火"
 
 #. [terrain_type]: id=fence
 #: data/core/terrain.cfg:432
@@ -353,12 +360,12 @@ msgstr "盛开的睡莲"
 #. [terrain_type]: id=detritus_trash
 #: data/core/terrain.cfg:471
 msgid "Trash"
-msgstr ""
+msgstr "垃圾"
 
 #. [terrain_type]: id=detritus_bones
 #: data/core/terrain.cfg:480
 msgid "Remains"
-msgstr ""
+msgstr "残骸"
 
 #. [terrain_type]: id=great_tree
 #. [terrain_type]: id=great_tree_dead
@@ -407,29 +414,23 @@ msgstr "热带森林"
 
 #. [terrain_type]: id=rainforest
 #: data/core/terrain.cfg:530
-#, fuzzy
-#| msgid "Pine Forest"
 msgid "Rainforest"
-msgstr "松林"
+msgstr "雨林"
 
 #. [terrain_type]: id=palm_desert_forest
 #: data/core/terrain.cfg:542
-#, fuzzy
-#| msgid "Pine Forest"
 msgid "Palm Forest"
-msgstr "松林"
+msgstr "棕榈树林"
 
 #. [terrain_type]: id=palm_forest
 #: data/core/terrain.cfg:554
-#, fuzzy
-#| msgid "Pine Forest"
 msgid "Dense Palm Forest"
-msgstr "松林"
+msgstr "棕榈密林"
 
 #. [terrain_type]: id=savanna_forest
 #: data/core/terrain.cfg:566
 msgid "Savanna"
-msgstr ""
+msgstr "热带草原"
 
 #. [terrain_type]: id=pine_forest
 #: data/core/terrain.cfg:578
@@ -527,10 +528,8 @@ msgstr "山岭"
 
 #. [terrain_type]: id=regular_mountains
 #: data/core/terrain.cfg:747
-#, fuzzy
-#| msgid "Regular Impassable Mountains"
 msgid "Regular Mountains"
-msgstr "普通的高不可攀的山脉"
+msgstr "普通的山脉"
 
 #. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:757
@@ -622,6 +621,14 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
 msgstr ""
+"<italic>text='岩石洞穴'</italic>地形因携带有侵蚀性微粒的水和风的作用而形成。"
+"它如同一个散乱的地下洞窟，降低了许多单位的移动效率，但是有助于防御。矮人和巨"
+"魔是洞穴中的主要住民，他们在洞穴里的移动会相对轻松一些。矮人们受益于他们低矮"
+"的身材，在这种地形中行动最方便。有时洞穴会被"
+"<ref>dst='terrain_illuminated_cave' text='照亮'</ref>。\n"
+"\n"
+"绝大多数单位在岩石洞穴中有50%的闪避率，而骑兵被限制在40%。矮人们在岩石洞穴中"
+"享有60%的闪避率。"
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -676,6 +683,10 @@ msgid ""
 "immediately above it. This provides an attack bonus for lawful units and "
 "removes the attack bonus from chaotic units."
 msgstr ""
+"试图在 <italic>text='岩浆'</italic>上行走的危险显而易见。就移动而言，岩浆相当"
+"于 <ref>dst='terrain_unwalkable' text='不可行走'</ref> 地形，只有能够在足够的"
+"高度飞行的单位才能够跨越它。熔岩产生大量的光亮，照亮其上的区域。这为守序立场"
+"的单位提供攻击奖励，并且给混乱立场的单位带来攻击惩罚。"
 
 #. [terrain_type]: id=volcano
 #: data/core/terrain.cfg:986
@@ -744,8 +755,6 @@ msgstr "不可通过地形覆盖层"
 
 #. [terrain_type]: id=unwalkable_overlay
 #: data/core/terrain.cfg:1112
-#, fuzzy
-#| msgid "Impassable Overlay"
 msgid "Unwalkable Overlay"
 msgstr "不可通过地形覆盖层"
 
@@ -959,6 +968,13 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
+"<italic>text='被淹没的村庄'</italic> 是人鱼和娜迦的家园。虽然水栖生物在这里得"
+"心应手，但陆栖生物们在探索和防御这里时就感觉力不从心了。不过，和其他村子一"
+"样，村中的设施为所有的单位提供了疗伤的条件。任何站在村子上的生物每回合都能够"
+"回复8点生命值，或者能够被解毒。\n"
+"\n"
+"人鱼和娜迦在被淹没的存在拥有60%的闪避率，但是陆地单位在其上的闪避率通常比较"
+"低。"
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1520
@@ -1016,10 +1032,8 @@ msgstr "雪中的人类城堡"
 
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:1608
-#, fuzzy
-#| msgid "Elven Castle Keep"
 msgid "Elven Castle"
-msgstr "精灵城堡主楼"
+msgstr "精灵城堡"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:1620
@@ -1213,6 +1227,13 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
+"对有能力建造<italic>text='桥梁'</italic>的人们来说，它将人们从水路的善变本性"
+"中解放出来。桥梁让人们不用再去考虑河岸随着水位消长的变化，也不用再沾湿自己的"
+"鞋裤，后者在寒天里可是一大慰藉。\n"
+"\n"
+"不论是对于陆上还是海上的通行者，桥梁都提供了最大的方便。在游戏逻辑中，桥梁可"
+"被视为草地或者浅水，根据占据桥梁的单位的行动力和闪避率择优。需要注意的是，游"
+"泳单位和陆地单位没法同时站在同一格桥梁地形上。"
 
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
@@ -1243,18 +1264,14 @@ msgstr "洞穴裂缝上的桥"
 #. [terrain_type]: id=hangingbridgediag2
 #: data/core/terrain.cfg:2072 data/core/terrain.cfg:2084
 #: data/core/terrain.cfg:2096
-#, fuzzy
-#| msgid "Rotting Bridge"
 msgid "Hanging Bridge"
-msgstr "腐坏中的村庄"
+msgstr "吊桥"
 
 #. [terrain_type]: id=stonechasmbridge
 #. [terrain_type]: id=stonechasmbridgediag1
 #. [terrain_type]: id=stonechasmbridgediag2
 #: data/core/terrain.cfg:2109 data/core/terrain.cfg:2120
 #: data/core/terrain.cfg:2131
-#, fuzzy
-#| msgid "Cave Chasm Bridge"
 msgid "Stone Chasm Bridge"
 msgstr "洞穴裂缝上的桥"
 
@@ -1263,8 +1280,6 @@ msgstr "洞穴裂缝上的桥"
 #. [terrain_type]: id=plankbridgediag2
 #: data/core/terrain.cfg:2143 data/core/terrain.cfg:2154
 #: data/core/terrain.cfg:2165
-#, fuzzy
-#| msgid "Bridge"
 msgid "Plank Bridge"
 msgstr "桥梁"
 
@@ -1293,7 +1308,7 @@ msgstr "战争迷雾"
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2227 data/core/terrain.cfg:2228
 msgid "Fungus"
-msgstr ""
+msgstr "真菌"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2231
@@ -1309,6 +1324,13 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
+"<italic>text='蘑菇丛'</italic>是由在潮湿黑暗环境中繁荣生长的巨大蘑菇所组成的"
+"地下森林。\n"
+"大多数的单位都难以在布满小真菌的坑坑洼洼的路面上穿行，但是蘑菇的巨大株干提供"
+"了很好的掩护。但是，骑行单位在这种地形上如同深陷泥沼，交战时也没法施展开。不"
+"死族的单位对于腐朽的环境拥有天然的亲和力，在蘑菇林中游刃有余。\n"
+"\n"
+"大多数单位在蘑菇丛中获得50%到60%的闪避率，但是骑兵只有20%。"
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2243
@@ -1330,11 +1352,21 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
+"<italic>text='洞穴'</italic> 地形代表了任何具有足够的空间供单位穿行的地下洞"
+"窟。\n"
+"许多单位对这种地形完全不熟悉，因此他们的移动和防御都会受到阻碍。矮人和巨魔以"
+"洞穴为家，他们在这种地形上的移动都比较轻松。特别是矮人，收益于他们矮小的身"
+"材，可以穿过许多其他种族没法穿越的障碍。有时洞穴会被 "
+"<ref>dst='terrain_illuminated_cave' text='照亮'</ref>。\n"
+"\n"
+" 一小部分的地下世界会被从地表射下来的光线照亮。这为守序立场的单位提供攻击加"
+"成，并且移除混乱立场单位的攻击加成。在其它所有方面，这种地形都与"
+"<ref>dst='terrain_cave' text='洞穴地形'</ref>相同。\n"
+"\n"
+"大多数单位在洞穴中拥有20%到40%的闪避率，而矮人的闪避率可以达到50%。"
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:2256
-#, fuzzy
-#| msgid "Sand"
 msgid "Sands"
 msgstr "沙地"
 
@@ -1349,6 +1381,11 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"<italic>text='礁石'</italic>是沙石和珊瑚构成的浅滩。\n"
+"这种地形为大多数陆上单位提供了比浅水地形更稳固的落脚点和防御点，也为海栖种族"
+"提供了极佳的防护。\n"
+"\n"
+"人鱼和娜迦在礁石上获得70%的闪避率。"
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:2287
@@ -1363,6 +1400,14 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
+"<italic>text='山丘'</italic> 代表了任何适度粗糙的地表，其上拥有足够的凹凸，可"
+"以提供掩护。\n"
+"对许多单位来说，在山丘上移行不是一件易事。矮人，巨魔和兽人对于这种地形足够熟"
+"悉，所以他们能够在其上全速通行。骑兵们在这种地形上的运动受到了妨碍，所以他们"
+"不能享受地形掩护带来的防御加成。\n"
+"\n"
+"大多数单位在山丘上拥有50%的闪避率，但是骑兵只有40%。矮人在山丘中能够享受60%的"
+"闪避率。"
 
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:2302
@@ -1377,6 +1422,12 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
 "all generally enjoy 60%."
 msgstr ""
+"<italic>text='沼泽'</italic>代表了各种湿地。\n"
+"沼泽几乎令所有的单位减速，而且也同样妨碍了他们对自己的防御。对此的一个例外是"
+"各种善于游泳的种族，他们在水中能够全速移动，并且享受防御加成。那些在湿地中栖"
+"息谋生的生灵们也知道如何在这种地形中寻找掩护。\n"
+"\n"
+"大多数单位在沼泽中拥有30%的闪避率，而人鱼、娜迦和蜥蜴人拥有60%的闪避率。"
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:2315
@@ -1392,6 +1443,13 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "naga and mermen enjoy 60%."
 msgstr ""
+"<italic>text='浅水'</italic>代表了任何水位大概不足以淹没人类腰部的水体。这么"
+"深的水已足以使任何人缓慢下来，并且让他们成为攻击的活靶子。对于矮人来说，因为"
+"这种水位已经快淹到了他们的头部，所以他们在这种地形中最觉艰难。那些身体构造天"
+"生就适合游泳的种族们是个例外，他们能够在这种地形中全速移动，并且享受防御加"
+"成。\n"
+"\n"
+"大多数单位在浅水中拥有20%到30%的闪避率，而人鱼和娜迦的闪避率可以达到60%。"
 
 #. [terrain_type]: id=castle
 #: data/core/terrain.cfg:2330
@@ -1405,6 +1463,12 @@ msgid ""
 "\n"
 "Most units have about 60% defense in a castle."
 msgstr ""
+"<italic>text='城堡'</italic>代表了各种非临时的堡垒。\n"
+"几乎所有的单位在城堡中都能获得防御加成，而且大多数单位在城堡中都能全速移动。"
+"城堡的防御能力通过其上驻扎的守军来体现，如果城堡的某个格子上没有单位驻扎，那"
+"么敌人可以轻松溜进来，享受和守军同样的防御加成。\n"
+"\n"
+"Most units have about 60% defense in a castle."
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:2344
@@ -1419,6 +1483,13 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
+"<italic>text='山岭'</italic>非常陡峭，单位们常常得翻越重重的障碍才能在其上移"
+"动。\n"
+"正因为如此，山岭在严重阻碍大多数单位的行军的同时，也为他们提供了极佳的防护。"
+"许多骑兵没办法进入山岭地形。但是，精灵骑兵和哥布林狼骑兵是例外。矮人和巨魔在"
+"山岭地形中如鱼得水。\n"
+"\n"
+"大多数单位在山岭中拥有60%的闪避率，而矮人的闪避率可达70%。"
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:2356
@@ -1430,6 +1501,11 @@ msgid ""
 "\n"
 "Mermen and naga both receive 50% defense in deep water, with full movement."
 msgstr ""
+"<italic>text='深水'</italic>代表了任何足以淹没人类头顶的水体。\n"
+"大多数单位无法进入深水地形，这是足够优秀的游泳者和能够飞行的单位的专属地"
+"盘。\n"
+"\n"
+"人鱼和娜迦在深水中拥有50%的闪避率，并且能够全速移动。"
 
 #. [terrain_type]: id=flat
 #: data/core/terrain.cfg:2367 data/core/terrain.cfg:2368
@@ -1448,6 +1524,12 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
+"<italic>text='草原'</italic>代表了开放的平原，无论是修整过的牧场还是野生的草"
+"地。\n"
+"草地是开阔的平原，让单位易于穿行，但不易找到掩体。通常来说，骑兵或是灵活的单"
+"位最适应草地，他们能够在开放的空间中施展出自己的优势。\n"
+"\n"
+"大多数单位在草原上拥有30%到40%的闪避率。"
 
 #. [terrain_type]: id=forest
 #: data/core/terrain.cfg:2382
@@ -1467,6 +1549,16 @@ msgid ""
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
+"<italic>text='森林'</italic>代表了任何下层枝干足够茂密，足以影响通行的林地。"
+"尽管森林几乎延缓了所有人的行动，森林确实比开放的场地提供了更好的防护。但是，"
+"骑兵在森林中移动太受阻碍，他们在林地中的自卫能力还比不上在平原的情况。对于森"
+"林的这条法则，精灵是个意外。他们不仅能在其中全速移动，而且还能获得可观的防守"
+"加成。矮人则是另一个意外，虽然他们不会因为森林而减速，但是因为他们太不习惯这"
+"种地形了，所以没法在其中获得防守加成。\n"
+"\n"
+"大多数单位在森林中拥有50%的闪避率，而骑兵却只有30%。另一方面，精灵能够享受到"
+"60%到70%的闪避率，即使是他们的骑兵也不例外。矮人通常在森林中只能够获得30%的闪"
+"避率。"
 
 #. [terrain_type]: id=frozen
 #: data/core/terrain.cfg:2392 data/core/terrain.cfg:2393
@@ -1484,6 +1576,11 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
+"<italic>text='冰冻'</italic> 地形代表了任何由冰雪覆盖的平坦区域。\n"
+"大多数单位在冰冻地形上移动缓慢，并且更难防卫自己。需要注意的是，即使是可以在"
+"水下呼吸的游泳单位，也不能在冰下游泳。\n"
+"\n"
+"大多数单位在冰冻地形上拥有20%到40%的闪避率。"
 
 #. [terrain_type]: id=village
 #: data/core/terrain.cfg:2408
@@ -1499,6 +1596,13 @@ msgid ""
 "Most units have 50 to 60% defense in villages, whereas cavalry receive only "
 "40%."
 msgstr ""
+"<italic>text='村庄'</italic>代表了任意的建筑群，不管是人类的还是其他种族"
+"的。\n"
+"几乎所有单位，即使是骑兵，也能轻松的在村庄中移动。而且大多数驻扎在村庄中的单"
+"位也能获得闪避率加成。村庄允许单位们利用其资源来照料自己的伤口，因此驻扎在村"
+"庄中的单位每回合能够恢复8点生命值，或者能够被解毒。\n"
+"\n"
+"大多数单位在村庄中拥有50%或者60%的闪避率，但是骑兵的闪避率只能达到40%。"
 
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:2418 data/core/terrain.cfg:2419
@@ -1514,6 +1618,8 @@ msgid ""
 "jagged peaks at such rarefied heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"即使是最具决心的旅行者也没法克服坚固的石墙与直入云霄的高山的障碍。即使是飞行"
+"单位也难以企及云山那种罕见的高度，即使是最暴躁的巨魔也没法砸开厚实的石墙。"
 
 #. [terrain_type]: id=unwalkable
 #: data/core/terrain.cfg:2428 data/core/terrain.cfg:2429
@@ -1528,17 +1634,20 @@ msgid ""
 "for sheer walls which would take days to traverse. As far as gameplay is "
 "concerned, only units capable of flying can cross this terrain."
 msgstr ""
+"<italic>text='不可行走地形'</italic>包含了任何的沟壑或者裂缝。正如其名所示，"
+"单位不能以行走的方式在这种地形上通行。虽然裂缝的陡壁硬要说的话也可以花费很长"
+"的时间攀援通过，但是在游戏逻辑层面，只有飞行单位能够通过这种地形。"
 
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:2438 data/core/terrain.cfg:2439
 msgid "Rails"
-msgstr ""
+msgstr "轨道"
 
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:2441
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore. By Dwarfs. Mostly."
-msgstr ""
+msgstr "<italic>text='轨道'</italic> 主要被矮人用来运输矿石。"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -1645,17 +1754,13 @@ msgstr "取消"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:88
-#, fuzzy
-#| msgid "Type"
 msgid "Type:"
-msgstr "类型"
+msgstr "类型："
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:115
-#, fuzzy
-#| msgid "Status"
 msgid "Status:"
-msgstr "状态"
+msgstr "状态："
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:146
@@ -1676,17 +1781,17 @@ msgstr "作者："
 #. [label]
 #: data/gui/default/window/addon_description.cfg:228
 msgid "Downloads:"
-msgstr ""
+msgstr "下载："
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:258
 msgid "date^Last updated:"
-msgstr ""
+msgstr "最后更新于："
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:284
 msgid "date^First uploaded:"
-msgstr ""
+msgstr "首次上传于："
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:329
@@ -1702,46 +1807,42 @@ msgstr "没有可用的描述。"
 #. [label]
 #: data/gui/default/window/addon_description.cfg:376
 msgid "Website:"
-msgstr ""
+msgstr "网址："
 
 #. [label]: id=url_none
 #: data/gui/default/window/addon_description.cfg:400
 msgid "url^None"
-msgstr ""
+msgstr "无"
 
 #. [button]: id=url_copy
 #: data/gui/default/window/addon_description.cfg:435
-#, fuzzy
-#| msgid "Copy"
 msgid "url^Copy"
 msgstr "复制"
 
 #. [button]: id=url_copy
 #: data/gui/default/window/addon_description.cfg:436
-#, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this URL to clipboard"
-msgstr "选择要读取的游戏"
+msgstr "将此URL复制到剪贴板"
 
 #. [button]: id=url_go
 #: data/gui/default/window/addon_description.cfg:449
 msgid "url^Go"
-msgstr ""
+msgstr "前往"
 
 #. [button]: id=url_go
 #: data/gui/default/window/addon_description.cfg:450
 msgid "Visit this URL with a web browser"
-msgstr ""
+msgstr "使用网页浏览器浏览此URL"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:478
 msgid "Dependencies:"
-msgstr ""
+msgstr "依赖项目："
 
 #. [scroll_label]: id=dependencies
 #: data/gui/default/window/addon_description.cfg:492
 msgid "addon_dependencies^None"
-msgstr ""
+msgstr "无"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:510
@@ -1756,126 +1857,118 @@ msgstr "无"
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:49
 msgid "addons_of_type^Campaigns"
-msgstr ""
+msgstr "战役"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:50
 msgid "addons_of_type^MP eras"
-msgstr ""
+msgstr "多人游戏时代"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:53
 msgid "addons_of_type^Scenarios"
-msgstr ""
+msgstr "场景"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:54
 msgid "addons_of_type^MP factions"
-msgstr ""
+msgstr "多人游戏派系"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:57
 msgid "addons_of_type^SP/MP campaigns"
-msgstr ""
+msgstr "单人/多人游戏战役"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:58
 msgid "addons_of_type^MP campaigns"
-msgstr ""
+msgstr "多人游戏战役"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:61
 msgid "addons_of_type^Resources"
-msgstr ""
+msgstr "资源"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:62
 msgid "addons_of_type^MP scenarios"
-msgstr ""
+msgstr "多人游戏场景"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:66
 msgid "addons_of_type^Other"
-msgstr ""
+msgstr "其他"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:67
 msgid "addons_of_type^MP map-packs"
-msgstr ""
+msgstr "多人游戏地图包"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:70
 msgid "addons_of_type^Unknown"
-msgstr ""
+msgstr "未知"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:71
 msgid "addons_of_type^MP modifications"
-msgstr ""
+msgstr "多人游戏模组"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:170
-#, fuzzy
-#| msgid "Actions"
 msgid "Options"
-msgstr "行动"
+msgstr "选项"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:184
 msgid "Add-ons matching the following criteria will be displayed."
-msgstr ""
+msgstr "符合下列条件的附加组件将被显示出来。"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:221
-#, fuzzy
-#| msgid "Translations:"
 msgid "Installation status:"
-msgstr "翻译："
+msgstr "安装状态："
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:264
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-on types:"
-msgstr "附加组件"
+msgstr "附加组件类型："
 
 # TODO 这个是啥？
 #. [button]: id=toggle_all_displayed_types
 #: data/gui/default/window/addon_filter_options.cfg:277
-#, fuzzy
-#| msgid "Toggle Ellipses"
 msgid "Toggle All"
-msgstr "开/关光环"
+msgstr "切换所有"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:321
 msgid "Add-ons will be sorted as follows when no column is selected:"
-msgstr ""
+msgstr "当未选取纵列时，附加组件将会按下列顺序排序："
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:351
 msgid "sort^By name"
-msgstr ""
+msgstr "依照名称"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:356
 msgid "sort^By last updated"
-msgstr ""
+msgstr "依照最后更新日期"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:361
 msgid "sort^By first upload"
-msgstr ""
+msgstr "依照首次上传日期"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:377
 msgid "sort^Ascending"
-msgstr ""
+msgstr "递增"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:382
 msgid "sort^Descending"
-msgstr ""
+msgstr "递减"
 
 #. [scroll_label]
 #: data/gui/default/window/addon_uninstall_list.cfg:70
@@ -1893,8 +1986,6 @@ msgstr "移除"
 
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:55
-#, fuzzy
-#| msgid "Play a campaign"
 msgid "Play a Campaign"
 msgstr "开始战役"
 
@@ -1975,10 +2066,8 @@ msgstr "回退"
 
 #. [button]: id=previous_page
 #: data/gui/default/window/chat_log.cfg:87
-#, fuzzy
-#| msgid "Previous"
 msgid "Previous page"
-msgstr "回退"
+msgstr "上一页"
 
 #. [button]: id=next_page
 #. [button]: id=next_tip
@@ -1991,10 +2080,8 @@ msgstr "继续"
 
 #. [button]: id=next_page
 #: data/gui/default/window/chat_log.cfg:95
-#, fuzzy
-#| msgid "Next Side"
 msgid "Next page"
-msgstr "下一阵营"
+msgstr "下一页"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:113
@@ -2005,7 +2092,7 @@ msgstr "过滤条件："
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:45
 msgid "Custom Time of Day Schedule"
-msgstr ""
+msgstr "自定义时段表"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:67
@@ -2021,37 +2108,37 @@ msgstr "名字："
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:100
 msgid "ID:"
-msgstr ""
+msgstr "ID："
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:133
 msgid "Metadata:"
-msgstr ""
+msgstr "元数据："
 
 #. [button]: id=image_button
 #: data/gui/default/window/custom_tod.cfg:147
 msgid "Image"
-msgstr ""
+msgstr "图像"
 
 #. [button]: id=mask_button
 #: data/gui/default/window/custom_tod.cfg:157
 msgid "Mask"
-msgstr ""
+msgstr "遮罩"
 
 #. [button]: id=sound_button
 #: data/gui/default/window/custom_tod.cfg:167
 msgid "Sound"
-msgstr ""
+msgstr "声音"
 
 #. [label]: id=current_sound
 #: data/gui/default/window/custom_tod.cfg:180
 msgid "long size text"
-msgstr ""
+msgstr "全长版本文字"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:201
 msgid "Lawful Bonus:"
-msgstr ""
+msgstr "守序加成："
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:228
@@ -2071,19 +2158,17 @@ msgstr "蓝:"
 #. [label]: id=tod_number
 #: data/gui/default/window/custom_tod.cfg:337
 msgid "100/100"
-msgstr ""
+msgstr "100/100"
 
 #. [button]: id=new
 #: data/gui/default/window/custom_tod.cfg:359
 msgid "New ToD"
-msgstr ""
+msgstr "新时段"
 
 #. [button]: id=delete
 #: data/gui/default/window/custom_tod.cfg:369
-#, fuzzy
-#| msgid "Delete"
 msgid "Delete ToD"
-msgstr "删除"
+msgstr "删除时段"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/data_manage.cfg:50
@@ -2153,98 +2238,78 @@ msgstr "仅用于团队"
 
 #. [toggle_button]: id=immutable_toggle
 #: data/gui/default/window/editor_edit_label.cfg:112
-#, fuzzy
-#| msgid "Impassable"
 msgid "Immutable"
-msgstr "不可通过地形"
+msgstr "不可变"
 
 #. [toggle_button]: id=visible_fog_toggle
 #: data/gui/default/window/editor_edit_label.cfg:130
 msgid "Visible in fog"
-msgstr ""
+msgstr "迷雾中可见"
 
 #. [toggle_button]: id=visible_shroud_toggle
 #: data/gui/default/window/editor_edit_label.cfg:148
 msgid "Visible in shroud"
-msgstr ""
+msgstr "黑幕中可见"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_edit_scenario.cfg:42
-#, fuzzy
-#| msgid "Editor Settings"
 msgid "Edit Scenario Settings"
-msgstr "编辑器设置"
+msgstr "编辑场景设置"
 
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:72
 msgid "Identifier:"
-msgstr ""
+msgstr "标识符："
 
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:173
-#, fuzzy
-#| msgid "Experience modifier"
 msgid "Experience modifier:"
 msgstr "经验值修正"
 
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:204
-#, fuzzy
-#| msgid "Turn"
 msgid "Turns:"
-msgstr "回合"
+msgstr "回合："
 
 #. [toggle_button]: id=victory_when_enemies_defeated
 #: data/gui/default/window/editor_edit_scenario.cfg:244
 msgid "Declare victory once all enemies are defeated"
-msgstr ""
+msgstr "当所有敌人被击败时，宣布胜利"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/editor_edit_scenario.cfg:262
-#, fuzzy
-#| msgid "Random start time"
 msgid "Random starting time"
-msgstr "游戏开始时的时段随机"
+msgstr "随机初始时段"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_edit_side.cfg:54
-#, fuzzy
-#| msgid "Side $side"
 msgid "Side Setup"
-msgstr "阵营 $side"
+msgstr "阵营设置"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:77
-#, fuzzy
-#| msgid "Number of hills:"
 msgid "Number:"
-msgstr "丘陵的数量："
+msgstr "数量："
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:105
 msgid "Team identifier:"
-msgstr ""
+msgstr "队伍标识符："
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:133
-#, fuzzy
-#| msgid "Team only"
 msgid "Team name:"
-msgstr "仅用于团队"
+msgstr "队伍名："
 
 #. [toggle_button]: id=share_maps
 #: data/gui/default/window/editor_edit_side.cfg:188
-#, fuzzy
-#| msgid "Animate map"
 msgid "Share map"
-msgstr "开启地图动画"
+msgstr "共享地图"
 
 #. [toggle_button]: id=no_leader
 #: data/gui/default/window/editor_edit_side.cfg:200
-#, fuzzy
-#| msgid "Leader"
 msgid "No leader"
-msgstr "领袖"
+msgstr "无领袖"
 
 #. [toggle_button]: id=fog
 #: data/gui/default/window/editor_edit_side.cfg:216
@@ -2255,68 +2320,64 @@ msgstr "战争迷雾"
 #. [toggle_button]: id=share_view
 #: data/gui/default/window/editor_edit_side.cfg:228
 msgid "Share view"
-msgstr ""
+msgstr "共享视野"
 
 #. [toggle_button]: id=hidden
 #: data/gui/default/window/editor_edit_side.cfg:240
-#, fuzzy
-#| msgid "Status Table"
 msgid "Hide in status table"
-msgstr "状态表"
+msgstr "在状态表中隐藏"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:269
 msgid "Gold:"
-msgstr ""
+msgstr "金币："
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:297
-#, fuzzy
-#| msgid "Gold per village"
 msgid "Gold per village:"
-msgstr "金币/村庄"
+msgstr "金币/村庄："
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:325
 msgid "Income:"
-msgstr ""
+msgstr "收入："
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:353
-#, fuzzy
-#| msgid "Gold per village"
 msgid "Support per village:"
-msgstr "金币/村庄"
+msgstr "每村庄供给："
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:383
 msgid "Controller:"
-msgstr ""
+msgstr "控制者："
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:400
 msgid "controller^Human"
-msgstr ""
+msgstr "人类"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:402
+#, fuzzy
+#| msgid "controller^Human"
 msgid "controller^Human/AI"
-msgstr ""
+msgstr "人类"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:404
 msgid "controller^AI only"
-msgstr ""
+msgstr "仅AI"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:406
 msgid "controller^None"
-msgstr ""
+msgstr "无"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:423
 msgid "controller^Player number:"
-msgstr ""
+msgstr "玩家编号："
 
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:35
@@ -2363,10 +2424,8 @@ msgstr "高度："
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_new_map.cfg:115
-#, fuzzy
-#| msgid "Create Game"
 msgid "Create"
-msgstr "创建游戏"
+msgstr "创建"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -2397,8 +2456,6 @@ msgstr "旧高度："
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:154
-#, fuzzy
-#| msgid "Expand / shrink direction"
 msgid "Expand/shrink direction:"
 msgstr "扩展/收缩方向"
 
@@ -2409,8 +2466,6 @@ msgstr "复制边界地形"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:274
-#, fuzzy
-#| msgid "Resize Map"
 msgid "Resize"
 msgstr "改变地图大小"
 
@@ -2503,10 +2558,8 @@ msgstr "您真的想删除这个游戏吗？"
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:80
 #: data/gui/default/window/mp_host_game_prompt.cfg:79
-#, fuzzy
-#| msgid "Do not show lobby joins"
 msgid "Do not show again"
-msgstr "不显示玩家进入游戏大厅的信息"
+msgstr "不再显示"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -2551,15 +2604,13 @@ msgstr "删除"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/default/window/game_load.cfg:383
-#, fuzzy
-#| msgid "Difficulty"
 msgid "Change difficulty"
-msgstr "难度"
+msgstr "改变难度"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/default/window/game_load.cfg:384
 msgid "Change campaign difficulty before loading"
-msgstr ""
+msgstr "在载入前改变战役难度"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:403
@@ -2569,7 +2620,7 @@ msgstr "显示录像"
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:404
 msgid "Play the embedded replay from the saved game if applicable"
-msgstr ""
+msgstr "如果可以的话，播放所存游戏中嵌入的回放录像"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:422
@@ -2579,74 +2630,66 @@ msgstr "取消命令"
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:423
 msgid "Cancel any pending unit movements in the saved game"
-msgstr ""
+msgstr "取消所存游戏中所有未实施行动"
 
 #. [button]: id=copy
 #. [button]: id=copy_
 #: data/gui/default/window/game_paths.cfg:47
 #: data/gui/default/window/screenshot_notification.cfg:34
 msgid "filesystem^Copy"
-msgstr ""
+msgstr "复制"
 
 #. [button]: id=copy
 #. [button]: id=copy_
 #: data/gui/default/window/game_paths.cfg:48
 #: data/gui/default/window/screenshot_notification.cfg:35
-#, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this path to clipboard"
-msgstr "选择要读取的游戏"
+msgstr "将路径复制到剪贴板"
 
 #. [button]: id=browse_
 #: data/gui/default/window/game_paths.cfg:63
 msgid "filesystem^Browse"
-msgstr ""
+msgstr "浏览"
 
 #. [button]: id=browse_
 #: data/gui/default/window/game_paths.cfg:64
 msgid "Browse this location using a file manager"
-msgstr ""
+msgstr "使用文件管理器浏览这个文件夹"
 
 #. [label]: id=title
 #: data/gui/default/window/game_paths.cfg:105
-#, fuzzy
-#| msgid "Cave Path"
 msgid "Game Paths"
-msgstr "洞穴小径"
+msgstr "游戏路径"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:127
 msgid "Game data:"
-msgstr ""
+msgstr "游戏日期："
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:129
 msgid "Configuration:"
-msgstr ""
+msgstr "配置："
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:131
 msgid "User data:"
-msgstr ""
+msgstr "用户数据："
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:133
-#, fuzzy
-#| msgid "Save Game"
 msgid "Saved games:"
-msgstr "保存游戏"
+msgstr "保存游戏："
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:135
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-ons:"
-msgstr "附加组件"
+msgstr "附加组件："
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:137
 msgid "Cache:"
-msgstr ""
+msgstr "缓存："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -2694,12 +2737,10 @@ msgstr "类型"
 #. [label]: id=name
 #: data/gui/default/window/gamestate_inspector.cfg:164
 msgid "Items"
-msgstr ""
+msgstr "物品"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:223
-#, fuzzy
-#| msgid "Content"
 msgid "Contents"
 msgstr "内容"
 
@@ -3079,15 +3120,13 @@ msgstr "游戏开始时的时段随机"
 
 #. [label]
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:54
-#, fuzzy
-#| msgid "Choose Resolution"
 msgid "Choose Modifications"
-msgstr "选择分辨率"
+msgstr "选择模组"
 
 #. [label]: id=message
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:73
 msgid "Enable the modifications you want to be active during the game."
-msgstr ""
+msgstr "启用您想在游戏过程中激活的模块。"
 
 #. [scroll_label]: id=message
 #: data/gui/default/window/mp_create_game_set_password.cfg:61
@@ -3104,26 +3143,22 @@ msgstr "密码："
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:40
 msgid "Confirm"
-msgstr ""
+msgstr "确认"
 
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:98
 msgid "Would you like to apply the changes?"
-msgstr ""
+msgstr "你想应用这些改变吗？"
 
 #. [label]
 #: data/gui/default/window/mp_depcheck_select_new.cfg:40
-#, fuzzy
-#| msgid "User interface sounds"
 msgid "User Interaction Required"
-msgstr "用户界面声效"
+msgstr "需要用户操作"
 
 #. [label]: id=message
 #: data/gui/default/window/mp_depcheck_select_new.cfg:59
-#, fuzzy
-#| msgid "User interface sounds"
 msgid "User interaction required"
-msgstr "用户界面声效"
+msgstr "需要用户操作"
 
 #. [column]
 #. [label]
@@ -3139,6 +3174,8 @@ msgid ""
 "The server will run as a background process until all users have "
 "disconnected. Do you wish to continue?"
 msgstr ""
+"必须启动一个本地服务器实例之后才能发起一场网络游戏。服务器将作为后台进程运"
+"行，直到所有玩家全部断线为止。您希望继续吗？"
 
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
@@ -3234,31 +3271,27 @@ msgstr "选择"
 #. [button]: id=open
 #: data/gui/default/window/screenshot_notification.cfg:50
 msgid "filesystem^Open"
-msgstr ""
+msgstr "打开"
 
 #. [button]: id=open
 #: data/gui/default/window/screenshot_notification.cfg:51
 msgid "Open this file with an external application"
-msgstr ""
+msgstr "使用外部程序打开此文件"
 
 #. [label]: id=title
 #: data/gui/default/window/screenshot_notification.cfg:95
-#, fuzzy
-#| msgid "Screenshot done"
 msgid "Screenshot Saved"
-msgstr "屏幕截图完成"
+msgstr "截图已保存"
 
 #. [button]: id=browse_dir
 #: data/gui/default/window/screenshot_notification.cfg:185
-#, fuzzy
-#| msgid "Screenshot"
 msgid "Screenshots..."
-msgstr "屏幕截图"
+msgstr "屏幕截图中..."
 
 #. [button]: id=browse_dir
 #: data/gui/default/window/screenshot_notification.cfg:187
 msgid "Browse the screenshots folder using a file manager"
-msgstr ""
+msgstr "使用文件管理器浏览屏幕截图文件夹"
 
 #. [label]
 #: data/gui/default/window/theme_list.cfg:51
@@ -3267,8 +3300,6 @@ msgstr "选择主题"
 
 #. [label]
 #: data/gui/default/window/theme_list.cfg:67
-#, fuzzy
-#| msgid "New theme will take effect on next new or loaded game."
 msgid "The new theme will take effect after loading or starting a new game."
 msgstr "新主题在下一次新建或读取游戏时生效。"
 
@@ -3418,19 +3449,17 @@ msgstr "错误"
 #. [label]: id=details_heading
 #: data/gui/default/window/wml_error.cfg:112 src/gui/dialogs/wml_error.cpp:192
 msgid "Details:"
-msgstr ""
+msgstr "详细："
 
 #. [button]: id=copy
 #: data/gui/default/window/wml_error.cfg:124
 msgid "clipboard^Copy"
-msgstr ""
+msgstr "复制"
 
 #. [button]: id=copy
 #: data/gui/default/window/wml_error.cfg:125
-#, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this report to clipboard"
-msgstr "选择要读取的游戏"
+msgstr "将报告复制到剪贴板"
 
 #: src/filechooser.cpp:80
 msgid "File: "
@@ -3486,11 +3515,11 @@ msgstr "显示网格"
 
 #: src/game_preferences_display.cpp:182
 msgid "Save replays at the end of scenarios"
-msgstr ""
+msgstr "在场景结束时保存录像"
 
 #: src/game_preferences_display.cpp:183
 msgid "Delete auto-saves at the end of scenarios"
-msgstr ""
+msgstr "在场景结束时删除自动存档"
 
 #: src/game_preferences_display.cpp:184
 msgid "Do not show lobby joins"
@@ -3578,7 +3607,7 @@ msgstr "快捷键"
 
 #: src/game_preferences_display.cpp:206
 msgid "Paths"
-msgstr ""
+msgstr "路径"
 
 #: src/game_preferences_display.cpp:208
 msgid "Sound effects"
@@ -3740,14 +3769,12 @@ msgstr "当看到友军单位时中断您的单位的移动"
 #: src/game_preferences_display.cpp:374
 msgid ""
 "Saves replays of games on victory in all modes and defeat in multiplayer"
-msgstr ""
+msgstr "在所有模式胜利和多人游戏被击败时，储存回放录像"
 
 #: src/game_preferences_display.cpp:377
-#, fuzzy
-#| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid ""
 "Deletes previous auto-saves on victory in all modes and defeat in multiplayer"
-msgstr "当单人/多人游戏胜利或者多人游戏失败时，删除自动存档"
+msgstr "当单人/多人游戏胜利或者多人游戏被击败时，删除自动存档"
 
 #: src/game_preferences_display.cpp:379
 msgid "Overlay a grid onto the map"
@@ -3758,16 +3785,12 @@ msgid "Sort the player list in the lobby by player groups"
 msgstr "根据玩家分组对游戏大厅中的玩家列表进行排序"
 
 #: src/game_preferences_display.cpp:385
-#, fuzzy
-#| msgid "Show icons in front of the player names in the lobby."
 msgid "Show icons in front of the player names in the lobby"
-msgstr "在游戏大厅中玩家的名字前显示图标。"
+msgstr "在游戏大厅中玩家的名字前显示图标"
 
 #: src/game_preferences_display.cpp:388
-#, fuzzy
-#| msgid "Uncheck to delete the saved password (on exit)."
 msgid "Uncheck to delete the saved password (on exit)"
-msgstr "取消勾选，以删除以前保存的密码（在退出时）。"
+msgstr "取消勾选，以删除以前保存的密码（在退出时）"
 
 #: src/game_preferences_display.cpp:392
 msgid "Do not show messages about players joining the multiplayer lobby"
@@ -3782,10 +3805,8 @@ msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "显示所有玩家进入多人游戏大厅的信息"
 
 #: src/game_preferences_display.cpp:398
-#, fuzzy
-#| msgid "Find and set path to MP server to host LAN games."
 msgid "Find and set path to MP server to host LAN games"
-msgstr "查找并设置多人游戏服务器的路径以便建立局域网游戏。"
+msgstr "查找并设置多人游戏服务器的路径以便建立局域网游戏"
 
 #: src/game_preferences_display.cpp:399
 msgid "View and edit your friends and ignores list"
@@ -3800,12 +3821,14 @@ msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "'player_name notes on friend')"
 msgstr ""
+"将此用户名加入您的好友列表中（可添加可选的备注，如：“[玩家名称] 好友备注”）"
 
 #: src/game_preferences_display.cpp:402
 msgid ""
 "Add this username to your ignores list (add optional reason, e.g., "
 "'player_name reason ignored')"
 msgstr ""
+"将此用户名加入您的忽略列表中（可添加可选的备注，如：“[玩家名称] 忽略原因”）"
 
 #: src/game_preferences_display.cpp:403
 msgid "Remove this username from your list"
@@ -3859,7 +3882,7 @@ msgstr "查看并设置快捷键"
 
 #: src/game_preferences_display.cpp:434
 msgid "View game file paths"
-msgstr ""
+msgstr "查看游戏文件路径"
 
 #: src/game_preferences_display.cpp:764
 msgid "Speed: "
@@ -3963,10 +3986,8 @@ msgid "Roads between castles"
 msgstr "城堡之间的道路数"
 
 #: src/generators/mapgen_dialog.cpp:256
-#, fuzzy
-#| msgid "Show floating labels"
 msgid "Show labels"
-msgstr "显示浮动标签"
+msgstr "显示标签"
 
 #: src/generators/mapgen_dialog.cpp:314
 msgid "/1000 tiles"
@@ -4072,7 +4093,7 @@ msgstr "页面未定义"
 
 #: src/gui/auxiliary/window_builder/pane.cpp:37
 msgid "Need at least 1 parallel item."
-msgstr ""
+msgstr "还需要至少一件并行的物品。"
 
 #: src/gui/auxiliary/window_builder/slider.cpp:68
 msgid "The number of value_labels and values don't match."
@@ -4096,73 +4117,71 @@ msgstr "未定义任何节点。"
 
 #: src/gui/dialogs/addon/description.cpp:109
 msgid "addon_state^Not installed"
-msgstr ""
+msgstr "未安装"
 
 #: src/gui/dialogs/addon/description.cpp:111
 msgid "addon_state^Published, not installed"
-msgstr ""
+msgstr "已发布，未安装"
 
 #: src/gui/dialogs/addon/description.cpp:116
 msgid "addon_state^Installed"
-msgstr ""
+msgstr "已安装"
 
 #: src/gui/dialogs/addon/description.cpp:118
 msgid "addon_state^Published"
-msgstr ""
+msgstr "已发布"
 
 #: src/gui/dialogs/addon/description.cpp:123
 msgid "addon_state^Installed, not tracking local version"
-msgstr ""
+msgstr "已安装，未跟踪本地版本"
 
 #: src/gui/dialogs/addon/description.cpp:127
 msgid "addon_state^Published, not tracking local version"
-msgstr ""
+msgstr "已发布，未跟踪本地版本"
 
 #: src/gui/dialogs/addon/description.cpp:133
 msgid "addon_state^Installed ($local_version|), upgradable"
-msgstr ""
+msgstr "已安装（$local_version），可更新"
 
 #: src/gui/dialogs/addon/description.cpp:135
 msgid "addon_state^Published ($local_version| installed), upgradable"
-msgstr ""
+msgstr "已发布（$local_version 已安装），可更新"
 
 #: src/gui/dialogs/addon/description.cpp:142
 msgid "addon_state^Installed ($local_version|), outdated on server"
-msgstr ""
+msgstr "已安装（$local_version），服务器上的版本已过期"
 
 #: src/gui/dialogs/addon/description.cpp:144
 msgid "addon_state^Published ($local_version| installed), outdated on server"
-msgstr ""
+msgstr "已发布（$local_version 已安装），服务器上的版本已过期"
 
 #: src/gui/dialogs/addon/description.cpp:150
 msgid "addon_state^Installed, broken"
-msgstr ""
+msgstr "已安装，已损坏"
 
 #: src/gui/dialogs/addon/description.cpp:152
 msgid "addon_state^Published, broken"
-msgstr ""
+msgstr "已发布，已损坏"
 
 #: src/gui/dialogs/addon/description.cpp:156
 msgid "addon_state^Unknown"
-msgstr ""
+msgstr "未知"
 
 #: src/gui/dialogs/addon/filter_options.cpp:294
 msgid "addons_view^Not Installed"
-msgstr ""
+msgstr "未安装"
 
 #: src/gui/dialogs/addon/filter_options.cpp:296
 msgid "addons_view^Upgradable"
-msgstr ""
+msgstr "可更新"
 
 #: src/gui/dialogs/addon/filter_options.cpp:298
 msgid "addons_view^Installed"
-msgstr ""
+msgstr "已安装"
 
 #: src/gui/dialogs/addon/filter_options.cpp:300
-#, fuzzy
-#| msgid "Uninstall Add-ons"
 msgid "addons_view^All Add-ons"
-msgstr "卸载附加组件"
+msgstr "全部附加组件"
 
 #: src/gui/dialogs/addon_list.cpp:233
 #: src/gui/dialogs/network_transmission.cpp:56
@@ -4261,29 +4280,35 @@ msgstr "读取游戏..."
 
 #: src/gui/dialogs/mp_depcheck_confirm_change.cpp:64
 msgid "$requester requires the following modifications to be enabled:"
-msgstr ""
+msgstr "$requester 需要启用以下模组："
 
 #: src/gui/dialogs/mp_depcheck_confirm_change.cpp:68
 msgid "$requester requires the following modifications to be disabled:"
-msgstr ""
+msgstr "$requester 需要禁用以下模组："
 
 #: src/gui/dialogs/mp_depcheck_select_new.cpp:67
 msgid ""
 "The currently chosen scenario is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"当前选定的场景与您的游戏配置不兼容。\n"
+"请选择一个兼容的场景。"
 
 #: src/gui/dialogs/mp_depcheck_select_new.cpp:72
 msgid ""
 "The currently chosen era is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"当前选定的时代与您的游戏配置不兼容。\n"
+"请选择一个兼容的时代。"
 
 #: src/gui/dialogs/mp_depcheck_select_new.cpp:78
 msgid ""
 "The currently chosen modification is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"当前选定的模组与您的游戏配置不兼容。\n"
+"请选择一个兼容的模组。"
 
 #: src/gui/dialogs/title_screen.cpp:293
 msgid "Version "
@@ -4324,32 +4349,24 @@ msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "无法显示对话框，屏幕大小不够。"
 
 #: src/hotkey/hotkey_command.cpp:38
-#, fuzzy
-#| msgid "Cancel"
 msgid "cancel"
 msgstr "取消"
 
 #: src/hotkey/hotkey_command.cpp:39
-#, fuzzy
-#| msgid "Select None"
 msgid "Select Hex"
-msgstr "取消选择"
+msgstr "选择六角格"
 
 #: src/hotkey/hotkey_command.cpp:40
-#, fuzzy
-#| msgid "Select None"
 msgid "Deselect Hex"
 msgstr "取消选择"
 
 #: src/hotkey/hotkey_command.cpp:41
-#, fuzzy
-#| msgid "Attack"
 msgid "Move/Attack"
-msgstr "攻击"
+msgstr "移动/攻击"
 
 #: src/hotkey/hotkey_command.cpp:42
 msgid "Select/Move/Attack"
-msgstr ""
+msgstr "选择/移动/攻击"
 
 #: src/hotkey/hotkey_command.cpp:43
 msgid "Animate Map"
@@ -4372,8 +4389,6 @@ msgid "End Unit Turn"
 msgstr "结束单位的回合"
 
 #: src/hotkey/hotkey_command.cpp:48
-#, fuzzy
-#| msgid "Leader"
 msgid "Leader"
 msgstr "领袖"
 
@@ -4414,10 +4429,8 @@ msgid "Accelerated"
 msgstr "加速"
 
 #: src/hotkey/hotkey_command.cpp:58
-#, fuzzy
-#| msgid "Unit Description"
 msgid "Terrain Description"
-msgstr "单位描述"
+msgstr "地形描述"
 
 #: src/hotkey/hotkey_command.cpp:59
 msgid "Unit Description"
@@ -4428,10 +4441,8 @@ msgid "Rename Unit"
 msgstr "单位重命名"
 
 #: src/hotkey/hotkey_command.cpp:61
-#, fuzzy
-#| msgid "Delete File"
 msgid "Delete Unit"
-msgstr "删除文件"
+msgstr "删除单位"
 
 #: src/hotkey/hotkey_command.cpp:64
 msgid "Save Replay"
@@ -4471,10 +4482,8 @@ msgid "Mouse Scrolling"
 msgstr "鼠标滚屏"
 
 #: src/hotkey/hotkey_command.cpp:74
-#, fuzzy
-#| msgid "Status"
 msgid "Status Table"
-msgstr "状态"
+msgstr "状态表"
 
 #: src/hotkey/hotkey_command.cpp:75
 msgid "Mute"
@@ -4489,10 +4498,8 @@ msgid "Change Side (Debug!)"
 msgstr "改变阵营（调试！）"
 
 #: src/hotkey/hotkey_command.cpp:79
-#, fuzzy
-#| msgid "Create Unit (Debug!)"
 msgid "Kill Unit (Debug!)"
-msgstr "创建单位（调试！）"
+msgstr "杀死单位（调试！）"
 
 #: src/hotkey/hotkey_command.cpp:81
 msgid "Scenario Objectives"
@@ -4515,10 +4522,8 @@ msgid "Continue Network Game"
 msgstr "继续联网游戏"
 
 #: src/hotkey/hotkey_command.cpp:87
-#, fuzzy
-#| msgid "Start Editor"
 msgid "Quit Editor"
-msgstr "启动编辑器"
+msgstr "退出编辑器"
 
 #: src/hotkey/hotkey_command.cpp:88
 msgid "Set Team Label"
@@ -4620,10 +4625,8 @@ msgid "Close Map"
 msgstr "关闭地图"
 
 #: src/hotkey/hotkey_command.cpp:124
-#, fuzzy
-#| msgid "Switch Map"
 msgid "Switch Time of Day"
-msgstr "切换地图"
+msgstr "切换时段"
 
 #: src/hotkey/hotkey_command.cpp:125
 msgid "Switch Map"
@@ -4631,21 +4634,19 @@ msgstr "切换地图"
 
 #: src/hotkey/hotkey_command.cpp:126
 msgid "Assign Local Time"
-msgstr ""
+msgstr "指派本地时间"
 
 #: src/hotkey/hotkey_command.cpp:128
 msgid "Custom Time of Day Creator"
-msgstr ""
+msgstr "自定义时段创建器"
 
 #: src/hotkey/hotkey_command.cpp:129
 msgid "Partial Undo"
 msgstr "部分撤销"
 
 #: src/hotkey/hotkey_command.cpp:131
-#, fuzzy
-#| msgid "Test scenario"
 msgid "New Scenario"
-msgstr "测试场景"
+msgstr "新场景"
 
 #: src/hotkey/hotkey_command.cpp:132
 msgid "Load Map"
@@ -4656,10 +4657,8 @@ msgid "Save Map As"
 msgstr "地图另存为"
 
 #: src/hotkey/hotkey_command.cpp:135
-#, fuzzy
-#| msgid "Scenario start"
 msgid "Save Scenario As"
-msgstr "场景开始"
+msgstr "场景保存为"
 
 #: src/hotkey/hotkey_command.cpp:136
 msgid "Save All Maps"
@@ -4674,34 +4673,28 @@ msgid "Map Information"
 msgstr "地图信息"
 
 #: src/hotkey/hotkey_command.cpp:140
-#, fuzzy
-#| msgid "Selected game"
 msgid "Clear Selected Item Set"
-msgstr "选中的游戏"
+msgstr "清除选定的物品集合"
 
 #: src/hotkey/hotkey_command.cpp:141
-#, fuzzy
-#| msgid "Swap Foreground/Background Terrains"
 msgid "Swap Foreground/Background Palette Item"
-msgstr "交换前景／背景地形"
+msgstr "交换前景／背景调色板项"
 
 #: src/hotkey/hotkey_command.cpp:142
 msgid "Change Palette Group"
-msgstr ""
+msgstr "更改调色板组"
 
 #: src/hotkey/hotkey_command.cpp:143
 msgid "Scroll Palette Left"
-msgstr ""
+msgstr "左卷调色板"
 
 #: src/hotkey/hotkey_command.cpp:144
 msgid "Scroll Palette Right"
-msgstr ""
+msgstr "右卷调色板"
 
 #: src/hotkey/hotkey_command.cpp:146
-#, fuzzy
-#| msgid "Next Side"
 msgid "Add New Side"
-msgstr "下一阵营"
+msgstr "添加新阵营"
 
 #: src/hotkey/hotkey_command.cpp:148
 msgid "Next Tool"
@@ -4716,6 +4709,8 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
+"使用鼠标左/右键来绘制地形前/背景。按住Shift可仅绘制基础层。使用Ctrl+点击对光"
+"标之下的地形进行抽样。"
 
 #: src/hotkey/hotkey_command.cpp:151
 msgid "Fill Tool"
@@ -4726,6 +4721,8 @@ msgid ""
 "Left mouse button selects or deselects with Ctrl, right brings up a context "
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
+"根据Ctrl键的状态，鼠标左键进行选取/取消选取操作，而鼠标右键将打开上下文菜单。"
+"按住Shift以对具有相同地形的格子进行魔术棒选取。"
 
 #: src/hotkey/hotkey_command.cpp:152
 msgid "Selection Tool"
@@ -4737,126 +4734,115 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"鼠标左键显示玩家的选择，右键取消显示。数字键将屏幕移动到对应的起始位置，Alt"
+"+数字键在光标处设定对应的起始位置，Delete删除起始位置。"
 
 #: src/hotkey/hotkey_command.cpp:153
-#, fuzzy
-#| msgid "Set Starting Positions Tool"
 msgid "Starting Positions Tool"
-msgstr "设置起始点工具"
+msgstr "起始点工具"
 
 #: src/hotkey/hotkey_command.cpp:154
-#, fuzzy
-#| msgid "Fill Tool"
 msgid "Label Tool"
-msgstr "填充工具"
+msgstr "标注工具"
 
 #: src/hotkey/hotkey_command.cpp:154
 msgid "Left mouse button sets or drags a label, right clears."
-msgstr ""
+msgstr "鼠标左键设定或拖动标签，右键清除标签。"
 
 #: src/hotkey/hotkey_command.cpp:155
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
 msgstr ""
+"鼠标左键设置一个新单位，或通过拖动来移动单位，右键打开上下文菜单。需要已定义"
+"的阵营。"
 
 #: src/hotkey/hotkey_command.cpp:155
-#, fuzzy
-#| msgid "Paint Tool"
 msgid "Unit Tool"
-msgstr "绘图工具"
+msgstr "单位工具"
 
 #: src/hotkey/hotkey_command.cpp:156
-#, fuzzy
-#| msgid "Next Tool"
 msgid "Item Tool"
-msgstr "下一工具"
+msgstr "物品工具"
 
 #: src/hotkey/hotkey_command.cpp:156
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
+"鼠标左键设置一个新物品或通过拖动来移动物品，右键清除物品。此功能尚未实现。"
 
 #: src/hotkey/hotkey_command.cpp:157
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
-msgstr ""
+msgstr "鼠标左键设置或拖动一个音源，右键清除音源。此功能尚未实现。"
 
 #: src/hotkey/hotkey_command.cpp:157
 msgid "Sound Source Tool"
-msgstr ""
+msgstr "声源工具"
 
 #: src/hotkey/hotkey_command.cpp:158
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
-msgstr ""
+msgstr "左键将村庄的所有权分配给当前阵营，右键清除。需要定义好的阵营。"
 
 #: src/hotkey/hotkey_command.cpp:158
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Tool"
-msgstr "村庄金币"
+msgstr "村庄工具"
 
 #: src/hotkey/hotkey_command.cpp:160
-#, fuzzy
-#| msgid "Recruit"
 msgid "Can Recruit"
-msgstr "征募"
+msgstr "可以征募"
 
 #: src/hotkey/hotkey_command.cpp:160
 msgid "Toggle the recruit attribute of a unit."
-msgstr ""
+msgstr "开启/关闭单位的征募特性。"
 
 #: src/hotkey/hotkey_command.cpp:161
 msgid "Can be Renamed"
-msgstr ""
+msgstr "可被重命名"
 
 #: src/hotkey/hotkey_command.cpp:161
 msgid "Toggle the unit being renameable."
-msgstr ""
+msgstr "切换单位的重命名使能。"
 
 #: src/hotkey/hotkey_command.cpp:162
 msgid "Assign Recruit List"
-msgstr ""
+msgstr "分配征募列表"
 
 #: src/hotkey/hotkey_command.cpp:162
 msgid "Assign the selected unit set as recruit list to the unit."
-msgstr ""
+msgstr "将选定的一组单位作为该单位的征募列表。"
 
 #: src/hotkey/hotkey_command.cpp:164
-#, fuzzy
-#| msgid "Change Control"
 msgid "Change Unit ID"
-msgstr "更改控制方"
+msgstr "更改单位ID"
 
 #: src/hotkey/hotkey_command.cpp:165
 msgid "Loyal"
-msgstr ""
+msgstr "忠诚"
 
 #: src/hotkey/hotkey_command.cpp:167
 msgid "Toggle Minimap Unit Coding"
-msgstr ""
+msgstr "开启/关闭小地图单位编码"
 
 #: src/hotkey/hotkey_command.cpp:168
 msgid "Toggle Minimap Terrain Coding"
-msgstr ""
+msgstr "开启/关闭小地图地形编码"
 
 #: src/hotkey/hotkey_command.cpp:170
 msgid "Toggle Minimap Unit Drawing"
-msgstr ""
+msgstr "开启/关闭小地图单位显示"
 
 #: src/hotkey/hotkey_command.cpp:171
 msgid "Toggle Minimap Village Drawing"
-msgstr ""
+msgstr "开启/关闭小地图村庄显示"
 
 #: src/hotkey/hotkey_command.cpp:172
-#, fuzzy
-#| msgid "Update Terrain Transitions"
 msgid "Toggle Minimap Terrain Drawing"
-msgstr "刷新地形过渡"
+msgstr "开启/关闭小地图地形显示"
 
 #: src/hotkey/hotkey_command.cpp:174
 msgid "Next Brush"
@@ -4868,38 +4854,36 @@ msgstr "默认笔刷"
 
 #: src/hotkey/hotkey_command.cpp:176
 msgid "Single Tile"
-msgstr ""
+msgstr "单个格子"
 
 #: src/hotkey/hotkey_command.cpp:177
 msgid "Radius One"
-msgstr ""
+msgstr "半径一"
 
 #: src/hotkey/hotkey_command.cpp:178
 msgid "Radius Two"
-msgstr ""
+msgstr "半径二"
 
 #: src/hotkey/hotkey_command.cpp:179
 msgid "Brush NW-SE"
-msgstr ""
+msgstr "西北-东南笔刷"
 
 #: src/hotkey/hotkey_command.cpp:180
 msgid "Brush SW-NE"
-msgstr ""
+msgstr "西南-东北笔刷"
 
 #: src/hotkey/hotkey_command.cpp:182
 msgid "Cut"
 msgstr "剪切"
 
 #: src/hotkey/hotkey_command.cpp:183
-#, fuzzy
-#| msgid "Copy"
 msgid "Copy"
 msgstr "复制"
 
 #: src/hotkey/hotkey_command.cpp:184
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
-msgstr ""
+msgstr "鼠标左键从剪贴板中粘贴，右键打开上下文菜单。"
 
 #: src/hotkey/hotkey_command.cpp:184
 msgid "Paste"
@@ -4950,16 +4934,12 @@ msgid "Fill Selection"
 msgstr "填充选定区域"
 
 #: src/hotkey/hotkey_command.cpp:196
-#, fuzzy
-#| msgid "Generate Tiles In Selection"
 msgid "Generate Tiles in Selection"
 msgstr "在选定区域内生成区块"
 
 #: src/hotkey/hotkey_command.cpp:197
-#, fuzzy
-#| msgid "Randomize Tiles In Selection"
 msgid "Randomize Tiles in Selection"
-msgstr "在选定区域内打乱区块"
+msgstr "在选定区域内随机区块"
 
 #: src/hotkey/hotkey_command.cpp:199
 msgid "Rotate Map"
@@ -4986,26 +4966,20 @@ msgid "Update Terrain Transitions"
 msgstr "刷新地形过渡"
 
 #: src/hotkey/hotkey_command.cpp:208
-#, fuzzy
-#| msgid "Update Terrain Transitions"
 msgid "Toggle Terrain Transition Update"
-msgstr "刷新地形过渡"
+msgstr "开启/关闭地形过渡更新"
 
 #: src/hotkey/hotkey_command.cpp:210
 msgid "Auto-update Terrain Transitions"
 msgstr "自动刷新地形过渡"
 
 #: src/hotkey/hotkey_command.cpp:211
-#, fuzzy
-#| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: No"
-msgstr "自动刷新地形过渡"
+msgstr "自动刷新地形过渡：否"
 
 #: src/hotkey/hotkey_command.cpp:212
-#, fuzzy
-#| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr "自动刷新地形过渡"
+msgstr "自动刷新地形过渡：部分"
 
 #: src/hotkey/hotkey_command.cpp:214
 msgid "Refresh Image Cache"
@@ -5020,46 +4994,32 @@ msgid "Draw Terrain Codes"
 msgstr "绘制地形编码"
 
 #: src/hotkey/hotkey_command.cpp:218
-#, fuzzy
-#| msgid "Rotate Selection"
 msgid "Save Selection to Area"
-msgstr "旋转选定区域"
+msgstr "将选区保存到区域"
 
 #: src/hotkey/hotkey_command.cpp:219
-#, fuzzy
-#| msgid "Selected game"
 msgid "Rename Selected Area"
-msgstr "选中的游戏"
+msgstr "重新命名所选区域"
 
 #: src/hotkey/hotkey_command.cpp:220
-#, fuzzy
-#| msgid "Selected game"
 msgid "Remove Selected Area"
-msgstr "选中的游戏"
+msgstr "移除所选区域"
 
 #: src/hotkey/hotkey_command.cpp:221
-#, fuzzy
-#| msgid "Next Side"
 msgid "Add New Area"
-msgstr "下一阵营"
+msgstr "添加新的区域"
 
 #: src/hotkey/hotkey_command.cpp:223
-#, fuzzy
-#| msgid "Editor Settings"
 msgid "Edit Scenario"
-msgstr "编辑器设置"
+msgstr "编辑场景"
 
 #: src/hotkey/hotkey_command.cpp:224
-#, fuzzy
-#| msgid "Switch Map"
 msgid "Edit Side"
-msgstr "切换地图"
+msgstr " 编辑阵营"
 
 #: src/hotkey/hotkey_command.cpp:225
-#, fuzzy
-#| msgid "Remove"
 msgid "Remove Side"
-msgstr "移除"
+msgstr "移除阵营"
 
 #: src/hotkey/hotkey_command.cpp:227
 msgid "Delay Shroud Updates"
@@ -5152,117 +5112,99 @@ msgstr "显示帮助提示"
 
 #: src/hotkey/hotkey_command.cpp:254
 msgid "Unrecognized Command"
-msgstr ""
+msgstr "未识别指令"
 
 #: src/hotkey/hotkey_item.cpp:402 src/hotkey/hotkey_item.cpp:405
 msgid "Button"
-msgstr ""
+msgstr "按键"
 
 #: src/hotkey/hotkey_item.cpp:402
 msgid "Mouse"
-msgstr ""
+msgstr "鼠标"
 
 #: src/hotkey/hotkey_item.cpp:405 src/hotkey/hotkey_item.cpp:441
 msgid "Joystick"
-msgstr ""
+msgstr "摇杆"
 
 #: src/hotkey/hotkey_item.cpp:411
 msgid "Centered"
-msgstr ""
+msgstr "中"
 
 #: src/hotkey/hotkey_item.cpp:414
 msgid "Up"
-msgstr ""
+msgstr "上"
 
 #: src/hotkey/hotkey_item.cpp:417
-#, fuzzy
-#| msgid "Height:"
 msgid "Right"
-msgstr "高度："
+msgstr "右"
 
 #: src/hotkey/hotkey_item.cpp:420
 msgid "Down"
-msgstr ""
+msgstr "下"
 
 #: src/hotkey/hotkey_item.cpp:423
 msgid "Left"
-msgstr ""
+msgstr "左"
 
 #: src/hotkey/hotkey_item.cpp:426
 msgid "RightUp"
-msgstr ""
+msgstr "右上"
 
 #: src/hotkey/hotkey_item.cpp:429
 msgid "RightDown"
-msgstr ""
+msgstr "右下"
 
 #: src/hotkey/hotkey_item.cpp:432
 msgid "LeftUp"
-msgstr ""
+msgstr "左上"
 
 #: src/hotkey/hotkey_item.cpp:435
 msgid "LeftDown"
-msgstr ""
+msgstr "左下"
 
 #: src/hotkey/hotkey_item.cpp:438
-#, fuzzy
-#| msgid "Unknown era"
 msgid "Unknown"
-msgstr "未知时代"
+msgstr "未知"
 
 #: src/hotkey/hotkey_item.cpp:441
-#, fuzzy
-#| msgid "Hut"
 msgid "Hat"
-msgstr "小屋"
+msgstr "帽子"
 
 #: src/hotkey/hotkey_preferences_display.cpp:149
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Hotkeys Reset"
-msgstr "快捷键"
+msgstr "重置快捷键"
 
 #: src/hotkey/hotkey_preferences_display.cpp:150
 msgid "All hotkeys have been reset to their default values."
-msgstr ""
+msgstr "所有的快捷键都被重置为默认值。"
 
 #: src/hotkey/hotkey_preferences_display.cpp:166
 msgid "Hotkey Settings"
 msgstr "快捷键设置"
 
 #: src/hotkey/hotkey_preferences_display.cpp:171
-#, fuzzy
-#| msgid "Default"
 msgid "Defaults"
 msgstr "默认"
 
 #: src/hotkey/hotkey_preferences_display.cpp:174
 msgid "Reset all bindings to the default values"
-msgstr ""
+msgstr "将所有的捆绑重置为默认值"
 
 #: src/hotkey/hotkey_preferences_display.cpp:218
-#, fuzzy
-#| msgid "Prefs section^Sound"
 msgid "Prefs section^Title Screen"
-msgstr "声音"
+msgstr "主选单"
 
 #: src/hotkey/hotkey_preferences_display.cpp:220
-#, fuzzy
-#| msgid "Prefs section^General"
 msgid "Prefs section^Game"
-msgstr "常规"
+msgstr "游戏"
 
 #: src/hotkey/hotkey_preferences_display.cpp:222
-#, fuzzy
-#| msgid "Prefs section^Sound"
 msgid "Prefs section^Editor"
-msgstr "声音"
+msgstr "编辑器"
 
 #: src/hotkey/hotkey_preferences_display.cpp:249
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Add Hotkey"
-msgstr "快捷键"
+msgstr "增加快捷键"
 
 #: src/hotkey/hotkey_preferences_display.cpp:250
 msgid "Clear Hotkey"
@@ -5285,12 +5227,12 @@ msgid ""
 "\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\". Do you wish to "
 "reassign it to \"$new_hotkey_action|\"?"
 msgstr ""
+"“$hotkey_sequence”目前已用于“$old_hotkey_action”。您希望将该快捷键序列重新设"
+"定为“$new_hotkey_action|”吗？"
 
 #: src/hotkey/hotkey_preferences_display.cpp:697
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Reassign Hotkey"
-msgstr "快捷键"
+msgstr "重新指定快捷键"
 
 #. TRANSLATORS: This is the language code which will be used
 #. to store and fetch localized non-textual resources, such as images,
@@ -5374,189 +5316,3 @@ msgid ""
 msgstr ""
 "主键“$deprecated_key”已被重命名为“$key”，对“$deprecated_key”的支持将在版本 "
 "$removal_version 中移除。"
-
-#~ msgid "Elvish Castle"
-#~ msgstr "精灵城堡"
-
-#~ msgid "Forested Hills"
-#~ msgstr "森林覆盖的丘陵"
-
-#~ msgid "Forested Snow Hills"
-#~ msgstr "森林覆盖的雪山"
-
-#~ msgid "Summer Deciduous Forested Hills"
-#~ msgstr "夏季落叶林覆盖的丘陵"
-
-#~ msgid "Fall Deciduous Forested Hills"
-#~ msgstr "秋季落叶林覆盖的丘陵"
-
-#~ msgid "Winter Deciduous Forested Hills"
-#~ msgstr "东季落叶林覆盖的丘陵"
-
-#~ msgid "Snowy Deciduous Forested Hills"
-#~ msgstr "雪地落叶林覆盖的丘陵"
-
-#~ msgid "Summer Mixed Forested Hills"
-#~ msgstr "夏季混交林覆盖的丘陵"
-
-#~ msgid "Fall Mixed Forested Hills"
-#~ msgstr "秋季混交林覆盖的丘陵"
-
-#~ msgid "Winter Mixed Forested Hills"
-#~ msgstr "东季混交林覆盖的丘陵"
-
-#~ msgid "Snowy Mixed Forested Hills"
-#~ msgstr "雪地混交林覆盖的丘陵"
-
-#, fuzzy
-#~| msgid "Tropical Forest"
-#~ msgid "Tropical Forested Hills"
-#~ msgstr "热带森林"
-
-#, fuzzy
-#~| msgid "Forested Hills"
-#~ msgid "Palm Forested Hills"
-#~ msgstr "森林覆盖的丘陵"
-
-#, fuzzy
-#~| msgid "Forested Hills"
-#~ msgid "Dense Palm Forested Hills"
-#~ msgstr "森林覆盖的丘陵"
-
-#, fuzzy
-#~| msgid "Forested Hills"
-#~ msgid "Savanna Forested Hills"
-#~ msgstr "森林覆盖的丘陵"
-
-#~ msgid "Show color cursors"
-#~ msgstr "显示彩色光标"
-
-#~ msgid "Use colored mouse cursors (may be slower)"
-#~ msgstr "使用彩色鼠标指针（可能会使游戏变慢）"
-
-#~ msgid "Warning"
-#~ msgstr "警告"
-
-#~ msgid ""
-#~ "Screenshot hotkeys should be combined with the Control, Alt or Meta "
-#~ "modifiers to avoid problems."
-#~ msgstr "屏幕截图快捷键应该与Control、Alt或Meta键组合，以避免问题发生。"
-
-#~ msgid "Left Mouse Click"
-#~ msgstr "鼠标左击"
-
-#~ msgid "Right Mouse Click"
-#~ msgstr "鼠标右击"
-
-#, fuzzy
-#~| msgid "Switch Map"
-#~ msgid "Switch Area"
-#~ msgstr "切换地图"
-
-#~ msgid "Do you really want to quit?"
-#~ msgstr "您真的想退出吗？"
-
-#~ msgid "Map-Screenshot"
-#~ msgstr "地图-屏幕截图"
-
-#~ msgid " (widescreen)"
-#~ msgstr "（宽屏）"
-
-#, fuzzy
-#~| msgid "Multiplayer Options"
-#~ msgid "Filter Options"
-#~ msgstr "多人游戏选项"
-
-#~ msgid "Uninstall Add-ons"
-#~ msgstr "卸载附加组件"
-
-#, fuzzy
-#~| msgid "Flip Clipboard Horizontally"
-#~ msgid "Scroll Viewport Horizontally"
-#~ msgstr "水平翻转剪贴板"
-
-#, fuzzy
-#~| msgid "Flip Clipboard Vertically"
-#~ msgid "Scroll Viewport Vertically"
-#~ msgstr "垂直翻转剪贴板"
-
-#~ msgid "Time of day lighting preset:"
-#~ msgstr "时段光照预设配置："
-
-#~ msgid "Custom lighting settings"
-#~ msgstr "自定义光照设置"
-
-#~ msgid "Automatically update map view"
-#~ msgstr "自动刷新地图视图"
-
-#~ msgid "Allow multiple maps to be open simultaneously"
-#~ msgstr "允许同时打开多张地图"
-
-#~ msgid "Add this username to your friends list"
-#~ msgstr "把这个用户名加入好友列表"
-
-#~ msgid "Add this username to your ignores list"
-#~ msgstr "把这个用户名加入忽略列表"
-
-#, fuzzy
-#~| msgid "Auto-update Terrain Transitions"
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "自动刷新地形过渡"
-
-#~ msgid "Types"
-#~ msgstr "类型"
-
-#~ msgid "Inspection window"
-#~ msgstr "观察窗口"
-
-#~ msgid "Variable"
-#~ msgstr "变量"
-
-#~ msgid "Use new lobby interface"
-#~ msgstr "使用新版多人游戏大厅界面"
-
-#~ msgid "Use New Lobby Interface"
-#~ msgstr "使用新版多人游戏大厅界面"
-
-#, fuzzy
-#~| msgid "Default"
-#~ msgid "Reset Defaults"
-#~ msgstr "默认"
-
-#~ msgid "Change Hotkey"
-#~ msgstr "更改快捷键"
-
-#, fuzzy
-#~| msgid "Select All"
-#~ msgid "Reset All"
-#~ msgstr "全选"
-
-#~ msgid "This hotkey is already in use."
-#~ msgstr "此快捷键已被使用。"
-
-#~ msgid "Update Add-ons"
-#~ msgstr "更新附加组件"
-
-#~ msgid "Create New Map"
-#~ msgstr "创建新地图"
-
-#~ msgid "Don’t ask me again!"
-#~ msgstr "不要再问我！"
-
-#~ msgid "x"
-#~ msgstr "x"
-
-#~ msgid "OOS error"
-#~ msgstr "OOS错误"
-
-#~ msgid "Create game"
-#~ msgstr "创建游戏"
-
-#~ msgid "Save replay on SP/MP victory or MP defeat"
-#~ msgstr "当单人/多人游戏胜利或者多人游戏失败时，保存录像"
-
-#~ msgid "Save Replay on SP/MP Victory or MP Defeat"
-#~ msgstr "游戏胜利或者多人游戏失败时，保存录像"
-
-#~ msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
-#~ msgstr "游戏胜利或者多人游戏失败时，删除自动存档"

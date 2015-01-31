@@ -1,23 +1,23 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2011 Wesnoth development team
+# Copyright (C) 2005-2015 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # CloudiDust <cloudidust@gmail.com>, 2011.
 # wind <everywherewind@gmail.com>, 2012.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.10\n"
+"Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-22 14:15+0100\n"
-"PO-Revision-Date: 2012-03-29 20:17+0800\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
+"PO-Revision-Date: 2015-01-02 20:51+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
-"Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
-"translation-cn/>\n"
+"Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bits\n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
+"X-Generator: Poedit 1.7.1\n"
 
 #. [campaign]: id=Liberty
 #. Yes, that is "marchlanders", not "marshlanders".
@@ -26,7 +26,7 @@ msgstr ""
 #. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:10 data/campaigns/Liberty/_main.cfg:11
 msgid "Liberty"
-msgstr "自由之路"
+msgstr "自由"
 
 #. [campaign]: id=Liberty
 #. Yes, that is "marchlanders", not "marshlanders".
@@ -82,8 +82,8 @@ msgid ""
 "\n"
 msgstr ""
 "内战的阴影长时间笼罩着韦诺，一群勇敢的边民揭杆而起，反对艾斯威勒女王的暴政。"
-"为了赢得自由之路，他们不仅必须击败训练有素的韦诺正规军，而且还要挫败兽人、亡"
-"灵等黑暗面的敌人。\n"
+"为了赢得通向自由的道路，他们不仅必须击败训练有素的韦诺正规军，而且还要挫败兽"
+"人、亡灵等黑暗面的敌人。\n"
 "\n"
 
 #. [campaign]: id=Liberty
@@ -570,7 +570,7 @@ msgstr "哈珀，离开这里。这不是你的战斗。"
 msgid ""
 "I am the magistrate of Dallben, and it is <i>you</i> who will be leaving "
 "Dallben, be it dead or alive."
-msgstr "我是达尔本的治安官，该离开达尔本的是<i>你</i>，不管是死是活。"
+msgstr "我是达尔本的治安官，该离开达尔本的是<b>你</b>，不管是死是活。"
 
 #. [message]: speaker=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:215
@@ -978,7 +978,7 @@ msgstr ""
 #. [wml_message]
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:318
 msgid "Could not convert a $stored_changers[$i].type, please report!"
-msgstr ""
+msgstr "无法转换 $stored_changers[$i].type，请发送错误报告！"
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:584
@@ -1178,7 +1178,7 @@ msgstr ""
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:653
 msgid "They’ve seen us! <i>Run</i>!"
-msgstr "他们发现我们了！<i>快跑</i>！"
+msgstr "他们发现我们了！<b>快跑</b>！"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:670
@@ -1599,7 +1599,7 @@ msgstr "大水罐"
 #. [message]: speaker=Pitcher
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:167
 msgid "whisper^<i>Baldras!</i>"
-msgstr "（轻声）<i>巴尔德拉斯！</i>"
+msgstr "（轻声）<b>巴尔德拉斯！</b>"
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:171
@@ -2048,7 +2048,7 @@ msgstr "我们不能呆在这里。堡垒开始倒塌了！"
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:825
 msgid "I think it’s working! Everybody get clear <i>now</i>!"
-msgstr "我想起作用了！大家撤离！<i>现在！</i>"
+msgstr "我想起作用了！大家撤离！<b>现在！</b>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:849
@@ -2177,7 +2177,7 @@ msgstr "小胜？呸！现在我们会毁掉城堡并把它埋到土里，那是
 #. [scenario]: id=09_Epilogue
 #: data/campaigns/Liberty/scenarios/09_Epilogue.cfg:4
 msgid "Liberty — Epilogue"
-msgstr "自由之路——后记"
+msgstr "自由——后记"
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/09_Epilogue.cfg:14
@@ -2261,15 +2261,15 @@ msgid ""
 "... a grimy note nailed to a charred post that read, <i>“Baldras, You would "
 "have been proud. We gave ’em hell. But in the end, it wasn’t enough.”</i>"
 msgstr ""
-"……一个肮脏的便条钉在烧焦的标杆上，上面写着，<i>“巴尔德拉斯，你该自豪。我们给"
-"他们个地狱。但最后，这还不够。”</i>"
+"……一个肮脏的便条钉在烧焦的标杆上，上面写着，<b>“巴尔德拉斯，你该自豪。我们给"
+"他们个地狱。但最后，这还不够。”</b>"
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/09_Epilogue.cfg:40
 msgid ""
 "<i>“We fled like criminals in the night, but we made sure that no one would "
 "harass us anymore.”</i>"
-msgstr "<i>“我们在晚上像个罪犯样逃亡，但我们肯定没人再骚扰我们了。”</i>"
+msgstr "<b>“我们在晚上像个罪犯样逃亡，但我们肯定没人再骚扰我们了。”</b>"
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/09_Epilogue.cfg:44
@@ -2277,8 +2277,8 @@ msgid ""
 "<i>“If you wish to find us, head southwest. When you reach the land’s end, "
 "just keep going. See you in the Three Sisters, old friend. ― Relana”</i>"
 msgstr ""
-"<i>“如果你想找我，朝西南面走。当你到达陆地的边缘时，继续前进。在三姐妹岛再"
-"会，老朋友。——雷亚纳”</i>"
+"<b>“如果你想找我，朝西南面走。当你到达陆地的边缘时，继续前进。在三姐妹岛再"
+"会，老朋友。——雷亚纳”</b>"
 
 #. [unit_type]: id=Bone Knight, race=undead
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:5
@@ -2627,16 +2627,11 @@ msgstr "怎么会这样？我们失败了。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/utils/utils.cfg:164
-#, fuzzy
-#| msgid ""
-#| "They returned to their village to find it destroyed, with those who "
-#| "fought left dead and the few survivors born away to unguessable fates. It "
-#| "was a bitter doom, but as Asheviere’s grip tightened they would live to "
-#| "see worse."
 msgid ""
 "They returned to their village to find it destroyed, with those who fought "
 "left dead and the few survivors borne away to unguessable fates. It was a "
 "bitter doom, but as Asheviere’s grip tightened they would live to see worse."
 msgstr ""
-"他们回到自己的村庄，却发现被摧毁了，那些斗争的人都死了，少数幸存的人背井离乡"
-"面对无法预测的命运。这是个苦涩的判决，但被艾斯威勒紧紧掌控他们会生活得更糟。"
+"他们回到自己的村庄，却发现村庄已经被摧毁了，那些斗争的人都死了，少数幸存的人"
+"背井离乡，面对无法预测的命运。这是苦涩的终末，但被艾斯威勒紧紧掌控他们会生活"
+"得更糟。"

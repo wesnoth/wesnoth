@@ -1,22 +1,22 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2011 Wesnoth development team
+# Copyright (C) 2005-2015 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # MrKing <yideey@gmail.com>, 2011.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.10\n"
+"Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-01-04 20:07+0100\n"
-"PO-Revision-Date: 2011-12-27 13:59+0800\n"
-"Last-Translator: MrKing <yideey@gmail.com>\n"
-"Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
-"translation-cn>\n"
+"POT-Creation-Date: 2014-11-15 10:53+0100\n"
+"PO-Revision-Date: 2015-01-02 13:08+0800\n"
+"Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
+"Language-Team:  Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
+"X-Generator: Poedit 1.7.1\n"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:11
@@ -108,7 +108,7 @@ msgstr "美工"
 #. [lua]
 #: data/campaigns/Dead_Water/_main.cfg:85
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
+msgstr "眩晕：该单位处于眩晕状态，它无法维持自己的控制区域（ZoC）。"
 
 #. [scenario]: id=01_Invasion
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:36
@@ -998,14 +998,11 @@ msgstr "你的决定勇敢而仁慈！我也不能容忍奴隶制度。"
 #. 'words of a human' here; it signifies rather 'words of a
 #. moral adult' as opposed to a child or dependant.
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:382
-#, fuzzy
-#| msgid ""
-#| "Those were the words of a merman, Kai Krellis, and well spoken. The folk "
-#| "are truly yours now."
 msgid ""
 "Those were the words of a man and a leader, Kai Krellis, and well spoken. "
 "The folk are truly yours now."
-msgstr "说得好，凯·克莱利斯，人鱼就要这样说话。现在大家都跟你是一条心了。"
+msgstr ""
+"这正是男人与领袖该说的话，凯·克莱利斯，说得好。现在人鱼们都跟你是一条心了。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:389
@@ -2779,21 +2776,15 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:62
-#, fuzzy
-#| msgid ""
-#| "Cylanna never traveled far again, but stayed in Jotha as a respected "
-#| "elder. She remained a royal advisor, but her main work was healing the "
-#| "sick, and presiding at christenings and weddings. All this agreed with "
-#| "her disposition much better than battling undead."
 msgid ""
 "Cylanna never traveled far again, but stayed in Jotha as a respected elder. "
 "She remained a royal advisor, but her main work was healing the sick, and "
 "presiding at naming ceremonies and weddings. All this agreed with her "
 "disposition much better than battling undead."
 msgstr ""
-"丝琳娜再也没有远行过，她现在是礁沙城里最受尊重的长者之一。她依然是皇家顾问，"
-"不过她的主要工作是治疗伤患，主持洗礼和婚礼。比起对抗亡灵，这些才是她真正喜欢"
-"做的事情。"
+"丝琳娜再也没有远行过，而是呆在了礁沙城里，是最受尊重的长者之一。她依然是皇家"
+"顾问，不过她的主要工作是治疗伤患，主持命名礼和婚礼。比起对抗亡灵，这些才是她"
+"真正喜欢做的事情。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:69
@@ -3133,11 +3124,6 @@ msgstr "击晕"
 
 #. [damage]: id=tail_stun
 #: data/campaigns/Dead_Water/utils/specials.cfg:10
-#, fuzzy
-#| msgid ""
-#| "This attack hits so hard that the defender is dazed and can no longer "
-#| "enforce a zone of control. The effect wears off on the defender’s next "
-#| "turn."
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."

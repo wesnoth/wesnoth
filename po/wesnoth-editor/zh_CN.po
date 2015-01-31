@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2011 Wesnoth development team
+# Copyright (C) 2005-2015 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Huang Huan(unicon) <unicon221@gmail.com>, 2005.
 # sylecn <sylecn@yahoo.com.cn>, 2009.
@@ -7,18 +7,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.10\n"
+"Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
-"PO-Revision-Date: 2011-12-14 21:17+0800\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
+"PO-Revision-Date: 2015-01-02 13:09+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
-"Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
-"translation-cn>\n"
+"Language-Team:  Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
+"X-Generator: Poedit 1.7.1\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -42,10 +42,8 @@ msgstr "格子沿西北-东南排列"
 
 #. [brush]: id=brush-sw-ne
 #: data/core/editor/brushes.cfg:63
-#, fuzzy
-#| msgid "Hex Line NW-SE"
 msgid "Hex Line SE-NW"
-msgstr "格子沿西北-东南排列"
+msgstr "西北-东南六角格边线"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -80,7 +78,7 @@ msgstr "森林"
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
 msgid "fall"
-msgstr ""
+msgstr "崩落"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
@@ -125,59 +123,57 @@ msgstr "特殊"
 #. [editor_times]: id=empty
 #: data/core/editor/time-of-day.cfg:5
 msgid "None"
-msgstr ""
+msgstr "无"
 
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:10
 msgid "Test"
-msgstr ""
+msgstr "测试"
 
 #. [editor_times]: id=default
 #: data/core/editor/time-of-day.cfg:21
 msgid "Default"
-msgstr ""
+msgstr "默认"
 
 #. [editor_times]: id=summer
 #: data/core/editor/time-of-day.cfg:27
 msgid "Summer"
-msgstr ""
+msgstr "夏季"
 
 #. [editor_times]: id=winter
 #: data/core/editor/time-of-day.cfg:33
 msgid "Winter"
-msgstr ""
+msgstr "冬季"
 
 #. [editor_times]: id=underground
 #: data/core/editor/time-of-day.cfg:39
 msgid "Underground"
-msgstr ""
+msgstr "地下"
 
 #. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:45
 msgid "Deep Underground"
-msgstr ""
+msgstr "地下深处"
 
 #. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:51
 msgid "Indoors"
-msgstr ""
+msgstr "室内"
 
 #. [editor_times]: id=24
 #: data/core/editor/time-of-day.cfg:57
 msgid "24 Hour Schedule"
-msgstr ""
+msgstr "24小时日程表"
 
 #. [editor_times]: id=after_the_fall
 #: data/core/editor/time-of-day.cfg:63
 msgid "After the Fall"
-msgstr ""
+msgstr "崩落之后"
 
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
-#, fuzzy
-#| msgid "Quit Editor"
 msgid "theme^Editor"
-msgstr "退出编辑器"
+msgstr "编辑器"
 
 #. [menu]: id=menu-editor-file, type=turbo
 #: data/themes/editor.cfg:63
@@ -192,7 +188,7 @@ msgstr "地图"
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:92
 msgid "Transition Update"
-msgstr ""
+msgstr "渐变"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:99
@@ -202,22 +198,22 @@ msgstr "窗口"
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:108
 msgid "Areas"
-msgstr ""
+msgstr "区域"
 
 #. [menu]: id=menu-editor-local-time
 #: data/themes/editor.cfg:116
 msgid "Assign Local Time"
-msgstr ""
+msgstr "设定本地时间"
 
 #. [menu]: id=menu-editor-local-schedule
 #: data/themes/editor.cfg:122
 msgid "Assign Local Time Schedule"
-msgstr ""
+msgstr "设定本地日程表"
 
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:130
 msgid "Side"
-msgstr ""
+msgstr "阵营"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:148
@@ -227,46 +223,46 @@ msgstr "村庄"
 #. [label]: id=units-icon
 #: data/themes/editor.cfg:165
 msgid "units"
-msgstr ""
+msgstr "单位"
 
 #. [menu]: id=switch_time
 #: data/themes/editor.cfg:444
 msgid "Time Schedule Menu"
-msgstr ""
+msgstr "日程表菜单"
 
 #. [menu]: id=menu-playlist
 #: data/themes/editor.cfg:455
 msgid "Playlist"
-msgstr ""
+msgstr "播放列表"
 
 #. [menu]: id=menu-editor-schedule
 #: data/themes/editor.cfg:461
 msgid "Assign Time Schedule"
-msgstr ""
+msgstr "设定日程表"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:58
 msgid "Identifier: "
-msgstr ""
+msgstr "标识符："
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:59
 msgid "Name: "
-msgstr ""
+msgstr "名字："
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:60
 msgid "Type: "
-msgstr ""
+msgstr "类型："
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:61
 msgid "Level: "
-msgstr ""
+msgstr "等级："
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Cost: "
-msgstr ""
+msgstr "花费："
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Recruit: "
-msgstr ""
+msgstr "征募："
 
 #: src/editor/editor_controller.cpp:177
 msgid "Fatal error"
@@ -299,19 +295,19 @@ msgstr "没有找到编辑器的时段设置。"
 
 #: src/editor/editor_controller.cpp:1070
 msgid "Change Unit ID"
-msgstr ""
+msgstr "变更单位ID"
 
 #: src/editor/editor_controller.cpp:1071
 msgid "ID:"
-msgstr ""
+msgstr "ID："
 
 #: src/editor/editor_controller.cpp:1087
 msgid "Rename Unit"
-msgstr ""
+msgstr "单位重命名"
 
 #: src/editor/editor_controller.cpp:1088
 msgid "Name:"
-msgstr ""
+msgstr "名字："
 
 #: src/editor/map/context_manager.cpp:127
 #: src/editor/map/context_manager.cpp:288
@@ -319,28 +315,20 @@ msgid "(New Map)"
 msgstr "（新建地图）"
 
 #: src/editor/map/context_manager.cpp:184
-#, fuzzy
-#| msgid "Choose a Map to Open"
 msgid "Choose a File to Open"
-msgstr "选择要打开的地图"
+msgstr "选择要打开的文件"
 
 #: src/editor/map/context_manager.cpp:290
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(New Scenario)"
-msgstr "（新建地图）"
+msgstr "（新场景）"
 
 #: src/editor/map/context_manager.cpp:322
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(Unnamed Area)"
-msgstr "（新建地图）"
+msgstr "（未命名区域）"
 
 #: src/editor/map/context_manager.cpp:345
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(New Side)"
-msgstr "（新建地图）"
+msgstr "（新阵营）"
 
 #: src/editor/map/context_manager.cpp:411
 msgid "Choose a Mask to Apply"
@@ -352,11 +340,11 @@ msgstr "读取遮罩时发生错误"
 
 #: src/editor/map/context_manager.cpp:437
 msgid "Identifier:"
-msgstr ""
+msgstr "标识符："
 
 #: src/editor/map/context_manager.cpp:437
 msgid "Rename Area"
-msgstr ""
+msgstr "区域重命名"
 
 #: src/editor/map/context_manager.cpp:448
 msgid "Choose Target Map"
@@ -377,10 +365,8 @@ msgid "The file already exists. Do you want to overwrite it?"
 msgstr "文件已存在，要覆盖吗？"
 
 #: src/editor/map/context_manager.cpp:600
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save the Scenario As"
-msgstr "地图另存为"
+msgstr "场景另存为"
 
 #: src/editor/map/context_manager.cpp:639
 msgid "No random map generators found."
@@ -401,10 +387,8 @@ msgid ""
 msgstr "您想要放弃上次保存之后所作的修改吗？"
 
 #: src/editor/map/context_manager.cpp:766
-#, fuzzy
-#| msgid "This map is already open."
 msgid "This scenario is already open."
-msgstr "这张地图已经被打开。"
+msgstr "这一场景已打开。"
 
 #: src/editor/map/context_manager.cpp:788
 #: src/editor/map/context_manager.cpp:843
@@ -412,10 +396,8 @@ msgid "This map is already open."
 msgstr "这张地图已经被打开。"
 
 #: src/editor/map/context_manager.cpp:809
-#, fuzzy
-#| msgid "Map saved."
 msgid "Scenario saved."
-msgstr "地图已保存。"
+msgstr "场景已保存。"
 
 #: src/editor/map/context_manager.cpp:823
 msgid "Map saved."
@@ -451,10 +433,8 @@ msgid "File not found"
 msgstr "文件不存在"
 
 #: src/editor/map/map_context.cpp:133
-#, fuzzy
-#| msgid "Empty map file"
 msgid "Empty file"
-msgstr "空地图文件"
+msgstr "空文件"
 
 #: src/editor/map/map_context.cpp:175
 msgid ""
@@ -464,10 +444,8 @@ msgstr ""
 "这个地图文件看起来像是一个场景，但是map_data的值指向了一个不存在的文件。"
 
 #: src/editor/map/map_context.cpp:508
-#, fuzzy
-#| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
-msgstr "无法保存地图：$msg"
+msgstr "无法保存场景：$msg"
 
 #: src/editor/map/map_context.cpp:535
 msgid "Could not save into scenario"
@@ -480,7 +458,7 @@ msgstr "无法保存地图：$msg"
 #: src/editor/palette/editor_palettes.cpp:59
 #: src/editor/palette/editor_palettes.cpp:114
 msgid "(Unknown Group)"
-msgstr ""
+msgstr "（未知分组）"
 
 #: src/editor/palette/editor_palettes.cpp:383
 msgid "(non-core)"
@@ -500,7 +478,7 @@ msgstr "背景地形："
 
 #: src/gui/dialogs/editor/custom_tod.cpp:129
 msgid "Choose File"
-msgstr ""
+msgstr "选择文件"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:87
 msgid "player^None"
@@ -509,62 +487,3 @@ msgstr "无"
 #: src/gui/dialogs/editor_set_starting_position.cpp:100
 msgid "Player $player_number"
 msgstr "玩家 $player_number"
-
-#~ msgid ""
-#~ "Use left/right mouse button to draw fore-/background terrain. Hold Shift "
-#~ "to paint base layer only. Ctrl+click to sample terrain under cursor."
-#~ msgstr ""
-#~ "使用鼠标左/右键绘制前/背景地形。按下Shift键可以只绘制基层。Ctrl+单击将对当"
-#~ "前光标位置处的地形取样。"
-
-#~ msgid ""
-#~ "Left mouse button selects, right deselects. Hold Shift for magic-wand "
-#~ "selection of tiles with same terrain."
-#~ msgstr ""
-#~ "使用鼠标左键选择，右键取消选择。按下Shift键可以自动选择同一地形的地面（使"
-#~ "用魔术棒选择模式）。"
-
-#~ msgid ""
-#~ "Left mouse button displays player selection, right clears. Number keys "
-#~ "scroll to the starting position, alt+number sets respective starting "
-#~ "position under cursor, delete clears."
-#~ msgstr ""
-#~ "单击鼠标左键显示玩家选择，右键取消。使用数字键滚动地图到起始点，Alt+数字键"
-#~ "设置相应玩家的起始点。使用delete键清除光标位置的起始点。"
-
-#~ msgid ""
-#~ "Click to paste, zoom out for more accuracy when pasting large areas. Use "
-#~ "the edit menu to transform the clipboard (rotate, mirror)."
-#~ msgstr ""
-#~ "单击以粘贴，粘贴大面积区域时请对地图进行缩小以提高精度。使用编辑菜单来变换"
-#~ "剪贴板中的数据（旋转，镜像）。"
-
-#~ msgid "Empty map file"
-#~ msgstr "空地图文件"
-
-#~ msgid "Custom setting"
-#~ msgstr "自定义设置"
-
-#~ msgid "Edit"
-#~ msgstr "编辑"
-
-#~ msgid "Undo"
-#~ msgstr "撤销"
-
-#~ msgid "Can’t Undo"
-#~ msgstr "无法撤销"
-
-#~ msgid "Redo"
-#~ msgstr "恢复"
-
-#~ msgid "Can’t Redo"
-#~ msgstr "无法恢复"
-
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "自动更新地形过渡：是"
-
-#~ msgid "Auto-update Terrain Transitions: Partial"
-#~ msgstr "自动更新地形过渡：部分"
-
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "自动更新地形过渡：否"
