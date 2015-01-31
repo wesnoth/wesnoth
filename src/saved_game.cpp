@@ -191,6 +191,20 @@ void saved_game::write_general_info(config_writer& out) const
 }
 
 
+void saved_game::set_default_save_id()
+{
+	//Set this default value immideately after reading the scenario is importent because otherwise
+	//we might endup settings this value to the multiplayer players name, which would break carryover.
+	//(doing this in at config loading in game_config would be ok too i think.)
+	BOOST_FOREACH(config& side, starting_pos_.child_range("side"))
+	{
+		if(side["save_id"].str() == "")
+		{
+			side["save_id"] = side["id"];
+		}
+	}
+}
+
 void saved_game::expand_scenario()
 {
 	if(this->starting_pos_type_ == STARTINGPOS_NONE && !has_carryover_expanded_)
@@ -209,17 +223,7 @@ void saved_game::expand_scenario()
 			mp_settings_.hash = scenario.hash();
 
 			update_label();
-
-			//Set this default value immideately after reading the scenario is importent because otherwise
-			//we might endup settings this value to the multiplayer players name, which would break carryover.
-			//(doing this in at config loading in game_config would be ok too i think.)
-			BOOST_FOREACH(config& side, starting_pos_.child_range("side"))
-			{
-				if(side["save_id"].str() == "")
-				{
-					side["save_id"] = side["id"];
-				}
-			}
+			set_default_save_id();
 		}
 		else
 		{
@@ -338,6 +342,7 @@ void saved_game::expand_random_scenario()
 			scenario_new["id"] = starting_pos_["id"]; 
 			starting_pos_ = scenario_new;
 			update_label();
+			set_default_save_id();
 		}
 		//it looks like we support a map= where map=filename equals more or less map_data={filename}
 		if(starting_pos_["map_data"].empty() && !starting_pos_["map"].empty()) {

@@ -97,7 +97,7 @@ public:
 	 */
 	config replay_data;
 
-
+	void set_default_save_id();
 private:
 	
 	bool has_carryover_expanded_;
