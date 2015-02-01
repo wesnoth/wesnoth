@@ -9,15 +9,12 @@
 
 namespace ng {
 
-static const config dummy;
-
 configure_engine::configure_engine(saved_game& state) :
 	state_(state),
 	parameters_(state_.mp_settings()),
-	sides_(state_.get_starting_pos().child_range("side")),
-	cfg_(sides_.first != sides_.second ? *sides_.first : dummy) //second part is just any old config, it will be ignored
+	side_cfg_(state_.get_starting_pos().child_or_empty("side"))
 {
-	if (sides_.first == sides_.second) {
+	if (!state_.get_starting_pos().has_child("side")) {
 		std::stringstream msg;
 		msg << "Configure Engine: No sides found in scenario, aborting.";
 		std::cerr << msg.str();
@@ -129,13 +126,13 @@ int configure_engine::num_turns_default() const {
 		preferences::turns();
 }
 int configure_engine::village_gold_default() const {
-	return use_map_settings() && sides_.first != sides_.second ?
-		settings::get_village_gold(cfg_["village_gold"], state_.classification().campaign_type) :
+	return use_map_settings() && !side_cfg_.empty() ?
+		settings::get_village_gold(side_cfg_["village_gold"], state_.classification().campaign_type) :
 		preferences::village_gold();
 }
 int configure_engine::village_support_default() const {
-	return use_map_settings() && sides_.first != sides_.second ?
-		settings::get_village_support(cfg_["village_support"]) :
+	return use_map_settings() && !side_cfg_.empty() ?
+		settings::get_village_support(side_cfg_["village_support"]) :
 		preferences::village_support();
 }
 int configure_engine::xp_modifier_default() const {
@@ -167,13 +164,13 @@ bool configure_engine::random_start_time_default() const {
 		preferences::random_start_time();
 }
 bool configure_engine::fog_game_default() const {
-	return use_map_settings() && sides_.first != sides_.second ?
-		cfg_["fog"].to_bool(state_.classification().campaign_type != game_classification::SCENARIO) :
+	return use_map_settings() && !side_cfg_.empty() ?
+		side_cfg_["fog"].to_bool(state_.classification().campaign_type != game_classification::SCENARIO) :
 		preferences::fog();
 }
 bool configure_engine::shroud_game_default() const {
-	return use_map_settings() && sides_.first != sides_.second ?
-		cfg_["shroud"].to_bool(false) :
+	return use_map_settings() && !side_cfg_.empty() ?
+		side_cfg_["shroud"].to_bool(false) :
 		preferences::shroud();
 }
 bool configure_engine::allow_observers_default() const {

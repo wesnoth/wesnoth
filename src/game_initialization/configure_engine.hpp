@@ -107,7 +107,6 @@ public:
 private:
 	saved_game& state_;
 	mp_game_settings& parameters_;
-	config::const_child_itors sides_;
 	// village gold, village support, fog, and shroud are per player, always show values of player 1.
 	/**
 	 * @todo This might not be 100% correct, but at the moment
@@ -115,7 +114,7 @@ private:
 	 * This might change in the future.
 	 * NOTE when 'load game' is selected there are no sides.
 	 */
-	const config &cfg_;
+	const config &side_cfg_;
 
 	std::vector<const config*> entry_points_;
 	
