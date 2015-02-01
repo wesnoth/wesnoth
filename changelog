@@ -254,6 +254,7 @@ Version 1.13.0-dev:
    * force_lock_settings defaults to yes in [scenario].
    * Moved all preprocessor diagnostics from the 'config' log domain to
      'preprocessor'.
+   * New WML tag [sync_variable]
  * Miscellaneous and bug fixes:
    * replace 'fight_on_without_leader'=yes/no with defeat_condition=no_leader/
      no_units/always/never which allows the wml developer to decide when a side
