@@ -204,11 +204,6 @@ public:
 	 */
 	void insert_element(elem_type type, const config& data, int pos);
 
-	/**
-	 * Shows the options dialog and saves the selected values.
-	 */
-	void show_dialog();
-
 	void layout_widgets(int startx, int starty);
 	void process_event();
 	void hide_children(bool hide=true);
