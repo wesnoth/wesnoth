@@ -62,6 +62,8 @@ LEVEL_RESULT play_replay_level(const config& game_config, const tdata_cache & td
 
 	boost::scoped_ptr<replay_controller> rc;
 
+	const events::command_disabler disable_commands;
+
 	try {
 		rc.reset(new replay_controller(state_of_game.get_replay_starting_pos(), state_of_game, ticks, game_config, tdata, video));
 	} catch (end_level_exception & e){
@@ -70,8 +72,6 @@ LEVEL_RESULT play_replay_level(const config& game_config, const tdata_cache & td
 		throw; //this should never happen? It would likely have crashed the program before, so in refactor I won't change but we should fix it later.
 	}
 	DBG_NG << "created objects... " << (SDL_GetTicks() - rc->get_ticks()) << std::endl;
-
-	const events::command_disabler disable_commands;
 
 	//replay event-loop
 	possible_end_play_signal signal = play_replay_level_main_loop(*rc, is_unit_test);
