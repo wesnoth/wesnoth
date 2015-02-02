@@ -160,19 +160,9 @@ void manager::set_era(const std::string& era)
 	era_ = era;
 }
 
-void manager::set_era_by_index(int index)
-{
-	era_ = options_info_.child("era", index)["id"].str();
-}
-
 void manager::set_scenario(const std::string& scenario)
 {
 	scenario_ = scenario;
-}
-
-void manager::set_scenario_by_index(int index)
-{
-	scenario_ = options_info_.child("multiplayer", index - 1)["id"].str();
 }
 
 void manager::set_modifications(const std::vector<std::string>& modifications)

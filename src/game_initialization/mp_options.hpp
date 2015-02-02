@@ -175,28 +175,12 @@ public:
 	void set_era(const std::string& id);
 
 	/**
-	 * Sets the selected era. Whenever show_dialog is called, only
-	 * options for the selected era will be displayed.
-	 *
-	 * @param index				The era's index.
-	 */
-	void set_era_by_index(int index);
-
-	/**
 	 * Sets the selected scenario. Whenever show_dialog is called, only
 	 * options for the selected scenario will be displayed.
 	 *
 	 * @param id 				The scenario's id.
 	 */
 	void set_scenario(const std::string& id);
-
-	/**
-	 * Sets the selected scenario. Whenever show_dialog is called, only
-	 * options for the selected scenario will be displayed.
-	 *
-	 * @param index 				The scenario's index.
-	 */
-	void set_scenario_by_index(int index);
 
 	/**
 	 * Sets the activated modifications. Whenever show_dialog is called, only
