@@ -1115,12 +1115,18 @@ void create_engine::init_extras(const MP_EXTRA extra_type)
 	BOOST_FOREACH(const config &extra,
 		game_config_manager::get()->game_config().child_range(extra_name)) {
 
-		extras_metadata_ptr new_extras_metadata(new extras_metadata());
-		new_extras_metadata->id = extra["id"].str();
-		new_extras_metadata->name = extra["name"].str();
-		new_extras_metadata->description = extra["description"].str();
+		const std::string& type = extra["type"];
+		bool mp = state_.classification().campaign_type == game_classification::MULTIPLAYER;
 
-		extras.push_back(new_extras_metadata);
+		if((type != "mp" || mp) && (type != "sp" || !mp) )
+		{
+			extras_metadata_ptr new_extras_metadata(new extras_metadata());
+			new_extras_metadata->id = extra["id"].str();
+			new_extras_metadata->name = extra["name"].str();
+			new_extras_metadata->description = extra["description"].str();
+
+			extras.push_back(new_extras_metadata);
+		}
 	}
 }
 
