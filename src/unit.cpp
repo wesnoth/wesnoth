@@ -35,6 +35,7 @@
 #include "random_new.hpp"               // for generator, rng
 #include "resources.hpp"                // for units, gameboard, teams, etc
 #include "scripting/game_lua_kernel.hpp"            // for game_lua_kernel
+#include "synced_context.hpp"
 #include "side_filter.hpp"              // for side_filter
 #include "team.hpp"                     // for team, get_teams, etc
 #include "terrain_filter.hpp"           // for terrain_filter
@@ -2102,8 +2103,13 @@ bool unit::is_visible_to_team(team const& team, gamemap const& map, bool const s
 }
 
 void unit::set_underlying_id() {
-	if(underlying_id_ == 0){
-		underlying_id_ = n_unit::id_manager::instance().next_id();
+	if(underlying_id_ == 0) {
+		if(synced_context::get_synced_state() == synced_context::SYNCED) {
+			underlying_id_ = n_unit::id_manager::instance().next_id();
+		}
+		else {
+			underlying_id_ = n_unit::id_manager::instance().next_fake_id();
+		}
 	}
 	if (id_.empty()) {
 		std::stringstream ss;
@@ -2117,7 +2123,12 @@ unit& unit::clone(bool is_temporary)
 	if(is_temporary) {
 		underlying_id_ = n_unit::id_manager::instance().next_fake_id();
 	} else {
-		underlying_id_ = n_unit::id_manager::instance().next_id();
+		if(synced_context::get_synced_state() == synced_context::SYNCED) {
+			underlying_id_ = n_unit::id_manager::instance().next_id();
+		}
+		else {
+			underlying_id_ = n_unit::id_manager::instance().next_fake_id();
+		}
 		std::string::size_type pos = id_.find_last_of('-');
 		if(pos != std::string::npos && pos+1 < id_.size()
 		&& id_.find_first_not_of("0123456789", pos+1) == std::string::npos) {
