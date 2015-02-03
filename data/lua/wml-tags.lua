@@ -846,7 +846,7 @@ end
 
 function wml_actions.terrain(cfg)
 	local terrain = cfg.terrain or helper.wml_error("[terrain] missing required terrain= attribute")
-	cfg = helper.parsed(cfg)
+	cfg = helper.shallow_parsed(cfg)
 	cfg.terrain = nil
 	for i, loc in ipairs(wesnoth.get_locations(cfg)) do
 		wesnoth.set_terrain(loc[1], loc[2], terrain, cfg.layer, cfg.replace_if_failed)
