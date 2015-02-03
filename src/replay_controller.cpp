@@ -37,6 +37,7 @@
 #include "scripting/game_lua_kernel.hpp"
 #include "statistics.hpp"
 #include "synced_context.hpp"
+#include "unit_id.hpp"
 #include "whiteboard/manager.hpp"
 
 #include <boost/foreach.hpp>
@@ -357,6 +358,7 @@ void replay_controller::reset_replay()
 
 	config::attribute_value random_seed = level_["random_seed"];
 	resources::gamedata->rng().seed_random(random_seed.str(), level_["random_calls"]);
+	n_unit::id_manager::instance().set_save_id(level_["next_underlying_unit_id"]);
 	statistics::fresh_stats();
 	set_victory_when_enemies_defeated(level_["victory_when_enemies_defeated"].to_bool(true));
 
