@@ -31,6 +31,8 @@
 #include "preferences_display.hpp"
 #include "game_end_exceptions.hpp"
 
+#include <cassert>
+
 static lg::log_domain log_config("config");
 #define ERR_G  LOG_STREAM(err,   lg::general)
 #define WRN_G  LOG_STREAM(warn,   lg::general)
@@ -290,6 +292,7 @@ void command_executor::set_button_state(display& disp) {
 	BOOST_FOREACH(const theme::action& action, disp.get_theme().actions()) {
 
 		gui::button* button = disp.find_action_button(action.get_id());
+		assert(button);
 		bool enabled = false;
 		int i = 0;
 		BOOST_FOREACH(const std::string& command, action.items()) {
