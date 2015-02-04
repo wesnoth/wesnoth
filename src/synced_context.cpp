@@ -51,6 +51,7 @@ static lg::log_domain log_replay("replay");
 
 
 synced_context::synced_state synced_context::state_ = synced_context::UNSYNCED;
+int synced_context::last_unit_id_ = 0;
 bool synced_context::is_simultaneously_ = false;
 
 bool synced_context::run_in_synced_context(const std::string& commandname, const config& data, bool use_undo, bool show,  bool store_in_replay, synced_command::error_handler_function error_handler)
@@ -187,6 +188,19 @@ bool synced_context::can_undo()
 	//if we called the rng or if we sended data of this action over the network already, undoing is impossible.
 	return (!is_simultaneously_) && (random_new::generator->get_random_calls() == 0);
 }
+
+void synced_context::set_last_unit_id(int id)
+{
+	last_unit_id_ = id;
+}
+
+int synced_context::get_unit_id_diff()
+{
+	//this method only works in a synced context.
+	assert(get_synced_state() == SYNCED);
+	return n_unit::id_manager::instance().get_save_id() - last_unit_id_;
+}
+
 namespace
 {
 	class lua_network_error : public network::error , public tlua_jailbreak_exception
@@ -374,6 +388,7 @@ void set_scontext_synced::init()
 	synced_context::set_synced_state(synced_context::SYNCED);
 	synced_context::reset_is_simultaneously();
 
+	synced_context::set_last_unit_id(n_unit::id_manager::instance().get_save_id());
 	old_checkup_ = checkup_instance;
 	checkup_instance = &*new_checkup_;
 	old_rng_ = random_new::generator;

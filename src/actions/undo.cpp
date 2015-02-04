@@ -37,6 +37,7 @@
 #include "../unit.hpp"                  // for unit
 #include "../unit_animation_component.hpp"
 #include "../unit_display.hpp"          // for move_unit
+#include "../unit_id.hpp"
 #include "../unit_map.hpp"              // for unit_map, etc
 #include "../unit_ptr.hpp"      // for unit_const_ptr, unit_ptr
 #include "../unit_types.hpp"               // for unit_type, unit_type_data, etc
@@ -82,7 +83,9 @@ struct undo_list::dismiss_action : undo_list::undo_action {
 
 	explicit dismiss_action(const unit_const_ptr dismissed) : undo_action(),
 		dismissed_unit(new unit(*dismissed))
-	{}
+	{
+		this->unit_id_diff = synced_context::get_unit_id_diff();
+	}
 	explicit dismiss_action(const config & unit_cfg) : undo_action(),
 		dismissed_unit(new unit(unit_cfg))
 	{}
@@ -117,7 +120,9 @@ struct undo_list::move_action : undo_list::undo_action {
 		countdown_time_bonus(timebonus),
 		starting_dir(dir == map_location::NDIRECTIONS ? moved->facing() : dir),
 		goto_hex(moved->get_goto())
-	{}
+	{
+		this->unit_id_diff = synced_context::get_unit_id_diff();
+	}
 	move_action(const config & unit_cfg, const config & route_cfg,
 	            int sm, int timebonus, int orig, const map_location::DIRECTION dir) :
 		undo_action(unit_cfg),
@@ -153,7 +158,9 @@ struct undo_list::recall_action : undo_list::undo_action {
 		undo_action(recalled, loc),
 		id(recalled->id()),
 		recall_from(from)
-	{}
+	{
+		this->unit_id_diff = synced_context::get_unit_id_diff();
+	}
 	recall_action(const config & unit_cfg, const map_location & loc,
 		          const map_location & from) :
 		undo_action(unit_cfg, loc),
@@ -183,7 +190,9 @@ struct undo_list::recruit_action : undo_list::undo_action {
 		undo_action(recruited, loc),
 		u_type(recruited->type()),
 		recruit_from(from)
-	{}
+	{
+		this->unit_id_diff = synced_context::get_unit_id_diff();
+	}
 	recruit_action(const config & unit_cfg, const unit_type & type,
 	               const map_location& loc, const map_location& from) :
 		undo_action(unit_cfg, loc),
@@ -211,6 +220,12 @@ struct undo_list::auto_shroud_action : undo_list::undo_action {
 		undo_action(),
 		active(turned_on)
 	{}
+	explicit auto_shroud_action(bool turned_on, int unit_id_diff) :
+		undo_action(),
+		active(turned_on)
+	{
+		this->unit_id_diff = unit_id_diff;
+	}
 	virtual ~auto_shroud_action();
 
 	/// Writes this into the provided config.
@@ -228,6 +243,10 @@ struct undo_list::update_shroud_action : undo_list::undo_action {
 	// No additional data.
 
 	update_shroud_action() : undo_action() {}
+	update_shroud_action(int unit_id_diff) : undo_action() 
+	{
+		this->unit_id_diff = unit_id_diff;
+	}
 	virtual ~update_shroud_action();
 
 	/// Writes this into the provided config.
@@ -299,6 +318,7 @@ undo_list::undo_action::create(const config & cfg)
 		return NULL;
 	}
 	res->replay_data = cfg.child_or_empty("replay_data");
+	res->unit_id_diff = cfg["unit_id_diff"];
 	return res;
 }
 
@@ -309,6 +329,7 @@ undo_list::undo_action::create(const config & cfg)
 void undo_list::dismiss_action::write(config & cfg) const
 {
 	cfg.add_child("replay_data", replay_data);
+	cfg["unit_id_diff"] = unit_id_diff;
 	cfg["type"] = "dismiss";
 	dismissed_unit->write(cfg.add_child("unit"));
 }
@@ -319,6 +340,7 @@ void undo_list::dismiss_action::write(config & cfg) const
 void undo_list::recall_action::write(config & cfg) const
 {
 	cfg.add_child("replay_data", replay_data);
+	cfg["unit_id_diff"] = unit_id_diff;
 	cfg["type"] = "recall";
 	route.front().write(cfg);
 	recall_from.write(cfg.add_child("leader"));
@@ -334,6 +356,7 @@ void undo_list::recall_action::write(config & cfg) const
 void undo_list::recruit_action::write(config & cfg) const
 {
 	cfg.add_child("replay_data", replay_data);
+	cfg["unit_id_diff"] = unit_id_diff;
 	cfg["type"] = "recruit";
 	route.front().write(cfg);
 	recruit_from.write(cfg.add_child("leader"));
@@ -349,6 +372,7 @@ void undo_list::recruit_action::write(config & cfg) const
 void undo_list::move_action::write(config & cfg) const
 {
 	cfg.add_child("replay_data", replay_data);
+	cfg["unit_id_diff"] = unit_id_diff;
 	cfg["type"] = "move";
 	cfg["starting_direction"] = map_location::write_direction(starting_dir);
 	cfg["starting_moves"] = starting_moves;
@@ -368,6 +392,7 @@ void undo_list::move_action::write(config & cfg) const
 void undo_list::auto_shroud_action::write(config & cfg) const
 {
 	cfg.add_child("replay_data", replay_data);
+	cfg["unit_id_diff"] = unit_id_diff;
 	cfg["type"] = "auto_shroud";
 	cfg["active"] = active;
 }
@@ -378,6 +403,7 @@ void undo_list::auto_shroud_action::write(config & cfg) const
 void undo_list::update_shroud_action::write(config & cfg) const
 {
 	cfg.add_child("replay_data", replay_data);
+	cfg["unit_id_diff"] = unit_id_diff;
 	cfg["type"] = "update_shroud";
 }
 
@@ -412,7 +438,7 @@ void undo_list::add_auto_shroud(bool turned_on)
 	/// @todo: Consecutive shroud actions can be collapsed into one.
 
 	// Do not call add(), as this should not clear the redo stack.
-	undos_.push_back(new auto_shroud_action(turned_on));
+	undos_.push_back(new auto_shroud_action(turned_on, synced_context::get_unit_id_diff()));
 }
 
 /**
@@ -463,7 +489,7 @@ void undo_list::add_update_shroud()
 	/// @todo: Consecutive shroud actions can be collapsed into one.
 
 	// Do not call add(), as this should not clear the redo stack.
-	undos_.push_back(new update_shroud_action());
+	undos_.push_back(new update_shroud_action(synced_context::get_unit_id_diff()));
 }
 
 
@@ -619,9 +645,14 @@ void undo_list::undo()
 	// Get the action to undo. (This will be placed on the redo stack, but
 	// only if the undo is successful.)
 	action_list::auto_type action = undos_.pop_back();
-
-	if ( !action->undo(side_, *this) )
+	int last_unit_id = n_unit::id_manager::instance().get_save_id();
+	if ( !action->undo(side_, *this) ) {
 		return;
+	}
+	if(last_unit_id - action->unit_id_diff < 0) {
+		ERR_NG << "Next unit id is below 0 after undoing" << std::endl;
+	}
+	n_unit::id_manager::instance().set_save_id(last_unit_id - action->unit_id_diff);
 
 	// Bookkeeping.
 	recorder.undo_cut(action->get_replay_data());
@@ -830,9 +861,14 @@ void undo_list::redo()
 	// Get the action to redo. (This will be placed on the undo stack, but
 	// only if the redo is successful.)
 	action_list::auto_type action = redos_.pop_back();
-
-	if ( !action->redo(side_) )
+	int last_unit_id = n_unit::id_manager::instance().get_save_id();
+	if ( !action->redo(side_) ) {
 		return;
+	}
+	if(last_unit_id + action->unit_id_diff < n_unit::id_manager::instance().get_save_id()) {
+		ERR_NG << "Too much units were generated during redoing." << std::endl;
+	}
+	n_unit::id_manager::instance().set_save_id(last_unit_id + action->unit_id_diff);
 
 	// Bookkeeping.
 	undos_.push_back(action.release());

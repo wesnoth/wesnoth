@@ -112,6 +112,8 @@ public:
 		@return whether there were recently no methods called that prevent undoing.
 	*/
 	static bool can_undo();
+	static void set_last_unit_id(int id);
+	static int get_unit_id_diff();
 private:
 	/*
 		generates a random seed, if we are in a mp game, ask the server, otherwise generate the seed ourselves.
@@ -128,6 +130,10 @@ private:
 		false = we are on a local turn and haven't sended anything yet.
 	*/
 	static bool is_simultaneously_;
+	/**
+		Used to restore the unit id manager when undoing.
+	*/
+	static int last_unit_id_;
 };
 
 /*

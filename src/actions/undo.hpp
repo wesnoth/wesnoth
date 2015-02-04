@@ -41,6 +41,8 @@ class undo_list : boost::noncopyable {
 		undo_action(const unit_const_ptr u,
 			        const std::vector<map_location>::const_iterator & begin,
 			        const std::vector<map_location>::const_iterator & end) :
+				replay_data(),
+				unit_id_diff(),
 				route(begin, end),
 				view_info(new clearer_info(*u))
 			{
@@ -48,24 +50,32 @@ class undo_list : boost::noncopyable {
 		/// Constructor for recruit and recall actions.
 		/// These types of actions are guaranteed to have a non-empty route.
 		undo_action(const unit_const_ptr u, const map_location& loc) :
+				replay_data(),
+				unit_id_diff(),
 				route(1, loc),
 				view_info(new clearer_info(*u))
 			{}
 		/// Constructor from a config storing the view info.
 		/// Does not set @a route.
 		explicit undo_action(const config & cfg) :
+				replay_data(),
+				unit_id_diff(),
 				route(),
 				view_info(new clearer_info(cfg))
 			{}
 		/// Constructor from a config storing the view info and a location.
 		/// Guarantees a non-empty route.
 		explicit undo_action(const config & cfg, const map_location & loc) :
+				replay_data(),
+				unit_id_diff(),
 				route(1, loc),
 				view_info(new clearer_info(cfg))
 			{}
 		/// Default constructor.
 		/// This is the only way to get NULL view_info.
 		undo_action() :
+				replay_data(),
+				unit_id_diff(),
 				route(),
 				view_info(NULL)
 			{}
@@ -94,6 +104,7 @@ class undo_list : boost::noncopyable {
 		/// but even undoable commands can have "dependent" (= user_input) commands, which we save here.
 		config replay_data;
 
+		int unit_id_diff;
 		/// The hexes occupied by the affected unit during this action.
 		std::vector<map_location> route;
 		/// A record of the affected unit's ability to see.
