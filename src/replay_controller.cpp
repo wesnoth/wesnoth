@@ -91,6 +91,7 @@ replay_controller::replay_controller(const config& level,
 	loading_game_ = false;
 
 	init();
+	const events::command_disabler disable_commands;
 	reset_replay();
 }
 
