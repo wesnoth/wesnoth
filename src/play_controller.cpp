@@ -382,10 +382,11 @@ void play_controller::maybe_do_init_side(bool is_replay, bool only_visual) {
 		return;
 	}
 
-	if(!only_visual){
+	if(!only_visual) {
 		recorder.init_side();
 		set_scontext_synced sync;
 		do_init_side(is_replay);
+		sync.do_final_checkup();
 	}
 	else
 	{
@@ -529,6 +530,7 @@ void play_controller::finish_side_turn(){
 		pump().fire("side "+ side_num + " turn end");
 		pump().fire("side turn " + turn_num + " end");
 		pump().fire("side " + side_num + " turn " + turn_num + " end");
+		sync.do_final_checkup();
 	}
 	// This is where we refog, after all of a side's events are done.
 	actions::recalculate_fog(player_number_);
@@ -551,6 +553,7 @@ void play_controller::finish_turn()
 	const std::string turn_num = str_cast(turn());
 	pump().fire("turn end");
 	pump().fire("turn " + turn_num + " end");
+	sync.do_final_checkup();
 }
 
 bool play_controller::enemies_visible() const

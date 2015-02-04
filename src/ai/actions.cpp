@@ -292,6 +292,7 @@ void attack_result::do_execute()
 		set_scontext_synced sync;
 		attack_unit_and_advance(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, true, advancements_);
 		resources::controller->check_victory();
+		sync.do_final_checkup();
 	}
 	else
 	{

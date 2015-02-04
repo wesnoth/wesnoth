@@ -929,7 +929,7 @@ bool undo_list::recall_action::redo(int side)
 	if ( msg.empty() ) {
 		recorder.redo(replay_data);
 		replay_data.clear();
-		set_scontext_synced sco;
+		set_scontext_synced sync;
 		recall_unit(id, current_team, loc, from, true, false);
 
 		// Quick error check. (Abuse of [allow_undo]?)
@@ -940,6 +940,7 @@ bool undo_list::recall_action::redo(int side)
 			// undoing this works.
 			route.front() = loc;
 		}
+		sync.do_final_checkup();
 	} else {
 		gui::dialog(gui, "", msg, gui::OK_ONLY).show();
 		return false;
@@ -976,7 +977,7 @@ bool undo_list::recruit_action::redo(int side)
 		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 		recorder.redo(replay_data);
 		replay_data.clear();
-		set_scontext_synced sco;
+		set_scontext_synced sync;
 		recruit_unit(u_type, side, loc, from, true, false);
 
 		// Quick error check. (Abuse of [allow_undo]?)
@@ -987,6 +988,7 @@ bool undo_list::recruit_action::redo(int side)
 			// undoing this works.
 			route.front() = loc;
 		}
+		sync.do_final_checkup();
 	} else {
 		gui::dialog(gui, "", msg, gui::OK_ONLY).show();
 		return false;

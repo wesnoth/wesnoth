@@ -372,7 +372,7 @@ void replay_controller::reset_replay()
 
 	// Scenario initialization. (c.f. playsingle_controller::play_scenario())
 	fire_preload();
-	if(true){ //block for set_scontext_synced
+	{ //block for set_scontext_synced
 		if(recorder.add_start_if_not_there_yet())
 		{
 			ERR_REPLAY << "inserted missing [start]" << std::endl;
@@ -388,6 +388,7 @@ void replay_controller::reset_replay()
 		fire_prestart();
 		init_gui();
 		fire_start(true);
+		sync.do_final_checkup();
 	}
 	// Since we did not fire the start event, it_is_a_new_turn_ has the wrong value.
 	it_is_a_new_turn_ = true;

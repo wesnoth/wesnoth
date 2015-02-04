@@ -251,7 +251,7 @@ boost::optional<LEVEL_RESULT> playsingle_controller::play_scenario_init(end_leve
 			assert(false && "caugh end_turn exception in a bad place... terminating.");
 			std::terminate();
 		}
-
+		sync.do_final_checkup();
 		gui_->recalculate_minimap();
 	}
 	else

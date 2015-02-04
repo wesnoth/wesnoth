@@ -149,7 +149,7 @@ public:
 	set_scontext_synced(int num);
 	~set_scontext_synced();
 	int get_random_calls();
-	void do_final_checkup();
+	void do_final_checkup(bool dont_throw = false);
 private:
 	//only called by contructors.
 	void init();
@@ -159,6 +159,7 @@ private:
 	checkup* old_checkup_;
 	boost::scoped_ptr<checkup> new_checkup_;
 	events::command_disabler disabler_;
+	bool did_final_checkup_;
 };
 
 /*

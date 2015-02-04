@@ -75,7 +75,7 @@ bool synced_context::run_in_synced_context(const std::string& commandname, const
 		use this after recorder.add_synced_command
 		because set_scontext_synced sets the checkup to the last added command
 	*/
-	set_scontext_synced sco;
+	set_scontext_synced sync;
 	synced_command::map::iterator it = synced_command::registry().find(commandname);
 	if(it == synced_command::registry().end())
 	{
@@ -95,6 +95,7 @@ bool synced_context::run_in_synced_context(const std::string& commandname, const
 	// this might also be a good point to call resources::controller->check_victory();
 	// because before for example if someone kills all units during a moveto event they don't loose.
 	resources::controller->check_victory();
+	sync.do_final_checkup();
 	DBG_REPLAY << "run_in_synced_context end\n";
 	return true;
 }
@@ -389,14 +390,16 @@ void set_scontext_synced::init()
 	synced_context::reset_is_simultaneously();
 
 	synced_context::set_last_unit_id(n_unit::id_manager::instance().get_save_id());
+	did_final_checkup_ = false;
 	old_checkup_ = checkup_instance;
 	checkup_instance = &*new_checkup_;
 	old_rng_ = random_new::generator;
 	random_new::generator = new_rng_.get();
 }
 
-void set_scontext_synced::do_final_checkup()
+void set_scontext_synced::do_final_checkup(bool dont_throw)
 {
+	assert(!did_final_checkup_);
 	std::stringstream msg;
 	config co;
 	config cn = config_of
@@ -422,8 +425,16 @@ void set_scontext_synced::do_final_checkup()
 	if(!msg.str().empty())
 	{
 		msg << co.debug() << std::endl;
-		ERR_REPLAY << msg.str() << std::flush;
+		if(dont_throw)
+		{
+			ERR_REPLAY << msg.str() << std::flush;
+		}
+		else
+		{
+			replay::process_error(msg.str());
+		}
 	}
+	did_final_checkup_ = true;
 }
 
 set_scontext_synced::~set_scontext_synced()
@@ -431,9 +442,10 @@ set_scontext_synced::~set_scontext_synced()
 	LOG_REPLAY << "set_scontext_synced:: destructor\n";
 	assert(synced_context::get_synced_state() == synced_context::SYNCED);
 	assert(checkup_instance == &*new_checkup_);
-
-	do_final_checkup();
-
+	if(!did_final_checkup_)
+	{
+		do_final_checkup(true);
+	}
 	random_new::generator = old_rng_;
 	synced_context::set_synced_state(synced_context::UNSYNCED);
 
