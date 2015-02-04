@@ -74,8 +74,8 @@ class undo_list : boost::noncopyable {
 
 
 		/// Creates an undo_action based on a config.
-		/// Throws bad_lexical_cast if it cannot parse the config properly.
-		static undo_action * create(const config & cfg, const std::string & tag);
+		/// Throws bad_lexical_cast or config::error if it cannot parse the config properly.
+		static undo_action * create(const config & cfg);
 		/// Writes this into the provided config.
 		virtual void write(config & cfg) const = 0;
 

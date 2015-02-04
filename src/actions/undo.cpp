@@ -244,12 +244,10 @@ undo_list::update_shroud_action::~update_shroud_action()
 
 /**
  * Creates an undo_action based on a config.
- * @param  tag  is the tag of this config, which is used for error reporting.
- *              It should be enclosed in square brackets.
  * @return a pointer that must be deleted, or NULL if the @a cfg could not be parsed.
  */
 undo_list::undo_action *
-undo_list::undo_action::create(const config & cfg, const std::string & tag)
+undo_list::undo_action::create(const config & cfg)
 {
 	const std::string str = cfg["type"];
 	undo_list::undo_action * res = NULL;
@@ -258,7 +256,7 @@ undo_list::undo_action::create(const config & cfg, const std::string & tag)
 	// parses everything else.
 
 	if ( str == "move" ) {
-		res = new move_action(cfg.child("unit", tag), cfg,
+		res = new move_action(cfg.child("unit"), cfg,
 		                       cfg["starting_moves"],
 		                       cfg["time_bonus"],
 		                       cfg["village_owner"],
@@ -267,12 +265,12 @@ undo_list::undo_action::create(const config & cfg, const std::string & tag)
 
 	else if ( str == "recruit" ) {
 		// Validate the unit type.
-		const config & child = cfg.child("unit", tag);
+		const config & child = cfg.child("unit");
 		const unit_type * u_type = unit_types.find(child["type"]);
 
 		if ( !u_type ) {
 			// Bad data.
-			ERR_NG << "Invalid recruit found in " << tag << "; unit type '"
+			ERR_NG << "Invalid recruit found in [undo] or [redo]; unit type '"
 			       << child["type"] << "' was not found.\n";
 			return NULL;
 		}
@@ -282,12 +280,12 @@ undo_list::undo_action::create(const config & cfg, const std::string & tag)
 	}
 
 	else if ( str == "recall" )
-		res =  new recall_action(cfg.child("unit", tag),
+		res =  new recall_action(cfg.child("unit"),
 		                         map_location(cfg, NULL),
 		                         map_location(cfg.child_or_empty("leader"), NULL));
 
 	else if ( str == "dismiss" )
-		res =  new dismiss_action(cfg.child("unit", tag));
+		res =  new dismiss_action(cfg.child("unit"));
 
 	else if ( str == "auto_shroud" )
 		res =  new auto_shroud_action(cfg["active"].to_bool());
@@ -555,12 +553,16 @@ void undo_list::read(const config & cfg)
 	// Build the undo stack.
 	BOOST_FOREACH( const config & child, cfg.child_range("undo") ) {
 		try {
-			undo_action * action = undo_action::create(child, "[undo]");
+			undo_action * action = undo_action::create(child);
 			if ( action ) {
 				undos_.push_back(action);
 			}
 		} catch (bad_lexical_cast &) {
 			ERR_NG << "Error when parsing undo list from config: bad lexical cast." << std::endl;
+			ERR_NG << "config was: " << child.debug() << std::endl;
+			ERR_NG << "Skipping this undo action..." << std::endl;
+		} catch (config::error& e) {
+			ERR_NG << "Error when parsing undo list from config: " << e.what() << std::endl;
 			ERR_NG << "config was: " << child.debug() << std::endl;
 			ERR_NG << "Skipping this undo action..." << std::endl;
 		}
@@ -569,12 +571,16 @@ void undo_list::read(const config & cfg)
 	// Build the redo stack.
 	BOOST_FOREACH( const config & child, cfg.child_range("redo") ) {
 		try {
-			undo_action * action = undo_action::create(child, "[redo]");
+			undo_action * action = undo_action::create(child);
 			if ( action ) {
 				redos_.push_back(action);
 			}
 		} catch (bad_lexical_cast &) {
 			ERR_NG << "Error when parsing redo list from config: bad lexical cast." << std::endl;
+			ERR_NG << "config was: " << child.debug() << std::endl;
+			ERR_NG << "Skipping this redo action..." << std::endl;
+		} catch (config::error& e) {
+			ERR_NG << "Error when parsing redo list from config: " << e.what() << std::endl;
 			ERR_NG << "config was: " << child.debug() << std::endl;
 			ERR_NG << "Skipping this redo action..." << std::endl;
 		}
