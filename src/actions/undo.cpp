@@ -865,7 +865,7 @@ void undo_list::redo()
 	if ( !action->redo(side_) ) {
 		return;
 	}
-	if(last_unit_id + action->unit_id_diff < n_unit::id_manager::instance().get_save_id()) {
+	if(last_unit_id + action->unit_id_diff < static_cast<int>(n_unit::id_manager::instance().get_save_id())) {
 		ERR_NG << "Too much units were generated during redoing." << std::endl;
 	}
 	n_unit::id_manager::instance().set_save_id(last_unit_id + action->unit_id_diff);
