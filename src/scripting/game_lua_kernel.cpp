@@ -3006,6 +3006,27 @@ static int intf_add_modification(lua_State *L)
 }
 
 /**
+ * Advances a unit if the unit has enough xp.
+ * - Arg 1: unit.
+ * - Arg 2: optional boolean whether to animate the advancement.
+ * - Arg 3: optional boolean whether to fire advancement events.
+ */
+static int intf_advance_unit(lua_State *L)
+{
+	unit_ptr u = luaW_checkunit(L, 1, true);
+	advance_unit_params par(u->get_location());
+	if(lua_isboolean(L, 2)) {
+		par.animate(luaW_toboolean(L, 2));
+	}
+	if(lua_isboolean(L, 3)) {
+		par.fire_events(luaW_toboolean(L, 3));
+	}
+	advance_unit_at(par);
+	return 0;
+}
+
+
+/**
  * Adds a new known unit type to the help system.
  * - Arg 1: string.
  */
@@ -3715,6 +3736,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 	static luaL_Reg const callbacks[] = {
 		{ "add_known_unit",           &intf_add_known_unit           },
 		{ "add_modification",         &intf_add_modification         },
+		{ "advance_unit",             &intf_advance_unit             },
 		{ "copy_unit",                &intf_copy_unit                },
 		{ "create_unit",              &intf_create_unit              },
 		{ "debug",                    &intf_debug                    },
