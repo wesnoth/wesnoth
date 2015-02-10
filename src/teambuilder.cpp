@@ -153,7 +153,6 @@ protected:
 		gold_info_ngold_ = side_cfg_["gold"];
 
 		DBG_NG_TC << "set gold to '" << gold_info_ngold_ << "'\n";
-		//DBG_NG_TC << "set gold add flag to '" << gold_info_add_ << "'\n";
 	}
 
 
@@ -161,7 +160,6 @@ protected:
 	{
 		log_step("new team");
 		t_->build(side_cfg_, map_, gold_info_ngold_);
-		//t_->set_gold_add(gold_info_add_);
 	}
 
 

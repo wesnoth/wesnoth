@@ -76,7 +76,6 @@ team::team_info::team_info() :
 	name(),
 	gold(0),
 	start_gold(0),
-	gold_add(false),
 	income(0),
 	income_per_village(0),
 	support_per_village(1),
@@ -216,7 +215,6 @@ void team::team_info::write(config& cfg) const
 {
 	cfg["gold"] = gold;
 	cfg["start_gold"] = start_gold;
-	cfg["gold_add"] = gold_add;
 	cfg["income"] = income;
 	cfg["name"] = name;
 	cfg["team_name"] = team_name;
