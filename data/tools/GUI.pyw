@@ -46,11 +46,12 @@ WESNOTH_SERIES="1.13"
 # os.path.realpath gets the full path of this script,
 # while removing any symlink
 # This allows users to create a link to the app on their desktop
+# os.path.normpath allows Windows users to see their standard path separators
 APP_DIR,APP_NAME=os.path.split(os.path.realpath(sys.argv[0]))
 upper_dir=APP_DIR.split(os.sep)
 upper_dir.pop()
 WESNOTH_DATA_DIR=os.sep.join(upper_dir)
-WESNOTH_CORE_DIR=os.path.join(WESNOTH_DATA_DIR,"core")
+WESNOTH_CORE_DIR=os.path.normpath(os.path.join(WESNOTH_DATA_DIR,"core"))
 
 def wrap_elem(line):
     """If the supplied line contains spaces, return it wrapped between double quotes"""
@@ -346,7 +347,7 @@ It comes complete with a context menu and a directory selection screen"""
                 directory=askdirectory(initialdir=".")
         
         if directory:
-            self.textvariable.set(directory)
+            self.textvariable.set(os.path.normpath(directory))
     def on_clear(self):
         self.textvariable.set("")
 
