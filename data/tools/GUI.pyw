@@ -185,10 +185,11 @@ If the widget isn't active, some options do not appear"""
             # adding a SEL tag to a chunk of text causes it to be selected
             self.widget.tag_add(SEL,"1.0",END)
         elif isinstance(self.widget,Entry) or \
-             isinstance(self.widget,Spinbox) or \
              isinstance(self.widget,Combobox):
-            # if the widget is active or readonly, just fire the correct event
-            self.widget.event_generate("<<SelectAll>>")
+            # apparently, the <<SelectAll>> event doesn't fire correctly if the widget is readonly
+            self.widget.select_range(0,END)
+        elif isinstance(self.widget,Spinbox):
+            self.widget.selection("range",0,END)
 
 class EntryContext(Entry):
     def __init__(self,parent,**kwargs):
@@ -221,6 +222,9 @@ Use like any other Entry widget"""
             self.bind("<Button-3>",self.on_context_menu)
             self.bind("<KeyPress-Menu>",self.on_context_menu)
             self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+        # for some weird reason, using a KeyPress binding to set the selection on
+        # a readonly Entry or disabled Text doesn't work, but a KeyRelease does
+        self.bind("<Control-KeyRelease-a>", lambda event: self.select_range(0,END))
     def on_context_menu(self,event):
         if str(self.cget('state')) != DISABLED:
             ContextMenu(event.x_root,event.y_root,event.widget)
@@ -246,6 +250,7 @@ Use like any other Spinbox widget"""
             self.bind("<Button-3>",self.on_context_menu)
             self.bind("<KeyPress-Menu>",self.on_context_menu)
             self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+        self.bind("<Control-KeyRelease-a>", lambda event: self.selection("range",0,END))
     def on_context_menu(self,event):
         if str(self.cget('state')) != DISABLED:
             ContextMenu(event.x_root,event.y_root,event.widget)
@@ -271,6 +276,7 @@ Use it like any other Text widget"""
             self.bind("<Button-3>",self.on_context_menu)
             self.bind("<KeyPress-Menu>",self.on_context_menu)
             self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+        self.bind("<Control-KeyRelease-a>", lambda event: self.tag_add(SEL,"1.0",END))
     def on_context_menu(self,event):
         # the disabled state in a Text widget is pretty much
         # like the readonly state in Entry, hence no state check
