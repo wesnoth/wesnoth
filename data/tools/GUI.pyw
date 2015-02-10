@@ -347,6 +347,7 @@ It comes complete with a context menu and a directory selection screen"""
                 directory=askdirectory(initialdir=".")
         
         if directory:
+            # use os.path.normpath, so on Windows the usual backwards slashes are correctly shown
             self.textvariable.set(os.path.normpath(directory))
     def on_clear(self):
         self.textvariable.set("")
@@ -989,7 +990,14 @@ Please select a directory or disable the "Skip core directory" option""")
         if not self.wmllint_tab.skip_variable.get():
             wmllint_command_string.append(WESNOTH_CORE_DIR)
         if os.path.exists(umc_dir): # add-on exists
-            wmllint_command_string.append(umc_dir)
+            # the realpaths are here just in case that the user
+            # attempts to fool the script by feeding it a symlink
+            if os.path.realpath(WESNOTH_CORE_DIR) in os.path.realpath(umc_dir):
+                showwarning("Warning","""You selected the core directory or one of its subdirectories in the add-on selection box.
+
+wmllint will be run only on the Wesnoth core directory""")
+            else:
+                wmllint_command_string.append(umc_dir)
         elif not umc_dir: # path does not exists because the box was left empty
             showwarning("Warning","""You didn't select a directory.
 
@@ -1043,7 +1051,14 @@ wmllint will be run only on the Wesnoth core directory""")
         wmlscope_command_string.append(WESNOTH_CORE_DIR)
         umc_dir=self.dir_variable.get()
         if os.path.exists(umc_dir): # add-on exists
-            wmlscope_command_string.append(umc_dir)
+            # the realpaths are here just in case that the user
+            # attempts to fool the script by feeding it a symlink
+            if os.path.realpath(WESNOTH_CORE_DIR) in os.path.realpath(umc_dir):
+                showwarning("Warning","""You selected the core directory or one of its subdirectories in the add-on selection box.
+
+wmlscope will be run only on the Wesnoth core directory""")
+            else:
+                wmlscope_command_string.append(umc_dir)
         elif not umc_dir: # path does not exists because the box was left empty
             showwarning("Warning","""You didn't select a directory.
 
