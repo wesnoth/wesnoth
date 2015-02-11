@@ -24,9 +24,9 @@
 #include <cassert>
 
 carryover::carryover(const config& side)
-		: add_(side["add"].to_bool())
+		: add_(!side["carryover_add"].empty() ? side["carryover_add"].to_bool() : side["add"].to_bool())
 		, current_player_(side["current_player"])
-		, gold_(side["gold"].to_int())
+		, gold_(!side["carryover_gold"].empty() ? side["carryover_gold"].to_int() : side["gold"].to_int())
 		// if we load it from a snapshot we need to read the recruits from "recruits" and not from "previous_recruits".
 		, previous_recruits_(side.has_attribute("recruit") ? utils::set_split(side["recruit"]) :utils::set_split(side["previous_recruits"]))
 		, recall_list_()
@@ -112,10 +112,6 @@ void carryover::update_carryover(const team& t, const int gold, const bool add){
 	}
 }
 
-void carryover::initialize_team(config& side_cfg){
-	transfer_all_gold_to(side_cfg);
-}
-
 const std::string carryover::to_string(){
 	std::string side = "";
 	side.append("Side " + save_id_ + ": gold " + str_cast<int>(gold_) + " recruits " + get_recruits(false) + " units ");
@@ -123,11 +119,6 @@ const std::string carryover::to_string(){
 		side.append(u_cfg["name"].str() + ", ");
 	}
 	return side;
-}
-
-void carryover::set_gold(int gold, bool add){
-	gold_ = gold;
-	add_ = add;
 }
 
 void carryover::to_config(config& cfg){
@@ -150,7 +141,6 @@ carryover_info::carryover_info(const config& cfg, bool from_snpashot)
 	, next_scenario_(cfg["next_scenario"])
 	, next_underlying_unit_id_(cfg["next_underlying_unit_id"].to_int(0))
 {
-	int turns_left = std::max(0, cfg["turns"].to_int() - cfg["turn_at"].to_int());
 	end_level_.read(cfg.child_or_empty("end_level_data"));
 	BOOST_FOREACH(const config& side, cfg.child_range("side"))
 	{
@@ -161,13 +151,6 @@ carryover_info::carryover_info(const config& cfg, bool from_snpashot)
 			continue;
 		}
 		this->carryover_sides_.push_back(carryover(side));
-		if(from_snpashot)
-		{
-			//adjust gold
-			//base_income is side["income"] + game_config::base_income;
-			int finishing_bonus_per_turn = end_level_.gold_bonus ? cfg["map_villages_num"] * side["village_gold"] + side["income"] + game_config::base_income : 0;
-			carryover_sides_.back().set_gold(div100rounded((finishing_bonus_per_turn * turns_left + side["gold"]) * end_level_.carryover_percentage), end_level_.carryover_add);
-		}
 	}
 
 	wml_menu_items_.set_menu_items(cfg);
@@ -195,18 +178,6 @@ void carryover_info::remove_side(const std::string& id) {
 const end_level_data& carryover_info::get_end_level() const{
 	return end_level_;
 }
-
-void carryover_info::transfer_from(const team& t, int carryover_gold){
-	BOOST_FOREACH(carryover& side, carryover_sides_){
-		if(side.get_save_id() == t.save_id()){
-			side.update_carryover(t, carryover_gold, end_level_.carryover_add);
-			return;
-		}
-	}
-
-	carryover_sides_.push_back(carryover(t, carryover_gold, end_level_.carryover_add));
-}
-
 
 struct save_id_equals
 {
@@ -243,13 +214,6 @@ void carryover_info::transfer_all_to(config& side_cfg){
 			side_cfg["gold"] = default_gold_qty;
 		}
 	}
-}
-
-void carryover_info::transfer_from(game_data& gamedata){
-	variables_ = gamedata.get_variables();
-	wml_menu_items_ = gamedata.get_wml_menu_items();
-	rng_ = gamedata.rng();
-	next_scenario_ = gamedata.next_scenario();
 }
 
 void carryover_info::transfer_to(config& level){

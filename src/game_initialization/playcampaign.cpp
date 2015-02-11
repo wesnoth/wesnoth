@@ -82,7 +82,9 @@ static void show_carryover_message(saved_game& gamestate, playsingle_controller&
 		report <<  _("You have been defeated!") << "\n";
 	}
 
-	std::vector<team> teams = playcontroller.get_teams_const();
+	assert(resources::teams);
+	//We need to write the carryover amount to the team thats why we need non const
+	std::vector<team>& teams = *resources::teams;
 	int persistent_teams = 0;
 	BOOST_FOREACH(const team &t, teams) {
 		if (t.persistent()){
@@ -94,31 +96,22 @@ static void show_carryover_message(saved_game& gamestate, playsingle_controller&
 			gamestate.classification().campaign_type == game_classification::TEST))
 	{
 		gamemap map = playcontroller.get_map_const();
-		// NOTE: this function uses game_config::village_income/game_config::base_income which is the same for all teams
-		// the function that actually does the carryover (carryover.cpp) uses team.base_income() / team.village_gold() since 1.13
-		// which can be different for every team
-		int finishing_bonus_per_turn =
-				map.villages().size() * game_config::village_income +
-				game_config::base_income;
 		tod_manager tod = playcontroller.get_tod_manager_const();
 		int turns_left = std::max<int>(0, tod.number_of_turns() - tod.turn());
-		int finishing_bonus = (end_level.gold_bonus && turns_left > -1) ?
-				finishing_bonus_per_turn * turns_left : 0;
-
-
-		BOOST_FOREACH(const team &t, teams)
+		BOOST_FOREACH(team &t, teams)
 		{
 			if (!t.persistent() || t.lost() || !t.is_local_human())
 			{
 				continue;
 			}
-			int carryover_gold = div100rounded((t.gold() + finishing_bonus) * end_level.carryover_percentage);
-
+			int finishing_bonus_per_turn = map.villages().size() * t.village_gold() + game_config::base_income;
+			int finishing_bonus = t.carryover_bonus() ? finishing_bonus_per_turn * turns_left : 0;
+			t.set_carryover_gold(div100rounded((t.gold() + finishing_bonus) * t.carryover_percentage()));
 			if (persistent_teams > 1) {
 				report << "\n<b>" << t.current_player() << "</b>\n";
 			}
 
-			playcontroller.report_victory(report, carryover_gold, t.gold(), finishing_bonus_per_turn, turns_left, finishing_bonus);
+			playcontroller.report_victory(report, t, finishing_bonus_per_turn, turns_left, finishing_bonus);
 		}
 	}
 

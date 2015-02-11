@@ -196,11 +196,21 @@ void saved_game::set_default_save_id()
 	//Set this default value immideately after reading the scenario is importent because otherwise
 	//we might endup settings this value to the multiplayer players name, which would break carryover.
 	//(doing this in at config loading in game_config would be ok too i think.)
+	const config::attribute_value* carryover_percentage = starting_pos_.get("carryover_percentage");
+	const config::attribute_value* carryover_add = starting_pos_.get("carryover_add");
 	BOOST_FOREACH(config& side, starting_pos_.child_range("side"))
 	{
-		if(side["save_id"].str() == "")
+		if(side["save_id"].empty())
 		{
 			side["save_id"] = side["id"];
+		}
+		if(carryover_percentage && side["carryover_percentage"].empty())
+		{
+			side["carryover_percentage"] = *carryover_percentage;
+		}
+		if(carryover_add && side["carryover_add"].empty())
+		{
+			side["carryover_add"] = *carryover_add;
 		}
 	}
 }

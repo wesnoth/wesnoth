@@ -154,6 +154,11 @@ private:
 		int side;
 		bool persistent;
 		bool lost;
+
+		int carryover_percentage;
+		bool carryover_add;
+		bool carryover_bonus;
+		int carryover_gold;
 	};
 
 	static const int default_team_gold_;
@@ -334,6 +339,16 @@ public:
 	bool persistent() const {return info_.persistent;}
 	void set_lost(bool value=true) { info_.lost = value; }
 	bool lost() const { return info_.lost; }
+
+	void set_carryover_percentage(int value) { info_.carryover_percentage = value; }
+	int carryover_percentage() const { return info_.carryover_percentage; }
+	void set_carryover_add(bool value) { info_.carryover_add = value; }
+	bool carryover_add() const { return info_.carryover_add; }
+	void set_carryover_bonus(bool value) { info_.carryover_bonus = value; }
+	bool carryover_bonus() const { return info_.carryover_bonus; }
+	void set_carryover_gold(int value) { info_.carryover_gold = value; }
+	int carryover_gold() const { return info_.carryover_gold; }
+
 	bool no_turn_confirmation() const { return info_.no_turn_confirmation; }
 	void set_no_turn_confirmation(bool value) { info_.no_turn_confirmation = value; }
 

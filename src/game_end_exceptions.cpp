@@ -29,9 +29,6 @@ transient_end_level::transient_end_level()
 end_level_data::end_level_data()
 	: prescenario_save(true)
 	, replay_save(true)
-	, gold_bonus(true)
-	, carryover_percentage(game_config::gold_carryover_percentage)
-	, carryover_add(false)
 	, proceed_to_next_level(false)
 	, transient()
 {
@@ -41,9 +38,6 @@ void end_level_data::write(config& cfg) const
 {
 	cfg["prescenario_save"] = prescenario_save;
 	cfg["replay_save"] = replay_save;
-	cfg["bonus"] = gold_bonus;
-	cfg["carryover_percentage"] = carryover_percentage;
-	cfg["carryover_add"] = carryover_add;
 	cfg["proceed_to_next_level"] = proceed_to_next_level;
 }
 
@@ -51,8 +45,5 @@ void end_level_data::read(const config& cfg)
 {
 	prescenario_save = cfg["prescenario_save"].to_bool(true);
 	replay_save = cfg["replay_save"].to_bool(true);
-	gold_bonus = cfg["bonus"].to_bool(true);
-	carryover_percentage = cfg["carryover_percentage"].to_int(game_config::gold_carryover_percentage);
-	carryover_add = cfg["carryover_add"].to_bool(false);
 	proceed_to_next_level = cfg["proceed_to_next_level"].to_bool(true);
 }

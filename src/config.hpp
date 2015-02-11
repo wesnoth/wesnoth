@@ -182,6 +182,7 @@ public:
 	{
 		/// A wrapper for bool to get the correct streaming ("true"/"false").
 		/// Most visitors can simply treat this as bool.
+	public:
 		class true_false
 		{
 			bool value_;
@@ -209,7 +210,7 @@ public:
 			                  config::attribute_value::s_no; }
 		};
 		friend std::ostream& operator<<(std::ostream &os, const yes_no &v);
-
+	private:
 		/// Visitor for checking equality.
 		class equality_visitor;
 		/// Visitor for converting a variant to a string.

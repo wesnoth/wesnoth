@@ -34,12 +34,8 @@ public:
 	void transfer_all_recruits_to(config& side_cfg);
 	void transfer_all_recalls_to(config& side_cfg);
 	void update_carryover(const team& t, const int gold, const bool add);
-	void initialize_team(config& side_cfg);
 	const std::string to_string();
 	void to_config(config& cfg);
-	/// @param gold sets the gold of the team, always overwrites current gold.
-	/// @param add whether the gold should be added to the next scenario gold.
-	void set_gold(int gold, bool add);
 private:
 	bool add_;
 	std::string current_player_;
@@ -76,10 +72,8 @@ public:
 	void remove_side(const std::string& id);
 	void set_end_level(const end_level_data& end_level) { end_level_ = end_level; }
 
-	void transfer_from(const team& t, int carryover_gold);
 	void transfer_all_to(config& side_cfg);
 
-	void transfer_from(game_data& gamedata);
 	void transfer_to(config& level);
 
 	void set_variables(const config& vars) { variables_ = vars; }

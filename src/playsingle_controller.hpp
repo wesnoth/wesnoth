@@ -23,6 +23,7 @@
 #include "playturn.hpp"
 #include "replay.hpp"
 #include "saved_game.hpp"
+class team;
 
 struct set_completion
 {
@@ -56,8 +57,7 @@ public:
 	virtual void force_end_level(LEVEL_RESULT res)
 	{ level_result_ = res; }
 	virtual void check_end_level();
-	void report_victory(std::ostringstream &report, int player_gold,
-			int remaining_gold, int finishing_bonus_per_turn,
+	void report_victory(std::ostringstream &report, team& t, int finishing_bonus_per_turn,
 			int turns_left, int finishing_bonus);
 	virtual void on_not_observer() {}
 	bool is_host() const ;

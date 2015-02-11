@@ -124,13 +124,12 @@ void playsingle_controller::init_gui(){
 }
 
 void playsingle_controller::report_victory(
-	std::ostringstream &report, int player_gold, int remaining_gold,
+	std::ostringstream &report, team& t,
 	int finishing_bonus_per_turn, int turns_left, int finishing_bonus)
 {
-	const end_level_data &end_level = get_end_level_data_const();
 	report << _("Remaining gold: ")
-		   << utils::half_signed_value(remaining_gold) << "\n";
-	if(end_level.gold_bonus) {
+		<< utils::half_signed_value(t.gold()) << "\n";
+	if(t.carryover_bonus()) {
 		if (turns_left > -1) {
 			report << _("Early finish bonus: ")
 				   << finishing_bonus_per_turn
@@ -141,32 +140,32 @@ void playsingle_controller::report_victory(
 				   << finishing_bonus << "\n";
 		}
 		report << _("Gold: ")
-		       << utils::half_signed_value(remaining_gold + finishing_bonus);
+		       << utils::half_signed_value(t.gold() + finishing_bonus);
 	}
-	if (remaining_gold > 0) {
-		report << '\n' << _("Carry over percentage: ") << end_level.carryover_percentage;
+	if (t.gold() > 0) {
+		report << '\n' << _("Carry over percentage: ") << t.carryover_percentage();
 	}
-	if(end_level.carryover_add) {
-		report << "\n<b>" << _("Bonus Gold: ") << utils::half_signed_value(player_gold) <<"</b>";
+	if(t.carryover_add()) {
+		report << "\n<b>" << _("Bonus Gold: ") << utils::half_signed_value(t.carryover_gold()) <<"</b>";
 	} else {
-		report << "\n<b>" << _("Retained Gold: ") << utils::half_signed_value(player_gold) << "</b>";
+		report << "\n<b>" << _("Retained Gold: ") << utils::half_signed_value(t.carryover_gold()) << "</b>";
 	}
 
 	std::string goldmsg;
 	utils::string_map symbols;
 
-	symbols["gold"] = lexical_cast_default<std::string>(player_gold);
+	symbols["gold"] = lexical_cast_default<std::string>(t.carryover_gold());
 
 	// Note that both strings are the same in English, but some languages will
 	// want to translate them differently.
-	if(end_level.carryover_add) {
-		if(player_gold > 0) {
+	if(t.carryover_add()) {
+		if(t.carryover_gold() > 0) {
 			goldmsg = vngettext(
 					"You will start the next scenario with $gold "
 					"on top of the defined minimum starting gold.",
 					"You will start the next scenario with $gold "
 					"on top of the defined minimum starting gold.",
-					player_gold, symbols);
+					t.carryover_gold(), symbols);
 
 		} else {
 			goldmsg = vngettext(
@@ -174,7 +173,7 @@ void playsingle_controller::report_victory(
 					"the defined minimum starting gold.",
 					"You will start the next scenario with "
 					"the defined minimum starting gold.",
-					player_gold, symbols);
+					t.carryover_gold(), symbols);
 		}
 	} else {
 		goldmsg = vngettext(
@@ -184,7 +183,7 @@ void playsingle_controller::report_victory(
 			"You will start the next scenario with $gold "
 			"or its defined minimum starting gold, "
 			"whichever is higher.",
-			player_gold, symbols);
+			t.carryover_gold(), symbols);
 	}
 
 	// xgettext:no-c-format
@@ -351,8 +350,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	set_victory_when_enemies_defeated(level_["victory_when_enemies_defeated"].to_bool(true));
 	set_remove_from_carryover_on_defeat(level_["remove_from_carryover_on_defeat"].to_bool(true));
 	end_level_data &end_level = get_end_level_data();
-	end_level.carryover_percentage = level_["carryover_percentage"].to_int(game_config::gold_carryover_percentage);
-	end_level.carryover_add = level_["carryover_add"].to_bool();
 
 	bool past_prestart = false;
 
@@ -959,7 +956,6 @@ void playsingle_controller::check_end_level()
 		}
 		return;
 	}
-	get_end_level_data().proceed_to_next_level = (level_result_ == VICTORY);
 	throw end_level_exception(level_result_);
 }
 

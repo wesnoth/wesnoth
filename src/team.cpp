@@ -108,7 +108,11 @@ team::team_info::team_info() :
 	color(),
 	side(0),
 	persistent(false),
-	lost(false)
+	lost(false),
+	carryover_percentage(game_config::gold_carryover_percentage),
+	carryover_add(false),
+	carryover_bonus(false),
+	carryover_gold(0)
 {
 }
 
@@ -138,6 +142,10 @@ void team::team_info::read(const config &cfg)
 	hidden = cfg["hidden"].to_bool();
 	no_turn_confirmation = cfg["suppress_end_turn_confirmation"].to_bool();
 	side = cfg["side"].to_int(1);
+	carryover_percentage = cfg["carryover_percentage"].to_int(game_config::gold_carryover_percentage);
+	carryover_add = cfg["carryover_add"].to_bool(false);
+	carryover_bonus = cfg["carryover_bonus"].to_bool(false);
+	carryover_gold = cfg["carryover_gold"].to_int(0);
 
 	if(cfg.has_attribute("color")) {
 		color = cfg["color"].str();
@@ -246,6 +254,10 @@ void team::team_info::write(config& cfg) const
 	cfg["color"] = color;
 	cfg["persistent"] = persistent;
 	cfg["lost"] = lost;
+	cfg["carryover_percentage"] = carryover_percentage;
+	cfg["carryover_add"] = carryover_add;
+	cfg["carryover_bonus"] = carryover_bonus;
+	cfg["carryover_gold"] = carryover_gold;
 
 	cfg.add_child("ai", ai::manager::to_config(side));
 }

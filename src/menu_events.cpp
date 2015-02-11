@@ -2968,9 +2968,6 @@ void console_handler::do_next_level()
 	if (!get_data().empty())
 		menu_handler_.gamedata().set_next_scenario(get_data());
 	end_level_data &e = menu_handler_.pc_.get_end_level_data();
-	e.carryover_percentage = 100;
-	e.carryover_add = false;
-	e.gold_bonus = false;
 	e.transient.carryover_report = false;
 	e.prescenario_save = true;
 	e.transient.linger_mode = false;
@@ -3019,9 +3016,6 @@ void console_handler::do_choose_level() {
 	if (size_t(choice) < options.size()) {
 		menu_handler_.gamedata().set_next_scenario(options[choice]);
 		end_level_data &e = menu_handler_.pc_.get_end_level_data();
-		e.carryover_percentage = 100;
-		e.carryover_add = false;
-		e.gold_bonus = false;
 		e.transient.carryover_report = false;
 		e.prescenario_save = true;
 		e.transient.linger_mode = false;

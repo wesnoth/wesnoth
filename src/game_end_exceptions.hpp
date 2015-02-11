@@ -219,9 +219,6 @@ struct end_level_data
 
 	bool prescenario_save;             /**< Should a prescenario be created the next game? */
 	bool replay_save;                  /**< Should a replay save be made? */
-	bool gold_bonus;                   /**< Should early-finish bonus be applied? */
-	int carryover_percentage;          /**< How much gold is carried over to next scenario. */
-	bool carryover_add;                /**< Add or replace next scenario's minimum starting gold. */
 	bool proceed_to_next_level;        /**< whether to proceed to the next scenario, equals (res == VICTORY) in sp. We need to save this in saves during linger mode. > */
 	transient_end_level transient;
 
