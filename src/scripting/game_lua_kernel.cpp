@@ -1466,7 +1466,7 @@ int game_lua_kernel::intf_end_level(lua_State *L)
 	typedef boost::tuple<bool/*is_victory*/, boost::optional<bool>/*bonus*/, boost::optional<int>/*percentage*/, boost::optional<bool>/*add*/ > t_side_result;
 	const t_side_result default_result = t_side_result(
 		cfg["result"] != "defeat", 
-		cfg["bonus"].apply_visitor(optional_bool_visitor()),
+		cfg["bonus"].to_bool(true),
 		cfg["carryover_percentage"].apply_visitor(optional_int_visitor()),
 		cfg["carryover_add"].apply_visitor(optional_bool_visitor())	
 	);
