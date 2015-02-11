@@ -1432,9 +1432,9 @@ namespace {
 		{ return result_type(); }
 		//Cannot use bool, the case above would catch the yes_no and true_false values.
 		result_type operator()(const config::attribute_value::yes_no & b) const
-		{ return b; }
+		{ return static_cast<bool>(b); }
 		result_type operator()(const config::attribute_value::true_false & b) const
-		{ return b; }
+		{ return static_cast<bool>(b); }
 	};
 }
 int game_lua_kernel::intf_end_level(lua_State *L)
