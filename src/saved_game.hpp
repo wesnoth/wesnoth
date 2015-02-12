@@ -24,6 +24,7 @@ class saved_game
 public:
 	saved_game();
 	saved_game(const saved_game& state);
+	//TODO: add or replace with saved_game(config&& cfg) constructor.
 	explicit saved_game(const config& cfg);
 
 	~saved_game(){}
