@@ -134,14 +134,12 @@ void carryover::to_config(config& cfg){
 
 carryover_info::carryover_info(const config& cfg, bool from_snpashot)
 	: carryover_sides_()
-	, end_level_()
 	, variables_(cfg.child_or_empty("variables"))
 	, rng_(cfg)
 	, wml_menu_items_()
 	, next_scenario_(cfg["next_scenario"])
 	, next_underlying_unit_id_(cfg["next_underlying_unit_id"].to_int(0))
 {
-	end_level_.read(cfg.child_or_empty("end_level_data"));
 	BOOST_FOREACH(const config& side, cfg.child_range("side"))
 	{
 		if(side["lost"].to_bool(false) || !side["persistent"].to_bool(true))
@@ -173,10 +171,6 @@ void carryover_info::remove_side(const std::string& id) {
 			break;
 		}
 	}
-}
-
-const end_level_data& carryover_info::get_end_level() const{
-	return end_level_;
 }
 
 struct save_id_equals
@@ -250,8 +244,6 @@ const config carryover_info::to_config()
 	BOOST_FOREACH(carryover& c, carryover_sides_){
 		c.to_config(cfg);
 	}
-	config& end_level = cfg.add_child("end_level_data");
-	end_level_.write(end_level);
 
 	cfg["random_seed"] = rng_.get_random_seed_str();
 	cfg["random_calls"] = rng_.get_random_calls();

@@ -10,7 +10,6 @@ class game_data;
 #include <set>
 
 #include "config.hpp"
-#include "game_end_exceptions.hpp"
 #include "mt_rng.hpp"
 #include "game_events/wmi_container.hpp"
 
@@ -54,7 +53,6 @@ class carryover_info{
 public:
 	carryover_info()
 		: carryover_sides_()
-		, end_level_()
 		, variables_()
 		, rng_()
 		, wml_menu_items_()
@@ -70,7 +68,6 @@ public:
 	void add_side(const config& cfg);
 	void add_side(const team& t, const int gold, const bool add);
 	void remove_side(const std::string& id);
-	void set_end_level(const end_level_data& end_level) { end_level_ = end_level; }
 
 	void transfer_all_to(config& side_cfg);
 
@@ -84,8 +81,6 @@ public:
 	const rand_rng::mt_rng& rng() const { return rng_; }
 	rand_rng::mt_rng& rng() { return rng_; }
 
-	const end_level_data& get_end_level() const;
-
 	const std::string& next_scenario() const { return next_scenario_; }
 
 	const config to_config();
@@ -93,7 +88,6 @@ public:
 	void merge_old_carryover(const carryover_info& old_carryover);
 private:
 	std::vector<carryover> carryover_sides_;
-	end_level_data end_level_;
 	config variables_;
 	rand_rng::mt_rng rng_;
 	game_events::wmi_container wml_menu_items_;
