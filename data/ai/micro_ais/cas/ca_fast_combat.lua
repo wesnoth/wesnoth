@@ -63,9 +63,11 @@ function ca_fast_combat:execution(ai, cfg, self)
     local unit = self.data.fast_combat_units[self.data.fast_combat_unit_i]
     AH.movefull_outofway_stopunit(ai, unit, self.data.fast_dst.x, self.data.fast_dst.y)
 
-    if unit and unit.valid and self.data.fast_target and self.data.fast_target.valid then
-        AH.checked_attack(ai, unit, self.data.fast_target)
-    end
+    if (not unit) or (not unit.valid) then return end
+    if (not self.data.fast_target) or (not self.data.fast_target.valid) then return end
+    if (H.distance_between(unit.x, unit.y, self.data.fast_target.x, self.data.fast_target.y) ~= 1) then return end
+
+    AH.checked_attack(ai, unit, self.data.fast_target)
 
     self.data.fast_combat_units[self.data.fast_combat_unit_i] = nil
 end
