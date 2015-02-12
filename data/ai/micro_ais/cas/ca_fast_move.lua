@@ -131,6 +131,7 @@ function ca_fast_move:execution(ai, cfg, self)
     end
 
     local keep_moving, next_goal = true, 0
+    if (not goals[1]) then keep_moving = false end
     while keep_moving do
         keep_moving = false
 
