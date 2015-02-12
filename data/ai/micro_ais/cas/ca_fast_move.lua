@@ -26,7 +26,7 @@ function ca_fast_move:execution(ai, cfg, self)
 
     -- Villages get added first, so that (hopefully, scouts and faster units will go for them first)
     local village_value = ai.get_village_value()
-    if (village_value > 0) then
+    if leader and (village_value > 0) then
         local villages = wesnoth.get_villages()
 
         -- Eliminate villages owned by a side that is not an enemy
