@@ -4,7 +4,6 @@
 
 class team;
 class config;
-class game_data;
 #include <vector>
 #include <string>
 #include <set>
@@ -32,7 +31,6 @@ public:
 	void transfer_all_gold_to(config& side_cfg);
 	void transfer_all_recruits_to(config& side_cfg);
 	void transfer_all_recalls_to(config& side_cfg);
-	void update_carryover(const team& t, const int gold, const bool add);
 	const std::string to_string();
 	void to_config(config& cfg);
 private:
