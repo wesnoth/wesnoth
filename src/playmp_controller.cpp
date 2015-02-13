@@ -524,8 +524,8 @@ void playmp_controller::process_oos(const std::string& err_msg) const {
 		}
 		temp_buf << " \n";
 	}
-
-	savegame::oos_savegame save(saved_game_, *gui_, to_config());
+	update_savegame_snapshot();
+	savegame::oos_savegame save(saved_game_, *gui_);
 	save.save_game_interactive(gui_->video(), temp_buf.str(), gui::YES_NO);
 }
 

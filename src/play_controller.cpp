@@ -765,7 +765,8 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 void play_controller::save_game(){
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
-		savegame::ingame_savegame save(saved_game_, *gui_, to_config(), preferences::save_compression_format());
+		update_savegame_snapshot();
+		savegame::ingame_savegame save(saved_game_, *gui_, preferences::save_compression_format());
 		save.save_game_interactive(gui_->video(), "", gui::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_game);
@@ -775,7 +776,9 @@ void play_controller::save_game(){
 void play_controller::save_game_auto(const std::string & filename) {
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
-		savegame::ingame_savegame save(saved_game_, *gui_, to_config(), preferences::save_compression_format());
+
+		update_savegame_snapshot();
+		savegame::ingame_savegame save(saved_game_, *gui_, preferences::save_compression_format());
 		save.save_game_automatic(gui_->video(), false, filename);
 	}
 }
@@ -924,7 +927,8 @@ void play_controller::process_oos(const std::string& msg) const
 	message << _("The game is out of sync. It might not make much sense to continue. Do you want to save your game?");
 	message << "\n\n" << _("Error details:") << "\n\n" << msg;
 
-	savegame::oos_savegame save(saved_game_, *gui_, to_config());
+	update_savegame_snapshot();
+	savegame::oos_savegame save(saved_game_, *gui_);
 	save.save_game_interactive(gui_->video(), message.str(), gui::YES_NO); // can throw end_level_exception
 }
 
@@ -938,18 +942,23 @@ void play_controller::update_gui_to_player(const int team_index, const bool obse
 
 void play_controller::do_autosave()
 {
-	savegame::autosave_savegame save(saved_game_, *gui_, to_config(), preferences::save_compression_format());
+	update_savegame_snapshot();
+	savegame::autosave_savegame save(saved_game_, *gui_, preferences::save_compression_format());
 	save.autosave(false, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
 }
 
 
 void play_controller::do_consolesave(const std::string& filename)
 {
-	savegame::ingame_savegame save(saved_game_, *gui_,
-	                               to_config(), preferences::save_compression_format());
+	update_savegame_snapshot();
+	savegame::ingame_savegame save(saved_game_, *gui_, preferences::save_compression_format());
 	save.save_game_automatic(gui_->video(), true, filename);
 }
 
+void play_controller::update_savegame_snapshot() const
+{
+	this->saved_game_.set_snapshot(to_config());
+}
 
 game_events::t_pump & play_controller::pump() {
 	return gamestate_.events_manager_->pump();

@@ -391,16 +391,17 @@ bool saved_game::valid()
 	return this->starting_pos_type_ != STARTINGPOS_INVALID;
 }
 
-void saved_game::set_snapshot(const config& snapshot)
+config& saved_game::set_snapshot(config snapshot)
 {
 	this->starting_pos_type_ = STARTINGPOS_SNAPSHOT;
-	this->starting_pos_ = snapshot;
+	this->starting_pos_.swap(snapshot);
+	return this->starting_pos_;
 }
 
-void saved_game::set_scenario(const config& scenario)
+void saved_game::set_scenario(config scenario)
 {
 	this->starting_pos_type_ = STARTINGPOS_SCENARIO;
-	this->starting_pos_ = scenario;
+	this->starting_pos_.swap(scenario);
 	has_carryover_expanded_ = false;
 	update_label();
 }

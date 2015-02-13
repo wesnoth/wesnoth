@@ -487,7 +487,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			disconnect = true;
 		}
 
-		savegame::ingame_savegame save(saved_game_, *gui_, to_config(), preferences::save_compression_format());
+		update_savegame_snapshot();
+		savegame::ingame_savegame save(saved_game_, *gui_, preferences::save_compression_format());
 		save.save_game_interactive(gui_->video(), _("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"), gui::YES_NO);
 		if(disconnect) {
 			throw network::error();
@@ -716,7 +717,8 @@ possible_end_play_signal playsingle_controller::before_human_turn()
 	HANDLE_END_PLAY_SIGNAL( ai::manager::raise_turn_started() ); //This line throws exception from here: https://github.com/wesnoth/wesnoth/blob/ac96a2b91b3276e20b682210617cf87d1e0d366a/src/playsingle_controller.cpp#L954
 
 	if(do_autosaves_ && level_result_ == NONE) {
-		savegame::autosave_savegame save(saved_game_, *gui_, to_config(), preferences::save_compression_format());
+		update_savegame_snapshot();
+		savegame::autosave_savegame save(saved_game_, *gui_, preferences::save_compression_format());
 		save.autosave(game_config::disable_autosave, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
 	}
 

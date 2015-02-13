@@ -200,6 +200,7 @@ public:
 	{ return level_["name"].t_str(); }
 	bool get_disallow_recall()
 	{ return level_["disallow_recall"].to_bool(); }
+	void update_savegame_snapshot() const;
 protected:
 
 	game_display& get_display();

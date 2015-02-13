@@ -131,7 +131,6 @@ protected:
 
 	const std::string& title() { return title_; }
 	const saved_game& gamestate() { return gamestate_; }
-	config& snapshot() { return snapshot_; }
 
 	/** If there needs to be some data fiddling before saving the game, this is the place to go. */
 	void before_save();
@@ -162,12 +161,8 @@ private:
 	friend class save_info;
 	//before_save (write replay data) changes this so it cannot be const
 	saved_game& gamestate_;
-
-	/** Gamestate information at the time of saving. Note that this object is needed here, since
-		even if it is empty the code relies on it to be there. */
-	config snapshot_;
-
-	std::string filename_; /** Filename of the savegame file on disk */
+	/** Filename of the savegame file on disk */
+	std::string filename_; 
 
 	const std::string title_; /** Title of the savegame dialog */
 
@@ -184,7 +179,7 @@ class ingame_savegame : public savegame
 {
 public:
 	ingame_savegame(saved_game& gamestate,
-		game_display& gui, const config& snapshot_cfg, const compression::format compress_saves);
+		game_display& gui, const compression::format compress_saves);
 
 private:
 	/** Create a filename for automatic saves */
@@ -215,7 +210,7 @@ class autosave_savegame : public ingame_savegame
 {
 public:
 	autosave_savegame(saved_game &gamestate,
-					 game_display& gui, const config& snapshot_cfg, const compression::format compress_saves);
+					 game_display& gui, const compression::format compress_saves);
 
 	void autosave(const bool disable_autosave, const int autosave_max, const int infinite_autosaves);
 private:
@@ -226,7 +221,7 @@ private:
 class oos_savegame : public ingame_savegame
 {
 public:
-	oos_savegame(saved_game& gamestate, game_display& gui, const config& snapshot_cfg);
+	oos_savegame(saved_game& gamestate, game_display& gui);
 
 private:
 	/** Display the save game dialog. */

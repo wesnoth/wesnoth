@@ -62,8 +62,9 @@ public:
 	/// This should be called before expanding carryover or mp_events because this might completely replace starting_pos_.
 	void expand_random_scenario();
 	bool valid();
-	void set_snapshot(const config& snapshot);
-	void set_scenario(const config& scenario);
+	/// @return the snapshot in the savefile (get_starting_pos)
+	config& set_snapshot(config snapshot);
+	void set_scenario(config scenario);
 	void remove_snapshot();
 
 	bool is_mid_game_save()
@@ -81,6 +82,7 @@ public:
 	std::string get_scenario_id();
 	/// @return the config from which the game will be started. (this is [scenario] or [snapshot] in the savefile)
 	config& get_starting_pos();
+	const config& get_starting_pos() const { return starting_pos_; }
 	config& replay_start() { return replay_start_; }
 	const config& replay_start() const { return replay_start_; }
 

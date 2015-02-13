@@ -373,7 +373,6 @@ void loadgame::copy_era(config &cfg)
 
 savegame::savegame(saved_game& gamestate, const compression::format compress_saves, const std::string& title)
 	: gamestate_(gamestate)
-	, snapshot_()
 	, filename_()
 	, title_(title)
 	, error_message_(_("The game could not be saved: "))
@@ -615,8 +614,8 @@ void replay_savegame::write_game(config_writer &out) {
 }
 
 autosave_savegame::autosave_savegame(saved_game &gamestate,
-					game_display& gui, const config& snapshot_cfg, const compression::format compress_saves)
-	: ingame_savegame(gamestate, gui, snapshot_cfg, compress_saves)
+					game_display& gui, const compression::format compress_saves)
+	: ingame_savegame(gamestate, gui, compress_saves)
 {
 	set_error_message(_("Could not auto save the game. Please save the game manually."));
 }
@@ -637,13 +636,13 @@ void autosave_savegame::create_filename()
 	if (gamestate().classification().label.empty())
 		filename = _("Auto-Save");
 	else
-		filename = gamestate().classification().label + "-" + _("Auto-Save") + snapshot()["turn_at"];
+		filename = gamestate().classification().label + "-" + _("Auto-Save") + gamestate().get_starting_pos()["turn_at"];
 
 	set_filename(filename);
 }
 
-oos_savegame::oos_savegame(saved_game& gamestate, game_display& gui, const config& snapshot_cfg)
-	: ingame_savegame(gamestate, gui, snapshot_cfg, preferences::save_compression_format())
+oos_savegame::oos_savegame(saved_game& gamestate, game_display& gui)
+	: ingame_savegame(gamestate, gui, preferences::save_compression_format())
 {}
 
 int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, const gui::DIALOG_TYPE /*dialog_type*/)
@@ -669,12 +668,10 @@ int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, co
 }
 
 ingame_savegame::ingame_savegame(saved_game &gamestate,
-					game_display& gui, const config& snapshot_cfg, const compression::format compress_saves)
+					game_display& gui, const compression::format compress_saves)
 	: savegame(gamestate, compress_saves, _("Save Game")),
 	gui_(gui)
 {
-	gamestate.set_snapshot(snapshot_cfg);
-	snapshot().merge_with(snapshot_cfg);
 }
 
 void ingame_savegame::create_filename()
@@ -683,7 +680,7 @@ void ingame_savegame::create_filename()
 
 	const std::string ellipsed_name = font::make_text_ellipsis(gamestate().classification().label,
 			font::SIZE_NORMAL, 200);
-	stream << ellipsed_name << " " << _("Turn") << " " << snapshot()["turn_at"];
+	stream << ellipsed_name << " " << _("Turn") << " " << gamestate().get_starting_pos()["turn_at"];
 	set_filename(stream.str());
 }
 
@@ -694,7 +691,7 @@ void ingame_savegame::write_game(config_writer &out) {
 	savegame::write_game(out);
 
 	gamestate().write_carryover(out);
-	out.write_child("snapshot",snapshot());
+	out.write_child("snapshot",gamestate().get_starting_pos());
 	out.write_child("replay_start", gamestate().replay_start());
 	out.write_child("replay", gamestate().replay_data);
 }
