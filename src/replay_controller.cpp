@@ -365,11 +365,6 @@ void replay_controller::reset_replay()
 	gui_->needs_rebuild(true);
 	gui_->maybe_rebuild();
 
-	// Add era events for MP game.
-	if (const config &era_cfg = level_.child("era")) {
-		gamestate_.events_manager_->add_events(era_cfg.child_range("event"), "era_events");
-	}
-
 	// Scenario initialization. (c.f. playsingle_controller::play_scenario())
 	fire_preload();
 	{ //block for set_scontext_synced
