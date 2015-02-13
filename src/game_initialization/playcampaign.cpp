@@ -252,7 +252,7 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 		}
 
 	}
-	state_of_game.set_snapshot(playcontroller.to_config());
+	playcontroller.update_savegame_snapshot();
 	return res;
 }
 
