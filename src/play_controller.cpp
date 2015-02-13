@@ -957,6 +957,7 @@ void play_controller::do_consolesave(const std::string& filename)
 
 void play_controller::update_savegame_snapshot() const
 {
+	//note: this writes to level_ if this is not a replay.
 	this->saved_game_.set_snapshot(to_config());
 }
 
