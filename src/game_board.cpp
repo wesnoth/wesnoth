@@ -364,9 +364,6 @@ void game_board::write_config(config & cfg) const {
 
 	//write the map
 	cfg["map_data"] = map_->write();
-
-	//Used by the carryover calculations.
-	cfg["map_villages_num"] = map_->villages().size();
 }
 
 temporary_unit_placer::temporary_unit_placer(unit_map& m, const map_location& loc, unit& u)
