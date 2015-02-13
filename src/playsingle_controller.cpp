@@ -330,7 +330,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	sound::commit_music_changes();
 
 	if(!skip_replay) {
-		show_story(*gui_, level_["name"], story);
+		show_story(*gui_, get_scenario_name(), story);
 	}
 	gui_->labels().read(level_);
 
@@ -951,7 +951,7 @@ void playsingle_controller::check_end_level()
 	{
 		const team &t = gamestate_.board_.teams()[gui_->viewing_team()];
 		if (!browse_ && t.objectives_changed()) {
-			dialogs::show_objectives(level_["name"].str(), t.objectives());
+			dialogs::show_objectives(get_scenario_name().str(), t.objectives());
 			t.reset_objectives_changed();
 		}
 		return;

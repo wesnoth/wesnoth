@@ -123,7 +123,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, labels_manager_()
 	, help_manager_(&game_config)
 	, mouse_handler_(NULL, *this)
-	, menu_handler_(NULL, *this, level, game_config)
+	, menu_handler_(NULL, *this, game_config)
 	, hotkey_handler_(new hotkey_handler(*this, saved_game_))
 	, soundsources_manager_()
 	, persist_()

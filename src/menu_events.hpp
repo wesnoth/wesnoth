@@ -43,7 +43,6 @@ namespace events {
 class menu_handler : private chat_handler {
 public:
 	menu_handler(game_display* gui, play_controller & pc,
-		const config& level,
 		const config& game_config);
 	virtual ~menu_handler();
 
@@ -130,7 +129,6 @@ private:
 	std::vector<team>& teams() const;
 	const gamemap& map();
 
-	const config& level_;
 	const config& game_config_;
 
 	gui::floating_textbox textbox_info_;

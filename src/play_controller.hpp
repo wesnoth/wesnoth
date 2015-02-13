@@ -196,6 +196,10 @@ public:
 
 	class hotkey_handler;
 	virtual bool is_replay() { return false; }
+	t_string get_scenario_name()
+	{ return level_["name"].t_str(); }
+	bool get_disallow_recall()
+	{ return level_["disallow_recall"].to_bool(); }
 protected:
 
 	game_display& get_display();

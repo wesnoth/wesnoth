@@ -86,12 +86,9 @@ static lg::log_domain log_engine("engine");
 
 namespace events{
 
-menu_handler::menu_handler(game_display* gui, play_controller & pc,
-		const config& level,
-		const config& game_config) :
+menu_handler::menu_handler(game_display* gui, play_controller & pc,	const config& game_config) :
 	gui_(gui),
 	pc_(pc),
-	level_(level),
 	game_config_(game_config),
 	textbox_info_(),
 	last_search_(),
@@ -145,7 +142,7 @@ void menu_handler::objectives(int side_num)
 		game_events::queued_event("_from_interface", map_location(),
 			map_location(), config()));
 	team &current_team = teams()[side_num - 1];
-	dialogs::show_objectives(level_["name"].str(), current_team.objectives());
+	dialogs::show_objectives(pc_.get_scenario_name(), current_team.objectives());
 	current_team.reset_objectives_changed();
 }
 
@@ -673,7 +670,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 
 void menu_handler::recall(int side_num, const map_location &last_hex)
 {
-	if (level_["disallow_recall"].to_bool()) {
+	if (pc_.get_disallow_recall()) {
 		gui2::show_transient_message(gui_->video(),"",_("You are separated from your soldiers and may not recall them"));
 		return;
 	}
