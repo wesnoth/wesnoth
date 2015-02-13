@@ -145,7 +145,7 @@ void menu_handler::objectives(int side_num)
 		game_events::queued_event("_from_interface", map_location(),
 			map_location(), config()));
 	team &current_team = teams()[side_num - 1];
-	dialogs::show_objectives(level_, current_team.objectives());
+	dialogs::show_objectives(level_["name"].str(), current_team.objectives());
 	current_team.reset_objectives_changed();
 }
 

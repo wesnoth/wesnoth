@@ -951,7 +951,7 @@ void playsingle_controller::check_end_level()
 	{
 		const team &t = gamestate_.board_.teams()[gui_->viewing_team()];
 		if (!browse_ && t.objectives_changed()) {
-			dialogs::show_objectives(level_, t.objectives());
+			dialogs::show_objectives(level_["name"].str(), t.objectives());
 			t.reset_objectives_changed();
 		}
 		return;

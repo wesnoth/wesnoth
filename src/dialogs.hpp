@@ -46,7 +46,7 @@ int advance_unit_dialog(const map_location &loc);
  */
 bool animate_unit_advancement(const map_location &loc, size_t choice, const bool &fire_event = true, const bool animate = true);
 
-void show_objectives(const config &level, const std::string &objectives);
+void show_objectives(const std::string& scenarioname, const std::string &objectives);
 
 void show_unit_list(display& gui);
 
