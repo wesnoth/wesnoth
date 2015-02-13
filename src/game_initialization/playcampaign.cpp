@@ -104,7 +104,7 @@ static void show_carryover_message(saved_game& gamestate, playsingle_controller&
 			{
 				continue;
 			}
-			int finishing_bonus_per_turn = map.villages().size() * t.village_gold() + game_config::base_income;
+			int finishing_bonus_per_turn = map.villages().size() * t.village_gold() + t.base_income();
 			int finishing_bonus = t.carryover_bonus() ? finishing_bonus_per_turn * turns_left : 0;
 			t.set_carryover_gold(div100rounded((t.gold() + finishing_bonus) * t.carryover_percentage()));
 			if (persistent_teams > 1) {
