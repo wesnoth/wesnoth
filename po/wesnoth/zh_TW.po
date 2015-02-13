@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth1.12.1\n"
+"Project-Id-Version: wesnoth 1.12.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-01-23 17:35-0300\n"
-"PO-Revision-Date: 2015-01-31 15:25+0300\n"
+"PO-Revision-Date: 2015-02-07 23:56+0300\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
 "Language: zh_TW\n"
@@ -2754,7 +2754,7 @@ msgstr "金幣"
 #. [color_range]: id=reef
 #: data/core/team-colors.cfg:107
 msgid "Reef"
-msgstr "暗礁"
+msgstr "礁石"
 
 #. [color_range]: id=shallow_water
 #: data/core/team-colors.cfg:113
@@ -4266,15 +4266,15 @@ msgstr "B"
 
 #: src/addon/manager_ui.cpp:97
 msgid "addon_state^Not installed"
-msgstr "沒有安裝"
+msgstr "未安裝"
 
 #: src/addon/manager_ui.cpp:97
 msgid "addon_state^Published, not installed"
-msgstr "已發佈，沒有安裝"
+msgstr "已發佈，未安裝"
 
 #: src/addon/manager_ui.cpp:104
 msgid "addon_state^Installed"
-msgstr "安裝完成"
+msgstr "已安裝"
 
 #: src/addon/manager_ui.cpp:104
 msgid "addon_state^Published"
@@ -4282,19 +4282,19 @@ msgstr "已發佈"
 
 #: src/addon/manager_ui.cpp:107
 msgid "addon_state^Installed, upgradable"
-msgstr "更新安裝完成"
+msgstr "已安裝，可更新"
 
 #: src/addon/manager_ui.cpp:107
 msgid "addon_state^Published, upgradable"
-msgstr "更新已發佈"
+msgstr "已發佈，可更新"
 
 #: src/addon/manager_ui.cpp:110
 msgid "addon_state^Installed, outdated on server"
-msgstr "舊版本安裝完成"
+msgstr "已安裝，伺服器上版本已過期"
 
 #: src/addon/manager_ui.cpp:110
 msgid "addon_state^Published, outdated on server"
-msgstr "舊版本已發佈"
+msgstr "已發佈，伺服器上版本已過期"
 
 #: src/addon/manager_ui.cpp:113
 msgid "addon_state^Installed, broken"
@@ -5201,23 +5201,23 @@ msgstr " < 後退"
 
 #: src/loadscreen.cpp:222
 msgid "Initializing user interface"
-msgstr "初始化隊伍"
+msgstr "初始化界面"
 
 #: src/loadscreen.cpp:223
 msgid "Loading game configuration"
-msgstr "載入遊戲配置。"
+msgstr "載入遊戲設定"
 
 #: src/loadscreen.cpp:224 src/loadscreen.cpp:231
 msgid "Verifying cache"
-msgstr "正在驗證暫存..."
+msgstr "正在驗證暫存"
 
 #: src/loadscreen.cpp:225 src/loadscreen.cpp:232
 msgid "Reading files and creating cache"
-msgstr "讀取資料並新增暫存..."
+msgstr "讀取資料且建立暫存"
 
 #: src/loadscreen.cpp:226 src/loadscreen.cpp:233
 msgid "Reading unit files"
-msgstr "讀取單位資料..."
+msgstr "讀取單位檔案"
 
 #: src/loadscreen.cpp:227
 msgid "Reinitialize fonts for the current language"
@@ -5225,31 +5225,31 @@ msgstr "為當前語言重置字體。"
 
 #: src/loadscreen.cpp:228
 msgid "Searching for installed add-ons"
-msgstr "搜尋已安裝模組。"
+msgstr "搜尋已安裝模組"
 
 #: src/loadscreen.cpp:229
 msgid "Loading title screen"
-msgstr "讀取主畫面。"
+msgstr "載入主畫面"
 
 #: src/loadscreen.cpp:230
 msgid "Loading data files"
-msgstr "載入資料"
+msgstr "載入資料檔案"
 
 #: src/loadscreen.cpp:234
 msgid "Loading level"
-msgstr "讀取主畫面"
+msgstr "載入圖層"
 
 #: src/loadscreen.cpp:235
 msgid "Initializing teams"
-msgstr "初始化隊伍"
+msgstr "初始化團隊"
 
 #: src/loadscreen.cpp:236
 msgid "Loading units"
-msgstr "載入部隊資料"
+msgstr "載入單位"
 
 #: src/loadscreen.cpp:237 src/loadscreen.cpp:239
 msgid "Initializing display"
-msgstr "初始化顯示"
+msgstr "初始化顯示畫面"
 
 #: src/loadscreen.cpp:238
 msgid "Building terrain rules"
@@ -6351,7 +6351,7 @@ msgstr "領袖/性別"
 
 #: src/multiplayer_connect.cpp:376
 msgid "Team/Color"
-msgstr "隊伍/顏色"
+msgstr "團隊/顏色"
 
 #: src/multiplayer_connect.cpp:383
 msgid "I’m Ready"
