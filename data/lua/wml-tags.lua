@@ -401,11 +401,7 @@ wml_actions.command = handle_event_commands
 -- the table, using the [] operator, rather than by using the point syntax
 
 wml_actions["if"] = function(cfg)
-	local has_then = helper.get_child(cfg, "then")
-	local has_elseif = helper.get_child(cfg, "elseif")
-	local has_else = helper.get_child(cfg, "else")
-
-	if not (has_then or has_elseif or has_else) then
+	if not (helper.get_child(cfg, 'then') or helper.get_child(cfg, 'elseif') or helper.get_child(cfg, 'else')) then
 		helper.wml_error("[if] didn't find any [then], [elseif], or [else] children.")
 	end
 
@@ -414,20 +410,20 @@ wml_actions["if"] = function(cfg)
 			handle_event_commands(then_child)
 		end
 		return -- stop after executing [then] tags
-	else
-		for elseif_child in helper.child_range(cfg, "elseif") do
-			if wesnoth.eval_conditional(elseif_child) then -- we'll evaluate the [elseif] tags one by one
-				for then_tag in helper.child_range(elseif_child, "then") do
-					handle_event_commands(then_tag)
-				end
-				return -- stop on first matched condition
-			end
-		end
+	end
 
-		-- no matched condition, try the [else] tags
-		for else_child in helper.child_range(cfg, "else") do
-			handle_event_commands(else_child)
+	for elseif_child in helper.child_range(cfg, "elseif") do
+		if wesnoth.eval_conditional(elseif_child) then -- we'll evaluate the [elseif] tags one by one
+			for then_tag in helper.child_range(elseif_child, "then") do
+				handle_event_commands(then_tag)
+			end
+			return -- stop on first matched condition
 		end
+	end
+
+	-- no matched condition, try the [else] tags
+	for else_child in helper.child_range(cfg, "else") do
+		handle_event_commands(else_child)
 	end
 end
 
