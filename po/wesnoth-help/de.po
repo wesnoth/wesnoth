@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-03-02 10:23+0100\n"
-"PO-Revision-Date: 2012-04-06 10:05+0100\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
+"PO-Revision-Date: 2015-02-19 01:38+0100\n"
+"Last-Translator: aquileia\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
@@ -64,7 +64,6 @@ msgstr ""
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:687
 #: data/core/macros/abilities.cfg:686
-#, fuzzy
 msgid "first strike"
 msgstr "Erstschlag"
 
@@ -2932,7 +2931,7 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:511
 msgid "Using Add-ons"
-msgstr ""
+msgstr "Erweiterungen nutzen"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:512
@@ -2952,6 +2951,8 @@ msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
 msgstr ""
+"Wesnoth unterstützt verschiedene Arten von Erweiterungen, die nicht alle in "
+"jedem Spielmodus verfügbar sind."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:514
@@ -2963,6 +2964,12 @@ msgid ""
 "and regular campaigns are available from the <italic>text='Campaigns'</"
 "italic> menu at the title screen."
 msgstr ""
+"\n"
+"\n"
+"Einzelspieler-Kampagnen sind eine Reihe von Szenarien, die gemeinsam eine "
+"Geschichte erzählen. Sowohl eigenständige Szenarien als auch "
+"zusammenhängende Kampagnen sind über das Menü  <italic>text='Kampagnen'</"
+"italic> des Startbildschirms erreichbar."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:516
@@ -3060,7 +3067,7 @@ msgstr ""
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:541
 msgid "Installing Add-ons"
-msgstr ""
+msgstr "Erweiterungen installieren"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:542
@@ -3091,7 +3098,7 @@ msgstr ""
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:555
 msgid "Removing Add-ons"
-msgstr ""
+msgstr "Erweiterungen entfernen"
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:556
@@ -3653,7 +3660,6 @@ msgstr "Lichtaura"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:354
-#, fuzzy
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -3818,14 +3824,13 @@ msgstr "Kannibalismus"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:505
-#, fuzzy
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
 msgstr ""
-" Nachdem sie eine lebende Einheit getötet hat, labt sie sich an deren "
-"Überresten und erhält durch die restliche Lebenskraft in dem toten Körper "
-"einen zusätzlichen Lebenspunkt zu ihrem Maximalwert."
+" Nachdem sie eine lebende Einheit getötet hat, labt diese Einheit sich an "
+"deren Überresten und erhält durch die restliche Lebenskraft in dem toten "
+"Körper einen zusätzlichen Lebenspunkt zu ihrem Maximalwert."
 
 #. [unstore_unit]
 #: data/core/macros/abilities.cfg:531
@@ -5034,21 +5039,18 @@ msgstr ""
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:132
-#, fuzzy
 msgid "race^Falcon"
-msgstr "Mensch"
+msgstr "Falke"
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:133
-#, fuzzy
 msgid "race+female^Falcon"
-msgstr "Mensch"
+msgstr "Falke"
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:134
-#, fuzzy
 msgid "race^Falcons"
-msgstr "Menschen"
+msgstr "Falken"
 
 #. [race]: id=goblin
 #: data/core/units.cfg:145
@@ -5243,9 +5245,8 @@ msgstr "Mensch"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:201
-#, fuzzy
 msgid "race+plural^Khalifate"
-msgstr "Kriegsgeräte"
+msgstr ""
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:202
@@ -5826,6 +5827,36 @@ msgid ""
 "only to march to the defense of the natural world and the forests it calls "
 "home."
 msgstr ""
+"Die mächtigen Waldschrate finden sich tief in den größten Wäldern der "
+"bekannten Welt. Für das ungeschulte Auge scheinen sie lediglich bizarr "
+"geformte und doch stattliche Bäume. Als Wächter des Waldes sind sie diesen "
+"näher verbunden als selbst die Elfen. Trotz der friedvollen Art der "
+"Waldschrate wird das Stören der uralten Wälder, die sie hegen, den geballten "
+"Zorn der Natur entfesseln. Waldschrate bewegen sich nur gemächlich und "
+"bevorzugen es, ungestört von den Geschehnissen der Welt teils Jahrhunderte "
+"an einer Stelle zu verweilen.\n"
+"\n"
+"Obwohl sie selbst keine Magie wirken, sind Waldschrate tief der Feenwelt "
+"verbunden. Das wenige, was über diese uralten Wesen bekannt ist, wurde von "
+"elfischen Gelehrten überliefert. Ihnen zufolge wohnt die mystische Energie, "
+"derer Beherrschung die bedeutendsten Elfen ihr Leben widmen, den "
+"Waldschraten von Natur aus inne. Trotz der Ähnlichkeit seien sie nicht mit "
+"den Bäumen verwandt, sie zählten vielmehr zu den ältesten Wesen der Welt und "
+"existierten möglicherweise sogar vor den Wäldern, in denen sie nun weilen. "
+"Man geht davon aus, dass die ihnen innewohnende Macht der Feen auf ihrer "
+"Aufgabe als ewige Beschützer der Wälder beruht. Die Lebensdauer der "
+"Waldschrate kann nur anhand Jahrhunderte alter Exemplare mit gewaltiger "
+"Größe erahnt werden. Wenn sie nicht im Kampf fallen, ist ihrem Leben "
+"möglicherweise kein Ende gesetzt. \n"
+"\n"
+"Waldschraten fehlt jede kriegerische Natur und im Kampf sind sie meist recht "
+"unbeholfen, doch zur Verteidigung ihrer Wälder sind sie jederzeit zur Gewalt "
+"bereit und schlagen Angreifer mit einer Wucht nieder, die niemand von einer "
+"so friedvollen Kreatur erwarten würde. Mangels Gelenkigkeit sind sie langsam "
+"und außerhalb ihrer Wälder leicht angreifbar. Während ihre harte Rinde "
+"gewöhnlichen Angriffen meist widersteht und schnell verheilt, ist sie Feuer "
+"schutzlos ausgeliefert. Ebenso macht ihre magische Essenz sie anfällig für "
+"arkane Zauber."
 
 #: src/help.cpp:52
 msgid "Help"
@@ -5885,9 +5916,8 @@ msgid "Base units: "
 msgstr ""
 
 #: src/help.cpp:1488
-#, fuzzy
 msgid "Variations: "
-msgstr "Fraktionen:"
+msgstr "Varianten:"
 
 #: src/help.cpp:1512 src/help.cpp:1889 src/help.cpp:2033
 msgid "race^Miscellaneous"
