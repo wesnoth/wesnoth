@@ -333,9 +333,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(auto_shroud, child,  use_undo, /*show*/, /*error
 	team &current_team = (*resources::teams)[current_team_num - 1];
 
 	bool active = child["active"].to_bool();
-	// Turning on automatic shroud causes vision to be updated.
-	if ( active )
-		resources::undo_stack->commit_vision();
 
 	current_team.set_auto_shroud_updates(active);
 	return true;
