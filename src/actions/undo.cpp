@@ -433,12 +433,14 @@ undo_list::~undo_list()
 /**
  * Adds an auto-shroud toggle to the undo stack.
  */
-void undo_list::add_auto_shroud(bool turned_on)
+void undo_list::add_auto_shroud(bool turned_on, boost::optional<int> unit_id_diff)
 {
+	if(!unit_id_diff)
+		unit_id_diff = synced_context::get_unit_id_diff();
 	/// @todo: Consecutive shroud actions can be collapsed into one.
 
 	// Do not call add(), as this should not clear the redo stack.
-	undos_.push_back(new auto_shroud_action(turned_on, synced_context::get_unit_id_diff()));
+	undos_.push_back(new auto_shroud_action(turned_on, unit_id_diff.get()));
 }
 
 /**
@@ -484,12 +486,14 @@ void undo_list::add_recruit(const unit_const_ptr u, const map_location& loc,
  * This is called from within commit_vision(), so there should be no need
  * for this to be publicly visible.
  */
-void undo_list::add_update_shroud()
+void undo_list::add_update_shroud(boost::optional<int> unit_id_diff)
 {
+	if(!unit_id_diff)
+		unit_id_diff = synced_context::get_unit_id_diff();
 	/// @todo: Consecutive shroud actions can be collapsed into one.
 
 	// Do not call add(), as this should not clear the redo stack.
-	undos_.push_back(new update_shroud_action(synced_context::get_unit_id_diff()));
+	undos_.push_back(new update_shroud_action(unit_id_diff.get()));
 }
 
 
@@ -822,7 +826,7 @@ bool undo_list::auto_shroud_action::undo(int /*side*/, undo_list & undos)
 	undos.undo();
 	// Now keep the auto-shroud toggle at the top of the undo stack.
 	recorder.add_synced_command("auto_shroud", replay_helper::get_auto_shroud(active));
-	undos.add_auto_shroud(active);
+	undos.add_auto_shroud(active, this->unit_id_diff);
 	// Shroud actions never get moved to the redo stack, so claim an error.
 	return false;
 }
@@ -840,7 +844,7 @@ bool undo_list::update_shroud_action::undo(int /*side*/, undo_list & undos)
 	// Now keep the shroud update at the top of the undo stack.
 	recorder.add_synced_command("update_shroud", replay_helper::get_update_shroud());
 
-	undos.add_update_shroud();
+	undos.add_update_shroud(this->unit_id_diff);
 	// Shroud actions never get moved to the redo stack, so claim an error.
 	return false;
 }

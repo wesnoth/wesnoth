@@ -26,6 +26,7 @@
 
 #include <boost/noncopyable.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
+#include <boost/optional.hpp>
 #include <vector>
 
 
@@ -133,7 +134,7 @@ public:
 	// Functions related to managing the undo stack:
 
 	/// Adds an auto-shroud toggle to the undo stack.
-	void add_auto_shroud(bool turned_on);
+	void add_auto_shroud(bool turned_on, boost::optional<int> unit_id_diff = boost::optional<int>());
 	/// Adds a dismissal to the undo stack.
 	void add_dismissal(const unit_const_ptr u);
 	/// Adds a move to the undo stack.
@@ -150,7 +151,7 @@ public:
 	                 const map_location& from);
 private:
 	/// Adds a shroud update to the undo stack.
-	void add_update_shroud();
+	void add_update_shroud(boost::optional<int> unit_id_diff = boost::optional<int>());
 public:
 	/// Clears the stack of undoable (and redoable) actions.
 	void clear();
