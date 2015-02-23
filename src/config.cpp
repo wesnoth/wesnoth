@@ -528,6 +528,14 @@ void config::append_children(const config &cfg)
 	}
 }
 
+void config::append_attributes(const config &cfg)
+{
+	check_valid(cfg);
+	BOOST_FOREACH(const attribute &v, cfg.values) {
+		values[v.first] = v.second;
+	}
+}
+
 void config::append_children(const config &cfg, const std::string& key)
 {
 	check_valid(cfg);

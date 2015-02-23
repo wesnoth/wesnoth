@@ -19,6 +19,7 @@
 
 #include <boost/tuple/tuple.hpp>
 #include <boost/scoped_ptr.hpp>
+#include <boost/ptr_container/ptr_vector.hpp>
 
 #include "unit_types.hpp"
 #include "unit_ptr.hpp"
@@ -310,9 +311,11 @@ public:
 	std::vector<std::pair<std::string,std::string> > amla_icons() const;
 
 	std::vector<config> get_modification_advances() const;
-	config::const_child_itors modification_advancements() const
-	{ return cfg_.child_range("advancement"); }
+
+	typedef boost::ptr_vector<config> t_advancements;
 	void set_advancements(std::vector<config> advancements);
+	const t_advancements& modification_advancements() const
+	{ return advancements_; }
 
 	size_t modification_count(const std::string& type, const std::string& id) const;
 
@@ -496,7 +499,8 @@ private:
 	double hp_bar_scaling_, xp_bar_scaling_;
 
 	config modifications_;
-
+	config abilities_;
+	t_advancements advancements_;
 	/**
 	 * Hold the visibility status cache for a unit, when not uncovered.
 	 * This is mutable since it is a cache.

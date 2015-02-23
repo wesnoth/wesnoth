@@ -184,7 +184,7 @@ namespace lua_check_impl
 			for (int i = 1, i_end = lua_rawlen(L, n); i <= i_end; ++i)
 			{
 				lua_rawgeti(L, n, i);
-				res.push_back(lua_check_impl::lua_check<typename remove_constref<typename T::value_type>::type>(L, -1));
+				res.push_back(lua_check_impl::lua_check<typename remove_constref<typename T::reference>::type>(L, -1));
 			}
 			return res;
 		}
@@ -218,7 +218,7 @@ namespace lua_check_impl
 		assert(list.size() >= 0);
 		lua_createtable(L, list.size(), 0);
 		for(size_t i = 0, size = static_cast<size_t>(list.size()); i < size; ++i) {
-			lua_check_impl::lua_push<typename remove_constref<typename T::value_type>::type>(L, list[i]);
+			lua_check_impl::lua_push<typename remove_constref<typename T::reference>::type>(L, list[i]);
 			lua_rawseti(L, -2, i + 1);
 		}
 	}
