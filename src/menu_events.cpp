@@ -791,8 +791,6 @@ void menu_handler::toggle_shroud_updates(int side_num)
 	team &current_team = teams()[side_num - 1];
 	bool auto_shroud = current_team.auto_shroud_updates();
 	// If we're turning automatic shroud updates on, then commit all moves
-	// TODO: currently synced_context::run_in_synced_context("auto_shroud", replay_helper::get_auto_shroud(!auto_shroud));
-	// Also calls update_shroud_now so eigher remove this one or that one.
 	if (!auto_shroud) update_shroud_now(side_num);
 
 	// Toggle the setting and record this.
