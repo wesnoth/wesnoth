@@ -345,8 +345,8 @@ SYNCED_COMMAND_HANDLER_FUNCTION(auto_shroud, child,  use_undo, /*show*/, /*error
 	// Turning on automatic shroud causes vision to be updated.
 	if ( active )
 		resources::undo_stack->commit_vision();
-
 	current_team.set_auto_shroud_updates(active);
+	resources::undo_stack->add_auto_shroud(active);
 	return true;
 }
 
