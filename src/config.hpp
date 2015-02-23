@@ -675,6 +675,11 @@ public:
 	void append_children(const config &cfg, const std::string& key);
 
 	/**
+	 * Adds attributes from @a cfg.
+	 */
+	void append_attributes(const config &cfg);
+
+	/**
 	 * All children with the given key will be merged
 	 * into the first element with that key.
 	 */

@@ -170,6 +170,13 @@ public:
 
 	config::const_child_itors possible_traits() const
 	{ return possible_traits_.child_range("trait"); }
+
+	const config& abilities_cfg() const
+	{ return cfg_.child_or_empty("abilities"); }
+
+	config::const_child_itors advancements() const
+	{ return cfg_.child_range("advancement"); }
+
 	bool has_random_traits() const;
 
 	/// The returned vector will not be empty, provided this has been built

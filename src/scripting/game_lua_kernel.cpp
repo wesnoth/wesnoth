@@ -301,7 +301,7 @@ static int impl_unit_get(lua_State *L)
 		return 1;
 	}
 	if (strcmp(m, "advancements") == 0) {
-		lua_push(L, boost::iterator_range<config::const_child_iterator>(u.modification_advancements()));
+		lua_push(L, u.modification_advancements());
 		return 1;
 	}
 	if (strcmp(m, "overlays") == 0) {

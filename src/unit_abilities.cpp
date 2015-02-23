@@ -132,12 +132,11 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 {
 	assert(resources::teams);
 
-	if (const config &abilities = cfg_.child("abilities"))
-	{
-		BOOST_FOREACH(const config &i, abilities.child_range(tag_name)) {
-			if (ability_active(tag_name, i, loc) &&
-			    ability_affects_self(tag_name, i, loc))
-				return true;
+	BOOST_FOREACH(const config &i, this->abilities_.child_range(tag_name)) {
+		if (ability_active(tag_name, i, loc) &&
+			ability_affects_self(tag_name, i, loc))
+		{
+			return true;
 		}
 	}
 
@@ -155,14 +154,13 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 		// ourself.
 		if ( &*it == this )
 			continue;
-		const config &adj_abilities = it->cfg_.child("abilities");
-		if (!adj_abilities)
-			continue;
-		BOOST_FOREACH(const config &j, adj_abilities.child_range(tag_name)) {
+		BOOST_FOREACH(const config &j, it->abilities_.child_range(tag_name)) {
 			if (affects_side(j, *resources::teams, side(), it->side()) &&
 			    it->ability_active(tag_name, j, adjacent[i]) &&
 			    ability_affects_adjacent(tag_name,  j, i, loc, *it))
+			{
 				return true;
+			}
 		}
 	}
 
@@ -175,12 +173,11 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 
 	unit_ability_list res;
 
-	if (const config &abilities = cfg_.child("abilities"))
-	{
-		BOOST_FOREACH(const config &i, abilities.child_range(tag_name)) {
-			if (ability_active(tag_name, i, loc) &&
-			    ability_affects_self(tag_name, i, loc))
-				res.push_back(unit_ability(&i, loc));
+	BOOST_FOREACH(const config &i, this->abilities_.child_range(tag_name)) {
+		if (ability_active(tag_name, i, loc) &&
+			ability_affects_self(tag_name, i, loc))
+		{
+			res.push_back(unit_ability(&i, loc));
 		}
 	}
 
@@ -198,14 +195,13 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		// ourself.
 		if ( &*it == this )
 			continue;
-		const config &adj_abilities = it->cfg_.child("abilities");
-		if (!adj_abilities)
-			continue;
-		BOOST_FOREACH(const config &j, adj_abilities.child_range(tag_name)) {
+		BOOST_FOREACH(const config &j, it->abilities_.child_range(tag_name)) {
 			if (affects_side(j, *resources::teams, side(), it->side()) &&
 			    it->ability_active(tag_name, j, adjacent[i]) &&
 			    ability_affects_adjacent(tag_name, j, i, loc, *it))
+			{
 				res.push_back(unit_ability(&j, adjacent[i]));
+			}
 		}
 	}
 
@@ -217,9 +213,7 @@ std::vector<std::string> unit::get_ability_list() const
 {
 	std::vector<std::string> res;
 
-	const config &abilities = cfg_.child("abilities");
-	if (!abilities) return res;
-	BOOST_FOREACH(const config::any_child &ab, abilities.all_children_range()) {
+	BOOST_FOREACH(const config::any_child &ab, this->abilities_.all_children_range()) {
 		std::string const &id = ab.cfg["id"];
 		if (!id.empty())
 			res.push_back(id);
@@ -272,10 +266,7 @@ std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(st
 	if ( active_list )
 		active_list->clear();
 
-	const config &abilities = cfg_.child("abilities");
-	if (!abilities) return res;
-
-	BOOST_FOREACH(const config::any_child &ab, abilities.all_children_range())
+	BOOST_FOREACH(const config::any_child &ab, this->abilities_.all_children_range())
 	{
 		if ( !active_list || ability_active(ab.key, ab.cfg, loc_) )
 		{
@@ -429,11 +420,8 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 
 bool unit::has_ability_type(const std::string& ability) const
 {
-	if (const config &list = cfg_.child("abilities")) {
-		config::const_child_itors itors = list.child_range(ability);
-		return itors.first != itors.second;
-	}
-	return false;
+	config::const_child_itors itors = this->abilities_.child_range(ability);
+	return itors.first != itors.second;
 }
 
 

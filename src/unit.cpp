@@ -245,9 +245,22 @@ unit::unit(const unit& o)
 	, hp_bar_scaling_(o.hp_bar_scaling_)
 	, xp_bar_scaling_(o.xp_bar_scaling_)
 	, modifications_(o.modifications_)
+	, abilities_(o.abilities_)
+	, advancements_(o.advancements_)
 	, invisibility_cache_()
 {
 }
+
+struct ptr_vector_pushback
+{
+	ptr_vector_pushback(boost::ptr_vector<config>&  vec) : vec_(&vec) {}
+	void operator()(const config& cfg)
+	{
+		vec_->push_back(new config(cfg));
+	}
+	//Dont use reference to be copyable.
+	boost::ptr_vector<config>* vec_;
+};
 
 unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_manager* id_manager)
 	: ref_count_(0)
@@ -312,6 +325,8 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 	, hp_bar_scaling_(cfg["hp_bar_scaling"].blank() ? type_->hp_bar_scaling() : cfg["hp_bar_scaling"])
 	, xp_bar_scaling_(cfg["xp_bar_scaling"].blank() ? type_->xp_bar_scaling() : cfg["xp_bar_scaling"])
 	, modifications_()
+	, abilities_()
+	, advancements_()
 	, invisibility_cache_()
 {
 	side_ = cfg["side"];
@@ -435,25 +450,19 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg, n_unit::id_m
 	//If cfg specifies [advancement]s, replace this [advancement]s with them.
 	if(cfg.has_child("advancement"))
 	{
-		cfg_.clear_children("advancement");
-		boost::copy( cfg.child_range("advancement")
-			, boost::make_function_output_iterator(
-				boost::bind(
-					  /* The static_cast is required to select the proper overload in C++11 mode. */
-					  static_cast<config&(config::*)(const std::string &, const config&)>(&config::add_child)
-					, boost::ref(cfg_) /*thisptr*/
-					, "advancement"
-					, _1 )) );
+		this->advancements_.clear();
+		boost::copy( cfg.child_range("advancement"), boost::make_function_output_iterator(ptr_vector_pushback(advancements_)));
 	}
 
 	//don't use the unit_type's abilities if this config has its own defined
+	//Why do we allow multiple [abilities] tags?
 	cfg_range = cfg.child_range("abilities");
 	if(cfg_range.first != cfg_range.second) {
-		cfg_.clear_children("abilities");
-		config &target = cfg_.add_child("abilities");
-		do {
-			target.append(*cfg_range.first);
-		} while(++cfg_range.first != cfg_range.second);
+		this->abilities_.clear();
+		BOOST_FOREACH(const config& abilities, cfg_range)
+		{
+			this->abilities_.append(abilities);
+		}
 	}
 
 	// Adjust the unit's defense, movement, vision, jamming, resistances, and
@@ -629,6 +638,8 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	, getsHit_(0)
 	, hidden_(false)
 	, modifications_()
+	, abilities_()
+	, advancements_()
 	, invisibility_cache_()
 {
 	cfg_["upkeep"]="full";
@@ -872,9 +883,14 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 	}
 
 	// Inherit from the new unit type.
-	new_cfg.merge_with(new_type.get_cfg_for_units());
-
-	// If unit has specific profile, remember it and keep it after advancing
+	new_cfg.merge_attributes(new_type.get_cfg_for_units());
+	
+	abilities_ = new_type.abilities_cfg();
+	advancements_.clear();
+	BOOST_FOREACH(const config& advancement, new_type.advancements()) {
+		advancements_.push_back(new config(advancement));
+	}
+ 	// If unit has specific profile, remember it and keep it after advancing
 	std::string profile = old_cfg["profile"].str();
 	if ( !profile.empty()  &&  profile != old_type.big_profile() ) {
 		new_cfg["profile"] = profile;
@@ -1310,11 +1326,9 @@ void unit::set_state(const std::string &state, bool value)
 
 bool unit::has_ability_by_id(const std::string& ability) const
 {
-	if (const config &abil = cfg_.child("abilities"))
-	{
-		BOOST_FOREACH(const config::any_child &ab, abil.all_children_range()) {
-			if (ab.cfg["id"] == ability)
-				return true;
+	BOOST_FOREACH(const config::any_child &ab, this->abilities_.all_children_range()) {
+		if (ab.cfg["id"] == ability) {
+			return true;
 		}
 	}
 	return false;
@@ -1322,15 +1336,12 @@ bool unit::has_ability_by_id(const std::string& ability) const
 
 void unit::remove_ability_by_id(const std::string &ability)
 {
-	if (config &abil = cfg_.child("abilities"))
-	{
-		config::all_children_iterator i = abil.ordered_begin();
-		while (i != abil.ordered_end()) {
-			if (i->cfg["id"] == ability) {
-				i = abil.erase(i);
-			} else {
-				++i;
-			}
+	config::all_children_iterator i = this->abilities_.ordered_begin();
+	while (i != this->abilities_.ordered_end()) {
+		if (i->cfg["id"] == ability) {
+			i = this->abilities_.erase(i);
+		} else {
+			++i;
 		}
 	}
 }
@@ -1423,7 +1434,14 @@ void unit::write(config& cfg) const
 	}
 	cfg["cost"] = unit_value_;
 	cfg.clear_children("modifications");
-	cfg.add_child("modifications",modifications_);
+	cfg.add_child("modifications", modifications_);
+	cfg.clear_children("abilities");
+	cfg.add_child("abilities", abilities_);
+	cfg.clear_children("advancement");
+	BOOST_FOREACH(const config& advancement, this->advancements_)
+	{
+		cfg.add_child("advancement", advancement);
+	}
 
 }
 
@@ -1624,10 +1642,11 @@ std::vector<config> unit::get_modification_advances() const
 
 void unit::set_advancements(std::vector<config> advancements)
 {
-	cfg_.clear_children("advancement");
+	this->advancements_.clear();
 	BOOST_FOREACH(config& advancement, advancements)
 	{
-		cfg_.add_child("advancement").swap(advancement);
+		this->advancements_.push_back(new config());
+		this->advancements_.back().swap(advancement);
 	}
 }
 
@@ -1911,7 +1930,6 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 						emit_zoc_ = v->to_bool();
 					}
 				} else if (apply_to == "new_ability") {
-					config &ab = cfg_.child_or_add("abilities");
 					if (const config &ab_effect = effect.child("abilities")) {
 						config to_append;
 						BOOST_FOREACH(const config::any_child &ab, ab_effect.all_children_range()) {
@@ -1919,7 +1937,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 								to_append.add_child(ab.key, ab.cfg);
 							}
 						}
-						ab.append(to_append);
+						this->abilities_.append(to_append);
 					}
 				} else if (apply_to == "remove_ability") {
 					if (const config &ab_effect = effect.child("abilities")) {
