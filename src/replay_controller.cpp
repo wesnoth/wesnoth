@@ -618,7 +618,8 @@ possible_end_play_signal replay_controller::play_move_or_side(bool one_move) {
 	}
 
 	// This is necessary for replays in order to show possible movements.
-	gamestate_.board_.new_turn(player_number_);
+	// But it causes OOS with the original game since the units have wrong movement_left value during side turn events.
+	// gamestate_.board_.new_turn(player_number_);
 
 	update_teams();
 	update_gui();
