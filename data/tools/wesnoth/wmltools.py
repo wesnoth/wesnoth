@@ -52,6 +52,16 @@ def attr_strip(value):
     value = value.strip()
     return string_strip(value)
 
+def comma_split(value, list=None):
+    "Split a comma-separated value, and append the entries to a list if specified."
+    vallist = [x.lstrip()for x in value.split(",")]
+    # lstrip: wml-tags.lua split function will remove leading whitespace
+    # of items in comma-separated lists but not trailing whitespace
+    if list:
+        list.extend(vallist)
+    else:
+        return vallist
+
 def parse_attribute(line):
     "Parse a WML key-value pair from a line."
     if '=' not in line or line.find("#") > -1 and line.find("#") < line.find("="):
