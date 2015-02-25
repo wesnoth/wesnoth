@@ -588,7 +588,7 @@ possible_end_play_signal playsingle_controller::play_side()
 	//check for team-specific items in the scenario
 	gui_->parse_team_overlays();
 
-	HANDLE_END_PLAY_SIGNAL( maybe_do_init_side(false) );
+	HANDLE_END_PLAY_SIGNAL( maybe_do_init_side() );
 
 	//flag used when we fallback from ai and give temporarily control to human
 	bool temporary_human = false;

@@ -374,7 +374,8 @@ possible_end_play_signal play_controller::init_side(bool is_replay){
 /**
  * Called by turn_info::process_network_data() or init_side() to call do_init_side() if necessary.
  */
-void play_controller::maybe_do_init_side(bool is_replay, bool only_visual) {
+void play_controller::maybe_do_init_side(bool is_replay, bool only_visual)
+{
 	/**
 	 * We do side init only if not done yet for a local side when we are not replaying.
 	 * For all other sides it is recorded in replay and replay handler has to handle
@@ -386,20 +387,20 @@ void play_controller::maybe_do_init_side(bool is_replay, bool only_visual) {
 
 	if(!only_visual) {
 		recorder.init_side();
-		set_scontext_synced sync;
-		do_init_side(is_replay);
-		sync.do_final_checkup();
+		do_init_side();
 	}
 	else
 	{
-		do_init_side(is_replay, true);
+		do_init_side_visual();
 	}
 }
 
 /**
  * Called by replay handler or init_side() to do actual work for turn change.
  */
-void play_controller::do_init_side(bool is_replay, bool only_visual) {
+void play_controller::do_init_side()
+{
+	set_scontext_synced sync;
 	log_scope("player turn");
 	//In case we might end up calling sync:network during the side turn events,
 	//and we don't want do_init_side to be called when a player drops.
@@ -408,53 +409,54 @@ void play_controller::do_init_side(bool is_replay, bool only_visual) {
 	const std::string turn_num = str_cast(turn());
 	const std::string side_num = str_cast(player_number_);
 
-	// If this is right after loading a game we don't need to fire events and such. It was already done before saving.
-	if (!only_visual) {
-		if(it_is_a_new_turn_)
-		{
-			pump().fire("turn " + turn_num);
-			pump().fire("new turn");
-			it_is_a_new_turn_ = false;
-		}
-
-		pump().fire("side turn");
-		pump().fire("side " + side_num + " turn");
-		pump().fire("side turn " + turn_num);
-		pump().fire("side " + side_num + " turn " + turn_num);
-
-		// We want to work out if units for this player should get healed,
-		// and the player should get income now.
-		// Healing/income happen if it's not the first turn of processing,
-		// or if we are loading a game.
-		if (turn() > 1) {
-			gamestate_.board_.new_turn(player_number_);
-			current_team().new_turn();
-
-			// If the expense is less than the number of villages owned
-			// times the village support capacity,
-			// then we don't have to pay anything at all
-			int expense = gamestate_.board_.side_upkeep(player_number_) -
-				current_team().support();
-			if(expense > 0) {
-				current_team().spend_gold(expense);
-			}
-
-			calculate_healing(player_number_, !skip_replay_);
-		}
-
-		// Prepare the undo stack.
-		undo_stack_->new_side_turn(player_number_);
-
-		pump().fire("turn refresh");
-		pump().fire("side " + side_num + " turn refresh");
-		pump().fire("turn " + turn_num + " refresh");
-		pump().fire("side " + side_num + " turn " + turn_num + " refresh");
-
-		// Make sure vision is accurate.
-		actions::clear_shroud(player_number_, true);
-		check_victory();
+	if(it_is_a_new_turn_)
+	{
+		pump().fire("turn " + turn_num);
+		pump().fire("new turn");
+		it_is_a_new_turn_ = false;
 	}
 
+	pump().fire("side turn");
+	pump().fire("side " + side_num + " turn");
+	pump().fire("side turn " + turn_num);
+	pump().fire("side " + side_num + " turn " + turn_num);
+
+	// We want to work out if units for this player should get healed,
+	// and the player should get income now.
+	// Healing/income happen if it's not the first turn of processing,
+	// or if we are loading a game.
+	if (turn() > 1) {
+		gamestate_.board_.new_turn(player_number_);
+		current_team().new_turn();
+
+		// If the expense is less than the number of villages owned
+		// times the village support capacity,
+		// then we don't have to pay anything at all
+		int expense = gamestate_.board_.side_upkeep(player_number_) -
+			current_team().support();
+		if(expense > 0) {
+			current_team().spend_gold(expense);
+		}
+
+		calculate_healing(player_number_, !skip_replay_);
+	}
+
+	// Prepare the undo stack.
+	undo_stack_->new_side_turn(player_number_);
+
+	pump().fire("turn refresh");
+	pump().fire("side " + side_num + " turn refresh");
+	pump().fire("turn " + turn_num + " refresh");
+	pump().fire("side " + side_num + " turn " + turn_num + " refresh");
+
+	// Make sure vision is accurate.
+	actions::clear_shroud(player_number_, true);
+	check_victory();
+	sync.do_final_checkup();
+	do_init_side_visual();
+}
+void play_controller::do_init_side_visual()
+{
 	const time_of_day &tod = gamestate_.tod_manager_.get_time_of_day();
 
 	if (player_number_ == first_player_)
@@ -470,7 +472,6 @@ void play_controller::do_init_side(bool is_replay, bool only_visual) {
 	loading_game_ = false;
 	whiteboard_manager_->on_init_side();
 }
-
 //builds the snapshot config from its members and their configs respectively
 config play_controller::to_config() const
 {

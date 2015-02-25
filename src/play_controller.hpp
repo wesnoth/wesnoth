@@ -106,7 +106,8 @@ public:
 	void save_map();
 
 	void maybe_do_init_side(bool is_replay = false, bool only_visual = false);
-	void do_init_side(bool is_replay = false, bool only_visual = false);
+	void do_init_side();
+	void do_init_side_visual();
 
 	virtual void force_end_turn() = 0;
 	virtual void force_end_level(LEVEL_RESULT res) = 0;
