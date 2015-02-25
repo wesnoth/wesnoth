@@ -521,21 +521,11 @@ possible_end_play_signal playsingle_controller::play_turn()
 		possible_end_play_signal signal;
 		{
 			save_blocker blocker;
-			signal = init_side();
-		}
-
-		if (signal) {
-			switch (boost::apply_visitor(get_signal_type(), *signal)) {
-				case END_TURN:
-					if (current_team().is_network() == false) {
-						turn_data_.send_data();
-						recorder.end_turn();
-						turn_data_.sync_network();
-					}
-					continue;
-				case END_LEVEL:
-					return signal;
+			init_side_begin(false);
+			if(loading_game_ && init_side_done_) {
+				init_side_end();
 			}
+			loading_game_ = false;
 		}
 
 		if (replaying_) {
@@ -555,9 +545,6 @@ possible_end_play_signal playsingle_controller::play_turn()
 				std::endl;
 			ai_testing::log_turn_end(player_number_);
 		}
-
-		//if loading a savegame, network turns might not have reset this yet
-		loading_game_ = false;
 	}
 	//If the loop exits due to the last team having been processed,
 	//player_number_ will be 1 too high
@@ -586,8 +573,14 @@ possible_end_play_signal playsingle_controller::play_side()
 	//check for team-specific items in the scenario
 	gui_->parse_team_overlays();
 
-	HANDLE_END_PLAY_SIGNAL( maybe_do_init_side() );
-
+	try {
+		maybe_do_init_side();
+	} catch (end_level_exception & e) {
+		return possible_end_play_signal(e.to_struct());
+	} catch (end_turn_exception & e) {
+		// Case ':driod, :control': ignore it. Since we don't have started the loop below yet, we dont need to restart it.
+		// Case '[end_turn]': impossible: we only set end_turn_, skip_next_turn_ variable to true but dont throw an end_turn exception in this case.
+	}
 	//flag used when we fallback from ai and give temporarily control to human
 	bool temporary_human = false;
 	do {
@@ -831,8 +824,10 @@ void playsingle_controller::after_human_turn()
 	gui_->unhighlight_reach();
 }
 
-void playsingle_controller::play_ai_turn(){
+void playsingle_controller::play_ai_turn()
+{
 	LOG_NG << "is ai...\n";
+
 	end_turn_enable(false);
 	browse_ = true;
 	gui_->recalculate_minimap();
@@ -856,7 +851,7 @@ void playsingle_controller::play_ai_turn(){
 		} 
 		catch (end_turn_exception&) {
 		}
-	} 
+	}
 	catch(...) {
 		turn_data_.sync_network();
 		throw;

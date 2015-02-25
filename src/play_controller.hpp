@@ -105,9 +105,10 @@ public:
 	void save_replay_auto(const std::string & filename);
 	void save_map();
 
-	void maybe_do_init_side(bool is_replay = false);
+	void init_side_begin(bool is_replay);
+	void maybe_do_init_side();
 	void do_init_side();
-	void do_init_side_visual();
+	void init_side_end();
 
 	virtual void force_end_turn() = 0;
 	virtual void force_end_level(LEVEL_RESULT res) = 0;
@@ -216,7 +217,6 @@ protected:
 	void fire_prestart();
 	void fire_start(bool execute);
 	virtual void init_gui();
-	possible_end_play_signal init_side(bool is_replay = false);
 	virtual void finish_side_turn();
 	void finish_turn(); //this should not throw an end turn or end level exception
 	bool enemies_visible() const;

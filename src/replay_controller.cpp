@@ -564,18 +564,7 @@ possible_end_play_signal replay_controller::play_move_or_side(bool one_move) {
 
 		possible_end_play_signal signal = NULL;
 		if (last_replay_action == REPLAY_FOUND_END_TURN) {
-			signal = play_controller::init_side(true);
-		}
-
-		if (signal) {
-			switch (boost::apply_visitor(get_signal_type(), *signal) ) {
-				case END_TURN:
-					return signal;
-				case END_LEVEL:
-					//VICTORY/DEFEAT end_level_exception shall not return to title screen
-					LEVEL_RESULT res = boost::apply_visitor(get_result(), *signal);
-					if ( res != VICTORY && res != DEFEAT ) return signal;
-			}
+			play_controller::init_side_begin(true);
 		}
 
 		DBG_REPLAY << "doing replay " << player_number_ << "\n";

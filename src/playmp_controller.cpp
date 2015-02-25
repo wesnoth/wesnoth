@@ -154,7 +154,8 @@ void playmp_controller::think_about_countdown(int ticks) {
 	}
 }
 
-possible_end_play_signal playmp_controller::play_human_turn(){
+possible_end_play_signal playmp_controller::play_human_turn()
+{
 	LOG_NG << "playmp::play_human_turn...\n";
 
 	remove_blindfold();
