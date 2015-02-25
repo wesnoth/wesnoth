@@ -522,7 +522,7 @@ possible_end_play_signal playsingle_controller::play_turn()
 		{
 			save_blocker blocker;
 			init_side_begin(false);
-			if(loading_game_ && init_side_done_) {
+			if(init_side_done_) {
 				init_side_end();
 			}
 			loading_game_ = false;
