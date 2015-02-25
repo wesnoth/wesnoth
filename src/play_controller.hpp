@@ -105,7 +105,7 @@ public:
 	void save_replay_auto(const std::string & filename);
 	void save_map();
 
-	void maybe_do_init_side(bool is_replay = false, bool only_visual = false);
+	void maybe_do_init_side(bool is_replay = false);
 	void do_init_side();
 	void do_init_side_visual();
 

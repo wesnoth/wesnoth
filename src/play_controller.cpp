@@ -347,10 +347,9 @@ void play_controller::init_gui(){
 	}
 }
 
-possible_end_play_signal play_controller::init_side(bool is_replay){
+possible_end_play_signal play_controller::init_side(bool is_replay)
+{
 	log_scope("player turn");
-	bool only_visual = loading_game_ && init_side_done_;
-	init_side_done_ = false;
 	mouse_handler_.set_side(player_number_);
 
 	// If we are observers we move to watch next team if it is allowed
@@ -359,13 +358,19 @@ possible_end_play_signal play_controller::init_side(bool is_replay){
 	{
 		update_gui_to_player(player_number_ - 1);
 	}
+
 	gui_->set_playing_team(size_t(player_number_ - 1));
 
 	gamestate_.gamedata_.get_variable("side_number") = player_number_;
 	gamestate_.gamedata_.last_selected = map_location::null_location();
 
-	HANDLE_END_PLAY_SIGNAL( maybe_do_init_side(is_replay, only_visual) );
-
+	if(loading_game_ && init_side_done_) {
+		do_init_side_visual();
+	}
+	else {
+		init_side_done_ = false;
+		HANDLE_END_PLAY_SIGNAL( maybe_do_init_side(is_replay) );
+	}
 	loading_game_ = false;
 
 	return boost::none;
@@ -374,7 +379,7 @@ possible_end_play_signal play_controller::init_side(bool is_replay){
 /**
  * Called by turn_info::process_network_data() or init_side() to call do_init_side() if necessary.
  */
-void play_controller::maybe_do_init_side(bool is_replay, bool only_visual)
+void play_controller::maybe_do_init_side(bool is_replay)
 {
 	/**
 	 * We do side init only if not done yet for a local side when we are not replaying.
@@ -385,15 +390,8 @@ void play_controller::maybe_do_init_side(bool is_replay, bool only_visual)
 		return;
 	}
 
-	if(!only_visual) {
-		recorder.init_side();
-		do_init_side();
-	}
-	else
-	{
-		init_side_done_ = true;
-		do_init_side_visual();
-	}
+	recorder.init_side();
+	do_init_side();
 }
 
 /**
