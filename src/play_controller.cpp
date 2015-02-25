@@ -530,10 +530,10 @@ void play_controller::finish_side_turn(){
 		pump().fire("side "+ side_num + " turn end");
 		pump().fire("side turn " + turn_num + " end");
 		pump().fire("side " + side_num + " turn " + turn_num + " end");
+		// This is where we refog, after all of a side's events are done.
+		actions::recalculate_fog(player_number_);
 		sync.do_final_checkup();
 	}
-	// This is where we refog, after all of a side's events are done.
-	actions::recalculate_fog(player_number_);
 
 	// This implements "delayed map sharing."
 	// It is meant as an alternative to shared vision.
