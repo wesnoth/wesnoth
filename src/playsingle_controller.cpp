@@ -547,7 +547,7 @@ possible_end_play_signal playsingle_controller::play_turn()
 			PROPOGATE_END_PLAY_SIGNAL ( play_side() );
 		}
 
-		finish_side_turn();
+		HANDLE_END_PLAY_SIGNAL(finish_side_turn());
 
 		if(non_interactive()) {
 			LOG_AIT << " Player " << player_number_ << ": " <<
@@ -555,8 +555,6 @@ possible_end_play_signal playsingle_controller::play_turn()
 				std::endl;
 			ai_testing::log_turn_end(player_number_);
 		}
-
-		HANDLE_END_PLAY_SIGNAL ( check_victory() );
 
 		//if loading a savegame, network turns might not have reset this yet
 		loading_game_ = false;

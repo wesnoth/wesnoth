@@ -509,7 +509,8 @@ config play_controller::to_config() const
 	return cfg;
 }
 
-void play_controller::finish_side_turn(){
+void play_controller::finish_side_turn()
+{
 
 	whiteboard_manager_->on_finish_side_turn(player_number_);
 
@@ -530,6 +531,7 @@ void play_controller::finish_side_turn(){
 		pump().fire("side " + side_num + " turn " + turn_num + " end");
 		// This is where we refog, after all of a side's events are done.
 		actions::recalculate_fog(player_number_);
+		check_victory();	
 		sync.do_final_checkup();
 	}
 
