@@ -354,8 +354,10 @@ possible_end_play_signal play_controller::init_side(bool is_replay){
 	mouse_handler_.set_side(player_number_);
 
 	// If we are observers we move to watch next team if it is allowed
-	if (is_observer() && !current_team().get_disallow_observers()) {
-		gui_->set_team(size_t(player_number_ - 1));
+	if ((is_observer() && !current_team().get_disallow_observers())
+		|| (current_team().is_local_human() && !is_replay)) 
+	{
+		update_gui_to_player(player_number_ - 1);
 	}
 	gui_->set_playing_team(size_t(player_number_ - 1));
 
@@ -419,32 +421,27 @@ void play_controller::do_init_side(bool is_replay, bool only_visual) {
 		pump().fire("side " + side_num + " turn");
 		pump().fire("side turn " + turn_num);
 		pump().fire("side " + side_num + " turn " + turn_num);
-	}
 
-	if(current_team().is_local_human() && !is_replay) {
-		update_gui_to_player(player_number_ - 1);
-	}
-	// We want to work out if units for this player should get healed,
-	// and the player should get income now.
-	// Healing/income happen if it's not the first turn of processing,
-	// or if we are loading a game.
-	if (!only_visual && turn() > 1) {
-		gamestate_.board_.new_turn(player_number_);
-		current_team().new_turn();
+		// We want to work out if units for this player should get healed,
+		// and the player should get income now.
+		// Healing/income happen if it's not the first turn of processing,
+		// or if we are loading a game.
+		if (turn() > 1) {
+			gamestate_.board_.new_turn(player_number_);
+			current_team().new_turn();
 
-		// If the expense is less than the number of villages owned
-		// times the village support capacity,
-		// then we don't have to pay anything at all
-		int expense = gamestate_.board_.side_upkeep(player_number_) -
-			current_team().support();
-		if(expense > 0) {
-			current_team().spend_gold(expense);
+			// If the expense is less than the number of villages owned
+			// times the village support capacity,
+			// then we don't have to pay anything at all
+			int expense = gamestate_.board_.side_upkeep(player_number_) -
+				current_team().support();
+			if(expense > 0) {
+				current_team().spend_gold(expense);
+			}
+
+			calculate_healing(player_number_, !skip_replay_);
 		}
 
-		calculate_healing(player_number_, !skip_replay_);
-	}
-
-	if (!only_visual) {
 		// Prepare the undo stack.
 		undo_stack_->new_side_turn(player_number_);
 
@@ -455,6 +452,7 @@ void play_controller::do_init_side(bool is_replay, bool only_visual) {
 
 		// Make sure vision is accurate.
 		actions::clear_shroud(player_number_, true);
+		check_victory();
 	}
 
 	const time_of_day &tod = gamestate_.tod_manager_.get_time_of_day();
@@ -470,8 +468,6 @@ void play_controller::do_init_side(bool is_replay, bool only_visual) {
 		gui_->scroll_to_leader(player_number_,game_display::ONSCREEN,false);
 	}
 	loading_game_ = false;
-
-	check_victory();
 	whiteboard_manager_->on_init_side();
 }
 
