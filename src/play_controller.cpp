@@ -477,8 +477,8 @@ config play_controller::to_config() const
 {
 	config cfg;
 
-	cfg["init_side_done"] = init_side_done_;
 	cfg.merge_attributes(level_);
+	cfg["init_side_done"] = init_side_done_;
 
 	gamestate_.write(cfg);
 
