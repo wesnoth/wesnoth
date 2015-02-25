@@ -62,6 +62,8 @@ public:
 	void play_slice(bool is_delay_enabled = true);
 
 protected:
+	virtual bool is_browsing() const
+	{ return false; }
 	/**
 	 * Get a reference to a mouse handler member a derived class uses
 	 */
@@ -134,7 +136,6 @@ protected:
 	static const config &get_theme(const config& game_config, std::string theme_name);
 	const config& game_config_;
 	CKey key_;
-	bool browse_;
 	bool scrolling_;
 	joystick_manager joystick_manager_;
 };

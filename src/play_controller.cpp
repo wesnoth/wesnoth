@@ -260,8 +260,6 @@ void play_controller::init(CVideo& video){
 		}
 	}
 
-	browse_ = true;
-
 	init_managers();
 	loadscreen::global_loadscreen->start_stage("start game");
 	loadscreen_manager->reset();
@@ -813,11 +811,11 @@ void play_controller::redo(){
 }
 
 bool play_controller::can_undo() const {
-	return !linger_ && !browse_ && !events::commands_disabled && undo_stack_->can_undo();
+	return !linger_ && !is_browsing() && !events::commands_disabled && undo_stack_->can_undo();
 }
 
 bool play_controller::can_redo() const {
-	return !linger_ && !browse_ && !events::commands_disabled && undo_stack_->can_redo();
+	return !linger_ && !is_browsing() && !events::commands_disabled && undo_stack_->can_redo();
 }
 
 namespace {
@@ -966,4 +964,14 @@ plugins_context * play_controller::get_plugins_context() {
 
 hotkey::command_executor * play_controller::get_hotkey_command_executor() {
 	return hotkey_handler_.get();
+}
+
+bool play_controller::is_browsing() const
+{
+	const team& t = current_team();
+	return !t.is_local_human()
+		|| !t.is_proxy_human()
+		|| linger_
+		|| !init_side_done_
+		|| this->gamestate_.gamedata_.phase() != game_data::PLAY;
 }

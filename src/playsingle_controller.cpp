@@ -91,7 +91,7 @@ playsingle_controller::playsingle_controller(const config& level,
 	if (state_of_game.classification().completion == "victory" || state_of_game.classification().completion == "defeat")
 	{
 		LOG_NG << "Setting linger mode.\n";
-		browse_ = linger_ = true;
+		linger_ = true;
 	}
 
 	ai::game_info ai_info;
@@ -615,7 +615,6 @@ possible_end_play_signal playsingle_controller::play_side()
 								// If new controller is not human,
 								// reset gui to prev human one
 								if (!gamestate_.board_.teams()[player_number_-1].is_local_human()) {
-									browse_ = true;
 									int s = find_human_team_before_current_player();
 									if (s <= 0)
 										s = gui_->playing_side();
@@ -657,7 +656,6 @@ possible_end_play_signal playsingle_controller::play_side()
 			do_idle_notification();
 
 			possible_end_play_signal signal = before_human_turn();
-			browse_ = true;
 
 			if (!signal) {
 				signal = play_idle_loop();
@@ -674,7 +672,6 @@ possible_end_play_signal playsingle_controller::play_side()
 							// If new controller is not human,
 							// reset gui to prev human one
 							if (!gamestate_.board_.teams()[player_number_-1].is_local_human()) {
-								browse_ = true;
 								int s = find_human_team_before_current_player();
 								if (s <= 0)
 									s = gui_->playing_side();
@@ -702,7 +699,6 @@ possible_end_play_signal playsingle_controller::play_side()
 possible_end_play_signal playsingle_controller::before_human_turn()
 {
 	log_scope("player turn");
-	browse_ = false;
 	linger_ = false;
 
 	HANDLE_END_PLAY_SIGNAL( ai::manager::raise_turn_started() ); //This line throws exception from here: https://github.com/wesnoth/wesnoth/blob/ac96a2b91b3276e20b682210617cf87d1e0d366a/src/playsingle_controller.cpp#L954
@@ -756,7 +752,6 @@ possible_end_play_signal playsingle_controller::play_human_turn() {
 void playsingle_controller::linger()
 {
 	LOG_NG << "beginning end-of-scenario linger\n";
-	browse_ = true;
 	linger_ = true;
 
 	// If we need to set the status depending on the completion state
@@ -813,7 +808,6 @@ void playsingle_controller::end_turn_enable(bool enable)
 void playsingle_controller::after_human_turn()
 {
 	// Mark the turn as done.
-	browse_ = true;
 	if (!linger_)
 	{
 		recorder.end_turn();
@@ -829,7 +823,6 @@ void playsingle_controller::play_ai_turn()
 	LOG_NG << "is ai...\n";
 
 	end_turn_enable(false);
-	browse_ = true;
 	gui_->recalculate_minimap();
 
 	const cursor::setter cursor_setter(cursor::WAIT);
@@ -928,10 +921,8 @@ possible_end_play_signal playsingle_controller::check_time_over(){
 void playsingle_controller::end_turn(){
 	if (linger_)
 		end_turn_ = true;
-	else if (!browse_){
-		browse_ = true;
+	else if (!is_browsing()){
 		end_turn_ = menu_handler_.end_turn(player_number_);
-		browse_ = end_turn_;
 	}
 }
 
@@ -945,7 +936,7 @@ void playsingle_controller::check_end_level()
 	if (level_result_ == NONE || linger_)
 	{
 		const team &t = gamestate_.board_.teams()[gui_->viewing_team()];
-		if (!browse_ && t.objectives_changed()) {
+		if (!is_browsing() && t.objectives_changed()) {
 			dialogs::show_objectives(get_scenario_name().str(), t.objectives());
 			t.reset_objectives_changed();
 		}

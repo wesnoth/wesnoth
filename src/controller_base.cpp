@@ -35,7 +35,6 @@ controller_base::controller_base(
 		const config& game_config, CVideo& /*video*/)
 	: game_config_(game_config)
 	, key_()
-	, browse_(false)
 	, scrolling_(false)
 	, joystick_manager_()
 {
@@ -81,21 +80,21 @@ void controller_base::handle_event(const SDL_Event& event)
 					SDL_EVENTMASK(SDL_MOUSEMOTION)) > 0) {
 			while(SDL_PeepEvents(&new_event,1,SDL_GETEVENT,
 						SDL_EVENTMASK(SDL_MOUSEMOTION)) > 0) {};
-			get_mouse_handler_base().mouse_motion_event(new_event.motion, browse_);
+			get_mouse_handler_base().mouse_motion_event(new_event.motion, is_browsing());
 		} else {
-			get_mouse_handler_base().mouse_motion_event(event.motion, browse_);
+			get_mouse_handler_base().mouse_motion_event(event.motion, is_browsing());
 		}
 		break;
 	case SDL_MOUSEBUTTONDOWN:
 		process_keydown_event(event);
-		get_mouse_handler_base().mouse_press(event.button, browse_);
+		get_mouse_handler_base().mouse_press(event.button, is_browsing());
 		if (get_mouse_handler_base().get_show_menu()){
 			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true, get_display());
 		}
 		hotkey::mbutton_event(get_display(), event.button, get_hotkey_command_executor());
 		break;
 	case SDL_MOUSEBUTTONUP:
-		get_mouse_handler_base().mouse_press(event.button, browse_);
+		get_mouse_handler_base().mouse_press(event.button, is_browsing());
 		if (get_mouse_handler_base().get_show_menu()){
 			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true, get_display());
 		}
@@ -110,7 +109,7 @@ void controller_base::handle_event(const SDL_Event& event)
 				int x, y;
 				Uint8 mouse_flags = SDL_GetMouseState(&x, &y);
 				if ((mouse_flags & SDL_BUTTON_LEFT) == 0) {
-					get_mouse_handler_base().mouse_press(event.button, browse_);
+					get_mouse_handler_base().mouse_press(event.button, is_browsing());
 				}
 			}
 		}
@@ -118,7 +117,7 @@ void controller_base::handle_event(const SDL_Event& event)
 #endif
 #if SDL_VERSION_ATLEAST(2,0,0)
 	case SDL_MOUSEWHEEL:
-		get_mouse_handler_base().mouse_wheel(event.wheel.x, event.wheel.y, browse_);
+		get_mouse_handler_base().mouse_wheel(event.wheel.x, event.wheel.y, is_browsing());
 		break;
 #endif
 	default:
@@ -285,7 +284,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 	if (!scrolling_ && was_scrolling) {
 		// scrolling ended, update the cursor and the brightened hex
-		get_mouse_handler_base().mouse_update(browse_, highlighted_hex);
+		get_mouse_handler_base().mouse_update(is_browsing(), highlighted_hex);
 	}
 }
 
