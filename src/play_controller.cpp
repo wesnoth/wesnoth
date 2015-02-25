@@ -391,6 +391,7 @@ void play_controller::maybe_do_init_side(bool is_replay, bool only_visual)
 	}
 	else
 	{
+		init_side_done_ = true;
 		do_init_side_visual();
 	}
 }
