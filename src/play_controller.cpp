@@ -518,14 +518,15 @@ void play_controller::finish_side_turn(){
 
 	gamestate_.board_.end_turn(player_number_);
 
-	// Clear shroud, in case units had been slowed for the turn.
-	actions::clear_shroud(player_number_);
-
-	const std::string turn_num = str_cast(turn());
-	const std::string side_num = str_cast(player_number_);
-
 	{ //Block for set_scontext_synced
+		const std::string turn_num = str_cast(turn());
+		const std::string side_num = str_cast(player_number_);
+
 		set_scontext_synced sync(1);
+
+		// Clear shroud, in case units had been slowed for the turn.
+		actions::clear_shroud(player_number_);
+
 		pump().fire("side turn end");
 		pump().fire("side "+ side_num + " turn end");
 		pump().fire("side turn " + turn_num + " end");
