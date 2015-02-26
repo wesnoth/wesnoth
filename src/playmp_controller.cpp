@@ -32,6 +32,9 @@
 #include "unit_animation.hpp"
 #include "whiteboard/manager.hpp"
 #include "countdown_clock.hpp"
+#include "synced_context.hpp"
+#include "replay_helper.hpp"
+
 #include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
@@ -118,7 +121,12 @@ possible_end_play_signal playmp_controller::play_human_turn()
 		timer.reset(new countdown_clock(current_team(), saved_game_.mp_settings()));
 	}
 	show_turn_dialog();
-
+	if(undo_stack_->can_undo()) {
+		// If we reload a networked mp game we cannot undo moved made before the save
+		// Becasue other players already received them
+		synced_context::run_in_synced_context("update_shroud", replay_helper::get_update_shroud());
+		undo_stack_->clear();
+	}
 	if (!preferences::disable_auto_moves()) {
 		HANDLE_END_PLAY_SIGNAL(execute_gotos());
 	}
