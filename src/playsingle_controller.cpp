@@ -882,10 +882,10 @@ void playsingle_controller::handle_generic_event(const std::string& name){
 }
 
 possible_end_play_signal playsingle_controller::check_time_over(){
-	bool b = gamestate_.tod_manager_.next_turn(gamestate_.gamedata_);
+	bool time_left = gamestate_.tod_manager_.next_turn(gamestate_.gamedata_);
 	it_is_a_new_turn_ = true;
-	if(!b) {
-
+	if(!time_left) {
+		//FIXME: This should run in a synced context.
 		LOG_NG << "firing time over event...\n";
 		pump().fire("time over");
 		LOG_NG << "done firing time over event...\n";
