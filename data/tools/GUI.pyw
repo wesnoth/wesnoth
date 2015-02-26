@@ -154,29 +154,35 @@ If the widget isn't active, some options do not appear"""
         else:
             Menu.__init__(self,None,tearoff=0)
         self.widget=widget
+        # MacOS uses a key called Command, instead of the usual Control used by Windows and Linux
+        # so prepare the accelerator strings accordingly
+        # For future reference, Mac also uses Option instead of Alt
+        # also, a little known fact about Python is that it *does* support using the ternary operator
+        # like in this case
+        control_key = "Command" if self.tk.call('tk', 'windowingsystem') == "aqua" else "Ctrl"
         # str is necessary because in some instances a Tcl_Obj is returned instead of a string
         if str(widget.cget('state')) in (ACTIVE,NORMAL): # do not add if state is readonly or disabled
             self.add_command(label="Cut",
                              image=ICONS['cut'],
                              compound=LEFT,
-                             accelerator='Ctrl+X',
+                             accelerator='%s+X' % (control_key),
                              command=lambda: self.widget.event_generate("<<Cut>>"))
         self.add_command(label="Copy",
                          image=ICONS['copy'],
                          compound=LEFT,
-                         accelerator='Ctrl+C',
+                         accelerator='%s+C' % (control_key),
                          command=lambda: self.widget.event_generate("<<Copy>>"))
         if str(widget.cget('state')) in (ACTIVE,NORMAL):
             self.add_command(label="Paste",
                              image=ICONS['paste'],
                              compound=LEFT,
-                             accelerator='Ctrl+V',
+                             accelerator='%s+V' % (control_key),
                              command=lambda: self.widget.event_generate("<<Paste>>"))
         self.add_separator()
         self.add_command(label="Select all",
                          image=ICONS['select_all'],
                          compound=LEFT,
-                         accelerator='Ctrl+A',
+                         accelerator='%s+A' % (control_key),
                          command=self.on_select_all)
         self.tk_popup(x,y) # self.post does not destroy the menu when clicking out of it
     def on_select_all(self):
