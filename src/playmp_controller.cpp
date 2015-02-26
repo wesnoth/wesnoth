@@ -118,7 +118,7 @@ possible_end_play_signal playmp_controller::play_human_turn()
 	remove_blindfold();
 	boost::scoped_ptr<countdown_clock> timer;
 	if(!linger_ && saved_game_.mp_settings().mp_countdown) {
-		timer.reset(new countdown_clock(current_team(), saved_game_.mp_settings()));
+		timer.reset(new countdown_clock(current_team()));
 	}
 	show_turn_dialog();
 	if(undo_stack_->can_undo()) {
@@ -161,7 +161,7 @@ possible_end_play_signal playmp_controller::play_human_turn()
 					while( undo_stack_->can_undo() )
 						undo_stack_->undo();
 
-					return restart_turn_struct();
+					return possible_end_play_signal(restart_turn_struct());
 				}
 				else if(res == turn_info::PROCESS_END_LINGER)
 				{
@@ -216,7 +216,7 @@ possible_end_play_signal playmp_controller::play_idle_loop()
 
 			if (res == turn_info::PROCESS_RESTART_TURN)
 			{
-				return restart_turn_struct();
+				return possible_end_play_signal(restart_turn_struct());
 			}
 		}
 

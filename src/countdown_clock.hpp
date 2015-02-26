@@ -7,7 +7,7 @@ struct mp_game_settings;
 class countdown_clock : public events::pump_monitor
 {
 public:
-	countdown_clock(team& team, const mp_game_settings& settings);
+	countdown_clock(team& team);
 	~countdown_clock();
 	/// @returns ticks passed since last update
 	/// @param new_timestamp latest result of SDL_GetTicks()
@@ -21,7 +21,6 @@ public:
 	void maybe_play_sound();
 private:
 	team& team_;
-	const mp_game_settings& settings_;
 	int last_timestamp_;
 	bool playing_sound_;
 };

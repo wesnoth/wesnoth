@@ -13,9 +13,8 @@ namespace {
 }
 
 
-countdown_clock::countdown_clock(team& team, const mp_game_settings& settings)
+countdown_clock::countdown_clock(team& team)
 	: team_(team)
-	, settings_(settings)
 	, last_timestamp_(SDL_GetTicks())
 	, playing_sound_(false)
 {
