@@ -978,7 +978,12 @@ static std::map<int, config> get_user_choice_internal(const std::string &name, c
 	//this should never change during the execution of this function.
 	const int current_side = resources::controller->current_side();
 	const bool is_mp_game = network::nconnections() != 0;
-
+	// whether sides contains a side that is not the currently active side.
+	const bool contains_other_side = !sides.empty() && (sides.size() != 1 || sides.find(current_side) == sides.end());
+	if(contains_other_side)
+	{
+		synced_context::set_is_simultaneously();
+	}
 	std::map<int,config> retv;
 	/*
 		when we got all our answers we stop.

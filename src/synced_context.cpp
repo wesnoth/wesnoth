@@ -182,6 +182,11 @@ void  synced_context::reset_is_simultaneously()
 	is_simultaneously_ = false;
 }
 
+void  synced_context::set_is_simultaneously()
+{
+	is_simultaneously_ = true;
+}
+
 bool synced_context::can_undo()
 {
 	//this method should only works in a synced context.
@@ -217,8 +222,6 @@ namespace
 
 void synced_context::pull_remote_user_input()
 {
-	//we sended data over the network.
-	is_simultaneously_ = true;
 	//code copied form persist_var, feels strange to call ai::.. functions for something where the ai isn't involved....
 	//note that ai::manager::raise_sync_network isn't called by the ai at all anymore (one more reason to put it somehwere else)
 	try{
@@ -239,7 +242,7 @@ void synced_context::pull_remote_user_input()
 
 void synced_context::send_user_choice()
 {
-	is_simultaneously_ = true;
+	assert(is_simultaneously_);
 	syncmp_registry::send_user_choice();
 }
 
@@ -267,6 +270,7 @@ static void send_require_random()
 
 config synced_context::ask_server_for_seed()
 {
+	set_is_simultaneously();
 	resources::controller->increase_server_request_number();
 	std::string name = "random_seed";
 	assert(get_synced_state() == synced_context::SYNCED);

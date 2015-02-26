@@ -108,6 +108,10 @@ public:
 		sets is_simultaneously_ = false, called when entering the synced context.
 	*/
 	static void reset_is_simultaneously();
+	/*
+		sets is_simultaneously_ = true, called using a user choice that is not the currently plaing side.
+	*/
+	static void set_is_simultaneously();
 	/**
 		@return whether there were recently no methods called that prevent undoing.
 	*/
