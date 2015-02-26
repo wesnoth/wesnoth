@@ -624,8 +624,6 @@ possible_end_play_signal playsingle_controller::play_side()
 				}
 			}
 
-			// Ending the turn commits all moves.
-			undo_stack_->clear();
 			if ( !player_type_changed_ )
 				after_human_turn();
 			LOG_NG << "human finished turn...\n";

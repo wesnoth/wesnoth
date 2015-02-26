@@ -842,10 +842,6 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			}
 			else
 			{
-				// During the original game, the undo stack would have been
-				// committed at this point.
-				resources::undo_stack->clear();
-
 				if (const config &child = cfg->child("verify")) {
 					verify(*resources::units, child);
 				}

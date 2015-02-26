@@ -499,13 +499,13 @@ void play_controller::finish_side_turn()
 
 	whiteboard_manager_->on_finish_side_turn(player_number_);
 
-	gamestate_.board_.end_turn(player_number_);
-
 	{ //Block for set_scontext_synced
+		set_scontext_synced sync(1);
+		// Ending the turn commits all moves.
+		undo_stack_->clear();
+		gamestate_.board_.end_turn(player_number_);
 		const std::string turn_num = str_cast(turn());
 		const std::string side_num = str_cast(player_number_);
-
-		set_scontext_synced sync(1);
 
 		// Clear shroud, in case units had been slowed for the turn.
 		actions::clear_shroud(player_number_);
