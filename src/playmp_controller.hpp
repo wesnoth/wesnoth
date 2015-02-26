@@ -51,7 +51,7 @@ protected:
 	void stop_network();
 
 	virtual possible_end_play_signal play_side();
-	virtual possible_end_play_signal before_human_turn();
+	virtual void before_human_turn();
 	virtual possible_end_play_signal play_human_turn();
 	virtual void after_human_turn();
 	virtual void finish_side_turn();

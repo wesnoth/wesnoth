@@ -67,11 +67,12 @@ public:
 	void force_end_turn();
 
 	class hotkey_handler;
+	virtual bool is_end_turn() const { return end_turn_; }
 
 protected:
 	possible_end_play_signal play_turn();
 	virtual possible_end_play_signal play_side();
-	virtual possible_end_play_signal before_human_turn();
+	virtual void before_human_turn();
 	void show_turn_dialog();
 	void execute_gotos();
 	virtual possible_end_play_signal play_human_turn();

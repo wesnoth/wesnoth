@@ -28,7 +28,7 @@
 #include "make_enum.hpp"
 
 #include <string>
-
+#include <exception>
 #include <boost/optional.hpp>
 #include <boost/variant/variant.hpp>
 
@@ -43,36 +43,53 @@ MAKE_ENUM(LEVEL_RESULT,
 MAKE_ENUM_STREAM_OPS1(LEVEL_RESULT)
 
 /**
+ * Exception used to escape form the ai code in case of [end_turn].
+ */
+class ai_end_turn_exception
+	: public tlua_jailbreak_exception, public std::exception
+{
+public:
+
+	ai_end_turn_exception()
+		: tlua_jailbreak_exception()
+		, std::exception()
+	{
+	}
+	const char * what() const { return "ai_end_turn_exception"; }
+private:
+
+	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(ai_end_turn_exception)
+};
+
+
+/**
  * Struct used to transmit info caught from an end_turn_exception.
  */
-struct end_turn_struct {
-	unsigned redo;
+struct restart_turn_struct {
 };
 
 /**
  * Exception used to signal the end of a player turn.
  */
-class end_turn_exception
-	: public tlua_jailbreak_exception
+class restart_turn_exception
+	: public tlua_jailbreak_exception, public std::exception
 {
 public:
 
-	end_turn_exception(unsigned r = 0)
+	restart_turn_exception()
 		: tlua_jailbreak_exception()
-		, redo(r)
+		, std::exception()
 	{
 	}
-
-	unsigned redo;
-
-	end_turn_struct to_struct() {
-		end_turn_struct ets = {redo};
-		return ets;
+	const char * what() const { return "restart_turn_exception"; }
+	restart_turn_struct to_struct()
+	{
+		return restart_turn_struct();
 	}
 
 private:
 
-	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(end_turn_exception)
+	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(restart_turn_exception)
 };
 
 /**
@@ -87,11 +104,13 @@ struct end_level_struct {
  */
 class end_level_exception
 	: public tlua_jailbreak_exception
+	, public std::exception
 {
 public:
 
 	end_level_exception(LEVEL_RESULT res)
 		: tlua_jailbreak_exception()
+		, std::exception()
 		, result(res)
 	{
 	}
@@ -102,7 +121,8 @@ public:
 		end_level_struct els = {result};
 		return els;
 	}
-
+	
+	const char * what() const { return "end_level_exception"; }
 private:
 
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(end_level_exception)
@@ -111,7 +131,7 @@ private:
 /**
  * The two end_*_exceptions are caught and transformed to this signaling object
  */
-typedef boost::optional<boost::variant<end_turn_struct, end_level_struct> > possible_end_play_signal;
+typedef boost::optional<boost::variant<restart_turn_struct, end_level_struct> > possible_end_play_signal;
 
 #define HANDLE_END_PLAY_SIGNAL( X )\
 do\
@@ -120,7 +140,7 @@ do\
 		X;\
 	} catch (end_level_exception & e) {\
 		return possible_end_play_signal(e.to_struct());\
-	} catch (end_turn_exception & e) {\
+	} catch (restart_turn_exception & e) {\
 		return possible_end_play_signal(e.to_struct());\
 	}\
 }\
@@ -157,7 +177,7 @@ enum END_PLAY_SIGNAL_TYPE {END_TURN, END_LEVEL};
 
 class get_signal_type : public boost::static_visitor<END_PLAY_SIGNAL_TYPE> {
 public:
-	END_PLAY_SIGNAL_TYPE operator()(end_turn_struct &) const
+	END_PLAY_SIGNAL_TYPE operator()(restart_turn_struct &) const
 	{
 		return END_TURN;
 	}
@@ -168,22 +188,9 @@ public:
 	}
 };
 
-class get_redo : public boost::static_visitor<unsigned> {
-public:
-	unsigned operator()(end_turn_struct & s) const
-	{
-		return s.redo;
-	}
-
-	unsigned operator()(end_level_struct &) const
-	{
-		return 0;
-	}
-};
-
 class get_result : public boost::static_visitor<LEVEL_RESULT> {
 public:
-	LEVEL_RESULT operator()(end_turn_struct & ) const
+	LEVEL_RESULT operator()(restart_turn_struct & ) const
 	{
 		return NONE;
 	}

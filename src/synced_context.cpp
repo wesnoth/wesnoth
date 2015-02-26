@@ -226,14 +226,7 @@ void synced_context::pull_remote_user_input()
 		{
 			//during the prestart/preload event the screen is locked and we shouldn't call user_interact.
 			//because that might result in crashs if someone clicks anywhere during screenlock.
-			try
-			{
-				ai::manager::raise_user_interact();
-			}
-			catch(end_turn_exception&)
-			{
-				//ignore, since it will be thwown throw again.
-			}
+			ai::manager::raise_user_interact();
 		}
 		syncmp_registry::pull_remote_choice();
 	}

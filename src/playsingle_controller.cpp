@@ -200,7 +200,7 @@ boost::optional<LEVEL_RESULT> playsingle_controller::play_scenario_init(end_leve
 		fire_preload();
 	} catch (end_level_exception & e) {
 		return e.result;
-	} catch (end_turn_exception &) {
+	} catch (restart_turn_exception &) {
 		assert(false && "caugh end_turn exception in a bad place... terminating.");
 		std::terminate();
 	}
@@ -231,7 +231,7 @@ boost::optional<LEVEL_RESULT> playsingle_controller::play_scenario_init(end_leve
 			fire_prestart();
 		} catch (end_level_exception & e) {
 			return e.result;
-		} catch (end_turn_exception &) {
+		} catch (restart_turn_exception &) {
 			assert(false && "caugh end_turn exception in a bad place... terminating.");
 			std::terminate();
 		}
@@ -246,7 +246,7 @@ boost::optional<LEVEL_RESULT> playsingle_controller::play_scenario_init(end_leve
 			fire_start(true);
 		} catch (end_level_exception & e) {
 			return e.result;
-		} catch (end_turn_exception &) {
+		} catch (restart_turn_exception &) {
 			assert(false && "caugh end_turn exception in a bad place... terminating.");
 			std::terminate();
 		}
@@ -262,7 +262,7 @@ boost::optional<LEVEL_RESULT> playsingle_controller::play_scenario_init(end_leve
 			fire_start(false);
 		} catch (end_level_exception & e) {
 			return e.result;
-		} catch (end_turn_exception &) {
+		} catch (restart_turn_exception &) {
 			assert(false && "caugh end_turn exception in a bad place... terminating.");
 			std::terminate();
 		}
@@ -577,9 +577,8 @@ possible_end_play_signal playsingle_controller::play_side()
 		maybe_do_init_side();
 	} catch (end_level_exception & e) {
 		return possible_end_play_signal(e.to_struct());
-	} catch (end_turn_exception & e) {
-		// Case ':driod, :control': ignore it. Since we don't have started the loop below yet, we dont need to restart it.
-		// Case '[end_turn]': impossible: we only set end_turn_, skip_next_turn_ variable to true but dont throw an end_turn exception in this case.
+	} catch (restart_turn_exception &) {
+		// ignore it. Since we don't have started the loop below yet, we dont need to restart it.
 	}
 	//flag used when we fallback from ai and give temporarily control to human
 	bool temporary_human = false;
@@ -599,9 +598,9 @@ possible_end_play_signal playsingle_controller::play_side()
 			if (gamestate_.board_.side_units(player_number_) != 0
 				|| (gamestate_.board_.units().size() == 0 && player_number_ == 1))
 			{
-				possible_end_play_signal signal = before_human_turn();
-
-				if (!signal) {
+				possible_end_play_signal signal;
+				before_human_turn();
+				if (!end_turn_) {
 					signal = play_human_turn();
 				}
 
@@ -609,19 +608,18 @@ possible_end_play_signal playsingle_controller::play_side()
 					switch (boost::apply_visitor(get_signal_type(), *signal)) {
 						case END_LEVEL:
 							return signal;
-						case END_TURN:
-							if (int(boost::apply_visitor(get_redo(),*signal)) == player_number_) {
-								player_type_changed_ = true;
-								// If new controller is not human,
-								// reset gui to prev human one
-								if (!gamestate_.board_.teams()[player_number_-1].is_local_human()) {
-									int s = find_human_team_before_current_player();
-									if (s <= 0)
-										s = gui_->playing_side();
-									update_gui_to_player(s-1);
+						case END_TURN: {
+							player_type_changed_ = true;
+							// If new controller is not human,
+							// reset gui to prev human one
+							if (!gamestate_.board_.teams()[player_number_-1].is_local_human()) {
+								int s = find_human_team_before_current_player();
+								if (s <= 0) {
+									s = gui_->playing_side();
 								}
+								update_gui_to_player(s-1);
 							}
-
+						}
 					}
 				}
 			}
@@ -639,10 +637,10 @@ possible_end_play_signal playsingle_controller::play_side()
 				// Give control to a human for this turn.
 				player_type_changed_ = true;
 				temporary_human = true;
-			} catch (end_level_exception & e) { //Don't know at the moment if these two are possible but can't hurt to add
+			} catch (end_level_exception & e) {
 				return possible_end_play_signal(e.to_struct());
-			} catch (end_turn_exception & e) {
-				return possible_end_play_signal(e.to_struct());
+			} catch (restart_turn_exception & e) {
+				player_type_changed_ = true;
 			}
 			if(!player_type_changed_)
 			{
@@ -655,9 +653,10 @@ possible_end_play_signal playsingle_controller::play_side()
 			end_turn_enable(false);
 			do_idle_notification();
 
-			possible_end_play_signal signal = before_human_turn();
+			possible_end_play_signal signal;
+			before_human_turn();
 
-			if (!signal) {
+			if (!end_turn_) {
 				signal = play_idle_loop();
 			}
 
@@ -665,23 +664,23 @@ possible_end_play_signal playsingle_controller::play_side()
 				switch (boost::apply_visitor(get_signal_type(), *signal)) {
 					case END_LEVEL:
 						return signal;
-					case END_TURN:
+					case END_TURN: {
 						LOG_NG << "Escaped from idle state with exception!" << std::endl;
-						if (int(boost::apply_visitor(get_redo(), *signal)) == player_number_) {
-							player_type_changed_ = true;
-							// If new controller is not human,
-							// reset gui to prev human one
-							if (!gamestate_.board_.teams()[player_number_-1].is_local_human()) {
-								int s = find_human_team_before_current_player();
-								if (s <= 0)
-									s = gui_->playing_side();
-								update_gui_to_player(s-1);
+						player_type_changed_ = true;
+						// If new controller is not human,
+						// reset gui to prev human one
+						if (!gamestate_.board_.teams()[player_number_-1].is_local_human()) {
+							int s = find_human_team_before_current_player();
+							if (s <= 0) {
+								s = gui_->playing_side();
 							}
-							else {
-								//This side was previously not human controlled.
-								update_gui_to_player(player_number_ - 1);
-							}
+							update_gui_to_player(s-1);
 						}
+						else {
+							//This side was previously not human controlled.
+							update_gui_to_player(player_number_ - 1);
+						}
+					}
 				}
 			}
 		}
@@ -696,12 +695,14 @@ possible_end_play_signal playsingle_controller::play_side()
 	return boost::none;
 }
 
-possible_end_play_signal playsingle_controller::before_human_turn()
+void playsingle_controller::before_human_turn()
 {
 	log_scope("player turn");
 	linger_ = false;
-
-	HANDLE_END_PLAY_SIGNAL( ai::manager::raise_turn_started() ); //This line throws exception from here: https://github.com/wesnoth/wesnoth/blob/ac96a2b91b3276e20b682210617cf87d1e0d366a/src/playsingle_controller.cpp#L954
+	if(end_turn_) {
+		return;
+	}
+	ai::manager::raise_turn_started();
 
 	if(do_autosaves_ && level_result_ == NONE) {
 		update_savegame_snapshot();
@@ -712,7 +713,6 @@ possible_end_play_signal playsingle_controller::before_human_turn()
 	if(preferences::turn_bell() && level_result_ == NONE) {
 		sound::play_bell(game_config::sounds::turn_bell);
 	}
-	return boost::none;
 }
 
 void playsingle_controller::show_turn_dialog(){
@@ -838,11 +838,7 @@ void playsingle_controller::play_ai_turn()
 
 	turn_data_.send_data();
 	try {
-		try {
-			ai::manager::play_turn(player_number_);
-		} 
-		catch (end_turn_exception&) {
-		}
+		ai::manager::play_turn(player_number_);
 	}
 	catch(...) {
 		turn_data_.sync_network();
@@ -882,9 +878,6 @@ possible_end_play_signal playsingle_controller::play_network_turn()
 void playsingle_controller::handle_generic_event(const std::string& name){
 	if (name == "ai_user_interact"){
 		play_slice(false);
-	}
-	if (end_turn_){
-		throw end_turn_exception();
 	}
 }
 

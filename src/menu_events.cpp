@@ -2713,7 +2713,7 @@ void console_handler::do_droid() {
 		if(team_num_ == side) {
 			//if it is our turn at the moment, we have to indicate to the
 			//play_controller, that we are no longer in control
-			throw end_turn_exception(side);
+			throw restart_turn_exception();
 		}
 	} else if (menu_handler_.teams()[side - 1].is_local_ai()) {
 //		menu_handler_.teams()[side - 1].make_human();
@@ -2758,7 +2758,7 @@ void console_handler::do_idle() {
 		if(team_num_ == side) {
 			//if it is our turn at the moment, we have to indicate to the
 			//play_controller, that we are no longer in control
-			throw end_turn_exception(side);
+			throw restart_turn_exception();
 		}
 	}
 	menu_handler_.textbox_info_.close(*menu_handler_.gui_);
@@ -3322,8 +3322,6 @@ void menu_handler::do_ai_formula(const std::string& str,
 {
 	try {
 		add_chat_message(time(NULL), _("ai"), 0, ai::manager::evaluate_command(side_num, str));
-	} catch(end_turn_exception&) {
-		pc_.force_end_turn();
 	} catch(...) {
 		//add_chat_message(time(NULL), _("ai"), 0, "ERROR IN FORMULA");
 	}

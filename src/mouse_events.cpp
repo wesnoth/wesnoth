@@ -67,7 +67,7 @@
 #include "SDL_mouse.h"                  // for SDL_GetMouseState
 #include "SDL_video.h"                  // for SDL_Color
 
-class end_turn_exception;
+class restart_turn_exception;
 namespace gui { class slider; }
 
 static lg::log_domain log_engine("engine");
@@ -895,7 +895,7 @@ size_t mouse_handler::move_unit_along_route(const std::vector<map_location> & st
 		LOG_NG << "move unit along route  from " << steps.front() << " to " << steps.back() << "\n";
 		moves = actions::move_unit_and_record(steps, &pc_.get_undo_stack(),
 		                           false, true, &interrupted);
-	} catch(end_turn_exception&) {
+	} catch(restart_turn_exception&) {
 		cursor::set(cursor::NORMAL);
 		gui().invalidate_game_status();
 		throw;

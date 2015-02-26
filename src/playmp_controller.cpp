@@ -96,11 +96,10 @@ possible_end_play_signal playmp_controller::play_side()
 	return playsingle_controller::play_side();
 }
 
-possible_end_play_signal playmp_controller::before_human_turn(){
+void playmp_controller::before_human_turn(){
 	LOG_NG << "playmp::before_human_turn...\n";
-	PROPOGATE_END_PLAY_SIGNAL( playsingle_controller::before_human_turn() );
+	playsingle_controller::before_human_turn();
 	turn_data_.send_data();
-	return boost::none;
 }
 
 void playmp_controller::on_not_observer() {
@@ -196,9 +195,7 @@ possible_end_play_signal playmp_controller::play_human_turn()
 					while( undo_stack_->can_undo() )
 						undo_stack_->undo();
 
-					end_turn_struct ets = {static_cast<unsigned>(gui_->playing_side())};
-					return possible_end_play_signal(ets);
-					//throw end_turn_exception(gui_->playing_side());
+					return restart_turn_struct();
 				}
 				else if(res == turn_info::PROCESS_END_LINGER)
 				{
@@ -239,8 +236,7 @@ possible_end_play_signal playmp_controller::play_human_turn()
 					current_team().set_countdown_time(10);
 				}
 
-				return possible_end_play_signal(end_turn_exception().to_struct());
-				//throw end_turn_exception();
+				return boost::none;
 			}
 		}
 		}
@@ -273,9 +269,7 @@ possible_end_play_signal playmp_controller::play_idle_loop()
 
 			if (res == turn_info::PROCESS_RESTART_TURN)
 			{
-				end_turn_struct ets = {static_cast<unsigned>(gui_->playing_side())};
-				return possible_end_play_signal(ets);
-				//throw end_turn_exception(gui_->playing_side());
+				return restart_turn_struct();
 			}
 		}
 
@@ -363,7 +357,7 @@ void playmp_controller::linger()
 			LOG_NG << "caught end-level-exception" << std::endl;
 			reset_end_scenario_button();
 			throw;
-		} catch (end_turn_exception&) {
+		} catch (restart_turn_exception&) {
 			// thrown if the host leaves the game (sends [leave_game]), we need
 			// to stay in this loop to stay in linger mode, otherwise the game
 			// gets aborted
@@ -543,9 +537,6 @@ void playmp_controller::handle_generic_event(const std::string& name){
 			end_turn_enable(true);
 			gui_->invalidate_theme();
 		}
-	}
-	if (end_turn_) {
-		throw end_turn_exception();
 	}
 }
 

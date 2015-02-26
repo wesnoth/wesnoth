@@ -336,7 +336,7 @@ bool side_actions::execute(side_actions::iterator position)
 	bool action_complete;
 	try	{
 		 action->execute(action_successful, action_complete);
-	} catch (end_turn_exception&) {
+	} catch (restart_turn_exception&) {
 		synced_erase(position);
 		LOG_WB << "End turn exception caught during execution, deleting action. " << *this << "\n";
 		//validate actions at next map rebuild

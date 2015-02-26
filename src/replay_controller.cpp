@@ -69,8 +69,6 @@ LEVEL_RESULT play_replay_level(const config& game_config, const tdata_cache & td
 		rc.reset(new replay_controller(state_of_game.get_replay_starting_pos(), state_of_game, ticks, game_config, tdata, video));
 	} catch (end_level_exception & e){
 		return e.result;
-	} catch (end_turn_exception &) {
-		throw; //this should never happen? It would likely have crashed the program before, so in refactor I won't change but we should fix it later.
 	}
 	DBG_NG << "created objects... " << (SDL_GetTicks() - rc->get_ticks()) << std::endl;
 
@@ -583,8 +581,6 @@ possible_end_play_signal replay_controller::play_move_or_side(bool one_move) {
 			if (e.result != VICTORY && e.result != DEFEAT) {
 				return possible_end_play_signal(e.to_struct());
 			}
-		} catch (end_turn_exception & e) {
-			return possible_end_play_signal(e.to_struct());
 		}
 
 		finish_side_turn();

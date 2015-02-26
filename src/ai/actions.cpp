@@ -101,6 +101,9 @@ void action_result::execute()
 	if (is_success()){
 		check_after();
 	}
+	if(resources::controller->is_end_turn()) {
+		throw ai_end_turn_exception();
+	}
 	is_execution_ = false;
 }
 
