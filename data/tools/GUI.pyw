@@ -931,10 +931,16 @@ class MainFrame(Frame):
         self.output_frame.grid(row=3,
                                column=0,
                                sticky=N+E+S+W)
+        # in former versions of this script, I disabled the text widget at its creation
+        # it turned out that doing so on Aqua (Mac OS) causes the widget to ignore
+        # any additional binding set after its disabling
+        # the subclass EnhancedText first calls the constructor of the original Text widget
+        # and only later it creates its own bindings
+        # so first create the widget, and disable it later
         self.text=EnhancedText(self.output_frame,
                                wrap=WORD,
-                               state=DISABLED,
                                takefocus=True)
+        self.text.configure(state=DISABLED)
         self.text.grid(row=0,
                        column=0,
                        sticky=N+E+S+W)
