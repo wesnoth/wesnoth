@@ -213,7 +213,6 @@ possible_end_play_signal playmp_controller::play_human_turn()
 			}
 
 			HANDLE_END_PLAY_SIGNAL( play_slice() );
-			HANDLE_END_PLAY_SIGNAL( check_end_level() );
 
 		if (!linger_ && (current_team().countdown_time() > 0) && saved_game_.mp_settings().mp_countdown) {
 			SDL_Delay(1);
@@ -281,7 +280,6 @@ possible_end_play_signal playmp_controller::play_idle_loop()
 		}
 
 		HANDLE_END_PLAY_SIGNAL ( play_slice() );
-		HANDLE_END_PLAY_SIGNAL ( check_end_level() );
 
 		if (!linger_) {
 			SDL_Delay(1);
@@ -491,7 +489,6 @@ possible_end_play_signal playmp_controller::play_network_turn(){
 		}
 
 		HANDLE_END_PLAY_SIGNAL( play_slice() );
-		HANDLE_END_PLAY_SIGNAL( check_end_level() );
 
 		if (!network_processing_stopped_){
 			turn_data_.send_data();

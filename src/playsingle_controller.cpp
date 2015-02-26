@@ -742,7 +742,6 @@ possible_end_play_signal playsingle_controller::play_human_turn() {
 	end_turn_enable(true);
 	while(!end_turn_) {
 		HANDLE_END_PLAY_SIGNAL( play_slice() );
-		HANDLE_END_PLAY_SIGNAL( check_end_level() );
 		gui_->draw();
 	}
 
