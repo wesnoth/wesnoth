@@ -75,7 +75,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::sync_network()
 		//could get data back pertaining to the next turn.
 		config cfg;
 		while( (retv == turn_info::PROCESS_CONTINUE) &&  network_reader_.read(cfg)) {
-			retv = process_network_data(cfg,false);
+			retv = process_network_data(cfg);
 			cfg.clear();
 		}
 		send_data();
@@ -92,20 +92,15 @@ void turn_info::send_data()
 	}
 }
 
-turn_info::PROCESS_DATA_RESULT turn_info::handle_turn(
-	const config& t,
-	const bool skip_replay)
+turn_info::PROCESS_DATA_RESULT turn_info::handle_turn(const config& t)
 {
 	//t can contain a [command] or a [upload_log]
 	assert(t.all_children_count() == 1);
 	/** @todo FIXME: Check what commands we execute when it's our turn! */
 
-	bool was_skipping = recorder.is_skipping();
-	recorder.set_skip(skip_replay);
 	//note, that this function might call itself recursively: do_replay -> ... -> persist_var -> ... -> handle_generic_event -> sync_network -> handle_turn
 	recorder.add_config(t, replay::MARK_AS_SENT);
 	PROCESS_DATA_RESULT retv = replay_to_process_data_result(do_replay());
-	recorder.set_skip(was_skipping);
 	return retv;
 }
 
@@ -116,12 +111,12 @@ void turn_info::do_save()
 	}
 }
 
-turn_info::PROCESS_DATA_RESULT turn_info::process_network_data_from_reader(bool skip_replay)
+turn_info::PROCESS_DATA_RESULT turn_info::process_network_data_from_reader()
 {
 	config cfg;
 	while(this->network_reader_.read(cfg))
 	{
-		PROCESS_DATA_RESULT res = process_network_data(cfg, skip_replay);
+		PROCESS_DATA_RESULT res = process_network_data(cfg);
 		if(res != PROCESS_CONTINUE)
 		{
 			return res;
@@ -130,7 +125,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data_from_reader(bool 
 	return PROCESS_CONTINUE;
 }
 
-turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg, bool skip_replay)
+turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg)
 {
 	// we cannot be connected to multiple peers anymore because
 	// the simple wesnothserver implementation in wesnoth was removed years ago.
@@ -167,7 +162,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	}
 	else if (const config &turn = cfg.child("turn"))
 	{
-		return handle_turn(turn, skip_replay);
+		return handle_turn(turn);
 	}
 	else if (cfg.has_child("whiteboard"))
 	{

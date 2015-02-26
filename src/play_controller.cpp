@@ -195,7 +195,6 @@ void play_controller::init(CVideo& video){
 	}
 
 	loadscreen::start_stage("load level");
-	recorder.set_skip(false);
 
 	LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks_) << std::endl;
 	gamestate_.init(ticks_, *this);
@@ -424,7 +423,7 @@ void play_controller::do_init_side()
 			current_team().spend_gold(expense);
 		}
 
-		calculate_healing(player_number_, !skip_replay_);
+		calculate_healing(player_number_, !is_skipping_replay());
 	}
 
 	// Prepare the undo stack.
@@ -448,11 +447,11 @@ void play_controller::init_side_end()
 	if (player_number_ == first_player_)
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
 
-	if (!recorder.is_skipping()){
+	if (!is_skipping_replay()){
 		gui_->invalidate_all();
 	}
 
-	if (!recorder.is_skipping() && !skip_replay_ && current_team().get_scroll_to_leader()){
+	if (!is_skipping_replay() && current_team().get_scroll_to_leader()){
 		gui_->scroll_to_leader(player_number_,game_display::ONSCREEN,false);
 	}
 	whiteboard_manager_->on_init_side();

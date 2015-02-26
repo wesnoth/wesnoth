@@ -324,7 +324,6 @@ void replay_controller::reset_replay()
 	skip_replay_ = false;
 	gamestate_.tod_manager_= tod_manager_start_;
 	recorder.start_replay();
-	recorder.set_skip(false);
 	saved_game_ = saved_game_start_;
 	gamestate_.board_ = gameboard_start_;
 	gui_->change_display_context(&gamestate_.board_); //this doesn't change the pointer value, but it triggers the gui to update the internal terrain builder object,
@@ -400,7 +399,7 @@ possible_end_play_signal replay_controller::replay_next_turn(){
 
 	PROPOGATE_END_PLAY_SIGNAL( play_turn() );
 
- 	if (!skip_replay_ || !is_playing_){
+ 	if (!is_skipping_replay() || !is_playing_){
 		gui_->scroll_to_leader(player_number_,game_display::ONSCREEN,false);
 	}
 
@@ -417,7 +416,7 @@ possible_end_play_signal replay_controller::replay_next_move_or_side(bool one_mo
  		HANDLE_END_PLAY_SIGNAL( play_move_or_side(one_move) );
 	}
 
- 	if ( (!skip_replay_ || !is_playing_) && (last_replay_action == REPLAY_FOUND_END_TURN) ){
+ 	if ( (!is_skipping_replay() || !is_playing_) && (last_replay_action == REPLAY_FOUND_END_TURN) ){
 		gui_->scroll_to_leader(player_number_,game_display::ONSCREEN,false);
 	}
 
@@ -476,7 +475,6 @@ void replay_controller::replay_show_team1(){
 
 void replay_controller::replay_skip_animation(){
 	skip_replay_ = !skip_replay_;
-	recorder.set_skip(skip_replay_);
 }
 
 //move all sides till stop/end
@@ -644,7 +642,7 @@ void replay_controller::handle_generic_event(const std::string& name){
 
 		gui::button* skip_animation_button = gui_->find_action_button("skip-animation");
 		if(skip_animation_button) {
-			skip_animation_button->set_check(skip_replay_);
+			skip_animation_button->set_check(is_skipping_replay());
 		}
 	} else {
 		rebuild_replay_theme();

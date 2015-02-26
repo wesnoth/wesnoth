@@ -186,14 +186,12 @@ chat_msg::~chat_msg()
 replay::replay() :
 	cfg_(),
 	pos_(0),
-	skip_(false),
 	message_locations()
 {}
 
 replay::replay(const config& cfg) :
 	cfg_(cfg),
 	pos_(0),
-	skip_(false),
 	message_locations()
 {}
 
@@ -213,16 +211,6 @@ void replay::process_error(const std::string& msg)
 	ERR_REPLAY << msg << std::flush;
 
 	resources::controller->process_oos(msg); // might throw end_level_exception(QUIT)
-}
-
-void replay::set_skip(bool skip)
-{
-	skip_ = skip;
-}
-
-bool replay::is_skipping() const
-{
-	return skip_;
 }
 
 void replay::add_unit_checksum(const map_location& loc,config& cfg)
@@ -648,7 +636,6 @@ void replay::clear()
 	message_log.clear();
 	cfg_ = config();
 	pos_ = 0;
-	skip_ = false;
 }
 
 bool replay::empty()
@@ -721,11 +708,11 @@ REPLAY_RETURN do_replay(bool one_move)
 {
 	log_scope("do replay");
 
-	if (!get_replay_source().is_skipping()){
+	if (!resources::controller->is_skipping_replay()) {
 		resources::screen->recalculate_minimap();
 	}
 
-	update_locker lock_update(resources::screen->video(),get_replay_source().is_skipping());
+	update_locker lock_update(resources::screen->video(), resources::controller->is_skipping_replay());
 	return do_replay_handle(one_move);
 }
 
@@ -769,7 +756,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			//if (!preferences::parse_should_show_lobby_join(speaker_name, message)) return;
 			bool is_whisper = (speaker_name.find("whisper: ") == 0);
 			get_replay_source().add_chat_message_location();
-			if (!get_replay_source().is_skipping() || is_whisper) {
+			if (!resources::controller->is_skipping_replay() || is_whisper) {
 				int side = child["side"];
 				resources::screen->get_chat_manager().add_chat_message(get_time(child), speaker_name, side, message,
 						(team_name.empty() ? events::chat_handler::MESSAGE_PUBLIC
@@ -905,7 +892,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 				/*
 					we need to use the undo stack during replays in order to make delayed shroud updated work.
 				*/
-				synced_context::run_in_synced_context(commandname, data, true, !get_replay_source().is_skipping(), false,show_oos_error_error_function);
+				synced_context::run_in_synced_context(commandname, data, true, !resources::controller->is_skipping_replay(), false,show_oos_error_error_function);
 				if (one_move) {
 					return REPLAY_FOUND_END_MOVE;
 				}

@@ -50,10 +50,10 @@ public:
 	void send_data();
 
 	//function which will process incoming network data received with playturn_network_adapter, and act on it.
-	PROCESS_DATA_RESULT process_network_data(const config& cfg, bool skip_replay);
+	PROCESS_DATA_RESULT process_network_data(const config& cfg);
 
 	//reads as much data from network_reader_ as possible and processed it.
-	PROCESS_DATA_RESULT process_network_data_from_reader(bool skip_replay);
+	PROCESS_DATA_RESULT process_network_data_from_reader();
 
 	events::generic_event& host_transfer() { return host_transfer_; }
 
@@ -64,9 +64,7 @@ private:
 	static void change_controller(int side, const std::string& controller);
 	static void change_side_controller(int side, const std::string& player);
 	static PROCESS_DATA_RESULT replay_to_process_data_result(REPLAY_RETURN replayreturn);
-	PROCESS_DATA_RESULT handle_turn(
-		const config& t,
-		const bool skip_replay);
+	PROCESS_DATA_RESULT handle_turn(const config& t);
 
 	void do_save();
 

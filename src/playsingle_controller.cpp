@@ -117,7 +117,7 @@ void playsingle_controller::init_gui(){
 	}
 	gui_->scroll_to_tile(gamestate_.board_.map().starting_position(1), game_display::WARP);
 
-	update_locker lock_display(gui_->video(),recorder.is_skipping());
+	update_locker lock_display(gui_->video(), is_skipping_replay());
 	get_hotkey_command_executor()->set_button_state(*gui_);
 	events::raise_draw_event();
 	gui_->draw();
@@ -239,7 +239,7 @@ boost::optional<LEVEL_RESULT> playsingle_controller::play_scenario_init(end_leve
 
 		init_gui();
 		past_prestart = true;
-		LOG_NG << "first_time..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
+		LOG_NG << "first_time..." << (is_skipping_replay() ? "skipping" : "no skip") << "\n";
 
 		events::raise_draw_event();
 		try {

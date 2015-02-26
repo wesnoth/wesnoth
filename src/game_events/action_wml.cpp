@@ -635,7 +635,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 	}
 
 	has_input = !options.empty() || has_text_input;
-	if (!has_input && get_replay_source().is_skipping()) {
+	if (!has_input && resources::controller->is_skipping_replay()) {
 		// No input to get and the user is not interested either.
 		return;
 	}

@@ -140,7 +140,7 @@ possible_end_play_signal playmp_controller::play_human_turn()
 
 			if(network_reader_.read(cfg)) {
 				turn_info::PROCESS_DATA_RESULT res;
-				HANDLE_END_PLAY_SIGNAL( res = turn_data_.process_network_data(cfg, skip_replay_) );
+				HANDLE_END_PLAY_SIGNAL( res = turn_data_.process_network_data(cfg) );
 				if (res == turn_info::PROCESS_RESTART_TURN)
 				{
 					// Clean undo stack if turn has to be restarted (losing control)
@@ -212,7 +212,7 @@ possible_end_play_signal playmp_controller::play_idle_loop()
 		config cfg;
 		if(network_reader_.read(cfg)) {
 			turn_info::PROCESS_DATA_RESULT res;
-			HANDLE_END_PLAY_SIGNAL( res = turn_data_.process_network_data(cfg, skip_replay_) );
+			HANDLE_END_PLAY_SIGNAL( res = turn_data_.process_network_data(cfg) );
 
 			if (res == turn_info::PROCESS_RESTART_TURN)
 			{
@@ -332,7 +332,7 @@ void playmp_controller::wait_for_upload()
 				*gui_, _("Waiting for next scenario..."), cfg);
 
 			if(res != network::null_connection) {
-				if (turn_data_.process_network_data_from_reader(skip_replay_) == turn_info::PROCESS_END_LINGER) {
+				if (turn_data_.process_network_data_from_reader() == turn_info::PROCESS_END_LINGER) {
 					break;
 				}
 			}
@@ -388,12 +388,10 @@ possible_end_play_signal playmp_controller::play_network_turn(){
 			config cfg;
 			if(network_reader_.read(cfg)) {
 				if (replay_last_turn_ <= turn()){
-					if (skip_replay_) {
-						skip_replay_ = false;
-					}
+					skip_replay_ = false;
 				}
 				turn_info::PROCESS_DATA_RESULT result;
-				HANDLE_END_PLAY_SIGNAL ( result = turn_data_.process_network_data(cfg, skip_replay_) );
+				HANDLE_END_PLAY_SIGNAL ( result = turn_data_.process_network_data(cfg) );
 				if(player_type_changed_ == true)
 				{
 					//we received a player change/quit during waiting in get_user_choice/synced_context::pull_remote_user_input
@@ -411,13 +409,10 @@ possible_end_play_signal playmp_controller::play_network_turn(){
 			*/
 			else if(!recorder.at_end())
 			{
-				bool was_skipping = recorder.is_skipping();
-				recorder.set_skip(skip_replay_);
 				if(do_replay() == REPLAY_FOUND_END_TURN)
 				{
 					break;
 				}
-				recorder.set_skip(was_skipping);
 			}
 		}
 

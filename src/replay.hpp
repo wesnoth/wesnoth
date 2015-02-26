@@ -55,9 +55,6 @@ public:
 
 	void append(const config& cfg);
 
-	void set_skip(bool skip);
-	bool is_skipping() const;
-
 	void add_start();
 	void add_countdown_update(int value,int team);
 
@@ -151,8 +148,6 @@ private:
 	config& add_nonundoable_command();
 	config cfg_;
 	int pos_;
-
-	bool skip_;
 
 	std::vector<int> message_locations;
 };
