@@ -773,6 +773,7 @@ set(wesnoth-main_SRC
 	game_initialization/configure_engine.cpp
 	game_initialization/connect_engine.cpp
 	controller_base.cpp
+	countdown_clock.cpp
 	game_initialization/create_engine.cpp
 	game_initialization/depcheck.cpp
 	desktop/notifications.cpp

@@ -21,7 +21,7 @@
 
 class turn_info;
 
-class playmp_controller : public playsingle_controller, public events::pump_monitor, public syncmp_handler
+class playmp_controller : public playsingle_controller, public syncmp_handler
 {
 public:
 	playmp_controller(const config& level, saved_game& state_of_game,
@@ -33,10 +33,6 @@ public:
 	static unsigned int replay_last_turn() { return replay_last_turn_; }
 	static void set_replay_last_turn(unsigned int turn);
 
-	bool counting_down();
-	void reset_countdown();
-	void think_about_countdown(int ticks);
-	void process(events::pump_info &info);
 	void maybe_linger();
 	void process_oos(const std::string& err_msg) const;
 
@@ -63,7 +59,6 @@ protected:
 	/** Wait for the host to upload the next scenario. */
 	void wait_for_upload();
 
-	int beep_warning_time_;
 	mutable bool network_processing_stopped_;
 
 	virtual void on_not_observer();

@@ -31,7 +31,7 @@
 #include "formula_string_utils.hpp"
 #include "unit_animation.hpp"
 #include "whiteboard/manager.hpp"
-
+#include "countdown_clock.hpp"
 #include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
@@ -45,7 +45,6 @@ playmp_controller::playmp_controller(const config& level,
 		bool skip_replay, bool blindfold_replay_, bool is_host)
 	: playsingle_controller(level, state_of_game, ticks,
 		game_config, tdata, video, skip_replay || blindfold_replay_) //this || means that if blindfold is enabled, quick replays will be on.
-	, beep_warning_time_(0)
 	, network_processing_stopped_(false)
 	, blindfold_(*gui_,blindfold_replay_)
 {
@@ -66,11 +65,6 @@ playmp_controller::playmp_controller(const config& level,
 playmp_controller::~playmp_controller() {
 	//halt and cancel the countdown timer
 	try {
-
-		if(beep_warning_time_ < 0) {
-			sound::stop_bell();
-		}
-
 		turn_data_.host_transfer().detach_handler(this);
 	} catch (...) {}
 }
@@ -114,51 +108,15 @@ void playmp_controller::remove_blindfold() {
 	}
 }
 
-bool playmp_controller::counting_down() {
-	return beep_warning_time_ > 0;
-}
-
-namespace {
-	const int WARNTIME = 20000; //start beeping when 20 seconds are left (20,000ms)
-	unsigned timer_refresh = 0;
-	const unsigned timer_refresh_rate = 50; // prevents calling SDL_GetTicks() too frequently
-}
-
-//make sure we think about countdown even while dialogs are open
-void playmp_controller::process(events::pump_info &info) {
-	if(playmp_controller::counting_down()) {
-		if(info.ticks(&timer_refresh, timer_refresh_rate)) {
-			playmp_controller::think_about_countdown(info.ticks());
-		}
-	}
-}
-
-void playmp_controller::reset_countdown()
-{
-	if (beep_warning_time_ < 0)
-		sound::stop_bell();
-	beep_warning_time_ = 0;
-}
-
-//check if it is time to start playing the timer warning
-void playmp_controller::think_about_countdown(int ticks) {
-	if(ticks >= beep_warning_time_) {
-		const bool bell_on = preferences::turn_bell();
-		if(bell_on || preferences::sound_on() || preferences::UI_sound_on()) {
-			const int loop_ticks = WARNTIME - (ticks - beep_warning_time_);
-			const int fadein_ticks = (loop_ticks > WARNTIME / 2) ? loop_ticks - WARNTIME / 2 : 0;
-			sound::play_timer(game_config::sounds::timer_bell, loop_ticks, fadein_ticks);
-			beep_warning_time_ = -1;
-		}
-	}
-}
-
 possible_end_play_signal playmp_controller::play_human_turn()
 {
 	LOG_NG << "playmp::play_human_turn...\n";
 
 	remove_blindfold();
-	int cur_ticks = SDL_GetTicks();
+	boost::scoped_ptr<countdown_clock> timer;
+	if(!linger_ && saved_game_.mp_settings().mp_countdown) {
+		timer.reset(new countdown_clock(current_team(), saved_game_.mp_settings()));
+	}
 	show_turn_dialog();
 
 	if (!preferences::disable_auto_moves()) {
@@ -210,35 +168,16 @@ possible_end_play_signal playmp_controller::play_human_turn()
 			}
 
 			HANDLE_END_PLAY_SIGNAL( play_slice() );
-
-		if (!linger_ && (current_team().countdown_time() > 0) && saved_game_.mp_settings().mp_countdown) {
-			SDL_Delay(1);
-			const int ticks = SDL_GetTicks();
-			int new_time = current_team().countdown_time()-std::max<int>(1,(ticks - cur_ticks));
-			if (new_time > 0 ){
-				current_team().set_countdown_time(new_time);
-				cur_ticks = ticks;
-				if(current_team().is_local_human() && !beep_warning_time_) {
-					beep_warning_time_ = new_time - WARNTIME + ticks;
+			if(timer)
+			{
+				SDL_Delay(1);
+				bool time_left = timer->update();
+				if(!time_left)
+				{
+					//End the turn of there is no time left.
+					return boost::none;
 				}
-				if(counting_down()) {
-					think_about_countdown(ticks);
-				}
-			} else {
-				// Clock time ended
-				// If no turn bonus or action bonus -> defeat
-				const int action_increment = saved_game_.mp_settings().mp_countdown_action_bonus;
-				if ( (saved_game_.mp_settings().mp_countdown_turn_bonus == 0 )
-					&& (action_increment == 0 || current_team().action_bonus_count() == 0)) {
-					// Not possible to end level in MP with throw end_level_exception(DEFEAT);
-					// because remote players only notice network disconnection
-					// Current solution end remaining turns automatically
-					current_team().set_countdown_time(10);
-				}
-
-				return boost::none;
 			}
-		}
 		}
 		catch(...)
 		{
@@ -325,9 +264,6 @@ void playmp_controller::linger()
 	set_completion setter(saved_game_,"running");
 	// End all unit moves
 	gamestate_.board_.set_all_units_user_end_turn();
-	//current_team().set_countdown_time(0);
-	//halt and cancel the countdown timer
-	reset_countdown();
 
 	set_end_scenario_button();
 
@@ -407,19 +343,19 @@ void playmp_controller::wait_for_upload()
 }
 
 void playmp_controller::after_human_turn(){
-	if ( saved_game_.mp_settings().mp_countdown ){
-		const int action_increment = saved_game_.mp_settings().mp_countdown_action_bonus;
-		const int maxtime = saved_game_.mp_settings().mp_countdown_reservoir_time;
-		int secs = (current_team().countdown_time() / 1000) + saved_game_.mp_settings().mp_countdown_turn_bonus;
-		secs += action_increment  * current_team().action_bonus_count();
+	if(saved_game_.mp_settings().mp_countdown)
+	{
+		//time_left + turn_bonus + (action_bouns * number of actions done)
+		const int new_time_in_secs = (current_team().countdown_time() / 1000) 
+			+ saved_game_.mp_settings().mp_countdown_turn_bonus
+			+ saved_game_.mp_settings().mp_countdown_action_bonus * current_team().action_bonus_count();
+		const int new_time = 1000 * std::min<int>(new_time_in_secs, saved_game_.mp_settings().mp_countdown_reservoir_time);
+
 		current_team().set_action_bonus_count(0);
-		secs = (secs > maxtime) ? maxtime : secs;
-		current_team().set_countdown_time(1000 * secs);
-		recorder.add_countdown_update(current_team().countdown_time(),player_number_);
+		current_team().set_countdown_time(new_time);
+		recorder.add_countdown_update(new_time, player_number_);
 	}
 	LOG_NG << "playmp::after_human_turn...\n";
-
-
 
 	// Normal post-processing for human turns (clear undos, end the turn, etc.)
 	playsingle_controller::after_human_turn();
@@ -430,11 +366,6 @@ void playmp_controller::after_human_turn(){
 
 void playmp_controller::finish_side_turn(){
 	play_controller::finish_side_turn();
-
-
-	//halt and cancel the countdown timer
-	reset_countdown();
-
 }
 
 possible_end_play_signal playmp_controller::play_network_turn(){
