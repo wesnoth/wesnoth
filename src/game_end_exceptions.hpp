@@ -55,7 +55,7 @@ public:
 		, std::exception()
 	{
 	}
-	const char * what() const { return "ai_end_turn_exception"; }
+	const char * what() const throw() { return "ai_end_turn_exception"; }
 private:
 
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(ai_end_turn_exception)
@@ -81,7 +81,7 @@ public:
 		, std::exception()
 	{
 	}
-	const char * what() const { return "restart_turn_exception"; }
+	const char * what() const throw() { return "restart_turn_exception"; }
 	restart_turn_struct to_struct()
 	{
 		return restart_turn_struct();
@@ -122,7 +122,7 @@ public:
 		return els;
 	}
 	
-	const char * what() const { return "end_level_exception"; }
+	const char * what() const throw() { return "end_level_exception"; }
 private:
 
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(end_level_exception)
