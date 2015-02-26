@@ -207,33 +207,39 @@ Use like any other Entry widget"""
             Entry.__init__(self,parent,**kwargs)
         # on Mac the right button fires a Button-2 event, or so I'm told
         # some mice don't even have two buttons, so the user is forced
-        # to use Control + the only button
+        # to use Command + the only button
         # bear in mind that I don't have a Mac, so this point may be bugged
         # bind also the context menu key, for those keyboards that have it
         # that is, most of the Windows and Linux ones (however, in Win it's
         # called App, while on Linux is called Menu)
         # Mac doesn't have a context menu key on its keyboards, so no binding
-        # finally, bind also the Shift+F10 shortcut (same as Menu/App key)
+        # bind also the Shift+F10 shortcut (same as Menu/App key)
         # the call to tk windowingsystem is justified by the fact
         # that it is possible to install X11 over Darwin
+        # finally, bind the "select all" key shortcut
+        # again, Mac uses Command instead of Control
         windowingsystem = self.tk.call('tk', 'windowingsystem')
         if windowingsystem == "win32": # Windows, both 32 and 64 bit
             self.bind("<Button-3>",self.on_context_menu)
             self.bind("<KeyPress-App>",self.on_context_menu)
             self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+            # for some weird reason, using a KeyPress binding to set the selection on
+            # a readonly Entry or disabled Text doesn't work, but a KeyRelease does
+            self.bind("<Control-KeyRelease-a>", self.on_select_all)
         elif windowingsystem == "aqua": # MacOS with Aqua
             self.bind("<Button-2>",self.on_context_menu)
             self.bind("<Control-Button-1>",self.on_context_menu)
+            self.bind("<Command-KeyRelease-a>", self.on_select_all)
         elif windowingsystem == "x11": # Linux, FreeBSD, Darwin with X11
             self.bind("<Button-3>",self.on_context_menu)
             self.bind("<KeyPress-Menu>",self.on_context_menu)
             self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
-        # for some weird reason, using a KeyPress binding to set the selection on
-        # a readonly Entry or disabled Text doesn't work, but a KeyRelease does
-        self.bind("<Control-KeyRelease-a>", lambda event: self.select_range(0,END))
+            self.bind("<Control-KeyRelease-a>", self.on_select_all)
     def on_context_menu(self,event):
         if str(self.cget('state')) != DISABLED:
             ContextMenu(event.x_root,event.y_root,event.widget)
+    def on_select_all(self,event):
+        self.select_range(0,END)
 
 class SpinboxContext(Spinbox):
     def __init__(self,parent,**kwargs):
@@ -249,17 +255,21 @@ Use like any other Spinbox widget"""
             self.bind("<Button-3>",self.on_context_menu)
             self.bind("<KeyPress-App>",self.on_context_menu)
             self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+            self.bind("<Control-KeyRelease-a>", self.on_select_all)
         elif windowingsystem == "aqua":
             self.bind("<Button-2>",self.on_context_menu)
             self.bind("<Control-Button-1>",self.on_context_menu)
+            self.bind("<Command-KeyRelease-a>", self.on_select_all)
         elif windowingsystem == "x11":
             self.bind("<Button-3>",self.on_context_menu)
             self.bind("<KeyPress-Menu>",self.on_context_menu)
             self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
-        self.bind("<Control-KeyRelease-a>", lambda event: self.selection("range",0,END))
+            self.bind("<Control-KeyRelease-a>", self.on_select_all)
     def on_context_menu(self,event):
         if str(self.cget('state')) != DISABLED:
             ContextMenu(event.x_root,event.y_root,event.widget)
+    def on_select_all(self,event):
+        self.selection("range",0,END)
 
 class EnhancedText(Text):
     def __init__(self,*args,**kwargs):
@@ -275,18 +285,22 @@ Use it like any other Text widget"""
             self.bind("<Button-3>",self.on_context_menu)
             self.bind("<KeyPress-App>",self.on_context_menu)
             self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+            self.bind("<Control-KeyRelease-a>", self.on_select_all)
         elif windowingsystem == "aqua": # MacOS with Aqua
             self.bind("<Button-2>",self.on_context_menu)
             self.bind("<Control-Button-1>",self.on_context_menu)
+            self.bind("<Command-KeyRelease-a>", self.on_select_all)
         elif windowingsystem == "x11": # Linux, FreeBSD, Darwin with X11
             self.bind("<Button-3>",self.on_context_menu)
             self.bind("<KeyPress-Menu>",self.on_context_menu)
             self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
-        self.bind("<Control-KeyRelease-a>", lambda event: self.tag_add(SEL,"1.0",END))
+            self.bind("<Control-KeyRelease-a>", self.on_select_all)
     def on_context_menu(self,event):
         # the disabled state in a Text widget is pretty much
         # like the readonly state in Entry, hence no state check
         ContextMenu(event.x_root,event.y_root,event.widget)
+    def on_select_all(self,event):
+        self.tag_add(SEL,"1.0",END)
 
 class SelectDirectory(LabelFrame):
     def __init__(self,parent,textvariable=None,**kwargs):
