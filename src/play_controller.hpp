@@ -215,7 +215,7 @@ protected:
 	///preload events cannot be synced
 	void fire_preload();
 	void fire_prestart();
-	void fire_start(bool execute);
+	void fire_start();
 	virtual void init_gui();
 	virtual void finish_side_turn();
 	void finish_turn(); //this should not throw an end turn or end level exception

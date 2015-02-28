@@ -379,7 +379,7 @@ void replay_controller::reset_replay()
 
 		fire_prestart();
 		init_gui();
-		fire_start(true);
+		fire_start();
 		sync.do_final_checkup();
 	}
 	update_gui();

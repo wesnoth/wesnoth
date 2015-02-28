@@ -242,7 +242,7 @@ boost::optional<LEVEL_RESULT> playsingle_controller::play_scenario_init(end_leve
 
 		events::raise_draw_event();
 		try {
-			fire_start(true);
+			fire_start();
 		} catch (end_level_exception & e) {
 			return e.result;
 		} catch (restart_turn_exception &) {
@@ -256,7 +256,7 @@ boost::optional<LEVEL_RESULT> playsingle_controller::play_scenario_init(end_leve
 	{
 		init_gui();
 		events::raise_draw_event();
-		fire_start(false);
+		gamestate_.gamedata_.set_phase(game_data::PLAY);
 		gui_->recalculate_minimap();
 	}
 	if( saved_game_.classification().random_mode != "" && (network::nconnections() != 0)) {
@@ -363,7 +363,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		{
 			LEVEL_RESULT end_level_result = *signal;
 
-			if(!this->gamestate_.gamedata_.phase() > game_data::PRESTART) {
+			if(this->gamestate_.gamedata_.phase() <= game_data::PRESTART) {
 				sdl::draw_solid_tinted_rectangle(
 					0, 0, gui_->video().getx(), gui_->video().gety(), 0, 0, 0, 1.0,
 					gui_->video().getSurface()
