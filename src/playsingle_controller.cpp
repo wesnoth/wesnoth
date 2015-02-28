@@ -258,15 +258,17 @@ boost::optional<LEVEL_RESULT> playsingle_controller::play_scenario_init(end_leve
 		init_gui();
 		past_prestart = true;
 		events::raise_draw_event();
-		try {
-			fire_start(false);
-		} catch (end_level_exception & e) {
-			return e.result;
-		} catch (restart_turn_exception &) {
-			assert(false && "caugh end_turn exception in a bad place... terminating.");
-			std::terminate();
-		}
+		fire_start(false);
 		gui_->recalculate_minimap();
+	}
+	if( saved_game_.classification().random_mode != "" && (network::nconnections() != 0)) {
+		// This won't cause errors later but we should notify the user about it in case he didn't knew it.
+		gui2::show_transient_message(
+			gui_->video(),
+			// TODO: find a better title
+			_("Game Error"),
+			_("This multiplayer game uses an alternative random mode, if you don't know what this message means, then most likeley someone is cheating or someone reloaded a corrupt game.")
+		);
 	}
 	return boost::none;
 }

@@ -37,6 +37,7 @@
 #include "hotkey_handler.hpp"
 #include "map_label.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "halo.hpp"
 #include "hotkey/command_executor.hpp"
 #include "loadscreen.hpp"
@@ -318,19 +319,9 @@ void play_controller::fire_start(bool execute){
 		init_side_done_ = false;
 
 	} else {
+		// FIXME: calculate it_is_a_new_turn_ correctly instead of setting it to false when reloading a game.
+		// it could cause missed turn events in case init_side_done_ == false.
 		it_is_a_new_turn_ = false;
-	}
-	if( saved_game_.classification().random_mode != "" && (network::nconnections() != 0))
-	{
-		std::string mes = _("MP game uses an alternative random mode, if you don't know what this message means, then most likeley someone is cheating or someone reloaded a corrupt game.");
-		gui_->get_chat_manager().add_chat_message(
-			time(NULL),
-			"game_engine",
-			0,
-			mes,
-			events::chat_handler::MESSAGE_PUBLIC,
-			preferences::message_bell());
-		replay::process_error(mes);
 	}
 	gamestate_.gamedata_.set_phase(game_data::PLAY);
 }
