@@ -138,7 +138,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, start_turn_(gamestate_.tod_manager_.turn()) // gamestate_.tod_manager_ constructed above
 	, skip_replay_(skip_replay)
 	, linger_(false)
-	, it_is_a_new_turn_(true)
+	, it_is_a_new_turn_(level["it_is_a_new_turn"].to_bool(true))
 	, init_side_done_(level["init_side_done"].to_bool(false))
 	, ticks_(ticks)
 	, victory_when_enemies_defeated_(true)
@@ -318,10 +318,6 @@ void play_controller::fire_start(bool execute){
 		}
 		init_side_done_ = false;
 
-	} else {
-		// FIXME: calculate it_is_a_new_turn_ correctly instead of setting it to false when reloading a game.
-		// it could cause missed turn events in case init_side_done_ == false.
-		it_is_a_new_turn_ = false;
 	}
 	gamestate_.gamedata_.set_phase(game_data::PLAY);
 }
@@ -454,6 +450,7 @@ config play_controller::to_config() const
 
 	cfg.merge_attributes(level_);
 	cfg["init_side_done"] = init_side_done_;
+	cfg["it_is_a_new_turn"] = it_is_a_new_turn_;
 
 	gamestate_.write(cfg);
 

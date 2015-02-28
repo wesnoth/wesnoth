@@ -382,8 +382,6 @@ void replay_controller::reset_replay()
 		fire_start(true);
 		sync.do_final_checkup();
 	}
-	// Since we did not fire the start event, it_is_a_new_turn_ has the wrong value.
-	it_is_a_new_turn_ = true;
 	update_gui();
 
 	reset_replay_ui();
