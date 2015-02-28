@@ -190,7 +190,7 @@ void playsingle_controller::report_victory(
 	report << '\n' << goldmsg;
 }
 
-boost::optional<LEVEL_RESULT> playsingle_controller::play_scenario_init(end_level_data & /*eld*/, bool & past_prestart) {
+boost::optional<LEVEL_RESULT> playsingle_controller::play_scenario_init(end_level_data & /*eld*/) {
 	// At the beginning of the scenario, save a snapshot as replay_start
 	if(saved_game_.replay_start().empty()){
 		saved_game_.replay_start() = to_config();
@@ -238,7 +238,6 @@ boost::optional<LEVEL_RESULT> playsingle_controller::play_scenario_init(end_leve
 
 
 		init_gui();
-		past_prestart = true;
 		LOG_NG << "first_time..." << (is_skipping_replay() ? "skipping" : "no skip") << "\n";
 
 		events::raise_draw_event();
@@ -256,7 +255,6 @@ boost::optional<LEVEL_RESULT> playsingle_controller::play_scenario_init(end_leve
 	else
 	{
 		init_gui();
-		past_prestart = true;
 		events::raise_draw_event();
 		fire_start(false);
 		gui_->recalculate_minimap();
@@ -273,7 +271,7 @@ boost::optional<LEVEL_RESULT> playsingle_controller::play_scenario_init(end_leve
 	return boost::none;
 }
 
-LEVEL_RESULT playsingle_controller::play_scenario_main_loop(end_level_data & end_level, bool & /*past_prestart*/) {
+LEVEL_RESULT playsingle_controller::play_scenario_main_loop(end_level_data & end_level) {
 	LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
 
 	// Initialize countdown clock.
@@ -353,21 +351,19 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	set_remove_from_carryover_on_defeat(level_["remove_from_carryover_on_defeat"].to_bool(true));
 	end_level_data &end_level = get_end_level_data();
 
-	bool past_prestart = false;
-
 	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks_) << "\n";
 	try {
-		boost::optional<LEVEL_RESULT> signal = play_scenario_init(end_level, past_prestart);
+		boost::optional<LEVEL_RESULT> signal = play_scenario_init(end_level);
 
 		if (!signal) {
-			signal = play_scenario_main_loop(end_level, past_prestart);
+			signal = play_scenario_main_loop(end_level);
 		}
 
 		assert(signal); //play_scenario_main_loop always returns a LEVEL_RESULT
 		{
 			LEVEL_RESULT end_level_result = *signal;
 
-			if(!past_prestart) {
+			if(!this->gamestate_.gamedata_.phase() > game_data::PRESTART) {
 				sdl::draw_solid_tinted_rectangle(
 					0, 0, gui_->video().getx(), gui_->video().gety(), 0, 0, 0, 1.0,
 					gui_->video().getSurface()
