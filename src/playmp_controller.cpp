@@ -93,12 +93,6 @@ possible_end_play_signal playmp_controller::play_side()
 	return playsingle_controller::play_side();
 }
 
-void playmp_controller::before_human_turn(){
-	LOG_NG << "playmp::before_human_turn...\n";
-	playsingle_controller::before_human_turn();
-	turn_data_.send_data();
-}
-
 void playmp_controller::on_not_observer() {
 	remove_blindfold();
 }

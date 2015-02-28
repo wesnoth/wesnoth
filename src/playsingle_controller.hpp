@@ -70,7 +70,7 @@ public:
 protected:
 	possible_end_play_signal play_turn();
 	virtual possible_end_play_signal play_side();
-	virtual void before_human_turn();
+	void before_human_turn();
 	void show_turn_dialog();
 	void execute_gotos();
 	virtual possible_end_play_signal play_human_turn();
