@@ -593,7 +593,7 @@ int game_launcher::unit_test()
 
 	try {
 		LEVEL_RESULT res = play_game(disp(),state_,game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), IO_SERVER, false, false, false, true);
-		if (!(res == VICTORY || res == NONE) || lg::broke_strict()) {
+		if (!(res == VICTORY) || lg::broke_strict()) {
 			return 1;
 		}
 	} catch (game::load_game_exception &) {
@@ -629,12 +629,10 @@ int game_launcher::unit_test()
 	try {
 		//LEVEL_RESULT res = play_game(disp(), state_, game_config_manager::get()->game_config(), IO_SERVER, false,false,false,true);
 		LEVEL_RESULT res = ::play_replay(disp(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), true);
-		if (!(res == VICTORY || res == NONE)) {
+		if (!(res == VICTORY)) {
 			std::cerr << "Observed failure on replay" << std::endl;
 			return 4;
 		}
-		/*::play_replay(disp(),state_,game_config_manager::get()->game_config(),
-		    video_);*/
 		clear_loaded_game();
 	} catch (game::load_game_exception &) {
 		std::cerr << "Load_game_exception encountered during play_replay!" << std::endl;

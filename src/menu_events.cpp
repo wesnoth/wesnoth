@@ -2950,7 +2950,7 @@ void console_handler::do_save_quit() {
 	do_quit();
 }
 void console_handler::do_quit() {
-	throw end_level_exception(QUIT);
+	throw_quit_game_exception();
 }
 void console_handler::do_ignore_replay_errors() {
 	game_config::ignore_replay_errors = (get_data() != "off") ? true : false;
@@ -2963,12 +2963,14 @@ void console_handler::do_next_level()
 {
 	if (!get_data().empty())
 		menu_handler_.gamedata().set_next_scenario(get_data());
-	end_level_data &e = menu_handler_.pc_.get_end_level_data();
+	end_level_data e;
 	e.transient.carryover_report = false;
 	e.prescenario_save = true;
 	e.transient.linger_mode = false;
 	e.proceed_to_next_level = true;
-	throw end_level_exception(VICTORY);
+	e.is_victory = true;
+	menu_handler_.pc_.set_end_level_data(e);
+	throw end_level_exception();
 }
 
 void console_handler::do_choose_level() {
@@ -3011,12 +3013,14 @@ void console_handler::do_choose_level() {
 
 	if (size_t(choice) < options.size()) {
 		menu_handler_.gamedata().set_next_scenario(options[choice]);
-		end_level_data &e = menu_handler_.pc_.get_end_level_data();
+		end_level_data e;
 		e.transient.carryover_report = false;
 		e.prescenario_save = true;
 		e.transient.linger_mode = false;
 		e.proceed_to_next_level = true;
-		throw end_level_exception(VICTORY);
+		e.is_victory = true;
+		menu_handler_.pc_.set_end_level_data(e);
+		throw end_level_exception();
 	}
 }
 

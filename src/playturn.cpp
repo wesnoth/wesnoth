@@ -329,7 +329,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				//The user pressed "end game". Don't throw a network error here or he will get
 				//thrown back to the title screen.
 				do_save();
-				throw end_level_exception(QUIT);
+				throw_quit_game_exception();
 			default:
 				if (action > 3) {
 

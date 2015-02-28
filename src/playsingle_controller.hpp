@@ -49,13 +49,11 @@ public:
 
 	LEVEL_RESULT play_scenario(const config::const_child_itors &story,
 		bool skip_replay);
-	boost::optional<LEVEL_RESULT> play_scenario_init(end_level_data & eld);
-	LEVEL_RESULT play_scenario_main_loop(end_level_data & eld);
+	void play_scenario_init();
+	void play_scenario_main_loop();
 
 	virtual void handle_generic_event(const std::string& name);
 
-	virtual void force_end_level(LEVEL_RESULT res)
-	{ level_result_ = res; }
 	virtual void check_end_level();
 	void report_victory(std::ostringstream &report, team& t, int finishing_bonus_per_turn,
 			int turns_left, int finishing_bonus);
@@ -68,7 +66,7 @@ public:
 
 	class hotkey_handler;
 	virtual bool is_end_turn() const { return end_turn_; }
-
+	std::string describe_result() const;
 protected:
 	possible_end_play_signal play_turn();
 	virtual possible_end_play_signal play_side();
@@ -98,7 +96,6 @@ protected:
 	bool replaying_;
 	bool skip_next_turn_;
 	bool do_autosaves_;
-	LEVEL_RESULT level_result_;
 	void linger();
 };
 

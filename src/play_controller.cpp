@@ -163,6 +163,14 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	resources::mp_settings = &saved_game_.mp_settings();
 
 	persist_.start_transaction();
+	
+	if(const config& endlevel_cfg = level.child("end_level_data")) {
+		end_level_data el_data;
+		el_data.read(endlevel_cfg);
+		el_data.transient.carryover_report = false;
+		set_end_level_data(el_data);
+	}
+
 	n_unit::id_manager::instance().set_save_id(level_["next_underlying_unit_id"]);
 
 	// Setup victory and defeat music
@@ -185,7 +193,7 @@ play_controller::~play_controller()
 	hotkey::delete_all_wml_hotkeys();
 	clear_resources();
 }
-
+struct throw_end_level { void operator()(const config&) { throw_quit_game_exception(); } };
 void play_controller::init(CVideo& video){
 	util::scoped_resource<loadscreen::global_loadscreen_manager*, util::delete_item> scoped_loadscreen_manager;
 	loadscreen::global_loadscreen_manager* loadscreen_manager = loadscreen::global_loadscreen_manager::get();
@@ -204,9 +212,6 @@ void play_controller::init(CVideo& video){
 	LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks_) << std::endl;
 	whiteboard_manager_.reset(new wb::manager());
 	resources::whiteboard = whiteboard_manager_;
-
-	// mouse_handler expects at least one team for linger mode to work.
-	if (gamestate_.board_.teams().empty()) end_level_data_.transient.linger_mode = false;
 
 	LOG_NG << "loading units..." << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("load units");
@@ -267,7 +272,7 @@ void play_controller::init(CVideo& video){
 	plugins_context_.reset(new plugins_context("Game"));
 	plugins_context_->set_callback("save_game", boost::bind(&play_controller::save_game_auto, this, boost::bind(get_str, _1, "filename" )), true);
 	plugins_context_->set_callback("save_replay", boost::bind(&play_controller::save_replay_auto, this, boost::bind(get_str, _1, "filename" )), true);
-	plugins_context_->set_callback("quit", boost::bind(&play_controller::force_end_level, this, QUIT), false);
+	plugins_context_->set_callback("quit", throw_end_level(), false);
 }
 
 void play_controller::init_managers(){
@@ -452,8 +457,8 @@ config play_controller::to_config() const
 
 	gamestate_.write(cfg);
 
-	if(linger_) {
-		end_level_data_.write(cfg.add_child("end_level_data"));
+	if(end_level_data_.get_ptr() != NULL) {
+		end_level_data_->write(cfg.add_child("end_level_data"));
 	}
 
 	// Write terrain_graphics data in snapshot, too
@@ -821,7 +826,6 @@ const std::string& play_controller::select_defeat_music() const
 	return defeat_music_[rand() % defeat_music_.size()];
 }
 
-
 void play_controller::set_victory_music_list(const std::string& list)
 {
 	victory_music_ = utils::split(list);
@@ -885,8 +889,11 @@ void play_controller::check_victory()
 
 	DBG_EE << "throwing end level exception..." << std::endl;
 	//Also proceed to the next scenario when another player survived.
-	end_level_data_.proceed_to_next_level = found_player || found_network_player;
-	throw end_level_exception(found_player ? VICTORY : DEFEAT);
+	end_level_data el_data;
+	el_data.proceed_to_next_level = found_player || found_network_player;
+	el_data.is_victory = found_player;
+	set_end_level_data(el_data);
+	throw end_level_exception();
 }
 
 void play_controller::process_oos(const std::string& msg) const

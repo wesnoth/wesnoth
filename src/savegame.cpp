@@ -405,7 +405,7 @@ bool savegame::save_game_interactive(CVideo& video, const std::string& message,
 	const int res = show_save_dialog(video, message, dialog_type);
 
 	if (res == 2) { 
-		throw end_level_exception(QUIT); //Quit game
+		throw_quit_game_exception(); //Quit game
 	}
 
 	if (res == gui2::twindow::OK && check_overwrite(video)) {

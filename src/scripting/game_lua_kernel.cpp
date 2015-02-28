@@ -1401,7 +1401,7 @@ static int intf_debug(lua_State* L)
 
 int game_lua_kernel::intf_check_end_level_disabled(lua_State * L)
 {
-	lua_pushboolean(L, play_controller_.get_end_level_data().transient.disabled);
+	lua_pushboolean(L, play_controller_.is_regular_game_end());
 	return 1;
 }
 
@@ -1441,13 +1441,12 @@ int game_lua_kernel::intf_end_level(lua_State *L)
 {
 	vconfig cfg(luaW_checkvconfig(L, 1));
 
-	end_level_data &data = play_controller_.get_end_level_data();
-
-	if (data.transient.disabled) {
+	
+	if (play_controller_.is_regular_game_end()) {
 		return 0;
 	}
-	data.transient.disabled = true;
-
+	end_level_data data;
+	
 	// TODO: is this still needed?
 	// Remove 0-hp units from the unit map to avoid the following problem:
 	// In case a die event triggers an endlevel the dead unit is still as a
@@ -1548,12 +1547,8 @@ int game_lua_kernel::intf_end_level(lua_State *L)
 	data.transient.linger_mode = cfg["linger_mode"].to_bool(true)
 		&& !teams().empty();
 	data.transient.reveal_map = cfg["reveal_map"].to_bool(true);
-	if(!local_human_victory) {
-		play_controller_.force_end_level(DEFEAT);
-	} else {
-		play_controller_.force_end_level(VICTORY);
-	}
-
+	data.is_victory = local_human_victory;
+	play_controller_.set_end_level_data(data);
 	return 0;
 }
 

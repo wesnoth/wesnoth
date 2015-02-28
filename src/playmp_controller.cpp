@@ -338,7 +338,7 @@ void playmp_controller::wait_for_upload()
 			}
 			else
 			{
-				throw end_level_exception(QUIT);
+				throw_quit_game_exception();
 			}
 
 		} catch(const end_level_exception&) {
@@ -483,8 +483,8 @@ void playmp_controller::do_idle_notification()
 
 void playmp_controller::maybe_linger()
 {
-	linger_ = true;
-	if (!get_end_level_data_const().transient.linger_mode) {
+	// mouse_handler expects at least one team for linger mode to work.
+	if (!get_end_level_data_const().transient.linger_mode || gamestate_.board_.teams().empty()) {
 		if(!is_host()) {
 			// If we continue without lingering we need to
 			// make sure the host uploads the next scenario

@@ -23,7 +23,6 @@ transient_end_level::transient_end_level()
 	, linger_mode(true)
 	, custom_endlevel_music()
 	, reveal_map(true)
-	, disabled(false)
 {}
 
 end_level_data::end_level_data()

@@ -46,7 +46,6 @@ public:
 	void replay_skip_animation();
 
 	virtual void force_end_turn() {}
-	virtual void force_end_level(LEVEL_RESULT) {}
 	virtual void check_end_level() {}
 	virtual void on_not_observer() {}
 

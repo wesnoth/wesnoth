@@ -171,7 +171,8 @@ LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& gam
 			e.show(disp);
 		}
 	}
-	return NONE;
+	//TODO: when can this happen?
+	return VICTORY;
 }
 
 static LEVEL_RESULT playsingle_scenario(const config& game_config,
@@ -188,25 +189,20 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 
 	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
 
-	end_level = playcontroller.get_end_level_data_const();
-
 	if (res == QUIT)
 	{
 		return QUIT;
 	}
-	//if we are loading from linger mode then we already did this.
-	if(res != SKIP_TO_LINGER)
-	{
-		show_carryover_message(state_of_game, playcontroller, disp, end_level, res);
-	}
+
+	end_level = playcontroller.get_end_level_data_const();
+
+	show_carryover_message(state_of_game, playcontroller, disp, end_level, res);
 	if(!disp.video().faked())
 	{
 		try {
 			playcontroller.maybe_linger();
-		} catch(end_level_exception& e) {
-			if (e.result == QUIT) {
-				return QUIT;
-			}
+		} catch(end_level_exception&) {
+			return QUIT;
 		}
 	}
 	state_of_game.set_snapshot(playcontroller.to_config());
@@ -226,8 +222,6 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 		game_config, tdata, disp.video(), skip_replay, blindfold_replay, io_type == IO_SERVER);
 	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
 
-	end_level = playcontroller.get_end_level_data_const();
-
 	//Check if the player started as mp client and changed to host
 	if (io_type == IO_CLIENT && playcontroller.is_host())
 		io_type = IO_SERVER;
@@ -236,7 +230,10 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 	{
 		return QUIT;
 	}
-	if(res != OBSERVER_END && res != SKIP_TO_LINGER)
+
+	end_level = playcontroller.get_end_level_data_const();
+
+	if(res != OBSERVER_END)
 	{
 		//We need to call this before linger because it prints the defeated/victory message.
 		//(we want to see that message before entering the linger mode)
@@ -246,10 +243,8 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 	{
 		try {
 			playcontroller.maybe_linger();
-		} catch(end_level_exception& e) {
-			if (e.result == QUIT) {
-				return QUIT;
-			}
+		} catch(end_level_exception&) {
+			return QUIT;
 		}
 	}
 	playcontroller.update_savegame_snapshot();

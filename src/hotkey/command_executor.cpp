@@ -522,7 +522,7 @@ void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* 
 		const int res = gui2::show_message(disp.video(), _("Quit"),
 				_("Do you really want to quit?"), gui2::tmessage::yes_no_buttons);
 		if(res != gui2::twindow::CANCEL) {
-			throw end_level_exception(QUIT);
+			throw_quit_game_exception();
 		} else {
 			return;
 		}
@@ -693,7 +693,7 @@ void execute_command(display& disp, const hotkey_command& command, command_execu
 				const int res = gui2::show_message(disp.video(), _("Quit"),
 						_("Do you really want to quit?"), gui2::tmessage::yes_no_buttons);
 				if (res != gui2::twindow::CANCEL) {
-					throw end_level_exception(QUIT);
+					throw_quit_game_exception();
 				}
 			}
 			break;

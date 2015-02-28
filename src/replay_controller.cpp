@@ -43,6 +43,7 @@
 #include <boost/foreach.hpp>
 #include <boost/function.hpp>
 #include <boost/scoped_ptr.hpp>
+#include <boost/variant/get.hpp>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -67,8 +68,9 @@ LEVEL_RESULT play_replay_level(const config& game_config, const tdata_cache & td
 
 	try {
 		rc.reset(new replay_controller(state_of_game.get_replay_starting_pos(), state_of_game, ticks, game_config, tdata, video));
-	} catch (end_level_exception & e){
-		return e.result;
+	} catch (end_level_exception&){
+		//TODO: When can this happen?
+		return QUIT;
 	}
 	DBG_NG << "created objects... " << (SDL_GetTicks() - rc->get_ticks()) << std::endl;
 
@@ -442,7 +444,7 @@ void replay_controller::process_oos(const std::string& msg) const
 	message << "\n\n" << _("Error details:") << "\n\n" << msg;
 
 	if (non_interactive()) {
-		throw game::game_error(message.str()); //throw end_level_exception(DEFEAT);
+		throw game::game_error(message.str());
 	} else {
 		update_savegame_snapshot();
 		savegame::oos_savegame save(saved_game_, *gui_);
@@ -493,7 +495,7 @@ possible_end_play_signal replay_controller::play_replay(){
 			case END_TURN:
 				return signal;
 			case END_LEVEL:
-				if ( boost::apply_visitor(get_result(), *signal) == QUIT) {
+				if(boost::get<end_level_struct>(*signal).is_quit) {
 					return signal;
 				}
 		}
@@ -573,8 +575,8 @@ possible_end_play_signal replay_controller::play_move_or_side(bool one_move) {
 				return boost::none;
 			}
 		} catch(end_level_exception& e){
-			//VICTORY/DEFEAT end_level_exception shall not return to title screen
-			if (e.result != VICTORY && e.result != DEFEAT) {
+			//dont return to title screen if the game ended the normal way
+			if (!is_regular_game_end()) {
 				return possible_end_play_signal(e.to_struct());
 			}
 		}
