@@ -1026,7 +1026,7 @@ static std::map<int, config> get_user_choice_internal(const std::string &name, c
 
 			const config *action = get_replay_source().get_next_action();
 			assert(action); //action cannot be null because get_replay_source().at_end() returned false.
-			if( !action->has_child(name))
+			if( !action->has_child(name) || !(*action)["dependent"].to_bool())
 			{
 				replay::process_error("[" + name + "] expected but none found\n. found instead:\n" + action->debug());
 				//We save this action for later
