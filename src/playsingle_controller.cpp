@@ -24,6 +24,7 @@
 #include "ai/manager.hpp"
 #include "ai/game_info.hpp"
 #include "ai/testing.hpp"
+#include "config_assign.hpp"
 #include "dialogs.hpp"
 #include "display_chat_manager.hpp"
 #include "game_end_exceptions.hpp"
@@ -349,105 +350,101 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks_) << "\n";
 	try {
 		play_scenario_init();
+		//FIXME: This ignores QUITs during play_scenario_init()
 		if (!is_regular_game_end() && !linger_) {
 			play_scenario_main_loop();
 		}
+		if (game_config::exit_at_end) {
+			exit(0);
+		}
+		if (!is_regular_game_end()) {
+			return QUIT;
+		}
+		const bool is_victory = get_end_level_data_const().is_victory;
 
-		{
-			if (game_config::exit_at_end) {
-				exit(0);
-			}
-			if (!is_regular_game_end()) {
-				return QUIT;
-			}
-			const bool is_victory = get_end_level_data_const().is_victory;
-
-			if(this->gamestate_.gamedata_.phase() <= game_data::PRESTART) {
-				sdl::draw_solid_tinted_rectangle(
-					0, 0, gui_->video().getx(), gui_->video().gety(), 0, 0, 0, 1.0,
-					gui_->video().getSurface()
+		if(this->gamestate_.gamedata_.phase() <= game_data::PRESTART) {
+			sdl::draw_solid_tinted_rectangle(
+				0, 0, gui_->video().getx(), gui_->video().gety(), 0, 0, 0, 1.0,
+				gui_->video().getSurface()
 				);
-				update_rect(0, 0, gui_->video().getx(), gui_->video().gety());
-			}
+			update_rect(0, 0, gui_->video().getx(), gui_->video().gety());
+		}
 
-			ai_testing::log_game_end();
+		ai_testing::log_game_end();
 
-			const end_level_data& end_level = get_end_level_data_const();
-			if (!end_level.transient.custom_endlevel_music.empty()) {
-				if (!is_victory) {
-					set_defeat_music_list(end_level.transient.custom_endlevel_music);
-				} else {
-					set_victory_music_list(end_level.transient.custom_endlevel_music);
-				}
+		const end_level_data& end_level = get_end_level_data_const();
+		if (!end_level.transient.custom_endlevel_music.empty()) {
+			if (!is_victory) {
+				set_defeat_music_list(end_level.transient.custom_endlevel_music);
+			} else {
+				set_victory_music_list(end_level.transient.custom_endlevel_music);
 			}
+		}
 
-			if (gamestate_.board_.teams().empty())
-			{
-				//store persistent teams
-				saved_game_.set_snapshot(config());
+		if (gamestate_.board_.teams().empty())
+		{
+			//store persistent teams
+			saved_game_.set_snapshot(config());
 
-				return VICTORY; // this is probably only a story scenario, i.e. has its endlevel in the prestart event
-			}
-			if(linger_) {
-				LOG_NG << "resuming from loaded linger state...\n";
-				//as carryover information is stored in the snapshot, we have to re-store it after loading a linger state
-				saved_game_.set_snapshot(config());
-				if(!is_observer()) {
-					persist_.end_transaction();
-				}
-				return VICTORY;
-			}
-			if(is_observer()) {
-				gui2::show_transient_message(gui_->video(), _("Game Over"), _("The game is over."));
-				return OBSERVER_END;
-			}
-			// If we're a player, and the result is victory/defeat, then send
-			// a message to notify the server of the reason for the game ending.
-			{
-				config cfg;
-				config& info = cfg.add_child("info");
-				info["type"] = "termination";
-				info["condition"] = "game over";
-				info["result"] = is_victory ? "victory" : "defeat";
-				network::send_data(cfg, 0);
-			}
-			if (!is_victory)
-			{
-				pump().fire("defeat");
-
-				const std::string& defeat_music = select_defeat_music();
-				if(defeat_music.empty() != true)
-					sound::play_music_once(defeat_music);
+			return VICTORY; // this is probably only a story scenario, i.e. has its endlevel in the prestart event
+		}
+		if(linger_) {
+			LOG_NG << "resuming from loaded linger state...\n";
+			//as carryover information is stored in the snapshot, we have to re-store it after loading a linger state
+			saved_game_.set_snapshot(config());
+			if(!is_observer()) {
 				persist_.end_transaction();
-				return DEFEAT;
 			}
-			else
-			{
-				pump().fire("victory");
+			return VICTORY;
+		}
+		if(is_observer()) {
+			gui2::show_transient_message(gui_->video(), _("Game Over"), _("The game is over."));
+			return OBSERVER_END;
+		}
+		// If we're a player, and the result is victory/defeat, then send
+		// a message to notify the server of the reason for the game ending.
+		network::send_data(config_of
+			("info", config_of
+				("type", "termination")
+				("condition", "game over")
+				("result", is_victory ? "victory" : "defeat")
+			));
+		if (!is_victory)
+		{
+			pump().fire("defeat");
 
-				//
-				// Play victory music once all victory events
-				// are finished, if we aren't observers.
-				//
-				// Some scenario authors may use 'continue'
-				// result for something that is not story-wise
-				// a victory, so let them use [music] tags
-				// instead should they want special music.
-				//
-				if (end_level.transient.linger_mode) {
-					const std::string& victory_music = select_victory_music();
-					if(victory_music.empty() != true)
-						sound::play_music_once(victory_music);
-				}
+			const std::string& defeat_music = select_defeat_music();
+			if(defeat_music.empty() != true)
+				sound::play_music_once(defeat_music);
+			persist_.end_transaction();
+			return DEFEAT;
+		}
+		else
+		{
+			pump().fire("victory");
 
-				LOG_NG << "Healing survived units\n";
-				gamestate_.board_.heal_all_survivors();
-
-				saved_game_.remove_snapshot();
-				persist_.end_transaction();
-				return VICTORY;
+			//
+			// Play victory music once all victory events
+			// are finished, if we aren't observers.
+			//
+			// Some scenario authors may use 'continue'
+			// result for something that is not story-wise
+			// a victory, so let them use [music] tags
+			// instead should they want special music.
+			//
+			if (end_level.transient.linger_mode) {
+				const std::string& victory_music = select_victory_music();
+				if(victory_music.empty() != true)
+					sound::play_music_once(victory_music);
 			}
-		} //end block
+
+			LOG_NG << "Healing survived units\n";
+			gamestate_.board_.heal_all_survivors();
+
+			saved_game_.remove_snapshot();
+			persist_.end_transaction();
+			return VICTORY;
+		}
 	} catch(const game::load_game_exception &) {
 		// Loading a new game is effectively a quit.
 		//
