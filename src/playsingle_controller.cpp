@@ -539,6 +539,12 @@ possible_end_play_signal playsingle_controller::play_side()
 	//flag used when we fallback from ai and give temporarily control to human
 	bool temporary_human = false;
 	do {
+		//Update viewing team in case it has changed during the loop.
+		if(int side_num = play_controller::find_last_visible_team()) {
+			if(side_num != this->gui_->viewing_side()) {
+				update_gui_to_player(side_num - 1);
+			}
+		}
 		// This flag can be set by derived classes (in overridden functions).
 		player_type_changed_ = false;
 		if (!skip_next_turn_)
@@ -554,23 +560,10 @@ possible_end_play_signal playsingle_controller::play_side()
 			if (gamestate_.board_.side_units(player_number_) != 0
 				|| (gamestate_.board_.units().size() == 0 && player_number_ == 1))
 			{
-				possible_end_play_signal signal;
 				before_human_turn();
 				if (!end_turn_) {
-					signal = play_human_turn();
-				}
-				if (signal) { 
-					return signal;
-				}
-				if (player_type_changed_) {
-					// If new controller is not human,
-					// reset gui to prev human one
-					if (!gamestate_.board_.teams()[player_number_-1].is_local_human()) {
-						int s = find_human_team_before_current_player();
-						if (s <= 0) {
-							s = gui_->playing_side();
-						}
-						update_gui_to_player(s-1);
+					if(possible_end_play_signal signal = play_idle_loop()) {
+						return signal;
 					}
 				}
 			}
@@ -599,34 +592,12 @@ possible_end_play_signal playsingle_controller::play_side()
 		} else if(current_team().is_local_human() && current_team().is_idle()) {
 			end_turn_enable(false);
 			do_idle_notification();
-
-			possible_end_play_signal signal;
 			before_human_turn();
-
 			if (!end_turn_) {
-				signal = play_idle_loop();
-			}
-			
-			if (signal) {
-				return signal;
-			}
-			if (player_type_changed_) {
-				// If new controller is not human,
-				// reset gui to prev human one
-				if (!gamestate_.board_.teams()[player_number_-1].is_local_human()) {
-					int s = find_human_team_before_current_player();
-					if (s <= 0) {
-						s = gui_->playing_side();
-					}
-					update_gui_to_player(s-1);
+				if(possible_end_play_signal signal = play_idle_loop()) {
+					return signal;
 				}
-				else {
-					//This side was previously not human controlled.
-					update_gui_to_player(player_number_ - 1);
-				}
-
 			}
-
 		}
 		else {
 			assert(current_team().is_empty()); // Do nothing.

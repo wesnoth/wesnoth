@@ -233,8 +233,9 @@ protected:
 	team& current_team();
 	const team& current_team() const;
 
-	/** Find a human team (ie one we own) starting backwards from current player. */
-	int find_human_team_before_current_player() const;
+	bool is_team_visible(int team_num, bool observer) const;
+	/// returns 0 if no such team was found.
+	int find_last_visible_team() const;
 
 	//gamestate
 	game_state gamestate_;

@@ -641,24 +641,45 @@ const team& play_controller::current_team() const
 	return gamestate_.board_.teams()[player_number_-1];
 }
 
-int play_controller::find_human_team_before_current_player() const
+/// @returns: the number n in [min, min+mod ) so that (n - num) is a multiple of mod.
+static int modulo(int num, int mod, int min)
 {
-	if (player_number_ > int(gamestate_.board_.teams().size()))
-		return -2;
+	assert(mod > 0);
+	int n = (num - min) % mod;
+	if (n < 0)
+		n += mod;
+	//n is now in [0, mod)
+	n = n + min;
+	return n;
+	// the folowing properties are easy to verfy:
+	//  1) For all m: modulo(num, mod, min) == modulo(num + mod*m, mod, min)
+	//  2) For all 0 <= m < mod: modulo(min + m, mod, min) == min + m
+}
 
-	for (int i = player_number_-2; i >= 0; --i) {
-		if (gamestate_.board_.teams()[i].is_local_human()) {
-			return i+1;
+bool play_controller::is_team_visible(int team_num, bool observer) const
+{
+	const team& t = gamestate_.board_.teams()[team_num - 1];
+	if(observer) {
+		return !t.get_disallow_observers();
+	}
+	else {
+		return t.is_local_human() && !t.is_idle();
+	}
+}
+
+int play_controller::find_last_visible_team() const
+{
+	assert(player_number_ <= int(gamestate_.board_.teams().size()));
+	const int num_teams = gamestate_.board_.teams().size();
+	const bool is_observer = this->is_observer();
+
+	for(int i = 0; i < num_teams; i++) {
+		const int team_num = modulo(player_number_ - i, num_teams, 1);
+		if(is_team_visible(team_num, is_observer)) {
+			return team_num;
 		}
 	}
-
-	for (int i = gamestate_.board_.teams().size()-1; i > player_number_-1; --i) {
-		if (gamestate_.board_.teams()[i].is_local_human()) {
-			return i+1;
-		}
-	}
-
-	return -1;
+	return 0;
 }
 
 events::mouse_handler& play_controller::get_mouse_handler_base() {
