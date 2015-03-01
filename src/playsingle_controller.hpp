@@ -25,21 +25,6 @@
 #include "saved_game.hpp"
 class team;
 
-struct set_completion
-{
-	set_completion(saved_game& state, const std::string& completion) :
-		state_(state), completion_(completion)
-	{
-	}
-	~set_completion()
-	{
-		state_.classification().completion = completion_;
-	}
-	private:
-	saved_game& state_;
-	const std::string completion_;
-};
-
 class playsingle_controller : public play_controller
 {
 public:

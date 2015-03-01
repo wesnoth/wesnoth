@@ -397,7 +397,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 				}
 				return VICTORY;
 			}
-			saved_game_.classification().completion = is_victory ? "victory" : "defeat";
 			if(is_observer()) {
 				gui2::show_transient_message(gui_->video(), _("Game Over"), _("The game is over."));
 				return OBSERVER_END;
@@ -409,12 +408,11 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 				config& info = cfg.add_child("info");
 				info["type"] = "termination";
 				info["condition"] = "game over";
-				info["result"] = saved_game_.classification().completion;
+				info["result"] = is_victory ? "victory" : "defeat";
 				network::send_data(cfg, 0);
 			}
 			if (!is_victory)
 			{
-				saved_game_.classification().completion = "defeat";
 				pump().fire("defeat");
 
 				const std::string& defeat_music = select_defeat_music();
@@ -425,7 +423,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			}
 			else
 			{
-				saved_game_.classification().completion = !end_level.transient.linger_mode ? "running" : "victory";
 				pump().fire("victory");
 
 				//
@@ -722,11 +719,6 @@ void playsingle_controller::linger()
 	// If we need to set the status depending on the completion state
 	// the key to it is here.
 	gui_->set_game_mode(game_display::LINGER_SP);
-
-	// this is actually for after linger mode is over -- we don't
-	// want to stay stuck in linger state when the *next* scenario
-	// is over.
-	set_completion setter(saved_game_,"running");
 
 	// change the end-turn button text to its alternate label
 	gui_->get_theme().refresh_title2("button-endturn", "title2");

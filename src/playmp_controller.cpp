@@ -262,10 +262,6 @@ void playmp_controller::linger()
 	// If we need to set the status depending on the completion state
 	// we're needed here.
 	gui_->set_game_mode(game_display::LINGER_MP);
-
-	// this is actually for after linger mode is over -- we don't want to
-	// stay stuck in linger state when the *next* scenario is over.
-	set_completion setter(saved_game_,"running");
 	// End all unit moves
 	gamestate_.board_.set_all_units_user_end_turn();
 

@@ -39,7 +39,6 @@ game_classification::game_classification():
 	mod_defines(),
 	campaign(),
 	abbrev(),
-	completion(),
 	end_credits(true),
 	end_text(),
 	end_text_duration(),
@@ -60,7 +59,6 @@ game_classification::game_classification(const config& cfg):
 	mod_defines(utils::split(cfg["mod_defines"])),
 	campaign(cfg["campaign"]),
 	abbrev(cfg["abbrev"]),
-	completion(cfg["completion"]),
 	end_credits(cfg["end_credits"].to_bool(true)),
 	end_text(cfg["end_text"]),
 	end_text_duration(cfg["end_text_duration"]),
@@ -81,7 +79,6 @@ game_classification::game_classification(const game_classification& gc):
 	mod_defines(gc.mod_defines),
 	campaign(gc.campaign),
 	abbrev(gc.abbrev),
-	completion(gc.completion),
 	end_credits(gc.end_credits),
 	end_text(gc.end_text),
 	end_text_duration(gc.end_text_duration),
@@ -105,7 +102,6 @@ config game_classification::to_config() const
 	cfg["mod_defines"] = utils::join(mod_defines);
 	cfg["campaign"] = campaign;
 	cfg["abbrev"] = abbrev;
-	cfg["completion"] = completion;
 	cfg["end_credits"] = end_credits;
 	cfg["end_text"] = end_text;
 	cfg["end_text_duration"] = str_cast<unsigned int>(end_text_duration);

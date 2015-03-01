@@ -50,8 +50,6 @@ public:
 	std::string campaign;                            /**< the campaign being played */
 
 	std::string abbrev;                              /**< the campaign abbreviation */
-//	std::string scenario;                            /**< the scenario being played */
-	std::string completion;                          /**< running. victory, or defeat */
 	bool end_credits;                                /**< whether to show the standard credits at the end */
 	std::string end_text;                            /**< end-of-campaign text */
 	unsigned int end_text_duration;                  /**< for how long the end-of-campaign text is shown */
