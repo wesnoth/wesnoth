@@ -180,7 +180,7 @@ struct end_level_data
 
 	bool prescenario_save;             /**< Should a prescenario be created the next game? */
 	bool replay_save;                  /**< Should a replay save be made? */
-	bool proceed_to_next_level;        /**< whether to proceed to the next scenario, equals (res == VICTORY) in sp. We need to save this in saves during linger mode. > */
+	bool proceed_to_next_level;        /**< whether to proceed to the next scenario, equals is_victory in sp. We need to save this in saves during linger mode. > */
 	transient_end_level transient;
 	bool is_victory;
 	void write(config& cfg) const;

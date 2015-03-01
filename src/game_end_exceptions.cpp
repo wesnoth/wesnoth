@@ -29,6 +29,7 @@ end_level_data::end_level_data()
 	: prescenario_save(true)
 	, replay_save(true)
 	, proceed_to_next_level(false)
+	, is_victory(true)
 	, transient()
 {
 }
@@ -38,6 +39,7 @@ void end_level_data::write(config& cfg) const
 	cfg["prescenario_save"] = prescenario_save;
 	cfg["replay_save"] = replay_save;
 	cfg["proceed_to_next_level"] = proceed_to_next_level;
+	cfg["is_victory"] = is_victory;
 }
 
 void end_level_data::read(const config& cfg)
@@ -45,4 +47,5 @@ void end_level_data::read(const config& cfg)
 	prescenario_save = cfg["prescenario_save"].to_bool(true);
 	replay_save = cfg["replay_save"].to_bool(true);
 	proceed_to_next_level = cfg["proceed_to_next_level"].to_bool(true);
+	is_victory = cfg["is_victory"].to_bool(true);
 }
