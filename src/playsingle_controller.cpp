@@ -81,7 +81,6 @@ playsingle_controller::playsingle_controller(const config& level,
 	, turn_data_(replay_sender_, network_reader_)
 	, end_turn_(false)
 	, player_type_changed_(false)
-	, replaying_(false)
 	, skip_next_turn_(false)
 	, do_autosaves_(false)
 {
@@ -215,25 +214,13 @@ void playsingle_controller::play_scenario_init() {
 		return;
 	}
 
-	replaying_ = (recorder.at_end() == false);
-	assert(!replaying_);
+	assert(recorder.at_end());
 
 	if(!loading_game_ )
 	{
-		if(replaying_)
-		{
-			//can this codepath be reached ?
-			//note this when we are entering an mp game and see the 'replay' of the game
-			//this path is not reached because we receive the replay later
-			config* pstart = recorder.get_next_action();
-			assert(pstart->has_child("start"));
-		}
-		else
-		{
-			assert(recorder.empty());
-			recorder.add_start();
-			recorder.get_next_action();
-		}
+		assert(recorder.empty());
+		recorder.add_start();
+		recorder.get_next_action();
 		//we can only use a set_scontext_synced with a non empty recorder.
 		set_scontext_synced sync;
 
@@ -484,15 +471,8 @@ possible_end_play_signal playsingle_controller::play_turn()
 			loading_game_ = false;
 		}
 
-		if (replaying_) {
-			LOG_NG << "doing replay " << player_number_ << "\n";
-			HANDLE_END_PLAY_SIGNAL ( replaying_ = ::do_replay() == REPLAY_FOUND_END_TURN );
-			LOG_NG << "result of replay: " << (replaying_?"true":"false") << "\n";
-		} else {
-			ai_testing::log_turn_start(player_number_);
-			PROPOGATE_END_PLAY_SIGNAL ( play_side() );
-		}
-
+		ai_testing::log_turn_start(player_number_);
+		PROPOGATE_END_PLAY_SIGNAL ( play_side() );
 		HANDLE_END_PLAY_SIGNAL(finish_side_turn());
 
 		if(non_interactive()) {

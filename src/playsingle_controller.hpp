@@ -80,7 +80,6 @@ protected:
 	turn_info turn_data_;
 	bool end_turn_;
 	bool player_type_changed_;
-	bool replaying_;
 	bool skip_next_turn_;
 	bool do_autosaves_;
 	void linger();
