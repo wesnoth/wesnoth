@@ -776,7 +776,6 @@ possible_end_play_signal playsingle_controller::check_time_over(){
 	bool time_left = gamestate_.tod_manager_.next_turn(gamestate_.gamedata_);
 	it_is_a_new_turn_ = true;
 	if(!time_left) {
-		//FIXME: This should run in a synced context.
 		LOG_NG << "firing time over event...\n";
 		set_scontext_synced_base sync;
 		pump().fire("time over");
@@ -796,8 +795,8 @@ possible_end_play_signal playsingle_controller::check_time_over(){
 		e.proceed_to_next_level = false;
 		e.is_victory = false;
 		set_end_level_data(e);
-		//FIXME return the proper end_level_struct.
-		return possible_end_play_signal ();
+		end_level_struct els  = { false };
+		return possible_end_play_signal (els);
 	}
 	return boost::none;
 }
