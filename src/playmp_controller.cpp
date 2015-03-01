@@ -93,12 +93,6 @@ possible_end_play_signal playmp_controller::play_side()
 	return playsingle_controller::play_side();
 }
 
-void playmp_controller::before_human_turn(){
-	LOG_NG << "playmp::before_human_turn...\n";
-	playsingle_controller::before_human_turn();
-	turn_data_.send_data();
-}
-
 void playmp_controller::on_not_observer() {
 	remove_blindfold();
 }
@@ -134,15 +128,16 @@ possible_end_play_signal playmp_controller::play_human_turn()
 	if (!linger_ || is_host()) {
 		end_turn_enable(true);
 	}
-	while(!end_turn_) {
+	while(!end_turn_ && !player_type_changed_) {
 		try {
 			config cfg;
 
 			if(network_reader_.read(cfg)) {
 				turn_info::PROCESS_DATA_RESULT res;
-				HANDLE_END_PLAY_SIGNAL( res = turn_data_.process_network_data(cfg, skip_replay_) );
+				HANDLE_END_PLAY_SIGNAL( res = turn_data_.process_network_data(cfg) );
 				if (res == turn_info::PROCESS_RESTART_TURN)
 				{
+					player_type_changed_ = true;
 					// Clean undo stack if turn has to be restarted (losing control)
 					if ( undo_stack_->can_undo() )
 					{
@@ -161,7 +156,7 @@ possible_end_play_signal playmp_controller::play_human_turn()
 					while( undo_stack_->can_undo() )
 						undo_stack_->undo();
 
-					return possible_end_play_signal(restart_turn_struct());
+					return boost::none;
 				}
 				else if(res == turn_info::PROCESS_END_LINGER)
 				{
@@ -205,18 +200,19 @@ possible_end_play_signal playmp_controller::play_idle_loop()
 
 	remove_blindfold();
 
-	while (!end_turn_)
+	while (!end_turn_ && !player_type_changed_)
 	{
 		try
 		{
 		config cfg;
 		if(network_reader_.read(cfg)) {
 			turn_info::PROCESS_DATA_RESULT res;
-			HANDLE_END_PLAY_SIGNAL( res = turn_data_.process_network_data(cfg, skip_replay_) );
+			HANDLE_END_PLAY_SIGNAL( res = turn_data_.process_network_data(cfg) );
 
 			if (res == turn_info::PROCESS_RESTART_TURN)
 			{
-				return possible_end_play_signal(restart_turn_struct());
+				player_type_changed_ = true;
+				return boost::none;
 			}
 		}
 
@@ -274,7 +270,7 @@ void playmp_controller::linger()
 	gamestate_.board_.set_all_units_user_end_turn();
 
 	set_end_scenario_button();
-
+	assert(is_regular_game_end());
 	if ( get_end_level_data_const().transient.reveal_map ) {
 		// Change the view of all players and observers
 		// to see the whole map regardless of shroud and fog.
@@ -301,12 +297,6 @@ void playmp_controller::linger()
 			LOG_NG << "caught end-level-exception" << std::endl;
 			reset_end_scenario_button();
 			throw;
-		} catch (restart_turn_exception&) {
-			// thrown if the host leaves the game (sends [leave_game]), we need
-			// to stay in this loop to stay in linger mode, otherwise the game
-			// gets aborted
-			LOG_NG << "caught end-turn-exception" << std::endl;
-			quit = false;
 		} catch (network::error&) {
 			LOG_NG << "caught network-error-exception" << std::endl;
 			quit = false;
@@ -332,13 +322,13 @@ void playmp_controller::wait_for_upload()
 				*gui_, _("Waiting for next scenario..."), cfg);
 
 			if(res != network::null_connection) {
-				if (turn_data_.process_network_data_from_reader(skip_replay_) == turn_info::PROCESS_END_LINGER) {
+				if (turn_data_.process_network_data_from_reader() == turn_info::PROCESS_END_LINGER) {
 					break;
 				}
 			}
 			else
 			{
-				throw end_level_exception(QUIT);
+				throw_quit_game_exception();
 			}
 
 		} catch(const end_level_exception&) {
@@ -388,12 +378,10 @@ possible_end_play_signal playmp_controller::play_network_turn(){
 			config cfg;
 			if(network_reader_.read(cfg)) {
 				if (replay_last_turn_ <= turn()){
-					if (skip_replay_) {
-						skip_replay_ = false;
-					}
+					skip_replay_ = false;
 				}
 				turn_info::PROCESS_DATA_RESULT result;
-				HANDLE_END_PLAY_SIGNAL ( result = turn_data_.process_network_data(cfg, skip_replay_) );
+				HANDLE_END_PLAY_SIGNAL ( result = turn_data_.process_network_data(cfg) );
 				if(player_type_changed_ == true)
 				{
 					//we received a player change/quit during waiting in get_user_choice/synced_context::pull_remote_user_input
@@ -411,13 +399,10 @@ possible_end_play_signal playmp_controller::play_network_turn(){
 			*/
 			else if(!recorder.at_end())
 			{
-				bool was_skipping = recorder.is_skipping();
-				recorder.set_skip(skip_replay_);
 				if(do_replay() == REPLAY_FOUND_END_TURN)
 				{
 					break;
 				}
-				recorder.set_skip(was_skipping);
 			}
 		}
 
@@ -488,8 +473,9 @@ void playmp_controller::do_idle_notification()
 
 void playmp_controller::maybe_linger()
 {
-	linger_ = true;
-	if (!get_end_level_data_const().transient.linger_mode) {
+	// mouse_handler expects at least one team for linger mode to work.
+	assert(is_regular_game_end());
+	if (!get_end_level_data_const().transient.linger_mode || gamestate_.board_.teams().empty()) {
 		if(!is_host()) {
 			// If we continue without lingering we need to
 			// make sure the host uploads the next scenario

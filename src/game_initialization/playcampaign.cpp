@@ -171,7 +171,8 @@ LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& gam
 			e.show(disp);
 		}
 	}
-	return NONE;
+	//TODO: when can this happen?
+	return VICTORY;
 }
 
 static LEVEL_RESULT playsingle_scenario(const config& game_config,
@@ -188,28 +189,23 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 
 	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
 
+	if (res == QUIT)
+	{
+		return QUIT;
+	}
+
 	end_level = playcontroller.get_end_level_data_const();
 
-	if (res != QUIT)
+	show_carryover_message(state_of_game, playcontroller, disp, end_level, res);
+	if(!disp.video().faked())
 	{
-		//if we are loading from linger mode then we already did this.
-		if(res != SKIP_TO_LINGER)
-		{
-			show_carryover_message(state_of_game, playcontroller, disp, end_level, res);
-		}
-		if(!disp.video().faked())
-		{
-			try {
-				playcontroller.maybe_linger();
-			} catch(end_level_exception& e) {
-				if (e.result == QUIT) {
-					return QUIT;
-				}
-			}
+		try {
+			playcontroller.maybe_linger();
+		} catch(end_level_exception&) {
+			return QUIT;
 		}
 	}
 	state_of_game.set_snapshot(playcontroller.to_config());
-
 	return res;
 }
 
@@ -226,31 +222,30 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 		game_config, tdata, disp.video(), skip_replay, blindfold_replay, io_type == IO_SERVER);
 	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
 
-	end_level = playcontroller.get_end_level_data_const();
-
 	//Check if the player started as mp client and changed to host
 	if (io_type == IO_CLIENT && playcontroller.is_host())
 		io_type = IO_SERVER;
 
-	if (res != QUIT)
+	if (res == QUIT)
 	{
-		if(res != OBSERVER_END && res != SKIP_TO_LINGER)
-		{
-			//We need to call this before linger because it prints the defeated/victory message.
-			//(we want to see that message before entering the linger mode)
-			show_carryover_message(state_of_game, playcontroller, disp, end_level, res);
-		}
-		if(!disp.video().faked())
-		{
-			try {
-				playcontroller.maybe_linger();
-			} catch(end_level_exception& e) {
-				if (e.result == QUIT) {
-					return QUIT;
-				}
-			}
-		}
+		return QUIT;
+	}
 
+	end_level = playcontroller.get_end_level_data_const();
+
+	if(res != OBSERVER_END)
+	{
+		//We need to call this before linger because it prints the defeated/victory message.
+		//(we want to see that message before entering the linger mode)
+		show_carryover_message(state_of_game, playcontroller, disp, end_level, res);
+	}
+	if(!disp.video().faked())
+	{
+		try {
+			playcontroller.maybe_linger();
+		} catch(end_level_exception&) {
+			return QUIT;
+		}
 	}
 	playcontroller.update_savegame_snapshot();
 	return res;
@@ -317,40 +312,35 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		if (is_unit_test) {
 			return res;
 		}
-		//in this case we  might have skipped state.set_snapshot which means we cannot do gamestate.convert_to_start_save();
-		if(res == QUIT)
-		{
+		if(res == QUIT) {
+			return res;
+		}
+		// proceed_to_next_level <=> 'any human side recieved victory'
+		// If 'any human side recieved victory' we do the Save-management options
+		// Otherwise we are done now
+		if(!end_level.proceed_to_next_level) {
 			return res;
 		}
 
-		// Save-management options fire on game end.
-		// This means: (a) we have a victory, or
-		// (b) we're multiplayer live, in which
-		// case defeat is also game end. Someday,
-		// if MP campaigns ever work again, we might
-		// need to change this test.
-		if (res == VICTORY || (game_type == game_classification::MULTIPLAYER && res == DEFEAT)) {
-			if (preferences::delete_saves())
-				savegame::clean_saves(gamestate.classification().label);
-
-			if (preferences::save_replays() && end_level.replay_save) {
-				savegame::replay_savegame save(gamestate, preferences::save_compression_format());
-				save.save_game_automatic(disp.video(), true);
-			}
+		if (preferences::delete_saves()) {
+			savegame::clean_saves(gamestate.classification().label);
 		}
-
+		if (preferences::save_replays() && end_level.replay_save) {
+			savegame::replay_savegame save(gamestate, preferences::save_compression_format());
+			save.save_game_automatic(disp.video(), true);
+		}
+		
 		gamestate.convert_to_start_save();
 		recorder.clear();
 
-		// On DEFEAT, QUIT, or OBSERVER_END, we're done now
-
 		//If there is no next scenario we're done now.
-		if(!end_level.proceed_to_next_level || gamestate.get_scenario_id().empty())
+		if(gamestate.get_scenario_id().empty())
 		{
 			return res;
 		}
 		else if(res == OBSERVER_END)
 		{
+			// TODO: does it make sense to ask this question if we are currently the host?
 			const int dlg_res = gui2::show_message(disp.video(), _("Game Over"),
 				_("This scenario has ended. Do you want to continue the campaign?"),
 				gui2::tmessage::yes_no_buttons);

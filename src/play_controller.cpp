@@ -37,6 +37,7 @@
 #include "hotkey_handler.hpp"
 #include "map_label.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "halo.hpp"
 #include "hotkey/command_executor.hpp"
 #include "loadscreen.hpp"
@@ -137,7 +138,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, start_turn_(gamestate_.tod_manager_.turn()) // gamestate_.tod_manager_ constructed above
 	, skip_replay_(skip_replay)
 	, linger_(false)
-	, it_is_a_new_turn_(true)
+	, it_is_a_new_turn_(level["it_is_a_new_turn"].to_bool(true))
 	, init_side_done_(level["init_side_done"].to_bool(false))
 	, ticks_(ticks)
 	, victory_when_enemies_defeated_(true)
@@ -162,6 +163,14 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	resources::mp_settings = &saved_game_.mp_settings();
 
 	persist_.start_transaction();
+	
+	if(const config& endlevel_cfg = level.child("end_level_data")) {
+		end_level_data el_data;
+		el_data.read(endlevel_cfg);
+		el_data.transient.carryover_report = false;
+		set_end_level_data(el_data);
+	}
+
 	n_unit::id_manager::instance().set_save_id(level_["next_underlying_unit_id"]);
 
 	// Setup victory and defeat music
@@ -184,7 +193,7 @@ play_controller::~play_controller()
 	hotkey::delete_all_wml_hotkeys();
 	clear_resources();
 }
-
+struct throw_end_level { void operator()(const config&) { throw_quit_game_exception(); } };
 void play_controller::init(CVideo& video){
 	util::scoped_resource<loadscreen::global_loadscreen_manager*, util::delete_item> scoped_loadscreen_manager;
 	loadscreen::global_loadscreen_manager* loadscreen_manager = loadscreen::global_loadscreen_manager::get();
@@ -195,7 +204,6 @@ void play_controller::init(CVideo& video){
 	}
 
 	loadscreen::start_stage("load level");
-	recorder.set_skip(false);
 
 	LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks_) << std::endl;
 	gamestate_.init(ticks_, *this);
@@ -204,9 +212,6 @@ void play_controller::init(CVideo& video){
 	LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks_) << std::endl;
 	whiteboard_manager_.reset(new wb::manager());
 	resources::whiteboard = whiteboard_manager_;
-
-	// mouse_handler expects at least one team for linger mode to work.
-	if (gamestate_.board_.teams().empty()) end_level_data_.transient.linger_mode = false;
 
 	LOG_NG << "loading units..." << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("load units");
@@ -267,7 +272,7 @@ void play_controller::init(CVideo& video){
 	plugins_context_.reset(new plugins_context("Game"));
 	plugins_context_->set_callback("save_game", boost::bind(&play_controller::save_game_auto, this, boost::bind(get_str, _1, "filename" )), true);
 	plugins_context_->set_callback("save_replay", boost::bind(&play_controller::save_replay_auto, this, boost::bind(get_str, _1, "filename" )), true);
-	plugins_context_->set_callback("quit", boost::bind(&play_controller::force_end_level, this, QUIT), false);
+	plugins_context_->set_callback("quit", throw_end_level(), false);
 }
 
 void play_controller::init_managers(){
@@ -301,38 +306,22 @@ void play_controller::fire_prestart()
 	gamestate_.gamedata_.get_variable("turn_number") = int(start_turn_);
 }
 
-void play_controller::fire_start(bool execute){
-	if(execute) {
-		gamestate_.gamedata_.set_phase(game_data::START);
-		pump().fire("start");
-		check_end_level();
-		// start event may modify start turn with WML, reflect any changes.
-		start_turn_ = turn();
-		gamestate_.gamedata_.get_variable("turn_number") = int(start_turn_);
+void play_controller::fire_start()
+{
+	gamestate_.gamedata_.set_phase(game_data::START);
+	pump().fire("start");
+	check_end_level();
+	// start event may modify start turn with WML, reflect any changes.
+	start_turn_ = turn();
+	gamestate_.gamedata_.get_variable("turn_number") = int(start_turn_);
 
-		// prestart and start events may modify the initial gold amount,
-		// reflect any changes.
-		BOOST_FOREACH(team& tm, gamestate_.board_.teams_)
-		{
-			tm.set_start_gold(tm.gold());
-		}
-		init_side_done_ = false;
-
-	} else {
-		it_is_a_new_turn_ = false;
-	}
-	if( saved_game_.classification().random_mode != "" && (network::nconnections() != 0))
+	// prestart and start events may modify the initial gold amount,
+	// reflect any changes.
+	BOOST_FOREACH(team& tm, gamestate_.board_.teams_)
 	{
-		std::string mes = _("MP game uses an alternative random mode, if you don't know what this message means, then most likeley someone is cheating or someone reloaded a corrupt game.");
-		gui_->get_chat_manager().add_chat_message(
-			time(NULL),
-			"game_engine",
-			0,
-			mes,
-			events::chat_handler::MESSAGE_PUBLIC,
-			preferences::message_bell());
-		replay::process_error(mes);
+		tm.set_start_gold(tm.gold());
 	}
+	init_side_done_ = false;
 	gamestate_.gamedata_.set_phase(game_data::PLAY);
 }
 
@@ -424,7 +413,7 @@ void play_controller::do_init_side()
 			current_team().spend_gold(expense);
 		}
 
-		calculate_healing(player_number_, !skip_replay_);
+		calculate_healing(player_number_, !is_skipping_replay());
 	}
 
 	// Prepare the undo stack.
@@ -448,11 +437,11 @@ void play_controller::init_side_end()
 	if (player_number_ == first_player_)
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
 
-	if (!recorder.is_skipping()){
+	if (!is_skipping_replay()){
 		gui_->invalidate_all();
 	}
 
-	if (!recorder.is_skipping() && !skip_replay_ && current_team().get_scroll_to_leader()){
+	if (!is_skipping_replay() && current_team().get_scroll_to_leader()){
 		gui_->scroll_to_leader(player_number_,game_display::ONSCREEN,false);
 	}
 	whiteboard_manager_->on_init_side();
@@ -464,11 +453,12 @@ config play_controller::to_config() const
 
 	cfg.merge_attributes(level_);
 	cfg["init_side_done"] = init_side_done_;
+	cfg["it_is_a_new_turn"] = it_is_a_new_turn_;
 
 	gamestate_.write(cfg);
 
-	if(linger_) {
-		end_level_data_.write(cfg.add_child("end_level_data"));
+	if(end_level_data_.get_ptr() != NULL) {
+		end_level_data_->write(cfg.add_child("end_level_data"));
 	}
 
 	// Write terrain_graphics data in snapshot, too
@@ -836,7 +826,6 @@ const std::string& play_controller::select_defeat_music() const
 	return defeat_music_[rand() % defeat_music_.size()];
 }
 
-
 void play_controller::set_victory_music_list(const std::string& list)
 {
 	victory_music_ = utils::split(list);
@@ -900,8 +889,11 @@ void play_controller::check_victory()
 
 	DBG_EE << "throwing end level exception..." << std::endl;
 	//Also proceed to the next scenario when another player survived.
-	end_level_data_.proceed_to_next_level = found_player || found_network_player;
-	throw end_level_exception(found_player ? VICTORY : DEFEAT);
+	end_level_data el_data;
+	el_data.proceed_to_next_level = found_player || found_network_player;
+	el_data.is_victory = found_player;
+	set_end_level_data(el_data);
+	throw end_level_exception();
 }
 
 void play_controller::process_oos(const std::string& msg) const

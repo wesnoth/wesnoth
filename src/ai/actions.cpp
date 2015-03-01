@@ -44,6 +44,7 @@
 #include "../mouse_handler_base.hpp"
 #include "../pathfind/teleport.hpp"
 #include "../play_controller.hpp"
+#include "../playsingle_controller.hpp"
 #include "../recall_list_manager.hpp"
 #include "../replay_helper.hpp"
 #include "../resources.hpp"
@@ -103,6 +104,12 @@ void action_result::execute()
 	}
 	if(resources::controller->is_end_turn()) {
 		throw ai_end_turn_exception();
+	}
+	
+	if(playsingle_controller* psc = dynamic_cast<playsingle_controller*>(resources::controller)) {
+		if(psc->get_player_type_changed()) {
+			throw restart_turn_exception();
+		}
 	}
 	is_execution_ = false;
 }

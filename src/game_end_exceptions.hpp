@@ -30,15 +30,12 @@
 #include <string>
 #include <exception>
 #include <boost/optional.hpp>
-#include <boost/variant/variant.hpp>
 
 MAKE_ENUM(LEVEL_RESULT,
-	(NONE,		"none")
 	(VICTORY,	"victory")
 	(DEFEAT,	"defeat")
 	(QUIT,		"quit")
 	(OBSERVER_END,	"observer_end")
-	(SKIP_TO_LINGER,"skip_to_linger")
 )
 MAKE_ENUM_STREAM_OPS1(LEVEL_RESULT)
 
@@ -61,13 +58,6 @@ private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(ai_end_turn_exception)
 };
 
-
-/**
- * Struct used to transmit info caught from an end_turn_exception.
- */
-struct restart_turn_struct {
-};
-
 /**
  * Exception used to signal the end of a player turn.
  */
@@ -82,10 +72,6 @@ public:
 	{
 	}
 	const char * what() const throw() { return "restart_turn_exception"; }
-	restart_turn_struct to_struct()
-	{
-		return restart_turn_struct();
-	}
 
 private:
 
@@ -96,7 +82,7 @@ private:
  * Struct used to transmit info caught from an end_turn_exception.
  */
 struct end_level_struct {
-	LEVEL_RESULT result;
+	bool is_quit;
 };
 
 /**
@@ -108,17 +94,17 @@ class end_level_exception
 {
 public:
 
-	end_level_exception(LEVEL_RESULT res)
+	end_level_exception(bool isquit = false)
 		: tlua_jailbreak_exception()
 		, std::exception()
-		, result(res)
+		, is_quit(isquit)
 	{
 	}
 
-	LEVEL_RESULT result;
+	bool is_quit;
 
 	end_level_struct to_struct() {
-		end_level_struct els = {result};
+		end_level_struct els = {is_quit};
 		return els;
 	}
 	
@@ -131,7 +117,7 @@ private:
 /**
  * The two end_*_exceptions are caught and transformed to this signaling object
  */
-typedef boost::optional<boost::variant<restart_turn_struct, end_level_struct> > possible_end_play_signal;
+typedef boost::optional<end_level_struct> possible_end_play_signal;
 
 #define HANDLE_END_PLAY_SIGNAL( X )\
 do\
@@ -139,8 +125,6 @@ do\
 	try {\
 		X;\
 	} catch (end_level_exception & e) {\
-		return possible_end_play_signal(e.to_struct());\
-	} catch (restart_turn_exception & e) {\
 		return possible_end_play_signal(e.to_struct());\
 	}\
 }\
@@ -173,35 +157,6 @@ do\
 while(0)
 
 
-enum END_PLAY_SIGNAL_TYPE {END_TURN, END_LEVEL};
-
-class get_signal_type : public boost::static_visitor<END_PLAY_SIGNAL_TYPE> {
-public:
-	END_PLAY_SIGNAL_TYPE operator()(restart_turn_struct &) const
-	{
-		return END_TURN;
-	}
-
-	END_PLAY_SIGNAL_TYPE operator()(end_level_struct& ) const
-	{
-		return END_LEVEL;
-	}
-};
-
-class get_result : public boost::static_visitor<LEVEL_RESULT> {
-public:
-	LEVEL_RESULT operator()(restart_turn_struct & ) const
-	{
-		return NONE;
-	}
-
-	LEVEL_RESULT operator()(end_level_struct & s) const
-	{
-		return s.result;
-	}
-};
-
-
 /**
  * The non-persistent part of end_level_data
  */
@@ -213,7 +168,6 @@ struct transient_end_level{
 	bool linger_mode;                  /**< Should linger mode be invoked? */
 	std::string custom_endlevel_music; /**< Custom short music played at the end. */
 	bool reveal_map;                   /**< Should we reveal map when game is ended? (Multiplayer only) */
-	bool disabled;                     /**< Limits execution of tag [endlevel] to a single time > */
 };
 
 /**
@@ -228,7 +182,7 @@ struct end_level_data
 	bool replay_save;                  /**< Should a replay save be made? */
 	bool proceed_to_next_level;        /**< whether to proceed to the next scenario, equals (res == VICTORY) in sp. We need to save this in saves during linger mode. > */
 	transient_end_level transient;
-
+	bool is_victory;
 	void write(config& cfg) const;
 
 	void read(const config& cfg);
@@ -240,5 +194,11 @@ struct end_level_data
 		return r;
 	}
 };
-
+inline void throw_quit_game_exception()
+{
+	// Distinguish 'Quit' from 'Regular' end_level_exceptions to solve the following problem:
+	//   If a player quits the game during an event after an [endlevel] occurs, the game won't
+	//   Quit but continue with the [endlevel] instead.
+	throw end_level_exception(true);
+}
 #endif /* ! GAME_END_EXCEPTIONS_HPP_INCLUDED */

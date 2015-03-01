@@ -61,6 +61,7 @@
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
 #include "play_controller.hpp"
+#include "playsingle_controller.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
 #include "replay_helper.hpp"
@@ -2711,9 +2712,9 @@ void console_handler::do_droid() {
 		}
 		menu_handler_.teams()[side - 1].toggle_droid();
 		if(team_num_ == side) {
-			//if it is our turn at the moment, we have to indicate to the
-			//play_controller, that we are no longer in control
-			throw restart_turn_exception();
+			if(playsingle_controller* psc = dynamic_cast<playsingle_controller*>(&menu_handler_.pc_)) {
+				psc->set_player_type_changed();
+			}
 		}
 	} else if (menu_handler_.teams()[side - 1].is_local_ai()) {
 //		menu_handler_.teams()[side - 1].make_human();
@@ -2756,9 +2757,9 @@ void console_handler::do_idle() {
 		//toggle the proxy controller between idle / non idle
 		menu_handler_.teams()[side - 1].toggle_idle();
 		if(team_num_ == side) {
-			//if it is our turn at the moment, we have to indicate to the
-			//play_controller, that we are no longer in control
-			throw restart_turn_exception();
+			if(playsingle_controller* psc = dynamic_cast<playsingle_controller*>(&menu_handler_.pc_)) {
+				psc->set_player_type_changed();
+			}
 		}
 	}
 	menu_handler_.textbox_info_.close(*menu_handler_.gui_);
@@ -2950,7 +2951,7 @@ void console_handler::do_save_quit() {
 	do_quit();
 }
 void console_handler::do_quit() {
-	throw end_level_exception(QUIT);
+	throw_quit_game_exception();
 }
 void console_handler::do_ignore_replay_errors() {
 	game_config::ignore_replay_errors = (get_data() != "off") ? true : false;
@@ -2963,12 +2964,14 @@ void console_handler::do_next_level()
 {
 	if (!get_data().empty())
 		menu_handler_.gamedata().set_next_scenario(get_data());
-	end_level_data &e = menu_handler_.pc_.get_end_level_data();
+	end_level_data e;
 	e.transient.carryover_report = false;
 	e.prescenario_save = true;
 	e.transient.linger_mode = false;
 	e.proceed_to_next_level = true;
-	throw end_level_exception(VICTORY);
+	e.is_victory = true;
+	menu_handler_.pc_.set_end_level_data(e);
+	throw end_level_exception();
 }
 
 void console_handler::do_choose_level() {
@@ -3011,12 +3014,14 @@ void console_handler::do_choose_level() {
 
 	if (size_t(choice) < options.size()) {
 		menu_handler_.gamedata().set_next_scenario(options[choice]);
-		end_level_data &e = menu_handler_.pc_.get_end_level_data();
+		end_level_data e;
 		e.transient.carryover_report = false;
 		e.prescenario_save = true;
 		e.transient.linger_mode = false;
 		e.proceed_to_next_level = true;
-		throw end_level_exception(VICTORY);
+		e.is_victory = true;
+		menu_handler_.pc_.set_end_level_data(e);
+		throw end_level_exception();
 	}
 }
 

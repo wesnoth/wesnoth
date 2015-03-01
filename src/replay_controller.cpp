@@ -67,8 +67,9 @@ LEVEL_RESULT play_replay_level(const config& game_config, const tdata_cache & td
 
 	try {
 		rc.reset(new replay_controller(state_of_game.get_replay_starting_pos(), state_of_game, ticks, game_config, tdata, video));
-	} catch (end_level_exception & e){
-		return e.result;
+	} catch (end_level_exception&){
+		//TODO: When can this happen?
+		return QUIT;
 	}
 	DBG_NG << "created objects... " << (SDL_GetTicks() - rc->get_ticks()) << std::endl;
 
@@ -76,15 +77,7 @@ LEVEL_RESULT play_replay_level(const config& game_config, const tdata_cache & td
 	possible_end_play_signal signal = play_replay_level_main_loop(*rc, is_unit_test);
 
 	if (signal) {
-		switch( boost::apply_visitor( get_signal_type(), *signal ) ) {
-			case END_LEVEL:
-				DBG_NG << "play_replay_level: end_level_exception" << std::endl;
-				break;
-			case END_TURN:
-				DBG_NG << "Unchecked end_turn_exception signal propogated to replay controller play_replay_level! Terminating." << std::endl;
-				assert(false && "unchecked end turn exception in replay controller");
-				throw 42;
-		}
+		DBG_NG << "play_replay_level: end_level_exception" << std::endl;
 	}
 
 	return VICTORY;
@@ -324,7 +317,6 @@ void replay_controller::reset_replay()
 	skip_replay_ = false;
 	gamestate_.tod_manager_= tod_manager_start_;
 	recorder.start_replay();
-	recorder.set_skip(false);
 	saved_game_ = saved_game_start_;
 	gamestate_.board_ = gameboard_start_;
 	gui_->change_display_context(&gamestate_.board_); //this doesn't change the pointer value, but it triggers the gui to update the internal terrain builder object,
@@ -380,11 +372,9 @@ void replay_controller::reset_replay()
 
 		fire_prestart();
 		init_gui();
-		fire_start(true);
+		fire_start();
 		sync.do_final_checkup();
 	}
-	// Since we did not fire the start event, it_is_a_new_turn_ has the wrong value.
-	it_is_a_new_turn_ = true;
 	update_gui();
 
 	reset_replay_ui();
@@ -400,7 +390,7 @@ possible_end_play_signal replay_controller::replay_next_turn(){
 
 	PROPOGATE_END_PLAY_SIGNAL( play_turn() );
 
- 	if (!skip_replay_ || !is_playing_){
+ 	if (!is_skipping_replay() || !is_playing_){
 		gui_->scroll_to_leader(player_number_,game_display::ONSCREEN,false);
 	}
 
@@ -417,7 +407,7 @@ possible_end_play_signal replay_controller::replay_next_move_or_side(bool one_mo
  		HANDLE_END_PLAY_SIGNAL( play_move_or_side(one_move) );
 	}
 
- 	if ( (!skip_replay_ || !is_playing_) && (last_replay_action == REPLAY_FOUND_END_TURN) ){
+ 	if ( (!is_skipping_replay() || !is_playing_) && (last_replay_action == REPLAY_FOUND_END_TURN) ){
 		gui_->scroll_to_leader(player_number_,game_display::ONSCREEN,false);
 	}
 
@@ -445,7 +435,7 @@ void replay_controller::process_oos(const std::string& msg) const
 	message << "\n\n" << _("Error details:") << "\n\n" << msg;
 
 	if (non_interactive()) {
-		throw game::game_error(message.str()); //throw end_level_exception(DEFEAT);
+		throw game::game_error(message.str());
 	} else {
 		update_savegame_snapshot();
 		savegame::oos_savegame save(saved_game_, *gui_);
@@ -476,7 +466,6 @@ void replay_controller::replay_show_team1(){
 
 void replay_controller::replay_skip_animation(){
 	skip_replay_ = !skip_replay_;
-	recorder.set_skip(skip_replay_);
 }
 
 //move all sides till stop/end
@@ -493,15 +482,9 @@ possible_end_play_signal replay_controller::play_replay(){
 	possible_end_play_signal signal = play_replay_main_loop();
 
 	if(signal) {
-		switch ( boost::apply_visitor(get_signal_type(), *signal)) {
-			case END_TURN:
-				return signal;
-			case END_LEVEL:
-				if ( boost::apply_visitor(get_result(), *signal) == QUIT) {
-					return signal;
-				}
+		if(signal->is_quit) {
+			return signal;
 		}
-
 	}
 
 	if (!is_playing_) {
@@ -577,8 +560,8 @@ possible_end_play_signal replay_controller::play_move_or_side(bool one_move) {
 				return boost::none;
 			}
 		} catch(end_level_exception& e){
-			//VICTORY/DEFEAT end_level_exception shall not return to title screen
-			if (e.result != VICTORY && e.result != DEFEAT) {
+			//dont return to title screen if the game ended the normal way
+			if (!is_regular_game_end()) {
 				return possible_end_play_signal(e.to_struct());
 			}
 		}
@@ -644,7 +627,7 @@ void replay_controller::handle_generic_event(const std::string& name){
 
 		gui::button* skip_animation_button = gui_->find_action_button("skip-animation");
 		if(skip_animation_button) {
-			skip_animation_button->set_check(skip_replay_);
+			skip_animation_button->set_check(is_skipping_replay());
 		}
 	} else {
 		rebuild_replay_theme();

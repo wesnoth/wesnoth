@@ -111,7 +111,6 @@ public:
 	void init_side_end();
 
 	virtual void force_end_turn() = 0;
-	virtual void force_end_level(LEVEL_RESULT res) = 0;
 	virtual void check_end_level() = 0;
 
 	virtual void on_not_observer() = 0;
@@ -125,11 +124,18 @@ public:
 		{ victory_when_enemies_defeated_ = e; }
 	void set_remove_from_carryover_on_defeat(bool e)
 		{ remove_from_carryover_on_defeat_= e; }
-	end_level_data& get_end_level_data() {
-		return end_level_data_;
+	
+	void set_end_level_data(const end_level_data& data) {
+		end_level_data_ = data;
+	}
+	void reset_end_level_data() {
+		end_level_data_ = boost::none_t();
+	}
+	bool is_regular_game_end() const { 
+		return end_level_data_.get_ptr() != NULL;
 	}
 	const end_level_data& get_end_level_data_const() const {
-		return end_level_data_;
+		return *end_level_data_;
 	}
 	const std::vector<team>& get_teams_const() const {
 		return gamestate_.board_.teams_;
@@ -215,7 +221,7 @@ protected:
 	///preload events cannot be synced
 	void fire_preload();
 	void fire_prestart();
-	void fire_start(bool execute);
+	void fire_start();
 	virtual void init_gui();
 	virtual void finish_side_turn();
 	void finish_turn(); //this should not throw an end turn or end level exception
@@ -279,7 +285,6 @@ protected:
 
 	const std::string& select_victory_music() const;
 	const std::string& select_defeat_music()  const;
-
 	void set_victory_music_list(const std::string& list);
 	void set_defeat_music_list(const std::string& list);
 
@@ -294,7 +299,8 @@ private:
 
 	bool victory_when_enemies_defeated_;
 	bool remove_from_carryover_on_defeat_;
-	end_level_data end_level_data_;
+	typedef boost::optional<end_level_data> t_possible_end_level_data;
+	t_possible_end_level_data end_level_data_;
 	std::vector<std::string> victory_music_;
 	std::vector<std::string> defeat_music_;
 
