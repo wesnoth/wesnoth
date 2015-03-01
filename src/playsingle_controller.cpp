@@ -816,6 +816,7 @@ possible_end_play_signal playsingle_controller::check_time_over(){
 		e.proceed_to_next_level = false;
 		e.is_victory = false;
 		set_end_level_data(e);
+		//FIXME return the proper end_level_struct.
 		return possible_end_play_signal ();
 	}
 	return boost::none;
