@@ -67,6 +67,9 @@ public:
 	class hotkey_handler;
 	virtual bool is_end_turn() const { return end_turn_; }
 	std::string describe_result() const;
+	
+	bool get_player_type_changed() const { return player_type_changed_; }
+	void set_player_type_changed() { player_type_changed_ = true; }
 protected:
 	possible_end_play_signal play_turn();
 	virtual possible_end_play_signal play_side();

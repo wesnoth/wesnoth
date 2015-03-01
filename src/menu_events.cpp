@@ -61,6 +61,7 @@
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
 #include "play_controller.hpp"
+#include "playsingle_controller.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
 #include "replay_helper.hpp"
@@ -2711,9 +2712,9 @@ void console_handler::do_droid() {
 		}
 		menu_handler_.teams()[side - 1].toggle_droid();
 		if(team_num_ == side) {
-			//if it is our turn at the moment, we have to indicate to the
-			//play_controller, that we are no longer in control
-			throw restart_turn_exception();
+			if(playsingle_controller* psc = dynamic_cast<playsingle_controller*>(&menu_handler_.pc_)) {
+				psc->set_player_type_changed();
+			}
 		}
 	} else if (menu_handler_.teams()[side - 1].is_local_ai()) {
 //		menu_handler_.teams()[side - 1].make_human();
@@ -2756,9 +2757,9 @@ void console_handler::do_idle() {
 		//toggle the proxy controller between idle / non idle
 		menu_handler_.teams()[side - 1].toggle_idle();
 		if(team_num_ == side) {
-			//if it is our turn at the moment, we have to indicate to the
-			//play_controller, that we are no longer in control
-			throw restart_turn_exception();
+			if(playsingle_controller* psc = dynamic_cast<playsingle_controller*>(&menu_handler_.pc_)) {
+				psc->set_player_type_changed();
+			}
 		}
 	}
 	menu_handler_.textbox_info_.close(*menu_handler_.gui_);

@@ -56,7 +56,6 @@
 #include "hotkey/hotkey_item.hpp"
 
 #include <boost/foreach.hpp>
-#include <boost/variant/get.hpp>
 
 static lg::log_domain log_aitesting("aitesting");
 #define LOG_AIT LOG_STREAM(info, log_aitesting)
@@ -213,9 +212,6 @@ void playsingle_controller::play_scenario_init() {
 			this->reset_end_level_data();
 		}
 		return;
-	} catch (restart_turn_exception &) {
-		assert(false && "caugh end_turn exception in a bad place... terminating.");
-		std::terminate();
 	}
 
 	replaying_ = (recorder.at_end() == false);
@@ -247,9 +243,6 @@ void playsingle_controller::play_scenario_init() {
 				this->reset_end_level_data();
 			}
 			return;
-		} catch (restart_turn_exception&) {
-			assert(false && "caugh end_turn exception in a bad place... terminating.");
-			std::terminate();
 		}
 
 
@@ -264,8 +257,6 @@ void playsingle_controller::play_scenario_init() {
 				this->reset_end_level_data();
 			}
 			return;
-		} catch (restart_turn_exception &) {
-			//someone decided to droid a side during start event. Ignore it.
 		}
 		sync.do_final_checkup();
 		gui_->recalculate_minimap();
@@ -312,16 +303,10 @@ void playsingle_controller::play_scenario_main_loop() {
 		possible_end_play_signal signal = play_turn();
 
 		if (signal) {
-			switch (boost::apply_visitor( get_signal_type(), *signal )) {
-				case END_LEVEL:
-					if(boost::get<end_level_struct>(*signal).is_quit) {
-						reset_end_level_data();
-					}
-					return;
-				case END_TURN:
-					assert(false && "end turn signal propagated to playsingle_controller::play_scenario_main_loop, terminating");
-					std::terminate();
+			if(signal->is_quit) {
+				reset_end_level_data();
 			}
+			return;
 		}
 
 		do_autosaves_ = true;
@@ -554,7 +539,7 @@ possible_end_play_signal playsingle_controller::play_turn()
 
 possible_end_play_signal playsingle_controller::play_idle_loop()
 {
-	while(!end_turn_) {
+	while(!end_turn_ && !player_type_changed_) {
 		HANDLE_END_PLAY_SIGNAL( play_slice() );
 		gui_->draw();
 		SDL_Delay(10);
@@ -571,8 +556,6 @@ possible_end_play_signal playsingle_controller::play_side()
 		maybe_do_init_side();
 	} catch (end_level_exception & e) {
 		return possible_end_play_signal(e.to_struct());
-	} catch (restart_turn_exception &) {
-		// ignore it. Since we don't have started the loop below yet, we dont need to restart it.
 	}
 	//flag used when we fallback from ai and give temporarily control to human
 	bool temporary_human = false;
@@ -597,23 +580,18 @@ possible_end_play_signal playsingle_controller::play_side()
 				if (!end_turn_) {
 					signal = play_human_turn();
 				}
-
-				if (signal) {
-					switch (boost::apply_visitor(get_signal_type(), *signal)) {
-						case END_LEVEL:
-							return signal;
-						case END_TURN: {
-							player_type_changed_ = true;
-							// If new controller is not human,
-							// reset gui to prev human one
-							if (!gamestate_.board_.teams()[player_number_-1].is_local_human()) {
-								int s = find_human_team_before_current_player();
-								if (s <= 0) {
-									s = gui_->playing_side();
-								}
-								update_gui_to_player(s-1);
-							}
+				if (signal) { 
+					return signal;
+				}
+				if (player_type_changed_) {
+					// If new controller is not human,
+					// reset gui to prev human one
+					if (!gamestate_.board_.teams()[player_number_-1].is_local_human()) {
+						int s = find_human_team_before_current_player();
+						if (s <= 0) {
+							s = gui_->playing_side();
 						}
+						update_gui_to_player(s-1);
 					}
 				}
 			}
@@ -631,8 +609,6 @@ possible_end_play_signal playsingle_controller::play_side()
 				temporary_human = true;
 			} catch (end_level_exception &e) {
 				return possible_end_play_signal(e.to_struct());
-			} catch (restart_turn_exception&) {
-				player_type_changed_ = true;
 			}
 			if(!player_type_changed_)
 			{
@@ -651,30 +627,27 @@ possible_end_play_signal playsingle_controller::play_side()
 			if (!end_turn_) {
 				signal = play_idle_loop();
 			}
-
+			
 			if (signal) {
-				switch (boost::apply_visitor(get_signal_type(), *signal)) {
-					case END_LEVEL:
-						return signal;
-					case END_TURN: {
-						LOG_NG << "Escaped from idle state with exception!" << std::endl;
-						player_type_changed_ = true;
-						// If new controller is not human,
-						// reset gui to prev human one
-						if (!gamestate_.board_.teams()[player_number_-1].is_local_human()) {
-							int s = find_human_team_before_current_player();
-							if (s <= 0) {
-								s = gui_->playing_side();
-							}
-							update_gui_to_player(s-1);
-						}
-						else {
-							//This side was previously not human controlled.
-							update_gui_to_player(player_number_ - 1);
-						}
-					}
-				}
+				return signal;
 			}
+			if (player_type_changed_) {
+				// If new controller is not human,
+				// reset gui to prev human one
+				if (!gamestate_.board_.teams()[player_number_-1].is_local_human()) {
+					int s = find_human_team_before_current_player();
+					if (s <= 0) {
+						s = gui_->playing_side();
+					}
+					update_gui_to_player(s-1);
+				}
+				else {
+					//This side was previously not human controlled.
+					update_gui_to_player(player_number_ - 1);
+				}
+
+			}
+
 		}
 		else {
 			assert(current_team().is_empty()); // Do nothing.
@@ -694,6 +667,7 @@ void playsingle_controller::before_human_turn()
 	if(end_turn_) {
 		return;
 	}
+	//TODO: why do we need the next line?
 	ai::manager::raise_turn_started();
 
 	if(do_autosaves_ && !is_regular_game_end()) {
@@ -732,7 +706,7 @@ possible_end_play_signal playsingle_controller::play_human_turn() {
 	}
 
 	end_turn_enable(true);
-	while(!end_turn_) {
+	while(!end_turn_ && !player_type_changed_) {
 		HANDLE_END_PLAY_SIGNAL( play_slice() );
 		gui_->draw();
 	}
@@ -937,6 +911,7 @@ bool playsingle_controller::is_host() const
 void playsingle_controller::maybe_linger()
 {
 	// mouse_handler expects at least one team for linger mode to work.
+	assert(is_regular_game_end());
 	if (get_end_level_data_const().transient.linger_mode && !gamestate_.board_.teams().empty()) {
 		linger();
 	}

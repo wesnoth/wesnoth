@@ -43,7 +43,6 @@
 #include <boost/foreach.hpp>
 #include <boost/function.hpp>
 #include <boost/scoped_ptr.hpp>
-#include <boost/variant/get.hpp>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -78,15 +77,7 @@ LEVEL_RESULT play_replay_level(const config& game_config, const tdata_cache & td
 	possible_end_play_signal signal = play_replay_level_main_loop(*rc, is_unit_test);
 
 	if (signal) {
-		switch( boost::apply_visitor( get_signal_type(), *signal ) ) {
-			case END_LEVEL:
-				DBG_NG << "play_replay_level: end_level_exception" << std::endl;
-				break;
-			case END_TURN:
-				DBG_NG << "Unchecked end_turn_exception signal propogated to replay controller play_replay_level! Terminating." << std::endl;
-				assert(false && "unchecked end turn exception in replay controller");
-				throw 42;
-		}
+		DBG_NG << "play_replay_level: end_level_exception" << std::endl;
 	}
 
 	return VICTORY;
@@ -491,15 +482,9 @@ possible_end_play_signal replay_controller::play_replay(){
 	possible_end_play_signal signal = play_replay_main_loop();
 
 	if(signal) {
-		switch ( boost::apply_visitor(get_signal_type(), *signal)) {
-			case END_TURN:
-				return signal;
-			case END_LEVEL:
-				if(boost::get<end_level_struct>(*signal).is_quit) {
-					return signal;
-				}
+		if(signal->is_quit) {
+			return signal;
 		}
-
 	}
 
 	if (!is_playing_) {

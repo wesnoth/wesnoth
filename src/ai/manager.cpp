@@ -798,6 +798,8 @@ void manager::play_turn( side_number side ){
 	}
 	catch (const ai_end_turn_exception&) {
 	}
+	catch(const restart_turn_exception&) {
+	}
 	const int turn_end_time= SDL_GetTicks();
 	DBG_AI_MANAGER << "side " << side << ": number of user interactions: "<<num_interact_<<std::endl;
 	DBG_AI_MANAGER << "side " << side << ": total turn time: "<<turn_end_time - turn_start_time << " ms "<< std::endl;

@@ -30,7 +30,6 @@
 #include <string>
 #include <exception>
 #include <boost/optional.hpp>
-#include <boost/variant/variant.hpp>
 
 MAKE_ENUM(LEVEL_RESULT,
 	(VICTORY,	"victory")
@@ -59,13 +58,6 @@ private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(ai_end_turn_exception)
 };
 
-
-/**
- * Struct used to transmit info caught from an end_turn_exception.
- */
-struct restart_turn_struct {
-};
-
 /**
  * Exception used to signal the end of a player turn.
  */
@@ -80,10 +72,6 @@ public:
 	{
 	}
 	const char * what() const throw() { return "restart_turn_exception"; }
-	restart_turn_struct to_struct()
-	{
-		return restart_turn_struct();
-	}
 
 private:
 
@@ -129,7 +117,7 @@ private:
 /**
  * The two end_*_exceptions are caught and transformed to this signaling object
  */
-typedef boost::optional<boost::variant<restart_turn_struct, end_level_struct> > possible_end_play_signal;
+typedef boost::optional<end_level_struct> possible_end_play_signal;
 
 #define HANDLE_END_PLAY_SIGNAL( X )\
 do\
@@ -137,8 +125,6 @@ do\
 	try {\
 		X;\
 	} catch (end_level_exception & e) {\
-		return possible_end_play_signal(e.to_struct());\
-	} catch (restart_turn_exception & e) {\
 		return possible_end_play_signal(e.to_struct());\
 	}\
 }\
@@ -170,21 +156,6 @@ do\
 }\
 while(0)
 
-
-enum END_PLAY_SIGNAL_TYPE {END_TURN, END_LEVEL};
-
-class get_signal_type : public boost::static_visitor<END_PLAY_SIGNAL_TYPE> {
-public:
-	END_PLAY_SIGNAL_TYPE operator()(restart_turn_struct &) const
-	{
-		return END_TURN;
-	}
-
-	END_PLAY_SIGNAL_TYPE operator()(end_level_struct& ) const
-	{
-		return END_LEVEL;
-	}
-};
 
 /**
  * The non-persistent part of end_level_data

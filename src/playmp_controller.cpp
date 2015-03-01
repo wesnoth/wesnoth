@@ -128,7 +128,7 @@ possible_end_play_signal playmp_controller::play_human_turn()
 	if (!linger_ || is_host()) {
 		end_turn_enable(true);
 	}
-	while(!end_turn_) {
+	while(!end_turn_ && !player_type_changed_) {
 		try {
 			config cfg;
 
@@ -137,6 +137,7 @@ possible_end_play_signal playmp_controller::play_human_turn()
 				HANDLE_END_PLAY_SIGNAL( res = turn_data_.process_network_data(cfg) );
 				if (res == turn_info::PROCESS_RESTART_TURN)
 				{
+					player_type_changed_ = true;
 					// Clean undo stack if turn has to be restarted (losing control)
 					if ( undo_stack_->can_undo() )
 					{
@@ -155,7 +156,7 @@ possible_end_play_signal playmp_controller::play_human_turn()
 					while( undo_stack_->can_undo() )
 						undo_stack_->undo();
 
-					return possible_end_play_signal(restart_turn_struct());
+					return boost::none;
 				}
 				else if(res == turn_info::PROCESS_END_LINGER)
 				{
@@ -199,7 +200,7 @@ possible_end_play_signal playmp_controller::play_idle_loop()
 
 	remove_blindfold();
 
-	while (!end_turn_)
+	while (!end_turn_ && !player_type_changed_)
 	{
 		try
 		{
@@ -210,7 +211,8 @@ possible_end_play_signal playmp_controller::play_idle_loop()
 
 			if (res == turn_info::PROCESS_RESTART_TURN)
 			{
-				return possible_end_play_signal(restart_turn_struct());
+				player_type_changed_ = true;
+				return boost::none;
 			}
 		}
 
@@ -268,7 +270,7 @@ void playmp_controller::linger()
 	gamestate_.board_.set_all_units_user_end_turn();
 
 	set_end_scenario_button();
-
+	assert(is_regular_game_end());
 	if ( get_end_level_data_const().transient.reveal_map ) {
 		// Change the view of all players and observers
 		// to see the whole map regardless of shroud and fog.
@@ -295,12 +297,6 @@ void playmp_controller::linger()
 			LOG_NG << "caught end-level-exception" << std::endl;
 			reset_end_scenario_button();
 			throw;
-		} catch (restart_turn_exception&) {
-			// thrown if the host leaves the game (sends [leave_game]), we need
-			// to stay in this loop to stay in linger mode, otherwise the game
-			// gets aborted
-			LOG_NG << "caught end-turn-exception" << std::endl;
-			quit = false;
 		} catch (network::error&) {
 			LOG_NG << "caught network-error-exception" << std::endl;
 			quit = false;
@@ -478,6 +474,7 @@ void playmp_controller::do_idle_notification()
 void playmp_controller::maybe_linger()
 {
 	// mouse_handler expects at least one team for linger mode to work.
+	assert(is_regular_game_end());
 	if (!get_end_level_data_const().transient.linger_mode || gamestate_.board_.teams().empty()) {
 		if(!is_host()) {
 			// If we continue without lingering we need to
