@@ -140,10 +140,20 @@ private:
 	static int last_unit_id_;
 };
 
+
+class set_scontext_synced_base
+{
+public:
+	set_scontext_synced_base();
+	~set_scontext_synced_base();
+protected:
+	boost::shared_ptr<random_new::rng> new_rng_;
+	random_new::rng* old_rng_;
+};
 /*
 	a RAII object to enter the synced context, cannot be called if we are already in a synced context.
 */
-class set_scontext_synced
+class set_scontext_synced : set_scontext_synced_base
 {
 public:
 	set_scontext_synced();
@@ -158,8 +168,6 @@ private:
 	//only called by contructors.
 	void init();
 	static checkup* generate_checkup(const std::string& tagname);
-	random_new::rng* old_rng_;
-	boost::shared_ptr<random_new::rng> new_rng_;
 	checkup* old_checkup_;
 	boost::scoped_ptr<checkup> new_checkup_;
 	events::command_disabler disabler_;
