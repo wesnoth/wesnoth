@@ -362,7 +362,7 @@ void play_controller::maybe_do_init_side()
 	 * For all other sides it is recorded in replay and replay handler has to handle
 	 * calling do_init_side() functions.
 	 **/
-	if (init_side_done_ || !current_team().is_local()) {
+	if (init_side_done_ || !current_team().is_local() || gamestate_.gamedata_.phase() != game_data::PLAY) {
 		return;
 	}
 
