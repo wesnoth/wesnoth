@@ -75,7 +75,6 @@ public:
 	void add_rename(const std::string& name, const map_location& loc);
 	void end_turn();
 	void add_unit_checksum(const map_location& loc,config& cfg);
-	void add_checksum_check(const map_location& loc);
 	void add_log_data(const std::string &key, const std::string &var);
 	void add_log_data(const std::string &category, const std::string &key, const std::string &var);
 	void add_log_data(const std::string &category, const std::string &key, const config& c);

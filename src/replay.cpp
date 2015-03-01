@@ -332,16 +332,6 @@ void replay::add_log_data(const std::string &category, const std::string &key, c
 	cat.add_child(key,c);
 }
 
-void replay::add_checksum_check(const map_location& loc)
-{
-	if(! game_config::mp_debug || ! (resources::units->find(loc).valid()) ) {
-		return;
-	}
-	config& cmd = add_command();
-	cmd["dependent"] = true;
-	add_unit_checksum(loc,cmd);
-}
-
 void replay::add_chat_message_location()
 {
 	message_locations.push_back(pos_-1);
@@ -472,7 +462,7 @@ void replay::undo_cut(config& dst)
 	{
 		//"undo"=no means speak/label/remove_label, especialy attack, recruits etc. have "undo"=yes
 		//"async"=yes means rename_unit
-		//"dependent"=true means user input or unit_checksum_check
+		//"dependent"=true means user input
 		config &c = command(cmd);
 		const config &cc = c;
 		if (cc["dependent"].to_bool(false))
@@ -722,7 +712,8 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 	//team &current_team = (*resources::teams)[side_num - 1];
 
 	const int side_num = resources::controller->current_side();
-	for(;;) {
+	while(true)
+	{
 		const config *cfg = get_replay_source().get_next_action();
 		const bool is_synced = (synced_context::get_synced_state() == synced_context::SYNCED);
 
@@ -850,10 +841,6 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			} else {
 				(*resources::teams)[tval - 1].set_countdown_time(val);
 			}
-		}
-		else  if ( cfg->child("checksum") )
-		{
-			check_checksums(*cfg);
 		}
 		else if ((*cfg)["dependent"].to_bool(false))
 		{
