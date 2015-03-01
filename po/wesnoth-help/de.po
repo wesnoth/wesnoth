@@ -1708,7 +1708,7 @@ msgid ""
 msgstr ""
 "Fortbewegung ist in Wesnoth sehr einfach: Klickt auf die Einheit, die sich "
 "bewegen soll, und dann auf das gewünschte Zielfeld. Die Auswahl hebt alle "
-"erreichbaren Felder vor, der Rest der wird Karte leicht abgedunkelt. Führt "
+"erreichbaren Felder vor, der Rest der Karte wird leicht abgedunkelt. Führt "
 "Ihr die Maus über ein Feld, wird der Verteidigungswert der gewählten Einheit "
 "im jeweiligen Gelände gezeigt. Über dunkleren Feldern wird auch angegeben, "
 "in wie vielen Zügen dieses Ziel erreichbar wäre. Wenn Ihr dieses Feld "
@@ -1937,9 +1937,9 @@ msgstr ""
 "\n"
 "\n"
 "Es gibt zwei Ausnahmen von dieser Regel: Angriffe von Einheiten, die Magie "
-"oder <ref>dst='weaponspecial_marksman' text='Schießkunst'</ref> beherrschen. "
-"<ref>dst='weaponspecial_magical' text='Magische Attacken'</ref> haben "
-"prinzipiell 70%ige Trefferwahrscheinlichkeit und ein Scharfschütze "
+"oder <ref>dst='weaponspecial_marksman' text='Treffsicherheit'</ref> "
+"beherrschen. <ref>dst='weaponspecial_magical' text='Magische Attacken'</ref> "
+"haben prinzipiell 70%ige Trefferwahrscheinlichkeit und treffsichere Angriffe "
 "mindestens 60% — jeweils unabhängig vom Gelände."
 
 #. [topic]: id=combat
@@ -2499,7 +2499,7 @@ msgstr ""
 "\n"
 "\n"
 "Weitere spezielle Merkmale, die einzelne Einheiten auszeichnen können sind:\n"
-"<ref>dst='traits_dextrous' text='treffsicher'</ref>, <ref>dst='traits_loyal' "
+"<ref>dst='traits_dextrous' text='geschickt'</ref>, <ref>dst='traits_loyal' "
 "text='loyal'</ref> und <ref>dst='traits_undead' text='untot'</ref>.\n"
 "\n"
 
@@ -2792,7 +2792,7 @@ msgstr ""
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:448
 msgid "Dextrous"
-msgstr "Treffsicher"
+msgstr "Geschickt"
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:449
@@ -2806,11 +2806,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Treffsicherheit ist eine nur den Elfen vorbehaltene Fähigkeit. Das Elfenvolk "
-"ist bekannt für seine verblüffende Anmut und die Geschicklichkeit im Umgang "
-"mit dem Bogen. Doch auch unter ihnen gibt es einige, die im Umgang mit "
-"dieser Waffe ungewöhnlich begabt sind: Jeder ihrer Pfeile fügt dem Gegner "
-"mehr Schaden zu als die seiner Gefährten (-1 LP)."
+"Geschicklichkeit ist eine nur den Elfen vorbehaltene Fähigkeit. Das "
+"Elfenvolk ist bekannt für seine verblüffende Anmut und die Gewandtheit im "
+"Umgang mit dem Bogen. Doch auch unter ihnen gibt es einige, die im Umgang "
+"mit dieser Waffe ungewöhnlich begabt sind: Jeder ihrer Pfeile fügt dem "
+"Gegner mehr Schaden zu als die ihrer Gefährten (-1 LP)."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:449
@@ -2818,8 +2818,8 @@ msgid ""
 "<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
 "strike in ranged combat."
 msgstr ""
-"»Treffsichere« Einheiten richten mit Fernkampfwaffen einen Punkt mehr "
-"Schaden an."
+"»Geschickte« Einheiten richten mit Fernkampfwaffen einen Punkt mehr Schaden "
+"an."
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:456
@@ -3417,9 +3417,8 @@ msgstr ""
 "Kontrolle über eine Seite (hier Nummer eingeben) an einen Spieler (hier den "
 "Benutzernamen des Spielers bzw. Beobachters eintippen) übergeben\n"
 "Im Menü »Szenarioeinstellungen« können die den Spielern zugeordneten Teams "
-"abgefragt werden. Dazu den Schalter »Nächste Seite« anklicken und die "
-"»Spielübersicht« konsultieren (auch per Tastenkürzel [ALT]+[s] kann man "
-"dorthin zu gelangen).\n"
+"abgefragt werden. Dorthin gelangt man über den Schalter »Nächste Seite« in "
+"der »Spielübersicht« (per Tastenkürzel [ALT]+[s] zu erreichen).\n"
 "Der Gastgeber (Host) kann die Kontrolle jeder beliebigen Seite ändern.\n"
 "\n"
 
@@ -4077,7 +4076,7 @@ msgstr ""
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:628
 msgid "marksman"
-msgstr "Schießkunst"
+msgstr "Treffsicherheit"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #. [chance_to_hit]: id=marksman
@@ -4085,8 +4084,8 @@ msgstr "Schießkunst"
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
-"In der Ruhe liegt die Kraft: Eine wohl vorbereitete Attacke eines "
-"Meisterschützen trifft in 60% aller Fällen."
+"In der Ruhe liegt die Kraft: Für den Angriff wohl vorbereitet trifft diese "
+"Attacke in 60% aller Fälle."
 
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:653
@@ -4555,8 +4554,9 @@ msgid ""
 " This unit’s marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
 msgstr ""
-" Ihre hervorragende Schießkunst erlaubt es dieser Einheit, jeden Feind mit "
-"hoher Wahrscheinlichkeit zu treffen. Dies gilt jedoch nur in der Offensive."
+" Ihre hervorragende Treffsicherheit erlaubt es dieser Einheit, jeden Feind "
+"mit hoher Wahrscheinlichkeit zu treffen. Dies gilt jedoch nur in der "
+"Offensive."
 
 #: data/core/macros/special-notes.cfg:77
 msgid ""
@@ -4674,12 +4674,12 @@ msgstr "kräftig"
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:108
 msgid "dextrous"
-msgstr "treffsicher"
+msgstr "geschickt"
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:109
 msgid "female^dextrous"
-msgstr "treffsicher"
+msgstr "geschickt"
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:122
