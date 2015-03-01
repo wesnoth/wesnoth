@@ -828,6 +828,7 @@ possible_end_play_signal playsingle_controller::check_time_over(){
 	if(!time_left) {
 		//FIXME: This should run in a synced context.
 		LOG_NG << "firing time over event...\n";
+		set_scontext_synced_base sync;
 		pump().fire("time over");
 		LOG_NG << "done firing time over event...\n";
 		//if turns are added while handling 'time over' event

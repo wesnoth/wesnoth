@@ -577,6 +577,7 @@ possible_end_play_signal replay_controller::play_move_or_side(bool one_move) {
 		finish_turn();
 		bool is_time_left = gamestate_.tod_manager_.next_turn(*resources::gamedata);
 		if(!is_time_left) {
+			set_scontext_synced_base sync;
 			pump().fire("time over");
 		}
 		it_is_a_new_turn_ = true;
