@@ -397,6 +397,10 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			}
 			return VICTORY;
 		}
+		pump().fire(is_victory ? "victory" : "defeat");
+		if(end_level.proceed_to_next_level) {
+			gamestate_.board_.heal_all_survivors();
+		}
 		if(is_observer()) {
 			gui2::show_transient_message(gui_->video(), _("Game Over"), _("The game is over."));
 			return OBSERVER_END;
@@ -409,42 +413,19 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 				("condition", "game over")
 				("result", is_victory ? "victory" : "defeat")
 			));
-		if (!is_victory)
-		{
-			pump().fire("defeat");
-
-			const std::string& defeat_music = select_defeat_music();
-			if(defeat_music.empty() != true)
-				sound::play_music_once(defeat_music);
-			persist_.end_transaction();
-			return DEFEAT;
+		// Play victory music once all victory events
+		// are finished, if we aren't observers.
+		//
+		// Some scenario authors may use 'continue'
+		// result for something that is not story-wise
+		// a victory, so let them use [music] tags
+		// instead should they want special music.
+		const std::string& end_music = is_victory ? select_victory_music() : select_defeat_music();
+		if(end_music.empty() != true) {
+			sound::play_music_once(end_music);
 		}
-		else
-		{
-			pump().fire("victory");
-
-			//
-			// Play victory music once all victory events
-			// are finished, if we aren't observers.
-			//
-			// Some scenario authors may use 'continue'
-			// result for something that is not story-wise
-			// a victory, so let them use [music] tags
-			// instead should they want special music.
-			//
-			if (end_level.transient.linger_mode) {
-				const std::string& victory_music = select_victory_music();
-				if(victory_music.empty() != true)
-					sound::play_music_once(victory_music);
-			}
-
-			LOG_NG << "Healing survived units\n";
-			gamestate_.board_.heal_all_survivors();
-
-			saved_game_.remove_snapshot();
-			persist_.end_transaction();
-			return VICTORY;
-		}
+		persist_.end_transaction();
+		return is_victory ? VICTORY : DEFEAT;
 	} catch(const game::load_game_exception &) {
 		// Loading a new game is effectively a quit.
 		//
