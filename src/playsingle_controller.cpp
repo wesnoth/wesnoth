@@ -285,10 +285,10 @@ void playsingle_controller::play_scenario_main_loop() {
 	LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
 
 	// Initialize countdown clock.
-	std::vector<team>::const_iterator t;
-	for(t = gamestate_.board_.teams().begin(); t != gamestate_.board_.teams().end(); ++t) {
+	BOOST_FOREACH(const team& t, gamestate_.board_.teams())
+	{
 		if (saved_game_.mp_settings().mp_countdown && !loading_game_ ){
-			t->set_countdown_time(1000 * saved_game_.mp_settings().mp_countdown_init_time);
+			t.set_countdown_time(1000 * saved_game_.mp_settings().mp_countdown_init_time);
 		}
 	}
 
