@@ -100,13 +100,17 @@ static void show_carryover_message(saved_game& gamestate, playsingle_controller&
 		int turns_left = std::max<int>(0, tod.number_of_turns() - tod.turn());
 		BOOST_FOREACH(team &t, teams)
 		{
-			if (!t.persistent() || t.lost() || !t.is_local_human())
+			if (!t.persistent() || t.lost())
 			{
 				continue;
 			}
 			int finishing_bonus_per_turn = map.villages().size() * t.village_gold() + t.base_income();
 			int finishing_bonus = t.carryover_bonus() ? finishing_bonus_per_turn * turns_left : 0;
 			t.set_carryover_gold(div100rounded((t.gold() + finishing_bonus) * t.carryover_percentage()));
+			if(!t.is_local_human())
+			{
+				continue;
+			}
 			if (persistent_teams > 1) {
 				report << "\n<b>" << t.current_player() << "</b>\n";
 			}
