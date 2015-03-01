@@ -365,7 +365,12 @@ bool team::get_village(const map_location& loc, const int owner_side, game_data 
 		config::attribute_value& var = gamedata->get_variable("owner_side");
 		const config::attribute_value old_value = var;
 		var = owner_side;
-		gamestate_changed = resources::game_events->pump().fire("capture",loc);
+
+		// During team building, game_events pump is not guaranteed to exist yet. (At current revision.) We skip capture events in this case.
+		if (resources::game_events) {
+			gamestate_changed = resources::game_events->pump().fire("capture",loc);
+		}
+
 		if(old_value.blank())
 			gamedata->clear_variable("owner_side");
 		else
