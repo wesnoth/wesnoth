@@ -32,8 +32,7 @@ public:
 		const int ticks, const config& game_config, const tdata_cache & tdata, CVideo& video, bool skip_replay);
 	virtual ~playsingle_controller();
 
-	LEVEL_RESULT play_scenario(const config::const_child_itors &story,
-		bool skip_replay);
+	LEVEL_RESULT play_scenario(const config::const_child_itors &story);
 	void play_scenario_init();
 	void play_scenario_main_loop();
 
