@@ -649,31 +649,6 @@ replay& get_replay_source()
 	return recorder;
 }
 
-static void check_checksums(const config &cfg)
-{
-	if(! game_config::mp_debug) {
-		return;
-	}
-	BOOST_FOREACH(const config &ch, cfg.child_range("checksum"))
-	{
-		map_location loc(ch, resources::gamedata);
-		unit_map::const_iterator u = resources::units->find(loc);
-		if (!u.valid()) {
-			std::stringstream message;
-			message << "non existent unit to checksum at " << loc.x+1 << "," << loc.y+1 << "!";
-			resources::screen->get_chat_manager().add_chat_message(time(NULL), "verification", 1, message.str(),
-					events::chat_handler::MESSAGE_PRIVATE, false);
-			continue;
-		}
-		if (get_checksum(*u) != ch["value"]) {
-			std::stringstream message;
-			message << "checksum mismatch at " << loc.x+1 << "," << loc.y+1 << "!";
-			resources::screen->get_chat_manager().add_chat_message(time(NULL), "verification", 1, message.str(),
-					events::chat_handler::MESSAGE_PRIVATE, false);
-		}
-	}
-}
-
 bool replay::add_start_if_not_there_yet()
 {
 	//this method would confuse the value of 'pos' otherwise
