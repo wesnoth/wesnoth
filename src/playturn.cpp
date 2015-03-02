@@ -98,7 +98,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::handle_turn(const config& t)
 	assert(t.all_children_count() == 1);
 	/** @todo FIXME: Check what commands we execute when it's our turn! */
 
-	//note, that this function might call itself recursively: do_replay -> ... -> persist_var -> ... -> handle_generic_event -> sync_network -> handle_turn
+	//note, that this function might call itself recursively: do_replay -> ... -> get_user_choice -> ... -> playmp_controller::pull_remote_choice -> sync_network -> handle_turn
 	recorder.add_config(t, replay::MARK_AS_SENT);
 	PROCESS_DATA_RESULT retv = replay_to_process_data_result(do_replay());
 	return retv;

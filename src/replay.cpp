@@ -705,7 +705,13 @@ REPLAY_RETURN do_replay(bool one_move)
 	update_locker lock_update(resources::screen->video(), resources::controller->is_skipping_replay());
 	return do_replay_handle(one_move);
 }
-
+/**
+	@returns:
+		if we expect a user choice and found something that prevents us from moving on we return REPLAY_FOUND_DEPENDENT (even if it is not a dependent command)
+		else if we found an [end_turn] we return REPLAY_FOUND_END_TURN
+		else if we found a player action and one_move=true we return REPLAY_FOUND_END_MOVE
+		else (<=> we reached the end of the replay) we return REPLAY_RETURN_AT_END
+*/
 REPLAY_RETURN do_replay_handle(bool one_move)
 {
 
@@ -774,21 +780,17 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			const std::string &name = child["name"];
 
 			unit_map::iterator u = resources::units->find(loc);
-			if (u.valid()) {
-				if (u->unrenamable()) {
-					std::stringstream errbuf;
-					errbuf << "renaming unrenamable unit " << u->id() << '\n';
-					replay::process_error(errbuf.str());
-					continue;
-				}
+			if (u.valid() && !u->unrenamable()) {
 				u->rename(name);
 			} else {
-				// Users can rename units while it's being killed at another machine.
+				// Users can rename units while it's being killed or at another machine.
 				// This since the player can rename units when it's not his/her turn.
 				// There's not a simple way to prevent that so in that case ignore the
 				// rename instead of throwing an OOS.
+				// The same way it is possible that an unrenamable unit moves to a
+				// hex where previously a renamable unit was.
 				WRN_REPLAY << "attempt to rename unit at location: "
-				   << loc << ", where none exists (anymore).\n";
+				   << loc << (u.valid() ? ", which is unrenamable" : ", where none exists (anymore)") << "\n";
 			}
 		}
 
@@ -797,9 +799,8 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 
 			if(is_synced)
 			{
-				replay::process_error("found init_side in replay while is_synced=true\n" );
+				replay::process_error("found side initialization in replay expecting a user choice\n" );
 				get_replay_source().revert_action();
-				//fits better than the other options, and should have the desired effect.
 				return REPLAY_FOUND_DEPENDENT;
 			}
 			else
@@ -813,9 +814,8 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		{
 			if(is_synced)
 			{
-				replay::process_error("found end_turn in replay while is_synced=true\n" );
+				replay::process_error("found turn end in replay while expecting a user choice\n" );
 				get_replay_source().revert_action();
-				//fits better than the other options, and should have the desired effect.
 				return REPLAY_FOUND_DEPENDENT;
 			}
 			else
@@ -868,9 +868,8 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 
 			if(is_synced)
 			{
-				replay::process_error("found " + commandname + " command in replay while is_synced=true\n" );
+				replay::process_error("found [" + commandname + "] command in replay expecting a user choice\n" );
 				get_replay_source().revert_action();
-				//fits better than the other options, and should have the desired effect.
 				return REPLAY_FOUND_DEPENDENT;
 			}
 			else
