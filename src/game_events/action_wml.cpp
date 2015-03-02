@@ -64,6 +64,7 @@
 #include "unit_display.hpp"
 #include "unit_filter.hpp"
 #include "wml_exception.hpp"
+#include "whiteboard/manager.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/assign/list_of.hpp>
@@ -515,7 +516,15 @@ static void on_replay_error(const std::string& message, bool /*b*/)
 // This allows to perform scripting in WML that will use the same code path as player actions, for example.
 WML_HANDLER_FUNCTION(do_command, /*event_info*/, cfg)
 {
-	//TODO: don't allow this if we are in a whiteboard applied context.
+	// Doing this in a whiteboard applied context will cause bugs
+	// Note that even though game_events::pump() will always apply the real unit map
+	// It is still possible get a wml commands to run in a whiteboard applied context
+	// With the theme_items lua callbacks
+	if(resources::whiteboard->has_planned_unit_map())
+	{
+		ERR_NG << "[do_command] called while whiteboard is applied, ignoring" << std::endl;
+		return;
+	}
 
 	static const std::set<std::string> allowed_tags = boost::assign::list_of("attack")("move")("recruit")("recall")("disband")("fire_event")("lua_ai");
 

@@ -110,6 +110,7 @@ bool synced_context::run_in_synced_context_if_not_already(const std::string& com
 		if(resources::controller->is_replay())
 		{
 			ERR_REPLAY << "ignored attempt to invoke a synced command during replay\n";
+			return false;
 		}
 		return run_in_synced_context(commandname, data, use_undo, show, true, error_handler);
 	}
