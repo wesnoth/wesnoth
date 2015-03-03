@@ -196,16 +196,14 @@ void team::team_info::read(const config &cfg)
 		support_per_village = lexical_cast_default<int>(village_support, game_config::village_support);
 
 	controller = lexical_cast_default<team::CONTROLLER> (cfg["controller"].str(), team::AI);
-	//by default, persistence of a team is set depending on the controller
-	//TODO: Why is network_ai marked persistent?
-	//TODO: Why do we read disallow observers differently when controller is empty?
-	persistent = !(controller == EMPTY || controller == AI);
 
+	//TODO: Why do we read disallow observers differently when controller is empty?
 	if (controller == EMPTY) {
 		disallow_observers = cfg["disallow_observers"].to_bool(true);
 	}
 	//override persistence flag if it is explicitly defined in the config
-	persistent = cfg["persistent"].to_bool(persistent);
+	//by default, persistence of a team is set depending on the controller
+	persistent = cfg["persistent"].to_bool(this->controller == HUMAN || this->controller == NETWORK);
 
 	//========================================================
 	//END OF MESSY CODE
