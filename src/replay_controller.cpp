@@ -52,7 +52,7 @@ static lg::log_domain log_replay("replay");
 #define LOG_REPLAY LOG_STREAM(info, log_replay)
 #define ERR_REPLAY LOG_STREAM(err, log_replay)
 
-possible_end_play_signal play_replay_level_main_loop(replay_controller & replaycontroller, bool & is_unit_test);
+void play_replay_level_main_loop(replay_controller & replaycontroller, bool & is_unit_test);
 
 LEVEL_RESULT play_replay_level(const config& game_config, const tdata_cache & tdata,
 		CVideo& video, saved_game& state_of_game, bool is_unit_test)
@@ -65,42 +65,43 @@ LEVEL_RESULT play_replay_level(const config& game_config, const tdata_cache & td
 
 	const events::command_disabler disable_commands;
 
-	try {
-		rc.reset(new replay_controller(state_of_game.get_replay_starting_pos(), state_of_game, ticks, game_config, tdata, video));
-	} catch (end_level_exception&){
-		//TODO: When can this happen?
-		return QUIT;
-	}
+	rc.reset(new replay_controller(state_of_game.get_replay_starting_pos(), state_of_game, ticks, game_config, tdata, video));
 	DBG_NG << "created objects... " << (SDL_GetTicks() - rc->get_ticks()) << std::endl;
 
 	//replay event-loop
-	possible_end_play_signal signal = play_replay_level_main_loop(*rc, is_unit_test);
-
-	if (signal) {
-		DBG_NG << "play_replay_level: end_level_exception" << std::endl;
+	play_replay_level_main_loop(*rc, is_unit_test);
+	if(rc->is_regular_game_end())
+	{
+	//	return rc->get_end_level_data_const().is_victory ? VICTORY : DEFEAT;
+		//The replay contained the whole scenario, returns VICTORY regardless of the original outcome.
+		return VICTORY;
 	}
-
-	return VICTORY;
+	else
+	{
+		//The replay was finished without reaching the scenario end.
+		return QUIT;
+	}
 }
 
-possible_end_play_signal play_replay_level_main_loop(replay_controller & replaycontroller, bool & is_unit_test) {
+void play_replay_level_main_loop(replay_controller & replaycontroller, bool & is_unit_test) {
 	if (is_unit_test) {
 		return replaycontroller.try_run_to_completion();
 	}
 
-	for (;;){
-		HANDLE_END_PLAY_SIGNAL( replaycontroller.play_slice() );
+	for (;;) {
+		//Quits by quit_level_exception
+		replaycontroller.play_slice();
 	}
 }
 
-possible_end_play_signal replay_controller::try_run_to_completion() {
+void replay_controller::try_run_to_completion() {
 	for (;;) {
-		HANDLE_END_PLAY_SIGNAL( play_slice() );
+		play_slice();
 		if (recorder.at_end()) {
-			return boost::none;
+			return;
 		} else {
 			if (!is_playing_) {
-				PROPOGATE_END_PLAY_SIGNAL( play_replay() );
+				play_replay();
 			}
 		}
 	}
@@ -380,31 +381,33 @@ void replay_controller::reset_replay()
 	reset_replay_ui();
 }
 
-void replay_controller::stop_replay(){
+void replay_controller::stop_replay()
+{
 	is_playing_ = false;
 }
 
-possible_end_play_signal replay_controller::replay_next_turn(){
+void replay_controller::replay_next_turn()
+{
 	is_playing_ = true;
 	replay_ui_playback_should_start();
 
-	PROPOGATE_END_PLAY_SIGNAL( play_turn() );
+	play_turn();
 
  	if (!is_skipping_replay() || !is_playing_){
 		gui_->scroll_to_leader(player_number_,game_display::ONSCREEN,false);
 	}
 
 	replay_ui_playback_should_stop();
-	return boost::none;
 }
 
-possible_end_play_signal replay_controller::replay_next_move_or_side(bool one_move){
+void replay_controller::replay_next_move_or_side(bool one_move)
+{
 	is_playing_ = true;
 	replay_ui_playback_should_start();
 	
-	HANDLE_END_PLAY_SIGNAL( play_move_or_side(one_move) );
+	play_move_or_side(one_move);
 	while (current_team().is_empty()) {
- 		HANDLE_END_PLAY_SIGNAL( play_move_or_side(one_move) );
+ 		play_move_or_side(one_move);
 	}
 
  	if ( (!is_skipping_replay() || !is_playing_) && (last_replay_action == REPLAY_FOUND_END_TURN) ){
@@ -412,14 +415,15 @@ possible_end_play_signal replay_controller::replay_next_move_or_side(bool one_mo
 	}
 
 	replay_ui_playback_should_stop();
-	return boost::none;
 }
 
-possible_end_play_signal replay_controller::replay_next_side(){
+void replay_controller::replay_next_side()
+{
 	return replay_next_move_or_side(false);
 }
 
-possible_end_play_signal replay_controller::replay_next_move(){
+void replay_controller::replay_next_move()
+{
 	return replay_next_move_or_side(true);
 }
 
@@ -469,40 +473,36 @@ void replay_controller::replay_skip_animation(){
 }
 
 //move all sides till stop/end
-possible_end_play_signal replay_controller::play_replay(){
+void replay_controller::play_replay()
+{
 
-	if (recorder.at_end()){
-		//shouldn't actually happen
-		return boost::none;
+	if (recorder.at_end())
+	{
 	}
 
 	is_playing_ = true;
 	replay_ui_playback_should_start();
 
-	possible_end_play_signal signal = play_replay_main_loop();
-
-	if(signal) {
-	}
+	play_replay_main_loop();
 
 	if (!is_playing_) {
 		gui_->scroll_to_leader(player_number_,game_display::ONSCREEN,false);
 	}
 
 	replay_ui_playback_should_stop();
-
-	return boost::none;
 }
 
-possible_end_play_signal replay_controller::play_replay_main_loop() {
+void replay_controller::play_replay_main_loop()
+{
 	DBG_REPLAY << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
 	for(; !recorder.at_end() && is_playing_; first_player_ = 1) {
-		PROPOGATE_END_PLAY_SIGNAL ( play_turn() );
+		play_turn();
 	}
-	return boost::none;
 }
 
 //make all sides move, then stop
-possible_end_play_signal replay_controller::play_turn(){
+void replay_controller::play_turn()
+{
 
 	LOG_REPLAY << "turn: " << current_turn_ << "\n";
 
@@ -514,23 +514,22 @@ possible_end_play_signal replay_controller::play_turn(){
 
 	while ( (!last_team) && (!recorder.at_end()) && is_playing_ ){
 		last_team = static_cast<size_t>(player_number_) == gamestate_.board_.teams().size();
-		PROPOGATE_END_PLAY_SIGNAL( play_side() );
-		HANDLE_END_PLAY_SIGNAL( play_slice() );
+		play_side();
+		play_slice();
 	}
-	return boost::none;
 }
 
 
-possible_end_play_signal replay_controller::play_side() {
+void replay_controller::play_side() {
 	return play_move_or_side(false);
 }
 
-possible_end_play_signal replay_controller::play_move() {
+void replay_controller::play_move() {
 	return play_move_or_side(true);
 }
 
 //make only one side move
-possible_end_play_signal replay_controller::play_move_or_side(bool one_move) {
+void replay_controller::play_move_or_side(bool one_move) {
 	
 	DBG_REPLAY << "Status turn number: " << turn() << "\n";
 	DBG_REPLAY << "Replay_Controller turn number: " << current_turn_ << "\n";
@@ -540,7 +539,6 @@ possible_end_play_signal replay_controller::play_move_or_side(bool one_move) {
 	if (!current_team().is_empty()) {
 		statistics::reset_turn_stats(current_team().save_id());
 
-		possible_end_play_signal signal = NULL;
 		if (last_replay_action == REPLAY_FOUND_END_TURN) {
 			play_controller::init_side_begin(true);
 		}
@@ -549,18 +547,10 @@ possible_end_play_signal replay_controller::play_move_or_side(bool one_move) {
 		// if have reached the end we don't want to execute finish_side_turn and finish_turn
 		// because we might not have enough data to execute them (like advancements during turn_end for example)
 		
-		try {
-			last_replay_action = do_replay(one_move);
-			if(last_replay_action != REPLAY_FOUND_END_TURN) {
-				//We reached the end of the replay without finding an end turn tag.
-				//REPLAY_FOUND_DEPENDENT here might indicate an OOS error
-				return boost::none;
-			}
-		} catch(end_level_exception& e){
-			//dont return to title screen if the game ended the normal way
-			if (!is_regular_game_end()) {
-				return possible_end_play_signal(e.to_struct());
-			}
+		last_replay_action = do_replay(one_move);
+		if(last_replay_action != REPLAY_FOUND_END_TURN) {
+			//We reached the end of the replay without finding an end turn tag.
+			return;
 		}
 
 		finish_side_turn();
@@ -589,11 +579,10 @@ possible_end_play_signal replay_controller::play_move_or_side(bool one_move) {
 
 	update_teams();
 	update_gui();
-
-	return boost::none;
 }
 
-void replay_controller::update_teams(){
+void replay_controller::update_teams()
+{
 
 	int next_team = player_number_;
 	if(static_cast<size_t>(next_team) > gamestate_.board_.teams().size()) {
@@ -610,7 +599,8 @@ void replay_controller::update_teams(){
 	gui_->invalidate_all();
 }
 
-void replay_controller::update_gui(){
+void replay_controller::update_gui()
+{
 	(*gui_).recalculate_minimap();
 	(*gui_).redraw_minimap();
 	(*gui_).invalidate_all();
@@ -618,7 +608,8 @@ void replay_controller::update_gui(){
 	(*gui_).draw();
 }
 
-void replay_controller::handle_generic_event(const std::string& name){
+void replay_controller::handle_generic_event(const std::string& name)
+{
 
 	if( name == "completely_redrawn" ) {
 		update_replay_ui();

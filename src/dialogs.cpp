@@ -162,7 +162,7 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		assert(dismissed_unit);
 
 		// Record the dismissal, then delete the unit.
-		synced_context::run_in_synced_context("disband", replay_helper::get_disband(dismissed_unit->id()));
+		synced_context::run_and_throw("disband", replay_helper::get_disband(dismissed_unit->id()));
 		//recorder.add_disband(dismissed_unit->id());
 		//recall_list.erase(dismissed_unit);
 

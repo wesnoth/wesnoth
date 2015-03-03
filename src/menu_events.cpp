@@ -663,7 +663,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 
 		// Do the recruiting.
 
-		synced_context::run_in_synced_context("recruit", replay_helper::get_recruit(u_type->id(), loc, recruited_from));
+		synced_context::run_and_throw("recruit", replay_helper::get_recruit(u_type->id(), loc, recruited_from));
 		return true;
 	}
 	return false;
@@ -749,9 +749,8 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	}
 
 	if (!pc_.get_whiteboard() || !pc_.get_whiteboard()->save_recall(*recall_list_team->at(res), side_num, recall_location)) {
-		bool success = synced_context::run_in_synced_context("recall",
+		bool success = synced_context::run_and_throw("recall",
 			replay_helper::get_recall(recall_list_team->at(res)->id(), recall_location, recall_from),
-			true,
 			true,
 			true,
 			synced_context::ignore_error_function);
@@ -795,12 +794,12 @@ void menu_handler::toggle_shroud_updates(int side_num)
 	if (!auto_shroud) update_shroud_now(side_num);
 
 	// Toggle the setting and record this.
-	synced_context::run_in_synced_context("auto_shroud", replay_helper::get_auto_shroud(!auto_shroud));
+	synced_context::run_and_throw("auto_shroud", replay_helper::get_auto_shroud(!auto_shroud));
 }
 
 void menu_handler::update_shroud_now(int /* side_num */)
 {
-	synced_context::run_in_synced_context("update_shroud", replay_helper::get_update_shroud());
+	synced_context::run_and_throw("update_shroud", replay_helper::get_update_shroud());
 }
 
 
@@ -2971,7 +2970,7 @@ void console_handler::do_next_level()
 	e.proceed_to_next_level = true;
 	e.is_victory = true;
 	menu_handler_.pc_.set_end_level_data(e);
-	throw end_level_exception();
+	throw return_to_play_side_exception();
 }
 
 void console_handler::do_choose_level() {
@@ -3021,7 +3020,7 @@ void console_handler::do_choose_level() {
 		e.proceed_to_next_level = true;
 		e.is_victory = true;
 		menu_handler_.pc_.set_end_level_data(e);
-		throw end_level_exception();
+		throw return_to_play_side_exception();
 	}
 }
 

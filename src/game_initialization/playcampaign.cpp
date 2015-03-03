@@ -153,7 +153,7 @@ LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& gam
 			gui2::show_error_message(disp.video(), _("The game could not be loaded: ") + e.message);
 		}
 	
-	} catch(quit_game_exception& e) {
+	} catch(quit_game_exception&) {
 		LOG_NG << "The replay was aborted\n";
 		return QUIT;
 	} catch(game::game_error& e) {
@@ -207,11 +207,7 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 	show_carryover_message(state_of_game, playcontroller, disp, end_level, res);
 	if(!disp.video().faked())
 	{
-		try {
-			playcontroller.maybe_linger();
-		} catch(end_level_exception&) {
-			return QUIT;
-		}
+		playcontroller.maybe_linger();
 	}
 	state_of_game.set_snapshot(playcontroller.to_config());
 	return res;
@@ -249,11 +245,7 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 	}
 	if(!disp.video().faked())
 	{
-		try {
-			playcontroller.maybe_linger();
-		} catch(end_level_exception&) {
-			return QUIT;
-		}
+		playcontroller.maybe_linger();
 	}
 	playcontroller.update_savegame_snapshot();
 	return res;
@@ -300,7 +292,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		} catch(game::load_game_failed& e) {
 			gui2::show_error_message(disp.video(), _("The game could not be loaded: ") + e.message);
 			return QUIT;
-		} catch(quit_game_exception& e) {
+		} catch(quit_game_exception&) {
 			LOG_NG << "The game was aborted\n";
 			return QUIT;
 		} catch(game::game_error& e) {

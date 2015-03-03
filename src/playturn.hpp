@@ -42,7 +42,9 @@ public:
 		/** When the host uploaded the next scenario this is returned. */
 		PROCESS_END_LINGER,
 		/** When we couldn't process the network data because we found a dependent command, this should only happen if we were called playmp_controller::from handle_generic_event -> sync_network*/
-		PROCESS_FOUND_DEPENDENT
+		PROCESS_FOUND_DEPENDENT,
+		/** We foudn a player action in the replay that caused the game to end*/
+		PROCESS_END_LEVEL
 	};
 
 	PROCESS_DATA_RESULT sync_network();
@@ -60,10 +62,10 @@ public:
 
 	bool is_host() const { return is_host_; }
 	void set_host(bool val) { is_host_ = val; }
+	static PROCESS_DATA_RESULT replay_to_process_data_result(REPLAY_RETURN replayreturn);
 private:
 	static void change_controller(int side, const std::string& controller);
 	static void change_side_controller(int side, const std::string& player);
-	static PROCESS_DATA_RESULT replay_to_process_data_result(REPLAY_RETURN replayreturn);
 	PROCESS_DATA_RESULT handle_turn(const config& t);
 
 	void do_save();

@@ -225,8 +225,7 @@ void move::execute(bool& success, bool& complete)
 	try {
 		events::mouse_handler& mouse_handler = resources::controller->get_mouse_handler_base();
 		num_steps = mouse_handler.move_unit_along_route(steps, interrupted);
-	} catch (restart_turn_exception&) {
-		//This exception is thown by the ai code, i dont know whther the whiteboard can interact with the ai so i leave this catch here for now
+	} catch (return_to_play_side_exception&) {
 		set_arrow_brightness(ARROW_BRIGHTNESS_STANDARD);
 		throw; // we rely on the caller to delete this action
 	}

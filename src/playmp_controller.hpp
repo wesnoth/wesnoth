@@ -46,13 +46,14 @@ protected:
 	void start_network();
 	void stop_network();
 
-	virtual possible_end_play_signal play_side();
-	virtual possible_end_play_signal play_human_turn();
+	virtual void play_side();
+	virtual void play_human_turn();
+	virtual void play_linger_turn();
 	virtual void after_human_turn();
 	virtual void finish_side_turn();
-	virtual possible_end_play_signal play_network_turn();
+	virtual void play_network_turn();
 	virtual void do_idle_notification();
-	virtual possible_end_play_signal play_idle_loop();
+	virtual void play_idle_loop();
 
 	void linger();
 	/** Wait for the host to upload the next scenario. */
@@ -67,6 +68,7 @@ protected:
 private:
 	void set_end_scenario_button();
 	void reset_end_scenario_button();
+	void process_network_data();
 	static unsigned int replay_last_turn_;
 };
 

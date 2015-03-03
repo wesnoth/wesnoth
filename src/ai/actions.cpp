@@ -94,22 +94,13 @@ void action_result::execute()
 	if (is_success()){
 		try {
 			do_execute();
-		} catch (end_level_exception&) {
+		} catch (return_to_play_side_exception&) {
 			if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked. This may cause bugs! " << std::endl; } //Demotes to DBG "unchecked result" warning
 			throw;
 		}
 	}
 	if (is_success()){
 		check_after();
-	}
-	if(resources::controller->is_end_turn()) {
-		throw ai_end_turn_exception();
-	}
-	
-	if(playsingle_controller* psc = dynamic_cast<playsingle_controller*>(resources::controller)) {
-		if(psc->get_player_type_changed()) {
-			throw restart_turn_exception();
-		}
 	}
 	is_execution_ = false;
 }
@@ -302,6 +293,7 @@ void attack_result::do_execute()
 		set_scontext_synced sync;
 		attack_unit_and_advance(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, true, advancements_);
 		resources::controller->check_victory();
+		resources::controller->maybe_throw_return_to_play_side();
 		sync.do_final_checkup();
 	}
 	else

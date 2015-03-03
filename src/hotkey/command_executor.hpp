@@ -79,12 +79,12 @@ public:
 	virtual void ai_formula() {}
 	virtual void clear_messages() {}
 	virtual void change_language() {}
-	virtual possible_end_play_signal play_replay() { return boost::none; }
+	virtual void play_replay() {  }
 	virtual void reset_replay() {}
 	virtual void stop_replay() {}
-	virtual possible_end_play_signal replay_next_turn() { return boost::none; }
-	virtual possible_end_play_signal replay_next_side() { return boost::none; }
-	virtual possible_end_play_signal replay_next_move() { return boost::none; }
+	virtual void replay_next_turn() {  }
+	virtual void replay_next_side() {  }
+	virtual void replay_next_move() {  }
 	virtual void replay_show_everything() {}
 	virtual void replay_show_each() {}
 	virtual void replay_show_team1() {}

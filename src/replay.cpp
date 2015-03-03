@@ -210,7 +210,7 @@ void replay::process_error(const std::string& msg)
 {
 	ERR_REPLAY << msg << std::flush;
 
-	resources::controller->process_oos(msg); // might throw end_level_exception(QUIT)
+	resources::controller->process_oos(msg); // might throw quit_game_exception()
 }
 
 void replay::add_unit_checksum(const map_location& loc,config& cfg)
@@ -853,7 +853,10 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 				/*
 					we need to use the undo stack during replays in order to make delayed shroud updated work.
 				*/
-				synced_context::run_in_synced_context(commandname, data, true, !resources::controller->is_skipping_replay(), false,show_oos_error_error_function);
+				synced_context::run(commandname, data, true, !resources::controller->is_skipping_replay(), show_oos_error_error_function);
+				if(resources::controller->is_regular_game_end()) {
+					return REPLAY_FOUND_END_LEVEL;
+				}
 				if (one_move) {
 					return REPLAY_FOUND_END_MOVE;
 				}

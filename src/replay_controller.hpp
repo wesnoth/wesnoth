@@ -32,13 +32,13 @@ public:
 		const int ticks, const config& game_config, const tdata_cache & tdata, CVideo& video);
 	virtual ~replay_controller();
 
-	possible_end_play_signal play_replay();
+	void play_replay();
 	void reset_replay();
 	void stop_replay();
-	possible_end_play_signal replay_next_move_or_side(bool one_move);
-	possible_end_play_signal replay_next_turn();
-	possible_end_play_signal replay_next_side();
-	possible_end_play_signal replay_next_move();
+	void replay_next_move_or_side(bool one_move);
+	void replay_next_turn();
+	void replay_next_side();
+	void replay_next_move();
 	void process_oos(const std::string& msg) const;
 	void replay_show_everything();
 	void replay_show_each();
@@ -46,10 +46,10 @@ public:
 	void replay_skip_animation();
 
 	virtual void force_end_turn() {}
-	virtual void check_end_level() {}
+	virtual void check_objectives() {}
 	virtual void on_not_observer() {}
 
-	possible_end_play_signal try_run_to_completion();
+	void try_run_to_completion();
 
 	bool recorder_at_end();
 
@@ -61,17 +61,17 @@ protected:
 
 private:
 	void init();
-	possible_end_play_signal play_turn();
-	possible_end_play_signal play_move_or_side(bool one_move = false);
-	possible_end_play_signal play_side();
-	possible_end_play_signal play_move();
+	void play_turn();
+	void play_move_or_side(bool one_move = false);
+	void play_side();
+	void play_move();
 	void update_teams();
 	void update_gui();
 	void init_replay_display();
 	void rebuild_replay_theme();
 	void handle_generic_event(const std::string& /*name*/);
 
-	possible_end_play_signal play_replay_main_loop();
+	void play_replay_main_loop();
 
 	void reset_replay_ui();
 	void update_replay_ui();

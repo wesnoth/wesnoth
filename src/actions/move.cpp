@@ -1270,6 +1270,7 @@ size_t move_unit_and_record(const std::vector<map_location> &steps,
 		set_scontext_synced sync;
 		size_t r =  move_unit_internal(undo_stack, show_move, interrupted, mover);
 		resources::controller->check_victory();
+		resources::controller->maybe_throw_return_to_play_side();
 		sync.do_final_checkup();
 		return r;
 	}

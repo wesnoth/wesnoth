@@ -111,12 +111,12 @@ public:
 	void init_side_end();
 
 	virtual void force_end_turn() = 0;
-	virtual void check_end_level() = 0;
+	virtual void check_objectives() = 0;
 
 	virtual void on_not_observer() = 0;
 	/**
 	 * Asks the user whether to continue on an OOS error.
-	 * @throw end_level_exception If the user wants to abort.
+	 * @throw quit_game_exception If the user wants to abort.
 	 */
 	virtual void process_oos(const std::string& msg) const;
 
@@ -161,7 +161,7 @@ public:
 	}
 
 	/**
-	 * Checks to see if a side has won, and throws an end_level_exception.
+	 * Checks to see if a side has won.
 	 * Will also remove control of villages from sides with dead leaders.
 	 */
 	void check_victory();
@@ -209,8 +209,13 @@ public:
 	bool get_disallow_recall()
 	{ return level_["disallow_recall"].to_bool(); }
 	void update_savegame_snapshot() const;
-protected:
+	virtual bool should_return_to_play_side()
+	{ return is_regular_game_end(); }
+	void maybe_throw_return_to_play_side()
+	{ if(should_return_to_play_side()) { throw return_to_play_side_exception(); } }
 
+protected:
+	void play_slice_catch();
 	game_display& get_display();
 	bool have_keyboard_focus();
 	void process_focus_keydown_event(const SDL_Event& event);

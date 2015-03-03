@@ -160,7 +160,8 @@ enum REPLAY_RETURN
 	REPLAY_RETURN_AT_END,
 	REPLAY_FOUND_DEPENDENT,
 	REPLAY_FOUND_END_TURN,
-	REPLAY_FOUND_END_MOVE
+	REPLAY_FOUND_END_MOVE,
+	REPLAY_FOUND_END_LEVEL
 };
 //replays up to one turn from the recorder object
 //returns true if it got to the end of the turn without data running out

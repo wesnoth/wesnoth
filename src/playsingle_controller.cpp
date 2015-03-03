@@ -205,12 +205,8 @@ void playsingle_controller::play_scenario_init() {
 		saved_game_.replay_start() = to_config();
 	}
 
-	try {
-		fire_preload();
-	} catch (end_level_exception) {
-		return;
-	}
-
+	fire_preload();
+	
 	assert(recorder.at_end());
 
 	if(!loading_game_ )
@@ -221,20 +217,17 @@ void playsingle_controller::play_scenario_init() {
 		//we can only use a set_scontext_synced with a non empty recorder.
 		set_scontext_synced sync;
 
-		try {
-			fire_prestart();
-		} catch (end_level_exception) {
+		fire_prestart();
+		if (is_regular_game_end()) {
 			return;
 		}
-
 
 		init_gui();
 		LOG_NG << "first_time..." << (is_skipping_replay() ? "skipping" : "no skip") << "\n";
 
 		events::raise_draw_event();
-		try {
-			fire_start();
-		} catch (end_level_exception) {
+		fire_start();
+		if (is_regular_game_end()) {
 			return;
 		}
 		sync.do_final_checkup();
@@ -279,9 +272,8 @@ void playsingle_controller::play_scenario_main_loop() {
 		ERR_NG << "Playing game with 0 teams." << std::endl;
 	}
 	for(; ; first_player_ = 1) {
-		possible_end_play_signal signal = play_turn();
-
-		if (signal) {
+		play_turn();
+		if (is_regular_game_end()) {
 			return;
 		}
 
@@ -427,7 +419,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	return QUIT;
 }
 
-possible_end_play_signal playsingle_controller::play_turn()
+void playsingle_controller::play_turn()
 {
 	whiteboard_manager_->on_gamestate_change();
 	gui_->new_turn();
@@ -445,7 +437,6 @@ possible_end_play_signal playsingle_controller::play_turn()
 		// If a side is empty skip over it.
 		if (current_team().is_empty()) continue;
 
-		possible_end_play_signal signal;
 		{
 			save_blocker blocker;
 			init_side_begin(false);
@@ -456,9 +447,14 @@ possible_end_play_signal playsingle_controller::play_turn()
 		}
 
 		ai_testing::log_turn_start(player_number_);
-		PROPOGATE_END_PLAY_SIGNAL ( play_side() );
-		HANDLE_END_PLAY_SIGNAL(finish_side_turn());
-
+		play_side();
+		if(is_regular_game_end()) {
+			return;
+		}
+		finish_side_turn();
+		if(is_regular_game_end()) {
+			return;
+		}
 		if(non_interactive()) {
 			LOG_AIT << " Player " << player_number_ << ": " <<
 				current_team().villages().size() << " Villages" <<
@@ -475,30 +471,28 @@ possible_end_play_signal playsingle_controller::play_turn()
 	finish_turn();
 
 	// Time has run out
-	PROPOGATE_END_PLAY_SIGNAL ( check_time_over() );
-	return boost::none;
+	check_time_over();
 }
 
-possible_end_play_signal playsingle_controller::play_idle_loop()
+void playsingle_controller::play_idle_loop()
 {
-	while(!end_turn_ && !player_type_changed_) {
-		HANDLE_END_PLAY_SIGNAL( play_slice() );
+	while(!should_return_to_play_side()) {
+		play_slice_catch();
 		gui_->draw();
 		SDL_Delay(10);
 	}
-	return boost::none;
 }
 
-possible_end_play_signal playsingle_controller::play_side()
+void playsingle_controller::play_side()
 {
 	//check for team-specific items in the scenario
 	gui_->parse_team_overlays();
 
-	try {
-		maybe_do_init_side();
-	} catch (end_level_exception & e) {
-		return possible_end_play_signal(e.to_struct());
+	maybe_do_init_side();
+	if(is_regular_game_end()) {
+		return;
 	}
+			
 	//flag used when we fallback from ai and give temporarily control to human
 	bool temporary_human = false;
 	do {
@@ -525,8 +519,9 @@ possible_end_play_signal playsingle_controller::play_side()
 			{
 				before_human_turn();
 				if (!end_turn_) {
-					if(possible_end_play_signal signal = play_idle_loop()) {
-						return signal;
+					play_human_turn();
+					if(is_regular_game_end()) {
+						return;
 					}
 				}
 			}
@@ -542,8 +537,9 @@ possible_end_play_signal playsingle_controller::play_side()
 				// Give control to a human for this turn.
 				player_type_changed_ = true;
 				temporary_human = true;
-			} catch (end_level_exception &e) {
-				return possible_end_play_signal(e.to_struct());
+			}
+			if(is_regular_game_end()) {
+				return;
 			}
 			if(!player_type_changed_)
 			{
@@ -551,14 +547,18 @@ possible_end_play_signal playsingle_controller::play_side()
 			}
 
 		} else if(current_team().is_network()) {
-			PROPOGATE_END_PLAY_SIGNAL( play_network_turn() );
+			play_network_turn();
+			if(is_regular_game_end()) {
+				return;
+			}
 		} else if(current_team().is_local_human() && current_team().is_idle()) {
 			end_turn_enable(false);
 			do_idle_notification();
 			before_human_turn();
 			if (!end_turn_) {
-				if(possible_end_play_signal signal = play_idle_loop()) {
-					return signal;
+				play_idle_loop();
+				if(is_regular_game_end()) {
+					return;
 				}
 			}
 		}
@@ -570,7 +570,6 @@ possible_end_play_signal playsingle_controller::play_side()
 	// Keep looping if the type of a team (human/ai/networked)
 	// has changed mid-turn
 	skip_next_turn_ = false;
-	return boost::none;
 }
 
 void playsingle_controller::before_human_turn()
@@ -607,24 +606,34 @@ void playsingle_controller::show_turn_dialog(){
 	}
 }
 
-void playsingle_controller::execute_gotos(){
-	menu_handler_.execute_gotos(mouse_handler_, player_number_);
+void playsingle_controller::execute_gotos()
+{
+	if(should_return_to_play_side())
+	{
+		return;
+	}
+	try
+	{
+		menu_handler_.execute_gotos(mouse_handler_, player_number_);
+	}
+	catch (const return_to_play_side_exception&)
+	{
+	}
 }
 
-possible_end_play_signal playsingle_controller::play_human_turn() {
+void playsingle_controller::play_human_turn() {
 	show_turn_dialog();
 
 	if (!preferences::disable_auto_moves()) {
-		HANDLE_END_PLAY_SIGNAL(execute_gotos());
+		execute_gotos();
 	}
 
 	end_turn_enable(true);
-	while(!end_turn_ && !player_type_changed_) {
-		HANDLE_END_PLAY_SIGNAL( play_slice() );
+	while(!should_return_to_play_side()) {
+		play_slice_catch();
 		gui_->draw();
 	}
 
-	return boost::none;
 }
 
 void playsingle_controller::linger()
@@ -707,13 +716,17 @@ void playsingle_controller::play_ai_turn()
 	if ( !cur_team.auto_shroud_updates() ) {
 		// We just took control, so the undo stack is empty. We still need
 		// to record this change for the replay though.
-		synced_context::run_in_synced_context("auto_shroud", replay_helper::get_auto_shroud(true));
+		synced_context::run_and_store("auto_shroud", replay_helper::get_auto_shroud(true));
 	}
 	undo_stack_->clear();
 
 	turn_data_.send_data();
 	try {
-		ai::manager::play_turn(player_number_);
+		try {
+			ai::manager::play_turn(player_number_);
+		}
+		catch (return_to_play_side_exception&) {
+		}
 	}
 	catch(...) {
 		turn_data_.sync_network();
@@ -742,11 +755,10 @@ void playsingle_controller::do_idle_notification()
 /**
  * Will handle networked turns in descendent classes.
  */
-possible_end_play_signal playsingle_controller::play_network_turn()
+void playsingle_controller::play_network_turn()
 {
 	// There should be no networked sides in single-player.
 	ERR_NG << "Networked team encountered by playsingle_controller." << std::endl;
-	return boost::none;
 }
 
 
@@ -756,7 +768,7 @@ void playsingle_controller::handle_generic_event(const std::string& name){
 	}
 }
 
-possible_end_play_signal playsingle_controller::check_time_over(){
+void playsingle_controller::check_time_over(){
 	bool time_left = gamestate_.tod_manager_.next_turn(gamestate_.gamedata_);
 	it_is_a_new_turn_ = true;
 	if(!time_left) {
@@ -766,7 +778,7 @@ possible_end_play_signal playsingle_controller::check_time_over(){
 		LOG_NG << "done firing time over event...\n";
 		//if turns are added while handling 'time over' event
 		if (gamestate_.tod_manager_.is_time_left()) {
-			return boost::none;
+			return;
 		}
 
 		if(non_interactive()) {
@@ -774,14 +786,15 @@ possible_end_play_signal playsingle_controller::check_time_over(){
 			ai_testing::log_draw();
 		}
 
-		HANDLE_END_PLAY_SIGNAL( check_victory() );
+		check_victory();
+		if (is_regular_game_end()) {
+			return;
+		}
 		end_level_data e;
 		e.proceed_to_next_level = false;
 		e.is_victory = false;
 		set_end_level_data(e);
-		return possible_end_play_signal (end_level_struct());
 	}
-	return boost::none;
 }
 
 void playsingle_controller::end_turn(){
@@ -797,18 +810,16 @@ void playsingle_controller::force_end_turn(){
 	end_turn_ = true;
 }
 
-void playsingle_controller::check_end_level()
+void playsingle_controller::check_objectives()
 {
-	if (!is_regular_game_end() || linger_)
-	{
-		const team &t = gamestate_.board_.teams()[gui_->viewing_team()];
-		if (!is_browsing() && t.objectives_changed()) {
-			dialogs::show_objectives(get_scenario_name().str(), t.objectives());
-			t.reset_objectives_changed();
-		}
+	if (!is_regular_game_end() || linger_) {
 		return;
 	}
-	throw end_level_exception();
+	const team &t = gamestate_.board_.teams()[gui_->viewing_team()];
+	if (!is_browsing() && t.objectives_changed()) {
+		dialogs::show_objectives(get_scenario_name().str(), t.objectives());
+		t.reset_objectives_changed();
+	}
 }
 
 

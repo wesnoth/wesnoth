@@ -1156,7 +1156,7 @@ void mouse_handler::attack_enemy_(const map_location& att_loc
 
 	const tod_manager & tod_man = pc_.get_tod_manager_const();
 
-	synced_context::run_in_synced_context("attack", replay_helper::get_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num,
+	synced_context::run_and_throw("attack", replay_helper::get_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num,
 		attacker->type_id(), defender->type_id(), att.level,
 		def.level, tod_man.turn(), tod_man.get_time_of_day()));
 }

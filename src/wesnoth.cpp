@@ -985,8 +985,10 @@ int main(int argc, char** argv)
 		return 1;
 	} catch(CVideo::quit&) {
 		//just means the game should quit
-	} catch(end_level_exception&) {
-		std::cerr << "caught end_level_exception (quitting)\n";
+	} catch(return_to_play_side_exception&) {
+		std::cerr << "caught return_to_play_side_exception, please report this bug (quitting)\n";
+	} catch(quit_game_exception&) {
+		std::cerr << "caught quit_game_exception (quitting)\n";
 	} catch(twml_exception& e) {
 		std::cerr << "WML exception:\nUser message: "
 			<< e.user_message << "\nDev message: " << e.dev_message << '\n';

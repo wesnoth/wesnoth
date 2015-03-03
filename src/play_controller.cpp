@@ -300,7 +300,6 @@ void play_controller::fire_prestart()
 	update_locker lock_display(gui_->video());
 	gamestate_.gamedata_.set_phase(game_data::PRESTART);
 	pump().fire("prestart");
-	check_end_level();
 	// prestart event may modify start turn with WML, reflect any changes.
 	start_turn_ = turn();
 	gamestate_.gamedata_.get_variable("turn_number") = int(start_turn_);
@@ -310,11 +309,10 @@ void play_controller::fire_start()
 {
 	gamestate_.gamedata_.set_phase(game_data::START);
 	pump().fire("start");
-	check_end_level();
 	// start event may modify start turn with WML, reflect any changes.
 	start_turn_ = turn();
 	gamestate_.gamedata_.get_variable("turn_number") = int(start_turn_);
-
+	check_objectives();
 	// prestart and start events may modify the initial gold amount,
 	// reflect any changes.
 	BOOST_FOREACH(team& tm, gamestate_.board_.teams_)
@@ -867,9 +865,10 @@ void play_controller::check_victory()
 	{
 		return;
 	}
-
-	check_end_level();
-
+	check_objectives();
+	if (is_regular_game_end()) {
+		return;
+	}
 	bool continue_level, found_player, found_network_player, invalidate_all;
 	std::set<unsigned> not_defeated;
 
@@ -885,7 +884,10 @@ void play_controller::check_victory()
 
 	if (found_player || found_network_player) {
 		pump().fire("enemies defeated");
-		check_end_level();
+		check_objectives();
+		if (is_regular_game_end()) {
+			return;
+		}
 	}
 
 	DBG_EE << "victory_when_enemies_defeated: " << victory_when_enemies_defeated_ << std::endl;
@@ -914,7 +916,6 @@ void play_controller::check_victory()
 	el_data.proceed_to_next_level = found_player || found_network_player;
 	el_data.is_victory = found_player;
 	set_end_level_data(el_data);
-	throw end_level_exception();
 }
 
 void play_controller::process_oos(const std::string& msg) const
@@ -927,7 +928,7 @@ void play_controller::process_oos(const std::string& msg) const
 
 	update_savegame_snapshot();
 	savegame::oos_savegame save(saved_game_, *gui_);
-	save.save_game_interactive(gui_->video(), message.str(), gui::YES_NO); // can throw end_level_exception
+	save.save_game_interactive(gui_->video(), message.str(), gui::YES_NO); // can throw quit_game_exception
 }
 
 void play_controller::update_gui_to_player(const int team_index, const bool observe)
@@ -987,4 +988,19 @@ bool play_controller::is_browsing() const
 		|| linger_
 		|| !init_side_done_
 		|| this->gamestate_.gamedata_.phase() != game_data::PLAY;
+}
+
+void play_controller::play_slice_catch()
+{
+	if(should_return_to_play_side()) {
+		return;
+	}
+	try
+	{
+		play_slice();
+	}
+	catch(const return_to_play_side_exception&)
+	{
+		assert(should_return_to_play_side());
+	}
 }

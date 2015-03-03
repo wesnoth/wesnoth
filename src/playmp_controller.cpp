@@ -86,7 +86,7 @@ void playmp_controller::stop_network(){
 	LOG_NG << "network processing stopped";
 }
 
-possible_end_play_signal playmp_controller::play_side()
+void playmp_controller::play_side()
 {
 	mp_ui_alerts::turn_changed(current_team().current_player());
 	// Proceed with the parent function.
@@ -105,80 +105,79 @@ void playmp_controller::remove_blindfold() {
 	}
 }
 
-possible_end_play_signal playmp_controller::play_human_turn()
+void playmp_controller::play_linger_turn()
+{
+	if (is_host()) {
+		end_turn_enable(true);
+	}
+	
+	while(!end_turn_) {
+		config cfg;
+		if(network_reader_.read(cfg)) {
+			if(turn_data_.process_network_data(cfg) == turn_info::PROCESS_END_LINGER)
+			{
+				end_turn();
+			}
+		}
+		play_slice();
+		gui_->draw();
+	}
+}
+
+void playmp_controller::play_human_turn()
 {
 	LOG_NG << "playmp::play_human_turn...\n";
-
+	assert(!linger_);
 	remove_blindfold();
 	boost::scoped_ptr<countdown_clock> timer;
-	if(!linger_ && saved_game_.mp_settings().mp_countdown) {
+	if(saved_game_.mp_settings().mp_countdown) {
 		timer.reset(new countdown_clock(current_team()));
 	}
 	show_turn_dialog();
 	if(undo_stack_->can_undo()) {
 		// If we reload a networked mp game we cannot undo moved made before the save
 		// Becasue other players already received them
-		synced_context::run_in_synced_context("update_shroud", replay_helper::get_update_shroud());
+		synced_context::run_and_store("update_shroud", replay_helper::get_update_shroud());
 		undo_stack_->clear();
 	}
 	if (!preferences::disable_auto_moves()) {
-		HANDLE_END_PLAY_SIGNAL(execute_gotos());
+		execute_gotos();
 	}
 
-	if (!linger_ || is_host()) {
-		end_turn_enable(true);
-	}
-	while(!end_turn_ && !player_type_changed_) {
+	end_turn_enable(true);
+	while(!should_return_to_play_side()) {
 		try {
-			config cfg;
-
-			if(network_reader_.read(cfg)) {
-				turn_info::PROCESS_DATA_RESULT res;
-				HANDLE_END_PLAY_SIGNAL( res = turn_data_.process_network_data(cfg) );
-				if (res == turn_info::PROCESS_RESTART_TURN)
+			process_network_data();
+			if (player_type_changed_)
+			{
+				// Clean undo stack if turn has to be restarted (losing control)
+				if ( undo_stack_->can_undo() )
 				{
-					player_type_changed_ = true;
-					// Clean undo stack if turn has to be restarted (losing control)
-					if ( undo_stack_->can_undo() )
-					{
-						font::floating_label flabel(_("Undoing moves not yet transmitted to the server."));
+					font::floating_label flabel(_("Undoing moves not yet transmitted to the server."));
 
-						SDL_Color color = {255,255,255,255};
-						flabel.set_color(color);
-						SDL_Rect rect = gui_->map_area();
-						flabel.set_position(rect.w/2, rect.h/2);
-						flabel.set_lifetime(150);
-						flabel.set_clip_rect(rect);
+					SDL_Color color = {255,255,255,255};
+					flabel.set_color(color);
+					SDL_Rect rect = gui_->map_area();
+					flabel.set_position(rect.w/2, rect.h/2);
+					flabel.set_lifetime(150);
+					flabel.set_clip_rect(rect);
 
-						font::add_floating_label(flabel);
-					}
-
-					while( undo_stack_->can_undo() )
-						undo_stack_->undo();
-
-					return boost::none;
+					font::add_floating_label(flabel);
 				}
-				else if(res == turn_info::PROCESS_END_LINGER)
-				{
-					if(!linger_)
-						replay::process_error("Received unexpected next_scenario during the game");
-					else
-					{
-						//we end the turn immidiately to prevent receiving data of the next scenario while we are not playing it.
-						end_turn();
-					}
-				}
+
+				while( undo_stack_->can_undo() )
+					undo_stack_->undo();
+
 			}
 
-			HANDLE_END_PLAY_SIGNAL( play_slice() );
+			play_slice_catch();
 			if(timer)
 			{
 				SDL_Delay(1);
 				bool time_left = timer->update();
 				if(!time_left)
 				{
-					//End the turn of there is no time left.
-					return boost::none;
+					end_turn_ = true;
 				}
 			}
 		}
@@ -191,38 +190,22 @@ possible_end_play_signal playmp_controller::play_human_turn()
 
 		gui_->draw();
 	}
-	return boost::none;
 }
 
-possible_end_play_signal playmp_controller::play_idle_loop()
+void playmp_controller::play_idle_loop()
 {
 	LOG_NG << "playmp::play_human_turn...\n";
 
 	remove_blindfold();
 
-	while (!end_turn_ && !player_type_changed_)
+	while (!should_return_to_play_side())
 	{
 		try
 		{
-		config cfg;
-		if(network_reader_.read(cfg)) {
-			turn_info::PROCESS_DATA_RESULT res;
-			HANDLE_END_PLAY_SIGNAL( res = turn_data_.process_network_data(cfg) );
-
-			if (res == turn_info::PROCESS_RESTART_TURN)
-			{
-				player_type_changed_ = true;
-				return boost::none;
-			}
-		}
-
-		HANDLE_END_PLAY_SIGNAL ( play_slice() );
-
-		if (!linger_) {
+			process_network_data();
+			play_slice_catch();
 			SDL_Delay(1);
-		}
-
-		gui_->draw();
+			gui_->draw();
 		}
 		catch(...)
 		{
@@ -231,7 +214,6 @@ possible_end_play_signal playmp_controller::play_idle_loop()
 		}
 		turn_data_.send_data();
 	}
-	return boost::none;
 }
 
 void playmp_controller::set_end_scenario_button()
@@ -280,18 +262,12 @@ void playmp_controller::linger()
 			player_number_ = first_player_;
 			turn_data_.send_data();
 			end_turn_ = false;
-			play_human_turn();
+			play_linger_turn();
 			after_human_turn();
 			LOG_NG << "finished human turn" << std::endl;
 		} catch (game::load_game_exception&) {
 			LOG_NG << "caught load-game-exception" << std::endl;
 			// this should not happen, the option to load a game is disabled
-			throw;
-		} catch (end_level_exception&) {
-			// thrown if the host ends the scenario and let us advance
-			// to the next level
-			LOG_NG << "caught end-level-exception" << std::endl;
-			reset_end_scenario_button();
 			throw;
 		} catch (network::error&) {
 			LOG_NG << "caught network-error-exception" << std::endl;
@@ -327,7 +303,7 @@ void playmp_controller::wait_for_upload()
 				throw_quit_game_exception();
 			}
 
-		} catch(const end_level_exception&) {
+		} catch(const quit_game_exception&) {
 			network_reader_.set_source(playturn_network_adapter::read_network);
 			turn_data_.send_data();
 			throw;
@@ -362,48 +338,22 @@ void playmp_controller::finish_side_turn(){
 	play_controller::finish_side_turn();
 }
 
-possible_end_play_signal playmp_controller::play_network_turn(){
+void playmp_controller::play_network_turn(){
 	LOG_NG << "is networked...\n";
 
 	end_turn_enable(false);
 	turn_data_.send_data();
 
-	for(;;) {
-
-		if (!network_processing_stopped_){
-			config cfg;
-			if(network_reader_.read(cfg)) {
-				if (replay_last_turn_ <= turn()){
-					skip_replay_ = false;
-				}
-				turn_info::PROCESS_DATA_RESULT result;
-				HANDLE_END_PLAY_SIGNAL ( result = turn_data_.process_network_data(cfg) );
-				if(player_type_changed_ == true)
-				{
-					//we received a player change/quit during waiting in get_user_choice/synced_context::pull_remote_user_input
-					return boost::none;
-				}
-				if (result == turn_info::PROCESS_RESTART_TURN) {
-					player_type_changed_ = true;
-					return boost::none;
-				} else if (result == turn_info::PROCESS_END_TURN) {
-					break;
-				}
-			}
-			/*
-				we might have data left in replay that we recieved during prestart events. (or maybe other events.)
-			*/
-			else if(!recorder.at_end())
-			{
-				if(do_replay() == REPLAY_FOUND_END_TURN)
-				{
-					break;
-				}
+	while(!should_return_to_play_side())
+	{
+		if (!network_processing_stopped_) {
+			process_network_data();
+			if (replay_last_turn_ <= turn()) {
+				skip_replay_ = false;
 			}
 		}
 
-		HANDLE_END_PLAY_SIGNAL( play_slice() );
-
+		play_slice_catch();
 		if (!network_processing_stopped_){
 			turn_data_.send_data();
 		}
@@ -412,7 +362,6 @@ possible_end_play_signal playmp_controller::play_network_turn(){
 	}
 
 	LOG_NG << "finished networked...\n";
-	return boost::none;
 }
 
 
@@ -497,4 +446,31 @@ void playmp_controller::pull_remote_choice()
 void playmp_controller::send_user_choice()
 {
 	turn_data_.send_data();
+}
+
+void playmp_controller::process_network_data()
+{
+	if(should_return_to_play_side()) {
+		return;
+	}
+	turn_info::PROCESS_DATA_RESULT res = turn_info::PROCESS_CONTINUE;
+	config cfg;
+	if(!recorder.at_end()) {
+		res = turn_info::replay_to_process_data_result(do_replay()); 
+	}
+	else if(network_reader_.read(cfg)) {
+		res = turn_data_.process_network_data(cfg);
+	}
+
+	if (res == turn_info::PROCESS_RESTART_TURN) {
+		player_type_changed_ = true;
+	}
+	else if (res == turn_info::PROCESS_END_TURN) {
+		end_turn_ = true;
+	}
+	else if (res == turn_info::PROCESS_END_LEVEL) {
+	}
+	else if (res == turn_info::PROCESS_END_LINGER) {
+		replay::process_error("Received unexpected next_scenario during the game");
+	}
 }

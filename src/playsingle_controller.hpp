@@ -38,7 +38,7 @@ public:
 
 	virtual void handle_generic_event(const std::string& name);
 
-	virtual void check_end_level();
+	virtual void check_objectives();
 	void report_victory(std::ostringstream &report, team& t, int finishing_bonus_per_turn,
 			int turns_left, int finishing_bonus);
 	virtual void on_not_observer() {}
@@ -54,21 +54,23 @@ public:
 	
 	bool get_player_type_changed() const { return player_type_changed_; }
 	void set_player_type_changed() { player_type_changed_ = true; }
+	virtual bool should_return_to_play_side()
+	{ return player_type_changed_ || end_turn_ || is_regular_game_end(); }
 protected:
-	possible_end_play_signal play_turn();
-	virtual possible_end_play_signal play_side();
+	void play_turn();
+	virtual void play_side();
 	void before_human_turn();
 	void show_turn_dialog();
 	void execute_gotos();
-	virtual possible_end_play_signal play_human_turn();
+	virtual void play_human_turn();
 	virtual void after_human_turn();
 	void end_turn_enable(bool enable);
 	void play_ai_turn();
-	virtual possible_end_play_signal play_idle_loop();
+	virtual void play_idle_loop();
 	virtual void do_idle_notification();
-	virtual possible_end_play_signal play_network_turn();
+	virtual void play_network_turn();
 	virtual void init_gui();
-	possible_end_play_signal check_time_over();
+	void check_time_over();
 	void store_recalls();
 	void store_gold(bool obs = false);
 

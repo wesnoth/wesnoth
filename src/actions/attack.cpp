@@ -1497,25 +1497,8 @@ static void advance_unit_at(const map_location& loc, const ai::unit_advancements
 void attack_unit_and_advance(const map_location &attacker, const map_location &defender,
                  int attack_with, int defend_with, bool update_display,
 				 const ai::unit_advancements_aspect& ai_advancement)
-{	try
-	{
-		attack_unit(attacker, defender, attack_with, defend_with, update_display);
-	}
-	catch(end_level_exception&)
-	{
-
-		unit_map::const_iterator atku = resources::units->find(attacker);
-
-		if (atku != resources::units->end()) {
-			advance_unit_at(attacker, ai_advancement);
-		}
-
-		unit_map::const_iterator defu = resources::units->find(defender);
-		if (defu != resources::units->end()) {
-			advance_unit_at(defender, ai_advancement);
-		}
-		throw;
-	}
+{
+	attack_unit(attacker, defender, attack_with, defend_with, update_display);
 	unit_map::const_iterator atku = resources::units->find(attacker);
 	if (atku != resources::units->end()) {
 		advance_unit_at(attacker, ai_advancement);

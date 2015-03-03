@@ -48,7 +48,6 @@ public:
 			also there are no events of similar fired when redoing an action (in most cases).
 
 		@param use_undo this parameter is used to ignore undos during an ai move to optimize.
-		@param store_in_replay only true if called by do_replay_handle
 		@param error_handler an error handler for the case that data contains invalid data.
 
 		@return true if the action was successful.
@@ -56,7 +55,9 @@ public:
 
 
 	 */
-	static bool run_in_synced_context(const std::string& commandname,const config& data, bool use_undo = true, bool show = true ,  bool store_in_replay = true , synced_command::error_handler_function error_handler = default_error_function);
+	static bool run(const std::string& commandname, const config& data, bool use_undo = true, bool show = true, synced_command::error_handler_function error_handler = default_error_function);
+	static bool run_and_store(const std::string& commandname, const config& data, bool use_undo = true, bool show = true, synced_command::error_handler_function error_handler = default_error_function);
+	static bool run_and_throw(const std::string& commandname, const config& data, bool use_undo = true, bool show = true, synced_command::error_handler_function error_handler = default_error_function);
 	/**
 		checks whether we are currently running in a synced context, and if not we enters it.
 		this is never called from so_replay_handle.

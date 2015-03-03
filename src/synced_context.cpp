@@ -54,23 +54,11 @@ synced_context::synced_state synced_context::state_ = synced_context::UNSYNCED;
 int synced_context::last_unit_id_ = 0;
 bool synced_context::is_simultaneously_ = false;
 
-bool synced_context::run_in_synced_context(const std::string& commandname, const config& data, bool use_undo, bool show,  bool store_in_replay, synced_command::error_handler_function error_handler)
+bool synced_context::run(const std::string& commandname, const config& data, bool use_undo, bool show, synced_command::error_handler_function error_handler)
 {
 	DBG_REPLAY << "run_in_synced_context:" << commandname << "\n";
 
-	if(!recorder.at_end() && store_in_replay)
-	{
-		//Most likeley we are in a replay now.
-		//We don't want to execute [do_command] & similar now
-		WRN_REPLAY << "invalid run_in_synced_context call ignored" << std::endl;
-		return false;
-	}
-
 	assert(use_undo || (!resources::undo_stack->can_redo() && !resources::undo_stack->can_undo()));
-	if(store_in_replay)
-	{
-		recorder.add_synced_command(commandname, data);
-	}
 	/*
 		use this after recorder.add_synced_command
 		because set_scontext_synced sets the checkup to the last added command
@@ -84,10 +72,8 @@ bool synced_context::run_in_synced_context(const std::string& commandname, const
 	else
 	{
 		bool success = it->second(data, use_undo, show, error_handler);
-		if(!success && store_in_replay)
+		if(!success)
 		{
-			//remove it from replay if we weren't sucessful.
-			recorder.undo();
 			return false;
 		}
 	}
@@ -100,6 +86,27 @@ bool synced_context::run_in_synced_context(const std::string& commandname, const
 	return true;
 }
 
+bool synced_context::run_and_store(const std::string& commandname, const config& data, bool use_undo, bool show, synced_command::error_handler_function error_handler)
+{
+	assert(recorder.at_end());
+	recorder.add_synced_command(commandname, data);
+	bool success = run(commandname, data, use_undo, show, error_handler);
+	if(!success)
+	{
+		recorder.undo();
+	}
+	return success;
+}
+
+bool synced_context::run_and_throw(const std::string& commandname, const config& data, bool use_undo, bool show, synced_command::error_handler_function error_handler)
+{
+	bool success = run_and_store(commandname, data, use_undo, show, error_handler);
+	if(success)
+	{
+		resources::controller->maybe_throw_return_to_play_side();
+	}
+	return success;
+}
 
 bool synced_context::run_in_synced_context_if_not_already(const std::string& commandname,const config& data, bool use_undo, bool show, synced_command::error_handler_function error_handler)
 {
@@ -112,7 +119,7 @@ bool synced_context::run_in_synced_context_if_not_already(const std::string& com
 			ERR_REPLAY << "ignored attempt to invoke a synced command during replay\n";
 			return false;
 		}
-		return run_in_synced_context(commandname, data, use_undo, show, true, error_handler);
+		return run_and_throw(commandname, data, use_undo, show, error_handler);
 	}
 	case(synced_context::LOCAL_CHOICE):
 		ERR_REPLAY << "trying to execute action while being in a local_choice" << std::endl;
@@ -125,7 +132,7 @@ bool synced_context::run_in_synced_context_if_not_already(const std::string& com
 		synced_command::map::iterator it = synced_command::registry().find(commandname);
 		if(it == synced_command::registry().end())
 		{
-			error_handler("commandname [" +commandname +"]not found", true);
+			error_handler("commandname [" +commandname +"] not found", true);
 			return false;
 		}
 		else

@@ -413,6 +413,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::replay_to_process_data_result(REPLAY_R
 		return PROCESS_FOUND_DEPENDENT;
 	case REPLAY_FOUND_END_TURN:
 		return PROCESS_END_TURN;
+	case REPLAY_FOUND_END_LEVEL:
+		return PROCESS_END_LEVEL;
 	default:
 		assert(false);
 		throw "found invalid REPLAY_RETURN";

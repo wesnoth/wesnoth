@@ -40,74 +40,22 @@ MAKE_ENUM(LEVEL_RESULT,
 MAKE_ENUM_STREAM_OPS1(LEVEL_RESULT)
 
 /**
- * Exception used to escape form the ai code in case of [end_turn].
+ * Exception used to escape form the ai or ui code to playsingle_controller::play_side.
+ * Never thrown during replays.
  */
-class ai_end_turn_exception
-	: public tlua_jailbreak_exception, public std::exception
+class return_to_play_side_exception : public tlua_jailbreak_exception, public std::exception
 {
 public:
 
-	ai_end_turn_exception()
+	return_to_play_side_exception()
 		: tlua_jailbreak_exception()
 		, std::exception()
 	{
 	}
-	const char * what() const throw() { return "ai_end_turn_exception"; }
+	const char * what() const throw() { return "return_to_play_side_exception"; }
 private:
 
-	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(ai_end_turn_exception)
-};
-
-/**
- * Exception used to signal the end of a player turn.
- */
-class restart_turn_exception
-	: public tlua_jailbreak_exception, public std::exception
-{
-public:
-
-	restart_turn_exception()
-		: tlua_jailbreak_exception()
-		, std::exception()
-	{
-	}
-	const char * what() const throw() { return "restart_turn_exception"; }
-
-private:
-
-	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(restart_turn_exception)
-};
-
-/**
- * Struct used to transmit info caught from an end_turn_exception.
- */
-struct end_level_struct
-{
-};
-
-/**
- * Exception used to signal the end of a scenario.
- */
-class end_level_exception
-	: public tlua_jailbreak_exception
-	, public std::exception
-{
-public:
-
-	end_level_exception()
-		: tlua_jailbreak_exception()
-		, std::exception()
-	{
-	}
-
-	end_level_struct to_struct() {
-		return end_level_struct();
-	}
-	
-	const char * what() const throw() { return "end_level_exception"; }
-private:
-
-	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(end_level_exception)
+	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(return_to_play_side_exception)
 };
 
 class quit_game_exception
@@ -125,48 +73,6 @@ public:
 private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(quit_game_exception)
 };
-/**
- * The two end_*_exceptions are caught and transformed to this signaling object
- */
-typedef boost::optional<end_level_struct> possible_end_play_signal;
-
-#define HANDLE_END_PLAY_SIGNAL( X )\
-do\
-{\
-	try {\
-		X;\
-	} catch (end_level_exception & e) {\
-		return possible_end_play_signal(e.to_struct());\
-	}\
-}\
-while(0)
-
-
-
-#define PROPOGATE_END_PLAY_SIGNAL( X )\
-do\
-{\
-	possible_end_play_signal temp;\
-	temp = X;\
-	if (temp) {\
-		return temp;\
-	}\
-}\
-while(0)
-
-
-
-#define HANDLE_AND_PROPOGATE_END_PLAY_SIGNAL( X )\
-do\
-{\
-	possible_end_play_signal temp;\
-	HANDLE_END_PLAY_SIGNAL( temp = X );\
-	if (temp) {\
-		return temp;\
-	}\
-}\
-while(0)
-
 
 /**
  * The non-persistent part of end_level_data

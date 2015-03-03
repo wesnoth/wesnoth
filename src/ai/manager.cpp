@@ -788,18 +788,12 @@ void manager::play_turn( side_number side ){
 	num_interact_ = 0;
 	const int turn_start_time = SDL_GetTicks();
 	/*hack. @todo 1.9 rework via extended event system*/
-	try {
-		get_ai_info().recent_attacks.clear();
-		interface& ai_obj = get_active_ai_for_side(side);
-		resources::game_events->pump().fire("ai turn");
-		raise_turn_started();
-		ai_obj.new_turn();
-		ai_obj.play_turn();
-	}
-	catch (const ai_end_turn_exception&) {
-	}
-	catch(const restart_turn_exception&) {
-	}
+	get_ai_info().recent_attacks.clear();
+	interface& ai_obj = get_active_ai_for_side(side);
+	resources::game_events->pump().fire("ai turn");
+	raise_turn_started();
+	ai_obj.new_turn();
+	ai_obj.play_turn();
 	const int turn_end_time= SDL_GetTicks();
 	DBG_AI_MANAGER << "side " << side << ": number of user interactions: "<<num_interact_<<std::endl;
 	DBG_AI_MANAGER << "side " << side << ": total turn time: "<<turn_end_time - turn_start_time << " ms "<< std::endl;

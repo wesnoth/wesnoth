@@ -42,13 +42,13 @@ public:
 	{ return replay_controller_.reset_replay(); }
 	virtual void stop_replay() OVERRIDE
 	{ return replay_controller_.stop_replay(); }
-	virtual possible_end_play_signal play_replay() OVERRIDE
+	virtual void play_replay() OVERRIDE
 	{ return replay_controller_.play_replay(); }
-	virtual possible_end_play_signal replay_next_turn() OVERRIDE
+	virtual void replay_next_turn() OVERRIDE
 	{ return replay_controller_.replay_next_turn(); }
-	virtual possible_end_play_signal replay_next_side() OVERRIDE
+	virtual void replay_next_side() OVERRIDE
 	{ return replay_controller_.replay_next_side(); }
-	virtual possible_end_play_signal replay_next_move() OVERRIDE
+	virtual void replay_next_move() OVERRIDE
 	{ return replay_controller_.replay_next_move(); }
 	virtual void replay_show_everything() OVERRIDE
 	{ return replay_controller_.replay_show_everything(); }

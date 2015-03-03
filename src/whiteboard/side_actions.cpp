@@ -336,8 +336,7 @@ bool side_actions::execute(side_actions::iterator position)
 	bool action_complete;
 	try	{
 		 action->execute(action_successful, action_complete);
-	} catch (restart_turn_exception&) {
-		//This exception is thown by the ai code, i dont know whther the whiteboard can interact with the ai so i leave this catch here for now
+	} catch (return_to_play_side_exception&) {
 		synced_erase(position);
 		LOG_WB << "End turn exception caught during execution, deleting action. " << *this << "\n";
 		//validate actions at next map rebuild
