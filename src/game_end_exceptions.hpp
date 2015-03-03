@@ -81,8 +81,8 @@ private:
 /**
  * Struct used to transmit info caught from an end_turn_exception.
  */
-struct end_level_struct {
-	bool is_quit;
+struct end_level_struct
+{
 };
 
 /**
@@ -94,18 +94,14 @@ class end_level_exception
 {
 public:
 
-	end_level_exception(bool isquit = false)
+	end_level_exception()
 		: tlua_jailbreak_exception()
 		, std::exception()
-		, is_quit(isquit)
 	{
 	}
 
-	bool is_quit;
-
 	end_level_struct to_struct() {
-		end_level_struct els = {is_quit};
-		return els;
+		return end_level_struct();
 	}
 	
 	const char * what() const throw() { return "end_level_exception"; }
@@ -114,6 +110,21 @@ private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(end_level_exception)
 };
 
+class quit_game_exception
+	: public tlua_jailbreak_exception
+	, public std::exception
+{
+public:
+
+	quit_game_exception()
+		: tlua_jailbreak_exception()
+		, std::exception()
+	{
+	}
+	const char * what() const throw() { return "quit_game_exception"; }
+private:
+	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(quit_game_exception)
+};
 /**
  * The two end_*_exceptions are caught and transformed to this signaling object
  */
@@ -199,6 +210,6 @@ inline void throw_quit_game_exception()
 	// Distinguish 'Quit' from 'Regular' end_level_exceptions to solve the following problem:
 	//   If a player quits the game during an event after an [endlevel] occurs, the game won't
 	//   Quit but continue with the [endlevel] instead.
-	throw end_level_exception(true);
+	throw quit_game_exception();
 }
 #endif /* ! GAME_END_EXCEPTIONS_HPP_INCLUDED */

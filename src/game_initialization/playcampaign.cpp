@@ -152,6 +152,10 @@ LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& gam
 		} else {
 			gui2::show_error_message(disp.video(), _("The game could not be loaded: ") + e.message);
 		}
+	
+	} catch(quit_game_exception& e) {
+		LOG_NG << "The replay was aborted\n";
+		return QUIT;
 	} catch(game::game_error& e) {
 		ERR_NG << std::string(_("Error while playing the game: ")) + " (game::game_error) " + e.message << std::endl;
 		if (is_unit_test) {
@@ -293,9 +297,11 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			{
 				res = playmp_scenario(game_config, tdata, disp, gamestate, story, skip_replay, blindfold_replay, io_type, end_level);
 			}
-				
 		} catch(game::load_game_failed& e) {
 			gui2::show_error_message(disp.video(), _("The game could not be loaded: ") + e.message);
+			return QUIT;
+		} catch(quit_game_exception& e) {
+			LOG_NG << "The game was aborted\n";
 			return QUIT;
 		} catch(game::game_error& e) {
 			gui2::show_error_message(disp.video(), _("Error while playing the game: ") + e.message);

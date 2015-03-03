@@ -207,10 +207,7 @@ void playsingle_controller::play_scenario_init() {
 
 	try {
 		fire_preload();
-	} catch (end_level_exception &e) {
-		if(e.is_quit) {
-			this->reset_end_level_data();
-		}
+	} catch (end_level_exception) {
 		return;
 	}
 
@@ -226,10 +223,7 @@ void playsingle_controller::play_scenario_init() {
 
 		try {
 			fire_prestart();
-		} catch (end_level_exception &e) {
-			if(e.is_quit) {
-				this->reset_end_level_data();
-			}
+		} catch (end_level_exception) {
 			return;
 		}
 
@@ -240,10 +234,7 @@ void playsingle_controller::play_scenario_init() {
 		events::raise_draw_event();
 		try {
 			fire_start();
-		} catch (end_level_exception &e) {
-			if(e.is_quit) {
-				this->reset_end_level_data();
-			}
+		} catch (end_level_exception) {
 			return;
 		}
 		sync.do_final_checkup();
@@ -291,9 +282,6 @@ void playsingle_controller::play_scenario_main_loop() {
 		possible_end_play_signal signal = play_turn();
 
 		if (signal) {
-			if(signal->is_quit) {
-				reset_end_level_data();
-			}
 			return;
 		}
 
@@ -336,15 +324,11 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks_) << "\n";
 	try {
 		play_scenario_init();
-		//FIXME: This ignores QUITs during play_scenario_init()
 		if (!is_regular_game_end() && !linger_) {
 			play_scenario_main_loop();
 		}
 		if (game_config::exit_at_end) {
 			exit(0);
-		}
-		if (!is_regular_game_end()) {
-			return QUIT;
 		}
 		const bool is_victory = get_end_level_data_const().is_victory;
 
@@ -795,8 +779,7 @@ possible_end_play_signal playsingle_controller::check_time_over(){
 		e.proceed_to_next_level = false;
 		e.is_victory = false;
 		set_end_level_data(e);
-		end_level_struct els  = { false };
-		return possible_end_play_signal (els);
+		return possible_end_play_signal (end_level_struct());
 	}
 	return boost::none;
 }

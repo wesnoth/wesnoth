@@ -482,9 +482,6 @@ possible_end_play_signal replay_controller::play_replay(){
 	possible_end_play_signal signal = play_replay_main_loop();
 
 	if(signal) {
-		if(signal->is_quit) {
-			return signal;
-		}
 	}
 
 	if (!is_playing_) {
