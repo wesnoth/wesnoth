@@ -812,11 +812,9 @@ void playsingle_controller::force_end_turn(){
 
 void playsingle_controller::check_objectives()
 {
-	if (!is_regular_game_end() || linger_) {
-		return;
-	}
 	const team &t = gamestate_.board_.teams()[gui_->viewing_team()];
-	if (!is_browsing() && t.objectives_changed()) {
+
+	if (!is_regular_game_end() && !is_browsing() && t.objectives_changed()) {
 		dialogs::show_objectives(get_scenario_name().str(), t.objectives());
 		t.reset_objectives_changed();
 	}
