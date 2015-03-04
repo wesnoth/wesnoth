@@ -535,9 +535,6 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 
 			starting_pos = gamestate.replay_start();
 			gamestate = game_state(starting_pos);
-			// Retain carryover_sides_start, as the config from the server
-			// doesn't contain it.
-			gamestate.carryover_sides_start = sides.to_config();
 		} else {
 			// Retrieve next scenario data.
 			scenario = &game_config.find_child(type, "id",
@@ -636,6 +633,10 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 
 		}
 		gamestate.snapshot = config();
+
+		if (io_type != IO_NONE) { // in mp, the next scenario is sent to the server and it contains the carryover information.
+			gamestate.carryover_sides_start = config();
+		}
 	}
 
 	if (!gamestate.carryover_sides_start["next_scenario"].empty() && gamestate.carryover_sides_start["next_scenario"] != "null") {
