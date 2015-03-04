@@ -79,7 +79,7 @@ playsingle_controller::playsingle_controller(const config& level,
 	, replay_sender_(recorder)
 	, network_reader_()
 	, turn_data_(replay_sender_, network_reader_)
-	, end_turn_(false)
+	, end_turn_(END_TURN_NONE)
 	, player_type_changed_(false)
 	, skip_next_turn_(false)
 	, do_autosaves_(false)
@@ -505,7 +505,7 @@ void playsingle_controller::play_side()
 		// This flag can be set by derived classes (in overridden functions).
 		player_type_changed_ = false;
 		if (!skip_next_turn_)
-			end_turn_ = false;
+			end_turn_ = END_TURN_NONE;
 
 		statistics::reset_turn_stats(gamestate_.board_.teams()[player_number_ - 1].save_id());
 
@@ -518,7 +518,7 @@ void playsingle_controller::play_side()
 				|| (gamestate_.board_.units().size() == 0 && player_number_ == 1))
 			{
 				before_human_turn();
-				if (!end_turn_) {
+				if (end_turn_ == END_TURN_NONE) {
 					play_human_turn();
 					if(is_regular_game_end()) {
 						return;
@@ -526,8 +526,10 @@ void playsingle_controller::play_side()
 				}
 			}
 
-			if ( !player_type_changed_ )
+			if ( !player_type_changed_ ) {
+				sync_end_turn();
 				after_human_turn();
+			}
 			LOG_NG << "human finished turn...\n";
 
 		} else if(current_team().is_local_ai() || (current_team().is_local_human() && current_team().is_droid())) {
@@ -543,7 +545,7 @@ void playsingle_controller::play_side()
 			}
 			if(!player_type_changed_)
 			{
-				recorder.end_turn();
+				sync_end_turn();
 			}
 
 		} else if(current_team().is_network()) {
@@ -555,7 +557,7 @@ void playsingle_controller::play_side()
 			end_turn_enable(false);
 			do_idle_notification();
 			before_human_turn();
-			if (!end_turn_) {
+			if (end_turn_ == END_TURN_NONE) {
 				play_idle_loop();
 				if(is_regular_game_end()) {
 					return;
@@ -569,6 +571,7 @@ void playsingle_controller::play_side()
 	} while (player_type_changed_);
 	// Keep looping if the type of a team (human/ai/networked)
 	// has changed mid-turn
+	assert(end_turn_ == END_TURN_SYNCED);
 	skip_next_turn_ = false;
 }
 
@@ -576,7 +579,7 @@ void playsingle_controller::before_human_turn()
 {
 	log_scope("player turn");
 	linger_ = false;
-	if(end_turn_) {
+	if(end_turn_ != END_TURN_NONE) {
 		return;
 	}
 	//TODO: why do we need the next line?
@@ -656,8 +659,8 @@ void playsingle_controller::linger()
 		// Same logic as single-player human turn, but
 		// *not* the same as multiplayer human turn.
 		end_turn_enable(true);
-		end_turn_ = false;
-		while(!end_turn_) {
+		end_turn_ = END_TURN_NONE;
+		while(end_turn_ == END_TURN_NONE) {
 			// Reset the team number to make sure we're the right team.
 			player_number_ = first_player_;
 			play_slice();
@@ -689,12 +692,6 @@ void playsingle_controller::end_turn_enable(bool enable)
 
 void playsingle_controller::after_human_turn()
 {
-	// Mark the turn as done.
-	if (!linger_)
-	{
-		recorder.end_turn();
-	}
-
 	// Clear moves from the GUI.
 	gui_->set_route(NULL);
 	gui_->unhighlight_reach();
@@ -799,15 +796,15 @@ void playsingle_controller::check_time_over(){
 
 void playsingle_controller::end_turn(){
 	if (linger_)
-		end_turn_ = true;
-	else if (!is_browsing()){
-		end_turn_ = menu_handler_.end_turn(player_number_);
+		end_turn_ = END_TURN_REQUIRED;
+	else if (!is_browsing() && menu_handler_.end_turn(player_number_)){
+		end_turn_ = END_TURN_REQUIRED;
 	}
 }
 
 void playsingle_controller::force_end_turn(){
 	skip_next_turn_ = true;
-	end_turn_ = true;
+	end_turn_ = END_TURN_REQUIRED;
 }
 
 void playsingle_controller::check_objectives()
@@ -832,5 +829,16 @@ void playsingle_controller::maybe_linger()
 	assert(is_regular_game_end());
 	if (get_end_level_data_const().transient.linger_mode && !gamestate_.board_.teams().empty()) {
 		linger();
+	}
+}
+
+void playsingle_controller::sync_end_turn()
+{
+	//We cannot add [end_turn] to the recorder while executing another action.
+	assert(synced_context::synced_state() == synced_context::UNSYNCED);
+	if(end_turn_ == END_TURN_REQUIRED && current_team().is_local())
+	{
+		recorder.end_turn();
+		end_turn_ = END_TURN_SYNCED;
 	}
 }

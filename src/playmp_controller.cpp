@@ -111,7 +111,7 @@ void playmp_controller::play_linger_turn()
 		end_turn_enable(true);
 	}
 	
-	while(!end_turn_) {
+	while(end_turn_ == END_TURN_NONE) {
 		config cfg;
 		if(network_reader_.read(cfg)) {
 			if(turn_data_.process_network_data(cfg) == turn_info::PROCESS_END_LINGER)
@@ -177,7 +177,7 @@ void playmp_controller::play_human_turn()
 				bool time_left = timer->update();
 				if(!time_left)
 				{
-					end_turn_ = true;
+					end_turn_ = END_TURN_REQUIRED;
 				}
 			}
 		}
@@ -261,7 +261,7 @@ void playmp_controller::linger()
 			// reimplement parts of play_side()
 			player_number_ = first_player_;
 			turn_data_.send_data();
-			end_turn_ = false;
+			end_turn_ = END_TURN_NONE;
 			play_linger_turn();
 			after_human_turn();
 			LOG_NG << "finished human turn" << std::endl;
@@ -344,7 +344,7 @@ void playmp_controller::play_network_turn(){
 	end_turn_enable(false);
 	turn_data_.send_data();
 
-	while(!should_return_to_play_side())
+	while(end_turn_ != END_TURN_SYNCED && !is_regular_game_end() && !player_type_changed_)
 	{
 		if (!network_processing_stopped_) {
 			process_network_data();
@@ -466,7 +466,7 @@ void playmp_controller::process_network_data()
 		player_type_changed_ = true;
 	}
 	else if (res == turn_info::PROCESS_END_TURN) {
-		end_turn_ = true;
+		end_turn_ = END_TURN_SYNCED;
 	}
 	else if (res == turn_info::PROCESS_END_LEVEL) {
 	}

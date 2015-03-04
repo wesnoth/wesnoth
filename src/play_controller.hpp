@@ -175,7 +175,6 @@ public:
 
 	bool is_skipping_replay() const { return skip_replay_;}
 	bool is_linger_mode() const { return linger_; }
-	virtual bool is_end_turn() const { return false; }
 	void do_autosave();
 
 	void do_consolesave(const std::string& filename);

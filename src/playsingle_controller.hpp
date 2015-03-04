@@ -49,13 +49,12 @@ public:
 	void force_end_turn();
 
 	class hotkey_handler;
-	virtual bool is_end_turn() const { return end_turn_; }
 	std::string describe_result() const;
 	
 	bool get_player_type_changed() const { return player_type_changed_; }
 	void set_player_type_changed() { player_type_changed_ = true; }
 	virtual bool should_return_to_play_side()
-	{ return player_type_changed_ || end_turn_ || is_regular_game_end(); }
+	{ return player_type_changed_ || end_turn_ != END_TURN_NONE || is_regular_game_end(); }
 protected:
 	void play_turn();
 	virtual void play_side();
@@ -80,11 +79,21 @@ protected:
 	replay_network_sender replay_sender_;
 	playturn_network_adapter network_reader_;
 	turn_info turn_data_;
-	bool end_turn_;
+	enum END_TURN_STATE
+	{
+		/// The turn was not ended yet
+		END_TURN_NONE,
+		/// And endturn was required eigher by the player, by the ai or by [end_turn]
+		END_TURN_REQUIRED,
+		/// An [end_turn] was added to the replay.
+		END_TURN_SYNCED,
+	};
+	END_TURN_STATE end_turn_;
 	bool player_type_changed_;
 	bool skip_next_turn_;
 	bool do_autosaves_;
 	void linger();
+	void sync_end_turn();
 };
 
 
