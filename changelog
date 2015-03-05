@@ -227,6 +227,8 @@ Version 1.13.0-dev:
      a lua lib "ilua", and "experimental compilation" technique.
    * Fixed game falling back to desktop if a user declines to load a previous
      version save from within a game
+    * Fix bug #22984: Sliders (GUI1) focusing improperly in non-game contexts,
+    and not responding to left-right key press
  * WML engine:
    * Added customizable recall costs for unit types and individual units,
      using the new recall_cost attribute in [unit_type] and [unit].
