@@ -449,7 +449,7 @@ void playmp_controller::send_user_choice()
 
 void playmp_controller::process_network_data()
 {
-	if(should_return_to_play_side()) {
+	if(end_turn_ == END_TURN_SYNCED || is_regular_game_end() || player_type_changed_) {
 		return;
 	}
 	turn_info::PROCESS_DATA_RESULT res = turn_info::PROCESS_CONTINUE;
