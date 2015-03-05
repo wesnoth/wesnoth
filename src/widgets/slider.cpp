@@ -239,11 +239,11 @@ void slider::mouse_down(const SDL_MouseButtonEvent& event)
 		return;
 
 	state_ = CLICKED;
+	set_focus(true);
 	if (point_in_rect(event.x, event.y, slider_area())) {
 		sound::play_UI_sound(game_config::sounds::button_press);
 	} else {
 		value_change_ = false;
-		set_focus(true);
 		set_slider_position(event.x);
 		if(value_change_) {
 			sound::play_UI_sound(game_config::sounds::slider_adjust);
@@ -299,20 +299,19 @@ void slider::handle_event(const SDL_Event& event)
 		if (!mouse_locked())
 			mouse_motion(event.motion);
 		break;
-		//TODO enable if you know how to fix the zoom slider bug
-//	case SDL_KEYDOWN:
-//		if(focus(&event)) {
-//			const SDL_keysym& key = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
-//			const int c = key.sym;
-//			if(c == SDLK_LEFT) {
-//				sound::play_UI_sound(game_config::sounds::slider_adjust);
-//				set_value(value_ - increment_);
-//			} else if(c == SDLK_RIGHT) {
-//				sound::play_UI_sound(game_config::sounds::slider_adjust);
-//				set_value(value_ + increment_);
-//			}
-//		}
-//		break;
+	case SDL_KEYDOWN:
+		if(focus(&event) && allow_key_events()) { //allow_key_events is used by zoom_sliders to disable left-right key press, which is buggy for them
+			const SDL_keysym& key = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
+			const int c = key.sym;
+			if(c == SDLK_LEFT) {
+				sound::play_UI_sound(game_config::sounds::slider_adjust);
+				set_value(value_ - increment_);
+			} else if(c == SDLK_RIGHT) {
+				sound::play_UI_sound(game_config::sounds::slider_adjust);
+				set_value(value_ + increment_);
+			}
+		}
+		break;
 	default:
 		return;
 	}
@@ -378,5 +377,16 @@ void list_slider<T>::set_items(const std::vector<T> &items)
 template class list_slider< double >;
 template class list_slider< int >;
 template class list_slider< std::string >;
+
+/***
+*
+* Zoom Slider
+*
+***/
+
+zoom_slider::zoom_slider(CVideo &video, const std::string& image, bool black)
+	: slider(video, image, black)
+{
+}
 
 } //end namespace gui

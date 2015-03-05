@@ -899,7 +899,7 @@ gui::button* display::find_menu_button(const std::string& id)
 	return NULL;
 }
 
-gui::slider* display::find_slider(const std::string& id)
+gui::zoom_slider* display::find_slider(const std::string& id)
 {
 	for (size_t i = 0; i < sliders_.size(); ++i) {
 		if(sliders_[i].id() == id) {
@@ -913,12 +913,12 @@ void display::create_buttons()
 {
 	std::vector<gui::button> menu_work;
 	std::vector<gui::button> action_work;
-	std::vector<gui::slider> slider_work;
+	std::vector<gui::zoom_slider> slider_work;
 
 	DBG_DP << "creating sliders...\n";
 	const std::vector<theme::slider>& sliders = theme_.sliders();
 	for(std::vector<theme::slider>::const_iterator i = sliders.begin(); i != sliders.end(); ++i) {
-		gui::slider s(screen_, i->image(), i->black_line());
+		gui::zoom_slider s(screen_, i->image(), i->black_line());
 		DBG_DP << "drawing button " << i->get_id() << "\n";
 		s.set_id(i->get_id());
 		const SDL_Rect& loc = i->location(screen_area());
@@ -934,7 +934,7 @@ void display::create_buttons()
 			s.set_volatile(true);
 		}
 
-		gui::slider* s_prev = find_slider(s.id());
+		gui::zoom_slider* s_prev = find_slider(s.id());
 		if(s_prev) {
 			s.set_max(s_prev->max_value());
 			s.set_min(s_prev->min_value());
