@@ -51,6 +51,7 @@ protected:
 	bool requires_event_focus(const SDL_Event *event=NULL) const;
 	virtual void handle_event(const SDL_Event& event);
 	virtual void draw_contents();
+	virtual bool allow_key_events() { return true; }
 
 private:
 	void mouse_motion(const SDL_MouseMotionEvent& event);
@@ -83,6 +84,14 @@ class list_slider : public slider
 		const T& item_selected() const; //use item_selected() instead of value()
 	private:
 		std::vector<T> items_;
+};
+
+// This is a different style of slider, which doesn't implement key left/right responses
+class zoom_slider : public slider
+{
+public:
+	zoom_slider(CVideo &video, const std::string& image = "buttons/sliders/slider", bool black = false);
+	virtual bool allow_key_events() { return false; }
 };
 
 }

@@ -374,7 +374,7 @@ public:
 	 */
 	gui::button* find_action_button(const std::string& id);
 	gui::button* find_menu_button(const std::string& id);
-	gui::slider* find_slider(const std::string& id);
+	gui::zoom_slider* find_slider(const std::string& id);
 
 	gui::button::TYPE string_to_button_type(std::string type);
 	void create_buttons();
@@ -765,7 +765,7 @@ protected:
 	std::map<std::string, surface> reportSurfaces_;
 	std::map<std::string, config> reports_;
 	std::vector<gui::button> menu_buttons_, action_buttons_;
-	std::vector<gui::slider> sliders_;
+	std::vector<gui::zoom_slider> sliders_;
 	std::set<map_location> invalidated_;
 	std::set<map_location> previous_invalidated_;
 	surface mouseover_hex_overlay_;

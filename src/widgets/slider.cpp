@@ -300,7 +300,7 @@ void slider::handle_event(const SDL_Event& event)
 			mouse_motion(event.motion);
 		break;
 	case SDL_KEYDOWN:
-		if(focus(&event)) {
+		if(focus(&event) && allow_key_events()) { //allow_key_events is used by zoom_sliders to disable left-right key press, which is buggy for them
 			const SDL_keysym& key = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
 			const int c = key.sym;
 			if(c == SDLK_LEFT) {
@@ -377,5 +377,16 @@ void list_slider<T>::set_items(const std::vector<T> &items)
 template class list_slider< double >;
 template class list_slider< int >;
 template class list_slider< std::string >;
+
+/***
+*
+* Zoom Slider
+*
+***/
+
+zoom_slider::zoom_slider(CVideo &video, const std::string& image, bool black)
+	: slider(video, image, black)
+{
+}
 
 } //end namespace gui
