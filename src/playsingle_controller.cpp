@@ -577,7 +577,7 @@ void playsingle_controller::play_side()
 void playsingle_controller::before_human_turn()
 {
 	log_scope("player turn");
-	linger_ = false;
+	assert(!linger_);
 	if(end_turn_ != END_TURN_NONE) {
 		return;
 	}
