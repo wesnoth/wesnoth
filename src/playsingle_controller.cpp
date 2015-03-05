@@ -514,13 +514,13 @@ void playsingle_controller::play_side()
 			temporary_human = false;
 			// If a side is dead end the turn, but play at least side=1's
 			// turn in case all sides are dead
-			if (gamestate_.board_.side_units(player_number_) != 0
-				|| (gamestate_.board_.units().size() == 0 && player_number_ == 1))
-			{
-				before_human_turn();
-				if (end_turn_ == END_TURN_NONE) {
-					play_human_turn();
-				}
+			if (gamestate_.board_.side_units(player_number_) == 0 && (gamestate_.board_.units().size() != 0 || player_number_ != 1)) {
+				end_turn_ = END_TURN_REQUIRED;
+			}
+
+			before_human_turn();
+			if (end_turn_ == END_TURN_NONE) {
+				play_human_turn();
 			}
 			if(is_regular_game_end()) {
 				return;
