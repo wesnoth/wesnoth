@@ -737,7 +737,6 @@ void playsingle_controller::play_ai_turn()
 	gui_->invalidate_game_status();
 	gui_->invalidate_all();
 	gui_->draw();
-	gui_->delay(100);
 }
 
 

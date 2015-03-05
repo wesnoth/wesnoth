@@ -135,7 +135,7 @@ void playmp_controller::play_human_turn()
 	}
 	show_turn_dialog();
 	if(undo_stack_->can_undo()) {
-		// If we reload a networked mp game we cannot undo moved made before the save
+		// If we reload a networked mp game we cannot undo moves made before the save
 		// Becasue other players already received them
 		synced_context::run_and_store("update_shroud", replay_helper::get_update_shroud());
 		undo_stack_->clear();
@@ -173,7 +173,6 @@ void playmp_controller::play_human_turn()
 			play_slice_catch();
 			if(timer)
 			{
-				SDL_Delay(1);
 				bool time_left = timer->update();
 				if(!time_left)
 				{
