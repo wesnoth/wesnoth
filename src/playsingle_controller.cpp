@@ -728,6 +728,9 @@ void playsingle_controller::play_ai_turn()
 		turn_data_.sync_network();
 		throw;
 	}
+	if(!should_return_to_play_side()) {
+		end_turn_ = END_TURN_REQUIRED;
+	}
 	turn_data_.sync_network();
 	gui_->recalculate_minimap();
 	gui_->invalidate_unit();
