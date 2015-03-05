@@ -520,12 +520,11 @@ void playsingle_controller::play_side()
 				before_human_turn();
 				if (end_turn_ == END_TURN_NONE) {
 					play_human_turn();
-					if(is_regular_game_end()) {
-						return;
-					}
 				}
 			}
-
+			if(is_regular_game_end()) {
+				return;
+			}
 			if ( !player_type_changed_ ) {
 				sync_end_turn();
 				after_human_turn();
