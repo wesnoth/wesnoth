@@ -26,6 +26,7 @@
 #include "mp_ui_alerts.hpp"
 #include "playturn.hpp"
 #include "preferences.hpp"
+#include "resources.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
 #include "formula_string_utils.hpp"
@@ -322,7 +323,7 @@ void playmp_controller::after_human_turn(){
 
 		current_team().set_action_bonus_count(0);
 		current_team().set_countdown_time(new_time);
-		recorder.add_countdown_update(new_time, player_number_);
+		resources::recorder->add_countdown_update(new_time, player_number_);
 	}
 	LOG_NG << "playmp::after_human_turn...\n";
 
@@ -454,7 +455,7 @@ void playmp_controller::process_network_data()
 	}
 	turn_info::PROCESS_DATA_RESULT res = turn_info::PROCESS_CONTINUE;
 	config cfg;
-	if(!recorder.at_end()) {
+	if(!resources::recorder->at_end()) {
 		res = turn_info::replay_to_process_data_result(do_replay()); 
 	}
 	else if(network_reader_.read(cfg)) {

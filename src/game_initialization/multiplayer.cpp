@@ -476,8 +476,6 @@ static void enter_wait_mode(game_display& disp, const config& game_config,
 	case mp::ui::PLAY:
 		play_game(disp, state, game_config, game_config_manager::get()->terrain_types(), IO_CLIENT,
 			preferences::skip_mp_replay() && observe, true, preferences::blindfold_replay() && observe);
-		recorder.clear();
-
 		break;
 	case mp::ui::QUIT:
 	default:
@@ -520,8 +518,6 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 	case mp::ui::PLAY:
 		play_game(disp, state, game_config, game_config_manager::get()->terrain_types(), IO_SERVER, false,
 			!local_players_only);
-		recorder.clear();
-
 		break;
 	case mp::ui::CREATE:
 		enter_create_mode(disp, game_config, state, local_players_only);
@@ -895,14 +891,14 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 
 	std::string label = "";
 	if (cmdline_opts.multiplayer_label) label = *cmdline_opts.multiplayer_label;
-	recorder.add_log_data("ai_log","ai_label",label);
+
+	//resources::recorder->add_log_data("ai_log","ai_label",label);
 
 	unsigned int repeat = (cmdline_opts.multiplayer_repeat) ? *cmdline_opts.multiplayer_repeat : 1;
 	for(unsigned int i = 0; i < repeat; i++){
 		saved_game state_copy(state);
 		play_game(disp, state_copy, game_config, game_config_manager::get()->terrain_types(), IO_SERVER, false, false);
 	}
-	recorder.clear();
 }
 
 void start_client(game_display& disp, const config& game_config,

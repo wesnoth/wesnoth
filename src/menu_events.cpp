@@ -65,6 +65,7 @@
 #include "preferences_display.hpp"
 #include "replay.hpp"
 #include "replay_helper.hpp"
+#include "resources.hpp"
 #include "savegame.hpp"
 #include "save_index.hpp"
 #include "scripting/game_lua_kernel.hpp"
@@ -513,9 +514,9 @@ void menu_handler::show_chat_log()
 {
         config c;
         c["name"] = "prototype of chat log";
-        gui2::tchat_log chat_log_dialog(vconfig(c),&recorder);
+        gui2::tchat_log chat_log_dialog(vconfig(c), resources::recorder);
         chat_log_dialog.show(gui_->video());
-        //std::string text = recorder.build_chat_log();
+        //std::string text = resources::recorder->build_chat_log();
         //gui::show_dialog(*gui_,NULL,_("Chat Log"),"",gui::CLOSE_ONLY,NULL,NULL,"",&text);
 
 }
@@ -935,7 +936,7 @@ void menu_handler::rename_unit()
 	const std::string label(N_("Name:"));
 
 	if(gui2::tedit_text::execute(title, label, name, gui_->video())) {
-		recorder.add_rename(name, un->get_location());
+		resources::recorder->add_rename(name, un->get_location());
 		un->rename(name);
 		gui_->invalidate_unit();
 	}
@@ -1205,7 +1206,7 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 		}
 		const terrain_label* res = gui_->labels().set_label(loc, label, team_name, color);
 		if (res)
-			recorder.add_label(res);
+			resources::recorder->add_label(res);
 	}
 }
 
@@ -1215,7 +1216,7 @@ void menu_handler::clear_labels()
 	   && !board().is_observer())
 	{
 		gui_->labels().clear(gui_->current_team_name(), false);
-		recorder.clear_labels(gui_->current_team_name(), false);
+		resources::recorder->clear_labels(gui_->current_team_name(), false);
 	}
 }
 
@@ -2581,7 +2582,7 @@ void menu_handler::send_chat_message(const std::string& message, bool allies_onl
 		}
 	}
 
-	recorder.speak(cfg);
+	resources::recorder->speak(cfg);
 
 	add_chat_message(time, cfg["id"], side, message,
 			private_message ? events::chat_handler::MESSAGE_PRIVATE : events::chat_handler::MESSAGE_PUBLIC);

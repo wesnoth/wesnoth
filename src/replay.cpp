@@ -38,6 +38,7 @@
 #include "statistics.hpp"
 #include "unit.hpp"
 #include "whiteboard/manager.hpp"
+#include "replay_recorder_base.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/lexical_cast.hpp>
@@ -142,11 +143,6 @@ static time_t get_time(const config &speak)
 	return time;
 }
 
-// FIXME: this one now has to be assigned with set_random_generator
-// from play_level or similar.  We should surely hunt direct
-// references to it from this very file and move it out of here.
-replay recorder;
-
 chat_msg::chat_msg(const config &cfg)
 	: color_()
 	, nick_()
@@ -183,22 +179,10 @@ chat_msg::~chat_msg()
 {
 }
 
-replay::replay() :
-	cfg_(),
-	pos_(0),
-	message_locations()
+replay::replay(replay_recorder_base& base)
+	: base_(&base)
+	, message_locations()
 {}
-
-replay::replay(const config& cfg) :
-	cfg_(cfg),
-	pos_(0),
-	message_locations()
-{}
-
-void replay::append(const config& cfg)
-{
-	cfg_.append(cfg);
-}
 /*
 	TODO: there should be different types of OOS messages:
 		1)the normal OOS message
@@ -314,27 +298,27 @@ void replay::end_turn()
 
 void replay::add_log_data(const std::string &key, const std::string &var)
 {
-	config& ulog = cfg_.child_or_add("upload_log");
+	config& ulog = base_->get_upload_log();
 	ulog[key] = var;
 }
 
 void replay::add_log_data(const std::string &category, const std::string &key, const std::string &var)
 {
-	config& ulog = cfg_.child_or_add("upload_log");
+	config& ulog = base_->get_upload_log();
 	config& cat = ulog.child_or_add(category);
 	cat[key] = var;
 }
 
 void replay::add_log_data(const std::string &category, const std::string &key, const config &c)
 {
-	config& ulog = cfg_.child_or_add("upload_log");
+	config& ulog = base_->get_upload_log();
 	config& cat = ulog.child_or_add(category);
 	cat.add_child(key,c);
 }
 
 void replay::add_chat_message_location()
 {
-	message_locations.push_back(pos_-1);
+	message_locations.push_back(base_->get_pos() - 1);
 }
 
 void replay::speak(const config& cfg)
@@ -355,7 +339,7 @@ void replay::add_chat_log_entry(const config &cfg, std::back_insert_iterator<std
 
 void replay::remove_command(int index)
 {
-	cfg_.remove_child("command", index);
+	base_->remove_command(index);
 	std::vector<int>::reverse_iterator loc_it;
 	for (loc_it = message_locations.rbegin(); loc_it != message_locations.rend() && index < *loc_it;++loc_it)
 	{
@@ -412,13 +396,12 @@ struct async_cmd
 
 void replay::redo(const config& cfg)
 {
-	//we set pos_ = ncommands(), if we recorded something else in the meantime it doesn't make sense to redo an action.
-	assert(pos_ == ncommands());
+	assert(base_->get_pos() == ncommands());
 	BOOST_FOREACH(const config &cmd, cfg.child_range("command"))
 	{
-		/*config &cfg = */cfg_.add_child("command", cmd);
+		base_->add_child() = cmd;
 	}
-	pos_ = ncommands();
+	base_->set_to_end();
 
 }
 
@@ -426,7 +409,7 @@ void replay::redo(const config& cfg)
 
 config& replay::get_last_real_command()
 {
-	for (int cmd_num = pos_ - 1; cmd_num >= 0; --cmd_num)
+	for (int cmd_num = base_->get_pos() - 1; cmd_num >= 0; --cmd_num)
 	{
 		config &c = command(cmd_num);
 		const config &cc = c;
@@ -445,8 +428,8 @@ config& replay::get_last_real_command()
 void replay::undo_cut(config& dst)
 {
 	assert(dst.empty());
-	//pos_ < ncommands() could mean that we try to undo commands that haven't been executed yet.
-	assert(pos_ == ncommands());
+	//assert that we are not undoing a command which we didn't execute yet.
+	assert(at_end());
 	std::vector<async_cmd> async_cmds;
 	// Remember commands not yet synced and skip over them.
 	// We assume that all already sent (sent=yes) data isn't undoable
@@ -478,13 +461,13 @@ void replay::undo_cut(config& dst)
 
 	if (cmd < 0) return;
 	//we add the commands that we want to remove later to the passed cfg first.
-	dst.add_child("command", cfg_.child("command", cmd));
+	dst.add_child("command", base_->get_command_at(cmd));
 	//we do this in a seperate loop because we don't want to loop forward in the loop while when we remove the elements to keepo the indexes simple.
 	for(int cmd_2 = cmd + 1; cmd_2 < ncommands(); ++cmd_2)
 	{
 		if(command(cmd_2)["dependent"].to_bool(false))
 		{
-			dst.add_child("command", cfg_.child("command", cmd_2));
+			dst.add_child("command", base_->get_command_at(cmd_2));
 		}
 	}
 
@@ -543,13 +526,15 @@ void replay::undo_cut(config& dst)
 				if (config &async_child = ac.cfg->child("rename"))
 				{
 					map_location aloc(async_child, resources::gamedata);
-					if (src == aloc) remove_command(ac.num);
+					if (src == aloc) {
+						remove_command(ac.num);
+					}
 				}
 			}
 		}
 	}
 	remove_command(cmd);
-	pos_ = ncommands();
+	set_to_end();
 }
 
 void replay::undo()
@@ -560,72 +545,74 @@ void replay::undo()
 
 config &replay::command(int n)
 {
-	config & retv = cfg_.child("command", n);
+	config & retv = base_->get_command_at(n);
 	assert(retv);
 	return retv;
 }
 
 int replay::ncommands() const
 {
-	return cfg_.child_count("command");
+	return base_->size();
 }
 
 config& replay::add_command()
 {
-	//pos_ != ncommands() means that there is a command on the replay which would be skipped.
-	assert(pos_ == ncommands());
-	pos_ = ncommands()+1;
-	return cfg_.add_child("command");
+	//if we werent at teh end of teh replay we sould skip one or mutiple commands.
+	assert(at_end());
+	config& retv = base_->add_child();
+	set_to_end();
+	return retv;
 }
 
 config& replay::add_nonundoable_command()
 {
-	config& r = cfg_.add_child_at("command",config(), pos_);
+	config& r = base_->insert_command(base_->get_pos());
 	r["undo"] = false;
-	++pos_;
+	base_->set_pos(base_->get_pos() + 1);
 	return r;
 }
 
 void replay::start_replay()
 {
-	pos_ = 0;
+	base_->set_pos(0);
 }
 
 void replay::revert_action()
 {
-	if (pos_ > 0)
-		--pos_;
+
+	if (base_->get_pos() > 0)
+		base_->set_pos(base_->get_pos() - 1);
 }
 
 config* replay::get_next_action()
 {
-	if (pos_ >= ncommands())
+	if (at_end())
 		return NULL;
 
-	LOG_REPLAY << "up to replay action " << pos_ + 1 << '/' << ncommands() << '\n';
+	LOG_REPLAY << "up to replay action " << base_->get_pos() + 1 << '/' << ncommands() << '\n';
 
-	config* retv =  &command(pos_);
-	++pos_;
+	config* retv = &command(base_->get_pos());
+	base_->set_pos(base_->get_pos() + 1);
 	return retv;
 }
 
 
 bool replay::at_end() const
 {
-	return pos_ >= ncommands();
+	assert(base_->get_pos() <= ncommands());
+	return base_->get_pos() == ncommands();
 }
 
 void replay::set_to_end()
 {
-	pos_ = ncommands();
+	base_->set_to_end();
 }
 
 void replay::clear()
 {
 	message_locations.clear();
 	message_log.clear();
-	cfg_ = config();
-	pos_ = 0;
+	//FIXME
 }
 
 bool replay::empty()
@@ -637,25 +624,20 @@ void replay::add_config(const config& cfg, MARK_SENT mark)
 {
 	BOOST_FOREACH(const config &cmd, cfg.child_range("command"))
 	{
-		config &cfg = cfg_.add_child("command", cmd);
+		config &cfg = base_->insert_command(base_->size());
+		cfg = cmd;
 		if(mark == MARK_AS_SENT) {
 			cfg["sent"] = true;
 		}
 	}
 }
-
-replay& get_replay_source()
-{
-	return recorder;
-}
-
 bool replay::add_start_if_not_there_yet()
 {
 	//this method would confuse the value of 'pos' otherwise
-	assert(pos_ == 0);
-	if(at_end() || !cfg_.child("command", pos_).has_child("start"))
+	assert(base_->get_pos() == 0);
+	if(at_end() || !base_->get_command_at(0).has_child("start"))
 	{
-		cfg_.add_child_at("command",config_of("start", config()),pos_);
+		base_->insert_command(0) = config_of("start", config());
 		return true;
 	}
 	else
@@ -695,7 +677,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 	const int side_num = resources::controller->current_side();
 	while(true)
 	{
-		const config *cfg = get_replay_source().get_next_action();
+		const config *cfg = resources::recorder->get_next_action();
 		const bool is_synced = (synced_context::get_synced_state() == synced_context::SYNCED);
 
 		DBG_REPLAY << "in do replay with is_synced=" << is_synced << "\n";
@@ -727,7 +709,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			const std::string &message = child["message"];
 			//if (!preferences::parse_should_show_lobby_join(speaker_name, message)) return;
 			bool is_whisper = (speaker_name.find("whisper: ") == 0);
-			get_replay_source().add_chat_message_location();
+			resources::recorder->add_chat_message_location();
 			if (!resources::controller->is_skipping_replay() || is_whisper) {
 				int side = child["side"];
 				resources::screen->get_chat_manager().add_chat_message(get_time(child), speaker_name, side, message,
@@ -775,7 +757,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			if(is_synced)
 			{
 				replay::process_error("found side initialization in replay expecting a user choice\n" );
-				get_replay_source().revert_action();
+				resources::recorder->revert_action();
 				return REPLAY_FOUND_DEPENDENT;
 			}
 			else
@@ -790,7 +772,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			if(is_synced)
 			{
 				replay::process_error("found turn end in replay while expecting a user choice\n" );
-				get_replay_source().revert_action();
+				resources::recorder->revert_action();
 				return REPLAY_FOUND_DEPENDENT;
 			}
 			else
@@ -832,7 +814,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			assert(cfg->all_children_count() == 1);
 			std::string child_name = cfg->all_children_range().first->key;
 			DBG_REPLAY << "got an dependent action name = " << child_name <<"\n";
-			get_replay_source().revert_action();
+			resources::recorder->revert_action();
 			return REPLAY_FOUND_DEPENDENT;
 		}
 		else
@@ -844,7 +826,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			if(is_synced)
 			{
 				replay::process_error("found [" + commandname + "] command in replay expecting a user choice\n" );
-				get_replay_source().revert_action();
+				resources::recorder->revert_action();
 				return REPLAY_FOUND_DEPENDENT;
 			}
 			else
@@ -964,7 +946,7 @@ static std::map<int, config> get_user_choice_internal(const std::string &name, c
 		}
 
 		bool has_local_side = local_side != 0;
-		bool is_replay_end = get_replay_source().at_end();
+		bool is_replay_end = resources::recorder->at_end();
 
 		if (is_replay_end && has_local_side)
 		{
@@ -974,7 +956,7 @@ static std::map<int, config> get_user_choice_internal(const std::string &name, c
 			DBG_REPLAY << "MP synchronization: local choice\n";
 			config cfg = uch.query_user(local_side);
 
-			recorder.user_input(name, cfg, local_side);
+			resources::recorder->user_input(name, cfg, local_side);
 			retv[local_side]= cfg;
 
 			//send data to others.
@@ -1001,13 +983,13 @@ static std::map<int, config> get_user_choice_internal(const std::string &name, c
 		{
 			DBG_REPLAY << "MP synchronization: extracting choice from replay with has_local_side=" << has_local_side << "\n";
 
-			const config *action = get_replay_source().get_next_action();
-			assert(action); //action cannot be null because get_replay_source().at_end() returned false.
+			const config *action = resources::recorder->get_next_action();
+			assert(action); //action cannot be null because resources::recorder->at_end() returned false.
 			if( !action->has_child(name) || !(*action)["dependent"].to_bool())
 			{
 				replay::process_error("[" + name + "] expected but none found\n. found instead:\n" + action->debug());
 				//We save this action for later
-				get_replay_source().revert_action();
+				resources::recorder->revert_action();
 				//and let the user try to get the intended result.
 				BOOST_FOREACH(int side, sides)
 				{

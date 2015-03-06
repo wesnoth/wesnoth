@@ -58,8 +58,8 @@ static void display_label(int /*side*/, const map_location& location, const std:
 
 	const terrain_label *res;
 	res = gui->labels().set_label(location, text, team_name, color);
-	if (res)
-		recorder.add_label(res);
+	if (res && resources::recorder)
+		resources::recorder->add_label(res);
 }
 
 

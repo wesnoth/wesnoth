@@ -659,7 +659,7 @@ void undo_list::undo()
 	n_unit::id_manager::instance().set_save_id(last_unit_id - action->unit_id_diff);
 
 	// Bookkeeping.
-	recorder.undo_cut(action->get_replay_data());
+	resources::recorder->undo_cut(action->get_replay_data());
 	redos_.push_back(action.release());
 	resources::whiteboard->on_gamestate_change();
 
@@ -822,10 +822,10 @@ bool undo_list::auto_shroud_action::undo(int /*side*/, undo_list & undos)
 {
 	// This does not count as an undoable action, so undo the next
 	// action instead.
-	recorder.undo();
+	resources::recorder->undo();
 	undos.undo();
 	// Now keep the auto-shroud toggle at the top of the undo stack.
-	recorder.add_synced_command("auto_shroud", replay_helper::get_auto_shroud(active));
+	resources::recorder->add_synced_command("auto_shroud", replay_helper::get_auto_shroud(active));
 	undos.add_auto_shroud(active, this->unit_id_diff);
 	// Shroud actions never get moved to the redo stack, so claim an error.
 	return false;
@@ -839,10 +839,10 @@ bool undo_list::update_shroud_action::undo(int /*side*/, undo_list & undos)
 {
 	// This does not count as an undoable action, so undo the next
 	// action instead.
-	recorder.undo();
+	resources::recorder->undo();
 	undos.undo();
 	// Now keep the shroud update at the top of the undo stack.
-	recorder.add_synced_command("update_shroud", replay_helper::get_update_shroud());
+	resources::recorder->add_synced_command("update_shroud", replay_helper::get_update_shroud());
 
 	undos.add_update_shroud(this->unit_id_diff);
 	// Shroud actions never get moved to the redo stack, so claim an error.
@@ -898,7 +898,7 @@ bool undo_list::dismiss_action::redo(int side)
 			<< ", which has no recall list!\n";
 		return false;
 	}
-	recorder.redo(replay_data);
+	resources::recorder->redo(replay_data);
 	replay_data.clear();
 	current_team.recall_list().erase_if_matches_id(dismissed_unit->id());
 	return true;
@@ -931,7 +931,7 @@ bool undo_list::recall_action::redo(int side)
 
 	const std::string &msg = find_recall_location(side, loc, from, *un);
 	if ( msg.empty() ) {
-		recorder.redo(replay_data);
+		resources::recorder->redo(replay_data);
 		replay_data.clear();
 		set_scontext_synced sync;
 		recall_unit(id, current_team, loc, from, true, false);
@@ -979,7 +979,7 @@ bool undo_list::recruit_action::redo(int side)
 	if ( msg.empty() ) {
 		//MP_COUNTDOWN: restore recruitment bonus
 		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
-		recorder.redo(replay_data);
+		resources::recorder->redo(replay_data);
 		replay_data.clear();
 		set_scontext_synced sync;
 		recruit_unit(u_type, side, loc, from, true, false);
@@ -1044,7 +1044,7 @@ bool undo_list::move_action::redo(int side)
 	}
 
 	gui.invalidate_unit_after_move(route.front(), route.back());
-	recorder.redo(replay_data);
+	resources::recorder->redo(replay_data);
 	replay_data.clear();
 	return true;
 }
