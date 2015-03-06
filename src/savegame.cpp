@@ -42,6 +42,7 @@
 #include "persist_manager.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
+#include "save_index.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "statistics.hpp"
@@ -178,24 +179,18 @@ bool loadgame::load_game()
 		return false;
 	}
 
-	std::string error_log;
-	{
-		cursor::setter cur(cursor::WAIT);
-		log_scope("load_game");
+	// Confirm the integrity of the file before throwing the exception.
+	// Use the summary in the save_index for this.
 
-		read_save_file(filename_, load_config_, &error_log);
+	const config & summary = save_index_manager.get(filename_);
 
-		gamestate_ = saved_game(load_config_);
-	}
-
-	if(!error_log.empty()) {
+	if (summary["corrupt"].to_bool(false)) {
 		gui2::show_error_message(gui_.video(),
-				_("The file you have tried to load is corrupt: '") +
-				error_log);
+				_("The file you have tried to load is corrupt: '"));
 		return false;
 	}
 
-	if (!check_version_compatibility()) {
+	if (!loadgame::check_version_compatibility(summary["version"].str(), gui_.video())) {
 		return false;
 	}
 
@@ -268,19 +263,23 @@ bool loadgame::load_game(
 
 bool loadgame::check_version_compatibility()
 {
-	if (gamestate_.classification().version == game_config::version) {
+	return loadgame::check_version_compatibility(gamestate_.classification().version, gui_.video());
+}
+
+bool loadgame::check_version_compatibility(const version_info & save_version, CVideo & video)
+{
+	if (save_version == game_config::version) {
 		return true;
 	}
 
-	const version_info save_version = gamestate_.classification().version;
 	const version_info &wesnoth_version = game_config::wesnoth_version;
 	// If the version isn't good, it probably isn't a compatible stable one,
 	// and the following comparisons would throw.
 	if (!save_version.good()) {
 		const std::string message = _("The save has corrupt version information ($version_number|) and cannot be loaded.");
 		utils::string_map symbols;
-		symbols["version_number"] = gamestate_.classification().version;
-		gui2::show_error_message(gui_.video(), utils::interpolate_variables_into_string(message, &symbols));
+		symbols["version_number"] = save_version.str();
+		gui2::show_error_message(video, utils::interpolate_variables_into_string(message, &symbols));
 		return false;
 	}
 
@@ -303,7 +302,7 @@ bool loadgame::check_version_compatibility()
 		const std::string message = _("This save is from an old, unsupported version ($version_number|) and cannot be loaded.");
 		utils::string_map symbols;
 		symbols["version_number"] = save_version.str();
-		gui2::show_error_message(gui_.video(), utils::interpolate_variables_into_string(message, &symbols));
+		gui2::show_error_message(video, utils::interpolate_variables_into_string(message, &symbols));
 		return false;
 	}
 
@@ -311,7 +310,7 @@ bool loadgame::check_version_compatibility()
 		const std::string message = _("This save is from a different version of the game ($version_number|). Do you wish to try to load it?");
 		utils::string_map symbols;
 		symbols["version_number"] = save_version.str();
-		const int res = gui2::show_message(gui_.video(), _("Load Game"), utils::interpolate_variables_into_string(message, &symbols),
+		const int res = gui2::show_message(video, _("Load Game"), utils::interpolate_variables_into_string(message, &symbols),
 			gui2::tmessage::yes_no_buttons);
 		return res == gui2::twindow::OK; 
 	}

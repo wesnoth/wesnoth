@@ -61,12 +61,16 @@ public:
 	bool show_replay() const { return show_replay_; }
 	bool cancel_orders() const { return cancel_orders_; }
 	const std::string & filename() const { return filename_; }
+
+	/** GUI Dialog sequence which confirms attempts to load saves from previous game versions. */
+	static bool check_version_compatibility(const version_info & version, CVideo & video);
+
 private:
 	/** Display the load-game dialog. */
 	void show_dialog(bool show_replay, bool cancel_orders);
 	/** Display the difficulty dialog. */
 	void show_difficulty_dialog();
-	/** Check if the version of the savefile is compatible with the current version. */
+	/** Call check_version_compatibility above, using the version of this savefile. */
 	bool check_version_compatibility();
 	/** Copy era information into the snapshot. */
 	void copy_era(config& cfg);
