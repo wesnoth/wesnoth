@@ -397,7 +397,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		// Loading a new game is effectively a quit.
 		//
 		if ( game::load_game_exception::game != "" ) {
-			saved_game_ = saved_game();
+		//	saved_game_ = saved_game();
 		}
 		throw;
 	} catch(network::error& e) {

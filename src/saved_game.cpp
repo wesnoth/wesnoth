@@ -120,14 +120,14 @@ saved_game::saved_game(const config& cfg)
 }
 
 saved_game::saved_game(const saved_game& state)
-	: replay_data_(state.replay_data_)
-	, has_carryover_expanded_(state.has_carryover_expanded_)
+	: has_carryover_expanded_(state.has_carryover_expanded_)
 	, carryover_(state.carryover_)
 	, replay_start_(state.replay_start_)
 	, classification_(state.classification_)
 	, mp_settings_(state.mp_settings_)
 	, starting_pos_type_(state.starting_pos_type_)
 	, starting_pos_(state.starting_pos_)
+	, replay_data_(state.replay_data_)
 {
 }
 
