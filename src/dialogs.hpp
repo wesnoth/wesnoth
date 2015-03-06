@@ -56,7 +56,7 @@ void show_unit_list(display& gui);
  * the game in show_replay. If show_replay is NULL, then the user will not be
  * asked if they want to show a replay.
  */
-std::string load_game_dialog(display& disp, const config& terrain_config, bool* select_difficulty, bool* show_replay, bool* cancel_orders);
+std::string load_game_dialog(display& disp, const config& game_config, bool* select_difficulty, bool* show_replay, bool* cancel_orders);
 
 int recruit_dialog(display& disp, std::vector<const unit_type*>& units, const std::vector<std::string>& items, int side, const std::string& title_suffix);
 
