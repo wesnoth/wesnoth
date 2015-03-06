@@ -462,7 +462,7 @@ set_scontext_synced::~set_scontext_synced()
 	assert(checkup_instance == &*new_checkup_);
 	if(!did_final_checkup_)
 	{
-		do_final_checkup(true);
+		//do_final_checkup(true);
 	}
 	checkup_instance = old_checkup_;
 }
