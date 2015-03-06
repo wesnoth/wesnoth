@@ -11,6 +11,7 @@ public:
 	replay_recorder_base();
 	~replay_recorder_base();
 
+	void swap(replay_recorder_base& other);
 	int get_pos() const;
 
 	int size() const;
@@ -30,6 +31,8 @@ public:
 	void set_pos(int pos);
 
 	void append_config(const config& data);
+	/// Clears the passed config.
+	void append_config(config& data);
 
 	void write(config_writer& out) const;
 

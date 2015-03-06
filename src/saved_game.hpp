@@ -26,11 +26,13 @@ class saved_game
 public:
 	saved_game();
 	saved_game(const saved_game& state);
-	//TODO: add or replace with saved_game(config&& cfg) constructor.
-	explicit saved_game(const config& cfg);
-
+	explicit saved_game(config cfg);
 	~saved_game(){}
 
+	saved_game& operator =(saved_game other);
+	void swap(saved_game& other);
+	/// destroys the passed config.
+	void set_data(config& cfg);
 	/// writes the config information into a stream (file)
 	void write_config(config_writer& out) const;
 	void write_general_info(config_writer& out) const;

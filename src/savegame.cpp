@@ -320,7 +320,7 @@ bool loadgame::check_version_compatibility(const version_info & save_version, CV
 
 void loadgame::set_gamestate()
 {
-	gamestate_ = saved_game(load_config_);
+	gamestate_.set_data(load_config_);
 }
 
 bool loadgame::load_multiplayer_game()
@@ -338,7 +338,7 @@ bool loadgame::load_multiplayer_game()
 		read_save_file(filename_, load_config_, &error_log);
 		copy_era(load_config_);
 
-		gamestate_ = saved_game(load_config_);
+		gamestate_.set_data(load_config_);
 	}
 
 	if(!error_log.empty()) {

@@ -17,6 +17,14 @@ replay_recorder_base::~replay_recorder_base(void)
 {
 }
 
+
+void replay_recorder_base::swap(replay_recorder_base& other)
+{
+	commands_.swap(other.commands_);
+	std::swap(pos_, other.pos_);
+	upload_log_.swap(other.upload_log_);
+}
+
 int replay_recorder_base::get_pos() const
 { 
 	return pos_; 
@@ -84,6 +92,20 @@ void replay_recorder_base::append_config(const config& data)
 	BOOST_FOREACH(const config& command, data.child_range("command"))
 	{
 		commands_.push_back(new config(command));
+	}
+}
+
+void replay_recorder_base::append_config(config& data)
+{
+	if(config& upload_log = data.child("upload_log"))
+	{
+		upload_log_.swap(upload_log);
+	}
+	BOOST_FOREACH(config& command, data.child_range("command"))
+	{
+		config* new_config = new config();
+		new_config->swap(command);
+		commands_.push_back(new_config);
 	}
 }
 

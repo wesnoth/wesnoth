@@ -68,7 +68,7 @@ saved_game::saved_game()
 
 }
 
-saved_game::saved_game(const config& cfg)
+saved_game::saved_game(config cfg)
 	: has_carryover_expanded_(false)
 	, carryover_()
 	, replay_start_()
@@ -79,44 +79,7 @@ saved_game::saved_game(const config& cfg)
 	, replay_data_()
 
 {
-	log_scope("read_game");
-
-	if(const config & caryover_sides = cfg.child("carryover_sides"))
-	{
-		carryover_ = caryover_sides;
-		has_carryover_expanded_ = true;
-	}
-	else
-	{
-		carryover_ = cfg.child_or_empty("carryover_sides_start");
-	}
-
-	
-	//Serversided replays can contain multiple [replay]
-	replay_start_ = cfg.child_or_empty("replay_start");
-	BOOST_FOREACH(const config& replay, cfg.child_range("replay"))
-	{
-		replay_data_.append_config(replay);
-	}
-	replay_data_.set_to_end();
-	if(const config& snapshot = cfg.child("snapshot"))
-	{
-		this->starting_pos_type_ = STARTINGPOS_SNAPSHOT;
-		this->starting_pos_ = snapshot;
-	}
-	else if(const config& scenario = cfg.child("scenario"))
-	{
-		this->starting_pos_type_ = STARTINGPOS_SCENARIO;
-		this->starting_pos_ = scenario;
-	}
-
-	LOG_NG << "scenario: '" << carryover_["next_scenario"].str() << "'\n";
-
-	if (const config &stats = cfg.child("statistics")) {
-		statistics::fresh_stats();
-		statistics::read_stats(stats);
-	}
-
+	set_data(cfg);
 }
 
 saved_game::saved_game(const saved_game& state)
@@ -530,4 +493,83 @@ void saved_game::unify_controllers()
 		if (side["controller"] == "network_ai")
 			side["controller"] = "ai";
 	}
+}
+
+saved_game& saved_game::operator=(saved_game other)
+{
+	this->swap(other);
+	return *this;
+}
+
+void saved_game::swap(saved_game& other)
+{
+	carryover_.swap(other.carryover_);
+	std::swap(classification_, other.classification_);
+	std::swap(has_carryover_expanded_, other.has_carryover_expanded_);
+	std::swap(mp_settings_, other.mp_settings_);
+	replay_data_.swap(other.replay_data_);
+	replay_start_.swap(other.replay_start_);
+	starting_pos_.swap(other.starting_pos_);
+	std::swap(starting_pos_type_, other.starting_pos_type_);
+}
+
+void saved_game::set_data(config& cfg)
+{
+	log_scope("read_game");
+
+	if(config & caryover_sides = cfg.child("carryover_sides"))
+	{
+		carryover_.swap(caryover_sides);
+		has_carryover_expanded_ = true;
+	}
+	else if(config & caryover_sides_start = cfg.child("carryover_sides_start"))
+	{
+		carryover_.swap(caryover_sides_start);
+	}
+	else
+	{
+		carryover_ = config();
+	}
+
+	if(config & replay_start = cfg.child("replay_start"))
+	{
+		replay_start_.swap(replay_start);
+	}
+	else
+	{
+		replay_start_ = config();
+	}
+
+	//Serversided replays can contain multiple [replay]
+	BOOST_FOREACH(config& replay, cfg.child_range("replay"))
+	{
+		replay_data_.append_config(replay);
+	}
+	replay_data_.set_to_end();
+	if(config& snapshot = cfg.child("snapshot"))
+	{
+		this->starting_pos_type_ = STARTINGPOS_SNAPSHOT;
+		this->starting_pos_.swap(snapshot);
+	}
+	else if(config& scenario = cfg.child("scenario"))
+	{
+		this->starting_pos_type_ = STARTINGPOS_SCENARIO;
+		this->starting_pos_.swap(scenario);
+	}
+	else
+	{
+		this->starting_pos_type_ = STARTINGPOS_NONE;
+		this->starting_pos_ = config();
+	}
+
+	LOG_NG << "scenario: '" << carryover_["next_scenario"].str() << "'\n";
+
+	if (const config &stats = cfg.child("statistics")) {
+		statistics::fresh_stats();
+		statistics::read_stats(stats);
+	}
+	
+	classification_ = game_classification(cfg);
+	mp_settings_ = mp_game_settings(cfg);
+	cfg.clear();
 }
