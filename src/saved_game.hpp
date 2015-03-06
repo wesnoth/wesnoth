@@ -5,6 +5,8 @@
 #include "config.hpp"
 #include "game_classification.hpp"
 #include "mp_game_settings.hpp"
+#include "replay_recorder_base.hpp"
+
 class config_writer;
 
 
@@ -94,13 +96,9 @@ public:
 	/* removes network_ai and network controller types*/
 	void unify_controllers();
 
-	/**
-	 * If the game is saved mid-level, we have a series of replay steps
-	 * to take the game up to the position it was saved at.
-	 */
-	config replay_data;
-
 	void set_default_save_id();
+	replay_recorder_base& get_replay() { return replay_data_; }
+	const replay_recorder_base& get_replay() const { return replay_data_; }
 private:
 	
 	bool has_carryover_expanded_;
@@ -122,6 +120,8 @@ private:
 		This can eigher be a [scenario] for a fresh game or a [snapshot] if this is a reloaded game
 	*/
 	config starting_pos_;
+
+	replay_recorder_base replay_data_;
 };
 
 

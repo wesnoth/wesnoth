@@ -99,7 +99,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::handle_turn(const config& t)
 	/** @todo FIXME: Check what commands we execute when it's our turn! */
 
 	//note, that this function might call itself recursively: do_replay -> ... -> get_user_choice -> ... -> playmp_controller::pull_remote_choice -> sync_network -> handle_turn
-	recorder.add_config(t, replay::MARK_AS_SENT);
+	resources::recorder->add_config(t, replay::MARK_AS_SENT);
 	PROCESS_DATA_RESULT retv = replay_to_process_data_result(do_replay());
 	return retv;
 }
@@ -132,7 +132,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	assert(network::nconnections() <= 1);
 	assert(cfg.all_children_count() == 1);
 	assert(cfg.attribute_range().first == cfg.attribute_range().second);
-	if(!recorder.at_end())
+	if(!resources::recorder->at_end())
 	{
 		ERR_NW << "processing network data while still having data on the replay." << std::endl;
 	}

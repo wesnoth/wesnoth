@@ -99,6 +99,7 @@ static void clear_resources()
 	resources::tod_manager = NULL;
 	resources::tunnels = NULL;
 	resources::undo_stack = NULL;
+	resources::recorder = NULL;
 	resources::units = NULL;
 	resources::whiteboard.reset();
 
@@ -114,6 +115,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	: controller_base(game_config, video)
 	, observer()
 	, savegame_config()
+	, replay_(new replay(state_of_game.get_replay()))
 	, gamestate_(level, tdata)
 	, level_(level)
 	, saved_game_(state_of_game)
@@ -156,6 +158,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	resources::teams = &gamestate_.board_.teams_;
 	resources::tod_manager = &gamestate_.tod_manager_;
 	resources::undo_stack = undo_stack_.get();
+	resources::recorder = replay_.get();
 	resources::units = &gamestate_.board_.units_;
 	resources::filter_con = &gamestate_;
 
@@ -364,7 +367,7 @@ void play_controller::maybe_do_init_side()
 		return;
 	}
 
-	recorder.init_side();
+	resources::recorder->init_side();
 	do_init_side();
 }
 

@@ -127,7 +127,7 @@ static void show_carryover_message(saved_game& gamestate, playsingle_controller&
 LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& game_config,
 		const tdata_cache & tdata, bool is_unit_test)
 {
-	recorder = replay(gamestate.replay_data);
+	gamestate.get_replay().set_pos(0);
 	// 'starting_pos' will contain the position we start the game from.
 	// this call also might expand [scenario] in case thatt there is no replay_start
 	const config& starting_pos = gamestate.get_replay_starting_pos();
@@ -140,9 +140,6 @@ LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& gam
 		//	gamestate.abbrev = (*scenario)["abbrev"];
 
 		LEVEL_RESULT res = play_replay_level(game_config, tdata, disp.video(), gamestate, is_unit_test);
-
-		recorder.clear();
-		gamestate.replay_data.clear();
 
 		return res;
 	} catch(game::load_game_failed& e) {
@@ -256,8 +253,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 	io_type_t io_type, bool skip_replay,
 	bool network_game, bool blindfold_replay, bool is_unit_test)
 {
-	recorder = replay(gamestate.replay_data);
-	recorder.set_to_end();
+	gamestate.get_replay().set_to_end();
 
 	gamestate.expand_scenario();
 
@@ -333,7 +329,6 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		}
 		
 		gamestate.convert_to_start_save();
-		recorder.clear();
 
 		//If there is no next scenario we're done now.
 		if(gamestate.get_scenario_id().empty())

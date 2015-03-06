@@ -497,7 +497,7 @@ wml_action::wml_action(const std::string & tag, handler function)
 /// @todo Finish experimenting.
 WML_HANDLER_FUNCTION(clear_global_variable,/**/,pcfg)
 {
-	if (get_replay_source().at_end() || (network::nconnections() != 0))
+	if (!resources::controller->is_replay())
 		verify_and_clear_global_variable(pcfg);
 }
 

@@ -481,7 +481,6 @@ void savegame::set_filename(std::string filename)
 
 void savegame::before_save()
 {
-	gamestate_.replay_data = recorder.get_replay_data();
 }
 
 bool savegame::save_game(CVideo* video, const std::string& filename)
@@ -609,7 +608,10 @@ void replay_savegame::write_game(config_writer &out) {
 
 	gamestate().write_carryover(out);
 	out.write_child("replay_start", gamestate().replay_start());
-	out.write_child("replay", gamestate().replay_data);
+
+	out.open_child("replay");
+	gamestate().get_replay().write(out);
+	out.close_child("replay");
 
 }
 
@@ -693,7 +695,9 @@ void ingame_savegame::write_game(config_writer &out) {
 	gamestate().write_carryover(out);
 	out.write_child("snapshot",gamestate().get_starting_pos());
 	out.write_child("replay_start", gamestate().replay_start());
-	out.write_child("replay", gamestate().replay_data);
+	out.open_child("replay");
+	gamestate().get_replay().write(out);
+	out.close_child("replay");
 }
 
 //changes done during 1.11.0-dev

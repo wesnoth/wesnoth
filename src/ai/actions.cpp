@@ -287,7 +287,7 @@ void attack_result::do_execute()
 	if(synced_context::get_synced_state() != synced_context::SYNCED) //RAII block for set_scontext_synced
 	{
 		//we don't use synced_context::run_in_synced_context because that wouldn't allow us to pass advancements_
-		recorder.add_synced_command("attack", replay_helper::get_attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, a_->type_id(),
+		resources::recorder->add_synced_command("attack", replay_helper::get_attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, a_->type_id(),
 			d_->type_id(), a_->level(), d_->level(), resources::tod_manager->turn(),
 			resources::tod_manager->get_time_of_day()));
 		set_scontext_synced sync;
