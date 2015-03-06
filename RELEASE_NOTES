@@ -235,6 +235,28 @@ print = make_print()
 [/list]
 [/section]
 
+[section="Variable name checking"]
+ The use of incorrect variable names like 'my_array[1][5].my_value', 'my_array..my_value' or 'my_array[].my_value' will now result in an error.
+[/section]
+
+[section="New wml tags"]
+[list]
+[*] [sync_variable] allows to synchonize a variable between, multiple clients in a mp game. This can for example be a variable that was previously set in a select or a preload event.
+[*] [result] inside [endlevel] allows to give side spcific results in a mp game.
+[*] [elseif] inside [if] simplifires wml programm flow.
+[*] [do_command] allows to execute attacks, moves, recalls, recuits .. from wml having the same effect as if a player had ordered them.
+[*] [put_to_recall_list]
+[*] [store_relative_dir]
+[*] [remove_event]
+[/list]
+[/section]
+[section="New lua functions"]
+[list]
+[*] wesnoth.synchonize_variable is now able to query information form another side than the currently playing one.
+[*] wesnoth.get_all_vars allows get get a copy of the whole wml variables set.
+[/list]
+[/section]
+
 [section="Example section 2"]
 Example contents 2.
 [/section]
