@@ -42,6 +42,7 @@
 #include "persist_manager.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
+#include "save_index.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "statistics.hpp"
@@ -178,24 +179,18 @@ bool loadgame::load_game()
 		return false;
 	}
 
-	std::string error_log;
-	{
-		cursor::setter cur(cursor::WAIT);
-		log_scope("load_game");
+	// Confirm the integrity of the file before throwing the exception.
+	// Use the summary in the save_index for this.
 
-		read_save_file(filename_, load_config_, &error_log);
+	const config & summary = save_index_manager.get(filename_);
 
-		gamestate_ = saved_game(load_config_);
-	}
-
-	if(!error_log.empty()) {
+	if (summary["corrupt"].to_bool(false)) {
 		gui2::show_error_message(gui_.video(),
-				_("The file you have tried to load is corrupt: '") +
-				error_log);
+				_("The file you have tried to load is corrupt: '"));
 		return false;
 	}
 
-	if (!check_version_compatibility()) {
+	if (!loadgame::check_version_compatibility(summary["version"].str(), gui_.video())) {
 		return false;
 	}
 
