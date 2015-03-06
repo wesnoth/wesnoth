@@ -40,6 +40,7 @@
 #include "playturn.hpp"
 #include "random_new_deterministic.hpp"
 #include "replay_helper.hpp"
+#include "resources.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
 #include "synced_context.hpp"
@@ -76,7 +77,7 @@ playsingle_controller::playsingle_controller(const config& level,
 	: play_controller(level, state_of_game, ticks, game_config, tdata, video, skip_replay)
 	, cursor_setter(cursor::NORMAL)
 	, textbox_info_()
-	, replay_sender_(recorder)
+	, replay_sender_(*resources::recorder)
 	, network_reader_()
 	, turn_data_(replay_sender_, network_reader_)
 	, end_turn_(END_TURN_NONE)
@@ -207,13 +208,13 @@ void playsingle_controller::play_scenario_init() {
 
 	fire_preload();
 	
-	assert(recorder.at_end());
+	assert(resources::recorder->at_end());
 
 	if(!loading_game_ )
 	{
-		assert(recorder.empty());
-		recorder.add_start();
-		recorder.get_next_action();
+		assert(resources::recorder->empty());
+		resources::recorder->add_start();
+		resources::recorder->get_next_action();
 		//we can only use a set_scontext_synced with a non empty recorder.
 		set_scontext_synced sync;
 
@@ -839,7 +840,7 @@ void playsingle_controller::sync_end_turn()
 	assert(synced_context::synced_state() == synced_context::UNSYNCED);
 	if(end_turn_ == END_TURN_REQUIRED && current_team().is_local())
 	{
-		recorder.end_turn();
+		resources::recorder->end_turn();
 		end_turn_ = END_TURN_SYNCED;
 	}
 }

@@ -60,7 +60,7 @@ bool synced_context::run(const std::string& commandname, const config& data, boo
 
 	assert(use_undo || (!resources::undo_stack->can_redo() && !resources::undo_stack->can_undo()));
 	/*
-		use this after recorder.add_synced_command
+		use this after resources::recorder->add_synced_command
 		because set_scontext_synced sets the checkup to the last added command
 	*/
 	set_scontext_synced sync;
@@ -88,12 +88,12 @@ bool synced_context::run(const std::string& commandname, const config& data, boo
 
 bool synced_context::run_and_store(const std::string& commandname, const config& data, bool use_undo, bool show, synced_command::error_handler_function error_handler)
 {
-	assert(recorder.at_end());
-	recorder.add_synced_command(commandname, data);
+	assert(resources::recorder->at_end());
+	resources::recorder->add_synced_command(commandname, data);
 	bool success = run(commandname, data, use_undo, show, error_handler);
 	if(!success)
 	{
-		recorder.undo();
+		resources::recorder->undo();
 	}
 	return success;
 }
@@ -296,7 +296,7 @@ config synced_context::ask_server_for_seed()
 	while(true) {
 
 		do_replay_handle();
-		bool is_replay_end = get_replay_source().at_end();
+		bool is_replay_end = resources::recorder->at_end();
 
 		if (is_replay_end && !is_mp_game)
 		{
@@ -305,7 +305,7 @@ config synced_context::ask_server_for_seed()
 			DBG_REPLAY << "MP synchronization: local server choice\n";
 			config cfg = config_of("new_seed", seed_rng::next_seed_str());
 			//-1 for "server" todo: change that.
-			recorder.user_input(name, cfg, -1);
+			resources::recorder->user_input(name, cfg, -1);
 			return cfg;
 
 		}
@@ -335,18 +335,18 @@ config synced_context::ask_server_for_seed()
 			be extracted from the replay. */
 			DBG_REPLAY << "MP synchronization: replay server choice\n";
 			do_replay_handle();
-			const config *action = get_replay_source().get_next_action();
+			const config *action = resources::recorder->get_next_action();
 			if (!action)
 			{
 				replay::process_error("[" + name + "] expected but none found\n");
-				get_replay_source().revert_action();
+				resources::recorder->revert_action();
 				return config_of("new_seed", seed_rng::next_seed_str());
 			}
 			if (!action->has_child(name))
 			{
 				replay::process_error("[" + name + "] expected but none found, found instead:\n " + action->debug() + "\n");
 
-				get_replay_source().revert_action();
+				resources::recorder->revert_action();
 				return config_of("new_seed", seed_rng::next_seed_str());
 			}
 			if((*action)["from_side"].str() != "server" || (*action)["side_invalid"].to_bool(false) )
@@ -401,7 +401,7 @@ checkup* set_scontext_synced::generate_checkup(const std::string& tagname)
 	}
 	else
 	{
-		return new synced_checkup(recorder.get_last_real_command().child_or_add(tagname));
+		return new synced_checkup(resources::recorder->get_last_real_command().child_or_add(tagname));
 	}
 }
 

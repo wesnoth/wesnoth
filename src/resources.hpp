@@ -33,6 +33,7 @@ class unit_map;
 class persist_manager;
 class game_classification;
 struct mp_game_settings;
+class replay;
 namespace actions { class undo_list; }
 
 namespace game_events { class manager; }
@@ -59,6 +60,7 @@ namespace resources
 	extern const mp_game_settings *mp_settings;
 	extern soundsource::manager   *soundsources;
 	extern std::vector<team>      *teams;
+	extern replay                 *recorder;
 	extern fake_unit_manager      *fake_units;
 	extern ::tod_manager          *tod_manager;
 	extern pathfind::manager      *tunnels;

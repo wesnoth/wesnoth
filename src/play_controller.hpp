@@ -35,7 +35,7 @@ class game_data;
 class team;
 class unit;
 class wmi_pager;
-
+class replay;
 class saved_game;
 struct mp_game_settings;
 class game_classification;
@@ -273,6 +273,7 @@ protected:
 	/// undo_list can be an incomplete type at this point (which reduces the
 	/// number of files that depend on actions/undo.hpp).
 	boost::scoped_ptr<actions::undo_list> undo_stack_;
+	boost::scoped_ptr<replay> replay_;
 
 	//if a team is specified whose turn it is, it means we're loading a game
 	//instead of starting a fresh one. Gets reset to false after init_side

@@ -707,8 +707,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 			return 0;
 		}
 
-		recorder.clear();
-
 		//Start directly a campaign
 		if(game->goto_campaign() == false){
 			if (game->jump_to_campaign_id().empty())

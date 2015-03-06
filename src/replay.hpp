@@ -26,6 +26,7 @@
 #include <deque>
 #include <map>
 #include <set>
+class replay_recorder_base;
 class game_display;
 class terrain_label;
 class unit_map;
@@ -50,11 +51,9 @@ private:
 class replay
 {
 public:
-	replay();
-	explicit replay(const config& cfg);
+	explicit replay(replay_recorder_base& base);
 
-	void append(const config& cfg);
-
+	
 	void add_start();
 	void add_countdown_update(int value,int team);
 
@@ -93,8 +92,6 @@ public:
 	//ignored by the undo system.
 	enum DATA_TYPE { ALL_DATA, NON_UNDO_DATA };
 	config get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type=ALL_DATA);
-	config get_last_turn(int num_turns=1);
-	const config& get_replay_data() const { return cfg_; }
 
 	void undo();
 	/*
@@ -145,15 +142,9 @@ private:
 	 * @return a reference to the added command
 	 */
 	config& add_nonundoable_command();
-	config cfg_;
-	int pos_;
-
+	replay_recorder_base* base_;
 	std::vector<int> message_locations;
 };
-
-replay& get_replay_source();
-
-extern replay recorder;
 
 enum REPLAY_RETURN
 {

@@ -956,6 +956,7 @@ set(wesnoth-main_SRC
 	replay.cpp
 	replay_helper.cpp
 	replay_controller.cpp
+	replay_recorder_base.cpp
 	resources.cpp
 	save_blocker.cpp
 	save_index.cpp

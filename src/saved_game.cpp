@@ -56,27 +56,27 @@ static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
 saved_game::saved_game()
-	: replay_data()
-	, has_carryover_expanded_(false)
+	: has_carryover_expanded_(false)
 	, carryover_(carryover_info().to_config())
 	, replay_start_()
 	, classification_()
 	, mp_settings_()
 	, starting_pos_type_(STARTINGPOS_NONE)
 	, starting_pos_()
+	, replay_data_()
 {
 
 }
 
 saved_game::saved_game(const config& cfg)
-	: replay_data()
-	, has_carryover_expanded_(false)
+	: has_carryover_expanded_(false)
 	, carryover_()
 	, replay_start_()
 	, classification_(cfg)
 	, mp_settings_(cfg)
 	, starting_pos_type_(STARTINGPOS_NONE)
 	, starting_pos_()
+	, replay_data_()
 
 {
 	log_scope("read_game");
@@ -94,12 +94,11 @@ saved_game::saved_game(const config& cfg)
 	
 	//Serversided replays can contain multiple [replay]
 	replay_start_ = cfg.child_or_empty("replay_start");
-	replay_data = config(); //cfg.child_or_empty("replay");
 	BOOST_FOREACH(const config& replay, cfg.child_range("replay"))
 	{
-		replay_data.append_children(replay);
+		replay_data_.append_config(replay);
 	}
-
+	replay_data_.set_to_end();
 	if(const config& snapshot = cfg.child("snapshot"))
 	{
 		this->starting_pos_type_ = STARTINGPOS_SNAPSHOT;
@@ -121,14 +120,14 @@ saved_game::saved_game(const config& cfg)
 }
 
 saved_game::saved_game(const saved_game& state)
-	: replay_data(state.replay_data)
-	, has_carryover_expanded_(state.has_carryover_expanded_)
+	: has_carryover_expanded_(state.has_carryover_expanded_)
 	, carryover_(state.carryover_)
 	, replay_start_(state.replay_start_)
 	, classification_(state.classification_)
 	, mp_settings_(state.mp_settings_)
 	, starting_pos_type_(state.starting_pos_type_)
 	, starting_pos_(state.starting_pos_)
+	, replay_data_(state.replay_data_)
 {
 }
 
@@ -156,10 +155,9 @@ void saved_game::write_config(config_writer& out) const
 	{
 		out.write_child("replay_start", replay_start_);
 	}
-	if(!this->replay_data.empty())
-	{
-		out.write_child("replay", replay_data);
-	}
+	out.open_child("replay");
+	replay_data_.write(out);
+	out.close_child("replay");
 	write_carryover(out);
 }
 
@@ -445,7 +443,7 @@ void saved_game::convert_to_start_save()
 	sides.rng().rotate_random();
 	carryover_ = sides.to_config();
 	has_carryover_expanded_ = false;
-	replay_data = config();
+	replay_data_ = replay_recorder_base();
 	replay_start_ = config();
 	remove_snapshot();
 }
@@ -458,10 +456,8 @@ config saved_game::to_config() const
 	{
 		r.add_child("replay_start", replay_start_);
 	}
-	if(!this->replay_data.empty())
-	{
-		r.add_child("replay", replay_data);
-	}
+	replay_data_.write(r.add_child("replay"));
+	
 	if(starting_pos_type_ == STARTINGPOS_SNAPSHOT)
 	{
 		r.add_child("snapshot", starting_pos_);

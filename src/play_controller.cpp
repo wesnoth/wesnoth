@@ -99,6 +99,7 @@ static void clear_resources()
 	resources::tod_manager = NULL;
 	resources::tunnels = NULL;
 	resources::undo_stack = NULL;
+	resources::recorder = NULL;
 	resources::units = NULL;
 	resources::whiteboard.reset();
 
@@ -132,6 +133,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, xp_mod_(new unit_experience_accelerator(level["experience_modifier"].to_int(100)))
 	, statistics_context_(new statistics::scenario_context(level["name"]))
 	, undo_stack_(new actions::undo_list(level.child("undo_stack")))
+	, replay_(new replay(state_of_game.get_replay()))
 	, loading_game_(level["playing_team"].empty() == false)
 	, player_number_(1)
 	, first_player_(level["playing_team"].to_int() + 1)
@@ -156,6 +158,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	resources::teams = &gamestate_.board_.teams_;
 	resources::tod_manager = &gamestate_.tod_manager_;
 	resources::undo_stack = undo_stack_.get();
+	resources::recorder = replay_.get();
 	resources::units = &gamestate_.board_.units_;
 	resources::filter_con = &gamestate_;
 
@@ -364,7 +367,7 @@ void play_controller::maybe_do_init_side()
 		return;
 	}
 
-	recorder.init_side();
+	resources::recorder->init_side();
 	do_init_side();
 }
 

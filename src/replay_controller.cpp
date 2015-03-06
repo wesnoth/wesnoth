@@ -97,7 +97,7 @@ void play_replay_level_main_loop(replay_controller & replaycontroller, bool & is
 void replay_controller::try_run_to_completion() {
 	for (;;) {
 		play_slice();
-		if (recorder.at_end()) {
+		if (resources::recorder->at_end()) {
 			return;
 		} else {
 			if (!is_playing_) {
@@ -271,7 +271,7 @@ void replay_controller::replay_ui_playback_should_stop()
 	if(!replay_ui_has_all_buttons())
 		return;
 
-	if(!recorder.at_end()) {
+	if(!resources::recorder->at_end()) {
 		play_button()->enable(true);
 		reset_button()->enable(true);
 		play_turn_button()->enable(true);
@@ -317,7 +317,7 @@ void replay_controller::reset_replay()
 	it_is_a_new_turn_ = true;
 	skip_replay_ = false;
 	gamestate_.tod_manager_= tod_manager_start_;
-	recorder.start_replay();
+	resources::recorder->start_replay();
 	saved_game_ = saved_game_start_;
 	gamestate_.board_ = gameboard_start_;
 	gui_->change_display_context(&gamestate_.board_); //this doesn't change the pointer value, but it triggers the gui to update the internal terrain builder object,
@@ -359,14 +359,14 @@ void replay_controller::reset_replay()
 	// Scenario initialization. (c.f. playsingle_controller::play_scenario())
 	fire_preload();
 	{ //block for set_scontext_synced
-		if(recorder.add_start_if_not_there_yet())
+		if(resources::recorder->add_start_if_not_there_yet())
 		{
 			ERR_REPLAY << "inserted missing [start]" << std::endl;
 		}
-		config* pstart = recorder.get_next_action();
+		config* pstart = resources::recorder->get_next_action();
 		assert(pstart->has_child("start"));
 		/*
-			use this after recorder.add_synced_command
+			use this after resources::recorder->add_synced_command
 			because set_scontext_synced sets the checkup to the last added command
 		*/
 		set_scontext_synced sync;
@@ -476,7 +476,7 @@ void replay_controller::replay_skip_animation(){
 void replay_controller::play_replay()
 {
 
-	if (recorder.at_end())
+	if (resources::recorder->at_end())
 	{
 	}
 
@@ -495,7 +495,7 @@ void replay_controller::play_replay()
 void replay_controller::play_replay_main_loop()
 {
 	DBG_REPLAY << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
-	for(; !recorder.at_end() && is_playing_; first_player_ = 1) {
+	for(; !resources::recorder->at_end() && is_playing_; first_player_ = 1) {
 		play_turn();
 	}
 }
@@ -512,7 +512,7 @@ void replay_controller::play_turn()
 
 	bool last_team = false;
 
-	while ( (!last_team) && (!recorder.at_end()) && is_playing_ ){
+	while ( (!last_team) && (!resources::recorder->at_end()) && is_playing_ ){
 		last_team = static_cast<size_t>(player_number_) == gamestate_.board_.teams().size();
 		play_side();
 		play_slice();
@@ -624,5 +624,5 @@ void replay_controller::handle_generic_event(const std::string& name)
 }
 
 bool replay_controller::recorder_at_end() {
-	return recorder.at_end();
+	return resources::recorder->at_end();
 }
