@@ -1,6 +1,8 @@
 
 #include "replay_recorder_base.hpp"
-#include "serialization\binary_or_text.hpp"
+#include "serialization/binary_or_text.hpp"
+
+#include <boost/foreach.hpp>
 
 replay_recorder_base::replay_recorder_base(void)
 	: upload_log_()

@@ -2,6 +2,8 @@
 #include <cassert>
 #include <boost/ptr_container/ptr_vector.hpp>
 
+#include <config.hpp>
+
 class config_writer;
 class replay_recorder_base
 {
