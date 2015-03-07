@@ -1416,30 +1416,31 @@ static bool add_font_to_fontlist(const config &fonts_config,
 	std::vector<font::subset_descriptor>& fontlist, const std::string& name)
 {
 	const config &font = fonts_config.find_child("font", "name", name);
-	if (!font)
+	if (!font) {
 		return false;
-
-		fontlist.push_back(font::subset_descriptor());
-		fontlist.back().name = name;
-		std::vector<std::string> ranges = utils::split(font["codepoints"]);
-
-		for(std::vector<std::string>::const_iterator itor = ranges.begin();
-				itor != ranges.end(); ++itor) {
-
-			std::vector<std::string> r = utils::split(*itor, '-');
-			if(r.size() == 1) {
-				size_t r1 = lexical_cast_default<size_t>(r[0], 0);
-				fontlist.back().present_codepoints.push_back(std::pair<size_t, size_t>(r1, r1));
-			} else if(r.size() == 2) {
-				size_t r1 = lexical_cast_default<size_t>(r[0], 0);
-				size_t r2 = lexical_cast_default<size_t>(r[1], 0);
-
-				fontlist.back().present_codepoints.push_back(std::pair<size_t, size_t>(r1, r2));
-			}
-		}
-
-		return true;
 	}
+
+	fontlist.push_back(font::subset_descriptor());
+	fontlist.back().name = name;
+	std::vector<std::string> ranges = utils::split(font["codepoints"]);
+
+	for(std::vector<std::string>::const_iterator itor = ranges.begin();
+			itor != ranges.end(); ++itor) {
+
+		std::vector<std::string> r = utils::split(*itor, '-');
+		if(r.size() == 1) {
+			size_t r1 = lexical_cast_default<size_t>(r[0], 0);
+			fontlist.back().present_codepoints.push_back(std::pair<size_t, size_t>(r1, r1));
+		} else if(r.size() == 2) {
+			size_t r1 = lexical_cast_default<size_t>(r[0], 0);
+			size_t r2 = lexical_cast_default<size_t>(r[1], 0);
+
+			fontlist.back().present_codepoints.push_back(std::pair<size_t, size_t>(r1, r2));
+		}
+	}
+
+	return true;
+}
 
 namespace font {
 
