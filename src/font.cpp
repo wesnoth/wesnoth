@@ -221,8 +221,28 @@ static std::vector<text_chunk> split_text(std::string const & utf8_text) {
 	return chunks;
 }
 
+typedef std::map<std::pair<std::string, int>, TTF_Font*> topen_font_cache;
+topen_font_cache open_fonts;
+
+static TTF_Font* open_font_impl(const std::string & , int);
+
+// A wrapper which caches the results of open_font_impl.
+// Note that clear_fonts() is responsible to clean up all of these font pointers,
+// so to avoid memory leaks fonts should only be opened from this function.
 static TTF_Font* open_font(const std::string& fname, int size)
 {
+	const std::pair<std::string, int> key = std::make_pair(fname, size);
+	const topen_font_cache::iterator it = open_fonts.find(key);
+	if (it != open_fonts.end()) {
+		return it->second;
+	}
+
+	TTF_Font* result = open_font_impl(fname, size);
+	open_fonts.insert(std::make_pair(key, result));
+	return result;
+}
+
+static TTF_Font* open_font_impl(const std::string & fname, int size) {
 	std::string name;
 	if(!game_config::path.empty()) {
 		name = game_config::path + "/fonts/" + fname;
@@ -321,14 +341,17 @@ static TTF_Font* get_font(font_id id)
 
 static void clear_fonts()
 {
-	for(tfont_table::iterator i = font_table.begin(); i != font_table.end(); ++i) {
-		TTF_CloseFont(i->second.font);
+	for(topen_font_cache::iterator i = open_fonts.begin(); i != open_fonts.end(); ++i) {
+		TTF_CloseFont(i->second);
 	}
+	open_fonts.clear();
 
 	font_table.clear();
+
 	font_names.clear();
 	bold_names.clear();
 	italic_names.clear();
+
 	char_blocks.cbmap.clear();
 	line_size_cache.clear();
 }
