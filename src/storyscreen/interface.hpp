@@ -57,15 +57,4 @@ enum START_POSITION {
 void show_story(display &disp, const std::string &scenario_name,
 	const config::const_child_itors &story);
 
-/**
- * Displays a simple fading screen with any user-provided text.
- * Used after the end of single-player campaigns.
- *
- * @param text     Text to display, centered on the screen.
- *
- * @param duration In milliseconds, for how much time the text will
- *                 be displayed on screen.
- */
-void show_endscreen(display& disp, const t_string& text, unsigned int duration);
-
 #endif /* ! STORYSCREEN_HPP_INCLUDED */

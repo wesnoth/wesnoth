@@ -25,7 +25,6 @@
 #include "display.hpp"
 #include "gettext.hpp"
 #include "marked-up_text.hpp"
-#include "storyscreen/interface.hpp"
 
 void the_end(display &disp, std::string text, unsigned int duration)
 {
