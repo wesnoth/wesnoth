@@ -65,6 +65,7 @@ static lg::log_domain log_font("font");
 // Signed int. Negative values mean "no subset".
 typedef int subset_id;
 
+// Used as a key in the font table, which caches the get_font results.
 struct font_id
 {
 	font_id(subset_id subset, int size) : subset(subset), size(size), style(TTF_STYLE_NORMAL) {}
@@ -83,7 +84,19 @@ struct font_id
 	int style;
 };
 
-static std::map<font_id, TTF_Font*> font_table;
+// Record stored in the font table.
+// If the record for font_id (FOO, Bold + Underline) is a record (BAR, Bold),
+// it means that BAR is a Bold-styled version of FOO which we shipped with the
+// game, and now SDL_TTF should be used to style BAR as underline for the final results.
+struct ttf_record
+{
+	TTF_Font* font;
+	int style;
+};
+
+typedef std::map<font_id, ttf_record> tfont_table;
+
+static tfont_table font_table;
 static std::vector<std::string> font_names;
 static std::vector<std::string> bold_names;
 static std::vector<std::string> italic_names;
@@ -250,99 +263,66 @@ static TTF_Font* open_font(const std::string& fname, int size)
 
 // Gets an appropriately configured TTF Font, for this font size and style.
 // Loads fonts if necessary. For styled fonts, we search for a ``shipped''
-// version of the font which is prestyled. If this fails we use the basic
-// version, plus SDL TTF styling.
+// version of the font which is prestyled. If this fails we find the closest
+// thing which we did ship, and store a record of this, which allows to
+// rapidly correct the remaining styling using SDL_TTF.
 //
 // Uses the font table for caching.
-// If a font is missing from font table, we try to load it. If there is an
-// entry but it is a null pointer, it means we failed to load so don't keep
-// trying.
-// If a styled font has a null pointer, then in that case we try to fall
-// back to TTF styling.
 static TTF_Font* get_font(font_id id)
 {
-	const std::map<font_id, TTF_Font*>::iterator it = font_table.find(id);
-	if(it != font_table.end() && it->second != NULL) {
-		TTF_SetFontStyle(it->second, TTF_STYLE_NORMAL); //If we are supposed to use TTF styling, this entry would have been NULL.
-		return it->second;
+	const std::map<font_id, ttf_record>::iterator it = font_table.find(id);
+	if(it != font_table.end()) {
+		if (it->second.font != NULL) {
+			// If we found a valid record, use SDL_TTF to add in the difference 
+			// between its intrinsic style and the desired style.
+			TTF_SetFontStyle(it->second.font, it->second.style ^ id.style);
+		}
+		return it->second.font;
 	}
 
-	if (id.style == TTF_STYLE_NORMAL) {
-		if (it != font_table.end()) { 	// If we are missing an unstyled font, there is no fallback.
-			return NULL;
-		}
-
-		if(id.subset < 0 || size_t(id.subset) >= font_names.size()) {
-			return NULL;
-		}
-
-		TTF_Font* font = open_font(font_names[id.subset], id.size);
-
-		if (font) {
-			TTF_SetFontStyle(font, TTF_STYLE_NORMAL);
-		}
-
-		LOG_FT << "Inserting font...\n";
-		font_table.insert(std::pair<font_id,TTF_Font*>(id, font)); // If loading fails, we want to insert a NULL entry here.
-		return font;
-	}
-
-	if(it != font_table.end()) // if we inserted a NULL record for a styled font, fallback to use SDL TTF to style the font.
-	{
-		int desired_style = id.style;
-		id.style = TTF_STYLE_NORMAL;
-		const std::map<font_id, TTF_Font*>::iterator it2 = font_table.find(id);
-
-		if (it2 != font_table.end() && it2->second != NULL) {
-			TTF_SetFontStyle(it2->second, desired_style);
-			return it2->second;
-		} else {
-			return NULL;
-		}
-	}
-
-	// We didn't find any record and this is a styled font, so this is the first time we are requesting it. We need to either
-	// find the styled version, or make a NULL entry. (Otherwise we will do constant file seeking instead of using SDL TTF.)
+	// There's no record, so we need to try to find a solution for this font
+	// and make a record of it. If the indices are out of bounds don't bother though.
 	if(id.subset < 0 || size_t(id.subset) >= font_names.size()) {
 		return NULL;
 	}
 
-	std::string fname;
-	switch (id.style) {
-		case TTF_STYLE_BOLD:
-			fname = bold_names[id.subset];
-			break;
-		case TTF_STYLE_ITALIC:
-			fname = italic_names[id.subset];
-			break;
-		default:
-			fname = ""; //assert(false);
-	};
-
-	if (!fname.size()) { // There was no styled font file specified. See code that is loading font config.
-		font_table.insert(std::pair<font_id,TTF_Font*>(id, NULL));
-		return get_font(id); // Call recursively now, which will trigger to use SDL TTF styling.
+	// Favor to use the shipped Italic font over bold if both are present and are needed.
+	if ((id.style & TTF_STYLE_ITALIC) && italic_names[id.subset].size()) {
+		if (TTF_Font* font = open_font(italic_names[id.subset], id.size)) {
+			ttf_record rec = {font, TTF_STYLE_ITALIC};
+			font_table.insert(std::make_pair(id, rec));
+			return get_font(id);
+		}
 	}
 
-	DBG_FT << "Trying to load a styled font: fname = '" << fname << "'\n";
-
-	TTF_Font* font = open_font(fname, id.size);
-	if (font == NULL) { // Failed to load
-		font_table.insert(std::pair<font_id,TTF_Font*>(id, NULL));
-		return get_font(id); // Call recursively now, which will trigger to use SDL TTF styling.
+	// Now see if the shipped Bold font is useful and available.
+	if ((id.style & TTF_STYLE_BOLD) && bold_names[id.subset].size()) {
+		if (TTF_Font* font = open_font(bold_names[id.subset], id.size)) {
+			ttf_record rec = {font, TTF_STYLE_BOLD};
+			font_table.insert(std::make_pair(id, rec));
+			return get_font(id);
+		}
 	}
 
-	TTF_SetFontStyle(font,TTF_STYLE_NORMAL);
+	// Try just to use the basic version of the font then.
+	if (font_names[id.subset].size()) {
+		if(TTF_Font* font = open_font(font_names[id.subset], id.size)) {
+			ttf_record rec = {font, TTF_STYLE_NORMAL};
+			font_table.insert(std::make_pair(id, rec));
+			return get_font(id);
+		}
+	}
 
-	LOG_FT << "Inserting font...\n";
-	font_table.insert(std::pair<font_id,TTF_Font*>(id, font));
-	return font;
+	// Failed to find a font.
+	ttf_record rec = {NULL, TTF_STYLE_NORMAL};
+	font_table.insert(std::make_pair(id, rec));
+	return NULL;
 }
 
 static void clear_fonts()
 {
-	for(std::map<font_id,TTF_Font*>::iterator i = font_table.begin(); i != font_table.end(); ++i) {
-		TTF_CloseFont(i->second);
+	for(tfont_table::iterator i = font_table.begin(); i != font_table.end(); ++i) {
+		TTF_CloseFont(i->second.font);
 	}
 
 	font_table.clear();
