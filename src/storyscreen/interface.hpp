@@ -38,21 +38,10 @@ enum START_POSITION {
 } /* storyscreen namespace */
 
 /**
- * Function to show an introduction sequence segment using story WML.
- * The WML config data (story_cfg) has a format similar to:
- * @code
- * [part]
- *     id='id'
- *     story='story'
- *     image='img'
- * [/part]
- * @endcode
- * Where 'id' is a unique identifier, 'story' is text describing the
- * storyline,and 'img' is a background image. Each part of the sequence will
- * be displayed in turn, with the user able to go to the next part, or skip
- * it entirely.
- * Return is NEXT if the segment played to the end, BACK if the segment played to the beginning,
- * and QUIT if the story was quit
+ * Shows an introduction sequence using story WML.
+ *
+ * Each part of the sequence will be displayed in turn, with the user 
+ * able to go to the next part, previous part, or skip it entirely.
  */
 void show_story(display &disp, const std::string &scenario_name,
 	const config::const_child_itors &story);
