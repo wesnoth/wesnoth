@@ -436,6 +436,8 @@ struct subset_descriptor
 	{
 	}
 
+	subset_descriptor(const config &);
+
 	std::string name;
 	boost::optional<std::string> bold_name; //If we are using another font for styled characters in this font, rather than SDL TTF method
 	boost::optional<std::string> italic_name;
@@ -443,6 +445,36 @@ struct subset_descriptor
 	typedef std::pair<int, int> range;
 	std::vector<range> present_codepoints;
 };
+
+font::subset_descriptor::subset_descriptor(const config & font)
+	: name(font["name"].str())
+	, bold_name()
+	, italic_name()
+	, present_codepoints()
+{
+	if (font.has_attribute("bold_name")) {
+		bold_name = font["bold_name"].str();
+	}
+
+	if (font.has_attribute("italic_name")) {
+		italic_name = font["italic_name"].str();
+	}
+
+	std::vector<std::string> ranges = utils::split(font["codepoints"]);
+
+	BOOST_FOREACH(const std::string & i, ranges) {
+		std::vector<std::string> r = utils::split(i, '-');
+		if(r.size() == 1) {
+			size_t r1 = lexical_cast_default<size_t>(r[0], 0);
+			present_codepoints.push_back(std::pair<size_t, size_t>(r1, r1));
+		} else if(r.size() == 2) {
+			size_t r1 = lexical_cast_default<size_t>(r[0], 0);
+			size_t r2 = lexical_cast_default<size_t>(r[1], 0);
+
+			present_codepoints.push_back(std::pair<size_t, size_t>(r1, r2));
+		}
+	}
+}
 
 static bool check_font_file(std::string name) {
 	if(game_config::path.empty() == false) {
@@ -1461,30 +1493,7 @@ static bool add_font_to_fontlist(const config &fonts_config,
 	}
 	//DBG_FT << "Adding a font record: " << font.debug() << std::endl;
 
-	fontlist.push_back(font::subset_descriptor());
-	fontlist.back().name = name;
-	if (font.has_attribute("bold_name")) {
-		fontlist.back().bold_name = font["bold_name"].str();
-	}
-	if (font.has_attribute("italic_name")) {
-		fontlist.back().italic_name = font["italic_name"].str();
-	}
-	std::vector<std::string> ranges = utils::split(font["codepoints"]);
-
-	for(std::vector<std::string>::const_iterator itor = ranges.begin();
-			itor != ranges.end(); ++itor) {
-
-		std::vector<std::string> r = utils::split(*itor, '-');
-		if(r.size() == 1) {
-			size_t r1 = lexical_cast_default<size_t>(r[0], 0);
-			fontlist.back().present_codepoints.push_back(std::pair<size_t, size_t>(r1, r1));
-		} else if(r.size() == 2) {
-			size_t r1 = lexical_cast_default<size_t>(r[0], 0);
-			size_t r2 = lexical_cast_default<size_t>(r[1], 0);
-
-			fontlist.back().present_codepoints.push_back(std::pair<size_t, size_t>(r1, r2));
-		}
-	}
+	fontlist.push_back(font::subset_descriptor(font));
 
 	return true;
 }
