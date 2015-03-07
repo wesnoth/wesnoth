@@ -539,7 +539,7 @@ void saved_game::set_data(config& cfg)
 	{
 		replay_start_ = config();
 	}
-
+	replay_data_ = replay_recorder_base();
 	//Serversided replays can contain multiple [replay]
 	BOOST_FOREACH(config& replay, cfg.child_range("replay"))
 	{
