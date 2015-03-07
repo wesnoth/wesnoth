@@ -181,7 +181,9 @@ void playmp_controller::play_human_turn(){
 	command_disabled_resetter reset_commands;
 	int cur_ticks = SDL_GetTicks();
 	show_turn_dialog();
-	execute_gotos();
+	if (!linger_) {
+		execute_gotos();
+	}
 
 	if (!linger_ || is_host_) {
 		end_turn_enable(true);
