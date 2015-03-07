@@ -339,11 +339,13 @@ void saved_game::expand_carryover()
 		carryover_info sides(carryover_);
 
 		sides.transfer_to(get_starting_pos());
-		BOOST_FOREACH(config& side_cfg, get_starting_pos().child_range("side")){
+		BOOST_FOREACH(config& side_cfg, get_starting_pos().child_range("side"))
+		{
 			sides.transfer_all_to(side_cfg);
 		}
 
 		carryover_ = sides.to_config();
+		has_carryover_expanded_ = true;
 	}
 }
 
