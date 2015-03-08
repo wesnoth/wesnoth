@@ -34,6 +34,7 @@
 #include "serialization/unicode.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/optional.hpp>
 
 #include <list>
 #include <set>
@@ -64,24 +65,41 @@ static lg::log_domain log_font("font");
 // Signed int. Negative values mean "no subset".
 typedef int subset_id;
 
+// Used as a key in the font table, which caches the get_font results.
 struct font_id
 {
-	font_id(subset_id subset, int size) : subset(subset), size(size) {}
+	font_id(subset_id subset, int size) : subset(subset), size(size), style(TTF_STYLE_NORMAL) {}
+	font_id(subset_id subset, int size, int style) : subset(subset), size(size), style(style) {}
 	bool operator==(const font_id& o) const
 	{
-		return subset == o.subset && size == o.size;
+		return subset == o.subset && size == o.size && style == o.style;
 	}
 	bool operator<(const font_id& o) const
 	{
-		return subset < o.subset || (subset == o.subset && size < o.size);
+		return subset < o.subset || (subset == o.subset && size < o.size) || (subset == o.subset && size == o.size && style < o.style);
 	}
 
 	subset_id subset;
 	int size;
+	int style;
 };
 
-static std::map<font_id, TTF_Font*> font_table;
+// Record stored in the font table.
+// If the record for font_id (FOO, Bold + Underline) is a record (BAR, Bold),
+// it means that BAR is a Bold-styled version of FOO which we shipped with the
+// game, and now SDL_TTF should be used to style BAR as underline for the final results.
+struct ttf_record
+{
+	TTF_Font* font;
+	int style;
+};
+
+typedef std::map<font_id, ttf_record> tfont_table;
+
+static tfont_table font_table;
 static std::vector<std::string> font_names;
+static std::vector<std::string> bold_names;
+static std::vector<std::string> italic_names;
 
 struct text_chunk
 {
@@ -203,8 +221,28 @@ static std::vector<text_chunk> split_text(std::string const & utf8_text) {
 	return chunks;
 }
 
+typedef std::map<std::pair<std::string, int>, TTF_Font*> topen_font_cache;
+topen_font_cache open_fonts;
+
+static TTF_Font* open_font_impl(const std::string & , int);
+
+// A wrapper which caches the results of open_font_impl.
+// Note that clear_fonts() is responsible to clean up all of these font pointers,
+// so to avoid memory leaks fonts should only be opened from this function.
 static TTF_Font* open_font(const std::string& fname, int size)
 {
+	const std::pair<std::string, int> key = std::make_pair(fname, size);
+	const topen_font_cache::iterator it = open_fonts.find(key);
+	if (it != open_fonts.end()) {
+		return it->second;
+	}
+
+	TTF_Font* result = open_font_impl(fname, size);
+	open_fonts.insert(std::make_pair(key, result));
+	return result;
+}
+
+static TTF_Font* open_font_impl(const std::string & fname, int size) {
 	std::string name;
 	if(!game_config::path.empty()) {
 		name = game_config::path + "/fonts/" + fname;
@@ -233,90 +271,89 @@ static TTF_Font* open_font(const std::string& fname, int size)
 	SDL_RWops *rwops = filesystem::load_RWops(name);
 	TTF_Font* font = TTF_OpenFontRW(rwops, true, size); // SDL takes ownership of rwops
 	if(font == NULL) {
-		ERR_FT << "Failed opening font: TTF_OpenFont: " << TTF_GetError() << std::endl;
+		ERR_FT << "Failed opening font: '" <<  fname << "'\n";
+		ERR_FT << "TTF_OpenFont: " << TTF_GetError() << std::endl;
 		return NULL;
 	}
+
+	DBG_FT << "Opened a font: " << fname << std::endl;
 
 	return font;
 }
 
+// Gets an appropriately configured TTF Font, for this font size and style.
+// Loads fonts if necessary. For styled fonts, we search for a ``shipped''
+// version of the font which is prestyled. If this fails we find the closest
+// thing which we did ship, and store a record of this, which allows to
+// rapidly correct the remaining styling using SDL_TTF.
+//
+// Uses the font table for caching.
 static TTF_Font* get_font(font_id id)
 {
-	const std::map<font_id, TTF_Font*>::iterator it = font_table.find(id);
-	if(it != font_table.end())
-		return it->second;
+	const std::map<font_id, ttf_record>::iterator it = font_table.find(id);
+	if(it != font_table.end()) {
+		if (it->second.font != NULL) {
+			// If we found a valid record, use SDL_TTF to add in the difference 
+			// between its intrinsic style and the desired style.
+			TTF_SetFontStyle(it->second.font, it->second.style ^ id.style);
+		}
+		return it->second.font;
+	}
 
-	if(id.subset < 0 || size_t(id.subset) >= font_names.size())
+	// There's no record, so we need to try to find a solution for this font
+	// and make a record of it. If the indices are out of bounds don't bother though.
+	if(id.subset < 0 || size_t(id.subset) >= font_names.size()) {
 		return NULL;
+	}
 
-	TTF_Font* font = open_font(font_names[id.subset], id.size);
+	// Favor to use the shipped Italic font over bold if both are present and are needed.
+	if ((id.style & TTF_STYLE_ITALIC) && italic_names[id.subset].size()) {
+		if (TTF_Font* font = open_font(italic_names[id.subset], id.size)) {
+			ttf_record rec = {font, TTF_STYLE_ITALIC};
+			font_table.insert(std::make_pair(id, rec));
+			return get_font(id);
+		}
+	}
 
-	if(font == NULL)
-		return NULL;
+	// Now see if the shipped Bold font is useful and available.
+	if ((id.style & TTF_STYLE_BOLD) && bold_names[id.subset].size()) {
+		if (TTF_Font* font = open_font(bold_names[id.subset], id.size)) {
+			ttf_record rec = {font, TTF_STYLE_BOLD};
+			font_table.insert(std::make_pair(id, rec));
+			return get_font(id);
+		}
+	}
 
-	TTF_SetFontStyle(font,TTF_STYLE_NORMAL);
+	// Try just to use the basic version of the font then.
+	if (font_names[id.subset].size()) {
+		if(TTF_Font* font = open_font(font_names[id.subset], id.size)) {
+			ttf_record rec = {font, TTF_STYLE_NORMAL};
+			font_table.insert(std::make_pair(id, rec));
+			return get_font(id);
+		}
+	}
 
-	LOG_FT << "Inserting font...\n";
-	font_table.insert(std::pair<font_id,TTF_Font*>(id, font));
-	return font;
+	// Failed to find a font.
+	ttf_record rec = {NULL, TTF_STYLE_NORMAL};
+	font_table.insert(std::make_pair(id, rec));
+	return NULL;
 }
 
 static void clear_fonts()
 {
-	for(std::map<font_id,TTF_Font*>::iterator i = font_table.begin(); i != font_table.end(); ++i) {
+	for(topen_font_cache::iterator i = open_fonts.begin(); i != open_fonts.end(); ++i) {
 		TTF_CloseFont(i->second);
 	}
+	open_fonts.clear();
 
 	font_table.clear();
+
 	font_names.clear();
+	bold_names.clear();
+	italic_names.clear();
+
 	char_blocks.cbmap.clear();
 	line_size_cache.clear();
-}
-
-namespace {
-
-struct font_style_setter
-{
-	font_style_setter(TTF_Font* font, int style) : font_(font), old_style_(0)
-	{
-		if(style == 0) {
-			style = TTF_STYLE_NORMAL;
-		}
-
-		old_style_ = TTF_GetFontStyle(font_);
-
-		// I thought I had killed this. Now that we ship SDL_TTF, we
-		// should fix the bug directly in SDL_ttf instead of disabling
-		// features. -- Ayin 25/2/2005
-#if 0
-		//according to the SDL_ttf documentation, combinations of
-		//styles may cause SDL_ttf to segfault. We work around this
-		//here by disallowing combinations of styles
-
-		if((style&TTF_STYLE_UNDERLINE) != 0) {
-			//style = TTF_STYLE_NORMAL; //TTF_STYLE_UNDERLINE;
-			style = TTF_STYLE_UNDERLINE;
-		} else if((style&TTF_STYLE_BOLD) != 0) {
-			style = TTF_STYLE_BOLD;
-		} else if((style&TTF_STYLE_ITALIC) != 0) {
-			//style = TTF_STYLE_NORMAL; //TTF_STYLE_ITALIC;
-			style = TTF_STYLE_ITALIC;
-		}
-#endif
-
-		TTF_SetFontStyle(font_, style);
-	}
-
-	~font_style_setter()
-	{
-		TTF_SetFontStyle(font_,old_style_);
-	}
-
-private:
-	TTF_Font* font_;
-	int old_style_;
-};
-
 }
 
 namespace font {
@@ -422,10 +459,66 @@ struct subset_descriptor
 	{
 	}
 
+	subset_descriptor(const config &);
+
 	std::string name;
+	boost::optional<std::string> bold_name; //If we are using another font for styled characters in this font, rather than SDL TTF method
+	boost::optional<std::string> italic_name;
+
 	typedef std::pair<int, int> range;
 	std::vector<range> present_codepoints;
 };
+
+font::subset_descriptor::subset_descriptor(const config & font)
+	: name(font["name"].str())
+	, bold_name()
+	, italic_name()
+	, present_codepoints()
+{
+	if (font.has_attribute("bold_name")) {
+		bold_name = font["bold_name"].str();
+	}
+
+	if (font.has_attribute("italic_name")) {
+		italic_name = font["italic_name"].str();
+	}
+
+	std::vector<std::string> ranges = utils::split(font["codepoints"]);
+
+	BOOST_FOREACH(const std::string & i, ranges) {
+		std::vector<std::string> r = utils::split(i, '-');
+		if(r.size() == 1) {
+			size_t r1 = lexical_cast_default<size_t>(r[0], 0);
+			present_codepoints.push_back(std::pair<size_t, size_t>(r1, r1));
+		} else if(r.size() == 2) {
+			size_t r1 = lexical_cast_default<size_t>(r[0], 0);
+			size_t r2 = lexical_cast_default<size_t>(r[1], 0);
+
+			present_codepoints.push_back(std::pair<size_t, size_t>(r1, r2));
+		}
+	}
+}
+
+static bool check_font_file(std::string name) {
+	if(game_config::path.empty() == false) {
+		if(!filesystem::file_exists(game_config::path + "/fonts/" + name)) {
+			if(!filesystem::file_exists("fonts/" + name)) {
+				if(!filesystem::file_exists(name)) {
+				WRN_FT << "Failed opening font file '" << name << "': No such file or directory" << std::endl;
+				return false;
+				}
+			}
+		}
+	} else {
+		if(!filesystem::file_exists("fonts/" + name)) {
+			if(!filesystem::file_exists(name)) {
+				WRN_FT << "Failed opening font file '" << name << "': No such file or directory" << std::endl;
+				return false;
+			}
+		}
+	}
+	return true;
+}
 
 //sets the font list to be used.
 static void set_font_list(const std::vector<subset_descriptor>& fontlist)
@@ -434,32 +527,37 @@ static void set_font_list(const std::vector<subset_descriptor>& fontlist)
 
 	std::vector<subset_descriptor>::const_iterator itor;
 	for(itor = fontlist.begin(); itor != fontlist.end(); ++itor) {
+		if (!check_font_file(itor->name)) continue;
 		// Insert fonts only if the font file exists
-		if(game_config::path.empty() == false) {
-			if(!filesystem::file_exists(game_config::path + "/fonts/" + itor->name)) {
-				if(!filesystem::file_exists("fonts/" + itor->name)) {
-					if(!filesystem::file_exists(itor->name)) {
-					WRN_FT << "Failed opening font file '" << itor->name << "': No such file or directory" << std::endl;
-					continue;
-					}
-				}
-			}
-		} else {
-			if(!filesystem::file_exists("fonts/" + itor->name)) {
-				if(!filesystem::file_exists(itor->name)) {
-					WRN_FT << "Failed opening font file '" << itor->name << "': No such file or directory" << std::endl;
-					continue;
-				}
-			}
-		}
 		const subset_id subset = font_names.size();
 		font_names.push_back(itor->name);
+
+		if (itor->bold_name && check_font_file(*itor->bold_name)) {
+			bold_names.push_back(*itor->bold_name);
+		} else {
+			bold_names.push_back("");
+		}
+
+		if (itor->italic_name && check_font_file(*itor->italic_name)) {
+			italic_names.push_back(*itor->italic_name);
+		} else {
+			italic_names.push_back("");
+		}
 
 		BOOST_FOREACH(const subset_descriptor::range &cp_range, itor->present_codepoints) {
 			char_blocks.insert(cp_range.first, cp_range.second, subset);
 		}
 	}
 	char_blocks.compress();
+
+	assert(font_names.size() == bold_names.size());
+	assert(font_names.size() == italic_names.size());
+
+	DBG_FT << "Set the font list. The styled font families are:\n";
+
+	for (size_t i = 0; i < font_names.size(); ++i) {
+		DBG_FT << "[" << i << "]:\t\tbase:\t'" << font_names[i] << "'\tbold:\t'" << bold_names[i] << "'\titalic:\t'" << italic_names[i] << "'\n";
+	}
 }
 
 const SDL_Color NORMAL_COLOR = {0xDD,0xDD,0xDD,0},
@@ -614,10 +712,10 @@ void text_surface::measure() const
 
 	BOOST_FOREACH(text_chunk const &chunk, chunks_)
 	{
-		TTF_Font* ttfont = get_font(font_id(chunk.subset, font_size_));
-		if(ttfont == NULL)
+		TTF_Font* ttfont = get_font(font_id(chunk.subset, font_size_, style_));
+		if(ttfont == NULL) {
 			continue;
-		font_style_setter const style_setter(ttfont, style_);
+		}
 
 		int w, h;
 		TTF_SizeUTF8(ttfont, chunk.text.c_str(), &w, &h);
@@ -660,10 +758,7 @@ std::vector<surface> const &text_surface::get_surfaces() const
 
 	BOOST_FOREACH(text_chunk const &chunk, chunks_)
 	{
-		TTF_Font* ttfont = get_font(font_id(chunk.subset, font_size_));
-		if (ttfont == NULL)
-			continue;
-		font_style_setter const style_setter(ttfont, style_);
+		TTF_Font* ttfont = get_font(font_id(chunk.subset, font_size_, style_));
 
 		surface s = surface(TTF_RenderUTF8_Blended(ttfont, chunk.text.c_str(), color_));
 		if(!s.null())
@@ -1416,30 +1511,15 @@ static bool add_font_to_fontlist(const config &fonts_config,
 	std::vector<font::subset_descriptor>& fontlist, const std::string& name)
 {
 	const config &font = fonts_config.find_child("font", "name", name);
-	if (!font)
+	if (!font) {
 		return false;
-
-		fontlist.push_back(font::subset_descriptor());
-		fontlist.back().name = name;
-		std::vector<std::string> ranges = utils::split(font["codepoints"]);
-
-		for(std::vector<std::string>::const_iterator itor = ranges.begin();
-				itor != ranges.end(); ++itor) {
-
-			std::vector<std::string> r = utils::split(*itor, '-');
-			if(r.size() == 1) {
-				size_t r1 = lexical_cast_default<size_t>(r[0], 0);
-				fontlist.back().present_codepoints.push_back(std::pair<size_t, size_t>(r1, r1));
-			} else if(r.size() == 2) {
-				size_t r1 = lexical_cast_default<size_t>(r[0], 0);
-				size_t r2 = lexical_cast_default<size_t>(r[1], 0);
-
-				fontlist.back().present_codepoints.push_back(std::pair<size_t, size_t>(r1, r2));
-			}
-		}
-
-		return true;
 	}
+	//DBG_FT << "Adding a font record: " << font.debug() << std::endl;
+
+	fontlist.push_back(font::subset_descriptor(font));
+
+	return true;
+}
 
 namespace font {
 
@@ -1474,6 +1554,12 @@ bool load_font_config()
 	std::set<std::string> known_fonts;
 	BOOST_FOREACH(const config &font, fonts_config.child_range("font")) {
 		known_fonts.insert(font["name"]);
+		if (font.has_attribute("bold_name")) {
+			known_fonts.insert(font["bold_name"]);
+		}
+		if (font.has_attribute("italic_name")) {
+			known_fonts.insert(font["italic_name"]);
+		}
 	}
 
 	family_order = fonts_config["family_order"];
