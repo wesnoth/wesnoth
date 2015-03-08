@@ -5,11 +5,10 @@
 setlocal enabledelayedexpansion
 
 :: save file paths and command line arguments
-set LoadFile=%~p0..\..\wml_test_schedule
-set binary=wesnoth.exe
+cd ..\..\
+set LoadFile=wml_test_schedule
+set binary=%~f1%wesnoth.exe
 set opt=--log-strict=warning
-:: executable path can be set for VC debug configuration, defaults to wesnoth\
-if "%1"=="" ( cd ..\..\ ) else ( cd %~p1 )
 
 echo running WML tests:
 set tSTART=%time%
@@ -36,8 +35,12 @@ for /f "eol=# tokens=1,2 delims= " %%G in (%LoadFile%) do (
 )
 echo(
 if not DEFINED fail_num ( set "fail_num=none" )
-set /a "minutes = (1%time:~3,2%-100) - (1%tSTART:~3,2%-100)"
-set /a "seconds = (1%time:~6,2%-100) - (1%tSTART:~6,2%-100)"
+set /a "minutes = 1%time:~3,2% - 1%tSTART:~3,2%"
+set /a "seconds = 1%time:~6,2% - 1%tSTART:~6,2%"
+if %seconds% LSS 0 (
+    set /a "seconds+=60"
+    set /a "minutes-=1"
+)
 echo %test_num% WML tests completed in %minutes%m %seconds%s, %fail_num% of them failed
 
 :: restore the state before execution

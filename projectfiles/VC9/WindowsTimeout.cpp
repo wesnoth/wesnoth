@@ -20,11 +20,11 @@
  */
 
 #if _WIN32_WINNT < 0x0602 //Windows version before Win8
+	#define WIN32_LEAN_AND_MEAN
 	#include <windows.h>
 #else
 	#include <Processthreadsapi.h>
 #endif
-// #define WIN32_LEAN_AND_MEAN
 #include <stdlib.h>
 #include <iostream>
 

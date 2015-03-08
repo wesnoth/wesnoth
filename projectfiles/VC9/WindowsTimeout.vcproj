@@ -18,8 +18,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)\WindowsTimeout"
+			OutputDirectory="$(SolutionDir)\..\.."
+			IntermediateDirectory="$(ConfigurationName)\$(ProjectName)"
 			ConfigurationType="1"
 			CharacterSet="2"
 			>
@@ -88,7 +88,7 @@
 		<Configuration
 			Name="Release|Win32"
 			OutputDirectory="$(SolutionDir)\..\.."
-			IntermediateDirectory="$(ConfigurationName)\WindowsTimeout"
+			IntermediateDirectory="$(ConfigurationName)\$(ProjectName)"
 			ConfigurationType="1"
 			CharacterSet="2"
 			WholeProgramOptimization="1"
@@ -157,8 +157,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug_with_VLD|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)\WindowsTimeout"
+			OutputDirectory="$(SolutionDir)\..\.."
+			IntermediateDirectory="$(ConfigurationName)\$(ProjectName)"
 			ConfigurationType="1"
 			CharacterSet="2"
 			>
@@ -225,8 +225,8 @@
 		</Configuration>
 		<Configuration
 			Name="ReleaseDEBUG|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)\WindowsTimeout"
+			OutputDirectory="$(SolutionDir)\..\.."
+			IntermediateDirectory="$(ConfigurationName)\$(ProjectName)"
 			ConfigurationType="1"
 			CharacterSet="2"
 			WholeProgramOptimization="1"
