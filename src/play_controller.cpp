@@ -986,7 +986,7 @@ hotkey::command_executor * play_controller::get_hotkey_command_executor() {
 bool play_controller::is_browsing() const
 {
 	if(linger_ || !init_side_done_ || this->gamestate_.gamedata_.phase() != game_data::PLAY) {
-		return false;
+		return true;
 	}
 	const team& t = current_team();
 	return !t.is_local_human() || !t.is_proxy_human();
