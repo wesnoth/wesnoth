@@ -527,10 +527,12 @@ void saved_game::set_data(config& cfg)
 	else if(config & caryover_sides_start = cfg.child("carryover_sides_start"))
 	{
 		carryover_.swap(caryover_sides_start);
+		has_carryover_expanded_ = false;
 	}
 	else
 	{
 		carryover_ = config();
+		has_carryover_expanded_ = false;
 	}
 
 	if(config & replay_start = cfg.child("replay_start"))
