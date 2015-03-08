@@ -190,6 +190,10 @@ Note that:
 
 [/section]
 
+[section="Fonts"]
+Wesnoth now ships with Bold and Oblique forms of its default font, Deja Vu Sans, and these are used in many menus and in the in-game help for styling text where previously we used SDL_ttf's runtime font styling, which was inferior. Fixes bug #22376.
+[/section]
+
 [section="Lua interpreter console"]
 As a debugging aide, a lua interpreter console has been added to the game. At time of writing it is accessible from a button the gamestate inspector, also it may be brought up using hotkey '`' by default.
 
