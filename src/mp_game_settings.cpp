@@ -38,7 +38,7 @@ mp_game_settings::mp_game_settings() :
 	num_turns(0),
 	village_gold(0),
 	village_support(1),
-	xp_modifier(0),
+	xp_modifier(100),
 	mp_countdown_init_time(0),
 	mp_countdown_reservoir_time(0),
 	mp_countdown_turn_bonus(0),
@@ -72,7 +72,7 @@ mp_game_settings::mp_game_settings(const config& cfg) :
 	num_turns(0),
 	village_gold(0),
 	village_support(1),
-	xp_modifier(0),
+	xp_modifier(100),
 	mp_countdown_init_time(0),
 	mp_countdown_reservoir_time(0),
 	mp_countdown_turn_bonus(0),
@@ -141,7 +141,7 @@ void mp_game_settings::set_from_config(const config& game_cfg)
 	side_users = utils::map_split(cfg["side_users"]);
 	show_configure = cfg["show_configure"].to_bool(true);
 	show_connect = cfg["show_connect"].to_bool(true);
-	xp_modifier = cfg["experience_modifier"];
+	xp_modifier = cfg["experience_modifier"].to_int(100);
 	use_map_settings = cfg["mp_use_map_settings"].to_bool();
 	random_start_time = cfg["mp_random_start_time"].to_bool();
 	fog_game = cfg["mp_fog"].to_bool();
@@ -177,7 +177,7 @@ void mp_game_settings::reset()
 	num_turns = 0;
 	village_gold = 0;
 	village_support = 1;
-	xp_modifier = 0;
+	xp_modifier = 100;
 	mp_countdown_init_time=0;
 	mp_countdown_reservoir_time=0;
 	mp_countdown_turn_bonus=0;
