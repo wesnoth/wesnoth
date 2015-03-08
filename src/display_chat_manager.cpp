@@ -17,7 +17,7 @@
 
 #include "desktop/notifications.hpp"
 #include "display.hpp"
-#include "font.hpp"
+#include "floating_label.hpp"
 #include "game_board.hpp" // <-- only needed for is_observer()
 #include "game_preferences.hpp"
 #include "log.hpp"

@@ -20,6 +20,7 @@
 #include "global.hpp"
 
 #include "font.hpp"
+#include "floating_label.hpp"
 #include "image.hpp"
 #include "log.hpp"
 #include "preferences.hpp"

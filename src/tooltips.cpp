@@ -15,6 +15,7 @@
 
 #include "tooltips.hpp"
 
+#include "floating_label.hpp"
 #include "font.hpp"
 #include "game_display.hpp"
 #include "help/help.hpp"

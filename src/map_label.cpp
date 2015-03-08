@@ -15,6 +15,7 @@
 #include "global.hpp"
 
 #include "display.hpp"
+#include "floating_label.hpp"
 #include "game_board.hpp"
 #include "game_data.hpp"
 #include "map_label.hpp"

@@ -15,6 +15,7 @@
 #define MULTIPLAYER_UI_HPP_INCLUDED
 
 #include "chat_events.hpp"
+#include "floating_label.hpp"
 #include "hotkey/command_executor.hpp"
 #include "network.hpp"
 #include "preferences_display.hpp"

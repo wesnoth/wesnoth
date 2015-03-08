@@ -17,6 +17,7 @@
 #include "floating_textbox.hpp"
 
 #include "display_chat_manager.hpp"
+#include "floating_label.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "log.hpp"

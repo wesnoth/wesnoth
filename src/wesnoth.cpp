@@ -22,6 +22,7 @@
 #include "cursor.hpp"                   // for set, CURSOR_TYPE::NORMAL, etc
 #include "editor/editor_main.hpp"
 #include "filesystem.hpp"               // for filesystem::file_exists, filesystem::io_exception, etc
+#include "floating_label.hpp"
 #include "font.hpp"                     // for load_font_config, etc
 #include "formula.hpp"                  // for formula_error
 #include "game_config.hpp"              // for path, debug, debug_lua, etc

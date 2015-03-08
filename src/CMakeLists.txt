@@ -1044,6 +1044,7 @@ set(libwesnoth-game_STAT_SRC
 	display.cpp
 	display_context.cpp
 	events.cpp
+	floating_label.cpp
 	font.cpp
 	format_time_summary.cpp
   	generators/cave_map_generator.cpp

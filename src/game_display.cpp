@@ -27,6 +27,7 @@
 #include "display_chat_manager.hpp"
 #include "fake_unit_manager.hpp"
 #include "fake_unit_ptr.hpp"
+#include "floating_label.hpp"
 #include "game_board.hpp"
 #include "game_preferences.hpp"
 #include "halo.hpp"

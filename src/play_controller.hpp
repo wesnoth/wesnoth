@@ -17,6 +17,7 @@
 #define PLAY_CONTROLLER_H_INCLUDED
 
 #include "controller_base.hpp"
+#include "floating_label.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_state.hpp"
 #include "help/help.hpp"

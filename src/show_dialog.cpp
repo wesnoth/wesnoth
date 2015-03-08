@@ -20,6 +20,7 @@
 
 #include "construct_dialog.hpp"
 #include "display.hpp"
+#include "floating_label.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/event/handler.hpp"
 #include "help/help.hpp"
