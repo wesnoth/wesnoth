@@ -10,7 +10,8 @@ Version 1.13.0-dev:
 
  * Campaigns:
    * Use the new bigmaps for A Tale of Two Brothers, Delfadors Memoirs, The
-     Hammer of Thursagan, Northern Rebirth and the epilogue of Legend of Wesmere.
+     Hammer of Thursagan, Northern Rebirth and the epilogue of Legend of
+     Wesmere.
    * Descent into Darkness:
      * Fixed various issues with player and enemy gold and income in
        'Descent into Darkness'.
@@ -68,6 +69,9 @@ Version 1.13.0-dev:
      due to a misplaced WML attribute in the client's command for the server
      (bug #23015).
 
+ * Music:
+   * Change main menu track to Transience.
+
  * Replays:
    * Added a button that allows playing a single move in replay mode.
 
@@ -119,27 +123,31 @@ Version 1.13.0-dev:
    * Fix unit move continuation if enemy discovered (#21372)
    * Support for total conversions, so called "cores".
    * Partial moves now able to be continued properly in whiteboard (#22231)
-   * Fix bug wherein "lobby sounds" advanced preference didn't do anything for the default lobby.
+   * Fix bug wherein "lobby sounds" advanced preference didn't do anything for 
+     the default lobby.
    * Fix bug wherein dbus notifications did not have a wesnoth icon
-   * Fix bug wherein chat history synopses weren't working right in the dbus notifications
+   * Fix bug wherein chat history synopses weren't working right in the dbus 
+     notifications
    * Replaced "Disable notifications" in Preferences -> Advanced with a new
      "Desktop notifications" option that defaults to enabled.
    * Default to classic minimap unit/village color coding (colored by side).
    * Default to classic minimap terrain representation (satellite view).
    * Added trait list with links to the help page for units
-   * In the help page for a units, if a unit has "terrain defense caps" (like cavalry on forests),
-     a "Defense Capped" column is added to the terrain modifiers table, showing which terrains have
-     a cap in place. A link to an explanation of this behavior elsewhere in the help is given.
-   * When using the terrain description feature with a mixed terrain type, the game will autogenerate
-     a formatted explanation of its best / worst movement / defense properties.
+   * In the help page for a units, if a unit has "terrain defense caps" (like 
+     cavalry on forests), a "Defense Capped" column is added to the terrain modifiers 
+     table, showing which terrains have a cap in place. A link to an explanation of 
+     this behavior elsewhere in the help is given.
+   * When using the terrain description feature with a mixed terrain type, the 
+     game will autogenerate a formatted explanation of its best / worst movement / 
+     defense properties.
    * Autogenerate help pages for all eras and factions.
-   * Help pages for a faction autogenerates a list of races and alignments that appear in that faction.
-   * Make nice help descriptions for the default factions (using content from the wiki).
+   * Help pages for a faction autogenerates a list of races and alignments that 
+     appear in that faction.
+   * Make nice help descriptions for the default factions (using content from 
+     the wiki).
    * Fix bug wherein hotkeys for changing tips in titlescreen aren't working.
 
- * Music:
-   * Change main menu track to Transience.
-
+   
 Version 1.11.11:
  * Campaigns:
    * Eastern Invasion:
