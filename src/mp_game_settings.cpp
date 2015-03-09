@@ -52,8 +52,7 @@ mp_game_settings::mp_game_settings() :
 	shuffle_sides(false),
 	saved_game(false),
 	options()
-
-{ reset(); }
+{}
 
 mp_game_settings::mp_game_settings(const config& cfg) :
 	savegame_config(),
@@ -90,40 +89,6 @@ mp_game_settings::mp_game_settings(const config& cfg) :
 	set_from_config(cfg);
 }
 
-mp_game_settings::mp_game_settings(const mp_game_settings& settings)
-	: savegame_config()
-	, name(settings.name)
-	, password(settings.password)
-	, hash(settings.hash)
-	, mp_era(settings.mp_era)
-	, mp_scenario(settings.mp_scenario)
-	, mp_scenario_name(settings.mp_scenario_name)
-	, mp_campaign(settings.mp_campaign)
-	, difficulty_define(settings.difficulty_define)
-	, active_mods(settings.active_mods)
-	, side_users(settings.side_users)
-	, show_configure(settings.show_configure)
-	, show_connect(settings.show_connect)
-	, num_turns(settings.num_turns)
-	, village_gold(settings.village_gold)
-	, village_support(settings.village_support)
-	, xp_modifier(settings.xp_modifier)
-	, mp_countdown_init_time(settings.mp_countdown_init_time)
-	, mp_countdown_reservoir_time(settings.mp_countdown_reservoir_time)
-	, mp_countdown_turn_bonus(settings.mp_countdown_turn_bonus)
-	, mp_countdown_action_bonus(settings.mp_countdown_action_bonus)
-	, mp_countdown(settings.mp_countdown)
-	, use_map_settings(settings.use_map_settings)
-	, random_start_time(settings.random_start_time)
-	, fog_game(settings.fog_game)
-	, shroud_game(settings.shroud_game)
-	, allow_observers(settings.allow_observers)
-	, shuffle_sides(settings.shuffle_sides)
-	, saved_game(settings.saved_game)
-	, options(settings.options)
-{
-}
-
 void mp_game_settings::set_from_config(const config& game_cfg)
 {
 	const config& mp = game_cfg.child("multiplayer");
@@ -158,33 +123,6 @@ void mp_game_settings::set_from_config(const config& game_cfg)
 	shuffle_sides = cfg["shuffle_sides"].to_bool();
 	saved_game = cfg["savegame"].to_bool();
 	options = cfg.child_or_empty("options");
-}
-
-void mp_game_settings::reset()
-{
-	name = "";
-	password = "";
-	hash = "";
-	mp_era = "";
-	mp_scenario = "";
-	mp_scenario_name = "";
-	mp_campaign = "";
-	difficulty_define = "";
-	active_mods.clear();
-	side_users.clear();
-	show_configure = true;
-	show_connect = true;
-	num_turns = 0;
-	village_gold = 0;
-	village_support = 1;
-	xp_modifier = 100;
-	mp_countdown_init_time=0;
-	mp_countdown_reservoir_time=0;
-	mp_countdown_turn_bonus=0;
-	mp_countdown_action_bonus=0;
-	mp_countdown=false;
-	use_map_settings = random_start_time = fog_game = shroud_game = allow_observers = shuffle_sides = false;
-	options.clear();
 }
 
 config mp_game_settings::to_config() const
