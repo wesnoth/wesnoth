@@ -25,7 +25,6 @@ struct mp_game_settings : public savegame::savegame_config
 	mp_game_settings();
 	mp_game_settings(const config& cfg);
 
-	void set_from_config(const config& game_cfg);
 	config to_config() const;
 
 	// The items returned while configuring the game

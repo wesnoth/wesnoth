@@ -73,7 +73,7 @@ saved_game::saved_game(config cfg)
 	, carryover_()
 	, replay_start_()
 	, classification_(cfg)
-	, mp_settings_(cfg)
+	, mp_settings_()
 	, starting_pos_type_(STARTINGPOS_NONE)
 	, starting_pos_()
 	, replay_data_()
@@ -571,6 +571,6 @@ void saved_game::set_data(config& cfg)
 	}
 	
 	classification_ = game_classification(cfg);
-	mp_settings_ = mp_game_settings(cfg);
+	mp_settings_ = mp_game_settings(cfg.child_or_empty("multiplayer"));
 	cfg.clear();
 }
