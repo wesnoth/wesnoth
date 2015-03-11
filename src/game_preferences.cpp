@@ -568,6 +568,14 @@ void set_shuffle_sides(bool value)
 	preferences::set("shuffle_sides", value);
 }
 
+int random_faction_mode(){
+	return lexical_cast_default<int>(preferences::get("random_faction_mode"), 0);
+}
+
+void set_random_faction_mode(int value) {
+	preferences::set("random_faction_mode", value);
+}
+
 bool use_map_settings()
 {
 	return preferences::get("mp_use_map_settings", true);

@@ -58,6 +58,7 @@ struct mp_game_settings : public savegame::savegame_config
 	bool shroud_game;
 	bool allow_observers;
 	bool shuffle_sides;
+	int random_faction_mode;
 
 	bool saved_game;
 

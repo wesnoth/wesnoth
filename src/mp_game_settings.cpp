@@ -50,6 +50,7 @@ mp_game_settings::mp_game_settings() :
 	shroud_game(false),
 	allow_observers(false),
 	shuffle_sides(false),
+	random_faction_mode(0),
 	saved_game(false),
 	options()
 {}
@@ -83,6 +84,7 @@ mp_game_settings::mp_game_settings(const config& cfg)
 	, shroud_game(cfg["mp_shroud"].to_bool())
 	, allow_observers(cfg["observer"].to_bool())
 	, shuffle_sides(cfg["shuffle_sides"].to_bool())
+	, random_faction_mode(cfg["random_faction_mode"].to_int(0))
 	, saved_game(cfg["savegame"].to_bool())
 	, options(cfg.child_or_empty("options"))
 {
@@ -118,6 +120,7 @@ config mp_game_settings::to_config() const
 	cfg["mp_random_start_time"] = random_start_time;
 	cfg["observer"] = allow_observers;
 	cfg["shuffle_sides"] = shuffle_sides;
+	cfg["random_faction_mode"] = random_faction_mode;
 	cfg["savegame"] = saved_game;
 	cfg.add_child("options", options);
 
