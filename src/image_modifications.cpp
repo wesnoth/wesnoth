@@ -205,6 +205,11 @@ surface sepia_modification::operator()(const surface &src) const
 	return sepia_image(src);
 }
 
+surface negative_modification::operator()(const surface &src) const
+{
+	return negative_image(src);
+}
+
 surface plot_alpha_modification::operator()(const surface& src) const
 {
 	return alpha_to_greyscale(src);
@@ -753,6 +758,12 @@ REGISTER_MOD_PARSER(GS, )
 REGISTER_MOD_PARSER(SEPIA, )
 {
 	return new sepia_modification;
+}
+
+// Negative
+REGISTER_MOD_PARSER(NEG, )
+{
+	return new negative_modification;
 }
 
 // Plot Alpha

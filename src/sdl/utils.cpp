@@ -1031,6 +1031,43 @@ surface sepia_image(const surface &surf, bool optimize)
 	return optimize ? create_optimized_surface(nsurf) : nsurf;
 }
 
+surface negative_image(const surface &surf, bool optimize)
+{
+	if(surf == NULL)
+		return NULL;
+
+	surface nsurf(make_neutral_surface(surf));
+	if(nsurf == NULL) {
+		std::cerr << "failed to make neutral surface\n";
+		return NULL;
+	}
+
+	{
+		surface_lock lock(nsurf);
+		Uint32* beg = lock.pixels();
+		Uint32* end = beg + nsurf->w*surf->h;
+
+		while(beg != end) {
+			Uint8 alpha = (*beg) >> 24;
+
+			if(alpha) {
+				Uint8 r, g, b;
+				r = (*beg) >> 16;
+				g = (*beg) >> 8;
+				b = (*beg);
+
+				// basically, to get a channel's negative it's enough
+				// to subtract its value from 255
+				*beg = (alpha << 24) | ((255 - r) << 16) | ((255 - g) << 8) | (255 - b);
+			}
+
+			++beg;
+		}
+	}
+
+	return optimize ? create_optimized_surface(nsurf) : nsurf;
+}
+
 surface alpha_to_greyscale(const surface &surf, bool optimize)
 {
 	if(surf == NULL)

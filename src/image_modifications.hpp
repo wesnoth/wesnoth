@@ -230,6 +230,14 @@ struct sepia_modification : modification
 };
 
 /**
+ * Make an image negative (NEG)
+ */
+struct negative_modification : modification
+{
+	virtual surface operator()(const surface &src) const;
+};
+
+/**
  * Plot Alpha (Alpha) modification
  */
 class plot_alpha_modification : public modification
