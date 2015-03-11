@@ -200,6 +200,11 @@ surface gs_modification::operator()(const surface& src) const
 	return greyscale_image(src);
 }
 
+surface sepia_modification::operator()(const surface &src) const
+{
+	return sepia_image(src);
+}
+
 surface plot_alpha_modification::operator()(const surface& src) const
 {
 	return alpha_to_greyscale(src);
@@ -742,6 +747,12 @@ REGISTER_MOD_PARSER(ROTATE, args)
 REGISTER_MOD_PARSER(GS, )
 {
 	return new gs_modification;
+}
+
+// Sepia
+REGISTER_MOD_PARSER(SEPIA, )
+{
+	return new sepia_modification;
 }
 
 // Plot Alpha

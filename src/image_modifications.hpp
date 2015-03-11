@@ -222,6 +222,14 @@ public:
 };
 
 /**
+ * Give to the image a sepia tint (SEPIA)
+ */
+struct sepia_modification : modification
+{
+	virtual surface operator()(const surface &src) const;
+};
+
+/**
  * Plot Alpha (Alpha) modification
  */
 class plot_alpha_modification : public modification
