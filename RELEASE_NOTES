@@ -24,6 +24,7 @@ KNOWN BUGS
 
 [list][*] Start of scenario saves have some known bugs in multiplayer
 [*]The "system default" language selection does not work, and results in no punctuation appearing in game. Please select your language of choice from the menu instead. [bug]22921[/bug].  This bug does not affect the official OS X packages.
+[*]time_over events are not syncronized. This means teh following things should not be done in time_over events: unit creation, [set_variable] rand=, [message] with input, lua syncronize_choice.
 [*] There are some known bugs with hotkeys: [list]
 [*][bug] 21983 [/bug] you cannot clear some default hotkeys with the "clear hotkeys" menu option. This will not be treated as a bug in 1.12.
 [*][bug] 22219 [/bug] problems with hotkeys using ctrl, alt.
