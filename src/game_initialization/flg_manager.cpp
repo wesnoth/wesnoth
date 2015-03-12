@@ -16,6 +16,7 @@
 #include "config.hpp"
 #include "formula_string_utils.hpp"
 #include "gettext.hpp"
+#include "mt_rng.hpp"
 #include "unit_types.hpp"
 #include "wml_separators.hpp"
 
@@ -215,7 +216,7 @@ bool flg_manager::is_random_faction()
 // assigning as we would have if it were off.
 // If there is still no options we throw a config error because it means the
 // era is misconfigured.
-void flg_manager::resolve_random(const std::vector<std::string> & avoid) {
+void flg_manager::resolve_random(rand_rng::mt_rng & rng, const std::vector<std::string> & avoid) {
 	if (is_random_faction()) {
 		std::vector<std::string> faction_choices, faction_excepts;
 
@@ -272,7 +273,7 @@ void flg_manager::resolve_random(const std::vector<std::string> & avoid) {
 		}
 
 		const int faction_index =
-			nonrandom_sides[rand() % nonrandom_sides.size()];
+			nonrandom_sides[rng.get_next_random() % nonrandom_sides.size()];
 		current_faction_ = available_factions_[faction_index];
 
 		update_available_leaders();
@@ -297,7 +298,7 @@ void flg_manager::resolve_random(const std::vector<std::string> & avoid) {
 				"Unable to find a leader type for faction $faction",
 				i18n_symbols));
 		} else {
-			const int lchoice = rand() % nonrandom_leaders.size();
+			const int lchoice = rng.get_next_random() % nonrandom_leaders.size();
 			current_leader_ = nonrandom_leaders[lchoice];
 
 			update_available_genders();
@@ -316,7 +317,7 @@ void flg_manager::resolve_random(const std::vector<std::string> & avoid) {
 				}
 			}
 
-			const int gchoice = rand() % nonrandom_genders.size();
+			const int gchoice = rng.get_next_random() % nonrandom_genders.size();
 			current_gender_ = nonrandom_genders[gchoice];
 		} else {
 			utils::string_map i18n_symbols;

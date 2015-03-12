@@ -22,6 +22,8 @@
 #include "saved_game.hpp"
 #include <boost/scoped_ptr.hpp>
 
+namespace rand_rng { class mt_rng; }
+
 namespace ng {
 
 enum controller {
@@ -157,7 +159,7 @@ public:
 
 	bool swap_sides_on_drop_target(const unsigned drop_target);
 
-	void resolve_random(const std::vector<std::string> & avoid_faction_ids = std::vector<std::string>());
+	void resolve_random( rand_rng::mt_rng & rng, const std::vector<std::string> & avoid_faction_ids = std::vector<std::string>());
 
 	// Resets this side to its default state.
 	void reset();
