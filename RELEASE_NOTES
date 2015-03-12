@@ -265,6 +265,18 @@ print = make_print()
 Example contents 2.
 [/section]
 
+[section="Lua bit32 library (bitwise operations)"]
+The [tt]bit32[/tt] library, which was added in Lua 5.2, is now enabled. This means that your Lua scipts can now perform bitwise operations, if needed.
+For more informations about this library please go to [url]http://www.lua.org/manual/5.2/manual.html#6.7[/url].
+[/section]
+
+[section="New ImagePathWML functions"]
+[list]
+[*] ~SEPIA() gives to the image a sepia tone, like the one found in old pictures.
+[*] ~NEG() negates the RGB values of the image, giving it an effect similar to a photographic negative.
+[/list]
+[/section]
+
 ==========
 KNOWN BUGS
 ==========
