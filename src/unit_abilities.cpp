@@ -357,13 +357,15 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 
 	BOOST_FOREACH(const config &i, cfg.child_range("affect_adjacent"))
 	{
-		std::vector<std::string> dirs = utils::split(i["adjacent"]);
-		if(std::find(dirs.begin(),dirs.end(),adjacent_names[dir]) != dirs.end()) {
-			if (const config &filter = i.child("filter")) {
-				if ( unit_filter(vconfig(filter), resources::filter_con, illuminates).matches(*this, loc) )
-					return true;
-			} else
-				return true;
+		if (i.has_attribute("adjacent")) { //key adjacent defined
+			std::vector<std::string> dirs = utils::split(i["adjacent"]);
+			if (std::find(dirs.begin(),dirs.end(),adjacent_names[dir]) == dirs.end())
+				continue;
+		}
+		const config &filter = i.child("filter");
+		if (!filter || //filter tag given
+			unit_filter(vconfig(filter), resources::filter_con, illuminates).matches(*this, loc) ) {
+			return true;
 		}
 	}
 	return false;
