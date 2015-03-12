@@ -157,7 +157,7 @@ public:
 
 	bool swap_sides_on_drop_target(const unsigned drop_target);
 
-	void resolve_random();
+	void resolve_random(const std::vector<std::string> & avoid_faction_ids = std::vector<std::string>());
 
 	// Resets this side to its default state.
 	void reset();

@@ -55,7 +55,7 @@ public:
 	void reset_gender_combo(gui::combo& combo_gender) const;
 
 	bool is_random_faction();
-	void resolve_random();
+	void resolve_random(const std::vector<std::string> & avoid); //Argument is a list of faction ids we don't want to match, used to implement random faction modes. If it is not possible to resolve then we just proceed anyways rather than give an error.
 
 	// Picks the first faction with the greater amount of data
 	// matching the criteria.

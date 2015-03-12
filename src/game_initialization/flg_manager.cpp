@@ -206,7 +206,16 @@ bool flg_manager::is_random_faction()
 	return (*current_faction_)["random_faction"].to_bool();
 }
 
-void flg_manager::resolve_random() {
+// When we use a random mode like "no mirror", "no ally mirror", the list of
+// faction ids to avoid is past as an argument.
+// It may be that for some scenario configuration, a strict no mirror
+// assignment is not possible, because there are too many sides, or some users
+// have forced their faction choices to be matching, etc.
+// In that case we gracefully continue by ignoring the no mirror rule and
+// assigning as we would have if it were off.
+// If there is still no options we throw a config error because it means the
+// era is misconfigured.
+void flg_manager::resolve_random(const std::vector<std::string> & avoid) {
 	if (is_random_faction()) {
 		std::vector<std::string> faction_choices, faction_excepts;
 
@@ -223,6 +232,7 @@ void flg_manager::resolve_random() {
 		// Builds the list of factions eligible for choice
 		// (non-random factions).
 		std::vector<int> nonrandom_sides;
+		std::vector<int> fallback_nonrandom_sides;
 		int num = -1;
 		BOOST_FOREACH(const config* i, available_factions_) {
 			++num;
@@ -241,8 +251,20 @@ void flg_manager::resolve_random() {
 					continue;
 				}
 
-				nonrandom_sides.push_back(num);
+				fallback_nonrandom_sides.push_back(num); //This side is consistent with this random faction, remember as a fallback.
+
+				if (!avoid.empty() &&
+					std::find(avoid.begin(), avoid.end(),
+						faction_id) != avoid.end()) {
+					continue;
+				}
+
+				nonrandom_sides.push_back(num); //This side is consistent with this random faction, and the avoid factions argument.
 			}
+		}
+
+		if (nonrandom_sides.empty()) {
+			nonrandom_sides = fallback_nonrandom_sides; // There was no way to succeed consistently with the avoid factions argument, so ignore it as a fallback.
 		}
 
 		if (nonrandom_sides.empty()) {
