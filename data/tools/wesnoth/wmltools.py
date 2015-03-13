@@ -52,12 +52,20 @@ def attr_strip(value):
     value = value.strip()
     return string_strip(value)
 
-def comma_split(value, list=None):
-    "Split a comma-separated value, and append the entries to a list if specified."
-    vallist = [x.lstrip()for x in value.split(",")]
-    # lstrip: wml-tags.lua split function will remove leading whitespace
-    # of items in comma-separated lists but not trailing whitespace
-    if list:
+def comma_split(csstring, list=None, strip="r"):
+    "Split a comma-separated string, and append the entries to a list if specified."
+    vallist = [x.lstrip() for x in csstring.split(",") if x.lstrip()]
+    # strip=: utils::split will remove trailing whitespace from items in comma-
+    # separated lists but the wml-tags.lua split function only removes leading
+    # whitespace. So two flags are offered to change default behavior: one to
+    # lstrip() only, the other to warn about trailing whitespace.
+    if 'w' in strip:
+        for item in vallist:
+            if re.search('\s$', item):
+                print 'Trailing whitespace may be problematic: "%s" in "%s"' % (item, csstring)
+    if 'l' not in strip:
+        vallist = [x.rstrip() for x in vallist]
+    if list != None:
         list.extend(vallist)
     else:
         return vallist
