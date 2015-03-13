@@ -20,6 +20,7 @@
 #include <vector>
 
 class config;
+namespace rand_rng { class mt_rng; }
 
 namespace ng {
 
@@ -55,7 +56,7 @@ public:
 	void reset_gender_combo(gui::combo& combo_gender) const;
 
 	bool is_random_faction();
-	void resolve_random();
+	void resolve_random(rand_rng::mt_rng & rng, const std::vector<std::string> & avoid); //Second Argument is a list of faction ids we don't want to match, used to implement random faction modes. If it is not possible to resolve then we just proceed anyways rather than give an error.
 
 	// Picks the first faction with the greater amount of data
 	// matching the criteria.

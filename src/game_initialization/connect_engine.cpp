@@ -21,6 +21,7 @@
 #include "map.hpp"
 #include "multiplayer_ui.hpp"
 #include "mp_game_utils.hpp"
+#include "mt_rng.hpp"
 #include "tod_manager.hpp"
 
 #include <boost/foreach.hpp>
@@ -391,10 +392,32 @@ void connect_engine::start_game(LOAD_USERS load_users)
 {
 	DBG_MP << "starting a new game" << std::endl;
 
-    // Resolves the "random faction", "random gender" and "random message"
-    // Must be done before shuffle sides, or some cases will cause errors
+	// Resolves the "random faction", "random gender" and "random message"
+	// Must be done before shuffle sides, or some cases will cause errors
+	rand_rng::mt_rng rng; // Make an RNG for all the shuffling and random faction operations
 	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
-		side->resolve_random();
+		std::vector<std::string> avoid_faction_ids;
+
+		// If we aren't resolving random factions independently at random, calculate which factions should not appear for this side.
+		if (params_.random_faction_mode != mp_game_settings::DEFAULT) {
+			BOOST_FOREACH(side_engine_ptr side2, side_engines_) {
+				if (!side2->flg().is_random_faction()) {
+					switch(params_.random_faction_mode) {
+						case mp_game_settings::NO_MIRROR:
+							avoid_faction_ids.push_back(side2->flg().current_faction()["id"].str());
+							break;
+						case mp_game_settings::NO_ALLY_MIRROR:
+							if (side2->team() == side->team()) {// TODO: When the connect engines are fixed to allow multiple teams, this should be changed to "if side1 and side2 are allied, i.e. their list of teams has nonempty intersection"
+								avoid_faction_ids.push_back(side2->flg().current_faction()["id"].str());
+							}
+							break;
+						default:
+							break; // assert(false);
+					}
+				}
+			}
+		}
+		side->resolve_random(rng, avoid_faction_ids);
 	}
 
 	// Shuffle sides (check settings and if it is a re-loaded game).
@@ -413,7 +436,7 @@ void connect_engine::start_game(LOAD_USERS load_users)
 		// Fisher-Yates shuffle.
 		for (int i = playable_sides.size(); i > 1; i--)
 		{
-			int j_side = playable_sides[rand() % i];
+			int j_side = playable_sides[rng.get_next_random() % i];
 			int i_side = playable_sides[i - 1];
 
 			if (i_side == j_side) continue; //nothing to swap
@@ -463,6 +486,8 @@ void connect_engine::start_game_commandline(
 	DBG_MP << "starting a new game in commandline mode" << std::endl;
 
 	typedef boost::tuple<unsigned int, std::string> mp_option;
+
+	rand_rng::mt_rng rng;
 
 	unsigned num = 0;
 	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
@@ -514,7 +539,7 @@ void connect_engine::start_game_commandline(
 
 		// Finally, resolve "random faction",
 		// "random gender" and "random message", if any remains unresolved.
-		side->resolve_random();
+		side->resolve_random(rng);
 	} // end top-level loop
 
 	update_and_send_diff(true);
@@ -1168,7 +1193,7 @@ bool side_engine::swap_sides_on_drop_target(const unsigned drop_target) {
 	return true;
 }
 
-void side_engine::resolve_random()
+void side_engine::resolve_random(rand_rng::mt_rng & rng, const std::vector<std::string> & avoid_faction_ids)
 {
 	if (parent_.params_.saved_game) {
 		return;
@@ -1176,7 +1201,7 @@ void side_engine::resolve_random()
 
 	chose_random_ = flg_.is_random_faction();
 
-	flg_.resolve_random();
+	flg_.resolve_random(rng, avoid_faction_ids);
 
 	LOG_MP << "side " << (index_ + 1) << ": faction=" <<
 		(flg_.current_faction())["name"] << ", leader=" <<

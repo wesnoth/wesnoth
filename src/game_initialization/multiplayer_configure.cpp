@@ -26,6 +26,7 @@
 #include "gui/dialogs/mp_create_game_set_password.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "minimap.hpp"
+#include "mp_game_settings.hpp"
 #include "multiplayer_configure.hpp"
 #include "filesystem.hpp"
 #include "log.hpp"
@@ -35,6 +36,7 @@
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 
+#include <boost/assign/list_of.hpp>
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
 
@@ -82,6 +84,8 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	observers_game_(disp.video(), _("Observers"), gui::button::TYPE_CHECK),
 	oos_debug_(disp.video(), _("Debug OOS"), gui::button::TYPE_CHECK),
 	shuffle_sides_(disp.video(), _("Shuffle sides"), gui::button::TYPE_CHECK),
+	random_faction_mode_label_(disp.video(), _("Random Factions:"), font::SIZE_SMALL, font::LOBBY_COLOR),
+	random_faction_mode_(disp, std::vector<std::string>()),
 	cancel_game_(disp.video(), _("Back")),
 	launch_game_(disp.video(), _("OK")),
 	password_button_(disp.video(), _("Set Password...")),
@@ -183,6 +187,17 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	shuffle_sides_.set_check(engine_.shuffle_sides_default());
 	shuffle_sides_.set_help_string(_("Assign sides to players at random"));
 
+	random_faction_mode_label_.set_help_string(_("Allow for mirror matchups when random factions are chosen"));
+
+	std::vector<std::string> translated_modes;
+	for(size_t i = 0; i < mp_game_settings::RANDOM_FACTION_MODE_COUNT; ++i) {
+		std::string mode_str = mp_game_settings::RANDOM_FACTION_MODE_to_string(static_cast<mp_game_settings::RANDOM_FACTION_MODE> (i));
+		translated_modes.push_back(translation::gettext(mode_str.c_str()));
+	}
+	random_faction_mode_.set_items(translated_modes);
+	random_faction_mode_.set_selected(engine_.random_faction_mode());
+	random_faction_mode_.set_help_string(_("Independent: Random factions assigned independently\nNo Mirror: No two players will get the same faction\nNo Ally Mirror: No two allied players will get the same faction"));
+
 #if 0
 	// The possible vision settings
 	std::vector<std::string> vision_types;
@@ -229,6 +244,7 @@ configure::~configure()
 	// Save values for next game
 	DBG_MP << "storing parameter values in preferences" << std::endl;
 	preferences::set_shuffle_sides(engine_.shuffle_sides());
+	preferences::set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE_to_string(engine_.random_faction_mode()));
 	preferences::set_use_map_settings(engine_.use_map_settings());
 	preferences::set_countdown(engine_.mp_countdown());
 	preferences::set_countdown_init_time(engine_.mp_countdown_init_time());
@@ -292,6 +308,7 @@ const mp_game_settings& configure::get_parameters()
 	engine_.set_allow_observers(observers_game_.checked());
 	engine_.set_oos_debug(oos_debug_.checked());
 	engine_.set_shuffle_sides(shuffle_sides_.checked());
+	engine_.set_random_faction_mode(static_cast<mp_game_settings::RANDOM_FACTION_MODE>(random_faction_mode_.selected()));
 
 	engine_.set_options(options_manager_.get_values());
 
@@ -483,6 +500,8 @@ void configure::hide_children(bool hide)
 	observers_game_.hide(hide);
 	oos_debug_.hide(hide);
 	shuffle_sides_.hide(hide);
+	random_faction_mode_label_.hide(hide);
+	random_faction_mode_.hide(hide);
 	cancel_game_.hide(hide);
 	launch_game_.hide(hide);
 
@@ -534,24 +553,31 @@ void configure::layout_children(const SDL_Rect& rect)
 
 	int slider_width = options_pane_left_.width() - 40;
 
-	int xpos_left = 0;
-	int ypos_left = 0;
+	unsigned int xpos_left = 0;
+	unsigned int ypos_left = 0;
 
 	ypos_left += 2 * border_size;
-	options_pane_left_.add_widget(&observers_game_, xpos_left, ypos_left);
-	options_pane_left_.add_widget(&shuffle_sides_,
+	options_pane_left_.add_widget(&shuffle_sides_, xpos_left, ypos_left);
+	options_pane_left_.add_widget(&observers_game_,
 		xpos_left + (options_pane_left_.width() - xpos_left) / 2 + border_size, ypos_left);
 	ypos_left += shuffle_sides_.height() + border_size;
 
-	options_pane_left_.add_widget(&countdown_game_, xpos_left, ypos_left);
+	options_pane_left_.add_widget(&random_faction_mode_label_, xpos_left, ypos_left);
+	xpos_left += random_faction_mode_label_.width() + border_size;
+
+	options_pane_left_.add_widget(&random_faction_mode_, xpos_left, ypos_left);
+	xpos_left += random_faction_mode_.width() + border_size;
 
 	if(!local_players_only_) {
 		options_pane_left_.add_widget(&password_button_,
-			(ca.x + first_column_width / 2) - 40, ypos_left);
+			std::max(xpos_left + 2* border_size, (options_pane_left_.width() / 2) + border_size), ypos_left);
 	} else {
 		password_button_.hide(true);
 	}
+	xpos_left = 0;
+	ypos_left += random_faction_mode_.height() + border_size;
 
+	options_pane_left_.add_widget(&countdown_game_, xpos_left, ypos_left);
 	ypos_left += countdown_game_.height() + border_size;
 
 	options_pane_left_.add_widget(&countdown_init_time_label_, xpos_left, ypos_left	);

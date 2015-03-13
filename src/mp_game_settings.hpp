@@ -18,6 +18,8 @@
 #define MP_GAME_SETTINGS_HPP_INCLUDED
 
 #include "config.hpp"
+#include "gettext.hpp"
+#include "make_enum.hpp"
 #include "savegame_config.hpp"
 
 struct mp_game_settings : public savegame::savegame_config
@@ -61,7 +63,17 @@ struct mp_game_settings : public savegame::savegame_config
 
 	bool saved_game;
 
+	MAKE_ENUM(RANDOM_FACTION_MODE,
+		(DEFAULT, N_("Independent"))
+		(NO_MIRROR, N_("No Mirror"))
+		(NO_ALLY_MIRROR, N_("No Ally Mirror"))
+	)
+
+	RANDOM_FACTION_MODE random_faction_mode;
+
 	config options;
 };
+
+MAKE_ENUM_STREAM_OPS2(mp_game_settings, RANDOM_FACTION_MODE)
 
 #endif

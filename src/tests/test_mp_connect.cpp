@@ -21,6 +21,7 @@
 #include "game_initialization/multiplayer_connect.hpp"
 #include "game_initialization/multiplayer_ui.hpp"
 #include "hotkey/hotkey_manager.hpp"
+#include "mt_rng.hpp"
 #include "saved_game.hpp"
 
 #include <boost/foreach.hpp>
@@ -53,6 +54,7 @@ namespace {
 
 boost::scoped_ptr<game_display> disp;
 boost::scoped_ptr<saved_game> state;
+boost::scoped_ptr<rand_rng::mt_rng> rng;
 
 }
 
@@ -87,6 +89,8 @@ struct mp_connect_fixture {
 			game_config().find_child(lexical_cast<std::string>(game_classification::MULTIPLAYER), "id", state->mp_settings().name));
 
 		state->mp_settings().num_turns = state->get_starting_pos()["turns"];
+
+		rng.reset(new rand_rng::mt_rng());
 	}
 	~mp_connect_fixture()
 	{
@@ -299,7 +303,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side.clear();
 	side["faction"] = "Random";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	side_engine->resolve_random();
+	side_engine->resolve_random(*rng);
 	BOOST_CHECK( side_engine->flg().current_faction()["id"] != "Random" );
 	BOOST_CHECK( side_engine->flg().current_leader() != "random" &&
 		side_engine->flg().current_leader() != "null");
@@ -311,7 +315,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side["faction"] = "Random";
 	side["type"] = "Troll";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	side_engine->resolve_random();
+	side_engine->resolve_random(*rng);
 	BOOST_CHECK( side_engine->flg().current_faction()["id"] != "Random" );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "Troll" );
 	BOOST_CHECK( side_engine->flg().current_gender() != "random" &&
@@ -323,7 +327,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side["type"] = "White Mage";
 	side["gender"] = "male";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	side_engine->resolve_random();
+	side_engine->resolve_random(*rng);
 	BOOST_CHECK( side_engine->flg().current_faction()["id"] != "Random" );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "White Mage" );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "male" );
@@ -332,7 +336,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side.clear();
 	side["type"] = "random";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
-	side_engine->resolve_random();
+	side_engine->resolve_random(*rng);
 	BOOST_CHECK( side_engine->flg().current_leader() != "random" );
 }
 

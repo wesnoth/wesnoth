@@ -568,6 +568,14 @@ void set_shuffle_sides(bool value)
 	preferences::set("shuffle_sides", value);
 }
 
+std::string random_faction_mode(){
+	return preferences::get("random_faction_mode");
+}
+
+void set_random_faction_mode(const std::string & value) {
+	preferences::set("random_faction_mode", value);
+}
+
 bool use_map_settings()
 {
 	return preferences::get("mp_use_map_settings", true);
