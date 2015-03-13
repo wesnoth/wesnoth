@@ -79,6 +79,7 @@ private:
 	gui::button observers_game_;
 	gui::button oos_debug_;
 	gui::button shuffle_sides_;
+	gui::label random_faction_mode_label_;
 	gui::combo random_faction_mode_;
 
 	gui::button cancel_game_;
