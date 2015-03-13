@@ -417,7 +417,7 @@ void gamebrowser::handle_event(const SDL_Event& event)
 			if(event.type == DOUBLE_CLICK_EVENT) {
 				if (ignore_next_doubleclick_) {
 					ignore_next_doubleclick_ = false;
-				} else if(selection_is_joinable() || selection_is_observable()) {
+				} else if(selection_is_joinable_with_addons() || selection_is_observable_with_addons()) {
 					double_clicked_ = true;
 					last_was_doubleclick_ = true;
 				}
