@@ -31,6 +31,7 @@
 #include "gui/auxiliary/old_markup.hpp"
 #include "gui/dialogs/message.hpp" // for gui2::show_message
 #include "gui/widgets/window.hpp" // for gui2::twindow::OK
+#include "lobby_reload_request_exception.hpp"
 #include "log.hpp"
 #include "playmp_controller.hpp"
 #include "sound.hpp"
@@ -1009,8 +1010,8 @@ void lobby::gamelist_updated(bool silent)
 		return;
 	}
 	games_menu_.set_game_items(gamelist(), game_config());
-	join_game_.enable(games_menu_.selection_is_joinable());
-	observe_game_.enable(games_menu_.selection_is_observable());
+	join_game_.enable(games_menu_.selection_is_joinable_with_addons());
+	observe_game_.enable(games_menu_.selection_is_observable_with_addons());
 }
 
 void lobby::process_event()
@@ -1027,17 +1028,18 @@ void lobby::process_event()
 // The return value should be true if the gui result was not chnaged
 void lobby::process_event_impl(const process_event_data & data)
 {
-	join_game_.enable(games_menu_.selection_is_joinable());
-	observe_game_.enable(games_menu_.selection_is_observable());
+	join_game_.enable(games_menu_.selection_is_joinable_with_addons());
+	observe_game_.enable(games_menu_.selection_is_observable_with_addons());
 
 	// check whehter to try to download addons
-	if (games_menu_.selected() && (data.observe || data.join) && games_menu_.selection_needs_addons())
+	if ((games_menu_.selected() || data.observe || data.join) && games_menu_.selection_needs_addons())
 	{
 		if (gui2::show_message(video(), _("Missing user-made content."), _("This game requires one or more user-made addons to join. Do you want to try to install them?"), gui2::tmessage::yes_no_buttons) == gui2::twindow::OK) {
 			std::vector<std::string> addon_ids = games_menu_.selection_addon_ids();
 			BOOST_FOREACH(const std::string & id, addon_ids) {
 				ad_hoc_addon_fetch_session(disp(), id);
 			}
+			throw lobby_reload_request_exception();
 		}
 	}
 

@@ -27,6 +27,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "hash.hpp"
+#include "lobby_reload_request_exception.hpp"
 #include "log.hpp"
 #include "generators/map_create.hpp"
 #include "mp_game_utils.hpp"
@@ -904,6 +905,8 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 void start_client(game_display& disp, const config& game_config,
 	saved_game& state, const std::string& host)
 {
+	const config * game_config_ptr = &game_config;
+
 	DBG_MP << "starting client" << std::endl;
 	const network::manager net_manager(1,1);
 
@@ -913,12 +916,27 @@ void start_client(game_display& disp, const config& game_config,
 
 	switch(type) {
 	case WESNOTHD_SERVER:
-		enter_lobby_mode(disp, game_config, state);
+		bool re_enter;
+		do {
+			re_enter = false;
+			try {
+				enter_lobby_mode(disp, *game_config_ptr, state);
+			} catch (lobby_reload_request_exception & ex) {
+				re_enter = true;
+				game_config_manager * gcm = game_config_manager::get();
+				gcm->reload_changed_game_config();
+				gcm->load_game_config_for_game(state.classification()); // NOTE: Using reload_changed_game_config doesn't seem to work here
+				game_config_ptr = &gcm->game_config();
+
+				gamelist.clear(); //needed to make sure we update which games we have content for
+				network::send_data(config("refresh_lobby"), 0);
+			}
+		} while (re_enter);
 		break;
 	case SIMPLE_SERVER:
 		playmp_controller::set_replay_last_turn(0);
 		preferences::set_message_private(false);
-		enter_wait_mode(disp, game_config, state, false);
+		enter_wait_mode(disp, *game_config_ptr, state, false);
 		break;
 	case ABORT_SERVER:
 		break;
