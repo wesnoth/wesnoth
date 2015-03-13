@@ -399,14 +399,14 @@ void connect_engine::start_game(LOAD_USERS load_users)
 		std::vector<std::string> avoid_faction_ids;
 
 		// If we aren't resolving random factions independently at random, calculate which factions should not appear for this side.
-		if (params_.random_faction_mode != 0) {
+		if (params_.random_faction_mode != mp_game_settings::DEFAULT) {
 			BOOST_FOREACH(side_engine_ptr side2, side_engines_) {
 				if (!side2->flg().is_random_faction()) {
 					switch(params_.random_faction_mode) {
-						case 1: //no mirror
+						case mp_game_settings::NO_MIRROR:
 							avoid_faction_ids.push_back(side2->flg().current_faction()["id"].str());
 							break;
-						case 2: //no ally mirror
+						case mp_game_settings::NO_ALLY_MIRROR:
 							if (side2->team() == side->team()) {// TODO: When the connect engines are fixed to allow multiple teams, this should be changed to "if side1 and side2 are allied, i.e. their list of teams has nonempty intersection"
 								avoid_faction_ids.push_back(side2->flg().current_faction()["id"].str());
 							}

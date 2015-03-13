@@ -125,8 +125,8 @@ class acquaintance;
 	bool shuffle_sides();
 	void set_shuffle_sides(bool value);
 
-	int random_faction_mode();
-	void set_random_faction_mode(int value);
+	std::string random_faction_mode();
+	void set_random_faction_mode(const std::string & value);
 
 	bool use_map_settings();
 	void set_use_map_settings(bool value);

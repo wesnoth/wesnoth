@@ -17,6 +17,7 @@
 
 #include "gettext.hpp"
 #include "game_preferences.hpp"
+#include "mp_game_settings.hpp"
 #include "saved_game.hpp"
 
 namespace ng {
@@ -55,7 +56,7 @@ public:
 	bool shroud_game() const;
 	bool allow_observers() const;
 	bool shuffle_sides() const;
-	int random_faction_mode() const;
+	mp_game_settings::RANDOM_FACTION_MODE random_faction_mode() const;
 	const config& options() const;
 
 	// setter methods
@@ -76,7 +77,7 @@ public:
 	void set_allow_observers(bool val);
 	void set_oos_debug(bool val);
 	void set_shuffle_sides(bool val);
-	void set_random_faction_mode(int val);
+	void set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE val);
 	void set_options(const config& cfg);
 
 	void set_scenario(size_t scenario_num);
@@ -99,7 +100,7 @@ public:
 	bool shroud_game_default() const;
 	bool allow_observers_default() const;
 	bool shuffle_sides_default() const;
-	int random_faction_mode_default() const;
+	mp_game_settings::RANDOM_FACTION_MODE random_faction_mode_default() const;
 	const config& options_default() const;
 
 	// parameters_ accessor

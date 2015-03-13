@@ -26,6 +26,7 @@
 #include "gui/dialogs/mp_create_game_set_password.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "minimap.hpp"
+#include "mp_game_settings.hpp"
 #include "multiplayer_configure.hpp"
 #include "filesystem.hpp"
 #include "log.hpp"
@@ -185,7 +186,12 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	shuffle_sides_.set_check(engine_.shuffle_sides_default());
 	shuffle_sides_.set_help_string(_("Assign sides to players at random"));
 
-	random_faction_mode_.set_items(boost::assign::list_of(_("Independent"))(_("No Mirror"))( _("No Ally Mirror")));
+	std::vector<std::string> translated_modes;
+	for(size_t i = 0; i < mp_game_settings::RANDOM_FACTION_MODE_COUNT; ++i) {
+		std::string mode_str = mp_game_settings::RANDOM_FACTION_MODE_to_string(static_cast<mp_game_settings::RANDOM_FACTION_MODE> (i));
+		translated_modes.push_back(translation::gettext(mode_str.c_str()));
+	}
+	random_faction_mode_.set_items(translated_modes);
 	random_faction_mode_.set_selected(engine_.random_faction_mode());
 	random_faction_mode_.set_help_string(_("Independent: Random factions assigned independently uniformly at random\nNo Mirror: No two players will get the same faction\nNo Ally Mirror: No two allied players will get the same faction"));
 
@@ -235,7 +241,7 @@ configure::~configure()
 	// Save values for next game
 	DBG_MP << "storing parameter values in preferences" << std::endl;
 	preferences::set_shuffle_sides(engine_.shuffle_sides());
-	preferences::set_random_faction_mode(engine_.random_faction_mode());
+	preferences::set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE_to_string(engine_.random_faction_mode()));
 	preferences::set_use_map_settings(engine_.use_map_settings());
 	preferences::set_countdown(engine_.mp_countdown());
 	preferences::set_countdown_init_time(engine_.mp_countdown_init_time());
@@ -299,7 +305,7 @@ const mp_game_settings& configure::get_parameters()
 	engine_.set_allow_observers(observers_game_.checked());
 	engine_.set_oos_debug(oos_debug_.checked());
 	engine_.set_shuffle_sides(shuffle_sides_.checked());
-	engine_.set_random_faction_mode(random_faction_mode_.selected());
+	engine_.set_random_faction_mode(static_cast<mp_game_settings::RANDOM_FACTION_MODE>(random_faction_mode_.selected()));
 
 	engine_.set_options(options_manager_.get_values());
 
