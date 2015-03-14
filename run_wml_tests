@@ -201,6 +201,7 @@ DebugMode=0
 GdbBacktraceMode=0
 extra_opts=""
 basetimer=10
+export OMP_WAIT_POLICY=PASSIVE
 
 while getopts ":hvwcusdgp:l:a:t:" Option
 do
