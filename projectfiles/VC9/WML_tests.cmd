@@ -4,6 +4,9 @@
 @echo off
 setlocal enabledelayedexpansion
 
+:: if OMP_WAIT_POLICY isn't set, the process restarts itself and !ERRORLEVEL!=0
+set OMP_WAIT_POLICY=PASSIVE
+
 :: save file paths and command line arguments
 cd ..\..\
 set LoadFile=wml_test_schedule

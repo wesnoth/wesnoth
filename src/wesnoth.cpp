@@ -103,6 +103,9 @@
 	#undef INADDR_NONE
 #endif
 #include <windows.h>
+#if defined(_OPENMP) && _MSC_VER >= 1600
+	#include <process.h>
+#endif
 #endif
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
@@ -900,7 +903,7 @@ int main(int argc, char** argv)
 	VLDEnable();
 #endif
 
-#if defined(_OPENMP) && !defined(_WIN32) && !defined(__APPLE__)
+#ifdef _OPENMP
 	// Wesnoth is a special case for OMP
 	// OMP wait strategy is to have threads busy-loop for 100ms
 	// if there is nothing to do, they then go to sleep.
@@ -913,11 +916,18 @@ int main(int argc, char** argv)
 	// To avoid that problem, we need to set the OMP_WAIT_POLICY env var
 	// but that var is read by OMP at library loading time (before main)
 	// thus the relaunching of ourselves after setting the variable.
+#if !defined(_WIN32) && !defined(__APPLE__)
 	if (!getenv("OMP_WAIT_POLICY")) {
 		setenv("OMP_WAIT_POLICY", "PASSIVE", 1);
 		execv(argv[0], argv);
 	}
+#elif _MSC_VER >= 1600
+	if (!getenv("OMP_WAIT_POLICY")) {
+		_putenv_s("OMP_WAIT_POLICY", "PASSIVE");
+		_execv(argv[0], argv);
+	}
 #endif
+#endif //_OPENMP
 #ifdef _WIN32
 	(void)argc;
 	(void)argv;
