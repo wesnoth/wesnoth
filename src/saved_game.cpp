@@ -36,6 +36,7 @@
 
 #include "saved_game.hpp"
 #include "carryover.hpp"
+#include "config_assign.hpp"
 #include "cursor.hpp"
 #include "log.hpp"
 #include "game_config_manager.hpp"
@@ -229,7 +230,6 @@ void saved_game::expand_mp_events()
 	if(this->starting_pos_type_ == STARTINGPOS_SCENARIO && !this->starting_pos_["has_mod_events"].to_bool(false))
 	{
 		std::vector<modevents_entry> mods;
-		std::vector<std::string> addon_ids;
 
 		boost::copy( mp_settings_.active_mods
 			| boost::adaptors::transformed(modevents_entry_for("modification"))
@@ -244,7 +244,8 @@ void saved_game::expand_mp_events()
 			{
 				// Note the addon_id
 				if (cfg.has_attribute("addon_id") && !cfg["addon_id"].empty()) {
-					addon_ids.push_back(cfg["addon_id"].str());
+					config addon_data = config_of("id",cfg["addon_id"])("version", cfg["addon_version"])("min_version", cfg["addon_min_version"]);
+					mp_settings_.addons.push_back(mp_game_settings::addon_version_info(addon_data));
 				}
 
 				// Copy events
@@ -265,7 +266,6 @@ void saved_game::expand_mp_events()
 			}
 		}
 
-		mp_settings_.addon_ids = addon_ids;
 		this->starting_pos_["has_mod_events"] = true;
 	}
 }

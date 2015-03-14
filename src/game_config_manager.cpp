@@ -31,6 +31,7 @@
 #include "terrain_builder.hpp"
 #include "terrain_type_data.hpp"
 #include "unit_types.hpp"
+#include "version.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
@@ -319,7 +320,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 struct addon_source {
 	std::string main_cfg;
 	std::string addon_id;
-	boost::optional<std::string> version_info;
+	version_info version;
 };
 
 void game_config_manager::load_addons_cfg()
@@ -366,7 +367,6 @@ void game_config_manager::load_addons_cfg()
 
 		const std::string main_cfg = addon_dir + "/_main.cfg";
 		const std::string info_cfg = addon_dir + "/_info.cfg";
-		const std::string pbl_cfg = addon_dir + "/_server.pbl";
 
 		addon_source addon;
 		addon.main_cfg = main_cfg;
@@ -385,20 +385,10 @@ void game_config_manager::load_addons_cfg()
 				) {
 					continue; // Skip add-ons not matching our current core.
 				}
-				if (info_tag && info_tag.has_attribute("version")) { // Try to get version info from the info_cfg file.
-					addon.version_info = info_tag["version"].str();
-				}
 			}
 
-			// If we dont have addon version info, try searching in the pbl file if it exists
-			if (!addon.version_info && filesystem::file_exists(pbl_cfg)) {
-				config pbl;
-				cache_.get_config(pbl_cfg, pbl);
-				if (pbl.has_attribute("version")) {
-					addon.version_info = pbl["version"].str();
-				}
-			}
-
+			// Ask the addon manager to find version info for us (from info, pbl file)
+			addon.version = get_addon_version_info(addon_id);
 			addons_to_load.push_back(addon);
 		}
 	}
@@ -417,8 +407,10 @@ void game_config_manager::load_addons_cfg()
 			{
 				BOOST_FOREACH(config & cfg, umc_cfg.child_range(*type)) {
 					cfg["addon_id"] = addon.addon_id;
-					if (addon.version_info) {
-						cfg["addon_version"] = *addon.version_info;
+					if (addon.version.good()) {
+						// If the addon string was not "sane" then reject it, we can't compare non-sane version strings.
+						// This may also happen if no version info could be found.
+						cfg["addon_version"] = addon.version.str(); // Note that this may reformat the string in a canonical form.
 					}
 				}
 			}

@@ -21,6 +21,9 @@
 #include "gettext.hpp"
 #include "make_enum.hpp"
 #include "savegame_config.hpp"
+#include "version.hpp"
+
+#include <boost/optional.hpp>
 
 struct mp_game_settings : public savegame::savegame_config
 {
@@ -40,7 +43,6 @@ struct mp_game_settings : public savegame::savegame_config
 	std::string mp_campaign;
 	std::string difficulty_define;
 	std::vector<std::string> active_mods;
-	std::vector<std::string> addon_ids;
 	std::map<std::string, std::string> side_users;
 
 	bool show_configure;
@@ -73,6 +75,17 @@ struct mp_game_settings : public savegame::savegame_config
 	RANDOM_FACTION_MODE random_faction_mode;
 
 	config options;
+
+	struct addon_version_info {
+		std::string id;
+		boost::optional<version_info> version;
+		boost::optional<version_info> min_version;
+
+		explicit addon_version_info(const config &);
+		void write(config &) const;
+	};
+
+	std::vector<addon_version_info> addons;
 };
 
 MAKE_ENUM_STREAM_OPS2(mp_game_settings, RANDOM_FACTION_MODE)

@@ -21,6 +21,8 @@
 #include "mp_game_settings.hpp"
 #include "formula_string_utils.hpp"
 
+#include <boost/foreach.hpp>
+
 mp_game_settings::mp_game_settings() :
 	savegame_config(),
 	name(),
@@ -32,7 +34,6 @@ mp_game_settings::mp_game_settings() :
 	mp_campaign(),
 	difficulty_define(),
 	active_mods(),
-	addon_ids(),
 	side_users(),
 	show_configure(true),
 	show_connect(true),
@@ -53,7 +54,8 @@ mp_game_settings::mp_game_settings() :
 	shuffle_sides(false),
 	saved_game(false),
 	random_faction_mode(DEFAULT),
-	options()
+	options(),
+	addons()
 {}
 
 mp_game_settings::mp_game_settings(const config& cfg)
@@ -67,7 +69,6 @@ mp_game_settings::mp_game_settings(const config& cfg)
 	, mp_campaign(cfg["mp_campaign"].str())
 	, difficulty_define(cfg["difficulty_define"].str())
 	, active_mods(utils::split(cfg["active_mods"], ','))
-	, addon_ids(utils::split(cfg["addon_ids"], ','))
 	, side_users(utils::map_split(cfg["side_users"]))
 	, show_configure(cfg["show_configure"].to_bool(true))
 	, show_connect(cfg["show_connect"].to_bool(true))
@@ -89,7 +90,11 @@ mp_game_settings::mp_game_settings(const config& cfg)
 	, saved_game(cfg["savegame"].to_bool())
 	, random_faction_mode(string_to_RANDOM_FACTION_MODE_default(cfg["random_faction_mode"].str(), DEFAULT))
 	, options(cfg.child_or_empty("options"))
+	, addons()
 {
+	BOOST_FOREACH(const config & a, cfg.child_range("addon")) {
+		addons.push_back(addon_version_info(a));
+	}
 }
 
 config mp_game_settings::to_config() const
@@ -104,7 +109,6 @@ config mp_game_settings::to_config() const
 	cfg["mp_campaign"] = mp_campaign;
 	cfg["difficulty_define"] = difficulty_define;
 	cfg["active_mods"] = utils::join(active_mods, ",");
-	cfg["addon_ids"] = utils::join(addon_ids, ",");
 	cfg["side_users"] = utils::join_map(side_users);
 	cfg["show_configure"] = show_configure;
 	cfg["show_connect"] = show_connect;
@@ -127,5 +131,32 @@ config mp_game_settings::to_config() const
 	cfg["savegame"] = saved_game;
 	cfg.add_child("options", options);
 
+	BOOST_FOREACH(const addon_version_info & a, addons) {
+		a.write(cfg.add_child("addon"));
+	}
+
 	return cfg;
+}
+
+mp_game_settings::addon_version_info::addon_version_info(const config & cfg)
+	: id(cfg["id"])
+	, version()
+	, min_version()
+{
+	if (cfg.has_attribute("version") && !cfg["version"].empty()) {
+		version = cfg["version"].str();
+	}
+	if (cfg.has_attribute("min_version") && !cfg["min_version"].empty()) {
+		min_version = cfg["min_version"].str();
+	}
+}
+
+void mp_game_settings::addon_version_info::write(config & cfg) const {
+	cfg["id"] = id;
+	if (version) {
+		cfg["version"] = *version;
+	}
+	if (min_version) {
+		cfg["min_version"] = *min_version;
+	}
 }
