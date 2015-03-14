@@ -335,39 +335,15 @@ void game_config_manager::load_addons_cfg()
 		const std::string file = uc;
 		const int size_minus_extension = file.size() - 4;
 		if(file.substr(size_minus_extension, file.size()) == ".cfg") {
-			bool ok = true;
-			// Allowing it if the dir doesn't exist,
-			// for the single-file add-on.
-			if(filesystem::file_exists(file.substr(0, size_minus_extension))) {
-				// Unfortunately, we create the dir plus
-				// _info.cfg ourselves on download.
-				std::vector<std::string> dirs, files;
-				filesystem::get_files_in_dir(file.substr(0, size_minus_extension),
-					&files, &dirs);
-				if(dirs.size() > 0) {
-					ok = false;
-				}
-				if(files.size() > 1) {
-					ok = false;
-				}
-				if(files.size() == 1 && files[0] != "_info.cfg") {
-					ok = false;
-				}
-			}
-			if(!ok) {
 				const int userdata_loc = file.find("data/add-ons") + 5;
 				ERR_CONFIG << "error reading usermade add-on '"
 					<< file << "'\n";
 				error_addons.push_back(file);
 				error_log.push_back("The format '~" + file.substr(userdata_loc)
-					+ "' is only for single-file add-ons, use '~"
+					+ "' (for single-file add-ons) is not supported anymore, use '~"
 					+ file.substr(userdata_loc,
 						size_minus_extension - userdata_loc)
 					+ "/_main.cfg' instead.");
-			}
-			else {
-				addons_to_load.push_back(file);
-			}
 		}
 	}
 
