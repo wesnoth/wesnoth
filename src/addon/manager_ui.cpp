@@ -1208,7 +1208,7 @@ bool manage_addons(display& disp)
 	}
 }
 
-bool ad_hoc_addon_fetch_session(display & disp, const std::string & addon_id)
+bool ad_hoc_addon_fetch_session(display & disp, const std::vector<std::string> & addon_ids)
 {
 	std::string remote_address = preferences::campaign_server();
 
@@ -1225,10 +1225,15 @@ bool ad_hoc_addon_fetch_session(display & disp, const std::string & addon_id)
 			return false;
 		}
 
-		const addon_info& addon = addon_at(addon_id, addons);
+		bool return_value = true;
+		BOOST_FOREACH(const std::string & addon_id, addon_ids) {
+			const addon_info& addon = addon_at(addon_id, addons);
 
-		ADDON_OP_RESULT res = try_fetch_addon_with_checks(disp, client, addons, addon);
-		return res.outcome_ == SUCCESS;
+			ADDON_OP_RESULT res = try_fetch_addon_with_checks(disp, client, addons, addon);
+			return_value = return_value && (res.outcome_ == SUCCESS);
+		}
+
+		return return_value;
 
 	} catch(const config::error& e) {
 		ERR_CFG << "config::error thrown during transaction with add-on server; \""<< e.message << "\"" << std::endl;

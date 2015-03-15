@@ -17,6 +17,7 @@
 #define ADDON_MANAGER_UI_HPP_INCLUDED
 
 #include <string>
+#include <vector>
 
 class display;
 
@@ -39,6 +40,6 @@ bool manage_addons(display& disp);
  *
  * @return @a true when we successfully installed the target (possibly the user chose to ignore failures)
  */
-bool ad_hoc_addon_fetch_session(display & disp, const std::string & addon_id);
+bool ad_hoc_addon_fetch_session(display & disp, const std::vector<std::string> & addon_ids);
 
 #endif

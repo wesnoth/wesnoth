@@ -1202,9 +1202,7 @@ void lobby::process_event_impl(const process_event_data & data)
 				assert(needs_download.size() > 0);
 
 				if (gui2::show_message(video(), e_title, err_msg, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK) {
-					BOOST_FOREACH(const std::string & addon_id, needs_download) {
-						ad_hoc_addon_fetch_session(disp(), addon_id);
-					}
+					ad_hoc_addon_fetch_session(disp(), needs_download);
 					throw lobby_reload_request_exception();
 				}
 			}
