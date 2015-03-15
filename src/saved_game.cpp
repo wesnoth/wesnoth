@@ -242,8 +242,9 @@ void saved_game::expand_mp_events()
 			if(const config& cfg = game_config_manager::get()->
 				game_config().find_child(mod.type, "id", mod.id))
 			{
-				// Note the addon_id
-				if (cfg.has_attribute("addon_id") && !cfg["addon_id"].empty()) {
+				// Note the addon_id if this mod is required to play the game in mp
+				std::string require_attr = "require_" + mod.type;
+				if (cfg.has_attribute("addon_id") && !cfg["addon_id"].empty() && cfg[require_attr].to_bool(true)) {
 					config addon_data = config_of("id",cfg["addon_id"])("version", cfg["addon_version"])("min_version", cfg["addon_min_version"]);
 					mp_game_settings::addon_version_info new_data(addon_data);
 
