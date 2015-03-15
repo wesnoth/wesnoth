@@ -277,6 +277,18 @@ For more informations about this library please go to [url]http://www.lua.org/ma
 [/list]
 [/section]
 
+[section="Automatically download User-made content from the multiplayer lobby"]
+In previous versions of wesnoth, if a game is hosted in the mp server which requires an add-on to play, a player must determine what add-on is necessary (not always obvious from the server entry), then log out of the mp lobby and navigate to the add-on manager, search for these add-ons by name or author, download these add-ons, and rejoin the server.
+
+Now, a player can simply double click on the game entry and they will be prompted to download all of the necessary add-ons and their dependencies.
+[/section]
+
+[section="Better Multiplayer add-on Versioning"]
+In previous versions of wesnoth, if a game is hosted in the mp server which requires an add-on to play, the lobby UI will grey-out the game entry and prevent you from joining a game which will be broken if you attempt to play it. However, if you have the add-on but it is out-of-date, the UI will not help you and you will generally speaking wander into a minefield of OOS errors, unless you diligently update your add-ons. This situation discourages the less diligent players from playing UMC mp content, and thereby discourages this content generally.
+
+In current versions, all games carry metadata which documents which add-ons are needed to play them, and at what versions. UMC authors may specify for each [era] or [modification] what the minimum add-on version is with which this content is backwards compatible, by adding "addon_min_version" attributes to these tags, which should be verion strings e.g. "1.2.3" to be compared with the add-on version string in the .pbl file of the add-on. [b] If no minimum version is specified, it is assumed that there is no backwards compatibility! [/b] Wesnoth clients will take all this information into account, and when a user tries to join a game with UMC content, will request to automatically update the relevant add-ons if it will make it possible to play the game. Wesnoth clients will also warn the user when the host has out-of-date add-ons, a situation which cannot be resolved unless the host updates.
+[/section]
+
 ==========
 KNOWN BUGS
 ==========
