@@ -13,6 +13,7 @@
 */
 #include "multiplayer.hpp"
 
+#include "addon/manager.hpp" // for get_installed_addons
 #include "dialogs.hpp"
 #include "formula_string_utils.hpp"
 #include "game_preferences.hpp"
@@ -647,7 +648,7 @@ static void do_preferences_dialog(game_display& disp, const config& game_config)
 }
 
 static void enter_lobby_mode(game_display& disp, const config& game_config,
-	saved_game& state)
+	saved_game& state, const std::vector<std::string> & installed_addons)
 {
 	DBG_MP << "entering lobby mode" << std::endl;
 
@@ -696,7 +697,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config,
 					res = mp::ui::QUIT;
 			}
 		} else {
-			mp::lobby ui(disp, game_config, gamechat, gamelist);
+			mp::lobby ui(disp, game_config, gamechat, gamelist, installed_addons);
 			run_lobby_loop(disp, ui);
 			res = ui.get_result();
 		}
@@ -906,6 +907,10 @@ void start_client(game_display& disp, const config& game_config,
 	saved_game& state, const std::string& host)
 {
 	const config * game_config_ptr = &game_config;
+	std::vector<std::string> installed_addons = ::installed_addons();
+	// This function does not refer to an addon database, it calls filesystem functions.
+	// For the sanity of the mp lobby, this list should be fixed for the entire lobby session,
+	// even if the user changes the contents of the addon directory in the meantime.
 
 	DBG_MP << "starting client" << std::endl;
 	const network::manager net_manager(1,1);
@@ -920,13 +925,15 @@ void start_client(game_display& disp, const config& game_config,
 		do {
 			re_enter = false;
 			try {
-				enter_lobby_mode(disp, *game_config_ptr, state);
+				enter_lobby_mode(disp, *game_config_ptr, state, installed_addons);
 			} catch (lobby_reload_request_exception & ex) {
 				re_enter = true;
 				game_config_manager * gcm = game_config_manager::get();
 				gcm->reload_changed_game_config();
-				gcm->load_game_config_for_game(state.classification()); // NOTE: Using reload_changed_game_config doesn't seem to work here
+				gcm->load_game_config_for_game(state.classification()); // NOTE: Using reload_changed_game_config only doesn't seem to work here
 				game_config_ptr = &gcm->game_config();
+
+				installed_addons = ::installed_addons(); // Refersh the installed add-on list for this session.
 
 				gamelist.clear(); //needed to make sure we update which games we have content for
 				network::send_data(config("refresh_lobby"), 0);
