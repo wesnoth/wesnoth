@@ -1154,6 +1154,51 @@ void lobby::process_event()
 	process_event_impl(data);
 }
 
+static void handle_addon_requirements_gui(display & disp, const std::vector<required_addon> & reqs, mp::ADDON_REQ addon_outcome)
+{
+	if (addon_outcome == CANNOT_SATISFY) {
+		std::string e_title = _("Incompatible user-made content.");
+		std::string err_msg = _("This game cannot be joined because the host has out-of-date add-ons which are incompatible with your version. You might suggest to them that they update their add-ons.");
+
+		err_msg +="\n\n";
+		err_msg += _("Details:");
+		err_msg += "\n";
+
+		BOOST_FOREACH(const required_addon & a, reqs) {
+			if (a.outcome == CANNOT_SATISFY) {
+				err_msg += a.message;
+				err_msg += "\n";
+			}
+		}
+		gui2::show_message(disp.video(), e_title, err_msg, gui2::tmessage::auto_close);
+	} else if (addon_outcome == NEED_DOWNLOAD) {
+		std::string e_title = _("Missing user-made content.");
+		std::string err_msg = _("This game requires one or more user-made addons to be installed or updated in order to join. Do you want to try to install them?");
+
+		err_msg +="\n\n";
+		err_msg += _("Details:");
+		err_msg += "\n";
+
+		std::vector<std::string> needs_download;
+		BOOST_FOREACH(const required_addon & a, reqs) {
+			if (a.outcome == NEED_DOWNLOAD) {
+				err_msg += a.message;
+				err_msg += "\n";
+
+				needs_download.push_back(a.addon_id);
+			} else if (a.outcome == CANNOT_SATISFY) {
+				assert(false);
+			}
+		}
+		assert(needs_download.size() > 0);
+
+		if (gui2::show_message(disp.video(), e_title, err_msg, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK) {
+			ad_hoc_addon_fetch_session(disp, needs_download);
+			throw lobby_reload_request_exception();
+		}
+	}
+}
+
 // The return value should be true if the gui result was not chnaged
 void lobby::process_event_impl(const process_event_data & data)
 {
@@ -1164,48 +1209,7 @@ void lobby::process_event_impl(const process_event_data & data)
 	if ((games_menu_.selected() || data.observe || data.join) && games_menu_.selection_needs_addons())
 	{
 		if (const std::vector<required_addon> * reqs = games_menu_.selection_addon_requirements()) {
-			if (games_menu_.selection_addon_outcome() == CANNOT_SATISFY) {
-				std::string e_title = _("Incompatible user-made content.");
-				std::string err_msg = _("This game cannot be joined because the host has out-of-date add-ons which are incompatible with your version. You might suggest to them that they update their add-ons.");
-
-				err_msg +="\n\n";
-				err_msg += _("Details:");
-				err_msg += "\n";
-
-				BOOST_FOREACH(const required_addon & a, *reqs) {
-					if (a.outcome == CANNOT_SATISFY) {
-						err_msg += a.message;
-						err_msg += "\n";
-					}
-				}
-				gui2::show_message(video(), e_title, err_msg, gui2::tmessage::auto_close);
-			} else if (games_menu_.selection_addon_outcome() == NEED_DOWNLOAD) {
-				std::string e_title = _("Missing user-made content.");
-				std::string err_msg = _("This game requires one or more user-made addons to be installed or updated in order to join. Do you want to try to install them?");
-
-				err_msg +="\n\n";
-				err_msg += _("Details:");
-				err_msg += "\n";
-
-				std::vector<std::string> needs_download;
-
-				BOOST_FOREACH(const required_addon & a, *reqs) {
-					if (a.outcome == NEED_DOWNLOAD) {
-						err_msg += a.message;
-						err_msg += "\n";
-
-						needs_download.push_back(a.addon_id);
-					} else if (a.outcome == CANNOT_SATISFY) {
-						assert(false);
-					}
-				}
-				assert(needs_download.size() > 0);
-
-				if (gui2::show_message(video(), e_title, err_msg, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK) {
-					ad_hoc_addon_fetch_session(disp(), needs_download);
-					throw lobby_reload_request_exception();
-				}
-			}
+			handle_addon_requirements_gui(disp(), *reqs, games_menu_.selection_addon_outcome());
 		} else {
 			gui2::show_error_message(video(), _("Something is wrong with the addon version check database supporting the multiplayer lobby, please report this at bugs.wesnoth.org."));
 		}
