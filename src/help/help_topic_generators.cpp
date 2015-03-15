@@ -244,16 +244,16 @@ std::string unit_topic_generator::operator()() const {
 
 		// Show the unit's image.
 #ifdef LOW_MEM
-		ss << "<img>src='" << male_type.image() << "~XBRZ(2)'</img> ";
+		ss << "<img>src='" << male_type.image() << "~XBRZ(2)' box='no'</img> ";
 #else
-		ss << "<img>src='" << male_type.image() << "~RC(" << male_type.flag_rgb() << ">red)~XBRZ(2)" << "'</img> ";
+		ss << "<img>src='" << male_type.image() << "~RC(" << male_type.flag_rgb() << ">red)~XBRZ(2)' box='no'</img> ";
 #endif
 
 		if (&female_type != &male_type)
 #ifdef LOW_MEM
-			ss << "<img>src='" << female_type.image() << "~XBRZ(2)'</img> ";
+			ss << "<img>src='" << female_type.image() << "~XBRZ(2)' box='no'</img> ";
 #else
-			ss << "<img>src='" << female_type.image() << "~RC(" << female_type.flag_rgb() << ">red)~XBRZ(2)" << "'</img> ";
+			ss << "<img>src='" << female_type.image() << "~RC(" << female_type.flag_rgb() << ">red)~XBRZ(2)' box='no'</img> ";
 #endif
 
 		const std::string &male_portrait = male_type.small_profile();
