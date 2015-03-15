@@ -742,7 +742,7 @@ void save_preview_pane::draw_contents()
 		// NOTE: assuming magenta for TC here. This is what's used in all of
 		// mainline, so the compromise should be good enough until we add more
 		// summary fields to help with this and deciding the side color range.
-		const surface& image(image::get_image(leader_image + "~RC(magenta>1)"));
+		const surface& image(image::get_image(leader_image + "~RC(magenta>red)"));
 #endif
 
 		have_leader_image = !image.null();
