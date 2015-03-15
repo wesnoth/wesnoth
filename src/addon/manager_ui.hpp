@@ -17,6 +17,7 @@
 #define ADDON_MANAGER_UI_HPP_INCLUDED
 
 #include <string>
+#include <vector>
 
 class display;
 
@@ -29,5 +30,16 @@ class display;
  *         removed, thus requiring a local WML cache refresh. @a false otherwise.
  */
 bool manage_addons(display& disp);
+
+/**
+ * Conducts an ad-hoc add-ons server connection to download an add-on with a particular id and all
+ * it's dependencies. Launches gui dialogs when issues arise.
+ *
+ * @param disp Display object on which to render UI elements.
+ * @param id The id of the target add-on.
+ *
+ * @return @a true when we successfully installed the target (possibly the user chose to ignore failures)
+ */
+bool ad_hoc_addon_fetch_session(display & disp, const std::vector<std::string> & addon_ids);
 
 #endif

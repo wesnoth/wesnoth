@@ -21,6 +21,8 @@
 #include "mp_game_settings.hpp"
 #include "formula_string_utils.hpp"
 
+#include <boost/foreach.hpp>
+
 mp_game_settings::mp_game_settings() :
 	savegame_config(),
 	name(),
@@ -52,7 +54,8 @@ mp_game_settings::mp_game_settings() :
 	shuffle_sides(false),
 	saved_game(false),
 	random_faction_mode(DEFAULT),
-	options()
+	options(),
+	addons()
 {}
 
 mp_game_settings::mp_game_settings(const config& cfg)
@@ -87,7 +90,11 @@ mp_game_settings::mp_game_settings(const config& cfg)
 	, saved_game(cfg["savegame"].to_bool())
 	, random_faction_mode(string_to_RANDOM_FACTION_MODE_default(cfg["random_faction_mode"].str(), DEFAULT))
 	, options(cfg.child_or_empty("options"))
+	, addons()
 {
+	BOOST_FOREACH(const config & a, cfg.child_range("addon")) {
+		addons.push_back(addon_version_info(a));
+	}
 }
 
 config mp_game_settings::to_config() const
@@ -124,5 +131,32 @@ config mp_game_settings::to_config() const
 	cfg["savegame"] = saved_game;
 	cfg.add_child("options", options);
 
+	BOOST_FOREACH(const addon_version_info & a, addons) {
+		a.write(cfg.add_child("addon"));
+	}
+
 	return cfg;
+}
+
+mp_game_settings::addon_version_info::addon_version_info(const config & cfg)
+	: id(cfg["id"])
+	, version()
+	, min_version()
+{
+	if (cfg.has_attribute("version") && !cfg["version"].empty()) {
+		version = cfg["version"].str();
+	}
+	if (cfg.has_attribute("min_version") && !cfg["min_version"].empty()) {
+		min_version = cfg["min_version"].str();
+	}
+}
+
+void mp_game_settings::addon_version_info::write(config & cfg) const {
+	cfg["id"] = id;
+	if (version) {
+		cfg["version"] = *version;
+	}
+	if (min_version) {
+		cfg["min_version"] = *min_version;
+	}
 }

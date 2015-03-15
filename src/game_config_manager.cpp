@@ -31,6 +31,7 @@
 #include "terrain_builder.hpp"
 #include "terrain_type_data.hpp"
 #include "unit_types.hpp"
+#include "version.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
@@ -316,6 +317,12 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 	paths_manager_.set_paths(game_config());
 }
 
+struct addon_source {
+	std::string main_cfg;
+	std::string addon_id;
+	version_info version;
+};
+
 void game_config_manager::load_addons_cfg()
 {
 	const std::string user_campaign_dir = filesystem::get_addons_dir();
@@ -323,7 +330,7 @@ void game_config_manager::load_addons_cfg()
 	std::vector<std::string> error_addons;
 	std::vector<std::string> user_dirs;
 	std::vector<std::string> user_files;
-	std::vector<std::string> addons_to_load;
+	std::vector<addon_source> addons_to_load;
 
 	filesystem::get_files_in_dir(user_campaign_dir, &user_files, &user_dirs,
 		filesystem::ENTIRE_FILE_PATH);
@@ -335,86 +342,93 @@ void game_config_manager::load_addons_cfg()
 		const std::string file = uc;
 		const int size_minus_extension = file.size() - 4;
 		if(file.substr(size_minus_extension, file.size()) == ".cfg") {
-			bool ok = true;
-			// Allowing it if the dir doesn't exist,
-			// for the single-file add-on.
-			if(filesystem::file_exists(file.substr(0, size_minus_extension))) {
-				// Unfortunately, we create the dir plus
-				// _info.cfg ourselves on download.
-				std::vector<std::string> dirs, files;
-				filesystem::get_files_in_dir(file.substr(0, size_minus_extension),
-					&files, &dirs);
-				if(dirs.size() > 0) {
-					ok = false;
-				}
-				if(files.size() > 1) {
-					ok = false;
-				}
-				if(files.size() == 1 && files[0] != "_info.cfg") {
-					ok = false;
-				}
-			}
-			if(!ok) {
 				const int userdata_loc = file.find("data/add-ons") + 5;
 				ERR_CONFIG << "error reading usermade add-on '"
 					<< file << "'\n";
 				error_addons.push_back(file);
 				error_log.push_back("The format '~" + file.substr(userdata_loc)
-					+ "' is only for single-file add-ons, use '~"
+					+ "' (for single-file add-ons) is not supported anymore, use '~"
 					+ file.substr(userdata_loc,
 						size_minus_extension - userdata_loc)
 					+ "/_main.cfg' instead.");
-			}
-			else {
-				addons_to_load.push_back(file);
-			}
 		}
 	}
 
+	// Rerun the directory scan using filename only, to get the addon_ids more easily.
+	user_files.clear();
+	user_dirs.clear();
+	filesystem::get_files_in_dir(user_campaign_dir, &user_files, &user_dirs,
+		filesystem::FILE_NAME_ONLY);
+
 	// Append the $user_campaign_dir/*/_main.cfg files to addons_to_load.
 	BOOST_FOREACH(const std::string& uc, user_dirs) {
+		const std::string addon_id = uc;
+		const std::string addon_dir = user_campaign_dir + "/" + uc;
 
-		const std::string info_cfg = uc + "/_info.cfg";
-		if (filesystem::file_exists(info_cfg)) {
+		const std::string main_cfg = addon_dir + "/_main.cfg";
+		const std::string info_cfg = addon_dir + "/_info.cfg";
 
-			config info;
-			cache_.get_config(info_cfg, info);
-			const config info_tag = info.child_or_empty("info");
-			std::string core = info_tag["core"];
-			if (core.empty()) core = "default";
-			if ( !info_tag.empty() && // Don't skip addons which have no [info], they are most likely manually installed.
-					info_tag["type"] != "core" && // Don't skip cores, we want them selectable at all times.
-					core != preferences::core_id() // Don't skip addons matching our current core.
-			)
-				continue; // Skip add-ons not matching our current core.
-		}
+		addon_source addon;
+		addon.main_cfg = main_cfg;
+		addon.addon_id = addon_id;
 
-		const std::string main_cfg = uc + "/_main.cfg";
-		if(filesystem::file_exists(main_cfg)) {
-			addons_to_load.push_back(main_cfg);
+		if (filesystem::file_exists(main_cfg)) {
+			if (filesystem::file_exists(info_cfg)) {
+				config info;
+				cache_.get_config(info_cfg, info);
+				const config info_tag = info.child_or_empty("info");
+				std::string core = info_tag["core"];
+				if (core.empty()) core = "default";
+				if ( !info_tag.empty() && // Don't skip addons which have no [info], they are most likely manually installed.
+						info_tag["type"] != "core" && // Don't skip cores, we want them selectable at all times.
+						core != preferences::core_id() // Don't skip addons matching our current core.
+				) {
+					continue; // Skip add-ons not matching our current core.
+				}
+			}
+
+			// Ask the addon manager to find version info for us (from info, pbl file)
+			addon.version = get_addon_version_info(addon_id);
+			addons_to_load.push_back(addon);
 		}
 	}
 
 	// Load the addons.
-	BOOST_FOREACH(const std::string& uc, addons_to_load) {
-		const std::string toplevel = uc;
+	BOOST_FOREACH(const addon_source & addon, addons_to_load) {
 		try {
+			// Load this addon from the cache, to a config
 			config umc_cfg;
-			cache_.get_config(toplevel, umc_cfg);
+			cache_.get_config(addon.main_cfg, umc_cfg);
+
+			// Annotate "era" and "modification" tags with addon_id info
+			const char * tags_with_addon_id [] = { "era", "modification", NULL };
+
+			for (const char ** type = tags_with_addon_id; *type; type++)
+			{
+				BOOST_FOREACH(config & cfg, umc_cfg.child_range(*type)) {
+					cfg["addon_id"] = addon.addon_id;
+					if (addon.version.good()) {
+						// If the addon string was not "sane" then reject it, we can't compare non-sane version strings.
+						// This may also happen if no version info could be found.
+						cfg["addon_version"] = addon.version.str(); // Note that this may reformat the string in a canonical form.
+					}
+				}
+			}
+
 			game_config_.append(umc_cfg);
 		} catch(config::error& err) {
-			ERR_CONFIG << "error reading usermade add-on '" << uc << "'" << std::endl;
+			ERR_CONFIG << "error reading usermade add-on '" << addon.main_cfg << "'" << std::endl;
 			ERR_CONFIG << err.message << '\n';
-			error_addons.push_back(uc);
+			error_addons.push_back(addon.main_cfg);
 			error_log.push_back(err.message);
 		} catch(preproc_config::error& err) {
-			ERR_CONFIG << "error reading usermade add-on '" << uc << "'" << std::endl;
+			ERR_CONFIG << "error reading usermade add-on '" << addon.main_cfg << "'" << std::endl;
 			ERR_CONFIG << err.message << '\n';
-			error_addons.push_back(uc);
+			error_addons.push_back(addon.main_cfg);
 			error_log.push_back(err.message);
 		} catch(filesystem::io_exception&) {
-			ERR_CONFIG << "error reading usermade add-on '" << uc << "'" << std::endl;
-			error_addons.push_back(uc);
+			ERR_CONFIG << "error reading usermade add-on '" << addon.main_cfg << "'" << std::endl;
+			error_addons.push_back(addon.main_cfg);
 		}
 	}
 	if(error_addons.empty() == false) {

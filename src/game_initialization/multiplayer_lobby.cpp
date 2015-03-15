@@ -18,6 +18,7 @@
 
 #include "global.hpp"
 
+#include "addon/manager_ui.hpp"
 #include "construct_dialog.hpp"
 #include "filesystem.hpp"
 #include "game_preferences.hpp"
@@ -28,6 +29,9 @@
 #include "multiplayer_lobby.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/old_markup.hpp"
+#include "gui/dialogs/message.hpp" // for gui2::show_message
+#include "gui/widgets/window.hpp" // for gui2::twindow::OK
+#include "lobby_reload_request_exception.hpp"
 #include "log.hpp"
 #include "playmp_controller.hpp"
 #include "sound.hpp"
@@ -42,6 +46,12 @@
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
+
+static lg::log_domain log_lobby("mp/lobby");
+#define ERR_MP LOG_STREAM(err, log_lobby)
+#define WRN_MP LOG_STREAM(warn, log_lobby)
+#define LOG_MP LOG_STREAM(info, log_lobby)
+#define DBG_MP LOG_STREAM(debug, log_lobby)
 
 namespace {
 std::vector<std::string> empty_string_vector;
@@ -172,6 +182,16 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	if(!game.have_all_mods && font_color != font::BAD_COLOR) {
 		font_color = font::DISABLED_COLOR;
 	}
+	if(game.addons_outcome != SATISFIED) {
+		font_color = font::DISABLED_COLOR;
+		if (game.addons_outcome == NEED_DOWNLOAD) {
+			no_era_string += _(" (Need to download addons)");
+		} else {
+			no_era_string += _(" (Outdated addons)");
+		}
+	} /*else {
+		no_era_string += _(" (You have this addon)");
+	}*/
 
 	const surface status_text(font::get_rendered_text(game.status,
 	    font::SIZE_NORMAL, font_color, TTF_STYLE_BOLD));
@@ -435,6 +455,104 @@ void gamebrowser::handle_event(const SDL_Event& event)
 	}
 }
 
+// Determine if this is a campaign or scenario and add info string to this game item.
+void gamebrowser::populate_game_item_campaign_or_scenario_info(gamebrowser::game_item & item, const config & game, const config & game_config, bool & verified)
+{
+	if (game["mp_campaign"].empty()) {
+		if (!game["mp_scenario"].empty()) {
+			// Check if it's a multiplayer scenario.
+			const config* level_cfg = &game_config.find_child("multiplayer",
+				"id", game["mp_scenario"]);
+			if (!*level_cfg) {
+				// Check if it's a user map.
+				level_cfg = &game_config.find_child("generic_multiplayer",
+					"id", game["mp_scenario"]);
+			}
+			if (*level_cfg) {
+				item.map_info = _("Scenario:");
+				item.map_info += " ";
+				item.map_info += (*level_cfg)["name"].str();
+				// Reloaded games do not match the original scenario hash,
+				// so it makes no sense to test them,
+				// they always would appear as remote scenarios.
+				if (map_hashes_ && !item.reloaded) {
+					std::string hash = game["hash"];
+					bool hash_found = false;
+					BOOST_FOREACH(const config::attribute& i,
+						map_hashes_.attribute_range()) {
+
+						if (i.first == game["mp_scenario"] &&
+							i.second == hash) {
+
+							hash_found = true;
+							break;
+						}
+					}
+					if (!hash_found) {
+						item.map_info += " — ";
+						item.map_info += _("Remote scenario");
+						verified = false;
+					}
+				}
+			} else {
+				utils::string_map symbols;
+				symbols["scenario_id"] = game["mp_scenario"];
+				item.map_info =
+					vgettext("Unknown scenario: $scenario_id", symbols);
+				verified = false;
+			}
+		} else {
+			item.map_info = _("Unknown scenario");
+			verified = false;
+		}
+	} else { // Is a campaign
+		const config* level_cfg = &game_config.find_child("campaign", "id",
+			game["mp_campaign"]);
+		if (*level_cfg) {
+			item.map_info = _("Campaign:");
+			item.map_info += " ";
+			item.map_info += (*level_cfg)["name"].str();
+			item.map_info += " — ";
+			item.map_info += game["mp_scenario_name"].str();
+
+			// Difficulty.
+			const std::vector<std::string> difficulties =
+				utils::split((*level_cfg)["difficulties"]);
+			const std::string difficulty_descriptions =
+				(*level_cfg)["difficulty_descriptions"];
+			std::vector<std::string> difficulty_options =
+				utils::split(difficulty_descriptions, ';');
+			int index = 0;
+			//TODO: use difficulties instead of difficulty_descriptions if
+			//difficulty_descriptions is not available
+			assert(difficulties.size() == difficulty_options.size());
+			BOOST_FOREACH(const std::string& difficulty, difficulties) {
+				if (difficulty == game["difficulty_define"]) {
+					gui2::tlegacy_menu_item menu_item(difficulty_options[index]);
+					item.map_info += " — ";
+					item.map_info += menu_item.label();
+					item.map_info += " ";
+					item.map_info += menu_item.description();
+
+					break;
+				}
+				index++;
+			}
+
+		} else {
+			utils::string_map symbols;
+			symbols["campaign_id"] = game["mp_campaign"];
+			item.map_info =
+				vgettext("Unknown campaign: $campaign_id", symbols);
+			verified = false;
+
+			if (game["require_scenario"].to_bool(false)) {
+				item.have_scenario = false;
+			}
+		}
+	}
+}
+
 struct minimap_cache_item {
 
 	minimap_cache_item() :
@@ -449,14 +567,9 @@ struct minimap_cache_item {
 	std::string map_info_size;
 };
 
-void gamebrowser::set_game_items(const config& cfg, const config& game_config)
+// Handle the minimap data. Some caching is taking place to avoid repeatedly rendering the minimaps.
+void gamebrowser::populate_game_item_map_info(gamebrowser::game_item & item, const config & game, const config & game_config, bool & verified)
 {
-	const bool scrolled_to_max = (has_scrollbar() && get_position() == get_max_position());
-	const bool selection_visible = (selected_ >= visible_range_.first && selected_ <= visible_range_.second);
-	const std::string selected_game = (selected_ < games_.size()) ? games_[selected_].id : "";
-
-	item_height_ = 100;
-
 	// Don't throw the rendered minimaps away
 	std::vector<minimap_cache_item> minimap_cache;
 	for(std::vector<game_item>::iterator oldgame = games_.begin(); oldgame != games_.end(); ++oldgame) {
@@ -467,252 +580,272 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		minimap_cache.push_back(item);
 	}
 
+	item.map_data = game["map_data"].str();
+	if(item.map_data.empty()) {
+		item.map_data = filesystem::read_map(game["map"]);
+	}
+	if(! item.map_data.empty()) {
+		try {
+			std::vector<minimap_cache_item>::iterator i;
+			bool found = false;
+			for(i = minimap_cache.begin(); i != minimap_cache.end() && !found; ++i) {
+				if (i->map_data == item.map_data) {
+					found = true;
+					item.map_info_size = i->map_info_size;
+					item.mini_map = i->mini_map;
+				}
+			}
+			if (!found) {
+				// Parsing the map and generating the minimap are both cpu expensive
+				gamemap map(boost::make_shared<terrain_type_data>(game_config), item.map_data);
+				item.mini_map = image::getMinimap(minimap_size_, minimap_size_, map, 0);
+				item.map_info_size = str_cast(map.w()) + utils::unicode_multiplication_sign
+					+ str_cast(map.h());
+			}
+		} catch (incorrect_map_format_error &e) {
+			ERR_CF << "illegal map: " << e.message << '\n';
+			verified = false;
+		} catch(twml_exception& e) {
+			ERR_CF <<  "map could not be loaded: " << e.dev_message << '\n';
+			verified = false;
+		}
+	}
+}
+
+// local_item is either an [era] or [modification] tag, something with addon_version and addon_id.
+// (These are currently added at add-on loading time in the game_config_manager.)
+// It is checked whether the local item's add-on version is required for this game, and if the
+// versions are compatible. If it's not, a record is made in the req_list passed as argument.
+static mp::ADDON_REQ check_addon_version_compatibility (const config & local_item, const config & game, std::vector<required_addon> & req_list)
+{
+	if (local_item.has_attribute("addon_id") && local_item.has_attribute("addon_version")) {
+		if (const config & game_req = game.find_child("addon", "id", local_item["addon_id"])) {
+			// Record object which we will potentially store for this check
+			required_addon r;
+			r.addon_id = local_item["addon_id"].str();
+
+			const version_info local_ver(local_item["addon_version"].str());
+			version_info local_min_ver(local_item.has_attribute("addon_min_version") ? local_item["addon_min_version"] : local_item["addon_version"]);
+			// If UMC didn't specify last compatible version, assume no backwards compatibility.
+			if (local_min_ver > local_ver) {
+				// Some sanity checking regarding min version. If the min ver doens't make sense, ignore it.
+				local_min_ver = local_ver;
+			}
+
+			const version_info remote_ver(game_req["version"].str());
+			version_info remote_min_ver(game_req.has_attribute("min_version") ? game_req["min_version"] : game_req["version"]);
+			if (remote_min_ver > remote_ver) {
+				remote_min_ver = remote_ver;
+			}
+
+			// Check if the host is too out of date to play.
+			if (local_min_ver > remote_ver) {
+				r.outcome = CANNOT_SATISFY;
+
+				utils::string_map symbols;
+				symbols["addon"] = r.addon_id; // TODO: Figure out how to ask the add-on manager for the user-friendly name of this add-on.
+				symbols["host_ver"] = remote_ver.str();
+				symbols["local_ver"] = local_ver.str();
+				r.message = vgettext("Host's version of $addon is too old: host's version $host_ver < your version $local_ver.", symbols);
+				req_list.push_back(r);
+				return r.outcome;
+			}
+
+			// Check if our version is too out of date to play.
+			if (remote_min_ver > local_ver) {
+				r.outcome = NEED_DOWNLOAD;
+
+				utils::string_map symbols;
+				symbols["addon"] = r.addon_id; // TODO: Figure out how to ask the add-on manager for the user-friendly name of this add-on.
+				symbols["host_ver"] = remote_ver.str();
+				symbols["local_ver"] = local_ver.str();
+				r.message = vgettext("Your version of $addon is out of date: host's version $host_ver > your version $local_ver.", symbols);
+				req_list.push_back(r);
+				return r.outcome;
+			}
+		}
+	}
+	return SATISFIED;
+}
+
+// Check the era of the game, whether it is available, and compatible with installed content, and add info strings to this game_item.
+void gamebrowser::populate_game_item_era_info(gamebrowser::game_item & item, const config & game, const config & game_config, bool & verified) {
+	if (!game["mp_era"].empty())
+	{
+		const config &era_cfg = game_config.find_child("era", "id", game["mp_era"]);
+		utils::string_map symbols;
+		symbols["era_id"] = game["mp_era"];
+		if (era_cfg) {
+			item.era_and_mod_info = _("Era:");
+			item.era_and_mod_info += " ";
+			item.era_and_mod_info += era_cfg["name"].str();
+
+			mp::ADDON_REQ result = check_addon_version_compatibility(era_cfg, game, item.addons);
+			item.addons_outcome = std::max(item.addons_outcome, result); //elevate to most severe error level encountered so far
+		} else {
+			if (!game["require_era"].to_bool(true)) {
+				item.have_era = true;
+			} else {
+				item.have_era = false;
+			}
+			item.era_and_mod_info = vgettext("Unknown era: $era_id", symbols);
+			verified = false;
+		}
+	} else {
+		item.era_and_mod_info = _("Unknown era");
+		verified = false;
+	}
+}
+
+// Check the mods applied to the game, whether they are available / required, and compatible with installed content, and add info strings to this game_item.
+void gamebrowser::populate_game_item_mod_info(gamebrowser::game_item & item, const config & game, const config & game_config, bool & verified) {
+	(void) verified;
+	if (!game.child_or_empty("modification").empty()) {
+		item.have_all_mods = true;
+		item.era_and_mod_info += " — ";
+		item.era_and_mod_info += _("Modifications:");
+		item.era_and_mod_info += " ";
+
+		BOOST_FOREACH (const config& m, game.child_range("modification")) {
+			const config& mod_cfg = game_config.find_child("modification", "id", m["id"]);
+			if (mod_cfg) {
+				item.era_and_mod_info += mod_cfg["name"].str();
+				item.era_and_mod_info += ", ";
+
+				mp::ADDON_REQ result = check_addon_version_compatibility(mod_cfg, game, item.addons);
+				item.addons_outcome = std::max(item.addons_outcome, result); //elevate to most severe error level encountered so far
+			} else {
+				item.era_and_mod_info += m["id"].str();
+				if (m["require_modification"].to_bool(false)) {
+					item.have_all_mods = false;
+					item.era_and_mod_info += _(" (missing)");
+				}
+				item.era_and_mod_info += ", ";
+			}
+		}
+		item.era_and_mod_info.erase(item.era_and_mod_info.size()-2, 2);
+	} else {
+		item.have_all_mods = true;
+	}
+}
+
+// Do this before populating eras and mods, to get reports of missing add-ons in the most sensible order.
+void gamebrowser::populate_game_item_addons_installed(gamebrowser::game_item & item, const config & game, const std::vector<std::string> & installed_addons)
+{
+	BOOST_FOREACH(const config & addon, game.child_range("addon")) {
+		if (addon.has_attribute("id")) {
+			if (std::find(installed_addons.begin(), installed_addons.end(), addon["id"].str()) == installed_addons.end()) {
+				required_addon r;
+				r.addon_id = addon["id"].str();
+				r.outcome = NEED_DOWNLOAD;
+
+				utils::string_map symbols;
+				symbols["id"] = addon["id"].str();
+				r.message = vgettext("Missing addon: $id", symbols);
+				item.addons.push_back(r);
+				if (item.addons_outcome == SATISFIED) {
+					item.addons_outcome = NEED_DOWNLOAD;
+				}
+			}
+		}
+	}
+}
+
+// Build an appropriate game_item corresponding to this game (config) which we retrieved from [gamelist] from the server.
+void gamebrowser::populate_game_item(gamebrowser::game_item & item, const config & game, const config & game_config, const std::vector<std::string> & installed_addons)
+{
+	bool verified = true;
+	item.password_required = game["password"].to_bool();
+	item.reloaded = game["savegame"].to_bool();
+	item.have_era = true;
+	item.have_scenario = true;
+
+	populate_game_item_addons_installed(item, game, installed_addons);
+	populate_game_item_campaign_or_scenario_info(item, game, game_config, verified);
+	populate_game_item_map_info(item, game, game_config, verified);
+	populate_game_item_era_info(item, game, game_config, verified);
+	populate_game_item_mod_info(item, game, game_config, verified);
+
+	if (item.reloaded) {
+		item.map_info += " — ";
+		item.map_info += _("Reloaded game");
+		verified = false;
+	}
+	item.id = game["id"].str();
+	item.name = game["name"].str();
+	std::string turn = game["turn"];
+	std::string slots = game["slots"];
+	item.vacant_slots = lexical_cast_default<size_t>(slots, 0);
+	item.current_turn = 0;
+	if (!turn.empty()) {
+		item.started = true;
+		int index = turn.find_first_of('/');
+		if (index > -1){
+			const std::string current_turn = turn.substr(0, index);
+			item.current_turn = lexical_cast<unsigned int>(current_turn);
+		}
+		item.status = _("Turn ") + turn;
+	} else {
+		item.started = false;
+		if (item.vacant_slots > 0) {
+			item.status = std::string(_n("Vacant Slot:", "Vacant Slots:",
+					item.vacant_slots)) + " " + slots;
+			if (item.password_required) {
+				item.status += std::string(" (") + std::string(_("Password Required")) + ")";
+			}
+		}
+	}
+
+	item.use_map_settings = game["mp_use_map_settings"].to_bool();
+	item.gold = game["mp_village_gold"].str();
+	if (game["mp_fog"].to_bool()) {
+		item.vision = _("Fog");
+		item.fog = true;
+		if (game["mp_shroud"].to_bool()) {
+			item.vision += "/";
+			item.vision += _("Shroud");
+			item.shroud = true;
+		} else {
+			item.shroud = false;
+		}
+	} else if (game["mp_shroud"].to_bool()) {
+		item.vision = _("Shroud");
+		item.fog = false;
+		item.shroud = true;
+	} else {
+		item.vision = _("none");
+		item.fog = false;
+		item.shroud = false;
+	}
+	if (game["mp_countdown"].to_bool()) {
+		item.time_limit = game["mp_countdown_init_time"].str() + " / +"
+			+ game["mp_countdown_turn_bonus"].str() + " "
+			+ game["mp_countdown_action_bonus"].str();
+	} else {
+		item.time_limit = "";
+	}
+	item.xp = game["experience_modifier"].str() + "%";
+	item.observers = game["observer"].to_bool(true);
+	item.shuffle_sides = game["shuffle_sides"].to_bool(true);
+	item.verified = verified;
+}
+
+void gamebrowser::set_game_items(const config& cfg, const config& game_config, const std::vector<std::string> & installed_addons)
+{
+	//DBG_MP << "** gamelist **\n" << cfg.debug() << "****\n";
+
+	const bool scrolled_to_max = (has_scrollbar() && get_position() == get_max_position());
+	const bool selection_visible = (selected_ >= visible_range_.first && selected_ <= visible_range_.second);
+	const std::string selected_game = (selected_ < games_.size()) ? games_[selected_].id : "";
+
+	item_height_ = 100;
+
 	games_.clear();
 
 	BOOST_FOREACH(const config &game, cfg.child("gamelist").child_range("game"))
 	{
-		bool verified = true;
 		games_.push_back(game_item());
-		games_.back().password_required = game["password"].to_bool();
-		games_.back().reloaded = game["savegame"].to_bool();
-		games_.back().have_era = true;
-		games_.back().have_scenario = true;
-		if (game["mp_campaign"].empty()) {
-			if (!game["mp_scenario"].empty()) {
-				// Check if it's a multiplayer scenario.
-				const config* level_cfg = &game_config.find_child("multiplayer",
-					"id", game["mp_scenario"]);
-				if (!*level_cfg) {
-					// Check if it's a user map.
-					level_cfg = &game_config.find_child("generic_multiplayer",
-						"id", game["mp_scenario"]);
-				}
-				if (*level_cfg) {
-					games_.back().map_info = _("Scenario:");
-					games_.back().map_info += " ";
-					games_.back().map_info += (*level_cfg)["name"].str();
-					// Reloaded games do not match the original scenario hash,
-					// so it makes no sense to test them,
-					// they always would appear as remote scenarios.
-					if (map_hashes_ && !games_.back().reloaded) {
-						std::string hash = game["hash"];
-						bool hash_found = false;
-						BOOST_FOREACH(const config::attribute& i,
-							map_hashes_.attribute_range()) {
-
-							if (i.first == game["mp_scenario"] &&
-								i.second == hash) {
-
-								hash_found = true;
-								break;
-							}
-						}
-						if (!hash_found) {
-							games_.back().map_info += " — ";
-							games_.back().map_info += _("Remote scenario");
-							verified = false;
-						}
-					}
-				} else {
-					utils::string_map symbols;
-					symbols["scenario_id"] = game["mp_scenario"];
-					games_.back().map_info =
-						vgettext("Unknown scenario: $scenario_id", symbols);
-					verified = false;
-				}
-			} else {
-				games_.back().map_info = _("Unknown scenario");
-				verified = false;
-			}
-		} else { // Is a campaign
-			const config* level_cfg = &game_config.find_child("campaign", "id",
-				game["mp_campaign"]);
-			if (*level_cfg) {
-				games_.back().map_info = _("Campaign:");
-				games_.back().map_info += " ";
-				games_.back().map_info += (*level_cfg)["name"].str();
-				games_.back().map_info += " — ";
-				games_.back().map_info += game["mp_scenario_name"].str();
-
-				// Difficulty.
-				const std::vector<std::string> difficulties =
-					utils::split((*level_cfg)["difficulties"]);
-				const std::string difficulty_descriptions =
-					(*level_cfg)["difficulty_descriptions"];
-				std::vector<std::string> difficulty_options =
-					utils::split(difficulty_descriptions, ';');
-				int index = 0;
-				//TODO: use difficulties instead of difficulty_descriptions if
-				//difficulty_descriptions is not available
-				assert(difficulties.size() == difficulty_options.size());
-				BOOST_FOREACH(const std::string& difficulty, difficulties) {
-					if (difficulty == game["difficulty_define"]) {
-						gui2::tlegacy_menu_item menu_item(difficulty_options[index]);
-						games_.back().map_info += " — ";
-						games_.back().map_info += menu_item.label();
-						games_.back().map_info += " ";
-						games_.back().map_info += menu_item.description();
-
-						break;
-					}
-					index++;
-				}
-
-			} else {
-				utils::string_map symbols;
-				symbols["campaign_id"] = game["mp_campaign"];
-				games_.back().map_info =
-					vgettext("Unknown campaign: $campaign_id", symbols);
-				verified = false;
-
-				if (game["require_scenario"].to_bool(false)) {
-					games_.back().have_scenario = false;
-				}
-			}
-		}
-		games_.back().map_data = game["map_data"].str();
-		if(games_.back().map_data.empty()) {
-			games_.back().map_data = filesystem::read_map(game["map"]);
-		}
-		if(! games_.back().map_data.empty()) {
-			try {
-				std::vector<minimap_cache_item>::iterator i;
-				bool found = false;
-				for(i = minimap_cache.begin(); i != minimap_cache.end() && !found; ++i) {
-					if (i->map_data == games_.back().map_data) {
-						found = true;
-						games_.back().map_info_size = i->map_info_size;
-						games_.back().mini_map = i->mini_map;
-					}
-				}
-				if (!found) {
-					// Parsing the map and generating the minimap are both cpu expensive
-					gamemap map(boost::make_shared<terrain_type_data>(game_config), games_.back().map_data);
-					games_.back().mini_map = image::getMinimap(minimap_size_, minimap_size_, map, 0);
-					games_.back().map_info_size = str_cast(map.w()) + utils::unicode_multiplication_sign
-						+ str_cast(map.h());
-				}
-			} catch (incorrect_map_format_error &e) {
-				ERR_CF << "illegal map: " << e.message << '\n';
-				verified = false;
-			} catch(twml_exception& e) {
-				ERR_CF <<  "map could not be loaded: " << e.dev_message << '\n';
-				verified = false;
-			}
-		}
-
-		if (!game["mp_era"].empty())
-		{
-			const config &era_cfg = game_config.find_child("era", "id", game["mp_era"]);
-			utils::string_map symbols;
-			symbols["era_id"] = game["mp_era"];
-			if (era_cfg) {
-				games_.back().era_and_mod_info = _("Era:");
-				games_.back().era_and_mod_info += " ";
-				games_.back().era_and_mod_info += era_cfg["name"].str();
-			} else {
-				if (!game["require_era"].to_bool(true)) {
-					games_.back().have_era = true;
-				} else {
-					games_.back().have_era = false;
-				}
-				games_.back().era_and_mod_info = vgettext("Unknown era: $era_id", symbols);
-				verified = false;
-			}
-		} else {
-			games_.back().era_and_mod_info = _("Unknown era");
-			verified = false;
-		}
-
-		if (!game.child_or_empty("modification").empty()) {
-			games_.back().have_all_mods = true;
-			games_.back().era_and_mod_info += " — ";
-			games_.back().era_and_mod_info += _("Modifications:");
-			games_.back().era_and_mod_info += " ";
-
-			BOOST_FOREACH (const config& m, game.child_range("modification")) {
-				const config& mod_cfg = game_config.find_child("modification", "id", m["id"]);
-				if (mod_cfg) {
-					games_.back().era_and_mod_info += mod_cfg["name"].str();
-					games_.back().era_and_mod_info += ", ";
-				} else {
-					games_.back().era_and_mod_info += m["id"].str();
-					if (m["require_modification"].to_bool(false)) {
-						games_.back().have_all_mods = false;
-						games_.back().era_and_mod_info += _(" (missing)");
-					}
-					games_.back().era_and_mod_info += ", ";
-				}
-			}
-			games_.back().era_and_mod_info.erase(games_.back().era_and_mod_info.size()-2, 2);
-		} else {
-			games_.back().have_all_mods = true;
-		}
-
-
-		if (games_.back().reloaded) {
-			games_.back().map_info += " — ";
-			games_.back().map_info += _("Reloaded game");
-			verified = false;
-		}
-		games_.back().id = game["id"].str();
-		games_.back().name = game["name"].str();
-		std::string turn = game["turn"];
-		std::string slots = game["slots"];
-		games_.back().vacant_slots = lexical_cast_default<size_t>(slots, 0);
-		games_.back().current_turn = 0;
-		if (!turn.empty()) {
-			games_.back().started = true;
-			int index = turn.find_first_of('/');
-			if (index > -1){
-				const std::string current_turn = turn.substr(0, index);
-				games_.back().current_turn = lexical_cast<unsigned int>(current_turn);
-			}
-			games_.back().status = _("Turn ") + turn;
-		} else {
-			games_.back().started = false;
-			if (games_.back().vacant_slots > 0) {
-				games_.back().status = std::string(_n("Vacant Slot:", "Vacant Slots:",
-						games_.back().vacant_slots)) + " " + slots;
-				if (games_.back().password_required) {
-					games_.back().status += std::string(" (") + std::string(_("Password Required")) + ")";
-				}
-			}
-		}
-
-		games_.back().use_map_settings = game["mp_use_map_settings"].to_bool();
-		games_.back().gold = game["mp_village_gold"].str();
-		if (game["mp_fog"].to_bool()) {
-			games_.back().vision = _("Fog");
-			games_.back().fog = true;
-			if (game["mp_shroud"].to_bool()) {
-				games_.back().vision += "/";
-				games_.back().vision += _("Shroud");
-				games_.back().shroud = true;
-			} else {
-				games_.back().shroud = false;
-			}
-		} else if (game["mp_shroud"].to_bool()) {
-			games_.back().vision = _("Shroud");
-			games_.back().fog = false;
-			games_.back().shroud = true;
-		} else {
-			games_.back().vision = _("none");
-			games_.back().fog = false;
-			games_.back().shroud = false;
-		}
-		if (game["mp_countdown"].to_bool()) {
-			games_.back().time_limit = game["mp_countdown_init_time"].str() + " / +"
-				+ game["mp_countdown_turn_bonus"].str() + " "
-				+ game["mp_countdown_action_bonus"].str();
-		} else {
-			games_.back().time_limit = "";
-		}
-		games_.back().xp = game["experience_modifier"].str() + "%";
-		games_.back().observers = game["observer"].to_bool(true);
-		games_.back().shuffle_sides = game["shuffle_sides"].to_bool(true);
-		games_.back().verified = verified;
-
+		populate_game_item(games_.back(), game, game_config, installed_addons);
 		// Hack...
 		if(preferences::fi_invert() ? game_matches_filter(games_.back(), cfg) : !game_matches_filter(games_.back(), cfg)) games_.pop_back();
 	}
@@ -857,7 +990,7 @@ bool lobby::lobby_sorter::less(int column, const gui::menu::item& row1, const gu
 	return basic_sorter::less(column,row1,row2);
 }
 
-lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
+lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist, const std::vector<std::string> & installed_addons) :
 	mp::ui(disp, _("Game Lobby"), cfg, c, gamelist),
 
 	game_vacant_slots_(),
@@ -878,7 +1011,8 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 	last_selected_game_(-1), sorter_(gamelist),
 	games_menu_(disp.video(),cfg.child("multiplayer_hashes")),
 	minimaps_(),
-	search_string_(preferences::fi_text())
+	search_string_(preferences::fi_text()),
+	installed_addons_(installed_addons)
 {
 	std::vector<std::string> replay_options_strings_;
 	replay_options_strings_.push_back(_("Normal Replays"));
@@ -1004,7 +1138,7 @@ void lobby::gamelist_updated(bool silent)
 		// No gamelist yet. Do not update anything.
 		return;
 	}
-	games_menu_.set_game_items(gamelist(), game_config());
+	games_menu_.set_game_items(gamelist(), game_config(), installed_addons_);
 	join_game_.enable(games_menu_.selection_is_joinable());
 	observe_game_.enable(games_menu_.selection_is_observable());
 }
@@ -1020,14 +1154,72 @@ void lobby::process_event()
 	process_event_impl(data);
 }
 
+static void handle_addon_requirements_gui(display & disp, const std::vector<required_addon> & reqs, mp::ADDON_REQ addon_outcome)
+{
+	if (addon_outcome == CANNOT_SATISFY) {
+		std::string e_title = _("Incompatible user-made content.");
+		std::string err_msg = _("This game cannot be joined because the host has out-of-date add-ons which are incompatible with your version. You might suggest to them that they update their add-ons.");
+
+		err_msg +="\n\n";
+		err_msg += _("Details:");
+		err_msg += "\n";
+
+		BOOST_FOREACH(const required_addon & a, reqs) {
+			if (a.outcome == CANNOT_SATISFY) {
+				err_msg += a.message;
+				err_msg += "\n";
+			}
+		}
+		gui2::show_message(disp.video(), e_title, err_msg, gui2::tmessage::auto_close);
+	} else if (addon_outcome == NEED_DOWNLOAD) {
+		std::string e_title = _("Missing user-made content.");
+		std::string err_msg = _("This game requires one or more user-made addons to be installed or updated in order to join. Do you want to try to install them?");
+
+		err_msg +="\n\n";
+		err_msg += _("Details:");
+		err_msg += "\n";
+
+		std::vector<std::string> needs_download;
+		BOOST_FOREACH(const required_addon & a, reqs) {
+			if (a.outcome == NEED_DOWNLOAD) {
+				err_msg += a.message;
+				err_msg += "\n";
+
+				needs_download.push_back(a.addon_id);
+			} else if (a.outcome == CANNOT_SATISFY) {
+				assert(false);
+			}
+		}
+		assert(needs_download.size() > 0);
+
+		if (gui2::show_message(disp.video(), e_title, err_msg, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK) {
+			ad_hoc_addon_fetch_session(disp, needs_download);
+			throw lobby_reload_request_exception();
+		}
+	}
+}
+
 // The return value should be true if the gui result was not chnaged
 void lobby::process_event_impl(const process_event_data & data)
 {
 	join_game_.enable(games_menu_.selection_is_joinable());
 	observe_game_.enable(games_menu_.selection_is_observable());
 
+	// check whehter to try to download addons
+	if ((games_menu_.selected() || data.observe || data.join) && games_menu_.selection_needs_addons())
+	{
+		if (const std::vector<required_addon> * reqs = games_menu_.selection_addon_requirements()) {
+			handle_addon_requirements_gui(disp(), *reqs, games_menu_.selection_addon_outcome());
+		} else {
+			gui2::show_error_message(video(), _("Something is wrong with the addon version check database supporting the multiplayer lobby, please report this at bugs.wesnoth.org."));
+		}
+		games_menu_.reset_selection();
+		return ;
+	}
+
 	const bool observe = (data.observe || (games_menu_.selected() && !games_menu_.selection_is_joinable())) && games_menu_.selection_is_observable();
 	const bool join = (data.join || games_menu_.selected()) && games_menu_.selection_is_joinable();
+
 	games_menu_.reset_selection();
 	preferences::set_skip_mp_replay(replay_options_.selected() == 1);
 	preferences::set_blindfold_replay(replay_options_.selected() == 2);

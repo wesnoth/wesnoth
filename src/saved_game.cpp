@@ -36,6 +36,7 @@
 
 #include "saved_game.hpp"
 #include "carryover.hpp"
+#include "config_assign.hpp"
 #include "cursor.hpp"
 #include "log.hpp"
 #include "game_config_manager.hpp"
@@ -221,6 +222,8 @@ private:
 	std::string type_;
 };
 
+// Gets the ids of the mp_era and modifications which were set to be active, then fetches these configs from the game_config and copies their [event] and [lua] to the starting_pos_.
+// At this time, also collect the addon_id attributes which appeared in them and put this list in the addon_ids attribute of the mp_settings.
 void saved_game::expand_mp_events()
 {
 	expand_scenario();
@@ -239,10 +242,45 @@ void saved_game::expand_mp_events()
 			if(const config& cfg = game_config_manager::get()->
 				game_config().find_child(mod.type, "id", mod.id))
 			{
+				// Note the addon_id if this mod is required to play the game in mp
+				std::string require_attr = "require_" + mod.type;
+				if (cfg.has_attribute("addon_id") && !cfg["addon_id"].empty() && cfg[require_attr].to_bool(true)) {
+					config addon_data = config_of("id",cfg["addon_id"])("version", cfg["addon_version"])("min_version", cfg["addon_min_version"]);
+					mp_game_settings::addon_version_info new_data(addon_data);
+
+					bool found = false;
+					BOOST_FOREACH(mp_game_settings::addon_version_info & addon, mp_settings_.addons) {
+						if (addon.id == cfg["addon_id"].str()) {
+							if (found) {
+								ERR_NG << "An mp_settings addons list contains repeated entries, this indicates a bug which may affect add-on versioning. Please report at bugs.wesnoth.org. Relevant add-on: '" << cfg["addon_id"].str() <<"'\n";
+							}
+							found = true;
+							if (new_data.version) {
+								if (!addon.version || (*addon.version != *new_data.version)) {
+									WRN_NG << "Addon version data mismatch -- not all local WML has same version of '" << cfg["addon_id"].str() << "' addon.\n";
+								}
+							}
+							if (addon.version && !new_data.version) {
+								WRN_NG << "Addon version data mismatch -- not all local WML has same version of '" << cfg["addon_id"].str() << "' addon.\n";
+							}
+							if (new_data.min_version) {
+								if (!addon.min_version || (*new_data.min_version > *addon.min_version)) {
+									addon.min_version = *new_data.min_version;
+								}
+							}
+						}
+					}
+					if (!found) {
+						mp_settings_.addons.push_back(new_data);
+					}
+				}
+
+				// Copy events
 				BOOST_FOREACH(const config& modevent, cfg.child_range("event"))
 				{
 					this->starting_pos_.add_child("event", modevent);
 				}
+				// Copy lua
 				BOOST_FOREACH(const config& modlua, cfg.child_range("lua"))
 				{
 					this->starting_pos_.add_child("lua", modlua);

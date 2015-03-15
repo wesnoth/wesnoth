@@ -20,6 +20,7 @@
 #include "multiplayer_ui.hpp"
 #include "game_preferences.hpp"
 #include "image.hpp"
+#include "serialization/string_utils.hpp"
 
 class config;
 class video;
@@ -32,6 +33,15 @@ class game_display;
  * games.
  */
 namespace mp {
+
+enum ADDON_REQ { SATISFIED, NEED_DOWNLOAD, CANNOT_SATISFY };
+
+struct required_addon {
+	std::string addon_id;
+	ADDON_REQ outcome;
+	std::string message;
+};
+
 class gamebrowser : public gui::menu {
 public:
 	struct game_item {
@@ -62,7 +72,9 @@ public:
 			password_required(false),
 			have_scenario(false),
 			have_era(false),
-			have_all_mods(false)
+			have_all_mods(false),
+			addons(),
+			addons_outcome(SATISFIED)
 		{
 		}
 
@@ -92,31 +104,48 @@ public:
 		bool have_scenario;
 		bool have_era;
 		bool have_all_mods;
+		std::vector<required_addon> addons;
+		ADDON_REQ addons_outcome;
 	};
 	gamebrowser(CVideo& video, const config &map_hashes);
 	void scroll(unsigned int pos);
 	void handle_event(const SDL_Event& event);
 	void set_inner_location(const SDL_Rect& rect);
 	void set_item_height(unsigned int height);
-	void set_game_items(const config& cfg, const config& game_config);
+
+	void populate_game_item(game_item &, const config &, const config &, const std::vector<std::string> &);
+	void populate_game_item_campaign_or_scenario_info(game_item &, const config &, const config &, bool &);
+	void populate_game_item_map_info(game_item &, const config &, const config &, bool &);
+	void populate_game_item_era_info(game_item &, const config &, const config &, bool &);
+	void populate_game_item_mod_info(game_item &, const config &, const config &, bool &);
+	void populate_game_item_addons_installed(game_item &, const config &, const std::vector<std::string> &);
+
+	void set_game_items(const config& cfg, const config& game_config, const std::vector<std::string> & installed_addons);
 	void draw();
 	void draw_contents();
 	void draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 	SDL_Rect get_item_rect(size_t index) const;
 	bool empty() const { return games_.empty(); }
 	bool selection_is_joinable() const
-	{ return empty() ? false : (games_[selected_].vacant_slots > 0 &&
-		!games_[selected_].started &&
-		games_[selected_].have_scenario &&
-		games_[selected_].have_era &&
-		games_[selected_].have_all_mods); }
-	// Moderators may observe any game.
+	{ return selection_in_joinable_state() && (!selection_needs_content() || selection_needs_addons()); }
 	bool selection_is_observable() const
-	{ return empty() ? false : (games_[selected_].observers &&
-		games_[selected_].have_scenario &&
-		games_[selected_].have_era &&
-		games_[selected_].have_all_mods) ||
-		preferences::is_authenticated(); }
+	{ return selection_in_observable_state() && (!selection_needs_content() || selection_needs_addons()); }
+	bool selection_needs_content() const
+	{ return empty() ? false : !games_[selected_].have_era ||
+		!games_[selected_].have_all_mods ||
+		!games_[selected_].have_scenario; }
+	bool selection_needs_addons() const
+	{ return empty() ? false : (games_[selected_].addons_outcome != SATISFIED); }
+	bool selection_in_joinable_state() const
+	{ return empty() ? false : (games_[selected_].vacant_slots > 0 && !games_[selected_].started); }
+	// Moderators may observe any game.
+	bool selection_in_observable_state() const
+	{ return empty() ? false : (games_[selected_].observers || preferences::is_authenticated()); }
+
+	ADDON_REQ selection_addon_outcome() const
+	{ return empty() ? SATISFIED : games_[selected_].addons_outcome; }
+	const std::vector<required_addon> * selection_addon_requirements() const
+	{ return empty() ? NULL : &games_[selected_].addons; }
 	bool selected() const { return double_clicked_ && !empty(); }
 	void reset_selection() { double_clicked_ = false; }
 	int selection() const { return selected_; }
@@ -156,7 +185,7 @@ private:
 class lobby : public ui
 {
 public:
-	lobby(game_display& d, const config& cfg, chat& c, config& gamelist);
+	lobby(game_display& d, const config& cfg, chat& c, config& gamelist, const std::vector<std::string> & installed_addons);
 
 	virtual void process_event();
 
@@ -205,6 +234,8 @@ private:
 	std::map<std::string,std::string> minimaps_;
 
 	std::string search_string_;
+
+	const std::vector<std::string> & installed_addons_;
 
 	struct process_event_data {
 		bool join;
