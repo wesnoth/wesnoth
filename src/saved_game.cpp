@@ -249,35 +249,32 @@ void saved_game::expand_mp_events()
 					config addon_data = config_of("id",cfg["addon_id"])("version", cfg["addon_version"])("min_version", cfg["addon_min_version"]);
 					mp_game_settings::addon_version_info new_data(addon_data);
 
-					bool found = false;
-					BOOST_FOREACH(mp_game_settings::addon_version_info & addon, mp_settings_.addons) {
-						if (addon.id == cfg["addon_id"].str()) {
-							if (found) {
-								ERR_NG << "An mp_settings addons list contains repeated entries, this indicates a bug which may affect add-on versioning. Please report at bugs.wesnoth.org. Relevant add-on: '" << cfg["addon_id"].str() <<"'\n";
-							}
-							found = true;
+					// Check if this add-on already has an entry as a dependency for this scenario. If so, try to reconcile their version info,
+					// by taking the larger of the min versions. The version should be the same for all WML from the same add-on...
+					std::map<std::string, mp_game_settings::addon_version_info>::iterator it = mp_settings_.addons.find(cfg["addon_id"].str());
+					if (it != mp_settings_.addons.end()) {
+						mp_game_settings::addon_version_info & addon = it->second;
 
-							try {
-								if (new_data.version) {
-									if (!addon.version || (*addon.version != *new_data.version)) {
-										WRN_NG << "Addon version data mismatch -- not all local WML has same version of '" << cfg["addon_id"].str() << "' addon.\n";
-									}
-								}
-								if (addon.version && !new_data.version) {
+						try {
+							if (new_data.version) {
+								if (!addon.version || (*addon.version != *new_data.version)) {
 									WRN_NG << "Addon version data mismatch -- not all local WML has same version of '" << cfg["addon_id"].str() << "' addon.\n";
 								}
-								if (new_data.min_version) {
-									if (!addon.min_version || (*new_data.min_version > *addon.min_version)) {
-										addon.min_version = *new_data.min_version;
-									}
-								}
-							} catch (version_info::not_sane_exception & e) {
-								WRN_NG << "Caught a version_info not_sane_exception when determining a scenario's add-on dependencies. addon_id = " << cfg["addon_id"].str() << "\n";
 							}
+							if (addon.version && !new_data.version) {
+								WRN_NG << "Addon version data mismatch -- not all local WML has same version of '" << cfg["addon_id"].str() << "' addon.\n";
+							}
+							if (new_data.min_version) {
+								if (!addon.min_version || (*new_data.min_version > *addon.min_version)) {
+									addon.min_version = *new_data.min_version;
+								}
+							}
+						} catch (version_info::not_sane_exception & e) {
+							WRN_NG << "Caught a version_info not_sane_exception when determining a scenario's add-on dependencies. addon_id = " << cfg["addon_id"].str() << "\n";
 						}
-					}
-					if (!found) {
-						mp_settings_.addons.push_back(new_data);
+					} else {
+						// Didn't find this addon-id in the map, so make a new entry.
+						mp_settings_.addons.insert(std::make_pair(cfg["addon_id"].str(), new_data));
 					}
 				}
 

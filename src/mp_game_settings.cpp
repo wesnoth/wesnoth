@@ -93,7 +93,9 @@ mp_game_settings::mp_game_settings(const config& cfg)
 	, addons()
 {
 	BOOST_FOREACH(const config & a, cfg.child_range("addon")) {
-		addons.push_back(addon_version_info(a));
+		if (!a["id"].empty()) {
+			addons.insert(std::make_pair(a["id"].str(), addon_version_info(a)));
+		}
 	}
 }
 
@@ -131,28 +133,29 @@ config mp_game_settings::to_config() const
 	cfg["savegame"] = saved_game;
 	cfg.add_child("options", options);
 
-	BOOST_FOREACH(const addon_version_info & a, addons) {
-		a.write(cfg.add_child("addon"));
+	typedef std::map<std::string,addon_version_info>::value_type ttt;
+	BOOST_FOREACH(const ttt & p, addons) {
+		config & c = cfg.add_child("addon");
+		p.second.write(c);
+		c["id"] = p.first;
 	}
 
 	return cfg;
 }
 
 mp_game_settings::addon_version_info::addon_version_info(const config & cfg)
-	: id(cfg["id"])
-	, version()
+	: version()
 	, min_version()
 {
-	if (cfg.has_attribute("version") && !cfg["version"].empty()) {
+	if (!cfg["version"].empty()) {
 		version = cfg["version"].str();
 	}
-	if (cfg.has_attribute("min_version") && !cfg["min_version"].empty()) {
+	if (!cfg["min_version"].empty()) {
 		min_version = cfg["min_version"].str();
 	}
 }
 
 void mp_game_settings::addon_version_info::write(config & cfg) const {
-	cfg["id"] = id;
 	if (version) {
 		cfg["version"] = *version;
 	}

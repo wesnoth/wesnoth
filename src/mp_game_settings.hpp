@@ -77,7 +77,6 @@ struct mp_game_settings : public savegame::savegame_config
 	config options;
 
 	struct addon_version_info {
-		std::string id;
 		boost::optional<version_info> version;
 		boost::optional<version_info> min_version;
 
@@ -85,7 +84,7 @@ struct mp_game_settings : public savegame::savegame_config
 		void write(config &) const;
 	};
 
-	std::vector<addon_version_info> addons;
+	std::map<std::string, addon_version_info> addons; // the key is the addon_id
 };
 
 MAKE_ENUM_STREAM_OPS2(mp_game_settings, RANDOM_FACTION_MODE)
