@@ -18,10 +18,17 @@
  *  Container for multiplayer game-creation parameters.
  */
 
+#include "log.hpp"
 #include "mp_game_settings.hpp"
 #include "formula_string_utils.hpp"
 
 #include <boost/foreach.hpp>
+
+static lg::log_domain log_engine("engine");
+#define ERR_NG LOG_STREAM(err, log_engine)
+#define WRN_NG LOG_STREAM(warn, log_engine)
+#define LOG_NG LOG_STREAM(info, log_engine)
+#define DBG_NG LOG_STREAM(debug, log_engine)
 
 mp_game_settings::mp_game_settings() :
 	savegame_config(),
@@ -161,5 +168,42 @@ void mp_game_settings::addon_version_info::write(config & cfg) const {
 	}
 	if (min_version) {
 		cfg["min_version"] = *min_version;
+	}
+}
+
+void mp_game_settings::update_addon_requirements(const config & cfg) {
+	if (cfg["id"].empty()) {
+		WRN_NG << "Tried to add add-on metadata to a game, missing mandatory id field... skipping.\n" << cfg.debug() << "\n";
+		return;
+	}
+
+	mp_game_settings::addon_version_info new_data(cfg);
+
+	// Check if this add-on already has an entry as a dependency for this scenario. If so, try to reconcile their version info,
+	// by taking the larger of the min versions. The version should be the same for all WML from the same add-on...
+	std::map<std::string, addon_version_info>::iterator it = addons.find(cfg["id"].str());
+	if (it != addons.end()) {
+		addon_version_info & addon = it->second;
+
+		try {
+			if (new_data.version) {
+				if (!addon.version || (*addon.version != *new_data.version)) {
+					WRN_NG << "Addon version data mismatch -- not all local WML has same version of '" << cfg["id"].str() << "' addon.\n";
+				}
+			}
+			if (addon.version && !new_data.version) {
+				WRN_NG << "Addon version data mismatch -- not all local WML has same version of '" << cfg["id"].str() << "' addon.\n";
+			}
+			if (new_data.min_version) {
+				if (!addon.min_version || (*new_data.min_version > *addon.min_version)) {
+					addon.min_version = *new_data.min_version;
+				}
+			}
+		} catch (version_info::not_sane_exception & e) {
+			WRN_NG << "Caught a version_info not_sane_exception when determining a scenario's add-on dependencies. addon_id = " << cfg["id"].str() << "\n";
+		}
+	} else {
+		// Didn't find this addon-id in the map, so make a new entry.
+		addons.insert(std::make_pair(cfg["id"].str(), new_data));
 	}
 }

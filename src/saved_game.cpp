@@ -246,36 +246,7 @@ void saved_game::expand_mp_events()
 				std::string require_attr = "require_" + mod.type;
 				bool require_default = (mod.type == "era"); // By default, eras have "require_era = true", and mods have "require_modification = false"
 				if (!cfg["addon_id"].empty() && cfg[require_attr].to_bool(require_default)) {
-					config addon_data = config_of("id",cfg["addon_id"])("version", cfg["addon_version"])("min_version", cfg["addon_min_version"]);
-					mp_game_settings::addon_version_info new_data(addon_data);
-
-					// Check if this add-on already has an entry as a dependency for this scenario. If so, try to reconcile their version info,
-					// by taking the larger of the min versions. The version should be the same for all WML from the same add-on...
-					std::map<std::string, mp_game_settings::addon_version_info>::iterator it = mp_settings_.addons.find(cfg["addon_id"].str());
-					if (it != mp_settings_.addons.end()) {
-						mp_game_settings::addon_version_info & addon = it->second;
-
-						try {
-							if (new_data.version) {
-								if (!addon.version || (*addon.version != *new_data.version)) {
-									WRN_NG << "Addon version data mismatch -- not all local WML has same version of '" << cfg["addon_id"].str() << "' addon.\n";
-								}
-							}
-							if (addon.version && !new_data.version) {
-								WRN_NG << "Addon version data mismatch -- not all local WML has same version of '" << cfg["addon_id"].str() << "' addon.\n";
-							}
-							if (new_data.min_version) {
-								if (!addon.min_version || (*new_data.min_version > *addon.min_version)) {
-									addon.min_version = *new_data.min_version;
-								}
-							}
-						} catch (version_info::not_sane_exception & e) {
-							WRN_NG << "Caught a version_info not_sane_exception when determining a scenario's add-on dependencies. addon_id = " << cfg["addon_id"].str() << "\n";
-						}
-					} else {
-						// Didn't find this addon-id in the map, so make a new entry.
-						mp_settings_.addons.insert(std::make_pair(cfg["addon_id"].str(), new_data));
-					}
+					mp_settings_.update_addon_requirements(config_of("id",cfg["addon_id"])("version", cfg["addon_version"])("min_version", cfg["addon_min_version"]));
 				}
 
 				// Copy events

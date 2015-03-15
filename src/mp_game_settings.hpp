@@ -85,6 +85,10 @@ struct mp_game_settings : public savegame::savegame_config
 	};
 
 	std::map<std::string, addon_version_info> addons; // the key is the addon_id
+
+	// Takes a config with addon metadata (id =, version =, min_version =), formatted similarly to how mp_game_settings is written that is,
+	// and adds this as a requirement, updating the min_version if there was already an entry for this addon_id.
+	void update_addon_requirements(const config & addon_cfg);
 };
 
 MAKE_ENUM_STREAM_OPS2(mp_game_settings, RANDOM_FACTION_MODE)
