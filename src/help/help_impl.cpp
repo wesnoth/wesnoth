@@ -436,7 +436,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		text << "\n\n" << _("<header>text='Units with this special attack'</header>") << "\n";
 		std::set<std::string, string_less> &units = special_units[s->first];
 		for (std::set<std::string, string_less>::iterator u = units.begin(); u != units.end(); ++u) {
-			text << (*u) << "\n";
+			text << "• " << (*u) << "\n";
 		}
 
 		topics.push_back( topic(s->first, id, text.str()) );
@@ -502,7 +502,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 		text << "\n\n" << _("<header>text='Units with this ability'</header>") << "\n";
 		std::set<std::string, string_less> &units = ability_units[a->first];
 		for (std::set<std::string, string_less>::iterator u = units.begin(); u != units.end(); ++u) {
-			text << (*u) << "\n";
+			text << "• " << (*u) << "\n";
 		}
 
 		topics.push_back( topic(a->first, id, text.str()) );
@@ -535,11 +535,11 @@ std::vector<topic> generate_era_topics(const bool sort_generated, const std::str
 			text << "\n";
 		}
 
-		text << "<header>text='" << _("Factions:") << "'</header>" << "\n";
+		text << "<header>text='" << _("Factions") << "'</header>" << "\n";
 
 		std::sort(faction_links.begin(), faction_links.end());
 		BOOST_FOREACH(const std::string &link, faction_links) {
-			text << link << "\n";
+			text << "• " << link << "\n";
 		}
 
 		topic era_topic(era["name"], ".." + era_prefix + era["id"].str(), text.str());
@@ -600,20 +600,20 @@ std::vector<topic> generate_faction_topics(const config & era, const bool sort_g
 			text << "\n\n";
 		}
 
-		text << "<header>text='" << _("Leaders:") << "'</header>" << "\n";
+		text << "<header>text='" << _("Leaders") << "'</header>" << "\n";
 		const std::vector<std::string> leaders =
 				make_unit_links_list( utils::split(f["leader"]), true );
 		BOOST_FOREACH(const std::string &link, leaders) {
-			text << link << "\n";
+			text << "• " << link << "\n";
 		}
 
 		text << "\n";
 
-		text << "<header>text='" << _("Recruits:") << "'</header>" << "\n";
+		text << "<header>text='" << _("Recruits") << "'</header>" << "\n";
 		const std::vector<std::string> recruit_links =
 				make_unit_links_list( recruit_ids, true );
 		BOOST_FOREACH(const std::string &link, recruit_links) {
-			text << link << "\n";
+			text << "• " << link << "\n";
 		}
 
 		const std::string name = f["name"];
@@ -890,7 +890,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 
 	text << _("<header>text='Units of this race'</header>") << "\n";
 	for (std::set<std::string, string_less>::iterator u = race_units.begin(); u != race_units.end(); ++u) {
-		text << (*u) << "\n";
+		text << "• " << (*u) << "\n";
 	}
 
 	topics.push_back(topic(race_name, race_id, text.str()) );
@@ -958,7 +958,7 @@ std::string generate_contents_links(const std::string& section_name, config cons
 		std::vector<link>::iterator l;
 		for (l = topics_links.begin(); l != topics_links.end(); ++l) {
 			std::string link = make_link(l->first, l->second);
-			res << link << "\n";
+			res << "• " << link << "\n";
 		}
 
 		return res.str();
@@ -980,7 +980,7 @@ std::string generate_contents_links(const section &sec, const std::vector<topic>
 		for (t = topics.begin(); t != topics.end(); ++t) {
 			if (is_visible_id(t->id)) {
 				std::string link = make_link(t->title, t->id);
-				res << link << "\n";
+				res << "• " << link << "\n";
 			}
 		}
 		return res.str();
