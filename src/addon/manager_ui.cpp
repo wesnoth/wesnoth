@@ -1227,10 +1227,17 @@ bool ad_hoc_addon_fetch_session(display & disp, const std::vector<std::string> &
 
 		bool return_value = true;
 		BOOST_FOREACH(const std::string & addon_id, addon_ids) {
-			const addon_info& addon = addon_at(addon_id, addons);
-
-			ADDON_OP_RESULT res = try_fetch_addon_with_checks(disp, client, addons, addon);
-			return_value = return_value && (res.outcome_ == SUCCESS);
+			addons_list::const_iterator it = addons.find(addon_id);
+			if(it != addons.end()) {
+				const addon_info& addon = it->second;
+				ADDON_OP_RESULT res = try_fetch_addon_with_checks(disp, client, addons, addon);
+				return_value = return_value && (res.outcome_ == SUCCESS);
+			} else {
+				utils::string_map symbols;
+				symbols["addon_id"] = addon_id;
+				gui2::show_error_message(disp.video(), vgettext("Could not find an add-on matching id $addon_id on the add-on server.", symbols));
+				return_value = false;
+			}
 		}
 
 		return return_value;
