@@ -53,11 +53,11 @@ help_browser::help_browser(display &disp, const section &toplevel) :
 
 void help_browser::adjust_layout()
 {
-  const int menu_buttons_padding = font::relative_size(10);
+	const int menu_buttons_padding = font::relative_size(10);
 	const int menu_y = location().y;
 	const int menu_x = location().x;
 	const int menu_w = 250;
-	const int menu_h = height() - back_button_.height() - menu_buttons_padding;
+	const int menu_h = height();
 
 	const int menu_text_area_padding = font::relative_size(10);
 	const int text_area_y = location().y;
