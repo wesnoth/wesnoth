@@ -170,6 +170,11 @@ Version 1.13.0-dev:
      (bug #23015).
    * Fixed missing scenario title in lobby for reloaded MP campaigns.
    * Added "no mirror" and "no ally mirror" options to the MP configure screen.
+   * Multiplayer content [era], [modifications] now carry version info of their
+     associated add-on, and may have "addon_min_version" fields set which
+     specify backwards compatibility with earlier versions.
+   * Missing content for games hosted in the mp server may now be retrieved
+     automatically by clicking on these games in the mp lobby.
  * Music:
    * Change main menu track to Transience.
  * Replays:
