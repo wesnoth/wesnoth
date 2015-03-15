@@ -244,7 +244,8 @@ void saved_game::expand_mp_events()
 			{
 				// Note the addon_id if this mod is required to play the game in mp
 				std::string require_attr = "require_" + mod.type;
-				if (cfg.has_attribute("addon_id") && !cfg["addon_id"].empty() && cfg[require_attr].to_bool(true)) {
+				bool require_default = (mod.type == "era"); // By default, eras have "require_era = true", and mods have "require_modification = false"
+				if (!cfg["addon_id"].empty() && cfg[require_attr].to_bool(require_default)) {
 					config addon_data = config_of("id",cfg["addon_id"])("version", cfg["addon_version"])("min_version", cfg["addon_min_version"]);
 					mp_game_settings::addon_version_info new_data(addon_data);
 
