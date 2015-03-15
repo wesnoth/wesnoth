@@ -85,7 +85,7 @@ const std::string closed_section_img = "help/closed_section.png";
 const std::string open_section_img = "help/open_section.png";
 const std::string indentation_img = "help/indentation.png";
 // The topic to open by default when opening the help dialog.
-const std::string default_show_topic = "introduction_topic";
+const std::string default_show_topic = "..introduction";
 const std::string unknown_unit_topic = ".unknown_unit";
 const std::string unit_prefix = "unit_";
 const std::string terrain_prefix = "terrain_";
