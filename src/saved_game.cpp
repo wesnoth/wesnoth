@@ -256,18 +256,23 @@ void saved_game::expand_mp_events()
 								ERR_NG << "An mp_settings addons list contains repeated entries, this indicates a bug which may affect add-on versioning. Please report at bugs.wesnoth.org. Relevant add-on: '" << cfg["addon_id"].str() <<"'\n";
 							}
 							found = true;
-							if (new_data.version) {
-								if (!addon.version || (*addon.version != *new_data.version)) {
+
+							try {
+								if (new_data.version) {
+									if (!addon.version || (*addon.version != *new_data.version)) {
+										WRN_NG << "Addon version data mismatch -- not all local WML has same version of '" << cfg["addon_id"].str() << "' addon.\n";
+									}
+								}
+								if (addon.version && !new_data.version) {
 									WRN_NG << "Addon version data mismatch -- not all local WML has same version of '" << cfg["addon_id"].str() << "' addon.\n";
 								}
-							}
-							if (addon.version && !new_data.version) {
-								WRN_NG << "Addon version data mismatch -- not all local WML has same version of '" << cfg["addon_id"].str() << "' addon.\n";
-							}
-							if (new_data.min_version) {
-								if (!addon.min_version || (*new_data.min_version > *addon.min_version)) {
-									addon.min_version = *new_data.min_version;
+								if (new_data.min_version) {
+									if (!addon.min_version || (*new_data.min_version > *addon.min_version)) {
+										addon.min_version = *new_data.min_version;
+									}
 								}
+							} catch (version_info::not_sane_exception & e) {
+								WRN_NG << "Caught a version_info not_sane_exception when determining a scenario's add-on dependencies. addon_id = " << cfg["addon_id"].str() << "\n";
 							}
 						}
 					}
