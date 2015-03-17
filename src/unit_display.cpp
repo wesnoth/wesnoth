@@ -514,6 +514,8 @@ void unit_draw_weapon(const map_location& loc, unit& attacker,
 		return;
 	}
 	unit_animator animator;
+	attacker.set_facing(loc.get_relative_dir(defender_loc));
+	defender->set_facing(defender_loc.get_relative_dir(loc));
 	animator.add_animation(&attacker,"draw_weapon",loc,defender_loc,0,false,"",0,unit_animation::HIT,attack,secondary_attack,0);
 	animator.add_animation(defender,"draw_weapon",defender_loc,loc,0,false,"",0,unit_animation::MISS,secondary_attack,attack,0);
 	animator.start_animations();
