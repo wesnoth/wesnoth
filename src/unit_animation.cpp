@@ -757,8 +757,8 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		}
 	}
 
-	add_simple_anim(animations, cfg, "draw_weapon_anim", "draw_wepaon", display::LAYER_UNIT_MOVE_DEFAULT);
-	add_simple_anim(animations, cfg, "sheath_weapon_anim", "sheath_wepaon", display::LAYER_UNIT_MOVE_DEFAULT);
+	add_simple_anim(animations, cfg, "draw_weapon_anim", "draw_weapon", display::LAYER_UNIT_MOVE_DEFAULT);
+	add_simple_anim(animations, cfg, "sheath_weapon_anim", "sheath_weapon", display::LAYER_UNIT_MOVE_DEFAULT);
 
 	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "attack_anim"))
 	{
