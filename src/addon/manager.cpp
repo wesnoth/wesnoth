@@ -279,6 +279,8 @@ static std::pair<std::vector<std::string>, std::vector<std::string> > read_ignor
 	while (std::getline(*stream, line)) {
 		utils::strip(line);
 		const size_t l = line.size();
+		// .gitignore & WML like comments
+		if (l == 0 || !line.compare(0,2,"# ")) continue;
 		if (line[l - 1] == '/') { // directory; we strip the last /
 			patterns.second.push_back(line.substr(0, l - 1));
 		} else { // file
