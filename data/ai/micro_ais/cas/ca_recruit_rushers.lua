@@ -1,5 +1,6 @@
 local internal_recruit_cas = {}
 local internal_params = {}
+local ai
 
 -- The following external engine creates the CA functions recruit_rushers_eval and recruit_rushers_exec
 -- It also exposes find_best_recruit and find_best_recruit_hex for use by other recruit engines
