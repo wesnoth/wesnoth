@@ -155,10 +155,7 @@ void game_state::init(const int ticks, play_controller & pc)
 	{
 		if (first_human_team_ == -1) {
 			const std::string &controller = side["controller"];
-			if (controller == "human" &&
-			    side["id"] == preferences::login()) {
-				first_human_team_ = team_num;
-			} else if (controller == "human") {
+			if (controller == "human") {
 				first_human_team_ = team_num;
 			}
 		}
