@@ -261,8 +261,10 @@ class Parser:
         self.preprocessed = output + "/" + os.path.basename(self.path) +\
             ".plain"
         if not os.path.exists(self.preprocessed):
+            first_line = open(self.path).readline().strip()
             raise WMLError(self, "Preprocessor error:\n" +
                 " ".join(commandline) + "\n" +
+                "First line: " + first_line + "\n" +
                 out +
                 err)
 
