@@ -483,7 +483,6 @@ void gamebrowser::populate_game_item_campaign_or_scenario_info(gamebrowser::game
 
 						if (i.first == game["mp_scenario"] &&
 							i.second == hash) {
-						
 							hash_found = true;
 							break;
 						}
