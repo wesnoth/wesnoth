@@ -796,15 +796,16 @@ bool team::shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 	return cleared;
 }
 
-const color_range team::get_side_color_range(int side){
-  std::string index = get_side_color_index(side);
-  std::map<std::string, color_range>::iterator gp=game_config::team_rgb_range.find(index);
+const color_range team::get_side_color_range(int side)
+{
+	std::string index = get_side_color_index(side);
+	std::map<std::string, color_range>::iterator gp=game_config::team_rgb_range.find(index);
 
-  if(gp != game_config::team_rgb_range.end()){
-    return(gp->second);
-  }
+	if(gp != game_config::team_rgb_range.end()){
+		return(gp->second);
+	}
 
-  return(color_range(0x00FF0000,0x00FFFFFF,0x00000000,0x00FF0000));
+	return(color_range(0x00FF0000,0x00FFFFFF,0x00000000,0x00FF0000));
 }
 
 SDL_Color team::get_side_color(int side)

@@ -1291,7 +1291,7 @@ std::string describe_versions()
 	ss << "Compiled with SDL_image version: "
 	<< static_cast<int> (compile_version.major) << "."
 	<< static_cast<int> (compile_version.minor) << "."
-        << static_cast<int> (compile_version.patch) << " \n";
+	<< static_cast<int> (compile_version.patch) << " \n";
 #endif
 
 #ifdef Image_Linked_Version
@@ -1299,7 +1299,7 @@ std::string describe_versions()
 	ss << "Running with SDL_image version: "
 	<< static_cast<int> (link_version->major) << "."
 	<< static_cast<int> (link_version->minor) << "."
-        << static_cast<int> (link_version->patch) << " .\n";
+	<< static_cast<int> (link_version->patch) << " .\n";
 #endif
 
 	return ss.str();

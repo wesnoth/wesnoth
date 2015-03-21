@@ -136,9 +136,9 @@ void status_table(display& gui, int selected)
 			str << utils::half_signed_value(data.gold) << COLUMN_SEPARATOR;
 		}
 		str << data.villages;
-                if(!(viewing_team.uses_fog() || viewing_team.uses_shroud())) {
-                        str << "/" << map.villages().size();
-                }
+		if(!(viewing_team.uses_fog() || viewing_team.uses_shroud())) {
+			str << "/" << map.villages().size();
+		}
 		str << COLUMN_SEPARATOR
 			<< data.units << COLUMN_SEPARATOR << data.upkeep << COLUMN_SEPARATOR
 			<< (data.net_income < 0 ? font::BAD_TEXT : font::NULL_MARKUP) << utils::signed_value(data.net_income);

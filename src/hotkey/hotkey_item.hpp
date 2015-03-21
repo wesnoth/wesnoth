@@ -27,7 +27,7 @@ public:
 
 	explicit hotkey_item(const std::string& command) :
 	command_(command),
-	shift_(false), 	ctrl_(false), cmd_(false), alt_(false),
+	shift_(false), ctrl_(false), cmd_(false), alt_(false),
 	character_(-1), keycode_(-1),
 	joystick_(-1), mouse_(-1),
 	button_(-1), hat_(-1), value_(-1),
@@ -36,7 +36,7 @@ public:
 
 	explicit hotkey_item(const config& cfg, bool is_default):
 				command_("null"),
-				shift_(false), 	ctrl_(false), cmd_(false), alt_(false),
+				shift_(false), ctrl_(false), cmd_(false), alt_(false),
 				character_(-1), keycode_(-1),
 				joystick_(-1), mouse_(-1),
 				button_(-1), hat_(-1), value_(-1),

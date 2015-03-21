@@ -188,7 +188,7 @@ void unit_animation_component::reset_after_advance(const unit_type * newtype)
 	}
 
 	refreshing_ = false;
-        anim_.reset();
+	anim_.reset();
 }
 
 void unit_animation_component::apply_new_animation_effect(const config & effect) {

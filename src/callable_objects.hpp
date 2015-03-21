@@ -75,7 +75,7 @@ public:
 	variant get_value(const std::string& key) const;
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 
-        int do_compare(const formula_callable* callable) const;
+	int do_compare(const formula_callable* callable) const;
 private:
 	const location loc_;
 	const terrain_type &t_;

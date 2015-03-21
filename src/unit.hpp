@@ -299,8 +299,8 @@ public:
 	bool can_advance() const { return advances_to_.empty()==false || get_modification_advances().empty() == false; }
 	bool advances() const { return experience_ >= max_experience() && can_advance(); }
 
-    std::map<std::string,std::string> advancement_icons() const;
-    std::vector<std::pair<std::string,std::string> > amla_icons() const;
+	std::map<std::string,std::string> advancement_icons() const;
+	std::vector<std::pair<std::string,std::string> > amla_icons() const;
 
 	std::vector<config> get_modification_advances() const;
 	config::const_child_itors modification_advancements() const

@@ -37,9 +37,9 @@ static lg::log_domain log_ai("ai/attack");
 namespace ai {
 
 void attack_analysis::analyze(const gamemap& map, unit_map& units,
-				  const readonly_context& ai_obj,
-                                  const move_map& dstsrc, const move_map& srcdst,
-                                  const move_map& enemy_dstsrc, double aggression)
+                              const readonly_context& ai_obj,
+                              const move_map& dstsrc, const move_map& srcdst,
+                              const move_map& enemy_dstsrc, double aggression)
 {
 	const unit_map::const_iterator defend_it = units.find(target);
 	assert(defend_it != units.end());

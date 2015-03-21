@@ -557,6 +557,7 @@ namespace {
  * @param type The modification type to be registered (unquoted)
  * @param args_var The name for the string argument provided
  */
+//FIXME: simplyfy this macro like WML_HANDLER_FUNCTION.
 #define REGISTER_MOD_PARSER(type, args_var)     	               \
 	modification* parse_##type##_mod(const std::string&);          \
 	struct parse_##type##_mod_registration                         \

@@ -65,8 +65,8 @@ private:
 	mutable boost::scoped_ptr<unit_filter> ufilter_;
 	mutable boost::scoped_ptr<side_filter> allied_filter_;
 	mutable boost::scoped_ptr<side_filter> enemy_filter_;
-        mutable boost::scoped_ptr<side_filter> has_ally_filter_;
-        mutable boost::scoped_ptr<side_filter> has_enemy_filter_;
+	mutable boost::scoped_ptr<side_filter> has_ally_filter_;
+	mutable boost::scoped_ptr<side_filter> has_enemy_filter_;
 };
 
 #endif

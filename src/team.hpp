@@ -53,17 +53,17 @@ public:
 	//enum DEFEAT_CONDITION {NO_LEADER, NO_UNITS, NEVER, ALWAYS};
 
 	MAKE_ENUM(CONTROLLER,
-		(HUMAN, 	"human")
-		(AI, 		"ai")
-		(NETWORK, 	"network")
-		(NETWORK_AI, 	"network_ai")
-		(EMPTY,		"null")
+		(HUMAN,       "human")
+		(AI,          "ai")
+		(NETWORK,     "network")
+		(NETWORK_AI,  "network_ai")
+		(EMPTY,	      "null")
 	)
 
 	MAKE_ENUM(PROXY_CONTROLLER,
-		(PROXY_HUMAN,	"human")
-		(PROXY_AI,	"ai")
-		(PROXY_IDLE,	"idle")
+		(PROXY_HUMAN, "human")
+		(PROXY_AI,    "ai")
+		(PROXY_IDLE,  "idle")
 	)
 
 	MAKE_ENUM(DEFEAT_CONDITION,

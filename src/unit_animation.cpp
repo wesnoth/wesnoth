@@ -1393,7 +1393,7 @@ void unit_animator::wait_until(int animation_time) const
 			std::min<int>(10,
 			static_cast<int>((animation_time - get_animation_time()) * speed))));
 		resources::controller->play_slice(false);
-                end_tick = animated_units_[0].my_unit->anim_comp().get_animation()->time_to_tick(animation_time);
+		end_tick = animated_units_[0].my_unit->anim_comp().get_animation()->time_to_tick(animation_time);
 	}
 	disp->delay(std::max<int>(0,end_tick - SDL_GetTicks() +5));
 	new_animation_frame();

@@ -117,7 +117,7 @@ void intrusive_ptr_add_ref(const unit * u)
 	// then feel free to remove the next line
 	assert(u->ref_count_ < 100000);
 	LOG_UT << "Adding a reference to a unit: id = " << u->id() << ", uid = " << u->underlying_id() << ", refcount = " << u->ref_count() << " ptr:" << u << std::endl;
-        if (u->ref_count_ == 0) {
+	if (u->ref_count_ == 0) {
 		LOG_UT << "Freshly constructed" << std::endl;
 	}
 	++(u->ref_count_);
@@ -2169,7 +2169,7 @@ unit_movement_resetter::~unit_movement_resetter()
 
 bool unit::matches_id(const std::string& unit_id) const
 {
-        return id_ == unit_id;
+	return id_ == unit_id;
 }
 
 

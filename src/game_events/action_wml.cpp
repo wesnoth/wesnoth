@@ -550,8 +550,9 @@ WML_HANDLER_FUNCTION(do_command, /*event_info*/, cfg)
 			/*data*/ i.get_child().get_parsed_config(),
 			/*use_undo*/ true,
 			/*show*/ true,
-			/*error_handler*/ &on_replay_error);
-        }
+			/*error_handler*/ &on_replay_error
+		);
+	}
 }
 
 /// Experimental data persistence

@@ -393,7 +393,7 @@ void replay_controller::replay_next_turn()
 
 	play_turn();
 
- 	if (!is_skipping_replay() || !is_playing_){
+	if (!is_skipping_replay() || !is_playing_) {
 		gui_->scroll_to_leader(player_number_,game_display::ONSCREEN,false);
 	}
 
@@ -407,10 +407,10 @@ void replay_controller::replay_next_move_or_side(bool one_move)
 	
 	play_move_or_side(one_move);
 	while (current_team().is_empty()) {
- 		play_move_or_side(one_move);
+		play_move_or_side(one_move);
 	}
 
- 	if ( (!is_skipping_replay() || !is_playing_) && (last_replay_action == REPLAY_FOUND_END_TURN) ){
+	if ( (!is_skipping_replay() || !is_playing_) && (last_replay_action == REPLAY_FOUND_END_TURN) ){
 		gui_->scroll_to_leader(player_number_,game_display::ONSCREEN,false);
 	}
 

@@ -93,11 +93,11 @@ base_manager::~base_manager()
 
 void write_preferences()
 {
-    #ifndef _WIN32
+#ifndef _WIN32
 
     bool prefs_file_existed = access(filesystem::get_prefs_file().c_str(), F_OK) == 0;
 
-    #endif
+#endif
 
 	try {
 		filesystem::scoped_ostream prefs_file = filesystem::ostream_file(filesystem::get_prefs_file());
@@ -107,7 +107,7 @@ void write_preferences()
 	}
 
 
-    #ifndef _WIN32
+#ifndef _WIN32
 
     if(!prefs_file_existed) {
 
@@ -117,7 +117,7 @@ void write_preferences()
 
     }
 
-    #endif
+#endif
 
 
 }

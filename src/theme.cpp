@@ -37,7 +37,7 @@ namespace {
 	const int YDim = 768;
 
 	const size_t DefaultFontSize = font::SIZE_NORMAL;
-        const Uint32 DefaultFontRGB = 0x00C8C8C8;
+	const Uint32 DefaultFontRGB = 0x00C8C8C8;
 
 	_rect ref_rect = { 0, 0, 0, 0 };
 }

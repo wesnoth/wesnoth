@@ -694,7 +694,7 @@ void unit_frame::redraw(const int frame_time,bool on_start_time,bool in_scope_of
 		game_display::get_singleton()->render_image( my_x,my_y,
 			       	static_cast<display::tdrawing_layer>(display::LAYER_UNIT_FIRST+current_data.drawing_layer),
 			       	src, image, facing_west, false,
-				ftofxp(current_data.highlight_ratio), current_data.blend_with,
+			        ftofxp(current_data.highlight_ratio), current_data.blend_with,
 			       	current_data.blend_ratio,current_data.submerge,!facing_north);
 	}
 	halo_id = halo::handle(); //halo::NO_HALO;
@@ -890,12 +890,12 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	/** engine provides a string for "petrified" and "team color" modifications
           note that image_mod is the complete modification and halo_mod is only the TC part
           see unit.cpp, we know that and use it*/
-		result.image_mod = current_val.image_mod +animation_val.image_mod;
+	result.image_mod = current_val.image_mod +animation_val.image_mod;
 	if(primary) {
-                result.image_mod += engine_val.image_mod;
-        } else {
-                result.image_mod += engine_val.halo_mod;
-        }
+		result.image_mod += engine_val.image_mod;
+	} else {
+		result.image_mod += engine_val.halo_mod;
+	}
 
 	assert(engine_val.halo.empty());
 	result.halo = current_val.halo.empty()?animation_val.halo:current_val.halo;

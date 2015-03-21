@@ -86,7 +86,7 @@ bool debug_info::evaluated() const
 
 void debug_info::set_evaluated(bool evaluated)
 {
-       	evaluated_ = evaluated;
+	evaluated_ = evaluated;
 }
 
 
@@ -370,7 +370,7 @@ void formula_debugger::add_breakpoint_continue_to_end()
 
 void formula_debugger::add_breakpoint_step_into()
 {
-       	breakpoints_.push_back(breakpoint_ptr(new step_in_breakpoint(*this)));
+	breakpoints_.push_back(breakpoint_ptr(new step_in_breakpoint(*this)));
 	LOG_FDB << "added 'step into' breakpoint"<< std::endl;
 }
 

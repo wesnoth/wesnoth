@@ -100,9 +100,9 @@ void unit_sheath_weapon( const map_location& loc, unit* u=NULL, const attack_typ
  * Note: this only shows the effect, it doesn't actually kill the unit.
  */
  void unit_die( const map_location& loc, unit& u,
- 	const attack_type* attack=NULL, const attack_type* secondary_attack=NULL,
- 	const map_location& winner_loc=map_location::null_location(),
- 	unit* winner=NULL);
+	const attack_type* attack=NULL, const attack_type* secondary_attack=NULL,
+	const map_location& winner_loc=map_location::null_location(),
+	unit* winner=NULL);
 
 
 /**

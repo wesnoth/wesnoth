@@ -295,9 +295,9 @@ void menu_handler::status_table(int selected)
 			str << utils::half_signed_value(data.gold) << COLUMN_SEPARATOR;
 		}
 		str << data.villages;
-                if(!(viewing_team.uses_fog() || viewing_team.uses_shroud())) {
-                        str << "/" << map().villages().size();
-                }
+		if(!(viewing_team.uses_fog() || viewing_team.uses_shroud())) {
+			str << "/" << map().villages().size();
+		}
 		str << COLUMN_SEPARATOR
 			<< data.units << COLUMN_SEPARATOR << data.upkeep << COLUMN_SEPARATOR
 			<< (data.net_income < 0 ? font::BAD_TEXT : font::NULL_MARKUP) << utils::signed_value(data.net_income);
@@ -512,13 +512,12 @@ void menu_handler::preferences()
 
 void menu_handler::show_chat_log()
 {
-        config c;
-        c["name"] = "prototype of chat log";
-        gui2::tchat_log chat_log_dialog(vconfig(c), resources::recorder);
-        chat_log_dialog.show(gui_->video());
-        //std::string text = resources::recorder->build_chat_log();
-        //gui::show_dialog(*gui_,NULL,_("Chat Log"),"",gui::CLOSE_ONLY,NULL,NULL,"",&text);
-
+	config c;
+	c["name"] = "prototype of chat log";
+	gui2::tchat_log chat_log_dialog(vconfig(c), resources::recorder);
+	chat_log_dialog.show(gui_->video());
+	//std::string text = resources::recorder->build_chat_log();
+	//gui::show_dialog(*gui_,NULL,_("Chat Log"),"",gui::CLOSE_ONLY,NULL,NULL,"",&text);
 }
 
 void menu_handler::show_help()

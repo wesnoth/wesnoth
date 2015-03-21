@@ -84,9 +84,9 @@ namespace game_config
 
 	namespace images {
 	extern std::string game_title,
-            game_title_background,
+			game_title_background,
 			// orbs and hp/xp bar
-            orb,
+			orb,
 			energy,
 			// flags
 			flag,

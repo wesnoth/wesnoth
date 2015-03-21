@@ -1256,7 +1256,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 		return_cfgref_attrib("era", game_config_manager::get()->game_config().find_child("era","id",mp_settings.mp_era));
 		//^ finds the era with name matching mp_era, and creates a lua reference from the config of that era.
 
-                //This code for SigurdFD, not the cleanest implementation but seems to work just fine.
+		//This code for SigurdFD, not the cleanest implementation but seems to work just fine.
 		config::const_child_itors its = game_config_manager::get()->game_config().child_range("era");
 		std::string eras_list((*(its.first))["id"]);
 		++its.first;

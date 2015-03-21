@@ -168,9 +168,9 @@ void set(CURSOR_TYPE type)
 
 	// Causes problem on Mac:
 	//if (cursor_image != NULL && cursor_image != SDL_GetCursor())
-		SDL_SetCursor(cursor_image);
+	SDL_SetCursor(cursor_image);
 
-    SDL_ShowCursor(SDL_ENABLE);
+	SDL_ShowCursor(SDL_ENABLE);
 }
 
 void set_dragging(bool drag)

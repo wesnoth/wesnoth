@@ -291,8 +291,8 @@ std::string register_vconfig_metatable(lua_State *L)
 
 	static luaL_Reg const callbacks[] = {
 		{ "__gc",           &impl_vconfig_collect},
-		{ "__index", 	    &impl_vconfig_get},
-		{ "__len",	    &impl_vconfig_size},
+		{ "__index",        &impl_vconfig_get},
+		{ "__len",          &impl_vconfig_size},
 		{ NULL, NULL }
 	};
 	luaL_setfuncs(L, callbacks, 0);

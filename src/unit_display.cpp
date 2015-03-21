@@ -47,7 +47,7 @@ static std::string number_and_text(int number, const std::string & text)
 	if ( number == 0 )
 		return text;
 
- 	std::ostringstream result;
+	std::ostringstream result;
 
 	if ( text.empty() )
 		result << number;
@@ -568,7 +568,7 @@ void unit_die(const map_location& loc, unit& loser,
 void unit_attack(display * disp, game_board & board,
                  const map_location& a, const map_location& b, int damage,
                  const attack_type& attack, const attack_type* secondary_attack,
-		  int swing,std::string hit_text,int drain_amount,std::string att_text)
+                 int swing,std::string hit_text,int drain_amount,std::string att_text)
 {
 	if(!disp ||disp->video().update_locked() || disp->video().faked() ||
 			(disp->fogged(a) && disp->fogged(b)) || preferences::show_combat() == false) {

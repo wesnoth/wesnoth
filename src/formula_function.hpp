@@ -40,7 +40,7 @@ public:
 private:
 	virtual variant execute(const formula_callable& variables, formula_debugger *fdb = NULL) const = 0;
 	const char* name_;
-        friend class formula_debugger;
+	friend class formula_debugger;
 };
 
 typedef boost::shared_ptr<formula_expression> expression_ptr;

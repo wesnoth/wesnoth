@@ -49,7 +49,7 @@ class unit_animation
 		void update_last_draw_time();
 		int get_begin_time() const;
 		int get_end_time() const;
-                int time_to_tick(int animation_time) const { return unit_anim_.time_to_tick(animation_time); }
+        int time_to_tick(int animation_time) const { return unit_anim_.time_to_tick(animation_time); }
 		int get_animation_time() const{ return unit_anim_.get_animation_time() ; }
 		int get_animation_time_potential() const{ return unit_anim_.get_animation_time_potential() ; }
 		void start_animation(int start_time
@@ -59,8 +59,8 @@ class unit_animation
 				, const Uint32 text_color = 0
 				, const bool accelerate = true);
 		void update_parameters(const map_location &src, const map_location &dst);
-                void pause_animation();
-                void restart_animation();
+		void pause_animation();
+		void restart_animation();
 		int get_current_frame_begin_time() const{ return unit_anim_.get_current_frame_begin_time() ; }
 		void redraw(frame_parameters& value, halo::manager & halo_man);
 		void clear_haloes();
@@ -191,8 +191,8 @@ class unit_animator
 				, const attack_type* second_attack = NULL
 				, int value2 = 0);
 		void start_animations();
-                void pause_animation();
-                void restart_animation();
+		void pause_animation();
+		void restart_animation();
 		void clear(){start_time_ = INT_MIN ; animated_units_.clear();}
 		void set_all_standing();
 

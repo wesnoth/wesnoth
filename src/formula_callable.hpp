@@ -63,7 +63,7 @@ public:
 
 	virtual void get_inputs(std::vector<formula_input>* /*inputs*/) const {}
 
-        //note: this function should NOT overwrite str, but append text to it!
+	//note: this function should NOT overwrite str, but append text to it!
 	void serialize(std::string& str) const {
 		serialize_to_string(str);
 	}
@@ -85,7 +85,7 @@ protected:
 		return this < callable ? -1 : (this == callable ? 0 : 1);
 	}
 
-        //note: this function should NOT overwrite str, but append text to it!
+	//note: this function should NOT overwrite str, but append text to it!
 	virtual void serialize_to_string(std::string& /*str*/) const {
 		throw type_error("Tried to serialize type which cannot be serialized");
 	}
@@ -93,10 +93,10 @@ protected:
 	//priority for objects that are derived from this class, used in do_compare
 	//when comparing objects of different types
 	//for example: formula_callable < terrain_callable < unit_type_callable ...
-        enum TYPE { FORMULA_C, TERRAIN_C, LOCATION_C, UNIT_TYPE_C, UNIT_C,
-                        ATTACK_TYPE_C, MOVE_PARTIAL_C, MOVE_C, ATTACK_C, MOVE_MAP_C };
+	enum TYPE { FORMULA_C, TERRAIN_C, LOCATION_C, UNIT_TYPE_C, UNIT_C,
+		ATTACK_TYPE_C, MOVE_PARTIAL_C, MOVE_C, ATTACK_C, MOVE_MAP_C };
 
-        TYPE type_;
+	TYPE type_;
 private:
 	virtual variant get_value(const std::string& key) const = 0;
 	bool has_self_;
