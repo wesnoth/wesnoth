@@ -8,13 +8,13 @@
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2007-2009.
 # Jacobo Abel Fernández García <xakobe_gz@hotmail.com>, 2007.
 # Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
-# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2009-2012, 2013, 2014.
+# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2009-2012, 2013, 2014, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-01-15 22:59-0300\n"
-"PO-Revision-Date: 2014-10-26 09:23+0100\n"
+"POT-Creation-Date: 2015-01-23 17:35-0300\n"
+"PO-Revision-Date: 2015-03-16 07:13+0100\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -3382,27 +3382,23 @@ msgstr "Repetición"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:600
-#, fuzzy
-#| msgid "Next Side"
 msgid "Next Move"
-msgstr "Seguinte bando"
+msgstr "Seguinte movemento"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:601
-#, fuzzy
-#| msgid "play side turn"
 msgid "play single move"
-msgstr "Xogar a quenda"
+msgstr "Xogar un movemento"
 
 #. [theme]: id=Classic
 #: data/themes/classic.cfg:11
 msgid "theme^Classic"
-msgstr ""
+msgstr "Clásico"
 
 #. [theme]: id=Classic
 #: data/themes/classic.cfg:13
 msgid "The classic, pre-1.12 theme"
-msgstr ""
+msgstr "Tema clásico anterior á versión 1.12"
 
 #. [menu]: id=menu-main
 #: data/themes/classic.cfg:106 data/themes/default.cfg:80
@@ -3489,10 +3485,8 @@ msgstr "Predeterminado"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:33
-#, fuzzy
-#| msgid "Default theme."
 msgid "The default theme"
-msgstr "Tema predeterminado."
+msgstr "Tema predeterminado"
 
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:90
@@ -3522,10 +3516,8 @@ msgstr "Pandora"
 
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:21
-#, fuzzy
-#| msgid "800x480 theme optimized for Pandora devices."
 msgid "An 800×480 theme optimized for Pandora devices"
-msgstr "Tema para resolucións de 800×480, coma as dos dispositivos Pandora."
+msgstr "Tema para resolucións de 800×480, coma as dos dispositivos Pandora"
 
 #. [action]: id=end-turn
 #: data/themes/pandora.cfg:151
@@ -7003,21 +6995,15 @@ msgid "Search:"
 msgstr "Buscar:"
 
 #: src/multiplayer_lobby.cpp:876
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Normal Replays"
-msgstr "Gardar a repetición"
+msgstr "Repeticións normais"
 
 # Aparece na parte superior da sala de espera para partidas con varios xogadores.
 #: src/multiplayer_lobby.cpp:877
-#, fuzzy
-#| msgid "Quick replays"
 msgid "Quick Replays"
-msgstr "Repeticións rápidas."
+msgstr "Repeticións rápidas"
 
 #: src/multiplayer_lobby.cpp:878
-#, fuzzy
-#| msgid "Enter blindfolded"
 msgid "Enter Blindfolded"
 msgstr "Entrar ás escuras"
 
