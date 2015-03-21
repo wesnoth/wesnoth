@@ -916,8 +916,16 @@ bool gamebrowser::game_matches_filter(const game_item& i, const config& cfg) {
     if(!preferences::fi_text().empty()) {
         bool found_match = true;
         BOOST_FOREACH(const std::string& search_string, utils::split(preferences::fi_text(), ' ', utils::STRIP_SPACES)) {
-            if(std::search(i.map_info.begin(), i.map_info.end(), search_string.begin(), search_string.end(), chars_equal_insensitive) == i.map_info.end() &&
-                    std::search(i.name.begin(), i.name.end(), search_string.begin(), search_string.end(), chars_equal_insensitive) == i.name.end()) {
+	    
+            if(std::search(i.map_info.begin(), i.map_info.end(), search_string.begin(),
+ 		    search_string.end(), chars_equal_insensitive) == i.map_info.end() 
+	  	    &&
+                    std::search(i.name.begin(), i.name.end(), search_string.begin(), 
+		    search_string.end(), chars_equal_insensitive) == i.name.end() 
+		    && 
+		    std::search(i.era_and_mod_info.begin(), i.era_and_mod_info.end(),
+		    search_string.begin(), search_string.end(), chars_equal_insensitive) 
+		    == i.era_and_mod_info.end()) {
                 found_match = false;
                 break;
             }
@@ -1058,7 +1066,7 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist, c
 	filter_label_.enable(apply_filter_.checked());
 
 	filter_text_.set_text(search_string_);
-	filter_text_.set_help_string(_("Only show games whose title or description contain the entered text"));
+	filter_text_.set_help_string(_("Only show games whose title, description, era or mods contain the entered text"));
 	filter_text_.enable(apply_filter_.checked());
 
 	gamelist_updated();
