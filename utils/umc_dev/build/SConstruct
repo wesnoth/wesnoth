@@ -21,9 +21,9 @@ opts.AddVariables(
     PathVariable( "eclipsedir", "The directory that contains the eclipse binary and all the needed plugins",
                 "", PathVariable.PathIsDir ),
     PathVariable( "updatesdir", "The directory that should contain the updates for the plugin",
-                os.getcwd() , PathVariable.PathAccept ),
+                "updates", PathVariable.PathAccept ),
     PathVariable( "binariesdir", "The directory that should contain the binaries for the plugin",
-                os.getcwd() , PathVariable.PathAccept ),
+                "binaries", PathVariable.PathAccept ),
     PathVariable( "storepass", "The store pass for signing the jars", "", PathVariable.PathAccept ),
     PathVariable( "keypass", "The key pass for signing the jars", "", PathVariable.PathAccept )
 )
