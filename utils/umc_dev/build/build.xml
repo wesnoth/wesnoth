@@ -34,7 +34,7 @@
     	     <fileset dir="${buildDirectory}/repository"/>
         </move>
 
-		<signjar alias="wesnoth" keystore="keystore" storepass="${storePass}" keypass="${keyPass}">
+		<signjar alias="wesnoth" keystore="${keystorePath}" storepass="${storePass}" keypass="${keyPass}">
 		  <path>
 			<fileset dir="${updatesDir}" includes="**/org.wesnoth*.jar" />
 		  </path>
