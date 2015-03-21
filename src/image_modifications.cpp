@@ -557,17 +557,17 @@ namespace {
  * @param type The modification type to be registered (unquoted)
  * @param args_var The name for the string argument provided
  */
-//FIXME: simplyfy this macro like WML_HANDLER_FUNCTION.
-#define REGISTER_MOD_PARSER(type, args_var)     	               \
-	modification* parse_##type##_mod(const std::string&);          \
-	struct parse_##type##_mod_registration                         \
-	{                                                              \
-	        parse_##type##_mod_registration()                      \
-	        {                                                      \
-			mod_parsers[#type] = &parse_##type##_mod;      \
-                }                                                      \
-        } parse_##type##_mod_registration_aux;                         \
-        modification* parse_##type##_mod(const std::string& args_var)
+struct parse_mod_registration
+{
+	parse_mod_registration(const char* name, mod_parser parser)
+	{
+		mod_parsers[name] = parser;
+	}
+};
+#define REGISTER_MOD_PARSER(type, args_var)                                                           \
+    static modification* parse_##type##_mod(const std::string&);                                      \
+    static parse_mod_registration parse_##type##_mod_registration_aux(#type, &parse_##type##_mod);    \
+    static modification* parse_##type##_mod(const std::string& args_var)                              \
 
 // Color-range-based recoloring
 REGISTER_MOD_PARSER(TC, args)
