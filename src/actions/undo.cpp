@@ -678,12 +678,6 @@ bool undo_list::dismiss_action::undo(int side, undo_list & /*undos*/)
 {
 	team &current_team = (*resources::teams)[side-1];
 
-	if ( !current_team.persistent() ) {
-		ERR_NG << "Trying to undo a dismissal for side " << side
-			<< ", which has no recall list!\n";
-		return false;
-	}
-
 	current_team.recall_list().add(dismissed_unit);
 	return true;
 }
@@ -697,12 +691,6 @@ bool undo_list::recall_action::undo(int side, undo_list & /*undos*/)
 	game_display & gui = *resources::screen;
 	unit_map &   units = *resources::units;
 	team &current_team = (*resources::teams)[side-1];
-
-	if ( !current_team.persistent() ) {
-		ERR_NG << "Trying to undo a recall for side " << side
-			<< ", which has no recall list!\n";
-		return false;
-	}
 
 	const map_location & recall_loc = route.front();
 	unit_map::iterator un_it = units.find(recall_loc);
@@ -893,11 +881,6 @@ bool undo_list::dismiss_action::redo(int side)
 {
 	team &current_team = (*resources::teams)[side-1];
 
-	if ( !current_team.persistent() ) {
-		ERR_NG << "Trying to redo a dismissal for side " << side
-			<< ", which has no recall list!\n";
-		return false;
-	}
 	resources::recorder->redo(replay_data);
 	replay_data.clear();
 	current_team.recall_list().erase_if_matches_id(dismissed_unit->id());
@@ -912,12 +895,6 @@ bool undo_list::recall_action::redo(int side)
 {
 	game_display & gui = *resources::screen;
 	team &current_team = (*resources::teams)[side-1];
-
-	if ( !current_team.persistent() ) {
-		ERR_NG << "Trying to redo a recall for side " << side
-			<< ", which has no recall list!\n";
-		return false;
-	}
 
 	map_location loc = route.front();
 	map_location from = recall_from;

@@ -1829,8 +1829,6 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 
 			team& t = (*resources::teams)[u->side()-1];
 
-			if(t.persistent()) {
-
 				// Test whether the recall list has duplicates if so warn.
 				// This might be removed at some point but the uniqueness of
 				// the description is needed to avoid the recall duplication
@@ -1866,10 +1864,6 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 						<< u->underlying_id() << "' on the recall list\n";
 				}
 				t.recall_list().add(u);
-			} else {
-				ERR_NG << "Cannot unstore unit: recall list is empty for player " << u->side()
-					<< " and the map location is invalid.\n";
-			}
 		}
 
 		// If we unstore a leader make sure the team gets a leader if not the loading
