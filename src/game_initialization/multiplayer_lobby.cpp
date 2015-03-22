@@ -667,7 +667,7 @@ static mp::ADDON_REQ check_addon_version_compatibility (const config & local_ite
 				}
 			}
 		}
-	} catch (version_info::not_sane_exception & e) {
+	} catch (version_info::not_sane_exception &) {
 		WRN_MP << "Caught a version_info not_sane_exception when checking version compatability.\n";
 		DBG_MP << "WML item:\n***\n" << local_item.debug() << "\n***\n\n";
 		DBG_MP << "Game Record:\n***\n" << game.debug() << "\n***\n\n";
