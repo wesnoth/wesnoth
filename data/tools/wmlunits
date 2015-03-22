@@ -540,6 +540,7 @@ if __name__ == '__main__':
 
     global options
     global image_collector
+    global TIMEOUT
 
     ap = argparse.ArgumentParser()
     ap.add_argument("-C", "--config-dir",
@@ -559,6 +560,9 @@ if __name__ == '__main__':
     ap.add_argument("-t", "--transdir",
         help="Specify the directory with gettext message catalogues. " +
         "Defaults to ./translations.", default="translations")
+    ap.add_argument("-T", "--timeout",
+        help="Use the timeout iven in seconds when parsing WML, default is 20 " +
+            "seconds.")
     ap.add_argument("-r", "--reparse", action="store_true",
         help="Reparse everything.")
     ap.add_argument("-a", "--addons",
@@ -587,6 +591,9 @@ if __name__ == '__main__':
 
     if options.output:
         options.output = os.path.expanduser(options.output)
+
+    if options.timeout:
+        TIMEOUT = int(options.timeout)
 
     if not options.wesnoth:
         options.wesnoth = "wesnoth"
