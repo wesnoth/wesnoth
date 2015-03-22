@@ -40,6 +40,7 @@
 #include "terrain_type_data.hpp"
 
 #include <cassert>
+#include <boost/algorithm/string/predicate.hpp>
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
@@ -896,44 +897,46 @@ void gamebrowser::select_game(const std::string& id) {
 	set_dirty();
 }
 
-bool gamebrowser::game_matches_filter(const game_item& i, const config& cfg) {
+bool gamebrowser::game_matches_filter(const game_item& i, const config& cfg)
+{
 
-    if(!preferences::filter_lobby()) return true;
+	if(!preferences::filter_lobby()) {
+		return true;
+	}
+	if(preferences::fi_vacant_slots() && i.vacant_slots == 0) {
+		return false;
+	}
+	if(preferences::fi_friends_in_game()) {
+		bool found_friend = false;
+		BOOST_FOREACH(const config &user, cfg.child_range("user")) {
+			if(preferences::is_friend(user["name"]) && user["game_id"] == i.id) {
+				found_friend = true;
+				break;
+			}
+		}
+		if(!found_friend) {
+			return false;
+		}
+	}
 
-    if(preferences::fi_vacant_slots() && i.vacant_slots == 0) return false;
+	if(!preferences::fi_text().empty()) {
+		bool found_match = true;
+		BOOST_FOREACH(const std::string& search_string, utils::split(preferences::fi_text(), ' ', utils::STRIP_SPACES)) {
 
-    if(preferences::fi_friends_in_game()) {
-        bool found_friend = false;
-        BOOST_FOREACH(const config &user, cfg.child_range("user")) {
-            if(preferences::is_friend(user["name"]) && user["game_id"] == i.id) {
-                found_friend = true;
-                break;
-            }
-        }
-        if(!found_friend) return false;
-    }
+			if(!boost::contains(i.map_info, search_string, chars_equal_insensitive) &&
+			   !boost::contains(i.name, search_string, chars_equal_insensitive) && 
+			   !boost::contains(i.era_and_mod_info, search_string, chars_equal_insensitive)) {
 
-    if(!preferences::fi_text().empty()) {
-        bool found_match = true;
-        BOOST_FOREACH(const std::string& search_string, utils::split(preferences::fi_text(), ' ', utils::STRIP_SPACES)) {
-	    
-            if(std::search(i.map_info.begin(), i.map_info.end(), search_string.begin(),
- 		    search_string.end(), chars_equal_insensitive) == i.map_info.end() 
-	  	    &&
-                    std::search(i.name.begin(), i.name.end(), search_string.begin(), 
-		    search_string.end(), chars_equal_insensitive) == i.name.end() 
-		    && 
-		    std::search(i.era_and_mod_info.begin(), i.era_and_mod_info.end(),
-		    search_string.begin(), search_string.end(), chars_equal_insensitive) 
-		    == i.era_and_mod_info.end()) {
-                found_match = false;
-                break;
-            }
-        }
-        if(!found_match) return false;
-    }
+				found_match = false;
+				break;
+			}
+		}
+		if(!found_match) {
+			return false;
+		}
+	}
 
-    return true;
+	return true;
 }
 
 lobby::lobby_sorter::lobby_sorter(const config& cfg) : cfg_(cfg)
