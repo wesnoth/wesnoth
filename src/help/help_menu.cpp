@@ -89,20 +89,20 @@ void help_menu::update_visible_items(const section &sec, unsigned level)
 	}
 }
 
-std::string help_menu::indented_icon(const std::string& icon, const unsigned level) {
+std::string help_menu::indent_list(const std::string& icon, const unsigned level) {
 	std::stringstream to_show;
-	for (unsigned i = 1; i < level; ++i) 	{
-		to_show << IMAGE_PREFIX << indentation_img << IMG_TEXT_SEPARATOR;
+	for (unsigned i = 1; i < level; ++i) {
+		to_show << "    "; // Indent 4 spaces
 	}
 
-	to_show << IMAGE_PREFIX << icon;
+	to_show << IMG_TEXT_SEPARATOR << IMAGE_PREFIX << icon;
 	return to_show.str();
 }
 
 std::string help_menu::get_string_to_show(const section &sec, const unsigned level)
 {
 	std::stringstream to_show;
-	to_show << indented_icon(expanded(sec) ? open_section_img : closed_section_img, level)
+	to_show << indent_list(expanded(sec) ? open_section_img : closed_section_img, level)
 		 << IMG_TEXT_SEPARATOR << sec.title;
 	return to_show.str();
 }
@@ -110,7 +110,7 @@ std::string help_menu::get_string_to_show(const section &sec, const unsigned lev
 std::string help_menu::get_string_to_show(const topic &topic, const unsigned level)
 {
 	std::stringstream to_show;
-	to_show <<  indented_icon(topic_img, level)
+	to_show <<  indent_list(topic_img, level)
 		<< IMG_TEXT_SEPARATOR << topic.title;
 	return to_show.str();
 }
@@ -172,7 +172,7 @@ int help_menu::process()
 
 			const std::string icon_img = expanded(*sec) ? open_section_img : closed_section_img;
 			// we remove the right thickness (ne present between icon and text)
-			int text_start = style_->item_size(indented_icon(icon_img, sec->level)).w - style_->get_thickness();
+			int text_start = style_->item_size(indent_list(icon_img, sec->level)).w - style_->get_thickness();
 
 			// NOTE: if you want to forbid click to the left of the icon
 			// also check x >= text_start-image_width(icon_img)

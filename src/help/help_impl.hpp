@@ -333,7 +333,6 @@ extern const unsigned max_history;
 extern const std::string topic_img;
 extern const std::string closed_section_img;
 extern const std::string open_section_img;
-extern const std::string indentation_img;
 // The topic to open by default when opening the help dialog.
 extern const std::string default_show_topic;
 extern const std::string unknown_unit_topic;

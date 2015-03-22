@@ -75,7 +75,7 @@ private:
 
 	/// Return the string to use as the prefix for the icon part of the
 	/// menu-string at the specified level.
-	std::string indented_icon(const std::string &icon, const unsigned level);
+	std::string indent_list(const std::string &icon, const unsigned level);
 	/// Return the string to use as the menu-string for sections at the
 	/// specified level.
 	std::string get_string_to_show(const section &sec, const unsigned level);
