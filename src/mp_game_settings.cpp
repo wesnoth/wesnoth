@@ -199,7 +199,7 @@ void mp_game_settings::update_addon_requirements(const config & cfg) {
 					addon.min_version = *new_data.min_version;
 				}
 			}
-		} catch (version_info::not_sane_exception & e) {
+		} catch (version_info::not_sane_exception &) {
 			WRN_NG << "Caught a version_info not_sane_exception when determining a scenario's add-on dependencies. addon_id = " << cfg["id"].str() << "\n";
 		}
 	} else {
