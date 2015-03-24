@@ -802,12 +802,7 @@ const moves_map& readonly_context_impl::get_possible_moves() const
 
 const std::vector<unit_ptr>& readonly_context_impl::get_recall_list() const
 {
-	static std::vector<unit_ptr> dummy_units;
 	///@todo 1.9: check for (level_["disallow_recall"]))
-	if(!current_team().persistent()) {
-		return dummy_units;
-	}
-
 	return current_team().recall_list().recall_list_; //TODO: Refactor ai so that friend of ai context is not required of recall_list_manager at this line
 }
 

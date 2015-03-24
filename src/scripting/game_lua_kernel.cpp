@@ -2174,9 +2174,6 @@ int game_lua_kernel::intf_put_recall_unit(lua_State *L)
 
 	if (!side) side = u->side();
 	team &t = teams()[side - 1];
-	if (!t.persistent())
-		return luaL_argerror(L, 2, "nonpersistent side");
-
 	// Avoid duplicates in the recall list.
 	size_t uid = u->underlying_id();
 	t.recall_list().erase_by_underlying_id(uid);

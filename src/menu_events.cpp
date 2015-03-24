@@ -677,11 +677,6 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	}
 
 	team &current_team = teams()[side_num - 1];
-	if(!current_team.persistent()) {
-		ERR_NG << "cannot recall a unit for side " << side_num
-			<< ", which has no recall list!\n";
-		return;
-	}
 
 	boost::shared_ptr<std::vector<unit_const_ptr > > recall_list_team = boost::make_shared<std::vector<unit_const_ptr> >();
 	{ wb::future_map future; // ensures recall list has planned recalls removed
