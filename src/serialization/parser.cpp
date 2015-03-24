@@ -506,13 +506,13 @@ namespace { // helpers for write_key_val().
 
 		// Generic visitor just streams "key=value".
 		template <typename T> void operator()(T const & v) const
-		{ indent(); out_ << key_ << '=' << v; }
+		{ indent(); out_ << key_ << '=' << v << '\n'; }
 
 		// Specialized visitors for things that go in quotes:
 		void operator()(boost::blank const &) const
-		{ indent(); out_ << key_ << '=' << "\"\""; }
+		{ /* treat blank values as nonexistent which fits better than treating them as empty strings.*/ }
 		void operator()(std::string const &s) const
-		{ indent(); out_ << key_ << '=' << '"' << escaped_string(s) << '"'; }
+		{ indent(); out_ << key_ << '=' << '"' << escaped_string(s) << '"' << '\n'; }
 		void operator()(t_string const &s) const;
 
 	private:
@@ -554,6 +554,7 @@ namespace { // helpers for write_key_val().
 			out_ << '"' << escaped_string(w.begin(), w.end()) << '"';
 			first = false;
 		}
+		out_ << '\n';
 	}
 }//unnamed namespace for write_key_val() helpers.
 
@@ -562,7 +563,6 @@ void write_key_val(std::ostream &out, const std::string &key,
                    std::string& textdomain)
 {
 	value.apply_visitor(write_key_val_visitor(out, level, textdomain, key));
-	out << '\n';
 }
 
 void write_open_child(std::ostream &out, const std::string &child, unsigned int level)
