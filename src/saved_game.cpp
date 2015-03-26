@@ -45,6 +45,7 @@
 #include "serialization/binary_or_text.hpp"
 #include "util.hpp"
 
+#include <boost/assign/list_of.hpp>
 #include <boost/range/adaptors.hpp>
 #include <boost/range/algorithm/copy.hpp>
 #include <boost/foreach.hpp>
@@ -149,27 +150,28 @@ void saved_game::write_general_info(config_writer& out) const
 	out.write_child("multiplayer", mp_settings_.to_config());
 }
 
-
-void saved_game::set_default_save_id()
+void saved_game::set_defaults()
 {
-	//Set this default value immideately after reading the scenario is importent because otherwise
-	//we might endup settings this value to the multiplayer players name, which would break carryover.
-	//(doing this in at config loading in game_config would be ok too i think.)
-	const config::attribute_value* carryover_percentage = starting_pos_.get("carryover_percentage");
-	const config::attribute_value* carryover_add = starting_pos_.get("carryover_add");
+	static const std::vector<std::string> team_defaults = boost::assign::list_of
+		("carryover_percentage")
+		("carryover_add")
+	;
 	BOOST_FOREACH(config& side, starting_pos_.child_range("side"))
 	{
+		// Set save_id default value directly after loading to its default to prevent different default behaviour in mp_connect code and sp code.
 		if(side["save_id"].empty())
 		{
 			side["save_id"] = side["id"];
 		}
-		if(carryover_percentage && side["carryover_percentage"].empty())
+		// Set some team specific values to their defaults specified in scenario
+		BOOST_FOREACH(const std::string& att_name, team_defaults)
 		{
-			side["carryover_percentage"] = *carryover_percentage;
-		}
-		if(carryover_add && side["carryover_add"].empty())
-		{
-			side["carryover_add"] = *carryover_add;
+			const config::attribute_value* scenario_value = starting_pos_.get(att_name);
+			config::attribute_value& team_value = side[att_name];
+			if(scenario_value && team_value.empty())
+			{
+				team_value = *scenario_value;
+			}
 		}
 	}
 }
@@ -192,7 +194,7 @@ void saved_game::expand_scenario()
 			mp_settings_.hash = scenario.hash();
 
 			update_label();
-			set_default_save_id();
+			set_defaults();
 		}
 		else
 		{
@@ -322,7 +324,7 @@ void saved_game::expand_random_scenario()
 			scenario_new["id"] = starting_pos_["id"]; 
 			starting_pos_ = scenario_new;
 			update_label();
-			set_default_save_id();
+			set_defaults();
 		}
 		//it looks like we support a map= where map=filename equals more or less map_data={filename}
 		if(starting_pos_["map_data"].empty() && !starting_pos_["map"].empty()) {
