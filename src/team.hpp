@@ -24,6 +24,7 @@
 #include "util.hpp"
 
 #include <boost/shared_ptr.hpp>
+#include <boost/container/flat_set.hpp>
 
 class game_data;
 class gamemap;
@@ -169,7 +170,7 @@ public:
 
 	/// Stores the attributes recognized by [side]. These should be stripped
 	/// from a side's config before using it to create the side's leader.
-	static const std::set<std::string> attributes;
+	static const boost::container::flat_set<std::string> attributes;
 
 	void build(const config &cfg, const gamemap &map, int gold = default_team_gold_);
 
