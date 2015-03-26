@@ -36,8 +36,6 @@
 
 #include "config.hpp"
 #include "log.hpp"
-#include "lua/lauxlib.h"                // for luaL_checkinteger, etc
-#include "lua/lua.h"                    // for lua_setfield, etc
 #include "scripting/lua_api.hpp"        // for luaW_toboolean, etc
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_types.hpp"      // for getunitKey, dlgclbkKey, etc
@@ -50,6 +48,9 @@
 #include <map>
 #include <utility>
 #include <vector>
+
+#include "lua/lauxlib.h"                // for luaL_checkinteger, etc
+#include "lua/lua.h"                    // for lua_setfield, etc
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)

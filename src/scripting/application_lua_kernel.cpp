@@ -30,9 +30,6 @@
 #include "config.hpp"
 #include "game_errors.hpp"
 #include "log.hpp"
-#include "lua/lauxlib.h"
-#include "lua/lua.h"
-#include "lua/luaconf.h"
 #include "scripting/lua_api.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
@@ -57,6 +54,10 @@
 #include <boost/noncopyable.hpp>
 #include <boost/range/adaptors.hpp>
 #include <boost/shared_ptr.hpp>
+
+#include "lua/lauxlib.h"
+#include "lua/lua.h"
+#include "lua/luaconf.h"
 
 class CVideo;
 struct lua_State;

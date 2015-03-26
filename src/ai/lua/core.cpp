@@ -18,10 +18,6 @@
  *
  */
 
-#include "lua/lualib.h"
-#include "lua/lauxlib.h"
-#include "lua/llimits.h"
-
 #include <cassert>
 #include <cstring>
 
@@ -43,6 +39,10 @@
 #include "../actions.hpp"
 #include "../composite/engine_lua.hpp"
 #include "../composite/contexts.hpp"
+
+#include "lua/lualib.h"
+#include "lua/lauxlib.h"
+#include "lua/llimits.h"
 
 static lg::log_domain log_ai_engine_lua("ai/engine/lua");
 #define LOG_LUA LOG_STREAM(info, log_ai_engine_lua)

@@ -20,9 +20,6 @@
 #include "game_config.hpp"
 #include "game_errors.hpp"
 #include "log.hpp"
-#include "lua/lauxlib.h"
-#include "lua/lua.h"
-#include "lua/lualib.h"
 #include "lua_jailbreak_exception.hpp"  // for tlua_jailbreak_exception
 
 #ifdef DEBUG_LUA
@@ -48,6 +45,10 @@
 #include <string>
 #include <sstream>
 #include <vector>
+
+#include "lua/lauxlib.h"
+#include "lua/lua.h"
+#include "lua/lualib.h"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define DBG_LUA LOG_STREAM(debug, log_scripting_lua)

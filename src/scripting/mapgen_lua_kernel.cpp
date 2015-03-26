@@ -17,7 +17,6 @@
 #include "config.hpp"
 #include "game_errors.hpp"
 #include "log.hpp"
-#include "lua/lua.h"
 #include "scripting/lua_api.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_rng.hpp"
@@ -25,6 +24,8 @@
 #include <ostream>
 #include <string>
 #include <boost/bind.hpp>
+
+#include "lua/lua.h"
 
 static lg::log_domain log_mapgen("mapgen");
 #define ERR_NG LOG_STREAM(err, log_mapgen)

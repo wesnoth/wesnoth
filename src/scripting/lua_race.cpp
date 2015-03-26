@@ -14,14 +14,15 @@
 
 #include "scripting/lua_race.hpp"
 
-#include "lua/lua.h"
-#include "lua/lauxlib.h"
 #include "race.hpp"
 #include "scripting/lua_common.hpp"
 #include "unit_types.hpp"
 
 #include <boost/foreach.hpp>
 #include <string>
+
+#include "lua/lua.h"
+#include "lua/lauxlib.h"
 
 /**
  * Implementation for a lua reference to a race,

@@ -58,8 +58,6 @@
 #include "help/help.hpp"
 #include "image.hpp"                    // for get_image, locator
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
-#include "lua/lauxlib.h"                // for luaL_checkinteger, etc
-#include "lua/lua.h"                    // for lua_setfield, etc
 #include "make_enum.hpp"                // for operator<<
 #include "map.hpp"                      // for gamemap
 #include "map_label.hpp"
@@ -121,6 +119,8 @@
 #include <vector>                       // for vector, etc
 #include "SDL_timer.h"                  // for SDL_GetTicks
 #include "SDL_video.h"                  // for SDL_Color, SDL_Surface
+#include "lua/lauxlib.h"                // for luaL_checkinteger, etc
+#include "lua/lua.h"                    // for lua_setfield, etc
 
 class CVideo;
 
