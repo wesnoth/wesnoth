@@ -854,7 +854,13 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config, c
 		games_.push_back(game_item());
 		populate_game_item(games_.back(), game, game_config, installed_addons);
 		// Hack...
-		if(preferences::fi_invert() ? game_matches_filter(games_.back(), cfg) : !game_matches_filter(games_.back(), cfg)) games_.pop_back();
+		if(preferences::fi_invert() ? game_matches_filter(games_.back(), cfg) : !game_matches_filter(games_.back(), cfg))
+		{
+			if (preferences::filter_lobby())
+			{
+				games_.pop_back();
+			}
+		}
 	}
 	set_full_size(games_.size());
 	set_shown_size(inner_location().h / row_height());
