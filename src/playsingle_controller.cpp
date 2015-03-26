@@ -527,7 +527,6 @@ void playsingle_controller::play_side()
 				return;
 			}
 			if ( !player_type_changed_ ) {
-				sync_end_turn();
 				after_human_turn();
 			}
 			LOG_NG << "human finished turn...\n";
@@ -543,11 +542,6 @@ void playsingle_controller::play_side()
 			if(is_regular_game_end()) {
 				return;
 			}
-			if(!player_type_changed_)
-			{
-				sync_end_turn();
-			}
-
 		} else if(current_team().is_network()) {
 			play_network_turn();
 			if(is_regular_game_end()) {
@@ -571,6 +565,7 @@ void playsingle_controller::play_side()
 	} while (player_type_changed_);
 	// Keep looping if the type of a team (human/ai/networked)
 	// has changed mid-turn
+	sync_end_turn();
 	assert(end_turn_ == END_TURN_SYNCED);
 	skip_next_turn_ = false;
 }
