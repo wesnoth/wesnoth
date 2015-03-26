@@ -98,7 +98,7 @@ public:
 	/* removes network_ai and network controller types*/
 	void unify_controllers();
 
-	void set_default_save_id();
+	void set_defaults();
 	replay_recorder_base& get_replay() { return replay_data_; }
 	const replay_recorder_base& get_replay() const { return replay_data_; }
 private:
