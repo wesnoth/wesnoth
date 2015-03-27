@@ -204,49 +204,7 @@ void playsingle_controller::play_scenario_init() {
 	if(saved_game_.replay_start().empty()){
 		saved_game_.replay_start() = to_config();
 	}
-
-	fire_preload();
-	
-	assert(resources::recorder->at_end());
-
-	if(!resources::gamedata->is_reloading())
-	{
-		assert(resources::recorder->empty());
-		resources::recorder->add_start();
-		resources::recorder->get_next_action();
-		//we can only use a set_scontext_synced with a non empty recorder.
-		set_scontext_synced sync;
-
-		fire_prestart();
-		if (is_regular_game_end()) {
-			return;
-		}
-
-		init_gui();
-		LOG_NG << "first_time..." << (is_skipping_replay() ? "skipping" : "no skip") << "\n";
-
-		events::raise_draw_event();
-		fire_start();
-		if (is_regular_game_end()) {
-			return;
-		}
-		sync.do_final_checkup();
-		gui_->recalculate_minimap();
-		// Initialize countdown clock.
-		BOOST_FOREACH(const team& t, gamestate_.board_.teams())
-		{
-			if (saved_game_.mp_settings().mp_countdown) {
-				t.set_countdown_time(1000 * saved_game_.mp_settings().mp_countdown_init_time);
-			}
-		}
-	}
-	else
-	{
-		init_gui();
-		events::raise_draw_event();
-		gamestate_.gamedata_.set_phase(game_data::PLAY);
-		gui_->recalculate_minimap();
-	}
+	start_game();
 	if( saved_game_.classification().random_mode != "" && (network::nconnections() != 0)) {
 		// This won't cause errors later but we should notify the user about it in case he didn't knew it.
 		gui2::show_transient_message(

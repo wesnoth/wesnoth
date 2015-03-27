@@ -124,7 +124,6 @@ replay_controller::replay_controller(const config& level,
 	// Our game_data correctly detects that we are loading a game. However,
 	// we are not loading mid-game, so from here on, treat this as not loading
 	// a game. (Allows turn_1 et al. events to fire at the correct time.)
-	resources::gamedata->set_phase(game_data::INITIAL);
 	init();
 	reset_replay();
 }
@@ -352,25 +351,7 @@ void replay_controller::reset_replay()
 	gui_->maybe_rebuild();
 
 	// Scenario initialization. (c.f. playsingle_controller::play_scenario())
-	fire_preload();
-	{ //block for set_scontext_synced
-		if(resources::recorder->add_start_if_not_there_yet())
-		{
-			ERR_REPLAY << "inserted missing [start]" << std::endl;
-		}
-		config* pstart = resources::recorder->get_next_action();
-		assert(pstart->has_child("start"));
-		/*
-			use this after resources::recorder->add_synced_command
-			because set_scontext_synced sets the checkup to the last added command
-		*/
-		set_scontext_synced sync;
-
-		fire_prestart();
-		init_gui();
-		fire_start();
-		sync.do_final_checkup();
-	}
+	start_game();
 	update_gui();
 
 	reset_replay_ui();

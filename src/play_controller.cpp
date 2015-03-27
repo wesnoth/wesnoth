@@ -471,8 +471,10 @@ config play_controller::to_config() const
 	//Write the soundsources.
 	soundsources_manager_->write_sourcespecs(cfg);
 
-	if(gui_.get() != NULL){
-		cfg["playing_team"] = str_cast(gui_->playing_team());
+	if(gui_.get() != NULL) {
+		if(resources::gamedata->phase() == game_data::PLAY) {
+			cfg["playing_team"] = gui_->playing_team();
+		}
 		gui_->labels().write(cfg);
 		sound::write_music_play_list(cfg);
 	}
@@ -1000,5 +1002,51 @@ void play_controller::play_slice_catch()
 	catch(const return_to_play_side_exception&)
 	{
 		assert(should_return_to_play_side());
+	}
+}
+
+void play_controller::start_game()
+{
+	fire_preload();
+
+	if(!resources::gamedata->is_reloading())
+	{
+		resources::recorder->add_start_if_not_there_yet();
+		resources::recorder->get_next_action();
+		
+		set_scontext_synced sync;
+
+		fire_prestart();
+		if (is_regular_game_end()) {
+			return;
+		}
+
+		for ( int side = gamestate_.board_.teams().size(); side != 0; --side )
+			actions::clear_shroud(side, false, false);
+		
+		init_gui();
+		LOG_NG << "first_time..." << (is_skipping_replay() ? "skipping" : "no skip") << "\n";
+
+		events::raise_draw_event();
+		fire_start();
+		if (is_regular_game_end()) {
+			return;
+		}
+		sync.do_final_checkup();
+		gui_->recalculate_minimap();
+		// Initialize countdown clock.
+		BOOST_FOREACH(const team& t, gamestate_.board_.teams())
+		{
+			if (saved_game_.mp_settings().mp_countdown) {
+				t.set_countdown_time(1000 * saved_game_.mp_settings().mp_countdown_init_time);
+			}
+		}
+	}
+	else
+	{
+		init_gui();
+		events::raise_draw_event();
+		gamestate_.gamedata_.set_phase(game_data::PLAY);
+		gui_->recalculate_minimap();
 	}
 }
