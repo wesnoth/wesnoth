@@ -144,16 +144,6 @@ void game_data::write_snapshot(config& cfg) const
 
 }
 
-game_data& game_data::operator=(const game_data& info)
-{
-	// Use copy constructor to make sure we are coherent
-	if (this != &info) {
-		this->~game_data();
-		new (this) game_data(info) ;
-	}
-	return *this ;
-}
-
 namespace {
 	bool recursive_activation = false;
 
