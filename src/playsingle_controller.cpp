@@ -394,6 +394,7 @@ void playsingle_controller::play_turn()
 			save_blocker blocker;
 			init_side_begin(false);
 			if(init_side_done_) {
+				//This is the case in a reloaded game where teh side was initilizes before saving the game.
 				init_side_end();
 			}
 		}
