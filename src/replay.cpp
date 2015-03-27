@@ -638,7 +638,7 @@ bool replay::add_start_if_not_there_yet()
 	//since pos is 0, at_end() is equivalent to empty()
 	if(at_end() || !base_->get_command_at(0).has_child("start"))
 	{
-		base_->insert_command(0) = config_of("start", config());
+		base_->insert_command(0) = config_of("start", config())("sent", true);
 		return true;
 	}
 	else
