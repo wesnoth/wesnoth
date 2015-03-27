@@ -142,6 +142,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, linger_(false)
 	, it_is_a_new_turn_(level["it_is_a_new_turn"].to_bool(true))
 	, init_side_done_(level["init_side_done"].to_bool(false))
+	, init_side_done_now_(false)
 	, ticks_(ticks)
 	, victory_when_enemies_defeated_(level["victory_when_enemies_defeated"].to_bool(true))
 	, remove_from_carryover_on_defeat_(level["remove_from_carryover_on_defeat"].to_bool(true))
@@ -381,6 +382,7 @@ void play_controller::do_init_side()
 	//In case we might end up calling sync:network during the side turn events,
 	//and we don't want do_init_side to be called when a player drops.
 	init_side_done_ = true;
+	init_side_done_now_ = true;
 
 	const std::string turn_num = str_cast(turn());
 	const std::string side_num = str_cast(player_number_);

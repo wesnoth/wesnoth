@@ -91,7 +91,6 @@ protected:
 	END_TURN_STATE end_turn_;
 	bool player_type_changed_;
 	bool skip_next_turn_;
-	bool do_autosaves_;
 	void linger();
 	void sync_end_turn();
 };

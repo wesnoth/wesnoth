@@ -83,7 +83,6 @@ playsingle_controller::playsingle_controller(const config& level,
 	, end_turn_(END_TURN_NONE)
 	, player_type_changed_(false)
 	, skip_next_turn_(false)
-	, do_autosaves_(false)
 {
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the sp (whiteboard enabled) version
 
@@ -266,7 +265,6 @@ void playsingle_controller::play_scenario_main_loop() {
 
 	// Avoid autosaving after loading, but still
 	// allow the first turn to have an autosave.
-	do_autosaves_ = !loading_game_;
 	ai_testing::log_game_start();
 	if(gamestate_.board_.teams().empty())
 	{
@@ -277,8 +275,6 @@ void playsingle_controller::play_scenario_main_loop() {
 		if (is_regular_game_end()) {
 			return;
 		}
-
-		do_autosaves_ = true;
 	} //end for loop
 }
 
@@ -577,7 +573,7 @@ void playsingle_controller::before_human_turn()
 	//TODO: why do we need the next line?
 	ai::manager::raise_turn_started();
 
-	if(do_autosaves_ && !is_regular_game_end()) {
+	if(init_side_done_now_ && !is_regular_game_end()) {
 		update_savegame_snapshot();
 		savegame::autosave_savegame save(saved_game_, *gui_, preferences::save_compression_format());
 		save.autosave(game_config::disable_autosave, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
