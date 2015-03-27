@@ -42,7 +42,6 @@ game_data::game_data()
 		, variables_()
 		, phase_(INITIAL)
 		, can_end_turn_(true)
-		, scenario_()
 		, next_scenario_()
 		{}
 
@@ -55,7 +54,6 @@ game_data::game_data(const config& level)
 		, variables_(level.child_or_empty("variables"))
 		, phase_(INITIAL)
 		, can_end_turn_(level["can_end_turn"].to_bool(true))
-		, scenario_(level["id"])
 		, next_scenario_(level["next_scenario"])
 {
 	wml_menu_items_.set_menu_items(level);
@@ -70,7 +68,6 @@ game_data::game_data(const game_data& data)
 		, variables_(data.variables_)
 		, phase_(data.phase_)
 		, can_end_turn_(data.can_end_turn_)
-		, scenario_(data.scenario_)
 		, next_scenario_(data.next_scenario_)
 {}
 //throws
@@ -138,8 +135,8 @@ void game_data::clear_variable(const std::string& varname)
 	}
 }
 
-void game_data::write_snapshot(config& cfg) const {
-	cfg["scenario"] = scenario_;
+void game_data::write_snapshot(config& cfg) const
+{
 	cfg["next_scenario"] = next_scenario_;
 
 	cfg["can_end_turn"] = can_end_turn_;

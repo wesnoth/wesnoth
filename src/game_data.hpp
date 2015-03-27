@@ -108,8 +108,6 @@ private:
 	config variables_;
 	PHASE phase_;
 	bool can_end_turn_;
-	//TODO: why do we need this variable?
-	std::string scenario_;                            /**< the scenario being played */
 	std::string next_scenario_;                       /**< the scenario coming next (for campaigns) */
 };
 
