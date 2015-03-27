@@ -351,7 +351,6 @@ void replay_controller::reset_replay()
 	resources::gamedata->rng().seed_random(random_seed.str(), level_["random_calls"]);
 	n_unit::id_manager::instance().set_save_id(level_["next_underlying_unit_id"]);
 	statistics::fresh_stats();
-	set_victory_when_enemies_defeated(level_["victory_when_enemies_defeated"].to_bool(true));
 
 	gui_->needs_rebuild(true);
 	gui_->maybe_rebuild();

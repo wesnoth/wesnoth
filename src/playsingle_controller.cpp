@@ -311,9 +311,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		}
 	}
 
-	set_victory_when_enemies_defeated(level_["victory_when_enemies_defeated"].to_bool(true));
-	set_remove_from_carryover_on_defeat(level_["remove_from_carryover_on_defeat"].to_bool(true));
-
 	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks_) << "\n";
 	try {
 		play_scenario_init();

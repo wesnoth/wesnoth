@@ -121,11 +121,6 @@ public:
 	 */
 	virtual void process_oos(const std::string& msg) const;
 
-	void set_victory_when_enemies_defeated(bool e)
-		{ victory_when_enemies_defeated_ = e; }
-	void set_remove_from_carryover_on_defeat(bool e)
-		{ remove_from_carryover_on_defeat_= e; }
-	
 	void set_end_level_data(const end_level_data& data) {
 		end_level_data_ = data;
 	}
