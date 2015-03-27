@@ -471,7 +471,7 @@ void replay_controller::play_replay()
 void replay_controller::play_replay_main_loop()
 {
 	DBG_REPLAY << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
-	for(; !resources::recorder->at_end() && is_playing_; first_player_ = 1) {
+	while(!resources::recorder->at_end() && is_playing_) {
 		play_turn();
 	}
 }

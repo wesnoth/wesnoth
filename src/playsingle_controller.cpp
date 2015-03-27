@@ -228,11 +228,12 @@ void playsingle_controller::play_scenario_main_loop() {
 	{
 		ERR_NG << "Playing game with 0 teams." << std::endl;
 	}
-	for(; ; first_player_ = 1) {
+	while(true) {
 		play_turn();
 		if (is_regular_game_end()) {
 			return;
 		}
+		player_number_ = 1;
 	} //end for loop
 }
 
@@ -384,7 +385,7 @@ void playsingle_controller::play_turn()
 		LOG_AIT << "Turn " << turn() << ":" << std::endl;
 	}
 
-	for (player_number_ = first_player_; player_number_ <= int(gamestate_.board_.teams().size()); ++player_number_)
+	for (; player_number_ <= int(gamestate_.board_.teams().size()); ++player_number_)
 	{
 		// If a side is empty skip over it.
 		if (current_team().is_empty()) continue;
@@ -606,8 +607,6 @@ void playsingle_controller::linger()
 		end_turn_enable(true);
 		end_turn_ = END_TURN_NONE;
 		while(end_turn_ == END_TURN_NONE) {
-			// Reset the team number to make sure we're the right team.
-			player_number_ = first_player_;
 			play_slice();
 			gui_->draw();
 		}

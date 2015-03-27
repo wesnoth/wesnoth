@@ -134,8 +134,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, statistics_context_(new statistics::scenario_context(level["name"]))
 	, undo_stack_(new actions::undo_list(level.child("undo_stack")))
 	, replay_(new replay(state_of_game.get_replay()))
-	, player_number_(1)
-	, first_player_(level["playing_team"].to_int() + 1)
+	, player_number_(level["playing_team"].to_int() + 1)
 	, start_turn_(gamestate_.tod_manager_.turn()) // gamestate_.tod_manager_ constructed above
 	, skip_replay_(skip_replay)
 	, linger_(false)
@@ -431,7 +430,7 @@ void play_controller::init_side_end()
 {
 	const time_of_day &tod = gamestate_.tod_manager_.get_time_of_day();
 
-	if (player_number_ == first_player_)
+	if (player_number_ == 1 || !init_side_done_now_)
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
 
 	if (!is_skipping_replay()){

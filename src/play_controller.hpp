@@ -273,7 +273,6 @@ protected:
 	boost::scoped_ptr<replay> replay_;
 
 	int player_number_;
-	int first_player_;
 	unsigned int start_turn_;
 	bool skip_replay_;
 	bool linger_;
