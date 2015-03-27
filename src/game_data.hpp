@@ -90,8 +90,6 @@ public:
 	const std::string& next_scenario() const { return next_scenario_; }
 	void set_next_scenario(const std::string& next_scenario) { next_scenario_ = next_scenario; }
 
-	game_data& operator=(const game_data& info);
-
 private:
 	void activate_scope_variable(std::string var_name) const;
 	///Used to delete variables.
