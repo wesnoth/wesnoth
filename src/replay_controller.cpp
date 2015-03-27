@@ -345,8 +345,7 @@ void replay_controller::reset_replay()
 
 	gui_->labels().read(level_);
 
-	config::attribute_value random_seed = level_["random_seed"];
-	resources::gamedata->rng().seed_random(random_seed.str(), level_["random_calls"]);
+	*resources::gamedata = game_data(level_);
 	n_unit::id_manager::instance().set_save_id(level_["next_underlying_unit_id"]);
 	statistics::fresh_stats();
 

@@ -37,7 +37,6 @@ game_data::game_data()
 		: variable_set()
 		, scoped_variables()
 		, last_selected(map_location::null_location())
-		, wml_menu_items_()
 		, rng_()
 		, variables_()
 		, phase_(INITIAL)
@@ -49,21 +48,18 @@ game_data::game_data(const config& level)
 		: variable_set()
 		, scoped_variables()
 		, last_selected(map_location::null_location())
-		, wml_menu_items_()
 		, rng_(level)
 		, variables_(level.child_or_empty("variables"))
 		, phase_(INITIAL)
 		, can_end_turn_(level["can_end_turn"].to_bool(true))
 		, next_scenario_(level["next_scenario"])
 {
-	wml_menu_items_.set_menu_items(level);
 }
 
 game_data::game_data(const game_data& data)
 		: variable_set() // variable set is just an interface.
 		, scoped_variables(data.scoped_variables)
 		, last_selected(data.last_selected)
-		, wml_menu_items_(data.wml_menu_items_)
 		, rng_(data.rng_)
 		, variables_(data.variables_)
 		, phase_(data.phase_)
@@ -146,7 +142,6 @@ void game_data::write_snapshot(config& cfg) const
 
 	cfg.add_child("variables", variables_);
 
-	wml_menu_items_.to_config(cfg);
 }
 
 game_data& game_data::operator=(const game_data& info)

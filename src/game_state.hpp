@@ -30,7 +30,7 @@ class play_controller;
 class game_lua_kernel;
 class reports;
 
-namespace game_events { class manager; }
+namespace game_events { class manager; class wmi_container; }
 namespace game_events { struct t_context; }
 
 namespace pathfind { class manager; }
@@ -53,6 +53,8 @@ public:
 	boost::scoped_ptr<game_lua_kernel> lua_kernel_;
 	boost::scoped_ptr<game_events::manager> events_manager_;
 
+
+	game_events::wmi_container& get_wml_menu_items();
 	int first_human_team_; //needed to initialize the viewpoint during setup
 
 	game_state(const config & level, const tdata_cache & tdata);

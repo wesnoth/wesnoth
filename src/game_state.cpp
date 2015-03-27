@@ -345,3 +345,8 @@ bool game_state::side_can_recruit_on(int side, map_location hex) const
 	// No leader found who can recruit at last_hex.
 	return false;
 }
+
+game_events::wmi_container& game_state::get_wml_menu_items()
+{
+	return this->events_manager_->wml_menu_items_;
+}

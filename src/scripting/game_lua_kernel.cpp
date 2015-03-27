@@ -687,7 +687,7 @@ int game_lua_kernel::intf_fire_wml_menu_item(lua_State *L)
 	l1.x = luaL_checkinteger(L, 2) - 1;
 	l1.y = luaL_checkinteger(L, 3) - 1;
 
-	bool b = gamedata().get_wml_menu_items().fire_item(m, l1, gamedata(), game_state_, units());
+	bool b = game_state_.get_wml_menu_items().fire_item(m, l1, gamedata(), game_state_, units());
 	lua_pushboolean(L, b);
 	return 1;
 }
@@ -783,7 +783,7 @@ int game_lua_kernel::intf_set_variable(lua_State *L)
 
 int game_lua_kernel::intf_set_menu_item(lua_State *L)
 {
-	gamedata().get_wml_menu_items().set_item(luaL_checkstring(L, 1), luaW_checkvconfig(L,2), game_state_.events_manager_.get());
+	game_state_.get_wml_menu_items().set_item(luaL_checkstring(L, 1), luaW_checkvconfig(L,2), game_state_.events_manager_.get());
 
 	return 0;
 }
@@ -796,8 +796,7 @@ int game_lua_kernel::intf_clear_menu_item(lua_State *L)
 			WRN_LUA << "[clear_menu_item] has been given an empty id=, ignoring" << std::endl;
 			continue;
 		}
-
-		gamedata().get_wml_menu_items().erase(id);
+		game_state_.get_wml_menu_items().erase(id);
 	}
 	return 0;
 }
