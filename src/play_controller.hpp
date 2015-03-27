@@ -222,6 +222,7 @@ protected:
 	void fire_preload();
 	void fire_prestart();
 	void fire_start();
+	void start_game();
 	virtual void init_gui();
 	virtual void finish_side_turn();
 	void finish_turn(); //this should not throw an end turn or end level exception
@@ -271,20 +272,15 @@ protected:
 	boost::scoped_ptr<actions::undo_list> undo_stack_;
 	boost::scoped_ptr<replay> replay_;
 
-	//if a team is specified whose turn it is, it means we're loading a game
-	//instead of starting a fresh one. Gets reset to false after init_side
-	bool loading_game_;
-
 	int player_number_;
-	int first_player_;
 	unsigned int start_turn_;
 	bool skip_replay_;
 	bool linger_;
 	bool it_is_a_new_turn_;
 	bool init_side_done_;
-
+	/// whether we did init side in this session ( false = we did init side before we reloaded the game).
+	bool init_side_done_now_;
 	const int ticks_;
-
 	const std::string& select_victory_music() const;
 	const std::string& select_defeat_music()  const;
 	void set_victory_music_list(const std::string& list);

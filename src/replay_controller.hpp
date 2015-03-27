@@ -94,7 +94,6 @@ private:
 	tod_manager tod_manager_start_;
 	unsigned int last_replay_action;
 
-	unsigned int current_turn_;
 	bool is_playing_;
 
 	bool show_everything_;

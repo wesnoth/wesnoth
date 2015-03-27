@@ -83,7 +83,6 @@ playsingle_controller::playsingle_controller(const config& level,
 	, end_turn_(END_TURN_NONE)
 	, player_type_changed_(false)
 	, skip_next_turn_(false)
-	, do_autosaves_(false)
 {
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the sp (whiteboard enabled) version
 
@@ -205,42 +204,7 @@ void playsingle_controller::play_scenario_init() {
 	if(saved_game_.replay_start().empty()){
 		saved_game_.replay_start() = to_config();
 	}
-
-	fire_preload();
-	
-	assert(resources::recorder->at_end());
-
-	if(!loading_game_ )
-	{
-		assert(resources::recorder->empty());
-		resources::recorder->add_start();
-		resources::recorder->get_next_action();
-		//we can only use a set_scontext_synced with a non empty recorder.
-		set_scontext_synced sync;
-
-		fire_prestart();
-		if (is_regular_game_end()) {
-			return;
-		}
-
-		init_gui();
-		LOG_NG << "first_time..." << (is_skipping_replay() ? "skipping" : "no skip") << "\n";
-
-		events::raise_draw_event();
-		fire_start();
-		if (is_regular_game_end()) {
-			return;
-		}
-		sync.do_final_checkup();
-		gui_->recalculate_minimap();
-	}
-	else
-	{
-		init_gui();
-		events::raise_draw_event();
-		gamestate_.gamedata_.set_phase(game_data::PLAY);
-		gui_->recalculate_minimap();
-	}
+	start_game();
 	if( saved_game_.classification().random_mode != "" && (network::nconnections() != 0)) {
 		// This won't cause errors later but we should notify the user about it in case he didn't knew it.
 		gui2::show_transient_message(
@@ -256,29 +220,20 @@ void playsingle_controller::play_scenario_init() {
 void playsingle_controller::play_scenario_main_loop() {
 	LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
 
-	// Initialize countdown clock.
-	BOOST_FOREACH(const team& t, gamestate_.board_.teams())
-	{
-		if (saved_game_.mp_settings().mp_countdown && !loading_game_ ){
-			t.set_countdown_time(1000 * saved_game_.mp_settings().mp_countdown_init_time);
-		}
-	}
 
 	// Avoid autosaving after loading, but still
 	// allow the first turn to have an autosave.
-	do_autosaves_ = !loading_game_;
 	ai_testing::log_game_start();
 	if(gamestate_.board_.teams().empty())
 	{
 		ERR_NG << "Playing game with 0 teams." << std::endl;
 	}
-	for(; ; first_player_ = 1) {
+	while(true) {
 		play_turn();
 		if (is_regular_game_end()) {
 			return;
 		}
-
-		do_autosaves_ = true;
+		player_number_ = 1;
 	} //end for loop
 }
 
@@ -430,7 +385,7 @@ void playsingle_controller::play_turn()
 		LOG_AIT << "Turn " << turn() << ":" << std::endl;
 	}
 
-	for (player_number_ = first_player_; player_number_ <= int(gamestate_.board_.teams().size()); ++player_number_)
+	for (; player_number_ <= int(gamestate_.board_.teams().size()); ++player_number_)
 	{
 		// If a side is empty skip over it.
 		if (current_team().is_empty()) continue;
@@ -441,7 +396,6 @@ void playsingle_controller::play_turn()
 			if(init_side_done_) {
 				init_side_end();
 			}
-			loading_game_ = false;
 		}
 
 		ai_testing::log_turn_start(player_number_);
@@ -577,7 +531,7 @@ void playsingle_controller::before_human_turn()
 	//TODO: why do we need the next line?
 	ai::manager::raise_turn_started();
 
-	if(do_autosaves_ && !is_regular_game_end()) {
+	if(init_side_done_now_ && !is_regular_game_end()) {
 		update_savegame_snapshot();
 		savegame::autosave_savegame save(saved_game_, *gui_, preferences::save_compression_format());
 		save.autosave(game_config::disable_autosave, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
@@ -653,8 +607,6 @@ void playsingle_controller::linger()
 		end_turn_enable(true);
 		end_turn_ = END_TURN_NONE;
 		while(end_turn_ == END_TURN_NONE) {
-			// Reset the team number to make sure we're the right team.
-			player_number_ = first_player_;
 			play_slice();
 			gui_->draw();
 		}

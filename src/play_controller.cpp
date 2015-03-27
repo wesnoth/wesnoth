@@ -134,14 +134,13 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, statistics_context_(new statistics::scenario_context(level["name"]))
 	, undo_stack_(new actions::undo_list(level.child("undo_stack")))
 	, replay_(new replay(state_of_game.get_replay()))
-	, loading_game_(level["playing_team"].empty() == false)
-	, player_number_(1)
-	, first_player_(level["playing_team"].to_int() + 1)
+	, player_number_(level["playing_team"].to_int() + 1)
 	, start_turn_(gamestate_.tod_manager_.turn()) // gamestate_.tod_manager_ constructed above
 	, skip_replay_(skip_replay)
 	, linger_(false)
 	, it_is_a_new_turn_(level["it_is_a_new_turn"].to_bool(true))
 	, init_side_done_(level["init_side_done"].to_bool(false))
+	, init_side_done_now_(false)
 	, ticks_(ticks)
 	, victory_when_enemies_defeated_(level["victory_when_enemies_defeated"].to_bool(true))
 	, remove_from_carryover_on_defeat_(level["remove_from_carryover_on_defeat"].to_bool(true))
@@ -329,11 +328,6 @@ void play_controller::fire_start()
 void play_controller::init_gui(){
 	gui_->begin_game();
 	gui_->update_tod();
-
-	if ( !loading_game_ ) {
-		for ( int side = gamestate_.board_.teams().size(); side != 0; --side )
-			actions::clear_shroud(side, false, false);
-	}
 }
 
 void play_controller::init_side_begin(bool is_replay)
@@ -381,6 +375,7 @@ void play_controller::do_init_side()
 	//In case we might end up calling sync:network during the side turn events,
 	//and we don't want do_init_side to be called when a player drops.
 	init_side_done_ = true;
+	init_side_done_now_ = true;
 
 	const std::string turn_num = str_cast(turn());
 	const std::string side_num = str_cast(player_number_);
@@ -435,7 +430,7 @@ void play_controller::init_side_end()
 {
 	const time_of_day &tod = gamestate_.tod_manager_.get_time_of_day();
 
-	if (player_number_ == first_player_)
+	if (player_number_ == 1 || !init_side_done_now_)
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
 
 	if (!is_skipping_replay()){
@@ -475,8 +470,10 @@ config play_controller::to_config() const
 	//Write the soundsources.
 	soundsources_manager_->write_sourcespecs(cfg);
 
-	if(gui_.get() != NULL){
-		cfg["playing_team"] = str_cast(gui_->playing_team());
+	if(gui_.get() != NULL) {
+		if(resources::gamedata->phase() == game_data::PLAY) {
+			cfg["playing_team"] = gui_->playing_team();
+		}
 		gui_->labels().write(cfg);
 		sound::write_music_play_list(cfg);
 	}
@@ -1004,5 +1001,51 @@ void play_controller::play_slice_catch()
 	catch(const return_to_play_side_exception&)
 	{
 		assert(should_return_to_play_side());
+	}
+}
+
+void play_controller::start_game()
+{
+	fire_preload();
+
+	if(!resources::gamedata->is_reloading())
+	{
+		resources::recorder->add_start_if_not_there_yet();
+		resources::recorder->get_next_action();
+		
+		set_scontext_synced sync;
+
+		fire_prestart();
+		if (is_regular_game_end()) {
+			return;
+		}
+
+		for ( int side = gamestate_.board_.teams().size(); side != 0; --side )
+			actions::clear_shroud(side, false, false);
+		
+		init_gui();
+		LOG_NG << "first_time..." << (is_skipping_replay() ? "skipping" : "no skip") << "\n";
+
+		events::raise_draw_event();
+		fire_start();
+		if (is_regular_game_end()) {
+			return;
+		}
+		sync.do_final_checkup();
+		gui_->recalculate_minimap();
+		// Initialize countdown clock.
+		BOOST_FOREACH(const team& t, gamestate_.board_.teams())
+		{
+			if (saved_game_.mp_settings().mp_countdown) {
+				t.set_countdown_time(1000 * saved_game_.mp_settings().mp_countdown_init_time);
+			}
+		}
+	}
+	else
+	{
+		init_gui();
+		events::raise_draw_event();
+		gamestate_.gamedata_.set_phase(game_data::PLAY);
+		gui_->recalculate_minimap();
 	}
 }
