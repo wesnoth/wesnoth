@@ -90,8 +90,6 @@ private:
 		return play_button() && stop_button() && reset_button() &&
 		       play_turn_button() && play_side_button();
 	}
-
-	saved_game saved_game_start_;
 	game_board gameboard_start_;
 	tod_manager tod_manager_start_;
 	unsigned int last_replay_action;

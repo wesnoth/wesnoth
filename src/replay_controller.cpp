@@ -112,7 +112,6 @@ replay_controller::replay_controller(const config& level,
 		const config& game_config, 
 		const tdata_cache & tdata, CVideo& video)
 	: play_controller(level, state_of_game, ticks, game_config, tdata, video, false)
-	, saved_game_start_(saved_game_)
 	, gameboard_start_(gamestate_.board_)
 	, tod_manager_start_(level)
 	, current_turn_(1)
@@ -318,7 +317,6 @@ void replay_controller::reset_replay()
 	skip_replay_ = false;
 	gamestate_.tod_manager_= tod_manager_start_;
 	resources::recorder->start_replay();
-	saved_game_ = saved_game_start_;
 	gamestate_.board_ = gameboard_start_;
 	gui_->change_display_context(&gamestate_.board_); //this doesn't change the pointer value, but it triggers the gui to update the internal terrain builder object,
 						   //idk what the consequences of not doing that are, but its probably a good idea to do it, esp. if layout
