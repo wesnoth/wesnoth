@@ -706,7 +706,9 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		games_.back().verified = verified;
 
 		// Hack...
-		if(preferences::fi_invert() ? game_matches_filter(games_.back(), cfg) : !game_matches_filter(games_.back(), cfg)) games_.pop_back();
+		if(preferences::filter_lobby()) {
+			if(preferences::fi_invert() ? game_matches_filter(games_.back(), cfg) : !game_matches_filter(games_.back(), cfg)) games_.pop_back();
+		}
 	}
 	set_full_size(games_.size());
 	set_shown_size(inner_location().h / row_height());
@@ -750,8 +752,6 @@ void gamebrowser::select_game(const std::string& id) {
 }
 
 bool gamebrowser::game_matches_filter(const game_item& i, const config& cfg) {
-
-    if(!preferences::filter_lobby()) return true;
 
     if(preferences::fi_vacant_slots() && i.vacant_slots == 0) return false;
 
