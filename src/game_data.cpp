@@ -54,6 +54,9 @@ game_data::game_data(const config& level)
 		, can_end_turn_(level["can_end_turn"].to_bool(true))
 		, next_scenario_(level["next_scenario"])
 {
+	if(!level["playing_team"].empty()) {
+		phase_ = INITIAL_RELOAD;
+	}
 }
 
 game_data::game_data(const game_data& data)

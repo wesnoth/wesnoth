@@ -121,11 +121,10 @@ replay_controller::replay_controller(const config& level,
 {
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the replay controller version
 
-	// Our parent class correctly detects that we are loading a game. However,
+	// Our game_data correctly detects that we are loading a game. However,
 	// we are not loading mid-game, so from here on, treat this as not loading
 	// a game. (Allows turn_1 et al. events to fire at the correct time.)
-	loading_game_ = false;
-
+	resources::gamedata->set_phase(game_data::INITIAL);
 	init();
 	reset_replay();
 }

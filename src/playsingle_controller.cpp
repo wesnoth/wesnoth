@@ -209,7 +209,7 @@ void playsingle_controller::play_scenario_init() {
 	
 	assert(resources::recorder->at_end());
 
-	if(!loading_game_ )
+	if(!resources::gamedata->is_reloading())
 	{
 		assert(resources::recorder->empty());
 		resources::recorder->add_start();
@@ -232,6 +232,13 @@ void playsingle_controller::play_scenario_init() {
 		}
 		sync.do_final_checkup();
 		gui_->recalculate_minimap();
+		// Initialize countdown clock.
+		BOOST_FOREACH(const team& t, gamestate_.board_.teams())
+		{
+			if (saved_game_.mp_settings().mp_countdown) {
+				t.set_countdown_time(1000 * saved_game_.mp_settings().mp_countdown_init_time);
+			}
+		}
 	}
 	else
 	{
@@ -255,13 +262,6 @@ void playsingle_controller::play_scenario_init() {
 void playsingle_controller::play_scenario_main_loop() {
 	LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
 
-	// Initialize countdown clock.
-	BOOST_FOREACH(const team& t, gamestate_.board_.teams())
-	{
-		if (saved_game_.mp_settings().mp_countdown && !loading_game_ ){
-			t.set_countdown_time(1000 * saved_game_.mp_settings().mp_countdown_init_time);
-		}
-	}
 
 	// Avoid autosaving after loading, but still
 	// allow the first turn to have an autosave.
@@ -437,7 +437,6 @@ void playsingle_controller::play_turn()
 			if(init_side_done_) {
 				init_side_end();
 			}
-			loading_game_ = false;
 		}
 
 		ai_testing::log_turn_start(player_number_);

@@ -68,6 +68,7 @@ public:
 	rand_rng::mt_rng& rng() { return rng_; }
 
 	enum PHASE {
+		INITIAL_RELOAD,
 		INITIAL,
 		PRELOAD,
 		PRESTART,
@@ -77,7 +78,7 @@ public:
 
 	PHASE phase() const { return phase_; }
 	void set_phase(PHASE phase) { phase_ = phase; }
-
+	bool is_reloading() const { return phase_ == INITIAL_RELOAD; }
 	bool allow_end_turn() const { return can_end_turn_; }
 	void set_allow_end_turn(bool value) { can_end_turn_ = value; }
 
