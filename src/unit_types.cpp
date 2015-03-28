@@ -766,7 +766,9 @@ const config & unit_type::build_unit_cfg() const
 	static char const *unit_type_attrs[] = { "attacks", "base_ids", "die_sound",
 		"experience", "flies", "healed_sound", "hide_help", "hitpoints",
 		"id", "ignore_race_traits", "inherit", "movement", "movement_type",
-		"name", "num_traits", "variation_id", "variation_name", "recall_cost" };
+		"name", "num_traits", "variation_id", "variation_name", "recall_cost",
+		"cost", "level", "gender", "flag_rgb", "alignment", "advances_to"
+	};
 	BOOST_FOREACH(const char *attr, unit_type_attrs) {
 		unit_cfg_.remove_attribute(attr);
 	}
@@ -781,6 +783,15 @@ const config & unit_type::build_unit_cfg() const
 	unit_cfg_.clear_children("jamming_costs");
 	unit_cfg_.clear_children("defense");
 	unit_cfg_.clear_children("resistance");
+
+	// Units use unit_type::attacks() to get their attacks
+	unit_cfg_.clear_children("attack");
+	// Units (animation component) use unit_type::animations()
+	BOOST_FOREACH(const std::string& tag_name, unit_animation::all_tag_names()) {
+		unit_cfg_.clear_children(tag_name);
+	}
+	// [portrait] is not used yet by unit class.
+	unit_cfg_.clear_children("portrait");
 
 	built_unit_cfg_ = true;
 	return unit_cfg_;
