@@ -272,6 +272,9 @@ protected:
 	boost::scoped_ptr<actions::undo_list> undo_stack_;
 	boost::scoped_ptr<replay> replay_;
 
+	/// if a team is specified whose turn it is, it means we're loading a game instead of starting a fresh one.
+	bool loading_game_;
+
 	int player_number_;
 	unsigned int start_turn_;
 	bool skip_replay_;

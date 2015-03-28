@@ -74,7 +74,7 @@ public:
 	 * Render the texture on a specified target, with respect to the previously
 	 * set rotation, coloring etc.
 	 *
-	 * @param target              The target to draw onto.
+	 * @param video               The target to draw onto.
 	 * @param x                   Where to draw (x coordinate).
 	 * @param y                   Where to draw (y coordinate).
 	 */
