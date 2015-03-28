@@ -548,6 +548,14 @@ const SDL_Color& background_modification::get_color() const
 
 namespace {
 
+struct parse_mod_registration
+{
+	parse_mod_registration(const char* name, mod_parser parser)
+	{
+		mod_parsers[name] = parser;
+	}
+};
+
 /** A macro for automatic modification parser registration
  *
  * It automatically registers the created parser in the mod_parsers map
@@ -557,13 +565,6 @@ namespace {
  * @param type The modification type to be registered (unquoted)
  * @param args_var The name for the string argument provided
  */
-struct parse_mod_registration
-{
-	parse_mod_registration(const char* name, mod_parser parser)
-	{
-		mod_parsers[name] = parser;
-	}
-};
 #define REGISTER_MOD_PARSER(type, args_var)                                                           \
     static modification* parse_##type##_mod(const std::string&);                                      \
     static parse_mod_registration parse_##type##_mod_registration_aux(#type, &parse_##type##_mod);    \

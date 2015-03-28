@@ -83,7 +83,7 @@ void luaW_pushconfig(lua_State *L, config const &cfg);
 
 /**
  * Converts an optional table or vconfig to a config object.
- * @param tstring_meta absolute stack position of t_string's metatable, or 0 if none.
+ * @param index absolute stack position of t_string's metatable, or 0 if none.
  * @return false if some attributes had not the proper type.
  * @note If the table has holes in the integer keys or floating-point keys,
  *       some keys will be ignored and the error will go undetected.
