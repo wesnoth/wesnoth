@@ -134,6 +134,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, statistics_context_(new statistics::scenario_context(level["name"]))
 	, undo_stack_(new actions::undo_list(level.child("undo_stack")))
 	, replay_(new replay(state_of_game.get_replay()))
+	, loading_game_(!level["playing_team"].empty())
 	, player_number_(level["playing_team"].to_int() + 1)
 	, start_turn_(gamestate_.tod_manager_.turn()) // gamestate_.tod_manager_ constructed above
 	, skip_replay_(skip_replay)
@@ -325,7 +326,8 @@ void play_controller::fire_start()
 	gamestate_.gamedata_.set_phase(game_data::PLAY);
 }
 
-void play_controller::init_gui(){
+void play_controller::init_gui()
+{
 	gui_->begin_game();
 	gui_->update_tod();
 }
@@ -1008,7 +1010,7 @@ void play_controller::start_game()
 {
 	fire_preload();
 
-	if(!resources::gamedata->is_reloading())
+	if(!loading_game_)
 	{
 		resources::recorder->add_start_if_not_there_yet();
 		resources::recorder->get_next_action();
