@@ -1099,9 +1099,7 @@ function wml_actions.transform_unit(cfg)
 			local status = helper.get_child( unit.__cfg, "status" )
 
 			unit.experience = unit.max_experience
-			wml_actions.store_unit { { "filter", { id = unit.id } }, variable = "Lua_store_unit", kill = true }
-			wml_actions.unstore_unit { variable = "Lua_store_unit", find_vacant = false, advance = true, fire_event = false, animate = false }
-			wesnoth.set_variable ( "Lua_store_unit")
+			wml_actions.advance_unit(unit, false, false)
 
 			unit.hitpoints = hitpoints
 			unit.experience = experience
