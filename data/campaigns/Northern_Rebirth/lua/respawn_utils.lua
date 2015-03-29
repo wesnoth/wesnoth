@@ -14,9 +14,9 @@ function wesnoth.wml_actions.find_respawn_point(cfg)
 		respawn_point = wesnoth.get_locations({
 			include_borders = false,
 			{ "and", { { "filter", { id = respawn_near} },
-						radius = radius } },
+						 radius = radius } },
 			{ "and", { { "not", { { "filter", {} } } },
-			{ "not", { terrain = "Wo,*^Xm,X*,Q*" } } } }
+					   { "not", { terrain = "Wo,*^Xm,X*,Q*" } } } }
 		})
 
 		radius = radius + 1
