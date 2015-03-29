@@ -908,7 +908,7 @@ void menu_handler::unit_description()
 void menu_handler::terrain_description(mouse_handler& mousehandler)
 {
 	const map_location& loc = mousehandler.get_last_hex();
-	if (map().on_board(loc) == false) {
+	if (map().on_board(loc) == false || gui_->shrouded(loc)) {
 		return;
 	}
 
