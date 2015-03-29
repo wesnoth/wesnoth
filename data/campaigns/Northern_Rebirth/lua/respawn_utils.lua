@@ -1,4 +1,5 @@
 local helper = wesnoth.require "lua/helper.lua"
+local T = helper.set_wml_tag_metatable {}
 
 function wesnoth.wml_actions.find_respawn_point(cfg)
 	local respawn_near = cfg.respawn_near or helper.wml_error "[find_respawn_point] missing required respawn_near= key"
@@ -13,12 +14,19 @@ function wesnoth.wml_actions.find_respawn_point(cfg)
 	repeat
 		respawn_point = wesnoth.get_locations({
 			include_borders = false,
-			{ "and", {
-				{ "filter", { id = respawn_near} },
-				radius = radius } },
-			{ "and", {
-				{ "not", { { "filter", {} } } },
-				{ "not", { terrain = "Wo,*^Xm,X*,Q*" } } } }
+			T["and"] {
+				T.filter {
+					id = respawn_near
+				},
+				radius = radius
+			},
+			T["not"] {
+				T.filter {
+				}
+			},
+			T["not"] {
+				terrain = "Wo,*^Xm,X*,Q*"
+			}
 		})
 
 		radius = radius + 1
