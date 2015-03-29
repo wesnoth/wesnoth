@@ -21,6 +21,7 @@
 #include "game_errors.hpp"
 #include "log.hpp"
 #include "lua_jailbreak_exception.hpp"  // for tlua_jailbreak_exception
+#include "seed_rng.hpp"
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"
@@ -137,6 +138,7 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
  , video_(video)
  , cmd_log_()
 {
+	get_lua_kernel_base_ptr(mState) = this;
 	lua_State *L = mState;
 
 	cmd_log_ << "Initializing " << my_name() << "...\n";
@@ -595,4 +597,14 @@ std::vector<std::string> lua_kernel_base::get_attribute_names(const std::string 
 	}
 	lua_settop(L, base);
 	return ret;
+}
+
+lua_kernel_base*& lua_kernel_base::get_lua_kernel_base_ptr(lua_State *L)
+{
+	return *reinterpret_cast<lua_kernel_base**>(reinterpret_cast<char*>(L) - LUA_KERNEL_BASE_OFFSET);
+}
+
+boost::uint32_t lua_kernel_base::get_random_seed()
+{
+	return seed_rng::next_seed();
 }

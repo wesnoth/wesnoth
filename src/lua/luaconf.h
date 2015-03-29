@@ -558,7 +558,8 @@ inline void fwrite_wrapper(const void * ptr, size_t size, size_t count, FILE * s
 ** without modifying the main part of the file.
 */
 
-
+#define LUA_KERNEL_BASE_OFFSET sizeof(void*)
+#define LUAI_EXTRASPACE LUA_KERNEL_BASE_OFFSET
 
 #endif
 

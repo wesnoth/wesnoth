@@ -23,5 +23,7 @@ extern luatypekey const executeKey;
 extern luatypekey const getunitKey;
 extern luatypekey const unitvarKey;
 extern luatypekey const ustatusKey;
+extern luatypekey const uattacksKey;
+extern luatypekey const uattackKey;
 
 #endif

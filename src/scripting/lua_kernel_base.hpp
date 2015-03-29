@@ -19,6 +19,7 @@
 #include <string>
 #include <vector>
 #include "utils/boost_function_guarded.hpp"
+#include <boost/cstdint.hpp>
 
 struct lua_State;
 class CVideo;
@@ -55,8 +56,16 @@ public:
 
 	void set_video(CVideo * ptr) { video_ = ptr; }
 
+	template<typename T>
+	static T& get_lua_kernel(lua_State *L)
+	{
+		return *static_cast<T*>(get_lua_kernel_base_ptr(L));
+	}
+
+	virtual boost::uint32_t get_random_seed();
 protected:
 	lua_State *mState;
+
 	CVideo * video_;
 
 	struct command_log {
@@ -107,6 +116,8 @@ protected:
 
 	// require (using lua_fileops, protected_call)
 	int intf_require(lua_State * L);
+private:
+	static lua_kernel_base*& get_lua_kernel_base_ptr(lua_State *L);
 };
 
 #endif

@@ -36,6 +36,7 @@ struct lua_State;
 
 mapgen_lua_kernel::mapgen_lua_kernel()
 	: lua_kernel_base(NULL)
+	, random_seed_()
 {
 	lua_State *L = mState;
 	lua_settop(L, 0);
@@ -53,8 +54,9 @@ void mapgen_lua_kernel::user_config(const char * prog, const config & generator)
 	run_generator(prog, generator);
 }
 
-std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator) // throws game::lua_error
+std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator, boost::optional<boost::uint32_t> seed) // throws game::lua_error
 {
+	random_seed_ = seed;
 	run_generator(prog, generator);
 
 	if (!lua_isstring(mState,-1)) {
@@ -67,8 +69,9 @@ std::string mapgen_lua_kernel::create_map(const char * prog, const config & gene
 	return lua_tostring(mState, -1);
 }
 
-config mapgen_lua_kernel::create_scenario(const char * prog, const config & generator) // throws game::lua_error
+config mapgen_lua_kernel::create_scenario(const char * prog, const config & generator, boost::optional<boost::uint32_t> seed) // throws game::lua_error
 {
+	random_seed_ = seed;
 	run_generator(prog, generator);
 
 	if (!lua_istable(mState, -1)) {
@@ -84,4 +87,13 @@ config mapgen_lua_kernel::create_scenario(const char * prog, const config & gene
 		throw game::lua_error(msg.c_str(),"bad return value");
 	}
 	return result;
+}
+boost::uint32_t mapgen_lua_kernel::get_random_seed()
+{
+	if(boost::uint32_t* pint = random_seed_.get_ptr()) {
+		return (*pint)++;
+	}
+	else {
+		return lua_kernel_base::get_random_seed();
+	}
 }
