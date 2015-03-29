@@ -19,9 +19,13 @@ static char const v_executeKey = 0;
 static char const v_getunitKey = 0;
 static char const v_unitvarKey = 0;
 static char const v_ustatusKey = 0;
+static char const v_uattacksKey = 0;
+static char const v_uattackKey = 0;
 
 
 luatypekey const executeKey = static_cast<void *>(const_cast<char *>(&v_executeKey));
 luatypekey const getunitKey = static_cast<void *>(const_cast<char *>(&v_getunitKey));
 luatypekey const unitvarKey = static_cast<void *>(const_cast<char *>(&v_unitvarKey));
 luatypekey const ustatusKey = static_cast<void *>(const_cast<char *>(&v_ustatusKey));
+luatypekey const uattacksKey = static_cast<void *>(const_cast<char *>(&v_uattacksKey));
+luatypekey const uattackKey = static_cast<void *>(const_cast<char *>(&v_uattackKey));
