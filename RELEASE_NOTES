@@ -87,11 +87,6 @@ Wesnoth now supports a new random map generator type, "lua". To use it, select e
 Here is a trivial example:
 
 [code]
-     [label]
-         x = {X}
-         y = {Y}
-         text = {STRING}
-     [/label]
 [multiplayer]
     id=lua_map_gen
     name= _ "Lua Map Gen Test Scenario"
@@ -140,7 +135,11 @@ Here is a trivial example:
     {DEFAULT_SCHEDULE}
     [event]
         name=prestart
-        {LABEL 25 20 ("Lua map generator")}
+        [label]
+            x = 25
+            y = 20
+            text = "Lua map generator"
+        [/label]
     [/event]
 
     [side]
