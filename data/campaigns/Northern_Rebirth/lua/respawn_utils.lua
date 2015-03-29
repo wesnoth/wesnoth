@@ -7,7 +7,7 @@ function wesnoth.wml_actions.find_respawn_point(cfg)
 	local respawn_point
 	local radius = 1
 
-	if not wesnoth.eval_conditional { { "have_unit", { id = respawn_near} } } then
+	if not wesnoth.eval_conditional { T.have_unit { id = respawn_near} } then
 		respawn_near = "Tallin"
 	end
 
