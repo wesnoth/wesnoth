@@ -14,11 +14,7 @@ function wml_actions.spread_bandit_villages(cfg)
 	wesnoth.set_variable("villages_visited", 0)
 	wesnoth.set_variable("boss_found", false)
 
-	local i = 0
-	for a in string.gmatch(types, "([^,]+)") do
-  		wesnoth.set_variable("bandit_types["..i.."].value", a) 
-		i = i + 1
-	end
+	wesnoth.set_variable("bandit_types", types)
 
 	local villages = wesnoth.get_villages(cfg)
 
@@ -28,7 +24,7 @@ function wml_actions.spread_bandit_villages(cfg)
 	local village_i
 
 	for i = 0, (count - 1) do
-		village_i = helper.rand(1,#villages)
+		village_i = helper.rand("1.."..#villages)
 
 		wesnoth.set_variable("bandit_villages["..i.."].x", villages[village_i][1])
 		wesnoth.set_variable("bandit_villages["..i.."].y", villages[village_i][2])
@@ -37,22 +33,22 @@ function wml_actions.spread_bandit_villages(cfg)
 end
 
 local function bandits_found(x,y)
-	local bandit_types = helper.get_variable_array("bandit_types")
+	local bandit_types = wesnoth.get_variable("bandit_types")
 	local bandit_villages = helper.get_variable_array("bandit_villages")
 	local boss_found = wesnoth.get_variable("boss_found")
 	local visited = wesnoth.get_variable("villages_visited")
 	local rand1 = helper.rand(3,4)
-	local rand2 = helper.rand(2,rand1)
+	local rand2 = helper.rand("2.."..rand1)
 
 	for i=1,rand2 do
 		local locs = wesnoth.get_locations({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = 1 } })
 		if #locs == 0 then locs = wesnoth.get_locations({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = 2 } }) end
 
-		local bandit = helper.rand(1,#bandit_types)
-		local loc_i = helper.rand(1, #locs)
+		local bandit = helper.rand(bandit_types)
+		local loc_i = helper.rand("1.."..#locs)
 
-		wml_actions.move_unit_fake({x = string.format("%d,%d", x, locs[loc_i][1]) , y = string.format("%d,%d", y, locs[loc_i][2]) , type = bandit_types[bandit].value , side = "4"})
-		wesnoth.put_unit(locs[loc_i][1], locs[loc_i][2], { type = bandit_types[bandit].value , side = "4", random_traits = "yes", generate_name = "yes" , upkeep = "loyal" })
+		wml_actions.move_unit_fake({x = string.format("%d,%d", x, locs[loc_i][1]), y = string.format("%d,%d", y, locs[loc_i][2]), type = bandit, side = "4"})
+		wesnoth.put_unit(locs[loc_i][1], locs[loc_i][2], { type = bandit, side = "4", random_traits = "yes", generate_name = "yes", upkeep = "loyal" })
 	end
 
 	if not boss_found and visited > 2 then
