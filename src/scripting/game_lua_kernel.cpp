@@ -3501,6 +3501,11 @@ int game_lua_kernel::intf_redraw(lua_State *L)
 		vconfig cfg(luaW_checkvconfig(L, 1));
 		bool clear_shroud(luaW_toboolean(L, 2));
 
+		bool result = screen.maybe_rebuild();
+		if (!result) {
+			screen.invalidate_all();
+		}
+
 		if (clear_shroud) {
 			side_filter filter(cfg, &game_state_);
 			BOOST_FOREACH(const int side, filter.get_teams()){
@@ -3509,10 +3514,6 @@ int game_lua_kernel::intf_redraw(lua_State *L)
 			screen.recalculate_minimap();
 		}
 
-		bool result = screen.maybe_rebuild();
-		if (!result) {
-			screen.invalidate_all();
-		}
 		screen.draw(true,true);
 	}
 	return 0;
