@@ -15,11 +15,11 @@ function wml_actions.spawn_units(cfg)
 		local locs = wesnoth.get_locations({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = 1 } })
 		if #locs == 0 then locs = wesnoth.get_locations({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = 2 } }) end
 
-		local bandit_type = helper.rand(types)
+		local unit_type = helper.rand(types)
 		local loc_i = helper.rand("1.."..#locs)
 
-		wml_actions.move_unit_fake({x = string.format("%d,%d", x, locs[loc_i][1]) , y = string.format("%d,%d", y, locs[loc_i][2]) , type = bandit_type , side = side})
-		wesnoth.put_unit(locs[loc_i][1], locs[loc_i][2], { type = bandit_type , side = side, random_traits = "yes", generate_name = "yes" , upkeep = "loyal" })
+		wml_actions.move_unit_fake({x = string.format("%d,%d", x, locs[loc_i][1]) , y = string.format("%d,%d", y, locs[loc_i][2]) , type = unit_type , side = side})
+		wesnoth.put_unit(locs[loc_i][1], locs[loc_i][2], { type = unit_type , side = side, random_traits = "yes", generate_name = "yes" , upkeep = "loyal" })
 	end
 end
 
