@@ -1,4 +1,5 @@
--- Used for the bandit villages in S5.
+-- Used for the bandit villages in S5. Much more specific than the village spawn implementations elsewhere,
+-- since there are a lot more specific things needed (mostly the boss mechanics and village spreading)
 
 local helper = wesnoth.require "lua/helper.lua"
 local wml_actions = wesnoth.wml_actions
@@ -53,7 +54,7 @@ local function bandits_found(x,y)
 
 	if not boss_found and visited > 2 then
 		local boss_chance = (100 / #bandit_villages)
-		local rand3 = helper.rand(1,100)
+		local rand3 = helper.rand(1..100)
 
 		if rand3 <= boss_chance or #bandit_villages < 3 then
 			wesnoth.set_variable("boss_found", true)
