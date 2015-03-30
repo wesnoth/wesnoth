@@ -3501,6 +3501,8 @@ int game_lua_kernel::intf_redraw(lua_State *L)
 		vconfig cfg(luaW_checkvconfig(L, 1));
 		bool clear_shroud(luaW_toboolean(L, 2));
 
+		// We do this twice so any applicable redraws happen both before and after
+		// any events caused by redrawing shroud are fired
 		bool result = screen.maybe_rebuild();
 		if (!result) {
 			screen.invalidate_all();
@@ -3512,6 +3514,11 @@ int game_lua_kernel::intf_redraw(lua_State *L)
 				actions::clear_shroud(side);
 			}
 			screen.recalculate_minimap();
+		}
+
+		result = screen.maybe_rebuild();
+		if (!result) {
+			screen.invalidate_all();
 		}
 
 		screen.draw(true,true);
