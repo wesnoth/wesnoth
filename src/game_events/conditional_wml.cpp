@@ -181,7 +181,6 @@ bool conditional_passed(const vconfig& cond)
 	bool matches = internal_conditional_passed(cond);
 
 	// Handle [and], [or], and [not] with in-order precedence
-	int or_count = 0;
 	vconfig::all_children_iterator cond_i = cond.ordered_begin();
 	vconfig::all_children_iterator cond_end = cond.ordered_end();
 	while(cond_i != cond_end)
@@ -198,7 +197,6 @@ bool conditional_passed(const vconfig& cond)
 		else if(cond_name == "or")
 		{
 			matches = matches || conditional_passed(cond_filter);
-			++or_count;
 		}
 		// Handle [not]
 		else if(cond_name == "not")
