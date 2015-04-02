@@ -27,7 +27,7 @@ class vconfig;
 
 namespace game_events
 {
-	bool conditional_passed(const vconfig& cond, bool backwards_compat=true);
+	bool conditional_passed(const vconfig& cond);
 	bool matches_special_filter(const config &cfg, const vconfig& filter);
 }
 

@@ -48,16 +48,14 @@ namespace game_events {
 
 namespace { // Support functions
 
-	bool internal_conditional_passed(const vconfig& cond, bool& backwards_compat)
+	bool internal_conditional_passed(const vconfig& cond)
 	{
 		const vconfig::child_list& true_keyword = cond.get_children("true");
-		backwards_compat = backwards_compat && true_keyword.empty();
 		if(!true_keyword.empty()) {
 			return true;
 		}
 
 		const vconfig::child_list& false_keyword = cond.get_children("false");
-		backwards_compat = backwards_compat && false_keyword.empty();
 		if(!false_keyword.empty()) {
 			return false;
 		}
@@ -67,7 +65,6 @@ namespace { // Support functions
 		// If the if statement requires we have a certain unit,
 		// then check for that.
 		const vconfig::child_list& have_unit = cond.get_children("have_unit");
-		backwards_compat = backwards_compat && have_unit.empty();
 		for(vconfig::child_list::const_iterator u = have_unit.begin(); u != have_unit.end(); ++u) {
 			if(resources::units == NULL)
 				return false;
@@ -113,7 +110,6 @@ namespace { // Support functions
 		// If the if statement requires we have a certain location,
 		// then check for that.
 		const vconfig::child_list& have_location = cond.get_children("have_location");
-		backwards_compat = backwards_compat && have_location.empty();
 		for(vconfig::child_list::const_iterator v = have_location.begin(); v != have_location.end(); ++v) {
 			std::set<map_location> res;
 			terrain_filter(*v, resources::filter_con).get_locations(res);
@@ -128,7 +124,6 @@ namespace { // Support functions
 		// Check against each variable statement,
 		// to see if the variable matches the conditions or not.
 		const vconfig::child_list& variables = cond.get_children("variable");
-		backwards_compat = backwards_compat && variables.empty();
 
 		BOOST_FOREACH(const vconfig &values, variables)
 		{
@@ -181,11 +176,9 @@ namespace { // Support functions
 } // end anonymous namespace (support functions)
 
 
-bool conditional_passed(const vconfig& cond, bool backwards_compat)
+bool conditional_passed(const vconfig& cond)
 {
-	bool allow_backwards_compat = backwards_compat = backwards_compat &&
-		cond["backwards_compat"].to_bool(true);
-	bool matches = internal_conditional_passed(cond, allow_backwards_compat);
+	bool matches = internal_conditional_passed(cond);
 
 	// Handle [and], [or], and [not] with in-order precedence
 	int or_count = 0;
@@ -199,40 +192,20 @@ bool conditional_passed(const vconfig& cond, bool backwards_compat)
 		// Handle [and]
 		if(cond_name == "and")
 		{
-			matches = matches && conditional_passed(cond_filter, backwards_compat);
-			backwards_compat = false;
+			matches = matches && conditional_passed(cond_filter);
 		}
 		// Handle [or]
 		else if(cond_name == "or")
 		{
-			matches = matches || conditional_passed(cond_filter, backwards_compat);
+			matches = matches || conditional_passed(cond_filter);
 			++or_count;
 		}
 		// Handle [not]
 		else if(cond_name == "not")
 		{
-			matches = matches && !conditional_passed(cond_filter, backwards_compat);
-			backwards_compat = false;
+			matches = matches && !conditional_passed(cond_filter);
 		}
 		++cond_i;
-	}
-	// Check for deprecated [or] syntax
-	if(matches && or_count > 1 && allow_backwards_compat)
-	{
-		///@deprecated r18803 [or] syntax
-		lg::wml_error << "possible deprecated [or] syntax: now forcing re-interpretation\n";
-		/**
-		 * @todo For now we will re-interpret it according to the old
-		 * rules, but this should be later to prevent re-interpretation
-		 * errors.
-		 */
-		const vconfig::child_list& orcfgs = cond.get_children("or");
-		for(unsigned int i=0; i < orcfgs.size(); ++i) {
-			if(conditional_passed(orcfgs[i])) {
-				return true;
-			}
-		}
-		return false;
 	}
 	return matches;
 }
