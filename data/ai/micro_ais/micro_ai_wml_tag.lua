@@ -309,7 +309,8 @@ function wesnoth.wml_actions.micro_ai(cfg)
             { ca_id = "sheep_runs_dog", location = CA_path .. 'ca_herding_sheep_runs_dog.lua', score = score - 2 },
             { ca_id = "herd_sheep", location = CA_path .. 'ca_herding_herd_sheep.lua', score = score - 3 },
             { ca_id = "sheep_move", location = CA_path .. 'ca_herding_sheep_move.lua', score = score - 4 },
-            { ca_id = "dog_move", location = CA_path .. 'ca_herding_dog_move.lua', score = score - 5 }
+            { ca_id = "dog_move", location = CA_path .. 'ca_herding_dog_move.lua', score = score - 5 },
+            { ca_id = "dog_stopmove", location = CA_path .. 'ca_herding_dog_stopmove.lua', score = score - 6 }
         }
 
     elseif (cfg.ai_type == 'forest_animals') then
