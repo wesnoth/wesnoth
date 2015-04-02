@@ -10,16 +10,19 @@ Version 1.13.0-dev:
    * New Micro AI: Fast AI
    * Big Animals Micro AI: bug fix for units not attacking when [avoid_unit] is
      not set
+   * Bottleneck Micro AI: bug fix for case when allied units are present
+   * Coward Micro AI: new optional key attack_if_trapped=
+   * Forest Animals Micro AI: bug fix for wander terrain lying on border hexes
+   * Herding Micro AI: bug fix for dogs sometimes having moves left at end
+   * Lurkers Micro AI: fix bug in wander terrain selection
+   * Lurkers Micro AI: bug fix for attack error when lurker runs into ambush
+   * Lurkers MAI: bug fix for attempting to attack petrified units
    * Messenger Escort Micro AI: new optional parameters [filter],
      [filter_second] and invert_order=
-   * Coward Micro AI: new optional key attack_if_trapped=
    * Stationed Guardian Micro AI: make guard_x/y= optional keys
    * Stationed Guardian Micro AI: bug fix for unreachable stations
    * Messenger Escort Micro AI: bug fix for escort units blocking messenger's
      progress
-   * Lurkers Micro AI: fix bug in wander terrain selection
-   * Lurkers Micro AI: bug fix for attack error when lurker runs into ambush
-   * Lurkers MAI: bug fix for attempting to attack petrified units
    * Several Micro AIs: fix a variety of rarely occurring but serious bugs, such
      as invalid savegames or disabling the AI from working for the rest of the
      turn or after changing the Micro AI settings.
@@ -47,7 +50,7 @@ Version 1.13.0-dev:
    * Eras, mods, and options are now available for sp campaigns.
    * Fix sighted events firing too early in several scenarios. Fixes bug #22466
    * Use the new bigmaps for A Tale of Two Brothers, Delfadors Memoirs, The
-     Hammer of Thursagan, Northern Rebirth and the epilogue of Legend of 
+     Hammer of Thursagan, Northern Rebirth and the epilogue of Legend of
      Wesmere.
    * Descent into Darkness:
      * Fixed various issues with player and enemy gold and income in
@@ -136,9 +139,9 @@ Version 1.13.0-dev:
    * When using the terrain description feature with a mixed terrain type, the
      game will autogenerate a formatted explanation of its best / worst movement
      / defense properties.
-   * Added automatic help entries for all eras, fulfilling Feature Request 
+   * Added automatic help entries for all eras, fulfilling Feature Request
      #22107
-   * Fixed in-game help descriptions of default factions, using content from 
+   * Fixed in-game help descriptions of default factions, using content from
      wiki
    * Added automatically generated lists of races and alignments to the
      descriptions of factions
@@ -477,53 +480,53 @@ Version 1.13.0-dev:
      where the Second Watch picture should be used instead (bug #22537).
    * Fixed mishandling of nested subnamespaces by the [clear_global_variable]
      WML action causing an assertion failure (bug #21093).
-   * Fix bug #22443: Scenario Settings table has inaccurate Start Gold info in 
+   * Fix bug #22443: Scenario Settings table has inaccurate Start Gold info in
      certain cases
    * Fix Grand Knight image being distorted in the sidebar
    * Fix bug #22251: Map labels not appearing in mp
-   * Fix bug: lobby sounds not all playing. This was fixed by adding a second 
-     dedicated channel for UI sounds, and moving the "Ready to start" sound to 
+   * Fix bug: lobby sounds not all playing. This was fixed by adding a second
+     dedicated channel for UI sounds, and moving the "Ready to start" sound to
      the turn bell channel.
-   * Bug fix: another instance of "overlapping messages", this time with the 
+   * Bug fix: another instance of "overlapping messages", this time with the
      planning mode activiation hotkey
-   * Fix bug #21400: Use unit 'image' with higher priority than 'image_icon' 
+   * Fix bug #21400: Use unit 'image' with higher priority than 'image_icon'
      for animation frames with no specified image.
    * New filesystem implementation based on boost filesystem
-   * Added "--noaddons" command-line argument, prevents any add-ons from being 
+   * Added "--noaddons" command-line argument, prevents any add-ons from being
      loaded.
-   * Added "--render-image" command-line argument, similar to --screenshot, but 
-     instead of a map, it takes a wesnoth imagepath and generates at bitmap 
+   * Added "--render-image" command-line argument, similar to --screenshot, but
+     instead of a map, it takes a wesnoth imagepath and generates at bitmap
      with the filters applied.
-   * New gettext implementation based on boost locale. This raises min boost 
-     requirement to 1.48, and adds a new dep (locale, filesystem was also added 
+   * New gettext implementation based on boost locale. This raises min boost
+     requirement to 1.48, and adds a new dep (locale, filesystem was also added
      above)
-   * New image scaling routine imported from the xBRZ project (HqMAME on 
+   * New image scaling routine imported from the xBRZ project (HqMAME on
      sourceforge)
-   * Now may save screenshots and other images as pngs, using SDL_SavePNG lib 
+   * Now may save screenshots and other images as pngs, using SDL_SavePNG lib
      (from github)
-   * Image path function ~XBRZ added, taking one argument, the scaling factor. 
+   * Image path function ~XBRZ added, taking one argument, the scaling factor.
      A number 1-5.
-   * Image path function ~SCALE_SHARP added, analogous to ~SCALE but using 
+   * Image path function ~SCALE_SHARP added, analogous to ~SCALE but using
      nearest neighbor algo.
-   * Image path function ~PlOT_ALPHA added. Takes no arguments, plots the alpha 
-     channel in greyscale. Mainly useful for diagnostics of other ipf 
+   * Image path function ~PlOT_ALPHA added. Takes no arguments, plots the alpha
+     channel in greyscale. Mainly useful for diagnostics of other ipf
      combinations, or debugging the engine itself.
    * Image path function ~WIPE_ALPHA added. Again mainly useful for diagnostics.
-   * New RNG implementation using boost::mt19937, and boost::random_device for 
+   * New RNG implementation using boost::mt19937, and boost::random_device for
      seeds. The boost random library is now a build requirement.
    * Add "lua" random map generation
-   * Image path function ~ADJUST_ALPHA added. Takes either a % or an 8-bit 
+   * Image path function ~ADJUST_ALPHA added. Takes either a % or an 8-bit
      integer, and "multiplies" the alpha channel by this.
    * Multiplayer server can now handle scenarios with more than 9 sides
-   * [modify_side] controller= now works in networked mp. If a null-controlled 
-     side becomes alive by [modify_side] controller=ai/human then the currently 
+   * [modify_side] controller= now works in networked mp. If a null-controlled
+     side becomes alive by [modify_side] controller=ai/human then the currently
      active client will be assiged controll
-   * Fixed a stingstream syntax error that caused the build to fail in Visual 
+   * Fixed a stingstream syntax error that caused the build to fail in Visual
      Studio 13
    * Fixed hotkeys for changing tips in titlescreen (bug #18926).
    * Fixed problems building wesnothd using cmake if not building the game
    * Added several new options to GUI.pyw
-   * Fixed a bug in which sides without a leader, but not defeated due to 
+   * Fixed a bug in which sides without a leader, but not defeated due to
      defeat_condition set to no_units_left or never couldn't capture villages
    * Fixed several Mac OS specific bugs in GUI.pyw
    * Fixed bug 22987 for filtering on era and mods in the Multiplayer lobby.
