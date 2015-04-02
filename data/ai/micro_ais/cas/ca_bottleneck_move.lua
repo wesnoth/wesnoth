@@ -183,25 +183,25 @@ local function bottleneck_move_out_of_way(unit_in_way, self)
 
     if (unit_in_way.side ~= wesnoth.current.side) then return nil end
 
-   local reach = wesnoth.find_reach(unit_in_way)
+    local reach = wesnoth.find_reach(unit_in_way)
 
-   local all_units = wesnoth.get_units()
-   local occ_hexes = LS:create()
-   for _,unit in ipairs(all_units) do
-       occ_hexes:insert(unit.x, unit.y)
-   end
+    local all_units = wesnoth.get_units()
+    local occ_hexes = LS:create()
+    for _,unit in ipairs(all_units) do
+        occ_hexes:insert(unit.x, unit.y)
+    end
 
-   local best_reach, best_hex = -9e99
-   for _,loc in ipairs(reach) do
-       if self.data.BD_is_my_territory:get(loc[1], loc[2]) and (not occ_hexes:get(loc[1], loc[2])) then
-           -- Criterion: MP left after the move has been done
-           if (loc[3] > best_reach) then
-               best_reach, best_hex = loc[3], { loc[1], loc[2] }
-           end
-       end
-   end
+    local best_reach, best_hex = -9e99
+    for _,loc in ipairs(reach) do
+        if self.data.BD_is_my_territory:get(loc[1], loc[2]) and (not occ_hexes:get(loc[1], loc[2])) then
+            -- Criterion: MP left after the move has been done
+            if (loc[3] > best_reach) then
+                best_reach, best_hex = loc[3], { loc[1], loc[2] }
+            end
+        end
+    end
 
-   return best_hex
+    return best_hex
 end
 
 local ca_bottleneck_move = {}
