@@ -850,13 +850,6 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 
 	if ( u != resources::units->end()  &&  (!ufilt || ufilt->matches(*u)) )
 	{
-		///@deprecated This can be removed (and a proper duration=level implemented) after 1.11.2
-		/// Don't forget to remove it from wmllint too!
-		const std::string& duration = cfg["duration"];
-		if (duration == "level") {
-			lg::wml_error << "[object]duration=level is deprecated. Use duration=scenario instead.\n";
-		}
-
 		text = cfg["description"].str();
 
 		if(cfg["delayed_variable_substitution"].to_bool(false))
