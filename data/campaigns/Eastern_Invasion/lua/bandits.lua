@@ -42,8 +42,11 @@ local function bandits_found(x,y)
 	local rand2 = helper.rand("2.."..rand1)
 
 	for i=1,rand2 do
-		local locs = wesnoth.get_locations({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = 1 } })
-		if #locs == 0 then locs = wesnoth.get_locations({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = 2 } }) end
+		local radius = 1
+		repeat
+			local locs = wesnoth.get_locations({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = radius } })
+			radius = radius + 1
+		until locs[1]
 
 		local bandit = helper.rand(bandit_types)
 		local loc_i = helper.rand("1.."..#locs)
