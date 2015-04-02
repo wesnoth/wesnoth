@@ -76,7 +76,12 @@ function ca_forest_animals_move:execution(ai, cfg)
         local wander_terrain = cfg.filter_location or {}
         if (not close_enemies[1]) then
             local reach = AH.get_reachable_unocc(unit)
-            local wander_locs = wesnoth.get_locations(wander_terrain)
+            local width, height = wesnoth.get_map_size()
+            local wander_locs = wesnoth.get_locations {
+                x = '1-' .. width,
+                y = '1-' .. height,
+                { "and", wander_terrain }
+            }
             local locs_map = LS.of_pairs(wander_locs)
 
             local reachable_wander_terrain = {}
