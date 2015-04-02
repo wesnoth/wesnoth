@@ -1083,7 +1083,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 		//we got called from inside luas wesnoth.synchronize_choice or from a select event (or maybe a preload event?).
 		//This doesn't cause problems and someone could use it for example to use a [message][option] inside a wesnoth.synchronize_choice which could be useful,
 		//so just give a warning.
-		WRN_REPLAY << "MP synchronization called during an unsynced context.\n";
+		LOG_REPLAY << "MP synchronization called during an unsynced context.\n";
 		return uch.query_user(side);
 	}
 	if(is_too_early && uch.is_visible())
