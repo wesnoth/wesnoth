@@ -706,21 +706,8 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 
 WML_HANDLER_FUNCTION(modify_ai, /*event_info*/, cfg)
 {
-	const vconfig& filter_side = cfg.child("filter_side");
-	std::vector<int> sides;
-	if(!filter_side.null()) {
-		// TODO: since 1.11.0-dev it seems
-		WRN_NG << "[modify_ai][filter_side] is deprecated, use only an inline SSF" << std::endl;
-		if(!cfg["side"].str().empty()) {
-			ERR_NG << "duplicate side information in [modify_ai]" << std::endl;
-			return;
-		}
-		side_filter ssf(filter_side, resources::filter_con);
-		sides = ssf.get_teams();
-	} else {
-		side_filter ssf(cfg, resources::filter_con);
-		sides = ssf.get_teams();
-	}
+	side_filter ssf(cfg, resources::filter_con);
+	std::vector<int> sides = ssf.get_teams();
 	BOOST_FOREACH(const int &side_num, sides)
 	{
 		ai::manager::modify_active_ai_for_side(side_num,cfg.get_parsed_config());
