@@ -141,15 +141,7 @@ end
 function wml_actions.gold(cfg)
 	local amount = tonumber(cfg.amount) or
 		helper.wml_error "[gold] missing required amount= attribute."
-	local sides = cfg.side
-	local filter_side = helper.get_child(cfg, "filter_side")
-	if filter_side then
-		wesnoth.message("warning", "[gold][filter_side] is deprecated, use only an inline SSF")
-		if sides then helper.wml_error("duplicate side information in [gold]") end
-		sides = wesnoth.get_sides(filter_side)
-	else
-		sides = wesnoth.get_sides(cfg)
-	end
+	local sides = wesnoth.get_sides(cfg)
 	for index, team in ipairs(sides) do
 		team.gold = team.gold + amount
 	end
