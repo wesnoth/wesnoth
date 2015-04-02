@@ -327,6 +327,18 @@ function ca_bottleneck_move:evaluation(ai, cfg, self)
         end
     end
 
+    -- Get a map of the allies, as hexes occupied by allied units count as
+    -- reachable, but must be excluded. This could also be done below by
+    -- using bottleneck_move_out_of_way(), but this is much faster
+    local allies = AH.get_live_units {
+        { "filter_side", { { "allied_with", { side = wesnoth.current.side } } } },
+        { "not", { side = wesnoth.current.side } }
+    }
+    local allies_map = LS.create()
+    for _,ally in ipairs(allies) do
+        allies_map:insert(ally.x, ally.y)
+    end
+
     local max_rating, best_unit, best_hex = 0
     for _,unit in ipairs(units) do
         local is_healer = (unit.__cfg.usage == "healer")
@@ -350,6 +362,9 @@ function ca_bottleneck_move:evaluation(ai, cfg, self)
 
             -- If the target hex is occupied, give it a small penalty
             if current_rating_map:get(loc[1], loc[2]) then rating = rating - 0.001 end
+
+            -- Also need to exclude hexes occupied by an allied unit
+            if allies_map:get(loc[1], loc[2]) then rating = 0 end
 
             -- Now only valid and possible moves should have a rating > 0
             if (rating > max_rating) then
