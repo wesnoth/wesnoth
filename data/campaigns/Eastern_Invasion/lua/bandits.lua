@@ -54,7 +54,7 @@ local function bandits_found(x,y)
 
 	if not boss_found and visited > 2 then
 		local boss_chance = (100 / #bandit_villages)
-		local rand3 = helper.rand(1..100)
+		local rand3 = helper.rand("1..100")
 
 		if rand3 <= boss_chance or #bandit_villages < 3 then
 			wesnoth.set_variable("boss_found", true)
