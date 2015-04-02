@@ -286,6 +286,8 @@ Version 1.13.0-dev:
    * New WML tag [sync_variable]
    * Imagepath function "~SEPIA": gives the image a sepia tint
    * Imagepath function "~NEG": gives the image a photographic negative effect
+   * Dropped support for [filter_side] in [gold] and [modify_ai], and [theme]
+     name= in place of id.
  * Miscellaneous and bug fixes:
    * replace 'fight_on_without_leader'=yes/no with defeat_condition=no_leader/
      no_units/always/never which allows the wml developer to decide when a side
