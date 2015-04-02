@@ -664,12 +664,6 @@ REGISTER_MOD_PARSER(RC, args)
 
 		return new rc_modification(rc_map);
 	}
-	else {
-		///@Deprecated 1.6 palette switch syntax
-		if(args.find('=') != std::string::npos) {
-			lg::wml_error << "the ~RC() image function cannot be used for palette switch (A=B) in 1.7.x; use ~PAL(A>B) instead\n";
-		}
-	}
 
 	return NULL;
 }
