@@ -79,8 +79,6 @@ public:
 	// some backwards-compatibility macros for stuff, and they cause
 	// conflicts in the C/C++ preprocessor on GNU/Linux (GCC).
 
-	// Canonical version components.
-
 	/**
 	 * Retrieves the major version number (@a x1 in "x1.x2.x3").
 	 */
