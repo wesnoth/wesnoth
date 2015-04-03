@@ -14,7 +14,6 @@ for env in [test_env, client_env, env]:
 #removed.  Requires moving path and version at least to other files.
 
 libwesnoth_core_sources = Split("""
-    backtrace.cpp
     color_range.cpp
     config.cpp
     crash_reporter.cpp
@@ -43,6 +42,7 @@ libwesnoth_core_sources = Split("""
     """)
 
 libwesnoth_core_sources.extend(env.Object("network_worker.cpp", EXTRA_DEFINE = env['raw_sockets'] and "NETWORK_USE_RAW_SOCKETS" or None))
+libwesnoth_core_sources.extend(env.Object("backtrace.cpp", EXTRA_DEFINE = env['unwind'] and "USE_LIBUNWIND" or None))
 
 game_config_env = env.Clone()
 filesystem_env = env.Clone()

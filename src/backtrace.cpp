@@ -68,8 +68,12 @@ void printBacktrace() {
 #include <cxxabi.h>
 #endif
 
+#include <stdlib.h>
+
 void printBacktrace()
 {
+    fprintf(stderr, "Using libunwind...\n");
+
     unw_cursor_t    cursor;
     unw_context_t   context;
 
@@ -88,19 +92,21 @@ void printBacktrace()
 	char * demangled_fname;
 	int status = -1;
 
-        fprintf (stderr, "%p : (%s+0x%x) [%p]\n", pc, fname, offset, pc);
+	void *ptr = reinterpret_cast<void *>(pc);
 
 #ifdef USE_BOOST_CORE_DEMANGLE
 	std::string demangled = boost::core::demangle(fname);
 	demangled_fname = demangled.c_str();
 	status = 0;
 #else
-//	char* demangled_fname = abi::__cxa_demangle(fname, NULL, NULL, &status);
+	demangled_fname = abi::__cxa_demangle(fname, NULL, NULL, &status);
 #endif
-	if (status == 0)
-	        fprintf (stderr, "%p : (%s+0x%x) [%p]\n", pc, demangled_fname, offset, pc);
-	else
-		fprintf (stderr, "failed to demangle\n");
+	if (status == 0) {
+	        fprintf (stderr, "%p : (%s+0x%x) [%p]\n", ptr, demangled_fname, (unsigned)offset, ptr);
+	} else {
+		fprintf (stderr, "%p : (%s+0x%x) [%p]\n", ptr, fname, (unsigned)offset, ptr);
+		fprintf (stderr, "\t(failed to demangle)\n");
+	}
 
 #ifndef USE_BOOST_CORE_DEMANGLE
 	if (status == 0) {
@@ -195,6 +201,7 @@ void backtrace_to_stderr(char** trace, int frames, bool demangle = true)
 #ifndef HAVE_CXX11
 #undef nullptr
 #endif
+
 
 void printBacktrace()
 {

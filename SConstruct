@@ -107,7 +107,8 @@ opts.AddVariables(
     BoolVariable("lockfile", "Create a lockfile to prevent multiple instances of scons from being run at the same time on this working copy.", False),
     BoolVariable("OS_ENV", "Forward the entire OS environment to scons", False),
     BoolVariable("history", "Clear to disable GNU history support in lua console", True),
-    BoolVariable("sdl2", "Build with SDL2 support (experimental!)", False)
+    BoolVariable("sdl2", "Build with SDL2 support (experimental!)", False),
+    BoolVariable("unwind", "Build with libunwind for backtraces if possible (experimental!)", True)
     )
 
 #
@@ -429,9 +430,8 @@ if env["prereqs"]:
         if env["history"]:
             client_env.Append(CPPDEFINES = ["HAVE_HISTORY"])
 
-        env["unwind"] = conf.CheckLib("unwind") or Warning("Can't find libunwind, using libc for backtrace.")
+        env["unwind"] = env["unwind"] and (conf.CheckLib("unwind") or Warning("Can't find libunwind, using libc for backtrace."))
         if env["unwind"]:
-            client_env.Append(CPPDEFINES = "USE_LIBUNWIND")
             client_env.Append(LIBS = "libunwind-x86_64")
             client_env.Append(CCFLAGS = "-ggdb3")
             client_env.Append(LINKFLAGS = "-rdynamic")
