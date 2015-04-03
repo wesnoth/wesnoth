@@ -21,6 +21,17 @@ BOOST_AUTO_TEST_SUITE( version )
 
 BOOST_AUTO_TEST_CASE( test_version_info )
 {
+	version_info empty;
+
+	BOOST_CHECK( empty == version_info(0, 0, 0) );
+	BOOST_CHECK( empty.str() == "0.0.0" );
+
+	version_info dots1("........");
+	version_info dots2("...hullo");
+
+	BOOST_CHECK( dots1 == empty);
+	BOOST_CHECK( dots2.str() == "0.0.0hullo" );
+
 	version_info canonical("1.2.3");
 
 	BOOST_CHECK( canonical.is_canonical() );
