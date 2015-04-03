@@ -108,7 +108,8 @@ opts.AddVariables(
     BoolVariable("OS_ENV", "Forward the entire OS environment to scons", False),
     BoolVariable("history", "Clear to disable GNU history support in lua console", True),
     BoolVariable("sdl2", "Build with SDL2 support (experimental!)", False),
-    BoolVariable("unwind", "Build with libunwind for backtraces if possible (experimental!)", True)
+    BoolVariable("unwind", "Build with libunwind for backtraces if possible (experimental!)", True),
+    BoolVariable("boost_core_demangle", "Build with boost core for demangling if possible (experimental!)", True)
     )
 
 #
@@ -433,8 +434,11 @@ if env["prereqs"]:
         env["unwind"] = env["unwind"] and (conf.CheckLib("unwind") or Warning("Can't find libunwind, using libc for backtrace."))
         if env["unwind"]:
             client_env.Append(LIBS = "libunwind-x86_64")
-            client_env.Append(CCFLAGS = "-ggdb3")
-            client_env.Append(LINKFLAGS = "-rdynamic")
+#            client_env.Append(CCFLAGS = "-ggdb3")
+#            client_env.Append(LINKFLAGS = "-rdynamic")
+            env["boost_core_demangle"] = env["boost_core_demangle"] and (conf.CheckBoost("core", require_version = "1.56.0") or Warning("Can't find boost core, using abi demangler"))
+        else:
+            env["boost_core_demangle"] = false
 
     if env["forum_user_handler"]:
         flags = env.ParseFlags("!mysql_config --libs --cflags")
