@@ -14,8 +14,10 @@ for env in [test_env, client_env, env]:
 #removed.  Requires moving path and version at least to other files.
 
 libwesnoth_core_sources = Split("""
+    backtrace.cpp
     color_range.cpp
     config.cpp
+    crash_reporter.cpp
     hash.cpp
     log.cpp
     map.cpp

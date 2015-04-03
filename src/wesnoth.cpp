@@ -19,6 +19,7 @@
 #include "addon/manager_ui.hpp"
 #include "commandline_options.hpp"      // for commandline_options, etc
 #include "config.hpp"                   // for config, config::error, etc
+#include "crash_reporter.hpp"           // for CrashReporter
 #include "cursor.hpp"                   // for set, CURSOR_TYPE::NORMAL, etc
 #include "editor/editor_main.hpp"
 #include "filesystem.hpp"               // for filesystem::file_exists, filesystem::io_exception, etc
@@ -90,7 +91,7 @@
 #include "SDL_stdinc.h"                 // for SDL_putenv, Uint32
 #include "SDL_timer.h"                  // for SDL_GetTicks
 
-//#define NO_CATCH_AT_GAME_END
+#define NO_CATCH_AT_GAME_END
 
 #ifdef _WIN32
 #ifdef INADDR_ANY
@@ -898,6 +899,7 @@ int wesnoth_main(int argc, char** argv)
 int main(int argc, char** argv)
 #endif
 {
+	CrashReporter crash_reporter;
 
 #ifdef HAVE_VISUAL_LEAK_DETECTOR
 	VLDEnable();
