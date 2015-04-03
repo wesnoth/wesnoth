@@ -438,7 +438,7 @@ if env["prereqs"]:
 #            client_env.Append(LINKFLAGS = "-rdynamic")
             env["boost_core_demangle"] = env["boost_core_demangle"] and (conf.CheckBoost("core", require_version = "1.56.0") or Warning("Can't find boost core, using abi demangler"))
         else:
-            env["boost_core_demangle"] = false
+            env["boost_core_demangle"] = False
 
     if env["forum_user_handler"]:
         flags = env.ParseFlags("!mysql_config --libs --cflags")
