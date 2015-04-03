@@ -19,6 +19,7 @@
 #include <stdio.h>
 #include <signal.h>
 #include <stdlib.h> // for exit, abort
+#include <string.h> // for memset
 
 #include <exception>
 
@@ -32,11 +33,48 @@ void register_handlers()
 	fprintf(stderr, "Registering crash handlers...\n");
 
 	// Register assert, segfault, illegal op code, and floating point errors to the abort handler.
+	/*
 	signal( SIGABRT, abortHandler );
 	signal( SIGSEGV, abortHandler );
 	signal( SIGILL,  abortHandler );
 	signal( SIGFPE,  abortHandler );
 	signal( SIGBUS,  abortHandler );
+	*/
+
+	// based on http://stackoverflow.com/questions/18606468/segmentation-fault-in-sigaction-signal-handler
+	struct sigaction act_h;
+
+	memset(&act_h, 0, sizeof(act_h));
+	sigemptyset(&act_h.sa_mask);
+        act_h.sa_handler = &abortHandler;
+
+	bool good = true;
+	good = good and (0 == sigaction(SIGINT, &act_h, 0));
+	good = good and (0 == sigaction(SIGABRT, &act_h, 0));
+	good = good and (0 == sigaction(SIGSEGV, &act_h, 0));
+	good = good and (0 == sigaction(SIGILL, &act_h, 0));
+	good = good and (0 == sigaction(SIGFPE, &act_h, 0));
+	good = good and (0 == sigaction(SIGBUS, &act_h, 0));
+
+	if (!good) {
+		fprintf(stderr, "Failure when registering handlers.\n");
+	} else {
+		good = good and (0 == sigaction(SIGSEGV, 0, &act_h));
+		if (!good) {
+			fprintf(stderr, "Failed to register SIGSEGV handler.\n");
+		} else {
+			good = good and (act_h.sa_handler != NULL);
+			if (!good) {
+				fprintf(stderr, "Failed to find SIGSEGV handler after registering it.\n");
+			}
+		}
+	}
+
+	if (good) {
+		fprintf(stderr, "Success.\n");
+	}
+
+	fprintf(stderr, "\n");
 
 	// Register terminate calls (mainly halting caused by exceptions) to the terminate handler
 	std::set_terminate( terminateHandler );
