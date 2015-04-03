@@ -207,7 +207,7 @@ public:
 	virtual bool should_return_to_play_side()
 	{ return is_regular_game_end(); }
 	void maybe_throw_return_to_play_side()
-	{ if(should_return_to_play_side()) { throw return_to_play_side_exception(); } }
+	{ if(should_return_to_play_side() && !linger_ ) { throw return_to_play_side_exception(); } }
 
 protected:
 	void play_slice_catch();
