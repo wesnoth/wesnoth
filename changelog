@@ -274,7 +274,7 @@ Version 1.13.0-dev:
      between random and non-random music play (bug #19653)
    * Fixed a bug that prevented [animate_unit] from displaying death or victory
      animations for those units that filter them based on weapon (eg. Wose)
-   * New WML tags: [full_heal] and [put_to_recall_list].
+   * New WML tags: [put_to_recall_list] and [sync_variable].
    * Fixed nested macros emitting incorrect bindings to the default 'wesnoth'
      textdomain at the end of a substitution instead of the parent textdomain,
      this breaking localization of subsequent strings (bug #22962).
@@ -283,7 +283,6 @@ Version 1.13.0-dev:
    * force_lock_settings defaults to yes in [scenario].
    * Moved all preprocessor diagnostics from the 'config' log domain to
      'preprocessor'.
-   * New WML tag [sync_variable]
    * Imagepath function "~SEPIA": gives the image a sepia tint
    * Imagepath function "~NEG": gives the image a photographic negative effect
    * Dropped support for [filter_side] in [gold] and [modify_ai], [theme] name=

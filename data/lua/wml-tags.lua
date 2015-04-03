@@ -1316,23 +1316,6 @@ function wml_actions.put_to_recall_list(cfg)
 	end
 end
 
-function wml_actions.full_heal(cfg)
-	local units = wesnoth.get_units(cfg)
-
-	for i, unit in ipairs(units) do	
-		if (not unit.status.unhealable) or cfg.ignore_status then
-			unit.hitpoints = unit.max_hitpoints
-			if cfg.cures then
-				unit.status.poisoned = false
-				unit.status.slowed = false
-			end
-			if cfg.animate then
-				wesnoth.animate_unit({ flag = "healed" ,  with_bars = "yes" , { "filter" , { id = unit.id } } })
-			end
-		end
-	end
-end
-
 function wml_actions.allow_undo(cfg)
 	wesnoth.allow_undo()
 end
