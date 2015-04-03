@@ -899,7 +899,7 @@ int wesnoth_main(int argc, char** argv)
 int main(int argc, char** argv)
 #endif
 {
-	CrashReporter crash_reporter;
+	crash_reporter::register_handlers();
 
 #ifdef HAVE_VISUAL_LEAK_DETECTOR
 	VLDEnable();

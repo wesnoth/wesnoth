@@ -15,7 +15,14 @@
 // Comment out this line to avoid using boost demangle on non-msvc compilers.
 //#define USE_BOOST_CORE_DEMANGLE
 
+// This define is added by scons atm
+//#define USE_LIBUNWIND
+
+
 #include <cstdio>
+
+
+
 
 #ifdef _MSC_VER
 
@@ -51,9 +58,59 @@ void printBacktrace() {
 #else // _MSC_VER = false
 
 
+#ifdef USE_LIBUNWIND
 
+#include <libunwind.h>
 
+#ifdef USE_BOOST_CORE_DEMANGLE
+#include <boost/core/demangle.hpp>
+#else
+#include <cxxabi.h>
+#endif
 
+void printBacktrace()
+{
+    unw_cursor_t    cursor;
+    unw_context_t   context;
+
+    unw_getcontext(&context);
+    unw_init_local(&cursor, &context);
+
+    while (unw_step(&cursor) > 0) {
+        unw_word_t  offset, pc;
+        char        fname[64];
+
+        unw_get_reg(&cursor, UNW_REG_IP, &pc);
+
+        fname[0] = '\0';
+        (void) unw_get_proc_name(&cursor, fname, sizeof(fname), &offset);
+
+	char * demangled_fname;
+	int status = -1;
+
+        fprintf (stderr, "%p : (%s+0x%x) [%p]\n", pc, fname, offset, pc);
+
+#ifdef USE_BOOST_CORE_DEMANGLE
+	std::string demangled = boost::core::demangle(fname);
+	demangled_fname = demangled.c_str();
+	status = 0;
+#else
+//	char* demangled_fname = abi::__cxa_demangle(fname, NULL, NULL, &status);
+#endif
+	if (status == 0)
+	        fprintf (stderr, "%p : (%s+0x%x) [%p]\n", pc, demangled_fname, offset, pc);
+	else
+		fprintf (stderr, "failed to demangle\n");
+
+#ifndef USE_BOOST_CORE_DEMANGLE
+	if (status == 0) {
+		free(demangled_fname);
+	}
+#endif
+    }
+}
+
+#else // USE_LIBUNWIND
 
 // This code based on stack trace code provided by Ignacio R. Morelle
 
@@ -141,14 +198,23 @@ void backtrace_to_stderr(char** trace, int frames, bool demangle = true)
 
 void printBacktrace()
 {
-	void* buf[max_frames];
-	const int frames = backtrace(buf, max_frames);
+	void* buf[max_frames+1];
+	const int frames = backtrace(buf, sizeof(buf) / sizeof(void*));
 
-	std::cerr << "*** Backtrace (last " << frames << " frames):\n";
+	fprintf( stderr, "*** Backtrace (last %d frames):\n", frames);
 
-	char** const trace = backtrace_symbols(buf, frames);
-	backtrace_to_stderr(trace, frames);
-	free(trace);
+//	char** const trace = backtrace_symbols(buf, frames);
+//	backtrace_to_stderr(trace, frames, false);
+
+	// print the stack trace.
+//	for ( size_t i = 0; i < frames; i++ )
+//		fprintf( stderr, "%s\n", trace[i]);
+//	free(trace);
+
+	backtrace_symbols_fd(buf, frames, 2);
+
 }
+
+#endif // USE_LIBWIND
 
 #endif // _MSC_VER

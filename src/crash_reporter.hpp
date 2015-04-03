@@ -19,8 +19,7 @@
 
 #pragma once
 
-class CrashReporter
+namespace crash_reporter
 {
-public:
-	CrashReporter();
+extern void register_handlers();
 };

@@ -429,6 +429,13 @@ if env["prereqs"]:
         if env["history"]:
             client_env.Append(CPPDEFINES = ["HAVE_HISTORY"])
 
+        env["unwind"] = conf.CheckLib("unwind") or Warning("Can't find libunwind, using libc for backtrace.")
+        if env["unwind"]:
+            client_env.Append(CPPDEFINES = "USE_LIBUNWIND")
+            client_env.Append(LIBS = "libunwind-x86_64")
+            client_env.Append(CCFLAGS = "-ggdb3")
+            client_env.Append(LINKFLAGS = "-rdynamic")
+
     if env["forum_user_handler"]:
         flags = env.ParseFlags("!mysql_config --libs --cflags")
         try: # Some versions of mysql_config add -DNDEBUG but we don't want it

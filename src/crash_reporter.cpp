@@ -25,17 +25,24 @@
 static void abortHandler(int);
 static void terminateHandler();
 
-CrashReporter::CrashReporter()
+namespace crash_reporter {
+
+void register_handlers()
 {
+	fprintf(stderr, "Registering crash handlers...\n");
+
 	// Register assert, segfault, illegal op code, and floating point errors to the abort handler.
 	signal( SIGABRT, abortHandler );
 	signal( SIGSEGV, abortHandler );
 	signal( SIGILL,  abortHandler );
 	signal( SIGFPE,  abortHandler );
+	signal( SIGBUS,  abortHandler );
 
 	// Register terminate calls (mainly halting caused by exceptions) to the terminate handler
 	std::set_terminate( terminateHandler );
 }
+
+} // namespace crash_reporter
 
 // This code based on source: http://oroboro.com/stack-trace-on-crash/ , retrieved April 2, 2015.
 void abortHandler( int signum )
