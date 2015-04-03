@@ -22,10 +22,24 @@
  * @file
  * Interfaces for manipulating version numbers of engine,
  * add-ons, etc.
+ */
+
+/**
+ * Represents version numbers.
  *
- * This class assumes versions are in the format "X.Y.Z", with
- * additional components not being associated to canonical
- * names.
+ * Versions are expected to be in the format <tt>x1.x2.x3[.x4[.x5[...]]]</tt>,
+ * with an optional trailing special version suffix and suffix separator.
+ *
+ * When parsing a version string, the first three components are optional
+ * and default to zero if absent. The serialized form will always have all
+ * first three components, making deserialization and serialization an
+ * asymmetric process in those cases (e.g. "0.1" becomes "0.1.0").
+ *
+ * The optional trailing suffix starts after the last digit, and may be
+ * preceded by a non-alphanumeric separator character (e.g. "0.1a" has "a" as
+ * its suffix and the null character as its separator, but in "0.1+dev" the
+ * separator is '+' and the suffix is "dev"). Both are preserved during
+ * serialization ("0.1+dev" becomes "0.1.0+dev").
  */
 class version_info
 {
@@ -37,7 +51,27 @@ public:
 	version_info(unsigned int major, unsigned int minor, unsigned int revision_level,
 	             char special_separator='\0', const std::string& special=std::string());
 
+	/**
+	 * Whether the version number is considered canonical for mainline Wesnoth.
+	 *
+	 * Mainline Wesnoth version numbers have at most three components, so this
+	 * check is equivalent to <tt>components() >= 3</tt>.
+	 */
 	bool is_canonical() const;
+
+	/**
+	 * Serializes the version number into string form.
+	 *
+	 * The result is in the format <tt>x1.x2.x3[.x4[.x5[...]]]</tt>, followed
+	 * by the special version suffix separator (if not null) and the suffix
+	 * itself (if not empty).
+	 */
+	std::string str() const;
+
+	/**
+	 * Syntactic shortcut for str().
+	 */
+	operator std::string() const { return this->str(); }
 
 	// Good old setters and getters for this class. Their names should be
 	// pretty self-descriptive. I couldn't use shorter names such as
@@ -47,82 +81,99 @@ public:
 
 	// Canonical version components.
 
-	unsigned int major_version() const;  /**< Retrieves the major version number (X in "X.Y.Z"). */
-	unsigned int minor_version() const;  /**< Retrieves the minor version number (Y in "X.Y.Z"). */
-	unsigned int revision_level() const; /**< Retrieves the revision level (Z in "X.Y.Z"). */
+	/**
+	 * Retrieves the major version number (@a x1 in "x1.x2.x3").
+	 */
+	unsigned int major_version() const;
 
 	/**
-	 * It is sometimes useful so append special build/distribution
-	 * information to version numbers, in the form of "X.Y.Z+dev",
-	 * "X.Y.Za", etcetera. This member function retrieves such if
-	 * available.
+	 * Retrieves the minor version number (@a x2 in "x1.x2.x3").
 	 */
-	const std::string& special_version() const {
+	unsigned int minor_version() const;
+
+	/**
+	 * Retrieves the revision level (@a x3 in "x1.x2.x3").
+	 */
+	unsigned int revision_level() const;
+
+	/**
+	 * Retrieves the special version separator (e.g. '+' in "0.1+dev").
+	 *
+	 * The special version separator is the first non-alphanumerical character
+	 * preceding the special version suffix and following the last numeric
+	 * component. If missing, the null character is returned instead.
+	 */
+	char special_version_separator() const
+	{
+		return this->special_separator_;
+	}
+
+	/**
+	 * Retrieves the special version suffix (e.g. "dev" in "0.1+dev").
+	 */
+	const std::string& special_version() const
+	{
 		return this->special_;
 	}
 
 	/**
-	 * Retrieves the special version separator. For the "X.Y.Z+blah"
-	 * string, it would be '+'. On the other hand, it would be a null
-	 * (ASCII 00) character if the string was "X.Y.Za".
+	 * Sets the major version number.
 	 */
-	char special_version_separator() const {
-		return this->special_separator_;
-	}
+	void set_major_version(unsigned int);
 
-	void set_major_version(unsigned int);  /**< Set major version number. */
-	void set_minor_version(unsigned int);  /**< Set minor version number. */
-	void set_revision_level(unsigned int); /**< Set revision level. */
+	/**
+	 * Sets the minor version number.
+	 */
+	void set_minor_version(unsigned int);
 
-	/** Set special version string. */
-	void set_special_version(const std::string& str) {
+	/**
+	 * Sets the revision level.
+	 */
+	void set_revision_level(unsigned int);
+
+	/**
+	 * Sets the special version suffix.
+	 */
+	void set_special_version(const std::string& str)
+	{
 		this->special_ = str;
 	}
 
-	// Non-canonical version strings components.
-
 	/**
-	 * Returns a component from a non-canonically formatted
-	 * version string (i.e. 'D' from A.B.C.D is index 3).
-	 * The index may be in the [0,3) range; in such case, this
-	 * function works identically to the canonical version
-	 * numbers extractors.
+	 * Returns any numeric component from a version number.
 	 *
-	 * @note If the number of components is smaller than index-1,
-	 *       a std::out_of_range exception may be thrown.
+	 * The index may be in the [0,3) range, yielding the same results as
+	 * major_version(), minor_version(), and revision_level().
+	 *
+	 * @throw std::out_of_range If the number of components is less than
+	 *                          <tt>index - 1</tt>.
 	 */
-	unsigned int get_component(size_t index) const {
+	unsigned int get_component(size_t index) const
+	{
 		return nums_.at(index);
 	}
 
 	/**
-	 * Sets a component in a non-canonically formatted
-	 * version string (i.e. 'D' from A.B.C.D is index 3).
-	 * The index may be in the [0,3) range; in such case, this
-	 * function works identically to the canonical version
-	 * numbers setters.
+	 * Sets any numeric component from a version number.
 	 *
-	 * @note If the number of components is smaller than index-1,
-	 *       new ones are added and initialized as 0 to make room.
+	 * The index may be in the [0,3) range, resulting in the same effect as
+	 * set_major_version(), set_minor_version(), and set_revision_level().
+	 *
+	 * @throw std::out_of_range If the number of components is less than
+	 *                          <tt>index - 1</tt>.
 	 */
-	void set_component(size_t index, unsigned int value) {
+	void set_component(size_t index, unsigned int value)
+	{
 		nums_.at(index) = value;
 	}
 
-	/** Read-only access to complete vector of components. */
-	const std::vector<unsigned int>& components() const {
+	/**
+	 * Read-only access to all numeric components.
+	 */
+	const std::vector<unsigned int>& components() const
+	{
 		return this->nums_;
 	}
-
-	std::string str() const; /**<
-							   * Returns a formatted string of the form
-							   * A.B.C[.x1[.x2[...]]]kS, where xN stand for
-							   * non-canonical version components, k for the
-							   * suffix separator, and S for the suffix string.
-							   */
-
-	/** Syntactic shortcut for str(). */
-	operator std::string() const { return this->str(); }
 
 private:
 	std::vector<unsigned int> nums_;
