@@ -596,10 +596,6 @@ void server::handle_upload(const server::request& req)
 
 		std::string message = "Add-on accepted.";
 
-		if(!version_info(upload["version"]).good()) {
-			message += "\n\nNote: The version you specified is invalid. This add-on will be ignored for automatic update checks.";
-		}
-
 		if(campaign == NULL) {
 			campaign = &campaigns().add_child("campaign");
 			(*campaign)["original_timestamp"] = upload_ts;

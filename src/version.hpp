@@ -30,17 +30,13 @@
 class version_info
 {
 public:
-	/** Thrown when trying to compare an non-sane version_info object. */
-	struct not_sane_exception {};
-
 	version_info();                    /**< Default constructor. */
 	version_info(const std::string&);  /**< String constructor. */
 
 	/** Simple list constructor. */
-	version_info(unsigned int major, unsigned int minor, unsigned int revision_level, bool sane = true,
+	version_info(unsigned int major, unsigned int minor, unsigned int revision_level,
 	             char special_separator='\0', const std::string& special=std::string());
 
-	bool good() const { return this->sane_; }
 	bool is_canonical() const;
 
 	// Good old setters and getters for this class. Their names should be
@@ -132,7 +128,6 @@ private:
 	std::vector<unsigned int> nums_;
 	std::string               special_;
 	char                      special_separator_;
-	bool                      sane_;
 };
 
 /** Equality operator for version_info. */

@@ -273,15 +273,6 @@ bool loadgame::check_version_compatibility(const version_info & save_version, CV
 	}
 
 	const version_info &wesnoth_version = game_config::wesnoth_version;
-	// If the version isn't good, it probably isn't a compatible stable one,
-	// and the following comparisons would throw.
-	if (!save_version.good()) {
-		const std::string message = _("The save has corrupt version information ($version_number|) and cannot be loaded.");
-		utils::string_map symbols;
-		symbols["version_number"] = save_version.str();
-		gui2::show_error_message(video, utils::interpolate_variables_into_string(message, &symbols));
-		return false;
-	}
 
 	// Even minor version numbers indicate stable releases which are
 	// compatible with each other.

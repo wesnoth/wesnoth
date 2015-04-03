@@ -315,10 +315,6 @@ namespace game_config
 			if (s.has_attribute("ready_for_start")) 	ready_for_start = 		s["ready_for_start"].str();
 			if (s.has_attribute("game_has_begun")) 		game_has_begun = 		s["game_has_begun"].str();
 		}
-
-		assert(wesnoth_version.good());
-		assert(min_savegame_version.good());
-		assert(test_version.good());
 	}
 
 	void add_color_info(const config &v)

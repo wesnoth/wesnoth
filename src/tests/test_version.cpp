@@ -21,10 +21,6 @@ BOOST_AUTO_TEST_SUITE( version )
 
 BOOST_AUTO_TEST_CASE( test_version_info )
 {
-	version_info invalid(0,0,0,false,'!',"d'oh");
-
-	BOOST_CHECK( !invalid.good() );
-
 	version_info canonical("1.2.3");
 
 	BOOST_CHECK( canonical.is_canonical() );
