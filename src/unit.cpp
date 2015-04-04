@@ -392,6 +392,9 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 	if (const config::attribute_value *v = cfg.get("cost")) {
 		unit_value_ = *v;
 	}
+	if (const config::attribute_value *v = cfg.get("ellipse")) {
+		cfg_["ellipse"] = *v;
+	}
 	if (const config::attribute_value *v = cfg.get("halo")) {
 		anim_comp_->clear_haloes();
 		cfg_["halo"] = *v;
