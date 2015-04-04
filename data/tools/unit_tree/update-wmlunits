@@ -43,11 +43,11 @@ make -C $BUILD mo-update > /dev/null 2>&1
 rm -f $DIR/overview.txt
 
 echo DOWNLOADING
-$TOOLS/wesnoth_addon_manager -p $PORT -d '.*' -c $ADDONS > $LOG/wesnoth_addon_manager.txt 2>&1 &&
+$TOOLS/wesnoth_addon_manager -p $PORT -d '.*' -c $ADDONS > $LOG/wesnoth_addon_manager.txt 2>&1
 echo WORKING
-python -u $TOOLS/wmlunits -t $TRANS -D $DATA -o $TMPOUT -w $EXE -C $CONFIG -a $ADDONS -L $DIR/overview.txt -B $DIR/overview.txt -T $TIMEOUT > $LOG/wmlunits.txt 2>&1 &&
+python -u $TOOLS/wmlunits -t $TRANS -D $DATA -o $TMPOUT -w $EXE -C $CONFIG -a $ADDONS -L $DIR/overview.txt -B $DIR/overview.txt -T $TIMEOUT > $LOG/wmlunits.txt 2>&1
 test -f $TMPOUT/mainline/en_US/mainline.html
-rsync -vaz --delete $TMPOUT/ $OUT > $LOG/rsync.txt 2>&1 &&
-rm -rf $TEMP/* &&
+rsync -vaz --delete $TMPOUT/ $OUT > $LOG/rsync.txt 2>&1
+rm -rf $TEMP/*
 rm -rf $TMPOUT
 

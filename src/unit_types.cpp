@@ -1256,7 +1256,8 @@ namespace legacy {
 		std::string desc_str = description.str();
 		const size_t colon_pos = desc_str.find(':');
 		const size_t first_end_line = desc_str.find_first_of("\r\n");
-		if ( colon_pos != std::string::npos  &&  colon_pos + 1 == first_end_line )
+		const size_t space_pos = desc_str.find(' ');
+		if ( colon_pos != std::string::npos  &&  colon_pos + 1 == first_end_line && !(space_pos != std::string::npos && space_pos < colon_pos))
 		{
 			// Try to avoid spamming the deprecation message.
 			static std::set< std::string > reported;

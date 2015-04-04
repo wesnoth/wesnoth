@@ -14,6 +14,7 @@
 #include "connect_engine.hpp"
 
 #include "ai/configuration.hpp"
+#include "config_assign.hpp"
 #include "formula_string_utils.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -189,19 +190,7 @@ connect_engine::connect_engine(saved_game& state,
 	// Add host to the connected users list.
 	import_user(preferences::login(), false);
 
-	// Send initial information.
-	config response;
-	if (first_scenario_) {
-		config& create_game = response.add_child("create_game");
-		create_game["name"] = params_.name;
-		if (params_.password.empty() == false) {
-			create_game["password"] = params_.password;
-		}
-	} else {
-		response.add_child("update_game");
-	}
-	network::send_data(response, 0);
-
+	//actualy only updates the sides in the level.
 	update_level();
 
 	// If we are connected, send data to the connected host.
@@ -780,9 +769,17 @@ int connect_engine::find_user_side_index_by_id(const std::string& id) const
 
 void connect_engine::send_level_data(const network::connection sock) const
 {
+	// Send initial information.
 	if (first_scenario_) {
+		network::send_data(config_of
+			("create_game", config_of
+				("name", params_.name)
+				("password", params_.password)
+			)	
+		);
 		network::send_data(level_, sock);
 	} else {
+		network::send_data(config_of("update_game", config()), 0);
 		config next_level;
 		next_level.add_child("store_next_scenario", level_);
 		network::send_data(next_level, sock);

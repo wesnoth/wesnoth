@@ -16,6 +16,8 @@
 #define INCLUDED_MAPGEN_LUA_KERNEL
 
 #include "scripting/lua_kernel_base.hpp"
+#include <boost/optional.hpp>
+#include <boost/cstdint.hpp>
 
 class config;
 
@@ -28,11 +30,13 @@ public:
 	virtual std::string my_name() { return "Mapgen Lua Kernel"; }
 
 	void user_config(const char * prog, const config & generator); // throws game::lua_error
-	std::string create_map(const char * prog, const config & generator); // throws game::lua_error
-	config create_scenario(const char * prog, const config & generator); // throws game::lua_error
-
+	std::string create_map(const char * prog, const config & generator, boost::optional<boost::uint32_t> seed); // throws game::lua_error
+	config create_scenario(const char * prog, const config & generator, boost::optional<boost::uint32_t> seed); // throws game::lua_error
+	
+	virtual boost::uint32_t get_random_seed();
 private:
 	void run_generator(const char * prog, const config & generator);
+	boost::optional<boost::uint32_t> random_seed_;
 };
 
 #endif

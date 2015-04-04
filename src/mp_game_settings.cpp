@@ -185,22 +185,18 @@ void mp_game_settings::update_addon_requirements(const config & cfg) {
 	if (it != addons.end()) {
 		addon_version_info & addon = it->second;
 
-		try {
-			if (new_data.version) {
-				if (!addon.version || (*addon.version != *new_data.version)) {
-					WRN_NG << "Addon version data mismatch -- not all local WML has same version of '" << cfg["id"].str() << "' addon.\n";
-				}
-			}
-			if (addon.version && !new_data.version) {
+		if (new_data.version) {
+			if (!addon.version || (*addon.version != *new_data.version)) {
 				WRN_NG << "Addon version data mismatch -- not all local WML has same version of '" << cfg["id"].str() << "' addon.\n";
 			}
-			if (new_data.min_version) {
-				if (!addon.min_version || (*new_data.min_version > *addon.min_version)) {
-					addon.min_version = *new_data.min_version;
-				}
+		}
+		if (addon.version && !new_data.version) {
+			WRN_NG << "Addon version data mismatch -- not all local WML has same version of '" << cfg["id"].str() << "' addon.\n";
+		}
+		if (new_data.min_version) {
+			if (!addon.min_version || (*new_data.min_version > *addon.min_version)) {
+				addon.min_version = *new_data.min_version;
 			}
-		} catch (version_info::not_sane_exception &) {
-			WRN_NG << "Caught a version_info not_sane_exception when determining a scenario's add-on dependencies. addon_id = " << cfg["id"].str() << "\n";
 		}
 	} else {
 		// Didn't find this addon-id in the map, so make a new entry.

@@ -141,15 +141,7 @@ end
 function wml_actions.gold(cfg)
 	local amount = tonumber(cfg.amount) or
 		helper.wml_error "[gold] missing required amount= attribute."
-	local sides = cfg.side
-	local filter_side = helper.get_child(cfg, "filter_side")
-	if filter_side then
-		wesnoth.message("warning", "[gold][filter_side] is deprecated, use only an inline SSF")
-		if sides then helper.wml_error("duplicate side information in [gold]") end
-		sides = wesnoth.get_sides(filter_side)
-	else
-		sides = wesnoth.get_sides(cfg)
-	end
+	local sides = wesnoth.get_sides(cfg)
 	for index, team in ipairs(sides) do
 		team.gold = team.gold + amount
 	end
@@ -1099,9 +1091,7 @@ function wml_actions.transform_unit(cfg)
 			local status = helper.get_child( unit.__cfg, "status" )
 
 			unit.experience = unit.max_experience
-			wml_actions.store_unit { { "filter", { id = unit.id } }, variable = "Lua_store_unit", kill = true }
-			wml_actions.unstore_unit { variable = "Lua_store_unit", find_vacant = false, advance = true, fire_event = false, animate = false }
-			wesnoth.set_variable ( "Lua_store_unit")
+			wml_actions.advance_unit(unit, false, false)
 
 			unit.hitpoints = hitpoints
 			unit.experience = experience
@@ -1323,23 +1313,6 @@ function wml_actions.put_to_recall_list(cfg)
 		end
 		wesnoth.put_recall_unit(unit, unit.side)
 		wesnoth.put_unit(unit.x, unit.y)
-	end
-end
-
-function wml_actions.full_heal(cfg)
-	local units = wesnoth.get_units(cfg)
-
-	for i, unit in ipairs(units) do	
-		if (not unit.status.unhealable) or cfg.ignore_status then
-			unit.hitpoints = unit.max_hitpoints
-			if cfg.cures then
-				unit.status.poisoned = false
-				unit.status.slowed = false
-			end
-			if cfg.animate then
-				wesnoth.animate_unit({ flag = "healed" ,  with_bars = "yes" , { "filter" , { id = unit.id } } })
-			end
-		end
 	end
 end
 

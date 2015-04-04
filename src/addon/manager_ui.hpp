@@ -36,7 +36,7 @@ bool manage_addons(display& disp);
  * it's dependencies. Launches gui dialogs when issues arise.
  *
  * @param disp Display object on which to render UI elements.
- * @param id The id of the target add-on.
+ * @param addon_ids The ids of the target add-on.
  *
  * @return @a true when we successfully installed the target (possibly the user chose to ignore failures)
  */

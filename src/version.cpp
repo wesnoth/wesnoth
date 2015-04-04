@@ -20,13 +20,13 @@
 #include <functional>
 
 version_info::version_info()
-	: nums_(3,0), special_(""), special_separator_('\0'), sane_(true)
+	: nums_(3,0), special_(""), special_separator_('\0')
 {
 }
 
-version_info::version_info(unsigned int major, unsigned int minor, unsigned int revision_level, bool sane,
+version_info::version_info(unsigned int major, unsigned int minor, unsigned int revision_level,
                            char special_separator, const std::string& special)
-	: nums_(3,0), special_(special), special_separator_(special_separator), sane_(sane)
+	: nums_(3,0), special_(special), special_separator_(special_separator)
 {
 	nums_[0] = major;
 	nums_[1] = minor;
@@ -37,7 +37,6 @@ version_info::version_info(const std::string& str)
 	: nums_(3,0)
 	, special_("")
 	, special_separator_('\0')
-	, sane_(true)
 {
 	std::string v = str;
 	utils::strip(v);
@@ -83,15 +82,8 @@ version_info::version_info(const std::string& str)
 		nums_.resize(s, 0);
 	}
 
-	try {
-		for(size_t i = 0; (i < s); ++i) {
-			nums_[i] = lexical_cast<unsigned int>(components[i]);
-		}
-	}
-	catch(bad_lexical_cast const&) {
-		// FIXME: actually, this is virtually impossible to occur
-		// due to the find_first_not_of() call above...
-		sane_ = false;
+	for(size_t i = 0; (i < s); ++i) {
+		nums_[i] = lexical_cast_default<unsigned int>(components[i]);
 	}
 }
 
@@ -144,7 +136,7 @@ unsigned int version_info::revision_level() const {
 }
 
 bool version_info::is_canonical() const {
-	return nums_.size() <= 3 && sane_;
+	return nums_.size() <= 3;
 }
 
 namespace {
@@ -187,8 +179,6 @@ namespace {
 #endif
 	bool version_numbers_comparison_internal(const version_info& l, const version_info& r, COMP_TYPE o)
 	{
-		if((!l.good()) || !r.good()) throw version_info::not_sane_exception();
-
 		std::vector<unsigned int> lc = l.components();
 		std::vector<unsigned int> rc = r.components();
 

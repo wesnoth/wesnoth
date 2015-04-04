@@ -36,6 +36,15 @@ mt_rng::mt_rng() :
 {
 }
 
+	
+mt_rng::mt_rng(boost::uint32_t seed)
+	: random_seed_(seed)
+	, mt_(random_seed_)
+	, random_calls_(0)
+{
+}
+
+
 mt_rng::mt_rng(const config& cfg) :
 	random_seed_(42),
 	mt_(random_seed_), //we don't have the seed at construction time, we have to seed after construction in this case. Constructing an mt19937 is somewhat expensive, apparently has about 2kb of private memory. 

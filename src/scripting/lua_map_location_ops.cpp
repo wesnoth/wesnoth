@@ -14,14 +14,16 @@
 
 #include "lua_map_location_ops.hpp"
 
-#include "lua/lua.h"
-#include "lua/lauxlib.h"
 #include "map_location.hpp"
 #include "util.hpp"
 
 #include <string>
 #include <utility>
 #include <ciso646>   // for and
+
+#include "lua/lua.h"
+#include "lua/lauxlib.h"
+
 /**
  * Helper function which gets a map location from the stack. Handles lua (1-based) to C++ (0-based) conversion.
  * Expected: stack has at least two elements, top is y, next is x.

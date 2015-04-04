@@ -37,12 +37,10 @@ game_data::game_data()
 		: variable_set()
 		, scoped_variables()
 		, last_selected(map_location::null_location())
-		, wml_menu_items_()
 		, rng_()
 		, variables_()
 		, phase_(INITIAL)
 		, can_end_turn_(true)
-		, scenario_()
 		, next_scenario_()
 		{}
 
@@ -50,27 +48,22 @@ game_data::game_data(const config& level)
 		: variable_set()
 		, scoped_variables()
 		, last_selected(map_location::null_location())
-		, wml_menu_items_()
 		, rng_(level)
 		, variables_(level.child_or_empty("variables"))
 		, phase_(INITIAL)
 		, can_end_turn_(level["can_end_turn"].to_bool(true))
-		, scenario_(level["id"])
 		, next_scenario_(level["next_scenario"])
 {
-	wml_menu_items_.set_menu_items(level);
 }
 
 game_data::game_data(const game_data& data)
 		: variable_set() // variable set is just an interface.
 		, scoped_variables(data.scoped_variables)
 		, last_selected(data.last_selected)
-		, wml_menu_items_(data.wml_menu_items_)
 		, rng_(data.rng_)
 		, variables_(data.variables_)
 		, phase_(data.phase_)
 		, can_end_turn_(data.can_end_turn_)
-		, scenario_(data.scenario_)
 		, next_scenario_(data.next_scenario_)
 {}
 //throws
@@ -138,8 +131,8 @@ void game_data::clear_variable(const std::string& varname)
 	}
 }
 
-void game_data::write_snapshot(config& cfg) const {
-	cfg["scenario"] = scenario_;
+void game_data::write_snapshot(config& cfg) const
+{
 	cfg["next_scenario"] = next_scenario_;
 
 	cfg["can_end_turn"] = can_end_turn_;
@@ -149,17 +142,6 @@ void game_data::write_snapshot(config& cfg) const {
 
 	cfg.add_child("variables", variables_);
 
-	wml_menu_items_.to_config(cfg);
-}
-
-game_data& game_data::operator=(const game_data& info)
-{
-	// Use copy constructor to make sure we are coherent
-	if (this != &info) {
-		this->~game_data();
-		new (this) game_data(info) ;
-	}
-	return *this ;
 }
 
 namespace {

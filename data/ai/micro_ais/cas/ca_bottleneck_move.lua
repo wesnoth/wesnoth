@@ -183,25 +183,25 @@ local function bottleneck_move_out_of_way(unit_in_way, self)
 
     if (unit_in_way.side ~= wesnoth.current.side) then return nil end
 
-   local reach = wesnoth.find_reach(unit_in_way)
+    local reach = wesnoth.find_reach(unit_in_way)
 
-   local all_units = wesnoth.get_units()
-   local occ_hexes = LS:create()
-   for _,unit in ipairs(all_units) do
-       occ_hexes:insert(unit.x, unit.y)
-   end
+    local all_units = wesnoth.get_units()
+    local occ_hexes = LS:create()
+    for _,unit in ipairs(all_units) do
+        occ_hexes:insert(unit.x, unit.y)
+    end
 
-   local best_reach, best_hex = -9e99
-   for _,loc in ipairs(reach) do
-       if self.data.BD_is_my_territory:get(loc[1], loc[2]) and (not occ_hexes:get(loc[1], loc[2])) then
-           -- Criterion: MP left after the move has been done
-           if (loc[3] > best_reach) then
-               best_reach, best_hex = loc[3], { loc[1], loc[2] }
-           end
-       end
-   end
+    local best_reach, best_hex = -9e99
+    for _,loc in ipairs(reach) do
+        if self.data.BD_is_my_territory:get(loc[1], loc[2]) and (not occ_hexes:get(loc[1], loc[2])) then
+            -- Criterion: MP left after the move has been done
+            if (loc[3] > best_reach) then
+                best_reach, best_hex = loc[3], { loc[1], loc[2] }
+            end
+        end
+    end
 
-   return best_hex
+    return best_hex
 end
 
 local ca_bottleneck_move = {}
@@ -327,6 +327,18 @@ function ca_bottleneck_move:evaluation(ai, cfg, self)
         end
     end
 
+    -- Get a map of the allies, as hexes occupied by allied units count as
+    -- reachable, but must be excluded. This could also be done below by
+    -- using bottleneck_move_out_of_way(), but this is much faster
+    local allies = AH.get_live_units {
+        { "filter_side", { { "allied_with", { side = wesnoth.current.side } } } },
+        { "not", { side = wesnoth.current.side } }
+    }
+    local allies_map = LS.create()
+    for _,ally in ipairs(allies) do
+        allies_map:insert(ally.x, ally.y)
+    end
+
     local max_rating, best_unit, best_hex = 0
     for _,unit in ipairs(units) do
         local is_healer = (unit.__cfg.usage == "healer")
@@ -350,6 +362,9 @@ function ca_bottleneck_move:evaluation(ai, cfg, self)
 
             -- If the target hex is occupied, give it a small penalty
             if current_rating_map:get(loc[1], loc[2]) then rating = rating - 0.001 end
+
+            -- Also need to exclude hexes occupied by an allied unit
+            if allies_map:get(loc[1], loc[2]) then rating = 0 end
 
             -- Now only valid and possible moves should have a rating > 0
             if (rating > max_rating) then

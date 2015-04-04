@@ -101,8 +101,10 @@ manager::manager(const config& cfg, const boost::shared_ptr<t_context> & res)
 	, used_items_()
 	, pump_(new game_events::t_pump(*this, res))
 	, resources_(res)
+	, wml_menu_items_()
 	, me_(boost::make_shared<manager * const>(this))
 {
+	wml_menu_items_.set_menu_items(cfg);
 	BOOST_FOREACH(const config &ev, cfg.child_range("event")) {
 		add_event_handler(ev);
 	}
@@ -129,7 +131,7 @@ manager::manager(const config& cfg, const boost::shared_ptr<t_context> & res)
 	}
 
 	// Create the event handlers for menu items.
-	resources_->gamedata->get_wml_menu_items().init_handlers(me_);
+	wml_menu_items_.init_handlers(me_);
 }
 
 manager::~manager() {}
@@ -238,6 +240,7 @@ void manager::write_events(config& cfg)
 
 	cfg["used_items"] = utils::join(used_items_);
 	cfg["unit_wml_ids"] = utils::join(unit_wml_ids_);
+	wml_menu_items_.to_config(cfg);
 }
 
 game_events::t_pump & manager::pump()

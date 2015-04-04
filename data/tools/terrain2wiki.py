@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 
 """
 A script to create the "Terrain Table" on the TerrainCodeTableWML wiki page.
@@ -57,6 +57,12 @@ def parse_terrain(data):
         # directly. (They're only there to make aliasing work.)
         if i[0].startswith(" "):
             continue
+        # This avoids problems due to additional = in strings. Exact string
+        # removal does not matter as long as we do not print help_topic_text
+        # in the wiki page.
+        removeus = ("<italic>text='", "'</italic>", "<ref>dst='", "text='", "'</ref>")
+        for text in removeus:
+            i = [a.replace(text, "") for a in i]
         # Create a dictionary of key and values
         content = dict([v.strip().split("=") for v in i])
         # Hidden things shouldn't be displayed
@@ -90,13 +96,12 @@ dest='output_path', help="The location of the output file.")
     path = args.path
     output_path = args.output_path
 
-    if not os.path.exists(path) and not path.endswith('.cfg'):
-        print("Invalid path: '%s' does not exist") % path
+    if not os.path.exists(path) or not path.endswith('.cfg'):
+        print("Invalid path: '%s' does not exist or not a .cfg file.") % path
         sys.exit(1)
 
     with open(path, "r") as input_file:
         data = input_file.read()
-
     data = parse_terrain(data)
 
     with open(output_path, "w") as output:

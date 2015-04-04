@@ -56,10 +56,10 @@ void lua_map_generator::user_config(display & disp)
 	}
 }
 
-std::string lua_map_generator::create_map(boost::optional<boost::uint32_t>)
+std::string lua_map_generator::create_map(boost::optional<boost::uint32_t> seed)
 {
 	try {
-		return lk_.create_map(create_map_.c_str(), generator_data_);
+		return lk_.create_map(create_map_.c_str(), generator_data_, seed);
 	} catch (game::lua_error & e) {
 		std::string msg = "Error when running lua_map_generator create_map.\n";
 		msg += "The generator was: " + config_name_ + "\n";
@@ -68,14 +68,14 @@ std::string lua_map_generator::create_map(boost::optional<boost::uint32_t>)
 	}
 }
 
-config lua_map_generator::create_scenario(boost::optional<boost::uint32_t>)
+config lua_map_generator::create_scenario(boost::optional<boost::uint32_t> seed)
 {
 	if (!create_scenario_.size()) {
 		return map_generator::create_scenario();
 	}
 
 	try {
-		return lk_.create_scenario(create_scenario_.c_str(), generator_data_);
+		return lk_.create_scenario(create_scenario_.c_str(), generator_data_, seed);
 	} catch (game::lua_error & e) {
 		std::string msg = "Error when running lua_map_generator create_scenario.\n";
 		msg += "The generator was: " + config_name_ + "\n";

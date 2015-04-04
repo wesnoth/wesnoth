@@ -58,8 +58,6 @@
 #include "help/help.hpp"
 #include "image.hpp"                    // for get_image, locator
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
-#include "lua/lauxlib.h"                // for luaL_checkinteger, etc
-#include "lua/lua.h"                    // for lua_setfield, etc
 #include "make_enum.hpp"                // for operator<<
 #include "map.hpp"                      // for gamemap
 #include "map_label.hpp"
@@ -121,6 +119,8 @@
 #include <vector>                       // for vector, etc
 #include "SDL_timer.h"                  // for SDL_GetTicks
 #include "SDL_video.h"                  // for SDL_Color, SDL_Surface
+#include "lua/lauxlib.h"                // for luaL_checkinteger, etc
+#include "lua/lua.h"                    // for lua_setfield, etc
 
 class CVideo;
 
@@ -297,6 +297,16 @@ static int impl_unit_get(lua_State *L)
 		lua_setmetatable(L, -2);
 		return 1;
 	}
+	if (strcmp(m, "attacks") == 0) {
+		lua_createtable(L, 1, 0);
+		lua_pushvalue(L, 1);
+		// hack: store the unit at -1 becasue we want positive indexes to refers to the attacks.
+		lua_rawseti(L, -2, -1);
+		lua_pushlightuserdata(L, uattacksKey);
+		lua_rawget(L, LUA_REGISTRYINDEX);
+		lua_setmetatable(L, -2);
+		return 1;
+	}
 	return_bool_attrib("hidden", u.get_hidden());
 	return_bool_attrib("petrified", u.incapacitated());
 	return_bool_attrib("resting", u.resting());
@@ -401,6 +411,182 @@ static int impl_unit_variables_get(lua_State *L)
 	return_cfgref_attrib("__cfg", u->variables());
 	luaW_pushscalar(L, u->variables()[m]);
 	return 1;
+}
+/**
+ * Gets the attacks of a unit (__index metamethod).
+ * - Arg 1: table containing the userdata containing the unit id.
+ * - Arg 2: index (int) or id (string) identyfying teh units attack.
+ * - Ret 1: the units attack.
+ */
+static int impl_unit_attacks_get(lua_State *L)
+{
+	if (!lua_istable(L, 1)) {
+		return luaL_typerror(L, 1, "unit attacks");
+	}
+	lua_rawgeti(L, 1, -1);
+	const unit_const_ptr u = luaW_tounit(L, -1);
+	if (!u) {
+		return luaL_argerror(L, 1, "unknown unit");
+	}
+	const attack_type* attack = NULL;
+	const std::vector<attack_type>& attacks = u->attacks();
+	if(!lua_isnumber(L,2)) {
+		std::string attack_id = luaL_checkstring(L, 2);
+		BOOST_FOREACH(const attack_type& at, attacks) {
+			if(at.id() == attack_id) {
+				attack = &at;
+				break;
+			}
+		}
+		if (attack == NULL) {
+			//return nil on invalid index, just like lua tables do.
+			return 0;
+		}
+	}
+	else
+	{
+		//
+		size_t index = luaL_checkinteger(L, 2) - 1;
+		if (index >= attacks.size()) {
+			//return nil on invalid index, just like lua tables do.
+			return 0;
+		}
+		attack = &attacks[index];
+	}
+
+	// stack { lua_unit }, id/index, lua_unit
+	lua_createtable(L, 2, 0);
+	// stack { lua_unit }, id/index, lua_unit, table
+	lua_pushvalue(L, -2);
+	// stack { lua_unit }, id/index, lua_unit, table, lua_unit
+	lua_rawseti(L, -2, 1);
+	// stack { lua_unit }, id/index, lua_unit, table
+	lua_pushstring(L, attack->id().c_str());
+	// stack { lua_unit }, id/index, lua_unit, table, attack id
+	lua_rawseti(L, -2, 2);
+	// stack { lua_unit }, id/index, lua_unit, table
+	lua_pushlightuserdata(L, uattackKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_setmetatable(L, -2);
+	return 1;
+}
+
+/**
+ * Counts the attacks of a unit (__len metamethod).
+ * - Arg 1: table containing the userdata containing the unit id.
+ * - Ret 1: size of unit attacks vector.
+ */
+static int impl_unit_attacks_len(lua_State *L)
+{
+	if (!lua_istable(L, 1)) {
+		return luaL_typerror(L, 1, "unit attacks");
+	}
+	lua_rawgeti(L, 1, -1);
+	const unit_const_ptr u = luaW_tounit(L, -1);
+	if (!u) {
+		return luaL_argerror(L, 1, "unknown unit");
+	}
+	lua_pushinteger(L, u->attacks().size());
+	return 1;
+}
+
+/**
+ * Gets a propoerty of a units attack (__index metamethod).
+ * - Arg 1: table containing the userdata containing the unit id. and a string identyfying the attack.
+ * - Arg 2: string
+ * - Ret 1: 
+ */
+static int impl_unit_attack_get(lua_State *L)
+{
+	if (!lua_istable(L, 1)) {
+		return luaL_typerror(L, 1, "unit attack");
+	}
+	lua_rawgeti(L, 1, 1);
+	const unit_const_ptr u = luaW_tounit(L, -1);
+	if (!u) {
+		return luaL_argerror(L, 1, "unknown unit");
+	}
+	lua_rawgeti(L, 1, 2);
+	std::string attack_id = luaL_checkstring(L, -1);
+	char const *m = luaL_checkstring(L, 2);
+	BOOST_FOREACH(const attack_type& attack, u->attacks())
+	{
+		if(attack.id() == attack_id)
+		{
+
+			return_string_attrib("description", attack.name());
+			return_string_attrib("name", attack.id());
+			return_string_attrib("type", attack.type());
+			return_string_attrib("icon", attack.icon());
+			return_string_attrib("range", attack.range());
+			// "min_range"
+			// "max_range"
+			return_int_attrib("damage", attack.damage());
+			return_int_attrib("number", attack.num_attacks());
+			return_int_attrib("attack_weight", attack.attack_weight());
+			return_int_attrib("defense_weight", attack.defense_weight());
+			//"accuracy"
+			return_int_attrib("movement_used", attack.movement_used());
+			// "parry"
+			return_cfgref_attrib("specials", attack.specials());
+			std::string err_msg = "unknown property of attack: ";
+			err_msg += m;
+			return luaL_argerror(L, 2, err_msg.c_str());
+		}
+	}
+	return luaL_argerror(L, 1, "invalid attack id");
+}
+
+/**
+ * Gets a propoerty of a units attack (__index metamethod).
+ * - Arg 1: table containing the userdata containing the unit id. and a string identyfying the attack.
+ * - Arg 2: string
+ * - Ret 1: 
+ */
+static int impl_unit_attack_set(lua_State *L)
+{
+	if (!lua_istable(L, 1)) {
+		return luaL_typerror(L, 1, "unit attack");
+	}
+	lua_rawgeti(L, 1, 1);
+	const unit_ptr u = luaW_tounit(L, -1);
+	if (!u) {
+		return luaL_argerror(L, 1, "unknown unit");
+	}
+	lua_rawgeti(L, 1, 2);
+	std::string attack_id = luaL_checkstring(L, -1);
+	char const *m = luaL_checkstring(L, 2);
+	BOOST_FOREACH(attack_type& attack, u->attacks())
+	{
+		if(attack.id() == attack_id)
+		{
+
+			modify_tstring_attrib("description", attack.set_name(value));
+			// modify_string_attrib("name", attack.set_id(value));
+			modify_string_attrib("type", attack.set_type(value));
+			modify_string_attrib("icon", attack.set_icon(value));
+			modify_string_attrib("range", attack.set_range(value));
+			// "min_range"
+			// "max_range"
+			modify_int_attrib("damage", attack.set_damage(value));
+			modify_int_attrib("number", attack.set_num_attacks(value));
+			modify_int_attrib("attack_weight", attack.set_attack_weight(value));
+			modify_int_attrib("defense_weight", attack.set_defense_weight(value));
+			//"accuracy"
+			modify_int_attrib("movement_used", attack.set_movement_used(value));
+			// "parry"
+			
+			if (strcmp(m, "specials") == 0) { \
+				attack.set_specials(luaW_checkconfig(L, 3));
+				return 0;
+			}
+			return_cfgref_attrib("specials", attack.specials());
+			std::string err_msg = "unknown modifyable property of attack: ";
+			err_msg += m;
+			return luaL_argerror(L, 2, err_msg.c_str());
+		}
+	}
+	return luaL_argerror(L, 1, "invalid attack id");
 }
 
 /**
@@ -687,7 +873,7 @@ int game_lua_kernel::intf_fire_wml_menu_item(lua_State *L)
 	l1.x = luaL_checkinteger(L, 2) - 1;
 	l1.y = luaL_checkinteger(L, 3) - 1;
 
-	bool b = gamedata().get_wml_menu_items().fire_item(m, l1, gamedata(), game_state_, units());
+	bool b = game_state_.get_wml_menu_items().fire_item(m, l1, gamedata(), game_state_, units());
 	lua_pushboolean(L, b);
 	return 1;
 }
@@ -783,7 +969,7 @@ int game_lua_kernel::intf_set_variable(lua_State *L)
 
 int game_lua_kernel::intf_set_menu_item(lua_State *L)
 {
-	gamedata().get_wml_menu_items().set_item(luaL_checkstring(L, 1), luaW_checkvconfig(L,2), game_state_.events_manager_.get());
+	game_state_.get_wml_menu_items().set_item(luaL_checkstring(L, 1), luaW_checkvconfig(L,2), game_state_.events_manager_.get());
 
 	return 0;
 }
@@ -796,8 +982,7 @@ int game_lua_kernel::intf_clear_menu_item(lua_State *L)
 			WRN_LUA << "[clear_menu_item] has been given an empty id=, ignoring" << std::endl;
 			continue;
 		}
-
-		gamedata().get_wml_menu_items().erase(id);
+		game_state_.get_wml_menu_items().erase(id);
 	}
 	return 0;
 }
@@ -2174,9 +2359,6 @@ int game_lua_kernel::intf_put_recall_unit(lua_State *L)
 
 	if (!side) side = u->side();
 	team &t = teams()[side - 1];
-	if (!t.persistent())
-		return luaL_argerror(L, 2, "nonpersistent side");
-
 	// Avoid duplicates in the recall list.
 	size_t uid = u->underlying_id();
 	t.recall_list().erase_by_underlying_id(uid);
@@ -3010,6 +3192,27 @@ static int intf_add_modification(lua_State *L)
 }
 
 /**
+ * Advances a unit if the unit has enough xp.
+ * - Arg 1: unit.
+ * - Arg 2: optional boolean whether to animate the advancement.
+ * - Arg 3: optional boolean whether to fire advancement events.
+ */
+static int intf_advance_unit(lua_State *L)
+{
+	unit_ptr u = luaW_checkunit(L, 1, true);
+	advance_unit_params par(u->get_location());
+	if(lua_isboolean(L, 2)) {
+		par.animate(luaW_toboolean(L, 2));
+	}
+	if(lua_isboolean(L, 3)) {
+		par.fire_events(luaW_toboolean(L, 3));
+	}
+	advance_unit_at(par);
+	return 0;
+}
+
+
+/**
  * Adds a new known unit type to the help system.
  * - Arg 1: string.
  */
@@ -3298,6 +3501,13 @@ int game_lua_kernel::intf_redraw(lua_State *L)
 		vconfig cfg(luaW_checkvconfig(L, 1));
 		bool clear_shroud(luaW_toboolean(L, 2));
 
+		// We do this twice so any applicable redraws happen both before and after
+		// any events caused by redrawing shroud are fired
+		bool result = screen.maybe_rebuild();
+		if (!result) {
+			screen.invalidate_all();
+		}
+
 		if (clear_shroud) {
 			side_filter filter(cfg, &game_state_);
 			BOOST_FOREACH(const int side, filter.get_teams()){
@@ -3306,10 +3516,11 @@ int game_lua_kernel::intf_redraw(lua_State *L)
 			screen.recalculate_minimap();
 		}
 
-		bool result = screen.maybe_rebuild();
+		result = screen.maybe_rebuild();
 		if (!result) {
 			screen.invalidate_all();
 		}
+
 		screen.draw(true,true);
 	}
 	return 0;
@@ -3719,6 +3930,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 	static luaL_Reg const callbacks[] = {
 		{ "add_known_unit",           &intf_add_known_unit           },
 		{ "add_modification",         &intf_add_modification         },
+		{ "advance_unit",             &intf_advance_unit             },
 		{ "copy_unit",                &intf_copy_unit                },
 		{ "create_unit",              &intf_create_unit              },
 		{ "debug",                    &intf_debug                    },
@@ -3860,6 +4072,31 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 	lua_pushcfunction(L, impl_unit_status_set);
 	lua_setfield(L, -2, "__newindex");
 	lua_pushstring(L, "unit status");
+	lua_setfield(L, -2, "__metatable");
+	lua_rawset(L, LUA_REGISTRYINDEX);
+
+	// Create the unit attacks metatable.
+	cmd_log_ << "Adding unit attacks metatable...\n";
+	
+	lua_pushlightuserdata(L, uattacksKey);
+	lua_createtable(L, 0, 3);
+	lua_pushcfunction(L, impl_unit_attacks_get);
+	lua_setfield(L, -2, "__index");
+	lua_pushcfunction(L, impl_unit_attacks_len);
+	lua_setfield(L, -2, "__len");
+	lua_pushstring(L, "unit attacks");
+	lua_setfield(L, -2, "__metatable");
+	lua_rawset(L, LUA_REGISTRYINDEX);
+
+
+	
+	lua_pushlightuserdata(L, uattackKey);
+	lua_createtable(L, 0, 3);
+	lua_pushcfunction(L, impl_unit_attack_get);
+	lua_setfield(L, -2, "__index");
+	lua_pushcfunction(L, impl_unit_attack_set);
+	lua_setfield(L, -2, "__newindex");
+	lua_pushstring(L, "unit attack");
 	lua_setfield(L, -2, "__metatable");
 	lua_rawset(L, LUA_REGISTRYINDEX);
 

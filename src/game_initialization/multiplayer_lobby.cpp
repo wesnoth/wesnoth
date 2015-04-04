@@ -619,59 +619,54 @@ void gamebrowser::populate_game_item_map_info(gamebrowser::game_item & item, con
 // versions are compatible. If it's not, a record is made in the req_list passed as argument.
 static mp::ADDON_REQ check_addon_version_compatibility (const config & local_item, const config & game, std::vector<required_addon> & req_list)
 {
-	try {
-		if (local_item.has_attribute("addon_id") && local_item.has_attribute("addon_version")) {
-			if (const config & game_req = game.find_child("addon", "id", local_item["addon_id"])) {
-				// Record object which we will potentially store for this check
-				required_addon r;
-				r.addon_id = local_item["addon_id"].str();
+	if (local_item.has_attribute("addon_id") && local_item.has_attribute("addon_version")) {
+		if (const config & game_req = game.find_child("addon", "id", local_item["addon_id"])) {
+			// Record object which we will potentially store for this check
+			required_addon r;
+			r.addon_id = local_item["addon_id"].str();
 
-				const version_info local_ver(local_item["addon_version"].str());
-				version_info local_min_ver(local_item.has_attribute("addon_min_version") ? local_item["addon_min_version"] : local_item["addon_version"]);
-				// If UMC didn't specify last compatible version, assume no backwards compatibility.
-				if (local_min_ver > local_ver) {
-					// Some sanity checking regarding min version. If the min ver doens't make sense, ignore it.
-					local_min_ver = local_ver;
-				}
+			const version_info local_ver(local_item["addon_version"].str());
+			version_info local_min_ver(local_item.has_attribute("addon_min_version") ? local_item["addon_min_version"] : local_item["addon_version"]);
+			// If UMC didn't specify last compatible version, assume no backwards compatibility.
+			if (local_min_ver > local_ver) {
+				// Some sanity checking regarding min version. If the min ver doens't make sense, ignore it.
+				local_min_ver = local_ver;
+			}
 
-				const version_info remote_ver(game_req["version"].str());
-				version_info remote_min_ver(game_req.has_attribute("min_version") ? game_req["min_version"] : game_req["version"]);
-				if (remote_min_ver > remote_ver) {
-					remote_min_ver = remote_ver;
-				}
+			const version_info remote_ver(game_req["version"].str());
+			version_info remote_min_ver(game_req.has_attribute("min_version") ? game_req["min_version"] : game_req["version"]);
+			if (remote_min_ver > remote_ver) {
+				remote_min_ver = remote_ver;
+			}
 
-				// Check if the host is too out of date to play.
-				if (local_min_ver > remote_ver) {
-					r.outcome = CANNOT_SATISFY;
+			// Check if the host is too out of date to play.
+			if (local_min_ver > remote_ver) {
+				r.outcome = CANNOT_SATISFY;
 
-					utils::string_map symbols;
-					symbols["addon"] = r.addon_id; // TODO: Figure out how to ask the add-on manager for the user-friendly name of this add-on.
-					symbols["host_ver"] = remote_ver.str();
-					symbols["local_ver"] = local_ver.str();
-					r.message = vgettext("Host's version of $addon is too old: host's version $host_ver < your version $local_ver.", symbols);
-					req_list.push_back(r);
-					return r.outcome;
-				}
+				utils::string_map symbols;
+				symbols["addon"] = r.addon_id; // TODO: Figure out how to ask the add-on manager for the user-friendly name of this add-on.
+				symbols["host_ver"] = remote_ver.str();
+				symbols["local_ver"] = local_ver.str();
+				r.message = vgettext("Host's version of $addon is too old: host's version $host_ver < your version $local_ver.", symbols);
+				req_list.push_back(r);
+				return r.outcome;
+			}
 
-				// Check if our version is too out of date to play.
-				if (remote_min_ver > local_ver) {
-					r.outcome = NEED_DOWNLOAD;
+			// Check if our version is too out of date to play.
+			if (remote_min_ver > local_ver) {
+				r.outcome = NEED_DOWNLOAD;
 
-					utils::string_map symbols;
-					symbols["addon"] = r.addon_id; // TODO: Figure out how to ask the add-on manager for the user-friendly name of this add-on.
-					symbols["host_ver"] = remote_ver.str();
-					symbols["local_ver"] = local_ver.str();
-					r.message = vgettext("Your version of $addon is out of date: host's version $host_ver > your version $local_ver.", symbols);
-					req_list.push_back(r);
-					return r.outcome;
-				}
+				utils::string_map symbols;
+				symbols["addon"] = r.addon_id; // TODO: Figure out how to ask the add-on manager for the user-friendly name of this add-on.
+				symbols["host_ver"] = remote_ver.str();
+				symbols["local_ver"] = local_ver.str();
+				r.message = vgettext("Your version of $addon is out of date: host's version $host_ver > your version $local_ver.", symbols);
+				req_list.push_back(r);
+				return r.outcome;
 			}
 		}
-	} catch (version_info::not_sane_exception &) {
-		WRN_MP << "Caught a version_info not_sane_exception when checking version compatability.\n";
-		DBG_MP << "WML item:\n***\n" << local_item.debug() << "\n***\n\n";
-		DBG_MP << "Game Record:\n***\n" << game.debug() << "\n***\n\n";
 	}
+
 	return SATISFIED;
 }
 
@@ -854,7 +849,14 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config, c
 		games_.push_back(game_item());
 		populate_game_item(games_.back(), game, game_config, installed_addons);
 		// Hack...
-		if(preferences::fi_invert() ? game_matches_filter(games_.back(), cfg) : !game_matches_filter(games_.back(), cfg)) games_.pop_back();
+		if (preferences::filter_lobby())
+		{
+			if(preferences::fi_invert() ? game_matches_filter(games_.back(), cfg) :
+ 			  !game_matches_filter(games_.back(), cfg))
+			{
+				games_.pop_back();
+			}
+		}
 	}
 	set_full_size(games_.size());
 	set_shown_size(inner_location().h / row_height());
@@ -899,10 +901,6 @@ void gamebrowser::select_game(const std::string& id) {
 
 bool gamebrowser::game_matches_filter(const game_item& i, const config& cfg)
 {
-
-	if(!preferences::filter_lobby()) {
-		return true;
-	}
 	if(preferences::fi_vacant_slots() && i.vacant_slots == 0) {
 		return false;
 	}

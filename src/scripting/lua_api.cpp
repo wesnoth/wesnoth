@@ -15,8 +15,6 @@
 #include "lua_api.hpp"
 #include "lua_types.hpp"
 
-#include "lua/lauxlib.h"
-#include "lua/lua.h"                    // for lua_State, lua_settop, etc
 #include "lua_jailbreak_exception.hpp"  // for tlua_jailbreak_exception
 
 #include "chat_events.hpp"              // for chat_handler, etc
@@ -40,6 +38,9 @@
 #include <utility>                      // for pair
 
 #include <string>
+
+#include "lua/lauxlib.h"
+#include "lua/lua.h"                    // for lua_State, lua_settop, etc
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)

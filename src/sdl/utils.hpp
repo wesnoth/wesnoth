@@ -201,8 +201,8 @@ surface scale_surface_nn(const surface & surf, int w, int h);
  *  @retval surf             Returned if w == surf->w and h == surf->h
  *                           note this ignores the optimize flag.
  */
-surface scale_surface(const surface &surf, int w, int h);
 surface scale_surface(const surface &surf, int w, int h, bool optimize /*=true*/);
+surface scale_surface(const surface &surf, int w, int h);
 //commenting out the default parameter so that it is possible to make function pointers to the 3 parameter version
 
 /** Scale a surface (legacy (1.10, 1.12) version)
@@ -215,8 +215,8 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize /*=true*/
  *  @retval surf             Returned if w == surf->w and h == surf->h
  *                           note this ignores the optimize flag.
  */
-surface scale_surface_legacy(const surface &surf, int w, int h);
 surface scale_surface_legacy(const surface &surf, int w, int h, bool optimize /*=true*/);
+surface scale_surface_legacy(const surface &surf, int w, int h);
 //commenting out the default parameter so that it is possible to make function pointers to the 3 parameter version
 
 /** Scale a surface using modified nearest neighbour algorithm. Use only if

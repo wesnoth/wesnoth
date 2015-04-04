@@ -322,10 +322,12 @@ std::string ya_mapgen::config_name() const {
  *** create_map
  Parameters and errors reporting are not defined yet, so this is a mere skeleton.
  */
-std::string ya_mapgen::create_map(boost::optional<boost::uint32_t>) {
+std::string ya_mapgen::create_map(boost::optional<boost::uint32_t> seed) {
 
 	yamg_params *par = new yamg_params();
-
+	if(boost::uint32_t* pseed = seed.get_ptr()){
+		par->seed = *pseed;
+	}
 	//TODO
 	unsigned int n;  // = par->readParams(args); // fills the parms object
 

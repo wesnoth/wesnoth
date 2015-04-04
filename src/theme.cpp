@@ -920,11 +920,6 @@ void theme::set_known_themes(const config* cfg)
 	{
 		std::string thm_id = thm["id"];
 
-		if (thm_id.empty() && thm.has_attribute("name")) {
-			thm_id = thm["name"].str();
-			ERR_DP << "Theme '" << thm_id << "' uses [theme] name= instead of id= to specify its id; this usage is deprecated and will be removed in version 1.13.x." << std::endl;
-		}
-
 		if (!thm["hidden"].to_bool(false)) {
 			known_themes[thm_id] = thm;
 		}

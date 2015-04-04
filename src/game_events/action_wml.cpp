@@ -706,21 +706,8 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 
 WML_HANDLER_FUNCTION(modify_ai, /*event_info*/, cfg)
 {
-	const vconfig& filter_side = cfg.child("filter_side");
-	std::vector<int> sides;
-	if(!filter_side.null()) {
-		// TODO: since 1.11.0-dev it seems
-		WRN_NG << "[modify_ai][filter_side] is deprecated, use only an inline SSF" << std::endl;
-		if(!cfg["side"].str().empty()) {
-			ERR_NG << "duplicate side information in [modify_ai]" << std::endl;
-			return;
-		}
-		side_filter ssf(filter_side, resources::filter_con);
-		sides = ssf.get_teams();
-	} else {
-		side_filter ssf(cfg, resources::filter_con);
-		sides = ssf.get_teams();
-	}
+	side_filter ssf(cfg, resources::filter_con);
+	std::vector<int> sides = ssf.get_teams();
 	BOOST_FOREACH(const int &side_num, sides)
 	{
 		ai::manager::modify_active_ai_for_side(side_num,cfg.get_parsed_config());
@@ -863,13 +850,6 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 
 	if ( u != resources::units->end()  &&  (!ufilt || ufilt->matches(*u)) )
 	{
-		///@deprecated This can be removed (and a proper duration=level implemented) after 1.11.2
-		/// Don't forget to remove it from wmllint too!
-		const std::string& duration = cfg["duration"];
-		if (duration == "level") {
-			lg::wml_error << "[object]duration=level is deprecated. Use duration=scenario instead.\n";
-		}
-
 		text = cfg["description"].str();
 
 		if(cfg["delayed_variable_substitution"].to_bool(false))
@@ -1829,8 +1809,6 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 
 			team& t = (*resources::teams)[u->side()-1];
 
-			if(t.persistent()) {
-
 				// Test whether the recall list has duplicates if so warn.
 				// This might be removed at some point but the uniqueness of
 				// the description is needed to avoid the recall duplication
@@ -1866,10 +1844,6 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 						<< u->underlying_id() << "' on the recall list\n";
 				}
 				t.recall_list().add(u);
-			} else {
-				ERR_NG << "Cannot unstore unit: recall list is empty for player " << u->side()
-					<< " and the map location is invalid.\n";
-			}
 		}
 
 		// If we unstore a leader make sure the team gets a leader if not the loading

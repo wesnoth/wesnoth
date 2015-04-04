@@ -19,9 +19,6 @@
 #include "game_config.hpp" //for game_config::debug_lua
 #include "game_errors.hpp"
 #include "log.hpp"
-#include "lua/lauxlib.h"
-#include "lua/lua.h"
-#include "lua/luaconf.h"                // for LUAL_BUFFERSIZE
 #include "scripting/lua_api.hpp"	// for chat_message, luaW_pcall
 #include "scripting/lua_common.hpp"	// for chat_message, luaW_pcall
 
@@ -29,6 +26,10 @@
 #include <string>
 
 #include <boost/scoped_ptr.hpp>
+
+#include "lua/lauxlib.h"
+#include "lua/lua.h"
+#include "lua/luaconf.h"                // for LUAL_BUFFERSIZE
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define DBG_LUA LOG_STREAM(debug, log_scripting_lua)

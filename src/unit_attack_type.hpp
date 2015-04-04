@@ -46,6 +46,23 @@ public:
 	int num_attacks() const { return num_attacks_; }
 	double attack_weight() const { return attack_weight_; }
 	double defense_weight() const { return defense_weight_; }
+	const config specials() const { return specials_; }
+
+	void set_name(const t_string& value) { description_  = value; }
+	// void set_id(const std::string& value) { return id = value; }
+	void set_type(const std::string& value) { type_ = value; }
+	void set_icon(const std::string& value) { icon_ = value; }
+	void set_range(const std::string& value) { range_ = value; }
+	// void set_min_range(int value) { min_range_ = value; }
+	// void set_max_range(int value) { max_range_ = value; }
+	// void set_accuracy(int value) { accuracy_ = value; }
+	// void set_parry(int value) { parry_ = value; }
+	void set_damage(int value) { damage_ = value; }
+	void set_num_attacks(int value) { num_attacks_ = value; }
+	void set_attack_weight(double value) { attack_weight_ = value; }
+	void set_defense_weight(double value) { defense_weight_ = value; }
+	void set_specials(config value) { specials_ = value; }
+
 
 	// In unit_abilities.cpp:
 
@@ -70,6 +87,7 @@ public:
 	bool describe_modification(const config& cfg,std::string* description);
 
 	int movement_used() const { return movement_used_; }
+	void set_movement_used(int value) { movement_used_ = value; }
 
 	void write(config& cfg) const;
 	inline config to_config() const { config c; write(c); return c; }

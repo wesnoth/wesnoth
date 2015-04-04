@@ -926,7 +926,7 @@ void start_client(game_display& disp, const config& game_config,
 			re_enter = false;
 			try {
 				enter_lobby_mode(disp, *game_config_ptr, state, installed_addons);
-			} catch (lobby_reload_request_exception & ex) {
+			} catch (lobby_reload_request_exception &) {
 				re_enter = true;
 				game_config_manager * gcm = game_config_manager::get();
 				gcm->reload_changed_game_config();

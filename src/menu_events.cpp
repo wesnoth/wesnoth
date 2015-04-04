@@ -677,11 +677,6 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	}
 
 	team &current_team = teams()[side_num - 1];
-	if(!current_team.persistent()) {
-		ERR_NG << "cannot recall a unit for side " << side_num
-			<< ", which has no recall list!\n";
-		return;
-	}
 
 	boost::shared_ptr<std::vector<unit_const_ptr > > recall_list_team = boost::make_shared<std::vector<unit_const_ptr> >();
 	{ wb::future_map future; // ensures recall list has planned recalls removed
@@ -913,7 +908,7 @@ void menu_handler::unit_description()
 void menu_handler::terrain_description(mouse_handler& mousehandler)
 {
 	const map_location& loc = mousehandler.get_last_hex();
-	if (map().on_board(loc) == false) {
+	if (map().on_board(loc) == false || gui_->shrouded(loc)) {
 		return;
 	}
 
@@ -2970,7 +2965,7 @@ void console_handler::do_next_level()
 	e.proceed_to_next_level = true;
 	e.is_victory = true;
 	menu_handler_.pc_.set_end_level_data(e);
-	throw return_to_play_side_exception();
+	menu_handler_.pc_.maybe_throw_return_to_play_side();
 }
 
 void console_handler::do_choose_level() {
@@ -3020,7 +3015,7 @@ void console_handler::do_choose_level() {
 		e.proceed_to_next_level = true;
 		e.is_victory = true;
 		menu_handler_.pc_.set_end_level_data(e);
-		throw return_to_play_side_exception();
+		menu_handler_.pc_.maybe_throw_return_to_play_side();
 	}
 }
 

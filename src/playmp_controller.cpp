@@ -259,7 +259,6 @@ void playmp_controller::linger()
 		quit = true;
 		try {
 			// reimplement parts of play_side()
-			player_number_ = first_player_;
 			turn_data_.send_data();
 			end_turn_ = END_TURN_NONE;
 			play_linger_turn();

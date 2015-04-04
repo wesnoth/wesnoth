@@ -239,16 +239,10 @@ bool game_board::team_is_defeated(const team& t) const
 	}
 }
 
-bool game_board::try_add_unit_to_recall_list(const map_location& loc, const unit_ptr u)
+bool game_board::try_add_unit_to_recall_list(const map_location&, const unit_ptr u)
 {
-	if(teams_[u->side()-1].persistent()) {
-		teams_[u->side()-1].recall_list().add(u);
-		return true;
-	} else {
-		ERR_RG << "unit with id " << u->id() << ": location (" << loc.x << "," << loc.y <<") is not on the map, and player "
-			<< u->side() << " has no recall list.\n";
-		return false;
-	}
+	teams_[u->side()-1].recall_list().add(u);
+	return true;
 }
 
 

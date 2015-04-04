@@ -14,13 +14,14 @@
 
 #include "scripting/lua_unit_type.hpp"
 
-#include "lua/lua.h"
-#include "lua/lauxlib.h"
 #include "scripting/lua_common.hpp"
 #include "unit_types.hpp"
 
 #include <boost/foreach.hpp>
 #include <string>
+
+#include "lua/lua.h"
+#include "lua/lauxlib.h"
 
 /**
  * Implementation for a lua reference to a unit_type.

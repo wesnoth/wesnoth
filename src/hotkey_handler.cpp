@@ -18,6 +18,7 @@
 #include "formula_string_utils.hpp"
 #include "game_errors.hpp"
 #include "game_events/menu_item.hpp"
+#include "game_events/wmi_container.hpp"
 #include "game_preferences.hpp"
 #include "game_state.hpp"
 #include "hotkey/hotkey_command.hpp"
@@ -240,7 +241,7 @@ bool play_controller::hotkey_handler::execute_command(const hotkey::hotkey_comma
 		std::string name = cmd.command.substr(prefixlen);
 		const map_location& hex = mouse_handler_.get_last_hex();
 
-		gamestate().gamedata_.get_wml_menu_items().fire_item(name, hex, gamestate().gamedata_, gamestate(), gamestate().board_.units_);
+		gamestate().get_wml_menu_items().fire_item(name, hex, gamestate().gamedata_, gamestate(), gamestate().board_.units_);
 		/// @todo Shouldn't the function return at this point?
 	}
 	return command_executor::execute_command(cmd, index);
@@ -399,7 +400,7 @@ void play_controller::hotkey_handler::expand_wml_commands(std::vector<std::strin
 
 			// Replace this placeholder entry with available menu items.
 			items.erase(items.begin() + i);
-			wml_command_pager_->update_ref(&gamestate().gamedata_.get_wml_menu_items());
+			wml_command_pager_->update_ref(&gamestate().get_wml_menu_items());
 			wml_command_pager_->get_items(mouse_handler_.get_last_hex(),
 							gamestate().gamedata_, gamestate(), gamestate().board_.units_,
 			                                         wml_commands_, newitems);

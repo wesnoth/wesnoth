@@ -15,12 +15,14 @@
 #include "lua_rng.hpp"
 
 #include "log.hpp"
-#include "lua/lua.h"
-#include "lua/lauxlib.h"
 #include "mt_rng.hpp"
+#include "lua_kernel_base.hpp"
 
 #include <new>
 #include <string>
+
+#include "lua/lua.h"
+#include "lua/lauxlib.h"
 
 static lg::log_domain log_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_lua)
@@ -34,7 +36,8 @@ static const char * Rng = "Rng";
 
 int impl_rng_create(lua_State* L)
 {
-	new ( lua_newuserdata(L, sizeof(mt_rng)) ) mt_rng();
+	boost::uint32_t seed = lua_kernel_base::get_lua_kernel<lua_kernel_base>(L).get_random_seed();
+	new ( lua_newuserdata(L, sizeof(mt_rng)) ) mt_rng(seed);
 	luaL_setmetatable(L, Rng);
 
 	return 1;

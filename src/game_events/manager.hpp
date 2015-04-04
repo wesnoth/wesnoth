@@ -16,6 +16,7 @@
 #define GAME_EVENTS_MANAGER_HPP
 
 #include "game_events/handlers.hpp"
+#include "game_events/wmi_container.hpp"
 
 #include <boost/function.hpp>
 #include <boost/noncopyable.hpp>
@@ -115,6 +116,7 @@ namespace game_events {
 
 		boost::scoped_ptr<game_events::t_pump> pump_;
 		boost::shared_ptr<t_context> resources_;
+		game_events::wmi_container wml_menu_items_;
 		boost::shared_ptr<manager* const> me_;
 
 	public:

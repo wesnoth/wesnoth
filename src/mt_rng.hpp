@@ -34,8 +34,8 @@ class mt_rng
 {
 public:
 	mt_rng();
-	mt_rng(const config& cfg);
-
+	explicit mt_rng(const config& cfg);
+	explicit mt_rng(boost::uint32_t seed);
 	/** Get a new random number. */
 	uint32_t get_next_random();
 

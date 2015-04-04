@@ -407,11 +407,8 @@ void game_config_manager::load_addons_cfg()
 			{
 				BOOST_FOREACH(config & cfg, umc_cfg.child_range(*type)) {
 					cfg["addon_id"] = addon.addon_id;
-					if (addon.version.good()) {
-						// If the addon string was not "sane" then reject it, we can't compare non-sane version strings.
-						// This may also happen if no version info could be found.
-						cfg["addon_version"] = addon.version.str(); // Note that this may reformat the string in a canonical form.
-					}
+					// Note that this may reformat the string in a canonical form.
+					cfg["addon_version"] = addon.version.str();
 				}
 			}
 

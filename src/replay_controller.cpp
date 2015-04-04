@@ -112,21 +112,17 @@ replay_controller::replay_controller(const config& level,
 		const config& game_config, 
 		const tdata_cache & tdata, CVideo& video)
 	: play_controller(level, state_of_game, ticks, game_config, tdata, video, false)
-	, saved_game_start_(saved_game_)
 	, gameboard_start_(gamestate_.board_)
 	, tod_manager_start_(level)
-	, current_turn_(1)
 	, is_playing_(false)
 	, show_everything_(false)
 	, show_team_(state_of_game.classification().campaign_type == game_classification::MULTIPLAYER ? 0 : 1)
 {
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the replay controller version
 
-	// Our parent class correctly detects that we are loading a game. However,
+	// Our game_data correctly detects that we are loading a game. However,
 	// we are not loading mid-game, so from here on, treat this as not loading
 	// a game. (Allows turn_1 et al. events to fire at the correct time.)
-	loading_game_ = false;
-
 	init();
 	reset_replay();
 }
@@ -312,13 +308,12 @@ void replay_controller::reset_replay()
 
 	gui_->get_chat_manager().clear_chat_messages();
 	is_playing_ = false;
-	player_number_ = 1;
-	current_turn_ = 1;
-	it_is_a_new_turn_ = true;
+	player_number_ = level_["playing_team"].to_int() + 1;
+	it_is_a_new_turn_ = level_["it_is_a_new_turn"].to_bool(true);
+	init_side_done_ = level_["init_side_done"].to_bool(false);
 	skip_replay_ = false;
 	gamestate_.tod_manager_= tod_manager_start_;
 	resources::recorder->start_replay();
-	saved_game_ = saved_game_start_;
 	gamestate_.board_ = gameboard_start_;
 	gui_->change_display_context(&gamestate_.board_); //this doesn't change the pointer value, but it triggers the gui to update the internal terrain builder object,
 						   //idk what the consequences of not doing that are, but its probably a good idea to do it, esp. if layout
@@ -347,35 +342,15 @@ void replay_controller::reset_replay()
 
 	gui_->labels().read(level_);
 
-	config::attribute_value random_seed = level_["random_seed"];
-	resources::gamedata->rng().seed_random(random_seed.str(), level_["random_calls"]);
+	*resources::gamedata = game_data(level_);
 	n_unit::id_manager::instance().set_save_id(level_["next_underlying_unit_id"]);
 	statistics::fresh_stats();
-	set_victory_when_enemies_defeated(level_["victory_when_enemies_defeated"].to_bool(true));
 
 	gui_->needs_rebuild(true);
 	gui_->maybe_rebuild();
 
 	// Scenario initialization. (c.f. playsingle_controller::play_scenario())
-	fire_preload();
-	{ //block for set_scontext_synced
-		if(resources::recorder->add_start_if_not_there_yet())
-		{
-			ERR_REPLAY << "inserted missing [start]" << std::endl;
-		}
-		config* pstart = resources::recorder->get_next_action();
-		assert(pstart->has_child("start"));
-		/*
-			use this after resources::recorder->add_synced_command
-			because set_scontext_synced sets the checkup to the last added command
-		*/
-		set_scontext_synced sync;
-
-		fire_prestart();
-		init_gui();
-		fire_start();
-		sync.do_final_checkup();
-	}
+	start_game();
 	update_gui();
 
 	reset_replay_ui();
@@ -495,7 +470,7 @@ void replay_controller::play_replay()
 void replay_controller::play_replay_main_loop()
 {
 	DBG_REPLAY << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
-	for(; !resources::recorder->at_end() && is_playing_; first_player_ = 1) {
+	while(!resources::recorder->at_end() && is_playing_) {
 		play_turn();
 	}
 }
@@ -504,7 +479,7 @@ void replay_controller::play_replay_main_loop()
 void replay_controller::play_turn()
 {
 
-	LOG_REPLAY << "turn: " << current_turn_ << "\n";
+	LOG_REPLAY << "turn: " << turn() << "\n";
 
 	gui_->new_turn();
 	gui_->invalidate_game_status();
@@ -532,7 +507,6 @@ void replay_controller::play_move() {
 void replay_controller::play_move_or_side(bool one_move) {
 	
 	DBG_REPLAY << "Status turn number: " << turn() << "\n";
-	DBG_REPLAY << "Replay_Controller turn number: " << current_turn_ << "\n";
 	DBG_REPLAY << "Player number: " << player_number_ << "\n";
 
 	// If a side is empty skip over it.
@@ -569,7 +543,6 @@ void replay_controller::play_move_or_side(bool one_move) {
 		}
 		it_is_a_new_turn_ = true;
 		player_number_ = 1;
-		current_turn_++;
 		gui_->new_turn();
 	}
 
