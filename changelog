@@ -12,15 +12,14 @@ Version 1.12.1+dev:
  * Language and i18n:
    * Updated translations: Chinese (Simplified), Chinese (Traditional),
      Galician, German, Polish
- * Miscellaneous and bug fixes:
-   * fix OOS when undoing after deactivating delayed shroud updates.
-   * eliminate local carryover info retained by clients when transitioning in mp
-     campaigns, which seems to cause OOS and wrong carryover gold in bug #22936
-   * fix bug #23426 Show terrain description in help hotkey works on shrouded
-     hexes
- * User Interface:
+ * User interface:
    * Fix bug #22984: Sliders (GUI1) focusing improperly in non-game contexts,
     and not responding to left-right key press
+ * Miscellaneous and bug fixes:
+   * Fix OOS when undoing after deactivating delayed shroud updates.
+   * Eliminate local carryover info retained by clients when transitioning in MP
+     campaigns, which seems to cause OOS and wrong carryover gold (bug #22936).
+   * Fix bug #23426: Terrain Description action works on shrouded hexes.
 
 Version 1.12.1:
  * AI:
