@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.19+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-05 19:37+0100\n"
+"POT-Creation-Date: 2015-04-05 03:51-0300\n"
 "PO-Revision-Date: 2009-04-15 22:48+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: chinese\n"
@@ -280,7 +280,7 @@ msgstr "擊敗韋族首領"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:185
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_in_the_Deep.cfg:105
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:249
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:191
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:187
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer_of_Southbay.cfg:134
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:268
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:417
@@ -655,7 +655,7 @@ msgstr "海德里克，這事你怎麼看待?"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:291
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:360
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:356
 msgid "Hmm... after some thought..."
 msgstr "嗯...讓我想一下..."
 
@@ -817,12 +817,13 @@ msgid "Gruumogth"
 msgstr "顧莫革施"
 
 #. [objective]: condition=win
+#. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:111
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:162
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:151
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:181
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:245
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:187
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:185
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:264
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:413
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:168
@@ -2277,7 +2278,7 @@ msgstr "人類"
 #. [case]
 #. [side]: type=Lieutenant, id=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:41
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:526
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:528
 msgid "Commander Aethyr"
 msgstr "指揮官伊希爾"
 
@@ -2340,7 +2341,7 @@ msgstr "英雄：乘第三艘船撤退"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:253
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:195
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:191
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer_of_Southbay.cfg:138
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:272
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:421
@@ -2754,7 +2755,7 @@ msgid "Haldric enters Southbay’s sewer"
 msgstr "海德洛克進入南灣下水道"
 
 #. [message]: speaker=Tan-Pulk
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:212
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:208
 msgid ""
 "Da big bosses said we’d be in da city by winter. Bosses wrong, human-worms "
 "still there, and I’m a tinkin—"
@@ -2762,12 +2763,12 @@ msgstr ""
 "大頭目們告訴我們可以在那城裡過冬。頭目們講錯了，人類臭蟲還佔著那裏，我想── "
 
 #. [message]: speaker=Ut'Tan-Grilg
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:216
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:212
 msgid "Wait! I see a ship! Humans is coming! Smash ’em good!"
 msgstr "等等！我看到了一艘船！人類來了！把他們通通打爛！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:239
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:235
 #, fuzzy
 msgid ""
 "Prince Haldric has arrived at Fallen Lich Point, to retrieve the Lich-Lord "
@@ -2777,7 +2778,7 @@ msgstr ""
 "灣的下水道。"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:264
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:260
 #, fuzzy
 msgid ""
 "Well, let’s un-petrify that lich and take his book, then get into the "
@@ -2787,32 +2788,32 @@ msgstr ""
 "記會用什麼語言來寫呢？"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:268
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:264
 msgid "Some pep talk. The book will probably be in the Old Wesfolk tongue."
 msgstr "樂觀地說，那本筆記應該是用中古韋族語寫成。"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:272
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:268
 msgid "Ohh."
 msgstr "喔。"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:276
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:272
 msgid "Just get the book, I think I should be able to translate it."
 msgstr "只管拿到那本筆記，我想我能夠把它翻出來。"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:280
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:276
 msgid "Then, into Southbay’s sewer."
 msgstr "然後，就進入南灣的下水道。"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:284
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:280
 msgid "Right."
 msgstr "不錯。"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:308
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:304
 #, fuzzy
 msgid ""
 "There’s an odd monolith standing near here. Maybe it has something to do "
@@ -2821,12 +2822,12 @@ msgstr ""
 "這裡附近立著一塊古怪的石碑。也許它和那個巫妖王有點關係...我要靠近調查一下。"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:315
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:311
 msgid "There’s an odd monolith standing near here."
 msgstr "這裡的附近地點立著一塊古怪的石碑。"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:320
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:316
 msgid ""
 "Haldric, this looks like a job for you, probably something to do with the "
 "lich. Maybe you should get yourself over here."
@@ -2835,7 +2836,7 @@ msgstr ""
 "趟。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:339
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:335
 #, fuzzy
 msgid ""
 "This monolith was erected by me, ― (<i>chipped away</i>), first Mage of the "
@@ -2846,12 +2847,12 @@ msgstr ""
 "力量巫妖將被困在石中。如果要解除這個咒語，必須由具有王室血統者誦念如下..."
 
 #. [option]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:364
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:360
 msgid "I think I’ll say that magic phrase."
 msgstr "我決定來念這些咒語。"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:383
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:379
 #, fuzzy
 msgid ""
 "The lich is free! Let’s bash him and grab that book. That sounds like a job "
@@ -2861,130 +2862,130 @@ msgstr ""
 "卡小姐！"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:387
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:383
 msgid "Hmph! You’re just happy because that monolith proves your paternity!"
 msgstr "哼！你這麼高興，還不是因為你的王室血統被證實了！"
 
 #. [message]: speaker=Lich-Lord Caror
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:391
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:387
 msgid "Free, I’m free, and I feel the Ruby of Fire! It will be mine."
 msgstr "自由了，我自由了，我還感覺到了火焰紅寶石就在附近！它是我的了。"
 
 #. [message]: speaker=Minister Edren
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:395
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:391
 msgid "No you won’t, you soldier of darkness!"
 msgstr "你不會得逞，你這個黑暗的走卒！"
 
 #. [option]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:401
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:397
 msgid "I think I’ll wait a while before uttering any magic phrases."
 msgstr "我想還是等一會再唸咒語。"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:406
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:402
 msgid "We have more pressing matters to deal with before we free that lich."
 msgstr "我們在釋放巫妖之前還有很多要緊的事情要處理。"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:411
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:407
 msgid "Afraid you’ll find out you’re not of the line of Kings?"
 msgstr "害怕發現自己沒有王室血統？"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:421
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:417
 msgid "This sounds like a job for Prince Haldric, hopefully."
 msgstr "但願這是個適合海德洛克王子的任務。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:434
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:430
 msgid "The Lich-Lord is already free."
 msgstr "巫妖王已經自由了。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:457
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:453
 msgid "NW — Southbay."
 msgstr "西南 - 南灣"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:462
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:458
 #, fuzzy
 msgid "More like ‘NW — Every orc on the Isle’. Hmph!"
 msgstr "還要往西南──島上的每個獸人。哼！"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:493
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:489
 #, fuzzy
 msgid "We have the book! Let’s get out of here!"
 msgstr "我們拿到那本筆記了，讓我們離開這裡！"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:498
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:494
 msgid "Sounds good to me."
 msgstr "這消息太好了。"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:511
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:507
 msgid "I feel like I’m forgetting something. Ohh, the book!"
 msgstr "我總覺得忘了什麼。糟了，那本筆記！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:521
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:517
 msgid "Prince Haldric must be the first into the sewers of Southbay."
 msgstr "海德洛克王子必須第一個進入南灣下水道。"
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:545
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:541
 msgid "Rarlg"
 msgstr "若勒葛"
 
 #. [message]: speaker=Rarlg
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:549
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:545
 msgid "Rarlg — argh, a raul-rarlg!"
 msgstr "若勒葛──阿格，一個勞爾-若勒葛！"
 
 #. [message]: speaker=Prince Haldric
 #. [message]: speaker=Tan-Pulk
 #. [message]: speaker=Ut'Tan-Grilg
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:553
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:549
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:554
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:558
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:562
 msgid "Oh my!"
 msgstr "喔，天哪！"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:566
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:562
 msgid "And he brought a friend."
 msgstr "他還召來了一個同伴。"
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:573
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:569
 msgid "Raul-Rarlg"
 msgstr "勞爾-若勒葛"
 
 #. [message]: speaker=Lich-Lord Caror
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:584
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:580
 msgid "So close. So close."
 msgstr "很近了，很近了。"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:589
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:585
 msgid "I found the book in what was left of his robes! Let’s get out of here!"
 msgstr "我在他的長袍中找到那本筆記了！讓我們離開這裡！"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:603
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:599
 #, fuzzy
 msgid ""
 "We have the book and the orcs are out of our way. Let’s get out of here!"
 msgstr "我在他的長袍中找到那本筆記了！讓我們離開這裡！"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:625
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:621
 msgid "I can hear their reinforcements coming! We’re trapped! All is lost!"
 msgstr "我能聽到他們的援軍正在趕來！我們被包圍了！全完了！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:643
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:639
 msgid "Sewer — Danger Keep Out!"
 msgstr "下水道 - 注意危險！"
 
@@ -3569,10 +3570,10 @@ msgstr "條件不變？"
 #. [message]: speaker=Lord El’Isomithir
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:393
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:420
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:424
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:140
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:148
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:422
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:426
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:142
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:150
 msgid "Agreed."
 msgstr "同意。"
 
@@ -4255,7 +4256,7 @@ msgid "I bet this wasn’t the welcome you were expecting."
 msgstr "我打賭這不是你所希望的歡迎！"
 
 #. [event]
-#. [side]: type=Elvish Shyde, id=Lady Dionli
+#. [side]: type=Autumn Shyde, id=Lady Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:370
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:34
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:34
@@ -4399,83 +4400,83 @@ msgstr "這是我第二次和埃達洛克家的人說再見。至少這一次沒
 msgid "The Ka’lian"
 msgstr "「卡聯」"
 
+#. [side]: type=Autumn Shyde, id=Lady Dionli
 #. [side]: type=Elvish Champion, id=Lord Logalmier
 #. [side]: type=Elvish Sharpshooter, id=Lord Aryad
-#. [side]: type=Elvish Shyde, id=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:37
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:49
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:60
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:37
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:49
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:61
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:38
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:50
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:62
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:38
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:50
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:63
 msgid "Elves"
 msgstr "精靈"
 
 #. [side]: type=Elvish Champion, id=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:45
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:45
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:46
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:46
 msgid "Lord Logalmier"
 msgstr "羅格樂米耳閣下"
 
 #. [side]: type=Elvish Sharpshooter, id=Lord Aryad
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:57
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:58
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:58
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:59
 msgid "Lord Aryad"
 msgstr "阿雅達閣下"
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:137
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:102
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:139
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:104
 msgid "Lord El’Isomithir"
 msgstr "埃艾索米喜爾閣下"
 
 #. [option]: id=16_The_Kalian
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:144
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:146
 msgid "I think I’ll fight the dragon!"
 msgstr "我想與那頭龍戰鬥！"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:156
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:158
 msgid "Lord Logalmier, I shall defeat your dragon."
 msgstr "羅格樂米耳閣下，我將打敗你說的那頭龍。"
 
 #. [option]: id=16_The_Kalian
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:173
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:175
 msgid "Let’s get those saurians and nagas on that beach!"
 msgstr "讓我們去消滅海岸上的蜥蜴人和納迦！"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:185
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:187
 msgid "Those cold blooded monsters will feel my wrath!"
 msgstr "這些冷血的怪物將承受我的憤怒！"
 
 #. [option]: id=16_The_Kalian
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:202
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:204
 msgid "Let’s clear out that troll hole!"
 msgstr "讓我們去清理巨魔洞穴！"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:214
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:216
 msgid "So what exactly is a troll?"
 msgstr "那麼巨魔倒底是什麼長什麼樣子？"
 
 #. [option]: id=16_The_Kalian
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:230
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:232
 msgid "Let’s put those souls to rest on the cursed isle!"
 msgstr "我們來讓詛咒之島上的靈魂得到安息！"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:242
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:244
 msgid "Undead. Bah! We’re pros at fighting them."
 msgstr "亡靈。呸！我們要正面和他們戰鬥。"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:260
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:262
 msgid "In the name of peace between our peoples:"
 msgstr "我們之間以和平的名義："
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:277
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:279
 msgid ""
 "I fear my kin are too easy on you. I decree that you should be made to fight "
 "the Dragon of the Green Swamp and its saurian minions. If you can defeat "
@@ -4485,7 +4486,7 @@ msgstr ""
 "擊敗了他，你將真正在這大陸上擁有自己的土地。"
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:290
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:292
 msgid ""
 "There is a group of saurians, friends of the dragon I’m sure, who are "
 "trading metal with the nagas of the sea. We should put a stop to this. They "
@@ -4495,7 +4496,7 @@ msgstr ""
 "止這件事。他們位於離這不遠的海岸。"
 
 #. [message]: speaker=Lord Aryad
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:303
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:305
 msgid ""
 "We are having a problem with a troll-hole in the Brown Hills. While I find "
 "the thought of those dwarves stumbling on the trolls vaguely amusing, this "
@@ -4505,7 +4506,7 @@ msgstr ""
 "主意，我還是把它作為一個合適的任務給你。"
 
 #. [message]: speaker=Lord El'Isomithir
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:316
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:318
 msgid ""
 "Long ago a clan of elves on the Isle of Tears fell under the sway of a dark "
 "curse. Their souls still haunt that place and no elf will go there. You "
@@ -4515,41 +4516,41 @@ msgstr ""
 "沒，並且沒有精靈能夠去那裡。你要清理那個島，使他們的靈魂得以安息。"
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:330
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:332
 msgid ""
 "Ahh, you have defeated the dragon, man of the west-north, you are truly "
 "impressive for a human."
 msgstr "啊，你已經擊敗了巨龍，西北方來的人，就人類而言你可真是令人印象深刻。"
 
 #. [message]: speaker=Lord Aryad
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:337
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:339
 msgid "So, you have defeated the trolls. Welcome back, Haldric."
 msgstr "所以，你已經擊敗了巨魔。歡迎回來，海德洛克。"
 
 #. [message]: speaker=Lord El'Isomithir
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:344
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:346
 msgid "Finally the souls of our poor kin may rest. Thank you."
 msgstr "我們那些可憐的同胞的靈魂終於可以安息了。謝謝你。"
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:351
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:353
 msgid "Our beaches are free again. I knew I could trust you, Haldric."
 msgstr "我們的海灘再次獲得了解放。我知道我可以信賴你，海德洛克。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:361
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:363
 msgid ""
 "Haldric and his companions find themselves before the Ka’lian, or the "
 "Council of Elven Lords."
 msgstr "海德洛克和他的夥伴們發現自己來到了「卡聯」，也就是精靈貴族議會前。"
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:371
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:373
 msgid "Dionli, why have you brought these humans before us?"
 msgstr "迪昂利，你為什麼把這些人類帶來？"
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:375
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:377
 msgid ""
 "They are of the same people as the Prince of Southbay. They come as "
 "refugees. I can see a use for them."
@@ -4558,13 +4559,13 @@ msgstr ""
 "處。"
 
 #. [message]: speaker=Lord Aryad
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:380
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:382
 msgid ""
 "What use would that be? What need could we have for the shortliveds here?"
 msgstr "會有什麼用？這些短命的種族會對我們有什麼幫助？"
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:384
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:386
 msgid ""
 "The dwarves have come to the Brown Hills. While they live long, even they "
 "grow like weeds when in an empty field. There is trouble brewing."
@@ -4573,7 +4574,7 @@ msgstr ""
 "麻煩。"
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:388
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:390
 msgid ""
 "It is better to be the greater of three than the lesser of two. The Prince "
 "of Southbay was good, he was a credit to his people. Maybe these ones are "
@@ -4583,12 +4584,12 @@ msgstr ""
 "這些人具有和他一樣的素質。"
 
 #. [message]: speaker=Lord El'Isomithir
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:392
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:394
 msgid "But why then do they come as refugees? Speak, human."
 msgstr "但是為什麼他們會作為流亡者來這裡？說吧，人類。"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:396
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:398
 msgid ""
 "Our people come in peace. There was a war in our homeland. We are refugees. "
 "We come seeking a new home, since our island to the west and north is now "
@@ -4598,13 +4599,13 @@ msgstr ""
 "個新的家園，因為我們在西北方的島已經丟失了。"
 
 #. [message]: speaker=Lord El'Isomithir
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:400
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:402
 msgid ""
 "So you come to steal our land? We know your kind, humans of the west-north."
 msgstr "所以你們到這裡來盜取我們的土地？我們知道你們這種人，西北方來的人類。"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:404
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:406
 msgid ""
 "We only wish to live in peace. The dwarves are peoples of mountain and hill, "
 "the elves are people of the forests, we only seek some of the space in "
@@ -4614,7 +4615,7 @@ msgstr ""
 "間尋找一些空間。"
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:408
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:410
 #, fuzzy
 msgid ""
 "I suggest that we grant these humans the plains to the north and south of "
@@ -4622,28 +4623,28 @@ msgid ""
 msgstr "我建議我們將大河南面和北面的平原贈予他們作為領土。"
 
 #. [message]: speaker=Lord Aryad
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:412
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:414
 msgid "They should be put to the test before such a grant is made."
 msgstr "在贈予之前，他們應該通過考驗。"
 
 #. [message]: speaker=Lord El'Isomithir
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:416
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:418
 msgid "A quest for each of us then?"
 msgstr "我們每個人提出一個要求？"
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:428
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:430
 #, fuzzy
 msgid "Agreed. (<i>Sigh</i>)"
 msgstr "同意。（嘆氣）"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:432
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:434
 msgid "Umm, agreed."
 msgstr "嗯，同意。"
 
 #. [message]: speaker=Lord Aryad
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:436
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:438
 msgid ""
 "Well then, human. Each of us lords has a specific quest for you. If you "
 "complete them all you will be granted all of the plains in our domain and "
@@ -4655,47 +4656,47 @@ msgstr ""
 "將被要求強制離開。你決定先完成哪個任務？"
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:448
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:450
 msgid ""
 "Very good, but this is just the start, human. There is still much more for "
 "you to do."
 msgstr "非常好，但這僅僅是個開頭，人類。還有更多的任務在等待你去完成。"
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:461
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:463
 msgid "You are victorious again. You may yet earn your place in this land."
 msgstr "你又一次取得了勝利，你會在這塊土地上贏得自己的地位。"
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:474
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:476
 msgid "Ahh, my young prince, you’re not as soft as I thought."
 msgstr "啊，我年輕的王子，你不像我想像中的那麼軟弱。"
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:486
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:488
 msgid "You were successful, Prince Haldric. I knew you could do it."
 msgstr "你成功了，海德洛克王子。我就知道你能辦得到。"
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:491
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:493
 msgid ""
 "Man of the west-north, you have earned your place on this great continent."
 msgstr "來自西北方的人類，你們在這片大陸榮獲了一席之地。"
 
 #. [message]: speaker=Lord Aryad
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:496
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:498
 #, fuzzy
 msgid "As per our agreement, you and your people—"
 msgstr "根據我們的協議，你和你的人民──"
 
 #. [message]: speaker=Lord El'Isomithir
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:501
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:503
 #, fuzzy
 msgid "—may stay."
 msgstr "可以留下來。"
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:506
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:508
 msgid ""
 "We hereby grant you the plains to the north of the Great River, and the "
 "plains and hills to the south of the Great River. Be kind to the land. In a "
@@ -4705,7 +4706,7 @@ msgstr ""
 "要的時候，我們還會拜訪你們，請記得我們的慷慨大方。"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:511
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:513
 #, fuzzy
 msgid ""
 "Fair enough. I decree a ‘Pact of Mutual Aid’ between our peoples. But— "
@@ -4715,7 +4716,7 @@ msgstr ""
 "中吧？"
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:516
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:518
 #, fuzzy
 msgid ""
 "No. The Dwarves have returned to the north. But humans mine as well, no? "
@@ -4726,12 +4727,12 @@ msgstr ""
 "衛的資源了。將來我們很願意與你們進行貿易。"
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:534
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:536
 msgid "Who is this?"
 msgstr "這位是？"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:539
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:541
 #, fuzzy
 msgid ""
 "It’s Commander Aethyr, of Clearwater Port. I was sure you perished in the "
@@ -4739,7 +4740,7 @@ msgid ""
 msgstr "這是清水港的伊希爾指揮官。我不是認定你會在那裡的戰鬥中犧牲嗎？"
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:544
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:546
 msgid ""
 "No, sir. I was leading the final survivors of Clearwater Port. We were "
 "making our last stand at the lighthouse when one of your ships came. One of "
@@ -4749,7 +4750,7 @@ msgstr ""
 "燈塔下作最後的抵抗。我的一個部下把我打昏了，等我醒來時已經到了海上。"
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:549
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:551
 #, fuzzy
 msgid ""
 "I come bearing news. Some ‘old friends’ have decided to make an appearance. "
@@ -4757,7 +4758,7 @@ msgid ""
 msgstr "我帶來了一些消息，有些「老朋友」決定來做一次拜訪。你需要「歡迎」一下。"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:554
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:556
 #, fuzzy
 msgid ""
 "I fear our friend has said too much. You go on ahead, I’ll catch up with you."
@@ -5251,13 +5252,13 @@ msgid "A Spy in the Woods"
 msgstr "林中間諜"
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:94
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:96
 #, fuzzy
 msgid "Jessene in Hiding"
 msgstr "隱蔽中的潔西卡"
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:119
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:121
 msgid ""
 "So a doom has followed them here from their old home. My Outriders have "
 "reported that orcs have made landfall. Orcs! The tree-killers of our most "
@@ -5268,7 +5269,7 @@ msgstr ""
 "這裡出現，這麼多年來還是第一次。"
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:123
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:125
 msgid ""
 "And he bears an artifact of some power. The orcs would not be able to sense "
 "that. There is some hand we cannot see at work here."
@@ -5277,7 +5278,7 @@ msgstr ""
 "的人也到這裡來了。"
 
 #. [message]: speaker=Lord Aryad
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:127
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:129
 msgid ""
 "We may have decided wrongly. If the humans drive the orcs off we should "
 "honor our pledge. If more trouble follows them here we should let them fight "
@@ -5289,13 +5290,13 @@ msgstr ""
 "並與矮人做個妥協。"
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:131
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:133
 msgid ""
 "But we spoke a Pact with this Haldric and these men of the west-north..."
 msgstr "可是我們與這位海德洛克以及這些西北方來的人類達成了協議..."
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:136
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:138
 #, fuzzy
 msgid ""
 "We are the people of the forest, you know that all words spoken to these un-"
@@ -5309,13 +5310,13 @@ msgstr ""
 "必須讓他們自行解決，然後由我們來『處理』殘存者，並與矮人做個妥協。」"
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:144
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:146
 #, fuzzy
 msgid "(<i>Sigh</i>) Agreed."
 msgstr "（歎息）同意。"
 
 #. [message]: speaker=Jessene in Hiding
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:153
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:155
 #, fuzzy
 msgid "Some friends. I must tell Haldric."
 msgstr "（耳語）這些傢伙。我必須去告訴海德洛克。"
@@ -6387,33 +6388,33 @@ msgid "Ahh... That almost makes it all worth while!"
 msgstr "啊...這樣就賺到了！"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1359
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1366
 #, fuzzy
 msgid "You’ll pay for that!"
 msgstr "你們將為此付出代價！"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1373
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1380
 msgid "Strike down these fools."
 msgstr "打倒這些傻瓜。"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1384
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1393
 msgid "Rise, rise from the ground!"
 msgstr "復活，從地下復活！"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1444
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1453
 msgid "Come in from the deep my loyal soldiers!"
 msgstr "從地底深處歸來吧，我忠誠的士兵！"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1639
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1656
 msgid "We did it! We won!"
 msgstr "我們做到了！我們贏了！"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1643
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1660
 msgid ""
 "Jevyan is destroyed, but at a terrible price. Let’s put Commander Aethyr to "
 "rest and discuss what is to come in the following days."
@@ -6422,7 +6423,7 @@ msgstr ""
 "該怎麼安排。"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1651
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1668
 msgid ""
 "Our strength is waning, and our foes grow stronger by the hour. The battle "
 "is lost!"
@@ -6930,37 +6931,10 @@ msgstr ""
 "的對付海德里克人民的戰爭中出賣自己的忠誠。被流放但仍然保留著她的貴族血統，還"
 "有她在戰場上獲得的寶貴的經驗，她可以使她的人民向對他們戰鬥有利的方向轉變。"
 
-#. [unit_type]: id=Wose Sapling, race=wose
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:4
+#. [unit_type]: id=Wose Sapling
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:7
 msgid "Wose Sapling"
 msgstr "幼年樹人"
-
-#. [unit_type]: id=Wose Sapling, race=wose
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:21
-#, fuzzy
-msgid ""
-"Rarely seen, even by Elves, a Wose is an order of creature about which "
-"little is known. The Elves are the source of most of this knowledge; they "
-"know that these beings are not descended from trees, despite the similarity "
-"in form, and they know that a Wose is more closely tied to the faerie world "
-"than the Elves themselves, though in a different way. The motives and "
-"workings of their kind are unknown, though most posit the obvious idea that "
-"woses are wardens of the natural world.\n"
-"\n"
-"Woses are utterly unwarlike, but possess a great strength. They are, "
-"however, neither used to, nor quick at moving around."
-msgstr ""
-"樹人是一類世人知之甚少的生靈，即使精靈們也很少見到他們。精靈是大部分關於樹人"
-"的認知的源頭：他們知道，這些生靈儘管有著樹的外形，卻不是由樹而生的，並且他們"
-"知道樹人比精靈更接近仙境，雖然具體方式不同。儘管大多數意見認為他們很顯然是自"
-"然界的保護者，樹人的動機和行動方式現在仍亦未可知。 \n"
-"\n"
-"樹人絕不好戰，但擁有巨大的力量。然而，他們既不經常，也不快速地在周圍移動。"
-
-#. [attack]: type=impact
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:29
-msgid "crush"
-msgstr "壓碎"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:6
@@ -6981,7 +6955,7 @@ msgstr ""
 "分心： \n"
 "該單位可以被敵人當作友軍單位而忽略其周圍的控制區域（但敵人本身不行）。"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:17
+#: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:16
 msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
@@ -7114,6 +7088,29 @@ msgid ""
 "That is excellent news indeed. Our numbers have doubled. Now on to the "
 "business at hand."
 msgstr "這的確是個好消息，我們的人數增加了一倍。現在繼續完成手邊的工作。"
+
+#, fuzzy
+#~ msgid ""
+#~ "Rarely seen, even by Elves, a Wose is an order of creature about which "
+#~ "little is known. The Elves are the source of most of this knowledge; they "
+#~ "know that these beings are not descended from trees, despite the "
+#~ "similarity in form, and they know that a Wose is more closely tied to the "
+#~ "faerie world than the Elves themselves, though in a different way. The "
+#~ "motives and workings of their kind are unknown, though most posit the "
+#~ "obvious idea that woses are wardens of the natural world.\n"
+#~ "\n"
+#~ "Woses are utterly unwarlike, but possess a great strength. They are, "
+#~ "however, neither used to, nor quick at moving around."
+#~ msgstr ""
+#~ "樹人是一類世人知之甚少的生靈，即使精靈們也很少見到他們。精靈是大部分關於樹"
+#~ "人的認知的源頭：他們知道，這些生靈儘管有著樹的外形，卻不是由樹而生的，並且"
+#~ "他們知道樹人比精靈更接近仙境，雖然具體方式不同。儘管大多數意見認為他們很顯"
+#~ "然是自然界的保護者，樹人的動機和行動方式現在仍亦未可知。 \n"
+#~ "\n"
+#~ "樹人絕不好戰，但擁有巨大的力量。然而，他們既不經常，也不快速地在周圍移動。"
+
+#~ msgid "crush"
+#~ msgstr "壓碎"
 
 #~ msgid "You retrieve $amount_gold pieces of gold."
 #~ msgstr "你得到了 $amount_gold 枚金幣。"

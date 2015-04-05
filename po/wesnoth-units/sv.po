@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-22 14:15+0100\n"
+"POT-Creation-Date: 2015-04-05 03:52-0300\n"
 "PO-Revision-Date: 2009-02-04 22:18+0100\n"
 "Last-Translator: Gustav Tiger <admin@tigge.org>\n"
 "Language-Team: Swedish\n"
@@ -92,7 +92,7 @@ msgstr ""
 #: data/core/units/khalifate/Muharib.cfg:22
 #: data/core/units/undead/Skele_Deathblade.cfg:66
 #: data/core/units/undead/Skele_Draug.cfg:43
-#: data/core/units/undead/Skele_Revenant.cfg:43
+#: data/core/units/undead/Skele_Revenant.cfg:44
 #: data/core/units/undead/Skeleton.cfg:62
 msgid "axe"
 msgstr "yxa"
@@ -101,8 +101,7 @@ msgstr "yxa"
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:41
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:38
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:38
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:32
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:146
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:33
 #: data/core/units/dwarves/Arcanister.cfg:48
 #: data/core/units/dwarves/Fighter.cfg:62 data/core/units/dwarves/Lord.cfg:69
 #: data/core/units/dwarves/Runemaster.cfg:42
@@ -285,20 +284,18 @@ msgstr ""
 "förbereda anses detta av dvärgarna vara värt sin väntan med tanke på "
 "resultaten."
 
-#. [unit_type]: id=Dwarvish Rune Lord prerevelation, race=dwarf
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:6
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:118
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:7
 #: data/core/units/dwarves/Runemaster.cfg:5
 msgid "Dwarvish Runemaster"
 msgstr "Runmästare"
 
-#. [unit_type]: id=Dwarvish Rune Lord prerevelation, race=dwarf
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:27
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:141
+#. [unit_type]: id=Undead Dwarvish Rune Lord
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:28
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:78
 #: data/core/units/dwarves/Runemaster.cfg:25
 msgid ""
 "Except for those with almost supernatural skill, the highest rank a "
@@ -310,14 +307,14 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=cold
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:44
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:88
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:60
 #: data/core/units/undead/Necro_Lich.cfg:60
 msgid "chill tempest"
 msgstr "köldstorm"
 
 #. [attack]: type=arcane
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:56
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:100
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:72
 #: data/core/units/undead/Necro_Dark_Adept.cfg:54
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:82
@@ -325,6 +322,13 @@ msgstr "köldstorm"
 #: data/core/units/undead/Necromancer.cfg:63
 msgid "shadow wave"
 msgstr "skuggstöt"
+
+#. [unit_type]: id=Autumn Shyde, race=elf
+#. [unit_type]: id=Elvish Shyde, race=elf
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Autumn_Shyde.cfg:5
+#: data/core/units/elves/Shyde.cfg:4
+msgid "female^Elvish Shyde"
+msgstr "Älva"
 
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:4
@@ -349,9 +353,9 @@ msgstr ""
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
-#: data/core/units/bats/Bat_Blood.cfg:115
+#: data/core/units/bats/Bat_Blood.cfg:129
 #: data/core/units/bats/Bat_Dread.cfg:44
-#: data/core/units/bats/Bat_Vampire.cfg:115
+#: data/core/units/bats/Bat_Vampire.cfg:128
 #: data/core/units/goblins/Direwolf_Rider.cfg:44
 #: data/core/units/goblins/Knight.cfg:46
 #: data/core/units/goblins/Pillager.cfg:45
@@ -1065,8 +1069,8 @@ msgstr ""
 #: data/core/units/elves/Sharpshooter.cfg:37
 #: data/core/units/humans/Horse_Knight.cfg:35
 #: data/core/units/humans/Horse_Paladin.cfg:52
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:56
-#: data/core/units/humans/Loyalist_Dragoon.cfg:48
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:57
+#: data/core/units/humans/Loyalist_Dragoon.cfg:49
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:41
 #: data/core/units/humans/Loyalist_Longbowman.cfg:38
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:38
@@ -1215,7 +1219,7 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/elves/Druid.cfg:40 data/core/units/elves/Enchantress.cfg:38
-#: data/core/units/elves/Shaman.cfg:41 data/core/units/elves/Sorceress.cfg:40
+#: data/core/units/elves/Shaman.cfg:40 data/core/units/elves/Sorceress.cfg:40
 #: data/core/units/humans/Mage.cfg:41 data/core/units/humans/Mage_Arch.cfg:48
 #: data/core/units/humans/Mage_Elder.cfg:26
 #: data/core/units/humans/Mage_Great.cfg:42
@@ -1268,7 +1272,7 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/elves/Enchantress.cfg:48
-#: data/core/units/elves/Shaman.cfg:50 data/core/units/elves/Sorceress.cfg:50
+#: data/core/units/elves/Shaman.cfg:49 data/core/units/elves/Sorceress.cfg:50
 msgid "entangle"
 msgstr "snärja"
 
@@ -1381,11 +1385,11 @@ msgstr "Alvprickskytt"
 #: data/core/units/elves/Marksman.cfg:19
 #, fuzzy
 msgid ""
-"Elves are wonderously keen-sighted, a gift which contributes to their "
-"mastery of the bow. An elf practiced at archery can hit targets that a man "
-"couldn’t even see, and can nock a second arrow almost as soon as the first "
-"is let fly. Realizing this prodigious skill does come with one cost, that "
-"being a lack of practice with the sword."
+"Elves are wondrously keen-sighted, a gift which contributes to their mastery "
+"of the bow. An elf practiced at archery can hit targets that a man couldn’t "
+"even see, and can nock a second arrow almost as soon as the first is let "
+"fly. Realizing this prodigious skill does come with one cost, that being a "
+"lack of practice with the sword."
 msgstr ""
 "Alvernas stora skicklighet med båge grundas bland annat på deras goda syn. "
 "Vare sig det är dag eller natt kan en alv tränad i bågskytte träffa mål som "
@@ -1541,7 +1545,7 @@ msgid "female^Elvish Shaman"
 msgstr "Alvschaman"
 
 #. [unit_type]: id=Elvish Shaman, race=elf
-#: data/core/units/elves/Shaman.cfg:20
+#: data/core/units/elves/Shaman.cfg:19
 #, fuzzy
 msgid ""
 "Being partly faerie in nature, elves have an inherent capability for magic. "
@@ -1588,11 +1592,6 @@ msgstr ""
 #: data/core/units/elves/Sharpshooter.cfg:94
 msgid "female^Elvish Sharpshooter"
 msgstr "Alvskarpskytt"
-
-#. [unit_type]: id=Elvish Shyde, race=elf
-#: data/core/units/elves/Shyde.cfg:4
-msgid "female^Elvish Shyde"
-msgstr "Älva"
 
 #. [unit_type]: id=Elvish Shyde, race=elf
 #: data/core/units/elves/Shyde.cfg:22
@@ -1921,7 +1920,7 @@ msgid "Grand Knight"
 msgstr "Storriddare"
 
 #. [unit_type]: id=Grand Knight, race=human
-#: data/core/units/humans/Horse_Grand_Knight.cfg:20
+#: data/core/units/humans/Horse_Grand_Knight.cfg:21
 msgid ""
 "Grand Knights have reached the acme of skill with sword and lance. Wearing "
 "full plate, and riding steeds bred more for power than for speed, these "
@@ -1936,8 +1935,8 @@ msgstr ""
 "infanteri, och är ofta tillräcklig för att bryta igenom en försvarlinje."
 
 #. [attack]: type=blade
-#: data/core/units/humans/Horse_Grand_Knight.cfg:36
-#: data/core/units/humans/Loyalist_Cavalier.cfg:49
+#: data/core/units/humans/Horse_Grand_Knight.cfg:37
+#: data/core/units/humans/Loyalist_Cavalier.cfg:50
 #: data/core/units/humans/Loyalist_General.cfg:56
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:51
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:40
@@ -1946,7 +1945,7 @@ msgid "longsword"
 msgstr "svärd"
 
 #. [attack]: type=pierce
-#: data/core/units/humans/Horse_Grand_Knight.cfg:45
+#: data/core/units/humans/Horse_Grand_Knight.cfg:46
 #: data/core/units/humans/Horse_Knight.cfg:44
 #: data/core/units/humans/Horse_Lancer.cfg:36
 #: data/core/units/humans/Horse_Paladin.cfg:61
@@ -2085,7 +2084,7 @@ msgid "Cavalier"
 msgstr "Kavaljer"
 
 #. [unit_type]: id=Cavalier, race=human
-#: data/core/units/humans/Loyalist_Cavalier.cfg:21
+#: data/core/units/humans/Loyalist_Cavalier.cfg:22
 #, fuzzy
 msgid ""
 "Cavaliers are masters at the use of both sword and crossbow from horseback. "
@@ -2100,8 +2099,8 @@ msgstr ""
 
 #. [attack]: type=fire
 #. [attack]: type=pierce
-#: data/core/units/humans/Loyalist_Cavalier.cfg:58
-#: data/core/units/humans/Loyalist_Dragoon.cfg:57
+#: data/core/units/humans/Loyalist_Cavalier.cfg:59
+#: data/core/units/humans/Loyalist_Dragoon.cfg:58
 #: data/core/units/humans/Loyalist_Duelist.cfg:58
 #: data/core/units/humans/Loyalist_General.cfg:65
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:60
@@ -2122,7 +2121,7 @@ msgid "Cavalryman"
 msgstr "Kavallerist"
 
 #. [unit_type]: id=Cavalryman, race=human
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:20
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:21
 #, fuzzy
 msgid ""
 "Cavalrymen are distinguished from horsemen by their tactics and equipment. A "
@@ -2149,7 +2148,7 @@ msgid "Dragoon"
 msgstr "Dragon"
 
 #. [unit_type]: id=Dragoon, race=human
-#: data/core/units/humans/Loyalist_Dragoon.cfg:20
+#: data/core/units/humans/Loyalist_Dragoon.cfg:21
 #, fuzzy
 msgid ""
 "The more talented cavalrymen in the armies of Wesnoth are trained in the use "
@@ -2340,7 +2339,7 @@ msgstr ""
 #: data/core/units/humans/Royal_Warrior.cfg:34
 #: data/core/units/khalifate/Faris.cfg:30
 #: data/core/units/khalifate/Hadaf.cfg:23
-#: data/core/units/khalifate/Hakim.cfg:26
+#: data/core/units/khalifate/Hakim.cfg:38
 #: data/core/units/khalifate/Jawal.cfg:24
 #: data/core/units/khalifate/Khaiyal.cfg:39
 #: data/core/units/khalifate/Mufariq.cfg:32
@@ -3071,7 +3070,7 @@ msgid "knife"
 msgstr "kniv"
 
 #. [female]
-#: data/core/units/humans/Outlaw_Assassin.cfg:115
+#: data/core/units/humans/Outlaw_Assassin.cfg:114
 msgid "female^Assassin"
 msgstr "Lönnmördare"
 
@@ -3465,7 +3464,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/khalifate/Arif.cfg:22
 #: data/core/units/khalifate/Ghazi.cfg:22
-#: data/core/units/khalifate/Khalid.cfg:23
+#: data/core/units/khalifate/Khalid.cfg:29
 #: data/core/units/khalifate/Mighwar.cfg:26
 #: data/core/units/khalifate/Monawish.cfg:25
 #: data/core/units/khalifate/Shuja.cfg:22
@@ -3567,7 +3566,7 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/khalifate/Ghazi.cfg:34
-#: data/core/units/khalifate/Khalid.cfg:35
+#: data/core/units/khalifate/Khalid.cfg:41
 #: data/core/units/khalifate/Shuja.cfg:34
 msgid "shield bash"
 msgstr ""
@@ -3658,7 +3657,7 @@ msgid "Khalid"
 msgstr ""
 
 #. [unit_type]: id=Khalid, race=khalifate
-#: data/core/units/khalifate/Khalid.cfg:18
+#: data/core/units/khalifate/Khalid.cfg:24
 msgid ""
 "Among every generation, a warrior elevates himself above his peers and foes; "
 "They seem to be able to alter the destiny of the world themselves. Often "
@@ -4295,7 +4294,7 @@ msgid "Giant Mudcrawler"
 msgstr "Jätteslamkrypare"
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:18
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:19
 msgid ""
 "Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
 "constructs of soil and water. They attack by belching lumps of mud at their "
@@ -4306,7 +4305,7 @@ msgstr ""
 "genom att slå med sina nävar."
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:43
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:44
 #: data/core/units/monsters/Yeti.cfg:36
 #: data/core/units/trolls/Rocklobber.cfg:38
 #: data/core/units/trolls/Troll_Shaman.cfg:49
@@ -4316,8 +4315,8 @@ msgid "fist"
 msgstr "knytnäve"
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:52
-#: data/core/units/monsters/Mudcrawler.cfg:53
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:53
+#: data/core/units/monsters/Mudcrawler.cfg:54
 msgid "mud glob"
 msgstr "lerklump"
 
@@ -4390,7 +4389,7 @@ msgid "Mudcrawler"
 msgstr "Slamkrypare"
 
 #. [unit_type]: id=Mudcrawler, race=monster
-#: data/core/units/monsters/Mudcrawler.cfg:20
+#: data/core/units/monsters/Mudcrawler.cfg:21
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
@@ -4708,7 +4707,8 @@ msgstr ""
 "Anmärkning:"
 
 #. [attack]: type=blade
-#: data/core/units/orcs/Assassin.cfg:49 data/core/units/orcs/Slayer.cfg:48
+#: data/core/units/orcs/Assassin.cfg:49 data/core/units/orcs/Nightblade.cfg:62
+#: data/core/units/orcs/Slayer.cfg:48
 msgid "throwing knives"
 msgstr "kastknivar"
 
@@ -4767,6 +4767,29 @@ msgstr ""
 "ledarskap över sitt släkte, särskilt vättar, och kan inspirera dem att slåss "
 "med ovanlig djärvhet.\n"
 "Anmärkning:"
+
+#. [unit_type]: id=Orcish Nightblade, race=orc
+#: data/core/units/orcs/Nightblade.cfg:4
+#, fuzzy
+#| msgid "Orcish Leader"
+msgid "Orcish Nightblade"
+msgstr "Orchledare"
+
+#. [unit_type]: id=Orcish Nightblade, race=orc
+#: data/core/units/orcs/Nightblade.cfg:28
+msgid "."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/orcs/Nightblade.cfg:44
+#, fuzzy
+msgid "blade"
+msgstr "domedagssvärd"
+
+#. [attack]: type=impact
+#: data/core/units/orcs/Nightblade.cfg:53
+msgid "kick"
+msgstr ""
 
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:4
@@ -5319,6 +5342,66 @@ msgstr ""
 msgid "touch"
 msgstr "beröring"
 
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:137
+#: data/core/units/undead/Corpse_Walking.cfg:136
+msgid "wc_variation^Drake"
+msgstr ""
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:151
+#: data/core/units/undead/Corpse_Walking.cfg:150
+msgid "wc_variation^Dwarf"
+msgstr ""
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:163
+#: data/core/units/undead/Corpse_Walking.cfg:162
+msgid "wc_variation^Goblin"
+msgstr ""
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:175
+#: data/core/units/undead/Corpse_Walking.cfg:183
+msgid "wc_variation^Mounted"
+msgstr ""
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:187
+#: data/core/units/undead/Corpse_Walking.cfg:174
+msgid "wc_variation^Gryphon"
+msgstr ""
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:196
+#: data/core/units/undead/Corpse_Walking.cfg:195
+msgid "wc_variation^Saurian"
+msgstr ""
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:208
+#: data/core/units/undead/Corpse_Walking.cfg:207
+msgid "wc_variation^Swimmer"
+msgstr ""
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:218
+#: data/core/units/undead/Corpse_Walking.cfg:217
+msgid "wc_variation^Troll"
+msgstr ""
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:230
+#: data/core/units/undead/Corpse_Walking.cfg:229
+msgid "wc_variation^Wose"
+msgstr ""
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:242
+#: data/core/units/undead/Corpse_Walking.cfg:241
+msgid "wc_variation^Bat"
+msgstr ""
+
 #. [unit_type]: id=Walking Corpse, race=undead
 #: data/core/units/undead/Corpse_Walking.cfg:6
 msgid "Walking Corpse"
@@ -5372,8 +5455,8 @@ msgid ""
 "secret cults, or initiated into the dark orders of the underworld, the "
 "training which these fanatics must endure often drives them to exhaustion "
 "and enfeeblement.\n"
-"     \n"
-"    In such condition, their only weapon is the craft they have so committed "
+"\n"
+"In such condition, their only weapon is the craft they have so committed "
 "themselves to learning."
 msgstr ""
 "För att den svarta magin skall dra till sig några anhängare måste dess "
@@ -5981,6 +6064,31 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
+#, fuzzy
+#~ msgid ""
+#~ "To attract any practitioners, the lure of black magic must be a great "
+#~ "prize indeed, for anyone caught practicing the art in the civilized world "
+#~ "is subject to a death sentence. And yet there are those who pursue this "
+#~ "art, for the prize offered is nothing less than immortality. Hidden away "
+#~ "in secret cults, or initiated into the dark orders of the underworld, the "
+#~ "training which these fanatics must endure often drives them to exhaustion "
+#~ "and enfeeblement.\n"
+#~ "     \n"
+#~ "    In such condition, their only weapon is the craft they have so "
+#~ "committed themselves to learning."
+#~ msgstr ""
+#~ "För att den svarta magin skall dra till sig några anhängare måste dess "
+#~ "lockelse vara mäkta stor, eftersom utövandet är belagt med dödsstraff i "
+#~ "den civiliserade världen. Men då belöningen består i intet mindre än "
+#~ "odödlighet finns det trots detta de som söker sig till denna konst. Dessa "
+#~ "fanatiker utstår sin utbildning i hemliga kulter och mörka ordnar, en "
+#~ "utbildning som ofta leder till utmattning och kraftlöshet. \n"
+#~ "\n"
+#~ "I ett sådant tillstånd är deras enda vapen den konst de hängivit sig "
+#~ "till.\n"
+#~ "\n"
+#~ "Anmärkning:"
+
 #~ msgid ""
 #~ "Dwarven magic most often manifests itself by the inscription of runes in "
 #~ "the surface of an object, which by their mere presence somehow imbue it "
@@ -6325,31 +6433,6 @@ msgstr ""
 #~ "Erfarna brottslingar blir ökända för deras hänsynslöshet och förmåga att "
 #~ "undkomma. De är farliga och skoningslösa i sina rätta element, men ingen "
 #~ "riktig match för yrkesarbetande upprätthållare av lag och ordning."
-
-#, fuzzy
-#~ msgid ""
-#~ "female^To attract any practitioners, the lure of black magic must be a "
-#~ "great prize indeed, for anyone caught practicing the art in the civilized "
-#~ "world is subject to a death sentence. And yet there are those who pursue "
-#~ "this art, for the prize offered is nothing less than immortality. Hidden "
-#~ "away in secret cults, or initiated into the dark orders of the "
-#~ "underworld, the training which these fanatics must endure often drives "
-#~ "them to exhaustion and enfeeblement.\n"
-#~ "\n"
-#~ "In such condition, their only weapon is the craft they have so committed "
-#~ "themselves to learning."
-#~ msgstr ""
-#~ "För att den svarta magin skall dra till sig några anhängare måste dess "
-#~ "lockelse vara mäkta stor, eftersom utövandet är belagt med dödsstraff i "
-#~ "den civiliserade världen. Men då belöningen består i intet mindre än "
-#~ "odödlighet finns det trots detta de som söker sig till denna konst. Dessa "
-#~ "fanatiker utstår sin utbildning i hemliga kulter och mörka ordnar, en "
-#~ "utbildning som ofta leder till utmattning och kraftlöshet. \n"
-#~ "\n"
-#~ "I ett sådant tillstånd är deras enda vapen den konst de hängivit sig "
-#~ "till.\n"
-#~ "\n"
-#~ "Anmärkning:"
 
 #, fuzzy
 #~ msgid "Dwarvish Masked Guardsman"

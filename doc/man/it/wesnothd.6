@@ -64,11 +64,11 @@ lega il server ad una porta specifica. Se non viene specificata una porta,
 sarà usata la porta \fB15000\fP.
 .TP 
 \fB\-t\ \fP\fInumero\fP\fB,\ \-\-threads\fP\fI\ numero\fP
-imposta il numero massimo di thread da usare per l'I/O (valore predefinito:
+imposta il numero massimo di thread da usare per l’I/O (valore predefinito:
 \fB5\fP,\ massimo:\ \fB30\fP).
 .TP 
 \fB\-T\ \fP\fInumero\fP\fB,\ \-\-max\-threads\fP\fI\ numero\fP
-imposta il numero massimo di thread da creare. Se vale \fB0\fP non c'è limite
+imposta il numero massimo di thread da creare. Se vale \fB0\fP non c’è limite
 (valore predefinito: \fB0\fP).
 .TP 
 \fB\-V, \-\-version\fP
@@ -101,7 +101,7 @@ amministratore.
 .TP 
 \fBban_save_file\fP
 Percorso completo o relativo ad un file (compresso con gzip) che il server
-possa scrivere e leggere. L'elenco degli utenti messi al bando sarà
+possa scrivere e leggere. L’elenco degli utenti messi al bando sarà
 conservato in questo file e letto a tutti gli avvii del server.Percorso
 completo o relativo ad un file (compresso con gzip) che il server possa
 scrivere e leggere. L'elenco degli utenti messi al bando sarà conservato in
@@ -132,7 +132,7 @@ Il numero di messaggi permessi in un periodo di \fBmessages_time_period\fP
 (valore predefinito: \fB4\fP).
 .TP 
 \fBmessages_time_period\fP
-Il periodo di tempo (in secondi) entro il quale rilevare un'inondazione di
+Il periodo di tempo (in secondi) entro il quale rilevare un’inondazione di
 messaggi (valore predefinito: \fB10\fP secondi).
 .TP 
 \fBmotd\fP
@@ -161,7 +161,7 @@ fifo. Per dettagli, vedi i setaggi di \fBallow_remote_shutdown\fP.
 .TP 
 \fBroom_save_file\fP
 Percorso del file in cui memorizzare le informazioni sulle stanze. Questo
-file è letto all'avvio del server e vi viene scritto in seguito. Se è vuoto
+file è letto all’avvio del server e vi viene scritto in seguito. Se è vuoto
 o non impostato, le stanze non saranno caricate o salvate.
 .TP 
 \fBsalva_replays\fP
@@ -201,7 +201,7 @@ Una lista separata da virgole delle versioni daredirigere. Si comporta come
 \fBversions_accepted\fP per quello che riguarda lo schema dei caratteri jolly.
 .RE
 .P
-\fB[ban_time]\fP Un'etichetta per definire parole chiave comode per periodi di
+\fB[ban_time]\fP Un’etichetta per definire parole chiave comode per periodi di
 messa al bando temporanei.
 .RS
 .TP 
@@ -230,13 +230,13 @@ del nick.
 .RS
 .TP  
 \fBdb_host\fP
-(per user_handler=forum) L'hostname del server del database
+(per user_handler=forum) L’hostname del server del database
 .TP  
 \fBdb_name\fP
 (per ser_handleu=forum) Il nome del database
 .TP  
 \fBdb_user\fP
-(per user_handler=forum) Il nome dell'utente con cui connettersi al database
+(per user_handler=forum) Il nome dell’utente con cui connettersi al database
 .TP  
 \fBdb_password\fP
 (per user_handler=forum) La password di questo utente
@@ -258,12 +258,12 @@ user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);\fP
 giorni).
 .RE
 .P
-\fB[mail]\fP Configura un server SMTP attraverso il quale l'utente può inviare
+\fB[mail]\fP Configura un server SMTP attraverso il quale l’utente può inviare
 e\-mail. Attualmente utilizzato soltanto dallo user_handler sample.
 .RS
 .TP  
 \fBserver\fP
-L'hostname del sever della posta
+L’hostname del sever della posta
 .TP  
 \fBusername\fP
 Il nome utente per connettersi al server della posta.
@@ -272,7 +272,7 @@ Il nome utente per connettersi al server della posta.
 La password di questo utente.
 .TP  
 \fBfrom_address\fP
-L'indirizzo reply\-to della tua posta.
+L’indirizzo reply\-to della tua posta.
 .TP  
 \fBmail_port\fP
 La porta su cui il tuo server di posta è in ascolto. Omettendo un valore,
@@ -301,7 +301,7 @@ Copyright \(co 2003\-2013 David White <davidnwhite@verizon.net>
 Questo gioco è rilasciato come Software Libero; viene rilasciato secondo i
 termini della licenza GPL versione 2 come pubblicata dalla Free Software
 Foundation. Non è fornita nessuna garanzia, né per la COMMERCIALIZZAZIONE né
-per l'ADEGUATEZZA AD UNO SCOPO PARTICOLARE.
+per l’ADEGUATEZZA AD UNO SCOPO PARTICOLARE.
 .
 .SH "SEE ALSO"
 .

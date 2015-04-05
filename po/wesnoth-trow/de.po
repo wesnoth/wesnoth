@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 18:57+0100\n"
+"POT-Creation-Date: 2015-04-05 03:51-0300\n"
 "PO-Revision-Date: 2014-11-09 15:58+0100\n"
 "Last-Translator: Christoph Berg <christoph.berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -291,7 +291,7 @@ msgstr "Besiegt den Wesvolk-Anführer"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:185
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_in_the_Deep.cfg:105
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:249
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:191
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:187
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer_of_Southbay.cfg:134
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:268
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:417
@@ -701,7 +701,7 @@ msgstr "Was sagst du zu diesem Vorschlag, Haldric?"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:291
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:360
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:356
 msgid "Hmm... after some thought..."
 msgstr "Hmm... nach reiflicher Überlegung..."
 
@@ -874,12 +874,13 @@ msgid "Gruumogth"
 msgstr "Gruumogth"
 
 #. [objective]: condition=win
+#. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:111
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:162
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:151
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:181
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:245
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:187
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:185
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:264
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:413
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:168
@@ -2436,7 +2437,7 @@ msgstr "Menschen"
 #. [case]
 #. [side]: type=Lieutenant, id=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:41
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:526
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:528
 msgid "Commander Aethyr"
 msgstr "Feldherr Aethyr"
 
@@ -2495,7 +2496,7 @@ msgstr "Flüchtet auf dem dritten Schiff"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:253
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:195
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:191
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer_of_Southbay.cfg:138
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:272
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:421
@@ -2941,7 +2942,7 @@ msgid "Haldric enters Southbay’s sewer"
 msgstr "Haldric betritt die Kanalisation von Südbucht"
 
 #. [message]: speaker=Tan-Pulk
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:212
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:208
 msgid ""
 "Da big bosses said we’d be in da city by winter. Bosses wrong, human-worms "
 "still there, and I’m a tinkin—"
@@ -2950,12 +2951,12 @@ msgstr ""
 "sein hier, und ich denken–"
 
 #. [message]: speaker=Ut'Tan-Grilg
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:216
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:212
 msgid "Wait! I see a ship! Humans is coming! Smash ’em good!"
 msgstr "Halt! Ich sehe Schiff! Menschen kommen! Zerschmettern gut!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:239
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:235
 msgid ""
 "Prince Haldric has arrived at Fallen Lich Point, to retrieve the Lich-Lord "
 "Caror’s Book of Fire and Darkness, and flee into the sewers of Southbay."
@@ -2964,7 +2965,7 @@ msgstr ""
 "Lichs in Besitz zu nehmen, und in die Kanalisation von Südbucht zu fliehen."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:264
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:260
 msgid ""
 "Well, let’s un-petrify that lich and take his book, then get into the "
 "sewers. Umm, what language would that book be in?"
@@ -2974,34 +2975,34 @@ msgstr ""
 "geschrieben?"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:268
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:264
 msgid "Some pep talk. The book will probably be in the Old Wesfolk tongue."
 msgstr ""
 "Etwas schwer auszusprechendes. Das Buch wird wahrscheinlich in einem alten "
 "Dialekt des Wesvolks gehalten sein."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:272
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:268
 msgid "Ohh."
 msgstr "Ohh."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:276
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:272
 msgid "Just get the book, I think I should be able to translate it."
 msgstr "Beschafft ihr nur das Buch. Das Lesen lasst meine Sorgen sein."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:280
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:276
 msgid "Then, into Southbay’s sewer."
 msgstr "Und dann ab in die Kanalisation von Südbucht."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:284
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:280
 msgid "Right."
 msgstr "Richtig."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:308
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:304
 msgid ""
 "There’s an odd monolith standing near here. Maybe it has something to do "
 "with the Lich-Lord... I should investigate more closely."
@@ -3010,12 +3011,12 @@ msgstr ""
 "etwas mit dem Lich zu tun. Ich sollte ihn mir näher ansehen."
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:315
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:311
 msgid "There’s an odd monolith standing near here."
 msgstr "Ganz in der Nähe befindet sich ein seltsamer Monolith."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:320
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:316
 msgid ""
 "Haldric, this looks like a job for you, probably something to do with the "
 "lich. Maybe you should get yourself over here."
@@ -3024,7 +3025,7 @@ msgstr ""
 "mit dem Lich zu tun. Vielleicht solltet ihr euch dorthin begeben."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:339
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:335
 msgid ""
 "This monolith was erected by me, ― (<i>chipped away</i>), first Mage of the "
 "good people of the Green Isle. By its power the Lich-Lord is bound in stone. "
@@ -3036,12 +3037,12 @@ msgstr ""
 "Geschlecht der Könige die folgenden Worte spricht..."
 
 #. [option]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:364
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:360
 msgid "I think I’ll say that magic phrase."
 msgstr "Ich werde diese magische Formel sprechen."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:383
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:379
 msgid ""
 "The lich is free! Let’s bash him and grab that book. That sounds like a job "
 "for you, Lady Jessene!"
@@ -3050,123 +3051,123 @@ msgstr ""
 "Aufgabe für euch, Lady Jessene!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:387
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:383
 msgid "Hmph! You’re just happy because that monolith proves your paternity!"
 msgstr ""
 "Pfft! Ihr seid nur so zufrieden, weil der Monolith eure Abstammung beweist!"
 
 #. [message]: speaker=Lich-Lord Caror
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:391
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:387
 msgid "Free, I’m free, and I feel the Ruby of Fire! It will be mine."
 msgstr "Frei, ich bin frei! Und ich fühle den Feuerrubin! Er wird mein sein."
 
 #. [message]: speaker=Minister Edren
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:395
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:391
 msgid "No you won’t, you soldier of darkness!"
 msgstr "Nein, wird er nicht, du Söldner der Finsternis!"
 
 #. [option]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:401
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:397
 msgid "I think I’ll wait a while before uttering any magic phrases."
 msgstr ""
 "Ich warte noch eine Weile, bevor ich irgendwelche Zaubersprüche deklamiere."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:406
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:402
 msgid "We have more pressing matters to deal with before we free that lich."
 msgstr ""
 "Wir haben dringendere Aufgaben zu erledigen, bevor wir diesen Lich befreien."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:411
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:407
 msgid "Afraid you’ll find out you’re not of the line of Kings?"
 msgstr ""
 "Habt ihr Angst davor ,zu erfahren, dass ihr nicht dem Geschlecht der Könige "
 "entstammt?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:421
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:417
 msgid "This sounds like a job for Prince Haldric, hopefully."
 msgstr "Das klingt nach einer Aufgabe für Prinz Haldric, hoffentlich."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:434
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:430
 msgid "The Lich-Lord is already free."
 msgstr "Der Lichfürst ist bereits befreit."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:457
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:453
 msgid "NW — Southbay."
 msgstr "NW – Südbucht."
 
 #. [message]: speaker=unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:462
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:458
 msgid "More like ‘NW — Every orc on the Isle’. Hmph!"
 msgstr "Weiter nach »NW – Jeder Ork auf dieser Insel«. Pfft!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:493
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:489
 msgid "We have the book! Let’s get out of here!"
 msgstr "Wir haben das Buch, nichts wie weg von hier!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:498
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:494
 msgid "Sounds good to me."
 msgstr "Das klingt gut."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:511
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:507
 msgid "I feel like I’m forgetting something. Ohh, the book!"
 msgstr "Mich dünkt, ich vergesse etwas. Ohh, das Buch!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:521
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:517
 msgid "Prince Haldric must be the first into the sewers of Southbay."
 msgstr "Prinz Haldric muss die Kanalisation von Südbucht als erster betreten."
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:545
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:541
 msgid "Rarlg"
 msgstr "Rarlg"
 
 #. [message]: speaker=Rarlg
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:549
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:545
 msgid "Rarlg — argh, a raul-rarlg!"
 msgstr "Rarlg – argh, ein Raul-Rarlg!"
 
 #. [message]: speaker=Prince Haldric
 #. [message]: speaker=Tan-Pulk
 #. [message]: speaker=Ut'Tan-Grilg
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:553
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:549
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:554
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:558
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:562
 msgid "Oh my!"
 msgstr "Oh mein Gott!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:566
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:562
 msgid "And he brought a friend."
 msgstr "Und er hat einen Freund mitgebracht."
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:573
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:569
 msgid "Raul-Rarlg"
 msgstr "Raul-Rarlg"
 
 #. [message]: speaker=Lich-Lord Caror
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:584
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:580
 msgid "So close. So close."
 msgstr "So knapp. So knapp."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:589
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:585
 msgid "I found the book in what was left of his robes! Let’s get out of here!"
 msgstr ""
 "Ich habe das Buch in den Überresten seiner Robe gefunden! Lasst uns von hier "
 "verschwinden!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:603
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:599
 msgid ""
 "We have the book and the orcs are out of our way. Let’s get out of here!"
 msgstr ""
@@ -3174,14 +3175,14 @@ msgstr ""
 "hier verschwinden!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:625
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:621
 msgid "I can hear their reinforcements coming! We’re trapped! All is lost!"
 msgstr ""
 "Ich höre, wie sich ihre Verstärkung nähert! Wir sind gefangen! Alles ist "
 "verloren!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:643
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:639
 msgid "Sewer — Danger Keep Out!"
 msgstr "Kanalisation – Lebensgefahr, Zutritt verboten!"
 
@@ -3802,10 +3803,10 @@ msgstr "Zu gleichen Bedingungen?"
 #. [message]: speaker=Lord El’Isomithir
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:393
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:420
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:424
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:140
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:148
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:422
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:426
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:142
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:150
 msgid "Agreed."
 msgstr "Einverstanden."
 
@@ -4530,7 +4531,7 @@ msgid "I bet this wasn’t the welcome you were expecting."
 msgstr "Ich möchte wetten, ihr habt euch euren Empfang anders vorgestellt."
 
 #. [event]
-#. [side]: type=Elvish Shyde, id=Lady Dionli
+#. [side]: type=Autumn Shyde, id=Lady Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:370
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:34
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:34
@@ -4688,83 +4689,83 @@ msgstr ""
 msgid "The Ka’lian"
 msgstr "Der Ka'lian"
 
+#. [side]: type=Autumn Shyde, id=Lady Dionli
 #. [side]: type=Elvish Champion, id=Lord Logalmier
 #. [side]: type=Elvish Sharpshooter, id=Lord Aryad
-#. [side]: type=Elvish Shyde, id=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:37
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:49
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:60
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:37
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:49
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:61
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:38
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:50
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:62
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:38
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:50
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:63
 msgid "Elves"
 msgstr "Elfen"
 
 #. [side]: type=Elvish Champion, id=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:45
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:45
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:46
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:46
 msgid "Lord Logalmier"
 msgstr "Lord Logalmier"
 
 #. [side]: type=Elvish Sharpshooter, id=Lord Aryad
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:57
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:58
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:58
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:59
 msgid "Lord Aryad"
 msgstr "Lord Aryad"
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:137
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:102
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:139
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:104
 msgid "Lord El’Isomithir"
 msgstr "Lord El’Isomithir"
 
 #. [option]: id=16_The_Kalian
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:144
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:146
 msgid "I think I’ll fight the dragon!"
 msgstr "Ich werde gegen den Drachen kämpfen!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:156
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:158
 msgid "Lord Logalmier, I shall defeat your dragon."
 msgstr "Lord Logalmier, ich werde euren Drachen besiegen."
 
 #. [option]: id=16_The_Kalian
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:173
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:175
 msgid "Let’s get those saurians and nagas on that beach!"
 msgstr "Zeigt es den Saurianern und Naga an diesem Strand!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:185
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:187
 msgid "Those cold blooded monsters will feel my wrath!"
 msgstr "Diese kaltblütigen Monster werden meinen Zorn spüren!"
 
 #. [option]: id=16_The_Kalian
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:202
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:204
 msgid "Let’s clear out that troll hole!"
 msgstr "Säubern wir diese Trollhöhle!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:214
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:216
 msgid "So what exactly is a troll?"
 msgstr "Was genau ist eigentlich ein Troll?"
 
 #. [option]: id=16_The_Kalian
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:230
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:232
 msgid "Let’s put those souls to rest on the cursed isle!"
 msgstr "Geben wir diesen Seelen ihren Frieden!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:242
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:244
 msgid "Undead. Bah! We’re pros at fighting them."
 msgstr "Untote. Bah! Wir sind Experten in ihrer Vernichtung."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:260
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:262
 msgid "In the name of peace between our peoples:"
 msgstr "Im Namen des Friedens zwischen unseren Völkern:"
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:277
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:279
 msgid ""
 "I fear my kin are too easy on you. I decree that you should be made to fight "
 "the Dragon of the Green Swamp and its saurian minions. If you can defeat "
@@ -4776,7 +4777,7 @@ msgstr ""
 "verdient."
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:290
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:292
 msgid ""
 "There is a group of saurians, friends of the dragon I’m sure, who are "
 "trading metal with the nagas of the sea. We should put a stop to this. They "
@@ -4787,7 +4788,7 @@ msgstr ""
 "befinden sich an einem Strand in der Nähe."
 
 #. [message]: speaker=Lord Aryad
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:303
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:305
 msgid ""
 "We are having a problem with a troll-hole in the Brown Hills. While I find "
 "the thought of those dwarves stumbling on the trolls vaguely amusing, this "
@@ -4798,7 +4799,7 @@ msgstr ""
 "sollte dies eine angemessene Aufgabe für euch sein."
 
 #. [message]: speaker=Lord El'Isomithir
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:316
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:318
 msgid ""
 "Long ago a clan of elves on the Isle of Tears fell under the sway of a dark "
 "curse. Their souls still haunt that place and no elf will go there. You "
@@ -4810,7 +4811,7 @@ msgstr ""
 "schenken."
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:330
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:332
 msgid ""
 "Ahh, you have defeated the dragon, man of the west-north, you are truly "
 "impressive for a human."
@@ -4819,24 +4820,24 @@ msgstr ""
 "imponierend, für einen Menschen."
 
 #. [message]: speaker=Lord Aryad
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:337
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:339
 msgid "So, you have defeated the trolls. Welcome back, Haldric."
 msgstr "Also habt ihr die Trolle besiegt. Willkommen zurück, Haldric."
 
 #. [message]: speaker=Lord El'Isomithir
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:344
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:346
 msgid "Finally the souls of our poor kin may rest. Thank you."
 msgstr "Endlich ruhen die Seelen unserer armen Verwandten. Danke."
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:351
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:353
 msgid "Our beaches are free again. I knew I could trust you, Haldric."
 msgstr ""
 "Unsere Strände sind wieder sauber. Ich wusste, dass man euch trauen kann, "
 "Haldric."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:361
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:363
 msgid ""
 "Haldric and his companions find themselves before the Ka’lian, or the "
 "Council of Elven Lords."
@@ -4845,12 +4846,12 @@ msgstr ""
 "Rat der Elfenfürsten."
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:371
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:373
 msgid "Dionli, why have you brought these humans before us?"
 msgstr "Dionli, warum habt ihr diese Menschen zu uns gebracht?"
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:375
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:377
 msgid ""
 "They are of the same people as the Prince of Southbay. They come as "
 "refugees. I can see a use for them."
@@ -4859,7 +4860,7 @@ msgstr ""
 "Flüchtlinge. Sie könnten uns von Nutzem sein."
 
 #. [message]: speaker=Lord Aryad
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:380
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:382
 msgid ""
 "What use would that be? What need could we have for the shortliveds here?"
 msgstr ""
@@ -4867,7 +4868,7 @@ msgstr ""
 "benötigen?"
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:384
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:386
 msgid ""
 "The dwarves have come to the Brown Hills. While they live long, even they "
 "grow like weeds when in an empty field. There is trouble brewing."
@@ -4877,7 +4878,7 @@ msgstr ""
 "Es braut sich Ärger zusammen."
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:388
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:390
 msgid ""
 "It is better to be the greater of three than the lesser of two. The Prince "
 "of Southbay was good, he was a credit to his people. Maybe these ones are "
@@ -4888,12 +4889,12 @@ msgstr ""
 "demselben Holz geschnitzt."
 
 #. [message]: speaker=Lord El'Isomithir
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:392
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:394
 msgid "But why then do they come as refugees? Speak, human."
 msgstr "Aber warum kommen sie dann als Flüchtlinge? Sprecht, Mensch."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:396
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:398
 msgid ""
 "Our people come in peace. There was a war in our homeland. We are refugees. "
 "We come seeking a new home, since our island to the west and north is now "
@@ -4904,7 +4905,7 @@ msgstr ""
 "und Norden sind nun verloren."
 
 #. [message]: speaker=Lord El'Isomithir
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:400
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:402
 msgid ""
 "So you come to steal our land? We know your kind, humans of the west-north."
 msgstr ""
@@ -4912,7 +4913,7 @@ msgstr ""
 "Nordwestens."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:404
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:406
 msgid ""
 "We only wish to live in peace. The dwarves are peoples of mountain and hill, "
 "the elves are people of the forests, we only seek some of the space in "
@@ -4923,7 +4924,7 @@ msgstr ""
 "dazwischen."
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:408
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:410
 msgid ""
 "I suggest that we grant these humans the plains to the north and south of "
 "the Great River."
@@ -4932,27 +4933,27 @@ msgstr ""
 "vom Großen Fluss."
 
 #. [message]: speaker=Lord Aryad
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:412
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:414
 msgid "They should be put to the test before such a grant is made."
 msgstr "Es sollte eine Prüfung geben, bevor eine solche Gabe gewährt wird."
 
 #. [message]: speaker=Lord El'Isomithir
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:416
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:418
 msgid "A quest for each of us then?"
 msgstr "Eine Aufgabe von jedem von uns?"
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:428
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:430
 msgid "Agreed. (<i>Sigh</i>)"
 msgstr "Einverstanden. (<i>Seufzt</i>)"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:432
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:434
 msgid "Umm, agreed."
 msgstr "Ähm, Einverstanden."
 
 #. [message]: speaker=Lord Aryad
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:436
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:438
 msgid ""
 "Well then, human. Each of us lords has a specific quest for you. If you "
 "complete them all you will be granted all of the plains in our domain and "
@@ -4966,7 +4967,7 @@ msgstr ""
 "nehmen?"
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:448
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:450
 msgid ""
 "Very good, but this is just the start, human. There is still much more for "
 "you to do."
@@ -4975,26 +4976,26 @@ msgstr ""
 "zu tun."
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:461
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:463
 msgid "You are victorious again. You may yet earn your place in this land."
 msgstr ""
 "Ihr seid erneut siegreich. Ihr mögt euren Platz in diesem Lande bereits "
 "verdient haben."
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:474
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:476
 msgid "Ahh, my young prince, you’re not as soft as I thought."
 msgstr ""
 "Ahhh, mein junger Prinz, ihr seid nicht so verweichlicht, wie ich dachte."
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:486
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:488
 msgid "You were successful, Prince Haldric. I knew you could do it."
 msgstr ""
 "Ihr wart erfolgreich, Prinz Haldric. Ich wusste, ihr könnt es schaffen."
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:491
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:493
 msgid ""
 "Man of the west-north, you have earned your place on this great continent."
 msgstr ""
@@ -5002,17 +5003,17 @@ msgstr ""
 "verdient."
 
 #. [message]: speaker=Lord Aryad
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:496
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:498
 msgid "As per our agreement, you and your people—"
 msgstr "Wie es vereinbart war. Ihr und eure Leute—"
 
 #. [message]: speaker=Lord El'Isomithir
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:501
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:503
 msgid "—may stay."
 msgstr "—könnt bleiben."
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:506
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:508
 msgid ""
 "We hereby grant you the plains to the north of the Great River, and the "
 "plains and hills to the south of the Great River. Be kind to the land. In a "
@@ -5024,7 +5025,7 @@ msgstr ""
 "rufen. Erinnert euch dann unserer Großherzigkeit."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:511
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:513
 msgid ""
 "Fair enough. I decree a ‘Pact of Mutual Aid’ between our peoples. But— "
 "aren’t you setting us in conflict with the Dwarves?"
@@ -5033,7 +5034,7 @@ msgstr ""
 "werden. Aber bringt ihr uns nicht in Konflikte mit den Zwergen?"
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:516
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:518
 msgid ""
 "No. The Dwarves have returned to the north. But humans mine as well, no? "
 "They are your resources to guard now. In the future we would be willing to "
@@ -5044,12 +5045,12 @@ msgstr ""
 "In Zukunft würden wir gewillt sein, mit euch zu handeln."
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:534
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:536
 msgid "Who is this?"
 msgstr "Wer ist das?"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:539
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:541
 msgid ""
 "It’s Commander Aethyr, of Clearwater Port. I was sure you perished in the "
 "fighting there."
@@ -5058,7 +5059,7 @@ msgstr ""
 "den Kämpfen dort umgekommen."
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:544
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:546
 msgid ""
 "No, sir. I was leading the final survivors of Clearwater Port. We were "
 "making our last stand at the lighthouse when one of your ships came. One of "
@@ -5070,7 +5071,7 @@ msgstr ""
 "wieder auf."
 
 #. [message]: speaker=Commander Aethyr
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:549
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:551
 msgid ""
 "I come bearing news. Some ‘old friends’ have decided to make an appearance. "
 "You should go ‘greet’ them."
@@ -5079,7 +5080,7 @@ msgstr ""
 "beschlossen, ihre Aufwartung zu machen. Ihr solltet sie »begrüßen« gehen."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:554
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:556
 msgid ""
 "I fear our friend has said too much. You go on ahead, I’ll catch up with you."
 msgstr ""
@@ -5585,12 +5586,12 @@ msgid "A Spy in the Woods"
 msgstr "Ein Spion in den Wäldern"
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:94
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:96
 msgid "Jessene in Hiding"
 msgstr "Jessene im Versteck"
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:119
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:121
 msgid ""
 "So a doom has followed them here from their old home. My Outriders have "
 "reported that orcs have made landfall. Orcs! The tree-killers of our most "
@@ -5603,7 +5604,7 @@ msgstr ""
 "um kleine Kinder zu erschrecken. Für Hirngespinste."
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:123
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:125
 msgid ""
 "And he bears an artifact of some power. The orcs would not be able to sense "
 "that. There is some hand we cannot see at work here."
@@ -5612,7 +5613,7 @@ msgstr ""
 "Lage, das zu spüren. Hier ist eine größere Macht am Werk."
 
 #. [message]: speaker=Lord Aryad
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:127
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:129
 msgid ""
 "We may have decided wrongly. If the humans drive the orcs off we should "
 "honor our pledge. If more trouble follows them here we should let them fight "
@@ -5625,7 +5626,7 @@ msgstr ""
 "Überlebenden »abrechnen« und einen Kompromiss mit den Zwergen finden."
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:131
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:133
 msgid ""
 "But we spoke a Pact with this Haldric and these men of the west-north..."
 msgstr ""
@@ -5633,7 +5634,7 @@ msgstr ""
 "geschlossen-"
 
 #. [message]: speaker=Lord Logalmier
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:136
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:138
 msgid ""
 "We are the people of the forest, you know that all words spoken to these un-"
 "people are of secondary importance to our own needs. As Lord Aryad said, "
@@ -5648,12 +5649,12 @@ msgstr ""
 "Kompromiss mit den Zwergen zu finden.«</i>"
 
 #. [message]: speaker=Lady Dionli
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:144
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:146
 msgid "(<i>Sigh</i>) Agreed."
 msgstr "(<i>Seufzt</i>) Einverstanden."
 
 #. [message]: speaker=Jessene in Hiding
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:153
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:155
 msgid "Some friends. I must tell Haldric."
 msgstr "Wahre Freunde. Ich muss Haldric Bericht erstatten."
 
@@ -6813,32 +6814,32 @@ msgid "Ahh... That almost makes it all worth while!"
 msgstr "Ahh... Das entschädigt für beinahe alles!"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1359
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1366
 msgid "You’ll pay for that!"
 msgstr "Dafür werdet ihr bezahlen!"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1373
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1380
 msgid "Strike down these fools."
 msgstr "Tötet diese Narren."
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1384
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1393
 msgid "Rise, rise from the ground!"
 msgstr "Erhebt euch, erhebt euch aus dem Staube!"
 
 #. [message]: speaker=Lich-Lord Jevyan
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1444
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1453
 msgid "Come in from the deep my loyal soldiers!"
 msgstr "Kommt aus der Tiefe, meine ergebenen Soldaten!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1639
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1656
 msgid "We did it! We won!"
 msgstr "Wir haben es geschafft! Wir haben gesiegt!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1643
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1660
 msgid ""
 "Jevyan is destroyed, but at a terrible price. Let’s put Commander Aethyr to "
 "rest and discuss what is to come in the following days."
@@ -6847,7 +6848,7 @@ msgstr ""
 "begraben und darüber reden, was in den nächsten Tagen geschehen soll."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1651
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:1668
 msgid ""
 "Our strength is waning, and our foes grow stronger by the hour. The battle "
 "is lost!"
@@ -7391,41 +7392,10 @@ msgstr ""
 "den Edelmut im Herzen und wendet mit ihrer erkämpften Erfahrung manche "
 "Schlachten zugunsten ihrer Gefolgschaft."
 
-#. [unit_type]: id=Wose Sapling, race=wose
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:4
+#. [unit_type]: id=Wose Sapling
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:7
 msgid "Wose Sapling"
 msgstr "Junger Waldschrat"
-
-#. [unit_type]: id=Wose Sapling, race=wose
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:21
-msgid ""
-"Rarely seen, even by Elves, a Wose is an order of creature about which "
-"little is known. The Elves are the source of most of this knowledge; they "
-"know that these beings are not descended from trees, despite the similarity "
-"in form, and they know that a Wose is more closely tied to the faerie world "
-"than the Elves themselves, though in a different way. The motives and "
-"workings of their kind are unknown, though most posit the obvious idea that "
-"woses are wardens of the natural world.\n"
-"\n"
-"Woses are utterly unwarlike, but possess a great strength. They are, "
-"however, neither used to, nor quick at moving around."
-msgstr ""
-"Da Waldschrate selbst von Elfen nur sehr selten gesehen werden, ist wenig "
-"über sie bekannt. Sämtliches Wissen über Waldschrate hat man von den Elfen "
-"erfahren. So ist es zum Beispiel so, dass Waldschrate trotz ihrer äußeren "
-"Ähnlichkeiten nicht von Bäumen abstammen, sondern dass sie Wesen aus der "
-"Feenwelt sind. Hieraus lässt sich vielleicht auch ableiten, warum sich "
-"Waldschrate und Elfen so gut verstehen. Die Beweggründe ihrer Art sind zwar "
-"unbekannt, aber es wird vermutet, dass sie die Wächter der Natur "
-"darstellen.\n"
-"\n"
-"Waldschrate sind von Natur aus friedfertig. Man sollte sich jedoch davor "
-"hüten, etwas zu tun, was sie erzürnen könnte."
-
-#. [attack]: type=impact
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:29
-msgid "crush"
-msgstr "Zermalmen"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:6
@@ -7441,7 +7411,7 @@ msgstr ""
 "Ermöglicht befreundeten Einheiten, feindliche Kontrollzonen in ihrer Nähe zu "
 "durchdringen, ohne dies selbst zu können (gilt nicht für sich selbst)."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:17
+#: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:16
 msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
@@ -7582,6 +7552,33 @@ msgid ""
 msgstr ""
 "Das sind fürwahr gute Nachrichten. Unsere Anzahl hat sich verdoppelt. Nun "
 "zum Tagesgeschäft."
+
+#~ msgid ""
+#~ "Rarely seen, even by Elves, a Wose is an order of creature about which "
+#~ "little is known. The Elves are the source of most of this knowledge; they "
+#~ "know that these beings are not descended from trees, despite the "
+#~ "similarity in form, and they know that a Wose is more closely tied to the "
+#~ "faerie world than the Elves themselves, though in a different way. The "
+#~ "motives and workings of their kind are unknown, though most posit the "
+#~ "obvious idea that woses are wardens of the natural world.\n"
+#~ "\n"
+#~ "Woses are utterly unwarlike, but possess a great strength. They are, "
+#~ "however, neither used to, nor quick at moving around."
+#~ msgstr ""
+#~ "Da Waldschrate selbst von Elfen nur sehr selten gesehen werden, ist wenig "
+#~ "über sie bekannt. Sämtliches Wissen über Waldschrate hat man von den "
+#~ "Elfen erfahren. So ist es zum Beispiel so, dass Waldschrate trotz ihrer "
+#~ "äußeren Ähnlichkeiten nicht von Bäumen abstammen, sondern dass sie Wesen "
+#~ "aus der Feenwelt sind. Hieraus lässt sich vielleicht auch ableiten, warum "
+#~ "sich Waldschrate und Elfen so gut verstehen. Die Beweggründe ihrer Art "
+#~ "sind zwar unbekannt, aber es wird vermutet, dass sie die Wächter der "
+#~ "Natur darstellen.\n"
+#~ "\n"
+#~ "Waldschrate sind von Natur aus friedfertig. Man sollte sich jedoch davor "
+#~ "hüten, etwas zu tun, was sie erzürnen könnte."
+
+#~ msgid "crush"
+#~ msgstr "Zermalmen"
 
 #~ msgid "You retrieve $amount_gold pieces of gold."
 #~ msgstr "Ihr erhaltet $amount_gold Goldstücke."
