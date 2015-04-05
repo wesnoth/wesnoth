@@ -1225,6 +1225,7 @@ if(ENABLE_TESTS)
 		tests/test_addons.cpp
 		tests/test_commandline_options.cpp
 		tests/test_config_cache.cpp
+		tests/test_filesystem.cpp
 		tests/test_formula_ai.cpp
 		tests/test_formula_function.cpp
 		tests/test_image_modifications.cpp
