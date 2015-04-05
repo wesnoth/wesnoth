@@ -734,7 +734,7 @@ std::string preprocessor_data::read_line()
 std::string preprocessor_data::read_rest_of_line()
 {
 	std::string res;
-	while(!in_.eof() && in_.peek() != '\n') {
+	while(in_.peek() != '\n' && !in_.eof()) {
 		int c = in_.get();
 		if (c != '\r')
 			res += static_cast<char>(c);
