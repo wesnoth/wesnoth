@@ -21,8 +21,6 @@
 
 using boost::assign::list_of;
 
-#include <iostream>
-
 #if 0
 namespace {
 
