@@ -158,9 +158,16 @@ BOOST_AUTO_TEST_CASE( test_fs_binary_path )
 
 BOOST_AUTO_TEST_CASE( test_fs_wml_path )
 {
+	const std::string& userdata = get_user_data_dir();
+
+	BOOST_CHECK_EQUAL( get_wml_location(""), "" );
+
 	BOOST_CHECK_EQUAL( get_wml_location("_main.cfg"), gamedata + "/data/_main.cfg" );
 	BOOST_CHECK_EQUAL( get_wml_location("core/_main.cfg"), gamedata + "/data/core/_main.cfg" );
 	BOOST_CHECK_EQUAL( get_wml_location("."), gamedata + "/data/." );
+
+	BOOST_CHECK_EQUAL( get_wml_location("~"), userdata + "/data" );
+	BOOST_CHECK_EQUAL( get_wml_location("~/"), userdata + "/data/" );
 
 	// Inexistent paths are resolved empty.
 	BOOST_CHECK( get_wml_location("why_would_anyone_ever_name_a_file_like_this").empty() );
