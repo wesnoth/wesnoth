@@ -3305,10 +3305,15 @@ int game_lua_kernel::intf_color_adjust(lua_State *L)
 /**
  * Delays engine for a while.
  * - Arg 1: integer.
+ * - Arg 2: boolean (optional).
  */
 int game_lua_kernel::intf_delay(lua_State *L)
 {
-	unsigned final = SDL_GetTicks() + luaL_checkinteger(L, 1);
+	lua_Integer delay = luaL_checkinteger(L, 1);
+	if(luaW_toboolean(L, 2) && game_display_ && game_display_->turbo_speed() > 0) {
+		delay /= game_display_->turbo_speed();
+	}
+	const unsigned final = SDL_GetTicks() + delay;
 	do {
 		play_controller_.play_slice(false);
 		if (game_display_) {

@@ -289,6 +289,7 @@ Version 1.13.0-dev:
      in place of id, and [object] duration=level.
    * Allowed direct modification of unit.ellipse variable even if ellipse= is set
      in [unit_type] or by an [object]
+   * Add accelerate=yes/no key in [delay]
  * Miscellaneous and bug fixes:
    * replace 'fight_on_without_leader'=yes/no with defeat_condition=no_leader/
      no_units/always/never which allows the wml developer to decide when a side

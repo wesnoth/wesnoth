@@ -836,7 +836,8 @@ end
 function wml_actions.delay(cfg)
 	local delay = tonumber(cfg.time) or
 		helper.wml_error "[delay] missing required time= attribute."
-	wesnoth.delay(delay)
+	local accelerate = cfg.accelerate or false
+	wesnoth.delay(delay, accelerate)
 end
 
 function wml_actions.floating_text(cfg)
