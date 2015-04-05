@@ -90,8 +90,12 @@ int lua_kernel_base::intf_print(lua_State* L)
 	size_t nargs = lua_gettop(L);
 
 	for (size_t i = 1; i <= nargs; ++i) {
-		cmd_log_ << lua_tostring(L,i);
-		DBG_LUA << "'" << lua_tostring(L,i) << "'\n";
+		const char * str = lua_tostring(L,i);
+		if (!str) {
+			str = "";
+		}
+		cmd_log_ << str;
+		DBG_LUA << "'" << str << "'\n";
 	}
 
 	cmd_log_ << "\n";
