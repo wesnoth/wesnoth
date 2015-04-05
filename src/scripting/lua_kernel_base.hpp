@@ -78,13 +78,19 @@ protected:
 		{}
 
 		inline command_log & operator<< (const std::string & str) {
-			return *this << str.c_str();
-		}
-
-		inline command_log & operator<< (char const* str) {
 			log_ << str;
 			if (external_log_) {
 				(*external_log_) << str;
+			}
+			return *this;
+		}
+
+		inline command_log & operator<< (char const* str) {
+			if (str != NULL) {
+				log_ << str;
+				if (external_log_) {
+					(*external_log_) << str;
+				}
 			}
 			return *this;
 		}
