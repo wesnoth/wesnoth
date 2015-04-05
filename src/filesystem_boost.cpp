@@ -1074,6 +1074,8 @@ std::string get_wml_location(const std::string &filename, const std::string &cur
 	if (!is_legal_file(filename))
 		return std::string();
 
+	assert(game_config::path.empty() == false);
+
 	path fpath(filename);
 	path result;
 
@@ -1082,7 +1084,13 @@ std::string get_wml_location(const std::string &filename, const std::string &cur
 		result /= get_user_data_path() / "data" / filename.substr(1);
 		DBG_FS << "  trying '" << result.string() << "'\n";
 	} else if (*fpath.begin() == ".") {
-		result /= path(current_dir) / filename;
+		if (!current_dir.empty()) {
+			result /= path(current_dir);
+		} else {
+			result /= path(game_config::path) / "data";
+		}
+
+		result /= filename;
 	} else if (!game_config::path.empty()) {
 		result /= path(game_config::path) / "data" / filename;
 	}
