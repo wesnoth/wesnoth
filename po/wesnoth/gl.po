@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 03:51-0300\n"
-"PO-Revision-Date: 2015-03-16 07:20+0100\n"
+"POT-Creation-Date: 2015-04-05 05:06-0300\n"
+"PO-Revision-Date: 2015-03-16 07:13+0100\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -3490,17 +3490,13 @@ msgstr "Xogar a quenda"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:475 data/themes/_initial.cfg:615
-#, fuzzy
-#| msgid "Next Side"
 msgid "Next Move"
-msgstr "Seguinte bando"
+msgstr "Seguinte movemento"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:476 data/themes/_initial.cfg:616
-#, fuzzy
-#| msgid "play side turn"
 msgid "play single move"
-msgstr "Xogar a quenda"
+msgstr "Xogar un movemento"
 
 #. [menu]: id=show-what
 #: data/themes/_initial.cfg:488 data/themes/_initial.cfg:628
@@ -3521,12 +3517,12 @@ msgstr "Repetición"
 #. [theme]: id=Classic
 #: data/themes/classic.cfg:11
 msgid "theme^Classic"
-msgstr ""
+msgstr "Clásico"
 
 #. [theme]: id=Classic
 #: data/themes/classic.cfg:13
 msgid "The classic, pre-1.12 theme"
-msgstr ""
+msgstr "Tema clásico anterior á versión 1.12"
 
 #. [menu]: id=menu-main
 #: data/themes/classic.cfg:106 data/themes/default.cfg:80
@@ -3635,10 +3631,8 @@ msgstr "Predeterminado"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:33
-#, fuzzy
-#| msgid "Default theme."
 msgid "The default theme"
-msgstr "Tema predeterminado."
+msgstr "Tema predeterminado"
 
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:90
@@ -3668,10 +3662,8 @@ msgstr "Pandora"
 
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:21
-#, fuzzy
-#| msgid "800x480 theme optimized for Pandora devices."
 msgid "An 800×480 theme optimized for Pandora devices"
-msgstr "Tema para resolucións de 800×480, coma as dos dispositivos Pandora."
+msgstr "Tema para resolucións de 800×480, coma as dos dispositivos Pandora"
 
 #. [action]: id=end-turn
 #: data/themes/pandora.cfg:151
@@ -3682,17 +3674,15 @@ msgstr "Continuar"
 
 #. [theme]: id=UnitBox
 #: data/themes/unit_box.cfg:11
+#, fuzzy
+#| msgid "theme^Pandora"
 msgid "theme^UnitBox"
-msgstr "UnitBox"
+msgstr "Pandora"
 
 #. [theme]: id=UnitBox
 #: data/themes/unit_box.cfg:12
-#, fuzzy
-#| msgid "Experimental work-in-progress replacement for the default theme."
 msgid "An experimental work-in-progress replacement for the default theme"
 msgstr ""
-"Substituto para o tema predeterminado. É un traballo experimental aínda en "
-"progreso."
 
 #. [action]: id=flip_map_button_editor, type=checkbox
 #: data/themes/unit_box.cfg:203
@@ -3702,14 +3692,12 @@ msgstr "Aínda non está listo."
 #. [theme]: id=Widescreen
 #: data/themes/widescreen.cfg:11
 msgid "theme^Widescreen"
-msgstr "Panorámico"
+msgstr ""
 
 #. [theme]: id=Widescreen
 #: data/themes/widescreen.cfg:12
-#, fuzzy
-#| msgid "Experimental theme optimized for widescreen resolutions."
 msgid "An experimental theme optimized for widescreen resolutions"
-msgstr "Tema experimental optimizado para resolucións panorámicas."
+msgstr ""
 
 #. [tip]
 #: data/tips.cfg:4
@@ -6249,21 +6237,15 @@ msgid "Search:"
 msgstr "Buscar:"
 
 #: src/game_initialization/multiplayer_lobby.cpp:1033
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Normal Replays"
-msgstr "Gardar a repetición"
+msgstr "Repeticións normais"
 
 # Aparece na parte superior da sala de espera para partidas con varios xogadores.
 #: src/game_initialization/multiplayer_lobby.cpp:1034
-#, fuzzy
-#| msgid "Quick replays"
 msgid "Quick Replays"
-msgstr "Repeticións rápidas."
+msgstr "Repeticións rápidas"
 
 #: src/game_initialization/multiplayer_lobby.cpp:1035
-#, fuzzy
-#| msgid "Enter blindfolded"
 msgid "Enter Blindfolded"
 msgstr "Entrar ás escuras"
 
