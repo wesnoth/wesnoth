@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth dev-trunk\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-01-15 22:59-0300\n"
+"POT-Creation-Date: 2015-04-05 03:22-0300\n"
 "PO-Revision-Date: 2012-07-09 05:15+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team:  <wesnoth-ja-translate@lists.sourceforge.jp>\n"
@@ -195,466 +195,6 @@ msgstr "事典"
 #: data/core/encyclopedia/_main.cfg:14
 msgid "<ref>dst='..geography' text='Geography'</ref>"
 msgstr "<ref>dst='..geography' text='地理'</ref>"
-
-#. [topic]: id=caste
-#: data/core/encyclopedia/drakes.cfg:7
-msgid "Caste"
-msgstr "階級"
-
-#. [topic]: id=caste
-#: data/core/encyclopedia/drakes.cfg:8
-msgid ""
-"One of the variant forms of the drake: either be a <ref>dst='unit_Drake "
-"Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' text='Drake "
-"Fighter'</ref>."
-msgstr ""
-"ドレークのさまざまな種類のことです。例えば<ref>dst='unit_Drake Clasher' "
-"text='粉砕者'</ref>や<ref>dst='unit_Drake Fighter' text='戦士'</ref>などで"
-"す。"
-
-#. [topic]: id=aerie
-#: data/core/encyclopedia/drakes.cfg:13
-msgid "Aerie"
-msgstr "Aerie"
-
-#. [topic]: id=aerie
-#: data/core/encyclopedia/drakes.cfg:14
-msgid ""
-"A very large castle-like structure that is home to a <ref>dst='flight' "
-"text='flight'</ref>. It contains the <ref>dst='breeding_pen' text='breeding "
-"pens'</ref>."
-msgstr ""
-"巨大な城のような構築物で<ref>dst='flight' text='飛行可能ドレーク'</ref>の故郷"
-"です。そこには<ref>dst='breeding_pen' text='産卵場'</ref>もあります。"
-
-#. [topic]: id=breeding_pen
-#: data/core/encyclopedia/drakes.cfg:19
-msgid "Breeding Pen"
-msgstr "産卵場"
-
-#. [topic]: id=breeding_pen
-#: data/core/encyclopedia/drakes.cfg:20
-msgid ""
-"The portion of an <ref>dst='aerie' text='aerie'</ref> where the nonsentient "
-"<ref>dst='breeder' text='Breeders'</ref> live under the <ref>dst='dominant' "
-"text='Dominant'</ref>’s eye."
-msgstr ""
-"<ref>dst='aerie' text='aerie'</ref> の一部分であり、そこには鈍感な"
-"<ref>dst='breeder' text='産卵者'</ref>が<ref>dst='dominant' text='有力者'</"
-"ref>の目に見える範囲で生活しています。"
-
-#. [topic]: id=breeding_cycle
-#: data/core/encyclopedia/drakes.cfg:25
-msgid "Breeding Cycle"
-msgstr "産卵周期"
-
-#. [topic]: id=breeding_cycle
-#: data/core/encyclopedia/drakes.cfg:26
-msgid ""
-"The time that passes between one <ref>dst=egg text='egg'</ref> laying to the "
-"next."
-msgstr ""
-"ある<ref>dst=egg text='卵'</ref>が産み落とされてから次の産卵までの時間。"
-
-#. [topic]: id=world_ocean
-#: data/core/encyclopedia/drakes.cfg:31
-msgid "World Ocean"
-msgstr "世界海"
-
-#. [topic]: id=world_ocean
-#: data/core/encyclopedia/drakes.cfg:32
-msgid ""
-"The World Ocean is the name of the open seas that surround the archipelago "
-"of <ref>dst='morogor' text='Morogor'</ref>. The drakes believe it to end at "
-"the <ref>dst='abyss' text='Abyss'</ref>, a vast and deadly waterfall."
-msgstr ""
-"世界海とは <ref>dst='morogor' text='Morogor'</ref> と周辺の島の外に広がる太洋"
-"のことです。ドレークはその果てで巨大な滝から<ref>dst='abyss' text='深淵'</"
-"ref>に落ち込んでいると信じています。"
-
-#. [topic]: id=new_continent
-#: data/core/encyclopedia/drakes.cfg:37
-msgid "New Continent"
-msgstr "新大陸"
-
-#. [topic]: id=new_continent
-#: data/core/encyclopedia/drakes.cfg:38
-#, fuzzy
-msgid ""
-"The great continent to the east of <ref>dst='morogor' text='Morogor'</ref>. "
-"Its existence is unknown to the drakes until the flight of Galun."
-msgstr ""
-"新大陸とは <ref>dst='morogor' text='Morogor'</ref> の東方に位置する巨大大陸の"
-"ことです。その存在は Galun の探検までドレークには知られていませんでした。"
-
-#. [topic]: id=abyss
-#: data/core/encyclopedia/drakes.cfg:43
-msgid "Abyss"
-msgstr "深淵"
-
-#. [topic]: id=abyss
-#: data/core/encyclopedia/drakes.cfg:44
-msgid ""
-"In the cosmology of the Drakes, a vast and deadly waterfall where the ocean "
-"falls off the world-disc."
-msgstr ""
-"ドレークの世界観では、世界全体が乗っている円盤の端から太洋は巨大な滝となって"
-"流れ落ちています。"
-
-#. [topic]: id=spiral_path
-#: data/core/encyclopedia/drakes.cfg:49
-msgid "Spiral Path"
-msgstr "螺旋の道"
-
-#. [topic]: id=spiral_path
-#: data/core/encyclopedia/drakes.cfg:50
-msgid ""
-"A quasi-secret organization among the drakes devoted to avoiding a "
-"Malthusian final war. See also <ref>dst='straight_path' text='Straight "
-"Path'</ref>"
-msgstr ""
-"このドレークによる秘密結社は Malthusian の最終戦争を回避することを使命として"
-"います。<ref>dst='straight_path' text='真っ直ぐな道'</ref>も参照のこと。"
-
-#. [topic]: id=straight_path
-#: data/core/encyclopedia/drakes.cfg:55
-msgid "Straight Path"
-msgstr "真っ直ぐな道"
-
-#. [topic]: id=straight_path
-#: data/core/encyclopedia/drakes.cfg:56
-#, fuzzy
-msgid ""
-"The drakish tradition of perpetual expansion and conquest. This term is "
-"mostly used by the members of the <ref>dst='spiral_path' text='Spiral Path'</"
-"ref>."
-msgstr ""
-"ドレークの伝統である絶え間ない拡大と征服において、この単語は主に"
-"<ref>dst='spiral_path' text='螺旋の道'</ref>の会員によって使用されます。"
-
-#. [topic]: id=dominant
-#: data/core/encyclopedia/drakes.cfg:61
-msgid "Dominant"
-msgstr "有力者"
-
-#. [topic]: id=dominant
-#: data/core/encyclopedia/drakes.cfg:62
-msgid ""
-"The <ref>dst='aspirant' text='Aspirant'</ref> that emerges as the drake "
-"leader, the only drake in the tribe that is allowed to reproduce with the "
-"<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
-"privileges on others."
-msgstr ""
-"<ref>dst='aspirant' text='熱望者'</ref>がドレーク部族のトップに上り詰めた者"
-"で、その部族で<ref>dst='breeder' text='産卵者'</ref>と子孫を残すことができる"
-"唯一のドレークです。まれに彼は他のドレークに交配権を分け与えることもありま"
-"す。"
-
-#. [topic]: id=vulcaniad
-#: data/core/encyclopedia/drakes.cfg:67
-msgid "Vulcaniad"
-msgstr "噴火周期"
-
-#. [topic]: id=vulcaniad
-#: data/core/encyclopedia/drakes.cfg:68
-msgid ""
-"The (irregular) period between consecutive eruptions of "
-"<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
-"<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
-msgstr ""
-"<ref>dst='mount_morogor' text='Morogor 火山'</ref>が噴火してから次に噴火する"
-"までの（一定しない）期間。<ref>dst='long_count' text='長い日数'</ref>（ドレー"
-"ク暦）はこれを基礎にしています。"
-
-#. [topic]: id=recorder
-#: data/core/encyclopedia/drakes.cfg:73
-msgid "Recorder"
-msgstr "記録者"
-
-#. [topic]: id=recorder
-#: data/core/encyclopedia/drakes.cfg:74
-#, fuzzy
-msgid ""
-"A Recorder is a Drakish scrollkeeper who has mastered the drakish "
-"<ref>dst='drakish_script' text='script'</ref>. The recorders are the only "
-"<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: they "
-"recruit their members from all of the other castes."
-msgstr ""
-"記録者は<ref>dst='drakish_script' text='ドレークの書'</ref>の熟練者です。記録"
-"者は唯一体力によって地位が決まらないドレークの<ref>dst='caste' text='階級'</"
-"ref>です。"
-
-#. [topic]: id=laying
-#: data/core/encyclopedia/drakes.cfg:79
-msgid "Laying"
-msgstr "横になる"
-
-#. [topic]: id=hatching
-#. [topic]: id=laying
-#: data/core/encyclopedia/drakes.cfg:80 data/core/encyclopedia/drakes.cfg:86
-msgid "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
-msgstr "<ref>dst='breeding_cycle' text='産卵周期'</ref>の一部分"
-
-#. [topic]: id=hatching
-#: data/core/encyclopedia/drakes.cfg:85
-msgid "Hatching"
-msgstr "孵化"
-
-#. [topic]: id=hatchling
-#: data/core/encyclopedia/drakes.cfg:91
-msgid "Hatchling"
-msgstr "ひな"
-
-#. [topic]: id=hatchling
-#: data/core/encyclopedia/drakes.cfg:92
-msgid ""
-"A young drake that has not yet seen another generation hatch. The younger of "
-"the current generation of hatchlings are the most aggressive is the behavior "
-"of the <ref>dst='flight' text='flight'</ref>."
-msgstr ""
-"次の産卵周期のひなが誕生する前の若いドレークです。現世代のひなの若さは"
-"<ref>dst='flight' text='飛行可能ドレーク'</ref>の振る舞いから攻撃性を抽出した"
-"ようなものです。"
-
-#. [topic]: id=fledgling
-#: data/core/encyclopedia/drakes.cfg:97
-msgid "Fledgling"
-msgstr "若鳥"
-
-#. [topic]: id=fledgling
-#: data/core/encyclopedia/drakes.cfg:98
-msgid ""
-"A young drake that has seen another generation hatch. If the "
-"<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
-"they start the <ref>dst='swarming' text='Swarming'</ref>."
-msgstr ""
-"次の産卵周期のひなが誕生した後の若いドレークです。もし、一時的離脱を許せる状"
-"況だと<ref>dst='flight' text='飛行可能ドレーク'</ref>が判断すれば、彼らは"
-"<ref>dst='swarming' text='巣帰り'</ref>できるだけの能力はあります。"
-
-#. [topic]: id=breeder
-#: data/core/encyclopedia/drakes.cfg:103
-msgid "Breeder"
-msgstr "産卵者"
-
-#. [topic]: id=breeder
-#: data/core/encyclopedia/drakes.cfg:104
-msgid ""
-"The female drake. They are rare since <ref>dst='egg' text='eggs'</ref> that "
-"become breeders have to be handled with extra care. The number of breeders "
-"is also limited by the amounts of non-breeders around, since breeders can't "
-"take care of their food for themselves when laying. Drake breeders become "
-"fertile after the next <ref>dst='hatching' text='hatching'</ref>."
-msgstr ""
-"メスのドレークのことです。<ref>dst='egg' text='卵'</ref>から産卵者に育てるた"
-"めには特別に面倒を見る必要があるので彼女達は数少ない存在です。また、産卵者は"
-"産卵期間中に自分自身の食料を確保することができないので産卵者以外のドレークの"
-"数によっても制限されます。ドレークの産卵者は次の<ref>dst='hatching' text='孵"
-"化'</ref>を経た数でその繁殖力が評価されます。"
-
-#. [topic]: id=egg
-#: data/core/encyclopedia/drakes.cfg:109
-msgid "Egg, Drake"
-msgstr "ドレークの卵"
-
-#. [topic]: id=egg
-#: data/core/encyclopedia/drakes.cfg:110
-msgid ""
-"The <ref>dst=caste text='caste'</ref> the <ref>dst='hatchling' "
-"text='Hatchling'</ref> will belongs to is determined by the time it is laid "
-"and to some extent the ambient temperature."
-msgstr ""
-"<ref>dst='hatchling' text='ひな'</ref>が所属する<ref>dst=caste text='階級'</"
-"ref>は以前十分保温された場所に寝かされていました。"
-
-#. [topic]: id=flight
-#: data/core/encyclopedia/drakes.cfg:115
-msgid "Flight"
-msgstr "飛行可能ドレーク"
-
-#. [topic]: id=flight
-#: data/core/encyclopedia/drakes.cfg:116
-msgid ""
-"Tribe of Drakes, lives in an <ref>dst='aerie' text='Aerie'</ref>, "
-"controlling a hunting range. Each tribe has one <ref>dst='dominant' "
-"text='Dominant'</ref>, who confers mating privileges."
-msgstr ""
-"ドレークの各部族は <ref>dst='aerie' text='Aerie'</ref> に（性的）狩場を持って"
-"います。それぞれの部族にはそれぞれ一人の<ref>dst='dominant' text='有力者'</"
-"ref>がおり、部族民に対して交配権の授与を決定します。"
-
-#. [topic]: id=aspirant
-#: data/core/encyclopedia/drakes.cfg:121
-msgid "Aspirant"
-msgstr "熱望者"
-
-#. [topic]: id=aspirant
-#: data/core/encyclopedia/drakes.cfg:122
-msgid ""
-"Male drake that has passed through a hormonal metamorphosis that makes him "
-"able to mate with the <ref>dst='breeder' text='breeders'</ref>. The "
-"secretion of the hormone is caused by hunt and combat actions in which the "
-"drake is involved."
-msgstr ""
-"オスのドレークはホルモンによる変身を経て<ref>dst='breeder' text='産卵者'</"
-"ref>と交配可能となります。ホルモンの分泌は狩りや戦闘におけるドレークの複雑な"
-"行動の原因です。"
-
-#. [topic]: id=ascendant
-#: data/core/encyclopedia/drakes.cfg:127
-msgid "Ascendant"
-msgstr "Ascendant"
-
-#. [topic]: id=ascendant
-#: data/core/encyclopedia/drakes.cfg:128
-msgid ""
-"The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
-msgstr ""
-"ドレークの名前の一つで<ref>dst='unit_Fire Dragon' text='ドラゴン'</ref>を意味"
-"します。"
-
-#. [topic]: id=intendant
-#: data/core/encyclopedia/drakes.cfg:133
-msgid "Intendant"
-msgstr "特別任務者"
-
-#. [topic]: id=intendant
-#: data/core/encyclopedia/drakes.cfg:134
-msgid ""
-"One of the <ref>dst='aspirant' text='Aspirant'</ref> lieutenants of a "
-"<ref>dst='dominant' text='Dominant'</ref>. Traditionally he has one of each "
-"<ref>dst=caste text='caste'</ref> other than his own. Additional "
-"'Intendants' are sometimes designated for special duties. Intendants are "
-"likeliest to be granted mating privileges, especially after a notable "
-"service."
-msgstr ""
-"<ref>dst='dominant' text='有力者'</ref>の部下である<ref>dst='aspirant' "
-"text='熱望者'</ref>の内から選抜された者です。 伝統的には彼自身のものとは異な"
-"る<ref>dst=caste text='階級'</ref>の仕事をすることを言いましたが、追加された"
-"意味では「特別任務者」はその名の通り特別な任務を行うことを意味します。特別任"
-"務者として活躍すれば交配権を獲得する近道が開かれます。"
-
-#. [topic]: id=swarm
-#: data/core/encyclopedia/drakes.cfg:139
-msgid "Swarm"
-msgstr "群れ"
-
-#. [topic]: id=swarm
-#: data/core/encyclopedia/drakes.cfg:140
-msgid ""
-"The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
-"<ref>dst='aerie' text='aerie'</ref> to found a new one."
-msgstr ""
-"<ref>dst='swarmlings' text='巣立ち'</ref>とは成長に伴って <ref>dst='aerie' "
-"text='aerie'</ref> を離れることです."
-
-#. [topic]: id=swarming
-#: data/core/encyclopedia/drakes.cfg:145
-msgid "Swarming"
-msgstr "巣帰り"
-
-#. [topic]: id=swarming
-#: data/core/encyclopedia/drakes.cfg:146
-msgid ""
-" The <ref>dst='flight' text='flight'</ref> for a new drake <ref>dst='aerie' "
-"text='aerie'</ref> that recurs every <ref>dst='breeding_cycle' "
-"text='breeding cycle'</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
-msgstr ""
-"<ref>dst='flight' text='飛行可能ドレーク'</ref>が繁殖のため"
-"<ref>dst='breeding_cycle' text='産卵周期'</ref>のたびに <ref>dst='aerie' "
-"text='aerie'</ref> に戻ってくることです。<ref>dst='swarm' text='群れ'</ref>も"
-"参照のこと。"
-
-#. [topic]: id=runners
-#: data/core/encyclopedia/drakes.cfg:151
-msgid "Runners"
-msgstr "逃亡者"
-
-#. [topic]: id=runners
-#: data/core/encyclopedia/drakes.cfg:152
-msgid "Drakish term for escaped slaves hunted as game."
-msgstr "ドレークの用語で逃亡奴隷のことであり、それはゲームとして狩られます。"
-
-#. [topic]: id=mount_morogor
-#: data/core/encyclopedia/drakes.cfg:157
-msgid "Mount Morogor"
-msgstr "Morogor 火山"
-
-#. [topic]: id=mount_morogor
-#: data/core/encyclopedia/drakes.cfg:158
-msgid ""
-"Volcanic mountain on the central island of the archipelago "
-"<ref>dst='morogor' text='Morogor'</ref>."
-msgstr "<ref>dst='morogor' text='Morogor'</ref>諸島の中心に位置する大火山"
-
-#. [topic]: id=long_count
-#: data/core/encyclopedia/drakes.cfg:163
-msgid "Long Count"
-msgstr "長い日数"
-
-#. [topic]: id=long_count
-#: data/core/encyclopedia/drakes.cfg:164
-msgid ""
-"The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> and "
-"<ref>dst=breeding_cycle text='Breeding cycles'</ref>."
-msgstr ""
-"ドレークの暦は<ref>dst='vulcaniad' text='噴火周期'</ref>と"
-"<ref>dst=breeding_cycle text='産卵周期'</ref>を基礎にしています。"
-
-#. [topic]: id=long_pig
-#: data/core/encyclopedia/drakes.cfg:169
-msgid "Long Pig"
-msgstr "Long Pig"
-
-#. [topic]: id=long_pig
-#: data/core/encyclopedia/drakes.cfg:170
-msgid ""
-"South Seas pidgin for human meat, used to translate a Drakish word with the "
-"same meaning."
-msgstr ""
-"南の海の向こうでの人間の食肉販売業が、ドレーク語にも同じ意味で移入されまし"
-"た。"
-
-#. [topic]: id=ceramic
-#: data/core/encyclopedia/drakes.cfg:175
-msgid "Ceramics"
-msgstr "セラミック"
-
-#. [topic]: id=ceramic
-#: data/core/encyclopedia/drakes.cfg:176
-msgid ""
-"The drakes work metal, but are are masters in the craftsmanship of making "
-"ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
-"generate the amount of heat to cure the pieces to full strength."
-msgstr ""
-"ドレークには金属加工の技術もありますが、特にセラミックの加工技術が優れていま"
-"す。ドレークの中で<ref>dst='unit_Drake Burner' text='焼却者'</ref>だけが小石"
-"を溶かして強靭な物体に作り上げられます。"
-
-#. [topic]: id=drakish_script
-#: data/core/encyclopedia/drakes.cfg:181
-msgid "Drakish, script"
-msgstr "ドレークの書"
-
-#. [topic]: id=drakish_script
-#: data/core/encyclopedia/drakes.cfg:182
-msgid ""
-"The scripted language of the drakes. Stored on <ref>dst='ceramic' "
-"text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
-"text='Recorder'</ref> vocation."
-msgstr ""
-"ドレークの書かれた言葉です。それを<ref>dst='ceramic' text='セラミック'</ref>"
-"の平板に書き記すことが<ref>dst='recorder' text='記録者'</ref>の使命です。"
-
-#. [topic]: id=drakish_language
-#: data/core/encyclopedia/drakes.cfg:187
-msgid "Drakish, language"
-msgstr "ドレーク語"
-
-#. [topic]: id=drakish_language
-#: data/core/encyclopedia/drakes.cfg:188
-msgid "The language spoken by the drakes."
-msgstr "ドレークによって使用されている言語です。"
 
 #. [section]: id=geography
 #. [topic]: id=..geography
@@ -6099,6 +5639,350 @@ msgstr "The Battle for Wesnoth ヘルプ"
 #: src/help.cpp:3492
 msgid "Parse error when parsing help text: "
 msgstr "ヘルプ文書を解析中にエラー: "
+
+#~ msgid "Caste"
+#~ msgstr "階級"
+
+#~ msgid ""
+#~ "One of the variant forms of the drake: either be a <ref>dst='unit_Drake "
+#~ "Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' "
+#~ "text='Drake Fighter'</ref>."
+#~ msgstr ""
+#~ "ドレークのさまざまな種類のことです。例えば<ref>dst='unit_Drake Clasher' "
+#~ "text='粉砕者'</ref>や<ref>dst='unit_Drake Fighter' text='戦士'</ref>などで"
+#~ "す。"
+
+#~ msgid "Aerie"
+#~ msgstr "Aerie"
+
+#~ msgid ""
+#~ "A very large castle-like structure that is home to a <ref>dst='flight' "
+#~ "text='flight'</ref>. It contains the <ref>dst='breeding_pen' "
+#~ "text='breeding pens'</ref>."
+#~ msgstr ""
+#~ "巨大な城のような構築物で<ref>dst='flight' text='飛行可能ドレーク'</ref>の"
+#~ "故郷です。そこには<ref>dst='breeding_pen' text='産卵場'</ref>もあります。"
+
+#~ msgid "Breeding Pen"
+#~ msgstr "産卵場"
+
+#~ msgid ""
+#~ "The portion of an <ref>dst='aerie' text='aerie'</ref> where the "
+#~ "nonsentient <ref>dst='breeder' text='Breeders'</ref> live under the "
+#~ "<ref>dst='dominant' text='Dominant'</ref>’s eye."
+#~ msgstr ""
+#~ "<ref>dst='aerie' text='aerie'</ref> の一部分であり、そこには鈍感な"
+#~ "<ref>dst='breeder' text='産卵者'</ref>が<ref>dst='dominant' text='有力"
+#~ "者'</ref>の目に見える範囲で生活しています。"
+
+#~ msgid "Breeding Cycle"
+#~ msgstr "産卵周期"
+
+#~ msgid ""
+#~ "The time that passes between one <ref>dst=egg text='egg'</ref> laying to "
+#~ "the next."
+#~ msgstr ""
+#~ "ある<ref>dst=egg text='卵'</ref>が産み落とされてから次の産卵までの時間。"
+
+#~ msgid "World Ocean"
+#~ msgstr "世界海"
+
+#~ msgid ""
+#~ "The World Ocean is the name of the open seas that surround the "
+#~ "archipelago of <ref>dst='morogor' text='Morogor'</ref>. The drakes "
+#~ "believe it to end at the <ref>dst='abyss' text='Abyss'</ref>, a vast and "
+#~ "deadly waterfall."
+#~ msgstr ""
+#~ "世界海とは <ref>dst='morogor' text='Morogor'</ref> と周辺の島の外に広がる"
+#~ "太洋のことです。ドレークはその果てで巨大な滝から<ref>dst='abyss' text='深"
+#~ "淵'</ref>に落ち込んでいると信じています。"
+
+#~ msgid "New Continent"
+#~ msgstr "新大陸"
+
+#, fuzzy
+#~ msgid ""
+#~ "The great continent to the east of <ref>dst='morogor' text='Morogor'</"
+#~ "ref>. Its existence is unknown to the drakes until the flight of Galun."
+#~ msgstr ""
+#~ "新大陸とは <ref>dst='morogor' text='Morogor'</ref> の東方に位置する巨大大"
+#~ "陸のことです。その存在は Galun の探検までドレークには知られていませんでし"
+#~ "た。"
+
+#~ msgid "Abyss"
+#~ msgstr "深淵"
+
+#~ msgid ""
+#~ "In the cosmology of the Drakes, a vast and deadly waterfall where the "
+#~ "ocean falls off the world-disc."
+#~ msgstr ""
+#~ "ドレークの世界観では、世界全体が乗っている円盤の端から太洋は巨大な滝となっ"
+#~ "て流れ落ちています。"
+
+#~ msgid "Spiral Path"
+#~ msgstr "螺旋の道"
+
+#~ msgid ""
+#~ "A quasi-secret organization among the drakes devoted to avoiding a "
+#~ "Malthusian final war. See also <ref>dst='straight_path' text='Straight "
+#~ "Path'</ref>"
+#~ msgstr ""
+#~ "このドレークによる秘密結社は Malthusian の最終戦争を回避することを使命とし"
+#~ "ています。<ref>dst='straight_path' text='真っ直ぐな道'</ref>も参照のこと。"
+
+#~ msgid "Straight Path"
+#~ msgstr "真っ直ぐな道"
+
+#, fuzzy
+#~ msgid ""
+#~ "The drakish tradition of perpetual expansion and conquest. This term is "
+#~ "mostly used by the members of the <ref>dst='spiral_path' text='Spiral "
+#~ "Path'</ref>."
+#~ msgstr ""
+#~ "ドレークの伝統である絶え間ない拡大と征服において、この単語は主に"
+#~ "<ref>dst='spiral_path' text='螺旋の道'</ref>の会員によって使用されます。"
+
+#~ msgid "Dominant"
+#~ msgstr "有力者"
+
+#~ msgid ""
+#~ "The <ref>dst='aspirant' text='Aspirant'</ref> that emerges as the drake "
+#~ "leader, the only drake in the tribe that is allowed to reproduce with the "
+#~ "<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
+#~ "privileges on others."
+#~ msgstr ""
+#~ "<ref>dst='aspirant' text='熱望者'</ref>がドレーク部族のトップに上り詰めた"
+#~ "者で、その部族で<ref>dst='breeder' text='産卵者'</ref>と子孫を残すことがで"
+#~ "きる唯一のドレークです。まれに彼は他のドレークに交配権を分け与えることもあ"
+#~ "ります。"
+
+#~ msgid "Vulcaniad"
+#~ msgstr "噴火周期"
+
+#~ msgid ""
+#~ "The (irregular) period between consecutive eruptions of "
+#~ "<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
+#~ "<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
+#~ msgstr ""
+#~ "<ref>dst='mount_morogor' text='Morogor 火山'</ref>が噴火してから次に噴火す"
+#~ "るまでの（一定しない）期間。<ref>dst='long_count' text='長い日数'</"
+#~ "ref>（ドレーク暦）はこれを基礎にしています。"
+
+#~ msgid "Recorder"
+#~ msgstr "記録者"
+
+#, fuzzy
+#~ msgid ""
+#~ "A Recorder is a Drakish scrollkeeper who has mastered the drakish "
+#~ "<ref>dst='drakish_script' text='script'</ref>. The recorders are the only "
+#~ "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: "
+#~ "they recruit their members from all of the other castes."
+#~ msgstr ""
+#~ "記録者は<ref>dst='drakish_script' text='ドレークの書'</ref>の熟練者です。"
+#~ "記録者は唯一体力によって地位が決まらないドレークの<ref>dst='caste' "
+#~ "text='階級'</ref>です。"
+
+#~ msgid "Laying"
+#~ msgstr "横になる"
+
+#~ msgid ""
+#~ "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
+#~ msgstr "<ref>dst='breeding_cycle' text='産卵周期'</ref>の一部分"
+
+#~ msgid "Hatching"
+#~ msgstr "孵化"
+
+#~ msgid "Hatchling"
+#~ msgstr "ひな"
+
+#~ msgid ""
+#~ "A young drake that has not yet seen another generation hatch. The younger "
+#~ "of the current generation of hatchlings are the most aggressive is the "
+#~ "behavior of the <ref>dst='flight' text='flight'</ref>."
+#~ msgstr ""
+#~ "次の産卵周期のひなが誕生する前の若いドレークです。現世代のひなの若さは"
+#~ "<ref>dst='flight' text='飛行可能ドレーク'</ref>の振る舞いから攻撃性を抽出"
+#~ "したようなものです。"
+
+#~ msgid "Fledgling"
+#~ msgstr "若鳥"
+
+#~ msgid ""
+#~ "A young drake that has seen another generation hatch. If the "
+#~ "<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
+#~ "they start the <ref>dst='swarming' text='Swarming'</ref>."
+#~ msgstr ""
+#~ "次の産卵周期のひなが誕生した後の若いドレークです。もし、一時的離脱を許せる"
+#~ "状況だと<ref>dst='flight' text='飛行可能ドレーク'</ref>が判断すれば、彼ら"
+#~ "は<ref>dst='swarming' text='巣帰り'</ref>できるだけの能力はあります。"
+
+#~ msgid "Breeder"
+#~ msgstr "産卵者"
+
+#~ msgid ""
+#~ "The female drake. They are rare since <ref>dst='egg' text='eggs'</ref> "
+#~ "that become breeders have to be handled with extra care. The number of "
+#~ "breeders is also limited by the amounts of non-breeders around, since "
+#~ "breeders can't take care of their food for themselves when laying. Drake "
+#~ "breeders become fertile after the next <ref>dst='hatching' "
+#~ "text='hatching'</ref>."
+#~ msgstr ""
+#~ "メスのドレークのことです。<ref>dst='egg' text='卵'</ref>から産卵者に育てる"
+#~ "ためには特別に面倒を見る必要があるので彼女達は数少ない存在です。また、産卵"
+#~ "者は産卵期間中に自分自身の食料を確保することができないので産卵者以外のド"
+#~ "レークの数によっても制限されます。ドレークの産卵者は次の"
+#~ "<ref>dst='hatching' text='孵化'</ref>を経た数でその繁殖力が評価されます。"
+
+#~ msgid "Egg, Drake"
+#~ msgstr "ドレークの卵"
+
+#~ msgid ""
+#~ "The <ref>dst=caste text='caste'</ref> the <ref>dst='hatchling' "
+#~ "text='Hatchling'</ref> will belongs to is determined by the time it is "
+#~ "laid and to some extent the ambient temperature."
+#~ msgstr ""
+#~ "<ref>dst='hatchling' text='ひな'</ref>が所属する<ref>dst=caste text='階"
+#~ "級'</ref>は以前十分保温された場所に寝かされていました。"
+
+#~ msgid "Flight"
+#~ msgstr "飛行可能ドレーク"
+
+#~ msgid ""
+#~ "Tribe of Drakes, lives in an <ref>dst='aerie' text='Aerie'</ref>, "
+#~ "controlling a hunting range. Each tribe has one <ref>dst='dominant' "
+#~ "text='Dominant'</ref>, who confers mating privileges."
+#~ msgstr ""
+#~ "ドレークの各部族は <ref>dst='aerie' text='Aerie'</ref> に（性的）狩場を"
+#~ "持っています。それぞれの部族にはそれぞれ一人の<ref>dst='dominant' text='有"
+#~ "力者'</ref>がおり、部族民に対して交配権の授与を決定します。"
+
+#~ msgid "Aspirant"
+#~ msgstr "熱望者"
+
+#~ msgid ""
+#~ "Male drake that has passed through a hormonal metamorphosis that makes "
+#~ "him able to mate with the <ref>dst='breeder' text='breeders'</ref>. The "
+#~ "secretion of the hormone is caused by hunt and combat actions in which "
+#~ "the drake is involved."
+#~ msgstr ""
+#~ "オスのドレークはホルモンによる変身を経て<ref>dst='breeder' text='産卵者'</"
+#~ "ref>と交配可能となります。ホルモンの分泌は狩りや戦闘におけるドレークの複雑"
+#~ "な行動の原因です。"
+
+#~ msgid "Ascendant"
+#~ msgstr "Ascendant"
+
+#~ msgid ""
+#~ "The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
+#~ msgstr ""
+#~ "ドレークの名前の一つで<ref>dst='unit_Fire Dragon' text='ドラゴン'</ref>を"
+#~ "意味します。"
+
+#~ msgid "Intendant"
+#~ msgstr "特別任務者"
+
+#~ msgid ""
+#~ "One of the <ref>dst='aspirant' text='Aspirant'</ref> lieutenants of a "
+#~ "<ref>dst='dominant' text='Dominant'</ref>. Traditionally he has one of "
+#~ "each <ref>dst=caste text='caste'</ref> other than his own. Additional "
+#~ "'Intendants' are sometimes designated for special duties. Intendants are "
+#~ "likeliest to be granted mating privileges, especially after a notable "
+#~ "service."
+#~ msgstr ""
+#~ "<ref>dst='dominant' text='有力者'</ref>の部下である<ref>dst='aspirant' "
+#~ "text='熱望者'</ref>の内から選抜された者です。 伝統的には彼自身のものとは異"
+#~ "なる<ref>dst=caste text='階級'</ref>の仕事をすることを言いましたが、追加さ"
+#~ "れた意味では「特別任務者」はその名の通り特別な任務を行うことを意味します。"
+#~ "特別任務者として活躍すれば交配権を獲得する近道が開かれます。"
+
+#~ msgid "Swarm"
+#~ msgstr "群れ"
+
+#~ msgid ""
+#~ "The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
+#~ "<ref>dst='aerie' text='aerie'</ref> to found a new one."
+#~ msgstr ""
+#~ "<ref>dst='swarmlings' text='巣立ち'</ref>とは成長に伴って "
+#~ "<ref>dst='aerie' text='aerie'</ref> を離れることです."
+
+#~ msgid "Swarming"
+#~ msgstr "巣帰り"
+
+#~ msgid ""
+#~ " The <ref>dst='flight' text='flight'</ref> for a new drake "
+#~ "<ref>dst='aerie' text='aerie'</ref> that recurs every "
+#~ "<ref>dst='breeding_cycle' text='breeding cycle'</ref>. See "
+#~ "<ref>dst='swarm' text='Swarm'</ref>"
+#~ msgstr ""
+#~ "<ref>dst='flight' text='飛行可能ドレーク'</ref>が繁殖のため"
+#~ "<ref>dst='breeding_cycle' text='産卵周期'</ref>のたびに <ref>dst='aerie' "
+#~ "text='aerie'</ref> に戻ってくることです。<ref>dst='swarm' text='群れ'</"
+#~ "ref>も参照のこと。"
+
+#~ msgid "Runners"
+#~ msgstr "逃亡者"
+
+#~ msgid "Drakish term for escaped slaves hunted as game."
+#~ msgstr ""
+#~ "ドレークの用語で逃亡奴隷のことであり、それはゲームとして狩られます。"
+
+#~ msgid "Mount Morogor"
+#~ msgstr "Morogor 火山"
+
+#~ msgid ""
+#~ "Volcanic mountain on the central island of the archipelago "
+#~ "<ref>dst='morogor' text='Morogor'</ref>."
+#~ msgstr "<ref>dst='morogor' text='Morogor'</ref>諸島の中心に位置する大火山"
+
+#~ msgid "Long Count"
+#~ msgstr "長い日数"
+
+#~ msgid ""
+#~ "The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> "
+#~ "and <ref>dst=breeding_cycle text='Breeding cycles'</ref>."
+#~ msgstr ""
+#~ "ドレークの暦は<ref>dst='vulcaniad' text='噴火周期'</ref>と"
+#~ "<ref>dst=breeding_cycle text='産卵周期'</ref>を基礎にしています。"
+
+#~ msgid "Long Pig"
+#~ msgstr "Long Pig"
+
+#~ msgid ""
+#~ "South Seas pidgin for human meat, used to translate a Drakish word with "
+#~ "the same meaning."
+#~ msgstr ""
+#~ "南の海の向こうでの人間の食肉販売業が、ドレーク語にも同じ意味で移入されまし"
+#~ "た。"
+
+#~ msgid "Ceramics"
+#~ msgstr "セラミック"
+
+#~ msgid ""
+#~ "The drakes work metal, but are are masters in the craftsmanship of making "
+#~ "ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
+#~ "generate the amount of heat to cure the pieces to full strength."
+#~ msgstr ""
+#~ "ドレークには金属加工の技術もありますが、特にセラミックの加工技術が優れてい"
+#~ "ます。ドレークの中で<ref>dst='unit_Drake Burner' text='焼却者'</ref>だけが"
+#~ "小石を溶かして強靭な物体に作り上げられます。"
+
+#~ msgid "Drakish, script"
+#~ msgstr "ドレークの書"
+
+#~ msgid ""
+#~ "The scripted language of the drakes. Stored on <ref>dst='ceramic' "
+#~ "text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
+#~ "text='Recorder'</ref> vocation."
+#~ msgstr ""
+#~ "ドレークの書かれた言葉です。それを<ref>dst='ceramic' text='セラミック'</"
+#~ "ref>の平板に書き記すことが<ref>dst='recorder' text='記録者'</ref>の使命で"
+#~ "す。"
+
+#~ msgid "Drakish, language"
+#~ msgstr "ドレーク語"
+
+#~ msgid "The language spoken by the drakes."
+#~ msgstr "ドレークによって使用されている言語です。"
 
 #~ msgid "Flat"
 #~ msgstr "平地"

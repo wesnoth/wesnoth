@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Help-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-01-15 22:59-0300\n"
+"POT-Creation-Date: 2015-04-05 03:22-0300\n"
 "PO-Revision-Date: 2014-07-10 20:03+0100\n"
 "Last-Translator: Émile Enguehard <zerbugug@gmail.com>\n"
 "Language-Team: français <wesnoth@ml.free.fr>\n"
@@ -151,483 +151,6 @@ msgstr "Encyclopédie"
 #: data/core/encyclopedia/_main.cfg:14
 msgid "<ref>dst='..geography' text='Geography'</ref>"
 msgstr "<ref>dst='..geography' text='Géographie'</ref>"
-
-#. [topic]: id=caste
-#: data/core/encyclopedia/drakes.cfg:7
-msgid "Caste"
-msgstr "Caste"
-
-#. [topic]: id=caste
-#: data/core/encyclopedia/drakes.cfg:8
-msgid ""
-"One of the variant forms of the drake: either be a <ref>dst='unit_Drake "
-"Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' text='Drake "
-"Fighter'</ref>."
-msgstr ""
-"Une des formes alternatives du dracan : soit un <ref>dst='unit_Drake "
-"Clasher' text='Cogneur'</ref> soit un <ref>dst='unit_Drake Fighter' "
-"text='Combattant dracan'</ref>."
-
-#. [topic]: id=aerie
-#: data/core/encyclopedia/drakes.cfg:13
-msgid "Aerie"
-msgstr "Nid de dragon"
-
-#. [topic]: id=aerie
-#: data/core/encyclopedia/drakes.cfg:14
-msgid ""
-"A very large castle-like structure that is home to a <ref>dst='flight' "
-"text='flight'</ref>. It contains the <ref>dst='breeding_pen' text='breeding "
-"pens'</ref>."
-msgstr ""
-"Une sorte de très grand château qui abrite un <ref>dst='flight' "
-"text='escadron'</ref>. C'est là que se trouvent leurs "
-"<ref>dst='breeding_pen' text='nids de reproduction'</ref>."
-
-#. [topic]: id=breeding_pen
-#: data/core/encyclopedia/drakes.cfg:19
-msgid "Breeding Pen"
-msgstr "Nid de reproduction"
-
-#. [topic]: id=breeding_pen
-#: data/core/encyclopedia/drakes.cfg:20
-msgid ""
-"The portion of an <ref>dst='aerie' text='aerie'</ref> where the nonsentient "
-"<ref>dst='breeder' text='Breeders'</ref> live under the <ref>dst='dominant' "
-"text='Dominant'</ref>’s eye."
-msgstr ""
-"La partie du <ref>dst='aerie' text='nid de dragon'</ref> où les "
-"<ref>dst='breeder' text='pondeuses'</ref> indolentes vivent sous le regard "
-"du <ref>dst='dominant' text='dominant'</ref>."
-
-#. [topic]: id=breeding_cycle
-#: data/core/encyclopedia/drakes.cfg:25
-msgid "Breeding Cycle"
-msgstr "Cycle de ponte"
-
-#. [topic]: id=breeding_cycle
-#: data/core/encyclopedia/drakes.cfg:26
-msgid ""
-"The time that passes between one <ref>dst=egg text='egg'</ref> laying to the "
-"next."
-msgstr ""
-"Le temps qui passe entre une ponte d'<ref>dst=egg text='œufs'</ref> et la "
-"suivante."
-
-#. [topic]: id=world_ocean
-#: data/core/encyclopedia/drakes.cfg:31
-msgid "World Ocean"
-msgstr "Océan Mondial"
-
-#. [topic]: id=world_ocean
-#: data/core/encyclopedia/drakes.cfg:32
-msgid ""
-"The World Ocean is the name of the open seas that surround the archipelago "
-"of <ref>dst='morogor' text='Morogor'</ref>. The drakes believe it to end at "
-"the <ref>dst='abyss' text='Abyss'</ref>, a vast and deadly waterfall."
-msgstr ""
-"L'Océan Mondial est le nom de l'ensemble des mers qui entourent l'archipel "
-"de<ref>dst='morogor' text='Morogor'</ref>. Les dracans pensent qu'il se "
-"termine par l'<ref>dst='abyss' text='Abysse'</ref>, une grande et mortelle "
-"chute d'eau."
-
-#. [topic]: id=new_continent
-#: data/core/encyclopedia/drakes.cfg:37
-msgid "New Continent"
-msgstr "Nouveau Continent"
-
-#. [topic]: id=new_continent
-#: data/core/encyclopedia/drakes.cfg:38
-msgid ""
-"The great continent to the east of <ref>dst='morogor' text='Morogor'</ref>. "
-"Its existence is unknown to the drakes until the flight of Galun."
-msgstr ""
-"Le vaste continent qui s'étend à l'est de <ref>dst='morogor' text='Morogor'</"
-"ref>. Son existence était inconnue des dracans jusqu'au vol de Galun."
-
-#. [topic]: id=abyss
-#: data/core/encyclopedia/drakes.cfg:43
-msgid "Abyss"
-msgstr "Abysse"
-
-#. [topic]: id=abyss
-#: data/core/encyclopedia/drakes.cfg:44
-msgid ""
-"In the cosmology of the Drakes, a vast and deadly waterfall where the ocean "
-"falls off the world-disc."
-msgstr ""
-"Dans la cosmologie dracane, une vaste et meurtrière chute d'eau où l'océan "
-"tombe du disque-monde."
-
-#. [topic]: id=spiral_path
-#: data/core/encyclopedia/drakes.cfg:49
-msgid "Spiral Path"
-msgstr "Voie de la Spirale"
-
-#. [topic]: id=spiral_path
-#: data/core/encyclopedia/drakes.cfg:50
-msgid ""
-"A quasi-secret organization among the drakes devoted to avoiding a "
-"Malthusian final war. See also <ref>dst='straight_path' text='Straight "
-"Path'</ref>"
-msgstr ""
-"Une organisation dracane presque secrète qui cherche à empêcher une ultime "
-"guerre malthusienne. Voir aussi <ref>dst='straight_path' text='Le droit "
-"chemin'</ref>"
-
-#. [topic]: id=straight_path
-#: data/core/encyclopedia/drakes.cfg:55
-msgid "Straight Path"
-msgstr "Le droit chemin"
-
-#. [topic]: id=straight_path
-#: data/core/encyclopedia/drakes.cfg:56
-msgid ""
-"The drakish tradition of perpetual expansion and conquest. This term is "
-"mostly used by the members of the <ref>dst='spiral_path' text='Spiral Path'</"
-"ref>."
-msgstr ""
-"La tradition dracane de conquête et d'expansion perpétuelle. Ce terme est "
-"surtout utilisé par les membres de la <ref>dst='spiral_path' text='Voie de "
-"la Spirale'</ref>."
-
-#. [topic]: id=dominant
-#: data/core/encyclopedia/drakes.cfg:61
-msgid "Dominant"
-msgstr "Dominant"
-
-#. [topic]: id=dominant
-#: data/core/encyclopedia/drakes.cfg:62
-msgid ""
-"The <ref>dst='aspirant' text='Aspirant'</ref> that emerges as the drake "
-"leader, the only drake in the tribe that is allowed to reproduce with the "
-"<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
-"privileges on others."
-msgstr ""
-"L'<ref>dst='aspirant' text='aspirant'</ref> qui finit par prendre la tête "
-"des dracans, le seul de la tribu autorisé à se reproduire avec les "
-"<ref>dst='breeder' text='pondeuses'</ref>. À de rares occasions, il peut "
-"transmettre ce privilège."
-
-#. [topic]: id=vulcaniad
-#: data/core/encyclopedia/drakes.cfg:67
-msgid "Vulcaniad"
-msgstr "Vulcaniade"
-
-#. [topic]: id=vulcaniad
-#: data/core/encyclopedia/drakes.cfg:68
-msgid ""
-"The (irregular) period between consecutive eruptions of "
-"<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
-"<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
-msgstr ""
-"La période (irrégulière) qui sépare deux éruptions consécutives du "
-"<ref>dst='mount_morogor' text='mont Morogor'</ref>. C'est la base de "
-"l'<ref>dst='long_count' text='ancien calendrier'</ref>."
-
-#. [topic]: id=recorder
-#: data/core/encyclopedia/drakes.cfg:73
-msgid "Recorder"
-msgstr "Greffier"
-
-#. [topic]: id=recorder
-#: data/core/encyclopedia/drakes.cfg:74
-msgid ""
-"A Recorder is a Drakish scrollkeeper who has mastered the drakish "
-"<ref>dst='drakish_script' text='script'</ref>. The recorders are the only "
-"<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: they "
-"recruit their members from all of the other castes."
-msgstr ""
-"Un greffier est un gardien de parchemins dracan qui a appris "
-"l'<ref>dst='drakish_script' text='écriture'</ref> dracane. Les greffiers "
-"forment la seule <ref>dst='caste' text='caste'</ref> de dracans qui n'est "
-"pas déterminée par la biologie : ils recrutent leurs membres dans toutes les "
-"autres castes."
-
-#. [topic]: id=laying
-#: data/core/encyclopedia/drakes.cfg:79
-msgid "Laying"
-msgstr "Ponte"
-
-#. [topic]: id=hatching
-#. [topic]: id=laying
-#: data/core/encyclopedia/drakes.cfg:80 data/core/encyclopedia/drakes.cfg:86
-msgid "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
-msgstr ""
-"L'aboutissement du <ref>dst='breeding_cycle' text='cycle de ponte'</ref>."
-
-#. [topic]: id=hatching
-#: data/core/encyclopedia/drakes.cfg:85
-msgid "Hatching"
-msgstr "Éclosion"
-
-#. [topic]: id=hatchling
-#: data/core/encyclopedia/drakes.cfg:91
-msgid "Hatchling"
-msgstr "Nouveau-né"
-
-#. [topic]: id=hatchling
-#: data/core/encyclopedia/drakes.cfg:92
-msgid ""
-"A young drake that has not yet seen another generation hatch. The younger of "
-"the current generation of hatchlings are the most aggressive is the behavior "
-"of the <ref>dst='flight' text='flight'</ref>."
-msgstr ""
-"Un jeune dracan qui n'a pas encore vu l'éclosion de la génération suivante. "
-"Les plus jeunes de cette nouvelle génération ont le comportement le plus "
-"agressif de l'<ref>dst='flight' text='escadron'</ref>."
-
-#. [topic]: id=fledgling
-#: data/core/encyclopedia/drakes.cfg:97
-msgid "Fledgling"
-msgstr "Dragonnet"
-
-#. [topic]: id=fledgling
-#: data/core/encyclopedia/drakes.cfg:98
-msgid ""
-"A young drake that has seen another generation hatch. If the "
-"<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
-"they start the <ref>dst='swarming' text='Swarming'</ref>."
-msgstr ""
-"Un jeune dracan qui a vu l'éclosion d'une génération. Si l'<ref>dst='flight' "
-"text='escadron'</ref> peut se permettre de perdre une génération, ils "
-"commencent l'<ref>dst='swarming' text='essaimage'</ref>."
-
-#. [topic]: id=breeder
-#: data/core/encyclopedia/drakes.cfg:103
-msgid "Breeder"
-msgstr "Pondeuse"
-
-#. [topic]: id=breeder
-#: data/core/encyclopedia/drakes.cfg:104
-msgid ""
-"The female drake. They are rare since <ref>dst='egg' text='eggs'</ref> that "
-"become breeders have to be handled with extra care. The number of breeders "
-"is also limited by the amounts of non-breeders around, since breeders can't "
-"take care of their food for themselves when laying. Drake breeders become "
-"fertile after the next <ref>dst='hatching' text='hatching'</ref>."
-msgstr ""
-"La femelle dracane. Elles sont rares car les <ref>dst='egg' text='œufs'</"
-"ref> destinés à devenir des pondeuses nécessitent un soin particulier. Le "
-"nombre de pondeuses est également limité par celui des autres dracans, qui "
-"doivent leur apporter de la nourriture quand elles pondent. Les pondeuses "
-"dracanes deviennent fertiles après la prochaine <ref>dst='hatching' "
-"text='éclosion'</ref>."
-
-#. [topic]: id=egg
-#: data/core/encyclopedia/drakes.cfg:109
-msgid "Egg, Drake"
-msgstr "Œuf dracan"
-
-#. [topic]: id=egg
-#: data/core/encyclopedia/drakes.cfg:110
-msgid ""
-"The <ref>dst=caste text='caste'</ref> the <ref>dst='hatchling' "
-"text='Hatchling'</ref> will belongs to is determined by the time it is laid "
-"and to some extent the ambient temperature."
-msgstr ""
-"La <ref>dst=caste text='caste'</ref> à laquelle le <ref>dst='hatchling' "
-"text='nouveau-né'</ref> appartiendra est déterminée par le temps "
-"d'incubation et, dans une certaine mesure, par la température ambiante."
-
-#. [topic]: id=flight
-#: data/core/encyclopedia/drakes.cfg:115
-msgid "Flight"
-msgstr "Escadron"
-
-#. [topic]: id=flight
-#: data/core/encyclopedia/drakes.cfg:116
-msgid ""
-"Tribe of Drakes, lives in an <ref>dst='aerie' text='Aerie'</ref>, "
-"controlling a hunting range. Each tribe has one <ref>dst='dominant' "
-"text='Dominant'</ref>, who confers mating privileges."
-msgstr ""
-"Tribu de dracans, vivant dans un <ref>dst='aerie' text='nid de dragon'</ref> "
-"et contrôlant un terrain de chasse. Chaque tribu dispose d'un "
-"<ref>dst='dominant' text='dominant'</ref>, qui attribue des droits "
-"d'accouplement."
-
-#. [topic]: id=aspirant
-#: data/core/encyclopedia/drakes.cfg:121
-msgid "Aspirant"
-msgstr "Aspirant"
-
-#. [topic]: id=aspirant
-#: data/core/encyclopedia/drakes.cfg:122
-msgid ""
-"Male drake that has passed through a hormonal metamorphosis that makes him "
-"able to mate with the <ref>dst='breeder' text='breeders'</ref>. The "
-"secretion of the hormone is caused by hunt and combat actions in which the "
-"drake is involved."
-msgstr ""
-"Dracan mâle ayant subi une métamorphose hormonale lui permettant de "
-"s'accoupler avec les <ref>dst='breeder' text='pondeuses'</ref>. La sécrétion "
-"de l'hormone est causée par la chasse et les faits d'armes auxquels le "
-"dracan participe."
-
-#. [topic]: id=ascendant
-#: data/core/encyclopedia/drakes.cfg:127
-msgid "Ascendant"
-msgstr "Ascendant"
-
-#. [topic]: id=ascendant
-#: data/core/encyclopedia/drakes.cfg:128
-msgid ""
-"The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
-msgstr ""
-"Nom que donnent les dracans à un vrai <ref>dst='unit_Fire Dragon' "
-"text='dragon'</ref>."
-
-#. [topic]: id=intendant
-#: data/core/encyclopedia/drakes.cfg:133
-msgid "Intendant"
-msgstr "Intendant"
-
-#. [topic]: id=intendant
-#: data/core/encyclopedia/drakes.cfg:134
-msgid ""
-"One of the <ref>dst='aspirant' text='Aspirant'</ref> lieutenants of a "
-"<ref>dst='dominant' text='Dominant'</ref>. Traditionally he has one of each "
-"<ref>dst=caste text='caste'</ref> other than his own. Additional "
-"'Intendants' are sometimes designated for special duties. Intendants are "
-"likeliest to be granted mating privileges, especially after a notable "
-"service."
-msgstr ""
-"Un <ref>dst='aspirant' text='aspirant'</ref> au service du "
-"<ref>dst='dominant' text='dominant'</ref>. La tradition lui en octroie un de "
-"chacune des autres <ref>dst=caste text='castes'</ref> que la sienne. Des "
-"« intendants » supplémentaires sont parfois nommés pour des tâches "
-"spéciales. Les intendants ont les meilleurs chances de gagner un privilège "
-"d'accouplement, surtout après un service remarquable."
-
-#. [topic]: id=swarm
-#: data/core/encyclopedia/drakes.cfg:139
-msgid "Swarm"
-msgstr "Essaim"
-
-#. [topic]: id=swarm
-#: data/core/encyclopedia/drakes.cfg:140
-msgid ""
-"The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
-"<ref>dst='aerie' text='aerie'</ref> to found a new one."
-msgstr ""
-"Les <ref>dst='swarmlings' text='essaimeurs'</ref> sont ceux qui quittent le "
-"<ref>dst='aerie' text='nid de dragon'</ref> pour en fonder un nouveau."
-
-#. [topic]: id=swarming
-#: data/core/encyclopedia/drakes.cfg:145
-msgid "Swarming"
-msgstr "Essaimage"
-
-#. [topic]: id=swarming
-#: data/core/encyclopedia/drakes.cfg:146
-msgid ""
-" The <ref>dst='flight' text='flight'</ref> for a new drake <ref>dst='aerie' "
-"text='aerie'</ref> that recurs every <ref>dst='breeding_cycle' "
-"text='breeding cycle'</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
-msgstr ""
-" L'<ref>dst='flight' text='escadron'</ref> formé pour la fondation d'un "
-"nouveau <ref>dst='aerie' text='nid de dragon'</ref> à chaque "
-"<ref>dst='breeding_cycle' text='cycle de ponte'</ref>. Voir <ref>dst='swarm' "
-"text='essaim'</ref>"
-
-#. [topic]: id=runners
-#: data/core/encyclopedia/drakes.cfg:151
-msgid "Runners"
-msgstr "Coureurs"
-
-#. [topic]: id=runners
-#: data/core/encyclopedia/drakes.cfg:152
-msgid "Drakish term for escaped slaves hunted as game."
-msgstr ""
-"Terme dracan désignant des esclaves ayant pris la fuite et dont la chasse "
-"est un jeu."
-
-#. [topic]: id=mount_morogor
-#: data/core/encyclopedia/drakes.cfg:157
-msgid "Mount Morogor"
-msgstr "Mont Morogor"
-
-#. [topic]: id=mount_morogor
-#: data/core/encyclopedia/drakes.cfg:158
-msgid ""
-"Volcanic mountain on the central island of the archipelago "
-"<ref>dst='morogor' text='Morogor'</ref>."
-msgstr ""
-"Montagne volcanique sur l'île centrale de l'archipel de <ref>dst='morogor' "
-"text='Morogor'</ref>."
-
-#. [topic]: id=long_count
-#: data/core/encyclopedia/drakes.cfg:163
-msgid "Long Count"
-msgstr "Ancien Calendrier"
-
-#. [topic]: id=long_count
-#: data/core/encyclopedia/drakes.cfg:164
-msgid ""
-"The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> and "
-"<ref>dst=breeding_cycle text='Breeding cycles'</ref>."
-msgstr ""
-"Le calendrier dracan est rythmé par les <ref>dst='vulcaniad' "
-"text='vulcaniades'</ref> et les <ref>dst=breeding_cycle text='cycles de "
-"ponte'</ref>."
-
-#. [topic]: id=long_pig
-#: data/core/encyclopedia/drakes.cfg:169
-msgid "Long Pig"
-msgstr "Long Pig"
-
-#. [topic]: id=long_pig
-#: data/core/encyclopedia/drakes.cfg:170
-msgid ""
-"South Seas pidgin for human meat, used to translate a Drakish word with the "
-"same meaning."
-msgstr ""
-"Terme pidgin des mers du Sud pour de la viande humaine, utilisé pour "
-"traduire un mot dracan ayant la même signification."
-
-#. [topic]: id=ceramic
-#: data/core/encyclopedia/drakes.cfg:175
-msgid "Ceramics"
-msgstr "Céramique"
-
-#. [topic]: id=ceramic
-#: data/core/encyclopedia/drakes.cfg:176
-msgid ""
-"The drakes work metal, but are are masters in the craftsmanship of making "
-"ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
-"generate the amount of heat to cure the pieces to full strength."
-msgstr ""
-"Les dracans travaillent le métal, mais sont des maîtres en matière de "
-"céramique. Seuls les <ref>dst='unit_Drake Burner' text='pyrodracans'</ref> "
-"peuvent générer une chaleur suffisante pour cuire les pièces de manière "
-"optimale."
-
-#. [topic]: id=drakish_script
-#: data/core/encyclopedia/drakes.cfg:181
-msgid "Drakish, script"
-msgstr "Dracan, écriture"
-
-#. [topic]: id=drakish_script
-#: data/core/encyclopedia/drakes.cfg:182
-msgid ""
-"The scripted language of the drakes. Stored on <ref>dst='ceramic' "
-"text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
-"text='Recorder'</ref> vocation."
-msgstr ""
-"La langue écrite des dracans. Enregistrée sur des tablettes de "
-"<ref>dst='ceramic' text='céramique'</ref> par des <ref>dst='recorder' "
-"text='greffiers'</ref>."
-
-#. [topic]: id=drakish_language
-#: data/core/encyclopedia/drakes.cfg:187
-msgid "Drakish, language"
-msgstr "Dracan, langage"
-
-#. [topic]: id=drakish_language
-#: data/core/encyclopedia/drakes.cfg:188
-msgid "The language spoken by the drakes."
-msgstr "La langue parlée par les dracans."
 
 #. [section]: id=geography
 #. [topic]: id=..geography
@@ -6032,6 +5555,366 @@ msgstr "Aide de « Bataille pour Wesnoth »"
 #: src/help.cpp:3492
 msgid "Parse error when parsing help text: "
 msgstr "Erreur d'analyse lors de la lecture du texte d'aide : "
+
+#~ msgid "Caste"
+#~ msgstr "Caste"
+
+#~ msgid ""
+#~ "One of the variant forms of the drake: either be a <ref>dst='unit_Drake "
+#~ "Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' "
+#~ "text='Drake Fighter'</ref>."
+#~ msgstr ""
+#~ "Une des formes alternatives du dracan : soit un <ref>dst='unit_Drake "
+#~ "Clasher' text='Cogneur'</ref> soit un <ref>dst='unit_Drake Fighter' "
+#~ "text='Combattant dracan'</ref>."
+
+#~ msgid "Aerie"
+#~ msgstr "Nid de dragon"
+
+#~ msgid ""
+#~ "A very large castle-like structure that is home to a <ref>dst='flight' "
+#~ "text='flight'</ref>. It contains the <ref>dst='breeding_pen' "
+#~ "text='breeding pens'</ref>."
+#~ msgstr ""
+#~ "Une sorte de très grand château qui abrite un <ref>dst='flight' "
+#~ "text='escadron'</ref>. C'est là que se trouvent leurs "
+#~ "<ref>dst='breeding_pen' text='nids de reproduction'</ref>."
+
+#~ msgid "Breeding Pen"
+#~ msgstr "Nid de reproduction"
+
+#~ msgid ""
+#~ "The portion of an <ref>dst='aerie' text='aerie'</ref> where the "
+#~ "nonsentient <ref>dst='breeder' text='Breeders'</ref> live under the "
+#~ "<ref>dst='dominant' text='Dominant'</ref>’s eye."
+#~ msgstr ""
+#~ "La partie du <ref>dst='aerie' text='nid de dragon'</ref> où les "
+#~ "<ref>dst='breeder' text='pondeuses'</ref> indolentes vivent sous le "
+#~ "regard du <ref>dst='dominant' text='dominant'</ref>."
+
+#~ msgid "Breeding Cycle"
+#~ msgstr "Cycle de ponte"
+
+#~ msgid ""
+#~ "The time that passes between one <ref>dst=egg text='egg'</ref> laying to "
+#~ "the next."
+#~ msgstr ""
+#~ "Le temps qui passe entre une ponte d'<ref>dst=egg text='œufs'</ref> et la "
+#~ "suivante."
+
+#~ msgid "World Ocean"
+#~ msgstr "Océan Mondial"
+
+#~ msgid ""
+#~ "The World Ocean is the name of the open seas that surround the "
+#~ "archipelago of <ref>dst='morogor' text='Morogor'</ref>. The drakes "
+#~ "believe it to end at the <ref>dst='abyss' text='Abyss'</ref>, a vast and "
+#~ "deadly waterfall."
+#~ msgstr ""
+#~ "L'Océan Mondial est le nom de l'ensemble des mers qui entourent "
+#~ "l'archipel de<ref>dst='morogor' text='Morogor'</ref>. Les dracans pensent "
+#~ "qu'il se termine par l'<ref>dst='abyss' text='Abysse'</ref>, une grande "
+#~ "et mortelle chute d'eau."
+
+#~ msgid "New Continent"
+#~ msgstr "Nouveau Continent"
+
+#~ msgid ""
+#~ "The great continent to the east of <ref>dst='morogor' text='Morogor'</"
+#~ "ref>. Its existence is unknown to the drakes until the flight of Galun."
+#~ msgstr ""
+#~ "Le vaste continent qui s'étend à l'est de <ref>dst='morogor' "
+#~ "text='Morogor'</ref>. Son existence était inconnue des dracans jusqu'au "
+#~ "vol de Galun."
+
+#~ msgid "Abyss"
+#~ msgstr "Abysse"
+
+#~ msgid ""
+#~ "In the cosmology of the Drakes, a vast and deadly waterfall where the "
+#~ "ocean falls off the world-disc."
+#~ msgstr ""
+#~ "Dans la cosmologie dracane, une vaste et meurtrière chute d'eau où "
+#~ "l'océan tombe du disque-monde."
+
+#~ msgid "Spiral Path"
+#~ msgstr "Voie de la Spirale"
+
+#~ msgid ""
+#~ "A quasi-secret organization among the drakes devoted to avoiding a "
+#~ "Malthusian final war. See also <ref>dst='straight_path' text='Straight "
+#~ "Path'</ref>"
+#~ msgstr ""
+#~ "Une organisation dracane presque secrète qui cherche à empêcher une "
+#~ "ultime guerre malthusienne. Voir aussi <ref>dst='straight_path' text='Le "
+#~ "droit chemin'</ref>"
+
+#~ msgid "Straight Path"
+#~ msgstr "Le droit chemin"
+
+#~ msgid ""
+#~ "The drakish tradition of perpetual expansion and conquest. This term is "
+#~ "mostly used by the members of the <ref>dst='spiral_path' text='Spiral "
+#~ "Path'</ref>."
+#~ msgstr ""
+#~ "La tradition dracane de conquête et d'expansion perpétuelle. Ce terme est "
+#~ "surtout utilisé par les membres de la <ref>dst='spiral_path' text='Voie "
+#~ "de la Spirale'</ref>."
+
+#~ msgid "Dominant"
+#~ msgstr "Dominant"
+
+#~ msgid ""
+#~ "The <ref>dst='aspirant' text='Aspirant'</ref> that emerges as the drake "
+#~ "leader, the only drake in the tribe that is allowed to reproduce with the "
+#~ "<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
+#~ "privileges on others."
+#~ msgstr ""
+#~ "L'<ref>dst='aspirant' text='aspirant'</ref> qui finit par prendre la tête "
+#~ "des dracans, le seul de la tribu autorisé à se reproduire avec les "
+#~ "<ref>dst='breeder' text='pondeuses'</ref>. À de rares occasions, il peut "
+#~ "transmettre ce privilège."
+
+#~ msgid "Vulcaniad"
+#~ msgstr "Vulcaniade"
+
+#~ msgid ""
+#~ "The (irregular) period between consecutive eruptions of "
+#~ "<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
+#~ "<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
+#~ msgstr ""
+#~ "La période (irrégulière) qui sépare deux éruptions consécutives du "
+#~ "<ref>dst='mount_morogor' text='mont Morogor'</ref>. C'est la base de "
+#~ "l'<ref>dst='long_count' text='ancien calendrier'</ref>."
+
+#~ msgid "Recorder"
+#~ msgstr "Greffier"
+
+#~ msgid ""
+#~ "A Recorder is a Drakish scrollkeeper who has mastered the drakish "
+#~ "<ref>dst='drakish_script' text='script'</ref>. The recorders are the only "
+#~ "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: "
+#~ "they recruit their members from all of the other castes."
+#~ msgstr ""
+#~ "Un greffier est un gardien de parchemins dracan qui a appris "
+#~ "l'<ref>dst='drakish_script' text='écriture'</ref> dracane. Les greffiers "
+#~ "forment la seule <ref>dst='caste' text='caste'</ref> de dracans qui n'est "
+#~ "pas déterminée par la biologie : ils recrutent leurs membres dans toutes "
+#~ "les autres castes."
+
+#~ msgid "Laying"
+#~ msgstr "Ponte"
+
+#~ msgid ""
+#~ "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
+#~ msgstr ""
+#~ "L'aboutissement du <ref>dst='breeding_cycle' text='cycle de ponte'</ref>."
+
+#~ msgid "Hatching"
+#~ msgstr "Éclosion"
+
+#~ msgid "Hatchling"
+#~ msgstr "Nouveau-né"
+
+#~ msgid ""
+#~ "A young drake that has not yet seen another generation hatch. The younger "
+#~ "of the current generation of hatchlings are the most aggressive is the "
+#~ "behavior of the <ref>dst='flight' text='flight'</ref>."
+#~ msgstr ""
+#~ "Un jeune dracan qui n'a pas encore vu l'éclosion de la génération "
+#~ "suivante. Les plus jeunes de cette nouvelle génération ont le "
+#~ "comportement le plus agressif de l'<ref>dst='flight' text='escadron'</"
+#~ "ref>."
+
+#~ msgid "Fledgling"
+#~ msgstr "Dragonnet"
+
+#~ msgid ""
+#~ "A young drake that has seen another generation hatch. If the "
+#~ "<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
+#~ "they start the <ref>dst='swarming' text='Swarming'</ref>."
+#~ msgstr ""
+#~ "Un jeune dracan qui a vu l'éclosion d'une génération. Si "
+#~ "l'<ref>dst='flight' text='escadron'</ref> peut se permettre de perdre une "
+#~ "génération, ils commencent l'<ref>dst='swarming' text='essaimage'</ref>."
+
+#~ msgid "Breeder"
+#~ msgstr "Pondeuse"
+
+#~ msgid ""
+#~ "The female drake. They are rare since <ref>dst='egg' text='eggs'</ref> "
+#~ "that become breeders have to be handled with extra care. The number of "
+#~ "breeders is also limited by the amounts of non-breeders around, since "
+#~ "breeders can't take care of their food for themselves when laying. Drake "
+#~ "breeders become fertile after the next <ref>dst='hatching' "
+#~ "text='hatching'</ref>."
+#~ msgstr ""
+#~ "La femelle dracane. Elles sont rares car les <ref>dst='egg' text='œufs'</"
+#~ "ref> destinés à devenir des pondeuses nécessitent un soin particulier. Le "
+#~ "nombre de pondeuses est également limité par celui des autres dracans, "
+#~ "qui doivent leur apporter de la nourriture quand elles pondent. Les "
+#~ "pondeuses dracanes deviennent fertiles après la prochaine "
+#~ "<ref>dst='hatching' text='éclosion'</ref>."
+
+#~ msgid "Egg, Drake"
+#~ msgstr "Œuf dracan"
+
+#~ msgid ""
+#~ "The <ref>dst=caste text='caste'</ref> the <ref>dst='hatchling' "
+#~ "text='Hatchling'</ref> will belongs to is determined by the time it is "
+#~ "laid and to some extent the ambient temperature."
+#~ msgstr ""
+#~ "La <ref>dst=caste text='caste'</ref> à laquelle le <ref>dst='hatchling' "
+#~ "text='nouveau-né'</ref> appartiendra est déterminée par le temps "
+#~ "d'incubation et, dans une certaine mesure, par la température ambiante."
+
+#~ msgid "Flight"
+#~ msgstr "Escadron"
+
+#~ msgid ""
+#~ "Tribe of Drakes, lives in an <ref>dst='aerie' text='Aerie'</ref>, "
+#~ "controlling a hunting range. Each tribe has one <ref>dst='dominant' "
+#~ "text='Dominant'</ref>, who confers mating privileges."
+#~ msgstr ""
+#~ "Tribu de dracans, vivant dans un <ref>dst='aerie' text='nid de dragon'</"
+#~ "ref> et contrôlant un terrain de chasse. Chaque tribu dispose d'un "
+#~ "<ref>dst='dominant' text='dominant'</ref>, qui attribue des droits "
+#~ "d'accouplement."
+
+#~ msgid "Aspirant"
+#~ msgstr "Aspirant"
+
+#~ msgid ""
+#~ "Male drake that has passed through a hormonal metamorphosis that makes "
+#~ "him able to mate with the <ref>dst='breeder' text='breeders'</ref>. The "
+#~ "secretion of the hormone is caused by hunt and combat actions in which "
+#~ "the drake is involved."
+#~ msgstr ""
+#~ "Dracan mâle ayant subi une métamorphose hormonale lui permettant de "
+#~ "s'accoupler avec les <ref>dst='breeder' text='pondeuses'</ref>. La "
+#~ "sécrétion de l'hormone est causée par la chasse et les faits d'armes "
+#~ "auxquels le dracan participe."
+
+#~ msgid "Ascendant"
+#~ msgstr "Ascendant"
+
+#~ msgid ""
+#~ "The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
+#~ msgstr ""
+#~ "Nom que donnent les dracans à un vrai <ref>dst='unit_Fire Dragon' "
+#~ "text='dragon'</ref>."
+
+#~ msgid "Intendant"
+#~ msgstr "Intendant"
+
+#~ msgid ""
+#~ "One of the <ref>dst='aspirant' text='Aspirant'</ref> lieutenants of a "
+#~ "<ref>dst='dominant' text='Dominant'</ref>. Traditionally he has one of "
+#~ "each <ref>dst=caste text='caste'</ref> other than his own. Additional "
+#~ "'Intendants' are sometimes designated for special duties. Intendants are "
+#~ "likeliest to be granted mating privileges, especially after a notable "
+#~ "service."
+#~ msgstr ""
+#~ "Un <ref>dst='aspirant' text='aspirant'</ref> au service du "
+#~ "<ref>dst='dominant' text='dominant'</ref>. La tradition lui en octroie un "
+#~ "de chacune des autres <ref>dst=caste text='castes'</ref> que la sienne. "
+#~ "Des « intendants » supplémentaires sont parfois nommés pour des tâches "
+#~ "spéciales. Les intendants ont les meilleurs chances de gagner un "
+#~ "privilège d'accouplement, surtout après un service remarquable."
+
+#~ msgid "Swarm"
+#~ msgstr "Essaim"
+
+#~ msgid ""
+#~ "The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
+#~ "<ref>dst='aerie' text='aerie'</ref> to found a new one."
+#~ msgstr ""
+#~ "Les <ref>dst='swarmlings' text='essaimeurs'</ref> sont ceux qui quittent "
+#~ "le <ref>dst='aerie' text='nid de dragon'</ref> pour en fonder un nouveau."
+
+#~ msgid "Swarming"
+#~ msgstr "Essaimage"
+
+#~ msgid ""
+#~ " The <ref>dst='flight' text='flight'</ref> for a new drake "
+#~ "<ref>dst='aerie' text='aerie'</ref> that recurs every "
+#~ "<ref>dst='breeding_cycle' text='breeding cycle'</ref>. See "
+#~ "<ref>dst='swarm' text='Swarm'</ref>"
+#~ msgstr ""
+#~ " L'<ref>dst='flight' text='escadron'</ref> formé pour la fondation d'un "
+#~ "nouveau <ref>dst='aerie' text='nid de dragon'</ref> à chaque "
+#~ "<ref>dst='breeding_cycle' text='cycle de ponte'</ref>. Voir "
+#~ "<ref>dst='swarm' text='essaim'</ref>"
+
+#~ msgid "Runners"
+#~ msgstr "Coureurs"
+
+#~ msgid "Drakish term for escaped slaves hunted as game."
+#~ msgstr ""
+#~ "Terme dracan désignant des esclaves ayant pris la fuite et dont la chasse "
+#~ "est un jeu."
+
+#~ msgid "Mount Morogor"
+#~ msgstr "Mont Morogor"
+
+#~ msgid ""
+#~ "Volcanic mountain on the central island of the archipelago "
+#~ "<ref>dst='morogor' text='Morogor'</ref>."
+#~ msgstr ""
+#~ "Montagne volcanique sur l'île centrale de l'archipel de "
+#~ "<ref>dst='morogor' text='Morogor'</ref>."
+
+#~ msgid "Long Count"
+#~ msgstr "Ancien Calendrier"
+
+#~ msgid ""
+#~ "The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> "
+#~ "and <ref>dst=breeding_cycle text='Breeding cycles'</ref>."
+#~ msgstr ""
+#~ "Le calendrier dracan est rythmé par les <ref>dst='vulcaniad' "
+#~ "text='vulcaniades'</ref> et les <ref>dst=breeding_cycle text='cycles de "
+#~ "ponte'</ref>."
+
+#~ msgid "Long Pig"
+#~ msgstr "Long Pig"
+
+#~ msgid ""
+#~ "South Seas pidgin for human meat, used to translate a Drakish word with "
+#~ "the same meaning."
+#~ msgstr ""
+#~ "Terme pidgin des mers du Sud pour de la viande humaine, utilisé pour "
+#~ "traduire un mot dracan ayant la même signification."
+
+#~ msgid "Ceramics"
+#~ msgstr "Céramique"
+
+#~ msgid ""
+#~ "The drakes work metal, but are are masters in the craftsmanship of making "
+#~ "ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
+#~ "generate the amount of heat to cure the pieces to full strength."
+#~ msgstr ""
+#~ "Les dracans travaillent le métal, mais sont des maîtres en matière de "
+#~ "céramique. Seuls les <ref>dst='unit_Drake Burner' text='pyrodracans'</"
+#~ "ref> peuvent générer une chaleur suffisante pour cuire les pièces de "
+#~ "manière optimale."
+
+#~ msgid "Drakish, script"
+#~ msgstr "Dracan, écriture"
+
+#~ msgid ""
+#~ "The scripted language of the drakes. Stored on <ref>dst='ceramic' "
+#~ "text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
+#~ "text='Recorder'</ref> vocation."
+#~ msgstr ""
+#~ "La langue écrite des dracans. Enregistrée sur des tablettes de "
+#~ "<ref>dst='ceramic' text='céramique'</ref> par des <ref>dst='recorder' "
+#~ "text='greffiers'</ref>."
+
+#~ msgid "Drakish, language"
+#~ msgstr "Dracan, langage"
+
+#~ msgid "The language spoken by the drakes."
+#~ msgstr "La langue parlée par les dracans."
 
 #~ msgid "Flat"
 #~ msgstr "Plat"

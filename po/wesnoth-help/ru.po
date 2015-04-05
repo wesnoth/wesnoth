@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-01-15 22:59-0300\n"
+"POT-Creation-Date: 2015-04-05 03:22-0300\n"
 "PO-Revision-Date: 2014-11-15 12:02+0300\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -149,470 +149,6 @@ msgstr "Энциклопедия"
 #: data/core/encyclopedia/_main.cfg:14
 msgid "<ref>dst='..geography' text='Geography'</ref>"
 msgstr "<ref>dst='..geography' text='География'</ref>"
-
-#. [topic]: id=caste
-#: data/core/encyclopedia/drakes.cfg:7
-msgid "Caste"
-msgstr "Каста"
-
-#. [topic]: id=caste
-#: data/core/encyclopedia/drakes.cfg:8
-msgid ""
-"One of the variant forms of the drake: either be a <ref>dst='unit_Drake "
-"Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' text='Drake "
-"Fighter'</ref>."
-msgstr ""
-"Один из вариантов форм дрейков: может быть как <ref>dst='unit_Drake Clasher' "
-"text='Боец дрейков'</ref> или <ref>dst='unit_Drake Fighter' text='Солдат "
-"дрейков'</ref>."
-
-#. [topic]: id=aerie
-#: data/core/encyclopedia/drakes.cfg:13
-msgid "Aerie"
-msgstr "Гнездо"
-
-#. [topic]: id=aerie
-#: data/core/encyclopedia/drakes.cfg:14
-msgid ""
-"A very large castle-like structure that is home to a <ref>dst='flight' "
-"text='flight'</ref>. It contains the <ref>dst='breeding_pen' text='breeding "
-"pens'</ref>."
-msgstr ""
-"Огромное строение навроде замка, дом <ref>dst='flight' text='стаи'</ref>. "
-"Там находятся <ref>dst='breeding_pen' text='загоны для размножения'</ref>."
-
-#. [topic]: id=breeding_pen
-#: data/core/encyclopedia/drakes.cfg:19
-msgid "Breeding Pen"
-msgstr "Загон для размножения"
-
-#. [topic]: id=breeding_pen
-#: data/core/encyclopedia/drakes.cfg:20
-msgid ""
-"The portion of an <ref>dst='aerie' text='aerie'</ref> where the nonsentient "
-"<ref>dst='breeder' text='Breeders'</ref> live under the <ref>dst='dominant' "
-"text='Dominant'</ref>’s eye."
-msgstr ""
-"Часть <ref>dst='aerie' text='гнезда'</ref> где живут немыслящие "
-"<ref>dst='breeder' text='размножители'</ref> под присмотром "
-"<ref>dst='dominant' text='доминанта'</ref>."
-
-#. [topic]: id=breeding_cycle
-#: data/core/encyclopedia/drakes.cfg:25
-msgid "Breeding Cycle"
-msgstr "Цикл размножения"
-
-#. [topic]: id=breeding_cycle
-#: data/core/encyclopedia/drakes.cfg:26
-msgid ""
-"The time that passes between one <ref>dst=egg text='egg'</ref> laying to the "
-"next."
-msgstr ""
-"Время, которое проходит между двумя откладками <ref>dst='egg' text='яиц'</"
-"ref>."
-
-#. [topic]: id=world_ocean
-#: data/core/encyclopedia/drakes.cfg:31
-msgid "World Ocean"
-msgstr "Мировой Океан"
-
-#. [topic]: id=world_ocean
-#: data/core/encyclopedia/drakes.cfg:32
-msgid ""
-"The World Ocean is the name of the open seas that surround the archipelago "
-"of <ref>dst='morogor' text='Morogor'</ref>. The drakes believe it to end at "
-"the <ref>dst='abyss' text='Abyss'</ref>, a vast and deadly waterfall."
-msgstr ""
-"Мировой океан — общее название морей, которые окружают архипелаг "
-"<ref>dst='morogor' text='Морогор'</ref>. По дрэйкским поверьям, он "
-"заканчивается <ref>dst='abyss' text='Бездной'</ref>, широким и смертельно "
-"опасным водопадом."
-
-#. [topic]: id=new_continent
-#: data/core/encyclopedia/drakes.cfg:37
-msgid "New Continent"
-msgstr "Новый континент"
-
-#. [topic]: id=new_continent
-#: data/core/encyclopedia/drakes.cfg:38
-msgid ""
-"The great continent to the east of <ref>dst='morogor' text='Morogor'</ref>. "
-"Its existence is unknown to the drakes until the flight of Galun."
-msgstr ""
-"Новый большой континент к востоку от <ref>dst='morogor' text='Морогора'</"
-"ref>. О его существовании не знали дрейки вплоть до полётов Галуна."
-
-#. [topic]: id=abyss
-#: data/core/encyclopedia/drakes.cfg:43
-msgid "Abyss"
-msgstr "Бездна"
-
-#. [topic]: id=abyss
-#: data/core/encyclopedia/drakes.cfg:44
-msgid ""
-"In the cosmology of the Drakes, a vast and deadly waterfall where the ocean "
-"falls off the world-disc."
-msgstr ""
-"В учении о Дрейках описывался как огромный и смертельный водопад стекающий с "
-"земного диска."
-
-#. [topic]: id=spiral_path
-#: data/core/encyclopedia/drakes.cfg:49
-msgid "Spiral Path"
-msgstr "Спиральный путь"
-
-#. [topic]: id=spiral_path
-#: data/core/encyclopedia/drakes.cfg:50
-msgid ""
-"A quasi-secret organization among the drakes devoted to avoiding a "
-"Malthusian final war. See also <ref>dst='straight_path' text='Straight "
-"Path'</ref>"
-msgstr ""
-"Квази-секретная организация среди дрейков посвятивщих себя предотвращению "
-"последней войны за Малтусиан. См. также <ref>dst='straight_path' "
-"text='Прямой путь'</ref>"
-
-#. [topic]: id=straight_path
-#: data/core/encyclopedia/drakes.cfg:55
-msgid "Straight Path"
-msgstr "Прямой путь"
-
-#. [topic]: id=straight_path
-#: data/core/encyclopedia/drakes.cfg:56
-msgid ""
-"The drakish tradition of perpetual expansion and conquest. This term is "
-"mostly used by the members of the <ref>dst='spiral_path' text='Spiral Path'</"
-"ref>."
-msgstr ""
-"Вечная традиция дрейков расширения и захвата. Так обычно говорят члены "
-"<ref>dst='spiral_path' text='Спирального пути'</ref>."
-
-#. [topic]: id=dominant
-#: data/core/encyclopedia/drakes.cfg:61
-msgid "Dominant"
-msgstr "Доминант"
-
-#. [topic]: id=dominant
-#: data/core/encyclopedia/drakes.cfg:62
-msgid ""
-"The <ref>dst='aspirant' text='Aspirant'</ref> that emerges as the drake "
-"leader, the only drake in the tribe that is allowed to reproduce with the "
-"<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
-"privileges on others."
-msgstr ""
-"<ref>dst='aspirant' text='Аспирант'</ref>, ставший лидером дрэйков. "
-"Единственный дрэйк во всём племени, которому позволено оплодотворять "
-"<ref>dst='breeder' text='размножителей'</ref>. Изредка он уступает эту "
-"привилегию другим."
-
-#. [topic]: id=vulcaniad
-#: data/core/encyclopedia/drakes.cfg:67
-msgid "Vulcaniad"
-msgstr "Вулканиада"
-
-#. [topic]: id=vulcaniad
-#: data/core/encyclopedia/drakes.cfg:68
-msgid ""
-"The (irregular) period between consecutive eruptions of "
-"<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
-"<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
-msgstr ""
-"(Непостоянный) период между последовательными извержениями "
-"<ref>dst='mount_morogor' text='горы Морогор'</ref>. На нём основан календарь "
-"<ref>dst='long_count' text='Долгого Счисления'</ref>."
-
-#. [topic]: id=recorder
-#: data/core/encyclopedia/drakes.cfg:73
-msgid "Recorder"
-msgstr "Хранитель"
-
-#. [topic]: id=recorder
-#: data/core/encyclopedia/drakes.cfg:74
-msgid ""
-"A Recorder is a Drakish scrollkeeper who has mastered the drakish "
-"<ref>dst='drakish_script' text='script'</ref>. The recorders are the only "
-"<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: they "
-"recruit their members from all of the other castes."
-msgstr ""
-"Хранитель — летописец дрэйков, который обучился <ref>dst='drakish_script' "
-"text='письму'</ref>. Это единственная <ref>dst='caste' text='каста'</ref> "
-"дрэйков, которая не определяется биологией: они набирают своих членов из "
-"всех других каст."
-
-#. [topic]: id=laying
-#: data/core/encyclopedia/drakes.cfg:79
-msgid "Laying"
-msgstr "Откладка"
-
-#. [topic]: id=hatching
-#. [topic]: id=laying
-#: data/core/encyclopedia/drakes.cfg:80 data/core/encyclopedia/drakes.cfg:86
-msgid "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
-msgstr "Часть <ref>dst='breeding_cycle' text='цикла размножение'</ref>."
-
-#. [topic]: id=hatching
-#: data/core/encyclopedia/drakes.cfg:85
-msgid "Hatching"
-msgstr "Вылупление"
-
-#. [topic]: id=hatchling
-#: data/core/encyclopedia/drakes.cfg:91
-msgid "Hatchling"
-msgstr "Птенец"
-
-#. [topic]: id=hatchling
-#: data/core/encyclopedia/drakes.cfg:92
-msgid ""
-"A young drake that has not yet seen another generation hatch. The younger of "
-"the current generation of hatchlings are the most aggressive is the behavior "
-"of the <ref>dst='flight' text='flight'</ref>."
-msgstr ""
-"Молодой дрэйк, который ещё не видел, как вылупляется следующее поколение. "
-"Молодёжь нынешнего поколения — самые агрессивные из <ref>dst='flight' "
-"text='стаи'</ref>."
-
-#. [topic]: id=fledgling
-#: data/core/encyclopedia/drakes.cfg:97
-msgid "Fledgling"
-msgstr "Оперившийся"
-
-#. [topic]: id=fledgling
-#: data/core/encyclopedia/drakes.cfg:98
-msgid ""
-"A young drake that has seen another generation hatch. If the "
-"<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
-"they start the <ref>dst='swarming' text='Swarming'</ref>."
-msgstr ""
-"Молодой дрэйк, который уже застал вылупление следующего поколения. Если "
-"<ref>dst='flight' text='стая'</ref> может себе позволить потерять поколение, "
-"они начинают <ref>dst='swarming' text='роиться'</ref>."
-
-#. [topic]: id=breeder
-#: data/core/encyclopedia/drakes.cfg:103
-msgid "Breeder"
-msgstr "Разможитель"
-
-#. [topic]: id=breeder
-#: data/core/encyclopedia/drakes.cfg:104
-msgid ""
-"The female drake. They are rare since <ref>dst='egg' text='eggs'</ref> that "
-"become breeders have to be handled with extra care. The number of breeders "
-"is also limited by the amounts of non-breeders around, since breeders can't "
-"take care of their food for themselves when laying. Drake breeders become "
-"fertile after the next <ref>dst='hatching' text='hatching'</ref>."
-msgstr ""
-"Самка дрэйков. Они очень редки, поскольку <ref>dst='egg' text='яйца'</ref>, "
-"из которых вылупятся размножители, приходится усиленно оберегать. Количество "
-"размножителей также ограничено количеством прочих дрэйков, поскольку они не "
-"могут добывать себе пищу во время откладки яиц. Размножители могут плодиться "
-"после следующей <ref>dst='hatching' text='откладки'</ref>."
-
-#. [topic]: id=egg
-#: data/core/encyclopedia/drakes.cfg:109
-msgid "Egg, Drake"
-msgstr "Яйцо дрэйка"
-
-#. [topic]: id=egg
-#: data/core/encyclopedia/drakes.cfg:110
-msgid ""
-"The <ref>dst=caste text='caste'</ref> the <ref>dst='hatchling' "
-"text='Hatchling'</ref> will belongs to is determined by the time it is laid "
-"and to some extent the ambient temperature."
-msgstr ""
-"<ref>dst=caste text='Каста'</ref>, в которой окажется <ref>dst='hatchling' "
-"text='птенец'</ref> определяется временем, когда отложено яйцо, и, до "
-"некоторой степени температурой окружения."
-
-#. [topic]: id=flight
-#: data/core/encyclopedia/drakes.cfg:115
-msgid "Flight"
-msgstr "Стая"
-
-#. [topic]: id=flight
-#: data/core/encyclopedia/drakes.cfg:116
-msgid ""
-"Tribe of Drakes, lives in an <ref>dst='aerie' text='Aerie'</ref>, "
-"controlling a hunting range. Each tribe has one <ref>dst='dominant' "
-"text='Dominant'</ref>, who confers mating privileges."
-msgstr ""
-"Племя дрэйков, которое живёт в <ref>dst='aerie' text='гнезде'</ref>, и "
-"держит охотничьи угодья. В каждом племени есть один <ref>dst='dominant' "
-"text='доминант'</ref>, который присваивает себе привилегию спаривания."
-
-#. [topic]: id=aspirant
-#: data/core/encyclopedia/drakes.cfg:121
-msgid "Aspirant"
-msgstr "Аспирант"
-
-#. [topic]: id=aspirant
-#: data/core/encyclopedia/drakes.cfg:122
-msgid ""
-"Male drake that has passed through a hormonal metamorphosis that makes him "
-"able to mate with the <ref>dst='breeder' text='breeders'</ref>. The "
-"secretion of the hormone is caused by hunt and combat actions in which the "
-"drake is involved."
-msgstr ""
-"Самцы дрэйков, которые достигли полового созревания и способны спариваться с "
-"<ref>dst='breeder' text='размножителями'</ref>. Созревание происходит за "
-"счёт гормонов, которые выделяются во время охоты и битв."
-
-#. [topic]: id=ascendant
-#: data/core/encyclopedia/drakes.cfg:127
-msgid "Ascendant"
-msgstr "Предок"
-
-#. [topic]: id=ascendant
-#: data/core/encyclopedia/drakes.cfg:128
-msgid ""
-"The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
-msgstr ""
-"Дрэйкское название для настоящих <ref>dst='unit_Fire Dragon' "
-"text='драконов'</ref>."
-
-#. [topic]: id=intendant
-#: data/core/encyclopedia/drakes.cfg:133
-msgid "Intendant"
-msgstr "Интендант"
-
-#. [topic]: id=intendant
-#: data/core/encyclopedia/drakes.cfg:134
-msgid ""
-"One of the <ref>dst='aspirant' text='Aspirant'</ref> lieutenants of a "
-"<ref>dst='dominant' text='Dominant'</ref>. Traditionally he has one of each "
-"<ref>dst=caste text='caste'</ref> other than his own. Additional "
-"'Intendants' are sometimes designated for special duties. Intendants are "
-"likeliest to be granted mating privileges, especially after a notable "
-"service."
-msgstr ""
-"Один из <ref>dst='aspirant' text='аспирантов'</ref>, приближенных к "
-"<ref>dst='dominant' text='доминанту'</ref>. Традиционно он выбирает по "
-"одному из каждой <ref>dst=caste text='касты'</ref>, кроме собственной. Кроме "
-"того, иногда назначаются дополнительные «интенданты» для особых поручений. У "
-"интендантов самые большие шансы удостоиться привилегии спаривания, например, "
-"в награду за службу."
-
-#. [topic]: id=swarm
-#: data/core/encyclopedia/drakes.cfg:139
-msgid "Swarm"
-msgstr "Рой"
-
-#. [topic]: id=swarm
-#: data/core/encyclopedia/drakes.cfg:140
-msgid ""
-"The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
-"<ref>dst='aerie' text='aerie'</ref> to found a new one."
-msgstr ""
-"<ref>dst='swarmlings' text='Роящиеся'</ref>, покинувшие <ref>dst='aerie' "
-"text='гнездо'</ref>, чтобы основать новое."
-
-#. [topic]: id=swarming
-#: data/core/encyclopedia/drakes.cfg:145
-msgid "Swarming"
-msgstr "Роящийся"
-
-#. [topic]: id=swarming
-#: data/core/encyclopedia/drakes.cfg:146
-msgid ""
-" The <ref>dst='flight' text='flight'</ref> for a new drake <ref>dst='aerie' "
-"text='aerie'</ref> that recurs every <ref>dst='breeding_cycle' "
-"text='breeding cycle'</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
-msgstr ""
-"<ref>dst='flight' text='Стая'</ref> для нового <ref>dst='aerie' "
-"text='гнезда'</ref> дрэйков, которая возникает после каждого "
-"<ref>dst='breeding_cycle' text='цикла размножения'</ref>. См. "
-"<ref>dst='swarm' text='Рой'</ref>"
-
-#. [topic]: id=runners
-#: data/core/encyclopedia/drakes.cfg:151
-msgid "Runners"
-msgstr "Бегуны"
-
-#. [topic]: id=runners
-#: data/core/encyclopedia/drakes.cfg:152
-msgid "Drakish term for escaped slaves hunted as game."
-msgstr "Дрэйкское название бежавших рабов, на которых охотятся для забавы."
-
-#. [topic]: id=mount_morogor
-#: data/core/encyclopedia/drakes.cfg:157
-msgid "Mount Morogor"
-msgstr "Гора Морогор"
-
-#. [topic]: id=mount_morogor
-#: data/core/encyclopedia/drakes.cfg:158
-msgid ""
-"Volcanic mountain on the central island of the archipelago "
-"<ref>dst='morogor' text='Morogor'</ref>."
-msgstr ""
-"Вулкан на центральном острове архипелага <ref>dst='morogor' text='Морогор'</"
-"ref>."
-
-#. [topic]: id=long_count
-#: data/core/encyclopedia/drakes.cfg:163
-msgid "Long Count"
-msgstr "Длинное счисление"
-
-#. [topic]: id=long_count
-#: data/core/encyclopedia/drakes.cfg:164
-msgid ""
-"The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> and "
-"<ref>dst=breeding_cycle text='Breeding cycles'</ref>."
-msgstr ""
-"Дрэйкский календарь, основанный на <ref>dst='vulcaniad' text='Вулканиадах'</"
-"ref> и <ref>dst=breeding_cycle text='циклах размножения'</ref>."
-
-#. [topic]: id=long_pig
-#: data/core/encyclopedia/drakes.cfg:169
-msgid "Long Pig"
-msgstr "Длинная свинка"
-
-#. [topic]: id=long_pig
-#: data/core/encyclopedia/drakes.cfg:170
-msgid ""
-"South Seas pidgin for human meat, used to translate a Drakish word with the "
-"same meaning."
-msgstr "На южном наречии — человеческое мясо; перевод с дрэйкского языка."
-
-#. [topic]: id=ceramic
-#: data/core/encyclopedia/drakes.cfg:175
-msgid "Ceramics"
-msgstr "Керамика"
-
-#. [topic]: id=ceramic
-#: data/core/encyclopedia/drakes.cfg:176
-msgid ""
-"The drakes work metal, but are are masters in the craftsmanship of making "
-"ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
-"generate the amount of heat to cure the pieces to full strength."
-msgstr ""
-"Дрэйки работают с металлом, но есть и мастера по работе с керамикой. Только "
-"у <ref>dst='unit_Drake Burner' text='поджигателей'</ref> хватает тепла, "
-"необходимого для обжига."
-
-#. [topic]: id=drakish_script
-#: data/core/encyclopedia/drakes.cfg:181
-msgid "Drakish, script"
-msgstr "Дрэйкская письменность"
-
-#. [topic]: id=drakish_script
-#: data/core/encyclopedia/drakes.cfg:182
-msgid ""
-"The scripted language of the drakes. Stored on <ref>dst='ceramic' "
-"text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
-"text='Recorder'</ref> vocation."
-msgstr ""
-"Письменный язык дрэйков. Дрэйки, служащие <ref>dst='recorder' "
-"text='хранителями'</ref>, пишут на <ref>dst='ceramic' text='керамических</"
-"ref> пластинках."
-
-#. [topic]: id=drakish_language
-#: data/core/encyclopedia/drakes.cfg:187
-msgid "Drakish, language"
-msgstr "Дрэйкский язык"
-
-#. [topic]: id=drakish_language
-#: data/core/encyclopedia/drakes.cfg:188
-msgid "The language spoken by the drakes."
-msgstr "Язык, на котором говорят дрэйки."
 
 #. [section]: id=geography
 #. [topic]: id=..geography
@@ -5831,3 +5367,350 @@ msgstr "Помощь по игре Битва за Веснот"
 #: src/help.cpp:3492
 msgid "Parse error when parsing help text: "
 msgstr "Синтаксическая ошибка при загрузке помощи: "
+
+#~ msgid "Caste"
+#~ msgstr "Каста"
+
+#~ msgid ""
+#~ "One of the variant forms of the drake: either be a <ref>dst='unit_Drake "
+#~ "Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' "
+#~ "text='Drake Fighter'</ref>."
+#~ msgstr ""
+#~ "Один из вариантов форм дрейков: может быть как <ref>dst='unit_Drake "
+#~ "Clasher' text='Боец дрейков'</ref> или <ref>dst='unit_Drake Fighter' "
+#~ "text='Солдат дрейков'</ref>."
+
+#~ msgid "Aerie"
+#~ msgstr "Гнездо"
+
+#~ msgid ""
+#~ "A very large castle-like structure that is home to a <ref>dst='flight' "
+#~ "text='flight'</ref>. It contains the <ref>dst='breeding_pen' "
+#~ "text='breeding pens'</ref>."
+#~ msgstr ""
+#~ "Огромное строение навроде замка, дом <ref>dst='flight' text='стаи'</ref>. "
+#~ "Там находятся <ref>dst='breeding_pen' text='загоны для размножения'</ref>."
+
+#~ msgid "Breeding Pen"
+#~ msgstr "Загон для размножения"
+
+#~ msgid ""
+#~ "The portion of an <ref>dst='aerie' text='aerie'</ref> where the "
+#~ "nonsentient <ref>dst='breeder' text='Breeders'</ref> live under the "
+#~ "<ref>dst='dominant' text='Dominant'</ref>’s eye."
+#~ msgstr ""
+#~ "Часть <ref>dst='aerie' text='гнезда'</ref> где живут немыслящие "
+#~ "<ref>dst='breeder' text='размножители'</ref> под присмотром "
+#~ "<ref>dst='dominant' text='доминанта'</ref>."
+
+#~ msgid "Breeding Cycle"
+#~ msgstr "Цикл размножения"
+
+#~ msgid ""
+#~ "The time that passes between one <ref>dst=egg text='egg'</ref> laying to "
+#~ "the next."
+#~ msgstr ""
+#~ "Время, которое проходит между двумя откладками <ref>dst='egg' text='яиц'</"
+#~ "ref>."
+
+#~ msgid "World Ocean"
+#~ msgstr "Мировой Океан"
+
+#~ msgid ""
+#~ "The World Ocean is the name of the open seas that surround the "
+#~ "archipelago of <ref>dst='morogor' text='Morogor'</ref>. The drakes "
+#~ "believe it to end at the <ref>dst='abyss' text='Abyss'</ref>, a vast and "
+#~ "deadly waterfall."
+#~ msgstr ""
+#~ "Мировой океан — общее название морей, которые окружают архипелаг "
+#~ "<ref>dst='morogor' text='Морогор'</ref>. По дрэйкским поверьям, он "
+#~ "заканчивается <ref>dst='abyss' text='Бездной'</ref>, широким и смертельно "
+#~ "опасным водопадом."
+
+#~ msgid "New Continent"
+#~ msgstr "Новый континент"
+
+#~ msgid ""
+#~ "The great continent to the east of <ref>dst='morogor' text='Morogor'</"
+#~ "ref>. Its existence is unknown to the drakes until the flight of Galun."
+#~ msgstr ""
+#~ "Новый большой континент к востоку от <ref>dst='morogor' text='Морогора'</"
+#~ "ref>. О его существовании не знали дрейки вплоть до полётов Галуна."
+
+#~ msgid "Abyss"
+#~ msgstr "Бездна"
+
+#~ msgid ""
+#~ "In the cosmology of the Drakes, a vast and deadly waterfall where the "
+#~ "ocean falls off the world-disc."
+#~ msgstr ""
+#~ "В учении о Дрейках описывался как огромный и смертельный водопад "
+#~ "стекающий с земного диска."
+
+#~ msgid "Spiral Path"
+#~ msgstr "Спиральный путь"
+
+#~ msgid ""
+#~ "A quasi-secret organization among the drakes devoted to avoiding a "
+#~ "Malthusian final war. See also <ref>dst='straight_path' text='Straight "
+#~ "Path'</ref>"
+#~ msgstr ""
+#~ "Квази-секретная организация среди дрейков посвятивщих себя предотвращению "
+#~ "последней войны за Малтусиан. См. также <ref>dst='straight_path' "
+#~ "text='Прямой путь'</ref>"
+
+#~ msgid "Straight Path"
+#~ msgstr "Прямой путь"
+
+#~ msgid ""
+#~ "The drakish tradition of perpetual expansion and conquest. This term is "
+#~ "mostly used by the members of the <ref>dst='spiral_path' text='Spiral "
+#~ "Path'</ref>."
+#~ msgstr ""
+#~ "Вечная традиция дрейков расширения и захвата. Так обычно говорят члены "
+#~ "<ref>dst='spiral_path' text='Спирального пути'</ref>."
+
+#~ msgid "Dominant"
+#~ msgstr "Доминант"
+
+#~ msgid ""
+#~ "The <ref>dst='aspirant' text='Aspirant'</ref> that emerges as the drake "
+#~ "leader, the only drake in the tribe that is allowed to reproduce with the "
+#~ "<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
+#~ "privileges on others."
+#~ msgstr ""
+#~ "<ref>dst='aspirant' text='Аспирант'</ref>, ставший лидером дрэйков. "
+#~ "Единственный дрэйк во всём племени, которому позволено оплодотворять "
+#~ "<ref>dst='breeder' text='размножителей'</ref>. Изредка он уступает эту "
+#~ "привилегию другим."
+
+#~ msgid "Vulcaniad"
+#~ msgstr "Вулканиада"
+
+#~ msgid ""
+#~ "The (irregular) period between consecutive eruptions of "
+#~ "<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
+#~ "<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
+#~ msgstr ""
+#~ "(Непостоянный) период между последовательными извержениями "
+#~ "<ref>dst='mount_morogor' text='горы Морогор'</ref>. На нём основан "
+#~ "календарь <ref>dst='long_count' text='Долгого Счисления'</ref>."
+
+#~ msgid "Recorder"
+#~ msgstr "Хранитель"
+
+#~ msgid ""
+#~ "A Recorder is a Drakish scrollkeeper who has mastered the drakish "
+#~ "<ref>dst='drakish_script' text='script'</ref>. The recorders are the only "
+#~ "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: "
+#~ "they recruit their members from all of the other castes."
+#~ msgstr ""
+#~ "Хранитель — летописец дрэйков, который обучился <ref>dst='drakish_script' "
+#~ "text='письму'</ref>. Это единственная <ref>dst='caste' text='каста'</ref> "
+#~ "дрэйков, которая не определяется биологией: они набирают своих членов из "
+#~ "всех других каст."
+
+#~ msgid "Laying"
+#~ msgstr "Откладка"
+
+#~ msgid ""
+#~ "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
+#~ msgstr "Часть <ref>dst='breeding_cycle' text='цикла размножение'</ref>."
+
+#~ msgid "Hatching"
+#~ msgstr "Вылупление"
+
+#~ msgid "Hatchling"
+#~ msgstr "Птенец"
+
+#~ msgid ""
+#~ "A young drake that has not yet seen another generation hatch. The younger "
+#~ "of the current generation of hatchlings are the most aggressive is the "
+#~ "behavior of the <ref>dst='flight' text='flight'</ref>."
+#~ msgstr ""
+#~ "Молодой дрэйк, который ещё не видел, как вылупляется следующее поколение. "
+#~ "Молодёжь нынешнего поколения — самые агрессивные из <ref>dst='flight' "
+#~ "text='стаи'</ref>."
+
+#~ msgid "Fledgling"
+#~ msgstr "Оперившийся"
+
+#~ msgid ""
+#~ "A young drake that has seen another generation hatch. If the "
+#~ "<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
+#~ "they start the <ref>dst='swarming' text='Swarming'</ref>."
+#~ msgstr ""
+#~ "Молодой дрэйк, который уже застал вылупление следующего поколения. Если "
+#~ "<ref>dst='flight' text='стая'</ref> может себе позволить потерять "
+#~ "поколение, они начинают <ref>dst='swarming' text='роиться'</ref>."
+
+#~ msgid "Breeder"
+#~ msgstr "Разможитель"
+
+#~ msgid ""
+#~ "The female drake. They are rare since <ref>dst='egg' text='eggs'</ref> "
+#~ "that become breeders have to be handled with extra care. The number of "
+#~ "breeders is also limited by the amounts of non-breeders around, since "
+#~ "breeders can't take care of their food for themselves when laying. Drake "
+#~ "breeders become fertile after the next <ref>dst='hatching' "
+#~ "text='hatching'</ref>."
+#~ msgstr ""
+#~ "Самка дрэйков. Они очень редки, поскольку <ref>dst='egg' text='яйца'</"
+#~ "ref>, из которых вылупятся размножители, приходится усиленно оберегать. "
+#~ "Количество размножителей также ограничено количеством прочих дрэйков, "
+#~ "поскольку они не могут добывать себе пищу во время откладки яиц. "
+#~ "Размножители могут плодиться после следующей <ref>dst='hatching' "
+#~ "text='откладки'</ref>."
+
+#~ msgid "Egg, Drake"
+#~ msgstr "Яйцо дрэйка"
+
+#~ msgid ""
+#~ "The <ref>dst=caste text='caste'</ref> the <ref>dst='hatchling' "
+#~ "text='Hatchling'</ref> will belongs to is determined by the time it is "
+#~ "laid and to some extent the ambient temperature."
+#~ msgstr ""
+#~ "<ref>dst=caste text='Каста'</ref>, в которой окажется "
+#~ "<ref>dst='hatchling' text='птенец'</ref> определяется временем, когда "
+#~ "отложено яйцо, и, до некоторой степени температурой окружения."
+
+#~ msgid "Flight"
+#~ msgstr "Стая"
+
+#~ msgid ""
+#~ "Tribe of Drakes, lives in an <ref>dst='aerie' text='Aerie'</ref>, "
+#~ "controlling a hunting range. Each tribe has one <ref>dst='dominant' "
+#~ "text='Dominant'</ref>, who confers mating privileges."
+#~ msgstr ""
+#~ "Племя дрэйков, которое живёт в <ref>dst='aerie' text='гнезде'</ref>, и "
+#~ "держит охотничьи угодья. В каждом племени есть один <ref>dst='dominant' "
+#~ "text='доминант'</ref>, который присваивает себе привилегию спаривания."
+
+#~ msgid "Aspirant"
+#~ msgstr "Аспирант"
+
+#~ msgid ""
+#~ "Male drake that has passed through a hormonal metamorphosis that makes "
+#~ "him able to mate with the <ref>dst='breeder' text='breeders'</ref>. The "
+#~ "secretion of the hormone is caused by hunt and combat actions in which "
+#~ "the drake is involved."
+#~ msgstr ""
+#~ "Самцы дрэйков, которые достигли полового созревания и способны "
+#~ "спариваться с <ref>dst='breeder' text='размножителями'</ref>. Созревание "
+#~ "происходит за счёт гормонов, которые выделяются во время охоты и битв."
+
+#~ msgid "Ascendant"
+#~ msgstr "Предок"
+
+#~ msgid ""
+#~ "The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
+#~ msgstr ""
+#~ "Дрэйкское название для настоящих <ref>dst='unit_Fire Dragon' "
+#~ "text='драконов'</ref>."
+
+#~ msgid "Intendant"
+#~ msgstr "Интендант"
+
+#~ msgid ""
+#~ "One of the <ref>dst='aspirant' text='Aspirant'</ref> lieutenants of a "
+#~ "<ref>dst='dominant' text='Dominant'</ref>. Traditionally he has one of "
+#~ "each <ref>dst=caste text='caste'</ref> other than his own. Additional "
+#~ "'Intendants' are sometimes designated for special duties. Intendants are "
+#~ "likeliest to be granted mating privileges, especially after a notable "
+#~ "service."
+#~ msgstr ""
+#~ "Один из <ref>dst='aspirant' text='аспирантов'</ref>, приближенных к "
+#~ "<ref>dst='dominant' text='доминанту'</ref>. Традиционно он выбирает по "
+#~ "одному из каждой <ref>dst=caste text='касты'</ref>, кроме собственной. "
+#~ "Кроме того, иногда назначаются дополнительные «интенданты» для особых "
+#~ "поручений. У интендантов самые большие шансы удостоиться привилегии "
+#~ "спаривания, например, в награду за службу."
+
+#~ msgid "Swarm"
+#~ msgstr "Рой"
+
+#~ msgid ""
+#~ "The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
+#~ "<ref>dst='aerie' text='aerie'</ref> to found a new one."
+#~ msgstr ""
+#~ "<ref>dst='swarmlings' text='Роящиеся'</ref>, покинувшие <ref>dst='aerie' "
+#~ "text='гнездо'</ref>, чтобы основать новое."
+
+#~ msgid "Swarming"
+#~ msgstr "Роящийся"
+
+#~ msgid ""
+#~ " The <ref>dst='flight' text='flight'</ref> for a new drake "
+#~ "<ref>dst='aerie' text='aerie'</ref> that recurs every "
+#~ "<ref>dst='breeding_cycle' text='breeding cycle'</ref>. See "
+#~ "<ref>dst='swarm' text='Swarm'</ref>"
+#~ msgstr ""
+#~ "<ref>dst='flight' text='Стая'</ref> для нового <ref>dst='aerie' "
+#~ "text='гнезда'</ref> дрэйков, которая возникает после каждого "
+#~ "<ref>dst='breeding_cycle' text='цикла размножения'</ref>. См. "
+#~ "<ref>dst='swarm' text='Рой'</ref>"
+
+#~ msgid "Runners"
+#~ msgstr "Бегуны"
+
+#~ msgid "Drakish term for escaped slaves hunted as game."
+#~ msgstr "Дрэйкское название бежавших рабов, на которых охотятся для забавы."
+
+#~ msgid "Mount Morogor"
+#~ msgstr "Гора Морогор"
+
+#~ msgid ""
+#~ "Volcanic mountain on the central island of the archipelago "
+#~ "<ref>dst='morogor' text='Morogor'</ref>."
+#~ msgstr ""
+#~ "Вулкан на центральном острове архипелага <ref>dst='morogor' "
+#~ "text='Морогор'</ref>."
+
+#~ msgid "Long Count"
+#~ msgstr "Длинное счисление"
+
+#~ msgid ""
+#~ "The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> "
+#~ "and <ref>dst=breeding_cycle text='Breeding cycles'</ref>."
+#~ msgstr ""
+#~ "Дрэйкский календарь, основанный на <ref>dst='vulcaniad' "
+#~ "text='Вулканиадах'</ref> и <ref>dst=breeding_cycle text='циклах "
+#~ "размножения'</ref>."
+
+#~ msgid "Long Pig"
+#~ msgstr "Длинная свинка"
+
+#~ msgid ""
+#~ "South Seas pidgin for human meat, used to translate a Drakish word with "
+#~ "the same meaning."
+#~ msgstr "На южном наречии — человеческое мясо; перевод с дрэйкского языка."
+
+#~ msgid "Ceramics"
+#~ msgstr "Керамика"
+
+#~ msgid ""
+#~ "The drakes work metal, but are are masters in the craftsmanship of making "
+#~ "ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
+#~ "generate the amount of heat to cure the pieces to full strength."
+#~ msgstr ""
+#~ "Дрэйки работают с металлом, но есть и мастера по работе с керамикой. "
+#~ "Только у <ref>dst='unit_Drake Burner' text='поджигателей'</ref> хватает "
+#~ "тепла, необходимого для обжига."
+
+#~ msgid "Drakish, script"
+#~ msgstr "Дрэйкская письменность"
+
+#~ msgid ""
+#~ "The scripted language of the drakes. Stored on <ref>dst='ceramic' "
+#~ "text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
+#~ "text='Recorder'</ref> vocation."
+#~ msgstr ""
+#~ "Письменный язык дрэйков. Дрэйки, служащие <ref>dst='recorder' "
+#~ "text='хранителями'</ref>, пишут на <ref>dst='ceramic' text='керамических</"
+#~ "ref> пластинках."
+
+#~ msgid "Drakish, language"
+#~ msgstr "Дрэйкский язык"
+
+#~ msgid "The language spoken by the drakes."
+#~ msgstr "Язык, на котором говорят дрэйки."

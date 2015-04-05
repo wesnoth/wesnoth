@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-01-15 22:59-0300\n"
+"POT-Creation-Date: 2015-04-05 03:22-0300\n"
 "PO-Revision-Date: 2013-04-14 21:47+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -181,445 +181,6 @@ msgstr "韋諾百科"
 #: data/core/encyclopedia/_main.cfg:14
 msgid "<ref>dst='..geography' text='Geography'</ref>"
 msgstr "<ref>dst='..geography' text='地理'</ref>"
-
-#. [topic]: id=caste
-#: data/core/encyclopedia/drakes.cfg:7
-msgid "Caste"
-msgstr "階級"
-
-#. [topic]: id=caste
-#: data/core/encyclopedia/drakes.cfg:8
-msgid ""
-"One of the variant forms of the drake: either be a <ref>dst='unit_Drake "
-"Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' text='Drake "
-"Fighter'</ref>."
-msgstr ""
-"龍族會演化成其中之一：<ref>dst='unit_Drake Clasher' text='龍族巨劍兵'</ref>或"
-"是<ref>dst='unit_Drake Fighter' text='龍族戰士'</ref>."
-
-#. [topic]: id=aerie
-#: data/core/encyclopedia/drakes.cfg:13
-msgid "Aerie"
-msgstr "龍穴"
-
-#. [topic]: id=aerie
-#: data/core/encyclopedia/drakes.cfg:14
-msgid ""
-"A very large castle-like structure that is home to a <ref>dst='flight' "
-"text='flight'</ref>. It contains the <ref>dst='breeding_pen' text='breeding "
-"pens'</ref>."
-msgstr ""
-"<ref>dst='flight' text='龍群'</ref>的家是一座類似城堡結構的建築物。裡面設有"
-"<ref>dst='breeding_pen' text='繁殖欄'</ref>。"
-
-#. [topic]: id=breeding_pen
-#: data/core/encyclopedia/drakes.cfg:19
-msgid "Breeding Pen"
-msgstr "繁殖欄"
-
-#. [topic]: id=breeding_pen
-#: data/core/encyclopedia/drakes.cfg:20
-msgid ""
-"The portion of an <ref>dst='aerie' text='aerie'</ref> where the nonsentient "
-"<ref>dst='breeder' text='Breeders'</ref> live under the <ref>dst='dominant' "
-"text='Dominant'</ref>’s eye."
-msgstr ""
-"為<ref>dst='aerie' text='龍穴'</ref>的一部份，被受控制的<ref>dst='breeder' "
-"text='龍后'</ref>們只能在<ref>dst='dominant' text='龍族領袖'</ref>的控制下生"
-"活。"
-
-#. [topic]: id=breeding_cycle
-#: data/core/encyclopedia/drakes.cfg:25
-msgid "Breeding Cycle"
-msgstr "繁殖週期"
-
-#. [topic]: id=breeding_cycle
-#: data/core/encyclopedia/drakes.cfg:26
-msgid ""
-"The time that passes between one <ref>dst=egg text='egg'</ref> laying to the "
-"next."
-msgstr "產下一顆<ref>dst=egg text='蛋'</ref>後到下次產蛋所延遲的時間。"
-
-#. [topic]: id=world_ocean
-#: data/core/encyclopedia/drakes.cfg:31
-msgid "World Ocean"
-msgstr "世界洋"
-
-#. [topic]: id=world_ocean
-#: data/core/encyclopedia/drakes.cfg:32
-msgid ""
-"The World Ocean is the name of the open seas that surround the archipelago "
-"of <ref>dst='morogor' text='Morogor'</ref>. The drakes believe it to end at "
-"the <ref>dst='abyss' text='Abyss'</ref>, a vast and deadly waterfall."
-msgstr ""
-"世界洋是指環繞<ref>dst='morogor' text='摩洛戈'</ref>群島周圍的海洋。龍族相信 "
-"<ref>dst='abyss' text='深淵'</ref>是海洋的盡頭，而那裡是廣闊且致命的大瀑布。"
-
-#. [topic]: id=new_continent
-#: data/core/encyclopedia/drakes.cfg:37
-msgid "New Continent"
-msgstr "新大陸"
-
-#. [topic]: id=new_continent
-#: data/core/encyclopedia/drakes.cfg:38
-msgid ""
-"The great continent to the east of <ref>dst='morogor' text='Morogor'</ref>. "
-"Its existence is unknown to the drakes until the flight of Galun."
-msgstr ""
-"位於<ref>dst='morogor' text='摩洛戈'</ref>東方的廣大陸地。在蓋倫尚未抵達前，"
-"龍族們對這片大陸一無所知。"
-
-#. [topic]: id=abyss
-#: data/core/encyclopedia/drakes.cfg:43
-msgid "Abyss"
-msgstr "深淵"
-
-#. [topic]: id=abyss
-#: data/core/encyclopedia/drakes.cfg:44
-msgid ""
-"In the cosmology of the Drakes, a vast and deadly waterfall where the ocean "
-"falls off the world-disc."
-msgstr "在龍族的宇宙學中，海洋最終匯集至這廣闊且致命的大瀑布中。"
-
-#. [topic]: id=spiral_path
-#: data/core/encyclopedia/drakes.cfg:49
-msgid "Spiral Path"
-msgstr "盤旋之路"
-
-#. [topic]: id=spiral_path
-#: data/core/encyclopedia/drakes.cfg:50
-msgid ""
-"A quasi-secret organization among the drakes devoted to avoiding a "
-"Malthusian final war. See also <ref>dst='straight_path' text='Straight "
-"Path'</ref>"
-msgstr ""
-"一個龍族用來避免馬爾薩斯災難的秘密組織。請參考<ref>dst='straight_path' "
-"text='道標之路'</ref>"
-
-#. [topic]: id=straight_path
-#: data/core/encyclopedia/drakes.cfg:55
-msgid "Straight Path"
-msgstr "道標之路"
-
-#. [topic]: id=straight_path
-#: data/core/encyclopedia/drakes.cfg:56
-msgid ""
-"The drakish tradition of perpetual expansion and conquest. This term is "
-"mostly used by the members of the <ref>dst='spiral_path' text='Spiral Path'</"
-"ref>."
-msgstr ""
-"不停地擴展與征服為龍族的精神。這個用詞大多被<ref>dst='spiral_path' text='盤旋"
-"之路'</ref>的成員所使用。"
-
-#. [topic]: id=dominant
-#: data/core/encyclopedia/drakes.cfg:61
-msgid "Dominant"
-msgstr "龍族領袖"
-
-#. [topic]: id=dominant
-#: data/core/encyclopedia/drakes.cfg:62
-msgid ""
-"The <ref>dst='aspirant' text='Aspirant'</ref> that emerges as the drake "
-"leader, the only drake in the tribe that is allowed to reproduce with the "
-"<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
-"privileges on others."
-msgstr ""
-"成為龍族領袖的<ref>dst='aspirant' text='雄龍'</ref>，是龍族裡唯一可以和"
-"<ref>dst='breeder' text='龍后們'</ref>繁衍後代的角色。在極少數的情況下，他也"
-"會授權給其它成員交配的權限。"
-
-#. [topic]: id=vulcaniad
-#: data/core/encyclopedia/drakes.cfg:67
-msgid "Vulcaniad"
-msgstr "火山噴發"
-
-#. [topic]: id=vulcaniad
-#: data/core/encyclopedia/drakes.cfg:68
-msgid ""
-"The (irregular) period between consecutive eruptions of "
-"<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
-"<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
-msgstr ""
-"根據<ref>dst='long_count' text='長紀曆'</ref>所記載。"
-"<ref>dst='mount_morogor' text='摩洛戈山'</ref>（不規則性）連續噴發之間的時"
-"間。"
-
-#. [topic]: id=recorder
-#: data/core/encyclopedia/drakes.cfg:73
-msgid "Recorder"
-msgstr "龍史官"
-
-#. [topic]: id=recorder
-#: data/core/encyclopedia/drakes.cfg:74
-msgid ""
-"A Recorder is a Drakish scrollkeeper who has mastered the drakish "
-"<ref>dst='drakish_script' text='script'</ref>. The recorders are the only "
-"<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: they "
-"recruit their members from all of the other castes."
-msgstr ""
-"龍史官是龍族裡使用<ref>dst='drakish_script' text='龍族文'</ref>的編纂者。龍史"
-"官的<ref>dst='caste' text='階級'</ref>是龍族裡唯一不取決於世襲的職務：他們從"
-"所有的階層中招募其成員。"
-
-#. [topic]: id=laying
-#: data/core/encyclopedia/drakes.cfg:79
-msgid "Laying"
-msgstr "產蛋"
-
-#. [topic]: id=hatching
-#. [topic]: id=laying
-#: data/core/encyclopedia/drakes.cfg:80 data/core/encyclopedia/drakes.cfg:86
-msgid "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
-msgstr "<ref>dst='breeding_cycle' text='繁殖週期'</ref>的一部份。"
-
-#. [topic]: id=hatching
-#: data/core/encyclopedia/drakes.cfg:85
-msgid "Hatching"
-msgstr "孵化"
-
-#. [topic]: id=hatchling
-#: data/core/encyclopedia/drakes.cfg:91
-msgid "Hatchling"
-msgstr "龍寶寶"
-
-#. [topic]: id=hatchling
-#: data/core/encyclopedia/drakes.cfg:92
-msgid ""
-"A young drake that has not yet seen another generation hatch. The younger of "
-"the current generation of hatchlings are the most aggressive is the behavior "
-"of the <ref>dst='flight' text='flight'</ref>."
-msgstr ""
-"最年輕的龍。在<ref>dst='flight' text='龍群'</ref>的習性裡，最年輕的龍總是最具"
-"有侵略性。"
-
-#. [topic]: id=fledgling
-#: data/core/encyclopedia/drakes.cfg:97
-msgid "Fledgling"
-msgstr "幼龍"
-
-#. [topic]: id=fledgling
-#: data/core/encyclopedia/drakes.cfg:98
-msgid ""
-"A young drake that has seen another generation hatch. If the "
-"<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
-"they start the <ref>dst='swarming' text='Swarming'</ref>."
-msgstr ""
-"稍稍長大的龍。如果<ref>dst='flight' text='龍群'</ref>能夠承受失去這一代幼龍的"
-"風險，他們便會開始<ref>dst='swarming' text='群體遷徙'</ref>。"
-
-#. [topic]: id=breeder
-#: data/core/encyclopedia/drakes.cfg:103
-msgid "Breeder"
-msgstr "龍后"
-
-#. [topic]: id=breeder
-#: data/core/encyclopedia/drakes.cfg:104
-msgid ""
-"The female drake. They are rare since <ref>dst='egg' text='eggs'</ref> that "
-"become breeders have to be handled with extra care. The number of breeders "
-"is also limited by the amounts of non-breeders around, since breeders can't "
-"take care of their food for themselves when laying. Drake breeders become "
-"fertile after the next <ref>dst='hatching' text='hatching'</ref>."
-msgstr ""
-"母龍。她們仔細地照顧<ref>dst='egg' text='龍蛋'</ref>且數量稀少。龍后的數量也"
-"被其它龍所限制，因為她們在產蛋時無法自行覓食。龍后們會在下一次"
-"<ref>dst='hatching' text='孵化'</ref>後變多。"
-
-#. [topic]: id=egg
-#: data/core/encyclopedia/drakes.cfg:109
-msgid "Egg, Drake"
-msgstr "龍蛋"
-
-#. [topic]: id=egg
-#: data/core/encyclopedia/drakes.cfg:110
-msgid ""
-"The <ref>dst=caste text='caste'</ref> the <ref>dst='hatchling' "
-"text='Hatchling'</ref> will belongs to is determined by the time it is laid "
-"and to some extent the ambient temperature."
-msgstr ""
-"<ref>dst='hatchling' text='龍寶寶'</ref>的<ref>dst=caste text='階級'</ref>取"
-"決於她所產下的時間及當下環境的溫度。"
-
-#. [topic]: id=flight
-#: data/core/encyclopedia/drakes.cfg:115
-msgid "Flight"
-msgstr "龍群"
-
-#. [topic]: id=flight
-#: data/core/encyclopedia/drakes.cfg:116
-msgid ""
-"Tribe of Drakes, lives in an <ref>dst='aerie' text='Aerie'</ref>, "
-"controlling a hunting range. Each tribe has one <ref>dst='dominant' "
-"text='Dominant'</ref>, who confers mating privileges."
-msgstr ""
-"龍族部落，他們住在一個<ref>dst='aerie' text='龍穴'</ref>之中，控制著一片狩獵"
-"區。每個部落都有一位<ref>dst='dominant' text='龍族領袖'</ref>，並且擁有授權給"
-"其它成員交配的權限。"
-
-#. [topic]: id=aspirant
-#: data/core/encyclopedia/drakes.cfg:121
-msgid "Aspirant"
-msgstr "雄龍"
-
-#. [topic]: id=aspirant
-#: data/core/encyclopedia/drakes.cfg:122
-msgid ""
-"Male drake that has passed through a hormonal metamorphosis that makes him "
-"able to mate with the <ref>dst='breeder' text='breeders'</ref>. The "
-"secretion of the hormone is caused by hunt and combat actions in which the "
-"drake is involved."
-msgstr ""
-"雄龍透過荷爾蒙發育成熟進而與<ref>dst='breeder' text='龍后們'</ref>交配。這些"
-"荷爾蒙會在龍族參與狩獵及戰鬥中所激發出來。"
-
-#. [topic]: id=ascendant
-#: data/core/encyclopedia/drakes.cfg:127
-msgid "Ascendant"
-msgstr "至高龍"
-
-#. [topic]: id=ascendant
-#: data/core/encyclopedia/drakes.cfg:128
-msgid ""
-"The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
-msgstr "龍族對<ref>dst='unit_Fire Dragon' text='火燄巨龍'</ref>的稱呼。"
-
-#. [topic]: id=intendant
-#: data/core/encyclopedia/drakes.cfg:133
-msgid "Intendant"
-msgstr "龍副官"
-
-#. [topic]: id=intendant
-#: data/core/encyclopedia/drakes.cfg:134
-msgid ""
-"One of the <ref>dst='aspirant' text='Aspirant'</ref> lieutenants of a "
-"<ref>dst='dominant' text='Dominant'</ref>. Traditionally he has one of each "
-"<ref>dst=caste text='caste'</ref> other than his own. Additional "
-"'Intendants' are sometimes designated for special duties. Intendants are "
-"likeliest to be granted mating privileges, especially after a notable "
-"service."
-msgstr ""
-"<ref>dst='dominant' text='龍族領袖'</ref>用來管理<ref>dst='aspirant' text='雄"
-"龍'</ref>們的職位。根據傳統除了龍族領袖自己本身外，每個<ref>dst=caste "
-"text='階級'</ref>都會有一位龍副官。龍副官被賦予特殊的使命。當立下顯著的功績"
-"時，龍副官也是最有機會獲得交配權限的角色。"
-
-#. [topic]: id=swarm
-#: data/core/encyclopedia/drakes.cfg:139
-msgid "Swarm"
-msgstr "移徙龍"
-
-#. [topic]: id=swarm
-#: data/core/encyclopedia/drakes.cfg:140
-msgid ""
-"The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
-"<ref>dst='aerie' text='aerie'</ref> to found a new one."
-msgstr ""
-"<ref>dst='swarmlings' text='移徙龍'</ref>會離開<ref>dst='aerie' text='龍穴'</"
-"ref>去尋找新的家園。"
-
-#. [topic]: id=swarming
-#: data/core/encyclopedia/drakes.cfg:145
-msgid "Swarming"
-msgstr "群體遷徙"
-
-#. [topic]: id=swarming
-#: data/core/encyclopedia/drakes.cfg:146
-msgid ""
-" The <ref>dst='flight' text='flight'</ref> for a new drake <ref>dst='aerie' "
-"text='aerie'</ref> that recurs every <ref>dst='breeding_cycle' "
-"text='breeding cycle'</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
-msgstr ""
-"過一個<ref>dst='breeding_cycle' text='繁殖週期'</ref>後<ref>dst='flight' "
-"text='龍群'</ref>都會尋找新的<ref>dst='aerie' text='龍穴'</ref>。請參考"
-"<ref>dst='swarm' text='移徙龍'</ref>"
-
-#. [topic]: id=runners
-#: data/core/encyclopedia/drakes.cfg:151
-msgid "Runners"
-msgstr "跑跑"
-
-#. [topic]: id=runners
-#: data/core/encyclopedia/drakes.cfg:152
-msgid "Drakish term for escaped slaves hunted as game."
-msgstr "龍族語中用來指逃跑後被當作獵物狩獵的奴隸。"
-
-#. [topic]: id=mount_morogor
-#: data/core/encyclopedia/drakes.cfg:157
-msgid "Mount Morogor"
-msgstr "摩洛戈山"
-
-#. [topic]: id=mount_morogor
-#: data/core/encyclopedia/drakes.cfg:158
-msgid ""
-"Volcanic mountain on the central island of the archipelago "
-"<ref>dst='morogor' text='Morogor'</ref>."
-msgstr "位於<ref>dst='morogor' text='摩洛戈'</ref>群島中心的活火山。"
-
-#. [topic]: id=long_count
-#: data/core/encyclopedia/drakes.cfg:163
-msgid "Long Count"
-msgstr "長紀曆"
-
-#. [topic]: id=long_count
-#: data/core/encyclopedia/drakes.cfg:164
-msgid ""
-"The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> and "
-"<ref>dst=breeding_cycle text='Breeding cycles'</ref>."
-msgstr ""
-"龍族紀錄<ref>dst='火山噴發' text='Vulcaniad'</ref>跟<ref>dst=breeding_cycle "
-"text='繁殖週期'</ref>的曆法。"
-
-#. [topic]: id=long_pig
-#: data/core/encyclopedia/drakes.cfg:169
-msgid "Long Pig"
-msgstr "大豬"
-
-#. [topic]: id=long_pig
-#: data/core/encyclopedia/drakes.cfg:170
-msgid ""
-"South Seas pidgin for human meat, used to translate a Drakish word with the "
-"same meaning."
-msgstr "南方海域黑話中的人肉，用龍族語翻譯也是相同的意思。"
-
-#. [topic]: id=ceramic
-#: data/core/encyclopedia/drakes.cfg:175
-msgid "Ceramics"
-msgstr "瓷器"
-
-#. [topic]: id=ceramic
-#: data/core/encyclopedia/drakes.cfg:176
-msgid ""
-"The drakes work metal, but are are masters in the craftsmanship of making "
-"ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
-"generate the amount of heat to cure the pieces to full strength."
-msgstr ""
-"龍族鍛造鐵器，但他們也是瓷器的工藝大師。只有<ref>dst='unit_Drake Burner' "
-"text='噴火龍戰士'</ref>才可以產生足夠的熱量來燒製最堅固的陶瓷。"
-
-#. [topic]: id=drakish_script
-#: data/core/encyclopedia/drakes.cfg:181
-msgid "Drakish, script"
-msgstr "龍族文"
-
-#. [topic]: id=drakish_script
-#: data/core/encyclopedia/drakes.cfg:182
-msgid ""
-"The scripted language of the drakes. Stored on <ref>dst='ceramic' "
-"text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
-"text='Recorder'</ref> vocation."
-msgstr ""
-"龍族使用的文字。<ref>dst='recorder' text='龍史官'</ref>們將文字記錄在"
-"<ref>dst='ceramic' text='陶瓷'</ref>板上。"
-
-#. [topic]: id=drakish_language
-#: data/core/encyclopedia/drakes.cfg:187
-msgid "Drakish, language"
-msgstr "龍族語"
-
-#. [topic]: id=drakish_language
-#: data/core/encyclopedia/drakes.cfg:188
-msgid "The language spoken by the drakes."
-msgstr "龍族所使用的語言。"
 
 #. [section]: id=geography
 #. [topic]: id=..geography
@@ -5522,6 +5083,327 @@ msgstr "韋諾之戰說明"
 #: src/help.cpp:3492
 msgid "Parse error when parsing help text: "
 msgstr "分析幫助文本時語法錯誤： "
+
+#~ msgid "Caste"
+#~ msgstr "階級"
+
+#~ msgid ""
+#~ "One of the variant forms of the drake: either be a <ref>dst='unit_Drake "
+#~ "Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' "
+#~ "text='Drake Fighter'</ref>."
+#~ msgstr ""
+#~ "龍族會演化成其中之一：<ref>dst='unit_Drake Clasher' text='龍族巨劍兵'</"
+#~ "ref>或是<ref>dst='unit_Drake Fighter' text='龍族戰士'</ref>."
+
+#~ msgid "Aerie"
+#~ msgstr "龍穴"
+
+#~ msgid ""
+#~ "A very large castle-like structure that is home to a <ref>dst='flight' "
+#~ "text='flight'</ref>. It contains the <ref>dst='breeding_pen' "
+#~ "text='breeding pens'</ref>."
+#~ msgstr ""
+#~ "<ref>dst='flight' text='龍群'</ref>的家是一座類似城堡結構的建築物。裡面設"
+#~ "有<ref>dst='breeding_pen' text='繁殖欄'</ref>。"
+
+#~ msgid "Breeding Pen"
+#~ msgstr "繁殖欄"
+
+#~ msgid ""
+#~ "The portion of an <ref>dst='aerie' text='aerie'</ref> where the "
+#~ "nonsentient <ref>dst='breeder' text='Breeders'</ref> live under the "
+#~ "<ref>dst='dominant' text='Dominant'</ref>’s eye."
+#~ msgstr ""
+#~ "為<ref>dst='aerie' text='龍穴'</ref>的一部份，被受控制的"
+#~ "<ref>dst='breeder' text='龍后'</ref>們只能在<ref>dst='dominant' text='龍族"
+#~ "領袖'</ref>的控制下生活。"
+
+#~ msgid "Breeding Cycle"
+#~ msgstr "繁殖週期"
+
+#~ msgid ""
+#~ "The time that passes between one <ref>dst=egg text='egg'</ref> laying to "
+#~ "the next."
+#~ msgstr "產下一顆<ref>dst=egg text='蛋'</ref>後到下次產蛋所延遲的時間。"
+
+#~ msgid "World Ocean"
+#~ msgstr "世界洋"
+
+#~ msgid ""
+#~ "The World Ocean is the name of the open seas that surround the "
+#~ "archipelago of <ref>dst='morogor' text='Morogor'</ref>. The drakes "
+#~ "believe it to end at the <ref>dst='abyss' text='Abyss'</ref>, a vast and "
+#~ "deadly waterfall."
+#~ msgstr ""
+#~ "世界洋是指環繞<ref>dst='morogor' text='摩洛戈'</ref>群島周圍的海洋。龍族相"
+#~ "信 <ref>dst='abyss' text='深淵'</ref>是海洋的盡頭，而那裡是廣闊且致命的大"
+#~ "瀑布。"
+
+#~ msgid "New Continent"
+#~ msgstr "新大陸"
+
+#~ msgid ""
+#~ "The great continent to the east of <ref>dst='morogor' text='Morogor'</"
+#~ "ref>. Its existence is unknown to the drakes until the flight of Galun."
+#~ msgstr ""
+#~ "位於<ref>dst='morogor' text='摩洛戈'</ref>東方的廣大陸地。在蓋倫尚未抵達"
+#~ "前，龍族們對這片大陸一無所知。"
+
+#~ msgid "Abyss"
+#~ msgstr "深淵"
+
+#~ msgid ""
+#~ "In the cosmology of the Drakes, a vast and deadly waterfall where the "
+#~ "ocean falls off the world-disc."
+#~ msgstr "在龍族的宇宙學中，海洋最終匯集至這廣闊且致命的大瀑布中。"
+
+#~ msgid "Spiral Path"
+#~ msgstr "盤旋之路"
+
+#~ msgid ""
+#~ "A quasi-secret organization among the drakes devoted to avoiding a "
+#~ "Malthusian final war. See also <ref>dst='straight_path' text='Straight "
+#~ "Path'</ref>"
+#~ msgstr ""
+#~ "一個龍族用來避免馬爾薩斯災難的秘密組織。請參考<ref>dst='straight_path' "
+#~ "text='道標之路'</ref>"
+
+#~ msgid "Straight Path"
+#~ msgstr "道標之路"
+
+#~ msgid ""
+#~ "The drakish tradition of perpetual expansion and conquest. This term is "
+#~ "mostly used by the members of the <ref>dst='spiral_path' text='Spiral "
+#~ "Path'</ref>."
+#~ msgstr ""
+#~ "不停地擴展與征服為龍族的精神。這個用詞大多被<ref>dst='spiral_path' "
+#~ "text='盤旋之路'</ref>的成員所使用。"
+
+#~ msgid "Dominant"
+#~ msgstr "龍族領袖"
+
+#~ msgid ""
+#~ "The <ref>dst='aspirant' text='Aspirant'</ref> that emerges as the drake "
+#~ "leader, the only drake in the tribe that is allowed to reproduce with the "
+#~ "<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
+#~ "privileges on others."
+#~ msgstr ""
+#~ "成為龍族領袖的<ref>dst='aspirant' text='雄龍'</ref>，是龍族裡唯一可以和"
+#~ "<ref>dst='breeder' text='龍后們'</ref>繁衍後代的角色。在極少數的情況下，他"
+#~ "也會授權給其它成員交配的權限。"
+
+#~ msgid "Vulcaniad"
+#~ msgstr "火山噴發"
+
+#~ msgid ""
+#~ "The (irregular) period between consecutive eruptions of "
+#~ "<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
+#~ "<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
+#~ msgstr ""
+#~ "根據<ref>dst='long_count' text='長紀曆'</ref>所記載。"
+#~ "<ref>dst='mount_morogor' text='摩洛戈山'</ref>（不規則性）連續噴發之間的時"
+#~ "間。"
+
+#~ msgid "Recorder"
+#~ msgstr "龍史官"
+
+#~ msgid ""
+#~ "A Recorder is a Drakish scrollkeeper who has mastered the drakish "
+#~ "<ref>dst='drakish_script' text='script'</ref>. The recorders are the only "
+#~ "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: "
+#~ "they recruit their members from all of the other castes."
+#~ msgstr ""
+#~ "龍史官是龍族裡使用<ref>dst='drakish_script' text='龍族文'</ref>的編纂者。"
+#~ "龍史官的<ref>dst='caste' text='階級'</ref>是龍族裡唯一不取決於世襲的職務："
+#~ "他們從所有的階層中招募其成員。"
+
+#~ msgid "Laying"
+#~ msgstr "產蛋"
+
+#~ msgid ""
+#~ "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
+#~ msgstr "<ref>dst='breeding_cycle' text='繁殖週期'</ref>的一部份。"
+
+#~ msgid "Hatching"
+#~ msgstr "孵化"
+
+#~ msgid "Hatchling"
+#~ msgstr "龍寶寶"
+
+#~ msgid ""
+#~ "A young drake that has not yet seen another generation hatch. The younger "
+#~ "of the current generation of hatchlings are the most aggressive is the "
+#~ "behavior of the <ref>dst='flight' text='flight'</ref>."
+#~ msgstr ""
+#~ "最年輕的龍。在<ref>dst='flight' text='龍群'</ref>的習性裡，最年輕的龍總是"
+#~ "最具有侵略性。"
+
+#~ msgid "Fledgling"
+#~ msgstr "幼龍"
+
+#~ msgid ""
+#~ "A young drake that has seen another generation hatch. If the "
+#~ "<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
+#~ "they start the <ref>dst='swarming' text='Swarming'</ref>."
+#~ msgstr ""
+#~ "稍稍長大的龍。如果<ref>dst='flight' text='龍群'</ref>能夠承受失去這一代幼"
+#~ "龍的風險，他們便會開始<ref>dst='swarming' text='群體遷徙'</ref>。"
+
+#~ msgid "Breeder"
+#~ msgstr "龍后"
+
+#~ msgid ""
+#~ "The female drake. They are rare since <ref>dst='egg' text='eggs'</ref> "
+#~ "that become breeders have to be handled with extra care. The number of "
+#~ "breeders is also limited by the amounts of non-breeders around, since "
+#~ "breeders can't take care of their food for themselves when laying. Drake "
+#~ "breeders become fertile after the next <ref>dst='hatching' "
+#~ "text='hatching'</ref>."
+#~ msgstr ""
+#~ "母龍。她們仔細地照顧<ref>dst='egg' text='龍蛋'</ref>且數量稀少。龍后的數量"
+#~ "也被其它龍所限制，因為她們在產蛋時無法自行覓食。龍后們會在下一次"
+#~ "<ref>dst='hatching' text='孵化'</ref>後變多。"
+
+#~ msgid "Egg, Drake"
+#~ msgstr "龍蛋"
+
+#~ msgid ""
+#~ "The <ref>dst=caste text='caste'</ref> the <ref>dst='hatchling' "
+#~ "text='Hatchling'</ref> will belongs to is determined by the time it is "
+#~ "laid and to some extent the ambient temperature."
+#~ msgstr ""
+#~ "<ref>dst='hatchling' text='龍寶寶'</ref>的<ref>dst=caste text='階級'</ref>"
+#~ "取決於她所產下的時間及當下環境的溫度。"
+
+#~ msgid "Flight"
+#~ msgstr "龍群"
+
+#~ msgid ""
+#~ "Tribe of Drakes, lives in an <ref>dst='aerie' text='Aerie'</ref>, "
+#~ "controlling a hunting range. Each tribe has one <ref>dst='dominant' "
+#~ "text='Dominant'</ref>, who confers mating privileges."
+#~ msgstr ""
+#~ "龍族部落，他們住在一個<ref>dst='aerie' text='龍穴'</ref>之中，控制著一片狩"
+#~ "獵區。每個部落都有一位<ref>dst='dominant' text='龍族領袖'</ref>，並且擁有"
+#~ "授權給其它成員交配的權限。"
+
+#~ msgid "Aspirant"
+#~ msgstr "雄龍"
+
+#~ msgid ""
+#~ "Male drake that has passed through a hormonal metamorphosis that makes "
+#~ "him able to mate with the <ref>dst='breeder' text='breeders'</ref>. The "
+#~ "secretion of the hormone is caused by hunt and combat actions in which "
+#~ "the drake is involved."
+#~ msgstr ""
+#~ "雄龍透過荷爾蒙發育成熟進而與<ref>dst='breeder' text='龍后們'</ref>交配。這"
+#~ "些荷爾蒙會在龍族參與狩獵及戰鬥中所激發出來。"
+
+#~ msgid "Ascendant"
+#~ msgstr "至高龍"
+
+#~ msgid ""
+#~ "The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
+#~ msgstr "龍族對<ref>dst='unit_Fire Dragon' text='火燄巨龍'</ref>的稱呼。"
+
+#~ msgid "Intendant"
+#~ msgstr "龍副官"
+
+#~ msgid ""
+#~ "One of the <ref>dst='aspirant' text='Aspirant'</ref> lieutenants of a "
+#~ "<ref>dst='dominant' text='Dominant'</ref>. Traditionally he has one of "
+#~ "each <ref>dst=caste text='caste'</ref> other than his own. Additional "
+#~ "'Intendants' are sometimes designated for special duties. Intendants are "
+#~ "likeliest to be granted mating privileges, especially after a notable "
+#~ "service."
+#~ msgstr ""
+#~ "<ref>dst='dominant' text='龍族領袖'</ref>用來管理<ref>dst='aspirant' "
+#~ "text='雄龍'</ref>們的職位。根據傳統除了龍族領袖自己本身外，每個"
+#~ "<ref>dst=caste text='階級'</ref>都會有一位龍副官。龍副官被賦予特殊的使命。"
+#~ "當立下顯著的功績時，龍副官也是最有機會獲得交配權限的角色。"
+
+#~ msgid "Swarm"
+#~ msgstr "移徙龍"
+
+#~ msgid ""
+#~ "The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
+#~ "<ref>dst='aerie' text='aerie'</ref> to found a new one."
+#~ msgstr ""
+#~ "<ref>dst='swarmlings' text='移徙龍'</ref>會離開<ref>dst='aerie' text='龍"
+#~ "穴'</ref>去尋找新的家園。"
+
+#~ msgid "Swarming"
+#~ msgstr "群體遷徙"
+
+#~ msgid ""
+#~ " The <ref>dst='flight' text='flight'</ref> for a new drake "
+#~ "<ref>dst='aerie' text='aerie'</ref> that recurs every "
+#~ "<ref>dst='breeding_cycle' text='breeding cycle'</ref>. See "
+#~ "<ref>dst='swarm' text='Swarm'</ref>"
+#~ msgstr ""
+#~ "過一個<ref>dst='breeding_cycle' text='繁殖週期'</ref>後<ref>dst='flight' "
+#~ "text='龍群'</ref>都會尋找新的<ref>dst='aerie' text='龍穴'</ref>。請參考"
+#~ "<ref>dst='swarm' text='移徙龍'</ref>"
+
+#~ msgid "Runners"
+#~ msgstr "跑跑"
+
+#~ msgid "Drakish term for escaped slaves hunted as game."
+#~ msgstr "龍族語中用來指逃跑後被當作獵物狩獵的奴隸。"
+
+#~ msgid "Mount Morogor"
+#~ msgstr "摩洛戈山"
+
+#~ msgid ""
+#~ "Volcanic mountain on the central island of the archipelago "
+#~ "<ref>dst='morogor' text='Morogor'</ref>."
+#~ msgstr "位於<ref>dst='morogor' text='摩洛戈'</ref>群島中心的活火山。"
+
+#~ msgid "Long Count"
+#~ msgstr "長紀曆"
+
+#~ msgid ""
+#~ "The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> "
+#~ "and <ref>dst=breeding_cycle text='Breeding cycles'</ref>."
+#~ msgstr ""
+#~ "龍族紀錄<ref>dst='火山噴發' text='Vulcaniad'</ref>跟"
+#~ "<ref>dst=breeding_cycle text='繁殖週期'</ref>的曆法。"
+
+#~ msgid "Long Pig"
+#~ msgstr "大豬"
+
+#~ msgid ""
+#~ "South Seas pidgin for human meat, used to translate a Drakish word with "
+#~ "the same meaning."
+#~ msgstr "南方海域黑話中的人肉，用龍族語翻譯也是相同的意思。"
+
+#~ msgid "Ceramics"
+#~ msgstr "瓷器"
+
+#~ msgid ""
+#~ "The drakes work metal, but are are masters in the craftsmanship of making "
+#~ "ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
+#~ "generate the amount of heat to cure the pieces to full strength."
+#~ msgstr ""
+#~ "龍族鍛造鐵器，但他們也是瓷器的工藝大師。只有<ref>dst='unit_Drake Burner' "
+#~ "text='噴火龍戰士'</ref>才可以產生足夠的熱量來燒製最堅固的陶瓷。"
+
+#~ msgid "Drakish, script"
+#~ msgstr "龍族文"
+
+#~ msgid ""
+#~ "The scripted language of the drakes. Stored on <ref>dst='ceramic' "
+#~ "text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
+#~ "text='Recorder'</ref> vocation."
+#~ msgstr ""
+#~ "龍族使用的文字。<ref>dst='recorder' text='龍史官'</ref>們將文字記錄在"
+#~ "<ref>dst='ceramic' text='陶瓷'</ref>板上。"
+
+#~ msgid "Drakish, language"
+#~ msgstr "龍族語"
+
+#~ msgid "The language spoken by the drakes."
+#~ msgstr "龍族所使用的語言。"
 
 #~ msgid "Flat"
 #~ msgstr "平原"

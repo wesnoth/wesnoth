@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-01-15 22:59-0300\n"
+"POT-Creation-Date: 2015-04-05 03:22-0300\n"
 "PO-Revision-Date: 2011-01-01 01:34+0100\n"
 "Last-Translator: Floris Kint <floris.kint@gmail.com>\n"
 "Language-Team: Dutch <AI0867@gmail.com>\n"
@@ -187,508 +187,6 @@ msgstr "Encyclopedie"
 #: data/core/encyclopedia/_main.cfg:14
 msgid "<ref>dst='..geography' text='Geography'</ref>"
 msgstr "<ref>dst='..geography' text='Aardrijkskunde'</ref>"
-
-#. [topic]: id=caste
-#: data/core/encyclopedia/drakes.cfg:7
-msgid "Caste"
-msgstr "Kaste"
-
-#. [topic]: id=caste
-#: data/core/encyclopedia/drakes.cfg:8
-#, fuzzy
-msgid ""
-"One of the variant forms of the drake: either be a <ref>dst='unit_Drake "
-"Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' text='Drake "
-"Fighter'</ref>."
-msgstr ""
-"Afhankelijk van de speciale behandeling van het draaklingen<ref>dst='egg' "
-"text='ei'</ref> kan de stam het opgroeien van het latere "
-"<ref>dst='hatchling' text='drakenjong'</ref> manipuleren. Het resultaat kan "
-"een <ref>dst='unit_Drake Clasher' text='Geweldenaar'</ref> of een "
-"<ref>dst='unit_Drake Fighter' text='Draaklingkrijger'</ref> zijn."
-
-#. [topic]: id=aerie
-#: data/core/encyclopedia/drakes.cfg:13
-msgid "Aerie"
-msgstr "Nest"
-
-#. [topic]: id=aerie
-#: data/core/encyclopedia/drakes.cfg:14
-#, fuzzy
-msgid ""
-"A very large castle-like structure that is home to a <ref>dst='flight' "
-"text='flight'</ref>. It contains the <ref>dst='breeding_pen' text='breeding "
-"pens'</ref>."
-msgstr ""
-"Een versterkt draaklingenhuis. Het bevat de <ref>dst='breeding_pen' "
-"text='broedplaatsen'</ref>."
-
-#. [topic]: id=breeding_pen
-#: data/core/encyclopedia/drakes.cfg:19
-msgid "Breeding Pen"
-msgstr "Broedplaats"
-
-#. [topic]: id=breeding_pen
-#: data/core/encyclopedia/drakes.cfg:20
-#, fuzzy
-msgid ""
-"The portion of an <ref>dst='aerie' text='aerie'</ref> where the nonsentient "
-"<ref>dst='breeder' text='Breeders'</ref> live under the <ref>dst='dominant' "
-"text='Dominant'</ref>’s eye."
-msgstr ""
-"Waar de ongevoelige <ref>dst='breeder' text='broedsters'</ref> leven onder "
-"het oog van de <ref>dst='dominant' text='Leider'</ref>."
-
-#. [topic]: id=breeding_cycle
-#: data/core/encyclopedia/drakes.cfg:25
-msgid "Breeding Cycle"
-msgstr "Broedcyclus"
-
-#. [topic]: id=breeding_cycle
-#: data/core/encyclopedia/drakes.cfg:26
-#, fuzzy
-msgid ""
-"The time that passes between one <ref>dst=egg text='egg'</ref> laying to the "
-"next."
-msgstr ""
-"De tijd tussen het leggen van één <ref>dst=egg text='Ei'</ref> en het "
-"volgende."
-
-#. [topic]: id=world_ocean
-#: data/core/encyclopedia/drakes.cfg:31
-#, fuzzy
-#| msgid "Great Ocean"
-msgid "World Ocean"
-msgstr "Grote Oceaan"
-
-#. [topic]: id=world_ocean
-#: data/core/encyclopedia/drakes.cfg:32
-#, fuzzy
-msgid ""
-"The World Ocean is the name of the open seas that surround the archipelago "
-"of <ref>dst='morogor' text='Morogor'</ref>. The drakes believe it to end at "
-"the <ref>dst='abyss' text='Abyss'</ref>, a vast and deadly waterfall."
-msgstr ""
-"De Grote Oceaan is de naam van de open zeeën die de <ref>dst='morogor' "
-"text='Morogor'</ref> archipel omringen. De draaklingen geloven dat hij "
-"eindigt bij de <ref>dst='abyss' tex='Afgrond'</ref>, een onmetelijke en "
-"dodelijke waterval."
-
-#. [topic]: id=new_continent
-#: data/core/encyclopedia/drakes.cfg:37
-#, fuzzy
-#| msgid "Great Continent"
-msgid "New Continent"
-msgstr "Grote Continent"
-
-#. [topic]: id=new_continent
-#: data/core/encyclopedia/drakes.cfg:38
-#, fuzzy
-#| msgid ""
-#| "Great Continent -- The great continent to the east of <ref>dst='morogor' "
-#| "text='Morogor'</ref>. Its existence is unknown to the @drakes until the "
-#| "flight of @Galun."
-msgid ""
-"The great continent to the east of <ref>dst='morogor' text='Morogor'</ref>. "
-"Its existence is unknown to the drakes until the flight of Galun."
-msgstr ""
-"Grote Continent -- Het grote continent in het oosten van <ref>dst='morogor' "
-"text='Morogor'</ref>. Het bestaan ervan was niet geweten bij de @draaklingen "
-"tot aan de vlucht van @Galun."
-
-#. [topic]: id=abyss
-#: data/core/encyclopedia/drakes.cfg:43
-msgid "Abyss"
-msgstr "Afgrond"
-
-#. [topic]: id=abyss
-#: data/core/encyclopedia/drakes.cfg:44
-#, fuzzy
-msgid ""
-"In the cosmology of the Drakes, a vast and deadly waterfall where the ocean "
-"falls off the world-disc."
-msgstr ""
-"Een onmetelijke en dodelijke waterval waar de oceaan van de wereldschijf "
-"valt."
-
-#. [topic]: id=spiral_path
-#: data/core/encyclopedia/drakes.cfg:49
-msgid "Spiral Path"
-msgstr "Spiraalpad"
-
-#. [topic]: id=spiral_path
-#: data/core/encyclopedia/drakes.cfg:50
-#, fuzzy
-msgid ""
-"A quasi-secret organization among the drakes devoted to avoiding a "
-"Malthusian final war. See also <ref>dst='straight_path' text='Straight "
-"Path'</ref>"
-msgstr ""
-"Een quasi-geheime organisatie onder de draaklingen die het doel heeft om de "
-"laatste Malthusische oorlog te vermijden. Zie ook <ref>dst='straight_path' "
-"text='Rechte Pad'</ref>"
-
-#. [topic]: id=straight_path
-#: data/core/encyclopedia/drakes.cfg:55
-msgid "Straight Path"
-msgstr "Rechte Pad"
-
-#. [topic]: id=straight_path
-#: data/core/encyclopedia/drakes.cfg:56
-#, fuzzy
-msgid ""
-"The drakish tradition of perpetual expansion and conquest. This term is "
-"mostly used by the members of the <ref>dst='spiral_path' text='Spiral Path'</"
-"ref>."
-msgstr ""
-"'Zij die het rechte pad volgen', kortweg 'Het Rechte Pad' is de naam voor de "
-"traditie onder de draaklingen van eeuwigdurende expansie en verovering. Deze "
-"term wordt meestal gebruikt door de leden van het <ref>dst='spiral_path' "
-"text='Spiraalpad'</ref>."
-
-#. [topic]: id=dominant
-#: data/core/encyclopedia/drakes.cfg:61
-msgid "Dominant"
-msgstr "Leider"
-
-#. [topic]: id=dominant
-#: data/core/encyclopedia/drakes.cfg:62
-#, fuzzy
-msgid ""
-"The <ref>dst='aspirant' text='Aspirant'</ref> that emerges as the drake "
-"leader, the only drake in the tribe that is allowed to reproduce with the "
-"<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
-"privileges on others."
-msgstr ""
-"De <ref>dst='aspirant' text='Aspirant'</ref> die draaklingenleider wordt, de "
-"enige draakling van de stam die zich mag voortplanten met de "
-"<ref>dst='breeders' text='broedsters'</ref>. Zelden verleent hij privileges "
-"aan anderen om zich voort te planten."
-
-#. [topic]: id=vulcaniad
-#: data/core/encyclopedia/drakes.cfg:67
-msgid "Vulcaniad"
-msgstr "Vulcaniad"
-
-#. [topic]: id=vulcaniad
-#: data/core/encyclopedia/drakes.cfg:68
-msgid ""
-"The (irregular) period between consecutive eruptions of "
-"<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
-"<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
-msgstr ""
-"De (onregelmatige) periode tussen de opeenvolgende erupties van de "
-"<ref>dst='mount_morogor' text='Morogorberg'</ref>. De <ref>dst='long_count' "
-"text='Lange Telling'</ref>-kalender is erop gebaseerd."
-
-#. [topic]: id=recorder
-#: data/core/encyclopedia/drakes.cfg:73
-msgid "Recorder"
-msgstr "Annalist"
-
-#. [topic]: id=recorder
-#: data/core/encyclopedia/drakes.cfg:74
-#, fuzzy
-msgid ""
-"A Recorder is a Drakish scrollkeeper who has mastered the drakish "
-"<ref>dst='drakish_script' text='script'</ref>. The recorders are the only "
-"<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: they "
-"recruit their members from all of the other castes."
-msgstr ""
-"De Draaklingse historicus die het Draaklingse <ref>dst='drakisch_script' "
-"text='schrift'</ref> geleerd heeft. De annalisten zijn de enige "
-"<ref>dst='caste' text='kaste'</ref> van de Draaklingen die niet biologisch "
-"bepaald wordt: zij rekruteren hun leden vanuit alle kastes."
-
-#. [topic]: id=laying
-#: data/core/encyclopedia/drakes.cfg:79
-msgid "Laying"
-msgstr "Het leggen"
-
-#. [topic]: id=hatching
-#. [topic]: id=laying
-#: data/core/encyclopedia/drakes.cfg:80 data/core/encyclopedia/drakes.cfg:86
-#, fuzzy
-msgid "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
-msgstr "een periode in de <ref>dst='breeding_cycle' text='broedcyclus'</ref>."
-
-#. [topic]: id=hatching
-#: data/core/encyclopedia/drakes.cfg:85
-msgid "Hatching"
-msgstr "Uit het ei komen"
-
-#. [topic]: id=hatchling
-#: data/core/encyclopedia/drakes.cfg:91
-msgid "Hatchling"
-msgstr "Jong"
-
-#. [topic]: id=hatchling
-#: data/core/encyclopedia/drakes.cfg:92
-#, fuzzy
-msgid ""
-"A young drake that has not yet seen another generation hatch. The younger of "
-"the current generation of hatchlings are the most aggressive is the behavior "
-"of the <ref>dst='flight' text='flight'</ref>."
-msgstr ""
-"Een jonge draakling die nog geen andere generatie drakenjongen gezien heeft. "
-"De jongsten van de huidige generatie draaklingenjongen zijn de meest "
-"agressieve. Dit gedrag noemt men de <ref>dst='flight' text='vlucht'</ref>."
-
-#. [topic]: id=fledgling
-#: data/core/encyclopedia/drakes.cfg:97
-msgid "Fledgling"
-msgstr "Jaarling"
-
-#. [topic]: id=fledgling
-#: data/core/encyclopedia/drakes.cfg:98
-msgid ""
-"A young drake that has seen another generation hatch. If the "
-"<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
-"they start the <ref>dst='swarming' text='Swarming'</ref>."
-msgstr ""
-"Een jonge draak die al een andere generatie draken gezien heeft. Als de "
-"<ref>dst='flight' text='vlucht'</ref> zich het verlies van een generatie kan "
-"veroorloven starten ze het <ref>dst='swarming' text='uitzwermen'</ref>."
-
-#. [topic]: id=breeder
-#: data/core/encyclopedia/drakes.cfg:103
-msgid "Breeder"
-msgstr "Broedster"
-
-#. [topic]: id=breeder
-#: data/core/encyclopedia/drakes.cfg:104
-msgid ""
-"The female drake. They are rare since <ref>dst='egg' text='eggs'</ref> that "
-"become breeders have to be handled with extra care. The number of breeders "
-"is also limited by the amounts of non-breeders around, since breeders can't "
-"take care of their food for themselves when laying. Drake breeders become "
-"fertile after the next <ref>dst='hatching' text='hatching'</ref>."
-msgstr ""
-"Een vrouwelijke draakling. Ze zijn zeldzaam zodat de <ref>dst='egg' "
-"text='eieren'</ref> waaruit broedsters zullen komen met extra zorg behandeld "
-"moeten worden. Het aantal broedsters is ook beperkt door het aantal niet-"
-"broedsters, aangezien broedsters niet voor hun eigen voedsel kunnen zorgen "
-"wanneer ze eieren leggen. Draaklingenbroedsters worden vruchtbaar na de "
-"volgende keer dat draaklingenjongen <ref>dst='hatching' text='uit het ei "
-"komen'</ref>."
-
-#. [topic]: id=egg
-#: data/core/encyclopedia/drakes.cfg:109
-msgid "Egg, Drake"
-msgstr "Ei, Draakling"
-
-#. [topic]: id=egg
-#: data/core/encyclopedia/drakes.cfg:110
-#, fuzzy
-msgid ""
-"The <ref>dst=caste text='caste'</ref> the <ref>dst='hatchling' "
-"text='Hatchling'</ref> will belongs to is determined by the time it is laid "
-"and to some extent the ambient temperature."
-msgstr ""
-"De <ref>dst='caste' text='kaste'</ref> waaraan de <ref>dst='hatchling' "
-"text='jongen die uit het ei komen'</ref> zullen toebehoren wordt bepaald "
-"door het moment waarop het ei gelegd is."
-
-#. [topic]: id=flight
-#: data/core/encyclopedia/drakes.cfg:115
-msgid "Flight"
-msgstr "Vlucht"
-
-#. [topic]: id=flight
-#: data/core/encyclopedia/drakes.cfg:116
-msgid ""
-"Tribe of Drakes, lives in an <ref>dst='aerie' text='Aerie'</ref>, "
-"controlling a hunting range. Each tribe has one <ref>dst='dominant' "
-"text='Dominant'</ref>, who confers mating privileges."
-msgstr ""
-"Draaklingenstam, leeft in een <ref>dst='aerie' text='Nest'</ref>, beheerst "
-"een jachtgebied. Elke stam heeft een <ref>dst='dominant' text='Leider'</"
-"ref>, die de paarrechten verdeelt."
-
-#. [topic]: id=aspirant
-#: data/core/encyclopedia/drakes.cfg:121
-msgid "Aspirant"
-msgstr "Aspirant"
-
-#. [topic]: id=aspirant
-#: data/core/encyclopedia/drakes.cfg:122
-msgid ""
-"Male drake that has passed through a hormonal metamorphosis that makes him "
-"able to mate with the <ref>dst='breeder' text='breeders'</ref>. The "
-"secretion of the hormone is caused by hunt and combat actions in which the "
-"drake is involved."
-msgstr ""
-"Mannelijke draakling die door een hormonale metamorfose gegaan is die hem in "
-"staat hebben gesteld om te paren met <ref>dst='breeder' text='broedsters'</"
-"ref>. De afscheiding van de hormonen wordt veroorzaakt door de jacht en "
-"gevechtsacties waarin de draakling betrokken geweest is."
-
-#. [topic]: id=ascendant
-#: data/core/encyclopedia/drakes.cfg:127
-msgid "Ascendant"
-msgstr "Volgroeide"
-
-#. [topic]: id=ascendant
-#: data/core/encyclopedia/drakes.cfg:128
-msgid ""
-"The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
-msgstr ""
-"De draaklingennaam voor een echte <ref>dst='unit_Fire Dragon' text='draak'</"
-"ref>."
-
-#. [topic]: id=intendant
-#: data/core/encyclopedia/drakes.cfg:133
-msgid "Intendant"
-msgstr "Luitenant"
-
-#. [topic]: id=intendant
-#: data/core/encyclopedia/drakes.cfg:134
-#, fuzzy
-msgid ""
-"One of the <ref>dst='aspirant' text='Aspirant'</ref> lieutenants of a "
-"<ref>dst='dominant' text='Dominant'</ref>. Traditionally he has one of each "
-"<ref>dst=caste text='caste'</ref> other than his own. Additional "
-"'Intendants' are sometimes designated for special duties. Intendants are "
-"likeliest to be granted mating privileges, especially after a notable "
-"service."
-msgstr ""
-"Een van de <ref>dst='aspirant' text='Aspirant'</ref>-luitenanten van een "
-"<ref>dst='dominant' text='Leider'</ref>. Volgens de traditie heeft die er "
-"een van elke <ref>dst='caste' text='kaste'</ref> behalve zijn eigen. Extra "
-"'Luitenanten' worden soms aangewezen voor speciale opdrachten. Luitenanten "
-"krijgen het vaakst paarrechten, vooral na een belangrijke dienst."
-
-#. [topic]: id=swarm
-#: data/core/encyclopedia/drakes.cfg:139
-msgid "Swarm"
-msgstr "Zwerm"
-
-#. [topic]: id=swarm
-#: data/core/encyclopedia/drakes.cfg:140
-msgid ""
-"The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
-"<ref>dst='aerie' text='aerie'</ref> to found a new one."
-msgstr ""
-"De <ref>dst='swarmlings' text='Zwermers'</ref> die het <ref>dst='aerie' "
-"text='nest'</ref> verlaten hebben om een nieuwe te stichten."
-
-#. [topic]: id=swarming
-#: data/core/encyclopedia/drakes.cfg:145
-msgid "Swarming"
-msgstr "Uitzwermen"
-
-#. [topic]: id=swarming
-#: data/core/encyclopedia/drakes.cfg:146
-#, fuzzy
-#| msgid ""
-#| " The <ref>dst='flight' text='flight'</ref> for a new drake "
-#| "<ref>dst='aerie' text='aerie'</ref> that recurs every "
-#| "<ref>dst='breeding_cycle' text='breeding cycle</ref>. See "
-#| "<ref>dst='swarm' text='Swarm'</ref>"
-msgid ""
-" The <ref>dst='flight' text='flight'</ref> for a new drake <ref>dst='aerie' "
-"text='aerie'</ref> that recurs every <ref>dst='breeding_cycle' "
-"text='breeding cycle'</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
-msgstr ""
-"De <ref>dst='flight' text='vlucht'</ref> voor een nieuw "
-"draken<ref>dst='aerie' text='nest'</ref> die zich herhaalt iedere "
-"<ref>dst='breeding_cycle' text='broedcyclus'</ref>. Zie <ref>dst='swarm' "
-"text='Zwerm'</ref>."
-
-#. [topic]: id=runners
-#: data/core/encyclopedia/drakes.cfg:151
-msgid "Runners"
-msgstr "Renners"
-
-#. [topic]: id=runners
-#: data/core/encyclopedia/drakes.cfg:152
-msgid "Drakish term for escaped slaves hunted as game."
-msgstr ""
-"Draaklingterm voor ontsnapte slaven die door de Draaklingen achtervolgd "
-"worden om opgepeuzeld te worden."
-
-#. [topic]: id=mount_morogor
-#: data/core/encyclopedia/drakes.cfg:157
-msgid "Mount Morogor"
-msgstr "Morogorberg"
-
-#. [topic]: id=mount_morogor
-#: data/core/encyclopedia/drakes.cfg:158
-msgid ""
-"Volcanic mountain on the central island of the archipelago "
-"<ref>dst='morogor' text='Morogor'</ref>."
-msgstr ""
-"Vulkanische berg op het centrale eiland van de <ref>dst='morogor' "
-"text='Morogor'</ref>archipel."
-
-#. [topic]: id=long_count
-#: data/core/encyclopedia/drakes.cfg:163
-msgid "Long Count"
-msgstr "Lange Telling"
-
-#. [topic]: id=long_count
-#: data/core/encyclopedia/drakes.cfg:164
-msgid ""
-"The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> and "
-"<ref>dst=breeding_cycle text='Breeding cycles'</ref>."
-msgstr ""
-"De draaklingkalender gebaseerd op de <ref>dst='vulcaniad' text='Vulcaniad'</"
-"ref> en <ref>dst='breeding_cycle' text='Broedcyclus'</ref>."
-
-#. [topic]: id=long_pig
-#: data/core/encyclopedia/drakes.cfg:169
-msgid "Long Pig"
-msgstr "Lang varken"
-
-#. [topic]: id=long_pig
-#: data/core/encyclopedia/drakes.cfg:170
-msgid ""
-"South Seas pidgin for human meat, used to translate a Drakish word with the "
-"same meaning."
-msgstr ""
-
-#. [topic]: id=ceramic
-#: data/core/encyclopedia/drakes.cfg:175
-msgid "Ceramics"
-msgstr "Keramiek"
-
-#. [topic]: id=ceramic
-#: data/core/encyclopedia/drakes.cfg:176
-msgid ""
-"The drakes work metal, but are are masters in the craftsmanship of making "
-"ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
-"generate the amount of heat to cure the pieces to full strength."
-msgstr ""
-"De draaklingen bewerken metaal, maar zijn meesters in het ambacht van het "
-"maken van keramiek. Enkel de <ref>dst='unit_Drake Burner' "
-"text='Vlammendraaklingen'</ref> kunnen genoeg hitte produceren om de "
-"voorwerpen op volle sterkte te maken."
-
-#. [topic]: id=drakish_script
-#: data/core/encyclopedia/drakes.cfg:181
-msgid "Drakish, script"
-msgstr "Draaklings, schrift"
-
-#. [topic]: id=drakish_script
-#: data/core/encyclopedia/drakes.cfg:182
-msgid ""
-"The scripted language of the drakes. Stored on <ref>dst='ceramic' "
-"text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
-"text='Recorder'</ref> vocation."
-msgstr ""
-"De geschreven taal van de draaklingen. Neergeschreven op <ref>dst='ceramic' "
-"text='keramische'</ref> tafels door de leden van de <ref>dst='recorder' "
-"text='Annalisten'</ref>."
-
-#. [topic]: id=drakish_language
-#: data/core/encyclopedia/drakes.cfg:187
-msgid "Drakish, language"
-msgstr "Draaklings, taal"
-
-#. [topic]: id=drakish_language
-#: data/core/encyclopedia/drakes.cfg:188
-msgid "The language spoken by the drakes."
-msgstr "De taal die door de draaklingen gesproken wordt."
 
 #. [section]: id=geography
 #. [topic]: id=..geography
@@ -5965,6 +5463,390 @@ msgstr "Strijd om Wesnoth Help"
 #: src/help.cpp:3492
 msgid "Parse error when parsing help text: "
 msgstr "Fout bij het verwerken van de helptekst: "
+
+#~ msgid "Caste"
+#~ msgstr "Kaste"
+
+#, fuzzy
+#~ msgid ""
+#~ "One of the variant forms of the drake: either be a <ref>dst='unit_Drake "
+#~ "Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' "
+#~ "text='Drake Fighter'</ref>."
+#~ msgstr ""
+#~ "Afhankelijk van de speciale behandeling van het draaklingen<ref>dst='egg' "
+#~ "text='ei'</ref> kan de stam het opgroeien van het latere "
+#~ "<ref>dst='hatchling' text='drakenjong'</ref> manipuleren. Het resultaat "
+#~ "kan een <ref>dst='unit_Drake Clasher' text='Geweldenaar'</ref> of een "
+#~ "<ref>dst='unit_Drake Fighter' text='Draaklingkrijger'</ref> zijn."
+
+#~ msgid "Aerie"
+#~ msgstr "Nest"
+
+#, fuzzy
+#~ msgid ""
+#~ "A very large castle-like structure that is home to a <ref>dst='flight' "
+#~ "text='flight'</ref>. It contains the <ref>dst='breeding_pen' "
+#~ "text='breeding pens'</ref>."
+#~ msgstr ""
+#~ "Een versterkt draaklingenhuis. Het bevat de <ref>dst='breeding_pen' "
+#~ "text='broedplaatsen'</ref>."
+
+#~ msgid "Breeding Pen"
+#~ msgstr "Broedplaats"
+
+#, fuzzy
+#~ msgid ""
+#~ "The portion of an <ref>dst='aerie' text='aerie'</ref> where the "
+#~ "nonsentient <ref>dst='breeder' text='Breeders'</ref> live under the "
+#~ "<ref>dst='dominant' text='Dominant'</ref>’s eye."
+#~ msgstr ""
+#~ "Waar de ongevoelige <ref>dst='breeder' text='broedsters'</ref> leven "
+#~ "onder het oog van de <ref>dst='dominant' text='Leider'</ref>."
+
+#~ msgid "Breeding Cycle"
+#~ msgstr "Broedcyclus"
+
+#, fuzzy
+#~ msgid ""
+#~ "The time that passes between one <ref>dst=egg text='egg'</ref> laying to "
+#~ "the next."
+#~ msgstr ""
+#~ "De tijd tussen het leggen van één <ref>dst=egg text='Ei'</ref> en het "
+#~ "volgende."
+
+#, fuzzy
+#~| msgid "Great Ocean"
+#~ msgid "World Ocean"
+#~ msgstr "Grote Oceaan"
+
+#, fuzzy
+#~ msgid ""
+#~ "The World Ocean is the name of the open seas that surround the "
+#~ "archipelago of <ref>dst='morogor' text='Morogor'</ref>. The drakes "
+#~ "believe it to end at the <ref>dst='abyss' text='Abyss'</ref>, a vast and "
+#~ "deadly waterfall."
+#~ msgstr ""
+#~ "De Grote Oceaan is de naam van de open zeeën die de <ref>dst='morogor' "
+#~ "text='Morogor'</ref> archipel omringen. De draaklingen geloven dat hij "
+#~ "eindigt bij de <ref>dst='abyss' tex='Afgrond'</ref>, een onmetelijke en "
+#~ "dodelijke waterval."
+
+#, fuzzy
+#~| msgid "Great Continent"
+#~ msgid "New Continent"
+#~ msgstr "Grote Continent"
+
+#, fuzzy
+#~| msgid ""
+#~| "Great Continent -- The great continent to the east of <ref>dst='morogor' "
+#~| "text='Morogor'</ref>. Its existence is unknown to the @drakes until the "
+#~| "flight of @Galun."
+#~ msgid ""
+#~ "The great continent to the east of <ref>dst='morogor' text='Morogor'</"
+#~ "ref>. Its existence is unknown to the drakes until the flight of Galun."
+#~ msgstr ""
+#~ "Grote Continent -- Het grote continent in het oosten van "
+#~ "<ref>dst='morogor' text='Morogor'</ref>. Het bestaan ervan was niet "
+#~ "geweten bij de @draaklingen tot aan de vlucht van @Galun."
+
+#~ msgid "Abyss"
+#~ msgstr "Afgrond"
+
+#, fuzzy
+#~ msgid ""
+#~ "In the cosmology of the Drakes, a vast and deadly waterfall where the "
+#~ "ocean falls off the world-disc."
+#~ msgstr ""
+#~ "Een onmetelijke en dodelijke waterval waar de oceaan van de wereldschijf "
+#~ "valt."
+
+#~ msgid "Spiral Path"
+#~ msgstr "Spiraalpad"
+
+#, fuzzy
+#~ msgid ""
+#~ "A quasi-secret organization among the drakes devoted to avoiding a "
+#~ "Malthusian final war. See also <ref>dst='straight_path' text='Straight "
+#~ "Path'</ref>"
+#~ msgstr ""
+#~ "Een quasi-geheime organisatie onder de draaklingen die het doel heeft om "
+#~ "de laatste Malthusische oorlog te vermijden. Zie ook "
+#~ "<ref>dst='straight_path' text='Rechte Pad'</ref>"
+
+#~ msgid "Straight Path"
+#~ msgstr "Rechte Pad"
+
+#, fuzzy
+#~ msgid ""
+#~ "The drakish tradition of perpetual expansion and conquest. This term is "
+#~ "mostly used by the members of the <ref>dst='spiral_path' text='Spiral "
+#~ "Path'</ref>."
+#~ msgstr ""
+#~ "'Zij die het rechte pad volgen', kortweg 'Het Rechte Pad' is de naam voor "
+#~ "de traditie onder de draaklingen van eeuwigdurende expansie en "
+#~ "verovering. Deze term wordt meestal gebruikt door de leden van het "
+#~ "<ref>dst='spiral_path' text='Spiraalpad'</ref>."
+
+#~ msgid "Dominant"
+#~ msgstr "Leider"
+
+#, fuzzy
+#~ msgid ""
+#~ "The <ref>dst='aspirant' text='Aspirant'</ref> that emerges as the drake "
+#~ "leader, the only drake in the tribe that is allowed to reproduce with the "
+#~ "<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
+#~ "privileges on others."
+#~ msgstr ""
+#~ "De <ref>dst='aspirant' text='Aspirant'</ref> die draaklingenleider wordt, "
+#~ "de enige draakling van de stam die zich mag voortplanten met de "
+#~ "<ref>dst='breeders' text='broedsters'</ref>. Zelden verleent hij "
+#~ "privileges aan anderen om zich voort te planten."
+
+#~ msgid "Vulcaniad"
+#~ msgstr "Vulcaniad"
+
+#~ msgid ""
+#~ "The (irregular) period between consecutive eruptions of "
+#~ "<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
+#~ "<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
+#~ msgstr ""
+#~ "De (onregelmatige) periode tussen de opeenvolgende erupties van de "
+#~ "<ref>dst='mount_morogor' text='Morogorberg'</ref>. De "
+#~ "<ref>dst='long_count' text='Lange Telling'</ref>-kalender is erop "
+#~ "gebaseerd."
+
+#~ msgid "Recorder"
+#~ msgstr "Annalist"
+
+#, fuzzy
+#~ msgid ""
+#~ "A Recorder is a Drakish scrollkeeper who has mastered the drakish "
+#~ "<ref>dst='drakish_script' text='script'</ref>. The recorders are the only "
+#~ "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: "
+#~ "they recruit their members from all of the other castes."
+#~ msgstr ""
+#~ "De Draaklingse historicus die het Draaklingse <ref>dst='drakisch_script' "
+#~ "text='schrift'</ref> geleerd heeft. De annalisten zijn de enige "
+#~ "<ref>dst='caste' text='kaste'</ref> van de Draaklingen die niet "
+#~ "biologisch bepaald wordt: zij rekruteren hun leden vanuit alle kastes."
+
+#~ msgid "Laying"
+#~ msgstr "Het leggen"
+
+#, fuzzy
+#~ msgid ""
+#~ "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
+#~ msgstr ""
+#~ "een periode in de <ref>dst='breeding_cycle' text='broedcyclus'</ref>."
+
+#~ msgid "Hatching"
+#~ msgstr "Uit het ei komen"
+
+#~ msgid "Hatchling"
+#~ msgstr "Jong"
+
+#, fuzzy
+#~ msgid ""
+#~ "A young drake that has not yet seen another generation hatch. The younger "
+#~ "of the current generation of hatchlings are the most aggressive is the "
+#~ "behavior of the <ref>dst='flight' text='flight'</ref>."
+#~ msgstr ""
+#~ "Een jonge draakling die nog geen andere generatie drakenjongen gezien "
+#~ "heeft. De jongsten van de huidige generatie draaklingenjongen zijn de "
+#~ "meest agressieve. Dit gedrag noemt men de <ref>dst='flight' "
+#~ "text='vlucht'</ref>."
+
+#~ msgid "Fledgling"
+#~ msgstr "Jaarling"
+
+#~ msgid ""
+#~ "A young drake that has seen another generation hatch. If the "
+#~ "<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
+#~ "they start the <ref>dst='swarming' text='Swarming'</ref>."
+#~ msgstr ""
+#~ "Een jonge draak die al een andere generatie draken gezien heeft. Als de "
+#~ "<ref>dst='flight' text='vlucht'</ref> zich het verlies van een generatie "
+#~ "kan veroorloven starten ze het <ref>dst='swarming' text='uitzwermen'</"
+#~ "ref>."
+
+#~ msgid "Breeder"
+#~ msgstr "Broedster"
+
+#~ msgid ""
+#~ "The female drake. They are rare since <ref>dst='egg' text='eggs'</ref> "
+#~ "that become breeders have to be handled with extra care. The number of "
+#~ "breeders is also limited by the amounts of non-breeders around, since "
+#~ "breeders can't take care of their food for themselves when laying. Drake "
+#~ "breeders become fertile after the next <ref>dst='hatching' "
+#~ "text='hatching'</ref>."
+#~ msgstr ""
+#~ "Een vrouwelijke draakling. Ze zijn zeldzaam zodat de <ref>dst='egg' "
+#~ "text='eieren'</ref> waaruit broedsters zullen komen met extra zorg "
+#~ "behandeld moeten worden. Het aantal broedsters is ook beperkt door het "
+#~ "aantal niet-broedsters, aangezien broedsters niet voor hun eigen voedsel "
+#~ "kunnen zorgen wanneer ze eieren leggen. Draaklingenbroedsters worden "
+#~ "vruchtbaar na de volgende keer dat draaklingenjongen <ref>dst='hatching' "
+#~ "text='uit het ei komen'</ref>."
+
+#~ msgid "Egg, Drake"
+#~ msgstr "Ei, Draakling"
+
+#, fuzzy
+#~ msgid ""
+#~ "The <ref>dst=caste text='caste'</ref> the <ref>dst='hatchling' "
+#~ "text='Hatchling'</ref> will belongs to is determined by the time it is "
+#~ "laid and to some extent the ambient temperature."
+#~ msgstr ""
+#~ "De <ref>dst='caste' text='kaste'</ref> waaraan de <ref>dst='hatchling' "
+#~ "text='jongen die uit het ei komen'</ref> zullen toebehoren wordt bepaald "
+#~ "door het moment waarop het ei gelegd is."
+
+#~ msgid "Flight"
+#~ msgstr "Vlucht"
+
+#~ msgid ""
+#~ "Tribe of Drakes, lives in an <ref>dst='aerie' text='Aerie'</ref>, "
+#~ "controlling a hunting range. Each tribe has one <ref>dst='dominant' "
+#~ "text='Dominant'</ref>, who confers mating privileges."
+#~ msgstr ""
+#~ "Draaklingenstam, leeft in een <ref>dst='aerie' text='Nest'</ref>, "
+#~ "beheerst een jachtgebied. Elke stam heeft een <ref>dst='dominant' "
+#~ "text='Leider'</ref>, die de paarrechten verdeelt."
+
+#~ msgid "Aspirant"
+#~ msgstr "Aspirant"
+
+#~ msgid ""
+#~ "Male drake that has passed through a hormonal metamorphosis that makes "
+#~ "him able to mate with the <ref>dst='breeder' text='breeders'</ref>. The "
+#~ "secretion of the hormone is caused by hunt and combat actions in which "
+#~ "the drake is involved."
+#~ msgstr ""
+#~ "Mannelijke draakling die door een hormonale metamorfose gegaan is die hem "
+#~ "in staat hebben gesteld om te paren met <ref>dst='breeder' "
+#~ "text='broedsters'</ref>. De afscheiding van de hormonen wordt veroorzaakt "
+#~ "door de jacht en gevechtsacties waarin de draakling betrokken geweest is."
+
+#~ msgid "Ascendant"
+#~ msgstr "Volgroeide"
+
+#~ msgid ""
+#~ "The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
+#~ msgstr ""
+#~ "De draaklingennaam voor een echte <ref>dst='unit_Fire Dragon' "
+#~ "text='draak'</ref>."
+
+#~ msgid "Intendant"
+#~ msgstr "Luitenant"
+
+#, fuzzy
+#~ msgid ""
+#~ "One of the <ref>dst='aspirant' text='Aspirant'</ref> lieutenants of a "
+#~ "<ref>dst='dominant' text='Dominant'</ref>. Traditionally he has one of "
+#~ "each <ref>dst=caste text='caste'</ref> other than his own. Additional "
+#~ "'Intendants' are sometimes designated for special duties. Intendants are "
+#~ "likeliest to be granted mating privileges, especially after a notable "
+#~ "service."
+#~ msgstr ""
+#~ "Een van de <ref>dst='aspirant' text='Aspirant'</ref>-luitenanten van een "
+#~ "<ref>dst='dominant' text='Leider'</ref>. Volgens de traditie heeft die er "
+#~ "een van elke <ref>dst='caste' text='kaste'</ref> behalve zijn eigen. "
+#~ "Extra 'Luitenanten' worden soms aangewezen voor speciale opdrachten. "
+#~ "Luitenanten krijgen het vaakst paarrechten, vooral na een belangrijke "
+#~ "dienst."
+
+#~ msgid "Swarm"
+#~ msgstr "Zwerm"
+
+#~ msgid ""
+#~ "The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
+#~ "<ref>dst='aerie' text='aerie'</ref> to found a new one."
+#~ msgstr ""
+#~ "De <ref>dst='swarmlings' text='Zwermers'</ref> die het <ref>dst='aerie' "
+#~ "text='nest'</ref> verlaten hebben om een nieuwe te stichten."
+
+#~ msgid "Swarming"
+#~ msgstr "Uitzwermen"
+
+#, fuzzy
+#~| msgid ""
+#~| " The <ref>dst='flight' text='flight'</ref> for a new drake "
+#~| "<ref>dst='aerie' text='aerie'</ref> that recurs every "
+#~| "<ref>dst='breeding_cycle' text='breeding cycle</ref>. See "
+#~| "<ref>dst='swarm' text='Swarm'</ref>"
+#~ msgid ""
+#~ " The <ref>dst='flight' text='flight'</ref> for a new drake "
+#~ "<ref>dst='aerie' text='aerie'</ref> that recurs every "
+#~ "<ref>dst='breeding_cycle' text='breeding cycle'</ref>. See "
+#~ "<ref>dst='swarm' text='Swarm'</ref>"
+#~ msgstr ""
+#~ "De <ref>dst='flight' text='vlucht'</ref> voor een nieuw "
+#~ "draken<ref>dst='aerie' text='nest'</ref> die zich herhaalt iedere "
+#~ "<ref>dst='breeding_cycle' text='broedcyclus'</ref>. Zie <ref>dst='swarm' "
+#~ "text='Zwerm'</ref>."
+
+#~ msgid "Runners"
+#~ msgstr "Renners"
+
+#~ msgid "Drakish term for escaped slaves hunted as game."
+#~ msgstr ""
+#~ "Draaklingterm voor ontsnapte slaven die door de Draaklingen achtervolgd "
+#~ "worden om opgepeuzeld te worden."
+
+#~ msgid "Mount Morogor"
+#~ msgstr "Morogorberg"
+
+#~ msgid ""
+#~ "Volcanic mountain on the central island of the archipelago "
+#~ "<ref>dst='morogor' text='Morogor'</ref>."
+#~ msgstr ""
+#~ "Vulkanische berg op het centrale eiland van de <ref>dst='morogor' "
+#~ "text='Morogor'</ref>archipel."
+
+#~ msgid "Long Count"
+#~ msgstr "Lange Telling"
+
+#~ msgid ""
+#~ "The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> "
+#~ "and <ref>dst=breeding_cycle text='Breeding cycles'</ref>."
+#~ msgstr ""
+#~ "De draaklingkalender gebaseerd op de <ref>dst='vulcaniad' "
+#~ "text='Vulcaniad'</ref> en <ref>dst='breeding_cycle' text='Broedcyclus'</"
+#~ "ref>."
+
+#~ msgid "Long Pig"
+#~ msgstr "Lang varken"
+
+#~ msgid "Ceramics"
+#~ msgstr "Keramiek"
+
+#~ msgid ""
+#~ "The drakes work metal, but are are masters in the craftsmanship of making "
+#~ "ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
+#~ "generate the amount of heat to cure the pieces to full strength."
+#~ msgstr ""
+#~ "De draaklingen bewerken metaal, maar zijn meesters in het ambacht van het "
+#~ "maken van keramiek. Enkel de <ref>dst='unit_Drake Burner' "
+#~ "text='Vlammendraaklingen'</ref> kunnen genoeg hitte produceren om de "
+#~ "voorwerpen op volle sterkte te maken."
+
+#~ msgid "Drakish, script"
+#~ msgstr "Draaklings, schrift"
+
+#~ msgid ""
+#~ "The scripted language of the drakes. Stored on <ref>dst='ceramic' "
+#~ "text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
+#~ "text='Recorder'</ref> vocation."
+#~ msgstr ""
+#~ "De geschreven taal van de draaklingen. Neergeschreven op "
+#~ "<ref>dst='ceramic' text='keramische'</ref> tafels door de leden van de "
+#~ "<ref>dst='recorder' text='Annalisten'</ref>."
+
+#~ msgid "Drakish, language"
+#~ msgstr "Draaklings, taal"
+
+#~ msgid "The language spoken by the drakes."
+#~ msgstr "De taal die door de draaklingen gesproken wordt."
 
 #~ msgid "Flat"
 #~ msgstr "Vlak"
