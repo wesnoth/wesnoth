@@ -190,7 +190,7 @@ build targets include the individual binaries:
 
 You can make the following special build targets:
 
-    all = wesnoth exploder cutter wesnothd campaignd (*).
+    all = wesnoth exploder cutter wesnothd campaignd test (*).
     TAGS = build tags for Emacs (*).
     wesnoth-deps.png = project dependency graph
     install = install all executables that currently exist, and any data needed
