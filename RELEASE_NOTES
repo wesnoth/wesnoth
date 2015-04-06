@@ -235,6 +235,9 @@ end
 
 print = make_print()
 [/code]
+
+Additionally, you can use "log-debug=scripting/lua" at command line, and all lua print commands will be routed to the debug log.
+
 [/list]
 [/section]
 
