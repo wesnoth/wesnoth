@@ -285,6 +285,7 @@ void command_executor::set_button_state(display& disp) {
 	BOOST_FOREACH(const theme::action& action, disp.get_theme().actions()) {
 
 		gui::button* button = disp.find_action_button(action.get_id());
+		if (!button) continue;
 		bool enabled = false;
 		int i = 0;
 		BOOST_FOREACH(const std::string& command, action.items()) {
