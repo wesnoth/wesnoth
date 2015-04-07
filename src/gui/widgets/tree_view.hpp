@@ -76,7 +76,7 @@ public:
 		return selected_item_;
 	}
 
-	void set_selection_change_callback(boost::function<void()> callback)
+	void set_selection_change_callback(boost::function<void(twidget&)> callback)
 	{
 		selection_change_callback_ = callback;
 	}
@@ -113,7 +113,7 @@ private:
 
 	ttree_view_node* selected_item_;
 
-	boost::function<void()> selection_change_callback_;
+	boost::function<void(twidget&)> selection_change_callback_;
 
 	/**
 	 * Resizes the content.

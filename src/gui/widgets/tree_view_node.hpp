@@ -184,6 +184,11 @@ public:
 
 	const ttree_view& tree_view() const;
 
+	ttree_view_node& get_child_at(int index);
+	/**
+		calculates the node indicies that we need to get from the root node to this node.
+	*/
+	std::vector<int> describe_path();
 private:
 	/** See @ref twidget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;

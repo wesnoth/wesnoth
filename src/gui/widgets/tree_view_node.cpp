@@ -478,6 +478,7 @@ unsigned ttree_view_node::place(const unsigned indention_step_size,
 
 	if(!is_root_node()) {
 		origin.x += indention_step_size;
+		assert(width >= indention_step_size);
 		width -= indention_step_size;
 	}
 	origin.y += best_size.y;
@@ -615,7 +616,7 @@ void ttree_view_node::signal_handler_label_left_button_click(
 		tree_view().selected_item_ = this;
 
 		if(tree_view().selection_change_callback_) {
-			tree_view().selection_change_callback_();
+			tree_view().selection_change_callback_(tree_view());
 		}
 	}
 }
@@ -666,4 +667,28 @@ const std::string& ttree_view_node::get_control_type() const
 	return type;
 }
 
+ttree_view_node& ttree_view_node::get_child_at(int index)
+{
+	assert(static_cast<size_t>(index) < children_.size());
+	return children_[index];
+}
+
+std::vector<int> ttree_view_node::describe_path()
+{
+	if(is_root_node()) {
+		return std::vector<int>();
+	}
+	else {
+		std::vector<int> res = parent_node_->describe_path();
+		const boost::ptr_vector<ttree_view_node>& parents_childs = parent_node_->children_;
+		for(int i = 0, size = parents_childs.size(); i < size; ++i) {
+			if(&parents_childs[i] == this) {
+				res.push_back(i);
+				return res;
+			}
+		}
+		assert(!"tree_view_node was not found in parent nodes children");
+		throw "assertion ignored"; //To silence 'no return value in this codepath' warning.
+	}
+}
 } // namespace gui2

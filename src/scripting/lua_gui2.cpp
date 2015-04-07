@@ -25,6 +25,8 @@
 #include "gui/widgets/selectable.hpp"   // for tselectable_
 #include "gui/widgets/slider.hpp"       // for tslider
 #include "gui/widgets/text_box.hpp"     // for ttext_box
+#include "gui/widgets/tree_view.hpp"
+#include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/widget.hpp"       // for twidget
 #include "gui/widgets/window.hpp"       // for twindow
 
@@ -151,6 +153,47 @@ static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
 					l->add_page(dummy);
 			}
 			w = &l->page_grid(v - 1);
+		}
+		else if (gui2::ttree_view *tv = dynamic_cast<gui2::ttree_view *>(w))
+		{
+			gui2::ttree_view_node& tvn = tv->get_root_node();
+			if(lua_isnumber(L, i))
+			{
+				int v = lua_tointeger(L, i);
+				if (v < 1)
+					goto error_call_destructors_1;
+				int n = tvn.size();
+				if (v > n) {
+					goto error_call_destructors_1;
+				}
+				w = &tvn.get_child_at(v - 1);
+
+			}
+			else
+			{
+				std::string m = luaL_checkstring(L, i);
+				w = tvn.find(m, false);
+			}
+		}
+		else if (gui2::ttree_view_node *tvn = dynamic_cast<gui2::ttree_view_node *>(w))
+		{
+			if(lua_isnumber(L, i))
+			{
+				int v = lua_tointeger(L, i);
+				if (v < 1)
+					goto error_call_destructors_1;
+				int n = tvn->size();
+				if (v > n) {
+					goto error_call_destructors_1;
+				}
+				w = &tvn->get_child_at(v - 1);
+
+			}
+			else
+			{
+				std::string m = luaL_checkstring(L, i);
+				w = tvn->find(m, false);
+			}
 		}
 		else
 		{
@@ -291,6 +334,13 @@ int intf_get_dialog_value(lua_State *L)
 		lua_pushinteger(L, s->get_value());
 	} else if (gui2::tprogress_bar *p = dynamic_cast<gui2::tprogress_bar *>(w)) {
 		lua_pushinteger(L, p->get_percentage());
+	} else if (gui2::ttree_view *tv = dynamic_cast<gui2::ttree_view *>(w)) {
+		std::vector<int> path = tv->selected_item()->describe_path();
+		lua_createtable(L, path.size(), 0);
+		for(size_t i =0; i < path.size(); ++i) {
+			lua_pushinteger(L, path[i] + 1);
+			lua_rawseti(L, -2, i + 1);
+		}
 	} else
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 
@@ -374,6 +424,9 @@ int intf_set_dialog_callback(lua_State *L)
 		l->set_callback_value_change(&dialog_callback);
 	}
 #endif
+	else if (gui2::ttree_view *tv = dynamic_cast<gui2::ttree_view *>(w)) {
+		tv->set_selection_change_callback(&dialog_callback);
+	}
 	else
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 
@@ -453,6 +506,32 @@ int show_gamestate_inspector(CVideo & video, const vconfig & cfg)
 {
 	gui2::tgamestate_inspector inspect_dialog(cfg);
 	inspect_dialog.show(video);
+	return 0;
+}
+
+/**
+ * Sets a widget's state to active or inactive
+ * - Arg 1: string, the type (id of [node_definition]) of teh new node.
+ * - Arg 3: integer, where to insert the new node.
+ * - Args 3..n: path of strings and integers.
+ */
+
+int intf_add_dialog_tree_node(lua_State *L)
+{
+	const std::string node_type = luaL_checkstring(L, 1);
+	const int insert_pos = luaL_checkinteger(L, 2);
+	static const std::map<std::string, string_map> data;
+	gui2::twidget *w = find_widget(L, 3, false);
+	gui2::ttree_view_node *twn = dynamic_cast<gui2::ttree_view_node *>(w);
+	if (!twn) {
+		if(gui2::ttree_view* tw = dynamic_cast<gui2::ttree_view *>(w)) {
+			twn = &tw->get_root_node();
+		}
+		else {
+			return luaL_argerror(L, lua_gettop(L), "unsupported widget");
+		}
+	}
+	twn->add_child(node_type, data, insert_pos);
 	return 0;
 }
 
