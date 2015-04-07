@@ -46,11 +46,12 @@ WESNOTH_SERIES="1.12"
 # os.path.realpath gets the full path of this script,
 # while removing any symlink
 # This allows users to create a link to the app on their desktop
+# os.path.normpath allows Windows users to see their standard path separators
 APP_DIR,APP_NAME=os.path.split(os.path.realpath(sys.argv[0]))
 upper_dir=APP_DIR.split(os.sep)
 upper_dir.pop()
 WESNOTH_DATA_DIR=os.sep.join(upper_dir)
-WESNOTH_CORE_DIR=os.path.join(WESNOTH_DATA_DIR,"core")
+WESNOTH_CORE_DIR=os.path.normpath(os.path.join(WESNOTH_DATA_DIR,"core"))
 
 def wrap_elem(line):
     """If the supplied line contains spaces, return it wrapped between double quotes"""
@@ -153,29 +154,35 @@ If the widget isn't active, some options do not appear"""
         else:
             Menu.__init__(self,None,tearoff=0)
         self.widget=widget
+        # MacOS uses a key called Command, instead of the usual Control used by Windows and Linux
+        # so prepare the accelerator strings accordingly
+        # For future reference, Mac also uses Option instead of Alt
+        # also, a little known fact about Python is that it *does* support using the ternary operator
+        # like in this case
+        control_key = "Command" if self.tk.call('tk', 'windowingsystem') == "aqua" else "Ctrl"
         # str is necessary because in some instances a Tcl_Obj is returned instead of a string
         if str(widget.cget('state')) in (ACTIVE,NORMAL): # do not add if state is readonly or disabled
             self.add_command(label="Cut",
                              image=ICONS['cut'],
                              compound=LEFT,
-                             accelerator='Ctrl+X',
+                             accelerator='%s+X' % (control_key),
                              command=lambda: self.widget.event_generate("<<Cut>>"))
         self.add_command(label="Copy",
                          image=ICONS['copy'],
                          compound=LEFT,
-                         accelerator='Ctrl+C',
+                         accelerator='%s+C' % (control_key),
                          command=lambda: self.widget.event_generate("<<Copy>>"))
         if str(widget.cget('state')) in (ACTIVE,NORMAL):
             self.add_command(label="Paste",
                              image=ICONS['paste'],
                              compound=LEFT,
-                             accelerator='Ctrl+V',
+                             accelerator='%s+V' % (control_key),
                              command=lambda: self.widget.event_generate("<<Paste>>"))
         self.add_separator()
         self.add_command(label="Select all",
                          image=ICONS['select_all'],
                          compound=LEFT,
-                         accelerator='Ctrl+A',
+                         accelerator='%s+A' % (control_key),
                          command=self.on_select_all)
         self.tk_popup(x,y) # self.post does not destroy the menu when clicking out of it
     def on_select_all(self):
@@ -184,10 +191,11 @@ If the widget isn't active, some options do not appear"""
             # adding a SEL tag to a chunk of text causes it to be selected
             self.widget.tag_add(SEL,"1.0",END)
         elif isinstance(self.widget,Entry) or \
-             isinstance(self.widget,Spinbox) or \
              isinstance(self.widget,Combobox):
-            # if the widget is active or readonly, just fire the correct event
-            self.widget.event_generate("<<SelectAll>>")
+            # apparently, the <<SelectAll>> event doesn't fire correctly if the widget is readonly
+            self.widget.select_range(0,END)
+        elif isinstance(self.widget,Spinbox):
+            self.widget.selection("range",0,END)
 
 class EntryContext(Entry):
     def __init__(self,parent,**kwargs):
@@ -199,30 +207,39 @@ Use like any other Entry widget"""
             Entry.__init__(self,parent,**kwargs)
         # on Mac the right button fires a Button-2 event, or so I'm told
         # some mice don't even have two buttons, so the user is forced
-        # to use Control + the only button
+        # to use Command + the only button
         # bear in mind that I don't have a Mac, so this point may be bugged
         # bind also the context menu key, for those keyboards that have it
         # that is, most of the Windows and Linux ones (however, in Win it's
         # called App, while on Linux is called Menu)
         # Mac doesn't have a context menu key on its keyboards, so no binding
-        # finally, bind also the Shift+F10 shortcut (same as Menu/App key)
+        # bind also the Shift+F10 shortcut (same as Menu/App key)
         # the call to tk windowingsystem is justified by the fact
         # that it is possible to install X11 over Darwin
+        # finally, bind the "select all" key shortcut
+        # again, Mac uses Command instead of Control
         windowingsystem = self.tk.call('tk', 'windowingsystem')
         if windowingsystem == "win32": # Windows, both 32 and 64 bit
             self.bind("<Button-3>",self.on_context_menu)
             self.bind("<KeyPress-App>",self.on_context_menu)
             self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+            # for some weird reason, using a KeyPress binding to set the selection on
+            # a readonly Entry or disabled Text doesn't work, but a KeyRelease does
+            self.bind("<Control-KeyRelease-a>", self.on_select_all)
         elif windowingsystem == "aqua": # MacOS with Aqua
             self.bind("<Button-2>",self.on_context_menu)
             self.bind("<Control-Button-1>",self.on_context_menu)
+            self.bind("<Command-KeyRelease-a>", self.on_select_all)
         elif windowingsystem == "x11": # Linux, FreeBSD, Darwin with X11
             self.bind("<Button-3>",self.on_context_menu)
             self.bind("<KeyPress-Menu>",self.on_context_menu)
             self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+            self.bind("<Control-KeyRelease-a>", self.on_select_all)
     def on_context_menu(self,event):
         if str(self.cget('state')) != DISABLED:
             ContextMenu(event.x_root,event.y_root,event.widget)
+    def on_select_all(self,event):
+        self.select_range(0,END)
 
 class SpinboxContext(Spinbox):
     def __init__(self,parent,**kwargs):
@@ -238,16 +255,21 @@ Use like any other Spinbox widget"""
             self.bind("<Button-3>",self.on_context_menu)
             self.bind("<KeyPress-App>",self.on_context_menu)
             self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+            self.bind("<Control-KeyRelease-a>", self.on_select_all)
         elif windowingsystem == "aqua":
             self.bind("<Button-2>",self.on_context_menu)
             self.bind("<Control-Button-1>",self.on_context_menu)
+            self.bind("<Command-KeyRelease-a>", self.on_select_all)
         elif windowingsystem == "x11":
             self.bind("<Button-3>",self.on_context_menu)
             self.bind("<KeyPress-Menu>",self.on_context_menu)
             self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+            self.bind("<Control-KeyRelease-a>", self.on_select_all)
     def on_context_menu(self,event):
         if str(self.cget('state')) != DISABLED:
             ContextMenu(event.x_root,event.y_root,event.widget)
+    def on_select_all(self,event):
+        self.selection("range",0,END)
 
 class EnhancedText(Text):
     def __init__(self,*args,**kwargs):
@@ -263,17 +285,22 @@ Use it like any other Text widget"""
             self.bind("<Button-3>",self.on_context_menu)
             self.bind("<KeyPress-App>",self.on_context_menu)
             self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+            self.bind("<Control-KeyRelease-a>", self.on_select_all)
         elif windowingsystem == "aqua": # MacOS with Aqua
             self.bind("<Button-2>",self.on_context_menu)
             self.bind("<Control-Button-1>",self.on_context_menu)
+            self.bind("<Command-KeyRelease-a>", self.on_select_all)
         elif windowingsystem == "x11": # Linux, FreeBSD, Darwin with X11
             self.bind("<Button-3>",self.on_context_menu)
             self.bind("<KeyPress-Menu>",self.on_context_menu)
             self.bind("<Shift-KeyPress-F10>",self.on_context_menu)
+            self.bind("<Control-KeyRelease-a>", self.on_select_all)
     def on_context_menu(self,event):
         # the disabled state in a Text widget is pretty much
         # like the readonly state in Entry, hence no state check
         ContextMenu(event.x_root,event.y_root,event.widget)
+    def on_select_all(self,event):
+        self.tag_add(SEL,"1.0",END)
 
 class SelectDirectory(LabelFrame):
     def __init__(self,parent,textvariable=None,**kwargs):
@@ -346,7 +373,8 @@ It comes complete with a context menu and a directory selection screen"""
                 directory=askdirectory(initialdir=".")
         
         if directory:
-            self.textvariable.set(directory)
+            # use os.path.normpath, so on Windows the usual backwards slashes are correctly shown
+            self.textvariable.set(os.path.normpath(directory))
     def on_clear(self):
         self.textvariable.set("")
 
@@ -903,10 +931,16 @@ class MainFrame(Frame):
         self.output_frame.grid(row=3,
                                column=0,
                                sticky=N+E+S+W)
+        # in former versions of this script, I disabled the text widget at its creation
+        # it turned out that doing so on Aqua (Mac OS) causes the widget to ignore
+        # any additional binding set after its disabling
+        # the subclass EnhancedText first calls the constructor of the original Text widget
+        # and only later it creates its own bindings
+        # so first create the widget, and disable it later
         self.text=EnhancedText(self.output_frame,
                                wrap=WORD,
-                               state=DISABLED,
                                takefocus=True)
+        self.text.configure(state=DISABLED)
         self.text.grid(row=0,
                        column=0,
                        sticky=N+E+S+W)
@@ -988,7 +1022,14 @@ Please select a directory or disable the "Skip core directory" option""")
         if not self.wmllint_tab.skip_variable.get():
             wmllint_command_string.append(WESNOTH_CORE_DIR)
         if os.path.exists(umc_dir): # add-on exists
-            wmllint_command_string.append(umc_dir)
+            # the realpaths are here just in case that the user
+            # attempts to fool the script by feeding it a symlink
+            if os.path.realpath(WESNOTH_CORE_DIR) in os.path.realpath(umc_dir):
+                showwarning("Warning","""You selected the core directory or one of its subdirectories in the add-on selection box.
+
+wmllint will be run only on the Wesnoth core directory""")
+            else:
+                wmllint_command_string.append(umc_dir)
         elif not umc_dir: # path does not exists because the box was left empty
             showwarning("Warning","""You didn't select a directory.
 
@@ -1042,7 +1083,14 @@ wmllint will be run only on the Wesnoth core directory""")
         wmlscope_command_string.append(WESNOTH_CORE_DIR)
         umc_dir=self.dir_variable.get()
         if os.path.exists(umc_dir): # add-on exists
-            wmlscope_command_string.append(umc_dir)
+            # the realpaths are here just in case that the user
+            # attempts to fool the script by feeding it a symlink
+            if os.path.realpath(WESNOTH_CORE_DIR) in os.path.realpath(umc_dir):
+                showwarning("Warning","""You selected the core directory or one of its subdirectories in the add-on selection box.
+
+wmlscope will be run only on the Wesnoth core directory""")
+            else:
+                wmlscope_command_string.append(umc_dir)
         elif not umc_dir: # path does not exists because the box was left empty
             showwarning("Warning","""You didn't select a directory.
 
@@ -1116,7 +1164,7 @@ Error code: {1}""".format(queue_item[0],queue_item[1]))
         if fn:
             try:
                 out=codecs.open(fn,"w","utf-8")
-                out.write(self.text.get(1.0,END))
+                out.write(self.text.get(1.0,END)[:-1]) # exclude the double endline at the end
                 out.close()
             except IOError as error: # in case that we attempt to write without permissions
                 showerror("Error","""Error while writing to:
@@ -1132,7 +1180,7 @@ Error code: {1}
         self.text.configure(state=DISABLED)
 
     def on_about(self):
-        showinfo("About Maintenance tools GUI","""© Elvish_Hunter, 2014
+        showinfo("About Maintenance tools GUI","""© Elvish_Hunter, 2014-2015
 
 Part of The Battle for Wesnoth project and released under the GNU GPL v2 license
 
