@@ -336,9 +336,9 @@ bool ttree_view_node::disable_click_dismiss() const
 	return true;
 }
 
-tpoint ttree_view_node::get_current_size() const
+tpoint ttree_view_node::get_current_size(bool assume_visible) const
 {
-	if(parent_node_ && parent_node_->is_folded()) {
+	if(parent_node_ && parent_node_->is_folded() && !assume_visible) {
 		return tpoint(0, 0);
 	}
 
@@ -396,7 +396,7 @@ tpoint ttree_view_node::get_unfolded_size() const
 			continue;
 		}
 
-		tpoint node_size = node.get_unfolded_size();
+		tpoint node_size = node.get_current_size(true);
 
 		size.y += node_size.y;
 		size.x = std::max(size.x, node_size.x);

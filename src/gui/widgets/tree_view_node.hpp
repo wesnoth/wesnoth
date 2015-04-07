@@ -245,8 +245,8 @@ private:
 
 	tpoint calculate_best_size(const int indention_level,
 							   const unsigned indention_step_size) const;
-
-	tpoint get_current_size() const;
+	/** @param assume_visible: if false (default) it will return 0 if the parent node is folded*/
+	tpoint get_current_size(bool assume_visible = false) const;
 	tpoint get_folded_size() const;
 	tpoint get_unfolded_size() const;
 
