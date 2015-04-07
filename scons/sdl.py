@@ -85,27 +85,27 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None, header_file = Non
         return False
 
 def CheckOgg(context):
-    test_program = '''
+    test_file = File(u"data/core/music/main_menu.ogg").rfile().abspath.decode("UTF-8")
+    test_program = u'''
     #include <SDL_mixer.h>
     #include <stdlib.h>
 
     int main(int argc, char **argv)
-    {
-        Mix_Music* music = Mix_LoadMUS("$TESTFILE");
-        if (music == NULL) {
+    {{
+        Mix_Music* music = Mix_LoadMUS("{0}");
+        if (music == NULL) {{
             exit(1);
-        }
+        }}
         exit(0);
-    }
+    }}
 \n
-'''
-    test_program = context.env.Clone(TESTFILE = File("data/core/music/main_menu.ogg").rfile().abspath).subst(test_program)
+'''.format(test_file)
     #context.env.AppendUnique(LIBS = "SDL_mixer")
     context.Message("Checking for Ogg Vorbis support in SDL... ")
     if context.env["host"]:
         context.Result("n/a (cross-compile)")
         return True
-    (result, output) = context.TryRun(test_program, ".c")
+    (result, output) = context.TryRun(test_program, u".c")
     if result:
         context.Result("yes")
         return True
@@ -114,29 +114,29 @@ def CheckOgg(context):
         return False
 
 def CheckPNG(context):
-    test_program = '''
+    test_file = File(u"images/buttons/button_normal/button_H22-pressed.png").rfile().abspath.decode("utf-8")
+    test_program = u'''
     #include <SDL_image.h>
     #include <stdlib.h>
 
     int main(int argc, char **argv)
-    {
+    {{
             SDL_RWops *src;
-            char *testimage = "$TESTFILE";
+            char *testimage = "{0}";
 
             src = SDL_RWFromFile(testimage, "rb");
-            if (src == NULL) {
+            if (src == NULL) {{
                     exit(2);
-            }
+            }}
             exit(!IMG_isPNG(src));
-    }
+    }}
 \n
-'''
-    test_program = context.env.Clone(TESTFILE = File("images/buttons/button_normal/button_H22-pressed.png").rfile().abspath).subst(test_program)
+'''.format(test_file)
     context.Message("Checking for PNG support in SDL... ")
     if context.env["host"]:
         context.Result("n/a (cross-compile)")
         return True
-    (result, output) = context.TryRun(test_program, ".c")
+    (result, output) = context.TryRun(test_program, u".c")
     if result:
         context.Result("yes")
         return True
@@ -145,29 +145,29 @@ def CheckPNG(context):
         return False
 
 def CheckJPG(context):
-    test_program = '''
+    test_file = File(u"data/core/images/maps/background.jpg").rfile().abspath.decode("utf-8")
+    test_program = u'''
     #include <SDL_image.h>
     #include <stdlib.h>
 
     int main(int argc, char **argv)
-    {
+    {{
             SDL_RWops *src;
-            char *testimage = "$TESTFILE";
+            char *testimage = "{0}";
 
             src = SDL_RWFromFile(testimage, "rb");
-            if (src == NULL) {
+            if (src == NULL) {{
                     exit(2);
-            }
+            }}
             exit(!IMG_isJPG(src));
-    }
+    }}
 \n
-'''
-    test_program = context.env.Clone(TESTFILE = File("data/core/images/maps/background.jpg").rfile().abspath).subst(test_program)
+'''.format(test_file)
     context.Message("Checking for JPG support in SDL... ")
     if context.env["host"]:
         context.Result("n/a (cross-compile)")
         return True
-    (result, output) = context.TryRun(test_program, ".c")
+    (result, output) = context.TryRun(test_program, u".c")
     if result:
         context.Result("yes")
         return True
