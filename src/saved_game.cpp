@@ -193,6 +193,11 @@ void saved_game::expand_scenario()
 			// A hash has to be generated using an unmodified scenario data.
 			mp_settings_.hash = scenario.hash();
 
+			// Add addon_id information if it exists.
+			if (!scenario["addon_id"].empty() && scenario["require_scenario"].to_bool(false)) {
+				mp_settings_.update_addon_requirements(config_of("id",scenario["addon_id"])("version", scenario["addon_version"])("min_version", scenario["addon_min_version"]));
+			}
+
 			update_label();
 			set_defaults();
 		}

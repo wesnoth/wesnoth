@@ -400,8 +400,8 @@ void game_config_manager::load_addons_cfg()
 			config umc_cfg;
 			cache_.get_config(addon.main_cfg, umc_cfg);
 
-			// Annotate "era" and "modification" tags with addon_id info
-			const char * tags_with_addon_id [] = { "era", "modification", NULL };
+			// Annotate "era", "modification", and scenario tags with addon_id info
+			const char * tags_with_addon_id [] = { "era", "modification", "multiplayer", "scenario", NULL };
 
 			for (const char ** type = tags_with_addon_id; *type; type++)
 			{
