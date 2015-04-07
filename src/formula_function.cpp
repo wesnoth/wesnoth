@@ -1127,9 +1127,21 @@ public:
 
 typedef std::map<std::string, base_function_creator*> functions_map;
 
+// Takes ownership of the pointers, deleting them at program termination to
+// suppress valgrind false positives
+struct functions_map_manager {
+	functions_map map_;
+	~functions_map_manager() {
+		BOOST_FOREACH (functions_map::value_type & v, map_) {
+			delete(v.second);
+		}
+	}
+};
+
 functions_map& get_functions_map() {
 
-	static functions_map functions_table;
+	static functions_map_manager map_man;
+	functions_map & functions_table = map_man.map_;
 
 #ifdef HAVE_VISUAL_LEAK_DETECTOR
 	VLDDisable();
