@@ -99,19 +99,25 @@ def CheckOgg(context):
     }
 \n
 '''
-    test_program = context.env.Clone(TESTFILE = File("data/core/music/main_menu.ogg").rfile().abspath).subst(test_program)
+    test_program1 = context.env.Clone(TESTFILE = File("data/core/music/main_menu.ogg").rfile().abspath).subst(test_program)
     #context.env.AppendUnique(LIBS = "SDL_mixer")
     context.Message("Checking for Ogg Vorbis support in SDL... ")
     if context.env["host"]:
         context.Result("n/a (cross-compile)")
         return True
-    (result, output) = context.TryRun(test_program, ".c")
+    (result, output) = context.TryRun(test_program1, ".c")
     if result:
         context.Result("yes")
         return True
     else:
-        context.Result("no")
-        return False
+        test_program2 = context.env.Clone(TESTFILE = "data/core/music/main_menu.ogg").subst(test_program)
+        (result, output) = context.TryRun(test_program2, ".c")
+        if result:
+            context.Result("yes")
+            return True
+        else:
+            context.Result("no")
+            return False
 
 def CheckPNG(context):
     test_program = '''
@@ -131,18 +137,24 @@ def CheckPNG(context):
     }
 \n
 '''
-    test_program = context.env.Clone(TESTFILE = File("images/buttons/button_normal/button_H22-pressed.png").rfile().abspath).subst(test_program)
+    test_program1 = context.env.Clone(TESTFILE = File("images/buttons/button_normal/button_H22-pressed.png").rfile().abspath).subst(test_program)
     context.Message("Checking for PNG support in SDL... ")
     if context.env["host"]:
         context.Result("n/a (cross-compile)")
         return True
-    (result, output) = context.TryRun(test_program, ".c")
+    (result, output) = context.TryRun(test_program1, ".c")
     if result:
         context.Result("yes")
         return True
     else:
-        context.Result("no")
-        return False
+        test_program2 = context.env.Clone(TESTFILE = "images/buttons/button_normal/button_H22-pressed.png").subst(test_program)
+        (result, output) = context.TryRun(test_program2, ".c")
+        if result:
+            context.Result("yes")
+            return True
+        else:
+            context.Result("no")
+            return False
 
 def CheckJPG(context):
     test_program = '''
@@ -162,18 +174,24 @@ def CheckJPG(context):
     }
 \n
 '''
-    test_program = context.env.Clone(TESTFILE = File("data/core/images/maps/background.jpg").rfile().abspath).subst(test_program)
+    test_program1 = context.env.Clone(TESTFILE = File("data/core/images/maps/background.jpg").rfile().abspath).subst(test_program)
     context.Message("Checking for JPG support in SDL... ")
     if context.env["host"]:
         context.Result("n/a (cross-compile)")
         return True
-    (result, output) = context.TryRun(test_program, ".c")
+    (result, output) = context.TryRun(test_program1, ".c")
     if result:
         context.Result("yes")
         return True
     else:
-        context.Result("no")
-        return False
+        test_program2 = context.env.Clone(TESTFILE = "data/core/images/maps/background.jpg").subst(test_program)
+        (result, output) = context.TryRun(test_program2, ".c")
+        if result:
+            context.Result("yes")
+            return True
+        else:
+            context.Result("no")
+            return False
 
 config_checks = { 'CheckSDL' : CheckSDL,
                   'CheckOgg' : CheckOgg,
