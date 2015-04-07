@@ -798,7 +798,6 @@ REGISTER_MOD_PARSER(NEG, args)
 			// but this is the threshold value required
 			// to fully invert a channel
 			return new negative_modification(-1,-1,-1);
-			break;
 		case 1:
 			try {
 				int threshold = lexical_cast<int>(params[0]);
@@ -814,7 +813,6 @@ REGISTER_MOD_PARSER(NEG, args)
 				ERR_DP << "unsupported argument value in ~NEG() function" << std::endl;
 				return NULL;
 			}
-			break;
 		case 3:
 			try {
 				int thresholdRed = lexical_cast<int>(params[0]);
@@ -832,11 +830,12 @@ REGISTER_MOD_PARSER(NEG, args)
 				ERR_DP << "unsupported argument value in ~NEG() function" << std::endl;
 				return NULL;
 			}
-			break;
 		default:
 			ERR_DP << "~NEG() requires 0, 1 or 3 arguments" << std::endl;
 			return NULL;
 	}
+
+	return NULL;
 }
 
 // Plot Alpha
