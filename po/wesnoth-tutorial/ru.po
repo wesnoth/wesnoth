@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: comp\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 18:57+0100\n"
+"POT-Creation-Date: 2015-04-05 05:07-0300\n"
 "PO-Revision-Date: 2014-11-15 12:03+0300\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,47 +20,65 @@ msgstr ""
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:39
-msgid ""
-"\n"
-"<big>Click a mouse button or press the spacebar to continue...</big>"
+#. [lua]: wml_actions.select_character
+#: data/campaigns/tutorial/lua/character_selection.lua:26
+msgid "Select Character"
 msgstr ""
-"\n"
-"<big>Щёлкните мышкой или нажмите пробел для продолжения...</big>"
 
-#. [tutorial]: id=tutorial
-#. Hello, translators! The tutorial is meant to be a bit funny at the start,
-#. welcoming new players. Please keep the friendly fun feeling!
-#. If you have any questions, ask in the forums or in the #wesnoth-dev channel on the Freenode IRC network.
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:49
-msgid "Wesnoth Tutorial Part I"
-msgstr "Введение в Веснот, часть I"
+#. [lua]: wml_actions.select_character
+#: data/campaigns/tutorial/lua/character_selection.lua:37
+#, fuzzy
+#| msgid "Who would you like to play?"
+msgid "Who do you want to play?"
+msgstr "Кем бы вы хотели играть?"
 
-#. [command]
-#. [option]: speaker=narrator
+#. [lua]: wml_actions.select_character
 #. [side]: type=Fighter, id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:82
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:175
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:177
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:356
+#: data/campaigns/tutorial/lua/character_selection.lua:68
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:34
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:30
 msgid "Konrad"
 msgstr "Конрад"
 
-#. [event]
+#. [lua]: wml_actions.select_character
+#: data/campaigns/tutorial/lua/character_selection.lua:77
+#: data/campaigns/tutorial/lua/character_selection.lua:95
+msgid "Li’sar"
+msgstr "Лисар"
+
+#. [tutorial]: id=tutorial
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:9
+#, fuzzy
+#| msgid "Wesnoth Tutorial Part I"
+msgid "Wesnoth Tutorial — Part I"
+msgstr "Введение в Веснот, часть I"
+
+#. [side]: type=Fighter, id=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:30
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:26
+msgid "team_name^Student"
+msgstr ""
+
 #. [unit]: id=Delfador, type=Elder Mage
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:140
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:147
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:74
 msgid "Delfador"
 msgstr "Делфадор"
 
 #. [objectives]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:151
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:116
+#, fuzzy
+#| msgid ""
+#| "You will learn the basics of:\n"
+#| "Movement\n"
+#| "Attacking\n"
+#| "Healing\n"
+#| "Recruiting"
 msgid ""
 "You will learn the basics of:\n"
-"Movement\n"
-"Attacking\n"
-"Healing\n"
-"Recruiting"
+"• <small>Movement</small>\n"
+"• <small>Attacking</small>\n"
+"• <small>Healing</small>\n"
+"• <small>Recruiting</small>"
 msgstr ""
 "Вам предстоит изучить основы:\n"
 " движения\n"
@@ -69,193 +87,174 @@ msgstr ""
 " вербовки"
 
 #. [objective]: condition=win
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:157
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:122
 msgid "Destroy a fierce enemy"
 msgstr "Уничтожьте свирепого врага"
 
 #. [objective]: condition=lose
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:161
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:126
 msgid "Get yourself killed"
 msgstr "Если дадите себя убить"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:173
-msgid "Who would you like to play?"
-msgstr "Кем бы вы хотели играть?"
-
-#. [command]
-#. [option]: speaker=narrator
-#. [unit]: type=Fighteress, id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:182
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:184
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:197
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:431
-msgid "Li’sar"
-msgstr "Лисар"
-
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:213
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:219
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:146
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:154
 msgid "Welcome to Wesnoth!"
 msgstr "Добро пожаловать в Веснот!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:214
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:148
+#, fuzzy
+#| msgid ""
+#| "For this tutorial, you are playing Konrad.\n"
+#| "You are standing in the keep, and your mentor Delfador is on the east "
+#| "side of the river."
 msgid ""
-"For this tutorial, you are playing Konrad.\n"
-"You are standing in the keep, and your mentor Delfador is on the east side "
-"of the river."
+"For this tutorial, you are playing Konrad. You are standing on the keep, and "
+"your mentor Delfador is on the east side of the river. You can move the "
+"mouse over a unit to see a summary of its abilities and stats on the right "
+"of the screen."
 msgstr ""
 "В этом введении Вы играете за Конрада.\n"
 "Вы находитесь в цитадели, а Ваш наставник Делфадор — на восточном берегу "
 "реки."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:220
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:156
+#, fuzzy
+#| msgid ""
+#| "For this tutorial, you are playing Li’sar.\n"
+#| "You are standing in the keep, and your mentor Delfador is on the east "
+#| "side of the river."
 msgid ""
-"For this tutorial, you are playing Li’sar.\n"
-"You are standing in the keep, and your mentor Delfador is on the east side "
-"of the river."
+"For this tutorial, you are playing Li’sar. You are standing on the keep, and "
+"your mentor Delfador is on the east side of the river. you can move the "
+"mouse over a unit to see a summary of its abilities and stats on the right "
+"of the screen."
 msgstr ""
 "В этом введении Вы играете за Лисар.\n"
 "Вы находитесь в цитадели, а Ваш наставник Делфадор — на восточном берегу "
 "реки."
 
 #. [event]
-#. [event]: id=student moves 0}
-#. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:225
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:411
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:533
-msgid "Left click on Konrad"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:162
+#, fuzzy
+#| msgid "Left click on Konrad"
+msgid "Click on Konrad"
 msgstr "Кликните левой кнопкой мышки на Конраде"
 
 #. [event]
-#. [event]: id=student moves 0}
-#. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:226
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:412
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:534
-msgid "Left click on Li’sar"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:164
+#, fuzzy
+#| msgid "Left click on Li’sar"
+msgid "Click on Li’sar"
 msgstr "Кликните левой кнопкой мышки на Лисар"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:244
-msgid ""
-"<big>You have selected Konrad.</big>\n"
-"The places he can move to are highlighted."
-msgstr ""
-"<big>Вы выбрали Конрада.</big>\n"
-"На карте подсвечены места, до которых он может дойти."
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:198
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:206
+#, fuzzy
+#| msgid "Advancement"
+msgid "Movement"
+msgstr "Продвижение"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:251
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:200
 msgid ""
-"<big>You have selected Li’sar.</big>\n"
-"The places she can move to are highlighted."
+"When you select a unit, in this case Konrad, the places he can move to are "
+"highlighted. All units have a certain number of <i>movement points</i>, "
+"which dictate how many hexes that unit can move per turn. Normally, moving "
+"one hex uses one movement point, but moving across different types of hexes, "
+"or <i>terrains</i>, can use up more. You will learn more about that later. "
+"To move, simply click on your destination. You can press <b>u</b> to undo a "
+"move if you move to the wrong place."
 msgstr ""
-"<big>Вы выбрали Лисар.</big>\n"
-"На карте подсвечены места, до которых она может дойти."
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:208
+msgid ""
+"When you select a unit, in this case Li’sar, the places she can move to are "
+"highlighted. All units have a certain number of <i>movement points</i>, "
+"which dictate how many hexes that unit can move per turn. Normally, moving "
+"one hex uses one movement point, but moving across different types of hexes, "
+"or <i>terrains</i>, can use up more. You will learn more about that later. "
+"To move, simply click on your destination. You can press <b>u</b> to undo a "
+"move if you move to the wrong place."
+msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:257
-msgid "Here"
-msgstr "Сюда"
-
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:263
-msgid ""
-"Move Konrad next to Delfador by clicking on the tile marked <b>Here</b>."
-msgstr ""
-"Поставьте Конрада рядом с Делфадором. Для этого кликните на поле, на котором "
-"написано <b>Сюда</b>."
-
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:267
-msgid ""
-"Move Li’sar next to Delfador by clicking on the tile marked <b>Here</b>."
-msgstr ""
-"Поставьте Лисар рядом с Делфадором. Для этого кликните на поле, на котором "
-"написано <b>СЮДА</b>."
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:214
+#, fuzzy
+#| msgid "Move Konrad to the keep"
+msgid "Move Konrad next to Delfador."
+msgstr "Приведите Конрада в цитадель"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:272
-msgid "Left click on tile labeled <b>Here</b>"
-msgstr "Кликните левой кнопкой мышки по полю, на котором написано <b>Сюда</b>"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:216
+#, fuzzy
+#| msgid "Move Li’sar to the keep"
+msgid "Move Li’sar next to Delfador."
+msgstr "Приведите Лисар в цитадель"
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:297
-msgid "Oops!"
-msgstr "Ой!"
-
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:299
-msgid ""
-"You moved to the wrong place! After this message, you can press <b>u</b> to "
-"undo, then try again."
-msgstr ""
-"Вы пошли не туда! После этого сообщения нажмите <b>u</b>, чтобы отменить "
-"ход, а затем попробуйте снова."
-
-#. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:321
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:233
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "Доброе утро, Делфадор! Не пора ли на кого-нибудь напасть?"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:325
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:238
 msgid "Um, well..."
 msgstr "Ну, ладно..."
 
-#. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:329
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:243
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr "Вы нашли мне орка, а? Или тролля?"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:333
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:248
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "Тихо! Сейчас я призову тебе противника..."
 
-#. [event]: id=student moves 0}
-#. [unit_type]: id=Quintain, race=mechanical
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:361
-#: data/campaigns/tutorial/units/Quintain.cfg:4
-msgid "Quintain"
-msgstr "Манекен"
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:365
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:295
 msgid "... this quintain!"
 msgstr "... этот манекен!"
 
-#. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:369
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:300
 msgid "A quintain? You want me to fight a dummy?"
 msgstr "Манекен? Вы предлагаете мне сражаться с чучелом?"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:376
-msgid "You have 32 hitpoints and a sword, boy. I’m fairly sure you’ll win."
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:306
+#, fuzzy
+#| msgid "You have 32 hitpoints and a sword, boy. I’m fairly sure you’ll win."
+msgid ""
+"You have $student_hp hitpoints and a sword, boy. I’m fairly sure you’ll win."
 msgstr ""
 "Мальчик мой, у тебя 32 единицы здоровья и меч в придачу. Уверен: ты победишь."
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:381
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:311
+#, fuzzy
+#| msgid ""
+#| "female^Young lady, you have 32 hitpoints and a sword. I’m fairly sure "
+#| "you’ll win."
 msgid ""
-"female^Young lady, you have 32 hitpoints and a sword. I’m fairly sure you’ll "
-"win."
+"female^Young lady, you have $student_hp hitpoints and a sword. I’m fairly "
+"sure you’ll win."
 msgstr ""
 "Юная леди, у Вас 32 единицы здоровья и меч в придачу. Уверен: Вы победите."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:389
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:395
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:319
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:326
 msgid "Attacking"
 msgstr "Нападение"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:391
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:321
 msgid ""
 "To attack the quintain, first select the attacker (Konrad) then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
@@ -266,7 +265,7 @@ msgstr ""
 "нападёт."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:396
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:328
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar) then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
@@ -276,110 +275,116 @@ msgstr ""
 "мишень (манекен). Вы увидите описание атаки. Когда нажмёте <b>ОК</b>, Лисар "
 "нападёт."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:407
-msgid "Click on the quintain to attack it"
-msgstr "Кликните на манекене, чтобы на него напасть"
-
-#. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:443
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:343
 msgid "Hey! This quintain fights back!"
 msgstr "Эй! Манекен даёт сдачи!"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:447
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:348
 msgid "Hmm, perhaps we should have started with a doll."
 msgstr "Хмм, возможно, стоило начать с детской куклы."
 
-#. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:451
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:353
 msgid "Should I retreat?"
 msgstr "Может, отступить?"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:455
+#. [message]: speaker=Delfador
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:358
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:656
 msgid "Good idea!"
 msgstr "Хорошая мысль!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:460
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:464
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:364
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:371
 msgid "Crowns"
 msgstr "Короны"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:461
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:366
 msgid ""
-"The tiny metal crown above Delfador means you will lose the game if he is "
-"killed. You will also lose the game if your leader (Konrad) is killed."
+"The tiny golden crown above your leader (Konrad) indicates he is a side "
+"leader. In most scenarios, you will lose if your leader is killed. Be sure "
+"to keep him safe!"
 msgstr ""
-"Небольшая корона рядом с Делфадором означает, что вы проиграете битву, если "
-"его убьют. Вы также проиграете, если погибнет ваш лидер (Конрад)."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:465
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:373
 msgid ""
-"The tiny metal crown above Delfador means you will lose the game if he is "
-"killed. You will also lose the game if your leader (Li’sar) is killed."
+"The tiny golden crown above your leader (Li’sar) indicates she is a side "
+"leader. In most scenarios, you will lose if your leader is killed. Be sure "
+"to keep her safe!"
 msgstr ""
-"Небольшая корона рядом с Делфадором означает, что вы проиграете битву, если "
-"его убьют. Вы также проиграете, если погибнет ваш лидер (Лисар)."
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:477
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:383
 msgid ""
 "Unfortunately, you’ve used up your turn attacking the quintain. The quintain "
 "now gets to attack."
 msgstr ""
 "К сожалению, ты потратил свой ход, нападая на манекен. Теперь его очередь."
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:482
-msgid ""
-"female^Unfortunately, you’ve used up your turn attacking the quintain. The "
-"quintain now gets to attack."
-msgstr ""
-"К сожалению, ты потратила свой ход, нападая на манекен. Теперь его очередь."
-
-#. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:488
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:388
 msgid "The <i>dummy</i> gets a turn?"
 msgstr "<i>Чучело</i> может ходить?"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:493
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:393
+#, fuzzy
+#| msgid ""
+#| "Yes. It’s a magical quintain.\n"
+#| "Now, this quintain gets 5 chances to hit you for 3 damage each. If it "
+#| "hits every time, you’ll drop from $student_hp to $future_hp hit points. "
+#| "Brace yourself!"
 msgid ""
-"Yes. It’s a magical quintain.\n"
-"Now, this quintain gets 5 chances to hit you for 3 damage each. If it hits "
-"every time, you’ll drop from $student_hp to $future_hp hit points. Brace "
-"yourself!"
+"Yes. It’s a magical quintain! It gets 5 chances to hit you for 3 damage "
+"each. If it hits every time, you’ll drop from $student_hp to "
+"$($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
 "Да, это же волшебный манекен!\n"
 "Он попробует ударить тебя 5 раз, нанося с каждым попаданием 3 единицы урона. "
 "Если он попадёт все пять раз, твоё здоровье уменьшится с $student_hp до "
 "$future_hp очков здоровья. Защищайся!"
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:497
-msgid "Click on the <b>End Turn</b> button in the bottom right of the screen"
-msgstr "Нажмите на кнопку <b>Конец хода</b> в правом нижнем углу"
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:400
+msgid "Turns"
+msgstr ""
 
-#. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:518
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:402
+msgid ""
+"Every turn, each side in a scenario gets a chance to make their move. Once "
+"you’ve completed everything you wish to do this turn, click on the <b>End "
+"Turn</b> button in the bottom right of the screen. The other teams, whether "
+"controlled by the AI or other human players, will then make their move. Some "
+"scenarios must be completed in a certain number of turns. You can see what "
+"turn it is, and any applicable turn limit, next to the flag icon at the top "
+"of the screen."
+msgstr ""
+
+#. [event]
+#. [event]: (id=Delfador) 14 8}, (id=Delfador) facing nw}
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:405
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:451
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:536
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:331
+msgid "End your turn"
+msgstr "Закончите свой ход"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:420
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr ""
 "Ай! Мне нужно подлечиться! У меня осталось всего лишь $student_hp очков "
 "здоровья!"
 
-#. [event]
-#. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:520
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:510
-msgid "Village"
-msgstr "Деревня"
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:525
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:425
 msgid ""
 "There is a village on the other side of the river. Visiting villages is a "
 "good idea, and ending your turn in one will heal you. To the village!"
@@ -387,36 +392,38 @@ msgstr ""
 "На другой стороне реки есть деревня. Хорошо бы её посетить, и завершить в "
 "ней свой ход, чтобы излечиться. В деревню!"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:530
-msgid ""
-"female^There is a village on the other side of the river. Visiting villages "
-"is a good idea, and ending your turn in one will heal you. To the village!"
-msgstr ""
-"На другой стороне реки есть деревня. Хорошо бы её посетить, и завершить в "
-"ней свой ход, чтобы излечиться. В деревню!"
+#. [event]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:429
+#, fuzzy
+#| msgid "Move Konrad to capture a village"
+msgid "Move Konrad to the nearest village"
+msgstr "Передвиньте Конрада в деревню"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:543
-msgid "Click on the village to move Konrad"
-msgstr "Кликните по деревне, чтобы отправить туда Конрада"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:544
-msgid "Click on the village to move Li’sar"
-msgstr "Кликните по деревне, чтобы отправить туда Лисар"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:431
+#, fuzzy
+#| msgid "Move Li’sar to capture a village"
+msgid "Move Li’sar to the nearest village"
+msgstr "Передвиньте Лисар в деревню"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:562
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:444
 msgid "Villages"
 msgstr "Деревни"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:564
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:446
+#, fuzzy
+#| msgid ""
+#| "You have captured a village! It now flies your flag and has been added to "
+#| "your total village count. (The house icon at the top of the screen shows "
+#| "how many villages you currently control.) Villages provide the gold "
+#| "needed to recruit units. Each turn, you gain two gold plus one for every "
+#| "village you own."
 msgid ""
-"You have captured a village! It now flies your flag and has been added to "
-"your total village count. (The house icon at the top of the screen shows how "
-"many villages you currently control.) Villages provide the gold needed to "
+"You have captured a village! It now flies your colors and has been added to "
+"your total village count (the house icon at the top of the screen shows how "
+"many villages you currently control). Villages provide the gold needed to "
 "recruit units. Each turn, you gain two gold plus one for every village you "
 "own."
 msgstr ""
@@ -426,86 +433,73 @@ msgstr ""
 "нанимать солдат. В начале каждого хода вы будете получать две золотых "
 "монеты, и ещё по одной с каждой деревни, который владеете."
 
-#. [else]
-#. [event]
-#. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:568
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:700
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:733
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:873
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:925
-msgid "Click on the <b>End Turn</b> button"
-msgstr "Нажмите на кнопку <b>Конец хода</b>"
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:604
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:466
 msgid ""
-"You’re about to be healed by $hp_difference hitpoints, but it’s time to "
-"summon some help against that quintain."
+"Since you started your turn on a village, you regained some health! Villages "
+"heal units 8 hitpoints per turn, or enough to top off their health, "
+"whichever is less. In your case, you regained $student_hp_heal_amount "
+"hitpoints."
+msgstr ""
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:471
+#, fuzzy
+#| msgid ""
+#| "You’re about to be healed by $hp_difference hitpoints, but it’s time to "
+#| "summon some help against that quintain."
+msgid "Now, it’s time to summon some help against that quintain."
 msgstr ""
 "Сейчас ты восстановишь $hp_difference единиц здоровья. Но мне кажется, что "
 "тебе понадобится помощь против этого манекена."
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:609
-msgid ""
-"female^You’re about to be healed by $hp_difference hitpoints, but it’s time "
-"to summon some help against that quintain."
-msgstr ""
-"Сейчас ты восстановишь $hp_difference единиц здоровья. Но мне кажется, что "
-"тебе понадобится помощь против этого манекена."
-
-#. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:615
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:476
 msgid "I’ll recruit some elves!"
 msgstr "Я завербую нескольких эльфов!"
 
-#. [event]
-#. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:617
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1034
-msgid "Keep"
-msgstr "Лагерь"
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:622
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:481
+#, fuzzy
+#| msgid ""
+#| "A splendid idea. You can recruit two units if you return to the keep. You "
+#| "have plenty of gold for that."
 msgid ""
-"A splendid idea. You can recruit two units if you return to the keep. You "
+"A splendid idea! It’s probably best not to attempt attacking the quintain "
+"this turn. Instead, you could return to the keep and recruit two units; you "
 "have plenty of gold for that."
 msgstr ""
 "Великолепная мысль! Вернись в свой лагерь, и ты сможешь нанять двух солдат. "
 "Золота тебе хватит."
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:627
-msgid ""
-"female^A splendid idea. You can recruit two units if you return to the keep. "
-"You have plenty of gold for that."
-msgstr ""
-"Великолепная мысль! Вернись в цитадель своего лагеря, и ты сможешь нанять "
-"двух солдат. Золота тебе хватит."
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:633
+#. [event]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:485
 msgid "Move Konrad to the keep"
 msgstr "Приведите Конрада в цитадель"
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:634
+#. [event]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:487
 msgid "Move Li’sar to the keep"
 msgstr "Приведите Лисар в цитадель"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:651
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:505
 msgid "Recruiting"
 msgstr "Вербовка"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:653
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:507
+#, fuzzy
+#| msgid ""
+#| "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> into the castle "
+#| "tiles around it by right-clicking and selecting <b>Recruit</b>. This time "
+#| "you will only be given one type of unit to choose: the Elvish Fighter."
 msgid ""
-"Whenever you’re on a <i>keep</i>, you can <i>recruit</i> into the castle "
-"tiles around it by right-clicking and selecting <b>Recruit</b>. This time "
-"you will only be given one type of unit to choose: the Elvish Fighter."
+"Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the castle "
+"tiles around it by right-clicking and selecting <b>Recruit</b>. Note that "
+"newly recruited units cannot act the turn you recruit them; you will be able "
+"to use them next turn. This scenario you have only one type of unit to "
+"choose from: the Elvish Fighter."
 msgstr ""
 "Когда вы в <i>цитадели</i>, вы можете <i>нанимать</i> воинов на окружающих "
 "клетках замка. Для этого нажмите правую кнопку мышки, и выберите пункт "
@@ -513,79 +507,63 @@ msgstr ""
 "воинов."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:657
-msgid "Right click on a castle tile and select <b>Recruit</b>"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:510
+#, fuzzy
+#| msgid "Left click on an Elvish Fighter"
+msgid "Recruit two Elvish Fighters"
+msgstr "Кликните левой кнопкой на воине"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:529
+msgid "Traits"
 msgstr ""
-"Кликните правой кнопкой мышки на клетке замка и выберите <b>Вербовать</b>"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:691
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:724
-msgid "New Recruits"
-msgstr "Новые бойцы"
-
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:693
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:726
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:531
 msgid ""
-"New units cannot act in the turn they appear; you will gain control of them "
-"next turn.\n"
-"After this dialog, you can move the mouse over a unit to see a summary of "
-"its abilities on the right of the screen."
+"Be sure to examine the <i>traits</i> of your new recruits. They are listed "
+"under its race in the sidebar. Traits can subtly affect how you use your "
+"troops. For example, units with the <i>quick</i> trait can move a extra hex "
+"each turn, or units with the <i>intelligent</i> trait require 20% less "
+"experience to level up. A full list of all possible traits may be found in "
+"help."
 msgstr ""
-"Бойцы, которых Вы только что завербовали, на этом ходу ничего сделать не "
-"смогут; Вы сможете управлять ими на следующем ходу.\n"
-"Закрыв этот диалог, вы можете навести мышь на бойца и увидеть его описание "
-"на панели справа."
 
-#. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:705
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:738
-msgid "Right click on the other castle tile and recruit another unit"
-msgstr ""
-"Кликните правой кнопкой мышки на другой клетке замка и завербуйте ещё бойца"
-
-#. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:760
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:557
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgstr ""
 "Эй, этот манекен только что восстановил два очка здоровья! Пора наконец "
 "напасть на него!"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:764
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:562
 msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr ""
 "Верно — боец, который целый ход ничего не делает, постепенно восстанавливает "
 "здоровье."
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:770
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:567
+#, fuzzy
+#| msgid ""
+#| "But before you send your fighters against the quintain, you should know "
+#| "they have two kinds of attack..."
 msgid ""
-"Had the quintain survived your onslaught, it would have regained two "
-"hitpoints. If a unit doesn’t do anything for a turn, it will slowly heal."
-msgstr ""
-"Если бы манекен выжил после твоей атаки, то он бы восстановил две единицы "
-"здоровья. Боец, который целый ход ничего не делает, постепенно "
-"восстанавливает здоровье."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:784
-msgid ""
-"But before you send your fighters against the quintain, you should know they "
+"Before you send your fighters against the quintain, you should know they "
 "have two kinds of attack..."
 msgstr ""
 "Но прежде, чем ты отправишь своих воинов против манекена, обрати внимание, "
 "что у них есть два типа атаки..."
 
-#. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:788
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:572
 msgid "I’ll tell them to use the one that does the most damage!"
 msgstr "Я велю им использовать ту, что наносит больше урона!"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:792
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:577
 msgid ""
 "And which would that be? The sword (5–4) or the bow (3–3)? I suppose you’ll "
 "find out..."
@@ -593,78 +571,45 @@ msgstr ""
 "И каков же будет твой приказ? Меч (5-4) или лук (3-3)? Думаю, ты "
 "разберёшься..."
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:794
-msgid "Left click on an Elvish Fighter"
-msgstr "Кликните левой кнопкой на воине"
+#. [event]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:580
+#, fuzzy
+#| msgid "Attack the orc with an Archer"
+msgid "Attack the quintain with your fighters"
+msgstr "Нападите на орка лучником."
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:795
-msgid "End your turn and attack again."
-msgstr "Завершите свой ход, а затем атакуйте снова."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:813
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:598
+#, fuzzy
+#| msgid ""
+#| "You wouldn’t do anything stupid like charging that quintain yourself "
+#| "again, now would you?\n"
+#| "Use the fighters you recruited first; they’ll be a lot of help."
 msgid ""
 "You wouldn’t do anything stupid like charging that quintain yourself again, "
-"now would you?\n"
-"Use the fighters you recruited first; they’ll be a lot of help."
+"now would you? Use the fighters you recruited first; they’ll be a lot of "
+"help."
 msgstr ""
 "Ты ведь не станешь делать глупостей, например, снова в одиночку нападать на "
 "манекен, так ведь?\n"
 "Пусть этим займутся нанятые тобой воины; они здорово облегчат тебе задачу."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:825
-msgid "Left click on the quintain to attack it."
-msgstr "Чтобы атаковать манекен, выберите его левой кнопкой мыши."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:862
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:869
-msgid " The ranged attack would have been safer."
-msgstr "Безопаснее было бы напасть издали."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:862
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:869
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:881
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:627
+#, fuzzy
+#| msgid ""
+#| "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a <i>melee</"
+#| "i> attack. The quintain defended with its melee attack (3–5)."
 msgid ""
 "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a <i>melee</i> "
-"attack. The quintain defended with its melee attack (3–5)."
+"attack. The quintain defended with its melee attack (3–5). The ranged attack "
+"(the bow) would have been safer."
 msgstr ""
 "Твой эльф использовал меч (5-4, или 5 единиц урона, 4 атаки), то есть "
 "<i>ближнюю</i> атаку. Манекен вступил в ближний бой с атакой 3-5."
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:869
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:921
-msgid ""
-"\n"
-"End your turn, then attack again."
-msgstr ""
-"\n"
-"Завершите свой ход, а затем атакуйте снова."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:881
-msgid ""
-"\n"
-"You should tell the other elf to use the bow."
-msgstr ""
-"\n"
-"Скажи другому эльфу использовать лук."
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:885
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:934
-msgid "Attack with the other elf"
-msgstr "Атакуйте другим эльфом"
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:914
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:921
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:932
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:639
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (3–3; or 3 damage, 3 "
 "attacks). The quintain has no ranged attack, only a melee attack, so it "
@@ -674,23 +619,23 @@ msgstr ""
 "<i>дальнюю</i> атаку. У манекена нет дальнего оружия, только ближнее, так "
 "что он не смог защищаться."
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:953
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:654
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "Продолжай нападать обоими эльфами, пока не одолеешь манекен!"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:967
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:669
 msgid "Maybe you should recruit another elf?"
 msgstr "А не нанять ли тебе ещё эльфа?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:971
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:679
 msgid "Unit Descriptions"
 msgstr "Описание бойца"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:973
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:681
 msgid ""
 "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
@@ -698,12 +643,12 @@ msgstr ""
 "выберите <b>Описание бойца</b>."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:994
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:691
 msgid "Protect Your Troops"
 msgstr "Защищайте своих солдат"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:996
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:693
 msgid ""
 "Remember to pull back wounded units into villages and recruit more if "
 "needed. Take special care of units with the highest <i>experience points "
@@ -714,12 +659,12 @@ msgstr ""
 "они могут скоро продвинуться на следующий уровень и стать сильнее."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1013
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:703
 msgid "Support"
 msgstr "Поддержка"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1015
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:705
 msgid ""
 "Each village you control will <i>support</i> one unit for free. After that, "
 "each unit costs you one gold per turn."
@@ -728,19 +673,31 @@ msgstr ""
 "же бойцов больше, чем деревень, то каждый следующий боец будет стоить вам "
 "одну золотую монету за ход."
 
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:715
+msgid "You had really better finish off that quintain."
+msgstr ""
+
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1030
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:725
 msgid "Advancement"
 msgstr "Продвижение"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1032
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:727
+#, fuzzy
+#| msgid ""
+#| "When a unit gains enough experience points (the <i>experience bar</i>, if "
+#| "present, is on the <b>right</b> of the <i>hitpoints bar</i>), it will go "
+#| "up a level. Elvish Fighters have two advancement options, and you will be "
+#| "able to choose which one you want. However, second level units cost twice "
+#| "as much to support as first level units."
 msgid ""
 "When a unit gains enough experience points (the <i>experience bar</i>, if "
-"present, is on the <b>right</b> of the <i>hitpoints bar</i>), it will go up "
-"a level. Elvish Fighters have two advancement options, and you will be able "
-"to choose which one you want. However, second level units cost twice as much "
-"to support as first level units."
+"present, is on the <b>right</b> of the <i>hitpoints bar</i>), it will gain a "
+"level. Elvish Fighters have two advancement options, and you will be able to "
+"choose which one you want. However, second level units cost twice as much to "
+"support as first level units."
 msgstr ""
 "Когда боец наберёт достаточно опыта (<i>индикатор опыта</i>, если есть, "
 "расположен <b>справа</b> от <i>индикатора здоровья</i>), он продвигается на "
@@ -749,12 +706,12 @@ msgstr ""
 "раза больше содержания, чем бойцы первого уровня."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1047
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:737
 msgid "Defenses"
 msgstr "Защита"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1050
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:740
 msgid ""
 "Whenever one of your units is selected, you’ll see varying percentages as "
 "you move the mouse over the map. The higher the percentage, the more "
@@ -769,16 +726,42 @@ msgstr ""
 "<i>магические</i>, у них 70% вероятности поразить Вас вне зависимости от "
 "того, где вы находитесь."
 
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:752
+msgid "Agh! This training is too much for me..."
+msgstr ""
+
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1075
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:779
 msgid "The quintain is destroyed, and I have gained more experience!"
 msgstr "Манекен повержен, а у меня стало больше опыта!"
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1081
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:784
+#, fuzzy
+#| msgid ""
+#| "Yes, you gain experience through battle, especially by killing an "
+#| "opponent. Gain enough experience and you’ll become more powerful.\n"
+#| "Now, Konrad, I will leave you with more dummies to practice on! After "
+#| "that, we have real work to do..."
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
-"Gain enough experience and you’ll become more powerful.\n"
+"Gain enough experience and you’ll become more powerful."
+msgstr ""
+"Да, во время битвы ты получаешь опыт, особенно если ты убьёшь противника. "
+"Если накопишь достаточно опыта, то станешь сильнее.\n"
+"Теперь, Конрад, я оставлю тебе ещё чучел — попрактикуйся! А потом будет "
+"настоящее дело..."
+
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:790
+#, fuzzy
+#| msgid ""
+#| "Yes, you gain experience through battle, especially by killing an "
+#| "opponent. Gain enough experience and you’ll become more powerful.\n"
+#| "Now, Konrad, I will leave you with more dummies to practice on! After "
+#| "that, we have real work to do..."
+msgid ""
 "Now, Konrad, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
 msgstr ""
@@ -787,11 +770,15 @@ msgstr ""
 "Теперь, Конрад, я оставлю тебе ещё чучел — попрактикуйся! А потом будет "
 "настоящее дело..."
 
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1085
+#. [message]: speaker=Delfador
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:795
+#, fuzzy
+#| msgid ""
+#| "Yes, you gain experience through battle, especially by killing an "
+#| "opponent. Gain enough experience and you’ll become more powerful.\n"
+#| "Now, Li’sar, I will leave you with more dummies to practice on! After "
+#| "that, we have real work to do..."
 msgid ""
-"Yes, you gain experience through battle, especially by killing an opponent. "
-"Gain enough experience and you’ll become more powerful.\n"
 "Now, Li’sar, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
 msgstr ""
@@ -801,12 +788,12 @@ msgstr ""
 "настоящее дело..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1124
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:869
 msgid "Note"
 msgstr "Примечание"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1126
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:871
 msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
@@ -815,197 +802,133 @@ msgstr ""
 "клетки. При должной осторожности вы сможете перебить их по одному."
 
 #. [set_menu_item]: id=skip_item
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1134
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:879
 msgid "End Scenario"
 msgstr "Завершить сценарий"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1147
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:894
+#, fuzzy
+#| msgid ""
+#| "Do you want to keep practicing? You can end this scenario at any time by "
+#| "using the <b>End Scenario</b> item in the context menu."
 msgid ""
 "Do you want to keep practicing? You can end this scenario at any time by "
-"using the <b>End Scenario</b> item in the context menu."
+"using the <b>End Scenario</b> item in the context menu to move on to the "
+"next phase of your training."
 msgstr ""
 "Хотите продолжить тренировку? Вы можете закончить этот сценарий в любой "
 "момент, выбрав пункт <b>Конец сценарий</b> в контекстном меню."
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1149
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:896
 msgid "Yes, I’m still figuring it out."
 msgstr "Да, мне не помешало бы еще поучиться."
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1152
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:899
 msgid "No, I think I’ve got it."
 msgstr "Нет, думаю, мне всё уже ясно."
 
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:918
+msgid ""
+"Well, I think I know the basics. Onwards! Maybe I can fight in a real battle "
+"next?"
+msgstr ""
+
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1193
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:934
 msgid "Victory"
 msgstr "Победа"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1194
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:936
+#, fuzzy
+#| msgid ""
+#| "After your victory notice, the map will be grayed out to indicate that "
+#| "the scenario is over, but you will still be able to examine the final "
+#| "positions and state of your troops and any surviving enemies. This is "
+#| "called <i>linger mode</i>. When you’re finished, click the <b>End "
+#| "Scenario</b> button to go on the next scenario in the campaign."
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "
-"scenario is over, but you will still be able to examine the final positions "
-"and state of your troops and any surviving enemies. This is called <i>linger "
-"mode</i>. When you’re finished, click the <b>End Scenario</b> button to go "
-"on the next scenario in the campaign."
+"scenario is over; this is called <i>linger mode</i>. You will still be able "
+"to examine the final positions and state of your troops and any surviving "
+"enemies. When you’re finished, click the <b>End Scenario</b> button to go on "
+"to the next scenario in the campaign."
 msgstr ""
 "После сообщения о победе карта будет затемнена, это обозначает, что сценарий "
 "завершён. Вы, однако, сможете изучить конечное расположение и состояние "
 "Ваших войск. Это называется <i>режим остановки</i>. Затем нажмите <b>Конец "
 "сценария</b>, чтобы перейти к следующему."
 
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:31
-msgid "Undo"
-msgstr "Отмена"
-
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:32
-msgid ""
-"Don’t forget, you can press <b>u</b> to undo most things; useful for "
-"correcting mistakes."
-msgstr ""
-"Чаще всего вы можете отменить действие, нажав на клавишу <b>u</b> — это "
-"очень полезно для исправления ошибок."
-
-#. [then]
-#. This string used as follows: "<unit name>', your new recruit, has two traits...'"
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:79
-msgid ""
-", your new recruit, has two traits: <i>strong</i> and <i>intelligent</i>. "
-"‘Strong’ means a unit does more damage, and ‘intelligent’ means it needs "
-"less experience to advance a level."
-msgstr ""
-", твой новобранец, имеет две особенности: он <i>сильный</i> и <i>умный</i>. "
-"«Сильный» означает, что он наносит больше урона, а «умный» — что ему "
-"требуется меньше опыта, чтобы продвинуться на следующий уровень."
-
-#. [then]
-#. This string used as follows: "<unit name>' has two traits: <i>quick</i> and ...'"
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:94
-msgid ""
-" has two traits: <i>quick</i> and <i>resilient</i>. ‘Quick’ means a unit can "
-"move one tile further each turn, and ‘resilient’ means it has more hitpoints."
-msgstr ""
-" имеет две особенности: он <i>быстрый</i> и <i>выносливый</i>. «Быстрый» "
-"означает, что он ходит на одну ячейку дальше, а «выносливый» — что у него "
-"больше здоровья."
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:25
-msgid "Patch of forest"
-msgstr "Участок леса"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:26
-msgid ""
-"Now put an unwounded unit, preferably a Fighter, in that patch of forest on "
-"the south-east of the island; a nice, defensible spot."
-msgstr ""
-"А теперь размести здорового бойца, желательно <i>воина</i>, на участке леса "
-"на юго-востоке острова — это хорошее, защищённое место."
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:27
-msgid "Can one unit survive against all those enemies?"
-msgstr "Сможет ли один боец выстоять против стольких противников?"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:28
-msgid ""
-"With a little help, yes. If you move your Shaman next to the defending unit, "
-"she will heal it 4 hitpoints per turn. Just be careful not to expose the "
-"Shaman to attack since she is fairly weak herself."
-msgstr ""
-"При небольшой поддержке — сможет. Если ты поставишь рядом с ним шаманку, то "
-"она поможет ему восстанавливать 4 очка здоровья в начале каждого хода. "
-"Только не дай врагам напасть на шаманку — сама по себе она очень слаба."
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:29
-msgid "Move a unit (a Fighter if possible) to the patch of forest"
-msgstr ""
-"Приведите бойца (по возможности, <i>воина</i>) в отмеченное место в лесу"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:36
-msgid ""
-"Advance other units onto the island or to capture villages, then <b>End "
-"Turn</b>"
-msgstr ""
-"Ведите других солдат на остров, занимайте деревни, а затем — <b>Конец хода</"
-"b>."
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:234
-msgid ""
-"That unit is about one kill (8 experience points) away from gaining a level! "
-"Do not let it die!"
-msgstr ""
-"Этому бойцу достаточно один раз убить противника (8 очков опыта), чтобы "
-"продвинуться! Не дай ему погибнуть!"
-
-#. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:287
-msgid "I hope I have a chance to retreat after this!"
-msgstr "Надеюсь, после этого я смогу отступить!"
-
-#. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:298
-msgid "One lucky attack by an Orcish Grunt, and I’m done for!"
-msgstr "Один везучий орк-пехотинец — и мне крышка!"
-
-#. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:309
-msgid "Ouch! I could make use of some healing in a village."
-msgstr "Ой! Мне нужно подлечиться в деревне."
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:336
-msgid "I have $side.gold gold; enough to recruit!"
-msgstr "У меня $side.gold золотых монет, хватит на вербовку!"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:337
-msgid "Yes, keep recruiting more units: I think you might need them!"
-msgstr "Да, завербуй ещё бойцов, думаю, они тебе пригодятся!"
-
 #. [tutorial]: id=2_Tutorial
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:347
-msgid "Wesnoth Tutorial Part II"
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:5
+#, fuzzy
+#| msgid "Wesnoth Tutorial Part II"
+msgid "Wesnoth Tutorial — Part II"
 msgstr "Введение в Веснот, часть II"
 
 #. [side]: type=Orcish Warrior, id=Thrag
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:369
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:42
+msgid "team_name^Orcs"
+msgstr ""
+
+#. [side]: type=Orcish Warrior, id=Thrag
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:46
 msgid "Thrag"
 msgstr "Траг"
 
-#. [objective]: condition=win
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:399
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:437
-msgid "Defeat the Orc Leader"
-msgstr "Победите лидера орков"
-
-#. [objective]: condition=lose
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:403
-msgid "Death of Konrad"
-msgstr "Смерть Конрада"
-
-#. [objective]: condition=lose
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:441
-msgid "Death of Li’sar"
-msgstr "Смерть Лисар"
-
 #. [unit]: id=Galdrad, type=Elvish Captain
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:452
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:78
 msgid "Galdrad"
 msgstr "Галдрад"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:479
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:91
+msgid "I hope I have a chance to retreat after this!"
+msgstr "Надеюсь, после этого я смогу отступить!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:92
+msgid "One lucky attack by an Orcish Grunt, and I’m done for!"
+msgstr "Один везучий орк-пехотинец — и мне крышка!"
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:93
+msgid "Ouch! I could make use of some healing in a village."
+msgstr "Ой! Мне нужно подлечиться в деревне."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:94
+msgid "I had better retreat, before I get caught out with such low health!"
+msgstr ""
+
+#. [objective]: condition=win
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:99
+msgid "Defeat the Orc Leader"
+msgstr "Победите лидера орков"
+
+#. [objective]: condition=lose
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:104
+msgid "Death of Konrad"
+msgstr "Смерть Конрада"
+
+#. [objective]: condition=lose
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:115
+msgid "Death of Li’sar"
+msgstr "Смерть Лисар"
+
+#. [objective]: condition=lose
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:126
+#, fuzzy
+#| msgid "Death of Konrad"
+msgid "Death of Galdrad"
+msgstr "Смерть Конрада"
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:141
 msgid ""
 "Ho, Galdrad! Has Delfador conjured something else to beat me with? A flock "
 "of scarecrows, perhaps?"
@@ -1013,35 +936,49 @@ msgstr ""
 "Хо-хо, Галдрад! Делфадор наколдовал мне ещё противников? Небось стадо "
 "огородных пугал, да?"
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:481
-msgid "This is no game, Konrad! "
-msgstr "Теперь всё серьёзно, Конрад! "
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:482
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:483
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:147
+#, fuzzy
+#| msgid ""
+#| "Orcs have encamped across the river. This is elven country; they are "
+#| "fools to enter here. We Elves are fast and hard to hit in forests. You "
+#| "must defeat their leader so they never threaten us again. I will advise "
+#| "you."
 msgid ""
-"Orcs have encamped across the river. This is elven country; they are fools "
-"to enter here. We Elves are fast and hard to hit in forests. You must defeat "
-"their leader so they never threaten us again. I will advise you."
+"This is no game, Konrad! Orcs have encamped across the river. This is elven "
+"country; they are fools to enter here. We Elves are fast and hard to hit in "
+"forests. You must defeat their leader so they never threaten us again. I "
+"will advise you."
 msgstr ""
 "На другом берегу реки засели орки. Здесь эльфийская земля; они поступили "
 "неумно, придя сюда. Мы, эльфы, в лесу быстры и почти неуязвимы. Победи их "
 "вожака, чтобы они нас больше не беспокоили. Я буду давать тебе советы."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:482
-msgid "This is no game, Li’sar! "
-msgstr "Теперь всё серьёзно, Лисар! "
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:152
+#, fuzzy
+#| msgid ""
+#| "Orcs have encamped across the river. This is elven country; they are "
+#| "fools to enter here. We Elves are fast and hard to hit in forests. You "
+#| "must defeat their leader so they never threaten us again. I will advise "
+#| "you."
+msgid ""
+"This is no game, Li’sar! Orcs have encamped across the river. This is elven "
+"country; they are fools to enter here. We Elves are fast and hard to hit in "
+"forests. You must defeat their leader so they never threaten us again. I "
+"will advise you."
+msgstr ""
+"На другом берегу реки засели орки. Здесь эльфийская земля; они поступили "
+"неумно, придя сюда. Мы, эльфы, в лесу быстры и почти неуязвимы. Победи их "
+"вожака, чтобы они нас больше не беспокоили. Я буду давать тебе советы."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:485
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:158
 msgid "What should I do?"
 msgstr "Что мне следует сделать?"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:490
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:161
 msgid ""
 "First, we will have to deal with the Orcish Grunt stationed in the middle of "
 "the river. He should be little trouble."
@@ -1050,7 +987,7 @@ msgstr ""
 "несложно."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:491
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:163
 msgid ""
 "By then, their leader will have recruited more units to send against us and "
 "the real fight will begin."
@@ -1059,23 +996,7 @@ msgstr ""
 "начнётся настоящий бой."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:492
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:493
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:494
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:495
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:496
-msgid "Shallow"
-msgstr "Отмель"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:497
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:498
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:499
-msgid "Deep water"
-msgstr "Глубоководье"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:501
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:165
 msgid ""
 "See this dark blue water? It’s too deep for either side to cross. The orcs "
 "could slowly wade through that narrow band of shallow lighter-blue water in "
@@ -1088,7 +1009,7 @@ msgstr ""
 "биться в воде — так что они будут уязвимы, мы же — под защитой леса."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:511
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:167
 msgid ""
 "The more likely attack, then, is across the bridge. That middle island is "
 "the key: it has a village for healing injured units and forests in which we "
@@ -1098,383 +1019,239 @@ msgstr ""
 "к битве: там есть деревня, где можно лечить раненых, и лес, где мы хорошо "
 "сражаемся."
 
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:171
+msgid "Let’s go! Attack!"
+msgstr ""
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:176
+msgid ""
+"Hang on! You need to gather your forces. Or do you intend to fight the orcs "
+"singlehandedly?"
+msgstr ""
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:189
+msgid ""
+"I see you have veteran troops from your training! You should <i>recall</i> "
+"them as as to start off the battle with more experienced units. Think "
+"carefully, though; if a unit has too little experience, it might be cheaper "
+"to recruit a new one."
+msgstr ""
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:195
+msgid ""
+"Some of your units have also managed to level up. They’re even more "
+"formidable, so you should recall them first."
+msgstr ""
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:210
+msgid ""
+"Unfortunately, none of your troops survived your training, so you will have "
+"to recruit new units. If you had any veteran troops, you could have "
+"<i>recalled</i> them to battle this scenario. More experienced units would "
+"have been of help against these orcs."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:217
+msgid "Recalling"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:219
+msgid ""
+"In addition to recruiting new units each scenario, you can also <i>recall</"
+"i> your experienced veterans from previous scenarios, for the cost of 20 "
+"gold each. This allows you to build up a formidable army over the course of "
+"multiple scenarios by recalling your highest leveled troops or those with "
+"good combinations of traits and abilities. To recall a unit, right click "
+"while your leader stands on a keep and select the <i>Recall</i> option. "
+"Remember to also recruit new troops in addition to recalling old ones."
+msgstr ""
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:224
+msgid ""
+"You also have two new types of units to recruit this scenario: Elvish "
+"Archers and Elvish Shamans. I’ll tell you more about them when you recruit "
+"them. Personally, I would recommend a balanced force of two archers, two "
+"fighters, and a shaman."
+msgstr ""
+
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:514
-msgid ""
-"To start, we will need some units:\n"
-"two Elvish Fighters\n"
-"two Elvish Archers\n"
-"one Elvish Shaman"
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:227
+msgid "Recruit or recall your troops"
 msgstr ""
-"Для начала нам понадобится несколько солдат:\n"
-"два воина\n"
-"два лучника\n"
-"одна шаманка"
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:592
-msgid ""
-"During your tutorial, both $recall_name1 and $recall_name2 gained "
-"$recall_xp1 experience points. You should <i>recall</i> them now so they can "
-"gain more experience, rather than recruiting new Fighters."
-msgstr ""
-"За время твоих прошлых тренировок $recall_name1 и $recall_name2 получили по "
-"$recall_xp1 очков опыта. Лучше не вербуй новых воинов, а <i>призови</i> "
-"этих, чтобы они могли получить ещё больше опыта."
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:595
-msgid ""
-"During your tutorial, $recall_name1 gained $recall_xp1 experience points, "
-"and $recall_name2 gained $recall_xp2. You should <i>recall</i> them now so "
-"they can gain more experience, rather than recruiting new Fighters."
-msgstr ""
-"За время прошлых твоих тренировок $recall_name1 получил $recall_xp1 очков "
-"опыта, а $recall_name2 — $recall_xp2. Лучше не вербуй новых воинов, а "
-"<i>призови</i> этих, чтобы они могли получить ещё больше опыта."
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:601
-msgid ""
-"During your tutorial, $recall_name1 gained $recall_xp1 experience points. "
-"You should recall that unit now, and recruit a second one (which is cheaper "
-"than recalling, anyway)."
-msgstr ""
-"За время прошлых твоих тренировок $recall_name1 получил $recall_xp1 очков "
-"опыта. Призови его, а затем завербуй другого воина (кстати, второе дешевле)."
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:604
-msgid "RECALL $recall_name1"
-msgstr "$recall_name1 — ПРИЗОВИТЕ ЕГО"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:605
-msgid ""
-"Right click on the tile north-east of you and <i>recall</i> $recall_name1"
-msgstr ""
-"Кликните правой кнопкой мышки на ячейке к северо-востоку от вас и "
-"<i>призовите</i> бойца по имени $recall_name1"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:614
-msgid ""
-"If any Elvish Fighters from your last battle had experience, we would "
-"<i>recall</i> them to the current battlefield. However, your veterans gained "
-"no experience so it’s cheaper to recruit new units instead. Recruit an "
-"Elvish Fighter."
-msgstr ""
-"Если бы у тех воинов, что остались у тебя после прошлой битвы, был опыт, мы "
-"бы <i>призвали</i> их и на эту битвы. Однако же, у них обоих опыта не так "
-"много, так что лучше нанять новых. Найми воина."
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:617
-msgid ""
-"If you had any experienced units alive from your last battle we would "
-"<i>recall</i> them. Instead we must recruit some new Elvish Fighters."
-msgstr ""
-"Если бы у тебя с прошлой битвы остались опытные воины, мы бы <i>призвали</i> "
-"их. А так придётся вербовать нового воина."
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:620
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:873
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:915
-msgid "Elvish Fighter"
-msgstr "Воин"
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:621
-msgid "Right click on the tile north-east of you and recruit an Elvish Fighter"
-msgstr ""
-"Кликните правой кнопкой мышки на ячейке на северо-востоке от себя и "
-"завербуйте воина"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:661
-msgid "No! I said recruit an Elvish <i>Shaman</i>! Now try again..."
-msgstr "Нет! Я же сказал — завербовать <i>шаманку</i>! Давай-ка ещё раз..."
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:670
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:241
+#, fuzzy
+#| msgid ""
+#| "The Shaman is a fairly weak unit, but she has the ability to <i>heal</i> "
+#| "friendly units around her. She also has a special attack which <i>slows</"
+#| "i> enemies, halving the damage they do."
 msgid ""
 "The Shaman is a fairly weak unit, but she has the ability to <i>heal</i> "
 "friendly units around her. She also has a special attack which <i>slows</i> "
-"enemies, halving the damage they do."
+"enemies, halving the damage they do for one turn."
 msgstr ""
 "Шаманки довольно слабы, но зато умеют <i>лечить</i> бойцов вокруг себя. "
 "Также у них есть особая атака, которая <i>замедляет</i> противника и "
 "уменьшает наносимый им урон!"
 
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:671
-msgid "So, should I end my turn now?"
-msgstr "Ну что, заканчивать ход?"
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:246
+msgid "Abilities and Weapon Specials"
+msgstr ""
 
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:673
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:248
 msgid ""
-"While none of your recruited units can move, you still can. Your five units "
-"cost you 5 gold in upkeep, leaving you 3 gold poorer per turn. You need more "
-"income."
+"Certain unit types have special <i>abilities</i>. Unlike traits, which "
+"usually provide small buffs or debuffs, abilities give units special "
+"behaviors that normal units do not have. In this case, the Elvish Shaman has "
+"the Heal ability, which allows her to heal allied adjacent units 4 hitpoints "
+"at the start of each turn. Unit types with abilities, especially ones like "
+"Heal, can be very useful, so be careful when sending them into battle.\n"
+"\n"
+"Weapon specials are special attack modifiers that make certain attacks more "
+"powerful. Once again, in this case, the Shaman has the Slows special on her "
+"entangle attack. When this attack is used on an enemy, it will halve the "
+"damage they do for one turn. Other weapon specials include First Strike, "
+"which allows that attack to always hit first no matter who attacks first, "
+"and Magical, which gives that attack a constant 70% chance to hit.\n"
+"\n"
+"A full list of abilities and weapons specials, along with traits, may be "
+"found in help."
+msgstr ""
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:267
+msgid ""
+"Unlike the Elvish Fighter, which has strong melee attacks, the Elvish Archer "
+"has strong ranged attacks. It’s useful to attack enemy units with strong "
+"melee attacks with strong ranged attacks, and vice versa. This allows your "
+"units to take less damage when your enemy counterattacks."
+msgstr ""
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:290
+msgid ""
+"You certainly have a fondness for shamans, I see. They will provide a lot of "
+"healing, but not much offensive potential."
+msgstr ""
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:301
+#, fuzzy
+#| msgid ""
+#| "While none of your recruited units can move, you still can. Your five "
+#| "units cost you 5 gold in upkeep, leaving you 3 gold poorer per turn. You "
+#| "need more income."
+msgid ""
+"While none of your recruited units can move yet, you still can. You need "
+"more income; there are some villages near the keep you can capture."
 msgstr ""
 "Никто из твоих новых бойцов не может ходить, зато ты можешь. Пятеро твоих "
 "бойцов стоят тебе 5 золотых, так что ты теряешь 3 золотых каждый ход. Тебе "
 "нужны дополнительные источники средств."
 
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:675
-msgid "Move Konrad to capture a village"
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:304
+#, fuzzy
+#| msgid "Move Konrad to capture a village"
+msgid "Capture a village"
 msgstr "Передвиньте Конрада в деревню"
 
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:676
-msgid "Move Li’sar to capture a village"
-msgstr "Передвиньте Лисар в деревню"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:693
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:731
-msgid "No! I said recruit an Elvish <i>Archer</i>! Now try again..."
-msgstr "Нет! Я же сказал — завербовать <i>лучника</i>! Давай-ка ещё раз..."
-
-#. [else]
-#. [unit]: id=Eowynial, type=Elvish Archer
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:699
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:710
-msgid "Eowynial"
-msgstr "Эовиниал"
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:714
-msgid "Shaman"
-msgstr "Шаман"
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:715
-msgid "Recruit an Elvish Shaman to your north"
-msgstr "Завербуйте шаманку к северу от вас"
-
-#. [else]
-#. [unit]: id=Elriend, type=Elvish Archer
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:737
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:747
-msgid "Elriend"
-msgstr "Элриенд"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:770
-msgid "No! I said <i>recall</i> $recall_name2|! Now try again..."
-msgstr "Нет! Я же сказал <i>призвать</i> $recall_name2|! Попробуй ещё раз..."
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:779
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:815
-msgid "Archer #1"
-msgstr "Лучник 1"
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:780
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:816
-msgid "Archer #2"
-msgstr "Лучник 2"
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:782
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:818
-msgid "Recruit two Elvish Archers in the tiles to your west"
-msgstr "Завербуйте двух лучников на клетках к западу от вас"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:795
-msgid "No! I said recruit an Elvish <i>Fighter</i>! Now try again..."
-msgstr "Нет! Я же сказал — нанять <i>воина</i>! Давай еще раз..."
-
-#. [else]
-#. [unit]: id=Golir, type=Elvish Fighter
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:801
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:811
-msgid "Golir"
-msgstr "Голир"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:849
-msgid "No! I said recall $recall_name1, not $recall_name2|! Now try again..."
-msgstr ""
-"Нет! Я же сказал призвать $recall_name1, а не $recall_name2|! Давай ещё "
-"раз..."
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:853
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:319
 msgid ""
-"No! I said <i>recall</i> $recall_name1 from the last battle, not recruit a "
-"new $recruit.language_name|! Now try again..."
+"Excellent! As Delfador mentioned earlier, each captured village will support "
+"one unit and provide you with 1 extra gold per turn."
 msgstr ""
-"Нет! Я же сказал — <i>призвать</i> $recall_name1 с прошлой битвы, а не "
-"вербовать $recruit.language_name|! Давай ещё раз..."
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:869
-msgid "Right click on the tile east of you and recall $recall_name2"
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:324
+msgid "Income and Upkeep"
 msgstr ""
-"Кликните правой кнопкой мышки на ячейке к востоку от вас и призовите "
-"$recall_name2"
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:870
-msgid "RECALL $recall_name2"
-msgstr "ПРИЗОВИ $recall_name2"
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:874
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:916
-msgid "Right click on the tile east of you and recruit an Elvish Fighter"
-msgstr ""
-"Нажмите правой кнопкой мыши на ячейке к востоку от тебя и завербуйте воина"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:897
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:326
 msgid ""
-"$recruit.language_name|? I said <i>recruit</i> a new <i>Elvish Fighter</i>. "
-"Now try again..."
+"Each turn, you will gain 2 gold pus one for each village you own. However, "
+"<i>upkeep</i> is subtracted for that. You can support as many levels worth "
+"of units as the number of villages you own; beyond that, you must pay 1 gold "
+"per turn. Be careful, as owning too many units can cause you to have "
+"negative income and lose gold each turn!"
 msgstr ""
-"$recruit.language_name|? Я же сказал — <i>завербовать</i> нового <i>воина</"
-"i>. Попробуй ещё раз..."
 
-#. [else]
-#. [unit]: id=Elindel, type=Elvish Fighter
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:904
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:914
-msgid "Elindel"
-msgstr "Элиндель"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:943
-msgid "You’ve learned well, Konrad! "
-msgstr "Ты быстро всё схватываешь, Конрад! "
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:944
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:946
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:342
 msgid ""
-"The village supports one unit and pays 1 gold per turn. You’re only losing 1 "
-"gold per turn now."
+"Now, young man, it is time to discuss strategy. Your units are ready to "
+"attack, and the orcish leader has begun gathering his own troops."
 msgstr ""
-"Деревня позволяет содержать одного бойца и даёт одну золотую монету за ход. "
-"Теперь ты теряешь только одну монету за ход."
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:945
-msgid "You’ve learned well, Li’sar! "
-msgstr "Ты быстро всё схватываешь, Лисар! "
-
-#. [event]
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:948
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1076
-msgid "End your turn"
-msgstr "Закончите свой ход"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:954
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:347
 msgid ""
-"You’ve captured all the villages around the keep, but stay near so you can "
-"recruit more units."
+"Now, young lady, it is time to discuss strategy. Your units are ready to "
+"attack, and the orcish leader has begun gathering his own troops."
 msgstr ""
-"Теперь все деревни вокруг замка — твои, но не уходи далеко, так чтобы можно "
-"было нанять ещё бойцов."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:969
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:353
 msgid ""
-"You should leave the villages near your keep for Konrad to capture. He needs "
-"to stay nearby to recruit more units anyway."
+"Galdrad, if I go by the ford, I could sneak up near his keep and dispatch "
+"him quickly."
 msgstr ""
-"Оставьте деревни вокруг замка для Конрада — ему всё равно надо быть здесь, "
-"чтобы нанимать новых бойцов."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:970
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:358
 msgid ""
-"You should leave the villages near your keep for Li’sar to capture. She "
-"needs to stay nearby to recruit more units anyway."
+"You could. However, elves (and orcs) have bad <i>defense</i> in water. "
+"You’ll be more vulnerable as you try to wade slowly across the ford; the "
+"enemy will have an 80% chance to hit you. Since elves have good defense in "
+"the forest, I would advise you keep to the trees and attack the orcs from "
+"there; you’ll only have a 40% chance of being hit in return."
 msgstr ""
-"Оставьте деревни вокруг замка для Лисар — ей всё равно надо быть здесь, "
-"чтобы нанимать новых бойцов."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:976
-msgid "Orcish Grunts have no ranged attacks, so use your archers against them."
-msgstr ""
-"У пехоты орков нет дальнего оружия, поэтому используй против них своих "
-"лучников."
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:978
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1103
-msgid "Attack the orc with an Archer"
-msgstr "Нападите на орка лучником."
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:363
 msgid ""
-"To review the capabilities of any unit—including an enemy—hover the mouse "
-"over it, and you will see a unit summary on the right of the screen"
+"However, keep an eye on that ford. The orcs may try to sneak around behind "
+"our forces. It might do to send a few units to defend the banks, and the "
+"village there."
 msgstr ""
-"Чтобы посмотреть, на что способен любой боец — включая врагов — наведите на "
-"него мышь, и увидите его свойства в правой части экрана"
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
-msgid "Unit Summaries"
-msgstr "Свойства бойца"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:987
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:368
 msgid ""
-"Excellent. Elves are well-protected in the forest. There’s only a 30% chance "
-"of hitting an Elvish Archer in that tile."
+"Alright. The bridge it is, then, but I’ll be careful about the crossing."
 msgstr ""
-"Отлично. Эльфы хорошо защищены в лесу. Вероятность попасть в эльфийского "
-"лучника в лесу — всего 30 %."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:996
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:371
 msgid ""
-"It’s very dangerous to stand in water when there are enemies about! Your "
-"unit will have an 80% chance of being hit when the enemy counter-attacks! "
-"Cancel!"
+"That Orcish Grunt is still blocking our path. He has no ranged attacks, so "
+"your archers should be able to engage him with little risk. Unfortunately, "
+"your units cannot reach him this turn, but you should not let them languish! "
+"Move them into position so they can attack next turn. There are also other "
+"villages on this side of the river. You should secure them for income and "
+"healing"
 msgstr ""
-"Очень опасно заходить в воду, когда рядом враг! Когда противник будет "
-"отвечать, вероятность, что он попадёт в твоего бойца, будет 80%! Отставить!"
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1002
-msgid "Attack the orc with the other Archer"
-msgstr "Атакуйте орка другим лучником"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1014
-msgid "Fighter to HERE"
-msgstr "Воина СЮДА"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1015
-msgid ""
-"Your other units cannot reach the orc this turn. Send a Fighter to the "
-"village in the far east of the map. It will take two turns to reach it."
-msgstr ""
-"Больше никому на этом ходу до орка не добраться. Пошли воина в отдалённую "
-"деревню на востоке. Ему потребуется два хода, чтобы до неё добраться."
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1016
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:375
 msgid "Long-distance Movement"
 msgstr "Длинные ходы"
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1016
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:377
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
@@ -1484,169 +1261,201 @@ msgstr ""
 "этого выберите бойца и кликните на месте назначения. Число покажет, сколько "
 "ходов ему потребуется, чтобы туда добраться."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1017
-msgid "Tell a Fighter to move to the far east village"
-msgstr "Отправьте воина к отдалённой деревне на востоке"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1035
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:382
+#, fuzzy
+#| msgid ""
+#| "You’ve captured all the villages around the keep, but stay near so you "
+#| "can recruit more units."
 msgid ""
-"Send the other Fighter and the Shaman south so they can attack next turn, "
-"then return to the keep to recruit more units!"
+"I think I’ll stick around the keep for now, in order to recruit more units."
 msgstr ""
-"Отправь другого воина и шаманку на юг, и они смогут атаковать на следующем "
-"ходу. Затем вернись в укрытие и завербуй еще солдат!"
+"Теперь все деревни вокруг замка — твои, но не уходи далеко, так чтобы можно "
+"было нанять ещё бойцов."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1036
-msgid "Move your Fighter and Shaman south, then return Konrad to the keep"
-msgstr "Отправьте воина и шаманку на юг, затем верните Конрада в укрытие"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1037
-msgid "Move your Fighter and Shaman south, then return Li’sar to the keep"
-msgstr "Отправьте воина и шаманку на юг, затем верните Лисар в укрытие"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1047
-msgid "Recruit another Archer and a Fighter"
-msgstr "Завербуйте еще одного лучника и воина"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1062
-msgid "I have no more money to recruit!"
-msgstr "У меня больше нет денег вербовать бойцов!"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1063
-msgid "That is often a problem, which is why owning villages is important."
-msgstr "Это известная проблема. Вот почему очень важно удерживать деревни."
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1064
-msgid "Move Konrad to another (unowned) village"
-msgstr "Переведите Конрада к другой (незанятой) деревне"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1065
-msgid "Move Li’sar to another (unowned) village"
-msgstr "Переведите Лисар к другой (незанятой) деревне"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1090
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:388
 msgid ""
-"That Grunt is blocking the bridge! We must occupy that island before the "
-"Wolf Riders reach it."
+"You’ve learned well, Konrad. It is indeed a good idea to keep your leader "
+"safe and protected and in range of your keep early in the game. The tide of "
+"battle can turn quickly, and you don’t want to find yourself cut off from "
+"recruiting reinforcements."
+msgstr ""
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:393
+msgid ""
+"You’ve learned well, Li’sar. It is indeed a good idea to keep your leader "
+"safe and protected and in range of your keep early in the game. The tide of "
+"battle can turn quickly, and you don’t want to find yourself cut off from "
+"recruiting reinforcements."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:403
+msgid "Tracking Enemy Movement"
+msgstr "Отслеживаем ходы противника"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:405
+msgid ""
+"You can see where an enemy can reach by moving the mouse over them. You can "
+"see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
+"command from the <b>Actions</b> menu."
+msgstr ""
+"Если навести указатель мыши на противника, то можно увидеть, насколько "
+"далеко он может двигаться. Также можно увидеть все возможные ходы противника "
+"с помощью команды <b>Показывать ходы противника</b> из меню <b>Действия</b>."
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:408
+#, fuzzy
+#| msgid ""
+#| "That Grunt is blocking the bridge! We must occupy that island before the "
+#| "Wolf Riders reach it."
+msgid "We must occupy that island before the Wolf Riders reach it!"
 msgstr ""
 "Этот пехотинец загородил собой мост! Нам нужно занять остров прежде, чем до "
 "него доберутся волчьи наездники."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1091
-msgid "Can’t our units just move around him?"
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:413
+#, fuzzy
+#| msgid "Can’t our units just move around him?"
+msgid "Can’t we just move around the orcs?"
 msgstr "Может, просто обойти его?"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1094
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1095
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1096
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1097
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1098
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1099
-msgid "ZoC"
-msgstr "ЗК"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1101
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:426
+#, fuzzy
+#| msgid ""
+#| "No. Once you move close to an enemy unit, you are in its <i>Zone of "
+#| "Control</i> and cannot move further that turn.\n"
+#| "To move your troops onto that island without wading slowly through the "
+#| "water, you’ll have to kill the Grunt."
 msgid ""
 "No. Once you move close to an enemy unit, you are in its <i>Zone of Control</"
-"i> and cannot move further that turn.\n"
-"To move your troops onto that island without wading slowly through the "
-"water, you’ll have to kill the Grunt."
+"i> and cannot move further that turn. To move your troops onto that island "
+"without wading slowly through the water, you’ll have to kill the Grunt."
 msgstr ""
 "Нет. Как только ты приблизишься к противнику, ты попадёшь в его <i>зону "
 "контроля</i> и не сможешь больше двигаться на этом ходу.\n"
 "Если не хочешь, чтобы твои солдаты, переправляясь на остров, бултыхались в "
 "воде — придётся его убить."
 
-#. [event]
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1133
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1157
-msgid "Advance other units and capture villages, then <b>End Turn</b>"
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:430
+msgid "Zone of Control"
 msgstr ""
-"Продвигайте других бойцов, занимайте деревни, а затем нажмите <b>Конец хода</"
-"b>"
 
-#. [then]
-#. The unit with unit type $unit.language_name is male.
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1143
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:432
 msgid ""
-"No other units can reach that orc. I hope my $unit.language_name survives "
-"its counter-attack! I’d better grab more villages and move everyone closer "
+"The hexes immediately around a unit constitute its <i>Zone of Control</i>. "
+"When an enemy unit enters those hexes, they cannot move any further that "
+"turn. An exception are units with the <i>skirmish</i> ability, who are "
+"unaffected by zones of control. This can be used to create a blockade to "
+"prevent stronger enemies from reaching key locations, such as villages, even "
+"if you have limited manpower."
+msgstr ""
+
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:447
+#, fuzzy
+#| msgid ""
+#| "No other units can reach that orc. I hope my $unit.language_name survives "
+#| "its counter-attack! I’d better grab more villages and move everyone "
+#| "closer for next turn."
+msgid ""
+"I hope my units survive the counter-attack if I can’t take this grunt out "
+"this turn. I’d better grab more villages if I can and move everyone closer "
 "for next turn."
 msgstr ""
 "Никому больше не добраться до этого орка. Надеюсь, $unit.language_name "
 "переживёт его контратаку! Займу-ка я побольше деревень и подтяну своих "
 "солдат поближе."
 
-#. [else]
-#. The unit with unit type $unit.language_name is female.
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1147
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:452
+#, fuzzy
+#| msgid ""
+#| "Yes. If your Shaman stands just behind that unit on the bridge, she will "
+#| "heal it at the beginning of the next turn."
 msgid ""
-"female^No other units can reach that orc. I hope my $unit.language_name "
-"survives its counter-attack! I’d better grab more villages and move everyone "
-"closer for next turn."
-msgstr ""
-"Никому больше не добраться до этого орка. Надеюсь, $unit.language_name "
-"переживёт его контратаку! Займу-ка я побольше деревень и подтяну своих "
-"солдат поближе."
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1150
-msgid ""
-"Yes. If your Shaman stands just behind that unit on the bridge, she will "
-"heal it at the beginning of the next turn."
+"If one of your Shamans stands just behind your wounded units, she will heal "
+"them each 4 hitpoints at the beginning of the next turn."
 msgstr ""
 "Да. Если твоя шаманка будет стоять на мосту, прямо позади этого бойца, в "
 "начале следующего хода она его подлечит."
 
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1151
-msgid "Move your Shaman onto the bridge to stand behind your other unit"
-msgstr "Подведите шаманку на мост, на поле позади другого воина"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1197
+#. [message]: speaker=second_unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:465
 msgid ""
-"Be careful: if you stand on the bridge you are exposed to attack from "
-"multiple directions!"
+"One fewer orc to deal with, and our way across the bridge is clear! I also "
+"gained experience from striking the killing blow!"
+msgstr ""
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:486
+#, fuzzy
+#| msgid ""
+#| "Be careful: if you stand on the bridge you are exposed to attack from "
+#| "multiple directions!"
+msgid ""
+"Be careful! If you stand on the bridge you are exposed to attack from "
+"multiple directions! Even though the orcs have low defense in water, they "
+"will overwhelm you with their numbers."
 msgstr ""
 "Будь осторожней: когда стоишь на мосту, на тебя могут напасть с нескольких "
 "сторон!"
 
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:502
+msgid ""
+"Well done! The island village is ours. You can use the trees to set up a "
+"blockade against the orcs; they can only come across the bridge one by one "
+"without wading through the water, and you will be securely on a terrain with "
+"good defense."
+msgstr ""
+
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1210
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:505
+msgid ""
+"Don’t forget about that last village near the channel. They orcs will "
+"capture if it they try to sneak around via the ford! It will be hard to "
+"dislodge them of they do."
+msgstr ""
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:519
+#, fuzzy
+#| msgid ""
+#| "It’s very dangerous to stand in water when there are enemies about! Your "
+#| "unit will have an 80% chance of being hit! Cancel, and wait for them to "
+#| "attack you!"
 msgid ""
 "It’s very dangerous to stand in water when there are enemies about! Your "
-"unit will have an 80% chance of being hit! Cancel, and wait for them to "
+"unit will have an 80% chance of being hit. Get back, and wait for them to "
 "attack you!"
 msgstr ""
 "Очень опасно стоять в воде, когда рядом враг! Если на твоего бойца нападут, "
 "то шанс попасть в него будет 80%! Отмени, и подожди пока они нападут сами!"
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1220
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:542
+#, fuzzy
+#| msgid ""
+#| "Stay near the keep! You need to be on a keep to recruit more units, and I "
+#| "doubt the orc leader will let you use his!"
 msgid ""
-"Don’t forget about your Fighter in the east; you can move him south to that "
-"last village near the channel."
+"You’re venturing away from your keep. You might need recruit more units, and "
+"I doubt the orc leader will let you use his! Careful!"
 msgstr ""
-"Не забывай о своем воине на востоке. Можно переместить его на юг, к деревне "
-"у реки."
+"Оставайся рядом с лагерем! Вербовать бойцов можно только из лагеря, а я "
+"очень сомневаюсь, что вожак орков пустит тебя в свой!"
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1225
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:559
 msgid ""
 "We need to occupy that village, otherwise they will take it next turn! Move "
 "a unit into the village to stop the orcs capturing it. Whichever unit you "
@@ -1657,7 +1466,7 @@ msgstr ""
 "подлечиться."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1237
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:565
 msgid ""
 "Careful! It is now nighttime. Orcs are <i>chaotic</i>, which means their "
 "attacks are now 25% stronger. By day, their attacks are 25% weaker, which is "
@@ -1669,24 +1478,23 @@ msgstr ""
 "сильнее, а днём — на 25% слабее. Ты из <i>порядочных</i>, поэтому ты сильнее "
 "днём. Эльфы — <i>нейтральные</i>: смена дня и ночи их не затрагивает."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1238
-msgid ""
-"After this dialog, hold the mouse over the landscape image below the minimap "
-"on the right. This brings up a description of the time of day, showing who "
-"has the advantage."
-msgstr ""
-"После этого диалога наведите указатель мыши на изображение ландшафта над "
-"миникартой справа. Вы увидите описание времени суток и узнаете, у кого "
-"сейчас преимущество."
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1238
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:569
 msgid "Time of Day"
 msgstr "Время суток"
 
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:571
+msgid ""
+"During a scenario, the time of day will shift as turns pass. There are four "
+"<i>alignments</i> a unit may be: Lawful, Neutral, Chaotic, or Liminal. Each "
+"alignment gets a different bonus or handicap depending on the time of day. "
+"You can mouse over the landscape image below the minimap on the right to see "
+"the current time of day and who has the advantage."
+msgstr ""
+
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1245
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:582
 msgid ""
 "Remember to retreat your wounded units to villages. Healers can only heal 4 "
 "hitpoints at a time, while villages can heal 8 (the maximum healing for any "
@@ -1696,12 +1504,7 @@ msgstr ""
 "очка здоровья, а деревни — 8 (максимум для любого бойца)."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1252
-msgid "Defend here"
-msgstr "Обороняйтесь здесь"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1253
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:592
 msgid ""
 "Beware of those orcs crossing the river! If they get into the forest they’ll "
 "be hard to dislodge!"
@@ -1709,13 +1512,13 @@ msgstr ""
 "Берегись орков, пересекающих реку! Если они доберутся до леса, будет нелегко "
 "вытеснить их обратно!"
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1259
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:600
 msgid "Tracking Unused Units"
 msgstr "Ищем неиспользованных бойцов"
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1259
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:602
 msgid ""
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
 "unit to the next. If you press <b>space</b>, you can mark the currently "
@@ -1729,29 +1532,36 @@ msgstr ""
 "нажатие на <b>n</b> больше не находит следующего свободного бойца, можно "
 "закончить ход."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1264
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:611
+msgid "Victory Conditions"
+msgstr "Условия победы"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:613
+#, fuzzy
+#| msgid ""
+#| "In this scenario, you only need to defeat the orc leader to win. (Victory "
+#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
+#| "the <b>Main Menu</b>)."
 msgid ""
-"In this scenario, you only need to defeat the orc leader to win. (Victory "
-"conditions for a scenario are given under <b>Scenario Objectives</b> in the "
-"<b>Main Menu</b>)."
+"In this scenario, you only need to defeat the orc leader to win. Victory "
+"conditions for a scenario are given under <b>Scenario Objectives</b> in  "
+"<b>Menu</b>)."
 msgstr ""
 "В этой сценарии для победы достаточно убить лидера орков. (Условия победы в "
 "сценарии можно увидеть, выбрав пункт <b>Задачи сценария</b> в <b>главном "
 "меню</b>)."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1264
-msgid "Victory Conditions"
-msgstr "Условия победы"
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1269
-msgid "Recruit the Right Unit Types"
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:622
+#, fuzzy
+#| msgid "Recruit the Right Unit Types"
+msgid "Recruit the Right Units"
 msgstr "Вербуйте бойцов с умом"
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1269
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:624
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
@@ -1759,17 +1569,24 @@ msgstr ""
 "Не забывай при необходимости вербовать бойцов. Лучники обычно хороши против "
 "пехоты орков, волчьих всадников, и их лидера."
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1287
+#. [message]: speaker=student
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:651
+#, fuzzy
+#| msgid "I have no more money to recruit!"
+msgid "I have enough gold to recruit more units!"
+msgstr "У меня больше нет денег вербовать бойцов!"
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:709
 msgid ""
-"Stay near the keep! You need to be on a keep to recruit more units, and I "
-"doubt the orc leader will let you use his!"
+"That unit is about one kill (8 experience points) away from gaining a level! "
+"Do not let it die!"
 msgstr ""
-"Оставайся рядом с лагерем! Вербовать бойцов можно только из лагеря, а я "
-"очень сомневаюсь, что вожак орков пустит тебя в свой!"
+"Этому бойцу достаточно один раз убить противника (8 очков опыта), чтобы "
+"продвинуться! Не дай ему погибнуть!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1301
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:731
 msgid ""
 "Their leader has moved into that village! He’s not as stupid as I thought. "
 "The village heals him each turn and provides good defense."
@@ -1778,7 +1595,7 @@ msgstr ""
 "защищён и будет лечиться каждый ход."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1312
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:742
 msgid ""
 "That unit has captured our village! You’d better get him out; it heals him "
 "each turn and provides good defense."
@@ -1787,7 +1604,7 @@ msgstr ""
 "будет лечиться каждый ход."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1324
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:754
 msgid ""
 "Using me to attack is risky! I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
@@ -1795,9 +1612,8 @@ msgstr ""
 "Очень рисковано отправлять меня в атаку! Я могу замедлить врага дальней "
 "атакой, но, надеюсь, у вас есть план на случай, если я промахнусь!"
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1360
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1376
+#. [event]
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:771
 msgid ""
 "You are close to killing their leader! The unit who finishes him will gain "
 "16 experience points because he is second level. Choose your attacking unit "
@@ -1807,74 +1623,77 @@ msgstr ""
 "так как противник — второго уровня. Выбирай тщательнее, кому ты доверишь "
 "прикончить его!"
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1425
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:796
+#, fuzzy
+#| msgid ""
+#| "We will miss $deadguy.name| because he had $deadguy.experience experience "
+#| "points. He would have advanced to second level soon."
 msgid ""
-"We will miss $deadguy.name| because he had $deadguy.experience experience "
-"points. He would have advanced to second level soon."
+"We will miss $unit.name| because he had $unit.experience experience points. "
+"He would have advanced a level soon."
 msgstr ""
 "Нам будет не хватать $deadguy.name|: у него было $deadguy.experience очков "
 "опыта, он мог очень скоро достигнуть второго уровня."
 
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1428
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:802
+#, fuzzy
+#| msgid ""
+#| "We will miss $deadguy.name| because she had $deadguy.experience "
+#| "experience points. She would have advanced to second level soon."
 msgid ""
-"We will miss $deadguy.name| because she had $deadguy.experience experience "
-"points. She would have advanced to second level soon."
+"We will miss $unit.name| because she had $unit.experience experience points. "
+"She would have advanced a level soon."
 msgstr ""
 "Нам будет не хватать $deadguy.name|: у неё было $deadguy.experience очков "
 "опыта, она могла очень скоро достигнуть второго уровня."
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1445
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:831
+#, fuzzy
+#| msgid ""
+#| "We will miss $deadguy.name|, but at least he was not one of our "
+#| "experienced troops!"
 msgid ""
-"We will miss $deadguy.name|, but at least he was not one of our experienced "
+"We will miss $unit.name|, but at least he was not one of our experienced "
 "troops!"
 msgstr ""
 "Нам будет не хватать $deadguy.name|, но, во всяком случае, он был не самым "
 "опытным бойцом!"
 
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1448
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:837
+#, fuzzy
+#| msgid ""
+#| "We will miss $deadguy.name|, but at least she was not one of our "
+#| "experienced troops!"
 msgid ""
-"We will miss $deadguy.name|, but at least she was not one of our experienced "
+"We will miss $unit.name|, but at least she was not one of our experienced "
 "troops!"
 msgstr ""
 "Нам будет не хватать $deadguy.name|, но, во всяком случае, она была не самым "
 "опытным бойцом!"
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1463
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:857
+#, fuzzy
+#| msgid ""
+#| "Second level units are powerful, but not invulnerable! Goodbye, $deadguy."
+#| "name|."
+msgid ""
+"Higher level units are powerful, but not invulnerable. Goodbye, $unit.name|."
+msgstr "Бойцы второго уровня сильны, но не бессмертны! Прощай, $deadguy.name|."
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:871
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy’s reach!"
 msgstr ""
 "Потеря лекаря скажется на всех солдатах! Держи их подальше от противника!"
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1464
-msgid "Tracking Enemy Movement"
-msgstr "Отслеживаем ходы противника"
-
-#. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1464
-msgid ""
-"You can see where an enemy can reach by moving the mouse over them. You can "
-"see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
-"command from the <b>Actions</b> menu."
-msgstr ""
-"Если навести указатель мыши на противника, то можно увидеть, насколько "
-"далеко он может двигаться. Также можно увидеть все возможные ходы противника "
-"с помощью команды <b>Показывать ходы противника</b> из меню <b>Действия</b>."
-
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1468
-msgid ""
-"Second level units are powerful, but not invulnerable! Goodbye, $deadguy."
-"name|."
-msgstr "Бойцы второго уровня сильны, но не бессмертны! Прощай, $deadguy.name|."
-
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1483
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:883
 msgid ""
 "Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
 "with many units at once during the day."
@@ -1883,11 +1702,36 @@ msgstr ""
 "на него днём и несколькими бойцами сразу."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1503
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:896
 msgid ""
-"Advancing a level has fully healed me!\n"
-"I always have a 60% chance of hitting with my <i>Marksman</i> ability, and I "
-"deal 9 damage each for 4 attacks. Use me to dislodge hard-to-hit units."
+"Advancing a level has fully healed me! I am able to heal units 8 hitpoints "
+"per turn, instead of just 4, and may also cure them of poison if they cannot "
+"reach a village! I also have gained a new <i>magical</i> attack, meaning it "
+"always has a 70% chance to hit, but it is not as powerful as the similar "
+"attack wielded by the Elvish Sorceress."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:909
+msgid ""
+"Advancing a level has fully healed me! I cannot heal adjacent units anymore, "
+"but to compensate, I have a new, powerful faerie fire attack that deals 7 "
+"damage each for 4 strikes. It also has the <i>magical</i> weapon special, "
+"meaning it always has a 70% chance to hit."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:923
+#, fuzzy
+#| msgid ""
+#| "Advancing a level has fully healed me!\n"
+#| "I always have a 60% chance of hitting with my <i>Marksman</i> ability, "
+#| "and I deal 9 damage each for 4 attacks. Use me to dislodge hard-to-hit "
+#| "units."
+msgid ""
+"Advancing a level has fully healed me! I always have a 60% chance of hitting "
+"with my <i>Marksman</i> ability, and I deal 9 damage each for 4 attacks. Use "
+"me to dislodge hard-to-hit units."
 msgstr ""
 "Я продвинулся на новый уровень и полностью излечился!\n"
 "Теперь у меня есть способность <i>снайпер</i> — мои шансы попасть из лука не "
@@ -1895,24 +1739,17 @@ msgstr ""
 "можете добраться до самых труднодоступных врагов."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1512
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:936
+#, fuzzy
+#| msgid ""
+#| "Advancing a level has fully healed me!\n"
+#| "I am good with both bow and sword, and I have a special ability: "
+#| "<i>Ambush</i>. I can hide in forests where enemies can only see me if "
+#| "they are right next to me."
 msgid ""
-"female^Advancing a level has fully healed me!\n"
-"I always have a 60% chance of hitting with my <i>Marksman</i> ability, and I "
-"deal 9 damage each for 4 attacks. Use me to dislodge hard-to-hit units."
-msgstr ""
-"Я продвинулась на новый уровень и полностью излечилась!\n"
-"Теперь у меня есть способность <i>снайпер</i> — мои шансы попасть в цель из "
-"лука не меньше 60%. Я наношу 9 единиц урона в каждой из 4 атак. С моей "
-"помощью вы можете добраться до самых труднодоступных врагов."
-
-#. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1528
-msgid ""
-"Advancing a level has fully healed me!\n"
-"I am good with both bow and sword, and I have a special ability: <i>Ambush</"
-"i>. I can hide in forests where enemies can only see me if they are right "
-"next to me."
+"Advancing a level has fully healed me! I am good with both bow and sword, "
+"and I have a special ability: <i>Ambush</i>. I can hide in forests where "
+"enemies can only see me if they are right next to me."
 msgstr ""
 "Я продвинулся на новый уровень и полностью излечился!\n"
 "Я хорошо владею как мечом, так и луком, к тому же у меня есть особый навык: "
@@ -1920,12 +1757,18 @@ msgstr ""
 "встанет рядом со мной."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1542
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:950
+#, fuzzy
+#| msgid ""
+#| "Advancing a level has fully healed me!\n"
+#| "I am good with both bow and sword, and I have a special ability: "
+#| "<i>Leadership</i>. First level units around me do 25% more damage, so "
+#| "position me carefully."
 msgid ""
-"Advancing a level has fully healed me!\n"
-"I am good with both bow and sword, and I have a special ability: "
-"<i>Leadership</i>. First level units around me do 25% more damage, so "
-"position me carefully."
+"Advancing a level has fully healed me! I am good with both bow and sword, "
+"and I have a special ability: <i>Leadership</i>. I do less damage myself "
+"than the Elvish Hero, but my ability allows my allies to fight better. First "
+"level units around me do 25% more damage, so position me carefully!"
 msgstr ""
 "Я продвинулся на новый уровень и полностью излечился!\n"
 "Я одинаково хорошо владею луком и мечом, а ещё у меня есть способность к "
@@ -1933,28 +1776,55 @@ msgstr ""
 "больше урона, так что располагайте меня разумно."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1557
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:963
+#, fuzzy
+#| msgid ""
+#| "Advancing a level has fully healed me!\n"
+#| "I am particularly good with the sword, dealing 8 damage in 4 attacks."
 msgid ""
-"Advancing a level has fully healed me!\n"
-"I am particularly good with the sword, dealing 8 damage in 4 attacks."
+"Advancing a level has fully healed me! I am particularly good with the "
+"sword, dealing 8 damage in 4 attacks. While I don’t have the Leadership "
+"abilities of the Elvish Captain, my superior fighting skills allow my "
+"attacks to do more damage!"
 msgstr ""
 "Я продвинулся на новый уровень и полностью излечился!\n"
 "Я теперь очень хорошо владею мечом и наношу 8 единиц урона в каждой из "
 "четырёх атак."
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1726
-msgid "You took too long! We’ll never be rid of these orcs!"
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:972
+#, fuzzy
+#| msgid "You took too long! We’ll never be rid of these orcs!"
+msgid "You took too long! Now we’ll never be rid of these orcs!"
 msgstr "Ты слишком затянул! Мы никогда не избавимся от этих орков!"
 
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1749
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:988
+msgid "That... was foolish. Next time I should be more careful."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1011
+msgid "Agh! Now who will teach you how to defeat these orcs!"
+msgstr ""
+
+#. [message]: speaker=Galdrad
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1037
+#, fuzzy
+#| msgid ""
+#| "You have beaten the orcs! You may want to try some novice-level campaigns "
+#| "next, such as: <i>The South Guard</i>, <i>An Orcish Incursion</i>, <i>A "
+#| "Tale of Two Brothers</i>, or <i>Heir to the Throne</i>. <i>The South "
+#| "Guard</i> was specifically designed as a beginner’s campaign. Konrad, "
+#| "Li’sar and Delfador are characters from <i>Heir to the Throne</i>."
 msgid ""
 "You have beaten the orcs! You may want to try some novice-level campaigns "
 "next, such as: <i>The South Guard</i>, <i>An Orcish Incursion</i>, <i>A Tale "
 "of Two Brothers</i>, or <i>Heir to the Throne</i>. <i>The South Guard</i> "
 "was specifically designed as a beginner’s campaign. Konrad, Li’sar and "
-"Delfador are characters from <i>Heir to the Throne</i>."
+"Delfador are characters from <i>Heir to the Throne</i>. You can also refer "
+"to the in-game help browser if you ever need to refresh your memory on "
+"gameplay mechanics."
 msgstr ""
 "Вы победили! Теперь можете попробовать кампании для новичков — например, "
 "<i>Южная стража</i>, <i>Набег орков</i>, <i>Сказание о двух братьях</i> или "
@@ -1995,7 +1865,12 @@ msgid "saber"
 msgstr "сабля"
 
 #. [unit_type]: id=Quintain, race=mechanical
-#: data/campaigns/tutorial/units/Quintain.cfg:16
+#: data/campaigns/tutorial/units/Quintain.cfg:4
+msgid "Quintain"
+msgstr "Манекен"
+
+#. [unit_type]: id=Quintain, race=mechanical
+#: data/campaigns/tutorial/units/Quintain.cfg:17
 msgid ""
 "Quintains are used to practice swordplay and jousting on. It would be "
 "extremely unusual to be attacked by one."
@@ -2004,6 +1879,564 @@ msgstr ""
 "ощущения — когда на тебя нападает нечто подобное."
 
 #. [attack]: type=impact
-#: data/campaigns/tutorial/units/Quintain.cfg:24
+#: data/campaigns/tutorial/units/Quintain.cfg:25
 msgid "flail"
 msgstr "кистень"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/utils/utils.cfg:36
+msgid "Undo"
+msgstr "Отмена"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/utils/utils.cfg:38
+#, fuzzy
+#| msgid ""
+#| "Don’t forget, you can press <b>u</b> to undo most things; useful for "
+#| "correcting mistakes."
+msgid ""
+"Don’t forget, you can press <b>u</b> to undo most things if you make a "
+"mistake."
+msgstr ""
+"Чаще всего вы можете отменить действие, нажав на клавишу <b>u</b> — это "
+"очень полезно для исправления ошибок."
+
+#: data/campaigns/tutorial/utils/utils.cfg:70
+msgid ""
+"\n"
+"<big>Click a mouse button or press the spacebar to continue...</big>"
+msgstr ""
+"\n"
+"<big>Щёлкните мышкой или нажмите пробел для продолжения...</big>"
+
+#~ msgid ""
+#~ "<big>You have selected Konrad.</big>\n"
+#~ "The places he can move to are highlighted."
+#~ msgstr ""
+#~ "<big>Вы выбрали Конрада.</big>\n"
+#~ "На карте подсвечены места, до которых он может дойти."
+
+#~ msgid ""
+#~ "<big>You have selected Li’sar.</big>\n"
+#~ "The places she can move to are highlighted."
+#~ msgstr ""
+#~ "<big>Вы выбрали Лисар.</big>\n"
+#~ "На карте подсвечены места, до которых она может дойти."
+
+#~ msgid "Here"
+#~ msgstr "Сюда"
+
+#~ msgid ""
+#~ "Move Konrad next to Delfador by clicking on the tile marked <b>Here</b>."
+#~ msgstr ""
+#~ "Поставьте Конрада рядом с Делфадором. Для этого кликните на поле, на "
+#~ "котором написано <b>Сюда</b>."
+
+#~ msgid ""
+#~ "Move Li’sar next to Delfador by clicking on the tile marked <b>Here</b>."
+#~ msgstr ""
+#~ "Поставьте Лисар рядом с Делфадором. Для этого кликните на поле, на "
+#~ "котором написано <b>СЮДА</b>."
+
+#~ msgid "Left click on tile labeled <b>Here</b>"
+#~ msgstr ""
+#~ "Кликните левой кнопкой мышки по полю, на котором написано <b>Сюда</b>"
+
+#~ msgid "Oops!"
+#~ msgstr "Ой!"
+
+#~ msgid ""
+#~ "You moved to the wrong place! After this message, you can press <b>u</b> "
+#~ "to undo, then try again."
+#~ msgstr ""
+#~ "Вы пошли не туда! После этого сообщения нажмите <b>u</b>, чтобы отменить "
+#~ "ход, а затем попробуйте снова."
+
+#~ msgid "Click on the quintain to attack it"
+#~ msgstr "Кликните на манекене, чтобы на него напасть"
+
+#~ msgid ""
+#~ "The tiny metal crown above Delfador means you will lose the game if he is "
+#~ "killed. You will also lose the game if your leader (Konrad) is killed."
+#~ msgstr ""
+#~ "Небольшая корона рядом с Делфадором означает, что вы проиграете битву, "
+#~ "если его убьют. Вы также проиграете, если погибнет ваш лидер (Конрад)."
+
+#~ msgid ""
+#~ "The tiny metal crown above Delfador means you will lose the game if he is "
+#~ "killed. You will also lose the game if your leader (Li’sar) is killed."
+#~ msgstr ""
+#~ "Небольшая корона рядом с Делфадором означает, что вы проиграете битву, "
+#~ "если его убьют. Вы также проиграете, если погибнет ваш лидер (Лисар)."
+
+#~ msgid ""
+#~ "female^Unfortunately, you’ve used up your turn attacking the quintain. "
+#~ "The quintain now gets to attack."
+#~ msgstr ""
+#~ "К сожалению, ты потратила свой ход, нападая на манекен. Теперь его "
+#~ "очередь."
+
+#~ msgid ""
+#~ "Click on the <b>End Turn</b> button in the bottom right of the screen"
+#~ msgstr "Нажмите на кнопку <b>Конец хода</b> в правом нижнем углу"
+
+#~ msgid "Village"
+#~ msgstr "Деревня"
+
+#~ msgid ""
+#~ "female^There is a village on the other side of the river. Visiting "
+#~ "villages is a good idea, and ending your turn in one will heal you. To "
+#~ "the village!"
+#~ msgstr ""
+#~ "На другой стороне реки есть деревня. Хорошо бы её посетить, и завершить в "
+#~ "ней свой ход, чтобы излечиться. В деревню!"
+
+#~ msgid "Click on the village to move Konrad"
+#~ msgstr "Кликните по деревне, чтобы отправить туда Конрада"
+
+#~ msgid "Click on the village to move Li’sar"
+#~ msgstr "Кликните по деревне, чтобы отправить туда Лисар"
+
+#~ msgid "Click on the <b>End Turn</b> button"
+#~ msgstr "Нажмите на кнопку <b>Конец хода</b>"
+
+#~ msgid ""
+#~ "female^You’re about to be healed by $hp_difference hitpoints, but it’s "
+#~ "time to summon some help against that quintain."
+#~ msgstr ""
+#~ "Сейчас ты восстановишь $hp_difference единиц здоровья. Но мне кажется, "
+#~ "что тебе понадобится помощь против этого манекена."
+
+#~ msgid "Keep"
+#~ msgstr "Лагерь"
+
+#~ msgid ""
+#~ "female^A splendid idea. You can recruit two units if you return to the "
+#~ "keep. You have plenty of gold for that."
+#~ msgstr ""
+#~ "Великолепная мысль! Вернись в цитадель своего лагеря, и ты сможешь нанять "
+#~ "двух солдат. Золота тебе хватит."
+
+#~ msgid "Right click on a castle tile and select <b>Recruit</b>"
+#~ msgstr ""
+#~ "Кликните правой кнопкой мышки на клетке замка и выберите <b>Вербовать</b>"
+
+#~ msgid "New Recruits"
+#~ msgstr "Новые бойцы"
+
+#~ msgid ""
+#~ "New units cannot act in the turn they appear; you will gain control of "
+#~ "them next turn.\n"
+#~ "After this dialog, you can move the mouse over a unit to see a summary of "
+#~ "its abilities on the right of the screen."
+#~ msgstr ""
+#~ "Бойцы, которых Вы только что завербовали, на этом ходу ничего сделать не "
+#~ "смогут; Вы сможете управлять ими на следующем ходу.\n"
+#~ "Закрыв этот диалог, вы можете навести мышь на бойца и увидеть его "
+#~ "описание на панели справа."
+
+#~ msgid "Right click on the other castle tile and recruit another unit"
+#~ msgstr ""
+#~ "Кликните правой кнопкой мышки на другой клетке замка и завербуйте ещё "
+#~ "бойца"
+
+#~ msgid ""
+#~ "Had the quintain survived your onslaught, it would have regained two "
+#~ "hitpoints. If a unit doesn’t do anything for a turn, it will slowly heal."
+#~ msgstr ""
+#~ "Если бы манекен выжил после твоей атаки, то он бы восстановил две единицы "
+#~ "здоровья. Боец, который целый ход ничего не делает, постепенно "
+#~ "восстанавливает здоровье."
+
+#~ msgid "End your turn and attack again."
+#~ msgstr "Завершите свой ход, а затем атакуйте снова."
+
+#~ msgid "Left click on the quintain to attack it."
+#~ msgstr "Чтобы атаковать манекен, выберите его левой кнопкой мыши."
+
+#~ msgid " The ranged attack would have been safer."
+#~ msgstr "Безопаснее было бы напасть издали."
+
+#~ msgid ""
+#~ "\n"
+#~ "End your turn, then attack again."
+#~ msgstr ""
+#~ "\n"
+#~ "Завершите свой ход, а затем атакуйте снова."
+
+#~ msgid ""
+#~ "\n"
+#~ "You should tell the other elf to use the bow."
+#~ msgstr ""
+#~ "\n"
+#~ "Скажи другому эльфу использовать лук."
+
+#~ msgid "Attack with the other elf"
+#~ msgstr "Атакуйте другим эльфом"
+
+#~ msgid ""
+#~ ", your new recruit, has two traits: <i>strong</i> and <i>intelligent</i>. "
+#~ "‘Strong’ means a unit does more damage, and ‘intelligent’ means it needs "
+#~ "less experience to advance a level."
+#~ msgstr ""
+#~ ", твой новобранец, имеет две особенности: он <i>сильный</i> и <i>умный</"
+#~ "i>. «Сильный» означает, что он наносит больше урона, а «умный» — что ему "
+#~ "требуется меньше опыта, чтобы продвинуться на следующий уровень."
+
+#~ msgid ""
+#~ " has two traits: <i>quick</i> and <i>resilient</i>. ‘Quick’ means a unit "
+#~ "can move one tile further each turn, and ‘resilient’ means it has more "
+#~ "hitpoints."
+#~ msgstr ""
+#~ " имеет две особенности: он <i>быстрый</i> и <i>выносливый</i>. «Быстрый» "
+#~ "означает, что он ходит на одну ячейку дальше, а «выносливый» — что у него "
+#~ "больше здоровья."
+
+#~ msgid "Patch of forest"
+#~ msgstr "Участок леса"
+
+#~ msgid ""
+#~ "Now put an unwounded unit, preferably a Fighter, in that patch of forest "
+#~ "on the south-east of the island; a nice, defensible spot."
+#~ msgstr ""
+#~ "А теперь размести здорового бойца, желательно <i>воина</i>, на участке "
+#~ "леса на юго-востоке острова — это хорошее, защищённое место."
+
+#~ msgid "Can one unit survive against all those enemies?"
+#~ msgstr "Сможет ли один боец выстоять против стольких противников?"
+
+#~ msgid ""
+#~ "With a little help, yes. If you move your Shaman next to the defending "
+#~ "unit, she will heal it 4 hitpoints per turn. Just be careful not to "
+#~ "expose the Shaman to attack since she is fairly weak herself."
+#~ msgstr ""
+#~ "При небольшой поддержке — сможет. Если ты поставишь рядом с ним шаманку, "
+#~ "то она поможет ему восстанавливать 4 очка здоровья в начале каждого хода. "
+#~ "Только не дай врагам напасть на шаманку — сама по себе она очень слаба."
+
+#~ msgid "Move a unit (a Fighter if possible) to the patch of forest"
+#~ msgstr ""
+#~ "Приведите бойца (по возможности, <i>воина</i>) в отмеченное место в лесу"
+
+#~ msgid ""
+#~ "Advance other units onto the island or to capture villages, then <b>End "
+#~ "Turn</b>"
+#~ msgstr ""
+#~ "Ведите других солдат на остров, занимайте деревни, а затем — <b>Конец "
+#~ "хода</b>."
+
+#~ msgid "I have $side.gold gold; enough to recruit!"
+#~ msgstr "У меня $side.gold золотых монет, хватит на вербовку!"
+
+#~ msgid "Yes, keep recruiting more units: I think you might need them!"
+#~ msgstr "Да, завербуй ещё бойцов, думаю, они тебе пригодятся!"
+
+#~ msgid "This is no game, Konrad! "
+#~ msgstr "Теперь всё серьёзно, Конрад! "
+
+#~ msgid "This is no game, Li’sar! "
+#~ msgstr "Теперь всё серьёзно, Лисар! "
+
+#~ msgid "Shallow"
+#~ msgstr "Отмель"
+
+#~ msgid "Deep water"
+#~ msgstr "Глубоководье"
+
+#~ msgid ""
+#~ "To start, we will need some units:\n"
+#~ "two Elvish Fighters\n"
+#~ "two Elvish Archers\n"
+#~ "one Elvish Shaman"
+#~ msgstr ""
+#~ "Для начала нам понадобится несколько солдат:\n"
+#~ "два воина\n"
+#~ "два лучника\n"
+#~ "одна шаманка"
+
+#~ msgid ""
+#~ "During your tutorial, both $recall_name1 and $recall_name2 gained "
+#~ "$recall_xp1 experience points. You should <i>recall</i> them now so they "
+#~ "can gain more experience, rather than recruiting new Fighters."
+#~ msgstr ""
+#~ "За время твоих прошлых тренировок $recall_name1 и $recall_name2 получили "
+#~ "по $recall_xp1 очков опыта. Лучше не вербуй новых воинов, а <i>призови</"
+#~ "i> этих, чтобы они могли получить ещё больше опыта."
+
+#~ msgid ""
+#~ "During your tutorial, $recall_name1 gained $recall_xp1 experience points, "
+#~ "and $recall_name2 gained $recall_xp2. You should <i>recall</i> them now "
+#~ "so they can gain more experience, rather than recruiting new Fighters."
+#~ msgstr ""
+#~ "За время прошлых твоих тренировок $recall_name1 получил $recall_xp1 очков "
+#~ "опыта, а $recall_name2 — $recall_xp2. Лучше не вербуй новых воинов, а "
+#~ "<i>призови</i> этих, чтобы они могли получить ещё больше опыта."
+
+#~ msgid ""
+#~ "During your tutorial, $recall_name1 gained $recall_xp1 experience points. "
+#~ "You should recall that unit now, and recruit a second one (which is "
+#~ "cheaper than recalling, anyway)."
+#~ msgstr ""
+#~ "За время прошлых твоих тренировок $recall_name1 получил $recall_xp1 очков "
+#~ "опыта. Призови его, а затем завербуй другого воина (кстати, второе "
+#~ "дешевле)."
+
+#~ msgid "RECALL $recall_name1"
+#~ msgstr "$recall_name1 — ПРИЗОВИТЕ ЕГО"
+
+#~ msgid ""
+#~ "Right click on the tile north-east of you and <i>recall</i> $recall_name1"
+#~ msgstr ""
+#~ "Кликните правой кнопкой мышки на ячейке к северо-востоку от вас и "
+#~ "<i>призовите</i> бойца по имени $recall_name1"
+
+#~ msgid ""
+#~ "If any Elvish Fighters from your last battle had experience, we would "
+#~ "<i>recall</i> them to the current battlefield. However, your veterans "
+#~ "gained no experience so it’s cheaper to recruit new units instead. "
+#~ "Recruit an Elvish Fighter."
+#~ msgstr ""
+#~ "Если бы у тех воинов, что остались у тебя после прошлой битвы, был опыт, "
+#~ "мы бы <i>призвали</i> их и на эту битвы. Однако же, у них обоих опыта не "
+#~ "так много, так что лучше нанять новых. Найми воина."
+
+#~ msgid ""
+#~ "If you had any experienced units alive from your last battle we would "
+#~ "<i>recall</i> them. Instead we must recruit some new Elvish Fighters."
+#~ msgstr ""
+#~ "Если бы у тебя с прошлой битвы остались опытные воины, мы бы <i>призвали</"
+#~ "i> их. А так придётся вербовать нового воина."
+
+#~ msgid "Elvish Fighter"
+#~ msgstr "Воин"
+
+#~ msgid ""
+#~ "Right click on the tile north-east of you and recruit an Elvish Fighter"
+#~ msgstr ""
+#~ "Кликните правой кнопкой мышки на ячейке на северо-востоке от себя и "
+#~ "завербуйте воина"
+
+#~ msgid "No! I said recruit an Elvish <i>Shaman</i>! Now try again..."
+#~ msgstr "Нет! Я же сказал — завербовать <i>шаманку</i>! Давай-ка ещё раз..."
+
+#~ msgid "So, should I end my turn now?"
+#~ msgstr "Ну что, заканчивать ход?"
+
+#~ msgid "No! I said recruit an Elvish <i>Archer</i>! Now try again..."
+#~ msgstr "Нет! Я же сказал — завербовать <i>лучника</i>! Давай-ка ещё раз..."
+
+#~ msgid "Eowynial"
+#~ msgstr "Эовиниал"
+
+#~ msgid "Shaman"
+#~ msgstr "Шаман"
+
+#~ msgid "Recruit an Elvish Shaman to your north"
+#~ msgstr "Завербуйте шаманку к северу от вас"
+
+#~ msgid "Elriend"
+#~ msgstr "Элриенд"
+
+#~ msgid "No! I said <i>recall</i> $recall_name2|! Now try again..."
+#~ msgstr ""
+#~ "Нет! Я же сказал <i>призвать</i> $recall_name2|! Попробуй ещё раз..."
+
+#~ msgid "Archer #1"
+#~ msgstr "Лучник 1"
+
+#~ msgid "Archer #2"
+#~ msgstr "Лучник 2"
+
+#~ msgid "Recruit two Elvish Archers in the tiles to your west"
+#~ msgstr "Завербуйте двух лучников на клетках к западу от вас"
+
+#~ msgid "No! I said recruit an Elvish <i>Fighter</i>! Now try again..."
+#~ msgstr "Нет! Я же сказал — нанять <i>воина</i>! Давай еще раз..."
+
+#~ msgid "Golir"
+#~ msgstr "Голир"
+
+#~ msgid ""
+#~ "No! I said recall $recall_name1, not $recall_name2|! Now try again..."
+#~ msgstr ""
+#~ "Нет! Я же сказал призвать $recall_name1, а не $recall_name2|! Давай ещё "
+#~ "раз..."
+
+#~ msgid ""
+#~ "No! I said <i>recall</i> $recall_name1 from the last battle, not recruit "
+#~ "a new $recruit.language_name|! Now try again..."
+#~ msgstr ""
+#~ "Нет! Я же сказал — <i>призвать</i> $recall_name1 с прошлой битвы, а не "
+#~ "вербовать $recruit.language_name|! Давай ещё раз..."
+
+#~ msgid "Right click on the tile east of you and recall $recall_name2"
+#~ msgstr ""
+#~ "Кликните правой кнопкой мышки на ячейке к востоку от вас и призовите "
+#~ "$recall_name2"
+
+#~ msgid "RECALL $recall_name2"
+#~ msgstr "ПРИЗОВИ $recall_name2"
+
+#~ msgid "Right click on the tile east of you and recruit an Elvish Fighter"
+#~ msgstr ""
+#~ "Нажмите правой кнопкой мыши на ячейке к востоку от тебя и завербуйте воина"
+
+#~ msgid ""
+#~ "$recruit.language_name|? I said <i>recruit</i> a new <i>Elvish Fighter</"
+#~ "i>. Now try again..."
+#~ msgstr ""
+#~ "$recruit.language_name|? Я же сказал — <i>завербовать</i> нового "
+#~ "<i>воина</i>. Попробуй ещё раз..."
+
+#~ msgid "Elindel"
+#~ msgstr "Элиндель"
+
+#~ msgid "You’ve learned well, Konrad! "
+#~ msgstr "Ты быстро всё схватываешь, Конрад! "
+
+#~ msgid ""
+#~ "The village supports one unit and pays 1 gold per turn. You’re only "
+#~ "losing 1 gold per turn now."
+#~ msgstr ""
+#~ "Деревня позволяет содержать одного бойца и даёт одну золотую монету за "
+#~ "ход. Теперь ты теряешь только одну монету за ход."
+
+#~ msgid "You’ve learned well, Li’sar! "
+#~ msgstr "Ты быстро всё схватываешь, Лисар! "
+
+#~ msgid ""
+#~ "You should leave the villages near your keep for Konrad to capture. He "
+#~ "needs to stay nearby to recruit more units anyway."
+#~ msgstr ""
+#~ "Оставьте деревни вокруг замка для Конрада — ему всё равно надо быть "
+#~ "здесь, чтобы нанимать новых бойцов."
+
+#~ msgid ""
+#~ "You should leave the villages near your keep for Li’sar to capture. She "
+#~ "needs to stay nearby to recruit more units anyway."
+#~ msgstr ""
+#~ "Оставьте деревни вокруг замка для Лисар — ей всё равно надо быть здесь, "
+#~ "чтобы нанимать новых бойцов."
+
+#~ msgid ""
+#~ "Orcish Grunts have no ranged attacks, so use your archers against them."
+#~ msgstr ""
+#~ "У пехоты орков нет дальнего оружия, поэтому используй против них своих "
+#~ "лучников."
+
+#~ msgid ""
+#~ "To review the capabilities of any unit—including an enemy—hover the mouse "
+#~ "over it, and you will see a unit summary on the right of the screen"
+#~ msgstr ""
+#~ "Чтобы посмотреть, на что способен любой боец — включая врагов — наведите "
+#~ "на него мышь, и увидите его свойства в правой части экрана"
+
+#~ msgid "Unit Summaries"
+#~ msgstr "Свойства бойца"
+
+#~ msgid ""
+#~ "Excellent. Elves are well-protected in the forest. There’s only a 30% "
+#~ "chance of hitting an Elvish Archer in that tile."
+#~ msgstr ""
+#~ "Отлично. Эльфы хорошо защищены в лесу. Вероятность попасть в эльфийского "
+#~ "лучника в лесу — всего 30 %."
+
+#~ msgid ""
+#~ "It’s very dangerous to stand in water when there are enemies about! Your "
+#~ "unit will have an 80% chance of being hit when the enemy counter-attacks! "
+#~ "Cancel!"
+#~ msgstr ""
+#~ "Очень опасно заходить в воду, когда рядом враг! Когда противник будет "
+#~ "отвечать, вероятность, что он попадёт в твоего бойца, будет 80%! "
+#~ "Отставить!"
+
+#~ msgid "Attack the orc with the other Archer"
+#~ msgstr "Атакуйте орка другим лучником"
+
+#~ msgid "Fighter to HERE"
+#~ msgstr "Воина СЮДА"
+
+#~ msgid ""
+#~ "Your other units cannot reach the orc this turn. Send a Fighter to the "
+#~ "village in the far east of the map. It will take two turns to reach it."
+#~ msgstr ""
+#~ "Больше никому на этом ходу до орка не добраться. Пошли воина в отдалённую "
+#~ "деревню на востоке. Ему потребуется два хода, чтобы до неё добраться."
+
+#~ msgid "Tell a Fighter to move to the far east village"
+#~ msgstr "Отправьте воина к отдалённой деревне на востоке"
+
+#~ msgid ""
+#~ "Send the other Fighter and the Shaman south so they can attack next turn, "
+#~ "then return to the keep to recruit more units!"
+#~ msgstr ""
+#~ "Отправь другого воина и шаманку на юг, и они смогут атаковать на "
+#~ "следующем ходу. Затем вернись в укрытие и завербуй еще солдат!"
+
+#~ msgid "Move your Fighter and Shaman south, then return Konrad to the keep"
+#~ msgstr "Отправьте воина и шаманку на юг, затем верните Конрада в укрытие"
+
+#~ msgid "Move your Fighter and Shaman south, then return Li’sar to the keep"
+#~ msgstr "Отправьте воина и шаманку на юг, затем верните Лисар в укрытие"
+
+#~ msgid "Recruit another Archer and a Fighter"
+#~ msgstr "Завербуйте еще одного лучника и воина"
+
+#~ msgid "That is often a problem, which is why owning villages is important."
+#~ msgstr "Это известная проблема. Вот почему очень важно удерживать деревни."
+
+#~ msgid "Move Konrad to another (unowned) village"
+#~ msgstr "Переведите Конрада к другой (незанятой) деревне"
+
+#~ msgid "Move Li’sar to another (unowned) village"
+#~ msgstr "Переведите Лисар к другой (незанятой) деревне"
+
+#~ msgid "ZoC"
+#~ msgstr "ЗК"
+
+#~ msgid "Advance other units and capture villages, then <b>End Turn</b>"
+#~ msgstr ""
+#~ "Продвигайте других бойцов, занимайте деревни, а затем нажмите <b>Конец "
+#~ "хода</b>"
+
+#~ msgid ""
+#~ "female^No other units can reach that orc. I hope my $unit.language_name "
+#~ "survives its counter-attack! I’d better grab more villages and move "
+#~ "everyone closer for next turn."
+#~ msgstr ""
+#~ "Никому больше не добраться до этого орка. Надеюсь, $unit.language_name "
+#~ "переживёт его контратаку! Займу-ка я побольше деревень и подтяну своих "
+#~ "солдат поближе."
+
+#~ msgid "Move your Shaman onto the bridge to stand behind your other unit"
+#~ msgstr "Подведите шаманку на мост, на поле позади другого воина"
+
+#~ msgid ""
+#~ "Don’t forget about your Fighter in the east; you can move him south to "
+#~ "that last village near the channel."
+#~ msgstr ""
+#~ "Не забывай о своем воине на востоке. Можно переместить его на юг, к "
+#~ "деревне у реки."
+
+#~ msgid ""
+#~ "After this dialog, hold the mouse over the landscape image below the "
+#~ "minimap on the right. This brings up a description of the time of day, "
+#~ "showing who has the advantage."
+#~ msgstr ""
+#~ "После этого диалога наведите указатель мыши на изображение ландшафта над "
+#~ "миникартой справа. Вы увидите описание времени суток и узнаете, у кого "
+#~ "сейчас преимущество."
+
+#~ msgid "Defend here"
+#~ msgstr "Обороняйтесь здесь"
+
+#~ msgid ""
+#~ "female^Advancing a level has fully healed me!\n"
+#~ "I always have a 60% chance of hitting with my <i>Marksman</i> ability, "
+#~ "and I deal 9 damage each for 4 attacks. Use me to dislodge hard-to-hit "
+#~ "units."
+#~ msgstr ""
+#~ "Я продвинулась на новый уровень и полностью излечилась!\n"
+#~ "Теперь у меня есть способность <i>снайпер</i> — мои шансы попасть в цель "
+#~ "из лука не меньше 60%. Я наношу 9 единиц урона в каждой из 4 атак. С моей "
+#~ "помощью вы можете добраться до самых труднодоступных врагов."

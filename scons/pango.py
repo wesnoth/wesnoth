@@ -15,7 +15,7 @@ def CheckPango(context, backend, require_version = None):
             env["PKGCONFIG_FLAGS"] = "--define-variable=prefix=" + gtkdir
 
     try:
-        env["ENV"]["PKG_CONFIG_PATH"] = environ.get("PKG_CONFIG_PATH")
+        env["ENV"]["PKG_CONFIG_PATH"] = environ.get("PKG_CONFIG_PATH", "")
         version_arg = ""
         if require_version:
             version_arg = env["ESCAPE"](" >= ") + require_version

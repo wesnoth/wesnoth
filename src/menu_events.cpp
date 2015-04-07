@@ -2965,6 +2965,7 @@ void console_handler::do_next_level()
 	e.proceed_to_next_level = true;
 	e.is_victory = true;
 	menu_handler_.pc_.set_end_level_data(e);
+	menu_handler_.pc_.force_end_turn();
 	menu_handler_.pc_.maybe_throw_return_to_play_side();
 }
 
@@ -3015,6 +3016,8 @@ void console_handler::do_choose_level() {
 		e.proceed_to_next_level = true;
 		e.is_victory = true;
 		menu_handler_.pc_.set_end_level_data(e);
+		// This is for linger mode where end turn is actualy end scenario.
+		menu_handler_.pc_.force_end_turn();
 		menu_handler_.pc_.maybe_throw_return_to_play_side();
 	}
 }

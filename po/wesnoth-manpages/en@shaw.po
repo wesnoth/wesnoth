@@ -173,7 +173,8 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:60
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--config-dir>I<\\ name>"
 msgid "B<--config-dir>I<\\ name>"
 msgstr "B<--config-dir>I<\\ name>"
 
@@ -193,7 +194,8 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:67
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--config-path>"
 msgid "B<--config-path>"
 msgstr "B<--config-path>"
 
@@ -1879,6 +1881,48 @@ msgstr ""
 #, fuzzy
 msgid "B<wesnoth>(6)."
 msgstr "wesnoth"
+
+# type: TP
+#, fuzzy
+#~| msgid "B<--path>"
+#~ msgid "B<--data-path>"
+#~ msgstr "B<--𐑐𐑭𐑔>"
+
+# type: Plain text
+#, fuzzy
+#~| msgid "prints the name of the game data directory and exits."
+#~ msgid "path the path of the data directory and exits."
+#~ msgstr "𐑐𐑮𐑦𐑯𐑑𐑕 𐑞 𐑯𐑱𐑥 𐑝 𐑞 𐑜𐑱𐑥 𐑛𐑱𐑑𐑩 𐑛𐑲𐑮𐑧𐑒𐑑𐑼𐑦 𐑯 𐑧𐑜𐑟𐑦𐑑𐑕."
+
+# type: Plain text
+#, fuzzy
+#~ msgid ""
+#~ "sets the user configuration directory to I<name> under $HOME or \"My "
+#~ "Documents\\eMy Games\" for windows.  You can also specify an absolute "
+#~ "path for the configuration directory outside the $HOME or \"My Documents"
+#~ "\\eMy Games\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/."
+#~ "config/wesnoth, on other systems to the userdata path."
+#~ msgstr ""
+#~ "𐑕𐑧𐑑𐑕 𐑞 𐑿𐑟𐑼 𐑒𐑩𐑯𐑓𐑦𐑜𐑘𐑼𐑱𐑖𐑩𐑯 𐑛𐑲𐑮𐑧𐑒𐑑𐑼𐑦 𐑑 I<name> 𐑳𐑯𐑛𐑼 $HOME 𐑹 \"My Documents"
+#~ "\\eMy Games\" 𐑓𐑹 𐑢𐑦𐑯𐑛𐑴𐑟."
+
+# type: TP
+#, fuzzy
+#~| msgid "B<--config-dir>I<\\ name>"
+#~ msgid "B<--userdata-dir>I<\\ name>"
+#~ msgstr "B<--config-dir>I<\\ name>"
+
+# type: TP
+#, fuzzy
+#~| msgid "B<--path>"
+#~ msgid "B<--userdata-path>"
+#~ msgstr "B<--𐑐𐑭𐑔>"
+
+# type: Plain text
+#, fuzzy
+#~| msgid "prints the path of the user configuration directory and exits."
+#~ msgid "prints the path of the userdata directory and exits."
+#~ msgstr "𐑐𐑮𐑦𐑯𐑑𐑕 𐑞 𐑐𐑭𐑔 𐑝 𐑞 𐑿𐑟𐑼 𐑒𐑩𐑯𐑓𐑦𐑜𐑘𐑼𐑱𐑖𐑩𐑯 𐑛𐑲𐑮𐑧𐑒𐑑𐑼𐑦 𐑯 𐑧𐑜𐑟𐑦𐑑𐑕."
 
 # type: TP
 #, fuzzy

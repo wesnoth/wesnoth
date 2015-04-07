@@ -178,13 +178,20 @@ msgstr "Valitud sõjakäigu stsenaariumi number. Vaikimisi on see 1."
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:60
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--config-dir>I<\\ name>"
 msgid "B<--config-dir>I<\\ name>"
 msgstr "B<--config-dir>I<\\ nimi>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:67
+#, fuzzy
+#| msgid ""
+#| "sets the user configuration directory to I<name> under $HOME or \"My "
+#| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
+#| "path for the configuration directory outside the $HOME or \"My Documents"
+#| "\\eMy Games\""
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -198,7 +205,8 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:67
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--config-path>"
 msgid "B<--config-path>"
 msgstr "B<--config-path>"
 
@@ -1892,6 +1900,55 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
+
+# type: TP
+#, fuzzy
+#~| msgid "B<--path>"
+#~ msgid "B<--data-path>"
+#~ msgstr "B<--path>"
+
+# type: Plain text
+#, fuzzy
+#~| msgid "prints the name of the game data directory and exits."
+#~ msgid "path the path of the data directory and exits."
+#~ msgstr "väljastab mängu andmekataloogi nime ja väljub programmist."
+
+# type: Plain text
+#, fuzzy
+#~| msgid ""
+#~| "sets the user configuration directory to I<name> under $HOME or \"My "
+#~| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
+#~| "path for the configuration directory outside the $HOME or \"My Documents"
+#~| "\\eMy Games\""
+#~ msgid ""
+#~ "sets the user configuration directory to I<name> under $HOME or \"My "
+#~ "Documents\\eMy Games\" for windows.  You can also specify an absolute "
+#~ "path for the configuration directory outside the $HOME or \"My Documents"
+#~ "\\eMy Games\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/."
+#~ "config/wesnoth, on other systems to the userdata path."
+#~ msgstr ""
+#~ "määrab kasutajasätete kataloogiks  I<nimi> kataloogi $HOME või \"My "
+#~ "Documents\\eMy Games\" Windowsi puhul. Võid ka määrata mujal asuva "
+#~ "sätetekataloogi absoluutse kataloogitee."
+
+# type: TP
+#, fuzzy
+#~| msgid "B<--config-dir>I<\\ name>"
+#~ msgid "B<--userdata-dir>I<\\ name>"
+#~ msgstr "B<--config-dir>I<\\ nimi>"
+
+# type: TP
+#, fuzzy
+#~| msgid "B<--path>"
+#~ msgid "B<--userdata-path>"
+#~ msgstr "B<--path>"
+
+# type: Plain text
+#, fuzzy
+#~| msgid "prints the path of the user configuration directory and exits."
+#~ msgid "prints the path of the userdata directory and exits."
+#~ msgstr ""
+#~ "kirjutab ekraaanile kasutajasätete kataloogi nime ja väljub programmist."
 
 #~ msgid "2011"
 #~ msgstr "2011"

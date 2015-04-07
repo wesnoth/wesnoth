@@ -169,7 +169,8 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:60
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--config-dir>I<\\ name>"
 msgid "B<--config-dir>I<\\ name>"
 msgstr "B<--config-dir>I<\\ name>"
 
@@ -189,7 +190,8 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:67
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--config-path>"
 msgid "B<--config-path>"
 msgstr "B<--config-path>"
 
@@ -1859,6 +1861,48 @@ msgstr ""
 #, fuzzy
 msgid "B<wesnoth>(6)."
 msgstr "wesnoth"
+
+# type: TP
+#, fuzzy
+#~| msgid "B<--path>"
+#~ msgid "B<--data-path>"
+#~ msgstr "B<--path>"
+
+# type: Plain text
+#, fuzzy
+#~| msgid "prints the name of the game data directory and exits."
+#~ msgid "path the path of the data directory and exits."
+#~ msgstr "ゲームデータディレクトリの名前を表示して、終了する。"
+
+# type: Plain text
+#, fuzzy
+#~ msgid ""
+#~ "sets the user configuration directory to I<name> under $HOME or \"My "
+#~ "Documents\\eMy Games\" for windows.  You can also specify an absolute "
+#~ "path for the configuration directory outside the $HOME or \"My Documents"
+#~ "\\eMy Games\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/."
+#~ "config/wesnoth, on other systems to the userdata path."
+#~ msgstr ""
+#~ "ユーザ設定ディレクトリを $HOME 以下の I<name> または windows の \"My "
+#~ "Documents\\eMy Games\" に設定する。"
+
+# type: TP
+#, fuzzy
+#~| msgid "B<--config-dir>I<\\ name>"
+#~ msgid "B<--userdata-dir>I<\\ name>"
+#~ msgstr "B<--config-dir>I<\\ name>"
+
+# type: TP
+#, fuzzy
+#~| msgid "B<--path>"
+#~ msgid "B<--userdata-path>"
+#~ msgstr "B<--path>"
+
+# type: Plain text
+#, fuzzy
+#~| msgid "prints the path of the user configuration directory and exits."
+#~ msgid "prints the path of the userdata directory and exits."
+#~ msgstr "ユーザ設定ディレクトリの名前を表示して、終了する。"
 
 # type: TP
 #~ msgid "B<--smallgui>"

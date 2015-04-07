@@ -42,7 +42,6 @@ Version 1.13.0-dev:
    * Several fixes of translatable strings in Micro AIs
    * Micro AIs: only display on-screen error messages when in debug mode
    * Add conditional inclusion of AI macros to AI cfgs in data/ai
-
  * Campaigns:
    * Changed all occurrences of {FLAG_VARIANT ragged} to {FLAG_VARIANT6 ragged}
    * Singleplayer campaign creation now utilizes the create, configure,
@@ -128,6 +127,7 @@ Version 1.13.0-dev:
    * Added Brazier and Lit Brazier embellishment terrains
    * New beach waves terrain animation.
  * Help browser:
+   * Seveal sections have been rewritten or had their layout improved
    * Added trait list with links to the help page for unit types
    * Added "Defense Capped" column with notification in the "terrain modifiers
      table" in the unit help page, for when a defense rating is negative. The
@@ -289,6 +289,7 @@ Version 1.13.0-dev:
      in place of id, and [object] duration=level.
    * Allowed direct modification of unit.ellipse variable even if ellipse= is set
      in [unit_type] or by an [object]
+   * Add accelerate=yes/no key in [delay]
  * Miscellaneous and bug fixes:
    * replace 'fight_on_without_leader'=yes/no with defeat_condition=no_leader/
      no_units/always/never which allows the wml developer to decide when a side
@@ -537,6 +538,7 @@ Version 1.13.0-dev:
    * Fixed bug 23117 Invert breaks lobby filtering if Apply Filter is off.
    * Fixed bug 23426 Show terrain description hotkey works also for shrouded
      hexes.
+   * Fix bug #23243: Segfault while clicking during [delay] in prestart.
 
 Version 1.11.11:
  * Add-ons server:

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.7+dev\n"
 "POT-Creation-Date: 2013-11-16 09:28+0100\n"
-"PO-Revision-Date: 2014-06-24 22:50+0700\n"
+"PO-Revision-Date: 2014-06-04 23:24+0700\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "Language: vi\n"
@@ -186,30 +186,37 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:60
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--userconfig-dir>I<\\ name>"
 msgid "B<--config-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ tên>"
+msgstr "B<--userconfig-dir>I<\\ tên>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:67
+#, fuzzy
+#| msgid ""
+#| "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
+#| "Games\" for windows.  You can also specify an absolute path for the "
+#| "userdata directory outside the $HOME or \"My Documents\\eMy Games\"."
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
 "for the configuration directory outside the $HOME or \"My Documents\\eMy "
 "Games\""
 msgstr ""
-"đặt đường dẫn thư mục chứa thiết lập người dùng thành I<tên> dưới $HOME hoặc "
+"đặt đường dẫn thư mục dữ liệu của người dùng thành I<tên> dưới $HOME hoặc "
 "\"My Documents\\eMy Games\" với windows. Bạn cũng có thể chỉ định một đường "
-"dẫn tuyệt đối cho thư mục chứa thiết lập nằm ngoài $HOME hoặc \"My Documents"
-"\\eMy Games\""
+"dẫn tuyệt đối cho thư mục dữ liệu của người dùng nằm ngoài $HOME hoặc \"My "
+"Documents\\eMy Games\"."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:67
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--userconfig-path>"
 msgid "B<--config-path>"
-msgstr "B<--config-path>"
+msgstr "B<--userconfig-path>"
 
 # type: Plain text
 #. type: Plain text
@@ -1920,3 +1927,38 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
+
+# type: TP
+#~ msgid "B<--data-path>"
+#~ msgstr "B<--data-path>"
+
+# type: Plain text
+#~ msgid "path the path of the data directory and exits."
+#~ msgstr "in đường dẫn của thư mục dữ liệu và thoát."
+
+# type: Plain text
+#~ msgid ""
+#~ "sets the user configuration directory to I<name> under $HOME or \"My "
+#~ "Documents\\eMy Games\" for windows.  You can also specify an absolute "
+#~ "path for the configuration directory outside the $HOME or \"My Documents"
+#~ "\\eMy Games\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/."
+#~ "config/wesnoth, on other systems to the userdata path."
+#~ msgstr ""
+#~ "đặt đường dẫn thư mục cấu hình của người dùng thành I<tên> dưới $HOME "
+#~ "hoặc \"My Documents\\eMy Games\" với windows. Bạn cũng có thể chỉ định "
+#~ "một đường dẫn tuyệt đối cho thư mục cấu hình nằm ngoài $HOME hoặc \"My "
+#~ "Documents\\eMy Games\". Dưới X11 mặc định là $XDG_CONFIG_HOME hoặc $HOME/."
+#~ "config/wesnoth, trên các hệ thống khác là đường dẫn dữ liệu của người "
+#~ "dùng."
+
+# type: TP
+#~ msgid "B<--userdata-dir>I<\\ name>"
+#~ msgstr "B<--userdata-dir>I<\\ tên>"
+
+# type: TP
+#~ msgid "B<--userdata-path>"
+#~ msgstr "B<--userdata-path>"
+
+# type: Plain text
+#~ msgid "prints the path of the userdata directory and exits."
+#~ msgstr "in đường dẫn của thư mục dữ liệu của người dùng và thoát."

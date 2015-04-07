@@ -74,7 +74,7 @@ establece como \fB0\fP, no habrá ningún límite. (Por defecto: \fB0\fP).
 muestra el número de versión y finaliza.
 .TP 
 \fB\-v, \-\-verbose\fP
-activa el registro de depuración
+activa el registro de depuración.
 .
 .SH "CONFIGURACIÓN DEL SERVIDOR"
 .
@@ -146,9 +146,9 @@ La contraseña utilizada para obtener privilegios de administrador (mediante
 \fB/query admin \fP\fIcontraseña\fP).
 .TP 
 \fBreplay_save_path\fP
-El directorio donde el servidor almacena repeticiones de partidas. (¡No
-olvide el '/' al final!) Por defecto es `' (vacío), es decir, el directorio
-donde wesnothd fue inicializado.
+El directorio donde el servidor almacena repeticiones de partidas (no olvide
+la «/» al final). Por omisión estará «» (vacío) lo que quiere decir que el
+directorio wesnothd fue inicializado.
 .TP 
 \fBrestart_command\fP
 El comando que ejecuta el servidor para iniciar un nuevo proceso al recibir
@@ -169,7 +169,7 @@ Una lista separada por comas de patrones de números de versión que serán
 admitidos por el servidor. \fB*\fP y \fB?\fP sirven de comodines. (Por defecto es
 la versión de Wesnoth correspondiente al servidor.)
 .br
-Ejemplo:  \fBversions_accepted="*"\fP acepta cualquier cadena de versión.
+Ejemplo: \fBversions_accepted="*"\fP acepta cualquier cadena de versión.
 .TP  
 \fBuser_handler\fP
 El nombre del servicio de usuarios a utilizar. Los servicios actualmente
@@ -273,7 +273,7 @@ La contraseña de este usuario.
 La dirección de respuesta (reply\-to) de su correo.
 .TP  
 \fBmail_port\fP
-El puerto del servidor de correos (por defecto, 25).
+El puerto del servidor de correo (por defecto, 25).
 .
 .SH "ESTADO DE SALIDA"
 .
