@@ -12,6 +12,11 @@ Version 1.12.1+dev:
    * Updated translations: Chinese (Simplified), Chinese (Traditional),
      Galician, German, Polish.
 
+ * Miscellaneous and bug fixes:
+   * Fix OOS when undoing after deactivating delayed shroud updates.
+   * Eliminate local carryover info retained by clients when transitioning in MP
+     campaigns, which seems to cause OOS and wrong carryover gold (bug #22936).
+
 
 Version 1.12.1:
  * Campaigns:
