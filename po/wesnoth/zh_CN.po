@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-04-05 03:22-0300\n"
-"PO-Revision-Date: 2015-01-11 20:22+0800\n"
+"PO-Revision-Date: 2015-02-07 13:00+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 1.7.1\n"
+"X-Generator: Poedit 1.7.4\n"
 
 #. [advanced_preference]: type=combo
 #. Associated save_compression_short^ entries need to be as short as
@@ -3269,27 +3269,23 @@ msgstr "游戏录像"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:600
-#, fuzzy
-#| msgid "Next Side"
 msgid "Next Move"
-msgstr "下一阵营"
+msgstr "下一手"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:601
-#, fuzzy
-#| msgid "play side turn"
 msgid "play single move"
-msgstr "播放本阵营回合"
+msgstr "进行下一手"
 
 #. [theme]: id=Classic
 #: data/themes/classic.cfg:11
 msgid "theme^Classic"
-msgstr ""
+msgstr "经典"
 
 #. [theme]: id=Classic
 #: data/themes/classic.cfg:13
 msgid "The classic, pre-1.12 theme"
-msgstr ""
+msgstr "经典的，1.12以前的版本所使用的主题"
 
 #. [menu]: id=menu-main
 #: data/themes/classic.cfg:106 data/themes/default.cfg:80
@@ -3355,24 +3351,18 @@ msgstr "收入"
 
 #. [unit_level]: id=unit-level
 #: data/themes/classic.cfg:432
-#, fuzzy
-#| msgid "statuspanel^lvl"
 msgid "statuspanel^level"
 msgstr "等级"
 
 #. [unit_moves]: id=unit-moves
 #: data/themes/classic.cfg:462
-#, fuzzy
-#| msgid "statuspanel^lvl"
 msgid "statuspanel^moves"
-msgstr "等级"
+msgstr "移动"
 
 #. [unit_defense]: id=unit-defense
 #: data/themes/classic.cfg:471
-#, fuzzy
-#| msgid "statuspanel^lvl"
 msgid "statuspanel^terrain def."
-msgstr "等级"
+msgstr "地形闪避"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:32
@@ -3381,8 +3371,6 @@ msgstr "默认"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:33
-#, fuzzy
-#| msgid "Default theme."
 msgid "The default theme"
 msgstr "默认主题"
 
@@ -3413,10 +3401,8 @@ msgstr "潘多拉"
 
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:21
-#, fuzzy
-#| msgid "800x480 theme optimized for Pandora devices."
 msgid "An 800×480 theme optimized for Pandora devices"
-msgstr "为潘多拉设备优化的800x480主题。"
+msgstr "为潘多拉设备优化的800x480主题"
 
 #. [action]: id=end-turn
 #: data/themes/pandora.cfg:151
@@ -6687,20 +6673,14 @@ msgid "Search:"
 msgstr "搜索："
 
 #: src/multiplayer_lobby.cpp:876
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Normal Replays"
-msgstr "保存游戏录像"
+msgstr "普通游戏录像"
 
 #: src/multiplayer_lobby.cpp:877
-#, fuzzy
-#| msgid "Quick replays"
 msgid "Quick Replays"
-msgstr "快速读取游戏录像"
+msgstr "快速游戏录像"
 
 #: src/multiplayer_lobby.cpp:878
-#, fuzzy
-#| msgid "Enter blindfolded"
 msgid "Enter Blindfolded"
 msgstr "蒙眼进入"
 
