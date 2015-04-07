@@ -64,9 +64,9 @@ uint32_t mt_rng::get_next_random()
 {
 	uint32_t result = mt_();
 	++random_calls_;
-	DBG_RND << "pulled user random " << result
+	DBG_RND << (formatter() << "pulled user random " << result
 		<< " for call " << random_calls_
-		<< " with seed " << std::hex << random_seed_ << '\n';
+		<< " with seed " << std::hex << random_seed_).str() << std::endl;
 
 	return result;
 }

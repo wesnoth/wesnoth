@@ -83,7 +83,8 @@ game_display::game_display(game_board& board, CVideo& video, boost::weak_ptr<wb:
 		first_turn_(true),
 		in_game_(false),
 		chat_man_(new display_chat_manager(*this)),
-		game_mode_(RUNNING)
+		game_mode_(RUNNING),
+		needs_rebuild_(false)
 {
 	replace_overlay_map(&overlay_map_);
 	clear_screen();
