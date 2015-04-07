@@ -89,13 +89,19 @@ void mt_rng::seed_random(const std::string & seed_str, const unsigned int call_c
 {
 	uint32_t new_seed; 
 	std::istringstream s(seed_str); 
-	s >> std::hex >> new_seed;
+	if (!(s >> std::hex >> new_seed)) {
+		new_seed = 42;
+		DBG_RND << "Failed to seed a random number generator using seed string '" << seed_str << "', it could not be parsed to hex. Seeding with 42.\n";
+	}
 	seed_random(new_seed, call_count);
 }
 
 std::string mt_rng::get_random_seed_str() const {
 	std::stringstream stream;
-	stream << std::setfill('0') << std::setw(sizeof(uint32_t)*2) << std::hex << random_seed_;
+	stream << std::setfill('0');
+	stream << std::setw(sizeof(uint32_t)*2);
+	stream << std::hex;
+	stream << random_seed_;
 	return stream.str();
 }
 
