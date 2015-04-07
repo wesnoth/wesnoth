@@ -74,7 +74,7 @@ def CheckOgg(context):
 
     int main(int argc, char **argv)
     {
-        Mix_Music* music = Mix_LoadMUS("data/core/music/main_menu.ogg");
+        Mix_Music* music = Mix_LoadMUS("$TESTFILE");
         if (music == NULL) {
             exit(1);
         }
@@ -82,6 +82,7 @@ def CheckOgg(context):
     }
 \n
 '''
+    test_program = context.env.Clone(TESTFILE = File("data/core/music/main_menu.ogg").rfile().abspath).subst(test_program)
     #context.env.AppendUnique(LIBS = "SDL_mixer")
     context.Message("Checking for Ogg Vorbis support in SDL... ")
     if context.env["host"]:
@@ -103,7 +104,7 @@ def CheckPNG(context):
     int main(int argc, char **argv)
     {
             SDL_RWops *src;
-            char *testimage = "images/buttons/button_normal/button_H22-pressed.png";
+            char *testimage = "$TESTFILE";
 
             src = SDL_RWFromFile(testimage, "rb");
             if (src == NULL) {
@@ -113,6 +114,7 @@ def CheckPNG(context):
     }
 \n
 '''
+    test_program = context.env.Clone(TESTFILE = File("images/buttons/button_normal/button_H22-pressed.png").rfile().abspath).subst(test_program)
     context.Message("Checking for PNG support in SDL... ")
     if context.env["host"]:
         context.Result("n/a (cross-compile)")
@@ -133,7 +135,7 @@ def CheckJPG(context):
     int main(int argc, char **argv)
     {
             SDL_RWops *src;
-            char *testimage = "data/core/images/maps/background.jpg";
+            char *testimage = "$TESTFILE";
 
             src = SDL_RWFromFile(testimage, "rb");
             if (src == NULL) {
@@ -143,6 +145,7 @@ def CheckJPG(context):
     }
 \n
 '''
+    test_program = context.env.Clone(TESTFILE = File("data/core/images/maps/background.jpg").rfile().abspath).subst(test_program)
     context.Message("Checking for JPG support in SDL... ")
     if context.env["host"]:
         context.Result("n/a (cross-compile)")
