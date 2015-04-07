@@ -8,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
 "POT-Creation-Date: 2013-11-16 09:28+0100\n"
-"PO-Revision-Date: 2015-01-02 13:16+0800\n"
+"PO-Revision-Date: 2015-02-07 13:06+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
-"Language-Team:  Wesnoth Simplified Chinese Team\n"
+"Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 1.7.1\n"
+"X-Generator: Poedit 1.7.4\n"
 
 #. type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -131,9 +131,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--campaign-difficulty [E<lt>difficultyE<gt>]>"
-msgstr "B<--campaign-difficulty E<lt>难度E<gt>>"
+msgstr "B<--campaign-difficulty [E<lt>difficultyE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -160,27 +160,33 @@ msgstr "指定战役中的场景ID。默认为第一个场景。"
 #. type: TP
 #: ../../doc/man/wesnoth.6:60
 #, fuzzy, no-wrap
+#| msgid "B<--userconfig-dir>I<\\ name>"
 msgid "B<--config-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ name>"
+msgstr "B<--userconfig-dir>I<\\ name>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:67
 #, fuzzy
+#| msgid ""
+#| "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
+#| "Games\" for windows.  You can also specify an absolute path for the "
+#| "userdata directory outside the $HOME or \"My Documents\\eMy Games\"."
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
 "for the configuration directory outside the $HOME or \"My Documents\\eMy "
 "Games\""
 msgstr ""
-"设置用户配置目录为$HOME或者Windows下“我的文档\\我的游戏（My Documents\\eMy "
+"设置用户数据目录为$HOME或者Windows下“我的文档\\我的游戏（My Documents\\eMy "
 "Games）”下的I<name>目录。也可以为配置目录指定一条绝对路径，此路径可以在$HOME"
 "或者“My Documents\\eMy Games”之外。"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:67
 #, fuzzy, no-wrap
+#| msgid "B<--userconfig-path>"
 msgid "B<--config-path>"
-msgstr "B<--config-path>"
+msgstr "B<--userconfig-path>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:70
@@ -429,13 +435,12 @@ msgstr "显示游戏数据目录的名称并退出。"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:159
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-p, --preprocess E<lt>source file/folderE<gt> E<lt>target directoryE<gt>>"
-msgstr "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
+msgstr "B<-p, --preprocess E<lt>source file/folderE<gt> E<lt>target directoryE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:169
-#, fuzzy
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "
@@ -448,17 +453,15 @@ msgid ""
 msgstr ""
 "预处理所指定的文件/文件夹。这些文件将被写入所指定的目标目录：包括一个普通的"
 "cfg文件和一个处理过的cfg文件。如果指定的是个文件夹，那么将根据已知的预处理器"
-"规则递归地预处理之。data/core/macros中的常用宏会在指定的资源之前被预处理。"
-"B<define1,define2,...>——这些额外的定义将在预处理之前生效。如果想要添加这些定"
-"义，必须在前面加上“=”字符。如果“SKIP_CORE”在定义列表中，那么data/core不会被预"
-"处理。例如： B<-p ~/wesnoth/data/campaigns/tutorial ~/result> 或者 B<-"
-"p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result>"
+"规则递归地预处理之。“data/core/macros”目录中的常用宏会在指定的资源之前被预处"
+"理。例如： B<-p ~/wesnoth/data/campaigns/tutorial ~/result.> 有关预处理器的详"
+"情请见：http://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:170
 #, no-wrap
 msgid "B<--preprocess-defines=DEFINE1,DEFINE2,etc>"
-msgstr ""
+msgstr "B<--preprocess-defines=DEFINE1,DEFINE2,etc>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:175
@@ -467,6 +470,8 @@ msgid ""
 "B<SKIP_CORE> is in the define list the \"data/core\" directory won't be "
 "preprocessed."
 msgstr ""
+"由逗号分隔的定义列表，用于“--preprocess”指令。如果B<SKIP_CORE>在定义列表中，"
+"则“data/core”目录不会被预处理。"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:175
@@ -531,27 +536,27 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:193
 #, no-wrap
 msgid "B<--username>I<E<lt>usernameE<gt>>"
-msgstr ""
+msgstr "B<--username>I<E<lt>usernameE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:196
 msgid ""
 "uses E<lt>usernameE<gt> when connecting to a server, ignoring other "
 "preferences."
-msgstr ""
+msgstr "在连接服务器时使用E<lt>usernameE<gt>，忽略其他首选项。"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:196
 #, no-wrap
 msgid "B<--password>I<E<lt>passwordE<gt>>"
-msgstr ""
+msgstr "B<--password>I<E<lt>passwordE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:199
 msgid ""
 "uses E<lt>passwordE<gt> when connecting to a server, ignoring other "
 "preferences. Unsafe."
-msgstr ""
+msgstr "在连接服务器时使用E<lt>passwordE<gt>，忽略其他首选项。不安全。"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:199
@@ -710,25 +715,25 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:254
 #, no-wrap
 msgid "B<--ignore-map-settings>"
-msgstr ""
+msgstr "B<--ignore-map-settings>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:257
 msgid "do not use map settings, use default values instead."
-msgstr ""
+msgstr "不使用地图设置，而使用默认值。"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:257
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--multiplayer-repeat=>I<value>"
-msgstr "B<--era=>I<value>"
+msgstr "B<--multiplayer-repeat=>I<value>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:264
 msgid ""
 "repeats a multiplayer game I<value> times. Best to use with B<--nogui> for "
 "scriptable benchmarking."
-msgstr ""
+msgstr "重复进行多人游戏I<value>次。最好与B<--nogui>同用于可脚本化的性能测试。"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:264
@@ -1639,15 +1644,12 @@ msgstr ""
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
 
-#, fuzzy
 #~ msgid "B<--data-path>"
-#~ msgstr "B<--path>"
+#~ msgstr "B<--data-path>"
 
-#, fuzzy
 #~ msgid "path the path of the data directory and exits."
-#~ msgstr "显示游戏数据目录的名称并退出。"
+#~ msgstr "打印游戏数据目录的路径并退出。"
 
-#, fuzzy
 #~ msgid ""
 #~ "sets the user configuration directory to I<name> under $HOME or \"My "
 #~ "Documents\\eMy Games\" for windows.  You can also specify an absolute "
@@ -1657,16 +1659,15 @@ msgstr "B<wesnoth>(6)."
 #~ msgstr ""
 #~ "设置用户配置目录为$HOME或者Windows下“我的文档\\我的游戏（My Documents"
 #~ "\\eMy Games）”下的I<name>目录。也可以为配置目录指定一条绝对路径，此路径可"
-#~ "以在$HOME或者“My Documents\\eMy Games”之外。"
+#~ "以在$HOME或者“My Documents\\eMy Games”之外。在X11下，配置目录默认为"
+#~ "$XDG_CONFIG_HOME或者$HOME/.config/wesnoth。在其他系统上，配置目录默认为用"
+#~ "户数据目录。"
 
-#, fuzzy
 #~ msgid "B<--userdata-dir>I<\\ name>"
-#~ msgstr "B<--config-dir>I<\\ name>"
+#~ msgstr "B<--userdata-dir>I<\\ name>"
 
-#, fuzzy
 #~ msgid "B<--userdata-path>"
-#~ msgstr "B<--path>"
+#~ msgstr "B<--userdata-path>"
 
-#, fuzzy
 #~ msgid "prints the path of the userdata directory and exits."
-#~ msgstr "输出用户配置目录的路径并退出。"
+#~ msgstr "打印用户数据目录的路径并退出。"

@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-04-05 05:06-0300\n"
-"PO-Revision-Date: 2015-01-07 21:24+0800\n"
+"PO-Revision-Date: 2015-02-14 20:22+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 1.7.1\n"
+"X-Generator: Poedit 1.7.4\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:531
@@ -3380,7 +3380,7 @@ msgid ""
 msgstr ""
 "通过主菜单中的<italic>text='附加组件'</italic>选项，玩家可以下载或者更新用户"
 "制作的附加组件。连接到附加组件服务器后（默认为<italic>text='add-ons.wesnoth."
-"org'</itlalic>），你可以看到一份可供下载的组件列表。\n"
+"org'</italic>），你可以看到一份可供下载的组件列表。\n"
 "\n"
 "在每个条目下显示了该组件的安装状态。对于服务器中<italic>text='可升级的'</"
 "italic>或者<italic>text='已过期的'</italic>的附加组件，它们的所安装版本号和最"
@@ -3415,9 +3415,10 @@ msgstr ""
 "要移除附加组件，选择附加组件服务器连接对话中的 <bold>text='移除附加组件'</"
 "bold> 选项。你可以从中勾选想要移除的附加组件。\n"
 "\n"
-" 如果附加组件中包含了发布信息的(<italic>text='.pbl文件'</italic> files)的话，"
-"你将无法移除它。这样设计是为了避免文件的意外损失。如果必要的话，你可以在文件"
-"管理器中手动删除信息文件和附加组件。"
+"如果附加组件中包含了发布信息(<italic>text='.pbl文件'</italic>)的话，你将无法"
+"移除它。\n"
+"这样设计是为了避免文件的意外损失。如果必要的话，你可以在文件管理器中手动删除"
+"信息文件和附加组件。"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:652
@@ -6008,219 +6009,6 @@ msgstr "韦诺之战帮助"
 msgid "Parse error when parsing help text: "
 msgstr "分析帮助文本时出现语法错误："
 
-#~ msgid "Factions"
-#~ msgstr "派系"
-
-#~ msgid "Overview"
-#~ msgstr "概述"
-
-#~ msgid "Fundamentals of Gameplay"
-#~ msgstr "游戏基础"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "To begin with, it’s best to click the <bold>text='Tutorial'</bold> button "
-#~ "at the main menu. This will take you to the interactive tutorial, which "
-#~ "will teach you the basics of Wesnoth. After this, it is recommended that "
-#~ "you play the Heir to the Throne campaign first — click "
-#~ "<bold>text='Campaign'</bold> then <italic>text='Heir to the Throne'</"
-#~ "italic>. As <italic>text='Battle for Wesnoth'</italic> can be quite "
-#~ "challenging, you may wish to start on easy."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "刚开始玩时，建议您在主菜单中点击<bold>text='教程'</bold>按钮。这将带您进入"
-#~ "互动教程，该模式将教给您韦诺的基本玩法。在这之后，建议您先玩“王座之承”战役"
-#~ "——先点击<bold>text='战役'</bold>，再点击<italic>text='王座之承'</italic>。"
-#~ "由于<italic>text='韦诺之战'</italic>可能具有很强的挑战性，您可能会希望从"
-#~ "<italic>text='容易'</italic>级别开始游戏。"
-
-#~ msgid ""
-#~ "These pages outline all you need to know to play <italic>text='Battle for "
-#~ "Wesnoth'</italic>. They cover how to play and the basic mechanics behind "
-#~ "the game. As you play the game, new information is added to these pages "
-#~ "as you come across new aspects of the game. For more detailed information "
-#~ "on special situations and exceptions, please follow the links included."
-#~ msgstr ""
-#~ "这些页面概述了玩<italic>text='韦诺之战'</italic>所需要的所有知识，包括基本"
-#~ "玩法与游戏背后的基本机制。当您在游戏时遇到新的要素时，相应的新信息也会添加"
-#~ "到这些页面中。欲了解特殊情形与例外情况的详细信息，请点击文中包含的链接。"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<italic>text='Campaigns'</italic> consist of multiple scenarios that "
-#~ "follow on from each other, telling a story. In a campaign, you often need "
-#~ "to play more carefully, preserving your best troops so that they can be "
-#~ "used again in later scenarios in the campaign."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<italic>text='战役'</italic>讲述着一个故事，是由一系列环环相扣的场景组成"
-#~ "的。在玩战役时，您常常得更小心谨慎，确保最精良的部队存活下来，使他们能够在"
-#~ "战役中的下一场景里继续战斗。"
-
-#~ msgid ""
-#~ "The game takes place over a series of battles, called "
-#~ "<italic>text='scenarios'</italic>. Each scenario pits your troops against "
-#~ "the troops of one or more adversaries. You can play against the computer, "
-#~ "or with friends who each take turns sitting at the computer (hotseat "
-#~ "play). If your computer is connected to a computer network, you can also "
-#~ "play against other people connected to that network. If your computer has "
-#~ "a connection to the Internet, you can play against other people across "
-#~ "the Internet."
-#~ msgstr ""
-#~ "本游戏由一系列的战斗，也称为<italic>text='场景'</italic>所组成。在每个场景"
-#~ "中，您的部队都将和一个或更多的对手作战。您可以和电脑对战，或和朋友在同一台"
-#~ "电脑上对战（热座模式）。如果您的电脑在局域网内，您也可以和局域网内的其他人"
-#~ "对战。如果您的电脑能连接因特网，则可以和因特网上的其他人对战。"
-
-#~ msgid "Experience and Advancement"
-#~ msgstr "经验值与升级"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<italic>text='Healthy'</italic> units have 1 HP plus 1 HP per level more "
-#~ "than usual and rest heal the usual 2 HP after each turn they did not "
-#~ "fight. They also suffer a quarter less damage from poison."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<italic>text='活力'</italic>单位天生拥有1点附加生命值，每次升级所增加的生"
-#~ "命值也多1点，并且在每个无战斗的回合后都会休息并恢复2点生命值。他们中毒时受"
-#~ "到的伤害也减少1/4。"
-
-#~ msgid "Help"
-#~ msgstr "帮助"
-
-#~ msgid "<header>text='Units having this special attack'</header>"
-#~ msgstr "<header>text='拥有这种特殊攻击的单位'</header>"
-
-#~ msgid "<header>text='Units having this ability'</header>"
-#~ msgstr "<header>text='拥有此技能的单位'</header>"
-
-#~ msgid "Leaders:"
-#~ msgstr "领袖： "
-
-#~ msgid "Recruits:"
-#~ msgstr "征募： "
-
-#~ msgid "Era:"
-#~ msgstr "时代："
-
-#~ msgid "Factions:"
-#~ msgstr "派系："
-
-#~ msgid "Factions are only used in multiplayer"
-#~ msgstr "派系只在多人游戏中使用"
-
-#~ msgid "Base Terrain: "
-#~ msgstr "基础地形"
-
-#~ msgid "level"
-#~ msgstr "等级"
-
-#~ msgid "Advances from: "
-#~ msgstr "升级自："
-
-#~ msgid "Base unit: "
-#~ msgstr "基类单位："
-
-#~ msgid "Base units: "
-#~ msgstr "基类单位："
-
-#~ msgid "Variations: "
-#~ msgstr "衍生兵种："
-
-#~ msgid "race^Miscellaneous"
-#~ msgstr "其他"
-
-#~ msgid "Race: "
-#~ msgstr "种族："
-
-#~ msgid "Abilities: "
-#~ msgstr "技能："
-
-#~ msgid "Ability Upgrades: "
-#~ msgstr "技能升级："
-
-#~ msgid "HP: "
-#~ msgstr "生命值："
-
-#~ msgid "Moves: "
-#~ msgstr "移动："
-
-#~ msgid "Vision: "
-#~ msgstr "视野："
-
-#~ msgid "Jamming: "
-#~ msgstr "干扰："
-
-#~ msgid "Cost: "
-#~ msgstr "价格："
-
-#~ msgid "Alignment: "
-#~ msgstr "立场："
-
-#~ msgid "Required XP: "
-#~ msgstr "升级所需经验值："
-
-#~ msgid "unit help^Attacks"
-#~ msgstr "攻击"
-
-#~ msgid "unit help^Name"
-#~ msgstr "名称"
-
-#~ msgid "Type"
-#~ msgstr "类型"
-
-#~ msgid "Strikes"
-#~ msgstr "输出"
-
-#~ msgid "Range"
-#~ msgstr "范围"
-
-#~ msgid "Special"
-#~ msgstr "特性"
-
-#~ msgid "Resistances"
-#~ msgstr "抗性"
-
-#~ msgid "Attack Type"
-#~ msgstr "攻击类型"
-
-#~ msgid "Resistance"
-#~ msgstr "抗性"
-
-#~ msgid "Terrain"
-#~ msgstr "地形"
-
-#~ msgid "Defense"
-#~ msgstr "闪避率"
-
-#~ msgid "Movement Cost"
-#~ msgstr "移动点数耗费"
-
-#~ msgid "Vision Cost"
-#~ msgstr "视野耗费"
-
-#~ msgid "Jamming Cost"
-#~ msgstr "干扰耗费"
-
-#~ msgid " < Back"
-#~ msgstr " < 后退"
-
-#~ msgid "Forward >"
-#~ msgstr "前进 >"
-
-#~ msgid "Reference to unknown topic: "
-#~ msgstr "引用了未知主题："
-
-#~ msgid "corrupted original file"
-#~ msgstr "原始文件出错"
-
 #~ msgid "Caste"
 #~ msgstr "阶层"
 
@@ -6547,3 +6335,216 @@ msgstr "分析帮助文本时出现语法错误："
 
 #~ msgid "The language spoken by the drakes."
 #~ msgstr "龙人所说的语言"
+
+#~ msgid "Factions"
+#~ msgstr "派系"
+
+#~ msgid "Overview"
+#~ msgstr "概述"
+
+#~ msgid "Fundamentals of Gameplay"
+#~ msgstr "游戏基础"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "To begin with, it’s best to click the <bold>text='Tutorial'</bold> button "
+#~ "at the main menu. This will take you to the interactive tutorial, which "
+#~ "will teach you the basics of Wesnoth. After this, it is recommended that "
+#~ "you play the Heir to the Throne campaign first — click "
+#~ "<bold>text='Campaign'</bold> then <italic>text='Heir to the Throne'</"
+#~ "italic>. As <italic>text='Battle for Wesnoth'</italic> can be quite "
+#~ "challenging, you may wish to start on easy."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "刚开始玩时，建议您在主菜单中点击<bold>text='教程'</bold>按钮。这将带您进入"
+#~ "互动教程，该模式将教给您韦诺的基本玩法。在这之后，建议您先玩“王座之承”战役"
+#~ "——先点击<bold>text='战役'</bold>，再点击<italic>text='王座之承'</italic>。"
+#~ "由于<italic>text='韦诺之战'</italic>可能具有很强的挑战性，您可能会希望从"
+#~ "<italic>text='容易'</italic>级别开始游戏。"
+
+#~ msgid ""
+#~ "These pages outline all you need to know to play <italic>text='Battle for "
+#~ "Wesnoth'</italic>. They cover how to play and the basic mechanics behind "
+#~ "the game. As you play the game, new information is added to these pages "
+#~ "as you come across new aspects of the game. For more detailed information "
+#~ "on special situations and exceptions, please follow the links included."
+#~ msgstr ""
+#~ "这些页面概述了玩<italic>text='韦诺之战'</italic>所需要的所有知识，包括基本"
+#~ "玩法与游戏背后的基本机制。当您在游戏时遇到新的要素时，相应的新信息也会添加"
+#~ "到这些页面中。欲了解特殊情形与例外情况的详细信息，请点击文中包含的链接。"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<italic>text='Campaigns'</italic> consist of multiple scenarios that "
+#~ "follow on from each other, telling a story. In a campaign, you often need "
+#~ "to play more carefully, preserving your best troops so that they can be "
+#~ "used again in later scenarios in the campaign."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<italic>text='战役'</italic>讲述着一个故事，是由一系列环环相扣的场景组成"
+#~ "的。在玩战役时，您常常得更小心谨慎，确保最精良的部队存活下来，使他们能够在"
+#~ "战役中的下一场景里继续战斗。"
+
+#~ msgid ""
+#~ "The game takes place over a series of battles, called "
+#~ "<italic>text='scenarios'</italic>. Each scenario pits your troops against "
+#~ "the troops of one or more adversaries. You can play against the computer, "
+#~ "or with friends who each take turns sitting at the computer (hotseat "
+#~ "play). If your computer is connected to a computer network, you can also "
+#~ "play against other people connected to that network. If your computer has "
+#~ "a connection to the Internet, you can play against other people across "
+#~ "the Internet."
+#~ msgstr ""
+#~ "本游戏由一系列的战斗，也称为<italic>text='场景'</italic>所组成。在每个场景"
+#~ "中，您的部队都将和一个或更多的对手作战。您可以和电脑对战，或和朋友在同一台"
+#~ "电脑上对战（热座模式）。如果您的电脑在局域网内，您也可以和局域网内的其他人"
+#~ "对战。如果您的电脑能连接因特网，则可以和因特网上的其他人对战。"
+
+#~ msgid "Experience and Advancement"
+#~ msgstr "经验值与升级"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<italic>text='Healthy'</italic> units have 1 HP plus 1 HP per level more "
+#~ "than usual and rest heal the usual 2 HP after each turn they did not "
+#~ "fight. They also suffer a quarter less damage from poison."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<italic>text='活力'</italic>单位天生拥有1点附加生命值，每次升级所增加的生"
+#~ "命值也多1点，并且在每个无战斗的回合后都会休息并恢复2点生命值。他们中毒时受"
+#~ "到的伤害也减少1/4。"
+
+#~ msgid "Help"
+#~ msgstr "帮助"
+
+#~ msgid "<header>text='Units having this special attack'</header>"
+#~ msgstr "<header>text='拥有这种特殊攻击的单位'</header>"
+
+#~ msgid "<header>text='Units having this ability'</header>"
+#~ msgstr "<header>text='拥有此技能的单位'</header>"
+
+#~ msgid "Leaders:"
+#~ msgstr "领袖： "
+
+#~ msgid "Recruits:"
+#~ msgstr "征募： "
+
+#~ msgid "Era:"
+#~ msgstr "时代："
+
+#~ msgid "Factions:"
+#~ msgstr "派系："
+
+#~ msgid "Factions are only used in multiplayer"
+#~ msgstr "派系只在多人游戏中使用"
+
+#~ msgid "Base Terrain: "
+#~ msgstr "基础地形"
+
+#~ msgid "level"
+#~ msgstr "等级"
+
+#~ msgid "Advances from: "
+#~ msgstr "升级自："
+
+#~ msgid "Base unit: "
+#~ msgstr "基类单位："
+
+#~ msgid "Base units: "
+#~ msgstr "基类单位："
+
+#~ msgid "Variations: "
+#~ msgstr "衍生兵种："
+
+#~ msgid "race^Miscellaneous"
+#~ msgstr "其他"
+
+#~ msgid "Race: "
+#~ msgstr "种族："
+
+#~ msgid "Abilities: "
+#~ msgstr "技能："
+
+#~ msgid "Ability Upgrades: "
+#~ msgstr "技能升级："
+
+#~ msgid "HP: "
+#~ msgstr "生命值："
+
+#~ msgid "Moves: "
+#~ msgstr "移动："
+
+#~ msgid "Vision: "
+#~ msgstr "视野："
+
+#~ msgid "Jamming: "
+#~ msgstr "干扰："
+
+#~ msgid "Cost: "
+#~ msgstr "价格："
+
+#~ msgid "Alignment: "
+#~ msgstr "立场："
+
+#~ msgid "Required XP: "
+#~ msgstr "升级所需经验值："
+
+#~ msgid "unit help^Attacks"
+#~ msgstr "攻击"
+
+#~ msgid "unit help^Name"
+#~ msgstr "名称"
+
+#~ msgid "Type"
+#~ msgstr "类型"
+
+#~ msgid "Strikes"
+#~ msgstr "输出"
+
+#~ msgid "Range"
+#~ msgstr "范围"
+
+#~ msgid "Special"
+#~ msgstr "特性"
+
+#~ msgid "Resistances"
+#~ msgstr "抗性"
+
+#~ msgid "Attack Type"
+#~ msgstr "攻击类型"
+
+#~ msgid "Resistance"
+#~ msgstr "抗性"
+
+#~ msgid "Terrain"
+#~ msgstr "地形"
+
+#~ msgid "Defense"
+#~ msgstr "闪避率"
+
+#~ msgid "Movement Cost"
+#~ msgstr "移动点数耗费"
+
+#~ msgid "Vision Cost"
+#~ msgstr "视野耗费"
+
+#~ msgid "Jamming Cost"
+#~ msgstr "干扰耗费"
+
+#~ msgid " < Back"
+#~ msgstr " < 后退"
+
+#~ msgid "Forward >"
+#~ msgstr "前进 >"
+
+#~ msgid "Reference to unknown topic: "
+#~ msgstr "引用了未知主题："
+
+#~ msgid "corrupted original file"
+#~ msgstr "原始文件出错"

@@ -12,15 +12,15 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-04-05 05:06-0300\n"
-"PO-Revision-Date: 2015-01-02 13:18+0800\n"
+"PO-Revision-Date: 2015-02-07 13:07+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
-"Language-Team:  Wesnoth Simplified Chinese Team\n"
+"Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 1.7.1\n"
+"X-Generator: Poedit 1.7.4\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -35,7 +35,7 @@ msgstr "随机"
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:118
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
-msgstr ""
+msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>阵营 %d</span>"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:134
@@ -66,7 +66,7 @@ msgstr "默认"
 msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
-msgstr ""
+msgstr "韦诺多人游戏的标准时代。包含六大派系，总体来说是平衡的。"
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:190
@@ -80,11 +80,13 @@ msgid ""
 "units available for recruit. Consists of six factions. Not considered "
 "balanced."
 msgstr ""
+"包含高阶单位的时代：领袖为三级，而一级和二级单位可供直接征募。包含六大派系。"
+"此时代并不可视为是平衡的。"
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:198
 msgid "Default + Khalifate"
-msgstr ""
+msgstr "默认 + 哈里发"
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:199
@@ -96,12 +98,15 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"此时代中除了默认时代的六大派系之外，还含有一个额外的派系。哈里发单位不使用魔"
+"法，而是依赖于对地形的谨慎利用和晨昏时段的协同攻击。\n"
+"\n"
+"此时代仍在开发中，因此请务必报告出现的一切问题。"
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:209
-#, fuzzy
 msgid "Age of Heroes + Khalifate"
-msgstr "英雄时代"
+msgstr "英雄时代 + 哈里发"
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:210
@@ -113,6 +118,10 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"此时代中除了英雄时代的六大派系之外，还含有一个额外的派系。哈里发单位不使用魔"
+"法，而是依赖于对地形的谨慎利用和晨昏时段的协同攻击。\n"
+"\n"
+"此时代仍在开发中，因此请务必报告出现的一切问题。"
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -139,7 +148,7 @@ msgstr ""
 #: data/multiplayer/factions/khalifate-aoh.cfg:4
 #: data/multiplayer/factions/khalifate-default.cfg:4
 msgid "Khalifate"
-msgstr ""
+msgstr "哈里发"
 
 #. [multiplayer_side]: id=Khalifate, type=random
 #: data/multiplayer/factions/khalifate-aoh.cfg:12
@@ -1573,7 +1582,7 @@ msgstr "3p — 埃尔洛克沼泽"
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:8
 #: data/multiplayer/scenarios/8p_Morituri.cfg:7
 msgid " Recommended setting of 2 gold per village."
-msgstr " 建议设置每座村庄提供2个金币。"
+msgstr " 建议设置每座村庄供给2个金币。"
 
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
@@ -1734,7 +1743,7 @@ msgstr "4p — 山丘之王"
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid " Recommended setting of 2 gold per village and 150 starting gold."
-msgstr " 建议设置每座村庄提供2个金币，并有150个金币的起始资金。"
+msgstr " 建议设置每座村庄供给2个金币，并有150个金币的起始资金。"
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
@@ -1799,7 +1808,7 @@ msgstr "4p — 匕首小道"
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
 msgid " Recommended setting of 2 gold per village, 28 villages."
-msgstr " 建议设置每座村庄提供2个金币，图上有28座村庄。"
+msgstr " 建议设置每座村庄供给2个金币，图上有28座村庄。"
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
@@ -1904,7 +1913,7 @@ msgstr "5p — 蛮荒之地"
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."
-msgstr " 推荐设置每座村庄提供1个金币。"
+msgstr " 推荐设置每座村庄供给1个金币。"
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
@@ -2254,3 +2263,6 @@ msgid ""
 msgstr ""
 "这是一幅韦诺基准测试图，命令行参数为：--no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end。"
+
+#~ msgid "Custom"
+#~ msgstr "自定义"
