@@ -341,14 +341,35 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 	}
 }
 
+set_scontext_synced_base::set_scontext_synced_base()
+	: new_rng_(synced_context::get_rng_for_action())
+	, old_rng_(random_new::generator)
+{
+	LOG_REPLAY << "set_scontext_synced_base::set_scontext_synced_base\n";
+	assert(synced_context::get_synced_state() == synced_context::UNSYNCED);
+	synced_context::set_synced_state(synced_context::SYNCED);
+	synced_context::reset_is_simultaneously();
+	old_rng_ = random_new::generator;
+	random_new::generator = new_rng_.get();
+}
+set_scontext_synced_base::~set_scontext_synced_base()
+{
+	LOG_REPLAY << "set_scontext_synced_base:: destructor\n";
+	assert(synced_context::get_synced_state() == synced_context::SYNCED);
+	random_new::generator = old_rng_;
+	synced_context::set_synced_state(synced_context::UNSYNCED);
+}
+
 set_scontext_synced::set_scontext_synced()
-	: new_rng_(synced_context::get_rng_for_action()), new_checkup_(recorder.get_last_real_command().child_or_add("checkup")), disabler_()
+	: set_scontext_synced_base()
+	, new_checkup_(recorder.get_last_real_command().child_or_add("checkup")), disabler_()
 {
 	init();
 }
 
 set_scontext_synced::set_scontext_synced(int number)
-	: new_rng_(synced_context::get_rng_for_action()), new_checkup_(recorder.get_last_real_command().child_or_add("checkup" + boost::lexical_cast<std::string>(number))), disabler_()
+	: set_scontext_synced_base()
+	, new_checkup_(recorder.get_last_real_command().child_or_add("checkup" + boost::lexical_cast<std::string>(number))), disabler_()
 {
 	init();
 }
@@ -358,22 +379,13 @@ set_scontext_synced::set_scontext_synced(int number)
 */
 void set_scontext_synced::init()
 {
-	
 	LOG_REPLAY << "set_scontext_synced::set_scontext_synced\n";
-	assert(synced_context::get_synced_state() == synced_context::UNSYNCED);
-	
-	synced_context::set_synced_state(synced_context::SYNCED);
-	synced_context::reset_is_simultaneously();
-
 	old_checkup_ = checkup_instance;
 	checkup_instance = & new_checkup_;
-	old_rng_ = random_new::generator;
-	random_new::generator = new_rng_.get();
 }
 set_scontext_synced::~set_scontext_synced()
 {
 	LOG_REPLAY << "set_scontext_synced:: destructor\n";
-	assert(synced_context::get_synced_state() == synced_context::SYNCED);
 	assert(checkup_instance == &new_checkup_);
 	config co;
 	if(!checkup_instance->local_checkup(config_of("random_calls", new_rng_->get_random_calls()), co))
@@ -383,9 +395,6 @@ set_scontext_synced::~set_scontext_synced()
 		ERR_REPLAY << co.debug() << "\n";
 	}
 
-	random_new::generator = old_rng_;
-	synced_context::set_synced_state(synced_context::UNSYNCED);
-	
 	checkup_instance = old_checkup_;
 }
 
