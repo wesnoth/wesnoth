@@ -981,7 +981,7 @@ void playsingle_controller::check_time_over(){
 	bool b = tod_manager_.next_turn();
 	it_is_a_new_turn_ = true;
 	if(!b) {
-
+		set_scontext_synced_base sync;
 		LOG_NG << "firing time over event...\n";
 		game_events::fire("time over");
 		LOG_NG << "done firing time over event...\n";

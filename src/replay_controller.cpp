@@ -477,8 +477,10 @@ void replay_controller::play_side(){
 			player_number_ = teams_.size();
 			finish_turn();
 			bool is_time_left = tod_manager_.next_turn();
-			if(!is_time_left)
+			if(!is_time_left) {
+				set_scontext_synced_base sync;		
 				game_events::fire("time over");
+			}
 			it_is_a_new_turn_ = true;
 			player_number_ = 1;
 			current_turn_++;
