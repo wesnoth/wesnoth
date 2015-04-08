@@ -59,7 +59,7 @@ namespace {
 	std::string get_pbl_file_path(const std::string& addon_name)
 	{
 		const std::string& parentd = filesystem::get_addons_dir();
-		// Cope with old-style or new-style file organization
+		// Allow .pbl files directly in the addon dir
 		const std::string exterior = parentd + "/" + addon_name + ".pbl";
 		const std::string interior = parentd + "/" + addon_name + "/_server.pbl";
 		return filesystem::file_exists(exterior) ? exterior : interior;
@@ -82,10 +82,7 @@ bool have_addon_in_vcs_tree(const std::string& addon_name)
 
 bool have_addon_pbl_info(const std::string& addon_name)
 {
-	static const std::string parentd = filesystem::get_addons_dir();
-	return
-		filesystem::file_exists(parentd+"/"+addon_name+".pbl") ||
-		filesystem::file_exists(parentd+"/"+addon_name+"/_server.pbl");
+	return filesystem::file_exists(get_pbl_file_path(addon_name));
 }
 
 void get_addon_pbl_info(const std::string& addon_name, config& cfg)
@@ -125,26 +122,16 @@ void get_addon_install_info(const std::string& addon_name, config& cfg)
 
 bool remove_local_addon(const std::string& addon)
 {
-	bool ret = true;
 	const std::string addon_dir = filesystem::get_addons_dir() + "/" + addon;
 
 	LOG_CFG << "removing local add-on: " << addon << '\n';
 
 	if(filesystem::file_exists(addon_dir) && !filesystem::delete_directory(addon_dir, true)) {
 		ERR_CFG << "Failed to delete directory/file: " << addon_dir << '\n';
-		ret = false;
-	}
-
-	if(filesystem::file_exists(addon_dir + ".cfg") && !filesystem::delete_directory(addon_dir + ".cfg", true)) {
-		ERR_CFG << "Failed to delete directory/file: " << addon_dir << ".cfg" << std::endl;
-		ret = false;
-	}
-
-	if(!ret) {
 		ERR_CFG << "removal of add-on " << addon << " failed!" << std::endl;
+		return false;
 	}
-
-	return ret;
+	return true;
 }
 
 std::vector<std::string> available_addons()
@@ -155,23 +142,8 @@ std::vector<std::string> available_addons()
 	filesystem::get_files_in_dir(parentd,&files,&dirs);
 
 	for(std::vector<std::string>::const_iterator i = dirs.begin(); i != dirs.end(); ++i) {
-		const std::string external_cfg_file = *i + ".cfg";
-		const std::string internal_cfg_file = *i + "/_main.cfg";
-		const std::string external_pbl_file = *i + ".pbl";
-		const std::string internal_pbl_file = *i + "/_server.pbl";
-		if((std::find(files.begin(),files.end(),external_cfg_file) != files.end() || filesystem::file_exists(parentd + "/" + internal_cfg_file)) &&
-		   (std::find(files.begin(),files.end(),external_pbl_file) != files.end() || (filesystem::file_exists(parentd + "/" + internal_pbl_file)))) {
+		if (filesystem::file_exists(parentd + "/" + *i + "/_main.cfg") && have_addon_pbl_info(*i)) {
 			res.push_back(*i);
-		}
-	}
-	for(std::vector<std::string>::const_iterator i = files.begin(); i != files.end(); ++i) {
-		const size_t length = i->size() - 4;
-		if (i->rfind(".cfg", length) != length) continue;
-		const std::string name = i->substr(0, length);
-		// Continue if there is a dir (which we already processed).
-		if (std::find(dirs.begin(), dirs.end(), name) != dirs.end()) continue;
-		if (std::find(files.begin(), files.end(), name + ".pbl") != files.end()) {
-			res.push_back(name);
 		}
 	}
 
@@ -186,9 +158,7 @@ std::vector<std::string> installed_addons()
 	filesystem::get_files_in_dir(parentd,&files,&dirs);
 
 	for(std::vector<std::string>::const_iterator i = dirs.begin(); i != dirs.end(); ++i) {
-		const std::string external_cfg_file = *i + ".cfg";
-		const std::string internal_cfg_file = *i + "/_main.cfg";
-		if(std::find(files.begin(),files.end(),external_cfg_file) != files.end() || filesystem::file_exists(parentd + "/" + internal_cfg_file)) {
+		if(filesystem::file_exists(parentd + "/" + *i + "/_main.cfg")) {
 			res.push_back(*i);
 		}
 	}
@@ -199,8 +169,7 @@ std::vector<std::string> installed_addons()
 bool is_addon_installed(const std::string& addon_name)
 {
 	const std::string namestem = filesystem::get_addons_dir() + "/" + addon_name;
-
-	return filesystem::file_exists(namestem + ".cfg") || filesystem::file_exists(namestem + "/_main.cfg");
+	return filesystem::file_exists(namestem + "/_main.cfg");
 }
 
 static inline bool IsCR(const char& c)
@@ -257,17 +226,11 @@ namespace {
 static std::pair<std::vector<std::string>, std::vector<std::string> > read_ignore_patterns(const std::string& addon_name)
 {
 	const std::string parentd = filesystem::get_addons_dir();
-	const std::string exterior = parentd + "/" + addon_name + ".ign";
-	const std::string interior = parentd + "/" + addon_name + "/_server.ign";
+	const std::string ign_file = parentd + "/" + addon_name + "/_server.ign";
 
 	std::pair<std::vector<std::string>, std::vector<std::string> > patterns;
-	std::string ign_file;
 	LOG_CFG << "searching for .ign file for '" << addon_name << "'...\n";
-	if (filesystem::file_exists(interior)) {
-		ign_file = interior;
-	} else if (filesystem::file_exists(exterior)) {
-		ign_file = exterior;
-	} else {
+	if (!filesystem::file_exists(ign_file)) {
 		LOG_CFG << "no .ign file found for '" << addon_name << "'\n"
 		        << "inserting default ignore patterns...\n";
 		append_default_ignore_patterns(patterns);
@@ -279,6 +242,8 @@ static std::pair<std::vector<std::string>, std::vector<std::string> > read_ignor
 	while (std::getline(*stream, line)) {
 		utils::strip(line);
 		const size_t l = line.size();
+		// .gitignore & WML like comments
+		if (l == 0 || !line.compare(0,2,"# ")) continue;
 		if (line[l - 1] == '/') { // directory; we strip the last /
 			patterns.second.push_back(line.substr(0, l - 1));
 		} else { // file
@@ -334,11 +299,6 @@ void archive_addon(const std::string& addon_name, config& cfg)
 	const std::string parentd = filesystem::get_addons_dir();
 
 	std::pair<std::vector<std::string>, std::vector<std::string> > ignore_patterns;
-	// External .cfg may not exist; newer campaigns have a _main.cfg
-	const std::string external_cfg = addon_name + ".cfg";
-	if (filesystem::file_exists(parentd + "/" + external_cfg)) {
-		archive_file(parentd, external_cfg, cfg.add_child("file"));
-	}
 	ignore_patterns = read_ignore_patterns(addon_name);
 	archive_dir(parentd, addon_name, cfg.add_child("dir"), ignore_patterns);
 }
