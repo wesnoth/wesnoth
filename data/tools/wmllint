@@ -828,7 +828,6 @@ translatables = re.compile( \
                "^tooltip$|" \
                "^translator_comment$|" \
                "^user_team_name$|" \
-               "^variation_name$|" \
                "^type_.[a-z]*$|" \
                "^range_[a-z]*$")
 
@@ -1673,6 +1672,10 @@ def global_sanity_check(filename, lines):
                 pass
             elif key in ('name', 'male_name', 'female_name', 'value'):		# FIXME: check this someday
                 pass
+            elif key == "variation_name":
+                if markcheck and not has_tr_mark:
+                    print '"%s", line %d: %s should be renamed as translation_id and/or marked as translatable' \
+                          % (filename, i+1, key)
             elif translatables.search(key):
                 if markcheck and has_tr_mark and lines[i].find("\"\"")>-1:
                     print '"%s", line %d: %s doesn`t need translation mark (translatable string is empty)' \
