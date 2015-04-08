@@ -80,7 +80,7 @@ unchecked:
 
 # Reindent the mainline content
 reindent:
-	@./wmlindent --exclude=../../data/languages --exclude=../../data/gui $(DATA)
+	@./wmlindent --exclude=../../data/languages --exclude=../../data/gui --exclude=../../data/test $(DATA)
 
 # Extract a table of editor keybindings from the editor theme definition
 editor_bindings:
