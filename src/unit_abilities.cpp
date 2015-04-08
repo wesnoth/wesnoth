@@ -258,7 +258,7 @@ std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(st
 				res.push_back(boost::make_tuple(
 						ab.cfg["name"].t_str(),
 						name,
-						legacy::ability_description(ab.cfg["description"].t_str()) ));
+						ab.cfg["description"].t_str() ));
 				if ( active_list )
 					active_list->push_back(true);
 			}
@@ -276,7 +276,7 @@ std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(st
 				res.push_back(boost::make_tuple(
 						default_value(ab.cfg, "name_inactive", "name").t_str(),
 						name,
-						legacy::ability_description(default_value(ab.cfg, "description_inactive", "description").t_str()) ));
+						default_value(ab.cfg, "description_inactive", "description").t_str() ));
 				active_list->push_back(false);
 			}
 		}
@@ -595,7 +595,7 @@ std::vector<std::pair<t_string, t_string> > attack_type::special_tooltips(
 		if ( !active_list || special_active(sp.cfg, AFFECT_EITHER) ) {
 			const t_string &name = sp.cfg["name"];
 			if (!name.empty()) {
-				res.push_back(std::make_pair(name, legacy::ability_description(sp.cfg["description"].t_str()) ));
+				res.push_back(std::make_pair(name, sp.cfg["description"].t_str() ));
 				if ( active_list )
 					active_list->push_back(true);
 			}
@@ -603,7 +603,7 @@ std::vector<std::pair<t_string, t_string> > attack_type::special_tooltips(
 			t_string const &name = default_value(sp.cfg, "name_inactive", "name").t_str();
 			if (!name.empty()) {
 				res.push_back(std::make_pair(
-					name, legacy::ability_description(default_value(sp.cfg, "description_inactive", "description").t_str()) ));
+					name, default_value(sp.cfg, "description_inactive", "description").t_str() ));
 				active_list->push_back(false);
 			}
 		}
