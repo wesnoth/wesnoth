@@ -178,25 +178,8 @@ folders, all version numbers are minimal requirements:
       into the corresponding *General Folder*.
 
 
-   8. libintl-0.14.4
-      	( http://gnuwin32.sourceforge.net/packages/gettext.htm )
-
-      Download the 'Binaries', 'Dependencies' and the
-      'Developer files'  
-      	gettext-0.14.4-bin.zip  
-      	gettext-0.14.4-dep.zip  
-      	gettext-0.14.4-lib.zip  
-      and unpack them all into the projects folder to get:  
-      	`C:\projects\gettext-0.14.4\`
-
-      Copy the contents of each the 'lib' and the 'include' folder
-      into the corresponding *General Folder*.
-      Copy all dll's from the 'bin' folder into the '_lib'
-      *General Folder*.
-
-
-   9. libfontconfig-2.4.1
-      	( http://www.gtk.org/download-windows.html )
+   8. libfontconfig-2.4.1
+      	( http://www.gtk.org/download/win32.php )
 
       Download the 'Fontconfig' package 'Binaries' from the
       'Third Party Dependencies'  
@@ -208,20 +191,7 @@ folders, all version numbers are minimal requirements:
       'lib' *General Folder*.
 
 
-  10. lua-5.1.4 ( http://luabinaries.luaforge.net/download.html )
-
-      Download the 'Windows x86 DLL and Includes (Visual C++ 2005
-      Compatible)'  
-      	lua5_1_4_Win32_dll8_lib.zip  
-      and unpack it into the projects folder to get:  
-      	`C:\projects\lua-5.1.4\`
-
-      Copy the dll's and the lib's into the 'lib' *General Folder* and
-      the content of the 'include' folder into the corresponding 
-      *General Folder*.
-
-
-  11. pangocairo-1.24.4 ( http://www.gtk.org/download-windows.html )
+   9. pangocairo-1.24.4 ( http://www.gtk.org/download-windows.html )
 
       Download the following 'Binaryies' and 'Dev' packages from the
       'GTK+ individual packages'  
