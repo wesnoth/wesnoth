@@ -1285,8 +1285,8 @@ def global_sanity_check(filename, lines):
             elif key == "side" and not in_ai:
                 try:
                     if not in_generator and sidecount != int(value):
-                        print '"%s", line %d: side number %s is out of sequence' \
-                              % (filename, i+1, value)
+                        print '"%s", line %d: side number %s is out of sequence (%d expected)' \
+                              % (filename, i+1, value, sidecount)
                 except ValueError:
                     pass	# Ignore ill-formed integer literals
         except TypeError:
