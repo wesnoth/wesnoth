@@ -563,7 +563,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				if(map_data.empty() && (*scenario)["map_generation"] != "") {
 					generate_map(scenario);
 				}
-
+				starting_pos = *scenario;
 				// A hash have to be generated using an unmodified
 				// scenario data.
 				params.hash = scenario->hash();
