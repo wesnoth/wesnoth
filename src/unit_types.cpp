@@ -622,7 +622,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 			const config::attribute_value &name = ab.cfg["name"];
 			if (!name.empty()) {
 				abilities_.push_back(name.t_str());
-				ability_tooltips_.push_back( ab.cfg["description"].t_str() );
+				ability_tooltips_.push_back( legacy::ability_description(ab.cfg["description"].t_str()) );
 			}
 		}
 	}
@@ -639,7 +639,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 				const config::attribute_value &name = ab.cfg["name"];
 				if (!name.empty()) {
 					adv_abilities_.push_back(name.t_str());
-					adv_ability_tooltips_.push_back( ab.cfg["description"].t_str() );
+					adv_ability_tooltips_.push_back( legacy::ability_description(ab.cfg["description"].t_str()) );
 				}
 			}
 		}
@@ -1542,3 +1542,47 @@ void adjust_profile(std::string &small, std::string &big, std::string const &def
 			big = small;
 	}
 }
+
+
+namespace legacy {
+	/**
+	 * Strips the name of an ability/special from its description.
+	 * This adapts the pre-1.11.1 style of "<name>:\n<description>" to
+	 * the current style of simply "<description>".
+	 */
+	t_string ability_description(const t_string & description)
+	{
+		///	@deprecated This function is legacy support. Remove it post-1.12.
+
+		// We identify the legacy format by a colon ending the first line.
+		std::string desc_str = description.str();
+		const size_t colon_pos = desc_str.find(':');
+		const size_t first_end_line = desc_str.find_first_of("\r\n");
+		if ( colon_pos != std::string::npos  &&  colon_pos + 1 == first_end_line )
+		{
+			// Try to avoid spamming the deprecation message.
+			static std::set< std::string > reported;
+			const std::string name = desc_str.substr(0, colon_pos);
+			if ( reported.count(name) == 0 )
+			{
+				reported.insert(name);
+				// Inform the player.
+				lg::wml_error << '"' << name << '"'
+				              << " follows a deprecated format for its description,"
+				              << " using its name as the first line. Support"
+				              << " for that format will be removed in 1.12.\n";
+			}
+
+			// Strip the name from the description.
+			// This is sort of bad in that it messes with retranslating, if the
+			// player changes the game's language while playing. However, this
+			// is temporary, so I think simplicity trumps in this case.
+			desc_str.erase(0, colon_pos + 2);
+			return t_string(desc_str);
+		}
+
+		// Not legacy, so this function just falls through.
+		return description;
+	}
+}
+

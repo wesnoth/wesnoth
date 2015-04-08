@@ -415,4 +415,10 @@ extern unit_type_data unit_types;
 
 void adjust_profile(std::string &small, std::string &big, std::string const &def);
 
+namespace legacy {
+	/// Strips the name of an ability/special from its description.
+	t_string ability_description(const t_string & description);
+}
+
+
 #endif
