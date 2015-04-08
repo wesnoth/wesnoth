@@ -564,6 +564,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 					generate_map(scenario);
 				}
 				starting_pos = *scenario;
+				scenario = &starting_pos;
 				// A hash have to be generated using an unmodified
 				// scenario data.
 				params.hash = scenario->hash();
