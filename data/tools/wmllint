@@ -1674,7 +1674,7 @@ def global_sanity_check(filename, lines):
                 pass
             elif key == "variation_name":
                 if markcheck and not has_tr_mark:
-                    print '"%s", line %d: %s should be renamed as translation_id and/or marked as translatable' \
+                    print '"%s", line %d: %s should be renamed as variation_id and/or marked as translatable' \
                           % (filename, i+1, key)
             elif translatables.search(key):
                 if markcheck and has_tr_mark and lines[i].find("\"\"")>-1:
