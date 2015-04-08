@@ -151,6 +151,7 @@ public:
 		, cfg_variation_type_(vcfg["variation"])
 		, cfg_has_variation_type_(vcfg["has_variation"])
 		, cfg_ability_(vcfg["ability"])
+		, cfg_status_(vcfg["status"])
 		, cfg_race_(vcfg["race"])
 		, cfg_gender_(vcfg["gender"])
 		, cfg_side_(vcfg["side"])
@@ -268,6 +269,7 @@ private:
 	lazy_string_list cfg_variation_type_;
 	lazy_string_list cfg_has_variation_type_;
 	lazy_string_list cfg_ability_;
+	lazy_string_list cfg_status_;
 	lazy_string_list cfg_race_;
 	const config::attribute_value cfg_gender_;
 	lazy_string_list cfg_side_;
@@ -454,6 +456,23 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 
 	if (!cfg_side_.empty() && cfg_side_to_int_ != u.side()) {
 		if (!cfg_side_.find( str_cast(u.side())) ) {
+			return false;
+		}
+	}
+
+	// handle statuses list
+	if (!cfg_status_.empty()) {
+		bool status_found = false;
+		std::map<std::string, std::string> states_map = u.get_states();
+
+		BOOST_FOREACH (const std::string status, cfg_status_.get()) {
+			if (states_map[status] == "yes") {
+				status_found = true;
+				break;
+			}
+		}
+
+		if(!status_found) {
 			return false;
 		}
 	}
