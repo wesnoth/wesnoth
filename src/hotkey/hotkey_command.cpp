@@ -20,7 +20,7 @@
 #include "config.hpp"
 #include "preferences.hpp"
 
-#include "boost/foreach.hpp"
+#include <boost/foreach.hpp>
 #include "log.hpp"
 
 static lg::log_domain log_config("config");

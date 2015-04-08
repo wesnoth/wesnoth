@@ -31,7 +31,7 @@
 
 #include "game_display.hpp"
 
-#include "boost/foreach.hpp"
+#include <boost/foreach.hpp>
 
 #include "preferences.hpp"
 

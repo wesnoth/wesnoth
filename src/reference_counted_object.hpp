@@ -15,7 +15,7 @@
 #ifndef REFERENCE_COUNTED_OBJECT_HPP_INCLUDED
 #define REFERENCE_COUNTED_OBJECT_HPP_INCLUDED
 
-#include "boost/intrusive_ptr.hpp"
+#include <boost/intrusive_ptr.hpp>
 
 class reference_counted_object
 {

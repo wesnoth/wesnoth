@@ -17,7 +17,7 @@
 
 #include "tooltips.hpp"
 #include "tstring.hpp"
-#include "boost/ptr_container/ptr_vector.hpp"
+#include <boost/ptr_container/ptr_vector.hpp>
 
 #include <bitset>
 class config;

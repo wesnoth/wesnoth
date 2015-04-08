@@ -22,7 +22,7 @@
 #include "serialization/unicode.hpp"
 #include "sdl/utils.hpp"
 
-#include "boost/foreach.hpp"
+#include <boost/foreach.hpp>
 #include <boost/algorithm/string/join.hpp>
 
 #include "key.hpp"

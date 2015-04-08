@@ -18,7 +18,7 @@
 
 #include "tools/schema/sourceparser.hpp"
 
-#include "boost/regex.hpp"
+#include <boost/regex.hpp>
 
 #include <stack>
 

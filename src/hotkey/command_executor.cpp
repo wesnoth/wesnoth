@@ -15,7 +15,7 @@
 #include "command_executor.hpp"
 #include "hotkey_item.hpp"
 
-#include "boost/foreach.hpp"
+#include <boost/foreach.hpp>
 
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
