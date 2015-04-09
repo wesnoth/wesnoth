@@ -60,6 +60,7 @@
 #include "gui/dialogs/mp_connect.hpp"
 #include "gui/dialogs/mp_create_game.hpp"
 #include "gui/dialogs/mp_create_game_set_password.hpp"
+#include "gui/dialogs/mp_join_game_password_prompt.hpp"
 #include "gui/dialogs/depcheck_confirm_change.hpp"
 #include "gui/dialogs/depcheck_select_new.hpp"
 #include "gui/dialogs/mp_login.hpp"
@@ -406,6 +407,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tmp_connect>();
 	test<gui2::tmp_create_game>();
 	test<gui2::tmp_create_game_set_password>();
+	test<gui2::tmp_join_game_password_prompt>();
 	test<gui2::tdepcheck_confirm_change>();
 	test<gui2::tdepcheck_select_new>();
 	test<gui2::tmp_login>();
@@ -749,6 +751,16 @@ struct twrapper<gui2::tmp_create_game_set_password>
 	{
 		static std::string password;
 		return new gui2::tmp_create_game_set_password(password);
+	}
+};
+
+template<>
+struct twrapper<gui2::tmp_join_game_password_prompt>
+{
+	static gui2::tmp_join_game_password_prompt* create()
+	{
+		static std::string password;
+		return new gui2::tmp_join_game_password_prompt(password);
 	}
 };
 
