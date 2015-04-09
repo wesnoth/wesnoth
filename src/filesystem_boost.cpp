@@ -31,11 +31,7 @@
 #include <boost/iostreams/stream.hpp>
 #include <set>
 
-#if defined(_MSC_VER) && (_MSC_VER <= 1500)
-typedef unsigned long int uintmax_t;
-#else
-#include <stdint.h>
-#endif
+using boost::uintmax_t;
 
 #ifdef _WIN32
 #include <boost/locale.hpp>
