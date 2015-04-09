@@ -300,6 +300,8 @@ Version 1.13.0-dev:
    * Add support for status= key in SUFs
    * Add "disallow_shuffle" key in [side], which causes the "shuffle sides"
      feature always to skip this side, even if it is human playable.
+   * Add "require_scenario" key in [scenario], [multiplayer], which causes a
+     multiplayer game to require that all participants have the add-on installed.
  * Miscellaneous and bug fixes:
    * replace 'fight_on_without_leader'=yes/no with defeat_condition=no_leader/
      no_units/always/never which allows the wml developer to decide when a side
