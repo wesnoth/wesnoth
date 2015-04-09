@@ -37,6 +37,11 @@ static lg::log_domain log_audio("audio");
 #define LOG_AUDIO LOG_STREAM(info, log_audio)
 #define ERR_AUDIO LOG_STREAM(err, log_audio)
 
+
+#if (MIX_MAJOR_VERSION < 1) || (MIX_MAJOR_VERSION == 1) && ((MIX_MINOR_VERSION < 2) || (MIX_MINOR_VERSION == 2) && (MIX_PATCHLEVEL <= 11))
+#error "Please upgrade to SDL mixer version >= 1.2.12, we don't support older versions anymore."
+#endif
+
 namespace sound {
 // Channel-chunk mapping lets us know, if we can safely free a given chunk
 static std::vector<Mix_Chunk*> channel_chunks;
