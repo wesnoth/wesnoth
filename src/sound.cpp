@@ -37,11 +37,6 @@ static lg::log_domain log_audio("audio");
 #define LOG_AUDIO LOG_STREAM(info, log_audio)
 #define ERR_AUDIO LOG_STREAM(err, log_audio)
 
-
-#if (MIX_MAJOR_VERSION < 1) || (MIX_MAJOR_VERSION == 1) && ((MIX_MINOR_VERSION < 2) || (MIX_MINOR_VERSION == 2) && (MIX_PATCHLEVEL <= 11))
-#define SDL_MIXER_OLD_VERSION
-#endif
-
 namespace sound {
 // Channel-chunk mapping lets us know, if we can safely free a given chunk
 static std::vector<Mix_Chunk*> channel_chunks;
@@ -507,12 +502,8 @@ static void play_new_music()
 	if(itor == music_cache.end()) {
 		LOG_AUDIO << "attempting to insert track '" << filename << "' into cache\n";
 
-#ifndef SDL_MIXER_OLD_VERSION
 		SDL_RWops *rwops = filesystem::load_RWops(filename);
 		Mix_Music* const music = Mix_LoadMUSType_RW(rwops, MUS_NONE, true); // SDL takes ownership of rwops
-#else
-		Mix_Music* const music = Mix_LoadMUS(filename.c_str());
-#endif
 
 		if(music == NULL) {
 			ERR_AUDIO << "Could not load music file '" << filename << "': "
@@ -737,12 +728,8 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 		std::string const &filename = filesystem::get_binary_file_location("sounds", file);
 
 		if (!filename.empty()) {
-#ifndef SDL_MIXER_OLD_VERSION
 			SDL_RWops *rwops = filesystem::load_RWops(filename);
 			temp_chunk.set_data(Mix_LoadWAV_RW(rwops, true)); // SDL takes ownership of rwops
-#else
-			temp_chunk.set_data(Mix_LoadWAV(filename.c_str()));
-#endif
 		} else {
 			ERR_AUDIO << "Could not load sound file '" << file << "'." << std::endl;
 			throw chunk_load_exception();
