@@ -418,9 +418,11 @@ create_engine::create_engine(game_display& disp, saved_game& state) :
 	state_.mp_settings().show_configure = configure;
 	state_.mp_settings().show_connect = connect;
 
-	if (type == game_classification::MULTIPLAYER)
+	if (!(type == game_classification::SCENARIO &&
+			game_config_manager::get()->old_defines_map().count("TITLE_SCREEN") != 0))
 	{
-		game_config_manager::get()->load_game_config_for_game(state_.classification());
+		game_config_manager::get()->
+			load_game_config_for_game(state_.classification());
 	}
 
 	//TODO the editor dir is already configurable, is the preferences value
