@@ -417,7 +417,7 @@ void connect_engine::start_game(LOAD_USERS load_users)
 		// Only playable sides should be shuffled.
 		std::vector<int> playable_sides;
 		BOOST_FOREACH(side_engine_ptr side, side_engines_) {
-			if (side->allow_player()) {
+			if (side->allow_player() && side->allow_shuffle()) {
 				playable_sides.push_back(side->index());
 			}
 		}
@@ -853,6 +853,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	ai_algorithm_(),
 	waiting_to_choose_faction_(allow_changes_),
 	chose_random_(cfg["chose_random"].to_bool(false)),
+	disallow_shuffle_(cfg["disallow_shuffle"].to_bool(false)),
 	flg_(parent_.era_factions_, cfg_, parent_.force_lock_settings_,
 		parent_.params_.use_map_settings, parent_.params_.saved_game, color_)
 {

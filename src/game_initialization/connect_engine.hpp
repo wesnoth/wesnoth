@@ -212,6 +212,7 @@ public:
 	bool waiting_to_choose_faction() const { return waiting_to_choose_faction_; }
 	void set_waiting_to_choose_status(bool status) { waiting_to_choose_faction_ = status;}
 	bool chose_random() const { return chose_random_;}
+	bool allow_shuffle() const { return !disallow_shuffle_;}
 	const std::vector<std::string>& player_teams() const
 		{ return parent_.player_teams_; }
 	flg_manager& flg() { return flg_; }
@@ -250,6 +251,7 @@ private:
 
 	bool waiting_to_choose_faction_;
 	bool chose_random_;
+	bool disallow_shuffle_;
 	flg_manager flg_;
 };
 
