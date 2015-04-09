@@ -238,6 +238,7 @@ print = make_print()
 
 Additionally, you can use "log-debug=scripting/lua" at command line, and all lua print commands will be routed to the debug log.
 
+[*] map_generation= syntax in [multiplayer] was changed to match the meaing of map_generation= in campaigns, this means map_generation= will only generate the map and preserve anything bug map_data hwhile scenario_generation= can be used to generate the complete scenario.
 [/list]
 [/section]
 
