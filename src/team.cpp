@@ -70,7 +70,7 @@ const boost::container::flat_set<std::string> team::attributes = boost::assign::
 	("faction_from_recruit")("faction_name")("gold_lock")("income_lock")
 	("leader")("random_leader")("team_lock")("terrain_liked")
 	("user_description")("default_recruit")("controller_lock")("chose_random")
-	("description").convert_to_container<boost::container::flat_set<std::string> >();
+	("disallow_shuffle")("description").convert_to_container<boost::container::flat_set<std::string> >();
 
 team::team_info::team_info() :
 	name(),
