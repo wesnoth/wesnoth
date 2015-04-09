@@ -890,6 +890,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/mp_create_game.cpp
 	gui/dialogs/mp_create_game_set_password.cpp
 	gui/dialogs/mp_host_game_prompt.cpp
+	gui/dialogs/mp_join_game_password_prompt.cpp
 	gui/dialogs/mp_login.cpp
 	gui/dialogs/mp_method_selection.cpp
 	gui/dialogs/network_transmission.cpp

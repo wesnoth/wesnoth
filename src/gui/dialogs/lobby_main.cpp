@@ -15,6 +15,7 @@
 
 #include "gui/dialogs/lobby_main.hpp"
 #include "gui/dialogs/lobby_player_info.hpp"
+#include "gui/dialogs/mp_join_game_password_prompt.hpp"
 #include "gui/dialogs/field.hpp"
 #include "gui/dialogs/helper.hpp"
 
@@ -1643,23 +1644,11 @@ bool tlobby_main::do_game_join(int idx, bool observe)
 	join["observe"] = observe;
 	if(join && !observe && game.password_required) {
 		std::string password;
-		// TODO replace with a gui2 dialog
-		const int res
-				= gui::show_dialog(disp_,
-								   NULL,
-								   _("Password Required"),
-								   _("Joining this game requires a password."),
-								   gui::OK_CANCEL,
-								   NULL,
-								   NULL,
-								   _("Password: "),
-								   &password);
-		if(res != 0) {
+		if(!gui2::tmp_join_game_password_prompt::execute(password, disp_.video())) {
 			return false;
 		}
-		if(!password.empty()) {
-			join["password"] = password;
-		}
+
+		join["password"] = password;
 	}
 	network::send_data(response, 0);
 	if(observe && game.started) {

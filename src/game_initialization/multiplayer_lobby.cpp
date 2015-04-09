@@ -30,6 +30,7 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/old_markup.hpp"
 #include "gui/dialogs/message.hpp" // for gui2::show_message
+#include "gui/dialogs/mp_join_game_password_prompt.hpp"
 #include "gui/widgets/window.hpp" // for gui2::twindow::OK
 #include "lobby_reload_request_exception.hpp"
 #include "log.hpp"
@@ -1265,10 +1266,7 @@ void lobby::process_event_impl(const process_event_data & data)
 
 			std::string password;
 			if(join && game.password_required) {
-				const int res = gui::show_dialog(disp_, NULL, _("Password Required"),
-				          _("Joining this game requires a password."),
-						  gui::OK_CANCEL, NULL, NULL, _("Password: "), &password);
-				if(res != 0) {
+				if(!gui2::tmp_join_game_password_prompt::execute(password, disp_.video())) {
 					return;
 				}
 			}
