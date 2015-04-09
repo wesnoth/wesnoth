@@ -457,6 +457,8 @@ void gamebrowser::handle_event(const SDL_Event& event)
 	}
 }
 
+static mp::ADDON_REQ check_addon_version_compatibility (const config & local_item, const config & game, std::vector<required_addon> & req_list);
+
 // Determine if this is a campaign or scenario and add info string to this game item.
 void gamebrowser::populate_game_item_campaign_or_scenario_info(gamebrowser::game_item & item, const config & game, const config & game_config, bool & verified)
 {
@@ -496,16 +498,30 @@ void gamebrowser::populate_game_item_campaign_or_scenario_info(gamebrowser::game
 						verified = false;
 					}
 				}
+
+				if ((*level_cfg)["require_scenario"].to_bool(false)) {
+					mp::ADDON_REQ result = check_addon_version_compatibility((*level_cfg), game, item.addons);
+					item.addons_outcome = std::max(item.addons_outcome, result); //elevate to most severe error level encountered so far
+				}
+
 			} else {
 				utils::string_map symbols;
 				symbols["scenario_id"] = game["mp_scenario"];
 				item.map_info =
 					vgettext("Unknown scenario: $scenario_id", symbols);
 				verified = false;
+
+				if (game["require_scenario"].to_bool(false)) {
+					item.have_scenario = false;
+				}
 			}
 		} else {
 			item.map_info = _("Unknown scenario");
 			verified = false;
+
+			if (game["require_scenario"].to_bool(false)) {
+				item.have_scenario = false;
+			}
 		}
 	} else { // Is a campaign
 		const config* level_cfg = &game_config.find_child("campaign", "id",
