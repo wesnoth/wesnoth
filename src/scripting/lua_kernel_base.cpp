@@ -137,6 +137,15 @@ int lua_kernel_base::intf_show_lua_console(lua_State *L)
 
 // End Callback implementations
 
+// Template which allows to push member functions to the lua kernel base into lua as C functions, using a shim
+typedef int (lua_kernel_base::*member_callback)(lua_State *L);
+
+template <member_callback method>
+int dispatch(lua_State *L) {
+	return ((lua_kernel_base::get_lua_kernel<lua_kernel_base>(L)).*method)(L);
+}
+
+// Ctor, initialization
 lua_kernel_base::lua_kernel_base(CVideo * video)
  : mState(luaL_newstate())
  , video_(video)
@@ -239,14 +248,20 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 		{ "set_dialog_canvas",        &lua_gui2::intf_set_dialog_canvas		},
 		{ "set_dialog_markup",        &lua_gui2::intf_set_dialog_markup		},
 		{ "set_dialog_value",         &lua_gui2::intf_set_dialog_value		},
+		{ "dofile", 		      &dispatch<&lua_kernel_base::intf_dofile>           },
+		{ "require", 		      &dispatch<&lua_kernel_base::intf_require>          },
+		{ "show_dialog",	      &dispatch<&lua_kernel_base::intf_show_dialog>      },
+		{ "show_lua_console",	      &dispatch<&lua_kernel_base::intf_show_lua_console> },
 		{ NULL, NULL }
 	};
+
+
 	lua_cpp::Reg const cpp_callbacks[] = {
-		{ "dofile", 		boost::bind(&lua_kernel_base::intf_dofile, this, _1)},
+/*		{ "dofile", 		boost::bind(&lua_kernel_base::intf_dofile, this, _1)},
 		{ "require", 		boost::bind(&lua_kernel_base::intf_require, this, _1)},
 		{ "show_dialog",	boost::bind(&lua_kernel_base::intf_show_dialog, this, _1)},
 		{ "show_lua_console",	boost::bind(&lua_kernel_base::intf_show_lua_console, this, _1)},
-		{ NULL, NULL }
+*/		{ NULL, NULL }
 	};
 
 	lua_getglobal(L, "wesnoth");
@@ -264,8 +279,7 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 	lua_setglobal(L, "std_print"); //storing original impl as 'std_print'
 	lua_settop(L, 0); //clear stack, just to be sure
 
-	lua_cpp::lua_function my_print = boost::bind(&lua_kernel_base::intf_print, this, _1);
-	lua_cpp::push_closure(L, my_print, 0);
+	lua_pushcfunction(L, &dispatch<&lua_kernel_base::intf_print>);
 	lua_setglobal(L, "print");
 
 	// Create the package table.
