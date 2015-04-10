@@ -4445,7 +4445,7 @@ bool game_lua_kernel::run_wml_conditional(std::string const &cmd, vconfig const 
 	}
 
 	luaW_pushvconfig(L, cfg);
-	luaW_pcall(L, 1, 0, true);
+	luaW_pcall(L, 1, 1, true);
 
 	bool b = luaW_toboolean(L, -1);
 	lua_pop(L, 1);
