@@ -17,27 +17,28 @@
  * Implementations of conditional action WML tags.
  */
 
-#include "../global.hpp"
+#include "global.hpp"
 #include "conditional_wml.hpp"
 
-#include "../config.hpp"
-#include "../game_board.hpp"
-#include "../game_data.hpp"
-#include "../log.hpp"
-#include "../recall_list_manager.hpp"
-#include "../resources.hpp"
-#include "../serialization/string_utils.hpp"
-#include "../team.hpp"
-#include "../terrain_filter.hpp"
-#include "../unit.hpp"
-#include "../unit_filter.hpp"
-#include "../unit_map.hpp"
-#include "../unit_types.hpp"
-#include "../util.hpp"
-#include "../variable.hpp"
+#include "config.hpp"
+#include "game_board.hpp"
+#include "game_data.hpp"
+#include "log.hpp"
+#include "recall_list_manager.hpp"
+#include "resources.hpp"
+#include "scripting/game_lua_kernel.hpp"
+#include "serialization/string_utils.hpp"
+#include "team.hpp"
+#include "terrain_filter.hpp"
+#include "unit.hpp"
+#include "unit_filter.hpp"
+#include "unit_map.hpp"
+#include "unit_types.hpp"
+#include "util.hpp"
+#include "variable.hpp"
 
 #include <boost/foreach.hpp>
-
+#include <boost/assign/list_of.hpp>
 
 static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)
@@ -170,6 +171,23 @@ namespace { // Support functions
 #undef TEST_NUM_ATTR
 #undef TEST_BOL_ATTR
 		}
+
+		vconfig::all_children_iterator cond_end = cond.ordered_end();
+		static const boost::container::flat_set<std::string> hard_coded = boost::assign::list_of("true")("false")("have_unit")("have_location")("variable")
+		("then")("else")("elseif")("not")("and")("or")("do");
+
+		assert(resources::lua_kernel);
+
+		for (vconfig::all_children_iterator it = cond.ordered_begin(); it != cond_end; ++it) {
+			std::string key = it.get_key();
+			if (std::find(hard_coded.begin(), hard_coded.end(), key) == hard_coded.end()) {
+				bool result = resources::lua_kernel->run_wml_conditional(key, it.get_child());
+				if (!result) {
+					return false;
+				}
+			}
+		}
+
 		return true;
 	}
 

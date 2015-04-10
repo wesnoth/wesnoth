@@ -4172,6 +4172,14 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 	lua_setfield(L, -2, "wml_actions");
 	lua_pop(L, 1);
 
+	// Create the wml_conditionals table.
+	cmd_log_ << "Adding wml_conditionals table...\n";
+
+	lua_getglobal(L, "wesnoth");
+	lua_newtable(L);
+	lua_setfield(L, -2, "wml_conditionals");
+	lua_pop(L, 1);
+
 	// Create the game_events table.
 	cmd_log_ << "Adding game_events table...\n";
 
@@ -4415,6 +4423,33 @@ bool game_lua_kernel::run_wml_action(std::string const &cmd, vconfig const &cfg,
 	luaW_pushvconfig(L, cfg);
 	luaW_pcall(L, 1, 0, true);
 	return true;
+}
+
+
+/**
+ * Runs a command from an event handler.
+ * @return true if there is a handler for the command.
+ * @note @a cfg should be either volatile or long-lived since the Lua
+ *       code may grab it for an arbitrary long time.
+ */
+bool game_lua_kernel::run_wml_conditional(std::string const &cmd, vconfig const &cfg)
+{
+	lua_State *L = mState;
+
+
+	if (!luaW_getglobal(L, "wesnoth", "wml_conditionals", cmd.c_str(), NULL)) {
+		std::string err_msg = "unknown conditional wml: [";
+		err_msg += cmd;
+		err_msg += "]";
+		luaL_argerror(L, 1, err_msg.c_str());
+	}
+
+	luaW_pushvconfig(L, cfg);
+	luaW_pcall(L, 1, 0, true);
+
+	bool b = luaW_toboolean(L, -1);
+	lua_pop(L, 1);
+	return b;
 }
 
 
