@@ -176,6 +176,8 @@ Version 1.13.0-dev:
      using the same functions the C++ engine does
    * Enabled support for the bit32 library (bitwise operations)
    * Added support for treeview wigets in lua gui2 dialogs.
+   * Added support to define wml conditional tags in lua. See the 
+     wesnoth.wml_condtionals table as described on the wiki.
  * Multiplayer:
    * Fixed the Set Password option during game creation not having an effect
      due to a misplaced WML attribute in the client's command for the server
