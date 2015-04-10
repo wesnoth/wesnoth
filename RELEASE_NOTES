@@ -259,8 +259,93 @@ Additionally, you can use "log-debug=scripting/lua" at command line, and all lua
 [/section]
 [section="New lua functions"]
 [list]
-[*] wesnoth.synchonize_choice is now able to query information form another side than the currently playing one.
-[*] wesnoth.get_all_vars allows get get a copy of the whole wml variables set.
+[*] [b]wesnoth.synchonize_choice[/b] is now able to query information form another side than the currently playing one.
+[*] [b]wesnoth.get_all_vars[/b] allows get get a copy of the whole wml variables set.
+[*] [b]wesnoth.wml_conditionals[/b] is not a function, but a table, similar to wesnoth.wml_actions. It can be used to define new conditional WML.
+
+For instance after running this lua code,
+
+[spoiler]
+[code]
+function wesnoth.wml_conditionals.can_make_archon(cfg)
+	local x = cfg.x or error("[can_make_archon] missing x")
+	local y = cfg.y or error("[can_make_archon] missing y")
+
+	local adj = wesnoth.get_units( { x = x,
+					 y = y,
+					 type = "Spearman",
+					 side = wesnoth.current.side,
+						{ "filter_adjacent" , 
+							{
+								side = wesnoth.current.side ,
+								type = "Spearman"
+							} 
+						}
+					} )
+
+	if #adj == 0 then
+		return false
+	end
+
+	return true
+end
+
+function wesnoth.wml_actions.make_archon(cfg)
+	local x = cfg.x or error("[make_archon] missing x")
+	local y = cfg.y or error("[make_archon] missing y")
+
+	local u = wesnoth.get_unit(x,y)
+	local adj = wesnoth.get_units( { type = "Spearman",
+					 side = wesnoth.current.side,
+						{ "filter_adjacent" , 
+							{
+								side = wesnoth.current.side ,
+								type = "Spearman",
+								x = x,
+								y = y
+							} 
+						}
+					} )
+
+	if not u or not adj or #adj == 0 then
+		return
+	end
+
+	a = adj[1]
+
+	if not a then
+		error("That's wierd")
+	end
+
+	u.hitpoints = u.hitpoints + a.hitpoints
+	u.name = u.name .. ' + ' .. a.name
+
+	wesnoth.put_unit(a.x, a.y, nil) -- kill the unit that was absorbed
+end
+[/code]
+[/spoiler]
+the following becomes a valid wml menu item definition:
+
+[code]
+		[set_menu_item]
+			id = make_archon
+			description = "Make a Spearman Archon"
+			[show_if]
+				[can_make_archon]
+					x = $x1
+					y = $y1
+				[/can_make_archon]
+			[/show_if]
+
+			[command]
+				[make_archon]
+					x = $x1
+					y = $y1
+				[/make_archon]
+			[/command]
+		[/set_menu_item]
+[/code]
+
 [/list]
 [/section]
 
