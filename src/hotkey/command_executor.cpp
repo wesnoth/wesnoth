@@ -649,11 +649,13 @@ void execute_command(display& disp, const hotkey_command& command, command_execu
 			std::string ext = ".bmp";
 			#endif
 			filename = filesystem::get_next_filename(filename, ext);
-			int size = disp.screenshot(filename, map_screenshot);
-			if (size > 0) {
+			const bool res = disp.screenshot(filename, map_screenshot);
+			if (res) {
 				gui2::tscreenshot_notification::display(filename, disp.video());
 			} else {
-				gui2::show_message(disp.video(), _("Screenshot Done"), "");
+				gui2::show_error_message(disp.video(),
+										 _("Screenshot creation failed.\n\n"
+										 "Make sure there is enough space on the drive holding Wesnoth’s player resource files and that file permissions are set up correctly."));
 			}
 			break;
 		}
