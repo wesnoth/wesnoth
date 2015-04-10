@@ -770,10 +770,14 @@ bool display::screenshot(const std::string& filename, bool map_screenshot)
 		surface screenshot_surf = screen_.getSurface();
 
 		res = image::save_image(screenshot_surf, filename);
-
+#if 0
+		// FIXME: the SDL_SavePNG path results in oblique errors that don't
+		//        make sense to anyone who's not familiarized with it, so
+		//        we can't use this.
 		if (!res) {
 			ERR_DP << "Screenshot failed: " << SDL_GetError() << '\n';
 		}
+#endif
 	} else {
 		if (get_map().empty()) {
 			ERR_DP << "No map loaded, cannot create a map screenshot.\n";
@@ -804,12 +808,17 @@ bool display::screenshot(const std::string& filename, bool map_screenshot)
 		// finally save the image on disk
 		res = image::save_image(map_screenshot_surf_,filename);
 
+#if 0
+		// FIXME: the SDL_SavePNG path results in oblique errors that don't
+		//        make sense to anyone who's not familiarized with it, so
+		//        we can't use this.
 		if (!res) {
 			// Need to do this ASAP or spurious messages result due to
 			// redraw_everything calling SDL too (e.g. "SDL_UpperBlit: passed
 			// a NULL surface")
 			ERR_DP << "Map screenshot failed: " << SDL_GetError() << '\n';
 		}
+#endif
 
 		//NOTE: need to be sure that we free this huge surface (is it enough?)
 		map_screenshot_surf_ = NULL;
