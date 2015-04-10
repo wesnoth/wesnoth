@@ -63,13 +63,19 @@ namespace gui2
 
 REGISTER_DIALOG(screenshot_notification)
 
-tscreenshot_notification::tscreenshot_notification(const std::string& path,
-												   int filesize)
+tscreenshot_notification::tscreenshot_notification(const std::string& path)
 	: path_(path), screenshots_dir_path_(filesystem::get_screenshot_dir())
 {
+	const int filesize = filesystem::file_size(path);
+
+	const std::string sizetext
+			= filesize >= 0
+			? utils::si_string(filesize, true, _("unit_byte^B"))
+			: _("file_size^Unknown");
+
 	register_label("filesize",
 				   false,
-				   utils::si_string(filesize, true, _("unit_byte^B")),
+				   sizetext,
 				   false);
 }
 

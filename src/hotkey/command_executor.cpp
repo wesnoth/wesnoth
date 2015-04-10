@@ -651,7 +651,7 @@ void execute_command(display& disp, const hotkey_command& command, command_execu
 			filename = filesystem::get_next_filename(filename, ext);
 			int size = disp.screenshot(filename, map_screenshot);
 			if (size > 0) {
-				gui2::tscreenshot_notification::display(filename, size, disp.video());
+				gui2::tscreenshot_notification::display(filename, disp.video());
 			} else {
 				gui2::show_message(disp.video(), _("Screenshot Done"), "");
 			}

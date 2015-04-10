@@ -811,8 +811,7 @@ struct twrapper<gui2::tscreenshot_notification>
 {
 	static gui2::tscreenshot_notification* create()
 	{
-		return new gui2::tscreenshot_notification("path"
-				, 0);
+		return new gui2::tscreenshot_notification("path");
 	}
 };
 

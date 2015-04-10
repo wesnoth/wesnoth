@@ -26,19 +26,20 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param path     Path to the screenshot file created,
-	 * @param filesize Size of the screenshot file.
+	 * @param path     Path to the screenshot file created. The caller should
+	 *                 ensure the file exists, otherwise it will be displayed
+	 *                 with size 0.
 	 */
-	tscreenshot_notification(const std::string& path, int filesize);
+	tscreenshot_notification(const std::string& path);
 
 	/**
 	 * The display function.
 	 *
 	 * See @ref tdialog for more information.
 	 */
-	static void display(const std::string& path, int filesize, CVideo& video)
+	static void display(const std::string& path, CVideo& video)
 	{
-		tscreenshot_notification(path, filesize).show(video);
+		tscreenshot_notification(path).show(video);
 	}
 
 private:
