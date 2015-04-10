@@ -1256,27 +1256,26 @@ bool precached_file_exists(const std::string& file)
 		return false;
 }
 
-void save_image(const locator & i_locator, const std::string & filename)
+bool save_image(const locator & i_locator, const std::string & filename)
 {
-	save_image(get_image(i_locator), filename);
+	return save_image(get_image(i_locator), filename);
 }
 
-void save_image(const surface & surf, const std::string & filename)
+bool save_image(const surface & surf, const std::string & filename)
 {
 #ifdef HAVE_LIBPNG
 	if (!filesystem::ends_with(filename, ".bmp")) {
 		LOG_DP << "Writing a png image to " << filename << std::endl;
 
 		surface tmp = SDL_PNGFormatAlpha(surf.get());
-		SDL_SavePNG(tmp, filename.c_str());
 		//SDL_SavePNG_RW(tmp, filesystem::load_RWops(filename), 1); //1 means to close the file (RWops) when we finish
 		//^ This doesn't work, load_RWops is only for reading not writing
-		return;
+		return SDL_SavePNG(tmp, filename.c_str()) == 0;
 	}
 #endif
 
 	LOG_DP << "Writing a bmp image to " << filename << std::endl;
-	SDL_SaveBMP(surf, filename.c_str());
+	return SDL_SaveBMP(surf, filename.c_str()) == 0;
 }
 
 std::string describe_versions()

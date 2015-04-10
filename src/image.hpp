@@ -251,8 +251,8 @@ namespace image {
 	/// initialize any private data, e.g. algorithm choices from preferences
 	bool update_from_preferences();
 
-	void save_image(const locator& i_locator, const std::string& outfile);
-	void save_image(const surface& surf, const std::string& outfile);
+	bool save_image(const locator& i_locator, const std::string& outfile);
+	bool save_image(const surface& surf, const std::string& outfile);
 }
 
 #endif
