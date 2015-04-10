@@ -762,20 +762,22 @@ map_location display::minimap_location_on(int x, int y)
 	return loc;
 }
 
-int display::screenshot(std::string filename, bool map_screenshot)
+bool display::screenshot(const std::string& filename, bool map_screenshot)
 {
-	int size = 0;
+	bool res = false;
+
 	if (!map_screenshot) {
 		surface screenshot_surf = screen_.getSurface();
 
-		image::save_image(screenshot_surf, filename);
+		res = image::save_image(screenshot_surf, filename);
 
-		size = screenshot_surf->w * screenshot_surf->h;
+		if (!res) {
+			ERR_DP << "Screenshot failed: " << SDL_GetError() << '\n';
+		}
 	} else {
 		if (get_map().empty()) {
-			// Map Screenshot are big, abort and warn the user if he does strange things
-			std::cerr << "No map, can't do a Map Screenshot. If it was not wanted, check your hotkey.\n";
-			return -1;
+			ERR_DP << "No map loaded, cannot create a map screenshot.\n";
+			return false;
 		}
 
 		SDL_Rect area = max_map_area();
@@ -783,10 +785,9 @@ int display::screenshot(std::string filename, bool map_screenshot)
 
 		if (map_screenshot_surf_ == NULL) {
 			// Memory problem ?
-			std::cerr << "Can't create the screenshot surface. Maybe too big, try dezooming.\n";
-			return -1;
+			ERR_DP << "Could not create screenshot surface, try zooming out.\n";
+			return false;
 		}
-		size = map_screenshot_surf_->w * map_screenshot_surf_->h;
 
 		// back up the current map view position and move to top-left
 		int old_xpos = xpos_;
@@ -801,7 +802,14 @@ int display::screenshot(std::string filename, bool map_screenshot)
 		draw(true,true);
 
 		// finally save the image on disk
-		image::save_image(map_screenshot_surf_,filename);
+		res = image::save_image(map_screenshot_surf_,filename);
+
+		if (!res) {
+			// Need to do this ASAP or spurious messages result due to
+			// redraw_everything calling SDL too (e.g. "SDL_UpperBlit: passed
+			// a NULL surface")
+			ERR_DP << "Map screenshot failed: " << SDL_GetError() << '\n';
+		}
 
 		//NOTE: need to be sure that we free this huge surface (is it enough?)
 		map_screenshot_surf_ = NULL;
@@ -815,9 +823,7 @@ int display::screenshot(std::string filename, bool map_screenshot)
 		redraw_everything();
 	}
 
-	// convert pixel size to BMP size
-	size = (2048 + size*3);
-	return size;
+	return res;
 }
 
 gui::button* display::find_action_button(const std::string& id)

@@ -373,8 +373,8 @@ public:
 	/** Setter for the terrain code debug overlay on tiles */
 	void set_draw_terrain_codes(bool value) { draw_terrain_codes_ = value; }
 
-	/** Save a (map-)screenshot and return the estimated file size */
-	int screenshot(std::string filename, bool map_screenshot = false);
+	/** Save a (map-)screenshot and return whether the operation succeeded. */
+	bool screenshot(const std::string& filename, bool map_screenshot = false);
 
 	/** Invalidates entire screen, including all tiles and sidebar. Calls redraw observers. */
 	void redraw_everything();
