@@ -1264,7 +1264,7 @@ void save_image(const locator & i_locator, const std::string & filename)
 void save_image(const surface & surf, const std::string & filename)
 {
 #ifdef HAVE_LIBPNG
-	if (! ((filename.length() > 3) && (filename.substr(filename.length()-3, 3) == "bmp"))) {
+	if (!filesystem::ends_with(filename, ".bmp")) {
 		LOG_DP << "Writing a png image to " << filename << std::endl;
 
 		surface tmp = SDL_PNGFormatAlpha(surf.get());
