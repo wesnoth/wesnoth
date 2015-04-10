@@ -3925,11 +3925,19 @@ const game_events::queued_event & game_lua_kernel::get_event_info() {
 }
 
 // Template which allows to push member functions to the lua kernel base into lua as C functions, using a shim
-typedef int (game_lua_kernel::*member_callback)(lua_State *L);
+typedef int (game_lua_kernel::*member_callback)(lua_State *);
 
 template <member_callback method>
 int dispatch(lua_State *L) {
 	return ((lua_kernel_base::get_lua_kernel<game_lua_kernel>(L)).*method)(L);
+}
+
+// Pass a const bool also...
+typedef int (game_lua_kernel::*member_callback2)(lua_State *, bool);
+
+template <member_callback2 method, bool b>
+int dispatch2(lua_State *L) {
+	return ((lua_kernel_base::get_lua_kernel<game_lua_kernel>(L)).*method)(L, b);
 }
 
 
@@ -4042,11 +4050,11 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "simulate_combat",           &dispatch<&game_lua_kernel::intf_simulate_combat            >        },
 		{ "synchronize_choice",        &dispatch<&game_lua_kernel::intf_synchronize_choice         >        },
 		{ "view_locked",               &dispatch<&game_lua_kernel::intf_view_locked                >        },
+		{ "place_shroud",              &dispatch2<&game_lua_kernel::intf_shroud_op, true  >                 },
+		{ "remove_shroud",             &dispatch2<&game_lua_kernel::intf_shroud_op, false >                 },
 		{ NULL, NULL }
 	};
 	lua_cpp::Reg const cpp_callbacks[] = {
-		{ "place_shroud",              boost::bind(&game_lua_kernel::intf_shroud_op,                 this, _1, true  )},
-		{ "remove_shroud",             boost::bind(&game_lua_kernel::intf_shroud_op,                 this, _1, false )},
 		{ NULL, NULL }
 	};
 	lua_getglobal(L, "wesnoth");
