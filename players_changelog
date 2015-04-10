@@ -18,6 +18,8 @@ Version 1.13.0-dev:
    * Descent into Darkness:
      * Fixed various issues with player and enemy gold and income in
        'Descent into Darkness'.
+     * 'Return to Parthyn' now has variable content depending on whether
+        necromancy was used in 'Saving Parthyn'.
    * Eastern Invasion:
      * Updated maps for scenario 14, 16 and 17b.
      * New animation for Ravanal's shadow wave.
@@ -31,6 +33,12 @@ Version 1.13.0-dev:
    * Northern Rebirth:
      * Fixed Sister Thera and Father Morvin respawning into the recall list if
        the other is on the north or west map edges.
+     * Sister Threa and Father Morvin will no longer speak dialog on their death
+       after 'The Pursuit'.
+     * The maps for 'Infested Caves', 'Clearning the Mines', and 'The Pursuit'
+       have been completely redone.
+     * All scenarios up to 'Old Friend' have been significantly tweaked and
+       rebalanced.
    * Son of the Black Eye:
      * S2: adjusted starting villages; scenario now ends if Kapou'e is already
        on the signpost when the messenger comes back
@@ -41,8 +49,11 @@ Version 1.13.0-dev:
      * Fixed missing objective in 'The Court of Karrag'.
      * Rebalanced scenarios 'Invaders', 'Mages and Drakes' and 'Fear'.
      * Fixed some messages not being shown in custom events in 'The Underlevels'
+     * 'The Court of Karrag' and 'Epilogue' feature a new map.
    * The Rise of Wesnoth:
      * Hide unit variations that should not be listed in the help browser.
+   * Tutorial:
+     * Rewitten with an eye to being less constricting and more informative.
    * Under the Burning Suns:
      * Fixed recruited Desert Archers being always male.
      * Fixed malformed rand range errors during AI turns on medium difficulty
