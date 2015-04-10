@@ -1263,18 +1263,17 @@ void save_image(const locator & i_locator, const std::string & filename)
 
 void save_image(const surface & surf, const std::string & filename)
 {
-	#ifdef HAVE_LIBPNG
+#ifdef HAVE_LIBPNG
 	if (! ((filename.length() > 3) && (filename.substr(filename.length()-3, 3) == "bmp"))) {
 		LOG_DP << "Writing a png image to " << filename << std::endl;
-		//safest way,
-		SDL_Surface *tmp = SDL_PNGFormatAlpha(surf.get());
+
+		surface tmp = SDL_PNGFormatAlpha(surf.get());
 		SDL_SavePNG(tmp, filename.c_str());
 		//SDL_SavePNG_RW(tmp, filesystem::load_RWops(filename), 1); //1 means to close the file (RWops) when we finish
 		//^ This doesn't work, load_RWops is only for reading not writing
-		SDL_FreeSurface(tmp);
-		return ;
+		return;
 	}
-	#endif
+#endif
 
 	LOG_DP << "Writing a bmp image to " << filename << std::endl;
 	SDL_SaveBMP(surf, filename.c_str());
