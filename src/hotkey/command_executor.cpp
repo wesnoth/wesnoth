@@ -641,13 +641,13 @@ void execute_command(display& disp, const hotkey_command& command, command_execu
 			map_screenshot = true;
 			// intentional fall-through
 		case HOTKEY_SCREENSHOT: {
-			std::string name = map_screenshot ? _("Map-Screenshot") : _("Screenshot");
+			const std::string name = map_screenshot ? _("Map-Screenshot") : _("Screenshot");
 			std::string filename = filesystem::get_screenshot_dir() + "/" + name + "_";
-			#ifdef HAVE_LIBPNG
-			std::string ext = ".png";
-			#else
-			std::string ext = ".bmp";
-			#endif
+#ifdef HAVE_LIBPNG
+			const std::string ext = ".png";
+#else
+			const std::string ext = ".bmp";
+#endif
 			filename = filesystem::get_next_filename(filename, ext);
 			const bool res = disp.screenshot(filename, map_screenshot);
 			if (res) {
