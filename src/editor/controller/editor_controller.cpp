@@ -191,7 +191,9 @@ void editor_controller::status_table() {
 void editor_controller::do_screenshot(const std::string& screenshot_filename /* = "map_screenshot.bmp" */)
 {
 	try {
-		gui().screenshot(screenshot_filename,true);
+		if (!gui().screenshot(screenshot_filename,true)) {
+			ERR_ED << "Screenshot creation failed!\n";
+		}
 	} catch (twml_exception& e) {
 		e.show(gui());
 	}
