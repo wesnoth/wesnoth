@@ -4,13 +4,13 @@
 # Proxecto Trasno <http://trasno.net>
 #
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008.
-# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2010, 2011, 2012, 2013, 2014.
+# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2010, 2011, 2012, 2013, 2014, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-04-05 05:06-0300\n"
-"PO-Revision-Date: 2014-10-25 13:32+0200\n"
+"PO-Revision-Date: 2015-04-06 11:25+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -113,10 +113,8 @@ msgstr "Traballo artístico e deseño gráfico"
 
 #. [lua]: wml_actions.bandit_village_capture
 #: data/campaigns/Eastern_Invasion/lua/bandits.lua:82
-#, fuzzy
-#| msgid "They’re here!"
 msgid "They're here!"
-msgstr "Aquí hai bandidos!"
+msgstr "Están aquí!"
 
 #. [lua]: wml_actions.bandit_village_capture
 #: data/campaigns/Eastern_Invasion/lua/bandits.lua:89
@@ -549,7 +547,7 @@ msgstr "Leva a Uedri á saída do túnel."
 #. [note]
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:163
 msgid "Get moving quickly."
-msgstr ""
+msgstr "Ponte en marcha axiña."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:178
@@ -705,7 +703,7 @@ msgstr "Amuleto sagrado"
 msgid ""
 "It seems these trolls were hiding some gold. I think I can count fifty gold "
 "pieces!"
-msgstr ""
+msgstr "Parece que os trolls agochaban algo de ouro. Debe haber 50 moedas!"
 
 #. [unit]: type=Necromancer, id=Mal-Bakral
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:352
@@ -1385,17 +1383,13 @@ msgstr "Lanar-Escal"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:110
-#, fuzzy
-#| msgid "Find the outlaw leader and defeat him"
 msgid "Find the outlaw leader"
-msgstr "Atopa ao líder dos proscritos e derrótao."
+msgstr "Atopa o líder dos proscritos."
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:117
-#, fuzzy
-#| msgid "Shodrano"
 msgid "Kill Shodrano"
-msgstr "Xodrano"
+msgstr "Mata a Xodrano."
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:127
@@ -2657,16 +2651,12 @@ msgstr "Destrúe a ponte <b>ou</b> derrota a todos os inimigos."
 
 #. [note]
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:179
-#, fuzzy
-#| msgid ""
-#| "Note: every unit not south of the bridge when it is destroyed will be "
-#| "lost (including non-recalled units)"
 msgid ""
 "Every unit not south of the bridge when it is destroyed will be lost "
 "(including non-recalled units)"
 msgstr ""
-"Nota: perderanse todas as unidades que non estean na beira sur do río cando "
-"se destrúa a ponte (incluídas as unidades non reincorporadas)."
+"Perderanse todas as unidades que non estean na beira sur do río cando se "
+"destrúa a ponte (incluídas as unidades non reincorporadas)."
 
 #. [unit]: id=Engineer, type=Red Mage
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:189
@@ -3794,13 +3784,10 @@ msgstr ""
 "E foi así como comezou a época prateada do Reino do Noroeste, a que os "
 "historiadores chamarían a «Reconstrución»."
 
-# Mounted Fighter=Loitador Montado FIXADO
 #. [unit_type]: id=Bone Knight, race=undead
 #: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:5
-#, fuzzy
-#| msgid "Mounted Fighter"
 msgid "Bone Knight"
-msgstr "Loitador montado"
+msgstr "Cabaleiro de ósos"
 
 #. [unit_type]: id=Bone Knight, race=undead
 #: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:27
@@ -3809,17 +3796,20 @@ msgid ""
 "skeletal horses were raised from the ground by unholy magic to spread fear "
 "and destruction."
 msgstr ""
+"Outrora grandes guerreiros das chairas, a maxia impía devolveu estes "
+"cabaleiros ao mundo dos vivos montados sobre os seus cabalos esqueléticos "
+"para levar medo e destrución alá onde foren."
 
 #. [attack]: type=blade
 #: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:31
 #: data/campaigns/Eastern_Invasion/units/Skeleton_Rider.cfg:41
 msgid "axe"
-msgstr ""
+msgstr "machado"
 
 #. [attack]: type=impact
 #: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:40
 msgid "trample"
-msgstr ""
+msgstr "choque"
 
 # Horse Lord=señor dos cabalos FIXADO
 #. [unit_type]: id=Horse Lord, race=human
@@ -3903,7 +3893,7 @@ msgstr ""
 #. [unit_type]: id=Skeleton Rider, race=undead
 #: data/campaigns/Eastern_Invasion/units/Skeleton_Rider.cfg:5
 msgid "Skeleton Rider"
-msgstr ""
+msgstr "Esqueleto xinete"
 
 #. [unit_type]: id=Skeleton Rider, race=undead
 #: data/campaigns/Eastern_Invasion/units/Skeleton_Rider.cfg:34
@@ -3912,6 +3902,9 @@ msgid ""
 "their skeletal horses were raised from the grave by unholy magic to spread "
 "fear and destruction."
 msgstr ""
+"Outrora grandes guerreiros que resoaban nas chairas, a maxia impía devolveu "
+"estes cabaleiros ao mundo dos vivos montados sobre os seus cabalos "
+"esqueléticos para levar medo e destrución alá onde foren."
 
 #. [attacks]: id=shock
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:8

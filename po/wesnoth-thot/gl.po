@@ -5,13 +5,13 @@
 #
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008.
 # Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
-# Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail.com>, 2012, 2013.
+# Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail.com>, 2012, 2013, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-04-05 05:06-0300\n"
-"PO-Revision-Date: 2013-08-16 23:33+0200\n"
+"PO-Revision-Date: 2015-04-06 20:56+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -112,7 +112,7 @@ msgstr "Ideas, probas e pensión compensatoria"
 #. [about]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:53
 msgid "Campaign Maintenance"
-msgstr ""
+msgstr "Mantemento da campaña"
 
 #. [scenario]: id=01_At_the_East_Gate
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:5
@@ -122,15 +122,6 @@ msgstr "Orcos na porta oriental"
 # Dwarven Doors=Portas dos Ananos FIXADO
 #. [part]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:26
-#, fuzzy
-#| msgid ""
-#| "In the first few years after the founding of the Northern Alliance, the "
-#| "dwarves of Knalga and the human population of Dwarven Doors were fully "
-#| "preoccupied with rebuilding what had been broken by the long orcish "
-#| "occupation. But soon enough they prospered once again. The dwarves begin "
-#| "mining their past for inspiration in ways to rebuild Knalga so it would "
-#| "be even greater than before, and began also reaching out for contact with "
-#| "their scattered kinfolk."
 msgid ""
 "In the first few years after the founding of the Northern Alliance, the "
 "dwarves of Knalga and the human population of Dwarven Doors were fully "
@@ -511,8 +502,6 @@ msgstr "Moi ben, cabaleiro Hamel."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:207
-#, fuzzy
-#| msgid "The Order thanks you, Lord Hamel"
 msgid "The Order thanks you, Lord Hamel."
 msgstr "A orde aghradese a vosa axuda, cabaleiro Hamel."
 
@@ -1236,10 +1225,8 @@ msgstr "Anano enmascarado"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:172
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:209
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:289
-#, fuzzy
-#| msgid "Masked Dwarf"
 msgid "Masked Dwarves"
-msgstr "Anano enmascarado"
+msgstr "Ananos enmascarados"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:107
@@ -1447,7 +1434,7 @@ msgstr "O bosque prohibido"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:120
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:147
 msgid "Elves"
-msgstr ""
+msgstr "Elfos"
 
 #. [side]: type=Elvish High Lord, id=Telcherion
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:125
@@ -1900,7 +1887,7 @@ msgstr "Os niveis inferiores"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:247
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:266
 msgid "Undead"
-msgstr ""
+msgstr "Non mortos"
 
 #. [side]: type=Lich, id=Fleleen
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:252
@@ -2007,11 +1994,6 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:545
-#, fuzzy
-#| msgid ""
-#| "I sense these bindings to be the work of common sorcery, not the power of "
-#| "the Hammer. Usually to each such locking spell there is some sort of key. "
-#| "If we can but find the key, we will able to open these doors."
 msgid ""
 "I sense these bindings to be the work of common sorcery, not the power of "
 "the Hammer. Usually to each such locking spell there is some sort of key. If "
@@ -2151,10 +2133,6 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:874
-#, fuzzy
-#| msgid ""
-#| "Freeing these prisoners is more of a blow to Karrag then we thought, for "
-#| "now he is unable to continue his foul sorcery."
 msgid ""
 "Freeing these prisoners is more of a blow to Karrag than we thought, for now "
 "he is unable to continue his foul sorcery."
@@ -2612,20 +2590,15 @@ msgstr "inspira"
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:14
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:43
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:83
-#, fuzzy
-#| msgid ""
-#| "This unit can inspire own L0 or L1 units that are next to it, making them "
-#| "fight better. Adjacent own units of L1 will do 25% more damage; L0 units "
-#| "will do 50% more."
 msgid ""
 "This unit can inspire own units that are next to it, making them fight "
 "better. Adjacent own units of lower or equal level will deal 25% more damage "
 "plus 25% for each level they are below the inspiring unit."
 msgstr ""
-"Esta unidade pode inspirar ás unidades amigas de nivel 0 ou 1 que están "
-"xunta ela, facendo que loiten mellor. As unidades adxacentes de nivel 1 "
-"inflixirán un 25% máis de dano; as unidades de nivel 0 inflixirán un 50% "
-"máis."
+"Esta unidade pode inspirar ás unidades amigas que están xunta ela, facendo "
+"que loiten mellor. As unidades adxacentes de nivel igual ou inferior "
+"inflixirán un 25% máis de dano, máis outro 25% por cada nivel que teñan por "
+"debaixo da unidade que as inspira."
 
 #: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:6
 msgid "Aiglondur"
@@ -2700,8 +2673,6 @@ msgstr ""
 
 #. [object]: id=sorf	# Prevent it from being picked up more than once.
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:50
-#, fuzzy
-#| msgid "Only mages can wield the Staff."
 msgid "Only a mage may wield this Staff."
 msgstr "Só os magos poden portar o bastón."
 

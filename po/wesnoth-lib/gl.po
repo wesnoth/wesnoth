@@ -9,13 +9,13 @@
 # Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2010.
 # Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail.com>, 2010, 2011.
-# Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail.com>, 2011, 2012, 2013, 2014.
+# Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail.com>, 2011, 2012, 2013, 2014, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-04-05 05:06-0300\n"
-"PO-Revision-Date: 2014-10-25 13:41+0200\n"
+"PO-Revision-Date: 2015-04-06 15:34+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -360,12 +360,12 @@ msgstr "Fogueira"
 #. [terrain_type]: id=brazier
 #: data/core/terrain.cfg:434
 msgid "Brazier"
-msgstr ""
+msgstr "Braseiro"
 
 #. [terrain_type]: id=brazier-lit
 #: data/core/terrain.cfg:443
 msgid "Lit Brazier"
-msgstr ""
+msgstr "Braseiro aceso"
 
 #. [terrain_type]: id=fence
 #: data/core/terrain.cfg:452
@@ -1381,24 +1381,6 @@ msgstr ""
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2261
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Cave'</italic> terrain represents any underground cavern "
-#| "with enough room for a unit to pass.\n"
-#| "Most units are wholly unfamiliar with the terrain, and thus are both "
-#| "slowed down and hindered in defense. Dwarves and trolls, who make their "
-#| "homes in caves, both have a relatively easy time navigating this terrain, "
-#| "especially dwarves, who by dint of their small size can navigate many "
-#| "obstacles that other races cannot. Occasionally caves are "
-#| "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>.\n"
-#| "\n"
-#| "Rare patches of the underground world are illuminated by light from the "
-#| "surface shining down into the gloomy darkness. This provides an attack "
-#| "bonus for lawful units and removes the attack bonus from chaotic units. "
-#| "In all other regards this terrain is functionally identical to normal "
-#| "<ref>dst='terrain_cave' text='cave terrains'</ref>.\n"
-#| "\n"
-#| "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -1431,7 +1413,7 @@ msgstr ""
 "luz da superficie. Estas zonas fornecen ás unidades legais unha bonificación "
 "de ataque, e réstalle bonificación de ataque ás unidades caóticas. Alén "
 "desta peculiaridade, este tipo de terreo se comporta de maneira idéntica aos "
-"<ref>dst='terrain_cave' text='terreos de cova'</ref> normais.\n"
+"terreos de cova normais.\n"
 "\n"
 "A meirande parte das unidades teñen entre un 20% e un 40% de defensa nas "
 "covas, mentres que os ananos gozan dun 50% de defensa."
@@ -2009,10 +1991,8 @@ msgstr "Escenarios mult."
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:65
-#, fuzzy
-#| msgid "addons_of_type^Resources"
 msgid "addons_of_type^Cores"
-msgstr "Recursos"
+msgstr "Núcleos"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:66
@@ -2107,75 +2087,73 @@ msgstr "Eliminar"
 
 #: data/gui/default/window/advanced_graphics_options.cfg:42
 msgid "Bilinear intepolation scaling (legacy wesnoth option)"
-msgstr ""
+msgstr "Axuste de tamaño de interpolación bilineal (opción antiga)"
 
 #: data/gui/default/window/advanced_graphics_options.cfg:42
 msgid "Linear (legacy)"
-msgstr ""
+msgstr "Lineal (antiga)"
 
 #: data/gui/default/window/advanced_graphics_options.cfg:43
 msgid "Nearest Neighbor"
-msgstr ""
+msgstr "O veciño máis próximo"
 
 #: data/gui/default/window/advanced_graphics_options.cfg:43
 msgid "Nearest Neighbor scaling (fastest)"
-msgstr ""
+msgstr "Axuste de tamaño do veciño máis próximo (o máis rápido)"
 
 #: data/gui/default/window/advanced_graphics_options.cfg:44
 msgid "xBRZ + linear"
-msgstr ""
+msgstr "xBRZ + lineal"
 
 #: data/gui/default/window/advanced_graphics_options.cfg:44
 msgid "xBRZ followed by Bilinear interpolation"
-msgstr ""
+msgstr "xBRZ seguido de interpolación bilineal."
 
 #: data/gui/default/window/advanced_graphics_options.cfg:45
 msgid "xBRZ + NN"
-msgstr ""
+msgstr "xBRZ + NN"
 
 #: data/gui/default/window/advanced_graphics_options.cfg:45
 msgid "xBRZ followed by Nearest Neighbor (recommended)"
-msgstr ""
+msgstr "xBRZ seguido do axuste do veciño máis recomendado (recomendado)"
 
 #: data/gui/default/window/advanced_graphics_options.cfg:46
 msgid "Bilinear intepolation scaling (new implementation)"
-msgstr ""
+msgstr "Axuste de tamaño de interpolación bilineal (método novo)"
 
 #: data/gui/default/window/advanced_graphics_options.cfg:46
 msgid "Linear"
-msgstr ""
+msgstr "Lineal"
 
 #. [label]
 #: data/gui/default/window/advanced_graphics_options.cfg:92
-#, fuzzy
-#| msgid "sound^Advanced Options"
 msgid "Advanced Graphics Options"
-msgstr "Opcións avanzadas"
+msgstr "Opcións gráficas avanzadas"
 
 #. [label]
 #: data/gui/default/window/advanced_graphics_options.cfg:108
 msgid "Images will be scaled using the following algorithms:"
-msgstr ""
+msgstr "O tamaño das imaxes axustarase usando os seguintes algoritmos:"
 
 #. [column]
 #: data/gui/default/window/advanced_graphics_options.cfg:129
 msgid "All units, haloes, border hexes"
-msgstr ""
+msgstr "Unidades, halos, hexágonos dos bordos"
 
 #. [column]
 #: data/gui/default/window/advanced_graphics_options.cfg:129
 msgid "Scaled to zoom"
-msgstr ""
+msgstr "Axustado ao aumento"
 
 #. [column]
 #: data/gui/default/window/advanced_graphics_options.cfg:140
 msgid "Everything else"
-msgstr ""
+msgstr "Todo o demais"
 
 #. [column]
 #: data/gui/default/window/advanced_graphics_options.cfg:140
 msgid "Scaled to hex"
-msgstr ""
+msgstr "Axustado ao hexágono"
 
 # Aparece encabezando a lista de campañas, convidando ao usuario a xogar unha.
 #
@@ -2189,15 +2167,13 @@ msgstr "Xogar unha campaña ou escenario"
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:423
 #: data/gui/default/window/campaign_settings.cfg:48
-#, fuzzy
-#| msgid "sound^Advanced Options"
 msgid "Advanced Settings"
-msgstr "Opcións avanzadas"
+msgstr "Configuración avanzada"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/default/window/campaign_dialog.cfg:436
 msgid "Deterministic mode"
-msgstr ""
+msgstr "Modo determinista"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/default/window/campaign_dialog.cfg:438
@@ -2205,6 +2181,8 @@ msgid ""
 "Makes the random number generator yield the same results even after "
 "reloading a game"
 msgstr ""
+"Fai que o xerador de números aleatorios xere os mesmos números incluso tras "
+"cargar de novo unha partida gardada."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -2265,21 +2243,17 @@ msgstr "Escolle o nivel de dificultade:"
 #. [label]
 #: data/gui/default/window/campaign_settings.cfg:77
 msgid "Additional dialogs:"
-msgstr ""
+msgstr "Diálogos adicionais:"
 
 #. [toggle_button]: id=mp_configure
 #: data/gui/default/window/campaign_settings.cfg:104
-#, fuzzy
-#| msgid "Options"
 msgid "Level options"
-msgstr "Opcións"
+msgstr "Opcións de nivel"
 
 #. [toggle_button]: id=mp_connect
 #: data/gui/default/window/campaign_settings.cfg:120
-#, fuzzy
-#| msgid "Configuration:"
 msgid "Configure sides"
-msgstr "Configuración:"
+msgstr "Configurar os bandos"
 
 #. [label]
 #. [label]: id=era_label
@@ -2290,10 +2264,8 @@ msgstr "Era:"
 
 #. [label]: id=mod_label
 #: data/gui/default/window/campaign_settings.cfg:250
-#, fuzzy
-#| msgid "Choose Modifications"
 msgid "Modifications:"
-msgstr "Escoller as modificacións"
+msgstr "Modificacións:"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:38
@@ -2354,10 +2326,8 @@ msgstr "Copiar"
 
 #. [label]
 #: data/gui/default/window/core_dialog.cfg:55
-#, fuzzy
-#| msgid "Load Game"
 msgid "Load Core"
-msgstr "Cargar unha partida"
+msgstr "Cargar o núcleo"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:45
@@ -2717,7 +2687,7 @@ msgstr "Xerar"
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:127
 msgid "Seed"
-msgstr ""
+msgstr "Semente"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -2870,10 +2840,8 @@ msgstr "Saír"
 
 #. [label]: id=title
 #: data/gui/default/window/game_cache_options.cfg:36
-#, fuzzy
-#| msgid "Cache:"
 msgid "WML Cache"
-msgstr "Caché:"
+msgstr "Caché de WML"
 
 #. [label]
 #: data/gui/default/window/game_cache_options.cfg:53
@@ -2884,13 +2852,17 @@ msgid ""
 "files generated by older versions; or you may purge its entire contents if "
 "you are experiencing issues when loading the game data."
 msgstr ""
+"A batalla polo Noroeste mantén unha caché de datos WML pre-procesados para "
+"campañas, escenarios de varios xogadores, e outros complementos para "
+"mellorar a velocidade de carga. Pode limpar a caché se necesita aforrar "
+"espazo en disco, o que eliminará ficheiros innecesarios xerados por versións "
+"anteriores do xogo, ou pode baleirar completamente a caché se está a "
+"experimentar problemas de carga dos datos do xogo."
 
 #. [label]
 #: data/gui/default/window/game_cache_options.cfg:81
-#, fuzzy
-#| msgid "Paths"
 msgid "Path:"
-msgstr "Rutas"
+msgstr "Ruta:"
 
 #. [button]: id=copy
 #. [button]: id=copy_
@@ -2925,22 +2897,22 @@ msgstr "Buscar neste lugar cun xestor de ficheiros."
 #. [button]: id=clean
 #: data/gui/default/window/game_cache_options.cfg:196
 msgid "cache^Clean"
-msgstr ""
+msgstr "Limpar"
 
 #. [button]: id=clean
 #: data/gui/default/window/game_cache_options.cfg:197
 msgid "Clear stale and unused cache files"
-msgstr ""
+msgstr "Limpar os ficheiros vellos e innecesarios da caché."
 
 #. [button]: id=purge
 #: data/gui/default/window/game_cache_options.cfg:209
 msgid "cache^Purge"
-msgstr ""
+msgstr "Baleirar"
 
 #. [button]: id=purge
 #: data/gui/default/window/game_cache_options.cfg:210
 msgid "Purge the entire contents of the cache"
-msgstr ""
+msgstr "Baleirar todo o contido da caché."
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_delete.cfg:40
@@ -3096,33 +3068,27 @@ msgstr "Contido"
 #: data/gui/default/window/gamestate_inspector.cfg:287
 #: data/gui/default/window/lua_interpreter.cfg:41
 msgid "Lua Console"
-msgstr ""
+msgstr "Consola de Lua"
 
 #. [label]
 #: data/gui/default/window/joystick_settings.cfg:25
-#, fuzzy
-#| msgid "Mouse Scrolling"
 msgid "Map scrolling"
-msgstr "Desprazamento co rato."
+msgstr "Desprazamento do mapa"
 
 #. [label]
 #: data/gui/default/window/joystick_settings.cfg:54
-#, fuzzy
-#| msgid "Moderation"
 msgid "Mouse emulation"
-msgstr "Moderación"
+msgstr "Emulación do rato"
 
 #. [label]
 #: data/gui/default/window/joystick_settings.cfg:93
-#, fuzzy
-#| msgid "Hotkey Settings"
 msgid "Joystick Settings"
-msgstr "Configuración dos atallos"
+msgstr "Configuración do mando"
 
 #. [toggle_button]
 #: data/gui/default/window/joystick_settings.cfg:107
 msgid "Enable joystick support"
-msgstr ""
+msgstr "Permitir o uso de mandos."
 
 #. [grid]
 #. [label]
@@ -3368,32 +3334,28 @@ msgstr "Expulsar"
 
 #. [label]: id=title
 #: data/gui/default/window/mp_alerts_options.cfg:100
-#, fuzzy
-#| msgid "Multiplayer"
 msgid "Multiplayer Alerts"
-msgstr "Varios xogadores"
+msgstr "Alertas de varios xogadores"
 
 #. [label]
 #: data/gui/default/window/mp_alerts_options.cfg:125
 msgid "Event:"
-msgstr ""
+msgstr "Evento:"
 
 #. [label]
 #: data/gui/default/window/mp_alerts_options.cfg:140
-#, fuzzy
-#| msgid "Sound"
 msgid "Play Sound:"
-msgstr "Son"
+msgstr "Reproducir un son:"
 
 #. [label]
 #: data/gui/default/window/mp_alerts_options.cfg:141
 msgid "Play a sound for the event, specified in data/game_config.cfg"
-msgstr ""
+msgstr "Reproducir un son para o evento, indicado en «data/game_config.cfg»."
 
 #. [label]: id=notification_label
 #: data/gui/default/window/mp_alerts_options.cfg:156
 msgid "Desktop Notification:"
-msgstr ""
+msgstr "Notificación de escritorio:"
 
 #. [label]: id=notification_label
 #: data/gui/default/window/mp_alerts_options.cfg:157
@@ -3401,124 +3363,112 @@ msgid ""
 "Shows desktop/system tray notifications for turn change events or "
 "conversations when the game window is inactive"
 msgstr ""
+"Mostrar notificacións de escritorio ou da área de notificación para os "
+"cambios de quenda ou conversacións mentres a xanela do xogo non estea activa."
 
 #. [label]
 #: data/gui/default/window/mp_alerts_options.cfg:171
 msgid "Also in main lobby:"
-msgstr ""
+msgstr "Tamén na sala de espera principal:"
 
 #. [label]
 #: data/gui/default/window/mp_alerts_options.cfg:172
 msgid ""
 "Also take these actions in response to events in the main multiplayer lobby"
 msgstr ""
+"Tamén realizar estas accións en resposta a eventos da sala de espera "
+"principal para partidas de varios xogadores:"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:177
-#, fuzzy
-#| msgid "Players:"
 msgid "Player joins:"
-msgstr "Xogadores:"
+msgstr "Uniuse un xogador:"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:177
 msgid "When a player joins the lobby or game"
-msgstr ""
+msgstr "Cando un xogador se une á sala de espera ou á partida."
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:178
-#, fuzzy
-#| msgid "Players:"
 msgid "Player leaves:"
-msgstr "Xogadores:"
+msgstr "Un xogador marchou:"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:178
 msgid "When a player leaves the lobby or game"
-msgstr ""
+msgstr "Cando un xogador marcha da sala de espera ou da partida."
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:179
-#, fuzzy
-#| msgid "Send Private Message"
 msgid "Private message:"
-msgstr "Enviar unha mensaxe privada"
+msgstr "Mensaxe privada:"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:179
-#, fuzzy
-#| msgid "Send a private message"
 msgid "When a private message is recieved"
-msgstr "Enviar unha mensaxe privada"
+msgstr "Cando se recibe unha mensaxe privada."
 
 # Aparece na nova interface da sala de espera para partidas con varios xogadores.
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:180
-#, fuzzy
-#| msgid "Friends"
 msgid "Friend message:"
-msgstr "Amigos."
+msgstr "Mensaxe dun amigo:"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:180
 msgid "When a message from a friend is recieved"
-msgstr ""
+msgstr "Cando se recibe unha mensaxe dun amigo."
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:181
-#, fuzzy
-#| msgid "Message:"
 msgid "Public message:"
-msgstr "Mensaxe:"
+msgstr "Mensaxe pública:"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:181
 msgid "When a public message is recieved"
-msgstr ""
+msgstr "Cando se recibe unha mensaxe pública."
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:182
-#, fuzzy
-#| msgid "Send a private message"
 msgid "Server message:"
-msgstr "Enviar unha mensaxe privada"
+msgstr "Mensaxe do servidor:"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:182
 msgid "When a server message is recieved"
-msgstr ""
+msgstr "Cando se recibe unha mensaxe do servidor."
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:183
-#, fuzzy
-#| msgid "Random start time"
 msgid "Ready to start game:"
-msgstr "Momento do día inicial ao chou"
+msgstr "Listo para comezar a partida:"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:183
 msgid "When the game you are hosting is ready to start"
-msgstr ""
+msgstr "Cando a partida da que vostede é o anfitrión está lista para comezar."
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:184
 msgid "Game has begun:"
-msgstr ""
+msgstr "Comezou a partida:"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:184
 msgid "When the host (not you) has started the game"
-msgstr ""
+msgstr "Cando o anfitrión inicia a partida (e vostede non é o anfitrión)."
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:185
 msgid "Turn changed:"
-msgstr ""
+msgstr "Cambiou a quenda:"
 
 #. [grid]
 #: data/gui/default/window/mp_alerts_options.cfg:185
 msgid "When a new turn has begun"
-msgstr ""
+msgstr "Cando comeza a súa quenda."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=revert_to_defaults
@@ -3530,10 +3480,8 @@ msgstr "Valores predeterminados"
 
 #. [button]: id=revert_to_defaults
 #: data/gui/default/window/mp_alerts_options.cfg:211
-#, fuzzy
-#| msgid "Reset all bindings to the default values"
 msgid "Reset all options to their default values"
-msgstr "Restablecer todos os atallos aos seus valores predeterminados."
+msgstr "Restabelecer os valores predeterminados de todas as opcións."
 
 #. [label]: id=side_title
 #: data/gui/default/window/mp_change_control.cfg:21
@@ -3914,17 +3862,13 @@ msgstr ""
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:261
-#, fuzzy
-#| msgid "Forest"
 msgid "Cores"
-msgstr "Bosque"
+msgstr "Núcleos"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:261
-#, fuzzy
-#| msgid "Selected game"
 msgid "Select the game core data"
-msgstr "Partida escollida"
+msgstr "Seleccione o núcleo de datos do xogo."
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:262
@@ -4170,13 +4114,11 @@ msgstr "Rutas"
 
 #: src/game_preferences_display.cpp:232
 msgid "Colors"
-msgstr ""
+msgstr "Cores"
 
 #: src/game_preferences_display.cpp:233
-#, fuzzy
-#| msgid "Cache:"
 msgid "Cache"
-msgstr "Caché:"
+msgstr "Caché"
 
 #: src/game_preferences_display.cpp:235
 msgid "Sound effects"
@@ -4199,10 +4141,8 @@ msgid "sound^Standard Options"
 msgstr "Volver"
 
 #: src/game_preferences_display.cpp:240
-#, fuzzy
-#| msgid "Refresh Display"
 msgid "colors^Display"
-msgstr "Actualizar a pantalla"
+msgstr "Pantalla"
 
 #: src/game_preferences_display.cpp:241
 msgid "User interface sounds"
@@ -4233,43 +4173,35 @@ msgstr "Mostrar as animacións do mapa."
 
 #: src/game_preferences_display.cpp:249
 msgid "Disable automatic moves"
-msgstr ""
+msgstr "Desactivar os movementos automáticos"
 
 #: src/game_preferences_display.cpp:250
 msgid "Alerts"
-msgstr ""
+msgstr "Alertas"
 
 #: src/game_preferences_display.cpp:251
 msgid "Advanced"
-msgstr ""
+msgstr "Avanzado"
 
 #: src/game_preferences_display.cpp:255
-#, fuzzy
-#| msgid "Show Enemy Moves"
 msgid "Show enemy orb"
-msgstr "Mostrar os movementos do inimigo"
+msgstr "Mostrar as esferas dos inimigos"
 
 #: src/game_preferences_display.cpp:256
-#, fuzzy
-#| msgid "Show all lobby joins"
 msgid "Show ally orb"
-msgstr "Avisar de quen entra na sala de espera."
+msgstr "Mostrar as esferas dos aliados"
 
 #: src/game_preferences_display.cpp:257
-#, fuzzy
-#| msgid "Show Enemy Moves"
 msgid "Show unmoved orb"
-msgstr "Mostrar os movementos do inimigo"
+msgstr "Mostrar as esferas das unidades que non se moveron"
 
 #: src/game_preferences_display.cpp:258
 msgid "Show partial moved orb"
-msgstr ""
+msgstr "Mostrar as esferas das unidades que poden moverse máis"
 
 #: src/game_preferences_display.cpp:259
-#, fuzzy
-#| msgid "Show team colors"
 msgid "Show moved orb"
-msgstr "Mostrar as cores dos equipos."
+msgstr "Mostrar as esferas das unidades movidas"
 
 #: src/game_preferences_display.cpp:269 src/game_preferences_display.cpp:270
 #: src/game_preferences_display.cpp:271 src/game_preferences_display.cpp:272
@@ -4525,19 +4457,15 @@ msgstr "Ver as rutas de ficheiros do xogo"
 
 #: src/game_preferences_display.cpp:523
 msgid "Adjust orb colors"
-msgstr ""
+msgstr "Axustar as cores das esferas"
 
 #: src/game_preferences_display.cpp:524
-#, fuzzy
-#| msgid "Change the sample rate"
 msgid "Manage the game WML cache"
-msgstr "Cambiar a frecuencia de mostraxe."
+msgstr "Xestionar a caché WML do xogo"
 
 #: src/game_preferences_display.cpp:527
-#, fuzzy
-#| msgid "Play a bell sound at the beginning of your turn"
 msgid "Do not allow automatic movements at the begining of a turn"
-msgstr "Reproducir un son de campá ao comezo de cada quenda propia."
+msgstr "Non permitir movementos automáticos ao comezo dunha quenda."
 
 # Cantidade pola que se multiplica a velocidade á que vai o xogo cando se activa a «velocidade acelerada».
 #: src/game_preferences_display.cpp:960
@@ -4563,7 +4491,7 @@ msgstr "O nome de usuario non é válido."
 
 #: src/game_preferences_display.cpp:1411
 msgid "Desktop Notifications Unavailable"
-msgstr ""
+msgstr "As notificacións de escritorio non están dispoñíbeis"
 
 #: src/game_preferences_display.cpp:1412
 msgid ""
@@ -4571,6 +4499,10 @@ msgid ""
 "Check with the packager for your platform, or if compiling yourself, make "
 "sure that you have the appropriate dependencies installed."
 msgstr ""
+"Esta construción de A batalla polo Noroeste non permite o uso de "
+"notificacións de escritorio. Contacte o empaquetador do seu sistema ou, se "
+"está construíndo vostede mesmo o xogo, asegúrese de que ten as dependencias "
+"necesarias instaladas."
 
 #: src/game_preferences_display.cpp:1493
 msgid "yes"
@@ -4853,6 +4785,7 @@ msgstr "Descoñecido"
 #: src/gui/dialogs/wml_error.cpp:224
 msgid "Clipboard support not found, contact your packager."
 msgstr ""
+"A compatibilidade co portapapeis non está activada, contacte co empaquetador."
 
 #: src/gui/dialogs/addon/filter_options.cpp:295
 msgid "addons_view^Not Installed"
@@ -4884,6 +4817,9 @@ msgid ""
 "\n"
 "Not allowed."
 msgstr ""
+"Era:\n"
+"\n"
+"Non permitida."
 
 #: src/gui/dialogs/campaign_settings.cpp:142
 msgid ""
@@ -4891,6 +4827,9 @@ msgid ""
 "\n"
 "None found."
 msgstr ""
+"Modificacións:\n"
+"\n"
+"Non se atopou ningunha."
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:64
 msgid "$requester requires the following modifications to be enabled:"
@@ -4925,28 +4864,24 @@ msgstr ""
 "Escolle unha modificación compatíbel."
 
 #: src/gui/dialogs/game_cache_options.cpp:133
-#, fuzzy
-#| msgid "addon_state^Unknown"
 msgid "dir_size^Unknown"
 msgstr "Descoñecido"
 
 #: src/gui/dialogs/game_cache_options.cpp:153
 msgid "Cache Cleaned"
-msgstr ""
+msgstr "Limpouse a caché"
 
 #: src/gui/dialogs/game_cache_options.cpp:154
 msgid "The game data cache has been cleaned."
-msgstr ""
+msgstr "Limpouse a cachñe de datos do xogo."
 
 #: src/gui/dialogs/game_cache_options.cpp:157
 msgid "The game data cache could not be completely cleaned."
-msgstr ""
+msgstr "Non foi posíbel completar a limpeza da caché de datos do xogo."
 
 #: src/gui/dialogs/game_cache_options.cpp:172
-#, fuzzy
-#| msgid "Refresh Image Cache"
 msgid "Purge Cache"
-msgstr "Actualizar a caché das imaxes"
+msgstr "Baleirar a caché"
 
 #: src/gui/dialogs/game_cache_options.cpp:173
 msgid ""
@@ -4954,18 +4889,21 @@ msgid ""
 "directory will be deleted, and the cache will be regenerated next time it is "
 "required."
 msgstr ""
+"Está seguro de que quere baleirar a caché de datos do xogo? Eliminaranse "
+"todos os ficheiros do cartafol da caché e a caché rexenerarase a próxima vez "
+"que sexa necesaria."
 
 #: src/gui/dialogs/game_cache_options.cpp:184
 msgid "Cache Purged"
-msgstr ""
+msgstr "Baleirouse a caché"
 
 #: src/gui/dialogs/game_cache_options.cpp:185
 msgid "The game data cache has been purged."
-msgstr ""
+msgstr "Baleirouse a cachñe de datos do xogo."
 
 #: src/gui/dialogs/game_cache_options.cpp:188
 msgid "The game data cache could not be purged."
-msgstr ""
+msgstr "Non foi posíbel baleirar a caché de datos do xogo."
 
 #: src/gui/dialogs/game_load.cpp:275
 msgid "#(Invalid)"
@@ -5055,6 +4993,8 @@ msgid ""
 "This build of wesnoth does not include support for desktop notifications, "
 "contact your package manager"
 msgstr ""
+"Esta construción de A batalla polo Noroeste non permite o uso de "
+"notificacións de escritorio, contacte co xestor dos seus paquetes."
 
 #: src/gui/dialogs/mp_change_control.cpp:251
 msgid "Side $side"
@@ -5079,16 +5019,16 @@ msgstr "Non se definiu o trebello obrigatorio «$id|»."
 #: src/gui/widgets/label.cpp:158
 msgid "Opening links is not supported, contact your packager."
 msgstr ""
+"A funcionalidade de abrir ligazóns non vai incluída, contacte co seu "
+"empaquetador."
 
 #: src/gui/widgets/label.cpp:178
-#, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you want to open this link?"
-msgstr "Está seguro de que quere eliminar a partida?"
+msgstr "Quere abrir esta ligazón?"
 
 #: src/gui/widgets/label.cpp:211
 msgid "Copied link!"
-msgstr ""
+msgstr "Copiouse a ligazón."
 
 #: src/gui/widgets/settings.cpp:450
 msgid ""
@@ -5340,10 +5280,8 @@ msgid "Next Side"
 msgstr "Seguinte bando"
 
 #: src/hotkey/hotkey_command.cpp:103
-#, fuzzy
-#| msgid "Next page"
 msgid "Next Move"
-msgstr "Seguinte páxina"
+msgstr "Seguinte movemento"
 
 #: src/hotkey/hotkey_command.cpp:104
 msgid "Full Map"
@@ -5899,10 +5837,8 @@ msgid "Manage Add-ons"
 msgstr "Xestionar os complementos"
 
 #: src/hotkey/hotkey_command.cpp:256
-#, fuzzy
-#| msgid "Manage Add-ons"
 msgid "Manage Cores"
-msgstr "Xestionar os complementos"
+msgstr "Xestionar os núcleos"
 
 #: src/hotkey/hotkey_command.cpp:257
 msgid "Start Editor"
@@ -5918,7 +5854,7 @@ msgstr "Mostrar a axuda"
 
 #: src/hotkey/hotkey_command.cpp:262
 msgid "Show Lua Console"
-msgstr ""
+msgstr "Mostrar a consola de Lua"
 
 #: src/hotkey/hotkey_command.cpp:265
 msgid "Unrecognized Command"
