@@ -2098,11 +2098,8 @@ bool unit::is_visible_to_team(team const& team, gamemap const& map, bool const s
 		return true;
 	if (team.is_enemy(side()) && invisible(loc))
 		return false;
-	if (team.is_enemy(side()) && team.fogged(loc))
+	if (team.fogged(loc))
 		return false;
-	if (team.fogged(loc)  && !(*resources::teams)[side() - 1].share_view())
-		return false;
-
 	return true;
 }
 
