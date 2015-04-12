@@ -91,6 +91,13 @@ option(ENABLE_SDL_GPU "Enable building with SDL_gpu (experimental" OFF)
 option(ENABLE_LIBPNG "Enable support for writing png files (screenshots, images)" ON)
 #option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON) -- This feature is not supported in cmake yet, there is no cmake script to find the lib
 
+# if no build type is specified, it can happen that the game is built without
+# optimization (c.f. bug #23445), work around this by enforcing "release" type
+# if nothing was selected
+if(NOT CMAKE_BUILD_TYPE)
+	set( CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel." FORCE)
+endif(NOT CMAKE_BUILD_TYPE)
+
 if(NOT DEFINED ENABLE_DISPLAY_REVISION)
 	# Test whether the code is used in a repository if not autorevision will
 	# fail and should be disabled by default. If inside a repository enable
