@@ -19,8 +19,8 @@ Example contents.
 [/section]
 
 [section="fearless/healthy [effect]s"]
-instead of checking whether the trait id equals fearless/healthy we now have fearless/heathy [effect]s
-this means especialy that umcaddons that use their own fearless/healthy traits have to add those [effect]s in them.
+Instead of checking whether the trait id equals fearless/healthy, we now have fearless/heathy [effect]s.
+This means that UMC add-ons that use their own fearless/healthy traits have to add those [effect]s in them.
 [/section]
 
 [section="play single move button in replay mode"]
@@ -32,7 +32,7 @@ The multiplayer alerts, i.e. the sounds and desktop notifications such as relate
 [/section]
 
 [section="Hyperlinks"]
-Added support for hyperlinks to GUI2. This means that the chat log and also the addon descriptions pages should now support rendering and clicking on hyperlinks.
+Added support for hyperlinks to GUI2. This means that the chat log and also the add-on descriptions pages should now support rendering and clicking on hyperlinks.
 [/section]
 
 [section="New Filesystem Code"]
@@ -72,7 +72,7 @@ will generate a scaled image of a banebow attack sprite.
 [section="Boost random"]
 Wesnoth's random generator has been upgraded, instead of using the C `rand` function from the 80s, we now use the modern Meresenne Twister generator distributed by boost. The server (and your local client) also generates seeds using /dev/urandom, or platform equivalent (handled by boost random device). The boost random library is now a build requirement.
 
-This means that the WML rand= function should now be much more random and seeded properly. lua on the otherhand still uses the C `rand` function, so it is advised not to use that anymore.
+This means that the WML rand= function should now be much more random and seeded properly. lua on the other hand still uses the C `rand` function, so it is advised not to use that anymore.
 [/section]
 
 [section="Optional Dependency on libpng"]
@@ -94,39 +94,47 @@ Here is a trivial example:
     map_generation="lua"
     [generator]
         id="test"
-	config_name="Test Lua Map Generator"
-	create_map = << local rng = Rng:create()
+        config_name="Test Lua Map Generator"
+        create_map = << 
+			local rng = Rng:create()
 
 			print(rng:draw())
 			print(rng:draw())
 			print(rng:draw())
 
 			local w = 50
-		        local h = 40
+			local h = 40
 
 			map=""
+
 			for y=1,h do
-			  local r = rng:draw() % 2
-			  for x=1,w do
-                            if x == 10 and y == 10 then
-                              map = map .. " 1 "
- 			    end
-                            if x == (w-10) and y == (h-10) then
-                              map = map .. " 2 "
- 			    end
-			    if ((x + y) % 2) == r then
-			      map = map .. "Gg"
-			    else
-			      map = map .. "Md"
-			    end
-                            if x ~= w then
-                              map = map .. ","
-                            end
-                          end
-                          map = map .. "\n"
-                        end
-                        return map
-                     >>
+				local r = rng:draw() % 2
+
+				for x=1,w do
+					if x == 10 and y == 10 then
+						map = map .. " 1 "
+					end
+
+					if x == (w-10) and y == (h-10) then
+						map = map .. " 2 "
+					end
+
+					if ((x + y) % 2) == r then
+						map = map .. "Gg"
+					else
+						map = map .. "Md"
+					end
+
+					if x ~= w then
+						map = map .. ","
+					end
+				end
+
+				map = map .. "\n"
+			end
+
+			return map
+		>>
     [/generator]
 
     id = foo
@@ -199,9 +207,9 @@ As a debugging aide, a lua interpreter console has been added to the game. At ti
 The lua interpreter console supports command-line history, backed up by the GNU readline library. This is an optional dependency, but if you don't have it you won't be able to use the feature.
 [/section]
 
-[section="Compatability breaking changes"]
+[section="Compatibility breaking changes"]
 [list]
-[*] By default, all lua in wesnoth is now run using "strict globals". This means that you must assign a value to a global variable before using it, or it is a runtime error. Even assigning "nil" is acceptable. While this is strictly speaking a compatability-breaking change, it is quite uncommon that you would require the default behavior for your script to work, and this change greatly improves the maintainability of lua in add-ons, by giving an error message in case of a programmer typo, rather than pretending that everything is fine. This change also improves the behavior of the lua interpreter console.
+[*] By default, all lua in wesnoth is now run using "strict globals". This means that you must assign a value to a global variable before using it, or it is a runtime error. Even assigning "nil" is acceptable. While this is strictly speaking a compatibility-breaking change, it is quite uncommon that you would require the default behavior for your script to work, and this change greatly improves the maintainability of lua in add-ons, by giving an error message in case of a programmer typo, rather than pretending that everything is fine. This change also improves the behavior of the lua interpreter console.
 
 The implementation is based on a module called "ilua" (interactive lua) available here: http://lua-users.org/files/wiki_insecure/users/steved/ilua.lua
 
@@ -217,7 +225,7 @@ https://github.com/wesnoth/wesnoth/commit/d31253f585bd1e111705f59bdc37012ff6675f
 
 [*] In lua, the "print" function no longer writes to "standard out", and its output will not appear in the log files generated by the game. Instead its output only appears in the logs accessible via the in-game lua console.
 
-For backwards compatability, the old print function (which comes with lua) has been renamed as "std_print" rather than being deleted. So if you need to print to standard out you can use that one. You also have the option of course to undo the change with 
+For backwards compatibility, the old print function (which comes with lua) has been renamed as "std_print" rather than being deleted. So if you need to print to standard out you can use that one. You also have the option of course to undo the change with 
 [code]
 print = std_print
 [/code]
@@ -238,7 +246,7 @@ print = make_print()
 
 Additionally, you can use "log-debug=scripting/lua" at command line, and all lua print commands will be routed to the debug log.
 
-[*] map_generation= syntax in [multiplayer] was changed to match the meaing of map_generation= in campaigns, this means map_generation= will only generate the map and preserve anything bug map_data hwhile scenario_generation= can be used to generate the complete scenario.
+[*] map_generation= syntax in [multiplayer] was changed to match the meaing of map_generation= in campaigns, this means map_generation= will only generate the map and preserve anything bug map_data while scenario_generation= can be used to generate the complete scenario.
 [/list]
 [/section]
 
@@ -248,10 +256,10 @@ Additionally, you can use "log-debug=scripting/lua" at command line, and all lua
 
 [section="New wml tags"]
 [list]
-[*] [sync_variable] allows to synchonize a variable between, multiple clients in a mp game. This can for example be a variable that was previously set in a select or a preload event.
-[*] [result] inside [endlevel] allows to give side spcific results in a mp game.
-[*] [elseif] inside [if] simplifires wml programm flow.
-[*] [do_command] allows to execute attacks, moves, recalls, recuits .. from wml having the same effect as if a player had ordered them.
+[*] [sync_variable] allows to synchronize a variable between, multiple clients in a mp game. This can for example be a variable that was previously set in a select or a preload event.
+[*] [result] inside [endlevel] allows to give side specific results in a mp game.
+[*] [elseif] inside [if] simplifies wml program flow.
+[*] [do_command] allows to execute attacks, moves, recalls, recruits .. from wml having the same effect as if a player had ordered them.
 [*] [put_to_recall_list]
 [*] [store_relative_dir]
 [*] [remove_event]
@@ -354,7 +362,7 @@ Example contents 2.
 [/section]
 
 [section="Lua bit32 library (bitwise operations)"]
-The [tt]bit32[/tt] library, which was added in Lua 5.2, is now enabled. This means that your Lua scipts can now perform bitwise operations, if needed.
+The [tt]bit32[/tt] library, which was added in Lua 5.2, is now enabled. This means that your Lua scripts can now perform bitwise operations, if needed.
 For more informations about this library please go to [url]http://www.lua.org/manual/5.2/manual.html#6.7[/url].
 [/section]
 
@@ -372,13 +380,13 @@ Now, a player can simply double click on the game entry and they will be prompte
 [/section]
 
 [section="Better Multiplayer add-on Versioning"]
-In previous versions of wesnoth, if a game is hosted in the mp server which requires an add-on to play, the lobby UI will grey-out the game entry and prevent you from joining a game which will be broken if you attempt to play it. However, if you have the add-on but it is out-of-date, the UI will not help you and you will generally speaking wander into a minefield of OOS errors, unless you diligently update your add-ons. This situation discourages the less diligent players from playing UMC mp content, and thereby discourages this content generally.
+In previous versions of wesnoth, if a game is hosted in the mp server which requires an add-on to play, the lobby UI will gray-out the game entry and prevent you from joining a game which will be broken if you attempt to play it. However, if you have the add-on but it is out-of-date, the UI will not help you and you will generally speaking wander into a minefield of OOS errors, unless you diligently update your add-ons. This situation discourages the less diligent players from playing UMC mp content, and thereby discourages this content generally.
 
 In current versions, all games carry metadata which documents which add-ons are needed to play them, and at what versions. UMC authors may specify for each [era] or [modification] what the minimum add-on version is with which this content is backwards compatible, by adding "addon_min_version" attributes to these tags, which should be verion strings e.g. "1.2.3" to be compared with the add-on version string in the .pbl file of the add-on. [b] If no minimum version is specified, it is assumed that there is no backwards compatibility! [/b] Wesnoth clients will take all this information into account, and when a user tries to join a game with UMC content, will request to automatically update the relevant add-ons if it will make it possible to play the game. Wesnoth clients will also warn the user when the host has out-of-date add-ons, a situation which cannot be resolved unless the host updates.
 [/section]
 
 [section="FriBiDi"]
-Support for ancient versions of FriBiDi was dropped. The minimum for both CMake as well as scons is building with fribidi >= 0.10.9. Building with the latest versions might cause some warnings about depricated functions. If you encounter these, please build either with strict compilation turned off or without FriBiDi support.
+Support for ancient versions of FriBiDi was dropped. The minimum for both CMake as well as scons is building with fribidi >= 0.10.9. Building with the latest versions might cause some warnings about deprecated functions. If you encounter these, please build either with strict compilation turned off or without FriBiDi support.
 [/section]
 
 ==========
