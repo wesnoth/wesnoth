@@ -219,7 +219,7 @@ static bool is_directory_internal(const path &fpath)
 	error_code ec;
 	bool is_dir = bfs::is_directory(fpath, ec);
 	if (error_except_not_found(ec)) {
-		ERR_FS << "Failed to check if " << fpath.string() << " is a directory: " << ec.message() << '\n';
+		LOG_FS << "Failed to check if " << fpath.string() << " is a directory: " << ec.message() << '\n';
 	}
 	return is_dir;
 }
@@ -337,7 +337,7 @@ void get_files_in_dir(const std::string &dir,
 	for(; di != end; ++di) {
 		bfs::file_status st = di->status(ec);
 		if (ec) {
-			ERR_FS << "Failed to get file status of " << di->path().string() << ": " << ec.message() << '\n';
+			LOG_FS << "Failed to get file status of " << di->path().string() << ": " << ec.message() << '\n';
 			continue;
 		}
 		if (st.type() == bfs::regular_file) {
@@ -353,14 +353,14 @@ void get_files_in_dir(const std::string &dir,
 			if (checksum != NULL) {
 				std::time_t mtime = bfs::last_write_time(di->path(), ec);
 				if (ec) {
-					ERR_FS << "Failed to read modification time of " << di->path().string() << ": " << ec.message() << '\n';
+					LOG_FS << "Failed to read modification time of " << di->path().string() << ": " << ec.message() << '\n';
 				} else if (mtime > checksum->modified) {
 					checksum->modified = mtime;
 				}
 
 				uintmax_t size = bfs::file_size(di->path(), ec);
 				if (ec) {
-					ERR_FS << "Failed to read filesize of " << di->path().string() << ": " << ec.message() << '\n';
+					LOG_FS << "Failed to read filesize of " << di->path().string() << ": " << ec.message() << '\n';
 				} else {
 					checksum->sum_size += size;
 				}
@@ -378,7 +378,7 @@ void get_files_in_dir(const std::string &dir,
 			const path inner_main(di->path() / maincfg_filename);
 			bfs::file_status main_st = bfs::status(inner_main, ec);
 			if (error_except_not_found(ec)) {
-				ERR_FS << "Failed to get file status of " << inner_main.string() << ": " << ec.message() << '\n';
+				LOG_FS << "Failed to get file status of " << inner_main.string() << ": " << ec.message() << '\n';
 			} else if (reorder == DO_REORDER && main_st.type() == bfs::regular_file) {
 				LOG_FS << "_main.cfg found : " << (mode == ENTIRE_FILE_PATH ? inner_main.string() : inner_main.filename().string()) << '\n';
 				push_if_exists(files, inner_main, mode == ENTIRE_FILE_PATH);
@@ -830,7 +830,7 @@ time_t file_modified_time(const std::string& fname)
 	error_code ec;
 	std::time_t mtime = bfs::last_write_time(path(fname), ec);
 	if (ec) {
-		ERR_FS << "Failed to read modification time of " << fname << ": " << ec.message() << '\n';
+		LOG_FS << "Failed to read modification time of " << fname << ": " << ec.message() << '\n';
 	}
 	return mtime;
 }
@@ -850,7 +850,7 @@ int file_size(const std::string& fname)
 	error_code ec;
 	uintmax_t size = bfs::file_size(path(fname), ec);
 	if (ec) {
-		ERR_FS << "Failed to read filesize of " << fname << ": " << ec.message() << '\n';
+		LOG_FS << "Failed to read filesize of " << fname << ": " << ec.message() << '\n';
 		return -1;
 	} else if (size > INT_MAX)
 		return INT_MAX;
