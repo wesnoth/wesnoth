@@ -169,10 +169,6 @@ namespace { // Types
 	};
 } // end anonymous namespace (types)
 
-namespace { // Variables
-	int floating_label = 0;
-} // end anonymous namespace (variables)
-
 namespace { // Support functions
 
 	/**
@@ -872,33 +868,6 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 	BOOST_FOREACH(const vconfig &cmd, cfg.get_children(command_type)) {
 		handle_event_commands(event_info, cmd);
 	}
-}
-
-WML_HANDLER_FUNCTION(print, /*event_info*/, cfg)
-{
-	// Remove any old message.
-	if (floating_label)
-		font::remove_floating_label(floating_label);
-
-	// Display a message on-screen
-	std::string text = cfg["text"];
-	if(text.empty())
-		return;
-
-	int size = cfg["size"].to_int(font::SIZE_SMALL);
-	int lifetime = cfg["duration"].to_int(50);
-	SDL_Color color = create_color(cfg["red"], cfg["green"], cfg["blue"]);
-
-	const SDL_Rect& rect = resources::screen->map_outside_area();
-
-	font::floating_label flabel(text);
-	flabel.set_font_size(size);
-	flabel.set_color(color);
-	flabel.set_position(rect.w/2,rect.h/2);
-	flabel.set_lifetime(lifetime);
-	flabel.set_clip_rect(rect);
-
-	floating_label = font::add_floating_label(flabel);
 }
 
 /// If we should recall units that match a certain description.

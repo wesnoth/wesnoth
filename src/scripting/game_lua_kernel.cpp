@@ -2275,6 +2275,37 @@ int game_lua_kernel::intf_heal_unit(lua_State *L)
 	return 0;
 }
 
+int game_lua_kernel::intf_print(lua_State *L) {
+	vconfig cfg(luaW_checkvconfig(L, 1));
+
+	// Remove any old message.
+	static int floating_label = 0;
+	if (floating_label)
+		font::remove_floating_label(floating_label);
+
+	// Display a message on-screen
+	std::string text = cfg["text"];
+	if(text.empty() || !game_display_)
+		return 0;
+
+	int size = cfg["size"].to_int(font::SIZE_SMALL);
+	int lifetime = cfg["duration"].to_int(50);
+	SDL_Color color = create_color(cfg["red"], cfg["green"], cfg["blue"]);
+
+	const SDL_Rect& rect = game_display_->map_outside_area();
+
+	font::floating_label flabel(text);
+	flabel.set_font_size(size);
+	flabel.set_color(color);
+	flabel.set_position(rect.w/2,rect.h/2);
+	flabel.set_lifetime(lifetime);
+	flabel.set_clip_rect(rect);
+
+	floating_label = font::add_floating_label(flabel);
+
+	return 0;
+}
+
 /**
  * Places a unit on the map.
  * - Args 1,2: (optional) location.
@@ -4044,6 +4075,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "modify_side",               &dispatch<&game_lua_kernel::intf_modify_side                >        },
 		{ "open_help",                 &dispatch<&game_lua_kernel::intf_open_help                  >        },
 		{ "play_sound",                &dispatch<&game_lua_kernel::intf_play_sound                 >        },
+		{ "print",                     &dispatch<&game_lua_kernel::intf_print                      >        },
 		{ "put_recall_unit",           &dispatch<&game_lua_kernel::intf_put_recall_unit            >        },
 		{ "put_unit",                  &dispatch<&game_lua_kernel::intf_put_unit                   >        },
 		{ "redraw",                    &dispatch<&game_lua_kernel::intf_redraw                     >        },

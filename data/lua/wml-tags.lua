@@ -1452,3 +1452,7 @@ function wml_actions.redraw(cfg)
 
 	wesnoth.redraw(cfg, clear_shroud)
 end
+
+function wml_actions.print(cfg)
+	wesnoth.print(cfg)
+end
