@@ -20,9 +20,7 @@ include_directories(SYSTEM ${PANGOCAIRO_INCLUDE_DIRS} )
 include_directories(SYSTEM ${GETTEXT_INCLUDE_DIR} )
 include_directories(SYSTEM ${LIBDBUS_INCLUDE_DIRS} )
 include_directories(SYSTEM ${LIBINTL_INCLUDE_DIR} )
-if(NOT ENABLE_PANDORA)
-	include_directories(SYSTEM ${VORBISFILE_INCLUDE_DIR} )
-endif(NOT ENABLE_PANDORA)
+include_directories(SYSTEM ${VORBISFILE_INCLUDE_DIR} )
 
 #optional dependencies
 if(SDLIMAGE_INCLUDE_DIR)
@@ -93,18 +91,11 @@ else(MSVC)
 	)
 endif(MSVC)
 
-if(NOT ENABLE_PANDORA)
-	set(common-external-libs
-		${common-external-libs}
-		${Boost_FILESYSTEM_LIBRARY}
-		${Boost_LOCALE_LIBRARY}
-	)
-else(NOT ENABLE_PANDORA)
-	set(common-external-libs
-		${common-external-libs}
-		${LIBINTL_LIBRARY}
-	)
-endif(NOT ENABLE_PANDORA)
+set(common-external-libs
+	${common-external-libs}
+	${Boost_FILESYSTEM_LIBRARY}
+	${Boost_LOCALE_LIBRARY}
+)
 
 set(game-external-libs
 	${common-external-libs}
@@ -126,12 +117,10 @@ if(ENABLE_LIBPNG AND PNG_FOUND)
 	)
 endif(ENABLE_LIBPNG AND PNG_FOUND)
 
-if(NOT ENABLE_PANDORA)
-	set(game-external-libs
-		${game-external-libs}
-		${VORBISFILE_LIBRARIES}
-	)
-endif(NOT ENABLE_PANDORA)
+set(game-external-libs
+	${game-external-libs}
+	${VORBISFILE_LIBRARIES}
+)
 
 if(MSVC)
 	set(game-external-libs
@@ -255,19 +244,11 @@ set(libwesnoth-core_STAT_SRC
 	serialization/validator.cpp
 )
 
-if(NOT ENABLE_PANDORA)
-	set(libwesnoth-core_STAT_SRC
-		${libwesnoth-core_STAT_SRC}
-		filesystem_boost.cpp
-		gettext_boost.cpp
-	)
-else(NOT ENABLE_PANDORA)
-	set(libwesnoth-core_STAT_SRC
-		${libwesnoth-core_STAT_SRC}
-		filesystem.cpp
-		gettext.cpp
-	)
-endif(NOT ENABLE_PANDORA)
+set(libwesnoth-core_STAT_SRC
+	${libwesnoth-core_STAT_SRC}
+	filesystem_boost.cpp
+	gettext_boost.cpp
+)
 
 # a 'lib' is automatically set in front when creating the library (as in the filename)
 # internal reference is the name given here
