@@ -492,7 +492,9 @@ int lua_kernel_base::intf_dofile(lua_State* L)
 {
 	if (lua_fileops::load_file(L) != 1) return 0;
 	//^ should end with the file contents loaded on the stack. actually it will call lua_error otherwise, the return 0 is redundant.
-	lua_call(L, 0, LUA_MULTRET);
+
+	error_handler eh = boost::bind(&lua_kernel_base::log_error, this, _1, _2 );
+	protected_call(0, LUA_MULTRET, eh);
 	return lua_gettop(L);
 }
 
