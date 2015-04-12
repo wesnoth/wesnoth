@@ -1132,6 +1132,13 @@ function wml_actions.store_side(cfg)
 	end
 end
 
+-- This is the port of the old [modify_ai] into lua. It is different from wesnoth.modify_ai in that it uses a standard side filter.
+-- I don't know why these functions were made to behave differently, but this seems to be the more powerful and useful one according
+-- to mattsc's comments 
+function wml_actions.modify_ai(cfg)
+	wesnoth.modify_ai_wml(cfg)
+end
+
 function wml_actions.add_ai_behavior(cfg)
 	local unit = wesnoth.get_units(helper.get_child(cfg, "filter"))[1] or
 		helper.wml_error("[add_ai_behavior]: no unit specified")

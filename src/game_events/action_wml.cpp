@@ -704,16 +704,6 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 	}
 }
 
-WML_HANDLER_FUNCTION(modify_ai, /*event_info*/, cfg)
-{
-	side_filter ssf(cfg, resources::filter_con);
-	std::vector<int> sides = ssf.get_teams();
-	BOOST_FOREACH(const int &side_num, sides)
-	{
-		ai::manager::modify_active_ai_for_side(side_num,cfg.get_parsed_config());
-	}
-}
-
 WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 {
 	config::attribute_value value = cfg["value"];

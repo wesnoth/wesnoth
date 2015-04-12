@@ -2955,6 +2955,19 @@ int game_lua_kernel::intf_match_side(lua_State *L)
 	return 1;
 }
 
+int game_lua_kernel::intf_modify_ai_wml(lua_State *L)
+{
+	vconfig cfg(luaW_checkvconfig(L, 1));
+
+	side_filter ssf(cfg, &game_state_);
+	std::vector<int> sides = ssf.get_teams();
+	BOOST_FOREACH(const int &side_num, sides)
+	{
+		ai::manager::modify_active_ai_for_side(side_num,cfg.get_parsed_config());
+	}
+	return 0;
+}
+
 int game_lua_kernel::intf_modify_side(lua_State *L)
 {
 	vconfig cfg(luaW_checkvconfig(L, 1));
@@ -4027,6 +4040,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "match_side",                &dispatch<&game_lua_kernel::intf_match_side                 >        },
 		{ "match_unit",                &dispatch<&game_lua_kernel::intf_match_unit                 >        },
 		{ "message",                   &dispatch<&game_lua_kernel::intf_message                    >        },
+		{ "modify_ai_wml",             &dispatch<&game_lua_kernel::intf_modify_ai_wml              >        },
 		{ "modify_side",               &dispatch<&game_lua_kernel::intf_modify_side                >        },
 		{ "open_help",                 &dispatch<&game_lua_kernel::intf_open_help                  >        },
 		{ "play_sound",                &dispatch<&game_lua_kernel::intf_play_sound                 >        },
