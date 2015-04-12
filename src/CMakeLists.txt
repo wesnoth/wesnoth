@@ -93,18 +93,18 @@ else(MSVC)
 	)
 endif(MSVC)
 
-if(ENABLE_BOOST_FILESYSTEM AND NOT ENABLE_PANDORA)
+if(NOT ENABLE_PANDORA)
 	set(common-external-libs
 		${common-external-libs}
 		${Boost_FILESYSTEM_LIBRARY}
 		${Boost_LOCALE_LIBRARY}
 	)
-else(ENABLE_BOOST_FILESYSTEM AND NOT ENABLE_PANDORA)
+else(NOT ENABLE_PANDORA)
 	set(common-external-libs
 		${common-external-libs}
 		${LIBINTL_LIBRARY}
 	)
-endif(ENABLE_BOOST_FILESYSTEM AND NOT ENABLE_PANDORA)
+endif(NOT ENABLE_PANDORA)
 
 set(game-external-libs
 	${common-external-libs}
@@ -255,19 +255,19 @@ set(libwesnoth-core_STAT_SRC
 	serialization/validator.cpp
 )
 
-if(ENABLE_BOOST_FILESYSTEM AND NOT ENABLE_PANDORA)
+if(NOT ENABLE_PANDORA)
 	set(libwesnoth-core_STAT_SRC
 		${libwesnoth-core_STAT_SRC}
 		filesystem_boost.cpp
 		gettext_boost.cpp
 	)
-else(ENABLE_BOOST_FILESYSTEM AND NOT ENABLE_PANDORA)
+else(NOT ENABLE_PANDORA)
 	set(libwesnoth-core_STAT_SRC
 		${libwesnoth-core_STAT_SRC}
 		filesystem.cpp
 		gettext.cpp
 	)
-endif(ENABLE_BOOST_FILESYSTEM AND NOT ENABLE_PANDORA)
+endif(NOT ENABLE_PANDORA)
 
 # a 'lib' is automatically set in front when creating the library (as in the filename)
 # internal reference is the name given here
