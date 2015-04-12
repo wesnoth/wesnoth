@@ -102,6 +102,7 @@ public:
 	replay_recorder_base& get_replay() { return replay_data_; }
 	const replay_recorder_base& get_replay() const { return replay_data_; }
 private:
+	void expand_resources();
 	
 	bool has_carryover_expanded_;
 	/** 

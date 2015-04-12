@@ -273,7 +273,7 @@ void saved_game::expand_mp_events()
 				ERR_NG << "Couldn't find [" << mod.type<< "] with id=" << mod.id <<std::endl;
 			}
 		}
-
+		expand_resources();
 		this->starting_pos_["has_mod_events"] = true;
 	}
 }
@@ -592,4 +592,40 @@ void saved_game::set_data(config& cfg)
 	classification_ = game_classification(cfg);
 	mp_settings_ = mp_game_settings(cfg.child_or_empty("multiplayer"));
 	cfg.clear();
+}
+void saved_game::expand_resources()
+{
+	const config& game_config = game_config_manager::get()->game_config();
+	
+	std::set<std::string> loaded_resources;
+	std::vector<config> todos;
+	//also loads resources from campaign.
+	if(const config& campaign = game_config.find_child("campaign", "id", classification_.campaign))
+	{
+		boost::copy(campaign.child_range("load_resource"), std::back_inserter(todos));
+	}
+	do
+	{
+		boost::copy(starting_pos_.child_range("load_resource"), std::back_inserter(todos));
+		starting_pos_.clear_children("load_resource");
+
+		BOOST_FOREACH(const config& todo, todos)
+		{
+			std::string resource_id = todo["id"];
+			if(loaded_resources.find(resource_id) != loaded_resources.end())
+			{
+				loaded_resources.insert(resource_id);
+				if(const config& resource = game_config.find_child("resource", "id", resource_id))
+				{
+					starting_pos_.append_children(resource);
+				}
+				else
+				{
+					ERR_NG << "Cannot find resource with id=" << resource_id << std::endl;
+				}
+			}
+		}
+		todos.clear();
+	//the resource my have loaded other resource into the level.
+	} while(starting_pos_.has_child("load_resource"));
 }
