@@ -377,6 +377,10 @@ In previous versions of wesnoth, if a game is hosted in the mp server which requ
 In current versions, all games carry metadata which documents which add-ons are needed to play them, and at what versions. UMC authors may specify for each [era] or [modification] what the minimum add-on version is with which this content is backwards compatible, by adding "addon_min_version" attributes to these tags, which should be verion strings e.g. "1.2.3" to be compared with the add-on version string in the .pbl file of the add-on. [b] If no minimum version is specified, it is assumed that there is no backwards compatibility! [/b] Wesnoth clients will take all this information into account, and when a user tries to join a game with UMC content, will request to automatically update the relevant add-ons if it will make it possible to play the game. Wesnoth clients will also warn the user when the host has out-of-date add-ons, a situation which cannot be resolved unless the host updates.
 [/section]
 
+[section="FriBiDi"]
+Support for ancient versions of FriBiDi was dropped. The minimum for both CMake as well as scons is building with fribidi >= 0.10.9. Building with the latest versions might cause some warnings about depricated functions. If you encounter these, please build either with strict compilation turned off or without FriBiDi support.
+[/section]
+
 ==========
 KNOWN BUGS
 ==========

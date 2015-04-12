@@ -9,8 +9,11 @@
 # also defined, but not for general use are
 #  FRIBIDI_LIBRARY, where to find the FriBiDi library.
 #
-# If this module finds an old version of fribidi, then this module will run
-# add_definitions(-DOLD_FRIBIDI) so that Wesnoth will compile.
+# FriBiDi provides both fribidi_utf8_to_unicode and fribidi_charset_to_unicode.
+# The difference is that
+#  1. fribidi >= 0.10.5 has FRIBIDI_CHAR_SET_UTF8.
+#  2. fribidi <= 0.10.4 has FRIBIDI_CHARSET_UTF8.
+# Wesnoth uses fribidi_charset_to_unicode and FRIBIDI_CHAR_SET_UTF8.
 
 include(CheckSymbolExists)
 
@@ -33,18 +36,8 @@ FIND_LIBRARY(FRIBIDI_LIBRARY
 IF (FRIBIDI_LIBRARY AND FRIBIDI_INCLUDE_DIR)
   SET(CMAKE_REQUIRED_INCLUDES ${FRIBIDI_INCLUDE_DIR})
   SET(CMAKE_REQUIRED_LIBRARIES ${FRIBIDI_LIBRARY})
-  CHECK_SYMBOL_EXISTS(fribidi_utf8_to_unicode fribidi.h FOUND_fribidi_utf8_to_unicode)
   CHECK_SYMBOL_EXISTS(fribidi_charset_to_unicode fribidi.h FOUND_fribidi_charset_to_unicode)
   CHECK_SYMBOL_EXISTS(FRIBIDI_CHAR_SET_UTF8 fribidi.h FOUND_FRIBIDI_CHAR_SET_UTF8)
-
-  # FriBiDi provides both fribidi_utf8_to_unicode and fribidi_charset_to_unicode.
-  # The difference is that
-  #  1. fribidi >= 0.10.5 has FRIBIDI_CHAR_SET_UTF8.
-  #  2. fribidi <= 0.10.4 has FRIBIDI_CHARSET_UTF8.
-  # Wesnoth has two methods to use FriBiDi.
-  #  1. Use fribidi_charset_to_unicode and FRIBIDI_CHAR_SET_UTF8.
-  #  2. Define OLD_FRIBIDI and use fribidi_utf8_to_unicode.
-  # To compile Wesnoth with fribidi <= 0.10.4, we must define OLD_FRIBIDI.
 
   # Newer versions of fribidi (not tested the initial version which has the
   # issue, but at least 0.19.2 has the issue) no longer have the symbol
@@ -68,12 +61,6 @@ IF (FRIBIDI_LIBRARY AND FRIBIDI_INCLUDE_DIR)
     # fribidi >= 0.10.5
     SET(FRIBIDI_LIBRARIES ${FRIBIDI_LIBRARY})
     SET(FRIBIDI_FOUND "YES")
-  elseif(FOUND_fribidi_utf8_to_unicode)
-    # fribidi <= 0.10.4
-    SET(FRIBIDI_LIBRARIES ${FRIBIDI_LIBRARY})
-    SET(FRIBIDI_FOUND "YES")
-    add_definitions(-DOLD_FRIBIDI)
-    MESSAGE(STATUS "Legacy FriBiDi: ${FRIBIDI_LIBRARY}")
   else()
     SET(FRIBIDI_LIBRARIES "NOTFOUND")
     SET(FRIBIDI_INCLUDE_DIR "NOTFOUND")
