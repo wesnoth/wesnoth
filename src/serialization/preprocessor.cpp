@@ -947,7 +947,10 @@ bool preprocessor_data::get_chunk()
 
 				conditional_skip(command == "ifver" ? !found : found);
 			} else {
-				target_.error("Undefined macro in #ifver/#ifnver first argument", linenum_);
+				std::string err = "Undefined macro in #ifver/#ifnver first argument: '";
+				err += vsymstr;
+				err += "'";
+				target_.error(err, linenum_);
 			}
 		} else if (command == "else") {
 			if (token.type == token_desc::SKIP_ELSE) {
