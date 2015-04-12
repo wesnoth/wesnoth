@@ -15,7 +15,7 @@
 #  2. fribidi <= 0.10.4 has FRIBIDI_CHARSET_UTF8.
 # Wesnoth uses fribidi_charset_to_unicode and FRIBIDI_CHAR_SET_UTF8.
 
-include(CheckSymbolExists)
+INCLUDE(CheckSymbolExists)
 
 SET(FRIBIDI_FOUND "NO")
 
@@ -25,7 +25,7 @@ FIND_PATH(xFRIBIDI_INCLUDE_DIR fribidi.h
   /usr/local/include/fribidi
   /usr/include/fribidi
   )
-set(FRIBIDI_INCLUDE_DIR ${xFRIBIDI_INCLUDE_DIR})
+SET(FRIBIDI_INCLUDE_DIR ${xFRIBIDI_INCLUDE_DIR})
 
 SET(FRIBIDI_NAMES ${FRIBIDI_NAMES} fribidi libfribidi)
 FIND_LIBRARY(FRIBIDI_LIBRARY
@@ -43,33 +43,30 @@ IF (FRIBIDI_LIBRARY AND FRIBIDI_INCLUDE_DIR)
   # issue, but at least 0.19.2 has the issue) no longer have the symbol
   # FRIBIDI_CHAR_SET_UTF8.  But the symbol is build with some macros confusing
   # cmake. To test for that case let the compiler give its verdict.
-  if(FOUND_fribidi_charset_to_unicode AND NOT FOUND_FRIBIDI_CHAR_SET_UTF8)
-	file(WRITE "${CMAKE_BINARY_DIR}/fribidi_test.c"
-			"#include <fribidi.h>\nint main(){FriBidiCharSet s = FRIBIDI_CHAR_SET_UTF8;}"
-	)
-	try_compile(FOUND_FRIBIDI_CHAR_SET_UTF8
-			"${CMAKE_BINARY_DIR}"
-			"${CMAKE_BINARY_DIR}/fribidi_test.c"
-			CMAKE_FLAGS "-DINCLUDE_DIRECTORIES:STRING=${FRIBIDI_INCLUDE_DIR}"
-	)
+  IF(FOUND_fribidi_charset_to_unicode AND NOT FOUND_FRIBIDI_CHAR_SET_UTF8)
+    FILE(WRITE "${CMAKE_BINARY_DIR}/fribidi_test.c"
+        "#include <fribidi.h>\nint main(){FriBidiCharSet s = FRIBIDI_CHAR_SET_UTF8;}"
+    )
+    TRY_COMPILE(FOUND_FRIBIDI_CHAR_SET_UTF8
+        "${CMAKE_BINARY_DIR}"
+        "${CMAKE_BINARY_DIR}/fribidi_test.c"
+        CMAKE_FLAGS "-DINCLUDE_DIRECTORIES:STRING=${FRIBIDI_INCLUDE_DIR}"
+    )
+    FILE(REMOVE "${CMAKE_BINARY_DIR}/fribidi_test.c")
+  ENDIF(FOUND_fribidi_charset_to_unicode AND NOT FOUND_FRIBIDI_CHAR_SET_UTF8)
 
-	file(REMOVE "${CMAKE_BINARY_DIR}/fribidi_test.c")
-
-  endif(FOUND_fribidi_charset_to_unicode AND NOT FOUND_FRIBIDI_CHAR_SET_UTF8)
-
-  if(FOUND_fribidi_charset_to_unicode AND FOUND_FRIBIDI_CHAR_SET_UTF8)
+  IF(FOUND_fribidi_charset_to_unicode AND FOUND_FRIBIDI_CHAR_SET_UTF8)
     # fribidi >= 0.10.5
     SET(FRIBIDI_LIBRARIES ${FRIBIDI_LIBRARY})
     SET(FRIBIDI_FOUND "YES")
-  else()
+  ELSE()
     SET(FRIBIDI_LIBRARIES "NOTFOUND")
     SET(FRIBIDI_INCLUDE_DIR "NOTFOUND")
     SET(FRIBIDI_FOUND "NO")
-  endif()
+  ENDIF()
 ENDIF (FRIBIDI_LIBRARY AND FRIBIDI_INCLUDE_DIR)
 
 IF (FRIBIDI_FOUND)
-
   IF (NOT FRIBIDI_FIND_QUIETLY)
     MESSAGE(STATUS "Using FriBiDi: ${FRIBIDI_LIBRARY}")
   ENDIF (NOT FRIBIDI_FIND_QUIETLY)
