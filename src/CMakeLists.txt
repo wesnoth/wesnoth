@@ -158,10 +158,16 @@ set(tools-external-libs
 	${Boost_RANDOM_LIBRARY}
 )
 
-if(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
-	include_directories(SYSTEM ${FRIBIDI_INCLUDE_DIR} )
+if(ENABLE_FRIBIDI AND FRIBIDI_FOUND)
 	set(game-external-libs ${game-external-libs} ${FRIBIDI_LIBRARIES})
-endif(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
+	include_directories(SYSTEM ${FRIBIDI_INCLUDE_DIRS} )
+	# latest FriBiDi deprecated some functions we rely on...
+	set_source_files_properties(
+		font.cpp
+		PROPERTIES COMPILE_FLAGS
+			"-Wno-deprecated-declarations -Wno-unused-result"
+	)
+endif(ENABLE_FRIBIDI AND FRIBIDI_FOUND)
 
 if(X11_FOUND)
 	include_directories(SYSTEM ${X11_INCLUDE_DIR} )
