@@ -53,7 +53,7 @@ Version 1.13.0-dev:
    * Use the new bigmaps for A Tale of Two Brothers, Delfadors Memoirs, The
      Hammer of Thursagan, Northern Rebirth and the epilogue of Legend of
      Wesmere.
-   * Remaining cases of old-style note and carryover imformation in [objectives]
+   * Remaining cases of old-style note and carryover information in [objectives]
      have been converted to a newer style.
    * A Tale of Two Brothers:
      * Updated music playlists.
@@ -83,7 +83,7 @@ Version 1.13.0-dev:
        the other is on the north or west map edges.
      * Sister Threa and Father Morvin will no longer speak dialog on their death
        after 'The Pursuit'.
-     * The maps for 'Infested Caves', 'Clearning the Mines', and 'The Pursuit'
+     * The maps for 'Infested Caves', 'Clearing the Mines', and 'The Pursuit'
        have been completely redone.
      * All scenarios up to 'Old Friend' have been significantly tweaked and
        rebalanced.
@@ -107,7 +107,7 @@ Version 1.13.0-dev:
    * The Rise of Wesnoth:
      * Hide unit variations that should not be listed in the help browser.
    * Tutorial:
-     * Rewitten with an eye to being less constricting and more informative.
+     * Rewritten with an eye to being less constricting and more informative.
    * Under the Burning Suns
      * Fixed recruited Desert Archers being always male.
      * Fixed malformed rand range errors during AI turns on medium difficulty
@@ -122,7 +122,7 @@ Version 1.13.0-dev:
    * Added an entry for the terrain description help to the context menu.
    * Default hotkey bindings for brushes (1-5)
    * Disabled the swap palette button when the unit palette is active.
-   * Disabled the tod schedule and playlist menues in pure map mode.
+   * Disabled the tod schedule and playlist menus in pure map mode.
    * Support for displaying the saved status of the selected area.
    * Fixed error messages about missing UI elements.
    * Fixed falcon race missing an icon due to having incorrectly-named image
@@ -144,7 +144,7 @@ Version 1.13.0-dev:
    * Added Brazier and Lit Brazier embellishment terrains
    * New beach waves terrain animation.
  * Help browser:
-   * Seveal sections have been rewritten or had their layout improved
+   * Several sections have been rewritten or had their layout improved
    * Added trait list with links to the help page for unit types
    * Added "Defense Capped" column with notification in the "terrain modifiers
      table" in the unit help page, for when a defense rating is negative. The
@@ -288,7 +288,7 @@ Version 1.13.0-dev:
    * [unit] uses passed [advancement]s instead of unittypes advancements if
      [advancement] were given in [unit].
    * allow [lua] tags inside [modification] and [era] (which have the same
-     efffect as [lua] tags inside [scenario]).
+     effect as [lua] tags inside [scenario]).
    * enable side_for= in key [message] with [option]s.
    * added [effect] apply_to=fearless/healthy which is now used by
      healthy/fearless traits instead of hardcoding the id of those traits in c++.
@@ -427,7 +427,7 @@ Version 1.13.0-dev:
    * Add "MAKE_ENUM" macro to simplify parsing of WML options.
    * "MAKE_ENUM" macro signals WML parsing errors when the game is run
      in debug mode, and an illegal value for an attribute is encountered.
-   * Fix bug #21397 Reloading may cause a side's turn is not initalized.
+   * Fix bug #21397 Reloading may cause a side's turn is not initialized.
      This bug affected only networked mp, at least since version 1.8.
    * [modify_side] may now alter the value of [side] defeat_condition.
    * Fix bug #22116: unlock movement when attacking enemy+discovering in fog
@@ -440,7 +440,7 @@ Version 1.13.0-dev:
      not fix bug #15545, which was the reason that this behavior was introduced.
    * Fix bug #22123 "Replays don't reset map when reset button is pressed,
      causing OOS"
-   * Wesnoth reports an error if it evalutes [if] and finds no [then], [else],
+   * Wesnoth reports an error if it evaluates [if] and finds no [then], [else],
      [elseif] children, as a chat message from lua.
    * Fix bug #22134: Campaign prefix not used in mp campaign saves
    * Made the error messages sent to stderr when the core data dir is
@@ -498,7 +498,7 @@ Version 1.13.0-dev:
    * Fix minor bug where toggling accelerated speed caused two lines of print
      messages to display on top of one another. Reported here:
      http://forums.wesnoth.org/viewtopic.php?f=5&t=40745
-   * Fix bug #22611: loading a theme with nonexistant button images would cause
+   * Fix bug #22611: loading a theme with nonexistent button images would cause
      the program to close.
    * Fix bug #22487: advanced preferences descriptions not showing up
    * Fix bug #22646: Tooltips broken in replay viewer
@@ -520,7 +520,7 @@ Version 1.13.0-dev:
      dedicated channel for UI sounds, and moving the "Ready to start" sound to
      the turn bell channel.
    * Bug fix: another instance of "overlapping messages", this time with the
-     planning mode activiation hotkey
+     planning mode activation hotkey
    * Fix bug #21400: Use unit 'image' with higher priority than 'image_icon'
      for animation frames with no specified image.
    * New filesystem implementation based on boost filesystem
