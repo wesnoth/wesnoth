@@ -117,6 +117,7 @@ set(game-external-libs
 	${PANGOCAIRO_LIBRARIES}
 	${FONTCONFIG_LIBRARIES}
 	${LIBDBUS_LIBRARIES}
+	${VORBISFILE_LIBRARIES}
 )
 
 if(ENABLE_LIBPNG AND PNG_FOUND)
@@ -132,11 +133,6 @@ if(ENABLE_HISTORY AND HISTORY_FOUND)
 		${HISTORY_LIBRARY}
 	)
 endif(ENABLE_HISTORY AND HISTORY_FOUND)
-
-set(game-external-libs
-	${game-external-libs}
-	${VORBISFILE_LIBRARIES}
-)
 
 if(MSVC)
 	set(game-external-libs
@@ -246,6 +242,7 @@ endif(ENABLE_SHARED_LIBRARIES)
 set(libwesnoth-core_STAT_SRC
 	color_range.cpp
 	config.cpp
+	filesystem_boost.cpp
 	filesystem_common.cpp
 	game_config.cpp
 	hash.cpp
@@ -264,11 +261,6 @@ set(libwesnoth-core_STAT_SRC
 	serialization/tokenizer.cpp
 	serialization/unicode.cpp
 	serialization/validator.cpp
-)
-
-set(libwesnoth-core_STAT_SRC
-	${libwesnoth-core_STAT_SRC}
-	filesystem_boost.cpp
 )
 
 if(NOT ENABLE_LIBINTL)
