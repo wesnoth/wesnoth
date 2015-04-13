@@ -49,6 +49,10 @@ features:
  * GNU history (libreadline):
    Command history and history expansion in the built-in Lua console.
 
+ * FriBiDi >= 0.10.9:
+   Bidirectional text support for RTL languages (Hebrew, etc.) in some parts
+   of the user interface.
+
 Note that although different Boost version requirements are listed, individual
 libraries from different releases are generally incompatible with each other
 and you should not mix and match.
