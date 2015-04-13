@@ -253,8 +253,19 @@ set(libwesnoth-core_STAT_SRC
 set(libwesnoth-core_STAT_SRC
 	${libwesnoth-core_STAT_SRC}
 	filesystem_boost.cpp
-	gettext_boost.cpp
 )
+
+if(NOT ENABLE_LIBINTL)
+	set(libwesnoth-core_STAT_SRC
+		${libwesnoth-core_STAT_SRC}
+		gettext_boost.cpp
+	)
+else()
+	set(libwesnoth-core_STAT_SRC
+		${libwesnoth-core_STAT_SRC}
+		gettext.cpp
+	)
+endif()
 
 # a 'lib' is automatically set in front when creating the library (as in the filename)
 # internal reference is the name given here

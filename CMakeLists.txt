@@ -26,9 +26,6 @@ find_package(Boost 1.40 REQUIRED COMPONENTS random)
 
 # no, gettext executables are not required when NLS is deactivated
 find_package(Gettext)
-# yes, libintl is *required* even when NLS is deactivated (this is to compile
-# src/gettext.cpp since it includes libintl.h)
-find_package(Libintl REQUIRED)
 
 find_package(X11)
 
@@ -89,6 +86,7 @@ option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
 option(ENABLE_PANDORA "Add support for the OpenPandora by adding support for the resolution of 800x480 and switching to a special theme" OFF)
 option(ENABLE_SDL_GPU "Enable building with SDL_gpu (experimental" OFF)
 option(ENABLE_LIBPNG "Enable support for writing png files (screenshots, images)" ON)
+option(ENABLE_LIBINTL "Enable using libintl for translations instead of Boost.Locale library (not recommended)" OFF)
 #option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON) -- This feature is not supported in cmake yet, there is no cmake script to find the lib
 
 # if no build type is specified, it can happen that the game is built without
@@ -581,6 +579,7 @@ endif(ENABLE_TOOLS)
 if(ENABLE_TESTS)
 	find_package( Boost 1.36 REQUIRED COMPONENTS unit_test_framework )
 endif(ENABLE_TESTS)
+
 if(ENABLE_GAME)
 	if(ENABLE_FRIBIDI)
 		PKG_CHECK_MODULES(FRIBIDI fribidi>=0.10.9)
@@ -602,9 +601,6 @@ if(ENABLE_GAME)
 		unset(LIBDBUS_FOUND CACHE)
 	endif()
 
-	find_package( Boost 1.44 REQUIRED COMPONENTS filesystem )
-	find_package( Boost 1.48 REQUIRED COMPONENTS locale )
-
 	find_package( PNG )
 	if(ENABLE_LIBPNG AND PNG_FOUND)
 		add_definitions(-DHAVE_LIBPNG)
@@ -620,10 +616,19 @@ if(ENABLE_GAME)
 	#endif(ENABLE_HISTORY AND HISTORY_FOUND)
 endif(ENABLE_GAME)
 
-if(ENABLE_SERVER)
+if(ENABLE_GAME OR ENABLE_SERVER)
 	find_package( Boost 1.44 REQUIRED COMPONENTS filesystem )
-	find_package( Boost 1.48 REQUIRED COMPONENTS locale )
-endif(ENABLE_SERVER)
+
+	if(NOT ENABLE_LIBINTL)
+		find_package( Boost 1.48 REQUIRED COMPONENTS locale )
+	else()
+		find_package( Libintl REQUIRED )
+		if(WIN32)
+			# CMake 2.6 doesn't do message(WARNING ...)
+			message("Warning: Using libintl on Windows instead of Boost.Locale may result in issues with translations and Unicode file paths!")
+		endif()
+	endif()
+endif(ENABLE_GAME OR ENABLE_SERVER)
 
 if(ENABLE_POT_UPDATE_TARGET)
 	find_package(TranslationTools REQUIRED)
