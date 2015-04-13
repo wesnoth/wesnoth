@@ -76,7 +76,6 @@ if(MSVC)
 	set(common-external-libs
 		${SDL_LIBRARY}
 		${SDLMAIN_LIBRARY}
-		${LIBINTL_LIBRARY}
 		ws2_32.lib
 		${sdl_gpu-lib-vc}
 	)
@@ -86,7 +85,6 @@ else(MSVC)
 		${Boost_IOSTREAMS_LIBRARY}
 		${Boost_REGEX_LIBRARY}
 		${Boost_PROGRAM_OPTIONS_LIBRARY}
-		${LIBINTL_LIBRARY}
 		${sdl_gpu-lib}
 	)
 endif(MSVC)
@@ -94,8 +92,19 @@ endif(MSVC)
 set(common-external-libs
 	${common-external-libs}
 	${Boost_FILESYSTEM_LIBRARY}
-	${Boost_LOCALE_LIBRARY}
 )
+
+if(NOT ENABLE_LIBINTL)
+	set(common-external-libs
+		${common-external-libs}
+		${Boost_LOCALE_LIBRARY}
+	)
+else()
+	set(common-external-libs
+		${common-external-libs}
+		${LIBINTL_LIBRARY}
+	)
+endif()
 
 set(game-external-libs
 	${common-external-libs}
