@@ -84,7 +84,7 @@ option(ENABLE_NLS "Enable building of translations" ON)
 option(ENABLE_LOW_MEM "Reduce memory usage by removing extra functionality" OFF)
 option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
 option(ENABLE_PANDORA "Add support for the OpenPandora by adding support for the resolution of 800x480 and switching to a special theme" OFF)
-option(ENABLE_SDL_GPU "Enable building with SDL_gpu (experimental" OFF)
+option(ENABLE_SDL_GPU "Enable building with SDL_gpu (experimental)" OFF)
 option(ENABLE_LIBPNG "Enable support for writing png files (screenshots, images)" ON)
 option(ENABLE_LIBINTL "Enable using libintl for translations instead of Boost.Locale library (not recommended)" OFF)
 #option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON) -- This feature is not supported in cmake yet, there is no cmake script to find the lib
