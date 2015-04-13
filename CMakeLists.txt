@@ -87,7 +87,7 @@ option(ENABLE_PANDORA "Add support for the OpenPandora by adding support for the
 option(ENABLE_SDL_GPU "Enable building with SDL_gpu (experimental)" OFF)
 option(ENABLE_LIBPNG "Enable support for writing png files (screenshots, images)" ON)
 option(ENABLE_LIBINTL "Enable using libintl for translations instead of Boost.Locale library (not recommended)" OFF)
-#option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON) -- This feature is not supported in cmake yet, there is no cmake script to find the lib
+option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
 
 # if no build type is specified, it can happen that the game is built without
 # optimization (c.f. bug #23445), work around this by enforcing "release" type
@@ -608,12 +608,12 @@ if(ENABLE_GAME)
 		message("Could not find lib PNG. Disabling support for writing PNG images.")	
 	endif(ENABLE_LIBPNG AND PNG_FOUND)
 
-	#find_package( HISTORY )
-	#if(ENABLE_HISTORY AND HISTORY_FOUND)
-	#	add_definitions(-DHAVE_HISTORY)
-	#else(ENABLE_HISTORY AND HISTORY_FOUND)
-	#	message("Could not find GNU history. Disabling support for command history in lua console.")
-	#endif(ENABLE_HISTORY AND HISTORY_FOUND)
+	find_package( History )
+	if(ENABLE_HISTORY AND HISTORY_FOUND)
+		add_definitions(-DHAVE_HISTORY)
+	else(ENABLE_HISTORY AND HISTORY_FOUND)
+		message("Could not find GNU history. Disabling support for command history in lua console.")
+	endif(ENABLE_HISTORY AND HISTORY_FOUND)
 endif(ENABLE_GAME)
 
 if(ENABLE_GAME OR ENABLE_SERVER)

@@ -126,6 +126,13 @@ if(ENABLE_LIBPNG AND PNG_FOUND)
 	)
 endif(ENABLE_LIBPNG AND PNG_FOUND)
 
+if(ENABLE_HISTORY AND HISTORY_FOUND)
+	set(game-external-libs
+		${game-external-libs}
+		${HISTORY_LIBRARY}
+	)
+endif(ENABLE_HISTORY AND HISTORY_FOUND)
+
 set(game-external-libs
 	${game-external-libs}
 	${VORBISFILE_LIBRARIES}
