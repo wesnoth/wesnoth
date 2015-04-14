@@ -43,9 +43,6 @@
 			<Add option="-D_WIN32_WINNT=0x0501" />
 			<Add option="-DDWINVER=0x0501" />
 			<Add directory="../../src" />
-			<Add directory="../../src/sdl_ttf" />
-			<Add directory="../../src/serialization" />
-			<Add directory="../../src/widgets" />
 		</Compiler>
 		<Linker>
 			<Add option="-mthreads" />
@@ -59,7 +56,6 @@
 			<Add library="SDL_mixer" />
 			<Add library="SDL_ttf" />
 			<Add library="freetype" />
-			<Add library="intl" />
 			<Add library="ws2_32" />
 			<Add library="pango-1.0" />
 			<Add library="pangocairo-1.0" />
