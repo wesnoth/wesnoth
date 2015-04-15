@@ -4,6 +4,9 @@ Version 1.12.2+dev:
  * Miscellaneous and bug fixes:
    * Fixed bug #23445: set default build type in cmake to "Release" to ensure
      that the game is not unoptimized
+   * Made the file chooser dialog (used for e.g. loading maps in the editor)
+     use uniform path delimiters on Windows, fixing issues with browsing to
+     parent directories (bug #23224).
 
 Version 1.12.2:
  * Security fixes:
