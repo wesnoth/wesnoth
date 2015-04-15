@@ -574,6 +574,9 @@ Version 1.13.0-dev:
      that the game is not unoptimized
    * Increased minimum version of FriBiDi to 0.10.9 in cmake to match scons
    * Changed how FriBiDi is found in cmake to using pkgconfig
+   * Made the file chooser dialog (used for e.g. loading maps in the editor)
+     use uniform path delimiters on Windows, fixing issues with browsing to
+     parent directories (bug #23224).
 
 Version 1.11.11:
  * Add-ons server:
