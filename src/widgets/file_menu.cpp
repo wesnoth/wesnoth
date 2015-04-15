@@ -24,17 +24,34 @@
 
 namespace {
 	std::vector<std::string> empty_string_vector;
+
+
+	std::string uniform_path(const std::string& path)
+	{
+#ifdef _WIN32
+		std::string res = path;
+		std::replace(res.begin(), res.end(), '/', '\\');
+		return res;
+#else
+		return path;
+#endif
+	}
+
 }
 
 namespace gui {
 
 static const std::string dir_picture("misc/folder-icon.png");
 static const std::string path_up("..");
+#ifdef _WIN32
+const char file_menu::path_delim('\\');
+#else
 const char file_menu::path_delim('/');
+#endif
 
 file_menu::file_menu(CVideo &disp, std::string start_file)
 	: menu(disp, empty_string_vector, false),
-	  current_dir_(get_path(start_file)),
+	  current_dir_(uniform_path(get_path(start_file))),
 	  chosen_file_(start_file), last_selection_(-1),
 	  type_a_head_(-1)
 {
@@ -162,7 +179,7 @@ void file_menu::change_directory(const std::string& path) {
 		}
 
 	} else {
-		current_dir_ = path;
+		current_dir_ = uniform_path(path);
 		chosen_file_ = current_dir_;
 		last_selection_ = -1;
 		update_file_lists();
