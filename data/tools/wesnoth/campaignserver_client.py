@@ -4,7 +4,7 @@ import wesnoth.wmldata as wmldata
 import wesnoth.wmlparser as wmlparser
 
 # See the following files (among others):
-# src/addon_management.cpp
+# src/addon/*
 # src/network.cpp
 
 dumpi = 0
