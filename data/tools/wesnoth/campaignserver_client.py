@@ -11,6 +11,7 @@ dumpi = 0
 class CampaignClient:
     # First port listed will be used as default.
     portmap = (
+        ("15008", "1.13.x"),
         ("15007", "1.12.x"),
         ("15006", "1.11.x"),
         ("15002", "1.10.x"),
