@@ -43,8 +43,9 @@ local function bandits_found(x,y)
 
 	for i=1,rand2 do
 		local radius = 1
+		local locs
 		repeat
-			local locs = wesnoth.get_locations({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = radius } })
+			locs = wesnoth.get_locations({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = radius } })
 			radius = radius + 1
 		until locs[1]
 
