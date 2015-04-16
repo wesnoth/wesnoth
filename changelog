@@ -149,10 +149,10 @@ Version 1.13.0-dev:
  * Help browser:
    * Several sections have been rewritten or had their layout improved
    * Added trait list with links to the help page for unit types
-   * Added "Defense Capped" column with notification in the "terrain modifiers
-     table" in the unit help page, for when a defense rating is negative. The
-     column is only added for units with at least one negative rating, and
-     includes a link to an explanation.
+   * Added Defense Cap column to the Terrain Modifiers table in unit help pages
+     for units with a defense cap on at least one terrain type, which also now
+     include a note to this effect in their special notes along with a link to
+     an explanation in the Terrains section.
    * Fixed a bug which caused the terrain section topic not to properly generate
      a list of its contents.
    * Add a new help section to the terrains topic which explains about mixed
