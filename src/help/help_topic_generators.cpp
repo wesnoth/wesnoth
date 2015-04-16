@@ -586,7 +586,7 @@ std::string unit_topic_generator::operator()() const {
 
 			const bool has_terrain_defense_caps = movement_type.has_terrain_defense_caps(preferences::encountered_terrains());
 			if ( has_terrain_defense_caps )
-				push_header(first_row, _("Defense Capped"));
+				push_header(first_row, _("Defense Cap"));
 
 			const bool has_vision = type_.movement_type().has_vision_data();
 			if ( has_vision )
