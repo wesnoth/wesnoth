@@ -66,8 +66,16 @@ if env['default_prefs_file']:
 libwesnoth_core_sources.extend([
     game_config_env.Object("game_config.cpp"),
     filesystem_env.Object("filesystem_common.cpp"),
-    filesystem_env.Object("filesystem_boost.cpp"),
-    filesystem_env.Object("gettext.cpp") if env["libintl"] else filesystem_env.Object("gettext_boost.cpp")
+    filesystem_env.Object("filesystem_boost.cpp")
+])
+
+if env["libintl"]:
+    libwesnoth_core_sources.extend([
+        filesystem_env.Object("gettext.cpp")
+    ])
+else:
+    libwesnoth_core_sources.extend([
+        filesystem_env.Object("gettext_boost.cpp")
     ])
 
 libwesnoth_core = [env.Library("wesnoth_core", libwesnoth_core_sources)]
