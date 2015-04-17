@@ -685,7 +685,9 @@ bool game_launcher::play_render_image_mode()
 		outfile = *cmdline_opts_.render_image_dst;
 	}
 
-	image::save_image(*cmdline_opts_.render_image, outfile);
+	if (!image::save_image(*cmdline_opts_.render_image, outfile)) {
+		exit(1);
+	}
 
 	return false;
 }
