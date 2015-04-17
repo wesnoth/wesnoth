@@ -216,8 +216,7 @@ void part::resolve_wml(const vconfig &cfg)
 		return;
 	}
 
-	// This section is only for compatibility with old code.
-	// Should be removed as soon as the old syntax becomes invalid.
+	// Converts shortcut syntax to members of [background_layer]
 	background_layer bl;
 
 	if(cfg.has_attribute("background")) {
