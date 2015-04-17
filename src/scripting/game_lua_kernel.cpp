@@ -318,6 +318,10 @@ static int impl_unit_get(lua_State *L)
 	return_bool_attrib("petrified", u.incapacitated());
 	return_bool_attrib("resting", u.resting());
 	return_string_attrib("role", u.get_role());
+	return_string_attrib("race", u.race()->id());
+	return_string_attrib("gender", gender_string(u.gender()));
+	return_string_attrib("variation", u.variation());
+	return_bool_attrib("zoc", u.get_emit_zoc());
 	return_string_attrib("facing", map_location::write_direction(u.facing()));
 	return_cfg_attrib("__cfg", u.write(cfg); u.get_location().write(cfg));
 	return 0;
@@ -350,6 +354,7 @@ static int impl_unit_set(lua_State *L)
 	modify_string_attrib("role", u.set_role(value));
 	modify_string_attrib("facing", u.set_facing(map_location::parse_direction(value)));
 	modify_bool_attrib("hidden", u.set_hidden(value));
+	modify_bool_attrib("zoc", u.set_emit_zoc(value));
 
 	modify_vector_string_attrib("extra_recruit", u.set_recruits(vector));
 	modify_vector_string_attrib("advances_to", u.set_advances_to(vector));
