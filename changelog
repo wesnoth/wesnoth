@@ -375,7 +375,6 @@ Version 1.13.0-dev:
      moved to mp_connect::process_network_data.
    * Deliver desktop notifications in tandem with "game is ready" bell and
      also the "game has begun" bell.
-   * Disable notifications preference now works in all platforms, not just DBUS.
    * Fix bug in which blindfold could cause OOS.
    * Fix bug #21914: allow drake walking corpse variation to move on unwalkable
    * Fix unnecessary "Mandatory WML Child not found" error when replay file
@@ -491,8 +490,6 @@ Version 1.13.0-dev:
    * Enabled action icons in the hotkey preferences dialog.
    * Fix bug #21717: "F5->reload wml tree" doesn't work in editor.
    * Fix bug #21298: Minimap shows invisible overlays
-   * Replaced "Disable notifications" in Preferences -> Advanced with a new
-     "Desktop notifications" option that defaults to enabled.
    * Remove carryover WML (this may make a reappearance in 1.13.0 but it is
      considered premature now, please see github PR discussion for more info)
    * Fix bug #22465: Minimap not redrawn after turn dialog.

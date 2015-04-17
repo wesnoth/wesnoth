@@ -137,7 +137,6 @@ Version 1.13.0-dev:
    * Corrected behavior of "game is ready" bell. (this fixes #21910)
    * Deliver desktop notifications in tandem with "game is ready" bell and
      also the "game has begun" bell.
-   * Disable notifications should now work for other desktops besides KDE.
    * The replay viewer now proceeds through sides with empty controllers when
      using the "play_side" button, thus matching the behavior of the rest of
      wesnoth. Bug fix #21025.
@@ -151,8 +150,6 @@ Version 1.13.0-dev:
    * Fix bug wherein dbus notifications did not have a wesnoth icon
    * Fix bug wherein chat history synopses weren't working right in the dbus 
      notifications
-   * Replaced "Disable notifications" in Preferences -> Advanced with a new
-     "Desktop notifications" option that defaults to enabled.
    * Default to classic minimap unit/village color coding (colored by side).
    * Default to classic minimap terrain representation (satellite view).
    * Added trait list with links to the help page for units
