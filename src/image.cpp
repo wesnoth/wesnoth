@@ -1263,6 +1263,9 @@ bool save_image(const locator & i_locator, const std::string & filename)
 
 bool save_image(const surface & surf, const std::string & filename)
 {
+	if (surf.null()) { 
+		return false;
+	}
 #ifdef HAVE_LIBPNG
 	if (!filesystem::ends_with(filename, ".bmp")) {
 		LOG_DP << "Writing a png image to " << filename << std::endl;
