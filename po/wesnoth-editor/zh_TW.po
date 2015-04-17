@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 05:06-0300\n"
+"POT-Creation-Date: 2015-04-17 11:34-0300\n"
 "PO-Revision-Date: 2013-02-07 15:14+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -277,43 +277,43 @@ msgstr ""
 msgid "Fatal error"
 msgstr "嚴重錯誤"
 
-#: src/editor/controller/editor_controller.cpp:207
+#: src/editor/controller/editor_controller.cpp:209
 msgid "Do you really want to quit?"
 msgstr "您確定要退出嗎？"
 
-#: src/editor/controller/editor_controller.cpp:209
+#: src/editor/controller/editor_controller.cpp:211
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr "您確定要退出嗎？對地圖所作的更動將遺失。"
 
-#: src/editor/controller/editor_controller.cpp:211
+#: src/editor/controller/editor_controller.cpp:213
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr "您確定要退出嗎？以下地圖已修改，而對地圖所作的更動將遺失:"
 
-#: src/editor/controller/editor_controller.cpp:214
+#: src/editor/controller/editor_controller.cpp:216
 msgid "Quit"
 msgstr "離開"
 
-#: src/editor/controller/editor_controller.cpp:225
+#: src/editor/controller/editor_controller.cpp:227
 msgid "No editor time-of-day found."
 msgstr "沒有找到時間編輯器。"
 
-#: src/editor/controller/editor_controller.cpp:1099
+#: src/editor/controller/editor_controller.cpp:1101
 msgid "Change Unit ID"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1100
+#: src/editor/controller/editor_controller.cpp:1102
 msgid "ID:"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1116
+#: src/editor/controller/editor_controller.cpp:1118
 msgid "Rename Unit"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1117
+#: src/editor/controller/editor_controller.cpp:1119
 msgid "Name:"
 msgstr ""
 
@@ -400,8 +400,11 @@ msgid "Unsaved Changes"
 msgstr "未儲存的更動"
 
 #: src/editor/map/context_manager.cpp:676
-msgid ""
-"Do you want to discard all changes you made to the map since the last save?"
+#, fuzzy
+#| msgid ""
+#| "Do you want to discard all changes you made to the map since the last "
+#| "save?"
+msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr "您確定要放棄所有對地圖的更動？"
 
 #: src/editor/map/context_manager.cpp:773

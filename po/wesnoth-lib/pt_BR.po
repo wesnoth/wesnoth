@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 05:06-0300\n"
+"POT-Creation-Date: 2015-04-17 11:34-0300\n"
 "PO-Revision-Date: 2013-03-10 03:55-0300\n"
 "Last-Translator: Gilberto dos Santos Alves <gsavix@gmail.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -3038,6 +3038,7 @@ msgstr "Conectar"
 #: data/gui/default/window/mp_connect.cfg:176
 #: data/gui/default/window/mp_create_game.cfg:559
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:202
+#: data/gui/default/window/mp_join_game_password_prompt.cfg:150
 #: data/gui/default/window/mp_login.cfg:274
 #: data/gui/default/window/mp_method_selection.cfg:225
 #: data/gui/default/window/mp_server_list.cfg:231
@@ -3664,6 +3665,7 @@ msgstr ""
 #: data/gui/default/window/mp_create_game.cfg:544
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:188
 #: data/gui/default/window/mp_create_game_set_password.cfg:133
+#: data/gui/default/window/mp_join_game_password_prompt.cfg:137
 #: data/gui/default/window/mp_login.cfg:246
 #: data/gui/default/window/mp_method_selection.cfg:211
 #: data/gui/default/window/screenshot_notification.cfg:201
@@ -4084,8 +4086,10 @@ msgstr "Restaurar"
 msgid "Backup"
 msgstr "Backup"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/depcheck_confirm_change.cfg:40
+#: src/gui/widgets/label.cpp:178
 msgid "Confirm"
 msgstr ""
 
@@ -6147,6 +6151,7 @@ msgstr ""
 # File: data/gui/default/window/mp_login.cfg, line: 144
 #. [label]
 #: data/gui/default/window/mp_create_game_set_password.cfg:90
+#: data/gui/default/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/default/window/mp_login.cfg:144
 msgid "Password:"
 msgstr "Senha:"
@@ -6176,6 +6181,24 @@ msgid ""
 "The server will run as a background process until all users have "
 "disconnected. Do you wish to continue?"
 msgstr ""
+
+#
+# File: src/gui/dialogs/lobby_main.cpp, line: 1571
+# File: src/gui/dialogs/lobby_main.cpp, line: 1571
+# File: src/gui/dialogs/lobby_main.cpp, line: 1571
+#. [label]: id=title
+#: data/gui/default/window/mp_join_game_password_prompt.cfg:42
+msgid "Password Required"
+msgstr "Senha requerida"
+
+#
+# File: src/gui/dialogs/lobby_main.cpp, line: 1572
+# File: src/gui/dialogs/lobby_main.cpp, line: 1572
+# File: src/gui/dialogs/lobby_main.cpp, line: 1572
+#. [scroll_label]: id=message
+#: data/gui/default/window/mp_join_game_password_prompt.cfg:61
+msgid "Joining this game requires a password."
+msgstr "Entrar nesse jogo necessita de uma senha."
 
 #
 # File: data/gui/default/window/mp_login.cfg, line: 8
@@ -8329,9 +8352,9 @@ msgstr ""
 #: src/gui/dialogs/game_paths.cpp:119
 #: src/gui/dialogs/gamestate_inspector.cpp:713
 #: src/gui/dialogs/lua_interpreter.cpp:459
-#: src/gui/dialogs/screenshot_notification.cpp:88
+#: src/gui/dialogs/screenshot_notification.cpp:94
 #: src/gui/dialogs/wml_error.cpp:224
-msgid "Clipboard support not found, contact your packager."
+msgid "Clipboard support not found, contact your packager"
 msgstr ""
 
 #
@@ -8384,7 +8407,7 @@ msgstr "Desinstalar Complementos"
 #: src/gui/dialogs/game_cache_options.cpp:135
 #: src/gui/dialogs/network_transmission.cpp:56
 #: src/gui/dialogs/network_transmission.cpp:57
-#: src/gui/dialogs/screenshot_notification.cpp:72
+#: src/gui/dialogs/screenshot_notification.cpp:73
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -8566,7 +8589,7 @@ msgstr "Versão:"
 # File: src/gui/dialogs/lobby_main.cpp, line: 229
 # File: src/gui/dialogs/lobby_main.cpp, line: 229
 # File: src/gui/dialogs/lobby_main.cpp, line: 229
-#: src/gui/dialogs/lobby_main.cpp:226
+#: src/gui/dialogs/lobby_main.cpp:227
 msgid "whisper to $receiver"
 msgstr "sussurar para $receiver"
 
@@ -8574,7 +8597,7 @@ msgstr "sussurar para $receiver"
 # File: src/gui/dialogs/lobby_main.cpp, line: 662
 # File: src/gui/dialogs/lobby_main.cpp, line: 662
 # File: src/gui/dialogs/lobby_main.cpp, line: 662
-#: src/gui/dialogs/lobby_main.cpp:696
+#: src/gui/dialogs/lobby_main.cpp:697
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Jogos: mostrando $num_shown de $num_total"
 
@@ -8582,7 +8605,7 @@ msgstr "Jogos: mostrando $num_shown de $num_total"
 # File: src/gui/dialogs/lobby_main.cpp, line: 705
 # File: src/gui/dialogs/lobby_main.cpp, line: 705
 # File: src/gui/dialogs/lobby_main.cpp, line: 705
-#: src/gui/dialogs/lobby_main.cpp:740
+#: src/gui/dialogs/lobby_main.cpp:741
 msgid "Observers allowed"
 msgstr "Observadores permitidos"
 
@@ -8590,7 +8613,7 @@ msgstr "Observadores permitidos"
 # File: src/gui/dialogs/lobby_main.cpp, line: 708
 # File: src/gui/dialogs/lobby_main.cpp, line: 708
 # File: src/gui/dialogs/lobby_main.cpp, line: 708
-#: src/gui/dialogs/lobby_main.cpp:743
+#: src/gui/dialogs/lobby_main.cpp:744
 msgid "Observers not allowed"
 msgstr "Observadores não permitidos"
 
@@ -8598,7 +8621,7 @@ msgstr "Observadores não permitidos"
 # File: src/gui/dialogs/lobby_main.cpp, line: 1107
 # File: src/gui/dialogs/lobby_main.cpp, line: 1107
 # File: src/gui/dialogs/lobby_main.cpp, line: 1107
-#: src/gui/dialogs/lobby_main.cpp:1156
+#: src/gui/dialogs/lobby_main.cpp:1157
 msgid ""
 "Whisper session with $name started. If you don’t want to receive messages "
 "from this user, type /ignore $name\n"
@@ -8610,7 +8633,7 @@ msgstr ""
 # File: src/gui/dialogs/lobby_main.cpp, line: 1113
 # File: src/gui/dialogs/lobby_main.cpp, line: 1113
 # File: src/gui/dialogs/lobby_main.cpp, line: 1113
-#: src/gui/dialogs/lobby_main.cpp:1164
+#: src/gui/dialogs/lobby_main.cpp:1165
 msgid "Room $name joined"
 msgstr "Associado a sala $name"
 
@@ -8618,7 +8641,7 @@ msgstr "Associado a sala $name"
 # File: src/gui/dialogs/lobby_main.cpp, line: 1420
 # File: src/gui/dialogs/lobby_main.cpp, line: 1420
 # File: src/gui/dialogs/lobby_main.cpp, line: 1420
-#: src/gui/dialogs/lobby_main.cpp:1490
+#: src/gui/dialogs/lobby_main.cpp:1491
 msgid "$player has entered the room"
 msgstr "$player entrou na sala"
 
@@ -8626,33 +8649,9 @@ msgstr "$player entrou na sala"
 # File: src/gui/dialogs/lobby_main.cpp, line: 1458
 # File: src/gui/dialogs/lobby_main.cpp, line: 1458
 # File: src/gui/dialogs/lobby_main.cpp, line: 1458
-#: src/gui/dialogs/lobby_main.cpp:1530
+#: src/gui/dialogs/lobby_main.cpp:1531
 msgid "$player has left the room"
 msgstr "$player saiu da sala"
-
-#
-# File: src/gui/dialogs/lobby_main.cpp, line: 1571
-# File: src/gui/dialogs/lobby_main.cpp, line: 1571
-# File: src/gui/dialogs/lobby_main.cpp, line: 1571
-#: src/gui/dialogs/lobby_main.cpp:1650
-msgid "Password Required"
-msgstr "Senha requerida"
-
-#
-# File: src/gui/dialogs/lobby_main.cpp, line: 1572
-# File: src/gui/dialogs/lobby_main.cpp, line: 1572
-# File: src/gui/dialogs/lobby_main.cpp, line: 1572
-#: src/gui/dialogs/lobby_main.cpp:1651
-msgid "Joining this game requires a password."
-msgstr "Entrar nesse jogo necessita de uma senha."
-
-#
-# File: src/gui/dialogs/lobby_main.cpp, line: 1573
-# File: src/gui/dialogs/lobby_main.cpp, line: 1573
-# File: src/gui/dialogs/lobby_main.cpp, line: 1573
-#: src/gui/dialogs/lobby_main.cpp:1655
-msgid "Password: "
-msgstr "Senha:"
 
 #: src/gui/dialogs/mp_alerts_options.cpp:135
 msgid ""
@@ -8675,6 +8674,15 @@ msgstr "Lado $side"
 #: src/gui/dialogs/mp_create_game.cpp:98
 msgid "Load Game..."
 msgstr "Carregar Jogo..."
+
+#
+# File: src/hotkeys.cpp, line: 423
+# File: src/hotkeys.cpp, line: 423
+# File: src/hotkeys.cpp, line: 423
+#: src/gui/dialogs/screenshot_notification.cpp:74
+#, fuzzy
+msgid "file_size^Unknown"
+msgstr "Era desconhecida"
 
 #
 # File: src/gui/dialogs/title_screen.cpp, line: 297
@@ -8701,7 +8709,7 @@ msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Widget Obrigatório '$id' não foi definido."
 
 #: src/gui/widgets/label.cpp:158
-msgid "Opening links is not supported, contact your packager."
+msgid "Opening links is not supported, contact your packager"
 msgstr ""
 
 #
@@ -8770,7 +8778,7 @@ msgstr "Clique desfazer precisa botão 'click_dismiss' ou 'ok'."
 # File: src/gui/widgets/window.cpp, line: 1100
 # File: src/tests/gui/test_gui2.cpp, line: 432
 #: src/gui/widgets/window.cpp:1112 src/gui/widgets/window.cpp:1149
-#: src/tests/gui/test_gui2.cpp:482
+#: src/tests/gui/test_gui2.cpp:484
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Falha ao exibir uma caixa de diálogo, que não cabe na tela."
 
@@ -10465,6 +10473,14 @@ msgstr "Era desconhecida"
 msgid "Hat"
 msgstr "Cabana"
 
+#: src/hotkey/hotkey_preferences_display.cpp:134
+msgid "Add additional binding to \"$hotkey_description|\""
+msgstr ""
+
+#: src/hotkey/hotkey_preferences_display.cpp:136
+msgid "Clears \"$hotkey_description|'s\" bindings"
+msgstr ""
+
 #
 # File: src/hotkey_preferences_display.cpp, line: 147
 # File: src/hotkey_preferences_display.cpp, line: 147
@@ -10728,6 +10744,13 @@ msgid ""
 msgstr ""
 "A chave '$deprecated_key' foi renomeada para '$key'. Suporte para "
 "'$deprecated_key' será removido na versão $removal_version."
+
+#
+# File: src/gui/dialogs/lobby_main.cpp, line: 1573
+# File: src/gui/dialogs/lobby_main.cpp, line: 1573
+# File: src/gui/dialogs/lobby_main.cpp, line: 1573
+#~ msgid "Password: "
+#~ msgstr "Senha:"
 
 #
 # File: data/core/terrain.cfg, line: 1708

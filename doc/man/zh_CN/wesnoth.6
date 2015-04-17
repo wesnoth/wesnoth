@@ -108,20 +108,13 @@ path the path of the data directory and exits.
 显示游戏数据目录的名称并退出。
 .TP 
 \fB\-p, \-\-preprocess <source file/folder> <target directory>\fP
-preprocesses a specified file/folder. For each file(s) a plain .cfg file and
-a processed .cfg file will be written in specified target directory. If a
-folder is specified, it will be preprocessed recursively based on the known
-preprocessor rules. The common macroses from the "data/core/macros"
-directory will be preprocessed before the specified resources.  Example:
-\fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
-preprocessor visit:
-http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
+预处理所指定的文件/文件夹。这些文件将被写入所指定的目标目录：包括一个普通的cfg文件和一个处理过的cfg文件。如果指定的是个文件夹，那么将根据已知的预处理器规则递归地预处理之。“data/core/macros”目录中的常用宏会在指定的资源之前被预处理。例如：
+\fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP
+有关预处理器的详情请见：http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
 
 .TP 
 \fB\-\-preprocess\-defines=DEFINE1,DEFINE2,etc\fP
-comma separated list of defines to be used by the '\-\-preprocess' command. If
-\fBSKIP_CORE\fP is in the define list the "data/core" directory won't be
-preprocessed.
+由逗号分隔的定义列表，用于“\-\-preprocess”指令。如果\fBSKIP_CORE\fP在定义列表中，则“data/core”目录不会被预处理。
 .TP 
 \fB\-\-preprocess\-input\-macros <source file>\fP
 仅供“\-\-preprocess“命令使用。用于指定一个包含了[preproce_defines]区块的文件，其中的定义将在预处理开始前生效。
@@ -136,12 +129,10 @@ preprocessed.
 如果指定了主机的话，连接到指定的主机。否则，连接到首选项中的第一个服务器。例如：\fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-\-username\fP\fI<username>\fP
-uses <username> when connecting to a server, ignoring other
-preferences.
+在连接服务器时使用<username>，忽略其他首选项。
 .TP 
 \fB\-\-password\fP\fI<password>\fP
-uses <password> when connecting to a server, ignoring other
-preferences. Unsafe.
+在连接服务器时使用<password>，忽略其他首选项。不安全。
 .TP 
 \fB\-\-strict\-validation\fP
 将验证错误视为致命错误。
@@ -199,11 +190,10 @@ prints the path of the userdata directory and exits.
 当场景结束时直接退出游戏而不显示需要用户点击“确认”按钮的胜利/失败对话框。这个选项也可以用来进行脚本化的性能基准测试。
 .TP 
 \fB\-\-ignore\-map\-settings\fP
-do not use map settings, use default values instead.
+不使用地图设置，而使用默认值。
 .TP 
 \fB\-\-multiplayer\-repeat=\fP\fIvalue\fP
-repeats a multiplayer game \fIvalue\fP times. Best to use with \fB\-\-nogui\fP for
-scriptable benchmarking.
+重复进行多人游戏\fIvalue\fP次。最好与\fB\-\-nogui\fP同用于可脚本化的性能测试。
 .TP 
 \fB\-\-nogui\fP
 启动游戏，但不启用图形用户界面（GUI）。此选项必须在\fB\-\-multiplayer\fP之前使用才有效。

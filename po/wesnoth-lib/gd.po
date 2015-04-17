@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 05:06-0300\n"
+"POT-Creation-Date: 2015-04-17 11:34-0300\n"
 "PO-Revision-Date: 2014-03-16 07:31-0000\n"
 "Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
@@ -1834,6 +1834,7 @@ msgstr "Dèan ceangal"
 #: data/gui/default/window/mp_connect.cfg:176
 #: data/gui/default/window/mp_create_game.cfg:559
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:202
+#: data/gui/default/window/mp_join_game_password_prompt.cfg:150
 #: data/gui/default/window/mp_login.cfg:274
 #: data/gui/default/window/mp_method_selection.cfg:225
 #: data/gui/default/window/mp_server_list.cfg:231
@@ -2217,6 +2218,7 @@ msgstr ""
 #: data/gui/default/window/mp_create_game.cfg:544
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:188
 #: data/gui/default/window/mp_create_game_set_password.cfg:133
+#: data/gui/default/window/mp_join_game_password_prompt.cfg:137
 #: data/gui/default/window/mp_login.cfg:246
 #: data/gui/default/window/mp_method_selection.cfg:211
 #: data/gui/default/window/screenshot_notification.cfg:201
@@ -2469,8 +2471,10 @@ msgstr "Aisig"
 msgid "Backup"
 msgstr "Lethbhreac-glèidhidh"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/depcheck_confirm_change.cfg:40
+#: src/gui/widgets/label.cpp:178
 msgid "Confirm"
 msgstr "Dearbhaich"
 
@@ -3655,6 +3659,7 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/mp_create_game_set_password.cfg:90
+#: data/gui/default/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/default/window/mp_login.cfg:144
 msgid "Password:"
 msgstr "Facal-faire:"
@@ -3676,6 +3681,16 @@ msgstr ""
 "Thèid frithealaiche ionadail a thòiseachadh gus geama lìonraidh òstadh. "
 "Ruithidh am frithealaiche air a’ chùlaibh gus am bi a h-uile cluicheadairean "
 "air dì-cheangal. A bheil thu airson leantainn air adhart?"
+
+#. [label]: id=title
+#: data/gui/default/window/mp_join_game_password_prompt.cfg:42
+msgid "Password Required"
+msgstr "Facal-faire a dhìth"
+
+#. [scroll_label]: id=message
+#: data/gui/default/window/mp_join_game_password_prompt.cfg:61
+msgid "Joining this game requires a password."
+msgstr "Tha facal-faire a dhìth gus gabhail sa gheama seo."
 
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
@@ -4808,9 +4823,9 @@ msgstr "Chan eil fios"
 #: src/gui/dialogs/game_paths.cpp:119
 #: src/gui/dialogs/gamestate_inspector.cpp:713
 #: src/gui/dialogs/lua_interpreter.cpp:459
-#: src/gui/dialogs/screenshot_notification.cpp:88
+#: src/gui/dialogs/screenshot_notification.cpp:94
 #: src/gui/dialogs/wml_error.cpp:224
-msgid "Clipboard support not found, contact your packager."
+msgid "Clipboard support not found, contact your packager"
 msgstr ""
 
 #: src/gui/dialogs/addon/filter_options.cpp:295
@@ -4833,7 +4848,7 @@ msgstr "Na h-uile"
 #: src/gui/dialogs/game_cache_options.cpp:135
 #: src/gui/dialogs/network_transmission.cpp:56
 #: src/gui/dialogs/network_transmission.cpp:57
-#: src/gui/dialogs/screenshot_notification.cpp:72
+#: src/gui/dialogs/screenshot_notification.cpp:73
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -4960,23 +4975,23 @@ msgstr "Duilgheas: "
 msgid "Version: "
 msgstr "Tionndadh: "
 
-#: src/gui/dialogs/lobby_main.cpp:226
+#: src/gui/dialogs/lobby_main.cpp:227
 msgid "whisper to $receiver"
 msgstr "cagair gu $receiver"
 
-#: src/gui/dialogs/lobby_main.cpp:696
+#: src/gui/dialogs/lobby_main.cpp:697
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Geamannan: a’ sealltainn $num_shown a-mach à $num_total"
 
-#: src/gui/dialogs/lobby_main.cpp:740
+#: src/gui/dialogs/lobby_main.cpp:741
 msgid "Observers allowed"
 msgstr "Amhairc cheadaichte"
 
-#: src/gui/dialogs/lobby_main.cpp:743
+#: src/gui/dialogs/lobby_main.cpp:744
 msgid "Observers not allowed"
 msgstr "Chan eil amhairc ceadaichte"
 
-#: src/gui/dialogs/lobby_main.cpp:1156
+#: src/gui/dialogs/lobby_main.cpp:1157
 msgid ""
 "Whisper session with $name started. If you don’t want to receive messages "
 "from this user, type /ignore $name\n"
@@ -4984,29 +4999,17 @@ msgstr ""
 "Chaidh seisean cagair le $name a thòiseachadh. Mura h-eil thu airson "
 "teachdaireachdan fhaighinn on chleachdaiche seo, sgrìobh /ignore $name\n"
 
-#: src/gui/dialogs/lobby_main.cpp:1164
+#: src/gui/dialogs/lobby_main.cpp:1165
 msgid "Room $name joined"
 msgstr "Air gabhail ann an seòmar $name"
 
-#: src/gui/dialogs/lobby_main.cpp:1490
+#: src/gui/dialogs/lobby_main.cpp:1491
 msgid "$player has entered the room"
 msgstr "Thàinig $player a-steach dhan t-seòmar"
 
-#: src/gui/dialogs/lobby_main.cpp:1530
+#: src/gui/dialogs/lobby_main.cpp:1531
 msgid "$player has left the room"
 msgstr "Dh’fhàg $player an seòmar"
-
-#: src/gui/dialogs/lobby_main.cpp:1650
-msgid "Password Required"
-msgstr "Facal-faire a dhìth"
-
-#: src/gui/dialogs/lobby_main.cpp:1651
-msgid "Joining this game requires a password."
-msgstr "Tha facal-faire a dhìth gus gabhail sa gheama seo."
-
-#: src/gui/dialogs/lobby_main.cpp:1655
-msgid "Password: "
-msgstr "Facal-faire: "
 
 #: src/gui/dialogs/mp_alerts_options.cpp:135
 msgid ""
@@ -5022,6 +5025,12 @@ msgstr "Taobh $side"
 msgid "Load Game..."
 msgstr "Luchdaich geama..."
 
+#: src/gui/dialogs/screenshot_notification.cpp:74
+#, fuzzy
+#| msgid "addon_state^Unknown"
+msgid "file_size^Unknown"
+msgstr "Chan eil fios"
+
 #: src/gui/dialogs/title_screen.cpp:320
 msgid "Version "
 msgstr "Tionndadh "
@@ -5035,7 +5044,7 @@ msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Cha deach am widget ‘$id’ riatanach a mhìneachadh."
 
 #: src/gui/widgets/label.cpp:158
-msgid "Opening links is not supported, contact your packager."
+msgid "Opening links is not supported, contact your packager"
 msgstr ""
 
 #: src/gui/widgets/label.cpp:178
@@ -5072,7 +5081,7 @@ msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Tha putan ‘click_dismiss’ no ‘ok’ a dhìth air click dismiss."
 
 #: src/gui/widgets/window.cpp:1112 src/gui/widgets/window.cpp:1149
-#: src/tests/gui/test_gui2.cpp:482
+#: src/tests/gui/test_gui2.cpp:484
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Cha deach còmhradh a shealltainn a tha ro mhòr airson an sgrìn."
 
@@ -5930,6 +5939,14 @@ msgstr "Neo-aithnichte"
 msgid "Hat"
 msgstr "Ad"
 
+#: src/hotkey/hotkey_preferences_display.cpp:134
+msgid "Add additional binding to \"$hotkey_description|\""
+msgstr ""
+
+#: src/hotkey/hotkey_preferences_display.cpp:136
+msgid "Clears \"$hotkey_description|'s\" bindings"
+msgstr ""
+
 #: src/hotkey/hotkey_preferences_display.cpp:150
 msgid "Hotkeys Reset"
 msgstr "Ath-shuidhich na hotkeys"
@@ -6083,6 +6100,9 @@ msgstr ""
 "Chaidh an iuchair ‘$deprecated_key’ ath-ainmeachadh gu ‘$key’. Thèid gach "
 "taic airson ‘$deprecated_key’ a thoirt air falbh leis an tionndadh "
 "$removal_version."
+
+#~ msgid "Password: "
+#~ msgstr "Facal-faire: "
 
 #~ msgid "controller^Human/AI"
 #~ msgstr "Daonna/IF"

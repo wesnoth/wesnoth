@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 05:06-0300\n"
+"POT-Creation-Date: 2015-04-17 11:34-0300\n"
 "PO-Revision-Date: 2014-10-19 21:36+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
@@ -280,11 +280,11 @@ msgstr "Reclutas: "
 msgid "Fatal error"
 msgstr "Error grave"
 
-#: src/editor/controller/editor_controller.cpp:207
+#: src/editor/controller/editor_controller.cpp:209
 msgid "Do you really want to quit?"
 msgstr "¿Realmente desea salir?"
 
-#: src/editor/controller/editor_controller.cpp:209
+#: src/editor/controller/editor_controller.cpp:211
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -292,7 +292,7 @@ msgstr ""
 "¿Realmente desea salir? Se perderán los cambios realizados en el mapa desde "
 "la última vez que lo guardó."
 
-#: src/editor/controller/editor_controller.cpp:211
+#: src/editor/controller/editor_controller.cpp:213
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -300,27 +300,27 @@ msgstr ""
 "¿Realmente desea salir? Se perderán los cambios realizados en los siguientes "
 "mapas desde la última vez que los guardó:"
 
-#: src/editor/controller/editor_controller.cpp:214
+#: src/editor/controller/editor_controller.cpp:216
 msgid "Quit"
 msgstr "Salir"
 
-#: src/editor/controller/editor_controller.cpp:225
+#: src/editor/controller/editor_controller.cpp:227
 msgid "No editor time-of-day found."
 msgstr "No se encontraron datos de la «hora del día» para el editor."
 
-#: src/editor/controller/editor_controller.cpp:1099
+#: src/editor/controller/editor_controller.cpp:1101
 msgid "Change Unit ID"
 msgstr "Cambiar el ID de la unidad"
 
-#: src/editor/controller/editor_controller.cpp:1100
+#: src/editor/controller/editor_controller.cpp:1102
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1116
+#: src/editor/controller/editor_controller.cpp:1118
 msgid "Rename Unit"
 msgstr "Renombrar unidad"
 
-#: src/editor/controller/editor_controller.cpp:1117
+#: src/editor/controller/editor_controller.cpp:1119
 msgid "Name:"
 msgstr "Nombre:"
 
@@ -397,8 +397,11 @@ msgid "Unsaved Changes"
 msgstr "Cambios sin guardar"
 
 #: src/editor/map/context_manager.cpp:676
-msgid ""
-"Do you want to discard all changes you made to the map since the last save?"
+#, fuzzy
+#| msgid ""
+#| "Do you want to discard all changes you made to the map since the last "
+#| "save?"
+msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "¿Desea abandonar todos los cambios efectuados en el mapa desde que lo guardó "
 "por última vez?"

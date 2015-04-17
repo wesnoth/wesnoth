@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 05:06-0300\n"
+"POT-Creation-Date: 2015-04-17 11:34-0300\n"
 "PO-Revision-Date: 2013-06-23 02:21-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -1628,6 +1628,7 @@ msgstr "Applicare"
 #: data/gui/default/window/mp_connect.cfg:176
 #: data/gui/default/window/mp_create_game.cfg:559
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:202
+#: data/gui/default/window/mp_join_game_password_prompt.cfg:150
 #: data/gui/default/window/mp_login.cfg:274
 #: data/gui/default/window/mp_method_selection.cfg:225
 #: data/gui/default/window/mp_server_list.cfg:231
@@ -2017,6 +2018,7 @@ msgstr ""
 #: data/gui/default/window/mp_create_game.cfg:544
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:188
 #: data/gui/default/window/mp_create_game_set_password.cfg:133
+#: data/gui/default/window/mp_join_game_password_prompt.cfg:137
 #: data/gui/default/window/mp_login.cfg:246
 #: data/gui/default/window/mp_method_selection.cfg:211
 #: data/gui/default/window/screenshot_notification.cfg:201
@@ -2273,8 +2275,10 @@ msgstr "Restituere"
 msgid "Backup"
 msgstr ""
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/depcheck_confirm_change.cfg:40
+#: src/gui/widgets/label.cpp:178
 msgid "Confirm"
 msgstr ""
 
@@ -3481,6 +3485,7 @@ msgstr "Tesseram ponere, cui homines ludum ut lusores inituri, uti debent. "
 
 #. [label]
 #: data/gui/default/window/mp_create_game_set_password.cfg:90
+#: data/gui/default/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/default/window/mp_login.cfg:144
 msgid "Password:"
 msgstr "Tessera:"
@@ -3499,6 +3504,16 @@ msgid ""
 "The server will run as a background process until all users have "
 "disconnected. Do you wish to continue?"
 msgstr ""
+
+#. [label]: id=title
+#: data/gui/default/window/mp_join_game_password_prompt.cfg:42
+msgid "Password Required"
+msgstr "Tessera Necesse Est"
+
+#. [scroll_label]: id=message
+#: data/gui/default/window/mp_join_game_password_prompt.cfg:61
+msgid "Joining this game requires a password."
+msgstr "Tesseram dare debes ut ad ludum convenias."
 
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
@@ -4612,9 +4627,9 @@ msgstr "Ignota"
 #: src/gui/dialogs/game_paths.cpp:119
 #: src/gui/dialogs/gamestate_inspector.cpp:713
 #: src/gui/dialogs/lua_interpreter.cpp:459
-#: src/gui/dialogs/screenshot_notification.cpp:88
+#: src/gui/dialogs/screenshot_notification.cpp:94
 #: src/gui/dialogs/wml_error.cpp:224
-msgid "Clipboard support not found, contact your packager."
+msgid "Clipboard support not found, contact your packager"
 msgstr ""
 
 #: src/gui/dialogs/addon/filter_options.cpp:295
@@ -4638,7 +4653,7 @@ msgstr "Omnes Appendices"
 #: src/gui/dialogs/game_cache_options.cpp:135
 #: src/gui/dialogs/network_transmission.cpp:56
 #: src/gui/dialogs/network_transmission.cpp:57
-#: src/gui/dialogs/screenshot_notification.cpp:72
+#: src/gui/dialogs/screenshot_notification.cpp:73
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -4757,51 +4772,39 @@ msgstr "Difficultas: "
 msgid "Version: "
 msgstr "Versio: "
 
-#: src/gui/dialogs/lobby_main.cpp:226
+#: src/gui/dialogs/lobby_main.cpp:227
 msgid "whisper to $receiver"
 msgstr "susurrare $receiver"
 
-#: src/gui/dialogs/lobby_main.cpp:696
+#: src/gui/dialogs/lobby_main.cpp:697
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Ludi: $num_shown e $num_total editi"
 
-#: src/gui/dialogs/lobby_main.cpp:740
+#: src/gui/dialogs/lobby_main.cpp:741
 msgid "Observers allowed"
 msgstr "Spectatores concessi"
 
-#: src/gui/dialogs/lobby_main.cpp:743
+#: src/gui/dialogs/lobby_main.cpp:744
 msgid "Observers not allowed"
 msgstr "Spectatores inconcessi"
 
-#: src/gui/dialogs/lobby_main.cpp:1156
+#: src/gui/dialogs/lobby_main.cpp:1157
 msgid ""
 "Whisper session with $name started. If you don’t want to receive messages "
 "from this user, type /ignore $name\n"
 msgstr ""
 
-#: src/gui/dialogs/lobby_main.cpp:1164
+#: src/gui/dialogs/lobby_main.cpp:1165
 msgid "Room $name joined"
 msgstr "Ad spatium $name convenisti"
 
-#: src/gui/dialogs/lobby_main.cpp:1490
+#: src/gui/dialogs/lobby_main.cpp:1491
 msgid "$player has entered the room"
 msgstr "$player locum adiit"
 
-#: src/gui/dialogs/lobby_main.cpp:1530
+#: src/gui/dialogs/lobby_main.cpp:1531
 msgid "$player has left the room"
 msgstr "$player locum exiit"
-
-#: src/gui/dialogs/lobby_main.cpp:1650
-msgid "Password Required"
-msgstr "Tessera Necesse Est"
-
-#: src/gui/dialogs/lobby_main.cpp:1651
-msgid "Joining this game requires a password."
-msgstr "Tesseram dare debes ut ad ludum convenias."
-
-#: src/gui/dialogs/lobby_main.cpp:1655
-msgid "Password: "
-msgstr "Tessera: "
 
 #: src/gui/dialogs/mp_alerts_options.cpp:135
 msgid ""
@@ -4817,6 +4820,12 @@ msgstr "Manus $side"
 msgid "Load Game..."
 msgstr "Ludum Restituere..."
 
+#: src/gui/dialogs/screenshot_notification.cpp:74
+#, fuzzy
+#| msgid "addon_state^Unknown"
+msgid "file_size^Unknown"
+msgstr "Ignota"
+
 #: src/gui/dialogs/title_screen.cpp:320
 msgid "Version "
 msgstr "Versio"
@@ -4830,7 +4839,7 @@ msgid "Mandatory widget '$id' hasn't been defined."
 msgstr ""
 
 #: src/gui/widgets/label.cpp:158
-msgid "Opening links is not supported, contact your packager."
+msgid "Opening links is not supported, contact your packager"
 msgstr ""
 
 #: src/gui/widgets/label.cpp:178
@@ -4865,7 +4874,7 @@ msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 
 #: src/gui/widgets/window.cpp:1112 src/gui/widgets/window.cpp:1149
-#: src/tests/gui/test_gui2.cpp:482
+#: src/tests/gui/test_gui2.cpp:484
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
 
@@ -5769,6 +5778,14 @@ msgstr "Ignotum"
 msgid "Hat"
 msgstr "Petasus"
 
+#: src/hotkey/hotkey_preferences_display.cpp:134
+msgid "Add additional binding to \"$hotkey_description|\""
+msgstr ""
+
+#: src/hotkey/hotkey_preferences_display.cpp:136
+msgid "Clears \"$hotkey_description|'s\" bindings"
+msgstr ""
+
 #: src/hotkey/hotkey_preferences_display.cpp:150
 #, fuzzy
 msgid "Hotkeys Reset"
@@ -5917,6 +5934,9 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
+
+#~ msgid "Password: "
+#~ msgstr "Tessera: "
 
 #~ msgid "Elvish Castle"
 #~ msgstr "Castellum Dryadalium"
