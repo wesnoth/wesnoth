@@ -456,7 +456,7 @@ void tlua_interpreter::controller::bind(twindow& window)
 
 	if (!desktop::clipboard::available()) {
 		copy_button->set_active(false);
-		copy_button->set_tooltip(_("Clipboard support not found, contact your packager."));
+		copy_button->set_tooltip(_("Clipboard support not found, contact your packager"));
 	}
 
 	LOG_LUA << "Exiting tlua_interpreter::controller::bind" << std::endl;

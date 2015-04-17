@@ -414,7 +414,7 @@ public:
 							boost::ref(window)));
 		if (!desktop::clipboard::available()) {
 			model_.copy_button->set_active(false);
-			model_.copy_button->set_tooltip(_("Clipboard support not found, contact your packager."));
+			model_.copy_button->set_tooltip(_("Clipboard support not found, contact your packager"));
 		}
 
 		model_.page_label = &find_widget<tcontrol>(&window, "page_label", false);

@@ -91,7 +91,7 @@ void tscreenshot_notification::pre_show(CVideo& /*video*/, twindow& window)
 
 	if (!desktop::clipboard::available()) {
 		copy_b.set_active(false);
-		copy_b.set_tooltip(_("Clipboard support not found, contact your packager."));
+		copy_b.set_tooltip(_("Clipboard support not found, contact your packager"));
 	}
 
 	tbutton& open_b = find_widget<tbutton>(&window, "open", false);

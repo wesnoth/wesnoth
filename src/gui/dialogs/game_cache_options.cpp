@@ -95,7 +95,7 @@ void tgame_cache_options::pre_show(CVideo& video, twindow& window)
 												this));
 	if (!desktop::clipboard::available()) {
 		copy.set_active(false);
-		copy.set_tooltip(_("Clipboard support not found, contact your packager."));
+		copy.set_tooltip(_("Clipboard support not found, contact your packager"));
 	}
 
 	tbutton& browse = find_widget<tbutton>(&window, "browse", false);

@@ -116,7 +116,7 @@ void tgame_paths::pre_show(CVideo& /*video*/, twindow& window)
 
 		if(!desktop::clipboard::available()) {
 			copy_w.set_active(false);
-			copy_w.set_tooltip(_("Clipboard support not found, contact your packager."));
+			copy_w.set_tooltip(_("Clipboard support not found, contact your packager"));
 		}
 	}
 }

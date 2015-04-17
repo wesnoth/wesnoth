@@ -221,7 +221,7 @@ void twml_error::pre_show(CVideo& /*video*/, twindow& window)
 
 	if (!desktop::clipboard::available()) {
 		copy_button.set_active(false);
-		copy_button.set_tooltip(_("Clipboard support not found, contact your packager."));
+		copy_button.set_tooltip(_("Clipboard support not found, contact your packager"));
 	}
 }
 
