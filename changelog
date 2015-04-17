@@ -398,19 +398,13 @@ Version 1.13.0-dev:
      is redirected from std::cout to a logdomain "aitesting".
    * Added WML unit test capabilities, accessible from commandline using -u
      switch. These are useful for unit testing the WML / lua api.
-   * Added WML tags [issue_attack_command] and [issue_move_command]. These
-     commands can be used to script a scenario and use the same code path
-     as if a human / ai ordered the command. These are intended to facilitate
-     making some kinds of noninteractive unit tests.
    * Support for total conversions, so called "cores".
    * Fix bug #22030: correct index of weapon special disable in attack GUI
    * Fix bug #21964: assertion failure when using "controller" attribute with
      a number.
-   * Add [do_command], remove [issue_attack_command] and [issue_move_command],
-     which are superceded by [do_command]. [do_command] takes the body of a
-     [command] tag from ReplayWML, (some possibilities not allowed), and
-     executes the corresponding action. It is replay safe and triggers WML
-     events as appropriate.
+   * Add [do_command], which takes the body of a [command] tag from ReplayWML,
+     (some possibilities not allowed), and executes the corresponding action.
+     It is replay safe and triggers WML events as appropriate.
    * Reallow selection of another unit on same side without deselect first
    * Add "strict mode". Using --log-strict=[severity] causes wesnoth to throw
      a game_error exception when anything is written to a log as severe as
