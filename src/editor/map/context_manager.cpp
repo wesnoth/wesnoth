@@ -673,7 +673,7 @@ bool context_manager::confirm_discard()
 {
 	if (get_map_context().modified()) {
 		const int res = gui2::show_message(gui_.video(), _("Unsaved Changes"),
-				_("Do you want to discard all changes you made to the map since the last save?"), gui2::tmessage::yes_no_buttons);
+				_("Do you want to discard all changes made to the map since the last save?"), gui2::tmessage::yes_no_buttons);
 		return gui2::twindow::CANCEL != res;
 	} else {
 		return true;
