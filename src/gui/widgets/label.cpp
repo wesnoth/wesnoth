@@ -151,7 +151,7 @@ void tlabel::signal_handler_left_button_click(const event::tevent /* event */, b
 	DBG_GUI_E << "label click" << std::endl;
 
 	if (!get_link_aware()) {
-		return ; // without marking event as "handled".
+		return; // without marking event as "handled".
 	}
 
 	if (!desktop::open_object_is_supported()) {
@@ -176,7 +176,7 @@ void tlabel::signal_handler_left_button_click(const event::tevent /* event */, b
 	DBG_GUI_E << "Clicked Link:\"" << link << "\"\n";
 
 	const int res = gui2::show_message(get_window()->video(), "", _("Do you want to open this link?") + std::string("\n") + link, gui2::tmessage::yes_no_buttons);
-	if(res != gui2::twindow::CANCEL) {
+	if(res == gui2::twindow::OK) {
 		desktop::open_object(link);
 	}
 
