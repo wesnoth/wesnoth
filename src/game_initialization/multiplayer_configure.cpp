@@ -84,7 +84,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	observers_game_(disp.video(), _("Observers"), gui::button::TYPE_CHECK),
 	oos_debug_(disp.video(), _("Debug OOS"), gui::button::TYPE_CHECK),
 	shuffle_sides_(disp.video(), _("Shuffle sides"), gui::button::TYPE_CHECK),
-	random_faction_mode_label_(disp.video(), _("Random Factions:"), font::SIZE_SMALL, font::LOBBY_COLOR),
+	random_faction_mode_label_(disp.video(), _("Random factions:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	random_faction_mode_(disp, std::vector<std::string>()),
 	cancel_game_(disp.video(), _("Back")),
 	launch_game_(disp.video(), _("OK")),
