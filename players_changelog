@@ -18,9 +18,14 @@ Version 1.13.0-dev:
    * Descent into Darkness:
      * Fixed various issues with player and enemy gold and income in
        'Descent into Darkness'.
+     * Fixed Darken Volk's ellipse in scenarios 'A Small Favor part 3' and
+       'Alone at Last'.
+     * Fixed Darken Volk being completely passive in 'Alone at Last'.
      * 'Return to Parthyn' now has variable content depending on whether
         necromancy was used in 'Saving Parthyn'.
    * Eastern Invasion:
+     * In 'Captured', stolen gold won't be mentioned if the player had no
+       carryover gold.
      * Updated maps for scenario 14, 16 and 17b.
      * New animation for Ravanal's shadow wave.
      * Added the Skeleton Rider line.
@@ -48,6 +53,8 @@ Version 1.13.0-dev:
      * S3: make objectives consistent between before and after trolls appear
      * S6: remove AI controller.  It doesn't work with sides without a leader
      * Minor balance tweaks to scenarios 7, 8, 12, 14, 15, 17 and 18.
+     * Made allied leaders less likely to get themselves killed.
+     * Minor changes to objectives and messages in scenarios 7, 8 and 14
    * The Hammer of Thursagan:
      * Fixed missing objective in 'The Court of Karrag'.
      * Rebalanced scenarios 'Invaders', 'Mages and Drakes' and 'Fear'.
@@ -91,6 +98,9 @@ Version 1.13.0-dev:
    * Fixed the Set Password option during game creation not having an effect
      due to a misplaced WML attribute in the client's command for the server
      (bug #23015).
+   * Added "no mirror" and "no ally mirror" options to the MP configure screen.
+   * Missing content for games hosted in the mp server may now be retrieved
+     automatically by clicking on these games in the mp lobby.
 
  * Music:
    * Change main menu track to Journey's End.
@@ -118,6 +128,8 @@ Version 1.13.0-dev:
    * Added a new "Alerts" configuration screen under Preferences > Multiplayer,
      refactored all of the mp alerts / desktop notifications for customizability
    * Added support for hyperlinks. In particular, in chat / addon descriptions.
+   * Added a "Disable automatic moves" preference to disable automatic movements
+     at the beginning of a turn.
 
  * WML engine:
    * Added support for a shuffle key in the [music] music to allow selecting
