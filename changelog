@@ -280,6 +280,19 @@ Version 1.13.0-dev:
      Sans, and these are used in many menus and in the in-game help for styling
      text where previously we used SDL_TTF. Fixes bug #22376.
  * WML engine:
+   * New image path functions:
+      * ~XBRZ(): Takes one argument, the scaling factor (1-5). Uses the xBRZ
+        scaling algorithm added in this release.
+      * ~SCALE_SHARP(): Anologous to ~SCALE() but using the nearest neighbor
+        scaling algorithm instead.
+      * ~PLOT_ALPHA(): No arguments, plots the alpha channel in greyscale.
+        Mainly useful for diagnostics of other function combinations, or
+        debugging the engine itself.
+      * ~WIPE_ALPHA(): Again mainly useful for diagnostics.
+      * ~ADJUST_ALPHA(): Takes either a % or an 8-bit integer, and "multiplies"
+        the alpha channel by this value.
+      * ~SEPIA(): Gives the image a sepia tint.
+      * ~NEG(): Gives the image a photographic negative effect.
    * Added customizable recall costs for unit types and individual units,
      using the new recall_cost attribute in [unit_type] and [unit].
    * Added support for [elseif] tags inside [if]
@@ -307,8 +320,6 @@ Version 1.13.0-dev:
    * force_lock_settings defaults to yes in [scenario].
    * Moved all preprocessor diagnostics from the 'config' log domain to
      'preprocessor'.
-   * Imagepath function "~SEPIA": gives the image a sepia tint
-   * Imagepath function "~NEG": gives the image a photographic negative effect
    * Dropped support for [filter_side] in [gold] and [modify_ai], [theme] name=
      in place of id, and [object] duration=level.
    * Allowed direct modification of unit.ellipse variable even if ellipse= is set
@@ -529,19 +540,9 @@ Version 1.13.0-dev:
      sourceforge)
    * Now may save screenshots and other images as pngs, using SDL_SavePNG lib
      (from github)
-   * Image path function ~XBRZ added, taking one argument, the scaling factor.
-     A number 1-5.
-   * Image path function ~SCALE_SHARP added, analogous to ~SCALE but using
-     nearest neighbor algo.
-   * Image path function ~PlOT_ALPHA added. Takes no arguments, plots the alpha
-     channel in greyscale. Mainly useful for diagnostics of other ipf
-     combinations, or debugging the engine itself.
-   * Image path function ~WIPE_ALPHA added. Again mainly useful for diagnostics.
    * New RNG implementation using boost::mt19937, and boost::random_device for
      seeds. The boost random library is now a build requirement.
    * Add "lua" random map generation
-   * Image path function ~ADJUST_ALPHA added. Takes either a % or an 8-bit
-     integer, and "multiplies" the alpha channel by this.
    * Multiplayer server can now handle scenarios with more than 9 sides
    * [modify_side] controller= now works in networked mp. If a null-controlled
      side becomes alive by [modify_side] controller=ai/human then the currently
