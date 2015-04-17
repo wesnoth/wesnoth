@@ -585,10 +585,6 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
  */
 std::string create_engine::select_campaign_difficulty(int set_value)
 {
-	const std::string difficulty_descriptions =
-		current_level().data()["difficulty_descriptions"];
-	std::vector<std::string> difficulty_options =
-		utils::split(difficulty_descriptions, ';');
 	const std::vector<std::string> difficulties =
 		utils::split(current_level().data()["difficulties"]);
 
@@ -619,9 +615,16 @@ std::string create_engine::select_campaign_difficulty(int set_value)
 	}
 	else
 	{
-		if(difficulty_options.size() != difficulties.size())
+		std::string campaign_id = current_level().data()["id"];
+		std::vector<std::string> difficulty_opts =
+			utils::split(current_level().data()["difficulty_descriptions"], ';');
+		if(difficulty_opts.size() != difficulties.size())
 		{
-			difficulty_options = difficulties;
+			difficulty_opts = difficulties;
+		}
+		std::vector<std::pair<std::string, bool> > difficulty_options;
+		for (size_t i = 0; i < difficulties.size(); i++) {
+			difficulty_options.push_back(make_pair(difficulty_opts[i], preferences::is_campaign_completed(campaign_id, difficulties[i])));
 		}
 
 		// show gui

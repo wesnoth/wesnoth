@@ -53,11 +53,12 @@ class acquaintance;
 	std::map<std::string, std::string> get_acquaintances_nice(const std::string& filter);
 	bool add_friend(const std::string& nick, const std::string& notes);
 	bool add_ignore(const std::string& nick, const std::string& reason);
-	void add_completed_campaign(const std::string& campaign_id);
+	void add_completed_campaign(const std::string &campaign_id, const std::string &difficulty_level);
 	void remove_acquaintance(const std::string& nick);
 	bool is_friend(const std::string& nick);
 	bool is_ignored(const std::string& nick);
 	bool is_campaign_completed(const std::string& campaign_id);
+	bool is_campaign_completed(const std::string& campaign_id, const std::string &difficulty_level);
 
 	const std::vector<game_config::server_info>& server_list();
 

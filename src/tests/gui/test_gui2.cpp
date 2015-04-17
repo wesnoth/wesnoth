@@ -517,7 +517,7 @@ struct twrapper<gui2::tcampaign_difficulty>
 {
 	static gui2::tcampaign_difficulty* create()
 	{
-		static std::vector<std::string> items;
+		static std::vector<std::pair<std::string, bool> > items;
 
 		return new gui2::tcampaign_difficulty(items);
 	}

@@ -131,20 +131,26 @@ void loadgame::show_difficulty_dialog()
 		|| (!cfg_summary["turn"].empty()) )
 		return;
 
+	std::string campaign_id = cfg_summary["campaign"];
 	const config::const_child_itors &campaigns = game_config_.child_range("campaign");
-	std::vector<std::string> difficulty_descriptions;
 	std::vector<std::string> difficulties;
+	std::vector<std::pair<std::string, bool> > difficulty_options;
 	BOOST_FOREACH(const config &campaign, campaigns)
 	{
-		if (campaign["id"] == cfg_summary["campaign"]) {
-			difficulty_descriptions = utils::split(campaign["difficulty_descriptions"], ';');
+		if (campaign["id"] == campaign_id) {
 			difficulties = utils::split(campaign["difficulties"], ',');
-
+			std::vector<std::string> difficulty_opts = utils::split(campaign["difficulty_descriptions"], ';');
+			if (difficulty_opts.size() != difficulties.size()) {
+				difficulty_opts = difficulties;
+			}
+			for (size_t i = 0; i < difficulties.size(); i++) {
+				difficulty_options.push_back(make_pair(difficulty_opts[i], preferences::is_campaign_completed(campaign_id, difficulties[i])));
+			}
 			break;
 		}
 	}
 
-	if (difficulty_descriptions.empty())
+	if (difficulty_options.empty())
 		return;
 
 #if 0
@@ -157,7 +163,7 @@ void loadgame::show_difficulty_dialog()
 	}
 #endif
 
-	gui2::tcampaign_difficulty difficulty_dlg(difficulty_descriptions);
+	gui2::tcampaign_difficulty difficulty_dlg(difficulty_options);
 	difficulty_dlg.show(gui_.video());
 
 	if (difficulty_dlg.get_retval() != gui2::twindow::OK) {
