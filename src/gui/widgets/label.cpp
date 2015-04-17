@@ -175,7 +175,7 @@ void tlabel::signal_handler_left_button_click(const event::tevent /* event */, b
 
 	DBG_GUI_E << "Clicked Link:\"" << link << "\"\n";
 
-	const int res = gui2::show_message(get_window()->video(), "", _("Do you want to open this link?") + std::string("\n") + link, gui2::tmessage::yes_no_buttons);
+	const int res = gui2::show_message(get_window()->video(), _("Confirm"), _("Do you want to open this link?") + std::string("\n\n") + link, gui2::tmessage::yes_no_buttons);
 	if(res == gui2::twindow::OK) {
 		desktop::open_object(link);
 	}
