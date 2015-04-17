@@ -1498,15 +1498,15 @@ WML_HANDLER_FUNCTION(store_relative_direction, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(store_rotate_map_location, /*event_info*/, cfg)
 {
 	if (!cfg.child("source")) {
-		WRN_NG << "No source in [store_relative_dir]" << std::endl;
+		WRN_NG << "No source in [store_rotate_map_location]" << std::endl;
 		return;
 	}
 	if (!cfg.child("destination")) {
-		WRN_NG << "No destination in [store_relative_dir]" << std::endl;
+		WRN_NG << "No destination in [store_rotate_map_location]" << std::endl;
 		return;
 	}
 	if (!cfg.has_attribute("variable")) {
-		WRN_NG << "No variable in [store_relative_dir]" << std::endl;
+		WRN_NG << "No variable in [store_rotate_map_location]" << std::endl;
 		return;
 	}
 
