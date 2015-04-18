@@ -14,37 +14,10 @@ The release team should empty this file after each release.
 CHANGES
 =======
 
-[section="Fixed Carryover bug in mp campaigns"]
-[bug]22936[/bug] has now been fixed, meaning that clients should get the correct gold carryover when they play mp campaigns together.
+[rasection="Example section title"]
+Example contents.
+[/rasection]
 
-[b] The bug was client-side, and old clients (1.12.0, 1.12.1) cannot be fixed! [/b]. All clients in an mp campaign must have version >= 1.12.2 or OOS will result.
-
-It is recommended that all clients upgrade to 1.12.2 for this and other reasons.
-
-If you are producing an mp campaign, you can help mitigate the problem by giving users a warning of the bad versions, using WML code like the following in your scenario:
-
-[code]
-#ifver WESNOTH_VERSION < 1.12.2
-    [message]
-        speaker=narrator
-        message= _ "You have wesnoth which is affected by a gold carryover bug -- you will get OOS when the campaign transitions, and you will have to save and reload each time to proceed. Please consider to upgrade your wesnoth to version 1.12.2 at least."
-    [/message]
-#endif
-[/code]
-
-C.f. [wiki]PreprocessorRef[/wiki]
-
-[/section]
-[section="Fixed 'time over' events in mp"]
-'time over' were previously not synced. This means if you do one in the following things in a game with at least one client  with version < 1.12.2 you will get OOS
-[list]
-[*]using [set_variable] rand= 
-[*]creating units ([unit], [unstore_unit], wesnoth.put_unit ...)
-[*][message] with input
-[*]wesnoth.synchronize_choice
-[/list]
-
-[/section]
 ==========
 KNOWN BUGS
 ==========
