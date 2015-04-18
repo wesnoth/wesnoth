@@ -299,7 +299,6 @@ function wml_actions.unit_worth(cfg)
 	local ut = wesnoth.unit_types[u.type]
 	local hp = u.hitpoints / u.max_hitpoints
 	local xp = u.experience / u.max_experience
-	local recall_cost = unit.recall_cost
 	local best_adv = ut.cost
 	for w in split(ut.__cfg.advances_to) do
 		local uta = wesnoth.unit_types[w]
