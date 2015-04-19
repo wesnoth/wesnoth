@@ -424,9 +424,9 @@ void play_controller::do_init_side()
 
 	// Make sure vision is accurate.
 	actions::clear_shroud(player_number_, true);
+	init_side_end();
 	check_victory();
 	sync.do_final_checkup();
-	init_side_end();
 }
 void play_controller::init_side_end()
 {
