@@ -118,8 +118,6 @@ server::server(const std::string& cfg_file, size_t min_threads, size_t max_threa
 	signal(SIGINT, exit_sigint);
 	signal(SIGTERM, exit_sigterm);
 
-	cfg_.child_or_add("campaigns");
-
 	register_handlers();
 }
 
@@ -161,6 +159,10 @@ int server::load_config()
 	if(!cfg_["control_socket"].empty()) {
 		input_.reset(new input_stream(cfg_["control_socket"]));
 	}
+
+	// Ensure the campaigns list WML exists even if empty, other functions
+	// depend on its existence.
+	cfg_.child_or_add("campaigns");
 
 	// Certain config values are saved to WML again so that a given server
 	// instance's parameters remain constant even if the code defaults change
