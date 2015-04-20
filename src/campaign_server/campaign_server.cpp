@@ -61,11 +61,17 @@ static lg::log_domain log_campaignd("campaignd");
 
 namespace {
 
-void exit_sighup(int signal)
+/**
+ * Whether to reload the server configuration as soon as possible
+ * (e.g. after SIGHUP).
+ */
+sig_atomic_t need_reload = 0;
+
+void flag_sighup(int signal)
 {
 	assert(signal == SIGHUP);
-	LOG_CS << "SIGHUP caught, exiting without cleanup immediately.\n";
-	exit(128 + SIGHUP);
+	LOG_CS << "SIGHUP caught, scheduling config reload.\n";
+	need_reload = 1;
 }
 
 void exit_sigint(int signal)
@@ -113,7 +119,7 @@ server::server(const std::string& cfg_file, size_t min_threads, size_t max_threa
 	, server_manager_(load_config())
 {
 #ifndef _MSC_VER
-	signal(SIGHUP, exit_sighup);
+	signal(SIGHUP, flag_sighup);
 #endif
 	signal(SIGINT, exit_sigint);
 	signal(SIGTERM, exit_sigterm);
@@ -268,6 +274,15 @@ void server::run()
 
 	for(;;)
 	{
+		if(need_reload) {
+			load_config(); // TODO: handle port number config changes
+
+			need_reload = 0;
+			last_ts = 0;
+
+			LOG_CS << "Reloaded configuration\n";
+		}
+
 		try {
 			std::string admin_cmd;
 
