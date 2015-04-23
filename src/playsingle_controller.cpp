@@ -211,7 +211,7 @@ void playsingle_controller::play_scenario_init() {
 			gui_->video(),
 			// TODO: find a better title
 			_("Game Error"),
-			_("This multiplayer game uses an alternative random mode, if you don't know what this message means, then most likeley someone is cheating or someone reloaded a corrupt game.")
+			_("This multiplayer game uses an alternative random mode, if you don't know what this message means, then most likely someone is cheating or someone reloaded a corrupt game.")
 		);
 	}
 	return;
