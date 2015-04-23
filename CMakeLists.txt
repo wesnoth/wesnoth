@@ -147,7 +147,6 @@ endif(UNIX AND NOT APPLE AND NOT CYGWIN)
 option(ENABLE_STRICT_COMPILATION "Sets the strict compilation mode" ON)
 option(ENABLE_PEDANTIC_COMPILATION "Sets the pedantic compilation mode" OFF)
 option(ENABLE_DEBUG_WINDOW_LAYOUT "Add the debug option to allow the generation of debug layout files in dot format" OFF)
-option ( USE_ANA_NETWORK "Compile network module using ana" OFF )
 option(ENABLE_DESIGN_DOCUMENTS "Enables the generation of design documents, and has additional dependencies" OFF)
 
 #misc options

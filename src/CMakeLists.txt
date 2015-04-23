@@ -41,15 +41,6 @@ endif()
 
 set(network_implementation_files network.cpp network_worker.cpp)
 
-if(USE_ANA_NETWORK)
-	set(network_implementation_files network_ana.cpp network_manager_ana.cpp)
-	message(STATUS "Compiling network module with ana: ${network_implementation_files}")
-
-	set(ANA_LIBRARIES ana-static)
-
-	add_subdirectory(ana/src)
-endif(USE_ANA_NETWORK)
-
 if(ENABLE_SDL_GPU)
 	message(STATUS "Configuring SDL_gpu...")
 	add_definitions("-DSDL_GPU")
@@ -112,7 +103,6 @@ set(game-external-libs
 	${Boost_RANDOM_LIBRARY}
 	${SDLIMAGE_LIBRARY}
 	${SDLMIXER_LIBRARY}
-	${ANA_LIBRARIES}
 	${SDLTTF_LIBRARY}
 	${PANGOCAIRO_LIBRARIES}
 	${FONTCONFIG_LIBRARIES}
@@ -144,23 +134,16 @@ if(MSVC)
 	)
 endif(MSVC)
 
-if(USE_ANA_NETWORK)
-	set(server-external-libs
-		${common-external-libs}
-		${ANA_LIBRARIES}
-		${Boost_SYSTEM_LIBRARIES}
+set(server-external-libs
+	${common-external-libs}
+	${SDLNET_LIBRARY}
+	${Boost_SYSTEM_LIBRARIES}
 )
-else(USE_ANA_NETWORK)
-	set(server-external-libs
-		${common-external-libs}
-		${SDLNET_LIBRARY}
-		${Boost_SYSTEM_LIBRARIES}
-	)
-	set(game-external-libs
-		${game-external-libs}
-		${SDLNET_LIBRARY}
-	)
-endif(USE_ANA_NETWORK)
+
+set(game-external-libs
+	${game-external-libs}
+	${SDLNET_LIBRARY}
+)
 
 set(tools-external-libs
 	${common-external-libs}
@@ -1037,7 +1020,7 @@ set(wesnoth-main_SRC
 	whiteboard/suppose_dead.cpp
 	whiteboard/utility.cpp
 	wmi_pager.cpp
-	${network_implementation_files} # network.cpp and network_worker.cpp are included by default (without USE_ANA_NETWORK)
+	${network_implementation_files}
 )
 
 ########### libwesnoth-game ###############
@@ -1238,7 +1221,6 @@ endif(ENABLE_SERVER)
 if(ENABLE_CAMPAIGN_SERVER)
 
 set(campaignd_SRC
-	network_worker.cpp # NEEDED when compiling with ANA support
 	addon/validation.cpp
 	campaign_server/addon_utils.cpp
 	campaign_server/blacklist.cpp
@@ -1257,7 +1239,6 @@ add_executable(campaignd ${campaignd_SRC})
 target_link_libraries(campaignd
 	wesnoth-core
 	${server-external-libs}
-	${SDLNET_LIBRARY} 				# NEEDED with ANA
 	${LIBINTL_LIBRARIES}
 	${Boost_RANDOM_LIBRARY}
 	${LIBRT}
