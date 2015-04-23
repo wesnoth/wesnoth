@@ -34,12 +34,6 @@ class teditor_generate_map : public tdialog
 public:
 	teditor_generate_map();
 
-	/** Callback for the settings button */
-	void do_settings(twindow& window);
-
-	/** Callback for the next generator button */
-	void do_next_generator(twindow& window);
-
 	void set_map_generators(std::vector<map_generator*> mg)
 	{
 		map_generators_ = mg;
@@ -52,8 +46,6 @@ public:
 
 	map_generator* get_selected_map_generator();
 
-	void update_current_generator_label(twindow& window);
-
 	void set_gui(display* d)
 	{
 		gui_ = d;
@@ -63,12 +55,19 @@ public:
 		return gui_;
 	}
 	boost::optional<boost::uint32_t> get_seed();
+
 private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
+
+	/** Callback for generator list selection changes. */
+	void do_generator_selected(twindow& window);
+
+	/** Callback for the generator settings button. */
+	void do_settings(twindow& window);
 
 	/** Available map generators */
 	std::vector<map_generator*> map_generators_;
@@ -78,9 +77,6 @@ private:
 	
 	/** random seed integer input*/
 	std::string random_seed_;
-
-	/** Label for the current map generator */
-	tlabel* current_generator_label_;
 
 	/** Needed for the old-style map generator settings dialog */
 	display* gui_;
