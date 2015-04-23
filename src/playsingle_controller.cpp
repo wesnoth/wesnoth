@@ -142,7 +142,7 @@ void playsingle_controller::report_victory(
 		if (turns_left > -1) {
 			report << "\n\n<b>" << _("Turns finished early: ") << turns_left << "</b>\n"
 				   << "<small>" << _("Early finish bonus: ") << finishing_bonus_per_turn << _(" per turn") << "</small>\n"
-				   << "<small>" << _("Bonus gold: ") << finishing_bonus << "</small>\n";
+				   << "<small>" << _("Total bonus: ") << finishing_bonus << "</small>\n";
 		}
 		report << "<small>" << _("Total gold: ") << utils::half_signed_value(t.gold() + finishing_bonus) << "</small>";
 	}
