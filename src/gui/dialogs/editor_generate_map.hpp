@@ -46,6 +46,8 @@ public:
 
 	map_generator* get_selected_map_generator();
 
+	void select_map_generator(map_generator* mg);
+
 	void set_gui(display* d)
 	{
 		gui_ = d;
@@ -71,6 +73,9 @@ private:
 
 	/** Available map generators */
 	std::vector<map_generator*> map_generators_;
+
+	/** Last used map generator, must be in map_generators_ */
+	map_generator* last_map_generator_;
 
 	/** Current map generator index */
 	int current_map_generator_;

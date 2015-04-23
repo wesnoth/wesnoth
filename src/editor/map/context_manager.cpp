@@ -140,6 +140,7 @@ context_manager::context_manager(editor_display& gui, const config& game_config)
 	, game_config_(game_config)
 	, default_dir_(preferences::editor::default_dir())
 	, map_generators_()
+	, last_map_generator_(NULL)
 	, current_context_index_(0)
 	, auto_update_transitions_(preferences::editor::auto_update_transitions())
 	, map_contexts_()
@@ -649,12 +650,14 @@ void context_manager::generate_map_dialog()
 	}
 	gui2::teditor_generate_map dialog;
 	dialog.set_map_generators(map_generators_);
+	dialog.select_map_generator(last_map_generator_);
 	dialog.set_gui(&gui_);
 	dialog.show(gui_.video());
 	if (dialog.get_retval() == gui2::twindow::OK) {
 		std::string map_string;
+		map_generator* const map_generator = dialog.get_selected_map_generator();
 		try {
-			map_string = dialog.get_selected_map_generator()->create_map(dialog.get_seed());
+			map_string = map_generator->create_map(dialog.get_seed());
 		} catch (mapgen_exception& e) {
 			gui2::show_transient_message(gui_.video(), _("Map creation failed."), e.what());
 			return;
@@ -666,6 +669,7 @@ void context_manager::generate_map_dialog()
 			editor_action_whole_map a(new_map);
 			perform_refresh(a);
 		}
+		last_map_generator_ = map_generator;
 	}
 }
 

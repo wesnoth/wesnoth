@@ -64,6 +64,7 @@ REGISTER_DIALOG(editor_generate_map)
 
 teditor_generate_map::teditor_generate_map()
 	: map_generators_()
+	, last_map_generator_(NULL)
 	, current_map_generator_(0)
 	, random_seed_()
 	, gui_(NULL)
@@ -97,6 +98,11 @@ map_generator* teditor_generate_map::get_selected_map_generator()
 	return map_generators_[current_map_generator_];
 }
 
+void teditor_generate_map::select_map_generator(map_generator* mg)
+{
+	last_map_generator_ = mg;
+}
+
 void teditor_generate_map::pre_show(CVideo& /*video*/, twindow& window)
 {
 	assert(!map_generators_.empty());
@@ -115,6 +121,10 @@ void teditor_generate_map::pre_show(CVideo& /*video*/, twindow& window)
 		// lrow["generator_id"]["label"] = gen->name();
 
 		list.add_row(lrow);
+
+		if(gen == last_map_generator_) {
+			list.select_row(list.get_item_count() - 1);
+		}
 	}
 
 	list.set_callback_item_change(
