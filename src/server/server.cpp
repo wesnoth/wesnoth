@@ -491,10 +491,10 @@ void server::load_config() {
 #  pragma message ("No FIFODIR set")
 #  define FIFODIR "d:/"
 # else
-#  warning "No FIFODIR set"
 #  ifdef _WIN32
 #    define FIFODIR "d:/"
 #  else
+#    warning "No FIFODIR set"
 #    define FIFODIR "/var/run/wesnothd"
 #   endif
 # endif
