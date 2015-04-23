@@ -21,6 +21,7 @@
 #include "log.hpp"
 #include "generators/map_create.hpp"
 #include "map_exception.hpp"
+#include "marked-up_text.hpp"
 #include "minimap.hpp"
 #include "wml_separators.hpp"
 #include "wml_exception.hpp"
@@ -533,7 +534,7 @@ std::vector<std::string> create_engine::extras_menu_item_names(
 
 	BOOST_FOREACH(extras_metadata_ptr extra,
 		get_const_extras_by_type(extra_type)) {
-		names.push_back(extra->name);
+		names.push_back(font::NULL_MARKUP + extra->name);
 	}
 
 	return names;
