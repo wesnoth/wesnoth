@@ -607,6 +607,7 @@ static bool enter_configure_mode(game_display& disp, const config& game_config,
 				ui.get_parameters();
 			} else {
 				gui2::show_error_message(disp.video(), _("No sides found. At least one side or starting position must be defined."));
+				res = mp::ui::QUIT;
 			}
 		}
 
