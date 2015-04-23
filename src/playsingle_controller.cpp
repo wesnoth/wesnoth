@@ -575,6 +575,7 @@ void playsingle_controller::play_human_turn() {
 
 	end_turn_enable(true);
 	while(!should_return_to_play_side()) {
+		check_objectives();
 		play_slice_catch();
 		gui_->draw();
 	}

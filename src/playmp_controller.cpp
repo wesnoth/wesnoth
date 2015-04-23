@@ -170,7 +170,7 @@ void playmp_controller::play_human_turn()
 					undo_stack_->undo();
 
 			}
-
+			check_objectives();
 			play_slice_catch();
 			if(timer)
 			{
