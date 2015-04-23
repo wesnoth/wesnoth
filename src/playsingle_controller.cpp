@@ -136,28 +136,23 @@ void playsingle_controller::report_victory(
 	std::ostringstream &report, team& t,
 	int finishing_bonus_per_turn, int turns_left, int finishing_bonus)
 {
-	report << _("Remaining gold: ")
-		<< utils::half_signed_value(t.gold()) << "\n";
+	report << "<small>" << _("Remaining gold: ") << utils::half_signed_value(t.gold()) << "</small>";
+
 	if(t.carryover_bonus()) {
 		if (turns_left > -1) {
-			report << _("Early finish bonus: ")
-				   << finishing_bonus_per_turn
-				   << " " << _("per turn") << "\n"
-				   << "<b>" << _("Turns finished early: ")
-				   << turns_left << "</b>\n"
-				   << _("Bonus: ")
-				   << finishing_bonus << "\n";
+			report << "\n \n<b>" << _("Turns finished early: ") << turns_left << "</b>\n"
+				   << "<small>" << _("Early finish bonus: ") << finishing_bonus_per_turn << _(" per turn") << "</small>\n"
+				   << "<small>" << _("Bonus gold: ") << finishing_bonus << "</small>\n";
 		}
-		report << _("Gold: ")
-		       << utils::half_signed_value(t.gold() + finishing_bonus);
+		report << "<small>" << _("Total gold: ") << utils::half_signed_value(t.gold() + finishing_bonus) << "</small>";
 	}
 	if (t.gold() > 0) {
-		report << '\n' << _("Carry over percentage: ") << t.carryover_percentage();
+		report << "\n<small>" << _("Carryover percentage: ") << t.carryover_percentage() << "</small>";
 	}
 	if(t.carryover_add()) {
-		report << "\n<b>" << _("Bonus Gold: ") << utils::half_signed_value(t.carryover_gold()) <<"</b>";
+		report << "\n \n<big><b>" << _("Bonus gold: ") << utils::half_signed_value(t.carryover_gold()) << "</b></big>";
 	} else {
-		report << "\n<b>" << _("Retained Gold: ") << utils::half_signed_value(t.carryover_gold()) << "</b>";
+		report << "\n \n<big><b>" << _("Retained gold: ") << utils::half_signed_value(t.carryover_gold()) << "</b></big>";
 	}
 
 	std::string goldmsg;
@@ -196,7 +191,7 @@ void playsingle_controller::report_victory(
 	}
 
 	// xgettext:no-c-format
-	report << '\n' << goldmsg;
+	report << "\n" << goldmsg;
 }
 
 void playsingle_controller::play_scenario_init() {
@@ -445,7 +440,7 @@ void playsingle_controller::play_side()
 	if(is_regular_game_end()) {
 		return;
 	}
-			
+
 	//flag used when we fallback from ai and give temporarily control to human
 	bool temporary_human = false;
 	do {
