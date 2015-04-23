@@ -140,7 +140,7 @@ void playsingle_controller::report_victory(
 
 	if(t.carryover_bonus()) {
 		if (turns_left > -1) {
-			report << "\n \n<b>" << _("Turns finished early: ") << turns_left << "</b>\n"
+			report << "\n\n<b>" << _("Turns finished early: ") << turns_left << "</b>\n"
 				   << "<small>" << _("Early finish bonus: ") << finishing_bonus_per_turn << _(" per turn") << "</small>\n"
 				   << "<small>" << _("Bonus gold: ") << finishing_bonus << "</small>\n";
 		}
@@ -150,9 +150,9 @@ void playsingle_controller::report_victory(
 		report << "\n<small>" << _("Carryover percentage: ") << t.carryover_percentage() << "</small>";
 	}
 	if(t.carryover_add()) {
-		report << "\n \n<big><b>" << _("Bonus gold: ") << utils::half_signed_value(t.carryover_gold()) << "</b></big>";
+		report << "\n\n<big><b>" << _("Bonus gold: ") << utils::half_signed_value(t.carryover_gold()) << "</b></big>";
 	} else {
-		report << "\n \n<big><b>" << _("Retained gold: ") << utils::half_signed_value(t.carryover_gold()) << "</b></big>";
+		report << "\n\n<big><b>" << _("Retained gold: ") << utils::half_signed_value(t.carryover_gold()) << "</b></big>";
 	}
 
 	std::string goldmsg;
