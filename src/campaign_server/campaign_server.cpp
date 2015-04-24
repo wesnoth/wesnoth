@@ -285,6 +285,7 @@ void server::run()
 		}
 
 		try {
+			bool force_flush = false;
 			std::string admin_cmd;
 
 			if(input_ && input_->read_line(admin_cmd)) {
@@ -299,6 +300,9 @@ void server::run()
 					}
 
 					LOG_CS << "Read only mode: " << (read_only_ ? "enabled" : "disabled") << '\n';
+				} else if(ctl == "flush") {
+					force_flush = true;
+					LOG_CS << "Flushing config to disk...\n";
 				} else {
 					LOG_CS << "Unrecognized admin command: " << ctl.full() << '\n';
 				}
@@ -306,7 +310,7 @@ void server::run()
 
 			const time_t cur_ts = monotonic_clock();
 			// Write config to disk every ten minutes.
-			if(labs(cur_ts - last_ts) >= 10*60) {
+			if(force_flush || labs(cur_ts - last_ts) >= 10*60) {
 				write_config();
 				last_ts = cur_ts;
 			}
