@@ -31,6 +31,7 @@
 #include "addon/validation.hpp"
 #include "campaign_server/addon_utils.hpp"
 #include "campaign_server/blacklist.hpp"
+#include "campaign_server/control.hpp"
 #include "version.hpp"
 #include "util.hpp"
 
@@ -61,11 +62,17 @@ static lg::log_domain log_campaignd("campaignd");
 
 namespace {
 
-void exit_sighup(int signal)
+/**
+ * Whether to reload the server configuration as soon as possible
+ * (e.g. after SIGHUP).
+ */
+sig_atomic_t need_reload = 0;
+
+void flag_sighup(int signal)
 {
 	assert(signal == SIGHUP);
-	LOG_CS << "SIGHUP caught, exiting without cleanup immediately.\n";
-	exit(128 + SIGHUP);
+	LOG_CS << "SIGHUP caught, scheduling config reload.\n";
+	need_reload = 1;
 }
 
 void exit_sigint(int signal)
@@ -113,12 +120,10 @@ server::server(const std::string& cfg_file, size_t min_threads, size_t max_threa
 	, server_manager_(load_config())
 {
 #ifndef _MSC_VER
-	signal(SIGHUP, exit_sighup);
+	signal(SIGHUP, flag_sighup);
 #endif
 	signal(SIGINT, exit_sigint);
 	signal(SIGTERM, exit_sigterm);
-
-	cfg_.child_or_add("campaigns");
 
 	register_handlers();
 }
@@ -159,8 +164,16 @@ int server::load_config()
 
 	// Open the control socket if enabled.
 	if(!cfg_["control_socket"].empty()) {
-		input_.reset(new input_stream(cfg_["control_socket"]));
+		const std::string& path = cfg_["control_socket"].str();
+
+		if(!input_.get() || input_->path() != path) {
+			input_.reset(new input_stream(cfg_["control_socket"]));
+		}
 	}
+
+	// Ensure the campaigns list WML exists even if empty, other functions
+	// depend on its existence.
+	cfg_.child_or_add("campaigns");
 
 	// Certain config values are saved to WML again so that a given server
 	// instance's parameters remain constant even if the code defaults change
@@ -266,19 +279,76 @@ void server::run()
 
 	for(;;)
 	{
+		if(need_reload) {
+			load_config(); // TODO: handle port number config changes
+
+			need_reload = 0;
+			last_ts = 0;
+
+			LOG_CS << "Reloaded configuration\n";
+		}
+
 		try {
+			bool force_flush = false;
 			std::string admin_cmd;
 
 			if(input_ && input_->read_line(admin_cmd)) {
-				// process command
-				if(admin_cmd == "shut_down") {
+				control_line ctl = admin_cmd;
+
+				if(ctl == "shut_down") {
+					LOG_CS << "Shut down requested by admin, shutting down...\n";
 					break;
+				} else if(ctl == "readonly") {
+					if(ctl.args_count()) {
+						cfg_["read_only"] = read_only_ = utils::string_bool(ctl[1], true);
+					}
+
+					LOG_CS << "Read only mode: " << (read_only_ ? "enabled" : "disabled") << '\n';
+				} else if(ctl == "flush") {
+					force_flush = true;
+					LOG_CS << "Flushing config to disk...\n";
+				} else if(ctl == "reload") {
+					if(ctl.args_count()) {
+						if(ctl[1] == "blacklist") {
+							LOG_CS << "Reloading blacklist...\n";
+							load_blacklist();
+						} else {
+							ERR_CS << "Unrecognized admin reload argument: " << ctl[1] << '\n';
+						}
+					} else {
+						LOG_CS << "Reloading all configuration...\n";
+						need_reload = 1;
+						// Avoid flush timer ellapsing
+						continue;
+					}
+				} else if(ctl == "setpass") {
+					if(ctl.args_count() != 2) {
+						ERR_CS << "Incorrect number of arguments for 'setpass'\n";
+					} else {
+						const std::string& addon_id = ctl[1];
+						const std::string& newpass = ctl[2];
+						config& campaign = campaigns().find_child("campaign", "name", addon_id);
+
+						if(!campaign) {
+							ERR_CS << "Add-on '" << addon_id << "' not found, cannot set passphrase\n";
+						} else if(newpass.empty()) {
+							// Shouldn't happen!
+							ERR_CS << "Add-on passphrases may not be empty!\n";
+						} else {
+							campaign["passphrase"] = newpass;
+							write_config();
+
+							LOG_CS << "New passphrase set for '" << addon_id << "'\n";
+						}
+					}
+				} else {
+					LOG_CS << "Unrecognized admin command: " << ctl.full() << '\n';
 				}
 			}
 
 			const time_t cur_ts = monotonic_clock();
 			// Write config to disk every ten minutes.
-			if(labs(cur_ts - last_ts) >= 10*60) {
+			if(force_flush || labs(cur_ts - last_ts) >= 10*60) {
 				write_config();
 				last_ts = cur_ts;
 			}
