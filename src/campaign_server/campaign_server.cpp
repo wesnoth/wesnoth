@@ -293,6 +293,12 @@ void server::run()
 				if(ctl == "shut_down") {
 					LOG_CS << "Shut down requested by admin, shutting down...\n";
 					break;
+				} else if(ctl == "readonly") {
+					if(ctl.args_count()) {
+						cfg_["read_only"] = read_only_ = utils::string_bool(ctl[1], true);
+					}
+
+					LOG_CS << "Read only mode: " << (read_only_ ? "enabled" : "disabled") << '\n';
 				} else {
 					LOG_CS << "Unrecognized admin command: " << ctl.full() << '\n';
 				}
