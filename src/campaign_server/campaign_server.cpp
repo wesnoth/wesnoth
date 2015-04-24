@@ -527,6 +527,8 @@ void server::handle_upload(const server::request& req)
 			       << "the internal add-ons list contains invalid UTF-8\n";
 			send_error("Server error: The server add-ons list is damaged.", req.sock);
 		}
+
+		return;
 	}
 
 	if(read_only_) {
@@ -591,6 +593,7 @@ void server::handle_upload(const server::request& req)
 			LOG_CS << "Upload aborted - the add-on pbl info contains invalid UTF-8 and cannot be "
 				   << "checked against the blacklist\n";
 			send_error("Add-on rejected: The add-on publish information contains an invalid UTF-8 sequence.", req.sock);
+			return;
 		}
 
 		std::string message = "Add-on accepted.";
