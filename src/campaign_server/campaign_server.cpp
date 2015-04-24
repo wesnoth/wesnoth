@@ -31,6 +31,7 @@
 #include "addon/validation.hpp"
 #include "campaign_server/addon_utils.hpp"
 #include "campaign_server/blacklist.hpp"
+#include "campaign_server/control.hpp"
 #include "version.hpp"
 #include "util.hpp"
 
@@ -287,8 +288,9 @@ void server::run()
 			std::string admin_cmd;
 
 			if(input_ && input_->read_line(admin_cmd)) {
-				// process command
-				if(admin_cmd == "shut_down") {
+				control_line ctl = admin_cmd;
+
+				if(ctl == "shut_down") {
 					break;
 				}
 			}
