@@ -304,6 +304,20 @@ void server::run()
 				} else if(ctl == "flush") {
 					force_flush = true;
 					LOG_CS << "Flushing config to disk...\n";
+				} else if(ctl == "reload") {
+					if(ctl.args_count()) {
+						if(ctl[1] == "blacklist") {
+							LOG_CS << "Reloading blacklist...\n";
+							load_blacklist();
+						} else {
+							ERR_CS << "Unrecognized admin reload argument: " << ctl[1] << '\n';
+						}
+					} else {
+						LOG_CS << "Reloading all configuration...\n";
+						need_reload = 1;
+						// Avoid flush timer ellapsing
+						continue;
+					}
 				} else {
 					LOG_CS << "Unrecognized admin command: " << ctl.full() << '\n';
 				}
