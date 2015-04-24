@@ -164,7 +164,11 @@ int server::load_config()
 
 	// Open the control socket if enabled.
 	if(!cfg_["control_socket"].empty()) {
-		input_.reset(new input_stream(cfg_["control_socket"]));
+		const std::string& path = cfg_["control_socket"].str();
+
+		if(!input_.get() || input_->path() != path) {
+			input_.reset(new input_stream(cfg_["control_socket"]));
+		}
 	}
 
 	// Ensure the campaigns list WML exists even if empty, other functions
