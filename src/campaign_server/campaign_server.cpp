@@ -291,6 +291,7 @@ void server::run()
 				control_line ctl = admin_cmd;
 
 				if(ctl == "shut_down") {
+					LOG_CS << "Shut down requested by admin, shutting down...\n";
 					break;
 				}
 			}
