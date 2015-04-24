@@ -27,6 +27,11 @@ public:
 	bool read_line(std::string& str);
 	void stop();
 
+	const std::string& path() const
+	{
+		return path_;
+	}
+
 private:
 	input_stream(const input_stream&);
 	void operator=(const input_stream&);
