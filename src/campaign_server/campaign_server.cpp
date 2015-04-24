@@ -321,6 +321,26 @@ void server::run()
 						// Avoid flush timer ellapsing
 						continue;
 					}
+				} else if(ctl == "setpass") {
+					if(ctl.args_count() != 2) {
+						ERR_CS << "Incorrect number of arguments for 'setpass'\n";
+					} else {
+						const std::string& addon_id = ctl[1];
+						const std::string& newpass = ctl[2];
+						config& campaign = campaigns().find_child("campaign", "name", addon_id);
+
+						if(!campaign) {
+							ERR_CS << "Add-on '" << addon_id << "' not found, cannot set passphrase\n";
+						} else if(newpass.empty()) {
+							// Shouldn't happen!
+							ERR_CS << "Add-on passphrases may not be empty!\n";
+						} else {
+							campaign["passphrase"] = newpass;
+							write_config();
+
+							LOG_CS << "New passphrase set for '" << addon_id << "'\n";
+						}
+					}
 				} else {
 					LOG_CS << "Unrecognized admin command: " << ctl.full() << '\n';
 				}
