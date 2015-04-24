@@ -293,6 +293,8 @@ void server::run()
 				if(ctl == "shut_down") {
 					LOG_CS << "Shut down requested by admin, shutting down...\n";
 					break;
+				} else {
+					LOG_CS << "Unrecognized admin command: " << ctl.full() << '\n';
 				}
 			}
 
