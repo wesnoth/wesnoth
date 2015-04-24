@@ -105,6 +105,14 @@ public:
 		return args_[n];
 	}
 
+	/**
+	 * Return the full command line string.
+	 */
+	std::string full() const
+	{
+		return utils::join(args_, " ");
+	}
+
 private:
 	std::vector<std::string> args_;
 };
