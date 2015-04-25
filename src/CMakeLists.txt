@@ -1095,6 +1095,7 @@ set(libwesnoth-game_STAT_SRC
 if(WIN32)
 	set(libwesnoth-game_STAT_SRC
 		${libwesnoth-game_STAT_SRC}
+		desktop/windows_console.cpp
 		desktop/windows_tray_notification.cpp
 	)
 endif(WIN32)
