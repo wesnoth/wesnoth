@@ -328,7 +328,7 @@ void server::run()
 					} else {
 						const std::string& addon_id = ctl[1];
 						const std::string& newpass = ctl[2];
-						config& campaign = campaigns().find_child("campaign", "name", addon_id);
+						config& campaign = get_campaign(addon_id);
 
 						if(!campaign) {
 							ERR_CS << "Add-on '" << addon_id << "' not found, cannot set passphrase\n";
@@ -524,7 +524,7 @@ void server::handle_request_campaign(const server::request& req)
 {
 	LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " using gzip";
 
-	config& campaign = campaigns().find_child("campaign", "name", req.cfg["name"]);
+	config& campaign = get_campaign(req.cfg["name"]);
 
 	if(!campaign) {
 		send_error("Add-on '" + req.cfg["name"].str() + "' not found.", req.sock);
@@ -745,7 +745,7 @@ void server::handle_delete(const server::request& req)
 
 	LOG_CS << "deleting campaign '" << erase["name"] << "' requested from " << req.addr << "\n";
 
-	const config& campaign = campaigns().find_child("campaign", "name", erase["name"]);
+	const config& campaign = get_campaign(erase["name"]);
 
 	if(!campaign) {
 		send_error("The add-on does not exist.", req.sock);
@@ -795,7 +795,7 @@ void server::handle_change_passphrase(const server::request& req)
 		return;
 	}
 
-	config& campaign = campaigns().find_child("campaign", "name", cpass["name"]);
+	config& campaign = get_campaign(cpass["name"]);
 
 	if(!campaign) {
 		send_error("No add-on with that name exists.", req.sock);
