@@ -13,6 +13,9 @@ Version 1.13.0+dev:
  * Miscellaneous and bug fixes:
    * Removed abandoned libana network API implementation.
    * Fixed bug#23201 Toggle icons display error in replay.
+   * Added --wconsole switch to allocate a console on startup (Windows-only).
+   * Added cwesnoth.cmd wrapper script to start Wesnoth with a console
+     displaying stdout+stderr (Windows-only).
 
 Version 1.13.0:
  * Security fixes:
