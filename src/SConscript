@@ -615,6 +615,7 @@ wesnoth_sources = Split("""
 
 if env["PLATFORM"] == "win32":
     wesnoth_sources.append("desktop/windows_tray_notification.cpp")
+	wesnoth_sources.append("desktop/windows_console.cpp")
 
 if env["PLATFORM"] == 'darwin':
     wesnoth_sources.append("desktop/apple_notification.mm")

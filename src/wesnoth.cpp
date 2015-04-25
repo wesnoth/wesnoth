@@ -61,6 +61,10 @@
 #include "widgets/button.hpp"           // for button
 #include "wml_exception.hpp"            // for twml_exception
 
+#ifdef _WIN32
+#include "desktop/windows_console.hpp"
+#endif // _WIN32
+
 #include <SDL.h>                        // for SDL_Init, SDL_INIT_TIMER
 #include <boost/foreach.hpp>            // for auto_any_base, etc
 #include <boost/iostreams/categories.hpp>  // for input, output
@@ -862,11 +866,11 @@ static bool parse_commandline_argument(const char*& next, const char* end, std::
 		else if(*next == '"' && is_excaped && next + 1 != end && *(next + 1) == '"') {
 			res.push_back('"');
 			++next;
-			continue;		
+			continue;
 		}
 		else if(*next == '"' && is_excaped ) {
 			is_excaped = false;
-			continue;	
+			continue;
 		}
 		else {
 			res.push_back(*next);
@@ -881,7 +885,7 @@ static std::vector<std::string> parse_commandline_arguments(std::string input)
 	const char* end = start + input.size();
 	std::string buffer;
 	std::vector<std::string> res;
-	
+
 	while(parse_commandline_argument(start, end, buffer))
 	{
 		res.push_back(std::string());
@@ -931,8 +935,20 @@ int main(int argc, char** argv)
 #ifdef _WIN32
 	(void)argc;
 	(void)argv;
+
 	//windows argv is ansi encoded by default
 	std::vector<std::string> args = parse_commandline_arguments(unicode_cast<std::string>(std::wstring(GetCommandLineW())));
+
+	// HACK: we don't parse command line arguments using program_options until
+	//       the startup banner is printed. We need to get a console up and
+	//       running before then if requested, so just perform a trivial search
+	//       here and let program_options ignore the switch later.
+	for(size_t k = 0; k < args.size(); ++k) {
+		if(args[k] == "--wconsole") {
+			desktop::enable_win32_console();
+			break;
+		}
+	}
 #else
 	std::vector<std::string> args;
 	for(int i = 0; i < argc; ++i)
