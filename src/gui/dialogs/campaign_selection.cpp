@@ -29,8 +29,6 @@
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
-#include "gui/widgets/tree_view.hpp"
-#include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 #include "utils/foreach.tpp"
