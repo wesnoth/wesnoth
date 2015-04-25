@@ -1,4 +1,11 @@
 @echo off
+rem
+rem Runs Wesnoth with a Windows console attached.
+rem
+rem Usage:
+rem   cwesnoth <command line>
+rem
+
 set SDL_STDIO_REDIRECT=0
 @wesnoth --wconsole %*
 
