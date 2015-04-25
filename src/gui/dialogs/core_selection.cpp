@@ -110,8 +110,8 @@ void tcore_selection::pre_show(CVideo& /*video*/, twindow& window)
 		string_map list_item;
 		std::map<std::string, string_map> list_item_item;
 
-		list_item["label"] = core["icon"];
-		list_item_item.insert(std::make_pair("icon", list_item));
+		list_item["label"] = core["image"];
+		list_item_item.insert(std::make_pair("image", list_item));
 
 		list_item["label"] = core["name"];
 		list_item_item.insert(std::make_pair("name", list_item));
@@ -128,9 +128,6 @@ void tcore_selection::pre_show(CVideo& /*video*/, twindow& window)
 		detail_item["label"] = core["description"];
 		detail_item["use_markup"] = "true";
 		detail_page.insert(std::make_pair("description", detail_item));
-
-		detail_item["label"] = core["image"];
-		detail_page.insert(std::make_pair("image", detail_item));
 
 		multi_page.add_page(detail_page);
 	}
