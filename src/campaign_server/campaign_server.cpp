@@ -343,7 +343,7 @@ void server::run()
 						}
 					}
 				} else {
-					LOG_CS << "Unrecognized admin command: " << ctl.full() << '\n';
+					ERR_CS << "Unrecognized admin command: " << ctl.full() << '\n';
 				}
 			}
 
