@@ -6,6 +6,8 @@ rem Usage:
 rem   cwesnoth <command line>
 rem
 
+setlocal
+
 rem Disable stdout.txt/stderr.txt redirection in SDLmain.
 set SDL_STDIO_REDIRECT=0
 
@@ -16,6 +18,4 @@ set OMP_WAIT_POLICY=PASSIVE
 
 wesnoth --wconsole %*
 
-rem Drop our custom environment for future runs on the same session.
-set SDL_STDIO_REDIRECT=
-set OMP_WAIT_POLICY=
+endlocal
