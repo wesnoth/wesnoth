@@ -16,6 +16,8 @@ Version 1.13.0+dev:
    * Added --wconsole switch to allocate a console on startup (Windows-only).
    * Added cwesnoth.cmd wrapper script to start Wesnoth with a console
      displaying stdout+stderr (Windows-only).
+   * Updated mainline campaigns and multiplayer scenarios to use [filter] status=
+     instead of [filter] [filter_wml] [status]
 
 Version 1.13.0:
  * Security fixes:
