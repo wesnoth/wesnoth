@@ -94,7 +94,10 @@ int lua_kernel_base::intf_print(lua_State* L)
 		if (!str) {
 			str = "";
 		}
-		cmd_log_ << str << " ";
+		if (i > 1) {
+			cmd_log_ << "\t"; //separate multiple args with tab character
+		}
+		cmd_log_ << str;
 		DBG_LUA << "'" << str << "'\n";
 	}
 
