@@ -94,7 +94,7 @@ int lua_kernel_base::intf_print(lua_State* L)
 		if (!str) {
 			str = "";
 		}
-		cmd_log_ << str;
+		cmd_log_ << str << " ";
 		DBG_LUA << "'" << str << "'\n";
 	}
 
