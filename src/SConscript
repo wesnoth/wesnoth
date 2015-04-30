@@ -105,10 +105,6 @@ libwesnoth_sources = Split("""
     generators/default_map_generator.cpp
     generators/default_map_generator_job.cpp
     generators/lua_map_generator.cpp
-    generators/yamg/ya_mapgen.cpp
-    generators/yamg/yamg_hex.cpp
-    generators/yamg/yamg_hexheap.cpp
-    generators/yamg/yamg_params.cpp
     key.cpp
     language.cpp
     loadscreen.cpp
@@ -619,6 +615,7 @@ wesnoth_sources = Split("""
 
 if env["PLATFORM"] == "win32":
     wesnoth_sources.append("desktop/windows_tray_notification.cpp")
+	wesnoth_sources.append("desktop/windows_console.cpp")
 
 if env["PLATFORM"] == 'darwin':
     wesnoth_sources.append("desktop/apple_notification.mm")

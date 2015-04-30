@@ -682,6 +682,9 @@ def validate_on_pop(tagstack, closer, filename, lineno):
     if missingside and closer in ["set_recruit", "allow_recruit", "disallow_recruit", "store_gold"] and "side" not in attributes:
         print '"%s", line %d: %s without "side" attribute is now applied to all sides' % \
               (filename, lineno, closer)
+    if closer == "variation" and "variation_id" not in attributes:
+        print '"%s", line %d: [variation] is missing required variation_id attribute' % \
+              (filename, lineno)
 
 def within(tag):
     "Did the specified tag lead one of our enclosing contexts?"

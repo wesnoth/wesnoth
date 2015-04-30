@@ -201,6 +201,9 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("validcache", "assumes that the cache is valid. (dangerous)")
 		("version,v", "prints the game's version number and exits.")
 		("with-replay", "replays the file loaded with the --load option.")
+#ifdef _WIN32
+		("wconsole", "attaches a console window on startup (Windows only)")
+#endif // _WIN32
 		;
 
 	po::options_description campaign_opts("Campaign options");
