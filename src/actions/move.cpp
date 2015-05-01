@@ -282,8 +282,6 @@ namespace { // Private helpers for move_unit()
 		// Movement parameters (these decrease the number of parameters needed
 		// for individual functions).
 		move_unit_spectator * const spectator_;
-		const bool is_replay_;
-		const map_location & replay_dest_;
 		const bool skip_sighting_;
 		const bool skip_ally_sighting_;
 		const bool playing_team_is_viewing_;
@@ -346,10 +344,8 @@ namespace { // Private helpers for move_unit()
 	                       move_unit_spectator *move_spectator,
 	                       bool skip_sightings, bool skip_ally_sightings) :
 		spectator_(move_spectator),
-		is_replay_(false),
-		replay_dest_(route.back()),
-		skip_sighting_(is_replay_ || skip_sightings),
-		skip_ally_sighting_(is_replay_ || skip_ally_sightings),
+		skip_sighting_(skip_sightings),
+		skip_ally_sighting_(skip_ally_sightings),
 		playing_team_is_viewing_(resources::screen->playing_team() ==
 		                         resources::screen->viewing_team()
 		                         ||  resources::screen->show_everything()),
@@ -665,10 +661,9 @@ namespace { // Private helpers for move_unit()
 		// where the unit would be forced to stop by a hidden unit.
 		for ( ambush_limit_ = start+1; ambush_limit_ != stop; ++ambush_limit_ ) {
 			// Check if we need to stop in the previous hex.
-			if ( ambushed_ )
-				if ( !is_replay_  ||  *(ambush_limit_-1) == replay_dest_ )
+			if ( ambushed_ ) {
 					break;
-
+			}
 			// Check for being unable to enter this hex.
 			if ( check_for_obstructing_unit(*ambush_limit_, *(ambush_limit_-1)) ) {
 				// No replay check here? Makes some sense, I guess.
@@ -749,13 +744,11 @@ namespace { // Private helpers for move_unit()
 		for ( ; end != stop; ++end )
 		{
 			// Break out of the loop if we cannot leave the previous hex.
-			if ( zoc_stop_ != map_location::null_location()  &&  !is_replay_ )
+			if ( zoc_stop_ != map_location::null_location() ) {
 				break;
+			}
 			remaining_moves -= move_it_->movement_cost(map[*end]);
 			if ( remaining_moves < 0 ) {
-				if ( is_replay_ )
-					remaining_moves = 0;
-				else
 					break;
 			}
 
@@ -768,7 +761,7 @@ namespace { // Private helpers for move_unit()
 				zoc_stop_ = *end;
 		}
 
-		if ( !is_replay_ ) {
+		if ( true ) {
 			// Avoiding stopping on a (known) unit.
 			route_iterator min_end =  start == begin_ ? start : start + 1;
 			while ( end != min_end  &&  resources::gameboard->has_visible_unit(*(end-1), *current_team_) )
@@ -950,15 +943,14 @@ namespace { // Private helpers for move_unit()
 			// Each iteration performs the move from real_end_-1 to real_end_.
 			for ( real_end_ = begin_+1; real_end_ != ambush_limit_; ++real_end_ ) {
 				const route_iterator step_from = real_end_ - 1;
-				const bool can_break = !is_replay_  ||  replay_dest_ == *step_from;
 
 				// See if we can leave *step_from.
 				// Already accounted for: ambusher
-				if ( event_mutated_  &&  can_break )
+				if ( event_mutated_ )
 				{
 					break;
 				}
-				if ( sighted_ && can_break && is_reasonable_stop(*step_from) )
+				if ( sighted_ && is_reasonable_stop(*step_from) )
 				{
 					sighted_stop_ = true;
 					break;
@@ -966,21 +958,14 @@ namespace { // Private helpers for move_unit()
 				// Already accounted for: ZoC
 				// Already accounted for: movement cost
 				if ( fire_hex_event(exit_hex_str, step_from, real_end_) ) {
-					if ( can_break ) {
-						report_extra_hex_ = true;
-						break;
-					}
+					report_extra_hex_ = true;
+					break;
 				}
 				if ( real_end_ == obstructed_ ) {
 					// We did not check for being a replay when checking for an
 					// obstructed hex, so we do not check can_break here.
 					report_extra_hex_ = true;
 					obstructed_stop = true;
-					break;
-				}
-				if ( is_replay_  &&  replay_dest_ == *step_from )
-				{
-					// Preserve the replay.
 					break;
 				}
 
