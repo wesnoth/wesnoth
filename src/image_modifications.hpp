@@ -222,6 +222,18 @@ public:
 };
 
 /**
+ * Black and white (BW) modification.
+ */
+class bw_modification : public modification
+{
+public:
+	bw_modification(int threshold): threshold_(threshold) {}
+	virtual surface operator()(const surface& src) const;
+private:
+	int threshold_;
+};
+
+/**
  * Give to the image a sepia tint (SEPIA)
  */
 struct sepia_modification : modification

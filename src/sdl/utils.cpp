@@ -989,6 +989,46 @@ surface greyscale_image(const surface &surf, bool optimize)
 	return optimize ? create_optimized_surface(nsurf) : nsurf;
 }
 
+surface monochrome_image(const surface &surf, const int threshold, bool optimize)
+{
+	if(surf == NULL)
+		return NULL;
+
+	surface nsurf(make_neutral_surface(surf));
+	if(nsurf == NULL) {
+		std::cerr << "failed to make neutral surface\n";
+		return NULL;
+	}
+
+	{
+		surface_lock lock(nsurf);
+		Uint32* beg = lock.pixels();
+		Uint32* end = beg + nsurf->w*surf->h;
+
+		while(beg != end) {
+			Uint8 alpha = (*beg) >> 24;
+
+			if(alpha) {
+				Uint8 r, g, b, result;
+				r = (*beg) >> 16;
+				g = (*beg) >> 8;
+				b = (*beg);
+
+				// first convert the pixel to grayscale
+				// if the resulting value is above the threshold make it black
+				// else make it white
+				result = static_cast<Uint8>(0.299 * r + 0.587 * g + 0.114 * b) > threshold ? 255 : 0;
+
+				*beg = (alpha << 24) | (result << 16) | (result << 8) | result;
+			}
+
+			++beg;
+		}
+	}
+
+	return optimize ? create_optimized_surface(nsurf) : nsurf;
+}
+
 surface sepia_image(const surface &surf, bool optimize)
 {
 	if(surf == NULL)

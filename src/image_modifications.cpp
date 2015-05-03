@@ -200,6 +200,11 @@ surface gs_modification::operator()(const surface& src) const
 	return greyscale_image(src);
 }
 
+surface bw_modification::operator()(const surface& src) const
+{
+	return monochrome_image(src, threshold_);
+}
+
 surface sepia_modification::operator()(const surface &src) const
 {
 	return sepia_image(src);
@@ -748,6 +753,32 @@ REGISTER_MOD_PARSER(ROTATE, args)
 REGISTER_MOD_PARSER(GS, )
 {
 	return new gs_modification;
+}
+
+// Black and white
+REGISTER_MOD_PARSER(BW, args)
+{
+	const std::vector<std::string>& params = utils::split(args, ',');
+	if (params.size() == 1) {
+		try {
+			int threshold = lexical_cast<int>(params[0]);
+			if (threshold < 0 || threshold > 255) {
+				ERR_DP << "~BW() argument out of range 0 - 255" << std::endl;
+				return NULL;
+			}
+			else {
+				return new bw_modification(threshold);
+			}
+		}
+		catch (bad_lexical_cast) {
+			ERR_DP << "unsupported argument in ~BW() function" << std::endl;
+			return NULL;
+		}
+	}
+	else {
+		ERR_DP << "~BW() requires  exactly one argument" << std::endl;
+		return NULL;
+	}
 }
 
 // Sepia
