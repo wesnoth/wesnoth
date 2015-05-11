@@ -235,8 +235,8 @@ Important Attributes:
         # first remove any lua strings
         beginquote = text.find('<<')
         while beginquote >= 0:
-            endquote = text.find('>>')
-            if endquote < -1:
+            endquote = text.find('>>', beginquote+2)
+            if endquote < 0:
                 text = text[:beginquote]
                 beginquote = -1 #terminate loop
             else:
