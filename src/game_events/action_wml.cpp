@@ -838,10 +838,12 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 	{
 		text = cfg["description"].str();
 
+		const bool no_add = cfg["no_write"].to_bool(false);
+
 		if(cfg["delayed_variable_substitution"].to_bool(false))
-			u->add_modification("object", cfg.get_config());
+			u->add_modification("object", cfg.get_config(), no_add);
 		else
-			u->add_modification("object", cfg.get_parsed_config());
+			u->add_modification("object", cfg.get_parsed_config(), no_add);
 
 		resources::screen->select_hex(event_info.loc1);
 		resources::screen->invalidate_unit();
