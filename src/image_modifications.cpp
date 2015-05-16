@@ -212,7 +212,7 @@ surface sepia_modification::operator()(const surface &src) const
 
 surface negative_modification::operator()(const surface &src) const
 {
-	return negative_image(src);
+	return negative_image(src, red_, green_, blue_);
 }
 
 surface plot_alpha_modification::operator()(const surface& src) const
@@ -788,9 +788,57 @@ REGISTER_MOD_PARSER(SEPIA, )
 }
 
 // Negative
-REGISTER_MOD_PARSER(NEG, )
+REGISTER_MOD_PARSER(NEG, args)
 {
-	return new negative_modification;
+	const std::vector<std::string>& params = utils::split(args, ',');
+
+	switch (params.size()) {
+		case 0:
+			// apparently -1 may be a magic number
+			// but this is the threshold value required
+			// to fully invert a channel
+			return new negative_modification(-1,-1,-1);
+			break;
+		case 1:
+			try {
+				int threshold = lexical_cast<int>(params[0]);
+				if (threshold < -1 || threshold > 255) {
+					ERR_DP << "unsupported argument value in ~NEG() function" << std::endl;
+					return NULL;
+				}
+				else {
+					return new negative_modification(threshold, threshold, threshold);
+				}
+			}
+			catch (bad_lexical_cast) {
+				ERR_DP << "unsupported argument value in ~NEG() function" << std::endl;
+				return NULL;
+			}
+			break;
+		case 3:
+			try {
+				int thresholdRed = lexical_cast<int>(params[0]);
+				int thresholdGreen = lexical_cast<int>(params[1]);
+				int thresholdBlue = lexical_cast<int>(params[2]);
+				if (thresholdRed < -1 || thresholdRed > 255 || thresholdGreen < -1 || thresholdGreen > 255 || thresholdBlue < -1 || thresholdBlue > 255) {
+					ERR_DP << "unsupported argument value in ~NEG() function" << std::endl;
+					return NULL;
+				}
+				else {
+					return new negative_modification(thresholdRed, thresholdGreen, thresholdBlue);
+				}
+			}
+			catch (bad_lexical_cast) {
+				ERR_DP << "unsupported argument value in ~NEG() function" << std::endl;
+				return NULL;
+			}
+			break;
+		default:
+			ERR_DP << "~NEG() requires 0, 1 or 3 arguments" << std::endl;
+			return NULL;
+	}
+
+	return NULL;
 }
 
 // Plot Alpha

@@ -1071,7 +1071,7 @@ surface sepia_image(const surface &surf, bool optimize)
 	return optimize ? create_optimized_surface(nsurf) : nsurf;
 }
 
-surface negative_image(const surface &surf, bool optimize)
+surface negative_image(const surface &surf, const int thresholdR, const int thresholdG, const int thresholdB, bool optimize)
 {
 	if(surf == NULL)
 		return NULL;
@@ -1091,14 +1091,20 @@ surface negative_image(const surface &surf, bool optimize)
 			Uint8 alpha = (*beg) >> 24;
 
 			if(alpha) {
-				Uint8 r, g, b;
+				Uint8 r, g, b, newR, newG, newB;
 				r = (*beg) >> 16;
 				g = (*beg) >> 8;
 				b = (*beg);
 
-				// basically, to get a channel's negative it's enough
-				// to subtract its value from 255
-				*beg = (alpha << 24) | ((255 - r) << 16) | ((255 - g) << 8) | (255 - b);
+				// invert he channel only if its value is greater than the supplied threshold
+				// this can be used for solarization effects
+				// for a full negative effect, use a value of -1
+				// 255 is a no-op value (doesn't do anything, since a Uint8 cannot contain a greater value than that)
+				newR = r > thresholdR ? 255 - r : r;
+				newG = g > thresholdG ? 255 - g : g;
+				newB = b > thresholdB ? 255 - b : b;
+
+				*beg = (alpha << 24) | (newR << 16) | (newG << 8) | (newB);
 			}
 
 			++beg;

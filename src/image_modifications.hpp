@@ -244,9 +244,13 @@ struct sepia_modification : modification
 /**
  * Make an image negative (NEG)
  */
-struct negative_modification : modification
+class negative_modification : public modification
 {
-	virtual surface operator()(const surface &src) const;
+	public:
+		negative_modification(int r, int g, int b): red_(r), green_(g), blue_(b) {}
+		virtual surface operator()(const surface &src) const;
+	private:
+		int red_, green_, blue_;
 };
 
 /**
