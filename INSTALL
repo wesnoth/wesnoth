@@ -39,14 +39,8 @@ order to build Wesnoth:
 The following libraries are optional dependencies that enable additional
 features:
 
- * libpng:
-   PNG screenshots, otherwise only BMP is supported.
-
  * D-Bus (libdbus-1):
    Desktop notifications on Linux, *BSD, etc.
-
- * GNU history (libreadline):
-   Command history and history expansion in the built-in Lua console.
 
  * FriBiDi >= 0.10.9:
    Bidirectional text support for RTL languages (Hebrew, etc.) in some parts
