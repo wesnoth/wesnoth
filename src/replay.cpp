@@ -72,7 +72,7 @@ static void verify(const unit_map& units, const config& cfg) {
 		std::set<map_location> locs;
 		BOOST_FOREACH(const config &u, cfg.child_range("unit"))
 		{
-			const map_location loc(u, resources::gamedata);
+			const map_location loc(u);
 			locs.insert(loc);
 
 			if(units.count(loc) == 0) {
@@ -93,7 +93,7 @@ static void verify(const unit_map& units, const config& cfg) {
 
 	BOOST_FOREACH(const config &un, cfg.child_range("unit"))
 	{
-		const map_location loc(un, resources::gamedata);
+		const map_location loc(un);
 		const unit_map::const_iterator u = units.find(loc);
 		if(u == units.end()) {
 			errbuf << "SYNC VERIFICATION FAILED: data source says there is a '"
@@ -499,15 +499,13 @@ void replay::undo_cut(config& dst)
 			ERR_REPLAY << "trying to undo a move using an empty path";
 		}
 		else {
-			const map_location early_stop(child["stop_x"].to_int(-999) - 1,
-			                              child["stop_y"].to_int(-999) - 1);
 			const map_location &src = steps.front();
-			const map_location &dst = early_stop.valid() ? early_stop : steps.back();
+			const map_location &dst = steps.back();
 
 			BOOST_FOREACH(const async_cmd &ac, async_cmds)
 			{
 				if (config &async_child = ac.cfg->child("rename")) {
-					map_location aloc(async_child, resources::gamedata);
+					map_location aloc(async_child);
 					if (dst == aloc) src.write(async_child);
 				}
 			}
@@ -520,12 +518,12 @@ void replay::undo_cut(config& dst)
 		if (*chld) {
 			// A unit is being un-recruited or un-recalled.
 			// Remove unsynced commands that would act on that unit.
-			map_location src(*chld, resources::gamedata);
+			map_location src(*chld);
 			BOOST_FOREACH(const async_cmd &ac, async_cmds)
 			{
 				if (config &async_child = ac.cfg->child("rename"))
 				{
-					map_location aloc(async_child, resources::gamedata);
+					map_location aloc(async_child);
 					if (src == aloc) {
 						remove_command(ac.num);
 					}
@@ -734,7 +732,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		}
 		else if (const config &child = cfg->child("rename"))
 		{
-			const map_location loc(child, resources::gamedata);
+			const map_location loc(child);
 			const std::string &name = child["name"];
 
 			unit_map::iterator u = resources::units->find(loc);
