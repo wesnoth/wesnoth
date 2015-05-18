@@ -388,12 +388,6 @@ config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
 	return res;
 }
 
-struct async_cmd
-{
-	config *cfg;
-	int num;
-};
-
 void replay::redo(const config& cfg)
 {
 	assert(base_->get_pos() == ncommands());
@@ -423,66 +417,10 @@ config& replay::get_last_real_command()
 	assert(false && "replay::get_last_real_command called with no existent command.");
 	throw "replay::get_last_real_command called with no existent command.";
 }
-
-
-void replay::undo_cut(config& dst)
+/// fixes a rename command when undoing a earlier command.
+/// @return: true if the command should be removed.
+static bool fix_rename_command(const config& c, config& async_child)
 {
-	assert(dst.empty());
-	//assert that we are not undoing a command which we didn't execute yet.
-	assert(at_end());
-	std::vector<async_cmd> async_cmds;
-	// Remember commands not yet synced and skip over them.
-	// We assume that all already sent (sent=yes) data isn't undoable
-	// even if not marked explicitly with undo=no.
-
-	/**
-	 * @todo Change undo= to default to "no" and explicitly mark all
-	 * undoable commands with yes.
-	 */
-
-	int cmd;
-	for (cmd = ncommands() - 1; cmd >= 0; --cmd)
-	{
-		//"undo"=no means speak/label/remove_label, especialy attack, recruits etc. have "undo"=yes
-		//"async"=yes means rename_unit
-		//"dependent"=true means user input
-		config &c = command(cmd);
-		const config &cc = c;
-		if (cc["dependent"].to_bool(false))
-		{
-			continue;
-		}
-		if (cc["undo"].to_bool(true) && !cc["async"].to_bool(false) && !cc["sent"].to_bool(false)) break;
-		if (cc["async"].to_bool(false)) {
-			async_cmd ac = { &c, cmd };
-			async_cmds.push_back(ac);
-		}
-	}
-
-	if (cmd < 0) return;
-	//we add the commands that we want to remove later to the passed cfg first.
-	dst.add_child("command", base_->get_command_at(cmd));
-	//we do this in a seperate loop because we don't want to loop forward in the loop while when we remove the elements to keepo the indexes simple.
-	for(int cmd_2 = cmd + 1; cmd_2 < ncommands(); ++cmd_2)
-	{
-		if(command(cmd_2)["dependent"].to_bool(false))
-		{
-			dst.add_child("command", base_->get_command_at(cmd_2));
-		}
-	}
-
-	//we remove dependent commands after the actual removed command that don't make sense if they stand alone especialy user choices and checksum data.
-	for(int cmd_2 = ncommands() - 1; cmd_2 > cmd; --cmd_2)
-	{
-		if(command(cmd_2)["dependent"].to_bool(false))
-		{
-			remove_command(cmd_2);
-		}
-	}
-
-
-	config &c = command(cmd);
-
 	if (const config &child = c.child("move"))
 	{
 		// A unit's move is being undone.
@@ -501,14 +439,8 @@ void replay::undo_cut(config& dst)
 		else {
 			const map_location &src = steps.front();
 			const map_location &dst = steps.back();
-
-			BOOST_FOREACH(const async_cmd &ac, async_cmds)
-			{
-				if (config &async_child = ac.cfg->child("rename")) {
-					map_location aloc(async_child);
-					if (dst == aloc) src.write(async_child);
-				}
-			}
+			map_location aloc(async_child);
+			if (dst == aloc) src.write(async_child);
 		}
 	}
 	else
@@ -519,19 +451,80 @@ void replay::undo_cut(config& dst)
 			// A unit is being un-recruited or un-recalled.
 			// Remove unsynced commands that would act on that unit.
 			map_location src(*chld);
-			BOOST_FOREACH(const async_cmd &ac, async_cmds)
-			{
-				if (config &async_child = ac.cfg->child("rename"))
-				{
-					map_location aloc(async_child);
-					if (src == aloc) {
-						remove_command(ac.num);
-					}
-				}
+			map_location aloc(async_child);
+			if (src == aloc) {
+				return true;
 			}
 		}
 	}
-	remove_command(cmd);
+	return false;
+}
+
+void replay::undo_cut(config& dst)
+{
+	assert(dst.empty());
+	//assert that we are not undoing a command which we didn't execute yet.
+	assert(at_end());
+
+	//calculate the index of the last synced user action (which we want to undo).
+	int cmd_index = ncommands() - 1;
+	for (; cmd_index >= 0; --cmd_index)
+	{
+		//"undo"=no means speak/label/remove_label, especialy attack, recruits etc. have "undo"=yes
+		//"async"=yes means rename_unit
+		//"dependent"=true means user input
+		const config &c = command(cmd_index);
+		
+		if(c["undo"].to_bool(true) && !c["async"].to_bool(false) && !c["dependent"].to_bool(false))
+		{
+			if(c["sent"].to_bool(false))
+			{
+				ERR_REPLAY << "trying to undo a command that was already sent.\n";
+				return;
+			}
+			else
+			{
+				break;
+			}
+		}
+	}
+
+	if (cmd_index < 0)
+	{
+		ERR_REPLAY << "trying to undo a command but no command was found.\n";		
+		return;
+	}
+	//Fix the [command]s after the undone action. This includes dependent commands for that user actions and async user action.
+	for(int i = ncommands() - 1; i >= cmd_index; --i)
+	{
+		config &c = command(i);
+		const config &cc = c;
+		if(!cc["undo"].to_bool(true))
+		{
+			//Leave these commands on the replay.
+		}
+		else if(cc["async"].to_bool(false))
+		{
+			if(config& rename = c.child("rename"))
+			{
+				if(fix_rename_command(command(cmd_index), rename))
+				{
+					//remove the command from the replay if fix_rename_command requested it.
+					remove_command(i);
+				}
+			}
+		}
+		else if(cc["dependent"].to_bool(false) || i == cmd_index)
+		{
+			//we loop backwars so we must insert new insert at beginning to preserve order.
+			dst.add_child_at("command", config(), 0).swap(c);
+			remove_command(i);
+		}
+		else
+		{
+			ERR_REPLAY << "Coudn't handle command:\n" << cc << "\nwhen undoing.\n";
+		}
+	}
 	set_to_end();
 }
 

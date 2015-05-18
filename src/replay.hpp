@@ -96,7 +96,8 @@ public:
 	void undo();
 	/*
 		undoes the last move and puts it into given config to be reone with redo
-		this is good, because even undoable commands can have dependent commands, which would otherwise get lost causing oos.
+		The retuned config also contains the depended commands for that user action.
+		This is needed be becasue we also want to readd those dependent commands to the replay when redoing the command.
 	*/
 	void undo_cut(config& dst);
 	/*
