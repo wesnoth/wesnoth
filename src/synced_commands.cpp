@@ -329,7 +329,8 @@ SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child,  /*use_undo*/, /*show*/, /*er
 	} else {
 		undoable = undoable & !resources::game_events->pump().fire(event_name);
 	}
-	if ( !undoable)
+	// Not clearing the undo stack here casues OOS because we added an entry to the replay but no entry to the undo stack.
+	// if ( !undoable)
 		resources::undo_stack->clear();
 	return true;
 }
