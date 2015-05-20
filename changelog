@@ -1,4 +1,11 @@
 Version 1.13.0+dev:
+ * AI:
+   * Fast Micro AI: exclude hidden enemies from attack evaluation by default;
+     add optional key attack_hidden_enemies to override this
+   * Lua AI helper functions: fix bug crashing the AI when number= is not set in
+     a unit attack definition
+   * Micro AIs: add a warning and avoid crash when a non-existing side is used
+     in the [micro_ai] tag
  * Campaigns:
    * Dead Water:
      * The Stun effect now expires at the stunned unit's side turn end
