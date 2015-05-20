@@ -50,6 +50,10 @@ function wesnoth.wml_actions.micro_ai(cfg)
     -- Check that the required common keys are all present and set correctly
     if (not cfg.ai_type) then H.wml_error("[micro_ai] is missing required ai_type= key") end
     if (not cfg.side) then H.wml_error("[micro_ai] is missing required side= key") end
+    if (not wesnoth.sides[cfg.side]) then
+        wesnoth.message("Warning", "[micro_ai] uses side=" .. cfg.side .. ": side does not exist")
+        return
+    end
     if (not cfg.action) then H.wml_error("[micro_ai] is missing required action= key") end
 
     if (cfg.action ~= 'add') and (cfg.action ~= 'delete') and (cfg.action ~= 'change') then
