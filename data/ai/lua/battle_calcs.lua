@@ -67,7 +67,7 @@ function battle_calcs.unit_attack_info(unit, cache)
             end
         end
 
-        -- 'number' key is apparently not included in attack table if its value is zero
+        -- [attack]number= defaults to zero; must be defined for battle_calcs.best_weapons()
         a.number = a.number or 0
 
         table.insert(unit_info.attacks, a)
