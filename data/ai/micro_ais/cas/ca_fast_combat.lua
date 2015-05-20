@@ -1,6 +1,7 @@
 local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
+local LS = wesnoth.require "lua/location_set.lua"
 
 local ca_fast_combat = {}
 
@@ -21,6 +22,19 @@ function ca_fast_combat:evaluation(ai, cfg, self)
         end
     end
 
+    -- Exclude hidden enemies, except if attack_hidden_enemies=yes is set in [micro_ai] tag
+    local excluded_enemies_map = LS.create()
+    if (not cfg.attack_hidden_enemies) then
+        local hidden_enemies = wesnoth.get_units {
+            { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
+            { "filter_vision", { side = wesnoth.current.side, visible = 'no' } }
+        }
+
+        for _,e in ipairs(hidden_enemies) do
+            excluded_enemies_map:insert(e.x, e.y)
+        end
+    end
+
     local aggression = ai.get_aggression()
     if (aggression > 1) then aggression = 1 end
 
@@ -33,15 +47,18 @@ function ca_fast_combat:evaluation(ai, cfg, self)
             if (#attacks > 0) then
                 local max_rating, best_target, best_dst = -9e99
                 for _,attack in ipairs(attacks) do
-                    local target = wesnoth.get_unit(attack.target.x, attack.target.y)
-                    local rating = BC.attack_rating(
-                        unit, target, { attack.dst.x, attack.dst.y },
-                        { own_value_weight = 1.0 - aggression },
-                        self.data.fast_cache
-                    )
+                    if (not excluded_enemies_map:get(attack.target.x, attack.target.y)) then
+                        local target = wesnoth.get_unit(attack.target.x, attack.target.y)
+                        local rating = BC.attack_rating(
+                            unit, target, { attack.dst.x, attack.dst.y },
+                            { own_value_weight = 1.0 - aggression },
+                            self.data.fast_cache
+                        )
+                        --print(unit.id, target.id, rating)
 
-                    if (rating > 0) and (rating > max_rating) then
-                        max_rating, best_target, best_dst = rating, target, attack.dst
+                        if (rating > 0) and (rating > max_rating) then
+                            max_rating, best_target, best_dst = rating, target, attack.dst
+                        end
                     end
                 end
 
