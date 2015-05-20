@@ -1,4 +1,9 @@
 Version 1.12.2+dev:
+ * AI:
+   * Lua AI helper functions: fix bug crashing the AI when number= is not set in
+     a unit attack definition
+   * Micro AIs: add a warning and avoid crash when a non-existing side is used
+     in the [micro_ai] tag
  * Language and i18n:
    * Updated translations: Scottish Gaelic
  * Miscellaneous and bug fixes:
