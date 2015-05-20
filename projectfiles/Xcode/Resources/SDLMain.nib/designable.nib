@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1077" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="1050" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application">
+        <customObject id="-3" userLabel="Application" customClass="NSObject">
             <connections>
                 <outlet property="delegate" destination="194" id="515"/>
             </connections>
@@ -588,6 +588,268 @@ changelog: https://github.com/wesnoth/wesnoth-old/blob/master/changelog
                                             <string key="content" base64-UTF8="YES">
 Cgo
 </string>
+                                            <attributes>
+                                                <font key="NSFont" size="10" name="LucidaGrande"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural">
+                                                    <tabStops>
+                                                        <textTab alignment="left" location="0.0"/>
+                                                        <textTab alignment="left" location="56"/>
+                                                        <textTab alignment="left" location="112"/>
+                                                        <textTab alignment="left" location="168"/>
+                                                        <textTab alignment="left" location="224"/>
+                                                        <textTab alignment="left" location="280"/>
+                                                        <textTab alignment="left" location="336"/>
+                                                        <textTab alignment="left" location="392"/>
+                                                        <textTab alignment="left" location="448"/>
+                                                        <textTab alignment="left" location="504"/>
+                                                        <textTab alignment="left" location="560"/>
+                                                        <textTab alignment="left" location="616"/>
+                                                        <textTab alignment="left" location="672"/>
+                                                        <textTab alignment="left" location="728"/>
+                                                        <textTab alignment="left" location="784"/>
+                                                        <textTab alignment="left" location="840"/>
+                                                        <textTab alignment="left" location="896"/>
+                                                        <textTab alignment="left" location="952"/>
+                                                        <textTab alignment="left" location="1008"/>
+                                                        <textTab alignment="left" location="1064"/>
+                                                        <textTab alignment="left" location="1120"/>
+                                                        <textTab alignment="left" location="1176"/>
+                                                        <textTab alignment="left" location="1232"/>
+                                                        <textTab alignment="left" location="1288"/>
+                                                        <textTab alignment="left" location="1344"/>
+                                                        <textTab alignment="left" location="1400"/>
+                                                        <textTab alignment="left" location="1456"/>
+                                                        <textTab alignment="left" location="1512"/>
+                                                        <textTab alignment="left" location="1568"/>
+                                                        <textTab alignment="left" location="1624"/>
+                                                        <textTab alignment="left" location="1680"/>
+                                                        <textTab alignment="left" location="1736"/>
+                                                    </tabStops>
+                                                </paragraphStyle>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment>
+                                            <string key="content">Version 1.13.0:
+</string>
+                                            <attributes>
+                                                <font key="NSFont" size="12" name="LucidaGrande-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural">
+                                                    <tabStops>
+                                                        <textTab alignment="left" location="0.0"/>
+                                                        <textTab alignment="left" location="56"/>
+                                                        <textTab alignment="left" location="112"/>
+                                                        <textTab alignment="left" location="168"/>
+                                                        <textTab alignment="left" location="224"/>
+                                                        <textTab alignment="left" location="280"/>
+                                                        <textTab alignment="left" location="336"/>
+                                                        <textTab alignment="left" location="392"/>
+                                                        <textTab alignment="left" location="448"/>
+                                                        <textTab alignment="left" location="504"/>
+                                                        <textTab alignment="left" location="560"/>
+                                                        <textTab alignment="left" location="616"/>
+                                                        <textTab alignment="left" location="672"/>
+                                                        <textTab alignment="left" location="728"/>
+                                                        <textTab alignment="left" location="784"/>
+                                                        <textTab alignment="left" location="840"/>
+                                                        <textTab alignment="left" location="896"/>
+                                                        <textTab alignment="left" location="952"/>
+                                                        <textTab alignment="left" location="1008"/>
+                                                        <textTab alignment="left" location="1064"/>
+                                                        <textTab alignment="left" location="1120"/>
+                                                        <textTab alignment="left" location="1176"/>
+                                                        <textTab alignment="left" location="1232"/>
+                                                        <textTab alignment="left" location="1288"/>
+                                                        <textTab alignment="left" location="1344"/>
+                                                        <textTab alignment="left" location="1400"/>
+                                                        <textTab alignment="left" location="1456"/>
+                                                        <textTab alignment="left" location="1512"/>
+                                                        <textTab alignment="left" location="1568"/>
+                                                        <textTab alignment="left" location="1624"/>
+                                                        <textTab alignment="left" location="1680"/>
+                                                        <textTab alignment="left" location="1736"/>
+                                                    </tabStops>
+                                                </paragraphStyle>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment>
+                                            <mutableString key="content"> * Security fixes:
+   * Fixed arbitrary file read from WML/Lua API (CVE-2015-0844, bug #23440).
+
+ * Add-ons client:
+   * The Update All button is now displayed on all Add-on Manager views instead
+     of just the Upgradable filter view, and enabled only when there is at
+     least one add-on that may be upgraded.
+
+ * Campaigns:
+   * Use the new bigmaps for A Tale of Two Brothers, Delfadors Memoirs, The
+     Hammer of Thursagan, Northern Rebirth and the epilogue of Legend of
+     Wesmere.
+   * Descent into Darkness:
+     * Fixed various issues with player and enemy gold and income in
+       'Descent into Darkness'.
+     * Fixed Darken Volk's ellipse in scenarios 'A Small Favor part 3' and
+       'Alone at Last'.
+     * Fixed Darken Volk being completely passive in 'Alone at Last'.
+     * 'Return to Parthyn' now has variable content depending on whether
+        necromancy was used in 'Saving Parthyn'.
+   * Eastern Invasion:
+     * In 'Captured', stolen gold won't be mentioned if the player had no
+       carryover gold.
+     * Updated maps for scenario 14, 16 and 17b.
+     * New animation for Ravanal's shadow wave.
+     * Added the Skeleton Rider line.
+     * New map for 'Mal-Ravanal's Capital', as well as updated
+       maps for scenario 2 and 4b.
+     * Tweaked and rebalanced all scenarios up to 'Two Paths'.
+   * Heir to the Throne:
+     * Tweaked and expanded music playlists for all scenarios.
+     * Hide unit variations that should not be listed in the help browser.
+   * Liberty:
+     * Fixed possibility of no viable routes around guards in 'Hide and Seek'.
+     * Tweaked resistances for the Skeleton Rider line.
+   * Northern Rebirth:
+     * Fixed Sister Thera and Father Morvin respawning into the recall list if
+       the other is on the north or west map edges.
+     * Sister Threa and Father Morvin will no longer speak dialog on their death
+       after 'The Pursuit'.
+     * The maps for 'Infested Caves', 'Clearing the Mines', and 'The Pursuit'
+       have been completely redone.
+     * All scenarios up to 'Old Friend' have been significantly tweaked and
+       rebalanced.
+   * Son of the Black Eye:
+     * S2: adjusted starting villages; scenario now ends if Kapou'e is already
+       on the signpost when the messenger comes back
+     * S3: make objectives consistent between before and after trolls appear
+     * S6: remove AI controller.  It doesn't work with sides without a leader
+     * Minor balance tweaks to scenarios 7, 8, 12, 14, 15, 17 and 18.
+     * Made allied leaders less likely to get themselves killed.
+     * Minor changes to objectives and messages in scenarios 7, 8 and 14
+   * The Hammer of Thursagan:
+     * Fixed missing objective in 'The Court of Karrag'.
+     * Rebalanced scenarios 'Invaders', 'Mages and Drakes' and 'Fear'.
+     * Fixed some messages not being shown in custom events in 'The Underlevels'
+     * 'The Court of Karrag' and 'Epilogue' feature a new map.
+   * The Rise of Wesnoth:
+     * Hide unit variations that should not be listed in the help browser.
+   * Tutorial:
+     * Rewritten with an eye to being less constricting and more informative.
+   * Under the Burning Suns:
+     * Fixed recruited Desert Archers being always male.
+     * Fixed malformed rand range errors during AI turns on medium difficulty
+       in 'A Stirring in the Night'.
+     * Fixed 100 vs. 99 movement cost warnings caused by the Desert Shyde and
+       Star unit types
+     * Fixed bug #22800: Cloaked Figure appears in strange location.
+     * Fixed bug #22799: No allies killed by enemy reinforcements.
+     * Fixed bug #22790: Various problems with dehydration.
+     * Hide unit variations that should not be listed in the help browser.
+
+ * Graphics:
+   * Smooth unit movement over terrain with elevation (e.g. keeps/bridges)
+   * Align unit overlays to the sprite rather than the occupied hex.
+   * New beach waves terrain animation.
+
+ * Help browser:
+   * Several sections have been rewritten or had their layout improved
+   * Added Defense Cap column to the Terrain Modifiers table in unit help pages
+     for units with a defense cap on at least one terrain type, which also now
+     include a note to this effect in their special notes.
+   * Autogenerated Time of Day Schedule section
+   * Unit types that do not include any visible (hide_help=no) variations no
+     longer generate topic sections.
+
+ * Language and i18n:
+   * Updated translations: Chinese (Simplified), Chinese (Traditional), Czech,
+     French, Galician, German, Greek, Hungarian, Italian, Lithuanian, Polish,
+     Portuguese, Russian, Scottish Gaelic, Slovak, Spanish, Vietnamese.
+
+ * Multiplayer:
+   * Fixed the Set Password option during game creation not having an effect
+     due to a misplaced WML attribute in the client's command for the server
+     (bug #23015).
+   * Added "no mirror" and "no ally mirror" options to the MP configure screen.
+   * Missing content for games hosted in the mp server may now be retrieved
+     automatically by clicking on these games in the mp lobby.
+
+ * Music:
+   * Change main menu track to Journey's End.
+
+ * Replays:
+   * Added a button that allows playing a single move in replay mode.
+
+ * Units:
+   * Increased the experience requirement for the Rami from 32 to 39.
+   * Increased the experience requirement for the Saree from 56 to 64.
+   * Add 'elemental' trait to Mudcrawler line.
+   * Assigned capitalized translatable names to Walking Corpse and Soulless
+     variations (bug #22902).
+
+ * User interface:
+   * Added a context menu option for command mode.
+   * Added a Classic theme which restores the 1.10 UI.
+   * Made orb and minimap colors configurable in Preferences.
+   * Added a button to copy the in-game Chat Log dialog contents to clipboard.
+   * Fixed most of the minimap buttons and the End Turn button appearing
+     without contents or in the wrong state during WML start events until they
+     are interacted with or control is given to the player for the first time.
+   * Added a new subdialog in Preferences to clean or purge the WML cache.
+   * OS X: Fixed mouse tracking issue for retina displays.
+   * Added a new "Alerts" configuration screen under Preferences &gt; Multiplayer,
+     refactored all of the mp alerts / desktop notifications for customizability
+   * Added support for hyperlinks. In particular, in chat / addon descriptions.
+   * Added a "Disable automatic moves" preference to disable automatic movements
+     at the beginning of a turn.
+
+ * WML engine:
+   * Added support for a shuffle key in the [music] music to allow selecting
+     between random and non-random music play (bug #19653)
+
+ * Miscellaneous and bug fixes:
+   * Dropped support for AmigaOS, BeOS, and OS/2.
+   * Fixed halos glitching through locations that become shrouded after the
+     halo is rendered for the first time.
+   * OS X user data directory is now ~/Library/Application Support/Wesnoth_1.13
+   * Fix bug #3856: The turn dialog used in hotseat MP play now applies
+     a blindfold for the duration of the dialog.
+   * Use a dropdown menu for both "skip replay" and "enter blindfold".
+     This fixes the mp lobby in width &lt;= 800 resolutions. (Fix #21888.)
+   * OS X: mark Wesnoth as not high-resolution capable. This greatly improves
+     performance on retina devices.
+   * Corrected behavior of "game is ready" bell. (this fixes #21910)
+   * Deliver desktop notifications in tandem with "game is ready" bell and
+     also the "game has begun" bell.
+   * The replay viewer now proceeds through sides with empty controllers when
+     using the "play_side" button, thus matching the behavior of the rest of
+     wesnoth. Bug fix #21025.
+   * Fix bug stopping drag+drop for unit movements
+   * Revert premoved units selection to Wesnoth 1.10 behavior (#21448)
+   * Fix unit move continuation if enemy discovered (#21372)
+   * Support for total conversions, so called "cores".
+   * Partial moves now able to be continued properly in whiteboard (#22231)
+   * Fix bug wherein "lobby sounds" advanced preference didn't do anything for 
+     the default lobby.
+   * Fix bug wherein dbus notifications did not have a wesnoth icon
+   * Fix bug wherein chat history synopses weren't working right in the dbus 
+     notifications
+   * Default to classic minimap unit/village color coding (colored by side).
+   * Default to classic minimap terrain representation (satellite view).
+   * Added trait list with links to the help page for units
+   * In the help page for a units, if a unit has "terrain defense caps" (like 
+     cavalry on forests), a "Defense Capped" column is added to the terrain 
+     modifiers table, showing which terrains have a cap in place. A link to an
+     explanation of this behavior elsewhere in the help is given.
+   * When using the terrain description feature with a mixed terrain type, the 
+     game will autogenerate a formatted explanation of its best/worst
+     movement/defense properties.
+   * Autogenerate help pages for all eras and factions.
+   * Help pages for a faction autogenerates a list of races and alignments that 
+     appear in that faction.
+   * Make nice help descriptions for the default factions (using content from 
+     the wiki).
+   * Fix bug wherein hotkeys for changing tips in titlescreen aren't working.
+
+
+</mutableString>
                                             <attributes>
                                                 <font key="NSFont" size="10" name="LucidaGrande"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural">
