@@ -1295,13 +1295,11 @@ std::string describe_versions()
 	<< static_cast<int> (compile_version.patch) << " \n";
 #endif
 
-#ifdef Image_Linked_Version
-	const SDL_version *link_version=Image_Linked_Version();
+	const SDL_version *link_version = IMG_Linked_Version();
 	ss << "Running with SDL_image version: "
 	<< static_cast<int> (link_version->major) << "."
 	<< static_cast<int> (link_version->minor) << "."
 	<< static_cast<int> (link_version->patch) << " .\n";
-#endif
 
 	return ss.str();
 }
