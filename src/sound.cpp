@@ -905,7 +905,6 @@ std::string describe_versions()
 {
 	std::stringstream ss;
 
-#ifdef SDL_MIXER_VERSION
 	SDL_version compile_version;
 	SDL_MIXER_VERSION(&compile_version);
 
@@ -913,15 +912,12 @@ std::string describe_versions()
 	<< static_cast<int> (compile_version.major) << "."
 	<< static_cast<int> (compile_version.minor) << "."
         << static_cast<int> (compile_version.patch) << " \n";
-#endif
 
-#ifdef Mix_Linked_Version
-	const SDL_version *link_version=Mix_Linked_Version();
+	const SDL_version *link_version = Mix_Linked_Version();
 	ss << "Running with SDL_mixer version: "
 	<< static_cast<int> (link_version->major) << "."
 	<< static_cast<int> (link_version->minor) << "."
         << static_cast<int> (link_version->patch) << " .\n";
-#endif
 
 	return ss.str();
 }
