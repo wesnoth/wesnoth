@@ -1289,15 +1289,15 @@ std::string describe_versions()
 	SDL_IMAGE_VERSION(&compile_version);
 
 	ss << "Compiled with SDL_image version: "
-	<< static_cast<int> (compile_version.major) << "."
-	<< static_cast<int> (compile_version.minor) << "."
-	<< static_cast<int> (compile_version.patch) << " \n";
+	   << static_cast<int> (compile_version.major) << "."
+	   << static_cast<int> (compile_version.minor) << "."
+	   << static_cast<int> (compile_version.patch) << "\n";
 
 	const SDL_version *link_version = IMG_Linked_Version();
 	ss << "Running with SDL_image version: "
-	<< static_cast<int> (link_version->major) << "."
-	<< static_cast<int> (link_version->minor) << "."
-	<< static_cast<int> (link_version->patch) << " .\n";
+	   << static_cast<int> (link_version->major) << "."
+	   << static_cast<int> (link_version->minor) << "."
+	   << static_cast<int> (link_version->patch) << "\n";
 
 	return ss.str();
 }
