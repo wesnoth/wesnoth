@@ -96,8 +96,6 @@ namespace conditional {
 		(NOT, "not")
 	)
 	MAKE_ENUM_STREAM_OPS1(TYPE)
-
-	static TYPE warning_suppressor = string_to_TYPE_default("foo", NOT);
 }
 
 /// This class lazily parses an attribute value to a vector of strings
