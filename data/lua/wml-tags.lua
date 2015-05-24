@@ -430,19 +430,20 @@ wml_actions["while"] = function( cfg )
 end
 
 function wml_actions.switch(cfg)
-	local value = wesnoth.get_variable(cfg.variable)
+	local var_value = wesnoth.get_variable(cfg.variable)
 	local found = false
+
 	-- Execute all the [case]s where the value matches.
 	for v in helper.child_range(cfg, "case") do
-		local match = false
 		for w in split(v.value) do
-			if w == tostring(value) then match = true ; break end
-		end
-		if match then
-			handle_event_commands(v)
-			found = true
+			if w == tostring(var_value) then 
+				handle_event_commands(v)
+				found = true
+				break 
+			end
 		end
 	end
+
 	-- Otherwise execute [else] statements.
 	if not found then
 		for v in helper.child_range(cfg, "else") do
