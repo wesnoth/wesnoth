@@ -164,7 +164,7 @@ bool configure_engine::use_map_settings_default() const {
 }
 bool configure_engine::random_start_time_default() const {
 	return use_map_settings() ?
-		state_.get_starting_pos()["random_start_time"].to_bool(true) :
+		state_.get_starting_pos()["random_start_time"].to_bool(false) :
 		preferences::random_start_time();
 }
 bool configure_engine::fog_game_default() const {
