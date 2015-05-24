@@ -1430,8 +1430,12 @@ function wml_actions.kill(cfg)
 	wesnoth.kill(cfg)
 end
 
-function wml_actions.label(cfg)
-	wesnoth.label(cfg)
+function wml_actions.label( cfg )
+	local new_cfg = helper.parsed( cfg )
+	for index, location in ipairs( wesnoth.get_locations( cfg ) ) do
+		new_cfg.x, new_cfg.y = location[1], location[2]
+		wesnoth.label( new_cfg )
+	end
 end
 
 function wml_actions.modify_side(cfg)
