@@ -346,6 +346,53 @@ int intf_get_dialog_value(lua_State *L)
 
 	return 1;
 }
+namespace
+{
+	void remove_treeview_node(gui2::ttree_view_node& node, size_t pos, int number)
+	{
+		//Not tested yet.
+		gui2::ttree_view& tv = node.tree_view();
+		if(pos >= node.size()) {
+			return;
+		}
+		if(number <= 0 || number + pos > node.size()) {
+			number = node.size() - pos;
+		}
+		for (int i = 0; i < number; ++i) {
+			tv.remove_node(&node.get_child_at(pos));
+		}
+	}
+}
+/**
+ * Removes an entry from a list.
+ * - Arg 1: number, index of the element to delete.
+ * - Arg 2: number, number of teh elements to delete. (0 to delete all elements after index)
+ * - Args 2..n: path of strings and integers.
+ */
+int intf_remove_dialog_item(lua_State *L)
+{
+	int pos = luaL_checkinteger(L, 1) - 1;
+	int number = luaL_checkinteger(L, 2);
+	gui2::twidget *w = find_widget(L, 3, true);
+
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+	if (gui2::tlist *l = dynamic_cast<gui2::tlist *>(w))
+#else
+	if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w))
+#endif
+	{
+		l->remove_row(pos, number);
+	} else if (gui2::tmulti_page *l = dynamic_cast<gui2::tmulti_page *>(w)) {
+		l->remove_page(pos, number);
+	} else if (gui2::ttree_view *tv = dynamic_cast<gui2::ttree_view *>(w)) {
+		remove_treeview_node(tv->get_root_node(), pos, number);
+	} else if (gui2::ttree_view_node *tvn = dynamic_cast<gui2::ttree_view_node *>(w)) {
+		remove_treeview_node(*tvn, pos, number);
+	} else
+		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
+
+	return 1;
+}
 
 namespace { // helpers of intf_set_dialog_callback()
 	void dialog_callback(gui2::twidget& w)

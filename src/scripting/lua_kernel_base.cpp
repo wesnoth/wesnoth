@@ -251,6 +251,7 @@ lua_kernel_base::lua_kernel_base(CVideo * video)
 		{ "set_dialog_canvas",        &lua_gui2::intf_set_dialog_canvas		},
 		{ "set_dialog_markup",        &lua_gui2::intf_set_dialog_markup		},
 		{ "set_dialog_value",         &lua_gui2::intf_set_dialog_value		},
+		{ "remove_dialog_item",       &lua_gui2::intf_remove_dialog_item    },
 		{ "dofile", 		      &dispatch<&lua_kernel_base::intf_dofile>           },
 		{ "require", 		      &dispatch<&lua_kernel_base::intf_require>          },
 		{ "show_dialog",	      &dispatch<&lua_kernel_base::intf_show_dialog>      },
