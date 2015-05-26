@@ -91,8 +91,8 @@ void tlistbox::remove_row(const unsigned row, unsigned count)
 		return;
 	}
 
-	if(!count || count > get_item_count()) {
-		count = get_item_count();
+	if(!count || count + row > get_item_count()) {
+		count = get_item_count() - row;
 	}
 
 	int height_reduced = 0;
