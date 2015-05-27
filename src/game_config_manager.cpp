@@ -251,6 +251,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 
 				const config& campaign = game_config().find_child("campaign",
 					"define", classification->campaign_define);
+				// FIXME: check whether campaign is valid
 				const std::string& campaign_id = campaign["id"];
 				const bool require_campaign =
 					campaign["require_campaign"].to_bool(true);
