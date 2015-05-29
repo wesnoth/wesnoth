@@ -295,13 +295,14 @@ if __name__ == '__main__':
             sys.exit(0)
         elif opt in ('-d', '--dryrun'):
             dryrun = True
-            verbose = max(1, verbose)
         elif opt in ('-e', '--exclude'):
             exclude.append(val)
         elif opt in ('-q', '--quiet'):
             quiet = True
         elif opt in ('-v', '--verbose'):
             verbose += 1
+    if dryrun:
+        verbose = max(1, verbose)
     # in certain situations, Windows' command prompt appends a double quote
     # to the command line parameters. This block takes care of this issue.
     for i,arg in enumerate(arguments):
