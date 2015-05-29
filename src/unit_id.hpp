@@ -27,7 +27,7 @@ namespace n_unit {
 	{
 		unit_id() : value(0) {}
 		explicit unit_id(size_t val) : value(val) {}
-		static const size_t highest_bit = 1 << (sizeof(size_t) * 8 - 1);
+		static const size_t highest_bit = static_cast<size_t>(1) << (sizeof(size_t) * 8 - 1);
 		size_t value;
 		
 		bool is_fake() const { return (value & highest_bit) != 0; }
