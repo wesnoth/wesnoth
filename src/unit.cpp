@@ -319,8 +319,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 	}
 
 	validate_side(side_);
-
-	underlying_id_ = cfg["underlying_id"];
+	underlying_id_ = n_unit::unit_id::create_real(cfg["underlying_id"].to_int());
 	set_underlying_id();
 
 	overlays_ = utils::parenthetical_split(cfg["overlays"], ',');
@@ -577,7 +576,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	, race_(&unit_race::null_race)
 	, id_()
 	, name_()
-	, underlying_id_(real_unit? 0: n_unit::id_manager::instance().next_fake_id())
+	, underlying_id_(real_unit? n_unit::unit_id(0) : n_unit::id_manager::instance().next_fake_id())
 	, undead_variation_()
 	, variation_(type_->default_variation())
 	, hit_points_(0)
@@ -1388,8 +1387,7 @@ void unit::write(config& cfg) const
 
 	cfg["name"] = name_;
 	cfg["id"] = id_;
-	cfg["underlying_id"] = str_cast(underlying_id_);
-
+	cfg["underlying_id"] = underlying_id_.value;
 	if(can_recruit())
 		cfg["canrecruit"] = true;
 
@@ -2111,7 +2109,7 @@ bool unit::is_visible_to_team(team const& team, gamemap const& map, bool const s
 }
 
 void unit::set_underlying_id() {
-	if(underlying_id_ == 0) {
+	if(underlying_id_.value == 0) {
 		if(synced_context::get_synced_state() == synced_context::SYNCED || !resources::gamedata || resources::gamedata->phase() == game_data::INITIAL) {
 			underlying_id_ = n_unit::id_manager::instance().next_id();
 		}
@@ -2119,9 +2117,9 @@ void unit::set_underlying_id() {
 			underlying_id_ = n_unit::id_manager::instance().next_fake_id();
 		}
 	}
-	if (id_.empty()) {
+	if (id_.empty() && !underlying_id_.is_fake()) {
 		std::stringstream ss;
-		ss << (type_id().empty() ? "Unit" : type_id()) << "-" << underlying_id_;
+		ss << (type_id().empty() ? "Unit" : type_id()) << "-" << underlying_id_.value;
 		id_ = ss.str();
 	}
 }

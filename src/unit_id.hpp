@@ -21,6 +21,27 @@
 #include <boost/noncopyable.hpp>
 
 namespace n_unit {
+	
+
+	struct unit_id
+	{
+		unit_id() : value(0) {}
+		explicit unit_id(size_t val) : value(val) {}
+		static const size_t highest_bit = 1 << (sizeof(size_t) * 8 - 1);
+		size_t value;
+		
+		bool is_fake() const { return (value & highest_bit) != 0; }
+		bool is_empty() const { return !value; }
+		
+		static unit_id create_real(size_t val) { return unit_id(val); }
+		static unit_id create_fake(size_t val) { return unit_id(val + highest_bit); }
+
+		static friend bool operator <(unit_id a, unit_id b) { return a < b; }
+		static friend bool operator <=(unit_id a, unit_id b) { return a <= b; }
+		static friend bool operator ==(unit_id a, unit_id b) { return a == b; }
+		static friend bool operator >=(unit_id a, unit_id b) { return a >= b; }
+		static friend bool operator >(unit_id a, unit_id b) { return a > b; }
+	};
 
 	class id_manager : private boost::noncopyable {
 		private:
@@ -31,9 +52,9 @@ namespace n_unit {
 		public:
 			static id_manager& instance();
 			/** returns id for unit that is created */
-			size_t next_id();
+			unit_id next_id();
 
-			size_t next_fake_id();
+			unit_id next_fake_id();
 
 			/** Used for saving id to savegame */
 			size_t get_save_id();
