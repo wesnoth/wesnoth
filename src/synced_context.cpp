@@ -36,7 +36,7 @@
 #include "seed_rng.hpp"
 #include "syncmp_handler.hpp"
 #include "unit_id.hpp"
-
+#include "whiteboard/manager.hpp"
 #include <boost/lexical_cast.hpp>
 
 #include <cassert>
@@ -364,6 +364,7 @@ set_scontext_synced_base::set_scontext_synced_base()
 	, old_rng_(random_new::generator)
 {
 	LOG_REPLAY << "set_scontext_synced_base::set_scontext_synced_base\n";
+	assert(!resources::whiteboard->has_planned_unit_map());
 	assert(synced_context::get_synced_state() == synced_context::UNSYNCED);
 	synced_context::set_synced_state(synced_context::SYNCED);
 	synced_context::reset_is_simultaneously();

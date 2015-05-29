@@ -631,6 +631,8 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	, modifications_()
 	, invisibility_cache_()
 {
+	// read this as 'synced_context::get_synced_state() == synced_context::SYNCED => real_unit'.
+	assert(real_unit || synced_context::get_synced_state() != synced_context::SYNCED);
 	cfg_["upkeep"]="full";
 
 	// Apply the unit type's data to this unit.
