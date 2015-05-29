@@ -39,6 +39,7 @@
 #include "resources.hpp"
 #include "tod_manager.hpp"
 #include "sound.hpp"
+#include "synced_context.hpp"
 #include "terrain_type_data.hpp"
 #include "unit.hpp"
 #include "unit_drawer.hpp"
@@ -188,7 +189,7 @@ void game_display::select_hex(map_location hex)
 
 void game_display::highlight_hex(map_location hex)
 {
-	wb::future_map future; /**< Lasts for whole method. */
+	wb::future_map_if future(synced_context::get_synced_state() != synced_context::SYNCED); /**< Lasts for whole method. */
 
 	const unit *u = resources::gameboard->get_visible_unit(hex, dc_->teams()[viewing_team()], !dont_show_all_);
 	if (u) {
@@ -215,7 +216,7 @@ void game_display::display_unit_hex(map_location hex)
 	if (!hex.valid())
 		return;
 
-	wb::future_map future; /**< Lasts for whole method. */
+	wb::future_map_if future(synced_context::get_synced_state() != synced_context::SYNCED); /**< Lasts for whole method. */
 
 	const unit *u = resources::gameboard->get_visible_unit(hex, dc_->teams()[viewing_team()], !dont_show_all_);
 	if (u) {

@@ -253,6 +253,17 @@ struct future_map
 	bool initial_planned_unit_map_;
 };
 
+struct future_map_if
+{
+	/** @param cond: If true, applies the planned unit map for the duration of the struct's life and reverts to real unit map on destruction.
+			No effect if cond == false.
+	*/
+	boost::scoped_ptr<future_map> future_map_;
+	future_map_if(bool cond)
+		: future_map_(cond ? new future_map() : NULL)
+	{}
+};
+
 /** ONLY IF whiteboard is currently active, applies the planned unit map for the duration of the struct's life.
  *  Reverts to real unit map on destruction, unless planned unit map was already applied when the struct was created. */
 struct future_map_if_active
