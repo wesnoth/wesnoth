@@ -103,6 +103,7 @@ ttext::ttext() :
 	text_(),
 	markedup_text_(false),
 	link_aware_(false),
+	link_color_(),
 	font_size_(14),
 	font_style_(STYLE_NORMAL),
 	foreground_color_(0xFFFFFFFF), // solid white
