@@ -36,11 +36,11 @@ namespace n_unit {
 		static unit_id create_real(size_t val) { return unit_id(val); }
 		static unit_id create_fake(size_t val) { return unit_id(val + highest_bit); }
 
-		static friend bool operator <(unit_id a, unit_id b) { return a < b; }
-		static friend bool operator <=(unit_id a, unit_id b) { return a <= b; }
-		static friend bool operator ==(unit_id a, unit_id b) { return a == b; }
-		static friend bool operator >=(unit_id a, unit_id b) { return a >= b; }
-		static friend bool operator >(unit_id a, unit_id b) { return a > b; }
+		friend bool operator <(unit_id a, unit_id b) { return a < b; }
+		friend bool operator <=(unit_id a, unit_id b) { return a <= b; }
+		friend bool operator ==(unit_id a, unit_id b) { return a == b; }
+		friend bool operator >=(unit_id a, unit_id b) { return a >= b; }
+		friend bool operator >(unit_id a, unit_id b) { return a > b; }
 	};
 
 	class id_manager : private boost::noncopyable {
