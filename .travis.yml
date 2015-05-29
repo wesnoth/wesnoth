@@ -24,6 +24,7 @@ before_install:
     - export PLAY_TEST=true
     - export MP_TEST=true
     - export STRICT_COMPILATION=true
+    - export EXTRA_FLAGS_ALL="-pipe"
     - export EXTRA_FLAGS_RELEASE="-O0"
     - export WML_TEST_TIME=20
     - export NLS=false
@@ -63,7 +64,7 @@ script:
     - ./utils/travis/utf8_bom_dog.sh
     - $CXX --version
     - echo "*Params* --- " "cxxtool=$CXX --debug=time build=release extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=$STRICT_COMPILATION $TARGETS cxx0x=$CXX11 nls=$NLS jobs=2"
-    - scons cxxtool=$CXX --debug=time build=release extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=$STRICT_COMPILATION $TARGETS cxx0x=$CXX11 nls=$NLS jobs=2
+    - scons cxxtool=$CXX --debug=time build=release extra_flags_config="$EXTRA_FLAGS_ALL" extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=$STRICT_COMPILATION $TARGETS cxx0x=$CXX11 nls=$NLS jobs=2
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
     - if [ "$CPP_TESTS" = true ]; then ./utils/travis/test_wrapper.sh; fi
