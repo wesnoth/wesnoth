@@ -12,7 +12,7 @@ before_install:
     - sudo add-apt-repository -y --remove "deb http://old-releases.ubuntu.com/ubuntu/ saucy main universe"
     - sudo apt-get update -qq
 install:
-script: scons cxxtool=$CXX strict=True extra_flags_release="-O0" wesnoth wesnothd campaignd test jobs=2
+script: scons cxxtool=$CXX strict=True extra_flags_release="-O0" extra_flags_config="-pipe" wesnoth wesnothd campaignd test jobs=2
 after_script:
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
