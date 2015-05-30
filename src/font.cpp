@@ -1039,7 +1039,8 @@ static bool add_font_to_fontlist(const config &fonts_config,
 namespace font {
 
 namespace {
-	t_string family_order;
+	t_string family_order_sans;
+	t_string family_order_mono;
 } // namespace
 
 bool load_font_config()
@@ -1077,7 +1078,14 @@ bool load_font_config()
 		}
 	}
 
-	family_order = fonts_config["family_order"];
+	family_order_sans = fonts_config["family_order"];
+	family_order_mono = fonts_config["family_order_monospace"];
+
+	if(family_order_mono.empty()) {
+		ERR_FT << "No monospace font family order defined, falling back to sans serif order\n";
+		family_order_mono = family_order_sans;
+	}
+
 	const std::vector<std::string> font_order = utils::split(fonts_config["order"]);
 	std::vector<font::subset_descriptor> fontlist;
 	std::vector<std::string>::const_iterator font;
@@ -1097,9 +1105,14 @@ bool load_font_config()
 	return true;
 }
 
-const t_string& get_font_families()
+const t_string& get_font_families(family_class fclass)
 {
-	return family_order;
+	switch(fclass) {
+	case FONT_MONOSPACE:
+		return family_order_mono;
+	default:
+		return family_order_sans;
+	}
 }
 
 void cache_mode(CACHE mode)
