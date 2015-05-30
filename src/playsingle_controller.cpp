@@ -102,9 +102,9 @@ void playsingle_controller::init_gui(){
 	gui_->scroll_to_tile(map_.starting_position(1), game_display::WARP);
 
 	update_locker lock_display(gui_->video(),recorder.is_skipping());
+	gui_->draw();
 	set_button_state(*gui_);
 	events::raise_draw_event();
-	gui_->draw();
 }
 
 void playsingle_controller::recruit(){
