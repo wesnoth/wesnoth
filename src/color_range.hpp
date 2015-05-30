@@ -102,6 +102,9 @@ public:
 
   int index() const; // the default team index for this color, or 0 for none
 
+  /** Return a string describing the color range for debug output. */
+  std::string debug() const;
+
 private:
   Uint32 mid_ , max_ , min_ , rep_;
 };

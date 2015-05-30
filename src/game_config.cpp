@@ -31,6 +31,7 @@
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
+#define LOG_NG LOG_STREAM(info, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)
 
 namespace game_config
@@ -335,6 +336,9 @@ namespace game_config
 			}
 			team_rgb_range.insert(std::make_pair(id,color_range(temp)));
 			team_rgb_name[id] = teamC["name"];
+
+			LOG_NG << "registered color range '" << id << "': " << team_rgb_range[id].debug() << '\n';
+
 			//generate palette of same name;
 			std::vector<Uint32> tp = palette(team_rgb_range[id]);
 			if (tp.empty()) {
@@ -352,6 +356,7 @@ namespace game_config
 					ERR_NG << "Invalid color palette: " << rgb.second << std::endl;
 				}
 				team_rgb_colors.insert(std::make_pair(rgb.first, temp));
+				LOG_NG << "registered color palette: " << rgb.first << '\n';
 			}
 		}
 	}
