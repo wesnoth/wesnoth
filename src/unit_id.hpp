@@ -21,7 +21,6 @@
 #include <boost/noncopyable.hpp>
 
 namespace n_unit {
-	
 
 	struct unit_id
 	{
@@ -29,10 +28,10 @@ namespace n_unit {
 		explicit unit_id(size_t val) : value(val) {}
 		static const size_t highest_bit = static_cast<size_t>(1) << (sizeof(size_t) * 8 - 1);
 		size_t value;
-		
+
 		bool is_fake() const { return (value & highest_bit) != 0; }
 		bool is_empty() const { return !value; }
-		
+
 		static unit_id create_real(size_t val) { return unit_id(val); }
 		static unit_id create_fake(size_t val) { return unit_id(val + highest_bit); }
 
