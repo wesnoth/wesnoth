@@ -454,6 +454,7 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size,
 
 	renderer_.set_text(label_, use_markup_);
 
+	renderer_.set_family_class(config_->text_font_family);
 	renderer_.set_font_size(config_->text_font_size);
 	renderer_.set_font_style(config_->text_font_style);
 	renderer_.set_alignment(text_alignment_);
