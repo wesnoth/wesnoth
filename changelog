@@ -22,6 +22,10 @@ Version 1.13.0+dev:
    * Era names no longer support formatting markup in the game setup screen.
  * Units:
    * Fixed the Shuja not having the default AMLA.
+ * User interface:
+   * Fixed minimap buttons appearing without contents or in the wrong state
+     during WML start events until they are interacted with or control is given
+     to the player for the first time or some other unspecified thing happens.
  * WML engine:
    * Added support for [object] duration=turn end
    * New or updated image path functions:
