@@ -15,6 +15,7 @@
 #define FONT_HPP_INCLUDED
 
 #include "exceptions.hpp"
+#include "font_options.hpp"
 
 #include "sdl/utils.hpp"
 #include "sdl/image.hpp"
@@ -106,7 +107,7 @@ std::string make_text_ellipsis(const std::string& text, int font_size, int max_w
 bool load_font_config();
 
 /** Returns the currently defined fonts. */
-const t_string& get_font_families();
+const t_string& get_font_families(family_class fclass = FONT_SANS_SERIF);
 
 enum CACHE { CACHE_LOBBY, CACHE_GAME };
 void cache_mode(CACHE mode);

@@ -104,6 +104,7 @@ ttext::ttext() :
 	markedup_text_(false),
 	link_aware_(false),
 	link_color_(),
+	font_class_(font::FONT_SANS_SERIF),
 	font_size_(14),
 	font_style_(STYLE_NORMAL),
 	foreground_color_(0xFFFFFFFF), // solid white
@@ -390,6 +391,17 @@ bool ttext::set_text(const std::string& text, const bool markedup)
 	return true;
 }
 
+ttext& ttext::set_family_class(font::family_class fclass)
+{
+	if(fclass != font_class_) {
+		font_class_ = fclass;
+		calculation_dirty_ = true;
+		surface_dirty_ = true;
+	}
+
+	return *this;
+}
+
 ttext& ttext::set_font_size(const unsigned font_size)
 {
 	if(font_size != font_size_) {
@@ -600,7 +612,7 @@ void ttext::recalculate(const bool force) const
 		calculation_dirty_ = false;
 		surface_dirty_ = true;
 
-		tfont font(get_font_families(), font_size_, font_style_);
+		tfont font(get_font_families(font_class_), font_size_, font_style_);
 		pango_layout_set_font_description(layout_, font.get());
 
 		if(font_style_ & ttext::STYLE_UNDERLINE) {

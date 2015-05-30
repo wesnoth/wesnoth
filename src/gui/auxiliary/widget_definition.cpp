@@ -69,6 +69,9 @@ namespace gui2
  * text_extra_height & unsigned & 0 &
  *     The extra height needed to determine the minimal size for the text. $
  *
+ * text_font_family & font_family & "" &
+ *     The font family, needed to determine the minimal size for the text. $
+ *
  * text_font_size & unsigned & 0 &
  *     The font size, which needs to be used to determine the minimal size for
  *     the text. $
@@ -98,6 +101,7 @@ tresolution_definition_::tresolution_definition_(const config& cfg)
 	, text_extra_width(cfg["text_extra_width"])
 	, text_extra_height(cfg["text_extra_height"])
 	, text_font_size(cfg["text_font_size"])
+	, text_font_family(font::str_to_family_class(cfg["text_font_family"]))
 	, text_font_style(decode_font_style(cfg["text_font_style"]))
 	, state()
 {

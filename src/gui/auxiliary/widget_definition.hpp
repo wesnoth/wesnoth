@@ -16,6 +16,7 @@
 #define GUI_AUXILIARY_WIDGET_DEFINITION_HPP_INCLUDED
 
 #include "config.hpp"
+#include "font_options.hpp"
 #include "gui/auxiliary/canvas.hpp"
 #include "utils/foreach.tpp"
 
@@ -57,6 +58,7 @@ struct tresolution_definition_ : public reference_counted_object
 	unsigned text_extra_width;
 	unsigned text_extra_height;
 	unsigned text_font_size;
+	font::family_class text_font_family;
 	int text_font_style;
 
 	std::vector<tstate_definition> state;

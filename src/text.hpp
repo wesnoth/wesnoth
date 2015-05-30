@@ -15,6 +15,7 @@
 #ifndef TEXT_HPP_INCLUDED
 #define TEXT_HPP_INCLUDED
 
+#include "font_options.hpp"
 #include "sdl/utils.hpp"
 #include "serialization/unicode_types.hpp"
 
@@ -220,6 +221,8 @@ public:
 
 	const std::string& text() const { return text_; }
 
+	ttext& set_family_class(font::family_class fclass);
+
 	ttext& set_font_size(const unsigned font_size);
 
 	ttext& set_font_style(const unsigned font_style);
@@ -275,6 +278,9 @@ private:
 
 	/** The color to render links in. */
 	std::string link_color_;
+
+	/** The font family class used. */
+	font::family_class font_class_;
 
 	/** The font size to draw. */
 	unsigned font_size_;

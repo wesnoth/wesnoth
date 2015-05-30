@@ -1252,6 +1252,9 @@ private:
 			w_,			   /**< The width of the text. */
 			h_;			   /**< The height of the text. */
 
+	/** The text font family. */
+	font::family_class font_family_;
+
 	/** The font size of the text. */
 	unsigned font_size_;
 
@@ -1302,6 +1305,8 @@ private:
  *                                     rectangle. $
  *     h & f_unsigned & 0 &            The height of the text's bounding
  *                                     rectangle. $
+ *     font_family & font_family & "sans" &
+ *                                     The font family used for the text. $
  *     font_size & unsigned & &        The size of the text font. $
  *     font_style & font_style & "" &  The style of the text. $
  *     text_alignment & f_h_align & "left" &
@@ -1340,6 +1345,7 @@ ttext::ttext(const config& cfg)
 	, y_(cfg["y"])
 	, w_(cfg["w"])
 	, h_(cfg["h"])
+	, font_family_(font::str_to_family_class(cfg["font_family"]))
 	, font_size_(cfg["font_size"])
 	, font_style_(decode_font_style(cfg["font_style"]))
 	, text_alignment_(cfg["text_alignment"])
@@ -1381,7 +1387,9 @@ void ttext::draw(surface& canvas,
 			.set_link_color(link_color_(variables));
 	text_renderer.set_text(text, text_markup_(variables));
 
-	text_renderer.set_font_size(font_size_)
+	text_renderer
+			.set_family_class(font_family_)
+			.set_font_size(font_size_)
 			.set_font_style(font_style_)
 			.set_alignment(text_alignment_(variables))
 			.set_foreground_color(color_)
