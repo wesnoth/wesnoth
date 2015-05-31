@@ -1,5 +1,5 @@
-The Battle for Wesnoth
-======================
+About
+=====
 
 **The Battle for Wesnoth** is a Free, turn-based tactical strategy game with a
 high fantasy theme, featuring both single-player, and online/hotseat
