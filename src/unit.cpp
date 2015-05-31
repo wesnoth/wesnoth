@@ -2115,7 +2115,7 @@ void unit::set_underlying_id() {
 			underlying_id_ = n_unit::id_manager::instance().next_fake_id();
 		}
 	}
-	if (id_.empty() && !underlying_id_.is_fake()) {
+	if (id_.empty() /*&& !underlying_id_.is_fake()*/) {
 		std::stringstream ss;
 		ss << (type_id().empty() ? "Unit" : type_id()) << "-" << underlying_id_.value;
 		id_ = ss.str();
