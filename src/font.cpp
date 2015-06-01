@@ -357,6 +357,17 @@ void manager::init() const
 		ERR_FT << "Could not load the true type fonts\n";
 		throw error();
 	}
+
+	if(!FcConfigParseAndLoad(FcConfigGetCurrent(),
+							 reinterpret_cast<const FcChar8*>((game_config::path + "/fonts/fonts.conf").c_str()),
+							 FcFalse))
+	{
+		ERR_FT << "Could not load local font configuration\n";
+	}
+	else
+	{
+		LOG_FT << "Local font configuration loaded\n";
+	}
 #endif
 
 #if CAIRO_HAS_WIN32_FONT
