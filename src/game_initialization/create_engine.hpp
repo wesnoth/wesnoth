@@ -89,7 +89,7 @@ protected:
 	boost::scoped_ptr<gamemap> map_;
 
 	surface minimap_img_;
-	std::basic_string<unsigned char> map_hash_;
+	std::string map_hash_;
 
 private:
 	scenario(const scenario&);

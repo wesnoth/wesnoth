@@ -51,6 +51,8 @@ Version 1.13.0+dev:
    * Updated mainline campaigns and multiplayer scenarios to use [filter] status=
      instead of [filter] [filter_wml] [status]
    * Fixed a segfault in [move_units_fake]
+   * Fixed unbound memory read in the MP map selection screen that could lead
+     to a segmentation fault or other abnormal behavior (bug #23606).
 
 Version 1.13.0:
  * Security fixes:

@@ -148,7 +148,7 @@ surface scenario::create_image_surface(const SDL_Rect& image_rect)
 		return minimap_img_;
 	}
 
-	std::basic_string<unsigned char> current_hash = util::md5(map_->write());
+	std::string current_hash = util::encode_hash(util::md5(map_->write()));
 
 	if (minimap_img_.null() || (map_hash_ != current_hash)) { // If there's no minimap image, or the map hash doesn't match, regenerate the image cache.
 		minimap_img_ = image::getMinimap(image_rect.w, image_rect.h, *map_, 0);
