@@ -428,8 +428,13 @@ void unit_mover::wait_for_anims()
 void unit_mover::finish(unit &u, map_location::DIRECTION dir)
 {
 	// Nothing to do here if the display is not valid.
-	if ( !can_draw_ )
+	if ( !can_draw_ ) {
+		// Make sure to reset the unit's animation to deal with a quirk in the
+		// action engine where it leaves it to us to reenable bars even if the
+		// display is initially locked.
+		u.set_standing(true);
 		return;
+	}
 
 	const map_location & end_loc = path_[current_];
 	const map_location::DIRECTION final_dir = current_ == 0 ?

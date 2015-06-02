@@ -12,6 +12,9 @@ Version 1.12.2+dev:
      to the player for the first time or some other unspecified thing happens.
    * Hide mod options from the user command prompt dialog in the MP lobby when
      not authenticated as a mod.
+   * Fixed unit bars, ellipses, and orbs disappearing for individual units in
+     replay mode when using Skip Animations/Quick Replays if they moved without
+     attacking or otherwise switching to a new animation.
  * Miscellaneous and bug fixes:
    * Fixed bug #23445: set default build type in cmake to "Release" to ensure
      that the game is not unoptimized

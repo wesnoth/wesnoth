@@ -10,6 +10,9 @@ Version 1.12.2+dev:
    * Fixed minimap buttons appearing without contents or in the wrong state
      during WML start events until they are interacted with or control is given
      to the player for the first time or some other unspecified thing happens.
+   * Fixed unit bars, ellipses, and orbs disappearing for individual units in
+     replay mode when using Skip Animations/Quick Replays if they moved without
+     attacking or otherwise switching to a new animation.
 
 
 Version 1.12.2:
