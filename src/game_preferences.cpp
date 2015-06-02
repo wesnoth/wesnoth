@@ -184,6 +184,11 @@ void parse_admin_authentication(const std::string& sender, const std::string& me
 	}
 }
 
+admin_authentication_reset::~admin_authentication_reset()
+{
+	authenticated = false;
+}
+
 static void load_acquaintances() {
 	if(!acquaintances_initialized) {
 		acquaintances.clear();
