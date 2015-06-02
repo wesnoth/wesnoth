@@ -1069,21 +1069,18 @@ config side_engine::new_config() const
 		res["gold"] = gold_;
 		res["income"] = income_;
 
-		if (!parent_.params_.use_map_settings || res["fog"].empty() ||
-			(res["fog"].to_bool(true) == true && res["fog"].to_bool(false) == false)) {
+		if (!parent_.params_.use_map_settings) {
 			res["fog"] = parent_.params_.fog_game;
-		}
-
-		if (!parent_.params_.use_map_settings || res["shroud"].empty() ||
-			(res["shroud"].to_bool(true) == true && res["shroud"].to_bool(false) == false)) {
 			res["shroud"] = parent_.params_.shroud_game;
 		}
-		//share view default to true here to restore the previous behaviour.
+
+		//share view default to true here to restore the previous behavior.
 		res["share_view"] =  res["share_view"].to_bool(true);
 
 		if (!parent_.params_.use_map_settings || res["village_gold"].empty()) {
 			res["village_gold"] = parent_.params_.village_gold;
 		}
+
 		if (!parent_.params_.use_map_settings ||
 			res["village_support"].empty()) {
 			res["village_support"] =
