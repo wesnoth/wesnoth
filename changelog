@@ -31,6 +31,9 @@ Version 1.13.0+dev:
      (bug #20337).
    * Hide mod options from the user command prompt dialog in the MP lobby when
      not authenticated as a mod.
+   * Fixed unit bars, ellipses, and orbs disappearing for individual units in
+     replay mode when using Skip Animations/Quick Replays if they moved without
+     attacking or otherwise switching to a new animation.
  * WML engine:
    * Added support for [object] duration=turn end
    * New or updated image path functions:

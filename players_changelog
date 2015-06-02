@@ -25,6 +25,9 @@ Version 1.13.0+dev:
    * Force uniform font rendering settings across X11 and Apple OS X, avoiding
      color glitches resulting from incorrect applications of subpixel hinting
      (bug #20337).
+   * Fixed unit bars, ellipses, and orbs disappearing for individual units in
+     replay mode when using Skip Animations/Quick Replays if they moved without
+     attacking or otherwise switching to a new animation.
 
  * Miscellaneous and bug fixes:
    * Fixed a segfault in [move_units_fake]

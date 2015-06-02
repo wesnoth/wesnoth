@@ -504,6 +504,9 @@ namespace { // Private helpers for move_unit()
 			// Update the moving unit.
 			move_it_ = move_result.first;
 			move_it_->set_facing(step_from->get_relative_dir(*step_to));
+			// Disable bars. The expectation here is that the animation
+			// unit_mover::finish() will clean after us at a later point. Ugly,
+			// but it works.
 			move_it_->anim_comp().set_standing(false);
 			disp.invalidate_unit_after_move(*move_loc_, *step_to);
 			disp.invalidate(*step_to);
