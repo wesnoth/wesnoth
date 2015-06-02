@@ -71,6 +71,10 @@ namespace gui2
  * ban & & button & m &
  *         Execute /query kban. $
  *
+ * mod_options & & grid & m &
+ *         Grid containing the status/kick/ban options. This grid and its
+ *         children are hidden when these options are unavailable. $
+ *
  * @end{table}
  */
 
