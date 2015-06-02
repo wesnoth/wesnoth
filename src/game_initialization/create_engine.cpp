@@ -126,6 +126,8 @@ config& level::data()
 scenario::scenario(const config& data) :
 	level(data),
 	map_(),
+	minimap_img_(),
+	map_hash_(),
 	num_players_(0)
 {
 }
