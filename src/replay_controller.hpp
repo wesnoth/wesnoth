@@ -60,6 +60,12 @@ protected:
 	virtual void init_gui();
 
 private:
+	enum REPLAY_VISION
+	{
+		HUMAN_TEAM,
+		CURRENT_TEAM,
+		SHOW_ALL,
+	};
 	void init();
 	void play_turn();
 	void play_move_or_side(bool one_move = false);
@@ -95,9 +101,7 @@ private:
 	unsigned int last_replay_action;
 
 	bool is_playing_;
-
-	bool show_everything_;
-	unsigned int show_team_;
+	REPLAY_VISION vision_;
 };
 
 

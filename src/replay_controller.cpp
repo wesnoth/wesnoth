@@ -115,8 +115,7 @@ replay_controller::replay_controller(const config& level,
 	, gameboard_start_(gamestate_.board_)
 	, tod_manager_start_(level)
 	, is_playing_(false)
-	, show_everything_(false)
-	, show_team_(state_of_game.classification().campaign_type == game_classification::MULTIPLAYER ? 0 : 1)
+	, vision_(state_of_game.classification().campaign_type == game_classification::MULTIPLAYER ? CURRENT_TEAM : HUMAN_TEAM)
 {
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the replay controller version
 
@@ -149,11 +148,7 @@ void replay_controller::init_gui(){
 	DBG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks_) << "\n";
 	play_controller::init_gui();
 
-	if (show_team_)
-		gui_->set_team(show_team_ - 1, show_everything_);
-	else
-		gui_->set_team(0, show_everything_);
-
+	gui_->set_team(vision_ == HUMAN_TEAM ? gamestate_.first_human_team_ : 0, vision_ == SHOW_ALL);
 	gui_->scroll_to_leader(player_number_, display::WARP);
 	update_locker lock_display((*gui_).video(),false);
 	BOOST_FOREACH(const team & t, gamestate_.board_.teams()) {
@@ -423,23 +418,23 @@ void replay_controller::process_oos(const std::string& msg) const
 	}
 }
 
-void replay_controller::replay_show_everything(){
-	show_everything_ = true;
-	show_team_ = 0;
+void replay_controller::replay_show_everything()
+{
+	vision_ = SHOW_ALL;
 	update_teams();
 	update_gui();
 }
 
-void replay_controller::replay_show_each(){
-	show_everything_ = false;
-	show_team_ = 0;
+void replay_controller::replay_show_each()
+{
+	vision_ = CURRENT_TEAM;
 	update_teams();
 	update_gui();
 }
 
-void replay_controller::replay_show_team1(){
-	show_everything_ = false;
-	show_team_ = 1;
+void replay_controller::replay_show_team1()
+{
+	vision_ = HUMAN_TEAM;
 	update_teams();
 	update_gui();
 }
@@ -557,18 +552,13 @@ void replay_controller::play_move_or_side(bool one_move) {
 
 void replay_controller::update_teams()
 {
-
 	int next_team = player_number_;
 	if(static_cast<size_t>(next_team) > gamestate_.board_.teams().size()) {
 		next_team = 1;
 	}
-
-	if ( show_team_ == 0 ) {
-		gui_->set_team(next_team - 1, show_everything_);
-	} else {
-		gui_->set_team(show_team_ - 1, show_everything_);
-	}
-
+	
+	gui_->set_team(vision_ == HUMAN_TEAM ? gamestate_.first_human_team_ : next_team - 1, vision_ == SHOW_ALL);
+	
 	gui_->set_playing_team(next_team - 1);
 	gui_->invalidate_all();
 }
