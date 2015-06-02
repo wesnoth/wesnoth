@@ -49,6 +49,11 @@ class acquaintance;
 	 */
 	struct admin_authentication_reset
 	{
+		/**
+		 * Default constructor, defined out of line to work around a warning in
+		 * gcc 4.5.2
+		 */
+		admin_authentication_reset();
 		~admin_authentication_reset();
 	};
 
