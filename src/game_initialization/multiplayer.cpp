@@ -913,6 +913,8 @@ void start_client(game_display& disp, const config& game_config,
 	// even if the user changes the contents of the addon directory in the meantime.
 
 	DBG_MP << "starting client" << std::endl;
+
+	preferences::admin_authentication_reset r;
 	const network::manager net_manager(1,1);
 
 	gamechat.clear_history();
