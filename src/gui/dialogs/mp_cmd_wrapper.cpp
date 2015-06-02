@@ -105,16 +105,9 @@ void tmp_cmd_wrapper::pre_show(CVideo& /*video*/, twindow& window)
 
 	const bool authenticated = preferences::is_authenticated();
 
-	if(tbutton* b = find_widget<tbutton>(&window, "status", false, false)) {
-		b->set_active(authenticated);
-	}
-
-	if(tbutton* b = find_widget<tbutton>(&window, "kick", false, false)) {
-		b->set_active(authenticated);
-	}
-
-	if(tbutton* b = find_widget<tbutton>(&window, "ban", false, false)) {
-		b->set_active(authenticated);
+	if(tgrid* g = find_widget<tgrid>(&window, "mod_options", false, false)) {
+		g->set_active(authenticated);
+		g->set_visible(authenticated ? twidget::tvisible::visible : twidget::tvisible::invisible);
 	}
 
 	/**
