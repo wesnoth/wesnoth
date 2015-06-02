@@ -2098,6 +2098,9 @@ bool unit::is_visible_to_team(team const& team, gamemap const& map, bool const s
 		return true;
 	if (team.is_enemy(side()) && invisible(loc))
 		return false;
+	// allied planned moves are also visible under fog. (we assume that fake units on the map are always whiteboard markers)
+	if (!team.is_enemy(side()) && underlying_id_.is_fake())
+		return true;
 	if (team.fogged(loc))
 		return false;
 	return true;
