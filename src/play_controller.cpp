@@ -510,13 +510,6 @@ void play_controller::finish_side_turn()
 		sync.do_final_checkup();
 	}
 
-	// This implements "delayed map sharing."
-	// It is meant as an alternative to shared vision.
-	if(current_team().copy_ally_shroud()) {
-		gui_->recalculate_minimap();
-		gui_->invalidate_all();
-	}
-
 	mouse_handler_.deselect_hex();
 	n_unit::id_manager::instance().reset_fake();
 	init_side_done_ = false;
