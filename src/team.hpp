@@ -320,7 +320,6 @@ public:
 	void merge_shroud_map_data(const std::string& shroud_data) { shroud_.merge(shroud_data); }
 
 	bool knows_about_team(size_t index, bool is_multiplayer) const;
-	bool copy_ally_shroud();
 	/// Records hexes that were cleared of fog via WML.
 	void add_fog_override(const std::set<map_location> &hexes) { fog_clearer_.insert(hexes.begin(), hexes.end()); }
 	/// Removes the record of hexes that were cleared of fog via WML.

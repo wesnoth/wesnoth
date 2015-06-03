@@ -612,14 +612,6 @@ bool team::knows_about_team(size_t index, bool is_multiplayer) const
 	return false;
 }
 
-bool team::copy_ally_shroud()
-{
-	if(!teams || !share_maps())
-		return false;
-
-	return shroud_.copy_from(ally_shroud(*teams));
-}
-
 /**
  * Removes the record of hexes that were cleared of fog via WML.
  * @param[in] hexes	The hexes to no longer keep clear.
