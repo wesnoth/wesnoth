@@ -91,6 +91,4 @@ struct mp_game_settings : public savegame::savegame_config
 	void update_addon_requirements(const config & addon_cfg);
 };
 
-MAKE_ENUM_STREAM_OPS2(mp_game_settings, RANDOM_FACTION_MODE)
-
 #endif

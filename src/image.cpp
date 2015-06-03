@@ -769,29 +769,29 @@ static surface scale_xbrz_helper(const surface & res, int w, int h)
 
 static scaling_function select_algorithm(gui2::tadvanced_graphics_options::SCALING_ALGORITHM algo)
 {
-	switch (algo)
+	switch (algo.v)
 	{
-		case gui2::tadvanced_graphics_options::LINEAR:
+		case gui2::tadvanced_graphics_options::SCALING_ALGORITHM::LINEAR:
 		{
 			scaling_function result = &scale_surface;
 			return result;
 		}
-		case gui2::tadvanced_graphics_options::NEAREST_NEIGHBOR:
+		case gui2::tadvanced_graphics_options::SCALING_ALGORITHM::NEAREST_NEIGHBOR:
 		{
 			scaling_function result = &scale_surface_nn;
 			return result;
 		}
-		case gui2::tadvanced_graphics_options::XBRZ_LIN:
+		case gui2::tadvanced_graphics_options::SCALING_ALGORITHM::XBRZ_LIN:
 		{
 			scaling_function result = &scale_xbrz_helper<scale_surface>;
 			return result;
 		}
-		case gui2::tadvanced_graphics_options::XBRZ_NN:
+		case gui2::tadvanced_graphics_options::SCALING_ALGORITHM::XBRZ_NN:
 		{
 			scaling_function result = &scale_xbrz_helper<scale_surface_nn>;
 			return result;
 		}
-		case gui2::tadvanced_graphics_options::LEGACY_LINEAR:
+		case gui2::tadvanced_graphics_options::SCALING_ALGORITHM::LEGACY_LINEAR:
 		{
 			scaling_function result = &scale_surface_legacy;
 			return result;
@@ -1304,16 +1304,16 @@ std::string describe_versions()
 
 bool update_from_preferences()
 {
-	gui2::tadvanced_graphics_options::SCALING_ALGORITHM algo = gui2::tadvanced_graphics_options::LINEAR;
+	gui2::tadvanced_graphics_options::SCALING_ALGORITHM algo = gui2::tadvanced_graphics_options::SCALING_ALGORITHM::LINEAR;
 	try {
-		algo = gui2::tadvanced_graphics_options::string_to_SCALING_ALGORITHM(preferences::get("scale_hex"));
+		algo = gui2::tadvanced_graphics_options::SCALING_ALGORITHM::string_to_enum(preferences::get("scale_hex"));
 	} catch (bad_enum_cast &) {}
 
 	scale_to_hex_func = select_algorithm(algo);
 
-	algo = gui2::tadvanced_graphics_options::LINEAR;
+	algo = gui2::tadvanced_graphics_options::SCALING_ALGORITHM::LINEAR;
 	try {
-		algo = gui2::tadvanced_graphics_options::string_to_SCALING_ALGORITHM(preferences::get("scale_zoom"));
+		algo = gui2::tadvanced_graphics_options::SCALING_ALGORITHM::string_to_enum(preferences::get("scale_zoom"));
 	} catch (bad_enum_cast &) {}
 
 	scale_to_zoom_func = select_algorithm(algo);

@@ -1630,17 +1630,17 @@ int combat_modifier(const unit_map & units, const gamemap & map, const map_locat
 int generic_combat_modifier(int lawful_bonus, unit_type::ALIGNMENT alignment,
                             bool is_fearless) {
 	int bonus;
-	switch(alignment) {
-		case unit_type::LAWFUL:
+	switch(alignment.v) {
+		case unit_type::ALIGNMENT::LAWFUL:
 			bonus = lawful_bonus;
 			break;
-		case unit_type::NEUTRAL:
+		case unit_type::ALIGNMENT::NEUTRAL:
 			bonus = 0;
 			break;
-		case unit_type::CHAOTIC:
+		case unit_type::ALIGNMENT::CHAOTIC:
 			bonus = -lawful_bonus;
 			break;
-		case unit_type::LIMINAL:
+		case unit_type::ALIGNMENT::LIMINAL:
 			bonus = -abs(lawful_bonus);
 			break;
 		default:

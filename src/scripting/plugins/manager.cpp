@@ -75,9 +75,9 @@ size_t plugins_manager::size() {
 plugins_manager::STATUS plugins_manager::get_status(size_t idx) {
 	if (idx < plugins_.size()) {
 		if (!plugins_[idx].thread) {
-			return plugins_manager::NONE;
+			return plugins_manager::STATUS::NONE;
 		} else {
-			return plugins_[idx].thread->is_running() ? plugins_manager::RUNNING : plugins_manager::STOPPED;
+			return plugins_[idx].thread->is_running() ? plugins_manager::STATUS::RUNNING : plugins_manager::STATUS::STOPPED;
 		}
 	}
 	throw std::runtime_error("index out of bounds");
@@ -208,8 +208,9 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 
 bool plugins_manager::any_running()
 {
+	
 	for (size_t i = 0; i < size(); ++i) {
-		if (RUNNING == get_status(i)) {
+		if (STATUS::RUNNING == get_status(i)) {
 			return true;
 		}
 	}

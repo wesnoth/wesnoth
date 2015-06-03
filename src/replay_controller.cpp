@@ -72,14 +72,14 @@ LEVEL_RESULT play_replay_level(const config& game_config, const tdata_cache & td
 	play_replay_level_main_loop(*rc, is_unit_test);
 	if(rc->is_regular_game_end())
 	{
-	//	return rc->get_end_level_data_const().is_victory ? VICTORY : DEFEAT;
-		//The replay contained the whole scenario, returns VICTORY regardless of the original outcome.
-		return VICTORY;
+	//	return rc->get_end_level_data_const().is_victory ? LEVEL_RESULT::VICTORY : LEVEL_RESULT::DEFEAT;
+		//The replay contained the whole scenario, returns LEVEL_RESULT::VICTORY regardless of the original outcome.
+		return LEVEL_RESULT::VICTORY;
 	}
 	else
 	{
 		//The replay was finished without reaching the scenario end.
-		return QUIT;
+		return LEVEL_RESULT::QUIT;
 	}
 }
 
@@ -115,7 +115,7 @@ replay_controller::replay_controller(const config& level,
 	, gameboard_start_(gamestate_.board_)
 	, tod_manager_start_(level)
 	, is_playing_(false)
-	, vision_(state_of_game.classification().campaign_type == game_classification::MULTIPLAYER ? CURRENT_TEAM : HUMAN_TEAM)
+	, vision_(state_of_game.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER ? CURRENT_TEAM : HUMAN_TEAM)
 {
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the replay controller version
 

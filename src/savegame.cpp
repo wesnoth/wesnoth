@@ -245,7 +245,7 @@ bool loadgame::load_game(
 	}
 #if 0
 	gamestate_.classification().campaign_define = load_config_["campaign_define"].str();
-	gamestate_.classification().campaign_type = lexical_cast_default<game_classification::CAMPAIGN_TYPE> (load_config_["campaign_type"].str(), game_classification::SCENARIO);
+	gamestate_.classification().campaign_type = lexical_cast_default<game_classification::CAMPAIGN_TYPE> (load_config_["campaign_type"].str(), game_classification::CAMPAIGN_TYPE::SCENARIO);
 	gamestate_.classification().campaign_xtra_defines = utils::split(load_config_["campaign_extra_defines"]);
 	gamestate_.classification().version = load_config_["version"].str();
 	gamestate_.classification().difficulty = load_config_["difficulty"].str();
@@ -339,7 +339,7 @@ bool loadgame::load_multiplayer_game()
 		return false;
 	}
 
-	if(gamestate_.classification().campaign_type != game_classification::MULTIPLAYER) {
+	if(gamestate_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
 		gui2::show_transient_error_message(gui_.video(), _("This is not a multiplayer save."));
 		return false;
 	}

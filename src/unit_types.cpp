@@ -149,7 +149,7 @@ unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 	advances_to_(),
 	experience_needed_(0),
 	in_advancefrom_(false),
-	alignment_(unit_type::NEUTRAL),
+	alignment_(unit_type::ALIGNMENT::NEUTRAL),
 	movement_type_(),
 	possibleTraits_(),
 	genders_(),
@@ -198,7 +198,7 @@ void unit_type::build_full(const movement_type_map &mv_types,
 		} else {
 			BOOST_FOREACH(const config &t, race_->additional_traits())
 			{
-				if (alignment_ != unit_type::NEUTRAL || t["id"] != "fearless")
+				if (alignment_ != unit_type::ALIGNMENT::NEUTRAL || t["id"] != "fearless")
 					possibleTraits_.add_child("trait", t);
 			}
 		}
@@ -269,7 +269,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	big_profile_ = cfg_["profile"].str();
 	adjust_profile(small_profile_, big_profile_, image_);
 
-	alignment_ = lexical_cast_default<unit_type::ALIGNMENT>(cfg_["alignment"].str(), unit_type::NEUTRAL);
+	alignment_ = lexical_cast_default<unit_type::ALIGNMENT>(cfg_["alignment"].str(), unit_type::ALIGNMENT::NEUTRAL);
 
 	for (int i = 0; i < 2; ++i) {
 		if (gender_types_[i])
@@ -846,19 +846,17 @@ bool unit_type::resistance_filter_matches(const config& cfg, bool attacker, cons
 /** Implementation detail of unit_type::alignment_description */
 
 MAKE_ENUM (ALIGNMENT_FEMALE_VARIATION,
-	(FEMALE_LAWFUL, N_("female^lawful"))
+	(LAWFUL, N_("female^lawful"))
 	(FEMALE_NEUTRAL, N_("female^neutral"))
-	(FEMALE_CHAOTIC, N_("female^chaotic"))
-	(FEMALE_LIMINAL, N_("female^liminal"))
+	(CHAOTIC, N_("female^chaotic"))
+	(LIMINAL, N_("female^liminal"))
 )
-
-MAKE_ENUM_STREAM_OPS1(ALIGNMENT_FEMALE_VARIATION)
 
 std::string unit_type::alignment_description(ALIGNMENT align, unit_race::GENDER gender)
 {
 	std::string str = std::string();
 	if (gender == unit_race::FEMALE) {
-		ALIGNMENT_FEMALE_VARIATION fem = static_cast<ALIGNMENT_FEMALE_VARIATION> (align);
+		ALIGNMENT_FEMALE_VARIATION fem = align.cast<ALIGNMENT_FEMALE_VARIATION::type>();
 		str = lexical_cast<std::string>(fem);
 	} else {
 		str = lexical_cast<std::string>(align);

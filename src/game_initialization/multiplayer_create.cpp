@@ -68,7 +68,7 @@ static config get_selected_helper(const ng::create_engine * eng_ptr)
 		("icon", eng.current_level().icon())
 		("description", eng.current_level().description())
 		("allow_era_choice", eng.current_level().allow_era_choice())
-		("type", ng::level::TYPE_to_string(eng.current_level_type()));
+		("type", ng::level::TYPE::enum_to_string(eng.current_level_type()));
 }
 
 static config find_helper(const ng::create_engine * eng_ptr, const config & cfg)
@@ -78,7 +78,7 @@ static config find_helper(const ng::create_engine * eng_ptr, const config & cfg)
 	std::string str = cfg["id"].str();
 
 	return config_of("index", eng.find_level_by_id(str))
-		("type", ng::level::TYPE_to_string(eng.find_level_type_by_id(str)));
+		("type", ng::level::TYPE::enum_to_string(eng.find_level_type_by_id(str)));
 }
 
 create::create(game_display& disp, const config& cfg, saved_game& state,
@@ -126,14 +126,14 @@ create::create(game_display& disp, const config& cfg, saved_game& state,
 
 	typedef std::pair<ng::level::TYPE, std::string> level_type_info;
 	std::vector<level_type_info> all_level_types;
-	all_level_types.push_back(std::make_pair(ng::level::SCENARIO, _("Scenarios")));
-	all_level_types.push_back(std::make_pair(ng::level::CAMPAIGN, _("Campaigns")));
-	all_level_types.push_back(std::make_pair(ng::level::USER_MAP, _("User Maps")));
-	all_level_types.push_back(std::make_pair(ng::level::USER_SCENARIO, _("User Scenarios")));
-	all_level_types.push_back(std::make_pair(ng::level::RANDOM_MAP, _("Random Maps")));
+	all_level_types.push_back(std::make_pair(ng::level::TYPE::SCENARIO, _("Scenarios")));
+	all_level_types.push_back(std::make_pair(ng::level::TYPE::CAMPAIGN, _("Campaigns")));
+	all_level_types.push_back(std::make_pair(ng::level::TYPE::USER_MAP, _("User Maps")));
+	all_level_types.push_back(std::make_pair(ng::level::TYPE::USER_SCENARIO, _("User Scenarios")));
+	all_level_types.push_back(std::make_pair(ng::level::TYPE::RANDOM_MAP, _("Random Maps")));
 
 	if (game_config::debug) {
-		all_level_types.push_back(std::make_pair(ng::level::SP_CAMPAIGN,
+		all_level_types.push_back(std::make_pair(ng::level::TYPE::SP_CAMPAIGN,
 			"SP Campaigns"));
 	}
 
@@ -159,7 +159,7 @@ create::create(game_display& disp, const config& cfg, saved_game& state,
 	// Set level selection according to the preferences, if possible.
 	size_t type_index = 0;
 	BOOST_FOREACH(ng::level::TYPE type, available_level_types_) {
-		if (preferences::level_type() == type) {
+		if (preferences::level_type() == type.cast<int>()) {
 			break;
 		}
 		type_index++;
@@ -227,7 +227,7 @@ create::create(game_display& disp, const config& cfg, saved_game& state,
 void create::select_level_type_helper(const std::string & str)
 {
 	for (size_t idx = 0; idx < available_level_types_.size(); idx++) {
-		if (ng::level::TYPE_to_string(available_level_types_[idx]) == str) {
+		if (ng::level::TYPE::enum_to_string(available_level_types_[idx]) == str) {
 			level_type_combo_.set_selected(idx);
 			init_level_type_changed(0);
 			process_event_impl(process_event_data(false, false, false));
@@ -249,7 +249,7 @@ create::~create()
 		DBG_MP << "storing parameter values in preferences" << std::endl;
 		preferences::set_era(engine_.current_extra(ng::create_engine::ERA).id);
 		preferences::set_level(engine_.current_level().id());
-		preferences::set_level_type(engine_.current_level_type());
+		preferences::set_level_type(engine_.current_level_type().cast<int>());
 		preferences::set_modifications(engine_.active_mods());
 	} catch (...) {}
 }
@@ -291,8 +291,8 @@ void create::process_event_impl(const process_event_data & data)
 
 			engine_.prepare_for_era_and_mods();
 
-			if (engine_.current_level_type() == ng::level::CAMPAIGN ||
-				engine_.current_level_type() == ng::level::SP_CAMPAIGN) {
+			if (engine_.current_level_type() == ng::level::TYPE::CAMPAIGN ||
+				engine_.current_level_type() == ng::level::TYPE::SP_CAMPAIGN) {
 
 				std::string difficulty = engine_.select_campaign_difficulty();
 				if (difficulty == "CANCEL") {
@@ -301,7 +301,7 @@ void create::process_event_impl(const process_event_data & data)
 
 				engine_.prepare_for_campaign(difficulty);
 			}
-			else if (engine_.current_level_type() == ng::level::SCENARIO)
+			else if (engine_.current_level_type() == ng::level::TYPE::SCENARIO)
 			{
 				engine_.prepare_for_scenario();
 			}
@@ -427,11 +427,11 @@ void create::process_event_impl(const process_event_data & data)
 
 		set_description(engine_.current_level().description());
 
-		switch (engine_.current_level_type()) {
-		case ng::level::SCENARIO:
-		case ng::level::USER_MAP:
-		case ng::level::USER_SCENARIO:
-		case ng::level::RANDOM_MAP: {
+		switch (engine_.current_level_type().v) {
+		case ng::level::TYPE::SCENARIO:
+		case ng::level::TYPE::USER_MAP:
+		case ng::level::TYPE::USER_SCENARIO:
+		case ng::level::TYPE::RANDOM_MAP: {
 
 			ng::scenario* current_scenario =
 				dynamic_cast<ng::scenario*>(&engine_.current_level());
@@ -443,8 +443,8 @@ void create::process_event_impl(const process_event_data & data)
 
 			break;
 		}
-		case ng::level::CAMPAIGN:
-		case ng::level::SP_CAMPAIGN: {
+		case ng::level::TYPE::CAMPAIGN:
+		case ng::level::TYPE::SP_CAMPAIGN: {
 			 ng::campaign* current_campaign =
 				dynamic_cast<ng::campaign*>(&engine_.current_level());
 
@@ -525,8 +525,8 @@ void create::synchronize_selections()
 		process_event();
 	}
 
-	if (engine_.current_level_type() != ng::level::CAMPAIGN &&
-		engine_.current_level_type() != ng::level::SP_CAMPAIGN) {
+	if (engine_.current_level_type() != ng::level::TYPE::CAMPAIGN &&
+		engine_.current_level_type() != ng::level::TYPE::SP_CAMPAIGN) {
 		if (engine_.current_level().id() !=
 			engine_.dependency_manager().get_scenario()) {
 

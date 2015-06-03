@@ -11,6 +11,7 @@
 #include "multiplayer_ui.hpp"
 #include "playcampaign.hpp"
 #include "resources.hpp"
+#include "wml_exception.hpp"
 
 namespace {
 
@@ -29,10 +30,10 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 	do {
 
 		ng::create_engine create_eng(disp, state);
-		create_eng.set_current_level_type(ng::level::SP_CAMPAIGN);
+		create_eng.set_current_level_type(ng::level::TYPE::SP_CAMPAIGN);
 
 		std::vector<ng::create_engine::level_ptr> campaigns(
-			create_eng.get_levels_by_type_unfiltered(ng::level::SP_CAMPAIGN));
+			create_eng.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN));
 		
 		if (campaigns.empty()) {
 		  gui2::show_error_message(disp.video(),

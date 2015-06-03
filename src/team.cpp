@@ -95,8 +95,8 @@ team::team_info::team_info() :
 	objectives(),
 	objectives_changed(false),
 	controller(),
-	defeat_condition(team::NO_LEADER),
-	proxy_controller(team::PROXY_HUMAN),
+	defeat_condition(team::DEFEAT_CONDITION::NO_LEADER),
+	proxy_controller(team::PROXY_CONTROLLER::PROXY_HUMAN),
 	share_maps(false),
 	share_view(false),
 	disallow_observers(false),
@@ -137,7 +137,7 @@ void team::team_info::read(const config &cfg)
 	allow_player = cfg["allow_player"].to_bool(true);
 	chose_random = cfg["chose_random"].to_bool(false);
 	no_leader = cfg["no_leader"].to_bool();
-	defeat_condition = lexical_cast_default<team::DEFEAT_CONDITION>(cfg["defeat_condition"].str(), team::NO_LEADER);
+	defeat_condition = lexical_cast_default<team::DEFEAT_CONDITION>(cfg["defeat_condition"].str(), team::DEFEAT_CONDITION::NO_LEADER);
 	lost = cfg["lost"].to_bool(false);
 	hidden = cfg["hidden"].to_bool();
 	no_turn_confirmation = cfg["suppress_end_turn_confirmation"].to_bool();
@@ -195,15 +195,15 @@ void team::team_info::read(const config &cfg)
 	else
 		support_per_village = lexical_cast_default<int>(village_support, game_config::village_support);
 
-	controller = lexical_cast_default<team::CONTROLLER> (cfg["controller"].str(), team::AI);
+	controller = lexical_cast_default<team::CONTROLLER> (cfg["controller"].str(), team::CONTROLLER::AI);
 
 	//TODO: Why do we read disallow observers differently when controller is empty?
-	if (controller == EMPTY) {
+	if (controller == CONTROLLER::EMPTY) {
 		disallow_observers = cfg["disallow_observers"].to_bool(true);
 	}
 	//override persistence flag if it is explicitly defined in the config
 	//by default, persistence of a team is set depending on the controller
-	persistent = cfg["persistent"].to_bool(this->controller == HUMAN || this->controller == NETWORK);
+	persistent = cfg["persistent"].to_bool(this->controller == CONTROLLER::HUMAN || this->controller == CONTROLLER::NETWORK);
 
 	//========================================================
 	//END OF MESSY CODE
@@ -241,11 +241,11 @@ void team::team_info::write(config& cfg) const
 	cfg["allow_player"] = allow_player;
 	cfg["chose_random"] = chose_random;
 	cfg["no_leader"] = no_leader;
-	cfg["defeat_condition"] = DEFEAT_CONDITION_to_string(defeat_condition);
+	cfg["defeat_condition"] = DEFEAT_CONDITION::enum_to_string(defeat_condition);
 	cfg["hidden"] = hidden;
 	cfg["suppress_end_turn_confirmation"] = no_turn_confirmation;
 	cfg["scroll_to_leader"] = scroll_to_leader;
-	cfg["controller"] = CONTROLLER_to_string (controller);
+	cfg["controller"] = CONTROLLER::enum_to_string(controller);
 	cfg["recruit"] = utils::join(can_recruit);
 	cfg["share_maps"] = share_maps;
 	cfg["share_view"] = share_view;
@@ -472,10 +472,10 @@ void team::change_controller_by_wml(const std::string& new_controller_string)
 	try
 	{
 		CONTROLLER new_controller = lexical_cast<CONTROLLER> (new_controller_string);
-		if(new_controller == NETWORK || new_controller == NETWORK_AI) {
+		if(new_controller == CONTROLLER::NETWORK || new_controller == CONTROLLER::NETWORK_AI) {
 			throw bad_enum_cast(new_controller_string, "CONTROLLER"); //catched below
 		}
-		if(new_controller == EMPTY && resources::controller->current_side() == this->side()) {
+		if(new_controller == CONTROLLER::EMPTY && resources::controller->current_side() == this->side()) {
 			//We dont allow changing the currently active side to "null" controlled.
 			throw bad_enum_cast(new_controller_string, "CONTROLLER"); //catched below 
 		}
@@ -492,11 +492,11 @@ void team::change_controller_by_wml(const std::string& new_controller_string)
 		// In case this->is_empty() this side wasn't contorlled by any client yet, we need to assign controll to some client
 		// We assign controll to the currentyl active client, and asume the server does the same.
 		bool is_networked = this->is_empty() ? (*teams)[resources::controller->current_side() - 1].is_network() : this->is_network();
-		if(is_networked && new_controller == AI) {
-			new_controller = NETWORK_AI;
+		if(is_networked && new_controller == CONTROLLER::AI) {
+			new_controller = CONTROLLER::NETWORK_AI;
 		}
-		if(is_networked && new_controller == HUMAN) {
-			new_controller = NETWORK;
+		if(is_networked && new_controller == CONTROLLER::HUMAN) {
+			new_controller = CONTROLLER::NETWORK;
 		}
 		change_controller(new_controller);
 	}

@@ -140,7 +140,6 @@ public:
 
 	int experience_needed(bool with_acceleration=true) const;
 
-	//enum ALIGNMENT { LAWFUL, NEUTRAL, CHAOTIC, LIMINAL };
 	MAKE_ENUM (ALIGNMENT,
 		(LAWFUL, N_("lawful"))
 		(NEUTRAL, N_("neutral"))
@@ -284,8 +283,6 @@ private:
 	/** List with the portraits available for the unit. */
 	std::vector<tportrait> portraits_;
 };
-
-MAKE_ENUM_STREAM_OPS2(unit_type, ALIGNMENT)
 
 class unit_type_data
 	: private boost::noncopyable

@@ -12,8 +12,20 @@
    See the COPYING file for more details.
 */
 
+#ifndef MAKE_ENUM_HPP
+#define MAKE_ENUM_HPP
+#include <cassert>
+#include <exception>
+#include <string>
+
+#include <boost/preprocessor/cat.hpp>
+#include <boost/preprocessor/seq/for_each.hpp>
+#include <boost/preprocessor.hpp>
+
+#include <istream>
+#include <ostream>
+
 // Defines the MAKE_ENUM macro,
-// and companion macro MAKE_ENUM_STREAM_OPS, which also enables lexical_cast
 // Currently this has 1 argument and 2 argument variety.
 
 /**
@@ -26,51 +38,28 @@
 
 #include "make_enum.hpp"
 
-namespace foo {
-
-	MAKE_ENUM(enumname,
-	        (val1, "name1")
-	        (val2, "name2")
-	        (val3, "name3")
-	)
-
-	MAKE_ENUM_STREAM_OPS1(enumname)
-}
-
-
-
-
-
-class bar {
-	public:
-
-	MAKE_ENUM(another,
-	        (val1, "name1")
-	        (val2, "name2")
-	        (val3, "name3")
-	)
-
-};
-
-MAKE_ENUM_STREAM_OPS2(bar , another)
-
+MAKE_ENUM(enumname,
+	(val1, "name1")
+	(val2, "name2")
+	(val3, "name3")
+)
 */
 
 /**
  *
  * What it does:
  *
- * generates an enum foo::enumname, with functions to convert to and from string
- * const size_t foo::enumname_COUNT, which counts the number of possible values,
+ * generates a struct enumname which holds an enum and gives function to convert to and from string
+ * const size_t enumname::count, which counts the number of possible values,
  *
  *
- * foo::string_to_enumname(std::string);                        //throws bad_enum_cast
- * foo::string_to_enumname(std::string, foo::enumname default); //no throw
- * foo::enumname_to_string(foo::enumname);                      //no throw
+ * enumname enumname::string_to_enum(std::string);                           //throws bad_enum_cast
+ * enumname enumname::string_to_enum(std::string, enumname default);    //no throw
+ * std::string enumname::enum_to_string(enumname);                      //no throw
  *
  * The stream ops define
- * std::ostream & operator<< (std::ostream &, foo::enumname)    //no throw. asserts false if enum has an illegal value.
- * std::istream & operator>> (std::istream &, foo::enumname &)  //throws twml_exception including line number and arguments, IF game_config::debug is true.
+ * std::ostream & operator<< (std::ostream &, enumname)    //no throw. asserts false if enum has an illegal value.
+ * std::istream & operator>> (std::istream &, enumname &)  //throws twml_exception including line number and arguments, IF game_config::debug is true.
  * 								//doesn't throw except in that case, and correctly sets istream state to failing always.
  *								//this is generally a recoverable exception that only shows a temporary dialog box,
  *								//and is caught at many places in the gui code. you may safely catch it and ignore it,
@@ -97,161 +86,159 @@ MAKE_ENUM_STREAM_OPS2(bar , another)
  *
  **/
 
-#ifndef MAKE_ENUM_HPP
-#define MAKE_ENUM_HPP
-
-#include "game_config.hpp"
-#include "global.hpp"
-#include "wml_exception.hpp"
-
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/seq/for_each.hpp>
-#include <cassert>
-#include <cstddef>
-#include <exception>
-#include <iostream>
-#include <string>
-
 class bad_enum_cast : public std::exception
 {
 public:
-        bad_enum_cast(const std::string& enumname, const std::string& str)
-                : message("Failed to convert String \"" + str + "\" to type " + enumname)
-        {}
+	bad_enum_cast(const std::string& enumname, const std::string str)
+		: message("Failed to convert String \"" + str + "\" to type " + enumname)
+	{}
 
 	virtual ~bad_enum_cast() throw() {}
 
-        const char * what() const throw()
-        {
-                return message.c_str();
-        }
+	const char * what() const throw()
+	{
+		return message.c_str();
+	}
 
 private:
-        const std::string message;
+	std::string message;
 };
 
-// Add compiler directive suppressing unused variable warning
-#if defined(__GNUC__) || defined(__clang__) || defined(__MINGW32__)
-#define ATTR_UNUSED __attribute__((unused))
-#else
-#define ATTR_UNUSED
-#endif
+namespace make_enum_detail
+{
+	void debug_conversion_error(const std::string& tmp, const bad_enum_cast & e);
+}
 
-
-#define CAT2( A, B ) A ## B
-#define CAT3( A, B, C ) A ## B ## C
-
-//Clang apparently doesn't support __VA_ARGS__ with --C98 (???)
-//Can try this again when we upgrade
-/*
-#define GET_COUNT(_1, _2, _3, _4, _5, COUNT, ...) COUNT
-#define VA_SIZE(...) GET_COUNT(__VA_ARGS__, 5, 4, 3, 2, 1)
-
-#define VA_SELECT(MNAME, ...) CAT2(MNAME, VA_SIZE(__VA_ARGS__) )(__VA_ARGS__)
-*/
-
-
-#define EXPANDENUMVALUE( a, b ) a ,
-#define EXPANDENUMTYPE( r, data, elem ) EXPANDENUMVALUE elem
-
-#define EXPANDENUMFUNCTIONRETURN( a, b ) if ( str == b ) return a;
-#define EXPANDENUMFUNCTION( r, data, elem ) EXPANDENUMFUNCTIONRETURN elem
-
-#define EXPANDENUMFUNCTIONREVRETURN( a, b ) if ( val == a ) return b;
-#define EXPANDENUMFUNCTIONREV( r, data, elem ) EXPANDENUMFUNCTIONREVRETURN elem
-
-#define EXPANDENUMFUNCTIONCOUNTRETURN( a, b ) 1+
-#define EXPANDENUMFUNCTIONCOUNT( r, data, elem ) EXPANDENUMFUNCTIONCOUNTRETURN elem
 
 #define ADD_PAREN_1( A, B ) ((A, B)) ADD_PAREN_2
 #define ADD_PAREN_2( A, B ) ((A, B)) ADD_PAREN_1
 #define ADD_PAREN_1_END
 #define ADD_PAREN_2_END
-#define MAKEPAIRS( INPUT ) BOOST_PP_CAT(ADD_PAREN_1 INPUT,_END)
+#define MAKEPAIRS( INPUT ) BOOST_PP_CAT(ADD_PAREN_1 INPUT,_END)  
+#define PP_SEQ_FOR_EACH_I_PAIR(macro, data, pairs) BOOST_PP_SEQ_FOR_EACH_I(macro, data, MAKEPAIRS(pairs))
 
-#define MAKEENUMTYPE( NAME, CONTENT ) \
-enum NAME { \
-BOOST_PP_SEQ_FOR_EACH(EXPANDENUMTYPE,  , MAKEPAIRS(CONTENT)) \
+
+#define CAT2( A, B ) A ## B
+#define CAT3( A, B, C ) A ## B ## C
+
+
+#define EXPAND_ENUMVALUE_NORMAL(r, data, i, record) \
+    BOOST_PP_TUPLE_ELEM(2, 0, record) = i,
+
+
+#define EXPAND_ENUMFUNC_NORMAL(r, data, i, record) \
+    if(data == BOOST_PP_TUPLE_ELEM(2, 1, record)) return BOOST_PP_TUPLE_ELEM(2, 0, record);
+#define EXPAND_ENUMFUNCREV_NORMAL(r, data, i, record) \
+    if(data == BOOST_PP_TUPLE_ELEM(2, 0, record)) return BOOST_PP_TUPLE_ELEM(2, 1, record);
+
+#define EXPAND_ENUMFUNCTIONCOUNT(r, data, i, record) \
+	+ 1
+
+class enum_tag
+{
 };
-
-
-#define MAKEENUMCAST( NAME, PREFIX, CONTENT, COUNT_VAR ) \
-PREFIX NAME ATTR_UNUSED CAT3(string_to_, NAME, _default) (const std::string& str, NAME def) \
+#define MAKE_ENUM(NAME, CONTENT) \
+struct NAME : public enum_tag \
 { \
-        BOOST_PP_SEQ_FOR_EACH(EXPANDENUMFUNCTION,  , MAKEPAIRS(CONTENT)) \
-        return def; \
-} \
-PREFIX NAME ATTR_UNUSED CAT2(string_to_,NAME) (const std::string& str) \
-{ \
-        BOOST_PP_SEQ_FOR_EACH(EXPANDENUMFUNCTION,  , MAKEPAIRS(CONTENT)) \
-        throw bad_enum_cast( #NAME , str); \
-} \
-PREFIX std::string ATTR_UNUSED CAT2(NAME,_to_string) (NAME val) \
-{ \
-        BOOST_PP_SEQ_FOR_EACH(EXPANDENUMFUNCTIONREV,  , MAKEPAIRS(CONTENT)) \
-        assert(false && "Corrupted enum found with identifier NAME"); \
-        throw 42; \
-} \
-\
-PREFIX const size_t ATTR_UNUSED COUNT_VAR  = \
-BOOST_PP_SEQ_FOR_EACH(EXPANDENUMFUNCTIONCOUNT, , MAKEPAIRS(CONTENT)) \
-0;
-
-
-#define MAKE_ENUM( NAME, CONTENT ) \
-MAKEENUMTYPE( NAME, CONTENT ) \
-MAKEENUMCAST( NAME, static , CONTENT, CAT2(NAME,_COUNT) )
-
-#define MAKE_ENUM_STREAM_OPS1( NAME ) \
-inline std::ostream& operator<< (std::ostream & os, NAME val) \
-{ \
-	os << CAT2(NAME,_to_string) ( val ); \
-	return os; \
-} \
-inline std::istream& operator>> (std::istream & is, NAME & val) \
-{ \
-	std::istream::sentry s(is, true); \
-	if(!s) return is; \
-	std::string temp; \
-	is >> temp; \
-	try { \
-		val = CAT2(string_to_, NAME) ( temp ); \
-	} catch (bad_enum_cast & e) { \
-		is.setstate(std::ios::failbit); \
-		if (!temp.empty() && game_config::debug) { \
-			FAIL( e.what() ); \
-		} \
+	enum type \
+	{ \
+		PP_SEQ_FOR_EACH_I_PAIR(EXPAND_ENUMVALUE_NORMAL, ,CONTENT) \
+	}; \
+	type v; \
+	NAME(type v) : v(v) {} \
+	/*We don't want a default contructor but we need one in order to make lexical_cast working*/ \
+	NAME() : v() {} \
+	/*operator type() const { return v; } */\
+	static NAME string_to_enum (const std::string& str, NAME def) \
+	{ \
+		PP_SEQ_FOR_EACH_I_PAIR(EXPAND_ENUMFUNC_NORMAL, str , CONTENT) \
+		return def; \
 	} \
-	return is; \
-} \
-
-
-#define MAKE_ENUM_STREAM_OPS2( NAMESPACE, NAME ) \
-inline std::ostream& operator<< (std::ostream & os, NAMESPACE::NAME val) \
-{ \
-	os << CAT2(NAMESPACE::NAME,_to_string) ( val ); \
-	return os; \
-} \
-inline std::istream& operator>> (std::istream & is, NAMESPACE::NAME & val) \
-{ \
-	std::istream::sentry s(is, true); \
-	if(!s) return is; \
-	std::string temp; \
-	is >> temp; \
-	try { \
-		val = CAT2(NAMESPACE::string_to_,NAME) ( temp ); \
-	} catch (bad_enum_cast & e) {\
-		is.setstate(std::ios::failbit); \
-		if (!temp.empty() && game_config::debug) { \
-			FAIL( e.what() ); \
-		} \
+	static NAME string_to_enum (const std::string& str) \
+	{ \
+		PP_SEQ_FOR_EACH_I_PAIR(EXPAND_ENUMFUNC_NORMAL, str , CONTENT) \
+		throw bad_enum_cast( #NAME , str); \
 	} \
-	return is; \
-} \
-
-//Clang apparently doesn't support __VA_ARGS__ with --C98 (???)
-//Can try this again when we upgrade
-//#define MAKE_ENUM_STREAM_OPS VA_SELECT(MAKE_ENUM_STREAM_OPS, __VA_ARGS__)
+	static std::string enum_to_string (NAME val) \
+	{ \
+		PP_SEQ_FOR_EACH_I_PAIR(EXPAND_ENUMFUNCREV_NORMAL, val.v , CONTENT) \
+		assert(false && "Corrupted enum found with identifier NAME"); \
+		throw "assertion ignored"; \
+	} \
+	friend std::ostream& operator<< (std::ostream & os, NAME val) \
+	{ \
+		os << enum_to_string(val); \
+		return os; \
+	} \
+	friend std::ostream& operator<< (std::ostream & os, NAME::type val) \
+	{ \
+		return (os << NAME(val)); \
+	} \
+	friend std::istream& operator>> (std::istream & is, NAME& val) \
+	{ \
+		std::istream::sentry s(is, true); \
+		if(!s) return is; \
+		std::string temp; \
+		is >> temp; \
+		try { \
+			val = string_to_enum(temp); \
+		} catch (const bad_enum_cast & e) {\
+			is.setstate(std::ios::failbit); \
+			make_enum_detail::debug_conversion_error(temp, e); \
+		} \
+		return is; \
+	} \
+	friend std::istream& operator>> (std::istream & os, NAME::type& val) \
+	{ \
+		return (os >> reinterpret_cast< NAME &>(val)); \
+	} \
+	friend bool operator==(NAME v1, NAME v2) \
+	{ \
+		return v1.v == v2.v; \
+	} \
+	friend bool operator==(NAME::type v1, NAME v2) \
+	{ \
+		return v1 == v2.v; \
+	} \
+	friend bool operator==(NAME v1, NAME::type v2) \
+	{ \
+		return v1.v == v2; \
+	} \
+	friend bool operator!=(NAME v1, NAME v2) \
+	{ \
+		return v1.v != v2.v; \
+	} \
+	friend bool operator!=(NAME::type v1, NAME v2) \
+	{ \
+		return v1 != v2.v; \
+	} \
+	friend bool operator!=(NAME v1, NAME::type v2) \
+	{ \
+		return v1.v != v2; \
+	} \
+	/* operator< is used for by std::map and similar */ \
+	friend bool operator<(NAME v1, NAME v2) \
+	{ \
+		return v1.v < v2.v; \
+	} \
+	template<typename T> \
+	T cast() \
+	{ \
+		return static_cast<T>(v); \
+	} \
+	static NAME from_int(int i) \
+	{ \
+		return static_cast<type>(i); \
+	} \
+	static const size_t count = 0 PP_SEQ_FOR_EACH_I_PAIR(EXPAND_ENUMFUNCTIONCOUNT, , CONTENT);\
+private: \
+	/*prevent automatic conversion for any other built-in types such as bool, int, etc*/ \
+	/*template<typename T> \
+	operator T () const; */\
+	/* For some unknown reason the following version doesnt compile: */ \
+	/* template<typename T, typename = typename boost::enable_if<Cond>::type> \
+	operator T(); */\
+};
 
 
 #endif

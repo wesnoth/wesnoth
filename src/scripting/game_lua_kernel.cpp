@@ -100,6 +100,7 @@
 #include "util.hpp"                     // for lexical_cast
 #include "variable.hpp"                 // for vconfig, etc
 #include "variable_info.hpp"
+#include "wml_exception.hpp"
 
 #include <boost/bind.hpp>               // for bind_t, bind
 #include <boost/foreach.hpp>            // for auto_any_base, etc
@@ -1448,7 +1449,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 	const game_classification & classification = play_controller_.get_classification();
 
 	return_string_attrib("campaign_type", lexical_cast<std::string>(classification.campaign_type));
-	if(classification.campaign_type==game_classification::MULTIPLAYER) {
+	if(classification.campaign_type==game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
 		return_cfgref_attrib("mp_settings", mp_settings.to_config());
 		return_cfgref_attrib("era", game_config_manager::get()->game_config().find_child("era","id",mp_settings.mp_era));
 		//^ finds the era with name matching mp_era, and creates a lua reference from the config of that era.

@@ -118,7 +118,7 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 	tmulti_page& multi_page
 			= find_widget<tmulti_page>(&window, "campaign_details", false);
 
-	FOREACH(const AUTO & level, engine_.get_levels_by_type_unfiltered(ng::level::SP_CAMPAIGN))
+	FOREACH(const AUTO & level, engine_.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN))
 	{
 		const config& campaign = level->data();
 

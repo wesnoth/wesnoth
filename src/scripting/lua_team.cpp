@@ -70,8 +70,8 @@ static int impl_side_get(lua_State *L)
 	return_string_attrib("team_name", t.team_name());
 	return_string_attrib("name", t.name());
 	return_string_attrib("color", t.color());
-	return_cstring_attrib("controller", team::CONTROLLER_to_string(t.controller()).c_str());
-	return_string_attrib("defeat_condition", team::DEFEAT_CONDITION_to_string(t.defeat_condition()));
+	return_cstring_attrib("controller", team::CONTROLLER::enum_to_string(t.controller()).c_str());
+	return_string_attrib("defeat_condition", team::DEFEAT_CONDITION::enum_to_string(t.defeat_condition()));
 	return_bool_attrib("lost", t.lost());
 
 	if (strcmp(m, "recruit") == 0) {

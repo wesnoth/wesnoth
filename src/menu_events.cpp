@@ -269,7 +269,7 @@ void menu_handler::status_table(int selected)
 				leader_name = "Unknown";
 			}
 
-			if (pc_.get_classification().campaign_type == game_classification::MULTIPLAYER)
+			if (pc_.get_classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)
 				leader_name = teams()[n].current_player();
 
 		} else {
@@ -2810,9 +2810,9 @@ void console_handler::do_controller()
 		return;
 	}
 
-	std::string report = team::CONTROLLER_to_string (menu_handler_.teams()[side_num - 1].controller());
+	std::string report = team::CONTROLLER::enum_to_string (menu_handler_.teams()[side_num - 1].controller());
 	if (!menu_handler_.teams()[side_num - 1].is_proxy_human()) {
-		report += " (" + team::PROXY_CONTROLLER_to_string(menu_handler_.teams()[side_num - 1].proxy_controller()) + ")";
+		report += " (" + team::PROXY_CONTROLLER::enum_to_string(menu_handler_.teams()[side_num - 1].proxy_controller()) + ")";
 	}
 
 	print(get_cmd(), report);

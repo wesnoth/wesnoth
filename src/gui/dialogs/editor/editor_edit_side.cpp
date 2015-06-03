@@ -94,10 +94,10 @@ teditor_edit_side::teditor_edit_side(int side,
 
 void teditor_edit_side::pre_show(CVideo& /*video*/, twindow& window)
 {
-	register_controller_toggle(window, "human", team::HUMAN);
-	register_controller_toggle(window, "ai", team::AI);
-	register_controller_toggle(window, "null", team::EMPTY);
-	register_controller_toggle(window, "number", team::CONTROLLER(-1));
+	register_controller_toggle(window, "human", team::CONTROLLER::HUMAN);
+	register_controller_toggle(window, "ai", team::CONTROLLER::AI);
+	register_controller_toggle(window, "null", team::CONTROLLER::EMPTY);
+	register_controller_toggle(window, "number", team::CONTROLLER::from_int(-1));
 }
 
 void teditor_edit_side::register_controller_toggle(twindow& window,

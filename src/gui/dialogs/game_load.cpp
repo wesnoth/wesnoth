@@ -282,8 +282,8 @@ void tgame_load::evaluate_summary_string(std::stringstream& str,
 					= lexical_cast<game_classification::CAMPAIGN_TYPE>(
 							campaign_type);
 
-			switch(ct) {
-				case game_classification::SCENARIO: {
+			switch(ct.v) {
+				case game_classification::CAMPAIGN_TYPE::SCENARIO: {
 					const std::string campaign_id = cfg_summary["campaign"];
 					const config* campaign = NULL;
 					if(!campaign_id.empty()) {
@@ -308,13 +308,13 @@ void tgame_load::evaluate_summary_string(std::stringstream& str,
 					}
 					break;
 				}
-				case game_classification::MULTIPLAYER:
+				case game_classification::CAMPAIGN_TYPE::MULTIPLAYER:
 					str << _("Multiplayer");
 					break;
-				case game_classification::TUTORIAL:
+				case game_classification::CAMPAIGN_TYPE::TUTORIAL:
 					str << _("Tutorial");
 					break;
-				case game_classification::TEST:
+				case game_classification::CAMPAIGN_TYPE::TEST:
 					str << _("Test scenario");
 					break;
 			}

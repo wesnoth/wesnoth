@@ -217,7 +217,7 @@ wait::~wait()
 	try {
 	if (get_result() == QUIT) {
 		state_ = saved_game();
-		state_.classification().campaign_type = game_classification::MULTIPLAYER;
+		state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 
 		game_config_manager::get()->
 			load_game_config_for_game(state_.classification());
@@ -251,7 +251,7 @@ void wait::join_game(bool observe)
 
 	if (first_scenario_) {
 		state_ = saved_game();
-		state_.classification().campaign_type = game_classification::MULTIPLAYER;
+		state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 
 		const config* campaign = &game_config_manager::get()->
 			game_config().find_child("campaign", "id",
@@ -259,7 +259,7 @@ void wait::join_game(bool observe)
 
 		const config* scenario = &game_config_manager::get()->
 			game_config().find_child("multiplayer", "id",
-				level_.child(lexical_cast<std::string>(game_classification::MULTIPLAYER))["id"]);
+				level_.child(lexical_cast<std::string>(game_classification::CAMPAIGN_TYPE::MULTIPLAYER))["id"]);
 
 		const config* era = &game_config_manager::get()->
 			game_config().find_child("era", "id", level_.child("era")["id"]);

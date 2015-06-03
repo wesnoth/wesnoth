@@ -388,14 +388,14 @@ void connect_engine::start_game(LOAD_USERS load_users)
 		std::vector<std::string> avoid_faction_ids;
 
 		// If we aren't resolving random factions independently at random, calculate which factions should not appear for this side.
-		if (params_.random_faction_mode != mp_game_settings::DEFAULT) {
+		if (params_.random_faction_mode != mp_game_settings::RANDOM_FACTION_MODE::DEFAULT) {
 			BOOST_FOREACH(side_engine_ptr side2, side_engines_) {
 				if (!side2->flg().is_random_faction()) {
-					switch(params_.random_faction_mode) {
-						case mp_game_settings::NO_MIRROR:
+					switch(params_.random_faction_mode.v) {
+						case mp_game_settings::RANDOM_FACTION_MODE::NO_MIRROR:
 							avoid_faction_ids.push_back(side2->flg().current_faction()["id"].str());
 							break;
-						case mp_game_settings::NO_ALLY_MIRROR:
+						case mp_game_settings::RANDOM_FACTION_MODE::NO_ALLY_MIRROR:
 							if (side2->team() == side->team()) {// TODO: When the connect engines are fixed to allow multiple teams, this should be changed to "if side1 and side2 are allied, i.e. their list of teams has nonempty intersection"
 								avoid_faction_ids.push_back(side2->flg().current_faction()["id"].str());
 							}
@@ -878,7 +878,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 
 	// Tweak the controllers.
 	if (cfg_["controller"] == "network_ai" ||
-		(parent_.state_.classification().campaign_type == game_classification::SCENARIO && cfg_["controller"].blank())) 
+		(parent_.state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::SCENARIO && cfg_["controller"].blank())) 
 	{
 		cfg_["controller"] = "ai";
 	}

@@ -57,6 +57,5 @@ public:
 	std::string random_mode;
 	bool oos_debug;
 };
-MAKE_ENUM_STREAM_OPS2(game_classification, CAMPAIGN_TYPE)
 
 #endif

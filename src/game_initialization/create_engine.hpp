@@ -34,13 +34,13 @@ public:
 	level(const config& data);
 	virtual ~level() {}
 
-	MAKE_ENUM( TYPE,
-		(SCENARIO,		"scenario")
-		(USER_MAP,		"user_map")
-		(USER_SCENARIO,		"user_scenario")
-		(RANDOM_MAP,		"random_map")
-		(CAMPAIGN,		"campaign")
-		(SP_CAMPAIGN,		"sp_campaign")
+	MAKE_ENUM(TYPE,
+		(SCENARIO,      "scenario")
+		(USER_MAP,      "user_map")
+		(USER_SCENARIO, "user_scenario")
+		(RANDOM_MAP,    "random_map")
+		(CAMPAIGN,      "campaign")
+		(SP_CAMPAIGN,   "sp_campaign")
 	)
 
 	virtual bool can_launch_game() const = 0;
@@ -66,7 +66,6 @@ private:
 	level(const level&);
 	void operator=(const level&);
 };
-MAKE_ENUM_STREAM_OPS2( level, TYPE )
 
 class scenario : public level
 {

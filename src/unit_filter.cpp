@@ -95,7 +95,6 @@ namespace conditional {
 		(OR, "or")
 		(NOT, "not")
 	)
-	MAKE_ENUM_STREAM_OPS1(TYPE)
 }
 
 /// This class lazily parses an attribute value to a vector of strings
@@ -182,7 +181,7 @@ public:
 			const std::string& cond_name = cond.get_key();
 
 			try {
-				conditional::TYPE type = conditional::string_to_TYPE(cond_name); // throws bad_enum_cast if we don't get a string match with any enum
+				conditional::TYPE type = conditional::TYPE::string_to_enum(cond_name); // throws bad_enum_cast if we don't get a string match with any enum
 
 				const vconfig& cond_filter = cond.get_child();
 
@@ -339,14 +338,14 @@ bool basic_unit_filter_impl::matches(const unit & u, const map_location& loc) co
 
 	// Handle [and], [or], and [not] with in-order precedence
 	for (size_t i = 0; i < cond_children_.size(); i++) {
-		switch (cond_child_types_[i]) {
-			case conditional::AND:
+		switch (cond_child_types_[i].v) {
+			case conditional::TYPE::AND:
 				matches = matches && cond_children_[i].matches(u,loc);
 				break;
-			case conditional::OR:
+			case conditional::TYPE::OR:
 				matches = matches || cond_children_[i].matches(u,loc);
 				break;
-			case conditional::NOT:
+			case conditional::TYPE::NOT:
 				matches = matches && !cond_children_[i].matches(u,loc);
 		}
 	}

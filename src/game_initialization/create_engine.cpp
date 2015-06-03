@@ -421,7 +421,7 @@ create_engine::create_engine(game_display& disp, saved_game& state) :
 	state_.mp_settings().show_configure = configure;
 	state_.mp_settings().show_connect = connect;
 
-	if (!(type == game_classification::SCENARIO &&
+	if (!(type == game_classification::CAMPAIGN_TYPE::SCENARIO &&
 			game_config_manager::get()->old_defines_map().count("TITLE_SCREEN") != 0))
 	{
 		game_config_manager::get()->
@@ -449,8 +449,8 @@ create_engine::create_engine(game_display& disp, saved_game& state) :
 			state_.mp_settings().active_mods.push_back(str);
 	}
 
-	if (current_level_type_ != level::CAMPAIGN &&
-		current_level_type_ != level::SP_CAMPAIGN) {
+	if (current_level_type_ != level::TYPE::CAMPAIGN &&
+		current_level_type_ != level::TYPE::SP_CAMPAIGN) {
 		dependency_manager_.try_modifications(state_.mp_settings().active_mods, true);
 	}
 
@@ -745,23 +745,23 @@ std::vector<std::string> create_engine::extras_menu_item_names(
 
 level& create_engine::current_level() const
 {
-	switch (current_level_type_) {
-	case level::SCENARIO: {
+	switch (current_level_type_.v) {
+	case level::TYPE::SCENARIO: {
 		return *scenarios_[current_level_index_];
 	}
-	case level::USER_SCENARIO: {
+	case level::TYPE::USER_SCENARIO: {
 		return *user_scenarios_[current_level_index_];
 	}
-	case level::USER_MAP: {
+	case level::TYPE::USER_MAP: {
 		return *user_maps_[current_level_index_];
 	}
-	case level::RANDOM_MAP: {
+	case level::TYPE::RANDOM_MAP: {
 		return *random_maps_[current_level_index_];
 	}
-	case level::CAMPAIGN: {
+	case level::TYPE::CAMPAIGN: {
 		return *campaigns_[current_level_index_];
 	}
-	case level::SP_CAMPAIGN:
+	case level::TYPE::SP_CAMPAIGN:
 	default: {
 		return *sp_campaigns_[current_level_index_];
 	}
@@ -789,27 +789,27 @@ level::TYPE create_engine::current_level_type() const
 
 void create_engine::set_current_level(const size_t index)
 {
-	switch (current_level_type()) {
-	case level::CAMPAIGN:
+	switch (current_level_type().v) {
+	case level::TYPE::CAMPAIGN:
 		current_level_index_ = campaigns_filtered_[index];
 		break;
-	case level::SP_CAMPAIGN:
+	case level::TYPE::SP_CAMPAIGN:
 		current_level_index_ = sp_campaigns_filtered_[index];
 		break;
-	case level::SCENARIO:
+	case level::TYPE::SCENARIO:
 		current_level_index_ = scenarios_filtered_[index];
 		break;
-	case level::RANDOM_MAP:
+	case level::TYPE::RANDOM_MAP:
 		current_level_index_ = random_maps_filtered_[index];
 		break;
-	case level::USER_MAP:
+	case level::TYPE::USER_MAP:
 		current_level_index_ = user_maps_filtered_[index];
 		break;
-	case level::USER_SCENARIO:
+	case level::TYPE::USER_SCENARIO:
 		current_level_index_ = user_scenarios_filtered_[index];
 	}
 
-	if (current_level_type_ == level::RANDOM_MAP) {
+	if (current_level_type_ == level::TYPE::RANDOM_MAP) {
 		random_map* current_random_map =
 			dynamic_cast<random_map*>(&current_level());
 
@@ -820,8 +820,8 @@ void create_engine::set_current_level(const size_t index)
 		generator_.reset(NULL);
 	}
 
-	if (current_level_type_ != level::CAMPAIGN &&
-		current_level_type_ != level::SP_CAMPAIGN) {
+	if (current_level_type_ != level::TYPE::CAMPAIGN &&
+		current_level_type_ != level::TYPE::SP_CAMPAIGN) {
 
 		dependency_manager_.try_scenario(current_level().id());
 	}
@@ -851,7 +851,7 @@ size_t create_engine::current_mod_index() const
 
 bool create_engine::toggle_current_mod(bool force)
 {
-	force |= (current_level_type_ == ng::level::CAMPAIGN || current_level_type_ == ng::level::SP_CAMPAIGN);
+	force |= (current_level_type_ == ng::level::TYPE::CAMPAIGN || current_level_type_ == ng::level::TYPE::SP_CAMPAIGN);
 	bool is_active = dependency_manager_.is_modification_active(current_mod_index_);
 	dependency_manager_.try_modification_by_index(current_mod_index_, !is_active, force);
 
@@ -942,30 +942,30 @@ level::TYPE create_engine::find_level_type_by_id(const std::string& id) const
 {
 	BOOST_FOREACH(user_map_ptr user_map, user_maps_) {
 		if (user_map->id() == id) {
-			return level::USER_MAP;
+			return level::TYPE::USER_MAP;
 		}
 	}
 	BOOST_FOREACH(random_map_ptr random_map, random_maps_) {
 		if (random_map->id() == id) {
-			return level::RANDOM_MAP;
+			return level::TYPE::RANDOM_MAP;
 		}
 	}
 	BOOST_FOREACH(scenario_ptr scenario, scenarios_) {
 		if (scenario->id() == id) {
-			return level::SCENARIO;
+			return level::TYPE::SCENARIO;
 		}
 	}
 	BOOST_FOREACH(scenario_ptr scenario, user_scenarios_) {
 		if (scenario->id() == id) {
-			return level::USER_SCENARIO;
+			return level::TYPE::USER_SCENARIO;
 		}
 	}
 	BOOST_FOREACH(campaign_ptr campaign, campaigns_) {
 		if (campaign->id() == id) {
-			return level::CAMPAIGN;
+			return level::TYPE::CAMPAIGN;
 		}
 	}
-	return level::SP_CAMPAIGN;
+	return level::TYPE::SP_CAMPAIGN;
 }
 
 const depcheck::manager& create_engine::dependency_manager() const
@@ -1072,7 +1072,7 @@ void create_engine::init_all_levels()
 	// Stand-alone scenarios.
 	BOOST_FOREACH(const config &data,
 		game_config_manager::get()->game_config().child_range(
-		lexical_cast<std::string> (game_classification::MULTIPLAYER)))
+		lexical_cast<std::string> (game_classification::CAMPAIGN_TYPE::MULTIPLAYER)))
 	{
 		if (!data["allow_new_game"].to_bool(true))
 			continue;
@@ -1093,7 +1093,7 @@ void create_engine::init_all_levels()
 		game_config_manager::get()->game_config().child_range("campaign"))
 	{
 		const std::string& type = data["type"];
-		bool mp = state_.classification().campaign_type == game_classification::MULTIPLAYER;
+		bool mp = state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 
 		if (type == "mp" || (type == "hybrid" && mp)) {
 			campaign_ptr new_campaign(new campaign(data));
@@ -1121,7 +1121,7 @@ void create_engine::init_extras(const MP_EXTRA extra_type)
 		game_config_manager::get()->game_config().child_range(extra_name)) {
 
 		const std::string& type = extra["type"];
-		bool mp = state_.classification().campaign_type == game_classification::MULTIPLAYER;
+		bool mp = state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 
 		if((type != "mp" || mp) && (type != "sp" || !mp) )
 		{
@@ -1199,33 +1199,33 @@ std::vector<create_engine::level_ptr>
 	create_engine::get_levels_by_type_unfiltered(level::TYPE type) const
 {
 	std::vector<level_ptr> levels;
-	switch (type) {
-	case level::SCENARIO:
+	switch (type.v) {
+	case level::TYPE::SCENARIO:
 		BOOST_FOREACH(level_ptr level, scenarios_) {
 			levels.push_back(level);
 		}
 		break;
-	case level::USER_MAP:
+	case level::TYPE::USER_MAP:
 		BOOST_FOREACH(level_ptr level, user_maps_) {
 			levels.push_back(level);
 		}
 		break;
-	case level::USER_SCENARIO:
+	case level::TYPE::USER_SCENARIO:
 		BOOST_FOREACH(level_ptr level, user_scenarios_) {
 			levels.push_back(level);
 		}
 		break;
-	case level::RANDOM_MAP:
+	case level::TYPE::RANDOM_MAP:
 		BOOST_FOREACH(level_ptr level, random_maps_) {
 			levels.push_back(level);
 		}
 		break;
-	case level::CAMPAIGN:
+	case level::TYPE::CAMPAIGN:
 		BOOST_FOREACH(level_ptr level, campaigns_) {
 			levels.push_back(level);
 		}
 		break;
-	case level::SP_CAMPAIGN:
+	case level::TYPE::SP_CAMPAIGN:
 		BOOST_FOREACH(level_ptr level, sp_campaigns_) {
 			levels.push_back(level);
 		}
@@ -1238,33 +1238,33 @@ std::vector<create_engine::level_ptr>
 std::vector<create_engine::level_ptr> create_engine::get_levels_by_type(level::TYPE type) const
 {
 	std::vector<level_ptr> levels;
-	switch (type) {
-	case level::SCENARIO:
+	switch (type.v) {
+	case level::TYPE::SCENARIO:
 		BOOST_FOREACH(size_t level, scenarios_filtered_) {
 			levels.push_back(scenarios_[level]);
 		}
 		break;
-	case level::USER_MAP:
+	case level::TYPE::USER_MAP:
 		BOOST_FOREACH(size_t level, user_maps_filtered_) {
 			levels.push_back(user_maps_[level]);
 		}
 		break;
-	case level::USER_SCENARIO:
+	case level::TYPE::USER_SCENARIO:
 		BOOST_FOREACH(size_t level, user_scenarios_filtered_) {
 			levels.push_back(user_scenarios_[level]);
 		}
 		break;
-	case level::RANDOM_MAP:
+	case level::TYPE::RANDOM_MAP:
 		BOOST_FOREACH(size_t level, random_maps_filtered_) {
 			levels.push_back(random_maps_[level]);
 		}
 		break;
-	case level::CAMPAIGN:
+	case level::TYPE::CAMPAIGN:
 		BOOST_FOREACH(size_t level, campaigns_filtered_) {
 			levels.push_back(campaigns_[level]);
 		}
 		break;
-	case level::SP_CAMPAIGN:
+	case level::TYPE::SP_CAMPAIGN:
 		BOOST_FOREACH(size_t level, sp_campaigns_filtered_) {
 			levels.push_back(sp_campaigns_[level]);
 		}

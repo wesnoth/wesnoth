@@ -114,7 +114,7 @@ namespace test_utils {
 		source_.type_key(current_time_++, SDLK_RETURN);
 
 		saved_game& state = end->get_state();
-		state.classification().campaign_type = game_classification::TEST;
+		state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::TEST;
 		state.set_carryover_sides_start(
 			config_of("next_scenario", id_)
 		);

@@ -107,7 +107,7 @@ void status_table(display& gui, int selected)
 				leader_bools.push_back(false);
 				leader_name = "Unknown";
 			}
-	//	if (gamestate_.classification().campaign_type == game_classification::MULTIPLAYER)
+	//	if (gamestate_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)
 	//			leader_name = teams[n].current_player();
 
 #ifndef LOW_MEM

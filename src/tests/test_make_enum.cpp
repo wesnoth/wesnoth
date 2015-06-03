@@ -26,8 +26,6 @@ namespace foo {
 	        (con2, "name2")
 	        (con3, "name3")
 	)
-
-	MAKE_ENUM_STREAM_OPS1(enumname)
 }
 
 
@@ -44,17 +42,14 @@ foo::enumname lexical_cast<std::string> ( std::string str ) throws bad_lexical_c
 */
 
 class bar {
-	public:
-
+public:
 	MAKE_ENUM(another,
 	        (val1, "name1")
 	        (val2, "name2")
 	        (val3, "name3")
 	)
-
 };
 
-MAKE_ENUM_STREAM_OPS2(bar,another)
 
 /** Tests begin **/
 
@@ -62,11 +57,11 @@ BOOST_AUTO_TEST_SUITE ( test_make_enum )
 
 BOOST_AUTO_TEST_CASE ( test_make_enum_namespace )
 {
-	foo::enumname e = foo::string_to_enumname_default("name2", foo::con1); //returns con2
+	foo::enumname e = foo::enumname::string_to_enum("name2", foo::enumname::con1); //returns con2
 
-	BOOST_CHECK_EQUAL ( e, foo::con2 );
+	BOOST_CHECK_EQUAL ( e, foo::enumname::con2 );
 
-	std::string str = foo::enumname_to_string(foo::con1); //returns "name1"
+	std::string str = foo::enumname::enum_to_string(foo::enumname::con1); //returns "name1"
 
 	BOOST_CHECK_EQUAL ( str, "name1" );
 
@@ -103,11 +98,11 @@ BOOST_AUTO_TEST_CASE ( test_make_enum_namespace )
 
 BOOST_AUTO_TEST_CASE ( test_make_enum_class )
 {
-	bar::another e = bar::string_to_another_default("name2", bar::val1); //returns val2
+	bar::another e = bar::another::string_to_enum("name2", bar::another::val1); //returns val2
 
-	BOOST_CHECK_EQUAL ( e, bar::val2 );
+	BOOST_CHECK_EQUAL ( e, bar::another::val2 );
 
-	std::string str = bar::another_to_string(bar::val1); //returns "name1"
+	std::string str = bar::another::enum_to_string(bar::another::val1); //returns "name1"
 
 	BOOST_CHECK_EQUAL ( str, "name1" );
 

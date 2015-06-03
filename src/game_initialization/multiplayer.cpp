@@ -823,7 +823,7 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 		}
 
 		game_classification classification;
-		classification.campaign_type = game_classification::MULTIPLAYER;
+		classification.campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 		classification.scenario_define = level_preload["define"].str();
 		classification.era_define = era_cfg_preload["define"].str();
 		game_config_manager::get()->load_game_config_for_game(classification);

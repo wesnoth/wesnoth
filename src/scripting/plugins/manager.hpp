@@ -75,6 +75,4 @@ private:
 	boost::scoped_ptr<application_lua_kernel> kernel_;
 };
 
-MAKE_ENUM_STREAM_OPS2(plugins_manager, STATUS)
-
 #endif

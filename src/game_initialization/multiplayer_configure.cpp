@@ -178,7 +178,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 
 	observers_game_.set_check(engine_.allow_observers_default());
 	observers_game_.set_help_string(_("Allow users who are not playing to watch the game"));
-	observers_game_.enable(state_.classification().campaign_type != game_classification::SCENARIO);
+	observers_game_.enable(state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::SCENARIO);
 
 	oos_debug_.set_check(false);
 	oos_debug_.set_help_string(_("More checks for OOS errors but also more network traffic"));
@@ -190,12 +190,12 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	random_faction_mode_label_.set_help_string(_("Allow for mirror matchups when random factions are chosen"));
 
 	std::vector<std::string> translated_modes;
-	for(size_t i = 0; i < mp_game_settings::RANDOM_FACTION_MODE_COUNT; ++i) {
-		std::string mode_str = mp_game_settings::RANDOM_FACTION_MODE_to_string(static_cast<mp_game_settings::RANDOM_FACTION_MODE> (i));
+	for(size_t i = 0; i < mp_game_settings::RANDOM_FACTION_MODE::count; ++i) {
+		std::string mode_str = mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(mp_game_settings::RANDOM_FACTION_MODE::from_int(i));
 		translated_modes.push_back(translation::gettext(mode_str.c_str()));
 	}
 	random_faction_mode_.set_items(translated_modes);
-	random_faction_mode_.set_selected(engine_.random_faction_mode());
+	random_faction_mode_.set_selected(engine_.random_faction_mode().cast<int>());
 	random_faction_mode_.set_help_string(_("Independent: Random factions assigned independently\nNo Mirror: No two players will get the same faction\nNo Ally Mirror: No two allied players will get the same faction"));
 
 #if 0
@@ -244,7 +244,7 @@ configure::~configure()
 	// Save values for next game
 	DBG_MP << "storing parameter values in preferences" << std::endl;
 	preferences::set_shuffle_sides(engine_.shuffle_sides());
-	preferences::set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE_to_string(engine_.random_faction_mode()));
+	preferences::set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(engine_.random_faction_mode()));
 	preferences::set_use_map_settings(engine_.use_map_settings());
 	preferences::set_countdown(engine_.mp_countdown());
 	preferences::set_countdown_init_time(engine_.mp_countdown_init_time());
@@ -308,7 +308,7 @@ const mp_game_settings& configure::get_parameters()
 	engine_.set_allow_observers(observers_game_.checked());
 	engine_.set_oos_debug(oos_debug_.checked());
 	engine_.set_shuffle_sides(shuffle_sides_.checked());
-	engine_.set_random_faction_mode(static_cast<mp_game_settings::RANDOM_FACTION_MODE>(random_faction_mode_.selected()));
+	engine_.set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE::from_int(random_faction_mode_.selected()));
 
 	engine_.set_options(options_manager_.get_values());
 

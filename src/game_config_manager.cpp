@@ -245,8 +245,8 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		// become [multiplayer] tags and campaign's id should be added to them
 		// to allow to recognize which scenarios belongs to a loaded campaign.
 		if (classification != NULL) {
-			if ((classification->campaign_type == game_classification::MULTIPLAYER ||
-				classification->campaign_type == game_classification::SCENARIO) &&
+			if ((classification->campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER ||
+				classification->campaign_type == game_classification::CAMPAIGN_TYPE::SCENARIO) &&
 				!classification->campaign_define.empty()) {
 
 				const config& campaign = game_config().find_child("campaign",
@@ -267,7 +267,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 					cfg["require_scenario"] = require_campaign;
 					// make force_lock_settings default to true for [scenario]
 					cfg["force_lock_settings"] = cfg["force_lock_settings"].to_bool(true);
-					game_config_.add_child(lexical_cast<std::string>(game_classification::MULTIPLAYER), cfg);
+					game_config_.add_child(lexical_cast<std::string>(game_classification::CAMPAIGN_TYPE::MULTIPLAYER), cfg);
 				}
 			}
 		}
@@ -502,9 +502,9 @@ void game_config_manager::load_game_config_for_game(
 	game_config::scoped_preproc_define era(classification.era_define,
 		!classification.era_define.empty());
 	game_config::scoped_preproc_define multiplayer("MULTIPLAYER",
-		classification.campaign_type == game_classification::MULTIPLAYER);
+		classification.campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER);
 	game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest &&
-		classification.campaign_type == game_classification::MULTIPLAYER);
+		classification.campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER);
 
 	typedef boost::shared_ptr<game_config::scoped_preproc_define> define;
 	std::deque<define> extra_defines;

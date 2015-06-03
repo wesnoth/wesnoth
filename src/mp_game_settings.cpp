@@ -60,7 +60,7 @@ mp_game_settings::mp_game_settings() :
 	allow_observers(false),
 	shuffle_sides(false),
 	saved_game(false),
-	random_faction_mode(DEFAULT),
+	random_faction_mode(RANDOM_FACTION_MODE::DEFAULT),
 	options(),
 	addons()
 {}
@@ -95,7 +95,7 @@ mp_game_settings::mp_game_settings(const config& cfg)
 	, allow_observers(cfg["observer"].to_bool())
 	, shuffle_sides(cfg["shuffle_sides"].to_bool())
 	, saved_game(cfg["savegame"].to_bool())
-	, random_faction_mode(string_to_RANDOM_FACTION_MODE_default(cfg["random_faction_mode"].str(), DEFAULT))
+	, random_faction_mode(RANDOM_FACTION_MODE::string_to_enum(cfg["random_faction_mode"].str(), RANDOM_FACTION_MODE::DEFAULT))
 	, options(cfg.child_or_empty("options"))
 	, addons()
 {
@@ -136,7 +136,7 @@ config mp_game_settings::to_config() const
 	cfg["mp_random_start_time"] = random_start_time;
 	cfg["observer"] = allow_observers;
 	cfg["shuffle_sides"] = shuffle_sides;
-	cfg["random_faction_mode"] = RANDOM_FACTION_MODE_to_string (random_faction_mode);
+	cfg["random_faction_mode"] = RANDOM_FACTION_MODE::enum_to_string (random_faction_mode);
 	cfg["savegame"] = saved_game;
 	cfg.add_child("options", options);
 

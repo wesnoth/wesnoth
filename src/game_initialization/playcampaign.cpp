@@ -74,7 +74,7 @@ static void show_carryover_message(saved_game& gamestate, playsingle_controller&
 
 	if (obs) {
 		title = _("Scenario Report");
-	} else if (res == VICTORY) {
+	} else if (res == LEVEL_RESULT::VICTORY) {
 		title = _("Victory");
 		report << "<b>" << _("You have emerged victorious!") << "</b>\n\n";
 	} else {
@@ -93,7 +93,7 @@ static void show_carryover_message(saved_game& gamestate, playsingle_controller&
 	}
 
 	if (persistent_teams > 0 && ((has_next_scenario && end_level.proceed_to_next_level)||
-			gamestate.classification().campaign_type == game_classification::TEST))
+			gamestate.classification().campaign_type == game_classification::CAMPAIGN_TYPE::TEST))
 	{
 		gamemap map = playcontroller.get_map_const();
 		tod_manager tod = playcontroller.get_tod_manager_const();
@@ -145,25 +145,25 @@ LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& gam
 	} catch(game::load_game_failed& e) {
 		ERR_NG << std::string(_("The game could not be loaded: ")) + " (game::load_game_failed) " + e.message << std::endl;
 		if (is_unit_test) {
-			return DEFEAT;
+			return LEVEL_RESULT::DEFEAT;
 		} else {
 			gui2::show_error_message(disp.video(), _("The game could not be loaded: ") + e.message);
 		}
 	
 	} catch(quit_game_exception&) {
 		LOG_NG << "The replay was aborted\n";
-		return QUIT;
+		return LEVEL_RESULT::QUIT;
 	} catch(game::game_error& e) {
 		ERR_NG << std::string(_("Error while playing the game: ")) + " (game::game_error) " + e.message << std::endl;
 		if (is_unit_test) {
-			return DEFEAT;
+			return LEVEL_RESULT::DEFEAT;
 		} else {
 			gui2::show_error_message(disp.video(), std::string(_("Error while playing the game: ")) + e.message);
 		}
 	} catch(incorrect_map_format_error& e) {
 		ERR_NG << std::string(_("The game map could not be loaded: ")) + " (incorrect_map_format_error) " + e.message << std::endl;
 		if (is_unit_test) {
-			return DEFEAT;
+			return LEVEL_RESULT::DEFEAT;
 		} else {
 			gui2::show_error_message(disp.video(), std::string(_("The game map could not be loaded: ")) + e.message);
 		}
@@ -171,13 +171,13 @@ LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& gam
 		ERR_NG << std::string("WML Exception: ") + e.user_message << std::endl;
 		ERR_NG << std::string("Dev Message: ") + e.dev_message << std::endl;
 		if (is_unit_test) {
-			return DEFEAT;
+			return LEVEL_RESULT::DEFEAT;
 		} else {
 			e.show(disp);
 		}
 	}
 	//TODO: when can this happen?
-	return VICTORY;
+	return LEVEL_RESULT::VICTORY;
 }
 
 static LEVEL_RESULT playsingle_scenario(const config& game_config,
@@ -194,9 +194,9 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 
 	LEVEL_RESULT res = playcontroller.play_scenario(story);
 
-	if (res == QUIT)
+	if (res == LEVEL_RESULT::QUIT)
 	{
-		return QUIT;
+		return LEVEL_RESULT::QUIT;
 	}
 
 	end_level = playcontroller.get_end_level_data_const();
@@ -227,14 +227,14 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 	if (io_type == IO_CLIENT && playcontroller.is_host())
 		io_type = IO_SERVER;
 
-	if (res == QUIT)
+	if (res == LEVEL_RESULT::QUIT)
 	{
-		return QUIT;
+		return LEVEL_RESULT::QUIT;
 	}
 
 	end_level = playcontroller.get_end_level_data_const();
 
-	if(res != OBSERVER_END)
+	if(res != LEVEL_RESULT::OBSERVER_END)
 	{
 		//We need to call this before linger because it prints the defeated/victory message.
 		//(we want to see that message before entering the linger mode)
@@ -261,7 +261,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 
 	while(gamestate.valid())
 	{
-		LEVEL_RESULT res = VICTORY;
+		LEVEL_RESULT res = LEVEL_RESULT::VICTORY;
 		end_level_data end_level;
 
 		try {
@@ -278,7 +278,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			config::const_child_itors story = gamestate.get_starting_pos().child_range("story");
 
 #if !defined(ALWAYS_USE_MP_CONTROLLER)
-			if (game_type != game_classification::MULTIPLAYER) {
+			if (game_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
 				res = playsingle_scenario(game_config, tdata, disp, gamestate, story, skip_replay, end_level);
 			} else 
 #endif
@@ -287,30 +287,30 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			}
 		} catch(game::load_game_failed& e) {
 			gui2::show_error_message(disp.video(), _("The game could not be loaded: ") + e.message);
-			return QUIT;
+			return LEVEL_RESULT::QUIT;
 		} catch(quit_game_exception&) {
 			LOG_NG << "The game was aborted\n";
-			return QUIT;
+			return LEVEL_RESULT::QUIT;
 		} catch(game::game_error& e) {
 			gui2::show_error_message(disp.video(), _("Error while playing the game: ") + e.message);
-			return QUIT;
+			return LEVEL_RESULT::QUIT;
 		} catch(incorrect_map_format_error& e) {
 			gui2::show_error_message(disp.video(), std::string(_("The game map could not be loaded: ")) + e.message);
-			return QUIT;
+			return LEVEL_RESULT::QUIT;
 		} catch (mapgen_exception& e) {
 			gui2::show_error_message(disp.video(), std::string(_("Map generator error: ") + e.message));
 		} catch(config::error& e) {
 			gui2::show_error_message(disp.video(), _("Error while reading the WML: ") + e.message);
-			return QUIT;
+			return LEVEL_RESULT::QUIT;
 		} catch(twml_exception& e) {
 			e.show(disp);
-			return QUIT;
+			return LEVEL_RESULT::QUIT;
 		}
 
 		if (is_unit_test) {
 			return res;
 		}
-		if(res == QUIT) {
+		if(res == LEVEL_RESULT::QUIT) {
 			return res;
 		}
 		// proceed_to_next_level <=> 'any human side recieved victory'
@@ -335,7 +335,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		{
 			return res;
 		}
-		else if(res == OBSERVER_END)
+		else if(res == LEVEL_RESULT::OBSERVER_END)
 		{
 			// TODO: does it make sense to ask this question if we are currently the host?
 			const int dlg_res = gui2::show_message(disp.video(), _("Game Over"),
@@ -350,9 +350,9 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		if (io_type == IO_CLIENT) {
 			// Opens mp::connect dialog to get a new gamestate.
 			mp::ui::result wait_res = mp::goto_mp_wait(gamestate, disp,
-				game_config, res == OBSERVER_END);
+				game_config, res == LEVEL_RESULT::OBSERVER_END);
 			if (wait_res == mp::ui::QUIT) {
-				return QUIT;
+				return LEVEL_RESULT::QUIT;
 			}
 
 			//The host should send the complete savegame now that also contains the carryvoer sides start.
@@ -367,21 +367,21 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 				gamestate.mp_settings().num_turns = starting_pos["turns"].to_int(-1);
 				gamestate.mp_settings().saved_game = false;
 				gamestate.mp_settings().use_map_settings
-					= starting_pos["force_lock_settings"].to_bool(game_type != game_classification::MULTIPLAYER);
+					= starting_pos["force_lock_settings"].to_bool(game_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER);
 
 				ng::connect_engine_ptr
 					connect_engine(new ng::connect_engine(gamestate,
 						!network_game, false));
 
 				if (starting_pos["allow_new_game"].to_bool(gamestate.mp_settings().show_connect) 
-				|| (game_config::debug && network::nconnections() == 0 && game_type == game_classification::MULTIPLAYER)) {
+				|| (game_config::debug && network::nconnections() == 0 && game_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)) {
 					// Opens mp::connect dialog to allow users to
 					// make an adjustments for scenario.
 					// TODO: Fix this so that it works when network::nconnections() > 0 as well.
 					mp::ui::result connect_res = mp::goto_mp_connect(disp,
 						*connect_engine, game_config, gamestate.mp_settings().name);
 					if (connect_res == mp::ui::QUIT) {
-						return QUIT;
+						return LEVEL_RESULT::QUIT;
 					}
 				} else {
 					// Start the next scenario immediately.
@@ -419,14 +419,14 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		symbols["scenario"] = gamestate.get_scenario_id();
 		message = utils::interpolate_variables_into_string(message, &symbols);
 		gui2::show_error_message(disp.video(), message);
-		return QUIT;
+		return LEVEL_RESULT::QUIT;
 	}
 
-	if (game_type == game_classification::SCENARIO){
+	if (game_type == game_classification::CAMPAIGN_TYPE::SCENARIO){
 		if (preferences::delete_saves()) {
 			savegame::clean_saves(gamestate.classification().label);
 		}
 	}
-	return VICTORY;
+	return LEVEL_RESULT::VICTORY;
 }
 

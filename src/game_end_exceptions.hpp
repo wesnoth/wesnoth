@@ -32,12 +32,11 @@
 #include <boost/optional.hpp>
 
 MAKE_ENUM(LEVEL_RESULT,
-	(VICTORY,	"victory")
-	(DEFEAT,	"defeat")
-	(QUIT,		"quit")
-	(OBSERVER_END,	"observer_end")
+	(VICTORY,      "victory")
+	(DEFEAT,       "defeat")
+	(QUIT,         "quit")
+	(OBSERVER_END, "observer_end")
 )
-MAKE_ENUM_STREAM_OPS1(LEVEL_RESULT)
 
 /**
  * Exception used to escape form the ai or ui code to playsingle_controller::play_side.

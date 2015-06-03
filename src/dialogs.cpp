@@ -838,8 +838,8 @@ void save_preview_pane::draw_contents()
 		try {
 			game_classification::CAMPAIGN_TYPE ct = lexical_cast<game_classification::CAMPAIGN_TYPE> (campaign_type);
 
-			switch (ct) {
-				case game_classification::SCENARIO:
+			switch (ct.v) {
+				case game_classification::CAMPAIGN_TYPE::SCENARIO:
 				{
 					const std::string campaign_id = summary["campaign"];
 					const config *campaign = NULL;
@@ -862,13 +862,13 @@ void save_preview_pane::draw_contents()
 					}
 					break;
 				}
-				case game_classification::MULTIPLAYER:
+				case game_classification::CAMPAIGN_TYPE::MULTIPLAYER:
 					str << _("Multiplayer");
 					break;
-				case game_classification::TUTORIAL:
+				case game_classification::CAMPAIGN_TYPE::TUTORIAL:
 					str << _("Tutorial");
 					break;
-				case game_classification::TEST:
+				case game_classification::CAMPAIGN_TYPE::TEST:
 					str << _("Test scenario");
 					break;
 			}

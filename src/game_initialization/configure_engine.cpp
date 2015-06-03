@@ -60,7 +60,7 @@ void configure_engine::set_default_values() {
 
 bool configure_engine::force_lock_settings() const {
 	return state_.get_starting_pos()["force_lock_settings"].to_bool(
-		state_.classification().campaign_type != game_classification::MULTIPLAYER);
+		state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER);
 }
 
 std::string configure_engine::game_name() const { return parameters_.name; }
@@ -169,7 +169,7 @@ bool configure_engine::random_start_time_default() const {
 }
 bool configure_engine::fog_game_default() const {
 	return use_map_settings() && !side_cfg_.empty() ?
-		side_cfg_["fog"].to_bool(state_.classification().campaign_type != game_classification::SCENARIO) :
+		side_cfg_["fog"].to_bool(state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::SCENARIO) :
 		preferences::fog();
 }
 bool configure_engine::shroud_game_default() const {
@@ -179,13 +179,13 @@ bool configure_engine::shroud_game_default() const {
 }
 bool configure_engine::allow_observers_default() const {
 	return preferences::allow_observers() &&
-			state_.classification().campaign_type != game_classification::SCENARIO;
+			state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::SCENARIO;
 }
 bool configure_engine::shuffle_sides_default() const {
 	return preferences::shuffle_sides();
 }
 mp_game_settings::RANDOM_FACTION_MODE configure_engine::random_faction_mode_default() const {
-	return mp_game_settings::string_to_RANDOM_FACTION_MODE_default(preferences::random_faction_mode(), mp_game_settings::DEFAULT);
+	return mp_game_settings::RANDOM_FACTION_MODE::string_to_enum(preferences::random_faction_mode(), mp_game_settings::RANDOM_FACTION_MODE::DEFAULT);
 }
 
 const config& configure_engine::options_default() const {

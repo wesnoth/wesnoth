@@ -66,8 +66,6 @@ private:
 	void scale_button_callback(std::string, SCALING_ALGORITHM, twindow &);
 };
 
-MAKE_ENUM_STREAM_OPS2(tadvanced_graphics_options, SCALING_ALGORITHM)
-
 } // end namespace gui2
 
 #endif

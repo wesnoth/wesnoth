@@ -41,7 +41,7 @@ int get_turns(const std::string& value)
 
 int get_village_gold(const std::string& value, game_classification::CAMPAIGN_TYPE gametype)
 {
-	return lexical_cast_in_range<int>(value, (gametype == game_classification::SCENARIO ? 1 : 2), 1, 5);
+	return lexical_cast_in_range<int>(value, (gametype == game_classification::CAMPAIGN_TYPE::SCENARIO ? 1 : 2), 1, 5);
 }
 
 int get_village_support(const std::string& value)

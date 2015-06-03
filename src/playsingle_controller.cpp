@@ -296,7 +296,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			//store persistent teams
 			saved_game_.set_snapshot(config());
 
-			return VICTORY; // this is probably only a story scenario, i.e. has its endlevel in the prestart event
+			return LEVEL_RESULT::VICTORY; // this is probably only a story scenario, i.e. has its endlevel in the prestart event
 		}
 		if(linger_) {
 			LOG_NG << "resuming from loaded linger state...\n";
@@ -305,7 +305,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			if(!is_observer()) {
 				persist_.end_transaction();
 			}
-			return VICTORY;
+			return LEVEL_RESULT::VICTORY;
 		}
 		pump().fire(is_victory ? "victory" : "defeat");
 		{ // Block for set_scontext_synced_base
@@ -317,7 +317,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		}
 		if(is_observer()) {
 			gui2::show_transient_message(gui_->video(), _("Game Over"), _("The game is over."));
-			return OBSERVER_END;
+			return LEVEL_RESULT::OBSERVER_END;
 		}
 		// If we're a player, and the result is victory/defeat, then send
 		// a message to notify the server of the reason for the game ending.
@@ -339,7 +339,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			sound::play_music_once(end_music);
 		}
 		persist_.end_transaction();
-		return is_victory ? VICTORY : DEFEAT;
+		return is_victory ? LEVEL_RESULT::VICTORY : LEVEL_RESULT::DEFEAT;
 	} catch(const game::load_game_exception &) {
 		// Loading a new game is effectively a quit.
 		//
@@ -360,11 +360,11 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		if(disconnect) {
 			throw network::error();
 		} else {
-			return QUIT;
+			return LEVEL_RESULT::QUIT;
 		}
 	}
 
-	return QUIT;
+	return LEVEL_RESULT::QUIT;
 }
 
 void playsingle_controller::play_turn()

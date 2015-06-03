@@ -228,7 +228,7 @@ bool side_filter::match_internal(const team &t) const
 			ERR_NG << "ignoring controller= in SSF due to danger of OOS errors" << std::endl;
 		else
 		{
-			if(cfg_controller.str() != team::CONTROLLER_to_string (t.controller()))
+			if(cfg_controller.str() != team::CONTROLLER::enum_to_string (t.controller()))
 				return false;
 		}
 	}

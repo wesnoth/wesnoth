@@ -77,7 +77,7 @@ struct mp_connect_fixture {
 		config_manager->init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
 		state.reset(new saved_game());
-		state->classification().campaign_type = game_classification::MULTIPLAYER;
+		state->classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 		config_manager->load_game_config_for_game(state->classification());
 
 		state->mp_settings().mp_era = "era_default";
@@ -86,7 +86,7 @@ struct mp_connect_fixture {
 		state->mp_settings().saved_game = false;
 
 		state->set_scenario(config_manager->
-			game_config().find_child(lexical_cast<std::string>(game_classification::MULTIPLAYER), "id", state->mp_settings().name));
+			game_config().find_child(lexical_cast<std::string>(game_classification::CAMPAIGN_TYPE::MULTIPLAYER), "id", state->mp_settings().name));
 
 		state->mp_settings().num_turns = state->get_starting_pos()["turns"];
 

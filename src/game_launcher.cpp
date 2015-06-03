@@ -547,7 +547,7 @@ bool game_launcher::play_test()
 
 	first_time = false;
 
-	state_.classification().campaign_type = game_classification::TEST;
+	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::TEST;
 	state_.classification().campaign_define = "TEST";
 
 	state_.set_carryover_sides_start(
@@ -581,7 +581,7 @@ int game_launcher::unit_test()
 
 	first_time_unit = false;
 
-	state_.classification().campaign_type = game_classification::TEST;
+	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::TEST;
 	state_.classification().campaign_define = "TEST";
 	state_.set_carryover_sides_start(
 		config_of("next_scenario", test_scenario_)
@@ -593,7 +593,7 @@ int game_launcher::unit_test()
 
 	try {
 		LEVEL_RESULT res = play_game(disp(),state_,game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), IO_SERVER, false, false, false, true);
-		if (!(res == VICTORY) || lg::broke_strict()) {
+		if (!(res == LEVEL_RESULT::VICTORY) || lg::broke_strict()) {
 			return 1;
 		}
 	} catch (game::load_game_exception &) {
@@ -629,7 +629,7 @@ int game_launcher::unit_test()
 	try {
 		//LEVEL_RESULT res = play_game(disp(), state_, game_config_manager::get()->game_config(), IO_SERVER, false,false,false,true);
 		LEVEL_RESULT res = ::play_replay(disp(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), true);
-		if (!(res == VICTORY)) {
+		if (!(res == LEVEL_RESULT::VICTORY)) {
 			std::cerr << "Observed failure on replay" << std::endl;
 			return 4;
 		}
@@ -666,7 +666,7 @@ bool game_launcher::play_render_image_mode()
 		return true;
 	}
 
-	state_.classification().campaign_type = game_classification::MULTIPLAYER;
+	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 	DBG_GENERAL << "Current campaign type: " << state_.classification().campaign_type << std::endl;
 
 	try {
@@ -761,7 +761,7 @@ bool game_launcher::load_game()
 		statistics::clear_current_scenario();
 	}
 
-	if(state_.classification().campaign_type == game_classification::MULTIPLAYER) {
+	if(state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
 		state_.unify_controllers();
 		gui2::show_message(disp().video(), _("Warning") , _("This is a multiplayer scenario. Some parts of it may not work properly in single-player. It is recommended to load this scenario through the <b>Multiplayer</b> → <b>Load Game</b> dialog instead."), "", true, true);
 	}
@@ -776,7 +776,7 @@ bool game_launcher::load_game()
 void game_launcher::set_tutorial()
 {
 	state_ = saved_game();
-	state_.classification().campaign_type = game_classification::TUTORIAL;
+	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::TUTORIAL;
 	state_.classification().campaign_define = "TUTORIAL";
 	state_.mp_settings().mp_era = "era_blank";
 	state_.mp_settings().show_connect = false;
@@ -796,7 +796,7 @@ void game_launcher::mark_completed_campaigns(std::vector<config> &campaigns)
 bool game_launcher::new_campaign()
 {
 	state_ = saved_game();
-	state_.classification().campaign_type = game_classification::SCENARIO;
+	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::SCENARIO;
 
 	state_.mp_settings().show_configure = false;
 	state_.mp_settings().show_connect = false;
@@ -888,7 +888,7 @@ bool game_launcher::play_multiplayer()
 	int res;
 
 	state_ = saved_game();
-	state_.classification().campaign_type = game_classification::MULTIPLAYER;
+	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 
 	//Print Gui only if the user hasn't specified any server
 	if( multiplayer_server_.empty() ){
@@ -1014,7 +1014,7 @@ bool game_launcher::play_multiplayer_commandline()
 
 	// These are all the relevant lines taken literally from play_multiplayer() above
 	state_ = saved_game();
-	state_.classification().campaign_type = game_classification::MULTIPLAYER;
+	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 
 	game_config_manager::get()->
 		load_game_config_for_game(state_.classification());
@@ -1080,7 +1080,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 		    game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
 		// don't show The End for multiplayer scenario
 		// change this if MP campaigns are implemented
-		if(result == VICTORY && state_.classification().campaign_type != game_classification::MULTIPLAYER) {
+		if(result == LEVEL_RESULT::VICTORY && state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
 			preferences::add_completed_campaign(state_.classification().campaign);
 			the_end(disp(), state_.classification().end_text, state_.classification().end_text_duration);
 			if(state_.classification().end_credits) {

@@ -14,6 +14,7 @@
 
 #include "global.hpp"
 #include "game_classification.hpp"
+#include "game_config.hpp"
 #include "util.hpp"
 #include "serialization/string_utils.hpp"
 #include "log.hpp"
@@ -51,7 +52,7 @@ game_classification::game_classification(const config& cfg):
 	savegame_config(),
 	label(cfg["label"]),
 	version(cfg["version"]),
-	campaign_type(lexical_cast_default<game_classification::CAMPAIGN_TYPE> (cfg["campaign_type"].str(), game_classification::SCENARIO)),
+	campaign_type(lexical_cast_default<game_classification::CAMPAIGN_TYPE> (cfg["campaign_type"].str(), game_classification::CAMPAIGN_TYPE::SCENARIO)),
 	campaign_define(cfg["campaign_define"]),
 	campaign_xtra_defines(utils::split(cfg["campaign_extra_defines"])),
 	scenario_define(cfg["scenario_define"]),
