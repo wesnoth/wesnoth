@@ -45,11 +45,13 @@
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <boost/type_traits/add_const.hpp>
+#include <boost/type_traits/is_base_of.hpp>
 
 #include "exceptions.hpp"
 #include "tstring.hpp"
 
 class config;
+class enum_tag;
 
 bool operator==(const config &, const config &);
 inline bool operator!=(const config &a, const config &b) { return !operator==(a, b); }
@@ -258,7 +260,11 @@ public:
 		attribute_value &operator=(const char *v)   { return operator=(std::string(v)); }
 		attribute_value &operator=(const std::string &v);
 		attribute_value &operator=(const t_string &v);
-
+		template<typename T>
+		typename boost::enable_if<boost::is_base_of<enum_tag, T>, attribute_value &>::type operator=(const T &v)
+		{
+			return operator=(T::enum_to_string(v));
+		}
 		// Extracting as a specific type:
 		bool to_bool(bool def = false) const;
 		int to_int(int def = 0) const;
@@ -269,6 +275,16 @@ public:
 		double to_double(double def = 0.) const;
 		std::string str() const;
 		t_string t_str() const;
+		/**
+			@param T a type created with MAKE_ENUM macro
+			NOTE: since T::VALUE constants is not of type T but of the underlying enum type you must specify the template parameter explicitly
+			TODO: Fix this in c++11 using constexpr types.
+		*/
+		template<typename T>
+		typename boost::enable_if<boost::is_base_of<enum_tag, T>, T>::type to_enum(const T &v) const
+		{
+			return T::string_to_enum(this->str(), v);
+		}
 
 		// Implicit conversions:
 		operator int() const { return to_int(); }

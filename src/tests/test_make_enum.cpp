@@ -18,6 +18,7 @@
 
 #include "make_enum.hpp"
 #include "util.hpp"
+#include "config.hpp"
 
 namespace foo {
 
@@ -135,6 +136,32 @@ BOOST_AUTO_TEST_CASE ( test_make_enum_class )
 	std::stringstream ss;
 	ss << e;
 	BOOST_CHECK_EQUAL (ss.str(), "name3");
+}
+
+BOOST_AUTO_TEST_CASE ( test_make_enum_config )
+{
+	config cfg;
+	foo::enumname e1 = foo::enumname::con1;
+	foo::enumname e2 = foo::enumname::con2;
+	foo::enumname e3 = foo::enumname::con3;
+
+	cfg["t1"] = e2;
+	cfg["t2"] = foo::enumname::enum_to_string(e2);
+	cfg["t3"] = "name2";
+	cfg["t4"] = "345646";
+	
+	BOOST_CHECK_EQUAL(cfg["t1"].to_enum<foo::enumname>(foo::enumname::con1) , e2);
+	BOOST_CHECK_EQUAL(cfg["t2"].to_enum<foo::enumname>(foo::enumname::con1) , e2);
+	BOOST_CHECK_EQUAL(cfg["t3"].to_enum<foo::enumname>(foo::enumname::con1) , e2);
+	
+	BOOST_CHECK_EQUAL(cfg["t1"].to_enum(e1) , e2);
+	BOOST_CHECK_EQUAL(cfg["t2"].to_enum(e1) , e2);
+	BOOST_CHECK_EQUAL(cfg["t3"].to_enum(e1) , e2);
+
+	
+	BOOST_CHECK_EQUAL(cfg["t4"].to_enum<foo::enumname>(foo::enumname::con3) , e3);
+	
+	BOOST_CHECK_EQUAL(cfg["t1"].str() , "name2");
 }
 
 

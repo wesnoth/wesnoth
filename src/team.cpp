@@ -241,11 +241,11 @@ void team::team_info::write(config& cfg) const
 	cfg["allow_player"] = allow_player;
 	cfg["chose_random"] = chose_random;
 	cfg["no_leader"] = no_leader;
-	cfg["defeat_condition"] = DEFEAT_CONDITION::enum_to_string(defeat_condition);
+	cfg["defeat_condition"] = defeat_condition;
 	cfg["hidden"] = hidden;
 	cfg["suppress_end_turn_confirmation"] = no_turn_confirmation;
 	cfg["scroll_to_leader"] = scroll_to_leader;
-	cfg["controller"] = CONTROLLER::enum_to_string(controller);
+	cfg["controller"] = controller;
 	cfg["recruit"] = utils::join(can_recruit);
 	cfg["share_maps"] = share_maps;
 	cfg["share_view"] = share_view;
