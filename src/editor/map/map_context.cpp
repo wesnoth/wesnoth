@@ -16,6 +16,7 @@
 #include "editor/action/action.hpp"
 #include "map_context.hpp"
 
+#include "config_assign.hpp"
 #include "display.hpp"
 #include "filesystem.hpp"
 #include "gettext.hpp"
@@ -209,9 +210,12 @@ void map_context::set_side_setup(int side, const std::string& team_name, const s
 	t.set_base_income(income);
 	t.set_hidden(hidden);
 	t.set_fog(fog);
-	t.set_share_maps(share_maps);
 	t.set_shroud(shroud);
-	t.set_share_view(share_view);
+	//TODO: USE team::SHARE_VISION in editor too.
+	t.handle_legacy_share_vision(config_of
+		("share_maps", share_maps)
+		("share_view", share_view)
+	);
 	t.set_village_gold(village_gold);
 	t.set_village_support(village_support);
 	actions_since_save_++;
