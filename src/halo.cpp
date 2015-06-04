@@ -25,6 +25,8 @@
 #include "halo.hpp"
 #include "serialization/string_utils.hpp"
 
+#include <iostream>
+
 namespace halo
 {
 

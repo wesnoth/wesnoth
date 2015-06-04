@@ -7,6 +7,7 @@
 #include <boost/foreach.hpp>
 #include <cassert>
 #include <sstream>
+#include <iostream>
 
 namespace ng {
 
