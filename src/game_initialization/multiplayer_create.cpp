@@ -68,7 +68,7 @@ static config get_selected_helper(const ng::create_engine * eng_ptr)
 		("icon", eng.current_level().icon())
 		("description", eng.current_level().description())
 		("allow_era_choice", eng.current_level().allow_era_choice())
-		("type", ng::level::TYPE::enum_to_string(eng.current_level_type()));
+		("type", eng.current_level_type());
 }
 
 static config find_helper(const ng::create_engine * eng_ptr, const config & cfg)
@@ -77,8 +77,7 @@ static config find_helper(const ng::create_engine * eng_ptr, const config & cfg)
 	const ng::create_engine & eng = *eng_ptr;
 	std::string str = cfg["id"].str();
 
-	return config_of("index", eng.find_level_by_id(str))
-		("type", ng::level::TYPE::enum_to_string(eng.find_level_type_by_id(str)));
+	return config_of("index", eng.find_level_by_id(str))("type", eng.find_level_type_by_id(str));
 }
 
 create::create(game_display& disp, const config& cfg, saved_game& state,
@@ -227,7 +226,7 @@ create::create(game_display& disp, const config& cfg, saved_game& state,
 void create::select_level_type_helper(const std::string & str)
 {
 	for (size_t idx = 0; idx < available_level_types_.size(); idx++) {
-		if (ng::level::TYPE::enum_to_string(available_level_types_[idx]) == str) {
+		if (available_level_types_[idx].to_string() == str) {
 			level_type_combo_.set_selected(idx);
 			init_level_type_changed(0);
 			process_event_impl(process_event_data(false, false, false));

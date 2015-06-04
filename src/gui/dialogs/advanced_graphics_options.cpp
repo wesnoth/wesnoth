@@ -76,12 +76,12 @@ void tadvanced_graphics_options::setup_scale_button(const std::string & case_id,
 	try {
 		algo = SCALING_ALGORITHM::string_to_enum(preferences::get(pref_id));
 	} catch (bad_enum_cast &) {
-		preferences::set(pref_id, SCALING_ALGORITHM::enum_to_string(algo));
+		preferences::set(pref_id, algo.to_string());
 	}
 
 	// algo is now synced with preference, and default value of linear if something went wrong
 
-	ttoggle_button * b = &find_widget<ttoggle_button>(&window, pref_id + "_" + SCALING_ALGORITHM::enum_to_string(button), false);
+	ttoggle_button * b = &find_widget<ttoggle_button>(&window, pref_id + "_" + button.to_string(), false);
 	b->set_value(algo == button);
 
 	connect_signal_mouse_left_click(*b, boost::bind(&tadvanced_graphics_options::scale_button_callback, this, pref_id, button, boost::ref(window)));
@@ -93,17 +93,17 @@ void tadvanced_graphics_options::scale_button_callback(std::string pref_id, SCAL
 	try {
 		algo = SCALING_ALGORITHM::string_to_enum(preferences::get(pref_id));
 	} catch (bad_enum_cast &) {
-		preferences::set(pref_id, SCALING_ALGORITHM::enum_to_string(algo));
+		preferences::set(pref_id, algo.to_string());
 	}
 
 	if (algo != me) {
 		image::flush_cache();
 	}
 
-	preferences::set(pref_id, SCALING_ALGORITHM::enum_to_string(me));
+	preferences::set(pref_id, me.to_string());
 
 	for (size_t x = 0; x < SCALING_ALGORITHM::count; ++x) {
-		ttoggle_button * b = &find_widget<ttoggle_button>(&window, pref_id + "_" + SCALING_ALGORITHM::enum_to_string(SCALING_ALGORITHM::from_int(x)), false);
+		ttoggle_button * b = &find_widget<ttoggle_button>(&window, pref_id + "_" + SCALING_ALGORITHM::from_int(x).to_string(), false);
 		b->set_value(x == me.cast<size_t>());
 	}
 

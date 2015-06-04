@@ -2810,9 +2810,9 @@ void console_handler::do_controller()
 		return;
 	}
 
-	std::string report = team::CONTROLLER::enum_to_string (menu_handler_.teams()[side_num - 1].controller());
+	std::string report = menu_handler_.teams()[side_num - 1].controller().to_string();
 	if (!menu_handler_.teams()[side_num - 1].is_proxy_human()) {
-		report += " (" + team::PROXY_CONTROLLER::enum_to_string(menu_handler_.teams()[side_num - 1].proxy_controller()) + ")";
+		report += " (" + menu_handler_.teams()[side_num - 1].proxy_controller().to_string() + ")";
 	}
 
 	print(get_cmd(), report);

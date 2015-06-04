@@ -165,6 +165,10 @@ struct NAME : public enum_tag \
 		assert(false && "Corrupted enum found with identifier NAME"); \
 		throw "assertion ignored"; \
 	} \
+	std::string to_string () const \
+	{ \
+		return enum_to_string(*this); \
+	} \
 	friend std::ostream& operator<< (std::ostream & os, NAME val) \
 	{ \
 		os << enum_to_string(val); \

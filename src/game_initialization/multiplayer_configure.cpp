@@ -191,7 +191,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 
 	std::vector<std::string> translated_modes;
 	for(size_t i = 0; i < mp_game_settings::RANDOM_FACTION_MODE::count; ++i) {
-		std::string mode_str = mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(mp_game_settings::RANDOM_FACTION_MODE::from_int(i));
+		std::string mode_str = mp_game_settings::RANDOM_FACTION_MODE::from_int(i).to_string();
 		translated_modes.push_back(translation::gettext(mode_str.c_str()));
 	}
 	random_faction_mode_.set_items(translated_modes);
@@ -244,7 +244,7 @@ configure::~configure()
 	// Save values for next game
 	DBG_MP << "storing parameter values in preferences" << std::endl;
 	preferences::set_shuffle_sides(engine_.shuffle_sides());
-	preferences::set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(engine_.random_faction_mode()));
+	preferences::set_random_faction_mode(engine_.random_faction_mode().to_string());
 	preferences::set_use_map_settings(engine_.use_map_settings());
 	preferences::set_countdown(engine_.mp_countdown());
 	preferences::set_countdown_init_time(engine_.mp_countdown_init_time());
