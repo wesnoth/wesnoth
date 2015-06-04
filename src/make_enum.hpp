@@ -128,6 +128,8 @@ namespace make_enum_detail
 
 #define EXPAND_ENUMFUNC_NORMAL(r, data, i, record) \
     if(data == BOOST_PP_TUPLE_ELEM(2, 1, record)) return BOOST_PP_TUPLE_ELEM(2, 0, record);
+#define EXPAND_ENUMPARSE_NORMAL(r, data, i, record) \
+	if(data == BOOST_PP_TUPLE_ELEM(2, 1, record)) { *this = BOOST_PP_TUPLE_ELEM(2, 0, record); return true; }
 #define EXPAND_ENUMFUNCREV_NORMAL(r, data, i, record) \
     if(data == BOOST_PP_TUPLE_ELEM(2, 0, record)) return BOOST_PP_TUPLE_ELEM(2, 1, record);
 
@@ -158,6 +160,15 @@ struct NAME : public enum_tag \
 	{ \
 		PP_SEQ_FOR_EACH_I_PAIR(EXPAND_ENUMFUNC_NORMAL, str , CONTENT) \
 		throw bad_enum_cast( #NAME , str); \
+	} \
+	bool parse (const std::string& str) \
+	{ \
+		PP_SEQ_FOR_EACH_I_PAIR(EXPAND_ENUMPARSE_NORMAL, str , CONTENT) \
+		return false; \
+	} \
+	static std::string name() \
+	{ \
+		return #NAME; \
 	} \
 	static std::string enum_to_string (NAME val) \
 	{ \

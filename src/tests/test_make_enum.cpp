@@ -165,4 +165,43 @@ BOOST_AUTO_TEST_CASE ( test_make_enum_config )
 }
 
 
+BOOST_AUTO_TEST_CASE ( test_make_enum_parse )
+{
+	config cfg;
+	foo::enumname e1 = foo::enumname::con1;
+	foo::enumname e2 = foo::enumname::con2;
+	foo::enumname e3 = foo::enumname::con3;
+
+	cfg["t1"] = e2;
+	cfg["t2"] = foo::enumname::enum_to_string(e1);
+	cfg["t3"] = e1.to_string();
+	cfg["t4"] = "name3";
+	cfg["t5"] = "345646";
+	
+	foo::enumname dummy = foo::enumname::con1;
+	
+	BOOST_CHECK_EQUAL(dummy, e1);
+	BOOST_CHECK_EQUAL(dummy.parse("name1"), true);
+	BOOST_CHECK_EQUAL(dummy, e1);
+	BOOST_CHECK_EQUAL(dummy.parse("name2"), true);
+	BOOST_CHECK_EQUAL(dummy, e2);
+	BOOST_CHECK_EQUAL(dummy.parse("name3"), true);
+	BOOST_CHECK_EQUAL(dummy, e3);
+	BOOST_CHECK_EQUAL(dummy.parse("name2 "), false);
+	BOOST_CHECK_EQUAL(dummy, e3);
+	BOOST_CHECK_EQUAL(dummy.parse("kdfg89"), false);
+	BOOST_CHECK_EQUAL(dummy, e3);
+	BOOST_CHECK_EQUAL(dummy.parse("NAME2"), false);
+	BOOST_CHECK_EQUAL(dummy, e3);
+	BOOST_CHECK_EQUAL(dummy.parse(""), false);
+	BOOST_CHECK_EQUAL(dummy, e3);
+	BOOST_CHECK_EQUAL(dummy.parse("name2"), true);
+	BOOST_CHECK_EQUAL(dummy, e2);
+
+	BOOST_CHECK_EQUAL(foo::enumname::name(), "enumname");
+
+
+}
+
+
 BOOST_AUTO_TEST_SUITE_END()
