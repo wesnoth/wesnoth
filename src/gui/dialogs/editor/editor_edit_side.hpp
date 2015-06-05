@@ -39,7 +39,7 @@ public:
 					  bool& shroud,
 					  bool& share_maps,
 					  team::CONTROLLER& controller,
-					  int controller_num,
+					  int& controller_num,
 					  bool& no_leader,
 					  bool& hidden);
 

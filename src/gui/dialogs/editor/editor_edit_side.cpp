@@ -62,7 +62,7 @@ teditor_edit_side::teditor_edit_side(int side,
 									 bool& shroud,
 									 bool& share_maps,
 									 team::CONTROLLER& controller,
-									 int /*controller_num*/,
+									 int& controller_num,
 									 bool& no_leader,
 									 bool& hidden)
 	: controller_(controller)
@@ -80,8 +80,7 @@ teditor_edit_side::teditor_edit_side(int side,
 	register_integer("village_income", true, village_income);
 	register_integer("village_support", true, village_support);
 
-	//The following line is outommented becasue it causes crashs.
-	//register_integer("controller_number_player", true, controller_num);
+	register_integer("controller_number_player", true, controller_num);
 
 	register_bool("fog", true, fog);
 	register_bool("share_view", true, share_view);
