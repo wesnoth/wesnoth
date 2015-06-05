@@ -551,6 +551,11 @@ const SDL_Color& background_modification::get_color() const
 	return color_;
 }
 
+surface swap_modification::operator()(const surface &src) const
+{
+	return swap_channels_image(src, red_, green_, blue_, alpha_);
+}
+
 namespace {
 
 struct parse_mod_registration
@@ -1190,6 +1195,82 @@ REGISTER_MOD_PARSER(BG, args)
 	}
 
 	return new background_modification(create_color(c[0], c[1], c[2], c[3]));
+}
+
+// Channel swap
+REGISTER_MOD_PARSER(SWAP, args)
+{
+	std::vector<std::string> params = utils::split(args, ',', utils::STRIP_SPACES);
+
+	// accept 3 arguments (rgb) or 4 (rgba)
+	if (params.size() != 3 && params.size() != 4) {
+		ERR_DP << "incorrect number of arguments in ~SWAP() function, they must be 3 or 4" << std::endl;
+		return NULL;
+	}
+
+	channel redValue, greenValue, blueValue, alphaValue;
+	// compare the parameter's value with the constants defined in the channels enum
+	if (params[0] == "red") {
+		redValue = RED;
+	} else if (params[0] == "green") {
+		redValue = GREEN;
+	} else if (params[0] == "blue") {
+		redValue = BLUE;
+	} else if (params[0] == "alpha") {
+		redValue = ALPHA;
+	} else {
+		ERR_DP << "unsupported argument value in ~SWAP() function: " << params[0] << std::endl;
+		return NULL;
+	}
+
+	// wash, rinse and repeat for the other three channels
+	if (params[1] == "red") {
+		greenValue = RED;
+	} else if (params[1] == "green") {
+		greenValue = GREEN;
+	} else if (params[1] == "blue") {
+		greenValue = BLUE;
+	} else if (params[1] == "alpha") {
+		greenValue = ALPHA;
+	} else {
+		ERR_DP << "unsupported argument value in ~SWAP() function: " << params[0] << std::endl;
+		return NULL;
+	}
+
+	if (params[2] == "red") {
+		blueValue = RED;
+	} else if (params[2] == "green") {
+		blueValue = GREEN;
+	} else if (params[2] == "blue") {
+		blueValue = BLUE;
+	} else if (params[2] == "alpha") {
+		blueValue = ALPHA;
+	} else {
+		ERR_DP << "unsupported argument value in ~SWAP() function: " << params[0] << std::endl;
+		return NULL;
+	}
+
+	// additional check: the params vector may not have a fourth elementh
+	// if so, default to the same channel
+	if (params.size() == 3) {
+		alphaValue = ALPHA;
+	}
+	else {
+		if (params[3] == "red") {
+			alphaValue = RED;
+		} else if (params[3] == "green") {
+			alphaValue = GREEN;
+		} else if (params[3] == "blue") {
+			alphaValue = BLUE;
+		} else if (params[3] == "alpha") {
+			alphaValue = ALPHA;
+		} else {
+			ERR_DP << "unsupported argument value in ~SWAP() function: " << params[3] << std::endl;
+			return NULL;
+		}
+	}
+
+	return new swap_modification(redValue, greenValue, blueValue, alphaValue);
 }
 
 } // end anon namespace

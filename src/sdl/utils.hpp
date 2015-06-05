@@ -254,6 +254,9 @@ surface wipe_alpha(const surface & surf, bool optimize=true);
 /** create an heavy shadow of the image, by blurring, increasing alpha and darkening */
 surface shadow_image(const surface &surf, bool optimize=true);
 
+enum channel { RED, GREEN, BLUE, ALPHA };
+surface swap_channels_image(const surface& surf, channel r, channel g, channel b, channel a, bool optimize=true);
+
 /**
  * Recolors a surface using a map with source and converted palette values.
  * This is most often used for team-coloring.
