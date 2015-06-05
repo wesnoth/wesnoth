@@ -81,6 +81,7 @@
 #include "widgets/combo.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/range/algorithm/find_if.hpp>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -2762,6 +2763,17 @@ void console_handler::do_idle() {
 void console_handler::do_theme() {
 	preferences::show_theme_dialog(*menu_handler_.gui_);
 }
+
+struct save_id_matches
+{
+	save_id_matches(const std::string& save_id) : save_id_(save_id) {}
+	bool operator()(const team& t)
+	{
+		return t.save_id() == save_id_;
+	}
+	std::string save_id_;
+};
+
 void console_handler::do_control() {
 	// :control <side> <nick>
 	if (network::nconnections() == 0) return;
@@ -2772,15 +2784,20 @@ void console_handler::do_control() {
 		command_failed_need_arg(2);
 		return;
 	}
-
 	unsigned int side_num;
 	try {
 		side_num = lexical_cast<unsigned int>(side);
 	} catch(bad_lexical_cast&) {
-		utils::string_map symbols;
-		symbols["side"] = side;
-		command_failed(vgettext("Can't change control of invalid side: '$side'.", symbols));
-		return;
+		std::vector<team>::const_iterator it_t = boost::find_if(*resources::teams, save_id_matches(side));
+		if(it_t == resources::teams->end()) {
+			utils::string_map symbols;
+			symbols["side"] = side;
+			command_failed(vgettext("Can't change control of invalid side: '$side'.", symbols));
+			return;
+		}
+		else {
+			side_num = it_t->side();
+		}
 	}
 	if (side_num < 1 || side_num > menu_handler_.teams().size()) {
 		utils::string_map symbols;
