@@ -432,7 +432,7 @@ void manager::init() const
 			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
 			{
 				const std::wstring wfile = unicode_cast<std::wstring>(file);
-				AddFontResourceW(wfile.c_str());
+				AddFontResourceExW(wfile.c_str(), FR_PRIVATE, NULL);
 			}
 		}
 	}
@@ -454,7 +454,7 @@ void manager::deinit() const
 			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
 			{
 				const std::wstring wfile = unicode_cast<std::wstring>(file);
-				RemoveFontResourceW(wfile.c_str());
+				RemoveFontResourceExW(wfile.c_str(), FR_PRIVATE, NULL);
 			}
 		}
 	}
