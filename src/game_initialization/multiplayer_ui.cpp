@@ -192,6 +192,7 @@ ui::ui(game_display& disp, const std::string& title, const config& cfg, chat& c,
 	result_(CONTINUE),
 	gamelist_refresh_(false),
 	lobby_clock_(0),
+	whisper_warnings_(),
 	plugins_context_(NULL)
 {
 	const SDL_Rect area = sdl::create_rect(0
@@ -409,6 +410,53 @@ void ui::process_message(const config& msg, const bool whisper) {
 	std::string room = msg["room"];
 	if (!preferences::parse_should_show_lobby_join(sender, message)) return;
 	if (preferences::is_ignored(sender)) return;
+
+	// Warn about people trying to whisper a player with the
+	// whisper_friends_only option enabled.
+	if (whisper &&
+		preferences::whisper_friends_only() &&
+		sender != "server" &&
+		sender.find(' ') == std::string::npos && // "server message from foo"
+		!preferences::is_friend(sender))
+	{
+		LOG_NW << "Accepting whispers from friends only, ignored whisper from " << sender << '\n';
+
+		typedef std::map<std::string, time_t> timetable;
+		timetable::const_iterator i = whisper_warnings_.find(sender);
+
+		time_t last_warning = 0;
+		const time_t cur_time = time(NULL);
+		static const time_t warning_duration = 5 * 60;
+
+		if (i != whisper_warnings_.end()) {
+			last_warning = i->second;
+		}
+
+		//
+		// Don't warn if it's been less than warning_duration seconds since
+		// the last warning. Also, make sure the clock isn't running backwards,
+		// warn anyway if it is.
+		//
+		// We don't need to hande the case where preferences change between
+		// whispers because the lobby instance gets recreated along with the
+		// table after closing the preferences dialog.
+		//
+		if (last_warning && last_warning < cur_time && cur_time - last_warning < warning_duration) {
+			return;
+		}
+
+		utils::string_map symbols;
+		symbols["sender"] = sender;
+
+		chat_.add_message(cur_time,
+						  "server",
+						  VGETTEXT("$sender is messaging you, and you accept whispers from friends only.", symbols));
+		chat_.update_textbox(chat_textbox_);
+
+		whisper_warnings_[sender] = cur_time;
+
+		return;
+	}
 
 	preferences::parse_admin_authentication(sender, message);
 

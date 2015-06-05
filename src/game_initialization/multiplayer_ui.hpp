@@ -233,6 +233,8 @@ private:
 
 	Uint32 lobby_clock_;
 
+	std::map<std::string, time_t> whisper_warnings_;
+
 public:
 	enum user_relation { ME, FRIEND, NEUTRAL, IGNORED };
 	enum user_state    { LOBBY, GAME, SEL_GAME };
