@@ -369,7 +369,7 @@ void manager::init() const
 			{
 				utf16::string ufile = unicode_cast<utf16::string>(file);
 				std::wstring wfile(ufile.begin(), ufile.end());
-				AddFontResourceW(wfile.c_str());
+				AddFontResourceExW(wfile.c_str(), FR_PRIVATE, NULL);
 			}
 		}
 	}
@@ -392,7 +392,7 @@ void manager::deinit() const
 			{
 				utf16::string ufile = unicode_cast<utf16::string>(file);
 				std::wstring wfile(ufile.begin(), ufile.end());
-				RemoveFontResourceW(wfile.c_str());
+				RemoveFontResourceExW(wfile.c_str(), FR_PRIVATE, NULL);
 			}
 		}
 	}
