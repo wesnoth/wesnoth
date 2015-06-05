@@ -55,6 +55,9 @@ Version 1.13.0+dev:
    * Fixed a segfault in [move_units_fake]
    * Fixed unbound memory read in the MP map selection screen that could lead
      to a segmentation fault or other abnormal behavior (bug #23606).
+   * Made silence.ogg larger to work around a crash involving the multiplayer
+     lobby with music and sound enabled (bug #23633, possibly also bug #23599,
+     bug #23203, bug #23026).
 
 Version 1.13.0:
  * Security fixes:
