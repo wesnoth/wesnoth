@@ -287,17 +287,20 @@ public:
 		return std::make_pair(first, last);
 	}
 
-	void update_view_from_model()
+	void update_view_from_model(bool select_last_page = false)
 	{
 		LOG_CHAT_LOG << "Entering tchat_log::controller::update_view_from_model"
 					 << std::endl;
 		model_.msg_label->set_use_markup(true);
 		int size = model_.chat_log_history.size();
 		LOG_CHAT_LOG << "Number of chat messages: " << size << std::endl;
-		// get page
-		const int page = model_.page;
 		// determine count of pages
 		const int count_of_pages = std::max(1, model_.count_of_pages());
+		if(select_last_page) {
+			model_.page = count_of_pages - 1;
+		}
+		// get page
+		const int page = model_.page;
 		// determine first and last
 		const std::pair<int, int>& range = calculate_log_line_range();
 		const int first = range.first;
@@ -346,7 +349,7 @@ public:
 	void pre_show(CVideo& /*video*/, twindow& window)
 	{
 		LOG_CHAT_LOG << "Entering tchat_log::view::pre_show" << std::endl;
-		controller_.update_view_from_model();
+		controller_.update_view_from_model(true);
 		window.invalidate_layout(); // workaround for assertion failure
 		LOG_CHAT_LOG << "Exiting tchat_log::view::pre_show" << std::endl;
 	}
