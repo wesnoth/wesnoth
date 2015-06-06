@@ -14,9 +14,9 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-06-05 21:33-0300\n"
-"PO-Revision-Date: 2015-03-16 07:13+0100\n"
+"PO-Revision-Date: 2015-06-06 16:22+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
-"Language-Team: Galician <proxecto@trasno.net>\n"
+"Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -5206,11 +5206,6 @@ msgid "File I/O Error while reading the game: '"
 msgstr "Houbo problemas co ficheiro da partida mentres se lía: '"
 
 #: src/game_controller.cpp:543
-#, fuzzy
-#| msgid ""
-#| "This is a multiplayer scenario. Some parts of it may not work properly in "
-#| "single-player. It is recommended to load this scenario through the "
-#| "Multiplayer -> Load Game dialog instead."
 msgid ""
 "This is a multiplayer scenario. Some parts of it may not work properly in "
 "single-player. It is recommended to load this scenario through the "
@@ -5218,8 +5213,8 @@ msgid ""
 msgstr ""
 "Este é un escenario para varios xogadores. Algúns dos seus aspectos poderían "
 "non funcionar correctamente cando está a xogar un único xogador. Recoméndase "
-"cargar o escenario desde «Varios xogadores → Cargar unha partida» en vez de "
-"cargalo desde aquí."
+"cargar o escenario desde «<b>Varios xogadores</b> → <b>Cargar unha partida</"
+"b>» en vez de cargalo desde aquí."
 
 #: src/game_controller.cpp:543 src/multiplayer.cpp:262
 msgid "Warning"
@@ -7070,10 +7065,10 @@ msgid "Selected user: "
 msgstr "Usuario seleccionado: "
 
 #: src/multiplayer_ui.cpp:455
-#, fuzzy
-#| msgid "Accept whispers from friends only"
 msgid "$sender is messaging you, and you accept whispers from friends only."
-msgstr "Deixarlles bisbarche só aos teus amigos."
+msgstr ""
+"$sender está a enviarte unha mensaxe, pero só lles permites bisbarche aos "
+"teus amigos."
 
 #: src/multiplayer_wait.cpp:140
 msgid "Leader: "
