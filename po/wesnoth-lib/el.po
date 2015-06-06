@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-11-08 21:20+0100\n"
+"POT-Creation-Date: 2015-06-05 21:33-0300\n"
 "PO-Revision-Date: 2013-08-30 17:11+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -1660,7 +1660,7 @@ msgstr "Σύνδεση"
 #: data/gui/default/window/language_selection.cfg:141
 #: data/gui/default/window/message.cfg:151
 #: data/gui/default/window/mp_change_control.cfg:160
-#: data/gui/default/window/mp_cmd_wrapper.cfg:470
+#: data/gui/default/window/mp_cmd_wrapper.cfg:485
 #: data/gui/default/window/mp_connect.cfg:176
 #: data/gui/default/window/mp_create_game.cfg:559
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:202
@@ -2947,7 +2947,7 @@ msgstr ""
 
 #. [button]: id=kick
 #: data/gui/default/window/lobby_player_info.cfg:168
-#: data/gui/default/window/mp_cmd_wrapper.cfg:389
+#: data/gui/default/window/mp_cmd_wrapper.cfg:399
 msgid "Kick"
 msgstr ""
 
@@ -3009,27 +3009,27 @@ msgid "Add as Ignore"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/mp_cmd_wrapper.cfg:241
+#: data/gui/default/window/mp_cmd_wrapper.cfg:251
 msgid "Moderating"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/mp_cmd_wrapper.cfg:271
+#: data/gui/default/window/mp_cmd_wrapper.cfg:281
 msgid "Reason:"
 msgstr "Αιτιολογία:"
 
 #. [label]
-#: data/gui/default/window/mp_cmd_wrapper.cfg:323
+#: data/gui/default/window/mp_cmd_wrapper.cfg:333
 msgid "Time:"
 msgstr "Ώρα:"
 
 #. [button]: id=status
-#: data/gui/default/window/mp_cmd_wrapper.cfg:374
+#: data/gui/default/window/mp_cmd_wrapper.cfg:384
 msgid "Status"
 msgstr "Κατάσταση"
 
 #. [button]: id=ban
-#: data/gui/default/window/mp_cmd_wrapper.cfg:404
+#: data/gui/default/window/mp_cmd_wrapper.cfg:414
 msgid "Ban"
 msgstr ""
 
@@ -3456,19 +3456,19 @@ msgstr "Η διαγραφή του αρχείου απέτυχε."
 msgid "Creation of the directory failed."
 msgstr ""
 
-#: src/game_preferences.cpp:352
+#: src/game_preferences.cpp:357
 msgid "No server has been defined."
 msgstr "Δεν έχει καθοριστεί κάποιος εξυπηρετητής"
 
-#: src/game_preferences.cpp:432
+#: src/game_preferences.cpp:437
 msgid "player"
 msgstr "παίκτης"
 
-#: src/game_preferences.cpp:959
+#: src/game_preferences.cpp:964
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/game_preferences.cpp:962
+#: src/game_preferences.cpp:967
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
@@ -5224,6 +5224,14 @@ msgstr ""
 #, fuzzy
 msgid "Hat"
 msgstr "Αποκοπή"
+
+#: src/hotkey/hotkey_preferences_display.cpp:134
+msgid "Add a new binding to \"$hotkey_description|\""
+msgstr ""
+
+#: src/hotkey/hotkey_preferences_display.cpp:136
+msgid "Clears the current bindings for \"$hotkey_description|\""
+msgstr ""
 
 #: src/hotkey/hotkey_preferences_display.cpp:150
 #, fuzzy

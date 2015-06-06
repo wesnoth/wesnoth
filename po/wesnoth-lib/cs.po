@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-11-08 21:20+0100\n"
+"POT-Creation-Date: 2015-06-05 21:33-0300\n"
 "PO-Revision-Date: 2014-04-16 23:12+0100\n"
 "Last-Translator: Jan Dědič <jan.dedic@gmail.com>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -1777,7 +1777,7 @@ msgstr "Připojit"
 #: data/gui/default/window/language_selection.cfg:141
 #: data/gui/default/window/message.cfg:151
 #: data/gui/default/window/mp_change_control.cfg:160
-#: data/gui/default/window/mp_cmd_wrapper.cfg:470
+#: data/gui/default/window/mp_cmd_wrapper.cfg:485
 #: data/gui/default/window/mp_connect.cfg:176
 #: data/gui/default/window/mp_create_game.cfg:559
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:202
@@ -3012,7 +3012,7 @@ msgstr "Důvod vyhození / zákazu:"
 
 #. [button]: id=kick
 #: data/gui/default/window/lobby_player_info.cfg:168
-#: data/gui/default/window/mp_cmd_wrapper.cfg:389
+#: data/gui/default/window/mp_cmd_wrapper.cfg:399
 msgid "Kick"
 msgstr "Vyhodit"
 
@@ -3072,27 +3072,27 @@ msgid "Add as Ignore"
 msgstr "Přidej jako otrapu"
 
 #. [label]
-#: data/gui/default/window/mp_cmd_wrapper.cfg:241
+#: data/gui/default/window/mp_cmd_wrapper.cfg:251
 msgid "Moderating"
 msgstr "Moderování"
 
 #. [label]
-#: data/gui/default/window/mp_cmd_wrapper.cfg:271
+#: data/gui/default/window/mp_cmd_wrapper.cfg:281
 msgid "Reason:"
 msgstr "Příčina:"
 
 #. [label]
-#: data/gui/default/window/mp_cmd_wrapper.cfg:323
+#: data/gui/default/window/mp_cmd_wrapper.cfg:333
 msgid "Time:"
 msgstr "Čas:"
 
 #. [button]: id=status
-#: data/gui/default/window/mp_cmd_wrapper.cfg:374
+#: data/gui/default/window/mp_cmd_wrapper.cfg:384
 msgid "Status"
 msgstr "Stav"
 
 #. [button]: id=ban
-#: data/gui/default/window/mp_cmd_wrapper.cfg:404
+#: data/gui/default/window/mp_cmd_wrapper.cfg:414
 msgid "Ban"
 msgstr "Zakázat"
 
@@ -3527,20 +3527,20 @@ msgstr "Smazání souboru se nezdařilo."
 msgid "Creation of the directory failed."
 msgstr "Složku se nezdařilo vytvořit."
 
-#: src/game_preferences.cpp:352
+#: src/game_preferences.cpp:357
 msgid "No server has been defined."
 msgstr "Nebyl definován žádný server."
 
-#: src/game_preferences.cpp:432
+#: src/game_preferences.cpp:437
 msgid "player"
 msgstr "hráč"
 
-#: src/game_preferences.cpp:959
+#: src/game_preferences.cpp:964
 msgid "%H:%M"
 msgstr "%H:%M"
 
 # formát času pro 2x12 + AM/PM
-#: src/game_preferences.cpp:962
+#: src/game_preferences.cpp:967
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
@@ -5246,6 +5246,14 @@ msgstr "Neznámý"
 #: src/hotkey/hotkey_item.cpp:445
 msgid "Hat"
 msgstr "Čepice"
+
+#: src/hotkey/hotkey_preferences_display.cpp:134
+msgid "Add a new binding to \"$hotkey_description|\""
+msgstr ""
+
+#: src/hotkey/hotkey_preferences_display.cpp:136
+msgid "Clears the current bindings for \"$hotkey_description|\""
+msgstr ""
 
 #: src/hotkey/hotkey_preferences_display.cpp:150
 msgid "Hotkeys Reset"

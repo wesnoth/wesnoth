@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth lib 1.12.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-01-23 17:35-0300\n"
+"POT-Creation-Date: 2015-06-05 21:33-0300\n"
 "PO-Revision-Date: 2015-02-08 23:01+0300\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -1719,7 +1719,7 @@ msgstr "連結"
 #: data/gui/default/window/language_selection.cfg:141
 #: data/gui/default/window/message.cfg:151
 #: data/gui/default/window/mp_change_control.cfg:160
-#: data/gui/default/window/mp_cmd_wrapper.cfg:470
+#: data/gui/default/window/mp_cmd_wrapper.cfg:485
 #: data/gui/default/window/mp_connect.cfg:176
 #: data/gui/default/window/mp_create_game.cfg:559
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:202
@@ -2948,7 +2948,7 @@ msgstr "踢出/封鎖： "
 
 #. [button]: id=kick
 #: data/gui/default/window/lobby_player_info.cfg:168
-#: data/gui/default/window/mp_cmd_wrapper.cfg:389
+#: data/gui/default/window/mp_cmd_wrapper.cfg:399
 msgid "Kick"
 msgstr "踢除"
 
@@ -3008,27 +3008,27 @@ msgid "Add as Ignore"
 msgstr "丟進黑名單"
 
 #. [label]
-#: data/gui/default/window/mp_cmd_wrapper.cfg:241
+#: data/gui/default/window/mp_cmd_wrapper.cfg:251
 msgid "Moderating"
 msgstr "中等"
 
 #. [label]
-#: data/gui/default/window/mp_cmd_wrapper.cfg:271
+#: data/gui/default/window/mp_cmd_wrapper.cfg:281
 msgid "Reason:"
 msgstr "原因:"
 
 #. [label]
-#: data/gui/default/window/mp_cmd_wrapper.cfg:323
+#: data/gui/default/window/mp_cmd_wrapper.cfg:333
 msgid "Time:"
 msgstr "時間:"
 
 #. [button]: id=status
-#: data/gui/default/window/mp_cmd_wrapper.cfg:374
+#: data/gui/default/window/mp_cmd_wrapper.cfg:384
 msgid "Status"
 msgstr "狀態"
 
 #. [button]: id=ban
-#: data/gui/default/window/mp_cmd_wrapper.cfg:404
+#: data/gui/default/window/mp_cmd_wrapper.cfg:414
 msgid "Ban"
 msgstr "封鎖"
 
@@ -3456,19 +3456,19 @@ msgstr "删除檔案失敗。"
 msgid "Creation of the directory failed."
 msgstr "建立目錄失敗。"
 
-#: src/game_preferences.cpp:352
+#: src/game_preferences.cpp:357
 msgid "No server has been defined."
 msgstr "没有已定義的伺服器"
 
-#: src/game_preferences.cpp:432
+#: src/game_preferences.cpp:437
 msgid "player"
 msgstr "玩家"
 
-#: src/game_preferences.cpp:959
+#: src/game_preferences.cpp:964
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/game_preferences.cpp:962
+#: src/game_preferences.cpp:967
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
@@ -5134,6 +5134,14 @@ msgstr "未知"
 #: src/hotkey/hotkey_item.cpp:445
 msgid "Hat"
 msgstr "帽"
+
+#: src/hotkey/hotkey_preferences_display.cpp:134
+msgid "Add a new binding to \"$hotkey_description|\""
+msgstr ""
+
+#: src/hotkey/hotkey_preferences_display.cpp:136
+msgid "Clears the current bindings for \"$hotkey_description|\""
+msgstr ""
 
 #: src/hotkey/hotkey_preferences_display.cpp:150
 msgid "Hotkeys Reset"

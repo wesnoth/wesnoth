@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-08 18:04-0300\n"
+"POT-Creation-Date: 2015-06-05 21:33-0300\n"
 "PO-Revision-Date: 2015-04-05 10:12-0000\n"
 "Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
 "Language-Team: Fòram na Gàidhlig\n"
@@ -4473,15 +4473,15 @@ msgstr "leighiste"
 msgid "female^cured"
 msgstr "leighiste"
 
-#: src/actions/move.cpp:592
+#: src/actions/move.cpp:595
 msgid "Ambushed!"
 msgstr "Fàth!"
 
-#: src/actions/move.cpp:1116
+#: src/actions/move.cpp:1119
 msgid "Failed teleport! Exit not empty"
 msgstr "Dh’fhàillig an tele-phortachadh! Chan eil an doras a-mach falamh"
 
-#: src/actions/move.cpp:1133
+#: src/actions/move.cpp:1136
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "caraid"
@@ -4489,7 +4489,7 @@ msgstr[1] "$friends chàirdeil"
 msgstr[2] "$friends càirdeil"
 msgstr[3] "$friends càirdeil"
 
-#: src/actions/move.cpp:1134
+#: src/actions/move.cpp:1137
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "nàmhaid"
@@ -4497,11 +4497,11 @@ msgstr[1] "$enemies nàmhaid"
 msgstr[2] "$enemies nàimhdean"
 msgstr[3] "$enemies nàmhaid"
 
-#: src/actions/move.cpp:1135
+#: src/actions/move.cpp:1138
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Aonadan air faire! ($friendphrase, $enemyphrase)"
 
-#: src/actions/move.cpp:1139
+#: src/actions/move.cpp:1142
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Aonad nàmhad air faire!"
@@ -4509,7 +4509,7 @@ msgstr[1] "$enemies aonad nàmhad air faire!"
 msgstr[2] "$enemies aonadan nàmhad air faire!"
 msgstr[3] "$enemies aonad nàmhad air faire!"
 
-#: src/actions/move.cpp:1143
+#: src/actions/move.cpp:1146
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Aonad càirdeil air fàire"
@@ -4517,7 +4517,7 @@ msgstr[1] "$friends aonad càirdeil air fàire"
 msgstr[2] "$friends aonadan càirdeil air fàire"
 msgstr[3] "$friends aonad càirdeil air fàire"
 
-#: src/actions/move.cpp:1159
+#: src/actions/move.cpp:1162
 msgid "(press $hotkey to keep moving)"
 msgstr "(brùth air $hotkey gus leantainn air adhart leis a’ ghluasad)"
 
@@ -5354,10 +5354,15 @@ msgid "File I/O Error while reading the game: '"
 msgstr "Mearachd faidhle I/O ann an leughadh a’ gheama: ‘"
 
 #: src/game_controller.cpp:543
+#, fuzzy
+#| msgid ""
+#| "This is a multiplayer scenario. Some parts of it may not work properly in "
+#| "single-player. It is recommended to load this scenario through the "
+#| "Multiplayer -> Load Game dialog instead."
 msgid ""
 "This is a multiplayer scenario. Some parts of it may not work properly in "
 "single-player. It is recommended to load this scenario through the "
-"Multiplayer -> Load Game dialog instead."
+"<b>Multiplayer</b> → <b>Load Game</b> dialog instead."
 msgstr ""
 "Seo cnàmh-sgeul ioma-chluicheadair. Dh’fhaoidte nach obraich a h-uile càil "
 "mar bu chòir sa mhodh aon-chluicheadair. Mholamaid gum fosgail thu tron "
@@ -6323,7 +6328,7 @@ msgstr "Àrainn: ‘$domain’ air atharrachadh gu leibheil: ‘$level’."
 msgid "whisper to $receiver"
 msgstr "cagair gu $receiver"
 
-#: src/menu_events.cpp:2294 src/multiplayer_ui.cpp:433
+#: src/menu_events.cpp:2294 src/multiplayer_ui.cpp:481
 msgid "whisper: $sender"
 msgstr "cagair: $sender"
 
@@ -7201,9 +7206,15 @@ msgstr "Facal-faire: "
 msgid "Invalid Color"
 msgstr "Dath mì-dhligheach"
 
-#: src/multiplayer_ui.cpp:316
+#: src/multiplayer_ui.cpp:317
 msgid "Selected user: "
 msgstr "Cleachdaiche air a thaghadh: "
+
+#: src/multiplayer_ui.cpp:455
+#, fuzzy
+#| msgid "Accept whispers from friends only"
+msgid "$sender is messaging you, and you accept whispers from friends only."
+msgstr "Na gabh ri cagairean ach le caraidean"
 
 #: src/multiplayer_wait.cpp:140
 msgid "Leader: "

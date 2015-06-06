@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth svn-trunk\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-08 18:04-0300\n"
+"POT-Creation-Date: 2015-06-05 21:33-0300\n"
 "PO-Revision-Date: 2013-01-11 21:14+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team:  <wesnoth-ja-translate@lists.sourceforge.jp>\n"
@@ -4306,39 +4306,39 @@ msgstr "治療"
 msgid "female^cured"
 msgstr "治療"
 
-#: src/actions/move.cpp:592
+#: src/actions/move.cpp:595
 msgid "Ambushed!"
 msgstr "待ち伏せにあった！"
 
-#: src/actions/move.cpp:1116
+#: src/actions/move.cpp:1119
 msgid "Failed teleport! Exit not empty"
 msgstr "テレポートに失敗した！ 出口が空いていなかった"
 
-#: src/actions/move.cpp:1133
+#: src/actions/move.cpp:1136
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "味方 $friends"
 
-#: src/actions/move.cpp:1134
+#: src/actions/move.cpp:1137
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "敵 $enemies"
 
-#: src/actions/move.cpp:1135
+#: src/actions/move.cpp:1138
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "ユニットを発見！ （ $friendphrase、$enemyphrase ）"
 
-#: src/actions/move.cpp:1139
+#: src/actions/move.cpp:1142
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "敵ユニット発見！$enemies"
 
-#: src/actions/move.cpp:1143
+#: src/actions/move.cpp:1146
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "味方ユニット発見 $friends"
 
-#: src/actions/move.cpp:1159
+#: src/actions/move.cpp:1162
 msgid "(press $hotkey to keep moving)"
 msgstr "（移動し続けるには $hotkey を押して下さい）"
 
@@ -5179,7 +5179,7 @@ msgstr "ゲーム読み込み中のファイル入出力エラー: '"
 msgid ""
 "This is a multiplayer scenario. Some parts of it may not work properly in "
 "single-player. It is recommended to load this scenario through the "
-"Multiplayer -> Load Game dialog instead."
+"<b>Multiplayer</b> → <b>Load Game</b> dialog instead."
 msgstr ""
 
 #: src/game_controller.cpp:543 src/multiplayer.cpp:262
@@ -6130,7 +6130,7 @@ msgstr "範囲切り替え: 「 $domain 」を以下のレベルに: 「 $level 
 msgid "whisper to $receiver"
 msgstr "$receiver にささやく"
 
-#: src/menu_events.cpp:2294 src/multiplayer_ui.cpp:433
+#: src/menu_events.cpp:2294 src/multiplayer_ui.cpp:481
 msgid "whisper: $sender"
 msgstr "ささやき: $sender"
 
@@ -7058,9 +7058,15 @@ msgstr "パスワード: "
 msgid "Invalid Color"
 msgstr "無効な色"
 
-#: src/multiplayer_ui.cpp:316
+#: src/multiplayer_ui.cpp:317
 msgid "Selected user: "
 msgstr "ユーザーを選択してください: "
+
+#: src/multiplayer_ui.cpp:455
+#, fuzzy
+#| msgid "Accept whispers from friends only"
+msgid "$sender is messaging you, and you accept whispers from friends only."
+msgstr "友人からのささやきのみを受け入れる"
 
 #: src/multiplayer_wait.cpp:140
 msgid "Leader: "

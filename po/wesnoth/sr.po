@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-08 18:04-0300\n"
+"POT-Creation-Date: 2015-06-05 21:33-0300\n"
 "PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -4339,15 +4339,15 @@ msgstr ""
 msgid "female^cured"
 msgstr "успорена"
 
-#: src/actions/move.cpp:592
+#: src/actions/move.cpp:595
 msgid "Ambushed!"
 msgstr "Заседа!"
 
-#: src/actions/move.cpp:1116
+#: src/actions/move.cpp:1119
 msgid "Failed teleport! Exit not empty"
 msgstr "Неуспешна телепортација! Излаз није празан."
 
-#: src/actions/move.cpp:1133
+#: src/actions/move.cpp:1136
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends савезничка"
@@ -4355,7 +4355,7 @@ msgstr[1] "$friends савезничке"
 msgstr[2] "$friends савезничких"
 msgstr[3] "једна савезничка"
 
-#: src/actions/move.cpp:1134
+#: src/actions/move.cpp:1137
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies непријатељска"
@@ -4363,11 +4363,11 @@ msgstr[1] "$enemies непријатељске"
 msgstr[2] "$enemies непријатељских"
 msgstr[3] "једна непријатељска"
 
-#: src/actions/move.cpp:1135
+#: src/actions/move.cpp:1138
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Уочене јединице! ($friendphrase, $enemyphrase)"
 
-#: src/actions/move.cpp:1139
+#: src/actions/move.cpp:1142
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Уочена $enemies непријатељска јединица!"
@@ -4375,7 +4375,7 @@ msgstr[1] "Уочене $enemies непријатељске јединице!"
 msgstr[2] "Уочено $enemies непријатељских јединица!"
 msgstr[3] "Уочена непријатељска јединица!"
 
-#: src/actions/move.cpp:1143
+#: src/actions/move.cpp:1146
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Уочена $friends савезничка јединица"
@@ -4383,7 +4383,7 @@ msgstr[1] "Уочене $friends савезничке јединице"
 msgstr[2] "Уочено $friends савезничких јединица"
 msgstr[3] "Уочена савезничка јединица"
 
-#: src/actions/move.cpp:1159
+#: src/actions/move.cpp:1162
 msgid "(press $hotkey to keep moving)"
 msgstr "(притисните $hotkey да продужи)"
 
@@ -5281,7 +5281,7 @@ msgstr "У/И грешка у датотеци приликом читања п�
 msgid ""
 "This is a multiplayer scenario. Some parts of it may not work properly in "
 "single-player. It is recommended to load this scenario through the "
-"Multiplayer -> Load Game dialog instead."
+"<b>Multiplayer</b> → <b>Load Game</b> dialog instead."
 msgstr ""
 
 #: src/game_controller.cpp:543 src/multiplayer.cpp:262
@@ -6228,7 +6228,7 @@ msgstr "Домен пребачен: ‘$domain|’ на ниво: ‘$level|’
 msgid "whisper to $receiver"
 msgstr "шапат за $receiver"
 
-#: src/menu_events.cpp:2294 src/multiplayer_ui.cpp:433
+#: src/menu_events.cpp:2294 src/multiplayer_ui.cpp:481
 msgid "whisper: $sender"
 msgstr "шапат: $sender"
 
@@ -7157,9 +7157,15 @@ msgstr "Лозинка: "
 msgid "Invalid Color"
 msgstr "Лоша боја"
 
-#: src/multiplayer_ui.cpp:316
+#: src/multiplayer_ui.cpp:317
 msgid "Selected user: "
 msgstr "Изабрани корисник: "
+
+#: src/multiplayer_ui.cpp:455
+#, fuzzy
+#| msgid "Accept whispers from friends only"
+msgid "$sender is messaging you, and you accept whispers from friends only."
+msgstr "Шаптања се примају само од пријатеља"
 
 #: src/multiplayer_wait.cpp:140
 msgid "Leader: "

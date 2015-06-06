@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-11-08 21:20+0100\n"
+"POT-Creation-Date: 2015-06-05 21:33-0300\n"
 "PO-Revision-Date: 2010-09-30 05:00-0400\n"
 "Last-Translator: Arc Riley <arcriley@gmail.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -1704,7 +1704,7 @@ msgstr "𐑒𐑩𐑯𐑧𐑒𐑑"
 #: data/gui/default/window/language_selection.cfg:141
 #: data/gui/default/window/message.cfg:151
 #: data/gui/default/window/mp_change_control.cfg:160
-#: data/gui/default/window/mp_cmd_wrapper.cfg:470
+#: data/gui/default/window/mp_cmd_wrapper.cfg:485
 #: data/gui/default/window/mp_connect.cfg:176
 #: data/gui/default/window/mp_create_game.cfg:559
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:202
@@ -3016,7 +3016,7 @@ msgstr "𐑒𐑦𐑒 / 𐑚𐑨𐑯 𐑮𐑰𐑟𐑩𐑯:"
 
 #. [button]: id=kick
 #: data/gui/default/window/lobby_player_info.cfg:168
-#: data/gui/default/window/mp_cmd_wrapper.cfg:389
+#: data/gui/default/window/mp_cmd_wrapper.cfg:399
 msgid "Kick"
 msgstr "𐑒𐑦𐑒"
 
@@ -3084,27 +3084,27 @@ msgid "Add as Ignore"
 msgstr "𐑨𐑛 𐑨𐑟 𐑦𐑜𐑯𐑹"
 
 #. [label]
-#: data/gui/default/window/mp_cmd_wrapper.cfg:241
+#: data/gui/default/window/mp_cmd_wrapper.cfg:251
 msgid "Moderating"
 msgstr "𐑥𐑴𐑛𐑮𐑱𐑑𐑦𐑙"
 
 #. [label]
-#: data/gui/default/window/mp_cmd_wrapper.cfg:271
+#: data/gui/default/window/mp_cmd_wrapper.cfg:281
 msgid "Reason:"
 msgstr "𐑮𐑰𐑟𐑩𐑯:"
 
 #. [label]
-#: data/gui/default/window/mp_cmd_wrapper.cfg:323
+#: data/gui/default/window/mp_cmd_wrapper.cfg:333
 msgid "Time:"
 msgstr "𐑑𐑲𐑥:"
 
 #. [button]: id=status
-#: data/gui/default/window/mp_cmd_wrapper.cfg:374
+#: data/gui/default/window/mp_cmd_wrapper.cfg:384
 msgid "Status"
 msgstr "𐑕𐑑𐑱𐑑𐑫𐑕"
 
 #. [button]: id=ban
-#: data/gui/default/window/mp_cmd_wrapper.cfg:404
+#: data/gui/default/window/mp_cmd_wrapper.cfg:414
 msgid "Ban"
 msgstr "𐑚𐑨𐑯"
 
@@ -3554,19 +3554,19 @@ msgstr "𐑛𐑦𐑤𐑰𐑖𐑩𐑯 𐑝 𐑞 𐑓𐑲𐑤 𐑓𐑱𐑤𐑛."
 msgid "Creation of the directory failed."
 msgstr "𐑒𐑮𐑰𐑱𐑖𐑩𐑯 𐑝 𐑞 𐑛𐑲𐑮𐑧𐑒𐑑𐑼𐑦 𐑓𐑱𐑤𐑛."
 
-#: src/game_preferences.cpp:352
+#: src/game_preferences.cpp:357
 msgid "No server has been defined."
 msgstr "𐑯𐑴 𐑕𐑻𐑝𐑻 𐑣𐑨𐑟 𐑚𐑰𐑯 𐑛𐑦𐑓𐑲𐑯𐑛."
 
-#: src/game_preferences.cpp:432
+#: src/game_preferences.cpp:437
 msgid "player"
 msgstr "𐑐𐑤𐑱𐑻"
 
-#: src/game_preferences.cpp:959
+#: src/game_preferences.cpp:964
 msgid "%H:%M"
 msgstr ""
 
-#: src/game_preferences.cpp:962
+#: src/game_preferences.cpp:967
 msgid "%I:%M %p"
 msgstr ""
 
@@ -5375,6 +5375,14 @@ msgstr "𐑳𐑯𐑯𐑴𐑯 𐑺𐑨"
 #, fuzzy
 msgid "Hat"
 msgstr "𐑒𐑳𐑑"
+
+#: src/hotkey/hotkey_preferences_display.cpp:134
+msgid "Add a new binding to \"$hotkey_description|\""
+msgstr ""
+
+#: src/hotkey/hotkey_preferences_display.cpp:136
+msgid "Clears the current bindings for \"$hotkey_description|\""
+msgstr ""
 
 #: src/hotkey/hotkey_preferences_display.cpp:150
 #, fuzzy
