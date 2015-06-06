@@ -49,6 +49,7 @@ Version 1.13.0+dev:
    * New or updated image path functions:
       * ~BW(): converts an image to black and white
       * ~NEG() now supports 0,1 or 3 arguments, allowing solarization effects
+      * ~SWAP(): swaps the RGBA channels of the image
    * Added support for SLF in [label] when used inside an event
  * Miscellaneous and bug fixes:
    * Removed abandoned libana network API implementation.
