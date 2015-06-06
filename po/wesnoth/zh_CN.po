@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-06-05 21:33-0300\n"
-"PO-Revision-Date: 2015-02-07 13:00+0800\n"
+"PO-Revision-Date: 2015-06-06 15:27+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 1.7.4\n"
+"X-Generator: Poedit 1.8.1\n"
 
 #. [advanced_preference]: type=combo
 #. Associated save_compression_short^ entries need to be as short as
@@ -4973,18 +4973,13 @@ msgid "File I/O Error while reading the game: '"
 msgstr "读取游戏时发生文件I/O错误："
 
 #: src/game_controller.cpp:543
-#, fuzzy
-#| msgid ""
-#| "This is a multiplayer scenario. Some parts of it may not work properly in "
-#| "single-player. It is recommended to load this scenario through the "
-#| "Multiplayer -> Load Game dialog instead."
 msgid ""
 "This is a multiplayer scenario. Some parts of it may not work properly in "
 "single-player. It is recommended to load this scenario through the "
 "<b>Multiplayer</b> → <b>Load Game</b> dialog instead."
 msgstr ""
-"这是一个多人游戏场景。部分内容在单人游戏中可能无法正常工作。建议您在 多人游"
-"戏 -> 读取游戏 对话框中读取本场景。"
+"这是一个多人游戏场景。部分内容在单人游戏中可能无法正常工作。建议您在 <b>多人"
+"游戏</b> → <b>读取游戏</b> 对话框中读取本场景。"
 
 #: src/game_controller.cpp:543 src/multiplayer.cpp:262
 msgid "Warning"
@@ -6741,10 +6736,8 @@ msgid "Selected user: "
 msgstr "选定用户："
 
 #: src/multiplayer_ui.cpp:455
-#, fuzzy
-#| msgid "Accept whispers from friends only"
 msgid "$sender is messaging you, and you accept whispers from friends only."
-msgstr "只接受好友发来的悄悄话"
+msgstr "$sender 正向您发送消息，而您只接受好友发来的悄悄话。"
 
 #: src/multiplayer_wait.cpp:140
 msgid "Leader: "

@@ -3,21 +3,22 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # luojie <lililjlj@gmail.com>, 2009.
 # MrKing <yideey@gmail.com>, 2012.
+# Brian Lee <haiyuan.2007@gmail.com>, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 03:21-0300\n"
-"PO-Revision-Date: 2015-01-02 13:27+0800\n"
+"POT-Creation-Date: 2015-06-05 21:33-0300\n"
+"PO-Revision-Date: 2015-06-06 15:44+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
-"Language-Team:  Wesnoth Simplified Chinese Team\n"
+"Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 1.7.1\n"
+"X-Generator: Poedit 1.8.1\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -112,7 +113,7 @@ msgstr "特别感谢忘记提到的人们。"
 #. [lua]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:181
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
+msgstr "昏迷: 此单位已昏迷，无法确保其控制区域。"
 
 #. [scenario]: id=01_The_Morning_After
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:5
@@ -141,7 +142,6 @@ msgstr "卡勒"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:35
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:44
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:33
-#, fuzzy
 msgid "team_name^Quenoth Elves"
 msgstr "奎诺精灵卡勒"
 
@@ -628,12 +628,11 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:734
-#, fuzzy
 msgid ""
 "The water of the lake suddenly goes dark and unsettled, only to erupt in a "
 "swarm of tentacles the moment the first elf set foot off the island."
 msgstr ""
-"湖水突然变得昏暗浑浊， 深处涌出一大堆怪物触手——就在第一支脚踏入水中时。"
+"湖水突然变得昏暗浑浊， 深处涌出一大堆怪物触手——就在第一个精灵的脚踏入水中时。"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:743
@@ -845,7 +844,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1156
-#, fuzzy
 msgid ""
 "We’ve explored the village, and I think we’ve rescued the last of the "
 "survivors."
@@ -1189,7 +1187,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:312
-#, fuzzy
 msgid ""
 "During the daytime (Dawn, Morning, Midday, Afternoon, and Dusk) at the "
 "beginning of each your turns, every unit in a sand, road, rubble or sand "
@@ -1201,8 +1198,8 @@ msgid ""
 msgstr ""
 "白天之中（清晨、上午、中午、下午以及黄昏），每回合开始的时候，在沙地、道路、"
 "沙丘或者石堆上的单位将受到口渴的威胁，每回合都会减少这个单位的攻击力，并且造"
-"成 $dehydration_loss 点缺水引起的伤害。只有被治疗单位治疗，或者在绿洲（也就是"
-"浅水地形）中，回合开始的时候这些单位才够恢复完全的攻击力。"
+"成 $dehydration_loss 点缺水引起的伤害。只有被治疗单位治疗（但无法痊愈），或者"
+"在绿洲（也就是浅水地形）中，回合开始的时候这些单位才够恢复完全的攻击力。"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:318
@@ -1239,7 +1236,6 @@ msgstr "什么？我什么都没看见。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:388
-#, fuzzy
 msgid "See those shining speckles ahead? Scorpions. Large. Whole nest of them."
 msgstr "看见前面那个闪光的亮点了吗？蝎子，巨大的蝎子，倾巢而出。"
 
@@ -1738,15 +1734,14 @@ msgstr ""
 "这是圣水。把它涂在武器上将会对那些魔法的创造物造成致命伤害。像这样的小瓶十分"
 "珍贵，我们要谨慎地选择谁来使用它。"
 
+# 改正翻译
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1637
-#, fuzzy
 msgid "Should I take the holy water?"
-msgstr "我该拿这把剑吗?"
+msgstr "我该拿这圣水吗?"
 
 #. [object]: id=PureWater
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1644
-#, fuzzy
 msgid "Holy Water"
 msgstr "圣水"
 
@@ -1759,7 +1754,6 @@ msgstr "这瓶水将让你的近战武器发出<b>奥术攻击</b>，这会对�
 
 #. [option]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1668
-#, fuzzy
 msgid "No, I think someone else should take it."
 msgstr "不，我想应该让别人来佩戴它。"
 
@@ -2838,13 +2832,11 @@ msgstr "乌戈洛克"
 
 #. [objectives]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:200
-#, fuzzy
 msgid "Objectives:"
 msgstr "新任务:"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:202
-#, fuzzy
 msgid "Kaleh must reach the exit tunnel at the north edge of the map"
 msgstr "卡勒到达地图北边的通道"
 
@@ -3323,7 +3315,7 @@ msgstr "地下挣扎"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:93
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1405
 msgid "team_name^Trolls"
-msgstr ""
+msgstr "巨魔"
 
 #. [modify_side]
 #. [side]
@@ -3331,7 +3323,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:184
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1338
 msgid "team_name^Dwarves"
-msgstr ""
+msgstr "矮人"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:311
@@ -3496,7 +3488,6 @@ msgstr "巨魔是什么？"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:507
-#, fuzzy
 msgid ""
 "Trolls were huge gray creatures as big as giants and very strong. They were "
 "reclusive creatures, hiding underground. We never had much contact with "
@@ -3504,7 +3495,7 @@ msgid ""
 "warriors. I’m sure they have all died off; I certainly would never want to "
 "meet one face to face."
 msgstr ""
-"巨魔是绿色的巨大生物，他们像巨人一样大，而且非常强壮。他们是封闭的生物，躲藏"
+"巨魔是灰色的巨大生物，他们像巨人一样大，而且非常强壮。他们是封闭的生物，躲藏"
 "在地底下。除了伟大战争中与兽人的那几场战斗，我们和他们没有过接触。他们是很棒"
 "的战士。我不知道他们死绝了没有；无论如何我都不会想去惹一个巨魔的。"
 
@@ -3925,7 +3916,7 @@ msgstr "呃......"
 #. [message]: speaker=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1265
 msgid "What by the names of my forefathers are they?"
-msgstr ""
+msgstr "以祖先之名义，它们是什么？"
 
 #. [message]: speaker=first_dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1270
@@ -4163,16 +4154,16 @@ msgstr "救我！！"
 msgid "More accursed troll magic. Fall back!"
 msgstr "又来了，可恶的巨魔法术。退后！"
 
+# 略有修改
 #. [message]: speaker=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1929
-#, fuzzy
 msgid ""
 "I need to go back and rally more reinforcements. We’re hurtin’, Kaleh, I’ll "
 "need your men to cover for us. Do your best, boy, and may your ancestors "
 "watch over you."
 msgstr ""
 "我需要到后方去征募更多援军。卡勒，我们正在受到攻击，我要你的人来掩护我们。孩"
-"子，全力以赴吧，莫雷丁会保佑你的。"
+"子，全力以赴吧，你的祖先会保佑你的。"
 
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1949
@@ -4425,7 +4416,6 @@ msgstr "萨满长老"
 
 #. [message]: speaker=Grimnir
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:420
-#, fuzzy
 msgid ""
 "This passage leads very close to the trolls’ main lair; you can hear them "
 "tromping back and forth just past the eastern wall. All that separates us "
@@ -4522,7 +4512,6 @@ msgstr "开火！"
 
 #. [message]: speaker=Grimnir
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:567
-#, fuzzy
 msgid ""
 "My work here is done. I must report back to my King. I have many more things "
 "to do before the day is done, but I will return once you finish your "
@@ -4636,9 +4625,9 @@ msgstr ""
 "啊，我收回那句话。巨魔似乎没有过来，我猜他们觉得岩浆可以阻拦我们，但是我们会"
 "让他们失望的，这点热量休想拦住我们！"
 
+# 游戏中双日之下没有出现中文
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:978
-#, fuzzy
 msgid ""
 "Any unit that ends its turn on a lava hex, except the Desert Shyde and Star "
 "who can fly over the lava, will take 25 damage at the beginning of the next "
@@ -4665,9 +4654,9 @@ msgstr ""
 "这里有一小池水，它一定是由地下水形成的。这水又干净又清凉。让我在水里泡一泡，"
 "我就能从这个该死洞穴的酷热中恢复过来。"
 
+# 里面的数值源文本没有显示
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1012
-#, fuzzy
 msgid ""
 "At the start of each turn, any unit currently in this pool will heal 10 "
 "hitpoints and will not be affected by the heat in the cavern. Of course, if "
@@ -4855,7 +4844,6 @@ msgstr ""
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1702
-#, fuzzy
 msgid ""
 "Perhaps they wanted to further test our prowess in battle. And besides, "
 "every troll we kill is one they don’t have to. Still, I think we caused a "
@@ -4943,7 +4931,6 @@ msgstr ""
 
 #. [message]: speaker=Dwarf Ghost
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1828
-#, fuzzy
 msgid ""
 "Thank you. You have done for me what all my dwarven kin never could. I will "
 "no longer block your way. I leave now for the halls of my ancestors..."
@@ -5187,6 +5174,8 @@ msgid ""
 "dwarves an easy access route if they defeated us. So much for an escape "
 "route, I guess we’ll just have to be sure not to fail."
 msgstr ""
+"泽格必定已使隧道倒塌，如果他们打败我们，可能他不想给矮人一条容易的进入通道。"
+"就只有一条逃生通道，我猜我们仅仅需确保不会失败。"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:616
@@ -5247,12 +5236,12 @@ msgstr ""
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:671
 msgid "No, it’s an elf!"
-msgstr ""
+msgstr "不，它是个精灵！"
 
 #. [message]: id=Dwarf Sergeant
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:676
 msgid "What...?! Right... First task, boys, kill the intruder!"
-msgstr ""
+msgstr "什么？！好吧，首要任务，兄弟们，杀死这个入侵者！"
 
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:682
@@ -5317,7 +5306,6 @@ msgstr "他们也来了！打开机关！"
 #. [message]: speaker=West Scout
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:855
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:926
-#, fuzzy
 msgid ""
 "What?! Nothing happened! Who rigged the darn charges anyway? I’m going to "
 "have to hold them off by myself."
@@ -5474,7 +5462,6 @@ msgstr ""
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1431
-#, fuzzy
 msgid ""
 "Perhaps they wanted to further test our prowess in battle. And besides, "
 "every dwarf we kill is one they don’t have to. Still, I think we caused a "
@@ -6291,7 +6278,6 @@ msgstr "逃出盆地"
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:46
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:190
-#, fuzzy
 msgid "Humans"
 msgstr "人类护卫"
 
@@ -6440,7 +6426,6 @@ msgstr "没时间浪费了！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:781
-#, fuzzy
 msgid "Hey look, ants!"
 msgstr "嘿, 看, 好多蚂蚁!"
 
@@ -6454,21 +6439,22 @@ msgstr "嘿, 看, 好多蚂蚁!"
 msgid "Are you sure there aren’t any spiders?"
 msgstr "你确定那儿没有蜘蛛吗？"
 
+# 有所改进翻译
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:808
-#, fuzzy
 msgid ""
 "No, but the water is rising to the southeast as well. The river must lead to "
 "more tunnels than we first thought."
-msgstr "没有。但东南边也涨水了，河肯定流过了我们不知道的洞穴。"
+msgstr "没有。但东南边也涨水了，河水一定流向了比我们最初想象更多的坑道。"
 
+# 改进翻译
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:815
-#, fuzzy
 msgid ""
 "I don’t see any spiders, but the water is rising to the southeast as well. "
 "The river must lead to more tunnels than we first thought."
-msgstr "我没看到蜘蛛。但东南方也涨水了。河肯定流过了我们不知道的洞穴。"
+msgstr ""
+"我没看到蜘蛛。但东南方也涨水了。河水肯定流过了比我们最初想到更多的洞穴。"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:822
@@ -6530,7 +6516,6 @@ msgstr "啥？巨魔?"
 
 #. [message]: speaker=Bellerin
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:917
-#, fuzzy
 msgid ""
 "Yeah, just like my old grandmam used to tell us: dark gray skin, beady red "
 "eyes, hulking brutes with brains as small as a barnacle. They lurk deep in "
@@ -6734,7 +6719,6 @@ msgstr "很好，这应该就是秘道的入口了。现在让我们小心地进
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1202
-#, fuzzy
 msgid ""
 "Well, this is the end of the tunnel. Which means the other secret door "
 "should be right here."
@@ -7625,7 +7609,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2647
-#, fuzzy
 msgid "You can go Nym, just be careful."
 msgstr "好的，妮慕，小心点。"
 
@@ -7971,7 +7954,6 @@ msgstr "现在，我只在你面前显现，只在你面前，卡勒，你是特
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3142
-#, fuzzy
 msgid "$unit.name|, be quiet, I’ll explain it all later."
 msgstr "$speaker.name|，安静，我稍后再向你解释。"
 
@@ -8146,7 +8128,6 @@ msgstr ""
 
 #. [message]: speaker=Sergeant Durstrag
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3302
-#, fuzzy
 msgid ""
 "A dwarf! This just gets better and better. We haven’t seen one of your kind "
 "up here for many years, but we have long memories. I remember how your "
@@ -8551,7 +8532,6 @@ msgstr "呸，小子，你什么都不知道！我不死的后果比让我死更
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3967
-#, fuzzy
 msgid "He killed himself rather than surrender to us!"
 msgstr "他宁愿自杀也不向我们投降！"
 
@@ -8746,7 +8726,6 @@ msgstr "几小时后。。。"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4373
-#, fuzzy
 msgid "In Eloh’s name, Nym, you look terrible. Are you well?"
 msgstr "伊洛保佑，妮慕，你气色好差。还好吧？"
 
@@ -8772,7 +8751,6 @@ msgstr "放松点，这是朋友。我来解释。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4430
-#, fuzzy
 msgid "You’re really beat up, Nym. Are you sure you’re fine?"
 msgstr "妮慕，你看起来累坏了。你确定他没问题吗？"
 
@@ -9169,7 +9147,6 @@ msgstr "谢谢。抱歉，我也不知道怎么回事，他们不知道从哪里
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:528
-#, fuzzy
 msgid ""
 "It’s fine, you’re not used to being on dry ground, and you’ve been through a "
 "lot. Even if the humans know we’re coming, we can still take them. Just be "
@@ -9295,7 +9272,6 @@ msgstr "我们以后再问这个问题吧，现在我们要继续战斗。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:756
-#, fuzzy
 msgid ""
 "female_speaker^Indeed you have done well, far better than I could have "
 "hoped. We shall talk more later, but for now we have to free the rest of our "
@@ -9305,7 +9281,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:763
-#, fuzzy
 msgid ""
 "female_addressed^Greetings. Esanoo told us that you were looking for us, and "
 "he bravely led us here. Though he has fallen in combat, we have come to "
@@ -9316,7 +9291,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:767
-#, fuzzy
 msgid ""
 "female_speaker^Yes, I recognize your face, young elf. We will remember "
 "Esanoo’s sacrifice. But for now we must rescue the rest of my brethren "
@@ -9325,11 +9299,11 @@ msgstr ""
 "是的，我认得你，年轻的精灵。我们会铭记伊瑟努的牺牲。现在让我们抢在我的同胞也"
 "被邪恶的人类杀死之前，把他们救出来吧。"
 
+# 修改了一下
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:771
-#, fuzzy
 msgid "How could she recognize your face? We’ve never seen her before."
-msgstr "他怎么会认得你？我们从来没有见过他。"
+msgstr "她怎么会认得你？我们从来没有见过她。"
 
 #. [unit]: type=Merman Warrior, id=Urruga
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:798
@@ -9420,7 +9394,6 @@ msgstr "谢谢搭救。您是怎么逃脱的？"
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1056
-#, fuzzy
 msgid ""
 "One of the elves we were searching for helped me get away before I was "
 "caught. I can’t believe the humans imprisoned you in such a horrible place. "
@@ -9514,7 +9487,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1197
-#, fuzzy
 msgid ""
 "If I were a landwalker, I might think the view from this sandbar to be "
 "amazing. But I am a creature of the sea and I see views like this every day."
@@ -9596,7 +9568,6 @@ msgstr ""
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1394
-#, fuzzy
 msgid ""
 "Esanoo said there were five merfolk captured. We only found four. Where did "
 "they hide the last one? What horrible acts have these humans committed?"
@@ -10836,7 +10807,6 @@ msgstr "嗯，我们知道这个时代。"
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:268
-#, fuzzy
 msgid ""
 "This will go much faster if you don’t interrupt me. Now, as I was saying the "
 "Empire of Wesnoth was very learned in the magical arts and had vast "
@@ -10859,9 +10829,9 @@ msgstr ""
 "举动非常愚蠢，但是实际上它异常的成功，彰显了人类的强大实力。从那以后黄金时代"
 "变得更加光明，甚至有人认为他们将永远摆脱邪恶和黑暗。"
 
+# 修改了一下以前的翻译
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:273
-#, fuzzy
 msgid ""
 "But with their prosperity and power, over the generations the humans grew "
 "arrogant. One day a young descendant of the original king decreed that "
@@ -10876,13 +10846,13 @@ msgid ""
 "crushing all within it. In an instant the center of the Empire of Wesnoth "
 "was utterly destroyed."
 msgstr ""
-"但是正是由于他们的繁荣与强大，数代人以后人类变得骄傲起来。有一天，之前那个皇"
-"帝的一个年轻传人认为，为了使光明与善良普照大地，黑暗必须被彻底地消除。但是人"
-"们已经变得懒惰又自大，虽然魔法师们仍在努力钻研魔法，但是技艺也已经大不如前"
-"了。可是这位皇帝依然认为他是全能的，他听不进魔法师们的劝谏。所以魔法师们只能"
-"照搬前人的成功经验，想把第二座山托上天空。但是那天一个大恶魔破坏了他们的工"
-"程，那座山砸到了人类的首都，把一切都毁了。那一瞬间，韦诺帝国的心脏成为了废"
-"墟。"
+"但是正是由于他们的繁荣与强大，数代人以后人类变得骄傲起来。有一天，最初皇帝的"
+"一个年轻传人认为，为了使光明与善良普照大地，黑暗必须被彻底地消除。但是人们已"
+"经变得懒惰又自大，虽然魔法师们仍在努力钻研魔法，但是技艺也已经大不如前了。可"
+"是这位皇帝依然认为他是全能的，他听不进魔法师们的劝谏。所以魔法师们只能照搬前"
+"人的成功经验，想把第二座山托上天空。但是那天一个巨大的不幸降临到他们身上；他"
+"们的力量失败了，并且那座山砸到了人类的首都，把一切都毁了。那一瞬间，韦诺帝国"
+"的心脏成为了废墟。"
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:278
@@ -10963,7 +10933,6 @@ msgstr ""
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:298
-#, fuzzy
 msgid ""
 "The islands seemed lush and bountiful so we decided to settle in the shallow "
 "waters. But we discovered that the largest island was a strange and sinister "
@@ -10988,7 +10957,6 @@ msgstr ""
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:303
-#, fuzzy
 msgid ""
 "The island was declared cursed, and we stayed as far away from it as we "
 "could. Some said we should flee the islands, but the waters were great for "
@@ -11111,7 +11079,6 @@ msgstr ""
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:363
-#, fuzzy
 msgid ""
 "Because in the end, I’m afraid you just have to trust us. If we wanted to "
 "capture you we could have already. But we are not here to force you to do "
@@ -11533,7 +11500,6 @@ msgstr ""
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:635
-#, fuzzy
 msgid ""
 "I will do as you ask. It is only fair. But if this battle goes ill I do not "
 "think there will be many safe places left in the known lands."
@@ -12256,7 +12222,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1296
-#, fuzzy
 msgid ""
 "I must go and end this. But first I want to thank you all for your faith in "
 "me throughout this long journey. If I do not prevail then please flee this "
@@ -14088,7 +14053,6 @@ msgstr "坚忍"
 
 #. [resistance]: id=sustenance
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:239
-#, fuzzy
 msgid ""
 "This unit’s resistances are increased by 20% in daylight, on defense and "
 "attack. Vulnerabilities are not affected."
@@ -14114,7 +14078,6 @@ msgstr "击晕"
 #. [dummy]: id=stun
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:278
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:280
-#, fuzzy
 msgid ""
 "This attack puts enormous pressure on the enemy, disrupting his ZOC if a hit "
 "is landed. Not active on defense."
@@ -14135,7 +14098,6 @@ msgstr "伪装"
 #. [hides]: id=camouflage
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:301
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:304
-#, fuzzy
 msgid ""
 "This unit can hide in desert dunes, desert mountains and craters, and remain "
 "undetected by its enemies.\n"
@@ -14342,7 +14304,6 @@ msgstr "尘土回复"
 
 #. [regenerate]
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Dust_Devil.cfg:75
-#, fuzzy
 msgid "The unit will heal itself 6 HP per turn on sand or dirt terrain."
 msgstr ""
 "尘土回复：\n"
@@ -14810,6 +14771,10 @@ msgid ""
 "\n"
 "Units cannot be killed or deal no damage as a result of dehydration."
 msgstr ""
+"脱水：在白天，该单位会脱水，并将失去4HP，同时在每一回合伤害值将减少1，但有医"
+"治者或在绿洲的水中治疗除外。\n"
+"\n"
+"由于脱水，单位不会死去活或不造成伤害。"
 
 #. [set_variable]
 #: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:37
@@ -15235,9 +15200,9 @@ msgstr ""
 "间我感到一丝绝望，就像再也见不到太阳了一样。接着我抓紧了我的剑，心中涌起强烈"
 "的决心，我发誓要活着完成这项任务。"
 
+# 原文略有修改
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:114
-#, fuzzy
 msgid ""
 "Chapter 6: The troll Zurg led us through a maze of twisting passages "
 "speaking scarcely a word. Finally after what seemed like hours of marching "
@@ -15250,8 +15215,8 @@ msgid ""
 msgstr ""
 "第六章：巨魔泽格一言不发地领我们穿过如迷宫一般交错的通道。大概走了几个小时"
 "后，他终于停下了脚步。他打手势告诉我们要非常安静，然后我们继续向前潜行。我能"
-"听见的只有轻快的脚步声和自己沉重的喘息，但就是这一点点的噪音，也似乎在我们狭"
-"小通道的粗野墙壁上不断回响着。我突然想到了头顶上有着大量的岩石和泥土，那一瞬"
+"听见的只有轻快的脚步声和自己沉重的喘息，但就是这一点点的噪音，也似乎在我们粗"
+"野通道的狭小墙壁上不断回响着。我突然想到了头顶上有着大量的岩石和泥土，那一瞬"
 "间我感到一丝绝望，就像再也见不到太阳了一样。接着我抓紧了我的剑，心中涌起强烈"
 "的决心，我发誓要活着完成这项任务。"
 
