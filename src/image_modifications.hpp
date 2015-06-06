@@ -516,6 +516,21 @@ private:
 	SDL_Color color_;
 };
 
+/**
+ * Channel swap (SWAP).
+ */
+class swap_modification : public modification
+{
+public:
+	swap_modification(channel r, channel g, channel b, channel a): red_(r), green_(g), blue_(b), alpha_(a) {}
+	virtual surface operator()(const surface& src) const;
+private:
+	channel red_;
+	channel green_;
+	channel blue_;
+	channel alpha_;
+};
+
 } /* end namespace image */
 
 #endif /* !defined(IMAGE_MODIFICATIONS_HPP_INCLUDED) */

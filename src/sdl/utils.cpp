@@ -1207,6 +1207,107 @@ surface shadow_image(const surface &surf, bool optimize)
 	return optimize ? create_optimized_surface(nsurf) : nsurf;
 }
 
+surface swap_channels_image(const surface& surf, channel r, channel g, channel b, channel a, bool optimize) {
+	if(surf == NULL)
+		return NULL;
+
+	surface nsurf(make_neutral_surface(surf));
+	if(nsurf == NULL) {
+		std::cerr << "failed to make neutral surface\n";
+		return NULL;
+	}
+
+	{
+		surface_lock lock(nsurf);
+		Uint32* beg = lock.pixels();
+		Uint32* end = beg + nsurf->w*surf->h;
+
+		while(beg != end) {
+			Uint8 alpha = (*beg) >> 24;
+
+			if(alpha) {
+				Uint8 red, green, blue, newRed, newGreen, newBlue, newAlpha;
+				red = (*beg) >> 16;
+				green = (*beg) >> 8;
+				blue = (*beg);
+
+				switch (r) {
+					case RED:
+						newRed = red;
+						break;
+					case GREEN:
+						newRed = green;
+						break;
+					case BLUE:
+						newRed = blue;
+						break;
+					case ALPHA:
+						newRed = alpha;
+						break;
+					default:
+						return NULL;
+				}
+
+				switch (g) {
+					case RED:
+						newGreen = red;
+						break;
+					case GREEN:
+						newGreen = green;
+						break;
+					case BLUE:
+						newGreen = blue;
+						break;
+					case ALPHA:
+						newGreen = alpha;
+						break;
+					default:
+						return NULL;
+				}
+
+				switch (b) {
+					case RED:
+						newBlue = red;
+						break;
+					case GREEN:
+						newBlue = green;
+						break;
+					case BLUE:
+						newBlue = blue;
+						break;
+					case ALPHA:
+						newBlue = alpha;
+						break;
+					default:
+						return NULL;
+				}
+
+				switch (a) {
+					case RED:
+						newAlpha = red;
+						break;
+					case GREEN:
+						newAlpha = green;
+						break;
+					case BLUE:
+						newAlpha = blue;
+						break;
+					case ALPHA:
+						newAlpha = alpha;
+						break;
+					default:
+						return NULL;
+				}
+
+				*beg = (newAlpha << 24) | (newRed << 16) | (newGreen << 8) | newBlue;
+			}
+
+			++beg;
+		}
+	}
+
+	return optimize ? create_optimized_surface(nsurf) : nsurf;
+}
 
 surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb, bool optimize){
 	if(surf == NULL)
