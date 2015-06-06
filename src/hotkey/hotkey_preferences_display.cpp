@@ -131,9 +131,9 @@ public:
 };
 
 const char* hotkey_preferences_dialog::add_button_text =
-		N_("Add additional binding to \"$hotkey_description|\"");
+		N_("Add a new binding to \"$hotkey_description|\"");
 const char* hotkey_preferences_dialog::clear_button_text =
-		N_("Clears \"$hotkey_description|'s\" bindings");
+		N_("Clears the current bindings for \"$hotkey_description|\"");
 
 class hotkey_resetter : public gui::dialog_button_action
 {
