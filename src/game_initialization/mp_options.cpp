@@ -107,6 +107,20 @@ void manager::init_widgets()
 			widgets_ordered_.back()->set_value(get_stored_value(id));
 			widgets_[id] = widgets_ordered_.back();
 		}
+		widgets_ordered_.push_back(new reset_display(display_.video(), comp.cfg["id"], *this));
+	}
+}
+
+void manager::restore_defaults(const std::string &component)
+{
+	BOOST_FOREACH (const config::any_child& i, get_component_cfg(component).all_children_range()) {
+		if (!is_valid_option(i.key, i.cfg)) {
+			continue;
+		}
+
+		const std::string id = i.cfg["id"].str();
+
+		widgets_[id]->set_value(get_default_value(id));
 	}
 }
 
@@ -199,10 +213,9 @@ void manager::layout_widgets(int startx, int starty)
 
 void manager::process_event()
 {
-	for (std::map<std::string, option_display*>::iterator i = widgets_.begin();
-		 i != widgets_.end(); ++i)
+	for (size_t i = 0; i<widgets_ordered_.size(); ++i)
 	{
-		i->second->process_event();
+		widgets_ordered_[i]->process_event();
 	}
 }
 
@@ -295,6 +308,24 @@ const config& manager::get_option_info_cfg(const std::string& id) const
 	return empty;
 }
 
+const config& manager::get_component_cfg(const std::string &id) const
+{
+	static const config empty;
+	const config &m = options_info_.find_child("modification", "id", id);
+	if (m) {
+		return m;
+	}
+	const config &s = options_info_.find_child("scenario", "id", id);
+	if (s) {
+		return s;
+	}
+	const config &e = options_info_.find_child("era", "id", id);
+	if (e) {
+		return e;
+	}
+	return empty;
+}
+
 
 config::attribute_value manager::get_stored_value(const std::string& id) const
 {
@@ -343,35 +374,6 @@ bool manager::is_valid_option(const std::string& key, const config& option)
 {
 	return (key == "slider" || key == "entry" || key == "checkbox" || key == "combo") &&
 		   (!option["id"].empty());
-}
-
-void manager::restore_defaults(manager* m)
-{
-	const config& era = m->options_info_.find_child("era", "id", m->era_);
-	restore_defaults_for_component(era, m);
-
-	const config& scen = m->options_info_.find_child("multiplayer", "id",
-													 m->scenario_);
-	restore_defaults_for_component(scen, m);
-
-	BOOST_FOREACH (const std::string& id, m->modifications_) {
-		const config& mod = m->options_info_.find_child("modification", "id",
-														id);
-		restore_defaults_for_component(mod, m);
-	}
-}
-
-void manager::restore_defaults_for_component(const config& c, manager* m)
-{
-	BOOST_FOREACH (const config::any_child& i, c.all_children_range()) {
-		if (!is_valid_option(i.key, i.cfg)) {
-			continue;
-		}
-
-		const std::string id = i.cfg["id"].str();
-
-		m->widgets_[id]->set_value(m->get_default_value(id));
-	}
 }
 
 bool manager::is_active(const std::string &id) const
@@ -589,6 +591,35 @@ void combo_display::hide_children(bool hide)
 {
 	label_->hide(hide);
 	combo_->hide(hide);
+}
+
+reset_display::reset_display(CVideo &video, const std::string &comp, manager &m)
+	: manager_(m)
+	, component_(comp)
+	, button_(new gui::button(video, _("Defaults")))
+{}
+
+reset_display::~reset_display()
+{
+	delete button_;
+}
+
+void reset_display::layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane)
+{
+	pane->add_widget(button_, xpos, ypos);
+	ypos += button_->height() + border_size;
+}
+
+void reset_display::hide_children(bool hide)
+{
+	button_->hide(hide);
+}
+
+void reset_display::process_event()
+{
+	if (button_->pressed()) {
+		manager_.restore_defaults(component_);
+	}
 }
 
 }	// namespace options

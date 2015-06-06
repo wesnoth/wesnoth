@@ -140,6 +140,26 @@ private:
 	gui::label* title_;
 };
 
+class manager;
+
+class reset_display : public option_display
+{
+public:
+	reset_display(CVideo& video, const std::string& comp, manager &m);
+	~reset_display();
+
+	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
+	void set_value(const config::attribute_value &/*val*/) {}
+	config::attribute_value get_value() const { return config::attribute_value(); }
+	void hide_children(bool hide);
+	void process_event();
+
+private:
+	manager &manager_;
+	std::string component_;
+	gui::button* button_;
+};
+
 class manager
 {
 public:
@@ -217,6 +237,8 @@ public:
 
 	void init_widgets();
 
+	void restore_defaults(const std::string &component);
+
 private:
 
 	/** Stores needed info about each element and their configuration options */
@@ -286,6 +308,8 @@ private:
 	 */
 	const config& get_option_info_cfg(const std::string& id) const;
 
+	const config& get_component_cfg(const std::string& id) const;
+
 	/**
 	 * Finds the parent node of an options.
 	 *
@@ -342,25 +366,6 @@ private:
 	 * @return						True if the option is valid, false if not.
 	 */
 	static bool is_valid_option(const std::string& key, const config& option);
-
-	/**
-	 * Restores every widget's value to its default for a window.
-	 *
-	 * @param m						A pointer to the manager which generated
-	 * 								the window.
-	 */
-	static void restore_defaults(manager* m);
-
-	/**
-	 * Finds the widgets representing the options of a certain component in a
-	 * window (era, scenario or modification) and sets their value to their
-	 * defaults.
-	 *
-	 * @param comp					The config of the component.
-	 * @param m						A pointer to the manager which generated
-	 * 								the window.
-	 */
-	static void restore_defaults_for_component(const config& comp, manager* m);
 
 	bool is_active(const std::string& id) const;
 };
