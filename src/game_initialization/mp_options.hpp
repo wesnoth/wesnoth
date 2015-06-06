@@ -49,7 +49,7 @@ class option_display
 {
 public:
 	virtual ~option_display() {}
-	virtual void layout(int& xpos, int& ypos, int border_size, gui::scrollpane* pane) = 0;
+	virtual void layout(int& xpos, int& ypos, int w, int border_size, gui::scrollpane* pane) = 0;
 	virtual void set_value(const config::attribute_value& val) = 0;
 	virtual config::attribute_value get_value() const = 0;
 	virtual void process_event() {}
@@ -62,7 +62,7 @@ public:
 	entry_display(CVideo& video, const config& cfg);
 	~entry_display();
 
-	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
+	void layout(int &xpos, int &ypos, int w, int border_size, gui::scrollpane *pane);
 	void set_value(const config::attribute_value &val);
 	config::attribute_value get_value() const;
 	virtual void hide_children(bool hide);
@@ -78,7 +78,7 @@ public:
 	slider_display(CVideo& video, const config& cfg);
 	~slider_display();
 
-	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
+	void layout(int &xpos, int &ypos, int w, int border_size, gui::scrollpane *pane);
 	void set_value(const config::attribute_value &val);
 	config::attribute_value get_value() const;
 	void process_event();
@@ -99,7 +99,7 @@ public:
 	checkbox_display(CVideo& video, const config& cfg);
 	~checkbox_display();
 
-	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
+	void layout(int &xpos, int &ypos, int w, int border_size, gui::scrollpane *pane);
 	void set_value(const config::attribute_value &val);
 	config::attribute_value get_value() const;
 	virtual void hide_children(bool hide);
@@ -113,7 +113,7 @@ public:
 	combo_display(game_display& display, const config& cfg);
 	~combo_display();
 
-	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
+	void layout(int &xpos, int &ypos, int w, int border_size, gui::scrollpane *pane);
 	void set_value(const config::attribute_value &val);
 	config::attribute_value get_value() const;
 	void hide_children(bool hide);
@@ -131,7 +131,7 @@ public:
 	title_display(CVideo& video, const std::string& label);
 	~title_display();
 
-	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
+	void layout(int &xpos, int &ypos, int w, int border_size, gui::scrollpane *pane);
 	void set_value(const config::attribute_value &/*val*/) {}
 	config::attribute_value get_value() const { return config::attribute_value(); }
 	virtual void hide_children(bool hide);
@@ -148,7 +148,7 @@ public:
 	reset_display(CVideo& video, const std::string& comp, manager &m);
 	~reset_display();
 
-	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
+	void layout(int &xpos, int &ypos, int w, int border_size, gui::scrollpane *pane);
 	void set_value(const config::attribute_value &/*val*/) {}
 	config::attribute_value get_value() const { return config::attribute_value(); }
 	void hide_children(bool hide);
@@ -224,7 +224,7 @@ public:
 	 */
 	void insert_element(elem_type type, const config& data, int pos);
 
-	void layout_widgets(int startx, int starty);
+	void layout_widgets(int startx, int starty, int w);
 	void process_event();
 	void hide_children(bool hide=true);
 

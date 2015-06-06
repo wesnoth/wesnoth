@@ -200,13 +200,13 @@ void manager::insert_element(elem_type type, const config& data, int pos)
 	}
 }
 
-void manager::layout_widgets(int startx, int starty)
+void manager::layout_widgets(int startx, int starty, int w)
 {
 	int ypos = starty;
 	int border_size = 3;
 	BOOST_FOREACH(option_display* od, widgets_ordered_)
 	{
-		od->layout(startx, ypos, border_size, pane_);
+		od->layout(startx, ypos, w, border_size, pane_);
 		ypos += border_size;
 	}
 }
@@ -395,7 +395,7 @@ entry_display::~entry_display()
 	delete label_;
 }
 
-void entry_display::layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane)
+void entry_display::layout(int &xpos, int &ypos, int /*w*/, int border_size, gui::scrollpane *pane)
 {
 	pane->add_widget(label_, xpos, ypos);
 	pane->add_widget(entry_, xpos + label_->width() + border_size, ypos);
@@ -429,7 +429,6 @@ slider_display::slider_display(CVideo &video, const config &cfg) :
 	slider_->set_min(cfg["min"].to_int());
 	slider_->set_max(cfg["max"].to_int());
 	slider_->set_increment(cfg["step"].to_int());
-	slider_->set_width(150);
 	slider_->set_value(cfg["default"].to_int());
 
 	slider_->set_help_string(cfg["description"]);
@@ -443,11 +442,12 @@ slider_display::~slider_display()
 	delete label_;
 }
 
-void slider_display::layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane)
+void slider_display::layout(int &xpos, int &ypos, int w, int border_size, gui::scrollpane *pane)
 {
 	pane->add_widget(label_, xpos, ypos);
 	ypos += label_->height() + border_size;
 	pane->add_widget(slider_, xpos, ypos);
+	slider_->set_width(w - border_size);
 	ypos += slider_->height() + border_size;
 }
 
@@ -496,7 +496,7 @@ checkbox_display::~checkbox_display()
 	delete checkbox_;
 }
 
-void checkbox_display::layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane)
+void checkbox_display::layout(int &xpos, int &ypos, int /*w*/, int border_size, gui::scrollpane *pane)
 {
 	pane->add_widget(checkbox_, xpos, ypos);
 	ypos += checkbox_->height() + border_size;
@@ -528,7 +528,7 @@ title_display::~title_display()
 	delete title_;
 }
 
-void title_display::layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane)
+void title_display::layout(int &xpos, int &ypos, int /*w*/, int border_size, gui::scrollpane *pane)
 {
 	ypos += 4*border_size;
 	pane->add_widget(title_, xpos, ypos);
@@ -562,7 +562,7 @@ combo_display::~combo_display()
 	delete combo_;
 }
 
-void combo_display::layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane)
+void combo_display::layout(int &xpos, int &ypos, int /*w*/, int border_size, gui::scrollpane *pane)
 {
 	pane->add_widget(label_, xpos, ypos);
 	pane->add_widget(combo_, xpos + label_->width() + border_size, ypos);
@@ -604,9 +604,9 @@ reset_display::~reset_display()
 	delete button_;
 }
 
-void reset_display::layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane)
+void reset_display::layout(int &/*xpos*/, int &ypos, int w, int border_size, gui::scrollpane *pane)
 {
-	pane->add_widget(button_, xpos, ypos);
+	pane->add_widget(button_, w-border_size-button_->width(), ypos);
 	ypos += button_->height() + border_size;
 }
 

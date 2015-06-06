@@ -529,7 +529,7 @@ void configure::layout_children(const SDL_Rect& rect)
 	SDL_Rect ca = client_area();
 	int xpos = ca.x;
 	int ypos = ca.y;
-	const int first_column_width = (ca.w - ca.x) / 2 - column_border_size;
+	const int column_width = (ca.w - ca.x) / 2 - column_border_size;
 
 	// Dialog title
 	ypos += title().height() + border_size;
@@ -548,7 +548,7 @@ void configure::layout_children(const SDL_Rect& rect)
 
 	// First column: non-gameplay settings
 	options_pane_left_.set_location(xpos, ypos);
-	options_pane_left_.set_width(first_column_width);
+	options_pane_left_.set_width(column_width);
 	options_pane_left_.set_height(right_pane_height - entry_points_label_.height());
 
 	int slider_width = options_pane_left_.width() - 40;
@@ -615,7 +615,7 @@ void configure::layout_children(const SDL_Rect& rect)
 	}
 
 	// Second column: gameplay settings
-	xpos += first_column_width + column_border_size;
+	xpos += column_width + column_border_size;
 	ypos = ypos_columntop;
 
 	options_pane_right_.set_location(xpos, ypos);
@@ -664,7 +664,7 @@ void configure::layout_children(const SDL_Rect& rect)
 	options_pane_right_.add_widget(&village_gold_slider_, xpos_right, ypos_right);
 	ypos_right += village_gold_slider_.height() + 3 * border_size;
 
-	options_manager_.layout_widgets(xpos_right, ypos_right);
+	options_manager_.layout_widgets(xpos_right, ypos_right, column_width);
 
 	// OK / Cancel buttons
 	gui::button* left_button = &launch_game_;
