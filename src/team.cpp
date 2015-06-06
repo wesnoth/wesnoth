@@ -225,7 +225,10 @@ void team::team_info::read(const config &cfg)
 	else if (control == "network")
 		controller = NETWORK;
 	else if (control == "network_ai")
+	{
+		persistent = false;
 		controller = NETWORK_AI;
+	}
 	else if (control == "null")
 	{
 		disallow_observers = cfg["disallow_observers"].to_bool(true);
