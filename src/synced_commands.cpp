@@ -36,6 +36,8 @@
 #include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "formula_string_utils.hpp"
+#include "unit_types.hpp"
+#include "unit_display.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -439,6 +441,44 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, error_ha
 	}
 	resources::screen->invalidate(loc);
 	resources::screen->invalidate_unit();
+
+	return true;
+}
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, error_handler)
+{
+	if(use_undo) {
+		resources::undo_stack->clear();
+	}
+	
+	utils::string_map symbols;
+	symbols["player"] = resources::controller->current_team().current_player();
+	resources::screen->announce(vgettext("A unit was created using debug command during turn of $player", symbols), font::NORMAL_COLOR);
+	map_location loc(child);
+	const unit_race::GENDER gender = string_gender(child["gender"], unit_race::NUM_GENDERS);	
+	const unit_type *u_type = unit_types.find(child["type"]);
+	if (!u_type) {
+		error_handler("Invalid unit type", true);
+		return false;
+	}
+	// Create the unit.
+	unit created(*u_type, 1, true, gender);
+	created.new_turn();
+
+	// Add the unit to the board.
+	std::pair<unit_map::iterator, bool> add_result = resources::units->replace(loc, created);
+	resources::screen->invalidate_unit();
+	unit_display::unit_recruited(loc);
+
+	// Village capture?
+	if ( resources::gameboard->map().is_village(loc) )
+		actions::get_village(loc, created.side());
+
+	// Update fog/shroud.
+	actions::shroud_clearer clearer;
+	clearer.clear_unit(loc, created);
+	clearer.fire_events();
+	if ( add_result.first.valid() ) // In case sighted events messed with the unit.
+		actions::actor_sighted(*add_result.first);
 
 	return true;
 }

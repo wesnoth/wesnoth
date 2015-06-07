@@ -1082,30 +1082,11 @@ namespace { // Helpers for create_unit()
 	 * Creates a unit and places it on the board.
 	 * (Intended for use with any units created via debug mode.)
 	 */
-	void create_and_place(game_display& gui, const gamemap & map, unit_map & units,
+	void create_and_place(game_display& , const gamemap & , unit_map & ,
 	                      const map_location & loc, const unit_type & u_type,
 	                      unit_race::GENDER gender = unit_race::NUM_GENDERS)
 	{
-		// Create the unit.
-		unit created(u_type, 1, true, gender);
-		created.new_turn();
-
-		// Add the unit to the board.
-		std::pair<unit_map::iterator, bool> add_result =
-			units.replace(loc, created);
-		gui.invalidate_unit();
-		unit_display::unit_recruited(loc);
-
-		// Village capture?
-		if ( map.is_village(loc) )
-			actions::get_village(loc, created.side());
-
-		// Update fog/shroud.
-		actions::shroud_clearer clearer;
-		clearer.clear_unit(loc, created);
-		clearer.fire_events();
-		if ( add_result.first.valid() ) // In case sighted events messed with the unit.
-			actions::actor_sighted(*add_result.first);
+		synced_context::run_and_throw("debug_create_unit", config_of("x", loc.x + 1)("y", loc.y + 1)("type", u_type.id())("gender", gender_string(gender)));
 	}
 
 }// Anonymous namespace
