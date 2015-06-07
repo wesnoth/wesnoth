@@ -642,7 +642,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_shroud, /*child*/, use_undo, /*show*/, /*e
 
 	team& current_team = resources::controller->current_team();
 	current_team.set_shroud(!current_team.uses_shroud());
-	actions::recalculate_fog(current_team.side());
+	actions::clear_shroud(current_team.side());
 	
 	resources::screen->recalculate_minimap();
 	resources::screen->redraw_everything();
