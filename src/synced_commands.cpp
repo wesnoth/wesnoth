@@ -523,3 +523,35 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_next_level, child, use_undo, /*show*/, /*e
 
 	return true;
 }
+
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn_limit, child, use_undo, /*show*/, /*error_handler*/)
+{
+	if(use_undo) {
+		resources::undo_stack->clear();
+	}
+	
+	utils::string_map symbols;
+	symbols["player"] = resources::controller->current_team().current_player();
+	resources::screen->announce(vgettext(":turn_limit debug command was used during turn of $player", symbols), font::NORMAL_COLOR);
+	resources::tod_manager->set_number_of_turns(child["turn_limit"].to_int(-1));
+	resources::screen->redraw_everything();
+	return true;
+}
+
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn_limit, child, use_undo, /*show*/, /*error_handler*/)
+{
+	if(use_undo) {
+		resources::undo_stack->clear();
+	}
+	
+	utils::string_map symbols;
+	symbols["player"] = resources::controller->current_team().current_player();
+	resources::screen->announce(vgettext(":turn debug command was used during turn of $player", symbols), font::NORMAL_COLOR);
+
+	resources::tod_manager->set_turn(child["turn"].to_int(1), *resources::gamedata);
+
+	resources::screen->new_turn();
+	resources::screen->redraw_everything();
+
+	return true;
+}

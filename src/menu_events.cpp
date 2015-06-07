@@ -3007,19 +3007,13 @@ void console_handler::do_turn()
 	if (!data.empty()) {
 		turn = lexical_cast_default<int>(data, 1);
 	}
-	tod_man.set_turn(turn, menu_handler_.gamedata());
-
-	menu_handler_.gui_->new_turn();
-	menu_handler_.gui_->redraw_everything();
+	synced_context::run_and_throw("debug_turn_limit", config_of("turn", turn));
 }
 
 void console_handler::do_turn_limit()
 {
-	tod_manager& tod_man = menu_handler_.gamestate().tod_manager_;
-	int limit =
-		get_data().empty() ? -1 : lexical_cast_default<int>(get_data(), 1);
-	tod_man.set_number_of_turns(limit);
-	menu_handler_.gui_->redraw_everything();
+	int limit = get_data().empty() ? -1 : lexical_cast_default<int>(get_data(), 1);
+	synced_context::run_and_throw("debug_turn_limit", config_of("turn_limit", limit));
 }
 
 void console_handler::do_debug() {
