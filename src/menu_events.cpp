@@ -3007,7 +3007,7 @@ void console_handler::do_turn()
 	if (!data.empty()) {
 		turn = lexical_cast_default<int>(data, 1);
 	}
-	synced_context::run_and_throw("debug_turn_limit", config_of("turn", turn));
+	synced_context::run_and_throw("debug_turn", config_of("turn", turn));
 }
 
 void console_handler::do_turn_limit()

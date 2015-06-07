@@ -538,7 +538,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn_limit, child, use_undo, /*show*/, /*e
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn_limit, child, use_undo, /*show*/, /*error_handler*/)
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn, child, use_undo, /*show*/, /*error_handler*/)
 {
 	if(use_undo) {
 		resources::undo_stack->clear();
