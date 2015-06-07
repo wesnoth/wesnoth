@@ -35,6 +35,8 @@
 #include "replay.hpp" //user choice
 #include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
+#include "formula_string_utils.hpp"
+
 #include <boost/foreach.hpp>
 
 static lg::log_domain log_replay("replay");
@@ -375,5 +377,68 @@ SYNCED_COMMAND_HANDLER_FUNCTION(update_shroud, /*child*/,  use_undo, /*show*/, e
 	}
 	resources::undo_stack->commit_vision();
 	resources::undo_stack->add_update_shroud();
+	return true;
+}
+
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, error_handler)
+{
+	if(use_undo) {
+		resources::undo_stack->clear();
+	}
+	
+	utils::string_map symbols;
+	symbols["player"] = resources::controller->current_team().current_player();
+	resources::screen->announce(vgettext(":unit debug command was use during turn of $player", symbols), font::NORMAL_COLOR);
+	map_location loc(child);
+	const std::string name = child["name"];
+	const std::string value = child["value"];
+
+	unit_map::iterator i = resources::units->find(loc);
+	if (i == resources::units->end()) return false;
+	
+	// FIXME: Avoids a core dump on display
+	// because alignment strings get reduced
+	// to an enum, then used to index an
+	// array of strings.
+	// But someday the code ought to be
+	// changed to allow general string
+	// alignments for UMC.
+	if (name == "alignment") { // && (value != "lawful" && value != "neutral" && value != "chaotic" && value != "liminal")) {
+		unit_type::ALIGNMENT alignment;
+		alignment.parse(value);
+		if (!alignment.parse(value))
+		{
+			utils::string_map symbols;
+			symbols["alignment"] = value;
+			error_handler(VGETTEXT("Invalid alignment: '$alignment',"
+				" needs to be one of lawful, neutral, chaotic, or liminal.", symbols), true);
+			return false;
+		}
+	}
+	if (name == "advances" ) {
+		int int_value = lexical_cast<int>(value);
+		for (int levels=0; levels<int_value; levels++) {
+			i->set_experience(i->max_experience());
+
+			advance_unit_at(advance_unit_params(loc).force_dialog(true));
+			i = resources::units->find(loc);
+			if (!i.valid()) {
+				break;
+			}
+		}
+	} else {
+		config cfg;
+		i->write(cfg);
+		resources::units->erase(loc);
+		cfg[name] = value;
+		unit new_u(cfg, true);
+		resources::units->add(loc, new_u);
+	}
+	if (name == "fail") { //testcase for bug #18488
+		assert(i.valid());
+	}
+	resources::screen->invalidate(loc);
+	resources::screen->invalidate_unit();
+
 	return true;
 }

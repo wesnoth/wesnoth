@@ -1588,7 +1588,11 @@ class map_command_handler
 			}
 			return res;
 		}
-
+		//command error reporting shorthands
+		void command_failed(const std::string& message, bool = false)
+		{
+			print(get_cmd(), _("Error:") + std::string(" ") + message);
+		}
 	protected:
 		void init_map_default()
 		{
@@ -1635,11 +1639,6 @@ class map_command_handler
 		virtual std::string get_cmd() const
 		{
 			return cap_.get_cmd();
-		}
-		//command error reporting shorthands
-		void command_failed(const std::string& message)
-		{
-			print(get_cmd(), _("Error:") + std::string(" ") + message);
 		}
 		void command_failed_need_arg(int argn)
 		{
@@ -1957,7 +1956,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		{}
 		using chmap::dispatch; //disambiguate
 		using chmap::get_commands_list;
-
+		using chmap::command_failed;
 	protected:
 		//chat_command_handler's init_map() and handlers will end up calling these.
 		//this makes sure the commands end up in our map
@@ -1993,7 +1992,6 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		using chmap::register_alias;
 		using chmap::help;
 		using chmap::is_enabled;
-		using chmap::command_failed;
 		using chmap::command_failed_need_arg;
 
 		void do_refresh();
@@ -3171,6 +3169,10 @@ void console_handler::do_manage() {
 	manager.show(menu_handler_.gui_->video());
 }
 
+static void handle_replay_error(console_handler* self, const std::string& message)
+{
+	self->command_failed(message);
+}
 void console_handler::do_unit() {
 	// prevent SIGSEGV due to attempt to set HP during a fight
 	if (events::commands_disabled > 0)
@@ -3182,86 +3184,15 @@ void console_handler::do_unit() {
 	std::vector<std::string> parameters = utils::split(data, '=', utils::STRIP_SPACES);
 	if (parameters.size() < 2)
 		return;
-
-	const std::string& name = parameters[0];
-	const std::string& value = parameters[1];
-
-	// FIXME: Avoids a core dump on display
-	// because alignment strings get reduced
-	// to an enum, then used to index an
-	// array of strings.
-	// But someday the code ought to be
-	// changed to allow general string
-	// alignments for UMC.
-	if (name == "alignment") { // && (value != "lawful" && value != "neutral" && value != "chaotic" && value != "liminal")) {
-		std::stringstream ss(value);
-		unit_type::ALIGNMENT alignment = unit_type::ALIGNMENT();
-		ss >> alignment;
-		if (!ss) {
-			utils::string_map symbols;
-			symbols["alignment"] = get_arg(1);
-			command_failed(VGETTEXT("Invalid alignment: '$alignment',"
-				" needs to be one of lawful, neutral, chaotic, or liminal.", symbols));
-			return;
-		}
-	}
-	if (name == "advances" ){
-		if(synced_context::get_synced_state() == synced_context::SYNCED)
-		{
-			command_failed("unit advances=n doesn't work while another action is executed.");
-			return;
-		}
-		int int_value = lexical_cast<int>(value);
-		for (int levels=0; levels<int_value; levels++) {
-			i->set_experience(i->max_experience());
-
-			advance_unit_at(advance_unit_params(loc).force_dialog(true));
-			i = menu_handler_.units().find(loc);
-			if (!i.valid()) {
-				break;
-			}
-		}
-	} else {
-		config cfg;
-		i->write(cfg);
-		menu_handler_.units().erase(loc);
-		cfg[name] = value;
-		unit new_u(cfg, true);
-		menu_handler_.units().add(loc, new_u);
-	}
-	if (name == "fail") { //testcase for bug #18488
-		assert(i.valid());
-	}
-	menu_handler_.gui_->invalidate(loc);
-	menu_handler_.gui_->invalidate_unit();
+	synced_context::run_and_throw("debug_unit", config_of("x", loc.x + 1)("y", loc.y + 1)("name", parameters[0])("value", parameters[1]), true, true, boost::bind(&handle_replay_error, this, _1) );
 }
-/*void console_handler::do_buff() {
-	print(get_cmd(), _("Debug mode activated!"));
-	const unit_map::iterator i = menu_handler_.current_unit();
-	if(i != menu_handler_.units_.end()) {
-		//i->second.add_trait(get_data());
-		menu_handler_.gui_->invalidate(i->first);
-		menu_handler_.gui_->invalidate_unit();
-	} else {
-		command_failed("No unit selected");
-	}
-}
-void console_handler::do_unbuff() {
-	const unit_map::iterator i = menu_handler_.current_unit();
-	if(i != menu_handler_.units_.end()) {
-		// FIXME: 'data_' is the trait.  Clear it.
 
-		menu_handler_.gui_->invalidate(i->first);
-		menu_handler_.gui_->invalidate_unit();
-	} else {
-		command_failed(_("No unit selected"));
-	}
-}*/
 void console_handler::do_discover() {
 	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types()) {
 		preferences::encountered_units().insert(i.second.id());
 	}
 }
+
 void console_handler::do_undiscover() {
 	const int res = gui2::show_message((*menu_handler_.gui_).video(), "Undiscover", _("Do you wish to clear all of your discovered units from help?"), gui2::tmessage::yes_no_buttons);
 	if(res != gui2::twindow::CANCEL) {
