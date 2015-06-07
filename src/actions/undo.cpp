@@ -246,17 +246,15 @@ void undo_list::clear()
 void undo_list::commit_vision()
 {
 	// Update fog/shroud.
-	size_t erase_to = apply_shroud_changes();
+	bool cleared_something = apply_shroud_changes();
 
-	if ( erase_to != 0 ) {
+	if (cleared_something) {
 		// The actions that led to information being revealed can no longer
 		// be undone.
-		undos_.erase(undos_.begin(), undos_.begin() + erase_to);
+		undos_.clear();
+		//undos_.erase(undos_.begin(), undos_.begin() + erase_to);
 		committed_actions_ = true;
 	}
-
-	// Record that vision was updated.
-	add_update_shroud();
 }
 
 
@@ -443,22 +441,20 @@ void undo_list::redo()
 /**
  * Applies the pending fog/shroud changes from the undo stack.
  * Does nothing if the the current side does not use fog or shroud.
- * @returns  an index (into undos_) pointing to the first undoable action
- *           that can be kept (or undos_.size() if none can be kept).
+ * @returns  true if shroud  or fog was cleared.
  */
-size_t undo_list::apply_shroud_changes() const
+bool undo_list::apply_shroud_changes() const
 {
 	game_display &disp = *resources::screen;
 	team &tm = (*resources::teams)[side_ - 1];
 	// No need to do clearing if fog/shroud has been kept up-to-date.
 	if ( tm.auto_shroud_updates()  ||  !tm.fog_or_shroud() )
-		return 0;
+		return false;
 
 
 	shroud_clearer clearer;
-	bool cleared_shroud = false;  // for optimization
-	size_t erase_to = 0;
-	size_t list_size = undos_.size();
+	bool cleared_shroud = false;
+	const size_t list_size = undos_.size();
 
 
 	// Loop through the list of undo_actions.
@@ -474,18 +470,21 @@ size_t undo_list::apply_shroud_changes() const
 				// (This can be made gradual by changing "true" to "false".)
 				if ( clearer.clear_unit(*step, tm, action->view_info, true) ) {
 					cleared_shroud = true;
-					erase_to = i + 1;
 				}
 			}
 		}
 	}
 
-	// Optimization: if nothing was cleared, then there is nothing to redraw.
-	if ( cleared_shroud ) {
-		// Update the display before pumping events.
-		clearer.invalidate_after_clear();
-		disp.draw();
+	if (!cleared_shroud) {
+		return false;
 	}
+	// The entire stack needs to be cleared in order to preserve replays.
+	// (The events that fired might depend on current unit positions.)
+	// (Also the events that did not fire might depend on unit positions (they whould have fired if the unit would have standed on different positions, for example this can happen if they have a [have_unit] in [filter_condition]))
+
+	// Update the display before pumping events.
+	clearer.invalidate_after_clear();
+	disp.draw();
 
 	// Fire sighted events
 	if ( clearer.fire_events() ) {
@@ -493,12 +492,9 @@ size_t undo_list::apply_shroud_changes() const
 		clear_shroud(side_);
 		disp.invalidate_unit();
 		disp.draw();
-		// The entire stack needs to be cleared in order to preserve replays.
-		// (The events that fired might depend on current unit positions.)
-		erase_to = list_size;
 	}
 
-	return erase_to;
+	return true;
 }
 
 

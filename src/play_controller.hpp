@@ -209,6 +209,8 @@ public:
 	void maybe_throw_return_to_play_side()
 	{ if(should_return_to_play_side() && !linger_ ) { throw return_to_play_side_exception(); } }
 
+	team& current_team();
+	const team& current_team() const;
 protected:
 	void play_slice_catch();
 	game_display& get_display();
@@ -231,8 +233,6 @@ protected:
 	void enter_textbox();
 	void tab();
 
-	team& current_team();
-	const team& current_team() const;
 
 	bool is_team_visible(int team_num, bool observer) const;
 	/// returns 0 if no such team was found.

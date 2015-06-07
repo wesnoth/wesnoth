@@ -65,9 +65,9 @@ public:
 	/// Adds a recruit to the undo stack.
 	void add_recruit(const unit_const_ptr u, const map_location& loc,
 	                 const map_location& from);
-private:
 	/// Adds a shroud update to the undo stack.
 	void add_update_shroud();
+private:
 public:
 	/// Clears the stack of undoable (and redoable) actions.
 	void clear();
@@ -99,7 +99,7 @@ private: // functions
 	void add(undo_action_base * action)
 	{ undos_.push_back(action);  redos_.clear(); }
 	/// Applies the pending fog/shroud changes from the undo stack.
-	size_t apply_shroud_changes() const;
+	bool apply_shroud_changes() const;
 
 private: // data
 	action_list undos_;

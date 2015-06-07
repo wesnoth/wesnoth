@@ -346,8 +346,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(lua_ai, child,  /*use_undo*/, /*show*/, /*error_
 SYNCED_COMMAND_HANDLER_FUNCTION(auto_shroud, child,  use_undo, /*show*/, /*error_handler*/)
 {
 	assert(use_undo);
-	int current_team_num = resources::controller->current_side();
-	team &current_team = (*resources::teams)[current_team_num - 1];
+	team &current_team = resources::controller->current_team();
 
 	bool active = child["active"].to_bool();
 	// We cannot update shroud here like 'if(active) resources::undo_stack->commit_vision();'.
@@ -367,9 +366,14 @@ SYNCED_COMMAND_HANDLER_FUNCTION(auto_shroud, child,  use_undo, /*show*/, /*error
  * this means it ia synced command liek any other.
  */
 
-SYNCED_COMMAND_HANDLER_FUNCTION(update_shroud, /*child*/,  use_undo, /*show*/, /*error_handler*/)
+SYNCED_COMMAND_HANDLER_FUNCTION(update_shroud, /*child*/,  use_undo, /*show*/, error_handler)
 {
 	assert(use_undo);
+	team &current_team = resources::controller->current_team();
+	if(current_team.auto_shroud_updates()) {
+		error_handler("Team has DSU disables but we fould an explicit shroud update", false);
+	}
 	resources::undo_stack->commit_vision();
+	resources::undo_stack->add_update_shroud();
 	return true;
 }
