@@ -555,3 +555,98 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn, child, use_undo, /*show*/, /*error_h
 
 	return true;
 }
+
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_set_var, child, use_undo, /*show*/, /*error_handler*/)
+{
+	if(use_undo) {
+		resources::undo_stack->clear();
+	}
+	
+	utils::string_map symbols;
+	symbols["player"] = resources::controller->current_team().current_player();
+	resources::screen->announce(vgettext(":set_var debug command was used during turn of $player", symbols), font::NORMAL_COLOR);
+
+	try {
+		resources::gamedata->set_variable(child["name"],child["value"]);
+	}
+	catch(const invalid_variablename_exception&) {
+	//	command_failed(_("Variable not found"));
+		return false;
+	}
+	return true;
+}
+
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_gold, child, use_undo, /*show*/, /*error_handler*/)
+{
+	if(use_undo) {
+		resources::undo_stack->clear();
+	}
+	
+	utils::string_map symbols;
+	symbols["player"] = resources::controller->current_team().current_player();
+	resources::screen->announce(vgettext(":gold debug command was used during turn of $player", symbols), font::NORMAL_COLOR);
+
+	resources::controller->current_team().spend_gold(-child["gold"].to_int(0));
+	resources::screen->redraw_everything();
+	return true;
+}
+
+
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_event, child, use_undo, /*show*/, /*error_handler*/)
+{
+	if(use_undo) {
+		resources::undo_stack->clear();
+	}
+	
+	utils::string_map symbols;
+	symbols["player"] = resources::controller->current_team().current_player();
+	resources::screen->announce(vgettext(":throw debug command was used during turn of $player", symbols), font::NORMAL_COLOR);
+
+	resources::controller->pump().fire(child["eventname"]);
+	resources::screen->redraw_everything();
+
+	return true;
+}
+
+
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_fog, /*child*/, use_undo, /*show*/, /*error_handler*/)
+{
+	if(use_undo) {
+		resources::undo_stack->clear();
+	}
+	
+	utils::string_map symbols;
+	symbols["player"] = resources::controller->current_team().current_player();
+	resources::screen->announce(vgettext(":fog debug command was used during turn of $player", symbols), font::NORMAL_COLOR);
+
+	team& current_team = resources::controller->current_team();
+	current_team.set_fog(!current_team.uses_fog());
+	actions::recalculate_fog(current_team.side());
+	
+	resources::screen->recalculate_minimap();
+	resources::screen->redraw_everything();
+
+	return true;
+}
+
+
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_shroud, /*child*/, use_undo, /*show*/, /*error_handler*/)
+{
+	if(use_undo) {
+		resources::undo_stack->clear();
+	}
+	
+	utils::string_map symbols;
+	symbols["player"] = resources::controller->current_team().current_player();
+	resources::screen->announce(vgettext(":shroud debug command was used during turn of $player", symbols), font::NORMAL_COLOR);
+
+	team& current_team = resources::controller->current_team();
+	current_team.set_shroud(!current_team.uses_shroud());
+	actions::recalculate_fog(current_team.side());
+	
+	resources::screen->recalculate_minimap();
+	resources::screen->redraw_everything();
+
+	return true;
+}
+

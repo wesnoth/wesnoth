@@ -3087,14 +3087,7 @@ void console_handler::do_set_var() {
 	if(j != data.end()) {
 		const std::string name(data.begin(),j);
 		const std::string value(j+1,data.end());
-		try
-		{
-			menu_handler_.gamedata().set_variable(name,value);
-		}
-		catch(const invalid_variablename_exception&)
-		{
-			command_failed(_("Variable not found"));
-		}
+		synced_context::run_and_throw("debug_set_var", config_of("name", name)("value", value));
 	}
 	else {
 		command_failed(_("Variable not found"));
@@ -3174,24 +3167,16 @@ void console_handler::do_create() {
 	}
 }
 void console_handler::do_fog() {
-	menu_handler_.teams()[team_num_ - 1].set_fog( !menu_handler_.teams()[team_num_ - 1].uses_fog() );
-	actions::recalculate_fog(team_num_);
-	menu_handler_.gui_->recalculate_minimap();
-	menu_handler_.gui_->redraw_everything();
+	synced_context::run_and_throw("debug_fog", config());
 }
 void console_handler::do_shroud() {
-	menu_handler_.teams()[team_num_ - 1].set_shroud( !menu_handler_.teams()[team_num_ - 1].uses_shroud() );
-	actions::clear_shroud(team_num_);
-	menu_handler_.gui_->recalculate_minimap();
-	menu_handler_.gui_->redraw_everything();
+	synced_context::run_and_throw("debug_shroud", config());
 }
 void console_handler::do_gold() {
-	menu_handler_.teams()[team_num_ - 1].spend_gold(-lexical_cast_default<int>(get_data(),1000));
-	menu_handler_.gui_->redraw_everything();
+	synced_context::run_and_throw("debug_gold", config_of("gold", lexical_cast_default<int>(get_data(),1000)));
 }
 void console_handler::do_event() {
-	menu_handler_.pc_.pump().fire(get_data());
-	menu_handler_.gui_->redraw_everything();
+	synced_context::run_and_throw("debug_event", config_of("eventname", get_data()));
 }
 void console_handler::do_toggle_draw_coordinates() {
 	menu_handler_.gui_->set_draw_coordinates(!menu_handler_.gui_->get_draw_coordinates());
