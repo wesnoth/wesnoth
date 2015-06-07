@@ -482,3 +482,18 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, e
 
 	return true;
 }
+
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_lua, child, use_undo, /*show*/, /*error_handler*/)
+{
+	if(use_undo) {
+		resources::undo_stack->clear();
+	}
+	
+	utils::string_map symbols;
+	symbols["player"] = resources::controller->current_team().current_player();
+	resources::screen->announce(vgettext(":lua debug command was used during turn of $player", symbols), font::NORMAL_COLOR);
+	resources::lua_kernel->run(child["code"].str().c_str());
+	resources::controller->pump().flush_messages();
+
+	return true;
+}

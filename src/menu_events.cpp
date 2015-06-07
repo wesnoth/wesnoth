@@ -3060,8 +3060,7 @@ void console_handler::do_lua() {
 	if (!menu_handler_.gamestate().lua_kernel_) {
 		return ;
 	}
-	menu_handler_.gamestate().lua_kernel_->run(get_data().c_str());
-	menu_handler_.pc_.pump().flush_messages();
+	synced_context::run_and_throw("debug_lua", config_of("code", get_data()));
 }
 
 void console_handler::do_unsafe_lua()
