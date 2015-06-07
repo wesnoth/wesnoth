@@ -497,3 +497,29 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_lua, child, use_undo, /*show*/, /*error_ha
 
 	return true;
 }
+
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_next_level, child, use_undo, /*show*/, /*error_handler*/)
+{
+	if(use_undo) {
+		resources::undo_stack->clear();
+	}
+	
+	utils::string_map symbols;
+	symbols["player"] = resources::controller->current_team().current_player();
+	resources::screen->announce(vgettext(":next_level debug command was used during turn of $player", symbols), font::NORMAL_COLOR);
+
+	std::string next_level = child["next_level"];
+	if (!next_level.empty())
+		resources::gamedata->set_next_scenario(next_level);
+	end_level_data e;
+	e.transient.carryover_report = false;
+	e.prescenario_save = true;
+	e.transient.linger_mode = false;
+	e.proceed_to_next_level = true;
+	e.is_victory = true;
+	
+	resources::controller->set_end_level_data(e);
+	resources::controller->force_end_turn();
+
+	return true;
+}
