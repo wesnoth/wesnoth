@@ -237,6 +237,7 @@ void replay::add_synced_command(const std::string& name, const config& command)
 {
 	config& cmd = add_command();
 	cmd.add_child(name,command);
+	cmd["from_side"] = resources::controller->current_side();
 	LOG_REPLAY << "add_synced_command: \n" << cmd.debug() << "\n";
 }
 
@@ -824,6 +825,13 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			else
 			{
 				LOG_REPLAY << "found commandname " << commandname << "in replay";
+				
+				if((*cfg)["from_side"].to_int(0) != resources::controller->current_side()) {
+					ERR_REPLAY << "recieved a synced [command] from side " << (*cfg)["from_side"].to_int(0) << ". Expacted was a [command] from side " << resources::controller->current_side() << "\n";
+				}
+				else if((*cfg)["side_invalid"].to_bool(false)) {
+					ERR_REPLAY << "recieved a synced [command] from side " << (*cfg)["from_side"].to_int(0) << ". Sended from wrong client.\n";
+				}
 				/*
 					we need to use the undo stack during replays in order to make delayed shroud updated work.
 				*/
