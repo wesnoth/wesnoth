@@ -25,7 +25,6 @@
 
 #include <sstream>
 #include <iomanip>
-#include <boost/bind.hpp>
 
 static lg::log_domain log_server("server");
 #define ERR_GAME LOG_STREAM(err, log_server)
@@ -1355,16 +1354,30 @@ void game::send_data(simple_wml::document& data,
 {
 	wesnothd::send_to_many(data, all_game_users(), exclude, packet_type);
 }
+namespace {
+	struct is_on_team_helper
+	{
+		const wesnothd::game& game_;
+		const simple_wml::string_span& team_;
+		is_on_team_helper(const wesnothd::game& game, const simple_wml::string_span& team)
+			: game_(game)
+			, team_(team)
+		{
 
+		}
+		bool operator ()(network::connection user) const
+		{
+			return game_.is_on_team(team_, user);
+		}
+	};
+}
 void game::send_data_team(simple_wml::document& data,
                           const simple_wml::string_span& team,
                           const network::connection exclude,
 						  std::string packet_type) const
 {
 	DBG_GAME << __func__ << "...\n";
-	wesnothd::send_to_many(data, players_,
-		boost::bind(&game::is_on_team, this, boost::ref(team), _1),
-		exclude, packet_type);
+	wesnothd::send_to_many(data, players_, is_on_team_helper(*this, team), exclude, packet_type);
 }
 
 

@@ -21,6 +21,7 @@
 #include "simple_wml.hpp"
 
 #include "utils/boost_function_guarded.hpp"
+#include "../log.hpp"
 
 namespace wesnothd {
 
@@ -67,11 +68,36 @@ void send_to_many(simple_wml::document& data,
  * @param exclude     if nonzero, do not send to this player
  * @param packet_type the packet type, if empty the root node name is used
  */
+/*
 void send_to_many(simple_wml::document& data,
 				  const connection_vector& vec,
 				  boost::function<bool (network::connection)> pred,
 				  const network::connection exclude = 0,
 				  std::string packet_type = "");
+*/
+
+template<typename TFilter>
+void send_to_many(simple_wml::document& data,
+				  const connection_vector& vec,
+				  const TFilter& pred,
+				  const network::connection exclude = 0,
+				  std::string packet_type = "")
+{
+	if (packet_type.empty()) {
+		packet_type = data.root().first_child().to_string();
+	}
+	try {
+		simple_wml::string_span s = data.output_compressed();
+		for(connection_vector::const_iterator i = vec.begin(); i != vec.end(); ++i) {
+			if ((*i != exclude) && pred(*i)) {
+				network::send_raw_data(s.begin(), s.size(), *i, packet_type);
+			}
+		}
+	} catch (simple_wml::error& e) {
+		LOG_STREAM(warn, log_config) << __func__ << ": simple_wml error: " << e.message << std::endl;
+	}
+}
+
 } //end namespace wesnothd
 
 #endif

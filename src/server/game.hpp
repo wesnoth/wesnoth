@@ -226,6 +226,11 @@ public:
 	void require_random(const simple_wml::document &data, const player_map::iterator user);
 
 	void reset_last_synced_context_id() { last_synced_context_id_ = -1; }
+	/**
+	 * Function which returns true iff 'player' is on 'team'.
+	 * AI controlled sides are not considered on a team.
+	 */
+	bool is_on_team(const simple_wml::string_span& team, const network::connection player) const;
 private:
 	//forbidden operations
 	game(const game&);
@@ -285,11 +290,6 @@ private:
 	bool observers_can_chat() const { return true; }
 	bool is_legal_command(const simple_wml::node& command, const player_map::const_iterator user);
 
-	/**
-	 * Function which returns true iff 'player' is on 'team'.
-	 * AI controlled sides are not considered on a team.
-	 */
-	bool is_on_team(const simple_wml::string_span& team, const network::connection player) const;
 	/**
 	 * Checks whether a user has the same IP as members of this game.
 	 * If observer is true it only checks against players.
