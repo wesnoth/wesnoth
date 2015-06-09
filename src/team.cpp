@@ -33,6 +33,7 @@
 #include "whiteboard/side_actions.hpp"
 #include "network.hpp"
 #include "config_assign.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/assign/list_of.hpp>
@@ -850,4 +851,16 @@ config team::to_config() const
 	config& result = cfg.add_child("side");
 	write(result);
 	return result;
+}
+
+std::string team::allied_human_teams() const
+{
+	std::vector<int> res;
+	BOOST_FOREACH(const team& t, *teams)
+	{
+		if(!t.is_enemy(this->side()) && t.is_human()) {
+			res.push_back(t.side());
+		}
+	}
+	return utils::join(res);
 }

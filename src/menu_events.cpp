@@ -2550,9 +2550,9 @@ void menu_handler::send_chat_message(const std::string& message, bool allies_onl
 
 	if(private_message) {
 		if (board().is_observer()) {
-			cfg["team_name"] = game_config::observer_team_name;
+			cfg["to_sides"] = game_config::observer_team_name;
 		} else {
-			cfg["team_name"] = teams()[gui_->viewing_team()].team_name();
+			cfg["to_sides"] = teams()[gui_->viewing_team()].allied_human_teams();
 		}
 	}
 

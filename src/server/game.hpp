@@ -227,10 +227,9 @@ public:
 
 	void reset_last_synced_context_id() { last_synced_context_id_ = -1; }
 	/**
-	 * Function which returns true iff 'player' is on 'team'.
-	 * AI controlled sides are not considered on a team.
+	 * Function which returns true iff 'player' controls any of the sides spcified in 'sides'.
 	 */
-	bool is_on_team(const simple_wml::string_span& team, const network::connection player) const;
+	bool controls_side(const std::vector<int>& sides, const network::connection player) const;
 private:
 	//forbidden operations
 	game(const game&);
@@ -268,7 +267,10 @@ private:
 			const std::string& controller = "");
 	void transfer_ai_sides(const network::connection player);
 	void send_leave_game(network::connection user) const;
-	void send_data_team(simple_wml::document& data, const simple_wml::string_span& team,
+	/**
+		@param sides: a comma sperated list of side numbers to which the package should be sent,
+	*/
+	void send_data_sides(simple_wml::document& data, const simple_wml::string_span& sides,
 			const network::connection exclude=0, std::string packet_type = "") const;
 	void send_data_observers(simple_wml::document& data, const network::connection exclude=0, std::string packet_type = "") const;
 

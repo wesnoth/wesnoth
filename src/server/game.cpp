@@ -25,6 +25,7 @@
 
 #include <sstream>
 #include <iomanip>
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_server("server");
 #define ERR_GAME LOG_STREAM(err, log_server)
@@ -33,6 +34,38 @@ static lg::log_domain log_server("server");
 #define DBG_GAME LOG_STREAM(debug, log_server)
 static lg::log_domain log_config("config");
 #define WRN_CONFIG LOG_STREAM(warn, log_config)
+
+namespace
+{
+	struct split_conv_impl
+	{
+		void operator()(std::vector<int> res, const simple_wml::string_span& span)
+		{
+			if(!span.empty()) {
+				res.push_back(span.to_int());
+			}
+		}
+	};
+	template<typename TResult, typename TConvert>
+	std::vector<TResult> split(const simple_wml::string_span& val, TConvert conv, const char c = ',')
+	{
+		std::vector<TResult> res;
+		simple_wml::string_span::const_iterator i1 = val.begin();
+		simple_wml::string_span::const_iterator i2 = i1;
+
+		while (i2 != val.end()) {
+			if (*i2 == c) {
+				conv(res, simple_wml::string_span(i1, i2));
+				++i2;
+				i1 = i2;
+			} else {
+				++i2;
+			}
+		}
+		conv(res, simple_wml::string_span(i1, i2));
+		return res;
+	}
+}
 
 namespace wesnothd {
 int game::id_num = 1;
@@ -898,7 +931,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 			marked.push_back(index - marked.size());
 		} else if ((**command).child("speak")) {
 			simple_wml::node& speak = *(**command).child("speak");
-			if (speak["team_name"] != "" || is_muted_observer(user->first)) {
+			if (speak["to_sides"] != "" || is_muted_observer(user->first)) {
 				DBG_GAME << "repackaging..." << std::endl;
 				repackage = true;
 			}
@@ -950,20 +983,10 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 			record_data(mdata);
 			continue;
 		}
-		const simple_wml::string_span& team_name = (*speak)["team_name"];
+		const simple_wml::string_span& to_sides = (*speak)["to_sides"];
 		// Anyone can send to the observer team.
-		if (team_name == game_config::observer_team_name.c_str()) {
-		// Don't send if the member is muted.
-		} else if (is_muted_observer(user->first)) {
+		if (is_muted_observer(user->first) && to_sides != game_config::observer_team_name.c_str()) {
 			send_server_message("You have been muted, others can't see your message!", user->first);
-			continue;
-		// Don't send if the player addresses a different team.
-		} else if (!is_on_team(team_name, user->first)) {
-			std::ostringstream msg;
-			msg << "Removing illegal message from " << user->second.name() << " to " << std::string(team_name.begin(), team_name.end()) << ".";
-			const std::string& msg_str = msg.str();
-			LOG_GAME << msg_str << std::endl;
-			send_and_record_server_message(msg_str);
 			continue;
 		}
 
@@ -971,14 +994,14 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 		simple_wml::node& turn = message->root().add_child("turn");
 		simple_wml::node& command = turn.add_child("command");
 		speak->copy_into(command.add_child("speak"));
-		if (team_name == "") {
+		if (to_sides == "") {
 			send_data(*message, user->first, "game message");
 			record_data(message.release());
-		} else if (team_name == game_config::observer_team_name) {
+		} else if (to_sides == game_config::observer_team_name) {
 			wesnothd::send_to_many(*message, observers_, user->first, "game message");
 			record_data(message.release());
 		} else {
-			send_data_team(*message, team_name, user->first, "game message");
+			send_data_sides(*message, to_sides, user->first, "game message");
 		}
 	}
 	return turn_ended;
@@ -1041,23 +1064,22 @@ void game::process_whiteboard(simple_wml::document& data, const player_map::cons
 
 	simple_wml::node const& wb_node = *data.child("whiteboard");
 
-	// Ensure "side" and "team_name" attributes match with user
-	simple_wml::string_span const& team_name = wb_node["team_name"];
+	// Ensure "side" attribute match with user
+	simple_wml::string_span const& to_sides = wb_node["to_sides"];
 	size_t const side_index = wb_node["side"].to_int() - 1;
-	if(!is_on_team(team_name, user->first)
-			|| side_index >= sides_.size()
+	if(side_index >= sides_.size()
 			|| sides_[side_index] != user->first)
 	{
 		std::ostringstream msg;
 		msg << "Ignoring illegal whiteboard data, sent from user '" << user->second.name()
-				<< "' to team '" << std::string(team_name.begin(), team_name.end()) << "'." << std::endl;
+				<< "' which had an invalid side '" << side_index + 1 << "' specified" << std::endl;
 		const std::string& msg_str = msg.str();
 		LOG_GAME << msg_str << std::endl;
 		send_and_record_server_message(msg_str);
 		return;
 	}
 
-	send_data_team(data,team_name,user->first,"whiteboard");
+	send_data_sides(data, to_sides, user->first, "whiteboard");
 }
 
 void game::process_change_controller_wml(simple_wml::document& data, const player_map::const_iterator user)
@@ -1105,7 +1127,7 @@ bool game::end_turn() {
 	if (description_ == NULL) {
 		return false;
 	}
-
+	//FIXME: this "turn" attribute migth be outdated if teh number of turns was changed by wml.
 	description_->set_attr_dup("turn", describe_turns(current_turn(), level_["turns"]).c_str());
 
 	return true;
@@ -1355,49 +1377,42 @@ void game::send_data(simple_wml::document& data,
 	wesnothd::send_to_many(data, all_game_users(), exclude, packet_type);
 }
 namespace {
-	struct is_on_team_helper
+	struct controls_side_helper
 	{
 		const wesnothd::game& game_;
-		const simple_wml::string_span& team_;
-		is_on_team_helper(const wesnothd::game& game, const simple_wml::string_span& team)
+		const std::vector<int>& sides_;
+		controls_side_helper(const wesnothd::game& game, const std::vector<int>& sides)
 			: game_(game)
-			, team_(team)
+			, sides_(sides)
 		{
 
 		}
 		bool operator ()(network::connection user) const
 		{
-			return game_.is_on_team(team_, user);
+			return game_.controls_side(sides_, user);
 		}
 	};
 }
-void game::send_data_team(simple_wml::document& data,
-                          const simple_wml::string_span& team,
+
+void game::send_data_sides(simple_wml::document& data,
+                          const simple_wml::string_span& sides,
                           const network::connection exclude,
 						  std::string packet_type) const
 {
+	std::vector<int> sides_vec = ::split<int>(sides, ::split_conv_impl());
 	DBG_GAME << __func__ << "...\n";
-	wesnothd::send_to_many(data, players_, is_on_team_helper(*this, team), exclude, packet_type);
+	wesnothd::send_to_many(data, players_, controls_side_helper(*this, sides_vec), exclude, packet_type);
 }
 
-
-bool game::is_on_team(const simple_wml::string_span& team, const network::connection player) const {
-	const simple_wml::node::child_list& side_list = get_sides_list();
-	for (side_vector::const_iterator side = sides_.begin(); side != sides_.end(); ++side) {
-		if (*side != player) continue;
-		for (simple_wml::node::child_list::const_iterator i = side_list.begin();
-				i != side_list.end(); ++i) {
-			if ((**i)["side"].to_int() != side - sides_.begin() + 1) continue;
-			if ((**i)["team_name"] != team) continue;
-			// Don't consider ai sides on a team.
-			if ((**i)["controller"] == "ai") continue;
-			if (side_controllers_[side - sides_.begin()] == "ai") continue;
-			DBG_GAME << "side: " << (**i)["side"].to_int() << " with team_name: " << (**i)["team_name"]
-			<< " belongs to player: " << player << std::endl;
+bool game::controls_side(const std::vector<int>& sides, const network::connection player) const
+{
+	BOOST_FOREACH(int side, sides)
+	{
+		size_t side_index = side - 1;
+		if(side_index < sides_.size() && sides_[side_index] == player) {
 			return true;
 		}
 	}
-
 	return false;
 }
 

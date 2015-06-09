@@ -609,7 +609,7 @@ void manager::send_network_data()
 		config packet;
 		config& wb_cfg = packet.add_child("whiteboard",buf_cfg);
 		wb_cfg["side"] = static_cast<int>(team_index+1);
-		wb_cfg["team_name"] = resources::teams->at(team_index).team_name();
+		wb_cfg["to_sides"] = resources::teams->at(team_index).allied_human_teams();
 
 		buf_cfg = config();
 

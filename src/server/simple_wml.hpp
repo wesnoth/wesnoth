@@ -40,6 +40,12 @@ public:
 	{}
 	string_span(const char* str) : str_(str), size_(strlen(str))
 	{}
+	string_span(const char* begin, const char* end) : str_(begin), size_(end - begin)
+	{}
+
+	typedef const char* const_iterator;
+	typedef const char* iterator;
+	typedef const char value_type;
 
 	bool operator==(const char* o) const {
 		const char* i1 = str_;

@@ -258,6 +258,8 @@ public:
 	bool is_local() const { return is_local_human() || is_local_ai(); }
 	bool is_network() const { return is_network_human() || is_network_ai(); }
 
+	bool is_human() const { return is_local_human() || is_network_human(); }
+
 	bool is_local_human() const { return info_.controller == CONTROLLER::HUMAN;  }
 	bool is_local_ai() const { return info_.controller == CONTROLLER::AI; }
 	bool is_network_human() const { return info_.controller == CONTROLLER::NETWORK; }
@@ -376,6 +378,8 @@ public:
 
 	bool share_maps() const { return info_.share_maps; }
 	bool share_view() const { return info_.share_view; }
+
+	std::string allied_human_teams() const;
 private:
 
 	const std::vector<const shroud_map*>& ally_shroud(const std::vector<team>& teams) const;
