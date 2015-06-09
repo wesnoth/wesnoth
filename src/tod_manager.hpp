@@ -158,8 +158,14 @@ class tod_manager : public savegame::savegame_config
 		void modify_turns(const std::string& mod);
 		void set_number_of_turns(int num);
 
+		void update_server_information() const;
+		void modify_turns_by_wml(const std::string& mod);
+		void set_number_of_turns_by_wml(int num);
+
 		/** Dynamically change the current turn number. */
 		void set_turn(const int num, boost::optional<game_data&> vars = boost::none, const bool increase_limit_if_needed = true);
+		/** Dynamically change the current turn number. */
+		void set_turn_by_wml(const int num, boost::optional<game_data&> vars = boost::none, const bool increase_limit_if_needed = true);
 
 		/**
 		 * Function to move to the next turn.

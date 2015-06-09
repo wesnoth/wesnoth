@@ -95,6 +95,7 @@ game::game(player_map& players, const network::connection host,
 	history_(),
 	description_(NULL),
 	end_turn_(0),
+	num_turns_(0),
 	all_observers_muted_(false),
 	bans_(),
 	termination_(),
@@ -164,16 +165,16 @@ bool game::is_player(const network::connection player) const {
 }
 
 namespace {
-std::string describe_turns(int turn, const simple_wml::string_span& num_turns)
+std::string describe_turns(int turn, int num_turns)
 {
-	char buf[50];
-	snprintf(buf,sizeof(buf),"%d/",turn);
-
-	if(num_turns == "-1") {
-		return buf + std::string("-");
+	char buf[100];
+	
+	if(num_turns == -1) {
+		snprintf(buf, sizeof(buf), "%d/-", turn);
 	} else {
-		return buf + std::string(num_turns.begin(), num_turns.end());
+		snprintf(buf, sizeof(buf), "%d/%d", turn, num_turns);
 	}
+	return buf;
 }
 
 }//anon namespace
@@ -317,6 +318,8 @@ void game::start_game(const player_map::const_iterator starter) {
 			<< ". Current side is: " << side + 1 << ".\n";
 	}
 	end_turn_ = (turn - 1) * nsides_ + side - 1;
+	num_turns_ = lexical_cast_default<int>((*starting_pos( level_.root()))["turns"], -1);
+
 	end_turn();
 	clear_history();
 	// Send [observer] tags for all observers that are already in the game.
@@ -1108,6 +1111,26 @@ void game::process_change_controller_wml(simple_wml::document& data, const playe
 	//Dont send or store this change, all players should have gotten it by wml.
 }
 
+void game::process_change_turns_wml(simple_wml::document& data, const player_map::const_iterator user)
+{
+	if(!started_ || !is_player(user->first))
+		return;
+
+	simple_wml::node const& ctw_node = *data.child("change_turns_wml");
+	const int current_turn = ctw_node["current"].to_int();
+	const int num_turns = ctw_node["max"].to_int();
+	if(num_turns > 10000 || current_turn > 10000) {
+		//ignore this to prevent errors related to integer overflow.
+		return;
+	}
+	set_current_turn(current_turn);
+	num_turns_ = num_turns;
+
+	assert(this->current_turn() == current_turn);
+	description_->set_attr_dup("turn", describe_turns(current_turn, num_turns_).c_str());
+	//Dont send or store this change, all players should have gotten it by wml.
+}
+
 bool game::end_turn() {
 	// It's a new turn every time each side in the game ends their turn.
 	++end_turn_;
@@ -1127,8 +1150,8 @@ bool game::end_turn() {
 	if (description_ == NULL) {
 		return false;
 	}
-	//FIXME: this "turn" attribute migth be outdated if teh number of turns was changed by wml.
-	description_->set_attr_dup("turn", describe_turns(current_turn(), level_["turns"]).c_str());
+
+	description_->set_attr_dup("turn", describe_turns(current_turn(), num_turns_).c_str());
 
 	return true;
 }

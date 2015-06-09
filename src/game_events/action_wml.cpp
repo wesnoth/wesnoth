@@ -707,9 +707,9 @@ WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 	config::attribute_value current = cfg["current"];
 	tod_manager& tod_man = *resources::tod_manager;
 	if(!add.empty()) {
-		tod_man.modify_turns(add);
+		tod_man.modify_turns_by_wml(add);
 	} else if(!value.empty()) {
-		tod_man.set_number_of_turns(value.to_int(-1));
+		tod_man.set_number_of_turns_by_wml(value.to_int(-1));
 	}
 	// change current turn only after applying mods
 	if(!current.empty()) {
@@ -719,7 +719,7 @@ WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 		if(new_turn_number_u < 1 || (new_turn_number > tod_man.number_of_turns() && tod_man.number_of_turns() != -1)) {
 			ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ")" << std::endl;
 		} else if(new_turn_number_u != current_turn_number) {
-			tod_man.set_turn(new_turn_number_u, *resources::gamedata);
+			tod_man.set_turn_by_wml(new_turn_number_u, *resources::gamedata);
 			resources::screen->new_turn();
 		}
 	}

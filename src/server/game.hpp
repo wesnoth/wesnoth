@@ -82,6 +82,11 @@ public:
 	size_t nplayers() const { return players_.size(); }
 	size_t nobservers() const { return observers_.size(); }
 	size_t current_turn() const { return (nsides_ ? end_turn_ / nsides_ + 1 : 0); }
+	void set_current_turn(int turn)
+	{
+		int current_side = end_turn_ % nsides_;
+		end_turn_ = current_side + nsides_ * ( turn - 1);
+	}
 
 	void mute_all_observers();
 
@@ -167,6 +172,8 @@ public:
 	void process_whiteboard(simple_wml::document& data, const player_map::const_iterator user);
 	/** Handles incoming [change_controller_wml] data. */
 	void process_change_controller_wml(simple_wml::document& data, const player_map::const_iterator user);
+	/** Handles incoming [change_turns_wml] data. */
+	void process_change_turns_wml(simple_wml::document& data, const player_map::const_iterator user);
 
 	/**
 	 * Set the description to the number of available slots.
@@ -390,7 +397,7 @@ private:
 	simple_wml::node* description_;
 
 	int end_turn_;
-
+	int num_turns_;
 	bool all_observers_muted_;
 
 	std::vector<std::string> bans_;

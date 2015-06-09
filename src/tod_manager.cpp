@@ -25,6 +25,10 @@
 #include "unit.hpp"
 #include "unit_abilities.hpp"
 #include "wml_exception.hpp"
+#include "resources.hpp"
+#include "team.hpp"
+#include "network.hpp"
+#include "config_assign.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/range/adaptors.hpp>
@@ -378,6 +382,31 @@ void tod_manager::set_number_of_turns(int num)
 	num_turns_ = std::max<int>(num, -1);
 }
 
+void tod_manager::update_server_information() const
+{
+	if(resources::controller->current_team().is_local()) {
+		//TODO: move netword stuff to playturn.cpp
+		//the currently active side informs the mp server about the turn change.
+		network::send_data(config_of
+			("change_turns_wml", config_of
+				("current", turn_)
+				("max", num_turns_)
+			),
+			0
+		);
+	}
+}
+void tod_manager::modify_turns_by_wml(const std::string& mod)
+{
+	modify_turns(mod);
+	update_server_information();
+}
+void tod_manager::set_number_of_turns_by_wml(int num)
+{
+	set_number_of_turns(num);
+	update_server_information();
+}
+
 void tod_manager::set_turn(const int num, boost::optional<game_data &> vars, const bool increase_limit_if_needed)
 {
 	const int new_turn = std::max<int>(num, 1);
@@ -393,6 +422,11 @@ void tod_manager::set_turn(const int num, boost::optional<game_data &> vars, con
 		vars->get_variable("turn_number") = new_turn;
 }
 
+void tod_manager::set_turn_by_wml(const int num, boost::optional<game_data &> vars, const bool increase_limit_if_needed)
+{
+	set_turn(num, vars, increase_limit_if_needed);
+	update_server_information();
+}
 void tod_manager::set_new_current_times(const int new_current_turn_number)
 {
 	currentTime_ = calculate_current_time(times_.size(), new_current_turn_number, currentTime_);
