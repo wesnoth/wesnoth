@@ -1460,3 +1460,47 @@ end
 function wml_actions.print(cfg)
 	wesnoth.print(cfg)
 end
+
+function wml_actions.role(cfg)
+	-- role= and type= are handled differently than in other tags,
+	-- so we need to remove them from the filter
+	local role = cfg.role
+	local filter = cfg.__shallow_literal
+	filter.role, filter.type = nil, nil
+
+	local types = {}
+	for value in split(cfg.type) do
+		table.insert(types, value)
+	end
+
+	-- first attempt to match units on the map
+	local i = 1
+	repeat
+		-- give precedence based on the order specified in type=
+		if #types > 0 then
+			filter.type = types[i]
+		end
+		local unit = wesnoth.get_units(filter)[1]
+		if unit then
+			unit.role = cfg.role
+			return
+		end
+		i = i + 1
+	until #types == 0 or i > #types
+
+	-- then try to match units on the recall lists
+	i = 1
+	repeat
+		if #types > 0 then
+			filter.type = types[i]
+		end
+		local unit = wesnoth.get_recall_units(filter)[1]
+		if unit then
+			unit.role = cfg.role
+			return
+		end
+		i = i + 1
+	until #types == 0 or i > #types
+
+	-- no matching unit found, fail silently
+end
