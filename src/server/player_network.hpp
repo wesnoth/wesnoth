@@ -23,6 +23,7 @@
 #include "utils/boost_function_guarded.hpp"
 #include "../log.hpp"
 
+extern lg::log_domain log_config_pn;
 namespace wesnothd {
 
 namespace chat_message {
@@ -94,7 +95,7 @@ void send_to_many(simple_wml::document& data,
 			}
 		}
 	} catch (simple_wml::error& e) {
-		LOG_STREAM(warn, log_config) << __func__ << ": simple_wml error: " << e.message << std::endl;
+		LOG_STREAM(warn, log_config_pn) << __func__ << ": simple_wml error: " << e.message << std::endl;
 	}
 }
 

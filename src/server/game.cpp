@@ -1126,7 +1126,7 @@ void game::process_change_turns_wml(simple_wml::document& data, const player_map
 	set_current_turn(current_turn);
 	num_turns_ = num_turns;
 
-	assert(this->current_turn() == current_turn);
+	assert(static_cast<int>(this->current_turn()) == current_turn);
 	description_->set_attr_dup("turn", describe_turns(current_turn, num_turns_).c_str());
 	//Dont send or store this change, all players should have gotten it by wml.
 }

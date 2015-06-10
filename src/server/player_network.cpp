@@ -17,8 +17,8 @@
 #include "../log.hpp"
 #include "serialization/unicode.hpp"
 
-static lg::log_domain log_config("config");
-#define WRN_CONFIG LOG_STREAM(warn, log_config)
+lg::log_domain log_config_pn("config");
+#define WRN_CONFIG LOG_STREAM(warn, log_config_pn)
 
 namespace wesnothd {
 
