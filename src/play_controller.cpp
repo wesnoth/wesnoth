@@ -362,6 +362,10 @@ void play_controller::place_sides_in_preferred_locations()
 
 	int num_pos = map_.num_valid_starting_positions();
 
+	for(int p = 1; p <= num_pos; ++p) {
+		const map_location& pos = map_.starting_position(p);
+		LOG_NG << "starting pos for side " << p << " was at " << pos << "\n";
+	}
 	int side_num = 1;
 	BOOST_FOREACH(const config &side, level_.child_range("side"))
 	{
@@ -388,6 +392,10 @@ void play_controller::place_sides_in_preferred_locations()
 			map_.set_starting_position(i->side,i->pos);
 			LOG_NG << "placing side " << i->side << " at " << i->pos << '\n';
 		}
+	}
+	for(int p = 1; p <= num_pos; ++p) {
+		const map_location& pos = map_.starting_position(p);
+		LOG_NG << "starting pos for side " << p << " is now at " << pos << "\n";
 	}
 }
 
