@@ -3,6 +3,9 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog
 
 Version 1.13.0+dev:
+ * Security fixes:
+   * Disallowed inclusion of .pbl files from WML (bug #23504).
+
  * Campaigns:
    * Dead Water:
      * The Stun effect now expires at the stunned unit's side turn end

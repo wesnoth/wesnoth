@@ -1,4 +1,6 @@
 Version 1.13.0+dev:
+ * Security fixes:
+   * Disallowed inclusion of .pbl files from WML (bug #23504).
  * AI:
    * Fast Micro AI: exclude hidden enemies from attack evaluation by default;
      add optional key attack_hidden_enemies to override this
@@ -68,7 +70,6 @@ Version 1.13.0+dev:
    * Made silence.ogg larger to work around a crash involving the multiplayer
      lobby with music and sound enabled (bug #23633, bug #23599) with libvorbis
      builds affected by Debian bug #782831.
-   * Disallowed inclusion of .pbl files from WML (bug #23504).
 
 Version 1.13.0:
  * Security fixes:
