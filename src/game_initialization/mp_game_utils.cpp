@@ -67,7 +67,7 @@ config initial_level_config(saved_game& state)
 	{
 		state.set_random_seed();
 		
--		scenario["turns"] = params.num_turns;
+		scenario["turns"] = params.num_turns;
 		if (params.random_start_time)
 		{
 			if (!tod_manager::is_start_ToD(scenario["random_start_time"]))
