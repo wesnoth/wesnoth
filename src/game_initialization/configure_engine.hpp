@@ -107,7 +107,7 @@ public:
 	const mp_game_settings& get_parameters() const;
 
 	const std::vector<std::string>& entry_point_titles() const;
-
+	void write_parameters();
 private:
 	saved_game& state_;
 	mp_game_settings& parameters_;

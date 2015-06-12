@@ -48,6 +48,23 @@ static lg::log_domain log_mp_configure("mp/configure");
 
 namespace mp {
 
+configure::nolock_settings::nolock_settings(game_display& disp)
+	: turns_slider_(disp.video())
+	, turns_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR)
+	, village_gold_slider_(disp.video())
+	, village_gold_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR)
+	, village_support_slider_(disp.video())
+	, village_support_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR)
+	, xp_modifier_slider_(disp.video())
+	, xp_modifier_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR)
+	, generic_label_(disp.video(), "`~ " + std::string(_("Generic")), font::SIZE_PLUS, font::LOBBY_COLOR)
+	, use_map_settings_(disp.video(), _("Use map settings"), gui::button::TYPE_CHECK)
+	, random_start_time_(disp.video(), _("Random start time"), gui::button::TYPE_CHECK)
+	, fog_game_(disp.video(), _("Fog of war"), gui::button::TYPE_CHECK)
+	, shroud_game_(disp.video(), _("Shroud"), gui::button::TYPE_CHECK)
+{
+
+}
 configure::configure(game_display& disp, const config &cfg, chat& c, config& gamelist, saved_game& game, bool local_players_only) :
 	ui(disp, _("Configure Game"), cfg, c, gamelist),
 
@@ -56,8 +73,6 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	mp_countdown_init_time_(270),
 	mp_countdown_reservoir_time_(330),
 
-	turns_slider_(disp.video()),
-	turns_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	countdown_game_(disp.video(), _("Time limit"), gui::button::TYPE_CHECK),
 	countdown_init_time_slider_(disp.video()),
 	countdown_init_time_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
@@ -67,20 +82,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	countdown_turn_bonus_slider_(disp.video()),
 	countdown_action_bonus_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	countdown_action_bonus_slider_(disp.video()),
-	village_gold_slider_(disp.video()),
-	village_gold_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
-	village_support_slider_(disp.video()),
-	village_support_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
-	xp_modifier_slider_(disp.video()),
-	xp_modifier_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
-	generic_label_(disp.video(), "`~ " + std::string(_("Generic")), font::SIZE_PLUS, font::LOBBY_COLOR),
 	name_entry_label_(disp.video(), _("Name of game:"), font::SIZE_PLUS, font::LOBBY_COLOR),
-	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
-	map_size_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
-	use_map_settings_(disp.video(), _("Use map settings"), gui::button::TYPE_CHECK),
-	random_start_time_(disp.video(), _("Random start time"), gui::button::TYPE_CHECK),
-	fog_game_(disp.video(), _("Fog of war"), gui::button::TYPE_CHECK),
-	shroud_game_(disp.video(), _("Shroud"), gui::button::TYPE_CHECK),
 	observers_game_(disp.video(), _("Observers"), gui::button::TYPE_CHECK),
 	oos_debug_(disp.video(), _("Debug OOS"), gui::button::TYPE_CHECK),
 	shuffle_sides_(disp.video(), _("Shuffle sides"), gui::button::TYPE_CHECK),
@@ -100,24 +102,13 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	state_(game),
 	parameters_(state_.mp_settings()),
 	engine_(state_),
-	options_manager_(cfg, disp, &options_pane_right_, engine_.options_default())
+	options_manager_(cfg, disp, &options_pane_right_, engine_.options_default()),
+	nolock_settings_(engine_.force_lock_settings() ? 0 : new nolock_settings(disp))
 {
 	// Build the list of scenarios to play
 
 	DBG_MP << "constructing multiplayer configure dialog" << std::endl;
 	
-	use_map_settings_.enable(!engine_.force_lock_settings());
-	use_map_settings_.set_check(engine_.use_map_settings());
-
-	use_map_settings_.set_help_string(_("Use scenario specific settings"));
-
-	turns_slider_.set_min(settings::turns_min);
-	turns_slider_.set_max(settings::turns_max);
-	turns_slider_.set_increment(settings::turns_step);
-	turns_slider_.set_value(engine_.num_turns_default());
-	turns_slider_.set_help_string(_("The maximum number of turns the game can last"));
-	turns_slider_.enable(!engine_.use_map_settings());
-
 	countdown_game_.set_check(engine_.mp_countdown_default());
 	countdown_game_.set_help_string(_("Enables user time limit"));
 
@@ -145,37 +136,6 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	countdown_action_bonus_slider_.set_value(engine_.mp_countdown_action_bonus_default());
 	countdown_action_bonus_slider_.set_help_string(_("Time for each attack, recruit, and capture"));
 
-	village_gold_slider_.set_min(1);
-	village_gold_slider_.set_max(5);
-	village_gold_slider_.set_value(engine_.village_gold_default());
-	village_gold_slider_.set_help_string(_("The amount of income each village yields per turn"));
-	village_gold_slider_.enable(!engine_.use_map_settings());
-
-	village_support_slider_.set_min(0);
-	village_support_slider_.set_max(4);
-	village_support_slider_.set_value(engine_.village_support_default());
-	village_support_slider_.set_help_string(_("The number of unit levels each village can support"));
-	village_support_slider_.enable(!engine_.use_map_settings());
-
-	xp_modifier_slider_.set_min(30);
-	xp_modifier_slider_.set_max(200);
-	xp_modifier_slider_.set_value(engine_.xp_modifier_default());
-	xp_modifier_slider_.set_increment(10);
-	xp_modifier_slider_.set_help_string(_("The amount of experience a unit needs to advance"));
-	xp_modifier_slider_.enable(!engine_.use_map_settings());
-
-	random_start_time_.set_check(engine_.random_start_time_default());
-	random_start_time_.set_help_string(_("Randomize time of day in begin"));
-	random_start_time_.enable(!engine_.use_map_settings());
-
-	fog_game_.set_check(engine_.fog_game_default());
-	fog_game_.set_help_string(_("Enemy units cannot be seen unless they are in range of your units"));
-	fog_game_.enable(!engine_.use_map_settings());
-
-	shroud_game_.set_check(engine_.shroud_game_default());
-	shroud_game_.set_help_string(_("The map is unknown until your units explore it"));
-	shroud_game_.enable(!engine_.use_map_settings());
-
 	observers_game_.set_check(engine_.allow_observers_default());
 	observers_game_.set_help_string(_("Allow users who are not playing to watch the game"));
 	observers_game_.enable(state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::SCENARIO);
@@ -198,6 +158,49 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	random_faction_mode_.set_selected(engine_.random_faction_mode().cast<int>());
 	random_faction_mode_.set_help_string(_("Independent: Random factions assigned independently\nNo Mirror: No two players will get the same faction\nNo Ally Mirror: No two allied players will get the same faction"));
 
+	if(nolock_settings_) {
+		nolock_settings_->use_map_settings_.enable(!engine_.force_lock_settings());
+		nolock_settings_->use_map_settings_.set_check(engine_.use_map_settings());
+		nolock_settings_->use_map_settings_.set_help_string(_("Use scenario specific settings"));
+
+		nolock_settings_->turns_slider_.set_min(settings::turns_min);
+		nolock_settings_->turns_slider_.set_max(settings::turns_max);
+		nolock_settings_->turns_slider_.set_increment(settings::turns_step);
+		nolock_settings_->turns_slider_.set_value(engine_.num_turns_default());
+		nolock_settings_->turns_slider_.set_help_string(_("The maximum number of turns the game can last"));
+		nolock_settings_->turns_slider_.enable(!engine_.use_map_settings());
+
+		nolock_settings_->village_gold_slider_.set_min(1);
+		nolock_settings_->village_gold_slider_.set_max(5);
+		nolock_settings_->village_gold_slider_.set_value(engine_.village_gold_default());
+		nolock_settings_->village_gold_slider_.set_help_string(_("The amount of income each village yields per turn"));
+		nolock_settings_->village_gold_slider_.enable(!engine_.use_map_settings());
+
+		nolock_settings_->village_support_slider_.set_min(0);
+		nolock_settings_->village_support_slider_.set_max(4);
+		nolock_settings_->village_support_slider_.set_value(engine_.village_support_default());
+		nolock_settings_->village_support_slider_.set_help_string(_("The number of unit levels each village can support"));
+		nolock_settings_->village_support_slider_.enable(!engine_.use_map_settings());
+
+		nolock_settings_->xp_modifier_slider_.set_min(30);
+		nolock_settings_->xp_modifier_slider_.set_max(200);
+		nolock_settings_->xp_modifier_slider_.set_value(engine_.xp_modifier_default());
+		nolock_settings_->xp_modifier_slider_.set_increment(10);
+		nolock_settings_->xp_modifier_slider_.set_help_string(_("The amount of experience a unit needs to advance"));
+		nolock_settings_->xp_modifier_slider_.enable(!engine_.use_map_settings());
+
+		nolock_settings_->random_start_time_.set_check(engine_.random_start_time_default());
+		nolock_settings_->random_start_time_.set_help_string(_("Randomize time of day in begin"));
+		nolock_settings_->random_start_time_.enable(!engine_.use_map_settings());
+
+		nolock_settings_->fog_game_.set_check(engine_.fog_game_default());
+		nolock_settings_->fog_game_.set_help_string(_("Enemy units cannot be seen unless they are in range of your units"));
+		nolock_settings_->fog_game_.enable(!engine_.use_map_settings());
+
+		nolock_settings_->shroud_game_.set_check(engine_.shroud_game_default());
+		nolock_settings_->shroud_game_.set_help_string(_("The map is unknown until your units explore it"));
+		nolock_settings_->shroud_game_.enable(!engine_.use_map_settings());
+	}
 #if 0
 	// The possible vision settings
 	std::vector<std::string> vision_types;
@@ -270,7 +273,7 @@ configure::~configure()
 	} catch (...) {}
 }
 
-const mp_game_settings& configure::get_parameters()
+void configure::get_parameters()
 {
 	DBG_MP << "getting parameter values from widgets" << std::endl;
 
@@ -284,9 +287,7 @@ const mp_game_settings& configure::get_parameters()
 		countdown_init_time_slider_.value() : -1;
 	if(mp_countdown_reservoir_time_val > 0 && mp_countdown_init_time_val > mp_countdown_reservoir_time_val)
 		mp_countdown_init_time_val = mp_countdown_reservoir_time_val;
-	const int num_turns_val = turns_slider_.value() <
-		turns_slider_.max_value() ? turns_slider_.value() : -1;
-
+	
 	// Updates the values in the configure_engine to match
 	// the values selected by the user with the widgets:
 	engine_.set_game_name(name_entry_.text());
@@ -297,14 +298,19 @@ const mp_game_settings& configure::get_parameters()
 	engine_.set_mp_countdown_reservoir_time(mp_countdown_reservoir_time_val);
 	engine_.set_mp_countdown_action_bonus(mp_countdown_action_bonus_val);
 	engine_.set_mp_countdown(countdown_game_.checked());
-	engine_.set_num_turns(num_turns_val);
-	engine_.set_village_gold(village_gold_slider_.value());
-	engine_.set_village_support(village_support_slider_.value());
-	engine_.set_xp_modifier(xp_modifier_slider_.value());
-	engine_.set_use_map_settings(use_map_settings_.checked());
-	engine_.set_random_start_time(random_start_time_.checked());
-	engine_.set_fog_game(fog_game_.checked());
-	engine_.set_shroud_game(shroud_game_.checked());
+	if(nolock_settings_) {
+		const int num_turns_val = nolock_settings_->turns_slider_.value() <
+			nolock_settings_->turns_slider_.max_value() ? nolock_settings_->turns_slider_.value() : -1;
+		engine_.set_num_turns(num_turns_val);
+		engine_.set_village_gold(nolock_settings_->village_gold_slider_.value());
+		engine_.set_village_support(nolock_settings_->village_support_slider_.value());
+		engine_.set_xp_modifier(nolock_settings_->xp_modifier_slider_.value());
+		engine_.set_use_map_settings(nolock_settings_->use_map_settings_.checked());
+		engine_.set_random_start_time(nolock_settings_->random_start_time_.checked());
+		engine_.set_fog_game(nolock_settings_->fog_game_.checked());
+		engine_.set_shroud_game(nolock_settings_->shroud_game_.checked());
+		engine_.write_parameters();
+	}
 	engine_.set_allow_observers(observers_game_.checked());
 	engine_.set_oos_debug(oos_debug_.checked());
 	engine_.set_shuffle_sides(shuffle_sides_.checked());
@@ -312,7 +318,6 @@ const mp_game_settings& configure::get_parameters()
 
 	engine_.set_options(options_manager_.get_values());
 
-	return engine_.get_parameters();
 }
 
 bool configure::plugin_event_helper(const process_event_data & data)
@@ -361,18 +366,64 @@ void configure::process_event_impl(const process_event_data & data)
 		engine_.set_scenario(entry_points_combo_.selected());
 		force_use_map_settings_check_ = true;
 	}
-
-	// Turns per game
-	const int cur_turns = turns_slider_.value();
-
 	std::stringstream buf;
-	if(cur_turns < 100) {
-		buf << _("Turns: ") << cur_turns;
-	} else {
-		buf << _("Unlimited turns");
-	}
-	turns_label_.set_text(buf.str());
+	if(nolock_settings_) {
+		// Turns per game
+		const int cur_turns = nolock_settings_->turns_slider_.value();
 
+		if(cur_turns < 100) {
+			buf << _("Turns: ") << cur_turns;
+		} else {
+			buf << _("Unlimited turns");
+		}
+		nolock_settings_->turns_label_.set_text(buf.str());
+
+
+		// Villages can produce between 1 and 5 gold a turn
+		const int village_gold = nolock_settings_->village_gold_slider_.value();
+		buf.str("");
+		buf << _("Village gold: ") << village_gold;
+		nolock_settings_->village_gold_label_.set_text(buf.str());
+
+		// Unit levels supported per village
+		const int village_support = nolock_settings_->village_support_slider_.value();
+		buf.str("");
+		buf << _("Village support: ") << village_support;
+		nolock_settings_->village_support_label_.set_text(buf.str());
+
+		// Experience modifier
+		const int xpmod = nolock_settings_->xp_modifier_slider_.value();
+		buf.str("");
+		buf << _("Experience modifier: ") << xpmod << "%";
+
+		nolock_settings_->xp_modifier_label_.set_text(buf.str());
+
+
+		if(nolock_settings_->use_map_settings_.pressed() || force_use_map_settings_check_) {
+			force_use_map_settings_check_ = false;
+
+			engine_.set_use_map_settings(nolock_settings_->use_map_settings_.checked());
+
+			// If the map settings are wanted use them,
+			// if not properly defined fall back to the default settings
+			nolock_settings_->turns_slider_.set_value(engine_.num_turns_default());
+			nolock_settings_->xp_modifier_slider_.set_value(engine_.xp_modifier_default());
+			nolock_settings_->random_start_time_.set_check(engine_.random_start_time_default());
+			nolock_settings_->village_gold_slider_.set_value(engine_.village_gold_default());
+			nolock_settings_->village_support_slider_.set_value(engine_.village_support_default());
+			nolock_settings_->fog_game_.set_check(engine_.fog_game_default());
+			nolock_settings_->shroud_game_.set_check(engine_.shroud_game_default());
+
+			// Set the widget states
+			nolock_settings_->turns_slider_.enable(!engine_.use_map_settings());
+			nolock_settings_->village_gold_slider_.enable(!engine_.use_map_settings());
+			nolock_settings_->village_support_slider_.enable(!engine_.use_map_settings());
+			nolock_settings_->xp_modifier_slider_.enable(!engine_.use_map_settings());
+			nolock_settings_->random_start_time_.enable(!engine_.use_map_settings());
+			nolock_settings_->fog_game_.enable(!engine_.use_map_settings());
+			nolock_settings_->shroud_game_.enable(!engine_.use_map_settings());
+		}
+	}
 	countdown_init_time_label_.enable(countdown_game_.checked());
 	countdown_init_time_slider_.enable(countdown_game_.checked());
 	countdown_turn_bonus_label_.enable(countdown_game_.checked());
@@ -414,51 +465,6 @@ void configure::process_event_impl(const process_event_data & data)
 	buf <<  _("Action bonus: ") << mp_countdown_action_bonus_val; // << _(" sec.");
 	countdown_action_bonus_label_.set_text(buf.str());
 
-
-	// Villages can produce between 1 and 5 gold a turn
-	const int village_gold = village_gold_slider_.value();
-	buf.str("");
-	buf << _("Village gold: ") << village_gold;
-	village_gold_label_.set_text(buf.str());
-
-	// Unit levels supported per village
-	const int village_support = village_support_slider_.value();
-	buf.str("");
-	buf << _("Village support: ") << village_support;
-	village_support_label_.set_text(buf.str());
-
-	// Experience modifier
-	const int xpmod = xp_modifier_slider_.value();
-	buf.str("");
-	buf << _("Experience modifier: ") << xpmod << "%";
-
-	xp_modifier_label_.set_text(buf.str());
-
-	if(use_map_settings_.pressed() || force_use_map_settings_check_) {
-		force_use_map_settings_check_ = false;
-
-		engine_.set_use_map_settings(use_map_settings_.checked());
-
-		// If the map settings are wanted use them,
-		// if not properly defined fall back to the default settings
-		turns_slider_.set_value(engine_.num_turns_default());
-		xp_modifier_slider_.set_value(engine_.xp_modifier_default());
-		random_start_time_.set_check(engine_.random_start_time_default());
-		village_gold_slider_.set_value(engine_.village_gold_default());
-		village_support_slider_.set_value(engine_.village_support_default());
-		fog_game_.set_check(engine_.fog_game_default());
-		shroud_game_.set_check(engine_.shroud_game_default());
-
-		// Set the widget states
-		turns_slider_.enable(!engine_.use_map_settings());
-		village_gold_slider_.enable(!engine_.use_map_settings());
-		village_support_slider_.enable(!engine_.use_map_settings());
-		xp_modifier_slider_.enable(!engine_.use_map_settings());
-		random_start_time_.enable(!engine_.use_map_settings());
-		fog_game_.enable(!engine_.use_map_settings());
-		shroud_game_.enable(!engine_.use_map_settings());
-	}
-
 	options_manager_.process_event();
 }
 
@@ -467,9 +473,22 @@ void configure::hide_children(bool hide)
 	DBG_MP << (hide ? "hiding" : "showing" ) << " children widgets" << std::endl;
 
 	ui::hide_children(hide);
-
-	turns_slider_.hide(hide);
-	turns_label_.hide(hide);
+	if (nolock_settings_)
+	{
+		nolock_settings_->turns_slider_.hide(hide);
+		nolock_settings_->turns_label_.hide(hide);
+		nolock_settings_->village_gold_slider_.hide(hide);
+		nolock_settings_->village_gold_label_.hide(hide);
+		nolock_settings_->village_support_slider_.hide(hide);
+		nolock_settings_->village_support_label_.hide(hide);
+		nolock_settings_->xp_modifier_slider_.hide(hide);
+		nolock_settings_->xp_modifier_label_.hide(hide);
+		nolock_settings_->generic_label_.hide(hide);
+		nolock_settings_->use_map_settings_.hide(hide);
+		nolock_settings_->random_start_time_.hide(hide);
+		nolock_settings_->fog_game_.hide(hide);
+		nolock_settings_->shroud_game_.hide(hide);
+	}
 
 	countdown_init_time_slider_.hide(hide);
 	countdown_init_time_label_.hide(hide);
@@ -481,22 +500,8 @@ void configure::hide_children(bool hide)
 	countdown_action_bonus_label_.hide(hide);
 	countdown_game_.hide(hide);
 
-	village_gold_slider_.hide(hide);
-	village_gold_label_.hide(hide);
-	village_support_slider_.hide(hide);
-	village_support_label_.hide(hide);
-	xp_modifier_slider_.hide(hide);
-	xp_modifier_label_.hide(hide);
-
-	generic_label_.hide(hide);
 	name_entry_label_.hide(hide);
-	num_players_label_.hide(hide);
-	map_size_label_.hide(hide);
 
-	use_map_settings_.hide(hide);
-	random_start_time_.hide(hide);
-	fog_game_.hide(hide);
-	shroud_game_.hide(hide);
 	observers_game_.hide(hide);
 	oos_debug_.hide(hide);
 	shuffle_sides_.hide(hide);
@@ -626,43 +631,47 @@ void configure::layout_children(const SDL_Rect& rect)
 
 	int xpos_right = 0;
 	int ypos_right = 0;
-	options_pane_right_.add_widget(&generic_label_, xpos_right, ypos_right);
-	ypos_right += generic_label_.height() + border_size;
+	if(nolock_settings_)
+	{
+		options_pane_right_.add_widget(&nolock_settings_->generic_label_, xpos_right, ypos_right);
+		ypos_right += nolock_settings_->generic_label_.height() + border_size;
 
-	options_pane_right_.add_widget(&use_map_settings_, xpos_right, ypos_right);
-	options_pane_right_.add_widget(&fog_game_,
-		xpos_right + (options_pane_right_.width() - xpos_right)/2 + 5, ypos_right);
-	ypos_right += use_map_settings_.height() + border_size;
+		options_pane_right_.add_widget(&nolock_settings_->use_map_settings_, xpos_right, ypos_right);
+		options_pane_right_.add_widget(&nolock_settings_->fog_game_,
+			xpos_right + (options_pane_right_.width() - xpos_right)/2 + 5, ypos_right);
+		ypos_right += nolock_settings_->use_map_settings_.height() + border_size;
 
-	options_pane_right_.add_widget(&random_start_time_, xpos_right, ypos_right);
-	options_pane_right_.add_widget(&shroud_game_,
-		xpos_right + (options_pane_right_.width() - xpos_right)/2 + 5, ypos_right);
-	ypos_right += random_start_time_.height() + border_size;
+		options_pane_right_.add_widget(&nolock_settings_->random_start_time_, xpos_right, ypos_right);
+		options_pane_right_.add_widget(&nolock_settings_->shroud_game_,
+			xpos_right + (options_pane_right_.width() - xpos_right)/2 + 5, ypos_right);
+		ypos_right += nolock_settings_->random_start_time_.height() + border_size;
 
-	options_pane_right_.add_widget(&turns_label_, xpos_right, ypos_right);
-	ypos_right += turns_label_.height() + border_size;
-	turns_slider_.set_width(slider_width);
-	options_pane_right_.add_widget(&turns_slider_, xpos_right, ypos_right);
-	ypos_right += turns_slider_.height() + border_size;
+		options_pane_right_.add_widget(&nolock_settings_->turns_label_, xpos_right, ypos_right);
+		ypos_right += nolock_settings_->turns_label_.height() + border_size;
+		nolock_settings_->turns_slider_.set_width(slider_width);
+		options_pane_right_.add_widget(&nolock_settings_->turns_slider_, xpos_right, ypos_right);
+		ypos_right += nolock_settings_->turns_slider_.height() + border_size;
 
-	options_pane_right_.add_widget(&xp_modifier_label_, xpos_right, ypos_right);
-	ypos_right += xp_modifier_label_.height() + border_size;
-	xp_modifier_slider_.set_width(slider_width);
-	options_pane_right_.add_widget(&xp_modifier_slider_, xpos_right, ypos_right);
-	ypos_right += xp_modifier_slider_.height() + border_size;
+		options_pane_right_.add_widget(&nolock_settings_->xp_modifier_label_, xpos_right, ypos_right);
+		ypos_right += nolock_settings_->xp_modifier_label_.height() + border_size;
+		nolock_settings_->xp_modifier_slider_.set_width(slider_width);
+		options_pane_right_.add_widget(&nolock_settings_->xp_modifier_slider_, xpos_right, ypos_right);
+		ypos_right += nolock_settings_->xp_modifier_slider_.height() + border_size;
 
-	options_pane_right_.add_widget(&village_support_label_, xpos_right, ypos_right);
-	ypos_right += village_support_label_.height() + border_size;
-	village_support_slider_.set_width(slider_width);
-	options_pane_right_.add_widget(&village_support_slider_, xpos_right, ypos_right);
-	ypos_right += village_support_slider_.height() + border_size;
+		options_pane_right_.add_widget(&nolock_settings_->village_support_label_, xpos_right, ypos_right);
+		ypos_right += nolock_settings_->village_support_label_.height() + border_size;
+		nolock_settings_->village_support_slider_.set_width(slider_width);
+		options_pane_right_.add_widget(&nolock_settings_->village_support_slider_, xpos_right, ypos_right);
+		ypos_right += nolock_settings_->village_support_slider_.height() + border_size;
 
-	options_pane_right_.add_widget(&village_gold_label_, xpos_right, ypos_right);
-	ypos_right += village_gold_label_.height() + border_size;
-	village_gold_slider_.set_width(slider_width);
+		options_pane_right_.add_widget(&nolock_settings_->village_gold_label_, xpos_right, ypos_right);
+		ypos_right += nolock_settings_->village_gold_label_.height() + border_size;
+		nolock_settings_->village_gold_slider_.set_width(slider_width);
 
-	options_pane_right_.add_widget(&village_gold_slider_, xpos_right, ypos_right);
-	ypos_right += village_gold_slider_.height() + 3 * border_size;
+		options_pane_right_.add_widget(&nolock_settings_->village_gold_slider_, xpos_right, ypos_right);
+		ypos_right += nolock_settings_->village_gold_slider_.height() + 3 * border_size;
+
+	}
 
 	options_manager_.layout_widgets(xpos_right, ypos_right, column_width);
 

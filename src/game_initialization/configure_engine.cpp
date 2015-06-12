@@ -3,6 +3,7 @@
 #include "game_config_manager.hpp"
 #include "mp_game_settings.hpp"
 #include "settings.hpp"
+#include "tod_manager.hpp"
 
 #include <boost/foreach.hpp>
 #include <cassert>
@@ -199,6 +200,33 @@ const mp_game_settings& configure_engine::get_parameters() const {
 
 const std::vector<std::string>& configure_engine::entry_point_titles() const {
 	return entry_point_titles_;
+}
+
+void configure_engine::write_parameters()
+{
+	config& scenario = this->state_.get_starting_pos();
+	const mp_game_settings& params = this->state_.mp_settings();
+
+	if (params.random_start_time) {
+		if (!tod_manager::is_start_ToD(scenario["random_start_time"])) {
+			scenario["random_start_time"] = true;
+		}
+	}
+	else {
+		scenario["random_start_time"] = false;
+	}
+	scenario["experience_modifier"] = params.xp_modifier;
+	scenario["turns"] = params.num_turns;
+
+	BOOST_FOREACH(config& side, scenario.child_range("side"))
+	{
+		side["fog"] = params.fog_game;
+		side["shroud"] = params.shroud_game;
+		if (!params.use_map_settings) {
+			side["village_gold"] = params.village_gold;
+			side["village_support"] = params.village_support;
+		}
+	}
 }
 
 } //end namespace ng

@@ -23,7 +23,6 @@
 #include "log.hpp"
 #include "mp_options.hpp"
 #include "savegame.hpp"
-#include "tod_manager.hpp"
 #include "unit_id.hpp"
 
 #include <boost/foreach.hpp>
@@ -65,22 +64,8 @@ config initial_level_config(saved_game& state)
 	config& scenario = state.get_starting_pos();
 	if(!state.mp_settings().saved_game)
 	{
-		state.set_random_seed();
-		
 		scenario["turns"] = params.num_turns;
-		if (params.random_start_time)
-		{
-			if (!tod_manager::is_start_ToD(scenario["random_start_time"]))
-			{
-				scenario["random_start_time"] = true;
-			}
-		}
-		else
-		{
-			scenario["random_start_time"] = false;
-		}
-
-		scenario["experience_modifier"] = params.xp_modifier;
+		state.set_random_seed();
 	}
 
 	if (scenario["objectives"].empty()) {
