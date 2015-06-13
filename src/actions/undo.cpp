@@ -162,6 +162,14 @@ void undo_list::add_auto_shroud(bool turned_on)
 	add(new undo::auto_shroud_action(turned_on));
 }
 
+void undo_list::add_dummy()
+{
+	/// @todo: Consecutive shroud actions can be collapsed into one.
+
+	// Do not call add(), as this should not clear the redo stack.
+	add(new undo_dummy_action());
+}
+
 /**
  * Adds a dismissal to the undo stack.
  */

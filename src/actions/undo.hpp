@@ -51,6 +51,8 @@ public:
 
 	/// Adds an auto-shroud toggle to the undo stack.
 	void add_auto_shroud(bool turned_on);
+	/// Adds an auto-shroud toggle to the undo stack.
+	void add_dummy();
 	/// Adds a dismissal to the undo stack.
 	void add_dismissal(const unit_const_ptr u);
 	/// Adds a move to the undo stack.

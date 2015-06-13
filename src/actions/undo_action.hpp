@@ -74,4 +74,30 @@ namespace actions {
 
 		int unit_id_diff;
 	};
+
+	/// entry for player actions that do not need any special code to be performed when undoing such as right-click menu items.
+	struct undo_dummy_action : undo_action
+	{
+		undo_dummy_action ()
+			: undo_action()
+		{
+		}
+		explicit undo_dummy_action (const config & cfg)
+			: undo_action(cfg)
+		{
+		}
+		virtual const char* get_type() const { return "dummy"; }
+		virtual ~undo_dummy_action () {};
+		/// Undoes this action.
+		virtual bool undo(int side)
+		{
+			return true;
+		}
+		/// Redoes this action.
+		virtual bool redo(int side)
+		{
+			return true;
+		}
+	};
+
 }
