@@ -89,12 +89,12 @@ namespace actions {
 		virtual const char* get_type() const { return "dummy"; }
 		virtual ~undo_dummy_action () {};
 		/// Undoes this action.
-		virtual bool undo(int side)
+		virtual bool undo(int)
 		{
 			return true;
 		}
 		/// Redoes this action.
-		virtual bool redo(int side)
+		virtual bool redo(int)
 		{
 			return true;
 		}
