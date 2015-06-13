@@ -375,7 +375,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(update_shroud, /*child*/,  use_undo, /*show*/, e
 	assert(use_undo);
 	team &current_team = resources::controller->current_team();
 	if(current_team.auto_shroud_updates()) {
-		error_handler("Team has DSU disables but we fould an explicit shroud update", false);
+		error_handler("Team has DSU disabled but we found an explicit shroud update", false);
 	}
 	resources::undo_stack->commit_vision();
 	resources::undo_stack->add_update_shroud();
@@ -390,7 +390,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, error_ha
 	
 	utils::string_map symbols;
 	symbols["player"] = resources::controller->current_team().current_player();
-	resources::screen->announce(vgettext(":unit debug command was use during turn of $player", symbols), font::NORMAL_COLOR);
+	resources::screen->announce(vgettext(":unit debug command was used during turn of $player", symbols), font::NORMAL_COLOR);
 	map_location loc(child);
 	const std::string name = child["name"];
 	const std::string value = child["value"];
