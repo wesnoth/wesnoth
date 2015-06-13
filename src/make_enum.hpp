@@ -246,6 +246,10 @@ struct NAME : public enum_tag \
 		return static_cast<type>(i); \
 	} \
 	static const size_t count = 0 PP_SEQ_FOR_EACH_I_PAIR(EXPAND_ENUMFUNCTIONCOUNT, , CONTENT);\
+	bool valid() \
+	{ \
+		return cast<size_t>() < count; \
+	} \
 private: \
 	/*prevent automatic conversion for any other built-in types such as bool, int, etc*/ \
 	/*template<typename T> \

@@ -33,6 +33,7 @@
 #include "unit_animation.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/static_assert.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -854,6 +855,8 @@ MAKE_ENUM (ALIGNMENT_FEMALE_VARIATION,
 
 std::string unit_type::alignment_description(ALIGNMENT align, unit_race::GENDER gender)
 {
+	BOOST_STATIC_ASSERT(ALIGNMENT_FEMALE_VARIATION::count == ALIGNMENT::count);
+	assert(align.valid());
 	std::string str = std::string();
 	if (gender == unit_race::FEMALE) {
 		ALIGNMENT_FEMALE_VARIATION fem = align.cast<ALIGNMENT_FEMALE_VARIATION::type>();

@@ -3116,10 +3116,6 @@ void console_handler::do_manage() {
 	manager.show(menu_handler_.gui_->video());
 }
 
-static void handle_replay_error(console_handler* self, const std::string& message)
-{
-	self->command_failed(message);
-}
 void console_handler::do_unit() {
 	// prevent SIGSEGV due to attempt to set HP during a fight
 	if (events::commands_disabled > 0)
@@ -3129,9 +3125,22 @@ void console_handler::do_unit() {
 	const map_location loc = i->get_location();
 	const std::string data = get_data(1);
 	std::vector<std::string> parameters = utils::split(data, '=', utils::STRIP_SPACES);
-	if (parameters.size() < 2)
+	if (parameters.size() < 2) {
 		return;
-	synced_context::run_and_throw("debug_unit", config_of("x", loc.x + 1)("y", loc.y + 1)("name", parameters[0])("value", parameters[1]), true, true, boost::bind(&handle_replay_error, this, _1) );
+	}
+
+	if (parameters[0] == "alignment") {
+		unit_type::ALIGNMENT alignment;
+		if (!alignment.parse(parameters[1]))
+		{
+			utils::string_map symbols;
+			symbols["alignment"] = get_arg(1);
+			command_failed(VGETTEXT("Invalid alignment: '$alignment', needs to be one of lawful, neutral, chaotic, or liminal.", symbols));
+			return;
+		}
+	}
+
+	synced_context::run_and_throw("debug_unit", config_of("x", loc.x + 1)("y", loc.y + 1)("name", parameters[0])("value", parameters[1]));
 }
 
 void console_handler::do_discover() {

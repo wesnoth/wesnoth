@@ -382,7 +382,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(update_shroud, /*child*/,  use_undo, /*show*/, e
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, error_handler)
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_handler*/)
 {
 	if(use_undo) {
 		resources::undo_stack->clear();
@@ -396,26 +396,8 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, error_ha
 	const std::string value = child["value"];
 
 	unit_map::iterator i = resources::units->find(loc);
-	if (i == resources::units->end()) return false;
-	
-	// FIXME: Avoids a core dump on display
-	// because alignment strings get reduced
-	// to an enum, then used to index an
-	// array of strings.
-	// But someday the code ought to be
-	// changed to allow general string
-	// alignments for UMC.
-	if (name == "alignment") { // && (value != "lawful" && value != "neutral" && value != "chaotic" && value != "liminal")) {
-		unit_type::ALIGNMENT alignment;
-		alignment.parse(value);
-		if (!alignment.parse(value))
-		{
-			utils::string_map symbols;
-			symbols["alignment"] = value;
-			error_handler(VGETTEXT("Invalid alignment: '$alignment',"
-				" needs to be one of lawful, neutral, chaotic, or liminal.", symbols), true);
-			return false;
-		}
+	if (i == resources::units->end()) {
+		return false;
 	}
 	if (name == "advances" ) {
 		int int_value = lexical_cast<int>(value);
