@@ -1465,13 +1465,14 @@ function wml_actions.role(cfg)
 	-- role= and type= are handled differently than in other tags,
 	-- so we need to remove them from the filter
 	local role = cfg.role
-	local filter = cfg.__shallow_literal
-	filter.role, filter.type = nil, nil
+	local filter = helper.shallow_literal(cfg)
 
 	local types = {}
 	for value in split(cfg.type) do
-		table.insert(types, value)
+		table.insert(types, trim(value))
 	end
+
+	filter.role, filter.type = nil, nil
 
 	-- first attempt to match units on the map
 	local i = 1
@@ -1482,7 +1483,7 @@ function wml_actions.role(cfg)
 		end
 		local unit = wesnoth.get_units(filter)[1]
 		if unit then
-			unit.role = cfg.role
+			unit.role = role
 			return
 		end
 		i = i + 1
@@ -1496,7 +1497,7 @@ function wml_actions.role(cfg)
 		end
 		local unit = wesnoth.get_recall_units(filter)[1]
 		if unit then
-			unit.role = cfg.role
+			unit.role = role
 			return
 		end
 		i = i + 1
