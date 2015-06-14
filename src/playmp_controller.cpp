@@ -333,10 +333,6 @@ void playmp_controller::after_human_turn(){
 
 }
 
-void playmp_controller::finish_side_turn(){
-	play_controller::finish_side_turn();
-}
-
 void playmp_controller::play_network_turn(){
 	LOG_NG << "is networked...\n";
 

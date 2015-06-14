@@ -50,7 +50,6 @@ protected:
 	virtual void play_human_turn();
 	virtual void play_linger_turn();
 	virtual void after_human_turn();
-	virtual void finish_side_turn();
 	virtual void play_network_turn();
 	virtual void do_idle_notification();
 	virtual void play_idle_loop();

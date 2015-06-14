@@ -226,7 +226,7 @@ protected:
 	void fire_start();
 	void start_game();
 	virtual void init_gui();
-	virtual void finish_side_turn();
+	void finish_side_turn();
 	void finish_turn(); //this should not throw an end turn or end level exception
 	bool enemies_visible() const;
 

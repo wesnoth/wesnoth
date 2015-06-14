@@ -400,6 +400,7 @@ void playsingle_controller::play_turn()
 			return;
 		}
 		finish_side_turn();
+		turn_data_.send_data();
 		if(is_regular_game_end()) {
 			return;
 		}
