@@ -456,10 +456,11 @@ bool undo_list::apply_shroud_changes() const
 	game_display &disp = *resources::screen;
 	team &tm = (*resources::teams)[side_ - 1];
 	// No need to do clearing if fog/shroud has been kept up-to-date.
-	if ( tm.auto_shroud_updates()  ||  !tm.fog_or_shroud() )
+	if ( tm.auto_shroud_updates()  ||  !tm.fog_or_shroud() ) {
 		return false;
-
-
+	}
+	// If we clear fog or shroud outside a synced context we get OOS
+	assert(synced_context::get_synced_state() == synced_context::SYNCED);
 	shroud_clearer clearer;
 	bool cleared_shroud = false;
 	const size_t list_size = undos_.size();

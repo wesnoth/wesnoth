@@ -192,6 +192,7 @@ void  synced_context::reset_is_simultaneously()
 
 void  synced_context::set_is_simultaneously()
 {
+	resources::undo_stack->clear();
 	is_simultaneously_ = true;
 }
 
