@@ -64,7 +64,6 @@ config initial_level_config(saved_game& state)
 	config& scenario = state.get_starting_pos();
 	if(!state.mp_settings().saved_game)
 	{
-		scenario["turns"] = params.num_turns;
 		state.set_random_seed();
 	}
 
