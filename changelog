@@ -70,6 +70,7 @@ Version 1.13.0+dev:
    * Made silence.ogg larger to work around a crash involving the multiplayer
      lobby with music and sound enabled (bug #23633, bug #23599) with libvorbis
      builds affected by Debian bug #782831.
+   * Moved [role] tag to Lua (fix for bug #23630)
 
 Version 1.13.0:
  * Security fixes:
