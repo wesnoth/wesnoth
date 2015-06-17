@@ -366,8 +366,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 
 				gamestate.mp_settings().num_turns = starting_pos["turns"].to_int(-1);
 				gamestate.mp_settings().saved_game = false;
-				gamestate.mp_settings().use_map_settings
-					= starting_pos["force_lock_settings"].to_bool(game_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER);
+				gamestate.mp_settings().use_map_settings = starting_pos["force_lock_settings"].to_bool();
 
 				ng::connect_engine_ptr
 					connect_engine(new ng::connect_engine(gamestate,
