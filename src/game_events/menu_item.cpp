@@ -92,6 +92,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const config & cfg) :
 		default_hotkey_(cfg.child_or_empty("default_hotkey")),
 		use_hotkey_(cfg["use_hotkey"].to_bool(true)),
 		use_wml_menu_(cfg["use_hotkey"].str() != "only"),
+		is_synced_(cfg["synced"].to_bool(true)),
 		my_manager_()
 {
 }
@@ -115,7 +116,9 @@ wml_menu_item::wml_menu_item(const std::string& id, const vconfig & definition) 
 		command_(),
 		default_hotkey_(),
 		use_hotkey_(true),
-		use_wml_menu_(true)
+		use_wml_menu_(true),
+		is_synced_(true),
+		my_manager_()
 {
 	// On the off-chance that update() doesn't do it, add the hotkey here.
 	// (Update can always modify it.)
@@ -197,8 +200,19 @@ bool wml_menu_item::can_show(const map_location & hex, const game_data & data, f
  * @param[in] event_hex    The location of the event (where the menu was opened).
  * @param[in] last_select  The location of the most recent "select" event.
  */
+#define STR(X) #X
 void wml_menu_item::fire_event(const map_location & event_hex, const game_data & data) const
 {
+	if(!this->is_synced())
+	{
+		if (boost::shared_ptr<manager * const> man = my_manager_.lock()) {
+			(**man).pump().fire(command_["id"], event_hex);
+		} else {
+			ERR_NG << "?? File: "  __FILE__  " Line:" STR(__LINE__) " my_manager_.lock() failed\n";
+#undef STR
+		}
+		return;
+	}
 	const map_location & last_select = data.last_selected;
 
 	// No new player-issued commands allowed while this is firing.
@@ -270,6 +284,7 @@ void wml_menu_item::to_config(config & cfg) const
 	cfg["image"] = image_;
 	cfg["description"] = description_;
 	cfg["needs_select"] = needs_select_;
+	cfg["synced"] = is_synced_;
 
 	if ( use_hotkey_ && use_wml_menu_ )
 		cfg["use_hotkey"] = true;
@@ -312,6 +327,8 @@ void wml_menu_item::update(const vconfig & vcfg)
 
 	if ( vcfg.has_attribute("needs_select") )
 		needs_select_ = vcfg["needs_select"].to_bool();
+	if ( vcfg.has_attribute("synced") )
+		is_synced_ = vcfg["synced"].to_bool(true);
 
 	if ( const vconfig & child = vcfg.child("show_if") ) {
 		show_if_ = child;

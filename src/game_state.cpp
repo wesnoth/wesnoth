@@ -350,3 +350,8 @@ game_events::wmi_container& game_state::get_wml_menu_items()
 {
 	return this->events_manager_->wml_menu_items_;
 }
+
+const game_events::wmi_container& game_state::get_wml_menu_items() const
+{
+	return this->events_manager_->wml_menu_items_;
+}

@@ -95,10 +95,9 @@ public:
 private:
 	/// Returns an iterator to a menu item with the given @a id, if one exists.
 	iterator find(const std::string & id)             { return iterator(wml_menu_items_.find(id)); }
+public:
 	/// Returns an iterator to a menu item with the given @a id, if one exists.
 	const_iterator find(const std::string & id) const { return const_iterator(wml_menu_items_.find(id)); }
-
-public:
 	// Iteration support:
 	iterator begin()  { return iterator(wml_menu_items_.begin()); }
 	iterator end()    { return iterator(wml_menu_items_.end()); }

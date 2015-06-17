@@ -69,7 +69,7 @@ public:
 	{ return use_hotkey_ ? hotkey_id_ : description_.str() + ' '; } // The space is to prevent accidental hotkey binding.
 	/// Writes *this to the provided config.
 	void to_config(config & cfg) const;
-
+	bool is_synced() const { return is_synced_; }
 private: // Functions
 	/// Updates *this based on @a vcfg.
 	void update(const vconfig & vcfg);
@@ -103,6 +103,9 @@ private: // Data
 	bool use_hotkey_;
 	/// If true, allow using the menu to trigger this item.
 	bool use_wml_menu_;
+	/// If true, this item will be sended ot ther clients.
+	/// The command shall not change the gamestate if !is_synced_
+	bool is_synced_;
 
 	/// A link back to my manager
 	mutable boost::weak_ptr<manager * const> my_manager_;
