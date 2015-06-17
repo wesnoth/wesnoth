@@ -1008,7 +1008,7 @@ std::string get_wml_location(const std::string &filename, const std::string &cur
 		return result;
 	}
 
-	if (ends_with(filename, ".pbl")) {
+	if (looks_like_pbl(filename)) {
 		ERR_FS << "Illegal path '" << filename << "' (.pbl files are not allowed)." << std::endl;
 		return result;
 	}

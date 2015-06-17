@@ -1000,7 +1000,7 @@ static bool is_legal_file(const std::string &filename)
 		return false;
 	}
 
-	if (ends_with(filename, ".pbl")) {
+	if (looks_like_pbl(filename)) {
 		ERR_FS << "Illegal path '" << filename << "' (.pbl files are not allowed)." << std::endl;
 		return false;
 	}
