@@ -2,6 +2,7 @@ Version 1.10.7+dev:
  * Security fixes:
    * Disallowed inclusion of .pbl files from WML (bug #23504), independent of
      file name case.
+   * Fixed arbitrary file read by WML/Lua API (CVE-2015-0844, bug #23440).
  * Add-ons client:
    * Fixed invalid file size data from the server crashing the client on the
      network transfer progress dialog (bug #20893).
@@ -29,7 +30,6 @@ Version 1.10.7+dev:
      color codes as the start of a comment.
    * Fixed: Compilation with CLang 3.2 and libc++.
    * Fixed bug #20876: A segfault in cut_surface.
-   * Fix bug #22042: filesystem content disclosure issue affecting Lua APIs
 
 Version 1.10.7:
  * Add-ons server:
