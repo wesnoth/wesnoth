@@ -23,6 +23,7 @@
 #include "playcampaign.hpp"
 
 #include "carryover.hpp"
+#include "game_config.hpp"
 #include "game_errors.hpp"
 #include "game_preferences.hpp"
 #include "generators/map_create.hpp"
@@ -360,7 +361,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			// Retrieve next scenario data.
 			gamestate.expand_scenario();
 
-			if (gamestate.valid()) {
+			if (gamestate.valid() && (game_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER || !game_config::spmp_hotfix)) {
 				//note that although starting_pos is const it might be changed by gamestate.some_non_const_operation()  .
 				const config& starting_pos = gamestate.get_starting_pos();
 

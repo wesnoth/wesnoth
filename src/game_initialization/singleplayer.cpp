@@ -1,6 +1,7 @@
 #include "singleplayer.hpp"
 #include "config.hpp"
 #include "config_assign.hpp"
+#include "game_config.hpp"
 #include "game_config_manager.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/message.hpp"
@@ -115,9 +116,9 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 			std::cerr << "Cannot load scenario with id=" << state.get_scenario_id() << "\n";
 			return false;
 		}
-
-		configure_canceled = !enter_configure_mode(disp, game_config_manager::get()->game_config(),
-				state, jump_to_campaign, local_players_only);
+		if (!game_config::spmp_hotfix) {
+			configure_canceled = !enter_configure_mode(disp, game_config_manager::get()->game_config(), state, jump_to_campaign, local_players_only);
+		}
 
 	} while (configure_canceled);
 
