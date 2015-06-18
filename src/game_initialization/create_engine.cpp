@@ -13,6 +13,7 @@
 */
 #include "create_engine.hpp"
 
+#include "depcheck.hpp"
 #include "config_assign.hpp"
 #include "game_config_manager.hpp"
 #include "game_launcher.hpp"
@@ -407,7 +408,7 @@ create_engine::create_engine(game_display& disp, saved_game& state) :
 	mods_(),
 	state_(state),
 	disp_(disp),
-	dependency_manager_(game_config_manager::get()->game_config(), disp.video()),
+	dependency_manager_(NULL),
 	generator_(NULL)
 {
 	DBG_MP << "restoring game config\n";
@@ -421,7 +422,8 @@ create_engine::create_engine(game_display& disp, saved_game& state) :
 	state_.mp_settings().show_configure = configure;
 	state_.mp_settings().show_connect = connect;
 	game_config_manager::get()->load_game_config_for_create(type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER);
-
+	//Initilialize dependency_manager_ after refreshing game config.
+	dependency_manager_.reset(new depcheck::manager(game_config_manager::get()->game_config(), disp.video()));
 	//TODO the editor dir is already configurable, is the preferences value
 	filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/maps", &user_map_names_,
 		NULL, filesystem::FILE_NAME_ONLY);
@@ -445,7 +447,7 @@ create_engine::create_engine(game_display& disp, saved_game& state) :
 
 	if (current_level_type_ != level::TYPE::CAMPAIGN &&
 		current_level_type_ != level::TYPE::SP_CAMPAIGN) {
-		dependency_manager_.try_modifications(state_.mp_settings().active_mods, true);
+		dependency_manager_->try_modifications(state_.mp_settings().active_mods, true);
 	}
 
 	reset_level_filters();
@@ -817,7 +819,7 @@ void create_engine::set_current_level(const size_t index)
 	if (current_level_type_ != level::TYPE::CAMPAIGN &&
 		current_level_type_ != level::TYPE::SP_CAMPAIGN) {
 
-		dependency_manager_.try_scenario(current_level().id());
+		dependency_manager_->try_scenario(current_level().id());
 	}
 }
 
@@ -825,7 +827,7 @@ void create_engine::set_current_era_index(const size_t index, bool force)
 {
 	current_era_index_ = index;
 
-	dependency_manager_.try_era_by_index(index, force);
+	dependency_manager_->try_era_by_index(index, force);
 }
 
 void create_engine::set_current_mod_index(const size_t index)
@@ -846,10 +848,10 @@ size_t create_engine::current_mod_index() const
 bool create_engine::toggle_current_mod(bool force)
 {
 	force |= (current_level_type_ == ng::level::TYPE::CAMPAIGN || current_level_type_ == ng::level::TYPE::SP_CAMPAIGN);
-	bool is_active = dependency_manager_.is_modification_active(current_mod_index_);
-	dependency_manager_.try_modification_by_index(current_mod_index_, !is_active, force);
+	bool is_active = dependency_manager_->is_modification_active(current_mod_index_);
+	dependency_manager_->try_modification_by_index(current_mod_index_, !is_active, force);
 
-	state_.mp_settings().active_mods = dependency_manager_.get_modifications();
+	state_.mp_settings().active_mods = dependency_manager_->get_modifications();
 
 	return !is_active;
 }
@@ -964,12 +966,12 @@ level::TYPE create_engine::find_level_type_by_id(const std::string& id) const
 
 const depcheck::manager& create_engine::dependency_manager() const
 {
-	return dependency_manager_;
+	return *dependency_manager_;
 }
 
 void create_engine::init_active_mods()
 {
-	state_.mp_settings().active_mods = dependency_manager_.get_modifications();
+	state_.mp_settings().active_mods = dependency_manager_->get_modifications();
 }
 
 std::vector<std::string>& create_engine::active_mods()
@@ -1030,7 +1032,7 @@ void create_engine::init_all_levels()
 				config depinfo;
 				depinfo["id"] = user_map_names_[i];
 				depinfo["name"] = user_map_names_[i];
-				dependency_manager_.insert_element(depcheck::SCENARIO, depinfo,
+				dependency_manager_->insert_element(depcheck::SCENARIO, depinfo,
 				i - dep_index_offset);
 			}
 		}
@@ -1058,7 +1060,7 @@ void create_engine::init_all_levels()
 			config depinfo;
 			depinfo["id"] = data["id"];
 			depinfo["name"] = data["name"];
-			dependency_manager_.insert_element(depcheck::SCENARIO, depinfo,
+			dependency_manager_->insert_element(depcheck::SCENARIO, depinfo,
 					i - dep_index_offset++);
 		}
 	}

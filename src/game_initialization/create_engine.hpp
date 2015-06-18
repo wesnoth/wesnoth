@@ -17,7 +17,6 @@
 #include "config.hpp"
 #include "make_enum.hpp"
 #include "map.hpp"
-#include "depcheck.hpp"
 #include "mp_game_settings.hpp"
 #include "game_display.hpp"
 
@@ -28,6 +27,7 @@
 class saved_game;
 class map_generator;
 namespace ng {
+namespace depcheck { class manager; }
 class level
 {
 public:
@@ -303,8 +303,8 @@ private:
 	saved_game& state_;
 
 	game_display& disp_;
-
-	depcheck::manager dependency_manager_;
+	//Never NULL
+	boost::scoped_ptr<depcheck::manager> dependency_manager_;
 
 	boost::scoped_ptr<map_generator> generator_;
 };
