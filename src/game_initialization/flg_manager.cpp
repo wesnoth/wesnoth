@@ -434,7 +434,7 @@ void flg_manager::update_available_genders()
 	} else {
 		const unit_type* unit = unit_types.find(current_leader_);
 		if (unit) {
-			if (unit->genders().size() > 1) {
+			if (unit->genders().size() > 1 && !leader_lock_) {
 				available_genders_.push_back("random");
 			}
 
