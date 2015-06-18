@@ -942,9 +942,8 @@ bool game_launcher::play_multiplayer()
 
 
 		}
-		//create_engine already calls game_config_manager::get()->load_config
-		//game_config_manager::get()->
-		//	load_game_config_for_game(state_.classification());
+		//create_engine already calls game_config_manager::get()->load_config but maybe its better to have MULTIPLAYER defined while we are in the lobby.
+		game_config_manager::get()->load_game_config_for_create(true);
 
 		events::discard_input(); // prevent the "keylogger" effect
 		cursor::set(cursor::NORMAL);
