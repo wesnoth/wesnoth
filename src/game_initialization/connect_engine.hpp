@@ -181,6 +181,9 @@ public:
 
 	std::string save_id() const
 		{ return (!cfg_["save_id"].empty()) ? cfg_["save_id"] : cfg_["id"]; }
+	// The id of the side of the previous scenario that should control this side.
+	std::string previous_save_id() const
+		{ return (!cfg_["previous_save_id"].empty()) ? cfg_["previous_save_id"] : save_id(); }
 	const std::vector<controller_option>& controller_options()
 		{ return controller_options_; }
 	const config& cfg() const { return cfg_; }

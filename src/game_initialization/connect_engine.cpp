@@ -39,6 +39,7 @@ static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 #define DBG_MP LOG_STREAM(debug, log_mp_connect_engine)
 #define LOG_MP LOG_STREAM(info, log_mp_connect_engine)
 #define WRN_MP LOG_STREAM(warn, log_mp_connect_engine)
+#define ERR_MP LOG_STREAM(err, log_mp_connect_engine)
 
 static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
@@ -261,12 +262,9 @@ void connect_engine::import_user(const config& data, const bool observer,
 	// Check if user has taken any sides, which should get control
 	// over any other sides.
 	BOOST_FOREACH(side_engine_ptr user_side, side_engines_) {
-		if (user_side->player_id() == username) {
-			BOOST_FOREACH(side_engine_ptr side, side_engines_) {
-				if (!side->reserved_for().empty() &&
-					side->player_id().empty() &&
-					side->reserved_for() == user_side->cfg()["side"]) {
-
+		if(user_side->player_id() == username && !user_side->previous_save_id().empty()) {
+			BOOST_FOREACH(side_engine_ptr side, side_engines_){
+				if(side->player_id().empty() && side->previous_save_id() == user_side->previous_save_id()) {
 					side->place_user(data);
 				}
 			}
@@ -811,7 +809,7 @@ void connect_engine::load_previous_sides_users(LOAD_USERS load_users)
 	std::map<std::string, std::string> side_users =
 		utils::map_split(level_.child("multiplayer")["side_users"]);
 	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
-		const std::string& save_id = side->save_id();
+		const std::string& save_id = side->previous_save_id();
 		if (side_users.find(save_id) != side_users.end()) {
 			side->set_reserved_for(side_users[save_id]);
 
@@ -858,13 +856,14 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		parent_.params_.use_map_settings, parent_.params_.saved_game, color_)
 {
 	// Check if this side should give its control to some other side.
-	const int side_cntr = cfg_["controller"].to_int(-1);
-	if (side_cntr != -1) {
-		reserved_for_ = lexical_cast<std::string>(side_cntr);
-
+	const size_t side_cntr_index = cfg_["controller"].to_int(-1) - 1;
+	if (side_cntr_index < parent_.side_engines().size()) {
 		// Remove this attribute to avoid locking side
 		// to non-existing controller type.
 		cfg_.remove_attribute("controller");
+
+		cfg_["previous_save_id"] = parent_.side_engines()[side_cntr_index]->previous_save_id();
+		ERR_MP << "contoller=<number> is deperecated\n";
 	}
 	if(!parent_.params_.saved_game && cfg_["save_id"].str().empty()) {
 		assert(cfg_["id"].empty()); // we already setted "save_id" to "id" if "id" existed.
