@@ -34,8 +34,6 @@ namespace mp
 namespace options
 {
 
-config to_event(const config& options);
-
 // TODO: there's an identical enum in depcheck.hpp, maybe we should factor
 // 		 out?
 enum elem_type

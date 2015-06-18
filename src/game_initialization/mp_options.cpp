@@ -35,26 +35,6 @@ namespace mp
 namespace options
 {
 
-config to_event(const config& cfg)
-{
-	config result;
-
-	if (!cfg) {
-		return result;
-	}
-
-	result["name"] = "prestart";
-
-	BOOST_FOREACH (const config& c, cfg.child_range("option")) {
-		config ev;
-		ev["name"] = c["id"];
-		ev["value"] = c["value"];
-		result.add_child("set_variable", ev);
-	}
-
-	return result;
-}
-
 void manager::init_info(const config& cfg, const std::string& key)
 {
 	BOOST_FOREACH (const config& comp, cfg.child_range(key)) {
