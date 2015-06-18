@@ -192,6 +192,14 @@ public:
 	void set_scenario(const std::string& id);
 
 	/**
+	 * Sets the selected campaign. Whenever show_dialog is called, only
+	 * options for the campaign scenario will be displayed.
+	 *
+	 * @param id 				The campaign's id.
+	 */
+	void set_campaign(const std::string& id);
+
+	/**
 	 * Sets the activated modifications. Whenever show_dialog is called, only
 	 * options for the activated modifications will be displayed.
 	 *
@@ -231,9 +239,9 @@ private:
 	/** The id of the selected era */
 	std::string era_;
 
-	/** The id of the selected scenario */
+	/** The id of the selected [multiplayer] or [campaign]*/
 	std::string scenario_;
-
+	bool is_campaign_;
 	/** The ids of the selected modifications */
 	std::vector<std::string> modifications_;
 

@@ -218,7 +218,12 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	}
 
 	options_manager_.set_era(parameters_.mp_era);
-	options_manager_.set_scenario(state_.get_scenario_id()/*parameters_.mp_scenario*/);
+	if(state_.classification().campaign.empty()) {
+		options_manager_.set_scenario(state_.get_scenario_id());
+	}
+	else {
+		options_manager_.set_campaign(state_.classification().campaign);
+	}
 	options_manager_.set_modifications(parameters_.active_mods);
 	options_manager_.init_widgets();
 

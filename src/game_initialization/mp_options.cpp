@@ -111,6 +111,7 @@ manager::manager(const config &gamecfg, game_display &display, gui::scrollpane *
 	, pane_(pane)
 	, era_()
 	, scenario_()
+	, is_campaign_()
 	, modifications_()
 	, widgets_()
 	, widgets_ordered_()
@@ -119,6 +120,7 @@ manager::manager(const config &gamecfg, game_display &display, gui::scrollpane *
 	init_info(gamecfg, "modification");
 	init_info(gamecfg, "era");
 	init_info(gamecfg, "multiplayer");
+	init_info(gamecfg, "campaign");
 
 	BOOST_FOREACH (const config::any_child& i,
 				   options_info_.all_children_range())
@@ -156,7 +158,14 @@ void manager::set_era(const std::string& era)
 
 void manager::set_scenario(const std::string& scenario)
 {
+	is_campaign_ = false;
 	scenario_ = scenario;
+}
+
+void manager::set_campaign(const std::string& campaign)
+{
+	is_campaign_ = true;
+	scenario_ = campaign;
 }
 
 void manager::set_modifications(const std::vector<std::string>& modifications)
@@ -328,7 +337,12 @@ void manager::extract_values(const std::string& key, const std::string& id)
 void manager::update_values()
 {
 	extract_values("era", era_);
-	extract_values("multiplayer", scenario_);
+	if (is_campaign_) {
+		extract_values("campaign", scenario_);
+	}
+	else {
+		extract_values("multiplayer", scenario_);
+	}
 	BOOST_FOREACH(const std::string& str, modifications_) {
 		extract_values("modification", str);
 	}

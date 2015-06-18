@@ -289,6 +289,7 @@ void saved_game::expand_mp_options()
 			, std::back_inserter(mods) );
 		mods.push_back(modevents_entry("era", mp_settings_.mp_era));
 		mods.push_back(modevents_entry("multiplayer", get_scenario_id()));
+		mods.push_back(modevents_entry("campaign", classification().campaign));
 
 		config& variables = carryover_.child_or_add("variables");
 		BOOST_FOREACH(modevents_entry& mod, mods)

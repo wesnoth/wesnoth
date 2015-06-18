@@ -269,12 +269,13 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 
 			gamestate.expand_random_scenario();
 			//In case this an mp scenario reloaded by sp this was not already done yet.
-			//We don't need to expand [option]s because [variables] are persitent
 			gamestate.expand_mp_events();
 
 			sound::empty_playlist();
 
 			gamestate.expand_carryover();
+			//expand_mp_options must be called after expand_carryover because expand_carryover will to set previous variables if there are already variables in the [scenario]
+			gamestate.expand_mp_options();
 
 			config::const_child_itors story = gamestate.get_starting_pos().child_range("story");
 
