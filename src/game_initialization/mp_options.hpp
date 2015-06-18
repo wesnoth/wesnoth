@@ -34,15 +34,6 @@ namespace mp
 namespace options
 {
 
-// TODO: there's an identical enum in depcheck.hpp, maybe we should factor
-// 		 out?
-enum elem_type
-{
-	SCENARIO,
-	ERA,
-	MODIFICATION
-};
-
 class option_display
 {
 public:
@@ -207,20 +198,6 @@ public:
 	 * @param ids					The ids of the modifications
 	 */
 	void set_modifications(const std::vector<std::string>& ids);
-
-	/**
-	 * Add options information of an era/scenario/modification not yet in the
-	 * database.
-	 *
-	 * @param type					The type of the element,
-	 *
-	 * @param data					The config object which holds the
-	 * 								information about the element's options in
-	 * 								an [options] child.
-	 *
-	 * @param pos					The position to insert  the element into.
-	 */
-	void insert_element(elem_type type, const config& data, int pos);
 
 	void layout_widgets(int startx, int starty, int w);
 	void process_event();

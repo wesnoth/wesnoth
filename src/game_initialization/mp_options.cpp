@@ -164,22 +164,6 @@ void manager::set_modifications(const std::vector<std::string>& modifications)
 	modifications_ = modifications;
 }
 
-void manager::insert_element(elem_type type, const config& data, int pos)
-{
-	switch (type)
-	{
-	case SCENARIO:
-		options_info_.add_child_at("multiplayer", data, pos);
-		break;
-	case ERA:
-		options_info_.add_child_at("era", data, pos);
-		break;
-	case MODIFICATION:
-		options_info_.add_child_at("modification", data, pos);
-		break;
-	}
-}
-
 void manager::layout_widgets(int startx, int starty, int w)
 {
 	int ypos = starty;
