@@ -942,9 +942,9 @@ bool game_launcher::play_multiplayer()
 
 
 		}
-
-		game_config_manager::get()->
-			load_game_config_for_game(state_.classification());
+		//create_engine already calls game_config_manager::get()->load_config
+		//game_config_manager::get()->
+		//	load_game_config_for_game(state_.classification());
 
 		events::discard_input(); // prevent the "keylogger" effect
 		cursor::set(cursor::NORMAL);

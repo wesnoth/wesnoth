@@ -29,8 +29,15 @@ public:
 	game_config_manager(const commandline_options& cmdline_opts,
 		game_display& disp,	const bool jump_to_editor);
 	~game_config_manager();
-
-	enum FORCE_RELOAD_CONFIG { FORCE_RELOAD, NO_FORCE_RELOAD };
+	enum FORCE_RELOAD_CONFIG
+	{
+		/// Always reload config
+		FORCE_RELOAD,
+		/// Dont reload if the previous defines equal the new defines
+		NO_FORCE_RELOAD,
+		/// Dont reload if the previous defines include the new defines
+		NO_INCLUDE_RELOAD,
+	};
 
 	const config& game_config() const { return game_config_; }
 	const preproc_map& old_defines_map() const { return old_defines_map_; }
@@ -41,6 +48,7 @@ public:
 
 	void load_game_config_for_editor();
 	void load_game_config_for_game(const game_classification& classification);
+	void load_game_config_for_create(bool is_mp);
 
 	static game_config_manager * get();
 

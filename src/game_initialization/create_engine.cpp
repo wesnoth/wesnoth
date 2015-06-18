@@ -420,13 +420,7 @@ create_engine::create_engine(game_display& disp, saved_game& state) :
 	state_.classification().campaign_type = type;
 	state_.mp_settings().show_configure = configure;
 	state_.mp_settings().show_connect = connect;
-
-	if (!(type == game_classification::CAMPAIGN_TYPE::SCENARIO &&
-			game_config_manager::get()->old_defines_map().count("TITLE_SCREEN") != 0))
-	{
-		game_config_manager::get()->
-			load_game_config_for_game(state_.classification());
-	}
+	game_config_manager::get()->load_game_config_for_create(type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER);
 
 	//TODO the editor dir is already configurable, is the preferences value
 	filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/maps", &user_map_names_,
@@ -1075,6 +1069,9 @@ void create_engine::init_all_levels()
 		lexical_cast<std::string> (game_classification::CAMPAIGN_TYPE::MULTIPLAYER)))
 	{
 		if (!data["allow_new_game"].to_bool(true))
+			continue;
+
+		if (!data["campaign_id"].empty())
 			continue;
 
 		if (data.has_attribute("map_generation") || data.has_attribute("scenario_generation")) {

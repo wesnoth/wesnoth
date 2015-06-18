@@ -101,7 +101,18 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 
 	return true;
 }
-
+/// returns true if every define in special is also defined in general
+bool map_includes(const preproc_map& general, const preproc_map& special)
+{
+	BOOST_FOREACH(const preproc_map::value_type& pair, special)
+	{
+		preproc_map::const_iterator it = general.find(pair.first);
+		if (it == general.end() || it->second != pair.second) {
+			return false;
+		}
+	}
+	return true;
+}
 void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 	game_classification const* classification)
 {
@@ -112,10 +123,13 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 	    game_config::debug || game_config::mp_debug);
 
 	// Game_config already holds requested config in memory.
-	if(!game_config_.empty() &&
-		(force_reload == NO_FORCE_RELOAD)
-		&& old_defines_map_ == cache_.get_preproc_map()) {
-		return;
+	if(!game_config_.empty()) {
+		if((force_reload == NO_FORCE_RELOAD) && old_defines_map_ == cache_.get_preproc_map()) {
+			return;
+		}
+		if((force_reload == NO_INCLUDE_RELOAD) && map_includes(old_defines_map_, cache_.get_preproc_map())) {
+			return;
+		}
 	}
 
 	loadscreen::global_loadscreen_manager loadscreen_manager(disp_.video());
@@ -524,6 +538,29 @@ void game_config_manager::load_game_config_for_game(
 
 	try{
 		load_game_config(NO_FORCE_RELOAD, &classification);
+	}
+	catch(game::error&) {
+		cache_.clear_defines();
+
+		std::deque<define> previous_defines;
+		BOOST_FOREACH(const preproc_map::value_type& preproc, old_defines_map_) {
+			define new_define
+				(new game_config::scoped_preproc_define(preproc.first));
+			previous_defines.push_back(new_define);
+		}
+
+		load_game_config(NO_FORCE_RELOAD);
+
+		throw;
+	}
+}
+void game_config_manager::load_game_config_for_create(bool is_mp)
+{
+	game_config::scoped_preproc_define multiplayer("MULTIPLAYER", is_mp);
+	
+	typedef boost::shared_ptr<game_config::scoped_preproc_define> define;
+	try{
+		load_game_config(NO_INCLUDE_RELOAD);
 	}
 	catch(game::error&) {
 		cache_.clear_defines();
