@@ -50,7 +50,7 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 			side_["default_recruit"].empty() :
 			side_["recruit"].empty()) ||
 		side_["no_recruit"].to_bool()) &&
-		side_["previous_recruits"].empty() && side_["extra_recruit"].empty()),
+		side_["previous_recruits"].empty()),
 	faction_lock_(side_["faction_lock"].to_bool(lock_settings) && use_map_settings),
 	leader_lock_(side_["leader_lock"].to_bool(lock_settings) && use_map_settings),
 	color_(color),

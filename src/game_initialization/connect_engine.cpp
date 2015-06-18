@@ -59,7 +59,6 @@ const std::string attributes_to_trim[] = {
 	"type",
 	"gender",
 	"recruit",
-	"extra_recruit",
 	"player_id",
 	"previous_recruits",
 	"controller",
