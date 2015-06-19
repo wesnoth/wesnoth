@@ -60,7 +60,7 @@ public:
 
 	// Picks the first faction with the greater amount of data
 	// matching the criteria.
-	int find_suitable_faction(const std::string& faction_id = "") const;
+	int find_suitable_faction() const;
 
 	const std::vector<const config*>& choosable_factions() const
 		{ return choosable_factions_; }

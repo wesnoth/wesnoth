@@ -218,6 +218,7 @@ bool flg_manager::is_random_faction()
 // era is misconfigured.
 void flg_manager::resolve_random(rand_rng::mt_rng & rng, const std::vector<std::string> & avoid) {
 	if (is_random_faction()) {
+		assert(!faction_lock_ || side_["faction"] == "random");
 		std::vector<std::string> faction_choices, faction_excepts;
 
 		faction_choices = utils::split((*current_faction_)["choices"]);
@@ -332,7 +333,7 @@ void flg_manager::resolve_random(rand_rng::mt_rng & rng, const std::vector<std::
 void flg_manager::update_available_factions()
 {
 	const config* custom_faction = NULL;
-	const bool show_custom_faction = side_["faction"] == "Custom" || !has_no_recruits_;
+	const bool show_custom_faction = side_["faction"] == "Custom" || !has_no_recruits_ || faction_lock_;
 
 	BOOST_FOREACH(const config* faction, era_factions_) {
 		if ((*faction)["id"] == "Custom" && !show_custom_faction) {
@@ -471,12 +472,8 @@ void flg_manager::update_choosable_factions()
 {
 	choosable_factions_ = available_factions_;
 
-	if ((!side_["faction"].empty() || !has_no_recruits_) && faction_lock_) {
-		std::string faction_id;
-		if (!has_no_recruits_) {
-			faction_id = "Custom";
-		}
-		const int faction_index = find_suitable_faction(faction_id);
+	if (faction_lock_) {;
+		const int faction_index = find_suitable_faction();
 		if (faction_index >= 0) {
 			const config* faction = choosable_factions_[faction_index];
 			choosable_factions_.clear();
@@ -518,15 +515,12 @@ void flg_manager::update_choosable_genders()
 	}
 }
 
-int flg_manager::find_suitable_faction(const std::string& faction_id) const
+int flg_manager::find_suitable_faction() const
 {
 	std::vector<std::string> find;
 	std::string search_field;
 
-	if (!faction_id.empty()) {
-		find.push_back(faction_id);
-		search_field = "id";
-	} else if (const config::attribute_value *f = side_.get("faction")) {
+	if (const config::attribute_value *f = side_.get("faction")) {
 		// Choose based on faction.
 		find.push_back(f->str());
 		search_field = "id";
@@ -539,7 +533,8 @@ int flg_manager::find_suitable_faction(const std::string& faction_id) const
 		find.push_back(*l);
 		search_field = "leader";
 	} else {
-		return -1;
+		find.push_back("Custom");
+		search_field = "id";
 	}
 
 	int res = -1, index = 0, best_score = 0;
