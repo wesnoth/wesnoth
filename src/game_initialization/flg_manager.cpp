@@ -332,9 +332,10 @@ void flg_manager::resolve_random(rand_rng::mt_rng & rng, const std::vector<std::
 void flg_manager::update_available_factions()
 {
 	const config* custom_faction = NULL;
+	const bool show_custom_faction = side_["faction"] == "Custom" || !has_no_recruits_;
+
 	BOOST_FOREACH(const config* faction, era_factions_) {
-		if ((*faction)["id"] == "Custom" && side_["faction"] != "Custom" &&
-			has_no_recruits_) {
+		if ((*faction)["id"] == "Custom" && !show_custom_faction) {
 
 			// "Custom" faction should not be available if both
 			// "default_recruit" and "previous_recruits" lists are empty.
