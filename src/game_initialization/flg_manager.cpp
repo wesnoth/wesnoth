@@ -127,10 +127,9 @@ void flg_manager::set_current_faction(const std::string& id)
 	unsigned index = 0;
 	BOOST_FOREACH(const config* faction, choosable_factions_) {
 		if ((*faction)["id"] == id) {
-			break;
+			set_current_faction(index);
+			return;
 		}
-		set_current_faction(index);
-		return;
 		index++;
 	}
 	ERR_MP << "Faction '" << id << "' is not available for side " << side_["side"] << " Ignoring";
