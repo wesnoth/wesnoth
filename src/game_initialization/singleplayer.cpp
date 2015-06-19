@@ -107,6 +107,12 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 
 		create_eng.prepare_for_era_and_mods();
 		create_eng.prepare_for_campaign(selected_difficulty);
+
+		if(!jump_to_campaign.scenario_id_.empty()) {
+			state.set_carryover_sides_start(
+				config_of("next_scenario", jump_to_campaign.scenario_id_)
+			);
+		}
 		create_eng.prepare_for_new_level();
 
 		create_eng.get_parameters();
@@ -117,7 +123,7 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 			return false;
 		}
 		if (!game_config::spmp_hotfix) {
-			configure_canceled = !enter_configure_mode(disp, game_config_manager::get()->game_config(), state, jump_to_campaign, local_players_only);
+			configure_canceled = !enter_configure_mode(disp, game_config_manager::get()->game_config(), state, local_players_only);
 		}
 
 	} while (configure_canceled);
@@ -125,7 +131,7 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 	return true;
 }
 
-bool enter_configure_mode(game_display& disp, const config& game_config, saved_game& state, jump_to_campaign_info& jump_to_campaign, bool local_players_only) {
+bool enter_configure_mode(game_display& disp, const config& game_config, saved_game& state, bool local_players_only) {
 	bool connect_canceled;
 	do {
 		connect_canceled = false;
@@ -148,17 +154,6 @@ bool enter_configure_mode(game_display& disp, const config& game_config, saved_g
 			return false;
 		}
 	} while (connect_canceled);
-#if 0
-	ng::configure_engine engine(state);
-	engine.set_default_values();
-	// try to set campaign-scenario from commandline
-	if (!jump_to_campaign.scenario_id_.empty() && !engine.set_scenario(jump_to_campaign.scenario_id_)) {
-		std::cerr << "Invalid campaign-scenario specified." << std::endl;
-		jump_to_campaign = jump_to_campaign_info(false, -1, "", "");
-		return false;
-	}
-	return enter_connect_mode(disp, game_config, state, local_players_only);
-#endif
 	return true;
 }
 
