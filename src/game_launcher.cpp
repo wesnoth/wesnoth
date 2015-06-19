@@ -797,8 +797,6 @@ bool game_launcher::new_campaign()
 {
 	state_ = saved_game();
 	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::SCENARIO;
-
-	state_.mp_settings().show_configure = false;
 	state_.mp_settings().show_connect = false;
 	play_replay_ = false;
 

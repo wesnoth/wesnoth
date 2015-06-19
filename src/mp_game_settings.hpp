@@ -45,7 +45,6 @@ struct mp_game_settings : public savegame::savegame_config
 	std::vector<std::string> active_mods;
 	std::map<std::string, std::string> side_users;
 
-	bool show_configure;
 	bool show_connect;
 
 	int num_turns;

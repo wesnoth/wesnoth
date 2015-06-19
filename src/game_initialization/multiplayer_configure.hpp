@@ -38,7 +38,6 @@ public:
 	~configure();
 
 	void get_parameters();
-
 protected:
 	virtual void layout_children(const SDL_Rect& rect);
 	virtual void process_event();

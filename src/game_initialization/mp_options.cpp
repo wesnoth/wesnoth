@@ -104,6 +104,11 @@ void manager::restore_defaults(const std::string &component)
 	}
 }
 
+bool manager::has_options()
+{
+	return !widgets_.empty();
+}
+
 manager::manager(const config &gamecfg, game_display &display, gui::scrollpane *pane, const config &values)
 	: options_info_()
 	, values_(values)

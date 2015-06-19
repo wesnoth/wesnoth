@@ -415,11 +415,9 @@ create_engine::create_engine(game_display& disp, saved_game& state) :
 
 	// Restore game config for multiplayer.
 	game_classification::CAMPAIGN_TYPE type = state_.classification().campaign_type;
-	bool configure = state_.mp_settings().show_configure;
 	bool connect = state_.mp_settings().show_connect;
 	state_ = saved_game();
 	state_.classification().campaign_type = type;
-	state_.mp_settings().show_configure = configure;
 	state_.mp_settings().show_connect = connect;
 	game_config_manager::get()->load_game_config_for_create(type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER);
 	//Initilialize dependency_manager_ after refreshing game config.

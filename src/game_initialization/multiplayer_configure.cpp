@@ -237,6 +237,10 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	plugins_context_->set_callback("launch", 	boost::bind(&configure::plugin_event_helper, this, process_event_data (true, false)));
 	plugins_context_->set_callback("quit", 		boost::bind(&configure::plugin_event_helper, this, process_event_data (false, true)));
 	plugins_context_->set_callback("set_name",	boost::bind(&gui::textbox::set_text, &name_entry_, boost::bind(get_str, _1, "name"), font::NORMAL_COLOR), true);
+
+	if(!options_manager_.has_options() && engine_.force_lock_settings() && state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
+		set_result(CREATE);
+	}
 }
 
 configure::~configure()

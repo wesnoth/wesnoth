@@ -42,8 +42,6 @@ mp_game_settings::mp_game_settings() :
 	difficulty_define(),
 	active_mods(),
 	side_users(),
-	show_configure(true),
-	show_connect(true),
 	num_turns(0),
 	village_gold(0),
 	village_support(1),
@@ -77,7 +75,6 @@ mp_game_settings::mp_game_settings(const config& cfg)
 	, difficulty_define(cfg["difficulty_define"].str())
 	, active_mods(utils::split(cfg["active_mods"], ','))
 	, side_users(utils::map_split(cfg["side_users"]))
-	, show_configure(cfg["show_configure"].to_bool(true))
 	, show_connect(cfg["show_connect"].to_bool(true))
 	, num_turns(cfg["mp_num_turns"])
 	, village_gold(cfg["mp_village_gold"])
@@ -119,7 +116,6 @@ config mp_game_settings::to_config() const
 	cfg["difficulty_define"] = difficulty_define;
 	cfg["active_mods"] = utils::join(active_mods, ",");
 	cfg["side_users"] = utils::join_map(side_users);
-	cfg["show_configure"] = show_configure;
 	cfg["show_connect"] = show_connect;
 	cfg["experience_modifier"] = xp_modifier;
 	cfg["mp_countdown"] = mp_countdown;

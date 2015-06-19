@@ -125,45 +125,41 @@ bool enter_create_mode(game_display& disp, const config& game_config,
 	return true;
 }
 
-bool enter_configure_mode(game_display& disp, const config& game_config,
-	saved_game& state, jump_to_campaign_info& jump_to_campaign, bool local_players_only) {
+bool enter_configure_mode(game_display& disp, const config& game_config, saved_game& state, jump_to_campaign_info& jump_to_campaign, bool local_players_only) {
+	bool connect_canceled;
+	do {
+		connect_canceled = false;
 
-	if (state.mp_settings().show_configure) {
-		bool connect_canceled;
-		do{
-			connect_canceled = false;
+		mp::ui::result res;
 
-			mp::ui::result res;
+		{
+			mp::configure ui(disp, game_config, gamechat, gamelist, state, local_players_only);
+			mp::run_lobby_loop(disp, ui);
+			res = ui.get_result();
+			ui.get_parameters();
+		}
 
-			{
-				mp::configure ui(disp, game_config, gamechat, gamelist, state, local_players_only);
-				mp::run_lobby_loop(disp, ui);
-				res = ui.get_result();
-				ui.get_parameters();
-			}
-
-			switch (res) {
-			case mp::ui::CREATE:
-				connect_canceled = !enter_connect_mode(disp, game_config, state, local_players_only);
-				break;
-			case mp::ui::QUIT:
-			default:
-				return false;
-			}
-		} while (connect_canceled);
-		return true;
-	} else {
-		ng::configure_engine engine(state);
-		engine.set_default_values();
-		// try to set campaign-scenario from commandline
-		if (!jump_to_campaign.scenario_id_.empty() && !engine.set_scenario(jump_to_campaign.scenario_id_)) {
-			std::cerr << "Invalid campaign-scenario specified." << std::endl;
-			jump_to_campaign = jump_to_campaign_info(false, -1, "", "");
+		switch (res) {
+		case mp::ui::CREATE:
+			connect_canceled = !enter_connect_mode(disp, game_config, state, local_players_only);
+			break;
+		case mp::ui::QUIT:
+		default:
 			return false;
 		}
-		return enter_connect_mode(disp, game_config, state, local_players_only);
+	} while (connect_canceled);
+#if 0
+	ng::configure_engine engine(state);
+	engine.set_default_values();
+	// try to set campaign-scenario from commandline
+	if (!jump_to_campaign.scenario_id_.empty() && !engine.set_scenario(jump_to_campaign.scenario_id_)) {
+		std::cerr << "Invalid campaign-scenario specified." << std::endl;
+		jump_to_campaign = jump_to_campaign_info(false, -1, "", "");
+		return false;
 	}
-
+	return enter_connect_mode(disp, game_config, state, local_players_only);
+#endif
+	return true;
 }
 
 bool enter_connect_mode(game_display& disp, const config& game_config,
