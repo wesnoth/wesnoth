@@ -356,9 +356,6 @@ bool game::take_side(const player_map::const_iterator user)
 
 	simple_wml::document cfg;
 	cfg.root().set_attr_dup("name", user->second.name().c_str());
-	cfg.root().set_attr("faction", "random");
-	cfg.root().set_attr("leader", "random");
-	cfg.root().set_attr("gender", "random");
 
 	// Check if we can figure out a fitting side.
 	const simple_wml::node::child_list& sides = get_sides_list();
