@@ -19,8 +19,15 @@
 #include "mt_rng.hpp"
 #include "unit_types.hpp"
 #include "wml_separators.hpp"
+#include "log.hpp"
 
 #include <boost/foreach.hpp>
+
+static lg::log_domain log_mp_connect_engine("mp/connect/engine");
+#define DBG_MP LOG_STREAM(debug, log_mp_connect_engine)
+#define LOG_MP LOG_STREAM(info, log_mp_connect_engine)
+#define WRN_MP LOG_STREAM(warn, log_mp_connect_engine)
+#define ERR_MP LOG_STREAM(err, log_mp_connect_engine)
 
 namespace ng  {
 
@@ -122,11 +129,12 @@ void flg_manager::set_current_faction(const std::string& id)
 		if ((*faction)["id"] == id) {
 			break;
 		}
-
+		set_current_faction(index);
+		return;
 		index++;
 	}
+	ERR_MP << "Faction '" << id << "' is not available for side " << side_["side"] << " Ignoring";
 
-	set_current_faction(index);
 }
 
 void flg_manager::set_current_leader(const unsigned index)
@@ -590,8 +598,7 @@ int flg_manager::leader_index(const std::string& leader) const
 	std::vector<std::string>::const_iterator it = std::find(
 		choosable_leaders_.begin(), choosable_leaders_.end(), leader);
 
-	assert(it != choosable_leaders_.end());
-	return std::distance(choosable_leaders_.begin(), it);
+	return it != choosable_leaders_.end() ? std::distance(choosable_leaders_.begin(), it) : -1;
 }
 
 int flg_manager::gender_index(const std::string& gender) const
@@ -599,8 +606,29 @@ int flg_manager::gender_index(const std::string& gender) const
 	std::vector<std::string>::const_iterator it = std::find(
 		choosable_genders_.begin(), choosable_genders_.end(), gender);
 
-	assert(it != choosable_genders_.end());
-	return std::distance(choosable_genders_.begin(), it);
+	return it != choosable_genders_.end() ? std::distance(choosable_genders_.begin(), it) : -1;
+}
+
+void flg_manager::set_current_leader(const std::string& leader)
+{
+	int index = leader_index(leader);
+	if (index < 0) {
+		ERR_MP << "Leader '" << leader << "' is not available for side " << side_["side"] << " Ignoring";
+	}
+	else {
+		set_current_leader(index);
+	}
+}
+
+void flg_manager::set_current_gender(const std::string& gender)
+{
+	int index = gender_index(gender);
+	if (index < 0) {
+		ERR_MP << "Gender '" << gender << "' is not available for side " << side_["side"] << " Ignoring";
+	}
+	else {
+		set_current_gender(index);
+	}
 }
 
 } // end namespace ng

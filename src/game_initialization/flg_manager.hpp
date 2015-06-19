@@ -43,12 +43,10 @@ public:
 		{ set_current_faction(faction_index(faction)); }
 
 	void set_current_leader(const unsigned index);
-	void set_current_leader(const std::string& leader)
-		{ set_current_leader(leader_index(leader)); }
+	void set_current_leader(const std::string& leader);
 
 	void set_current_gender(const unsigned index);
-	void set_current_gender(const std::string& gender)
-		{ set_current_gender(gender_index(gender)); }
+	void set_current_gender(const std::string& gender);
 
 	// Update the status of combo: items, selection and whether
 	// it should be enabled or not.
@@ -96,7 +94,9 @@ private:
 	void append_leaders_from_faction(const config* faction);
 
 	int faction_index(const config& faction) const;
+	/// returns -1 if no leader with that name was found
 	int leader_index(const std::string& leader) const;
+	/// returns -1 if no gender with that name was found
 	int gender_index(const std::string& gender) const;
 
 	int current_leader_index() const
