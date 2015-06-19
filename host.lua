@@ -50,6 +50,9 @@ local function plugin()
 
   context.select_type({type = "scenario"})
   local s = info.find_level({id = "test1"})
+  if s.index < 0 then
+	log(" error: Could not find scenario with id=test1")
+  end
   context.select_level({index = s.index})
 
   events, context, info = coroutine.yield()

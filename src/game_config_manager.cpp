@@ -557,7 +557,8 @@ void game_config_manager::load_game_config_for_game(
 void game_config_manager::load_game_config_for_create(bool is_mp)
 {
 	game_config::scoped_preproc_define multiplayer("MULTIPLAYER", is_mp);
-	///During an mp game the default difficuly define is also defined so better already load it now if we alreeady must reload config cache.
+	game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest && is_mp);
+///During an mp game the default difficuly define is also defined so better already load it now if we alreeady must reload config cache.
 	game_config::scoped_preproc_define normal(DEFAULT_DIFFICULTY, !map_includes(old_defines_map_, cache_.get_preproc_map()));
 
 	typedef boost::shared_ptr<game_config::scoped_preproc_define> define;
