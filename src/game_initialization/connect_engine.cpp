@@ -965,9 +965,11 @@ config side_engine::new_config() const
 	if (!parent_.params_.saved_game) {
 		// Merge the faction data to res.
 		config faction = flg_.current_faction();
-		faction.remove_attribute("id");
 		res["faction_name"] = faction["name"];
+		faction.remove_attribute("id");
 		faction.remove_attribute("name");
+		faction.remove_attribute("image");
+		faction.remove_attribute("flag_rgb");
 		res.append(faction);
 	}
 
