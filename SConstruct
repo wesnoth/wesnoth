@@ -677,7 +677,7 @@ env.WindowsInstaller([
     wesnoth, wesnothd,
     Dir(installable_subs), env["nls"] and Dir("translations") or [],
     glob("*.dll"),
-    text_builder(env, source = Split("README copyright COPYING changelog players_changelog"))
+    text_builder(env, source = Split("README.md copyright COPYING changelog players_changelog"))
     ])
 
 #
