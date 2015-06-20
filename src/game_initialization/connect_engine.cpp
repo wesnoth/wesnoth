@@ -923,7 +923,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 			color_ = cfg["color"].to_int() - 1;
 		}
 		else {
-			custom_color_ = cfg["color"];
+			custom_color_ = cfg["color"].str();
 			color_ = 0;
 		}
 	}
