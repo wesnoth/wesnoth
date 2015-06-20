@@ -215,13 +215,10 @@ wait::wait(game_display& disp, const config& cfg, saved_game& state,
 wait::~wait()
 {
 	try {
-	if (get_result() == QUIT) {
-		state_ = saved_game();
-		state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
-
-		game_config_manager::get()->
-			load_game_config_for_game(state_.classification());
-	}
+		if (get_result() == QUIT) {
+			state_ = saved_game();
+			state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+		}
 	} catch (...) {}
 }
 
