@@ -225,7 +225,6 @@ bool flg_manager::is_random_faction()
 // era is misconfigured.
 void flg_manager::resolve_random(rand_rng::mt_rng & rng, const std::vector<std::string> & avoid) {
 	if (is_random_faction()) {
-		assert(!faction_lock_ || side_["faction"] == "random");
 		std::vector<std::string> faction_choices, faction_excepts;
 
 		faction_choices = utils::split((*current_faction_)["choices"]);
@@ -382,7 +381,7 @@ void flg_manager::update_available_leaders()
 		}
 
 		if (!saved_game_) {
-			if ((*current_faction_)["id"] != "Random") {
+			if (!is_random_faction()) {
 				if ((*current_faction_)["id"] == "Custom") {
 					// Allow user to choose a leader from any faction.
 					BOOST_FOREACH(const config* f, available_factions_) {
