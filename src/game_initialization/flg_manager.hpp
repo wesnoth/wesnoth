@@ -131,6 +131,7 @@ private:
 	std::string default_leader_type_;
 	std::string default_leader_gender_;
 	const config* default_leader_cfg_;
+	static std::vector<std::string> get_original_recruits(const config& cfg);
 };
 
 } // end namespace ng

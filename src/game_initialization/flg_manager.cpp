@@ -52,12 +52,7 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 	side_(side),
 	use_map_settings_(use_map_settings),
 	saved_game_(saved_game),
-	has_no_recruits_(
-		((side_.has_attribute("default_recruit") ?
-			side_["default_recruit"].empty() :
-			side_["recruit"].empty()) ||
-		side_["no_recruit"].to_bool()) &&
-		side_["previous_recruits"].empty()),
+	has_no_recruits_(get_original_recruits(side_).empty() && side_["previous_recruits"].empty()),
 	faction_lock_(side_["faction_lock"].to_bool(lock_settings) && use_map_settings),
 	leader_lock_(side_["leader_lock"].to_bool(lock_settings) && use_map_settings),
 	available_factions_(),
@@ -531,8 +526,8 @@ int flg_manager::find_suitable_faction() const
 		search_field = "id";
 	} else if (side_["faction_from_recruit"].to_bool()) {
 		// Choose based on recruit.
-		find = utils::split(side_["default_recruit"]);
-		search_field = "default_recruit";
+		find = get_original_recruits(side_);
+		search_field = "recruit";
 	} else if (const config::attribute_value *l = side_.get("leader")) {
 		// Choose based on leader.
 		find.push_back(*l);
@@ -628,4 +623,17 @@ void flg_manager::set_current_gender(const std::string& gender)
 	}
 }
 
+std::vector<std::string> flg_manager::get_original_recruits(const config& cfg)
+{
+	if (cfg["no_recruits"].to_bool()) {
+		return std::vector<std::string>();
+	}
+	const config::attribute_value& cfg_default_recruit = cfg["default_recruit"];
+	if (!cfg_default_recruit.empty()) {
+		return utils::split(cfg_default_recruit.str());
+	}
+	else {
+		return utils::split(cfg["recruit"].str());
+	}
+}
 } // end namespace ng
