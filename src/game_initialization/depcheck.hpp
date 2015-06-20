@@ -19,6 +19,7 @@
 #include <vector>
 #include "config.hpp"
 #include "gettext.hpp"
+#include "make_enum.hpp"
 
 class CVideo;
 
@@ -35,6 +36,11 @@ enum component_type
 	MODIFICATION
 };
 
+MAKE_ENUM(component_availabilty,
+	(SP, "sp")
+	(MP, "mp")
+	(HYBRID, "hybrid")
+)
 /**
  * Note to all triers:
  * It's not guaranteed that the specified component will be selected
@@ -49,7 +55,7 @@ enum component_type
 class manager
 {
 public:
-	manager(const config& gamecfg, CVideo& video);
+	manager(const config& gamecfg, bool mp, CVideo& video);
 
 	/**
 	 * Tries to set the selected era
@@ -359,6 +365,9 @@ private:
 	 * @return		the name of the component
 	 */
 	std::string find_name_for(const elem& e) const;
+
+
+	static component_availabilty default_availabilty(component_type t);
 
 };
 

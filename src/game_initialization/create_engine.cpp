@@ -421,7 +421,7 @@ create_engine::create_engine(game_display& disp, saved_game& state) :
 	state_.mp_settings().show_connect = connect;
 	game_config_manager::get()->load_game_config_for_create(type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER);
 	//Initilialize dependency_manager_ after refreshing game config.
-	dependency_manager_.reset(new depcheck::manager(game_config_manager::get()->game_config(), disp.video()));
+	dependency_manager_.reset(new depcheck::manager(game_config_manager::get()->game_config(), type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER, disp.video()));
 	//TODO the editor dir is already configurable, is the preferences value
 	filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/maps", &user_map_names_,
 		NULL, filesystem::FILE_NAME_ONLY);
@@ -1117,14 +1117,13 @@ void create_engine::init_extras(const MP_EXTRA extra_type)
 {
 	std::vector<extras_metadata_ptr>& extras = get_extras_by_type(extra_type);
 	const std::string extra_name = (extra_type == ERA) ? "era" : "modification";
-
-	BOOST_FOREACH(const config &extra,
-		game_config_manager::get()->game_config().child_range(extra_name)) {
-
-		const std::string& type = extra["type"];
+	ng::depcheck::component_availabilty default_availabilty = (extra_type == ERA) ? ng::depcheck::component_availabilty::MP : ng::depcheck::component_availabilty::HYBRID;
+	BOOST_FOREACH(const config &extra, game_config_manager::get()->game_config().child_range(extra_name))
+	{
+		ng::depcheck::component_availabilty type = extra["type"].to_enum(default_availabilty);
 		bool mp = state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 
-		if((type != "mp" || mp) && (type != "sp" || !mp) )
+		if((type != ng::depcheck::component_availabilty::MP || mp) && (type != ng::depcheck::component_availabilty::SP || !mp) )
 		{
 			extras_metadata_ptr new_extras_metadata(new extras_metadata());
 			new_extras_metadata->id = extra["id"].str();

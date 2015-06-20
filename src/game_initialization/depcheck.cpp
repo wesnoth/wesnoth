@@ -58,7 +58,7 @@ namespace ng
 namespace depcheck
 {
 
-manager::manager(const config& gamecfg, CVideo& video)
+manager::manager(const config& gamecfg, bool mp, CVideo& video)
 	: video_(video)
 	, depinfo_()
 	, era_()
@@ -70,26 +70,32 @@ manager::manager(const config& gamecfg, CVideo& video)
 {
 	DBG_MP << "Initializing the dependency manager" << std::endl;
 	BOOST_FOREACH (const config& cfg, gamecfg.child_range("modification")) {
-		config info;
-		info["id"] = cfg["id"];
-		info["name"] = cfg["name"];
+		component_availabilty type = cfg["type"].to_enum<component_availabilty>(component_availabilty::HYBRID);
+		if((type != component_availabilty::MP || mp) && (type != component_availabilty::SP || !mp) ) {
+			config info;
+			info["id"] = cfg["id"];
+			info["name"] = cfg["name"];
 
-		copy_keys(info, cfg, "scenario");
-		copy_keys(info, cfg, "era");
-		copy_keys(info, cfg, "modification");
+			copy_keys(info, cfg, "scenario");
+			copy_keys(info, cfg, "era");
+			copy_keys(info, cfg, "modification");
 
-		depinfo_.add_child("modification", info);
+			depinfo_.add_child("modification", info);
+		}
 	}
 
 	BOOST_FOREACH (const config& cfg, gamecfg.child_range("era")) {
-		config info;
-		info["id"] = cfg["id"];
-		info["name"] = cfg["name"];
+		component_availabilty type = cfg["type"].to_enum<component_availabilty>(component_availabilty::MP);
+		if((type != component_availabilty::MP || mp) && (type != component_availabilty::SP || !mp) ) {
+			config info;
+			info["id"] = cfg["id"];
+			info["name"] = cfg["name"];
 
-		copy_keys(info, cfg, "scenario");
-		copy_keys(info, cfg, "modification", true);
+			copy_keys(info, cfg, "scenario");
+			copy_keys(info, cfg, "modification", true);
 
-		depinfo_.add_child("era", info);
+			depinfo_.add_child("era", info);
+		}
 	}
 
 	BOOST_FOREACH (const config& cfg, gamecfg.child_range("multiplayer")) {
@@ -386,7 +392,6 @@ void manager::try_scenario_by_index(int index, bool force)
 int manager::get_era_index() const
 {
 	int result = 0;
-
 	BOOST_FOREACH (const config& i, depinfo_.child_range("era"))
 	{
 		if (i["id"] == era_) {
@@ -740,6 +745,15 @@ bool manager::change_modifications
 	return true;
 }
 
+component_availabilty manager::default_availabilty(component_type t)
+{
+	if(t == ERA)
+		return component_availabilty::MP;
+	if(t == SCENARIO)
+		return component_availabilty::MP;
+	if(t == MODIFICATION)
+		return component_availabilty::HYBRID;
+}
 
 
 } //namespace depcheck
