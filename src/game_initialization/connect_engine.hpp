@@ -220,7 +220,7 @@ public:
 	flg_manager& flg() { return flg_; }
 
 	std::vector<std::string> get_colors() const;
-	std::string get_color(size_t index = -1) const;
+	std::string get_color(int index = -1) const;
 	int num_colors() const;
 private:
 	side_engine(const side_engine& engine);

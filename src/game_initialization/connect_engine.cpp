@@ -1344,7 +1344,7 @@ std::vector<std::string> side_engine::get_colors() const
 	return res;
 }
 
-std::string side_engine::get_color(size_t index) const
+std::string side_engine::get_color(int index) const
 {
 	if(index == -1) {
 		index = color();
