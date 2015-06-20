@@ -87,6 +87,16 @@ std::string get_color_string(int id)
 	}
 }
 
+std::string get_color_string(const std::string& id)
+{
+	std::map<std::string, color_range>::iterator i_color = game_config::team_rgb_range.find(id);
+	std::map<std::string, t_string>::iterator i_name = game_config::team_rgb_name.find(id);
+	bool has_color = i_color != game_config::team_rgb_range.end();
+	bool has_name= i_name != game_config::team_rgb_name.end();
+
+	return rgb2highlight(has_color ? i_color->second.mid() : 0x00FF0000) + (has_name ? std::string(i_name->second) : _("Invalid Color"));
+}
+
 chat::chat() :
 	message_history_(),
 	last_update_()

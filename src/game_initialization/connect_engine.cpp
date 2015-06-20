@@ -24,7 +24,7 @@
 #include "mp_game_utils.hpp"
 #include "mt_rng.hpp"
 #include "tod_manager.hpp"
-
+#include "multiplayer_ui.hpp" // For get_color_string
 #include <boost/foreach.hpp>
 #include <boost/assign.hpp>
 #include <stdlib.h>
@@ -851,7 +851,8 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	chose_random_(cfg["chose_random"].to_bool(false)),
 	disallow_shuffle_(cfg["disallow_shuffle"].to_bool(false)),
 	flg_(parent_.era_factions_, cfg_, parent_.force_lock_settings_,
-		parent_.params_.use_map_settings, parent_.params_.saved_game, color_)
+		parent_.params_.use_map_settings, parent_.params_.saved_game, color_),
+	custom_color_()
 {
 	// Check if this side should give its control to some other side.
 	const size_t side_cntr_index = cfg_["controller"].to_int(-1) - 1;
@@ -918,7 +919,13 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		team_ = team_name_index;
 	}
 	if (!cfg["color"].empty()) {
-		color_ = game_config::color_info(cfg["color"]).index() - 1;
+		if(cfg["color"].to_int()) {
+			color_ = cfg["color"].to_int() - 1;
+		}
+		else {
+			custom_color_ = cfg["color"];
+			color_ = 0;
+		}
 	}
 
 	// Initialize ai algorithm.
@@ -1064,7 +1071,7 @@ config side_engine::new_config() const
 		res["team_name"] = parent_.team_names_[team_];
 		res["user_team_name"] = parent_.user_team_names_[team_];
 		res["allow_player"] = allow_player_;
-		res["color"] = color_ + 1;
+		res["color"] = get_color(color_);
 		res["gold"] = gold_;
 		res["income"] = income_;
 
@@ -1325,6 +1332,31 @@ void side_engine::add_controller_option(ng::controller controller,
 	}
 
 	controller_options_.push_back(std::make_pair(controller, name));
+}
+
+std::vector<std::string> side_engine::get_colors() const
+{
+	std::vector<std::string> res;
+	for (int i = 0; i < num_colors(); ++i) {
+		res.push_back(mp::get_color_string(get_color(i)));
+	}
+	return res;
+}
+
+std::string side_engine::get_color(size_t index) const
+{
+	if(!custom_color_.empty()) {
+		if(index == 0) {
+			return custom_color_;
+		}
+		index -= 1;
+	}
+	return lexical_cast<std::string>(index + 1);
+}
+
+int side_engine::num_colors() const
+{
+	return custom_color_.empty() ? gamemap::MAX_PLAYERS : gamemap::MAX_PLAYERS + 1;
 }
 
 } // end namespace ng

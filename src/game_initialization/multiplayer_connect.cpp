@@ -91,7 +91,7 @@ connect::side::side(connect& parent, ng::side_engine_ptr engine) :
 	combo_leader_(parent.disp(), std::vector<std::string>()),
 	combo_gender_(parent.disp(), std::vector<std::string>()),
 	combo_team_(parent.disp(), engine_->player_teams()),
-	combo_color_(parent.disp(), parent.player_colors_),
+	combo_color_(parent.disp(), engine->get_colors()),
 	slider_gold_(parent.video()),
 	slider_income_(parent.video())
 {
@@ -371,7 +371,6 @@ connect::connect(game_display& disp, const std::string& game_name,
 	const config& game_config, chat& c, config& gamelist,
 	ng::connect_engine& engine) :
 	mp::ui(disp, _("Game Lobby: ") + game_name, game_config, c, gamelist),
-	player_colors_(),
 	ai_algorithms_(),
 	sides_(),
 	engine_(engine),
@@ -409,11 +408,6 @@ connect::connect(game_display& disp, const std::string& game_name,
 	}
 
 	ai_algorithms_ = ai::configuration::get_available_ais();
-
-	// Colors.
-	for(int i = 0; i < gamemap::MAX_PLAYERS; ++i) {
-		player_colors_.push_back(get_color_string(i));
-	}
 
 	// Sides.
 	BOOST_FOREACH(ng::side_engine_ptr s, engine_.side_engines()) {

@@ -219,6 +219,9 @@ public:
 		{ return parent_.player_teams_; }
 	flg_manager& flg() { return flg_; }
 
+	std::vector<std::string> get_colors() const;
+	std::string get_color(size_t index) const;
+	int num_colors() const;
 private:
 	side_engine(const side_engine& engine);
 	void operator=(const side_engine&);
@@ -255,6 +258,7 @@ private:
 	bool chose_random_;
 	bool disallow_shuffle_;
 	flg_manager flg_;
+	std::string custom_color_;
 };
 
 } // end namespace ng

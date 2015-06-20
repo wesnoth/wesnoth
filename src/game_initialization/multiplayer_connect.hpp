@@ -123,8 +123,6 @@ private:
 	const mp_game_settings& params() { return engine_.params(); }
 	bool force_lock_settings() const { return engine_.force_lock_settings(); }
 
-	// Lists used for combos.
-	std::vector<std::string> player_colors_;
 	std::vector<ai::description*> ai_algorithms_;
 
 	side_list sides_;

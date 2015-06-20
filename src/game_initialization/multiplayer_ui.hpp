@@ -36,6 +36,7 @@ class plugins_context;
 namespace mp {
 
 std::string get_color_string(int id);
+std::string get_color_string(const std::string& id);
 
 /** this class memorizes a chat session. */
 class chat
