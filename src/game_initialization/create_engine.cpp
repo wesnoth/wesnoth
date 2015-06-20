@@ -725,13 +725,17 @@ std::vector<std::string> create_engine::levels_menu_item_names() const
 }
 
 std::vector<std::string> create_engine::extras_menu_item_names(
-	const MP_EXTRA extra_type) const
+	const MP_EXTRA extra_type, bool escape_markup) const
 {
 	std::vector<std::string> names;
 
 	BOOST_FOREACH(extras_metadata_ptr extra,
 		get_const_extras_by_type(extra_type)) {
-		names.push_back(font::NULL_MARKUP + extra->name);
+		if (escape_markup) {
+			names.push_back(font::NULL_MARKUP + extra->name);
+		} else {
+			names.push_back(extra->name);
+		}
 	}
 
 	return names;

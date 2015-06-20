@@ -222,7 +222,7 @@ public:
 
 	std::vector<std::string> levels_menu_item_names() const;
 	std::vector<std::string> extras_menu_item_names(
-		const MP_EXTRA extra_type) const;
+		const MP_EXTRA extra_type, bool escape_markup = true) const;
 
 	level& current_level() const;
 	const extras_metadata& current_extra(const MP_EXTRA extra_type) const;

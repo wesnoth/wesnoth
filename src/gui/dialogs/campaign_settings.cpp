@@ -102,7 +102,7 @@ void tcampaign_settings::update_lists(twindow& window)
 	era_list.clear();
 
 	if (engine_.current_level().allow_era_choice()) {
-		BOOST_FOREACH(std::string era, engine_.extras_menu_item_names(ng::create_engine::ERA)) {
+		BOOST_FOREACH(std::string era, engine_.extras_menu_item_names(ng::create_engine::ERA, false)) {
 			std::map<std::string, string_map> row;
 			string_map column;
 
