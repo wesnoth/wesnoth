@@ -44,7 +44,7 @@ private:
 	{
 	public:
 		leader_preview_pane(game_display& disp, ng::flg_manager& flg,
-			const int color);
+			const std::string& color);
 
 		bool show_above() const;
 		bool left_side() const;
@@ -58,7 +58,7 @@ private:
 
 		ng::flg_manager& flg_;
 
-		const int color_;
+		const std::string color_;
 
 		gui::combo combo_leader_;
 		gui::combo combo_gender_;

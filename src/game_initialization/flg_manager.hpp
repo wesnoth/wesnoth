@@ -26,7 +26,7 @@ namespace ng {
 
 const std::string random_enemy_picture("units/random-dice.png");
 
-std::string get_RC_suffix(const std::string& unit_color, const int color);
+std::string get_RC_suffix(const std::string& unit_color, const std::string& color);
 
 /// FLG stands for faction, leader and gender.
 class flg_manager
@@ -34,7 +34,7 @@ class flg_manager
 public:
 	flg_manager(const std::vector<const config*>& era_factions,
 		const config& side, const bool faction_lock, const bool leader_lock,
-		const bool saved_game, const int color);
+		const bool saved_game);
 	~flg_manager();
 
 	void set_current_faction(const unsigned index);
@@ -50,8 +50,8 @@ public:
 
 	// Update the status of combo: items, selection and whether
 	// it should be enabled or not.
-	void reset_leader_combo(gui::combo& combo_leader) const;
-	void reset_gender_combo(gui::combo& combo_gender) const;
+	void reset_leader_combo(gui::combo& combo_leader, const std::string& color) const;
+	void reset_gender_combo(gui::combo& combo_gender, const std::string& color) const;
 
 	bool is_random_faction();
 	void resolve_random(rand_rng::mt_rng & rng, const std::vector<std::string> & avoid); //Second Argument is a list of faction ids we don't want to match, used to implement random faction modes. If it is not possible to resolve then we just proceed anyways rather than give an error.
@@ -114,8 +114,6 @@ private:
 
 	const bool faction_lock_;
 	const bool leader_lock_;
-
-	const int color_;
 
 	// All factions which could be played by a side (including Random).
 	std::vector<const config*> available_factions_;

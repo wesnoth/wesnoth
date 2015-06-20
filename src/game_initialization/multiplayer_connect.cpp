@@ -190,14 +190,14 @@ void connect::side::process_event()
 	if (combo_color_.changed() && combo_color_.selected() >= 0) {
 		engine_->set_color(combo_color_.selected());
 		update_faction_combo();
-		engine_->flg().reset_leader_combo(combo_leader_);
-		engine_->flg().reset_gender_combo(combo_gender_);
+		engine_->flg().reset_leader_combo(combo_leader_, engine_->get_color());
+		engine_->flg().reset_gender_combo(combo_gender_, engine_->get_color());
 		changed_ = true;
 	}
 	if (combo_faction_.changed() && combo_faction_.selected() >= 0) {
 		engine_->flg().set_current_faction(combo_faction_.selected());
-		engine_->flg().reset_leader_combo(combo_leader_);
-		engine_->flg().reset_gender_combo(combo_gender_);
+		engine_->flg().reset_leader_combo(combo_leader_, engine_->get_color());
+		engine_->flg().reset_gender_combo(combo_gender_, engine_->get_color());
 		changed_ = true;
 	}
 	if (combo_ai_algorithm_.changed() && combo_ai_algorithm_.selected() >= 0) {
@@ -207,7 +207,7 @@ void connect::side::process_event()
 	}
 	if (combo_leader_.changed() && combo_leader_.selected() >= 0) {
 		engine_->flg().set_current_leader(combo_leader_.selected());
-		engine_->flg().reset_gender_combo(combo_gender_);
+		engine_->flg().reset_gender_combo(combo_gender_, engine_->get_color());
 		changed_ = true;
 	}
 	if (combo_gender_.changed() && combo_gender_.selected() >= 0) {
@@ -243,8 +243,8 @@ bool connect::side::changed()
 void connect::side::update_ui()
 {
 	update_faction_combo();
-	engine_->flg().reset_leader_combo(combo_leader_);
-	engine_->flg().reset_gender_combo(combo_gender_);
+	engine_->flg().reset_leader_combo(combo_leader_, engine_->get_color());
+	engine_->flg().reset_gender_combo(combo_gender_, engine_->get_color());
 
 	update_controller_ui();
 
@@ -304,12 +304,10 @@ void connect::side::update_faction_combo()
 		const std::string& icon = (*faction)["image"];
 		if (!icon.empty()) {
 			std::string rgb = (*faction)["flag_rgb"];
-			if (rgb.empty())
+			if (rgb.empty()) {
 				rgb = "magenta";
-
-			factions.push_back(IMAGE_PREFIX + icon + "~RC(" + rgb + ">" +
-				lexical_cast<std::string>(engine_->color() + 1) + ")" +
-				COLUMN_SEPARATOR + name);
+			}
+			factions.push_back(IMAGE_PREFIX + icon + "~RC(" + rgb + ">" + engine_->get_color() + ")" + COLUMN_SEPARATOR + name);
 		} else {
 			factions.push_back(name);
 		}

@@ -175,6 +175,7 @@ connect_engine::connect_engine(saved_game& state,
 		era_factions_.push_back(&era);
 	}
 
+	game_config::add_color_info(scenario());
 	// Create side engines.
 	int index = 0;
 	BOOST_FOREACH(const config &s, sides) {
@@ -849,7 +850,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	chose_random_(cfg["chose_random"].to_bool(false)),
 	disallow_shuffle_(cfg["disallow_shuffle"].to_bool(false)),
 	flg_(parent_.era_factions_, cfg_, parent_.force_lock_settings_,
-		parent_.params_.use_map_settings, parent_.params_.saved_game, color_),
+		parent_.params_.use_map_settings, parent_.params_.saved_game),
 	allow_changes_(!parent_.params_.saved_game && !(flg_.choosable_factions().size() == 1 && flg_.choosable_leaders().size() == 1 && flg_.choosable_genders().size() == 1)),
 	waiting_to_choose_faction_(allow_changes_),
 	custom_color_()
@@ -1345,6 +1346,9 @@ std::vector<std::string> side_engine::get_colors() const
 
 std::string side_engine::get_color(size_t index) const
 {
+	if(index == -1) {
+		index = color();
+	}
 	if(!custom_color_.empty()) {
 		if(index == 0) {
 			return custom_color_;
