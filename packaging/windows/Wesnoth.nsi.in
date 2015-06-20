@@ -70,8 +70,6 @@
 
   !insertmacro MUI_PAGE_INSTFILES
 
-  !define MUI_FINISHPAGE_RUN $INSTDIR\wesnoth.exe
-  !define MUI_FINISHPAGE_RUN_PARAMETERS "$UserdataFlags"
   !insertmacro MUI_PAGE_FINISH
   
   !insertmacro MUI_UNPAGE_CONFIRM
