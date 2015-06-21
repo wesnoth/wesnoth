@@ -73,12 +73,12 @@ ttree_view_node::ttree_view_node(
 							twidget::tvisible::visible);
 				}
 
-				twidget& widget = find_widget<twidget>(
-						&grid_, "tree_view_node_label", false);
+				twidget* widget = find_widget<twidget>(
+						&grid_, "tree_view_node_label", false, false);
 
-				label_ = dynamic_cast<tselectable_*>(&widget);
+				label_ = dynamic_cast<tselectable_*>(widget);
 				if(label_) {
-					widget.connect_signal<event::LEFT_BUTTON_CLICK>(
+					widget->connect_signal<event::LEFT_BUTTON_CLICK>(
 							boost::bind(
 									&ttree_view_node::
 											 signal_handler_label_left_button_click,
@@ -87,7 +87,7 @@ ttree_view_node::ttree_view_node(
 									_3,
 									_4),
 							event::tdispatcher::front_child);
-					widget.connect_signal<event::LEFT_BUTTON_CLICK>(
+					widget->connect_signal<event::LEFT_BUTTON_CLICK>(
 							boost::bind(
 									&ttree_view_node::
 											 signal_handler_label_left_button_click,
