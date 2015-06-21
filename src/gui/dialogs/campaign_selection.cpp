@@ -83,7 +83,7 @@ REGISTER_DIALOG(campaign_selection)
 
 void tcampaign_selection::campaign_selected(twindow& window)
 {
-	if(new_widgets && false) {
+	if(new_widgets || true) {
 		ttree_view& tree
 				= find_widget<ttree_view>(&window, "campaign_tree", false);
 
@@ -98,6 +98,7 @@ void tcampaign_selection::campaign_selected(twindow& window)
 		tmulti_page& multi_page
 				= find_widget<tmulti_page>(&window, "campaign_details", false);
 		multi_page.select_page(choice);
+		engine_.set_current_level(choice);
 	} else {
 		const int selected_row
 				= find_widget<tlistbox>(&window, "campaign_list", false)
@@ -118,7 +119,7 @@ void tcampaign_selection::show_settings(CVideo& video) {
 
 void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 {
-	if(new_widgets && false) {
+	if(new_widgets || true) {
 		/***** Setup campaign tree. *****/
 		ttree_view& tree
 				= find_widget<ttree_view>(&window, "campaign_tree", false);
@@ -188,7 +189,30 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 		if(not_completed.empty()) {
 			tree.remove_node(&not_completed);
 		}
+		if (!engine_.get_const_extras_by_type(ng::create_engine::MOD).empty()) {
+			
+			tree_group_field["label"] = "Modifications";
+			tree_group_item["tree_view_node_label"] = tree_group_field;
+			//tree_group_item["tree_view_node_label"] = tree_group_field;
+			ttree_view_node& mods_node = tree.add_node("campaign_group", tree_group_item);
+			std::vector<std::string> enabled = engine_.active_mods();
 
+			id = 0;
+			FOREACH(const AUTO& mod, engine_.get_const_extras_by_type(ng::create_engine::MOD)) 
+			{
+				bool active = std::find(enabled.begin(), enabled.end(), mod->id) != enabled.end();
+				/*** Add tree item ***/
+				tree_group_field["label"] = mod->name;
+				tree_group_item["name"] = tree_group_field;
+
+				auto & node = mods_node.add_child("modification", tree_group_item);
+				ttoggle_button* checkbox = dynamic_cast<ttoggle_button*>(node.find("checkb", true));
+				VALIDATE(checkbox, missing_widget("checkb"));
+				checkbox->set_value(active);
+				checkbox->set_callback_state_change(boost::bind(&tcampaign_selection::mod_toggeled, this, id, _1));
+				++id;
+			}
+		}
 	} else {
 		/***** Hide the tree view. *****/
 		if(ttree_view* tree
@@ -257,15 +281,17 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 	campaign_selected(window);
 
 	/***** Setup advanced settings button *****/
-	tbutton& advanced_settings_button =
-			find_widget<tbutton>(&window, "advanced_settings", false);
-	advanced_settings_button.connect_click_handler(
+	tbutton* advanced_settings_button =
+			find_widget<tbutton>(&window, "advanced_settings", false, false);
+	if(advanced_settings_button) {
+		advanced_settings_button->connect_click_handler(
 			boost::bind(&tcampaign_selection::show_settings, this, boost::ref(video)));
+	}
 }
 
 void tcampaign_selection::post_show(twindow& window)
 {
-	if(new_widgets && false) {
+	if(new_widgets || true) {
 		ttree_view& tree
 				= find_widget<ttree_view>(&window, "campaign_tree", false);
 
@@ -275,7 +301,9 @@ void tcampaign_selection::post_show(twindow& window)
 
 		assert(tree.selected_item());
 		choice_ = lexical_cast<unsigned>(tree.selected_item()->id());
-
+		deterministic_ = find_widget<ttoggle_button>(&window,
+													 "checkbox_deterministic",
+													 false).get_value();
 	} else {
 		choice_ = find_widget<tlistbox>(&window, "campaign_list", false)
 						  .get_selected_row();
@@ -283,6 +311,12 @@ void tcampaign_selection::post_show(twindow& window)
 													 "checkbox_deterministic",
 													 false).get_value();
 	}
+}
+
+void tcampaign_selection::mod_toggeled(int id, twidget&)
+{
+	engine_.set_current_mod_index(id);
+	engine_.toggle_current_mod();
 }
 
 } // namespace gui2

@@ -60,6 +60,9 @@ private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 
+
+	void mod_toggeled(int id, twidget&);
+
 	ng::create_engine& engine_;
 
 	/** The chosen campaign. */
