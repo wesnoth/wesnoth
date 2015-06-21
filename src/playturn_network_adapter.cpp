@@ -11,6 +11,7 @@
 
 
 static lg::log_domain log_network("network");
+#define LOG_NW LOG_STREAM(info, log_network)
 #define ERR_NW LOG_STREAM(err, log_network)
 
 void playturn_network_adapter::read_from_network()
@@ -128,7 +129,7 @@ playturn_network_adapter::~playturn_network_adapter()
 	try {
 		if(!is_at_end())
 		{
-			ERR_NW << "Destroying playturn_network_adapter with an non empty buffer, this means loss of network data" << std::endl;
+			LOG_NW << "Destroying playturn_network_adapter with an non empty buffer, this means loss of network data" << std::endl;
 		}
 	} catch (...) {}
 }
