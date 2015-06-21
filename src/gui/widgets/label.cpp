@@ -160,7 +160,6 @@ void tlabel::signal_handler_left_button_click(const event::tevent /* event */, b
 		return;
 	}
 
-	get_window()->mouse_capture();
 
 	tpoint mouse = get_mouse_position();
 
@@ -190,8 +189,6 @@ void tlabel::signal_handler_right_button_click(const event::tevent /* event */, 
 	if (!get_link_aware()) {
 		return ; // without marking event as "handled".
 	}
-
-	get_window()->mouse_capture();
 
 	tpoint mouse = get_mouse_position();
 
