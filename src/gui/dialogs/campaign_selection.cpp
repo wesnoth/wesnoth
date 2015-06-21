@@ -205,7 +205,7 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 				tree_group_field["label"] = mod->name;
 				tree_group_item["name"] = tree_group_field;
 
-				auto & node = mods_node.add_child("modification", tree_group_item);
+				ttree_view_node & node = mods_node.add_child("modification", tree_group_item);
 				ttoggle_button* checkbox = dynamic_cast<ttoggle_button*>(node.find("checkb", true));
 				VALIDATE(checkbox, missing_widget("checkb"));
 				checkbox->set_value(active);
