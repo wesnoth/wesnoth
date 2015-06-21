@@ -48,12 +48,13 @@ ttoggle_panel::ttoggle_panel()
 			&ttoggle_panel::signal_handler_mouse_enter, this, _2, _3));
 	connect_signal<event::MOUSE_LEAVE>(boost::bind(
 			&ttoggle_panel::signal_handler_mouse_leave, this, _2, _3));
-
+#if 0
 	connect_signal<event::LEFT_BUTTON_CLICK>(
 			boost::bind(&ttoggle_panel::signal_handler_pre_left_button_click,
 						this,
 						_2),
 			event::tdispatcher::back_pre_child);
+#endif
 	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
 			&ttoggle_panel::signal_handler_left_button_click, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_CLICK>(
