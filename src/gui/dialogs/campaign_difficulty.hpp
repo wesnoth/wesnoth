@@ -26,7 +26,10 @@ namespace gui2
 class tcampaign_difficulty : public tdialog
 {
 public:
-	explicit tcampaign_difficulty(const std::vector<std::string>& items);
+	/**
+	 * @param items vector of (difficulty description, already completed) pairs
+	 */
+	explicit tcampaign_difficulty(const std::vector<std::pair<std::string, bool> >& items);
 
 	/**
 	 * Returns the selected item index after displaying.
@@ -39,7 +42,7 @@ public:
 
 private:
 	int index_;
-	std::vector<tlegacy_menu_item> items_;
+	std::vector<std::pair<tlegacy_menu_item, bool> > items_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;

@@ -50,6 +50,7 @@ Version 1.13.0+dev:
      pages.
    * Fixed Wesnoth's fonts remaining in use by Windows after abnormal exits, as
      well as being available to other applications.
+   * Started showing on which difficulty levels a campaign was completed.
  * WML engine:
    * Added support for [object] duration=turn end
    * New or updated image path functions:
@@ -72,7 +73,7 @@ Version 1.13.0+dev:
      lobby with music and sound enabled (bug #23633, bug #23599) with libvorbis
      builds affected by Debian bug #782831.
    * Moved [role] tag to Lua (fix for bug #23630)
-
+  
 Version 1.13.0:
  * Security fixes:
    * Fixed arbitrary file read from WML/Lua API (CVE-2015-0844, bug #23440).

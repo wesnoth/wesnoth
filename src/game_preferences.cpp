@@ -56,6 +56,7 @@ bool message_private_on = false;
 
 bool haloes = true;
 
+std::map<std::string, std::set<std::string> > completed_campaigns;
 std::set<std::string> encountered_units_set;
 std::set<t_translation::t_terrain> encountered_terrains_set;
 
@@ -120,6 +121,26 @@ manager::manager() :
 		preferences::erase("mp_countdown_action_bonus");
 	}
 
+	/*
+	completed_campaigns = "A,B,C"
+	[completed_campaigns]
+		[campaign]
+			name = "A"
+			difficulty_levels = "EASY,MEDIUM"
+		[/campaign]
+	[/completed_campaigns]
+	*/
+	BOOST_FOREACH(const std::string &c, utils::split(preferences::get("completed_campaigns"))) {
+		completed_campaigns[c]; // create the elements
+	}
+	if (const config &ccc = preferences::get_child("completed_campaigns")) {
+		BOOST_FOREACH(const config &cc, ccc.child_range("campaign")) {
+			std::set<std::string> &d = completed_campaigns[cc["name"]];
+			std::vector<std::string> nd = utils::split(cc["difficulty_levels"]);
+			std::copy(nd.begin(), nd.end(), std::inserter(d, d.begin()));
+		}
+	}
+
 	const std::vector<std::string> v (utils::split(preferences::get("encountered_units")));
 	encountered_units_set.insert(v.begin(), v.end());
 
@@ -148,6 +169,15 @@ manager::manager() :
 
 manager::~manager()
 {
+	config campaigns;
+	typedef const std::pair<std::string, std::set<std::string> > cc_elem;
+	BOOST_FOREACH(cc_elem &elem, completed_campaigns) {
+		config cmp;
+		cmp["name"] = elem.first;
+		cmp["difficulty_levels"] = utils::join(elem.second);
+		campaigns.add_child("campaign", cmp);
+	}
+	preferences::set_child("completed_campaigns", campaigns);
 	std::vector<std::string> v (encountered_units_set.begin(), encountered_units_set.end());
 	preferences::set("encountered_units", utils::join(v));
 	t_translation::t_list terrain (encountered_terrains_set.begin(), encountered_terrains_set.end());
@@ -304,20 +334,17 @@ bool is_ignored(const std::string& nick)
 	}
 }
 
-void add_completed_campaign(const std::string& campaign_id) {
-	std::vector<std::string> completed = utils::split(preferences::get("completed_campaigns"));
-
-	if(std::find(completed.begin(), completed.end(), campaign_id) != completed.end())
-		return;
-
-	completed.push_back(campaign_id);
-	preferences::set("completed_campaigns", utils::join(completed));
+void add_completed_campaign(const std::string &campaign_id, const std::string &difficulty_level) {
+	completed_campaigns[campaign_id].insert(difficulty_level);
 }
 
 bool is_campaign_completed(const std::string& campaign_id) {
-	std::vector<std::string> completed = utils::split(preferences::get("completed_campaigns"));
+	return completed_campaigns.count(campaign_id) != 0;
+}
 
-	return std::find(completed.begin(), completed.end(), campaign_id) != completed.end();
+bool is_campaign_completed(const std::string& campaign_id, const std::string &difficulty_level) {
+	std::map<std::string, std::set<std::string> >::iterator it = completed_campaigns.find(campaign_id);
+	return it == completed_campaigns.end() ? false : it->second.count(difficulty_level) != 0;
 }
 
 bool parse_should_show_lobby_join(const std::string &sender, const std::string &message)

@@ -65,12 +65,12 @@ namespace gui2
 REGISTER_DIALOG(campaign_difficulty)
 
 tcampaign_difficulty::tcampaign_difficulty(
-		const std::vector<std::string>& items)
+		const std::vector<std::pair<std::string, bool> >& items)
 	: index_(-1), items_()
 {
-	FOREACH(const AUTO & it, items)
+	FOREACH(const AUTO & p, items)
 	{
-		items_.push_back(tlegacy_menu_item(it));
+		items_.push_back(std::make_pair(tlegacy_menu_item(p.first), p.second));
 	}
 }
 
@@ -83,17 +83,25 @@ void tcampaign_difficulty::pre_show(CVideo& /*video*/, twindow& window)
 
 	FOREACH(const AUTO & item, items_)
 	{
-		if(item.is_default()) {
+		if(item.first.is_default()) {
 			index_ = list.get_item_count();
 		}
 
-		data["icon"]["label"] = item.icon();
-		data["label"]["label"] = item.label();
+		data["icon"]["label"] = item.first.icon();
+		data["label"]["label"] = item.first.label();
 		data["label"]["use_markup"] = "true";
-		data["description"]["label"] = item.description();
+		data["description"]["label"] = item.first.description();
 		data["description"]["use_markup"] = "true";
 
 		list.add_row(data);
+
+		tgrid* grid = list.get_row_grid(list.get_item_count() - 1);
+		assert(grid);
+
+		twidget *widget = grid->find("victory", false);
+		if (widget && !item.second) {
+			widget->set_visible(twidget::tvisible::hidden);
+		}
 	}
 
 	if(index_ != -1) {
