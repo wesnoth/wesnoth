@@ -745,16 +745,6 @@ bool manager::change_modifications
 	return true;
 }
 
-component_availabilty manager::default_availabilty(component_type t)
-{
-	if(t == ERA)
-		return component_availabilty::MP;
-	if(t == SCENARIO)
-		return component_availabilty::MP;
-	if(t == MODIFICATION)
-		return component_availabilty::HYBRID;
-}
-
 
 } //namespace depcheck
 

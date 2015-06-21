@@ -366,9 +366,6 @@ private:
 	 */
 	std::string find_name_for(const elem& e) const;
 
-
-	static component_availabilty default_availabilty(component_type t);
-
 };
 
 } //namespace depcheck
