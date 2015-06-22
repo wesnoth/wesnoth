@@ -55,6 +55,7 @@ public:
 
 
 	game_events::wmi_container& get_wml_menu_items();
+	const game_events::wmi_container& get_wml_menu_items() const;
 	int first_human_team_; //needed to initialize the viewpoint during setup
 
 	game_state(const config & level, const tdata_cache & tdata);

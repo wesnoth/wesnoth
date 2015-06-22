@@ -21,6 +21,8 @@
 #include "play_controller.hpp"
 #include "playsingle_controller.hpp"
 #include "whiteboard/manager.hpp"
+#include "game_events/menu_item.hpp"
+#include "game_events/wmi_container.hpp"
 
 #include "unit.hpp"
 
@@ -187,8 +189,19 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 	switch (command){
 
 		case hotkey::HOTKEY_WML:
-			//code mixed from play_controller::show_menu and code here
-			return viewing_team_is_playing() && !events::commands_disabled && viewing_team().is_local_human() && !linger() && !browse();
+		{
+
+			int prefixlen = wml_menu_hotkey_prefix.length();
+			if(cmd.command.compare(0, prefixlen, wml_menu_hotkey_prefix) != 0) {
+				return false;
+			}
+			game_events::wmi_container::const_iterator it = gamestate().get_wml_menu_items().find(cmd.command.substr(prefixlen));
+			if(it == gamestate().get_wml_menu_items().end()) {
+				return false;
+			}
+
+			return !(**it).is_synced() || (viewing_team_is_playing() && !events::commands_disabled && viewing_team().is_local_human() && !linger() && !browse());
+		}
 		case hotkey::HOTKEY_UNIT_HOLD_POSITION:
 		case hotkey::HOTKEY_END_UNIT_TURN:
 			return !browse() && !linger() && !events::commands_disabled;
