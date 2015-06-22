@@ -73,7 +73,8 @@ Version 1.13.0+dev:
      lobby with music and sound enabled (bug #23633, bug #23599) with libvorbis
      builds affected by Debian bug #782831.
    * Moved [role] tag to Lua (fix for bug #23630)
-  
+   * Removed broken Python port of wmlxgettext from data/tools/.
+
 Version 1.13.0:
  * Security fixes:
    * Fixed arbitrary file read from WML/Lua API (CVE-2015-0844, bug #23440).
