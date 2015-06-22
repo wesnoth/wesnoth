@@ -22,12 +22,37 @@ Example contents.
 The carryover report layout was improved. 
 [/section]
 
+[section="SP MP Unification patches fixed"]
+[list]
+[*] It is now easier to create multiplayer campaigns becasue most mp related features like eras, changeing scenario settings are now disables by default (use force_map_settings=no to enable). This means tht you just have to write a normal campaign with multiple human controllers. 
+[*] [modification]s can now also be allowedused in sp by default
+[*] [modification]s now must specify a type=mp/hybrid/sp attribute. [modification]s inside a #ifdef MULTIPLAYER must have type=mp specified.
+[*] [options] isare now recognized inside [campaign]
+[*] Several bugs related to sp campaigns were fixed.
+[/list]
+[/section]
+
+[section="Other wml changes"]
+[list]
+[*] share_view=yes/no and share_maps=yes/no were replaced by share_vision=all/shroud/none TODO: Remove if not merged until next 1.13 version
+[*] [set_menu_item] now has a synced=yes(default)/no attribute. if synced=no this menu item will also be avaiable off turn and will not be sended to other clients. Note: you shall not change the gamestate in [commands] of unsynced wml mneu items. TODO: Remove if not merged until next 1.13 version
+[/list]
+[/section]
+
+[section="Debug commands synced"]
+Debug commands are now synced and do not casue OOS (or currupt replays) anymore. Ofcourse there are notifications when debug commands are used. 
+[/section]
+
+[section="Campaign  selection dialog changed"]
+[*]The difficulcy selection dialog does now show the on wich dificulcies a campaign was already completed.
+[*][modification]s for sp now show at the bottom of the campaigns list and the 'advanced settings' button was removed. 
+[/section]
+
 ==========
 KNOWN BUGS
 ==========
 
 [list]
 [*] The mp server has trouble with "Local" player types in campaigns. We have decided to postpone dealing with this. In the meantime, you might try assigning such sides to the host, or running multiple instances of wesnoth. https://gna.org/bugs/?21965
-[*] The game sometimes chooses wrong default values for attributes in [scenario] and [side] http://gna.org/bugs/?23461, http://gna.org/bugs/?23462, http://gna.org/bugs/?23460 
 [*] Text for entry2.
 [/list]
