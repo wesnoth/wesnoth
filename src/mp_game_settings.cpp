@@ -39,7 +39,6 @@ mp_game_settings::mp_game_settings() :
 	mp_scenario(),
 	mp_scenario_name(),
 	mp_campaign(),
-	difficulty_define(),
 	active_mods(),
 	side_users(),
 	num_turns(0),
@@ -72,7 +71,6 @@ mp_game_settings::mp_game_settings(const config& cfg)
 	, mp_scenario(cfg["mp_scenario"].str())
 	, mp_scenario_name(cfg["mp_scenario_name"].str())
 	, mp_campaign(cfg["mp_campaign"].str())
-	, difficulty_define(cfg["difficulty_define"].str())
 	, active_mods(utils::split(cfg["active_mods"], ','))
 	, side_users(utils::map_split(cfg["side_users"]))
 	, show_connect(cfg["show_connect"].to_bool(true))
@@ -113,7 +111,6 @@ config mp_game_settings::to_config() const
 	cfg["mp_scenario"] = mp_scenario;
 	cfg["mp_scenario_name"] = mp_scenario_name;
 	cfg["mp_campaign"] = mp_campaign;
-	cfg["difficulty_define"] = difficulty_define;
 	cfg["active_mods"] = utils::join(active_mods, ",");
 	cfg["side_users"] = utils::join_map(side_users);
 	cfg["show_connect"] = show_connect;
