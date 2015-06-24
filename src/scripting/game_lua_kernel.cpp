@@ -646,6 +646,23 @@ static int impl_unit_variables_set(lua_State *L)
 	return 0;
 }
 
+/**
+ * Gets currently viewing side.
+ * - Ret 1: integer specifying the currently viewing side
+ * - Ret 2: Bool whether the vision is not limited to that team, this can for example be true during replays.
+ */
+static int intf_get_viewing_side(lua_State *L)
+{
+	if(const display* disp = display::get_singleton()) {
+		lua_pushinteger(L, disp->viewing_side());
+		lua_pushboolean(L, disp->show_everything());
+		return 2;
+	}
+	else {
+		return 0;
+	}
+}
+
 int game_lua_kernel::intf_animate_unit(lua_State *L)
 {
 	// if (game_display_)
@@ -4021,6 +4038,7 @@ game_lua_kernel::game_lua_kernel(const config &cfg, CVideo * video, game_state &
 		{ "get_image_size",           &intf_get_image_size           },
 		{ "get_time_stamp",           &intf_get_time_stamp           },
 		{ "get_traits",               &intf_get_traits               },
+		{ "get_viewing_side",         &intf_get_viewing_side         },
 		{ "modify_ai",                &intf_modify_ai                },
 		{ "set_music",                &intf_set_music                },
 		{ "transform_unit",           &intf_transform_unit           },
