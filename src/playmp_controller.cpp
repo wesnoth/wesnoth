@@ -138,7 +138,9 @@ void playmp_controller::play_human_turn()
 	if(undo_stack_->can_undo()) {
 		// If we reload a networked mp game we cannot undo moves made before the save
 		// Becasue other players already received them
-		synced_context::run_and_store("update_shroud", replay_helper::get_update_shroud());
+		if(!current_team().auto_shroud_updates()) {
+			synced_context::run_and_store("update_shroud", replay_helper::get_update_shroud());
+		}
 		undo_stack_->clear();
 	}
 	if (!preferences::disable_auto_moves()) {

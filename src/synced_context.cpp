@@ -148,8 +148,8 @@ bool synced_context::run_in_synced_context_if_not_already(const std::string& com
 
 void synced_context::default_error_function(const std::string& message, bool /*heavy*/)
 {
-	ERR_REPLAY << "Very strange Error during synced execution " << message;
-	assert(false && "Very strange Error during synced execution");
+	ERR_REPLAY << "Unexpected Error during synced execution" << message << std::endl;
+	assert(!"Unexpected Error during synced execution, more info in stderr.");
 }
 
 void synced_context::just_log_error_function(const std::string& message, bool /*heavy*/)
