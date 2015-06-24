@@ -239,14 +239,6 @@ surface crop_modification::operator()(const surface& src) const
 	if(area.h == 0) {
 		area.h = src->h;
 	}
-	if(area.x < 0) {
-		ERR_DP << "start X coordinate of CROP modification is negative - truncating to zero" << std::endl;
-		area.x = 0;
-	}
-	if(area.y < 0) {
-		ERR_DP << "start Y coordinate of CROP modification is negative - truncating to zero" << std::endl;
-		area.y = 0;
-	}
 
 	/*
 	 * Unlike other image functions cut_surface does not convert the input
