@@ -4,8 +4,8 @@ changelog: https://github.com/wesnoth/wesnoth-old/blob/1.10/changelog
 
 Version 1.10.7+dev:
  * Security fixes:
-   * Disallowed inclusion of .pbl files from WML (bug #23504), independent of
-     file name case.
+   * Disallowed inclusion of .pbl files from WML, independent of extension
+     case (CVE-2015-5069, CVE-2015-5070, bug #23504).
    * Fixed arbitrary file read by WML/Lua API (CVE-2015-0844, bug #23440).
 
  * Language and i18n:
