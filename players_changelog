@@ -5,14 +5,14 @@ changelog: https://github.com/wesnoth/wesnoth/blob/1.12/changelog
 Version 1.12.3+dev:
  * Security fixes:
    * Disallowed WML inclusion of .pbl files with a non-lowercase extension too
-     (bug #23504).
+     (CVE-2015-5070, bug #23504).
  * Language and i18n:
    * Updated translations:
 
 
 Version 1.12.3:
  * Security fixes:
-   * Disallowed inclusion of .pbl files from WML (bug #23504).
+   * Disallowed inclusion of .pbl files from WML (CVE-2015-5069, bug #23504).
 
  * Editor:
    * Fixed memory corruption bug in the Side Setup dialog.
