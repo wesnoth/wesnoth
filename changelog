@@ -32,6 +32,11 @@ Version 1.13.0+dev:
    * Fixed "Accept whispers from friends only" not working with the default
      lobby UI, and added a warning every 5 minutes for individual rejected
      senders.
+   * Allow custom colors in mp connect dialog. (bug #23629)
+   * It now possible to change a sides controller by wml (for example with [modify_side]) in a mp game.
+   * Changing teams by wml in a mp game causes less bugs (bug #23028)
+   * Mp campaigns now behave more like sp campaigns.
+   * Misc fixes in mp connect (bugs #23641 #23509 #23496 #23462)
  * Units:
    * Fixed the Shuja not having the default AMLA.
  * User interface:
@@ -51,13 +56,22 @@ Version 1.13.0+dev:
    * Fixed Wesnoth's fonts remaining in use by Windows after abnormal exits, as
      well as being available to other applications.
    * Started showing on which difficulty levels a campaign was completed.
+   * Modifications for sp are now selectable directly in the campaign selection
+     screen.
+   * The game now automaticy detect whether to show configure screen in sp.
  * WML engine:
    * Added support for [object] duration=turn end
    * New or updated image path functions:
       * ~BW(): converts an image to black and white
       * ~NEG() now supports 0,1 or 3 arguments, allowing solarization effects
       * ~SWAP(): swaps the RGBA channels of the image
+      * ~CROP(): now supports negative x and y values.
    * Added support for SLF in [label] when used inside an event
+   * Add synced=yes(default)/no to [set_menu_item] 
+   * New lua function wesnoth.get_viewing_side
+   * New lua function add wesnoth.remove_dialog_item
+   * [options] is now recognized inside [campaign]
+   * type=sp/mp/hybrid now must be specified for  [modification]s
  * Miscellaneous and bug fixes:
    * Removed abandoned libana network API implementation.
    * Fixed bug#23201 Toggle icons display error in replay.
@@ -75,6 +89,13 @@ Version 1.13.0+dev:
    * Moved [role] tag to Lua (fix for bug #23630)
    * Removed broken Python port of wmlxgettext from data/tools/.
    * Default to non-strict compilation with CMake.
+   * Its no longer possible to undo moves before the last (manual) shroud update
+   * Debug commands are now synced.
+   * fixed gui2 toggel panels
+   * Removed some config reloads, specially when leaving games or entering sp
+     campaign selection.
+   * It is now possible to disable/enable default eras quick4 mp leaders and
+     time over advantage dialog by wml by setting a wml variable.
 
 Version 1.13.0:
  * Security fixes:
