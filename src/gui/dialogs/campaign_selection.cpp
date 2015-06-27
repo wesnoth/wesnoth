@@ -133,17 +133,6 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 
 		string_map tree_group_field;
 		std::map<std::string, string_map> tree_group_item;
-
-		tree_group_field["label"] = "Campaigns won";
-		tree_group_item["tree_view_node_label"] = tree_group_field;
-		ttree_view_node& completed
-				= tree.add_node("campaign_group", tree_group_item);
-
-		tree_group_field["label"] = "Campaigns to conquer";
-		tree_group_item["tree_view_node_label"] = tree_group_field;
-		ttree_view_node& not_completed
-				= tree.add_node("campaign_group", tree_group_item);
-
 		/***** Setup campaign details. *****/
 		tmulti_page& multi_page
 				= find_widget<tmulti_page>(&window, "campaign_details", false);
@@ -160,14 +149,11 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 			tree_group_field["label"] = campaign["name"];
 			tree_group_item["name"] = tree_group_field;
 
-			if(campaign["completed"].to_bool()) {
-				completed.add_child("campaign", tree_group_item)
-						.set_id(lexical_cast<std::string>(id++));
-			} else {
-				not_completed.add_child("campaign", tree_group_item)
-						.set_id(lexical_cast<std::string>(id++));
-			}
+			tree_group_field["label"] = campaign["completed"].to_bool() ? "misc/laurel.png" : "misc/blank-hex.png";
+			tree_group_item["victory"] = tree_group_field;
 
+			tree.add_node("campaign", tree_group_item).set_id(lexical_cast<std::string>(id++));
+		
 			/*** Add detail item ***/
 			string_map detail_item;
 			std::map<std::string, string_map> detail_page;
@@ -181,14 +167,6 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 
 			multi_page.add_page(detail_page);
 		}
-
-		if(completed.empty()) {
-			tree.remove_node(&completed);
-		}
-
-		if(not_completed.empty()) {
-			tree.remove_node(&not_completed);
-		}
 		if (!engine_.get_const_extras_by_type(ng::create_engine::MOD).empty()) {
 			
 			tree_group_field["label"] = "Modifications";
@@ -198,17 +176,19 @@ void tcampaign_selection::pre_show(CVideo& video, twindow& window)
 			std::vector<std::string> enabled = engine_.active_mods();
 
 			id = 0;
+			tree_group_item.clear();
 			FOREACH(const AUTO& mod, engine_.get_const_extras_by_type(ng::create_engine::MOD)) 
 			{
 				bool active = std::find(enabled.begin(), enabled.end(), mod->id) != enabled.end();
 				/*** Add tree item ***/
 				tree_group_field["label"] = mod->name;
-				tree_group_item["name"] = tree_group_field;
+				tree_group_item["checkb"] = tree_group_field;
 
 				ttree_view_node & node = mods_node.add_child("modification", tree_group_item);
 				ttoggle_button* checkbox = dynamic_cast<ttoggle_button*>(node.find("checkb", true));
 				VALIDATE(checkbox, missing_widget("checkb"));
 				checkbox->set_value(active);
+				checkbox->set_label(mod->name);
 				checkbox->set_callback_state_change(boost::bind(&tcampaign_selection::mod_toggeled, this, id, _1));
 				++id;
 			}
