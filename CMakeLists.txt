@@ -78,7 +78,7 @@ if (UNIX AND NOT APPLE AND NOT CYGWIN)
   set(ICONDIR "${DATAROOTDIR}/pixmaps" CACHE STRING "Sets the icon directory for desktop entry to a non-default location.")
   set(DESKTOPDIR "${DATAROOTDIR}/applications/" CACHE STRING "Sets the desktop file directory for desktop entry to a non-default location.")
 endif(UNIX AND NOT APPLE AND NOT CYGWIN)
-option(ENABLE_STRICT_COMPILATION "Sets the strict compilation mode" ON)
+option(ENABLE_STRICT_COMPILATION "Sets the strict compilation mode" OFF)
 option(ENABLE_DEBUG_WINDOW_LAYOUT "Add the debug option to allow the generation of debug layout files in dot format" OFF)
 
 #misc options
