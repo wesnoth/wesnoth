@@ -76,6 +76,12 @@ def isOpener(elem):
         elem = elem.element
     return type(elem) == type("") and elem.startswith("[") and not isCloser(elem)
 
+def isExtender(elem):
+    "Are we looking at an extender tag?"
+    if isinstance(elem, WmlIterator):
+        elem = elem.element
+    return type(elem) == type("") and elem.startswith("[+")
+
 def isMacroOpener(elem):
     "Are we looking at a macro opener?"
     if isinstance(elem, WmlIterator):
@@ -420,6 +426,9 @@ Important Attributes:
 
     def isCloser(self):
         return isCloser(self)
+
+    def isExtender(self):
+        return isExtender(self)
 
     def isMacroOpener(self):
         return isMacroOpener(self)
