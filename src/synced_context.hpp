@@ -119,11 +119,22 @@ public:
 	static bool can_undo();
 	static void set_last_unit_id(int id);
 	static int get_unit_id_diff();
-private:
+
+	class server_choice
+	{
+	public:
+		/// We are in a game with no mp server and need to do this choice locally
+		virtual config local_choice() const = 0;
+		/// the request which is sended to the mp server.
+		virtual config request() const = 0;
+		virtual const char* name() const = 0;
+		void send_request() const;
+	};
 	/*
-		generates a random seed, if we are in a mp game, ask the server, otherwise generate the seed ourselves.
+		if we are in a mp game, ask the server, otherwise generate the answer ourselves.
 	*/
-	static config ask_server_for_seed();
+	static config ask_server_choice(const server_choice&);
+private:
 	/*
 		weather we are in a synced move, in a user_choice, or none of them
 	*/

@@ -2707,6 +2707,9 @@ void server::process_data_game(const network::connection sock,
 	} else if (data.child("require_random")) {
 		g.require_random(data,pl);
 		return;
+	} else if (simple_wml::node* sch = data.child("request_choice")) {
+		g.handle_choice(*sch, pl);
+		return;
 	} else if (data.child("message")) {
 		g.process_message(data, pl);
 		return;

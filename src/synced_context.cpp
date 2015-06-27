@@ -172,9 +172,30 @@ void synced_context::set_synced_state(synced_state newstate)
 	state_ = newstate;
 }
 
+namespace 
+{
+	class random_server_choice : public synced_context::server_choice
+	{
+	public:
+		/// We are in a game with no mp server and need to do this choice locally
+		virtual config local_choice() const
+		{
+			return config_of("new_seed", seed_rng::next_seed_str());
+		}
+		/// the request which is sended to the mp server.
+		virtual config request() const
+		{
+			return config();
+		}
+		virtual const char* name() const
+		{
+			return "random_seed";
+		}
+	};
+}
 std::string synced_context::generate_random_seed()
 {
-	config retv_c = synced_context::ask_server_for_seed();
+	config retv_c = synced_context::ask_server_choice(random_server_choice());
 	config::attribute_value seed_val = retv_c["new_seed"];
 
 	return seed_val.str();
@@ -268,20 +289,20 @@ boost::shared_ptr<random_new::rng> synced_context::get_rng_for_action()
 	}
 }
 
-static void send_require_random()
+void synced_context::server_choice::send_request() const
 {
-	config data;
-	config& rr = data.add_child("require_random");
-	rr["request_id"] = resources::controller->get_server_request_number();
-	network::send_data(data,0);		
+	network::send_data(config_of("request_choice", config_of
+		("request_id", resources::controller->get_server_request_number())
+		(name(), request())
+	));
 }
 
 
-config synced_context::ask_server_for_seed()
+
+config synced_context::ask_server_choice(const server_choice& sch)
 {
 	set_is_simultaneously();
 	resources::controller->increase_server_request_number();
-	std::string name = "random_seed";
 	assert(get_synced_state() == synced_context::SYNCED);
 	const bool is_mp_game = network::nconnections() != 0;
 	bool did_require = false;
@@ -304,9 +325,9 @@ config synced_context::ask_server_for_seed()
 			/* The decision is ours, and it will be inserted
 			into the replay. */
 			DBG_REPLAY << "MP synchronization: local server choice\n";
-			config cfg = config_of("new_seed", seed_rng::next_seed_str());
+			config cfg = sch.local_choice();
 			//-1 for "server" todo: change that.
-			resources::recorder->user_input(name, cfg, -1);
+			resources::recorder->user_input(sch.name(), cfg, -1);
 			return cfg;
 
 		}
@@ -322,7 +343,7 @@ config synced_context::ask_server_for_seed()
 			*/
 			if(!did_require)
 			{	
-				send_require_random();
+				sch.send_request();
 				did_require = true;
 			}
 
@@ -339,23 +360,23 @@ config synced_context::ask_server_for_seed()
 			const config *action = resources::recorder->get_next_action();
 			if (!action)
 			{
-				replay::process_error("[" + name + "] expected but none found\n");
+				replay::process_error("[" + std::string(sch.name()) + "] expected but none found\n");
 				resources::recorder->revert_action();
-				return config_of("new_seed", seed_rng::next_seed_str());
+				return sch.local_choice();
 			}
-			if (!action->has_child(name))
+			if (!action->has_child(sch.name()))
 			{
-				replay::process_error("[" + name + "] expected but none found, found instead:\n " + action->debug() + "\n");
+				replay::process_error("[" + std::string(sch.name()) + "] expected but none found, found instead:\n " + action->debug() + "\n");
 
 				resources::recorder->revert_action();
-				return config_of("new_seed", seed_rng::next_seed_str());
+				return sch.local_choice();
 			}
 			if((*action)["from_side"].str() != "server" || (*action)["side_invalid"].to_bool(false) )
 			{
 				//we can proceed without getting OOS in this case, but allowing this would allow a "player chan choose their attack results in mp" cheat
 				replay::process_error("wrong from_side or side_invalid this could mean someone wants to cheat\n");
 			}
-			return action->child(name);
+			return action->child(sch.name());
 		}
 	}
 }

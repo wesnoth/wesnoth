@@ -102,7 +102,7 @@ game::game(player_map& players, const network::connection host,
 	save_replays_(save_replays),
 	replay_save_path_(replay_save_path),
 	rng_(),
-	last_synced_context_id_(-1) /* or maybe 0 ? it shouldn't matter*/
+	last_choice_request_id_(-1) /* or maybe 0 ? it shouldn't matter*/
 {
 	assert(owner_);
 	players_.push_back(owner_);
@@ -1009,37 +1009,26 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 
 void game::require_random(const simple_wml::document &data, const player_map::iterator user)
 {
-	// note, that during end turn events, it's side=1 for the server but side= side_count() on the clients.
-
-	// OUTDATED INFO:
-	// Currently the clients make sure that one "require random seed" is sended to the server per synced context.
-	// This is ensured becasue only the currently active player sends the "require random seed" the drawback is,
-	// that in the situation that another client was faster, he has to wait for the current player to get
-	// to the same point where the current player then sends the "require random action".
-	// Then the server sends that "random_seed" to all the clients and the other client who was faster can continue. 
-	// This can especialy happen during 'start' events where the 'current_player' is player 1. 
-	// TODO: it would be better if all clients could send "require random seed" and then the server would just ignore
-	// all non-first "require random seed" per synced context. The plan could be that we add a numerical
-	// "synced context id" in "require random seed"
-
-	// NOTE:
-	// With the new strategy we allow observers to cause OOS for the playing clients by sending
-	// [require_random] packages based on incompatible local changes. We might want to block 
-	// [require_random] from observers if this is a problem.
+	//Compability to older clients.
 	const simple_wml::node* require_random = data.root().child("require_random");
 	if(!require_random) return;
 	if(require_random->has_attr("request_id"))
 	{
 		int context_id = (*require_random)["request_id"].to_int();
-		if(context_id <= last_synced_context_id_)
+		if(context_id <= last_choice_request_id_)
 		{
 			// We gave already a random seed for this synced context.
 			return;
 		}
 		DBG_GAME << "answering seed request " << context_id << " by player " << user->second.name() << "(" << user->first << ")" << std::endl;
-		last_synced_context_id_ = context_id;
+		last_choice_request_id_ = context_id;
 	}
+	handle_random_choice(*require_random);
 
+}
+
+void game::handle_random_choice(const simple_wml::node&)
+{
 	uint32_t seed = rng_.get_next_random();
 
 	std::stringstream stream;
@@ -1055,8 +1044,33 @@ void game::require_random(const simple_wml::document &data, const player_map::it
 
 	send_data(*mdata, 0, "game replay");
 	record_data(mdata);
+}
+
+void game::handle_choice(const simple_wml::node& data, const player_map::iterator user)
+{
+	// note, that during end turn events, it's side=1 for the server but side= side_count() on the clients.
+
+	// Otherwise we allow observers to cause OOS for the playing clients by sending
+	// server choice requests based on incompatible local changes. To solve this we block 
+	// server choice requests from observers.
+	if (user->first != owner_ && !is_player(user->first)) {
+		return;
+	}
+	int request_id = lexical_cast_default<int>(data["request_id"], -10);
+	
+	if(request_id <= last_choice_request_id_) {
+		// We gave already an anwer to this request.
+		return;
+	}
+	DBG_GAME << "answering seed request " << request_id << " by player " << user->second.name() << "(" << user->first << ")" << std::endl;
+	last_choice_request_id_ = request_id;
+
+	if(const simple_wml::node* rand = data.child("random_seed")) {
+		handle_random_choice(*rand);
+	}
 
 }
+
 void game::process_whiteboard(simple_wml::document& data, const player_map::const_iterator user)
 {
 	if(!started_ || !is_player(user->first))
