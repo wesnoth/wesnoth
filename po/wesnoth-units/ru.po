@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-04-17 11:35-0300\n"
-"PO-Revision-Date: 2014-11-14 20:45+0300\n"
+"PO-Revision-Date: 2015-06-27 09:57+0300\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -495,7 +495,7 @@ msgstr ""
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:4
 msgid "Drake Arbiter"
-msgstr "Арбитр"
+msgstr "Смотритель"
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:18
@@ -507,12 +507,12 @@ msgid ""
 "raw heft the massive metal head provides. The thick plate these drakes wear "
 "protects them well against weapons that could slip between their scales."
 msgstr ""
-"Арбитры очень серьёзно воспринимают обязанность своей касты — охранять "
-"пордок. Чтобы лучше исполнять свой долг, они отказались от обычных для "
+"Смотрители очень серьёзно воспринимают обязанность своей касты — принуждать "
+"к порядку. Чтобы лучше исполнять свой долг, они отказались от обычных для "
 "дрейков боевых когтей, и сменили копья на колюще-режущие алебарды. По их "
-"мнению, потеря маневренности вполне окупается преимуществами тяжёлого "
-"наконечника. Толстые доспехи этих дрейков хорошо защищают от оружия, "
-"способного проскользнуть сквозь их чешую."
+"мнению, потеря маневренности вполне окупается преимуществами массивного "
+"металлического лезвия. Толстые доспехи этих дрейков хорошо защищают от "
+"оружия, способного проскользнуть сквозь их чешую."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -628,7 +628,7 @@ msgstr "когти"
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:4
 msgid "Drake Clasher"
-msgstr "Боец"
+msgstr "Стражник"
 
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:19
@@ -645,7 +645,7 @@ msgid ""
 "particularly good at \"resolving\" territorial disputes with other drakes "
 "and enforcing the laws of their tribe."
 msgstr ""
-"Каста Бойцов отличается от прочих дрейков. Их толстые доспехи, хотя и "
+"Каста Стражников отличается от прочих дрейков. Их толстые доспехи, хотя и "
 "компенсируют природную уязвимость дрейков к копьям и стрелам, настолько "
 "тяжелы и неудобны, что не дают ни летать, ни дышать достаточно глубоко для "
 "использования внутреннего огня. Бойцы принимают это как должное и полностью "
@@ -654,13 +654,13 @@ msgstr ""
 "\n"
 "К тому же, это единственная каста, которой позволено нарушать табу и "
 "сражаться копьями в дополнение к обычным для дрейков металлическим когтям. "
-"Благодаря этому Бойцы успешно «решают» территориальные споры и наводят "
-"порядок среди своих сородичей."
+"Благодаря этому Бойцы успешно «решают» территориальные споры с другими "
+"дрейками и обеспечивают соблюдение законов внутри своего племени."
 
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:4
 msgid "Drake Enforcer"
-msgstr "Броненосец"
+msgstr "Каратель"
 
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:20
@@ -672,12 +672,11 @@ msgid ""
 "careful not to besmirch the honor of the Enforcers, and generally call upon "
 "them to combat only the most pernicious of enemies."
 msgstr ""
-"Броненосцы – отнюдь не мастера тактики, манёвра или обмана; вместо этого, "
-"они рвутся в самую гущу рукопашной. На ближней дистанции не так уж и важно, "
-"что их доспехи мешают им использовать огненное дыхание, важна лишь мощь, "
+"Каратели – отнюдь не мастера тактики, манёвра или обмана; вместо этого, они "
+"рвутся в самую гущу рукопашной. На ближней дистанции не так уж и важно, что "
+"их доспехи мешают им использовать огненное дыхание, важна лишь мощь, "
 "вкладываемая ими в каждый удар. Вожди дрейков стараются не запятнать честь "
-"Броненосцев и обычно зовут их на битву только против самых смертельных "
-"врагов."
+"Карателей и обычно зовут их на битву только против самых смертельных врагов."
 
 #. [attack]: type=impact
 #: data/core/units/drakes/Enforcer.cfg:56
@@ -785,7 +784,7 @@ msgstr ""
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
 msgid "Drake Glider"
-msgstr "Планёр"
+msgstr "Ловец"
 
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:19
@@ -804,15 +803,15 @@ msgid ""
 "precious wings as far from the enemy as possible."
 msgstr ""
 "Многие дрейки более всего любят бьющий по чешуе ветер, и поэтому носят "
-"лёгкие одежды касты Планёров. Их страсть – длительные набеги на дальние "
+"лёгкие одежды касты Ловцов. Их страсть – длительные набеги на дальние "
 "границы владений племени, хотя прочие дрейки удивляются – как кто-то может "
 "наслаждаться нудной охотой, когда можно завоевать большую славу на поле "
 "боя.\n"
 "\n"
-"Чаще всего Планёры охотятся на крупную дичь – оленей, кабанов, дельфинов; их "
+"Чаще всего Ловцы охотятся на крупную дичь – оленей, кабанов, дельфинов; их "
 "огненное дыхание, не стеснённое как у других каст доспехами, очень помогает "
-"собрать добычу в одно стадо, не вредя ей. Если Планёра призывают на поле "
-"боя, он предпочитает тревожить врага издалека, – и только если все остальные "
+"собрать добычу в одно стадо, не вредя ей. Если Ловца призывают на поле боя, "
+"он предпочитает тревожить врага издалека, – и только если все остальные "
 "средства исчерпаны, он бьётся ногами, стараясь удержать врага как можно "
 "дальше от своих драгоценных крыльев."
 
@@ -825,7 +824,7 @@ msgstr "удар слёта"
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:4
 msgid "Hurricane Drake"
-msgstr "Ураган"
+msgstr "Истребитель"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:19
@@ -838,7 +837,7 @@ msgid ""
 "castes has increased their skill in combat, but their greatest strength "
 "still lies in their speed and flight."
 msgstr ""
-"Ураганные Дрейки уже не занимаются чёрной работой вроде охоты и "
+"Дрейки-истребители уже не занимаются чёрной работой вроде охоты и "
 "собирательства, для чего предназначены младшие члены касты. Они — "
 "неотъемлемая часть армии дрейков: разведчики, которых посылают перед "
 "основными силами, гонцы на поле боя, но с тем же успехом они могут "
@@ -870,7 +869,7 @@ msgstr ""
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:4
 msgid "Sky Drake"
-msgstr "Небесный"
+msgstr "Хищник"
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:18
@@ -882,7 +881,7 @@ msgid ""
 "of their tribe and, just possibly, time with one of the closely-guarded "
 "drake females."
 msgstr ""
-"Лёгкие керамические доспехи, которые носят Небесные — символ их касты; их "
+"Лёгкие керамические доспехи, которые носят Хищники — символ их касты; их "
 "серебрянные украшения символизируют власть над воздухом. Как управляющие "
 "охотой, они часто и надолго отлучаются из дома. Каждый из них стремится "
 "принести как можно больше добычи, завоевав уважение племени, и, возможно, "
@@ -891,7 +890,7 @@ msgstr ""
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
 msgid "Drake Thrasher"
-msgstr "Рубака"
+msgstr "Крушитель"
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:19
@@ -903,16 +902,16 @@ msgid ""
 "are weapons. A Thrasher will gladly fulfill his caste duties, as long as it "
 "can be done on the battlefield."
 msgstr ""
-"Доспех ограничивает Рубак меньше, чем других воинов — они научились "
+"Доспехи Крушителей не ограничивают их, а являются их оружием — они научились "
 "перенаправлять тяжесть доспехов в движущий импульс, что добавляет силы к "
-"ударам их коротких копьев и железных когтей. Их оружие и тело едины; даже их "
-"толстые шлемы и кости черепа – оружие. Рубака всегда счастлив выполнить свой "
-"долг перед кастой, особенно на поле боя."
+"ударам их коротких копий и железных когтей. Снаряжение и тело едины; даже их "
+"толстые шлемы и крепкие кости черепа внутри – оружие. Крушитель всегда "
+"счастлив выполнить свой долг перед кастой, особенно на поле боя."
 
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:4
 msgid "Drake Warden"
-msgstr "Страж"
+msgstr "Надзиратель"
 
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:19
@@ -925,12 +924,13 @@ msgid ""
 "bronze plate is the strongest work from the Drake forges, and their halberds "
 "can cleave a human in half."
 msgstr ""
-"Две вещи отличают Стражей от остальных Бойцов: причудливые шлемы, "
+"Две вещи отличают Надзирателей от остальных Бойцов: причудливые шлемы, "
 "изображающие предков-драконов, и тщание, с которым они драпируют свои "
 "бронированные крылья яркими тканями, отправляясь на службу. Хотя этот стиль "
 "и отражает их гордость своим положением в иерархии дрейков, тем не менее, он "
-"далёк от церемониального. Громоздкие бронзовые доспехи Стражей — наилучшее "
-"изделие дрейковских кузниц, а их алебарды способны рассечь человека надвое."
+"далёк от церемониального. Громоздкие бронзовые доспехи Надзирателей — "
+"наилучшее изделие дрейковских кузниц, а их алебарды способны рассечь "
+"человека надвое."
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
@@ -1523,12 +1523,6 @@ msgstr "Стрелок"
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:19
 #, fuzzy
-#| msgid ""
-#| "Elves are wonderously keen-sighted, a gift which contributes to their "
-#| "mastery of the bow. An elf practiced at archery can hit targets that a "
-#| "man couldn’t even see, and can nock a second arrow almost as soon as the "
-#| "first is let fly. Realizing this prodigious skill does come with one "
-#| "cost, that being a lack of practice with the sword."
 msgid ""
 "Elves are wondrously keen-sighted, a gift which contributes to their mastery "
 "of the bow. An elf practiced at archery can hit targets that a man couldn’t "
@@ -4891,7 +4885,6 @@ msgstr ""
 #. [unit_type]: id=Orcish Nightblade, race=orc
 #: data/core/units/orcs/Nightblade.cfg:4
 #, fuzzy
-#| msgid "Orcish Leader"
 msgid "Orcish Nightblade"
 msgstr "Вожак"
 
@@ -4903,7 +4896,6 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/orcs/Nightblade.cfg:44
 #, fuzzy
-#| msgid "war blade"
 msgid "blade"
 msgstr "клинок войны"
 
@@ -5506,17 +5498,6 @@ msgstr "Темный адепт"
 #. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:23
 #, fuzzy
-#| msgid ""
-#| "To attract any practitioners, the lure of black magic must be a great "
-#| "prize indeed, for anyone caught practicing the art in the civilized world "
-#| "is subject to a death sentence. And yet there are those who pursue this "
-#| "art, for the prize offered is nothing less than immortality. Hidden away "
-#| "in secret cults, or initiated into the dark orders of the underworld, the "
-#| "training which these fanatics must endure often drives them to exhaustion "
-#| "and enfeeblement.\n"
-#| "     \n"
-#| "    In such condition, their only weapon is the craft they have so "
-#| "committed themselves to learning."
 msgid ""
 "To attract any practitioners, the lure of black magic must be a great prize "
 "indeed, for anyone caught practicing the art in the civilized world is "
