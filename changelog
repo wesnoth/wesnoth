@@ -22,6 +22,9 @@ Version 1.13.0+dev:
    * New generic portraits for the Walking Corpse and Soulless
  * Language and i18n:
    * Updated translations: Galician, Scottish Gaelic, Russian
+ * Lua API:
+   * New function wesnoth.get_viewing_side
+   * New function wesnoth.remove_dialog_item
  * Multiplayer:
    * A New Land:
      * Removed the ability to select individual factions when using map
@@ -32,11 +35,13 @@ Version 1.13.0+dev:
    * Fixed "Accept whispers from friends only" not working with the default
      lobby UI, and added a warning every 5 minutes for individual rejected
      senders.
-   * Allow custom colors in mp connect dialog. (bug #23629)
-   * It now possible to change a sides controller by wml (for example with [modify_side]) in a mp game.
-   * Changing teams by wml in a mp game causes less bugs (bug #23028)
-   * Mp campaigns now behave more like sp campaigns.
-   * Misc fixes in mp connect (bugs #23641 #23509 #23496 #23462)
+   * Allow custom colors in MP connect dialog (bug #23629).
+   * It is now possible to change a side's controller by WML (for example with
+     [modify_side]) in a MP game.
+   * Changing teams by WML in a MP game causes less bugs (bug #23028).
+   * MP campaigns now behave more like single-player campaigns.
+   * Various fixes in the MP game setup screens (bugs #23641, #23509, #23496,
+     #23462).
  * Units:
    * Fixed the Shuja not having the default AMLA.
  * User interface:
@@ -56,9 +61,10 @@ Version 1.13.0+dev:
    * Fixed Wesnoth's fonts remaining in use by Windows after abnormal exits, as
      well as being available to other applications.
    * Started showing on which difficulty levels a campaign was completed.
-   * Modifications for sp are now selectable directly in the campaign selection
-     screen.
-   * The game now automaticy detect whether to show configure screen in sp.
+   * Modifications for single-player campaigns are now selectable directly in
+     the single-player Campaigns menu.
+   * The game now automatically detects whether to show the game setup screen
+     in single-player mode.
  * WML engine:
    * Added support for [object] duration=turn end
    * New or updated image path functions:
@@ -67,14 +73,12 @@ Version 1.13.0+dev:
       * ~SWAP(): swaps the RGBA channels of the image
       * ~CROP(): now supports negative x and y values.
    * Added support for SLF in [label] when used inside an event
-   * Add synced=yes(default)/no to [set_menu_item] 
-   * New lua function wesnoth.get_viewing_side
-   * New lua function add wesnoth.remove_dialog_item
+   * Added synced=yes/no (default yes) to [set_menu_item]
    * [options] is now recognized inside [campaign]
-   * type=sp/mp/hybrid now must be specified for  [modification]s
+   * type=sp/mp/hybrid now must be specified for [modification]s
  * Miscellaneous and bug fixes:
    * Removed abandoned libana network API implementation.
-   * Fixed bug#23201 Toggle icons display error in replay.
+   * Fixed bug #23201, toggle icons display error in replay.
    * Added --wconsole switch to allocate a console on startup (Windows-only).
    * Added cwesnoth.cmd wrapper script to start Wesnoth with a console
      displaying stdout+stderr (Windows-only).
@@ -89,13 +93,15 @@ Version 1.13.0+dev:
    * Moved [role] tag to Lua (fix for bug #23630)
    * Removed broken Python port of wmlxgettext from data/tools/.
    * Default to non-strict compilation with CMake.
-   * Its no longer possible to undo moves before the last (manual) shroud update
+   * It is no longer possible to undo moves before the last (manual) shroud
+     update.
    * Debug commands are now synced.
-   * fixed gui2 toggel panels
-   * Removed some config reloads, specially when leaving games or entering sp
-     campaign selection.
-   * It is now possible to disable/enable default eras quick4 mp leaders and
-     time over advantage dialog by wml by setting a wml variable.
+   * Fixed GUI2 toggle panels in some way that the author of this changelog
+     entry chose not to specify.
+   * Removed some config reloads, especially when leaving games or entering
+     the single-player Campaigns menu.
+   * It is now possible to use WML to disable/enable quick 4 MP leaders in the
+     Default era and the time over advantage dialog by setting a WML variable.
 
 Version 1.13.0:
  * Security fixes:

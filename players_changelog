@@ -20,7 +20,7 @@ Version 1.13.0+dev:
    * New generic portraits for the Walking Corpse and Soulless
 
  * Language and i18n:
-   * Updated translations: Galician, Scottish Gaelic.
+   * Updated translations: Galician, Scottish Gaelic, Russian.
 
  * Multiplayer:
    * A New Land:
@@ -31,6 +31,9 @@ Version 1.13.0+dev:
    * Fixed "Accept whispers from friends only" not working with the default
      lobby UI, and added a warning every 5 minutes for individual rejected
      senders.
+   * MP campaigns now behave more like single-player campaigns.
+   * Various fixes in the MP game setup screens (bugs #23641, #23509, #23496,
+     #23462).
 
  * Units:
    * Fixed the Shuja not having the default AMLA.
@@ -47,16 +50,22 @@ Version 1.13.0+dev:
      attacking or otherwise switching to a new animation.
    * Chat Log dialog now starts on the last log page when there are multiple
      pages.
+   * Started showing on which difficulty levels a campaign was completed.
+   * Modifications for single-player campaigns are now selectable directly in
+     the single-player Campaigns menu.
+   * The game now automatically detects whether to show the game setup screen
+     in single-player mode.
 
  * Miscellaneous and bug fixes:
-   * Fixed a segfault in [move_units_fake]
+   * Fixed a segfault in [move_units_fake].
+   * Fixed unbound memory read in the MP map selection screen that could lead
+     to a segmentation fault or other abnormal behavior (bug #23606).
    * Made silence.ogg larger to work around a crash involving the multiplayer
      lobby with music and sound enabled (bug #23633, bug #23599) with libvorbis
      builds affected by Debian bug #782831.
    * Moved [role] tag to Lua (fix for bug #23630)
-
- * User interface:
-   * Started showing on which difficulty levels a campaign was completed.
+   * Removed some config reloads, especially when leaving games or entering
+     the single-player Campaigns menu.
 
 
 Version 1.13.0:
