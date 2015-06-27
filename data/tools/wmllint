@@ -1007,7 +1007,7 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
             actual_tag = "[" + nav.element[2:]
         else:
             actual_tag = nav.element
-        if actual_tag not in ("[part]", "[image]", "[insert_tag]",
+        if actual_tag not in ("[part]", "[background_layer]", "[image]", "[insert_tag]",
                               "[if]", "[then]", "[else]", "[switch]", "[case]",
                               "[variable]", "[deprecated_message]"):
             print errlead + '%s not permitted within [part] tag' % nav.element
