@@ -1011,11 +1011,16 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
         if m and not m.group(1):
             print errlead + 'translatability mark before non-string'
     # Most tags are not allowed with [part]
-    if ("[part]" in ancestors or parent == "[part]") and isOpener(nav.element) and \
-                    nav.element not in ("[part]", "[background_layer]", "[image]", "[insert_tag]",
-                    "[if]", "[then]", "[else]", "[switch]", "[case]",
-                    "[variable]", "[deprecated_message]"):
-        print errlead + '%s not permitted within [part] tag' % nav.element
+    if ("[part]" in ancestors or parent == "[part]") and isOpener(nav.element):
+        # FIXME: this should be part of wmliterator's functionality
+        if isExtender(nav.element):
+            actual_tag = "[" + nav.element[2:]
+        else:
+            actual_tag = nav.element
+        if actual_tag not in ("[part]", "[background_layer]", "[image]", "[insert_tag]",
+                              "[if]", "[then]", "[else]", "[switch]", "[case]",
+                              "[variable]", "[deprecated_message]"):
+            print errlead + '%s not permitted within [part] tag' % nav.element
     # Most tags are not permitted inside [if]
     if (len(ancestors) >= 1 and parent == "[if]") or \
        (len(ancestors) >= 2 and parent == "#ifdef" and ancestors[-1] == "[if]"):
