@@ -30,6 +30,7 @@
 #include "game_preferences.hpp"
 #include "sdl/utils.hpp" // Only needed for int_to_color (!)
 #include "unit_types.hpp"
+#include "synced_context.hpp"
 #include "whiteboard/side_actions.hpp"
 #include "network.hpp"
 #include "config_assign.hpp"
@@ -468,6 +469,48 @@ void team::set_share_maps( bool share_maps ){
 void team::set_share_view( bool share_view ){
 	info_.share_view = share_view;
 }
+
+namespace 
+{
+	team::CONTROLLER unified_controller(team::CONTROLLER c)
+	{
+		if(c == team::CONTROLLER::NETWORK)
+			return team::CONTROLLER::HUMAN;
+		if(c == team::CONTROLLER::NETWORK_AI)
+			return team::CONTROLLER::AI;
+		return c;
+	}
+	class controller_server_choice : public synced_context::server_choice
+	{
+	public:
+		controller_server_choice(team::CONTROLLER new_controller, const team& team)
+			: new_controller_(new_controller)
+			, team_(team)
+		{
+		}
+		/// We are in a game with no mp server and need to do this choice locally
+		virtual config local_choice() const
+		{
+			return config_of("controller", new_controller_);
+		}
+		/// the request which is sended to the mp server.
+		virtual config request() const
+		{
+			return config_of
+				("new_controller", new_controller_)
+				("old_controller", unified_controller(team_.controller()))
+				("side", team_.side());
+		}
+		virtual const char* name() const
+		{
+			return "change_controller_wml";
+		}
+	private:
+		team::CONTROLLER new_controller_;
+		const team& team_;
+	};
+}
+
 void team::change_controller_by_wml(const std::string& new_controller_string)
 {
 	try
@@ -480,24 +523,9 @@ void team::change_controller_by_wml(const std::string& new_controller_string)
 			//We dont allow changing the currently active side to "null" controlled.
 			throw bad_enum_cast(new_controller_string, "CONTROLLER"); //catched below 
 		}
-		if((*teams)[resources::controller->current_side() - 1].is_local()) {
-			//TODO: move netword stuff to playturn.cpp
-			//the currently active side informs the mp server about the controller change,
-			network::send_data(config_of
-					("change_controller_wml", config_of
-						("side", this->side())
-						("controller", new_controller_string)
-					)
-				, 0);
-		}
-		// In case this->is_empty() this side wasn't contorlled by any client yet, we need to assign controll to some client
-		// We assign controll to the currentyl active client, and asume the server does the same.
-		bool is_networked = this->is_empty() ? (*teams)[resources::controller->current_side() - 1].is_network() : this->is_network();
-		if(is_networked && new_controller == CONTROLLER::AI) {
-			new_controller = CONTROLLER::NETWORK_AI;
-		}
-		if(is_networked && new_controller == CONTROLLER::HUMAN) {
-			new_controller = CONTROLLER::NETWORK;
+		config choice = synced_context::ask_server_choice(controller_server_choice(new_controller, *this));
+		if(!new_controller.parse(choice["controller"])) {
+			ERR_NG << "recieved an invalid controller string from the server" << choice["controller"] << std::endl;
 		}
 		change_controller(new_controller);
 	}

@@ -1045,6 +1045,57 @@ void game::handle_random_choice(const simple_wml::node&)
 	send_data(*mdata, 0, "game replay");
 	record_data(mdata);
 }
+void game::handle_controller_choice(const simple_wml::node& req)
+{
+	const size_t side_index = req["side"].to_int() - 1;
+	const std::string new_controller = req["new_controller"].to_string();
+	const std::string old_controller = req["old_controller"].to_string();
+	if(new_controller != "human" && new_controller != "ai" && new_controller != "null") {
+		send_and_record_server_message("Could not handle [request_choice] [change_controller] with invalid controller '" + new_controller + "'");
+		return;
+	}
+	if(old_controller != "human" && old_controller != "ai" && old_controller != "null") {
+		send_and_record_server_message("Could not handle [request_choice] [change_controller] with invalid controller '" + old_controller + "'");
+		return;
+	}
+	if(old_controller != this->side_controllers_[side_index]) {
+		send_and_record_server_message("Found unexpected old_controller= '" + old_controller + "' in [request_choice] [change_controller]");
+	}
+	if(side_index >= sides_.size()) {
+		send_and_record_server_message("Could not handle [request_choice] [change_controller] with invalid side '" + req["side"].to_string() + "'");
+		return;
+	}
+	const bool was_null = this->side_controllers_[side_index] == "null";
+	const bool becomes_null = new_controller == "null";
+	if(was_null) {
+		assert(sides_[side_index] == 0);
+		sides_[side_index] = current_player();
+	}
+	if(becomes_null) {
+		sides_[side_index] = 0;
+	}
+	side_controllers_[side_index] = new_controller;
+
+	simple_wml::document* mdata = new simple_wml::document;
+	simple_wml::node& turn = mdata->root().add_child("turn");
+	simple_wml::node& command = turn.add_child("command");
+	simple_wml::node& change_controller_wml = command.add_child("change_controller_wml");
+	change_controller_wml.set_attr_dup("controller", new_controller.c_str());
+	command.set_attr("from_side", "server");
+	command.set_attr("dependent", "yes");
+	if(sides_[side_index] != 0) {
+		//calling send_to_one to 0 connect causes the package to be sended to all clients.
+		wesnothd::send_to_one(*mdata, sides_[side_index], "game replay");
+	}
+	if(new_controller == "human") {
+		change_controller_wml.set_attr("controller", "network");
+	}
+	if(new_controller == "ai") {
+		change_controller_wml.set_attr("controller", "network_ai");
+	}
+	send_data(*mdata, sides_[side_index], "game replay");
+	record_data(mdata);
+}
 
 void game::handle_choice(const simple_wml::node& data, const player_map::iterator user)
 {
@@ -1053,6 +1104,9 @@ void game::handle_choice(const simple_wml::node& data, const player_map::iterato
 	// Otherwise we allow observers to cause OOS for the playing clients by sending
 	// server choice requests based on incompatible local changes. To solve this we block 
 	// server choice requests from observers.
+	if(!started_) {
+		return;
+	}
 	if (user->first != owner_ && !is_player(user->first)) {
 		return;
 	}
@@ -1067,6 +1121,12 @@ void game::handle_choice(const simple_wml::node& data, const player_map::iterato
 
 	if(const simple_wml::node* rand = data.child("random_seed")) {
 		handle_random_choice(*rand);
+	}
+	else if(const simple_wml::node* ccw = data.child("change_controller_wml")) {
+		handle_controller_choice(*ccw);
+	}
+	else {
+		send_and_record_server_message("Found unknown server choice request: [" + data.first_child().to_string() + "]");
 	}
 
 }
@@ -1358,6 +1418,13 @@ void game::load_next_scenario(const player_map::const_iterator user) {
 	DBG_GAME << "****\n loading next scenario for a client. sides info = " << std::endl;
 	DBG_GAME << debug_sides_info() << std::endl;
 	DBG_GAME << "****" << std::endl;
+	// Change the controller to match that client.
+	// FIXME: This breaks scenario transitions with mp connect screen shown.
+	// FIXME: This casues bugs. esp if controller have changedsince teh beginning of the next scenario
+	//  There are currently 2 possible ideas to fix this issue 
+	//  1) When the scenario starts, we store the controllers at that point and use that date when a client load the the next scenario (here)
+	//  2) When a client loads teh next scenario we send him the observers starting point (meaning we don't change sides here)
+	//     And then we send that side a automaic change controller later.
 
 	for(simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
 		if ((**s)["controller"] != "null") {

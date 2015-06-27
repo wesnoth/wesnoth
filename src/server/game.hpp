@@ -236,6 +236,8 @@ public:
 
 	void handle_random_choice(const simple_wml::node& data);
 
+	void handle_controller_choice(const simple_wml::node& data);
+
 	void reset_last_synced_context_id() { last_choice_request_id_ = -1; }
 	/**
 	 * Function which returns true iff 'player' controls any of the sides spcified in 'sides'.
