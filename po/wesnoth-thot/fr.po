@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The_Hammer_of_Thursagan-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 05:06-0300\n"
+"POT-Creation-Date: 2015-06-27 20:18-0300\n"
 "PO-Revision-Date: 2013-01-12 12:43+0100\n"
 "Last-Translator: Guigou Guillaume <guillaume.guigou@orange.fr>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
@@ -790,7 +790,7 @@ msgstr ""
 "Que tout le monde reste sur ses gardes et en groupe. C'est un pays de "
 "brigands... et c'est à coup sûr de là que provenaient Gothras et sa bande."
 
-#. [message]: role=Scout
+#. [message]: role=scout
 #. 'muckle' = Scottish/archaic English meaning 'great' or 'large'
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:231
 msgid ""
@@ -1413,7 +1413,9 @@ msgstr "Prends ça en mémoire de ma famille ! Assassin !"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:351
-msgid "They are defeated"
+#, fuzzy
+#| msgid "They are defeated"
+msgid "They are defeated!"
 msgstr "Ils sont vaincus."
 
 #. [message]: speaker=Angarthing
@@ -1465,12 +1467,14 @@ msgstr ""
 msgid "Forbidden Forest"
 msgstr "La Forêt interdite"
 
+#. [side]: type=Ancient Wose, id=Burumardir-Athelorand
 #. [side]: type=Elvish Enchantress, id=Iluvarda
 #. [side]: type=Elvish High Lord, id=Telcherion
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:120
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:147
-msgid "Elves"
-msgstr ""
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:174
+msgid "Forest"
+msgstr "Forêt"
 
 #. [side]: type=Elvish High Lord, id=Telcherion
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:125
@@ -1481,11 +1485,6 @@ msgstr "Telcherion"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:152
 msgid "Iluvarda"
 msgstr "Iluvarda"
-
-#. [side]: type=Ancient Wose, id=Burumardir-Athelorand
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:174
-msgid "Forest"
-msgstr "Forêt"
 
 #. [side]: type=Ancient Wose, id=Burumardir-Athelorand
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:178
@@ -1562,7 +1561,7 @@ msgstr ""
 "Tous avec moi ! Nous avons mieux à faire que de nous bagarrer avec des elfes."
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:371
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:368
 msgid "Kal Kartha should be only another day’s march east of here."
 msgstr "Kal Kartha ne doit plus être qu'à un jour de marche."
 

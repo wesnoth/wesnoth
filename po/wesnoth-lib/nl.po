@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-17 11:34-0300\n"
+"POT-Creation-Date: 2015-06-27 20:18-0300\n"
 "PO-Revision-Date: 2011-12-08 23:33+0100\n"
 "Last-Translator: Koen Vervloesem <koen@vervloesem.eu>\n"
 "Language-Team: Dutch <AI0867@gmail.com>\n"
@@ -1655,9 +1655,9 @@ msgstr "Verbinden"
 #. [button]: id=cancel
 #: data/gui/default/window/addon_connect.cfg:217
 #: data/gui/default/window/addon_uninstall_list.cfg:174
-#: data/gui/default/window/campaign_dialog.cfg:467
-#: data/gui/default/window/campaign_difficulty.cfg:192
-#: data/gui/default/window/core_dialog.cfg:387
+#: data/gui/default/window/campaign_dialog.cfg:538
+#: data/gui/default/window/campaign_difficulty.cfg:223
+#: data/gui/default/window/core_dialog.cfg:240
 #: data/gui/default/window/custom_tod.cfg:397
 #: data/gui/default/window/data_manage.cfg:361
 #: data/gui/default/window/depcheck_select_new.cfg:146
@@ -1666,7 +1666,7 @@ msgstr "Verbinden"
 #: data/gui/default/window/editor_edit_label.cfg:191
 #: data/gui/default/window/editor_edit_scenario.cfg:304
 #: data/gui/default/window/editor_edit_side.cfg:488
-#: data/gui/default/window/editor_generate_map.cfg:107
+#: data/gui/default/window/editor_generate_map.cfg:218
 #: data/gui/default/window/editor_new_map.cfg:125
 #: data/gui/default/window/editor_resize_map.cfg:284
 #: data/gui/default/window/editor_set_starting_position.cfg:175
@@ -1677,7 +1677,7 @@ msgstr "Verbinden"
 #: data/gui/default/window/language_selection.cfg:141
 #: data/gui/default/window/message.cfg:151
 #: data/gui/default/window/mp_change_control.cfg:160
-#: data/gui/default/window/mp_cmd_wrapper.cfg:470
+#: data/gui/default/window/mp_cmd_wrapper.cfg:485
 #: data/gui/default/window/mp_connect.cfg:176
 #: data/gui/default/window/mp_create_game.cfg:559
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:202
@@ -2024,28 +2024,19 @@ msgid "Scaled to hex"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/campaign_dialog.cfg:55
+#: data/gui/default/window/campaign_dialog.cfg:56
 #, fuzzy
 #| msgid "Play a campaign"
 msgid "Play a Campaign"
 msgstr "Veldtocht spelen"
 
-#. [button]: id=advanced_settings
-#. [label]
-#: data/gui/default/window/campaign_dialog.cfg:423
-#: data/gui/default/window/campaign_settings.cfg:48
-#, fuzzy
-#| msgid "sound^Advanced Options"
-msgid "Advanced Settings"
-msgstr "Geavanceerde opties"
-
 #. [toggle_button]: id=checkbox_deterministic
-#: data/gui/default/window/campaign_dialog.cfg:436
+#: data/gui/default/window/campaign_dialog.cfg:507
 msgid "Deterministic mode"
 msgstr ""
 
 #. [toggle_button]: id=checkbox_deterministic
-#: data/gui/default/window/campaign_dialog.cfg:438
+#: data/gui/default/window/campaign_dialog.cfg:509
 msgid ""
 "Makes the random number generator yield the same results even after "
 "reloading a game"
@@ -2054,10 +2045,10 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #. [button]: id=save
-#: data/gui/default/window/campaign_dialog.cfg:453
-#: data/gui/default/window/campaign_difficulty.cfg:179
-#: data/gui/default/window/campaign_settings.cfg:326
-#: data/gui/default/window/core_dialog.cfg:373
+#: data/gui/default/window/campaign_dialog.cfg:524
+#: data/gui/default/window/campaign_difficulty.cfg:210
+#: data/gui/default/window/campaign_settings.cfg:322
+#: data/gui/default/window/core_dialog.cfg:227
 #: data/gui/default/window/custom_tod.cfg:387
 #: data/gui/default/window/data_manage.cfg:347
 #: data/gui/default/window/data_manage.cfg:348
@@ -2109,31 +2100,31 @@ msgid "Select difficulty level:"
 msgstr ""
 
 #. [label]
+#: data/gui/default/window/campaign_settings.cfg:48
+#, fuzzy
+#| msgid "sound^Advanced Options"
+msgid "Advanced Settings"
+msgstr "Geavanceerde opties"
+
+#. [label]
 #: data/gui/default/window/campaign_settings.cfg:77
 msgid "Additional dialogs:"
 msgstr ""
 
-#. [toggle_button]: id=mp_configure
-#: data/gui/default/window/campaign_settings.cfg:104
-#, fuzzy
-#| msgid "Actions"
-msgid "Level options"
-msgstr "Acties"
-
 #. [toggle_button]: id=mp_connect
-#: data/gui/default/window/campaign_settings.cfg:120
+#: data/gui/default/window/campaign_settings.cfg:116
 msgid "Configure sides"
 msgstr ""
 
 #. [label]
 #. [label]: id=era_label
-#: data/gui/default/window/campaign_settings.cfg:161
+#: data/gui/default/window/campaign_settings.cfg:157
 #: data/gui/default/window/mp_create_game.cfg:185
 msgid "Era:"
 msgstr "Tijdperk:"
 
 #. [label]: id=mod_label
-#: data/gui/default/window/campaign_settings.cfg:250
+#: data/gui/default/window/campaign_settings.cfg:246
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Modifications:"
@@ -2205,7 +2196,7 @@ msgid "clipboard^Copy"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/core_dialog.cfg:55
+#: data/gui/default/window/core_dialog.cfg:44
 #, fuzzy
 #| msgid "Load Game"
 msgid "Load Core"
@@ -2213,7 +2204,7 @@ msgstr "Spel laden"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:45
-msgid "Custom Time of Day Schedule"
+msgid "Custom Time Schedule"
 msgstr ""
 
 #. [label]
@@ -2346,7 +2337,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/depcheck_confirm_change.cfg:40
-#: src/gui/widgets/label.cpp:178
+#: src/gui/widgets/label.cpp:177
 msgid "Confirm"
 msgstr ""
 
@@ -2575,32 +2566,36 @@ msgstr ""
 msgid "controller^Player number:"
 msgstr ""
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_generate_map.cfg:35
-msgid "Generate Random Map"
-msgstr "Willekeurige kaart genereren"
+#: data/gui/default/window/editor_generate_map.cfg:43
+#: src/hotkey/hotkey_command.cpp:207
+msgid "Generate Map"
+msgstr "Genereer Kaart"
 
-#. [button]: id=next_generator
-#: data/gui/default/window/editor_generate_map.cfg:64
-#: data/gui/default/window/editor_generate_map.cfg:65
-msgid "Next Generator"
-msgstr "Volgende Generator"
+#. [label]
+#: data/gui/default/window/editor_generate_map.cfg:58
+#, fuzzy
+#| msgid "Map Generator"
+msgid "Choose a map generator:"
+msgstr "Kaartgenerator"
 
 #. [button]: id=settings
-#: data/gui/default/window/editor_generate_map.cfg:86
-#: data/gui/default/window/editor_generate_map.cfg:87
+#: data/gui/default/window/editor_generate_map.cfg:131
 msgid "Settings"
 msgstr "Instellingen"
 
+#. [label]
+#: data/gui/default/window/editor_generate_map.cfg:164
+#, fuzzy
+#| msgid "Speed: "
+msgid "Seed:"
+msgstr "Snelheid:"
+
 #. [button]: id=ok
-#: data/gui/default/window/editor_generate_map.cfg:97
+#: data/gui/default/window/editor_generate_map.cfg:206
 msgid "Generate"
 msgstr "Genereren"
-
-#. [label]
-#: data/gui/default/window/editor_generate_map.cfg:127
-msgid "Seed"
-msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -3242,7 +3237,7 @@ msgstr ""
 
 #. [button]: id=kick
 #: data/gui/default/window/lobby_player_info.cfg:168
-#: data/gui/default/window/mp_cmd_wrapper.cfg:389
+#: data/gui/default/window/mp_cmd_wrapper.cfg:399
 msgid "Kick"
 msgstr "Verwijder"
 
@@ -3473,27 +3468,27 @@ msgid "Add as Ignore"
 msgstr "Voeg toe als genegeerd"
 
 #. [label]
-#: data/gui/default/window/mp_cmd_wrapper.cfg:241
+#: data/gui/default/window/mp_cmd_wrapper.cfg:251
 msgid "Moderating"
 msgstr "Modereren"
 
 #. [label]
-#: data/gui/default/window/mp_cmd_wrapper.cfg:271
+#: data/gui/default/window/mp_cmd_wrapper.cfg:281
 msgid "Reason:"
 msgstr "Reden:"
 
 #. [label]
-#: data/gui/default/window/mp_cmd_wrapper.cfg:323
+#: data/gui/default/window/mp_cmd_wrapper.cfg:333
 msgid "Time:"
 msgstr "Tijd:"
 
 #. [button]: id=status
-#: data/gui/default/window/mp_cmd_wrapper.cfg:374
+#: data/gui/default/window/mp_cmd_wrapper.cfg:384
 msgid "Status"
 msgstr "Status"
 
 #. [button]: id=ban
-#: data/gui/default/window/mp_cmd_wrapper.cfg:404
+#: data/gui/default/window/mp_cmd_wrapper.cfg:414
 msgid "Ban"
 msgstr "Verban"
 
@@ -3943,19 +3938,19 @@ msgstr "Bestand verwijderen mislukt."
 msgid "Creation of the directory failed."
 msgstr "Map aanmaken mislukt."
 
-#: src/game_preferences.cpp:362
+#: src/game_preferences.cpp:398
 msgid "No server has been defined."
 msgstr "Er is geen server gedefinieerd."
 
-#: src/game_preferences.cpp:461
+#: src/game_preferences.cpp:497
 msgid "player"
 msgstr "speler"
 
-#: src/game_preferences.cpp:996
+#: src/game_preferences.cpp:1032
 msgid "%H:%M"
 msgstr ""
 
-#: src/game_preferences.cpp:999
+#: src/game_preferences.cpp:1035
 msgid "%I:%M %p"
 msgstr ""
 
@@ -4589,15 +4584,15 @@ msgstr "Cirkel past niet op canvas."
 msgid "Image doesn't fit on canvas."
 msgstr "Afbeelding past niet op canvas."
 
-#: src/gui/auxiliary/canvas.cpp:1355
+#: src/gui/auxiliary/canvas.cpp:1361
 msgid "Text has a font size of 0."
 msgstr "Tekst heeft een lettergrootte van 0."
 
-#: src/gui/auxiliary/canvas.cpp:1429
+#: src/gui/auxiliary/canvas.cpp:1437
 msgid "Text doesn't start on canvas."
 msgstr "Tekst begint niet op canvas."
 
-#: src/gui/auxiliary/widget_definition.cpp:144
+#: src/gui/auxiliary/widget_definition.cpp:148
 #: src/gui/auxiliary/window_builder.cpp:263
 msgid "No resolution defined."
 msgstr "Er is geen resolutie gedefinieerd."
@@ -4733,7 +4728,7 @@ msgstr ""
 msgid "addon_state^Unknown"
 msgstr ""
 
-#: src/gui/dialogs/addon/description.cpp:392 src/gui/dialogs/chat_log.cpp:417
+#: src/gui/dialogs/addon/description.cpp:392 src/gui/dialogs/chat_log.cpp:420
 #: src/gui/dialogs/game_cache_options.cpp:98
 #: src/gui/dialogs/game_paths.cpp:119
 #: src/gui/dialogs/gamestate_inspector.cpp:713
@@ -4956,13 +4951,13 @@ msgstr "Verplicht widget '$id' is niet gedefinieerd."
 msgid "Opening links is not supported, contact your packager"
 msgstr ""
 
-#: src/gui/widgets/label.cpp:178
+#: src/gui/widgets/label.cpp:177
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you want to open this link?"
 msgstr "Weet je zeker dat je dit spel wilt verwijderen?"
 
-#: src/gui/widgets/label.cpp:211
+#: src/gui/widgets/label.cpp:208
 msgid "Copied link!"
 msgstr ""
 
@@ -5246,8 +5241,9 @@ msgid "Each Team"
 msgstr "Elk team"
 
 #: src/hotkey/hotkey_command.cpp:106
-msgid "Team 1"
-msgstr "Team 1"
+#, fuzzy
+msgid "Human Team"
+msgstr "Kasteel"
 
 #: src/hotkey/hotkey_command.cpp:107
 msgid "Skip Animation"
@@ -5321,7 +5317,7 @@ msgid "Assign Local Time"
 msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:134
-msgid "Custom Time of Day Creator"
+msgid "Time Schedule Editor"
 msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:135
@@ -5653,10 +5649,6 @@ msgstr "Maak Vakjes In Selectie Willekeurig Terrein"
 msgid "Rotate Map"
 msgstr "Roteer Kaart"
 
-#: src/hotkey/hotkey_command.cpp:207
-msgid "Generate Map"
-msgstr "Genereer Kaart"
-
 #: src/hotkey/hotkey_command.cpp:208
 msgid "Apply a Mask"
 msgstr "Breng een Masker aan"
@@ -5917,11 +5909,11 @@ msgid "Hat"
 msgstr "Knippen"
 
 #: src/hotkey/hotkey_preferences_display.cpp:134
-msgid "Add additional binding to \"$hotkey_description|\""
+msgid "Add a new binding to \"$hotkey_description|\""
 msgstr ""
 
 #: src/hotkey/hotkey_preferences_display.cpp:136
-msgid "Clears \"$hotkey_description|'s\" bindings"
+msgid "Clears the current bindings for \"$hotkey_description|\""
 msgstr ""
 
 #: src/hotkey/hotkey_preferences_display.cpp:150
@@ -6039,7 +6031,7 @@ msgstr ""
 "Een terrein met een string van meer dan 4 karakters is gevonden, het "
 "bedoelde terrein is :"
 
-#: src/text.cpp:882
+#: src/text.cpp:895
 msgid "The text contains invalid markup: "
 msgstr "De tekst bevat ongeldige opmaak:"
 
@@ -6084,6 +6076,20 @@ msgid ""
 msgstr ""
 "De sleutel '$deprecated_key' is hernoemd naar '$key'. Ondersteuning voor "
 "'$deprecated_key' zal verwijderd worden in versie $removal_version."
+
+#, fuzzy
+#~| msgid "Actions"
+#~ msgid "Level options"
+#~ msgstr "Acties"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Willekeurige kaart genereren"
+
+#~ msgid "Next Generator"
+#~ msgstr "Volgende Generator"
+
+#~ msgid "Team 1"
+#~ msgstr "Team 1"
 
 #~ msgid "Password: "
 #~ msgstr "Wachtwoord: "

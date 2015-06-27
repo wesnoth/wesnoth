@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.12+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 05:06-0300\n"
+"POT-Creation-Date: 2015-06-27 20:18-0300\n"
 "PO-Revision-Date: 2009-08-25 19:56+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese Traditional <steven2880@gmail.com>\n"
@@ -737,7 +737,7 @@ msgstr ""
 "大家注意，保持緊密隊形。這裡是強盜的故鄉...迦瑟瑞斯和他的同夥很可能就來自這"
 "裡。"
 
-#. [message]: role=Scout
+#. [message]: role=scout
 #. 'muckle' = Scottish/archaic English meaning 'great' or 'large'
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:231
 #, fuzzy
@@ -1300,7 +1300,9 @@ msgstr "為了我的家族，接招，你這個凶手！"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:351
-msgid "They are defeated"
+#, fuzzy
+#| msgid "They are defeated"
+msgid "They are defeated!"
 msgstr "他們被擊敗了。"
 
 #. [message]: speaker=Angarthing
@@ -1346,12 +1348,14 @@ msgstr "他們正在尋找俘虜。我不知道他們在打什麼主意。但我
 msgid "Forbidden Forest"
 msgstr "禁行森林"
 
+#. [side]: type=Ancient Wose, id=Burumardir-Athelorand
 #. [side]: type=Elvish Enchantress, id=Iluvarda
 #. [side]: type=Elvish High Lord, id=Telcherion
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:120
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:147
-msgid "Elves"
-msgstr ""
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:174
+msgid "Forest"
+msgstr "森林"
 
 #. [side]: type=Elvish High Lord, id=Telcherion
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:125
@@ -1362,11 +1366,6 @@ msgstr "泰雀瑞恩"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:152
 msgid "Iluvarda"
 msgstr "拉福瑞達"
-
-#. [side]: type=Ancient Wose, id=Burumardir-Athelorand
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:174
-msgid "Forest"
-msgstr "森林"
 
 #. [side]: type=Ancient Wose, id=Burumardir-Athelorand
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:178
@@ -1438,7 +1437,7 @@ msgid ""
 msgstr "各位，集合！我們有比跟精靈吵嘴更重要的事情要做。"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:371
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:368
 #, fuzzy
 msgid "Kal Kartha should be only another day’s march east of here."
 msgstr "只要在往東走幾天的路應該就會抵達凱 鎧爾瑟。 "

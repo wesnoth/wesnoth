@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-17 11:34-0300\n"
+"POT-Creation-Date: 2015-06-27 20:18-0300\n"
 "PO-Revision-Date: 2015-02-11 23:10+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -228,10 +228,10 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:25
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:38
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:23
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:23
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:22
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:30
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:26
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:21
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:24
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:28
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:25
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:26
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:33
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:32
@@ -295,8 +295,8 @@ msgstr "韦诺人"
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:87
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:112
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:67
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:46
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:39
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:44
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:44
 #: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:61
 #: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:79
 #: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:97
@@ -345,10 +345,10 @@ msgstr "保卫哨所"
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:160
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:138
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:111
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:109
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:57
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:80
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:109
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:107
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:83
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:81
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:173
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:84
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:260
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1037
@@ -372,10 +372,10 @@ msgstr "格温德利阵亡"
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:164
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:142
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:115
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:113
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:61
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:84
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:113
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:111
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:87
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:85
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:177
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:88
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1041
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:161
@@ -490,12 +490,14 @@ msgstr "跟我上，士兵们！通过活版门！"
 msgid "The Escape Tunnel"
 msgstr "离脱隧道"
 
+#. [side]
 #. [side]: type=Gryphon, id=Kraagak
 #. [side]: type=Ogre, id=Grug
 #. [side]: type=Troll Warrior, id=Darg
 #. [side]: type=Troll, id=Kabak
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:42
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:84
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:82
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:69
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:44
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:60
 msgid "Monsters"
@@ -752,9 +754,13 @@ msgstr "同盟"
 msgid "Volas"
 msgstr "沃拉斯"
 
+#. [side]: type=Orcish Nightblade, id=Bagork
 #. [side]: type=Orcish Warlord, id=King Dra-Nak
+#. [side]: type=Orcish Warlord, id=Prok-Bak
 #. [side]: type=Orcish Warrior, id=Gruga-Har
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:75
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:80
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:134
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:72
 msgid "Orcs"
 msgstr "兽人"
@@ -1263,10 +1269,10 @@ msgstr "击败亡灵领袖"
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:146
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:119
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:117
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:65
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:88
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:117
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:115
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:91
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:89
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:181
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:92
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:264
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1045
@@ -1439,7 +1445,7 @@ msgstr "分岔口"
 #. [side]: type=Troll Warrior, id=Unhk
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:38
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:67
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:62
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:60
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:49
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:72
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:95
@@ -1546,33 +1552,33 @@ msgid "The Crossing"
 msgstr "渡口"
 
 #. [side]: type=Bone Knight, id=Garnad
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:34
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:32
 msgid "Garnad"
 msgstr "迦纳德"
 
 #. [side]: type=Orcish Ruler, id=Draka-Kura
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:56
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:54
 msgid "Draka-Kura"
 msgstr "德拉卡-库拉"
 
 #. [side]: type=Ogre, id=Grug
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:77
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:75
 msgid "Grug"
 msgstr "格拉格"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:105
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:103
 msgid "Move Gweddry and Owaec across the river"
 msgstr "让格温德利和欧瓦埃克过河"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:146
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:144
 msgid ""
 "We have come to the Great River. Should we cross here, or try to find a ford?"
 msgstr "我们来到大河边了。是就地渡河，还是去找个浅滩？"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:150
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:148
 #, fuzzy
 #| msgid ""
 #| "We must cross here. The undead are chasing us, and their hordes are much "
@@ -1587,7 +1593,7 @@ msgstr ""
 "援部队也快到了。我们必须在那之前过河。"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:154
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:152
 msgid ""
 "Across this river lies the Northlands. If we can get there, we may be able "
 "to get some ogres to help us — but the orcs will definitely attack us before "
@@ -1597,64 +1603,64 @@ msgstr ""
 "兽人毫无疑问会攻击我们。"
 
 #. [message]: speaker=Grug
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:158
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:156
 msgid "Grug say we no help you! We finish must battle orc with!"
 msgstr "格拉格说我们不帮你们！我们战斗和兽人先结束！"
 
 #. [message]: speaker=Draka-Kura
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:162
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:160
 msgid ""
 "Was that comprehensible to anyone? Silence, foolish ogre. I will deal with "
 "you later. Right now there are men trying to cross this river."
 msgstr "谁听得懂啊？安静，愚蠢的食人魔。我稍后会收拾你，现在有人正妄图渡河。"
 
 #. [message]: speaker=Grug
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:166
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:164
 msgid "Orc foolish! Die you now!"
 msgstr "兽人蠢蛋！死你的吧！"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:170
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:168
 msgid ""
 "If we show ourselves as enemies of the orcs, they may aid us. But first we "
 "need to cross the river."
 msgstr "如果我们以兽人的敌人的身份出现，他们可能会协助我们。但首先我们得过河。"
 
 #. [message]: speaker=Garnad
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:201
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:203
 msgid "We have you now, mortals!"
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:205
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:207
 msgid "They're closing in on us! We must get moving quickly."
 msgstr ""
 
 #. [unit]: type=Ancient Lich, id=Mal-Hakralan
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:220
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:222
 msgid "Mal-Hakralan"
 msgstr "玛尔-哈卡拉兰"
 
 #. [message]: speaker=Mal-Hakralan
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:238
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:240
 msgid ""
 "I see, this is where the scared dogs ran to. Don't think you can get away "
 "<b>this</b> easily."
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:242
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:244
 msgid ""
 "The undead reinforcements have arrived! We must cross the river immediately!"
 msgstr "亡灵增援部队到了！我们必须马上过河！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:289
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:291
 msgid "Hurry up. We must get across before these undead slaughter us!"
 msgstr "快点。我们必须在亡灵杀光我们之前过河！"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:336
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:338
 msgid ""
 "Good! We have crossed. Now let’s see if we can get the ogres to join us. "
 "They have been convinced to work for the Crown in the past; maybe it can be "
@@ -1664,17 +1670,17 @@ msgstr ""
 "现在也可以再一次为王室战斗。"
 
 #. [message]: speaker=Grug
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:345
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:347
 msgid "Grug say join you will he."
 msgstr "格拉格说加入你们他会"
 
 #. [unit]: type=Ogre
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:364
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:366
 msgid "Gork"
 msgstr "高克"
 
 #. [unit]: type=Ogre
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:371
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:373
 msgid "Drog"
 msgstr "德罗格"
 
@@ -1683,11 +1689,377 @@ msgstr "德罗格"
 msgid "Undead Crossing"
 msgstr "亡灵渡口"
 
+#. [side]: type=Necromancer, id=Mal-un-Karad
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:37
+msgid "Mal-un-Karad"
+msgstr "玛尔-昂-卡拉德"
+
+#. [objective]: condition=win
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:79
+msgid "Defeat the enemy leader"
+msgstr "击败敌军领袖"
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:114
+msgid ""
+"These fens look impassable. I don’t think we will be able to continue on "
+"this road; it is time to turn northwards, away from these undead."
+msgstr ""
+"这些沼泽看上去没法通过。我觉得不能沿着这条路前进了。是时候往北走，远离这些亡"
+"灵了。"
+
+#. [message]: speaker=Dacyn
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:118
+msgid ""
+"We must cross this river, then. We must make haste, already we have wasted "
+"too much time. Undead have positioned themselves in the middle of the ford."
+msgstr ""
+"那我们必须过河。我们得赶快，已经浪费太多时间了。亡灵已经占据了浅滩的中部。"
+
+#. [message]: speaker=Owaec
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:122
+msgid ""
+"Across this river lies the Northland. Ogres live there, as do orcs. We "
+"should proceed with caution. The undead are dangerous, but the orcs may be "
+"more dangerous still."
+msgstr ""
+"过河后便是北陆。食人魔居住在那儿，兽人也是。我们必须小心谨慎。亡灵非常危险，"
+"但是兽人可能更危险。"
+
+#. [message]: speaker=Mal-un-Karad
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:126
+msgid ""
+"I will leave your bodies to rot in the river, then I will raise you up to "
+"serve in my Master’s undead hordes!"
+msgstr "我会让你的尸身烂在河里，而后让你复活，在吾主的亡灵大军之中效命！"
+
+#. [message]: speaker=Mal-un-Karad
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:135
+msgid "Creatures from the deep, I summon thee to destroy this foe!"
+msgstr ""
+
+#. [message]: speaker=Dacyn
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:224
+msgid ""
+"It seems as if in addition to summoning undead this foul sorcerer has "
+"learned to call up monsters from the deep!"
+msgstr ""
+"看上去，似乎除了召唤亡灵以外，这邪恶的法师也学会了如何召唤深渊之中的怪物！"
+
+#. [message]: speaker=unit
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:265
+msgid "I failed my Master..."
+msgstr ""
+
+#. [message]
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:284
+msgid "<i>HISS!</i>"
+msgstr ""
+
+#. [message]: speaker=Owaec
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:294
+msgid "The sea creatures are gone!"
+msgstr ""
+
+#. [message]: speaker=Dacyn
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:303
+msgid ""
+"We have no time to lose! Let's get moving quickly before the rest of their "
+"army catches up with us."
+msgstr ""
+
+#. [scenario]: id=08_Training_the_Ogres
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:4
+msgid "Capturing the Ogres"
+msgstr "捕获食人魔"
+
+#. [side]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:41
+msgid "Ogres"
+msgstr "巨魔"
+
+#. [objective]: condition=win
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:76
+msgid "(captured ogres will be made available for recall)"
+msgstr "（所捕获的食人魔可供召回）"
+
+#. [objective]: condition=win
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:76
+msgid "Capture as many ogres as you can"
+msgstr "尽可能多地捕获食人魔"
+
+#. [note]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:94
+msgid ""
+"An ogre is captured when it starts a turn being unable to move more than one "
+"hex."
+msgstr "如果一只食人魔在它的回合内无法移动多于一格的距离，则会被捕获。"
+
+#. [note]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:97
+msgid "If an ogre reaches the edge of the map, it will escape."
+msgstr "如果一只食人魔移动到了地图边缘，则它会逃脱"
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:120
+msgid ""
+"Look, this valley is inhabited by a tribe of ogres. We should try to capture "
+"some to train."
+msgstr "看，这峡谷里住着一个食人魔部落。我们该试着抓一些来训练。"
+
+#. [message]: race=ogre
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:124
+msgid "Humans are coming! Run!"
+msgstr "人类来啦！快跑！"
+
+#. [message]: speaker=Owaec
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:128
+msgid ""
+"Looks like they are fleeing. I think they will surrender easily if we can "
+"surround them."
+msgstr "看起来它们正在逃跑。我觉得要是我们能包围它们，它们很容易便会投降。"
+
+#. [message]: speaker=Dacyn
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:132
+msgid "All right, we have to capture them one by one."
+msgstr "好吧，我们得一个个地捕获它们。"
+
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:151
+msgid "Waah! Run!"
+msgstr "哇啊啊啊！快跑！"
+
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:155
+msgid "Run for your lives!"
+msgstr "快逃命！"
+
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:159
+msgid "Help!"
+msgstr "救命！"
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:203
+msgid "We have let one escape. Let’s hope they don’t all!"
+msgstr "我们已经让一只食人魔跑掉了。但愿他们别都跑了！"
+
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:254
+msgid "$ogre_name surrender!"
+msgstr "$ogre_name 投降了！"
+
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:258
+msgid "Don't hurt $ogre_name|!"
+msgstr "不要伤害 $ogre_name！"
+
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:262
+msgid "$ogre_name will be good! Promise!"
+msgstr "$ogre_name 会乖乖的！我保证！"
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:349
+msgid "We failed to capture any of them!"
+msgstr "我们一只食人魔都没抓到！"
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:358
+msgid "We only captured one ogre."
+msgstr "我们只抓到了一只食人魔。"
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:367
+msgid "We failed to capture more than two of the ogres."
+msgstr "我们只抓到了两只食人魔。"
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:376
+msgid "We captured three ogres! I hope they will prove useful."
+msgstr "我们抓到了三只食人魔！但愿它们能有点用。"
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:383
+msgid ""
+"We managed to capture many ogres! They will make a good addition to our "
+"troops."
+msgstr "我们抓到了很多食人魔！它们对我们的队伍而言是很不错的补充。"
+
+#. [scenario]: id=09_Xenophobia
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:4
+msgid "Xenophobia"
+msgstr "异种憎恶"
+
+#. [side]: type=Dwarvish Lord, id=Pelathsil
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:38
+msgid "Pelathsil"
+msgstr "佩拉希尔"
+
+#. [side]: type=Dwarvish Lord, id=Pelathsil
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:43
+msgid "Dwarves"
+msgstr ""
+
+#. [side]: type=Orcish Nightblade, id=Bagork
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:75
+msgid "Bagork"
+msgstr ""
+
+#. [side]: type=Elvish Avenger, id=Elandin
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:97
+msgid "Elandin"
+msgstr "艾兰丁"
+
+#. [side]: type=Elvish Avenger, id=Elandin
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:102
+msgid "Elves"
+msgstr ""
+
+#. [side]: type=Orcish Warlord, id=Prok-Bak
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:129
+msgid "Prok-Bak"
+msgstr "普罗克-巴克"
+
+#. [objective]: condition=win
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:169
+msgid "Defeat all enemy leaders"
+msgstr "击败所有敌军领袖"
+
+#. [message]: speaker=Dacyn
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:210
+msgid ""
+"Hail, dwarves! Will you help us get by these foul orcs? We are headed "
+"farther north."
+msgstr ""
+"向你们致意，矮人们！能请你们帮助我们打击这些肮脏的兽人么？我们要继续往北去。"
+
+#. [message]: speaker=Prok-Bak
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:214
+msgid "You human! Call us foul, will you?!"
+msgstr "你们人类！说我们肮脏，是吗？！"
+
+#. [message]: speaker=Pelathsil
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:218
+msgid "Why should we help you? You’re not a dwarf!"
+msgstr "我们为什么要帮助你们？你们又不是矮人！"
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:222
+msgid ""
+"Your people helped us in the past, in the tunnels in the south. Will you not "
+"help us now?"
+msgstr "你们以前帮助过我们，在南边的坑道里。你们现在不帮忙吗？"
+
+#. [message]: speaker=Pelathsil
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:226
+msgid "Impossible! I canna’ believe any of my kin would ha’ helped a human!"
+msgstr "不可能！我不相信我们的任何一个族人会帮助人类！"
+
+#. [message]: speaker=Elandin
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:230
+msgid "Indeed. Why should any of us help those not of our people?"
+msgstr "确实。为什么我们要帮助不是同胞的人？"
+
+#. [message]: speaker=Owaec
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:234
+msgid "Will you but let us pass, so that we may fight the orcs on our own?"
+msgstr "那你们可以至少让我们通过吧？这样我们就可以自己对付兽人了。"
+
+#. [message]: speaker=Elandin
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:238
+msgid "I am afraid that is... impossible."
+msgstr "恐怕那是……不可能的。"
+
+#. [message]: speaker=Bagork
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:243
+msgid "Orcs, kill’em all! Humans, elves or dwarves, it don’t matter!"
+msgstr "兽人，杀光他们！人类，精灵，矮人，都一样！"
+
+#. [message]: speaker=Elandin
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:247
+msgid ""
+"These orcs will die. But so will you, human. You have trespassed on elvish "
+"land."
+msgstr "这些兽人必须受死。但你们也是，人类。你们侵犯了精灵的领地。"
+
+#. [message]: speaker=Pelathsil
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:251
+msgid "Oh, elvish land is it now? Die, ye elf-dog! And you too, human!"
+msgstr "噢，现在这儿是精灵的领地了？死吧，你这狗精灵！还有你们也得死，人类！"
+
+#. [message]: speaker=Dacyn
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:255
+msgid ""
+"These people won’t listen to reason, they are all blinded by their beliefs "
+"in their own supposed superiority. We probably will have to fight them, "
+"although we can let them fight each other first."
+msgstr ""
+"这些人不听任何解释，他们都被自己假想的优越感蒙蔽了。我们可能不得不和他们作"
+"战，虽然也可以任由他们自己先打起来。"
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:259
+msgid ""
+"True. As much as I dislike killing anything but orcs and undead, it seems we "
+"will have to kill these elves, and these dwarves, before they do the same to "
+"us."
+msgstr ""
+"确实。除了兽人和亡灵之外，我可不想杀任何人，但看来我们不得不杀掉这些精灵，还"
+"有这些矮人，在他们杀掉我们之前。"
+
+#. [message]: speaker=Bagork
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:270
+msgid "I will kill all of you!"
+msgstr ""
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:285
+msgid "Not very likely."
+msgstr ""
+
+#. [message]: speaker=Prok-Bak
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:296
+msgid "I die? Orcs rule all!"
+msgstr "我要死了？兽人统御一切！"
+
+#. [message]: speaker=Elandin
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:314
+msgid "It seems these humans are more powerful than I thought. Ugh."
+msgstr "看上去这些人类比我想象的要强大。啊！"
+
+#. [message]: speaker=Elandin
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:328
+msgid "Cursed dwarves! Perhaps we should have allied with the humans..."
+msgstr "该死的矮人！我们也许该和人类结盟的……"
+
+#. [message]: speaker=Elandin
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:342
+msgid "Foul orcs! Perhaps we should have allied with the humans..."
+msgstr "肮脏的兽人！我们也许该和人类结盟的……"
+
+#. [message]: speaker=Pelathsil
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:356
+msgid "It seems yon humans are mightier than I kenned..."
+msgstr "你们人类看来比我所知道的要强……"
+
+#. [message]: speaker=Pelathsil
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:370
+msgid "Foul orcs! Perhaps we should ha’ allied wi’ the humans..."
+msgstr "肮脏的兽人！我们也许该和人类结盟的……"
+
+#. [message]: speaker=Pelathsil
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:384
+msgid "Cursed elves! Perhaps we should have allied wi’ the humans..."
+msgstr "该死的精灵！我们也许该和人类结盟的……"
+
+#. [scenario]: id=10_Lake_Vrug
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:4
+msgid "Lake Vrug"
+msgstr "拉格湖"
+
 #. [side]: type=General, id=Gweddry
 #. [side]: type=Lieutenant, id=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:17
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:25
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:21
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:21
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:28
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:27
@@ -1701,333 +2073,6 @@ msgstr "亡灵渡口"
 #: data/campaigns/Eastern_Invasion/utils/character-definitions.cfg:6
 msgid "Gweddry"
 msgstr "格温德利"
-
-#. [side]: type=Necromancer, id=Mal-un-Karad
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:32
-msgid "Mal-un-Karad"
-msgstr "玛尔-昂-卡拉德"
-
-#. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:53
-msgid "Defeat the enemy leader"
-msgstr "击败敌军领袖"
-
-#. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:88
-msgid ""
-"These fens look impassable. I don’t think we will be able to continue on "
-"this road; it is time to turn northwards, away from these undead."
-msgstr ""
-"这些沼泽看上去没法通过。我觉得不能沿着这条路前进了。是时候往北走，远离这些亡"
-"灵了。"
-
-#. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:92
-msgid ""
-"We must cross this river, then. We must make haste, already we have wasted "
-"too much time. Undead have positioned themselves in the middle of the ford."
-msgstr ""
-"那我们必须过河。我们得赶快，已经浪费太多时间了。亡灵已经占据了浅滩的中部。"
-
-#. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:96
-msgid ""
-"Across this river lies the Northland. Ogres live there, as do orcs. We "
-"should proceed with caution. The undead are dangerous, but the orcs may be "
-"more dangerous still."
-msgstr ""
-"过河后便是北陆。食人魔居住在那儿，兽人也是。我们必须小心谨慎。亡灵非常危险，"
-"但是兽人可能更危险。"
-
-#. [message]: speaker=Mal-un-Karad
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:100
-msgid ""
-"I will leave your bodies to rot in the river, then I will raise you up to "
-"serve in my Master’s undead hordes!"
-msgstr "我会让你的尸身烂在河里，而后让你复活，在吾主的亡灵大军之中效命！"
-
-#. [message]: speaker=Mal-un-Karad
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:117
-msgid "I summon from the depths of the river beasts to destroy you!"
-msgstr "我从大河深处召唤而来的野兽会摧毁你们！"
-
-#. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:148
-msgid ""
-"It seems as if in addition to summoning undead this foul sorcerer has "
-"learned to call up monsters from the deep!"
-msgstr ""
-"看上去，似乎除了召唤亡灵以外，这邪恶的法师也学会了如何召唤深渊之中的怪物！"
-
-#. [scenario]: id=08_Training_the_Ogres
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:4
-msgid "Capturing the Ogres"
-msgstr "捕获食人魔"
-
-#. [side]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:40
-msgid "Ogres"
-msgstr "巨魔"
-
-#. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:75
-msgid "(captured ogres will be made available for recall)"
-msgstr "（所捕获的食人魔可供召回）"
-
-#. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:75
-msgid "Capture as many ogres as you can"
-msgstr "尽可能多地捕获食人魔"
-
-#. [note]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:93
-msgid ""
-"An ogre is captured when it starts a turn being unable to move more than one "
-"hex."
-msgstr "如果一只食人魔在它的回合内无法移动多于一格的距离，则会被捕获。"
-
-#. [note]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:96
-msgid "If an ogre reaches the edge of the map, it will escape."
-msgstr "如果一只食人魔移动到了地图边缘，则它会逃脱"
-
-#. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:119
-msgid ""
-"Look, this valley is inhabited by a tribe of ogres. We should try to capture "
-"some to train."
-msgstr "看，这峡谷里住着一个食人魔部落。我们该试着抓一些来训练。"
-
-#. [message]: race=ogre
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:123
-msgid "Humans are coming! Run!"
-msgstr "人类来啦！快跑！"
-
-#. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:127
-msgid ""
-"Looks like they are fleeing. I think they will surrender easily if we can "
-"surround them."
-msgstr "看起来它们正在逃跑。我觉得要是我们能包围它们，它们很容易便会投降。"
-
-#. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:131
-msgid "All right, we have to capture them one by one."
-msgstr "好吧，我们得一个个地捕获它们。"
-
-#. [value]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:150
-msgid "Waah! Run!"
-msgstr "哇啊啊啊！快跑！"
-
-#. [value]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:154
-msgid "Run for your lives!"
-msgstr "快逃命！"
-
-#. [value]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:158
-msgid "Help!"
-msgstr "救命！"
-
-#. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:202
-msgid "We have let one escape. Let’s hope they don’t all!"
-msgstr "我们已经让一只食人魔跑掉了。但愿他们别都跑了！"
-
-#. [value]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:253
-msgid "$ogre_name surrender!"
-msgstr "$ogre_name 投降了！"
-
-#. [value]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:257
-msgid "Don't hurt $ogre_name|!"
-msgstr "不要伤害 $ogre_name！"
-
-#. [value]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:261
-msgid "$ogre_name will be good! Promise!"
-msgstr "$ogre_name 会乖乖的！我保证！"
-
-#. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:348
-msgid "We failed to capture any of them!"
-msgstr "我们一只食人魔都没抓到！"
-
-#. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:357
-msgid "We only captured one ogre."
-msgstr "我们只抓到了一只食人魔。"
-
-#. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:366
-msgid "We failed to capture more than two of the ogres."
-msgstr "我们只抓到了两只食人魔。"
-
-#. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:375
-msgid "We captured three ogres! I hope they will prove useful."
-msgstr "我们抓到了三只食人魔！但愿它们能有点用。"
-
-#. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:382
-msgid ""
-"We managed to capture many ogres! They will make a good addition to our "
-"troops."
-msgstr "我们抓到了很多食人魔！它们对我们的队伍而言是很不错的补充。"
-
-#. [scenario]: id=09_Xenophobia
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:4
-msgid "Xenophobia"
-msgstr "异种憎恶"
-
-#. [side]: type=Dwarvish Lord, id=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:36
-msgid "Pelathsil"
-msgstr "佩拉希尔"
-
-#. [side]: type=Orcish Warlord, id=Prok-Bak
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:54
-msgid "Prok-Bak"
-msgstr "普罗克-巴克"
-
-#. [side]: type=Elvish Marshal, id=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:75
-msgid "Elandin"
-msgstr "艾兰丁"
-
-#. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:105
-msgid "Defeat all enemy leaders"
-msgstr "击败所有敌军领袖"
-
-#. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:146
-msgid ""
-"Hail, dwarves! Will you help us get by these foul orcs? We are headed "
-"farther north."
-msgstr ""
-"向你们致意，矮人们！能请你们帮助我们打击这些肮脏的兽人么？我们要继续往北去。"
-
-#. [message]: speaker=Prok-Bak
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:150
-msgid "You human! Call us foul, will you?!"
-msgstr "你们人类！说我们肮脏，是吗？！"
-
-#. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:154
-msgid "Why should we help you? You’re not a dwarf!"
-msgstr "我们为什么要帮助你们？你们又不是矮人！"
-
-#. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:158
-msgid ""
-"Your people helped us in the past, in the tunnels in the south. Will you not "
-"help us now?"
-msgstr "你们以前帮助过我们，在南边的坑道里。你们现在不帮忙吗？"
-
-#. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:162
-msgid "Impossible! I canna’ believe any of my kin would ha’ helped a human!"
-msgstr "不可能！我不相信我们的任何一个族人会帮助人类！"
-
-#. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:166
-msgid "Indeed. Why should any of us help those not of our people?"
-msgstr "确实。为什么我们要帮助不是同胞的人？"
-
-#. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:170
-msgid "Will you but let us pass, so that we may fight the orcs on our own?"
-msgstr "那你们可以至少让我们通过吧？这样我们就可以自己对付兽人了。"
-
-#. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:174
-msgid "I am afraid that is... impossible."
-msgstr "恐怕那是……不可能的。"
-
-#. [message]: speaker=Prok-Bak
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:179
-msgid "Orcs, kill’em all! Humans, elves or dwarves, it don’t matter!"
-msgstr "兽人，杀光他们！人类，精灵，矮人，都一样！"
-
-#. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:183
-msgid ""
-"These orcs will die. But so will you, human. You have trespassed on elvish "
-"land."
-msgstr "这些兽人必须受死。但你们也是，人类。你们侵犯了精灵的领地。"
-
-#. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:187
-msgid "Oh, elvish land is it now? Die, ye elf-dog! And you too, human!"
-msgstr "噢，现在这儿是精灵的领地了？死吧，你这狗精灵！还有你们也得死，人类！"
-
-#. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:191
-msgid ""
-"These people won’t listen to reason, they are all blinded by their beliefs "
-"in their own supposed superiority. We probably will have to fight them, "
-"although we can let them fight each other first."
-msgstr ""
-"这些人不听任何解释，他们都被自己假想的优越感蒙蔽了。我们可能不得不和他们作"
-"战，虽然也可以任由他们自己先打起来。"
-
-#. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:195
-msgid ""
-"True. As much as I dislike killing anything but orcs and undead, it seems we "
-"will have to kill these elves, and these dwarves, before they do the same to "
-"us."
-msgstr ""
-"确实。除了兽人和亡灵之外，我可不想杀任何人，但看来我们不得不杀掉这些精灵，还"
-"有这些矮人，在他们杀掉我们之前。"
-
-#. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:206
-msgid "Argh! I’m dead! Well, dwarves are still the best!"
-msgstr "啊！我要死了！呵，矮人还是最强的！"
-
-#. [message]: speaker=Prok-Bak
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:221
-msgid "I die? Orcs rule all!"
-msgstr "我要死了？兽人统御一切！"
-
-#. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:239
-msgid "It seems these humans are more powerful than I thought. Ugh."
-msgstr "看上去这些人类比我想象的要强大。啊！"
-
-#. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:257
-msgid "Cursed dwarves! Perhaps we should have allied with the humans..."
-msgstr "该死的矮人！我们也许该和人类结盟的……"
-
-#. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:271
-msgid "Foul orcs! Perhaps we should have allied with the humans..."
-msgstr "肮脏的兽人！我们也许该和人类结盟的……"
-
-#. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:285
-msgid "It seems yon humans are mightier than I kenned..."
-msgstr "你们人类看来比我所知道的要强……"
-
-#. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:299
-msgid "Foul orcs! Perhaps we should ha’ allied wi’ the humans..."
-msgstr "肮脏的兽人！我们也许该和人类结盟的……"
-
-#. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:313
-msgid "Cursed elves! Perhaps we should have allied wi’ the humans..."
-msgstr "该死的精灵！我们也许该和人类结盟的……"
-
-#. [scenario]: id=10_Lake_Vrug
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:4
-msgid "Lake Vrug"
-msgstr "拉格湖"
 
 #. [side]: type=Troll Warrior, id=Darg
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:35
@@ -3763,6 +3808,12 @@ msgstr "我不适合用这个装备！给其他人试试。"
 #: data/campaigns/Eastern_Invasion/utils/macros.cfg:67
 msgid "Holy Amulet"
 msgstr "神圣护身符"
+
+#~ msgid "I summon from the depths of the river beasts to destroy you!"
+#~ msgstr "我从大河深处召唤而来的野兽会摧毁你们！"
+
+#~ msgid "Argh! I’m dead! Well, dwarves are still the best!"
+#~ msgstr "啊！我要死了！呵，矮人还是最强的！"
 
 #~ msgid ""
 #~ "There is a great fortune in this chest of treasure! I can count two "

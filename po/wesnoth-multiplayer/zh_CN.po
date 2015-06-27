@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-17 11:34-0300\n"
+"POT-Creation-Date: 2015-06-27 20:18-0300\n"
 "PO-Revision-Date: 2015-02-07 13:07+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -32,49 +32,25 @@ msgstr "玩家地图"
 msgid "Random"
 msgstr "随机"
 
-#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:118
-msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
-msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>阵营 %d</span>"
-
-#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:134
-msgid ""
-"<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
-"score = %d  Gold = %d"
-msgstr ""
-"<span foreground='#%02x%02x%02x'>阵营 %d</span>:  收入得分 = %d  单位得分 = "
-"%d  金币 = %d"
-
-#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:134
-msgid "Grand total: <b>%d</b>"
-msgstr "总得分：<b>%d</b>"
-
-#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:144
-msgid "<span foreground='%s'>Side %d</span> has the advantage."
-msgstr "<span foreground='%s'>阵营 %d</span> 取得了优势。"
-
-#. [era]: id=era_default
-#: data/multiplayer/eras.cfg:169
+#. [era]: id=era_default, type=hybrid
+#: data/multiplayer/eras.cfg:54
 msgid "Default"
 msgstr "默认"
 
-#. [era]: id=era_default
-#: data/multiplayer/eras.cfg:170
+#. [era]: id=era_default, type=hybrid
+#: data/multiplayer/eras.cfg:55
 msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
 msgstr "韦诺多人游戏的标准时代。包含六大派系，总体来说是平衡的。"
 
 #. [era]: id=era_heroes
-#: data/multiplayer/eras.cfg:190
+#: data/multiplayer/eras.cfg:76
 msgid "Age of Heroes"
 msgstr "英雄时代"
 
 #. [era]: id=era_heroes
-#: data/multiplayer/eras.cfg:191
+#: data/multiplayer/eras.cfg:77
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
 "units available for recruit. Consists of six factions. Not considered "
@@ -84,12 +60,12 @@ msgstr ""
 "此时代并不可视为是平衡的。"
 
 #. [era]: id=era_khalifate
-#: data/multiplayer/eras.cfg:198
+#: data/multiplayer/eras.cfg:84
 msgid "Default + Khalifate"
 msgstr "默认 + 哈里发"
 
 #. [era]: id=era_khalifate
-#: data/multiplayer/eras.cfg:199
+#: data/multiplayer/eras.cfg:85
 msgid ""
 "An era featuring an additional faction besides the six factions from Default "
 "Era. Khalifate units use no magic, but instead rely on careful use of "
@@ -104,12 +80,12 @@ msgstr ""
 "此时代仍在开发中，因此请务必报告出现的一切问题。"
 
 #. [era]: id=era_khalifate_heroes
-#: data/multiplayer/eras.cfg:209
+#: data/multiplayer/eras.cfg:95
 msgid "Age of Heroes + Khalifate"
 msgstr "英雄时代 + 哈里发"
 
 #. [era]: id=era_khalifate_heroes
-#: data/multiplayer/eras.cfg:210
+#: data/multiplayer/eras.cfg:96
 msgid ""
 "An era featuring an additional faction besides the six factions from Age of "
 "Heroes Era. Khalifate units use no magic, but instead rely on careful use of "
@@ -122,6 +98,30 @@ msgstr ""
 "法，而是依赖于对地形的谨慎利用和晨昏时段的协同攻击。\n"
 "\n"
 "此时代仍在开发中，因此请务必报告出现的一切问题。"
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:65
+msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
+msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>阵营 %d</span>"
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:81
+msgid ""
+"<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
+"score = %d  Gold = %d"
+msgstr ""
+"<span foreground='#%02x%02x%02x'>阵营 %d</span>:  收入得分 = %d  单位得分 = "
+"%d  金币 = %d"
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:81
+msgid "Grand total: <b>%d</b>"
+msgstr "总得分：<b>%d</b>"
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:91
+msgid "<span foreground='%s'>Side %d</span> has the advantage."
+msgstr "<span foreground='%s'>阵营 %d</span> 取得了优势。"
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -2140,9 +2140,7 @@ msgid "Random map"
 msgstr "随机地图"
 
 #. [multiplayer]: id=multiplayer_Random_Map
-#. [multiplayer]: id=multiplayer_Random_YAMG_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:7
-#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:7
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
@@ -2201,13 +2199,6 @@ msgstr ""
 "一幅设定在冬去春来的时节，以雪地为主要地形的随机地图。注意：随机地图往往不太"
 "平衡，但是如果您有足够的时间，可以不断地重新生成，直到得到一幅平衡的地图。"
 
-#. [multiplayer]: id=multiplayer_Random_YAMG_Map
-#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:6
-#, fuzzy
-#| msgid "Random map"
-msgid "Random map by YAMG"
-msgstr "随机地图"
-
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:9
 msgid "Wesnoth Benchmark: AI"
@@ -2249,6 +2240,11 @@ msgid ""
 msgstr ""
 "这是一幅韦诺基准测试图，命令行参数为：--no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end。"
+
+#, fuzzy
+#~| msgid "Random map"
+#~ msgid "Random map by YAMG"
+#~ msgstr "随机地图"
 
 #~ msgid "Custom"
 #~ msgstr "自定义"

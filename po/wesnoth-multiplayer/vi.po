@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-17 11:34-0300\n"
+"POT-Creation-Date: 2015-06-27 20:18-0300\n"
 "PO-Revision-Date: 2014-06-05 18:06+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -25,37 +25,13 @@ msgstr "Bản đồ người dùng"
 msgid "Random"
 msgstr "Ngẫu nhiên"
 
-#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:118
-msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
-msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>Phe %d</span>"
-
-#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:134
-msgid ""
-"<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
-"score = %d  Gold = %d"
-msgstr ""
-"<span foreground='#%02x%02x%02x'>Phe %d</span>:  Điểm thu nhập = %d  Điểm "
-"đơn vị = %d  Vàng = %d"
-
-#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:134
-msgid "Grand total: <b>%d</b>"
-msgstr "Tổng cộng: <b>%d</b>"
-
-#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:144
-msgid "<span foreground='%s'>Side %d</span> has the advantage."
-msgstr "<span foreground='%s'>Phe %d</span> có lợi thế."
-
-#. [era]: id=era_default
-#: data/multiplayer/eras.cfg:169
+#. [era]: id=era_default, type=hybrid
+#: data/multiplayer/eras.cfg:54
 msgid "Default"
 msgstr "Mặc định"
 
-#. [era]: id=era_default
-#: data/multiplayer/eras.cfg:170
+#. [era]: id=era_default, type=hybrid
+#: data/multiplayer/eras.cfg:55
 msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
@@ -64,12 +40,12 @@ msgstr ""
 "chung là cân bằng."
 
 #. [era]: id=era_heroes
-#: data/multiplayer/eras.cfg:190
+#: data/multiplayer/eras.cfg:76
 msgid "Age of Heroes"
 msgstr "Thời đại anh hùng"
 
 #. [era]: id=era_heroes
-#: data/multiplayer/eras.cfg:191
+#: data/multiplayer/eras.cfg:77
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
 "units available for recruit. Consists of six factions. Not considered "
@@ -80,12 +56,12 @@ msgstr ""
 "được xem là cân bằng."
 
 #. [era]: id=era_khalifate
-#: data/multiplayer/eras.cfg:198
+#: data/multiplayer/eras.cfg:84
 msgid "Default + Khalifate"
 msgstr "Mặc định +  Khalifate"
 
 #. [era]: id=era_khalifate
-#: data/multiplayer/eras.cfg:199
+#: data/multiplayer/eras.cfg:85
 msgid ""
 "An era featuring an additional faction besides the six factions from Default "
 "Era. Khalifate units use no magic, but instead rely on careful use of "
@@ -103,12 +79,12 @@ msgstr ""
 "đề nào xảy ra."
 
 #. [era]: id=era_khalifate_heroes
-#: data/multiplayer/eras.cfg:209
+#: data/multiplayer/eras.cfg:95
 msgid "Age of Heroes + Khalifate"
 msgstr "Thời đại anh hùng + Khalifate"
 
 #. [era]: id=era_khalifate_heroes
-#: data/multiplayer/eras.cfg:210
+#: data/multiplayer/eras.cfg:96
 msgid ""
 "An era featuring an additional faction besides the six factions from Age of "
 "Heroes Era. Khalifate units use no magic, but instead rely on careful use of "
@@ -124,6 +100,30 @@ msgstr ""
 "\n"
 "Thời đại này vẫn còn đang phát triển, do đó xin đảm bảo báo cáo bất cứ vấn "
 "đề nào xảy ra."
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:65
+msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
+msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>Phe %d</span>"
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:81
+msgid ""
+"<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
+"score = %d  Gold = %d"
+msgstr ""
+"<span foreground='#%02x%02x%02x'>Phe %d</span>:  Điểm thu nhập = %d  Điểm "
+"đơn vị = %d  Vàng = %d"
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:81
+msgid "Grand total: <b>%d</b>"
+msgstr "Tổng cộng: <b>%d</b>"
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:91
+msgid "<span foreground='%s'>Side %d</span> has the advantage."
+msgstr "<span foreground='%s'>Phe %d</span> có lợi thế."
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -2243,9 +2243,7 @@ msgid "Random map"
 msgstr "Bản đồ ngẫu nhiên"
 
 #. [multiplayer]: id=multiplayer_Random_Map
-#. [multiplayer]: id=multiplayer_Random_YAMG_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:7
-#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:7
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
@@ -2309,11 +2307,6 @@ msgstr ""
 "nhưng nếu có thời gian, bạn có thể tạo lại chúng đến khi nhận được một bản "
 "đồ tốt."
 
-#. [multiplayer]: id=multiplayer_Random_YAMG_Map
-#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:6
-msgid "Random map by YAMG"
-msgstr "Bản đồ ngẫu nhiên của YAMG"
-
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:9
 msgid "Wesnoth Benchmark: AI"
@@ -2355,6 +2348,9 @@ msgid ""
 msgstr ""
 "Kiểm nghiệm wesnoth, sử dụng --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid "Random map by YAMG"
+#~ msgstr "Bản đồ ngẫu nhiên của YAMG"
 
 #~ msgid "Custom"
 #~ msgstr "Tùy chỉnh"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-17 11:34-0300\n"
+"POT-Creation-Date: 2015-06-27 20:18-0300\n"
 "PO-Revision-Date: 2015-04-18 06:34+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
@@ -42,38 +42,14 @@ msgstr "Mapa do usuario"
 msgid "Random"
 msgstr "Ao chou"
 
-#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:118
-msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
-msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>Bando %d</span>"
-
-#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:134
-msgid ""
-"<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
-"score = %d  Gold = %d"
-msgstr ""
-"<span foreground='#%02x%02x%02x'>Bando %d</span>:  Puntos por ingresos = %d  "
-"Puntos por unidades = %d  Moedas = %d"
-
-#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:134
-msgid "Grand total: <b>%d</b>"
-msgstr "Total: <b>%d</b>"
-
-#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:144
-msgid "<span foreground='%s'>Side %d</span> has the advantage."
-msgstr "O <span foreground='%s'>bando %d</span> vai en cabeza."
-
 # Aparece cando se acceder a «Varios xogadores → Partida local». «Predeterminada» non cabe no botón, de aí que se acurte co punto.
-#. [era]: id=era_default
-#: data/multiplayer/eras.cfg:169
+#. [era]: id=era_default, type=hybrid
+#: data/multiplayer/eras.cfg:54
 msgid "Default"
 msgstr "Predeterm."
 
-#. [era]: id=era_default
-#: data/multiplayer/eras.cfg:170
+#. [era]: id=era_default, type=hybrid
+#: data/multiplayer/eras.cfg:55
 msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
@@ -82,12 +58,12 @@ msgstr ""
 "seis faccións igualadas."
 
 #. [era]: id=era_heroes
-#: data/multiplayer/eras.cfg:190
+#: data/multiplayer/eras.cfg:76
 msgid "Age of Heroes"
 msgstr "Idade dos heroes"
 
 #. [era]: id=era_heroes
-#: data/multiplayer/eras.cfg:191
+#: data/multiplayer/eras.cfg:77
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
 "units available for recruit. Consists of six factions. Not considered "
@@ -98,12 +74,12 @@ msgstr ""
 "considera que as faccións estean igualadas."
 
 #. [era]: id=era_khalifate
-#: data/multiplayer/eras.cfg:198
+#: data/multiplayer/eras.cfg:84
 msgid "Default + Khalifate"
 msgstr "Preterm. co califato"
 
 #. [era]: id=era_khalifate
-#: data/multiplayer/eras.cfg:199
+#: data/multiplayer/eras.cfg:85
 msgid ""
 "An era featuring an additional faction besides the six factions from Default "
 "Era. Khalifate units use no magic, but instead rely on careful use of "
@@ -121,12 +97,12 @@ msgstr ""
 "informe sen dubidalo de calquera problema que atope ao xogar con ela."
 
 #. [era]: id=era_khalifate_heroes
-#: data/multiplayer/eras.cfg:209
+#: data/multiplayer/eras.cfg:95
 msgid "Age of Heroes + Khalifate"
 msgstr "Idade dos heroes + Califato"
 
 #. [era]: id=era_khalifate_heroes
-#: data/multiplayer/eras.cfg:210
+#: data/multiplayer/eras.cfg:96
 msgid ""
 "An era featuring an additional faction besides the six factions from Age of "
 "Heroes Era. Khalifate units use no magic, but instead rely on careful use of "
@@ -142,6 +118,30 @@ msgstr ""
 "\n"
 "Esta era aínda está en pleno desenvolvemento, así que rogámoslle que nos "
 "informe sen dubidalo de calquera problema que atope ao xogar con ela."
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:65
+msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
+msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>Bando %d</span>"
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:81
+msgid ""
+"<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
+"score = %d  Gold = %d"
+msgstr ""
+"<span foreground='#%02x%02x%02x'>Bando %d</span>:  Puntos por ingresos = %d  "
+"Puntos por unidades = %d  Moedas = %d"
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:81
+msgid "Grand total: <b>%d</b>"
+msgstr "Total: <b>%d</b>"
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:91
+msgid "<span foreground='%s'>Side %d</span> has the advantage."
+msgstr "O <span foreground='%s'>bando %d</span> vai en cabeza."
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -2344,9 +2344,7 @@ msgid "Random map"
 msgstr "Mapa ao chou"
 
 #. [multiplayer]: id=multiplayer_Random_Map
-#. [multiplayer]: id=multiplayer_Random_YAMG_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:7
-#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:7
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
@@ -2409,11 +2407,6 @@ msgstr ""
 "terreos nevados. Nótese que os mapas ao chou a miúdo están desequilibrados, "
 "pero se hai tempo, pode volverse xerar ata obter un aceptábel ou bo."
 
-#. [multiplayer]: id=multiplayer_Random_YAMG_Map
-#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:6
-msgid "Random map by YAMG"
-msgstr "Mapa ao chou de YAMG"
-
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:9
 msgid "Wesnoth Benchmark: AI"
@@ -2456,6 +2449,9 @@ msgid ""
 msgstr ""
 "Unha proba de rendemento do xogo, emprega --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid "Random map by YAMG"
+#~ msgstr "Mapa ao chou de YAMG"
 
 #~ msgid "Custom"
 #~ msgstr "Personalizado"

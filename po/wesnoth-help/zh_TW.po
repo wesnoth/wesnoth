@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-17 11:34-0300\n"
+"POT-Creation-Date: 2015-06-27 20:18-0300\n"
 "PO-Revision-Date: 2013-04-14 21:47+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -26,13 +26,13 @@ msgstr "地下"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:666
-#: data/core/macros/abilities.cfg:544
+#: data/core/macros/abilities.cfg:540
 msgid "berserk"
 msgstr "狂暴"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:668
-#: data/core/macros/abilities.cfg:545
+#: data/core/macros/abilities.cfg:541
 #, fuzzy
 #| msgid ""
 #| "Berserk:\n"
@@ -48,13 +48,13 @@ msgstr ""
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:677
-#: data/core/macros/abilities.cfg:623
+#: data/core/macros/abilities.cfg:619
 msgid "magical"
 msgstr "魔法"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:679
-#: data/core/macros/abilities.cfg:624
+#: data/core/macros/abilities.cfg:620
 #, fuzzy
 #| msgid ""
 #| "Magical:\n"
@@ -69,7 +69,7 @@ msgstr ""
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:688
-#: data/core/macros/abilities.cfg:668
+#: data/core/macros/abilities.cfg:664
 #, fuzzy
 #| msgid "firststrike"
 msgid "first strike"
@@ -77,7 +77,7 @@ msgstr "先發制人"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:690
-#: data/core/macros/abilities.cfg:669
+#: data/core/macros/abilities.cfg:665
 #, fuzzy
 #| msgid ""
 #| "First Strike:\n"
@@ -130,19 +130,19 @@ msgstr ""
 "位可以解毒"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:39
 #: data/core/macros/abilities.cfg:28
 msgid "heals +8"
 msgstr "治療+8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:44
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
 #: data/core/macros/abilities.cfg:29
 msgid "female^heals +8"
 msgstr "治療 +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
 #: data/core/macros/abilities.cfg:30
 #, fuzzy
 #| msgid ""
@@ -4140,17 +4140,17 @@ msgid ""
 msgstr " 這種單位每殺死一個單位為自己添加一點生命值。"
 
 #. [unstore_unit]
-#: data/core/macros/abilities.cfg:513
+#: data/core/macros/abilities.cfg:509
 msgid "+1 max HP"
 msgstr "+1 最大生命值"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:555
+#: data/core/macros/abilities.cfg:551
 msgid "backstab"
 msgstr "背刺"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:556
+#: data/core/macros/abilities.cfg:552
 #, fuzzy
 #| msgid ""
 #| "Backstab:\n"
@@ -4168,12 +4168,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:568 data/core/macros/abilities.cfg:579
+#: data/core/macros/abilities.cfg:564 data/core/macros/abilities.cfg:575
 msgid "plague"
 msgstr "瘟疫"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:569
+#: data/core/macros/abilities.cfg:565
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -4190,7 +4190,7 @@ msgstr ""
 "戰友。(這對不死或在村莊中的單位不起作用)。 "
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:580
+#: data/core/macros/abilities.cfg:576
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -4207,12 +4207,12 @@ msgstr ""
 "對不死或在村莊中的單位不起作用)。"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:590
+#: data/core/macros/abilities.cfg:586
 msgid "slows"
 msgstr "緩慢"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:591
+#: data/core/macros/abilities.cfg:587
 #, fuzzy
 #| msgid ""
 #| "Slow:\n"
@@ -4231,12 +4231,12 @@ msgstr ""
 "半。被緩速的單位，側邊訊息會顯示蝸牛的圖示。"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:600
+#: data/core/macros/abilities.cfg:596
 msgid "petrifies"
 msgstr "石化"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:601
+#: data/core/macros/abilities.cfg:597
 #, fuzzy
 #| msgid ""
 #| "Petrify:\n"
@@ -4250,12 +4250,12 @@ msgstr ""
 "這個攻撃會使目標變成石頭。被石化的單位不能移動或攻撃。"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:610
+#: data/core/macros/abilities.cfg:606
 msgid "marksman"
 msgstr "精準"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:611
+#: data/core/macros/abilities.cfg:607
 #, fuzzy
 #| msgid ""
 #| "Marksman:\n"
@@ -4268,12 +4268,12 @@ msgstr ""
 "進攻時，本攻撃至少有60%的命中率。"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:635
+#: data/core/macros/abilities.cfg:631
 msgid "swarm"
 msgstr "連撃"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:636
+#: data/core/macros/abilities.cfg:632
 #, fuzzy
 #| msgid ""
 #| "Swarm:\n"
@@ -4292,12 +4292,12 @@ msgstr ""
 "值成正比。例如，一個剩下3/4生命值的單位，其攻撃次數也只有3/4次。"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:645
+#: data/core/macros/abilities.cfg:641
 msgid "charge"
 msgstr "衝鋒"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:646
+#: data/core/macros/abilities.cfg:642
 #, fuzzy
 #| msgid ""
 #| "Charge:\n"
@@ -4312,12 +4312,12 @@ msgstr ""
 "這種攻擊使得目標的傷害增加1倍。但同時如果對方反擊擊中，自己也承受雙倍傷害。"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:658
+#: data/core/macros/abilities.cfg:654
 msgid "drains"
 msgstr "吸血"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:659
+#: data/core/macros/abilities.cfg:655
 #, fuzzy
 #| msgid ""
 #| "Drain:\n"
@@ -4331,12 +4331,12 @@ msgstr ""
 "通過吸食生物單位的生命來治療自己，能治療造成傷害一半的生命值。"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:678
+#: data/core/macros/abilities.cfg:674
 msgid "poison"
 msgstr "毒素"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:679
+#: data/core/macros/abilities.cfg:675
 #, fuzzy
 #| msgid ""
 #| "Poison:\n"

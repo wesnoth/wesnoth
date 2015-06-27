@@ -69,7 +69,7 @@ defecto es el escenario inicial.
 reemplaza el directorio de datos con el directorio especificado
 .TP 
 \fB\-\-data\-path\fP
-path the path of the data directory and exits.
+muestra el nombre del directorio de datos de juego y finaliza.
 .TP 
 \fB\-d, \-\-debug\fP
 activa opciones adicionales en el modo de comandos del juego (vea la página
@@ -190,22 +190,23 @@ trata los errores de validación como fatales.
 inicia el juego en un pequeño escenario de prueba.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ name\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy Games".
-Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
-other systems to the userdata path.
+establece el directorio de configuración del usuario como \fInombre\fP en $HOME
+o "Mis documentos\eMis juegos" en Windows. También es posible especificar
+una ruta absoluta para el directorio de configuración fuera de $HOME o "Mis
+documentos\eMis juegos". Con X11 está predeterminado como $XDG_CONFIG_HOME o
+$HOME/.config/wesnoth, en otros sistemas para la ruta de los datos de
+usuario.
 .TP 
 \fB\-\-userconfig\-path\fP
 muestra la ruta del directorio de la configuración del usuario y regresa.
 .TP 
-\fB\-\-userdata\-dir\fP\fI\ name\fP
+\fB\-\-userdata\-dir\fP\fI\ nombre\fP
 sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
 Games" for windows.  You can also specify an absolute path for the userdata
 directory outside the $HOME or "My Documents\eMy Games".
 .TP 
 \fB\-\-userdata\-path\fP
-prints the path of the userdata directory and exits.
+muestra la ruta del directorio de datos del usuario y regresa.
 .TP 
 \fB\-\-validcache\fP
 asume que el caché es válido (peligroso).

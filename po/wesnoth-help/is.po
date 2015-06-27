@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-17 11:34-0300\n"
+"POT-Creation-Date: 2015-06-27 20:18-0300\n"
 "PO-Revision-Date: 2009-06-15 15:08-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
@@ -28,13 +28,13 @@ msgstr "Neðanjarðar"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:666
-#: data/core/macros/abilities.cfg:544
+#: data/core/macros/abilities.cfg:540
 msgid "berserk"
 msgstr "berserk"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:668
-#: data/core/macros/abilities.cfg:545
+#: data/core/macros/abilities.cfg:541
 #, fuzzy
 #| msgid ""
 #| "Berserk:\n"
@@ -51,13 +51,13 @@ msgstr ""
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:677
-#: data/core/macros/abilities.cfg:623
+#: data/core/macros/abilities.cfg:619
 msgid "magical"
 msgstr "galdrar"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:679
-#: data/core/macros/abilities.cfg:624
+#: data/core/macros/abilities.cfg:620
 #, fuzzy
 #| msgid ""
 #| "Magical:\n"
@@ -73,7 +73,7 @@ msgstr ""
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:688
-#: data/core/macros/abilities.cfg:668
+#: data/core/macros/abilities.cfg:664
 #, fuzzy
 #| msgid "firststrike"
 msgid "first strike"
@@ -81,7 +81,7 @@ msgstr "fyrsta högg"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:690
-#: data/core/macros/abilities.cfg:669
+#: data/core/macros/abilities.cfg:665
 #, fuzzy
 #| msgid ""
 #| "First Strike:\n"
@@ -135,19 +135,19 @@ msgstr ""
 "í þorp eða heilara."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:39
 #: data/core/macros/abilities.cfg:28
 msgid "heals +8"
 msgstr "læknar +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:44
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
 #: data/core/macros/abilities.cfg:29
 msgid "female^heals +8"
 msgstr "læknar +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
 #: data/core/macros/abilities.cfg:30
 #, fuzzy
 #| msgid ""
@@ -3735,17 +3735,17 @@ msgstr ""
 "skipti sem hún drepur einingu."
 
 #. [unstore_unit]
-#: data/core/macros/abilities.cfg:513
+#: data/core/macros/abilities.cfg:509
 msgid "+1 max HP"
 msgstr "+1 á hámarks lífspunkta"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:555
+#: data/core/macros/abilities.cfg:551
 msgid "backstab"
 msgstr "bakstunga"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:556
+#: data/core/macros/abilities.cfg:552
 #, fuzzy
 #| msgid ""
 #| "Backstab:\n"
@@ -3764,12 +3764,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:568 data/core/macros/abilities.cfg:579
+#: data/core/macros/abilities.cfg:564 data/core/macros/abilities.cfg:575
 msgid "plague"
 msgstr "plága"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:569
+#: data/core/macros/abilities.cfg:565
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -3787,7 +3787,7 @@ msgstr ""
 "ódauðar einingar og ekki á einingar inní þorpum."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:580
+#: data/core/macros/abilities.cfg:576
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -3805,12 +3805,12 @@ msgstr ""
 "einingar eða einingar inní þorpum."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:590
+#: data/core/macros/abilities.cfg:586
 msgid "slows"
 msgstr "hægir"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:591
+#: data/core/macros/abilities.cfg:587
 #, fuzzy
 #| msgid ""
 #| "Slow:\n"
@@ -3831,13 +3831,13 @@ msgstr ""
 "eru valdar."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:600
+#: data/core/macros/abilities.cfg:596
 #, fuzzy
 msgid "petrifies"
 msgstr "Högg"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:601
+#: data/core/macros/abilities.cfg:597
 #, fuzzy
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
@@ -3848,12 +3848,12 @@ msgstr ""
 "mega ekki hreyfa sig né gera árásir."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:610
+#: data/core/macros/abilities.cfg:606
 msgid "marksman"
 msgstr "skytta"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:611
+#: data/core/macros/abilities.cfg:607
 #, fuzzy
 #| msgid ""
 #| "Marksman:\n"
@@ -3867,12 +3867,12 @@ msgstr ""
 "líkur á að hitta."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:635
+#: data/core/macros/abilities.cfg:631
 msgid "swarm"
 msgstr "svarmur"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:636
+#: data/core/macros/abilities.cfg:632
 #, fuzzy
 #| msgid ""
 #| "Swarm:\n"
@@ -3893,12 +3893,12 @@ msgstr ""
 "af lífspunktum sínum eftir, getur hún eingöngu gert 3 árásir."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:645
+#: data/core/macros/abilities.cfg:641
 msgid "charge"
 msgstr "áhlaup"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:646
+#: data/core/macros/abilities.cfg:642
 #, fuzzy
 #| msgid ""
 #| "Charge:\n"
@@ -3915,12 +3915,12 @@ msgstr ""
 "skotmarksins."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:658
+#: data/core/macros/abilities.cfg:654
 msgid "drains"
 msgstr "tæmir"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:659
+#: data/core/macros/abilities.cfg:655
 #, fuzzy
 #| msgid ""
 #| "Drain:\n"
@@ -3935,12 +3935,12 @@ msgstr ""
 "helmingin af skaðanum sem hún olli. (gerir 4 í skaða, læknar sjálfa sig um 2)"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:678
+#: data/core/macros/abilities.cfg:674
 msgid "poison"
 msgstr "eitrun"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:679
+#: data/core/macros/abilities.cfg:675
 #, fuzzy
 #| msgid ""
 #| "Poison:\n"

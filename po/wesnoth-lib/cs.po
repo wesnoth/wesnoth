@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-17 11:34-0300\n"
+"POT-Creation-Date: 2015-06-27 20:18-0300\n"
 "PO-Revision-Date: 2014-04-16 23:12+0100\n"
 "Last-Translator: Jan Dědič <jan.dedic@gmail.com>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -1788,9 +1788,9 @@ msgstr "Připojit"
 #. [button]: id=cancel
 #: data/gui/default/window/addon_connect.cfg:217
 #: data/gui/default/window/addon_uninstall_list.cfg:174
-#: data/gui/default/window/campaign_dialog.cfg:467
-#: data/gui/default/window/campaign_difficulty.cfg:192
-#: data/gui/default/window/core_dialog.cfg:387
+#: data/gui/default/window/campaign_dialog.cfg:538
+#: data/gui/default/window/campaign_difficulty.cfg:223
+#: data/gui/default/window/core_dialog.cfg:240
 #: data/gui/default/window/custom_tod.cfg:397
 #: data/gui/default/window/data_manage.cfg:361
 #: data/gui/default/window/depcheck_select_new.cfg:146
@@ -1799,7 +1799,7 @@ msgstr "Připojit"
 #: data/gui/default/window/editor_edit_label.cfg:191
 #: data/gui/default/window/editor_edit_scenario.cfg:304
 #: data/gui/default/window/editor_edit_side.cfg:488
-#: data/gui/default/window/editor_generate_map.cfg:107
+#: data/gui/default/window/editor_generate_map.cfg:218
 #: data/gui/default/window/editor_new_map.cfg:125
 #: data/gui/default/window/editor_resize_map.cfg:284
 #: data/gui/default/window/editor_set_starting_position.cfg:175
@@ -1810,7 +1810,7 @@ msgstr "Připojit"
 #: data/gui/default/window/language_selection.cfg:141
 #: data/gui/default/window/message.cfg:151
 #: data/gui/default/window/mp_change_control.cfg:160
-#: data/gui/default/window/mp_cmd_wrapper.cfg:470
+#: data/gui/default/window/mp_cmd_wrapper.cfg:485
 #: data/gui/default/window/mp_connect.cfg:176
 #: data/gui/default/window/mp_create_game.cfg:559
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:202
@@ -2141,26 +2141,17 @@ msgid "Scaled to hex"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/campaign_dialog.cfg:55
+#: data/gui/default/window/campaign_dialog.cfg:56
 msgid "Play a Campaign"
 msgstr "Hraj tažení"
 
-#. [button]: id=advanced_settings
-#. [label]
-#: data/gui/default/window/campaign_dialog.cfg:423
-#: data/gui/default/window/campaign_settings.cfg:48
-#, fuzzy
-#| msgid "sound^Advanced Options"
-msgid "Advanced Settings"
-msgstr "Pokročilé nastavení"
-
 #. [toggle_button]: id=checkbox_deterministic
-#: data/gui/default/window/campaign_dialog.cfg:436
+#: data/gui/default/window/campaign_dialog.cfg:507
 msgid "Deterministic mode"
 msgstr ""
 
 #. [toggle_button]: id=checkbox_deterministic
-#: data/gui/default/window/campaign_dialog.cfg:438
+#: data/gui/default/window/campaign_dialog.cfg:509
 msgid ""
 "Makes the random number generator yield the same results even after "
 "reloading a game"
@@ -2169,10 +2160,10 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #. [button]: id=save
-#: data/gui/default/window/campaign_dialog.cfg:453
-#: data/gui/default/window/campaign_difficulty.cfg:179
-#: data/gui/default/window/campaign_settings.cfg:326
-#: data/gui/default/window/core_dialog.cfg:373
+#: data/gui/default/window/campaign_dialog.cfg:524
+#: data/gui/default/window/campaign_difficulty.cfg:210
+#: data/gui/default/window/campaign_settings.cfg:322
+#: data/gui/default/window/core_dialog.cfg:227
 #: data/gui/default/window/custom_tod.cfg:387
 #: data/gui/default/window/data_manage.cfg:347
 #: data/gui/default/window/data_manage.cfg:348
@@ -2224,19 +2215,19 @@ msgid "Select difficulty level:"
 msgstr "Vyber si obtížnost:"
 
 #. [label]
+#: data/gui/default/window/campaign_settings.cfg:48
+#, fuzzy
+#| msgid "sound^Advanced Options"
+msgid "Advanced Settings"
+msgstr "Pokročilé nastavení"
+
+#. [label]
 #: data/gui/default/window/campaign_settings.cfg:77
 msgid "Additional dialogs:"
 msgstr ""
 
-#. [toggle_button]: id=mp_configure
-#: data/gui/default/window/campaign_settings.cfg:104
-#, fuzzy
-#| msgid "Options"
-msgid "Level options"
-msgstr "Nastavení"
-
 #. [toggle_button]: id=mp_connect
-#: data/gui/default/window/campaign_settings.cfg:120
+#: data/gui/default/window/campaign_settings.cfg:116
 #, fuzzy
 #| msgid "Configuration:"
 msgid "Configure sides"
@@ -2244,13 +2235,13 @@ msgstr "Nastavení:"
 
 #. [label]
 #. [label]: id=era_label
-#: data/gui/default/window/campaign_settings.cfg:161
+#: data/gui/default/window/campaign_settings.cfg:157
 #: data/gui/default/window/mp_create_game.cfg:185
 msgid "Era:"
 msgstr "Éra:"
 
 #. [label]: id=mod_label
-#: data/gui/default/window/campaign_settings.cfg:250
+#: data/gui/default/window/campaign_settings.cfg:246
 #, fuzzy
 #| msgid "Choose Modifications"
 msgid "Modifications:"
@@ -2314,7 +2305,7 @@ msgid "clipboard^Copy"
 msgstr "clipboard^Kopírovat"
 
 #. [label]
-#: data/gui/default/window/core_dialog.cfg:55
+#: data/gui/default/window/core_dialog.cfg:44
 #, fuzzy
 #| msgid "Load Game"
 msgid "Load Core"
@@ -2322,7 +2313,9 @@ msgstr "Načti hru"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:45
-msgid "Custom Time of Day Schedule"
+#, fuzzy
+#| msgid "Custom Time of Day Schedule"
+msgid "Custom Time Schedule"
 msgstr "Volitelné nastavení rozvržení dne"
 
 #. [label]
@@ -2453,7 +2446,7 @@ msgstr "Zálohovat"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/depcheck_confirm_change.cfg:40
-#: src/gui/widgets/label.cpp:178
+#: src/gui/widgets/label.cpp:177
 msgid "Confirm"
 msgstr "Potvrdit"
 
@@ -2653,32 +2646,36 @@ msgstr "controller^Nikdo"
 msgid "controller^Player number:"
 msgstr "controller^Číslo hráče"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_generate_map.cfg:35
-msgid "Generate Random Map"
-msgstr "Vygeneruj náhodnou mapu"
+#: data/gui/default/window/editor_generate_map.cfg:43
+#: src/hotkey/hotkey_command.cpp:207
+msgid "Generate Map"
+msgstr "Vygeneruj mapu"
 
-#. [button]: id=next_generator
-#: data/gui/default/window/editor_generate_map.cfg:64
-#: data/gui/default/window/editor_generate_map.cfg:65
-msgid "Next Generator"
-msgstr "Další generátor"
+#. [label]
+#: data/gui/default/window/editor_generate_map.cfg:58
+#, fuzzy
+#| msgid "Map Generator"
+msgid "Choose a map generator:"
+msgstr "Generátor map"
 
 #. [button]: id=settings
-#: data/gui/default/window/editor_generate_map.cfg:86
-#: data/gui/default/window/editor_generate_map.cfg:87
+#: data/gui/default/window/editor_generate_map.cfg:131
 msgid "Settings"
 msgstr "Nastavení"
 
+#. [label]
+#: data/gui/default/window/editor_generate_map.cfg:164
+#, fuzzy
+#| msgid "Speed: "
+msgid "Seed:"
+msgstr "Rychlost: "
+
 #. [button]: id=ok
-#: data/gui/default/window/editor_generate_map.cfg:97
+#: data/gui/default/window/editor_generate_map.cfg:206
 msgid "Generate"
 msgstr "Vygeneruj"
-
-#. [label]
-#: data/gui/default/window/editor_generate_map.cfg:127
-msgid "Seed"
-msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -3303,7 +3300,7 @@ msgstr "Důvod vyhození / zákazu:"
 
 #. [button]: id=kick
 #: data/gui/default/window/lobby_player_info.cfg:168
-#: data/gui/default/window/mp_cmd_wrapper.cfg:389
+#: data/gui/default/window/mp_cmd_wrapper.cfg:399
 msgid "Kick"
 msgstr "Vyhodit"
 
@@ -3530,27 +3527,27 @@ msgid "Add as Ignore"
 msgstr "Přidej jako otrapu"
 
 #. [label]
-#: data/gui/default/window/mp_cmd_wrapper.cfg:241
+#: data/gui/default/window/mp_cmd_wrapper.cfg:251
 msgid "Moderating"
 msgstr "Moderování"
 
 #. [label]
-#: data/gui/default/window/mp_cmd_wrapper.cfg:271
+#: data/gui/default/window/mp_cmd_wrapper.cfg:281
 msgid "Reason:"
 msgstr "Příčina:"
 
 #. [label]
-#: data/gui/default/window/mp_cmd_wrapper.cfg:323
+#: data/gui/default/window/mp_cmd_wrapper.cfg:333
 msgid "Time:"
 msgstr "Čas:"
 
 #. [button]: id=status
-#: data/gui/default/window/mp_cmd_wrapper.cfg:374
+#: data/gui/default/window/mp_cmd_wrapper.cfg:384
 msgid "Status"
 msgstr "Stav"
 
 #. [button]: id=ban
-#: data/gui/default/window/mp_cmd_wrapper.cfg:404
+#: data/gui/default/window/mp_cmd_wrapper.cfg:414
 msgid "Ban"
 msgstr "Zakázat"
 
@@ -3985,20 +3982,20 @@ msgstr "Smazání souboru se nezdařilo."
 msgid "Creation of the directory failed."
 msgstr "Složku se nezdařilo vytvořit."
 
-#: src/game_preferences.cpp:362
+#: src/game_preferences.cpp:398
 msgid "No server has been defined."
 msgstr "Nebyl definován žádný server."
 
-#: src/game_preferences.cpp:461
+#: src/game_preferences.cpp:497
 msgid "player"
 msgstr "hráč"
 
-#: src/game_preferences.cpp:996
+#: src/game_preferences.cpp:1032
 msgid "%H:%M"
 msgstr "%H:%M"
 
 # formát času pro 2x12 + AM/PM
-#: src/game_preferences.cpp:999
+#: src/game_preferences.cpp:1035
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
@@ -4627,15 +4624,15 @@ msgstr "Kruh se nevejde na plátno."
 msgid "Image doesn't fit on canvas."
 msgstr "Obrázek se nevejde na plátno."
 
-#: src/gui/auxiliary/canvas.cpp:1355
+#: src/gui/auxiliary/canvas.cpp:1361
 msgid "Text has a font size of 0."
 msgstr "Text má výšku fontu nula."
 
-#: src/gui/auxiliary/canvas.cpp:1429
+#: src/gui/auxiliary/canvas.cpp:1437
 msgid "Text doesn't start on canvas."
 msgstr "Text nezačíná na plátně."
 
-#: src/gui/auxiliary/widget_definition.cpp:144
+#: src/gui/auxiliary/widget_definition.cpp:148
 #: src/gui/auxiliary/window_builder.cpp:263
 msgid "No resolution defined."
 msgstr "Není definováno žádné rozlišení."
@@ -4775,7 +4772,7 @@ msgstr "addon_state^Uveřejněné, poškozené"
 msgid "addon_state^Unknown"
 msgstr "addon_state^Neznámý"
 
-#: src/gui/dialogs/addon/description.cpp:392 src/gui/dialogs/chat_log.cpp:417
+#: src/gui/dialogs/addon/description.cpp:392 src/gui/dialogs/chat_log.cpp:420
 #: src/gui/dialogs/game_cache_options.cpp:98
 #: src/gui/dialogs/game_paths.cpp:119
 #: src/gui/dialogs/gamestate_inspector.cpp:713
@@ -5003,13 +5000,13 @@ msgstr "Povinný ovládací prvek '$id' nebyl definován."
 msgid "Opening links is not supported, contact your packager"
 msgstr ""
 
-#: src/gui/widgets/label.cpp:178
+#: src/gui/widgets/label.cpp:177
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you want to open this link?"
 msgstr "Skutečně chceš smazat tuto hru?"
 
-#: src/gui/widgets/label.cpp:211
+#: src/gui/widgets/label.cpp:208
 msgid "Copied link!"
 msgstr ""
 
@@ -5272,8 +5269,10 @@ msgid "Each Team"
 msgstr "Všechny týmy"
 
 #: src/hotkey/hotkey_command.cpp:106
-msgid "Team 1"
-msgstr "Tým 1"
+#, fuzzy
+#| msgid "Human Castle"
+msgid "Human Team"
+msgstr "Lidský hrad"
 
 #: src/hotkey/hotkey_command.cpp:107
 msgid "Skip Animation"
@@ -5335,8 +5334,8 @@ msgid "Assign Local Time"
 msgstr "Přiřadit místní čas"
 
 #: src/hotkey/hotkey_command.cpp:134
-msgid "Custom Time of Day Creator"
-msgstr "Vytvoření vlastní denní doby"
+msgid "Time Schedule Editor"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:135
 msgid "Partial Undo"
@@ -5651,10 +5650,6 @@ msgstr "Náhodně nastavit políčka ve výběru"
 msgid "Rotate Map"
 msgstr "Otoč mapu"
 
-#: src/hotkey/hotkey_command.cpp:207
-msgid "Generate Map"
-msgstr "Vygeneruj mapu"
-
 #: src/hotkey/hotkey_command.cpp:208
 msgid "Apply a Mask"
 msgstr "Aplikovat masku"
@@ -5887,11 +5882,11 @@ msgid "Hat"
 msgstr "Čepice"
 
 #: src/hotkey/hotkey_preferences_display.cpp:134
-msgid "Add additional binding to \"$hotkey_description|\""
+msgid "Add a new binding to \"$hotkey_description|\""
 msgstr ""
 
 #: src/hotkey/hotkey_preferences_display.cpp:136
-msgid "Clears \"$hotkey_description|'s\" bindings"
+msgid "Clears the current bindings for \"$hotkey_description|\""
 msgstr ""
 
 #: src/hotkey/hotkey_preferences_display.cpp:150
@@ -5998,7 +5993,7 @@ msgid ""
 "affected terrain is :"
 msgstr "Nalezen terén s řetězcem s více než čtyřmi znaky, postižený terén :"
 
-#: src/text.cpp:882
+#: src/text.cpp:895
 msgid "The text contains invalid markup: "
 msgstr "Text obsahuje neplatné značky: "
 
@@ -6039,6 +6034,23 @@ msgid ""
 msgstr ""
 "Klíč '$deprecated_key'  byl přejmenován na '$key' a ve verzi "
 "$removal_version bude odstraněna podpora původního tvaru."
+
+#, fuzzy
+#~| msgid "Options"
+#~ msgid "Level options"
+#~ msgstr "Nastavení"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Vygeneruj náhodnou mapu"
+
+#~ msgid "Next Generator"
+#~ msgstr "Další generátor"
+
+#~ msgid "Team 1"
+#~ msgstr "Tým 1"
+
+#~ msgid "Custom Time of Day Creator"
+#~ msgstr "Vytvoření vlastní denní doby"
 
 #~ msgid "Password: "
 #~ msgstr "Heslo: "

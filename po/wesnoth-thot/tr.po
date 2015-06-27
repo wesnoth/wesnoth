@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-thot\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 05:06-0300\n"
+"POT-Creation-Date: 2015-06-27 20:18-0300\n"
 "PO-Revision-Date: 2009-02-23 19:46+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -782,7 +782,7 @@ msgstr ""
 "Uyanık olun ve birlikte hareket edin. Burası haydut yatağı... Gotras ve "
 "çetesi buradan gelmişti."
 
-#. [message]: role=Scout
+#. [message]: role=scout
 #. 'muckle' = Scottish/archaic English meaning 'great' or 'large'
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:231
 #, fuzzy
@@ -1389,7 +1389,9 @@ msgstr "Ailemin anısına al bunu seni katil!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:351
-msgid "They are defeated"
+#, fuzzy
+#| msgid "They are defeated"
+msgid "They are defeated!"
 msgstr "Yenildiler"
 
 #. [message]: speaker=Angarthing
@@ -1440,12 +1442,14 @@ msgstr ""
 msgid "Forbidden Forest"
 msgstr "Yasak Orman"
 
+#. [side]: type=Ancient Wose, id=Burumardir-Athelorand
 #. [side]: type=Elvish Enchantress, id=Iluvarda
 #. [side]: type=Elvish High Lord, id=Telcherion
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:120
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:147
-msgid "Elves"
-msgstr ""
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:174
+msgid "Forest"
+msgstr "Orman"
 
 #. [side]: type=Elvish High Lord, id=Telcherion
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:125
@@ -1456,11 +1460,6 @@ msgstr "Telçeryon"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:152
 msgid "Iluvarda"
 msgstr "İluvarda"
-
-#. [side]: type=Ancient Wose, id=Burumardir-Athelorand
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:174
-msgid "Forest"
-msgstr "Orman"
 
 #. [side]: type=Ancient Wose, id=Burumardir-Athelorand
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:178
@@ -1537,7 +1536,7 @@ msgstr ""
 "Herkes yanıma toplansın. Biz elflerle ağız dalaşından daha iyisini yaparız."
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:371
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:368
 #, fuzzy
 msgid "Kal Kartha should be only another day’s march east of here."
 msgstr "Kal Karta doğuda bir günlük uzaklıkta olması lazım."

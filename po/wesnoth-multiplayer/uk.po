@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-17 11:34-0300\n"
+"POT-Creation-Date: 2015-06-27 20:18-0300\n"
 "PO-Revision-Date: 2012-10-31 12:39+0200\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,50 +29,25 @@ msgstr "Карта користувача"
 msgid "Random"
 msgstr "Випадкова"
 
-#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:118
-msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
-msgstr ""
-"<span strikethrough='true' foreground='#%02x%02x%02x'>Сторона %d</span>"
-
-#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:134
-msgid ""
-"<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
-"score = %d  Gold = %d"
-msgstr ""
-"<span foreground='#%02x%02x%02x'>Сторона %d</span>:  Рахунок прибутку = %d  "
-"Рахунок бійців = %d  Золото = %d"
-
-#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:134
-msgid "Grand total: <b>%d</b>"
-msgstr "Загальний підсумок: <b>%d</b>"
-
-#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:144
-msgid "<span foreground='%s'>Side %d</span> has the advantage."
-msgstr "<span foreground='%s'>Сторона %d</span> має перевагу."
-
-#. [era]: id=era_default
-#: data/multiplayer/eras.cfg:169
+#. [era]: id=era_default, type=hybrid
+#: data/multiplayer/eras.cfg:54
 msgid "Default"
 msgstr "Типово"
 
-#. [era]: id=era_default
-#: data/multiplayer/eras.cfg:170
+#. [era]: id=era_default, type=hybrid
+#: data/multiplayer/eras.cfg:55
 msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
 msgstr ""
 
 #. [era]: id=era_heroes
-#: data/multiplayer/eras.cfg:190
+#: data/multiplayer/eras.cfg:76
 msgid "Age of Heroes"
 msgstr "Вік героїв"
 
 #. [era]: id=era_heroes
-#: data/multiplayer/eras.cfg:191
+#: data/multiplayer/eras.cfg:77
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
 "units available for recruit. Consists of six factions. Not considered "
@@ -80,12 +55,12 @@ msgid ""
 msgstr ""
 
 #. [era]: id=era_khalifate
-#: data/multiplayer/eras.cfg:198
+#: data/multiplayer/eras.cfg:84
 msgid "Default + Khalifate"
 msgstr ""
 
 #. [era]: id=era_khalifate
-#: data/multiplayer/eras.cfg:199
+#: data/multiplayer/eras.cfg:85
 msgid ""
 "An era featuring an additional faction besides the six factions from Default "
 "Era. Khalifate units use no magic, but instead rely on careful use of "
@@ -96,14 +71,14 @@ msgid ""
 msgstr ""
 
 #. [era]: id=era_khalifate_heroes
-#: data/multiplayer/eras.cfg:209
+#: data/multiplayer/eras.cfg:95
 #, fuzzy
 #| msgid "Age of Heroes"
 msgid "Age of Heroes + Khalifate"
 msgstr "Вік героїв"
 
 #. [era]: id=era_khalifate_heroes
-#: data/multiplayer/eras.cfg:210
+#: data/multiplayer/eras.cfg:96
 msgid ""
 "An era featuring an additional faction besides the six factions from Age of "
 "Heroes Era. Khalifate units use no magic, but instead rely on careful use of "
@@ -112,6 +87,31 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:65
+msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
+msgstr ""
+"<span strikethrough='true' foreground='#%02x%02x%02x'>Сторона %d</span>"
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:81
+msgid ""
+"<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
+"score = %d  Gold = %d"
+msgstr ""
+"<span foreground='#%02x%02x%02x'>Сторона %d</span>:  Рахунок прибутку = %d  "
+"Рахунок бійців = %d  Золото = %d"
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:81
+msgid "Grand total: <b>%d</b>"
+msgstr "Загальний підсумок: <b>%d</b>"
+
+#. [lua]: f
+#: data/multiplayer/eras.lua:91
+msgid "<span foreground='%s'>Side %d</span> has the advantage."
+msgstr "<span foreground='%s'>Сторона %d</span> має перевагу."
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -2202,9 +2202,7 @@ msgid "Random map"
 msgstr "Випадкова карта"
 
 #. [multiplayer]: id=multiplayer_Random_Map
-#. [multiplayer]: id=multiplayer_Random_YAMG_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:7
-#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:7
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
@@ -2264,13 +2262,6 @@ msgstr ""
 "випадкові карти часто не збалансовані, але якщо у вас є час, ви можете "
 "згенерувати нові, поки не отримаєте хорошу."
 
-#. [multiplayer]: id=multiplayer_Random_YAMG_Map
-#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:6
-#, fuzzy
-#| msgid "Random map"
-msgid "Random map by YAMG"
-msgstr "Випадкова карта"
-
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:9
 msgid "Wesnoth Benchmark: AI"
@@ -2312,6 +2303,11 @@ msgid ""
 msgstr ""
 "Тестування Весноту, використовує --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#, fuzzy
+#~| msgid "Random map"
+#~ msgid "Random map by YAMG"
+#~ msgstr "Випадкова карта"
 
 #~ msgid "4p — Lagoon"
 #~ msgstr "4г — Лагуна"

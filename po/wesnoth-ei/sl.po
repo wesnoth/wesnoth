@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ei-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-17 11:34-0300\n"
+"POT-Creation-Date: 2015-06-27 20:18-0300\n"
 "PO-Revision-Date: 2010-09-25 15:09+0100\n"
 "Last-Translator: Klemen Košir <klemen913@gmail.com>\n"
 "Language-Team:  <en@li.org>\n"
@@ -233,10 +233,10 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:25
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:38
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:23
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:23
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:22
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:30
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:26
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:21
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:24
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:28
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:25
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:26
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:33
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:32
@@ -300,8 +300,8 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:87
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:112
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:67
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:46
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:39
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:44
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:44
 #: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:61
 #: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:79
 #: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:97
@@ -352,10 +352,10 @@ msgstr "Postojanka"
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:160
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:138
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:111
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:109
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:57
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:80
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:109
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:107
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:83
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:81
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:173
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:84
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:260
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1037
@@ -379,10 +379,10 @@ msgstr "Gweddry umre"
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:164
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:142
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:115
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:113
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:61
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:84
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:113
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:111
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:87
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:85
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:177
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:88
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1041
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:161
@@ -500,12 +500,14 @@ msgstr "Sledite mi, borci! Skozi skrivna vrata!"
 msgid "The Escape Tunnel"
 msgstr "Pobeg skozi rov"
 
+#. [side]
 #. [side]: type=Gryphon, id=Kraagak
 #. [side]: type=Ogre, id=Grug
 #. [side]: type=Troll Warrior, id=Darg
 #. [side]: type=Troll, id=Kabak
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:42
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:84
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:82
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:69
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:44
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:60
 msgid "Monsters"
@@ -786,9 +788,13 @@ msgstr ""
 msgid "Volas"
 msgstr "Volas"
 
+#. [side]: type=Orcish Nightblade, id=Bagork
 #. [side]: type=Orcish Warlord, id=King Dra-Nak
+#. [side]: type=Orcish Warlord, id=Prok-Bak
 #. [side]: type=Orcish Warrior, id=Gruga-Har
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:75
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:80
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:134
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:72
 msgid "Orcs"
 msgstr ""
@@ -1360,10 +1366,10 @@ msgstr "Premagaj vodjo nemrtvih"
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:146
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:119
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:117
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:65
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:88
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:117
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:115
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:91
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:89
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:181
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:92
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:264
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1045
@@ -1584,7 +1590,7 @@ msgstr "Dve Poti"
 #. [side]: type=Troll Warrior, id=Unhk
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:38
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:67
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:62
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:60
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:49
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:72
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:95
@@ -1712,29 +1718,29 @@ msgid "The Crossing"
 msgstr "Prečkanje"
 
 #. [side]: type=Bone Knight, id=Garnad
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:34
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:32
 msgid "Garnad"
 msgstr "Garnad"
 
 #. [side]: type=Orcish Ruler, id=Draka-Kura
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:56
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:54
 msgid "Draka-Kura"
 msgstr "Draka-Kura"
 
 #. [side]: type=Ogre, id=Grug
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:77
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:75
 msgid "Grug"
 msgstr "Grug"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:105
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:103
 #, fuzzy
 #| msgid "Get Gweddry and Owaec across the river"
 msgid "Move Gweddry and Owaec across the river"
 msgstr "Gweddry in Owaec morata priti na drugi breg"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:146
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:144
 #, fuzzy
 #| msgid ""
 #| "We have come to the Great River. What should we do? Should we attempt to "
@@ -1745,7 +1751,7 @@ msgstr ""
 "Prišli smo do velike reke. Kaj naj naredimo? Naj jo poskusimo prečkati?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:150
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:148
 #, fuzzy
 #| msgid ""
 #| "We must cross this river. The undead are chasing us, and their hordes are "
@@ -1760,7 +1766,7 @@ msgstr ""
 "jih premagali. Kmalu bodo dobili okrepitve. Takrat moramo biti že čez reko."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:154
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:152
 #, fuzzy
 msgid ""
 "Across this river lies the Northlands. If we can get there, we may be able "
@@ -1771,12 +1777,12 @@ msgstr ""
 "ogre da nam pomagajo - toda orki nas bodo zagotovo prej napadli."
 
 #. [message]: speaker=Grug
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:158
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:156
 msgid "Grug say we no help you! We finish must battle orc with!"
 msgstr "Grug pravi mi ne pomagamo vam! Moramo boj končati orki!"
 
 #. [message]: speaker=Draka-Kura
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:162
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:160
 msgid ""
 "Was that comprehensible to anyone? Silence, foolish ogre. I will deal with "
 "you later. Right now there are men trying to cross this river."
@@ -1785,12 +1791,12 @@ msgstr ""
 "kasneje.  Trenutno ljudje poskušajo prečkati reko."
 
 #. [message]: speaker=Grug
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:166
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:164
 msgid "Orc foolish! Die you now!"
 msgstr "Neumen ork! Umreš ti zdaj!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:170
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:168
 #, fuzzy
 #| msgid ""
 #| "If we show ourselves as enemies of the orcs, they may aid us. But I think "
@@ -1803,40 +1809,40 @@ msgstr ""
 "mislim da je bolje, če prvo prečkamo reko in se pogovorimo kasneje."
 
 #. [message]: speaker=Garnad
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:201
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:203
 msgid "We have you now, mortals!"
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:205
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:207
 msgid "They're closing in on us! We must get moving quickly."
 msgstr ""
 
 #. [unit]: type=Ancient Lich, id=Mal-Hakralan
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:220
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:222
 msgid "Mal-Hakralan"
 msgstr "Mal-Hakralan"
 
 #. [message]: speaker=Mal-Hakralan
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:238
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:240
 msgid ""
 "I see, this is where the scared dogs ran to. Don't think you can get away "
 "<b>this</b> easily."
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:242
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:244
 msgid ""
 "The undead reinforcements have arrived! We must cross the river immediately!"
 msgstr "Nemrtvi so dobili okrepitve! Takoj moramo prečkati reko!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:289
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:291
 msgid "Hurry up. We must get across before these undead slaughter us!"
 msgstr "Pohitite. Prečkati jo moramo preden nas nemrtvi vse pokoljejo!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:336
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:338
 #, fuzzy
 msgid ""
 "Good! We have crossed. Now let’s see if we can get the ogres to join us. "
@@ -1848,18 +1854,18 @@ msgstr ""
 "Kralju - mogoče nam uspe to storiti še enkrat."
 
 #. [message]: speaker=Grug
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:345
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:347
 #, fuzzy
 msgid "Grug say join you will he."
 msgstr "Grug pravi bo pridružil se mogoče."
 
 #. [unit]: type=Ogre
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:364
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:366
 msgid "Gork"
 msgstr "Gork"
 
 #. [unit]: type=Ogre
-#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:371
+#: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:373
 #, fuzzy
 msgid "Drog"
 msgstr "Darg"
@@ -1869,11 +1875,405 @@ msgstr "Darg"
 msgid "Undead Crossing"
 msgstr "Nemrtvi prehod"
 
+#. [side]: type=Necromancer, id=Mal-un-Karad
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:37
+msgid "Mal-un-Karad"
+msgstr "Mal-un-Zanrad"
+
+#. [objective]: condition=win
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:79
+#, fuzzy
+#| msgid "Defeat either enemy leader"
+msgid "Defeat the enemy leader"
+msgstr "Premagaj enega od sovražnih vodij"
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:114
+msgid ""
+"These fens look impassable. I don’t think we will be able to continue on "
+"this road; it is time to turn northwards, away from these undead."
+msgstr ""
+"To močvirje zgleda neprehodno. Nisem verjamem, da bomo lahko nadaljevali po "
+"tej poti. Čas je da zavijemo na sever, stran od teh nemrtvih."
+
+#. [message]: speaker=Dacyn
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:118
+msgid ""
+"We must cross this river, then. We must make haste, already we have wasted "
+"too much time. Undead have positioned themselves in the middle of the ford."
+msgstr ""
+"Potem moramo prečkati to reko. Pohiteti moramo, že tako smo porabili preveč "
+"časa. Nemrtvi so se nastanili na sredini plitvine."
+
+#. [message]: speaker=Owaec
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:122
+msgid ""
+"Across this river lies the Northland. Ogres live there, as do orcs. We "
+"should proceed with caution. The undead are dangerous, but the orcs may be "
+"more dangerous still."
+msgstr ""
+"Čez to reko ležijo Severne Dežele. Tam živijo ogri in orki. Previdno moramo "
+"nadaljevati. Nemrtvi so nevarni, ampak orki so lahko še bolj."
+
+#. [message]: speaker=Mal-un-Karad
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:126
+msgid ""
+"I will leave your bodies to rot in the river, then I will raise you up to "
+"serve in my Master’s undead hordes!"
+msgstr ""
+"Vaša trupla bom pustil, da strohnijo v reki, potem pa vas bom oživil, da "
+"boste služili v hordah mojega Gospodarja!"
+
+#. [message]: speaker=Mal-un-Karad
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:135
+msgid "Creatures from the deep, I summon thee to destroy this foe!"
+msgstr ""
+
+#. [message]: speaker=Dacyn
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:224
+msgid ""
+"It seems as if in addition to summoning undead this foul sorcerer has "
+"learned to call up monsters from the deep!"
+msgstr ""
+"Zgleda, da se je ta zlobni čarovnik poleg priklicevanja nemrtvih, naučil "
+"priklicevati pošasti iz globin morja!"
+
+#. [message]: speaker=unit
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:265
+msgid "I failed my Master..."
+msgstr ""
+
+#. [message]
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:284
+msgid "<i>HISS!</i>"
+msgstr ""
+
+#. [message]: speaker=Owaec
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:294
+msgid "The sea creatures are gone!"
+msgstr ""
+
+#. [message]: speaker=Dacyn
+#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:303
+msgid ""
+"We have no time to lose! Let's get moving quickly before the rest of their "
+"army catches up with us."
+msgstr ""
+
+#. [scenario]: id=08_Training_the_Ogres
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:4
+#, fuzzy
+#| msgid "Training the Ogres"
+msgid "Capturing the Ogres"
+msgstr "Treniranje ogrov"
+
+#. [side]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:41
+msgid "Ogres"
+msgstr ""
+
+#. [objective]: condition=win
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:76
+msgid "(captured ogres will be made available for recall)"
+msgstr ""
+
+#. [objective]: condition=win
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:76
+msgid "Capture as many ogres as you can"
+msgstr ""
+
+#. [note]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:94
+msgid ""
+"An ogre is captured when it starts a turn being unable to move more than one "
+"hex."
+msgstr ""
+
+#. [note]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:97
+msgid "If an ogre reaches the edge of the map, it will escape."
+msgstr ""
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:120
+#, fuzzy
+msgid ""
+"Look, this valley is inhabited by a tribe of ogres. We should try to capture "
+"some to train."
+msgstr ""
+"Poglejta, našli smo trop ogrov. Poskusimo jih nekaj ujeti in jih potem "
+"zdresirati."
+
+#. [message]: race=ogre
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:124
+msgid "Humans are coming! Run!"
+msgstr ""
+
+#. [message]: speaker=Owaec
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:128
+msgid ""
+"Looks like they are fleeing. I think they will surrender easily if we can "
+"surround them."
+msgstr ""
+
+#. [message]: speaker=Dacyn
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:132
+msgid "All right, we have to capture them one by one."
+msgstr ""
+
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:151
+msgid "Waah! Run!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:155
+msgid "Run for your lives!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:159
+msgid "Help!"
+msgstr ""
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:203
+msgid "We have let one escape. Let’s hope they don’t all!"
+msgstr "Eden je pobegnil. Upam da ne bodo vsi!"
+
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:254
+msgid "$ogre_name surrender!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:258
+msgid "Don't hurt $ogre_name|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:262
+msgid "$ogre_name will be good! Promise!"
+msgstr ""
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:349
+msgid "We failed to capture any of them!"
+msgstr ""
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:358
+msgid "We only captured one ogre."
+msgstr ""
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:367
+msgid "We failed to capture more than two of the ogres."
+msgstr ""
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:376
+msgid "We captured three ogres! I hope they will prove useful."
+msgstr ""
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:383
+msgid ""
+"We managed to capture many ogres! They will make a good addition to our "
+"troops."
+msgstr ""
+
+#. [scenario]: id=09_Xenophobia
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:4
+msgid "Xenophobia"
+msgstr "Ksenofobija"
+
+#. [side]: type=Dwarvish Lord, id=Pelathsil
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:38
+msgid "Pelathsil"
+msgstr "Pelathsil"
+
+#. [side]: type=Dwarvish Lord, id=Pelathsil
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:43
+msgid "Dwarves"
+msgstr ""
+
+#. [side]: type=Orcish Nightblade, id=Bagork
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:75
+msgid "Bagork"
+msgstr ""
+
+#. [side]: type=Elvish Avenger, id=Elandin
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:97
+msgid "Elandin"
+msgstr "Elandin"
+
+#. [side]: type=Elvish Avenger, id=Elandin
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:102
+msgid "Elves"
+msgstr ""
+
+#. [side]: type=Orcish Warlord, id=Prok-Bak
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:129
+msgid "Prok-Bak"
+msgstr "Prok-Bak"
+
+#. [objective]: condition=win
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:169
+msgid "Defeat all enemy leaders"
+msgstr "Premagaj vse sovražnike"
+
+#. [message]: speaker=Dacyn
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:210
+#, fuzzy
+msgid ""
+"Hail, dwarves! Will you help us get by these foul orcs? We are headed "
+"farther north."
+msgstr ""
+"Pozdravljeni škratje! Nam boste pomagali priti mimo teh umazanih orkov? "
+"Nadaljevati moramo po tej poti."
+
+#. [message]: speaker=Prok-Bak
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:214
+#, fuzzy
+msgid "You human! Call us foul, will you?!"
+msgstr "Človek! Ti nam praviš umazanci?!?"
+
+#. [message]: speaker=Pelathsil
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:218
+msgid "Why should we help you? You’re not a dwarf!"
+msgstr "Zakaj naj bi ti pomagali? Saj nisi škrat!"
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:222
+#, fuzzy
+msgid ""
+"Your people helped us in the past, in the tunnels in the south. Will you not "
+"help us now?"
+msgstr ""
+"Vaši bratje so nam pomagali v rovih na Jugu. Zakaj nam zdaj ne boste "
+"pomagali?"
+
+#. [message]: speaker=Pelathsil
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:226
+#, fuzzy
+msgid "Impossible! I canna’ believe any of my kin would ha’ helped a human!"
+msgstr "Nemogoče! Ne morem verjeti, da je kak moj tovariš pomagal človeku!"
+
+#. [message]: speaker=Elandin
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:230
+msgid "Indeed. Why should any of us help those not of our people?"
+msgstr "Tako je. Zakaj naj bi kdorkoli od nas pomagal komu, ki ni naše rase?"
+
+#. [message]: speaker=Owaec
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:234
+#, fuzzy
+msgid "Will you but let us pass, so that we may fight the orcs on our own?"
+msgstr "Nas boste vsaj spustili mimo, da se lahko sami spopademo z orki?"
+
+#. [message]: speaker=Elandin
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:238
+msgid "I am afraid that is... impossible."
+msgstr "Na žalost je to... nemogoče."
+
+#. [message]: speaker=Bagork
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:243
+msgid "Orcs, kill’em all! Humans, elves or dwarves, it don’t matter!"
+msgstr "Orki, vse jih pobijte! Ljudi, viline ali škrate, ni važno!"
+
+#. [message]: speaker=Elandin
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:247
+#, fuzzy
+msgid ""
+"These orcs will die. But so will you, human. You have trespassed on elvish "
+"land."
+msgstr ""
+"Tile orki bodo pomrli. Ampak ti boš tudi, človek. Nepooblaščeno ste vstopili "
+"na Vilinsko zemljo."
+
+#. [message]: speaker=Pelathsil
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:251
+#, fuzzy
+msgid "Oh, elvish land is it now? Die, ye elf-dog! And you too, human!"
+msgstr ""
+"Oh, a zdaj je že vilinska zemlja? Umri, ti pes vilinski! Ti tudi, človek!"
+
+#. [message]: speaker=Dacyn
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:255
+#, fuzzy
+msgid ""
+"These people won’t listen to reason, they are all blinded by their beliefs "
+"in their own supposed superiority. We probably will have to fight them, "
+"although we can let them fight each other first."
+msgstr ""
+"Tile niso razumni, vsi so oslepljeni s prepričanjem, da je njihova rasa "
+"najboljša. Najbrž se bomo z njimi morali spopasti, čeprav jih mogoče lahko "
+"obidemo."
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:259
+#, fuzzy
+msgid ""
+"True. As much as I dislike killing anything but orcs and undead, it seems we "
+"will have to kill these elves, and these dwarves, before they do the same to "
+"us."
+msgstr ""
+"Prav imaš. Čeprav ne ubijam rad česarkoli kar ni orkovskega ali nemrtvega "
+"izvora, zgleda da bomo morali pobiti te viline in škrate, preden oni nas."
+
+#. [message]: speaker=Bagork
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:270
+msgid "I will kill all of you!"
+msgstr ""
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:285
+msgid "Not very likely."
+msgstr ""
+
+#. [message]: speaker=Prok-Bak
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:296
+msgid "I die? Orcs rule all!"
+msgstr "Umiram? Orki vladajo vsem!"
+
+#. [message]: speaker=Elandin
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:314
+msgid "It seems these humans are more powerful than I thought. Ugh."
+msgstr "Zgleda, da so ti ljudje močnejši, kot sem mislil. Ugh."
+
+#. [message]: speaker=Elandin
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:328
+msgid "Cursed dwarves! Perhaps we should have allied with the humans..."
+msgstr ""
+
+#. [message]: speaker=Elandin
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:342
+msgid "Foul orcs! Perhaps we should have allied with the humans..."
+msgstr ""
+
+#. [message]: speaker=Pelathsil
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:356
+#, fuzzy
+msgid "It seems yon humans are mightier than I kenned..."
+msgstr "Zgleda, da so ti ljudje močnejši, kot sem mislil. Ugh."
+
+#. [message]: speaker=Pelathsil
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:370
+msgid "Foul orcs! Perhaps we should ha’ allied wi’ the humans..."
+msgstr ""
+
+#. [message]: speaker=Pelathsil
+#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:384
+msgid "Cursed elves! Perhaps we should have allied wi’ the humans..."
+msgstr ""
+
+#. [scenario]: id=10_Lake_Vrug
+#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:4
+msgid "Lake Vrug"
+msgstr "Jezero Vrug"
+
 #. [side]: type=General, id=Gweddry
 #. [side]: type=Lieutenant, id=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:17
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:25
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:21
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:21
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:28
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:27
@@ -1887,362 +2287,6 @@ msgstr "Nemrtvi prehod"
 #: data/campaigns/Eastern_Invasion/utils/character-definitions.cfg:6
 msgid "Gweddry"
 msgstr "Gweddry"
-
-#. [side]: type=Necromancer, id=Mal-un-Karad
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:32
-msgid "Mal-un-Karad"
-msgstr "Mal-un-Zanrad"
-
-#. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:53
-#, fuzzy
-#| msgid "Defeat either enemy leader"
-msgid "Defeat the enemy leader"
-msgstr "Premagaj enega od sovražnih vodij"
-
-#. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:88
-msgid ""
-"These fens look impassable. I don’t think we will be able to continue on "
-"this road; it is time to turn northwards, away from these undead."
-msgstr ""
-"To močvirje zgleda neprehodno. Nisem verjamem, da bomo lahko nadaljevali po "
-"tej poti. Čas je da zavijemo na sever, stran od teh nemrtvih."
-
-#. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:92
-msgid ""
-"We must cross this river, then. We must make haste, already we have wasted "
-"too much time. Undead have positioned themselves in the middle of the ford."
-msgstr ""
-"Potem moramo prečkati to reko. Pohiteti moramo, že tako smo porabili preveč "
-"časa. Nemrtvi so se nastanili na sredini plitvine."
-
-#. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:96
-msgid ""
-"Across this river lies the Northland. Ogres live there, as do orcs. We "
-"should proceed with caution. The undead are dangerous, but the orcs may be "
-"more dangerous still."
-msgstr ""
-"Čez to reko ležijo Severne Dežele. Tam živijo ogri in orki. Previdno moramo "
-"nadaljevati. Nemrtvi so nevarni, ampak orki so lahko še bolj."
-
-#. [message]: speaker=Mal-un-Karad
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:100
-msgid ""
-"I will leave your bodies to rot in the river, then I will raise you up to "
-"serve in my Master’s undead hordes!"
-msgstr ""
-"Vaša trupla bom pustil, da strohnijo v reki, potem pa vas bom oživil, da "
-"boste služili v hordah mojega Gospodarja!"
-
-#. [message]: speaker=Mal-un-Karad
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:117
-#, fuzzy
-msgid "I summon from the depths of the river beasts to destroy you!"
-msgstr "Iz globin reke priklicujem pošasti, ki vas bodo uničile!"
-
-#. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:148
-msgid ""
-"It seems as if in addition to summoning undead this foul sorcerer has "
-"learned to call up monsters from the deep!"
-msgstr ""
-"Zgleda, da se je ta zlobni čarovnik poleg priklicevanja nemrtvih, naučil "
-"priklicevati pošasti iz globin morja!"
-
-#. [scenario]: id=08_Training_the_Ogres
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:4
-#, fuzzy
-#| msgid "Training the Ogres"
-msgid "Capturing the Ogres"
-msgstr "Treniranje ogrov"
-
-#. [side]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:40
-msgid "Ogres"
-msgstr ""
-
-#. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:75
-msgid "(captured ogres will be made available for recall)"
-msgstr ""
-
-#. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:75
-msgid "Capture as many ogres as you can"
-msgstr ""
-
-#. [note]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:93
-msgid ""
-"An ogre is captured when it starts a turn being unable to move more than one "
-"hex."
-msgstr ""
-
-#. [note]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:96
-msgid "If an ogre reaches the edge of the map, it will escape."
-msgstr ""
-
-#. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:119
-#, fuzzy
-msgid ""
-"Look, this valley is inhabited by a tribe of ogres. We should try to capture "
-"some to train."
-msgstr ""
-"Poglejta, našli smo trop ogrov. Poskusimo jih nekaj ujeti in jih potem "
-"zdresirati."
-
-#. [message]: race=ogre
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:123
-msgid "Humans are coming! Run!"
-msgstr ""
-
-#. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:127
-msgid ""
-"Looks like they are fleeing. I think they will surrender easily if we can "
-"surround them."
-msgstr ""
-
-#. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:131
-msgid "All right, we have to capture them one by one."
-msgstr ""
-
-#. [value]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:150
-msgid "Waah! Run!"
-msgstr ""
-
-#. [value]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:154
-msgid "Run for your lives!"
-msgstr ""
-
-#. [value]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:158
-msgid "Help!"
-msgstr ""
-
-#. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:202
-msgid "We have let one escape. Let’s hope they don’t all!"
-msgstr "Eden je pobegnil. Upam da ne bodo vsi!"
-
-#. [value]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:253
-msgid "$ogre_name surrender!"
-msgstr ""
-
-#. [value]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:257
-msgid "Don't hurt $ogre_name|!"
-msgstr ""
-
-#. [value]
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:261
-msgid "$ogre_name will be good! Promise!"
-msgstr ""
-
-#. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:348
-msgid "We failed to capture any of them!"
-msgstr ""
-
-#. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:357
-msgid "We only captured one ogre."
-msgstr ""
-
-#. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:366
-msgid "We failed to capture more than two of the ogres."
-msgstr ""
-
-#. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:375
-msgid "We captured three ogres! I hope they will prove useful."
-msgstr ""
-
-#. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:382
-msgid ""
-"We managed to capture many ogres! They will make a good addition to our "
-"troops."
-msgstr ""
-
-#. [scenario]: id=09_Xenophobia
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:4
-msgid "Xenophobia"
-msgstr "Ksenofobija"
-
-#. [side]: type=Dwarvish Lord, id=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:36
-msgid "Pelathsil"
-msgstr "Pelathsil"
-
-#. [side]: type=Orcish Warlord, id=Prok-Bak
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:54
-msgid "Prok-Bak"
-msgstr "Prok-Bak"
-
-#. [side]: type=Elvish Marshal, id=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:75
-msgid "Elandin"
-msgstr "Elandin"
-
-#. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:105
-msgid "Defeat all enemy leaders"
-msgstr "Premagaj vse sovražnike"
-
-#. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:146
-#, fuzzy
-msgid ""
-"Hail, dwarves! Will you help us get by these foul orcs? We are headed "
-"farther north."
-msgstr ""
-"Pozdravljeni škratje! Nam boste pomagali priti mimo teh umazanih orkov? "
-"Nadaljevati moramo po tej poti."
-
-#. [message]: speaker=Prok-Bak
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:150
-#, fuzzy
-msgid "You human! Call us foul, will you?!"
-msgstr "Človek! Ti nam praviš umazanci?!?"
-
-#. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:154
-msgid "Why should we help you? You’re not a dwarf!"
-msgstr "Zakaj naj bi ti pomagali? Saj nisi škrat!"
-
-#. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:158
-#, fuzzy
-msgid ""
-"Your people helped us in the past, in the tunnels in the south. Will you not "
-"help us now?"
-msgstr ""
-"Vaši bratje so nam pomagali v rovih na Jugu. Zakaj nam zdaj ne boste "
-"pomagali?"
-
-#. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:162
-#, fuzzy
-msgid "Impossible! I canna’ believe any of my kin would ha’ helped a human!"
-msgstr "Nemogoče! Ne morem verjeti, da je kak moj tovariš pomagal človeku!"
-
-#. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:166
-msgid "Indeed. Why should any of us help those not of our people?"
-msgstr "Tako je. Zakaj naj bi kdorkoli od nas pomagal komu, ki ni naše rase?"
-
-#. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:170
-#, fuzzy
-msgid "Will you but let us pass, so that we may fight the orcs on our own?"
-msgstr "Nas boste vsaj spustili mimo, da se lahko sami spopademo z orki?"
-
-#. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:174
-msgid "I am afraid that is... impossible."
-msgstr "Na žalost je to... nemogoče."
-
-#. [message]: speaker=Prok-Bak
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:179
-msgid "Orcs, kill’em all! Humans, elves or dwarves, it don’t matter!"
-msgstr "Orki, vse jih pobijte! Ljudi, viline ali škrate, ni važno!"
-
-#. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:183
-#, fuzzy
-msgid ""
-"These orcs will die. But so will you, human. You have trespassed on elvish "
-"land."
-msgstr ""
-"Tile orki bodo pomrli. Ampak ti boš tudi, človek. Nepooblaščeno ste vstopili "
-"na Vilinsko zemljo."
-
-#. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:187
-#, fuzzy
-msgid "Oh, elvish land is it now? Die, ye elf-dog! And you too, human!"
-msgstr ""
-"Oh, a zdaj je že vilinska zemlja? Umri, ti pes vilinski! Ti tudi, človek!"
-
-#. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:191
-#, fuzzy
-msgid ""
-"These people won’t listen to reason, they are all blinded by their beliefs "
-"in their own supposed superiority. We probably will have to fight them, "
-"although we can let them fight each other first."
-msgstr ""
-"Tile niso razumni, vsi so oslepljeni s prepričanjem, da je njihova rasa "
-"najboljša. Najbrž se bomo z njimi morali spopasti, čeprav jih mogoče lahko "
-"obidemo."
-
-#. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:195
-#, fuzzy
-msgid ""
-"True. As much as I dislike killing anything but orcs and undead, it seems we "
-"will have to kill these elves, and these dwarves, before they do the same to "
-"us."
-msgstr ""
-"Prav imaš. Čeprav ne ubijam rad česarkoli kar ni orkovskega ali nemrtvega "
-"izvora, zgleda da bomo morali pobiti te viline in škrate, preden oni nas."
-
-#. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:206
-msgid "Argh! I’m dead! Well, dwarves are still the best!"
-msgstr "Argh! Mrtev sem! No, škratje smo še vedno najboljši!"
-
-#. [message]: speaker=Prok-Bak
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:221
-msgid "I die? Orcs rule all!"
-msgstr "Umiram? Orki vladajo vsem!"
-
-#. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:239
-msgid "It seems these humans are more powerful than I thought. Ugh."
-msgstr "Zgleda, da so ti ljudje močnejši, kot sem mislil. Ugh."
-
-#. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:257
-msgid "Cursed dwarves! Perhaps we should have allied with the humans..."
-msgstr ""
-
-#. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:271
-msgid "Foul orcs! Perhaps we should have allied with the humans..."
-msgstr ""
-
-#. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:285
-#, fuzzy
-msgid "It seems yon humans are mightier than I kenned..."
-msgstr "Zgleda, da so ti ljudje močnejši, kot sem mislil. Ugh."
-
-#. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:299
-msgid "Foul orcs! Perhaps we should ha’ allied wi’ the humans..."
-msgstr ""
-
-#. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:313
-msgid "Cursed elves! Perhaps we should have allied wi’ the humans..."
-msgstr ""
-
-#. [scenario]: id=10_Lake_Vrug
-#: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:4
-msgid "Lake Vrug"
-msgstr "Jezero Vrug"
 
 #. [side]: type=Troll Warrior, id=Darg
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:35
@@ -4034,6 +4078,13 @@ msgstr "Ta predmet ni primeren zame! Naj ga vzame kdo drug."
 #: data/campaigns/Eastern_Invasion/utils/macros.cfg:67
 msgid "Holy Amulet"
 msgstr "Sveti amulet"
+
+#, fuzzy
+#~ msgid "I summon from the depths of the river beasts to destroy you!"
+#~ msgstr "Iz globin reke priklicujem pošasti, ki vas bodo uničile!"
+
+#~ msgid "Argh! I’m dead! Well, dwarves are still the best!"
+#~ msgstr "Argh! Mrtev sem! No, škratje smo še vedno najboljši!"
 
 #~ msgid ""
 #~ "There is a great fortune in this chest of treasure! I can count two "

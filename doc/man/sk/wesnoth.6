@@ -64,7 +64,7 @@ Identifikátor scény vo zvolenej výprave. Predvolená je prvá scéna.
 nastaví adresár s údajmi
 .TP 
 \fB\-\-data\-path\fP
-path the path of the data directory and exits.
+vypíše cestu k dátovému adresáru hry a skončí.
 .TP 
 \fB\-d, \-\-debug\fP
 zapne ďalšie možnosti príkazového režimu hry (ďalšie informácie o príkazovom
@@ -177,22 +177,22 @@ chyby pri kontrole dát budú považované za kritické chyby.
 spustí hru s malou testovacou scénou.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ name\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy Games".
-Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
-other systems to the userdata path.
+nastaví adresár s používateľskými nastaveniami na \fImeno\fP pod $HOME alebo
+"My Documents\eMy Games" vo Windows. Je možné zadať aj absolútnu cestu pre
+adresáre mimo $HOME alebo "My Documents\eMy Games". V systéme X11 je
+predvolenou cestou $XDG_CONFIG_HOME alebo $HOME/.config/wesnoth, na iných
+systémoch je to cesta nastavená cez "userdata\-path".
 .TP 
 \fB\-\-userconfig\-path\fP
 vypíše názov adresára s používateľskými nastaveniami a skončí.
 .TP 
-\fB\-\-userdata\-dir\fP\fI\ name\fP
+\fB\-\-userdata\-dir\fP\fI\ názov\fP
 sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
 Games" for windows.  You can also specify an absolute path for the userdata
 directory outside the $HOME or "My Documents\eMy Games".
 .TP 
 \fB\-\-userdata\-path\fP
-prints the path of the userdata directory and exits.
+vypíše cestu k adresáru s používateľskými údajmi a skončí.
 .TP 
 \fB\-\-validcache\fP
 predpokladá, že vyrovnávacia pamäť je platná. (nebezpečné)

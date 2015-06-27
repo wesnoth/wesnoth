@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-17 11:34-0300\n"
+"POT-Creation-Date: 2015-06-27 20:18-0300\n"
 "PO-Revision-Date: 2012-05-06 23:59+0300\n"
 "Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
@@ -1615,9 +1615,9 @@ msgstr "Yhdistä"
 #. [button]: id=cancel
 #: data/gui/default/window/addon_connect.cfg:217
 #: data/gui/default/window/addon_uninstall_list.cfg:174
-#: data/gui/default/window/campaign_dialog.cfg:467
-#: data/gui/default/window/campaign_difficulty.cfg:192
-#: data/gui/default/window/core_dialog.cfg:387
+#: data/gui/default/window/campaign_dialog.cfg:538
+#: data/gui/default/window/campaign_difficulty.cfg:223
+#: data/gui/default/window/core_dialog.cfg:240
 #: data/gui/default/window/custom_tod.cfg:397
 #: data/gui/default/window/data_manage.cfg:361
 #: data/gui/default/window/depcheck_select_new.cfg:146
@@ -1626,7 +1626,7 @@ msgstr "Yhdistä"
 #: data/gui/default/window/editor_edit_label.cfg:191
 #: data/gui/default/window/editor_edit_scenario.cfg:304
 #: data/gui/default/window/editor_edit_side.cfg:488
-#: data/gui/default/window/editor_generate_map.cfg:107
+#: data/gui/default/window/editor_generate_map.cfg:218
 #: data/gui/default/window/editor_new_map.cfg:125
 #: data/gui/default/window/editor_resize_map.cfg:284
 #: data/gui/default/window/editor_set_starting_position.cfg:175
@@ -1637,7 +1637,7 @@ msgstr "Yhdistä"
 #: data/gui/default/window/language_selection.cfg:141
 #: data/gui/default/window/message.cfg:151
 #: data/gui/default/window/mp_change_control.cfg:160
-#: data/gui/default/window/mp_cmd_wrapper.cfg:470
+#: data/gui/default/window/mp_cmd_wrapper.cfg:485
 #: data/gui/default/window/mp_connect.cfg:176
 #: data/gui/default/window/mp_create_game.cfg:559
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:202
@@ -1983,28 +1983,19 @@ msgid "Scaled to hex"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/campaign_dialog.cfg:55
+#: data/gui/default/window/campaign_dialog.cfg:56
 #, fuzzy
 #| msgid "Play a campaign"
 msgid "Play a Campaign"
 msgstr "Pelaa kampanjaa"
 
-#. [button]: id=advanced_settings
-#. [label]
-#: data/gui/default/window/campaign_dialog.cfg:423
-#: data/gui/default/window/campaign_settings.cfg:48
-#, fuzzy
-#| msgid "sound^Advanced Options"
-msgid "Advanced Settings"
-msgstr "Edistyneet asetukset"
-
 #. [toggle_button]: id=checkbox_deterministic
-#: data/gui/default/window/campaign_dialog.cfg:436
+#: data/gui/default/window/campaign_dialog.cfg:507
 msgid "Deterministic mode"
 msgstr ""
 
 #. [toggle_button]: id=checkbox_deterministic
-#: data/gui/default/window/campaign_dialog.cfg:438
+#: data/gui/default/window/campaign_dialog.cfg:509
 msgid ""
 "Makes the random number generator yield the same results even after "
 "reloading a game"
@@ -2013,10 +2004,10 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #. [button]: id=save
-#: data/gui/default/window/campaign_dialog.cfg:453
-#: data/gui/default/window/campaign_difficulty.cfg:179
-#: data/gui/default/window/campaign_settings.cfg:326
-#: data/gui/default/window/core_dialog.cfg:373
+#: data/gui/default/window/campaign_dialog.cfg:524
+#: data/gui/default/window/campaign_difficulty.cfg:210
+#: data/gui/default/window/campaign_settings.cfg:322
+#: data/gui/default/window/core_dialog.cfg:227
 #: data/gui/default/window/custom_tod.cfg:387
 #: data/gui/default/window/data_manage.cfg:347
 #: data/gui/default/window/data_manage.cfg:348
@@ -2068,31 +2059,31 @@ msgid "Select difficulty level:"
 msgstr "Valitse vaikeustaso:"
 
 #. [label]
+#: data/gui/default/window/campaign_settings.cfg:48
+#, fuzzy
+#| msgid "sound^Advanced Options"
+msgid "Advanced Settings"
+msgstr "Edistyneet asetukset"
+
+#. [label]
 #: data/gui/default/window/campaign_settings.cfg:77
 msgid "Additional dialogs:"
 msgstr ""
 
-#. [toggle_button]: id=mp_configure
-#: data/gui/default/window/campaign_settings.cfg:104
-#, fuzzy
-#| msgid "Actions"
-msgid "Level options"
-msgstr "Toiminnot"
-
 #. [toggle_button]: id=mp_connect
-#: data/gui/default/window/campaign_settings.cfg:120
+#: data/gui/default/window/campaign_settings.cfg:116
 msgid "Configure sides"
 msgstr ""
 
 #. [label]
 #. [label]: id=era_label
-#: data/gui/default/window/campaign_settings.cfg:161
+#: data/gui/default/window/campaign_settings.cfg:157
 #: data/gui/default/window/mp_create_game.cfg:185
 msgid "Era:"
 msgstr "Aikakausi:"
 
 #. [label]: id=mod_label
-#: data/gui/default/window/campaign_settings.cfg:250
+#: data/gui/default/window/campaign_settings.cfg:246
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Modifications:"
@@ -2160,7 +2151,7 @@ msgid "clipboard^Copy"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/core_dialog.cfg:55
+#: data/gui/default/window/core_dialog.cfg:44
 #, fuzzy
 #| msgid "Load Game"
 msgid "Load Core"
@@ -2168,7 +2159,7 @@ msgstr "Avaa peli"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:45
-msgid "Custom Time of Day Schedule"
+msgid "Custom Time Schedule"
 msgstr ""
 
 #. [label]
@@ -2301,7 +2292,7 @@ msgstr "Varmuuskopioi"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/depcheck_confirm_change.cfg:40
-#: src/gui/widgets/label.cpp:178
+#: src/gui/widgets/label.cpp:177
 msgid "Confirm"
 msgstr ""
 
@@ -2531,32 +2522,36 @@ msgstr ""
 msgid "controller^Player number:"
 msgstr ""
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_generate_map.cfg:35
-msgid "Generate Random Map"
-msgstr "Luo satunnainen kartta"
+#: data/gui/default/window/editor_generate_map.cfg:43
+#: src/hotkey/hotkey_command.cpp:207
+msgid "Generate Map"
+msgstr "Generoi kartta"
 
-#. [button]: id=next_generator
-#: data/gui/default/window/editor_generate_map.cfg:64
-#: data/gui/default/window/editor_generate_map.cfg:65
-msgid "Next Generator"
-msgstr "Seuraava generaattori"
+#. [label]
+#: data/gui/default/window/editor_generate_map.cfg:58
+#, fuzzy
+#| msgid "Map Generator"
+msgid "Choose a map generator:"
+msgstr "Kartan luonti"
 
 #. [button]: id=settings
-#: data/gui/default/window/editor_generate_map.cfg:86
-#: data/gui/default/window/editor_generate_map.cfg:87
+#: data/gui/default/window/editor_generate_map.cfg:131
 msgid "Settings"
 msgstr "Asetukset"
 
+#. [label]
+#: data/gui/default/window/editor_generate_map.cfg:164
+#, fuzzy
+#| msgid "Speed: "
+msgid "Seed:"
+msgstr "Nopeus:"
+
 #. [button]: id=ok
-#: data/gui/default/window/editor_generate_map.cfg:97
+#: data/gui/default/window/editor_generate_map.cfg:206
 msgid "Generate"
 msgstr "Generoi"
-
-#. [label]
-#: data/gui/default/window/editor_generate_map.cfg:127
-msgid "Seed"
-msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -3192,7 +3187,7 @@ msgstr "Potkun tai eston syy:"
 
 #. [button]: id=kick
 #: data/gui/default/window/lobby_player_info.cfg:168
-#: data/gui/default/window/mp_cmd_wrapper.cfg:389
+#: data/gui/default/window/mp_cmd_wrapper.cfg:399
 msgid "Kick"
 msgstr "Potkaise"
 
@@ -3418,27 +3413,27 @@ msgid "Add as Ignore"
 msgstr "Lisää torjutuksi"
 
 #. [label]
-#: data/gui/default/window/mp_cmd_wrapper.cfg:241
+#: data/gui/default/window/mp_cmd_wrapper.cfg:251
 msgid "Moderating"
 msgstr "Moderointi"
 
 #. [label]
-#: data/gui/default/window/mp_cmd_wrapper.cfg:271
+#: data/gui/default/window/mp_cmd_wrapper.cfg:281
 msgid "Reason:"
 msgstr "Syy: "
 
 #. [label]
-#: data/gui/default/window/mp_cmd_wrapper.cfg:323
+#: data/gui/default/window/mp_cmd_wrapper.cfg:333
 msgid "Time:"
 msgstr "Aika:"
 
 #. [button]: id=status
-#: data/gui/default/window/mp_cmd_wrapper.cfg:374
+#: data/gui/default/window/mp_cmd_wrapper.cfg:384
 msgid "Status"
 msgstr "Tila"
 
 #. [button]: id=ban
-#: data/gui/default/window/mp_cmd_wrapper.cfg:404
+#: data/gui/default/window/mp_cmd_wrapper.cfg:414
 msgid "Ban"
 msgstr "Estä"
 
@@ -3878,19 +3873,19 @@ msgstr "Tiedoston poistaminen epäonnistui."
 msgid "Creation of the directory failed."
 msgstr "Kansion luominen epäonnistui."
 
-#: src/game_preferences.cpp:362
+#: src/game_preferences.cpp:398
 msgid "No server has been defined."
 msgstr "Palvelinta ei ole määritetty."
 
-#: src/game_preferences.cpp:461
+#: src/game_preferences.cpp:497
 msgid "player"
 msgstr "pelaaja"
 
-#: src/game_preferences.cpp:996
+#: src/game_preferences.cpp:1032
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/game_preferences.cpp:999
+#: src/game_preferences.cpp:1035
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
@@ -4514,15 +4509,15 @@ msgstr "Ympyrä ei sovi kankaaseen"
 msgid "Image doesn't fit on canvas."
 msgstr "Kuva ei sovi kankaaseen"
 
-#: src/gui/auxiliary/canvas.cpp:1355
+#: src/gui/auxiliary/canvas.cpp:1361
 msgid "Text has a font size of 0."
 msgstr "Tekstillä on fonttikoko 0."
 
-#: src/gui/auxiliary/canvas.cpp:1429
+#: src/gui/auxiliary/canvas.cpp:1437
 msgid "Text doesn't start on canvas."
 msgstr "Teksti ei ala kankaassa."
 
-#: src/gui/auxiliary/widget_definition.cpp:144
+#: src/gui/auxiliary/widget_definition.cpp:148
 #: src/gui/auxiliary/window_builder.cpp:263
 msgid "No resolution defined."
 msgstr "Resoluutiota ei ole määritetty."
@@ -4661,7 +4656,7 @@ msgstr ""
 msgid "addon_state^Unknown"
 msgstr ""
 
-#: src/gui/dialogs/addon/description.cpp:392 src/gui/dialogs/chat_log.cpp:417
+#: src/gui/dialogs/addon/description.cpp:392 src/gui/dialogs/chat_log.cpp:420
 #: src/gui/dialogs/game_cache_options.cpp:98
 #: src/gui/dialogs/game_paths.cpp:119
 #: src/gui/dialogs/gamestate_inspector.cpp:713
@@ -4884,13 +4879,13 @@ msgstr "Pakollista widgettiä ”$id” ei ole määritetty."
 msgid "Opening links is not supported, contact your packager"
 msgstr ""
 
-#: src/gui/widgets/label.cpp:178
+#: src/gui/widgets/label.cpp:177
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you want to open this link?"
 msgstr "Haluatko varmasti poistaa tämän pelin?"
 
-#: src/gui/widgets/label.cpp:211
+#: src/gui/widgets/label.cpp:208
 msgid "Copied link!"
 msgstr ""
 
@@ -5172,8 +5167,10 @@ msgid "Each Team"
 msgstr "Jokainen joukkue"
 
 #: src/hotkey/hotkey_command.cpp:106
-msgid "Team 1"
-msgstr "Joukkue 1"
+#, fuzzy
+#| msgid "Human Castle"
+msgid "Human Team"
+msgstr "ihmisten linna"
 
 #: src/hotkey/hotkey_command.cpp:107
 msgid "Skip Animation"
@@ -5245,7 +5242,7 @@ msgid "Assign Local Time"
 msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:134
-msgid "Custom Time of Day Creator"
+msgid "Time Schedule Editor"
 msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:135
@@ -5577,10 +5574,6 @@ msgstr "Randomisoi tiilit valitessa"
 msgid "Rotate Map"
 msgstr "Käännä karttaa"
 
-#: src/hotkey/hotkey_command.cpp:207
-msgid "Generate Map"
-msgstr "Generoi kartta"
-
 #: src/hotkey/hotkey_command.cpp:208
 msgid "Apply a Mask"
 msgstr "Käytä maskia"
@@ -5838,11 +5831,11 @@ msgid "Hat"
 msgstr "maja"
 
 #: src/hotkey/hotkey_preferences_display.cpp:134
-msgid "Add additional binding to \"$hotkey_description|\""
+msgid "Add a new binding to \"$hotkey_description|\""
 msgstr ""
 
 #: src/hotkey/hotkey_preferences_display.cpp:136
-msgid "Clears \"$hotkey_description|'s\" bindings"
+msgid "Clears the current bindings for \"$hotkey_description|\""
 msgstr ""
 
 #: src/hotkey/hotkey_preferences_display.cpp:150
@@ -5960,7 +5953,7 @@ msgstr ""
 "Yli neljän merkin pituinen maastoheksa on löydetty, tämä vaikuttaa "
 "seuraavaan maastoon :"
 
-#: src/text.cpp:882
+#: src/text.cpp:895
 msgid "The text contains invalid markup: "
 msgstr "Teksti sisältää virheellisiä merkintöjä:"
 
@@ -6002,6 +5995,20 @@ msgid ""
 msgstr ""
 "'$deprecated_key' on uudelleennimetty: '$key'. Avain '$deprecated_key' "
 "poistetaan versiossa $removal_version."
+
+#, fuzzy
+#~| msgid "Actions"
+#~ msgid "Level options"
+#~ msgstr "Toiminnot"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Luo satunnainen kartta"
+
+#~ msgid "Next Generator"
+#~ msgstr "Seuraava generaattori"
+
+#~ msgid "Team 1"
+#~ msgstr "Joukkue 1"
 
 #~ msgid "Password: "
 #~ msgstr "Salasana:"

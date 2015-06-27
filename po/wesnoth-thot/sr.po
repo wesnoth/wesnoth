@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-thot\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-05 05:06-0300\n"
+"POT-Creation-Date: 2015-06-27 20:18-0300\n"
 "PO-Revision-Date: 2011-12-10 10:17+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -780,7 +780,7 @@ msgstr ""
 "Сви четворе очи и држите се на окупу. Ово је разбојничка земља — сва је "
 "прилика да су се Готрас и његови одавде довукли."
 
-#. [message]: role=Scout
+#. [message]: role=scout
 #. 'muckle' = Scottish/archaic English meaning 'great' or 'large'
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:231
 msgid ""
@@ -1383,7 +1383,9 @@ msgstr "Ево ти за сећање на моју породицу, убицо
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:351
-msgid "They are defeated"
+#, fuzzy
+#| msgid "They are defeated"
+msgid "They are defeated!"
 msgstr "Готово је с њима."
 
 #. [message]: speaker=Angarthing
@@ -1433,12 +1435,14 @@ msgstr ""
 msgid "Forbidden Forest"
 msgstr "Забрањена шума"
 
+#. [side]: type=Ancient Wose, id=Burumardir-Athelorand
 #. [side]: type=Elvish Enchantress, id=Iluvarda
 #. [side]: type=Elvish High Lord, id=Telcherion
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:120
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:147
-msgid "Elves"
-msgstr ""
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:174
+msgid "Forest"
+msgstr "Шума"
 
 # |, no-check-spell
 #. [side]: type=Elvish High Lord, id=Telcherion
@@ -1451,11 +1455,6 @@ msgstr "Телхерион"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:152
 msgid "Iluvarda"
 msgstr "Илуварда"
-
-#. [side]: type=Ancient Wose, id=Burumardir-Athelorand
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:174
-msgid "Forest"
-msgstr "Шума"
 
 # |, no-check-spell
 #. [side]: type=Ancient Wose, id=Burumardir-Athelorand
@@ -1532,7 +1531,7 @@ msgid ""
 msgstr "Сви уз мене. Имамо преча посла од надмудривања са вилењацима."
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:371
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:368
 msgid "Kal Kartha should be only another day’s march east of here."
 msgstr "Кал Карта треба да је само још дан хода источно одавде."
 

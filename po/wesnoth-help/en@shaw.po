@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2015-04-17 11:34-0300\n"
+"POT-Creation-Date: 2015-06-27 20:18-0300\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -30,13 +30,13 @@ msgstr "𐑳𐑯𐑛𐑼𐑜𐑮𐑬𐑯𐑛"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:666
-#: data/core/macros/abilities.cfg:544
+#: data/core/macros/abilities.cfg:540
 msgid "berserk"
 msgstr "𐑚𐑻𐑕𐑻𐑒"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:668
-#: data/core/macros/abilities.cfg:545
+#: data/core/macros/abilities.cfg:541
 #, fuzzy
 #| msgid ""
 #| "Berserk:\n"
@@ -53,13 +53,13 @@ msgstr ""
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:677
-#: data/core/macros/abilities.cfg:623
+#: data/core/macros/abilities.cfg:619
 msgid "magical"
 msgstr "𐑥𐑨𐑡𐑦𐑒𐑩𐑤"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:679
-#: data/core/macros/abilities.cfg:624
+#: data/core/macros/abilities.cfg:620
 #, fuzzy
 #| msgid ""
 #| "Magical:\n"
@@ -75,7 +75,7 @@ msgstr ""
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:688
-#: data/core/macros/abilities.cfg:668
+#: data/core/macros/abilities.cfg:664
 #, fuzzy
 #| msgid "firststrike"
 msgid "first strike"
@@ -83,7 +83,7 @@ msgstr "J𐑓𐑻𐑕𐑑𐑕𐑑𐑮𐑲𐑒"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:690
-#: data/core/macros/abilities.cfg:669
+#: data/core/macros/abilities.cfg:665
 #, fuzzy
 #| msgid ""
 #| "First Strike:\n"
@@ -137,19 +137,19 @@ msgstr ""
 "𐑝𐑦𐑤𐑦𐑡 𐑹 𐑩 𐑿𐑯𐑦𐑑 𐑞𐑨𐑑 𐑒𐑨𐑯 𐑒𐑘𐑫𐑼."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:39
 #: data/core/macros/abilities.cfg:28
 msgid "heals +8"
 msgstr "𐑣𐑰𐑤𐑟 +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:44
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
 #: data/core/macros/abilities.cfg:29
 msgid "female^heals +8"
 msgstr "𐑣𐑰𐑤𐑟 +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
 #: data/core/macros/abilities.cfg:30
 #, fuzzy
 #| msgid ""
@@ -3856,17 +3856,17 @@ msgstr ""
 "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑜𐑱𐑯𐑟 1 𐑣𐑦𐑑𐑐𐑶𐑯𐑑 𐑨𐑛𐑩𐑛 𐑑 𐑦𐑑𐑕 𐑥𐑨𐑒𐑕𐑦𐑥𐑩𐑥 𐑢𐑧𐑯𐑧𐑝𐑼 𐑦𐑑 𐑒𐑦𐑤𐑟 𐑩 𐑤𐑦𐑝𐑦𐑙 𐑿𐑯𐑦𐑑."
 
 #. [unstore_unit]
-#: data/core/macros/abilities.cfg:513
+#: data/core/macros/abilities.cfg:509
 msgid "+1 max HP"
 msgstr "+1 𐑥𐑨𐑒𐑕 HP"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:555
+#: data/core/macros/abilities.cfg:551
 msgid "backstab"
 msgstr "𐑚𐑨𐑒𐑕𐑑𐑨𐑚"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:556
+#: data/core/macros/abilities.cfg:552
 #, fuzzy
 #| msgid ""
 #| "Backstab:\n"
@@ -3885,12 +3885,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:568 data/core/macros/abilities.cfg:579
+#: data/core/macros/abilities.cfg:564 data/core/macros/abilities.cfg:575
 msgid "plague"
 msgstr "𐑐𐑤𐑱𐑜"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:569
+#: data/core/macros/abilities.cfg:565
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -3908,7 +3908,7 @@ msgstr ""
 "𐑦𐑯 𐑝𐑦𐑤𐑦𐑡𐑦𐑟."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:580
+#: data/core/macros/abilities.cfg:576
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -3925,12 +3925,12 @@ msgstr ""
 "𐑕𐑱𐑥 𐑕𐑲𐑛 𐑨𐑟 𐑞 𐑿𐑯𐑦𐑑 𐑢𐑦𐑞 𐑞 𐑐𐑤𐑱𐑜 𐑩𐑑𐑨𐑒. 𐑞𐑦𐑕 𐑛𐑳𐑟𐑯𐑑 𐑢𐑻𐑒 𐑪𐑯 𐑳𐑯𐑛𐑧𐑛 𐑹 𐑿𐑯𐑦𐑑𐑕 𐑦𐑯 𐑝𐑦𐑤𐑦𐑡𐑦𐑟."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:590
+#: data/core/macros/abilities.cfg:586
 msgid "slows"
 msgstr "𐑕𐑤𐑴𐑟"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:591
+#: data/core/macros/abilities.cfg:587
 #, fuzzy
 #| msgid ""
 #| "Slow:\n"
@@ -3950,12 +3950,12 @@ msgstr ""
 "𐑲𐑒𐑪𐑯 𐑦𐑯 𐑦𐑑𐑕 𐑕𐑲𐑛𐑚𐑸 𐑦𐑯𐑓𐑼𐑥𐑱𐑖𐑩𐑑𐑦𐑪𐑯 𐑢𐑧𐑯 𐑦𐑑 𐑦𐑟 𐑕𐑩𐑤𐑧𐑒𐑑𐑩𐑛."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:600
+#: data/core/macros/abilities.cfg:596
 msgid "petrifies"
 msgstr "𐑐𐑧𐑑𐑮𐑩𐑓𐑲𐑟"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:601
+#: data/core/macros/abilities.cfg:597
 #, fuzzy
 #| msgid ""
 #| "Petrify:\n"
@@ -3970,12 +3970,12 @@ msgstr ""
 "𐑯𐑪𐑑 𐑥𐑵𐑝 𐑹 𐑩𐑑𐑨𐑒."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:610
+#: data/core/macros/abilities.cfg:606
 msgid "marksman"
 msgstr "𐑥𐑸𐑒𐑕𐑥𐑩𐑯"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:611
+#: data/core/macros/abilities.cfg:607
 #, fuzzy
 #| msgid ""
 #| "Marksman:\n"
@@ -3988,12 +3988,12 @@ msgstr ""
 "𐑢𐑧𐑯 𐑫𐑖𐑔𐑴𐑵𐑿𐑕𐑑 𐑩𐑓𐑧𐑯𐑕𐑦𐑝𐑤𐑰, 𐑞𐑦𐑕 𐑩𐑑𐑨𐑒 𐑷𐑤𐑢𐑱𐑟 𐑣𐑨𐑟 𐑨𐑑 𐑤𐑰𐑕𐑑 𐑩 60% 𐑗𐑭𐑯𐑕 𐑑 𐑣𐑦𐑑."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:635
+#: data/core/macros/abilities.cfg:631
 msgid "swarm"
 msgstr "𐑕𐑢𐑹𐑥"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:636
+#: data/core/macros/abilities.cfg:632
 #, fuzzy
 #| msgid ""
 #| "Swarm:\n"
@@ -4013,12 +4013,12 @@ msgstr ""
 "𐑿𐑯𐑦𐑑 𐑢𐑦𐑞 3/4 𐑝 𐑦𐑑𐑕 𐑥𐑨𐑒𐑕𐑦𐑥𐑩𐑥 HP 𐑢𐑦𐑤 𐑜𐑧𐑑 3/4 𐑝 𐑞 𐑯𐑳𐑥𐑚𐑻 𐑝 𐑕𐑑𐑮𐑲𐑒𐑕."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:645
+#: data/core/macros/abilities.cfg:641
 msgid "charge"
 msgstr "𐑗𐑸𐑡"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:646
+#: data/core/macros/abilities.cfg:642
 #, fuzzy
 #| msgid ""
 #| "Charge:\n"
@@ -4034,12 +4034,12 @@ msgstr ""
 "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑑 𐑑𐑱𐑒 𐑛𐑳𐑚𐑩𐑤 𐑛𐑨𐑥𐑦𐑡 𐑓𐑮𐑪𐑥 𐑞 𐑑𐑸𐑜𐑩𐑑𐑕 𐑒𐑬𐑯𐑑𐑻𐑩𐑑𐑨𐑒."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:658
+#: data/core/macros/abilities.cfg:654
 msgid "drains"
 msgstr "𐑛𐑮𐑱𐑯𐑟"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:659
+#: data/core/macros/abilities.cfg:655
 #, fuzzy
 #| msgid ""
 #| "Drain:\n"
@@ -4054,12 +4054,12 @@ msgstr ""
 "𐑛𐑰𐑤𐑟 (𐑮𐑬𐑯𐑛𐑩𐑛 𐑛𐑬𐑯)."
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:678
+#: data/core/macros/abilities.cfg:674
 msgid "poison"
 msgstr "𐑐𐑶𐑟𐑩𐑯"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:679
+#: data/core/macros/abilities.cfg:675
 #, fuzzy
 #| msgid ""
 #| "Poison:\n"

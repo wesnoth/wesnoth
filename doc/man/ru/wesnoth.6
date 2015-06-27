@@ -65,7 +65,7 @@ wesnoth \- Битва за Веснот, пошаговая стратегиче
 перезаписывает каталог данных вновь указанным
 .TP 
 \fB\-\-data\-path\fP
-path the path of the data directory and exits.
+вывести путь к каталогу данных и выйти.
 .TP 
 \fB\-d, \-\-debug\fP
 включить дополнительные команды в игре (см. Wiki\-страницу на сайте
@@ -183,22 +183,23 @@ server.wesnoth.org\fP
 запустить маленький тестовый сценарий.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ name\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy Games".
-Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
-other systems to the userdata path.
+устанавливает, что папка с пользовательскими настройками находится в
+подкаталоге \fIимя\fP каталога $HOME (или "Мои документы\eМои игры" для
+Windows).  Если папка с пользовательскими настройками находится вне папки
+$HOME (или "Мои документы\eМои игры"), задайте абсолютный путь.  В X11 по
+умолчанию используется $XDG_CONFIG_HOME или $HOME/.config/wesnoth, в других
+системах — путь к пользовательским данным.
 .TP 
 \fB\-\-userconfig\-path\fP
 вывести название каталога пользовательских настроек игры и выйти.
 .TP 
-\fB\-\-userdata\-dir\fP\fI\ name\fP
+\fB\-\-userdata\-dir\fP\fI\ имя\fP
 sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
 Games" for windows.  You can also specify an absolute path for the userdata
 directory outside the $HOME or "My Documents\eMy Games".
 .TP 
 \fB\-\-userdata\-path\fP
-prints the path of the userdata directory and exits.
+вывести путь к каталогу пользовательских данных и выйти.
 .TP 
 \fB\-\-validcache\fP
 предполагает, что кэш правильный. (опасно)

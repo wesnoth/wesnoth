@@ -68,7 +68,7 @@ le premier scénario.
 Remplace le répertoire data par celui spécifié
 .TP 
 \fB\-\-data\-path\fP
-path the path of the data directory and exits.
+Affiche le nom du répertoire principal du jeu et quitte le programme.
 .TP 
 \fB\-d, \-\-debug\fP
 Active des options supplémentaires pour la ligne de commande dans le jeu (se
@@ -187,23 +187,24 @@ Les erreurs de validation sont traitées comme des erreurs fatales.
 Lance le jeu avec un petit scénario de test.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ name\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy Games".
-Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
-other systems to the userdata path.
+Définit le répertoire de configuration de l'utilisateur à \fInom\fP dans $HOME
+ou dans "Mes Documents\eMes Jeux" pour Windows.  Vous pouvez aussi indiquer
+un chemin absolu pour un dossier de configuration situé en dehors de $HOME
+ou de "Mes Documents\eMes Jeux". Sous X11 le répertoire par défaut est
+$XDG_CONFIG_HOME ou $HOME/.config/wesnoth. Sur les autres systèmes le
+répertoire par défaut est le répertoire de données.
 .TP 
 \fB\-\-userconfig\-path\fP
 Affiche le nom du répertoire de configuration utilisateur et quitte le
 programme.
 .TP 
-\fB\-\-userdata\-dir\fP\fI\ name\fP
+\fB\-\-userdata\-dir\fP\fI\ nom\fP
 sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
 Games" for windows.  You can also specify an absolute path for the userdata
 directory outside the $HOME or "My Documents\eMy Games".
 .TP 
 \fB\-\-userdata\-path\fP
-prints the path of the userdata directory and exits.
+Affiche le nom du répertoire de données et quitte le programme.
 .TP 
 \fB\-\-validcache\fP
 Suppose que le cache est valide (risqué).
