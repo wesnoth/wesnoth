@@ -24,7 +24,7 @@ The carryover report layout was improved.
 
 [section="SP MP Unification patches fixed"]
 [list]
-[*] It is now easier to create multiplayer campaigns becasue most mp related features like eras, changeing scenario settings are now disables by default for mp campaigns (use force_map_settings=no to enable). This means that  you just have to write a normal campaign with multiple human controllers.
+[*] It is now easier to create multiplayer campaigns becasue most mp related features like eras, changeing scenario settings are now disables by default for mp campaigns (use force_lock_settings=no to enable). This means that  you just have to write a normal campaign with multiple human controllers.
 [*] [modification]s can now also be used in sp by default
 [*] [modification]s now must specify a type=mp/hybrid/sp attribute. [modification]s inside a #ifdef MULTIPLAYER must have type=mp specified.
 [*] [options] isare now recognized inside [campaign]
@@ -34,8 +34,7 @@ The carryover report layout was improved.
 
 [section="Other wml changes"]
 [list]
-[*] share_view=yes/no and share_maps=yes/no were replaced by share_vision=all/shroud/none TODO: Remove if not merged until next 1.13 version
-[*] [set_menu_item] now has a synced=yes(default)/no attribute. if synced=no this menu item will also be avaiable off turn and will not be sended to other clients. Note: you shall not change the gamestate in [commands] of unsynced wml mneu items. TODO: Remove if not merged until next 1.13 version
+[*] [set_menu_item] now has a synced=yes(default)/no attribute. if synced=no this menu item will also be avaiable off turn and will not be sended to other clients. Note: you shall not change the gamestate in [commands] of unsynced wml mneu items.
 [/list]
 [/section]
 
