@@ -1412,61 +1412,45 @@ void game::load_next_scenario(const player_map::const_iterator user) {
 	simple_wml::document cfg_scenario;
 	simple_wml::node & next_scen = cfg_scenario.root().add_child("next_scenario");
 	level_.root().copy_into(next_scen);
-
-	const simple_wml::node::child_list & sides =  starting_pos(next_scen)->children("side");
+	if (!wesnothd::send_to_one(cfg_scenario, user->first)) {
+		return;
+	}
 
 	DBG_GAME << "****\n loading next scenario for a client. sides info = " << std::endl;
 	DBG_GAME << debug_sides_info() << std::endl;
 	DBG_GAME << "****" << std::endl;
-	// Change the controller to match that client.
-	// FIXME: This breaks scenario transitions with mp connect screen shown.
-	// FIXME: This casues bugs. esp if controller have changedsince teh beginning of the next scenario
-	//  There are currently 2 possible ideas to fix this issue 
-	//  1) When the scenario starts, we store the controllers at that point and use that date when a client load the the next scenario (here)
-	//  2) When a client loads teh next scenario we send him the observers starting point (meaning we don't change sides here)
-	//     And then we send that side a automaic change controller later.
-
-	for(simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
-		if ((**s)["controller"] != "null") {
-			const size_t side_index = (**s)["side"].to_int() - 1;
-			if(side_index >= sides_.size()) {
-				LOG_GAME << "found an invalid side number (" << side_index - 1 << ")\n";
-			}
-			else if (sides_[side_index] == 0) {
-				sides_[side_index] = owner_;
-				std::stringstream msg;
-				msg << "Side "  << side_index + 1 << " had no controller while a client was loading next scenario! The host was assigned control.";
-				LOG_GAME << msg.str() << " (game id: " << id_ << ")\n";
-				send_and_record_server_message(msg.str());
-			} else if (sides_[side_index] == user->first) {
-				if (side_controllers_[side_index] == "human") {
-					(*s)->set_attr("controller", "human");
-				} else if (side_controllers_[side_index] == "ai") {
-					(*s)->set_attr("controller", "ai");
-				} else {
-					std::stringstream msg;
-					msg << "Side " << side_index + 1 << " had unexpected side_controller = " << side_controllers_[side_index] << " on server side.";
-					LOG_GAME << msg.str() << " (game id: " << id_ << ")\n";
-					send_and_record_server_message(msg.str());
+	if(started_) {
+		/*
+			The new player joins 'as observer' and then we send him an controller update.
+			I can happen that this client at some point it there is a choice requred by that
+			client but that is no problem because we will get the controller update at the
+			latest while wanting for that choice (so that he knows he actualyl has to made the choice)
+		*/
+		simple_wml::document doc;
+		for(size_t index = 0; index < sides_.size(); ++index)
+		{
+			if(sides_[index] == user->first) {
+				simple_wml::node& change = doc.root().add_child("change_controller");
+				change.set_attr_dup("side", lexical_cast<std::string>(index + 1).c_str());
+				if(side_controllers_[index] == "ai") {
+					change.set_attr("controller", "ai");
 				}
-			} else {
-				if (side_controllers_[side_index] == "human") {
-					(*s)->set_attr("controller", "network");
-				} else if (side_controllers_[side_index] == "ai") {
-					(*s)->set_attr("controller", "network_ai");
-				} else {
+				else if(side_controllers_[index] == "human") {
+					change.set_attr("controller", "human");
+					//change.set_attr("player", player_name.c_str());
+				}
+				else {
 					std::stringstream msg;
-					msg << "Side " << side_index + 1 << " had unexpected side_controller = " << side_controllers_[side_index] << " on server side.";
+					msg << "Side "  << index + 1 << " had an invalid controller '" <<  side_controllers_[index] << "' while a client was loading the next scenario";
 					LOG_GAME << msg.str() << " (game id: " << id_ << ")\n";
 					send_and_record_server_message(msg.str());
 				}
 			}
 		}
+		// Send the player the history of the game to-date.
+		send_history(user->first);
+		wesnothd::send_to_one(doc, user->first);
 	}
-
-	if (!wesnothd::send_to_one(cfg_scenario, user->first)) return;
-	// Send the player the history of the game to-date.
-	send_history(user->first);
 	// Send observer join of all the observers in the game to the user.
 	send_observerjoins(user->first);
 }

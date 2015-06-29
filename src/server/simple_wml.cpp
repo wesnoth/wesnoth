@@ -137,6 +137,8 @@ char* compress_buffer(const char* input, string_span* span, bool bzip2)
 		state = 7;
 
 		char* small_out = new char[len];
+		//FIXME: This assertion can fail.
+		//A possible cause might be this: https://svn.boost.org/trac/boost/ticket/5237
 		memcpy(small_out, &buf[0], len);
 		state = 8;
 
