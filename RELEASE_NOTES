@@ -18,35 +18,6 @@ CHANGES
 Example contents.
 [/rasection]
 
-[section="General"]
-The carryover report layout was improved. 
-[/section]
-
-[section="SP MP Unification patches fixed"]
-[list]
-[*] It is now easier to create multiplayer campaigns becasue most mp related features like eras, changeing scenario settings are now disables by default for mp campaigns (use force_lock_settings=no to enable). This means that  you just have to write a normal campaign with multiple human controllers.
-[*] [modification]s can now also be used in sp by default
-[*] [modification]s now must specify a type=mp/hybrid/sp attribute. [modification]s inside a #ifdef MULTIPLAYER must have type=mp specified.
-[*] [options] isare now recognized inside [campaign]
-[*] Several bugs related to sp campaigns were fixed.
-[/list]
-[/section]
-
-[section="Other wml changes"]
-[list]
-[*] [set_menu_item] now has a synced=yes(default)/no attribute. if synced=no this menu item will also be avaiable off turn and will not be sended to other clients. Note: you shall not change the gamestate in [commands] of unsynced wml mneu items.
-[/list]
-[/section]
-
-[section="Debug commands synced"]
-Debug commands are now synced and do not casue OOS (or currupt replays) anymore. Ofcourse there are notifications when debug commands are used. 
-[/section]
-
-[section="Campaign  selection dialog changed"]
-[*]The difficulcy selection dialog does now show the on wich dificulcies a campaign was already completed.
-[*][modification]s for sp now show at the bottom of the campaigns list and the 'advanced settings' button was removed. 
-[/section]
-
 ==========
 KNOWN BUGS
 ==========
