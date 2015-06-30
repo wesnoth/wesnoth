@@ -14,15 +14,16 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-06-27 20:18-0300\n"
-"PO-Revision-Date: 2015-04-18 06:26+0200\n"
-"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
+"PO-Revision-Date: 2015-06-29 09:59+0100\n"
+"Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
+"com>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 2.0\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -3318,7 +3319,7 @@ msgstr "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
 #. [fonts]
 #: data/hardwired/fonts.cfg:12
 msgid "DejaVu Sans Mono"
-msgstr ""
+msgstr "DejaVu Sans Mono"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
@@ -5567,13 +5568,11 @@ msgstr "Non foi posíbel atopar a era $era|."
 #: src/game_initialization/multiplayer.cpp:255
 #: src/game_initialization/multiplayer.cpp:340
 msgid "Connection timed out"
-msgstr "a conexión caducou"
+msgstr "A conexión caducou."
 
 #: src/game_initialization/mp_options.cpp:582
-#, fuzzy
-#| msgid "Default Brush"
 msgid "Defaults"
-msgstr "Brocha predeterminada"
+msgstr "Valores predeterminados"
 
 # Mensaxe que aparece ao intentar conectarse a un servidor. Véxase «Varios xogadores → Conectarse ao servidor oficial».
 #: src/game_initialization/multiplayer.cpp:171
@@ -5684,6 +5683,8 @@ msgstr "Intentou identificarse demasiadas veces sen conseguilo."
 #: src/game_initialization/multiplayer.cpp:609
 msgid "No sides found. At least one side or starting position must be defined."
 msgstr ""
+"Non se atoparon bandos. Debe definir polo menos un bando ou unha posición "
+"inicial."
 
 #: src/game_initialization/multiplayer_configure.cpp:60
 msgid "Generic"
@@ -6333,10 +6334,8 @@ msgid "Selected user: "
 msgstr "Usuario seleccionado: "
 
 #: src/game_initialization/multiplayer_ui.cpp:463
-#, fuzzy
-#| msgid "Accept whispers from friends only"
 msgid "$sender is messaging you, and you accept whispers from friends only."
-msgstr "Deixarlles bisbarche só aos teus amigos."
+msgstr "$sender está a bisbarte, pero só lles deixas bisbarte aos teus amigos."
 
 #: src/game_initialization/multiplayer_ui.cpp:490 src/menu_events.cpp:2296
 msgid "whisper: $sender"
@@ -7922,8 +7921,6 @@ msgid "Turns finished early: "
 msgstr "Roldas rematadas cedo: "
 
 #: src/playsingle_controller.cpp:144
-#, fuzzy
-#| msgid "per turn"
 msgid " per turn"
 msgstr "por rolda"
 
@@ -7932,32 +7929,22 @@ msgid "Early finish bonus: "
 msgstr "Bonificación por rematar cedo: "
 
 #: src/playsingle_controller.cpp:145
-#, fuzzy
-#| msgid "Turn bonus: "
 msgid "Total bonus: "
-msgstr "Bonificación de quenda: "
+msgstr "Bonificación total: "
 
 #: src/playsingle_controller.cpp:147
-#, fuzzy
-#| msgid "Village gold: "
 msgid "Total gold: "
-msgstr "Ouro por vila: "
+msgstr "Ouro total: "
 
 #: src/playsingle_controller.cpp:150
-#, fuzzy
-#| msgid "Carry over percentage: "
 msgid "Carryover percentage: "
 msgstr "Porcentaxe retida: "
 
 #: src/playsingle_controller.cpp:153
-#, fuzzy
-#| msgid "Bonus Gold: "
 msgid "Bonus gold: "
 msgstr "Bonificación de ouro: "
 
 #: src/playsingle_controller.cpp:155
-#, fuzzy
-#| msgid "Retained Gold: "
 msgid "Retained gold: "
 msgstr "Ouro retido: "
 
@@ -8001,11 +7988,6 @@ msgid "Game Error"
 msgstr "Erro do xogo"
 
 #: src/playsingle_controller.cpp:209
-#, fuzzy
-#| msgid ""
-#| "This multiplayer game uses an alternative random mode, if you don't know "
-#| "what this message means, then most likeley someone is cheating or someone "
-#| "reloaded a corrupt game."
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "

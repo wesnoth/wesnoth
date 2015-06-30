@@ -15,8 +15,9 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2015-06-27 20:18-0300\n"
-"PO-Revision-Date: 2015-04-18 06:34+0200\n"
-"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
+"PO-Revision-Date: 2015-06-29 10:05+0100\n"
+"Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
+"com>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +34,7 @@ msgstr ""
 "com>\n"
 "com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 2.0\n"
 
 #. [terrain_type]: id=deep_water
 #. [terrain_type]: id=deep_water_gray
@@ -2326,8 +2327,6 @@ msgstr "Cargar o núcleo"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:45
-#, fuzzy
-#| msgid "Custom Time of Day Schedule"
 msgid "Custom Time Schedule"
 msgstr "Programa personalizado do momento do día"
 
@@ -2670,10 +2669,8 @@ msgstr "Xerar un mapa"
 
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:58
-#, fuzzy
-#| msgid "Map Generator"
 msgid "Choose a map generator:"
-msgstr "Xerador de mapas"
+msgstr "Escolle un xerador de mapas:"
 
 #. [button]: id=settings
 #: data/gui/default/window/editor_generate_map.cfg:131
@@ -2682,10 +2679,8 @@ msgstr "Configuración"
 
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:164
-#, fuzzy
-#| msgid "Seed"
 msgid "Seed:"
-msgstr "Semente"
+msgstr "Semente:"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_generate_map.cfg:206
@@ -5299,10 +5294,8 @@ msgid "Each Team"
 msgstr "Cada equipo"
 
 #: src/hotkey/hotkey_command.cpp:106
-#, fuzzy
-#| msgid "Human Castle"
 msgid "Human Team"
-msgstr "Castelo dos humanos"
+msgstr "Equipo dos humanos"
 
 #: src/hotkey/hotkey_command.cpp:107
 msgid "Skip Animation"
@@ -5365,7 +5358,7 @@ msgstr "Asignar a hora local"
 
 #: src/hotkey/hotkey_command.cpp:134
 msgid "Time Schedule Editor"
-msgstr ""
+msgstr "Editor do programa do momento do día"
 
 #: src/hotkey/hotkey_command.cpp:135
 msgid "Partial Undo"
@@ -5923,16 +5916,12 @@ msgid "Hat"
 msgstr "Control da vista"
 
 #: src/hotkey/hotkey_preferences_display.cpp:134
-#, fuzzy
-#| msgid "Add additional binding to \"$hotkey_description|\""
 msgid "Add a new binding to \"$hotkey_description|\""
-msgstr "Engadir atallos adicionais para «$hotkey_description|»"
+msgstr "Engadir un novo atallo para «$hotkey_description|»"
 
 #: src/hotkey/hotkey_preferences_display.cpp:136
-#, fuzzy
-#| msgid "Add additional binding to \"$hotkey_description|\""
 msgid "Clears the current bindings for \"$hotkey_description|\""
-msgstr "Engadir atallos adicionais para «$hotkey_description|»"
+msgstr "Limpa o atallo actual para «$hotkey_description|»"
 
 #: src/hotkey/hotkey_preferences_display.cpp:150
 msgid "Hotkeys Reset"
