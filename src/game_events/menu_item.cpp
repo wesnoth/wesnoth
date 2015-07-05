@@ -206,7 +206,7 @@ void wml_menu_item::fire_event(const map_location & event_hex, const game_data &
 	if(!this->is_synced())
 	{
 		if (boost::shared_ptr<manager * const> man = my_manager_.lock()) {
-			(**man).pump().fire(command_["id"], event_hex);
+			(**man).pump().fire(event_name_, event_hex);
 		} else {
 			ERR_NG << "?? File: "  __FILE__  " Line:" STR(__LINE__) " my_manager_.lock() failed\n";
 #undef STR
