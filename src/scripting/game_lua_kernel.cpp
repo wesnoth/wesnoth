@@ -78,6 +78,7 @@
 #include "scripting/lua_team.hpp"
 #include "scripting/lua_types.hpp"      // for getunitKey, dlgclbkKey, etc
 #include "scripting/lua_unit_type.hpp"
+#include "scripting/push_check.hpp"
 #include "sdl/utils.hpp"                // for surface
 #include "side_filter.hpp"              // for side_filter
 #include "sound.hpp"                    // for commit_music_changes, etc
@@ -285,6 +286,10 @@ static int impl_unit_get(lua_State *L)
 	return_vector_string_attrib("extra_recruit", u.recruits());
 	return_vector_string_attrib("advances_to", u.advances_to());
 
+	if (strcmp(m, "advancements") == 0) {
+		lua_push(L, boost::iterator_range<config::const_child_iterator>(u.modification_advancements()));
+		return 1;
+	}
 	if (strcmp(m, "status") == 0) {
 		lua_createtable(L, 1, 0);
 		lua_pushvalue(L, 1);
@@ -359,6 +364,11 @@ static int impl_unit_set(lua_State *L)
 
 	modify_vector_string_attrib("extra_recruit", u.set_recruits(vector));
 	modify_vector_string_attrib("advances_to", u.set_advances_to(vector));
+
+	if (strcmp(m, "advancements") == 0) {
+		u.set_advancements(lua_check<std::vector<config> >(L, 3));
+		return 0;
+	}
 
 	if (!lu->on_map()) {
 		map_location loc = u.get_location();

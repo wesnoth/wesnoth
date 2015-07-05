@@ -1604,6 +1604,15 @@ std::vector<config> unit::get_modification_advances() const
 	return res;
 }
 
+void unit::set_advancements(std::vector<config> advancements)
+{
+	cfg_.clear_children("advancement");
+	BOOST_FOREACH(config& advancement, advancements)
+	{
+		cfg_.add_child("advancement").swap(advancement);
+	}
+}
+
 size_t unit::modification_count(const std::string& mod_type, const std::string& id) const
 {
 	size_t res = 0;
