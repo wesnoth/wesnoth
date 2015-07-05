@@ -126,6 +126,7 @@ public:
 		typedef config *pointer;
 		typedef config &reference;
 		typedef child_list::iterator Itor;
+		typedef child_iterator this_type;
 		explicit child_iterator(const Itor &i): i_(i) {}
 
 		child_iterator &operator++() { ++i_; return *this; }
@@ -139,6 +140,11 @@ public:
 		bool operator==(const child_iterator &i) const { return i_ == i.i_; }
 		bool operator!=(const child_iterator &i) const { return i_ != i.i_; }
 
+		config &operator[](Itor::difference_type n) const { return *i_[n]; }
+		friend Itor::difference_type operator-(const this_type& a, const this_type& b) { return a.i_ - b.i_; }
+		friend this_type operator-(const this_type& a, Itor::difference_type n) { return this_type(a.i_ - n); }
+		friend this_type operator+(const this_type& a, Itor::difference_type n) { return this_type(a.i_ + n); }
+		friend this_type operator+(Itor::difference_type n, const this_type& a) { return this_type(a.i_ + n); }
 	private:
 		Itor i_;
 		friend struct const_child_iterator;
@@ -152,6 +158,7 @@ public:
 		typedef const config *pointer;
 		typedef const config &reference;
 		typedef child_list::const_iterator Itor;
+		typedef const_child_iterator this_type;
 		explicit const_child_iterator(const Itor &i): i_(i) {}
 		const_child_iterator(const child_iterator &i): i_(i.i_) {}
 
@@ -166,6 +173,11 @@ public:
 		bool operator==(const const_child_iterator &i) const { return i_ == i.i_; }
 		bool operator!=(const const_child_iterator &i) const { return i_ != i.i_; }
 
+		const config &operator[](Itor::difference_type n) const { return *i_[n]; }
+		friend Itor::difference_type operator-(const this_type& a, const this_type& b) { return a.i_ - b.i_; }
+		friend this_type operator-(const this_type& a, Itor::difference_type n) { return this_type(a.i_ - n); }
+		friend this_type operator+(const this_type& a, Itor::difference_type n) { return this_type(a.i_ + n); }
+		friend this_type operator+(Itor::difference_type n, const this_type& a) { return this_type(a.i_ + n); }
 	private:
 		Itor i_;
 	};
