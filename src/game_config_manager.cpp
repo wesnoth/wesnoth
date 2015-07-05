@@ -101,6 +101,8 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 
 	return true;
 }
+
+namespace {
 /// returns true if every define in special is also defined in general
 bool map_includes(const preproc_map& general, const preproc_map& special)
 {
@@ -113,6 +115,8 @@ bool map_includes(const preproc_map& general, const preproc_map& special)
 	}
 	return true;
 }
+} // end anonymous namespace
+
 void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 	game_classification const* classification)
 {
