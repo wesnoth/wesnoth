@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../../src"
+				AdditionalIncludeDirectories="..\..\src;..\..\..\external\include"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_DEBUG;_SCL_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -62,6 +62,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalLibraryDirectories="..\..\..\external\lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -107,7 +108,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="../../src"
+				AdditionalIncludeDirectories="..\..\src;..\..\..\external\include"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -126,6 +127,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalLibraryDirectories="..\..\..\external\lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -169,7 +171,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../../src"
+				AdditionalIncludeDirectories="..\..\src;..\..\..\external\include"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_DEBUG;_SCL_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -190,6 +192,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalLibraryDirectories="..\..\..\external\lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -235,7 +238,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="../../src"
+				AdditionalIncludeDirectories="..\..\src;..\..\..\external\include"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -254,6 +257,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
+				AdditionalLibraryDirectories="..\..\..\external\lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
