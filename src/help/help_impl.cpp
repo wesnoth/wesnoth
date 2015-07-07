@@ -581,7 +581,7 @@ std::vector<topic> generate_faction_topics(const config & era, const bool sort_g
 			}
 		}
 
-		if (races.size() > 0) {
+		if (!races.empty()) {
 			std::set<std::string>::iterator it = races.begin();
 			text << _("Races: ") << *(it++);
 			while(it != races.end()) {
@@ -590,7 +590,7 @@ std::vector<topic> generate_faction_topics(const config & era, const bool sort_g
 			text << "\n\n";
 		}
 
-		if (alignments.size() > 0) {
+		if (!alignments.empty()) {
 			std::set<std::string>::iterator it = alignments.begin();
 			text << _("Alignments: ") << *(it++);
 			while(it != alignments.end()) {
@@ -878,7 +878,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		text << race_description << "\n\n";
 	}
 
-	if (alignments.size() > 0) {
+	if (!alignments.empty()) {
 		std::set<std::string>::iterator it = alignments.begin();
 		text << (alignments.size() > 1 ? _("Alignments: ") : _("Alignment: ")) << *(it++);
 		while(it != alignments.end()) {
