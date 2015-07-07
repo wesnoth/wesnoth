@@ -332,10 +332,10 @@ void remove(int handle)
 
 void unrender(std::set<map_location> invalidated_locations)
 {
-	if(preferences::show_haloes() == false || haloes.size() == 0) {
+	if(preferences::show_haloes() == false || haloes.empty()) {
 		return;
 	}
-	//assert(invalidated_haloes.size() == 0);
+	//assert(invalidated_haloes.empty());
 
 	// Remove expired haloes
 	std::map<int, effect>::iterator itor = haloes.begin();
@@ -409,8 +409,8 @@ void unrender(std::set<map_location> invalidated_locations)
 
 void render()
 {
-	if(preferences::show_haloes() == false || haloes.size() == 0 ||
-			(new_haloes.size() == 0 && invalidated_haloes.size() == 0)) {
+	if(preferences::show_haloes() == false || haloes.empty() ||
+			(new_haloes.empty() && invalidated_haloes.empty())) {
 		return;
 	}
 
