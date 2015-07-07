@@ -3183,7 +3183,7 @@ static int intf_get_villages(lua_State *L)
 			lua_pushinteger(L, it->y + 1);
 			lua_rawseti(L, -2, 2);
 			lua_rawseti(L, -2, i);
-			i++;
+			++i;
 		}
 	}
 	return 1;
@@ -3487,7 +3487,7 @@ static void push_component(lua_State *L, ai::component* c, const std::string &ct
 
 	std::vector<std::string> c_types = c->get_children_types();
 
-	for (std::vector<std::string>::const_iterator t = c_types.begin(); t != c_types.end(); t++)
+	for (std::vector<std::string>::const_iterator t = c_types.begin(); t != c_types.end(); ++t)
 	{
 		std::vector<ai::component*> children = c->get_children(*t);
 		std::string type = *t;
@@ -3499,7 +3499,7 @@ static void push_component(lua_State *L, ai::component* c, const std::string &ct
 		lua_pushstring(L, type.c_str());
 		lua_createtable(L, 0, 0); // this table will be on top of the stack during recursive calls
 
-		for (std::vector<ai::component*>::const_iterator i = children.begin(); i != children.end(); i++)
+		for (std::vector<ai::component*>::const_iterator i = children.begin(); i != children.end(); ++i)
 		{
 			lua_pushstring(L, (*i)->get_name().c_str());
 			push_component(L, *i, type);
@@ -3536,7 +3536,7 @@ static int intf_debug_ai(lua_State *L)
 	// Bad, but works
 	std::vector<ai::component*> engines = c->get_children("engine");
 	ai::engine_lua* lua_engine = NULL;
-	for (std::vector<ai::component*>::const_iterator i = engines.begin(); i != engines.end(); i++)
+	for (std::vector<ai::component*>::const_iterator i = engines.begin(); i != engines.end(); ++i)
 	{
 		if ((*i)->get_name() == "lua")
 		{
