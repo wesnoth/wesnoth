@@ -363,7 +363,7 @@ static int cfun_ai_get_targets(lua_State *L)
 	int i = 1;
 
 	lua_createtable(L, 0, 0);
-	for (std::vector<target>::iterator it = targets.begin(); it != targets.end(); it++)
+	for (std::vector<target>::iterator it = targets.begin(); it != targets.end(); ++it)
 	{
 		lua_pushinteger(L, i);
 
@@ -411,7 +411,7 @@ static int cfun_ai_get_attacks(lua_State *L)
 	int table_index = lua_gettop(L);
 
 	ai::attacks_vector::iterator it = attacks.begin();
-	for (int i = 1; it != attacks.end(); it++, i++)
+	for (int i = 1; it != attacks.end(); ++it, ++i)
 	{
 		push_attack_analysis(L, *it);
 
@@ -608,7 +608,7 @@ static void push_movements(lua_State *L, const std::vector< std::pair < map_loca
 
 	std::vector< std::pair < map_location, map_location > >::const_iterator move = moves.begin();
 
-	for (int i = 1; move != moves.end(); move++, i++)
+	for (int i = 1; move != moves.end(); ++move, ++i)
 	{
 		lua_createtable(L, 2, 0); // Creating a table for a pair of map_location's
 
