@@ -287,8 +287,7 @@ void dialog_frame::draw_background()
 
 SDL_Rect dialog_frame::draw_title(CVideo* video)
 {
-	SDL_Rect rect = {0, 0, 10000, 10000};
-	rect = screen_area();
+	SDL_Rect rect = screen_area();
 	return font::draw_text(video, rect, font::SIZE_LARGE, font::TITLE_COLOR,
 	                       title_, dim_.title.x, dim_.title.y, false, TTF_STYLE_BOLD);
 }
