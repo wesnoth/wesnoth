@@ -179,7 +179,7 @@ void tlist::set_row_shown(const unsigned row, const bool shown)
 
 	const int selected_row = get_selected_row();
 
-	bool resize_needed;
+	bool resize_needed = false;
 	{
 		twindow::tinvalidate_layout_blocker invalidate_layout_blocker(*window);
 
@@ -211,7 +211,7 @@ void tlist::set_row_shown(const std::vector<bool>& shown)
 
 	const int selected_row = get_selected_row();
 
-	bool resize_needed;
+	bool resize_needed = false;
 	{
 		twindow::tinvalidate_layout_blocker invalidate_layout_blocker(*window);
 
