@@ -48,6 +48,11 @@ static std::string reformat(const std::string& format, const std::tm* time,
 		if (*it == '%') {
 			++it;
 
+			if(it == format.end()) {
+				new_format += "%";
+				break;
+			}
+
 			bool unrecognized = false;
 
 			if (!locale_correct) {
