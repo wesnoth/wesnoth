@@ -15,7 +15,7 @@ static lg::log_domain log_network("network");
 
 void playturn_network_adapter::read_from_network()
 {
-	assert(data_.size() > 0);
+	assert(!data_.empty());
 	
 	this->data_.push_back(config());
 	config& back = data_.back();
@@ -60,7 +60,7 @@ void playturn_network_adapter::read_from_network()
 
 bool playturn_network_adapter::is_at_end()
 {
-	assert(data_.size() > 0);
+	assert(!data_.empty());
 	return this->next_ == data_.back().ordered_end();
 }
 
