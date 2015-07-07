@@ -70,12 +70,11 @@ namespace
 		translation_manager()
 			: loaded_paths_()
 			, loaded_domains_()
-			, current_language_()
+			, current_language_(default_utf8_locale_name::name())
 			, generator_()
 			, current_locale_()
 			, is_dirty_(true)
 		{
-			current_language_ = default_utf8_locale_name::name();
 			const bl::localization_backend_manager& g_mgr = bl::localization_backend_manager::global();
 			BOOST_FOREACH(const std::string& name, g_mgr.get_all_backends())
 			{
