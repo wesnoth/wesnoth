@@ -77,12 +77,12 @@ void game::missing_user(network::connection socket, const std::string& func) con
 }
 
 game::game(player_map& players, const network::connection host,
-		const std::string& name, bool save_replays,
-		const std::string& replay_save_path) :
+		const std::string& name, const std::string& password,
+		bool save_replays, const std::string& replay_save_path) :
 	player_info_(&players),
 	id_(id_num++),
 	name_(name),
-	password_(),
+	password_(password),
 	owner_(host),
 	players_(),
 	observers_(),
@@ -1583,9 +1583,6 @@ void game::clear_history() {
 
 void game::set_description(simple_wml::node* desc) {
 	description_ = desc;
-	if(!password_.empty()) {
-		description_->set_attr("password", "yes");
-	}
 }
 
 void game::set_termination_reason(const std::string& reason) {

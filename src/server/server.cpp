@@ -2231,6 +2231,14 @@ void server::process_whisper(const network::connection sock,
 	send_doc(data, sock);
 }
 
+static std::string extract_password(simple_wml::node& multiplayer)
+{
+	const std::string game_password = multiplayer["password"].to_string();
+	if(!game_password.empty())
+	{ multiplayer.set_attr("password", "yes"); }
+	return game_password;
+}
+
 void server::process_data_lobby(const network::connection sock,
                                 simple_wml::document& data) {
 	DBG_SERVER << "in process_data_lobby...\n";
@@ -2242,7 +2250,7 @@ void server::process_data_lobby(const network::connection sock,
 		return;
 	}
 
-	if (const simple_wml::node* create_game = data.child("create_game")) {
+	if (data.child("snapshot") || data.child("scenario")) {
 		if (graceful_restart) {
 			static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
 			send_doc(leave_game_doc, sock);
@@ -2250,25 +2258,61 @@ void server::process_data_lobby(const network::connection sock,
 			send_doc(games_and_users_list_, sock);
 			return;
 		}
-		const std::string game_name = (*create_game)["name"].to_string();
-		const std::string game_password = (*create_game)["password"].to_string();
+		if(!data.child("multiplayer")) {
+			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
+					<< "\tsent scenario data for a new game without a 'multiplayer' child.\n";
+			rooms_.lobby().send_server_message("The scenario data is missing the [multiplayer] tag which contains the game settings. Game aborted.", sock);
+			return;
+		}
+
+		simple_wml::node& multiplayer = *data.child("multiplayer");
+		simple_wml::node* const gamelist = games_and_users_list_.child("gamelist");
+		assert(gamelist != NULL);
+
+		// TODO: rename "scenario" to "name".
+		const std::string game_name = multiplayer["scenario"].to_string();
+		const std::string game_password = extract_password(multiplayer);
 		DBG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 			<< "\tcreates a new game: \"" << game_name << "\".\n";
 		// Create the new game, remove the player from the lobby
 		// and set the player as the host/owner.
-		games_.push_back(new wesnothd::game(players_, sock, game_name, save_replays_, replay_save_path_));
+		games_.push_back(new wesnothd::game(players_, sock, game_name, game_password, save_replays_, replay_save_path_));
 		wesnothd::game& g = games_.back();
-		if(game_password.empty() == false) {
-			g.set_password(game_password);
+
+		rooms_.exit_lobby(sock);
+		simple_wml::document diff_user;
+		if(make_change_diff(games_and_users_list_.root(), NULL,
+		                    "user", pl->second.config_address(), diff_user)) {
+			rooms_.lobby().send_data(diff_user);
 		}
 
-		create_game->copy_into(g.level().root());
-		rooms_.exit_lobby(sock);
-		simple_wml::document diff;
-		if(make_change_diff(games_and_users_list_.root(), NULL,
-		                    "user", pl->second.config_address(), diff)) {
-			rooms_.lobby().send_data(diff);
+		// Update our config object which describes the open games,
+		// and save a pointer to the description in the new game.
+		simple_wml::node& desc = gamelist->add_child("game");
+		multiplayer.copy_into(desc);
+		desc.set_attr_dup("name", game_name.c_str()); //TODO: remove after "scenario" -> "name" renaming.
+		desc.set_attr_dup("id", lexical_cast_default<std::string>(g.id()).c_str());
+		// If there is no shroud, then tell players in the lobby what the map looks like
+		if (!multiplayer["mp_shroud"].to_bool()) {
+			desc.set_attr_dup("map_data", (*wesnothd::game::starting_pos(data.root()))["map_data"]);
 		}
+
+		g.set_description(&desc);
+
+		// Update the game's description.
+		// Record the full scenario in g.level()
+		g.level().swap(data);
+		// The host already put himself in the scenario so we just need
+		// to update_side_data().
+		//g.take_side(sock);
+		g.update_side_data();
+		g.describe_slots();
+
+		// Send the update of the game description to the lobby.
+		assert(games_and_users_list_.child("gamelist")->children("game").empty() == false);
+		simple_wml::document diff_game;
+		make_add_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", diff_game);
+		rooms_.lobby().send_data(diff_game);
 		return;
 	}
 
@@ -2401,95 +2445,8 @@ void server::process_data_game(const network::connection sock,
 
 	wesnothd::game& g = *itor;
 
-	// If this is data describing the level for a game.
-	if (data.child("snapshot") || data.child("scenario")) {
-		if (!g.is_owner(sock)) {
-			return;
-		}
-		// If this game is having its level data initialized
-		// for the first time, and is ready for players to join.
-		// We should currently have a summary of the game in g.level().
-		// We want to move this summary to the games_and_users_list_, and
-		// place a pointer to that summary in the game's description.
-		// g.level() should then receive the full data for the game.
-		if (!g.level_init()) {
-			LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
-				<< "\tcreated game:\t\"" << g.name() << "\" ("
-				<< g.id() << ").\n";
-			// Update our config object which describes the open games,
-			// and save a pointer to the description in the new game.
-			simple_wml::node* const gamelist = games_and_users_list_.child("gamelist");
-			assert(gamelist != NULL);
-			simple_wml::node& desc = gamelist->add_child("game");
-			g.level().root().copy_into(desc);
-			if (const simple_wml::node* m = data.child("multiplayer")) {
-				m->copy_into(desc);
-			} else {
-				WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
-					<< "\tsent scenario data in game:\t\"" << g.name() << "\" ("
-					<< g.id() << ") without a 'multiplayer' child.\n";
-				// Set the description so it can be removed in delete_game().
-				g.set_description(&desc);
-				delete_game(itor);
-				rooms_.lobby().send_server_message("The scenario data is missing the [multiplayer] tag which contains the game settings. Game aborted.", sock);
-				return;
-			}
-
-			g.set_description(&desc);
-			desc.set_attr_dup("id", lexical_cast_default<std::string>(g.id()).c_str());
-		} else {
-			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
-				<< "\tsent scenario data in game:\t\"" << g.name() << "\" ("
-				<< g.id() << ") although it's already initialized.\n";
-			return;
-		}
-
-		assert(games_and_users_list_.child("gamelist")->children("game").empty() == false);
-
-		simple_wml::node& desc = *g.description();
-		// Update the game's description.
-		// If there is no shroud, then tell players in the lobby
-		// what the map looks like
-		if (!data["mp_shroud"].to_bool()) {
-			desc.set_attr_dup("map_data", (*wesnothd::game::starting_pos(data.root()))["map_data"]);
-		}
-		if (const simple_wml::node* e = data.child("era")) {
-			if (!e->attr("require_era").to_bool(true)) {
-				desc.set_attr("require_era", "no");
-			}
-		}
-
-		if (data.attr("require_scenario").to_bool(false)) {
-			desc.set_attr("require_scenario", "yes");
-		}
-
-		const simple_wml::node::child_list& mlist = data.children("modification");
-		BOOST_FOREACH (const simple_wml::node* m, mlist) {
-			desc.add_child_at("modification", 0);
-			desc.child("modification")->set_attr_dup("id", m->attr("id"));
-			if (m->attr("require_modification").to_bool(false))
-				desc.child("modification")->set_attr("require_modification", "yes");
-		}
-
-		// Record the full scenario in g.level()
-		g.level().swap(data);
-		// The host already put himself in the scenario so we just need
-		// to update_side_data().
-		//g.take_side(sock);
-		g.update_side_data();
-		g.describe_slots();
-
-		assert(games_and_users_list_.child("gamelist")->children("game").empty() == false);
-
-		// Send the update of the game description to the lobby.
-		simple_wml::document diff;
-		make_add_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", diff);
-		rooms_.lobby().send_data(diff);
-
-		/** @todo FIXME: Why not save the level data in the history_? */
-		return;
-// Everything below should only be processed if the game is already intialized.
-	} else if (!g.level_init()) {
+	// Everything below should only be processed if the game is already intialized.
+	if (!g.level_init()) {
 		WRN_SERVER << network::ip_address(sock) << "\tReceived unknown data from: "
 			<< pl->second.name() << " (socket:" << sock
 			<< ") while the scenario wasn't yet initialized.\n" << data.output();
