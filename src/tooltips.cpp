@@ -36,7 +36,7 @@ static const int text_width = 400;
 
 struct tooltip
 {
-	tooltip(const SDL_Rect& r, const std::string& msg, const std::string& act = "", bool use_markup = false, const surface fg = surface())
+	tooltip(const SDL_Rect& r, const std::string& msg, const std::string& act = "", bool use_markup = false, const surface& fg = surface())
 	: rect(r), message(msg), action(act), markup(use_markup), foreground(fg)
 	{}
 	SDL_Rect rect;
