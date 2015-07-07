@@ -41,6 +41,7 @@ mp_game_settings::mp_game_settings() :
 	mp_campaign(),
 	active_mods(),
 	side_users(),
+	show_connect(true),
 	num_turns(0),
 	village_gold(0),
 	village_support(1),
