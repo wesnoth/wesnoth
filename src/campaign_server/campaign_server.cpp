@@ -139,6 +139,8 @@ server::~server()
 
 int server::load_config()
 {
+	LOG_CS << "Reading configuration from " << cfg_file_ << "...\n";
+
 	filesystem::scoped_istream in = filesystem::istream_file(cfg_file_);
 	read(cfg_, *in);
 
@@ -829,7 +831,7 @@ int main(int argc, char**argv)
 	lg::timestamps(true);
 
 	try {
-		printf("argc %d argv[0] %s 1 %s\n",argc,argv[0],argv[1]);
+		std::cerr << "Wesnoth campaignd v" << game_config::revision << " starting...\n";
 
 		const std::string& cfg_path = filesystem::normalize_path("server.cfg");
 
