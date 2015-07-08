@@ -139,7 +139,8 @@ static bool try_fetch_addon(display & disp, addons_client & client, const addon_
 enum OUTCOME { SUCCESS, FAILURE, ABORT };
 
 // A structure which summarizes the outcome of one or more add-on install operations.
-struct ADDON_OP_RESULT {
+struct addon_op_result
+{
 	OUTCOME outcome;
 	bool wml_changed;
 };
@@ -149,9 +150,9 @@ struct ADDON_OP_RESULT {
  *                   SUCCESS otherwise
  *          wml_change: indicates if new wml content was installed
  */
-ADDON_OP_RESULT do_resolve_addon_dependencies(display& disp, addons_client& client, const addons_list& addons, const addon_info& addon)
+addon_op_result do_resolve_addon_dependencies(display& disp, addons_client& client, const addons_list& addons, const addon_info& addon)
 {
-	ADDON_OP_RESULT result;
+	addon_op_result result;
 	result.outcome = SUCCESS;
 	result.wml_changed = false;
 
@@ -326,11 +327,11 @@ bool do_check_before_overwriting_addon(CVideo& video, const addon_info& addon)
  *                   SUCCESS otherwise
  *          wml_changed: indicates if new wml content was installed at any point
  */
-static ADDON_OP_RESULT try_fetch_addon_with_checks(display & disp, addons_client& client, const addons_list& addons, const addon_info& addon)
+static addon_op_result try_fetch_addon_with_checks(display & disp, addons_client& client, const addons_list& addons, const addon_info& addon)
 {
 	if(!(do_check_before_overwriting_addon(disp.video(), addon))) {
 		// Just do nothing and leave.
-		ADDON_OP_RESULT result;
+		addon_op_result result;
 		result.outcome = ABORT;
 		result.wml_changed = false;
 
@@ -338,7 +339,7 @@ static ADDON_OP_RESULT try_fetch_addon_with_checks(display & disp, addons_client
 	}
 
 	// Resolve any dependencies
-	ADDON_OP_RESULT res = do_resolve_addon_dependencies(disp, client, addons, addon);
+	addon_op_result res = do_resolve_addon_dependencies(disp, client, addons, addon);
 	if (res.outcome != SUCCESS) { // this function only returns SUCCESS and ABORT as outcomes
 		return res; // user aborted
 	}
@@ -925,7 +926,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 	BOOST_FOREACH(const std::string& id, ids_to_install) {
 		const addon_info& addon = addon_at(id, addons);
 
-		ADDON_OP_RESULT res = try_fetch_addon_with_checks(disp, client, addons, addon);
+		addon_op_result res = try_fetch_addon_with_checks(disp, client, addons, addon);
 		wml_changed |= res.wml_changed; // take note if any wml_changes occurred
 		if (res.outcome == ABORT) {
 			return; // the user aborted because of some issue encountered
@@ -1230,7 +1231,7 @@ bool ad_hoc_addon_fetch_session(display & disp, const std::vector<std::string> &
 			addons_list::const_iterator it = addons.find(addon_id);
 			if(it != addons.end()) {
 				const addon_info& addon = it->second;
-				ADDON_OP_RESULT res = try_fetch_addon_with_checks(disp, client, addons, addon);
+				addon_op_result res = try_fetch_addon_with_checks(disp, client, addons, addon);
 				return_value = return_value && (res.outcome == SUCCESS);
 			} else {
 				utils::string_map symbols;
