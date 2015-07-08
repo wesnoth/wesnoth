@@ -117,7 +117,7 @@ std::string describe_addon_status(const addon_tracking_info& info)
 }
 
 // Asks the client to download and install an addon, reporting errors in a gui dialog. Returns true if new content was installed, false otherwise.
-static bool try_fetch_addon(display & disp, addons_client & client, const addon_info & addon)
+bool try_fetch_addon(display & disp, addons_client & client, const addon_info & addon)
 {
 	config archive;
 
@@ -327,7 +327,7 @@ bool do_check_before_overwriting_addon(CVideo& video, const addon_info& addon)
  *                   SUCCESS otherwise
  *          wml_changed: indicates if new wml content was installed at any point
  */
-static addon_op_result try_fetch_addon_with_checks(display & disp, addons_client& client, const addons_list& addons, const addon_info& addon)
+addon_op_result try_fetch_addon_with_checks(display & disp, addons_client& client, const addons_list& addons, const addon_info& addon)
 {
 	if(!(do_check_before_overwriting_addon(disp.video(), addon))) {
 		// Just do nothing and leave.
