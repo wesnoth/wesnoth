@@ -116,14 +116,18 @@ server::server(const std::string& cfg_file, size_t min_threads, size_t max_threa
 	, feedback_url_format_()
 	, blacklist_()
 	, blacklist_file_()
+	, port_(load_config())
 	, net_manager_(min_threads, max_threads)
-	, server_manager_(load_config())
+	, server_manager_(port_)
 {
 #ifndef _MSC_VER
 	signal(SIGHUP, flag_sighup);
 #endif
 	signal(SIGINT, exit_sigint);
 	signal(SIGTERM, exit_sigterm);
+
+	LOG_CS << "Port: " << port_ << "  Worker threads min/max: " << min_threads
+		   << '/' << max_threads << '\n';
 
 	register_handlers();
 }

@@ -97,6 +97,8 @@ private:
 	blacklist blacklist_;
 	std::string blacklist_file_;
 
+	int port_;
+
 	const network::manager net_manager_;
 	const network::server_manager server_manager_;
 
