@@ -140,8 +140,8 @@ enum OUTCOME { SUCCESS, FAILURE, ABORT };
 
 // A structure which summarizes the outcome of one or more add-on install operations.
 struct ADDON_OP_RESULT {
-	OUTCOME outcome_;
-	bool wml_changed_;
+	OUTCOME outcome;
+	bool wml_changed;
 };
 
 /** Warns the user about unresolved dependencies and installs them if they choose to do so. 
@@ -152,8 +152,8 @@ struct ADDON_OP_RESULT {
 ADDON_OP_RESULT do_resolve_addon_dependencies(display& disp, addons_client& client, const addons_list& addons, const addon_info& addon)
 {
 	ADDON_OP_RESULT result;
-	result.outcome_ = SUCCESS;
-	result.wml_changed_ = false;
+	result.outcome = SUCCESS;
+	result.wml_changed = false;
 
 	boost::scoped_ptr<cursor::setter> cursor_setter(new cursor::setter(cursor::WAIT));
 
@@ -191,7 +191,7 @@ ADDON_OP_RESULT do_resolve_addon_dependencies(display& disp, addons_client& clie
 		}
 
 		if(gui2::show_message(disp.video(), _("Broken Dependencies"), broken_deps_report, gui2::tmessage::yes_no_buttons) != gui2::twindow::OK) {
-			result.outcome_ = ABORT;
+			result.outcome = ABORT;
 			return result; // canceled by user
 		}
 	}
@@ -269,7 +269,7 @@ ADDON_OP_RESULT do_resolve_addon_dependencies(display& disp, addons_client& clie
 		if(!try_fetch_addon(disp, client, addon)) {
 			failed_titles.push_back(addon.title);
 		} else {
-			result.wml_changed_ = true;
+			result.wml_changed = true;
 		}
 	}
 
@@ -279,7 +279,7 @@ ADDON_OP_RESULT do_resolve_addon_dependencies(display& disp, addons_client& clie
 			"The following dependencies could not be installed. Do you still wish to continue?",
 			failed_titles.size()) + std::string("\n\n") + utils::bullet_list(failed_titles);
 
-		result.outcome_ = gui2::show_message(disp.video(), _("Dependencies Installation Failed"), failed_deps_report, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK ? SUCCESS : ABORT; // If the user cancels, return ABORT. Otherwise, return SUCCESS, since the user chose to ignore the failure.
+		result.outcome = gui2::show_message(disp.video(), _("Dependencies Installation Failed"), failed_deps_report, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK ? SUCCESS : ABORT; // If the user cancels, return ABORT. Otherwise, return SUCCESS, since the user chose to ignore the failure.
 		return result;
 	}
 
@@ -331,23 +331,23 @@ static ADDON_OP_RESULT try_fetch_addon_with_checks(display & disp, addons_client
 	if(!(do_check_before_overwriting_addon(disp.video(), addon))) {
 		// Just do nothing and leave.
 		ADDON_OP_RESULT result;
-		result.outcome_ = ABORT;
-		result.wml_changed_ = false;
+		result.outcome = ABORT;
+		result.wml_changed = false;
 
 		return result;
 	}
 
 	// Resolve any dependencies
 	ADDON_OP_RESULT res = do_resolve_addon_dependencies(disp, client, addons, addon);
-	if (res.outcome_ != SUCCESS) { // this function only returns SUCCESS and ABORT as outcomes
+	if (res.outcome != SUCCESS) { // this function only returns SUCCESS and ABORT as outcomes
 		return res; // user aborted
 	}
 
 	if(!try_fetch_addon(disp, client, addon)) {
-		res.outcome_ = FAILURE;
+		res.outcome = FAILURE;
 		return res; //wml_changed should have whatever value was obtained in resolving dependencies
 	} else {
-		res.wml_changed_ = true;
+		res.wml_changed = true;
 		return res; //we successfully installed something, so now the wml was definitely changed
 	}
 }
@@ -926,10 +926,10 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		const addon_info& addon = addon_at(id, addons);
 
 		ADDON_OP_RESULT res = try_fetch_addon_with_checks(disp, client, addons, addon);
-		wml_changed |= res.wml_changed_; // take note if any wml_changes occurred
-		if (res.outcome_ == ABORT) {
+		wml_changed |= res.wml_changed; // take note if any wml_changes occurred
+		if (res.outcome == ABORT) {
 			return; // the user aborted because of some issue encountered
-		} else if (res.outcome_ == FAILURE) {
+		} else if (res.outcome == FAILURE) {
 			failed_titles.push_back(addon.title); // we resolved dependencies, but fetching this particular addon failed.
 		} else { // res.outcome == SUCCESS
 			wml_changed = true;
@@ -1231,7 +1231,7 @@ bool ad_hoc_addon_fetch_session(display & disp, const std::vector<std::string> &
 			if(it != addons.end()) {
 				const addon_info& addon = it->second;
 				ADDON_OP_RESULT res = try_fetch_addon_with_checks(disp, client, addons, addon);
-				return_value = return_value && (res.outcome_ == SUCCESS);
+				return_value = return_value && (res.outcome == SUCCESS);
 			} else {
 				utils::string_map symbols;
 				symbols["addon_id"] = addon_id;
