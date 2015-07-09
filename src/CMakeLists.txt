@@ -762,6 +762,7 @@ set(wesnoth-main_SRC
 	animated_game.cpp
 	attack_prediction.cpp
 	attack_prediction_display.cpp
+	build_info.cpp
 	callable_objects.cpp
 	carryover.cpp
 	commandline_options.cpp
