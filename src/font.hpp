@@ -26,8 +26,6 @@ class t_string;
 
 namespace font {
 
-std::string describe_versions();
-
 //object which initializes and destroys structures needed for fonts
 struct manager {
 	manager();
