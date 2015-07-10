@@ -21,12 +21,14 @@
 #include "filechooser.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/advanced_graphics_options.hpp"
 #include "gui/dialogs/game_cache_options.hpp"
 #include "gui/dialogs/mp_alerts_options.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/theme_list.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "gui/widgets/settings.hpp"
 #include "lobby_preferences.hpp"
 #include "marked-up_text.hpp"
 #include "preferences_display.hpp"
@@ -1684,6 +1686,12 @@ void preferences_dialog::set_selection(int index)
 
 void show_preferences_dialog(CVideo& video, const config& game_cfg)
 {
+	if(true/*gui2::new_widgets*/) {
+		gui2::tpreferences dlg;
+		dlg.show(disp.video());
+		return;
+	}
+
 	std::vector<std::string> items;
 
 	std::string const pre = IMAGE_PREFIX + std::string("icons/icon-");
