@@ -35,6 +35,7 @@ tstacked_widget::tstacked_widget()
 	: tcontainer_(1)
 	, generator_(
 			  tgenerator_::build(false, false, tgenerator_::independent, false))
+	, selected_layer_(-1)
 {
 }
 
@@ -103,9 +104,7 @@ tstacked_widget::finalize(std::vector<tbuilder_grid_const_ptr> widget_builder)
 	}
 	swap_grid(NULL, &grid(), generator_, "_content_grid");
 
-	for(size_t i = 0; i < generator_->get_item_count(); ++i) {
-		generator_->select_item(i, true);
-	}
+	select_layer(-1);
 }
 
 const std::string& tstacked_widget::get_control_type() const
@@ -117,6 +116,36 @@ const std::string& tstacked_widget::get_control_type() const
 void tstacked_widget::set_self_active(const bool /*active*/)
 {
 	/* DO NOTHING */
+}
+
+void tstacked_widget::select_layer_internal(const unsigned int layer, const bool select) const
+{
+	// Selecting a layer that's already selected appears to actually deselect
+	// it, so make sure to only perform changes we want.
+	if(generator_->is_selected(layer) != select) {
+		generator_->select_item(layer, select);
+	}
+}
+
+void tstacked_widget::select_layer(const int layer)
+{
+	const unsigned int num_layers = generator_->get_item_count();
+	selected_layer_ = std::max(-1, std::min<int>(layer, num_layers - 1));
+
+	for(unsigned int i = 0; i < num_layers; ++i) {
+		if(selected_layer_ >= 0) {
+			const bool selected = i == static_cast<unsigned int>(selected_layer_);
+			// Select current layer, leave the rest unselected.
+			select_layer_internal(i, selected);
+			generator_->item(i).set_visible(selected
+											? twidget::tvisible::visible
+											: twidget::tvisible::hidden);
+		} else {
+			// Select everything.
+			select_layer_internal(i, true);
+			generator_->item(i).set_visible(twidget::tvisible::visible);
+		}
+	}
 }
 
 } // namespace gui2

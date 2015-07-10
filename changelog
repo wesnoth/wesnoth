@@ -11,6 +11,10 @@ Version 1.13.1+dev:
    * New standing animation for the Dwarvish Runesmith
  * Music and sound effects:
    * New dwarf hit and die sounds.
+ * User interface:
+   * GUI2:
+     * stacked_widget can optionally display a single layer at a time. This
+       may be used to implement dialogs with multiple pages or tabs.
  * Miscellaneous and bug fixes:
    * Fixed unbound memory read in internal time formatting code with
      specially-crafted input.

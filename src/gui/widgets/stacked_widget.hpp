@@ -46,6 +46,23 @@ public:
 	/** See @ref twidget::layout_children. */
 	virtual void layout_children() OVERRIDE;
 
+	/**
+	 * Gets the current visible layer number.
+	 *
+	 * The current layer number will be -1 if all layers are currently visible.
+	 * In this case, only the topmost (highest-numbered) layer will receive
+	 * events.
+	 */
+	int current_layer() const { return selected_layer_; }
+
+	/**
+	 * Selects and displays a particular layer.
+	 *
+	 * If layer -1 is selected, all layers will be displayed but only the
+	 * topmost (highest-numbered) layer will receive events.
+	 */
+	void select_layer(const int layer);
+
 private:
 	/**
 	 * Finishes the building initialization of the widget.
@@ -63,6 +80,16 @@ private:
 	 * freed.
 	 */
 	tgenerator_* generator_;
+
+	/**
+	 * The number of the current selected layer.
+	 */
+	int selected_layer_;
+
+	/**
+	 * Helper to ensure the correct state is set when selecting a layer.
+	 */
+	void select_layer_internal(const unsigned int layer, const bool select) const;
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
