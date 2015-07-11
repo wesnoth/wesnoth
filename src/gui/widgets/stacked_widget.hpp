@@ -63,6 +63,11 @@ public:
 	 */
 	void select_layer(const int layer);
 
+	/**
+	 * Gets the total number of layers.
+	 */
+	unsigned int get_layer_count() const;
+
 private:
 	/**
 	 * Finishes the building initialization of the widget.

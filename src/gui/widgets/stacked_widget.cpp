@@ -148,4 +148,9 @@ void tstacked_widget::select_layer(const int layer)
 	}
 }
 
+unsigned int tstacked_widget::get_layer_count() const
+{
+	return generator_->get_item_count();
+}
+
 } // namespace gui2
