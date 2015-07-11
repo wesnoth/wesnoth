@@ -357,6 +357,7 @@ private:
 		building_rule() :
 			constraints(),
 			location_constraints(),
+			modulo_constraints(),
 			probability(100),
 			precedence(0),
 			local(false),
@@ -374,6 +375,13 @@ private:
 		 * of the [terrain_graphics] rule are set.
 		 */
 		map_location location_constraints;
+
+		/**
+		 * Used to constrain locations to ones with coordinates that are
+		 * multiples of the "mod_x" and "mod_y" parameters. Doesn't actually
+		 * refer to a real map location.
+		 */
+		map_location modulo_constraints;
 
 		/**
 		 * The probability of this rule to match, when all conditions
