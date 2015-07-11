@@ -821,6 +821,17 @@ private:
 	 */
 	bool is_at(const tpoint& coordinate, const bool must_be_active) const;
 
+	/**
+	 * Is the widget and every single one of its parents visible?
+	 *
+	 * @param widget              Widget where to start the check.
+	 * @param must_be_active      The widget should be active, not all widgets
+	 *                            have an active flag, those who don't ignore
+	 *                            flag.
+	 *
+	 * @returns                   Status.
+	 */
+	bool recursive_is_visible(const twidget* widget, const bool must_be_active) const;
 
 	/***** ***** ***** ***** Miscellaneous ***** ***** ****** *****/
 

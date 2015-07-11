@@ -607,10 +607,23 @@ bool twidget::is_at(const tpoint& coordinate) const
 	return is_at(coordinate, true);
 }
 
+bool twidget::recursive_is_visible(const twidget* widget, const bool must_be_active) const
+{
+	while(widget) {
+		if(widget->visible_ == tvisible::invisible
+		   || (widget->visible_ == tvisible::hidden && must_be_active)) {
+			return false;
+		}
+
+		widget = widget->parent_;
+	}
+
+	return true;
+}
+
 bool twidget::is_at(const tpoint& coordinate, const bool must_be_active) const
 {
-	if(visible_ == tvisible::invisible
-	   || (visible_ == tvisible::hidden && must_be_active)) {
+	if(!recursive_is_visible(this, must_be_active)) {
 		return false;
 	}
 

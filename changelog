@@ -15,6 +15,9 @@ Version 1.13.1+dev:
    * GUI2:
      * stacked_widget can optionally display a single layer at a time. This
        may be used to implement dialogs with multiple pages or tabs.
+     * Widgets which are children of invisible or hidden parents can no longer
+       be interacted with even if the children themselves are still internally
+       visible.
  * Miscellaneous and bug fixes:
    * Fixed unbound memory read in internal time formatting code with
      specially-crafted input.
