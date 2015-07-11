@@ -195,7 +195,7 @@ public:
 	actions::undo_list & get_undo_stack() { return *undo_stack_; }
 
 	bool is_browsing() const OVERRIDE;
-	bool is_lingering() { return linger_; }
+	bool is_lingering() const { return linger_; }
 
 	class hotkey_handler;
 	virtual bool is_replay() { return false; }
@@ -211,6 +211,8 @@ public:
 
 	team& current_team();
 	const team& current_team() const;
+
+	bool can_use_synced_wml_menu() const;
 protected:
 	void play_slice_catch();
 	game_display& get_display();

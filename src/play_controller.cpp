@@ -1043,3 +1043,9 @@ void play_controller::start_game()
 		gui_->recalculate_minimap();
 	}
 }
+
+bool play_controller::can_use_synced_wml_menu() const
+{
+	const team& viewing_team = get_teams_const()[gui_->viewing_team()];
+	return gui_->viewing_team() == gui_->playing_team() && !events::commands_disabled && viewing_team.is_local_human() && !is_lingering() && !is_browsing();
+}

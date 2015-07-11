@@ -432,16 +432,8 @@ void play_controller::hotkey_handler::show_menu(const std::vector<std::string>& 
 		} else {
 			cmd = &hotkey::get_hotkey_command(*i);
 		}
-		// Remove WML commands if they would not be allowed here
-		if(*i == "wml") {
-			if(!context_menu || !viewing_team_is_playing()
-			|| events::commands_disabled || !viewing_team().is_local_human()
-			|| (linger() && !game_config::debug)){
-				i = items.erase(i);
-				continue;
-			}
 		// Remove commands that can't be executed or don't belong in this type of menu
-		} else if(!can_execute_command(*cmd)
+		if(*i != "wml" && !can_execute_command(*cmd)
 			|| (context_menu && !in_context_menu(cmd->id))) {
 			i = items.erase(i);
 			continue;

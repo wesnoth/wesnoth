@@ -37,6 +37,7 @@
 #include "../preferences.hpp"
 #include "../replay.hpp"
 #include "../replay_helper.hpp"
+#include "../resources.hpp"
 #include "../synced_context.hpp"
 #include "../terrain_filter.hpp"
 
@@ -174,6 +175,8 @@ const std::string & wml_menu_item::image() const
  */
 bool wml_menu_item::can_show(const map_location & hex, const game_data & data, filter_context & filter_con) const
 {
+	if(is_synced_ && !resources::controller->can_use_synced_wml_menu())
+		return false;
 	// Failing the [show_if] tag means no show.
 	if ( !show_if_.empty() && !conditional_passed(show_if_) )
 		return false;
