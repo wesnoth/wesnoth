@@ -46,7 +46,7 @@
 #include "gui/dialogs/game_cache_options.hpp"
 #include "gui/dialogs/game_delete.hpp"
 #include "gui/dialogs/game_load.hpp"
-#include "gui/dialogs/game_paths.hpp"
+#include "gui/dialogs/game_version.hpp"
 #include "gui/dialogs/game_save.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/language_selection.hpp"
@@ -393,7 +393,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tgame_cache_options>();
 	test<gui2::tgame_delete>();
 	test<gui2::tgame_load>();
-	test<gui2::tgame_paths>();
+	test<gui2::tgame_version>();
 	test<gui2::tgame_save>();
 	test<gui2::tgame_save_message>();
 	test<gui2::tgame_save_oos>();
@@ -612,11 +612,11 @@ struct twrapper<gui2::tgame_load>
 };
 
 template<>
-struct twrapper<gui2::tgame_paths>
+struct twrapper<gui2::tgame_version>
 {
-	static gui2::tgame_paths* create()
+	static gui2::tgame_version* create()
 	{
-		return new gui2::tgame_paths();
+		return new gui2::tgame_version();
 	}
 
 };

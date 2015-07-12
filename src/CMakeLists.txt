@@ -870,8 +870,8 @@ set(wesnoth-main_SRC
 	gui/dialogs/game_cache_options.cpp
 	gui/dialogs/game_delete.cpp
 	gui/dialogs/game_load.cpp
-	gui/dialogs/game_paths.cpp
 	gui/dialogs/game_save.cpp
+	gui/dialogs/game_version.cpp
 	gui/dialogs/gamestate_inspector.cpp
 	gui/dialogs/language_selection.cpp
 	gui/dialogs/lobby/lobby_data.cpp

@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/game_paths.hpp"
+#include "gui/dialogs/game_version.hpp"
 
 #include "desktop/clipboard.hpp"
 #include "desktop/open.hpp"
@@ -37,7 +37,7 @@ namespace gui2
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
- * @order = 2_game_paths
+ * @order = 2_game_version
  *
  * == Game paths ==
  *
@@ -62,9 +62,9 @@ namespace gui2
  * @end{table}
  */
 
-REGISTER_DIALOG(game_paths)
+REGISTER_DIALOG(game_version)
 
-tgame_paths::tgame_paths()
+tgame_version::tgame_version()
 	: path_wid_stem_("path_")
 	, copy_wid_stem_("copy_")
 	, browse_wid_stem_("browse_")
@@ -80,7 +80,7 @@ tgame_paths::tgame_paths()
 	path_map_["cache"] = filesystem::get_cache_dir();
 }
 
-void tgame_paths::pre_show(CVideo& /*video*/, twindow& window)
+void tgame_version::pre_show(CVideo& /*video*/, twindow& window)
 {
 	FOREACH(const AUTO & path_ent, path_map_)
 	{
@@ -99,12 +99,12 @@ void tgame_paths::pre_show(CVideo& /*video*/, twindow& window)
 
 		connect_signal_mouse_left_click(
 				copy_w,
-				boost::bind(&tgame_paths::copy_to_clipboard_callback,
+				boost::bind(&tgame_version::copy_to_clipboard_callback,
 							this,
 							path_path));
 		connect_signal_mouse_left_click(
 				browse_w,
-				boost::bind(&tgame_paths::browse_directory_callback,
+				boost::bind(&tgame_version::browse_directory_callback,
 							this,
 							path_path));
 
@@ -121,12 +121,12 @@ void tgame_paths::pre_show(CVideo& /*video*/, twindow& window)
 	}
 }
 
-void tgame_paths::browse_directory_callback(const std::string& path)
+void tgame_version::browse_directory_callback(const std::string& path)
 {
 	desktop::open_object(path);
 }
 
-void tgame_paths::copy_to_clipboard_callback(const std::string& path)
+void tgame_version::copy_to_clipboard_callback(const std::string& path)
 {
 	desktop::clipboard::copy_to_clipboard(path, false);
 }

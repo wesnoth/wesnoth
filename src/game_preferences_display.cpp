@@ -23,7 +23,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/advanced_graphics_options.hpp"
 #include "gui/dialogs/game_cache_options.hpp"
-#include "gui/dialogs/game_paths.hpp"
+#include "gui/dialogs/game_version.hpp"
 #include "gui/dialogs/mp_alerts_options.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/theme_list.hpp"
@@ -1775,7 +1775,7 @@ bool show_theme_dialog(display& disp)
 
 void show_paths_dialog(display& disp)
 {
-	gui2::tgame_paths::display(disp.video());
+	gui2::tgame_version::display(disp.video());
 }
 
 void show_mp_alerts_dialog(display & disp)

@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_GAME_PATHS_HPP_INCLUDED
-#define GUI_DIALOGS_GAME_PATHS_HPP_INCLUDED
+#ifndef GUI_DIALOGS_GAME_VERSION_HPP_INCLUDED
+#define GUI_DIALOGS_GAME_VERSION_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
 
@@ -22,13 +22,13 @@
 namespace gui2
 {
 
-class tgame_paths : public tdialog
+class tgame_version : public tdialog
 {
 public:
 	/**
 	 * Constructor.
 	 */
-	tgame_paths();
+	tgame_version();
 
 	/**
 	 * The display function.
@@ -37,7 +37,7 @@ public:
 	 */
 	static void display(CVideo& video)
 	{
-		tgame_paths().show(video);
+		tgame_version().show(video);
 	}
 
 private:
