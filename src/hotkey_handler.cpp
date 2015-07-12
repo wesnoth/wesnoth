@@ -433,8 +433,7 @@ void play_controller::hotkey_handler::show_menu(const std::vector<std::string>& 
 			cmd = &hotkey::get_hotkey_command(*i);
 		}
 		// Remove commands that can't be executed or don't belong in this type of menu
-		if(*i != "wml" && !can_execute_command(*cmd)
-			|| (context_menu && !in_context_menu(cmd->id))) {
+		if(*i != "wml" && (!can_execute_command(*cmd) || (context_menu && !in_context_menu(cmd->id)))) {
 			i = items.erase(i);
 			continue;
 		}
