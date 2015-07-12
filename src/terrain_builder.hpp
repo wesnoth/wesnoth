@@ -160,7 +160,7 @@ public:
 			{}
 
 		/** Constructor for true [variant] cases */
-		rule_image_variant(const std::string &image_string, const std::string& variations, const std::string& tod, const std::string& has_flag_, bool random_start = true);
+		rule_image_variant(const std::string &image_string, const std::string& variations, const std::string& tod, const std::string& has_flag, bool random_start = true);
 
 		/** A string representing either the filename for an image, or
 		 *  a list of images, with an optional timing for each image.

@@ -636,7 +636,7 @@ void terrain_builder::rotate_rule(building_rule &ret, int angle,
 	replace_rotate_tokens(ret, angle, rot);
 }
 
-terrain_builder::rule_image_variant::rule_image_variant(const std::string &image_string, const std::string& variations, const std::string& tod, const std::string& has_flag_, bool random_start) :
+terrain_builder::rule_image_variant::rule_image_variant(const std::string &image_string, const std::string& variations, const std::string& tod, const std::string& has_flag, bool random_start) :
 		image_string(image_string),
 		variations(variations),
 		images(),
@@ -644,9 +644,8 @@ terrain_builder::rule_image_variant::rule_image_variant(const std::string &image
 		has_flag(),
 		random_start(random_start)
 {
-	if(!has_flag_.empty()) {
-		std::vector<std::string> flag_list = utils::split(has_flag_);
-		has_flag.insert(has_flag.end(), flag_list.begin(), flag_list.end());
+	if(!has_flag.empty()) {
+		this->has_flag = utils::split(has_flag);
 	}
 	if(!tod.empty()) {
 		const std::vector<std::string> tod_list = utils::split(tod);
