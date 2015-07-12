@@ -30,7 +30,12 @@ class config;
 class synced_context
 {
 public:
-	enum synced_state {UNSYNCED, SYNCED, LOCAL_CHOICE};
+	enum synced_state
+	{
+		UNSYNCED,
+		SYNCED, 
+		LOCAL_CHOICE
+	};
 	/**
 
 		Sets the context to 'synced', initialises random context, and calls the given function.
@@ -67,6 +72,10 @@ public:
 		@return whether we are currently executing a synced action like recruit, start, recall, disband, movement, attack, init_side, end_turn, fire_event, lua_ai, auto_shroud or similar.
 	*/
 	static synced_state get_synced_state();
+	/**
+		@return whether we are currently executing a synced action like recruit, start, recall, disband, movement, attack, init_side, end_turn, fire_event, lua_ai, auto_shroud or similar.
+	*/
+	static bool is_synced();
 	/*
 		should only be called form set_scontext_synced, set_scontext_local_choice
 	*/
@@ -190,29 +199,27 @@ private:
 	a RAII object to temporary leave the synced context like in  wesnoth.synchronize_choice. Can only be used from inside a synced context.
 */
 
-class set_scontext_local_choice
+class leave_synced_context
 {
 public:
-	set_scontext_local_choice();
-	~set_scontext_local_choice();
+	leave_synced_context();
+	~leave_synced_context();
 private:
+	random_new::rng new_rng_;
 	random_new::rng* old_rng_;
 };
 
 /**
-	an object to leave the synced context during draw when we don’t know whether we are in a synced context or not.
-	if we are in a sanced context we leave the synced context otherwise it has no effect.
+	an object to leave the synced context during draw or unsynced wml items when we don’t know whether we are in a synced context or not.
+	if we are in a synced context we leave the synced context, otherwise it has no effect.
 	we need this because we might call lua's wesnoth.theme_items during draw and we don’t want to have that an effect on the gamestate in this case.
 */
-
-class set_scontext_leave_for_draw
+class set_scontext_unsynced
 {
 public:
-	set_scontext_leave_for_draw();
-	~set_scontext_leave_for_draw();
+	set_scontext_unsynced();
 private:
-	random_new::rng* old_rng_;
-	synced_context::synced_state previous_state_;
+	boost::scoped_ptr<leave_synced_context> leaver_;
 };
 
 #endif

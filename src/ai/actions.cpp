@@ -283,8 +283,8 @@ void attack_result::do_execute()
 		return;
 	}
 
-	//to get rid of an unused member variable warning, FIXME: find a way to 'ask' the ai which advancement should be chosen from synced_commands.cpp .
-	if(synced_context::get_synced_state() != synced_context::SYNCED) //RAII block for set_scontext_synced
+	//FIXME: find a way to 'ask' the ai which advancement should be chosen from synced_commands.cpp .
+	if(!synced_context::is_synced()) //RAII block for set_scontext_synced
 	{
 		//we don't use synced_context::run_in_synced_context because that wouldn't allow us to pass advancements_
 		resources::recorder->add_synced_command("attack", replay_helper::get_attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, a_->type_id(),

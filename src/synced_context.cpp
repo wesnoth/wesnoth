@@ -167,6 +167,11 @@ synced_context::synced_state synced_context::get_synced_state()
 	return state_;
 }
 
+bool synced_context::is_synced()
+{
+	return get_synced_state() == SYNCED;
+}
+
 void synced_context::set_synced_state(synced_state newstate)
 {
 	state_ = newstate;
@@ -220,7 +225,7 @@ void  synced_context::set_is_simultaneously()
 bool synced_context::can_undo()
 {
 	//this method should only works in a synced context.
-	assert(get_synced_state() == SYNCED);
+	assert(is_synced());
 	//if we called the rng or if we sended data of this action over the network already, undoing is impossible.
 	return (!is_simultaneously_) && (random_new::generator->get_random_calls() == 0);
 }
@@ -233,7 +238,7 @@ void synced_context::set_last_unit_id(int id)
 int synced_context::get_unit_id_diff()
 {
 	//this method only works in a synced context.
-	assert(get_synced_state() == SYNCED);
+	assert(is_synced());
 	return n_unit::id_manager::instance().get_save_id() - last_unit_id_;
 }
 
@@ -303,7 +308,7 @@ config synced_context::ask_server_choice(const server_choice& sch)
 {
 	set_is_simultaneously();
 	resources::controller->increase_server_request_number();
-	assert(get_synced_state() == synced_context::SYNCED);
+	assert(is_synced());
 	const bool is_mp_game = network::nconnections() != 0;
 	bool did_require = false;
 
@@ -325,6 +330,7 @@ config synced_context::ask_server_choice(const server_choice& sch)
 			/* The decision is ours, and it will be inserted
 			into the replay. */
 			DBG_REPLAY << "MP synchronization: local server choice\n";
+			leave_synced_context sync;
 			config cfg = sch.local_choice();
 			//-1 for "server" todo: change that.
 			resources::recorder->user_input(sch.name(), cfg, -1);
@@ -496,52 +502,27 @@ int set_scontext_synced::get_random_calls()
 }
 
 
-set_scontext_local_choice::set_scontext_local_choice()
+leave_synced_context::leave_synced_context()
+	: new_rng_()
+	, old_rng_(random_new::generator)
 {
-	//TODO: should we also reset the synced checkup?
 	assert(synced_context::get_synced_state() == synced_context::SYNCED);
 	synced_context::set_synced_state(synced_context::LOCAL_CHOICE);
 
-
-	old_rng_ = random_new::generator;
 	//calling the synced rng form inside a local_choice would cause oos.
-	//TODO use a member variable instead if new/delete
-	random_new::generator = new random_new::rng();
+	//TODO: should we also reset the synced checkup?
+	random_new::generator = &new_rng_;
 }
-set_scontext_local_choice::~set_scontext_local_choice()
+
+leave_synced_context::~leave_synced_context()
 {
 	assert(synced_context::get_synced_state() == synced_context::LOCAL_CHOICE);
 	synced_context::set_synced_state(synced_context::SYNCED);
-	delete random_new::generator;
 	random_new::generator = old_rng_;
 }
 
-set_scontext_leave_for_draw::set_scontext_leave_for_draw()
-	: previous_state_(synced_context::get_synced_state())
+set_scontext_unsynced::set_scontext_unsynced()
+	: leaver_(synced_context::is_synced() ? new leave_synced_context() : NULL)
 {
-	if(previous_state_ != synced_context::SYNCED)
-	{
-		old_rng_= NULL;
-		return;
-	}
-	synced_context::set_synced_state(synced_context::LOCAL_CHOICE);
 
-	assert(random_new::generator);
-	old_rng_ = random_new::generator;
-	//calling the synced rng form inside a local_choice would cause oos.
-	//TODO use a member variable instead if new/delete
-	random_new::generator = new random_new::rng();
-}
-set_scontext_leave_for_draw::~set_scontext_leave_for_draw()
-{
-	if(previous_state_ != synced_context::SYNCED)
-	{
-		return;
-	}
-	assert(old_rng_);
-	assert(random_new::generator);
-	assert(synced_context::get_synced_state() == synced_context::LOCAL_CHOICE);
-	synced_context::set_synced_state(synced_context::SYNCED);
-	delete random_new::generator;
-	random_new::generator = old_rng_;
 }

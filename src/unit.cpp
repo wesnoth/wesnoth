@@ -2117,7 +2117,7 @@ bool unit::is_visible_to_team(team const& team, gamemap const& map, bool const s
 
 void unit::set_underlying_id() {
 	if(underlying_id_.value == 0) {
-		if(synced_context::get_synced_state() == synced_context::SYNCED || !resources::gamedata || resources::gamedata->phase() == game_data::INITIAL) {
+		if(synced_context::is_synced() || !resources::gamedata || resources::gamedata->phase() == game_data::INITIAL) {
 			underlying_id_ = n_unit::id_manager::instance().next_id();
 		}
 		else {
@@ -2136,7 +2136,7 @@ unit& unit::clone(bool is_temporary)
 	if(is_temporary) {
 		underlying_id_ = n_unit::id_manager::instance().next_fake_id();
 	} else {
-		if(synced_context::get_synced_state() == synced_context::SYNCED || !resources::gamedata || resources::gamedata->phase() == game_data::INITIAL) {
+		if(synced_context::is_synced() || !resources::gamedata || resources::gamedata->phase() == game_data::INITIAL) {
 			underlying_id_ = n_unit::id_manager::instance().next_id();
 		}
 		else {
