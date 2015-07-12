@@ -208,6 +208,7 @@ void wml_menu_item::fire_event(const map_location & event_hex, const game_data &
 {
 	if(!this->is_synced())
 	{
+		set_scontext_leave_for_draw leave_synced_context;
 		if (boost::shared_ptr<manager * const> man = my_manager_.lock()) {
 			(**man).pump().fire(event_name_, event_hex);
 		} else {
