@@ -418,8 +418,9 @@ if env["prereqs"]:
         if env["notifications"]:
             client_env.Append(CPPDEFINES = ["HAVE_LIBDBUS"])
 
+        client_env['fribidi'] = client_env['fribidi'] and (conf.CheckPKG('fribidi >= 0.10.9') or Warning("Can't find libfribidi, disabling freebidi support."))
         if client_env['fribidi']:
-            client_env['fribidi'] = conf.CheckPKG('fribidi >= 0.10.9') or Warning("Can't find libfribidi, disabling freebidi support.")
+            client_env.Append(CPPDEFINES = ["HAVE_FRIBIDI"])
 
         env["png"] = env["png"] and conf.CheckLib("png")
         if env["png"]:
