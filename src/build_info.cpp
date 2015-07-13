@@ -195,6 +195,15 @@ const std::string& library_runtime_version(LIBRARY_ID lib)
 	return versions.linked[lib];
 }
 
+const std::string& library_name(LIBRARY_ID lib)
+{
+	if(lib >= LIB_COUNT) {
+		return empty_version;
+	}
+
+	return versions.names[lib];
+}
+
 namespace {
 
 bool strlen_comparator(const std::string& a, const std::string& b)

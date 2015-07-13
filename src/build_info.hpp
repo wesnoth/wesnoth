@@ -49,6 +49,11 @@ const std::string& library_build_version(LIBRARY_ID lib);
 const std::string& library_runtime_version(LIBRARY_ID lib);
 
 /**
+ * Retrieve the user-visible name for the given library.
+ */
+const std::string& library_name(LIBRARY_ID lib);
+
+/**
  * Produce a plain-text report of library versions suitable for stdout/stderr.
  */
 std::string library_versions_report();
