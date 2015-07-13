@@ -451,7 +451,9 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 	}
 	if(cmdline_opts.version) {
 		std::cout << "Battle for Wesnoth" << " " << game_config::version << "\n\n";
-		std::cout << "Library versions:\n" << game_config::library_versions_report();
+		std::cout << "Library versions:\n" << game_config::library_versions_report() << '\n';
+		std::cout << "Optional features:\n" << game_config::optional_features_report();
+
 		return 0;
 	}
 

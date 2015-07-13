@@ -38,6 +38,24 @@ enum LIBRARY_ID
 	LIB_COUNT
 };
 
+struct optional_feature
+{
+	std::string name;
+	bool enabled;
+
+	optional_feature(const char* n) : name(n), enabled(false) {}
+};
+
+/**
+ * Return a localized features table.
+ */
+std::vector<optional_feature> optional_features_table();
+
+/**
+ * Produce a plain-text report of features suitable for stdout/stderr.
+ */
+std::string optional_features_report();
+
 /**
  * Retrieve the build-time version number of the given library.
  */

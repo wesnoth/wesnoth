@@ -12,9 +12,12 @@
    See the COPYING file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "build_info.hpp"
 
 #include "formatter.hpp"
+#include "gettext.hpp"
 
 #include <algorithm>
 
@@ -40,6 +43,7 @@ namespace {
 struct version_table_manager
 {
 	std::vector<std::string> compiled, linked, names;
+	std::vector<optional_feature> features;
 
 	version_table_manager();
 };
@@ -64,6 +68,7 @@ version_table_manager::version_table_manager()
 	: compiled(LIB_COUNT, "")
 	, linked(LIB_COUNT, "")
 	, names(LIB_COUNT, "")
+	, features()
 {
 	SDL_version sdl_version;
 	const SDL_version* sdl_rt_version = NULL;
@@ -171,11 +176,70 @@ version_table_manager::version_table_manager()
 	linked[LIB_PNG] = png_get_libpng_ver(NULL);
 	names[LIB_PNG] = "libpng";
 #endif
+
+	//
+	// Features table.
+	//
+
+	features.push_back(N_("feature^Experimental OpenMP support"));
+#ifdef _OPENMP
+	features.back().enabled = true;
+#endif
+
+	features.push_back(N_("feature^PNG screenshots"));
+#ifdef HAVE_LIBPNG
+	features.back().enabled = true;
+#endif
+
+	features.push_back(N_("feature^Lua console completion"));
+#ifdef HAVE_HISTORY
+	features.back().enabled = true;
+#endif
+
+	features.push_back(N_("feature^Legacy bidirectional rendering"));
+#ifdef HAVE_FRIBIDI
+	features.back().enabled = true;
+#endif
+
+	features.push_back(N_("feature^D-Bus notifications back end"));
+#ifdef HAVE_LIBDBUS
+	features.back().enabled = true;
+#endif
+
+#ifdef _WIN32
+	// Always compiled in.
+	features.push_back(N_("feature^Win32 notifications back-end"));
+	features.back().enabled = true;
+#endif
+
+#ifdef __APPLE__
+
+	features.push_back(N_("feature^Cocoa notifications back-end"));
+#ifdef HAVE_NS_USER_NOTIFICATION
+	features.back().enabled = true;
+#endif
+
+	features.push_back(N_("feature^Growl notifications back-end"));
+#ifdef HAVE_GROWL
+	features.back().enabled = true;
+#endif
+
+#endif /* __APPLE__ */
 }
 
 const std::string empty_version = "";
 
 } // end anonymous namespace 1
+
+std::vector<optional_feature> optional_features_table()
+{
+	std::vector<optional_feature> res = versions.features;
+
+	for(size_t k = 0; k < res.size(); ++k) {
+		res[k].name = _(res[k].name.c_str());
+	}
+	return res;
+}
 
 const std::string& library_build_version(LIBRARY_ID lib)
 {
@@ -256,6 +320,38 @@ std::string library_versions_report()
 		}
 
 		o << '\n';
+	}
+
+	return o.str();
+}
+
+std::string optional_features_report()
+{
+	// Yes, it's for stdout/stderr but we still want the localized version so
+	// that the context prefixes are stripped.
+	const std::vector<optional_feature>& features = optional_features_table();
+
+	size_t col2_start = 0;
+
+	for(size_t k = 0; k < features.size(); ++k)
+	{
+		col2_start = std::max(col2_start, features[k].name.length() + 2);
+	}
+
+	std::ostringstream o;
+
+	for(size_t k = 0; k < features.size(); ++k)
+	{
+		const optional_feature& f = features[k];
+
+		o << f.name << ": ";
+
+		const size_t pos2 = f.name.length() + 2;
+		if(pos2 < col2_start) {
+			o << std::string(col2_start - pos2, ' ');
+		}
+
+		o << (f.enabled ? "yes" : "no") << '\n';
 	}
 
 	return o.str();
