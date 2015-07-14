@@ -19,12 +19,13 @@
 #include "formatter.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "serialization/unicode.hpp"
+
+#include <cstring>
 
 #if defined(_X11) || defined(__APPLE__)
 
 #include <cerrno>
-#include <cstring>
-
 #include <sys/utsname.h>
 
 #endif
@@ -63,9 +64,89 @@ std::string os_version()
 						<< u.machine).str();
 
 #elif defined(_WIN32)
+	static const std::string base = "Microsoft Windows";
 
-	ERR_DU << "os_version: STUB!\n";
-	return "Microsoft Windows";
+	OSVERSIONINFOEX v = { sizeof(OSVERSIONINFOEX) };
+
+	if(!GetVersionEx(reinterpret_cast<OSVERSIONINFO*>(&v))) {
+		ERR_DU << "os_version: GetVersionEx error ("
+			   << GetLastError() << ")\n";
+		return base;
+	}
+
+	const DWORD vnum = v.dwMajorVersion * 100 + v.dwMinorVersion;
+	std::string version;
+
+	switch(vnum)
+	{
+		case 500:
+			version = "2000";
+			break;
+		case 501:
+			version = "XP";
+			break;
+		case 502:
+			// This will misidentify XP x64 but who really cares?
+			version = "Server 2003";
+			break;
+		case 600:
+			if(v.wProductType == VER_NT_WORKSTATION) {
+				version = "Vista";
+			} else {
+				version = "Server 2008";
+			}
+			break;
+		case 601:
+			if(v.wProductType == VER_NT_WORKSTATION) {
+				version = "7";
+			} else {
+				version = "Server 2008 R2";
+			}
+			break;
+		case 602:
+			// FIXME:
+			// From Windows 8.1 onwards, applications must specifically declare
+			// compatibility with the current version to get the real version
+			// numbers, according to MSDN. So, until we get that built into the
+			// executable's resources...
+			if(v.wProductType == VER_NT_WORKSTATION) {
+				version = "8 " + _("windows_version^(or later)");
+			} else {
+				version = "Server 2012 " + _("windows_version^(or later)");
+			}
+			break;
+		case 603:
+			if(v.wProductType == VER_NT_WORKSTATION) {
+				version = "8.1";
+			} else {
+				version = "Server 2012 R2";
+			}
+			break;
+		case 1000:
+			if(v.wProductType == VER_NT_WORKSTATION) {
+				version = "10";
+				break;
+			} // else fallback to default
+		default:
+			if(v.wProductType != VER_NT_WORKSTATION) {
+				version = "Server";
+			}
+	}
+
+	if(v.szCSDVersion && *v.szCSDVersion) {
+		version += " ";
+		version += unicode_cast<std::string>(std::wstring(v.szCSDVersion));
+	}
+
+	version += " (";
+	// Add internal version numbers.
+	version += (formatter()
+			<< v.dwMajorVersion << '.'
+			<< v.dwMinorVersion << '.'
+			<< v.dwBuildNumber).str();
+	version += ")";
+
+	return base + " " + version;
 
 #else
 
