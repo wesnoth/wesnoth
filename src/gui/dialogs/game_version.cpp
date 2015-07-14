@@ -90,6 +90,7 @@ tgame_version::tgame_version()
 	, deps_()
 	, opts_(game_config::optional_features_table())
 	, tabs_()
+	, report_()
 {
 	// NOTE: these path_map_ entries are referenced by the GUI2 WML
 	// definition of this dialog using preprocessor macros.
@@ -109,6 +110,8 @@ tgame_version::tgame_version()
 		e[2] = game_config::library_runtime_version(lib);
 		deps_.push_back(e);
 	}
+
+	generate_plain_text_report();
 }
 
 void tgame_version::pre_show(CVideo& /*video*/, twindow& window)
@@ -126,6 +129,11 @@ void tgame_version::pre_show(CVideo& /*video*/, twindow& window)
 	tcontrol& os_label = find_widget<tcontrol>(&window, "os", false);
 	i18n_syms["os"] = desktop::os_version();
 	os_label.set_label(VGETTEXT("Running on $os", i18n_syms));
+
+	tbutton& copy_all = find_widget<tbutton>(&window, "copy_all", false);
+	connect_signal_mouse_left_click(
+			copy_all,
+			boost::bind(&tgame_version::report_copy_callback, this));
 
 	//
 	// Game paths tab.
@@ -272,5 +280,41 @@ void tgame_version::copy_to_clipboard_callback(const std::string& path)
 {
 	desktop::clipboard::copy_to_clipboard(path, false);
 }
+
+void tgame_version::report_copy_callback()
+{
+	desktop::clipboard::copy_to_clipboard(report_, false);
+}
+
+void tgame_version::generate_plain_text_report()
+{
+	std::ostringstream o;
+
+	o << "The Battle for Wesnoth version " << game_config::revision << '\n'
+	  << "Running on " << desktop::os_version() << '\n'
+	  << '\n'
+	  << "Game paths\n"
+	  << "==========\n"
+	  << '\n'
+	  << "Data dir:        " << path_map_["datadir"] << '\n'
+	  << "User config dir: " << path_map_["config"] << '\n'
+	  << "User data dir:   " << path_map_["userdata"] << '\n'
+	  << "Saves dir:       " << path_map_["saves"] << '\n'
+	  << "Add-ons dir:     " << path_map_["addons"] << '\n'
+	  << "Cache dir:       " << path_map_["cache"] << '\n'
+	  << '\n'
+	  << "Libraries\n"
+	  << "=========\n"
+	  << '\n'
+	  << game_config::library_versions_report()
+	  << '\n'
+	  << "Features\n"
+	  << "========\n"
+	  << '\n'
+	  << game_config::optional_features_report();
+
+	report_ = o.str();
+}
+
 
 } // end namespace gui2

@@ -61,6 +61,10 @@ private:
 
 	std::vector<tselectable_*> tabs_;
 
+	std::string report_;
+
+	void generate_plain_text_report();
+
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
@@ -81,6 +85,11 @@ private:
 	 * @param tab_container The tab pages container widget.
 	 */
 	void tab_switch_callback(tselectable_& me, tstacked_widget& tab_container);
+
+	/**
+	 * Callback function for the dialog-wide copy-to-clipboard button.
+	 */
+	void report_copy_callback();
 
 	/**
 	 * Callback function for copy-to-clipboard action buttons.
