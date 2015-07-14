@@ -93,4 +93,9 @@ void disable_win32_console()
 	conman.reset(NULL);
 }
 
+bool is_win32_console_enabled()
+{
+	return conman;
+}
+
 } // end namespace desktop
