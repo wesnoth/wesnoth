@@ -1572,6 +1572,9 @@ int game_lua_kernel::impl_current_get(lua_State *L)
 		if (ev.loc1.valid()) {
 			cfg["x1"] = ev.loc1.filter_x() + 1;
 			cfg["y1"] = ev.loc1.filter_y() + 1;
+			// The position of the unit involved in this event, currently the only case where this is different from x1/y1 are enter/exit_hex events
+			cfg["unit_x"] = ev.loc1.x + 1;
+			cfg["unit_y"] = ev.loc1.y + 1;
 		}
 		if (ev.loc2.valid()) {
 			cfg["x2"] = ev.loc2.filter_x() + 1;
