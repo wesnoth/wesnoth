@@ -54,6 +54,10 @@ private:
 
 	std::map<std::string, std::string> path_map_;
 
+#ifdef _WIN32
+	const std::string log_path_;
+#endif
+
 	typedef boost::array<std::string, 4> deplist_entry;
 	std::vector<deplist_entry> deps_;
 

@@ -20,6 +20,9 @@
 #include "desktop/clipboard.hpp"
 #include "desktop/open.hpp"
 #include "desktop/version.hpp"
+#ifdef _WIN32
+#include "desktop/windows_console.hpp"
+#endif
 #include "filesystem.hpp"
 #include "formula_string_utils.hpp"
 #include "game_config.hpp"
@@ -87,6 +90,9 @@ tgame_version::tgame_version()
 	, copy_wid_stem_("copy_")
 	, browse_wid_stem_("browse_")
 	, path_map_()
+#ifdef _WIN32
+	, log_path_(game_config::wesnoth_program_dir + "\\stderr.txt")
+#endif
 	, deps_()
 	, opts_(game_config::optional_features_table())
 	, tabs_()
@@ -176,6 +182,21 @@ void tgame_version::pre_show(CVideo& /*video*/, twindow& window)
 			copy_w.set_tooltip(_("Clipboard support not found, contact your packager"));
 		}
 	}
+
+#ifndef _WIN32
+	tgrid& w32_options_grid
+			= find_widget<tgrid>(&window, "win32_paths", false);
+	w32_options_grid.set_visible(twidget::tvisible::invisible);
+#else
+	tbutton& stderr_button
+			= find_widget<tbutton>(&window, "open_stderr", false);
+	connect_signal_mouse_left_click(
+			stderr_button,
+			boost::bind(&tgame_version::browse_directory_callback,
+						this,
+						log_path_));
+	stderr_button.set_active(!desktop::is_win32_console_enabled());
+#endif
 
 	//
 	// Build info tab.
