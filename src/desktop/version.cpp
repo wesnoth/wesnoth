@@ -104,15 +104,10 @@ std::string os_version()
 			}
 			break;
 		case 602:
-			// FIXME:
-			// From Windows 8.1 onwards, applications must specifically declare
-			// compatibility with the current version to get the real version
-			// numbers, according to MSDN. So, until we get that built into the
-			// executable's resources...
 			if(v.wProductType == VER_NT_WORKSTATION) {
-				version = "8 " + _("windows_version^(or later)");
+				version = "8";
 			} else {
-				version = "Server 2012 " + _("windows_version^(or later)");
+				version = "Server 2012";
 			}
 			break;
 		case 603:
