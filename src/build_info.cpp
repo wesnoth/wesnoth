@@ -212,18 +212,18 @@ version_table_manager::version_table_manager()
 
 #ifdef _WIN32
 	// Always compiled in.
-	features.push_back(N_("feature^Win32 notifications back-end"));
+	features.push_back(N_("feature^Win32 notifications back end"));
 	features.back().enabled = true;
 #endif
 
 #ifdef __APPLE__
 
-	features.push_back(N_("feature^Cocoa notifications back-end"));
+	features.push_back(N_("feature^Cocoa notifications back end"));
 #ifdef HAVE_NS_USER_NOTIFICATION
 	features.back().enabled = true;
 #endif
 
-	features.push_back(N_("feature^Growl notifications back-end"));
+	features.push_back(N_("feature^Growl notifications back end"));
 #ifdef HAVE_GROWL
 	features.back().enabled = true;
 #endif
