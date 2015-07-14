@@ -3822,9 +3822,14 @@ int game_lua_kernel::intf_allow_end_turn(lua_State * L)
 }
 
 /// Allow undo sets the flag saying whether the event has mutated the game to false.
-int game_lua_kernel::intf_allow_undo(lua_State *)
+int game_lua_kernel::intf_allow_undo(lua_State * L)
 {
-	play_controller_.pump().context_mutated(false);
+	if(lua_isboolean(L, 1)) {
+		play_controller_.pump().context_mutated(!luaW_toboolean(L, 1));
+	}
+	else {
+		play_controller_.pump().context_mutated(false);
+	}
 	return 0;
 }
 
