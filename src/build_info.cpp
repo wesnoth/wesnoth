@@ -201,10 +201,14 @@ version_table_manager::version_table_manager()
 	features.back().enabled = true;
 #endif
 
+#ifdef _X11
+
 	features.push_back(N_("feature^D-Bus notifications back end"));
 #ifdef HAVE_LIBDBUS
 	features.back().enabled = true;
 #endif
+
+#endif /* _X11 */
 
 #ifdef _WIN32
 	// Always compiled in.
