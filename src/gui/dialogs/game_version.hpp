@@ -12,23 +12,30 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_GAME_PATHS_HPP_INCLUDED
-#define GUI_DIALOGS_GAME_PATHS_HPP_INCLUDED
+#ifndef GUI_DIALOGS_GAME_VERSION_HPP_INCLUDED
+#define GUI_DIALOGS_GAME_VERSION_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
 
+#include "build_info.hpp"
+
 #include <map>
+
+#include <boost/array.hpp>
 
 namespace gui2
 {
 
-class tgame_paths : public tdialog
+class tselectable_;
+class tstacked_widget;
+
+class tgame_version : public tdialog
 {
 public:
 	/**
 	 * Constructor.
 	 */
-	tgame_paths();
+	tgame_version();
 
 	/**
 	 * The display function.
@@ -37,7 +44,7 @@ public:
 	 */
 	static void display(CVideo& video)
 	{
-		tgame_paths().show(video);
+		tgame_version().show(video);
 	}
 
 private:
@@ -46,6 +53,47 @@ private:
 	const std::string browse_wid_stem_;
 
 	std::map<std::string, std::string> path_map_;
+
+#ifdef _WIN32
+	const std::string log_path_;
+#endif
+
+	typedef boost::array<std::string, 4> deplist_entry;
+	std::vector<deplist_entry> deps_;
+
+	std::vector<game_config::optional_feature> opts_;
+
+	std::vector<tselectable_*> tabs_;
+
+	std::string report_;
+
+	void generate_plain_text_report();
+
+	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
+	virtual const std::string& window_id() const;
+
+	/** Inherited from tdialog. */
+	void pre_show(CVideo& video, twindow& window);
+
+	/** Inherited from tdialog. */
+	void post_show(twindow& window);
+
+	//
+	// Widget event callbacks.
+	//
+
+	/**
+	 * Callback function called when the tab switch widgets' state changes.
+	 *
+	 * @param me            The widget whose state just changed.
+	 * @param tab_container The tab pages container widget.
+	 */
+	void tab_switch_callback(tselectable_& me, tstacked_widget& tab_container);
+
+	/**
+	 * Callback function for the dialog-wide copy-to-clipboard button.
+	 */
+	void report_copy_callback();
 
 	/**
 	 * Callback function for copy-to-clipboard action buttons.
@@ -60,12 +108,6 @@ private:
 	 * @param path Filesystem path associated with the widget.
 	 */
 	void browse_directory_callback(const std::string& path);
-
-	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
-
-	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
 };
 }
 

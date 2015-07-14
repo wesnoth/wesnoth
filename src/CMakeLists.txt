@@ -775,6 +775,7 @@ set(wesnoth-main_SRC
 	game_initialization/depcheck.cpp
 	desktop/notifications.cpp
 	desktop/open.cpp
+	desktop/version.cpp
 	dialogs.cpp
 	display_chat_manager.cpp
 	editor/action/action.cpp
@@ -870,8 +871,8 @@ set(wesnoth-main_SRC
 	gui/dialogs/game_cache_options.cpp
 	gui/dialogs/game_delete.cpp
 	gui/dialogs/game_load.cpp
-	gui/dialogs/game_paths.cpp
 	gui/dialogs/game_save.cpp
+	gui/dialogs/game_version.cpp
 	gui/dialogs/gamestate_inspector.cpp
 	gui/dialogs/language_selection.cpp
 	gui/dialogs/lobby/lobby_data.cpp
