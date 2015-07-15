@@ -241,7 +241,7 @@ void wait::join_game(bool observe)
 		DBG_MP << "mp wait: could not download level data, quitting...";
 		set_result(QUIT);
 		return;
-	} else if (!get_scenario()["allow_new_game"].to_bool(true) && !level_.child_or_empty("multiplayer")["savegame"].to_bool(false)) {
+	} else if (level_["started"].to_bool()) {
 		set_result(PLAY);
 		return;
 	}
@@ -325,6 +325,12 @@ void wait::join_game(bool observe)
 					side_num = nb_sides;
 					break;  // found the preferred one
 				}
+			}
+			if (sd["player_id"] == preferences::login())
+			{
+				//We already own a side in this game.
+				generate_menu();
+				return;
 			}
 			++nb_sides;
 		}

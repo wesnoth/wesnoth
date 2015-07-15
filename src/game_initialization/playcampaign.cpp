@@ -374,11 +374,8 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 					connect_engine(new ng::connect_engine(gamestate,
 						!network_game, false));
 
-				if (starting_pos["allow_new_game"].to_bool(gamestate.mp_settings().show_connect) 
-				|| (game_config::debug && network::nconnections() == 0 && game_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)) {
-					// Opens mp::connect dialog to allow users to
-					// make an adjustments for scenario.
-					// TODO: Fix this so that it works when network::nconnections() > 0 as well.
+				if (!connect_engine->can_start_game() || (game_config::debug && game_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)) {
+					// Opens mp::connect dialog to allow users to make an adjustments for scenario.
 					mp::ui::result connect_res = mp::goto_mp_connect(disp,
 						*connect_engine, game_config, gamestate.mp_settings().name);
 					if (connect_res == mp::ui::QUIT) {
@@ -386,8 +383,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 					}
 				} else {
 					// Start the next scenario immediately.
-					connect_engine->
-						start_game(ng::connect_engine::FORCE_IMPORT_USERS);
+					connect_engine->start_game();
 				}
 			}
 		}

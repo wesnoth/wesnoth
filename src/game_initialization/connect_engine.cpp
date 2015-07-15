@@ -186,10 +186,14 @@ connect_engine::connect_engine(saved_game& state,
 	}
 
 	// Load reserved players information into the sides.
-	load_previous_sides_users(RESERVE_USERS);
-
-	// Add host to the connected users list.
-	import_user(preferences::login(), false);
+	if(!first_scenario_) {
+		load_previous_sides_users(FORCE_IMPORT_USERS);
+	}
+	else {
+		load_previous_sides_users(RESERVE_USERS);
+		// Add host to the connected users list.
+		import_user(preferences::login(), false);
+	}
 
 	//actualy only updates the sides in the level.
 	update_level();
@@ -375,7 +379,7 @@ void side_engine::set_side_children(std::multimap<std::string, config> children)
 }
 
 
-void connect_engine::start_game(LOAD_USERS load_users)
+void connect_engine::start_game()
 {
 	DBG_MP << "starting a new game" << std::endl;
 
@@ -453,8 +457,6 @@ void connect_engine::start_game(LOAD_USERS load_users)
 	// Make other clients not show the results of resolve_random().
 	config lock("stop_updates");
 	network::send_data(lock, 0);
-
-	load_previous_sides_users(load_users);
 
 	update_and_send_diff(true);
 
@@ -807,17 +809,28 @@ void connect_engine::load_previous_sides_users(LOAD_USERS load_users)
 
 	std::map<std::string, std::string> side_users =
 		utils::map_split(level_.child("multiplayer")["side_users"]);
+	std::set<std::string> names;
 	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
 		const std::string& save_id = side->previous_save_id();
 		if (side_users.find(save_id) != side_users.end()) {
 			side->set_reserved_for(side_users[save_id]);
-
-			if (load_users == RESERVE_USERS && side->controller() != CNTR_COMPUTER) {
-				side->update_controller_options();
+			
+			if (side->controller() != CNTR_COMPUTER) {
 				side->set_controller(CNTR_RESERVED);
-			} else if (load_users == FORCE_IMPORT_USERS) {
-				import_user(side_users[save_id], false);
+				names.insert(side_users[save_id]);
 			}
+			side->update_controller_options();
+
+		}
+	}
+	
+	if (load_users == FORCE_IMPORT_USERS) {
+		// FIXME: We use the data from 'side_users' here which might be outdated since it is form the start of the last scenario and player might have left.
+		//  It we had an up to date list of players in the curent game we could use that list to check against that.
+		//  Then we could also remove the LOAD_USERS enum and always execute this code.
+		BOOST_FOREACH(const std::string& name, names)
+		{
+			import_user(name, false);
 		}
 	}
 }

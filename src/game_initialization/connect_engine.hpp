@@ -68,7 +68,7 @@ public:
 	void update_and_send_diff(bool update_time_of_day = false);
 
 	bool can_start_game() const;
-	void start_game(LOAD_USERS load_users = NO_LOAD);
+	void start_game();
 	void start_game_commandline(const commandline_options& cmdline_opts);
 
 	// Return pair first element specifies whether to leave the game
