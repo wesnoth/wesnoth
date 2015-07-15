@@ -76,7 +76,7 @@ const std::string attributes_to_trim[] = {
 namespace ng {
 
 connect_engine::connect_engine(saved_game& state,
-	const bool local_players_only, const bool first_scenario) :
+	const bool local_players_only, const bool first_scenario, const std::set<std::string>& players) :
 	level_(),
 	state_(state),
 	params_(state.mp_settings()),
@@ -89,7 +89,7 @@ connect_engine::connect_engine(saved_game& state,
 	team_names_(),
 	user_team_names_(),
 	player_teams_(),
-	connected_users_()
+	connected_users_(players)
 {
 	// Initial level config from the mp_game_settings.
 	level_ = mp::initial_level_config(state_);
@@ -185,14 +185,15 @@ connect_engine::connect_engine(saved_game& state,
 		index++;
 	}
 
-	// Load reserved players information into the sides.
-	if(!first_scenario_) {
-		load_previous_sides_users(FORCE_IMPORT_USERS);
-	}
-	else {
-		load_previous_sides_users(RESERVE_USERS);
+	if(first_scenario_) {
 		// Add host to the connected users list.
 		import_user(preferences::login(), false);
+	}
+	else {
+		// Add host but don't assign a side to him.
+		import_user(preferences::login(), true);
+		// Load reserved players information into the sides.
+		load_previous_sides_users();
 	}
 
 	//actualy only updates the sides in the level.
@@ -801,12 +802,8 @@ void connect_engine::save_reserved_sides_information()
 	level_.child("multiplayer")["side_users"] = utils::join_map(side_users);
 }
 
-void connect_engine::load_previous_sides_users(LOAD_USERS load_users)
+void connect_engine::load_previous_sides_users()
 {
-	if (load_users == NO_LOAD || first_scenario_) {
-		return;
-	}
-
 	std::map<std::string, std::string> side_users =
 		utils::map_split(level_.child("multiplayer")["side_users"]);
 	std::set<std::string> names;
@@ -823,13 +820,10 @@ void connect_engine::load_previous_sides_users(LOAD_USERS load_users)
 
 		}
 	}
-	
-	if (load_users == FORCE_IMPORT_USERS) {
-		// FIXME: We use the data from 'side_users' here which might be outdated since it is form the start of the last scenario and player might have left.
-		//  It we had an up to date list of players in the curent game we could use that list to check against that.
-		//  Then we could also remove the LOAD_USERS enum and always execute this code.
-		BOOST_FOREACH(const std::string& name, names)
-		{
+	//Do this in an extra loop to make sure we import each user only once.
+	BOOST_FOREACH(const std::string& name, names)
+	{
+		if (connected_users_.find(name) != connected_users_.end()) {
 			import_user(name, false);
 		}
 	}

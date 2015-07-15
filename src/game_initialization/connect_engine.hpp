@@ -21,6 +21,7 @@
 #include "multiplayer_ui.hpp"
 #include "saved_game.hpp"
 #include <boost/scoped_ptr.hpp>
+#include <set>
 
 namespace rand_rng { class mt_rng; }
 
@@ -45,12 +46,13 @@ typedef std::pair<ng::controller, std::string> controller_option;
 class connect_engine
 {
 public:
+	/// @param players the player which are already connected to the current game.
+	///                This is always empty unless we advance form a previous scenario.
 	connect_engine(saved_game& state,
 		const bool local_players_only,
-		const bool first_scenario);
+		const bool first_scenario,
+		const std::set<std::string>& players = std::set<std::string>());
 	~connect_engine();
-
-	enum LOAD_USERS { NO_LOAD, RESERVE_USERS, FORCE_IMPORT_USERS };
 
 	config* current_config();
 
@@ -110,7 +112,7 @@ private:
 	void send_level_data(const network::connection sock) const;
 
 	void save_reserved_sides_information();
-	void load_previous_sides_users(LOAD_USERS load_users);
+	void load_previous_sides_users();
 
 	void update_side_controller_options();
 
