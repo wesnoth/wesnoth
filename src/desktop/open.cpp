@@ -52,6 +52,8 @@ bool open_object_is_supported()
 
 bool open_object(const std::string& path_or_url)
 {
+	LOG_DU << "open_object(): requested object: " << path_or_url << '\n';
+
 #if defined(_X11) || defined(__APPLE__)
 
 #ifndef __APPLE__
