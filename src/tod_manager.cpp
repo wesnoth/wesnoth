@@ -384,9 +384,11 @@ void tod_manager::set_number_of_turns(int num)
 
 void tod_manager::update_server_information() const
 {
-	if(resources::controller->current_team().is_local()) {
-		//TODO: move netword stuff to playturn.cpp
+	if(resources::controller->current_team().is_local()) { 
 		//the currently active side informs the mp server about the turn change.
+		//NOTE: The current implementation does not guarnateee that the server gets informed
+		// about those changes in 100% of cases. But that is ok because the information is only
+		// used to display the turn limit in the lobby (as opposed to things that cause OOS).
 		network::send_data(config_of
 			("change_turns_wml", config_of
 				("current", turn_)

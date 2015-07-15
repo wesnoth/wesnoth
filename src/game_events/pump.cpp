@@ -77,12 +77,12 @@ namespace context {
 		bool mutated;
 		bool skip_messages;
 
-		explicit state(bool s) : mutated(true), skip_messages(s) {}
+		explicit state(bool s, bool m = true) : mutated(m), skip_messages(s) {}
 	};
 
 	class scoped {
 	public:
-		scoped(std::stack<context::state> & contexts);
+		scoped(std::stack<context::state> & contexts, bool m = true);
 		~scoped();
 	private:
 		std::stack<context::state> & contexts_;
@@ -411,14 +411,14 @@ namespace { // Support functions
 	}
 
 
-context::scoped::scoped(std::stack<context::state> & contexts)
+context::scoped::scoped(std::stack<context::state> & contexts, bool m)
 	: contexts_(contexts)
 {
 	//The default context at least should always be on the stack
 	assert(contexts_.size() > 0);
 
 	bool skip_messages = (contexts_.size() > 1) && contexts_.top().skip_messages;
-	contexts_.push(context::state(skip_messages));
+	contexts_.push(context::state(skip_messages, m));
 }
 
 context::scoped::~scoped()
@@ -516,13 +516,12 @@ bool t_pump::operator()()
 	}
 
 	const size_t old_wml_track = impl_->internal_wml_tracking;
-	bool result = false;
 	// Ensure the whiteboard doesn't attempt to build its future unit map
 	// while events are being processed.
 	wb::real_map real_unit_map;
 
 	pump_manager pump_instance(*impl_);
-
+	context::scoped evc(impl_->contexts_, false);
 	// Loop through the events we need to process.
 	while ( !pump_instance.done() )
 	{
@@ -532,11 +531,14 @@ bool t_pump::operator()()
 		// Clear the unit cache, since the best clearing time is hard to figure out
 		// due to status changes by WML. Every event will flush the cache.
 		unit::clear_status_caches();
+		
+		{ // Block for context::scoped
+			context::scoped evc(impl_->contexts_, false);
 
-		if ( impl_->resources->lua_kernel->run_event(ev) ) {
-			++impl_->internal_wml_tracking;
+			if ( impl_->resources->lua_kernel->run_event(ev) ) {
+				++impl_->internal_wml_tracking;
+			}
 		}
-
 		// Initialize an iteration over event handlers matching this event.
 		assert(impl_->my_manager);
 		manager::iteration handler_iter(event_name, *impl_->my_manager);
@@ -557,11 +559,7 @@ bool t_pump::operator()()
 			DBG_EH << "processing event " << event_name << " with id="<<
 			          cur_handler->get_config()["id"] << "\n";
 			// Let this handler process our event.
-			if ( process_event(cur_handler, ev) )
-			{
-				// Game state changed.
-				result = true;
-			}
+			process_event(cur_handler, ev);
 			// NOTE: cur_handler may be null at this point!
 
 			++handler_iter;
@@ -576,7 +574,7 @@ bool t_pump::operator()()
 		// This is used to track when moves, recruits, etc. happen.
 		impl_->resources->on_gamestate_change();
 
-	return result;
+	return context_mutated();
 }
 
 void t_pump::flush_messages()

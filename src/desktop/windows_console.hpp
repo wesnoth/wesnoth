@@ -21,6 +21,8 @@ void enable_win32_console();
 
 void disable_win32_console();
 
+bool is_win32_console_enabled();
+
 }
 
 

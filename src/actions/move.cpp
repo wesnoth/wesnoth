@@ -995,7 +995,7 @@ namespace { // Private helpers for move_unit()
 				// Finish animating.
 				animator.finish(move_it_.get_shared_ptr());
 				// Check for the moving unit being seen.
-				event_mutated_ = actor_sighted(*move_it_, &not_seeing);
+				event_mutated_ |= actor_sighted(*move_it_, &not_seeing);
 			}
 		}//if
 

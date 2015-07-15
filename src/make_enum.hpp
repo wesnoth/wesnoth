@@ -89,7 +89,7 @@ MAKE_ENUM(enumname,
 class bad_enum_cast : public std::exception
 {
 public:
-	bad_enum_cast(const std::string& enumname, const std::string str)
+	bad_enum_cast(const std::string& enumname, const std::string& str)
 		: message("Failed to convert String \"" + str + "\" to type " + enumname)
 	{}
 

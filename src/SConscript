@@ -89,6 +89,7 @@ libwesnoth_sources = Split("""
     display_context.cpp
     events.cpp
     floating_label.cpp
+    font.cpp
     format_time_summary.cpp
     generic_event.cpp
     hotkey/hotkey_item.cpp
@@ -144,9 +145,6 @@ libwesnoth_sources = Split("""
     widgets/widget.cpp
     wml_exception.cpp
     """)
-libwesnoth_sources.extend([
-    client_env.Object("font.cpp", EXTRA_DEFINE = client_env['fribidi'] and "HAVE_FRIBIDI" or None),
-    ])
 
 libwesnoth = client_env.Library("wesnoth", libwesnoth_sources)
 
@@ -251,6 +249,7 @@ wesnoth_sources = Split("""
     animated_game.cpp
     attack_prediction.cpp
     attack_prediction_display.cpp
+    build_info.cpp
     callable_objects.cpp
     commandline_options.cpp
     carryover.cpp
@@ -262,6 +261,7 @@ wesnoth_sources = Split("""
     game_initialization/create_engine.cpp
     desktop/notifications.cpp
     desktop/open.cpp
+    desktop/version.cpp
     game_initialization/depcheck.cpp
     dialogs.cpp
     display_chat_manager.cpp
@@ -420,8 +420,8 @@ wesnoth_sources = Split("""
     gui/dialogs/game_cache_options.cpp
     gui/dialogs/game_delete.cpp
     gui/dialogs/game_load.cpp
-    gui/dialogs/game_paths.cpp
     gui/dialogs/game_save.cpp
+    gui/dialogs/game_version.cpp
     gui/dialogs/gamestate_inspector.cpp
     gui/dialogs/language_selection.cpp
     gui/dialogs/lobby/lobby_data.cpp

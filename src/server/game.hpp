@@ -232,7 +232,13 @@ public:
 
 	void require_random(const simple_wml::document &data, const player_map::iterator user);
 
-	void reset_last_synced_context_id() { last_synced_context_id_ = -1; }
+	void handle_choice(const simple_wml::node& data, const player_map::iterator user);
+
+	void handle_random_choice(const simple_wml::node& data);
+
+	void handle_controller_choice(const simple_wml::node& data);
+
+	void reset_last_synced_context_id() { last_choice_request_id_ = -1; }
 	/**
 	 * Function which returns true iff 'player' controls any of the sides spcified in 'sides'.
 	 */
@@ -409,7 +415,7 @@ private:
 
 	/** A wrapper for mersenne twister rng which generates randomness for this game */
 	rand_rng::mt_rng rng_;
-	int last_synced_context_id_;
+	int last_choice_request_id_;
 };
 
 struct game_is_member {

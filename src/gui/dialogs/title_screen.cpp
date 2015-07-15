@@ -25,6 +25,7 @@
 #include "gui/auxiliary/timer.hpp"
 #include "gui/auxiliary/tips.hpp"
 #include "gui/dialogs/debug_clock.hpp"
+#include "gui/dialogs/game_version.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 //#define DEBUG_TOOLTIP
@@ -404,6 +405,12 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 									   true);
 		}
 	}
+
+	/***** About dialog button *****/
+	tbutton& about = find_widget<tbutton>(&window, "about", false);
+	connect_signal_mouse_left_click(
+			about,
+			boost::bind(&tgame_version::display, boost::ref(video)));
 
 	/***** Set the clock button. *****/
 	tbutton& clock = find_widget<tbutton>(&window, "clock", false);

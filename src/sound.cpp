@@ -901,25 +901,4 @@ void set_UI_volume(int vol)
 	}
 }
 
-std::string describe_versions()
-{
-	std::stringstream ss;
-
-	SDL_version compile_version;
-	SDL_MIXER_VERSION(&compile_version);
-
-	ss << "Compiled with SDL_mixer version: "
-	   << static_cast<int> (compile_version.major) << "."
-	   << static_cast<int> (compile_version.minor) << "."
-       << static_cast<int> (compile_version.patch) << "\n";
-
-	const SDL_version *link_version = Mix_Linked_Version();
-	ss << "Running with SDL_mixer version: "
-	   << static_cast<int> (link_version->major) << "."
-	   << static_cast<int> (link_version->minor) << "."
-       << static_cast<int> (link_version->patch) << "\n";
-
-	return ss.str();
-}
-
 } // end of sound namespace

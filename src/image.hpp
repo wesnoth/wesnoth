@@ -246,8 +246,6 @@ namespace image {
 	void precache_file_existence(const std::string& subdir = "");
 	bool precached_file_exists(const std::string& file);
 
-	std::string describe_versions();
-
 	/// initialize any private data, e.g. algorithm choices from preferences
 	bool update_from_preferences();
 

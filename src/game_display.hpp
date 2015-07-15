@@ -18,7 +18,6 @@
 #define GAME_DISPLAY_H_INCLUDED
 
 class config;
-class display_chat_manager;
 class tod_manager;
 class team;
 class unit_map;
@@ -27,6 +26,7 @@ class game_board;
 #include "animated.hpp"
 #include "chat_events.hpp"
 #include "display.hpp"
+#include "display_chat_manager.hpp"
 #include "pathfind/pathfind.hpp"
 
 #include <deque>
@@ -60,6 +60,7 @@ public:
 	 */
 	void new_turn();
 
+	const std::set<std::string>& observers() const { return chat_man_->observers(); }
 	/**
 	 * Scrolls to the leader of a certain side.
 	 *

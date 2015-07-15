@@ -358,19 +358,6 @@ static void clear_fonts()
 
 namespace font {
 
-std::string describe_versions()
-{
-	std::stringstream ss;
-
-	ss << "Compiled with Cairo version: " << CAIRO_VERSION_STRING << std::endl;
-	ss << "Running with Cairo version:  " << cairo_version_string() << std::endl;
-
-	ss << "Compiled with Pango version: " << PANGO_VERSION_STRING << std::endl;
-	ss << "Running with Pango version:  " << pango_version_string() << std::endl;
-
-	return ss.str();
-}
-
 manager::manager()
 {
 	const int res = TTF_Init();
@@ -400,8 +387,6 @@ void manager::update_font_path() const
 
 void manager::init() const
 {
-	LOG_FT << describe_versions() << std::endl;
-
 #ifdef CAIRO_HAS_FT_FONT
 	if (!FcConfigAppFontAddDir(FcConfigGetCurrent(),
 		reinterpret_cast<const FcChar8 *>((game_config::path + "/fonts").c_str())))

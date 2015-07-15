@@ -44,9 +44,10 @@ unit_advancements_aspect::unit_advancements_aspect():
 }
 
 unit_advancements_aspect::unit_advancements_aspect(lua_State* L, int n)
+	: val_("Lua Function")
+	, L_(L)
+	, ref_()
 {
-	val_ = "Lua Function";
-	L_ = L;
 	lua_settop(L, n);
 
 	//on the top of the Lua-Stack is now the pointer to the function. Save it:

@@ -78,6 +78,7 @@
 #include "scripting/lua_team.hpp"
 #include "scripting/lua_types.hpp"      // for getunitKey, dlgclbkKey, etc
 #include "scripting/lua_unit_type.hpp"
+#include "scripting/push_check.hpp"
 #include "sdl/utils.hpp"                // for surface
 #include "side_filter.hpp"              // for side_filter
 #include "sound.hpp"                    // for commit_music_changes, etc
@@ -286,6 +287,10 @@ static int impl_unit_get(lua_State *L)
 	return_vector_string_attrib("extra_recruit", u.recruits());
 	return_vector_string_attrib("advances_to", u.advances_to());
 
+	if (strcmp(m, "advancements") == 0) {
+		lua_push(L, boost::iterator_range<config::const_child_iterator>(u.modification_advancements()));
+		return 1;
+	}
 	if (strcmp(m, "status") == 0) {
 		lua_createtable(L, 1, 0);
 		lua_pushvalue(L, 1);
@@ -360,6 +365,11 @@ static int impl_unit_set(lua_State *L)
 
 	modify_vector_string_attrib("extra_recruit", u.set_recruits(vector));
 	modify_vector_string_attrib("advances_to", u.set_advances_to(vector));
+
+	if (strcmp(m, "advancements") == 0) {
+		u.set_advancements(lua_check<std::vector<config> >(L, 3));
+		return 0;
+	}
 
 	if (!lu->on_map()) {
 		map_location loc = u.get_location();
@@ -1563,6 +1573,9 @@ int game_lua_kernel::impl_current_get(lua_State *L)
 		if (ev.loc1.valid()) {
 			cfg["x1"] = ev.loc1.filter_x() + 1;
 			cfg["y1"] = ev.loc1.filter_y() + 1;
+			// The position of the unit involved in this event, currently the only case where this is different from x1/y1 are enter/exit_hex events
+			cfg["unit_x"] = ev.loc1.x + 1;
+			cfg["unit_y"] = ev.loc1.y + 1;
 		}
 		if (ev.loc2.valid()) {
 			cfg["x2"] = ev.loc2.filter_x() + 1;
@@ -2956,7 +2969,7 @@ int game_lua_kernel::intf_get_villages(lua_State *L)
 			lua_pushinteger(L, it->y + 1);
 			lua_rawseti(L, -2, 2);
 			lua_rawseti(L, -2, i);
-			i++;
+			++i;
 		}
 	}
 	return 1;
@@ -3711,7 +3724,7 @@ static void push_component(lua_State *L, ai::component* c, const std::string &ct
 
 	std::vector<std::string> c_types = c->get_children_types();
 
-	for (std::vector<std::string>::const_iterator t = c_types.begin(); t != c_types.end(); t++)
+	for (std::vector<std::string>::const_iterator t = c_types.begin(); t != c_types.end(); ++t)
 	{
 		std::vector<ai::component*> children = c->get_children(*t);
 		std::string type = *t;
@@ -3723,7 +3736,7 @@ static void push_component(lua_State *L, ai::component* c, const std::string &ct
 		lua_pushstring(L, type.c_str());
 		lua_createtable(L, 0, 0); // this table will be on top of the stack during recursive calls
 
-		for (std::vector<ai::component*>::const_iterator i = children.begin(); i != children.end(); i++)
+		for (std::vector<ai::component*>::const_iterator i = children.begin(); i != children.end(); ++i)
 		{
 			lua_pushstring(L, (*i)->get_name().c_str());
 			push_component(L, *i, type);
@@ -3760,7 +3773,7 @@ static int intf_debug_ai(lua_State *L)
 	// Bad, but works
 	std::vector<ai::component*> engines = c->get_children("engine");
 	ai::engine_lua* lua_engine = NULL;
-	for (std::vector<ai::component*>::const_iterator i = engines.begin(); i != engines.end(); i++)
+	for (std::vector<ai::component*>::const_iterator i = engines.begin(); i != engines.end(); ++i)
 	{
 		if ((*i)->get_name() == "lua")
 		{
@@ -3810,9 +3823,14 @@ int game_lua_kernel::intf_allow_end_turn(lua_State * L)
 }
 
 /// Allow undo sets the flag saying whether the event has mutated the game to false.
-int game_lua_kernel::intf_allow_undo(lua_State *)
+int game_lua_kernel::intf_allow_undo(lua_State * L)
 {
-	play_controller_.pump().context_mutated(false);
+	if(lua_isboolean(L, 1)) {
+		play_controller_.pump().context_mutated(!luaW_toboolean(L, 1));
+	}
+	else {
+		play_controller_.pump().context_mutated(false);
+	}
 	return 0;
 }
 

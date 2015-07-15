@@ -460,7 +460,7 @@ bool undo_list::apply_shroud_changes() const
 		return false;
 	}
 	// If we clear fog or shroud outside a synced context we get OOS
-	assert(synced_context::get_synced_state() == synced_context::SYNCED);
+	assert(synced_context::is_synced());
 	shroud_clearer clearer;
 	bool cleared_shroud = false;
 	const size_t list_size = undos_.size();

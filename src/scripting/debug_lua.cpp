@@ -100,7 +100,7 @@ void ds(lua_State *L, const bool verbose_table) {
 	std::stringstream output;
 	output << "\n";
 	int top = lua_gettop(L);
-	for (int i = 1; i <= top; i++) {
+	for (int i = 1; i <= top; ++i) {
 		output << "INDEX: " << i << "; TYPE: ";
 		value_to_stringstream(output, i, L, "", verbose_table);
 		output << "\n";

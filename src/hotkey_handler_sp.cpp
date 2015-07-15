@@ -190,7 +190,6 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 
 		case hotkey::HOTKEY_WML:
 		{
-
 			int prefixlen = wml_menu_hotkey_prefix.length();
 			if(cmd.command.compare(0, prefixlen, wml_menu_hotkey_prefix) != 0) {
 				return false;
@@ -200,7 +199,7 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 				return false;
 			}
 
-			return !(**it).is_synced() || (viewing_team_is_playing() && !events::commands_disabled && viewing_team().is_local_human() && !linger() && !browse());
+			return !(**it).is_synced() || play_controller_.can_use_synced_wml_menu();
 		}
 		case hotkey::HOTKEY_UNIT_HOLD_POSITION:
 		case hotkey::HOTKEY_END_UNIT_TURN:

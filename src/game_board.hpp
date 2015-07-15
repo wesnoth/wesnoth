@@ -118,7 +118,7 @@ class game_board : public display_context {
 	// Manipulator from playturn
 
 	void side_drop_to (int side_num, team::CONTROLLER ctrl, team::PROXY_CONTROLLER proxy = team::PROXY_CONTROLLER::PROXY_HUMAN);
-	void side_change_controller (int side_num, team::CONTROLLER ctrl, const std::string pname = "");
+	void side_change_controller (int side_num, team::CONTROLLER ctrl, const std::string& pname = "");
 
 	// Manipulator from actionwml
 

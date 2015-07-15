@@ -17,6 +17,7 @@
 #include "about.hpp"
 #include "addon/manager.hpp"
 #include "addon/manager_ui.hpp"
+#include "build_info.hpp"
 #include "commandline_options.hpp"      // for commandline_options, etc
 #include "config.hpp"                   // for config, config::error, etc
 #include "cursor.hpp"                   // for set, CURSOR_TYPE::NORMAL, etc
@@ -330,27 +331,6 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 	std::cerr << "preprocessing finished. Took "<< SDL_GetTicks() - startTime << " ticks.\n";
 }
 
-static std::string describe_SDL_versions()
-{
-	SDL_version compiled;
-
-#ifdef SDL_VERSION
-	SDL_VERSION(&compiled);
-	std::stringstream ss;
-	ss << "Compiled with SDL version "
-	   << static_cast<int> (compiled.major) << "." << static_cast<int> (compiled.minor) << "." << static_cast<int> (compiled.patch) << " \n";
-#endif
-
-#ifdef SDL_GetVersion
-	SDL_version linked;
-	SDL_GetVersion(&linked);
-	ss << "Linked with SDL version "
-	   << static_cast<int> (linked.major) << "." << static_cast<int> (linked.minor) << "." << static_cast<int> (linked.patch) << " .\n";
-#endif
-
-	return ss.str();
-}
-
 /** Process commandline-arguments */
 static int process_command_args(const commandline_options& cmdline_opts) {
 
@@ -471,12 +451,9 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 	}
 	if(cmdline_opts.version) {
 		std::cout << "Battle for Wesnoth" << " " << game_config::version << "\n\n";
-		std::cout << "Compiled with Boost version: " << BOOST_LIB_VERSION << "\n";
-		std::cout << font::describe_versions();
-		std::cout << describe_SDL_versions();
-		std::cout << sound::describe_versions();
-		std::cout << network::describe_versions();
-		std::cout << image::describe_versions();
+		std::cout << "Library versions:\n" << game_config::library_versions_report() << '\n';
+		std::cout << "Optional features:\n" << game_config::optional_features_report();
+
 		return 0;
 	}
 

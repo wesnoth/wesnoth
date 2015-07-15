@@ -76,7 +76,7 @@ const std::string attributes_to_trim[] = {
 namespace ng {
 
 connect_engine::connect_engine(saved_game& state,
-	const bool local_players_only, const bool first_scenario) :
+	const bool local_players_only, const bool first_scenario, const std::set<std::string>& players) :
 	level_(),
 	state_(state),
 	params_(state.mp_settings()),
@@ -89,7 +89,7 @@ connect_engine::connect_engine(saved_game& state,
 	team_names_(),
 	user_team_names_(),
 	player_teams_(),
-	connected_users_()
+	connected_users_(players)
 {
 	// Initial level config from the mp_game_settings.
 	level_ = mp::initial_level_config(state_);
@@ -185,11 +185,16 @@ connect_engine::connect_engine(saved_game& state,
 		index++;
 	}
 
-	// Load reserved players information into the sides.
-	load_previous_sides_users(RESERVE_USERS);
-
-	// Add host to the connected users list.
-	import_user(preferences::login(), false);
+	if(first_scenario_) {
+		// Add host to the connected users list.
+		import_user(preferences::login(), false);
+	}
+	else {
+		// Add host but don't assign a side to him.
+		import_user(preferences::login(), true);
+		// Load reserved players information into the sides.
+		load_previous_sides_users();
+	}
 
 	//actualy only updates the sides in the level.
 	update_level();
@@ -375,7 +380,7 @@ void side_engine::set_side_children(std::multimap<std::string, config> children)
 }
 
 
-void connect_engine::start_game(LOAD_USERS load_users)
+void connect_engine::start_game()
 {
 	DBG_MP << "starting a new game" << std::endl;
 
@@ -453,8 +458,6 @@ void connect_engine::start_game(LOAD_USERS load_users)
 	// Make other clients not show the results of resolve_random().
 	config lock("stop_updates");
 	network::send_data(lock, 0);
-
-	load_previous_sides_users(load_users);
 
 	update_and_send_diff(true);
 
@@ -799,25 +802,29 @@ void connect_engine::save_reserved_sides_information()
 	level_.child("multiplayer")["side_users"] = utils::join_map(side_users);
 }
 
-void connect_engine::load_previous_sides_users(LOAD_USERS load_users)
+void connect_engine::load_previous_sides_users()
 {
-	if (load_users == NO_LOAD || first_scenario_) {
-		return;
-	}
-
 	std::map<std::string, std::string> side_users =
 		utils::map_split(level_.child("multiplayer")["side_users"]);
+	std::set<std::string> names;
 	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
 		const std::string& save_id = side->previous_save_id();
 		if (side_users.find(save_id) != side_users.end()) {
 			side->set_reserved_for(side_users[save_id]);
-
-			if (load_users == RESERVE_USERS && side->controller() != CNTR_COMPUTER) {
-				side->update_controller_options();
+			
+			if (side->controller() != CNTR_COMPUTER) {
 				side->set_controller(CNTR_RESERVED);
-			} else if (load_users == FORCE_IMPORT_USERS) {
-				import_user(side_users[save_id], false);
+				names.insert(side_users[save_id]);
 			}
+			side->update_controller_options();
+
+		}
+	}
+	//Do this in an extra loop to make sure we import each user only once.
+	BOOST_FOREACH(const std::string& name, names)
+	{
+		if (connected_users_.find(name) != connected_users_.end()) {
+			import_user(name, false);
 		}
 	}
 }

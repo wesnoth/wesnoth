@@ -21,6 +21,8 @@
 #include "wmi_container.hpp"
 #include "handlers.hpp"
 #include "menu_item.hpp"
+#include "resources.hpp"
+#include "play_controller.hpp"
 
 #include "../config.hpp"
 #include "../game_data.hpp"
@@ -121,7 +123,7 @@ std::vector<std::pair<boost::shared_ptr<const wml_menu_item>, std::string> > wmi
 	BOOST_FOREACH( const item_ptr & item, std::make_pair (start, finish) )
 	{
 		// Can this item be shown?
-		if ( item->use_wml_menu() && item->can_show(hex, gamedata, fc) )
+		if ( item->use_wml_menu() && (!item->is_synced() || resources::controller->can_use_synced_wml_menu()) && item->can_show(hex, gamedata, fc) )
 		{
 			// Include this item.
 			ret.push_back(std::make_pair(item, item->menu_text()));

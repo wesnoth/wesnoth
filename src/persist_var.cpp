@@ -61,8 +61,8 @@ static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 	std::string global = pcfg["from_global"];
 	std::string local = pcfg["to_local"];
 	config::attribute_value pcfg_side = pcfg["side"];
-	int side = pcfg_side.str() == "global" ? resources::controller->current_side() : pcfg_side.to_int();
-	persist_choice choice(ctx,global,side);
+	const int side = pcfg_side.to_int(resources::controller->current_side());
+	persist_choice choice(ctx, global, side);
 	config cfg = mp_sync::get_user_choice("global_variable",choice,side).child("variables");
 	try
 	{
@@ -121,36 +121,27 @@ void verify_and_get_global_variable(const vconfig &pcfg)
 {
 	bool valid = true;
 	if (!pcfg.has_attribute("from_global")) {
-		LOG_PERSIST << "Error: [get_global_variable] missing required attribute \"from_global\"";
+		ERR_PERSIST << "[get_global_variable] missing required attribute \"from_global\"";
 		valid = false;
 	}
 	if (!pcfg.has_attribute("to_local")) {
-		LOG_PERSIST << "Error: [get_global_variable] missing required attribute \"to_local\"";
+		ERR_PERSIST << "[get_global_variable] missing required attribute \"to_local\"";
 		valid = false;
 	}
 	// TODO: allow for global namespace.
 	if (!pcfg.has_attribute("namespace")) {
-		LOG_PERSIST << "Error: [get_global_variable] missing attribute \"namespace\" and no global namespace provided.";
+		ERR_PERSIST << "[get_global_variable] missing attribute \"namespace\"";
 		valid = false;
 	}
 	if (network::nconnections() != 0) {
-		if (!pcfg.has_attribute("side")) {
-			LOG_PERSIST << "Error: [get_global_variable] missing attribute \"side\" required in multiplayer context.";
-			valid = false;
-		}
-		else {
 			DBG_PERSIST << "verify_and_get_global_variable with from_global=" << pcfg["from_global"] << " from side " << pcfg["side"] << "\n";
 			config::attribute_value pcfg_side = pcfg["side"];
-			int side = pcfg_side.str() == "global" ? resources::controller->current_side() : pcfg_side.to_int();
+			int side = (pcfg_side.str() == "global" || pcfg_side.empty()) ? resources::controller->current_side() : pcfg_side.to_int();
 			if (unsigned (side - 1) >= resources::teams->size()) {
-				LOG_PERSIST << "Error: [get_global_variable] attribute \"side\" specifies invalid side number." << "\n";
+				ERR_PERSIST << "[get_global_variable] attribute \"side\" specifies invalid side number." << "\n";
 				valid = false;
 			}
-			else
-			{
-			}
 			DBG_PERSIST <<  "end verify_and_get_global_variable with from_global=" << pcfg["from_global"] << " from side " << pcfg["side"] << "\n";
-		}
 	}
 	if (valid)
 	{
@@ -166,7 +157,7 @@ void verify_and_set_global_variable(const vconfig &pcfg)
 {
 	bool valid = true;
 	if (!pcfg.has_attribute("to_global")) {
-		LOG_PERSIST << "Error: [set_global_variable] missing required attribute \"to_global\"";
+		ERR_PERSIST << "[set_global_variable] missing required attribute \"to_global\"";
 		valid = false;
 	}
 	if (!pcfg.has_attribute("from_local")) {
@@ -174,26 +165,24 @@ void verify_and_set_global_variable(const vconfig &pcfg)
 	}
 	// TODO: allow for global namespace.
 	if (!pcfg.has_attribute("namespace")) {
-		LOG_PERSIST << "Error: [set_global_variable] missing attribute \"namespace\" and no global namespace provided.";
+		ERR_PERSIST << "[set_global_variable] missing attribute \"namespace\" and no global namespace provided.";
 		valid = false;
 	}
 	if (network::nconnections() != 0) {
-		if (!pcfg.has_attribute("side")) {
-			LOG_PERSIST << "Error: [set_global_variable] missing attribute \"side\" required in multiplayer context.";
-			valid = false;
-		} else {
-			config::attribute_value pcfg_side = pcfg["side"];
-			int side = pcfg_side;
-			//Check side matching only if the side is not "global".
-			if (pcfg_side.str() != "global") {
-				//Ensure that the side is valid.
-				if (unsigned(side-1) > resources::teams->size()) {
-					LOG_PERSIST << "Error: [set_global_variable] attribute \"side\" specifies invalid side number.";
-					valid = false;
-				} else {
-					//Set the variable only if it is meant for a side we control
-					valid = (*resources::teams)[side - 1].is_local();
-				}
+		config::attribute_value pcfg_side = pcfg["side"];
+		int side = pcfg_side;
+		//Check side matching only if the side is not "global" or empty.
+		if (pcfg_side.str() != "global" && !pcfg_side.empty()) {
+			//Ensure that the side is valid.
+			if (unsigned(side-1) > resources::teams->size()) {
+				ERR_PERSIST << "[set_global_variable] attribute \"side\" specifies invalid side number.";
+				valid = false;
+			} else if ((*resources::teams)[side - 1].is_empty()) {
+				LOG_PERSIST << "[set_global_variable] attribute \"side\" specifies a null-controlled side number.";
+				valid = false;
+			} else {
+				//Set the variable only if it is meant for a side we control
+				valid = (*resources::teams)[side - 1].is_local();
 			}
 		}
 	}
@@ -211,30 +200,28 @@ void verify_and_clear_global_variable(const vconfig &pcfg)
 {
 	bool valid = true;
 	if (!pcfg.has_attribute("global")) {
-		LOG_PERSIST << "Error: [clear_global_variable] missing required attribute \"from_global\"";
+		ERR_PERSIST << "[clear_global_variable] missing required attribute \"from_global\"";
 		valid = false;
 	}
 	if (!pcfg.has_attribute("namespace")) {
-		LOG_PERSIST << "Error: [clear_global_variable] missing attribute \"namespace\" and no global namespace provided.";
+		ERR_PERSIST << "[clear_global_variable] missing attribute \"namespace\" and no global namespace provided.";
 		valid = false;
 	}
 	if (network::nconnections() != 0) {
-		if (!pcfg.has_attribute("side")) {
-			LOG_PERSIST << "Error: [clear_global_variable] missing attribute \"side\" required in multiplayer context.";
-			valid = false;
-		} else {
-			config::attribute_value pcfg_side = pcfg["side"];
-			int side = pcfg_side;
-			//Check side matching only if the side is not "global".
-			if (pcfg_side.str() != "global") {
-				//Ensure that the side is valid.
-				if (unsigned(side-1) > resources::teams->size()) {
-					LOG_PERSIST << "Error: [clear_global_variable] attribute \"side\" specifies invalid side number.";
-					valid = false;
-				} else {
-					//Clear the variable only if it is meant for a side we control
-					valid = (*resources::teams)[side - 1].is_local();
-				}
+		config::attribute_value pcfg_side = pcfg["side"];
+		const int side = pcfg_side.to_int();
+		//Check side matching only if the side is not "global" or empty.
+		if (pcfg_side.str() != "global" && !pcfg_side.empty()) {
+			//Ensure that the side is valid.
+			if (unsigned(side-1) > resources::teams->size()) {
+				ERR_PERSIST << "[clear_global_variable] attribute \"side\" specifies invalid side number.";
+				valid = false;
+			} else if ((*resources::teams)[side - 1].is_empty()) {
+				LOG_PERSIST << "[clear_global_variable] attribute \"side\" specifies a null-controlled side number.";
+				valid = false;
+			} else {
+				//Clear the variable only if it is meant for a side we control
+				valid = (*resources::teams)[side - 1].is_local();
 			}
 		}
 	}

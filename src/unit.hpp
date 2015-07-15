@@ -310,6 +310,7 @@ public:
 	std::vector<config> get_modification_advances() const;
 	config::const_child_itors modification_advancements() const
 	{ return cfg_.child_range("advancement"); }
+	void set_advancements(std::vector<config> advancements);
 
 	size_t modification_count(const std::string& type, const std::string& id) const;
 

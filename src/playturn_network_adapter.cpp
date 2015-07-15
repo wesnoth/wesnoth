@@ -92,7 +92,6 @@ bool playturn_network_adapter::read(config& dst)
 		//split [turn] indo different [turn] for each child.
 		assert(next_->cfg.all_children_count() > next_command_num_);
 		config::all_children_iterator itor = child_old.ordered_begin();
-		//TODO: implement operator + (all_children_iterator, int ) properly
 		std::advance(itor, next_command_num_);
 		//TODO: implement a non const version of ordered children
 		config& childchild_old = const_cast<config&>(itor->cfg);

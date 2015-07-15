@@ -37,6 +37,7 @@
 #include "../preferences.hpp"
 #include "../replay.hpp"
 #include "../replay_helper.hpp"
+#include "../resources.hpp"
 #include "../synced_context.hpp"
 #include "../terrain_filter.hpp"
 
@@ -150,6 +151,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const vconfig & definition,
 		default_hotkey_(original.default_hotkey_),
 		use_hotkey_(original.use_hotkey_),
 		use_wml_menu_(original.use_wml_menu_),
+		is_synced_(original.is_synced_),
 		my_manager_(original.my_manager_)
 {
 	// Apply WML.
@@ -205,8 +207,9 @@ void wml_menu_item::fire_event(const map_location & event_hex, const game_data &
 {
 	if(!this->is_synced())
 	{
+		set_scontext_unsynced leave_synced_context;
 		if (boost::shared_ptr<manager * const> man = my_manager_.lock()) {
-			(**man).pump().fire(command_["id"], event_hex);
+			(**man).pump().fire(event_name_, event_hex);
 		} else {
 			ERR_NG << "?? File: "  __FILE__  " Line:" STR(__LINE__) " my_manager_.lock() failed\n";
 #undef STR

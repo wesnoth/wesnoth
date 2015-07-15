@@ -1,12 +1,30 @@
 Version 1.13.1+dev:
- * Language and i18n:
-   * Updated translations: Galician
  * Campaigns:
+   * Eastern Invasion:
+     * Fixed scenario events not working right on easy difficulty in 'Captured'.
+   * Delfador's Memoirs:
+     * Added defeat condition for death of the last undead veteran in
+       'Showdown in the Northern Swamp' (bug #23668)
    * Tutorial:
      * Fixed transition to second scenario.
+ * Graphics:
+   * New standing animation for the Dwarvish Runesmith
+ * Language and i18n:
+   * Updated translations: Galician
  * Music and sound effects:
    * New dwarf hit and die sounds.
-
+ * User interface:
+   * GUI2:
+     * stacked_widget can optionally display a single layer at a time. This
+       may be used to implement dialogs with multiple pages or tabs.
+     * Widgets which are children of invisible or hidden parents can no longer
+       be interacted with even if the children themselves are still internally
+       visible.
+   * Added a version dialog button to the title screen, replacing the Paths
+     option previously found in Preferences -> General.
+ * Miscellaneous and bug fixes:
+   * Fixed unbound memory read in internal time formatting code with
+     specially-crafted input.
 
 Version 1.13.1:
  * Security fixes:

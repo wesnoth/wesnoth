@@ -2711,7 +2711,7 @@ void display::draw(bool update,bool force) {
 	if (screen_.update_locked()) {
 		return;
 	}
-	set_scontext_leave_for_draw leave_synced_context;
+	set_scontext_unsynced leave_synced_context;
 	local_tod_light_ = has_time_area() && preferences::get("local_tod_lighting", true);
 
 	draw_init();

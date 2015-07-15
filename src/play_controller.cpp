@@ -1043,3 +1043,19 @@ void play_controller::start_game()
 		gui_->recalculate_minimap();
 	}
 }
+
+bool play_controller::can_use_synced_wml_menu() const
+{
+	const team& viewing_team = get_teams_const()[gui_->viewing_team()];
+	return gui_->viewing_team() == gui_->playing_team() && !events::commands_disabled && viewing_team.is_local_human() && !is_lingering() && !is_browsing();
+}
+
+std::set<std::string> play_controller::all_players() const
+{
+	std::set<std::string> res = gui_->observers();
+	BOOST_FOREACH(const team& t, get_teams_const())
+	{
+		res.insert(t.current_player());
+	}
+	return res;
+}

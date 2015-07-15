@@ -60,7 +60,7 @@ static std::string print_behavior_description(t_it start, t_it end, const tdata_
 	boost::optional<t_it> last_change_pos;
 
 	bool best = begin_best;
-	for (t_it i = start; i != end; i++) {
+	for (t_it i = start; i != end; ++i) {
 		if ((best && *i == t_translation::MINUS) || (!best && *i == t_translation::PLUS)) {
 			best = !best;
 			last_change_pos = i;
@@ -71,7 +71,7 @@ static std::string print_behavior_description(t_it start, t_it end, const tdata_
 
 	if (!last_change_pos) {
 		std::vector<std::string> names;
-		for (t_it i = start; i != end; i++) {
+		for (t_it i = start; i != end; ++i) {
 			const terrain_type tt = tdata->get_terrain_info(*i);
 			if (!tt.editor_name().empty())
 				names.push_back(tt.editor_name());
@@ -91,7 +91,7 @@ static std::string print_behavior_description(t_it start, t_it end, const tdata_
 		if (!first_level) ss << " )";
 	} else {
 		std::vector<std::string> names;
-		for (t_it i = *last_change_pos+1; i != end; i++) {
+		for (t_it i = *last_change_pos+1; i != end; ++i) {
 			const terrain_type tt = tdata->get_terrain_info(*i);
 			if (!tt.editor_name().empty())
 				names.push_back(tt.editor_name());

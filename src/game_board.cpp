@@ -201,7 +201,7 @@ void game_board::side_drop_to(int side_num, team::CONTROLLER ctrl, team::PROXY_C
 	if (leader.valid()) leader->rename(lexical_cast<std::string> (ctrl) + lexical_cast<std::string> (side_num));
 }
 
-void game_board::side_change_controller(int side_num, team::CONTROLLER ctrl, const std::string pname) {
+void game_board::side_change_controller(int side_num, team::CONTROLLER ctrl, const std::string& pname) {
 	team &tm = teams_[side_num-1];
 
 	tm.change_controller(ctrl);
