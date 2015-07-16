@@ -1412,7 +1412,7 @@ void game::load_next_scenario(const player_map::const_iterator user) {
 	simple_wml::document cfg_scenario;
 	simple_wml::node & next_scen = cfg_scenario.root().add_child("next_scenario");
 	level_.root().copy_into(next_scen);
-
+	next_scen.set_attr("started", started_ ? "yes" : "no");
 	const simple_wml::node::child_list & sides =  starting_pos(next_scen)->children("side");
 
 	DBG_GAME << "****\n loading next scenario for a client. sides info = " << std::endl;

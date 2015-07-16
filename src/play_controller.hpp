@@ -30,6 +30,7 @@
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
+#include <set>
 
 class game_display;
 class game_data;
@@ -213,6 +214,7 @@ public:
 	const team& current_team() const;
 
 	bool can_use_synced_wml_menu() const;
+	std::set<std::string> all_players() const;
 protected:
 	void play_slice_catch();
 	game_display& get_display();

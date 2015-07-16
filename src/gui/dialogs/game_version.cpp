@@ -112,6 +112,9 @@ tgame_version::tgame_version()
 
 		deplist_entry e;
 		e[0] = game_config::library_name(lib);
+		if(e[0].empty()) {
+			continue;
+		}
 		e[1] = game_config::library_build_version(lib);
 		e[2] = game_config::library_runtime_version(lib);
 		deps_.push_back(e);

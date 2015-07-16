@@ -216,7 +216,7 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 		const tdata_cache & tdata,
 		display& disp, saved_game& state_of_game,
 		const config::const_child_itors &story, bool skip_replay,
-		bool blindfold_replay, io_type_t& io_type, end_level_data &end_level)
+		std::set<std::string>& mp_players, bool blindfold_replay, io_type_t& io_type, end_level_data &end_level)
 {
 	const int ticks = SDL_GetTicks();
 
@@ -246,6 +246,7 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 		playcontroller.maybe_linger();
 	}
 	playcontroller.update_savegame_snapshot();
+	mp_players = playcontroller.all_players();
 	return res;
 }
 
@@ -264,7 +265,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 	{
 		LEVEL_RESULT res = LEVEL_RESULT::VICTORY;
 		end_level_data end_level;
-
+		std::set<std::string> mp_players;
 		try {
 
 			gamestate.expand_random_scenario();
@@ -285,7 +286,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			} else 
 #endif
 			{
-				res = playmp_scenario(game_config, tdata, disp, gamestate, story, skip_replay, blindfold_replay, io_type, end_level);
+				res = playmp_scenario(game_config, tdata, disp, gamestate, story, skip_replay, mp_players, blindfold_replay, io_type, end_level);
 			}
 		} catch(game::load_game_failed& e) {
 			gui2::show_error_message(disp.video(), _("The game could not be loaded: ") + e.message);
@@ -371,14 +372,10 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 				gamestate.mp_settings().use_map_settings = starting_pos["force_lock_settings"].to_bool();
 
 				ng::connect_engine_ptr
-					connect_engine(new ng::connect_engine(gamestate,
-						!network_game, false));
+					connect_engine(new ng::connect_engine(gamestate, !network_game, false, mp_players));
 
-				if (starting_pos["allow_new_game"].to_bool(gamestate.mp_settings().show_connect) 
-				|| (game_config::debug && network::nconnections() == 0 && game_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)) {
-					// Opens mp::connect dialog to allow users to
-					// make an adjustments for scenario.
-					// TODO: Fix this so that it works when network::nconnections() > 0 as well.
+				if (!connect_engine->can_start_game() || (game_config::debug && game_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)) {
+					// Opens mp::connect dialog to allow users to make an adjustments for scenario.
 					mp::ui::result connect_res = mp::goto_mp_connect(disp,
 						*connect_engine, game_config, gamestate.mp_settings().name);
 					if (connect_res == mp::ui::QUIT) {
@@ -386,8 +383,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 					}
 				} else {
 					// Start the next scenario immediately.
-					connect_engine->
-						start_game(ng::connect_engine::FORCE_IMPORT_USERS);
+					connect_engine->start_game();
 				}
 			}
 		}
