@@ -96,7 +96,7 @@ private:
  * Makes it so the village at the given location is owned by the given side.
  * Returns true if getting the village triggered a mutating event.
  */
-bool get_village(const map_location& loc, int side, int *time_bonus = NULL);
+bool get_village(const map_location& loc, int side, int *time_bonus = NULL, bool fire_event = true);
 
 /// Moves a unit across the board.
 /// And enters the synced context.

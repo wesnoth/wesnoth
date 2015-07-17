@@ -138,7 +138,7 @@ void move_unit_spectator::set_unit(const unit_map::const_iterator &u)
 }
 
 
-bool get_village(const map_location& loc, int side, int *action_timebonus)
+bool get_village(const map_location& loc, int side, int *action_timebonus, bool fire_event)
 {
 	std::vector<team> &teams = *resources::teams;
 	team *t = unsigned(side - 1) < teams.size() ? &teams[side - 1] : NULL;
@@ -177,7 +177,7 @@ bool get_village(const map_location& loc, int side, int *action_timebonus)
 		if (resources::screen != NULL) {
 			resources::screen->invalidate(loc);
 		}
-		return t->get_village(loc, old_owner_side, resources::gamedata);
+		return t->get_village(loc, old_owner_side, fire_event ? resources::gamedata : NULL);
 	}
 
 	return false;
