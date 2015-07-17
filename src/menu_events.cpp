@@ -2031,14 +2031,16 @@ class console_handler : public map_command_handler<console_handler>, private cha
 			std::string space(" ");
 			return (c.has_flag('D') ? space + _("(debug command)") : "")
 				 + (c.has_flag('N') ? space + _("(network only)") : "")
-				 + (c.has_flag('A') ? space + _("(admin only)") : "");
+				 + (c.has_flag('A') ? space + _("(admin only)") : "")
+				 + (c.has_flag('S') ? space + _("(not during other events)") : "");
 		}
 		using map::is_enabled;
 		bool is_enabled(const chmap::command& c) const
 		{
 			return !((c.has_flag('D') && !game_config::debug)
 				  || (c.has_flag('N') && network::nconnections() == 0)
-				  || (c.has_flag('A') && !preferences::is_authenticated()));
+				  || (c.has_flag('A') && !preferences::is_authenticated())
+				  || (c.has_flag('S') && (synced_context::get_synced_state() != synced_context::UNSYNCED)));
 		}
 		void print(const std::string& title, const std::string& message)
 		{
@@ -2088,21 +2090,21 @@ class console_handler : public map_command_handler<console_handler>, private cha
 			register_command("nosaves", &console_handler::do_nosaves,
 				_("Disable autosaves."));
 			register_command("next_level", &console_handler::do_next_level,
-				_("Advance to the next scenario, or scenario identified by 'id'"), _("<id>"), "D");
+				_("Advance to the next scenario, or scenario identified by 'id'"), _("<id>"), "DS");
 			register_alias("next_level", "n");
 			register_command("choose_level", &console_handler::do_choose_level,
-				_("Choose next scenario"), "", "D");
+				_("Choose next scenario"), "", "DS");
 			register_alias("choose_level", "cl");
 			register_command("turn", &console_handler::do_turn,
-				_("Change turn number (and time of day), or increase by one if no number is specified."), _("[turn]"), "D");
+				_("Change turn number (and time of day), or increase by one if no number is specified."), _("[turn]"), "DS");
 			register_command("turn_limit", &console_handler::do_turn_limit,
-				_("Change turn limit, or turn the turn limit off if no number is specified or it’s −1."), _("[limit]"), "D");
+				_("Change turn limit, or turn the turn limit off if no number is specified or it’s −1."), _("[limit]"), "DS");
 			register_command("debug", &console_handler::do_debug,
 				_("Turn debug mode on."));
 			register_command("nodebug", &console_handler::do_nodebug,
 				_("Turn debug mode off."), "", "D");
 			register_command("lua", &console_handler::do_lua,
-				_("Execute a Lua statement."), _("<command>[;<command>...]"), "D");
+				_("Execute a Lua statement."), _("<command>[;<command>...]"), "DS");
 			register_command("unsafe_lua", &console_handler::do_unsafe_lua,
 				_("Grant higher privileges to Lua scripts."), "", "D");
 			register_command("custom", &console_handler::do_custom,
@@ -2119,11 +2121,11 @@ class console_handler : public map_command_handler<console_handler>, private cha
 			register_command("alias", &console_handler::do_set_alias,
 				_("Set or show alias to a command"), _("<name>[=<command>]"));
 			register_command("set_var", &console_handler::do_set_var,
-				_("Set a scenario variable."), _("<var>=<value>"), "D");
+				_("Set a scenario variable."), _("<var>=<value>"), "DS");
 			register_command("show_var", &console_handler::do_show_var,
 				_("Show a scenario variable."), _("<var>"), "D");
 			register_command("unit", &console_handler::do_unit,
-				_("Modify a unit variable. (Only top level keys are supported.)"), "", "D");
+				_("Modify a unit variable. (Only top level keys are supported.)"), "", "DS");
 
 			// register_command("buff", &console_handler::do_buff,
 			//    _("Add a trait to a unit."), "", "D");
@@ -2134,15 +2136,15 @@ class console_handler : public map_command_handler<console_handler>, private cha
 			register_command("undiscover", &console_handler::do_undiscover,
 				  _("'Undiscover' all units in help."), "");
 			register_command("create", &console_handler::do_create,
-				_("Create a unit."), "", "D");
+				_("Create a unit."), "", "DS");
 			register_command("fog", &console_handler::do_fog,
-				_("Toggle fog for the current player."), "", "D");
+				_("Toggle fog for the current player."), "", "DS");
 			register_command("shroud", &console_handler::do_shroud,
-				_("Toggle shroud for the current player."), "", "D");
+				_("Toggle shroud for the current player."), "", "DS");
 			register_command("gold", &console_handler::do_gold,
-				_("Give gold to the current player."), "", "D");
+				_("Give gold to the current player."), "", "DS");
 			register_command("throw", &console_handler::do_event,
-				_("Fire a game event."), "", "D");
+				_("Fire a game event."), "", "DS");
 			register_alias("throw", "fire");
 			register_command("show_coordinates", &console_handler::do_toggle_draw_coordinates,
 				_("Toggle overlaying of x,y coordinates on hexes."));
