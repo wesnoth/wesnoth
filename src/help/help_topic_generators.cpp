@@ -259,11 +259,12 @@ std::string unit_topic_generator::operator()() const {
 		const std::string &male_portrait = male_type.small_profile();
 		const std::string &female_portrait = female_type.small_profile();
 
-		if (!male_portrait.empty() && male_portrait != (male_type.image() || "unit_image")) {
+		// TODO: figure out why the second checks don't match but the last does
+		if (!male_portrait.empty() /*&& male_portrait != male_type.image()*/ && male_portrait != "unit_image")) {
 			ss << "<img>src='" << male_portrait << "~SCALE(205,205)~BG()' align='right'</img> ";
 		}
 
-		if (!female_portrait.empty() && female_portrait != (male_portrait || female_type.image() || "unit_image")) { 
+		if (!female_portrait.empty() && female_portrait != male_portrait /*&& female_portrait != female_type.image()*/ && female_portrait != "unit_image")) { 
 			ss << "<img>src='" << female_portrait << "~SCALE(205,205)~BG()' align='right'</img> ";
 		}
 
