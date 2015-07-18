@@ -282,6 +282,7 @@ static int impl_unit_get(lua_State *L)
 	return_int_attrib("attacks_left", u.attacks_left());
 	return_tstring_attrib("name", u.name());
 	return_bool_attrib("canrecruit", u.can_recruit());
+	return_int_attrib("level", u.level());
 
 	return_vector_string_attrib("extra_recruit", u.recruits());
 	return_vector_string_attrib("advances_to", u.advances_to());
