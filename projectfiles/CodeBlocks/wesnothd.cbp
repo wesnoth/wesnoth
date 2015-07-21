@@ -54,6 +54,9 @@
 			<Add library="libboost_filesystem-mgw45-mt-1_57.a" />
 			<Add library="libboost_locale-mgw45-mt-1_57.a" />
 		</Linker>
+		<Unit filename="../../packaging/windows/wesnothd.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
 		<Unit filename="../../src/about.hpp" />
 		<Unit filename="../../src/color_range.cpp" />
 		<Unit filename="../../src/config.cpp" />
