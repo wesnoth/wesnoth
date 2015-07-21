@@ -114,8 +114,8 @@ config game_classification::to_config() const
 
 std::string game_classification::get_tagname() const
 {
-	if(this->campaign_type == CAMPAIGN_TYPE::SCENARIO) {
-		return "multiplayer";
+	if(this->campaign_type == CAMPAIGN_TYPE::MULTIPLAYER) {
+		return this->campaign.empty() ? "multiplayer" : "scenario";
 	}
 	else {
 		return this->campaign_type.to_string();

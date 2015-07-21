@@ -263,29 +263,14 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		// become [multiplayer] tags and campaign's id should be added to them
 		// to allow to recognize which scenarios belongs to a loaded campaign.
 		if (classification != NULL) {
-			if ((classification->campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER ||
-				classification->campaign_type == game_classification::CAMPAIGN_TYPE::SCENARIO) &&
-				!classification->campaign_define.empty()) {
-
-				const config& campaign = game_config().find_child("campaign",
-					"define", classification->campaign_define);
-				// FIXME: check whether campaign is valid
-				const std::string& campaign_id = campaign["id"];
-				const bool require_campaign =
-					campaign["require_campaign"].to_bool(true);
-
-				const config::const_child_itors &ci =
-					game_config().child_range("scenario");
-				std::vector<config> scenarios(ci.first, ci.second);
-
-				game_config_.clear_children("scenario");
-
-				BOOST_FOREACH(config& cfg, scenarios) {
-					cfg["campaign_id"] = campaign_id;
-					cfg["require_scenario"] = require_campaign;
+			if (const config& campaign = game_config().find_child("campaign", "id", classification->campaign))
+			{
+				const bool require_campaign = campaign["require_campaign"].to_bool(true);
+				BOOST_FOREACH(config& scenario, game_config_.child_range("scenario"))
+				{
+					scenario["require_scenario"] = require_campaign;
 					// make force_lock_settings default to true for [scenario]
-					cfg["force_lock_settings"] = cfg["force_lock_settings"].to_bool(true);
-					game_config_.add_child(lexical_cast<std::string>(game_classification::CAMPAIGN_TYPE::MULTIPLAYER), cfg);
+					scenario["force_lock_settings"] = scenario["force_lock_settings"].to_bool(true);
 				}
 			}
 		}
