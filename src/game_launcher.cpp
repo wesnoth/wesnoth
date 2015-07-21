@@ -77,6 +77,14 @@
 #include "gui/widgets/debug.hpp"
 #endif
 
+// For wesnothd launch code.
+#ifdef _WIN32
+
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+
+#endif // _WIN32
+
 struct incorrect_map_format_error;
 
 static lg::log_domain log_config("config");
@@ -867,6 +875,11 @@ void game_launcher::start_wesnothd()
 #else
 	// start wesnoth as background job
 	std::string command = "cmd /C start \"wesnoth server\" /B \"" + wesnothd_program + "\" -c \"" + config + "\" -t 2 -T 5";
+	// Make sure wesnothd's console output is visible on the console window by
+	// disabling SDL's stdio redirection code for this and future child
+	// processes. No need to bother cleaning this up because it's only
+	// meaningful to SDL applications during pre-main initialization.
+	SetEnvironmentVariableA("SDL_STDIO_REDIRECT", "0");
 #endif
 	LOG_GENERAL << "Starting wesnothd: "<< command << "\n";
 	if (std::system(command.c_str()) == 0) {

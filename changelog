@@ -31,6 +31,9 @@ Version 1.13.1+dev:
  * Miscellaneous and bug fixes:
    * Fixed unbound memory read in internal time formatting code with
      specially-crafted input.
+   * Child wesnothd processes spawned by the Host Network Game option on
+     Windows now display console output directly instead of using stdout.txt
+     and stderr.txt.
 
 Version 1.13.1:
  * Security fixes:
