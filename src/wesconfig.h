@@ -9,6 +9,8 @@
  * before and after each release.
  */
 
+#ifndef RC_INVOKED
+
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
 #endif
@@ -16,19 +18,6 @@
 #ifndef LOCALEDIR
 #  define LOCALEDIR "translations"
 #endif
-
-//always use the version string in here, otherwise autotools can override in
-//a bad way...
-#ifdef VERSION
-  #undef VERSION
-#endif
-
-#define VERSION "1.13.1+dev"
-
-// Used for the Windows executables' version info resource.
-#define RC_VERSION_MAJOR        1
-#define RC_VERSION_MINOR        13
-#define RC_VERSION_REVISION     1
 
 #ifndef PACKAGE
 #define PACKAGE "wesnoth"
@@ -42,5 +31,20 @@
  * An example of such a change is changing the savegame format.
  */
 #define MIN_SAVEGAME_VERSION "1.3.10"
+
+#endif /* !RC_INVOKED */
+
+//always use the version string in here, otherwise autotools can override in
+//a bad way...
+#ifdef VERSION
+  #undef VERSION
+#endif
+
+#define VERSION "1.13.1+dev"
+
+// Used for the Windows executables' version info resource.
+#define RC_VERSION_MAJOR        1
+#define RC_VERSION_MINOR        13
+#define RC_VERSION_REVISION     1
 
 #endif
