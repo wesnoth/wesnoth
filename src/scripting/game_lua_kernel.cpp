@@ -1038,12 +1038,7 @@ int game_lua_kernel::intf_set_end_campaign_credits(lua_State *L)
 int game_lua_kernel::intf_set_end_campaign_text(lua_State *L)
 {
 	game_classification &classification = const_cast<game_classification &> (play_controller_.get_classification());
-
-	const char *m = luaL_checkstring(L, 1);
-	if (m && *m != '\0') {
-		classification.end_text = m;
-	}
-
+	classification.end_text = luaL_checkstring(L, 1);
 	if (lua_isnumber(L, 2)) {
 		classification.end_text_duration = static_cast<int> (lua_tonumber(L, 2));
 	}
@@ -1053,10 +1048,7 @@ int game_lua_kernel::intf_set_end_campaign_text(lua_State *L)
 
 int game_lua_kernel::intf_set_next_scenario(lua_State *L)
 {
-	const char *m = luaL_checkstring(L, 1);
-	if (m && *m != '\0') {
-		gamedata().set_next_scenario(m);
-	}
+	gamedata().set_next_scenario(luaL_checkstring(L, 1));
 	return 0;
 }
 
