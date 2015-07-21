@@ -1055,7 +1055,9 @@ std::set<std::string> play_controller::all_players() const
 	std::set<std::string> res = gui_->observers();
 	BOOST_FOREACH(const team& t, get_teams_const())
 	{
-		res.insert(t.current_player());
+		if (t.is_human()) {
+			res.insert(t.current_player());
+		}
 	}
 	return res;
 }
