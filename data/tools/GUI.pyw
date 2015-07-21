@@ -348,7 +348,8 @@ It comes complete with a context menu and a directory selection screen"""
                                       "Wesnoth"+WESNOTH_SERIES,
                                       "data",
                                       "add-ons")
-            elif sys.platform.startswith("linux"): # we're on Linux; usually this string is 'linux2'
+            elif sys.platform.startswith("linux") or "bsd" in sys.platform:
+                # we're on Linux or on a BSD system like FreeBSD
                 userdata=os.path.join(os.path.expanduser("~"),
                                       ".local",
                                       "share",
@@ -1404,9 +1405,9 @@ BqseHx64ArqXErMAHiDBpQEfz9AAH9LPWT8IR9kCCT9BADs=''')
     root.title("Maintenance tools GUI")
     root.rowconfigure(0,weight=1)
     root.columnconfigure(0,weight=1)
-    # use a better style on Linux instead of the Motif-like one
+    # use a better style on X11 systems instead of the Motif-like one
     style=Style()
-    if sys.platform.startswith("linux") and "clam" in style.theme_names():
+    if root.tk.call('tk', 'windowingsystem') == "x11" and "clam" in style.theme_names():
         style.theme_use("clam")
     app=MainFrame(root)
     root.mainloop()
