@@ -29,7 +29,7 @@ configure_engine::configure_engine(saved_game& state) :
 	set_use_map_settings(use_map_settings_default());
 
 	BOOST_FOREACH(const config& scenario,
-		game_config_manager::get()->game_config().child_range("multiplayer")) {
+		game_config_manager::get()->game_config().child_range(state_.classification().get_tagname())) {
 
 		if (!scenario["campaign_id"].empty() &&
 			(scenario["allow_new_game"].to_bool(true) || game_config::debug)) {
@@ -61,8 +61,7 @@ void configure_engine::set_default_values() {
 }
 
 bool configure_engine::force_lock_settings() const {
-	return state_.get_starting_pos()["force_lock_settings"].to_bool(
-		state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER);
+	return state_.get_starting_pos()["force_lock_settings"].to_bool(!state_.classification().is_normal_mp_game());
 }
 
 std::string configure_engine::game_name() const { return parameters_.name; }
@@ -133,7 +132,7 @@ int configure_engine::num_turns_default() const {
 }
 int configure_engine::village_gold_default() const {
 	return use_map_settings() && !side_cfg_.empty() ?
-		settings::get_village_gold(side_cfg_["village_gold"], state_.classification().campaign_type) :
+		settings::get_village_gold(side_cfg_["village_gold"], &state_.classification()) :
 		preferences::village_gold();
 }
 int configure_engine::village_support_default() const {
@@ -171,7 +170,7 @@ bool configure_engine::random_start_time_default() const {
 }
 bool configure_engine::fog_game_default() const {
 	return use_map_settings() && !side_cfg_.empty() ?
-		side_cfg_["fog"].to_bool(state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::SCENARIO) :
+		side_cfg_["fog"].to_bool(state_.classification().is_normal_mp_game()) :
 		preferences::fog();
 }
 bool configure_engine::shroud_game_default() const {
@@ -180,8 +179,7 @@ bool configure_engine::shroud_game_default() const {
 		preferences::shroud();
 }
 bool configure_engine::allow_observers_default() const {
-	return preferences::allow_observers() &&
-			state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::SCENARIO;
+	return preferences::allow_observers();
 }
 bool configure_engine::shuffle_sides_default() const {
 	return preferences::shuffle_sides();

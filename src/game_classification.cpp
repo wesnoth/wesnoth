@@ -111,3 +111,18 @@ config game_classification::to_config() const
 	cfg["oos_debug"] = oos_debug;
 	return cfg;
 }
+
+std::string game_classification::get_tagname() const
+{
+	if(this->campaign_type == CAMPAIGN_TYPE::SCENARIO) {
+		return "multiplayer";
+	}
+	else {
+		return this->campaign_type.to_string();
+	}
+}
+
+bool game_classification::is_normal_mp_game() const
+{
+	return this->campaign_type == CAMPAIGN_TYPE::MULTIPLAYER && this->campaign.empty();
+}

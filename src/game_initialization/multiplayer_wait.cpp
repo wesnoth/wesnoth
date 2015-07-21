@@ -46,6 +46,7 @@ static lg::log_domain log_enginerefac("enginerefac");
 
 static lg::log_domain log_mp("mp/main");
 #define DBG_MP LOG_STREAM(debug, log_mp)
+#define ERR_MP LOG_STREAM(err, log_mp)
 
 
 namespace {
@@ -248,49 +249,13 @@ void wait::join_game(bool observe)
 
 	if (first_scenario_) {
 		state_ = saved_game();
-		state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+		state_.classification() = game_classification(level_);
 
-		const config* campaign = &game_config_manager::get()->
-			game_config().find_child("campaign", "id",
-				level_.child("multiplayer")["mp_campaign"]);
-
-		const config* scenario = &game_config_manager::get()->
-			game_config().find_child("multiplayer", "id",
-				level_.child(lexical_cast<std::string>(game_classification::CAMPAIGN_TYPE::MULTIPLAYER))["id"]);
-
-		const config* era = &game_config_manager::get()->
-			game_config().find_child("era", "id", level_.child("era")["id"]);
-
-		if (*campaign) {
-			state_.classification().difficulty =
-				level_.child("multiplayer")["difficulty_define"].str();
-			state_.classification().campaign_define =
-				(*campaign)["define"].str();
-			state_.classification().campaign_xtra_defines =
-				utils::split((*campaign)["extra_defines"]);
+		if(state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
+			ERR_MP << "Mp wait recieved a game that is not a multiplayer game\n";
 		}
-
-		if (*scenario)
-			state_.classification().scenario_define =
-				(*scenario)["define"].str();
-
-		if (*era)
-			state_.classification().era_define =
-				(*era)["define"].str();
-
-		BOOST_FOREACH(const config& mod, level_.child_range("modification")) {
-			const config* modification = &game_config_manager::get()->
-				game_config().find_child("modification", "id", mod["id"]);
-			if (*modification) {
-				state_.classification().mod_defines.push_back(
-					(*modification)["define"].str());
-			}
-		}
-
-
 		// Make sure that we have the same config as host, if possible.
-		game_config_manager::get()->
-			load_game_config_for_game(state_.classification());
+		game_config_manager::get()->load_game_config_for_game(state_.classification());
 	}
 
 	// Add the map name to the title.

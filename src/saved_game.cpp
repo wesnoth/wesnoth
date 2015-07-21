@@ -182,10 +182,7 @@ void saved_game::expand_scenario()
 	{
 		game_config_manager::get()->load_game_config_for_game(this->classification());
 		const config& game_config = game_config_manager::get()->game_config();
-		const config& scenario = game_config.find_child(lexical_cast_default<std::string>
-				(classification().campaign_type == game_classification::CAMPAIGN_TYPE::SCENARIO ?
-				 game_classification::CAMPAIGN_TYPE::MULTIPLAYER : classification().campaign_type),
-				"id", carryover_["next_scenario"]);
+		const config& scenario = game_config.find_child(classification().get_tagname(), "id", carryover_["next_scenario"]);
 		if(scenario)
 		{
 			this->starting_pos_type_ = STARTINGPOS_SCENARIO;

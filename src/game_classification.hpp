@@ -31,6 +31,8 @@ public:
 	game_classification(const game_classification& gc);
 
 	config to_config() const;
+	std::string get_tagname() const;
+	bool is_normal_mp_game() const;
 
 	std::string label;                               /**< Name of the game (e.g. name of save file). */
 	std::string version;                             /**< Version game was created with. */

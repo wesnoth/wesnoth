@@ -58,7 +58,7 @@ namespace settings {
 	 *
 	 *  @returns            the village gold
 	 */
-	int get_village_gold(const std::string& value, game_classification::CAMPAIGN_TYPE gametype = game_classification::CAMPAIGN_TYPE::MULTIPLAYER);
+	int get_village_gold(const std::string& value, const game_classification* classification = NULL);
 
 	/**
 	 *  Gets the village unit level support.
