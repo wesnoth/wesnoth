@@ -197,7 +197,6 @@ void context_manager::edit_side_dialog(int side)
 	//t.support()
 
 	team::CONTROLLER controller = t.controller();
-	int controller_num = 0;
 
 	std::string user_team_name = t.user_team_name();
 	std::string team_name = t.team_name();
@@ -217,8 +216,7 @@ void context_manager::edit_side_dialog(int side)
 	bool ok = gui2::teditor_edit_side::execute(side +1, team_name, user_team_name,
 			gold, income, village_gold, village_support,
 			fog, share_view, shroud, share_maps,
-			controller, controller_num,
-			no_leader, hidden,
+			controller, no_leader, hidden,
 			gui_.video());
 
 	if (ok) {

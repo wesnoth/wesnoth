@@ -62,7 +62,6 @@ teditor_edit_side::teditor_edit_side(int side,
 									 bool& shroud,
 									 bool& share_maps,
 									 team::CONTROLLER& controller,
-									 int& controller_num,
 									 bool& no_leader,
 									 bool& hidden)
 	: controller_(controller)
@@ -80,8 +79,6 @@ teditor_edit_side::teditor_edit_side(int side,
 	register_integer("village_income", true, village_income);
 	register_integer("village_support", true, village_support);
 
-	register_integer("controller_number_player", true, controller_num);
-
 	register_bool("fog", true, fog);
 	register_bool("share_view", true, share_view);
 
@@ -97,7 +94,6 @@ void teditor_edit_side::pre_show(CVideo& /*video*/, twindow& window)
 	register_controller_toggle(window, "human", team::CONTROLLER::HUMAN);
 	register_controller_toggle(window, "ai", team::CONTROLLER::AI);
 	register_controller_toggle(window, "null", team::CONTROLLER::EMPTY);
-	register_controller_toggle(window, "number", team::CONTROLLER::from_int(-1));
 }
 
 void teditor_edit_side::register_controller_toggle(twindow& window,
