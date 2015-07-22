@@ -48,6 +48,29 @@ static lg::log_domain log_desktop("desktop");
 namespace desktop
 {
 
+#ifdef _WIN32
+namespace
+{
+
+/**
+ * Detects whether we are running on Wine or not.
+ *
+ * This is for informational purposes only and all Windows code should assume
+ * we are running on the real thing instead.
+ */
+bool on_wine()
+{
+	HMODULE ntdll = GetModuleHandle(L"ntdll.dll");
+	if(!ntdll) {
+		return false;
+	}
+
+	return GetProcAddress(ntdll, "wine_get_version");
+}
+
+} // end anonymous namespace
+#endif
+
 std::string os_version()
 {
 #if defined(_X11) || defined(__APPLE__)
@@ -64,7 +87,8 @@ std::string os_version()
 						<< u.machine).str();
 
 #elif defined(_WIN32)
-	static const std::string base = "Microsoft Windows";
+	static const std::string base
+			= !on_wine() ? "Microsoft Windows" : "Wine/Microsoft Windows";
 
 	OSVERSIONINFOEX v = { sizeof(OSVERSIONINFOEX) };
 
