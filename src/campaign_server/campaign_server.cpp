@@ -92,7 +92,7 @@ void exit_sigterm(int signal)
 
 time_t monotonic_clock()
 {
-#ifdef _POSIX_MONOTONIC_CLOCK
+#if defined(_POSIX_MONOTONIC_CLOCK) && !defined(_WIN32)
 	timespec ts;
 	clock_gettime(CLOCK_MONOTONIC, &ts);
 	return ts.tv_sec;
