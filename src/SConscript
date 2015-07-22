@@ -695,7 +695,7 @@ wesnothd_sources = Split("""
     """)
 wesnothd_sources.extend(env.Object("server/server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
 
-env.WesnothProgram("wesnothd", wesnothd_sources + [libwesnoth_core, libwesnothd], have_server_prereqs)
+env.WesnothProgram("wesnothd", wesnothd_sources + [libwesnoth_core, libwesnothd, env["wesnothd_res"]], have_server_prereqs)
 
 cutter_sources = Split("""
     tools/cutter.cpp
