@@ -236,6 +236,7 @@ void server::fire(const std::string& hook, const std::string& addon)
 	}
 
 #if defined(_WIN32)
+	(void)addon;
 	ERR_CS << "Tried to execute a script on an unsupported platform\n";
 	return;
 #else
