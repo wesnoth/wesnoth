@@ -371,7 +371,7 @@ if env["prereqs"]:
             client_env.Append(CPPDEFINES = ["HAVE_LIBDBUS"])
 
         if client_env['fribidi']:
-            client_env['fribidi'] = conf.CheckPKG('fribidi >= 0.10.9') or Warning("Can't find libfribidi, disabling freebidi support.")
+            client_env['fribidi'] = conf.CheckPKG('fribidi >= 0.10.9') or Warning("Can't find FriBiDi, disabling FriBiDi support.")
 
     if env["forum_user_handler"]:
         flags = env.ParseFlags("!mysql_config --libs --cflags")
