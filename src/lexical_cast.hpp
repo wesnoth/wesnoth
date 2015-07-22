@@ -52,6 +52,7 @@
 
 #include "global.hpp"
 
+#include <cstdlib>
 #include <string>
 #include <sstream>
 #include <boost/mpl/set.hpp>
