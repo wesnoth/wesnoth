@@ -3161,22 +3161,7 @@ int game_lua_kernel::intf_modify_side(lua_State *L)
 			// Not needed.
 			//invalidate_screen = true;
 		}
-		// Add shared view to current team
-		config::attribute_value share_view = cfg["share_view"];
-		if (!share_view.empty()){
-			tm.set_share_view(share_view.to_bool(true));
-			team::clear_caches();
-			invalidate_screen = true;
-		}
-		// Add shared maps to current team
-		// IMPORTANT: this MUST happen *after* share_view is changed
-		config::attribute_value share_maps = cfg["share_maps"];
-		if (!share_maps.empty()){
-			tm.set_share_maps(share_maps.to_bool(true));
-			team::clear_caches();
-			invalidate_screen = true;
-		}
-
+		tm.handle_legacy_share_vision(cfg.get_parsed_config());
 		// Suppress end turn confirmations?
 		config::attribute_value setc = cfg["suppress_end_turn_confirmation"];
 		if ( !setc.empty() ) {

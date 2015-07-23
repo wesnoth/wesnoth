@@ -63,7 +63,7 @@ const boost::container::flat_set<std::string> team::attributes = boost::assign::
 	("flag_icon")("fog")("fog_data")("gold")("hidden")("income")
 	("no_leader")("objectives")("objectives_changed")("persistent")("lost")
 	("recall_cost")("recruit")("save_id")("scroll_to_leader")
-	("share_maps")("share_view")("shroud")("shroud_data")("start_gold")
+	("share_vision")("share_maps")("share_view")("shroud")("shroud_data")("start_gold")
 	("suppress_end_turn_confirmation")
 	("team_name")("user_team_name")("village_gold")("village_support")
 	// Multiplayer attributes.
@@ -99,8 +99,7 @@ team::team_info::team_info() :
 	controller(),
 	defeat_condition(team::DEFEAT_CONDITION::NO_LEADER),
 	proxy_controller(team::PROXY_CONTROLLER::PROXY_HUMAN),
-	share_maps(false),
-	share_view(false),
+	share_vision(team::SHARE_VISION::ALL),
 	disallow_observers(false),
 	allow_player(false),
 	chose_random(false),
@@ -212,13 +211,27 @@ void team::team_info::read(const config &cfg)
 
 	// Share_view and share_maps can't both be enabled,
 	// so share_view overrides share_maps.
-	share_view = cfg["share_view"].to_bool();
-	share_maps = !share_view && cfg["share_maps"].to_bool(true);
-
+	share_vision = cfg["share_vision"].to_enum<team::SHARE_VISION>(team::SHARE_VISION::ALL);
+	handle_legacy_share_vision(cfg);
 	LOG_NG << "team_info::team_info(...): team_name: " << team_name
-	       << ", share_maps: " << share_maps << ", share_view: " << share_view << ".\n";
+	       << ", share_vision: " << share_vision << ".\n";
 }
 
+void team::team_info::handle_legacy_share_vision(const config& cfg)
+{
+	if(cfg.has_attribute("share_view") || cfg.has_attribute("share_maps"))
+	{
+		if(cfg["share_view"].to_bool()) {
+			share_vision = team::SHARE_VISION::ALL;
+		}
+		else if(cfg["share_maps"].to_bool(true)) {
+			share_vision = team::SHARE_VISION::SHROUD;
+		}
+		else {
+			share_vision = team::SHARE_VISION::NONE;
+		}
+	}
+}
 void team::team_info::write(config& cfg) const
 {
 	cfg["gold"] = gold;
@@ -249,8 +262,8 @@ void team::team_info::write(config& cfg) const
 	cfg["scroll_to_leader"] = scroll_to_leader;
 	cfg["controller"] = controller;
 	cfg["recruit"] = utils::join(can_recruit);
-	cfg["share_maps"] = share_maps;
-	cfg["share_view"] = share_view;
+	cfg["share_vision"] = share_vision;
+
 	cfg["color"] = color;
 	cfg["persistent"] = persistent;
 	cfg["lost"] = lost;
@@ -457,17 +470,6 @@ bool team::calculate_is_enemy(size_t index) const
 	}
 	LOG_NGE << "team " << info_.side << " has enemy in team " << index+1 << std::endl;
 	return true;
-}
-
-void team::set_share_maps( bool share_maps ){
-	// Share_view and share_maps can't both be enabled,
-	// so share_view overrides share_maps.
-	// If you want to change them, be sure to change share_view FIRST
-	info_.share_maps = !info_.share_view && share_maps;
-}
-
-void team::set_share_view( bool share_view ){
-	info_.share_view = share_view;
 }
 
 namespace 

@@ -72,6 +72,12 @@ public:
 		(ALWAYS, "always")
 	)
 
+	MAKE_ENUM(SHARE_VISION,
+		(ALL, "all")
+		(SHROUD, "shroud")
+		(NONE, "none")
+	)
+
 private:
 	class shroud_map {
 	public:
@@ -139,8 +145,7 @@ private:
 		PROXY_CONTROLLER proxy_controller;	// when controller == HUMAN, the proxy controller determines what input method is actually used.
 							// proxy controller is an interface property, not gamestate. it is not synced, not known to server.
 							// also not saved in save game file
-
-		bool share_maps, share_view;
+		SHARE_VISION share_vision;
 		bool disallow_observers;
 		bool allow_player;
 		bool chose_random;
@@ -158,6 +163,7 @@ private:
 		bool carryover_add;
 		bool carryover_bonus;
 		int carryover_gold;
+		void handle_legacy_share_vision(const config& cfg);
 	};
 
 	static const int default_team_gold_;
@@ -363,11 +369,6 @@ public:
 
 	void log_recruitable() const;
 
-	/**set the share maps attribute */
-	void set_share_maps( bool share_maps );
-	/**set the share view attribute */
-	void set_share_view( bool share_view );
-
 	/** clear the shroud, fog, and enemies cache for all teams*/
 	static void clear_caches();
 
@@ -376,9 +377,14 @@ public:
 
 	config to_config() const;
 
-	bool share_maps() const { return info_.share_maps; }
-	bool share_view() const { return info_.share_view; }
+	bool share_maps() const { return info_.share_vision != SHARE_VISION::NONE ; }
+	bool share_view() const { return info_.share_vision == SHARE_VISION::ALL; }
+	SHARE_VISION share_vision() const { return info_.share_vision; }
 
+	void handle_legacy_share_vision(const config& cfg)
+	{
+		info_.handle_legacy_share_vision(cfg);
+	}
 	std::string allied_human_teams() const;
 private:
 

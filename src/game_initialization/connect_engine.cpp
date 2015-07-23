@@ -1082,11 +1082,6 @@ config side_engine::new_config() const
 		res["color"] = get_color(color_);
 		res["gold"] = gold_;
 		res["income"] = income_;
-
-
-		//share view default to true here to restore the previous behavior.
-		res["share_view"] =  res["share_view"].to_bool(true);
-
 	}
 
 	if (parent_.params_.use_map_settings && !parent_.params_.saved_game) {
