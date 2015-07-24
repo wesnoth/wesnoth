@@ -68,7 +68,7 @@
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="true"
-				SubSystem="2"
+				SubSystem="1"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -145,7 +145,7 @@
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="false"
-				SubSystem="2"
+				SubSystem="1"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
 				LinkTimeCodeGeneration="1"
@@ -225,7 +225,7 @@
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="true"
-				SubSystem="2"
+				SubSystem="1"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -302,7 +302,7 @@
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\..\..\external\lib"
 				GenerateDebugInformation="true"
-				SubSystem="2"
+				SubSystem="1"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
 				LinkTimeCodeGeneration="1"
@@ -334,6 +334,15 @@
 	<References>
 	</References>
 	<Files>
+		<Filter
+			Name="Resource Files"
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
+			>
+			<File
+				RelativePath="..\..\packaging\windows\wesnothd.rc"
+				>
+			</File>
+		</Filter>
 		<Filter
 			Name="Others"
 			Filter="ii;i"
