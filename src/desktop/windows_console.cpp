@@ -95,7 +95,7 @@ void disable_win32_console()
 
 bool is_win32_console_enabled()
 {
-	return conman;
+	return conman != NULL;
 }
 
 } // end namespace desktop
