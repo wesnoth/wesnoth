@@ -60,6 +60,7 @@ synced_command::synced_command(const std::string & tag, handler function)
 
 synced_command::map& synced_command::registry()
 {
+	//Use a pointer to ensure that this object is not destructed when the programm ends.
 	static map* instance = new map();
 	return *instance;
 }
