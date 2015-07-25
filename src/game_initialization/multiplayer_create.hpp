@@ -22,6 +22,7 @@
 #include "multiplayer_ui.hpp"
 #include "widgets/slider.hpp"
 #include "widgets/combo.hpp"
+#include "widgets/multimenu.hpp"
 #include "tooltips.hpp"
 
 namespace mp {
@@ -50,7 +51,7 @@ private:
 
 	void set_description(const std::string& description);
 
-	void update_mod_menu_images();
+	void update_mod_menu();
 
 	std::string select_campaign_difficulty();
 
@@ -61,7 +62,7 @@ private:
 
 	gui::menu eras_menu_;
 	gui::menu levels_menu_;
-	gui::menu mods_menu_;
+	gui::multimenu mods_menu_;
 
 	gui::label filter_name_label_;
 	gui::label filter_num_players_label_;
@@ -78,7 +79,6 @@ private:
 	gui::button regenerate_map_;
 	gui::button generator_settings_;
 	gui::button load_game_;
-	gui::button select_mod_;
 
 	gui::combo level_type_combo_;
 

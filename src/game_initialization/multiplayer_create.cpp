@@ -43,6 +43,7 @@
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
+#include "widgets/multimenu.hpp"
 
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
@@ -105,7 +106,6 @@ create::create(game_display& disp, const config& cfg, saved_game& state,
 	regenerate_map_(disp.video(), _("Regenerate")),
 	generator_settings_(disp.video(), _("Settings...")),
 	load_game_(disp.video(), _("Load Game...")),
-	select_mod_(disp.video(), _("Activate")),
 	level_type_combo_(disp, std::vector<std::string>()),
 	filter_num_players_slider_(disp.video()),
 	description_(disp.video(), 100, "", false),
@@ -189,11 +189,6 @@ create::create(game_display& disp, const config& cfg, saved_game& state,
 	eras_menu_.move_selection((era_new_selection != -1) ? era_new_selection : 0);
 
 	std::vector<std::string> mods = engine_.extras_menu_item_names(ng::create_engine::MOD);
-	BOOST_FOREACH(std::string& mod, mods) {
-		std::stringstream newval;
-		newval << IMAGE_PREFIX << "buttons/checkbox.png" << COLUMN_SEPARATOR << mod;
-		mod = newval.str();
-	}
 	mods_menu_.set_items(mods);
 	mods_menu_.move_selection(0);
 	// don't set 0 explicitly, because move_selection(0) may fail if there's
@@ -202,8 +197,6 @@ create::create(game_display& disp, const config& cfg, saved_game& state,
 
 	if (mod_selection_ == -1) {
 		mod_label_.set_text(_("Modifications:\nNone found."));
-	} else if (engine_.dependency_manager().is_modification_active(mod_selection_)) {
-		select_mod_.set_label(_("Deactivate"));
 	}
 
 	gamelist_updated();
@@ -349,25 +342,17 @@ void create::process_event_impl(const process_event_data & data)
 		}
 	}
 
-	bool update_mod_button_label = mod_selection_ != mods_menu_.selection();
-	if (select_mod_.pressed() || mods_menu_.double_clicked()) {
-		int index = mods_menu_.selection();
-		engine_.set_current_mod_index(index);
-		engine_.toggle_current_mod();
-
-		update_mod_button_label = true;
-		synchronize_selections();
-	}
-
-	if (update_mod_button_label) {
+	if (mod_selection_ != mods_menu_.selection()) {
 		mod_selection_ = mods_menu_.selection();
 		engine_.set_current_mod_index(mod_selection_);
 		set_description(engine_.current_extra(ng::create_engine::MOD).description);
-		if (engine_.dependency_manager().is_modification_active(mod_selection_)) {
-			select_mod_.set_label(_("Deactivate"));
-		} else {
-			select_mod_.set_label(_("Activate"));
-		}
+	}
+
+	int changed_mod = mods_menu_.last_changed();
+	if (changed_mod != -1) {
+		engine_.set_current_mod_index(changed_mod);
+		engine_.toggle_current_mod();
+		synchronize_selections();
 	}
 
 	bool era_changed = era_selection_ != eras_menu_.selection();
@@ -559,7 +544,7 @@ void create::synchronize_selections()
 	}
 
 	engine_.init_active_mods();
-	update_mod_menu_images();
+	update_mod_menu();
 }
 
 void create::draw_level_image()
@@ -585,16 +570,10 @@ void create::set_description(const std::string& description)
 												description);
 }
 
-void create::update_mod_menu_images()
+void create::update_mod_menu()
 {
 	for (size_t i = 0; i<mods_menu_.number_of_items(); i++) {
-		std::stringstream val;
-		if (engine_.dependency_manager().is_modification_active(i)) {
-			val << IMAGE_PREFIX << "buttons/checkbox-pressed.png";
-		} else {
-			val << IMAGE_PREFIX << "buttons/checkbox.png";
-		}
-		mods_menu_.change_item(i, 0, val.str());
+		mods_menu_.set_active(i, engine_.dependency_manager().is_modification_active(i));
 	}
 }
 
@@ -624,8 +603,6 @@ void create::hide_children(bool hide)
 	launch_game_.hide(hide);
 
 	load_game_.hide(hide);
-
-	select_mod_.hide(hide);
 
 	regenerate_map_.hide(hide);
 	generator_settings_.hide(hide);
@@ -668,7 +645,7 @@ void create::layout_children(const SDL_Rect& rect)
 	const int eras_menu_height = (ca.h / 2 - era_label_.height() -
 		2 * border_size - cancel_game_.height());
 	const int mods_menu_height = (ca.h / 2 - mod_label_.height() -
-		3 * border_size - cancel_game_.height() - select_mod_.height());
+		3 * border_size - cancel_game_.height());
 
 	// Dialog title
 	ypos += title().height() + border_size;
@@ -770,7 +747,6 @@ void create::layout_children(const SDL_Rect& rect)
 	mods_menu_.set_location(xpos, ypos);
 	if (mods_menu_.number_of_items() > 0) {
 		ypos += mods_menu_.height() + border_size;
-		select_mod_.set_location(xpos, ypos);
 	}
 
 	// Make eras and mods menus the same width for alignment
