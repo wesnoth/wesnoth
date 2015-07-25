@@ -1065,7 +1065,7 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 				{
 					int fs = style_->get_font_size();
 					int style = TTF_STYLE_NORMAL;
-					int w = loc.w - (xpos - rect.x) - 2 * style_->get_thickness();
+					int w = rect.w - (xpos - rect.x) - 2 * style_->get_thickness();
 					std::string::const_iterator i_beg = to_show.begin(), i_end = to_show.end(),
 						i = font::parse_markup(i_beg, i_end, &fs, NULL, &style);
 					if (i != i_end) {
