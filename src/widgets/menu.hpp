@@ -182,7 +182,7 @@ public:
 	// allows user to change_item while running (dangerous)
 	void change_item(int pos1,int pos2,const std::string& str);
 
-	void erase_item(size_t index);
+	virtual void erase_item(size_t index);
 
 	void set_heading(const std::vector<std::string>& heading);
 
@@ -190,7 +190,7 @@ public:
 	/// strip_spaces is false, spaces will remain at the item edges. If
 	/// keep_viewport is true, the menu tries to keep the selection at
 	/// the same position as it were before the items were set.
-	void set_items(const std::vector<std::string>& items, bool strip_spaces=true,
+	virtual void set_items(const std::vector<std::string>& items, bool strip_spaces=true,
 				   bool keep_viewport=false);
 
 	/// Set a new max height for this menu. Note that this does not take
@@ -228,6 +228,18 @@ protected:
 
 	style *style_;
 	bool silent_;
+
+	int hit(int x, int y) const;
+
+	std::pair<int,int> hit_cell(int x, int y) const;
+	int hit_column(int x) const;
+
+	int hit_heading(int x, int y) const;
+
+	void invalidate_row(size_t id);
+	void invalidate_row_pos(size_t pos);
+	void invalidate_heading();
+
 private:
 	size_t max_items_onscreen() const;
 
@@ -268,12 +280,6 @@ private:
 	void clear_item(int item);
 	void draw_contents();
 	void draw();
-	int hit(int x, int y) const;
-
-	std::pair<int,int> hit_cell(int x, int y) const;
-	int hit_column(int x) const;
-
-	int hit_heading(int x, int y) const;
 
 	mutable std::map<int,SDL_Rect> itemRects_;
 
@@ -319,10 +325,6 @@ private:
 	void move_selection_to(size_t id, bool silent=false, SELECTION_MOVE_VIEWPORT move_viewport=MOVE_VIEWPORT);
 	void move_selection_up(size_t dep);
 	void move_selection_down(size_t dep);
-
-	void invalidate_row(size_t id);
-	void invalidate_row_pos(size_t pos);
-	void invalidate_heading();
 
 	std::set<int> invalid_;
 };

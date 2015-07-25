@@ -1092,6 +1092,7 @@ set(libwesnoth-game_STAT_SRC
 	widgets/label.cpp
 	widgets/menu.cpp
 	widgets/menu_style.cpp
+	widgets/multimenu.cpp
 	widgets/progressbar.cpp
 	widgets/scrollarea.cpp
 	widgets/scrollbar.cpp
