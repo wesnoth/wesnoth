@@ -60,6 +60,7 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_MSC_VER"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -92,11 +93,6 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-				Description="WML unit tests for Wesnoth"
-				CommandLine="WML_tests.cmd $(OutDir)"
 			/>
 		</Configuration>
 		<Configuration
@@ -145,6 +141,7 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_MSC_VER"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -234,6 +231,7 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_MSC_VER"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -265,11 +263,6 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-				Description="WML unit tests for Wesnoth"
-				CommandLine="WML_tests.cmd $(OutDir)"
 			/>
 		</Configuration>
 		<Configuration
@@ -316,6 +309,7 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_MSC_VER"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -348,11 +342,6 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-				Description="WML unit tests for Wesnoth"
-				CommandLine="WML_tests.cmd $(OutDir)"
 			/>
 		</Configuration>
 		<Configuration
@@ -401,6 +390,7 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_MSC_VER"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -493,6 +483,7 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_MSC_VER"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -16842,6 +16833,62 @@
 						ObjectFile="$(IntDir)\Widgets\"
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\src\widgets\multimenu.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Widgets\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Widgets\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Widgets\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Test_Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Widgets\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Test_Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Widgets\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Widgets\"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\src\widgets\multimenu.hpp"
+				>
 			</File>
 			<File
 				RelativePath="..\..\src\widgets\progressbar.cpp"

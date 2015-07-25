@@ -9,21 +9,32 @@
 			Name="Debug|Win32"
 			>
 			<DebugSettings
-				WorkingDirectory="..\.."
+				WorkingDirectory="$(SolutionDir)..\..\"
+				Environment="OMP_WAIT_POLICY=PASSIVE"
 			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
 			>
 			<DebugSettings
-				WorkingDirectory="..\.."
+				WorkingDirectory="$(SolutionDir)..\..\"
+				Environment="OMP_WAIT_POLICY=PASSIVE"
 			/>
 		</Configuration>
 		<Configuration
-			Name="Debug (fast)|Win32"
+			Name="Debug_with_VLD|Win32"
 			>
 			<DebugSettings
-				WorkingDirectory="..\.."
+				WorkingDirectory="$(SolutionDir)..\..\"
+				Environment="OMP_WAIT_POLICY=PASSIVE"
+			/>
+		</Configuration>
+		<Configuration
+			Name="ReleaseDEBUG|Win32"
+			>
+			<DebugSettings
+				WorkingDirectory="$(SolutionDir)..\..\"
+				Environment="OMP_WAIT_POLICY=PASSIVE"
 			/>
 		</Configuration>
 	</Configurations>

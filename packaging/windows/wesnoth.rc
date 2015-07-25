@@ -1,7 +1,9 @@
 #include "windows.h"
 #include "../../src/wesconfig.h"
 
+#ifndef _MSC_VER
 CREATEPROCESS_MANIFEST_RESOURCE_ID	RT_MANIFEST	"wesnoth.exe.manifest"
+#endif
 WESNOTH_ICON						ICON		"wesnoth-icon.ico"
 
 VS_VERSION_INFO	VERSIONINFO

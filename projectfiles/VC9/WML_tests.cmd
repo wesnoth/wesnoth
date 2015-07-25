@@ -6,7 +6,6 @@ setlocal enabledelayedexpansion
 
 :: if OMP_WAIT_POLICY isn't set, the process restarts itself and !ERRORLEVEL!=0
 set OMP_WAIT_POLICY=PASSIVE
-set SDL_STDIO_REDIRECT=0
 
 :: save file paths and command line arguments
 cd ..\..\
