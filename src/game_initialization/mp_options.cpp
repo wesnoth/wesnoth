@@ -104,7 +104,7 @@ void manager::restore_defaults(const std::string &component)
 	}
 }
 
-bool manager::has_options()
+bool manager::has_options() const
 {
 	return !widgets_.empty();
 }

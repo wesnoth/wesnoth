@@ -222,7 +222,7 @@ public:
 
 	void restore_defaults(const std::string &component);
 
-	bool has_options();
+	bool has_options() const;
 private:
 
 	/** Stores needed info about each element and their configuration options */
