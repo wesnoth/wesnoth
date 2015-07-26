@@ -2433,31 +2433,37 @@ def inner_spellcheck(nav, value, spelldict):
     # Strip off string quotes
     value = string_strip(value)
     # Discard extraneous stuff
-    value = value.replace("...", " ")
-    value = value.replace("\"", " ")
-    value = value.replace("\\n", " ")
-    value = value.replace("/", " ")
-    value = value.replace("@", " ")
-    value = value.replace(")", " ")
-    value = value.replace("(", " ")
-    value = value.replace("\xe2\x80\xa6", " ")	# UTF-8 ellipsis
-    value = value.replace("\xe2\x80\x94", " ")	# UTF-8 em dash
-    value = value.replace("\xe2\x80\x93", " ")	# UTF-8 en dash
-    value = value.replace("\xe2\x80\x95", " ")	# UTF-8 horizontal dash
-    value = value.replace("\xe2\x88\x92", " ")  # UTF-8 minus sign
-    value = value.replace("\xe2\x80\x99", "'")	# UTF-8 right single quote
-    value = value.replace("\xe2\x80\x98", "'")	# UTF-8 left single quote
-    value = value.replace("\xe2\x80\x9d", " ")	# UTF-8 right double quote
-    value = value.replace("\xe2\x80\x9c", " ")	# UTF-8 left double quote
-    value = value.replace("\xe2\x80\xa2", " ")	# UTF-8 bullet
-    value = value.replace("◦", "")              # Why is this necessary?
-    value = value.replace("''", "")
-    value = value.replace("female^", " ")
-    value = value.replace("male^", " ")
-    value = value.replace("teamname^", " ")
-    value = value.replace("team_name^", " ")
-    value = value.replace("UI^", " ")
-    value = value.replace("^", " ")
+    replacements = (
+        ("...", " "),
+        ("\"", " "),
+        ("\\n", " "),
+        ("/", " "),
+        ("@", " "),
+        (")", " "),
+        ("(", " "),
+        ("\xe2\x80\xa6", " "),  # UTF-8 ellipsis
+        ("\xe2\x80\x94", " "),  # UTF-8 em dash
+        ("\xe2\x80\x93", " "),  # UTF-8 en dash
+        ("\xe2\x80\x95", " "),  # UTF-8 horizontal dash
+        ("\xe2\x88\x92", " "),  # UTF-8 minus sign
+        ("\xe2\x80\x99", "'"),  # UTF-8 right single quote
+        ("\xe2\x80\x98", "'"),  # UTF-8 left single quote
+        ("\xe2\x80\x9d", " "),  # UTF-8 right double quote
+        ("\xe2\x80\x9c", " "),  # UTF-8 left double quote
+        ("\xe2\x80\xa2", " "),  # UTF-8 bullet
+        ("◦", ""),              # Why is this necessary?
+        ("''", ""),
+        ("female^", " "),
+        ("male^", " "),
+        ("teamname^", " "),
+        ("team_name^", " "),
+        ("UI^", " "),
+        ("^", " "),
+    )
+
+    for old, new in replacements:
+        value = value.replace(old, new)
+
     if '<' in value:
         value = re.sub("<ref>.*< ref>", "", value)
         value = re.sub("<[^>]+>text='([^']*)'<[^>]+>", r"\1", value)
