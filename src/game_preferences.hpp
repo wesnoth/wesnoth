@@ -203,8 +203,8 @@ class acquaintance;
 	int level_type();
 	void set_level_type(int value);
 
-	const std::vector<std::string>& modifications();
-	void set_modifications(const std::vector<std::string>& value);
+	const std::vector<std::string>& modifications(bool mp=true);
+	void set_modifications(const std::vector<std::string>& value, bool mp=true);
 
 	bool show_ai_moves();
 	void set_show_ai_moves(bool value);

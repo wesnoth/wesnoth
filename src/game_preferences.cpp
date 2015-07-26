@@ -67,7 +67,9 @@ std::map<std::string, preferences::acquaintance> acquaintances;
 bool acquaintances_initialized = false;
 
 std::vector<std::string> mp_modifications;
-bool modifications_initialized = false;
+bool mp_modifications_initialized = false;
+std::vector<std::string> sp_modifications;
+bool sp_modifications_initialized = false;
 
 config option_values;
 bool options_initialized = false;
@@ -96,10 +98,15 @@ std::string parse_wrapped_credentials_field(const std::string& raw)
 	return raw.substr(1, raw.length() - 2);
 }
 
-void initialize_modifications()
+void initialize_modifications(bool mp = true)
 {
-	mp_modifications = utils::split(preferences::get("modifications"), ',');
-	modifications_initialized = true;
+	if (mp) {
+		mp_modifications = utils::split(preferences::get("mp_modifications"), ',');
+		mp_modifications_initialized = true;
+	} else {
+		sp_modifications = utils::split(preferences::get("sp_modifications"), ',');
+		sp_modifications_initialized = true;
+	}
 }
 
 } // anon namespace
@@ -849,18 +856,24 @@ void set_level_type(int value)
 	preferences::set("mp_level_type", value);
 }
 
-const std::vector<std::string>& modifications()
+const std::vector<std::string>& modifications(bool mp)
 {
-	if (!modifications_initialized)
-		initialize_modifications();
+	if ((!mp_modifications_initialized && mp) || (!sp_modifications_initialized && !mp))
+		initialize_modifications(mp);
 
-	return mp_modifications;
+	return mp ? mp_modifications : sp_modifications;
 }
 
-void set_modifications(const std::vector<std::string>& value)
+void set_modifications(const std::vector<std::string>& value, bool mp)
 {
-	preferences::set("modifications", utils::join(value, ","));
-	modifications_initialized = false;
+	if (mp) {
+		preferences::set("mp_modifications", utils::join(value, ","));
+		mp_modifications_initialized = false;
+	} else {
+		preferences::set("sp_modifications", utils::join(value, ","));
+		sp_modifications_initialized = false;
+	}
+
 }
 
 bool show_ai_moves()

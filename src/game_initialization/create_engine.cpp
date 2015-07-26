@@ -437,7 +437,8 @@ create_engine::create_engine(game_display& disp, saved_game& state) :
 
 	state_.mp_settings().saved_game = false;
 
-	BOOST_FOREACH (const std::string& str, preferences::modifications()) {
+	BOOST_FOREACH (const std::string& str, preferences::modifications(state_.classification().campaign_type ==
+																			  game_classification::CAMPAIGN_TYPE::MULTIPLAYER)) {
 		if (game_config_manager::get()->
 				game_config().find_child("modification", "id", str))
 			state_.mp_settings().active_mods.push_back(str);
