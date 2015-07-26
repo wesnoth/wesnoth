@@ -234,7 +234,6 @@ namespace image {
 
 	///function to reverse an image. The image MUST have originally been returned from
 	///an image:: function. Returned images have the same semantics as for get_image()
-	///and must be freed using SDL_FreeSurface()
 	surface reverse_image(const surface &surf);
 
 	///returns true if the given image actually exists, without loading it.
