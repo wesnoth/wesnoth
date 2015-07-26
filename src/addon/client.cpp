@@ -100,14 +100,11 @@ bool addons_client::request_distribution_terms(std::string& terms)
 	return !this->update_last_error(response_buf);
 }
 
-bool addons_client::upload_addon(const std::string& id, std::string& response_message)
+bool addons_client::upload_addon(const std::string& id, std::string& response_message, config& cfg)
 {
 	LOG_ADDONS << "preparing to upload " << id << '\n';
 
 	response_message.clear();
-
-	config cfg;
-	get_addon_pbl_info(id, cfg);
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["addon_title"] = cfg["title"];

@@ -116,8 +116,9 @@ public:
 	 *
 	 * @param id               Id. of the add-on to upload.
 	 * @param response_message The server response message on success, such as "add-on accepted".
+	 * @param cfg              The pbl config of the add-on with the specified id.
 	 */
-	bool upload_addon(const std::string& id, std::string& response_message);
+	bool upload_addon(const std::string& id, std::string& response_message, config& cfg);
 
 	/**
 	 * Requests the specified add-on to be removed from the server.
