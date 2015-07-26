@@ -127,6 +127,13 @@ void teditor_generate_map::pre_show(CVideo& /*video*/, twindow& window)
 		}
 	}
 
+	if (last_map_generator_ != NULL) {
+		// We need to call this manually because it won't be called by
+		// list.select_row() even if we set the callback before
+		// calling it
+		this->do_generator_selected(window);
+	}
+
 	list.set_callback_item_change(
 			boost::bind(&teditor_generate_map::do_generator_selected, this, boost::ref(window)));
 

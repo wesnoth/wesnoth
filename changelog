@@ -29,6 +29,8 @@ Version 1.13.1+dev:
    * Added a version dialog button to the title screen, replacing the Paths
      option previously found in Preferences -> General.
  * Miscellaneous and bug fixes:
+   * Fixed Generate Map dialog bug that caused last choice of map
+     generator to not be actually selected (bug #23711).
    * Fixed unbound memory read in internal time formatting code with
      specially-crafted input.
    * Child wesnothd processes spawned by the Host Network Game option on
