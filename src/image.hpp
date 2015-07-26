@@ -208,8 +208,6 @@ namespace image {
 	enum TYPE { UNSCALED, SCALED_TO_ZOOM, HEXED, SCALED_TO_HEX, TOD_COLORED, BRIGHTENED};
 
 	///function to get the surface corresponding to an image.
-	///note that this surface must be freed by the user by calling
-	///SDL_FreeSurface()
 	surface get_image(const locator& i_locator, TYPE type=UNSCALED);
 #ifdef SDL_GPU
 	sdl::timage get_texture(const locator &loc, TYPE type=UNSCALED);
