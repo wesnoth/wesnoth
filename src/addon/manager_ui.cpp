@@ -386,7 +386,9 @@ void do_remote_addon_publish(CVideo& video, addons_client& client, const std::st
 	config cfg;
 	get_addon_pbl_info(addon_id, cfg);
 
-	if(!client.request_distribution_terms(server_msg)) {
+	if(!image::exists(cfg["icon"].str())) {
+		gui2::show_error_message(video, _("Invalid icon path. Please make sure the path points to a valid image."));
+	} else if(!client.request_distribution_terms(server_msg)) {
 		gui2::show_error_message(video,
 			std::string(_("The server responded with an error:")) + "\n" +
 			client.get_last_server_error());
