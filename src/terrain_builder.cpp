@@ -835,6 +835,9 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 		pbr.location_constraints =
 			map_location(br["x"].to_int() - 1, br["y"].to_int() - 1);
 
+		pbr.modulo_constraints =
+			map_location(br["mod_x"].to_int(), br["mod_y"].to_int());
+
 		pbr.probability = br["probability"].to_int(100);
 
 		// Mapping anchor indices to anchor locations.
@@ -970,6 +973,14 @@ void terrain_builder::add_off_map_rule(const std::string& image)
 bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 		const map_location &loc, const terrain_constraint *type_checked) const
 {
+	// Don't match if the location isn't a multiple of mod_x and mod_y
+	if(rule.modulo_constraints.x > 0 && (loc.x % rule.modulo_constraints.x != 0)) {
+		return false;
+	}
+	if(rule.modulo_constraints.y > 0 && (loc.y % rule.modulo_constraints.y != 0)) {
+		return false;
+	}
+
 	if(rule.location_constraints.valid() && rule.location_constraints != loc) {
 		return false;
 	}
