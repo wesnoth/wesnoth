@@ -125,6 +125,21 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 		imagelist& img_list = is_background ? images_background : images_foreground;
 
 		BOOST_FOREACH(const rule_image_variant& variant, ri->variants){
+			if(!variant.has_flag.empty()) {
+				bool has_flag_match = true;
+				BOOST_FOREACH(const std::string& s, variant.has_flag) {
+					// If a flag listed in "has_flag" is not present, this variant does not match
+					if(flags.find(s) == flags.end()) {
+						has_flag_match = false;
+						break;
+					}
+				}
+
+				if(!has_flag_match) {
+					continue;
+				}
+			}
+
 			if(!variant.tods.empty() && variant.tods.find(tod) == variant.tods.end())
 				continue;
 
@@ -622,13 +637,17 @@ void terrain_builder::rotate_rule(building_rule &ret, int angle,
 	replace_rotate_tokens(ret, angle, rot);
 }
 
-terrain_builder::rule_image_variant::rule_image_variant(const std::string &image_string, const std::string& variations, const std::string& tod, bool random_start) :
+terrain_builder::rule_image_variant::rule_image_variant(const std::string &image_string, const std::string& variations, const std::string& tod, const std::string& has_flag, bool random_start) :
 		image_string(image_string),
 		variations(variations),
 		images(),
 		tods(),
+		has_flag(),
 		random_start(random_start)
 {
+	if(!has_flag.empty()) {
+		this->has_flag = utils::split(has_flag);
+	}
 	if(!tod.empty()) {
 		const std::vector<std::string> tod_list = utils::split(tod);
 		tods.insert(tod_list.begin(), tod_list.end());
@@ -667,9 +686,10 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 			const std::string &name = variant["name"];
 			const std::string &variations = img["variations"];
 			const std::string &tod = variant["tod"];
+			const std::string &has_flag = variant["has_flag"];
 			bool random_start = variant["random_start"].to_bool(true);
 
-			images.back().variants.push_back(rule_image_variant(name, variations, tod, random_start));
+			images.back().variants.push_back(rule_image_variant(name, variations, tod, has_flag, random_start));
 		}
 
 		// Adds the main (default) variant of the image at the end,

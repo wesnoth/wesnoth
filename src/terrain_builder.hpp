@@ -155,11 +155,12 @@ public:
 			variations(variations),
 			images(),
 			tods(),
+			has_flag(),
 			random_start(random_start)
 			{}
 
 		/** Constructor for true [variant] cases */
-		rule_image_variant(const std::string &image_string, const std::string& variations, const std::string& tod, bool random_start = true);
+		rule_image_variant(const std::string &image_string, const std::string& variations, const std::string& tod, const std::string& has_flag, bool random_start = true);
 
 		/** A string representing either the filename for an image, or
 		 *  a list of images, with an optional timing for each image.
@@ -193,6 +194,8 @@ public:
 
 		/** The Time of Day associated to this variant (if any)*/
 		std::set<std::string> tods;
+
+		std::vector<std::string> has_flag;
 
 		/** Indicate if the animation uses a random shift */
 		bool random_start;
