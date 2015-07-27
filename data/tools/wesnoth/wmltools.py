@@ -3,6 +3,7 @@ wmltools.py -- Python routines for working with a Battle For Wesnoth WML tree
 
 """
 
+import collections
 import sys, os, re, sre_constants, hashlib, glob, gzip
 import string
 
@@ -378,16 +379,17 @@ class Reference:
         self.lineno = lineno
         self.docstring = docstring
         self.args = args
-        self.references = {}
+        self.references = collections.defaultdict(list)
         self.undef = None
+
     def append(self, fn, n, a=None):
-        if fn not in self.references:
-            self.references[fn] = []
         self.references[fn].append((n, a))
+
     def dump_references(self):
         "Dump all known references to this definition."
         for (file, refs) in self.references.items():
             print "    %s: %s" % (file, repr([x[0] for x in refs])[1:-1])
+
     def __cmp__(self, other):
         "Compare two documentation objects for place in the sort order."
         # Major sort by file, minor by line number.  This presumes that the
