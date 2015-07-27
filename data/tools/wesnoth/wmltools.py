@@ -67,7 +67,7 @@ def comma_split(csstring, list=None, strip="r"):
                 print 'Trailing whitespace may be problematic: "%s" in "%s"' % (item, csstring)
     if 'l' not in strip:
         vallist = [x.rstrip() for x in vallist]
-    if list != None:
+    if list is not None:
         list.extend(vallist)
     else:
         return vallist
@@ -440,7 +440,7 @@ class CrossRef:
         "Is specified definition visible from the specified file and line?"
         if type(defn) == type(""):
             defn = self.fileref[defn]
-        if defn.undef != None:
+        if defn.undef is not None:
             # Local macros are only visible in the file where they were defined
             return defn.filename == fn and n >= defn.lineno and n <= defn.undef
         if self.exports(defn.namespace):
@@ -899,7 +899,7 @@ def directory_namespace(path):
 def namespace_member(path, namespace):
     "Is a path in a specified namespace?"
     ns = directory_namespace(path)
-    return ns != None and ns == namespace
+    return ns is not None and ns == namespace
 
 def resolve_unit_cfg(namespace, utype, resource=None):
     "Get the location of a specified unit in a specified scope."
