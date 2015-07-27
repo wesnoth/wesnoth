@@ -1032,7 +1032,7 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
         if key == "email" and " " in value:
             print errlead + 'space in email name'
     # Check for various things that shouldn't be outside an [ai] tag
-    if not in_definition and not in_call and not "[ai]" in nav.ancestors() and not ignored:
+    if not in_definition and not in_call and "[ai]" not in nav.ancestors() and not ignored:
         if key in ("number_of_possible_recruits_to_force_recruit",
                    "recruitment_ignore_bad_movement",
                    "recruitment_ignore_bad_combat",
@@ -1044,7 +1044,7 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
     if parent in ("[allow_recruit]", "[disallow_recruit]") and key == "recruit":
         print errlead + "recruit= should be type="
     # Check [binary_path] and [textdomain] paths
-    if parent == '[textdomain]' and key == 'path' and not '/translations' in value:
+    if parent == '[textdomain]' and key == 'path' and '/translations' not in value:
         print errlead + 'no reference to "/translations" directory in textdomain path'
     if parent == '[binary_path]' and key == 'path':
         if '/external' in value or '/public' in value:
@@ -1117,7 +1117,7 @@ def global_sanity_check(filename, lines):
                 if notecheck and not (notes or traits) and has_special_notes:
                     print '"%s", line %d: unit %s has superfluous {SPECIAL_NOTES}' \
                          % (filename, in_unit_type, unit_id)
-                if not "[theme]" in nav.ancestors() and not "[base_unit]" in nav.ancestors() and not unit_race:
+                if "[theme]" not in nav.ancestors() and "[base_unit]" not in nav.ancestors() and not unit_race:
                     print '"%s", line %d: unit %s has no race' \
                          % (filename, in_unit_type, unit_id)
             in_unit_type = None
@@ -1127,13 +1127,13 @@ def global_sanity_check(filename, lines):
             base_unit = ""
             has_special_notes = False
             unit_race = None
-        if '[unit_type]' in nav.ancestors() and not "[filter_attack]" in nav.ancestors():
+        if '[unit_type]' in nav.ancestors() and "[filter_attack]" not in nav.ancestors():
             try:
                 (key, prefix, value, comment) = parse_attribute(nav.text)
                 if key == "id":
                     if value[0] == "_":
                         value = value[1:].strip()
-                    if not unit_id and not "[base_unit]" in nav.ancestors():
+                    if not unit_id and "[base_unit]" not in nav.ancestors():
                         unit_id = value
                         unit_types.append(unit_id)
                     if not base_unit and "[base_unit]" in nav.ancestors():
@@ -1336,9 +1336,9 @@ def global_sanity_check(filename, lines):
             if in_effect:
                 try:
                     (key, prefix, value, comment) = parse_attribute(lines[i])
-                    if key == "ellipse" and value in ("misc/ellipse-nozoc","misc/ellipse-leader"):
+                    if key == "ellipse" and value in ("misc/ellipse-nozoc", "misc/ellipse-leader"):
                         print '"%s", line %d: [effect] apply_to=ellipse needs to be removed' % (filename, i+1)
-                    elif key == "ellipse" and value not in ("none","misc/ellipse","misc/ellipse-hero"):
+                    elif key == "ellipse" and value not in ("none", "misc/ellipse", "misc/ellipse-hero"):
                         print '"%s", line %d: custom ellipse %s may need to be updated' % (filename, i+1, value)
                 except TypeError: # this is needed to handle tags, that parse_attribute cannot split
                     pass
@@ -1683,11 +1683,11 @@ def global_sanity_check(filename, lines):
                     print '"%s", line %d: %s should be renamed as variation_id and/or marked as translatable' \
                           % (filename, i+1, key)
             elif translatables.search(key):
-                if markcheck and has_tr_mark and lines[i].find("\"\"")>-1:
+                if markcheck and has_tr_mark and '""' in line:
                     print '"%s", line %d: %s doesn`t need translation mark (translatable string is empty)' \
                           % (filename, i+1, key)
                     lines[i] = lines[i].replace("=_","=")
-                if markcheck and not value.startswith("$") and not value.startswith("{") and not re.match(" +", value) and not has_tr_mark and lines[i].find("\"\"")==-1 and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
+                if markcheck and not value.startswith("$") and not value.startswith("{") and not re.match(" +", value) and not has_tr_mark and '""' not in line and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
                     print '"%s", line %d: %s needs translation mark' \
                           % (filename, i+1, key)
                     lines[i] = lines[i].replace('=', "=_ ")
@@ -1771,9 +1771,7 @@ def condition_match(p, q):
 
 def consistency_check():
     "Consistency-check state information picked up by sanity_check"
-    derivedlist = [x[2] for x in derived_units]
-    baselist = [x[3] for x in derived_units]
-    derivations = dict(zip(derivedlist, baselist))
+    derivations = {u[2]: u[3] for u in derived_units}
     for (filename, recruitdict, patterndict) in sides:
         for (rdifficulty, (rl, recruit)) in recruitdict.items():
             utypes = []
@@ -1785,7 +1783,7 @@ def consistency_check():
                         print '"%s", line %d: %s is not a known unit type' % (filename, rl, rtype)
                     continue
                 elif rtype not in usage:
-                    if rtype in derivedlist:
+                    if rtype in derivations.keys():
                         base = derivations[rtype]
                     else:
                         print '"%s", line %d: %s has no usage type' % \
@@ -1845,7 +1843,8 @@ def consistency_check():
     # Check that all advancements are known units
     for (unit_id, filename, lineno, advancements) in advances:
         advancements = map(string.strip, advancements.split(","))
-        bad_advancements = [x for x in advancements if x not in (unit_types+derivedlist)]
+        known_units = unit_types + list(derivations.keys())
+        bad_advancements = [x for x in advancements if x not in known_units]
         if bad_advancements:
             print '"%s", line %d: %s has unknown advancements %s' \
                   % (filename, lineno, unit_id, bad_advancements)
@@ -1988,7 +1987,7 @@ def hack_syntax(filename, lines):
         elif lines[i].count("'") % 2 == 1:
             try:
                 (key, prefix, value, comment) = parse_attribute(lines[i])
-                if  "'" in value and value[0].isalpha() and value[-1].isalpha() and not '"'+value+'"' in lines[i]:
+                if "'" in value and value[0].isalpha() and value[-1].isalpha() and '"'+value+'"' not in line:
                     newtext = prefix + '"' + value + '"' + comment + "\n"
                     if lines[i] != newtext:
                         lines[i] = newtext
@@ -2208,7 +2207,7 @@ def translator(filename, mapxforms, textxform):
                 sys.stdout.write(line + terminator)
             lineno += 1
         # Check for one certain error condition
-        if line.count("{") and line.count("}"):
+        if "{" in line and "}" in line:
             refname = line[line.find("{"):line.rfind("}")]
             # Ignore all-caps macro arguments.
             if refname == refname.upper():
@@ -2224,9 +2223,9 @@ def translator(filename, mapxforms, textxform):
         # refer to map files which will be checked separately.
         if map_only or (("map_data=" in line or "mask=" in line)
                         and line.count('"') in (1, 2)
-                        and line.count('""') == 0
-                        and line.count("{") == 0
-                        and line.count("}") == 0
+                        and '""' not in line
+                        and "{" not in line
+                        and "}" not in line
                         and not within('time')):
             outmap = []
             have_header = have_delimiter = False
@@ -2303,7 +2302,7 @@ def translator(filename, mapxforms, textxform):
             # All lines of the map are processed, add the appropriate trailer
             if not map_only:
                 newdata.append("\"" + terminator)
-        elif "map_data=" in line and (line.count("{") or line.count("}")):
+        elif "map_data=" in line and ("{" in line or "}" in line):
             newline = line
             refre = re.compile(r"\{@?([^A-Z].*)\}").search(line)
             if refre:
@@ -2331,7 +2330,6 @@ def translator(filename, mapxforms, textxform):
             if not unbalanced:
                 for instance in re.finditer(r"\[\/?\+?([a-z][a-z_]*[a-z])\]", destringed):
                     tag = instance.group(1)
-                    attributes = []
                     closer = instance.group(0)[1] == '/'
                     if not closer:
                         tagstack.append((tag, {}))
@@ -2346,8 +2344,7 @@ def translator(filename, mapxforms, textxform):
                             tagstack.pop()
                 if tagstack:
                     for instance in re.finditer(r'([a-z][a-z_]*[a-z])\s*=(.*)', trimmed):
-                        attribute = instance.group(1)
-                        value = instance.group(2)
+                        attribute, value = instance.groups()
                         if '#' in value:
                             value = value.split("#")[0]
                         tagstack[-1][1][attribute] = value.strip()
@@ -2392,9 +2389,7 @@ def translator(filename, mapxforms, textxform):
         # Map or mask -- just run everything together
         transformed = "".join(newdata)
     # Simple check for unbalanced macro calls
-    unclosed = None
     linecount = 1
-    startline = None
     quotecount = 0
     display_state = False
     singleline = False
@@ -2519,8 +2514,6 @@ def inner_spellcheck(nav, value, spelldict):
         if re.match("(mu)?ha(ha)*", lowered):
             continue
         if re.match("ah+", lowered):
-            continue
-        if re.match("no+", lowered):
             continue
         if re.match("no+", lowered):
             continue
@@ -2766,7 +2759,7 @@ if __name__ == '__main__':
         # Handle SingleUnitWML or Standard Unit Filter or SideWML
         # Also, when macro calls have description= in them, the arg is
         # a SUF being passed in.
-        if tagstack and ((under("unit") and not "units" in filename) or \
+        if tagstack and ((under("unit") and "units" not in filename) or \
                standard_unit_filter() or \
                under("side") or \
                re.search("{[A-Z]+.*description=.*}", line)):
@@ -2812,12 +2805,12 @@ if __name__ == '__main__':
             wildcard = False
             ugly = False
             newargs = []
-            for i,arg in enumerate(arguments):
+            for i, arg in enumerate(arguments):
                 if not wildcard and '*' in arg:
                     wildcard = True
                     from glob import glob
                 if '"' in arg:
-                    if len(arguments)-i > 1:
+                    if len(arguments) - i > 1:
                         ugly = True
                         break
                     test = arg.split('"', 1)
@@ -2841,7 +2834,7 @@ if __name__ == '__main__':
 """ % re.sub(r'"', '-->>"<<--', arg)
 
                 moreugly = raw_input('Press "H" if you need more help, or Enter to exit: ')
-                if moreugly.startswith(('h', 'H')):
+                if moreugly.lower().startswith('h'):
                     print >>sys.stderr, """
         Explanation:
 
