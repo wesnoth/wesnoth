@@ -61,7 +61,7 @@ private:
 	void post_show(twindow& window);
 
 
-	void mod_toggeled(int id, twidget&);
+	void mod_toggled(int id, twidget &);
 
 	ng::create_engine& engine_;
 
