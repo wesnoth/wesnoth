@@ -4,6 +4,7 @@ wmltools.py -- Python routines for working with a Battle For Wesnoth WML tree
 """
 
 import sys, os, re, sre_constants, hashlib, glob, gzip
+import string
 
 map_extensions   = ("map", "mask")
 image_extensions = ("png", "jpg", "jpeg")
@@ -315,7 +316,7 @@ def actualtype(a):
         atype = "terrain_code"
     elif a.endswith(".wav") or a.endswith(".ogg"):
         atype = "sound"
-    elif a.startswith('"') and a.endswith('"') or (a.startswith("_") and a[1] not in "abcdefghijklmnopqrstuvwxyz"):
+    elif a.startswith('"') and a.endswith('"') or (a.startswith("_") and a[1] not in string.ascii_lowercase):
         atype = "stringliteral"
     elif "=" in a:
         atype = "filter"
