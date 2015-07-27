@@ -438,7 +438,7 @@ class CrossRef:
         return key
     def visible_from(self, defn, fn, n):
         "Is specified definition visible from the specified file and line?"
-        if type(defn) == type(""):
+        if isinstance(defn, basestring):
             defn = self.fileref[defn]
         if defn.undef is not None:
             # Local macros are only visible in the file where they were defined
