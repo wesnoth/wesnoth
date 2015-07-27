@@ -3,7 +3,9 @@ wmltools.py -- Python routines for working with a Battle For Wesnoth WML tree
 
 """
 
+import collections
 import sys, os, re, sre_constants, hashlib, glob, gzip
+import string
 
 map_extensions   = ("map", "mask")
 image_extensions = ("png", "jpg", "jpeg")
@@ -65,7 +67,7 @@ def comma_split(csstring, list=None, strip="r"):
                 print 'Trailing whitespace may be problematic: "%s" in "%s"' % (item, csstring)
     if 'l' not in strip:
         vallist = [x.rstrip() for x in vallist]
-    if list != None:
+    if list is not None:
         list.extend(vallist)
     else:
         return vallist
@@ -315,7 +317,7 @@ def actualtype(a):
         atype = "terrain_code"
     elif a.endswith(".wav") or a.endswith(".ogg"):
         atype = "sound"
-    elif a.startswith('"') and a.endswith('"') or (a.startswith("_") and a[1] not in "abcdefghijklmnopqrstuvwxyz"):
+    elif a.startswith('"') and a.endswith('"') or (a.startswith("_") and a[1] not in string.ascii_lowercase):
         atype = "stringliteral"
     elif "=" in a:
         atype = "filter"
@@ -377,16 +379,17 @@ class Reference:
         self.lineno = lineno
         self.docstring = docstring
         self.args = args
-        self.references = {}
+        self.references = collections.defaultdict(list)
         self.undef = None
+
     def append(self, fn, n, a=None):
-        if fn not in self.references:
-            self.references[fn] = []
         self.references[fn].append((n, a))
+
     def dump_references(self):
         "Dump all known references to this definition."
         for (file, refs) in self.references.items():
             print "    %s: %s" % (file, repr([x[0] for x in refs])[1:-1])
+
     def __cmp__(self, other):
         "Compare two documentation objects for place in the sort order."
         # Major sort by file, minor by line number.  This presumes that the
@@ -435,9 +438,9 @@ class CrossRef:
         return key
     def visible_from(self, defn, fn, n):
         "Is specified definition visible from the specified file and line?"
-        if type(defn) == type(""):
+        if isinstance(defn, basestring):
             defn = self.fileref[defn]
-        if defn.undef != None:
+        if defn.undef is not None:
             # Local macros are only visible in the file where they were defined
             return defn.filename == fn and n >= defn.lineno and n <= defn.undef
         if self.exports(defn.namespace):
@@ -896,7 +899,7 @@ def directory_namespace(path):
 def namespace_member(path, namespace):
     "Is a path in a specified namespace?"
     ns = directory_namespace(path)
-    return ns != None and ns == namespace
+    return ns is not None and ns == namespace
 
 def resolve_unit_cfg(namespace, utype, resource=None):
     "Get the location of a specified unit in a specified scope."

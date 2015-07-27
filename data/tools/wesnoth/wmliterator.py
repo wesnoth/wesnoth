@@ -49,14 +49,13 @@ def wmlfindin(element, scopeElement, wmlItor):
                 return itor
     return None
 
+
 def isDirective(elem):
     "Identify things that shouldn't be indented."
     if isinstance(elem, WmlIterator):
         elem = elem.element
-    for prefix in ("#ifdef", "#ifndef", "#ifhave", "#ifnhave", "#ifver", "#ifnver", "#else", "#endif", "#define", "#enddef", "#undef"):
-        if elem.startswith(prefix):
-            return True
-    return False
+    return elem.startswith(("#ifdef", "#ifndef", "#ifhave", "#ifnhave", "#ifver", "#ifnver", "#else", "#endif", "#define", "#enddef", "#undef"))
+
 
 def isCloser(elem):
     "Are we looking at a closing tag?"
