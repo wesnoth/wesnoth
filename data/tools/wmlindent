@@ -252,11 +252,8 @@ def convertor(linefilter, arglist, exclude):
                     continue
                 else:
                     try:
-                        infp = open(filename, "rb")
-                        outfp = open(filename + ".out", "wb")
-                        linefilter(filename, infp, outfp)
-                        infp.close()
-                        outfp.close()
+                        with open(filename,"rb") as infp, open(filename, "rb") as outfp:
+                            linefilter(filename, infp, outfp)
                     except bailout as e:
                         sys.stderr.write('wmlindent: "%s", %d: %s\n' % (e.filename, e.lineno, e.msg))
                         os.remove(filename + ".out")
