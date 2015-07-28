@@ -126,9 +126,9 @@ game_stringfixes = {
 website_stringfixes = {
 
 "1.12-announcement" : (
-("wesnoth-1.12.1/wesnoth-1.12.1.tar.bz2", "wesnoth-1.12.2/wesnoth-1.12.2.tar.bz2"),
-("wesnoth-1.12.1/wesnoth-1.12.1-win32.exe", "wesnoth-1.12.2/wesnoth-1.12.2-win32.exe"),
-("wesnoth-1.12.1/Wesnoth_1.12.1.dmg", "wesnoth-1.12.2/Wesnoth_1.12.2.dmg"),
+("wesnoth-1.12.2/wesnoth-1.12.2.tar.bz2", "wesnoth-1.12.4/wesnoth-1.12.4.tar.bz2"),
+("wesnoth-1.12.2/wesnoth-1.12.2-win32.exe", "wesnoth-1.12.4/wesnoth-1.12.4a-win32.exe"),
+("wesnoth-1.12.2/Wesnoth_1.12.2.dmg", "wesnoth-1.12.4/Wesnoth_1.12.4.dmg"),
 ),
 
 }
