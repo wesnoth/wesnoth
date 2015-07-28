@@ -192,8 +192,8 @@ class CrossRefLister(CrossRef):
             for (namespace, filename) in xref.filelist.generator():
                 if filename.endswith(".png"):
                     try:
-                        im = Image.open(filename)
-                        (x, y) = im.size
+                        with Image.open(filename) as im:
+                            (x, y) = im.size
                         if x <= 60 or y <= 60:
                             print "%s: %d by %d" % (filename, x, y)
                     except IOError:
@@ -300,16 +300,15 @@ class CrossRefLister(CrossRef):
                 outstr += "<h1 id='file:" + displayname + "' class='file_header'>From file: " + displayname + "</h1>\n"
                 filenamelist.append(displayname)
                 hdr = []
-                dfp = open(filename)
-                for line in dfp:
-                    line = line.lstrip()
-                    if line and line.startswith("#textdomain"):
-                        continue
-                    if line and line[0] == '#':
-                        hdr.append(line[1:])
-                    else:
-                        break
-                dfp.close()
+                with open(filename) as dfp:
+                    for line in dfp:
+                        line = line.lstrip()
+                        if line and line.startswith("#textdomain"):
+                            continue
+                        if line and line[0] == '#':
+                            hdr.append(line[1:])
+                        else:
+                            break
                 if hdr:
                     outstr += interpret(hdr, "file_explanation")
                 outstr += "<dl>\n"
@@ -458,9 +457,8 @@ Usage: wmlscope [options] dirpath
         if collisions:
             collisions = []
             for (namespace, filename) in xref.filelist.generator():
-                ifp = open(filename)
-                collisions.append(hashlib.md5(ifp.read()).digest())
-                ifp.close()
+                with open(filename) as ifp:
+                    collisions.append(hashlib.md5(ifp.read()).digest())
             collisions = zip(xref.filelist.flatten(), collisions)
             hashcounts = {}
             for (n, h) in collisions:

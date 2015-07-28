@@ -2932,13 +2932,11 @@ In your case, your system interprets your arguments as:
                                     os.remove(backup)
                                 os.rename(fn, backup)
                                 if fn.endswith(".gz"):
-                                    ofp = gzip.open(fn, "w")
-                                    ofp.write(changed)
-                                    ofp.close()
+                                    with gzip.open(fn, "w") as ofp:
+                                        ofp.write(changed)
                                 else:
-                                    ofp = open(fn, "w")
-                                    ofp.write(changed)
-                                    ofp.close()
+                                    with open(fn, "w") as ofp:
+                                        ofp.write(changed)
                     #except maptransform_error, e:
                     #    sys.stderr.write("wmllint: " + `e` + "\n")
                     except:
