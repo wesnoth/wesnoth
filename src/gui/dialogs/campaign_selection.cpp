@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/campaign_selection.hpp"
 
+#include "game_preferences.hpp"
 #include "gui/auxiliary/find_widget.tpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/campaign_settings.hpp"
@@ -284,6 +285,8 @@ void tcampaign_selection::post_show(twindow& window)
 		deterministic_ = find_widget<ttoggle_button>(&window,
 													 "checkbox_deterministic",
 													 false).get_value();
+
+		preferences::set_modifications(engine_.active_mods(), false);
 	} else {
 		choice_ = find_widget<tlistbox>(&window, "campaign_list", false)
 						  .get_selected_row();
