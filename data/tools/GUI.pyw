@@ -1144,9 +1144,8 @@ Error code: {1}""".format(queue_item[0],queue_item[1]))
         fn=asksaveasfilename(defaultextension=".txt",filetypes=[("Text file","*.txt")],initialdir=".")
         if fn:
             try:
-                out=codecs.open(fn,"w","utf-8")
-                out.write(self.text.get(1.0,END)[:-1]) # exclude the double endline at the end
-                out.close()
+                with codecs.open(fn,"w","utf-8") as out:
+                    out.write(self.text.get(1.0,END)[:-1]) # exclude the double endline at the end
             except IOError as error: # in case that we attempt to write without permissions
                 showerror("Error","""Error while writing to:
 {0}
