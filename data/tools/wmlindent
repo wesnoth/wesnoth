@@ -61,6 +61,8 @@ if there's an indent open at end of file or if a closer occurs with
 indent already zero; these two conditions strongly suggest unbalanced WML.
 """
 
+from __future__ import print_function
+
 import sys, os, getopt, filecmp, re
 from wesnoth import wmltools
 
@@ -119,12 +121,12 @@ def reindent(name, infp, outfp):
         if "wmlindent: opener" in line:
             tag = line.split('"')[1]
             if verbose and not quiet:
-                print >>sys.stderr, "wmlindent: declaring indent exception for %s" % tag
+                print("wmlindent: declaring indent exception for %s" % tag, file=sys.stderr)
             opener_prefixes.append(tag)
         elif "wmlindent: closer" in line:
             tag = line.split('"')[1]
             if verbose and not quiet:
-                print >>sys.stderr, "wmlindent: declaring outdent exception for %s" % tag
+                print("wmlindent: declaring outdent exception for %s" % tag, file=sys.stderr)
             closer_prefixes.append(tag)
         # Implement passthrough mode
         if "wmlindent: start ignoring" in line:
@@ -163,7 +165,7 @@ def reindent(name, infp, outfp):
         # one that started the block.
         if closer(transformed):
             if indent == "":
-                print >>sys.stderr, 'wmlindent: "%s", line %d: close tag %s with indent already zero.' % (name, countlines, transformed.strip())
+                print('wmlindent: "%s", line %d: close tag %s with indent already zero.' % (name, countlines, transformed.strip()), file=sys.stderr)
             else:
                 indent = indent[:-len(wmltools.baseindent)]
         # Cope with blank lines outside of multiline literals
@@ -213,7 +215,7 @@ def reindent(name, infp, outfp):
             lasttag = ""
     # Pure macro files look like they have unbalanced indents.  That's OK
     if indent != "" and seen_wml:
-        print >>sys.stderr, 'wmlindent: "%s". line %d: end of file with indent nonzero.' % (name, countlines)
+        print('wmlindent: "%s". line %d: end of file with indent nonzero.' % (name, countlines), file=sys.stderr)
 
 def allwmlfiles(dir):
     "Get names of all WML files under dir, or dir itself if not a directory."
@@ -279,7 +281,7 @@ if __name__ == '__main__':
     exclude = []
     for (opt, val) in options:
         if opt in ('-?', '-h', '--help'):
-            print __doc__
+            print(__doc__)
             sys.exit(0)
         elif opt in ('-d', '--dryrun'):
             dryrun = True
