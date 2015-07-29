@@ -241,26 +241,26 @@ def convertor(linefilter, arglist, exclude):
             for filename in allwmlfiles(arg):
                 if exclude and re.search(exclude, filename):
                     if verbose:
-                        print("wmlindent: %s excluded\n" % filename, file=sys.stderr)
+                        print("wmlindent: %s excluded" % filename, file=sys.stderr)
                     continue
                 else:
                     try:
                         with open(filename,"rb") as infp, open(filename + ".out", "wb") as outfp:
                             linefilter(filename, infp, outfp)
                     except bailout as e:
-                        print('wmlindent: "%s", %d: %s\n' % (e.filename, e.lineno, e.msg), file=sys.stderr)
+                        print('wmlindent: "%s", %d: %s' % (e.filename, e.lineno, e.msg), file=sys.stderr)
                         os.remove(filename + ".out")
                     except KeyboardInterrupt:
                         os.remove(filename + ".out")
-                        print("wmlindent: %s interrupted\n" % filename, file=sys.stderr)
+                        print("wmlindent: %s interrupted" % filename, file=sys.stderr)
                     else:
                         if filecmp.cmp(filename, filename + ".out"):
                             if verbose >= 2:
-                                print("wmlindent: %s unchanged\n" % filename, file=sys.stderr)
+                                print("wmlindent: %s unchanged" % filename, file=sys.stderr)
                             os.remove(filename + ".out")
                         else:
                             if not quiet:
-                                print("wmlindent: %s changed\n" % filename, file=sys.stderr)
+                                print("wmlindent: %s changed" % filename, file=sys.stderr)
                             if dryrun:
                                 os.remove(filename + ".out")
                             else:
