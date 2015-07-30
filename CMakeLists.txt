@@ -673,15 +673,6 @@ if(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
 	#  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop DESTINATION ${DESKTOPDIR} )
 	install(FILES icons/wesnoth.desktop DESTINATION ${DESKTOPDIR} )
 	install(FILES icons/wesnoth-icon.png DESTINATION ${ICONDIR} )
-
-	# do some crude string replacing to have the real binary name in the .desktop file (read in original .desktop file, replace the Exec= line with the correct value and output the generated file)
-	#    file(READ icons/wesnoth_editor.desktop wesnoth-editor-desktop-orig)
-	#    string(REPLACE "Exec=wesnoth -e" "Exec=${BINARY_PREFIX}wesnoth${BINARY_SUFFIX} -e" wesnoth-editor-desktop-modified ${wesnoth-editor-desktop-orig} )
-	#    file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX}.desktop ${wesnoth-editor-desktop-modified} )
-	# install the generated .desktop file
-	#    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX}.desktop DESTINATION ${DESKTOPDIR} )
-	install(FILES icons/wesnoth_editor.desktop DESTINATION ${DESKTOPDIR} )
-	install(FILES icons/wesnoth_editor-icon.png DESTINATION ${ICONDIR} )
 endif(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
 
 
