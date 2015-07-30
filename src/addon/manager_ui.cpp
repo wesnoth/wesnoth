@@ -383,12 +383,17 @@ void do_remote_addon_publish(CVideo& video, addons_client& client, const std::st
 {
 	std::string server_msg;
 
-	if(!client.request_distribution_terms(server_msg)) {
+	config cfg;
+	get_addon_pbl_info(addon_id, cfg);
+
+	if(!image::exists(cfg["icon"].str())) {
+		gui2::show_error_message(video, _("Invalid icon path. Please make sure the path points to a valid image."));
+	} else if(!client.request_distribution_terms(server_msg)) {
 		gui2::show_error_message(video,
 			std::string(_("The server responded with an error:")) + "\n" +
 			client.get_last_server_error());
 	} else if(gui2::show_message(video, _("Terms"), server_msg, gui2::tmessage::ok_cancel_buttons) == gui2::twindow::OK) {
-		if(!client.upload_addon(addon_id, server_msg)) {
+		if(!client.upload_addon(addon_id, server_msg, cfg)) {
 			gui2::show_error_message(video,
 				std::string(_("The server responded with an error:")) + "\n" +
 				client.get_last_server_error());
