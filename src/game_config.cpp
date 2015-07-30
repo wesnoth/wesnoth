@@ -113,7 +113,7 @@ namespace game_config
 			ellipsis,
 			missing,
 			// notifications icon
-			app_icon = "images/game-icon.png";
+			app_icon = "images/icons/icon-game.png";
 	} //images
 
 	std::string shroud_prefix, fog_prefix;

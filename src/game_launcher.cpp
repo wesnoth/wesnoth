@@ -395,7 +395,7 @@ bool game_launcher::init_video()
 #endif
 
 #if !(defined(__APPLE__))
-	surface icon(image::get_image("game-icon.png", image::UNSCALED));
+	surface icon(image::get_image("icons/icon-game.png", image::UNSCALED));
 	if(icon != NULL) {
 		///must be called after SDL_Init() and before setting video mode
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
