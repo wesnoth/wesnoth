@@ -92,6 +92,8 @@
 #
 # sets the warning level.
 
+from __future__ import print_function
+
 import sys, os, time, re, getopt, hashlib, glob
 from wesnoth.wmltools import *
 
@@ -140,9 +142,9 @@ class CrossRefLister(CrossRef):
                     type_ = "global"
                 nrefs = len(defn.references)
                 if nrefs == 0:
-                    print "%s: %s macro %s is unused" % (defn, type_, name)
+                    print("%s: %s macro %s is unused" % (defn, type_, name))
                 else:
-                    print "%s: %s macro %s is used in %d files:" % (defn, type_, name, nrefs)
+                    print("%s: %s macro %s is used in %d files:" % (defn, type_, name, nrefs))
                 defn.dump_references()
         for name in sorted(self.fileref.keys()):
             defloc = self.fileref[name]
@@ -150,20 +152,20 @@ class CrossRefLister(CrossRef):
                 continue
             nrefs = len(defloc.references)
             if nrefs == 0:
-                print "Resource %s is unused" % defloc
+                print("Resource %s is unused" % defloc)
             else:
-                print "Resource %s is used in %d files:" % (defloc, nrefs)
+                print("Resource %s is used in %d files:" % (defloc, nrefs))
             defloc.dump_references()
 
     def unresdump(self):
         "Report unresolved references, arity mismatches, duplicate unit IDs."
         # First the unresolved references
         if len(self.unresolved) == 0 and len(self.missing) == 0:
-            print "# No unresolved references"
+            print("# No unresolved references")
         else:
-            #print self.fileref.keys()
+            #print(self.fileref.keys())
             for (name, reference) in self.unresolved + self.missing:
-                print "%s: Unresolved reference -> %s" % (reference, name)
+                print("%s: Unresolved reference -> %s" % (reference, name))
         mismatched = []
         for name in sorted(self.xref.keys()):
             for defn in self.xref[name]:
@@ -172,12 +174,12 @@ class CrossRefLister(CrossRef):
                     mismatched.append((name, m))
         # Then the type mismatches
         if mismatched:
-            print "# Mismatched references:"
+            print("# Mismatched references:")
             for (n, m) in mismatched:
-                print "%s: macro %s(%s) has mismatches:" % (m, n, ", ".join(["{}={}".format(x, formaltype(x)) for x in m.args]))
+                print("%s: macro %s(%s) has mismatches:" % (m, n, ", ".join(["{}={}".format(x, formaltype(x)) for x in m.args])))
                 for (file, refs) in m.references.items():
                     for (ln, args) in refs:
-                        print '"%s", line %d: %s(%s) with signature (%s)' % (file, ln, n, ", ".join(args), ", ".join(["{}={}".format(f, actualtype(a)) for f,a in zip(m.args, args)]))
+                        print('"%s", line %d: %s(%s) with signature (%s)' % (file, ln, n, ", ".join(args), ", ".join(["{}={}".format(f, actualtype(a)) for f,a in zip(m.args, args)])))
 
     def undersized(self):
         "Report undersized images that cannot be safely overlaid on a hex."
@@ -189,11 +191,11 @@ class CrossRefLister(CrossRef):
                         with Image.open(filename) as im:
                             (x, y) = im.size
                         if x <= 60 or y <= 60:
-                            print "%s: %d by %d" % (filename, x, y)
+                            print("%s: %d by %d" % (filename, x, y))
                     except IOError:
-                        sys.stderr.write("%s: PIL internal error\n" % filename)
+                        print("%s: PIL internal error" % filename, file=sys.stderr)
         except ImportError:
-            sys.stderr.write("Install Python Imaging Library to enable size check.\n")
+            print("Install Python Imaging Library to enable size check.", file=sys.stderr)
     def duplicates(self, exportonly):
         "Dump duplicate unit IDs."
         duplicate_latch = False
@@ -202,11 +204,11 @@ class CrossRefLister(CrossRef):
                 if exportonly and not [x for x in value if self.exports(x.namespace)]:
                     continue
                 if not duplicate_latch:
-                    print "# Duplicate IDs"
+                    print("# Duplicate IDs")
                     duplicate_latch = True
-                print "%s: occurs %d times as unit ID" % (key, len(value))
+                print("%s: occurs %d times as unit ID" % (key, len(value)))
                 for ref in value:
-                    print "%s: exported=%s" % (ref, self.exports(ref.namespace))
+                    print("%s: exported=%s" % (ref, self.exports(ref.namespace)))
 
     def typelist(self, branch):
         "Dump actual and formal arguments for macros in specified file"
@@ -217,21 +219,21 @@ class CrossRefLister(CrossRef):
                     if filename.endswith(branch):
                         if name not in already_seen:
                             already_seen.append(name)
-                            print "%s: macro %s(%s):" % (defn, name, ", ".join(["{}={}".format(x, formaltype(x)) for x in defn.args]))
+                            print("%s: macro %s(%s):" % (defn, name, ", ".join(["{}={}".format(x, formaltype(x)) for x in defn.args])))
                         for (ln, args) in refs:
-                            print '"%s", line %d: %s(%s) with signature (%s)' % (filename, ln, name, ", ".join(args), ", ".join(["{}={}".format(f, actualtype(a)) for f,a in zip(defn.args, args)]))
+                            print('"%s", line %d: %s(%s) with signature (%s)' % (filename, ln, name, ", ".join(args), ", ".join(["{}={}".format(f, actualtype(a)) for f,a in zip(defn.args, args)])))
     def deflist(self, pred=None):
         "List all resource definitions."
         for name in sorted(self.xref.keys()):
             for defn in self.xref[name]:
                 if not pred or pred(name, defn):
-                    print "macro", name, " ".join(["{}={}".format(x, formaltype(x)) for x in defn.args])
+                    print("macro", name, " ".join(["{}={}".format(x, formaltype(x)) for x in defn.args]))
         for name in sorted(self.fileref.keys()):
             defloc = self.fileref[name]
             if not pred or pred(name, defloc):
-                print "resource", name
+                print("resource", name)
         for uid in sorted(self.unit_ids.keys()):
-            print "unit", uid
+            print("unit", uid)
 
     def unchecked(self, fp):
         "List all macro definitions with untyped formals."
@@ -250,16 +252,16 @@ class CrossRefLister(CrossRef):
                     unchecked.append((name, defn))
                     unresolvedcount += len(defn.references)
         if unchecked:
-            print "# %d of %d (%d%%) macro definitions and %d of %d calls (%d%%) have untyped formals:" \
+            print("# %d of %d (%d%%) macro definitions and %d of %d calls (%d%%) have untyped formals:" \
                   % (len(unchecked),
                      defcount,
                      int((100 * len(unchecked)) / defcount),
                      unresolvedcount,
                      callcount,
-                     int((100 * unresolvedcount) / callcount))
+                     int((100 * unresolvedcount) / callcount)))
             unchecked.sort(lambda a, b: cmp(a[1], b[1]))
             for (name, defn) in unchecked:
-                print "%s: %s(%s)" % (defn, name, ", ".join(defn.args))
+                print("%s: %s(%s)" % (defn, name, ", ".join(defn.args)))
 
     def extracthelp(self, pref, fp):
         "Deliver all macro help comments in HTML form."
@@ -325,7 +327,7 @@ class CrossRefLister(CrossRef):
 
 if __name__ == "__main__":
     def help():
-        sys.stderr.write("""\
+        print("""\
 Usage: wmlscope [options] dirpath
     Options may be any of these:
     -h, --help                   Emit this help message and quit
@@ -344,7 +346,7 @@ Usage: wmlscope [options] dirpath
     --unchecked                  Report all macros with untyped formals.
    Options may be followed by any number of directiories to check.  If no
    directories are given, all files under the current directory are checked.
-""")
+""", file=sys.stderr)
 
     try:
         # Process options
@@ -426,20 +428,20 @@ Usage: wmlscope [options] dirpath
         else:
             dirpath = ['.']
         if not extracthelp:
-            print "# Wmlscope reporting on %s" % time.ctime()
-            print "# Invocation: %s" % " ".join(sys.argv)
-            print "# Working directory: %s" % os.getcwd()
+            print("# Wmlscope reporting on %s" % time.ctime())
+            print("# Invocation: %s" % " ".join(sys.argv))
+            print("# Working directory: %s" % os.getcwd())
             starttime = time.time()
         xref = CrossRefLister(dirpath, "|".join(exclude), warnlevel, progress)
         if not extracthelp:
-            print "#Cross-reference time: %d seconds" % (time.time()-starttime)
+            print("#Cross-reference time: %d seconds" % (time.time()-starttime))
         if extracthelp:
             xref.extracthelp(dirpath[0], sys.stdout)
         elif unchecked:
             xref.unchecked(sys.stdout)
         elif listfiles:
             for (namespace, filename) in xref.filelist.generator():
-                print filename
+                print(filename)
         if collisions:
             collisions = []
             for (namespace, filename) in xref.filelist.generator():
@@ -454,9 +456,9 @@ Usage: wmlscope [options] dirpath
             lasthash = None
             for (n, h) in collisions:
                 if h != lasthash:
-                    print "%%"
+                    print("%%")
                     lasthash = h
-                print n
+                print(n)
             xref.duplicates(exportonly=False)
         elif typelist:
             xref.typelist(typelist)
@@ -471,7 +473,7 @@ Usage: wmlscope [options] dirpath
                 return True
             if crossreference:
                 if xref.noxref:
-                    print >>sys.stderr, "wmlscope: can't make cross-reference, input included a definitions file."
+                    print("wmlscope: can't make cross-reference, input included a definitions file.", file=sys.stderr)
                 else:
                     xref.xrefdump(predicate)
             if definitions:
@@ -481,6 +483,6 @@ Usage: wmlscope [options] dirpath
                 xref.unresdump()
                 xref.duplicates(exportonly=True)
     except KeyboardInterrupt:
-        print >>sys.stderr, "wmlscope: aborted."
+        print("wmlscope: aborted.", file=sys.stderr)
 
 # wmlscope ends here
