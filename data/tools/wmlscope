@@ -130,25 +130,21 @@ class CrossRefLister(CrossRef):
     "Cross-reference generator with reporting functions"
     def xrefdump(self, pred=None):
         "Report resolved macro references."
-        sorted = self.xref.keys()
-        sorted.sort()
-        for name in sorted:
+        for name in sorted(self.xref.keys()):
             for defn in self.xref[name]:
                 if pred and not pred(name, defn):
                     continue
                 if defn.undef:
-                    type = "local"
+                    type_ = "local"
                 else:
-                    type = "global"
+                    type_ = "global"
                 nrefs = len(defn.references)
                 if nrefs == 0:
-                    print "%s: %s macro %s is unused" % (defn, type, name)
+                    print "%s: %s macro %s is unused" % (defn, type_, name)
                 else:
-                    print "%s: %s macro %s is used in %d files:" % (defn, type, name, nrefs)
+                    print "%s: %s macro %s is used in %d files:" % (defn, type_, name, nrefs)
                 defn.dump_references()
-        sorted = self.fileref.keys()
-        sorted.sort()
-        for name in sorted:
+        for name in sorted(self.fileref.keys()):
             defloc = self.fileref[name]
             if pred and not pred(name, defloc):
                 continue
@@ -169,9 +165,7 @@ class CrossRefLister(CrossRef):
             for (name, reference) in self.unresolved + self.missing:
                 print "%s: Unresolved reference -> %s" % (reference, name)
         mismatched = []
-        sorted = self.xref.keys()
-        sorted.sort()
-        for name in sorted:
+        for name in sorted(self.xref.keys()):
             for defn in self.xref[name]:
                 m = defn.mismatches()
                 if m.references:
@@ -217,9 +211,7 @@ class CrossRefLister(CrossRef):
     def typelist(self, branch):
         "Dump actual and formal arguments for macros in specified file"
         already_seen = []
-        sorted = self.xref.keys()
-        sorted.sort()
-        for name in sorted:
+        for name in sorted(self.xref.keys()):
             for defn in self.xref[name]:
                 for (filename, refs) in defn.references.items():
                     if filename.endswith(branch):
@@ -230,21 +222,15 @@ class CrossRefLister(CrossRef):
                             print '"%s", line %d: %s(%s) with signature (%s)' % (filename, ln, name, ", ".join(args), ", ".join(["{}={}".format(f, actualtype(a)) for f,a in zip(defn.args, args)]))
     def deflist(self, pred=None):
         "List all resource definitions."
-        sorted = self.xref.keys()
-        sorted.sort()
-        for name in sorted:
+        for name in sorted(self.xref.keys()):
             for defn in self.xref[name]:
                 if not pred or pred(name, defn):
                     print "macro", name, " ".join(["{}={}".format(x, formaltype(x)) for x in defn.args])
-        sorted = self.fileref.keys()
-        sorted.sort()
-        for name in sorted:
+        for name in sorted(self.fileref.keys()):
             defloc = self.fileref[name]
             if not pred or pred(name, defloc):
                 print "resource", name
-        sorted = self.unit_ids.keys()
-        sorted.sort()
-        for uid in sorted:
+        for uid in sorted(self.unit_ids.keys()):
             print "unit", uid
 
     def unchecked(self, fp):
