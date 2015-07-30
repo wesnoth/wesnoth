@@ -1075,7 +1075,7 @@ bool preprocessor_data::get_chunk()
 				size_t nb_arg = strings_.size() - token.stack_pos - 1;
 				if (nb_arg != val.arguments.size())
 				{
-					std::vector< std::string > locations = utils::quoted_split(val.location, ' ');
+					const std::vector<std::string>& locations = utils::quoted_split(val.location, ' ');
 					std::ostringstream error;
 					error << "Preprocessor symbol '" << symbol << "' defined at "
 					      << get_filename(locations[0]) << ":" << val.linenum << " expects "
